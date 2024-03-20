@@ -14,21 +14,25 @@ This topic assumes you have an understanding of the [CI pipeline creation proces
 
 ## Code repo connectors
 
-Harness uses code repo connectors to connect to third-party Git providers, such as Bitbucket, GitHub, GitLab, and others. You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).
+Harness uses code repo connectors to connect to third-party Git providers, such as Bitbucket, GitHub, GitLab, and others.
 
-For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
+**You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).**
 
-* Azure Repos: [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub: [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-* GitLab: [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-* Other Git providers:
-  * [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
-  * [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
+For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can create connectors at the account, organization, or project [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
-The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
+The following topics provide more information about creating code repo connectors:
 
-If you prefer to use the YAML editor, you can [create connectors in YAML](../../../platform/connectors/create-a-connector-using-yaml.md).
+* [Connect to Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo)
+* [Bitbucket Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+* [GitLab Connector Settings Reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+* [Connect to an AWS CodeCommit Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo)
+* Other Git providers: [Provider-agnostic Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference)
+* [Harness Code Repository](/docs/code-repository): Built-in connectivity through the Harness Platform. No code repo connector required.
+
+The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The provider-agnostic Git connector can connect with any provider using basic authentication over HTTPS.
+
+If you prefer to use the YAML editor, you can [create connectors in YAML](/docs/platform/connectors/create-a-connector-using-yaml.md).
 
 ## Configure the default codebase
 
