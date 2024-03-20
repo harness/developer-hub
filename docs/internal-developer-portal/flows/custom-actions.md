@@ -58,7 +58,7 @@ output:
 ...
 ```
 
-:::info
+:::info 
 
 In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory paramenter as mentioned below
 
@@ -99,6 +99,15 @@ output:
         Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}` 
 ...
 ```
+
+:::info
+
+Only user defined output variables are allowed, but you can as well use the system generated variables by assigning them as a new variable under shell script step as displayed below. For eg. we have mentioned the system generated output as `jira_id` and under **Optional Configuration** added a **test-var** which becomes a user defined output variable and could be displayed as output in the IDP workflows.
+
+![](./static/output-variable.png)
+
+:::
+
 There are two ways in which you can add the output variable to the template syntax. 
 
 1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
