@@ -18,7 +18,7 @@ Harness uses code repo connectors to connect to third-party Git providers, such 
 
 **You don't need a code repo connector for repositories in the [Harness Code Repository module](/docs/code-repository).**
 
-For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can create connectors at the account, organization, or project [scope](/docs/platform/role-based-access-control/rbac-in-harnes.md#permissions-hierarchy-scopes).
+For third-party SCM providers, you can create code repo connectors for entire accounts or specific repositories. You can create connectors at the account, organization, or project [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 The following topics provide more information about creating code repo connectors:
 
