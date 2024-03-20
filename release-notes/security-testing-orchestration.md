@@ -28,6 +28,19 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.87.4
 
+#### Fixed issues
+
+<!-- 2024-03-20 -->
+
+- Fixed a UI issue that prevented the Exemptions page from loading for some accounts. (STO-7266)
+
+- Implemented a UI fix to ensure that the STO UI correctly renders scanner output formatted in markdown. (STO-6881)
+
+- Improved UI wording in the Exemptions table when an exemption applies to multiple issues. (STO-6700)
+
+
+### Version 1.87.4
+
 #### New feature: Ingest Aqua Security assurance policy violations
 
 <!-- 2024-03-14 -->
