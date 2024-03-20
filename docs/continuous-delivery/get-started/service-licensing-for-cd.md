@@ -16,8 +16,8 @@ The CD service usage calculation uses the **Active Services** count and the numb
 
 ### What are Active Services?
 
-- When Harness deploys a service via a pipeline, the service is counted as an Active Service, in the last 30 days. Harness obtains all services that are part of any pipeline execution (deployment) over the past 30 Days. This represents the total Active Services consumed by an account.
-- When Harness deploys a GitOps Application, the GitOps Application is counted as an Active Service.e
+- When Harness deploys a service via a pipeline, the service is counted as an Active Service if the service is deployed not more than 30 days ago. Harness obtains all services that are part of any pipeline execution (deployment) over the past 30 Days. This represents the total Active Services consumed by an account.
+- When Harness deploys a GitOps Application, the GitOps Application is counted as an Active Service.
 - You can track Active Services in any month for your account by going to the Subscription page in the Harness UI.
 
 ### Where do I see my Active Service total? 
@@ -88,9 +88,8 @@ Services types that are calculated this way:
 
 
 ### Serverless Applications
-For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. For every
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. For every service types that are classified as a serverless application:
 
-Service types that are classified as a serverless application:
 
 - AWS Lambda
 - Google Cloud Functions
