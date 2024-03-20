@@ -261,7 +261,6 @@ policies:
         retention-period-units: year
 ```
 
-
 2. Filter to select all virtual machines that are not running:
 
 ```
