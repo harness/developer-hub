@@ -202,5 +202,5 @@ Use the Planning Insight to examine [sprint metrics](/docs/software-engineering-
 
 If you want to create a Sprints Metrics Insight refer to the below resources.
 
-* [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/insights/sprint-metrics-insighs)
+* [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/insights/sprint-metrics-insight)
 * [Sprint Metric Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
