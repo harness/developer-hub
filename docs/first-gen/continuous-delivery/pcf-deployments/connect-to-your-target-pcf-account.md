@@ -69,7 +69,7 @@ In **Environments**, click the name of the environment.
 
 Make sure the TAS user account is assigned Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications.
 
-For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Tanzu.
+For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/roles.html) from Tanzu.
 
 For steps on setting up all Cloud Providers, see [Add Cloud Providers](../../firstgen-platform/account/manage-connectors/cloud-providers.md).
 
