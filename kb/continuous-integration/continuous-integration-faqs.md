@@ -207,6 +207,33 @@ To debug this issue, investigate delegate connectivity in your VM build infrastr
 * [Verify connectivity for GCP VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform#verify-connectivity)
 * [Verify connectivity for Anka macOS VM build infra](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry#verify-connectivity)
 
+### User data isn't running on AWS Windows Server 2022 VM Pool
+
+Windows only runs User Data during initialization. To fix this, go to `C:\ProgramData\Amazon\EC2Launch\state` and delete the `.run-once` file. This file is generated after the Windows VM initializes. On startup Windows will check for this file and decide whether or not to run the User Data script. If this file is not present, Windows will run the User Data script.
+
+### How do I install Docker on Windows?
+
+To install Docker on Windows, you can run the below command
+
+```
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1
+```
+
+More information on this can be found in the [Microsoft Documentation](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).
+
+### Do I need to enable Hyper V for AWS Windows VM Pool?
+
+Hyper V is not required to run Harness Builds in a Windows VM Pool. Hyper V is a requirement for Docker Desktop and Docker Desktop is not required for Windows Self-Managed Build Infrastructure.
+
+### Do I need to install WSL for AWS Windows VM Pool?
+
+WSL is not required to run Harness Builds in a Windows VM Pool. WSL is a requirement for Docker Desktop and Docker Desktop is not required for Windows Self-Managed Build Infrastructure.
+
+### How do I check the logs for Windows Server 2022 when using EC2Launchv2
+
+Logs are generated in the `C:\ProgramData\Amazon\EC2Launch\log` directory for EC2Launchv2. To view startup logs, check the `C:\ProgramData\Amazon\EC2Launch\log\agent` file. For any errors check the `C:\ProgramData\Amazon\EC2Launch\log\err` file.
+
 ## Harness Cloud
 
 ### What is Harness Cloud?
