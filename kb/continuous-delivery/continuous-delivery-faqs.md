@@ -6379,7 +6379,7 @@ We cannot trigger all pipelines at once in an org or project.
 #### What is `allowSimultaneousDeployments`?
 In Harness, the `allowSimultaneousDeployments` setting in the infrastructure definition YAML file that controls whether multiple deployments can occur concurrently on the same infrastructure. When set to true, Harness permits simultaneous deployments, allowing multiple deployment pipelines to execute concurrently without waiting for each other to finish. Conversely, setting it to false restricts simultaneous deployments, ensuring that only one deployment can occur on the infrastructure at a time. This choice depends on specific deployment requirements and infrastructure capacity, as enabling simultaneous deployments can expedite the deployment process but may require careful consideration of performance and stability implications.
 
-#### Why am I unable to see Applications from a connected ArgoCD Project here?
+#### Why am I unable to see Applications from a connected ArgoCD Project?
 Please verify your RBAC permissions and project ID of the application in your application YAML in your cluster.
 
 #### How to create a Harness project from Terraform?
