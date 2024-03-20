@@ -354,6 +354,10 @@ kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.names
 
 This example does not apply to scaling down multiple deployments in the same namespace. If you use the example and you have multiple deployments in the same namespace it will impact multiple deployments. You should also include a label (or another matchSelector) specific to the particular deployment, so it doesn’t scale down all the blue deployments in the namespace. For example, match `blue` and `my-specific-app`.
 
+:::Important Behavior Change
+Harness used to scale down deployments, StatefulSets, DaemonSets, deploymentConfig, and delete HPA and PDB resources. During scale down, Harness updated the field replicas to 0. In Kubernetes, if HPA is configured, it is not mandatory to define replicas. So when another deployment happens and Harness applies the same old deployments manifest, it does not update the replicas field and remains 0. This results in no deployment even though the pipeline is successful. To resolve this, Harness now scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and StatefulSet resources. 
+:::
+
 ## Using Horizontal Pod Autoscaler (HPA)
 
 :::info
