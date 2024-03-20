@@ -6165,7 +6165,7 @@ You can create a OPA policy to ensure this.
 
 #### How to get all services using Harness API ?
 
- [API](https://apidocs.harness.io/tag/Monitored-Services#operation/getServices) you can use this to fetch the services in specfiic project
+You can use the [Monitored services API get services endpoint](https://apidocs.harness.io/tag/Monitored-Services#operation/getServices) to fetch the services in specific project, or you can use the [Services API get service list endpoint] (https://apidocs.harness.io/tag/Services#operation/getServiceList).
 
 ####  Getting error Invalid request: API rate limit exceeded for user ID 102833628. If you reach out to GitHub Support for help, please include the request ID D775:6578D3C5.
 
@@ -6223,4 +6223,4 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 #### How can one enable a dropdown box to display the list of versions available in a Google Cloud Storage bucket when using it as an Artifact source for a service?
 
-Harness does not support this feature yet. Please read more on GCS service in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#adding-a-cloud-function-service)
+Harness does not support this feature yet. Please read more on GCS service in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#adding-a-cloud-function-service).
