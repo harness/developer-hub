@@ -256,11 +256,11 @@ import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_ve
 <!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
 
 
-### Log Level, CLI flags, and Fail on Severity
+
 
 <a name="log-level"></a>
 
-#### Log Level
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -269,7 +269,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-#### Additional CLI flags
+### Additional CLI flags
 
 Use this field to run the Mend scanner with specific command-line arguments.
 
@@ -282,7 +282,7 @@ For example, you can save logs for STO-initiated scans in a separate folder on t
 
 TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
 
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';

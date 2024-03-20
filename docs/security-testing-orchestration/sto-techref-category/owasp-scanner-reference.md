@@ -137,7 +137,7 @@ Passing CLI flags is an advanced feature. Some flags might not work in the conte
 :::
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 

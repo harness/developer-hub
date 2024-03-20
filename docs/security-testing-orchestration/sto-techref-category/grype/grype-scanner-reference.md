@@ -201,14 +201,14 @@ import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto
 <StoSettingImageAccessToken />
 
 
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
 You can run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) with CLI arguments such as:
 
@@ -216,14 +216,12 @@ You can run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) w
 
 With this flag, `grype` reports only vulnerabilities that have known fixes. 
 
-:::caution
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
-
-:::
+<StoSettingCliFlagsCaution />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';

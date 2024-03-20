@@ -166,6 +166,31 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
+
+### Log Level
+
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
+<StoSettingLogLevel />
+
+
+### Additional CLI flags
+
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
+<StoSettingCliFlags />
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+
+### Fail on Severity
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
+<StoSettingFailOnSeverity />
+
 <!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Burp scans in STO (legacy)
@@ -251,7 +276,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';

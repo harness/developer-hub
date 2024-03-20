@@ -151,11 +151,11 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
 
 
 
-#### Log Level
+
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
@@ -163,14 +163,14 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 

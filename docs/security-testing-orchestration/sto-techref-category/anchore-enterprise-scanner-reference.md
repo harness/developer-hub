@@ -191,21 +191,25 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 For Extraction scans, the name of the image that you want to extract from Anchore. 
 
 
-### Log Level, CLI flags, and Fail on Severity
 
-#### Log Level
+
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
 You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `--force` to reset the image analysis status to `not_analyzed`.  
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-#### Fail on Severity
+<StoSettingCliFlagsCaution />
+
+
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 

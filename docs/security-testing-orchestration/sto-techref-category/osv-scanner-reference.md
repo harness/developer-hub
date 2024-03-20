@@ -108,7 +108,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 <!-- 
-### Log Level, CLI flags, and Fail on Severity
+
 -->
 
 ### Log Level

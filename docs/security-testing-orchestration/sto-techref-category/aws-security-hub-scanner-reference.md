@@ -100,24 +100,26 @@ Your AWS region.
 
 -->
 
-### Log Level, CLI flags, and Fail on Severity
 
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-#### Fail on Severity
+<StoSettingCliFlagsCaution />
+
+
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 

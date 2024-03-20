@@ -168,9 +168,9 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-### Log Level, CLI flags, and Fail on Severity
 
-#### Log Level
+
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -183,14 +183,14 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 <!-- ============================================================================= -->
 <a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
 You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: `-excluded-checks s3_bucket_public_access`
 
 <!-- ============================================================================= -->
 <a name="fail-on-severity"></a>
 
-#### Fail on Severity
+### Fail on Severity
 
 
 
