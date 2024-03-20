@@ -1,20 +1,20 @@
 ---
 title: Harness Platform FAQs
 description: Frequently asked questions about Harness Platform.
-# sidebar_position: 2
+sidebar_position: 2
 ---
-
-# Harness Platform FAQs
 
 ## Access Control
 
 ### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
 
-You can directly access the following URL. 
+Use the direct URL with the `accountId` for the desired account, such as:
 
-`https://app.harness.io/ng/account/xxxaccountidxxxx/settings/overview`
+```
+https://app.harness.io/ng/account/:accountId/settings/overview
+```
 
-This will direct you to your specific account. You can then sign in and change your default account.
+You can then sign in and change your default account from your profile.
 
 ### How do I sign out of Harness?
 
@@ -923,10 +923,7 @@ We don’t have an exact period for when these upgrades occur, but we maintain a
 
 ### Can we add Custom Selector in the Harness Delegate chart for legacy delegates?
 
-For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
-
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
-
+For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an [API to get and update selectors for the delegates](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api).
 
 ### Why the task_failed_total metric for delegate is not reporting data despite step failure?
 
@@ -938,18 +935,15 @@ The api call that we make for revoking the delegate token makes the delegate whi
 
 ### Do we provide customized docker images for delegate?
 
-We do not provide any customized docker images for delegates however we do have our delegate docker file in the public repo below. This can be used as a sample reference to add any utility to the image:
-```
-https://github.com/harness/delegate-dockerfile/tree/main
-```
+We do not provide any customized docker images for delegates; however, we have our [delegate docker file in the public Harness repo](https://github.com/harness/delegate-dockerfile/tree/main). This can be used as a sample reference to add any utility to the image:
 
 ### Can we use immutable delegate image in the statefulset deployment yaml for delegates?
 
 We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
 
-### Is there a way to enable more granular level for delegate logs?
+### Can I enable more granular delegate logs?
 
-We do not have additional log level settings for delegate than what it logs by default. 
+There are no additional (non-default) log level settings for delegates.
 
 ### Can we use custom temp space to be used by delegate?
 
@@ -968,12 +962,6 @@ The release of the Immutable Delegate version to SMP involves setting the `IMMUT
 ### If the DELEGATE_RESOURCE_THRESHOLD is set to zero, does the delegate reject all tasks?
 
 No, if `DELEGATE_RESOURCE_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection. Also, we have the default `DELEGATE_RESOURCE_THRESHOLD` value as 80.
-
-### Can we add Custom Selector in the harness delegate chart for legacy delegates?
-
-For legacy delegates we do not have a way to specify delegate selector or delegate tags in the delegate helm chart. We do have an api to get the selectors as well as update it for the delegates. More details can be found here:
-
-https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-delegate-selector-api/
 
 ### How do I inspect my certificates for delegate certificate issues? 
 
@@ -1014,25 +1002,9 @@ docker run  --cpus=1 --memory=2g \
 
 The task failed is when something unhandled happens, like a NPE in a task or issue at framework level. A valid failure like shell script exited with error code is not a task failure. Prometheus only shows the metric which are at least once recorded.
 
-### Why do we need core_delegate_delete permission for revoking delegate token?
-
-The api call that we make for  revoking the delegate token makes the delegate which are using it not register anymore and hence delete delegate permission is required for revoking the token as well.
-
-### Do we provide customized docker images for delegate?
-
-We do not provide any customized docker images for delegates however we do have our delegate docker file in the public repo below. This can be used as a sample reference to add any utility to the image:
-```
-https://github.com/harness/delegate-dockerfile/tree/main
-```
-
 ### Can we use immutable delegate image in the statefulset deployment yaml for delegates ?  
 
 We can not use immutable delegate image in the statefulset deployment yaml that we had for legacy delegates. Both the delegates are architecturally different. The immutable delegates must be used with their own deployment yaml.
-
-
-### Is there a way to enable more granular level for delegate logs?
-
-We do not have additional log level settings for delegate than what it logs by default.
 
 ### Delegate fails to register with handshake exceptions. 
 
@@ -2758,17 +2730,7 @@ Authorization is used for group mapping. It's optional and not required for SSO 
 
 Both the Harness Delegate & SaaS support TLS 1.3, the default TLS version. It is worth noting that each specific task implementation can create its own separate HTTP client, which can advertise any TLS version of its choice. The connector check uses the task-specific HTTP client rather than the delegate's HTTP client. Some tasks prefer to use TLSv1.2 in certain use cases, perhaps due to legacy reasons. However, it is possible that this might change in the future, and full TLS 1.3 support might eventually be rolled out. As of now, certain connectors still prefer TLS 1.2.
 
-
-
-
-
-
 ## Settings
-
-
-### How do I sign out of Harness?
-
-Select **My profile** on the bottom left, and then select **Sign Out**.
 
 ### Is it possible to change the company name for my Harness Account?
 
@@ -2971,10 +2933,6 @@ To create an input variable as a checkbox, use allowed values to provide a fixed
 
 To replace the service name with a Harness variable, use `<+service.name>`.
 
-### What's the Harness variable replacement for a service name?
-
-For this scenario, you can use the following variable: `<+service.name>`
-
 ### How should complex expressions be correctly utilized?
 
 When using a complex expression, ensure the expression is wrapped within `<+ >`. For example: `<+<+org.name>.toLowerCase()>/<+<+project.name>.toLowerCase()>>`.
@@ -2989,7 +2947,7 @@ They are a way to refer to something in Harness such as an entity name or a conf
 
 ### What is the correct syntax for the Regex Extract build-in variable?
 
-'''regex.extract("v[0-9]+.[0-9]+", artifact.fileName)''' is the correct syntax
+`regex.extract("v[0-9]+.[0-9]+", artifact.fileName)` is the correct syntax
 
 ### What are the statuses of nodes using the Harness looping Strategy?
 
