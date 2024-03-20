@@ -9,6 +9,8 @@ sidebar_position: 10
 
 The Lead Time calculation measures the total time taken from the moment a ticket is created to the point when it is released to production. Below are various use cases that demonstrate how Lead Time is calculated across different scenarios. 
 
+To learn more, go to [DORA Reports](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
+
 ### Calculation Example 1: One Pull Request associated with a Single Jira Ticket
 
 <img
