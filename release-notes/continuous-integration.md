@@ -43,8 +43,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### Fixed issues
 
-* (CI-8607)
-* (CI-11651)
+Fixed an issue with fallback handling when [splitting tests](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) by `testcase_timing`, `testsuite_timing`, or `class_timing`. (CI-11651)
 
 ### Version 1.18.2
 
