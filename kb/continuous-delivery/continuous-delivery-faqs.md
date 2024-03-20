@@ -6368,44 +6368,44 @@ Please read more on this in the following [Documentation](https://developer.harn
 Harness does not support this feature yet. Please read more on GCS service in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#adding-a-cloud-function-service)
 
 #### What is the harness variable replacement for a service name?
-The variable expression for the Service name in harness is given as <+service.name>
+The variable expression for the Service name in Harness is given as `<+service.name>`.
 
 #### Can I copy an existing connector?
-No, you will not be able to copy the connector but you can copy the connector yaml. 
+No, you will not be able to copy the connector but you can copy the connector YAML. 
 
 #### Can we trigger all executions in all organizations?
 We cannot trigger all pipelines at once in an org or project.
 
-#### What is allowSimultaneousDeployments
-In Harness, the allowSimultaneousDeployments setting in the infrastructure definition YAML file controls whether multiple deployments can occur concurrently on the same infrastructure. When set to true, Harness permits simultaneous deployments, allowing multiple deployment pipelines to execute concurrently without waiting for each other to finish. Conversely, setting it to false restricts simultaneous deployments, ensuring that only one deployment can occur on the infrastructure at a time. This choice depends on specific deployment requirements and infrastructure capacity, as enabling simultaneous deployments can expedite the deployment process but may require careful consideration of performance and stability implications.
+#### What is `allowSimultaneousDeployments`?
+In Harness, the `allowSimultaneousDeployments` setting in the infrastructure definition YAML file that controls whether multiple deployments can occur concurrently on the same infrastructure. When set to true, Harness permits simultaneous deployments, allowing multiple deployment pipelines to execute concurrently without waiting for each other to finish. Conversely, setting it to false restricts simultaneous deployments, ensuring that only one deployment can occur on the infrastructure at a time. This choice depends on specific deployment requirements and infrastructure capacity, as enabling simultaneous deployments can expedite the deployment process but may require careful consideration of performance and stability implications.
 
 #### Why am I unable to see Applications from a connected ArgoCD Project here?
-Please verify your RBAC permissions and project ID of application in your application yaml in your cluster
+Please verify your RBAC permissions and project ID of the application in your application YAML in your cluster.
 
 #### How to create a Harness project from Terraform?
-You need to prepare a whole terraform script of the resources you want to create in your project. Before that, if you want to create a project with Terraform in an org then you need to set up all the required resources using the Terraform provider script.  You can reference the terraform resources from our harness terraform provider doc -[API] (https://registry.terraform.io/providers/harness/harness/latest/docs)
+You need to prepare a Terraform script of the resources you want to create in your project. Before that, if you want to create a project with Terraform in an org then you need to set up all the required resources using the Terraform Provider script.  You can reference the Terraform resources from the [Harness Terraform Provider API documentation](https://registry.terraform.io/providers/harness/harness/latest/docs).
 
-#### What is a Matrix looping strategy?
+#### What is a matrix looping strategy?
 A matrix is a looping strategy in Harness that iterates over a series of elements. It can be used in stages or steps to repeat a set of actions for each element in the matrix. Matrices can be one-dimensional or multi-dimensional and can be customized with maxConcurrency and nodeName settings. You can use expressions to reference matrix values in your steps. The current status and live status expressions can be used to retrieve the current execution status of looping strategies for nodes in a pipeline or stage. The Git Experience in NextGen supports storing matrix configurations in a Git repository.
 
-Sources: https://developer.harness.io/docs/platform/pipelines/looping-strategies/additional-matrix-examples https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables [API] (https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)"
+Sources: [Additional matrix examples](https://developer.harness.io/docs/platform/pipelines/looping-strategies/additional-matrix-examples), [Harness variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables), [API] (https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
-#### What is ingress.yaml used for
+#### What is ingress.yaml used for?
 An ingress.yaml file in Kubernetes serves as a configuration blueprint for managing Ingress resources, which control external access to services within the cluster. These files contain settings defining rules for routing incoming HTTP and HTTPS traffic based on specified criteria such as hostnames and URL paths. Typically structured in YAML format, an ingress.yaml file outlines how requests from external sources are directed to different services within the Kubernetes cluster. This includes specifying which services handle traffic for particular hostnames or paths, along with any necessary configurations such as load balancing or SSL termination. In essence, ingress.yaml files provide a way to centrally manage and define the ingress behaviour for applications running in a Kubernetes environment, facilitating efficient routing and external access control.
 
 #### Does the change in config trigger deployment again?
-If you have setup a webhook trigger then yes for the push event if the config changed is of pipeline and GitEx project
+If you have setup a webhook trigger, then yes for the push event if the config changed is of the pipeline and GitEx project.
 
-#### Is there any harness API to know the status of connectors like bitbucket and artifactory as such? Because for any reason if the last check is failed the connector connection seems stale further?
-You can check the status of the connector using this API call mentioned in our API doc to check if a Connector can successfully connect Harness to a third-party tool using the an Account and Connector ID.  -  [API] (https://apidocs.harness.io/tag/Connectors#operation/validateTheIdentifierIsUnique)
+#### Is there any harness API to know the status of connectors like Bitbucket and Artifactory as such? Because for any reason if the last check is failed, the connector connection seems stale further?
+You can check the status of the connector using the [API] (https://apidocs.harness.io/tag/Connectors#operation/validateTheIdentifierIsUnique) call to check if a Connector can successfully connect Harness to a third-party tool using the an Account and Connector ID.
 
-#### How can we export users from the harness?
-To export users from Harness, you can utilize our API method getUsers. Currently, we do not support a direct functionality for exporting all users. [API] (https://apidocs.harness.io/tag/User#operation/getUsers)
+#### How can we export users from the Harness?
+To export users from Harness, you can utilize our API method `getUsers`. Currently, we do not support a direct functionality for exporting all users. Go to [getUsers API] (https://apidocs.harness.io/tag/User#operation/getUsers) for more details.
 
-#### How to get all services using the curl command?
-You can get a list of all services using the curl command. Which is mentioned in our API doc. Link for the reference -[API]  (https://apidocs.harness.io/tag/Services#operation/getServiceList)
+#### How to get all services using the CURL command?
+You can get a list of all services using the CURL command. Go to our [API docs]  (https://apidocs.harness.io/tag/Services#operation/getServiceList) for more details.
 
-#### Write a policy which restricts the buildandpushgcr, buildandpushacr and buildandpushgar step types.
+#### Write a policy which restricts the `buildandpushgcr`, `buildandpushacr` and `buildandpushgar` step types.
 "package pipeline
 
 ```deny[msg] {
@@ -6417,13 +6417,13 @@ You can get a list of all services using the curl command. Which is mentioned in
     msg = sprintf(""Step type '%s' is not allowed in this pipeline"", [step.type])
 }"
 ```
-#### Can we turn off storage and logging from google apis?
+#### Can we turn off storage and logging from Google APIs?
 In Google Cloud Platform (GCP), while it's not always possible to completely disable storage and logging functionalities for specific APIs, you can exercise granular control over them. For instance, in Google Cloud Storage (GCS), you can manage access permissions for buckets and set up lifecycle policies to control data retention. Similarly, in Google Cloud Logging, you can't entirely turn off logging, but you can filter log entries, manage log retention periods, and export logs to external destinations. Utilizing IAM permissions, configuring lifecycle policies, and implementing log filtering mechanisms allow you to effectively manage storage and logging while aligning with your organization's security and compliance requirements. Regular monitoring and auditing of these configurations ensure they continue to meet your organization's needs.
 
-#### Can I pull in environment files from git?
-It is not possible to pull the environment yaml file from git. Import from git feature is not yet available for service and Environment for GITEX 
+#### Can I pull in environment files from Git?
+It is not possible to pull the environment YAML file from Git. Import from Git feature is not yet available for service and Environment for GitEx. 
 
-#### I need an asset governance rule to take the value from the tag "ApplicationID" and copy it to the new tag "AppID"
+#### I need an asset governance rule to take the value from the tag "ApplicationID" and copy it to the new tag "AppID".
 We cannot copy a tag value, but we can update the tag value with a new one.
 
 #### JEXL to skip an item in repeat looping strategy?
@@ -6439,7 +6439,7 @@ In this example, the if condition checks if the current iteration is not equal t
 
 
 #### How to create a Harness expression that formats an integer to datetime?
-"There is no specific Harness expression to format an integer to datetime. However, you can use Java's SimpleDateFormat class to format a date and time string from an integer value. Here's an example expression that formats an integer value to a date and time string:
+There is no specific Harness expression to format an integer to datetime. However, you can use Java's SimpleDateFormat class to format a date and time string from an integer value. Here's an example expression that formats an integer value to a date and time string:
 
 ```<+new java.text.SimpleDateFormat(""yyyy-MM-dd HH:mm:ss"").format(new java.util.Date(<+pipeline.variables.my_integer_variable>))>```
 Replace my_integer_variable with the name of your integer variable. This expression uses the SimpleDateFormat class to format the integer value as a date and time string in the format ""yyyy-MM-dd HH:mm:ss""."
@@ -6457,7 +6457,7 @@ msg := sprintf("Execution not allowed for the pipeline '%s' ", [input.pipeline.n
 
 #### Why is core_secret_access necessary for deploying pipelines? What does granting this permission mean? Will it enable access to secret contents?
 The core_secret_access permission is crucial for users to deploy pipelines in Harness. However, granting this permission does not automatically provide access to view the contents of secrets. Instead, it allows users to access the secrets for utilization within pipelines and other components of the Harness platform.
-For further details regarding permissions, please refer to the API Permissions Reference(https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/).
+For further details regarding permissions, go to [API Permissions Reference](https://developer.harness.io/docs/platform/automation/api/api-permissions-reference/).
 
 #### Can a service account email be used to log in through the Harness UI?
 No, service account emails cannot be utilized for logging into the Harness UI. Service accounts are specifically designed for programmatic access to Harness resources and are not intended or configured for UI login purposes.
@@ -6466,8 +6466,7 @@ No, service account emails cannot be utilized for logging into the Harness UI. S
 Yes, when a Harness webhook is triggered by a pull request, you can identify the modified files within the event payload under the "changedFiles" key. To access this information, navigate to Trigger > Activity History within Harness.
 
 #### We need an option of kubectl replace command in kubernetes Rolling Deployment? 
-Unfortunately, at present, this feature is not available in the Harness Platform but I wanted to inform you that we have created an enhancement request for this on our idea portal (Need an option of kubectl replace command in kubernetes Rolling Deployment)
-Link to the post from the idea portal: https://harness-io.canny.io/continuous-delivery/p/need-an-option-of-kubectl-replace-command-in-kubernetes-rolling-deployment
+Unfortunately, at present, this feature is not available in the Harness Platform but I wanted to inform you that we have created an enhancement request for this on our [idea portal: Need an option of kubectl replace command in kubernetes Rolling Deployment](https://harness-io.canny.io/continuous-delivery/p/need-an-option-of-kubectl-replace-command-in-kubernetes-rolling-deployment).
 
 #### What is the recommended way to name Kubernetes jobs in Harness pipelines when using Rolling Deployment and native Helm deployment for the same chart?
 When deploying Kubernetes jobs in Harness pipelines, especially when utilizing Rolling Deployment alongside native Helm deployment for the same chart, it's essential to adopt a consistent naming convention for jobs to ensure successful tracking and management. While applying a unique suffix such as {{ now | unixEpoch }} can facilitate parallel job execution during Rolling Deployment, it can lead to tracking issues when Helm renders the chart with a different job name.
@@ -6479,11 +6478,11 @@ For Native Helm deployment, it's advisable to utilize a name that remains consis
 Yes, you can save an existing pipeline as a template in Harness. Simply navigate to the Pipeline Studio of the desired pipeline, and click on the dropdown menu beside the Save button in the top right corner. Then, select "Save as Template."
 
 #### How can I configure the delegate to utilize a new version of the Helm binary?
-To integrate a new version of the Helm binary with the delegate, please adhere to the following instructions:
-Install the New Helm Binary: Begin by installing the desired version of the Helm binary on the delegate machine.
-Set HELM3_PATH Environment Variable: Configure the HELM3_PATH environment variable to point to the location of the newly installed Helm binary. This can be accomplished by adding the following lines to the delegate's YAML file:
+To integrate a new version of the Helm binary with the delegate, adhere to the following instructions:
+1. Install the New Helm Binary: Begin by installing the desired version of the Helm binary on the delegate machine.
+2. Set HELM3_PATH Environment Variable: Configure the HELM3_PATH environment variable to point to the location of the newly installed Helm binary. This can be accomplished by adding the following lines to the delegate's YAML file:
 - name: HELM3_PATH
   value: /path/to/new/helm/binary
-Replace /path/to/new/helm/binary with the actual path to the newly installed Helm binary.
-Restart the Delegate: To apply the changes, restart the delegate to ensure that it recognizes the updated configuration and utilizes the specified version of the Helm binary effectively.
+3. Replace /path/to/new/helm/binary with the actual path to the newly installed Helm binary.
+4. Restart the Delegate: To apply the changes, restart the delegate to ensure that it recognizes the updated configuration and utilizes the specified version of the Helm binary effectively.
 By following these steps, you can seamlessly configure the delegate to utilize the new version of the Helm binary for your deployment needs.
