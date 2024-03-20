@@ -70,6 +70,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
  - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
 
+### Python SDK
+
+#### Version 1.5.0
+
+ - This update keeps track of targets that have been used in evaluations. It will no loner send targets already seen in the mtrics payload. This allows for fair processing of new targets for analytics purposes. (FFM-10837) 
+ - The following bugs have been fixed:
+ -- We've resolved an issue where if a target was marked as `anonymous`, it would be sent in analytics.  
+ -- We've also fixed the typing of `get_flag_kind` method. 
+
 ### React SDK
 
 #### Version 1.10.0
