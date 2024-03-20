@@ -25,7 +25,7 @@ If you are currently on version 0.14.3, you must follow the applicable upgrade p
 
 You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.14.4.
 
-**Upgrade using Helm to version 0.12.1 OR 0.13.4**
+**Upgrade using Helm to version 0.12.1, 0.13.4, or 0.14.14**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
