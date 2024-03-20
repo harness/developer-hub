@@ -17,14 +17,9 @@ The primary way to access Insights is through the **Insights** tab.
 
 1. Log in to the Harness Platform and go to the SEI module.
 2. Go the **Project** scope and select your project.
-3. Select the **Insights** tab on the navigation menu, and select a **Collection Category**.
-4. Select a **Collection**.
+3. Select the **Insights** tab on the navigation menu. <br /> <br />You will be automatically directed to the first Collection and the associated Insight. Note that for the existing logged-in users, SEI maintains the latest state and automatically redirects you to the most recently viewed Collection and Insight.
 
-![](./static/select-collection-category.png)
-
-4. Select the **Insight** from the available list.
-
-![](./static/select-insight.png)
+![](./static/manage-insight.png)
 
    Select **Manage Insights** to view all the Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
 
@@ -63,30 +58,32 @@ Some widgets allow you to drill down into data. For example, you can select a se
 
 ![](./static/manage-insights.png)
 
-3. Select a **Collection category**.
-4. Select a **Collection**. Upon selecting a Collection, the Insight you selected from the **Insights** list opens.
+3. You can change the Collection using the Collection navigation header at the top of the Insight.
+4. Select a **Collection**. Upon selecting a Collection, the current Insight opens up under the selected Collection heirarchy.
 
 ## Create Insights
 
-1. Go to any Insight. For instructions, go to [View Insights](#view-insights).
-2. In the header, select **All Insights**, and then select **Manage Insights**.
-3. Select **New Insight**.
+1. Log in to the **Harness Platform** and go to the SEI module.
+2. Go the **Project** scope and select your **Project**.
+3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
 
 ![](./static/create-insight.png)
 
-4. Enter a **Name** for the Insight.
-5. Under **Parameters**, you can modify the following settings:
+4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
+5. In the header, select **All Insights**, and then select **Manage Insights**.
+6. Select **Create Insight**.
+
+![](./static/insight-settings.png)
+
+7. Enter a **Name** for the Insight.
+8. Under **Parameters**, you can modify the following settings:
 
    * **Insight Time Range:** You can enable Insight time, which is the time range selected by the user when viewing an Insight.
    * **Effort Investment Profile** and **Effort Investment Units** are used for [Business Alignment Insights](#business-alignment) and [DORA Metrics Insights](#dora-metrics).
 
-6. Select at least one Collection category to associate with this Insight.
+9.  Select at least one Collection category to associate with this Insight. <br /> <br /> All [Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation. <br /> <br />If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu.
 
-   All [Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
-
-   If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu.
-
-7. Select **Create** to save the Insight metadata. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations).
+10. Select **Create** to save the Insight metadata. From here, you can [add reports](#add-reports) or modify the Insight settings, such as [Insights associations](#manage-insights-associations).
 
 ### Add reports
 
@@ -139,6 +136,8 @@ Harness SEI has three built-in user roles:
 
 For more information about authentication, access, and user management, go to the following:
 
+* [RBAC in Harness SEI](/docs/software-engineering-insights/access-control/sei-roles-and-permissions)
+* [Manage Access Control for SEI Insights](/docs/software-engineering-insights/access-control/manage-access-control-for-insights)
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness RBAC overview](/docs/platform/role-based-access-control/rbac-in-harness)
 
@@ -156,16 +155,21 @@ The following five Insights are the most frequently used on SEI:
 
 Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
 
-If you want to create a DORA Metrics Insights:
+If you want to create a DORA Metrics Insight refer to the below resoures.
 
-1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add reports for [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
+* [Tutorial: Create a DORA Metrics Insight](/docs/software-engineering-insights/insights/dora-insight)
+* [DORA Metrics Reports](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 
 ### Dev Insights
 
 Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
 For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+
+If you want to create a Developer i.e. SCM Metrics Insight refer to the below resources.
+
+* [Tutorial: Create a Developer / SCM Metrics Insight](/docs/software-engineering-insights/insights/developer-insight)
+* [SCM Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports) 
 
 ![](./static/dev-insights.png)
 
@@ -187,6 +191,16 @@ If you want to create additional Business Alignment Insights, select the **Effor
 
 Use the Trellis Insight to examine [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
 
+If you want to create a Trellis Insight refer to the below resources.
+
+* [Tutorial: Create a Trellis Metrics Insight](/docs/software-engineering-insights/insights/trellis-insight)
+* [Trellis Reports](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score)
+
 ### Planning Insights
 
 Use the Planning Insight to examine [sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).
+
+If you want to create a Sprints Metrics Insight refer to the below resources.
+
+* [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/insights/sprint-metrics-insighs)
+* [Sprint Metric Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
