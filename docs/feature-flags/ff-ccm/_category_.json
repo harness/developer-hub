@@ -1,0 +1,11 @@
+{
+    "label": "Cloud Cost Management with Feature Flags",
+    "position": 40,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Cloud Cost Management with Feature Flags"
+    }
+}
