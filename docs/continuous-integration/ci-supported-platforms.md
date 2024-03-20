@@ -21,7 +21,7 @@ For highlights of key CI features, go to [Harness CI overview](/docs/continuous-
 
 For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration).
 
-## Harness CI early access features
+### Harness CI early access features
 
 Some Harness CI features are released behind feature flags to get feedback from a subset of customers before releasing the features to general availability.
 
@@ -29,17 +29,15 @@ You can opt-in to the early access (beta) features for Harness CI described in t
 
 For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
 
-Features promoted to general availability (GA) are removed from this list and announced as new features in the [CI release notes](/release-notes/continuous-integration).
-
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |
+| `CI_SECURE_TUNNEL` | Secure Connect for Harness Cloud (CI-8922).<br/>[Secure Connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. | Beta |
+| `CI_CODEBASE_SELECTOR` | Delegate selectors for codebase tasks (CI-9980).<br/>Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.<br/>With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector). | Beta |
+| `CI_CACHE_INTELLIGENCE` | Cache Intelligence in the Visual editor (CI-8571, CI-8917).<br/>You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.<br/>**Update (August 2023):** You can now also configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could enable Cache Intelligence through the Visual editor, but you had to configure it in the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure. | Beta |
+| `CI_LE_STATUS_REST_ENABLED` | Send status updates to Harness Manager directly by HTTP (CI-8338).<br/>This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a delegate.<br/>**Update (July 2023):** This feature was rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. | Beta |
+| `CI_OUTPUT_VARIABLES_AS_ENV` | Output variables automatically become environment variables (CI-7817, ZD-39203).<br/>With this feature flag enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three.<br/>In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.<br/>For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
+| `CI_REMOTE_DEBUG` | Remote debugging (CI-8135, CI-8048)<br/>Harness CI now supports remote debugging in certain scenarios. You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to [Debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode).<br/>**Update (June 2023):** Debug mode now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. For more information, go to [Debug with SSH](/docs/continuous-integration/troubleshoot-ci/debug-mode) | Beta |
 |  |  |  |
 |  |  |  |
 |  |  |  |
@@ -48,3 +46,14 @@ Features promoted to general availability (GA) are removed from this list and an
 |  |  |  |
 |  |  |  |
 
+### Harness CI features promoted to GA
+
+Features promoted to general availability (GA) are removed from the early access features table and announced as new features in the [CI release notes](/release-notes/continuous-integration). The CI release notes also include features released directly to GA.
+
+Here are some CI early access features that were recently promoted to GA:
+
+| Flag | Description | GA date |
+| ---  | ----------- | ------- |
+| `CDS_GITHUB_APP_AUTHENTICATION` | GitHub App authentication for GitHub connectors (CI-8577).<br/>You can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings). | December 2023 |
+| `CI_AI_ENHANCED_REMEDIATIONS` | Harness AI Development Assistant (AIDA:tm:) for CI (CI-8599, CI-8735, CI-9102).<br/>The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.<br/>In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step.<br/>For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida). | October 2023 |
+| `CI_DOCKER_INFRASTRUCTURE` | Local runner build infrastructure (CI-5680)<br/>A Harness Docker delegate that you can install directly on a host. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure). | Early 2023 |
