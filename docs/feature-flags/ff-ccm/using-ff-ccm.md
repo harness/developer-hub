@@ -30,6 +30,8 @@ We've also added an additional feature to the Cloud Cost Monitoring tool. There 
 
 ![The "Monitoring" status within Cloud Cost Monitoring](./static/ff-ccm-monitoring_status.png)
 
+# Setting Up Cloud Cost Management in Feature Flags
+
 ## How To Set Up The CCM Feature For Your Environments
 
  1. On the Home Page of the Harness Application, select *Environmentss*.
@@ -55,7 +57,9 @@ If you haven't already created any Feature Flags, do follow the [Harness 'Create
 
 To set up your Cloud Provider with your account, follow the instructions which aligns with your Cloud Provider: 
 
-### Setting Up For AWS
+## Setting Up Cloud Cost Management With Your Cloud Providers
+
+### Connect CCM For AWS
 
 #### AWS Connector requirements
 
@@ -100,9 +104,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-### Connect CCM to your AWS account
-
-#### Set up CCM for AWS
+#### Set Up CCM for AWS
 
 To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
 
@@ -338,7 +340,7 @@ Resources can be adjusted proportionally based on number of nodes in the cluster
   * 1m core per node
   * 2MiB memory per node
 
-### Connect Your Kubernetes Cluster to CCM
+#### Connect Your Kubernetes Cluster to CCM
 
 Perform the following steps to connect your Kubernetes cluster to CCM.
 
