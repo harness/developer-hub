@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 20th 2024
+### Latest Updated: March 21st 2024
 
 ## March 2024
 
@@ -74,6 +74,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
  - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
+
+### Node.js SDK
+
+#### Version 1.6.1
+
+ - We have fixed an issue that resulted in metrics requests failling and displaying a `400: Bad Request` error message. (FFM-10963)
+ - We've upgraded Axios to 1.6.8 to address a [CVE]( https://security.snyk.io/package/npm/follow-redirects/1.15.5) that highlighted known vulnerabilities in the `follow-redirects` package.
 
 ### Python SDK
 
