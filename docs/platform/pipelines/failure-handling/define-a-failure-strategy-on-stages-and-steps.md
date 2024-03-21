@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps
+  - /docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps
   - /docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings
+  - /docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings
 ---
 
 A failure strategy defines how steps, stages, and step groups handle different failure conditions.
