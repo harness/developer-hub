@@ -162,9 +162,3 @@ You can delete an AutoStopping rule from the Summary of Rules Page or from the d
 
    ![](./static/autostopping-dashboard-49.png)
 
-
-:::important note
-- There's no limit on max number of dependencies for a rule. 
-- For RDS, warm up time is dependent on cluster(or instance) size. RDS warm up can take up to ~25 minutes. For other resources, warm up will be completed under 2 minutes and max of 5 minutes.
-:::
-:::
