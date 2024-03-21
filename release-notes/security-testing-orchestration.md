@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-### Version 1.87.4
+### Version 1.88.2
 
 #### Fixed issues
 
