@@ -6417,7 +6417,7 @@ The output of the pipeline execution can be reetrieved through SubGraph API as d
 
 Each nodemap corresponds to a stage in the execution and the output variables along with the values shall be available under the "outcomes" field under "nodemap". 
 
-#### How to Find Node and plan execution id of a pipeline execution?
+#### How do I find node and plan execution ids of a pipeline execution?
 
 Node and plan execution ids may be required to fetch details about an execution and query the API for results. 
 Plan execution id is specific to a pipeline execution and can be found in the url of the pipeline execution /executions/R0CWuTW8T6Gl7BcshaJpxQ
