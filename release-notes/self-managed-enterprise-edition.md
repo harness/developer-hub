@@ -67,6 +67,266 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+## March xx, 2024, version 0.15.x
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.15.x](https://github.com/harness/helm-charts/releases/tag/harness-0.15.x) |
+| Air Gap Bundle | [0.15.x](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.x) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.1 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.4 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.15.x/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.x/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+#### Continuous Delivery
+
+- We enhanced the resolution of the working directory. Now you can determine the working directory based on environment variables. This includes variables provided in shell script steps through input variables, as well as those from the host's environment variables. (CDS-87446)
+
+- We've introduced a new expression that explicitly provides the trigger name used to initiate the execution. You can now utilize `<+pipeline.triggeredBy.triggerDisplayName>` to access this information. (CDS-87696)
+
+- If a feature flag is turned on for a module it will now appear in the module selector for the new navigation experience. (CDS-85185)
+
+#### Continuous Integration
+
+- Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
+
+- Increased the timeout limit for stage initialization to 30 minutes when using Harness Cloud build infrastructure. (CI-11071)
+
+- Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10938)
+
+- The error message text for the `no eligible delegates present` error now includes additional potential causes. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10933, ZD-55977)
+
+- To help identify pods that aren't cleaned up after a build, pod deletion logs now include the cluster endpoint targeted for deletion and the pod identifier, namespace, and API endpoint response for pods that can't be located for deletion. (CI-10636, ZD-54688)
+
+#### Harness Platform
+
+#### Security Testing Orchestration
+
+- AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
+
+
+
+
+
+
+### Fixed issues
+
+#### Continuous Delivery
+
+- Adding config files or manifests in a Custom stage, the environment step threw an error, `UnsupportedOperationException: Not inside service step or one of it's children`. (CDS-92218, ZD-58321)
+
+- For Slack and Microsoft Teams, if webhook URLs were provided as secret expressions like `<+secrets.getValue("account.slackUrl")>`, the Harness approval notifications didn't work. (CDS-92077, ZD-58153)
+
+- Creating a Terraform service override returned the error, `ServiceOverride already exists`. (CDS-92071, ZD-58189)
+
+- Fixed inconsistent date format in the Harness UI. (CDS-91975, ZD-58220)
+  
+  The timestamps in Step and Stage pop-up in the Execution page appeared in a different format compared to the format used in Step Details and Step Logs panes. Now, Harness uses the same format throughout the UI.
+
+- Fixed inconsistent date format in the Harness UI. (CDS-91975, ZD-58220)
+  
+  The timestamps in Step and Stage pop-up in the Execution page appeared in a different format compared to the format used in Step Details and Step Logs panes. Now, Harness uses the same format throughout the UI.
+
+- During pipeline execution, nodes from CD details page did not appear consistently before starting the Verify step even if the Node from CD checkbox was selected. (CDS-91960)
+
+- The Amazon Autoscaling Groups (ASG) deployment failed due to load balancer failure. (CDS-91888)
+  
+  This issue occurred for old ASGs where the target groups health check failed. Target groups health check was not performed when updating the old ASGs as well as during the instance refresh. This issue is now fixed.
+
+- Updated the Canary deployment Scale step behavior to publish all workload pods as new pods after the step is run. The Scale step is now used to scale pods as well as change traffic on the pods. (CDS-91534, ZD-54319)
+
+- ECS services got deleted after the first or second deployment in the ECS Blue Green deployment. (CDS-91499, ZD-57892)
+
+  The issue is fixed by adding a condition for active service status.
+
+- The **Deploy environments and infrastructure in parallel** checkbox was missing for filtered list when using multi-environments. (CDS-91472)
+  
+  This issue is fixed by adding this option for filtered lists.
+
+- The Include Infrastructure Selector option was missing in the SSH step template. (CDS-91396, ZD-57775)
+  
+  This issue is fixed by adding the Include Infrastructure Selector field in the Shell Script step and step group templates (for CD deployments) and other templates based on the deployment type.
+
+- The chained pipeline's input section in the Harness UI did not have the option to fetch manifests from the Git store for runtime config fields. (CDS-91387, ZD-57687)
+
+  This issue is fixed now and you should be able to set the defaults correctly.
+
+- Codeblocks embedded in the Support AI replies were not rendering correctly. (CDS-91364)
+
+  This issue is fixed now.
+
+- Moving a stage in the Step Details panel moved the step details panel for other stages as well.(CDS-91351)
+
+  The steps graph in the Execution View is now updated to auto-reset its position when a different stage is selected.
+
+- The Subscriptions card under the CD Activity & Usage page's Trend tab was not loading properly. (CDS-91344)
+  
+  The date API call got cancelled when its component was being mounted causing this issue. This issue is fixed by making the date API call only after the component was mounted. 
+
+  The error handling is also improved by displaying a proper error message as part of the failed API response. On instances where a proper message is not present, `Something went wrong` message appears by default.
+
+- Artifactory and Git connectors did not honor Secrets Manager selector. (CDS-91300, ZD-57541)
+
+  These connectors did not check the connectivity to the Secrets Manager. Hence, the secrets were not getting resolved on the delegate. This issue is fixed. Now, the connection test also checks if the Secrets Manager is accessible. 
+  
+  This fix is behind the feature flag, `CDS_SERVICE_AND_INFRA_STEP_DELEGATE_SELECTOR_PRECEDENCE`. To enable this fix, contact [Harness Support](mailto:support@harness.io). 
+
+- Users were unable to create custom queries that are nor part of the APM metrics as a heath source for monitored services. (CDS-91181, ZD-57562)
+  
+  This issue is fixed by making the service instance field configurable for users.
+
+  This item requires Harness Delegate version 24.02.82402. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
+
+- The Input Set Page breaks while editing the input set when the service input fields have been updated. Now the page will render with the input set YAML. (CDS-91095, ZD-57487)
+
+- Fixed an issue where a Targeted Hosts field was not populated in the case of execution input.  (CDS-91071)
+
+- Fixed an issue where the pipeline failed to execute when remote infrastructure was used with a multi-environment deployment. (CDS-90985, ZD-57420)
+
+- Single-service, multi-environment, multi-cluster deployments done using a GitOps PR pipeline rejected some of the clusters. (CDS-90942)
+
+  The issue is fixed now.
+
+- Harness did not display dynamically provisioned infrastructure inputs when the input field was set as runtime. (CDS-90757)
+  
+  This issue is fixed. The provisioner runtime input field now appears in the infrastructure input card.
+
+- Template settings were not visible in the new Organisation and Account settings navigation page. (CDS-89746, ZD-57373)
+
+  In the new navigation page, the Settings cards for specific modules were previously hidden when the corresponding module's license was absent. The issue is fixed. The Organization and Account navigation page is now modified to display all Settings cards regardless of the license status.
+
+- Log verification step failed due to a parsing error. (CDS-89622)
+  
+  This issue occurred because the string-to-time conversion function in the ANTLR based DSL language did not accept epoch time as a valid input. This issue is now fixed.
+
+- Continuous Verification for Google Cloud Operations logged error for the `resourceName` field. This issue is fixed by changing the identifier in the request body from `projectId` to `resourceName` for data collection tasks as mentioned in the Google API [documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/entries/list). This item requires Harness Delegate version 24.03.82502. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-89441) 
+
+- The CDK Deploy step was not handling the null output map when the provided image was not created from the Harness aws-cdk-plugin base image: https://hub.docker.com/r/harness/aws-cdk-plugin/tags. This issue has been resolved, the null output map is handled. (CDS-89569)
+
+- Fixed an issue where users couldn’t switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
+
+- In a few places in the UI, expressions when entered, were not rendered in a consistent colour. This has now been fixed to be consistent.(CDS-89391)
+
+- Issue while selecting VPC if the name is empty. VPC name is optional in the AWS console but the id is always there, but if the name is empty it is not getting selected. The issue is fixed now and instead of `vpc.name` it will get displayed as `vpc.id:vpc.name`. (CDS-89297)
+
+- Logs were not appearing for a rejected Approval step in the console view. (CDS-89267)
+  
+  The issue is fixed now.
+
+- Helm manifest runtime inputs for chart versions appear as runtime input in the pipeline execution page, even if the chart version was already provided as a fixed value. (CDS-89158)
+  
+  This issue is fixed.
+
+- Selecting the secondary splunk query page would auto submit rather than letting you modify the second query. You will now be able to modify the second query without submitting automatically. (CDS-89153)
+
+- Fixed an issue with the Edit File Store flow UI. (CDS-89094)
+
+- Parent pipeline has a chained pipeline stage and both the parent and child pipelines are in different organizations. While running the parent pipeline, the user group selection for the child approver user group displays parent pipeline organizations. The issue has now been fixed, and users should be able to select the correct user group(s) of the child pipeline that belong to a different or the same organization. (CDS-89001, ZD-55502)
+
+- The email step body used to render the field's HTML content. Now it will render raw HTML. (CDS-88842, ZD-56452)
+
+- The `orgIdentifier` and `projectIdentifier` fields were absent in the service YAML if the service was created inside a pipeline or template. (CDS-88749)
+  
+  This issue is fixed. Now, org and project identifiers will be added to service when it is created within a pipeline or template.
+
+- When service was selected from **Projects** > **Service** > **Select Service** it used to open the configuration tab and when service was selected from **Deployments** > **Services** > **Select Service** it used to open the summary tab. The issue for this different behavior is now fixed and now via both ways, users will be taken to the service's summary tab. (CDS-88692, ZD-56528)
+
+- The Harness Approval step allowed the Variable Name field in the Approval Inputs page be blank. (CDS-88673)
+  
+  This issue is fixed by enforcing proper validation for the Variable Name field.
+
+- Unable to select the TLS certificate and key in an HTTPS step. (CDS-88543, ZD-55531)
+
+  For TLS connections, you can now select the secrets related to a valid TLS certificate and key in the HTTP step. This feature is currently behind the feature flag, `CDS_HTTP_STEP_NG_CERTIFICATE`. To enable the feature, contact [Harness Support](mailto:support@harness.io).  
+
+- Earlier, the input sets that have nested components (such as templates) hosted on GitHub were taking a long time to fetch. Now this time has been significantly reduced. (CDS-88426, ZD-56180)
+
+- Jenkins `jobParameter` was getting added to the pipeline even if it was not a runtime input in the template. The issue is fixed now and `jobParameter` will not be added automatically. (CDS-88380, ZD-55212)
+
+- Initially, the Jenkins build step didn't support logs for more than 5 hours. Therefore for builds taking longer than 5 hours, console logs were not streamed and consequently not saved. Now, the support for the console logs has been extended to 1d for the Jenkins build step. However, the log length limit is 5k, meaning only the last 5k logs will be streamed and saved. (CDS-88262)
+
+- Wrong target groups were getting attached when multiple load balancers were used with the same load balancer name. The issue is fixed now. (CDS-88229, ZD-55701)
+
+- The Pipeline Details tab did not show the Harness Approval Execution step if the Include Stage Execution Details field is unchecked in the Harness Approval step. (CDS-88133)
+
+  The issue is fixed now.
+
+- When the service is marked as runtime in a child pipeline and then configured from the chained pipeline inputs tab, the service input fields are left as runtime. The Trigger Input panel and Input-set form do not properly prompt for service input. This issue has been resolved. (CDS-87983, ZD-55917)
+
+- In Artifact Triggers, the modifications to the secret in the connector were not recognized. With this update, changes to the secret in the connector will now be detected, so that users don't have to manually disable and re-enable the trigger. (CDS-86775, ZD-55126)
+
+- The Continue button in the Services section for remote services was enabled even when the selected service was not available. (CDS-85658)
+  
+  This issue is fixed by adding form validation to the service field when: 
+  * Service does not exist in the selected branch for remote services.
+  * Service does not exist.
+
+- The Pipeline Studio view was disabled when switching from Pipeline Studio to YAML view after partially filling a stage or step until the errors in the pipeline were fixed. (CDS-85556)
+  
+  This issue is fixed by allowing users to return to the Pipeline Studio view if the pipeline is unmodified in the YAML view. Users can also discard the changes made in the YAML view to force switch the Pipeline Studio view.
+
+- Issue with missing expressions and inconsistent suggestion placement during code scripting. The issue is fixed now in code editors like Shell Script to render a tooltip to view the complete suggestion value. (CDS-85027)
+
+- Improved the error messaging for the AWS SAM step when an incorrect expression or reference led to no image being found. (CDS-84058)
+
+#### Continuous Integration
+
+- Added null handling for empty runtime input for the [Post-Command in a Run Tests step](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#pre-command-post-command-and-shell). Previously, if you configured Post-Command as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) and left the field blank at runtime, it would fail the pipeline by supplying `null` as the Post-Command, rather than an empty field. (CI-11365, ZD-58254)
+- When creating step group templates, you can now configure the **Run as User** setting for steps that allow this setting. Previously, this setting wasn't shown when creating step group templates. (CI-11332, ZD-58044)
+- Fixed an issue where the YAML for build stage [input sets](/docs/platform/pipelines/input-sets) could have an invalid default value for [codebase advanced settings](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#edit-the-default-codebase-configuration). (CI-11291)
+- Addressed a security vulnerability in some CI APIs. (CI-11244, ZD-57445)
+- Fixed an issue where pipelines could fail when triggered by BitBucket PRs with more than 25 commits. This error was due to an infinite loop situation that could occur when there was pagination in the BitBucket List PR Commits API payload. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11220, ZD-57421)
+- Applied optimizations to address caching errors. (CI-11173, ZD-57173)
+- Harness now automatically truncates long pipeline and stage names in [PR build status messages](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks), because status updates fail to post if the message exceeds the SCM provider's character limit for such messages. If a pipeline or stage name is truncated, the truncated portion is replaced by ellipses (`...`). (CI-11132, ZD-56864)
+- Pipelines that include test splitting on multiple sequential, parallel, or looped steps now fetch historical test data from the most-recent finished build. Previously, such pipelines would sometimes try to fetch "historical" test data from an earlier test step in the current build, rather than fetching this data from a previous completed build. (CI-11108, ZD-56810)
+- Removed excessive, unnecessary health check messages in logs. (CI-11102)
+- Modified CSS to address flickering UI elements. (CI-11038, ZD-56510)
+- Added validations to address a runtime error that could occur in the Build and Push to ACR step. (CI-10793, ZD-55412)
+- When [viewing builds](/docs/continuous-integration/use-ci/viewing-builds), the running status is now correctly updated for Background steps that are inside step groups. (CI-10239)
+
+#### Harness Platform
+
+#### Security Testing Orchestration
+
+- Fixed an issue where the default scan mode was set to Ingestion for some STO scan steps that also supported Orchestration mode. With this fix, Orchestration is the default when this mode is available. (STO-7060)
+
+- Added RBAC support to input fields in STO steps. (STO-6887)
+
+- STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
+
+
+
+
+
 ## March 21, 2024, patch version 0.14.5
 
 This release includes the following Harness module and component versions.
