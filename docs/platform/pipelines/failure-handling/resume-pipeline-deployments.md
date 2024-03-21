@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/resume-pipeline-deployments
+  - /docs/platform/Pipelines/resume-pipeline-deployments
 ---
 
 Pipeline executions fail for many reasons, such as infrastructure changes or changes to resource access. In such cases, rerunning an entire pipeline can be costly and time-consuming.

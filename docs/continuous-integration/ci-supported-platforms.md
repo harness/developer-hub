@@ -31,6 +31,7 @@ For more information about early access features, including early access feature
 
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
+| `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Docker layer caching for Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) | Beta |
 | `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |
 | `CI_SECURE_TUNNEL` | Secure Connect for Harness Cloud (CI-8922).<br/>[Secure Connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. | Beta |
 | `CI_CODEBASE_SELECTOR` | Delegate selectors for codebase tasks (CI-9980).<br/>Without this feature flag enabled, delegate selectors aren't applied to delegate-related CI codebase tasks.<br/>With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector). | Beta |
@@ -52,8 +53,6 @@ For more information about early access features, including early access feature
 CI_INDIRECT_LOG_UPLOAD possibly moving to Account settings
 
 Harness CLoud flags: CI_ENABLE_BARE_METAL, CI_ENABLE_BARE_METAL_FREE_ACCOUNT, HOSTED_BUILDS, CIE_HOSTED_VMS, CIE_HOSTED_VMS_WINDOWS, CIE_HOSTED_VMS_MAC (will not GA due to limited resources), CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled)
-
-Docker layer caching flags: CI_ENABLE_DLC, CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED
 
 Additional cache intelligence flags: CI_USE_S3_FOR_CACHE, CI_CACHE_OVERRIDE_FALSE, CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled)-->
 
