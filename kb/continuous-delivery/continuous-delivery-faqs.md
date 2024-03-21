@@ -6411,7 +6411,7 @@ The go templating is converting to the octal equivalent if the numerical input s
 
 Concurrent active pipeline executions comprises of active and in-progress executions. This includes those that are paused temporarily by steps such as the wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
 
-#### How to find the output variables of a stage from a pipeline execution through API?
+#### How do I find the output variables of a stage from a pipeline execution through the API?
 
 The output of the pipeline execution can be reetrieved through SubGraph API as described under https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
 
