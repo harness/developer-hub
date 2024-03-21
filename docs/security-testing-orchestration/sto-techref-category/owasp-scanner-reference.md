@@ -126,7 +126,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags, for example: 
 
-`--scan ‘/harness/**/*.jar --log /shared/scan_logs/owasp.txt`
+`--scan /harness/**/*.jar --log /shared/scan_logs/owasp.txt`
       
 With these flags, the scanner scans JAR files and outputs the log to a shared folder, where it can be accessed by a later step.  
 
