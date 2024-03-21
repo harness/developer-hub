@@ -22,11 +22,13 @@ The CD service usage calculation uses the **Active Services** count and the numb
 
 ### Where do I see my Active Service total? 
 
-Go to **Account Settings** > **Subscriptions** or enter the following URL using your Harness account ID for `ACCOUNT_ID`:
+Go to **Account Settings** > **Subscriptions** or enter the following URL using your Harness account ID for `ACCOUNT_ID`.
 
-// this needs to be updated with the breakdown details, and total license consumption details. 
-// The total number of service licenses consumed by all the total active services over the last 30 day period. 
-// The breakdown of all activ4 services in the system. 
+#### Key things to understand
+
+- Under License Usage, the Service License tile is the total number of service licenses consumed by all the total active services over the last 30 day period. 
+- The Active Service Graph shows the breakdown of active services consumed over the last 30 days.
+- The Usage Breakdown Table shows the type of services consumed over the last 30 days based on the Active Service Graph
 
 ### What are Service Instances? 
 
@@ -46,17 +48,32 @@ The Elastic Search Helm chart could consume 15 instances (pods) depending on the
 
 This causes Elastic Search to consume 3 Active Services. 
 
-// This block
-
 Service Instances apply to:
+
 - Kubernetes
 - SSH
+- WinRM
+- Helm
+- AWS ECS
+- Tanzu (Formerly PCF)
+- Deployment Templates
+- Spot.io
+- AMI/ASG
+- Azure Web Apps
+
+Service Instances do not apply to:
+
+- AWS Lambda
+- Google Cloud Functions
+- AWS SAM
+- Serverless.com
+
 
 
 
 ### How does Harness CD & GitOps count Active Services?
 
-For containerized and non-containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last month is considered an Active Service.
+For containerized and non-containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last 30 days is considered an Active Service.
 If a Service has more than 20 Service Instances (95th percentile of Service Instances during the month, measured every 60 minutes), for every additional 20 Service Instances, another Active Service is counted. Even if a service is deployed and it generates 0 service instances, Harness will charge for 1 Active Service because it was used via a Deploy stage in a pipeline. 
 
 
@@ -88,7 +105,7 @@ Services types that are calculated this way:
 
 
 ### Serverless Applications
-For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. For every service types that are classified as a serverless application:
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last 30 days, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. For every service types that are classified as a serverless application:
 
 
 - AWS Lambda
@@ -124,7 +141,7 @@ If a GitOps application has more than 20 pods (95th percentile of pod count duri
 
 #### Custom Deployment Templates - Deploy Stages
 
-For applications deployed in the last 30 days through custom deployment template deploy stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service. 
+For applications deployed in the last 30 days using custom deployment template deploy stages in a Harness pipeline with an associated Service, each unique Service is counted as an Active Service.
 
 _Note: If the Fetch Instance Script in the Custom Deployment Template, is unable to query the number of service instances deployed, this service will consume 1 Active Service license._ 
  
@@ -139,7 +156,7 @@ _Note: If the Fetch Instance Script in the Custom Deployment Template, is unable
 
 #### Pipeline Executions with no services
 
-For applications deployed in the last 30 days using Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service will be counted for every 100 successful pipeline stage executions. 
+For applications deployed in the last 30 days using Custom deployment stages in a Harness pipeline without any associated Services, one Active Service will be counted for every 100 successful pipeline stage executions.
 
 Scenarios that fall under this bucket:
 
