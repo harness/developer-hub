@@ -21,7 +21,7 @@ You can use this step to add a built-in Aqua Trivy and/or Anchor Grype step to d
 
 - All other settings such as **Log level** and **Fail on Severity** are set to their defaults. 
 
-- You don't need to add a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) manually. The step will add this service automatically if it's needed. 
+- You don't need to add a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) manually. The step will add this service automatically. 
 
 - You can configure the scan steps after you add them to your pipeline, but this is optional. 
 
