@@ -25,9 +25,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-### Version 1.87.4
+<!-- 2024-03-20 -->
 
-
+### Version 1.88.2
 
 #### Early access feature: built-in scanners
 
@@ -37,7 +37,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
   :::note
 
-  These steps are behind the following feature flags are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
+  These steps are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
 
   <!-- 
 
@@ -74,9 +74,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.87.4
 
-#### New feature: Ingest Aqua Security assurance policy violations
-
 <!-- 2024-03-14 -->
+
+#### New feature: Ingest Aqua Security assurance policy violations
 
 The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
 
@@ -89,9 +89,8 @@ For more information, go to:
 - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
 
-#### Fixed issue
 
-#### New enhancement
+#### New feature: AIDA remediations for STO stage failures
 
 - AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
 
