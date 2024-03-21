@@ -65,6 +65,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 :::
 
 :::info
+- Multiple Connectors can be used for a single Git Provider at once. 
 - While setting up connector, both Account & Repo type for URL is supported.
 - Connection through harness platform and delegate is supported.
 :::
