@@ -128,16 +128,6 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 <StoSettingLogLevel />
 
 
-
-### Additional CLI flags
-
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-<StoSettingCliFlags />
-
-
-
-
 ### Fail on Severity
 
 
