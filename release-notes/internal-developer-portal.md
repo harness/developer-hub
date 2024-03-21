@@ -26,7 +26,7 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- We now support a new git integration framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both  `github.com` and `github enterprise` snd fetch entity yaml at the same time. [IDP-2213]
+- We now support a new git integration framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both  `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
 - User can now provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration. [IDP-2213]
 
