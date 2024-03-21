@@ -42,11 +42,11 @@ You can tune the other flags of the infrastructure with the following flags:
 11. **http client timeout**: HTTP client timeout for communicating with the control plane. The default value is **30s**.
 
 ## Infrastructure service
-The Windows chaos infrastructure is installed as an executable binary on your Windows VM. 
-
+The Windows chaos infrastructure is installed as an executable binary on your Windows VM. The service binary is present in `C:\\HCE\windows-chaos-infrastructure.exe` path. The config file is present in `C:\\HCE\config.yaml` path.
+ 
 ## Logs
-Logs that are generated are stored in the `C:\\HCE\logs` directory by default. 
-
+Logs that are generated are stored in the `C:\\HCE\logs` directory by default.
+ 
 There are two types of logs:
 1. **Infrastructure logs:** Infrastructure logs are generated as a result of any infrastructure operation that is not directly related to the execution of an experiment. Every experiment run has a new log folder with all connectivity logs. 
 
