@@ -3,12 +3,21 @@ import { MODULES } from "../../../constants";
 
 export const ilt: IltCardItem[] = [
   {
+    title: "Introduction to the Harness Platform",
+    module: MODULES.platform,
+    iltType: iltType.user,
+    description:
+      "Self-paced, prerequisite course to all module-specific ILT courses.",
+    version: "Enterprise Plan of any module",
+    link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
+  },
+  {
     title: "Continuous Delivery & GitOps",
     module: MODULES.cd,
     iltType: iltType.user,
     description:
-      "Learn how to deploy your applications on Kubernetes and other infrastructure platforms.",
+      "Deep dive into advanced Continus Delivery concepts using Kubernetes as the deployment infrastructure.",
     version: "Harness CD & GitOps Enterprise Plan",
-    link: "/university/instructor-led-training/continuous-delivery",
+    link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
   },
 ];

@@ -71,6 +71,11 @@ export const SeiData: Horizon = {
         title: "Proactive Insights",
         description: "Provide insight based on historical trends.",
       },
+      {
+        tag: [{ value: "Platform" }],
+        title: "BYOK support",
+        description: "Support Bring Your Own Key (BYOK).",
+      },
     ],
   },
 };

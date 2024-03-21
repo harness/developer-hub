@@ -8,7 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/getting-started/start-for-free
-  - /docs/get-started/tutorials
 ---
 
 Harness offers a free tier of the Harness Software Delivery Platform to help you on your software delivery journey.

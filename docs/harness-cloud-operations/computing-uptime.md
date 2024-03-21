@@ -9,9 +9,9 @@ This is a Harness operational reference guide for all the Service Level Indicato
 ## Weightage Factor
 Harness operations apply a weighting factor to the SLIs post any incidents. 
 
-Major outage = 100% of the downtime hit 
-Partial = 30% of the downtime hit
-Degraded performance = None  (our stance is that a degraded performance does impact the user experience but it’s not technically downtime)
+- Major outage = 100% of the downtime hit 
+- Partial = 30% of the downtime hit
+- Degraded performance = None. This is because our stance is that a degraded performance does impact the user experience but it’s not technically downtime.
 
 A production incident, commonly known as an "incident," is an unexpected event or problem that arises within our live production environments, resulting in either complete or partial service disruptions. In the case of a partial incident, it renders one or more functions of a module nonfunctional or inaccessible. All production incidents are posted in our status page (https://status.harness.io) and our users can subscribe to the feeds from this site to get notified. 
 
@@ -34,7 +34,7 @@ During the incident, the error rate for the Platform/Delegate component exceeded
 Incident: Failed to retrieve license information seen for some customers 
 URL: https://status.harness.io/incidents/bwpdhdyyyjfw
 
-- Component: Platform/login
+- Component: Platform/Login
 - SLI: API Error Rate
 - Availability - Partial Outage of 8 Minutes
 - Threshold: More than 1% over 5 min rolling window
@@ -49,7 +49,7 @@ Pipeline is a core construct of the Harness platform. All of the SLIs defined he
 
 | **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|----------------|
-| Pipeline/Triggers                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
+| Pipeline/Triggers/Input Sets                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
 |                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded Performance|
 | Pipeline Executions failure caused by Harness platform | Failure rate Increase| More than 1% over 5 min rolling window |Partial Outage|
 |                                           | Slow Executions | 2x of average latency in a rolling window of 5 mins|Degraded Performance|
@@ -65,7 +65,7 @@ Core platform constructs and services are foundational to Harness modules and an
 ||API Response Time|95th percentile: > 1s over 5 min rolling window|Degraded Performance|
 | Notifications                         | Notification Delivery Latency | 99% of notifications are dispatched within 1 minute from the moment they are sent to the notification service |Degraded Performance|
 
-## CDNG
+## CD & GitOps (NextGen)
 All the Pipeline and Platform SLIs are applicable here. 
 
 | **Component**                             | **SLI**         | **Threshold**                           | **Availability**|
@@ -73,7 +73,7 @@ All the Pipeline and Platform SLIs are applicable here.
 | GitOps | APIs Error rate| More than 1% over 5 min rolling window |Partial Outage|
 |                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window|Degraded Performance|
 
-## Test Intelligence
+## CI Test Intelligence
 All the Pipeline and Platform SLIs are applicable here. 
 
 | **SLI**         | **Threshold**                           | **Availability**|
@@ -105,7 +105,7 @@ All the Platform SLIs are applicable here. Pipeline relevant if the FF use case 
 | Latency in Loading dashboards | 2x of average latency in a rolling window of 5 mins |Degraded performance|
 | CRUD/Actions not working | For a duration of 60 secs |Partial Outage|
 
-## Cloud Cost Manager 
+## Cloud Cost Management 
 All the Pipeline and Platform SLIs are applicable here. 
 
 | **SLI**         | **Threshold**                           | **Availability**|
@@ -127,7 +127,6 @@ All the Platform SLIs are applicable here. Pipeline relevant if the chaos use ca
 |-------------------------------------------|-----------------|-----------------------------------------|
 | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
 | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
-| Chaos UI components are not accessible | Not accessible for more than 60s |Major Outage|
 | Load times on UI | Data load time > 10s consecutively over a 5 min period |Degraded performance|
 | ChaosGuard Rule Evaluation Duration  | The ChaosGuard rule evaluation stage takes >10s consecutively over a 5 min period across experiment runs |Degraded performance|
 
@@ -158,7 +157,7 @@ All the Platform SLIs are applicable here. Pipeline relevant if the STO use case
 | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded performance|
 | Security Step Executions Failures | 25% increase in security stage execution failures in a rolling window of 5 mins |Partial outage|
 
-## Error Tracking
+## Continuous Error Tracking
 All the Platform SLIs are applicable here. 
 
 | **SLI**         | **Threshold**                           | **Availability**|
@@ -196,7 +195,7 @@ All the Platform SLIs are applicable here.
 | Open Source Plugins functionality | 5XX Errors for a consecutive duration of 30secs (95th percentile) |Degraded Performance|
 || Latency greater than 30 seconds for a consecutive duration of 10 mins (95th percentile) |Degraded Performance|
 
-## Source Code Management
+## Code Repository
 All the Platform SLIs are applicable here. 
 
 | **SLI**         | **Threshold**                           | **Availability**|
@@ -209,7 +208,7 @@ All the Platform SLIs are applicable here.
 | PR Checks & Webhooks - Webhooks are not triggered  | 5% increase in 5xx errors in a rolling window of 5 mins |Degraded Performance|
 | UI unable to render page |For a consecutive duration of 2 min|Major Outage|
 
-## Infrastructure As Code
+## Infrastructure as Code Management
 
 | **SLI**         | **Threshold**                           | **Availability**|
 |-------------------------------------------|-----------------|-----------------------------------------|
@@ -219,7 +218,7 @@ All the Platform SLIs are applicable here.
 | | 10% of traffic generates 5xx error in a rolling window of 5 mins |Partial Outage|
 | | 2x of average latency in a rolling window of 5 mins |Degraded Performance|
 
-## Supply Chain Security
+## Software Supply Chain Assurance
 
 All the Platform and Pipeline SLIs are applicable here. 
 

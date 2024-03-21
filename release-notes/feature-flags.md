@@ -6,7 +6,7 @@ tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/feature-flags/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
@@ -14,9 +14,32 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 5th 2024
+### Latest Updated: March 20th 2024
 
 ## March 2024
+
+### Android SDK
+
+#### Version 2.0.2 
+
+ - We have fixed the non-blocking behaviour. (FFM-8138)
+ - We've updated `okhttp` and `okio-jvm` in relation to CVE-2023-3635. (FFM-10903)
+
+#### Version 2.0.1
+
+ - We've added support for the `Retry-After` header. (FFM-10745)
+ - The `TooManyRequestsException` error has now been resolved. (FFM-10879)
+
+### Flutter SDK
+
+#### Version 2.2.0
+
+ - We've tidied up behaviours around flag deletion: 
+ -- Previously, if a flag was deleted, its evaluations would remain in the SDK cache and any variation calls made to it would result in an out-of-date evaluation for your target. (FFM-8138)
+ -- This update exposes a new `EVALUATION_DETE` event you can listen for which is emitted when a flag has been deleted.
+ - We've fixed an issue in iOS where if an evaluation failed, `null` would be returned instead of the default variation that was supplied.
+ - We've upgraded Feature Flags iOS SDK to 1.3.0.
+ - We've upgraded Feature Flags Android SDK to 2.0.2.
 
 ### iOS SDK
 
@@ -34,12 +57,42 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've removed the metrics flush on map overflow. (FFM-10816)
  - We've added `Retry-After` HTTP header support. (FFM-10821)
 
+### Javascript SDK
+
+#### Version 1.26.0
+
+ - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
+
 ### .NET SDK
+
+#### Version 1.6.1
+
+ - We've fixed an analytics issue that caused a target's attributes to not be sent in analytics payloads, as well fail to appear in the UI. (FFM-10943)
+ - We've resolved an issue that caused new targets to not be sent in analytics payloads. This issue commonly happened when multiple instances of the SDK were created.
 
 #### Version 1.5.0
 
  - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
  - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
+
+### Python SDK
+
+#### Version 1.5.0
+
+ - This update keeps track of targets that have been used in evaluations. It will no loner send targets already seen in the mtrics payload. This allows for fair processing of new targets for analytics purposes. (FFM-10837) 
+ - The following bugs have been fixed:
+ -- We've resolved an issue where if a target was marked as `anonymous`, it would be sent in analytics.  
+ -- We've also fixed the typing of `get_flag_kind` method. 
+
+### React SDK
+
+#### Version 1.10.0
+
+ - We've updated the Javascript Client SDK to 1.26.0 and we've updated the `README` to show you how to override the internal logger. (FFM-10886)
+
+#### Version 1.9.0
+
+ - We've updated the internal Javascript Client SDK to v1.25.0 to unlock the ability to change the mechanism used for caching flags. (FFM-10875)
 
 ## February 2024
 

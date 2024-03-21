@@ -151,4 +151,4 @@ Installed:
 Complete!
 ```
 
-For information on installing the CLI on different distributions, go to [Installing the cf CLI](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/3.0/tas-for-vms/install-go-cli.html) from PCF.
+For information on installing the CLI on different distributions, go to [Installing the cf CLI](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/install-go-cli.html) from PCF.

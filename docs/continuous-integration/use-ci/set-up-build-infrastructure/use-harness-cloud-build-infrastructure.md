@@ -48,6 +48,12 @@ Review the following image specifications for information about image components
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
 
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
+
 ## Requirements for connectors and secrets
 
 * You must use the built-in Harness Secret Manager to store connector credentials and other secrets.
@@ -132,6 +138,12 @@ pipeline:
 
 </TabItem>
 </Tabs>
+
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
 
 ### Harness Cloud best practices
 
@@ -282,3 +294,9 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs/#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
 * [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
 * [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)
+
+### Known issues
+
+There is a known issue impacting macOS machines on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) due to incorrect permissions for the `.netrc` file at `/Users/anka/.netrc`. The permissions are set to `644` when they should be `600`.
+
+This can cause errors when installing Cocoapods. If your build installs Cocoapods, uses a macOS platform on Harness Cloud build infrastructure, and fails due to an error like `Couldn't determine repo type for URL` when installing Cocoapods, then, until this issue is fixed, make sure the pipeline edits the permissions on the `.netrc` file before attempting to install Cocoapods.

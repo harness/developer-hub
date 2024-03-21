@@ -42,7 +42,7 @@ Model your process in code using a full-featured YAML editor:
 
 ![](./static/cd-pipeline-modeling-overview-03.png)
 
-For more details, go to the [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart).
+For more details, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 #### REST API
 
@@ -70,7 +70,7 @@ Set when, if, and how a Stage executes and what to do if it fails:
 
 ![](./static/cd-pipeline-modeling-overview-06.png)
 
-For more details, go to [Stage and Step Conditional Execution Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more details, go to [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings).
 
 #### Approvals
 
