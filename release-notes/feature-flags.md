@@ -100,6 +100,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Python SDK
 
+#### Version 1.6.0
+
+ - We've added support for custom TLS CA certs. (FFM-7006)
+
 #### Version 1.5.0
 
  - This update keeps track of targets that have been used in evaluations. It will no loner send targets already seen in the mtrics payload. This allows for fair processing of new targets for analytics purposes. (FFM-10837) 
