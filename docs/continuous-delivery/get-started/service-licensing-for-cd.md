@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Continuous Delivery and GitOps use a Service usage model to track your license consumption.
+Harness Continuous Delivery and GitOps use a service usage model to track your license consumption.
 
 The CD service usage calculation uses the **Active Services** count and the number of **Service Instances** each Active Service's deployment creates. These concepts, and how they apply to different deployment types, are described in this document.
 
@@ -26,9 +26,9 @@ Go to **Account Settings** > **Subscriptions** or enter the following URL using 
 
 #### Key things to understand
 
-- Under License Usage, the Service License tile is the total number of service licenses consumed by all the total active services over the last 30 day period. 
+- Under License Usage, the Service License tile shows the total number of service licenses consumed by all the total active services over the last 30 days. 
 - The Active Service Graph shows the breakdown of active services consumed over the last 30 days.
-- The Usage Breakdown Table shows the type of services consumed over the last 30 days based on the Active Service Graph
+- The Usage Breakdown Table shows the type of services consumed over the last 30 days based on the Active Service Graph.
 
 ### What are Service Instances? 
 
