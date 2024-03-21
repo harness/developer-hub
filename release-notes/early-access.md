@@ -218,14 +218,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
-### Open Source Vulnerabilities (OSV) scanner integration
 
-* **Release date:** February 2024
-* **Issue number:** STO-6767
-* **Feature flag:** `STO_STEP_PALETTE_OSV`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
 
 ### STO Jira integration
 
@@ -388,6 +381,15 @@ For information about early access (beta) features for Harness Software Engineer
 No information available. -->
 
 ### STO features promoted to GA
+
+### Open Source Vulnerabilities (OSV) scanner integration
+
+* **GA date:** March 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** 1.85.0
+* **Feature flag:** `STO_STEP_PALETTE_OSV`
+
+You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
 
 #### Anchore Enterprise integration
 

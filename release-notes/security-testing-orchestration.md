@@ -156,6 +156,9 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
+#### New feature: Open Source Vulnerabilities (OSV) scanner integration
+
+You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. This feature was previously behind the feature flag `STO_STEP_PALETTE_OSV` and is now generally available. (STO-6767)
 
 #### Fixed issues
 
@@ -957,6 +960,7 @@ The following security steps are now generally available:
 ##### Version 1.31.4
 
 <!-- February 24, 2023 -->
+
 
 ###### Fixed issue
 
