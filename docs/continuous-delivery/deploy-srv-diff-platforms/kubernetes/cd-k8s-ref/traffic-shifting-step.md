@@ -28,14 +28,14 @@ Name of the step.
 
 Specify your configuration type here. Currently there are two choices:
 
-* **New Config**: Select this option if you want to specify a new configuration for traffic routing in this step. If configuring this in BlueGreen deployment step or Canary step this option implicitly assumed. This option will create a new resource(s).
+* **New Config**: Select this option if you want to specify a new configuration for traffic routing in this step. If configuring this in a BlueGreen deployment step or a Canary step this option is implicitly assumed. This option will create a new resource(s).
 * **Inherit**: Select this option if you want the traffic routing step to inherit a configuration from a previous Blue Green, Canary, or Traffic Routing step. This option will patch existing resources. 
 
 ### Provider
 
 Specify your service mesh provider. Harness currently supports Service Mesh Interface (SMI) and Istio. 
 
-Each provider will have some common configuration options and some provider specific ones. We have listed all configuration options for each provider. Please take at the one relevant for you.
+Each provider will have some common configuration options and some provider specific ones. We have listed all configuration options for each provider. Please look at the one relevant for you.
 
 #### Service Mesh Interface (SMI) - New Config option
 
@@ -92,34 +92,34 @@ Before you begin, make sure you have an understanding of Istio and how it works 
     * **Gateways:** Specify one or more gateway names. This is specific to Istio, please take a look [here](https://istio.io/latest/docs/reference/config/networking/gateway/).
     * **Routes**: Currently, Harness supports only the `http` route type.
         * **Route type**: Currently, Harness supports only the `http` route type - for http traffic.
-        * **Route name**: This will be used in generating kubernetes resources so the value should kubernetes name compliant. This should also be unique within the pipeline workflow as it is used as ID for updating purposes (described below)
+        * **Route name**: This will be used in generating kubernetes resources so the value should be kubernetes name compliant. This should also be unique within the pipeline workflow as it is used as an ID for updating purposes (described below).
         * **Route Rules**: This is the way incoming requests are filtered for the configured route destinations.
             * **uri**:
-                * **Value**: Enter the value that you want matched against incoming request URI.
-                * **Match Type**: Used to determine how URI of the incoming request is matched against the `value` config parameter. Available to choose one of three values (`exact`, `prefix`, `regex`).
+                * **Value**: Enter the value that you want matched against the incoming request URI.
+                * **Match Type**: Used to determine how the URI of the incoming request is matched against the `value` config parameter. Choose from one of the three available values (`exact`, `prefix`, `regex`).
 
             * **method**:
                 * **Value**: Used for matching the HTTP method of the incoming request.
-                * **Match Type**: Used to determine how HTTP method of the incoming request is matched against the `value` config parameter. Available to choose one of three values (`exact`, `prefix`, `regex`).
+                * **Match Type**: Used to determine how the HTTP method of the incoming request is matched against the `value` config parameter. Choose from one of the three available values (`exact`, `prefix`, `regex`).
 
             * **headers**:
                 * **Values**:
                     - **Key**: Specify the name of the request header
                     - **Value**: Specify the value of the header
-                    - **Match Type**: Specify which kind of matching should be done against the incoming header. Available to choose one of three values (`exact`, `prefix`, `regex`).
+                    - **Match Type**: Specify which kind of matching should be done against the incoming header. Choose from one of the three available values  (`exact`, `prefix`, `regex`).
     
             * **scheme**:
                 * **Value**: Specify which scheme you want to match with.
-                * **Match Type**: Specify which kind of matching should be done against the incoming request scheme. Available to choose one of three values (`exact`, `prefix`, `regex`).
+                * **Match Type**: Specify which kind of matching should be done against the incoming request scheme. Choose from one of the three available values (`exact`, `prefix`, `regex`).
 
             * **authority**:
                 * **Value**: Specify which authority you want to match with.
-                * **Match Type**: Specify which kind of matching should be done against the incoming request authority. Available to choose one of three values (`exact`, `prefix`, `regex`).
+                * **Match Type**: Specify which kind of matching should be done against the incoming request authority. Choose from one of the three available values (`exact`, `prefix`, `regex`).
 
             * **port**: 
-                * **Value**: Specify which port you want to match incoming request port with.
+                * **Value**: Specify which port you want to match the incoming request port with.
 
-        * **Destinations**: This is locations to which the filtered request will be routed to
+        * **Destinations**: The filtered requests will be routed to these locations.
 
             * **Host**: Should be the name of the Kubernetes service resource.
 
@@ -149,9 +149,9 @@ Destination2 -> Host: svc2, Weight: 30
 Destination3 -> Host: svc3, Weight: 10
 ```
 
-Now in the update step you configured to update only one destination for that same route. Let's say you want to update Destination `svc1` and what to set its weight to `40`
+Now in the update step you configured to update only one destination for that same route. Let's say you want to update Destination `svc1` and you want to set its weight to `40`
 
-This will lead to having the remaining 60 (max limit of 100 - configured update weight of 40) to be split amongst the remaining destination, but keeping the same ratio they have amongst themselves.
+This will lead to having the remaining 60 (max limit of 100 - configured update weight of 40) to be split amongst the remaining destinations, but keeping the same ratio they have amongst themselves.
 Meaning the result would be:
 ```
 Destination1 -> Host: svc1, Weight: 40
