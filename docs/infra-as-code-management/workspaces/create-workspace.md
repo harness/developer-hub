@@ -56,7 +56,7 @@ To create a new workspace, follow these steps:
 
    * **Terraform Variables** Can be provided in the following ways:
 
-     * **Inline** Users can define Terraform variables within the Workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JXEL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline). 
+     * **Inline** Users can define Terraform variables within the Workspace. Variables can be either String, [hcl](https://developer.hashicorp.com/terraform/language/syntax/configuration), [Secret](/docs/category/secrets), or a reference to another variable, using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (can be in the same or a different workspace, or from the pipeline). 
      
      * **From Git Repo (Implicit)** Users can store ``.tfvar`` in the same folder as the Terraform code for the Workspace 
 
