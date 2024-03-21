@@ -58,7 +58,7 @@ For more information, go to:
 
 #### New enhancement
 
-- AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426)
+- AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
 
 
 ### Version 1.87.2
