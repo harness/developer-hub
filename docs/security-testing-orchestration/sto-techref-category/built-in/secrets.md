@@ -5,7 +5,7 @@ sidebar_position: 30
 sidebar_label: Secrets Detection scan step reference 
 ---
 
-Add a GitLeaks scan to detect passwords and other secrets in your code repositories. A built-in step enables you to add scans quickly and with minimal configuration. These steps use scanners that are free to STO users and are ready to run as soon as you add them to your pipeline.
+You can use this step to add a built-in GitLeaks step to detect passwords and other secrets in your code repositories. Built-in steps enable you to add scans quickly and with minimal configuration. These steps use scanners that are free to STO users and are ready to run as soon as you add them to your pipeline.
 
 ![](../static/built-in-scan-steps.png)
 
