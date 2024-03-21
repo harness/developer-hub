@@ -89,7 +89,7 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
         <tr> 
-          <td> SERVICE_NAME </td>
+          <td> SERVICE_NAMES </td>
           <td> Name of the ECS service under chaos. </td>
           <td> For example, <code>nginx-svc</code>. </td>
         </tr>

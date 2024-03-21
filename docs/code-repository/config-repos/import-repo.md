@@ -10,8 +10,11 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
 
 ## Import repositories
 
-1. Go to the Harness project where you want to import repositories.
-2. Go to the **Code** module, select the dropdown next to **New Repository**, and then select **Import Repository** or **Import Repositories**.
+1. In the Harness Code module, make sure you are at the [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes) where you want to import repositories.
+
+   You can import repos at the account, organization, or project scope. For example, a repo imported at the account scope is available to the entire account, whereas a repo imported at the project scope is limited to that project.
+
+2. Select **Repositories**, select the dropdown next to **New Repository**, and then select **Import Repository** or **Import Repositories**.
    * **Import Repository:** Import a single repository.
    * **Import Repositories:** Import all repositories in a GitHub/Gitea/Gogs organization, GitLab group, or Bitbucket project or workspace. Harness won't import repositories with conflicting names.
 3. Select the **Git Provider**, such as GitHub or GitLab.

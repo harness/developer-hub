@@ -66,8 +66,6 @@ The timezone settings govern the display value of the settings not their actu
   :::note 
   The **Update Multiple** option appears only if you select **Change Task** in the **Ticket Type** field. 
 
-  This feature is behind the feature flag `CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
-
   This feature requires Harness Delegate version 80800 or later.
   :::
 
@@ -103,6 +101,8 @@ The timezone settings govern the display value of the settings not their actu
 2. In **Template Name**, enter the name of an existing template or provide an expression.  
    All the fields corresponding to the Template are listed.
 3. Select **Apply Changes**.
+
+This option updates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates.
 
 ## Custom table support
 

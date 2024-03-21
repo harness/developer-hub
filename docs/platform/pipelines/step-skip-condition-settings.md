@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings
+  - /docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings
 ---
 
 Conditional executions specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.

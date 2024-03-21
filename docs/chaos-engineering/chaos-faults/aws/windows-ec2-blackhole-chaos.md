@@ -102,7 +102,7 @@ Below is an example AWS policy to execute the fault.
         <td> For example, <code>i-044d3cb4b03b8af1f</code>. Provide any one value either instance id or tag.</td>
       </tr>
       <tr>
-        <td> EC2_INSTANCE_TAGS </td>
+        <td> EC2_INSTANCE_TAG </td>
         <td> Tag of the target EC2 instances. Provide any one value, either the instance Id or the tag.</td>
         <td> For example, <code>type:chaos</code>. </td>
       </tr>

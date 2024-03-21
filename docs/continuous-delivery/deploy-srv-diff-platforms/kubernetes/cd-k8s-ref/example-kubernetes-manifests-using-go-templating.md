@@ -322,7 +322,23 @@ Use the **Skip Rendering K8s manifest files** option in the [Kubernetes Apply]
 
 * [Harness Variables and Expressions](/docs/platform/variables-and-expressions/harness-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 * The values.yaml file used in a stage Service doesn't support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Service.
-* Harness uses Go template version 0.4. If you're used to Helm templates, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.
-* Harness uses an internal build of Go templating. It cannot be upgraded. Harness uses [Spring templates functions](http://masterminds.github.io/sprig/), excluding those functions that provide access to the underlying OS (env, expandenv) for security reasons.  
-In addition, Harness uses the functions ToYaml, FromYaml, ToJson, FromJson.
+* Harness uses Go template version 0.4.5. If you're used to Helm templates, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.
+* You can install Go template version 0.4.5 locally to test your manifests. 
+  + Mac OS: 
+    + AMD64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/darwin/amd64/go-template` 
+    + ARM64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/darwin/arm64/go-template`
+  + Linux: 
+    + AMD64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/linux/amd64/go-template`
+    + ARM64: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/linux/arm64/go-template`
+  + Windows: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4.5/bin/windows/amd64/go-template.exe`
+  
+    After installing Go template, you can run the `./go-template` command from your local machine to view the template usage. Here's a sample output:  
+  
+    ```
+    Usage:
+    Template: ./go-template <-t templateFilePath> [-f valuesFilePath] [-s variableOverride] [-o outputFolder]
+    Version : ./go-template -v
+    ```
+  
+* Harness uses an internal build of Go templating. It cannot be upgraded. Harness uses [Spring templates functions](http://masterminds.github.io/sprig/), excluding those functions that provide access to the underlying OS (env, expandenv) for security reasons. In addition, Harness uses the functions ToYaml, FromYaml, ToJson, FromJson.
 

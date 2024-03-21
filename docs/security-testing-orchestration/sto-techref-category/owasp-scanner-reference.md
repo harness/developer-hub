@@ -76,13 +76,13 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 <StoSettingScanTypeRepo />
 
 
-<!-- #### Target and variant detection 
+#### Target and variant detection 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
@@ -143,7 +143,7 @@ import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
-You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
+You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument:  `--scan ‘directory/**/*.jar’`
 
 <a name="fail-on-severity"></a>
 

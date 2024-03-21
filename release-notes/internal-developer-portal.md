@@ -42,7 +42,29 @@ Continuing with the increased adoption of self-service flows, this release we're
 
 - We have added a new [Custom Card Plugin](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-card) to help users display the information, stored under the root fields of `catalog-info.yaml`, on a card in the overview tab. [IDP-2352]
 
-- We have added a new [Evaluate expression](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) datapoint under the Catalog datsource to match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the supported values under the root field. [IDP-2111]
+- We have added a new [Evaluate expression](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) datapoint under the Catalog datasource to match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the supported values under the root field. [IDP-2111]
+
+- Now you can configure the output of `trigger:harness-custom-pipeline` to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below: [IDP-2328]
+
+```YAML
+...
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}` 
+...
+```
+There are two ways in which you can add the output variable to the template syntax. 
+
+1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
+
+2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs. 
+
+![](./static/output-variables.png)
 
 #### Bug Fixes
 
@@ -114,7 +136,7 @@ spec:
 
 We are seeing a lot of excitement among our customers around Self Service Workflows to derive value for their developers. This release is especially for you if you are using IDP workflows for user/service onboarding.
 
-- **New Docs:** [API Docs](https://apidocs.harness.io/tag/AllowList), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
+- **New Docs:** [API Docs](https://apidocs.harness.io/tag/IP-Allowlist), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
 - **New Videos:** [Ignoring Developer Experience is Hurting Your Organization: DX is Critical](https://youtu.be/ka6kHPMGGpc?si=MCcVZdvP2bGCCI3h)
 
 
@@ -343,7 +365,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
 
 #### New features and enhancements
 
