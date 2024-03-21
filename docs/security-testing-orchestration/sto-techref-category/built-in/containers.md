@@ -17,7 +17,7 @@ You can use this step to add a built-in Aqua Trivy and/or Anchor Grype step to d
 
 - If you choose to add both scanners, you might see the same vulnerability listed twice — detected once by Trivy and again by Grype — in your scan results.
  
-- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant) automatically.
+- The step detects your [target and variant](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant) automatically if it's needed.
 
 - All other settings such as **Log level** and **Fail on Severity** are set to their defaults. 
 
