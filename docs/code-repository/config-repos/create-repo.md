@@ -16,6 +16,16 @@ You can create repositories directly in Harness Code or [import repositories](./
 
 2. Select **Repositories**, and then select **New Repository**.
 3. Enter a repository **Name** and optional **Description**.
+
+   Repository names can't contain the following strings:
+
+   ```
+   account.
+   org.
+   project.
+   .git
+   ```
+
 4. Harness Code repositories are initialized with a `main` branch, unless you specify a different name for the base branch. To change the base branch name, select `main` and enter a name for the base branch.
 5. Select your preference for visibility (**Public** or **Private**).
 6. Optionally, you can add a **License**, **.gitignore**, or **README** file to your repository.

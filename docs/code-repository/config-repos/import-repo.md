@@ -21,7 +21,18 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
 4. Depending on the provider, provide the administrative entity (**Organization**, **Project**, **Workspace**, or **Group**) and **Host URL** (if applicable) associated with your repository.
 5. If you are importing a single repository, enter the name of the repository you want to import in **Repository**.
 
-   Harness automatically populates the **Name** field based on the **Repository** field. If you want your repository to have a different name in Harness Code, change the **Name** field.
+   Harness automatically populates the **Name** field based on the **Repository** field.
+
+   If you want or need to change the repository name in Harness Code, you can change the **Name** field.
+
+   Repository names in Harness Code can't contain the following strings:
+
+   ```
+   account.
+   org.
+   project.
+   .git
+   ```
 
 6. If the repository or entity is private, select **Requires Authorization** and provide authorization credentials to access the repository.
 
