@@ -124,7 +124,11 @@ In a Harness pipeline, all steps in a given stage share the same [workspace](/do
 
 If your steps need to use data in locations outside the root workspace, you must add these as [shared paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
-**This is required if you want to cache directories outside `/harness`.**
+:::warning
+
+Shared paths are required if you want to cache directories outside `/harness`.
+
+:::
 
 For example:
 
