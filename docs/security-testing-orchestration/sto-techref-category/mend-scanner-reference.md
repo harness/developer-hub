@@ -273,6 +273,10 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 Use this field to run the Mend scanner with specific command-line arguments.
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
 <!-- 
 
 You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. 
