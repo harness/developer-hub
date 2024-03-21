@@ -105,7 +105,7 @@ gsutil -m cp \
 
 ### New features and enhancements
 
-- The Environments page and the Infrastructure Definition section of the Environments page didn't list more than 100 infrastructure definitions. This issue is resolved by adding pagination and search support. You can now view 500 items in infrastructure selection drop-down in the Run Pipeline page. (CDS-94037)
+- The Environments page and the Infrastructure Definition section of the Environments page didn't list more than 100 infrastructure definitions. This issue is resolved by adding pagination and search support. You can now view 500 items in the infrastructure selection drop-down in the Run Pipeline page. (CDS-94037)
 
 ### Fixed issues
 
