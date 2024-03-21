@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 20th 2024
+### Latest Updated: March 21st 2024
 
 ## March 2024
 
@@ -69,6 +69,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - We've fixed an analytics issue that caused a target's attributes to not be sent in analytics payloads, as well fail to appear in the UI. (FFM-10943)
  - We've resolved an issue that caused new targets to not be sent in analytics payloads. This issue commonly happened when multiple instances of the SDK were created.
+
+#### Version 1.6.0
+
+ - We've made further enhancements to the 'evaluations per second' performance. The SDK can now process an extra 90,000 evaluations per second. (FFM-10837)
+ - This version marks `Target.isPrivate` as 'no longer obsolete'. We've also made improvements to the SDK processing of private targets: 
+ -- Previously, the private targets were still stored in cache, but only dropped at the end of a metrics interval. The SDK no longer stores private targets in cache at any point. 
 
 #### Version 1.5.0
 
