@@ -36,11 +36,13 @@ All CI stages have an infrastructure definition, which represents the build infr
 
 You can use **Shared Paths** in a stage to [share data across steps](../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../use-ci/caching-ci-data/cache-intelligence.md).
 
-When a pipeline runs, it creates a temporary volume called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace. Then, the steps in the stage run inside the root. The workspace is the current working directory for each step in the stage. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`. The workspace is destroyed when the stage ends.
+When a pipeline runs, it creates a temporary volume for each stage called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace. Then, the steps in the stage run inside the root. The workspace is the current working directory for each step in the stage. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`. The workspace is destroyed when the stage ends.
 
 Individual steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist throughout the stage lifetime. If you need to share additional volumes, you can add **Shared Paths**. Paths must begin with a forward slash, such as `/vol`. <!-- resolves as `/vol/harness`? -->
 
 For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build stage uses Maven, you can specify `/root/.m2` as a **Shared Path** so that all steps in that stage can access that directory.
+
+If you need to shared data across stages, use [caching](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-across-stages).
 
 </details>
 
@@ -58,7 +60,7 @@ Steps run as the root user, generally. For example, with Harness Cloud build inf
 
 For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
 
-With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user) and then override the default user as needed for individual steps.
 
 :::
 
@@ -72,13 +74,9 @@ Test Intelligence speeds up your test cycles by running only the unit tests requ
 
 ## Plugins
 
-Plugins perform predefined tasks, such as deploying code, publishing artifacts, sending notifications, and more. They are configured as steps in your CI pipelines.
+Drone plugins are Docker containers that perform predefined tasks, such as deploying code, publishing artifacts, sending notifications, and more. They run in **Plugin** steps in your CI pipelines. You can use existing pre-built plugins or write your own. For more information, go to [Use Plugins](/docs/category/use-plugins/).
 
-Docker Plugins are Docker containers that perform predefined tasks and run in **Plugin** steps. The Drone community maintains an [extensive plugin library](https://plugins.drone.io/) for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
-
-For more information, go to [Use Plugins](/docs/category/use-plugins/), [Plugin step settings](../use-ci/use-drone-plugins/plugin-step-settings-reference.md), and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
-
-If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+If you're using Harness Cloud build infrastructure, you can use the built-in [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Dependencies and background services
 
@@ -90,11 +88,11 @@ Caching expedites job execution by reusing data from expensive fetch operations 
 
 ### Docker layer caching
 
-[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
+[Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 
-Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can [push your artifacts](/docs/category/build-and-upload-artifacts). Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
+Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can [push your artifacts](/docs/category/build-push-upload-download). Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
 
 ### Services
 

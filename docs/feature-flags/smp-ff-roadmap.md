@@ -16,7 +16,7 @@ The table below outlines the roadmap for the Harness Self-Managed Enterprise Edi
 | **Release version**| **Feature set** | **Deployment infrastructure** | **Supported platforms** | **Supported ingress** |
 | --- | --- | --- | --- | --- |
 | Beta | All functionality | <ul><li> AWS Commercial Cloud</li><li>Connected</li><li>Signed certificates</li></ul>| <ul><li>AWS Commercial and GovCloud</li><li>Kubernetes clusters</li></ul> | Istio virtual services in strict mode |
-| Public Preview | All functionality | <ul><li> AWS Commercial Cloud</li><li>Connected/Airgapped</li><li>Signed certificates</li></ul> | <ul><li>AWS Commercial and GovCloud</li><li>Azure commercial and GovCloud</li><li>Kubernetes clusters</li></ul> | Istio virtual services in strict mode |
+| Limited GA | All functionality | <ul><li> AWS Commercial Cloud</li><li>Connected/Airgapped</li><li>Signed certificates</li></ul> | <ul><li>AWS Commercial and GovCloud</li><li>Azure commercial and GovCloud</li><li>Kubernetes clusters</li></ul> | Istio virtual services in strict mode |
 | General Availability **(Current version)** | All functionality | 
 
 # SDK support in Self-Managed Enterprise Edition

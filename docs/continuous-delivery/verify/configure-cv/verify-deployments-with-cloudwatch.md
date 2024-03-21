@@ -23,13 +23,13 @@ Harness supports only the Metrics Insight query language.
 
 ## Review: CV Setup Options
 
-To use the Verify step, you will need a Harness Service Reliability Management Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.
+To use the Verify step, you will need a Harness Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.
 
-You can set up a Monitored Service in the Service Reliability Management module or in the Verify step in a CD stage. The process is the same.
+You can set up a Monitored Service in the Verify step in a CD stage.
 
-No matter where you set up the Monitored Service, once it's set up, it's available to both Service Reliability Management and CD modules.
+There are other ways to set up a Monitored Service. To learn more see: [Monitored Service](docs/platform/monitored-service.md)
 
-In this topic we'll set up the Monitored Service as part of the **Verify** step.
+In this topic we'll set up the Monitored Service as part of the **Verify** step.
 
 ## Step 1: Add Verify Step
 
@@ -172,7 +172,7 @@ The recommended **Duration** is **10 min** for logging providers and **15 m
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md)
+In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -180,9 +180,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Select Delegates with Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 
 ## Step 9: Deploy and Review Results

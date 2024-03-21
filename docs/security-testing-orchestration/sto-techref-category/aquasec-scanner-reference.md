@@ -1,239 +1,182 @@
 ---
 title: Aqua Security scanner reference for STO
-description: Image scans with Aqua Security
+description: Scan container images with Aqua Security.
 sidebar_label: Aqua Security scanner reference
-sidebar_position: 35
+sidebar_position: 25
 ---
 
 You can ingest container-image scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
+
+The Aqua Security step can also ingest assurance policy violations. These violations appear as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+
+<DocImage path={require('./static/sto-7164-aquasec-external-policies.png')} width="70%" height="70%" title="Select policy sample" />
+
+
 
 ## Important notes for running Aqua Security scans in STO
 
 
 ### Docker-in-Docker requirements
 
-<!-- -->
-
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
-### Root access requirements 
 
+### Root access requirements 
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
 
-
 <StoRootRequirements />
+
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
+
 ## Aqua Security step settings for STO scans
 
-The recommended workflow is add an Aqua Security step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add an Aqua Security step to a Security Tests or CI Build stage and then configure it as described below.
 
 
-### Scan settings
-
-
-<a name="scan-mode"></a>
+### Scan
 
 #### Scan Mode
 
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
+<StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
+
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
 
-### Target Settings
-
-<a name="target-type"></a>
+### Target
 
 #### Type
 
+import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
-import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/>       
+
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-<!-- =============================================================================  
-### Container Image settings
 
-<!-- =============================================================================  
-<a name="container-type"></a>
-
-#### Type  (_orchestration_)
+### Container image
 
 
-import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
+#### Type
 
+import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 <StoSettingImageType />
 
-<!-- =============================================================================  
-
-
-<a name="container-domain"></a>
 
 #### Domain (_extraction_)
 
-
-
-import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
-
+import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
 
 <StoSettingImageDomain />
 
-<!-- =============================================================================  
-<a name="container-name"></a>
 
 #### Name
 
-
-import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
-
+import StoSettingImageName from './shared/step_palette/image/_name.md';
 
 <StoSettingImageName />
 
-<!-- =============================================================================  
-
-
-<a name="container-tag"></a>
 
 #### Tag
 
-
-import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
-
+import StoSettingImageTag from './shared/step_palette/image/_tag.md';
 
 <StoSettingImageTag />
 
 
 #### Region  
 
-
-import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
-
+import StoSettingImageRegion from './shared/step_palette/image/_region.md';
 
 <StoSettingImageRegion />
 
-<!-- ============================================================================= -->
 
-<!-- ============================================================================= 
-
-### Authentication settings
-
-#### Access ID (_orchestration_)
+### Authentication
 
 
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+#### Access Domain
 
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
-<StoSettingAuthAccessID />
+<StoSettingAuthDomain />
+
 
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
-
 
 #### Access Region
 
 The AWS region of the image to scan.
 
-<!-- ============================================================================= -->
 
+### Ingestion
 
-### Ingestion settings
-
-
-<a name="ingestion-file"></a>
 
 #### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
-
-<a name="cli-flags"></a>
-
 
 
 #### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
-### Settings
-
-TBD
-
--->
 
 ### Additional Configuration
 
@@ -249,12 +192,16 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
-<!-- 
+
+
+<!-- STO-7187 remove legacy configs for scanners with step palettes
+
+
 ## Security step settings for Aqua Security scans in STO (legacy)
 
 * `product_name` = `aqua security`
@@ -301,7 +248,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <!--
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 
 

@@ -1,11 +1,11 @@
 ---
 title: Nmap (Network Mapper) scanner reference for STO
-description: Instance scans with Nmap
+description: Scan application instances with Nmap.
 sidebar_label: Nmap (Network Mapper) scanner reference
 sidebar_position: 270
 ---
 
-You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
+You can scan your application instances and ingest results from [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
 
 ## Important notes for running Nmap scans in STO
 
@@ -33,7 +33,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Nmap step configuration
+## Nmap step settings for STO
 
 The recommended workflow is add an Nmap step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
@@ -42,24 +42,27 @@ The recommended workflow is add an Nmap step to a Security Tests or CI Build sta
 
 
 
-### Scan settings
+### Scan
 
 #### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-<StoSettingScanMode />
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -90,40 +93,38 @@ Accepted values(s):
 - [**Exploit**](https://nmap.org/nsedoc/categories/exploit.html)
 
 
-### Target Settings
+### Target
 
 <a name="target-type"></a>
 
 #### Type
 
+import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.md';
 
-import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
-
-
-<a name="scan-type"></a>
 <StoSettingScanTypeInst />
 
-<a name="target-name"></a>
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
+
+<StoSettingScanTypeAutodetectApp/>
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
 
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-### Instance settings
+### Instance
 
 
 <!-- ============================================================================= -->
@@ -132,7 +133,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 #### Domain
 
 
-import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/instance/_domain.md';
+
 
 <StoSettingInstanceDomain />
 
@@ -142,7 +144,8 @@ import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance
 #### Protocol
 
 
-import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/instance/_protocol.md';
+
 
 
 <StoSettingInstanceProtocol />
@@ -153,7 +156,8 @@ import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instan
 #### Port
 
 
-import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/instance/_port.md';
+
 
 
 <StoSettingInstancePort />
@@ -164,10 +168,25 @@ import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-p
 #### Path
 
 
-import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/instance/_path.md';
+
 
 
 <StoSettingInstancePath />
+
+### Ingestion
+
+
+<a name="ingestion-file"></a>
+
+#### Ingestion File
+
+
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
+
+
+<StoSettingIngestionFile  />
 
 
 ### Log Level, CLI flags, and Fail on Severity
@@ -177,7 +196,8 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 #### Log Level
 
 
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 
 
 <StoSettingLogLevel />
@@ -191,7 +211,8 @@ You can use this field to run the [Nmap scanner](https://nmap.org/book/man-brief
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 
@@ -217,15 +238,19 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
-## Security step settings for Nmap scans in STO (*legacy*)
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
-You can set up Nmap scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+## Security step settings for Nmap scans in STO (legacy)
+
+:::note
+You can set up Nmap scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Nmap step](#nmap-step-settings-for-sto) instead.
+:::
 
 #### Target and variant
 
@@ -266,3 +291,5 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />
+
+-->

@@ -4,11 +4,10 @@ sidebar_label: Overview
 sidebar_position: 1
 redirect_from:
   - /docs/chaos-engineering/get-started/introduction-to-chaos-module
+description: This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 ---
 
-## Introduction
-
-Welcome to Harness Chaos Engineering (CE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
+Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. How would you ensure that your application performs as expected under different failure conditions?
 
@@ -17,6 +16,7 @@ It is _relevant to all types of systems (including legacy applications and infra
 cloud-native applications that carry multiple points of failure due to their distributed, and elastic nature.
 
 ## Why is chaos engineering important?
+
 In the current landscape of fast-paced technology, system failures can have a significant impact on businesses, customers, and stakeholders. Chaos engineering provides a way to identify potential issues before they become major problems, helping organizations minimize downtime, and mitigate risks.
 
 Resilience is built into applications using the following steps:
@@ -50,14 +50,14 @@ are subject to frequent, and independent upgrades. The resulting paradigm is:
 CE takes a holistic approach to chaos engineering, and doesn't merely focus on fault injection. It is designed to help users set up a fully operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/), and addresses several enterprise needs around its practice, which include:
 
 1. Cloud native approach to chaos engineering which supports declarative definition of experiments and Git-based chaos artifact sources (chaos-experiments-as-code).
-2. Extensive fault library and robust suite of [ready-to-use experiments](../technical-reference/chaos-faults), with support to construct complex custom experiments with [multiple faults](../configure-chaos-experiments/experiments/create-complex-chaos-experiments) in the desired order.
+2. Extensive fault library and robust suite of [ready-to-use experiments](/docs/chaos-engineering/chaos-faults), with support to construct complex custom experiments with [multiple faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in the desired order.
 3. Centralized control plane which supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
 4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
-5. Native integration with [Harness Continuous Delivery (CD) pipelines](/tutorials/chaos-experiments/integration-with-harness-cd).
-6. [Hypothesis validation using probes](../configure-chaos-experiments/probes/validate-hypothesis-using-probes) and SLO management using integration with Harness Continuous Verification (CV).
+5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/chaos-cd.md).
+6. [Hypothesis validation using probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided gameday execution with detailed analytics and reporting based on experiment execution and application resilience.
 8. Chaos events, metrics and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
 
+## Try Chaos Engineering today
 
-## Conclusion
-Chaos engineering is a critical practice for building resilient systems in today's technology landscape. Harness provides a powerful chaos module that makes it easy to get started with chaos engineering. To get started with a simple chaos experiment, go to [Your first chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering).
+Chaos engineering is a critical practice for building resilient systems in today's technology landscape. Harness provides a powerful chaos module that makes it easy to get started with chaos engineering. To get started with a simple chaos experiment, [run your first chaos experiment](/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering.md).

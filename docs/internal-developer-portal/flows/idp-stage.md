@@ -2,10 +2,6 @@
 title: IDP Stage
 description: Overview of IDP stage and the steps associated with it
 sidebar_position: 2
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 
@@ -17,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 :::info
 
-Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contach with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
+Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
 
 :::
 
@@ -62,13 +58,30 @@ This functionality is limited to the modules and settings that you have access t
 
 ## Infrastructure
 
-4. Under **Infrastructure** tab we suggest you to select **[Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud)** but you're free to choose from [Kubernetes](https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm#define-the-build-infrastructure) or [Local](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#set-the-pipelines-build-infrastructure) or [VM](https://developer.harness.io/docs/category/set-up-vm-build-infrastructures)
+4. Under **Infrastructure** tab, Harness recommends [Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#use-harness-cloud), but you can also use a [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure), [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) or [self-managed AWS/GCP/Azure VM](/docs/category/set-up-vm-build-infrastructures) build infrastructure.
 
 ![](./static/infrastructure.png)
 
+## Pipeline Variables
+
+5. Before adding the execution steps we need to create some **[pipeline variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/)** with [runtime inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) which we will be using as **[expression inputs](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)** in various steps under execution. 
+
+6. To add pipeline variables go to the right nav of your pag and select **Variables** icon.
+
+7. Under **Custom Variables** select **+Add Variable**.
+
+8. Add a name to the variable and select the input type as **Runtime**.
+
+
+![](./static/add-pipeline-variable.png)
+
+To use the pipeline variable select the input type as **Expressions** and follow the [JEXL format](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable/#reference-variables-in-a-pipeline) to add the variable. 
+
+![](./static/add-repo-details.png)
+
 ## Execution Steps
 
-5. Now add the steps under the **Execution Tab**. The following is the list of suggested steps to be used in the execution.
+9. Now add the steps under the **Execution Tab**. The following is the list of suggested steps to be used in the execution.
 
 ![](./static/idp-stage.png)
 
@@ -80,14 +93,20 @@ By cloning the repository, you gain access to the necessary code, scripts, or co
 
 The Git Clone step uses a containerized step group. For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
 
+<Tabs>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
 ![](./static/git-clone.png)
 
 
-<Tabs>
-<TabItem value="YAML" label="YAML" default>
+1. In your Developer Portal stage, in **Execution**, select **Add Step**.
+2. Select **Git Clone**.
+3. Configure the steps using the settings described below.
 
+</TabItem>
+<TabItem value="YAML" label="YAML">
 
-```
+```YAML
 - step:
    type: GitClone
    name: GitClone_1
@@ -101,20 +120,24 @@ The Git Clone step uses a containerized step group. For more information, go to 
          branch: main
 ```
 
-
-</TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
-
-1. In your Developer Portal stage, in **Execution**, select **Add Step**.
-2. Select **Git Clone**.
-3. Configure the steps using the settings described below.
-
-
 </TabItem>
 </Tabs>
 
+#### Select Git Provider
+
+Select the Git Provider as **Third-party Git Provider** in case you don't have your code in [**Harness Code Repository**](https://developer.harness.io/docs/code-repository/) 
+
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
 
 Select a connector for the source control provider hosting the code repository that you want the step to clone.
 
@@ -160,12 +183,48 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 Cookiecutter step is used to take inputs for the cookiecutter template. 
 
-![](./static/cookicutter.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
+![](./static/cookicutter.png)
+
+#### Repository Type
+
+Select the repository type in which your template is stored, which could be public or private git repository. 
+
+:::info
+
+In case it's **Private** make sure you have added the **gitclone step** and the **path for template** should be the **Clone Directory** added in **gitclone step**
+
+In case of public templates you just need to add the public URL of the template path stored in your git provider. eg `https://github.com/devesh-harness/test-cookicutter`
+
+:::
+
+#### Path for Template 
+
+First select the type of the input it could be a [Fixed Value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values), [Runtime input](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) or [Expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)
+
+In case of **Fixed Value** provide the absolute value of template URL, for eg. `https://github.com/devesh-harness/test-cookicutter`
+
+In case of **Runtime Input** provide the absolute value of the template URL after you run the pipeline. 
+
+In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](/docs/internal-developer-portal/tutorials/service-onboarding-pipeline.md#manage-variables-in-the-pipeline).
+
+#### Configure Template
+
+Provide the input required the template in terms of key value pairs in this step. 
+
+![](./static/key-value-cookiecutter.png)
+
+
+</TabItem>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -173,38 +232,11 @@ Cookiecutter step is used to take inputs for the cookiecutter template.
     name: CookieCutter
     identifier: idpcookiecutter
     spec:
-    templateType: <+pipeline.variables.template_type>
+    templateType: public
     publicTemplateUrl: <+pipeline.variables.public_template_url>
     cookieCutterVariables:
         app_name: <+pipeline.variables.project_name>
 ```
-
-
-</TabItem>
-  <TabItem value="Pipeline Studio" label="Pipeline Studio">
-
-
-#### Repository Type
-
-Select the repository type in which your template is stored, which could be public or private.
-
-#### Path for Template
-
-First select the type of the input it could be a [Fixed Value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values), [Runtime input](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#runtime-inputs) or [Expression](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#expressions)
-
-In case of **Fixed Value** provide the absolute value of template URL, for eg. `https://github.com/devesh-harness/test-cookicutter`
-
-In case of **Runtme Input** provide the absolute value of the template URL after you run the pipeline. 
-
-In case of **Expression** provide the pipeline variable in JEXL format which takes the template URL as an input, this is widely used while implementing the [self service flow](https://developer.harness.io/tutorials/internal-developer-portal/service-onboarding-pipeline#manage-variables-in-the-pipeline).  
-
-#### Configure Template
-
-Provide the input required the temlate in terms of key value pairs in this step. 
-
-![](./static/key-value-cookiecutter.png)
-
-// TODO: Advanced Config
 
 
 </TabItem>
@@ -215,34 +247,38 @@ Provide the input required the temlate in terms of key value pairs in this step.
 
 This step is to create the repository in your git provider which will be later used to add the service/app created using cookiecutter step along with the catalog which will be created in the **Create Catalog** step. 
 
-![](./static/create-repo.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
+
+:::info
+
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository getting created in this step. 
+
+:::
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-```YAML
-- step:
-    type: CreateRepo
-    name: CreateRepo
-    identifier: createrepo
-    spec:
-    connectorRef: account.testdev
-    organization: <+pipeline.variables.organization>
-    repository: <+pipeline.variables.project_name>
-    repoType: <+pipeline.variables.repository_type>
-    description: <+pipeline.variables.repositoty_description>
-    defaultBranch: <+pipeline.variables.repository_default_branch>
-```
-
-</TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+![](./static/create-repo.png)
 
 #### Repository Type
 
 Select the repository type you want to create, which could be public or private.
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
+
 Select a connector for the git provider that will host the code repository.
 
 The following topics provide more information about creating code repo connectors:
@@ -259,20 +295,80 @@ The following topics provide more information about creating code repo connector
 
 Add the org, repo name, Repo Description and Default branch for the repo you want to create.
 
+</TabItem>
+<TabItem value="YAML" label="YAML">
+
+```YAML
+- step:
+    type: CreateRepo
+    name: CreateRepo
+    identifier: createrepo
+    spec:
+    connectorRef: account.testdev
+    organization: <+pipeline.variables.organization>
+    repository: <+pipeline.variables.project_name>
+    repoType: <+pipeline.variables.repository_type>
+    description: <+pipeline.variables.repository_description>
+    defaultBranch: <+pipeline.variables.repository_default_branch>
+```
 
 </TabItem>
 </Tabs>
 
+#### Output
+
+Following is the output variable of this step.
+
+1. **repositoryUrl** : The URL of the repository created eg; `https://github.com/org-name/repo-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<+pipeline.stages.idp.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>`
+
+These output variable could be viewed under the output tab in 
+![](./static/output-createrepo.png)
+
 
 ### 4. Create Catalog
 
-This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software componenet we have created in previous step in our IDP catalog. 
+This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to register the software component we have created in previous step in our IDP catalog. 
+
+:::warning
+
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
+
+:::info
+
+The git connector used under **[Connectors Page](https://developer.harness.io/docs/internal-developer-portal/get-started/onboarding-guide#connector-setup)** in IDP Admin should have fetch access to the repository the `catalog-info.yaml` is getting published to, for it to be registered in the catalog. 
+
+:::
+
+<Tabs>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
 ![](./static/create-catalog.png)
 
+#### File Name, Path
+Name the `catalog-info.yaml` followed by providing a path if you don't want to register in the root of the repo created in the `Create Repo` step. 
 
-<Tabs>
-<TabItem value="YAML" label="YAML" default>
+#### File Content
+
+Add the YAML content to be added in your `catalog-info.yaml` file, For eg.,
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: <+pipeline.variables.project_name>
+  description: <+pipeline.variables.project_name> created using self service flow
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: service
+  owner: test
+  lifecycle: experimental
+```
+
+</TabItem>
+<TabItem value="YAML" label="YAML">
 
 ```YAML
 - step:
@@ -297,61 +393,43 @@ This step is used to create the `catalog-info.yaml/idp.yaml` to be ued to regist
 ```
 
 </TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
-
-#### File Name, Path
-Name the `catalog-info.yaml` followed by providing a path if you don't want to regster in the root of the repo created in the `Create Repo` step. 
-
-#### File Content
-
-Add the YAML content to be added in your `catalog-info.yaml` file, For eg.,
-
-```YAML
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: <+pipeline.variables.project_name>
-  description: <+pipeline.variables.project_name> created using self service flow
-  annotations:
-    backstage.io/techdocs-ref: dir:.
-spec:
-  type: service
-  owner: test
-  lifecycle: experimental
-```
-
-
-</TabItem>
 </Tabs>
 
+#### Output
+
+Following is the output variable of this step.
+
+1. **registeredCatalogUrl** : The URL of the software component registered in the catalog of IDP eg; `https://app.harness.io/ng/account/**************/module/idp/catalog/default/component/component-name` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>>`
+
+These output variable could be viewed under the output tab in 
+![](./static/output-createcatalog.png)
 
 ### 5. Direct Push
 
 This step is used to push the `service/application` created using Cookiecutter step along with the `catalog-info.yaml` in the repo you created in previous step. 
 
-![](./static/direct-push.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-```YAML
-- step:
-    type: DirectPush
-    name: DirectPush
-    identifier: directpush
-    spec:
-    connectorRef: account.testdev
-    repository: <+pipeline.variables.project_name>
-    organization: <+pipeline.variables.organization>
-    codeDirectory: <+pipeline.variables.project_name>
-    branch: <+pipeline.variables.direct_push_branch>
-```
-
-</TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+![](./static/direct-push.png)
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
+
 Select a connector for the git provider where you want to push the code. 
 
 The following topics provide more information about creating code repo connectors:
@@ -368,6 +446,27 @@ The following topics provide more information about creating code repo connector
 
 Add the Org, Repo Name, Repo Description and Branch Name where you want to push the code.
 
+#### Allow Force Push
+
+This when enabled or set to `true`, will be able to overwrite the changes to **Default branch** set in the **Create Repo** step. 
+
+</TabItem>
+<TabItem value="YAML" label="YAML">
+
+```YAML
+- step:
+    type: DirectPush
+    name: DirectPush
+    identifier: directpush
+    spec:
+      connectorType: Github
+      forcePush: true
+      connectorRef: account.testdev
+      organization: <+pipeline.variables.organization>
+      repository: <+pipeline.variables.project_name>
+      codeDirectory: <+pipeline.variables.project_name>
+      branch: <+pipeline.variables.direct_push_branch>
+```
 
 </TabItem>
 </Tabs>
@@ -376,31 +475,28 @@ Add the Org, Repo Name, Repo Description and Branch Name where you want to push 
 
 This step is used to register the software component created in the Catalog of Harness IDP using `catalog-info.yaml`. 
 
-![](./static/register-catalog.png)
+:::warning
 
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
 
-
-```YAML
-- step:
-    type: RegisterCatalog
-    name: registercatalog
-    identifier: registercatalog
-    spec:
-    connectorRef: account.testdev
-    repository: <+pipeline.variables.project_name>
-    organization: <+pipeline.variables.organization>
-    filePath: <+pipeline.variables.catalog_file_name>
-    branch: <+pipeline.variables.direct_push_branch>
-```
-
-
-</TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+![](./static/register-catalog.png)
 
 #### Connector
+
+:::info
+
+Presently for Connectors the `connection type` **ssh** is not supported and for `credentials` only **Username and Password** type is supported. 
+
+![](./static/details-git-conector.png)
+![](./static/creds-git-connector.png)
+
+::: 
+
 Select a connector for the git provider where your `catalog-info.yaml` is stored. 
 
 The following topics provide more information about creating code repo connectors:
@@ -417,18 +513,46 @@ The following topics provide more information about creating code repo connector
 
 Add the Org, Repo Name, Branch and the File path relative to the root of the repository, where your `catalog-info.yaml` is present.
 
+</TabItem>
+<TabItem value="YAML" label="YAML">
+
+
+```YAML
+- step:
+    type: RegisterCatalog
+    name: registercatalog
+    identifier: registercatalog
+    spec:
+    connectorRef: account.testdev
+    repository: <+pipeline.variables.project_name>
+    organization: <+pipeline.variables.organization>
+    filePath: <+pipeline.variables.catalog_file_name>
+    branch: <+pipeline.variables.direct_push_branch>
+```
 
 </TabItem>
 </Tabs>
 
+Following is the output variable of this step.
+
+1. **catalogInfoUrl** : The URL of the `catalog-info.yaml` stored in your git provider where you created the repo in the **CreateRepo step** eg; `https://github.com/org-name/repo-name/blob/code/catalog-info.yaml` and this variable could be used in other steps in the pipeline by using this **JEXL** expression as a stage variable `<<+pipeline.stages.idp.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>>`
+
+These output variable could be viewed under the output tab in 
+![](./static/register-catalog.png)
+
 
 ### 7. Slack Notify
 
-This step is used to notify in your team's clack channel or individual developers once the pipeline is executed successfully and your Software component is registered succesfully in your Software Catalog. 
+This step is used to notify individual developers once the pipeline is executed successfully and your Software component is registered successfully in your Software Catalog. 
 
+:::warning
+
+In the example provided for this step we have used pipeline variables as input for many fields, make sure you have the corresponding pipeline variable created with proper value [as described under pipeline variables](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage#pipeline-variables). 
+
+:::
 
 <Tabs>
-<TabItem value="YAML" label="YAML" default>
+<TabItem value="YAML" label="YAML">
 
  
 ```YAML
@@ -437,50 +561,51 @@ This step is used to notify in your team's clack channel or individual developer
     name: slacknotify
     identifier: slacknotify
     spec:
-    slackId: <+pipeline.variables.slack_id>
-    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catlog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
+    emailId: <+pipeline.variables.email_id>
+    messageContent: " Hello <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catalog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
     token: slacksecrettestws
 ```
 
+The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `messageContent` for slack notification. 
+
+The `token` is the [Bot-tokens](https://api.slack.com/authentication/token-types#bot) 
 
 </TabItem>
-<TabItem value="Pipeline Studio" label="Pipeline Studio">
+<TabItem value="Pipeline Studio" label="Pipeline Studio" default>
+
+1. Add the **Name** of the Step
 
 ![](./static/slack-notify-step.png)
 
+The output of the steps like **Create Repo**, **Register Catalog** in the `JEXL` format has been used to construct the `Message` for slack notification. 
 
 </TabItem>
 </Tabs>
 
-#### Slack Channel ID
+#### Slack Email ID
 
-<Tabs>
-<TabItem value="Slack Web App" label="Slack Web App" default>
+Use the email ID you have used to register in Slack. 
 
-1. Open any web browser and log in to your Slack account.
-2. Now, go to your workspace main page and view the URL in the search bar at the top.
-3. The URL looks ends with a C and letters.  This part of the path represents your Slack Channel ID.
+#### Slack secret key
 
-![](./static/slack-channel-id.png)
+The Slack Secret Key are the [Bot-tokens](https://api.slack.com/authentication/token-types#bot) created with the following permissions. 
 
+1. chat:write
+2. chat:write.public
+3. users:read.email
+4. users:read
 
-</TabItem>
-<TabItem value="MacOS/Windows App" label="MacOS/Windows App">
+![](./static/slack-auth.png)
 
-1. Go to your team channel or individual slack space, click n the profile picture and got to details and copy the member ID
+Read more on [how to create bot-tokens](https://api.slack.com/start/quickstart#scopes). 
 
-![](./static/slack-member-id.png)
-
-
-</TabItem>
-</Tabs>
-
+1. Now create a new secret and add this as a **Secret** under the **Slack Secret Key**.
 
 ## Final Pipeline using Developer Portal Stage
 
 :::info
 
-We have been using **Expression** for most of the input values like `<+pipeline.variables.slack_id>` to be able to provide these values from the templates in the form of `slack_id: ${{ parameters.slackid }}` 
+We have been using **Expression** for most of the input values like `<+pipeline.variables.email_id>` to be able to provide these values from the templates in the form of `email_id: ${{ parameters.emailid }}` 
 
 Example
 
@@ -490,22 +615,22 @@ spec:
   parameters:
     - title: Service Details
       required:
-        - slackid
+        - emailid
         - triggerName
       properties:
-        slackid:
-          title: Insert your Slack ID
+        emailid:
+          title: Enter your Email ID
           type: string
-          description: Your Slack Channel ID
+          description: The email ID in slack
 ...
 ...
   steps:
     - id: trigger
       name: Creating your react app
-      action: trigger:create-and-trigger-pipeline-with-inputset
+      action: trigger:harness-custom-pipeline
       input:
         url: ""
-        slack_id: ${{ parameters.slackid }}
+        email_id: ${{ parameters.emailid }}
 ...
 
 ```
@@ -560,7 +685,7 @@ pipeline:
                     organization: <+pipeline.variables.organization>
                     repository: <+pipeline.variables.project_name>
                     repoType: <+pipeline.variables.repository_type>
-                    description: <+pipeline.variables.repositoty_description>
+                    description: <+pipeline.variables.repository_description>
                     defaultBranch: <+pipeline.variables.repository_default_branch>
               - step:
                   type: CreateCatalog
@@ -606,8 +731,8 @@ pipeline:
                   name: slacknotify
                   identifier: slacknotify
                   spec:
-                    slackId: <+pipeline.variables.slack_id>
-                    messageContent: " Hello <@<+pipeline.variables.slack_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catlog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
+                    email: <+pipeline.variables.email_id>
+                    messageContent: " Hello <@<+pipeline.variables.email_id>>, <+pipeline.variables.project_name> project is created using flows in Harness IDP,\\n*Created Catalog Yaml -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.registercatalog.output.outputVariables.catalogInfoUrl>|Link>\\n*Created Repository -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createrepo.output.outputVariables.repositoryUrl>|Link>\\n*Registered Catlog -* <<+pipeline.stages.serviceonboarding.spec.execution.steps.createcatalog.output.outputVariables.registeredCatalogUrl>|Link>"
                     token: slacksecrettestws
           cloneCodebase: false
           caching:
@@ -664,7 +789,7 @@ pipeline:
       description: ""
       required: false
       value: catalog-info.yaml
-    - name: slack_id
+    - name: email_id
       type: String
       description: ""
       required: false
@@ -681,3 +806,4 @@ pipeline:
 
 </TabItem>
 </Tabs>
+

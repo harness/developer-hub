@@ -1,7 +1,7 @@
 ---
 title: Automate onboarding with Harness
 description: Automate the provisioning of resources to Harness via the Harness Terraform Provider.
-sidebar_position: 3
+sidebar_position: 4
 redirect_from:
   - /docs/platform/Resource-Development/Terraform/automate-harness-onboarding
   - /docs/platform/resource-development/terraform/automate-harness-onboarding
@@ -723,7 +723,7 @@ To manage the organization and project identifiers in code, we recommend user's 
 
 - We recommend for production grade delegate installation, to build your own delegate image and deploy it
 - When you build your own delegate image, you get to customize all the tooling you want installed on it.
-- [Harness offers Instructions to build your own delegate image](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
+- [Harness offers Instructions to build your own delegate image](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 Tooling you should install:
 
@@ -731,7 +731,7 @@ Tooling you should install:
 - `helm`
 - `terraform`
 
-These options are all available in the [Harness Docs](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
+These options are all available in the [Harness Docs](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 ### Create the connectors and secrets first
 
@@ -752,7 +752,7 @@ resource "harness_platform_connector_helm" "helm" {
 }
 ```
 
-These connectors will require [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
+These connectors will require [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness Delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
 
 ![Secret](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/secret.png)
 

@@ -5,7 +5,7 @@ sidebar_position: 95
 sidebar_label: GitHub Enterprise
 ---
 
-GitHub Enterprise is a self-hosted, on-premises version of GitHub.&#x20;
+GitHub Enterprise is a self-hosted, on-premises version of GitHub.
 
 It provides organizations with the tools and features of GitHub, but allows them to host and manage their repositories and collaboration tools within their own infrastructure for enhanced security and control.
 
@@ -13,7 +13,7 @@ Use the SEI Github Enterprise integration to integrate SEI with Github Enterpris
 
 ## Configure the authentication
 
-SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](./sei-integration-github#configure-authentication).
+SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github#configure-authentication).
 
 
 import Tabs from '@theme/Tabs';
@@ -30,8 +30,8 @@ import TabItem from '@theme/TabItem';
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **GitHub Enterprise** integration.
 3. Select **Install**.
-4. Add the **username** & Paste the **personal access token** in the **PAT** **section**. (Note: You can add multiple PATs for the same integration)
-5. In the **URL** field, add the URL where your GitHub repository is deployed.&#x20;
+4. Add the **Username** & paste the **Personal Access Token** as the value for the PAT field. (Note: You can add multiple PATs for the same integration)
+5. In the **URL** field, add the URL where your GitHub repository is deployed.
 6. Select repositories to associate with the integration or select **Ingest All Repos** to associate all current and future repos in your GitHub organization.
 7. If applicable, configure **Additional Options**:
    1. **Fetch PRs**: Allow SEI to ingest PR data from GitHub.

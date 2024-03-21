@@ -1,127 +1,189 @@
-import React, { useEffect, useRef, useState } from "react";
-import DocCard, { Horizon, Props } from "./Card/Card";
+import React, { useEffect, useState } from "react";
 import styles from "./index.module.scss";
-import { CardData } from "./data/carddata";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import roadmap from "./data/roadmapData";
+import HorizonCard from "./HorizonCard";
+import BrowserOnly from "@docusaurus/BrowserOnly";
+import Link from "@docusaurus/Link";
 
 const Roadmap = () => {
-  const [horizon, setHorizon] = useState<Horizon>(null);
-  const [cards, setCards] = useState(CardData);
-  const [key, setKey] = useState({});
-  const handleCardClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
-  ) => {
-    e.currentTarget.focus();
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const modules = [
+    { value: "platform", name: "Platform" },
+    { value: "aida", name: "AI Development Assistant" },
+    { value: "code", name: "Code Repository" },
+    { value: "ci", name: "Continuous Integration" },
+    { value: "cd", name: "Continuous Delivery & GitOps" },
+    { value: "iacm", name: "Infrastructure as Code Management" },
+    { value: "ff", name: "Feature Flags" },
+    { value: "ccm", name: "Cloud Cost Management" },
+    { value: "sto", name: "Security Testing Orchestration" },
+    { value: "ssca", name: "Sofware Supply Chain Assurance" },
+    { value: "ce", name: "Chaos Engineering" },
+    { value: "srm", name: "Service Reliability Management" },
+    { value: "idp", name: "Internal Developer Portal" },
+    { value: "sei", name: "Software Engineering Insights" },
+  ];
 
-    setHorizon(null);
-    setKey(null);
-    const updatedCards = cards.map((card, i) => {
-      if (i === index) {
-        return {
-          ...card,
-          isActive: true,
-        };
-      }
-      return {
-        ...card,
-        isActive: false,
-      };
-    });
-    setCards(updatedCards);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [selectedModule, setSelectedModule] = useState(roadmap[0]);
+  const [key, setKey] = useState(Object.keys(roadmap[0].horizon));
+  const [mobileViewHorizon, setMobileViewHorizon] = useState(
+    Object.entries(selectedModule.horizon)[0]
+  );
+
+  const [selectedDropdownModule, setSelectedDropdownModule] = useState(
+    modules[0]
+  );
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
-  useEffect(() => {
-    cards.map((card) => {
-      if (card.isActive && card.horizon) {
-        setHorizon(card.horizon);
-        const keys = Object.keys(card.horizon);
-        setKey(keys);
+  const handleSwitchTab = (key: any) => {
+    Object.entries(selectedModule.horizon).map((val) => {
+      if (key === val[0]) {
+        setMobileViewHorizon(val);
       }
     });
-  }, [cards]);
-
+  };
   useEffect(() => {
-    cards.map((card) => {
-      if (card.module == "cd") {
-        setHorizon(card.horizon);
-        const keys = Object.keys(card.horizon);
-        setKey(keys);
-      }
-    });
-    const cd = document.getElementById("cd");
-    console.log(cd);
-
-    cd.focus();
-  }, []);
-
+    setMobileViewHorizon(Object.entries(selectedModule.horizon)[0]);
+  }, [selectedModule]);
   return (
-    <>
-      <div className={styles.main}>
-        {CardData.map((card, index) => {
-          return (
-            <div key={index} onClick={(e) => handleCardClick(e, index)}>
-              <DocCard
-                isActive={card.isActive}
-                title={card.title}
-                horizon={card.horizon}
-                module={card.module}
-              />
-            </div>
-          );
-        })}
-      </div>
+    <BrowserOnly fallback={<div>Loading...</div>}>
+      {() => {
+        useEffect(() => {
+          const currentURL = window.location.href;
+          const url = new URL(currentURL);
+          const target = url.hash.slice(1);
+          roadmap.map((mod) => {
+            if (mod.module == target) {
+              setSelectedModule(mod);
+              setKey(Object.keys(mod.horizon));
+            }
+          });
+          modules.map((mod) => {
+            if (mod.value == target) {
+              setSelectedDropdownModule(mod);
+            }
+          });
+        }, []);
 
-      {horizon && (
-        <div className={styles.RoadmapSection}>
-          <div className={styles.section}>
-            <div className={styles.sectionDescription}>
-              <div className={styles.titleLine}>
-                <h4>{key[0]}</h4>
+        const handleModuleSelect = (module: {
+          value: string;
+          name: string;
+        }) => {
+          roadmap.map((mod) => {
+            if (mod.module == module.value) {
+              setSelectedModule(mod);
+              setKey(Object.keys(mod.horizon));
+            }
+          });
+          setSelectedDropdownModule(module);
+          setIsDropdownOpen(false);
+        };
+        return (
+          <div className={styles.roadmap}>
+            <div className={styles.dropdownContainer}>
+              <div className={styles.dropdownHeader} onClick={toggleDropdown}>
+                {selectedDropdownModule && (
+                  <div>
+                    <img
+                      src={`${baseUrl}img/icon_${selectedDropdownModule.value}.svg`}
+                      alt={selectedDropdownModule.name}
+                    />
+                    <p>{selectedDropdownModule.name}</p>
+                  </div>
+                )}
+                <i className="fa-solid fa-chevron-down"></i>
               </div>
-              <i className="fa-solid fa-chevron-right"></i>
+              {isDropdownOpen && (
+                <ul className={styles.dropdownList}>
+                  {modules.map((module) => (
+                    <Link to={`/roadmap/#${module.value}`}>
+                      <li
+                        key={module.value}
+                        onClick={() => handleModuleSelect(module)}
+                      >
+                        <img
+                          src={`${baseUrl}img/icon_${module.value}.svg`}
+                          alt={module.name}
+                        />
+                        <p> {module.name}</p>
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              )}
             </div>
-            {Object.keys(horizon).length > 0 &&
-              horizon[Object.keys(horizon)[0]].map((feature, index) => (
-                <div key={index} className={styles.features}>
-                  <h4>{feature.title}</h4>
-                  <p>{feature.description}</p>
-                </div>
-              ))}
-          </div>
-          <div className={styles.verticalLine}></div>
-          <div className={styles.section}>
-            <div className={styles.sectionDescription}>
-              <div className={styles.titleLine}>
-                <h4>{key[1]}</h4>
+            <h1>
+              {selectedDropdownModule.name} Roadmap
+            </h1>
+            <p>{selectedModule.description}</p>
+
+            {selectedModule && (
+              <div className={styles.RoadmapSection}>
+                {key.map((k, index) => (
+                  <div className={styles.section}>
+                    <div className={styles.sectionDescription}>
+                      <div className={styles.titleLine}>
+                        <h4>{key[index]}</h4>
+                        <p>
+                          {Object.keys(selectedModule.horizon).length > 0 &&
+                            selectedModule.horizon[
+                              Object.keys(selectedModule.horizon)[index]
+                            ].description}
+                        </p>
+                      </div>
+                    </div>
+                    {Object.keys(selectedModule.horizon).length > 0 &&
+                      selectedModule.horizon[
+                        Object.keys(selectedModule.horizon)[index]
+                      ].feature.map((feature, index) => (
+                        <HorizonCard
+                          module={selectedModule.module}
+                          tag={feature.tag}
+                          title={feature.title}
+                          description={feature.description}
+                          link={feature.link}
+                        />
+                      ))}
+                  </div>
+                ))}
               </div>
-              <i className="fa-solid fa-chevron-right"></i>
-            </div>
-            {Object.keys(horizon).length > 0 &&
-              horizon[Object.keys(horizon)[1]].map((feature, index) => (
-                <div key={index} className={styles.features}>
-                  <h4>{feature.title}</h4>
-                  <p>{feature.description}</p>
-                </div>
-              ))}
-          </div>
-          <div className={styles.verticalLine}></div>
-          <div className={styles.section}>
-            <div className={styles.sectionDescription}>
-              <div className={styles.titleLine}>
-                <h4>{key[2]}</h4>
+            )}
+
+            <div className={styles.RoadmapSectionMobile}>
+              <ul className={styles.tabItems}>
+                {key &&
+                  key.map((key, index) => (
+                    <div
+                      className={`${styles.listTabItems} ${mobileViewHorizon[0] === key ? styles.active : ""
+                        }`}
+                      onClick={() => handleSwitchTab(key)}
+                    >
+                      <li key={index}>{key}</li>
+                    </div>
+                  ))}
+              </ul>
+              <div className={styles.mobileRoadmapColumn}>
+                {mobileViewHorizon &&
+                  mobileViewHorizon[1].feature.map((feature) => (
+                    <HorizonCard
+                      module={selectedModule.module}
+                      tag={feature.tag}
+                      title={feature.title}
+                      description={feature.description}
+                      link={feature.link}
+                    />
+                  ))}
               </div>
             </div>
-            {Object.keys(horizon).length > 0 &&
-              horizon[Object.keys(horizon)[2]].map((feature, index) => (
-                <div key={index} className={styles.features}>
-                  <h4>{feature.title}</h4>
-                  <p>{feature.description}</p>
-                </div>
-              ))}
           </div>
-        </div>
-      )}
-    </>
+        );
+      }}
+    </BrowserOnly>
   );
 };
 

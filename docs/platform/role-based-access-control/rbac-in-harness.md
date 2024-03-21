@@ -197,7 +197,7 @@ To configure RBAC in Harness, you must:
 2. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) and, optionally, apply [ABAC](./attribute-based-access-control.md).
 3. [Create user groups](/docs/platform/role-based-access-control/add-user-groups), [create service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account), and [add users](/docs/platform/role-based-access-control/add-users).
 4. [Assign roles and resource groups](#role-binding) to users, user groups, and service accounts.
-5. If you have not already done so, [configure authentication](/docs/platform/Authentication/authentication-overview).
+5. If you have not already done so, [configure authentication](/docs/platform/authentication/authentication-overview).
 
 :::tip Automated provisioning
 
@@ -244,13 +244,20 @@ The _Pipeline Admin_ role has the following permissions:
 5. Select the following permissions:
 
    - For **Pipelines**, select **View**, **Create/Edit**, **Delete**, and **Execute**.
-   - For **Environments**, and then select **View**, **Create/Edit**, and **Access**.
+   - For **Environments**, select **View**, **Create/Edit**, and **Access**.
    - Under **Shared Resources**, select the following:
      - For **Templates**, select **View**, **Create/Edit**, and **Access**.
      - For **Secrets**, select **View**, **Create/Edit**, and **Access**.
      - For **Connectors**, select **View**, **Create/Edit**, **Delete**, and **Access**.
      - For **Variables**, select **View** and **Create/Edit**.
      - For **Delegates**, select **View** and **Create/Edit**.
+   - Under **Policies**, select the following:
+      - For **Governance Policies**, select **View**, **Edit**, **Create** and **Delete**.
+      - For **Governance Policy Sets**, select **View**, **Edit**, **Create** and **Delete**.
+
+      The video below gives an overview of Policies RBAC in Harness.
+
+      <DocVideo src="https://www.loom.com/share/6e11552bd64f4f5d80674e9df1a72b92?sid=4e79bbc9-adf2-477f-adb5-d00300e7b1c8" width="100%" height="600" />
 
 6. Select **Apply Changes**.
 
@@ -317,7 +324,6 @@ For example, if you use Okta as your IdP, you could create a Pipeline Owners gro
 6. Select **Apply**.
 
 For more information about assigning roles and resource groups, go to [Role binding](#role-binding).
-
 </details>
 
 <details>

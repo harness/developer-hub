@@ -9,7 +9,12 @@ This guide explains what you need to know to get started with the Harness Code R
 
 1. If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) before onboarding to Code.
 2. Learn about the [Harness Code key concepts](./key-concepts.md).
-3. Create your first [Harness Code repository](../config-repos/create-repo.md).
+3. Set up your repositories:
+
+   * [Create fresh repos](/docs/code-repository/config-repos/create-repo.md) in Harness Code.
+   * [Import repos](/docs/code-repository/config-repos/import-repo.md) to Harness Code from other Git SCM providers
+   * [Mirror repos](../config-repos/mirror.md) in any SCM provider.
+
 4. Work with your repository as you would in other SCM tools:
 
    * [Clone your repo to work locally](../work-in-repos/clone-repos.md).

@@ -43,7 +43,7 @@ https://www.youtube.com/watch?v=y8s351IJLXw-->
 
 ## Add a trigger to a pipeline
 
-These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/use-ci/prep-ci-pipeline-components.md). Your pipeline must have a defined codebase for the trigger to listen on. For more information, go to [Create and Configure a Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md).
+These steps assume you're familiar with [creating CD pipelines](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) or [creating CI pipelines](../../continuous-integration/use-ci/prep-ci-pipeline-components.md). Your pipeline must have a [default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#configure-the-default-codebase) for the trigger to listen on.
 
 1. Go to your pipeline in Harness.
 2. Select **Triggers** in the Pipeline Studio header.
@@ -62,7 +62,7 @@ All triggers in a Harness account have the same URL: `https://app.harness.io/gat
 2. **Payload Type** is automatically populated based on the selected SCM provider.
 3. For **Connector**, select a [code repo connector](/docs/category/code-repo-connectors) for your SCM provider.
 
-   - A connector is required for all Git trigger types except **Custom**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
+   - A connector is required for all Git trigger types except **Custom** and **Harness Code**. In the connector's **Credentials** settings, make sure API access is enabled and that the token has the [required permissions](#code-repo-connector-permissions-for-webhook-triggers).
    - For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 
 4. For **Event**, select a [Git event type](./triggers-reference.md#event-and-actions), and, if required, select one or more **Actions**.
@@ -72,7 +72,7 @@ For details on trigger settings, go to the [Triggers reference](./triggers-refer
 
 #### Code repo connector permissions for webhook triggers
 
-Git event webhook triggers require specific permissions:
+Git event webhook triggers require specific permissions in the connector:
 
 - The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
 - The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
@@ -418,6 +418,7 @@ If a pipeline doesn't start in response to an incoming event, do the following:
 - Check the execution history (select **Execution History** in the top right of the Pipeline Studio).
 - Verify that the runtime inputs are correct.
 - Check the payloads sent from the Git provider and compare the relevant fields with your trigger conditions. For example, in GitHub you can view the full payload of each event sent from a specific webhook.
+- If you are using a self-hosted Git server, check to be sure your server can make HTTPS requests to the Harness Git webhooks URL `https://app.harness.io/gateway/ng/api/webhook`.
 
 ### Common causes of Webhook registration failure
 

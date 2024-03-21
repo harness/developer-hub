@@ -46,7 +46,7 @@ The SSCA module supports these policy types:
 
 ### Policy enforcement
 
-The SSCA module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
+The SSCA module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Execution details** page in Harness. For more information, go to [view pipeline execution results](../ssca-view-results.md).
 
 <!-- Future: If any violations are detected, response actions are activated based on your policy configurations. -->
 
@@ -70,9 +70,9 @@ You can use remediation flows in the SSCA module to respond quickly and effectiv
 
 ## SLSA compliance
 
-With the Harness SSCA module, you can achieve SLSA Level 2 compliance by generating SLSA Provenance according to the [SLSA v1.0 spec](https://slsa.dev/).
+With the Harness SSCA module, you can achieve SLSA Level 3 compliance by generating SLSA Provenance according to the [SLSA v1.0 spec](https://slsa.dev/).
 
-Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Execution details** page in Harness. For more information, go to [View attestations and violations](../ssca-view-results.md).
+Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Execution details** page in Harness. For more information, go to [View pipeline execution results](../ssca-view-results.md).
 
 ## Harness Platform components
 
@@ -102,9 +102,9 @@ Connectors require different permissions depending on your build environment and
 
 :::info
 
-For SSCA, you must use [Docker Registry connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for Docker-compliant container registries, such as Docker Hub, Docker-compliant Amazon ECR, or Docker-compliant GCR.
+For SSCA, you must use [Docker Registry connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for Docker-compliant container registries, such as Docker Hub, Docker-compliant Amazon ECR, or Docker-compliant GCR.
 
-If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
 
 * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
 * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)

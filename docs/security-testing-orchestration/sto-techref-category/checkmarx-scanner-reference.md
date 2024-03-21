@@ -1,6 +1,6 @@
 ---
 title: Checkmarx scanner reference for STO
-description: Repository scans with Checkmarx
+description: Scan code repositories with Checkmarx.
 sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---
@@ -35,37 +35,22 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Checkmarx step configuration
+## Checkmarx step settings for STO scans
 
-The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Checkmarx scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
-
-
+The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
+### Scan
 
-
-<details>
-<summary>Scanner Template example</summary>
-
-![](./static/checkmarx-scanner-template.png)
-
-</details>
-
-### Scan settings
-
-
-<a name="scan-mode"></a>
 
 #### Scan Mode
 
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeData from './shared/step_palette/scan/mode/_extraction.md';
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
-
-<StoSettingScanMode />
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
@@ -73,9 +58,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 #### Scan Configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -84,70 +67,59 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-
-import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-
+import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 #### Workspace
 
-
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
 
 ### Ingestion File
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 
 ### Authentication
 
-<!-- ============================================================================= -->
-<a name="auth-domain"></a>
 
 #### Domain
 
-
-
-import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
-
+import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';
 
 <StoSettingAuthDomain />
 
-<!-- ============================================================================= -->
-<a name="auth-enforce-ssl"></a>
 
 #### Enforce SSL
 
-
-import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
-
+import StoSettingProductSSL from './shared/step_palette/auth/_ssl.md';
 
 <StoSettingProductSSL />
 
@@ -156,7 +128,8 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 #### API Version
 
 
-import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
+import StoSettingApiVersion from './shared/step_palette/auth/_api-version.md';
+
 
 
 <StoSettingApiVersion />
@@ -167,7 +140,8 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 #### Type
 
 
-import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
+import StoSettingAuthType from './shared/step_palette/auth/_type.md';
+
 
 
 <StoSettingAuthType />
@@ -176,25 +150,20 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 #### Access ID
 
-
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-
+import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
 
 <StoSettingAuthAccessID />
 
 
-
 #### Access Token
 
-
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-
+import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
 
 <StoSettingAuthAccessToken />
 
+
 ### Scan Tool
 
-<!-- ============================================================================= -->
 
 #### Team Name
 
@@ -203,32 +172,33 @@ The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>`
 
 #### Project Name
 
-
-import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
-
+import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.md';
 
 <StoSettingToolProjectName />
-
-<!-- ============================================================================= -->
 
 
 ### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
 
 #### Log Level
 
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
 #### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
+You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful arguments include:
+
+* `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
+* `-LocationPathExclude`— Exclude one or more paths from the scan.
+* `-LocationFilesExclude` — Exclude one or more paths from the scan.
+* `-OsaPathExclude` — Exclude matching paths from the scan.
+* `-OsaFilesExclude` — Exclude matching files from the scan.
+
+<!-- https://harness.atlassian.net/browse/STO-7006  -->
+
 
 ### Running incremental scans with Checkmarx
 
@@ -238,19 +208,16 @@ In some cases, you might want to run an incremental rather than a full scan with
 Consider carefully when to run incremental vs. full scans. See [When should I use Incremental Scans vs Full Scans in CxSAST?](https://support.checkmarx.com/s/article/When-should-I-use-an#:~:text=An%20incremental%20scan%20is%20a,interface%2C%20Cx%20plugins%20and%20CLI) in the Checkmarx documentation.
 :::
 
-<a name="fail-on-severity"></a>
 
 #### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
-
 ### Settings
 
-You can use this field to provide environment variables to be used during the execution of the step. As an exemple, if you need to access your Checkmarx server through a proxy, you can add this setting: 
+You can use this field to provide environment variables to be used during the execution of the step. For example, if you need to access your Checkmarx server through a proxy, you can add this setting: 
 
 * key = `JAVA_TOOL_OPTIONS`
 * value = `-DproxySet=true -Dhttp.proxyHost=MY_PROXY_ADDRESS -Dhttp.proxyPort=MY_PROXY_PORT`
@@ -279,26 +246,27 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for Checkmarx scans in STO (legacy)
 
-
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+:::note
+You can set up Checkmarx scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Checkmarx step](#checkmarx-step-settings-for-sto-scans) instead.
+:::
 
 
 #### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
-
 <StoLegacyTargetAndVariant />
+
 
 #### Checkmarx scan settings
 
@@ -324,6 +292,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 
 <StoLegacyIngest />
+
+-->
+
 
 ## Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan
 
@@ -396,7 +367,7 @@ pipeline:
             type: Cloud
             spec: {}
           sharedPaths:
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
   identifier: CheckmarxGitAction
   name: CheckmarxGitAction
 

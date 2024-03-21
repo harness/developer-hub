@@ -250,7 +250,7 @@ template:
                   action:  
                       type: StageRollback
 ```
-The YAML editor is a full-fledged YAML IDE with autocomplete and other features. For more information, go to the [Harness YAML overview](../pipelines/harness-yaml-quickstart.md).
+The YAML editor is a full-fledged YAML IDE with autocomplete and other features. For more information, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart).
 
 ## Template filter
 

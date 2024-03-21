@@ -28,14 +28,14 @@ For getting started quickly, you can use our [sample code from the .NET SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.4.0**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-dotnet-server-sdk/releases)
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
@@ -88,8 +88,10 @@ public static String apiKey = "YOUR_API_KEY";
 ### Add a Target
 
 <details>
-<summary>What is a Target?</summary> 
+<summary>What is a Target?</summary>
+
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+
 </details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).

@@ -64,7 +64,7 @@ Click **Continue**.
 
 ### Step 4: Delegate Setup
 
-In **Delegates Setup**, use [**Selectors**](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
+In **Delegates Setup**, use [**Selectors**](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
 
 ![](./static/smtp-delegate.png)
 
@@ -121,7 +121,7 @@ Select the Pipeline Events for which you want to send notifications. Click **Con
 ![](./static/add-smtp-configuration-08.png)
 In **Notification Method**, select **Email**.
 
-Enter the email addresses to which you want to send the notifications.
+Enter comma-separated user email addresses to which you want to send the notifications.
 
 Select the User groups which you want to notify.
 

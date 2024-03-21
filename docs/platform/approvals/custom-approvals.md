@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-:::important
-Currently, this feature is behind the feature flag `NG_CUSTOM_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Custom approval stages and steps add control gates to your pipelines by allowing you to approve or reject a pipeline or stage at any point during build execution. When you add a Custom Approval step, you add a script to the step, and then use the script results as approval or rejection criteria.
 
 You might use a Custom Approval stage and step, for example, if you have a custom shell script ticketing system or if you prefer to script your approvals.
@@ -40,9 +35,9 @@ When you add a Custom Approval stage, a Custom Approval step is added to the sta
 
 In the Custom Approval step, you enter a script that is executed at Pipeline runtime.
 
-If the script fails, the step fails and the step or stage [Failure Strategy](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) is initiated.
+If the script fails, the step fails and the step or stage [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
 
-You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](../variables-and-expressions/harness-variables.md).
+You must set approval criteria. Approval criteria can use the results of the script or other Harness features such as [Harness built-in or custom variables](/docs/platform/variables-and-expressions/harness-variables.md).
 
 Rejection criteria is optional.
 
@@ -55,7 +50,7 @@ Criteria can be the following:
 	+ Harness supports JEXL expressions and you can use these with script outputs or Harness variables to create expressions.
 	+ If the resolved JEXL expression is a Boolean true, the approval criteria is met.
 	+ For example, you could evaluate the output from a previous [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
-	+ Go to [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../variables-and-expressions/extracting-characters-from-harness-variable-expressions.md).
+	+ Go to [Built-in and Custom Harness Variables Reference](../variables-and-expressions/harness-variables.md) and [Use Java string methods on expressions](../variables-and-expressions/expressions-java-methods.md).
 
 ## Add a Custom Approval stage
 
@@ -97,7 +92,7 @@ You can select one or more specific Delegates using the [Delegate Selector](../d
 
 It's important to understand how the Timeout, Retry Interval, and Script Timeout settings relate to each other.
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, `1d` for one day.
 
@@ -157,15 +152,33 @@ Custom Approval steps must have at least one **Approval Criteria**. You can also
 
 ![](./static/custom-approvals-07.png)
 
-Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](../pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
+Whether the pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
-In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system.
+In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../variables-and-expressions/harness-variables.md), or your custom ticketing system. The supported operators are `=`, `!=`, `in`, and `not in`. 
+For example, 
+- The condition for the script output `field` to be in `Option1`, `Option2`, or `Option3` can be specified as:
+   ![](./static/custom-approvals-10.png)
+- The condition for the script output `field` to not be in either `Option1`, `Option2`, or `Option3` can be specified as:
+   ![](./static/custom-approvals-11.png)
+
+:::important
+
+Multiple conditions with the same Field are not allowed. Such use cases can be solved using `in`, `not in` operators, or **JEXL Expression**.
+
+:::   
+
 
 If you use Harness expressions, ensure that the expression can be resolved at runtime.
 
 If you use custom variable expressions that reference information from subsequent steps, ensure that those custom variable expressions will be resolved.
 
-In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). You can use a JEXL expression if the field is set to **Fixed value** or **Expression**.
+In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) when you set approval criteria. You can use a JEXL expression if the field is set to **Fixed value** or **Expression**. 
+
+The JEXL expression format for a Custom Approval step is `<+output.bashVarOutput> == "testValue"`.
+
+First, create a variable in **Script**, then create variables in **Script Output Variables** that reference those variables, and then use the **Script Output Variables**' variables and the **Script** variables' value in **Approval Criteria**:  
+
+![](./static/jexl-expression-approval-criteria.png)
 
 ### Option: Script Input Variables
 
@@ -205,8 +218,8 @@ For **Script Input Variables** and **Script Output Variables**, you simply se
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
-* [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition Settings](../pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Apply and Test
 
@@ -335,6 +348,10 @@ Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret Id.
 Harness assumes that you trust your Harness users to add safe scripts to your Custom Approval steps.
 
 Please ensure that users adding scripts, as well as executing deployments that run the scripts, are trusted.
+
+### Notes
+
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations).
 
 ## See also
 

@@ -4,7 +4,7 @@ description: You can write your own plugins.
 sidebar_position: 20
 ---
 
-Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. While you can [run scripts in CI pipelines](/docs/category/run-scripts), if you reuse a script, it is easier to maintain a single plugin rather than modify multiple instances of a script.
+Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. While you can [run scripts in CI pipelines](/docs/continuous-integration/use-ci/run-step-settings), if you reuse a script, it is easier to maintain a single plugin rather than modify multiple instances of a script.
 
 You can write your own plugins and run them in a **Plugin** step in your Harness CI pipelines. There are also many [preexisting plugins](./explore-ci-plugins.md) you can use.
 
@@ -184,7 +184,7 @@ When defined in a **Plugin** step's **Settings**, don't include the `PLUGIN_` pr
 
 :::tip Expressions and secrets
 
-You can use [Harness expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
+You can use [Harness expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) for **Settings** values. For example `password: <+stage.variables.[TOKEN_SECRET]>` supplies a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) containing a [secret](/docs/category/secrets) to a setting called `password`.
 
 Related to this, it is a best practice to use [text secrets](/docs/platform/secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by plugins.
 

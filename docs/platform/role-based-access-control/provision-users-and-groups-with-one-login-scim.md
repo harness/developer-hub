@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
-If OneLogin is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [OneLogin's SCIM integration](https://developers.onelogin.com/scim) with Harness enables OneLogin to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If OneLogin is your identity provider, you can efficiently provision and manage users in your Harness account. Using [OneLogin's SCIM integration](https://developers.onelogin.com/scim) with Harness enables OneLogin to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
 This topic describes how to use a OneLogin SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both OneLogin and Harness.
 
@@ -58,7 +58,7 @@ For more information, go to the OneLogin documentation on [Adding apps](https://
 
 ## Enable SAML SSO with OneLogin
 
-To allow users to log in through your OneLogin SCIM integration, you must also set up [SAML SSO authentication with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
+To allow users to log in through your OneLogin SCIM integration, you must also set up [SAML SSO authentication with OneLogin](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin) in Harness.
 
 ## Provision individual users
 
@@ -68,7 +68,7 @@ With the OneLogin SCIM integration, don't change a provisioned user's email addr
 
 :::
 
-To provision users, add them to the Harness OneLogin app. Users are automatically provisioned in Harness if [SAML SSO with OneLogin is enabled](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin).
+To provision users, add them to the Harness OneLogin app. Users are automatically provisioned in Harness if [SAML SSO with OneLogin is enabled](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin).
 
 1. In OneLogin, select **Users**.
 2. Add a user or select an existing user.

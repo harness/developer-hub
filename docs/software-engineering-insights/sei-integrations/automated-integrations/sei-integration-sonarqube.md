@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **SonarQube** integration, and select **Install**.
 4. Configure and save the integration.
 
@@ -74,8 +74,11 @@ integrations:
 
 ```
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+### Troubleshooting
 
+In case you do not see data for all projects initially, consider enabling the `use_privileged_APIs` metadata field i.e. set the field to `True`. This needs the generated `SONARQUBE_API_KEY` to have the `Requires ‘Administer System’` permissions in SonarQube. For more information, go to [SonarQube Documentation](https://next.sonarqube.com/sonarqube/web_api/api/projects/search).
+
+If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 </TabItem>
 </Tabs>

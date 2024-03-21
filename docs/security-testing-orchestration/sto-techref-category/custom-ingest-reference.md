@@ -1,6 +1,6 @@
 ---
 title: Custom Ingest step reference for STO
-description: ingest JSON or SARIF data from external scanners
+description: Ingest SARIF or JSON scan results.
 sidebar_label: Custom Ingest step reference
 sidebar_position: 130
 ---
@@ -23,13 +23,14 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Scan settings
+## Custom Ingest step settings for STO scans
 
-### Scan Mode
+### Scan
+
+#### Scan mode
 
 
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 <StoSettingScanModeIngest />
 
@@ -37,19 +38,19 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 
 <a name="scan-config"></a>
 
-### Scan Configuration
+#### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
 
 
-## Target settings
+### Target
 
 
-### Type
+#### Type
 
 <!-- Will update the Type description in all ref topics when these updated descriptions get reviewed/approved -->
 
@@ -65,23 +66,23 @@ The target type of the scanned object. You can ingest data for the following tar
 
 <a name="target-name"></a>
 
-### Name 
+#### Name 
+
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
-
-
-<StoSettingProductID />
+<StoSettingTargetName />
 
 
 <!-- ---------------------------------------------------------------------------- -->
 
 <a name="target-variant"></a>
 
-### Variant
+#### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetVariant  />
@@ -94,7 +95,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 ### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+import StoSettingTargetWorkspace from './shared/step_palette/target/_variant.md';
+
 
 
 <StoSettingTargetWorkspace  / -->
@@ -103,54 +105,65 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 
 
-## Ingestion Settings
+### Ingestion
 
 
-### Ingestion File
+#### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
 
 
 
-## Log Level, CLI flags, and Fail on Severity
+### Log Level, CLI flags, and Fail on Severity
 
+#### Log Level
 
-<a name="log-level"></a>
-
-### Log Level
-
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-<!-- ============================================================================= -->
-<a name="cli-flags"></a>
 
-### Additional CLI flags
+#### Additional CLI flags
 
-
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
-<!-- ============================================================================= -->
-<a name="fail-on-severity"></a>
-
-### Fail on Severity
 
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+#### Fail on Severity
+
+
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
+
+### Additional Configuration
+
+In the **Additional Configuration** settings, you can use the following options:
+
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+
+
+### Advanced settings
+
+In the **Advanced** settings, you can use the following options:
+
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Custom Ingest pipeline examples 
 

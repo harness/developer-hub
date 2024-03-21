@@ -18,14 +18,14 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 ## Before You Begin
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
+* [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ## Important: Install Terraform on Delegates
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -250,7 +250,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -455,7 +455,7 @@ In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-del
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
-For example, if you had a Terraform Plan step with the [Id](/docs/platform/References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
+For example, if you had a Terraform Plan step with the [Id](/docs/platform/references/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
 
 
 ```bash
@@ -471,6 +471,14 @@ For information on Terraform Plan in the **Dynamic Provisioning** steps in **Inf
 For example, if the Terraform Plan step with the Id `TfPlan` is in the **Execution** steps of a stage with the Id `TfStage`, then the expression is like this:
 
 `<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.jsonFilePath>`
+
+When Terraform plan is present in a step group, then the expression to access jsonFilePath is like this:
+
+`<+pipeline.stages.[stage name].spec.execution.steps.[step group name].steps.[step name].plan.jsonFilePath>`
+
+:::note
+When the `Run on Remote Workspace` option is selected, you will not be able to export the JSON representation of terraform plan.
+:::
 
 ### Scope of Expression
 
@@ -516,7 +524,7 @@ and found no differences, so no changes are needed.
 
 ## Skip state storage
 
-The following feature requires a minimum Harness delegate version of 812xx.
+The following feature requires a minimum Harness Delegate version of 812xx.
 
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 
@@ -585,10 +593,10 @@ If you generate any local resources on the delegate in the directory where Terra
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Troubleshooting Terraform execution on a Docker delegate managed by ECS
 

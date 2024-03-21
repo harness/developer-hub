@@ -33,7 +33,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 * Target host — In this guide, we use an AWS EC2 instance as the target host.
 * Credentials and other details for the EC2 Instance 
   * To configure and authenticate your WinRM credentials by using NTLM, you should have the domain name, username and password for the EC2 instance.
-
+* To use Harness execution strategies, make sure you should have [IIS service](https://learn.microsoft.com/en-us/iis/application-frameworks/scenario-build-an-aspnet-website-on-iis/configuring-step-1-install-iis-and-asp-net-modules#to-install-iis-and-aspnet-modules-on-windows-server-2012-using-the-ui) installed on your machine.
 ## Objectives
 
 You will learn how to:
@@ -98,6 +98,10 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.zip**, ava
 3. for **Artifact Directory**, enter a forward slash **/**.
 4. For **Artifact Details**, keep the default **Value**.
 5. For **Artifact Path**, leave the default Runtime Input value **\<+input>** for that field. Click **Submit.** The **Artifactory Connector** is added to **Artifacts.** Click **Continue**.
+
+:::info note
+The artifact [expression](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources.md) may vary based on the chosen artifact type.
+:::
 
 ## Define the target infrastructure
 
@@ -266,7 +270,13 @@ Ensure the mapped settings are set to the **Expression** option.
 
 For WinRM PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
 
-For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
+`OUTPUT_NAME` depends on your provisioner outputs configuration, make sure `OUTPUT_NAME` to be an array object.
+
+In case the `OUTPUT_NAME` is stored into several output objects, make sure the map the full path to it.
+
+Below you will see a Terraform provisioner example where terraform `OUTPUT_NAME` is called 'hostInstances'.
+
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<HOST_PROPERTY>`. For example, `<+public_dns>` or `<+privateIp>` which are part of terraform output configuration in below snippet example.
 
 Here's an example:
 
@@ -325,20 +335,15 @@ resource "aws_instance" "example" {
   }
 }
 
-output "hostname" {
-  value = aws_instance.example.public_dns
-}
-
-output "privateIp" {
-  value = aws_instance.example.private_ip
-}
-
-output "subnetId" {
-  value = aws_subnet.example.id
-}
-
-output "region" {
-  value = provider.aws.region
+output "hostInstances" {
+  value = [
+    {
+      public_dns  = aws_instance.example.public_dns
+      privateIp = aws_instance.example.private_ip
+      subnetId  = aws_subnet.example.id
+      region    = provider.aws.region
+    }
+  ]
 }
 
 ```

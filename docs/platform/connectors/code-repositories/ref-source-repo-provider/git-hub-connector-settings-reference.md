@@ -189,7 +189,7 @@ You can use a GitHub App to authenticate a Harness GitHub connector. To use this
 
 This setting is only available for connection types and authentication methods where it is not already enabled by default.
 
-API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
+API access is required for any operations that require Harness to call GitHub APIs, such as using the Harness Git Experience, cloning codebases from PRs, automatically detecting branch names when you manually run pipelines, using Git webhook triggers, and updating Git statuses.
 
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
@@ -201,7 +201,7 @@ Enabling API access requires configuring an API authentication method, either a 
 1. For **API Authentication**, select **Personal Access Token**.
 2. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
 
-   If you are using **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+   With **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
 
    ![](../../static/add-a-git-hub-connector-36.png)
 
@@ -215,7 +215,6 @@ Enabling API access requires configuring an API authentication method, either a 
 ![GitHub token permission scopes.](./static/git-hub-connector-settings-reference-01a.png)
 
 </details>
-
 
 </TabItem>
   <TabItem value="ghapp" label="GitHub App">
@@ -252,9 +251,15 @@ Select whether you want Harness to connect directly to your GitHub account or re
 
 If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
 
-**Connect through a Harness Delegate**, a [Harness delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
+**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 
 </details>
+
+:::tip
+
+The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
 
 ### Delegates Setup
 

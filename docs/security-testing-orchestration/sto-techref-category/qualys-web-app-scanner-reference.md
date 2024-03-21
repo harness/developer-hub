@@ -1,11 +1,11 @@
 ---
 title: Qualys Web Application Scanning (WAS) scanner reference for STO
-description: Instance scans with Qualys WAS
+description: Scan application instances with Qualys WAS.
 sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
 sidebar_position: 320
 ---
 
-You can set up Qualys scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can ingest scan results from Qualys Web Application Scanning results into STO.
 
 ## Important notes for running Qualys scans in STO
 
@@ -74,6 +74,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />

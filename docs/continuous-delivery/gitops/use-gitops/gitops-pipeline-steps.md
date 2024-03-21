@@ -61,13 +61,15 @@ In this step, you can do the following:
 
 You can create a maximum of two Merge PR steps in a stage.
 
+Currently, Git connectors authenticated through OAuth are not supported in the Merge PR step.
+
 :::
 
 This step merges a PR.
 
 ### Fetch Linked Apps step
 
-The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app.
+The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps apps which are generated via ApplicationSet.
 
 The following image shows information that is displayed on the **Output** tab of the step:
 
@@ -126,11 +128,13 @@ You can use the Update GitOps App step only once in a stage.
 
 :::
 
-This step updates a GitOps application through a PR Pipeline. Use this step if you have an existing GitOps application and want to update its target revision (branch or tag) or Helm overrides.
+This step updates a GitOps application through a PR Pipeline. Use this step if you have an existing GitOps application and want to update its target revision (branch or tag), Helm, or Kustomize overrides.
 
 A common Git-based use case bases production deployments on Git tags because tags are immutable. In this use case, to deploy a new version, you can use the Update GitOps App step to update your GitOps application to a new tag.
 
-By using this step, you can also provide Helm overrides (parameters, file parameters, or values files) from the pipeline. Helm parameters and file parameters represent individual value overrides for your Helm application, while values files represent an existing set of overrides already present in the repository.
+You can use this step to override your Kustomize application configuration from the pipeline. 
+
+From this step, you can also provide Helm overrides (parameters, file parameters, or values files) from the pipeline. Helm parameters and file parameters represent individual value overrides for your Helm application, while values files represent an existing set of overrides already present in the repository.
 
 :::info
 

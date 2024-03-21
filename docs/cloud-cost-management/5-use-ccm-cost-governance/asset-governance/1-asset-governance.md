@@ -16,7 +16,7 @@ At a high level, Cloud Custodian integrates seamlessly with services, features, 
 
 
 :::info important
-Currently, Harness supports AWS and Azure cloud governance.
+Currently, Harness supports AWS, Azure and GCP cloud governance.
 :::
 
 ## Anatomy of a cloud asset governance rule
@@ -143,7 +143,7 @@ On the other hand, an unused EBS snapshot refers to a snapshot that is not curre
 
 In summary, an EBS snapshot with no volume is an orphaned resource that cannot be used, while an unused EBS snapshot is a potentially useful resource that is not currently in use.-->
 
-## AWS access permissions
+## Cloud Asset Governance for AWS
 
 Enable the following permissions in AWS to execute cloud governance rules:
 

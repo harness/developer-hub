@@ -10,15 +10,16 @@ title: Kaniko container runtime error
 * Environment:
    * Infrastructure: Kubernetes
    * OS: Linux
+* Stage: Build
+* Step: Build and Push
 
 ## Problem
 
 While building and pushing an image to a Docker registry, you get a `kaniko container runtime error`, such as:
 
 ```
-1 info 01/11/2022 13:06:02 + /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=**************/pythonsample:latest --snapshotMode=redo --digest-file=/kaniko/digest-file
-2 info 01/11/2022 13:06:02 kaniko should only be run inside of a container, run with the --force flag if you are sure you want to continue 
-3 info 01/11/2022 13:06:02 exit status 1
+kaniko should only be run inside of a container, run with the --force flag if you are sure you want to continue
+exit status 1
 ```
 
 ![](../static/kb1_img1.png)
@@ -35,7 +36,7 @@ To add a variable to the pipeline's variables list:
 
    ![](../static/kb1_img2.png)
 
-2. Locate the stage where you have the **Build and Push an Image to Docker Registry** step.
+2. Locate the stage where you have the **Build and Push** step.
 3. Next to **Stage Variables**, select **Add Variable**, and configure the variable as follows:
 
    * Type: String

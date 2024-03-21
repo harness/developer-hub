@@ -174,6 +174,16 @@ Harness displays the status of each pod deployed and confirms steady state.
 
 ![](./static/create-a-kubernetes-canary-deployment-08.png)
 
+#### Traffic Routing Configuration
+
+For information on how to configure traffic routing for Blue Green deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTING_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 #### Wrap Up
 
 The Wrap Up log is long and describes all of the container and pod information for the step, using the kubectl command:

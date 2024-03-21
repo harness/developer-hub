@@ -9,6 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-concepts
+  - /tutorials/ci-pipelines/ci-overview
 ---
 
 Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
@@ -33,7 +34,7 @@ The following video introduces Harness CI and walks through a basic Harness CI p
 <figcaption>Harness CI architecture diagram.</figcaption>
 </figure>
 
-The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
+The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
 
 The [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
 
@@ -52,20 +53,24 @@ The following video demonstrates how to set up a CI pipeline and run a build.
 
 If you want to try creating a pipeline for yourself, these tutorials walk through the pipeline creation process:
 
-- [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-- [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
+- [Tutorial: Build on Harness Cloud](./tutorials.md)
+- [Tutorial: Build on a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
 ## CI features
 
-Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](/docs/get-started/key-concepts).
+Here are some key features of Harness CI.
+
+For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration), and [CI early access features](/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).
+
+For information about general Harness Platform concepts and features, go to [Harness key concepts](/docs/get-started/key-concepts).
 
 ### Harness Cloud
 
-You can run builds on your own build infrastructure or on Harness-hosted build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+You can run builds on your own build infrastructure or on Harness-managed build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
-With Harness Cloud, you can run builds in isolation on Harness-hosted virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
+With Harness Cloud, you can run builds in isolation on Harness-managed virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
@@ -138,4 +143,4 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Try Harness CI
 
-Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
+Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](./tutorials.md).

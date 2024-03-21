@@ -301,7 +301,7 @@ Steps run as the root user, generally. For example, with Harness Cloud build inf
 
 For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
 
-With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user) and then override the default user as needed for individual steps.
 
 :::
 
@@ -427,7 +427,7 @@ To interact with Docker registries in Harness, you use a [Docker connector](/doc
                     command: echo "this runs on openjdk"
 ```
 
-In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md).
+In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md).
 
 ```yaml
      - step:
@@ -649,5 +649,5 @@ Review the following information before proceeding with migration:
 
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Speed up Harness CI pipelines using parallelism](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

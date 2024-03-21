@@ -1,12 +1,13 @@
 ---
-sidebar_position: 2
-title: Run chaos experiments in sandbox to build resilience 
-description: Execute chaos experiments to improve the resilience of the Podtato head app in a sandbox.
+sidebar_position: 8
+title: Walkthrough- Run chaos experiments in sandbox to build resilience 
+description: Execute chaos experiments to improve the resilience of an app in a sandbox.
 ---
+
 This tutorial guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and improve the resilience of the application.
 
 ## Prerequisites
-Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps.
+Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps. Refer to [this](developer-certification#steps-involved-in-obtaining-developer-certification) diagram to understand the entire flow.
 
 ### Create a Harness account
 
@@ -22,6 +23,11 @@ Before you begin the tutorial, you need to have a Harness account. To create one
 
 ![verify](./static/sandbox/verify-email.png)
 
+## High-level flow of control in a sandbox
+
+Below is a diagram that shows a high-level view of the flow of control in a sandbox environment:
+
+![control flow](./static/sandbox/sandbox-flow-of-control.png)
 
 ## Execute pod delete on the Podtato head app
 
@@ -46,9 +52,9 @@ Once you have created an account with Harness, click **Get started** of the **Ch
 :::note
 * A sandbox once created can't be deleted.
 * All users within a sandbox can share the same sandbox.
-The first time you create a sandbox, the session starts automatically. After that, you will need to explicitly **Start** the session.
-You will have total of 20 sessions (each session is 60 minutes) valid for 30 days from the day of creation of the sandbox.
-You can **Stop** anytime and restart the session. The remaining part of the time will be added to the unused quota.
+* The first time you create a sandbox, the session starts automatically. After that, you will need to explicitly **Start** the session.
+* You will have total of 20 sessions (each session is 60 minutes) valid for 30 days from the day of creation of the sandbox.
+* You can **Stop** anytime and **restart** the session. The remaining part of the time will be added to the unused quota.
 :::
 
 ### Execute pod delete experiment
@@ -57,7 +63,7 @@ You can **Stop** anytime and restart the session. The remaining part of the time
 
 ![exp created](./static/sandbox/exp-runs.png)
 
-2. In this step, click **Run** to execute the [pod delete chaos experiment](../technical-reference/chaos-faults/kubernetes/pod/pod-delete) that was previously created. In the background, the experiment also creates probes that check for the availability of the Podtato app's left arm, which is deleted during the pod delete experiment.
+2. In this step, click **Run** to execute the [pod delete chaos experiment](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md) that was previously created. In the background, the experiment also creates probes that check for the availability of the Podtato app's left arm, which is deleted during the pod delete experiment.
 
 ![exp runs](./static/sandbox/execute-exp.png)
 
@@ -104,7 +110,7 @@ You can start executing the sandbox again if you run out of time by click **Run*
 
 ### Perform the same steps for the next experiment
 
-1. The above steps complete the execution of the pod delete experiment. There is one more experiment to execute, that is, [pod network loss](../technical-reference/chaos-faults/kubernetes/pod/pod-network-loss). You can follow the same steps as you did for pod delete experiment to execute this experiment as well. In this experiment, a probe is configured in the background to check for the availability of the Podtato app's left arm, which is targeted.
+1. The above steps complete the execution of the pod delete experiment. There is one more experiment to execute, that is, [pod network loss](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss.md). You can follow the same steps as you did for pod delete experiment to execute this experiment as well. In this experiment, a probe is configured in the background to check for the availability of the Podtato app's left arm, which is targeted.
 
 ![pod network loss](./static/sandbox/pod-nw-loss.png)
 
@@ -112,7 +118,7 @@ You can start executing the sandbox again if you run out of time by click **Run*
 
 ![pod network done](./static/sandbox/pod-nw-done.png)
 
-3. You have successfully completed the Chaos hands-on lab, by executing two experiments in the sandbox and improving the resilience of the Podtato head application. 
+3. You have successfully completed the Chaos hands-on lab, by executing two experiments in the sandbox and improving the resilience of the Podtato head application. Click **Go to Harness University** or follow [this](developer-certification) tutorial to obtain the developer certification.
 
 ![pod network done](./static/sandbox/go-to-cert.png)
 
@@ -127,4 +133,4 @@ You can start executing the sandbox again if you run out of time by click **Run*
 </Accordion>
 
 ## Next steps
-[Harness Chaos Engineering Developer Certification](./developer-certification) 
+[Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/ce-onboarding-guide/developer-certification.md) 

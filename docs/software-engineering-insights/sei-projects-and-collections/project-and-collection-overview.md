@@ -12,7 +12,7 @@ Collection hierarchies in SEI keep data organized. At the top of the hierarchy i
 
 <figure>
 
-![](./static/collections-hierarchies-diagram.png)
+![](./static/collection-heirarchy.png)
 
 <figcaption>A diagram of the relationship between projects, Collection categories, and Collections. SEI integrations feed data from your SDLC tools into the project and the corresponding Collection categories and Collections. Data is ultimately displayed on Insights, which are associated with particular Collections.</figcaption>
 </figure>
@@ -25,9 +25,11 @@ Projects, Collection categories, and Collections provide a broad way of organizi
 
 Collection categories and Collections exist under their associated project; they don't span across projects. While multiple projects can have Collection categories and Collections with the same name, these are distinct groups under their designated project.
 
-[Insights](../sei-insights.md) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
+![](./static/projects.png)
 
-On your [Insights](../sei-insights.md), widgets derive data from [integrations](/docs/category/integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/integrations) defined in the associated project.
+[Insights](/docs/software-engineering-insights/insights/sei-insights) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
+
+On your [Insights](/docs/software-engineering-insights/insights/sei-insights), widgets derive data from [integrations](/docs/category/integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/integrations) defined in the associated project.
 
 While you can create projects from within the SEI module, projects are part of the Harness Platform and can be associated with multiple modules. For information about configuring Harness projects, go to the Harness Platform documentation on [Organizations and Projects](/docs/category/organizations-and-projects).
 
@@ -35,15 +37,9 @@ While you can create projects from within the SEI module, projects are part of t
 
 Collection categories are broad classifications that serve as containers for Collections but are not, themselves, Collections. For example, **Teams** is an Collection category; whereas **Engineering Team** and **Docs Team** are Collections under the **Teams** category.
 
-Each project has three default Collection categories: Teams, Projects, and Sprints. You can modify the default categories and create custom categories.
+Each project has two default Collection categories: Teams and Sprints. You can modify the default categories and create custom categories.
 
-:::info Harness projects and Collection projects
-
-The **Projects** Collection category is not the same as your Harness projects. This category is meant to represent sub-projects under the umbrella of the Harness Project. For example, if your Harness projects align with apps that you develop, then your sub-projects could be epics, components, or Jira projects.
-
-:::
-
-For information about configuring Collection categories, go to [Manage Collection categories](./manage-collection-cat.md).
+For information about configuring Collection categories, go to [Manage Collection categories](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat).
 
 ## Collections
 
@@ -61,10 +57,10 @@ For example, in the Teams category, assume that you have a Collection for your E
         * Other Engineering teams...
       * Other teams...
 
-For information about configuring Collections, go to [Manage Collections](./manage-collections.md).
+For information about configuring Collections, go to [Manage Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 
 ## Contributors
 
 Contributors are developers and other team members that complete actions and activities that contribute to your SEI metrics and insights. Contributors are represented by contributor records in SEI. SEI contributor records associate related user accounts across your SDLC tools and can be used to populate contributor-based Collections.
 
-For information about managing contributors, go to [Manage contributors](./manage-contributors.md).
+For information about managing contributors, go to [Manage contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors).

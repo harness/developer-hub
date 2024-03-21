@@ -21,13 +21,13 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 3. Only Harness account admins and users having the "Manage" permission for the "Developer Portal" resource can perform the onboarding. We recommend creating an "IDP Admin" role with the above mentioned permission and assign it to your team who will be responsible for configuring IDP.
 
-![](static/role-explain.png)
+![](static/idp-roles.png)
 
 ![](static/first_step.png)
 
 ## Import Services
 
-4. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e harness organisation is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
+4. User will be shown the list of services in their account. It will be defined in terms of IDP entity i.e harness organization is a domain, harness project is a system and harness service is a component in the IDP world. This list includes services at all scopes.
 
 5. User can choose all the services / individual services / no services
 
@@ -65,8 +65,10 @@ This guide describes the steps a Harness account admin can take to set up the ID
 :::
 
 :::info
+- Multiple Connectors with different hostname can be used for a single Git Provider at once. 
 - While setting up connector, both Account & Repo type for URL is supported.
 - Connection through harness platform and delegate is supported.
+- You can provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration.
 :::
 
 In the **Connector** tab under IDP **Admin** you can add the connectors. 
@@ -84,7 +86,7 @@ import TabItem from '@theme/TabItem';
 
 1. Select **Azure Repo** under **Create or Select a Connector**.
 2. Click on the dropdown under **Azure Repo Connector** and select **+New Connector**. 
-3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo).
+3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can as well add multiple organizations as different connectors and use it together. 
 4. After the connection test runs, select Finish to save the connector.
 
 
@@ -93,7 +95,18 @@ import TabItem from '@theme/TabItem';
 
 1. Select **Bitbucket** under **Create or Select a Connector**.
 2. Click on the dropdown under **Bitbucket Connector** and select **+New Connector**. 
-3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
+3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference). 
+
+:::info 
+
+Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data. 
+Create a secret with token and configure in the Personal Access token field. [Reference for creating token](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+
+![](./static/bitbucket-connector.png)
+
+For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
+
+:::
 4. After the connection test runs, select Finish to save the connector.
 
 
@@ -102,7 +115,7 @@ import TabItem from '@theme/TabItem';
 
 1. Select **GitHub** under **Create or Select a Connector**.
 2. Click on the dropdown under **GitHub Connector** and select **+New Connector**. 
-3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time. 
 4. After the connection test runs, select Finish to save the connector.
 
 More instructions on [using github app in github connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
@@ -113,16 +126,19 @@ More instructions on [using github app in github connector](https://developer.ha
 
 1. Select **GitLab** under **Create or Select a Connector**.
 2. Click on the dropdown under **GitLab Connector** and select **+New Connector**. 
-3. Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference).
+3. Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference). You can configure connectors for both `gitlab.com` and `GitLab on-prem` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
 4. After the connection test runs, select Finish to save the connector.
-
 
 
 
 </TabItem>
 </Tabs>
 
+:::info
 
+The scope is tied to URL format `https://gitprovider.com/org-name` so it is mandatory for all the git providers to provide the URL till at least org name. Further it can be scoped down to repository or project level as well. 
+
+:::
 
 
 ## Create and Register Entities
@@ -136,11 +152,11 @@ https://github.com/sathish-soundarapandian/onboarding-test.git
 https://github.com/sathish-soundarapandian/onboarding-test
 ```
 
-- The provided repo in the repo URL should belong to the same organisation / project for which the connector has been setup. Ex -
+- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
 
 In connector - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
-- Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialised with README file
+- Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
 - Branch - Can be new branch / some existing branch. In both the cases, the commit will be done on top of the base HEAD branch.
 
@@ -165,3 +181,7 @@ In connector - The account path is `https://github.com/sathish-soundarapandian`.
 **Recommendations**
 
 If using GitHub connector, customers can go with App based authentication which provides higher number of API requests in an hour window. Read more about [GitHub Apps - GitHub Docs.](https://docs.github.com/en/apps/creating-github-apps/setting-up-a-github-app/rate-limits-for-github-apps)
+
+## Next steps
+
+Check out the [IDP tutorials](/docs/category/idp-tutorials) for walkthroughs and deep dives into specific IDP use cases.

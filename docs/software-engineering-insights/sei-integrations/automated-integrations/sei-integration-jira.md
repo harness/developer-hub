@@ -48,11 +48,11 @@ import TabItem from '@theme/TabItem';
 To integrate with the on-premises Jira instances, you must username and password authentication and an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
 </TabItem>
-  <TabItem value="satellite" label="Satellite">
+  <TabItem value="satellite" label="Self-managed">
 
-The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
+To integrate with the on-premises (self-managed) Jira instances you can configure the integration using satellite. The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Atlassian server.
 
-To integrate with **On-Premises Jira** instances, you can use your Jira account email as the value for the **Username** and use the **API key** that you previously generated within your **Atlassian account** as the value for the **API key** field with the relevant permission. Make sure to select the satellite integration checkbox while configuring the integration.
+To integrate with on-premises Jira instances, you can use your Atlassian account **Username** and **Password** with the relevant permission for authentication. Make sure to select the satellite integration checkbox while configuring the integration.
 
 Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
@@ -67,7 +67,7 @@ integrations:
   - id: "<INTEGRATION_ID>"
     application: jira
     url: "<ATLASSIAN_JIRA_URL>"
-    username: <ATLASSIAN_USERNAME>
+    username: <ATLASSIAN_EMAIL>
     api_key: <ATLASSIAN_API_KEY>
     metadata:
       timezone: "America/Los_Angeles"
@@ -82,19 +82,27 @@ jira:
 :::info
 The timezone field within the metadata should be in the Atlassian standard version.
 
-To find the correct timezone, go to `https://<ORGANIZATION_JIRA_URL>/rest/api/2/myself`
+To find the correct timezone, go to `https://<ORGANIZATION_ATLASSIAN_URL>/rest/api/2/myself`
 :::
 
 ### Troubleshooting
 
 If you encounter any authentication issues, consider the following options:
 
-If you want to use your username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` field as is.
+* While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
 
 Test with the following curl command:
 
 ```bash
-curl -u "<USERNAME:PASSWORD>" -X GET "https://host:port/context/rest/api/search?jql=<CUSTOM_JQL_QUERY>
+curl -u "USERNAME:PASSWORD" -X GET "https://host:port/context/rest/api/search?jql=key-<JIRA_KEY>"
+```
+
+* While using the generated managed token (Bearer token) for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
+
+Test with the following curl command:
+
+```bash
+curl -H "Authorization: Bearer MANAGED_TOKEN" -X GET "https://host:port/context/rest/api/search?jql=key=<JIRA_KEY>
 ```
 
 <details>
@@ -124,17 +132,14 @@ adfs_password: <ADFS_PASSWORD>
 
 Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS username. Ensure the rest of the file remains unchanged.
 
-- `authentication:` This field specifies the authentication method to be used, in this case, ADFS.
-
-- `adfs_url:` The URL of the ADFS server endpoint where authentication requests will be sent.
-
-- `adfs_client_id:` The client identifier or application ID assigned to your application in the ADFS configuration. It uniquely identifies your application to the ADFS server.
-
-- `adfs_resource:` The identifier of the resource for which the access token is being requested. In the context of Jira integration, it specifies the URI of the Jira OAuth API on the ADFS server.
-
-- `adfs_username:` The username used for authentication. This could be a service account or a specific user account authorized to access Jira via ADFS.
-
-- `adfs_password:` The password associated with the specified ADFS username. It is important to keep this information secure.
+| Field | Description |
+| - | - |
+| `authentication` | This field specifies the authentication method to be used, in this case, ADFS. |
+| `adfs_url` | The URL of the ADFS server endpoint where authentication requests will be sent. |
+| `adfs_client_id` | The client identifier or application ID assigned to your application in the ADFS configuration. It uniquely identifies your application to the ADFS server. |
+| `adfs_resource` | The identifier of the resource for which the access token is being requested. In the context of Jira integration, it specifies the URI of the Jira OAuth API on the ADFS server. |
+| `adfs_username` | The username used for authentication. This could be a service account or a specific user account authorized to access Jira via ADFS. |
+| `adfs_password` | The password associated with the specified ADFS username. It is important to keep this information secure. |
 
 </details>
 
@@ -145,12 +150,12 @@ If you encounter any issues during the integration process, go to the Satellite 
 
 ## Add the Salesforce mapping
 
-If you also have an [SEI Salesforce integration](../other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
+If you also have an [SEI Salesforce integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
-4. Under **Salesforce Mapping**, select the Jira field that contains your Salesforce case IDs.
+4. Under **Salesforce Field Mapping**, select the Jira field that contains your Salesforce case IDs.
 
 ## Add custom hygiene misses
 
@@ -161,7 +166,7 @@ What constitutes a miss depends on your _hygiene categories_. There are several 
 To add custom hygiene categories:
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Select **Add Custom Hygiene Miss Criteria** and configure the new hygiene category:
 

@@ -2,6 +2,7 @@
 title: Harness CE powered by LitmusChaos
 sidebar_label: Powered by LitmusChaos
 sidebar_position: 30
+description: HCE is powered by open source CNCF project LitmusChaos
 ---
 
 Harness Chaos Engineering (CE) is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). Harness CE adds additional features to make the practice of chaos engineering for enterprises easy.
@@ -28,14 +29,20 @@ Following are the common features between Litmus and Harness Chaos Engineering:
 
 Harness CE module has the following additional capabilities:
 
-1. [Kubelet density chaos fault](../technical-reference/chaos-faults/kube-resilience/kubelet-density)
-2. [VMware chaos faults](../technical-reference/chaos-faults/vmware/)
-3. [AWS chaos faults](../technical-reference/chaos-faults/aws/)
-4. [GCP chaos faults](../technical-reference/chaos-faults/gcp/)
-5. [Azure chaos faults](../technical-reference/chaos-faults/azure/)
-6. [Linux chaos faults](../technical-reference/chaos-faults/linux/)
-7. Teaming around chaos hubs
-8. Additional resilience probes
+1. [Kubelet density chaos fault](/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density)
+2. [VMware chaos faults](/docs/chaos-engineering/chaos-faults/vmware/)
+3. [AWS chaos faults](/docs/chaos-engineering/chaos-faults/aws/)
+4. [GCP chaos faults](/docs/chaos-engineering/chaos-faults/gcp/)
+5. [Azure chaos faults](/docs/chaos-engineering/chaos-faults/azure/)
+6. [Linux chaos faults](/docs/chaos-engineering/chaos-faults/linux/)
+7. [Windows chaos faults](/docs/chaos-engineering/chaos-faults/windows/)
+8. [Cloud Foundry chaos faults](/docs/chaos-engineering/chaos-faults/cloud-foundry)
+9. [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
+10. [Security chaos faults](/docs/chaos-engineering/chaos-faults/security-chaos)
+11. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
+12. Teaming around chaos hubs
+13. Resilience probes (Dynatrace and [Datadog](/docs/chaos-engineering/features/probes/datadog-probe.md))
+14. [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
@@ -450,7 +457,7 @@ Go to [Node faults](/docs/category/node) for more information.
 
 ### AWS chaos faults
 
-Go to [Chaos faults for AWS](/docs/chaos-engineering/technical-reference/chaos-faults/aws) for more information.
+Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -646,7 +653,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/technical-reference/chaos-f
 
 ### AWS serverless chaos faults
 
-Go to [Chaos faults for AWS](/docs/chaos-engineering/technical-reference/chaos-faults/aws) for more information.
+Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more information.
 
 <table>
   <tr>
@@ -688,7 +695,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/technical-reference/chaos-f
 
 ### GCP chaos faults
 
-Go to [Chaos faults for GCP](/docs/chaos-engineering/technical-reference/chaos-faults/gcp) for more information.
+Go to [Chaos faults for GCP](/docs/chaos-engineering/chaos-faults/gcp) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -719,7 +726,7 @@ Go to [Chaos faults for GCP](/docs/chaos-engineering/technical-reference/chaos-f
 
 ### Azure chaos faults
 
-Got to [Chaos faults for Azure](/docs/chaos-engineering/technical-reference/chaos-faults/azure) for more information.
+Got to [Chaos faults for Azure](/docs/chaos-engineering/chaos-faults/azure) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -765,7 +772,7 @@ Got to [Chaos faults for Azure](/docs/chaos-engineering/technical-reference/chao
 
 ### VMware chaos faults
 
-Go to [Chaos faults for VMware](/docs/chaos-engineering/technical-reference/chaos-faults/vmware) for more information.
+Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>

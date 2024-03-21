@@ -86,3 +86,5 @@ To add a trigger to a pipeline, do the following:
 2. Select **+ New Trigger** or **Add New Trigger**. The **Triggers** pane opens.
 3. Select the Webhook, Artifact, Manifest, or Scheduled trigger.
 4. Complete the required fields for your trigger type. For steps on setting up different types of triggers, go to the [Triggers documentation](/docs/category/triggers).
+
+

@@ -10,7 +10,7 @@ This topic shows you how to deploy a publicly available application to your Tanz
 
 You'll learn how to:
 
-* Install and launch a Harness delegate in your target cluster.
+* Install and launch a Harness Delegate in your target cluster.
 * Connect Harness with your TAS account.
 * Connect Harness with a public image hosted on Artifactory.
 * Specify the manifest to use for the application.
@@ -32,7 +32,7 @@ You'll learn how to:
    * Azure Artifacts
    * Jenkins
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/). 
-* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
+* Your Harness Delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
 * For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
 ## Connect to a TAS provider
@@ -65,7 +65,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 
 </details>
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 <details>
 <summary>Install a delegate using the terminal</summary>
@@ -78,9 +78,9 @@ To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-c
 10. Select **Save and Continue**.
 11. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
 
-## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness delegate
+## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness Delegate
 
-After the delegate pods are created, you must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
+After the delegate pods are created, you must edit your Harness Delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
 
 1. Open the `delegate.yaml` in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
@@ -91,7 +91,7 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
    
    :::info
-   Harness delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian based distributions like Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
+   Harness Delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian based distributions like Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
    :::
 
    :::info
@@ -339,12 +339,6 @@ Harness services represent your microservices or applications. You can add the s
 
 ### Add the manifest and artifact as an artifact bundle
 
-:::note
-
-Currently, TAS artifact bundle is behind the feature flag `CDS_ENABLE_TAS_ARTIFACT_AS_MANIFEST_SOURCE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 #### Demo Video
 
 <!-- Video:
@@ -558,7 +552,7 @@ import TabItem2 from '@theme/TabItem';
       The basic app setup configuration uses your manifest in Harness TAS to set up your application.
 
       1. **Name** - Edit the deployment step name.
-      2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+      2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
       3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
          The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
       4. **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
@@ -567,14 +561,14 @@ import TabItem2 from '@theme/TabItem';
 
    4. Select the **App Resize** step to define **Step Parameters**.
       1. **Name** - Edit the deployment step name.
-      2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+      2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
       3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
       4. **Total Instances** - Set the number or percentage of running instances you want to keep.
       5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
       6. Select **Apply Changes**.
 
    5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-      1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+      1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
       2. **Script** - Select one of the following options.
          - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
          - **Inline** - Select this option to enter a script inline.
@@ -610,7 +604,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
 
 3. Select the **Canary App Setup** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
        The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
     4. **Resize Strategy** - Select **Add new instances first, then downsize old instances** or **Downsize old instances first, then add new instances** strategy. You can also add **Resize Strategy** as a runtime input.
@@ -619,14 +613,14 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
     7.  Select **Apply Changes**.
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Ignore instance count in Manifest** - Select this option to override the instance count mentioned in the `manifest.yaml` file with the values mentioned in the **App Resize** step.
     4. **Total Instances** - Set the number or percentage of running instances you want to keep.
     5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     6. Select **Apply Changes**.
 5. Add more **App Resize** steps to perform gradual deployment.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
@@ -667,7 +661,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 
 3. Select the **BG App Setup** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
        The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
     4. **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
@@ -683,18 +677,18 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     7. Select **Apply Changes**.
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
     4. **Total Instances** - Set the number or percentage of running instances you want to keep.
     5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     6. Select **Apply Changes**.
 5. Select the **Swap Routes** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Downsize Old Application** - Select this option to down size older applications.
     4. Select **Apply Changes**.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
@@ -716,6 +710,75 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 9. Select **Save**.
 
 Now the pipeline stage is complete and can be deployed.
+
+  </TabItem2>
+  <TabItem2 value="Rolling" label="Rolling">
+
+<!-- 
+
+doc ticket = https://harness.atlassian.net/browse/CDS-75488 
+enhancement ticket = https://harness.atlassian.net/browse/CDS-75250
+
+-->
+
+Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. 
+
+This method deploys a new service or artifact version on all pods or instances in a single environment incrementally.
+
+:::info note
+Before performing a rolling deployment, the TAS Rolling Deploy step first verifies that the application exists in Tanzu. If the application does not exist, it deploys the application by using a Basic deployment strategy. If the application exists, it performs a rolling upgrade.
+:::
+
+1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
+2. The rolling deploy step is added. 
+   
+   ![](static/rolling-deployment.png)
+
+3. Select the **Rolling Deploy** step to define **Step Parameters**.
+    1. **Name** - Edit the deployment step name.
+    2.  **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
+    3.  **Additional Routes** - Add additional routes in addition to the routes added in the TAS manifest.
+4. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
+    1. **Timeout** - Set how long you want the Harness Delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Script** - Select one of the following options.
+        - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        - **Inline** - Select this option to enter a script inline.
+    3. Select **Apply Changes**.   
+5. Add a **Rolling Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+6. In **Advanced** configure the following options.
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the specified tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step should be executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+     
+     Expand the following section to view the error types and failure strategies supported for the steps in a Rolling TAS deployment.
+
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+   - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
+7. Select **Save**.
+
+Now the pipeline stage is complete and can be deployed.
+
+  </TabItem2>    
+</Tabs2>
+
+## Deploy and review
+
+1. Click **Save** **> Save Pipeline**, then select **Run**.
+   Now you can select the specific artifact to deploy.
+2. Select a **Primary Artifact**.
+3. Select a **Tag**.
+4. Select the following **Infrastructure** parameters.
+    1. **Connector**
+    2. **Organization**
+    3. **Space**
+5. Click **Run Pipeline**. Harness will verify the pipeline and then run it.
+   You can see the status of the deployment, pause or abort it.
+
+6. Toggle **Console View** to watch the deployment with more detailed logging.  
+
+The deployment was successful.
+
+In your project's **Deployments**, you can see the deployment listed.
 
 ### Blue Green Deployment Support with a configurable amount of Tanzu Applications to maintain
 
@@ -763,86 +826,14 @@ If the **Swap routes step** wasn't successful: We don’t need to change anythin
                     tempRoutes: []
 ```
 
-#### Demo Video
+Here's a demo video:  
 
 <!-- Video:
 https://www.loom.com/share/5533c4832652403bac6ef06c5c926c2b?sid=11f56157-d01f-4915-ba88-5c269087615a-->
 <DocVideo src="https://www.loom.com/share/5533c4832652403bac6ef06c5c926c2b?sid=11f56157-d01f-4915-ba88-5c269087615a" />
 
 
-
-
-  </TabItem2>
-  <TabItem2 value="Rolling" label="Rolling">
-
-<!-- 
-
-doc ticket = https://harness.atlassian.net/browse/CDS-75488 
-enhancement ticket = https://harness.atlassian.net/browse/CDS-75250
-
--->
-
-Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. 
-
-This method deploys a new service or artifact version on all pods or instances in a single environment incrementally.
-
-:::info note
-Before performing a rolling deployment, the TAS Rolling Deploy step first verifies that the application exists in Tanzu. If the application does not exist, it deploys the application by using a Basic deployment strategy. If the application exists, it performs a rolling upgrade.
-:::
-
-1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
-2. The rolling deploy step is added. 
-   
-   ![](static/rolling-deployment.png)
-
-3. Select the **Rolling Deploy** step to define **Step Parameters**.
-    1. **Name** - Edit the deployment step name.
-    2.  **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3.  **Additional Routes** - Add additional routes in addition to the routes added in the TAS manifest.
-4. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
-    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    2. **Script** - Select one of the following options.
-        - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
-        - **Inline** - Select this option to enter a script inline.
-    3. Select **Apply Changes**.   
-5. Add a **Rolling Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
-6. In **Advanced** configure the following options.
-   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the specified tag are selected.
-   - **Conditional Execution** - Use the conditions to determine when this step should be executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
-   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
-     
-     Expand the following section to view the error types and failure strategies supported for the steps in a Rolling TAS deployment.
-
-   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
-   - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
-7. Select **Save**.
-
-Now the pipeline stage is complete and can be deployed.
-
-  </TabItem2>    
-</Tabs2>
-
-## Deploy and review
-
-1. Click **Save** **> Save Pipeline**, then select **Run**.
-   Now you can select the specific artifact to deploy.
-2. Select a **Primary Artifact**.
-3. Select a **Tag**.
-4. Select the following **Infrastructure** parameters.
-    1. **Connector**
-    2. **Organization**
-    3. **Space**
-5. Click **Run Pipeline**. Harness will verify the pipeline and then run it.
-   You can see the status of the deployment, pause or abort it.
-
-6. Toggle **Console View** to watch the deployment with more detailed logging.  
-
-The deployment was successful.
-
-In your project's **Deployments**, you can see the deployment listed.
-
-
 ## Next steps
 
-See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
+See [CD tutorials](/docs/category/cd-and-gitops-tutorials) for other deployment features.
 

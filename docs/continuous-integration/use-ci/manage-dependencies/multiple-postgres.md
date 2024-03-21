@@ -1,9 +1,8 @@
 ---
 title: Run multiple PostgreSQL instances in Background steps
 description: Use Background steps to run multiple PostgreSQL instances.
-sidebar_position: 30
+sidebar_position: 35
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -46,7 +45,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 * Enter a **Name** and note the **Id**. You need the **Id** to call the service in later steps in this stage.
@@ -116,7 +115,7 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -172,9 +171,9 @@ For the `POSTGRES_PASSWORD`, you can use an expression to [reference a Harness t
 
 ## Test the PostgreSQL services
 
-You can add a [Run step](../run-ci-scripts/run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
+You can add a [Run step](../run-step-settings.md) to confirm your PostgreSQL services are running before running other steps that need to interact with those services.
 
-For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-ci-scripts/run-step-settings.md#container-registry-and-image).
+For the **Run** step to run `psql` commands, the build environment must have the necessary binaries. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Run step Container Registry and Image settings](../run-step-settings.md#container-registry-and-image).
 
 
 <Tabs>
@@ -182,7 +181,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 
 
 1. In the same **Build** stage as your **Background** steps, add a **Run** step after (*not* in parallel with) your **Background** steps.
-2. Configure the [Run step settings](../run-ci-scripts/run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
+2. Configure the [Run step settings](../run-step-settings.md#run-step-settings). Required settings depend on your build infrastructure.
 
 
 <Tabs>
@@ -207,11 +206,11 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h Background_2 -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
+* Configure [other settings](../run-step-settings.md#run-step-settings), if needed.
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 * Enter a **Name**.
@@ -233,7 +232,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
    psql -U postgres -d test1 -h localhost -p 5434
    ```
 
-* Configure [other settings](../run-ci-scripts/run-step-settings.md#run-step-settings), if needed.
+* Configure [other settings](../run-step-settings.md#run-step-settings), if needed.
 
 
 </TabItem>
@@ -248,7 +247,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
   <TabItem value="YAML" label="YAML" default>
 
 
-In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-ci-scripts/run-step-settings.md) depend on your build infrastructure.
+In the same `CI` stage where you added the `Background` steps, add a `Run` step after the `Background` steps. Make sure the `Run` step *isn't* in the `-parallel` group. Required [Run step settings](../run-step-settings.md) depend on your build infrastructure.
 
 
 <Tabs>
@@ -278,7 +277,7 @@ psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h SECOND_BACKGROUND_STEP_ID -p SE
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -391,7 +390,7 @@ pipeline:
 
 
 </TabItem>
-  <TabItem value="k8s" label="self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -471,7 +470,7 @@ pipeline:
 
 ## Troubleshooting: Failed to get image entrypoint
 
-If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
+If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
 
 1. In the build infrastructure settings, mount one empty directory volume for each PostgreSQL service.
 

@@ -25,7 +25,7 @@ The Terraform Apply step can provision any resource, including the target infras
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -72,7 +72,7 @@ The Terraform Apply step has the following settings.
 
 In **Name**, enter a name for the step, for example, **apply**.
 
-The name is very important. You can use the name in [expressions](/docs/platform/Variables-and-Expressions/harness-variables) to refer to settings in this step.
+The name is very important. You can use the name in [expressions](/docs/platform/variables-and-expressions/harness-variables) to refer to settings in this step.
 
 For example, if the name of the stage is **Terraform** and the name of the step is **apply**, and you want to echo its timeout setting, you would use:
 
@@ -239,7 +239,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -513,7 +513,7 @@ Here's an example of decrypted Terraform JSON output:
 
 ## Skip state storage
 
-The following feature requires a minimum Harness delegate version of 812xx.
+The following feature requires a minimum Harness Delegate version of 812xx.
 
 While running Terraform commands on the delegate, Harness by default will try to detect if there is a local state file in the Terraform working directory.
 
@@ -562,10 +562,10 @@ If you generate any local resources on the delegate in the directory where Terra
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## See also
 

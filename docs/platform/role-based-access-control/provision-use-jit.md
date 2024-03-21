@@ -24,10 +24,10 @@ Here's how JIT provisioning works:
 
 Before you can enable JIT provisioning, you must configure SAML SSO authentication.
 
-* Microsoft Entra: [SAML SSO with Microsoft Entra ID](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-azure)
-* Okta: [SAML SSO with Okta](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-okta)
-* OneLogin: [SAML SSO with OneLogin](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-onelogin)
-* Other: [SAML SSO with Keycloak](/docs/platform/Authentication/single-sign-on-saml#saml-sso-with-keycloak)
+* Microsoft Entra: [SAML SSO with Microsoft Entra ID](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-azure)
+* Okta: [SAML SSO with Okta](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta)
+* OneLogin: [SAML SSO with OneLogin](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin)
+* Other: [SAML SSO with Keycloak](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-keycloak)
 
 ## Enable JIT provisioning in Harness
 

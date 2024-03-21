@@ -12,16 +12,15 @@ helpdocs_is_published: true
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import DindTrbs from '/docs/continuous-integration/shared/dind-bg-gha-trbs.md';
-
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
-Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
+There are two ways you can run GitHub Actions in Harness CI pipelines:
 
-This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
+* If you are using Harness Cloud build infrastructure, use the [built-in GitHub Action step](./ci-github-action-step.md).
+* For all other build infrastructures, use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
-For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action step](./ci-github-action-step.md).
+This topic explains how to use the GitHub Actions Drone plugin in a Plugin step.
 
 ## Add the Plugin step
 
@@ -47,7 +46,7 @@ Use **Settings** to specify the GitHub Action you want to use and to pass variab
 
 :::tip
 
-You can use variable expressions for these values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use variable expressions for these values. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables).
 
 :::
 
@@ -157,7 +156,7 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
 
 ## Pipeline YAML example
 
-This YAML example uses a `Plugin` step to run the Google `upload-cloud-storage` GitHub Action. It uses a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables) to store a token secret required by the Action. If you copy this example, you need to modify the placeholder values, image, and other settings according to your needs. You'll also need to create your own secret and stage variable.
+This YAML example uses a `Plugin` step to run the Google `upload-cloud-storage` GitHub Action. It uses a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) to store a token secret required by the Action. If you copy this example, you need to modify the placeholder values, image, and other settings according to your needs. You'll also need to create your own secret and stage variable.
 
 ```yaml
 pipeline:
@@ -225,16 +224,10 @@ When you run the pipeline, you can observe the GitHub Action plugin logs in the 
 
 <DocImage path={require('./static/run-a-github-action-in-cie-532.png')} />
 
-## Troubleshooting the GitHub Actions plugin
+## Troubleshooting GitHub Actions in Harness CI
 
-The following troubleshooting advice applies to the GitHub Actions Drone plugin in Harness CI.
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issue related to plugins and integrations, including GitHub Actions. For example:
 
-### Can't connect to Docker daemon
-
-<DindTrbs />
-
-### Not a git repository (or any of the parent directories)
-
-This error occurs if the GitHub Action you're using requires a codebase to be present, such as the [GraphQL Inspector](https://github.com/marketplace/actions/graphql-inspector) or [DevCycle Feature Flag Code Usages](https://github.com/marketplace/actions/devcycle-feature-flag-code-usages) Actions. The GitHub Actions Drone plugin isn't compatible with such Actions at this time.
-
-If the Action allows you to override the `working-directory`, such as with the [CodeCov Action](https://github.com/codecov/codecov-action/blob/e1dd05cde2ed37d100f658b34ea423728ba1812e/action.yml#L107), you can use this setting to specify the correct working directory. If no such setting is available, then the Action is not compatible with Harness CI at this time.
+* [Can't connect to Docker daemon](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-cant-connect-to-docker-daemon)
+* [Not a git repository (or any of the parent directories)](/kb/continuous-integration/continuous-integration-faqs/#github-action-step-fails-with-not-a-git-repository-or-any-of-the-parent-directories)
+* [PATH variable overwritten in parallel GitHub Action steps](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-path-variable-overwritten-in-parallel-github-actions-steps)

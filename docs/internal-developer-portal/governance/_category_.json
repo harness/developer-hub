@@ -1,0 +1,12 @@
+{
+    "label": "Governance",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 70,
+    "link": {
+      "type": "generated-index",
+      "title": "Governance"
+    },
+    "customProps": {}
+  }
+  

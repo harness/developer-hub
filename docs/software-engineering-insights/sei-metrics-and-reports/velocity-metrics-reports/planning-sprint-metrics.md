@@ -23,7 +23,7 @@ If the average commit done ratio over a long period of time is above 70 percent,
 A commit done ratio below 60 percent indicates poor performance on sprint plans and room for improvement in sprint delivery. There are several reasons a team might perform poorly on sprint plans. Check for:
 
 * The impact of creep and context switching on sprint plans. Check the [creep to commit ratio](#creep-to-commit-ratio) and the [creep done to commit ratio](#creep-done-to-commit-ratio). Creep that is consistently above 40 percent could have an impact on sprint deliverables.
-* Vague requirements that cause rework and impact sprint delivery. Use an [Issue Hygiene Report](../quality-metrics-reports/quality-metrics.md#issue-hygiene-reports) to check the sprint's Hygiene Score.
+* Vague requirements that cause rework and impact sprint delivery. Use an [Issue Hygiene Report](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/quality-metrics#issue-hygiene-reports) to check the sprint's Hygiene Score.
 * If none of the above apply, then the team may be consistently planning for more than they can deliver.
 
 Here is a flow chart illustrating the use of sprint metrics for performance analysis:
@@ -92,34 +92,31 @@ You can use the **Sprint Report** field to limit data to a selected _sprint stre
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of sprint metrics, like [commit done points](#commit-done-points), [creep points](#creep-points), or [commit points](#commit-points).
 
-<figure>
-
-![](../static/sprint-metrics-trend-report.png)
-
-<figcaption>Sprint Metrics Trend Report</figcaption>
-</figure>
+<img
+  src={require('./static/sprint-metrics-trend.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 ### Sprint Metrics Percentage Trend Report
 
 Use the **Sprint Metrics Percentage Trend Report** to examine a time series trend of selected [sprint metrics ratios](#sprint-metrics-ratios). This report is recommended for visualizing changes in the [commit done ratio](#commit-done-ratio), [done to commit ratio](#done-to-commit-ratio), and [creep to commit ratio](#creep-to-commit-ratio).
 
-<figure>
+<img
+  src={require('./static/sprint-metrics-percentage-trend.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
-![](../static/sprint-metrics-percentage-trend-report.png)
-
-<figcaption>Sprint Metrics Percentage Trend Report</figcaption>
-</figure>
 
 ### Sprint Metrics Single Stat
 
 The **Sprint Metrics Single Stat** widget presents a single sprint metric averaged over the selected time interval.
 
-<figure>
 
-![](../static/sprint-metric-single-stat.png)
+<img
+  src={require('./static/sprint-metrics-single-stat.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
-<figcaption>Sprint Metrics Single Stat</figcaption>
-</figure>
 
 For example, the **Sprint Metrics Single Stat** widget can help you [use historical metrics for sprint prediction and performance assessment](#use-historical-metrics-for-sprint-prediction-and-performance-assessment).
 
@@ -136,6 +133,12 @@ For example, the **Sprint Metrics Single Stat** widget can help you [use histori
 * **Sprint Impact of Unestimated Tickets Report**
 * **Sprint Goal Report**
 * **Sprint Distribution Retrospective Report**
+
+:::info
+* Sprint metric reports, only includes the issues that were both started and completed during the sprint timeframe.
+* If an issue is completed outside of the sprint, it is not included in the sprint metrics report for that specific sprint. Instead, the completion of the issue is reflected in the sprint where it was actually resolved.
+* If an issue is removed mid-sprint from the current sprint, it is not included in the sprint metrics report for that particular sprint. SEI excludes such issues from the calculation as it may affect the team's velocity and other related metrics.
+:::
 
 ## Sprint metrics
 
@@ -220,6 +223,22 @@ A creep ticket is a ticket added to a sprint after the sprint starts. The **cree
 ### Creep missed tickets
 
 **Creep missed tickets** is the total number of individual work items (tickets) that were added after the sprint started *and not* completed by the end of the sprint.
+
+### Churn rate
+
+**Churn Rate** measures the scope change during a sprint, providing insights into the volatility of the sprint backlog. It is calculated using the following formula:
+
+```bash
+Churn Rate = (Points added mid-sprint + Points removed mid-sprint + Positive difference of changes in planned issues) / Points committed at the start of the sprint
+
+```
+
+* Points added mid-sprint represent the sum of story points for items added during the sprint.
+* Points removed mid-sprint represent the sum of story points for items removed during the sprint
+* The Positive difference of changes in planned issues is the positive sum of story points for items with planned changes.
+* Points committed at the start of the sprint is the sum of story points for planned issues at the beginning of the sprint.
+
+This metric helps teams assess how much their scope is changing during a sprint, providing a quantitative measure of the impact of mid-sprint changes and adjustments.
 
 ### Done tickets
 

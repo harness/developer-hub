@@ -1,20 +1,20 @@
 ---
 title: Custom deployments using Deployment Templates
 description: Perform custom deployment in Harness using Deployment Templates to connect to target platforms, obtain target host information, and execute deployment steps.
-sidebar_position: 1300
+sidebar_position: 1400
 helpdocs_topic_id: 6k9t49p6mn
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
+In some cases, you might be using a platform that does not have first-class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
-This tutorial will walk you through a very simple Deployment Templates using Kubernetes. Harness includes first-class Kubernetes support (see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)), but we will use it in this tutorial as it is a very simple way to review Deployment Templates features.
+This tutorial will walk you through very simple Deployment Templates using Kubernetes. Harness includes first-class Kubernetes support (see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)), but we will use it in this tutorial as it is a very simple way to review Deployment Templates features.
 
 ## Objectives
 
@@ -64,13 +64,13 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](/docs/platform/delegates/install-delegates/overview).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -80,7 +80,7 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 1. Note the default tag added to the Delegate. You will use this to select this Delegate in future steps.
 
-![](./static/custom-deployment-tutorial-13.png)
+   ![](./static/custom-deployment-tutorial-13.png)
 
 ## Create custom Deployment Template
 
@@ -205,7 +205,7 @@ You can map any additional attributes containing information you want to referen
 
 ## Add Execution steps
 
-1. Now that the Deployment Template **Infrastructure** is complete, click **Continue** to view **Exectuion**.
+1. Now that the Deployment Template **Infrastructure** is complete, click **Continue** to view **Execution**.
 
   You can create or select step templates in Execution.
 
@@ -460,7 +460,7 @@ Here's the expressions referencing these variables:
 <+infra.variables.test12>
 ```
 
-Reference [Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager) connector variables using the following expressions.
+Reference [Secret Manager](/docs/platform/get-started/tutorials/add-secrets-manager) connector variables using the following expressions.
 
 * [AWS KMS](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
 * [AWS Secrets Manager](/docs/platform/secrets/secrets-management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
@@ -522,8 +522,8 @@ The stage **Execution** must include the **Fetch Instances** step and a step to 
 
 There are two questions to consider when deciding where to put the **Fetch Instances** and deployment steps:
 
-1. Will you only know the instancs **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
-2. Will you only know the instancs **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
+1. Will you only know the instances **before** deployment? Do you need to query some external source to be able to know which instances exist and then iterate over them to deploy to each instance?
+2. Will you only know the instances **after** deployment? For example, if an external source like an orchestrator actually creates the instances, you won't know which instances exist until after you deploy.
 
 Typically, the deployment steps come after the **Fetch Instances** step because you are fetching existing instances. But in some cases, such as Kubernetes, you might want to place the **Fetch Instances** step after the deployment so that you are getting the pods that Kubernetes created. If you put **Fetch Instances** step before deployment, you will be using the pods that already exist.
 
@@ -574,7 +574,7 @@ Let's look at an example:
 ]
 ```
 
-In this example, the **Host Object Array Path** is `$` and the **instancename** field would use  `instance.vmIp`.
+In this example, the **Host Object Array Path** is `$` and the **instancename** field would use `instance.vmIp`.
 
 ### Referencing fetched instances using expressions
 
@@ -586,13 +586,1917 @@ You can expand each instances and copy the expression for the instance metadata 
 
 For example, the expression for the instancename of the 4th instance fetched here is (the stage name is `DT_Tutorial`):
 
-```
+```shell
 <+pipeline.stages.DT_Tutorial.spec.execution.steps.fetchInstances.deploymentInfoOutcome.serverInstanceInfoList[3].hostName>
 ```
 
 To reference the entire instance list, you can use this expression:
 
-```
+```shell
 <+pipeline.stages.DT_Tutorial.spec.execution.steps.fetchInstances.deploymentInfoOutcome.serverInstanceInfoList>
 ```
+
+## Deployment Template Sample Library
+
+### Salesforce Deployment Template Support
+
+**Author**: Harness.io 
+**Version**: 1.0 
+**Description**: This deployment template will help users deploy salesforce application. 
+
+#### Pre-Requisite
+
+You will need to ensure the salesforce binary is installed on your delegate. You can install the binary via the INIT_SCRIPT.
+
+```yaml
+
+initScript: "
+            wget https://developer.salesforce.com/media/salesforce-cli/sf/channels/stable/sf-linux-x64.tar.xz
+            tar xJf sf-linux-x64.tar.xz -C ~/cli/sf --strip-components 1 
+            chmod +x ./sdfx 
+            mv sdfx /usr/local/bin/"
+```
+
+#### Deployment Template Setup
+
+This Deployment Template lets you define the deployment type for Salesforce Deployments. In the template, we define how to fetch the deployed salesforce app by fetching by the `componentName: <+service.name>`. 
+
+```yaml
+template:
+  name: Salesforce
+  identifier: Salesforce
+  versionLabel: v1
+  type: CustomDeployment
+  tags: {}
+  icon: 
+  spec:
+    infrastructure:
+      variables: []
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |
+              cat > $INSTANCE_OUTPUT_PATH <<_EOF_
+              {
+                "data": [
+                  {
+                    "componentName": "<+service.name>"
+                  }
+                ]
+              } 
+              _EOF_
+      instanceAttributes:
+        - name: instancename
+          jsonPath: componentName
+          description: ""
+      instancesListPath: data
+    execution:
+      stepTemplateRefs:
+        - account.Salesforce_download_artifact
+
+```
+
+#### Execution Salesforce Deployment Step Template 
+
+```yaml
+template:
+  name: Salesforce download artifact
+  type: Step
+  spec:
+    type: Command
+    timeout: 10m
+    spec:
+      onDelegate: true
+      environmentVariables: []
+      outputVariables: []
+      commandUnits:
+        - identifier: Prepare
+          name: Prepare
+          type: Script
+          spec:
+            workingDirectory: ""
+            shell: Bash
+            source:
+              type: Inline
+              spec:
+                script: |-
+                  pwd
+                  mkdir -p /tmp/harness
+                  ls
+                  rm /tmp/harness/harness-sfdc-lwc-deployment*
+                  rm -rf /tmp/harness/HarnessSF
+        - identifier: Download_Artifact
+          name: Download Artifact
+          type: DownloadArtifact
+          spec:
+            destinationPath: /tmp/harness
+        - identifier: Unzip_artifact
+          name: Unzip artifact
+          type: Script
+          spec:
+            workingDirectory: /tmp/harness
+            shell: Bash
+            source:
+              type: Inline
+              spec:
+                script: |
+                  pwd
+                  ls
+                  unzip harness-sfdc-lwc-deployment_<+pipeline.sequenceId>.zip 
+                  ls
+        - identifier: Deploy_to_SalesForce
+          name: Deploy to SalesForce
+          type: Script
+          spec:
+            shell: Bash
+            source:
+              type: Inline
+              spec:
+                script: |
+                  export PATH=~/sfdx/bin:$PATH
+                  ls /tmp/harness
+                  cd /tmp/harness/HarnessSF/
+                  echo "<+secrets.getValue("sfdcauth")>" | tee -a authFile.json >/dev/null
+                  /root/sfdx/bin/sfdx auth:sfdxurl:store -f authFile.json
+
+                  /root/sfdx/bin/sfdx force:source:deploy -m LightningComponentBundle:helloWorldHarness --targetusername harness@harness.io.demo
+        - identifier: Cleanup
+          name: Cleanup
+          type: Script
+          spec:
+            shell: Bash
+            source:
+              type: Inline
+              spec:
+                script: rm -rf cd /tmp/harness/
+      delegateSelectors: <+input>
+    strategy:
+      repeat:
+        items: <+stage.output.hosts>
+  identifier: Salesforce_download_artifact
+  versionLabel: v1
+
+```
+
+#### Salesforce App Service Setup - Sample
+
+```yaml
+service:
+  name: helloWorldHarness
+  identifier: helloWorldHarness
+  serviceDefinition:
+    type: CustomDeployment
+    spec:
+      customDeploymentRef:
+        templateRef: account.Salesforce
+        versionLabel: v1
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: AWSSalesDanF
+                bucketName: harness-sfdc-artifacts
+                region: us-east-1
+                filePath: harness-sfdc-lwc-deployment_<+pipeline.sequenceId>.zip
+              identifier: S3
+              type: AmazonS3
+  gitOpsEnabled: false
+
+```
+
+#### Salesforce App Infrastructure Definition Setup - Sample
+
+
+```yaml
+infrastructureDefinition:
+  name: SalesForceDevSandbox
+  identifier: SalesForceDevSandbox
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: Platform_Demo
+  environmentRef: dev
+  deploymentType: CustomDeployment
+  type: CustomDeployment
+  spec:
+    customDeploymentRef:
+      templateRef: account.Salesforce
+      versionLabel: v1
+    variables: []
+  allowSimultaneousDeployments: false
+
+```
+
+#### Sample Salesforce Pipeline Setup - CI/CD 
+
+```yaml
+pipeline:
+  name: SalesForce E2E
+  identifier: SalesForce_E2E
+  projectIdentifier: Platform_Demo
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.Public_Github
+        repoName: luisredda/harness-sfdc-lwc-deployment
+        build: <+input>
+  stages:
+    - stage:
+        name: Build Salesforce Component
+        identifier: Build_Salesforce_Component
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - stepGroup:
+                  name: Security Scans
+                  identifier: Security_Scans
+                  steps:
+                    - parallel:
+                        - step:
+                            type: Gitleaks
+                            name: Gitleaks Scan
+                            identifier: Gitleaks_Scan
+                            spec:
+                              mode: orchestration
+                              config: default
+                              target:
+                                name: salesforceapp
+                                type: repository
+                                variant: main
+                              advanced:
+                                log:
+                                  level: info
+                        - step:
+                            type: Owasp
+                            name: Owasp
+                            identifier: Owasp
+                            spec:
+                              mode: ingestion
+                              config: default
+                              target:
+                                name: salesforceApp-owasp
+                                type: repository
+                                variant: main
+                              advanced:
+                                log:
+                                  level: info
+                              ingestion:
+                                file: /harness/sto_tests/scan_tools/owasp/test_data/001
+              - step:
+                  type: Run
+                  name: Unit Tests
+                  identifier: Unit_Tests
+                  spec:
+                    connectorRef: ChaosDemoDockerHub
+                    image: salesforce/salesforcedx:7.188.0-full
+                    shell: Sh
+                    command: |-
+                      cd HarnessSF/
+                      npm install jest-junit --save-dev 
+                      npm run test:unit
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - ./HarnessSF/junit.xml
+              - step:
+                  type: Run
+                  name: Compress Artifact
+                  identifier: Compress_Artifact
+                  spec:
+                    shell: Sh
+                    command: zip -r harness-sfdc-lwc-deployment_<+pipeline.sequenceId>.zip HarnessSF/
+              - step:
+                  type: S3Upload
+                  name: Upload Artifacts to S3
+                  identifier: Upload_Artifacts_to_S3
+                  spec:
+                    connectorRef: AWSSalesDanF
+                    region: us-east-2
+                    bucket: harness-sfdc-artifacts
+                    sourcePath: harness-sfdc-lwc-deployment_<+pipeline.sequenceId>.zip
+          slsa_provenance:
+            enabled: false
+    - stage:
+        name: Approval
+        identifier: Approval
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: Approval
+                  identifier: Approval
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - account.New_Demo_Group
+                    approverInputs: []
+        tags: {}
+        when:
+          pipelineStatus: Success
+          condition: 0==1
+    - stage:
+        name: Deploy to Salesforce
+        identifier: Deploy_to_Salesforce
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: CustomDeployment
+          customDeploymentRef:
+            templateRef: account.Salesforce
+            versionLabel: v1
+          service:
+            serviceRef: helloWorldHarness
+            serviceInputs:
+              serviceDefinition:
+                type: CustomDeployment
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: S3
+          execution:
+            steps:
+              - step:
+                  name: Fetch Instances
+                  identifier: fetchInstances
+                  type: FetchInstanceScript
+                  timeout: 10m
+                  spec: {}
+              - step:
+                  name: Deploy
+                  identifier: Download_artifact
+                  template:
+                    templateRef: account.Salesforce_download_artifact
+                    versionLabel: v1
+                    templateInputs:
+                      type: Command
+                      spec:
+                        delegateSelectors:
+                          - aws-serverless-elasticbeanstalk
+            rollbackSteps:
+              - step:
+                  type: ShellScript
+                  name: Rollback
+                  identifier: Rollback
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo "This is Harness rolling back to the last stable version!"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+          environment:
+            environmentRef: dev
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: SalesForceDevSandbox
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+
+```
+
+### Google Cloud Run Deployment Template 
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy Google Cloud Run-based services. 
+
+#### Pre-Requisites
+
+Users need to install the gcloud cli on the delegate to deploy this template.
+
+```
+initScript: "
+            curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-459.0.0-linux-x86_64.tar.gz
+            tar -xf google-cloud-cli-459.0.0-linux-x86_64.tar.gz
+            ./google-cloud-sdk/install.sh
+            ./google-cloud-sdk/bin/gcloud init
+            mv gcloud /usr/local/bin/"
+```
+
+
+#### Deployment Template Setup
+
+```yaml
+template:
+  name: Google Cloud Run
+  identifier: Google_Cloud_Run
+  versionLabel: 1.0.0
+  type: CustomDeployment
+  tags: {}
+  spec:
+    infrastructure:
+      variables:
+        - name: projectID
+          type: String
+          value: <+input>
+          description: GCP Project ID
+        - name: region
+          type: String
+          value: <+input>
+          description: GCP Region
+        - name: ingress
+          type: String
+          value: all
+          description: Ingress traffic allowed to reach the service
+        - name: maxinstances
+          type: String
+          value: default
+          description: Number of container instances of the service to run, leave "default" to use system default
+        - name: serviceName
+          type: String
+          value: <+service.name>
+          description: The name of the Google Cloud Run service to deploy
+          required: false
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |
+              #
+              # Script is expected to query Infrastructure and dump json
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+
+              cat > $INSTANCE_OUTPUT_PATH << _EOF_
+              {
+                "data": [
+                  {
+                    "name": "<+service.name>-<+env.name>-<+infra.name>"
+                  }
+                ]
+              } 
+              _EOF_
+      instanceAttributes:
+        - name: instancename
+          jsonPath: name
+          description: ""
+        - name: hostname
+          jsonPath: name
+          description: ""
+      instancesListPath: data
+    execution:
+      stepTemplateRefs:
+        - account.Deploy_Google_Cloud_Run
+```
+
+#### Execution Step Setup
+
+```yaml
+template:
+  name: Deploy Google Cloud Run
+  identifier: Deploy_Google_Cloud_Run
+  versionLabel: 1.0.0
+  type: Step
+  tags: {}
+  spec:
+    type: ShellScript
+    timeout: 10m
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |-
+            set -ex
+
+            /opt/harness-delegate/google-cloud-sdk/bin/gcloud run deploy <+infra.variables.serviceName> \
+              --image=<+spec.environmentVariables.artifact_image> \
+              --allow-unauthenticated \
+              --platform=managed \
+              --max-instances=<+infra.variables.maxinstances> \
+              --region=<+infra.variables.region> \
+              --project=<+infra.variables.projectID> \
+              --ingress=<+infra.variables.ingress>
+      environmentVariables:
+        - name: artifact_image
+          type: String
+          value: <+input>.default(<+artifact.image>)
+      outputVariables: []
+      delegateSelectors: <+input>
+
+```
+
+#### Pipeline Sample Setup - CI/CD 
+
+```yaml
+pipeline:
+  name: Build and Deploy to Google Cloud Run
+  identifier: Build_and_Deploy_to_Google_Cloud_Run
+  projectIdentifier: GCP
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.suranc_Account_Level_Connected_Through_Platform
+        repoName: spring-forward-harness-example
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: BuildAndPushGAR
+                  name: BuildAndPushGAR_1
+                  identifier: BuildAndPushGAR_1
+                  spec:
+                    connectorRef: account.GCP_OIDC
+                    host: us-central1-docker.pkg.dev
+                    projectID: sales-209522
+                    imageName: spring-forward/spring-forward
+                    tags:
+                      - harness-<+codebase.commitSha>
+    - stage:
+        name: Deploy
+        identifier: Deploy
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: CustomDeployment
+          customDeploymentRef:
+            templateRef: account.Google_Cloud_Run
+            versionLabel: 1.0.0
+          service:
+            serviceRef: Spring_Forward
+            serviceInputs:
+              serviceDefinition:
+                type: CustomDeployment
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          execution:
+            steps:
+              - step:
+                  name: Fetch Instances
+                  identifier: fetchInstances
+                  type: FetchInstanceScript
+                  timeout: 10m
+                  spec: {}
+              - step:
+                  name: Deploy
+                  identifier: Deploy
+                  template:
+                    templateRef: account.Deploy_Google_Cloud_Run
+                    versionLabel: 1.0.0
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        environmentVariables:
+                          - name: artifact_image
+                            type: String
+                            value: <+artifact.image>
+                        delegateSelectors:
+                          - gcp-workload-delegate
+              - step:
+                  type: HarnessApproval
+                  name: HarnessApproval_1
+                  identifier: HarnessApproval_1
+                  spec:
+                    approvalMessage: Please review the following information and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    isAutoRejectEnabled: false
+                    approvers:
+                      userGroups:
+                        - account._account_all_users
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                    approverInputs: []
+                  timeout: 1d
+            rollbackSteps:
+              - step:
+                  name: Rollback Google Cloud Run Service
+                  identifier: Rollback_Google_Cloud_Run_Service
+                  template:
+                    templateRef: account.Deploy_Google_Cloud_Run
+                    versionLabel: 1.0.0
+                    templateInputs:
+                      type: ShellScript
+                      spec:
+                        environmentVariables:
+                          - name: artifact_image
+                            type: String
+                            value: <+rollbackArtifact.image>
+                        delegateSelectors:
+                          - gcp-workload-delegate
+          environment:
+            environmentRef: Dev
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: Dev2
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+
+```
+
+#### Google Cloud Run - Sample Service 
+
+```yaml
+service:
+  name: spring-forward-harness-example
+  identifier: Spring_Forward
+  orgIdentifier: default
+  projectIdentifier: GCP
+  serviceDefinition:
+    spec:
+      customDeploymentRef:
+        templateRef: account.Google_Cloud_Run
+        versionLabel: 1.0.0
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: SpringForward2
+              spec:
+                connectorRef: GCP_Project_Work_Delegate
+                repositoryType: docker
+                project: sales-209522
+                region: us-central1
+                repositoryName: spring-forward
+                package: spring-forward
+                version: <+input>
+                digest: ""
+              type: GoogleArtifactRegistry
+    type: CustomDeployment
+
+```
+
+#### Google Cloud Run - Sample Infrastructure Definition
+
+```yaml
+infrastructureDefinition:
+  name: Dev
+  identifier: Dev
+  orgIdentifier: default
+  projectIdentifier: GCP
+  environmentRef: Dev
+  deploymentType: CustomDeployment
+  type: CustomDeployment
+  spec:
+    customDeploymentRef:
+      templateRef: account.Google_Cloud_Run
+      versionLabel: 1.0.0
+    variables:
+      - name: projectID
+        type: String
+        description: GCP Project ID
+        value: sales-209522
+      - name: region
+        type: String
+        description: GCP Region
+        value: us-central1
+      - name: ingress
+        type: String
+        description: Ingress traffic allowed to reach the service
+        value: all
+      - name: maxinstances
+        type: String
+        description: Number of container instances of the service to run, leave "default" to use system default
+        value: default
+      - name: serviceName
+        type: String
+        description: The name of the Google Cloud Run service to deploy
+        required: false
+        value: <+service.name>
+  allowSimultaneousDeployments: false
+```
+
+### Google App Engine - Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy Google Apple Engine services. 
+
+#### Deployment Template
+
+```yaml
+template:
+  name: Google AppEngine
+  identifier: Google_AppEngine
+  versionLabel: v1
+  type: CustomDeployment
+  tags: {}
+  spec:
+    infrastructure:
+      variables: []
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |-
+              #
+              # Script is expected to query Infrastructure and dump json
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+              #
+
+              cat > $INSTANCE_OUTPUT_PATH <<_EOF_
+              {
+                "data": [
+                  {
+                    "functionName": "<+service.name>"
+                  }
+                ]
+              } 
+              _EOF_
+      instanceAttributes:
+        - name: hostname
+          jsonPath: functionName
+          description: ""
+      instancesListPath: data
+    execution:
+      stepTemplateRefs:
+        - account.Deploy_AppEngine
+
+```
+
+#### Deployment Step - Google App Engine
+
+```yaml
+template:
+  name: Deploy AppEngine
+  type: Step
+  spec:
+    type: ShellScript
+    timeout: 10m
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+            export PATH=$PATH:/opt/harness-delegate/google-cloud-sdk/bin
+
+            #KEY_FILE="/root/gae_sa.json"
+
+            gcloud config set account harness@harnessauth.iam.gserviceaccount.com
+            gcloud config set project ${GC_PROJECT}
+            gcloud config list
+            gcloud app versions list
+
+            echo "Unzipping Artifact..."
+
+
+            echo "Starting App Deploy..."
+
+            gcloud app deploy app.yaml --project ${GC_PROJECT} -q --verbosity=debug
+      environmentVariables: []
+      outputVariables: []
+  identifier: Deploy_AppEngine
+  versionLabel: v1
+
+```
+
+
+### Elastic Beanstalk - Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy Elastic Beanstalk services. 
+
+#### Deployment Template 
+
+```yaml
+template:
+  name: Elastic Beanstalk
+  identifier: Elastic_Beanstalk
+  versionLabel: v1
+  type: CustomDeployment
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    infrastructure:
+      variables:
+        - name: EnvironmentName
+          type: String
+          value: ""
+          description: AWS Beanstalk Environment Name
+        - name: Region
+          type: String
+          value: ""
+          description: AWS Region
+        - name: stsRole
+          type: String
+          value: None
+          description: STS Role to Assume. Leave it blank if not necessary
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |+
+              echo "Starting"
+
+              export AWS_DEFAULT_REGION=<+infra.variables.Region>
+              export AWS_STS_ROLE=<+infra.variables.stsRole>
+              NAME="Harness-Assume-Role"
+
+              if [ "$AWS_STS_ROLE" != "None" ]; then
+                echo "Assuming STS Role..."
+
+              # Cleanup current sessions
+                unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+                unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+                KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                        --role-session-name "$NAME" \
+                                        --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+              --output text`)
+
+                export AWS_ACCESS_KEY_ID=${KST[0]}
+                export AWS_SECRET_ACCESS_KEY=${KST[1]}
+                export AWS_SESSION_TOKEN=${KST[2]}
+
+              else
+                 echo "Skipping STS AssumeRole..."
+              fi
+
+
+              #INSTANCE_OUTPUT_PATH=`aws elasticbeanstalk describe-instances-health --environment-name=<+infra.variables.EnvironmentName>`
+              aws elasticbeanstalk describe-instances-health --environment-name=<+infra.variables.EnvironmentName> > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+
+      instanceAttributes:
+        - name: hostname
+          jsonPath: InstanceId
+          description: Elastic Beanstalk InstanceID
+        - name: instancename
+          jsonPath: InstanceId
+          description: Elastic Beanstalk InstanceID
+      instancesListPath: InstanceHealthList
+    execution:
+      stepTemplateRefs:
+        - account.Prepare_AWS_ElasticBeanstalk
+        - account.Create_Version
+        - account.Update_Environment
+        - account.Steady_State_Check
+  icon:
+
+```
+
+#### Execution Step - Elastic Beanstalk
+
+
+##### Prepare Step
+
+```yaml
+template:
+  name: Prepare AWS ElasticBeanstalk
+  type: Step
+  spec:
+    type: ShellScript
+    timeout: 10m
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+            export AWS_DEFAULT_REGION=<+infra.custom.vars.Region>
+            AWS_STS_ROLE=<+infra.custom.vars.stsRole>
+            NAME="Harness-Assume-Role"
+            export VERSION_LABEL=${VERSION}
+
+            if [ ! -z "$AWS_STS_ROLE" ]; then
+              echo "Assuming STS Role..."
+
+            # Unset existing AWS session keys
+              unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+              unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+              KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                      --role-session-name "$NAME" \
+                                      --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --output text`)
+
+              export AWS_ACCESS_KEY_ID=${KST[0]}
+              export AWS_SECRET_ACCESS_KEY=${KST[1]}
+              export AWS_SESSION_TOKEN=${KST[2]}
+
+            else
+               echo "Skipping STS AssumeRole..."
+            fi
+      environmentVariables: []
+      outputVariables: []
+  identifier: Prepare_AWS_ElasticBeanstalk
+  versionLabel: v1
+  description: ""
+  tags:
+    ElasticBeanstalk Template: ""
+
+```
+
+##### Create Version Step
+
+```yaml
+template:
+  name: Create Version
+  identifier: Create_Version
+  versionLabel: v1
+  type: Step
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    timeout: 20m
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+            export AWS_DEFAULT_REGION=<+infra.variables.Region>
+            export AWS_STS_ROLE=<+infra.variables.stsRole>
+            NAME="Harness-Assume-Role"
+            export VERSION_LABEL=<+artifact.filePath>
+
+            if [ "$AWS_STS_ROLE" != "None" ]; then
+            echo "Assuming STS Role..."
+
+            # Unset existing AWS session keys
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+            unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+            KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                      --role-session-name "$NAME" \
+                                      --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --output text`)
+
+            export AWS_ACCESS_KEY_ID=${KST[0]}
+            export AWS_SECRET_ACCESS_KEY=${KST[1]}
+            export AWS_SESSION_TOKEN=${KST[2]}
+
+            else
+            echo "Skipping STS AssumeRole... Will use the current IAM role."
+            fi
+
+            VERSION_EXISTS=`aws elasticbeanstalk describe-application-versions --application-name=<+service.name> --version-labels=${VERSION_LABEL} | jq -r '.ApplicationVersions' | jq length`
+
+            if [ $VERSION_EXISTS -gt 0 ]; then
+              echo "Version already exists, Harness skipping this step..."
+            else
+
+            echo "Creating EB app version ${VERSION_LABEL} in EB app \"<+service.name>\" on region ${AWS_DEFAULT_REGION}"
+
+            aws elasticbeanstalk create-application-version --application-name "<+service.name>" --description "Version created by Harness." \
+             --version-label "${VERSION_LABEL}" --source-bundle S3Bucket=<+artifact.bucketName>,S3Key=<+artifact.filePath>
+            fi
+      environmentVariables: []
+      outputVariables: []
+      delegateSelectors: <+input>
+
+```
+
+##### Update Environment Step
+
+```yaml
+template:
+  name: Update Environment
+  identifier: Update_Environment
+  versionLabel: v1
+  type: Step
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    timeout: 25m
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: "#!/bin/bash\nexport AWS_DEFAULT_REGION=<+infra.variables.Region>\nAWS_STS_ROLE=<+infra.variables.stsRole>\nNAME=\"Harness-Assume-Role\"\nexport VERSION_LABEL=<+artifact.filePath>\n\nif [ \"$AWS_STS_ROLE\" != \"None\" ]; then\necho \"Assuming STS Role...\"\n\n# Unset existing AWS session keys\nunset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN\n\nunset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN\n\nKST=(`aws sts assume-role --role-arn \"$AWS_STS_ROLE\" \\\n                          --role-session-name \"$NAME\" \\\n                          --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \\\n--output text`)\n\nexport AWS_ACCESS_KEY_ID=${KST[0]}\nexport AWS_SECRET_ACCESS_KEY=${KST[1]}\nexport AWS_SESSION_TOKEN=${KST[2]}\n\nelse\necho \"Skipping STS AssumeRole...\"\nfi\n\n# See if EB_APP_VERSION is in the EB app\nNB_VERS=`aws elasticbeanstalk describe-applications --application-name \"<+service.name>\" | jq '.Applications[] | .Versions[]' | grep -c \"\\\"${VERSION_LABEL}\\\"\"`\nif [ ${NB_VERS} = 0 ];then\n\techo \"No app version called \\\"${VERSION_LABEL}\\\" in EB application \\\"${EB_APP}\\\".\"\n\texit 4\nfi\n\naws elasticbeanstalk update-environment --environment-name <+infra.variables.EnvironmentName> --version-label ${VERSION_LABEL}"
+      environmentVariables: []
+      outputVariables: []
+      delegateSelectors: <+input>
+
+```
+
+##### Steady State Check Step
+
+```yaml
+template:
+  name: Steady State Check
+  identifier: Steady_State_Check
+  versionLabel: v1
+  type: Step
+  tags:
+    ElasticBeanstalk Template: ""
+  spec:
+    timeout: 25m
+    type: ShellScript
+    spec:
+      shell: Bash
+      onDelegate: true
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+            export AWS_DEFAULT_REGION=<+infra.variables.Region>
+            AWS_STS_ROLE=<+infra.variables.stsRole>
+            NAME="Harness-Assume-Role"
+            export VERSION_LABEL=<+artifact.filePath>
+
+            if [ ! -z "$AWS_STS_ROLE" ]; then
+            echo "Assuming STS Role..."
+
+            # Unset existing AWS session keys
+            unset AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_SECURITY_TOKEN
+
+            unset AWS_ACCESS_KEY AWS_SECRET_KEY AWS_DELEGATION_TOKEN
+
+            KST=(`aws sts assume-role --role-arn "$AWS_STS_ROLE" \
+                                      --role-session-name "$NAME" \
+                                      --query '[Credentials.AccessKeyId,Credentials.SecretAccessKey,Credentials.SessionToken]' \
+            --output text`)
+
+            export AWS_ACCESS_KEY_ID=${KST[0]}
+            export AWS_SECRET_ACCESS_KEY=${KST[1]}
+            export AWS_SESSION_TOKEN=${KST[2]}
+
+            else
+            echo "Skipping STS AssumeRole..."
+            fi
+            #######
+            echo "Checking for Steady State..."
+            APP_INFO=`aws elasticbeanstalk describe-environments --environment-name <+infra.variables.EnvironmentName>`
+            APP_STATUS=`echo ${APP_INFO}  | jq '.Environments[] | .Status' | sed -e 's/^"//' -e 's/"$//'`
+            APP_HEALTHSTATUS=`echo ${APP_INFO}  | jq '.Environments[] | .HealthStatus' | sed -e 's/^"//' -e 's/"$//'`
+            APP_HEALTH=`echo ${APP_INFO}  | jq '.Environments[] | .Health' | sed -e 's/^"//' -e 's/"$//'`
+
+            echo "Current APP Status: " ${APP_STATUS}
+            echo "Current APP Health Status" ${APP_HEALTHSTATUS}
+            echo "Current APP Health" ${APP_HEALTH}
+
+            while [ "$APP_STATUS" != "Ready" ] || [ "$APP_HEALTHSTATUS" != "Ok" ] || [ "$APP_HEALTH" != "Green" ]; do
+              APP_INFO=`aws elasticbeanstalk describe-environments --environment-name <+infra.variables.EnvironmentName>`
+              APP_STATUS=`echo ${APP_INFO}  | jq '.Environments[] | .Status' | sed -e 's/^"//' -e 's/"$//'`
+              APP_HEALTHSTATUS=`echo ${APP_INFO}  | jq '.Environments[] | .HealthStatus' | sed -e 's/^"//' -e 's/"$//'`
+              APP_HEALTH=`echo ${APP_INFO}  | jq '.Environments[] | .Health' | sed -e 's/^"//' -e 's/"$//'`
+              echo "---"
+              echo "Checking for Steady State..."
+              echo "Current APP Status: " ${APP_STATUS} " - Desired: Ready "
+              echo "Current APP Health Status" ${APP_HEALTHSTATUS} " - Desired: Ok"
+              echo "Current APP Health" ${APP_HEALTH} " - Desired: Green"
+              sleep 2
+            done
+
+            echo "------"
+            echo ${APP_INFO}
+      environmentVariables: []
+      outputVariables: []
+      delegateSelectors: <+input>
+```
+
+### AWS CodeDeploy - Deployment Template Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy services using AWS CodeDeploy.
+
+#### Pre-Requisites
+
+- The user needs to install the AWS CLI on the Delegate, users can install it via the INIT_SCRIPT. 
+
+#### Deployment Template Configuration
+
+The Deployment Template will allow us to set the infrastructure and the ability to fetch the instances deployed via AWS CodeDeploy. 
+
+##### Input Parameters 
+
+- **AWS Connector**: You will need to provide us with an AWS Connector that has access to perform CodeDeploy Deployments.
+- **Region**: This defines the region where Harness will be deploying the CodeDeploy Application
+- **Application Name**: A name for the CodeDeploy application
+- **Deployment Group**: The deployment group contains settings and configurations used during the deployment. In Harness, you will provide the name of the Deployment Group for the application.
+- **Deployment Configuration**: A Deployment Configuration in AWS CodeDeploy is a set of rules and settings that define how a deployment will be conducted within the service. In Harness, you will provide the setting for the Deployment Configuration. The Default Setting is "CodeDeployDefault.OneAtATime".
+
+The Deployment Template will be leveraged in the **Fetch Instances Step** to set the infrastructure and instance querying to track the deployed Services.
+
+```yaml
+template:
+  name: AWS CodeDeploy
+  identifier: AWS_CodeDeploy
+  versionLabel: v1
+  type: CustomDeployment
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    infrastructure:
+      variables:
+        - name: AWSConnector
+          type: Connector
+          value: <+input>
+          description: "Provide Your AWS Connector"
+          required: false
+        - name: region
+          type: String
+          value: us-east-1
+          description: "Region for Deployment"
+          required: false
+        - name: ApplicationName
+          type: String
+          value: ""
+          description: "Provide your existing CodeDeploy Application Name"
+          required: false
+        - name: DeploymentGroup
+          type: String
+          value: ""
+          description: "Provide your existing Deployment Group"
+          required: false
+        - name: DeploymentConfiguration
+          type: String
+          value: "CodeDeployDefault.OneAtATime"
+          description: "Default Setting for CodeDeploy"
+          required: false
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |-
+              #
+              # Script is expected to query Infrastructure and dump JSON
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+
+              region=<+infra.variables.region>
+              accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+              secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+              aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+              deploymentId=<+execution.steps.AWS_CodeDeploy.output.outputVariables.codeDeploymentId>
+
+              instances=$(aws deploy list-deployment-targets --deployment-id $deploymentId | jq -r .targetIds[])
+              echo -e "\nInstances list - [$instances]"
+
+              aws ec2 describe-instances --instance-ids $instances > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+      instanceAttributes:
+        - name: instancename
+          jsonPath: Instances[0].InstanceId
+          description: "The instance name"
+        - name: InstanceType
+          jsonPath: Instances[0].InstanceType
+          description: "The type of instance"
+        - name: PublicIpAddress
+          jsonPath: Instances[0].PublicIpAddress
+          description: "The IP Address for the Instance"
+        - name: OwnerId
+          jsonPath: OwnerId
+          description: "The Owner of the CodeDeploy Application"
+        - name: ReservationId
+          jsonPath: ReservationId
+          description: "The Reservation ID for the CodeDeploy Application"
+      instancesListPath: Reservations
+    execution:
+      stepTemplateRefs:
+        - CodeDeploy_Steady_State
+        - AWS_CodeDeploy_Step
+  description: |-
+    This is deployment template for AWS Code deploy for deployment group which has Compute platform as EC2/on-premises instances 
+
+    Make sure the delegate has AWS CLI installed for this template to work correctly
+
+```
+
+##### Fetch Instances Sample Execution
+
+```sh
+"INSTANCE_OUTPUT_PATH" has been initialized to "/opt/harness-delegate/fetchInstanceScript/47if1ntCQceymk-GLJJsUg/output.json"
+Executing command ...
+
+Instances list - [i-0b77a163d64963817]
+{
+    "Reservations": [
+        {
+            "Groups": [],
+            "Instances": [
+                {
+                    "AmiLaunchIndex": 0,
+                    "ImageId": "ami-0c382fdca8edfdf0c",
+                    "InstanceId": "i-0b77a163d64963817",
+                    "InstanceType": "t3.micro",
+                    "KeyName": "akhilesh-ssh",
+                    "LaunchTime": "2023-09-03T17:55:02.000Z",
+                    "Monitoring": {
+                        "State": "disabled"
+                    },
+                    "Placement": {
+                        "AvailabilityZone": "us-east-1f",
+                        "GroupName": "",
+                        "Tenancy": "default"
+                    },
+                    "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                    "PrivateIpAddress": "172.31.66.168",
+                    "ProductCodes": [],
+                    "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                    "PublicIpAddress": "34.231.122.208",
+                    "State": {
+                        "Code": 16,
+                        "Name": "running"
+                    },
+                    "StateTransitionReason": "",
+                    "SubnetId": "subnet-9757dc98",
+                    "VpcId": "vpc-c20f38b9",
+                    "Architecture": "x86_64",
+                    "BlockDeviceMappings": [
+                        {
+                            "DeviceName": "/dev/xvda",
+                            "Ebs": {
+                                "AttachTime": "2020-09-25T05:22:40.000Z",
+                                "DeleteOnTermination": true,
+                                "Status": "attached",
+                                "VolumeId": "vol-094601fdb87771186"
+                            }
+                        }
+                    ],
+                    "ClientToken": "*******************************************",
+                    "EbsOptimized": false,
+                    "EnaSupport": true,
+                    "Hypervisor": "xen",
+                    "IamInstanceProfile": {
+                        "Arn": "arn:aws:iam::479370281431:instance-profile/CodeDeployDemo-EC2-Instance-Profile",
+                        "Id": "AIPAW7HFSAHLQBJNGQ5CG"
+                    },
+                    "NetworkInterfaces": [
+                        {
+                            "Association": {
+                                "IpOwnerId": "amazon",
+                                "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                                "PublicIp": "34.231.122.208"
+                            },
+                            "Attachment": {
+                                "AttachTime": "2020-09-25T05:22:39.000Z",
+                                "AttachmentId": "eni-attach-0ae2c0b4826605455",
+                                "DeleteOnTermination": true,
+                                "DeviceIndex": 0,
+                                "Status": "attached",
+                                "NetworkCardIndex": 0
+                            },
+                            "Description": "",
+                            "Groups": [
+                                {
+                                    "GroupName": "default",
+                                    "GroupId": "sg-afc848e7"
+                                }
+                            ],
+                            "Ipv6Addresses": [],
+                            "MacAddress": "16:ad:51:e6:da:fd",
+                            "NetworkInterfaceId": "eni-036688d5aca78078b",
+                            "OwnerId": "479370281431",
+                            "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                            "PrivateIpAddress": "172.31.66.168",
+                            "PrivateIpAddresses": [
+                                {
+                                    "Association": {
+                                        "IpOwnerId": "amazon",
+                                        "PublicDnsName": "ec2-34-231-122-208.compute-1.amazonaws.com",
+                                        "PublicIp": "34.231.122.208"
+                                    },
+                                    "Primary": true,
+                                    "PrivateDnsName": "ip-172-31-66-168.ec2.internal",
+                                    "PrivateIpAddress": "172.31.66.168"
+                                }
+                            ],
+                            "SourceDestCheck": true,
+                            "Status": "in-use",
+                            "SubnetId": "subnet-9757dc98",
+                            "VpcId": "vpc-c20f38b9",
+                            "InterfaceType": "interface"
+                        }
+                    ],
+                    "RootDeviceName": "/dev/xvda",
+                    "RootDeviceType": "ebs",
+                    "SecurityGroups": [
+                        {
+                            "GroupName": "default",
+                            "GroupId": "sg-afc848e7"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Tags": [
+                        {
+                            "Key": "team",
+                            "Value": "cd"
+                        },
+                        {
+                            "Key": "ttl",
+                            "Value": "-1"
+                        },
+                        {
+                            "Key": "Name",
+                            "Value": "CodeDeploy Quality Instance Do-not-Delete"
+                        },
+                        {
+                            "Key": "sample_key_2",
+                            "Value": "sample_val_2"
+                        }
+                    ],
+                    "VirtualizationType": "hvm",
+                    "CpuOptions": {
+                        "CoreCount": 1,
+                        "ThreadsPerCore": 2
+                    },
+                    "CapacityReservationSpecification": {
+                        "CapacityReservationPreference": "open"
+                    },
+                    "HibernationOptions": {
+                        "Configured": false
+                    },
+                    "MetadataOptions": {
+                        "State": "applied",
+                        "HttpTokens": "optional",
+                        "HttpPutResponseHopLimit": 1,
+                        "HttpEndpoint": "enabled",
+                        "HttpProtocolIpv6": "disabled",
+                        "InstanceMetadataTags": "disabled"
+                    },
+                    "EnclaveOptions": {
+                        "Enabled": false
+                    },
+                    "PlatformDetails": "Linux/UNIX",
+                    "UsageOperation": "RunInstances",
+                    "UsageOperationUpdateTime": "2020-09-25T05:22:39.000Z",
+                    "PrivateDnsNameOptions": {},
+                    "MaintenanceOptions": {
+                        "AutoRecovery": "default"
+                    }
+                }
+            ],
+            "OwnerId": "479370281431",
+            "ReservationId": "r-04f2c39ad6213b31d"
+        }
+    ]
+}
+Command completed with ExitCode (0)
+Execution finished with status: SUCCESS
+```
+
+#### AWS CodeDeploy Steady State Check
+
+This step will check for a steady state and ensure the application is healthy.
+
+```yaml
+template:
+  name: CodeDeploy Steady State
+  identifier: CodeDeploy_Steady_State
+  versionLabel: v1
+  type: Step
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+            region=<+infra.variables.region>
+            accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+            secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+            aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+            deploymentId=<+execution.steps.AWS_CodeDeploy.output.outputVariables.codeDeploymentId>
+
+            while :
+            do
+                    status=$(aws deploy get-deployment --deployment-id $deploymentId |  jq -r .deploymentInfo.status)
+                    echo -e "\nCurrent status for deployment id - [ $deploymentId ] is $status ..."
+
+                    if [[ $status == "Succeeded" ]]
+                    then
+                            break
+                    fi
+
+                    if [[ $status == "Failed" ]]
+                    then
+                            break
+                    fi
+
+                    if [[ $status == "Stopped" ]]
+                    then
+                            break
+                    fi
+
+                    echo "Sleeping for 10s ..."
+                    sleep 10
+            done
+
+            echo "Reached steady state ..."
+      environmentVariables: []
+      outputVariables: []
+      executionTarget: {}
+
+```
+
+##### Steady State Check Execution Logs
+
+```sh
+Executing command ...
+
+Current status for deployment id - [ d-N36KENP64 ] is InProgress ...
+Sleeping for 10s ...
+
+Current status for deployment id - [ d-N36KENP64 ] is Succeeded ...
+Reached steady state ...
+Command completed with ExitCode (0)
+```
+
+#### AWS CodeDeploy Deploy Step
+
+This step will perform the deployment of the AWS CodeDeploy Application. The Template will use the properties you have set in the Service and Deployment Template. 
+
+```yaml
+template:
+  name: AWS CodeDeploy Step
+  identifier: AWS_CodeDeploy_Step
+  versionLabel: v1
+  type: Step
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |+
+            #!/bin/bash
+            echo -e "\n********** Artifact details **********"
+            bucket=<+artifacts.primary.bucketName>
+            key=<+artifacts.primary.filePath>
+            bundleType=<+serviceVariables.bundleType>
+
+            echo "Bucket = $bucket"
+            echo "Key = $key"
+            echo "Bundle Type = $bundleType"
+
+            accessKey=<+infra.variables.AWSConnector.spec.credential.spec.accessKey>
+            secretKey=<+secrets.getValue(<+infra.variables.AWSConnector.spec.credential.spec.secretKeyRef.identifier>)>
+            region=<+infra.variables.region>
+            applicationName=<+infra.variables.ApplicationName>
+            deploymentConfiguration=<+infra.variables.DeploymentConfiguration>
+            deploymentGroup=<+infra.variables.DeploymentGroup>
+
+            echo -e "\n********** Starting code deploy with following configuration **********"
+            echo -e "Application Name: [$applicationName]"
+            echo -e "Aws Region: [$region]"
+            echo -e "Deployment Group: [$deploymentGroup]"
+            echo -e "Deployment Configuration: [$deploymentConfiguration]"
+
+            aws configure set aws_access_key_id $accessKey  && aws configure set aws_secret_access_key $secretKey  && aws configure set region $region
+
+            deploymentId=$(aws deploy create-deployment \
+                --application-name $applicationName \
+                --deployment-config-name $deploymentConfiguration \
+                --deployment-group-name $deploymentGroup \
+                --description "My deployment using Deployment Template" \
+                --s3-location bucket=$bucket,bundleType=$bundleType,key=$key | jq -r .deploymentId)
+
+            echo -e "\nDeployment started successfully with deployment id - [$deploymentId]"
+
+      environmentVariables: []
+      outputVariables:
+        - name: codeDeploymentId
+          type: String
+          value: deploymentId
+      executionTarget: {}
+
+```
+
+
+##### Deploy Step Execution Logs
+
+```sh
+Executing command ...
+
+********** Artifact details **********
+Bucket = codedeploy-quickstart-sample
+Key = SampleApp_Linux.zip
+Bundle Type = zip
+
+********** Starting code deploy with following configuration **********
+Application Name: [CodeDeploy_Quality_Verification_App]
+Aws Region: [us-east-1]
+Deployment Group: [quality-deployment-group]
+Deployment Configuration: [CodeDeployDefault.OneAtATime]
+
+Deployment started successfully with deployment id - [d-N36KENP64]
+Script Output: 
+deploymentId=d-N36KENP64
+Command completed with ExitCode (0)
+```
+
+
+#### AWS CodeDeploy Service Sample
+
+This is a sample service that can be configured to represent the AWS CodeDeploy Service Type. In this example, we can fetch from S3.
+
+##### Service Inputs
+
+- **bundleType**: This is the type of artifact you are deploying, for default we recommend zip. 
+
+
+```yaml
+service:
+  name: awsCodeDeployService
+  identifier: awsCodeDeployService
+  orgIdentifier: default
+  projectIdentifier: default
+  serviceDefinition:
+    spec:
+      customDeploymentRef:
+        templateRef: AWS_CodeDeploy
+        versionLabel: v1
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: awsQaSetup
+                bucketName: codedeploy-quickstart-sample
+                region: us-east-1
+                filePath: SampleApp_Linux.zip
+              identifier: a1
+              type: AmazonS3
+      variables:
+        - name: bundleType
+          type: String
+          description: ""
+          required: false
+          value: zip
+    type: CustomDeployment
+```
+
+
+##### Service Execution Logs
+
+```sh
+Starting service step...
+Service Name: awsCodeDeployService , Identifier: awsCodeDeployService
+Processed service &amp; environment variables
+Processing primary artifact...
+Primary artifact info: 
+type: AmazonS3 
+bucketName: codedeploy-quickstart-sample 
+filePath: SampleApp_Linux.zip 
+filePathRegex: null 
+connectorRef: awsQaSetup
+
+No config files configured in the service or in overrides. configFiles expressions will not work
+No service hooks configured in the service. hooks expressions will not work
+No manifests configured in the service or in overrides. manifest expressions will not work
+Starting delegate task to fetch details of artifact
+Delegate task id: bztoE5RoQsikdZT7tdvKhA-DEL
+Fetched details of primary artifact [status:SUCCESS]
+type: AmazonS3 
+bucketName: codedeploy-quickstart-sample 
+filePath: SampleApp_Linux.zip 
+filePathRegex: null
+Completed service step
+```
+
+### Azure VMSS - Deployment Template Sample
+
+**Author**: Harness.io
+**Version**: 1.0
+**Description**: This deployment template will help users deploy services using Azure VMSS.
+
+#### Azure VMSS Deployment Template
+
+```yaml
+template:
+  name: Azure VMSS
+  identifier: Azure_VMSS
+  versionLabel: v1
+  type: CustomDeployment
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  icon: 
+  spec:
+    infrastructure:
+      variables:
+        - name: AzureConnector
+          type: Connector
+          value: azure
+          description: "Azure Connector Id"
+          required: false
+        - name: Subscription
+          type: String
+          value: <+input>
+          description: "Your Subscription ID"
+          required: false
+        - name: ResourceGroup
+          type: String
+          value: <+input>
+          description: "Resource Group Name"
+          required: false
+      fetchInstancesScript:
+        store:
+          type: Inline
+          spec:
+            content: |+
+              #
+              # Script is expected to query Infrastructure and dump json
+              # in $INSTANCE_OUTPUT_PATH file path
+              #
+              # Harness is expected to initialize ${INSTANCE_OUTPUT_PATH}
+              # environment variable - a random unique file path on delegate,
+              # so script execution can save the result.
+              #
+              #!/bin/bash
+
+              applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+              tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+              secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+              subscription=<+infra.variables.Subscription>
+              resourceGroup=<+infra.variables.ResourceGroup>
+              vmssName=<+serviceVariables.vmssName>
+
+              echo "******* Infra Details *******"
+              echo -e "Application ID = $applicationId"
+              echo -e "Tenant ID = $tenantId"
+              echo -e "Secret ID = $secretKey"
+              echo -e "Subscription = $subscription"
+              echo -e "Resource Group = $resourceGroup"
+              echo -e "VMSS Name = $vmssName"
+              echo -e ""
+
+              az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+              az account set --subscription $subscription
+
+              az vmss list-instances --name $vmssName --resource-group $resourceGroup > $INSTANCE_OUTPUT_PATH
+              cat $INSTANCE_OUTPUT_PATH
+
+
+      instanceAttributes:
+        - name: instancename
+          jsonPath: id
+          description: "instance name to query"
+        - name: vmId
+          jsonPath: vmId
+          description: "Azure VMSS VM Id"
+        - name: vmName
+          jsonPath: name
+          description: "VM Name"
+        - name: computerName
+          jsonPath: osProfile.computerName
+          description: "Computer Name"
+        - name: artifact
+          jsonPath: storageProfile.imageReference.id
+          description: "Artifact ID"
+        - name: resourceGroup
+          jsonPath: resourceGroup
+          description: "Azure Resource Group"
+      instancesListPath: $
+    execution:
+      stepTemplateRefs: []
+  description: |
+    This is deployment template for Azure VMSS. Make sure the delegate has Azure CLI installed for this template to work correctly. The CLI commands used in these templates are defined here - https://learn.microsoft.com/en-us/cli/azure/vmss?view=azure-cli-latest#az-vmss-create
+
+```
+
+#### Azure VMSS Setup Step Template 
+
+```yaml
+template:
+  name: VMSS Setup
+  identifier: VMSS_Setup
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |
+            #!/bin/bash
+
+            applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+            tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+            secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+            subscription=<+infra.variables.Subscription>
+            resourceGroup=<+infra.variables.ResourceGroup>
+
+            echo "******* Infra Details *******"
+            echo -e "Application ID = $applicationId"
+            echo -e "Tenant ID = $tenantId"
+            echo -e "Secret ID = $secretKey"
+            echo -e "Subscription = $subscription"
+            echo -e "Resource Group = $resourceGroup"
+            echo -e ""
+
+            imageGallery=<+serviceVariables.imageGallery>
+            imageDefinition=<+serviceVariables.imageDefinition>
+            imageVersion=<+serviceVariables.imageVersion>
+            instanceCount=<+serviceVariables.instanceCount>
+            vmssName=<+serviceVariables.vmssName>
+            username=<+serviceVariables.vmUserName>
+            vmPwd=<+serviceVariables.vmPwd>
+
+            echo "******* Service Details *******"
+            echo -e "Image Gallery = $imageGallery"
+            echo -e "Image Definition = $imageDefinition"
+            echo -e "Image Version = $imageVersion"
+            echo -e "Instance Count = $instanceCount"
+            echo -e "VMSS Name = $vmssName"
+            echo -e "VM Username = $username"
+            echo -e "VM Password = $vmPwd"
+            echo -e ""
+
+            az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+            az account set --subscription $subscription
+
+            echo -e "Sending request to create VMSS - [$vmssName] ..."
+
+            az vmss create \
+            --resource-group $resourceGroup \
+            --name $vmssName \
+            --instance-count $instanceCount \
+            --admin-username $username \
+            --admin-password $vmPwd \
+            --no-wait \
+            --image "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.Compute/galleries/$imageGallery/images/$imageDefinition/versions/$imageVersion"
+      environmentVariables: []
+      outputVariables: []
+
+```
+
+#### Azure VMSS Steady State Check Step
+
+```yaml
+template:
+  name: VMSS Steady State Check
+  identifier: VMSS_Steady_State_Check
+  versionLabel: v1
+  type: Step
+  projectIdentifier: AnilTest_DONOTDELETE
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  icon: 
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: |-
+            #!/bin/bash
+
+            #!/bin/bash
+            sleep 15
+            applicationId=<+infra.variables.AzureConnector.spec.credential.spec.applicationId>
+            tenantId=<+infra.variables.AzureConnector.spec.credential.spec.tenantId>
+            secretKey=<+secrets.getValue(<+infra.variables.AzureConnector.spec.credential.spec.auth.spec.secretRef.identifier>)>
+            subscription=<+infra.variables.Subscription>
+            resourceGroup=<+infra.variables.ResourceGroup>
+            vmssName=<+serviceVariables.vmssName>
+
+            echo "******* Infra Details *******"
+            echo -e "Application ID = $applicationId"
+            echo -e "Tenant ID = $tenantId"
+            echo -e "Secret ID = $secretKey"
+            echo -e "Subscription = $subscription"
+            echo -e "Resource Group = $resourceGroup"
+            echo -e "VMSS Name = $vmssName"
+            echo -e ""
+
+            az login --service-principal -u $applicationId -p $secretKey --tenant $tenantId > /dev/null
+            az account set --subscription $subscription
+
+            while :
+            do
+                    echo -e ""
+                    reachedSteadyState="YES"
+
+                    while read line; do
+                            echo $line
+                            status=$(echo $line | awk '{print $2}')
+
+                            if [[ -z "$status" ]]; then
+                                    continue
+                            fi
+
+                            if [[ $status != "Succeeded" ]]; then
+                                    reachedSteadyState="NO"
+                            fi
+                    done <<< "$(az vmss list-instances --name $vmssName --resource-group $resourceGroup | jq -r '.[] | [.name,.provisioningState] | @tsv')"
+
+
+                    if [[ $reachedSteadyState == "NO" ]]
+                    then
+                            echo "Some of the VMs are still being created/updated/deleted ..."
+                            echo "Sleeping for 15s"
+                            sleep 15
+
+                    else
+                            echo "All the VMs have reached steady state"
+                            break;
+                    fi
+            done
+      environmentVariables: []
+      outputVariables: []
+
+```
+
+
+
 

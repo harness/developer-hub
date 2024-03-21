@@ -38,6 +38,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
   - [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)
 
   Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+- The release name for the Helm deployment shouldn't exceed length 53. For more information, go to [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call).
 
 ## Supported platforms and technologies
 
@@ -100,7 +101,21 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 ## Helm OCI Chart Registry Support
 
-Harness supports the following Helm OCI chart registries:
+To use a Helm OCI chart registry, do the following.
+
+1. In Specify Helm Chart Store, select **OCI Helm**.
+2. In **Select Connection Type**, select **Direct Connection** or **Cloud Provider**.
+3. Provide the connection information for the connectio type, described below.
+
+### Direct Connection
+
+The **Direct Connection** option uses the Harness OCI Helm Registry connector which requires following authentication settings:
+
+- OCI URL
+- Username (For Auth with Creds)
+- Password (For Auth with Creds)
+
+Harness supports the following Helm OCI chart registries in **Direct Connection**:
 
 - Amazon ECR
 - Azure Container Registry
@@ -108,20 +123,39 @@ Harness supports the following Helm OCI chart registries:
 - JFrog Artifactory
 - Google Artifact Registry
 
-Helm OCI chart support includes the following deployment types:
+### Cloud Provider
 
-- Native Helm
-- Helm charts with Kubernetes deployments.
+Harness supports ECR only via the **Cloud Provider** option. 
 
-Harness OCI chart registry support details:
+Cloud Provider is specifically designed for AWS ECR to help you overcome the limitation of having to regenerate the ECR registry authentication token every 12 hours. This option uses an AWS connector. The credentials for this connector generate the authentication token used to access the ECR registry.
 
-- You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
-- Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
-- You can define expressions for the **Chart Name** and **Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+The Cloud Provider option does not depend on OCI, but uses the official ECR APIs to fetch the chart and chart version. The OCI URL is not required.
+
+Harness supports all the AWS authentication types to fetch the Helm chart from ECR. 
+
+For steps on configuring the AWS connector, go to [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector/). For the required AWS policies, go to [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions).
+
+### Manifest details for ECR
+
+After you select the **Cloud Provider** option, you can configure the manifest details for fetching the chart from ECR:
+
+1. In **Manifest Identifier**, enter a unique identify for the manifest.
+2. In **Base Path**, enter the path to the chart folder. The default is `/`.
+3. In **Chart Name**, enter the ECR repository name.
+4. In **Region**, enter the AWS region of the ECR repository.
+5. In **Registry Id**, enter the AWS account Id.
+6. In **Chart Version**, enter the version number. This option only works when **Chart Name** and **Region** are configured.
 
 ### Important notes
 
-- You cannot be trigger pipelines using the On New Manifest trigger if your service uses the OCI Helm connector.
+- Helm OCI chart support includes the following deployment types:
+  - Native Helm
+  - Helm charts with Kubernetes deployments.
+- Harness OCI chart registry support details:
+  - You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
+  - Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
+- You can define expressions for the **Chart Name** and **Base Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+  - You cannot trigger pipelines using the **On New Manifest** trigger if your service uses the OCI Helm connector.
 
 ## Visual summary
 
@@ -193,7 +227,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 - **Chart name**: Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. Ex: `todolist`.
 - **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
   - If you leave **Chart Version** empty Harness gets the latest chart.
-  - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart). For example, `1.4.1`.
+  - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart). For example, `1.4.1`.
 - **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. For example, `Version 2`.
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
 
@@ -224,7 +258,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-  You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
+  You can also select **Expression** and use [Harness expressions](/docs/platform/variables-and-expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
 
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
@@ -237,7 +271,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/Delegates/install-delegates/overview).
+If you haven't set up a Harness Delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/delegates/install-delegates/overview).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -350,7 +384,7 @@ For example, let's say you have 3 files: the default values.yaml, values2.yaml a
 
 All files contain the same key:value pair. The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/Variables-and-Expressions/harness-variables).
+Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
@@ -545,7 +579,7 @@ For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/depl
 
 ## Trigger the pipeline on a new chart version
 
-You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
+You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart).
 
 ## Fetch Helm chart dependencies
 
@@ -741,7 +775,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>CDS_DISABLE_HELM_REPO_YAML_CACHE</td>
-        <td>Disables Helm repository caching on the Harness delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
+        <td>Disables Helm repository caching on the Harness Delegate. Please use the flag if you encounter the `context deadling exceeded` error during parallel Helm deployments. Note that this is a result of known <a href="https://github.com/helm/helm/issues/10735">Helm concurrency issue</a>. By turning on the flag, there might be slight performance degradation in case of very large Helm repositories.</td>
     </tr>
     <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>

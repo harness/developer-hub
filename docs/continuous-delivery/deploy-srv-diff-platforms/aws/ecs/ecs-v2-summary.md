@@ -12,7 +12,7 @@ This topic describes the changes and provides some best practices to help you mi
 
 ## ECS delegates
 
-Harness FirstGen users who used the FirstGen ECS delegate can now use a Kubernetes, Helm, or Docker delegate. To continue using an ECS-based delegate in NextGen, see the blog post [How to deploy delegate in Amazon ECS for Harness NG](https://community.harness.io/t/how-to-deploy-delegate-in-amazon-ecs-for-harness-ng/13056).
+Harness FirstGen users who used the FirstGen ECS delegate can now use a Kubernetes, Helm, or Docker delegate. To continue using an ECS-based delegate in NextGen,go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate).
 
 ## Get started with ECS in NextGen
 
@@ -346,13 +346,13 @@ Harness templates create reusable logic for Harness entities like steps, stages,
 
 You can link templates in your pipelines or share them with your teams for improved efficiency. 
 
-If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](/docs/platform/Templates/template).
+If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](/docs/platform/templates/template).
 
 ### ECS service configuration
 
 Although you can use the Harness [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
 
-Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables).
 
 ### ECS environment configuration
 

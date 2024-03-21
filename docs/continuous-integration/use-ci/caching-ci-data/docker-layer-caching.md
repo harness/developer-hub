@@ -12,11 +12,13 @@ Write your Dockerfiles to [use the cache efficiently](https://docs.docker.com/bu
 
 [Harness Cloud](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) can manage the Docker layer [cache backend](https://docs.docker.com/build/cache/backends/) for you, without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
 
-Enable Docker layer caching by selecting __Enable Docker layer caching__ in your Docker build and push step.
+Enable Docker layer caching by selecting __Enable Docker layer caching__ in your Build and Push to Docker step.
 
 :::note
 
-Currently, Docker layer caching with Harness Cloud is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.<!-- CI_ENABLE_DLC and CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED --> <!-- DLC uses the buildx plugin rather than kaniko or drone-docker. Example - GCR buildx plugin: https://github.com/drone-plugins/drone-buildx-gcr -->
+Currently, Docker layer caching with Harness Cloud is behind the feature flags `CI_ENABLE_DLC` and `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+<!-- DLC uses the buildx plugin rather than kaniko or drone-docker. Example - GCR buildx plugin: https://github.com/drone-plugins/drone-buildx-gcr -->
 
 :::
 
@@ -26,7 +28,7 @@ Other build infrastructures can leverage remote Docker caching using your existi
 
 :::note
 
-Support for other storage backends with self-hosted runners is in development.
+Support for other storage backends with self-managed runners is in development.
 
 :::
 
@@ -34,8 +36,8 @@ Each Docker layer is uploaded as an image to a Docker repo you identify. If the 
 
 You can enable the **Remote Cache Image** option in the following steps:
 
-* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md)
-* [Build and Push to ECR](../build-and-upload-artifacts/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gar.md)
-* [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md)
-* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr.md)
+* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md)
+* [Build and Push to ECR](../build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings.md)
+* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md)
+* [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md)
+* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md)

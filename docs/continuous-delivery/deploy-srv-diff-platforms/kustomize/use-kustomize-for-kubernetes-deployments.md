@@ -6,6 +6,8 @@ helpdocs_topic_id: 98u2hvzj0t
 helpdocs_category_id: hpy9lyd9b3
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments-use-kustomize-for-kubernetes-deployments
 ---
 
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, patches, etc, just as you would in any native kustomization.
@@ -120,7 +122,7 @@ In **Manifest Details**, enter the following required settings:
 You can list artifacts in two ways:
 
 - Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-- You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Kustomize Patches](#kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+- You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Kustomize Patches](#kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables).
 
 ## Kustomize patches
 
@@ -212,7 +214,7 @@ If you have hardcoded patches in `patchesStrategicMerge`, but not add these patc
 
 ### Using Harness variables in patches
 
-Kustomize does not natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in Kustomize patches.
+Kustomize does not natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in Kustomize patches.
 
 This allows you to configure any patch YAML labels as Harness variables expressions and replace those values at Pipeline runtime.
 

@@ -4,12 +4,6 @@
 
 const sidebars = {
   kb: [
-    // Tutorial Link from Community
-    {
-      type: "link",
-      label: "Tutorials",
-      href: "/tutorials",
-    },
     // Docs Link from Community
     {
       type: "link",
@@ -19,8 +13,8 @@ const sidebars = {
     // Cert Link from Community
     {
       type: "link",
-      label: "Certifications",
-      href: "/certifications",
+      label: "University",
+      href: "/university",
     },
     // KB from Community
     {

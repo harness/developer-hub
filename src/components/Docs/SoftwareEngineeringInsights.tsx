@@ -5,9 +5,10 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/softwareEngineeringInsightsData";
-
+import { docsCards } from "./data/softwareEngineeringInsightsData";
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CI() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -15,7 +16,7 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_sei.svg`} />
-            <h1>Software Engineering Insights Documentation</h1>
+            <h1>Software Engineering Insights</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/release-notes/software-engineering-insights">
@@ -30,21 +31,29 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how you can use data-led insights to remove bottlenecks and improve productivity.
+              Harness Software Engineering Insights (SEI) enables engineering
+              leaders to make data-driven decisions that improve engineering
+              productivity, efficiency, alignment, planning, and execution. It
+              provides actionable insights into software delivery and workflows
+              across teams, processes, and systems to improve software quality,
+              enhance developer experience, and accelerate time to value. Learn
+              how you can use data-led insights to remove bottlenecks and
+              improve productivity.
             </p>
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/sei.svg`
+                    : `${baseUrl}img/SEI_Landing_Page_dark_mode.svg`
+                }
+              />{" "}
+            </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
-        <>
-          <div className={styles.sectionDivider}></div>
-          <div className={styles.subSection}>
-            <h3>Featured Tutorials</h3>
-            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-          </div>
-        </>
-      )}
     </div>
     // </Layout>
   );

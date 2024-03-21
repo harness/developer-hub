@@ -5,13 +5,17 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, SRMList } from "./data/serviceReliabilityManagementData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function SRM() {
+  const { colorMode } = useColorMode();
+
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Monitor SLOs, track error budget burndown, identify change impact</h3>
+        <h3>
+          Monitor SLOs, track error budget burndown, identify change impact
+        </h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -58,19 +62,35 @@ export default function SRM() {
               production environment.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnSRM)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/service-reliability-management">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnSRM
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://harness.io/products/service-reliability-management">
                 <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/srm.svg`} />
+          </div> */}
+
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/srm.svg`
+                  : `${baseUrl}img/SRM_Landing_ Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

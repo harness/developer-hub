@@ -20,6 +20,12 @@ The XML SAML file used with Harness must use UTF-8.
 
 UTF-8 BOM is not supported. Some text editors like Notepad++ save in UTF-8 BOM by default.
 
+:::info note
+When integrating users through any SAML provider, it is important to note that users added to an external SAML provider are not automatically synchronized with Harness user groups. Synchronization occurs upon the first login by the user belonging to a specific provider’s user group into Harness. Only at this point will the newly added user, having logged in through SAML, inherit all permissions and access rights associated with the Harness group linked to the Okta user group.
+
+To ensure continuous and real-time synchronization of user group bindings and access controls, it is recommended to utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained. For implementation details and further guidance on provisioning users with SCIM, go to [Okta SCIM](/docs/platform/role-based-access-control/provision-users-with-okta-scim), [Microsoft Entra SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), and [OneLogin SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim).
+:::
+
 ## SAML SSO with Harness
 
 To set up SAML SSO with Harness, you add a SAML SSO provider to your Harness account and enable it as the default authentication method.
@@ -149,15 +155,15 @@ Now that Okta is set up in Harness as a SAML SSO provider, you can enable and te
    2. Log in using a Harness [user account](../role-based-access-control/add-users.md) that has a corresponding email address registered in Okta. If successful, you're redirected to the Okta log in page.
    3. On the Okta log in page, enter the email address associated with the Harness user account. The Harness account and Okta account can have different passwords. If successful, you'll be returned to Harness.
 
-   :::info note
+   :::info
 
    If you get locked out of Harness due to an SSO issue, you can log into Harness through [local login](#harness-local-login).
 
    :::
 
-   import Local from '/docs/platform/shared/local-login-note.md'
+import Llnote from '/docs/platform/shared/local-login-note.md'
 
-   <Local />
+<Llnote />
 
 ### SAML authorization with Okta
 
@@ -711,99 +717,113 @@ You cannot delete a SAML SSO Provider from Harness that is linked to a Harness G
 
 ## SAML SSO with Keycloak
 
-To set up SAML support in your Keycloack Harness app, make sure that the app has corresponding Users in Harness:​
-
-:::info note
-Users are not created as part of the SAML SSO integration. Users are invited to Harness using their email addresses. Once they log into Harness, their email addresses are registered as Harness Users. For more information, go to [SAML SSO with Harness Overview](#saml-sso-with-harness-overview).
-:::
-
-This section describes the steps you must perform to use a Keycloak app for Harness SAML SSO:​
-
-### Keycloak User Accounts
+Harness supports configuration with or without [Just-In-Time (JIT) user provisioning](/docs/platform/role-based-access-control/provision-use-jit/). Without JIT, perform the following steps to add new users:
 
 1. In Harness, add the users you want to set up for SAML SSO by inviting them to Harness using the same email addresses that they use in your SAML provider.​
-2. In Keycloak, assign them to your SAML provider app.​
+2. In Keycloak, add the users and make sure they are in scope for the client you create in the configuration steps below.
+
+With JIT, you add users to Keycloak, and they will automatically be added to Harness upon first login.
 
 ### Set Up a Client in Keycloak
 
 1. Log in to your Keycloak account.
-2. In your [Master Realm](https://wjw465150.gitbooks.io/keycloak-documentation/content/server_admin/topics/realms/master.html), click **Clients**. For steps to create a new Realm, go to [Create a New Realm](https://wjw465150.gitbooks.io/keycloak-documentation/content/server_admin/topics/realms/create.html).
-   
-   ![](./static/single-sign-on-saml-113.png)
+2. Switch to your target Realm, then select **Clients**.
+3. Select **Create Client**, then enter the following values.
 
-3. Click **Create Client**. The **Create Client** settings appear.
-4. In **Client type**, select **SAML**.
-5. In **Client ID**, enter `app.harness.io`.
-6. In **Name**, enter a name for your client.
-7. Turn off **Always display in console**. Turning this option off will make sure that this client is not displayed in the Account Console, when you do not have an active session.
-   
-   ![](./static/single-sign-on-saml-114.png)
+	**General settings**
 
-8. In **Root URL**, **Home URL**, and **Valid post logout redirect URIs** enter `https://devtest.harnesscse.com`.
-9.  In **Master SAML Processing URL**, enter your app's redirect YAML login URL.  
-For example, `https://app.harness.io/gateway/api/users/saml-login?accountId=<your account Id>`.
-10. Click **Save**. Your client is now listed in Clients.
-11. Click on the client you just created. The client details appear.
-12. Make sure the **Name ID format** is set to **email**.
-13. Make sure the following settings are turned on:
-	1. Force POST binding
-	2. Include AuthnStatement
-	3. Sign assertions
- 
-       ![](./static/single-sign-on-saml-115.png)
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Client Type**                | SAML                                                                                                                                            |
+	| **Client ID**                  | app.harness.io                                                                                                                                  |
+	| **Name**                       | _optional_                                                                                                                                      |
+	| **Description**                | _optional_                                                                                                                                      |
+	| **Always display in UI**       | Off                                                                                                                                             |
 
-14. In **Signature Algorithm**, select `RSA_SHA256`.
-15. In **SAML signature key name**, select **NONE**.
-16. In **Canonicalization method**, select **Exclusive**.
-17. Click **Save**
+	**Login settings**
 
-### Create a Role
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Root URL**                   | `https://app.harness.io/`                                                                                                                       |
+	| **Home URL**                   | `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`                                                                            |
+	| **Valid post logout redirect URIs** | `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`                                                                       |
+	| **Master SAML Processing URL** | `https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`                                                               |
 
-1. In your Client, click **Roles**.
-2. Click **Create Role**.
-3. In **Role Name**, enter a name for the role. Click **Save**.
+4. Select **Save**.
+5. In the newly-created client's configuration, enter the following values.
 
-### Create a User
+	**Settings -> SAML capabilities**
 
-1. In your Keycloak account, click **Users**.
-2. Click **Add user**. The **Create User** settings appear.
-3. In **Email**, enter the email address of the user.
-4. Turn on **Email verified**.
-5. In **First name**, enter the first name of the user.
-6. In **Last name**, enter the last name of the user.
-7. Turn on **Enabled**. This is to make sure that a disabled user cannot log in.
-8. Click **Join Groups**. Search for your user groups and join.
-9. Click **Create**.
-10. Click on the user you just created and click **Credentials**.
-11. Add password for this user.
-12. Click **Role mapping**. Assign **admin** role to this user.
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Name ID format**             | email                                                                                                                                           |
+	| **Force POST binding**         | On                                                                                                                                              |
+	| **Include AuthnStatement**     | On                                                                                                                                              |
+	| _All other options_            | Off                                                                                                                                             |
+
+	**Settings -> Signature and Encryption**
+
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Sign documents**             | On                                                                                                                                              |
+	| **Sign assertions**            | On                                                                                                                                              |
+	| **Signature algorithm**        | RSA_SHA256                                                                                                                                      |
+	| **SAML signature key name**    | NONE                                                                                                                                            |
+	| **Canonicalization method**    | EXCLUSIVE                                                                                                                                       |
+
+	**Keys**
+
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Client signature required**  | Off                                                                                                                                             |
+
+	**Advanced**
+
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Assertion Consumer Service POST Binding URL**  | `https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`                                             |
+
+6. Select **Save**.
+7. From the left-nav menu, go to **Realm Settings**, then select **SAML 2.0 Identity Provider Metadata**. A new tab opens with XML data. 
+
+8. Save the data to a file to use when configuring Harness.
+
+9. (Optional) To automatically sync group memberships in Harness based on group memberships in Keycloak, perform the following steps.
+	
+   1. Go to your newly-created Client, then select the **Client Scopes** tab.
+
+   2. In the first row, select the value in the **Assigned client scope** field.
+
+   3. Select **Configure a new mapper**, then select **Group list**.
+   4. Configure the following settings.
+
+	| **Name**                       | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Name**                       | grouplist                                                                                                                                       |
+	| **Group attribute name**       | member                                                                                                                                          |
+	| **SAML Attribute NameFormat**  | Basic                                                                                                                                           |
+	| **Single Group Attribute**     | On                                                                                                                                              |
+	| **Full group path**            | Off                                                                                                                                             |
+   5. Select **Save**.
 
 ### Set up Keycloak SAML SSO in Harness
 
-1. In your Harness Account, got to **Account SETUP** and click **Authentication**.
-2. Click **SAML Provider**. The **Add SAML Provider** settings appear.
-3. In **Name**, enter a name for your SAML provider.
-4. In **Select a SAML Provider**, click **Other**.  
-Once you do this, you can see additional controls to set up the SAML Provider.​
-5. Copy the Endpoint URL under **Enter the SAML Endpoint URL as your Harness application's ACS URL** and paste it in **Assertion Consumer Service POSTBinding URL** in your Keycloak client's **Advanced** tab.
-   
-   ![](./static/single-sign-on-saml-116.png)
+1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
+2. Select **+ SAML Provider**, then enter the following values.
 
-6. You must download the Identity Provider metadata XML from your Keycloak realm and upload the file into Harness.​  
-To do this, in your Keycloak account, click **Realm Settings**.
-7. Click **SAML 2.0 Identity Provider Metadata**. Save the metadata file.
-   
-   ![](./static/single-sign-on-saml-117.png)
+	| **Field**                      | **Description**                                                                                                                                 |
+	| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+	| **Name**            			 | Keycloak                                                                                                                                        |
+	| **Select an SAML Provider**    | Other                                                                                                                                           |
+	| **Enable Authorization**       | _Enable if you want to automatically sync group memberships in Harness based on group memberships in Keycloak_                                  |
+	| **Group Attribute Name**       | member _(only available if Enable Authorization is selected)_                                                                                   |
+	| **Add Entity Id**              | _Enabled_                                                                                                                                       |
+	| **Entity Id**                  | app.harness.io                                                                                                                                  |
+	| **Enable JIT Provisioning**    | _Enable if Just In Time user provisioning is desired_                                                                                           |
 
-8. In Harness' Add SAML Provider dialog, under **Upload the Identity Provider metadata XML**, click **Upload.**
-9.  Add the SAML metadata file you downloaded from your Keycloak realm settings.
-10. Select **Add Entity ID** and enter your custom Entity ID.​ The default Entity ID is `app.harness.io`. The value you enter here will override the default Entity ID.
-11. Click **Add**.  
-The new SSO provider is displayed under **Login via SAML**.​
-
-:::info note
-Harness does not support authorization with Keycloak.
-:::
+3. Select **Add**.
+4. In **Upload the Identity Provider metadata XML downloaded from your app**, select **Upload**, then select the XML file you added when you set your Keycloak configuration steps.
+5. Select **Add**. The new SSO provider is displayed under **Login via SAML**. You might need to expand this section using the arrow on the right-hand side of the screen.​
 
 ### Enable and Test SSO with Keycloak
 
@@ -816,20 +836,28 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 
 ## Harness Local Login
 
-To prevent lockouts or in the event of OAuth downtime, a user that has Account Admin assigned on All Account Level Resources or All Resources Including Child Scopes can use the Local Login URL `https://app.harness.io/auth/#/local-login` to log in and update the OAuth settings. _The user must have this access assigned directly on their Harness user, not via a group assignment._
+import Harnessll from '/docs/platform/shared/harness-local-login.md'
 
-import Local from '/docs/platform/shared/local-login-note.md'
+<Harnessll />
 
-<Local />
+## Use encrypted SAML
 
-For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
+To use encrypted SAML with Harness, you download the encryption certificate from the Harness UI and upload it to your identity provider (IdP) settings to support the encrypted SAML flow.
 
-1. Log in using **Harness Local Login**.
+To download your encryption certificate and upload it to your IdP settings, do the following:
 
-   ![](./static/single-sign-on-saml-118.png)
+1. In your Harness account, go to **Account Settings**, and then select **Authentication**.
+2. Under **Login via SAML**, select **More Options** (&vellip;), and then select **Edit**. The **Edit SAML Provider** options open.
 
-2. Change the settings to enable users to log in.
+   ![](./static/enable-encrypted-saml.png)
 
-:::info note
-You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
-:::
+3. Select the **Download** link to download the encryption certificate for SAML assertions.
+4. Sign in to your IdP.
+5. Edit your SAML integration.
+   
+   1. Enable assertion encryption.
+   2. Select your encryption algorithm.
+   3. Upload the encrypted certificate file you downloaded from the Harness UI in step 3 above.
+
+When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
+

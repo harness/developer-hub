@@ -1,7 +1,7 @@
 ---
 title: Discover and remediate issues in Security Tests
 description: View, navigate, discover, and investigate detected issues from an individual scan 
-sidebar_position: 10
+sidebar_position: 20
 sidebar_label: Discover and remediate detected issues
 ---
 
@@ -15,27 +15,33 @@ The following steps describe the general workflow:
 
 1. (_Optional_) Set the **Security Execution** to filter issues based on target, type, stage, step, or scanner.
 
-  These filters are useful for pipelines that run multiple scans. You can hide irrelevant issues and focus only issues of interest. Filtering on a specific target can make it easier to compare results with previous scans of that target. 
+   These filters are useful for pipelines that run multiple scans. You can hide irrelevant issues and focus only issues of interest. Filtering on a specific target can make it easier to compare results with previous scans of that target. 
 
 2. Select the [severity](/docs/security-testing-orchestration/get-started/key-concepts/severities) tiles to filter issues by severity. You can also show or hide issues with exemptions.  
 
 3. Drill down to the relevant issues list to view the issues found in the scan:
 
-    - **Only in current scan** New issues not found in any previous scan of that target.
+    - **Only in \<_target_>:\<_variant_>** Issues only found in the scanned variant.
 
-    - **Common to \<_target_>:\<_variant_>** Issues also found in the last scan of the specified variant.
+    - **Common to \<_target_>:\<_baseline_>** Issues also found in the target baseline.
 
     - **Common to previous scan** 
-      - Issues also found in the last scan (if the scanned target has no baseline), OR
-      - Issues also found in the last scan of the baseline (if the scanned variant is the baseline).
+      - Issues also found in the previous scan (if the scanned target has no baseline), OR
+      - Issues also found in the previous scan of the baseline (if the scanned variant is the baseline).
 
-    - **Common to previous / baseline scan** Issues also found in both the last scan of the specified variant AND the last scan of the baseline. 
+    <!-- **Common to previous / baseline scan** Issues also found in both the previous scan of the specified variant AND the previous scan of the baseline. -->
 
-   :::note
+    - **Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant. 
+      
+      <DocImage path={require('./static/remediated-issue.png')} width="60%" height="60%" />
 
-   For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+      :::note important notes
 
-   :::
+      - For best results in STO, every target should have a baseline defined. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).
+
+      - The **Security Tests** UI categorizes issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant against the baseline specified when the scan was run. This might be different from the baseline currently specified for the target. Baselines can change automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions.
+
+      :::
 
 3. To investigate an issue in detail, click the issue in the list to open **Issue Details** (right). 
 
@@ -47,5 +53,5 @@ The following steps describe the general workflow:
 
    - Request an [exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
 
-   - Fix the issue using [AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) (currently in beta).
+   - Fix the issue using [AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 

@@ -1,7 +1,7 @@
 ---
 title: Build and push with non-root users
 description: Use the buildah plugin if you can't use the built-in Build and Push steps.
-sidebar_position: 40
+sidebar_position: 23
 ---
 
 
@@ -24,7 +24,7 @@ If your security policy doesn't allow running as root for any step, you must use
 To use the Buildah plugin, you must meet the following requirements:
 
 * You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/ci-stage-settings.md#run-as-non-root-or-a-specific-user).
+* The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user).
 * `anyuid` SCC is required. For more information, go to the OpenShift documentation on [Managing Security Context Constraints](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html).
 
 ### Add a Plugin step
@@ -54,8 +54,8 @@ At the point in your pipeline where you want to build and upload an image, add a
    * `tags`: Specify tags for your image.
    * `registry`: Specify the registry index, such as `https://index.docker.io/v2/`. The registry format for ECR is `aws_account_id.dkr.ecr.region.amazonaws.com`.
    * `dockerfile`: Specify the Dockerfile to use for the build.
-   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`.
-   * `password`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
+   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`.
+   * `password`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
    * For more information and additional settings, including AWS S3 settings, go to [Buildah plugin settings](#buildah-plugin-settings).
 
 
@@ -103,8 +103,8 @@ This step requires the following specifications:
    * `tags`: Specify tags for your image.
    * `registry`: Specify the registry index, such as `https://index.docker.io/v2/`. The registry format for ECR is `aws_account_id.dkr.ecr.region.amazonaws.com`.
    * `dockerfile`: Specify the Dockerfile to use for the build.
-   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`.
-   * `password`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
+   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`.
+   * `password`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
    * For more information and additional settings, including AWS S3 settings, go to [Buildah plugin settings](#buildah-plugin-settings).
 
 
@@ -125,10 +125,10 @@ Many Buildah plugin settings correspond with settings for the built-in **Build a
 
 | Destination | Buildah image | Buildah main.go | Equivalent Build and Push step |
 | ----------- | --------------------- | ------------------------------------- | ------------------------------ |
-| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Hub](./build-and-push-to-docker-hub-step-settings.md) |
-| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push-to-acr.md) |
-| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push-to-ecr-step-settings.md) |
-| GAR/GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push-to-gar.md)/[Build and Push to GCR](./build-and-push-to-gcr.md) |
+| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Registry](./build-and-push/build-and-push-to-docker-registry) |
+| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR](./build-and-push/build-and-push-to-acr.md) |
+| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR](./build-and-push/build-and-push-to-ecr-step-settings.md) |
+| GAR/GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GAR](./build-and-push/build-and-push-to-gar.md)/[Build and Push to GCR](./build-and-push/build-and-push-to-gcr.md) |
 
 ## Stage YAML example
 

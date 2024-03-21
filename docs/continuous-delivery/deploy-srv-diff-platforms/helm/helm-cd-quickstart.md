@@ -8,7 +8,7 @@ Harness supports Helm deployments as part of its Kubernetes swimlane. You can de
 
 This topic summarizes Helm support in Harness and provides links to Helm-related topics.
 
-For a quick tutorial, go to [Deploy using Helm Chart](/tutorials/cd-pipelines/kubernetes/helm-chart).
+For a quick tutorial, go to [Deploy using Helm Chart](/docs/continuous-delivery/get-started/cd-tutorials/helm-chart).
 
 Learn [CD pipeline basics](/docs/continuous-delivery/get-started/key-concepts) before you review Helm deployment basics below.
 
@@ -79,9 +79,9 @@ For a detailed explanation of Helm deployments, go to [Deploy Helm charts](/docs
 
 Here's a summary of the process:
 
-1. Harness fetches the manifests from your Helm repository onto the Harness delegate.
+1. Harness fetches the manifests from your Helm repository onto the Harness Delegate.
 2. Harness unzips the chart and runs a `helm template` over the Kubernetes resources packaged in the Helm chart.
-3. On the same Harness delegate, or a delegate that has access to the target Kubernetes Cluster, Harness will proceed to deploy using the `kubectl apply -f <+kubernetes.resource.yml>`.
+3. On the same Harness Delegate, or a delegate that has access to the target Kubernetes Cluster, Harness will proceed to deploy using the `kubectl apply -f <+kubernetes.resource.yml>`.
 4. After the deployment, Harness will manage and track the deployed Helm chart via the **Release Name**.
 
 ## Harness managed Helm charts deep dive
@@ -120,9 +120,9 @@ In the event of rollback, because Harness tracks and can control how the files a
 
 In this approach:
 
-1. Harness fetches the manifests from your Helm repository on to the Harness delegate.
+1. Harness fetches the manifests from your Helm repository on to the Harness Delegate.
 2. Harness unzips the chart, runs a `helm template` over the Kubernetes resources packaged in the Helm Chart.
-3. On the same Harness delegate, or a delegate that has access to the target Kubernetes cluster, Harness will proceed to deploy using the `helm install {YOUR_HELM_CHART}` or a `helm upgrade {YOUR HELM CHART}`.
+3. On the same Harness Delegate, or a delegate that has access to the target Kubernetes cluster, Harness will proceed to deploy using the `helm install {YOUR_HELM_CHART}` or a `helm upgrade {YOUR HELM CHART}`.
 4. After the deployment, Harness, using the Helm client, will query the deployed instances for tracking.
 
 ### Harness Helm charts managed by Helm
@@ -158,19 +158,19 @@ You can add a trigger to your Harness pipeline that will run the pipeline when t
 
 For details, go to:
 
-- [Trigger pipelines on new Helm chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart)
-- [Trigger pipelines on a new artifact](/docs/platform/Triggers/trigger-on-a-new-artifact)
+- [Trigger pipelines on new Helm chart](/docs/platform/triggers/trigger-pipelines-on-new-helm-chart)
+- [Trigger pipelines on a new artifact](/docs/platform/triggers/trigger-on-a-new-artifact)
 - [Triggers](/docs/category/triggers)
 
 ### Optional: Helm Chart to Manage Harness Delegates
 
-Harness includes a Helm-based Harness delegate but you can use any delegate type for Helm deployments.
+Harness includes a Helm-based Harness Delegate but you can use any delegate type for Helm deployments.
 
 Helm chart delegates are a great way to manage delegates at scale and via automation. The chart remains the same and you simply need to swap out the values.yaml for delegate installation.
 
 You can parameterize much of the Helm Chart via Go Templating and pass in parameters via the values.yaml. This makes the Helm installation consistent and, depending on the team's requirements, you can pass in a values.yaml to spin up the delegate.
 
-For steps on Helm delegates, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
+For steps on Helm delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 If you select to build your own delegate and include only those tools needed for Helm deployments, go to [Delegate-required SDKs](/docs/platform/delegates/delegate-reference/delegate-required-sdks/) to see what Kubernetes and Helm-related binaries are required.
 
@@ -242,4 +242,4 @@ You can achieve this by using the following expression in **Release Name** to sh
 
 First, ensure the credentials that you have passed to the Helm HTTP or OCI Connector are still valid.
 
-You can also `exec` into your Harness delegate and run the `helm repo add` command on the delegate to manually fetch the repo to see if the delegate can pull it.
+You can also `exec` into your Harness Delegate and run the `helm repo add` command on the delegate to manually fetch the repo to see if the delegate can pull it.

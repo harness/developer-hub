@@ -30,13 +30,24 @@ Note that while parallelism for TI can improve the total time it takes to run al
 To enable test splitting for TI, you must:
 
 <!-- no toc -->
-1. [Define a parallelism strategy.](#define-the-parallelism-strategy)
+1. [Define a parallelism strategy.](#define-a-parallelism-strategy)
 2. [Enable test splitting on the Run Tests step.](#enable-test-splitting-on-the-run-tests-step)
 3. [Use an expression to differentiate report names for each run.](#differentiate-report-names)
 
 ### Define a parallelism strategy
 
-Go to the pipeline where you want to enable parallelism for TI, and define a parallelism strategy on either the stage where you have the **Run Tests** step or on the **Run Tests** step itself. For example:
+Go to the pipeline where you want to enable parallelism for TI, and define a parallelism strategy on either:
+
+* The stage where you have the **Run Tests** step. (Recommended)
+* On the **Run Tests** step itself.
+
+:::warning
+
+If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
+
+:::
+
+For example:
 
 ```yaml
         strategy:
@@ -47,11 +58,6 @@ If you are using the Visual editor, **Parallelism** is found under **Looping Str
 
 For more information about parallelism strategies and optimizing parallelism, go to [Split tests - Define a parallelism strategy](../speed-up-ci-test-pipelines-using-parallelism.md#define-a-parallelism-strategy) and [Split tests - Optimize parallelism](../speed-up-ci-test-pipelines-using-parallelism.md#optimize-parallelism).
 
-:::warning
-
-If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
-
-:::
 
 ### Enable Test Splitting on the Run Tests step
 
@@ -75,7 +81,7 @@ Class timing uses test times from previous runs to determine how to split the te
 
 ### Differentiate report names
 
-Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
+Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/variables-and-expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
 
 ```yaml
                        reports:
@@ -85,6 +91,74 @@ Modify the **Report Paths** (`reports.paths`) value to include a [Harness expres
                          type: JUnit
 ```
 
+<details>
+<summary>Recommended maven-surefire-plugin and pom.xml modifications for test splitting</summary>
+
+The following modification is recommended when using test splitting in a Run Tests step with step-level `parallelism`. This modification is recommended because it doesn't change the default behavior and preserves the default test report directory. If you are using stage-level `parallelism`, this modification has no impact and isn't required.
+
+The default maven-surefire-plugin configuration in `pom.xml` is as follows:
+
+```
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+```
+
+When running tests, the default test reports (`*.xml`) are generated in `target/surefire-reports`:
+
+```
+<reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+```
+
+However, when you run a CI pipeline with test splitting enabled, all test reports are generated in one `surefire-reports` directory. As a result, the [Tests tab](/docs/continuous-integration/use-ci/viewing-builds.md#tests-tab) shows the same number of tests for all parallel runs.
+
+This issue is only present in the [Build details UI](/docs/continuous-integration/use-ci/viewing-builds). In actuality, the tests are split.
+
+To correct the UI issue, make the following changes to `pom.xml` and your Run Tests step:
+
+1. Edit `pom.xml`:
+
+   * Add a property:
+
+   ```
+     <properties>
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <maven.compiler.source>1.7</maven.compiler.source>
+       <maven.compiler.target>1.7</maven.compiler.target>
+	   <reportDir>target/surefire-reports</reportDir>
+     </properties>
+   ```
+
+   * Edit the maven-surefile-plugin configuration:
+
+   ```
+       <plugin>
+         <artifactId>maven-surefire-plugin</artifactId>
+         <version>2.22.1</version>
+	     <configuration>
+	       <reportsDirectory>${reportDir}</reportsDirectory>
+	     </configuration>
+       </plugin>
+   ```
+	
+2. In your CI pipeline, edit the **Run Tests** step.
+
+   * Add the following to the step's build arguments:
+
+   ```
+   -DreportDir=reports-<+strategy.iteration> test
+   ```
+
+   * Declare the following in the step's report paths:
+
+   ```
+   **/reports-<+strategy.iteration>/*.xml
+   ```
+
+</details>
+
+#### Differentiate parallel runs in logs
 You can also use environment variables and expressions to differentiate parallel runs in build logs.
 
 1. Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.

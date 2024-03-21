@@ -1,11 +1,11 @@
 {
-  "position": 8,
-  "label": "Integrate CE with other Harness modules",
+  "position": 9,
+  "label": "Integrate CE with Harness modules",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Integrate CE with other Harness modules"
+      "title":"Integrate CE with Harness modules"
    },
   "customProps": {
     "description": "Integrate Chaos Engineering with other Harness modules."

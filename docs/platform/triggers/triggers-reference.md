@@ -19,7 +19,7 @@ For steps on setting up different types of triggers, go to the [Triggers documen
 
 There is a YAML editor for triggers. When creating or editing a trigger, switch to **YAML** to access the YAML editor.
 
-Here's an example of the YAML for a trigger.
+Here's an example of the YAML for a GitLab webhook trigger.
 
 ```yaml
 trigger:  
@@ -78,7 +78,7 @@ trigger:
 
 ### Payload Type
 
-Either **Custom** or a Git provider: **Azure**, **GitHub**, **Bitbucket**, **GitLab**.
+Either **Custom** or a Git provider: **Harness Code**, **Azure**, **GitHub**, **Bitbucket**, **GitLab**.
 
 For the **Custom** payload type, you must create a secure token and add it to your custom Git provider. Whenever you regenerate a secure token, any preceding tokens become invalid, and you must update your Git provider with the new token.
 
@@ -88,9 +88,11 @@ Select the [code repo connector](/docs/category/code-repo-connectors) that conne
 
 If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
+A connector is not required for the **Custom** and **Harness Code** [payload types](#payload-type).
+
 #### Code repo connector permissions for webhook triggers
 
-Git event webhook triggers require specific permissions:
+Git event webhook triggers require specific permissions on the connector:
 
 * The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
 * The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
@@ -124,6 +126,9 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
 | | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 | | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#branch-and-changed-files-conditions). |
+| **Harness Code** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul> |
+| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| | Push |  |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 

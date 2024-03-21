@@ -37,7 +37,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
 - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
-- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
 - [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
@@ -47,7 +47,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -93,7 +93,7 @@ The Terraform Plan step is where you connect Harness to your repo and add your T
 
 1. In **Name**, enter a name for the step, for example, **plan**.
 
-Harness will create an [Entity Id](/docs/platform/References/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
+Harness will create an [Entity Id](/docs/platform/references/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
@@ -252,7 +252,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/variables-and-expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -276,7 +276,7 @@ You can add inline variables just like you would in a tfvar file.
 2. The **Add Inline Terraform Var File** settings appear.
 3. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
 
-This Identifier is a [Harness Identifier](/docs/platform/References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
+This Identifier is a [Harness Identifier](/docs/platform/references/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
 `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 
@@ -411,10 +411,10 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Approval step
 

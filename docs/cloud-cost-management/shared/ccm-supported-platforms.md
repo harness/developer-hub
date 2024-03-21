@@ -1,3 +1,7 @@
+:::info
+CCM FirstGen support is discontinued as of **December 31, 2022**. To migrate to Next Gen, please create Next Gen connectors and delete any existing First Gen connectors.
+:::
+
 This topic provides the Harness Cloud Cost Management supported platforms and feature support matrix: 
 
 
@@ -240,7 +244,7 @@ The following data can be consumed through dashboards:
 
 ### Documentation link
 
- [Dashboards](/docs/category/dashboards)
+ [Dashboards](/docs/category/ccm-dashboards)
 
 </details>
 
@@ -336,7 +340,7 @@ AutoScaling groups behind ALB running HTTP(s) workloads
   - AutoPilot mode
 - Kops
 
-:::important note
+:::info
 Harness does not currently support importing a VM for AutoStopping proxy creation. Harness will provision the AutoStopping proxy.
 :::
 
@@ -360,7 +364,7 @@ The following table lists the ingress controllers supported for Kubernetes AutoS
 
 
 
-:::important note
+:::info
 The supported Kubernetes version for AutoStopping is 1.19 or higher.
 :::
 
@@ -370,7 +374,7 @@ The supported Kubernetes version for AutoStopping is 1.19 or higher.
   - API
   - Terraform
 
-:::important note
+:::info
 Harness does not currently support proxy provisioning via Terraform.
 
 :::
@@ -584,8 +588,8 @@ Harness CCM Budgets allow you to set custom budgets and receive alerts when your
 </TabItem>
 </Tabs>
 
-:::important note
-Harness does not currently support AWS China regions.
+:::info
+Harness CCM does not currently support AWS China regions.
 :::
 
 
@@ -603,19 +607,20 @@ The following table provides the feature support matrix for CCM on Harness Self-
   
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
 | --- | --- | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ❌ | ✅ | ✅ | ✅ | ✅ |
-|Cost categories | ✅  | ❌ | ✅ | ✅ | ✅ | ✅ |
-|Budgets | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ❌ | ✅ | ✅ | ✅ | ✅ |
-|Anomaly detection  | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+|Perspectives | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
+|Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Recommendations |✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
+|Recommendations |✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 |Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 
 
 :::note
-- Perspective preferences are not supported on Harness SMP.
+- Perspective preferences are now supported on Harness SMP.
+- Margin Obfuscation is not supported on Harness SMP.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
 :::

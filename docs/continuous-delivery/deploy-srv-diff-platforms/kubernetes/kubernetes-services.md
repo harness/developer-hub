@@ -227,7 +227,7 @@ To add Kubernetes manifests to your service, do the following:
 </TabItem>  
   <TabItem value="Values YAML" label="Values YAML">
 
-Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in the Values YAML files.
+Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/variables-and-expressions/harness-variables) in the Values YAML files.
 
 If you are using a Values YAML file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 
@@ -249,7 +249,7 @@ To add a Values YAML file, do the following:
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo).
 
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/Delegates/install-delegates/overview).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/overview).
 
 9. Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
@@ -452,7 +452,7 @@ Once your Helm chart is added, it appears in the **Manifests** section. For ex
 
 - If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 - For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
-- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
+- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
 - Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
 
@@ -1165,7 +1165,7 @@ To use a GCR artifact, you create or use a Harness GCP Connector to connect to G
 <details>
 <summary>GCP connector YAML</summary>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 ```yaml
 connector:
@@ -1337,7 +1337,7 @@ For Google Container Registry (GCR), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 </details>
 
@@ -1356,7 +1356,7 @@ import TabItem7 from '@theme/TabItem';
 <Tabs7>
   <TabItem7 value="YAML" label="YAML" default>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 <details>
 <summary>Google Artifact Registry connector YAML</summary>
@@ -1530,7 +1530,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::note
 
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation.
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness Delegate, has the required permissions. See the **Permissions** tab in this documentation.
 
     :::
 
@@ -1549,7 +1549,7 @@ For Google Artifact Registry, the following roles are required:
 
 For more information, go to the GCP documentation [Configure roles and permissions](https://cloud.google.com/artifact-registry/docs/access-control).
 
-Ensure the Harness delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`.
+Ensure the Harness Delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`.
 
 </details>
 
@@ -1566,7 +1566,7 @@ import TabItem8 from '@theme/TabItem';
 <Tabs8>
   <TabItem8 value="YAML" label="YAML" default>
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>ECR connector YAML</summary>
@@ -1789,7 +1789,7 @@ import TabItem9 from '@theme/TabItem';
 <Tabs9>
   <TabItem9 value="YAML" label="YAML" default>
 
-This example uses a Harness delegate installed in Azure for credentials.
+This example uses a Harness Delegate installed in Azure for credentials.
 
 <details>
 <summary>Azure connector for ACR YAML</summary>
@@ -2327,7 +2327,7 @@ Ensure the connected user account has the following permissions in the Nexus Ser
 
 ![Nexus repo perms for Harness](./static/c98a49842e9d8bc5f3d2bef35aeff23c39932602a28d311eec5288cbf0fb22a9.png)
 
-See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+See [Nexus Managing Security](https://help.sonatype.com/en/managing-security.html).
 
 For Nexus 3, when used as a **Docker** repo, the user needs:
 
@@ -3078,7 +3078,7 @@ For more information on runtime inputs and expressions, go to [Fixed values runt
 
 You can use pipeline, stage, service, environment, and Harness built-in variables in your values YAML files and service settings.
 
-See [Built-in Harness variables reference](/docs/platform/Variables-and-Expressions/harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+See [Built-in Harness variables reference](/docs/platform/variables-and-expressions/harness-variables) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
 ### Propagate and override artifacts, manifests, and service variables
 

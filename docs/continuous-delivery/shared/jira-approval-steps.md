@@ -54,7 +54,7 @@ When you add a Jira Approval stage, Harness automatically adds Jira Create, Jira
 
 In **Name**, enter a name that describes the step.
 
-In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform//pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
+In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md)).
 
 You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
@@ -192,9 +192,22 @@ The **Approval Criteria** in the step determines if the Pipeline or stage is app
 
 ![](./static/adding-jira-approval-stages-11.png)
 
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
 
-In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria.
+In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria. Four supported operators are `=`, `!=`, `in`, and `not in`. 
+For example, 
+- The condition for the `Status` field to be in `Approved`, `Done`, or `Published` can be specified as:
+   ![](./static/adding-jira-approval-stages-15.png)
+- The condition for the `Status` field to not be in either `Blocked`, `Invalid`, or `To Do` can be specified as:
+   ![](./static/adding-jira-approval-stages-16.png)
+- The condition for the `Status` field to be in `Approved`, `Done`, or `Published` without `Issue Type` can be specified as:
+   ![](./static/adding-jira-approval-stages-17.png)   
+
+:::important
+
+Multiple conditions with the same Jira field are not allowed. Such use cases can be solved using `in`, `not in` operators, or **JEXL Expression**.
+
+:::   
 
 In **JEXL Expression**, you can use [JEXL expressions](https://commons.apache.org/proper/commons-jexl/reference/syntax.html). You can use a JEXL expression if the field is set to **Fixed value**, **Runtime input**, or **Expression**.
 
@@ -208,8 +221,8 @@ If you add rejection criteria it is used in addition to the settings in **Approv
 
 In Advanced, you can use the following options:
 
-- [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-- [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+- [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ### Step 3: Apply and Test
 
@@ -248,6 +261,8 @@ After an approval is granted, [\<+approval>](/docs/platform/variables-and-expres
 - To add comments in you can use **Comment** key. Use `\\` for line breaks.
 
 ![](./static/adding-jira-approval-stages-14.png)
+
+- For more information about approval log limitations, go to [Deployment logs and limitations](/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations). 
 
 ### See also
 

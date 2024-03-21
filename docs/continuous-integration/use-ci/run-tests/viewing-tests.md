@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
+Your CI pipelines can run tests in [Run steps](../run-step-settings.md) and [Run Tests steps](./test-intelligence/set-up-test-intelligence.md). In Harness, test results can be published to the [Build details page](../viewing-builds.md) on either the **Tests** tab or the **Artifacts** tab.
 
 ## Publish reports to the Tests tab
 
@@ -44,7 +44,7 @@ If you used a **Run** step, the **Tests** tab contains information about the tot
 
 If you ran tests in multiple steps/stages, or parallel steps/stages, use the **Step/Stage** dropdown menu to switch between reports from different steps or stages.
 
-![](../run-ci-scripts/static/run-a-script-in-a-ci-stage-529.png)
+![](./static/run-a-script-in-a-ci-stage-529.png)
 
 ### Results from Run Tests steps (Test Intelligence)
 
@@ -105,17 +105,22 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you [enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence) on a repo, you must generate the initial call graph, which creates a baseline for test selection in future builds. In subsequent builds, the call graph section shows information about tests selected by TI for that run.
-
 Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 
 ![](./static/set-up-set-up-test-intelligence-531.png)
+
+The call graph can be empty if:
+
+* You just enabled Test Intelligence. Your first TI run won't report selected tests. Subsequent runs can report selected tests, if any are selected. The first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
+* TI selected all tests. Lots of code changes and changes to certain files cause TI to select all tests. In this case, no call graph is generated because it would be too large and not useful.
+
+For more information about how and when TI selects tests, go to [Enable Test Intelligence](./test-intelligence/set-up-test-intelligence.md#enable-test-intelligence).
 
 </details>
 
 ## View reports on the Artifacts tab
 
-For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab).
 
 
 <Tabs>
@@ -126,10 +131,10 @@ To publish a test report to the **Artifacts** tab, you must:
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
+   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md)
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, configured as follows:
    * **Name:** Enter a name.
    * **Container Registry:** Select a Docker connector.
@@ -145,10 +150,10 @@ To publish a test report to the **Artifacts** tab, you must:
 
 1. Include steps in your pipeline that run tests and produce test reports.
 2. Add a step to upload the report artifact to cloud storage, such as:
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-s3.md)
+   * [Upload Artifacts to Sonatype Nexus](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog.md)
 3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, for example:
 
    ```yaml
@@ -181,6 +186,12 @@ The **Unit Test Metrics** dashboard aggregates data from test reports in JUnit X
 
 You can find this and other [dashboards](/docs/platform/dashboards/dashboards-overview/) under the **Dashboards** section of your Harness account.
 
-## Troubleshooting: Test suites incorrectly parsed
+## Troubleshoot test reports
 
-The parsed test report in the **Tests** tab comes strictly from the provided test reports. Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](./test-report-ref.md).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to test reports in Harness CI, including:
+
+* [Test suites incorrectly parsed](/kb/continuous-integration/continuous-integration-faqs/#test-reports-missing-or-test-suites-incorrectly-parsed)
+* [Test reports missing](/kb/continuous-integration/continuous-integration-faqs/#test-reports-missing-or-test-suites-incorrectly-parsed)
+* [Test report truncated](/kb/continuous-integration/continuous-integration-faqs/#why-is-the-test-report-truncated-in-tests-tab)
+* [Multiple test report paths](/kb/continuous-integration/continuous-integration-faqs/#can-i-specify-multiple-paths-for-test-reports-in-a-run-step)
+* [Test Intelligence call graph is empty](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)

@@ -1,7 +1,7 @@
 ---
 title: Add a stage
 description: Learn how to add and configure a pipeline stage.
-sidebar_position: 3
+sidebar_position: 10
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -121,8 +121,8 @@ When you run this pipeline, the value you set for `NAME` in the stage settings i
 
 On the **Advanced** tab, you can configure:
 
-* [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping strategies - Matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
 ## Add a Custom stage
@@ -144,19 +144,11 @@ Like the standard stages, Custom stages support:
 
 :::info Rollback
 
-Custom stages *don't* support [rollback](./define-a-failure-strategy-for-pipelines.md), but you can use [conditional executions](./w_pipeline-steps-reference/step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
+Custom stages *don't* support [rollback failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines), but you can use [conditional executions](./step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
 
 :::
 
 ### Environments and Infrastructure Definitions in Custom stages
-
-:::info note
-
-This feature will be included an in upcoming release.
-
-The Environments and Infrastructure Definitions in the Custom stages feature will be behind the feature flag `CDS_CUSTOM_STAGE_WITH_ENV_INFRA`. Contact [Harness Support](mailto:support@harness.io) to inquire about the feature.
-
-:::
 
 You can also use **Environment** and **Infrastructure Definition** in Custom stages. 
 

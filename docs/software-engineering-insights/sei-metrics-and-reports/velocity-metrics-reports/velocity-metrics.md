@@ -24,16 +24,16 @@ SEI offers different velocity metrics based on the tools your teams use and the 
 
 There are many velocity metrics, and some overlap with other metrics categories. For more information about velocity subcategories and related metrics, go to:
 
-* [DORA metrics](../dora-metrics.md)
-* [Effort investment metrics](../alignment-metrics-reports/effort-investment-metrics.md)
-* [Flow metrics](./flow-metrics.md)
-* [Sprint metrics](./planning-sprint-metrics.md)
+* [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
+* [Effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics)
+* [Flow metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/flow-metrics)
+* [Sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
 
 For information about reports you can use to analyze velocity metrics, go to:
 
-* [CI/CD job reports](./ci-cd-reports.md)
-* [Issues reports](./issues-reports.md)
-* [Lead time reports](./lead-time-reports.md)
-* [SCM reports](./scm-reports.md)
-* [Support reports](../support-metrics.md) (Issues, resolution time, response time, and requester wait time reports only)
-* [PagerDuty reports](../quality-metrics-reports/pagerduty-reports.md) (Ack trend, after hours, response, response times, and stacks reports only)
+* [CI/CD job reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports)
+* [Issues reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports)
+* [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports)
+* [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports)
+* [Support reports](/docs/software-engineering-insights/sei-metrics-and-reports/support-metrics.md) (Issues, resolution time, response time, and requester wait time reports only)
+* [PagerDuty reports](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/pagerduty-reports) (Ack trend, after hours, response, response times, and stacks reports only)

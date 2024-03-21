@@ -12,7 +12,7 @@ SEI achieves this by looking at different facets of the SDLC process where bottl
 
 * **Alignment:** SEI ensures engineering teams are aligned with business initiatives, improving resource allocation and reducing wasted efforts.
 * **Planning:** SEI maximizes the agile program output by increasing predictability, reducing scope creep, and encouraging good process habits using an automated workflow engine.
-* **Execution:** SEI benchmarks each team and organization by using an OOTB north star metric frameworks, such as DORA or SPACE, and SEI provides actionable insights into how to improve those metrics by removing bottlenecks.
+* **Execution:** SEI benchmarks each team and organization by using an out of the box north star metric frameworks, such as DORA or SPACE, and Harness SEI provides actionable insights into how to improve those metrics by removing bottlenecks.
 
 SEI also helps your teams drive continuous improvement by leveraging best practices and adopting a data-driven engineering mindset.
 
@@ -20,10 +20,10 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 
 To start using SEI, configure the following:
 
-* [Collections](../sei-projects-and-collections/project-and-collection-overview.md)
-* [Integrations](../sei-integrations/sei-integrations-overview.md)
+* [Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
+* [Integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview)
 * [Profiles](/docs/category/profiles)
-* [Insights](../sei-insights.md)
+* [Insights](../insights/sei-insights.md)
 * [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip
@@ -36,5 +36,5 @@ Use [Propels](/docs/category/propels-and-tables) to add human-in-the-loop automa
 
 * [Get started with Harness](/docs/get-started)
 * [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies)
-* [Propelo and Harness](./propelo-and-harness.md)
-* [Troubleshooting and FAQs](../sei-troubleshooting-faqs.md)
+* [Propelo and Harness](/docs/software-engineering-insights/get-started/propelo-and-harness)
+* [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-troubleshooting-faqs)

@@ -31,7 +31,7 @@ The following permissions and settings are required to use the SEI ADO Services 
 ## Configure the integration
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integration**, locate the **Azure DevOps Services** integration, and select **Install**.
 4. Configure and save the integration.
 

@@ -21,10 +21,9 @@ This topic provides steps to onboard and use the Harness Terraform Provider and 
 
 - [Terraform Registry](https://registry.terraform.io/providers/harness/harness). 
 - Read the following docs: 
-  - [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/)
-  - [Harness Terraform Provider overview](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/)
-  - [Advanced Terraform onboarding](https://developer.harness.io/docs/platform/automation/terraform/advanced-terraform-onboarding)
-
+  - [Onboard with Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider)
+  - [Harness Terraform Provider overview](/docs/platform/automation/terraform/harness-terraform-provider-overview)
+  - [Advanced Terraform onboarding](/docs/platform/automation/terraform/advanced-terraform-onboarding)
 
 ### Building automation
 

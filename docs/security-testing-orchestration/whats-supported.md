@@ -56,6 +56,17 @@ import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techr
 
 </details>
 
+<details>
+<summary>Supported ingestion formats</summary>
+
+
+import StoSupportedFormats from '/docs/security-testing-orchestration/sto-techref-category/shared/_sto-supported-ingestion-formats.md';
+
+
+<StoSupportedFormats />
+
+</details>
+
 
 </TabItem>
   <TabItem value="Data ingestion">
@@ -74,10 +85,10 @@ In addition to ingesting scan data in the external scanner's native format, STO 
   <TabItem value="Build infrastructure">
 
 
-####  STO support by CI build infrastructure type
+####  Operating systems and architectures supported for STO
 
 
-import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
+import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-infrastructures.md';
 
 
 <StoInfraSupport />

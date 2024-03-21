@@ -26,14 +26,14 @@ For getting started quickly, you can use our [sample code from the Java SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.4.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-java-server-sdk/releases)
 
 ## Requirements
 

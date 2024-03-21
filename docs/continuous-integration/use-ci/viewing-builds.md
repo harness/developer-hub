@@ -36,11 +36,13 @@ When troubleshooting failed builds, you can switch to **Console View** to alloca
 
 #### Troubleshoot build log issues
 
-These are common issues related to build logs:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for issues and questions related to build logs, such as:
 
-* [Truncated execution logs](../troubleshoot-ci/troubleshooting-ci.md#truncated-execution-logs)
-* [CI step logs don't load in real time](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
-* [Step logs disappear](../troubleshoot-ci/troubleshooting-ci.md#step-logs-disappear)
+* [Truncated execution logs](/kb/continuous-integration/continuous-integration-faqs/#truncated-execution-logs)
+* [Step logs disappear](/kb/continuous-integration/continuous-integration-faqs/#step-logs-disappear)
+* [CI step logs don't load in real time.](/kb/continuous-integration/articles/CI-step-logs-dont-load-in-real-time)
+* [Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background](/kb/continuous-integration/continuous-integration-faqs/#step-succeeds-even-when-explicitly-executing-exit-1-in-a-bash-script-that-is-runs-in-scripts-background)
+* [A previous execution is missing from my Builds dashboard or Project Overview page.](/kb/continuous-integration/continuous-integration-faqs/#builds-older-than-30-days-arent-on-the-project-overview-page)
 
 ### Inputs tab
 
@@ -50,7 +52,7 @@ This tab lists pipeline-level inputs. Step-level inputs are reported in the step
 
 This tab provides links to artifacts, such as images or reports, produced during the build.
 
-Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [View tests - View reports on the Artifacts tab](./run-tests/viewing-tests.md#view-reports-on-the-artifacts-tab).
+Availability of artifact details depends on the upload location, build configuration, or build infrastructure. For an example and more information, go to [Publish to the Artifacts tab](./build-and-upload-artifacts/artifacts-tab).
 
 ### Commits tab
 
@@ -62,11 +64,11 @@ This tab presents test results from **Run** or **Run Tests** steps. For more inf
 
 ### Other tabs
 
-The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
+The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
 ## Dashboards
 
-For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/Dashboards/dashboards-overview).
+For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/dashboards/dashboards-overview).
 
 ## Error Tracking (Run Tests step)
 

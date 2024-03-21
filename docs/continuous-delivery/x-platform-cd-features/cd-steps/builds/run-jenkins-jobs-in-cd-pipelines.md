@@ -30,13 +30,13 @@ When executing a job, you can also *dynamically capture* the output from the j
 
 ### What information is available to capture?
 
-Any Jenkins job information in the particular shell session of the pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, go to [built-in and custom Harness variables reference](/docs/platform/Variables-and-Expressions/harness-variables).
+Any Jenkins job information in the particular shell session of the pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, go to [built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
 
 Capturing and exporting output in the Jenkins step can be very powerful. For example, a Jenkins step could capture Jenkins build information, and a Harness service could echo the build information and use it in a complex function, and then export the output down the pipeline for further evaluation.
 
 ## Add the Jenkins step
 
-This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/Pipelines/add-a-stage).
+This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/pipelines/add-a-stage).
 
 In your CD stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
@@ -64,7 +64,7 @@ To filter a job, search for its name.
 
 You can use runtime inputs or expressions for the Jenkins connector and job name.
 
-Go to [fixed values, runtime inputs, and expressions](/docs/platform/Variables-and-Expressions/harness-variables) for more information.
+Go to [fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/harness-variables) for more information.
 
 ## Job parameters
 
@@ -90,10 +90,10 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 

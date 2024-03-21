@@ -31,11 +31,11 @@ If you have any further questions or need assistance, contact [Harness Support](
 
 ### How do I add a Feature Flags SDK to my project?
 
-For an example of adding an SDK to a project, follow [this FF tutorial](https://developer.harness.io/tutorials/feature-flags/typescript-react#adding-the-feature-flags-sdk-to-the-project).
+For an example of adding an SDK to a project, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/get-started/java-quickstart).
 
 ### How do I configure the source code for feature flags?
 
-You need to have the source code level setup so that the application can communicate with Harness Feature Flags. For a walkthrough, follow [this FF tutorial](https://developer.harness.io/tutorials/feature-flags/typescript-react#configure-your-source-code-for-feature-flags).
+You need to have the source code level setup so that the application can communicate with Harness Feature Flags. For a walkthrough, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/get-started/java-quickstart).
 
 ### Is there a way to see MAU utilization at the project level?
 
@@ -53,6 +53,10 @@ We can't recover (undelete) deleted Feature Flags projects due to GDPR Data Rete
 
 Your bill will be generated at your next billing date. You can [check your billing date in the Harness UI](https://app.harness.io/ng/account/replaceWithYourAccountIDHere/settings/billing).
 
+### Can I associate tags with feature flags?
+
+Yes, you can attach tags to feature flags.
+
 ## FF permissions and users
 
 ### What's the difference between the Feature Flag Create/Edit and Toggle permissions?
@@ -63,9 +67,9 @@ The **Toggle** permission allows users to turn flags on and off for users.
 
 This separation of permission allows you to follow the security principle of least privilege. For example, internally you can have multiple people who create flags, several who can toggle flags in QA, and only a few who can toggle flags in production.
 
-### I want to block toggling of feature flags through the FF UI exclusively in the production environment. How can I do this with Harness OPA Policy or RBAC?
+### Can I block users from toggling feature flags in certain environments, such as QA or production environments?
 
-We suggest using [Harness RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) for this requirement.
+Harness suggests using [Harness RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) to restrict users from toggling flags in certain environments.
 
 OPA exists to assert if the current state of a flag is allowed by the policy or not, regardless of what change was just made. RBAC exists to decide if someone is allowed to perform a certain change or not, such as toggling a flag in the production environment.
 
@@ -150,6 +154,10 @@ While using the `/stream` endpoint, you can't observe data transmission. To keep
 
 The `/stream` connection is automatically terminated by the load balancer every 24 hours. In such cases, the FF SDK is designed to promptly reestablish the connection to ensure continuous operation.
 
+#### Can I use an API to export all feature flag states?
+
+Yes, you can use the [Get all Feature Flags for the Project endpoint](https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures).
+
 ## FF targets
 
 ### If I set targets and then do a percentage rollout on a feature flag, does the percentage include those already opted in, effectively stacking percentages?
@@ -224,11 +232,11 @@ If you find that your use case requires enhanced rule capabilities beyond what i
 
 </details>
 
-## Does the relay proxy offer both Polling and Streaming options for communication?
+### Does the relay proxy offer both Polling and Streaming options for communication?
 
 Yes, the Relay Proxy provides configuration choices for both Streaming and Polling communication methods.
 
-## What is an appropriate or optimal way to add a hard refresh for mobile browsers?
+### What is an appropriate or optimal way to add a hard refresh for mobile browsers?
 
 The latest version of the FF SDK has a `refreshEvaluations` function that you can call to manually refresh evaluations on demand. For more information, go to the [mobile device support documentation in the FF SDK GitHub repository](https://github.com/harness/ff-javascript-client-sdk/blob/HEAD/mobile_device_support.md).
 
@@ -242,3 +250,71 @@ document.addEventListener('visibilitychange', (event) => {
   cf.refreshEvaluations();
 });
 ```
+
+For more information, go to [Make flags resilient during a mobile web browser refresh](https://developer.harness.io/docs/feature-flags/get-started/mobile-browser-refresh).
+
+### How do you include a target using custom data?
+
+To include a target, initialize the JavaScript SDK with your target's details and desired attributes. For example:
+
+```
+const cf = initialize('api_key', {
+  identifier: 'Harness',
+  attributes: {
+    lastUpdated: Date(),
+    host: location.href
+  }
+});
+```
+
+This setup allows you to use ``lastUpdated`` and ``host`` in creating group rules.
+
+### Is it secure to store the client-sdk-key in session storage?
+
+Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks/#sdk-types) for more information.
+
+### What can a client do with client-sdk-key besides evaluating feature flags?
+
+The client SDK keys are intended only for evaluation purposes on Harness servers and do not allow users to extract data from their Harness account. This means that even if someone inspects a web application and obtains the client SDK key, they cannot access any confidential information stored in Harness.
+
+#### Can we call initialize more than once to update attributes?
+
+We do not have a option to do update without closing the sdk. So ee will need to close the SDK and re-init it in the mean time, to force the attributes to update.
+### We specify that a percentage rollout gets hashed to create a number between 1-100 which is used for the percentage rollout. Does the attribute get combined with the flagID at all
+We don’t involve the flag ID in the hash. However you can choose to hash on different target attributes, you can change it in the UI when setting the percentage rollouts.
+
+### Would a target always be in the same bucket regardless of the feature flag? What I mean by that is if I roll out multiple flags which are entirely independent of 10% TRUE, I would expect a different 10% to be used for both flags, otherwise, the first x% of targets would be the first to see new features which seems unintended.
+Yeah, a target will generally always be in the same bucket. a target with the identifier “test” will always come out as 57. so a 50/50 split will always be false.
+
+### How do I configure the bucket behaviour so that I can release two features simultaneously to two different buckets? I.e. I want to deliver true to buckets 1-10 for flag 1 and true to buckets 10-20 for another feature.
+
+For your 1-10 flag you could create a “Multivariate” with the variations: “variant”, “excluded” and “control” and set to serve 10% “variant“ and 90% to exclude with 0 to control. 
+
+for your 10-20 flag you could create a “Multivariate” with the variations: “excluded”, “variant” and “control” and set it to serve 10% “excluded “, 10% to “variant” and 80% to control. 
+
+### Is there a way to configure what buckets to use for TRUE and false? There are cases where I don't want the same targets always to get the feature rollout, especially if I am trying to experiment with different flags and I don't want both targets to overlap.
+Yeah, the buckets are fairly static. so 50/50 on a boolean flag will always have true in the first 50 and false in the second 50. You can, however, create a “Multivariate” flag and what order you add the variations is what order the buckets are created. so Creating a “string” flag with “false” first and “true” second will switch the order. You can also use this to add control groups. Some users would create a flag with 3 variations: “control”, “excluded” and “variant” as a way to mix what users see.
+
+### Is there a reason you are not concatenating the feature flag ID along with the identifier before hashing to identify the bucket?
+Regarding concatenating the feature flag ID along with the identifier before hashing to identify the bucket, this is not currently a feature in Harness.
+
+### Is there a way to check in Harness UI what variation a target got served? Say I need to validate what flags a customer is seeing is there a way to do that?
+To check what variation a target got served in Harness UI, you can go to the Feature Flags dashboard, select the flag you want to check, and then click on the Analytics tab. From there, you can filter by target and see which variation was served to that target.
+
+#### How to fetch stale flags in org and projects?
+
+You can use the API https://apidocs.harness.io/tag/Feature-Flags#operation/GetAllFeatures to fetch stale FF, you need to use status=potentially-stale in the API.
+
+#### Why am I getting a target segment not found error?
+```
+target segment not found%!(EXTRA string-some-target-here)
+```
+
+This error occurs if a user is trying to add a target group that does not exist as a target to a Feature Flag.
+
+#### Why am I getting a target not created error?
+```
+target not created 'target'
+```
+
+This error occurs if a user is trying to add a target that already exists.

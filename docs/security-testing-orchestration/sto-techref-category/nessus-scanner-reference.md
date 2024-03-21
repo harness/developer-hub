@@ -1,11 +1,11 @@
 ---
 title: Nessus scanner reference for STO
-description: Instance scans with Nessus
+description: Scan application instances with Nessus.
 sidebar_label: Nessus scanner reference
 sidebar_position: 240
 ---
 
-You can run Nessus scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your application instances and ingest results from Nessus.
 
 ## Important notes for running Nessus scans in STO
 
@@ -59,7 +59,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-### Instance settings
+### Instance
 
 
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
@@ -78,6 +78,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />

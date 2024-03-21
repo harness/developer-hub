@@ -4,27 +4,37 @@ description: learn how to set up and use bidirectional sync for Git Experience.
 sidebar_position: 3
 ---
 
-:::note
-
-Currently, Bi-Directional sync is behind the feature flag `PIE_GIT_BI_DIRECTIONAL_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. You can also have Harness Git Experience sync bidirectionally between Harness and your Git repo.
 
 With bidirectional sync for Git Experience, changes made on either the Git repo or Harness are synched automatically.
 
 This topic explains how to set up and use bidirectional sync.
 
+### Supported Entities
+
+#### Generally Available
+- Pipelines
+- Templates
+- Input Sets
+- Services
+- Environments
+- Infrastructure
+
+#### Behind a Feature Flag
+
+:::note
+These entities are behind feature flags. Contact [Harness Support](mailto:support@harness.io) to enable the feature, and reference the corresponding feature flag below. 
+:::
+- Overrides (CDS_OVERRIDES_GITX)
+
 ## Important notes
 
-Please review the following important notes:
-
-- Phase 1 of the bi-directional sync feature applies to Harness pipelines, templates, and input sets. Phase 2 of this feature will include Harness services and environments.
 - If users make changes on the Harness and Git side at the same time, precedence is given on a first come, first served basis.
 - Customers using the current unidirectional sync (Harness --> Git) functionality can migrate to bi-directional sync using the steps in this topic. The process involves enabling an account-level setting. 
-- If you make an invalid YAML change to the YAML in the Git repo file, Harness will not accept the invalid YAML during sync. An **Invalid YAML Detected** error appears. You can fix the invalid YAML in Harness and save the entity.
+- If you make an invalid YAML change to the YAML in the Git repo file an **Invalid YAML Detected** error appears in the Harness UI. You can fix the invalid YAML in Harness or in the Git repo.
 - If your Git repo server is on-premise, it must have connectivity to Harness SaaS. 
+- Currently, only `.yaml` and `.yml` files are supported for bi-directional sync.
+- When configuring a webhook, you need to be the owner of the relevant git repository.
 
 
 ## Configure bi-directional sync

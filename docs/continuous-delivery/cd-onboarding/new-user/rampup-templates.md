@@ -12,8 +12,8 @@ This guide outlines a set of best practices to utilize Harness templates more ef
 For more information on templates, go to:
 
 - [Templates overview](/docs/platform/templates/template).
-- [Best practices and guidelines for templates](/docs/platform/Templates/templates-best-practices).
-- [Use a template](/docs/platform/Templates/use-a-template).
+- [Best practices and guidelines for templates](/docs/platform/templates/templates-best-practices).
+- [Use a template](/docs/platform/templates/use-a-template).
 
 ## Variables with templates
 
@@ -221,10 +221,10 @@ When possible, it's best to mark all the stage and step [failure strategies](/do
 For details on advanced settings, go to:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors).
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings).
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings).
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview).
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview).
 
 ## Versioning
 
