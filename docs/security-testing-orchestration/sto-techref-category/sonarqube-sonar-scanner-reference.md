@@ -249,6 +249,8 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
 ### Fail on Severity
 
 
