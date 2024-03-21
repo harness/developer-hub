@@ -163,6 +163,7 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
+<!-- 
 
 ### Additional CLI flags
 
@@ -177,6 +178,8 @@ You can run the [`zap_cli`](https://github.com/Grunny/zap-cli) binary with CLI a
 STO supports passing CLI arguments to ZAP but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of ZAP.
 
 :::
+
+-->
 
 ### Fail on Severity
 
