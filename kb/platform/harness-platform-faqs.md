@@ -1631,6 +1631,22 @@ You can store delegate tokens as Kubernetes secrets. For more information, go to
 
 You can also store the token in vault and reference the token in YAML. For more information, go to [Rotate tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/#option-rotate-tokens).
 
+### How do I install azure client  to delegate?
+
+Add the below commands in the INIT_SCRIPT to download and install az client to delegate. 
+
+```yaml
+- name: INIT_SCRIPT
+  value: |
+    rpm --import https://packages.microsoft.com/keys/microsoft.asc
+    rpm -Uvh 'https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm'
+    microdnf install azure-cli
+ ```
+
+## Delegate behaviour with HPA. How are deployments handled when delegates are scaled down?
+
+Once the shutdown hook is triggered on the delegate, it will not accept any new delegate task and it wait till the existing tasks completes running or termiationGracePeriod ran out. 
+
 ## Dashboards
 
 ### Why am I not seeing my deployments on the Overview page of the project?
@@ -2649,3 +2665,9 @@ Then, in the delegate manifest, locate the `CronJob` resource. In the resource s
 Yes, Harness supports Google cloud functions in both FirstGen and NextGen.
 
 For more information, go to [Google cloud functions](/docs/faqs/continuous-delivery-faqs/#google-cloud-functions)
+
+### Updating the LDAP cron schedule results in an error `(Failed to fetch: 400)`. What are the possible causes?
+
+This happens due to incorrect cron expression. Harness uses java cron-utils to run to define, parse, validate cron expressions. Please use the below expression generate the expressions
+
+https://www.javainuse.com/cron#google_vignette
