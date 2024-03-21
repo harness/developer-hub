@@ -208,6 +208,10 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. For example, you can include IPv6 tests as follows: `tool_args` = `-6`
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
 ### Fail on Severity
 
 
