@@ -6399,3 +6399,30 @@ To integrate a new version of the Helm binary with the delegate:
    Replace `/path/to/new/helm/binary` with the actual path to the newly installed Helm binary.
 
 3. Restart the delegate to apply the changes.
+
+
+#### Why does variable setup as string is getting converted to a octl equivalent when passed to the manifest?
+
+A variable that is of string type might be getting converted to octal equivalent when being passed to a kubernetes manifest. Example 020724 when passed through an variable gets passed as 8660.
+
+The  go templating is converting the octal equivalent if the input numerical starts with 0 before applying them to the cluster. Adding the double quotes around the JEXL  in the values.yaml shall preserve the actual value (Example: `"<+pipeline.variables.date>"`).
+
+#### What pipeline status are considered under concurrent active pipeline executions ?
+
+Concurrent active pipeline executions comprises of those executions that are active and in-progress. This includes those that are paused temporarily by steps such as the wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
+
+#### How to find the output variables of a stage from a pipeline execution through API?
+
+The output of the pipeline execution can be reetrieved through SubGraph API as described under https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+
+Each nodemap corresponds to a stage in the execution and the output variables along with the values shall be available under the "outcomes" field under "nodemap". 
+
+#### How to Find Node and plan execution id of a pipeline execution?
+
+Node and plan execution ids may be required to fetch details about an execution and query the API for results. 
+Plan execution id is specific to a pipeline execution and can be found in the url of the pipeline execution /executions/R0CWuTW8T6Gl7BcshaJpxQ
+
+Node execution id is specific to a stage and can be fetched from the list of API calls with a filter "stageNodeId" . Below is a sample API call that uses the stageNodeId is the one below
+
+`https://app.harness.io/gateway/pipeline/api/pipelines/execution/v2/<planexecutionid>?routingId=<accountid>&orgIdentifier=<orgname>&projectIdentifier=<project-name>&accountIdentifier=<accountid>&stageNodeId=<stagenodeid>`
+
