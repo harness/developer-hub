@@ -28,7 +28,12 @@ We've also added an additional feature to the Cloud Cost Monitoring tool. There 
 
 ![The "No Changes" status within Cloud Cost Monitoring](./static/ff-ccm-no_changes_status.png)
 
+
 ![The "Monitoring" status within Cloud Cost Monitoring](./static/ff-ccm-monitoring_status.png)
+
+
+![The "Anomalous Spending" status within Cloud Cost Monitoring](./static/ff-ccm-anomalous_spending_status.png.png)
+
 
 # Setting Up Cloud Cost Management in Feature Flags
 
