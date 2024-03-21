@@ -6407,7 +6407,7 @@ A variable that is of string type might be getting converted to an octal equival
 
 The go templating is converting to the octal equivalent if the numerical input starts with 0 before applying them to the cluster. Adding double quotes around the JEXL in the values.yaml file shall preserve the actual value (Example: `"<+pipeline.variables.date>"`).
 
-#### What pipeline status are considered under concurrent active pipeline executions ?
+#### What pipeline statuses are considered when determining concurrent active pipeline executions ?
 
 Concurrent active pipeline executions comprises of active and in-progress executions. This includes those that are paused temporarily by steps such as the wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
 
