@@ -6409,7 +6409,7 @@ The go templating is converting to the octal equivalent if the numerical input s
 
 #### What pipeline status are considered under concurrent active pipeline executions ?
 
-Concurrent active pipeline executions comprises of those executions that are active and in-progress. This includes those that are paused temporarily by steps such as the wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
+Concurrent active pipeline executions comprises of active and in-progress executions. This includes those that are paused temporarily by steps such as the wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
 
 #### How to find the output variables of a stage from a pipeline execution through API?
 
