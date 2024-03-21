@@ -90,7 +90,7 @@ You can create a Perspective by grouping your resources the way you wish. For ex
 
 
 :::note
-You can create up to 250 Perspectives.
+You can create up to 10,000 Perspectives.
 :::
 
 Perform the following steps to create a Perspective:
@@ -124,7 +124,7 @@ Perform the following steps to create a Perspective:
 
 :::note
 - When you create a new Perspective, data across all cloud service providers and clusters are displayed. If you want to restrict the data to a particular cloud service provider, you must apply a filter in the Cloud Provider field.
-- The number of Perspectives that can be created is up to 10,000.
+
 :::
 
 
