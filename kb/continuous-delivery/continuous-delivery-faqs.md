@@ -6403,7 +6403,7 @@ To integrate a new version of the Helm binary with the delegate:
 
 #### Why does a variable of type string get converted to an octal equivalent when passed to the manifest?
 
-A variable that is of string type might be getting converted to octal equivalent when being passed to a kubernetes manifest. Example 020724 when passed through an variable gets passed as 8660.
+A variable that is of string type might be getting converted to an octal equivalent when being passed to a kubernetes manifest. Example: The variable `020724`  would be passed through as `8660`.
 
 The  go templating is converting the octal equivalent if the input numerical starts with 0 before applying them to the cluster. Adding the double quotes around the JEXL  in the values.yaml shall preserve the actual value (Example: `"<+pipeline.variables.date>"`).
 
