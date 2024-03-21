@@ -1,4 +1,4 @@
----
+x---
 title: Prowler scanner reference for STO
 description: Scan configurations with Prowler.
 sidebar_label: Prowler scanner reference
@@ -187,8 +187,9 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: `-excluded-checks s3_bucket_public_access`
 
-<!-- ============================================================================= -->
-<a name="fail-on-severity"></a>
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 ### Fail on Severity
 
