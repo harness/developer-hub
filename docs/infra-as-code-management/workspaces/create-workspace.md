@@ -52,7 +52,7 @@ To create a new workspace, follow these steps:
 
 7. If you need to use either environment or Terraform variables during execution, select the **Variables** tab to define the variables. 
 
-   * **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JXEL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline). 
+   * **Environment Variables** can be either String, [Secret](/docs/category/secrets), or a reference to another variable using [JEXL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) (it can be in the same or a different workspace or from the pipeline). 
 
    * **Terraform Variables** Can be provided in the following ways:
 
