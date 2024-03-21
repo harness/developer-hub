@@ -20,6 +20,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Android SDK
 
+#### Version 2.1.0
+
+*Enhancements*:
+ - We've provided a new configuration option that allows polling to be disabled. Do have a look at the [streaming and polling mode on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#streaming-and-polling-mode) for information on how to use this feature. (FFM-10961)
+ - This version now updates the `GettingStarted` application to demonstrate usage of all initialzation methods. You can have look at our updated [Initialzation Documentation on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#client-initialization-options) for more details. 
+
+*Bug Fixes*:
+ - We have fixed an issue that resulted in the `initialize` success callback again being triggered if the SDK needed to re-authenticate. This would happen in scenarios such as losing connectivity. Because of this, any code you supplied specifically related to initiailization success would get executed again. The `initialize` callback has been updated to correct this. Do feel free to have a look at the new [callback documentation on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#using-callback) for more information on this. (FFM-10940)
+ - The issue involving having to register for a second, or multiple, event listeners at the same time as an event comes through has been resolved. On the previously registered listener, it could throw an unchecked `ConcurrentModificationException`.
+
 #### Version 2.0.2 
 
  - We have fixed the non-blocking behaviour. (FFM-8138)
