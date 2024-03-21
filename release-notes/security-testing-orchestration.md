@@ -49,12 +49,16 @@ The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- ![](/docs/security-testing-orchestration/sto-techref-category/static/sto-7164-aquasec-external-policies.png) -->
 
-The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan . You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
+The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan. You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
 
 For more information, go to:
 
 - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+
+#### New enhancement
+
+- AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426)
 
 
 ### Version 1.87.2
