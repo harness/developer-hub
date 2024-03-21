@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness uses a Service usage model to charge Harness Continuous Delivery (CD) module customers.
+Harness Continuous Delivery and GitOps use a service usage model to track your license consumption.
 
 The CD service usage calculation uses the **Active Services** count and the number of **Service Instances** each Active Service's deployment creates. These concepts, and how they apply to different deployment types, are described in this document.
 
@@ -16,23 +16,19 @@ The CD service usage calculation uses the **Active Services** count and the numb
 
 ### What are Active Services?
 
-- When Harness deploys a service via a pipeline, the service is counted as an Active Service.
+- When Harness deploys a service via a pipeline, the service is counted as an Active Service if the service is deployed not more than 30 days ago. Harness obtains all services that are part of any pipeline execution (deployment) over the past 30 Days. This represents the total Active Services consumed by an account.
 - When Harness deploys a GitOps Application, the GitOps Application is counted as an Active Service.
-- It remains an Active Service for the next 30 days.
-- Harness obtains all services that are part of any pipeline execution (deployment) over the past 30 Days. This represents the total Active Services consumed by an account.
-- There is no cap on the number of Service Instances (pods, hosts, etc.)  that are created by the service.
 - You can track Active Services in any month for your account by going to the Subscription page in the Harness UI.
 
 ### Where do I see my Active Service total? 
 
-Go to **Account Settings** > **Subscriptions** or enter the following URL using your Harness account ID for `ACCOUNT_ID`:
+Go to **Account Settings** > **Subscriptions** or enter the following URL using your Harness account ID for `ACCOUNT_ID`.
 
-```
-https://app.harness.io/ng/account/ACCOUNT_ID/settings/subscriptions
-```
+#### Key things to understand
 
-<DocImage path={require('./static/7998c6375586533d4f1c0192d27bff9d1c82e2311a007a4ad2bf7f7a37dd7da9.png')} width="60%" height="60%" title="Click to view full size image" />  
-
+- Under License Usage, the Service License tile shows the total number of service licenses consumed by all the total active services over the last 30 days. 
+- The Active Service Graph shows the breakdown of active services consumed over the last 30 days.
+- The Usage Breakdown Table shows the type of services consumed over the last 30 days based on the Active Service Graph.
 
 ### What are Service Instances? 
 
@@ -52,16 +48,39 @@ The Elastic Search Helm chart could consume 15 instances (pods) depending on the
 
 This causes Elastic Search to consume 3 Active Services. 
 
+Service Instances apply to:
+
+- Kubernetes
+- SSH
+- WinRM
+- Helm
+- AWS ECS
+- Tanzu (Formerly PCF)
+- Deployment Templates
+- Spot.io
+- AMI/ASG
+- Azure Web Apps
+
+Service Instances do not apply to:
+
+- AWS Lambda
+- Google Cloud Functions
+- AWS SAM
+- Serverless.com
+
+
+
+
 ### How does Harness CD & GitOps count Active Services?
 
-For containerized and non-containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last month is considered an Active Service.
+For containerized and non-containerized applications deployed through a Deploy Stage in a Harness pipeline, any unique Service that is deployed in the last 30 days is considered an Active Service.
 If a Service has more than 20 Service Instances (95th percentile of Service Instances during the month, measured every 60 minutes), for every additional 20 Service Instances, another Active Service is counted. Even if a service is deployed and it generates 0 service instances, Harness will charge for 1 Active Service because it was used via a Deploy stage in a pipeline. 
 
 
 ## How are different services and pipelines calculated?
 
 ### Container and Non-Containerized Applications
-For Containerized and Non-Containerized Applications, Harness takes the deployed service and counts it as 1 Active Service license. When you deploy more than 20 Service Instances, Harness will charge the user another Active Service license for the service.
+For Containerized and Non-Containerized Applications, Harness takes the deployed service and counts it as 1 or more Active Service licenses for every active service. For every 20 Service Instances for an active service, Harness will consume the user another Active Service license for the service.
 
 Services types that are calculated this way:
 
@@ -86,9 +105,8 @@ Services types that are calculated this way:
 
 
 ### Serverless Applications
-For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last month, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. 
+For serverless applications deployed through a Deploy Stage in a Harness pipeline, for each serverless function that is deployed in the last 30 days, 0.16 (1/6) Active Service Licenses are consumed. We will always round up to the next whole number. For example: 0.2 will become 1 Active Service License. For every service types that are classified as a serverless application:
 
-Service types that are classified as a serverless application:
 
 - AWS Lambda
 - Google Cloud Functions
@@ -97,22 +115,24 @@ Service types that are classified as a serverless application:
 
 #### Calculation table: Serverless Functions
 
-| **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
-| ------------------ | ------------------------------------ | ------------------------------------ |
-| hello-lambda       | 0                                    | 0                                    |
-| hello-lambda       | 1                                    | 1/6 (this will round to 1)           |
-| hello-lambda       | 5                                    | 5/6                                  |
-| hello-lambda       | 7                                    | 7/6 (this will round to 2)           |
-| hello-lambda       | 15                                   | 15/6                                 |
+| **Function**       | **Active Service Licenses Consumed** |
+| ------------------ | ------------------------------------ |
+| hello-lambda       | 0                                    |
+| hello-lambda       | 1/6                                  |
+| hello-lambda       | 1/6                                  |
+| hello-lambda       | 1/6                                  |
+| hello-lambda       | 1/6                                  |
+| Total              | 1 (round from 5/6)                   | 
 
 #### GitOps Applications
 
-For GitOps (ArgoCD/Flux) applications deployed through Harness in the last month, every unique GitOps application is counted as an Active Service.
-If a GitOps application has more than 20 pods (95th percentile of pod count during the month, measured every 60 minutes), for every additional 20 pods, another Active Service is counted.
+For GitOps (ArgoCD/Flux) applications deployed / sync'd through Harness in the last 30 days, every unique GitOps application is counted as an Active Service.
+
+If a GitOps application has more than 20 pods (95th percentile of pod count during the last 30 days, measured every 60 minutes), for every additional 20 pods, another service license is consumed.
 
 #### Calculation table: GitOps Application
 
-| **Active Service** | **95th Percentile Active Instances** | **Active Service Licenses Consumed** |
+| **Active Service** | **95th Percentile Active Instances** | **Service Licenses Consumed** |
 | ------------------ | ------------------------------------ | ------------------------------------ |
 | gitOps-guestbook   | 1                                    | 1                                    |
 | gitOps-guestbook   | 22                                   | 2                                    |
@@ -121,9 +141,9 @@ If a GitOps application has more than 20 pods (95th percentile of pod count duri
 
 #### Custom Deployment Templates - Deploy Stages
 
-For applications deployed in the last month through custom deployment template deploy stages in a Harness pipeline where there is a Service associated with the deployment, each such unique Service is counted as an Active Service. 
+For applications deployed in the last 30 days using custom deployment template deploy stages in a Harness pipeline with an associated Service, each unique Service is counted as an Active Service.
 
-_Note: If the Fetch Instance Script in the Custom Deployment Template, is unable to query the number of service instances deployed, this service will consume 1 Active Service license._
+_Note: If the Fetch Instance Script in the Custom Deployment Template, is unable to query the number of service instances deployed, this service will consume 1 Active Service license._ 
  
 #### Calculation table: Deployment Template Stages
 
@@ -136,7 +156,7 @@ _Note: If the Fetch Instance Script in the Custom Deployment Template, is unable
 
 #### Pipeline Executions with no services
 
-For applications deployed in the last month using Custom deployment stages in a Harness pipeline where there is no Service associated with the deployment, one Active Service will be counted for every 100 successful pipeline executions for each of those custom deployment stages.
+For applications deployed in the last 30 days using Custom deployment stages in a Harness pipeline without any associated Services, one Active Service will be counted for every 100 successful pipeline stage executions.
 
 Scenarios that fall under this bucket:
 
@@ -149,8 +169,8 @@ Scenarios that fall under this bucket:
 | **Pipeline Name**  | **Execution Count**                  | **Active Service Licenses Consumed** |
 | ------------------ | ------------------------------------ | ------------------------------------ |
 | terraformJob       | 1                                    | 1                                    |
-| terraformJob       | 150                                  | 1                                    |
-| terraformJob       | 250                                  | 2                                    |
+| terraformJob       | 150                                  | 2                                    |
+| terraformJob       | 250                                  | 3                                    |
 | terraformJob       | 300                                  | 3                                    |
 
  
