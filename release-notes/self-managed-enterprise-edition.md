@@ -79,11 +79,11 @@ This release includes the following Harness module and component versions.
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
 | Platform Service | 1.12.0 |
-| Access Control Service | 1.33.1 |
+| Access Control Service | 1.33.2 |
 | Delegate | 24.02.82203 |
 | Change Data Capture | 1.5.3 |
 | Test Intelligence Service | 1.8.1 |
-| NG UI | 1.7.4 |
+| NG UI | 1.7.5 |
 | LE NG | 1.1.0 |
 
 **Alternative air gap bundle download method**
