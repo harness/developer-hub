@@ -325,9 +325,19 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 
 In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
 
-### SonarQube doesn't scanning the main branch and pull request branches in the same pipeline
+### SonarQube doesn't scan the main branch and pull request branches in the same pipeline
 
-If SonarQube isn't scanning both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube.
+:::info 
+
+Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1882) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
+
+- With this fix, the orchestration step always downloads results for the scanned branch or pull request.
+- Branch scans require no additional configuration.
+- To configure pull-request scans, go to [SonarQube pull-request scan configuration](#sonarqube-pull-request-scan-configuration).
+
+:::
+
+If SonarQube doesn't scan both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube.
 
 One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
 
