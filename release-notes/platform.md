@@ -87,7 +87,44 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- `harness-ingress-controller` arguments are now configurable through overrides. (PL-46366, ZD-55035)
+    They can be controlled by
+
+    ```
+    nginx:
+      controller:
+        watchNamespace: ""
+        updateStatus: true
+        httpPort: 8080
+        httpsPort: 8443
+        watchIngressWithoutClass: true
+        defaultSSLCertificate: ""
+        configMap: ""
+        defaultBackendService: ""
+        publishService: ""
+        electionId: ""
+        controllerClass: ""
+    ```
+
+    - You can provide any extra arguments like this
+
+    ```
+    nginx:
+      controller:
+        extraCommandArgs:
+          - --argument=example-argument
+    ```
+
+    - Ingress controller can now be deployed with a ClusterRole
+    ```
+    nginx:
+      clusterRole:
+        create: true
+    ```
+
 #### Fixed issues
+
+- Actions to create, edit, or delete Streaming Destinations were not being recorded in Audit Trails. This issue has been fixed, and these actions are now correctly captured in Audit Trails. (PL-47910)
 
 ### Version 1.29.6<!--  March 18, 2024 -->
 
