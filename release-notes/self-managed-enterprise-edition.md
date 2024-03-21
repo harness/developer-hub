@@ -323,9 +323,13 @@ gsutil -m cp \
 
 - STO output variables are now supported within nested step groups. (STO-6973, ZD-56586, ZD-58121)
 
+### Behavior Changes
 
+#### Continuous Delivery
 
-
+- In the blue/green stage scale down step, we used to scale down deployments, statefulsets, daemonsets, deploymentConfig and delete HPA, and PDB resources. During scale down, we updated the field `replicas` to 0. In Kubernetes, if HPA is configured it is not mandatory to define replicas. 
+So when another deployment happens and we apply the same old deployments manifest it does not update the replicas field and it remains set to 0. 
+This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
 
 ## March 21, 2024, patch version 0.14.5
 
