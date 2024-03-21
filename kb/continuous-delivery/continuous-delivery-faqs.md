@@ -6401,7 +6401,7 @@ To integrate a new version of the Helm binary with the delegate:
 3. Restart the delegate to apply the changes.
 
 
-#### Why does variable setup as string is getting converted to a octl equivalent when passed to the manifest?
+#### Why does a variable of type string get converted to an octal equivalent when passed to the manifest?
 
 A variable that is of string type might be getting converted to octal equivalent when being passed to a kubernetes manifest. Example 020724 when passed through an variable gets passed as 8660.
 
