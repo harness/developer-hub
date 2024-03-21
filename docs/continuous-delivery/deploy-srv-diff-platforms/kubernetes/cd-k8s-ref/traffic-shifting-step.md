@@ -10,7 +10,9 @@ Currently, this feature is behind the feature flag `CDS_K8S_TRAFFIC_ROUTING_NG`.
 
 :::
 
-This topic describes the Kubernetes Traffic Routing step. These configuration options can be found in the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
+This topic describes the Kubernetes Traffic Routing step. These configuration options can also be found as part of the Blue Green (BG) Deployment step as well as the Canary Deployment step. 
+
+This feature allows you to perform east-west routing of traffic. You would select a routing service mesh provider (currently supported SMI and Istio) and then configure one or more routes which are essentially groups of destinations and optional rules that applies for them.   
 
 Here is a video demo of traffic shifting in a Kubernetes deployments.
 
@@ -26,16 +28,16 @@ Name of the step.
 
 Specify your configuration type here. Currently there are two choices:
 
-* **New Config**: Select this option if you want to specify a new configuration for traffic routing in this step.
-* **Inherit**: Select this option if you want the traffic routing step to inherit a configuration from a previous Blue Green, Canary, or Traffic Routing step.  
+* **New Config**: Select this option if you want to specify a new configuration for traffic routing in this step. If configuring this in BlueGreen deployment step or Canary step this option implicitly assumed. This option will create a new resource(s).
+* **Inherit**: Select this option if you want the traffic routing step to inherit a configuration from a previous Blue Green, Canary, or Traffic Routing step. This option will patch existing resources. 
 
 ### Provider
 
 Specify your service mesh provider. Harness currently supports Service Mesh Interface (SMI) and Istio. 
 
-Each provider will have some common configuration options and some provider specific ones. We have listed all configuration options for each provider so you should only have to look at the one relevant to you.
+Each provider will have some common configuration options and some provider specific ones. We have listed all configuration options for each provider. Please take at the one relevant for you.
 
-#### Service Mesh Interface (SMI)
+#### Service Mesh Interface (SMI) - New Config option
 
 Before you begin, make sure you have an understanding on what SMI is and how it works by [visiting their website](https://smi-spec.io/). 
 
@@ -44,100 +46,219 @@ Currently, we only support `specs.smi-spec.io/v1alpha3` and `specs.smi-spec.io/v
 :::
 
 * **Parameters**:
-    * **Resource Name:** This name will be used to generate a kubernetes name for traffic resources. Hence the name needs to be kubernetes resource name compliant. 
-    * **Root Service:** Specify your root service.
+    * **Resource Name:** This will be used in generating a name for a kubernetes traffic routing resources. Having that mind, the name needs to be kubernetes resource name compliant. 
+    * **Root Service:** This should be a kubernetes service name which will be receiving incoming traffic (take a look in more details the SMI link provided above). Depending on which SMI implementation you are using this value may or may not be the same as one of the destination's host (described below)
+    * **Routes**:
+        * **Route type**: Currently, Harness supports only the `http` route type - for http traffic.
+        * **Route name**: This will be used in generating kubernetes resources so the value should kubernetes name compliant. This should also be unique within the pipeline workflow as it is used as ID for updating purposes (described below)
+        * **Route Rules**: This is the way incoming requests are filtered for the configured route destinations.
 
-* **Configure Routes**: Currently, Harness supports only the `http` route type.
+            * **uri**:
+                * **Value**: Enter the value that you want matched against incoming request URI. 
+                * **Match Type**: Used to determine how URI of the incoming request is matched against the `value` config parameter. Available to choose one of three values (`exact`, `prefix`, `regex`).
 
-* **Route Rules**: Route rules filter incoming requests. Here are the supported route rule types for `http` routes.
+            * **method**:
+                * **Value**: Used for matching the HTTP method of the incoming request.
 
-    * **uri**:
-        * **Match Type**: One of three values (exact, prefix, regex). Used to determine how the `value` below is being matched against the incoming request.
-        * **Value**: Enter the value that you want matched using the match type specified above. 
+            * **headers**:
+                * **Values**:
+                    - **Key**: Specify the name of the request header
+                    - **Value**: Specify the value of the header
+                    - **Match Type**: Specify which kind of matching should be done against the incoming header. Available to choose one of three values (`exact`, `prefix`, `regex`). 
 
-    * **method**:
-        * **Rule Value**: Specify the request method type you want.
+        * **Destinations**: This is locations to which the filtered request will be routed to
 
-    * **headers**:
-        * **Values**:
-            - **Key**: Specify the key of the request header
-            - **Value**: Specify the value you want for this key
-            - **Match Type**: Specify how you want the value to match they key. 
+            * **Host**: Should be the name of the Kubernetes service resource.
 
-* **Destinations**: Specify the destinations here.
+              :::note 
+              *Only applicable when using the Blue/Green deployment step* - You can use placeholder `stable` and `stage` resource names. Which would effectively be replaced with the name of the stable and stage services, respectively. 
+  
+              *Only applicable when using the Canary deployment step* You can use the placeholder `stable` and `canary` resource names. Which would effectively be replaced with the name of the stable and canary services, respectively.
+              :::
 
-    * **Host**: Should be the name of the Kubernetes service resource.
+            * **Weight**: Specify the percentage of traffic that should be routed to this host. The weight should be a numeric value in range [0 - 100].
 
-    :::note 
-    For Blue/Green deployments we recommend using the placeholder `stable` and `stage` resource names.
+              :::note
+              If the total weights for all host destinations is not equal to 100, the weight values will be normalized into a percentage, and the pipeline will run with a warning.
+              :::
 
-    For Canary deployments we recommend using the placeholder `stable` and `canary` resource names.
-
-    These names will be replaced by the actual Kubernetes service resource names which were generated during the B/G or canary deployment.
-    :::
-
-    * **Weight**: Specify the percentage of traffic that will reach this host. The weight should be a number from 0 - 100.
-
-    :::note
-    If the total weights for all host destinations is not equal to 100, the weight values will be normalized into a percentage, and the pipeline will run with a warning.
-    :::
-
-#### Istio
+#### Istio - New Config option
 
 Before you begin, make sure you have an understanding of Istio and how it works by referring to [their website](https://istio.io/latest/about/service-mesh/).
 
 * **Parameters**:
     * **Resource Name:** This name will be used to generate a kubernetes name for traffic resources. Hence the name needs to be kubernetes resource name compliant. 
+    * **Hosts:** Specify one or more host names. This is specific to Istio, please take a look [here](https://istio.io/latest/docs/concepts/traffic-management/#the-hosts-field).
+    * **Gateways:** Specify one or more gateway names. This is specific to Istio, please take a look [here](https://istio.io/latest/docs/reference/config/networking/gateway/).
+    * **Routes**: Currently, Harness supports only the `http` route type.
+        * **Route type**: Currently, Harness supports only the `http` route type - for http traffic.
+        * **Route name**: This will be used in generating kubernetes resources so the value should kubernetes name compliant. This should also be unique within the pipeline workflow as it is used as ID for updating purposes (described below)
+        * **Route Rules**: This is the way incoming requests are filtered for the configured route destinations.
+            * **uri**:
+                * **Value**: Enter the value that you want matched against incoming request URI.
+                * **Match Type**: Used to determine how URI of the incoming request is matched against the `value` config parameter. Available to choose one of three values (`exact`, `prefix`, `regex`).
 
-* **Configure Routes**: Currently, Harness supports only the `http` route type.
+            * **method**:
+                * **Value**: Used for matching the HTTP method of the incoming request.
+                * **Match Type**: Used to determine how HTTP method of the incoming request is matched against the `value` config parameter. Available to choose one of three values (`exact`, `prefix`, `regex`).
 
-* **Route Rules**: Route rules filter incoming requests. Here are the supported route rule types for `http` routes.
-
-    * **uri**:
-        * **Match Type**: One of three values (exact, prefix, regex). Used to determine how the `value` below is being matched against the incoming request.
-        * **Value**: Enter the value that you want matched using the match type specified above. 
-
-    * **method**:
-        * **Rule Value**: Specify the request method type you want.
-
-    * **headers**:
-        * **Values**:
-            - **Key**: Specify the key of the request header
-            - **Value**: Specify the value you want for this key
-            - **Match Type**: Specify how you want the value to match they key. 
+            * **headers**:
+                * **Values**:
+                    - **Key**: Specify the name of the request header
+                    - **Value**: Specify the value of the header
+                    - **Match Type**: Specify which kind of matching should be done against the incoming header. Available to choose one of three values (`exact`, `prefix`, `regex`).
     
-    * **scheme**:
-        * **Match Type**: Specify how you want to match the scheme to the URI.
-        * **Rule Value**: Specify which URI scheme you want to match with.
+            * **scheme**:
+                * **Value**: Specify which scheme you want to match with.
+                * **Match Type**: Specify which kind of matching should be done against the incoming request scheme. Available to choose one of three values (`exact`, `prefix`, `regex`).
 
-    * **authority**:
-        * **Match Type**: Specify how you want to match the authority.
-        * **Rule Value**: Specify which authority you want to match with.
+            * **authority**:
+                * **Value**: Specify which authority you want to match with.
+                * **Match Type**: Specify which kind of matching should be done against the incoming request authority. Available to choose one of three values (`exact`, `prefix`, `regex`).
 
-    * **port**: 
-        * **Rule Value**: Specify the port of the `http` request.
-  
-* **Destinations**: Specify the destinations here.
+            * **port**: 
+                * **Value**: Specify which port you want to match incoming request port with.
 
-    * **Host**: Should be the name of the Kubernetes service resource.
+        * **Destinations**: This is locations to which the filtered request will be routed to
 
-    :::note 
-    For Blue/Green deployments we recommend using the placeholder `stable` and `stage` resource names.
+            * **Host**: Should be the name of the Kubernetes service resource.
 
-    For Canary deployments we recommend using the placeholder `stable` and `canary` resource names.
+              :::note 
+              *Only applicable when using the Blue/Green deployment step* - You can use placeholder `stable` and `stage` resource names. Which would effectively be replaced with the name of the stable and stage services, respectively. 
 
-    These names will be replaced by the actual Kubernetes service resource names which were generated during the B/G or canary deployment.
-    :::
+              *Only applicable when using the Canary deployment step* You can use the placeholder `stable` and `canary` resource names. Which would effectively be replaced with the name of the stable and canary services, respectively.
+              :::
 
-    * **Weight**: Specify the percentage of traffic that will reach this host. The weight should be a number from 0 - 100.
+            * **Weight**: Specify the percentage of traffic that should be routed to this host. The weight should be a numeric value in range [0 - 100].
 
-    :::note
-    If the total weights for all host destinations is not equal to 100, the weight values will be normalized into a percentage, and the pipeline will run with a warning.
-    :::
+              :::note
+              If the total weights for all host destinations is not equal to 100, the weight values will be normalized into a percentage, and the pipeline will run with a warning.
+              :::
 
-* **Hosts**: Specify your host. Learn more about Istio host field [here](https://istio.io/latest/docs/concepts/traffic-management/#the-hosts-field).
+#### SMI and Istio - Inherit option
+This options provides a way to update an existing traffic routing configuration destination's weights. With this step configuration there are two logical parts.
+First one is to configure the `Route Name` and second one is to configure destination(s) which you want to update. Route name is an ID for us to know which traffic routing resource we need to update. The value of the route name should match one of the route names defined during the `New config` step configuration.
+You can configure one or more destinations and their weights. 
+You should also be aware that in case you configure lower number of destinations then the route contains, the update of the weights will occur, but it will respect [0-100] boundaries.
 
-* **Gateway**: Specify your Istio gateway. Learn more about Istio gateways [here](https://istio.io/latest/docs/reference/config/networking/gateway/).
+Example:
+In original setup you have configured 3 destinations for a route:
+```
+Destination1 -> Host: svc1, Weight: 60
+Destination2 -> Host: svc2, Weight: 30
+Destination3 -> Host: svc3, Weight: 10
+```
+
+Now in the update step you configured to update only one destination for that same route. Let's say you want to update Destination `svc1` and what to set its weight to `40`
+
+This will lead to having the remaining 60 (max limit of 100 - configured update weight of 40) to be split amongst the remaining destination, but keeping the same ratio they have amongst themselves.
+Meaning the result would be:
+```
+Destination1 -> Host: svc1, Weight: 40
+Destination2 -> Host: svc2, Weight: 45
+Destination3 -> Host: svc3, Weight: 15
+```
+
+### Configuration examples
+
+#### Istio service mesh configuration
+Here we have an example of an Istio service mesh traffic routing step which will take all the traffic that is coming from gateway `testgateway` and with host `test.com`.
+It will filter all incoming request that have URI `/login` with HTTP method `POST` and header `X-Request` with value `authxx`.
+This request will be split between PODs which are behind two service `svc1` and `svc2` in ratio 65 to 35, respectively.
+The resource created would be a `Virtual Service` with name `istio-vs-k8s-res`
+```
+  - step:
+      identifier: K8sTrafficRoutingConfig
+      type: K8sTrafficRouting
+      name: config
+      spec:
+        type: config
+        trafficRouting:
+          provider: istio
+          spec:
+            name: istio-vs-k8s-res
+            hosts:
+              - test.com
+            gateways:
+              - testgateway
+            routes:
+              - route:
+                  type: http
+                  name: route1
+                  rules:
+                    - rule:
+                        type: uri
+                        spec:
+                          value: /login
+                          matchType: prefix
+                    - rule:
+                        type: method
+                        spec:
+                          value: POST
+                    - rule:
+                        type: headers
+                        spec:
+                          values:
+                            - value: authxx
+                              key: X-Request
+                              matchType: prefix
+                  destinations:
+                    - destination:
+                        host: svc1
+                        weight: 65
+                    - destination:
+                        host: svc2
+                        weight: 35
+```
+
+
+#### SMI service mesh configuration
+Here we have an example of an SMI service mesh traffic routing step which will take all the traffic that is coming into service `svc1`
+It will filter all incoming request that have URI `/login` with HTTP method `POST` and header `X-Request` with value `authxx`.
+This request will be split between PODs which are behind two service `svc1` and `svc2` in ratio 65 to 35, respectively.
+The resource created would be a `TrafficSplit` with name `smi-traffic-split-res-route1` and `HTTPRouteGroup` with name `smi-traffic-split-res-route1-http-rule`
+
+```
+  - step:
+      identifier: K8sTrafficRoutingConfig
+      type: K8sTrafficRouting
+      name: config
+      spec:
+        type: config
+        trafficRouting:
+          provider: smi
+          spec:
+            rootService: svc1
+            name: smi-traffic-split-res
+            routes:
+              - route:
+                  type: http
+                  rules:
+                    - rule:
+                        type: uri
+                        spec:
+                          value: /login
+                          matchType: prefix
+                    - rule:
+                        type: method
+                        spec:
+                          value: POST
+                    - rule:
+                        type: headers
+                        spec:
+                          values:
+                            - value: authxx
+                              key: X-Request
+                              matchType: prefix
+                  name: route1
+                  destinations:
+                    - destination:
+                        host: svc1
+                        weight: 65
+                    - destination:
+                        host: svc2
+                        weight: 35
+```
 
 ### Advanced
 
