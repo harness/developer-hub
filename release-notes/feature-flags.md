@@ -79,7 +79,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.6.1
 
- - We have fixed an issue that resulted in metrics requests failling and displaying a `400: Bad Request` error message. (FFM-10963)
+ - We have fixed an issue that resulted in metrics requests failing and displaying a `400: Bad Request` error message. (FFM-10963)
  - We've upgraded Axios to 1.6.8 to address a [CVE]( https://security.snyk.io/package/npm/follow-redirects/1.15.5) that highlighted known vulnerabilities in the `follow-redirects` package.
 
 ### Python SDK
