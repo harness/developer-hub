@@ -204,9 +204,9 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 You can run the [`trivy image`](https://aquasecurity.github.io/trivy/v0.49/docs/target/container_image/) scanner with flags such as:
 
-`--platform=linux/arm alpine:3.16.1 --scanners vuln`
+`--ignore-unfixed --scanners vuln`
 
-With these flags, `trivy image` loads the image on an ARM machine and scans it for vulnerabilities only. 
+With these flags, `trivy image` reports only on vulnerabilities with known fixes. 
 
 :::caution
 
