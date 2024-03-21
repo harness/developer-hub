@@ -11,7 +11,7 @@ Use this step to add an Aqua Trivy and/or Anchor Grype scan to detect vulnerabil
 
 :::note notes
 
-- This step is currently behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+- This step is currently behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 - Currently [Aqua Trify](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) or [Anchor Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scans are available for this step.
 
