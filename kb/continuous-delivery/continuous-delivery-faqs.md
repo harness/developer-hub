@@ -6405,7 +6405,7 @@ To integrate a new version of the Helm binary with the delegate:
 
 A variable that is of string type might be getting converted to an octal equivalent when being passed to a kubernetes manifest. Example: The variable `020724`  would be passed through as `8660`.
 
-The  go templating is converting the octal equivalent if the input numerical starts with 0 before applying them to the cluster. Adding the double quotes around the JEXL  in the values.yaml shall preserve the actual value (Example: `"<+pipeline.variables.date>"`).
+The go templating is converting to the octal equivalent if the numerical input starts with 0 before applying them to the cluster. Adding double quotes around the JEXL in the values.yaml file shall preserve the actual value (Example: `"<+pipeline.variables.date>"`).
 
 #### What pipeline status are considered under concurrent active pipeline executions ?
 
