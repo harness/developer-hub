@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-03-18T10:00
+date: 2024-03-22T10:00
 sidebar_position: 10
 ---
 
@@ -36,6 +36,16 @@ You will be impacted by this deprecation if:
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## March 2024
+
+### Correction
+
+<!-- 22 Mar 24 -->
+
+A prior release note announced that you could set plugin runtime flags as environment variables for [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+This announcement incorrectly implied that the feature applied to all build infrastructures.
+
+**Correction:** Currently, this feature applies to Kubernetes cluster build infrastructure only. Other build infrastructures can set a limited subset of drone-docker runtime flags as stage variables. The prior release notes and supporting documentation have been updated to reflect this correction.
 
 ### Version 1.18.2
 
