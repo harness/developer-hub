@@ -12,11 +12,15 @@ Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
-The report shows the metric value for each category as a percentage value along with an assigned target label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**.
+<br />
 
-Additionally, it provides a more detailed breakdown of the score using a **Stacked Bar Chart** format. It displays the trend of effort investment over time, based on predefined category allocations in the associated [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
+The report shows the metric value for each category as a percentage value along with an assigned target label (**Ideal**, **Poor**, **Acceptable**) on the **Pie Chart**.
 
-The bar chart breaks down the metric value into intervals as per the widget settings.
+The **Trend Chart** displays the detailed breakdown of the score in the **Stacked Bar Chart** format. It displays the trend of effort investment over time, based on predefined category allocations in the associated [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
+
+The Bar Chart breaks down the metric value into time intervals as configured in the widget settings.
+
+![](./static/ba-report.png)
 
 ## Calculation Parameters
 
@@ -35,11 +39,15 @@ This report supports two types of drill-down views:
 
 By selecting a category from the **Stacked Bar Chart**, users can access the drill-down report displaying data on the total completed effort, including the distribution of effort among individual contributors across all categories or just the selected one.
 
+![](./static/drilldown-contributors.png)
+
 ## Drill down by Tickets
 
 It also displays the drill down for tickets. When viewing the selected category on the **Bar Chart**, the widget will show data for all the relevant tickets included in this category. Alternatively, when choosing an interval from the bar chart, the widget will present data for items across all categories during the specified period.
 
 The data is represented in tabular format. Additionally, both drill-down options offer search functionality, enabling users to look up specific contributors or tickets directly.
+
+![](./static/drilldown-tickets.png)
 
 :::info
 Please note that the **Drilldown by Contributor** option is available only if the widget utilizes **FTE (By Engineer)** for calculating effort.
