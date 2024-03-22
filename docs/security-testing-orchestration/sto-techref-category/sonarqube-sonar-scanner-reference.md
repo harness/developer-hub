@@ -337,7 +337,7 @@ Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing
 
 :::
 
-If SonarQube doesn't scan both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube.
+If SonarQube doesn't scan both the main branch and pull request (PR) branches within the same pipeline, it might indicate an issue with the pull request setup in SonarQube.
 
 One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
 
