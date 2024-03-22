@@ -7,6 +7,9 @@ sidebar_label: Business Alignment report
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
 
+The Business Alignment profile feature is currently in **BETA** and is behind the entitlement `<SEI_NEW_BA_REPORT>.`
+Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
 The report shows the metric value for each category as a percentage value along with an assigned target label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**.
