@@ -48,6 +48,11 @@ This topic explains how to add and reference variables in Harness. It assumes yo
    * The **Required** setting is supported for pipeline, stage, service, and environment variables.
    * The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline.
 
+:::important limitation
+Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
+:::
+
+
 ### Variable availability to pipelines, stages, services, and environments
 
 Account, org, and project variables are available to all lower scopes. For example, an org variable is available to all projects and pipelines under that org.
