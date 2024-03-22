@@ -81,11 +81,9 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 
 ### Use a custom Windows AMI
 
-The following addition configuration is required if you plan to use a custom Windows AMI in your AWS VM build farm.
+If you plan to use a custom Windows AMI in your AWS VM build farm, you must delete `state.run-once` from your custom AMI.
 
-In Windows, sysprep checks if `state.run-once` exists at `C:\ProgramData\Amazon\EC2Launch\state.run-once`. If the file exists, sysprep doesn't run post-boot scripts (such as `cloudinit`, which is required for Harness VM build infrastructure).
-
-Because Harness creates AMIs from your running EC2 VM instance, this file will be present on the initialized VM. You must delete `state.run-once` from your EC2 VM so that it doesn't block the init script from running on AMIs created by the runner.
+In Windows, sysprep checks if `state.run-once` exists at `C:\ProgramData\Amazon\EC2Launch\state.run-once`. If the file exists, sysprep doesn't run post-boot scripts (such as `cloudinit`, which is required for Harness VM build infrastructure). Therefore, you must delete this file from your AMI so it doesn't block the VM init script.
 
 If you get an error about an unrecognized `refreshenv` command, you might need to [install Chocolatey](https://chocolatey.org/install) and add it to `$profile` to enable the `refreshenv` command.
 
