@@ -212,23 +212,15 @@ import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binarie
 <StoSettingToolJavaBinaries  />
 -->
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
+
 
 #### Additional CLI flags
-
 
 You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
@@ -249,13 +241,15 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
+### Settings
+
+Use this field to add environment variables to your SonarQube scans. For example, you can add [proxy settings](#sonarqube-proxy-settings) if your SonarQube instance is behind a proxy. 
 
 <!--
 ### Settings
@@ -313,6 +307,17 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 
 </details>
 
+## SonarQube proxy settings
+
+If there's a proxy between your Harness pipeline and your SonarQube server, you can add your proxy settings under [Settings](#settings). For example:
+
+- `JVM_HTTP_PROXY_HOST : my-proxy.ca.myorg.org`
+- `JVM_HTTP_PROXY_PORT : 3735`
+- `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
+- `JVM_HTTPS_PROXY_PORT : 3745`
+- `JVM_NO_PROXY : sonar.myorg.local` 
+
+ 
 ## Troubleshoot Sonar Scans
 
 ### Can't generate SonarQube report due to shallow clone
