@@ -14,7 +14,7 @@ MLOps tackles the complexities of building, testing, deploying, and monitoring m
 
 Before diving into the implementation, let's take a high-level view of the architecture.
 
-![ML Model Architecture](assets/ml-model-architecture.png)
+![ML Model Architecture](static/architecture.png)
 
 We are given a Python data science project and are requested to do the following:
 
@@ -64,7 +64,7 @@ Next, navigate to S3 and create a bucket. For example, `mlopswebapp`. We'll use 
 
 After making the bucket public, you will see something similar to this:
 
-![S3 bucket is public](assets/s3-bucket-public.png)
+![S3 bucket is public](static/s3bucketpublic.png)
 
 Next, go to **AWS Lambda --> Functions** from your AWS console and create a function from a container image. Use the following configuration:
 
@@ -108,7 +108,7 @@ From **Project Setup --> Connectors**, click **+ New Connector --> AWS** and use
 
 Leave all other settings as is. The connectivity status should show **Success**.
 
-![Connector connectivity status](assets/connector-connectivity-status.png)
+![Connector connectivity status](static/connector-connectivity-status.png)
 
 Next, from **Project Setup --> Connectors**, click **+ New Connector --> GitHub** and use the following to create the connector:
 
@@ -161,7 +161,7 @@ Next, click **Add Step** after `Wait for ECR Image Scan` step and add **AWS ECR 
 - Target/Name: `ccapproval-ecr-scan`
 - Variant: `<+pipeline.executionId>` (click the pin icon, change to f(x) for Harness expression, and then paste this expression)
 - Container Image/Name: `ccapproval`
-- Container Image/Tag: <+pipeline.executionId> (click the pin icon, change to f(x) for Harness expression, and then paste this expression)
+- Container Image/Tag: `<+pipeline.executionId>` (click the pin icon, change to f(x) for Harness expression, and then paste this expression)
 - Region: YOUR_AWS_REGION (previously noted)
 
 Authentication:
@@ -177,7 +177,7 @@ Settings:
 
 | Key  | Value  |
 |---|---|
-| AWS_SESSION_TOKEN  | <+secrets.getValue("aws_session_token")>  |
+| AWS_SESSION_TOKEN  | `<+secrets.getValue("aws_session_token")`>  |
 
 Click **Apply Changes** and then **Save** to save the pipeline.
 
@@ -232,7 +232,7 @@ Command: pytest --nbval-lax credit_card_approval.ipynb --junitxml=report.xml
 **Optional Configuration**
 
 Container Registry: `mlopsawsconnector` (previously created)
-Image: Click the pin icon to change fixed value to expression.  Use the image URI you previously copied except the image tag. The image tag follows the pipeline execution ID. Example: YOUR_AWS_ACCOUNT_ID.dkr.ecr.YOUR_AWS_REGION.amazonaws.com/YOUR_AWS_ECR_REPO_NAME:<+pipeline.executionId>
+Image: Click the pin icon to change fixed value to expression.  Use the image URI you previously copied except the image tag. The image tag follows the pipeline execution ID. Example: `YOUR_AWS_ACCOUNT_ID.dkr.ecr.YOUR_AWS_REGION.amazonaws.com/YOUR_AWS_ECR_REPO_NAME:<+pipeline.executionId>`
 
 Click **Apply Changes**.
 
@@ -327,7 +327,7 @@ Click **Apply Changes** and **Save** to save the pipeline.
 
 Now execute the pipeline by clicking **Run** --> **Run Pipeline**. Use `main` for **Git Branch** if prompted. Once the pipeline finishes execution, check the `ccapproval` and `ccapproval-deploy` ECR repositories to find images with a SHA that matches the pipeline execution ID. You should also see the model_metrics.html file on your S3 bucket (under /harness/output directory) as well as under the Artifacts tab for your pipeline.
 
-![Artifacts Tab](assets/artifacts-tab.png)
+![Artifacts Tab](static/artifacts-tab.png)
 
 Click the **Export accuracy and fairness variables** step after the pipeline finishes execution, and you should see something like the following result from the ML model.:
 
@@ -485,7 +485,7 @@ role: COPY_YOUR_LAMBDA_FUNCTION_ARN
 
 You'll find the lambda function ARN here:
 
-![Lambda ARN](assets/lambda-arn.png)
+![Lambda ARN](static/lambda-arn.png)
 
 Under the **Artifacts** section for the service definition, provide the artifact details that'll be used for the lambda deployment:
 
@@ -493,7 +493,7 @@ Artifact Source Identifier: `ccapprovaldeploy`
 Region: YOUR_AWS_REGION
 Image Path: `ccapproval-deploy`
 Value:
-    Tag: <+input> (Click the pin and change to Runtime Input)
+    Tag: `<+input>` (Click the pin and change to Runtime Input)
 
 The runtime input for the image tag means that we'll provide this value when we run the pipeline.
 
@@ -643,7 +643,7 @@ Click **Continue** and then configure rest of the trigger:
 
 Git Branch: *prepopulated*
 Primary Artifact: `ccapprovaldeploy`
-Tag: <+pipeline.executionId> (click the pin icon, change to f(x) for Harness expression, and then paste this expression)
+Tag: `<+pipeline.executionId>` (click the pin icon, change to f(x) for Harness expression, and then paste this expression)
 
 Click **Create Trigger**. Now, whenever the `credit_card_approval.ipynb` file on the `main` branch is updated, the pipeline will be triggered. You can adjust or remove the branch name and changed files values according to your requirements.
 
