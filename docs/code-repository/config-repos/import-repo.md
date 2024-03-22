@@ -21,7 +21,18 @@ You can [create repositories directly in Harness Code](./create-repo.md) or impo
 4. Depending on the provider, provide the administrative entity (**Organization**, **Project**, **Workspace**, or **Group**) and **Host URL** (if applicable) associated with your repository.
 5. If you are importing a single repository, enter the name of the repository you want to import in **Repository**.
 
-   Harness automatically populates the **Name** field based on the **Repository** field. If you want your repository to have a different name in Harness Code, change the **Name** field.
+   Harness automatically populates the **Name** field based on the **Repository** field.
+
+   If you want or need to change the repository name in Harness Code, you can change the **Name** field.
+
+   Repository names in Harness Code can't contain the following strings:
+
+   ```
+   account.
+   org.
+   project.
+   .git
+   ```
 
 6. If the repository or entity is private, select **Requires Authorization** and provide authorization credentials to access the repository.
 
@@ -49,7 +60,7 @@ After importing a repository, you can:
 * [Clone your repository.](../work-in-repos/clone-repos.md)
 * Create [branches](../work-in-repos/branch.md) and [tags](../work-in-repos/tag.md).
 * [Commit changes](../work-in-repos/commit.md) and [open pull requests](/docs/category/pull-requests).
-* [Configure branch rules.](./rules.md)
+* [Configure branch rules](./rules.md) and [access control](/docs/code-repository/get-started/overview.md#access-control).
 * Use Harness Code repositories in your [Harness pipelines](../pipelines/codebase-from-harness-code.md).
 * Set up [triggers](../pipelines/code-triggers.md) to automatically run pipelines based on activity in your Harness Code repositories.
 * [Configure webhooks](./webhooks.md) to integrate your repositories with third-party applications.

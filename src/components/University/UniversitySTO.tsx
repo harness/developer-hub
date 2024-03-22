@@ -374,7 +374,7 @@ export default function CertificationsSTO() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-          Intensive two-day course is designed for IT professionals looking to deepen their understanding and expertise.
+          Intensive two-day course is designed for engineers looking to deepen their understanding and expertise.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>

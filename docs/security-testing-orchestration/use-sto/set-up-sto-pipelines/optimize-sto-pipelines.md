@@ -4,13 +4,13 @@ description: Make your STO pipelines faster, more efficient, and more versatile.
 sidebar_position: 40
 ---
 
-If your STO scans are running slowly, try the following.
+If your STO scans are failing or running slowly, try the following.
 
 <!-- https://harness.atlassian.net/browse/STO-6673 -->
 
 ### Increase memory/CPU for the Scan step
 
-If your scans are running slowly, you might need to increase the [**memory and CPU resources**](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#set-container-resources) reserved for your scan step. Some scanners such as SonarQube and Veracode require a lot of memory: for these scanners, you should reserve 2GB+ of memory to scan a medium-sized codebase. Increasing the CPU capacity should also speed up your scans. 
+If your scans are failing or running slowly, you might need to increase the [**memory and CPU resources**](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#set-container-resources) reserved for your scan step. Some scanners such as SonarQube and Veracode require a lot of memory: for these scanners, you should reserve 2GB+ of memory to scan a medium-sized codebase. Increasing the CPU capacity should also speed up your scans. 
 
 The optimal CPU and memory resources to reserve are highly dependent on the specific scanner and the size and complexity of your target. You might find specific guidance in the external scanner documentation. 
 

@@ -7,6 +7,8 @@ helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference
 ---
 
 You can scan your container images using [Aqua Trivy](https://github.com/aquasecurity/trivy), a comprehensive and versatile open-source scanner. 

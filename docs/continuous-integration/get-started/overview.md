@@ -60,7 +60,11 @@ For information about CI pipeline components, go to the [CI key concepts](/docs/
 
 ## CI features
 
-Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](/docs/get-started/key-concepts).
+Here are some key features of Harness CI.
+
+For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration), and [CI early access features](/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).
+
+For information about general Harness Platform concepts and features, go to [Harness key concepts](/docs/get-started/key-concepts).
 
 ### Harness Cloud
 

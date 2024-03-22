@@ -97,7 +97,6 @@ import StoSettingScanTypeAutodetectApp from '../shared/step_palette/target/auto-
 
 <StoSettingScanTypeAutodetectApp/>
 
-
 #### Name 
 
 import StoSettingTargetName from '../shared/step_palette/target/_name.md';

@@ -20,6 +20,26 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ## March 2024
 
+### Version 0.24.0
+
+<!-- Mar 22, 2024 -->
+
+#### New features and enhancements
+
+- We have improved the permission framework, wherein the support user won't be able to view the docs. [IDP-2477]
+
+- User can now provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration, while creating the connectors. [IDP-2213]
+
+- We have added support for [sub-groups](https://docs.gitlab.com/ee/user/group/subgroups/) in the GitLab Datasources. [IDP-2510]
+
+- We now have support for custom properties, to push append or update arbitrary metadata associated with Catalog entities (services, libraries, websites, etc.) and will help users to automate the process of `catalog-info.yaml` creation, we provide an API that users can call from their pipeline or even manually to add or modify properties in the metadata field for any catalog entity(s). [IDP-2228]
+
+#### Bug Fixes
+
+- Fixed the issue for broken API Plugin, now all plugin data would be loading seamlessly for users once configured. [IDP-2461]
+- Fixed the issue with plugin icon on plugins page. [IDP-2431]
+- Fixed the issue with URL allow list, now host name field is marked mandatory to add the URL. [IDP-2414]
+
 ### Version 0.23.0
 
 <!-- Mar 11, 2024 -->
@@ -136,7 +156,7 @@ spec:
 
 We are seeing a lot of excitement among our customers around Self Service Workflows to derive value for their developers. This release is especially for you if you are using IDP workflows for user/service onboarding.
 
-- **New Docs:** [API Docs](https://apidocs.harness.io/tag/AllowList), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
+- **New Docs:** [API Docs](https://apidocs.harness.io/tag/IP-Allowlist), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
 - **New Videos:** [Ignoring Developer Experience is Hurting Your Organization: DX is Critical](https://youtu.be/ka6kHPMGGpc?si=MCcVZdvP2bGCCI3h)
 
 

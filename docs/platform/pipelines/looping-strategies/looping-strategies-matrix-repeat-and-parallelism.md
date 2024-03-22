@@ -458,7 +458,7 @@ The value of the expression depends on where both the expression and looping str
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
-### strategy.node.NODE_ID.currentStatus>
+### strategy.node.NODE_ID.currentStatus
 
 In stages/steps using matrix or repeat strategies, use either of the following two expressions to get the current status of the looping strategy for a specific stage or step, as defined by the `NODE_ID`: For example:
 
@@ -491,24 +491,30 @@ Because stages and steps can't have the same identifier, the index value of the 
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
 
-## Determine execution status of a stage with looping strategy
+## Execution status of stages with looping strategies
 
-The status of a stage with looping strategy is determined based on the status of execution of its child stages. The status calculation logic works based on priority of child stage execution statuses. 
+The status of a stage with looping strategy is based on the highest priority execution status among its child stages:
 
-Negative status takes precedence over positive status. 
+* Negative statuses takes precedence over positive status.
+* If _any one_ child stage has negative status, then the parent stage takes that negative status.
+* If _multiple_ child stages have negative statuses, the parent stage takes the negative status with the highest priority.
+* If _all_ child stages have a positive status, the parent stage takes the positive status with the highest priority.
 
-If any child stage has negative status, then the parent stage status is marked as negative. 
+Negative status are prioritized as follows, from highest to lowest:
 
-The negative statuses priority is as follows: ABORTED > FAILED > FREEZE_FAILED > APPROVAL_REJECTED > EXPIRED. For example, if a child stage is marked FAILED and another child stage is marked EXPIRED, then the parent pipeline status is marked FAILED because it takes precedence.
+1. Aborted
+2. Failed
+3. Freeze failed
+4. Approval rejected
+5. Expired
 
+Positive statuses are prioritized as follows, from highest to lowest:
 
+1. Ignore Failed
+2. Succeeded
 
-If all child stages are marked positive, the status of the parent stage is also marked positive. 
+Here are some examples of the looping strategy status logic:
 
-The positive statuses priority is as follows: IGNORE_FAILED > SUCCEEDED. For example, if a child stage is marked IGNORE_FAILED and another child stage is marked SUCCEEDED, then the parent pipeline status is marked as IGNORE_FAILED.
-
-If a child stage has negative status and another child stage has positive status, then the parent pipeline status is marked negative. 
-
-
-
-
+* If one child stage is `Failed` and another child stage is `Expired`, then the parent becomes `Failed` because `Failed` has higher priority than `Expired`.
+* If one child stage is `Ignore failed` and another child stage is `Succeeded`, then the parent becomes `Ignore failed` because `Ignore failed` has higher priority than `Succeeded`.
+* If one child stageis `Expired` and all other child stages  are `Succeeded`, then the parent becomes `Expired` because negative statuses take priority over positive statuses, even if only one child stage has a negative status.
