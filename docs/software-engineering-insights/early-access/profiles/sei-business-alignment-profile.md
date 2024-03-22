@@ -5,9 +5,11 @@ sidebar_position: 10
 sidebar_label: Business Alignment profile
 ---
 
-Business Alignment profiles help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics by connecting engineering to business value.\
+Business Alignment profiles help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics by connecting engineering to business value.
 
-The Business Alignment profile feature is currently in **BETA** and is behind the entitlement `<NEW_BA_PROFILES>.`
+The Business Alignment profile acts as the single source of truth for your Business Alignment metrics calculations where you can customize the categories and adjust the threshold
+
+The Business Alignment profile feature is currently in **BETA** and is behind the entitlement `<SEI_NEW_BA_PROFILES>.`
 Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
