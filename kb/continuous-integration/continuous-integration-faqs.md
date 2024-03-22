@@ -1264,6 +1264,18 @@ This can occur if the Build and Push step doesn't have the repo's Fully Qualifie
 
 Make sure to use the FQN for the repo when pushing to an internal private container registry.
 
+### Why do I get an out of memory error when pushing images to Docker Hub?
+
+The Build and Push to Docker step can return out of memory errors, such as:
+
+```
+exit status 255 Found possible error on line 70. Log: signal: killed . Possible error: Out of memory. Possible resolution: Increase memory resources for the step
+```
+
+To address this error, enable the [Optimize setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
+
+You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1323,6 +1335,14 @@ These are derived from your [Artifactory connector](https://developer.harness.io
 ### Test reports missing or test suites incorrectly parsed
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
+
+### What if my test tool's default report format isn't JUnit?
+
+There are converters available for many test tools that don't produce results in JUnit format by default.
+
+For example, the default report format for Jest is JSON, and you can use the Jest JUnit Reporter to convert the JSON results to JUnit XML format.
+
+For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
 ### Can I specify multiple paths for test reports in a Run step?
 
@@ -1894,9 +1914,25 @@ For more information about configuring connectivity, go to:
 
 Go to [CI step logs don't load in real time](./articles/CI-step-logs-dont-load-in-real-time).
 
-### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
+### Step succeeds even when explicitly executing exit 1 in a Bash script that runs in script's background
 
-The step in Harness determines its status based on the exit status received from the primary script execution. When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within a background function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
+Harness determines the execution status for a step based on the exit status received from the primary script execution.
+
+When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call `exit 1` within a background function, it won't cause the step to fail if the primary script succeeds.
+
+This behavior is consistent with how scripts operate both inside and outside of Harness.
+
+### Build step fails due to ResourceExhausted
+
+Build and Push steps can return a `ResourceExhausted` error, such as:
+
+```
+exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message larger than max (4950319 vs. 4194304)
+```
+
+This can be related to log streaming during the Build and Push step or a Run step executing a build script. It indicates that the logs are too large for the log streaming service to handle.
+
+If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
@@ -2027,20 +2063,3 @@ For troubleshooting and FAQs for Platform components that aren't specific to CI,
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
 <!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
-
-### Why does pushing images to dockerhub results in the following error?
-
-`exit status 255 Found possible error on line 70. Log: signal: killed . Possible error: Out of memory. Possible resolution: Increase memory resources for the step`
-
-The Docker build and publish step uses kaniko under the hood to build the docker images. This is are basically spun up as a pod during the build stage. Enabling the "optimize option" on the docker build and push step to see if the memory utilization is still hitting the limits. This would ideally pass the parameter to kaniko command (https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshot-mode).
-
-
-### How to convert JEST test results to junit xml format?
-
-By default the report generated by jest is json format.  Passing the flag `--reporters=jest-junit` which should create junit formatted test report. A sample step config can be found in the below doc
-
-https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref/#javascript
-
-### Build step is failing due to ResourceExhausted. What causes the error `exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message larger than max (4950319 vs. 4194304)`
-
-This happens due to the streaming of the logs during the build step. If the build has steps that use tee command to print the logs in the console, consider removing them and forward the build logs to a file.
