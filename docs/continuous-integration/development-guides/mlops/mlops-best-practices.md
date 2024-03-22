@@ -1,7 +1,7 @@
 ---
 title: MLOps best practices
 description: MLOps best practices
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 MLOps (Machine Learning Operations) is a set of practices that streamline and automate the lifecycle of machine learning models. It involves collaboration across multiple teams, including data scientists, ML engineers, and DevOps, to efficiently manage the development, deployment, monitoring, and maintenance of ML models in production.
