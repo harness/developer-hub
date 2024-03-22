@@ -26,9 +26,11 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- We now support a new git integration framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both  `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
+- We have improved the permission framework, wherein the support user won't be able to view the docs. [IDP-2477]
 
-- User can now provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration. [IDP-2213]
+- User can now provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration, while creating the connectors. [IDP-2213]
+
+- We have added support for [sub-groups](https://docs.gitlab.com/ee/user/group/subgroups/) in the GitLab Datasources. [IDP-2510]
 
 - We now have support for custom properties, to push append or update arbitrary metadata associated with Catalog entities (services, libraries, websites, etc.) and will help users to automate the process of `catalog-info.yaml` creation, we provide an API that users can call from their pipeline or even manually to add or modify properties in the metadata field for any catalog entity(s). [IDP-2228]
 
