@@ -50,7 +50,7 @@ The data is represented in tabular format. Additionally, both drill-down options
 ![](./static/drilldown-tickets.png)
 
 :::info
-Please note that the **Drilldown by Contributor** option is available only if the widget utilizes **FTE (By Engineer)** for calculating effort.
+Please note that the **Drilldown by Contributor** option is available only if the widget is configured with **FTE (By Engineer)** settings for calculating effort.
 :::
 
 ## Calculation Example
