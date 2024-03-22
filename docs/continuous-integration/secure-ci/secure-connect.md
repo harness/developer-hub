@@ -36,16 +36,9 @@ With Secure Connect for Harness CI Cloud, you can connect to your sensitive asse
 
 You can [configure Secure Connect](#configure-secure-connect) in minutes. If you're already using Harness Cloud build infrastructure, you don't need additional approval to enable Secure Connect.
 
-<table>
-  <tr>
-    <th>Secure</th>
-    <th>Effective</th>
-  </tr>
-  <tr>
-    <td style="vertical-align:top"><ul><li>Extension of your existing private infrastructure</li><li>Dedicated infrastructure</li><li>Encryption at rest and in transit</li><li>No passwords stored using OIDC</li><li>No customer assets stored in CI Cloud</li></ul></td>
-    <td style="vertical-align:top"><ul><li>Enable Secure Connect in one click</li><li>Doesn't require admin approval</li><li>Multi-cloud/on-prem support</li></ul></td>
-  </tr>
-</table>
+| Secure | Effective |
+| ------ | --------- |
+| <ul><li>Extension of your existing private infrastructure</li><li>Dedicated infrastructure</li><li>Encryption at rest and in transit</li><li>No passwords stored using OIDC</li><li>No customer assets stored in CI Cloud</li></ul> | <ul><li>Enable Secure Connect in one click</li><li>Doesn't require admin approval</li><li>Multi-cloud/on-prem support</li></ul> |
 
 ### Secure Connect architecture
 
