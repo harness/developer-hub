@@ -223,14 +223,12 @@ If you inject chaos into your application, but the experiment gets aborted due t
 1. Add 1 to 2 s of intial delay (**Initial Delay** is the field name while configuring the resilience probes); and
 2. Provide multiple attempts (**Attempt** is the field name in resilience probes).
 
-## Chaos dashboard troubleshooting
-
 ### Live logs of my experiment run are not showing up, throws error instead.
 
-* If you try to access the live logs of your experiment run but you receive an error instead, disable SAML temporarily and re-run your experiment.
-* If SAML is not working aas intended, upgrade helm, re-upload metadata and login.
-* Ensure that Looker has a dedicatd hostname.
-* Use `haproxy` configuration.
+#### Debug
+If you try to access the live logs of your experiment run but you receive an error instead or nothing shows up:
+
+* Check the sidecar container of the experiment pod to know the status of the container.
 
 ## Windows chaos infrastructure troubleshooting
 
