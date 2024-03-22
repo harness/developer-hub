@@ -7,7 +7,7 @@ How you configure plugin runtime flags depends on your build infrastructure.
 <details>
 <summary>Set plugin runtime flags with Kubernetes cluster build infrastructure</summary>
 
-With a Kubernetes cluster build infrastructure, you use the **Environment Variables** setting in **Build and Push** steps to set kaniko plugin runtime flags.
+When using the built-in **Build and Push** steps with a Kubernetes cluster build infrastructure, you can use the **Environment Variables** setting to set kaniko plugin runtime flags.
 
 :::warning
 
@@ -91,10 +91,10 @@ Currently, Harness supports the following drone-docker flags:
 * `auto_tag_suffix`: Auto-generated build tag suffix.
 * `custom_labels`: Additional arbitrary key-value labels.
 * `artifact_file`: Harness uses this to show links to uploaded artifacts on the [Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds).
-* `dry_run`: Disables pushing to the registry. Used to [build without pushing](./build-without-push.md).
+* `dry_run`: Disables pushing to the registry. Used to [build without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 * `custom_dns`: Provide your custom CNS address.
 
-To set these flags in your Build and Push steps, add [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) formatted as `PLUGIN_FLAG_NAME`.
+To set these flags in your Build and Push steps, add [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) formatted as `PLUGIN_FLAG_NAME`.
 
 For example, to set `custom_dns`, add a stage variable named `PLUGIN_CUSTOM_DNS` and set the variable value to your custom DNS address.
 
