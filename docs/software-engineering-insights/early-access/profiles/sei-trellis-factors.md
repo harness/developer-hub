@@ -5,14 +5,18 @@ sidebar_position: 15
 sidebar_label: Trellis Factors
 ---
 
+:::info
+The Trellis Factors feature is currently in BETA and is behind the Feature Flag `SEI_SHOW_TRELIS_NEW_INTERVAL` and `SEI_TRELLIS_BY_JOB_ROLES`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
 The Trellis Scores feature on SEI provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity. Trellis Scores are calculated from factors such as Code Quality, Code Volume, Speed, Impact, Proficiency, and Collaboration. You can adjust the weight given to each factor in the **Trellis Central Profile** which acts as the single source of truth for your Trellis Score calculations.
 
 This topic outlines the improved user journey for configuring **Trellis Central Profiles**, customising **Trellis Groups**, and defining thresholds for **Factors** associated with Trellis Profiles to calculate Trellis Scores.
 
 The following permissions are needed to calculate the Trellis Scores:
 
-1. To perform **CRUD** operation on the **Trellis Central profile**, you need to have full access to **SEI Configuration Settings**
-2. To configure the **Collection Specific Trellis profile**, you need to have **Collection Edit/Create** access to the SEI project
+1. To perform **Admin Level** operations on the **Trellis Central profile**, you need to have **Edit & Manage** access to **SEI Configuration Settings**
+2. To configure **Trellis Sub-Profiles** i.e. **Collection** specific Trellis profiles, one must have **Collection Edit/Create** access to the SEI project
 3. At least one **Contributor** with an associated **Email ID** must be present in the newly created account. For more information, go to [Contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors).
 
 The two main components while configuring the Trellis Factors are:
@@ -24,15 +28,17 @@ The two main components while configuring the Trellis Factors are:
 
 ### Trellis Central Profile
 
-The **Trellis Central Profile** allows you to personalize the standards and thresholds that are shared among all teams within an account for determining the Trellis Score. These standards can be further modified at the **Collection** level, allowing you to evaluate developer productivity within your organization.
+The **Trellis Central Profile** allows you to personalize the standards and thresholds that are shared among all teams within an account for determining the Trellis Score. These standards can be further customized at the **Collection** level that will create Trellis Sub-Profiles and automatically associate the Sub-Profile with the Collection.
 
-By default, each newly created collection is linked with the Trellis Central Profile. This means that the Trellis Profile will be enabled automatically for both the newly created collection and the root collection that is created automatically during project creation.
+Every newly created Collection is by default associated with the Trellis Central Profile. This means that the Trellis Profile will be enabled automatically for both the newly created Collection and the Root Collection that is created automatically during project creation.
 
 ![](../static/trellis-central-profile.png)
 
 ### Trellis Groups
 
-**Trellis Groups** represent **Custom Attribute** based sub-profiles within the defined Central profile. This functionality allows users to customize their trellis calculation settings and thresholds specifically to the custom attributes. For example: Contributor roles. This offers a more granular and personalized approach to calculating Trellis Scores.
+**Trellis Groups** represent **Custom Attribute** based **Trellis Sub-Profiles** within the defined Central profile. This functionality allows users to customize their trellis calculation settings and thresholds specifically to the custom attributes. For example: Contributor roles. 
+
+This offers a more granular and personalized approach to calculating Trellis Scores.
 
 With Trellis Groups, you can fine-tune the evaluation of factors such as **Code Quality**, **Volume**, **Speed**, **Impact**, **Proficiency**, and **Collaboration** based on the specific responsibilities and expectations associated with different Custom attributes. For example: Contributor Attribute roles in the Engineering team.
 

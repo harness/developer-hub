@@ -10,8 +10,7 @@ Business Alignment metrics help you understand where engineers are allocating th
 The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can customize the categories and adjust the threshold for the Filter Sets.
 
 :::info
-The Business Alignment profile feature is currently in **BETA** and is behind the entitlement `<SEI_NEW_BA_PROFILES>.`
-Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Business Alignment profile feature is currently in **BETA**. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
@@ -28,9 +27,18 @@ The `uncategorized` category in the profile configuration fetches and considers 
 
 ![](./static/filter-sets.png)
 
-For each category, you can define its own separate set of **Filters** and **Allocation Goals**.
+### Add Custom Category
 
-The categories are placed based on the ranking provided.
+To add a custom **Category** to the profile configuration:
+
+1. Go to the **Business Alignment profile** settings.
+2. Select **+New Category** under the **RANKED CATEGORIES** section.
+3. Add a **Name**, then click on **Save** to save the Category.
+4. Define the **Filter Sets**, **Ticket Fetching Criteria** and **Allocation Goals** for the newly created custom category.
+
+:::info
+Note that for each Category, you can define its own separate set of **Filters** and **Allocation Goals**. The categories are placed based on the ranking provided.
+:::
 
 <details>
 <summary>Relationship between Ranking Categories and Business Alignment metric calculations</summary>
@@ -60,7 +68,7 @@ Define the **Ideal Range** for each Category. You can set ranges in percentage v
 
 ![](./static/allocation-goals.png)
 
-## Range calculation example
+### Range calculation example
 
 For simplicity, the ranges in this example are given in whole numbers.
 
@@ -80,7 +88,7 @@ To create or edit Business Alignment profiles:
 
 1. Go to your **SEI settings**.
 2. Select **Business Alignment** under **Profiles**.
-3. To create a profile, select **New Business Alignment Profile**. To edit an existing profile, select the profile's name in the profiles list.
+3. To create a profile, select **+New Business Alignment Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 For each category, you can define its own set of **Filters** and **Allocation goals**.
 
@@ -88,7 +96,7 @@ For each category, you can define its own set of **Filters** and **Allocation go
 
 **Filters** are the criteria that determine what kind of work or tasks fall into each category.
 
-To set up these **Filters**:
+To set up these Filters:
 
 * Decide on the logical relationship between different Filter Sets i.e. whether they should be combined using `AND` (all conditions must be met) or `OR` (any condition can be met).
 * Define the specific conditions for each Filter. This involves selecting attributes from the `PROPERTIES` dropdown, setting a condition (like equals or not equals) from the `CONDITIONS` dropdown, and then specifying the `VALUE` for that condition.
@@ -107,11 +115,11 @@ This allows you to define how broadly you gather ticket data based on your Filte
 
 ![](./static/scope-fetching-tickets.png)
 
-You also have the option to add a combination of multiple **Filter Sets** under the **Advanced tab** in order to retrieve tickets based on additional conditions. Within this feature, you can choose to either exclude or include tickets based on the configured filters.
+You also have the option to add a combination of multiple **Filter Sets** under the **Advanced Tab** in order to retrieve tickets based on additional conditions. Within the Advanced Tab, you can choose to either exclude or include tickets based on the configured filters.
 
 ![](./static/scope-fetch-tickets-advanced.png)
 
-### Defining Allocation Goals
+### Define Allocation Goals
 
 Finally, you will set the allocation goals for each category. This involves deciding how much of your team's time and effort should ideally go into each category.
 
