@@ -39,7 +39,7 @@ HCE faciliates 6 types of resilience probes listed below. Click each probe to na
 3. [Kubernetes probe](/docs/chaos-engineering/features/probes/k8s-probe)
 4. [Prometheus probe](/docs/chaos-engineering/features/probes/prom-probe)
 5. [Datadog probe](/docs/chaos-engineering/features/probes/datadog-probe)
-6. Dynatrace probe
+6. [Dynatrace probe](/docs/chaos-engineering/features/probes/dynatrace-probe)
 7. [SLO probe](/docs/chaos-engineering/features/probes/slo-probe)
 
 ## Generic run properties for all probes
