@@ -7,10 +7,11 @@ description: This topic describes how to optimize cloud costs using asset govern
 
 ## Recommendations
 
-Recommendations help kickstart your journey with Governance. Essentially, we run certain policies behind the scenes using the permissions we have and then recommend the best-suited policies for your accounts. These policies not only help cut costs but also increase the efficiency of your system. On our Overview page, we also showcase how our Recommendations will benefit you and the associated costs. You can click on any Recommendation to view its details. Listed below are the Recommendations we offer for Azure along with their descriptions and how savings are computed for each, along with the required permissions to implement these Recommendations.
- 
+Recommendations help kickstart your journey with Governance. Essentially, we run certain policies behind the scenes to generate recommendations for your governance enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On Governance Overview page, we showcase recommendations which will benefit you to save costs on associated resources. You can click on any recommendation to view its details. Listed below are the custodian policies used to generate recommendations which we offer for Azure. Along with each policy you can also find their respective, descriptions, logic behind savings computation and also the permissions required to generate or apply these Recommendations.
+
 **1. Recommendation: delete-low-utilised-cosmodb**  
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
+
 **Policy Used:**
 ```yaml
 policies:
@@ -28,13 +29,14 @@ policies:
     actions:
       - type: delete    
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **2. Recommendation: delete-unattached-disk**  
 **Description:** Delete all unattached disks. 
+
 **Policy Used:**
 ```yaml
 policies:
@@ -50,12 +52,12 @@ policies:
       - type: delete
 ```
 **Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
-
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 ---
 
 **3. Recommendation: delete-low-utilised-load-balancers**  
 **Description:** Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours.  
+
 **Policy Used:**
 ```yaml
 policies:
@@ -73,13 +75,14 @@ policies:
     actions:
       - type: delete      
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days. 
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **4. Recommendation: delete-orphaned-network-interface**  
-**Description:** Delete network interface which are not attached to virtual machine. 
+**Description:** Delete network interface which are not attached to virtual machine.
+
 **Policy Used:**
 ```yaml
 policies:
@@ -94,13 +97,14 @@ policies:
     actions:
         - type: delete
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **5. Recommendation: stop-underutilized-vms**  
 **Description:** Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours.  
+
 **Policy Used:**
 ```yaml
 policies:
@@ -118,13 +122,14 @@ policies:
     actions:
       - type: stop
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **6. Recommendation: delete-low-utilised-keyvaults**  
 **Description:** Delete KeyVaults with less than 10 API hits in last 72 hours.
+
 **Policy Used:**
 ```yaml
 policies:
@@ -142,13 +147,14 @@ policies:
     actions:
       - type: delete
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **7. Recommendation: delete-low-utilised-sql-server**  
 **Description:** Delete SQL servers with less than 10% average DTU consumption over last 72 hours.  
+
 **Policy Used:** 
 ```yaml
 policies:
@@ -167,13 +173,14 @@ policies:
     actions:
       - type: delete
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:**To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **8. Recommendation: delete-unattached-publicip**  
 **Description:** Delete public ip which are not attached to any network interface.  
+
 **Policy Used:**
 ```yaml
 policies:
@@ -188,15 +195,14 @@ policies:
     actions:
       - type: delete
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running
-
- actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **9. Recommendation: delete-low-utilised-datalake**  
-**Description:** Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours.  
+**Description:** Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours.
+
 **Policy Used:**
 ```yaml
 policies:
@@ -221,13 +227,14 @@ policies:
     actions:
       - type: delete
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
 **10. Recommendation: delete-unused-postgresql-servers**  
 **Description:** Delete PostgreSQL Servers that have had zero active connections in the last 72 hours. 
+
 **Policy Used:**
 ```yaml
 policies:
@@ -244,8 +251,8 @@ policies:
     actions:
       - type: delete
 ```
-**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
-**Permissions Required:** For running actions, use the Contributor Role; for running filters and generating recommendations, use the Reader Role.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ## Custom Policies
 1. Find SQL Databases with a monthly long term backup retention period more than one year
