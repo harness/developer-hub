@@ -39,12 +39,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
   These steps are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
 
-  <!-- 
-
-  - The SAST step is behind the feature flag `STO_ONE_CLICK_SAST`. 
-
-  -->
-
   :::
 
   You can add built-in scanners for the following scan types:
@@ -61,6 +55,12 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in/containers) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
 
     - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
+
+#### Early Access feature: Wiz scanner integration
+
+You can scan your container images using [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference), a cloud security platform that supports vulnerabiity scans. (STO-6035)
+
+This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 #### Fixed issues
 
