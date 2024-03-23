@@ -554,7 +554,7 @@ Assuming that the Aqua Trivy scanner detected no critical vulnerabilities, you c
       ```bash
 
       # if the image passed the scan,
-      # push it to the image repository
+      # push it to the image registry
       docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>"
       docker push <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
 
@@ -584,7 +584,7 @@ Add a `Run` step after the Bandit scan step and configure it as follows:
     ```bash
 
     # if the image passed the scan,
-    # push it to the image repository
+    # push it to the image registry
     docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>"
     docker push <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
 
@@ -603,7 +603,7 @@ Here's an example:
       shell: Sh
       command: |-
         # if the image passed the scan,
-        # push it to the image repository
+        # push it to the image registry
         docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
         docker push <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
 ```
@@ -727,7 +727,7 @@ pipeline:
                     shell: Sh
                     command: |-
                       # if the image passed the scan,
-                      # push it to the image repository
+                      # push it to the image registry
                       docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
                       docker push <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:<+stage.variables.DOCKER_IMAGE_TAG>
                     privileged: true

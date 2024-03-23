@@ -122,7 +122,7 @@ pipeline:
                     command: |-
 
                       # if the image passed the scan,
-                      # push it to the image repository
+                      # push it to the image registry
                       docker login --username="<+stage.variables.DOCKERHUB_USERNAME>" --password="<+stage.variables.DOCKERHUB_PAT>" 
                       docker push <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>:bsp-<+pipeline.sequenceId>
                     privileged: true
