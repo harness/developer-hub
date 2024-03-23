@@ -22,6 +22,13 @@ helpdocs_is_published: true
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 * You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
+### Root access requirements 
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+
+<StoRootRequirements />
+
+
 ### For more information
 
 
