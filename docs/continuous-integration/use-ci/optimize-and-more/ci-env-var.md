@@ -39,7 +39,8 @@ You can automatically [trigger pipelines using Git events](/docs/platform/trigge
 `PLUGIN_` variables represent [plugin](../use-drone-plugins/explore-ci-plugins.md) settings, and they are defined in either:
 
 * The [plugin step's settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). For example, `setting.url` becomes `PLUGIN_URL` at runtime.
-* Stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md).-->
+* Stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md).
+* Environment variables for Build and Push steps running on Kubernetes cluster build infrastructure. -->
 
 <!-- ## Codebase and trigger variables
 

@@ -57,6 +57,10 @@ Windows network blackhole chaos simulates a network blackhole scenario on Window
       </tr>
     </table>
 
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `IP_ADDRESSES` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
+
 ### Destination hosts and IP addresses
 The `DESTINATION_HOSTS` environment variable specifies the destination hosts that are to be blocked on the target Windows VM.
 The `IP_ADDRESSES` environment variable specifies the IP addresses to block on the target Windows VM.

@@ -48,7 +48,7 @@ To address pod eviction during an Aqua scan, increase container resource limits 
 
 ## AWS ECR scans
 
-## How do I configure a session token in the AWS ECR scan step?
+### How do I configure a session token in the AWS ECR scan step?
 
 You can set the `AWS_SESSION_TOKEN` in the [Authentication settings](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference/#authentication).
 
@@ -59,6 +59,8 @@ You can set the `AWS_SESSION_TOKEN` in the [Authentication settings](https://dev
 The "Could not connect to addon client after max retries" error typically indicates that the container running the BlackDuck scan step is terminated abruptly due to insufficient resources. To address this issue, Harness recommends increasing the resources allocated to the BlackDuck step.
 
 You can begin by adjusting the resource allocation to `memory: 1Gi` and `cpu: "1.0"`. Then, monitor the memory and CPU consumption of the container during the scan to gauge its resource requirements accurately. Based on this observation, you can further refine the resource allocation as needed to prevent container termination and ensure successful BlackDuck scans in your pipeline.
+
+For more information, go to [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines).
 
 ## Grype scans
 
@@ -76,4 +78,7 @@ Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orche
 
 ## Sonar scans
 
-Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference.
+Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference. This section discusses the following:
+- [Can't generate SonarQube report due to shallow clone](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
+- [Add the sonar.projectVersion to a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#add-the-sonarprojectversion-to-a-harness-pipeline)
+- [SonarQube doesn't scan the main branch and pull request branches in the same pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)

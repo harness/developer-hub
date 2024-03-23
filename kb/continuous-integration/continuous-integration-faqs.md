@@ -737,6 +737,33 @@ In the `Run` step's PowerShell script, call the `ToString` value separately and 
                       echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
+### User data isn't running on AWS Windows Server 2022 VM Pool
+
+Windows only runs User Data during initialization. To fix this, go to `C:\ProgramData\Amazon\EC2Launch\state` and delete the `.run-once` file. This file is generated after the Windows VM initializes. On startup Windows will check for this file and decide whether or not to run the User Data script. If this file is not present, Windows will run the User Data script.
+
+### How do I install Docker on Windows?
+
+To install Docker on Windows, run:
+
+```
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1
+```
+
+More information on this can be found in the [Microsoft Documentation](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).
+
+### Do I need to enable Hyper V for AWS Windows VM Pool?
+
+Hyper V is not required to run Harness Builds in a Windows VM Pool. Hyper V is a requirement for Docker Desktop and Docker Desktop is not required for self-managed Windows VM build infrastructure.
+
+### Do I need to install WSL for AWS Windows VM Pool?
+
+WSL is not required to run Harness Builds in a Windows VM Pool. WSL is a requirement for Docker Desktop and Docker Desktop is not required for Windows Self-Managed Build Infrastructure.
+
+### How do I check the logs for Windows Server 2022 when using EC2Launchv2
+
+Logs are generated in the `C:\ProgramData\Amazon\EC2Launch\log` directory for EC2Launchv2. To view startup logs, check the `C:\ProgramData\Amazon\EC2Launch\log\agent` file. For any errors check the `C:\ProgramData\Amazon\EC2Launch\log\err` file.
+
 </details>
 
 ## Default user, root access, and run as non-root
@@ -1237,6 +1264,18 @@ This can occur if the Build and Push step doesn't have the repo's Fully Qualifie
 
 Make sure to use the FQN for the repo when pushing to an internal private container registry.
 
+### Why do I get an out of memory error when pushing images to Docker Hub?
+
+The Build and Push to Docker step can return out of memory errors, such as:
+
+```
+exit status 255 Found possible error on line 70. Log: signal: killed . Possible error: Out of memory. Possible resolution: Increase memory resources for the step
+```
+
+To address this error, enable the [Optimize setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
+
+You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1296,6 +1335,14 @@ These are derived from your [Artifactory connector](https://developer.harness.io
 ### Test reports missing or test suites incorrectly parsed
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
+
+### What if my test tool's default report format isn't JUnit?
+
+There are converters available for many test tools that don't produce results in JUnit format by default.
+
+For example, the default report format for Jest is JSON, and you can use the Jest JUnit Reporter to convert the JSON results to JUnit XML format.
+
+For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
 ### Can I specify multiple paths for test reports in a Run step?
 
@@ -1468,12 +1515,27 @@ Output variables don't support multi-line output. Content after the first line i
 
 ### How do I get a file from file store in a Run step?
 
-You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`. Here's an example in a script:
+You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`.
+
+Here's an example in a script:
 
 ```
 raw_file=<+fileStore.getAsBase64("someFile")>
 config_file="$(echo "$raw_file" | base64 --decode)"
 ```
+
+:::warning
+
+File store expressions don't work for all secrets, and some secrets require additional handling.
+
+For more information, go to:
+
+* [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step)
+* [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - JKS files](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#jks-files)
+
+:::
 
 ### Can I start containers during pipeline execution? For example, I need to start some containers while executing tests.
 
@@ -1767,7 +1829,7 @@ Yes. Depending on the build infrastructure, Background steps can either use exis
 
 ### How do I add volumes for PostgreSQL data in the build workspace?
 
-With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 ### Can I run a LocalStack service in a Background step?
 
@@ -1867,9 +1929,25 @@ For more information about configuring connectivity, go to:
 
 Go to [CI step logs don't load in real time](./articles/CI-step-logs-dont-load-in-real-time).
 
-### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
+### Step succeeds even when explicitly executing exit 1 in a Bash script that runs in script's background
 
-The step in Harness determines its status based on the exit status received from the primary script execution. When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within a background function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
+Harness determines the execution status for a step based on the exit status received from the primary script execution.
+
+When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call `exit 1` within a background function, it won't cause the step to fail if the primary script succeeds.
+
+This behavior is consistent with how scripts operate both inside and outside of Harness.
+
+### Build step fails due to ResourceExhausted
+
+Build and Push steps can return a `ResourceExhausted` error, such as:
+
+```
+exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message larger than max (4950319 vs. 4194304)
+```
+
+This can be related to log streaming during the Build and Push step or a Run step executing a build script. It indicates that the logs are too large for the log streaming service to handle.
+
+If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 

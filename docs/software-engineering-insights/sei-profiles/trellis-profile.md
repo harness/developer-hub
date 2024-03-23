@@ -11,7 +11,7 @@ To create or edit a Trellis profile:
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Trellis** under **Profiles**.
-4. To create a profile, select **+Add Profile**. To edit an existing profile, select the profile's name in the profiles list.
+4. To create a profile, select **+New Trellis  Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 :::info Predefined Trellis profiles
 
