@@ -37,7 +37,7 @@ Harness STO supports [three workflows](/docs/security-testing-orchestration/use-
 
 The Harness CI docs describe how to add custom certificates to a delegate.
 
-- For Kubernetes delegates, go to [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
+- For Kubernetes delegates, go to [Configure a Kubernetes build farm to use custom certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
 - For Docker delegates, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate-and-runner).
   
