@@ -26,40 +26,17 @@ This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that i
 
 ## Important notes for running CodeQL scans in STO
 
-### Root access requirements
+### Root access requirements 
 
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
-:::note
-
-You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-:::
+<StoRootRequirements />
 
 ### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
 <StoMoreInfo />
-
-<!-- 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
--->
 
 
 ## CodeQL step settings for STO scans

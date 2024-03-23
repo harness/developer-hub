@@ -10,10 +10,6 @@ Write your Dockerfiles to [use the cache efficiently](https://docs.docker.com/bu
 
 ## Docker layer caching with Harness Cloud
 
-[Harness Cloud](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) can manage the Docker layer [cache backend](https://docs.docker.com/build/cache/backends/) for you, without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
-
-Enable Docker layer caching by selecting __Enable Docker layer caching__ in your Build and Push to Docker step.
-
 :::note
 
 Currently, Docker layer caching with Harness Cloud is behind the feature flags `CI_ENABLE_DLC` and `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -22,13 +18,17 @@ Currently, Docker layer caching with Harness Cloud is behind the feature flags `
 
 :::
 
+[Harness Cloud](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) can manage the Docker layer [cache backend](https://docs.docker.com/build/cache/backends/) for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
+
+To enable Docker layer caching for Harness Cloud, select __Enable Docker layer caching__ in your [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
+
 ## Docker layer caching with other build infrastructures
 
 Other build infrastructures can leverage remote Docker caching using your existing Docker registry.
 
 :::note
 
-Support for other storage backends with self-managed runners is in development.
+Harness is developing support for other storage backends with self-managed runners.
 
 :::
 
