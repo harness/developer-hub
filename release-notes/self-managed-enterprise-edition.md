@@ -67,14 +67,14 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## March xx, 2024, version 0.15.x
+## March xx, 2024, version 0.15.0
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.15.x](https://github.com/harness/helm-charts/releases/tag/harness-0.15.x) |
-| Air Gap Bundle | [0.15.x](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.x) |
+| Helm Chart | [0.15.0](https://github.com/harness/helm-charts/releases/tag/harness-0.15.0) |
+| Air Gap Bundle | [0.15.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.0) |
 | NG Manager | 1.24.7 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
@@ -92,14 +92,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.15.x/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.15.x/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.0/sto_images.tgz" \
   .
 ```
 
@@ -127,14 +127,11 @@ gsutil -m cp \
 
 #### Harness Platform
 
+
+
 #### Security Testing Orchestration
 
 - AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
-
-
-
-
-
 
 ### Fixed issues
 
@@ -314,6 +311,9 @@ gsutil -m cp \
 - When [viewing builds](/docs/continuous-integration/use-ci/viewing-builds), the running status is now correctly updated for Background steps that are inside step groups. (CI-10239)
 
 #### Harness Platform
+
+
+
 
 #### Security Testing Orchestration
 
