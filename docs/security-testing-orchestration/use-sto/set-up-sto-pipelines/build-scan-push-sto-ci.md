@@ -479,6 +479,7 @@ Now you have a complete build-scan-push pipeline with steps to scan the code rep
 
    `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
 
+<!-- 
 ## YAML pipeline example
 
 Here's an example of the pipeline described in this procedure. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
@@ -575,3 +576,4 @@ pipeline:
 
 
 ```
+-->
