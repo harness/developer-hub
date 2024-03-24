@@ -1631,9 +1631,9 @@ You can store delegate tokens as Kubernetes secrets. For more information, go to
 
 You can also store the token in vault and reference the token in YAML. For more information, go to [Rotate tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/#option-rotate-tokens).
 
-### How do I install azure client  to delegate?
+### How do I install the Azure client for the delegate?
 
-Add the below commands in the INIT_SCRIPT to download and install az client to delegate. 
+Add the below commands in the `INIT_SCRIPT` to download and install the Azure client for the delegate. 
 
 ```yaml
 - name: INIT_SCRIPT
@@ -1643,9 +1643,9 @@ Add the below commands in the INIT_SCRIPT to download and install az client to d
     microdnf install azure-cli
  ```
 
-## Delegate behaviour with HPA. How are deployments handled when delegates are scaled down?
+### How are deployments handled when delegates are scaled down for HPA?
 
-Once the shutdown hook is triggered on the delegate, it will not accept any new delegate task and it wait till the existing tasks completes running or termiationGracePeriod ran out. 
+Once the shutdown hook is triggered on the delegate, the delegate won't accept new tasks, and it will wait until the existing tasks finish running or the `termiationGracePeriodSeconds` runs out. For more information, go to [Grace period](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process#grace-period).
 
 ## Dashboards
 
