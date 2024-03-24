@@ -2668,6 +2668,6 @@ For more information, go to [Google cloud functions](/docs/faqs/continuous-deliv
 
 ### Updating the LDAP cron schedule results in an error `(Failed to fetch: 400)`. What are the possible causes?
 
-This happens due to incorrect cron expression. Harness uses java cron-utils to run to define, parse, validate cron expressions. Please use the below expression generate the expressions
+This happens due to an incorrect cron expression. Harness uses Java cron-utils to run to define, parse, and validate cron expressions. Use the below expression to generate the expressions.
 
 https://www.javainuse.com/cron#google_vignette
