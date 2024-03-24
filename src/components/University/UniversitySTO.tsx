@@ -319,30 +319,6 @@ export default function CertificationsSTO() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    {/* <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of STO Engineering.
-                    This exam builds upon the{" "}
-                    <a href="/university/continuous-delivery?lvl=administrator">
-                      STO Engineering Administrator Certification
-                    </a>
-                    .
-                  </div>
-                  <ArchitectCertificationReviewDetails />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/continuous-delivery-gitops-architect">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link> */}
-                    {/* <Link href="/docs/security-testing-orchestration">
-                      <button className={styles.startLearning}>
-                        <span>Start learning</span>
-                        <i className="fa-solid fa-arrow-right"></i>
-                      </button>
-                    </Link>*/}
-                    {/* </div> */}
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assess key technical job functions and advanced skills in
@@ -352,34 +328,20 @@ export default function CertificationsSTO() {
                 </div>
               </div>
             </div>
-
-            {/* Arch Exam Details */}
-            {/* <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
-            <div className={styles.examDetailsCard}>
-              <ArchitectCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/continuous-delivery-gitops-architect">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-         
-              </div>
-            </div>
-          </div> */}
           </div>
         </div>
       ) : (
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-          Intensive two-day course is designed for engineers looking to deepen their understanding and expertise.
+            Intensive two-day course is designed for engineers looking to deepen
+            their understanding and expertise.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
                 .filter((ilt) => ilt.module === "sto")
+                .sort((a, b) => a.priority - b.priority)
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}

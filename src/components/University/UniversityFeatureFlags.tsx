@@ -327,12 +327,14 @@ export default function FeatureFlags() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-          Intensive two-day course is designed for engineers looking to deepen their understanding and expertise.
+            Intensive two-day course is designed for engineers looking to deepen
+            their understanding and expertise.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
                 .filter((ilt) => ilt.module === "ff")
+                .sort((a, b) => a.priority - b.priority)
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
