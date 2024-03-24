@@ -80,7 +80,7 @@ Almost any setting in a pipeline can use runtime input, including variables, art
 
    If a setting doesn't use runtime input (`<+input>`), you can't define a value for it in an input set.
 
-   You don't have to provide a value for every setting. For example, you can leave some settings as manul runtime input. Or you can create multiple input sets that populate different values, which you can then combine into [overlays](#create-overlays).
+   You don't have to provide a value for every setting. For example, you can leave some settings as manual runtime input. Or you can create multiple input sets that populate different values, which you can then combine into [overlays](#create-overlays).
 
    ![](./static/input-sets-05.png)
 

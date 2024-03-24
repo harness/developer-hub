@@ -1,31 +1,81 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-For information about referencing variables, using expressions, and adding custom variables, go to:
+For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
 
-- [Variables and expressions](/docs/category/variables-and-expressions)
-- [Fixed values, runtime inputs, and expressions](../variables-and-expressions/runtime-inputs.md)
+You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more.
+
+This topic describes some built-in and custom Harness expressions, as well as the prefixes used to identify user-created variables.
+
+Expressions are powerful and offer many options for modification or interaction. For more information about using expressions, go to:
+
+* [Write expressions using any JSON parser tool](./expression-v2.md)
+* [Use Java string methods](./expressions-java-methods.md)
+* [Expression status type reference](./status-type-reference.md)
+* [Add variables](./add-a-variable.md)
 
 ## What is a Harness variable expression?
 
-Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
+Harness variable expressions refer to a value in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates any expressions present in the pipeline and replaces them with the resolved value.
 
-Harness variables are powerful because they let you template configuration information, pipeline settings, and values in your scripts, and they enable your pipelines to pass information between stages and settings.
+For example, the expression `<+pipeline.name>` resolves to name of the pipeline where you're using that expression.
 
-When you use a variable, you add it as an expression.
+**Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
-Harness expressions are identified using the `<+...>` syntax. For example, `<+pipeline.name>` references the name of the pipeline where the expression is evaluated.
+## Expression usage
 
-The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
+Harness variables are declared as expressions using the expression delimiter `<+...>`, such as `<+pipeline.name>` or `<+secrets.getValue("someSecret")>`.
+
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+
+In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Expression**.
+
+![](./static/runtime-inputs-03.png)
+
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+
+![](./static/runtime-inputs-10.png)
+
+In free-text fields, such as **Command**, you can directly enter values using the appropriate syntax without changing the value type.
+
+![](./static/runtime-inputs-12.png)
+
+You can continue typing or select the expression from the list of suggestions.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML" default>
+
+When writing pipelines in YAML, enter the expression as the value for a field.
+
+For example, this expression references a [pipeline variable](./add-a-variable.md) named `myConnector`.
+
+```
+          connectorRef: <+pipeline.variables.myConnector>
+```
+
+When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+
+![](./static/runtime-inputs-13.png)
+
+You can continue typing or select the expression from the list of suggestions.
+
+</TabItem>
+</Tabs>
+
+Mechanically, Harness passes the content within the delimiter (`<+...>`) to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) for evaluation.
+
+You can [use JEXL methods to build complex variable expressions](./expression-v2.md). For example, here is a complex expression that uses information from a [webhook trigger](/docs/platform/triggers/triggers-reference.md) payload:
 
 ```
 <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software"
@@ -182,12 +232,12 @@ You can copy and reference the input settings for steps using the pipeline **Var
 
 Input variables follow this format:
 
-- **Stage-level**: `<+execution.steps.STEP_Id.SETTING>`.
-- **Pipeline-level**: `<+pipeline.stages.STAGE_Id.spec.execution.steps.STEP_Id.SETTING>`.
+- **Stage-level**: `<+execution.steps.STEP_ID.SETTING>`.
+- **Pipeline-level**: `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.SETTING>`.
 
-:::note
+:::info
 
-Pipeline and stage custom variable expressions use the _variable name_ to reference the variable. The execution step variables use the stage and step _identifier (Id)_ in references.
+Pipeline and stage custom variable expressions use the _variable name_ to reference the variable. The execution step variables use the _stage/step identifier (ID)_ in references.
 
 :::
 
@@ -250,7 +300,7 @@ Here are some guidelines to help you use expressions successfully:
 - Don't refer to inputs or outputs of a stage's **Execution** tab in the stage's **Service** or **Environment** tabs.
   - The execution takes place after the service and environment settings are used. Consequently, the expressions used in the execution cannot be resolved when running the service and environment sections.
 
-:::note Exception
+:::info Exception
 You can reference the environment name variable, `<+env.name>`, in a service's Values YAML file, specs, and config files.
 :::
 
@@ -335,31 +385,46 @@ NAME = <+pipeline.name>
 if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
 
-### Variable names across the pipeline
+### Variable name uniqueness
 
-Variable names must be unique within the same stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+<!-- This seems like it's missing information. You couldn't have two pipeline variables or account variables with the same name either? And I think you could have a stage variable and pipeline variable with the same names, but the expression reference would differentiate their scope, eg. https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables-in-a-pipeline ?? -->
 
-### Hyphens in variable names
+When defining variables at the stage level, variable names must be unique within that stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
-Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them. Also, hyphens (dashes) in variable names can cause issues with headers.
+### Avoid hyphens in variable names
 
-For example, `<+execution.steps.httpstep.spec.headers.x-auth>` will not work.
+Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
 
-As a workaround, you can put the variable name in `["..."]`. For example, `<+execution.steps.httpstep.spec.headers["x-auth"]>`
+For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`.
 
-This also works for nested expressions. For example:
+If you must reference a variable name that has a hyphen, such as `x-auth`, you can wrap the variable name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
 
-`<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>`
+This also works for nested expressions, such as:
 
-`<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>`
+```
+<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>
+<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>
+```
 
-### Variable expression name restrictions
+When referencing your [custom variables](./add-a-variable.md), you need to use the `get()` method, as explained in [Special characters in custom variables can required escaping or additional handling](#special-characters-in-custom-variables-can-require-escaping-or-additional-handling).
 
-Expressions can contain variable names, such as `foo` in `<+stage.variables.foo>`.
+### Special characters in custom variables can require escaping or additional handling
 
-Variable names can contain the following characters: lowecase and uppercase letter A through Z, numbers 0 through 9, underscores (`_`), periods (`.`), hyphens (`-`), and dollar signs (`$`). Variable names must start with a letter or underscore.
+When you [add a variable](./add-a-variable.md), note the following restrictions and considerations for variable names:
 
-To reference your variables that include a period or hyphen in the name, you must wrap the variable name in quotes and call it with `get()`, such as `.get("some-var")`. Here are some additional examples of this format:
+* Variable names must start with a letter or underscore (`_`).
+* Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`).
+* Variable names can't contain [reserved words](#reserved-words).
+* Periods and hyphens require [additional escaping](#use-get-for-custom-variable-names-with-hyphens-and-periods) when referencing those variable names in Harness expressions, such as `foo` in `<+stage.variables.foo>`. This handling is explained below.
+* Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
+
+#### Use get() for custom variable names with hyphens and periods
+
+Harness recommends [avoiding hyphens in variable names](#avoid-hyphens-in-variable-names).
+
+However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
+
+For example:
 
 ```
 <+pipeline.variables.get("pipeline-var")>
@@ -368,13 +433,33 @@ To reference your variables that include a period or hyphen in the name, you mus
 <+pipeline.stages.custom.variables.get("stage.var")>
 ```
 
-In addition to the Harness Platform variable naming restrictions, certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
+This handling is also required for [matrix dimension names](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) with hyphens.
 
 ### Reserved words
 
 The following keywords are reserved, and cannot be used as a variable name or property.
 
-`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner class`
+```
+or
+and
+eq
+ne
+lt
+gt
+le
+ge
+div
+mod
+not
+null
+true
+false
+new
+var
+return
+shellScriptProvisioner
+class
+```
 
 For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
 
@@ -427,10 +512,13 @@ For example:
 
 ### Ternary operator
 
-When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within `<+ >`.
-:::note Important
+When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within the expression delimiter `<+ >`.
 
-When you evaluate Harness expressions using ternary operators, or any operator, ensure that the expression will be resolved at the time of the evaluation. For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.Apply.executionUrl>`, ensure that the evaluation using that step happens after the step has executed.
+:::info
+
+When you evaluate Harness expressions using any operator (including ternary operators), the expression values must be available for resolution at the time of the evaluation.
+
+For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.myapplystep.executionUrl>`, ensure that the evaluation using that expression happens after the step `myapplystep` has run.
 
 :::
 
@@ -545,9 +633,13 @@ All existing expressions will continue to work. For example, the following synta
 
 Ensure the expression is wrapped within `<+ >` in both of these examples.
 
-:::note
+:::info
 
-If you wish to concatenate expressions as strings, make sure that each expression evaluates to a string. If an expression does not satisfy this condition, use the `toString()` method to convert it to a string. For example, the variable `sequenceId` in the expression `/tmp/spe/<+pipeline.sequenceId>` evaluates to an integer. When concatenating it with other string expressions, convert it to a string with the following expression: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
+When concatenating expressions as strings, each expression must evaluate to a string.
+
+If an expression does not satisfy this condition, use the `toString()` [method](/docs/platform/variables-and-expressions/expressions-java-methods) to convert it to a string.
+
+For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`
 
 :::
 
@@ -1437,7 +1529,7 @@ You can evaluate the expression using JEXL in the **Conditional Execution** sett
 <+env.type> != "Production"
 ```
 
-:::note
+:::tip
 
 Environment expressions can be used in service steps as well.
 
@@ -1473,9 +1565,9 @@ The name of the connector used in the infrastructure definition.
 
 ### \<+INFRA_KEY>
 
-:::note
+:::warning
 
-This expression is `<+INFRA_KEY>` exactly. `INFRA_KEY` is not a placeholder.
+This expression is literally `<+INFRA_KEY>`. In this case `INFRA_KEY` *isn't* a placeholder.
 
 :::
 
@@ -1867,212 +1959,331 @@ For example, here are several different references:
 - `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
 - `<+serviceConfig.service.tags.TAG_NAME>`
 
-## Migrating FirstGen expressions to NextGen
+## Migrate FirstGen expressions to NextGen
 
-When migrating Harness FirstGen expressions to Harness NextGen, review the following table.
+Use this information if you need to migrate expressions from Harness FirstGen to Harness NextGen.
 
-:::note
+:::warning
 
-All FirstGen expressions use the `${...}` format. For example, `${approvedBy.name}`. In NextGen, this has been replaced by `<+...>`. For example, `<+approvedBy.name>`.
+All FirstGen expressions use the delimiter `${...}`, such as `${approvedBy.name}`.
+
+In NextGen, the delimiter is `<+...>`, such as `<+approvedBy.name>`.
 
 :::
 
-| FirstGen                                                               | Next Gen                                                                                                                                                                                                                                                                                                                              |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Approvals**                                                          | **Approvals**                                                                                                                                                                                                                                                                                                                         |
-| approvedBy.name                                                        | pipeline.stages.STAGE_ID.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name                                                                                                                                                                                                                                  |
-| approvedBy.email                                                       | pipeline.stages.STAGE_ID.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email                                                                                                                                                                                                                                 |
-| **HTTP Step**                                                          | **HTTP Step**                                                                                                                                                                                                                                                                                                                         |
-| httpResponseCode                                                       | httpResponseCode                                                                                                                                                                                                                                                                                                                      |
-| httpResponseBody                                                       | httpResponseBody                                                                                                                                                                                                                                                                                                                      |
-| httpMethod                                                             | httpMethod                                                                                                                                                                                                                                                                                                                            |
-| httpUrl                                                                | httpUrl                                                                                                                                                                                                                                                                                                                               |
-| httpResponseMethod                                                     | pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpMethod                                                                                                                                                                                                                                                                   |
-| httpResponseCode                                                       | pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpResponseCode                                                                                                                                                                                                                                                             |
-| httpResponseBody                                                       | pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpResponseBody                                                                                                                                                                                                                                                             |
-| **Artifacts**                                                          | **Artifacts**                                                                                                                                                                                                                                                                                                                         |
-| artifact.metadata.image                                                | artifact.image                                                                                                                                                                                                                                                                                                                        |
-| artifact.source.dockerconfig                                           | artifact.imagePullSecret                                                                                                                                                                                                                                                                                                              |
-| artifact.serviceIds                                                    | NA                                                                                                                                                                                                                                                                                                                                    |
-| artifact.metadata.tag                                                  | artifact.tag                                                                                                                                                                                                                                                                                                                          |
-| artifact.url                                                           | artifact.metadata.url                                                                                                                                                                                                                                                                                                                 |
-| artifact.buildNo                                                       | artifact.tag                                                                                                                                                                                                                                                                                                                          |
-| artifact.metadata.image                                                | artifact.imageartifact.image. Path for sidecar artifact: artifacts.sidecars.sidecarId.PROPERTY                                                                                                                                                                                                                                        |
-| artifact.metadata.KEY                                                  | artifact.metadata.KEY                                                                                                                                                                                                                                                                                                                 |
-| artifact.displayName                                                   |                                                                                                                                                                                                                                                                                                                                       |
-| artifact.description                                                   | NA                                                                                                                                                                                                                                                                                                                                    |
-| artifact.source.username                                               | NA                                                                                                                                                                                                                                                                                                                                    |
-| artifact.source.registryUrl                                            | Depends on the artifact source type. Check the output of the Service step.                                                                                                                                                                                                                                                            |
-| artifact.source.repositoryName                                         | Depends on the artifact source type. Check the output of the Service step.                                                                                                                                                                                                                                                            |
-| artifact.label.label-key                                               |                                                                                                                                                                                                                                                                                                                                       |
-| artifact.revision                                                      | artifact.tag                                                                                                                                                                                                                                                                                                                          |
-| artifact.metadata.artifactId                                           | artifact.metadata.artifactId                                                                                                                                                                                                                                                                                                          |
-| artifact.bucketName                                                    | artifact.metadata.bucketName                                                                                                                                                                                                                                                                                                          |
-| artifact.key                                                           | artifact.metadata.key                                                                                                                                                                                                                                                                                                                 |
-| artifact.buildFullDisplayName                                          |                                                                                                                                                                                                                                                                                                                                       |
-| artifact.artifactPath                                                  | artifact.metadata.artifactPath                                                                                                                                                                                                                                                                                                        |
-| artifact.metadata.repositoryName                                       | artifact.metadata.repositoryName                                                                                                                                                                                                                                                                                                      |
-| artifact.metadata.harness                                              | artifact.metadata.harness                                                                                                                                                                                                                                                                                                             |
-| artifact.metadata.groupId                                              | artifact.metadata.groupId                                                                                                                                                                                                                                                                                                             |
-| artifact.fileName                                                      | artifact.metadata.fileName                                                                                                                                                                                                                                                                                                            |
-| artifact.label.get("[label-key]")                                      |                                                                                                                                                                                                                                                                                                                                       |
-| artifact.metadata.getSHA()                                             | artifact.metadata.SHA                                                                                                                                                                                                                                                                                                                 |
-| Application                                                            | Application (account, org, project)                                                                                                                                                                                                                                                                                                   |
-| app.name                                                               | account.name account.companyName org.name project.name projectidentifier                                                                                                                                                                                                                                                              |
-| app.description                                                        | project.descriptionorg.description                                                                                                                                                                                                                                                                                                    |
-| app.accountId                                                          | account.identifier                                                                                                                                                                                                                                                                                                                    |
-| app.defaults.[variable_name]                                           | variable.[variable_Id]                                                                                                                                                                                                                                                                                                                |
-| **Service**                                                            | **Service**                                                                                                                                                                                                                                                                                                                           |
-| service.name                                                           | service.name                                                                                                                                                                                                                                                                                                                          |
-| service.description                                                    | service.description                                                                                                                                                                                                                                                                                                                   |
-| serviceVariable.VAR_NAME                                               | serviceVariables.VAR_NAME                                                                                                                                                                                                                                                                                                             |
-| service.manifest                                                       | manifest.name                                                                                                                                                                                                                                                                                                                         |
-| service.manifest.repoRoot                                              | manifest.repoName                                                                                                                                                                                                                                                                                                                     |
-| **Environment**                                                        | **Environment**                                                                                                                                                                                                                                                                                                                       |
-| env.description                                                        | FQN: stages.STAGE_ID.spec.infrastructure.environment.name. Alias: env.description. FQN: stages.STAGE_ID.spec.infrastructure.environment.description                                                                                                                                                                                   |
-| env.environmentType                                                    | env.type                                                                                                                                                                                                                                                                                                                              |
-| env.name                                                               | env.name                                                                                                                                                                                                                                                                                                                              |
-| env.accountId                                                          | account.identifier                                                                                                                                                                                                                                                                                                                    |
-| env.keywordsenvironmentVariable.variable_name                          | env.variables.var_name                                                                                                                                                                                                                                                                                                                |
-| **Infrastructure**                                                     | **Infrastructure**                                                                                                                                                                                                                                                                                                                    |
-| infra.kubernetes.namespace                                             | infra.namespace or infra.releaseName. FQN: stages.STAGE_ID.spec.infrastructure.infrastructureDefinition.spec.namespace                                                                                                                                                                                                                |
-| infra.route                                                            |                                                                                                                                                                                                                                                                                                                                       |
-| infra.tempRoute                                                        |                                                                                                                                                                                                                                                                                                                                       |
-| infra.name                                                             | infra.name                                                                                                                                                                                                                                                                                                                            |
-| infra.cloudProvider.name                                               | infra.connectorRef                                                                                                                                                                                                                                                                                                                    |
-| **Workflow**                                                           | **Workflow (Stage level expressions)**                                                                                                                                                                                                                                                                                                |
-| workflow.releaseNo                                                     | stage.identifier                                                                                                                                                                                                                                                                                                                      |
-| workflow.lastGoodReleaseNo                                             | N/A                                                                                                                                                                                                                                                                                                                                   |
-| workflow.lastGoodDeploymentDisplayName                                 | N/A                                                                                                                                                                                                                                                                                                                                   |
-| workflow.displayName                                                   | stage.name, pipeline.name                                                                                                                                                                                                                                                                                                             |
-| workflow.description                                                   | stage.description, pipeline.description                                                                                                                                                                                                                                                                                               |
-| workflow.pipelineResumeUuid                                            | NA                                                                                                                                                                                                                                                                                                                                    |
-| workflow.pipelineDeploymentUuid                                        | pipeline.executionId, pipeline.sequenceId                                                                                                                                                                                                                                                                                             |
-| workflow.startTs                                                       | pipeline.startTs                                                                                                                                                                                                                                                                                                                      |
-| workflow.variables.VAR_NAME                                            | pipeline.variables.VAR_NAME or stage.variables.VAR_NAME                                                                                                                                                                                                                                                                               |
-| timestampId                                                            | In FirstGen, The `${timestampId}` is the time when the constant is set on the target host. In NextGen, we are not using any setup variables anymore, since it is Harness’s internal step where we create a temp dir for the execution. We are creating a working directory in the Command Init unit on this `%USERPROFILE%` location. |
-| deploymentUrl                                                          | pipeline.executionUrl​                                                                                                                                                                                                                                                                                                                |
-| context.published_name.var_name                                        |                                                                                                                                                                                                                                                                                                                                       |
-| deploymentTriggeredBy                                                  | pipeline.triggeredBy.name, ​pipeline.triggeredBy.email​                                                                                                                                                                                                                                                                               |
-| currentStep.name                                                       | step.name                                                                                                                                                                                                                                                                                                                             |
-| regex.extract("v[0-9]+.[0-9]+", artifact.fileName)                     | N/A                                                                                                                                                                                                                                                                                                                                   |
-| currentStep.type                                                       | N/A                                                                                                                                                                                                                                                                                                                                   |
-| **Pipeline Variables**                                                 | **Pipeline Variables**                                                                                                                                                                                                                                                                                                                |
-| pipeline.name                                                          | pipeline.name                                                                                                                                                                                                                                                                                                                         |
-| deploymentUrl                                                          | pipeline.executionUrl​                                                                                                                                                                                                                                                                                                                |
-| deploymentTriggeredBy                                                  | pipeline.triggeredBy.name​, pipeline.triggeredBy.email​                                                                                                                                                                                                                                                                               |
-| **Rollback Artifact Variables**                                        | **Rollback Artifact Variables**                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.url                                                   | NA                                                                                                                                                                                                                                                                                                                                    |
-| rollbackArtifact.buildNo                                               | artifact.tagrollback, artifact.imagerollback, artifact.imagePathrollback, artifact.typerollback, artifact.connectorRef, for sidecar artifact: rollbackArtifact.sidecars.sidecar_Id.[property]                                                                                                                                         |
-| rollbackArtifact.buildFullDisplayName                                  |                                                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.ArtifactPath                                          |                                                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.description                                           |                                                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.displayName                                           |                                                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.fileName                                              |                                                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.key                                                   |                                                                                                                                                                                                                                                                                                                                       |
-| rollbackArtifact.metadata.image                                        | rollbackArtifact.image                                                                                                                                                                                                                                                                                                                |
-| rollbackArtifact.metadata.tag                                          | rollbackArtifact.tag                                                                                                                                                                                                                                                                                                                  |
-| rollbackArtifact.source.registryUrl                                    |                                                                                                                                                                                                                                                                                                                                       |
-| **Instance**                                                           | **Instance**                                                                                                                                                                                                                                                                                                                          |
-| instance.name                                                          | instance.name                                                                                                                                                                                                                                                                                                                         |
-| instance.hostName                                                      | instance.hostName                                                                                                                                                                                                                                                                                                                     |
-| instance.host.hostName                                                 | instance.host.hostName                                                                                                                                                                                                                                                                                                                |
-| instance.host.ip                                                       | instance.host.privateIpinstance.host.publicIp. The privateIp and publicIp are supported for Azure, AWS, SSH/WinRM deployments.                                                                                                                                                                                                        |
-| instance.dockerId                                                      | TBD                                                                                                                                                                                                                                                                                                                                   |
-| instance.host.publicDns                                                | NA                                                                                                                                                                                                                                                                                                                                    |
-| instance.EcsContainerDetails.completeDockerId                          | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                                                                                   |
-| instance.ecsContainerDetails.taskId                                    | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                                                                                   |
-| instance.ecsContainerDetails.taskArn                                   | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                                                                                   |
-| [step__name].serviceName                                               | N/A                                                                                                                                                                                                                                                                                                                                   |
-| ECS**Service**Setup.serviceName                                        | service.nameThis expression only works if customer chooses to use this in service definition manifest as wellorpipeline.stages.ecs.spec.execution.steps.[Step Id].output.serviceName                                                                                                                                                  |
-| ECS**Service**Setup.clusterName                                        | infra.cluster                                                                                                                                                                                                                                                                                                                         |
-| instance.EcsContainerDetails.dockerId                                  | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                                                                                   |
-| **Host** (Deprecated) All host properties are available using Instance | **Host** (Deprecated) All host properties are available using Instance                                                                                                                                                                                                                                                                |
-| host.name                                                              |                                                                                                                                                                                                                                                                                                                                       |
-| host.ip                                                                |                                                                                                                                                                                                                                                                                                                                       |
-| host.publicDns                                                         |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.instanceId                                            |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.instanceType                                          |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.imageId                                               |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.architecture                                          |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.kernelId                                              |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.keyName                                               |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.privateDnsName                                        |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.privateIpAddress                                      |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.publicDnsName                                         |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.publicIpAddress                                       |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.subnetId                                              |                                                                                                                                                                                                                                                                                                                                       |
-| host.ec2Instance.vpcId                                                 |                                                                                                                                                                                                                                                                                                                                       |
-| host.hostName                                                          |                                                                                                                                                                                                                                                                                                                                       |
-| **Terraform**                                                          | **Terraform**                                                                                                                                                                                                                                                                                                                         |
-| terraform.clusterName                                                  | STEP_ID.output.OUTPUT_NAME. For example: pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.clusterName                                                                                                                                                                                                                |
-| terraformApply.tfplan                                                  |                                                                                                                                                                                                                                                                                                                                       |
-| terraformDestroy.tfplan                                                |                                                                                                                                                                                                                                                                                                                                       |
-| terraformPlan.jsonFilePath()                                           | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.jsonFilePath. For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                                                                |
-| terraformPlan.destroy.jsonFilePath()                                   | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.jsonFilePath For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                                                                 |
-| terraformApply.add                                                     |                                                                                                                                                                                                                                                                                                                                       |
-| terraformApply.change                                                  |                                                                                                                                                                                                                                                                                                                                       |
-| terraformApply.destroy                                                 |                                                                                                                                                                                                                                                                                                                                       |
-| terraformDestroy.add                                                   |                                                                                                                                                                                                                                                                                                                                       |
-| terraformDestroy.change                                                |                                                                                                                                                                                                                                                                                                                                       |
-| terraformDestroy.destroy                                               |                                                                                                                                                                                                                                                                                                                                       |
-| terraformApply.tfplanHumanReadable                                     | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                                                              |
-| terraformDestroy.tfplanHumanReadable                                   | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                                                              |
-| terraform.OUTPUT_NAME                                                  | pipeline.stages.STAGE_ID.spec.execution.steps.TerraformApply.output.OUTPUT_NAME                                                                                                                                                                                                                                                       |
-| **CloudFormation**                                                     | **CloudFormation**                                                                                                                                                                                                                                                                                                                    |
-| cloudformation.OUTPUT_NAME                                             | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.OUTPUT_NAME                                                                                                                                                                                                                                                            |
-| cloudformation.region                                                  | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.region                                                                                                                                                                                                                                                                 |
-|                                                                        |                                                                                                                                                                                                                                                                                                                                       |
-| **HARNESS_KUBE_CONFIG_PATH**                                           | **HARNESS_KUBE_CONFIG_PATH**                                                                                                                                                                                                                                                                                                          |
-| infra.kubernetes.infraId                                               | N/A                                                                                                                                                                                                                                                                                                                                   |
-| **Helm**                                                               | **Helm**                                                                                                                                                                                                                                                                                                                              |
-| infra.helm.releaseNameservice.name-env.name-infra.helm.shortId         | pipeline.stages.STAGE_ID.spec.infrastructure.infrastructureDefinition.spec.output.releaseName, pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[2].releaseName                                                                                                            |
-| infra.helm.shortId                                                     | N/A                                                                                                                                                                                                                                                                                                                                   |
-| helmChart.description                                                  | service.description                                                                                                                                                                                                                                                                                                                   |
-| helmChart.displayName                                                  | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.chartName                                                                                                                                                                                                                                               |
-| helmChart.metadata.basePath                                            | N/A                                                                                                                                                                                                                                                                                                                                   |
-| helmChart.metadata.bucketName                                          | N/A                                                                                                                                                                                                                                                                                                                                   |
-| helmChart.metadata.repositoryName                                      | N/A                                                                                                                                                                                                                                                                                                                                   |
-| helmChart.metadata.url                                                 | N/A                                                                                                                                                                                                                                                                                                                                   |
-| helmChart.name                                                         | pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                                                                    |
-| helmChart.version                                                      | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion                                                                                                                                                                                                                                             |
-| Nested Expression: `secrets.getValue("terraform-aws-env_name-id")`     | `<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>` or `<+<secrets.getValue("test_secret")>.concat(<+pipeline.variables.envVar>)>`                                                                                                                                                                                    |
-| **Email Step**                                                         | **Email Step**                                                                                                                                                                                                                                                                                                                        |
-| toAddress                                                              | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to                                                                                                                                                                                                                                                                         |
-| ccAddress                                                              | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc                                                                                                                                                                                                                                                                         |
-| subject                                                                | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.subject                                                                                                                                                                                                                                                                    |
-| body                                                                   | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.body                                                                                                                                                                                                                                                                       |
-| **AMI**                                                                | **AMI**                                                                                                                                                                                                                                                                                                                               |
-| ami.newAsgName                                                         | Rolling: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.prodAsg.autoScalingGroupName                                                                                                       |
-| ami.oldAsgName                                                         | Rolling: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.stageAsg.autoScalingGroupName                                                                                                      |
-| **Tanzu Application Services**                                         | **Tanzu Application Services**                                                                                                                                                                                                                                                                                                        |
-| pcf.finalRoutes                                                        | pcf.finalRoutes                                                                                                                                                                                                                                                                                                                       |
-| pcf.oldAppRoutes                                                       | pcf.oldAppRoutes                                                                                                                                                                                                                                                                                                                      |
-| pcf.tempRoutes                                                         | pcf.tempRoutes                                                                                                                                                                                                                                                                                                                        |
-| pcf.newAppRoutes                                                       | pcf.newAppRoutes                                                                                                                                                                                                                                                                                                                      |
-| pcf.newAppRoutes[0]                                                    | pcf.newAppRoutes[0]                                                                                                                                                                                                                                                                                                                   |
-| pcf.newAppName                                                         | pcf.newAppName                                                                                                                                                                                                                                                                                                                        |
-| pcf.newAppGuid                                                         | pcf.newAppGuid                                                                                                                                                                                                                                                                                                                        |
-| pcf.oldAppName                                                         | pcf.oldAppName                                                                                                                                                                                                                                                                                                                        |
-| pcf.activeAppName                                                      | pcf.activeAppName                                                                                                                                                                                                                                                                                                                     |
-| pcf.inActiveAppName                                                    | pcf.inActiveAppName                                                                                                                                                                                                                                                                                                                   |
-| pcf.oldAppGuid                                                         | pcf.oldAppGuid                                                                                                                                                                                                                                                                                                                        |
-| pcf.oldAppRoutes[0]                                                    | pcf.oldAppRoutes[0]                                                                                                                                                                                                                                                                                                                   |
-| infra.pcf.cloudProvider.name                                           | infra.connector.name                                                                                                                                                                                                                                                                                                                  |
-| infra.pcf.organization                                                 | infra.organization                                                                                                                                                                                                                                                                                                                    |
-| infra.pcf.space                                                        | infra.space                                                                                                                                                                                                                                                                                                                           |
-| host.pcfElement.applicationId                                          | pcf.newAppGuid                                                                                                                                                                                                                                                                                                                        |
-| host.pcfElement.displayName                                            | Basic or Canary deployment: pcf.newAppName. Blue Green deployment: pcf.inActiveAppName                                                                                                                                                                                                                                                |
-| host.pcfElement.instanceIndex                                          |                                                                                                                                                                                                                                                                                                                                       |
-| **CONFIG File**                                                        | **CONFIG File**                                                                                                                                                                                                                                                                                                                       |
-|                                                                        | configFile.getAsString("cf_file")                                                                                                                                                                                                                                                                                                     |
-|                                                                        | configFile.getAsBase64("cf_file")                                                                                                                                                                                                                                                                                                     |
-|                                                                        | configFile.getAsString("cf_secret")                                                                                                                                                                                                                                                                                                   |
-|                                                                        | configFile.getAsBase64("cf_secret")                                                                                                                                                                                                                                                                                                   |
-|                                                                        | fileStore.getAsString("/folder1/configFileProject")                                                                                                                                                                                                                                                                                   |
-|                                                                        | fileStore.getAsBase64("account:/folder1/folder2/ConfigFile")                                                                                                                                                                                                                                                                          |
+<details>
+<summary>AMI expressions</summary>
 
-For more information migrating to NextGen, go to the following:
+| FirstGen | NextGen |
+| -------- | ------- |
+| `ami.newAsgName` | Rolling: `pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName`<br/>Blue Green: `pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.prodAsg.autoScalingGroupName`       |
+| `ami.oldAsgName`    | Rolling: `pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName`<br/>Blue Green: `pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.stageAsg.autoScalingGroupName`    |
+
+</details>
+
+<details>
+<summary>Approvals expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `approvedBy.name`  | `pipeline.stages.STAGE_ID.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name`  |
+| `approvedBy.email` | `pipeline.stages.STAGE_ID.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email ` |
+
+</details>
+
+<details>
+<summary>Artifacts expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `artifact.metadata.image`  | `artifact.image`  |
+| `artifact.source.dockerconfig` | `artifact.imagePullSecret`  |
+| `artifact.metadata.tag`<br/>`artifact.buildNo`<br/>`artifact.revision`  | `artifact.tag`    |
+| `artifact.url` | `artifact.metadata.url` |
+| `artifact.metadata.image`      | `artifact.imageartifact.image`<br/>Path for sidecar artifact: `artifacts.sidecars.sidecarId.PROPERTY`  |
+| `artifact.metadata.KEY`     | `artifact.metadata.KEY` |
+| `artifact.key`  | `artifact.metadata.key`   |
+| `artifact.source.registryUrl`   | Depends on artifact source type. Check the output of the Service step.   |
+| `artifact.source.repositoryName`   | Depends on artifact source type. Check the output of the Service step.   |
+| `artifact.metadata.artifactId`      | `artifact.metadata.artifactId` |
+| `artifact.bucketName`   | `artifact.metadata.bucketName` |
+| `artifact.artifactPath`    | `artifact.metadata.artifactPath`   |
+| `artifact.metadata.repositoryName`   | `artifact.metadata.repositoryName`    |
+| `artifact.metadata.harness`     | `artifact.metadata.harness`     |
+| `artifact.metadata.groupId`      | `artifact.metadata.groupId`     |
+| `artifact.fileName`     | `artifact.metadata.fileName`    |
+| `artifact.metadata.getSHA()`  | `artifact.metadata.SHA`   |
+| Application  | Application (account, org, project)    |
+| `app.name`   | `account.name`<br/>`account.companyName`<br/>`org.name`<br/>`project.name`<br/>`projectidentifier`   |
+| `app.description`   | `project.description`<br/>`org.description`   |
+| `app.accountId`  | `account.identifier`    |
+| `app.defaults.[variable_name]`     | `variable.[VARIABLE_ID]`  |
+| `artifact.displayName`   |    |
+| `artifact.label.label-key`  |    |
+| `artifact.buildFullDisplayName`  |       |
+| `artifact.label.get("[label-key]")`   |    |
+| `artifact.serviceIds`    | Not applicable in NextGen    |
+| `artifact.description`   | Not applicable in NextGen   |
+| `artifact.source.username`   | Not applicable in NextGen |
+
+</details>
+
+<details>
+<summary>CloudFormation expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `cloudformation.OUTPUT_NAME`    | `pipeline.stages.STAGE_ID.spec.execution.steps.CreateStack.output.OUTPUT_NAME`   |
+| `cloudformation.region`  | `pipeline.stages.stage1.spec.execution.steps.CreateStack.output.region`    |
+
+</details>
+
+<details>
+<summary>CONFIG file and CONFIG path expressions</summary>
+
+Harness NextGen has expressions for CONFIG files. These expressions, listed below, have no equivalent FirstGen expressions. This is not an exhaustive list of all NextGen expressions or NextGen expressions without a FirstGen equivalent.
+
+* `configFile.getAsString("cf_file")`
+* `configFile.getAsBase64("cf_file") `
+* `configFile.getAsString("cf_secret") `
+* `configFile.getAsBase64("cf_secret")`
+* `fileStore.getAsString("/folder1/configFileProject")`
+* `fileStore.getAsBase64("account:/folder1/folder2/ConfigFile")`
+
+For information about the replacement for the FirstGen KUBE_CONFIG_PATH expression `infra.kubernetes.infraId`, go to [HARNESS_KUBE_CONFIG_PATH](#harness_kube_config_path).
+
+</details>
+
+<details>
+<summary>Email step expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `toAddress`  | `pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to`    |
+| `ccAddress`   | `pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc`    |
+| `subject`       | `pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.subject`     |
+| `body`     | `pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.body`      |
+
+</details>
+
+<details>
+<summary>Environment expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `env.description`    | FQN: `stages.STAGE_ID.spec.infrastructure.environment.name`(Alias: `env.description`)<br/>FQN: `stages.STAGE_ID.spec.infrastructure.environment.description`   |
+| `env.environmentType`   | `env.type`     |
+| `env.name`   | `env.name`     |
+| `env.accountId`    | `account.identifier`    |
+| `env.keywordsenvironmentVariable.variable_name`   | `env.variables.var_name`    |
+
+</details>
+
+<details>
+<summary>HTTP step expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `httpResponseCode` | `httpResponseCode` |
+| `httpResponseBody` | `httpResponseBody` |
+| `httpMethod` | `httpMethod` |
+| `httpUrl` | `httpUrl` |
+| `httpResponseMethod` | `pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpMethod` |
+| `httpResponseCode` | `pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpResponseCode` |
+| `httpResponseBody` | `pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpResponseBody` |
+
+</details>
+
+<details>
+<summary>Infrastructure expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `infra.kubernetes.namespace`   | `infra.namespace`<br/>`infra.releaseName`<br/>FQN: `stages.STAGE_ID.spec.infrastructure.infrastructureDefinition.spec.namespace` |
+| `infra.name`   | `infra.name`    |
+| `infra.cloudProvider.name`   | `infra.connectorRef`    |
+| `infra.route`    |      |
+| `infra.tempRoute`   |         |
+
+</details>
+
+<details>
+<summary>Instance and host expressions</summary>
+
+All FirstGen `host` expressions are deprecated. Host properties are available using `instance` expressions.
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `instance.name`   | `instance.name`     |
+| `instance.hostName`   | `instance.hostName`     |
+| `instance.host.hostName`     | `instance.host.hostName`     |
+| `instance.host.ip`   | `instance.host.privateIp`<br/>`instance.host.publicIp`<br/>`privateIp `and `publicIp` are supported for Azure, AWS, and SSH/WinRM deployments. |
+| `instance.EcsContainerDetails.completeDockerId`<br/>`instance.EcsContainerDetails.dockerId`   | `pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId`     |
+| `instance.ecsContainerDetails.taskId`<br/>`instance.ecsContainerDetails.taskArn`   | `pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].taskArn` |
+| `ECSServiceSetup.serviceName`    | `service.name` (This expression works only if you use it in the service definition manifest as well)<br/>`pipeline.stages.ecs.spec.execution.steps.STEP_ID.output.serviceName`   |
+| `ECSServiceSetup.clusterName`  | `infra.cluster`     |
+| `instance.dockerId`    | TBD     |
+| `[step__name].serviceName`    | Not applicable in NextGen    |
+| `instance.host.publicDns`    | Not applicable in NextGen    |
+
+Deprecated `host` expressions (In NextGen, host properties are available using `instance` expressions):
+* `host.name`
+* `host.ip`
+* `host.publicDns`
+* `host.ec2Instance.instanceId`
+* `host.ec2Instance.instanceType`
+* `host.ec2Instance.imageId`
+* `host.ec2Instance.architecture`
+* `host.ec2Instance.kernelId`
+* `host.ec2Instance.keyName`
+* `host.ec2Instance.privateDnsName`
+* `host.ec2Instance.privateIpAddress`
+* `host.ec2Instance.publicDnsName`
+* `host.ec2Instance.publicIpAddress`
+* `host.ec2Instance.subnetId`
+* `host.ec2Instance.vpcId`
+* `host.hostName`
+
+</details>
+
+<details>
+<summary>Pipeline variables</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `pipeline.name`   | `pipeline.name`  |
+| `deploymentUrl`  | `pipeline.executionUrl`     |
+| `deploymentTriggeredBy`   | `pipeline.triggeredBy.name`<br/>`pipeline.triggeredBy.email`     |
+
+</details>
+
+<details>
+<summary>Rollback artifact variables</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `rollbackArtifact.buildNo`   | `artifact.tagrollback`<br/>`artifact.imagerollback`<br/>`artifact.imagePathrollback`<br/>`artifact.typerollback`<br/>`artifact.connectorRef`<br/>For sidecar artifact: `rollbackArtifact.sidecars.sidecar_Id`[property]    |
+| `rollbackArtifact.metadata.image`    | `rollbackArtifact.image`    |
+| `rollbackArtifact.metadata.tag`     | `rollbackArtifact.tag`    |
+| `rollbackArtifact.buildFullDisplayName`    |         |
+| `rollbackArtifact.ArtifactPath`    |     |
+| `rollbackArtifact.description`  |       |
+| `rollbackArtifact.displayName`     |      |
+| `rollbackArtifact.fileName`    |    |
+| `rollbackArtifact.key`     |      |
+| `rollbackArtifact.source.registryUrl`       |               |
+| `rollbackArtifact.url`   | Not applicable in NextGen   |
+
+</details>
+
+<details>
+<summary>Service expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `service.name`   | `service.name`    |
+| `service.description`  | `service.description`  |
+| `serviceVariable.VAR_NAME`    | `serviceVariables.VAR_NAME`  |
+| `service.manifest`  | `manifest.name`   |
+| `service.manifest.repoRoot`   | `manifest.repoName`     |
+
+</details>
+
+<details>
+<summary>Tanzu application services expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `pcf.finalRoutes`    | `pcf.finalRoutes`     |
+| `pcf.oldAppRoutes`    | `pcf.oldAppRoutes`   |
+| `pcf.oldAppRoutes[0]`  | `pcf.oldAppRoutes[0]` |
+| `pcf.tempRoutes`    | `pcf.tempRoutes`   |
+| `pcf.newAppRoutes`     | `pcf.newAppRoutes`    |
+| `pcf.newAppRoutes[0]`   | `pcf.newAppRoutes[0]`  |
+| `pcf.newAppName`   | `pcf.newAppName`      |
+| `pcf.newAppGuid`<br/>`host.pcfElement.applicationId`  | `pcf.newAppGuid`   |
+| `pcf.oldAppName`      | `pcf.oldAppName`   |
+| `pcf.activeAppName`     | `pcf.activeAppName`    |
+| `pcf.inActiveAppName`     | `pcf.inActiveAppName`   |
+| `pcf.oldAppGuid`    | `pcf.oldAppGuid`   |
+| `infra.pcf.cloudProvider.name`     | `infra.connector.name`  |
+| `infra.pcf.organization`    | `infra.organization`  |
+| `infra.pcf.space`     | `infra.space`  |
+| `host.pcfElement.displayName`    | Basic or Canary deployment: `pcf.newAppName`<br/>Blue Green deployment: `pcf.inActiveAppName`     |
+| `host.pcfElement.instanceIndex`    |    |
+
+</details>
+
+<details>
+<summary>Terraform and Helm expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `terraform.clusterName` | `STEP_ID.output.OUTPUT_NAME`<br/>For example: `pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.clusterName` |
+| `terraformPlan.jsonFilePath()`<br/>`terraformPlan.destroy.jsonFilePath()`  | `execution.steps.TERRAFORM_PLAN_STEP_ID.plan.jsonFilePath`<br/>For example: `execution.steps.terraformPlan.plan.jsonFilePath`  |
+| `terraformApply.tfplanHumanReadable`<br/>`terraformDestroy.tfplanHumanReadable` | `execution.steps.TERRAFORM_PLAN_STEP_ID.plan.humanReadableFilePath`<br/>For example: `execution.steps.terraformPlan.plan.humanReadableFilePath`   |
+| `terraform.OUTPUT_NAME` | `pipeline.stages.STAGE_ID.spec.execution.steps.TerraformApply.output.OUTPUT_NAME`   |
+| `terraformApply.tfplan`   |   |
+| `terraformDestroy.tfplan` |   |
+| `terraformApply.add` |   |
+| `terraformApply.change` |   |
+| `terraformApply.destroy` |    |
+| `terraformDestroy.add` |     |
+| `terraformDestroy.change` |   |
+| `terraformDestroy.destroy` |    |
+| `infra.helm.releaseName.service.name-env.name-infra.helm.shortId`   | `pipeline.stages.STAGE_ID.spec.infrastructure.infrastructureDefinition.spec.output.releaseName`<br/>`pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[2].releaseName`  |
+| `helmChart.description`   | `service.description`   |
+| `helmChart.displayName`   | `pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.chartName`   |
+| `helmChart.name`       | `pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName`   |
+| `helmChart.version`     | `pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion`    |
+| `infra.helm.shortId`   | Not applicable in NextGen   |
+| `helmChart.metadata.basePath`    | Not applicable in NextGen |
+| `helmChart.metadata.bucketName`    | Not applicable in NextGen |
+| `helmChart.metadata.repositoryName`      | Not applicable in NextGen  |
+| `helmChart.metadata.url`    | Not applicable in NextGen  |
+
+:::note nested expressions
+
+The way you declare nested expressions has changed in NextGen.
+
+For example, these are nested FirstGen expressions: `secrets.getValue("terraform-aws-env_name-id")`.
+
+To achieve this same result in NextGen, you must declare each expression with separate expression delimiters and concatenate them together, such as:
+
+```
+<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>
+<+<secrets.getValue("test_secret")>.concat(<+pipeline.variables.envVar>)>
+```
+
+:::
+
+</details>
+
+<details>
+<summary>Workflow expressions</summary>
+
+| FirstGen | NextGen |
+| -------- | ------- |
+| `workflow.releaseNo`   | `stage.identifier`     |
+| `workflow.displayName`  | `stage.name`<br/>`pipeline.name`   |
+| `workflow.description`  | `stage.description`<br/>`pipeline.description`    |
+| `workflow.pipelineDeploymentUuid`   | `pipeline.executionId`<br/>`pipeline.sequenceId`   |
+| `workflow.startTs`  | `pipeline.startTs`   |
+| `workflow.variables.VAR_NAME`    | `pipeline.variables.VAR_NAME`<br/>`stage.variables.VAR_NAME`   |
+| `deploymentUrl`  | `pipeline.executionUrl` |
+| `deploymentTriggeredBy`  | `pipeline.triggeredBy.name`<br/>`pipeline.triggeredBy.email`      |
+| `currentStep.name`   | `step.name`   |
+| `timestampId`   | In FirstGen `${timestampId}` is the time when the constant is set on the target host.<br/>NextGen doesn't use setup variables, because Harness has an internal step that creates a temp dir for the execution.<br/>Harness creates a working directory in the Command Init unit on this `%USERPROFILE%` location. |
+| `context.published_name.var_name`  |   |
+| `workflow.pipelineResumeUuid`   | Not applicable in NextGen |
+| `workflow.lastGoodReleaseNo`    | Not applicable in NextGen     |
+| `workflow.lastGoodDeploymentDisplayName`     | Not applicable in NextGen    |
+| `regex.extract("v[0-9]+.[0-9]+", artifact.fileName)`   | Not applicable in NextGen     |
+| `currentStep.type`  | Not applicable in NextGen    |
+
+</details>
+
+For more information about migrating to NextGen, go to:
 
 - [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)

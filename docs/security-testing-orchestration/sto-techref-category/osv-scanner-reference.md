@@ -77,13 +77,13 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
-#### Target and variant detection
+#### Detect target and variant 
 
-Auto-detection is not available for ingestion scans.
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-When scanning code repositories, the step detects these values as follows:
-- To detect the target, the step runs `git config --get remote.origin.url`. 
-- To detect the variant, the step runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 

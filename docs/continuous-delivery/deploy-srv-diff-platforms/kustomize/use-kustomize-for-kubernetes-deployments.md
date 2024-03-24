@@ -6,6 +6,8 @@ helpdocs_topic_id: 98u2hvzj0t
 helpdocs_category_id: hpy9lyd9b3
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments-use-kustomize-for-kubernetes-deployments
 ---
 
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, patches, etc, just as you would in any native kustomization.

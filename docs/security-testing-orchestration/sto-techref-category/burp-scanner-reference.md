@@ -11,7 +11,7 @@ You can scan your application instances using [Burp Enterprise](https://portswig
 
 ### Root access requirements 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
@@ -81,13 +81,11 @@ import StoSettingScanTypeInst     from './shared/step_palette/target/type/_app.m
 <StoSettingScanTypeInst />
 
 
-<!-- #### Target and variant detection 
+#### Target and variant detection 
 
 import StoSettingScanTypeAutodetectApp from './shared/step_palette/target/auto-detect/_app-instance.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectApp/>
-<StoSettingScanTypeAutodetectNote/       -->
 
 
 #### Name 

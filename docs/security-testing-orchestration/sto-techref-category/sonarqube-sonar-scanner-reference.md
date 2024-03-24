@@ -22,6 +22,13 @@ helpdocs_is_published: true
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 * You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
+### Root access requirements 
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+
+<StoRootRequirements />
+
+
 ### For more information
 
 
@@ -79,29 +86,33 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 ### Target
 
-#### Type
 
+#### Type
 
 import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.md';
 
-
 <StoSettingScanTypeRepo />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
 
-<a name="target-variant"></a>
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
@@ -285,11 +296,12 @@ To implement a SonarQube pull-request scan, include the following arguments in [
     - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
     - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
     - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
-      
+
       If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
 
 <details>
 <summary>YAML configuration example</summary>
+
 ```yaml
               - step:
                   type: Sonarqube
@@ -304,8 +316,8 @@ To implement a SonarQube pull-request scan, include the following arguments in [
                       args:
                         cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
                     # ...
-
 ```
+
 </details>
 
 ## Troubleshoot Sonar Scans
@@ -316,15 +328,29 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 * Cause: If the [depth setting](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth) in your pipeline's codebase configuration is shallow, SonarQube can't generate a report. This is a [known SonarQube issue](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scm-integration/#known-issues).
 * Solution: Change the `depth` to `0`.
 
-### How to add the sonar.projectVersion in a Harness pipeline
+### Add the sonar.projectVersion to a Harness pipeline
 
 In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
 
+### SonarQube doesn't scan the main branch and pull request branches in the same pipeline
 
+:::info 
 
+Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1882) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
+
+- With this fix, the orchestration step always downloads results for the scanned branch or pull request.
+- Branch scans require no additional configuration.
+- To configure pull-request scans, go to [SonarQube pull-request scan configuration](#sonarqube-pull-request-scan-configuration).
+
+:::
+
+If SonarQube doesn't scan both the main branch and pull request (PR) branches within the same pipeline, it might indicate an issue with the pull request setup in SonarQube.
+
+One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
+
+This approach ensures proper configuration and execution of SonarQube scans for both main and PR branches within your pipeline.
 
 <!-- STO-7187 remove legacy configs for scanners with step palettes
-
 
 ## Security step settings for SonarQube scans in STO (legacy)
 
@@ -337,9 +363,7 @@ You can set up SonarQube scans using a Security step, but this is a legacy funct
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
-
 <StoDinDRequirements />
-
 
 #### Scan modes
 

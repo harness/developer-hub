@@ -10,7 +10,9 @@ import DeveloperCertificationExamDetails from "./data/ccm-certification-develope
 import AdminCertificationExamDetails from "./data/ccm-certification-admin-exam-details.md";
 import AdminCertificationReviewDetails from "./data/ccm-certification-admin-review-guide.md";
 import styles from "./styles.module.scss";
-
+import Tooltip from "rc-tooltip";
+import IltCard, { iltType } from "./IltCard";
+import { ilt } from "./data/iltData";
 const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_ccm_badge.svg`,
@@ -51,7 +53,20 @@ export default function CloudCostManagement() {
       setTab(searchKey);
     }
   }, [searchKey]);
-
+  const [showCerts, setShowCerts] = useState<boolean>(true);
+  useEffect(() => {
+    if (location.search === "?ilt") {
+      setShowCerts(false);
+    }
+  }, []);
+  const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
+    setShowCerts(true);
+  };
+  const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
+    setShowCerts(false);
+  };
   return (
     <div className={styles.certificationsCCM}>
       <div className={styles.hero}>
@@ -79,137 +94,164 @@ export default function CloudCostManagement() {
           ))}
         </div>
       </div>
+      <div className={styles.btns}>
+        <button
+          className={`${styles.certBtn} ${showCerts ? styles.active : ""}`}
+          onClick={handleCertficationClick}
+        >
+          {!showCerts ? (
+            <img src="/img/certification_icon_unactive.svg" />
+          ) : (
+            <img src="/img/certification_icon.svg" />
+          )}
+          Certifications
+        </button>
+
+        <button
+          onClick={handleInstLedTrainClick}
+          className={`${styles.InstLedTrainBtn} ${
+            !showCerts ? styles.active : ""
+          }`}
+        >
+          {showCerts ? (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          )}
+          Instructor-Led Training
+        </button>
+      </div>
 
       {/* Tab Content */}
-      <div className={styles.tabs}>
-        <h2>Certifications</h2>
-        <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal], index) => (
-            <div className={styles.listTabItems}>
-              <li
-                key={tabKey}
-                className={tab === tabKey ? styles.active : ""}
-                onClick={() => handleSwitchTab(tabKey)}
+      {showCerts && (
+        <div className={styles.tabs}>
+          <h2>Certifications</h2>
+          <ul className={styles.tabItems}>
+            {Object.entries(certType).map(([tabKey, tabVal], index) => (
+              <div className={styles.listTabItems}>
+                <li
+                  key={tabKey}
+                  className={tab === tabKey ? styles.active : ""}
+                  onClick={() => handleSwitchTab(tabKey)}
+                >
+                  For {tabVal}
+                </li>
+                {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+              </div>
+            ))}
+          </ul>
+          {/* Developer Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.developer && styles.active
+            )}
+          >
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.developer]
+                )}
               >
-                For {tabVal}
-              </li>
-              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
-            </div>
-          ))}
-        </ul>
-        {/* Developer Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.developer && styles.active
-          )}
-        >
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.developer]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>Cloud Cost Management - Developer</h2>
-                  <img
-                    src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
-                    alt="Harness Certified Expert - CCM Developer"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong>  Harness CCM Free/Team
-                    Plans
-                  </span>
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
                 </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assesses the fundamental skills to to detect and stop cloud cost anomalies as they occur.
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Cloud Cost Management - Developer</h2>
+                    <img
+                      src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
+                      alt="Harness Certified Expert - CCM Developer"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Harness CCM Free/Team
+                      Plans
+                    </span>
                   </div>
-                  <DeveloperCertificationReviewGuide />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/cloud-cost-management-developer">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
+                  <div className={styles.right}>
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assesses the fundamental skills to to detect and stop
+                      cloud cost anomalies as they occur.
+                    </div>
+                    <DeveloperCertificationReviewGuide />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/cloud-cost-management-developer">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
+                    </div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Developer Exam Details */}
+            <div className={styles.examDetails}>
+              <h2 id="exam-details">Exam Details</h2>
+              <div className={styles.examDetailsCard}>
+                <DeveloperCertificationExamDetails />
+                <div className={styles.btnContainer}>
+                  <Link href="https://university-registration.harness.io/cloud-cost-management-developer">
+                    <button className={styles.moreDetails}>
+                      Register for Exam
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Developer Exam Details */}
-          <div className={styles.examDetails}>
-            <h2 id="exam-details">Exam Details</h2>
-            <div className={styles.examDetailsCard}>
-              <DeveloperCertificationExamDetails />
-              <div className={styles.btnContainer}>
-                <Link href="https://university-registration.harness.io/cloud-cost-management-developer">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Administrator Tab Content */}
-        <div
-          className={clsx(
-            styles.tabContent,
-            certType[tab] === certType.administrator && styles.active
-          )}
-        >
-          <div className={styles.studyGuide}>
-            <h2 id="prepare">Prepare for the Exam</h2>
-            <div
-              className={clsx(
-                styles.studyGuideCard,
-                styles[certType.administrator]
-              )}
-            >
-              <div className={styles.info}>
-                <i className="fa-solid fa-circle-info"></i>
-                <strong>Get Certified</strong> | Harness Expert
-              </div>
-              <div className={styles.innerCard}>
-                <div className={styles.left}>
-                  <h2>
-                    Cloud Cost Management - Administrator
-                  </h2>
-                  <img
-                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
-                    alt="Harness Certified Expert - CCM Administrator"
-                    className={styles.badge}
-                  />
-                  <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CCM Enterprise
-                    Plan
-                  </span>
+          {/* Administrator Tab Content */}
+          <div
+            className={clsx(
+              styles.tabContent,
+              certType[tab] === certType.administrator && styles.active
+            )}
+          >
+            <div className={styles.studyGuide}>
+              <h2 id="prepare">Prepare for the Exam</h2>
+              <div
+                className={clsx(
+                  styles.studyGuideCard,
+                  styles[certType.administrator]
+                )}
+              >
+                <div className={styles.info}>
+                  <i className="fa-solid fa-circle-info"></i>
+                  <strong>Get Certified</strong> | Harness Expert
                 </div>
-                <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
-                  <div className={styles.desc}>
-                    Assess key technical job functions and advanced skills in
-                    design, implementation and management of CCM.
+                <div className={styles.innerCard}>
+                  <div className={styles.left}>
+                    <h2>Cloud Cost Management - Administrator</h2>
+                    <img
+                      src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                      alt="Harness Certified Expert - CCM Administrator"
+                      className={styles.badge}
+                    />
+                    <span className={styles.productVersion}>
+                      <strong>Product version: </strong> Harness CCM Enterprise
+                      Plan
+                    </span>
                   </div>
-                  <AdminCertificationReviewDetails />
-                  <div className={styles.btnContainer}>
-                    <Link href="https://university-registration.harness.io/cloud-cost-management-administrator">
-                      <button className={styles.moreDetails}>
-                        Register for Exam
-                      </button>
-                    </Link>
+                  <div className={styles.right}>
+                    <h3>Review Study Guide</h3>
+                    <div className={styles.desc}>
+                      Assess key technical job functions and advanced skills in
+                      design, implementation and management of CCM.
+                    </div>
+                    <AdminCertificationReviewDetails />
+                    <div className={styles.btnContainer}>
+                      <Link href="https://university-registration.harness.io/cloud-cost-management-administrator">
+                        <button className={styles.moreDetails}>
+                          Register for Exam
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -232,8 +274,6 @@ export default function CloudCostManagement() {
             </div>
           </div>
 
-
-
           {/* Architect Tab Content */}
           <div
             className={clsx(
@@ -255,14 +295,16 @@ export default function CloudCostManagement() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Cloud Cost Management - Architect (BETA COMING SOON)</h2>
+                    <h2>
+                      Cloud Cost Management - Architect (BETA COMING SOON)
+                    </h2>
                     <img
                       src={`${baseUrl}img/cert_arc_ccm_badge.svg`}
                       alt="Harness Certified Expert - CCM Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong>  Harness CCM Enterprise
+                      <strong>Product version: </strong> Harness CCM Enterprise
                       Plan
                     </span>
                   </div>
@@ -278,6 +320,27 @@ export default function CloudCostManagement() {
             </div>
           </div>
         </div>
-      </div >
-      );
+      )}
+      {!showCerts && (
+        <div className={styles.tabs}>
+          <h2>Instructor-Led Training</h2>
+          <p>
+          Intensive two-day course is designed for engineers looking to deepen their understanding and expertise.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+            {ilt
+                .filter((ilt) => ilt.module === "ccm")
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
+              {ilt.filter((ilt) => ilt.module === "ccm").length < 1 ? (
+                <p>ILT Coming Soon</p>
+              ) : null}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }

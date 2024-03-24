@@ -73,7 +73,7 @@ import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 :::info
 
-To use an AWS connector with IRSA in a CI stage, you must [configure your Kubernetes cluster build infrastructure to use the same service account name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings/#service-account-name) specified in your delegate YAML.
+To use an AWS connector with IRSA in a CI stage, you must [configure your Kubernetes cluster build infrastructure to use the same service account name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#service-account-name) specified in your delegate YAML.
 
 :::
 
@@ -93,7 +93,7 @@ Harness uses AWS connectors during pipeline runs to authenticate and perform ope
 
 :::tip
 
-The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 :::
 

@@ -183,6 +183,14 @@ You can also use matrix values as variable values. For example, this [Action ste
         token: <+secrets.getValue("github_token")>
 ```
 
+### Avoid hyphens and periods in matrix tag/dimension names
+
+Harness recommends avoiding hyphens and periods in matrix tag/dimension names, such as `matrixTag` instead of `matrix-tag`.
+
+However, if you need to reference a matrix dimension name that includes a period or hyphen/dash, you must wrap the tag in double quotes and use the `get()` method in the expression, such as `<+stage.matrix.get("python-version")>`.
+
+If a dimension with a hyphen/dash or period is not referenced correctly, the expression resolves as null and doesn't throw an error.
+
 ### Matrix expressions in multi-layer matrix strategies
 
 If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
@@ -247,7 +255,7 @@ By default, Harness uses indices for the matrix naming strategy (stages are name
 
 #### Use matrix axes as stage labels
 
-You can turn on a setting at the account, organization, or project level to use the names of the matrix indices as labels.
+You can set **Enable Matrix Labels by Name** at the account, organization, or project level. This setting uses the names of the matrix indices as labels.
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
    - To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
@@ -259,7 +267,7 @@ You can turn on a setting at the account, organization, or project level to use 
 
 #### Use a custom label for matrix stages
 
-You can use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example:
+You can use the `nodeName` key in your `matrix` YAML to define a matrix stage naming convention. Expressions are supported, so you can customize the name as required. For example:
 
 ```yaml
 matrix:
@@ -267,10 +275,11 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
-:::info note
-1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, the original stage name.
-2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the matrix.
-:::
+
+When you specify a `nodeName`, the original/parent stage name is prepended to the `nodeName`. Therefore, the final, resolved name of each stage is `OriginalStageName_nodeName`.
+
+If the resolved value of `nodeName` is the same for multiple stages, Harness automatically appends an index identifier to the name, such as `OriginalStageName_nodeName_0`, `OriginalStageName_nodeName_1`, and so on.
+
 ### Matrix examples and best practices
 
 - [Best Practices for Looping Strategies](./best-practices-for-looping-strategies.md)
@@ -449,7 +458,7 @@ The value of the expression depends on where both the expression and looping str
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
-### strategy.node.NODE_ID.currentStatus>
+### strategy.node.NODE_ID.currentStatus
 
 In stages/steps using matrix or repeat strategies, use either of the following two expressions to get the current status of the looping strategy for a specific stage or step, as defined by the `NODE_ID`: For example:
 
@@ -482,24 +491,30 @@ Because stages and steps can't have the same identifier, the index value of the 
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
 
-## Determine execution status of a stage with looping strategy
+## Execution status of stages with looping strategies
 
-The status of a stage with looping strategy is determined based on the status of execution of its child stages. The status calculation logic works based on priority of child stage execution statuses. 
+The status of a stage with looping strategy is based on the highest priority execution status among its child stages:
 
-Negative status takes precedence over positive status. 
+* Negative statuses takes precedence over positive status.
+* If _any one_ child stage has negative status, then the parent stage takes that negative status.
+* If _multiple_ child stages have negative statuses, the parent stage takes the negative status with the highest priority.
+* If _all_ child stages have a positive status, the parent stage takes the positive status with the highest priority.
 
-If any child stage has negative status, then the parent stage status is marked as negative. 
+Negative status are prioritized as follows, from highest to lowest:
 
-The negative statuses priority is as follows: ABORTED > FAILED > FREEZE_FAILED > APPROVAL_REJECTED > EXPIRED. For example, if a child stage is marked FAILED and another child stage is marked EXPIRED, then the parent pipeline status is marked FAILED because it takes precedence.
+1. Aborted
+2. Failed
+3. Freeze failed
+4. Approval rejected
+5. Expired
 
+Positive statuses are prioritized as follows, from highest to lowest:
 
+1. Ignore Failed
+2. Succeeded
 
-If all child stages are marked positive, the status of the parent stage is also marked positive. 
+Here are some examples of the looping strategy status logic:
 
-The positive statuses priority is as follows: IGNORE_FAILED > SUCCEEDED. For example, if a child stage is marked IGNORE_FAILED and another child stage is marked SUCCEEDED, then the parent pipeline status is marked as IGNORE_FAILED.
-
-If a child stage has negative status and another child stage has positive status, then the parent pipeline status is marked negative. 
-
-
-
-
+* If one child stage is `Failed` and another child stage is `Expired`, then the parent becomes `Failed` because `Failed` has higher priority than `Expired`.
+* If one child stage is `Ignore failed` and another child stage is `Succeeded`, then the parent becomes `Ignore failed` because `Ignore failed` has higher priority than `Succeeded`.
+* If one child stageis `Expired` and all other child stages  are `Succeeded`, then the parent becomes `Expired` because negative statuses take priority over positive statuses, even if only one child stage has a negative status.

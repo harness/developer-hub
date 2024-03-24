@@ -75,7 +75,7 @@ Below is an example AWS policy to execute the fault.
         <th> Notes </th>
       </tr>
       <tr>
-        <td> INSTANCE_TAG </td>
+        <td> EC2_INSTANCE_TAG </td>
         <td> Instance Tag to filter the target EC2 instance.</td>
         <td> Provided as <code>key:value</code> ex: <code>team:devops</code>. For more information, go to <a href="#target-single-instance"> instance tag.</a></td>
       </tr>
@@ -115,6 +115,11 @@ Below is an example AWS policy to execute the fault.
         <td> Defaults to <code>disable</code>. </td>
       </tr>
       <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance.</td>
         <td> Defaults to parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
@@ -132,7 +137,7 @@ If the target EC2 instance is a part of a self-managed nodegroup, ensure that yo
 
 ### Target single instance
 
-Random EC2 instance that is stopped. Tune it by using the `INSTANCE_TAG` tag and `REGION` region.
+Random EC2 instance that is stopped. Tune it by using the `EC2_INSTANCE_TAG` tag and `REGION` region.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -152,7 +157,7 @@ spec:
       components:
         env:
         # tag of the EC2 instance
-        - name: INSTANCE_TAG
+        - name: EC2_INSTANCE_TAG
           value: 'key:value'
         # region for the EC2 instance
         - name: REGION
@@ -161,7 +166,7 @@ spec:
 
 ### Target percent of instances
 
-Percentage of EC2 instancs to stop, based on the `INSTANCE_TAG` tag and `REGION` region. Tune it by using the `INSTANCE_AFFECTED_PERC` environment variable.
+Percentage of EC2 instances to stop, based on the `EC2_INSTANCE_TAG` tag and `REGION` region. Tune it by using the `INSTANCE_AFFECTED_PERC` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -184,7 +189,7 @@ spec:
         - name: INSTANCE_AFFECTED_PERC
           value: '100'
         # tag of the EC2 instance
-        - name: INSTANCE_TAG
+        - name: EC2_INSTANCE_TAG
           value: 'key:value'
         # region for the EC2 instance
         - name: REGION
