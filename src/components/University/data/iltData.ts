@@ -5,16 +5,6 @@ import { MODULES } from "../../../constants";
 
 export const ilt: IltCardItem[] = [
   {
-    title: "Pre Requirements",
-    module: MODULES.cd,
-    iltType: iltType.user,
-    description:
-      "Self-paced, prerequisite course to all module-specific ILT courses.",
-    version: "Enterprise Plan of any module",
-    link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
-    priority: 1,
-  },
-  {
     title: "Introduction to the Harness Platform",
     module: MODULES.platform,
     iltType: iltType.user,
@@ -34,5 +24,17 @@ export const ilt: IltCardItem[] = [
     version: "Harness CD & GitOps Enterprise Plan",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
     priority: 2,
+  },
+
+  {
+    title: "Pre Requirements",
+    module: MODULES.platform,
+    iltType: iltType.user,
+    description:
+      "Self-paced, prerequisite course to all module-specific ILT courses.",
+    version: "Enterprise Plan of any module",
+    link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
+    priority: 1,
+    isPreReq: true,
   },
 ];

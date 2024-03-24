@@ -405,14 +405,14 @@ export default function CertificationsCD() {
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => ilt.module === "cd")
+                .filter((ilt) => ilt.module === "cd" || ilt.isPreReq)
                 .sort((a, b) => a.priority - b.priority)
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {ilt.filter((ilt) => ilt.module === "cd").length < 1 ? (
+              {/* {ilt.filter((ilt) => ilt.module === "cd").length < 1 ? (
                 <p>ILT Coming Soon</p>
-              ) : null}
+              ) : null} */}
             </div>
           </div>
         </div>

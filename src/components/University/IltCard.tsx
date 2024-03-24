@@ -21,6 +21,7 @@ export type IltCardItem = {
   link?: string;
   thumb?: boolean;
   priority: number;
+  isPreReq?: boolean;
 };
 
 export default function IltCard({
