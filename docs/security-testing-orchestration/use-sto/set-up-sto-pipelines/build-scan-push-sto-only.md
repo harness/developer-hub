@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Create a build-scan-push pipeline (STO only)"
+title: "Build-scan-push pipeline (STO only)"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 70
 redirect_from:

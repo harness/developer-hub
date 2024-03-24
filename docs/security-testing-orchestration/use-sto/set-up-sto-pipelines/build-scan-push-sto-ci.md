@@ -1,6 +1,6 @@
 ---
-title: "Tutorial: Create a build-scan-push pipeline (STO and CI)"
-description: Launch pipeline builds and scans automatically based on GitLab merge requests.
+title: "Build-scan-push pipeline (STO and CI)"
+description: Build a pipeline the pushes a prod image only if there are no critical vulnerabilities.
 sidebar_position: 80
 redirect_from:
   - /tutorials/security-tests/build-scan-push-sto-ci
@@ -19,13 +19,13 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-In this tutorial, you'll create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two popular open-source tools:
+This topic describes how to create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two popular open-source tools:
 
 - [Bandit](https://bandit.readthedocs.io/en/latest), for scanning Python repositories.
 
 - [Aqua Trivy](https://www.aquasec.com/products/trivy/), for scanning container images.
 
-You can copy/paste the [YAML pipeline example below](#yaml-pipeline-example) into Harness and update it with your own infrastructure, connectors, and access tokens.
+To create this pipeline quickly using a YAML template, go to [Tutorial: Create a build-scan-push pipeline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-tutorial).
 
 The following steps describe the workflow:
 
@@ -41,7 +41,7 @@ The following steps describe the workflow:
 
 :::info Prerequisites
 
-- This tutorial has the following prerequisites:
+- This procedure has the following prerequisites:
 
   - Harness STO and CI module licenses.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
@@ -50,7 +50,7 @@ The following steps describe the workflow:
 
     - A GitHub account and access token.
     - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`).
-    - This tutorial uses the [dvpwa repository](https://github.com/GitHubGoneMad/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
+    - This procedure uses the [dvpwa repository](https://github.com/GitHubGoneMad/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
   - Docker requirements:
     - A Docker Hub account and access token.
     - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image.
@@ -60,7 +60,7 @@ The following steps describe the workflow:
 
 ## Set up your codebase
 
-This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan a Python repository specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
+This procedure uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan a Python repository specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
 
 1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/GitHubGoneMad/dvpwa.
 
@@ -70,7 +70,7 @@ This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a>
    2. Select **New Connector**, then select **Code Repositories** > **GitHub**.
    3. Set the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) as appropriate.
       - Use **Account** for the [URL type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#url-type).
-      - This tutorial uses [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) for its build infrastructure, so select **Connect through Harness Platform** when prompted for the connectivity mode.
+      - This procedure uses [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) for its build infrastructure, so select **Connect through Harness Platform** when prompted for the connectivity mode.
 
 ## Set up your pipeline
 
@@ -150,7 +150,7 @@ import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-
 
 :::info
 
-In most cases, you want to set the [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can keep **Fail on Severity** set to **None** and then set it after you finish setting up and testing your pipeline.
+In most cases, you want to set the [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) when you add a scan step to your pipeline. In this procedure, you're setting the first of two scan steps. In this case, you can keep **Fail on Severity** set to **None** and then set it after you finish setting up and testing your pipeline.
 
 :::
 
@@ -174,7 +174,7 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
 
 :::info
 
-In most cases, you want to set the [fail_on_severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can leave `fail_on_severity` at `none` and set it after your set up and test your pipeline.
+In most cases, you want to set the [fail_on_severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) when you add a scan step to your pipeline. In this procedure, you're setting the first of two scan steps. In this case, you can leave `fail_on_severity` at `none` and set it after your set up and test your pipeline.
 
 :::
 
@@ -481,7 +481,7 @@ Now you have a complete build-scan-push pipeline with steps to scan the code rep
 
 ## YAML pipeline example
 
-Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+Here's an example of the pipeline described in this procedure. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
 
 ```yaml
 
