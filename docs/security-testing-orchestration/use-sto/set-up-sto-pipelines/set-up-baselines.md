@@ -70,7 +70,7 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
   - When the release is ready to publish, merge the various branches into `1.2.4`. 
   - Publish the release, merge `1.2.4` into `main`, create a new release branch such as `1.2.5`, and repeat the cycle.
 
-  Given this cadence, `1.2.4` more accurately reflects the baseline for the current sprint than `main`. Given a matching RegEx, the first scan after creating the branch establishes `1.2.4` as the current baseline. This remains the current baseline until `1.2.4` gets merged into `main` and `1.2.5` gets created and scanned.
+  To support proper functioning of STO with this workflow, `1.2.4` more accurately reflects the baseline for the current sprint than `main`. Given a matching RegEx, the first scan after creating the branch establishes `1.2.4` as the current baseline. This remains the current baseline until `1.2.4` gets merged into `main` and `1.2.5` gets created and scanned.
 
 * RegEx baselines make it easier to track the introduction and remediation of specific vulnerabilities. The lifecycle of a specific vulnerability might run like this:
 
