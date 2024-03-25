@@ -6399,3 +6399,59 @@ To integrate a new version of the Helm binary with the delegate:
    Replace `/path/to/new/helm/binary` with the actual path to the newly installed Helm binary.
 
 3. Restart the delegate to apply the changes.
+
+#### Which entities such as service or environment are factors that determine the metrics displayed in Deployment Dashboard?
+
+In our setup, two Looker dashboard models are specifically designed to showcase data solely from pipeline executions with a CD stage. The data aggregation and presentation within these views adapt dynamically based on the chosen attributes for display on the dashboard
+Please read more on Looker/Dashboard Behaviour in the following [Doumentation](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/cost-categories-usage/#behaviour)
+
+#### Is `Custom Stage` considered as Continuous Delivery stage? Is execution of a pipeline without any Service entity considered towards Total deployments?
+
+Yes, we consider Custom stage as part of CD stage as of now to update the dashboards, and a deployments without Service is not possible for CD Stage hence it would not be considered towards total deployments
+Please read more on custom stages in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage)
+
+#### What is the correct expression to reference artifact version in rollback phase?
+
+One can use the expression `rollbackArtifact.version` . This is a change from FirstGen to NextGen where rollback artifact version was getting automatically resolved
+Please find an example usecase on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
+
+#### Does Harness allow license key, and how is it used?
+
+Harness refer API keys instead of license keys to enter in product.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/)
+
+#### Does Harness provide control over Abort Pipeline to users exclusively?
+
+Yes, Harness provides control over abort pipelines as feature behind FF: `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. This feature allows control abort operation that kills the pipeline/stage without any cleanup
+This consists pre-requisite FF: `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` enabled required for this feature in use, if this is not done, one may wind up with users who could abort the pipeline earlier and now cannot.
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline/)
+
+#### Can we add Pipeline Chain Stage inside a Pipeline Template ?
+
+No, we do not allow users to add Chained Pipeline stage inside templates
+Please read more on Chained Pipeline in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)
+
+#### Is there a way to see which user acts on the wait step to mark it as a success or mark it as fail?
+
+One can look at having Harness approval step in addition to wait step for this usecase, also can set a failure strategy in case it timeout
+Please read more on Harness approval step in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#add-approval-step)
+
+#### How to efficiently extract specific tag values from JSON output, like querying an AWS ECR Repo via the AWS CLI, using the json.select feature with shell script variables or outputs?
+
+The output variable cannot be used in the same step its created.
+The output variables can be used within:
+- the stage
+- inside the pipeline
+- inside a step group
+
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/)
+
+#### What is the closest expression for parity from Current Gen to Next Gen?
+
+One can use the expression `<+exportedVariables.getValue()>` for similar usecase in Next Gen
+Please read more on this in the following [Doumentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#scoping-output-variables-using-aliases)
+
+#### How can we refer to the current pipeline execution Url?
+
+Yes, Harness provides the expression `<+pipeline.executionUrl>` to fetch the current variable pipeline execution Url
+Please read more on pipeline expressions in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineexecutionurl)
