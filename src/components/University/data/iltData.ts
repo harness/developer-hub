@@ -12,7 +12,8 @@ export const ilt: IltCardItem[] = [
       "Self-paced, prerequisite course to all module-specific ILT courses.",
     version: "Enterprise Plan of any module",
     link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
-    priority: 2,
+    priority: 1,
+    isPreReq: true,
   },
 
   {
@@ -24,17 +25,5 @@ export const ilt: IltCardItem[] = [
     version: "Harness CD & GitOps Enterprise Plan",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
     priority: 2,
-  },
-
-  {
-    title: "Pre Requirements",
-    module: MODULES.platform,
-    iltType: iltType.user,
-    description:
-      "Self-paced, prerequisite course to all module-specific ILT courses.",
-    version: "Enterprise Plan of any module",
-    link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
-    priority: 1,
-    isPreReq: true,
   },
 ];
