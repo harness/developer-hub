@@ -105,6 +105,42 @@ gsutil -m cp \
 
 ### New features and enhancements
 
+#### Self-Managed Enterprise Edition
+
+- You can now configure `nginx-ingress-controller` arguments through overrides. (PL-46366, ZD-55035)
+
+   ```yaml
+   nginx:
+     controller:
+       watchNamespace: ""
+       updateStatus: true
+       httpPort: 8080
+       httpsPort: 8443
+       watchIngressWithoutClass: true
+       defaultSSLCertificate: ""
+       configMap: ""
+       defaultBackendService: ""
+       publishService: ""
+       electionId: ""
+       controllerClass: ""
+   ```
+
+   To add extra arguments:
+
+   ```yaml
+   nginx:
+     controller:
+       extraCommandArgs:
+         - --argument=example-argument
+   ```
+
+   The following creates a `clusterRole` and `clusterRoleBindings` by setting:
+
+   ```yaml
+   nginx:
+     clusterRole:
+       create: true
+   ```
 #### Continuous Delivery
 
 - We enhanced the resolution of the working directory. Now you can determine the working directory based on environment variables. This includes variables provided in shell script steps through input variables, as well as those from the host's environment variables. (CDS-87446)
