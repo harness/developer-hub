@@ -6,6 +6,8 @@ sidebar_position: 7
 
 You can customize the behavior of the nginx ingress controller using overrides. This topic explains how to use overrides to configure the ingress controller.
 
+For more information, go to [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) in the Kubernetes documentation.
+
 ## Configure ingress controller arguments
 
 You can configure `nginx-ingress-controller` arguments using the following overrides.
