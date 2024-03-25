@@ -32,4 +32,11 @@ Follow these steps to enable PR automation:
    ![Resources](./static/trigger.png)
 
    You will see the plan as a comment in the PR
+   
    ![Resources](./static/pr-comment.png)
+
+
+:::info
+
+`OPA` is the embedded policy engine for the Harness platform. read more about it [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
+:::
