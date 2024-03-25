@@ -7,7 +7,10 @@ description: This topic describes how to optimize cloud costs using asset govern
 
 ## Recommendations
 
-Recommendations help kickstart your journey with Governance. Essentially, we run certain policies behind the scenes to generate recommendations for your governance enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On Governance Overview page, we showcase recommendations which will benefit you to save costs on associated resources. You can click on any recommendation to view its details. Listed below are the custodian policies used to generate recommendations which we offer for Azure. Along with each policy you can also find their respective, descriptions, logic behind savings computation and also the permissions required to generate or apply these Recommendations.
+Recommendations help kickstart your journey with governance. Essentially, we run certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, we showcase recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
+
+Listed below are the custodian policies which are used to generate recommendations that we offer for Azure. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
+
 
 **1. Recommendation: delete-low-utilised-cosmodb**  
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
@@ -30,6 +33,7 @@ policies:
       - type: delete    
 ```
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -51,8 +55,11 @@ policies:
     actions:
       - type: delete
 ```
+
 **Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
+
 ---
 
 **3. Recommendation: delete-low-utilised-load-balancers**  
@@ -75,7 +82,9 @@ policies:
     actions:
       - type: delete      
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days. 
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -97,7 +106,9 @@ policies:
     actions:
         - type: delete
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -122,7 +133,9 @@ policies:
     actions:
       - type: stop
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -147,7 +160,9 @@ policies:
     actions:
       - type: delete
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -173,8 +188,10 @@ policies:
     actions:
       - type: delete
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-**Permissions Required:**To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
+
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
 
@@ -195,7 +212,9 @@ policies:
     actions:
       - type: delete
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -227,7 +246,9 @@ policies:
     actions:
       - type: delete
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ---
@@ -251,10 +272,13 @@ policies:
     actions:
       - type: delete
 ```
+
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
 ## Custom Policies
+
 1. Find SQL Databases with a monthly long term backup retention period more than one year
 ```
 policies:
