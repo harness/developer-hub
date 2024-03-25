@@ -1,136 +1,176 @@
 ---
 title: Tutorial - End-to-end MLOps CI/CD pipeline with Harness and AWS
-description: Build and deploy an ML model using Harness platform and AWS
+description: Build and deploy an ML model using Harness and AWS.
 sidebar_position: 3
 ---
 
-MLOps tackles the complexities of building, testing, deploying, and monitoring machine learning models in real-world environments. 
+MLOps tackles the complexities of building, testing, deploying, and monitoring machine learning models in real-world environments.
 
-Integrating machine learning into traditional software development lifecycles poses unique challenges due to the intricacies of data, model versioning, scalability, and ongoing monitoring. 
+Integrating machine learning into the traditional software development lifecycle poses unique challenges due to the intricacies of data, model versioning, scalability, and ongoing monitoring.
 
-In this tutorial, you will learn how to build and push an ML model to AWS ECR, run security scans and tests, and then deploy the model to AWS Lambda. You'll also add policy enforcement and monitoring for the model. 
+In this tutorial, you'll create an end-to-end MLOps CI/CD pipeline that will:
 
-## The Story
+* Build and push an ML model to AWS ECR.
+* Run security scans and tests.
+* Deploy the model to AWS Lambda.
+* Add policy enforcement and monitoring for the model.
 
-**Harness Bank** is a fictional bank that recently launched a website where clients can apply for a credit card. Based on the information provided in the form, their application either gets approved or denied in seconds. What powers this online credit card application is a machine learning (ML) model that is trained on data so that the decision is accurate and free of any bias. Right now, the process to update the ML model is manual. A data scientist builds a new image locally, runs tests, and manually ensures that the model passes the required threshold for accuracy and fairness. Your task is to automate this process and increase the velocity for build and delivery.
+## The story
 
-## Design and Architecture
+This tutorial uses a fictional bank called _Harness Bank_. Assume that this fictional bank recently launched a website where clients can apply for a credit card. Based on the information provided in the form, the customer's application is approved or denied in seconds. This online credit card application is powered by a machine learning (ML) model trained on data that makes the decision accurate and unbiased.
 
-Before diving into the implementation, let's take a high-level view of the architecture.
+Assume that the current process to update this hypothetical ML model is manual. A data scientist builds a new image locally, runs tests, and manually ensures that the model passes the required threshold for accuracy and fairness.
+
+In this tutorial, you'll automate the model maintenance process and increase the build and delivery velocity.
+
+### Design and architecture
+
+Before diving into the implementation, review the MLOps architecture.
 
 ![ML Model Architecture](static/architecture.png)
 
-You are given a Python data science project and are requested to do the following:
+Assume you are given a Python data science project, and you are requested to do the following:
 
-- Build and push an image for this project
-- Run security scans on the container image
-- Upload model visualization data to S3
-- Publish model visualization data within the pipeline
-- Run test on the model to find out accuracy and fairness scores
-- Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model
-- Deploy the model 
-- Monitor the model and ensure the model is not outdated
-- Trigger the pipeline based on certain git events
-- (Optional) Add approval gates for production deployment
+- Build and push an image for this project.
+- Run security scans on the container image.
+- Upload model visualization data to S3.
+- Publish model visualization data within the pipeline.
+- Run test on the model to find out accuracy and fairness scores.
+- Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model.
+- Deploy the model.
+- Monitor the model and ensure the model is not outdated.
+- Trigger the pipeline based on certain git events.
+- (Optional) Add approval gates for production deployment.
 
 For this tutorial, assume that the data is already processed.
 
 ## Prerequisites
 
-- A Harness account. If you don't have one, [please sign up](https://app.harness.io/auth/#/signup/?&utm_campaign=cicd-devrel).
-- Fork [MLops sample app](https://github.com/harness-community/mlops-creditcard-approval-model) repository
-- An AWS account with sufficient permissions to create/modify/view resources used in this tutorial.
-- This tutorial uses two sets of AWS credentials - one for [AWS connector](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector/) and another one is for the [AWS ECR scanner for STO](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference/). If this is a personal, non-production AWS account used for demo purposes, you can initially grant admin-level access for these credentials. Once the demo works, reduce access to adhere to the principle of least privilege.
+This tutorial requires:
 
-## Setup and configuration
+* A Harness account. If you are new to Harness, [you can sign up for free](https://app.harness.io/auth/#/signup/?&utm_campaign=cicd-devrel).
+* [An AWS account, credentials, and a Harness AWS connector.](#prepare-aws)
+* [A GitHub account, credentials, and a Harness GitHub connector.](#prepare-github)
 
-### AWS access and resources
+### Prepare AWS
 
-The AWS credentials for AWS connector is generated using AWS Vault plugin. AWS Access Key ID, AWS Secret Access Key, and AWS Session Token are generated from AWS console which are valid for a shorter time. Once you generate these two sets of AWS credentials, save them securely. Also make a note of your AWS account ID and AWS region.
+You need an AWS account with sufficient permissions to create/modify/view resources used in this tutorial.
 
-From your AWS console, navigate to Elastic Container Registry (ECR) and create two private repositories - `ccapproval` and `ccapproval-deploy`. Make sure that **Scan on Push** is enabled for both repositories under the **Image scan settings**.
+1. Prepare AWS credentials.
 
-Next, navigate to S3 and create a bucket. For example, `mlopswebapp`. Use this bucket to host a static website for the credit card approval application, along with a few other artifacts. To proceed, ensure that all checkboxes under **Block public access (bucket settings)** are unchecked and apply the following bucket policy:
+   This tutorial requires two sets of AWS credentials. One set is for a [Harness AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector), and the other is for the [AWS ECR scanner for STO](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference).
 
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": "*",
-            "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::YOUR_S3_BUCKET_NAME/*"
-        }
-    ]
-}
-```
+   You can use an AWS Vault plugin to generate AWS credentials for the AWS connector, and you can use the AWS console to generate the AWS Access Key ID, AWS Secret Access Key, and AWS Session Token, which are valid for a shorter time.
 
-After making the bucket public, you will see something similar to this:
+   **Save these credentials securely and make a note of your AWS account ID and AWS region.**
 
-![S3 bucket is public](static/s3bucketpublic.png)
+   :::tip
 
-Next, go to **AWS Lambda --> Functions** from your AWS console and create a function from a container image. Use the following configuration:
+   If you are using a personal, non-production AWS account for this tutorial, you can initially grant admin access for these credentials. Once the demo works, reduce access to adhere to the principle of least privilege.
 
-Name: `creditcardapplicationlambda`
-Container image URI: Click **Browse images** and find the `ccapproval-deploy` image. You can choose any image tag.
-Architecture: `x86_64`
-From Advanced: *Enable function URL* (this will make the function URL public. Anyone with the URL can access your function.) Learn more about Lambda function URLs from [AWS docs](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html).
+   :::
 
-Click **Create function**. Once the function is created, you can notice this tooltip confirming that the function URL is public.
+2. Create ECR repos. From your AWS console, navigate to Elastic Container Registry (ECR) and create two private repositories named `ccapproval` and `ccapproval-deploy`. Under **Image scan settings**, enable **Scan on Push** for both repositories.
 
-![Lambda Function URL](static/lambda-function-url.png)
+3. Create an S3 bucket. Navigate to S3 and create a bucket named something like `mlopswebapp`. You'll use this bucket to host a static website for the credit card approval application demo, along with a few other artifacts.
 
-### GitHub PAT
+   Make sure all options under **Block public access (bucket settings)** are unchecked, and then apply the following bucket policy:
 
-Create a [GitHub PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) that has the following permissions on your forked repository:
+   ```
+   {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Effect": "Allow",
+               "Principal": "*",
+               "Action": "s3:GetObject",
+               "Resource": "arn:aws:s3:::YOUR_S3_BUCKET_NAME/*"
+           }
+       ]
+   }
+   ```
 
-- repo/content: read+write
-- repo/pull requests: read
-- repo/webhooks: read+write
+   After making the bucket public, your bucket page should show a `Publicly accessible` flag.
+
+   ![S3 bucket is public](static/s3bucketpublic.png)
+
+4. From your AWS console, go to **AWS Lambda**, select **Functions**, and create a function from a container image using the following configuration:
+
+   * Name: `creditcardapplicationlambda`
+   * Container image URI: Select **Browse images** and find the `ccapproval-deploy` image. You can choose any image tag.
+   * Architecture: `x86_64`
+   * From Advanced: Select **Enable function URL** to make the function URL public. Anyone with the URL can access your function. For more information, go to the [AWS documentation on Lambda function URLs](https://docs.aws.amazon.com/lambda/latest/dg/lambda-urls.html).
+
+5. Select **Create function** to create the function. You'll notice an info banner confirming that the function URL is public.
+
+   ![Lambda Function URL](static/lambda-function-url.png)
+
+### Prepare GitHub
+
+This tutorial uses a GitHub account for source control management.
+
+1. Fork the [MLops sample app repository](https://github.com/harness-community/mlops-creditcard-approval-model) into your GitHub account.
+2. Create a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) with following permissions on your forked repository:
+
+   - repo/content: read+write
+   - repo/pull requests: read
+   - repo/webhooks: read+write
 
 ### Create Harness secrets
 
-From **Project Setup --> Secrets**, click **+ New Secret --> Text** and add the following secrets:
+Store your GitHub and AWS credentials as secrets in Harness.
 
-- `git_pat` (GitHub personal access token you already created)
-- `aws_access_key_id` (generated from AWS console)
-- `aws_secret_access_key` (generated from AWS console)
-- `aws_session_token` (generated from AWS console)
-- `aws_vault_secret` (secret access key generated by Vault)
+1. In your Harness account, create or select a [project](/docs/platform/organizations-and-projects/projects-and-organizations) to use for this tutorial.
+2. In your project settings, select **Secrets**, select **New Secret**, and then select **Text**.
+3. Create the following [Harness text secrets](/docs/platform/secrets/add-use-text-secrets):
 
-Make sure these secret name and id are the same since you'll refer to them in the pipeline blueprint provided at the end of this tutorial.
+   - `git_pat` - GitHub personal access token
+   - `aws_access_key_id` - Generated from AWS console
+   - `aws_secret_access_key` - Generated from AWS console
+   - `aws_session_token` - Generated from AWS console
+   - `aws_vault_secret` - Secret access key generated by Vault plugin
+
+   Make sure the **Name** and **ID** match for each secret, because you reference secrets by their IDs in Harness pipelines.
 
 ### Create AWS and GitHub connectors
 
-From **Project Setup --> Connectors**, click **+ New Connector --> AWS** and use the following to create the connector:
+Create Harness connectors to connect to your AWS and GitHub accounts.
 
-- name: `mlopsawsconnector`
-- Access Key: AWS Vault plugin generated 
-- Secret Key: Use `aws_vault_secret` secret
-- Connectivity Mode: Connect through Harness Platform
+1. In your Harness project settings, go to **Connectors**.
+2. Select **New Connector**, select the **AWS** connector, and then create an [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) with the following configuration:
 
-Leave all other settings as is. The connectivity status should show **Success**.
+   - Name: `mlopsawsconnector`
+   - Access Key: AWS Vault plugin generated
+   - Secret Key: Use  your `aws_vault_secret` secret
+   - Connectivity Mode: Connect through Harness Platform
 
-![Connector connectivity status](static/connector-connectivity-status.png)
+   Leave all other settings as is, and make sure the connection test passes.
 
-Next, from **Project Setup --> Connectors**, click **+ New Connector --> GitHub** and use the following to create the connector:
+   ![Connector connectivity status](static/connector-connectivity-status.png)
 
-- name: `mlopsgithubconnector`
-- URL Type: `Repository`
-- Connection Type: `HTTP`
-- GitHub Repository URL: `https://github.com/YOUR_GITHUB_USERNAME/mlops-creditcard-approval-model` (this is the forked version)
-- Username: Your GitHub username
-- Personal Access Token: Use `git_pat` secret
-- Connectivity Mode: Connect through Harness Platform
+3. Create another connector. This time, select the [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) and and use the following configuration:
 
-### Create the pipeline
+   - Name: `mlopsgithubconnector`
+   - URL Type: `Repository`
+   - Connection Type: `HTTP`
+   - GitHub Repository URL: Enter the URL to your fork of the demo repo, such as `https://github.com/:gitHubUsername/mlops-creditcard-approval-model`
+   - Username: Enter your GitHub username
+   - Personal Access Token: Use your `git_pat` secret
+   - Connectivity Mode: Connect through Harness Platform
+
+## Create a Harness pipeline
 
 From **Project --> Pipelines**, click **+ Create a Pipeline**, and name this pipeline `Credit Card Approval MLops`. Then, click **Start**.
 
 In Harness, a pipeline can have one or more stages, and each stage can have one or more steps. Let's add the first stage to build and push the data science image. Choose **Build** for stage type and name this stage `Train Model`, ensure that **Clone Codebase** is enabled, and select the `mlopsgithubconnector` from **Third-party Git provider --> Connector**. The repository name should be automatically populated. Click **Set Up Stage**.
 
 In the following sections, you'll configure this stage and add more stages to the pipeline to meet the requirements outlined earlier.
+
+:::tip
+
+You can find a [reference pipeline for this tutorial in the demo repo](https://github.com/harness-community/mlops-creditcard-approval-model/blob/main/sample-mlops-pipeline.yaml). If you use this pipeline, you must replace the placeholder and sample values accordingly.
+
+:::
 
 ## Build an image, push to ECR, run security scan
 
@@ -676,32 +716,26 @@ Click **Apply Changes** and click **Save** to save the pipeline.
 
 Next time you run the pipeline, someone from the project will need to approve the promotion of artifact to the production environment.
 
-## The ML model powering the web application
+## Conclusion
 
-The following is a simple web application developed using plain HTML/CSS/JS. The decision for credit card application approval uses the response from the public AWS Lambda function URL invokation. 
+Congratulations! Here's what you've accomplished in this tutorial:
+
+- [x] Build and push an image for this project.
+- [x] Run security scans on the container image.
+- [x] Upload model visualization data to S3.
+- [x] Publish model visualization data within the pipeline.
+- [x] Run test on the model to find out accuracy and fairness scores.
+- [x] Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model.
+- [x] Deploy the model.
+- [x] Monitor the model and ensure the model is not outdated.
+- [x] Trigger the pipeline based on certain git events.
+- [x] (Optional) Add approval gates for production deployment.
+
+The following animation demonstrates a simple web application developed using plain HTML/CSS/JS. The outcome of the credit card application uses the response from the public AWS Lambda function URL invocation.
 
 ![Credit Card Application Demo App](static/creditcardapprovalapp.gif)
 
-## Reference pipeline
-
-Find a reference pipeline for this tutorial [here](https://github.com/harness-community/mlops-creditcard-approval-model/blob/main/sample-mlops-pipeline.yaml). Make sure to replace all placeholder and sample values if you reuse this pipeline.
-
-## Next steps
-
-Congratulations! The following checklist will provide you with an overview of what you have accomplished:
-
-- [x] Build and push an image for this project
-- [x] Run security scans on the container image
-- [x] Upload model visualization data to S3
-- [x] Publish model visualization data within the pipeline
-- [x] Run test on the model to find out accuracy and fairness scores
-- [x] Based on those scores, use Open Policy Agent (OPA) policies to either approve or deny the model
-- [x] Deploy the model 
-- [x] Monitor the model and ensure the model is not outdated
-- [x] Trigger the pipeline based on certain git events
-- [x] (Optional) Add approval gates for production deployment
-
-Now that you've built an MLOps pipeline on Harness and used the Harness platform to train the model, check out the following guides on how you can integrate other popular ML tools and platforms into your Harness CI/CD pipeline:
+Now that you've built an MLOps pipeline on Harness and used the Harness platform to train the model, check out the following guides to learn how you can integrate other popular ML tools and platforms into your Harness CI/CD pipelines:
 
 - [AWS SageMaker](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-sagemaker)
 - [Databricks](https://developer.harness.io/docs/continuous-integration/development-guides/mlops/mlops-databricks)
