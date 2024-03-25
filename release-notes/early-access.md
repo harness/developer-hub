@@ -393,7 +393,7 @@ No information available. -->
 Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually.
 
 
-### Open Source Vulnerabilities (OSV) scanner integration
+#### Open Source Vulnerabilities (OSV) scanner integration
 
 * **GA date:** March 2024
 * **Early access release date:** February 2024
