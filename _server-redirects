@@ -53,6 +53,7 @@
 /certifications /university
 
 # Added by aimurphy in Mar 2024 for get started unification
-/docs/get-started /docs/category/get-started-with-platform
+/docs/get-started /docs/category/get-started-with-harness
+/docs/category/get-started-with-platform /docs/category/get-started-with-harness
 
 # Redirects generated from Front Matter [sytem generated goes below here]:
