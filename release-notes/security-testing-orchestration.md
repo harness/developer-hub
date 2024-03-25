@@ -27,6 +27,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- 2024-03-20 -->
 
+### Product update 2024-03-25
+
+The following features are no longer behind a feature flag:
+
+- Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
+- [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
+
 ### Version 1.88.2
 
 #### Early access feature: built-in scanners

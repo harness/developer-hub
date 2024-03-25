@@ -199,15 +199,7 @@ The following early access (beta) features are available for the Harness Securit
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. 
-
-### Auto-detect option for targets and variants
-
-* **Release date:** March 2024
-* **Issue number:** STO-6704
-* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. 
+ 
 
 ### Default regular expressions for target baselines
 
@@ -228,14 +220,6 @@ You can specify default baselines for specific target types: code repositories, 
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
-### Open Source Vulnerabilities (OSV) scanner integration
-
-* **Release date:** February 2024
-* **Issue number:** STO-6767
-* **Feature flag:** `STO_STEP_PALETTE_OSV`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
 
 ### STO Jira integration
 
@@ -399,7 +383,16 @@ No information available. -->
 
 ### STO features promoted to GA
 
-<!--
+#### Auto-detect option for targets and variants
+
+* **Release date:** March 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** 1.85.0
+* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually.
+
+
 ### Open Source Vulnerabilities (OSV) scanner integration
 
 * **GA date:** March 2024
@@ -409,7 +402,6 @@ No information available. -->
 
 You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
 
--->
 
 #### Anchore Enterprise integration
 
