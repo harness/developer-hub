@@ -143,7 +143,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        connectorRef: YOUR_GITHUB_CONNECTOR
         repoName: <+input>
         build: <+input>
   stages:
@@ -181,10 +181,10 @@ pipeline:
                   name: build_push_test_image
                   identifier: build_push_test_image
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+                    connectorRef: YOUR_DOCKERHUB_CONNECTOR
+                    repo: <+stage.variables.DOCKERHUB_REPO>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
-                      - <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>-scantest-DONOTUSE
+                      - scantest-DONOTUSE-<+pipeline.sequenceId>
               - step:
                   type: AquaTrivy
                   name: scan_test_image
@@ -193,19 +193,18 @@ pipeline:
                     mode: orchestration
                     config: default
                     target:
-                      name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+                      name: <+stage.variables.DOCKERHUB_REPO>/<+stage.variables.DOCKER_IMAGE_LABEL>
                       type: container
-                      variant: <+stage.variables.DOCKER_IMAGE_TAG><+pipeline.sequenceId>
+                      variant: scantest-DONOTUSE-<+pipeline.sequenceId>
                     advanced:
                       log:
                         level: info
                     privileged: true
                     image:
                       type: docker_v2
-                      name: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+                      name: <+stage.variables.DOCKERHUB_REPO>/<+stage.variables.DOCKER_IMAGE_LABEL>
                       domain: docker.io
-                      access_token: <+secrets.getValue("YOUR_IMAGE_REGISTRY_ACCESS_TOKEN")
-                      tag: <+pipeline.sequenceId>-scantest-DONOTUSE
+                      tag: scantest-DONOTUSE-<+pipeline.sequenceId>
                     sbom:
                       format: spdx-json
               - step:
@@ -213,8 +212,8 @@ pipeline:
                   name: build_push_prod_image
                   identifier: build_push_prod_image
                   spec:
-                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR
-                    repo: <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>
+                    connectorRef: YOUR_DOCKERHUB_CONNECTOR
+                    repo: <+stage.variables.DOCKERHUB_REPO>/<+stage.variables.DOCKER_IMAGE_LABEL>
                     tags:
                       - <+stage.variables.DOCKER_IMAGE_TAG>
         timeout: 30m
@@ -244,5 +243,6 @@ pipeline:
             description: ""
             required: true
             value: <+input>
+
 
 ```
