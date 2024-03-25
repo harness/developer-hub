@@ -47,14 +47,23 @@ For a full step-by-step description of how to create this pipeline manually, go 
   - GitHub requirements:
     - A GitHub account and access token.
     - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`).
+    - Your connector should have the Connectivity Mode set to **Harness Platform**.  
     - This tutorial uses the [dvpwa repository](https://github.com/GitHubGoneMad/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
   - Docker requirements:
     - A Docker Hub account and access token.
     - A [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) is required to push the image.
+     - Your connector should have the Connectivity Mode set to **Harness Platform**. 
   - Your GitHub and Docker Hub access tokens must be stored as [Harness secrets](/docs/platform/secrets/add-use-text-secrets).
 
 :::
 
+## Before you begin
+
+1. Verify that your GitHub and Docker Hub connectors have the Connectivity Mode set to **Harness Platform**.
+
+2. Fork the following repository into your GitHub account: 
+
+   - [https://github.com/GitHubGoneMad/dvpwa](https://github.com/GitHubGoneMad/dvpwa)
 
 ## Create the pipeline
 
@@ -100,7 +109,7 @@ For a full step-by-step description of how to create this pipeline manually, go 
 
 4. Run the pipeline. When the pipeline finishes, you should see the new images in your Docker Hub repository. 
 
-      <DocImage path={require('./static/sto-tutorial-yaml/images-in-dockerhub-repo.png')} width="60%" height="60%" />
+      <DocImage path={require('./static/sto-tutorial-yaml/images-in-dockerhub-repo.png')} width="40%" height="40%" />
 
 5. When the pipeline finishes, go to [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results). You can now see all the issues detected in the code (**dvpwa**) and the image (**_your_dockerhub_repo_/stobuildscanpushtutorial**).
 
