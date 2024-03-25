@@ -1,0 +1,48 @@
+---
+title: Use ingress controller overrides
+description: Learn how to use ingress controller overrides for the on-prem Harness Self-Managed Enterprise Edition.
+sidebar_position: 7
+---
+
+You can customize the behavior of the nginx ingress controller using overrides. This topic explains how to use overrides to configure the ingress controller.
+
+## Configure ingress controller arguments
+
+You can configure `nginx-ingress-controller` arguments using the following overrides.
+
+   ```yaml
+   nginx:
+     controller:
+       watchNamespace: ""
+       updateStatus: true
+       httpPort: 8080
+       httpsPort: 8443
+       watchIngressWithoutClass: true
+       defaultSSLCertificate: ""
+       configMap: ""
+       defaultBackendService: ""
+       publishService: ""
+       electionId: ""
+       controllerClass: ""
+   ```
+
+### Add extra arguments
+
+Use the following to add extra arguments.
+
+   ```yaml
+   nginx:
+     controller:
+       extraCommandArgs:
+         - --argument=example-argument
+   ```
+
+### Create cluster roles
+
+The following creates a `clusterRole` and `clusterRoleBindings`.
+
+   ```yaml
+   nginx:
+     clusterRole:
+       create: true
+   ```
