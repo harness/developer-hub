@@ -15,7 +15,6 @@ export const ilt: IltCardItem[] = [
     priority: 1,
     isPreReq: true,
   },
-
   {
     title: "Continuous Delivery & GitOps",
     module: MODULES.cd,
@@ -25,5 +24,15 @@ export const ilt: IltCardItem[] = [
     version: "Harness CD & GitOps Enterprise Plan",
     link: "https://university-registration.harness.io/ilt-continuous-delivery-gitops",
     priority: 2,
+  },
+  {
+    title: "Continuous Integration",
+    module: MODULES.ci,
+    iltType: iltType.user,
+    description:
+      "Continuous Integration ILT Coming Soon",
+    version: "Harness CI Enterprise Plan",
+    link: "#",
+    priority: 3,
   },
 ];
