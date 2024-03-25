@@ -44,6 +44,14 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
+            <Link href="https://drone.discourse.group/">
+              <Tooltip placement="top" overlay="Drone Discourse (Read Only)">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/discourse.svg`} />
+                  Drone Discourse
+                </button>
+              </Tooltip>
+            </Link>
           </div>
         </div>
       </div>

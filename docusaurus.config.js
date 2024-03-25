@@ -416,16 +416,6 @@ const config = {
           hideable: true,
         },
       },
-      /*
-      announcementBar: {
-        id: "support_us",
-        content:
-          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
-        backgroundColor: "#000000",
-        textColor: "#ffffff",
-        isCloseable: true,
-      },
-      */
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
@@ -445,29 +435,6 @@ const config = {
           "firstgen-.*",
           "first-gen.*",
           "-firstgen.*",
-          
-          // paths for category pages
-          // "^/docs/category/quickstarts.*",
-          // "^/docs/category/continuous-delivery.*",
-          // "^/docs/category/continuous-delivery-overview.*",
-          // "^/docs/category/general-deployment-features.*",
-          // "^/docs/category/deployment-strategies-and-integrations.*",
-          // "^/docs/category/aws-deployments-and-provisioning.*",
-          // "^/docs/category/general-aws-.*",
-          // "^/docs/category/azure-deployments-and-provisioning*",
-          // "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
-          // "^/docs/category/google-cloud.*",
-          // "^/docs/category/native-helm-deployments.*",
-          // "^/docs/category/iis-net-deployments.*",
-          // "^/docs/category/kubernetes-deployments.*",
-          // "^/docs/category/tanzu-application-service-formerly-pivotal.*",
-          // "^/docs/category/terraform-1.*",
-          // "^/docs/category/terragrunt.*",
-          // "^/docs/category/traditional-deployments-ssh.*",
-          // "^/docs/category/custom-deployments.*",
-          // "^/docs/category/continuous-verification.*",
-          // "^/docs/category/model-your-cd-pipeline.*",
-          // "^/docs/category/harness-git-based-how-tos.*",
         ],
       },
       utmCookie: {
