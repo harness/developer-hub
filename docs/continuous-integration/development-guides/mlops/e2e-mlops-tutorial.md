@@ -1,7 +1,7 @@
 ---
-title: End to end MLOps CI/CD pipeline with Harness and AWS
+title: Tutorial - End-to-end MLOps CI/CD pipeline with Harness and AWS
 description: Build and deploy an ML model using Harness platform and AWS
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 MLOps tackles the complexities of building, testing, deploying, and monitoring machine learning models in real-world environments. 

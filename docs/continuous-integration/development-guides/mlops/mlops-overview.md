@@ -38,7 +38,7 @@ DevOps complements MLOps. For example, here's a typical application flow combini
 
 ## Harness MLOps demo
 
-Harness can help orchestrate and govern the practices of deploying secure ML code. Try it for yourself using the following demo.
+Harness can help orchestrate and govern the practices of deploying secure ML code. Try it for yourself using the following demo. For a longer, step-by-step tutorial, go to [Tutorial - End-to-end MLOps CI/CD pipeline with Harness and AWS](./e2e-mlops-tutorial.md).
 
 To get started, you need to:
 
