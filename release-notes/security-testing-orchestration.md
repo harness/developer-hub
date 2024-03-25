@@ -122,7 +122,7 @@ You can specify default baselines for specific target types: code repositories, 
 Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-For more information, go to [Default regular expressions for target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regular-expressions).
+For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type).
 
 
 ### Version 1.85.0 
