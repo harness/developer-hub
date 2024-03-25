@@ -247,4 +247,3 @@ The following table shows a few simple examples of expressions for specific use 
         </td>
     </tr>
 </table>
-

@@ -22,7 +22,7 @@ To add or edit Workflow profiles:
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Workflow** under **Profiles**.
-4. To create a profile, select **+Add Profile**. To edit a profile, select the profile's name in the profiles list.
+4. To create a profile, select **+New Workflow Profile**. To edit a profile, select the profile's name in the profiles list.
 
 :::tip
 

@@ -16,6 +16,10 @@ There is no limit to the number of pipelines you can create in a project.
 
 Pipeline names are limited to 128 characters.
 
+## When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
+
+This behavior is expected when there are more than 20-30 branches in the repo due to pagination. To select branches that are not listed, try manually entering the full branch name. This should allow you to open the pipeline from that branch.
+
 ## Pipeline access control
 
 ### Can I disable a pipeline?
@@ -80,6 +84,116 @@ Service Account API tokens aren't supported for the Approval API. You must use a
 
 You can use the [getExecutionDetailV2 API](https://apidocs.harness.io/tag/Pipeline-Execution-Details/#operation/getExecutionDetailV2) to get the `executionErrorInfo` if the pipeline's status is `failed`.
 
+### What is the GraphQL API query to list executions with details between a specific time range?
+
+<details>
+<summary>GraphQL to list execution details within a specific time range</summary>
+
+```
+{
+    executions(filters:[{startTime:{operator:AFTER, value:1643285847000}},{endTime:{operator:BEFORE,value:1656332247000}}], limit:30) {
+      pageInfo {
+           limit
+           offset
+       total
+     }
+     nodes {
+            startedAt
+            endedAt
+     tags {
+           name
+           value
+     }
+       id
+       application {
+                    id
+                    name
+     }
+      status
+     cause {
+    ... on ExecutedByUser {
+             user {
+                   email
+      }
+     }
+    ... on ExecutedByTrigger {
+       trigger {
+                id
+                name
+       }
+      }
+     }
+    ... on PipelineExecution {
+      pipeline {
+                id
+                name
+     }
+     memberExecutions{
+      nodes{
+    ... on WorkflowExecution{
+       workflow{
+                id
+                name
+     }
+      id
+     artifacts {
+                buildNo
+     artifactSource {
+                     name
+      }
+     }
+     outcomes{
+      nodes{
+    ... on DeploymentOutcome{
+          service{
+                  id
+                  name
+     }
+          environment{
+                      id
+                      name
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    ... on WorkflowExecution {
+       workflow {
+                 id
+                 name
+     }
+              id
+       artifacts {
+                  buildNo
+    artifactSource {
+                  name
+       }
+      }
+    outcomes{
+             nodes{
+    ... on DeploymentOutcome{
+             service{
+                     id
+                     name
+     }
+             environment{
+                         id
+                         name
+        }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+```
+
+</details>
+
 ### How do I avoid hitting the GitHub API rate limit when using multiple templates and Git-stored pipelines?
 
 To minimize GitHub calls from Harness, enabling the bi-directional Git Experience can significantly reduce the number of requests.
@@ -105,6 +219,32 @@ To be safe, Harness recommends a polling approach. For example, try calling the 
 ### Can I create a trigger that starts another pipeline when one pipeline ends?
 
 You can't create a trigger for this, but you can set up [Pipeline chaining](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining).
+
+### How can I pass input variables to pipelines using a custom curl trigger in Harness?
+
+You can pass input variables to a pipeline using a custom curl trigger in Harness by making a POST request to the Webhook URL associated with the pipeline trigger.
+
+You can include your custom variables as JSON data in the request body.
+
+For example:
+
+```shell
+curl -X POST -H 'content-type: application/json' \
+--url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Triggers&triggerIdentifier=Custom' \
+-d '{"sample_key": "sample_value"}'
+```
+
+Replace `{"sample_key": "sample_value"}` with your custom variables, such as `{"tag": "stable-perl"}`, which can be declared as part of the pipeline and provided as runtime inputs when triggering the pipeline.
+
+You could also configure the trigger to ingest payload contents by using `<+trigger.payload...>` expressions in the trigger's pipeline input.
+
+### Is there a limit to the number of triggers a pipeline can have?
+
+There is no limit to the number of triggers for a pipeline.
+
+### Does Harness NextGen support the same cron syntax for triggers as FirstGen?
+
+Yes, Harness NextGen supports both the QUARTZ and UNIX syntax formats for cron triggers. For more information, go to [Schedule Pipelines Using Cron Triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/#schedule-the-trigger).
 
 ## Stop pipelines
 
@@ -144,6 +284,10 @@ You must use output to export the variable and then you can use a Harness expres
 
 Make sure the expression is called in the parent pipeline after the child pipeline runs, or else the value will not be available to resolve the expression.
 
+### Can I trigger an Azure pipeline from a Harness pipeline?
+
+To trigger an Azure pipeline from a Harness pipeline, you can use a Shell Script or Run step and invoke/trigger any pipeline using a cURL or webhook.
+
 ## Delete pipelines
 
 ### Why can't I remove a pipeline?
@@ -163,6 +307,15 @@ Unfortunately, it is generally not possible to recover deleted entities. Some en
 When a pipeline is deleted, the audit details are retained, and the execution logs are deleted.
 
 ## Pipeline executions and logs
+
+## Account verification error with Harness Cloud builds on Free plan
+
+Recently Harness has been the victim of several Crypto attacks that use our Harness-managed build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
+
+To address these issues, you can do one of the following:
+
+* Use the local runner build infrastructure option, or upgrade to a paid plan to use the self-managed VM or Kubernetes cluster build infrastructure options. There are no limitations on builds using your own infrastructure.
+* Create a Harness account with your work email and not a generic email address, like a Gmail address.
 
 ### Can I increase the concurrent pipeline execution limit?
 
@@ -202,11 +355,21 @@ It is not possible to view all pipeline executions for an entire account under a
 
 You can search by pipeline name or tag.
 
+### Connector error causing pipeline failure
+
+Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
+
+### VAULT operation error: Decryption failed after 3 retries for secret
+
+Such errors in pipeline execution can arise from issues with the network's or the delegate's connection to the Vault where the secret exists. First, verify that the delegates are operational and that the connectors used in the pipelines are connected properly. If either the delegate or connector connectivity test fails, log in to the delegate and attempt to reach the connector URL from there manually.
+
 ## Pipeline notifications
 
 ### How do I make a pipeline report to Slack?
 
 You can [configure Slack notifications](https://developer.harness.io/docs/platform/notifications/send-notifications-using-slack) to trigger messages for different pipeline events.
+
+When executing the pipeline don't check the box for notifying only me.
 
 ### Can I include more data in a pipeline's Slack notifications?
 
@@ -266,6 +429,40 @@ Harness maintains a local cache of all connected delegates to execute tasks and 
 
 To ensure a smooth transition between bringing up a new delegate and terminating an old pod, we recommend having a grace period. In our YAML configuration, we use the `minReadySeconds` field to ensure that old pods die after 2 minutes of a new pod being in the ready state. If your delegate YAML file doesn't have this field, you can download a new YAML and add it to prevent older pods from being killed before the new pod receives traffic.
 
+### How can I assign the same delegate replica to all steps in my pipeline?
+
+While there isn't a dedicated configuration option for this purpose, you can output the environment variable `$HOSTNAME` in a shell script and then configure the [delegate selectors](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) of the subsequent steps to ingest that output.
+
+For example, here is some truncated YAML for two steps, one that outputs the `$HOSTNAME` and another that ingest that output for the delegate selector.
+
+```yaml
+# Step 1
+name: select_delegate
+identifier: select_delegate
+spec:
+  spec:
+    script: |
+      HOST_SELECTOR=$HOSTNAME
+  ...
+  outputVariables:
+    - name: HOST_SELECTOR
+      type: String
+      value: HOST_SELECTOR
+# Step 2
+name: use delegate
+identifier: use_delegate
+spec:
+  ...
+  delegateSelectors:
+    - <+execution.steps.select_delegate.output.outputVariables.HOST_SELECTOR>
+```
+
+### Do secrets pulled by a delegate ever flow back to the Harness platform?
+
+The secrets pulled by a delegate during pipeline execution do not make their way back to the Harness platform.
+
+Delegates connect to various [secret managers](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform.
+
 ## Variables
 
 ### How do I  make environment variables available to all steps?
@@ -283,6 +480,10 @@ json_content='<+pipeline>'
 variables=$(echo "$json_content" | jq -r 'recurse | objects | select(has("variables")) | .variables | to_entries | map("\(.key) = \(.value)") | join(" ")')
 echo "$variables"
 ```
+
+### I can't view the contents of a shell script in a step template in my pipeline.
+
+If you are using a step template, you must go to the template itself and view the template YAML to view the shell script contents.
 
 ### How do I get the stage execution ID to use in a template?
 

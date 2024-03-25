@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-03-06T10:00
+date: 2024-03-21T10:00
 sidebar_position: 16
 ---
 
@@ -15,15 +15,17 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for patch release 0.13.4 and 0.12.1
+:::danger important upgrade instructions for patch releases 0.14.4, 0.13.4, and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
 If you are currently on version 0.13.0, 0.13.1, 0.13.2, or 0.13.3, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.4.
 
-You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.13.4.
+If you are currently on version 0.14.3, you must follow the applicable upgrade process below to latest stable release, 0.14.4.
 
-**Upgrade using Helm**
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.14.4.
+
+**Upgrade using Helm to version 0.12.1, 0.13.4, or 0.14.14**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
@@ -64,6 +66,90 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 21, 2024, patch version 0.14.5
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.5](https://github.com/harness/helm-charts/releases/tag/harness-0.14.5) |
+| Air Gap Bundle | [0.14.5](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.5) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.5 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.5/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.5/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+- The Environments page and the Infrastructure Definition section of the Environments page didn't list more than 100 infrastructure definitions. This issue is resolved by adding pagination and search support. You can now view 500 items in the infrastructure selection drop-down in the Run Pipeline page. (CDS-94037)
+
+### Fixed issues
+
+- The background job responsible for reconciling missing ACL data was adding load to the harness-rbac MongoDB, causing CPU spikes. We have disabled the background job temporarily till we optimize it, eliminating the additional load and CPU spikes with no functional impact. (PL-48373)
+
+## March 20, 2024, patch version 0.14.4
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.4](https://github.com/harness/helm-charts/releases/tag/harness-0.14.4) |
+| Air Gap Bundle | [0.14.4](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.4) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.1 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.4 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.4/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.4/sto_images.tgz" \
+  .
+```
+
+### Fixed issue
+
+- Fixed UI logging issues for release version 0.14.3. (PL-48394)
 
 ## March 6, 2024, version 0.14.3
 

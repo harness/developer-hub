@@ -88,7 +88,7 @@ Caching expedites job execution by reusing data from expensive fetch operations 
 
 ### Docker layer caching
 
-[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
+[Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 

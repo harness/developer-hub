@@ -581,7 +581,7 @@ Environments define the deployment location, categorized as **Production** or **
 2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
 
    ```
-   harness infrastructure --file "/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml" apply
+   harness infrastructure --file "helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml" apply
    ```
 
 ### Create a service
@@ -611,7 +611,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 1. CLI Command for canary deployment:
 
    ```
-   harness pipeline --file "/helm-guestbook/harnesscd-pipeline/k8s-canary-pipeline.yml" apply
+   harness pipeline --file "helm-guestbook/harnesscd-pipeline/k8s-canary-pipeline.yml" apply
    ```
 
 2. You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
@@ -646,7 +646,7 @@ Environments define the deployment location, categorized as **Production** or **
 2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
 
    ```
-   harness infrastructure --file "/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml" apply
+   harness infrastructure --file "helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml" apply
    ```
 
 ### Create a service
@@ -710,7 +710,7 @@ Environments define the deployment location and are categorized as **Production*
 2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
 
    ```
-   harness infrastructure --file "/helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml" apply
+   harness infrastructure --file "helm-guestbook/harnesscd-pipeline/k8s-infrastructure-definition.yml" apply
    ```
 
 ### Create a service
@@ -775,7 +775,7 @@ Environments define the deployment location, categorized as **Production** or **
 2. In your new environment, add **Infrastructure Definitions** using the following CLI command:
 
    ```
-   harness infrastructure --file "/helm-guestbook/harnesscd-pipeline/nativehelm-infrastructure-definition.yml" apply
+   harness infrastructure --file "helm-guestbook/harnesscd-pipeline/nativehelm-infrastructure-definition.yml" apply
    ```
 
 ### Create a service

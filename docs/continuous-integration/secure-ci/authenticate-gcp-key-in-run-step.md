@@ -28,7 +28,11 @@ To avoid these errors, you need to:
    EOF
    ```
 
-   Decoded secrets in `cat` aren't [masked in outputs](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs), because Harness no longer recognizes the contents as a secret.
+   :::warning
+
+   Decoded secrets in `cat` aren't [masked in outputs](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs) because Harness no longer recognizes the contents as a secret.
+
+   :::
 
 4. Use the `.json` file as needed for GCP authentication in your `gcloud` commands, such as:
 

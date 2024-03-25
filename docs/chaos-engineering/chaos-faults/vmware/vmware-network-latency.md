@@ -156,6 +156,9 @@ stringData:
       </tr>
      </table>
 
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
 
 ### Network packet latency
 
