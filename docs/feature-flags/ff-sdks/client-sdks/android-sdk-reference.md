@@ -424,29 +424,29 @@ class MainActivity : AppCompatActivity() {
 ## Troubleshooting
 The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
 
-| **Code** | **Description**                                                                                               |
-|----------|:--------------------------------------------------------------------------------------------------------------|
-| **1000** | Successfully initialized                                                                                      |
-| **1001** | Failed to initialize due to authentication error                                                              |
-| **1002** | Failed to initialize due to a missing or empty API key                                                        |
-| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish |
-| **2000** | Successfully authenticated                                                                                    |
-| **2001** | Authentication failed with a non-recoverable error                                                            |
-| **2002** | Authentication failed and is retrying                                                                         |
-| **2003** | Authentication failed and max retries have been exceeded                                                      |
-| **3000** | SDK closing                                                                                                   |
-| **3001** | SDK closed successfully                                                                                       |
-| **4000** | Polling service started                                                                                       |
-| **4001** | Polling service stopped                                                                                       |
-| **5000** | Streaming service started                                                                                     |
-| **5001** | Streaming service stopped                                                                                     |
-| **5002** | Streaming event received                                                                                      |
-| **5003** | Streaming disconnected and is retrying to connect                                                             |
-| **5004** | Streaming stopped                                                                                             |
-| **5005** | Stream is still retrying to connect after 4 attempts                                                          |
-| **6000** | Evaluation was successful                                                                                     |
-| **6001** | Evaluation failed and the default value was returned                                                          |
-| **7000** | Metrics service has started                                                                                   |
-| **7001** | Metrics service has stopped                                                                                   |
-| **7002** | Metrics posting failed                                                                                        |
-| **7003** | Metrics posting success                                                                                       |
+| **Code** | **Description**                                                                                               | **Log Level** |
+|----------|:--------------------------------------------------------------------------------------------------------------|---------------|
+| **1000** | Successfully initialized                                                                                      | Info          |
+| **1001** | Failed to initialize due to authentication error                                                              | Error         |
+| **1002** | Failed to initialize due to a missing or empty API key                                                        | Error         |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish | Info          |
+| **2000** | Successfully authenticated                                                                                    | Info          |
+| **2001** | Authentication failed with a non-recoverable error                                                            | Error         |
+| **2002** | Authentication failed and is retrying                                                                         | Warn          |
+| **2003** | Authentication failed and max retries have been exceeded                                                      | Error         |
+| **3000** | SDK closing                                                                                                   | Info          |
+| **3001** | SDK closed successfully                                                                                       | Info          |
+| **4000** | Polling service started                                                                                       | Info          |
+| **4001** | Polling service stopped                                                                                       | Info          |
+| **5000** | Streaming connected                                                                                           | Info          |
+| **5001** | Streaming disconnected                                                                                        | Warn          |
+| **5002** | Streaming event received                                                                                      | Debug         |
+| **5003** | Streaming disconnected and is retrying to connect                                                             | Info          |
+| **5004** | Streaming service stopped                                                                                     | Info          |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                          | Warn          |
+| **6000** | Evaluation was successful                                                                                     | Debug         |
+| **6001** | Evaluation failed and the default value was returned                                                          | Info          |
+| **7000** | Metrics service has started                                                                                   | Info          |
+| **7001** | Metrics service has stopped                                                                                   | Info          |
+| **7002** | Metrics posting failed                                                                                        | Warn          |
+| **7003** | Metrics posting success                                                                                       | Debug         |
