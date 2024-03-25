@@ -448,23 +448,20 @@ For this tutorial, the policy requirements are that the model accuracy is over 9
    * For **Select script location**, select **Inline**.
    * For **Script**, enter the following:
 
-   ```
-   accuracy=<+pipeline.stages.Harness_Training.spec.execution.steps.Export_accuracy_and_fairness_variables.output.outputVariables.ACCURACY>
-   fairness_equalopportunity=<+pipeline.stages.Harness_Training.spec.execution.steps.Export_accuracy_and_fairness_variables.output.outputVariables.EQUAL_OPPORTUNITY_FAIRNESS_PERCENT>
-   ```
+      ```
+      accuracy=<+pipeline.stages.Harness_Training.spec.execution.steps.Export_accuracy_and_fairness_variables.output.outputVariables.ACCURACY>
+      fairness_equalopportunity=<+pipeline.stages.Harness_Training.spec.execution.steps.Export_accuracy_and_fairness_variables.output.outputVariables.EQUAL_OPPORTUNITY_FAIRNESS_PERCENT>
+      ```
 
-   * Under **Optional Configuration**, locate **Script Output Variables**, and enter the following:
-
-   | Name | Type | Bash Output Variable |
-   | ---- | ---- | -------------------- |
-   | `accuracy` | String | `accuracy` |
-   | `fairness_equalopportunity` | String | `fairness_equalopportunity` |
+   * Under **Optional Configuration**, locate **Script Output Variables**, and add the following two variables:
+      * `accuracy` - String - `accuracy`
+      * `fairness_equalopportunity` - String - `fairness_equalopportunity`
 
    :::info
 
    While you can feed the output variables directly into **Policy** steps, this **Shell Script** step is a useful debugging measure that ensures the accuracy and fairness variables are populated correctly.
 
-   ::
+   :::
 
 9. Add a **Policy** step after the **Shell Script** step.
 
@@ -474,12 +471,12 @@ For this tutorial, the policy requirements are that the model accuracy is over 9
    * For **Policy Set**, select your `Credit Card Approval Policy Set`.
    * For **Payload**, enter the following:
 
-   ```
-   {
-       "accuracy": <+execution.steps.Accuracy_and_Fairness.output.outputVariables.accuracy>,
-       "fairnessScoreEqualOpportunity": <+execution.steps.Accuracy_and_Fairness.output.outputVariables.fairness_equalopportunity>
-   }
-   ```
+      ```
+      {
+          "accuracy": <+execution.steps.Accuracy_and_Fairness.output.outputVariables.accuracy>,
+          "fairnessScoreEqualOpportunity": <+execution.steps.Accuracy_and_Fairness.output.outputVariables.fairness_equalopportunity>
+      }
+      ```
 
 10. Save the pipeline.
 
@@ -526,19 +523,16 @@ In Harness, you can specify the location of a function definition, artifact, and
    * Artifact Source Identifier: `ccapprovaldeploy`
    * Region: YOUR_AWS_REGION
    * Image Path: `ccapproval-deploy`
-   * Value:
-      * Tag: `<+input>` ([runtime input](/docs/platform/variables-and-expressions/runtime-inputs))
+   * Value - Tag: `<+input>` ([runtime input](/docs/platform/variables-and-expressions/runtime-inputs))
 
-6. Create environment and infrastructure definitions for the Lambda deployment.
-
-   * On the **Deploy** stage's **Environment** tab, select **New Environment**, and use the following environment configuration:
+6. Create environment and infrastructure definitions for the Lambda deployment. On the **Deploy** stage's **Environment** tab, select **New Environment**, and use the following environment configuration:
 
    ```
    name: lambda-env
    type: PreProduction
    ```
 
-   * From the `lambda-env`, go to the **Infrastructure Definitions** tab, and add an infrastructure definition with the following configuration:
+7. From the `lambda-env`, go to the **Infrastructure Definitions** tab, and add an infrastructure definition with the following configuration:
 
    ```
    name: `aws-lambda-infra`
@@ -549,19 +543,15 @@ In Harness, you can specify the location of a function definition, artifact, and
        region: YOUR_AWS_REGION
    ```
 
-   * Select **Save** to save the infrastructure definition.
+8. Select **Save** to save the infrastructure definition.
+9. On the **Deploy** stage's **Execution** tab, add an **AWS Lambda Deploy** step named `Deploy Aws Lambda` for the name. No other configuration is necessary.
+10. Save and run the pipeline. For **Git Branch**, enter `main`, and for **Tag**, enter `<+pipeline.executionId>`, and then select **Run Pipeline**.
 
-7. On the **Deploy** stage's **Execution** tab, add an **AWS Lambda Deploy** step named `Deploy Aws Lambda` for the name. No other configuration is necessary.
-8. Save and run the pipeline.
+   You need to provide the image tag value because the service definition's **Tag** setting uses runtime input (`<+input>`).
 
-   Because the service definition's **Tag** setting uses runtime input (`<+input>`), when you run the pipeline, you must provide an image tag for the lambda deployment in addition to the Git branch:
+   While the pipeline runs, you can observe the build logs showing the lambda function being deployed with the latest artifact that was built and pushed from the same pipeline.
 
-   * For **Git Branch**, enter `main`.
-   * For **Tag**, enter `<+pipeline.executionId>`.
-
-   Select **Run Pipeline**, and then wait while the pipeline runs. You can observe the build logs while the lambda function is deployed with the latest artifact that was built and pushed from the same pipeline.
-
-9. Test the response from the lambda function.
+11. Test the response from the lambda function.
 
    * In your AWS console, go to **AWS Lambda**, select **Functions**, and select your `creditcardapplicationlambda` function.
    * On the **Test** tab, select **Create new event**, and create an event named `testmodel` with the following JSON:
@@ -579,9 +569,7 @@ In Harness, you can specify the location of a function definition, artifact, and
 
    ![Test Lambda Function](static/lambda-execution.png)
 
-10. Note the **Function URL** resulting from the lambda function test. This is the endpoint that your ML web application will call.
-
-   Depending on the prediction of `0` or `1`, the web application either approves or denies the demo credit card application.
+12. Note the **Function URL** resulting from the lambda function test. This is the endpoint that your [ML web application](#use-the-ml-model-in-a-web-application) would call. Depending on the prediction of `0` or `1`, the web application either approves or denies the demo credit card application.
 
 ## Monitor the model
 
@@ -595,9 +583,9 @@ There are many ways to monitor ML models. In this tutorial, you'll monitor if th
 
 2. Add a **Run** step to find out when the model was last updated.
 
-  * For **Name**, enter `Monitor Model step`.
-  * For **Shell**, select **Sh**.
-  * For **Command**, enter:
+   * For **Name**, enter `Monitor Model step`.
+   * For **Shell**, select **Sh**.
+   * For **Command**, enter:
 
    ```
    # GitHub repository owner
@@ -647,9 +635,9 @@ There are many ways to monitor ML models. In this tutorial, you'll monitor if th
       * Select **And execute this step only if the following JEXL Condition evaluates to true**.
       * Enter the following JEXL condition:
 
-      ```
-      <+pipeline.stages.Monitor_Model_Stage.spec.execution.steps.Monitor_Model_Step.output.outputVariables.model_stale> == true
-      ```
+         ```
+         <+pipeline.stages.Monitor_Model_Stage.spec.execution.steps.Monitor_Model_Step.output.outputVariables.model_stale> == true
+         ```
 
 5. Save and run the pipeline. For **Git Branch**, enter `main`, and for **Tag**, enter `<+pipeline.executionId>`.
 
@@ -720,7 +708,7 @@ Assume that you have a different image for production, and a different AWS Lambd
 
 Next time you run the pipeline, someone from the Harness project must approve the promotion of artifact to the production environment before the final **Deploy** stage runs.
 
-## Use the ML module to power a web application
+## Use the model in a web application
 
 In a live MLOps scenario, the ML model would likely power a web application. While this app development is outside the scope of this tutorial, the following animation demonstrates a simple web application developed using plain HTML/CSS/JS. The outcome of the credit card application uses the response from the public AWS Lambda function URL invocation.
 
