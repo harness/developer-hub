@@ -285,8 +285,7 @@ Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build i
 </TabItem>
 </Tabs>
 
-<details>
-<summary>Early access feature: Delegate selectors with self-managed VM build infrastructures</summary>
+### Delegate selectors with self-managed VM build infrastructures
 
 :::note
 
@@ -318,8 +317,6 @@ Currently, delegate selectors for CI codebase tasks is behind the feature flag `
 By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
 
 With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
-
-</details>
 
 </details>
 

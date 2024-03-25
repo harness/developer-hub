@@ -1,8 +1,7 @@
 ---
 title: Set up target baselines in STO
 description: You need to specify the root branch, tag, or version for every target. 
-sidebar_label: Set up target baselines
-sidebar_position: 50
+sidebar_position: 10
 ---
 
 You need to specify a baseline for every target. The baseline represents the root variant, such as the `main` branch or the `latest` tag. In some cases, you might want to use the name of the latest official release as the baseline. Baselines make it easy to identify issues in the baseline vs. issues in a downstream variant derived from that baseline. 
@@ -37,6 +36,7 @@ In some cases, you might want to specify the name of the latest release for your
 
 
 With this cadence, the default baseline updates whenever you create a new release branch and scan it. In this case, you can use a regular expression (regex) to capture the latest release name and use it for the baseline.
+ 
 
 <details>
 <summary>Advantages of using regular expressions to define baselines</summary>
@@ -70,6 +70,7 @@ Defining your baselines using regular expressions provides significant benefits 
 
 </details>
 
+
 ### Important notes for setting up target baselines in STO
 
 * You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
@@ -81,6 +82,31 @@ Defining your baselines using regular expressions provides significant benefits 
 * Use [re2 format](https://github.com/google/re2/wiki/Syntax) for your expressions. 
 
 * Defining regular expressions is outside the scope of this documentation. Harness recommends that you test any regular expressions thoroughly to ensure that the expression matches any variant name that might be used for the scan target.
+
+* STO includes a set of predefined regexes 
+
+### Default regexes for projects and accounts
+
+STO includes a set of default regexes automatically for new repository and container image targets:
+
+- For repositories, the baseline is `master` or `main`.
+- For container images, the baseline is `latest` or the highest two-dot version number if it can be detected, such as
+  - `1.2.3` 
+  - `1.15.4-linux-amd64` 
+- STO does not include default regexes for application instances and configurations. 
+
+You can specify your own default regexes for all four target types at the project or the account level:
+
+- Go to **Project Settings** > **Default Settings** > **Security Testing Orchestration**
+- Go to **Account Settings** > **Default Settings** > **Security Testing Orchestration**
+
+### Specify a regex for an individual target
+
+To override the default regex for an individual target, go to **Test Targets**. Then set the value type for the target to **RegEx** and enter the regex. 
+
+![](./static/baseline-regex-individual-target.png)
+
+
 
 ### Regex examples
 
@@ -143,4 +169,3 @@ The following table shows a few simple examples of expressions for specific use 
         </td>
     </tr>
 </table>
-

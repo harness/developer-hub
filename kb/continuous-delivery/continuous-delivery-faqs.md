@@ -5791,9 +5791,11 @@ When asking for boolean input, you can use string as input. In this case, "true"
 #### How to deploy a manifest from the same branch as a build?
 You can use the output variable and pass it to the deploy stage or use webhook tigger and pass it using \<+tigger.sourceBranch\>
 
-#### What this message means "Error Summary Invalid argument(s): Loop items list cannot be null"?
-The error message "Invalid argument(s): Loop items list cannot be null" typically indicates where the loop is expecting a list of items to iterate over, but it receives a null value instead.
+#### How to fix Invalid argument(s): Loop items list cannot be null
 
+The error message `Invalid argument(s): Loop items list cannot be null` typically indicates where the loop is expecting a list of items to iterate over, but it receives a null value instead.
+
+If you are using a matrix, repeat, or parallelism looping strategy, it could be that no item is configured or the expression used is not returning the correct set of values and resulting in a null.
 
 #### Is there any OPA policy to prevent certain expressions in pipelines?
 To create an OPA (Open Policy Agent) policy that prevents certain expressions in pipelines within Harness, you'll need to define rules that evaluate the expressions used in your pipelines and deny execution based on specific criteria. Here's a simplified example of how you can achieve this:package harness.policies
@@ -5931,6 +5933,19 @@ Providing multiple delegate selectors implies that we want a delegate which has 
 #### Does http step supports mtls?
 
 Http step does support mtls communication, we can use the certificate and private key for establishing the mtls connection with the provided end point.
+
+#### How to get Harness secrets from Powershell?
+
+You can refer to any harness secret inside the script `<+secrets.getValue("secret_identifier")>`
+
+#### How to mask a secret that is used as an output variable
+
+Secret will be visible in the following areas of the pipeline execution:
+
+* On the Output tab of the step where the output variable originates.
+* In the step logs for any later steps that reference that variable.
+
+If there is any secret that needs to be used, we recommend creating a harness secret and referring to that directly within the pipeline instead of using it as an output variable.
 
 #### How can I configure approval emails in child pipelines to direct recipients to the parent pipeline execution instead of the child?
 
