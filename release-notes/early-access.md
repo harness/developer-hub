@@ -209,6 +209,16 @@ This release introduces a new set of built-in steps for adding scans to your pip
 
 Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. 
 
+### Default regular expressions for target baselines
+
+* **Release date:** March 2024
+* **Issue number:** STO-7127
+* **Feature flag:** `STO_BASELINE_DEFAULTING`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
+
+
 ### Write OPA policies based on STO scan results
 
 * **Release date:** March 2024

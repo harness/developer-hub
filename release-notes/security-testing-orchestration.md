@@ -110,6 +110,21 @@ For more information, go to:
 - Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
 
 
+### Version 1.86.1
+
+<!-- 2024-03-08 -->
+
+#### Early access feature: default regular expressions for target baselines
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected. (STO-7127)
+
+:::note
+Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type).
+
+
 ### Version 1.85.0 
 
 <!-- 2024-03-01 -->
