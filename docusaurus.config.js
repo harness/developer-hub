@@ -207,7 +207,7 @@ const config = {
             to: "university",
             items: [
               {
-                label: "Learn Harness",
+                label: "Learn Harness from Experts",
                 to: "university",
               },
               {
