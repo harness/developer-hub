@@ -221,6 +221,34 @@ Yes, AutoStopping supports EKS with Fargate*.*
 
 Yes, AutoStoppingRule’s namespace should be the namespace in which the service is running.
 
+#### How to rotate certificate on Autostopping Proxy?
+1. Create new secrets in the cloud provider for certificate and secret
+2. Go to the load balancers page
+3. Edit the Autostopping proxy
+4. Modify the secrets for certificate and secret
+5. Save the proxy
+
+#### Why user traffic is not getting detected when custom exclusion/inclusion is enabled?
+
+1. Please make sure the Access logs are enabled in the ALB
+
+2. Please make sure the Harness role has the following permissions
+
+```s3:ListBucket
+
+s3:GetObject
+
+s3:ListAllMyBuckets
+
+s3:GetBucketLocation
+```
+
+#### How do we onboard and access RDS instance/cluster to Autostopping?
+
+1. Access the RDS cluster through Autostopping proxy. The steps to connect using proxy is available in the Autostopping rule details page. As long as someone connects to the RDS cluster through proxy, Harness will keep the RDS cluster running.
+2. OR create an uptime fixed schedule for the RDS cluster for the working hours. Harness makes sure that cluster is up and running during the uptime schedule
+3. OR Use the RDS Autostopping rule as a dependancy to another Autostopping rule(For example, Autostopping rule for an EC2). As long as the parent resource(EC2) is running, Harness makes sure that dependant resource(RDS) is running too.
+
 ### General
 
 #### Can I create a cloud cost connector at the project level in Harness?
