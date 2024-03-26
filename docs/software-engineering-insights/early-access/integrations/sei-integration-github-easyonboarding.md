@@ -11,7 +11,7 @@ GitHub provides hosting for software development and version control using Git.
 
 :::info **ABOUT THIS INTEGRATION**
 
-The new experience for the GitHub integration is currently in BETA and is behind the Feature Flag `<SEI_EASY_ONBOARDING_GITHUB>`. Please contact Harness Support to enable this feature.
+The new experience for the GitHub integration is currently in BETA and is behind the Feature Flag `<SEI_EASY_ONBOARDING_GITHUB>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 To integrate SEI with Github, you must choose your Github type. SEI supports two integrations to integrate SEI with GitHub:
@@ -23,8 +23,7 @@ To integrate SEI with Github, you must choose your Github type. SEI supports two
 
 :::info **PERSONAL AND ORGANIZATION REPOSITORIES**
 
-SEI only ingests repositories from organizations. SEI doesn't ingest your personal repos or repos where you are a collaborator but not a member of the affiliated organization. 
-
+SEI only ingests repositories from organizations. SEI doesn't ingest your personal repos or repos where you are a collaborator but not a member of the affiliated organization.
 
 In other words, the owner of the GitHub personal access token that is associated with the integration must be a direct member of an organization for a repo to be ingested by SEI.
 :::
