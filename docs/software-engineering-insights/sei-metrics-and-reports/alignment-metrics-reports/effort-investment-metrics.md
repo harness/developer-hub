@@ -4,6 +4,9 @@ description: Supported reports for Effort investment or Business Alignment on SE
 sidebar_position: 25
 sidebar_label: Effort investment metrics
 ---
+:::info
+The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report)
+:::
 
 Effort investment, also known as alignment, helps you analyze how engineering teams invest their efforts and align with business needs and strategic initiatives. With these metrics, you can:
 
