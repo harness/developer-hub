@@ -75,16 +75,17 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.15.0](https://github.com/harness/helm-charts/releases/tag/harness-0.15.0) |
 | Air Gap Bundle | [0.15.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.0) |
-| NG Manager | 1.24.7 |
-| CI Manager | 1.12.5 |
-| Pipeline Service | 1.61.5 |
-| Platform Service | 1.12.0 |
-| Access Control Service | 1.33.1 |
-| Delegate | 24.02.82203 |
-| Change Data Capture | 1.5.3 |
-| Test Intelligence Service | 1.8.1 |
-| NG UI | 1.7.4 |
-| LE NG | 1.1.0 |
+| NG Manager | 1.xx.x |
+| CI Manager | 1.xx.x |
+| Pipeline Service | 1.xx.x |
+| Platform Service | 1.xx.x |
+| Access Control Service | 1.xx.x |
+| Delegate | 24.03.82xxx |
+| Change Data Capture | 1.x.x |
+| STO Core | 1.xx.x |
+| Test Intelligence Service | 1.x.x |
+| NG UI | 1.x.x |
+| LE NG | 1.x.x |
 
 **Alternative air gap bundle download method**
 
@@ -329,7 +330,7 @@ gsutil -m cp \
 
 - The CDK Deploy step was not handling the null output map when the provided image was not created from the Harness aws-cdk-plugin base image: https://hub.docker.com/r/harness/aws-cdk-plugin/tags. This issue has been resolved, the null output map is handled. (CDS-89569)
 
-- Fixed an issue where users couldn’t switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
+- Fixed an issue where users couldn't switch versions for account-level templates. (CDS-89602, ZD-57282, ZD-57296, ZD-57320)
 
 - In a few places in the UI, expressions when entered, were not rendered in a consistent color. This has now been fixed to be consistent. (CDS-89391)
 
@@ -416,7 +417,7 @@ gsutil -m cp \
 
 - Pipelines were failing due to errors related to the inability to acquire delegate tasks. The logic for calculating CPU and Memory usage has been improved, specifically for scenarios utilizing the dynamic task request handling feature in delegates, enhancing the reliability of task allocation and pipeline execution. This item requires Harness Delegate version 24.02.82402. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-42600, ZD-54025, ZD-54324)
 
-- API keys created using the harness_platform_apikey Terraform provider were expiring even when no expiration date was set. You can now view the API key expiration date at the top of the API Key table on the user profile page. Additionally, for API key’s tokens where the expiration was intended to be set as No Expiration, you can see the default expiration date, clarifying the token's validity period. (PL-43308)
+- API keys created using the harness_platform_apikey Terraform provider were expiring even when no expiration date was set. You can now view the API key expiration date at the top of the API Key table on the user profile page. Additionally, for API key's tokens where the expiration was intended to be set as No Expiration, you can see the default expiration date, clarifying the token's validity period. (PL-43308)
 
 - Git connectors worked intermittently and failed with a `Please provide valid git repository url Provided repo url is invalid. Invalid request: Couldn't connect to given repo` error message. This issue has been resolved. Now, if there are multiple connectors whose secrets are stored in a secret manager connector, when you update the connector's secret, Harness updates the PPTs of all the linked connectors, along with the secret manager connector. This item is available with Harness Platform version 1.24.7 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).(PL-43598, ZD-55236)
 
@@ -1597,7 +1598,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
   The image uses `PLUGIN_ARTIFACT_AWS_ROLE_ARN` and `PLUGIN_ARTIFACT_AWS_STS_EXTERNAL_ID` to assume the other role. The base role for assuming this role is determined based on whether the image uses manually provided credentials or an IAM role.
 
-- The Artifact tag expression `<+artifact.tag>` wasn’t resolving for ASG deployments. Added support to fix this issue. (CDS-82824)
+- The Artifact tag expression `<+artifact.tag>` wasn't resolving for ASG deployments. Added support to fix this issue. (CDS-82824)
 
 - For Rancher-based Kubernetes or Native Helm deployments and instance sync, Harness uses Rancher's `generateKubeconfig` API action. A new kubeconfig token is created on the Rancher cluster each time this API is hit. This led to an accumulation of kubeconfig tokens over time on the Rancher cluster. (CDS-83055, ZD-52924)
 
