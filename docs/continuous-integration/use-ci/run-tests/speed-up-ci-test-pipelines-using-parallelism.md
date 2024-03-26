@@ -214,7 +214,7 @@ Define the parallelism strategy on the stage where your tests run.
 
 :::warning
 
-You can configure parallelism strategies on stages or steps. Harness recommends using stage-level parallelism for test splitting.
+You can configure parallelism strategies on stages or steps. **Harness recommends using stage-level parallelism for test splitting.**
 
 :::
 
@@ -248,6 +248,12 @@ You can configure parallelism strategies on stages or steps. Harness recommends 
             parallelism: 8 ## Specify the number of workloads. This example creates 8 workloads.
             maxConcurrency: 2 ## Optional setting to optimize parallelism. Limits the number of workloads that can run at once.
    ```
+
+   :::warning
+
+   You can configure parallelism strategies on stages or steps. **Harness recommends using stage-level parallelism for test splitting.**
+
+   :::
 
 2. Add the following [stage variables](/docs/platform/pipelines/add-a-stage.md#stage-variables) to the stage where you defined the parallelism strategy:
 
