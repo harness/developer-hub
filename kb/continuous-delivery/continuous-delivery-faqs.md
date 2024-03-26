@@ -6422,7 +6422,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 #### Does Harness provide control over Abort Pipeline to users exclusively?
 
-Yes, Harness provides control over abort pipelines as feature behind FF: `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. This feature allows control abort operation that kills the pipeline/stage without any cleanup
+Yes, Harness provides control over abort pipelines as a feature behind the FF: `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. This feature allows a control abort operation that kills the pipeline/stage without any cleanup.
 This consists pre-requisite FF: `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` enabled required for this feature in use, if this is not done, one may wind up with users who could abort the pipeline earlier and now cannot.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline/)
 
