@@ -82,6 +82,7 @@ This release includes the following Harness module and component versions.
 | Access Control Service | 1.33.2 |
 | Delegate | 24.02.82203 |
 | Change Data Capture | 1.5.3 |
+| STO plugin | 1.25.0 |
 | Test Intelligence Service | 1.8.1 |
 | NG UI | 1.7.5 |
 | LE NG | 1.1.0 |
@@ -107,7 +108,7 @@ gsutil -m cp \
 
 - Fixed an issue with DB migrations that impacted upgrading from versions 0.13.x to 0.14.x. (STO-7309)
 
-- Fixed an issue that caused the Pipeline Studio page to crash when adding a CI build stage.(CI-11842, ZD-60094)
+- Fixed an issue that caused the Pipeline Studio page to crash when adding a CI build stage. (CI-11842, ZD-60094)
 
 ## March 21, 2024, patch version 0.14.5
 
