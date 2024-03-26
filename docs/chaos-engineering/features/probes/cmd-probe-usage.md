@@ -1,6 +1,6 @@
 ---
 title: Using command probe in various modes 
-sidebar_position: 4
+sidebar_position: 5
 description: Guide to using the command probe in inline mode and source mode
 ---
 

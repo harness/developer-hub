@@ -6,9 +6,11 @@ sidebar_position: 10
 
 # Feature Flags with Cloud Cost Module Overview
 
-Feature Flag with Cloud Cost Management tool is a new feature that will enable you to easily identify cost anomalies when enabling a feature. The Feature Flags module integrates with the Harness Cloud Cost Management (CCM) and is able to correlate flag change events with cost anomalies.
+Feature Flag with Cloud Cost Management tool is a new feature that will enable you to easily identify cost anomalies when enabling a feature. The Feature Flags module integrates with the Harness Cloud Cost Management (CCM) and is able to identify potential correlations between flag change events and cost anomalies.
  
 From the UI within the Harness Application, you'll be able to report the presence of anomalies which will make it easier for you to find which flags may be related to the reported anomalies.
+
+There are pre-requisites in order to use this feature which you can below in the *Setting Up Cloud Cost Management in Feature Flags*.
 
 :::info note
 If you'd like to learn more about the various types of costs within Cloud Cost Management, have a look at [Harness' Cloud Cost Management Key Concepts](../../cloud-cost-management/get-started/key-concepts.md) page. 
@@ -28,7 +30,12 @@ We've also added an additional feature to the Cloud Cost Monitoring tool. There 
 
 ![The "No Changes" status within Cloud Cost Monitoring](./static/ff-ccm-no_changes_status.png)
 
+
 ![The "Monitoring" status within Cloud Cost Monitoring](./static/ff-ccm-monitoring_status.png)
+
+
+![The "Anomalous Spending" status within Cloud Cost Monitoring](./static/ff-ccm-anomalous_spending_status.png.png)
+
 
 # Setting Up Cloud Cost Management in Feature Flags
 

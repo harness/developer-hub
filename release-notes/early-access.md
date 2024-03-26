@@ -199,15 +199,17 @@ The following early access (beta) features are available for the Harness Securit
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. 
+ 
 
-### Auto-detect option for targets and variants
+### Default regular expressions for target baselines
 
 * **Release date:** March 2024
-* **Issue number:** STO-6704
-* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+* **Issue number:** STO-7127
+* **Feature flag:** `STO_BASELINE_DEFAULTING`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. 
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
+
 
 ### Write OPA policies based on STO scan results
 
@@ -398,8 +400,17 @@ No information available. -->
 
 ### STO features promoted to GA
 
-<!--
-### Open Source Vulnerabilities (OSV) scanner integration
+#### Auto-detect option for targets and variants
+
+* **Release date:** March 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** 1.85.0
+* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually.
+
+
+#### Open Source Vulnerabilities (OSV) scanner integration
 
 * **GA date:** March 2024
 * **Early access release date:** February 2024
@@ -408,7 +419,6 @@ No information available. -->
 
 You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
 
--->
 
 #### Anchore Enterprise integration
 

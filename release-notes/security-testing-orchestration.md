@@ -27,6 +27,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- 2024-03-20 -->
 
+### Product update 2024-03-25
+
+The following features are no longer behind a feature flag:
+
+- Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
+- [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
+
 ### Version 1.88.2
 
 #### Early access feature: built-in scanners
@@ -108,6 +115,21 @@ For more information, go to:
 - Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
 
 - Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
+
+
+### Version 1.86.1
+
+<!-- 2024-03-08 -->
+
+#### Early access feature: default regular expressions for target baselines
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected. (STO-7127)
+
+:::note
+Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type).
 
 
 ### Version 1.85.0 

@@ -7,7 +7,7 @@ description: Guide to create and execute custom chaos experiments using API
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial explains how to run chaos experiments on Kubernetes using APIs. You can access the Harness API documentation [here](https://apidocs.harness.io/). This tutorial uses the publicly available [Harness CE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection) to describe the chaos APIs.
+This tutorial explains how to run chaos experiments on Kubernetes using APIs. You can access the chaos API documentation [here](https://apidocs.harness.io/chaos.html). This tutorial uses the publicly available [Harness CE Postman collection](https://elements.getpostman.com/redirect?entityId=25469526-59b35825-6240-4b45-9974-6bb869741318&entityType=collection) to describe the chaos APIs.
 
 ### Typical chaos experimentation workflow
 
