@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-03-13T10:00
+date: 2024-03-26T10:00
 sidebar_position: 4
 ---
 
@@ -70,6 +70,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 <Deleos />
 
 ## March 2024
+
+### Harness version 1.30.7, Harness Delegate version 24.03.82600 <!--  March 26, 2024 -->
+
+- In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding hyphen usage. While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage. Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier. Secret identifiers cannot start with a hyphen, following best practices. (PL-46959)
+
+- Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. (CDS-92355)
+
+#### New features and enhancements
+
+#### Fixed issues
 
 ### Version 24.03.82505 <!--  March 18, 2024 -->
 
