@@ -1367,7 +1367,7 @@ No. Test reports from tests run in Run steps also appear there if they are [corr
 Yes. How you do this depends on whether your tests run in a **Run** step or a **Run Tests** step. For instructions, go to:
 
 * [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
-* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/)
+* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting)
 
 ## Test Intelligence
 
