@@ -340,14 +340,17 @@ export default function CertificationsSTO() {
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => ilt.module === "sto" || ilt.isPreReq)
-                .sort((a, b) => a.priority - b.priority)
+                .filter((ilt) => {
+                  return (
+                    ilt.tileType === "pre requisite" ||
+                    ilt.module === "ff" ||
+                    (ilt.module === "ff" && ilt.tileType === "comming soon")
+                  );
+                })
+
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {/* {ilt.filter((ilt) => ilt.module === "sto").length < 1 ? (
-                <p>ILT Coming Soon</p>
-              ) : null} */}
             </div>
           </div>
         </div>

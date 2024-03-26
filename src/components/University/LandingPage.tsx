@@ -364,8 +364,16 @@ export default function University() {
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                // .filter((ilt) => iltType.user)
-                .sort((a, b) => a.priority - b.priority)
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
+              {ilt
+                .filter((ilt) => {
+                  return ilt.tileType === "normal";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}

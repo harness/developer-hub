@@ -331,14 +331,23 @@ export default function CloudCostManagement() {
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => ilt.module === "ccm" || ilt.isPreReq)
-                .sort((a, b) => a.priority - b.priority)
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {/* {ilt.filter((ilt) => ilt.module === "ccm").length < 1 ? (
-                <p>ILT Coming Soon</p>
-              ) : null} */}
+
+              {ilt
+                .filter((ilt) => {
+                  return (
+                    ilt.module === "ccm" ||
+                    (ilt.module === "ccm" && ilt.tileType === "comming soon")
+                  );
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
             </div>
           </div>
         </div>
