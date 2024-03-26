@@ -48,6 +48,43 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## March 2024
 
+### Version 1.30.7
+
+#### Early access
+
+- Harness has updated the logic for inheriting permissions from containerized step groups to steps. Currently, this feature is behind the feature flag `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-79356)
+  
+  The new logic follows these steps:
+  1. Use the Run Step configuration.
+  2. If there isn't a Run Step configuration, use the Step Group configuration.
+   
+  For more information, go to [Permissions inheritance logic from containerized step groups to steps](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/). 
+
+- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
+
+#### Limitations
+
+- Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround. (CDS-92820)
+
+#### Fixed issues
+
+- Harness UI is throwing 404 errors in random pages. This issue is fixed by adding redirects that will help the URLs work in both old and new Harness Nav. (CDS-94036, ZD-59462)
+- The Git cache was getting reset during every webhook event. This bug resulted in cache misses causing increased load time for remote entities. This issue is fixed. (CDS-93603, ZD-59392)
+- Saving a chained pipeline with a templatized child pipeline in a new branch returns an error. This issue is fixed by setting the child pipeline's required info in the Git context so that the template can be retrieved from the current branch. (CDS-92772, ZD-58383)
+- For SSH and WinRM deployments, the delegate selectors specified for connectors in Azure and AWS infrastructure configurations weren't adhered. This issue is fixed. (CDS-92717, ZD-58399)
+- Harness listed all environments or infrastructures when trying to select environment and infrastructure based on specific custom deployments. This issue is fixed by removing the version label was absent in the infrastructure listing API. Filtering is now done based on deployment template identifier. (CDS-91800, ZD-57907)
+- User data related to some churned Harness accounts were not being deleted even after 90 days after service termination. This issue is fixed by creating an annotation based framework that allows Harness to cleanup data of expired Harness accounts. (CDS-90914) 
+- Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. This item requires Harness Delegate version 24.03.82600. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).(CDS-92355)
+- The wrapper for matrix nodes appeared successful even if the matrix nodes were skipped. This issue is resolved by adding a check to see the status of a strategy node's children. If all child nodes are skipped, the strategy node will be skipped now. (CDS-92727)
+- Marking failure strategy for a step with in a stage as ignore failure did not work. The stage status was not shown as success of the step in the stage failed. This issue is fixed. Now, `IgnoreFailed` status is considered as Success for sending the stage notifications. (CDS-92057, ZD-58259)
+- Stage and pipeline are not marked as ResourceWaiting even if the stage is waiting on the resources. This issue is fixed by creating a `ResourceWaitingStepStatusUpdateHandler` logic that will mark the stage and pipeline as `ResourceWaiting`. When the step resumes, the existing `handleStepResponseInternal` logic marks the stage and pipeline as running. (CDS-87769)
+- In the Serverless Prepare Rollback image, the `serverless print` command is used to resolve all Serverless variables and fetch custom stack name, if provided in the Serverless YAML. Earlier, even if the `serverless print` command failed, Harness did not fail the step, and considered the stack name as `<serviceNameInYaml> - <stageNameSpecifiedInHarnessInfra>`. This issue is fixed by updating the Serverless Prepare Rollback step image version to`harnessdev/serverless-preparerollback:3.30.1-2.0.0`. With this new image, Harness will fail the step if the `serverless print` command failed. (CDS-87684)
+  
+  The following changes are implemented as part of this new image: 
+  1. The `serverless print` command would not fail due to plugins being specified in the Serverless YAML. With this new image, Harness does an NPM install (on package.json) before running the `serverless print` command. Make sure that the plugins are specified in the package.json to install them before running the `serverless print` command. Now, if your plugins are specified in the package.json at the same level where your Serverless YAML lies, your plugins would be installed, and correct stack name from Serverless YAML would be fetched. 
+  2. If the `serverless print` command still fails, Harness will fail the step and will not assume the default stack name, `<serviceNameInYaml> - <stageNameSpecifiedInHarnessInfra>`.
+  3. Harness will consider the default stack name when stack name is not specified in Serverless YAML, and when the `serverless print` is successful.
+
 ### Version 1.29.6
 
 #### Early access
@@ -55,10 +92,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - You can select a different infrastructure when propagating an environment from a previous stage. Currently, this feature is behind the feature flag `CDS_SUPPORT_DIFFERENT_INFRA_DURING_ENV_PROPAGATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [CD documentation](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments#select-a-different-infrastructure-when-propagating-environment-from-a-previous-stage). (CDS-85143)
 - A **Metrics** tab is added to the individual service dashboard to provide details of the selected service's deployments, failure rate, deployment frequency, active service instances, the underlying environment and infrastructure for the service instance, and a summary of instances over a selected period. Currently, this feature is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Individual service dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards). (CDS-88414)
 - Harness now displays the execution context for each step in the Execution Details page along with the inputs and outputs of the step. This enhancement helps debug pipeline executions. Currently, this feature is behind the feature flag `CDS_SAVE_EXECUTION_EXPRESSIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-91921)
+- Harness has now decoupled pipeline execute and pipeline abort permissions. For every pipeline, Harness permits two type of users, one can execute the pipeline and the other abort the pipeline. These two users can overlap if required. Currently, this feature is behind the feature flag `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Permissions required to abort pipeline](https://developer.harness.io/docs/platform/pipelines/failure-handling/abort-pipeline/#required-permissions). (CDS-86459)
+
+  :::note 
+  Enabling this feature flag can take several days because it requires migrating your existing users to this permissions structure.
+  :::
   
 #### Fixed issues
 
-- The Git cache was getting reset during every webhook event. This bug resulted in cache misses causing increased load time for remote entities. This issue is fixed. (CDS-93603, ZD-59392)
 - Adding the Fetch Linked Apps step in a PR pipeline failed with the error, `Failed to parse yaml file`. This issue is fixed by improving the error response for the Fetch Linked Apps step. (CDS-93056)
 - The path validation process for Google Cloud Storage is optimized for faster and efficient validation. Instead of searching the entire storage, Harness now verifies the provided path directly. (CDS-92796, ZD-58789, ZD-59199)
 - Rolling back the current version of a service from the Services page did not show to which old version of the service did it roll back to. This issue is fixed by displaying the rollback version on the Rollback pop-up window. (CDS-92461)
@@ -67,8 +108,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The secret passed from a parent pipeline to a child pipeline was not getting resolved because the expression functor token for the child pipeline is different from that of the parent pipeline. This issue is fixed. (CDS-92434, ZD-58526)
 - Users were incorrectly prompted about unsaved changes when viewing variables with default values in Pipeline Studio and Input Sets page. This issue is resolved. (CDS-89117, ZD-57388, ZD-57603)
 - When a certain version of a template in use was deleted, the pipeline referring the template threw and error, and did not let the users select an alternate version of the template. As a workaround, users were recommended to edit the YAML directly. Now, this issue is fixed and users can select an alternate version of the template from the pipeline itself. (CDS-87809, ZD-55910)
-- Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. (CDS-92355)
-- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541)
+- The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541, ZD-58686)
 
 ### Version 1.28.11
 

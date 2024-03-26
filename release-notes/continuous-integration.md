@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-03-13T10:00
+date: 2024-03-26T10:00
 sidebar_position: 10
 ---
 
@@ -36,6 +36,40 @@ You will be impacted by this deprecation if:
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## March 2024
+
+### Version 1.20.2
+
+<!-- Mar 26, 2024 -->
+
+#### Fixed issues
+
+Fixed an issue with fallback handling when [splitting tests](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) by `testcase_timing`, `testsuite_timing`, or `class_timing`. (CI-11651)
+
+### Correction
+
+<!-- 22 Mar 24 -->
+
+A prior release note announced that you could set plugin runtime flags as environment variables for [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+This announcement incorrectly implied that the feature applied to all build infrastructures.
+
+**Correction:** Currently, this feature applies to Kubernetes cluster build infrastructure only. Other build infrastructures can set a limited subset of drone-docker runtime flags as stage variables. The prior release notes and supporting documentation have been updated to reflect this correction.
+
+### Version 1.18.2
+
+<!-- Mar 18, 2024 -->
+
+#### New features and enhancements
+
+In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. You can use the Test Globs setting to override the default test globs pattern if you want change this behavior, for example to limit it to directories at the root level or at a certain path. (CI-11272, ZD-57661)
+
+#### Early access features
+
+To use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CI_ENABLE_VM_DELEGATE_SELECTOR` in your account. (CI-11545)
+
+#### Fixed issues
+
+Fixed an issue where the Get Started wizard failed to generate some pipeline YAML. (CI-11323)
 
 ### Version 1.17.5
 
@@ -72,7 +106,6 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 * The error message text for the `no eligible delegates present` error now includes additional potential causes. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10933, ZD-55977)
 * Harness CI no longer stores clone tokens for public GitHub repositories as environment variables, because a token isn't needed to clone public repos. This change requires Harness Delegate version 24.02.82302 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10938)
 * Added some helper text that was missing when creating pipelines through the projects section. (CI-11233)
-* In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), the default test globs pattern is now `**/spec/**/*_spec.rb`. Now, by default, TI detects `spec` directories anywhere in the stage workspace. If you want change this behavior, for example to limit it to directories at the root level or at a certain path, you can use the Test Globs setting to override the default test globs pattern. (CI-11272, ZD-57661)
 * The Harness Community team has developed a new plugin to help you automate more processes in your CI pipelines:
    * The [GCP OIDC Token plugin](/docs/continuous-integration/secure-ci/gcp-oidc-token-plugin) generates a Google Cloud access token from your OIDC token and then stores the GCP token in an output variable that you can use in subsequent pipeline steps to control Google Cloud Services through API (cURL) or the gcloud CLI.
 
@@ -89,7 +122,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### New features and enhancements
 
-* [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031)
+* With Kubernetes cluster build infrastructure, [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko runtime flags. You can specify these flags as environment variables in the Build and Push step settings. Currently, this is only supported for Kubernetes cluster build infrastructure. Other build infrastructures can set a limited subset of drone-docker runtime flags as stage variables. (CI-10165, CI-11031)
 * To address security vulnerabilities, Reactor-netty libraries have been updated to the latest version in [Harness CI images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci). (CI-10929, ZD-52222, ZD-55562)
 * The Harness Community team has developed two new plugins to help you automate more processes in your CI pipelines:
    * The [Helm Push plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-helm-chart) streamlines packaging and distribution of Helm charts to container registries.

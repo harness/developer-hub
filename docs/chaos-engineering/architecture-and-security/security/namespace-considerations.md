@@ -5,7 +5,7 @@ description: Execute chaos experiments on specific namespaces
 ---
 This section discusses the steps required to run chaos experiments on specific namespaces.
 
-Kubernetes clusters are vast, multi-layered, and customizable. A simple misconfiguration or vulnerability introduced by libraries poses a threat to the Kubernetes environment. These threats can allow users with malicious intent to gather information about your environment without being detected, gain backdoors to your application, or escalate privileges to steal secrets.
+Kubernetes clusters are vast, multi-layered, and customizable. A simple misconfiguration or vulnerability introduced by libraries poses a threat to the Kubernetes environment. These threats allow users with malicious intent to gather information about your environment without being detected, gain backdoor access to your application, or escalate privileges to steal secrets.
 
 You can allow your chaos experiments to run in specific namespaces, thereby limiting the exposure of all the services (including business-critical and potentially sensitive workflows) of your application.
 
@@ -14,25 +14,25 @@ If your application fails, the above-mentioned technique also helps pin-point th
 ### Step 1. Install CE in cluster mode
 
 - Install CE in cluster mode with the given installation manifest. 
-- Restrict `litmus-admin` service account to certain target namespaces.
+- Restrict `hce` service account to certain target namespaces.
 
-### Step 2. Delete `litmus-admin` ClusterRole and ClusterRoleBinding
-- Once CE is up and running in cluster mode, delete the `litmus-admin` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
+### Step 2. Delete `hce` ClusterRole and ClusterRoleBinding
+- Once CE is up and running in cluster mode, delete the `hce` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
 
 ```bash
-$> kubectl delete clusterrole litmus-admin
+$> kubectl delete clusterrole hce
 ````
 
 ```
-clusterrole.rbac.authorization.k8s.io "litmus-admin" deleted
+clusterrole.rbac.authorization.k8s.io "hce" deleted
 ```
 
 ```bash
-$> kubectl delete clusterrolebinding litmus-admin
+$> kubectl delete clusterrolebinding hce
 ````
 
 ```
-clusterrolebinding.rbac.authorization.k8s.io "litmus-admin" deleted
+clusterrolebinding.rbac.authorization.k8s.io "hce" deleted
 ```
 
 ### Step 3. Create Role and RoleBinding in all target namespaces
@@ -66,15 +66,19 @@ rules:
   # Track and get the runner, experiment, and helper pods log 
   - apiGroups: [""]
     resources: ["pods/log"]
-    verbs: ["get","list","watch"]  
+    verbs: ["get","list","watch"]
+  # for creating and monitoring liveness services or monitoring target app services during chaos injection
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["create", "get", "list"]
   # for creating and managing to execute comands inside target container
   - apiGroups: [""]
-    resources: ["pods/exec"]
-    verbs: ["get","list","create"]
-  # deriving the parent/owner details of the pod(if parent is anyof {deployment, statefulset, daemonsets})
+    resources: ["pods/exec", "pods/eviction", "replicationcontrollers"]
+    verbs: ["get", "list", "create"]
+  # for checking the app parent resources as deployments or sts and are eligible chaos candidates
   - apiGroups: ["apps"]
-    resources: ["deployments","statefulsets","replicasets", "daemonsets"]
-    verbs: ["list","get"]
+    resources: ["deployments", "statefulsets"]
+    verbs: ["list", "get", "patch", "update"]
   # deriving the parent/owner details of the pod(if parent is deploymentConfig)  
   - apiGroups: ["apps.openshift.io"]
     resources: ["deploymentconfigs"]
@@ -95,6 +99,14 @@ rules:
   - apiGroups: ["litmuschaos.io"]
     resources: ["chaosengines","chaosexperiments","chaosresults"]
     verbs: ["create","list","get","patch","update","delete"]
+  # for checking the app parent resources as replicasets and are eligible chaos candidates
+  - apiGroups: ["apps"]
+    resources: ["replicasets"]
+    verbs: ["list", "get"]
+  # performs CRUD operations on the network policies
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["networkpolicies"]
+    verbs: ["create","delete","list","get"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -141,15 +153,19 @@ rules:
   # Track and get the runner, experiment, and helper pods log 
   - apiGroups: [""]
     resources: ["pods/log"]
-    verbs: ["get","list","watch"]  
+    verbs: ["get","list","watch"]
+  # for creating and monitoring liveness services or monitoring target app services during chaos injection
+  - apiGroups: [""]
+    resources: ["services"]
+    verbs: ["create", "get", "list"]
   # for creating and managing to execute comands inside target container
   - apiGroups: [""]
-    resources: ["pods/exec"]
-    verbs: ["get","list","create"]
-  # deriving the parent/owner details of the pod(if parent is anyof {deployment, statefulset, daemonsets})
+    resources: ["pods/exec", "pods/eviction", "replicationcontrollers"]
+    verbs: ["get", "list", "create"]
+  # for checking the app parent resources as deployments or sts and are eligible chaos candidates
   - apiGroups: ["apps"]
-    resources: ["deployments","statefulsets","replicasets", "daemonsets"]
-    verbs: ["list","get"]
+    resources: ["deployments", "statefulsets"]
+    verbs: ["list", "get", "patch", "update"]
   # deriving the parent/owner details of the pod(if parent is deploymentConfig)  
   - apiGroups: ["apps.openshift.io"]
     resources: ["deploymentconfigs"]
@@ -170,6 +186,14 @@ rules:
   - apiGroups: ["litmuschaos.io"]
     resources: ["chaosengines","chaosexperiments","chaosresults"]
     verbs: ["create","list","get","patch","update","delete"]
+  # for checking the app parent resources as replicasets and are eligible chaos candidates
+  - apiGroups: ["apps"]
+    resources: ["replicasets"]
+    verbs: ["list", "get"]
+  # performs CRUD operations on the network policies
+  - apiGroups: ["networking.k8s.io"]
+    resources: ["networkpolicies"]
+    verbs: ["create","delete","list","get"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -190,7 +214,7 @@ subjects:
 ```
 
 :::info
-The rolebinding subjects point to the `litmus-admin` service account only (in CE namespace). 
+The rolebinding subjects point to the `hce` service account only (in HCE namespace). 
 :::
 
 #### Create the roles

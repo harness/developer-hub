@@ -23,9 +23,13 @@ Ideally, rules include policy, resource, filters, and actions.
 
 <DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
-So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. Rules can include multiple policies, and policies include resource, filters and actions.
+So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. Rules can include multiple policies, and policies include resource, filters and actions. 
 
 <DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
+
+:::important note
+Number of Rules per Account[Custom + OOTB] can be 300.
+:::
 
 ### Create a new Rule
 
@@ -71,6 +75,10 @@ To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
   <DocImage path={require('./static/rule_set.png')} width="90%" height="90%" title="Click to view full size image" />
+  
+:::important note
+A Rule Set can have upto 30 Rules in it.
+:::
 
 ### Create a new Rule Set
 
@@ -120,6 +128,13 @@ While setting up a new Enforcement, you can select the following:
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
 
   <DocImage path={require('./static/enforcements.png')} width="95%" height="95%" title="Click to view full size image" />
+
+:::important note
+- Number of Targets in an Enforcement can be upto 200.
+- Number of Regions in Enforcement can be upto 30.
+- Number of Rule Sets in Enforcement can be upto 30.
+- Number of Rules in Enforcement can be upto 30.
+:::
 
 ### Create a new Enforcement
 To create an Enforcement, perform the following steps:
@@ -195,3 +210,6 @@ You can create filters to view selected rules:
 
   <DocImage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
 
+:::important note
+Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
+:::

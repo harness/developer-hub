@@ -205,8 +205,8 @@ export default function University() {
             <h3>Which Certification is right for you?</h3>
 
             <p>
-              Progress from Developer to Architect. Follow the
-              learning paths to progress to the next level.
+              Progress from Developer to Architect. Follow the learning paths to
+              progress to the next level.
             </p>
 
             <div className={styles.availableCertsBox}>
@@ -358,12 +358,22 @@ export default function University() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-           Intensive two-day courses are designed for IT professionals looking to deepen their understanding and expertise in Harness. 
+            Intensive two-day courses are designed for engineers looking to
+            deepen their understanding and expertise in Harness.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => iltType.user)
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
+              {ilt
+                .filter((ilt) => {
+                  return ilt.tileType === "normal";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}

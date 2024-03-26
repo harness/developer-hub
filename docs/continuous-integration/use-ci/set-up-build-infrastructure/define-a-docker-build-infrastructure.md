@@ -392,7 +392,7 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
 </Tabs>
 
 
-:::tip
+:::tip delegate selectors
 
 Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 

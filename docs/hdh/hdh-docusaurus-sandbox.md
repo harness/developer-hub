@@ -122,7 +122,7 @@ This is an `TabItem` 2.
 
 ## Code Formatting
 
-Can enable syntax highlighting with these [common languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js).
+Can enable syntax highlighting with these [common languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/packages/generate-prism-languages/index.ts).
 
 ```js
 console.log("Check out Harness, Today!");

@@ -1,12 +1,12 @@
 {
-    "label":"CCM Architechture Diagrams",
+    "label":"CCM Architecture Diagrams",
     "position": 3,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"CCM Architechture Diagrams"
+       "title":"CCM Architecture Diagrams"
     }
     }
  

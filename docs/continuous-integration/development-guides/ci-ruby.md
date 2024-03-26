@@ -253,6 +253,8 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
 
 Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
+Stage-level parallelism is recommended for Ruby.
+
 ## Specify version
 
 <Tabs>

@@ -5,6 +5,8 @@ title: Prerequisites
 
 Before executing the chaos experiment, ensure that you have the following set-up ready.
 
+## Create configmap and secret
+
 ### 1. Create ConfigMap from scripts
 The scripts used to create ConfigMap are **Chaos script** and **Abort script**. 
 **Chaos script** contains the chaos logic, and **abort script** contains the logic to restore the system to its original state if the chaos script fails prematurely.
@@ -66,3 +68,8 @@ For secure password transmission, create a secret with the password and pass it 
     ```
     kubectl apply -f my-secret.yaml -n <INFRA-NAMESPACE>
     ```
+
+## Configure secret mount from the UI
+You can configure the secret mount from the UI by selecting or deselecting the button depending on your use of the secret references.
+
+![SSH experiment](./static/images/ssh-chaos/secret-button.png)

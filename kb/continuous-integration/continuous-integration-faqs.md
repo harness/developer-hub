@@ -304,9 +304,9 @@ Harness Cloud builds use a delegate hosted in the Harness Cloud runner. You don'
 
 No. Currently, you can't use Harness Cloud build infrastructure to run CD steps or stages. Currently, Harness Cloud is specific to Harness CI.
 
-### How can we connect to the services running inside a private corporate network from the Harness cloud VM?
+### Can I connect to services running in a private corporate network when using Harness Cloud?
 
-You could consider cofiguring secure conect as detailed in the [doc](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect/) 
+Yes. You can use [Secure Connect for Harness Cloud](https://developer.harness.io/docs/continuous-integration/secure-ci/secure-connect).
 
 ## Kubernetes clusters
 
@@ -324,7 +324,7 @@ For requirements, recommendations, and settings for using a Kubernetes cluster b
 
 If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
-If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
+If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#docker-in-docker-requires-privileged-mode).
 
 ### Can I use Istio MTLS STRICT mode with Harness CI?
 
@@ -406,6 +406,10 @@ If you leave the **Priority Class** field blank, the `PriorityClass` is set to t
 
 To do this, [use a script in a Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings).
 
+### Can I mount an existing Kubernetes secret into the build pod?
+
+Currently, Harness doesn't offer built-in support for mounting existing Kubernetes secrets into the build pod.
+
 ### How are step containers named within the build pod?
 
 Step containers are named sequentially starting with `step-1`.
@@ -460,16 +464,13 @@ Yes, the build pod is cleaned up after stage execution, regardless of whether th
 
 To help identify pods that aren't cleaned up after a build, pod deletion logs include details such as the cluster endpoint targeted for deletion. If a pod can't be located for cleanup, then the logs include the pod identifier, namespace, and API endpoint response from the pod deletion API. You can find logs in the [Build details](https://developer.harness.io/docs/continuous-integration/use-ci/viewing-builds#build-details).
 
-### Is there a native way to mount an exesiting k8s secret into the build pod?
-Currently, mounting an existing k8s scret into the build pod is not supported
+### Can I use an ECS cluster for my Kubernetes cluster build infrastructure?
 
-### Can I configure ECS cluster as the CI build infra and run the build in ECS cluster?
+Currently, Harness CI doesn't support running CI builds on ECS clusters.
 
-Running CI builds on ECS cluster is not currently supported
+### Can I use a Docker delegate with a Kubernetes cluster build infrastructure?
 
-### Can I use a docker delegate to run the build on k8s cluster?
-
-You could use the docker delegate to run the build on k8s cluster as long as the docker delegate has connectivity to the k8s cluster and the k8s connector should be configured with the master URL and creds rather than configuring with the option ```inherit the credential from delegate```
+Yes, if the Kubernetes connector is configured correctly. For more information, go to [Use delegate selectors with Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#use-delegate-selectors-with-kubernetes-cluster-build-infrastructure).
 
 ## Self-signed certificates
 
@@ -736,6 +737,33 @@ In the `Run` step's PowerShell script, call the `ToString` value separately and 
                       echo <+pipeline.stages.test.variables.BUILD_VAR>-$val
 ```
 
+### User data isn't running on AWS Windows Server 2022 VM Pool
+
+Windows only runs User Data during initialization. To fix this, go to `C:\ProgramData\Amazon\EC2Launch\state` and delete the `.run-once` file. This file is generated after the Windows VM initializes. On startup Windows will check for this file and decide whether or not to run the User Data script. If this file is not present, Windows will run the User Data script.
+
+### How do I install Docker on Windows?
+
+To install Docker on Windows, run:
+
+```
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/Windows-Containers/Main/helpful_tools/Install-DockerCE/install-docker-ce.ps1" -o install-docker-ce.ps1
+.\install-docker-ce.ps1
+```
+
+More information on this can be found in the [Microsoft Documentation](https://learn.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=dockerce#windows-server-1).
+
+### Do I need to enable Hyper V for AWS Windows VM Pool?
+
+Hyper V is not required to run Harness Builds in a Windows VM Pool. Hyper V is a requirement for Docker Desktop and Docker Desktop is not required for self-managed Windows VM build infrastructure.
+
+### Do I need to install WSL for AWS Windows VM Pool?
+
+WSL is not required to run Harness Builds in a Windows VM Pool. WSL is a requirement for Docker Desktop and Docker Desktop is not required for Windows Self-Managed Build Infrastructure.
+
+### How do I check the logs for Windows Server 2022 when using EC2Launchv2
+
+Logs are generated in the `C:\ProgramData\Amazon\EC2Launch\log` directory for EC2Launchv2. To view startup logs, check the `C:\ProgramData\Amazon\EC2Launch\log\agent` file. For any errors check the `C:\ProgramData\Amazon\EC2Launch\log\err` file.
+
 </details>
 
 ## Default user, root access, and run as non-root
@@ -796,12 +824,7 @@ The built-in clone codebase step always clones your repo to the root of the work
 
 ### What is the default clone depth setting for CI builds?
 
-The built-in clone codebase step has the following depth settings:
-
-* For manual builds, the default depth is `50`.
-* For webhook or cron triggers, the default depth is `0`.
-
-For more information, go to [Configure codebase - Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth).
+For information about the default clone depth setting, go to [Configure codebase - Depth](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#depth).
 
 ### Can I change the depth of the built-in clone codebase step?
 
@@ -921,14 +944,6 @@ You can add a Run step to the beginning of your Build stage that runs `ls -ltr`.
 ### Why is the codebase connector config not saved?
 
 Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
-
-### Why isn't the default cloning depth of 50 applied when manually running a PR build?
-
-For PR builds, since the number of commits can be larger than 50, the default depth value is not limited to 50
-
-### The deafult depth of 50 for manual build is same for all build types?
-
-The default depth of 50 is applicable for the manual execution of branch and tag build however this is not applicable for PR builds whether it is manually triggered or via webhook.
 
 ## SCM status updates and PR checks
 
@@ -1243,9 +1258,23 @@ Go to the [Kaniko container runtime error article](./articles/kaniko_container_r
 
 The default build context is the stage workspace directory, which is `/harness`.
 
-### Why the ```build and push``` step is trying to push to dockerhub public repository even if the connector used in the step is pointing to an internal container resistry?
+### Why is the Build and Push step trying to push to a public Docker Hub repository even though the connector used in the step points to an internal container registry?
 
-This scenario might occur if the Docker connector used is pointing to an internal private container registry, but the Fully Qualified Name (FQN) of the repository name is not configured in the build and push step. Make sure to use the FQN for the repo when pushing it to an internal private container registry
+This can occur if the Build and Push step doesn't have the repo's Fully Qualified Name (FQN), even if your Docker connector points to an internal private container registry.
+
+Make sure to use the FQN for the repo when pushing to an internal private container registry.
+
+### Why do I get an out of memory error when pushing images to Docker Hub?
+
+The Build and Push to Docker step can return out of memory errors, such as:
+
+```
+exit status 255 Found possible error on line 70. Log: signal: killed . Possible error: Out of memory. Possible resolution: Increase memory resources for the step
+```
+
+To address this error, enable the [Optimize setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
+
+You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
 
 ## Upload artifacts
 
@@ -1307,6 +1336,14 @@ These are derived from your [Artifactory connector](https://developer.harness.io
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
+### What if my test tool's default report format isn't JUnit?
+
+There are converters available for many test tools that don't produce results in JUnit format by default.
+
+For example, the default report format for Jest is JSON, and you can use the Jest JUnit Reporter to convert the JSON results to JUnit XML format.
+
+For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
+
 ### Can I specify multiple paths for test reports in a Run step?
 
 Yes, you can specify multiple paths for test reports. Ensure that the reports do not contain duplicate tests when specifying multiple paths.
@@ -1330,7 +1367,7 @@ No. Test reports from tests run in Run steps also appear there if they are [corr
 Yes. How you do this depends on whether your tests run in a **Run** step or a **Run Tests** step. For instructions, go to:
 
 * [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
-* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/)
+* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting)
 
 ## Test Intelligence
 
@@ -1478,12 +1515,31 @@ Output variables don't support multi-line output. Content after the first line i
 
 ### How do I get a file from file store in a Run step?
 
-You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`. Here's an example in a script:
+You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`.
+
+Here's an example in a script:
 
 ```
 raw_file=<+fileStore.getAsBase64("someFile")>
 config_file="$(echo "$raw_file" | base64 --decode)"
 ```
+
+:::warning
+
+File store expressions don't work for all secrets, and some secrets require additional handling.
+
+For more information, go to:
+
+* [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step)
+* [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - JKS files](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#jks-files)
+
+:::
+
+### Can I start containers during pipeline execution? For example, I need to start some containers while executing tests.
+
+You could do this by [running DinD in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage) so that those services are available when you need to reference them during pipeline execution.
 
 ## Entry point
 
@@ -1543,13 +1599,11 @@ You can also [add a parallel Run step to monitor and help debug the Background s
 
 If you run [Docker-in-Docker in a Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage), and your `docker build` commands fail due to OOM errors, you need to increase the memory and CPU limit for the Background step. While the `docker build` command can be in a Run step or a Build and Push step, the build executes on the DinD container, which is the Background step running DinD. Therefore, you need to increase the [container resources for the Background step](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#set-container-resources).
 
-### I need to start few containers while executing tests? How can I start the containers during the CI piepline execution?
+### My pipeline runs DinD in a Background step, and I need to start another container in a subsequent run step. How can I connect to the application running in the Background step from the Run step?
 
-You could consider running the dind container in the back ground step. More details about the same can be reffered in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage/)
+When you start the container in the Run step, attach the container to host network by passing the flag `--net host`. Then, you can hit the endpoint `localhost:PORT` from the run step to connect to the application running inside the container.
 
-### I have pipeline with a dind container running as a background step and Im starting a new container on top of the dind container from the subsequent run step in the CI pipeline. How can I connect to an application running inside this container from the run step?
-
-When you start the container from run step, attach the container to host network by passing the flag ```--net host``` and then you can hit the endpoint ```localhost:port``` from the run step to connect to the application running inside the container
+For more information go to [Background step settings - Name and ID](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#name-and-id).
 
 ## Plugins and integrations
 
@@ -1606,9 +1660,11 @@ If the Action allows you to override the `working-directory`, such as with the [
 
 Harness doesn't have OOTB support for Datadog Pipeline Visibility, but you can use the [Datadog Drone plugin](https://plugins.drone.io/plugins/datadog) in a [Plugin step](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci).
 
-### Why the plugin step is trying to connect to the dockerhub public endpoint to fetch the entry point even if the docker connector used in the plgin step is pointing to an internal container registry?
+### Why is the Plugin step trying to fetch the entrypoint from the public Docker Hub endpoint even though the connector used in the step points to an internal container registry?
 
-It could happen if the docker connector used is pointing to an internal private container registry but the FQN (Fully qualified name) of the image name is not configured in the plugin step. Ensure that you use the FQN for the the image when pulling the image from an internal private container resistry.
+This can occur if the Build and Push step doesn't have the image's Fully Qualified Name (FQN), even if your Docker connector points to an internal private container registry.
+
+Make sure to use the FQN for the image when pulling from an internal private container registry.
 
 ## Workspaces, shared volumes, and shared paths
 
@@ -1773,7 +1829,7 @@ Yes. Depending on the build infrastructure, Background steps can either use exis
 
 ### How do I add volumes for PostgreSQL data in the build workspace?
 
-With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 ### Can I run a LocalStack service in a Background step?
 
@@ -1873,9 +1929,25 @@ For more information about configuring connectivity, go to:
 
 Go to [CI step logs don't load in real time](./articles/CI-step-logs-dont-load-in-real-time).
 
-### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
+### Step succeeds even when explicitly executing exit 1 in a Bash script that runs in script's background
 
-The step in Harness determines its status based on the exit status received from the primary script execution. When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within a background function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
+Harness determines the execution status for a step based on the exit status received from the primary script execution.
+
+When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call `exit 1` within a background function, it won't cause the step to fail if the primary script succeeds.
+
+This behavior is consistent with how scripts operate both inside and outside of Harness.
+
+### Build step fails due to ResourceExhausted
+
+Build and Push steps can return a `ResourceExhausted` error, such as:
+
+```
+exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message larger than max (4950319 vs. 4194304)
+```
+
+This can be related to log streaming during the Build and Push step or a Run step executing a build script. It indicates that the logs are too large for the log streaming service to handle.
+
+If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
