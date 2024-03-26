@@ -39,7 +39,7 @@ For information about upcoming and recently released features, go to the [SEI re
 
 Some Harness SEI features are released behind feature flags to get feedback from a subset of customers before releasing the features to general availability.
 
-You can opt-in to the early access (beta) features for Harness CI described in the following table. Contact [Harness Support](mailto:support@harness.io) to enable specific early access features in your Harness account. Include the feature flag or name with your request.
+You can opt-in to the early access (beta) features for Harness SEI described in the following table. Contact [Harness Support](mailto:support@harness.io) to enable specific early access features in your Harness account. Include the feature flag or name with your request.
 
 For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
 
