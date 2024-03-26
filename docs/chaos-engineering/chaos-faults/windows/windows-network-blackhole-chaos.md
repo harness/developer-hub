@@ -42,17 +42,17 @@ Windows network blackhole chaos simulates a network blackhole scenario on Window
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> Comma separated list of destination hosts to block. </td>
+        <td> Comma-separated list of destination hosts to block. </td>
         <td> For example, <code>github.com,harness.io</code>. For more information, go to <a href="#destination-hosts-and-ip-addresses"> destination hosts. </a> </td>
       </tr>
       <tr>
         <td> IP_ADDRESSES </td>
-        <td> Comma separated list of IP addresses to block. </td>
+        <td> Comma-separated list of IP addresses to block. </td>
         <td> For example, <code>10.0.0.1,10.0.0.2</code>. For more information, go to <a href="#destination-hosts-and-ip-addresses"> IP addresses. </a> </td>
       </tr>
       <tr>
         <td> SERVER_HOST </td>
-        <td> Provide the server host when running global blackhole chaos that is without destination hosts and ip addresses. </td>
+        <td> Provide the server host when running global blackhole chaos that is without destination hosts and IP addresses. </td>
         <td> For example, <code>app.harness.io</code>. For more information, go to <a href="#global-blackhole-chaos"> server host. </a> </td>
       </tr>
       <tr>
@@ -102,9 +102,9 @@ spec:
               value: ""
 ```
 
-### Global Blackhole Chaos
+### Global blackhole chaos
 
-When neither the `DESTINATION_HOSTS` nor the `IP_ADDRESSES` envs are provided, the experiment will initiate a global blackhole chaos. This means that all network traffic will be blocked except for communication with a specific server infrastructure. You can specify the host for the server infrastructure using the `SERVER_HOST` environment variable, as demonstrated in the following example.
+When neither the `DESTINATION_HOSTS` nor the `IP_ADDRESSES` environment variables are provided, the experiment initiates a global blackhole chaos. This means all the network traffic will be blocked except for communication with a specific server infrastructure. You can specify the host for the server infrastructure using the `SERVER_HOST` environment variable, as demonstrated in the following example.
 
 Following YAML snippet illustrates the use of this input variable.
 
