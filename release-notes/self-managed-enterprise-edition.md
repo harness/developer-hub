@@ -231,7 +231,7 @@ gsutil -m cp \
 
 #### Security Testing Orchestration
 
-- AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
+- AIDA remediation is now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
 
 ### Fixed issues
 
@@ -477,7 +477,7 @@ This release includes the following Harness module and component versions.
 
 **Alternative air gap bundle download method**
 
-Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
 ```
 gsutil -m cp \
@@ -519,7 +519,7 @@ This release includes the following Harness module and component versions.
 
 **Alternative air gap bundle download method**
 
-Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
 ```
 gsutil -m cp \
@@ -1122,7 +1122,6 @@ gsutil -m cp \
 - Allow to delete service from actual service window(CDS-78792)
   - Service delete option is now available on the Service details page. Previously, Users could only delete service from Service List Page.
 
-
 #### Continuous Integration
 
 - The Get Started workflow can now auto-generate starter pipelines from [Harness Code repositories](/docs/code-repository). (CI-10780)
@@ -1270,7 +1269,6 @@ on class `ScriptSshExecutor.java` made the log stream terminate.
 
 - Creating the Terraform resource `harness_platform_file_store_file` without content crashes.	(CDS-77833)
   - Now Harness provides an empty file when content is null.
-
 
 #### Continuous Error Tracking
 
@@ -1470,7 +1468,6 @@ Without this feature flag enabled, delegate selectors aren't applied to delegate
 With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
 
 ### Fixed issues
-
 #### Continuous Delivery & GitOps
 
 - The Continuous Integration step library listed step categories in the following order: Security Tests, Artifacts, Builds, and Security. This order was inappropriate for CI stages and required you to scroll to find CI steps. (CDS-79655)
@@ -1710,7 +1707,7 @@ With this feature flag enabled, Harness uses your [delegate selectors](/docs/pla
 
   This issue has been fixed.
 
-- If shell script execution fails with an exception such as a step timeout, the delegate logs include the message “Exception in script execution”. This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
+- If shell script execution fails with an exception such as a step timeout, the delegate logs include the message "Exception in script execution". This message does not help attempts to determine the root cause. (CDS-85024, ZD-54110)
 
   This issue has been fixed. The delegate logs now include a more meaningful message.
 
@@ -1891,7 +1888,6 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 - Fixed a UI issue in the Mend configuration UI, where changing the [Lookup Type](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference#lookup-type)didn't update the YAML value correctly. (STO-6553)
 
 - Fixed a back-end API linking issue that could cause rendering/linking issues in the **Security Tests** tab. (STO-6586)
-
 
 ## Previous releases
 
@@ -2220,7 +2216,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   This item requires Harness Delegate version 23.10.81010. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Secrets that are referenced in a service variable are displayed on the secret's **References** tab but secrets that are referenced in an environment’s service overrides are not. (CDS-80615)
+- Secrets that are referenced in a service variable are displayed on the secret's **References** tab but secrets that are referenced in an environment's service overrides are not. (CDS-80615)
 
   This issue has been fixed.
 
@@ -2286,7 +2282,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   This issue has been fixed.
 
-- A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment: the console view displayed “No analysis” while the pipeline view displayed a more verbose output. (CDS-81291, ZD-52005)
+- A discrepancy existed in the information displayed between the pipeline view and console view of the Verify step in a deployment: the console view displayed "No analysis" while the pipeline view displayed a more verbose output. (CDS-81291, ZD-52005)
 
   This issue is now fixed. If an error occurs, the message is displayed at the top of the view.
 
@@ -2314,7 +2310,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   This issue has been fixed.
 
-- Earlier, even though a freeze window was enabled and active and you had configured the **Freeze window is enabled and active** notification setting (`FreezeWindowEnabled` in YAML), Harness users did not receive a _Freeze Active_ notification. The issue occurred if you enabled the freeze window when its start time was in the past (meaning that the freeze window became active as soon as you enabled it). This issue did not occur if the freeze window’s start time was in the future. (CDS-81891, ZD-52835)
+- Earlier, even though a freeze window was enabled and active and you had configured the **Freeze window is enabled and active** notification setting (`FreezeWindowEnabled` in YAML), Harness users did not receive a _Freeze Active_ notification. The issue occurred if you enabled the freeze window when its start time was in the past (meaning that the freeze window became active as soon as you enabled it). This issue did not occur if the freeze window's start time was in the future. (CDS-81891, ZD-52835)
 
   This issue has been fixed. Now, a _Freeze Active_ notification is sent if you make changes to a freeze window that is enabled and active, provided that the **Freeze window is enabled and active** setting is configured.
 
@@ -2668,7 +2664,7 @@ gsutil -m cp \
 
 - The **Session Timeout** field in Authentication Settings is renamed to **Session Inactivity Timeout**. The field now automatically converts the minutes you enter to higher units of time, and displays the result under the field to simplify usage. For example, if you enter 1440, the UI shows **1 day** below the field. (PL-39982, ZD-47238)
 
-- If the Email step failed to send a notification, the following message was displayed: “Failed to send the email. Check SMTP configuration.” The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
+- If the Email step failed to send a notification, the following message was displayed: "Failed to send the email. Check SMTP configuration." The message did not include any additional information to help you debug the issue. (PL-40007, ZD-47524)
 
   Now, the message has been enhanced to show the cause of failure. It also identifies the delegate that executed the task.
 
@@ -2857,7 +2853,7 @@ gsutil -m cp \
 
 - Implemented a fix to ensure that user-entered values are always populated on the **Inputs** tab when running or rerunning a pipeline. (CDS-75593, ZD-48181)
 
-- Fixed a delegate issue where exceptions happened due to k8s kubectl “connection-refused” errors. With this fix, these exceptions are now classified as connectivity errors. This gives you proper control to implement failure strategies based on errors of type Connectivity. (CDS-75777, ZD-48380)
+- Fixed a delegate issue where exceptions happened due to k8s kubectl "connection-refused" errors. With this fix, these exceptions are now classified as connectivity errors. This gives you proper control to implement failure strategies based on errors of type Connectivity. (CDS-75777, ZD-48380)
 
   This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -3032,7 +3028,7 @@ gsutil -m cp \
 
   - When a user tried to add more services, only the most recently selected services included the **Variable** field.
 
-– Fixed an issue where email notifications sent for approvals did not preserve line breaks specified in the UI. With this fix, approval emails will be formatted correctly. (CDS-79071, ZD-50115)
+- Fixed an issue where email notifications sent for approvals did not preserve line breaks specified in the UI. With this fix, approval emails will be formatted correctly. (CDS-79071, ZD-50115)
 
 - Fixed an issue where **Abort** was not available when a pipeline or stage status was **Queued** during a pipeline execution. (CDS-79073)
 
@@ -3233,7 +3229,7 @@ gsutil -m cp \
 
   Now, in addition to selecting users from the menu, you can paste users' email addresses in the text box.
 
-- Earlier, when you clicked an expired link in an invitation email, Harness displayed the following message: “We couldn’t find an invitation matching the email address you entered. Please search your email for an invitation from Harness or contact your admin." This message was inaccurate. (PL-40597)
+- Earlier, when you clicked an expired link in an invitation email, Harness displayed the following message: "We couldn't find an invitation matching the email address you entered. Please search your email for an invitation from Harness or contact your admin." This message was inaccurate. (PL-40597)
 
   Now, Harness displays the following message when you click a link in an expired invitation: "This invitation URL has expired. Please request for a new invitation from your admin."
 
@@ -3663,7 +3659,7 @@ Argo CD deployments were failing. Looker now includes `models.persistent.storage
 
 ##### Self-Managed Enterprise Edition
 
-- To avoid connection resets from load balancers with fixed idle timeouts (AWS NLB: 350s), we've added support for configuring the maximum idle timeout for the gateway's HTTP client. You can now update the `additionalConfig` in the gateway’s `values.yaml` file. (SMP-1926)
+- To avoid connection resets from load balancers with fixed idle timeouts (AWS NLB: 350s), we've added support for configuring the maximum idle timeout for the gateway's HTTP client. You can now update the `additionalConfig` in the gateway's `values.yaml` file. (SMP-1926)
 
   ```yaml
   ---
@@ -4009,7 +4005,7 @@ This item requires Harness Delegate version 23.08.80104. For information about f
 
 This issue is resolved, and you can now sort the connectors by when they were last updated.
 
-- For the **Audit Trail**, the **YAML Difference** on the **Event Summary** pane didn’t include tag information for delegate groups and registers. (PL-40073)
+- For the **Audit Trail**, the **YAML Difference** on the **Event Summary** pane didn't include tag information for delegate groups and registers. (PL-40073)
 
   This issue has been resolved.
 
@@ -4685,7 +4681,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- SCIM PATCH requests for deleting a Harness user return a “user does not exist” message in a successful delete operation. (PL-38868, ZD-44150)
+- SCIM PATCH requests for deleting a Harness user return a "user does not exist" message in a successful delete operation. (PL-38868, ZD-44150)
 
   This issue has been resolved by returning a NULL response in the Patch operation to delete a user.
 
@@ -7741,7 +7737,7 @@ This release includes the following Harness module and component versions.
 
   When using stage templates in pipelines there was a case where the access check for the environment was skipped and users still need to have access to all the connectors/secrets used in the service and the infrastructure.
 
-  Now, Harness does not check nested permissions for templates. For example, if a template has a connector/service/environment inside it, Harness won’t check for their nested access permissions during pre-execution validation. Instead, we rely on individual steps to do the RBAC during actual execution.
+  Now, Harness does not check nested permissions for templates. For example, if a template has a connector/service/environment inside it, Harness won't check for their nested access permissions during pre-execution validation. Instead, we rely on individual steps to do the RBAC during actual execution.
 
 - An empty trigger name is not disabling the **Continue** button. (CDS-49631)
 
@@ -8140,7 +8136,7 @@ This release includes the following fixed issues.
 
   We now evaluate the repository field and fetch artifact path when repository field is passed as a expression.
 
-- Need padding added between the Run Pipeline heading’s tooltip and the All Stages dropdown (CDS-46954)
+- Need padding added between the Run Pipeline heading's tooltip and the All Stages dropdown (CDS-46954)
 
   Added left margin to tooltip.
 
@@ -8411,11 +8407,11 @@ This release introduces the following features and enhancements.
 | PL-27160                   | The option to disable Harness Secret Manager is now a part of the core settings in Account Default Settings.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | PL-28597                   | You can now import Templates from your Git repo. See Import a Template From Git.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | PL-28978                   | You can now create secrets using the Google Cloud Secret Manager in Harness. For more information, see Add a Google Cloud Secret Manager.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| PL-29067                   | SCIM defined three endpoints to facilitate discovery of SCIM service provider features and schema that MAY be retrieved using `HTTP GET:` Reference: https://www.rfc-editor.org/rfc/rfc7644.html#section-4                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| PL-29067                   | SCIM defined three endpoints to facilitate discovery of SCIM service provider features and schema that MAY be retrieved using `HTTP GET:` Reference: https://www.rfc-editor.org/rfc/rfc7644.html#section-4                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |                            | With this change, Harness supports the following new endpoints per SCIM 2.0 protocol:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                            | `/ServiceProviderConfig`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-|                            | `/ResourceType`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-|                            | `/Schemas`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-7                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|                            | `/ServiceProviderConfig`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+|                            | `/ResourceType`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-6                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+|                            | `/Schemas`, Reference: https://www.rfc-editor.org/rfc/rfc7643#section-7                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | PL-29896                   | When provisioning users through SCIM, users receive two emails: one from FirstGen and the other from NextGen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | SRM-12386                  | The user interface no longer allows you to configure invalid metric thresholds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |                            | On the Customize Health Source tab, the following changes are made to the Advanced (Optional) configuration section:                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -8439,7 +8435,7 @@ This release introduces the following fixes.
 | CDS-43200, ZD-34500                     | **Pipeline variables are not being translated in HTTP step assertions and output variables**. Previously, only HTTP response expressions could be used in an HTTP step assertion. Now, users can use pipeline and other expressions in assertions and use them with HTTP response expressions.                                                                                                                                                                                                                                                             |
 | CDS-43673                               | **A drop-down selector for the image path in an ECR artifact source is not available**. A drop-down selector is available now.                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | CDS-43675                               | **Implement dropdown for Artifact Path in Amazon S3 Artifact Source**. We have made the changes to fetch S3 filePaths in the dropdown while creating the artifact source.                                                                                                                                                                                                                                                                                                                                                                                  |
-| CDS-43863                               | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`.                                                                                                                                                                                                                                                                                                                                                                   |
+| CDS-43863                               | **The `<artifact.metadata.url>` is null for the Nexus3 artifact Docker repository format.** The URL was added to the metadata so it can now be accessed using `<artifact.metadata.url>`.                                                                                                                                                                                                                                                                                                                                                                   |
 | CDS-43869                               | Made minor changes in style to infra definition section.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | CDS-43874                               | **When editing a secret, the Verify Connection screen closes prematurely**. This issue has been fixed.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | CDS-44196                               | **The ECS Harness file store console view does not show fetch manifests**. This issue has been fixed.                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
@@ -8492,14 +8488,14 @@ This release introduces the following fixes.
 | CI-5622                                 | **Intermittent issue in which a hosted build cannot fetch a code repo due to an internal exception**. This issue has been fixed.                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | CI-5693                                 | Improved the validation error message that appears when a user tries to include an unsupported character in a step name.                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | CI-5727, ZD-37429                       | Fixed an issue where images push to Azure Container Registry (ACR) did not appear on the artifacts tab of builds.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| CI-5869                                 | **Unable to run the Google Cloud Function Drone plugin**. The issue occurs because unexpected `_uuid` elements were being added to the settings. To resolve this issue, the `_uuid` attribute was removed from the nested setting attribute in the CI plugin step type.                                                                                                                                                                                                                                                                                    |
+| CI-5869                                 | **Unable to run the Google Cloud Function Drone plugin**. The issue occurs because unexpected `_uuid` elements were being added to the settings. To resolve this issue, the `_uuid` attribute was removed from the nested setting attribute in the CI plugin step type.                                                                                                                                                                                                                                                                                    |
 | CI-5872                                 | **A file artifact URL does not show for artifact type File**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | A colon (:) appears instead of the file artifact URL. This issue has been fixed. |
 | CI-5879                                 | **Empty trigger data for non-CI pipelines does not show a message**. A static message now appears for CD manual executions.                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | CI-5960                                 | **When creating a connector for an API authentication Personal Access Token, the All tab does not display**. This issue has been fixed.                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | CI-5961                                 | **Windows PowerShell commands do not start on a new line**. Commands now start on a new line.                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | CI-5974                                 | **Retrying a failed pipeline crashes for PR codebase type**. This issue has been fixed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | DEL-5096                                | The display of detail information for immutable delegates version 76300 and earlier was changed to indicate that autoUpgrade is OFF. These delegate versions do not include the autoUpgrade feature.                                                                                                                                                                                                                                                                                                                                                       |
-| FFM-4581                                | Added a warning that Flag Variation names cannot contain only numerical characters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| FFM-4581                                | Added a warning that Flag Variation names cannot contain only numerical characters.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | FFM-4740                                | On the Harness Platform, any Get Started with Feature Flag buttons will now take you directly to the first stage of the Get Started flow, instead of the Overview page.                                                                                                                                                                                                                                                                                                                                                                                    |
 | FFM-4844                                | Fixed a bug that was causing some failure strategies not to show on Feature Flag Pipeline stages.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | FFM-5203                                | Fixed issue whereby inaccurate FF setup instructions could be displayed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
@@ -8515,7 +8511,7 @@ This release introduces the following fixes.
 | PIE-6017                                | **In the Pipelines, when the commit message was left blank, the Pipeline Execution History threw an exception**. This has now been fixed so that the Pipeline Execution History displays execution details.                                                                                                                                                                                                                                                                                                                                                |
 | PIE-6084, ZD-37220                      | **When running the pipeline, the primary artifact source is not auto-selected and tags and buckets are not fetched**. This issue has now been fixed.                                                                                                                                                                                                                                                                                                                                                                                                       |
 | PIE-6134                                | **Re-run Pipeline is not working as expected**. This issue has now been fixed by checking if the values of the variables are missing from the variables map.                                                                                                                                                                                                                                                                                                                                                                                               |
-| PIE-6151                                | **The frequency of polling to fetch the pipeline execution list is 20 seconds. Such a long polling interval means that the data fetched by one poll goes stale before the next poll.**  This has now been fixed by increasing the polling frequency to every 5 seconds.                                                                                                                                                                                                                                                                                    |
+| PIE-6151                                | **The frequency of polling to fetch the pipeline execution list is 20 seconds. Such a long polling interval means that the data fetched by one poll goes stale before the next poll.** This has now been fixed by increasing the polling frequency to every 5 seconds.                                                                                                                                                                                                                                                                                    |
 | PIE-6155, ZD-36720                      | **Service V2 does not resolve the infrastructure definition parameters passed from the triggers**. When a trigger invokes a pipeline, the YAML definition of the trigger and the corresponding pipeline with runtime inputs are merged. In YAML files with a single node element, the infrastructure definition is not processed on the triggers and is not passed as a runtime value. This has now been fixed. The YAML processing on triggers now takes care of processing the single node elements and propagates the value to the respective pipeline. |
 | PIE-6264                                | **Clicking Run in pipeline studio navigates to the input sets section in Run Pipeline window. This happens even when you have no runtime inputs for a Pipeline**. This has now been fixed. If a pipeline does not need any runtime inputs, clicking on Run starts the pipeline execution.                                                                                                                                                                                                                                                                  |
 
@@ -8571,7 +8567,7 @@ This release introduces the following fixes.
 
 - The template list screen did not display the account level templates created inline when git experience is enabled.There was a criteria in the query which was filtering out inline templates.This issue has been resolved. The template list screen now displays the account level templates created inline when git experience is enabled.
 
-- The old connector’s delegate selector has a delegate that is no longer available. Hence it would never delete the old instances.Once the connector is deleted, we have written a migration to cleanup all instances of deleted connectors. This would cleanup instances for old connector and prevent it from looking for running instances (as it still points to same cluster/namespace). (CDS-43350, ZD-34558)
+- The old connector's delegate selector has a delegate that is no longer available. Hence it would never delete the old instances.Once the connector is deleted, we have written a migration to cleanup all instances of deleted connectors. This would cleanup instances for old connector and prevent it from looking for running instances (as it still points to same cluster/namespace). (CDS-43350, ZD-34558)
 
 - Clarified the error message that is sent when delegate execution halts unexpectedly. (CDS-43430, ZD-34745)
 
@@ -9049,7 +9045,7 @@ When users are making a patch request to add/remove Targets to a Target Group or
 
 PIE-4981
 
-When we click on “Run” button in pipeline studio, if the pipeline has runtime inputs, we have the option to create an input set on the fly while running the pipeline. Currently, a user can save the input set into a separate branch from the pipeline. This creates a bad UX in that while running the pipeline, if input set is in a different branch, it’ll fail.- To resolve this issue, we have decided to disable “Commit to a new branch” for input sets.Note: This is only from the “Run Pipeline” dialog and not the “Input Sets” tab at the header. From there, user can commit in any branch they like.
+When we click on "Run" button in pipeline studio, if the pipeline has runtime inputs, we have the option to create an input set on the fly while running the pipeline. Currently, a user can save the input set into a separate branch from the pipeline. This creates a bad UX in that while running the pipeline, if input set is in a different branch, it'll fail.- To resolve this issue, we have decided to disable "Commit to a new branch" for input sets. Note: This is only from the "Run Pipeline" dialog and not the "Input Sets" tab at the header. From there, user can commit in any branch they like.
 
 PIE-5018
 
@@ -9341,7 +9337,7 @@ This was not a genuine exception. We use this exception to decide whether to del
 
 CDS-42234
 
-This was a problem with the spring-data-mongodb:2.2.7.RELEASE library being used. When creating query with multiple ‘and’ operators, it interprets the constructed as invalid.
+This was a problem with the spring-data-mongodb:2.2.7.RELEASE library being used. When creating query with multiple 'and' operators, it interprets the constructed as invalid.
 
 CDS-42258
 
@@ -9385,7 +9381,7 @@ Fixed an issue that exposed WinRM credentials in YAML.
 
 CDS-42643
 
-Added a check which checks for old git sync and if old gitsync is enabled git details will be shown on the pipeline list. This is completely a new change and doesn’t affect any existing flows
+Added a check which checks for old git sync and if old gitsync is enabled git details will be shown on the pipeline list. This is completely a new change and doesn't affect any existing flows
 
 CI-5235
 
