@@ -4,11 +4,6 @@ description: Harness uses Open Policy Agent (OPA) to store and enforce policies 
 sidebar_position: 1
 ---
 
-:::note
-Currently, this feature is behind the feature flag, `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This topic provides an overview of how Harness Policy As Code implemented governance.
 
 :::note

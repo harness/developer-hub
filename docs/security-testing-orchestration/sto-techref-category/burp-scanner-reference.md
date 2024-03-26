@@ -11,7 +11,7 @@ You can scan your application instances using [Burp Enterprise](https://portswig
 
 ### Root access requirements 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 

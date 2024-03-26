@@ -14,8 +14,14 @@ The [Harness Code Repository module](/docs/code-repository/code-supported.md) (C
 
 ## Access control
 
-Access control for Harness Code is part of the [Harness Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md). Permissions for Harness Code include the ability to view, create/edit, delete, and push to repositories.
+Access control for Harness Code is handled primarily through [Harness Platform RBAC](/docs/platform/role-based-access-control/rbac-in-harness.md).
 
-Harness Code includes one [built-in role](/docs/platform/role-based-access-control/add-manage-roles.md), which is the **Code Admin** role.
+Permissions for Harness Code include the ability to view, create/edit, delete, and push to repositories.
 
-<!-- ## Harness Code API documentation -->
+Harness Code includes one [built-in role](/docs/platform/role-based-access-control/add-manage-roles.md), which is the **Code Admin** role. You can create additional roles as needed.
+
+Within Harness Code, you can [configure branch rules and CODEOWNERS](/docs/code-repository/config-repos/rules.md) for individual repositories.
+
+## Harness Code API reference
+
+For API specifications, go to the [Harness API reference](https://apidocs.harness.io/tag/repository).

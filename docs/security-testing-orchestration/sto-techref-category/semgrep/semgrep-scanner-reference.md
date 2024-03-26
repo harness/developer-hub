@@ -23,9 +23,9 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 -->
 
-### Root access requirements
+### Root access requirements 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
@@ -63,7 +63,6 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 import StoSettingScanTypeRepo     from '../shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
-
 
 
 #### Target and variant detection

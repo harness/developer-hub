@@ -24,6 +24,12 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## March 2024
 
+### Version 1.33.1
+
+#### New features and enhancements
+
+* The Windows blackhole chaos experiment supports graceful abort functionality, thereby providing better control and flexibility while performing the experiment. (CHAOS-4582)
+
 ### Version 1.32.1
 
 #### New features and enhancements

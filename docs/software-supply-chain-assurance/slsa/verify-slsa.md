@@ -4,37 +4,36 @@ description: Verify SLSA Provenance with Harness SSCA
 sidebar_position: 20
 ---
 
-You can use Harness SSCA to verify SLSA Provenance and confirm that you can trust an artifact before deployment. You can also use SSCA to [generate SLSA Provenance](./generate-slsa.md).
 
-<details>
-<summary>Generate and verify SLSA Provenance architecture</summary>
+In this document, we'll explore how to verify SLSA Provenance attestation and enforce policies to guarantee the provenance contents remain unaltered. Unlike the setup for SLSA provenance generation, the verification process can be conducted in both the Build and Deploy stages of your pipeline. Here’s an overview of the procedure:
 
-To generate and verify SLSA Provenance with Harness SSCA, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage). The stages must have these minimum steps:
+<DocImage path={require('./static/overview-slsa-ver.png')} width="90%" height="90%" />
 
-- **Build** stage:
-  - **Build and Push an image to Docker Registry** step: Build and push an image to a Docker registry.
-  - [SLSA generation enabled in the stage settings.](./generate-slsa.md)
-- **Deploy** stage:
-  - **SLSA Verification** step: Verify the SLSA Provenance.
-  - **Rolling deployment** step: Deploy the image.
 
-<!-- ![](./static/slsa-pipeline-example.png) -->
+## Verify SLSA Attestation
 
-<DocImage path={require('./static/slsa-pipeline-example.png')} />
+In the Harness SSCA, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it's placed within a container step group.
+    
+<DocImage path={require('./static/slsa-ver-step.png')} width="50%" height="50%" />
 
-</details>
 
-## Prepare a pipeline
+The SLSA Verification step has the following settings:
 
-To verify SLSA Provenance in Harness, you need a pipeline with a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage).
+* **Name**: Enter a name for the step.
+* **Registry Type**: Choose your registry from the list of supported items.
+* **Container Registry**: Select the [Docker Registry connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored.
+* **Image**: Enter the repo path (in your container registry) for the image that you want to verify, such as my-docker-repo/my-artifact.
+* **Tag**: Enter the tag for the image, such as latest.
+* **Public Key**: Choose the [Harness file secret](https://developer.harness.io/docs/platform/secrets/add-file-secrets) that holds the public key, which will be used to verify the attestation's authenticity. This key should correspond to the private key and password utilized during the attestation's generation.
 
-## Get the public key
 
-Keys are used to sign and verify provenance.
+## Enforce Policies on SLSA Provenance
 
-Create a [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key file that corresponds with the private key file that was used to sign and attest the provenance.
+Immediately following the verification of the provenance attestation, you have the option to configure the step to enforce policies on the provenance. This ensures that the contents of the provenance remain unchanged and have not been tampered with.
 
-For example, if your pipeline includes [provenance generation](./generate-slsa.md), then you need to use the public key that corresponds to the private key you used for provenance generation.
+To enforce policies, navigate to the Advanced tab of the "SLSA Verification" step, expand the "Policy Enforcement" section, and specify the policy sets you wish to enforce.
+
+<DocImage path={require('./static/slsa-ver-policy-enforce.png')} width="50%" height="50%" />
 
 ## Create SLSA policies
 
@@ -42,7 +41,7 @@ You must create a set of OPA policies that you want Harness SSCA to use for SLSA
 
 :::info
 
-OPA polices used for SLSA Provenance verification are different from [SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) used for SSCA policy enforcement.
+OPA policies used for SLSA Provenance verification are different from [SSCA policies](/docs/software-supply-chain-assurance/ssca-policies/create-ssca-policies) used for SSCA policy enforcement.
 
 :::
 
@@ -72,43 +71,6 @@ deny[msg]{
 
 For more examples, go to [Policy samples](/docs/platform/governance/policy-as-code/sample-policy-use-case).
 
-## Add the SLSA Verification step
-
-Add the **SLSA Verification** step to a **Deploy** stage to verify provenance. The SLSA Verification step is a container step that must be inside a [container group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups).
-
-### Configure SLSA Verification step settings
-
-The **SLSA Verification** step has the following settings:
-
-* **Name:** Enter a name for the step.
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Docker-compliant container registry where the artifact is stored, such as Docker Hub, Amazon ECR, or GCR.
-* **Image:** Enter the repo path (in your container registry) for the image that you want to verify, such as `my-docker-repo/my-artifact`.
-* **Tag:** Enter the tag for the image, such as `latest`.
-* **Public Key:** Select the [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the [public key](#get-the-public-key) to use to verify the authenticity of the attestation.
-
-<!-- ![](./static/slsa-verify-step-basic.png) -->
-
-<DocImage path={require('./static/slsa-verify-step-basic.png')} />
-
-:::info ECR and GCR repos
-
-If you're using Docker-compliant ECR or GCR repositories, you must:
-
-1. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-   * For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-2. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
-
-:::
-
-### Select SLSA policies to enforce
-
-On the **Advanced** tab for the **SLSA Verification** step, expand the **Policy Enforcement** section, and then add your SLSA Provenance verification [OPA policies](#create-slsa-policies).
-
-<!-- ![](./static/slsa-verify-step-adv.png) -->
-
-<DocImage path={require('./static/slsa-verify-step-adv.png')} />
-
 ## Run the pipeline
 
 When the pipeline runs, the **SLSA Verification** step does the following:
@@ -116,9 +78,9 @@ When the pipeline runs, the **SLSA Verification** step does the following:
 * Verifies the authenticity of the attestation.
 * Verifies the provenance data by applying the specified policy set.
 * Records the policy evaluation results in the step's logs.
-* Reports the overall pass/fail for SLSA verification on the **Artifacts** tab.
+* Reports the overall pass/fail for SLSA verification on the **Supply Chain** tab.
 
-For more information about inspecting SLSA verification results, go to [view pipeline execution results](../ssca-view-results.md).
+For more information about inspecting SLSA verification results, go to [view pipeline execution results](../ssca-view-results.md#view-slsa-provenance-and-verification-status).
 
 ## Verify provenance from third-party build systems
 
@@ -126,6 +88,6 @@ You can use Harness SSCA to verify provenance generated by third-party build sys
 
 To do this:
 
-1. [Get the public key](#get-the-public-key).
+1. Get the public key.
 2. [Create SLSA policies](#create-slsa-policies) that verify the provenance data according to the provenance structure used by in the build system provider.
-3. [Add the SLSA Verification step](#add-the-slsa-verification-step).
+3. [Add SLSA Verification step](#verify-slsa-attestation).
