@@ -37,5 +37,5 @@ Follow these steps to enable PR automation:
 
 
 :::info
-As a security measurement, comments will not be populated if the repository is public. To override it, add an Environment Variable `HARNESS_PASSWORD_API` with the value set as the token/secret to the git repository 
+As a security measure, comments will not be populated if the repository is public. To override it, add the Environment Variable `HARNESS_PASSWORD_API`  with the git repository token/secret set as the value.
 :::
