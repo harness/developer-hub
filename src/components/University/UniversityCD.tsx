@@ -405,14 +405,30 @@ export default function CertificationsCD() {
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => ilt.module === "cd" || ilt.isPreReq)
-                .sort((a, b) => a.priority - b.priority)
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {/* {ilt.filter((ilt) => ilt.module === "cd").length < 1 ? (
-                <p>ILT Coming Soon</p>
-              ) : null} */}
+
+              {/* {ilt
+                .filter((ilt) => {
+                  return ilt.module === "cd";
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))} */}
+              {ilt
+                .filter((ilt) => {
+                  return (
+                    ilt.module === "cd" ||
+                    (ilt.module === "cd" && ilt.tileType === "comming soon")
+                  );
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
             </div>
           </div>
         </div>

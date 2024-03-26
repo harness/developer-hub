@@ -32,6 +32,12 @@ For example, the expression `<+pipeline.name>` resolves to name of the pipeline 
 
 **Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
+
+:::important limitation
+Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
+:::
+
+
 ## Expression usage
 
 Harness variables are declared as expressions using the expression delimiter `<+...>`, such as `<+pipeline.name>` or `<+secrets.getValue("someSecret")>`.

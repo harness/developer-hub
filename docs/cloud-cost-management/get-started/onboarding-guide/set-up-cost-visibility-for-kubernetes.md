@@ -19,7 +19,7 @@ This topic describes how to connect your Kubernetes cluster to CCM.
 :::note
 After you enable CCM, for the first cluster, the data is available within a few minutes for viewing and analysis. However, you would not be able to see the idle cost because of the lack of utilization data. CCM generates the last 30 days of the cost data based on the first events. From the second cluster onwards, it takes about 2 to 3 hours for the data to be available for viewing and analysis.
 
-If you are using an EKS connector, the data generation is delayed. AWS ingests data at the source (S3 bucket) four times a day. CCM takes about two hours to make the data available for viewing and analysis once it is available at the source.
+If you are using a CCM cloud connector, the data generation is delayed. Since CCM performs cost true-up based on cost information available at cloud provider source.
 :::
 
 ## Kubernetes Connector requirements and workflow
