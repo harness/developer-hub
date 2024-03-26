@@ -52,7 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Early access
 
-- Harness has updated the logic for inheriting permissions from containerized step groups to steps. (CDS-79356)
+- Harness has updated the logic for inheriting permissions from containerized step groups to steps. Currently, this feature is behind the feature flag `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-79356)
   
   The new logic follows these steps:
   1. Use the Run Step configuration.
