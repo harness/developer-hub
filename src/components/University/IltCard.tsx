@@ -12,6 +12,11 @@ export enum iltType {
   admin = "Administrators",
 }
 
+export enum tileType {
+  preReq = "pre requisite",
+  commingSoon = "comming soon",
+  normal = "normal",
+}
 export type IltCardItem = {
   title: string;
   module: MODULES;
@@ -20,6 +25,7 @@ export type IltCardItem = {
   version?: string;
   link?: string;
   thumb?: boolean;
+  tileType: tileType;
 };
 
 export default function IltCard({

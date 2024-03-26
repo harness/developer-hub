@@ -3,7 +3,6 @@ When auto-detect is enabled for application instances, the step detects these va
   - The variant is the UTC timestamp when the step scanned the instance.
 
 Note the following:
-- This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. <!-- (STO-6704) -->
 - Auto-detection is not available when the **Scan Mode** is Ingestion. 
 - Auto-detect is the default selection for new pipelines. Manual is the default for old pipelines, but you might find that neither radio button is selected in the UI.
 - You should carefully consider the [baseline you want to specify](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines) for your instance target. Every target needs a baseline to enable the full suite of STO features. Here are a few options:

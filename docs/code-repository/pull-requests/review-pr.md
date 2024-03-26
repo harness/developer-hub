@@ -28,6 +28,9 @@ When you review a PR, you can leave feedback, request changes, or approve the PR
 
 1. In Harness Code, go to the repository where you need to review a pull request.
 2. Go to **Pull Requests**, and select the PR you need to review.
+
+   If you need to review multiple PRs, you can right-click and open the PRs in separate windows or tabs.
+
 3. Select each tab on the PR to inspect the reviews, comments, code changes, commit history, PR check, and other details.
 
 import Tabs from '@theme/Tabs';
@@ -40,14 +43,24 @@ On the **Conversation** tab, you can read the PR description, comment history (i
 
 You can add images and videos to your PR comments. Videos must be 10MB or less. Harness Code supports and tests the following video file formats: `.3gpp`, `.avi`, `.flv`, `.mkv`, `.mov`, `.mp4`, and `.webm`. Other formats might work, but support isn't guaranteed.
 
+If you need to share a comment with someone else, you can copy the PR comment's direct link.
+
 </TabItem>
 <TabItem value="changes" label="Changes">
 
-On the **Changes** tab, you can review the aggregated, latest code changes in the PR and add line-by-line comments. Select the `+` icon to comment on a specific line.
+On the **Changes** tab, you can review the aggregated, latest code changes in the PR and add line-by-line comments.
 
-You can mark files as **Viewed** to collapse the diff. This setting persists across sessions and machines. Files marked as viewed remain viewed/collapsed even if you open the PR on a different machine, browser, or refreshed/new browser session.
+* Select the `+` **Add** icon to comment on a specific line.
 
-If a file changes after you mark it as viewed, the file is marked as **Change since last viewed**, so you don't have to manually check for changes to viewed files. Harness Code also tracks file deletions and additions. For example, assume a file was deleted in a PR, and you marked the deletion as viewed. If, later in the PR's lifespan, the file is restored, Harness Code marks the restored file appropriately so you can review it in its restored state.
+* Select the **Expand All** icon view an entire file within the Changes context.
+
+* Select **Viewed** to mark a file as viewed and collapse the diff for that file.
+
+   This setting persists across sessions and machines. Files marked as viewed remain viewed/collapsed even if you open the PR on a different machine, browser, or refreshed/new browser session.
+
+   If a file changes after you mark it as viewed, the file is marked as **Change since last viewed**, so you don't have to manually check for changes to viewed files.
+
+   Harness Code also tracks file deletions and additions. For example, assume a file was deleted in a PR, and you marked the deletion as viewed. If, later in the PR's lifespan, the file is restored, Harness Code marks the restored file appropriately so you can review it in its restored state.
 
 </TabItem>
 <TabItem value="commits" label="Commits">

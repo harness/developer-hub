@@ -211,5 +211,5 @@ You can create filters to view selected rules:
   <DocImage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
 
 :::important note
-Cost Impact for Evaluation: 1,50,000/ Day
+Number of evaluations for which we can compute cost impact is 1,50,000/ Day.
 :::

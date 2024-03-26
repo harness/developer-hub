@@ -13,7 +13,7 @@ HTTP POST method sends a `POST` request to the provided URL.
 In the case of a complex `POST` request in which the body spans multiple lines, the `bodyPath` attribute is used to specify the path to a file consisting of the same. This file is available to the experiment pod through a ConfigMap resource, wherein the ConfigMap name is defined in the [chaos engine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [chaos experiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. The `body` and `bodyPath` attributes are mutually exclusive. Go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe) to learn more.
 :::
 
-## Defining the probe
+## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 

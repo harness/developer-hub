@@ -1,137 +1,358 @@
 ---
-title: Create and execute rules
+title: Cost Savings
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
+# Cost Savings
+
+## Recommendations
+
+Recommendations help kickstart your journey with governance. Essentially, we run certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, we showcase recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
+
+Listed below are the custodian policies which are used to generate recommendations that we offer for Azure. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
 
-# Optimize cloud costs by using the asset governance rules
+### **1. Recommendation: delete-low-utilised-cosmodb**  
+**Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
 
-:::note
-Currently, Azure support for Asset Governance is behind the feature flag **CCM_ENABLE_AZURE_CLOUD_ASSET_GOVERNANCE_UI** and GCP support for Asset Governance is behind the feature flag **CCM_ENABLE_GCP_CLOUD_ASSET_GOVERNANCE_UI** Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-cosmodb
+    resource: azure.cosmosdb
+    description: |
+      Delete low utilised CosmosDB based on total requests in last 72 hours
+    filters:
+      - type: metric
+        metric: TotalRequests
+        op: le
+        aggregation: total
+        threshold: 1000
+        timeframe: 72
+    actions:
+      - type: delete    
+```
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-To optimize cloud costs, you need to create a governance rule or combine multiple rules into a ruleset and enforce it to provide a more comprehensive, consistent, and efficient approach to cloud asset governance.
+---
 
+### **2. Recommendation: delete-unattached-disk**  
+**Description:** Delete all unattached disks. 
 
-## Create a new rule
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-unattached-disk
+    resource: azure.disk
+    description: |
+      Delete all unattached disks
+    filters:
+      - type: value
+        key: properties.diskState
+        value: Unattached
+    actions:
+      - type: delete
+```
 
-1. In **Harness**, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Rules**.
-4. Select **+ New Rule**. 
+**Savings Computed:** The recommendation identifies a list of resources; to calculate potential savings, the costs of all resources over the last 30 days are summed together and that is shown as the potential savings.  
 
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-  <DocImage path={require('./static/asset-governance-rule-creation.png')} width="60%" height="60%" title="Click to view full size image" />
+---
 
-5. Enter a name for the rule.
-6. Select the cloud provider.
-7. Optionally, enter a description of the rule.
-8. Select **Apply**.
-9. Enter the YAML policy in the rule editor.
-10. Select **Save**. 
+### **3. Recommendation: delete-low-utilised-load-balancers**  
+**Description:** Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours.  
 
-  If the policy is invalid, an error message is displayed.
-10. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
-11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
-12. After evaluating the output, select **Run Once** to execute the rule. 
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-load-balancers
+    resource: azure.loadbalancer
+    description: |
+      Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours
+    filters:
+      - type: metric
+        metric: PacketCount
+        op: le
+        aggregation: total
+        threshold: 1000
+        timeframe: 72
+    actions:
+      - type: delete      
+```
 
-  <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days. 
 
-Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 that can be enforced. These policies cannot be edited but can be cloned.
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-## Create a new rule set
+---
 
-Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. They are especially useful when dealing with numerous rules, as it can become challenging to keep track of them individually. Rule sets help to keep rules organized and easily accessible, making it easier to manage and maintain complex rule configurations.
+### **4. Recommendation: delete-orphaned-network-interface**  
+**Description:** Delete network interface which are not attached to virtual machine.
 
-To create a rule set, perform the following steps:
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-orphaned-network-interface
+    resource: azure.networkinterface
+    description: |
+      Delete network interface which are not attached to virtual machine
+    filters:
+      - type: value
+        key: properties.virtualMachine
+        value: null
+    actions:
+        - type: delete
+```
 
-1. In **Harness**, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Rules**.
-4. Select the **Rule sets** tab.
-5. Select **+ New Rule Set**.
-6. Enter a name for the rule set.
-7. Optionally, enter a description of the rule set.
-8. Select the cloud provider.
-9. Select the rules that you want to enforce. 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
-  <DocImage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
+---
 
-10. Select **Create Rule Set**. 
-The rule set is created successfully. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
+### **5. Recommendation: stop-underutilized-vms**  
+**Description:** Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours.  
 
-  <DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+**Policy Used:**
+```yaml
+policies:
+  - name: stop-underutilized-vms
+    resource: azure.vm
+    description: |
+      Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours
+    filters:
+      - type: metric
+        metric: Percentage CPU
+        op: le
+        aggregation: average
+        threshold: 5
+        timeframe: 72
+    actions:
+      - type: stop
+```
 
-11. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-## Enforce a rule or a rule set
+---
 
-You need to create rule enforcement to automatically detect and take action when the conditions are met. Rule enforcement allows automated actions such as scaling resources up or down based on predefined thresholds. For example, you can create an enforcement to schedule the deletion of all unused EC2 instances older than 60 days.
+### **6. Recommendation: delete-low-utilised-keyvaults**  
+**Description:** Delete KeyVaults with less than 10 API hits in last 72 hours.
 
-To create enforcement, perform the following steps:
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-keyvaults
+    resource: azure.keyvault
+    description: |
+      Delete KeyVaults with less than 10 API hits in last 72 hours
+    filters:
+      - type: metric
+        metric: ServiceApiHit
+        aggregation: total
+        op: lt
+        threshold: 10
+        timeframe: 72
+    actions:
+      - type: delete
+```
 
-1. In your **Harness** application, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Enforcements**.
-4. Select **+ New Enforcement**.
-5. Enter a name for the enforcement.
-6. Optionally, enter a description of the enforcement.
-7. Select the cloud provider.
-8. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
-9. Select **Continue**. 
-10. Select the target accounts and target regions. You could select multiple accounts and regions.
-11. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
-12. Toggle the **Dry Run** mode if you do not want to take action immediately.
-13. Select **Finish**. 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
-    <DocImage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
+---
 
-After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. 
+### **7. Recommendation: delete-low-utilised-sql-server**  
+**Description:** Delete SQL servers with less than 10% average DTU consumption over last 72 hours.  
 
-<DocImage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+**Policy Used:** 
+```yaml
+policies:
+  - name: delete-low-utilised-sql-server
+    resource: azure.sqlserver
+    description: |
+      Delete SQL servers with less than 10% average DTU consumption over last 72 hours
+    filters:
+      - type: metric
+        metric: dtu_consumption_percent
+        aggregation: average
+        op: lt
+        threshold: 10
+        timeframe: 72
+        filter:  "DatabaseResourceId eq '*'"
+    actions:
+      - type: delete
+```
 
-Furthermore, you can disable the enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) and switch to active mode.
-  
-<DocImage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-## Evaluate the rules
+---
 
-1. In your **Harness** application, go to **Cloud Costs**.
-2. Select **Asset Governance**.
-3. Select **Evaluations**.
-4. Select the rule to view the evaluation details. 
-The target accounts, regions, and evaluation logs are displayed.
+### **8. Recommendation: delete-unattached-publicip**  
+**Description:** Delete public ip which are not attached to any network interface.  
 
- <DocImage path={require('./static/asset-gov-eval.png')} width="60%" height="60%" title="Click to view full size image" />
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-unattached-publicip
+    resource: azure.publicip
+    description: |
+      Delete public ip which are not attached to any network interface
+    filters:
+      - type: value
+        key: properties.ipConfiguration
+        value: null
+    actions:
+      - type: delete
+```
 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
-## Use filters in rule evaluation
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-You can create filters to view selected rules:
+---
 
-1. Select the filter icon.
-2. Enter a name.
-3. Select who can edit and view the filter.
-4. Select one or more of the following criteria to filter the results:
-    * Rules
-    * Rule Sets
-    * Enforcements
-    * Minimum Cost Impact ($)
-    * AWS Filters
+### **9. Recommendation: delete-low-utilised-datalake**  
+**Description:** Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours.
 
-      - Target Accounts
-      - Target Regions
-    * Azure Filters
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-low-utilised-datalake
+    resource: azure.datalake
+    description: |
+      Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours
+    filters:
+      - or:
+        - type: metric
+          metric: ReadRequests	
+          op: le
+          aggregation: total
+          threshold: 1000
+          timeframe: 72
+        - type: metric
+          metric: WriteRequests	
+          op: le
+          aggregation: total
+          threshold: 100
+          timeframe: 72          
+    actions:
+      - type: delete
+```
 
-      - Azure Subscription
-      - Target Regions
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
-  <DocImage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
 
-5. Select **Apply**.
+---
+
+### **10. Recommendation: delete-unused-postgresql-servers**  
+**Description:** Delete PostgreSQL Servers that have had zero active connections in the last 72 hours. 
+
+**Policy Used:**
+```yaml
+policies:
+  - name: delete-unused-postgresql-servers
+    resource: azure.postgresql-server
+    description: |
+      Delete PostgreSQL Servers that have had zero active connections in the last 72 hours
+    filters:
+      - type: metric
+        metric: active_connections
+        op: eq
+        threshold: 0
+        timeframe: 72
+    actions:
+      - type: delete
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** To execute the action section of the custodian policy, the Contributor Role is required, whereas the Reader Role suffices for generating recommendations.
+
+## Custom Policies
+
+1. Find SQL Databases with a monthly long term backup retention period more than one year
+```
+policies:
+  - name: long-term-backup-retention
+    resource: azure.sqldatabase
+    filters:
+      - type: long-term-backup-retention
+        backup-type: monthly
+        op: gt
+        retention-period: 1
+        retention-period-units: year
+```
+
+2. Filter to select all virtual machines that are not running:
+
+```
+policies:
+  - name: stopped-vm
+    resource: azure.vm
+    filters:
+     - type: instance-view
+       key: statuses[].code
+       op: not-in
+       value_type: swap
+       value: "PowerState/running"
+```
+
+3. Removes all empty resource groups from the subscription:
+
+```
+policies:
+    - name: rg-remove-empty
+      description: |
+        Removes any empty resource groups from subscription
+      resource: azure.resourcegroup
+      filters:
+        - type: empty-group
+      actions:
+        - type: delete
+
+```
+
+4. Restricts access to storage accounts with specified ip rules to only the ips specified:
+```
+policies:
+  - name: storage-block-public-access
+    description: |
+        Blocks public access to storage accounts with defined IP access rules.
+    resource: azure.storage
+
+    filters:
+    - type: value
+      key: properties.networkAcls.ipRules
+      value_type: size
+      op: ne
+      value: 0
+
+    actions:
+    - type: set-firewall-rules
+      default-action: Deny
+      ip-rules: []
+```
+
+5. Find all SQL databases with Premium SKU:
+
+```
+policies:
+  - name: sqldatabase-with-premium-sku
+    resource: azure.sqldatabase
+    filters:
+      - type: value
+        key: sku.tier
+        op: eq
+        value: Premium
+
+```
+

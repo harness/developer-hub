@@ -14,23 +14,12 @@ You can scan your code repositories using [Bandit](https://github.com/PyCQA/band
 
 ## Important notes for running Bandit scans in STO
 
-### Docker-in-Docker requirements
-
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-
 ### Root access requirements 
 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
+
 
 ### For more information
 

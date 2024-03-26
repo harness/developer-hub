@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-03-18T10:00
+date: 2024-03-26T10:00
 sidebar_position: 10
 ---
 
@@ -36,6 +36,24 @@ You will be impacted by this deprecation if:
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## March 2024
+
+### Version 1.20.2
+
+<!-- Mar 26, 2024 -->
+
+#### Fixed issues
+
+Fixed an issue with fallback handling when [splitting tests](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) by `testcase_timing`, `testsuite_timing`, or `class_timing`. (CI-11651)
+
+### Correction
+
+<!-- 22 Mar 24 -->
+
+A prior release note announced that you could set plugin runtime flags as environment variables for [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+This announcement incorrectly implied that the feature applied to all build infrastructures.
+
+**Correction:** Currently, this feature applies to Kubernetes cluster build infrastructure only. Other build infrastructures can set a limited subset of drone-docker runtime flags as stage variables. The prior release notes and supporting documentation have been updated to reflect this correction.
 
 ### Version 1.18.2
 
@@ -104,7 +122,7 @@ Fixed an issue where the Get Started wizard failed to generate some pipeline YAM
 
 #### New features and enhancements
 
-* [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko and drone-docker runtime flags. You can specify these flags as environment variables in the Build and Push step settings. (CI-10165, CI-11031)
+* With Kubernetes cluster build infrastructure, [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) support all kaniko runtime flags. You can specify these flags as environment variables in the Build and Push step settings. Currently, this is only supported for Kubernetes cluster build infrastructure. Other build infrastructures can set a limited subset of drone-docker runtime flags as stage variables. (CI-10165, CI-11031)
 * To address security vulnerabilities, Reactor-netty libraries have been updated to the latest version in [Harness CI images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci). (CI-10929, ZD-52222, ZD-55562)
 * The Harness Community team has developed two new plugins to help you automate more processes in your CI pipelines:
    * The [Helm Push plugin](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-helm-chart) streamlines packaging and distribution of Helm charts to container registries.

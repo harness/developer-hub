@@ -144,3 +144,60 @@ Here's an example of a secret decoded in a [CI Run step](/docs/continuous-integr
                     envVariables:
                       SECRET: <+secrets.getValue("secretfile")>
 ```
+
+## Guidance for specific providers or formats
+
+Use this information in addition to the above general file secret information.
+
+### GCP secrets
+
+For information about using GCP secrets in Harness, go to [Use GCP secrets in scripts](/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step.md).
+
+### JKS files
+
+To use JKS files, you need to use base64 encoding.
+
+1. [Create a base64-encoded secret file](https://www.base64encode.org/) from your JKS secret.
+2. Save the base64-encoded file as a [Harness file secret](/docs/platform/secrets/add-file-secrets) or, if you are working with a keystore, save the secret in your keystore as base64, for example:
+
+   ```
+   cat keystore.jks | base64 > keystorefile_asbase64.jks
+   ```
+
+3. In your pipeline, in the step where you need to use the JKS file, decode the file secret and write it to a temporary file, for example:
+
+   ```
+   ls -lha /
+
+   echo <+secrets.getValue("filejksasbase64")> > /values.jksbase64
+
+   cat /values.jksbase64
+
+   cat /values.jksbase64 | base64 -d
+   ```
+
+   You can also decode the secret to a `.jks` file, for example:
+
+   ```
+   cat /values.jksbase64 | base64 -d > values.jks
+   ```
+
+   If your secret contains line breaks, you can `cat` the secret in a special-purpose code block, for example:
+
+   ```
+   cat > /harness/values.jksbase64 << 'EOF'
+   MySecret:<+secrets.getValue("my_secret")>
+   EOF
+   ```
+
+   :::warning
+
+   Decoded secrets in `cat` aren't [masked in outputs](/docs/platform/secrets/add-file-secrets/#secrets-in-outputs) because Harness no longer recognizes the contents as a secret.
+
+   :::
+
+4. Use the decoded file as needed for authentication in your scripts, such as:
+
+   ```
+   ... --key-file=/harness/values.jksbase64
+   ```

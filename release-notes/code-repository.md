@@ -2,7 +2,7 @@
 title: Code Repository release notes
 sidebar_label: Code Repository
 tags: [NextGen, "code repository"]
-date: 2024-03-01T10:00
+date: 2024-03-22T10:00
 sidebar_position: 7
 ---
 
@@ -23,9 +23,19 @@ These release notes describe recent changes to Harness Code Repository.
 
 ## March 2024
 
-<!-- 01 March 2024 -->
+### Version 0.75.0
+
+<!-- 22 Mar 24 -->
+
+#### New features and enhancements
+
+* You can copy links to PR comments.
+* You can view entire files in PR diff view.
+* On the list of PRs, you can right-click and open a PR in a new tab or window.
 
 ### Version 0.72.4
+
+<!-- 01 March 2024 -->
 
 #### New features and enhancements
 

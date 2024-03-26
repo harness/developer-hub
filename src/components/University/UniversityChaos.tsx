@@ -53,19 +53,19 @@ export default function CertificationsChaos() {
     }
   }, [searchKey]);
   const [showCerts, setShowCerts] = useState<boolean>(true);
-    useEffect(() => {
-      if (location.search === "?ilt") {
-        setShowCerts(false);
-      }
-    }, []);
-    const handleCertficationClick = () => {
-      history.push(`${pathname}?lvl=developer`);
-      setShowCerts(true);
-    };
-    const handleInstLedTrainClick = () => {
-      history.push(`${pathname}?ilt`);
+  useEffect(() => {
+    if (location.search === "?ilt") {
       setShowCerts(false);
-    };
+    }
+  }, []);
+  const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
+    setShowCerts(true);
+  };
+  const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
+    setShowCerts(false);
+  };
   return (
     <div className={styles.certificationsCE}>
       <div className={styles.hero}>
@@ -387,18 +387,29 @@ export default function CertificationsChaos() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-          Intensive two-day course is designed for engineers looking to deepen their understanding and expertise. 
+            Intensive two-day course is designed for engineers looking to deepen
+            their understanding and expertise.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
-            {ilt
-                .filter((ilt) => ilt.module === "ce")
+              {ilt
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {ilt.filter((ilt) => ilt.module === "ce").length < 1 ? (
-                <p>ILT Coming Soon</p>
-              ) : null}
+
+              {ilt
+                .filter((ilt) => {
+                  return (
+                    ilt.module === "ce" ||
+                    (ilt.module === "ce" && ilt.tileType === "comming soon")
+                  );
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
             </div>
           </div>
         </div>
