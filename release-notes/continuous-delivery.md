@@ -48,15 +48,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## March 2024
 
-### Version 1.30.x
+### Version 1.30.7
 
 #### New features and enhancements
 
-- The Serverless Prepare Rollback step is now configured for use the Harness image, `harnessdev/serverless-preparerollback:3.30.1-2.0.0`, hosted on Docker Hub. For more information, go to [Serverless Prepare Rollback step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart/#serverless-prepare-rollback-step). (CDS-93468)
+- Harness has updated the logic for inheriting permissions from containerized step groups to steps. (CDS-79356)
+  
+  The new logic follows these steps:
+  1. Use the Run Step configuration.
+  2. If there isn’t a Run Step configuration, use the Step Group configuration.
+   
+  For more information, go to [Permissions inheritance logic from containerized step groups to steps](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/). 
 
 #### Early access
 
-- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). (CDS-87684)
+- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
 
 #### Limitations
 
@@ -74,6 +80,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The wrapper for matrix nodes appeared successful even if the matrix nodes were skipped. This issue is resolved by adding a check to see the status of a strategy node's children. If all child nodes are skipped, the strategy node will be skipped now. (CDS-92727)
 - Marking failure strategy for a step with in a stage as ignore failure did not work. The stage status was not shown as success of the step in the stage failed. This issue is fixed. Now, `IgnoreFailed` status is considered as Success for sending the stage notifications. (CDS-92057, ZD-58259)
 - Stage and pipeline are not marked as ResourceWaiting even if the stage is waiting on the resources. This issue is fixed by creating a `ResourceWaitingStepStatusUpdateHandler` logic that will mark the stage and pipeline as `ResourceWaiting`. When the step resumes, the existing `handleStepResponseInternal` logic marks the stage and pipeline as running. (CDS-87769)
+- If the `serverless print` command used to resolve all Serverless variables and get the stack name is not configured inside the Serverless YAML, Harness used the default stack name, `<serviceNameInYaml> - <stageNameSpecifiedInHarnessInfra>`. So, even when the `serverless print` command failed, the step did not fail, and Harness considered the default stack name, which is wrong. This issue is fixed by updating the Serverless Prepare Rollback step image to version, `harnessdev/serverless-preparerollback:3.30.1-2.0.0`. (CDS-87684)
+  
+  The following changes are implemented as part of this new image: 
+  1. The `serverless print` command should not fail due to plugins being specified in the Serverless YAML. With this new image, Harness does an NPM install (on package.json) before running the `serverless print` command. Make sure that the plugins are specified in the package.json to install them before running the `serverless print` command. Now, if your plugins are specified in the package.json at the same level where your Serverless YAML lies, your plugins would be installed, and correct stack name from Serverless YAML would be fetched. 
+  2. If the `serverless print` command still failed, Harness will fail the step and will not assume the default stack name.
+  3. Harness will consider the default stack name when stack name is not specified in Serverless YAML, and when the `serverless print` is successful.
 
 ### Version 1.29.6
 
