@@ -3,6 +3,8 @@ title: SEI Rally integration
 description: Integrate SEI with Rally Software.
 sidebar_position: 132
 sidebar_label: Rally
+redirect_from:
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally
 ---
 
 Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking.

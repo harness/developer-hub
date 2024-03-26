@@ -17,8 +17,8 @@ The following table lists SEI support for platforms, repos, registries, and rela
 
 | **Type of integration** | **SCM** | **CI/CD** | **Security** | **Issue Tracking and Management** | **Communication and collaboration** | **Others** |
 | -- | -- | -- | -- | -- | -- | -- |
-| Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
-| Other | <ul><li>Helix Core</li><li> Gerrit</li></ul> | <ul><li>Github Actions (BETA)</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Brakeman</li><li>Praetorian</li><li>Ncc Group</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
+| Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li><li>Rally Software (BETA)</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
+| Other | <ul><li>Helix Core</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Brakeman</li><li>Praetorian</li><li>Ncc Group</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
 
 
 :::info Note: 
@@ -77,6 +77,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     <tr>
         <td>SEI_SHOW_DIAGNOSTIC_TILE</td>
         <td>Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.</td>
+    </tr>
+    <tr>
+        <td>RALLY</td>
+        <td>Enables access to the SEI Rally integration used for integrating SEI with the Rally Software</td>
     </tr>
 </table>
 

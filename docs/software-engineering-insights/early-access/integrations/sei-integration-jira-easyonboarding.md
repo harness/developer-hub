@@ -4,7 +4,7 @@ description: Integrate SEI with Jira.
 sidebar_position: 131
 sidebar_label: Jira 2.0
 redirect_from:
-  - /docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding
 ---
 
 
