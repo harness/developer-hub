@@ -41,7 +41,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 3. Perform your Harness upgrade.
 4. Exec into your MinIO pod after the upgrade has successfully completed.
 5. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
-  
+
    ```
     env | grep MINIO_ROOT_PASSWORD
    ```
@@ -54,7 +54,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
         # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_5>
    ```
 
-   ``` 
+   ```
    bin/mc cp --recursive /data/backup/logs minio/logs
    ```
 
