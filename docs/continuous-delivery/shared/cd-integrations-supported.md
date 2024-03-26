@@ -191,7 +191,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
 - **Versions and tooling support:**
   - Helm Client Versions: 2.8 - 3.8
   - We support what each of the Cloud Providers support, we recommend users to keep their binary versions up to date
-  - By default Harness ships with helm client 2.8 and 3.12.
+  - By default Harness ships with helm client 3.12.
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
