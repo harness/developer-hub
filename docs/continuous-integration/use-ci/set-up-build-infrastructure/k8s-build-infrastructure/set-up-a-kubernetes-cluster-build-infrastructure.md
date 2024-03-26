@@ -55,7 +55,7 @@ Create a Kubernetes cluster to use for builds. For instructions on creating clus
 Make sure your Kubernetes cluster meets the following requirements:
 
 * The cluster has sufficient memory and CPU to support the resources required by your builds *and* the Harness Delegate. The delegate is an agent between Harness and your cluster that you will install on the cluster as part of the process to configure this build infrastructure.
-* The cluster meets the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.mdharness-ci-cluster-requirements).
+* The cluster meets the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
 * The cluster has the [roles and policies required for builds](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#roles-and-policies-for-the-connector).
 * If required for your builds, the cluster supports [privileged mode for Docker-in-Docker](#docker-in-docker-requires-privileged-mode) and allows [root access for Build and Push steps](#build-and-push-steps-require-root-access).
 * If you use Istio MTLS Strict mode, you [added a headless service](#create-headless-service-for-istio-mtls-strict-mode).
