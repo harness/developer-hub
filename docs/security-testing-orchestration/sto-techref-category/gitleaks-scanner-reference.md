@@ -103,49 +103,36 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 ### Ingestion File
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
 
-
-
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
+
+You can run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with CLI arguments such as: 
+
+`--log-opts="-n 1000" --max-target-megabytes 10`
+
+With these flags, `gitleaks` limits the scan to the last 1000 commits and skips files that are larger than 10 MB. 
+
+:::caution
+
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
+
+:::
 
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-
-
-<StoSettingCliFlags />
-
-<a name="fail-on-severity"></a>
-
-
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
 
 <StoSettingFailOnSeverity />
 

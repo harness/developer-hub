@@ -235,11 +235,11 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
+
 
 <a name="log-level"></a>
 
-#### Log Level
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -250,18 +250,16 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
+
+You can use this field to customize the scan with specific command-line flags supported by that scanner. For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`.
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-
-<StoSettingCliFlags />
-
-For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`.
-
-
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';

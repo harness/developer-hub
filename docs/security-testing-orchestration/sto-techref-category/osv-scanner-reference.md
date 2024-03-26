@@ -106,7 +106,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 <!-- 
-### Log Level, CLI flags, and Fail on Severity
+
 -->
 
 ### Log Level
@@ -118,9 +118,17 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+You can run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with flags such as:
 
-<StoSettingCliFlags />
+`--no-ignore --sbom=/path/to/your/sbom.json`
+
+With these flags, the `osv` binary scans vulnerabilities in the specified SBOM even if it's included in a `.gitignore` file.
+
+:::caution
+
+Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
+
+:::
 
 
 ### Fail on Severity
