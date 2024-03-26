@@ -91,7 +91,7 @@ Apart from the steps listed in case 3, this case describes the behavior if the `
 | Step Level ()            | false             | false              | false          |
 
 #### New Behavior:
-Previously, if a step had ‘Privileged’ unspecified (neither true nor false) then it would default to a value of ‘False’. Now, the field’s value is properly inherited from the Step Group, meaning some steps that were supposed to have privilege before now do. This may cause unexpected behavior in some containers if that status is unneeded.
+Previously, if a step had the **Privileged** field unspecified (neither True nor False), it would default to False. Now, the field’s value is properly inherited from the step group. This means that some steps that were not supposed to have privilege before are now privileged. This may cause unexpected behavior in some containers if that status is unneeded.
 
 | Level (Privileged field) | Step group (true) | Step group (false) | Step group ( ) |
 |--------------------------|-------------------|--------------------|----------------|
