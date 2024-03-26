@@ -51,6 +51,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've upgraded Feature Flags iOS SDK to 1.3.0.
  - We've upgraded Feature Flags Android SDK to 2.0.2.
 
+### Golang SDK
+
+#### Version 0.1.18
+
+ - This adds Connection: closes header to metrics requests. (FFM-11039)
+
 ### iOS SDK
 
 #### Version 1.3.0
