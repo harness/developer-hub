@@ -83,7 +83,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Improved the ingestion logic to fetch information for the **Pull Request** related to the **Development Field** in the work item in **Azure Boards** for the **Azure DevOps** integration. Please note that this feature is currently in `BETA`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-2265) (SEI-5064) (SEI-5065)
 * The release includes a new integration for the **Rally Software**.
   Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking. (ECOE-3) <br/> <br/>
-  To learn more, go to [Rally integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally). <br/> <br/>
+  To learn more, go to [Rally integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally). <br/> <br/>
   This feature is currently in `BETA` is accessible behind the entitlement `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues
