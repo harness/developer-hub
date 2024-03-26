@@ -46,7 +46,7 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
 
   - For developers, it’s critical to distinguish between security issues in the baseline vs. issues in the variant you’re working on. You want to detect and resolve issues in your downstream branch (the variant) before merging, so you don’t introduce them into the main branch (the baseline). 
 
-  - When your target has a baseline defined, the [Security Tests tab](//docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) divides your issues into two lists:
+  - When your target has a baseline defined, the [Security Tests tab](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) divides your issues into two lists:
 
     - **Only in \<_target_>:\<_variant_>** Issues detected in the scanned variant only.
 
