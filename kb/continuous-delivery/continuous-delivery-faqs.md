@@ -6210,7 +6210,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 
 #### How can I force a template consumer to a new version?
 
-One can use the provided OPA policies to enforce. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/governance/policy-as-code/sample-policy-use-case/)
+One can use the provided OPA policies to enforce. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/governance/policy-as-code/sample-policy-use-case)
 
 #### Can template changes cascade down to end users, or must users always update with a new version?
 
@@ -6224,17 +6224,17 @@ The primary recommendation is to use GitHub Apps, but considering the limit, an 
 #### How can one troubleshoot the error `ERROR: Error during SonarScanner execution`?
 
 Most scanners cannot scan java source code, only compiled images like jar files. Also, configure the Exclude field with `**/*.java`
-Please read more on STO requirements in the following [Documentation](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/)
+Please read more on STO requirements in the following [Documentation](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
 #### Do we have the capability in a dashboard or anything that will surface untagged resources?
 
 Yes, we have options for identifying untagged resources. In perspectives, filtering label X = NULL can indicate the percentage of untagged resources and their trend over time. For detailed identification, Cloud Asset Governance provides a better approach.
-Please read more on Cloud Asset Governance Architecture in the following [Documentation](https://developer.harness.io/docs/cloud-cost-management/architechture-diagrams/cloud_asset_governance_architecture/).
+Please read more on Cloud Asset Governance Architecture in the following [Documentation](https://developer.harness.io/docs/cloud-cost-management/architecture-diagrams/cloud_asset_governance_architecture).
 
 #### How can variables/outputs be accessed between steps using the looping strategy, especially in dynamically provisioned infrastructure scenarios like Terraform within a Deployment stage?
 
 Use `<+pipeline.stages.Deploy_<+strategy.iteration.toString()>.spec.provisioner.steps.TerraformApply.output.logic_app_callback_url>` to reference dynamically provisioned infrastructure within the same stage in a looping strategy.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/).
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 #### How can one enable a dropdown box to display the list of versions available in a Google Cloud Storage bucket when using it as an Artifact source for a service?
 

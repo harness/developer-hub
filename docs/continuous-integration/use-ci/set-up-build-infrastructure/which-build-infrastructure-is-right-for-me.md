@@ -61,7 +61,7 @@ Self-managed local build infrastructure is available with all CI plans.
 
 When you [use a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), you can run ephemeral builds-at-scale in your own self-managed Kubernetes clusters. In this case, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
-If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are some configuration requirements. For example, the built-in [Build and Push steps require root access](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#kubernetes-cluster-build-infrastructures-require-root-access) and [privileged mode is required for Docker-in-Docker](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#privileged-mode-is-required-for-docker-in-docker).
+If you are familiar with Kubernetes, this option is relatively easy to set up and manage, but there are [some cluster configuration requirements](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#create-a-kubernetes-cluster).
 
 </details>
 
