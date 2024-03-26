@@ -6413,7 +6413,7 @@ Please read more on custom stages in the following [Documentation](https://devel
 #### What is the correct expression to reference artifact version in rollback phase?
 
 One can use the expression `rollbackArtifact.version` . This is a change from FirstGen to NextGen where rollback artifact version was getting automatically resolved
-Please find an example usecase on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
+Please find an example use case on this in our [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#pipeline-sample-setup---cicd)
 
 #### Does Harness allow license key, and how is it used?
 
