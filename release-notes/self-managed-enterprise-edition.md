@@ -455,6 +455,49 @@ gsutil -m cp \
 So when another deployment happens and we apply the same old deployments manifest it does not update the replicas field and it remains set to 0.
 This results in no deployment even though the pipeline is successful. This issue has not been resolved. Instead, we scale down only DaemonSets and delete deployment, deploymentConfig, HPA, PDB, and statefulset resources. (CDS-88999, ZD-56645)
 
+## March 26, 2024, patch version 0.14.6
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.6](https://github.com/harness/helm-charts/releases/tag/harness-0.14.6) |
+| Air Gap Bundle | [0.14.6](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.6) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.83.8 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.6 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.6/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed an issue with DB migrations that impacted upgrading from versions 0.13.x to 0.14.x. (STO-7309)
+
+- Fixed an issue that caused the Pipeline Studio page to crash when adding a CI build stage. (CI-11842, ZD-60094)
+
 ## March 21, 2024, patch version 0.14.5
 
 This release includes the following Harness module and component versions.
