@@ -44,7 +44,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your Wiz access ID and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your registry access ID and access token, if your registry requires authentication 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz, if your registry requires authentication 
 
 	<br/>
 
@@ -77,8 +77,8 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret
-				2. [Registry access token](#access-token) as a Harness secret
+				1. [Registry access Id](#access-id) as a Harness secret. This is your `client-id` shared by Wiz.
+				2. [Registry access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 		8. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret
 			2. [Wiz access token](#access-token) as a Harness secret
@@ -97,7 +97,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your Wiz access ID and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your registry access ID and access token, if your registry requires authentication 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz, if your registry requires authentication 
 
    	<br/>
    #### Add the Wiz scanner
@@ -120,8 +120,8 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret
-				2. [Registry access token](#access-token) as a Harness secret
+				1. [Registry access Id](#access-id) as a Harness secret. This is your `client-id` shared by Wiz.
+				2. [Registry access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 		8. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret
 			2. [Wiz access token](#access-token) as a Harness secret
