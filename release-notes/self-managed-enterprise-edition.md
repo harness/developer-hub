@@ -84,7 +84,7 @@ This release includes the following Harness module and component versions.
 | Change Data Capture | 1.5.3 |
 | STO plugin | 1.25.0 |
 | Test Intelligence Service | 1.8.1 |
-| NG UI | 1.7.5 |
+| NG UI | 1.7.6 |
 | LE NG | 1.1.0 |
 
 **Alternative air gap bundle download method**
