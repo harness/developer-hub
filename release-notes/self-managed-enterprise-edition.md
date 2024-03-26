@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-03-21T10:00
+date: 2024-03-26T10:00
 sidebar_position: 16
 ---
 
@@ -66,6 +66,48 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## March 26, 2024, patch version 0.14.6
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.6](https://github.com/harness/helm-charts/releases/tag/harness-0.14.6) |
+| Air Gap Bundle | [0.14.6](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.6) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.5 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation. 
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.6/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.6/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed an issue with DB migrations that impacted upgrading from versions 0.13.x to 0.14.x. (STO-7309)
+
+- Fixed an issue that caused the Pipeline Studio page to crash when adding a CI build stage.(CI-11842, ZD-60094)
 
 ## March 21, 2024, patch version 0.14.5
 
