@@ -14,6 +14,7 @@ import DeveloperCertificationExamDetails from "./data/ci-certification-developer
 import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
 import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
+import { MODULES } from "../../constants";
 
 const getCertBadges = (url: string) => [
   {
@@ -399,14 +400,24 @@ export default function CertificationsCI() {
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => ilt.module === "ci" || ilt.isPreReq)
-                .sort((a, b) => a.priority - b.priority)
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {/* {ilt.filter((ilt) => ilt.module === "ci").length < 1 ? (
-                <p>ILT Coming Soon</p>
-              ) : null} */}
+
+              {ilt
+                .filter((ilt) => {
+                  return (
+                    ilt.module === MODULES.ci ||
+                    (ilt.module === MODULES.ci &&
+                      ilt.tileType === "comming soon")
+                  );
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
             </div>
           </div>
         </div>
