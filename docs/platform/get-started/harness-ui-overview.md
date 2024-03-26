@@ -1,5 +1,5 @@
 ---
-title: Harness UI Overview
+title: Harness UI overview
 description: Explore the Harness UI and navigate to the desired modules.
 sidebar_position: 40
 redirect_from:
@@ -16,10 +16,10 @@ You can interact with the Harness platform through the Harness UI. It is designe
 
 You can explore Harness through various dimensions:
 
-* Account: The account scope includes account-level settings and account-wide view of projects, modules, and so on.
-* Organization: Drill down into a specific organization to access organization-level settings and project/module usage within that organization.
-* Project: Drill down further into a specific project and access project-level settings and module usage within that project.
-* Module: Select a module to access the features and functionality of that module.
+* **Account:** The account scope includes account-level settings and account-wide view of projects, modules, and so on.
+* **Organization:** Drill down into a specific organization to access organization-level settings and project/module usage within that organization.
+* **Project:** Drill down further into a specific project and access project-level settings and module usage within that project.
+* **Module:** Select a module to access the features and functionality of that module.
 
 ## Harness navigation version 2.0
 
