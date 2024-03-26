@@ -82,7 +82,7 @@ This release includes the following Harness module and component versions.
 | Access Control Service | 1.33.2 |
 | Delegate | 24.02.82203 |
 | Change Data Capture | 1.5.3 |
-| STO plugin | 1.25.0 |
+| STO Core | 1.83.8 |
 | Test Intelligence Service | 1.8.1 |
 | NG UI | 1.7.6 |
 | LE NG | 1.1.0 |
