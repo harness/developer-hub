@@ -6417,7 +6417,7 @@ Please find an example use case on this in our [Documentation](https://developer
 
 #### Does Harness allow license key, and how is it used?
 
-Harness refer API keys instead of license keys to enter in product.
+Harness prefers API keys instead of license keys to enter in the product.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/)
 
 #### Does Harness provide control over Abort Pipeline to users exclusively?
