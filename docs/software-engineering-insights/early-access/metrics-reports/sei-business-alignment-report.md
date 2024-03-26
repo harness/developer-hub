@@ -7,18 +7,17 @@ sidebar_label: Business Alignment report
 
 The Business Alignment Report helps you visualize where your teams are investing the majority of their effort and assist them in prioritizing their time effectively. This report displays your investment efforts across the categories outlined in the corresponding Business Alignment Profile.
 
-The Business Alignment profile feature is currently in **BETA** and is behind the entitlement `<SEI_NEW_BA_REPORT>.`
-Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Business Alignment profile feature is currently in **BETA**. <br />Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
 
 <br />
 
-The report shows the metric value for each category as a percentage value along with an assigned target label (**Ideal**, **Poor**, **Acceptable**) on the **Pie Chart**.
+The Business Alignment report displays the effort invested for each Category as a percentage value along with an assigned target **Label** (**Ideal**, **Poor**, **Acceptable**) on the **Pie Chart**.
 
-The **Trend Chart** displays the detailed breakdown of the score in the **Stacked Bar Chart** format. It displays the trend of effort investment over time, based on predefined category allocations in the associated [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
+The **Trend Chart** on the widget displays the detailed breakdown of the score in the **Stacked Bar Chart** format. It displays the trend of effort investment over time, based on defined **Category** and their associated **Allocation Goals** in the [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
 
-The Bar Chart breaks down the metric value into time intervals as configured in the widget settings.
+The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
 
 ![](./static/ba-report.png)
 
@@ -37,15 +36,15 @@ This report supports two types of drill-down views:
 
 ## Drill down by Contributors
 
-By selecting a category from the **Stacked Bar Chart**, users can access the drill-down report displaying data on the total completed effort, including the distribution of effort among individual contributors across all categories or just the selected one.
+By selecting a category from the **Stacked Bar Chart**, you can access the drill-down report displaying data on the total completed effort, including the distribution of effort among individual contributors across all categories or just the selected one.
 
 ![](./static/drilldown-contributors.png)
 
 ## Drill down by Tickets
 
-It also displays the drill down for tickets. When viewing the selected category on the **Bar Chart**, the widget will show data for all the relevant tickets included in this category. Alternatively, when choosing an interval from the bar chart, the widget will present data for items across all categories during the specified period.
+This displays the report drill down view for tickets. When viewing the selected category on the **Bar Chart**, the widget will show data for all the relevant tickets included in the selected category. Alternatively, when a particular interval is selected from the Bar Chart, the widget will display the data for items across all categories during the selected time interval.
 
-The data is represented in tabular format. Additionally, both drill-down options offer search functionality, enabling users to look up specific contributors or tickets directly.
+The data is represented in tabular format. Both the drill-down options support search functionality, enabling you to search for specific contributors or tickets directly.
 
 ![](./static/drilldown-tickets.png)
 
