@@ -42,7 +42,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
     - A [Kubernetes](#/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
 
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your Wiz access ID and access token
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your container registry requires an access ID and access token
 	
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz, if your registry requires authentication 
 
