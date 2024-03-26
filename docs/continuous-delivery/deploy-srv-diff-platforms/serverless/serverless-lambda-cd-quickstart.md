@@ -732,7 +732,7 @@ exit 1
 
 The Serverless Prepare Rollback step describes the CloudFormation stack and gets its current state. This information is stored and passed to the Serverless Rollback Step, and used in the case of rollback.
 
-By default, this step is configured to use the Harness image `harnessdev/serverless-preparerollback:3.30.1-2.0.0`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+We recommend that you use the Harness image `harnessdev/serverless-preparerollback:3.30.1-2.0.0`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Prepare Rollback step, do the following:
 
