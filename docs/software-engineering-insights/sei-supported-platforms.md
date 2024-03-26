@@ -29,11 +29,19 @@ The integrations categorized under the **Others** label are now available with b
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 
-## Active SEI Feature flags
+## Harness SEI features
 
-Some Harness SEI features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
+For highlights of key SEI features, go to [Harness SEI overview](/docs/software-engineering-insights/get-started/overview) and [Harness SEI key concepts](/docs/software-engineering-insights/get-started/sei-key-concepts).
 
-The following table describes each of the active feature flags relevant to Harness SEI.
+For information about upcoming and recently released features, go to the [SEI release notes](/release-notes/software-engineering-insights).
+
+### Harness SEI early access features
+
+Some Harness SEI features are released behind feature flags to get feedback from a subset of customers before releasing the features to general availability.
+
+You can opt-in to the early access (beta) features for Harness CI described in the following table. Contact [Harness Support](mailto:support@harness.io) to enable specific early access features in your Harness account. Include the feature flag or name with your request.
+
+For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
 
 :::note
 
@@ -60,14 +68,27 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
     <tr>
         <td>SEI_SHOW_TRELIS_NEW_INTERVAL</td>
-        <td>Enables Trellis Profile configuration using Trellis Factors at the Central Profile. This feature is in BETA. </td>
+        <td>Enables Trellis Profile configuration using <a href="/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors">Trellis Factors</a> at the Central Profile. This feature is in BETA. </td>
     </tr>
     <tr>
         <td>SEI_NEW_COLLECTION_TREE</td>
         <td>Enable this feature if you want to use the new user experience for Collection Navigation under the Insights</td>
+    </tr>
+    <tr>
+        <td>SEI_SHOW_DIAGNOSTIC_TILE</td>
+        <td>Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.</td>
     </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
 
 <!-- Please don't use fixed width for tables. It breaks mobile browsing and small desktop windows. -->
+
+### Harness SEI features promoted to GA
+
+Features promoted to general availability (GA) are removed from the early access features table and announced as new features in the SEI release notes. The SEI release notes also include features released directly to GA.
+
+<!-- 
+Here are some SEI early access features that were recently promoted to GA:
+
+-->
