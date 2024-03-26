@@ -150,7 +150,7 @@ The following deprecated API endpoints are longer supported:
 
 - The delegate list page now shows the latest delegate version beside the **New Delegate** button. This will help you compare your delegate version with the latest supported delegate version. This item is available with Harness Platform version 1.28.11 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47049)
 
-<!--
+<!-- Commented out because this item is on the list for 1.30.7 RN with a delegate dependency for version 24.03.82600
 - In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding hyphen usage. While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage. Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier. Secret identifiers cannot start with a hyphen, following best practices. (PL-46959)
 -->
 
