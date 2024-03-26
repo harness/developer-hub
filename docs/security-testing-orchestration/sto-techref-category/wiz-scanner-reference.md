@@ -77,11 +77,11 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret. This is your `client-id` shared by Wiz.
+				1. [Registry access Id](#access-id) as a Harness secret
 				2. [Registry access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 		8. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret
-			2. [Wiz access token](#access-token) as a Harness secret
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 	
    ##### Optional settings
 
@@ -120,11 +120,11 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret. This is your `client-id` shared by Wiz.
-				2. [Registry access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+				1. [Registry access Id](#access-id) as a Harness secret. 
+				2. [Registry access token](#access-token) as a Harness secret. 
 		8. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret
-			2. [Wiz access token](#access-token) as a Harness secret
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 	
    ##### Optional settings
 
@@ -304,26 +304,31 @@ import StoSettingImageAccessToken from './shared/step_palette/image/_access-toke
 Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information. 
 :::
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
 
-<StoSettingIngestionFile  />
+- The data file must be in a [supported format](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-ingestion-formats) for the scanner.
+
+- The data file must be accessible to the scan step. It's good practice to save your results files to a [shared path](/docs/continuous-integration/get-started/key-concepts#stages) in your stage. In the visual editor, go to the stage where you're running the scan. Then go to **Overview** > **Shared Paths**. You can also add the path to the YAML stage definition like this:  
+  
+  ```yaml
+      - stage:
+        spec:
+          sharedPaths:
+            - /shared/scan_results
+  ``` 
 
 
 ### Authentication
 
-
 #### Access ID
 
-import StoSettingAuthAccessID from './shared/step_palette/auth/_access-id.md';
-
-<StoSettingAuthAccessID />
-
+This is your `client-id` shared by Wiz.
 
 #### Access Token
 
-import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.md';
+This is your `client-secret` shared by Wiz.
 
-<StoSettingAuthAccessToken />
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 
