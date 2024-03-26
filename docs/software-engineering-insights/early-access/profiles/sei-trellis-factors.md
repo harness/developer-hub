@@ -87,7 +87,7 @@ To configure the Trellis Factors, please follow the steps below:
 5. Define **Factors and Weights** for each of the **sub profile i.e.** **Trellis Groups** in the Trellis Central Profile. Adjust weights to specific factors such as Code Quality, Volume, Speed, Impact, Proficiency, and Collaboration.
 6. You can enable or disable factors contributing to Trellis Score calculations for specific groups. Similarly, you can enable or disable Trellis Groups to control their contribution to the overall scoring.
 
-## Set up Trellis Profile at the Collection level
+## Trellis Sub Profiles at the Collection level
 
 Whenever a new Collection is created, it is by default automatically associated with the Trellis Central Profile.
 
