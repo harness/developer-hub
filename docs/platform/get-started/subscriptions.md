@@ -22,13 +22,13 @@ Every user who contributes to software development, deployment, operations, opti
 The following Harness modules are directly involved in a developer’s day-to-day workflow, and hence consume a developer license for every developer involved.
 
 #### Code Repository (CR)
-All users on the Harness Platform, who have permissions to access Harness CR module, will be considered as CR Developers and will consume a license.
+All users who have permission to access the Harness CR module on the Harness Platform will be considered CR Developers and will consume a license.
 #### Continuous Integration (CI)
-All users on the Harness Platform, who have permissions to access Harness CI module, will be considered as CI Developers and will consume a license.
+All users who have permission to access the Harness CI module on the Harness Platform will be considered CI Developers and will consume a license.
 #### Internal Developer Portal (IDP)
-All users on the Harness Platform, who have permissions to access Harness IDP module, will be considered as IDP Developers and will consume a license.
+All users who have permission to access the Harness IDP module on the Harness Platform will be considered IDP Developers and will consume a license.
 #### Software Engineering Insights (SEI)
-All users read from a configured SCM or Issue Management tool, will be considered SEI Developers and will consume a License.
+All users read from a configured SCM or Issue Management tool will be considered SEI Developers and will consume a License.
 
 ### Modules with no direct developer tracking
 
