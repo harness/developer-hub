@@ -1,9 +1,9 @@
 ---
-title: Fault container permissions
+title: Windows Fault permissions
 sidebar_position: 10
 ---
 
-## Permission Requirements for Windows Chaos Experiments</h1>
+## Permission Requirements for Windows Chaos Experiments
 This document outlines the permission requirements necessary for installing the Windows infrastructure and conducting chaos experiments. These requirements include administrator privileges, access to the file system, and the ability to manage security settings. Understanding and meeting these requirements are crucial for the successful execution of chaos experiments on Windows VMs.
     
 
