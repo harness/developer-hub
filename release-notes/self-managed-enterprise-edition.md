@@ -75,17 +75,17 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.15.0](https://github.com/harness/helm-charts/releases/tag/harness-0.15.0) |
 | Air Gap Bundle | [0.15.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.0) |
-| NG Manager | 1.xx.x |
-| CI Manager | 1.xx.x |
-| Pipeline Service | 1.xx.x |
-| Platform Service | 1.xx.x |
-| Access Control Service | 1.xx.x |
-| Delegate | 24.03.82xxx |
-| Change Data Capture | 1.x.x |
-| STO Core | 1.xx.x |
-| Test Intelligence Service | 1.x.x |
-| NG UI | 1.x.x |
-| LE NG | 1.x.x |
+| NG Manager | 1.27.12 |
+| CI Manager | 1.13.2 |
+| Pipeline Service | 1.64.2 |
+| Platform Service | 1.14.1 |
+| Access Control Service | 1.35.5 |
+| Delegate | 24.02.82402 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.86.2 |
+| Test Intelligence Service | 1.12.1 |
+| NG UI | 1.10.8 |
+| LE NG | 1.1.0 |
 
 **Alternative air gap bundle download method**
 
