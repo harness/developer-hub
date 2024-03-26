@@ -84,7 +84,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * The release includes a new integration for the **Rally Software**.
   Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking. (ECOE-3) <br/> <br/>
   To learn more, go to [Rally integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally). <br/> <br/>
-  This feature is currently in `BETA` is accessible behind the entitlement `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  This feature is currently in `BETA` is accessible behind the Feature Flag  `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues
 
@@ -116,7 +116,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 #### Early access features
 
-* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the entitlement `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
+* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
 
 #### Fixed issues
 
