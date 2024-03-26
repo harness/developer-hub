@@ -27,7 +27,13 @@ In this tutorial, you'll automate the model maintenance process and increase the
 
 Before diving into the implementation, review the MLOps architecture.
 
-![ML Model Architecture](static/architecture.png)
+```mermaid
+graph LR;
+    Data_Preparation --> Train_Model;
+    Train_Model --> Unit_Integration_Test;
+    Unit_Integration_Test --> Deploy_Model;
+    Deploy_Model --> Monitor_Model;
+```
 
 For this tutorial, assume you are given a Python data science project, and you are requested to do the following:
 
