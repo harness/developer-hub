@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-09-20T10:00
+date: 2024-03-19T10:00
 sidebar_position: 6
 ---
 
@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Fixed issues
 
-- Fixed intermittent issues which resulted in failure in S3 data sync and data ingestion for seamless and on-time updation of data. [CCM-14988]
+- Fixed intermittent issues which resulted in failure in S3 data sync and data ingestion for seamless and on-time updating of data. [CCM-14988]
 
 ### Version 1.9.5
 
@@ -44,7 +44,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Fixed issues
 
--  We added a default value (CURRENT_MONTH) for the overviewTimeFilter parameter in the Overview Forecasting API, ensuring consistency and simplifying usage. [CCM-16458]
+- We added a default value (CURRENT_MONTH) for the overviewTimeFilter parameter in the Overview Forecasting API, ensuring consistency and simplifying usage. [CCM-16458]
 - We identified and resolved a high memory and CPU utilization issue in our delegate pods, traced back to improper handling of Chronicle libraries. The fix involved ensuring the StoreTailer objects are closed after each use, significantly improving system performance and stability. [CCM-16052]
 
 ### Version 1.7.3
@@ -99,51 +99,56 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - When creating or updating a perspective with an "invalid" cost category. If a cost category shares the exact same name as the attribute "shared cost," attempting to include it in a perspective results in a failure message: "Oops, something went wrong on our end. Please contact Harness Support." We have improved the error message with details telling that the cost category name cannot be same as shared cost bucket name. [CCM-15536]
 - Horizontal scrolling was absent from all pages except perspective-details. This has now been successfully addressed and resolved. [CCM-14720]
 
-## December 2023
+## Previous releases
 
-### Version 81801
+<details>
+<summary>2023 releases</summary>
 
-#### Fixed issues
+#### December 2023
+
+##### Version 81801
+
+###### Fixed issues
 
 - Previously, clicking on "Log Section" in the Review Screen redirected users to Compute Coverage instead of defaulting to the Events Logs Section as intended. Now, from the review section of commitment orchestration, the link for the log section correctly directs users to the Events Logs Section. This issue has been successfully resolved. [CCM-15189]
 - Sometimes, changing filters in the default Perspective interface would reset the page but fail to display the table initially. This issue has now been resolved, with the table consistently appearing after filter and groupby adjustments. [CCM-14990]
 
-## November 2023
+#### November 2023
 
-### Version 81700
+##### Version 81700
 
-#### New features and enhancements
+###### New features and enhancements
 
 - Pagination for perspectives has been added for faster loading times of perspectives. By default only 20 perspectives will be shown. To see all the perspectives set the pageSize as 10,000 and pageNo as 0. By default all perspectives are ordered by most recent. (CCM-15124)
 
-### Version 81601
+##### Version 81601
 
-#### New features and enhancements
+###### New features and enhancements
 
 - RBAC (Role-Based Access Control) support has been implemented for the Commitment Orchestrator. CCM Admins now possess the authority to configure the Commitment Orchestrator for master accounts. On the other hand, CCM Viewers are granted access to visibility screens within the Commitment Orchestrator interface. (CCM-15040)
 - Earlier, we didn't support adding relevant rule filters for perspectives created through cloud providers. As a result, all anomalies were being displayed on the cloud providers' perspective, regardless of whether they were relevant to that perspective or not. In this release, we have now added rule filters for cloud providers to address this issue. (CCM-15068)
 
-#### Fixed issues
+###### Fixed issues
 
 - Previously, entering connector names resulted in incorrect error message "Delegate with that name already exists." This hindered the quick connection setup. Now, the system accurately reflects the correct error message for when Delegate validation failures. (CCM-14963)
 
-### Version 81501
+##### Version 81501
 
-#### New features and enhancements
+###### New features and enhancements
 
 - The perspectives page has been enhanced with pagination for both the Card and List views. Each page will display a maximum of 20 perspectives, addressing the issue where some customers experienced lag during the initial rendering of the perspectives list pages. (CCM-14018)
 
-#### Fixed issues
+###### Fixed issues
 
 - In the updated functionality for K8s connectors, the "View Costs" feature is now enabled based on the presence of cluster data rather than relying solely on the last events received. This enhancement ensures that users retain the ability to view historical costs. (CCM-14984)
 
-### Version 81402
+##### Version 81402
 
-#### New features and enhancements
+###### New features and enhancements
 
 - Previously, there was no option to export Recommendations as CSV files. Now, we have added a new feature that enables users to export Recommendations as comma-separated values (CSV) files. (CCM-14274)
 
-#### Fixed issues
+###### Fixed issues
 
 - Previously, changing the project in JIRA didn't clear fields, causing potential creation failures. (CCM-14842)
 
@@ -156,11 +161,6 @@ Now, we have implemented a threshold of $3 for anomaly detection on K8s Services
 - Previously, incorrect entity types for Azure in anomalies caused misdirected notifications on Slack and email. (CCM-14864)
 
 However, this issue is fixed now by changing the logic for Azure entity types.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### October 26, 2023, version 81300
 
