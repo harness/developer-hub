@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
-You can scan your container images using [Wiz](https://www.wiz.io/), a cloud security platform that supports vulnerabiity scans. 
+You can scan your container images using [Wiz](https://www.wiz.io/), a cloud security platform that supports vulnerability scans. 
 
 ## Important notes for running Wiz scans in STO
 
@@ -42,9 +42,9 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
     - A [Kubernetes](#/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
 
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your container registry requires an access ID and access token
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz, if your registry requires authentication 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
 
 	<br/>
 
@@ -78,7 +78,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
 				1. [Registry access Id](#access-id) as a Harness secret
-				2. [Registry access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+				2. [Registry access token](#access-token) as a Harness secret. 
 		8. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
@@ -95,7 +95,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
   #### Prerequisites
 
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your Wiz access ID and access token
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access Id and access token
 	
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz, if your registry requires authentication 
 
