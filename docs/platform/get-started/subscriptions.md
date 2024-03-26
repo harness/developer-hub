@@ -33,9 +33,9 @@ The definition of a developer (and the consumption entitlements, if any) remain 
 
 The following Harness modules are directly involved in a developer's day-to-day workflow. These modules consume a developer license for every developer involved.
 
-- **Code Repository (CODE):** All users on the Harness Platform with permission to access Harness CR module are considered CODE Developers and consume a license.
-- **Continuous Integration (CI):** All users on the Harness Platform with permission to access Harness CI module are considered CI Developers and consume a license.
-- **Internal Developer Portal (IDP):** All users on the Harness Platform with permissions to access Harness IDP module are considered IDP Developers and consume a license.
+- **Code Repository (CODE):** All users with permission to access Harness CODE module are considered CODE Developers and consume a license.
+- **Continuous Integration (CI):** All users with permission to access Harness CI module are considered CI Developers and consume a license.
+- **Internal Developer Portal (IDP):** All users with permissions to access Harness IDP module are considered IDP Developers and consume a license.
 - **Software Engineering Insights (SEI):** All users read from a configured SCM or Issue Management tool are considered SEI Developers and consume a license.
 
 ### Modules with no direct developer tracking (consumption entitlements)
