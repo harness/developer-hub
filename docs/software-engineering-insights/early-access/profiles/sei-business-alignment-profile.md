@@ -10,7 +10,7 @@ Business Alignment metrics help you understand where engineers are allocating th
 The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can customize the categories and adjust the threshold for the Filter Sets.
 
 :::info
-The Business Alignment profile feature is currently in **BETA**. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The Business Alignment profile feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 <DocVideo src="https://www.youtube.com/embed/f3fLqermTGo?si=qFF0PVof8Q36kkr3" />
