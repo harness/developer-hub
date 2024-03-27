@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 25th 2024
+### Latest Updated: March 27th 2024
 
 ## March 2024
 
@@ -80,6 +80,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
 
 ### .NET SDK
+
+#### Version 1.6.3
+
+ - The Evaluation logic refactored to use immutable principles, to aid in maintainacne and readability. (FFM-11057)
+  - If the target group cache is found to be in an invalid state, such that any groups that beloing to a flag are not in the cache, the SDK will asynchronously update the group cache and immediately return the default variation.
+ - There are extra evaluation logs added to aid troubleshooting.
 
 #### Version 1.6.3
 
