@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-03-26T10:00
+date: 2024-04-02T10:00
 sidebar_position: 10
 ---
 
@@ -34,12 +34,22 @@ You will be impacted by this deprecation if:
 * You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+## April 2024
+
+### Version 1.21.x
+
+<!-- 02 Apr 2024 -->
+
+#### Fixed issues
+
+* When manually running pipelines, the **Branch Name** no longer unintentionally changes to `main` after you input another branch name. This issue occurred due to a backend API call that could sometimes take a long time to respond. (CI-11721, ZD-59730)
+* Builds triggered by Bitbucket Server push events have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)
 
 ## March 2024
 
 ### Version 1.20.2
 
-<!-- Mar 26, 2024 -->
+<!-- 26 Mar 2024 -->
 
 #### Fixed issues
 
