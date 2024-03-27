@@ -77,7 +77,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Added multiple loglines for debugging an issue. (CDS-93910)
 
-
 ### Harness version 1.30.7, Harness Delegate version 24.03.82600 <!--  March 26, 2024 -->
 
 #### New features and enhancements
