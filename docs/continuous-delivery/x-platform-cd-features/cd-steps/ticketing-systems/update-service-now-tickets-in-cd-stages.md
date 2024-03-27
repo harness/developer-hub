@@ -66,8 +66,6 @@ The timezone settings govern the display value of the settings not their actu
   :::note 
   The **Update Multiple** option appears only if you select **Change Task** in the **Ticket Type** field. 
 
-  This feature is behind the feature flag `CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
-
   This feature requires Harness Delegate version 80800 or later.
   :::
 

@@ -1,7 +1,7 @@
 ---
 title: Writing expressions using any JSON parser tool
 description: Learn about the enhanced expressions experience using any JSON parser tool.
-sidebar_position: 3
+sidebar_position: 6
 ---
 
 To provide you with the best experience when using expressions, Harness supports writing expressions by using any JSON parser tool. This provides a more user-friendly and adaptable expression engine that increases productivity and empowers you to have greater control and customization capabilities for expressions.
@@ -18,7 +18,7 @@ Key features of this enhancement include:
 
 The Harness expression delimiter (`<+...>`) uses the greater-than sign (`>`) to terminate expressions. To avoid ambiguous results, make sure that your scripts don't include a greater than sign.
 
-::
+:::
 
 ## Obtain the execution JSON
 

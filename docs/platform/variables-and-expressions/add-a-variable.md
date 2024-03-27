@@ -1,7 +1,7 @@
 ---
 title: Add variables
 description: Add variables at the account, org, project, and pipeline-level.
-sidebar_position: 6
+sidebar_position: 7
 helpdocs_topic_id: f3450ye0ul
 helpdocs_category_id: bp8t5hf922
 helpdocs_is_private: false
@@ -13,34 +13,55 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In addition to Harness' many [built-in variable expressions](./harness-variables), you can add Harness variables at account, org, project, and pipeline levels.
+In addition to Harness' many [built-in variable expressions](./harness-variables), you can add custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
 
-Account, org, and project variables store values that you can share and use across multiple pipelines in multiple projects. Pipeline variables include variables added to the pipelines, stages, services, and environments used in the pipelines.
+Account, org, and project variables store values that you can share and use across multiple pipelines in multiple projects.
+
+Pipeline variables include variables added within an individual pipeline and limited to the context of that pipeline.
+
+<details>
+<summary>Variable scope diagram</summary>
+
+This diagram illustrates the availability of variables based on their scope.
+
+The **Common To Pipelines** variables represent account-, org-, or project-level variables.
+The **Specific to Pipeline** variables are pipeline-level variables.
+
+![](./static/add-a-variable-01.png)
+
+</details>
 
 This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
 
 ## Variable parameters
 
 * Variables can be of type String, Secret, or Number.
-* Variable values can be [fixed values, runtime inputs, or expressions](./runtime-inputs). However, variables created at the account, org, or project level support fixed values only. Variables created at the entity level (such as pipelines, stages, and services) support fixed values, dynamic runtime inputs, and expressions.
-* You can use secrets in pipeline, stage, and service variables.
-* If you delete a variable that is referenced by [expressions](harness-variables.md) in your pipelines, the reference expressions **are not** deleted. At runtime, when Harness attempts to resolve the expressions, the expression will resolve as null, and the pipeline can fail if null is an invalid value.
-* If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to [Tags](https://yaml.org/spec/1.2.2/#3212-tags) in the YAML spec document.
-* Variables include a **Required** setting. This feature is supported for pipeline, stage, service, and environment variables. The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline.
+* Variable values can be [fixed values, runtime inputs, or expressions](./runtime-inputs).
+   * However, account, org, and project variables support fixed values only.
+   * Variables created at lower levels (such as pipeline, stage, and service variables) support fixed values, runtime inputs, and expressions.
+* You can reference secrets in pipeline, stage, and service variables.
+* If you delete a variable that is referenced by [expressions](harness-variables.md) in your pipelines, those expressions **are not** deleted.
+   * At runtime, when Harness attempts to resolve the expressions, the expression will resolve as null, and the pipeline can fail if null is an invalid value.
+   * After deleting a variable, you must manually check for and remove expressions referencing deleted variables.
+* If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to the [YAML specification for tags](https://yaml.org/spec/1.2.2/#3212-tags).
+* Some variables can be flagged as required.
+   * The **Required** setting is supported for pipeline, stage, service, and environment variables.
+   * The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline.
 
-### Variable scope
+:::important limitation
+Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
+:::
 
-You can add variables at the account, organization, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes). In the following illustration, the variables in **Common To Pipelines** are account, org, or project level variables. The variables in **Specific to Pipeline** are pipeline-level variables.
 
-![](./static/add-a-variable-01.png)
+### Variable availability to pipelines, stages, services, and environments
 
-### Variable availability to pipeline, stage, service, and environment
+Account, org, and project variables are available to all lower scopes. For example, an org variable is available to all projects and pipelines under that org.
 
 Variables added to pipelines and stages are available to all stages in the pipeline.
 
-Variables added to a service and environment are available in all stages that use that service and environment. Here's a [video](https://youtu.be/lqbmO6EVGuU) covering those variable types.
+Variables added to services and environments are available in all stages that use those services and environments. For more information, check out the [Harness pipeline, stage, and service variables overview video](https://youtu.be/lqbmO6EVGuU).
 
-You can also override service variables at the environment level. For more information, go to [Overriding services at the environment level](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
+You can override service variables at the environment level. For more information, go to [Overriding services at the environment level](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
 
 ## Add variables
 
@@ -126,6 +147,26 @@ curl -i -X POST \
 
 </TabItem>
 </Tabs>
+
+</TabItem>
+<TabItem value="pipeline" label="Pipeline variables">
+
+To create variables at the pipeline or stage level, go to the pipeline where you want to add the variable, and then use one of the following options to add variables:
+
+* Select **Variables** on the right side of the pipeline studio to add pipeline or stage variables.
+* Select a specific stage, select the **Overview** tab, and add stage variables in the **Advanced** section.
+* Add variables in the YAML editor. The indentation determines whether the variable is a pipeline or stage variable. For stage variables, indent `variables` under `- stage`, aligned with `stage.spec`. For pipeline variables, indent `variables` under `pipeline`, aligned with `pipeline.properties`.
+
+```yaml
+  variables:
+    - name: sourceToken
+      type: Secret
+      description: Access token for the source repo.
+      required: true
+      value: <+input>
+```
+
+Some steps support step-level environment variables or output variables. Usage for these options is described in the documentation for those step types.
 
 </TabItem>
 </Tabs>

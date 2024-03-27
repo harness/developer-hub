@@ -117,6 +117,11 @@ Below is an example AWS policy to execute the fault.
             <th> Notes </th>
         </tr>
         <tr>
+        <td> MACHINE </td>
+        <td> Whether chaos is applied on a Windows VM or a Linux VM. </td>
+        <td> </td>
+    </tr>
+        <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration to insert chaos (in seconds). </td>
             <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>

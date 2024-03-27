@@ -25,6 +25,13 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## March 2024
 
+### Version 202403.1.1
+
+#### Hotfix
+
+* Sprint reports and drill-down reports inaccurately included certain issues resolved outside their designated sprint time. This has been fixed to accurately display relevant issues resolved within the sprint period by considering the **Issue Resolved In** field for each item. Tickets falling on the **Outside of Sprint** category are not included in the velocity calculation, as they represent work completed before the start of the sprint. (SEI-6170)
+* Added support to retrieve and display up to 999 active versions for the **Contributor** list. (SEI-5908)
+
 ### Version 202403.1
 
 #### New features and enhancements
@@ -41,6 +48,9 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Activity Logs data can now be exported by clicking the Export button located in the Activity Logs tab of the SEI application. (SEI-5449)
 * The default time range for all the Sprint Metric reports has been updated from 2 weeks to 30 days. (SEI-5787)
 * Added the ability to display the `Custom Field Key ID` from **Azure Boards** while configuring the **Filters** on the **Report**, **Collection** and **Profile** settings. Now, when configuring custom field Filters, the Custom Field Key ID associated with the field is displayed for clarity. (SEI-5799) (SEI-5800) (SEI-5801)
+* Added performance enhancements for the SCM metrics and reports. The following reports do not have the support for this enhancement: SCM PR Activity report, SCM PR Lead Time by Stage report, SCM PR Lead Time Trend report, Issue Hotspots report.
+* The **Median** field in SEI all reports and metrics will now be calculated by determining the normal median using the 50th percentile. 
+* The **Timezone**  field will now use **UTC (Universal Time Coordinated)** as the default timezone across the platform to maintain a standardized format for enhanced clarity and consistency.
 
 #### Early access features
 
@@ -73,8 +83,8 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Improved the ingestion logic to fetch information for the **Pull Request** related to the **Development Field** in the work item in **Azure Boards** for the **Azure DevOps** integration. Please note that this feature is currently in `BETA`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-2265) (SEI-5064) (SEI-5065)
 * The release includes a new integration for the **Rally Software**.
   Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking. (ECOE-3) <br/> <br/>
-  To learn more, go to [Rally integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally). <br/> <br/>
-  This feature is currently in `BETA` is accessible behind the entitlement `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  To learn more, go to [Rally integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally). <br/> <br/>
+  This feature is currently in `BETA` is accessible behind the Feature Flag  `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues
 
@@ -106,7 +116,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 #### Early access features
 
-* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the entitlement `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
+* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
 
 #### Fixed issues
 
@@ -115,7 +125,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * There was some inconsistency in the data displayed on the **Sprint Metrics Trend Report** when using [Azure DevOps](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the integration for the **Issue Management Tool**. This has been fixed now. (SEI-4690)
 * In the **Lead time by Time Spent in Stages report** there was an issue where in the extended drill-down view the data was displayed incorrectly. This has been resolved now. (SEI-4753)
 * In the [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) integration, there was a bug where the **Custom Hygienes** were displayed as blank and were only showing story points as the criteria to define the hygiene misses. This has been fixed now. (SEI-5076)
-* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
+* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
 * In the **Issue Backlog Trend report** and the **SCM Issues Resolution Time Report** drill-down, there was an issue where the `Ticket Lifetime (Resolution Time)` column data was not visible in the downloaded CSV file. This issue has been resolved now. (SEI-5237) (SEI-5269)
 * There were two known issues in the **Sprint Metrics Report** related to how certain Jira tasks/items were being counted.
   * Some Jira tasks were still appearing in the report even after they had been removed during the middle of the sprint. This happened because these tasks were included when generating metrics for the report. This has been fixed and now any tasks which are deleted mid-sprint will not appear in the Report. (SEI-5259)

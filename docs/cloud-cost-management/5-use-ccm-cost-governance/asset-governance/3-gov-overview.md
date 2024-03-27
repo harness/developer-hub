@@ -26,6 +26,11 @@ In certain cases, there can be overlapping rules targeting the same resource. Fo
   - **Asset Optimization Recommendations** — Displays the top five recommendations to reduce costs. To view the complete list, click **View all Recommendations**.
   - **Potential Monthly Savings** — Monthly cost savings that can be realized if the recommendations are applied.
   - **Breakdown by resource type** — The cumulative count of evaluations for each resource type.
+
+:::important note
+- Number of targets considered for Recommendations: Top 15
+- Number of regions considered for Recommendations: Top 5 in case of AWS
+:::
   
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
 

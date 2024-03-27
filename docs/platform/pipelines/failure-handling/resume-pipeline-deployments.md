@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/resume-pipeline-deployments
+  - /docs/platform/Pipelines/resume-pipeline-deployments
 ---
 
 Pipeline executions fail for many reasons, such as infrastructure changes or changes to resource access. In such cases, rerunning an entire pipeline can be costly and time-consuming.
@@ -17,7 +18,7 @@ With Harness, you can resume pipeline executions from any successful stage or a 
 *Retrying* a pipeline or stage is different from *rerunning* a pipeline or stage:
 
 * When you rerun, you start fresh. For example, you can select new values for runtime inputs. You can rerun the entire pipeline or [rerun from a specific stage](/docs/platform/pipelines/run-specific-stage-in-pipeline.md).
-* When you retry, you are run the pipeline/stage exactly as it was run before. You can't change mandatory settings, parameters, or conditions. You can't retry executions older than 30 days.
+* When you retry, you are running the pipeline/stage exactly as it was run before. You can't change mandatory settings, parameters, or conditions. You cannot retry any execution whose first (original) execution is more than 30 days old.
 
 ## Prerequisites
 

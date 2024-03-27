@@ -5,12 +5,10 @@ sidebar_position: 285
 sidebar_label: Open Source Vulnerabilities (OSV) scanner reference
 ---
 
-You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
+You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
 
 
 ## Important notes for running OSV scans in STO 
-
-Currently, this integration is behind the feature flag `STO_STEP_PALETTE_OSV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 <!-- Currently, this integration supports the following:
 
@@ -77,13 +75,13 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
-#### Target and variant detection
+#### Detect target and variant 
 
-Auto-detection is not available for ingestion scans.
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-When scanning code repositories, the step detects these values as follows:
-- To detect the target, the step runs `git config --get remote.origin.url`. 
-- To detect the variant, the step runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 

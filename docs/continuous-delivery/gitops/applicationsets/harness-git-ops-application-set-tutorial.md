@@ -2,6 +2,8 @@
 title: ApplicationSet tutorial
 description: Learn to create a GitOps ApplicationSet in Harness.
 sidebar_position: 2
+redirect_from:
+  - /docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial
 ---
 
 This topic walks you through creating a GitOps ApplicationSet in Harness.

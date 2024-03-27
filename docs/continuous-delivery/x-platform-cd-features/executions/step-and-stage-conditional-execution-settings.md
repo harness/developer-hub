@@ -110,3 +110,182 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
+## Resolved and unresolved expressions during conditional execution
+
+This topic explains why some expressions in conditional execution are unresolved during execution. 
+
+Consider the following pipeline YAML:
+
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: deploy_stage
+        identifier: deploy_stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: harnessguestbook
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      sources:
+                        - identifier: deployed_artifact_version
+                          type: DockerRegistry
+                          spec:
+                            tag: <+input>
+          environment:
+            environmentRef: <+input>
+            deployToAll: false
+            environmentInputs: <+input>
+            serviceOverrideInputs: <+input>
+            infrastructureDefinitions: <+input>
+          execution:
+            steps:
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+        when:
+          pipelineStatus: Success
+          condition: <+env.name> == "harnessdevenv"
+```
+
+The above pipeline's stage will execute only if the environment name is ``harnessdevenv``.
+
+When you select ``Run``, you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``:
+
+![unresolved pipeline input](./static/unresolved_runtime_input.png)
+
+When running the pipeline, the execution the stage ``deploy_stage`` will be skipped as conditional execution resolves to ``null``.
+
+![unresolved execution](./static/unresolved_execution_1.png)
+
+When you run a deploy stage, this is the pipeline execution flow:
+
+1. Harness checks the ``stage`` conditional execution and then starts filling the variable defined in the stage definition.
+2. Checks the ``Service`` step and then fetches the ``Environment and Infrastructure`` information.
+
+![unresolved expresssion execution](./static/unresolved_expression_execution_2.png)
+
+3. When the stage starts, Harness checks the ``step`` conditional execution and proceed to resolve the variable step.
+
+In this case, when the pipeline ran, Harness first checked the stage ``deploy_stage`` conditional execution. Harness checked for the environment name, ``harnessdevenv`` here, but it resolved to null because at that time the stage had not proceeded with fetching environment information. 
+
+* **Resolved variable example:**
+
+Now, let's discuss an example where above scenario will work.
+
+Consider the below pipeline YAML:
+
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: deploy_stage
+        identifier: deploy_stage
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: harnessguestbook
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  artifacts:
+                    primary:
+                      sources:
+                        - identifier: deployed_artifact_version
+                          type: DockerRegistry
+                          spec:
+                            tag: <+input>
+          environment:
+            environmentRef: <+input>
+            deployToAll: false
+            environmentInputs: <+input>
+            serviceOverrideInputs: <+input>
+            infrastructureDefinitions: <+input>
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+                  when:
+                    stageStatus: Success
+                    condition: <+env.name> == "harnessdevenv"
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+        when:
+          pipelineStatus: Success
+```
+
+
+Here, the above pipeline's step ``ShellScript_1``  will execute only if the environment name is ``harnessdevenv``.
+
+When you select ``Run``, you will be prompted to provide a value for your environment during runtime. In this case, suppose you select the value as ``harnessdevenv``:
+
+![](./static/unresolved_runtime_input.png)
+
+The the step conditional execution will not skip and the variable resolves to true. 
+
+![](./static/unresolved_expressio_true_1.png)
+
+In this case, the deploy stage first started the ``Service`` step and then fetched the ``Environment and Infrastructure`` information. Afterwards, it proceeded with the execution of step ``ShellScript_1 ``. Therefore, before executing this step, the pipeline had information about the environment, and it checked if the environment name is ``harnessdevenv``. In this case, it was true, so the step got executed. If it was false, the step would get skipped but the variable would still get resolved.

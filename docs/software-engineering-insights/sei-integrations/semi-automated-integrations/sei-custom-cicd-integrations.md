@@ -63,7 +63,8 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
     "duration": 5,
     "build_number": 7871,
     "instance_url": "https://dev.azure.com",
-    "branch_name": "main"
+    "branch_name": "main",
+    "project_name": "Project"
 }
 
 ```
@@ -76,7 +77,7 @@ Please note that the API endpoint mentioned in the webhook specifications is rel
 
 Payload is an object with required and optional fields.
 
-#### Required Fields:
+#### Required Fields
 
 | Field | Data Type | Description |
 | - | - | - |
@@ -89,7 +90,7 @@ Payload is an object with required and optional fields.
 | `duration` | integer | Job duration in milliseconds. |
 | `result` | string | The result of the job, either `SUCCESS` or `FAILURE`. |
 
-#### Optional Fields:
+#### Optional Fields
 
 | Field | Data Type | Description |
 | - | - | - |
@@ -105,6 +106,7 @@ Payload is an object with required and optional fields.
 | `artifacts` | array of objects | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
 | `trigger_chain` | array of objects | Information about the chain of triggers. |
 | `branch_name` | string | The name of the branch related to the job. |
+| `project_name` | string | The name of the Project related to the job. |
 
 Here is an example payload:
 
@@ -143,6 +145,7 @@ Here is an example payload:
     "job_full_name": "Node.js CI--readme updated",
     "qualified_name": "Node.js CI--readme updated",
     "branch_name": "master",
+    "project_name": "Project",
     "module_name": null,
     "scm_commit_ids": [
         "64be72b2c1f7d2a33082f98a40a848880fcdcd5e"
@@ -179,7 +182,6 @@ Here is an example payload:
     ]
 }
 ```
-
 
 ## Generate UUID / GUID
 

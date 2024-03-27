@@ -111,6 +111,11 @@ Refer to the [common attributes](/docs/chaos-engineering/chaos-faults/common-tun
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
+        <td> TASK_REPLICA_AFFECTED_PERC </td>
+        <td> Percentage of total tasks that are targeted. </td>
+        <td> Default: 100. For more information, go to <a href="#ecs-task-replica-affected-percentage"> ECS task replica affected percentage.</a></td>
+      </tr>
+      <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Interval between successive instance terminations (in seconds)</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
@@ -156,6 +161,41 @@ spec:
           value: 'test-service'
         - name: REGION
           value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### ECS task replica affected percentage
+
+Number of tasks to target (in percentage). Tune it by using the `TASK_REPLICA_AFFECTED_PERC` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-container-volume-detach/task-replica-affected-perc.yaml yaml)
+```yaml
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: SERVICE_NAME
+          vale: 'test-svc'
+        - name: TASK_REPLICA_AFFECTED_PERC
+          vale: '100'
+        - name: REGION
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

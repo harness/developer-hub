@@ -29,22 +29,12 @@ You can configure the Snyk step to [show the original CVSS score](#show-the-orig
 
 -->
 
+### Root access requirements 
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
+
 
 ### For more information
 
@@ -93,9 +83,7 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-
 import StoSettingScanType from '../shared/step_palette/scan/_type.md';
-
 
 import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
@@ -105,6 +93,16 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 

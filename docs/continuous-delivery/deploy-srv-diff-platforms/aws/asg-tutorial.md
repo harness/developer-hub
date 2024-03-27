@@ -1108,7 +1108,9 @@ The Rolling Deploy step has the following options:
 - **Same as already running Instances** or **Fixed**:
   - Select **Fixed** to enforce a Max, Min, and Desired number of instances.Select **Same as already running Instances** to use scaling settings on the last ASG deployed by this Harness pipeline. If this is the first deployment and you select **Same as already running Instances**, Harness uses a default of Min 0, Desired 6, and Max 10. Harness does not use the Min, Max, and Desired settings of the base ASG.
 - **Minimum Healthy Percentage (optional)**
-  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, Harness sets the default value for this field as 90%.
+  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS. If not specified, harness sets the default value for this field as 90% during rolling deployment and 100% during rollback.
+- **Maximum Healthy Percentage (optional)**
+  - The percentage of the desired capacity of the ASG that your ASG can increase to when replacing instances. For more information, go to [Instance refresh core concepts](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html#instance-refresh-core-concepts) from AWS. If not specified, harness sets the default value for this field as 110% during rolling deployment and 200% during rollback.
 - **Instance Warmup (optional)**
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
@@ -1315,6 +1317,110 @@ For ASG canary deployments there are two rollback steps:
 </TabItem5>
 </Tabs5>
 
+### Canary phased deployment
+
+You can create a multi-phase workflow that progressively deploy your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. 
+
+When you select the Canary execution strategy for your pipeline, make sure to select the **Add Multi Phase Canary Steps** to enable phased deployment. 
+
+![ASG phased execution](./static/asg-phased-execution.png)
+
+
+:::important
+Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+
+A phased deployment uses two step groups:  
+1. A Canary phase containing steps that define your ASG, deploy a percentage or partial count of the ASG's instances, and verify this partial deployment. You can add more Canary phases that expand the partial deployment.
+2. A Primary phase that deploys your image to the full count of instances defined in your ASG.
+   
+![ASG phased deploy](./static/asg-phased-deploy.png)
+
+Here're the steps we build:  
+
+**ASG Setup:** 
+
+This step will remove older non-used ASGs, and create new a new ASG with zero instances and desired launch template configuration. In this step, you can specify how many EC2 instances to launch in the ASG that Harness deploys at the end of the workflow. You can also specify the resizing order and steady state timeout of the instances.
+
+The instance can be **Fixed Instances** and **Same as already running instances**. If you select same as already running instances, then Harness fetches the minimum, maximum, and desired capacity of current live ASG and use that for configuring this step.
+
+There are two resize options:  
+* Resize New First: Select to resize new ASG first and then downsize older ASG.
+* Downsize Old First: Select to downsize older ASG first and then resize new ASG.
+
+![ASG Setup step config](./static/asg-setup.png)
+
+Here's a sample ASG Setup step YAML for the **Fixed Instances** option:  
+
+```yaml
+              - step:
+                  type: AsgSetup
+                  name: AsgSetup_1
+                  identifier: AsgSetup_1
+                  spec:
+                    asgName: abcd
+                    instances:
+                      type: CurrentRunning
+                    resizeStrategy: "resize_new_first"
+                  timeout: 10m
+```
+Here's a sample ASG Setup step YAML for the **Same as already running instances** option:  
+
+```yaml
+          - step:
+              type: AsgSetup
+              name: AsgSetup_1
+              identifier: AsgSetup_1
+              spec:
+                asgName: abcd
+                instances:
+                  type: Fixed
+                  spec:
+                    desired: 2
+                    max: 3
+                    min: 1
+                resizeStrategy: "downsize_old_first"
+              timeout: 10m
+```
+
+
+**ASG Phased Deploy:** 
+
+In this step, you can specify the percentage or count of instances to deploy in this phase. When you add additional Canary phases, each phase automatically includes an ASG Phase Deploy, which you must configure with the count or percentage of instances you want deployed in that phase.
+
+This step will resize the new ASG to desired instance, and then downsize the older ASG to desired instance. For example, increase the instance count of new ASG by 1, then decrease the instance count of older ASG by 1.
+
+Here's a sample ASG Phased Deploy step YAML:  
+
+```yaml
+              - step:
+                  type: AsgPhasedDeploy
+                  name: AsgPhasedDeployStep_1
+                  identifier: AsgPhasedDeployStep_1
+                  spec:
+                    instanceSelection:
+                      type: Count
+                      spec:
+                        count: 1
+                  timeout: 10m
+```
+
+
+**ASG Rollback:** 
+
+This step will rollback to the initial setup (setup before ASG setup was created). Here, the new ASG is deleted and the old ASG is up-sized to its pre-deployment instance count.
+
+Here's a sample ASG Rollback step YAML: 
+
+```yaml
+          - step:
+              name: Asg Rollback
+              identifier: AsgRollback
+              type: AsgRollback
+              timeout: 10m
+              spec: {} 
+```
 
 
 ### Blue Green

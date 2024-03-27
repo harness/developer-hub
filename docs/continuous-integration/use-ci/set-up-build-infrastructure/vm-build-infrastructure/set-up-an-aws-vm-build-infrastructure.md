@@ -8,10 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -80,6 +78,14 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 2. [Install Docker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker).
 3. [Install Docker Compose](https://docs.docker.com/compose/install/).
 4. Attach the IAM role to the EC2 VM. For instructions, go to the AWS documentation on [attaching an IAM role to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role).
+
+### Use a custom Windows AMI
+
+If you plan to use a custom Windows AMI in your AWS VM build farm, you must delete `state.run-once` from your custom AMI.
+
+In Windows, sysprep checks if `state.run-once` exists at `C:\ProgramData\Amazon\EC2Launch\state.run-once`. If the file exists, sysprep doesn't run post-boot scripts (such as `cloudinit`, which is required for Harness VM build infrastructure). Therefore, you must delete this file from your AMI so it doesn't block the VM init script.
+
+If you get an error about an unrecognized `refreshenv` command, you might need to [install Chocolatey](https://chocolatey.org/install) and add it to `$profile` to enable the `refreshenv` command.
 
 ## Configure the Drone pool on the AWS VM
 
@@ -376,10 +382,8 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build infrastructure.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 1. In Harness, go to the CI pipeline that you want to use the AWS VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
@@ -390,7 +394,6 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
 <DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
-
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
@@ -416,10 +419,43 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
             ...
 ```
 
-
 </TabItem>
 </Tabs>
 
+### Delegate selectors with self-managed VM build infrastructures
+
+:::note
+
+Currently, delegate selectors for self-managed VM build infrastructures is behind the feature flag `CI_ENABLE_VM_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Although you must install a delegate to use a self-managed VM build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
+
+Delegate selections take precedence in the following order:
+
+1. Stage
+2. Pipeline
+3. Platform (build machine delegate)
+
+This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the platform delegate, which is the delegate that you installed on your primary VM with the runner. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
+
+For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
+
+<details>
+<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+:::note
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
+
+</details>
 
 ## Troubleshoot AWS VM build infrastructure
 

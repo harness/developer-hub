@@ -42,8 +42,85 @@
       }
     }
   }
+  .btns {
+    margin-top: 32px;
+    display: flex;
+    gap: 16px;
+
+    .certBtn {
+      min-width: 227px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--primary-9);
+      background-color: white;
+      color: var(--primary-9);
+      &:hover {
+        cursor: pointer;
+        background-color: var(--gray-100);
+      }
+
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+    .InstLedTrainBtn {
+      min-width: 330px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+      border: 2px solid var(--primary-9);
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-9);
+      background-color: white;
+      &:hover {
+        cursor: pointer;
+        background-color: var(--gray-100);
+      }
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+    .active {
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
+      &:hover {
+        background-color: var(--primary-10);
+      }
+    }
+  }
   .tabs {
     margin-top: 72px;
+    h2,
+    p {
+      margin-bottom: 32px;
+    }
     ul.tabItems {
       border-bottom: 1px solid var(--gray-200);
       padding: 0;
@@ -742,6 +819,9 @@
           height: auto;
         }
       }
+    }
+    .btns {
+      flex-direction: column;
     }
     .tabs {
       margin-top: 20px;

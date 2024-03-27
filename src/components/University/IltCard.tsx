@@ -9,8 +9,14 @@ import { MODULES } from "../../constants";
 
 export enum iltType {
   user = "All Users",
+  admin = "Administrators",
 }
 
+export enum tileType {
+  preReq = "pre requisite",
+  commingSoon = "comming soon",
+  normal = "normal",
+}
 export type IltCardItem = {
   title: string;
   module: MODULES;
@@ -19,6 +25,7 @@ export type IltCardItem = {
   version?: string;
   link?: string;
   thumb?: boolean;
+  tileType: tileType;
 };
 
 export default function IltCard({
@@ -38,6 +45,9 @@ export default function IltCard({
         [styles.thumb]: thumb,
       })}
     >
+      <div className={styles.Topright}>
+        <p> ILT</p>
+      </div>
       <div>
         <div className={styles.moduleLine}>
           <h6>
