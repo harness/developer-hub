@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
-You can scan your container images using [Wiz](https://www.wiz.io/), a cloud security platform that supports vulnerability scans. 
+You can scan your code repositories and container images using [Wiz](https://www.wiz.io/), a cloud security platform that supports vulnerability scans. 
 
 ## Important notes for running Wiz scans in STO
 
@@ -27,9 +27,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Basic setup
+## Set-up workflows
 
-### Orchestration scans
+<details>
+
+<summary>Orchestration scans for container images</summary>
 
 The setup process for Kubernetes and Docker build infrastructures has a few additional steps and requirements. 
 
@@ -97,7 +99,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access Id and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz, if your registry requires authentication 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz
 
    	<br/>
    #### Add the Wiz scanner
@@ -134,7 +136,55 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
   </TabItem>
 </Tabs>
 
-### Ingestion scans
+</details>
+
+<details>
+
+<summary>Orchestration scans for code repositories</summary>
+   
+   	<br/>
+
+  #### Prerequisites
+
+    - [Harness Code Repository](/docs/code-repository) or a [connector to your Git provider](/docs/category/code-repo-connectors) with the codebase you want to scan
+	
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
+
+	<br/>
+
+
+   #### Add the Wiz scanner
+
+	Do the following:
+
+	1. Add a CI Build or Security Tests stage to your pipeline.
+	2. Add a Wiz step to the stage.
+
+<br/>
+
+   #### Set up the codebase
+
+   Click **Codebase** (right menu) and select the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
+
+   #### Set up the Wiz scanner
+	
+   ##### Required settings
+
+		1. Scan mode = [Orchestration](#scan-mode)
+		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		3. Authentication:
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+	
+   ##### Optional settings
+
+   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
+   - [Log Level](#log-level) — Useful for debugging
+
+</details>
+
+<details>
+<summary>Ingestion scans</summary>
 
 :::note
 
@@ -176,7 +226,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
    - [Log Level](#log-level) — Useful for debugging
 
-
+</details>
 
 ## Wiz step settings reference
 
@@ -296,9 +346,7 @@ import StoSettingImageAccessToken from './shared/step_palette/image/_access-toke
 <StoSettingImageAccessToken />
 
 
-### Ingestion
-
-#### Ingestion File
+### Ingestion File
 
 :::note
 Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information. 
