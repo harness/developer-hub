@@ -3,6 +3,8 @@ title: SEI Rally integration
 description: Integrate SEI with Rally Software.
 sidebar_position: 132
 sidebar_label: Rally
+redirect_from:
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally
 ---
 
 Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking.
@@ -10,7 +12,7 @@ Rally is a web-based platform for managing and tracking the entire application d
 Use the **SEI Rally integration** to integrate SEI with the Rally Software. The primary purpose of this rally integration is to ensure that SEI can track, manage, and analyze user stories, tasks, and defects in real time, leading to improved efficiency and enhanced productivity.
 
 :::info
-The SEI Rally integration is currently in BETA and is accessible behind the entitlement `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+The SEI Rally integration is currently in BETA and is accessible behind the Feature Flag `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 ### Requirements
