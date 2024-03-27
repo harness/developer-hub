@@ -233,6 +233,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
     </tr>
      <tr>
         <td>CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX</td>
-        <td>Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step.md) <b>This is a Beta feature.</b></td>
+        <td>Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step) <b>This is a Beta feature.</b></td>
     </tr>
 </table>
