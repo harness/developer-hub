@@ -30,9 +30,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 198.2
 
-<!-- 2024-03-20 -->
+<!-- 2024-03-27 -->
 
-### Version 1.89.2
+#### Early Access features that are now GA
+
+The following features are now generally available:
+- [OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
+- [Target auto-detection scanners with configurable UIs](#new-feature-auto-detect-targets-and-variants)
+- [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
 
 #### New features and enhancements
 
@@ -52,17 +57,16 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Product update 2024-03-27
 
-The following feature was previously Early Access and is now generally available: [New feature: OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
+The following feature was previously Early Access and is now generally available: 
 
 
 ### Product update 2024-03-25
 
-The following features were previously Early Access and are now generally available:
 
-- Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
-- [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
 
 ### Version 1.88.2
+
+<!-- 2024-03-20 -->
 
 #### Early access feature: built-in scanners
 
@@ -164,7 +168,7 @@ For more information, go to [Default RegEx baselines by target type](/docs/secur
 
 <!-- 2024-03-01 -->
 
-#### Early Access feature: Auto-detect targets and variants
+#### New feature: Auto-detect targets and variants
 
 Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
 
