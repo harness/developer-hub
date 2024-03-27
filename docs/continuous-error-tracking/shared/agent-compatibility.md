@@ -229,4 +229,4 @@ Following Java plugins are not compatible with the CET Java Agent:
 
 All the technologies that are supported in Harness SaaS are also supported in the Self-Managed Enterprise Edition. 
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).

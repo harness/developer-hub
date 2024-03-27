@@ -62,7 +62,7 @@ Once a containerized step is run, Harness terminates the container.
 
 ## Before you begin
 
-Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
+Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to establish a general understanding of Harness.
 
 - **GitHub account:** this quickstart uses a publicly available `serverless.yaml` file, but GitHub requires that you use a GitHub account for fetching files.
 - **(Non-containerized) Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. Typically, you will install a Kubernetes delegate in your own cluster.

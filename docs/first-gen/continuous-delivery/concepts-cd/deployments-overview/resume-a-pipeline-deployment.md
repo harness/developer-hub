@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
+:::warning
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 :::
 
 You can resume Pipeline deployment executions that meet the following criteria:

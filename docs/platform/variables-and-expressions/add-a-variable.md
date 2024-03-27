@@ -31,7 +31,7 @@ The **Specific to Pipeline** variables are pipeline-level variables.
 
 </details>
 
-This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
+This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
 
 ## Variable parameters
 

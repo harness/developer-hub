@@ -690,7 +690,7 @@ We recommend starting out in the Harness User Interface to get familiar with all
 
 Please review these topics to get familiar with the Harness constructs:
 
-- [Harness Key Concepts](/docs/get-started/key-concepts)
+- [Harness Key Concepts](/docs/platform/get-started/key-concepts.md)
 - [Projects, Orgs, Account](/docs/platform/organizations-and-projects/projects-and-organizations/)
 - [Service, Environments](/docs/continuous-delivery/get-started/services-and-environments-overview/)
 

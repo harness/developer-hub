@@ -1,4 +1,4 @@
-The following table lists the supported Authentication features and various ways to authenticate users. Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose will apply to all of your account's users.
+The following table lists the supported Authentication features and various ways to authenticate users. Users in Administrator groups can use Authentication Settings to restrict access to an organization's Harness account. The options you choose apply to all of your account's users.
 
 For more information, go to [Authentication overview](/docs/platform/authentication/authentication-overview).
 

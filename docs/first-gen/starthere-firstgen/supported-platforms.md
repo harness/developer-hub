@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/supported-platforms-and-technologies.md).This topic lists Harness support for platforms, methodologies, and related technologies.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/platform-whats-supported.md).
+
+This topic lists Harness support for platforms, methodologies, and related technologies.
 
 ### Deployments
 

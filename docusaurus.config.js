@@ -111,8 +111,8 @@ const config = {
             to: "docs",
             items: [
               {
-                label: "Get Started",
-                to: "docs/get-started",
+                label: "Platform",
+                to: "docs/platform",
               },
               {
                 label: "Code Repository",
@@ -161,10 +161,6 @@ const config = {
               {
                 label: "Software Engineering Insights",
                 to: "docs/software-engineering-insights",
-              },
-              {
-                label: "Platform",
-                to: "docs/platform",
               },
               {
                 label: "Self-Managed Enterprise Edition",
@@ -418,6 +414,7 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
       announcementBar: {
