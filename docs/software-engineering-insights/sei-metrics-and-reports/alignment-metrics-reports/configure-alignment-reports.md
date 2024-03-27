@@ -4,8 +4,6 @@ description: Configure alignment i.e Effort investment reports
 sidebar_position: 30
 sidebar_label: Configure Alignment reports
 ---
-
-
 # Configure Alignment reports
 
 The Effort Investment (Business Alignment) reports can help visualize where your teams expend the most effort and help your teams prioritize their time. This Insight includes the following three widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
@@ -17,6 +15,10 @@ The Effort Investment (Business Alignment) reports can help visualize where your
 These reports analyze effort investment into task categories, strategic initiatives.
 
 It helps  visually analyze how the work is trending across different categories, where the resources are allocated and how it is varying over different periods.
+
+:::info
+The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report)
+:::
 
 To find the list of these reports and metrics, go to [Effort investment reports](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
 

@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
+
+Once you've added a Lambda Service to your Application, you can define Environments where your Service can be deployed. Within an Environment, you specify the following in an Infrastructure Definition:
 
 * The Lambda Service that contains your functions zip file and functions specs. (Set up in [Add Lambda Functions](2-service-for-lambda.md).)
 * A deployment type. In this case, **Lambda**.
@@ -18,12 +20,13 @@ An Environment can be a Dev, QA, Production, or other Environment. You can deplo
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create an Environment](#step_1_create_an_environment)
-* [Step 2: Define the Lambda Infrastructure](#step_2_define_the_lambda_infrastructure)
-* [Option: Provision the Lambda Infrastructure](#option_provision_the_lambda_infrastructure)
-* [Option: Override Service Settings](#option_override_service_settings)
-* [Next Steps](#next_steps)
+- [Before You Begin](#before-you-begin)
+- [Step 1: Create an Environment](#step-1-create-an-environment)
+- [Step 2: Define the Lambda Infrastructure](#step-2-define-the-lambda-infrastructure)
+  - [Define a Provisioned Infrastructure](#define-a-provisioned-infrastructure)
+- [Option: Provision the Lambda Infrastructure](#option-provision-the-lambda-infrastructure)
+- [Option: Override Service Settings](#option-override-service-settings)
+- [Next Steps](#next-steps)
 
 ### Before You Begin
 

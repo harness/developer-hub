@@ -11,6 +11,10 @@ It provides organizations with the tools and features of GitHub, but allows them
 
 Use the SEI Github Enterprise integration to integrate SEI with Github Enterprise.
 
+:::info
+The 202401.2 release included a new experience for the GitHub integration, focused on simplifying and streamlining the user journey. The feature is currently in BETA. To learn more, go to [GitHub 2.0](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+:::
+
 ## Configure the authentication
 
 SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github#configure-authentication).

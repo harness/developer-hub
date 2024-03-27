@@ -278,6 +278,12 @@ In **Advanced**, you can use the following options:
 
 After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
 
+
+:::note
+Currently, the `<+approval>` functor is supported for Harness approvals only.
+:::
+
+
 ## See also
 
 - [Update Jira Issues in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)

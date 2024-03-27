@@ -24,7 +24,7 @@ You'll learn how to:
 
 Review the following:
 
-* [Harness key concepts](/docs/get-started/key-concepts)
+* [Harness key concepts](/docs/platform/get-started/key-concepts)
 * [Templates overview](/docs/platform/templates/template/)
 
 ### Permissions
