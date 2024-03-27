@@ -18,9 +18,11 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 ## Before you begin
 
-* Go to [Harness Key Concepts](/docs/get-started/key-concepts)
-* Go to [Secrets Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
-* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
+You need an understanding of:
+
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+* [Secrets Management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+* [Storing authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials).
 
 ## Google Cloud secret manager important notes
 
@@ -33,8 +35,6 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 	+ When you delete a secret present in Google Cloud Secret Manager from Harness, the entire secret is deleted and not just a version.
 * You cannot update the name of an inline or referenced secret stored in the Google Cloud Secret Manager using the Harness Secret Manager.
 * Harness does not support changing an inline secret to a reference secret or vice versa in Harness.
-
-For more information, go to [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
 
 ## Google Cloud secret manager permission requirements
 

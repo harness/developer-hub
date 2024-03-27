@@ -9,6 +9,10 @@ Jira is a proprietary issue tracking product that allows bug tracking and agile 
 
 Use the SEI Jira integration to integrate SEI with Jira in the Cloud.
 
+:::info
+The 202401.2 release included a new experience for the Jira integration, focused on simplifying and streamlining the user journey. The feature is currently in BETA. To learn more, go to [Jira 2.0](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
+:::
+
 ## Configure Jira
 
 Before you configure the SEI Jira integration, you must generate an Atlassian API token.

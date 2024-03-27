@@ -72,7 +72,7 @@
       border-radius: 50%;
     }
     .active {
-      background-color: var(--primary-1);
+      background-color: var(--primary-1) !important;
     }
   }
 }

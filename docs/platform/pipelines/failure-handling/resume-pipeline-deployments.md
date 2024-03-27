@@ -24,7 +24,7 @@ With Harness, you can resume pipeline executions from any successful stage or a 
 
 You need:
 
-* An understanding of [Harness' key concepts](/docs/get-started/key-concepts.md).
+* An understanding of [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * Pipeline execution permissions, such as is granted by the [Pipeline Executor role](/docs/platform/role-based-access-control/permissions-reference.md).
 * A pipeline that is in **Failed**, **Aborted**, **Expired,** or **Rejected** status.
 

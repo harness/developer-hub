@@ -8,14 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).Add the required policies to the Execution Role for the Lambda function to view your Lambda functions in the Serverless Functions Dashboard.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Step 1: Add Policies to Lambda Execution Role](#step_1_add_policies_to_lambda_execution_role)
-* [Step 2: View Lambda Deployments in the Serverless Functions Dashboard](#step_2_view_lambda_deployments_in_the_serverless_functions_dashboard)
-* [Next Steps](#next_steps)
+Add the required policies to the Execution Role for the Lambda function to view your Lambda functions in the Serverless Functions Dashboard.
 
 ### Before You Begin
 

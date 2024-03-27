@@ -21,9 +21,9 @@ If you are already familiar with setting up Harness CV and the verification step
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
+* [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts.md).
 * [Learn about Kubernetes deployments](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
-* [Refer to the supported platforms and technologies](../../get-started/supported-platforms-and-technologies.md#continuous-verification)
+* [Refer to the supported platforms and technologies](/docs/continuous-delivery/verify/cv-whats-supported.md)
 
 
 ## Deployment strategies for CV

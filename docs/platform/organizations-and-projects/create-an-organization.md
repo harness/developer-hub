@@ -8,17 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Organizations (Orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division.
+Harness [Organizations](/docs/platform/get-started/key-concepts.md#organizations-and-projects) (Orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division.
 
 A Harness project is a group of Harness modules and their pipelines. For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
 
 You can add an unlimited number of Harness projects to an org. All projects in the org can use the org's resources.
 
 This topic describes how to create an org, invite Harness users to it as members, and create a project within the org.
-
-### Before you begin
-
-* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 
 ### Prerequisites
 
@@ -104,6 +100,5 @@ There is no limitation on the number of orgs and projects that you can create in
 
 ### See also
 
-* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 

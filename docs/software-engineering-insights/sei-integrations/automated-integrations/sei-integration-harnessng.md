@@ -7,13 +7,7 @@ sidebar_label: Harness
 
 Harness is a modern software delivery platform that allows engineers and DevOps to build, test, deploy, and verify the software on demand.
 
-Use the SEI Harness integration to integrate SEI with your Harness modules.
-
-:::info
-
-The SEI Harness integration is only for Harness NextGen CI and CD module. For an explanation of the difference between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen).
-
-:::
+Use the SEI Harness integration to integrate SEI with your Harness CI/CD modules.
 
 ## Requirements
 

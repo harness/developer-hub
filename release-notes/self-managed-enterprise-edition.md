@@ -15,17 +15,17 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for patch releases 0.14.4, 0.13.4, and 0.12.1
+:::danger important upgrade instructions for patch releases 0.14.6, 0.13.4, and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
 If you are currently on version 0.13.0, 0.13.1, 0.13.2, or 0.13.3, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.4.
 
-If you are currently on version 0.14.3, you must follow the applicable upgrade process below to latest stable release, 0.14.4.
+If you are currently on version 0.14.3, 0.14.4, or 0.14.5, you must follow the applicable upgrade process below to latest stable release, 0.14.6.
 
-You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.14.4.
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.14.6.
 
-**Upgrade using Helm to version 0.12.1, 0.13.4, or 0.14.14**
+**Upgrade using Helm to version 0.12.1, 0.13.4, or 0.14.6**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
@@ -458,6 +458,14 @@ This results in no deployment even though the pipeline is successful. This issue
 
 ## March 26, 2024, patch version 0.14.6
 
+:::danger required version upgrade
+
+If you are currently on version 0.14.3, 0.14.4, or 0.14.5, you must upgrade to the latest stable release, 0.14.6. This version fixes an issue that caused the Pipeline Studio page to crash when adding a CI build stage.
+
+Harness removed versions 0.14.3, 0.14.4, and 0.14.5.
+
+:::
+
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
@@ -500,6 +508,8 @@ gsutil -m cp \
 - Fixed an issue that caused the Pipeline Studio page to crash when adding a CI build stage. (CI-11842, ZD-60094)
 
 ## March 21, 2024, patch version 0.14.5
+
+<DocsTag  backgroundColor= "#4279fd" text="Version removed, upgrade to 0.14.6"  textColor="#ffffff"/>
 
 This release includes the following Harness module and component versions.
 
@@ -545,6 +555,8 @@ gsutil -m cp \
 
 ## March 20, 2024, patch version 0.14.4
 
+<DocsTag  backgroundColor= "#4279fd" text="Version removed, upgrade to 0.14.6"  textColor="#ffffff"/>
+
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
@@ -584,6 +596,8 @@ gsutil -m cp \
 - Fixed UI logging issues for release version 0.14.3. (PL-48394)
 
 ## March 6, 2024, version 0.14.3
+
+<DocsTag  backgroundColor= "#4279fd" text="Version removed, upgrade to 0.14.6"  textColor="#ffffff"/>
 
 This release includes the following Harness module and component versions.
 
@@ -3635,7 +3649,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
 
 ##### Continuous Integration
 
-- The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture/#harness-platform-components) directly by HTTP, rather than through a delegate.
+- The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature causes CI steps to send status updates to the Harness Manager directly by HTTP, rather than through a delegate.
 
   This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. (CI-8338)
 
@@ -5684,7 +5698,7 @@ This release includes the following Harness module and component versions.
 
 - The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
 
-  - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/get-started/harness-platform-architecture/#harness-platform-components) directly by HTTP rather than through a Delegate.
+  - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the Harness Manager directly by HTTP rather than through a Delegate.
   - `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence/#add-the-run-tests-step) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
 - [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-managed environment, Harness Cloud. (CI-7127)

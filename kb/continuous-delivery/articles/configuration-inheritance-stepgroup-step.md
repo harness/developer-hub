@@ -3,9 +3,13 @@ title: Permissions Inheritance Logic From Containerized Step Groups to Steps
 description: Understand how steps inherit step group permissions configuration.
 ---
 
- The logic that Harness has in place to handle configuration collision between the privilege levels of step groups and its steps in a containerized step group is flawed. The Run Step configuration runs into an unspecified behavior when the access configuration of a step group differs from the access configuration of the steps inside it.
+The logic that Harness has in place to handle configuration collision between the privilege levels of step groups and their steps in a containerized step group is flawed. The Run Step configuration runs into an unspecified behavior when the access configuration of a step group differs from the access configuration of the steps inside it.
 
 The logic has now been updated to reflect a more intuitive and secure access model. 
+
+:::note
+Currently, this feature is behind the feature flag `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+:::
 
 This KB article will go into the details of every upcoming behavior change from this update and how you could fix it if it caused one of your pipelines to fail. 
 

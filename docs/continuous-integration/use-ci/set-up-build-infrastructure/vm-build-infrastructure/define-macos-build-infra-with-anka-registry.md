@@ -46,7 +46,7 @@ This configuration requires:
    * [What is the Anka build cloud?](https://docs.veertu.com/anka/anka-build-cloud/)
    * [Getting started with Anka on EC2 Mac instances](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/)
    * [Anka on AWS EC2 instances](https://docs.veertu.com/anka/aws-ec2-mac/)
-* Familiarity with the [Harness Platform](/docs/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
+* Familiarity with the [Harness Platform](/docs/platform/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
 * Familiarity with Harness Delegates, VM runners, and pools.
   * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
   * [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)

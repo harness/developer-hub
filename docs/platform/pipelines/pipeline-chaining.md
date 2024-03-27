@@ -17,7 +17,7 @@ Chaining pipelines in Harness offers the following benefits:
 - Improved collaboration and communication by allowing different teams to work on different stages of the deployment process.
 - Enable greater compliance with regulatory requirements and industry best practices through automatic deployments.
 
-:::info
+## Requirements and considerations
 
 - You need read permissions for the child (chained) pipeline and edit permissions for the parent (primary) pipeline to add a chained pipeline (a pipeline stage) to a pipeline.
 - To manually run chain pipelines, you need execute permissions for the parent and child pipelines to ensure successful execution.
@@ -25,8 +25,7 @@ Chaining pipelines in Harness offers the following benefits:
 - When manually running a pipeline, the pre-flight checks don't validate child pipelines.
 - Pipeline stages (chained pipelines) don't support matrix strategies.
 - Pipeline stages don't support auto-suggested expressions in **Outputs**.
-
-:::
+- Artifacts, test results, and other output produced by chained pipelines are available in the execution details for the chained pipeline that produced those outputs. This information is not stored in the parent pipeline's execution details.
 
 ## Chain pipelines
 
