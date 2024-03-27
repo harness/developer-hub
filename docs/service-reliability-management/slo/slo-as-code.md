@@ -19,7 +19,7 @@ The following sections explain how to set up Terraform based entities to manage 
 
 ## Set up a Git Repository in GitHub
 
-Create a Git repository in GitHub. This repository must include a folder that contains all the necessary Terraform based files for creating a SLO. To see a sample folder that contains all the required entities in Terraform format, go to the [demo repository](https://github.com/deepakchhikara66/demo/tree/harness/harness/slo).
+Create a Git repository in GitHub. This repository must include a folder that contains all the necessary Terraform based files for creating a SLO. To see a sample folder that contains all the required entities in Terraform format, go to the [demo repository](https://github.com/harness/harness-core/tree/develop/srm-service/terraform-samples).
 
 For detailed instructions on how to prepare files required for Terraform setup, go to [Harness Provider on Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs). 
 
