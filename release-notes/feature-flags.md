@@ -81,7 +81,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
-#### Version 1.6.3
+#### Version 1.6.4
 
  - The Evaluation logic refactored to use immutable principles, to aid in maintainacne and readability. (FFM-11057)
   - If the target group cache is found to be in an invalid state, such that any groups that beloing to a flag are not in the cache, the SDK will asynchronously update the group cache and immediately return the default variation.
