@@ -18,7 +18,7 @@ This topic describes how to connect your Kubernetes cluster to CCM.
 To fully enable CCM for a Kubernetes cluster, you need to:
 
 - **Deploy a delegate into the target cluster.** This gives Harness a connection into your cluster.
-- **Create a Harness Kubernetes connector that targets the delegate.** This ties your cluster and delegate to a representation of your cluster in Harness.
+- **Create a Harness cloud provider Kubernetes connector that targets the delegate.** This ties your cluster and delegate to a representation of your cluster in Harness.
 - **Create a Harness CCM Kubernetes connector that targets the Kubernetes connector.** This enables the delegate to start collecting usage metrics to be sent back to Harness for use in CCM.
 - **(Optional) Deploy the autostopping controller and router into the target cluster.** This enables you to create CCM autostopping rules to reduce costs of your cluster.
 
@@ -34,7 +34,7 @@ If you are using a CCM cloud connector, the data generation is delayed. Since CC
 
 :::
 
-## Kubernetes connector requirements and workflow
+## Kubernetes CCM connection requirements and workflow
 
 For CCM, you can only use Kubernetes connectors at the Account level in Harness. This section describes how to set up the CCM Kubernetes connector.
 
@@ -42,19 +42,19 @@ Here's a visual representation of the CCM Kubernetes connector requirements and 
 
 ![](./static/set-up-cost-visibility-for-kubernetes-14.png)
 
-### Deploy a delegate
-
-#### Prerequisites
+### Prerequisites
 
 Make sure you have the following set up before you create a Kubernetes connector for CCM:
 
-- **Kubernetes cluster**:
+#### Kubernetes cluster requirements
+
 You need a target Kubernetes cluster for the Harness Delegate and deployment. Make sure your cluster meets the following requirements:
-  * **Number of nodes**: 2
-  * **vCPUs, Memory, Disk Size**: 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.
-  * **Networking**: outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
-  * **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.
-	For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
+
+* **Number of nodes**: 2
+* **vCPUs, Memory, Disk Size**: 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.
+* **Networking**: outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
+* **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.
+   For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
 :::warning
 
@@ -62,7 +62,8 @@ You must not rename the cluster. If you're setting up a new connector with this 
 
 :::
 
-- **Delegate size**:
+#### Delegate size requirements
+
 Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload:
 
   - Laptop - 2GB memory, 0.5CPU
@@ -77,91 +78,37 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
 
 :::
 
-- **Delegate permissions**: You can choose one of the following permissions for CCM:
+#### Metrics server requirements
 
- **Install Delegate with cluster-wide read/write access**
-
-	Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to read tasks (capture change events etc., needed for Harness Cloud Cost Management) anywhere on the K8s cluster where the Delegate is installed.
-
- **Install Delegate with cluster-wide read access**
-
-	(Requires read-only Cluster Admin role) Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to perform read-only tasks (capture change events etc., needed for Harness Cloud Cost Management) anywhere on the K8s cluster where the Delegate is installed.
-
-- **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
-
-
-:::info
-Metrics Server is installed by default on GKE and AKS clusters; however, you need to install it on the AWS EKS cluster.
-:::
+Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
 
 The Metrics Server is a cluster-wide aggregator of resource usage data. It collects resource metrics from kubelets and exposes them in the Kubernetes API server through Metrics API. CCM polls the utilization data every minute on the Delegate. The metrics are aggregated for 20 minutes and then CCM keeps one data point per 20 minutes. For more information, see [Installing the Kubernetes Metrics Server](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html) from AWS.
+
+Metrics Server is installed by default on GKE and AKS clusters; however, you need to install it on the AWS EKS cluster.
+
 To install the metrics server on your EKS clusters, run the following command:
 
 ```
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.5.0/components.yaml
 ```
-Resources can be adjusted proportionally based on number of nodes in the cluster. For clusters exceeding 100 nodes, allocate the following additional resources:
 
-  * 1m core per node
-  * 2MiB memory per node
+Resources can be adjusted proportionally based on number of nodes in the cluster.
 
-#### Delegate installation
+For clusters exceeding 100 nodes, allocate the following additional resources:
 
-[Install a Harness Kubernetes delegate.](/docs/platform/delegates/install-delegates/overview)
+* 1m core per node
+* 2MiB memory per node
 
-### Create a Kubernetes connector
+### Install delegate
 
-:::info
+[Install a Harness Kubernetes delegate in the cluster.](/docs/platform/delegates/install-delegates/overview)
 
-In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters you need 20 Delegates and 40 Connectors (1 Cloud Provider K8s Connector and 1 CCM Connector each).
+#### Delegate permission requirements
 
-Alternatively, if you wish to use a single Delegate to access multiple Kubernetes clusters, you need to specify the Kubernetes master node URL.
+You can choose one of the following permissions for the delegate for CCM:
 
-:::
-
-Once the delegate is deployed you will need to create a Kubernetes connector at the account level. This connector should be created to `Use credentials of a specific Harness delegate` and select the delegate you deployed into the target cluster.
-
-Make sure the connector passes its connection test to validate the delegate has been installed correctly and can make outbound connections to the Harness Manager.
-
-### Create a CCM Kubernetes connector
-
-To have your delegate start to collect usage metrics, you need to create a CCM Kubernetes connector at the Account level. This connector should point to the regular Kubernetes connector created in the previous step.
-
-For the CCM Kubernetes connector, you need to reference an existing Cloud Provider Kubernetes Connector. Otherwise, you need to create one.
-For each cluster, you need to create a CCM Kubernetes connector. CCM can now connect to the K8s connector and collect CCM metrics for deep cloud cost visibility.
-
-#### Connect your Kubernetes cluster to CCM
-
-Perform the following steps to connect your Kubernetes cluster to CCM.
-
-1. Create a new Kubernetes connector using one of the two options below:
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs queryString="tab-number">
-<TabItem value="4" label="From Account Settings">
-
-1. Go to **Account Resources** > **Connectors**.
-2. Select **+ New Connector**.
-3. Under **Cloud Costs**, select **Kubernetes**.
-
-</TabItem>
-<TabItem value="5" label="From Cloud Costs">
-
-1. Go to **Setup** > **Cloud Integration**.
-2. Select **New Cluster/Cloud account**.
-3. Select **Kubernetes**.
-4. Select **Advanced**.
-
-:::note
-
-For the Quick Create option, go to [Kubernetes Quick Create](/docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s).
-
-:::
-
-</TabItem>
-</Tabs>
+* **Install Delegate with cluster-wide read/write access:** Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to read tasks (capture change events etc., needed for Harness Cloud Cost Management) anywhere on the K8s cluster where the Delegate is installed.
+* **Install Delegate with cluster-wide read access:** (Requires read-only Cluster Admin role) Creates a new namespace called "harness-delegate-ng" with the service account bound to Cluster Admin role. This Delegate will be able to perform read-only tasks (capture change events etc., needed for Harness Cloud Cost Management) anywhere on the K8s cluster where the Delegate is installed.
 
 #### Delegate role requirements for CCM visibility features and recommendations:
 
@@ -226,14 +173,67 @@ rules:
   - watch
 ```
 
-#### Detailed CCM Kubernetes connector guide
+### Create the cloud provider Kubernetes cluster connector
+
+Once the delegate is deployed you need to [create a Kubernetes cloud provider connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) at the Account level. This connector should be created to `Use credentials of a specific Harness delegate` and select the delegate you deployed into the target cluster.
+
+Make sure the connector passes its connection test to validate the delegate has been installed correctly and can make outbound connections to the Harness Manager.
+
+:::warning
+
+In Harness, the ratio of Delegates to Connectors is 1:2. If you have 20 clusters, then you need 20 delegates and 40 connectors (one Kubernetes cloud provider connector and one CCM Cloud Integration/Cloud Costs Kubernetes connector for each cluster).
+
+Alternatively, to use a single delegate to access multiple Kubernetes clusters, you must specify the Kubernetes master node URL.
+
+:::
+
+### Create a CCM Kubernetes connector
+
+To have your delegate start to collect usage metrics, you need to create a CCM Kubernetes connector at the Account level and connect it to your cluster.
+
+You need one CCM Kubernetes connector per cluster, and you must associate each CCM Kubernetes connector with the cluster's corresponding cloud provider Kubernetes cluster connector (created previously).
+
+Once you create and connect the CCM Kubernetes connector, CCM can collect CCM metrics for deep cloud cost visibility.
+
+You can start creating a CCM Kubernetes connector in your Account Settings or from the Cloud Costs page in Harness.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+
+1. Go to **Account Resources** > **Connectors**.
+2. Select **+ New Connector**.
+3. Under **Cloud Costs**, select **Kubernetes**.
+
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+
+1. Go to **Setup** > **Cloud Integration**.
+2. Select **New Cluster/Cloud account**.
+3. Select **Kubernetes**.
+4. Select **Advanced**.
+
+:::tip
+
+For the Quick Create option, go to [Kubernetes Quick Create](/docs/cloud-cost-management/get-started/onboarding-guide/use-quick-create-k8s).
+
+:::
+
+</TabItem>
+</Tabs>
+
+### Connect your Kubernetes cluster to CCM
+
+After beginning to create the CCM Kubernetes connector, use these steps to connect your Kubernetes cluster to CCM:
 
 1. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.
 If you do not have Cloud Provider Kubernetes Connector already created, select **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 2. The name for your connector is automatically populated. You can choose to edit the name. This name appears on the **Perspectives** page to identify this cluster.
 3. Select **Save and Continue**.
 
-##### Choose Requirements
+#### Choose Requirements
 
 In **Choose Requirements**, select the Cloud Cost Management features that you would like to enable for your Kubernetes clusters. Based on your selection Harness requires specific permissions.
 
@@ -252,9 +252,11 @@ For [AWS](set-up-cost-visibility-for-aws.md) and [Azure](set-up-cost-visibility-
 
 Make your selection and select **Continue**.
 
-##### (Optional) Create a Secret
+#### (Optional) Create a Secret
 
-The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature in the **Feature Selection** step. In this step, you are providing permissions for intelligent cloud AutoStopping rules. For more information, see [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws).
+The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature when selecting features.
+
+In this step, you provide permissions for intelligent cloud AutoStopping rules. For more information, go to [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws).
 
 1. In **Secret creation**, select create an API key here and create an API key. Go to [Create an API Key](/docs/platform/automation/api/add-and-manage-api-keys) for more information.
 2. Run the following commands in your Kubernetes cluster:
@@ -265,7 +267,7 @@ The secret creation settings appear only if you have selected **Kubernetes Optim
 	kubectl create namespace harness-autostopping
 	```
 
-	2. In the following YAML, add the API token that you created (in step 1) and run the command in your K8s cluster.  
+	2. In the following YAML, add the API token that you created (in step 1) and run the command in your K8s cluster.
 
 	```
 	apiVersion: v1
@@ -286,9 +288,9 @@ The secret creation settings appear only if you have selected **Kubernetes Optim
 
 3. Select **Continue**.
 
-##### Provide Permissions
+#### Provide permissions
 
-If the cluster does not already have additional permissions, you will apply them in this step. See Delegate Permissions in the Prerequisites section for additional details.
+If the cluster does not already have additional permissions, you will apply them in this step. For more information, go to the [Delegate permissions](#delegate-permission-requirements).
 
 1. In **Provide Permissions**, select **Download YAML**.
 2. Copy the downloaded YAML to a machine where you have `kubectl`installed and have access to your Kubernetes cluster.
@@ -301,13 +303,13 @@ If the cluster does not already have additional permissions, you will apply them
 4. Select **Done** and **Continue**.
 5. In **Verify connection**, once the Test Connection succeeds, select **Finish**.
 
-The Connector is now listed in **Connectors**.
+The connector is now listed in **Connectors**.
 
 ![](./static/set-up-cost-visibility-for-kubernetes-19.png)
 
-## Troubleshooting
+#### Troubleshooting
 
-In **Verify connection** step, if you get an error message like `few of the visibility permissions are missing`, then you need to review the CCM permissions required for Harness Delegate.
+In the **Verify connection** step, if you get an error message like `few of the visibility permissions are missing`, then you need to review the CCM permissions required for Harness Delegate.
 
 ![](./static/set-up-cost-visibility-for-kubernetes-20.png)
 
