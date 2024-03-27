@@ -397,6 +397,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Do not sell or share my personal information",
+                to: "https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7",
+              },
             ],
           },
         ],
