@@ -39,4 +39,5 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Tenable** — JSON
 - **Veracode** — XML
 - **JFrog Xray** — JSON
+- **Wiz** - JSON (_recommended_), SARIF
 - **Zed Attack Proxy (ZAP)** — JSON

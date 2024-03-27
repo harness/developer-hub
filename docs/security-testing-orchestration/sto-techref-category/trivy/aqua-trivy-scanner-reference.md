@@ -145,16 +145,11 @@ import StoSettingImageName from '../shared/step_palette/image/_name.md';
 
 import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
-
-
 <StoSettingImageTag />
 
 #### Access ID
 
-
 import StoSettingImageAccessID from '../shared/step_palette/image/_access-id.md';
-
-
 
 <StoSettingImageAccessID />
 
