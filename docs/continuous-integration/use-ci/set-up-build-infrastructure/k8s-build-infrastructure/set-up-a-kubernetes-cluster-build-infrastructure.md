@@ -52,15 +52,58 @@ Create a Kubernetes cluster to use for builds. For instructions on creating clus
 - [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
 - [Creating a cluster in GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster)
 
-Make sure your Kubernetes cluster meets the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference#permissions-required).
+Make sure your Kubernetes cluster meets the following requirements:
 
-Additionally, you must install the Harness Kubernetes Delegate on the same cluster you use for your Harness CI build infrastructure. Make sure that the cluster has enough memory and CPU for your builds and the delegate.
+* The cluster has sufficient memory and CPU to support the resources required by your builds *and* the Harness Delegate. The delegate is an agent between Harness and your cluster that you will install on the cluster as part of the process to configure this build infrastructure.
+* The cluster meets the [CI cluster requirements](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
+* The cluster has the [roles and policies required for builds](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#roles-and-policies-for-the-connector).
+* If required for your builds, the cluster supports [privileged mode for Docker-in-Docker](#docker-in-docker-requires-privileged-mode) and allows [root access for Build and Push steps](#build-and-push-steps-require-root-access).
+* If you use Istio MTLS Strict mode, you [added a headless service](#create-headless-service-for-istio-mtls-strict-mode).
 
-### Privileged mode is required for Docker-in-Docker
+### Docker-in-Docker requires privileged mode
 
 If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../manage-dependencies/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
 
 If your Kubernetes cluster doesn't support privileged mode, you'll need to use another build infrastructure, such as [Harness Cloud](../use-harness-cloud-build-infrastructure.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). Other infrastructure types allow you to run Docker commands directly on the host.
+
+### Build and Push steps require root access
+
+With Kubernetes cluster build infrastructures, [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
+
+If your build [runs as non-root](#run-as-non-root-or-a-specific-user), you can run individual **Build and Push** steps as root by setting **Run as User** to `0` on a specific **Build and Push** step to use the root user for that individual step only.
+
+If your security policy doesn't allow running as root, you can use the Builah plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot.md) instead of the built-in **Build and Push** steps.
+
+### Create headless service for Istio MTLS STRICT mode
+
+If you use [Istio MTLS STRICT mode](https://istio.io/latest/docs/tasks/security/authentication/authn-policy/#globally-enabling-istio-mutual-tls-in-strict-mode), you need to add a [headless service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) to the Kubernetes namespace where you will install the Harness Delegate. For example:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: headless
+spec:
+  clusterIP: None
+  selector:
+    accountID: YOUR_K8S_ACCOUNT_ID
+  ports:
+    - protocol: TCP
+      port: ## Specify port number
+      targetPort: ## Specify port number
+```
+
+#### Istio ProxyConfig
+
+If the delegate is unable to connect to the created build farm with Istio MTLS STRICT mode, and you see that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`.
+
+This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready. to do this, it injects the sidecar at the start of the pod's container list and configures it to block all other containers from starting until the proxy is ready.
+
+You can add the Istio ProxyConfig as a pod annotation, for example:
+
+```
+proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+```
 
 ### GKE Autopilot is not recommended
 
@@ -100,37 +143,6 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 
 </details>
 
-### Create headless service for Istio MTLS STRICT mode
-
-If you use [Istio MTLS STRICT mode](https://istio.io/latest/docs/tasks/security/authentication/authn-policy/#globally-enabling-istio-mutual-tls-in-strict-mode), you need to add a [headless service](https://kubernetes.io/docs/concepts/services-networking/service/#headless-services) to the Kubernetes namespace where you will install the Harness Delegate. For example:
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: headless
-spec:
-  clusterIP: None
-  selector:
-    accountID: YOUR_K8S_ACCOUNT_ID
-  ports:
-    - protocol: TCP
-      port: ## Specify port number
-      targetPort: ## Specify port number
-```
-
-#### Istio ProxyConfig
-
-If the delegate is unable to connect to the created build farm with Istio MTLS STRICT mode, and you see that the pod is removed after a few seconds, you might need to add [Istio ProxyConfig](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#ProxyConfig) with `"holdApplicationUntilProxyStarts": true`.
-
-This setting delays application start until the pod is ready to accept traffic so that the delegate doesn't attempt to connect before the pod is ready. to do this, it injects the sidecar at the start of the pod's container list and configures it to block all other containers from starting until the proxy is ready.
-
-You can add the Istio ProxyConfig as a pod annotation, for example:
-
-```
-proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-```
-
 ## Create a Kubernetes cluster connector and install the delegate
 
 A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) creates a connection between Harness and your Kubernetes cluster. This connector works through a Harness Delegate that you will install on a pod in your cluster.
@@ -140,7 +152,12 @@ A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a
 3. Enter a name for the connector and select **Continue**.
 4. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
 5. Select **Install new Delegate**.
-6. Install the delegate on a pod in your Kubernetes cluster. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
+6. Install the delegate on a pod in your Kubernetes cluster.
+
+   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
+
+   You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the delegate and build farm. You can change the namespace name if you like.
+
 7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
 8. In the connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
 9. Select your new Kubernetes delegate, and then select **Save and Continue**.

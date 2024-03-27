@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-03-22T10:00
+date: 2024-03-26T10:00
 sidebar_position: 10
 ---
 
@@ -36,6 +36,14 @@ You will be impacted by this deprecation if:
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## March 2024
+
+### Version 1.20.2
+
+<!-- Mar 26, 2024 -->
+
+#### Fixed issues
+
+Fixed an issue with fallback handling when [splitting tests](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) by `testcase_timing`, `testsuite_timing`, or `class_timing`. (CI-11651)
 
 ### Correction
 
