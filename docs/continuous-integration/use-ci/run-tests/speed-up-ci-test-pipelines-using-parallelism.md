@@ -345,7 +345,16 @@ The `split_tests` binary supports these test splitting strategies:
 
 ### Split-index and split-total
 
-Include `--split-index ${HARNESS_NODE_INDEX}` and `--split-total ${HARNESS_NODE_TOTAL}`. These commands create groups of tests files based on the total number of parallel instances (`--split-total`) and assign specific test files for each individual instance (`--split-index`). These commands use the environment variables you declared when you [defined a parallelism strategy](#define-a-parallelism-strategy).
+Harness automatically runs the `--split-index` and `--split-total` commands to create groups of tests files based on the total number of parallel instances (`--split-total`) and assign specific test files for each individual instance (`--split-index`).
+
+Harness automatically populates the `HARNESS_NODE_INDEX` and `HARNESS_NODE_TOTAL` environment variables supplied to these commands from the environment variables you declared when you [defined a parallelism strategy](#define-a-parallelism-strategy).
+
+If you need these commands to use different values, you can include them with your split tests commands:
+
+```
+--split-index ${HARNESS_NODE_INDEX}
+--split-total ${HARNESS_NODE_TOTAL}
+```
 
 ### Split tests output
 
@@ -482,19 +491,21 @@ With Harness CI, you can split tests for any language or tool. Here are some exa
                       go install github.com/jstemmer/go-junit-report/v2@latest
 
                       # Call split_tests, define splitting strategy, and generate the list of test files.
-                      FILES=`/addon/bin/split_tests --glob "**/*_test.go" --split-by file_timing \
-                         --split-index ${HARNESS_NODE_INDEX} \
-                         --split-total ${HARNESS_NODE_TOTAL}`
-                      echo $FILES
 
-                      # Use the test files list as input and produce results in JUnit XML format.
-                      go test -v $FILES | tee report_<+strategy.iteration>.out
-                      cat report_<+strategy.iteration>.out | $HOME/go/bin/go-junit-report -set-exit-code > report.xml
+                      go list ./... > test_suites.txt
+
+                      SUITES=`split_tests --verbose --split-by testsuite_timing --file-path test_suites.txt`
+
+                      echo $SUITES
+
+                      # Use the test suites list as input and produce results in JUnit XML format.
+                      go test -v $SUITES | tee report_<+strategy.iteration>.out
+                      cat report_<+strategy.iteration>.out | $HOME/go/bin/go-junit-report -set-exit-code > report_<+strategy.iteration>.xml
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "report.xml"
+                          - "report_<+strategy.iteration>.xml"
 ```
 
 ### Java

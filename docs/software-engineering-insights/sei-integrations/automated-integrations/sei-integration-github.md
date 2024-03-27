@@ -5,6 +5,10 @@ sidebar_position: 90
 sidebar_label: GitHub Cloud
 ---
 
+:::info
+The 202401.2 release included a new experience for the GitHub integration, focused on simplifying and streamlining the user journey. The feature is currently in BETA. To learn more, go to [GitHub 2.0](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+:::
+
 GitHub provides hosting for software development and version control using Git.
 
 Use the SEI GitHub integration to integrate SEI with GitHub.
