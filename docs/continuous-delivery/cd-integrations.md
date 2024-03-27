@@ -227,4 +227,8 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>CDS_K8S_TRAFFIC_ROUTING_NG</td>
         <td>Enable this feature if you want to use traffic shifting as a part of your pipeline. Also enables traffic shifting as configuration for the kubernetes B/G Deploy Step as well as the Canary Deploy Step. <b>This is a Beta feature.</b></td>
     </tr>
+     <tr>
+        <td>CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX</td>
+        <td>Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step) <b>This is a Beta feature.</b></td>
+    </tr>
 </table>
