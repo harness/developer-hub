@@ -25,19 +25,39 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
+
+
+
+### Version 198.2
+
 <!-- 2024-03-20 -->
+
+### Version 1.89.2
+
+#### New features and enhancements
+
+- The AWS Security Hub scan step now supports passing `AWS_SESSION_TOKEN` as an environment variable to support session-based authentication with AWS. You can pass the token as a key-value pair in the [Settings](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference#settings) field. (STO-6371, ZD-48947)
+
+- Issues tables in **Security Tests** now include a **Target** column. (STO-4918)
+
+#### Fixed issues
+
+- Fixed an issue with database migrations that impacted upgrading Self-Managed Platform from version 0.13.x to 0.14.x. (STO-7309)
+
+- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows.  (STO-4918) 
+
+  With this fix, clicking on an issue selects only that issue, even if other scans detected the same issue for that target. (You can use the **Steps** filter to show/hide results from specific scans.)
+
 
 
 ### Product update 2024-03-27
 
-The following feature is now generally available:
-
-- [New feature: OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
+The following feature was previously Early Access and is now generally available: [New feature: OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
 
 
 ### Product update 2024-03-25
 
-The following features are now generally available:
+The following features were previously Early Access and are now generally available:
 
 - Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
 - [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration

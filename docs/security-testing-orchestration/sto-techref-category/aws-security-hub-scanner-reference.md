@@ -87,35 +87,39 @@ The access ID for your AWS account.
 
 The access token for your AWS account.
 
-<!-- 
+
 #### Access Region
 
 Your AWS region. 
 
--->
-
-### Log Level, CLI flags, and Fail on Severity
 
 
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
+
+### Settings
+
+You can use this to add environment variables to your scan environment. To enable session-based authentication with AWS, for example, you can pass `AWS_SESSION_TOKEN` with a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) of your token.
+
+![](./static/add-aws-session-token.png)
+
 
 
 <!-- STO-7187 remove legacy configs for scanners with step palettes
