@@ -263,7 +263,7 @@ Similar to the [Issue Lead Time by Stage Report](#issue-lead-time-by-stage-repor
 When you configure a single stat widget:
 
 * You can create filters for any field that can be viewed as a single value, such as issue type, priority, status, labels, components, and so on.
-* The available fields depend on your [integrations](/docs/category/integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
+* The available fields depend on your [integrations](/docs/category/sei-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
 * If you use multiple filters to focus the widget (such as to show the total number of *bugs* in the *won't do* status for a specific project), the filters are inherently combined by `AND` operators.
 * Keep in mind that single stat widgets intend to show a single value, such as the total number of tickets or the sum of story points. Determine what single stat you want to show, and then create your filters accordingly.
 
@@ -271,13 +271,13 @@ You might want to set the time range to **Use Insight time**, which allows the u
 
 ## DORA Lead Time For Changes
 
-DORA calculation is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the profile level. 
+DORA calculation is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the Profile level. 
 
-DORA Lead Time for Change and DORA Mean Time for Restore reports do not require a DORA profile to be associated in the widget configuration, as it is already expected to be associated with a collection under which Insight is defined. 
+DORA Lead Time for Change and DORA Mean Time for Restore reports do not require a DORA profile to be associated in the widget configuration, as it is already expected to be associated with a collection under which Insight is defined.
 
 DORA profiles can be configured to calculate the Lead time concerning either Issue (`start event: Ticket Created`) or SCM Pull Requests (`start event: Commit Created`).
 
-For information about the Lead Time For Changes DORA metric, go to [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
+For information about the DORA Lead Time For Changes report, go to [DORA Reports](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
 
 ## PR and SCM lead time
 
