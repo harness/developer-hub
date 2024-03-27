@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-03-13T10:00
+date: 2024-03-27T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -27,9 +27,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- 2024-03-20 -->
 
+
+### Product update 2024-03-27
+
+The following feature is now generally available:
+
+- [New feature: OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
+
+
 ### Product update 2024-03-25
 
-The following features are no longer behind a feature flag:
+The following features are now generally available:
 
 - Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
 - [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
@@ -152,17 +160,11 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 
-#### Early access feature: OPA policies for Security Test results
+#### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
-
-:::note
-
-To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
-
-:::
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
