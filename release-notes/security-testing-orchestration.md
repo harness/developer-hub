@@ -29,7 +29,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 <!-- 2024-03-27 -->
 
-#### Early Access features that are now GA
+#### Features that are no longer behind feature flags
 
 The following features are now generally available:
 - [OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
