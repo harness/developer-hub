@@ -6476,3 +6476,24 @@ All - Only deploy to environments matching all the tags.
 
 Any - Deploy to environments matching any of the tags.
 
+
+#### Why is my pipeline timing out even though my step hasn't reached the timeout yet?
+
+If your pipeline is timing out before your step has a chance to hit the timeout threshold, it's likely that the pipeline itself has a timeout that has already been reached.
+
+
+#### Why can't I see any Harness Status Checks in my Github Branch Protection Rules after I already setup the trigger?
+
+To get Harness Status Checks to show for Pull Requests, you'll need to trigger the Harness Pipeline at least once with a Pull Request first. Only then can you see the Harness Status Checks in the Github Branch Protection Rules and enforce it on branches.
+
+
+#### How do I setup a Pipeline Trigger for Tag and Branch creation in Github?
+
+The out of the box Github Trigger type does not currently support this however, you can use a Custom Webhook trigger and follow the below steps in order to achieve this. 
+
+1. Create a Custom Webhook trigger
+2. Copy the Webhook URL of the created trigger
+3. Configure a Github Repository Webhook pasting in the URL copied from Step 2 in the Payload URL
+4. Set the content type to `application/json`
+5. Select `Let me select individual events.` for the `Which events would you like to trigger this webhook?` section
+6. Check the `Branch or tag creation` checkbox
