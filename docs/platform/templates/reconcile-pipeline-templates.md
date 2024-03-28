@@ -4,9 +4,9 @@ description: This topic explains how to reconcile pipeline template changes in H
 sidebar_position: 15
 ---
 
-Harness detects updates made to referenced entities if those updates are made outside of Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline. 
+Harness detects updates made to referenced entities if those updates are made outside or inside of the Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline. 
 
-One of the most example of pipeline reconciliation is when you increase or decrease the number of runtime inputs.
+One of the most common example of pipeline reconciliation is when you increase or decrease the number of runtime inputs.
 
 For example, let's consider a scenario with three templates: a pipeline template, a stage template, and a step template. In this scenario, the pipeline serves as the parent template, while the stage and step templates are its child templates. 
 
@@ -124,6 +124,9 @@ Harness calls the refreshed YAML API `POST https://app.harness.io/template/api/r
 ![](./static/reconcile_pipeline_template.png)
 
 First, it will ask you to update the stage template, and then the pipeline level. You also have the option to ``Update all unsynced entities`` at once.
+:::info note
+Please note that every reconciliation requires saving the pipeline. Specifically, if the pipeline is remote, we will need to do a ``git push`` every time to ensure the latest version of the pipeline is saved.
+:::
 
 
 ## How Harness detects changes
@@ -151,9 +154,6 @@ The diff shows only those changes that involve runtime inputs. The following lis
 
 - A field's value type was changed from a fixed value or expression to a runtime input, or from a runtime input to a fixed value or expression.
 
-:::info note
-Please note, reconciliation doesn't allow you to add or remove allowed values. Suppose you add or remove a value to allowed values; reconciliation will remove it.
-:::
 
 ## Resolve conflicts in the pipeline YAML
 
