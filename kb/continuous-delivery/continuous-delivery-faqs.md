@@ -6424,7 +6424,6 @@ Node execution id is specific to a stage and can be fetched from the list of API
 
 `https://app.harness.io/gateway/pipeline/api/pipelines/execution/v2/<planexecutionid>?routingId=<accountid>&orgIdentifier=<orgname>&projectIdentifier=<project-name>&accountIdentifier=<accountid>&stageNodeId=<stagenodeid>`
 
-=======
 #### Which entities such as service or environment are factors that determine the metrics displayed in Deployment Dashboard?
 
 In our setup, two Looker dashboard models are specifically designed to showcase data solely from pipeline executions with a CD stage. The data aggregation and presentation within these views adapt dynamically based on the chosen attributes for display on the dashboard
