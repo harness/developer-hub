@@ -85,9 +85,12 @@ The following deprecated API endpoints are longer supported:
 
 ### Version 1.31.x<!--  April 1, 2024 -->
 
+<!-- On RN list, but will not be part of the 1.31.x release per Bharat
+
 #### New features and enhancements
 
 - Harness now automatically revokes delegate tokens that have not been used by any delegate in the last 30 days. (PL-47602)
+-->
 
 #### Fixed issues
 
