@@ -18,7 +18,7 @@ Customers can request migration of their account from a multi-tenant SaaS cluste
 
 The following steps will be followed by Harness and the customer to ensure a smooth migration.
 
-1. Harness and the customer will ensure that the account has a vanity URL. If no such URL exists, then Harness will first provision a vanity URL in consultation with the customer. Follow the steps to [set up a vanity URL] (/docs/platform/authentication/authentication-overview/#set-up-vanity-url).
+1. Harness and the customer will ensure that the account has a vanity URL. If no such URL exists, then Harness will first provision a vanity URL in consultation with the customer. Follow the steps to [set up a vanity URL](/docs/platform/authentication/authentication-overview/#set-up-vanity-url).
 
 2. The customer should change all delegates to use the vanity URL before the start of the migration window (see below). The advantage of this approach is that when the migration is completed, the delegates will get connected and no action will be required from the customer. The same principle applies to API/webhook clients for Harness and these clients should also be updated to use the vanity URL.
 
