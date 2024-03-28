@@ -20,7 +20,7 @@ The following steps will be followed by Harness and the customer to ensure a smo
 
 1. Harness and customer will ensure that the account has a vanity URL. If no such URL exists, then Harness will first provision a vanity URL in consultation with the customer.
 
-2. Customer should change all delegates to use the vanity URL before the start of the migration window (see below). The advantage of this approach is that when the migration is completed, the delegates will get connected and no action will be required from the customer. Same principle applies to API/webhook clients for Harness and these clients should also be updated to use the vanity URL.
+2. The customer should change all delegates to use the vanity URL before the start of the migration window (see below). The advantage of this approach is that when the migration is completed, the delegates will get connected and no action will be required from the customer. The same principle applies to API/webhook clients for Harness and these clients should also be updated to use the vanity URL.
 
 2. Harness and customer will agree on a 6-hour migration window. At the beginning of this window, Harness will mark the account to  inactive status so that processing of all pipelines and delegate tasks is stopped. Migration will done from the analytics node to not have any production impact. Migration usually completes within 3 hours but planning for 6-hour migration window allows for rollback if needed.
 
