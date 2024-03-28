@@ -46,13 +46,13 @@ For more information about early access features, including early access feature
 | `CI_CONSERVATIVE_K8_RESOURCE_LIMITS` | Used to adjust [resource allocation limits](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/#override-resource-limits). This feature flag sets lite engine resource limits to the default minimum (100m CPU and 100Mi memory). | Beta |
 | `CI_BITBUCKET_STATUS_KEY_HASH` | Addresses an issue with [Harness build status updates in Bitbucket PRs](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#status-doesnt-update-in-bitbucket-cloud-prs) | Beta |
 
-<!-- In development: CI_YAML_VERSIONING, CI_DLITE_DISTRIBUTED, CI_ENABLE_TTY_LOGS, CIE_ENABLE_RUNTEST_V2, CI_ENABLE_INTELLIGENT_DEFAULTS  -->
+<!-- In development: CI_YAML_VERSIONING, CI_ENABLE_TTY_LOGS, CIE_ENABLE_RUNTEST_V2, CI_ENABLE_INTELLIGENT_DEFAULTS  -->
 
-<!-- Beta but not listed in table: CI_PIPELINE_VARIABLES_IN_STEPS (build & push env vars?), CI_TESTTAB_NAVIGATION, CI_ENABLE_GIT_TOKEN_FOR_PUBLIC_REPO, CI_VM_CONTAINERLESS_RUN_ASUSER, CI_OVERVIEW_PAGE
+<!-- Beta but not listed in table: CI_PIPELINE_VARIABLES_IN_STEPS (build & push env vars?), CI_VM_CONTAINERLESS_RUN_ASUSER
 
 CI_INDIRECT_LOG_UPLOAD possibly moving to Account settings
 
-Harness CLoud flags: CI_ENABLE_BARE_METAL, CI_ENABLE_BARE_METAL_FREE_ACCOUNT, HOSTED_BUILDS, CIE_HOSTED_VMS, CIE_HOSTED_VMS_WINDOWS, CIE_HOSTED_VMS_MAC (will not GA due to limited resources), CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled)
+Harness CLoud flags: CI_ENABLE_BARE_METAL, HOSTED_BUILDS, CIE_HOSTED_VMS, CIE_HOSTED_VMS_MAC (will not GA due to limited resources), CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled)
 
 Additional cache intelligence flags: CI_USE_S3_FOR_CACHE, CI_CACHE_OVERRIDE_FALSE, CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled)-->
 
@@ -66,10 +66,9 @@ Here are some CI early access features that were recently promoted to GA:
 
 | Flag | Description | GA date |
 | ---  | ----------- | ------- |
+| `QUEUE_CI_EXECUTIONS`, `QUEUE_CI_EXECUTIONS_CONCURRENCY` | [Queue Intelligence for Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence) | Early 2024 |
 | `CDS_GITHUB_APP_AUTHENTICATION` | GitHub App authentication for GitHub connectors (CI-8577).<br/>You can use a GitHub App as the [primary authentication method for a GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference#credentials-settings). | December 2023 |
 | `CI_AI_ENHANCED_REMEDIATIONS` | Harness AI Development Assistant (AIDA:tm:) for CI (CI-8599, CI-8735, CI-9102).<br/>The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software delivery lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empower teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.<br/>In Harness CI, AIDA provides auto-recognition of failures in pipelines. The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step.<br/>For more information, go to [Troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida). | October 2023 |
 | `CI_DOCKER_INFRASTRUCTURE` | Local runner build infrastructure (CI-5680)<br/>A Harness Docker delegate that you can install directly on a host. For more information, go to [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure). | Early 2023 |
 
-<!-- For new nav handling: CI_MFE_ENABLED, TI_MFE_ENABLED -->
-<!-- queue intelligence: QUEUE_CI_EXECUTIONS, QUEUE_CI_EXECUTIONS_CONCURRENCY -->
-<!-- possibly already globally enabled: CING_ENABLED, CI_RUBY_TI -->
+<!-- possibly already globally enabled: CI_RUBY_TI -->
