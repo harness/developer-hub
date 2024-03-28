@@ -46,9 +46,7 @@ The following features are now generally available:
 
 - Fixed an issue with database migrations that impacted upgrading Self-Managed Platform from version 0.13.x to 0.14.x. (STO-7309)
 
-- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows. (STO-4918) 
-
-  With this fix, clicking on an issue selects only that issue, even if other scans detected the same issue for that target. (You can use the **Steps** filter to show/hide results from specific scans.)
+- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows. With this fix, the rows are differentiated by **Target**. Clicking on an issue selects only that one issue. (STO-4918)
 
 
 ### Version 1.88.2
