@@ -1,13 +1,13 @@
 {
   "position": 5,
-  "label": "Security Considerations",
+  "label": "Security considerations",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Security Considerations"
+      "title":"Security considerations"
    },
   "customProps": {
-    "description": "Required permissions for windows faults"
+    "description": "Permissions to execute Windows faults"
   }
 }
