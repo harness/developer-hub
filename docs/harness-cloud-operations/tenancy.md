@@ -12,7 +12,7 @@ Harness accounts are by default provisioned on multi-tenant SaaS clusters. The t
 
 Customers can request migration of their account from a multi-tenant SaaS cluster to a single-tenant SaaS cluster at an additional cost. The following are important points to note in the context of account migration.
 
-1. It involves downtime when regular usage of Harness will not be possible via any means including UI, delegates, APIs and webshooks. 
+1. It involves downtime during which regular usage of Harness will not be possible via any means including UI, delegates, APIs and webshooks. 
 
 2. It is only supported for modules running on the Harness NG Platform. This means Harness CD FirstGen accounts cannot be migrated.
 
