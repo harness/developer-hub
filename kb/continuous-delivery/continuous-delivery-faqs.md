@@ -1339,12 +1339,11 @@ By using the following expression on the target stage, you will be able to propa
 #### How do I redeploy all services in a new cluster?
  Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
 
-#### What documents bundle should I refer to when migrating from CG to NG ?
+#### What documents should I refer to when migrating from CG/FG to NG?
 
-On migration you can refer the following documentations for assistance :
-- [Migrator GH](https://github.com/harness/migrator)
-- [Comparison page to compare different aspects](https://developer.harness.io/docs/get-started/harness-first-gen-vs-harness-next-gen)
-- [Feature Parity Matrix](https://developer.harness.io/assets/files/FirstGen%20and%20NextGen%20CD%20feature%20parity%20matrix-43d79b7d53d3a9abfda19ffa59c6ea78.pdf)
+- [Migrator tool GitHub repository](https://github.com/harness/migrator)
+- [Upgrade guide](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd)
+- [Feature Parity Matrix](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix)
 - [CDNG Upgrade Faq](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 - [Recording for Project V/S Application](https://www.loom.com/share/62f698a3820e4542a471e4d40d41c686?sid=3dc6f3b9-9369-4133-9452-08795c597351)
 
@@ -4625,7 +4624,7 @@ Please read more on Native Helm in the following [Documentation](https://develop
 #### Does old version to K8S Server (eg. v1.11.10) service deploy get supported in Harness ?
 
 Yes, if the deployment versions supported in First Genwas available, the NextGen will be available as well.
-Please read more on Supported versions in the following [Documentation](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/)
+For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 #### Does Harness actively working on the connector to make it compatible with Jira Cloud , or should one initiate the setup of a delegate for the Jira connector ?
 

@@ -44,6 +44,14 @@ There are two methods to creating a tag in Feature Flag. You can do this by eith
   4. On the next page, select the three dots located next to the name of your flag followed by *Edit* in the small dropdown menu that appears. 
   5. You can, then, edit the tags or remove them or create a new one within the Tags box. 
 
+To further expand on this, when you're creating and editing tags in Feature Flags, there are only certain special characters that are permitted to be a part of the tag name/identifier. 
+
+The Regex is: 
+
+`regexp.MustCompile("^[\\p{L}\\d .@_-]*$")`
+
+This allows for these special characters to be used: `.`, `@`, `_` `-`
+
 :::tip
 
 If you're not familiar with RBAC, check out this blog post on [User and Role Management in the Harness Software Delivery Platform](https://harness.io/blog/continuous-delivery/user-role-management/).

@@ -85,6 +85,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
+- Fixed an issue where [Bitbucket connectors with API access enabled](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access) sometimes became unresponsive. (CDS-93298, ZD-56619, ZD-58844, ZD-59381)
+
 - Setting up a monitored service using cloud metrics from the Google Cloud Operations health source was unable to list dashboards to build query. (CDS-92355)
 
 ### Version 24.03.82505 <!--  March 18, 2024 -->

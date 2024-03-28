@@ -32,7 +32,7 @@ The following diagram illustrates a CI build farm using AWS VMs. The [Harness De
 This is an advanced configuration. Before beginning, you should be familiar with:
 
 * Using the AWS EC2 console and interacting with AWS VMs.
-* [Harness key concepts](../../../../get-started/key-concepts.md)
+* [Harness key concepts](/docs/platform/get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
 * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * Drone VM Runners and pools:

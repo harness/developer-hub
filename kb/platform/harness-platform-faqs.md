@@ -770,7 +770,9 @@ You can use the following repository as a sample to install it through Terraform
 
 ### How often does Harness upgrade the kubectl binary version within the delegate?
 
-We don't have an exact period for when these upgrades occur, but we maintain a list of supported platforms and technologies at [https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/]. Using `INIT_SCRIPT`, you can also customize the kubectl binary version.
+We don't have an exact period for when these upgrades occur, but we maintain a list of [Supported platforms and technologies](https://developer.harness.io/docs/platform/platform-whats-supported).
+
+You can also customize the kubectl binary version using `INIT_SCRIPT`.
 
 ### Can we add Custom Selector in the Harness Delegate chart for legacy delegates?
 
@@ -1264,7 +1266,7 @@ As Harness Delegates are managed by customers in their own infrastructure, Harne
 
 Harness can't control the delegates on your infrastructure.
 
-In Harness's architecture, the delegates in your infrastructure connect to Harness Manager. For more information, go to [Harness Platform components](/docs/get-started/harness-platform-architecture/#harness-platform-components).
+In Harness's architecture, the delegates in your infrastructure connect to Harness Manager. For more information, go to [Harness Platform components](/docs/platform/get-started/key-concepts).
 
 Hence you will need to stop the delegate service in your infrastructure.
 

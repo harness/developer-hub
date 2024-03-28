@@ -142,7 +142,7 @@ Here are some other key features of Harness CI.
 
 For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration), and [CI early access features](/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).
 
-For information about general Harness Platform concepts and features, go to [Harness key concepts](/docs/get-started/key-concepts).
+For information about general Harness Platform concepts and features, go to [Harness key concepts](/docs/platform/get-started/key-concepts).
 
 ### Platform integration
 
@@ -155,6 +155,8 @@ CI pipeline steps run as containers, making it language-agnostic. Containers are
 ### Visual and YAML pipeline editors
 
 Scripting pipelines can be time-consuming and tedious. It may be difficult to envision the sequence of events in more complex pipelines. Harness CI's Pipeline Studio provides both a YAML editor and a graphical, visual editor. In the visual editor, you can easily add, remove, edit, and rearrange steps and stages. You can also use the YAML editor, which functions similarly to any other IDE, to configure your pipelines-as-code. You can also switch between the two for a combined approach.
+
+For more information about YAML in Harness, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart.md).
 
 ### Harness Git Experience
 
