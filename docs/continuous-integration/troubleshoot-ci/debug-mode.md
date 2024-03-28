@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
 Use these steps to use debug mode for builds on Harness Cloud, self-managed VM, or Kubernetes cluster build infrastructures.
 
 1. Create a [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys) with `pipeline execution` permissions. You must have pipeline execution permissions at the [account scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in order for the token to have those permissions.
-2. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Execution**, or **Execution History** page.
+2. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Executions**, or **Execution History** page.
 3. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
@@ -72,7 +72,7 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 2. If necessary, mount the install path. By default, Harness mounts the `/addon` path. If you installed tmate elsewhere, you need to mount that path.
 3. In your CI pipeline, add the environment variable `TMATE_PATH` to your Run step. Set the value to the tmate mount path, such as `/addon/tmate`.
 4. Create a [Harness API key and token](/docs/platform/automation/api/add-and-manage-api-keys) with `pipeline execution` permissions. You must have pipeline execution permissions at the [account scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in order for the token to have those permissions.
-5. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Execution**, or **Execution History** page.
+5. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Executions**, or **Execution History** page.
 6. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
