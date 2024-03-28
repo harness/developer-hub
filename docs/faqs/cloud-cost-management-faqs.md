@@ -38,7 +38,7 @@ The CUR reports are imported into our account. CCM stores them securely with rea
 
 #### How long does it take to show AWS billing data in CCM? Why?
 
-AWS ingests data at source (S3 bucket) once a day. CCM takes upto twenty four hours to make the data available for viewing and analysis once it is available at the source. However, during that time, partial data might be available for viewing.
+AWS ingests data at source (S3 bucket) once a day. CCM takes upto twenty four hours to make the data available for viewing and analysis once it is available at the source. However, during that time, partial data might be available for viewing. Please note, for calculations, this partial data can be used and savings are calculated based on that. 
 
 #### What AWS access permissions/policies are required for CCM?
 
