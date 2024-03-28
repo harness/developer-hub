@@ -6454,3 +6454,24 @@ Please read more on this in the following [Doumentation](https://developer.harne
 
 Yes, Harness provides the expression `<+pipeline.executionUrl>` to fetch the current variable pipeline execution Url
 Please read more on pipeline expressions in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineexecutionurl)
+
+#### Why am I getting an Invalid Repository Error on my Pipeline Trigger?
+
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. If using Remote Input Sets and Remote Pipelines, it is required for Triggers to reference a Remote Input Set.
+
+#### Why am I getting an error that my trigger have empty or missing pipelineBranchName?
+
+```
+Failed while requesting Pipeline Execution through Trigger: Unable to continue trigger execution. Pipeline with identifier: $PIPELINE_ID, with org: $ORG, with ProjectId: $PROJ, For Trigger: $TRIGGER has missing or empty pipelineBranchName in trigger's yaml.
+```
+
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. If using Remote Input Sets and Remote Pipelines, it is required for Triggers to reference a Remote Input Set.
+
+
+#### What's the difference between matchType all and any?
+
+If using a Filtered List to deploy to multiple environments, you can dynamically set which environments to deploy to using tags. The `matchType` field is used to define the operator for the tags list.
+
+All - Only deploy to environments matching all the tags.
+Any - Deploy to environments matching any of the tags.
+
