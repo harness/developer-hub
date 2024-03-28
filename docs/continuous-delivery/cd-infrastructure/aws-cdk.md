@@ -365,6 +365,15 @@ Step settings:
 
 For the remaining settings, see [Step settings common to multiple steps](/docs/continuous-delivery/cd-infrastructure/aws-cdk#step-settings-common-to-multiple-steps) below.
 
+:::warning
+
+One of these additional settings is `Run as User` which determines the user id of the user that is running all the commands in the container. Ensure that this user id is the same as the user id used in a previous Git Clone Step, or the same as any other step in the step group that calls git commands. If this isn't done, user's can face step failures as the user that did the git clone command and the user that calls the git commands in this step differ. 
+
+This issue can pop up for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag as it changes the behavior of certain settings (including `Run as User`) when unconfigured. 
+
+To fix this issue, set `Run as User` in your git clone step and cdk deploy step to `0`.
+:::
+
 ### Output variable expressions
 
 After pipeline execution, the CDK Deploy step **Output** tab displays several output variables.
