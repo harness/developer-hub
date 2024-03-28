@@ -25,7 +25,7 @@ To use the DORA MTTR widget for measuring incident recovery time, it's necessary
 
 Once you have configured the DORA profile to measure incident recovery time using Pagerduty you can add the MTTR widget to the Insight
 
-##sss Calculation Example
+## Calculation Example
 
 The DORA MTTR is calculated by summing up the difference between the time it took to resolve an incident and the time the incident was created for all incidents that occurred within a specific time period. This total sum is then divided by the total number of incidents that occurred during that time period.
 
