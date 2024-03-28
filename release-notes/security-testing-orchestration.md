@@ -33,7 +33,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 The following features are now generally available:
 - [OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
-- [Target auto-detection scanners with configurable UIs](#new-feature-auto-detect-targets-and-variants)
+- [Target and variant auto-detection for scanners with configurable UIs](#new-feature-auto-detect-targets-and-variants)
 - [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
 
 #### New features and enhancements
