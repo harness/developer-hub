@@ -84,6 +84,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   1. The `serverless print` command would not fail due to plugins being specified in the Serverless YAML. With this new image, Harness does an NPM install (on package.json) before running the `serverless print` command. Make sure that the plugins are specified in the package.json to install them before running the `serverless print` command. Now, if your plugins are specified in the package.json at the same level where your Serverless YAML lies, your plugins would be installed, and correct stack name from Serverless YAML would be fetched. 
   2. If the `serverless print` command still fails, Harness will fail the step and will not assume the default stack name, `<serviceNameInYaml> - <stageNameSpecifiedInHarnessInfra>`.
   3. Harness will consider the default stack name when stack name is not specified in Serverless YAML, and when the `serverless print` is successful.
+- Fixed an issue where [Bitbucket connectors with API access enabled](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access) sometimes became unresponsive. This item requires Harness Delegate version 24.03.82600. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-93298, ZD-56619, ZD-58844, ZD-59381)
 
 ### Version 1.29.6
 
