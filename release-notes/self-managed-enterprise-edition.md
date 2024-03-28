@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2024-03-26T10:00
+date: 2024-03-29T10:00
 sidebar_position: 16
 ---
 
@@ -67,7 +67,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## March xx, 2024, version 0.15.0
+## March 29, 2024, version 0.15.0
 
 This release includes the following Harness module and component versions.
 
