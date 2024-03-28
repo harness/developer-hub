@@ -82,6 +82,9 @@ import TabItem from '@theme/TabItem';
 5. When asked to select a repository, select the Go sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
+
+   ![Pipeline Studio editor switch.](./static/harness-yaml-quickstart-21.png)
+
 8. Replace the `echo` step with the following, and then save the pipeline.
 
 ```yaml
@@ -109,6 +112,9 @@ import TabItem from '@theme/TabItem';
 5. When asked to select a repository, select the JHTTP sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
+
+   ![Pipeline Studio editor switch.](./static/harness-yaml-quickstart-21.png)
+
 8. Replace the `build` step with the following, and then save the pipeline.
 
 ```yaml
@@ -136,6 +142,9 @@ import TabItem from '@theme/TabItem';
 5. When asked to select a repository, select the sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
+
+   ![Pipeline Studio editor switch.](./static/harness-yaml-quickstart-21.png)
+
 8. Replace the `steps` section (both `Run` steps) with the following, and then save the pipeline.
 
 ```yaml
@@ -167,6 +176,9 @@ steps:
 5. When asked to select a repository, select the sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
+
+   ![Pipeline Studio editor switch.](./static/harness-yaml-quickstart-21.png)
+
 8. Replace the `echo` step with the following, and then save the pipeline.
 
 ```yaml
@@ -196,6 +208,9 @@ steps:
 5. When asked to select a repository, select the Python sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
+
+   ![Pipeline Studio editor switch.](./static/harness-yaml-quickstart-21.png)
+
 8. Replace the `build` step with the following, and then save the pipeline.
 
 ```yaml
