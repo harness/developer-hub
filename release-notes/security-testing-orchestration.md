@@ -25,9 +25,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-
-
-
 ### Version 198.2
 
 <!-- 2024-03-27 -->
@@ -52,16 +49,6 @@ The following features are now generally available:
 - Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows.  (STO-4918) 
 
   With this fix, clicking on an issue selects only that issue, even if other scans detected the same issue for that target. (You can use the **Steps** filter to show/hide results from specific scans.)
-
-
-
-### Product update 2024-03-27
-
-The following feature was previously Early Access and is now generally available: 
-
-
-### Product update 2024-03-25
-
 
 
 ### Version 1.88.2
