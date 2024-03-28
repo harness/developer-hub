@@ -213,15 +213,6 @@ This release introduces a new set of built-in steps for adding scans to your pip
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
 
 
-### Write OPA policies based on STO scan results
-
-* **Release date:** March 2024
-* **Issue number:** STO-6738
-* **Feature flags:**  `STO_DATA_OPA`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
-
 ### Wiz integration
 
 * **Release date:** March 2024
@@ -231,14 +222,6 @@ You can now write and apply OPA policies against all results from a scan. This g
 
 You can scan your container images using [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference), a cloud security platform that supports vulnerabiity scans. 
 
-### Open Source Vulnerabilities (OSV) scanner integration
-
-* **Release date:** February 2024
-* **Issue number:** STO-6767
-* **Feature flag:** `STO_STEP_PALETTE_OSV`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
 
 ### STO Jira integration
 
@@ -440,7 +423,7 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 
 You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
-<!-- ### Write OPA policies based on STO scan results
+### Write OPA policies based on STO scan results
 
 * **Release date:** November 2023
 * **Issue number:** STO-6738
@@ -448,8 +431,6 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
-
--->
 
 #### Aqua Security integration
 

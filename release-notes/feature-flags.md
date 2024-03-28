@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-11-24T16:19:25
+date: 2024-03-28T16:19:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 27th 2024
+### Latest Updated: March 28th 2024
 
 ## March 2024
 
@@ -80,6 +80,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
 
 ### .NET SDK
+
+#### Version 1.6.5
+
+ - When you're making an evalution, if the Flag or Group cache are found to be in an invalid state, then a cache refresh is made and the evaluation re-attempted once. This cache refresh has a default timeout of 5 seconds, which can be decreased or increased by using the new configuration option `SetCacheRecoveryTimeout(int timeoutMilliseconds)`. (FFM-11022)
 
 #### Version 1.6.4
 

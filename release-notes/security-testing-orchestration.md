@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-03-13T10:00
+date: 2024-03-27T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -25,16 +25,35 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## March 2024
 
-<!-- 2024-03-20 -->
+### Version 198.2
 
-### Product update 2024-03-25
+<!-- 2024-03-27 -->
 
-The following features are no longer behind a feature flag:
+#### Features that are no longer behind feature flags
 
-- Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
+The following features are now generally available:
+- [OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
+- [Target and variant auto-detection for scanners with configurable UIs](#new-feature-auto-detect-targets-and-variants)
 - [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
 
+#### New features and enhancements
+
+- The AWS Security Hub scan step now supports passing `AWS_SESSION_TOKEN` as an environment variable to support session-based authentication with AWS. You can pass the token as a key-value pair in the [Settings](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference#settings) field. (STO-6371, ZD-48947)
+
+- Issues tables in **Security Tests** now include a **Target** column. (STO-4918)
+
+#### Fixed issues
+
+- Fixed an issue with database migrations that impacted upgrading Self-Managed Platform from version 0.13.x to 0.14.x. (STO-7309)
+
+- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows. (STO-4918) 
+
+  With this fix, clicking on an issue selects only that issue, even if other scans detected the same issue for that target. (You can use the **Steps** filter to show/hide results from specific scans.)
+
+
 ### Version 1.88.2
+
+<!-- 2024-03-20 -->
 
 #### Early access feature: built-in scanners
 
@@ -136,7 +155,7 @@ For more information, go to [Default RegEx baselines by target type](/docs/secur
 
 <!-- 2024-03-01 -->
 
-#### Early Access feature: Auto-detect targets and variants
+#### New feature: Auto-detect targets and variants
 
 Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
 
@@ -149,20 +168,12 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
   - The variant is the timestamp when the step scanned the instance.
 
 
-This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
+#### New feature: OPA policies for Security Test results
 
-#### Early access feature: OPA policies for Security Test results
-
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
-
-:::note
-
-To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
-
-:::
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
@@ -178,11 +189,10 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
-#### Early Access feature: Open Source Vulnerabilities (OSV) scanner integration
+#### New feature: Open Source Vulnerabilities (OSV) scanner integration
 
 You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. (STO-6767)
 
-This integration is behind the feature flag `STO_STEP_PALETTE_OSV`. Contact [Harness Support](mailto:support@harness.io). 
 
 #### Fixed issues
 
