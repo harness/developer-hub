@@ -128,6 +128,40 @@ First, it will ask you to update the stage template, and then the pipeline level
 Please note that every reconciliation requires saving the pipeline. Specifically, if the pipeline is remote, we will need to do a ``git push`` every time to ensure the latest version of the pipeline is saved.
 :::
 
+Pipeline reconciliation allows you to add or remove ``allowed values``. However if you add new values to the parent entity it will not allow the same. Parent entity can have subset of values that are present in child entity.
+
+For example, You have a Pipeline that uses a stage and step template. 
+
+Step template
+```yaml
+template:
+  name: step_template_1
+  identifier: step_template_1
+  versionLabel: v1
+  type: Step
+  projectIdentifier: CD_Samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables:
+        - name: var1
+          type: String
+          value: <+input>.allowedValues(a,b,c,d)
+      outputVariables: []
+
+```
+
+Now, the parent entity i.e stage or pipeline can have subsets of the above mentioned ``allowed values``. But if you add a new value for example ``e`` then it won't allow you to add the same. 
 
 ## How Harness detects changes
 
