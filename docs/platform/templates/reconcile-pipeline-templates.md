@@ -4,9 +4,127 @@ description: This topic explains how to reconcile pipeline template changes in H
 sidebar_position: 15
 ---
 
-Harness detects updates made to referenced entities if those updates are made outside of Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline.
+Harness detects updates made to referenced entities if those updates are made outside of Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline. 
 
-For example, consider that a CD stage in a pipeline references an environment. If you update the environment on the Environment tab and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
+One of the most example of pipeline reconciliation is when you increase or decrease the number of runtime inputs.
+
+For example, let's consider a scenario with three templates: a pipeline template, a stage template, and a step template. In this scenario, the pipeline serves as the parent template, while the stage and step templates are its child templates. 
+
+**Step Template**
+```yaml
+template:
+  name: step_template_1
+  identifier: step_template_1
+  versionLabel: v1
+  type: Step
+  projectIdentifier: Pipeline_Samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables:
+        - name: var1
+          type: String
+          value: val1
+      outputVariables: []
+
+```
+
+**Stage Template**
+```yaml
+template:
+  name: stage_template_1
+  identifier: stage_template_1
+  versionLabel: v1
+  type: Stage
+  projectIdentifier: Pipeline_Samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    type: Custom
+    spec:
+      execution:
+        steps:
+          - step:
+              name: steptemp1
+              identifier: steptemp1
+              template:
+                templateRef: step_template_1
+                versionLabel: v1
+
+```
+
+**Pipeline Template**
+```yaml
+template:
+  name: pipeline_template_1
+  identifier: pipeline_template_1
+  versionLabel: v1
+  type: Pipeline
+  projectIdentifier: Pipeline_Samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stages:
+      - stage:
+          name: stagetemp1
+          identifier: stagetemp1
+          tags: {}
+          template:
+            templateRef: stage_template_1
+            versionLabel: v1
+
+```
+In this pipeline template, both the step as well stage template are utilized. Now, when you update a variable at a step level for example, you have changed the value of variable from ``Fixed value`` to ``Runtime input``.
+
+**Step template**
+```yaml
+template:
+  name: step_template_1
+  identifier: step_template_1
+  versionLabel: v1
+  type: Step
+  projectIdentifier: Pipeline_Samples
+  orgIdentifier: default
+  tags: {}
+  spec:
+    timeout: 10m
+    type: ShellScript
+    spec:
+      shell: Bash
+      executionTarget: {}
+      delegateSelectors: []
+      source:
+        type: Inline
+        spec:
+          script: echo hello
+      environmentVariables:
+        - name: var1
+          type: String
+          value: <+input>
+      outputVariables: []
+```
+
+When you have updated a child entity, in this case, the step template, the parent entities, i.e., stage and pipeline templates, need to be updated as well. In this scenario, the concept of reconciliation comes into play.
+
+Now, when you move to the pipeline template, you will see a message: ``Some of the entities referenced in this template have gone out of sync.`` along with a ``Reconcile`` button.
+![](./static/reconcile_popup.png)
+
+Harness calls the refreshed YAML API `POST https://app.harness.io/template/api/refresh-template/refreshed-yaml` when you select the **Reconcile** option in the **Pipeline Studio**. This API gets the latest pipeline YAML. Harness shows the differences between the original and the refreshed YAML in the UI on the Template Error Inspection page.
+
+![](./static/reconcile_pipeline_template.png)
+
+First, it will ask you to update the stage template, and then the pipeline level. You also have the option to ``Update all unsynced entities`` at once.
+
 
 ## How Harness detects changes
 
@@ -20,11 +138,6 @@ When you save pipeline changes, the Validate pipeline API `POST https://app.harn
 
 Harness fetches the response of the validation event from the Get Pipeline validation event data API `GET https://app.harness.io/pipeline/api/pipelines/validate/{uuid}`. This API includes the information to determine whether reconciliation is required.
 
-## How Harness gets the latest pipeline YAML
-
-Harness calls the refreshed YAML API `POST https://app.harness.io/template/api/refresh-template/refreshed-yaml` when you select the **Reconcile** option in the **Pipeline Studio**. This API gets the latest pipeline YAML. Harness shows the differences between the original and the refreshed YAML in the UI on the Template Error Inspection page.
-
-![](./static/template-error-inspection.png)
 
 ## What changes are shown
 
@@ -37,6 +150,10 @@ The diff shows only those changes that involve runtime inputs. The following lis
   The converse is true: a field requiring a runtime input is removed, either directly or by the removal of a referenced entity such as the artifact source template in the previous example.
 
 - A field's value type was changed from a fixed value or expression to a runtime input, or from a runtime input to a fixed value or expression.
+
+:::info note
+Please note, reconciliation doesn't allow you to add or remove allowed values. Suppose you add or remove a value to allowed values; reconciliation will remove it.
+:::
 
 ## Resolve conflicts in the pipeline YAML
 
