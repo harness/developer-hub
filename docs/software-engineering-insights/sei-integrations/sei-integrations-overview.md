@@ -42,7 +42,7 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 * [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
 * [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
 * [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-enterprise)
-* [GitHub Integration - Github Connect App](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+* [GitHub Enhanced Integration - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
 * [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
 * [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise)
 * [Perforce Helix Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
