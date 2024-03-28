@@ -324,7 +324,7 @@ For requirements, recommendations, and settings for using a Kubernetes cluster b
 
 If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
-If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
+If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#docker-in-docker-requires-privileged-mode).
 
 ### Can I use Istio MTLS STRICT mode with Harness CI?
 
@@ -1264,6 +1264,18 @@ This can occur if the Build and Push step doesn't have the repo's Fully Qualifie
 
 Make sure to use the FQN for the repo when pushing to an internal private container registry.
 
+### Why do I get an out of memory error when pushing images to Docker Hub?
+
+The Build and Push to Docker step can return out of memory errors, such as:
+
+```
+exit status 255 Found possible error on line 70. Log: signal: killed . Possible error: Out of memory. Possible resolution: Increase memory resources for the step
+```
+
+To address this error, enable the [Optimize setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
+
+You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1324,6 +1336,14 @@ These are derived from your [Artifactory connector](https://developer.harness.io
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports (declared in the step's **Report Paths**). Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing. For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
 
+### What if my test tool's default report format isn't JUnit?
+
+There are converters available for many test tools that don't produce results in JUnit format by default.
+
+For example, the default report format for Jest is JSON, and you can use the Jest JUnit Reporter to convert the JSON results to JUnit XML format.
+
+For more information, go to [Format test reports](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-report-ref).
+
 ### Can I specify multiple paths for test reports in a Run step?
 
 Yes, you can specify multiple paths for test reports. Ensure that the reports do not contain duplicate tests when specifying multiple paths.
@@ -1347,7 +1367,7 @@ No. Test reports from tests run in Run steps also appear there if they are [corr
 Yes. How you do this depends on whether your tests run in a **Run** step or a **Run Tests** step. For instructions, go to:
 
 * [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
-* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/)
+* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting)
 
 ## Test Intelligence
 
@@ -1495,12 +1515,27 @@ Output variables don't support multi-line output. Content after the first line i
 
 ### How do I get a file from file store in a Run step?
 
-You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`. Here's an example in a script:
+You can use a file store reference expression to get a file from file store, such as `<+fileStore.getAsBase64("someFile")>`.
+
+Here's an example in a script:
 
 ```
 raw_file=<+fileStore.getAsBase64("someFile")>
 config_file="$(echo "$raw_file" | base64 --decode)"
 ```
+
+:::warning
+
+File store expressions don't work for all secrets, and some secrets require additional handling.
+
+For more information, go to:
+
+* [Use GCP secrets in scripts](https://developer.harness.io/docs/continuous-integration/secure-ci/authenticate-gcp-key-in-run-step)
+* [Add and reference text secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - Line breaks and shell-interpreted characters](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#line-breaks-and-shell-interpreted-characters)
+* [Add and reference file secrets - JKS files](https://developer.harness.io/docs/platform/secrets/add-file-secrets/#jks-files)
+
+:::
 
 ### Can I start containers during pipeline execution? For example, I need to start some containers while executing tests.
 
@@ -1894,9 +1929,25 @@ For more information about configuring connectivity, go to:
 
 Go to [CI step logs don't load in real time](./articles/CI-step-logs-dont-load-in-real-time).
 
-### Step succeeds even when explicitly executing exit 1 in a Bash script that is runs in script's background
+### Step succeeds even when explicitly executing exit 1 in a Bash script that runs in script's background
 
-The step in Harness determines its status based on the exit status received from the primary script execution. When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call exit 1 within a background function, it won't cause the step to fail. This behavior is consistent with how scripts operate both inside and outside of Harness.
+Harness determines the execution status for a step based on the exit status received from the primary script execution.
+
+When you call a function in the background of a script, it doesn't directly impact the exit status of the main script. Therefore, if you manually call `exit 1` within a background function, it won't cause the step to fail if the primary script succeeds.
+
+This behavior is consistent with how scripts operate both inside and outside of Harness.
+
+### Build step fails due to ResourceExhausted
+
+Build and Push steps can return a `ResourceExhausted` error, such as:
+
+```
+exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message larger than max (4950319 vs. 4194304)
+```
+
+This can be related to log streaming during the Build and Push step or a Run step executing a build script. It indicates that the logs are too large for the log streaming service to handle.
+
+If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 

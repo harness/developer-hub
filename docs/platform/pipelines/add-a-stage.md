@@ -15,17 +15,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
+A stage is a part of a [Harness pipeline](/docs/platform/get-started/key-concepts.md#pipelines) that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
 The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
 
 This functionality is limited to the modules and settings that you have access to.
 
-This topic assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
-
 ## Add a stage
 
-1. Create a pipeline in any module in your project.
+1. In any [Harness project](../organizations-and-projects/create-an-organization.md), create a pipeline in any module that supports pipelines.
 2. In your pipeline, select **Add stage**, and then select the stage type:
 
    * **Build:** Build, test, and push artifacts to repositories.

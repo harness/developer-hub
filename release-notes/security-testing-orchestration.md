@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-03-13T10:00
+date: 2024-03-27T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
@@ -23,25 +23,91 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
-
 ## March 2024
+
+<!-- 2024-03-20 -->
+
+
+### Product update 2024-03-27
+
+The following feature is now generally available:
+
+- [New feature: OPA policies for Security Test results](#new-feature-opa-policies-for-security-test-results)
+
+
+### Product update 2024-03-25
+
+The following features are now generally available:
+
+- Target auto-detection scanners with configurable UIs, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [ZAP](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection)
+- [Open Source Vulnerabilities (OSV)](/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference) scanner integration
+
+### Version 1.88.2
+
+#### Early access feature: built-in scanners
+
+- This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. (STO-6738)
+
+  ![](./static/built-in-scan-steps.png)
+
+  :::note
+
+  These steps are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
+
+  <!-- 
+
+  - The SAST step is behind the feature flag `STO_ONE_CLICK_SAST`. 
+
+  -->
+
+  :::
+
+  You can add built-in scanners for the following scan types:
+
+    <!-- 
+    - [**SAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) Add a Semgrep scan to detect vulnerabilities in your code repositories.
+
+    -->
+
+    - [**Secret Detection**](/docs/security-testing-orchestration/sto-techref-category/built-in/secrets) Add a GitLeaks scan to detect passwords and other secrets in your code repositories.
+
+    - [**SCA**](/docs/security-testing-orchestration/sto-techref-category/built-in/sca) Add an OWASP Dependency Check or OSV scan to detect vulnerabilities in your open-source libraries and packages. 
+
+    - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in/containers) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
+
+    - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
+
+#### Fixed issues
+
+<!-- 2024-03-20 -->
+
+- Fixed a UI issue that prevented the Exemptions page from loading for some accounts. (STO-7266)
+
+- Implemented a UI fix to ensure that the STO UI correctly renders scanner output formatted in markdown. (STO-6881)
+
+- Improved UI wording in the Exemptions table when an exemption applies to multiple issues. (STO-6700)
 
 ### Version 1.87.4
 
-#### New feature: Ingest Aqua Security assurance policy violations
-
 <!-- 2024-03-14 -->
+
+#### New feature: Ingest Aqua Security assurance policy violations
 
 The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
 
 <!-- ![](/docs/security-testing-orchestration/sto-techref-category/static/sto-7164-aquasec-external-policies.png) -->
 
-The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan . You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
+The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan. You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
 
 For more information, go to:
 
 - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+
+
+#### New feature: AIDA remediations for STO stage failures
+
+- AIDA remediations are now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
 
 
 ### Version 1.87.2
@@ -57,6 +123,21 @@ For more information, go to:
 - Fixed an issue that prevented the **Exemptions** page from loading in some accounts. (STO-7263, ZD-59507)
 
 - Fixed an issue in the **Test Targets** page that delayed UI updates after each keystroke when a user entered a RegEx baseline. (STO-7242)
+
+
+### Version 1.86.1
+
+<!-- 2024-03-08 -->
+
+#### Early access feature: default regular expressions for target baselines
+
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected. (STO-7127)
+
+:::note
+Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type).
 
 
 ### Version 1.85.0 
@@ -79,17 +160,11 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 
-#### Early access feature: OPA policies for Security Test results
+#### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies. (STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and to stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
-
-:::note
-
-To enforce security test policies against your scan results, you must enable the feature flag `STO_DATA_OPA`. Contact [Harness Support](mailto:support@harness.io).
-
-:::
 
 This release includes a set of security test policy samples, which make it easy to create policies such as:
 
@@ -105,6 +180,11 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
+#### Early Access feature: Open Source Vulnerabilities (OSV) scanner integration
+
+You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. (STO-6767)
+
+This integration is behind the feature flag `STO_STEP_PALETTE_OSV`. Contact [Harness Support](mailto:support@harness.io). 
 
 #### Fixed issues
 
@@ -906,6 +986,7 @@ The following security steps are now generally available:
 ##### Version 1.31.4
 
 <!-- February 24, 2023 -->
+
 
 ###### Fixed issue
 

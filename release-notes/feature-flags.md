@@ -14,7 +14,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 21st 2024
+### Latest Updated: March 27th 2024
 
 ## March 2024
 
@@ -51,6 +51,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We've upgraded Feature Flags iOS SDK to 1.3.0.
  - We've upgraded Feature Flags Android SDK to 2.0.2.
 
+### Golang SDK
+
+#### Version 0.1.18
+
+ - This adds Connection: closes header to metrics requests. (FFM-11039)
+
 ### iOS SDK
 
 #### Version 1.3.0
@@ -74,6 +80,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
 
 ### .NET SDK
+
+#### Version 1.6.4
+
+ - The Evaluation logic refactored to use immutable principles, to aid in maintenance and readability. (FFM-11057)
+ - If the target group cache is found to be in an invalid state, such that any groups that beloing to a flag are not in the cache, the SDK will asynchronously update the group cache and immediately return the default variation.
+ - There are extra evaluation logs added to aid troubleshooting.
+
+#### Version 1.6.3
+
+ - This update now generates additional debug-level logs that detail the flag, target, and the specific reason for the variation result. This includes identifying the exact rule, such as a group rule, that led to the served variation. (FFM-11002)
+
+#### Version 1.6.2
+
+ - The exception handling in auth success callback has been resolved. (FFM-11002)
 
 #### Version 1.6.1
 

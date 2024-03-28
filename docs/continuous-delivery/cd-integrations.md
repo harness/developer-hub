@@ -6,7 +6,7 @@ sidebar_position: 1
 
 This topic lists the supported CD features and integrations you can use in Harness for deploying and verifying your apps.
 
-For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
+For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-supported.md';
 
@@ -14,15 +14,11 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 
 ## Active CD Feature flags
 
-Some Harness CD features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience.
+Some Harness CD features are released behind feature flags to get feedback from specific customers before releasing the features to the general audience. Feature development statuses are categorized as [Beta, GA, or Limited GA](/docs/platform/get-started/release-status).
 
-The following table describes each of the active feature flags relevant to Harness CD.
+The following table describes active feature flags relevant to Harness CD.
 
-:::note
-
-To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). For the status of a feature flag, please note [Beta, GA, Limited GA Feature Categorization](/docs/get-started/release-status/) in the descriptions below.
-
-:::
+To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
 
 <table width="900" cellspacing="0" cellpadding="0">
     <tr>

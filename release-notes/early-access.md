@@ -6,7 +6,9 @@ sidebar_position: 2
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/early-access/rss.xml" />
 
-These early access (beta) features are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
+These are some of the [early access (beta) features](/docs/platform/get-started/release-status) that are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
+
+This list does not include all beta features, and features can be removed from this page once promoted to general availability (GA).
 
 Early access features are behind feature flags. You can contact [Harness Support](mailto:support@harness.io) to enable a feature you're interested in.
 
@@ -191,32 +193,26 @@ No early access (beta) features are available for the Harness Software Supply Ch
 
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
-### Auto-detect option for targets and variants
+### Built-in scanners
 
 * **Release date:** March 2024
-* **Issue number:** STO-6704
-* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually. (STO-6704)
-
-### Write OPA policies based on STO scan results
-
-* **Release date:** February 2024
 * **Issue number:** STO-6738
-* **Feature flag:** `STO_DATA_OPA`
+* **Feature flags:** `STO_ONE_CLICK`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. 
+ 
 
-### Open Source Vulnerabilities (OSV) scanner integration
+### Default regular expressions for target baselines
 
-* **Release date:** February 2024
-* **Issue number:** STO-6767
-* **Feature flag:** `STO_STEP_PALETTE_OSV`
+* **Release date:** March 2024
+* **Issue number:** STO-7127
+* **Feature flag:** `STO_BASELINE_DEFAULTING`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). (STO-6767)
+You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
+
+
 
 ### STO Jira integration
 
@@ -380,6 +376,26 @@ No information available. -->
 
 ### STO features promoted to GA
 
+#### Auto-detect option for targets and variants
+
+* **Release date:** March 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** 1.85.0
+* **Feature flag:** `STO_AUTO_TARGET_NAME_VARIANT`
+
+Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually.
+
+
+#### Open Source Vulnerabilities (OSV) scanner integration
+
+* **GA date:** March 2024
+* **Early access release date:** February 2024
+* **Early access Release version:** 1.85.0
+* **Feature flag:** `STO_STEP_PALETTE_OSV`
+
+You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
+
+
 #### Anchore Enterprise integration
 
 * **GA date:** March 2024
@@ -398,7 +414,7 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 
 You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
-<!-- ### Write OPA policies based on STO scan results
+### Write OPA policies based on STO scan results
 
 * **Release date:** November 2023
 * **Issue number:** STO-6738
@@ -406,8 +422,6 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
-
--->
 
 #### Aqua Security integration
 

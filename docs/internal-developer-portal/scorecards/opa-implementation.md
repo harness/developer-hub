@@ -50,7 +50,7 @@ deny[msg] {
 }
 ```
 
-In the REGO script we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service](https://developer.harness.io/docs/get-started/key-concepts#services) ID mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
+In the REGO script we use `stage.spec.idpScorecard.orderService[_]` to fetch the [Harness service ID](/docs/continuous-delivery/get-started/key-concepts.md#service) mentioned in the annotation `harness.io/cd-serviceId: <SERVICE_IDENTIFIER>`. If you have followed the onboarding guide then this annotation is auto ingested in your `catalog-info.yaml` or-else you have to manually add it. 
 
 * **Success:** Check the Score for the service you're using in your pipeline to be above the set limit so that when you save the Pipeline, the policy rule is evaluated and returns success.
 * **Warning:** A warning message appears: Your Score for the service used needs to be more than 50. If you save the Pipeline and deploy, Harness will throw an error.

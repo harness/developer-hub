@@ -111,8 +111,8 @@ const config = {
             to: "docs",
             items: [
               {
-                label: "Get Started",
-                to: "docs/get-started",
+                label: "Platform",
+                to: "docs/platform",
               },
               {
                 label: "Code Repository",
@@ -163,10 +163,6 @@ const config = {
                 to: "docs/software-engineering-insights",
               },
               {
-                label: "Platform",
-                to: "docs/platform",
-              },
-              {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
@@ -207,7 +203,7 @@ const config = {
             to: "university",
             items: [
               {
-                label: "Learn Harness",
+                label: "Learn Harness from Experts",
                 to: "university",
               },
               {
@@ -397,6 +393,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Do not sell or share my personal information",
+                to: "https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7",
+              },
             ],
           },
         ],
@@ -414,18 +414,9 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
-      /*
-      announcementBar: {
-        id: "support_us",
-        content:
-          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
-        backgroundColor: "#000000",
-        textColor: "#ffffff",
-        isCloseable: true,
-      },
-      */
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
@@ -437,31 +428,14 @@ const config = {
       announcementBarByPath: {
         // list all pathnames in Regular expressions format
         pathRegExp: [
-          // paths for md-doc pages
+          // paths for md-doc pages / global patterns
           "^/docs/first-gen/continuous-delivery.*",
           "^/docs/first-gen/first-gen-quickstarts.*",
-          // paths for category pages
-          "^/docs/category/quickstarts.*",
-          "^/docs/category/continuous-delivery.*",
-          "^/docs/category/continuous-delivery-overview.*",
-          "^/docs/category/general-deployment-features.*",
-          "^/docs/category/deployment-strategies-and-integrations.*",
-          "^/docs/category/aws-.*",
-          "^/docs/category/general-aws-.*",
-          "^/docs/category/azure-.*",
-          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
-          "^/docs/category/google-cloud.*",
-          "^/docs/category/native-helm-deployments.*",
-          "^/docs/category/iis-net-deployments.*",
-          "^/docs/category/kubernetes-deployments.*",
-          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
-          "^/docs/category/terraform-1.*",
-          "^/docs/category/terragrunt.*",
-          "^/docs/category/traditional-deployments-ssh.*",
-          "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification.*",
-          "^/docs/category/model-your-cd-pipeline.*",
-          "^/docs/category/harness-git-based-how-tos.*",
+          "-fg.*",
+          "fg-.*",
+          "firstgen-.*",
+          "first-gen.*",
+          "-firstgen.*",
         ],
       },
       utmCookie: {

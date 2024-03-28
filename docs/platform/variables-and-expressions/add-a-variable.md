@@ -31,7 +31,7 @@ The **Specific to Pipeline** variables are pipeline-level variables.
 
 </details>
 
-This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
+This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md). To manage variables, you need [permissions](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
 
 ## Variable parameters
 
@@ -47,6 +47,11 @@ This topic explains how to add and reference variables in Harness. It assumes yo
 * Some variables can be flagged as required.
    * The **Required** setting is supported for pipeline, stage, service, and environment variables.
    * The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline.
+
+:::important limitation
+Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
+:::
+
 
 ### Variable availability to pipelines, stages, services, and environments
 

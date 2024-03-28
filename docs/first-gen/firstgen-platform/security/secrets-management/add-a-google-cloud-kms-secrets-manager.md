@@ -8,17 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager).You can use Google [Cloud Key Management Service](https://cloud.google.com/kms/) (Cloud KMS) as your secrets manager. Once Google KMS is added as a Secrets Manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager).
 
-You can also use a Google Cloud Secrets Manager as a Harness Secrets Manager. See [Add a Google Cloud Secrets Manager](add-a-google-cloud-secrets-manager.md).In this topic:
+You can use Google [Cloud Key Management Service](https://cloud.google.com/kms/) (Cloud KMS) as your secrets manager. Once Google KMS is added as a Secrets Manager, you can create encrypted secrets in Google KMS and use them in your Harness account.
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Configure Secrets Manager](#step_1_configure_secrets_manager)
-* [Step 2: Display Name](#step_2_display_name)
-* [Step 3: Gather the Required Details](#step_3_gather_the_required_details)
-* [Step 4: Attach Service Account Key (Credentials) File](add-a-google-cloud-kms-secrets-manager.md#step-4-attach-service-account-key-credentials-file)
-* [Limitations](#limitations)
-* [Next Steps](#next_steps)
+You can also use a Google Cloud Secrets Manager as a Harness Secrets Manager. See [Add a Google Cloud Secrets Manager](add-a-google-cloud-secrets-manager.md).
 
 ### Before You Begin
 

@@ -30,7 +30,7 @@ Ensure that you have the following:
 1. A Harness Enterprise Account, paid or trial.
    1. If you do not have an account, [can sign up](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-cosign-opa).
 2. Completion of the [Kubernetes Manifest tutorial](manifest.md) (either GitOps Workflow or CD Pipeline). This tutorial is a continuation of that tutorial. You will reuse the existing pipeline and other resources you created there.
-3. Familiarity with Harness [pipelines](https://developer.harness.io/docs/get-started/key-concepts#pipelines), [stages](https://developer.harness.io/docs/get-started/key-concepts#stages), and [steps](https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts#step) concepts.
+3. Familiarity with Harness [pipelines](/docs/platform/get-started/key-concepts.md#pipelines), [stages](/docs/platform/get-started/key-concepts.md#stages), and [steps](/docs/platform/get-started/key-concepts.md#steps-and-step-groups) concepts.
 
 ## Architectural Diagrams
 

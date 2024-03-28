@@ -62,7 +62,7 @@ Once a containerized step is run, Harness terminates the container.
 
 ## Before you begin
 
-Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
+Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to establish a general understanding of Harness.
 
 - **GitHub account:** this quickstart uses a publicly available `serverless.yaml` file, but GitHub requires that you use a GitHub account for fetching files.
 - **(Non-containerized) Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. Typically, you will install a Kubernetes delegate in your own cluster.
@@ -732,7 +732,7 @@ exit 1
 
 The Serverless Prepare Rollback step describes the CloudFormation stack and gets its current state. This information is stored and passed to the Serverless Rollback Step, and used in the case of rollback.
 
-By default, this step is configured to use the Harness image `harnessdev/serverless-preparerollback:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+We recommend that you use the Harness image `harnessdev/serverless-preparerollback:3.30.1-2.0.0`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Prepare Rollback step, do the following:
 

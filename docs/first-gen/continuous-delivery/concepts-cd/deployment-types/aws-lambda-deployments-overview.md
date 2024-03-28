@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).This topic describes the concept of a Harness AWS Lambda deployment by describing the high-level steps involved.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
+
+This topic describes the concept of a Harness AWS Lambda deployment by describing the high-level steps involved.
 
 For a quick tutorial, see the [AWS Lambda Quickstart](../../../first-gen-quickstarts/aws-lambda-deployments.md).
 

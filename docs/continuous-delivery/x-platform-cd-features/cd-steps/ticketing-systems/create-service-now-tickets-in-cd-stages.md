@@ -87,7 +87,6 @@ Select **Create From Form Template** to create a ticket by using an existing for
 In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
 
 :::note
-Existing templates are listed and can be searched only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
 
 Make sure you have met the following requirements for searching form templates:
 - Harness Delegate version 81200 or later.
@@ -101,7 +100,6 @@ Your ServiceNow ticket is now added to your Pipeline.
 ## Create from Standard Template
 
 :::note
-This feature is behind the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
 
 This feature requires Harness Delegate version 81200 or later
 :::

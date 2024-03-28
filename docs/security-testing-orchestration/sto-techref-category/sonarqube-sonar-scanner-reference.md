@@ -22,6 +22,13 @@ helpdocs_is_published: true
 * You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime.
 * You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
+### Root access requirements 
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+
+<StoRootRequirements />
+
+
 ### For more information
 
 
@@ -212,23 +219,15 @@ import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binarie
 <StoSettingToolJavaBinaries  />
 -->
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
+
 
 #### Additional CLI flags
-
 
 You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
@@ -249,13 +248,15 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
+### Settings
+
+Use this field to add environment variables to your SonarQube scans. For example, you can add [proxy settings](#sonarqube-proxy-settings) if your SonarQube instance is behind a proxy. 
 
 <!--
 ### Settings
@@ -313,6 +314,17 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 
 </details>
 
+## SonarQube proxy settings
+
+If there's a proxy between your Harness pipeline and your SonarQube server, you can add your proxy settings under [Settings](#settings). For example:
+
+- `JVM_HTTP_PROXY_HOST : my-proxy.ca.myorg.org`
+- `JVM_HTTP_PROXY_PORT : 3735`
+- `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
+- `JVM_HTTPS_PROXY_PORT : 3745`
+- `JVM_NO_PROXY : sonar.myorg.local` 
+
+ 
 ## Troubleshoot Sonar Scans
 
 ### Can't generate SonarQube report due to shallow clone
@@ -325,9 +337,19 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 
 In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI Flags](#additional-cli-flags).
 
-### SonarQube doesn't scanning the main branch and pull request branches in the same pipeline
+### SonarQube doesn't scan the main branch and pull request branches in the same pipeline
 
-If SonarQube isn't scanning both the main branch and pull request (PR) branches within the same pipeline, it may indicate an issue with the pull request setup in SonarQube.
+:::info 
+
+Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1882) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
+
+- With this fix, the orchestration step always downloads results for the scanned branch or pull request.
+- Branch scans require no additional configuration.
+- To configure pull-request scans, go to [SonarQube pull-request scan configuration](#sonarqube-pull-request-scan-configuration).
+
+:::
+
+If SonarQube doesn't scan both the main branch and pull request (PR) branches within the same pipeline, it might indicate an issue with the pull request setup in SonarQube.
 
 One potential solution involves configuring conditional arguments within the Harness Platform to handle PR and branch scan requests separately. To implement this solution, you can use [conditional executions](/docs/platform/pipelines/step-skip-condition-settings) to run specific steps based on whether it's a PR scan request or a branch scan request. For example, your conditional executions could use JEXL expressions with [codebase variables](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) like `<+codebase.build.type>=="branch"` or `<+codebase.build.type>=="pr"`.
 

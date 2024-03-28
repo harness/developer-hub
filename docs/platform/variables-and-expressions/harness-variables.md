@@ -32,6 +32,12 @@ For example, the expression `<+pipeline.name>` resolves to name of the pipeline 
 
 **Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
+
+:::important limitation
+Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
+:::
+
+
 ## Expression usage
 
 Harness variables are declared as expressions using the expression delimiter `<+...>`, such as `<+pipeline.name>` or `<+secrets.getValue("someSecret")>`.
@@ -1435,6 +1441,10 @@ Whenever a user grants an approval in an Approval step, the pipeline maintains t
 
 These variables are available for Approval steps only, not stages.
 
+:::note
+Currently, the `<+approval>` functor is supported for Harness approvals only.
+:::
+
 In the following example, a Deploy stage has two Approval steps. For each approval, the pipeline maintains a separate set of approval variables. Use the array index to access the variables for a specific approval.
 
 ![](./static/approved-user-pipeline-example.png)
@@ -2285,6 +2295,6 @@ To achieve this same result in NextGen, you must declare each expression with se
 
 For more information about migrating to NextGen, go to:
 
-- [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen)
+- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
