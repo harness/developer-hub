@@ -6,33 +6,33 @@ sidebar_position: 1
 ---
 
 
-### What is a Google cloud marketplace?
-A Google Cloud Marketplace is essentially a way for software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from Google Cloud Console or through APIs.
+### What is Google Cloud Marketplace?
+[Google Cloud Marketplace](https://cloud.google.com/marketplace?hl=en) enables software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from Google Cloud Console or through APIs.
 
 
-### What are the Harness products currently available on Google Cloud Marketplace?
+### Which Harness products are currently available on Google Cloud Marketplace?
      | **Product** | **Private Offer Flow** | **Public Offer Flow** |
      | --- | --- | --- |
      | [Harness Software Delivery Platform](https://console.cloud.google.com/marketplace/product/harness-public/harness-software-delivery-platform)| Yes | No |
      | [Harness Continuous Delivery](https://console.cloud.google.com/marketplace/product/harness-public/harness-continuous-delivery) | Yes | Yes |
 
 
-### How can customers purchase the Harness products via Google Cloud Marketplace Private Offer Flow? 
-    There are two ways for the customer to initiate the private offer flow with Harness:
-        1. If the customer has an existing relationship with Harness, then Harness can collect the required customer details, create an offer and send the customer a private offer so that customer pays a custom price for the software.
-        2. Customer is interested in a Harness product and wants to request a custom quote for that product. In this case the customer can contact the Harness' sales team by clicking on the contact sales functionality.
+### How can customers purchase Harness products via the Google Cloud Marketplace Private Offer Flow? 
+    There are two ways to initiate the private offer flow with Harness:
+        1. If you have an existing relationship with Harness, then Harness can collect the required customer details, create an offer, and send you a private offer so that you pay a custom price for the software.
+        2. If you're interested in a Harness product and want to request a custom quote for it, you can contact Harness' sales team by selecting **Contact Sales**.
 
             ![](./static/gcp_pvt_offer_contact_sales_form.png)
 
-    #### Step 1: Details required from customer by Harness, for creating the private offer:
-        1. The Harness products customer is interested in procuring.
-        2. Customer Organization
-        3. Customer Contact Name
-        4. Customer Email
-        5. Customer's Google cloud billing account id
-        6. Contract start date
+    #### Step 1: Details required from the customer by Harness to create a private offer:
+        - The Harness product(s) the customer is interested in procuring.
+        - Customer Organization
+        - Customer Contact Name
+        - Customer Email
+        - Customer's Google cloud billing account ID
+        - Contract start date
 
-    #### Step 2: Steps to accept the Harness Private Offer:
+    #### Step 2: Steps to accept the Harness private offer:
         1. Once the private offer has been created and published, the customer can be informed via the email and/or by sending across the offer URL.
         2. The customer will receive the email that looks like: ![](./static/gcp_pvt_offer_customer_email.png)
         3. Upon clicking the review offer link received via the email, the customer will be able to view the offer details and also accept the offer. 
