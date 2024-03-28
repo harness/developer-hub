@@ -10,7 +10,12 @@ import TabItem from '@theme/TabItem';
 
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
-You can scan your code repositories and container images using [Wiz](https://www.wiz.io/), a cloud security platform that supports vulnerability scans. 
+You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+
+Harness currently supports the following: 
+
+1. Orchestrated Wiz scans for container images
+2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
 
 ## Important notes for running Wiz scans in STO
 
@@ -30,6 +35,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 ## Set-up workflows
 
 <details>
+
+<!-- 1 --------------------------------------------------------------------->
 
 <summary>Orchestration scans for container images</summary>
 
@@ -138,53 +145,10 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 </details>
 
-<details>
-
-<summary>Orchestration scans for code repositories</summary>
-   
-   	<br/>
-
-  #### Prerequisites
-
-    - [Harness Code Repository](/docs/code-repository) or a [connector to your Git provider](/docs/category/code-repo-connectors) with the codebase you want to scan
-	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
-
-	<br/>
-
-
-   #### Add the Wiz scanner
-
-	Do the following:
-
-	1. Add a CI Build or Security Tests stage to your pipeline.
-	2. Add a Wiz step to the stage.
-
-<br/>
-
-   #### Set up the codebase
-
-   Click **Codebase** (right menu) and select the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
-
-   #### Set up the Wiz scanner
-	
-   ##### Required settings
-
-		1. Scan mode = [Orchestration](#scan-mode)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
-		3. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
-	
-   ##### Optional settings
-
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
-
-</details>
+<!-- 2 --------------------------------------------------------------------->
 
 <details>
-<summary>Ingestion scans</summary>
+<summary>Ingestion scans for container images</summary>
 
 :::note
 
@@ -198,6 +162,49 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
 
+   #### Copy scan results to the shared path
+
+   There are two primary workflows to do this:
+
+   - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
+   - Copy results from a Wiz scan that ran outside the pipeline. 
+
+   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+
+   #### Set up the Wiz scanner
+
+   Add a Wiz step to the stage and set it up as follows.
+	
+   ##### Required settings
+
+	1. Scan mode = [Ingestion](#scan-mode)
+	<!-- 2. [Target type](#type) = `Container Image` -->
+	2. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
+	2. [Target variant](#name) — Usually the image tag, such as `latest`
+	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
+
+   ##### Optional settings
+
+   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
+   - [Log Level](#log-level) — Useful for debugging
+
+</details>
+
+<!-- 3 --------------------------------------------------------------------->
+
+<details>
+<summary>Ingestion scans for code repositories</summary>
+
+:::note
+
+Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information.
+
+:::
+
+   #### Add a shared path for your scan results
+
+   	1. Add a CI Build or Security Tests stage to your pipeline.
+	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
    #### Copy scan results to the shared path
 
@@ -217,9 +224,37 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    ##### Required settings
 
 	1. Scan mode = [Ingestion](#scan-mode)
-	2. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
-	2. [Target variant](#name) — Usually the image tag, such as `latest`
+	<!-- 2. [Target type](#type) = `Code Repository` -->
+	2. [Target name](#name) — Usually the repo name
+	2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
 	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
+
+   ##### Set the target type in the YAML editor
+
+   :::note 
+   
+   Currently the Wiz UI does not support setting the target type to **Code Repository**. This will be available shortly. For now, you can set the target type in the YAML editor.
+
+   :::
+
+   1. Select **YAML** (top).
+   2. Change the `target : type` from `container` to `repository` as follows:
+
+       ```yaml
+		- step:
+			type: Wiz
+			name: wiz_ingestion
+			identifier: wiz_ingestion
+			spec:
+			  mode: ingestion
+			  config: default
+			  target:
+				type: repository # <----------------
+				detection: manual
+				name: wiz-repo
+				variant: main
+	    ```
+	3. Save the pipeline and select **Visual**. 
 
    ##### Optional settings
 
@@ -227,6 +262,8 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    - [Log Level](#log-level) — Useful for debugging
 
 </details>
+
+<!-- --------------------------------------------------------------------->
 
 ## Wiz step settings reference
 
@@ -265,9 +302,11 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
+<StoSettingScanTypeRepo />
 
 
 #### Detect target and variant 
