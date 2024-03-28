@@ -6459,7 +6459,7 @@ Please read more on pipeline expressions in the following [Documentation](https:
 
 If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. If using Remote Input Sets and Remote Pipelines, it is required for Triggers to reference a Remote Input Set.
 
-#### Why am I getting an error that my trigger have empty or missing pipelineBranchName?
+#### Why am I getting an error that my trigger has empty or missing pipelineBranchName?
 
 ```
 Failed while requesting Pipeline Execution through Trigger: Unable to continue trigger execution. Pipeline with identifier: $PIPELINE_ID, with org: $ORG, with ProjectId: $PROJ, For Trigger: $TRIGGER has missing or empty pipelineBranchName in trigger's yaml.
