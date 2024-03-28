@@ -7,20 +7,20 @@ sidebar_position: 1
 
 This topic provides detailed information about the workflows available for purchasing Harness modules on the Google Cloud Marketplace.
 
-### What is Google Cloud Marketplace?
+### What is the Google Cloud Marketplace?
 
 The [Google Cloud Marketplace](https://cloud.google.com/marketplace?hl=en) enables software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from the Google Cloud console or through APIs.
 
-### Which Harness products are currently available on Google Cloud Marketplace?
+### Which Harness products are currently available on the Google Cloud Marketplace?
 
-| **Product** | **Private Offer Flow** | **Public Offer Flow** |
+| **Product** | **Private offer flow** | **Public offer flow** |
 | --- | --- | --- |
 | [Harness Software Delivery Platform](https://console.cloud.google.com/marketplace/product/harness-public/harness-software-delivery-platform)| Yes | No |
 | [Harness Continuous Delivery](https://console.cloud.google.com/marketplace/product/harness-public/harness-continuous-delivery) | Yes | Yes |
 
-### Purchase Harness products via the Google Cloud Marketplace Private Offer Flow
+### Purchase Harness products via the Google Cloud Marketplace private offer flow
 
-There are two ways you can purchase products via the Google Cloud Marketplace Private Offer Flow:
+There are two ways you can purchase products via the Google Cloud Marketplace private offer flow:
 
 1. If you have an existing relationship with Harness, then Harness can collect the required customer details, create an offer, and send you a private offer so that you pay a custom price for the software.
 
@@ -55,7 +55,7 @@ To review and accept the offer:
 3. Select the checkbox to agree to the terms.
 4. Select **Accept**.
 
-   As soon as the offer is accepted, you can view the order status on the product page and via the manage orders link.
+   As soon as the offer is accepted, you can view the order status on the product page and via the **Manage Orders** button.
 
    ![](./static/gcp_pvt_offer_customer_accepted.png)
 
@@ -69,9 +69,9 @@ To review and accept the offer:
 
    ![](./static/gcp_pvt_offer_active.png)
 
-6.  Reach out to Harness sales rep that assisted with the private offer to provision the product licensing.
+6.  Contact the Harness sales rep that assisted with the private offer to provision the product licensing.
 
-### How can I purchase Harness products via the Google Cloud Marketplace Public Offer Flow?
+### How can I purchase Harness products via the Google Cloud Marketplace public offer flow?
 
 A Google Cloud Marketplace public listing refers to a software or service offering that is publicly available and accessible to all users of the Google Cloud Platform (GCP). When a product or service is listed as "public" on the Google Cloud Marketplace, it means that any GCP customer can discover, evaluate, and potentially deploy that offering within their own cloud environment.
 
@@ -86,7 +86,7 @@ To subscribe to a publicly-listed Harness product:
 
 1. Go to the [Google Cloud Marketplace](https://cloud.google.com/marketplace?hl=en).
 
-2. Select **Explore the marketplace**, then search for "Harness."
+2. Select **Explore the marketplace**, and then search for "Harness."
 
 3. Select the Harness product to which you want to subscribe.
 
@@ -98,10 +98,10 @@ To subscribe to a publicly-listed Harness product:
 
 5. Select the plan and finalize the subscription.
 
-   After you select the plan and finalize the subscription, you'll be provided with two options:
+   After you select the plan and finalize the subscription, you're provided with two options:
    1. Sign up with the provider
    2. Manage orders
 
-6. Select **Sign up with the provider**. option. This option takes your sign up information and creates the account for the respective email address you provided during the sign up process.
+6. Select **Sign up with the provider**. option. This option takes your sign up information and creates the account for the email address you provided during the sign up process.
 
-   You can now sign in and start using the product. Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+   You can now sign in and start using the Harness Continuous Delivery product. Contact [Harness Support](mailto:support@harness.io) if you have any questions.
