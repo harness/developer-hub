@@ -6484,7 +6484,7 @@ If your pipeline is timing out before your step has a chance to hit the timeout 
 
 #### Why can't I see any Harness Status Checks in my Github Branch Protection Rules after I already setup the trigger?
 
-To get Harness Status Checks to show for Pull Requests, you'll need to trigger the Harness Pipeline at least once with a Pull Request first. Only then can you see the Harness Status Checks in the Github Branch Protection Rules and enforce it on branches.
+To get Harness Status Checks to show up in the Branch Protection Rules, you'll need to trigger the Harness Pipeline at least once with a Pull Request first. Only then can you see the Harness Status Checks in the Github Branch Protection Rules and enforce it on branches.
 
 
 #### How do I setup a Pipeline Trigger for Tag and Branch creation in Github?
