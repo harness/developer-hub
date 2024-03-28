@@ -1,7 +1,7 @@
 ---
 title: Harness SaaS Data Architecture
 description: Harness SaaS Data Architecture
-sidebar_label: Harness SaaS Data Architecture
+sidebar_label: SaaS Data Architecture
 ---
 
 ![](./static/harness_saas_data_architecture.png)

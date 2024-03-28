@@ -1,7 +1,7 @@
 ---
 title: Harness SaaS Architecture
 description: Harness SaaS Architecture
-sidebar_label: Harness SaaS Architecture
+sidebar_label: SaaS Architecture
 ---
 
 ![](./static/harness_saas_high_level_architecture.png)
