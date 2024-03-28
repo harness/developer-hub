@@ -46,7 +46,7 @@ The following features are now generally available:
 
 - Fixed an issue with database migrations that impacted upgrading Self-Managed Platform from version 0.13.x to 0.14.x. (STO-7309)
 
-- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows.  (STO-4918) 
+- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows. (STO-4918) 
 
   With this fix, clicking on an issue selects only that issue, even if other scans detected the same issue for that target. (You can use the **Steps** filter to show/hide results from specific scans.)
 
@@ -168,8 +168,6 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
   - The variant is the timestamp when the step scanned the instance.
 
 
-This option is behind the Feature Flag `STO_AUTO_TARGET_NAME_VARIANT`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
-
 
 #### New feature: OPA policies for Security Test results
 
@@ -191,11 +189,10 @@ This release includes a set of security test policy samples, which make it easy 
 
 For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
 
-#### Early Access feature: Open Source Vulnerabilities (OSV) scanner integration
+#### New feature: Open Source Vulnerabilities (OSV) scanner integration
 
 You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. (STO-6767)
 
-This integration is behind the feature flag `STO_STEP_PALETTE_OSV`. Contact [Harness Support](mailto:support@harness.io). 
 
 #### Fixed issues
 
