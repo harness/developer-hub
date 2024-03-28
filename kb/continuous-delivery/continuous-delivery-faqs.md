@@ -6473,5 +6473,6 @@ If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote
 If using a Filtered List to deploy to multiple environments, you can dynamically set which environments to deploy to using tags. The `matchType` field is used to define the operator for the tags list.
 
 All - Only deploy to environments matching all the tags.
+
 Any - Deploy to environments matching any of the tags.
 
