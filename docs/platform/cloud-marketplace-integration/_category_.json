@@ -1,0 +1,10 @@
+{
+   "label":"Cloud Marketplace Integration",
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Cloud Marketplace Integration"
+   }  
+}
