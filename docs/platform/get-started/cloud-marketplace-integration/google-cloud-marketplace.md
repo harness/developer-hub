@@ -1,13 +1,13 @@
 ---
-title: Google Cloud Marketplace Integration
-description: Harness Modules listings on Google Cloud Marketplace and different workflows supported.
-sidebar_label: Google Cloud Marketplace Integration
+title: Google Cloud Marketplace
+description: Harness Modules listed on Google Cloud Marketplace and different workflows supported.
+sidebar_label: Google Cloud Marketplace
 sidebar_position: 1
 ---
 
 
-### What is a Google cloud marketplace listing?
-A Google Cloud Marketplace listing is essentially a way for software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from Google Cloud Console or through APIs.
+### What is a Google cloud marketplace?
+A Google Cloud Marketplace is essentially a way for software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from Google Cloud Console or through APIs.
 
 
 ### What are the Harness products currently available on Google Cloud Marketplace?
@@ -20,8 +20,9 @@ A Google Cloud Marketplace listing is essentially a way for software vendors to 
 ### How can customers purchase the Harness products via Google Cloud Marketplace Private Offer Flow? 
     There are two ways for the customer to initiate the private offer flow with Harness:
         1. If the customer has an existing relationship with Harness, then Harness can collect the required customer details, create an offer and send the customer a private offer so that customer pays a custom price for the software.
-        2. If customer discovered the product they are interested in and wants to request a custom quote for a product, customer can contact the Harness' sales team by clicking on the contact sales functionality.
-        ![](./static/gcp_pvt_offer_contact_sales_form.png)
+        2. Customer is interested in a Harness product and wants to request a custom quote for that product. In this case the customer can contact the Harness' sales team by clicking on the contact sales functionality.
+
+            ![](./static/gcp_pvt_offer_contact_sales_form.png)
 
     #### Step 1: Details required from customer by Harness, for creating the private offer:
         1. The Harness products customer is interested in procuring.
@@ -54,7 +55,7 @@ A Google Cloud Marketplace listing is essentially a way for software vendors to 
         Harness currently offers following  products as public listings:
         *   [Harness Continuous Delivery](https://console.cloud.google.com/marketplace/product/harness-public/harness-continuous-delivery) 
 
-        #### Please follow the steps below inorder to subscribe to the publicly listed Harness product:
+        #### Please follow the steps below in order to subscribe to the publicly listed Harness product:
             1. Customers can find the Harness listings by simply searching for 'Harness' on the Google Cloud Marketplace products. 
             2. Navigate to the Harness product you want to subscribe to.
             3. If the product is listed publicly, as a customer you should be able to view the pricing and see a subscribe button:
