@@ -130,5 +130,5 @@ Check the regex used for pattern matching.
 ## Conclusion
 In this tutorial, we covered how to use Scorecards in Harness IDP for tracking and driving migrations. This tool is incredibly useful for maintaining up-to-date information on various aspects of your software projects, such as dependency versions.
 
-For more detailed information and support, refer to the [Harness IDP documentation](https://developer.harness.io/docs/internal-developer-portal) and [community forums](https://join.slack.com/t/harnesscommunity/shared_invite/zt-26s09zk9w-bIWy~~nZguW~P3SrPx6PdA).
+For more detailed information and support, refer to the [Harness IDP documentation](https://developer.harness.io/docs/internal-developer-portal) and [community forums](https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA).
 

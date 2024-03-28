@@ -342,7 +342,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-26s09zk9w-bIWy~~nZguW~P3SrPx6PdA",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA",
               },
               {
                 label: "API Reference",
