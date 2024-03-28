@@ -6497,3 +6497,17 @@ The out of the box Github Trigger type does not currently support this however, 
 4. Set the content type to `application/json`
 5. Select `Let me select individual events.` for the `Which events would you like to trigger this webhook?` section
 6. Check the `Branch or tag creation` checkbox
+
+
+####  What is a "groupName", and how would I add it to an NRQL query for Continuous Verification?
+
+A groupName is an identifier used to logically group metrics. To add a groupName to a New Relic Query, add it in the `Map Metric(s) to Harness Services` section of the Health Source.
+
+
+#### Why am I unable to Download Deployment Logs via the API?
+
+If the Deployment Stage/Step has no logs to download, the Download Deployment Logs API will fail with the following error
+
+```
+Download DeploymentLogs APi Failed with error : org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found: "{<EOL> "error_msg": "cannot list files for prefix"<EOL>}<EOL>"
+```
