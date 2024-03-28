@@ -31,7 +31,7 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 * Sprint reports and drill-down reports inaccurately included certain issues resolved outside their designated sprint time. This has been fixed to accurately display relevant issues resolved within the sprint period by considering the **Issue Resolved In** field for each item. Tickets falling on the **Outside of Sprint** category are not included in the velocity calculation, as they represent work completed before the start of the sprint. (SEI-6170)
 * Added support to retrieve and display up to 999 active versions for the **Contributor** list. (SEI-5908)
-* The repository selection dropdown was not displaying data in the Collection definition for the BitBucket integration. This issue has been fixed. (SEI-6245)
+* The repository selection dropdown was not displaying data in the Collection definition for the Bitbucket integration. This issue has been fixed. (SEI-6245)
 
 ### Version 202403.1
 
