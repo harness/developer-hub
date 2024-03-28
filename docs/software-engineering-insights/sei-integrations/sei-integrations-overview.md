@@ -25,40 +25,68 @@ Integration mapping refers to the process of linking available or new integratio
 1. To map integrations, go to the **Integration Mapping tab** within the SEI module.
 2. Click on **Map Integrations** and select any existing integrations or create new ones as per the requirement.
 
-## Application-specific SEI integrations
+## Harness SEI supported platforms and technologies
 
-* [Azure DevOps Services](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-* [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-* [Checkmarx SAST](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-checkmarx)
-* [Circle CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci)
-* [Coverity](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-coverity)
-* [Drone CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci)
-* [Gerrit](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-gerrit)
-* [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
-* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
-* [GitHub 2.0 - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
-* [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
-* [Harness NG](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
-* [Helix Core Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
+Harness SEI supports a variety of platforms, repos, tools, and related technologies. The following sections list entities or providers with first-class support in Harness SEI.
+
+### Issue Management Platform
+
+* [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira)
-* [Jira 2.0 - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
+* [Jira Enhanced Integration - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
+* [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
+
+### Source Code Management (SCM)
+
+* [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+* [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
+* [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
+* [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-enterprise)
+* [GitHub Integration - Github Connect App](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+* [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
+* [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise)
+* [Perforce Helix Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
+* [Gerrit](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-gerrit)
+
+### CI/CD
+
+* [Circle CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci)
+* [Drone CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci)
+* [Jenkins](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin)
+* [Harness NG](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
+* [Azure Pipelines](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
+
+### Security
+
+* [SonarQube](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube)
+* [Checkmarx](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-checkmarx)
+* [Tenable](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-tenable)
+* [Coverity](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-coverity)
+* [Snyk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-snyk)
+
+### Communication & Collaboration
+
+* [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
 * [Microsoft Teams](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-ms-teams)
+
+### Incident Monitoring
+
 * [PagerDuty](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+
+### Others
+
+* [TestRail](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-testrail)
 * [PostgreSQL](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-postgresql)
 * [Salesforce](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce)
-* [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
-* [Snyk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-snyk)
-* [SonarQube](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube)
 * [Splunk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-splunk)
-* [Tenable](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-tenable)
-* [TestRail](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-testrail)
 * [Zendesk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-zendesk)
 
 On-prem integrations and tools without application-specific integrations require [Ingestion Satellites](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-## Other integrations
+## Custom CI/CD integrations
 
-For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin).
+SEI supports custom CI/CD integrations through webhooks. You can use this for CI/CD tools that don't have a dedicated SEI integration. For information about custom CI/CD, go to [Custom CI/CD Integrations](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations).
 
 :::tip
 
@@ -68,7 +96,7 @@ In addition to SEI integrations, you can [import CSV files](/docs/software-engin
 
 ## Integration Monitoring
 
-To monitor and track the health status of an integration, you can go to the **Integration Monitoring** tab. 
+To monitor and track the health status of an integration, you can go to **Integration Monitoring**.
 
 Here's how you can verify the integration status:
 
@@ -81,6 +109,6 @@ Here's how you can verify the integration status:
 
 ![](./static/integration-monitoring.png)
 
-This page allows you to monitor the integration's current status, which could be either `HEALTHY`, `UNKNOWN`, or `FAILED`. 
+This page allows you to monitor the integration's current status, which could be either **HEALTHY**, **UNKNOWN**, or **FAILED**. 
 
 You can also review past ingestion activities under the **Ingestion Logs** section and view their corresponding statuses. Additionally, you can find other details such as the Ingestion Task Start Time, Time to Complete the Ingestion Task and Number of Retries for the Ingestion Scan.
