@@ -20,7 +20,7 @@ Please note that after adding an integration and for each subsequent data sync, 
 
 ## Integration Mapping
 
-Integration mapping refers to the process of linking available or new integrations with your current project. Once you have created your project, you can start setting up and mapping integrations as an admin. To map integrations correctly ensure that you have associated the integrations with the project.
+Integration mapping refers to the process of linking available or new integrations with your current project. Once you have created your project, you can start setting up and mapping integrations to the project. It's important to associate the correct integrations with the project in order to ensure that the widgets on Insight display accurate data.
 
 1. To map integrations, go to the **Integration Mapping tab** within the SEI module.
 2. Click on **Map Integrations** and select any existing integrations or create new ones as per the requirement.
