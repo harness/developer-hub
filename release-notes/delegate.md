@@ -71,7 +71,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
-### Version 24.03.82506 <!--  March 28, 2024 -->
+### Version 24.03.82601 <!--  March 28, 2024 -->
 
 #### Hotfix
 
