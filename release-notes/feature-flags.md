@@ -81,6 +81,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.6.5
+
+ - When you're making an evalution, if the Flag or Group cache are found to be in an invalid state, then a cache refresh is made and the evaluation re-attempted once. This cache refresh has a default timeout of 5 seconds, which can be decreased or increased by using the new configuration option `SetCacheRecoveryTimeout(int timeoutMilliseconds)`. (FFM-11022)
+
 #### Version 1.6.4
 
  - The Evaluation logic refactored to use immutable principles, to aid in maintenance and readability. (FFM-11057)
