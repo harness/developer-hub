@@ -142,9 +142,7 @@ connector:
 
 With that in place, you can create a secret using that custom secret manager that you can reference in a pipeline, which will give you a dynamic PAT you can use to perform git pushes or API actions against GitHub, using the GitHub App to authenticate (with the scope you granted to the GitHub app installation).
 
-
 <DocImage path={require('../static/github-app-pat-dispenser-4.png')} />
-
 
 From there, you can reference that secret in the steps of a pipeline pipeline (such as: <+secrets.getValue("dynamic-github-pat")>) and use it to set up authentication in the cloned git repo, or use the GitHub API.
 
