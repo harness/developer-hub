@@ -371,7 +371,7 @@ One of these additional settings is `Run as User`, which determines the user id 
 
 This issue can occur for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag as it changes the behavior of certain settings (including `Run as User`) when it is not configured. 
 
-To fix this issue, set `Run as User` in your git clone step and cdk deploy step to `0`.
+To fix this issue, set `Run as User` in your Git Clone step and CDK Deploy step to `0`.
 :::
 
 ### Output variable expressions
