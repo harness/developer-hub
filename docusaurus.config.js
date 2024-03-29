@@ -175,10 +175,6 @@ const config = {
                 href: "/release-notes",
               },
               {
-                label: "Roadmap",
-                href: "/roadmap",
-              },
-              {
                 label: "FAQs",
                 to: "docs/faqs",
               },
@@ -255,6 +251,11 @@ const config = {
                 label: "Community",
               },
             ],
+          },
+          {
+            label: "Roadmap",
+            position: "right",
+            href: "/roadmap",
           },
 
           {
