@@ -369,7 +369,7 @@ For the remaining settings, see [Step settings common to multiple steps](/docs/c
 
 One of these additional settings is `Run as User`, which determines the user id of the user that is running all the commands in the container. Ensure that this user id is the same as the user id used in a previous Git Clone Step or the same as any other step in the step group that calls Git commands. If this isn't done, users can face step failures as the user that did the Git clone command and the user that calls the Git commands in this step differ. 
 
-This issue can pop up for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag as it changes the behavior of certain settings (including `Run as User`) when unconfigured. 
+This issue can occur for existing pipelines for users who have turned on the `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX` feature flag as it changes the behavior of certain settings (including `Run as User`) when it is not configured. 
 
 To fix this issue, set `Run as User` in your git clone step and cdk deploy step to `0`.
 :::
