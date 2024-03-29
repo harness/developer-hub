@@ -84,7 +84,12 @@ The following features are now generally available:
 
 #### Early Access feature: Wiz scanner integration
 
-You can scan your container images using [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference), a cloud security platform that supports vulnerabiity scans. (STO-6035)
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
+
+Harness currently supports the following: 
+
+1. Orchestrated Wiz scans for container images
+2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
 
 This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
