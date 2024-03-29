@@ -10,7 +10,7 @@ HCE supports executing Linux faults similar to Kubernetes faults.
 ## Before you begin
 * [Connect to Linux infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
 * [Disconnect from Linux infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure#remove-infrastructure)
-* [Linux execution plane](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md)
+* [Linux execution plane](/docs/chaos-engineering/features/chaos-infrastructure/linux-components.md)
 
 ## Advanced setup
 A set of mandatory input flags is required for the installation of the chaos infrastructure, including the `infra-id`, `access-key` and the `server-url`. However, certain aspects of the infrastructure can be tuned via the following flags:
