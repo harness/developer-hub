@@ -6479,3 +6479,70 @@ Please read more on this in the following [Doumentation](https://developer.harne
 
 Yes, Harness provides the expression `<+pipeline.executionUrl>` to fetch the current variable pipeline execution Url
 Please read more on pipeline expressions in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineexecutionurl)
+
+#### Why am I getting an Invalid Repository Error on my Pipeline Trigger?
+
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set.  It is required for Triggers to reference a Remote Input Set when using Remote Input Sets and Remote Pipelines.
+
+#### Why am I getting an error that my trigger has empty or missing pipelineBranchName?
+
+```
+Failed while requesting Pipeline Execution through Trigger: Unable to continue trigger execution. Pipeline with identifier: $PIPELINE_ID, with org: $ORG, with ProjectId: $PROJ, For Trigger: $TRIGGER has missing or empty pipelineBranchName in trigger's yaml.
+```
+
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. It is required for Triggers to reference a Remote Input Set when using Remote Input Sets and Remote Pipelines.
+
+
+#### What's the difference between matchType all and any?
+
+If using a Filtered List to deploy to multiple environments, you can dynamically set which environments to deploy to using tags. The `matchType` field is used to define the operator for the tags list.
+
+All - Only deploy to environments matching all the tags.
+
+Any - Deploy to environments matching any of the tags.
+
+
+#### Why is my pipeline timing out even though my step hasn't reached the timeout yet?
+
+If your pipeline is timing out before your step has a chance to hit the timeout threshold, it's likely that the pipeline itself has a timeout that has already been reached. You can find the relevant pipeline setting in Advanced Settings > Pipeline Timeout Settings.
+
+
+#### Why can't I see any Harness Status Checks in my Github Branch Protection Rules after I already setup the trigger?
+
+To get Harness Status Checks to show up in the Branch Protection Rules, you'll need to trigger the Harness Pipeline at least once with a Pull Request first. Only then can you see the Harness Status Checks in the Github Branch Protection Rules and enforce it on branches.
+
+
+#### How do I setup a Pipeline Trigger for Tag and Branch creation in Github?
+
+The out of the box Github Trigger type does not currently support this however, you can use a Custom Webhook trigger and follow the below steps in order to achieve this. 
+
+1. Create a Custom Webhook trigger
+2. Copy the Webhook URL of the created trigger
+3. Configure a Github Repository Webhook pasting in the URL copied from Step 2 in the Payload URL
+4. Set the content type to `application/json`
+5. Select `Let me select individual events.` for the `Which events would you like to trigger this webhook?` section
+6. Check the `Branch or tag creation` checkbox
+
+
+####  What is a "groupName", and how would I add it to an NRQL query for Continuous Verification?
+
+A groupName is an identifier used to logically group metrics. To add a groupName to a New Relic Query, add it in the `Map Metric(s) to Harness Services` section of the Health Source.
+
+
+#### Why am I unable to Download Deployment Logs via the API?
+
+If the Deployment Stage/Step has no logs to download, the Download Deployment Logs API will fail with the following error
+
+```
+Download DeploymentLogs APi Failed with error : org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found: "{<EOL> "error_msg": "cannot list files for prefix"<EOL>}<EOL>"
+```
+
+#### Why am I getting UPGRADE FAILED when trying to deploy my Helm Chart?
+
+```
+Error: UPGRADE FAILED: unable to build kubernetes objects from current release manifest: resource mapping not found for name: "$RESOURCE_NAME" namespace: "" from "": no matches for kind "HorizontalPodAutoscaler" in version "autoscaling/v2beta2" ensure CRDs are installed first
+```
+
+This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
+
+To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
