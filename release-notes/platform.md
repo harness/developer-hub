@@ -9,10 +9,7 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 import delete_project from './static/delete-project.png'
-
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/platform/rss.xml" />
 
@@ -107,7 +104,7 @@ The following deprecated API endpoints are longer supported:
 - `harness-ingress-controller` arguments are now configurable through overrides. (PL-46366, ZD-55035)
     They can be controlled by
 
-    ```
+    ```yaml
     nginx:
       controller:
         watchNamespace: ""
@@ -125,7 +122,7 @@ The following deprecated API endpoints are longer supported:
 
     - You can provide any extra arguments like this
 
-    ```
+    ```yaml
     nginx:
       controller:
         extraCommandArgs:
@@ -133,7 +130,8 @@ The following deprecated API endpoints are longer supported:
     ```
 
     - Ingress controller can now be deployed with a ClusterRole
-    ```
+
+    ```yaml
     nginx:
       clusterRole:
         create: true
