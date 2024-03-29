@@ -117,7 +117,7 @@ If **True**, which is the default value, the pipeline verifies your Git SSL cert
 
 ## Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to Set the security context for a pod. Defaults to `1000` if left unconfigured.
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod). Defaults to `1000` if left unconfigured.
 
 ## Set Container Resources
 
