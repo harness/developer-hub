@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
 4. Configure the integration:
@@ -60,13 +60,15 @@ To integrate with on-premises Jira instances, you can use your Atlassian account
 
 Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+
 Here’s a sample `satellite.yml` file
 
 ```yaml
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the environment you are using.
+  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: "<INTEGRATION_ID>"
     application: jira
@@ -74,7 +76,7 @@ integrations:
     username: <ATLASSIAN_EMAIL>
     api_key: <ATLASSIAN_API_KEY>
     metadata:
-      timezone: "America/Los_Angeles"
+      timezone: "<TIMEZONE>"
       sensitive_fields:
         - summary
         - description
@@ -93,17 +95,13 @@ To find the correct timezone, go to `https://<ORGANIZATION_ATLASSIAN_URL>/rest/a
 
 If you encounter any authentication issues, consider the following options:
 
-* While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.
-
-Test with the following curl command:
+* While using a username and password for authentication, edit the generated `satellite.yml` file and use your Jira password as a value for `api_key` in the YAML and keep the `user_name` as is.<br /> <br />Test with the following curl command:
 
 ```bash
 curl -u "USERNAME:PASSWORD" -X GET "https://host:port/context/rest/api/search?jql=key-<JIRA_KEY>"
 ```
 
-* While using the generated managed token (Bearer token) for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`.
-
-Test with the following curl command:
+* While using the generated managed token (Bearer token) for authentication leave the `user_name` blank and use the managed token that you are generating for `api_key`. <br /> <br />Test with the following curl command:
 
 ```bash
 curl -H "Authorization: Bearer MANAGED_TOKEN" -X GET "https://host:port/context/rest/api/search?jql=key=<JIRA_KEY>
@@ -147,8 +145,6 @@ Replace `<ADFS_PASSWORD>` with the actual password for the specified ADFS userna
 
 </details>
 
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
 </TabItem>
 </Tabs>
 
@@ -156,7 +152,7 @@ If you encounter any issues during the integration process, go to the Satellite 
 
 If you also have an [SEI Salesforce integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Under **Salesforce Field Mapping**, select the Jira field that contains your Salesforce case IDs.
@@ -169,7 +165,7 @@ What constitutes a miss depends on your _hygiene categories_. There are several 
 
 To add custom hygiene categories:
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Select **Add Custom Hygiene Miss Criteria** and configure the new hygiene category:

@@ -26,19 +26,15 @@ If you can't use OAuth, you must create a GitLab personal access token to config
 2. Select the `api` scope with complete read/write API access.
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **GitLab Cloud** integration, and select **Install**.
 
@@ -50,24 +46,19 @@ import TabItem from '@theme/TabItem';
    * To use a Personal Access Token, enter the **URL** for your GitLab instance and paste your **Access Token**.
 
 5. In **Integration Name**, enter a name for the integration.
-6. Finish configuration and save the integration.
-
+6. Finish configuration and **Save** the integration.
 
 </TabItem>
   <TabItem value="satellite" label="Satellite">
 
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the **Personal Access Token**, with the exception of using satellite to communicate with the Gitlab server.
 
-The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud using the **PAT**, with the exception of using satellite to communicate** with the Gitlab server.
-
-Make sure to select the satellite integration checkbox while configuring the integration.
+Make sure to select the satellite integration checkbox while configuring the integration. If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 1. Enter the **Personal Access Token** and click **Next**.
 2. In **Integration Name**, enter a name for the integration.
 3. Add a **Description** for the integration. (Optional)
-4. In the **URL** field, add the URL where your Gitlab repository is deployed. 
-   
-   For example, if your Gitlab is deployed on a virtual machine (VM), add the URL in the format: `https://<GITLAB_INSTANCE_URL>`.
-
+4. In the **URL** field, add the URL where your Gitlab repository is deployed.
 5. If applicable, configure **Additional Options**:
    1. **Fetch PRs**: Allow SEI to ingest PR data from Gitlab.
    2. **Fetch Issues**: Allow SEI to ingest data from Gitlab Issues.
@@ -82,11 +73,11 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>' # For ex: 4691
     application: gitlab
-    url: 'https://<GITLAB_INSTANCE_URL>'
+    url: '<GITLAB_INSTANCE_URL>'
     metadata:
       fetch_prs: true
       fetch_issues: true
@@ -97,7 +88,7 @@ integrations:
 
 ```
 
-While configuring the integration using satellite, the following are optional metadata fields that are supported to optimize the ingestion functionality:
+Use the following optional metadata fields to optimize the ingestion functionality while configuring the integration using the Ingestion Satellite:
 
 | Name | Field | Values | Properties |
 | - | - | - | - |

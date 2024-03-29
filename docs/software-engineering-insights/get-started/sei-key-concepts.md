@@ -68,8 +68,8 @@ SEI provides 3 different types of profiles:
 
 3. **Trellis Profile:** Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. For more information, Go to [Trellis Profile](/docs/software-engineering-insights/sei-profiles/trellis-profile).
 
-### Metrics & Reports
+## Metrics & Reports
 
-Metrics and Reports in SEI refer to various key performance indicators and data-driven insights that are used to assess and improve a software development team's performance and productivity. These are predefined widgets which can be customized and used for generating insights on tracking, analyzing, and optimizing different aspects of the development process. 
+Metrics and Reports in SEI refer to various key performance indicators and data-driven insights that are used to assess and improve a software development team's performance and productivity. Reports are predefined widgets which can be customized and used for generating insights on tracking, analyzing, and optimizing different aspects of the development process. 
 
 For more information, go to [Metrics & Reports](/docs/category/metrics-and-reports)
