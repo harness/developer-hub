@@ -6465,7 +6465,7 @@ If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote
 Failed while requesting Pipeline Execution through Trigger: Unable to continue trigger execution. Pipeline with identifier: $PIPELINE_ID, with org: $ORG, with ProjectId: $PROJ, For Trigger: $TRIGGER has missing or empty pipelineBranchName in trigger's yaml.
 ```
 
-If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. If using Remote Input Sets and Remote Pipelines, it is required for Triggers to reference a Remote Input Set.
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. It is required for Triggers to reference a Remote Input Set when using Remote Input Sets and Remote Pipelines.
 
 
 #### What's the difference between matchType all and any?
