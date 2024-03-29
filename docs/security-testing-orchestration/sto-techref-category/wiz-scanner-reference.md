@@ -180,7 +180,8 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 	1. Scan mode = [Ingestion](#scan-mode)
 	<!-- 2. [Target type](#type) = `Container Image` -->
 	2. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
-	2. [Target variant](#name) — Usually the image tag, such as `latest`
+	2. [Target variant](#name) — Usually the image tag, such as `latest`. 
+	   You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the tag at runtime.
 	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
 
    ##### Optional settings
