@@ -1,6 +1,6 @@
 ---
 title: Linux chaos infrastructure advanced management
-sidebar_position: 4
+sidebar_position: 7
 description: Guide to advanced setup with Linux chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure (LCI).
@@ -85,7 +85,7 @@ HCE allows you to create the below probes for Linux:
 1. [HTTP](/docs/chaos-engineering/features/probes/http-probe)
 2. [Command](/docs/chaos-engineering/features/probes/cmd-probe)
 3. [Datadog](/docs/chaos-engineering/features/probes/datadog-probe)
-4. Dynatrace
+4. [Dynatrace](/docs/chaos-engineering/features/probes/dynatrace-probe)
 
 When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information. 
 
