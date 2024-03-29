@@ -81,7 +81,7 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 
-## March 2024
+## April 2024
 
 ### Version 1.31.x<!--  April 1, 2024 -->
 
@@ -97,6 +97,8 @@ The following deprecated API endpoints are longer supported:
 - Fixed an issue where the **Delegate Selector** dropdown wasn't populating delegates when roles were configured with specific delegates instead of all. (PL-48292, ZD-59504)
 
 - When editing WinRM secrets through a reference component, the scope was being derived from the open URL instead of the WinRM Secret's scope, causing secret edits to fail. (PL-48323)
+
+## March 2024
 
 ### Version 1.30.7<!--  March 26, 2024 -->
 
