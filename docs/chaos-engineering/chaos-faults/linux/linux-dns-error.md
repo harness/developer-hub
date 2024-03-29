@@ -1,6 +1,8 @@
 ---
 id: linux-dns-error
 title: Linux DNS error
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-dns-error
 ---
 
 import Ossupport from './shared/note-supported-os.md'

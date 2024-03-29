@@ -2,6 +2,8 @@
 title: Kubernetes probe
 sidebar_position: 5
 description: Features and specification of the Kubernetes probe
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/probes/k8s-probe
 ---
 
 With the proliferation of custom resources and operators, especially in the case of stateful applications, the steady state is manifested as status parameters or flags within Kubernetes resources. K8s Probe addresses verification of the desired resource state by allowing users to define the Kubernetes GVR (group-version-resource) with appropriate filters (field selectors or label selectors). The experiment makes use of the Kubernetes Dynamic Client to achieve this. The probe supports the following CRUD operations:

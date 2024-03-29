@@ -1,6 +1,8 @@
 ---
 id: vmware-memory-hog
 title: VMware memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-memory-hog
 ---
 
 VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs. This fault allocates and maps a specific amount of virtual address space and keeps rewriting to that same memory space for the chaos duration before unmapping it.

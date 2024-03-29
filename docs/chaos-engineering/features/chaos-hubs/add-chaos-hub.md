@@ -2,6 +2,8 @@
 title: Add a custom ChaosHub
 sidebar_position: 2
 description: Steps to add a custom ChaosHub to your project
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub
 ---
 
 This section describes the reasons for adding a custom ChaosHub and how to add and connect a custom ChaosHub. 

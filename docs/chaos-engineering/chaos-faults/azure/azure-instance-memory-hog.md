@@ -1,6 +1,8 @@
 ---
 id: azure-instance-memory-hog
 title: Azure instance memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-memory-hog
 ---
 
 Azure instance memory hog disrupts the state of infrastructure resources. 

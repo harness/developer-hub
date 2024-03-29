@@ -1,6 +1,8 @@
 ---
 id: ecs-fargate-memory-hog
-title: ECS Fargate Memory Hog
+title: ECS Fargate memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-fargate-memory-hog
 ---
 
 The ECS Fargate memory Hog experiment enables you to intentionally increase the memory usage of an ECS task container for a defined period, allowing you to assess and test the container's performance under high memory utilization conditions or latency caused due to it.

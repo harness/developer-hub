@@ -1,6 +1,8 @@
 ---
 id: vmware-service-stop
 title: VMware service stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-service-stop
 ---
 VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
 

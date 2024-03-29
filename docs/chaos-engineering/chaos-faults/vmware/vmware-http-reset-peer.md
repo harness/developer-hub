@@ -1,6 +1,8 @@
 ---
 id: vmware-http-reset-peer
 title: VMware HTTP reset peer
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-reset-peer
 ---
 
 VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP requests by resetting the TCP connection for the requests.

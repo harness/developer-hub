@@ -1,6 +1,8 @@
 ---
 id: ssh-chaos
 title: SSH chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
 ---
 SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 

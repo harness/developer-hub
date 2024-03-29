@@ -1,6 +1,8 @@
 ---
 id: locust-loadgen
 title: Locust loadgen
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen
 ---
 Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
 - Slows down or makes the target host unavailable due to heavy load.
