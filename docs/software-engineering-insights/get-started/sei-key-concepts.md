@@ -8,9 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Key concepts
-
-This topic covers basic terminology and concepts related to SEI. For information about creating SEI Insights and configuring integrations go to [Insights](../insights/sei-insights).
+This page describes key concepts related to Harness SEI features and functionality, such as your Harness Projects, Collections, Insights, Integrations, Ingestion Satellite, Metrics & Reports, RBAC, and more.
 
 ## Projects
 
@@ -20,6 +18,17 @@ By default, a Project consists of two top-level Collection categories: Teams and
 
 For more information, Go to [Projects and Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 
+## Collections & Collection Categories
+
+Collection categories are broad classifications that serve as containers for Collections but are not, themselves, Collections. By default, each Collection category has one root, or All, Collection node. For example, the Teams category automatically has an All Teams Collection. Under the root node, you can create any number of Collections and Collection levels.
+
+Under each Collection category are one or more levels of Collections. Collections are groupings, or focused classifications, that are subdivisions of Collection categories. Inheritance flows down the Collection levels.
+
+To learn more about the Collection heirarchy refer the below resources.
+
+* [Manage Collection Categories](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat)
+* [Manage Collections](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections)
+  
 ## Insights
 
 Insights in SEI provide a visual representation of key metrics and KPIs, enabling engineering teams to monitor their performance and identify areas for improvement. To create a Insight in SEI, users can utilize pre-built reports that are specifically designed to display relevant data points. These reports can be customized and arranged on the insight canvas to create a comprehensive view of team performance.
@@ -36,21 +45,20 @@ For more information, Go to [Ingestion Satellite](/docs/software-engineering-ins
 
 To calculate meaningful metrics and optimize your software development lifecycle, it's essential to integrate your SDLC tools with the Software Engineering Intelligence (SEI) platform. SEI integrations provide a seamless way to connect your SDLC tools, such as Git providers, issue management systems, and communication tools, with the Harness Platform and its modules.
 
-### Types of SEI Integrations
+Harness SEI offers many types of integrations, including:
 
-There are two types of SEI integrations available:
-
-#### Application-Specific SEI Integrations
-
-These integrations are tailored to specific SDLC tools and provide a more comprehensive set of features and functionality. Examples of application-specific SEI integrations include GitHub, Jira, and Bitbucket.
-
-#### Custom SEI Integration
-
-This allows you to extract data from various tools and services, including those not natively supported by SEI. For more information, go to Custom Integrations
+* [Code repo integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#source-code-management-scm)
+* [Ticketing system integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#issue-management-platform)
+* [CI/CD platform integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#cicd)
+* [Security tools integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#security)
+* [Communication & Collaboration tools integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#communication--collaboration)
+* [Incident monitoring system integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#incident-monitoring)
+* [Other integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#others)
+* [Custom CI/CD integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview#custom-cicd-integrations)
 
 ## Profiles
 
-A profile in SEI represents an entity where users define a specific set of metrics, criteria, or parameters that are used to assess and evaluate different aspects of software engineering processes, performance, and productivity.
+A profile in SEI represents an entity where users define a specific set of metrics, criteria, and parameters that are used to assess and evaluate different aspects of software engineering processes, performance, and productivity.
 
 SEI provides 3 different types of profiles:
 
