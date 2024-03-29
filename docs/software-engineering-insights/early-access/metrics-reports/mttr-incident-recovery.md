@@ -41,6 +41,13 @@ Consider the following DORA MTTR configuration:
 
 With this configuration, the DORA MTTR widget shows the total number of incidents that were resolved divided by the total number of incidents that occurred in the last one month.
 
+DORA MTTR performance is ranked on the following grading scale:
+
+* **Elite:** MTTR score less than an Hour
+* **High:** MTTR score less than a Day
+* **Medium:** MTTR score less than a Week
+* **Low:** MTTR score more than a Week
+
 | Incidents | Incident Created | Incident Resolved | Time duration |
 | - | - | - | - |
 | Incident 1 | 1st Jan 2024 at 12:00:00 | 1st Jan 2024 at 01:00:00 | 60 mins |
@@ -50,5 +57,5 @@ With this configuration, the DORA MTTR widget shows the total number of incident
 For the above example, for the week of 1st Jan 2024 to 7th Jan 2024, the value for the MTTR metric is calculated as below.
 
 ```bash
-DORA Mean Time to Restore = (60 + 30 + 180) / 3 = 90 mins or 1.5 hours (MEDIUM)
+DORA Mean Time to Restore = (60 + 30 + 180) / 3 = 90 mins or 1.5 hours (High)
 ```
