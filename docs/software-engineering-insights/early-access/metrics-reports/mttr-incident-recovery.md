@@ -5,14 +5,17 @@ sidebar_position: 135
 sidebar_label: Measure incident recovery time using DORA MTTR
 ---
 
-Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how long it takes an organization to recover from a failure in production.
-MTTR is a good metric for assessing the speed of your recovery process across several areas of technology.
+The DORA Mean Time To Restore metric indicates how long it takes an organization to recover from a failure in production. MTTR is a good metric for assessing the speed of your recovery process across several areas of technology.
 
-You can configure the DORA profile to measure your incident recovery time using the MTTR report. This report measures the duration between when an incident was created to when the service was restored. In other words, it tracks the time from when the incident was created to the time the incident was closed.
+You can configure the **DORA profile** to measure your incident recovery time using the MTTR report. This report measures the duration between when an incident was created to when the service was restored. In other words, it tracks the time from when the incident was created to the time the incident was closed.
 
 ![](./static/mttr-incident.png)
 
 ## DORA Profile for measuring Incident Recovery time
+
+<DocVideo src="https://www.youtube.com/embed/cKZF4SFxgIE?si=9U7SuECmWTVxxTqz" />
+
+<br />
 
 To use the DORA MTTR widget for measuring incident recovery time, it's necessary to configure the DORA profile definition for MTTR with PagerDuty integration.
 
