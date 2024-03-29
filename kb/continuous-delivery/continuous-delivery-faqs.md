@@ -6479,7 +6479,7 @@ Any - Deploy to environments matching any of the tags.
 
 #### Why is my pipeline timing out even though my step hasn't reached the timeout yet?
 
-If your pipeline is timing out before your step has a chance to hit the timeout threshold, it's likely that the pipeline itself has a timeout that has already been reached.
+If your pipeline is timing out before your step has a chance to hit the timeout threshold, it's likely that the pipeline itself has a timeout that has already been reached. You can find the relevant pipeline setting in Advanced Settings > Pipeline Timeout Settings.
 
 
 #### Why can't I see any Harness Status Checks in my Github Branch Protection Rules after I already setup the trigger?
