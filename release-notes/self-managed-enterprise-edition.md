@@ -230,10 +230,6 @@ gsutil -m cp \
 
 - Support added to enable OPA policy for TTL enforcement while creating or updating an API Key Token. (PL-46779)
 
-#### Security Testing Orchestration
-
-- AIDA remediation is now available for STO stage failures. (STO-6966, STO-7254, ZD-56426, ZD-59425)
-
 ### Fixed issues
 
 #### Continuous Delivery
@@ -1124,12 +1120,6 @@ gsutil -m cp \
     <DocImage path={require('./static/78b4f649d9c4a9d0d858499e9508e846095f643d22b5f64dae60d6a30037b8cd.png')} width="60%" height="60%" title="Click to view full size image" />
 
   - The values provided in the trigger's `inputYaml` field take precedence over any values provided by the input sets. This lets you override the input set values and use, for example, trigger payloads for specific inputs to the pipeline.
-
-- AIDA:tm: replaces Coveo for support case deflection (CDS-85267)
-
-  AIDA replaces Coveo in proactively assisting you with content recommendations when you are entering a subject for your ticket in the **Submit a ticket** form.
-
-  This feature is behind the feature flag `CDS_AIDA_SUPPORT_DEFLECTION`. To enable the feature, contact [Harness Support](mailto:support@harness.io).
 
 - The Go template binary has been upgraded from version 0.4.4, which used Go version 1.20, to version 0.4.5, which uses Go version 1.21.4. (CDS-83173, ZD-50403)
 
