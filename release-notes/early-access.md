@@ -213,6 +213,20 @@ This release introduces a new set of built-in steps for adding scans to your pip
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
 
 
+### Wiz integration
+
+* **Release date:** March 2024
+* **Issue number:** STO-6035
+* **Feature flags:** `STO_STEP_PALETTE_WIZ`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+
+Harness currently supports the following: 
+
+1. Orchestrated Wiz scans for container images
+2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
+
 
 ### STO Jira integration
 
