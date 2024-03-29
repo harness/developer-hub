@@ -4,14 +4,14 @@ description: Explains the auto-upgrade feature and the delegate expiration polic
 sidebar_position: 9
 ---
 
-The Harness Delegate for Kubernetes supports automatic upgrades. With automatic upgrades, you don't need to worry about having the most up-to-date functionality. You always have the most recent version of the delegate. 
+The Harness Delegate for Kubernetes supports automatic upgrades. With automatic upgrades, you don't need to worry about having the most up-to-date functionality. You always have the most recent version of the delegate.
 
-Harness recommends that you enable automatic upgrades. 
+Harness recommends that you enable automatic upgrades.
 
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
 :::info
-The automatic upgrade feature is enabled by default for the Kubernetes manifest and Helm installation options. However, it is disabled by default for the Terraform and Docker installation options. 
+The automatic upgrade feature is enabled by default for the Kubernetes manifest and Helm installation options. However, it is disabled by default for the Terraform and Docker installation options.
 :::
 
 ## How automatic upgrade works in the Kubernetes manifest
@@ -134,15 +134,15 @@ spec:
 
 When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
-Harness updates the status when `upgrader` makes it’s first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
+Harness updates the status when `upgrader` makes it's first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
 
-Let’s say the `upgrader` schedule is configured to two hours. The upgrade status would change from **AUTO UPGRADE: OFF** to **AUTO UPGRADE: ON** and back to **AUTO UPGRADE: OFF**. Every 90 minutes that Harness doesn't detect the API call, the status is set to **AUTO UPGRADE: OFF**. As soon as Harness detects it again, the status is set to **AUTO UPGRADE: ON**. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
+Let's say the `upgrader` schedule is configured to two hours. The upgrade status would change from **AUTO UPGRADE: OFF** to **AUTO UPGRADE: ON** and back to **AUTO UPGRADE: OFF**. Every 90 minutes that Harness doesn't detect the API call, the status is set to **AUTO UPGRADE: OFF**. As soon as Harness detects it again, the status is set to **AUTO UPGRADE: ON**. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 To find the delegate status, select an account, a project, or an organization, then select **Settings**. Under resources, select **Delegates**. For more information, go to [Delegates list page](/docs/platform/delegates/delegate-concepts/delegate-overview#delegates-list-page).
 
 ![Detecting delegate](static/detect-delegate.png)
 
-When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: ON** or **AUTO UPGRADE: OFF**. 
+When the delegate is first installed, the Delegates list page displays an **Auto Upgrade** status of **DETECTING** and then **SYNCHRONIZING**. After the first hour (for the default `upgrader` configuration) or your custom configured time, the delegate shows a status of **AUTO UPGRADE: ON** or **AUTO UPGRADE: OFF**.
 
 ![Auto-upgrade on](static/auto-upgrade-on.png)
 
@@ -158,10 +158,10 @@ To disable auto-upgrade on an installed delegate image, do the following:
    kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>
    ```
 
-2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`.   
+2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`.
 
    ```yaml
-   spec: 
+   spec:
       - suspend: true
    ```
 
@@ -179,10 +179,10 @@ To configure the delegate upgrade schedule, do the following:
 2. Configure the **CronJob** resource to your specific settings.
 
    The CronJob YAML configuration should look something like the example below that runs the job every 15 minutes. The `spec.schedule` field defines when and how often the job should run.
-   
+
    ```yaml
    ---
-     
+
    apiVersion: batch/v1
    kind: CronJob
    metadata:
@@ -232,12 +232,12 @@ To configure the delegate upgrade schedule, do the following:
 You may choose to use a custom delegate image for the following reasons:
 
 - You don't have access to Docker Hub, so you pull the Harness images and put them in your own container registry.
-- You use the Harness Delegate as a base image and install tools, certificates, etc. 
+- You use the Harness Delegate as a base image and install tools, certificates, etc.
 
 If automatic upgrade is enabled and you have a custom image, the following may occur:
 
-- If the Kubernetes cluster does not have access to Docker Hub, then the upgrade fails. 
-- If the Kubernetes cluster has access to Docker Hub, then the new published image is deployed. This action causes the custom tooling to be lost. 
+- If the Kubernetes cluster does not have access to Docker Hub, then the upgrade fails.
+- If the Kubernetes cluster has access to Docker Hub, then the new published image is deployed. This action causes the custom tooling to be lost.
 
 To avoid these issues, you can set up the `upgrader` to use your custom delegate tag.
 
@@ -248,9 +248,9 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     --header 'x-api-key: \<YOUR_API_KEY>'
    ```
 
-    The following example result is returned. It returns the tag of the delegate that is released to your account. 
+    The following example result is returned. It returns the tag of the delegate that is released to your account.
 
-    ```
+    ```json
     {
     "metaData": {},
     "resource": {
@@ -272,7 +272,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     It returns the following results:
 
-    ```
+    ```json
     {
     "metaData": {},
     "resource": "Updated Delegate image tag to artifactory-abc/harness/delegate:23.04.78910",
@@ -280,7 +280,7 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     }
     ```
 
-    The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:23.04.78910` image. 
+    The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:23.04.78910` image.
 
 ## Delegate expiration policy
 
@@ -304,6 +304,6 @@ Harness does not recommend the use of delegate images that are not current. Howe
 
 To update the delegate YAML, do the following:
 
-- Select **New Delegate** > **Kubernetes** > **Kubernetes Manifest** > **Custom**, and then follow the instructions on the screen. 
+- Select **New Delegate** > **Kubernetes** > **Kubernetes Manifest** > **Custom**, and then follow the instructions on the screen.
 
 For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
