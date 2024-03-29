@@ -12,7 +12,7 @@ SEI supports two integrations to integrate SEI with GIthub.
 * Gitlab Cloud
 * Gitlab Enterprise
 
-To integrate with Gitlab Enterprise, use the [SEI Gitlab Enterprise integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/set-integration-gitlab-enterprise).
+To integrate with Gitlab Enterprise, use the [SEI Gitlab Enterprise integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise).
 
 ## Configure authentication
 
