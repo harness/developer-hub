@@ -6457,7 +6457,7 @@ Please read more on pipeline expressions in the following [Documentation](https:
 
 #### Why am I getting an Invalid Repository Error on my Pipeline Trigger?
 
-If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. If using Remote Input Sets and Remote Pipelines, it is required for Triggers to reference a Remote Input Set.
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set.  It is required for Triggers to reference a Remote Input Set when using Remote Input Sets and Remote Pipelines.
 
 #### Why am I getting an error that my trigger has empty or missing pipelineBranchName?
 
