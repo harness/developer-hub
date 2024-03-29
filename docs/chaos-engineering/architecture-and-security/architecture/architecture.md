@@ -69,4 +69,4 @@ Chaos infrastructure components help facilitate the chaos fault injection and hy
 
 The [Kubernetes execution plane](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md) consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
 
-The [Linux execution plane](/docs/chaos-engineering/features/chaos-infrastructure/linux.md) consists of only the Linux chaos infrastructure daemon service.
+The [Linux execution plane](/docs/chaos-engineering/features/chaos-infrastructure/linux-components.md) consists of only the Linux chaos infrastructure daemon service.
