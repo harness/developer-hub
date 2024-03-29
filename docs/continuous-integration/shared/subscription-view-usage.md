@@ -1,4 +1,8 @@
-Your Harness CI subscription includes a number of developer licenses. You can check how many of these licenses you're currently using in your Harness account. Go to **Account Settings**, and then select **Usage**.
+Your Harness CI subscription includes a number of developer licenses. You can check how many of these licenses you're currently using in your Harness account.
+
+In legacy navigation, go to **Account Settings**, and then select **Usage**.
+
+In the navigation 2.0, go to **Account Settings** and select **Subscriptions** under the **Subscriptions** section, and then select the **Continuous Integration** module from the dropdown at the top of the page.
 
 <!-- ![](/docs/continuous-integration/get-started/static/ci_usage_overview.png) -->
 
@@ -27,7 +31,9 @@ This section includes the following details:
 
 This section shows the number of current active developers against the total number of licenses, as well as your Harness Cloud build credit usage.
 
-An active developer is an active codebase committer observed in the builds managed by Harness CI over the last 30 days.
+Under the [Developer 360 subscription model](/docs/platform/get-started/subscriptions), all users with permission to access Harness CI module are considered CI Developers and consume a license.
+
+Subscription models that don't follow the Developer 360 model count active developers as active codebase committers observed in the builds managed by Harness CI over the last 30 days.
 
 <!-- ![](/docs/continuous-integration/get-started/static/ci_usage_plansummary_onetile.png) -->
 
@@ -44,7 +50,7 @@ The **Available Credits** tile shows your Harness Cloud build credit balance, ex
 <details>
 <summary>Active Developers</summary>
 
-In this section, you can drill down into license usage data for active developers. An active developer is an active codebase committer observed in the builds managed by Harness CI each month.
+In this section, you can drill down into license usage data for active developers. Use the filters to explore the data on these tabs.
 
 The **Breakdown** tab shows a breakdown of license usage.
 

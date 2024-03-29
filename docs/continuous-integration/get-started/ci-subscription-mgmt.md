@@ -6,7 +6,6 @@ redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
 ---
 
-
 import Admin from '/docs/continuous-integration/shared/subscription-add-billing-admin.md';
 import Cancel from '/docs/continuous-integration/shared/subscription-cancel.md';
 import Create from '/docs/continuous-integration/shared/subscription-create.md';
@@ -16,6 +15,8 @@ import Invoice from '/docs/continuous-integration/shared/subscription-view-invoi
 import View from '/docs/continuous-integration/shared/subscription-view-subscriptions.md';
 import License from '/docs/continuous-integration/shared/subscription-view-usage.md';
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Overview />
 
@@ -48,7 +49,9 @@ If you would like to switch between paid plans or downgrade to the Free plan, yo
 
 ## Billing
 
-You can manage your payment method and billing admins in your Harness account. Go to **Account settings** and then select **Billing**.
+You can manage your payment method and billing admins in your Harness account.
+
+In the legacy navigation, go to **Account settings** and then select **Billing**. In nav 2.0, **Billing** is under the **Subscriptions** section.
 
 ### Update your billing information
 

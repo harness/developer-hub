@@ -16,8 +16,8 @@ The **Builds** page provides the following information about current and past bu
 
 * **Pipeline Name:** The name of the pipeline that ran and the build number (**Execution Id**). Select the pipeline name to go to the [Build details page](#build-details).
 * **Status:** The build status, such as running, failed, or success.
-* **Trigger:** How the build started, whether by a webhook trigger or manually. Builds triggered by webhooks can include links to the associated PR or commit. For more information, go to [SCM status checks](./codebase-configuration/scm-status-checks.md).
-* **Executed By:** The name of the user that started the build.
+* **Trigger:** How the build started, whether from a Git even, cron trigger, or manually. Builds triggered by webhooks can include the associated branch name, a link to the associated PR or commit, and the latest commit message. For more information, go to [SCM status checks](./codebase-configuration/scm-status-checks.md).
+* **Execution Start Time:** The name of the user that started the build, whether by webhook trigger or manually, and how long ago the build started.
 * **Runtime:** How long the build ran.
 
 ## Build details

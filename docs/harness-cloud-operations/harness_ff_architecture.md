@@ -1,7 +1,7 @@
 ---
 title: Harness Feature Flag Architecture
 description: Harness Feature Flag Architecture
-sidebar_label: Harness Feature Flag Architecture
+sidebar_label: Feature Flag Architecture
 ---
 
 ![](./static/harness_ff_architecture.png)

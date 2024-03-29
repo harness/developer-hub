@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Execution Plane
-sidebar_position: 3
+sidebar_position: 4
 description: Kubernetes chaos infrastructure components
 ---
 Harness execution plane for Kubernetes includes the Kubernetes chaos infrastructure components. These components are described below.

@@ -9,6 +9,10 @@ PagerDuty specializes in a SaaS incident response platform for IT departments.
 
 Use the SEI PagerDuty integration to integrate SEI with any Cloud-based PagerDuty account/plan.
 
+:::note
+The 202403.2 release added the support to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration. To learn more, go to [Measure incident recovery time](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery).
+:::
+
 ## Requirements
 
 To use the SEI PagerDuty integration, you need a **read-only PagerDuty API key**. Copy the key somewhere that you can retrieve it when you configure the integration. For instructions, go to the PagerDuty documentation on [API Access Keys](https://support.pagerduty.com/docs/api-access-keys).
@@ -22,6 +26,10 @@ To use the SEI PagerDuty integration, you need a **read-only PagerDuty API key**
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+:::info
+Note that after the integration is configured, you can define the Collection definition using Filters for  Pagerduty fields such as PD Service, Incident Priority, Incident Urgency, Alert Severity and User ID.
+:::
 
 ## Configure the integration
 
@@ -64,6 +72,6 @@ integrations:
     username: <PAGERDUTY_USERNAME>
     api_key: <PAGERDUTY_API_KEY>
 ```
-
+    
 </TabItem>
 </Tabs>
