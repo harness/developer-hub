@@ -6,11 +6,11 @@ sidebar_position: 1
 
 In order to calculate metrics, you must integrate your SDLC tools with SEI.
 
-SEI integrations are handled through SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. 
+Interactions with third-party systems on Harness SEI are managed through the SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more.
 
 For example, an SEI GitHub integration authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
 
-To integrate a tool with SEI, you can use either an application-specific SEI integration the generic SEI integration.
+You can use any application-specific integration supported by Harness SEI to integrate your tool with SEI. If you need to connect a CI/CD tool that currently lacks integration support from SEI, you have the option to create a custom CI/CD integration separately.
 
 :::info
 Please note that after adding an integration and for each subsequent data sync, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
@@ -20,7 +20,7 @@ Please note that after adding an integration and for each subsequent data sync, 
 
 ## Integration Mapping
 
-Integration mapping refers to the process of linking available or new integrations with your current project. Once you have created your project, you can start setting up and mapping integrations to the project. It's important to associate the correct integrations with the project in order to ensure that the widgets on Insight display accurate data.
+Integration mapping refers to the process of associating existing or new integrations with your current project. After creating the project, you can proceed to set up and map integrations to it. It's important to associate the integrations correctly with the project in order to ensure that the widgets on the Insight display accurate data.
 
 1. To map integrations, go to the **Integration Mapping tab** within the SEI module.
 2. Click on **Map Integrations** and select any existing integrations or create new ones as per the requirement.
@@ -104,11 +104,14 @@ Here's how you can verify the integration status:
 
 ![](./static/integrations-tab.png)
 
-2. Click on the integration for which you want to verify the status.
+2. Click on the Integration for which you want to verify the status.
 3. Select the **Monitoring** tab.
 
 ![](./static/integration-monitoring.png)
 
 This page allows you to monitor the integration's current status, which could be either **HEALTHY**, **UNKNOWN**, or **FAILED**. 
 
-You can also review past ingestion activities under the **Ingestion Logs** section and view their corresponding statuses. Additionally, you can find other details such as the Ingestion Task Start Time, Time to Complete the Ingestion Task and Number of Retries for the Ingestion Scan.
+You can review previous ingestion activities in the **Ingestion Logs** section and view their respective statuses.
+You can also access additional details such as the Ingestion Task Start Time, Time taken to Complete the Ingestion Task, and Number of Retries for the Ingestion Scan.
+
+
