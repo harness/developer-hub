@@ -8,6 +8,8 @@ The codebase configuration in CI allows you to use a source code connector confi
 
 The best way to accomplish this, is with the use of a "Custom Secrets Manager" setup to generate a dynamic PAT from the same GitHub App details used by your connector.  
 
+## Create Secret Manager Template
+
 To start, create a "Secret Manager" Template, ideally at the account level.
 
 <DocImage path={require('../static/github-app-pat-dispenser-1.png')} />
@@ -94,11 +96,13 @@ template:
 
 :::tip Use jq to extract PAT
 
-Note that on line 57 the script is using "grep token|cut -d'"' -f4" to extract the PAT from the payload returned by GitHub.  That is because jq is not included in the delegate by default.  If you have jq installed on your delegate it's recommended to replace this with "jq '.token'".
+Note that on line 57 the script is using `grep token|cut -d'"' -f4` to extract the PAT from the payload returned by GitHub.  That is because jq is not included in the delegate by default.  If you have jq installed on your delegate it's recommended to replace this with `jq '.token'`.
 
 :::
 
-Then, create a "Custom Secret Manager" connector.  This can be created at the account level to give the access granted by this GitHub App to all projects in the entire Harness account, or at the org/project level to scope the access to this app to only those orgs/projects (if you wanted to keep teams repo access separate for example).
+## Create Custom Secret Manager Connector
+
+Next, create a "Custom Secret Manager" connector.  This can be created at the account level to give the access granted by this GitHub App to all projects in the entire Harness account, or at the org/project level to scope the access to this app to only those orgs/projects (if you wanted to keep teams repo access separate for example).
 
 <DocImage path={require('../static/github-app-pat-dispenser-2.png')} />
 
@@ -140,20 +144,25 @@ connector:
     default: false
 ```
 
-With that in place, you can create a secret using that custom secret manager that you can reference in a pipeline, which will give you a dynamic PAT you can use to perform git pushes or API actions against GitHub, using the GitHub App to authenticate (with the scope you granted to the GitHub app installation).
+## Create Secret using Custom Secret Manager
 
+With the custom secret manager in place, the next step is to create a secret using it which you can use inside of a pipeline.  This will give you a dynamic PAT you can use to perform git pushes or API actions against GitHub, using the GitHub App to authenticate (with the scope you granted to the GitHub app installation).
 
+Here's an example secret:
 <DocImage path={require('../static/github-app-pat-dispenser-4.png')} />
 
+## Using PAT Secret in a pipeline to authenticate git
 
-From there, you can reference that secret in the steps of a pipeline pipeline (such as: `<+secrets.getValue("dynamic-github-pat")>`) and use it to set up authentication in the cloned git repo, or use the GitHub API.
+Finally, you can use this secret in a run step in your pipeline  (such as: `<+secrets.getValue("dynamic-pat")>`) and use it to set up authentication in the cloned git repo, or use the GitHub API.
 
-Here's an example step to setup the cloned repository for authentication using the generated PAT, and push a commit:
+The following code will setup your cloned repository with authentication using the generated PAT:
 ```
 git config --global --add safe.directory /harness
 git config --global user.email "your-email@your-domain.com"
 git config --global user.name "Your Name"
 origin_url=$(git remote get-url origin)
-auth_url=$(echo "$origin_url" | sed 's/github.com/git:<+secrets.getValue("dynamic-github-pat")>@github.com/')
+auth_url=$(echo "$origin_url" | sed 's/github.com/git:<+secrets.getValue("dynamic-pat")>@github.com/')
 git remote set-url origin "$auth_url"
 ```
+
+With authentication in place, you can create commits and push them back to the cloned repository with `git push`.
