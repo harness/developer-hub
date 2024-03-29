@@ -32,14 +32,15 @@ Harness Delegate is packaged with `cURL` and `tar`.
 Delegate scripts are applied under the following conditions:
 
 * **New Delegate.** Scripts added on delegate creation run before the delegate starts.
-* **Running Delegate.** Scripts applied during delegate runtime, either by application as a new script or by switching the Delegate’s current script, run on delegate restart, before the delegate reaches steady state.
+* **Running Delegate.** Scripts applied during delegate runtime, either by application as a new script or by switching the Delegate's current script, run on delegate restart, before the delegate reaches steady state.
 
 ### Unzip
 
 Run `microdnf update` before you run `microdnf` commands.
+
 ```
-microdnf update  
-# Install Unzip  
+microdnf update
+# Install Unzip
 microdnf install unzip
 ```
 
@@ -71,10 +72,10 @@ You do not need to add a script for Helm 3. Harness includes Helm 3 support in a
 
 Run `microdnf update` before you run `microdnf` commands.
 ```
-microdnf update  
-# Install pip  
-microdnf -y install python3-pip  
-# Check pip install  
+microdnf update
+# Install pip
+microdnf -y install python3-pip
+# Check pip install
 pip -v
 ```
 
@@ -83,13 +84,13 @@ pip -v
 The following script installs the [AWS CLI version 2](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-linux.html) on the delegate host.
 
 ```
-# Install AWS CLI  
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"  
-unzip awscliv2.zip  
-./awscli-bundle/install -b ~/bin/aws  
-# install  
-./aws/install  
-# Check AWS CLI install  
+# Install AWS CLI
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./awscli-bundle/install -b ~/bin/aws
+# install
+./aws/install
+# Check AWS CLI install
 aws --version
 ```
 
@@ -116,10 +117,10 @@ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Sta
 Run `microdnf update` before you run`microdnf` commands.
 
 ```
-microdnf update  
-# Install Git with auto approval  
-microdnf -y install git  
-# Check git install  
+microdnf update
+# Install Git with auto approval
+microdnf -y install git
+# Check git install
 git --version
 ```
 
@@ -132,8 +133,8 @@ For example, if you are using buildpacks in the `manifest.yml` file of your Harn
 The following example script installs Cloud Foundry CLI on a delegate:
 
 ```
-wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo  
-  
+wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo
+
 microdnf -y install cf-cli
 ```
 The `-y` parameter is needed for a prompt.
@@ -141,13 +142,13 @@ The `-y` parameter is needed for a prompt.
 When the script has been applied and you click the timestamp for the Delegate the output will be similar to this:
 
 ```
-Running transaction  
-  Installing : cf-cli-6.46.1-1.x86_64                                       1/1   
-  Verifying  : cf-cli-6.46.1-1.x86_64                                       1/1   
-  
-Installed:  
-  cf-cli.x86_64 0:6.46.1-1                                                        
-  
+Running transaction
+  Installing : cf-cli-6.46.1-1.x86_64                                       1/1
+  Verifying  : cf-cli-6.46.1-1.x86_64                                       1/1
+
+Installed:
+  cf-cli.x86_64 0:6.46.1-1
+
 Complete!
 ```
 
