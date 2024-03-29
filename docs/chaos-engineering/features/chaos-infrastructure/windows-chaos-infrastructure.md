@@ -1,6 +1,6 @@
 ---
 title: Windows chaos infrastructure management
-sidebar_position: 6
+sidebar_position: 8
 description: Guide to advanced setup with Windows chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [logs](#logs), and [resilience probes](#resilience-probes-for-windows) associated with the Windows chaos infrastructure.
