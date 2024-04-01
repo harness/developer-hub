@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-04-01:T10:00:30
+date: 2024-04-02:T10:00:30
 sidebar_position: 3
 ---
 
@@ -80,7 +80,7 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2024
 
-### Version 1.31.x<!--  April 1, 2024 -->
+### Version 1.31.4<!--  April 2, 2024 -->
 
 <!-- On RN list, but will not be part of the 1.31.x release per Bharat
 
