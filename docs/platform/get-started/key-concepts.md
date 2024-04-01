@@ -196,7 +196,7 @@ Components that you can write in YAML can also be managed purely through Git wit
 
 Eventually all FirstGen accounts will be migrated to NextGen.
 
-FirstGen Harness CD reached EOL on 30 December 2023, and it will reach EOS on 30 March 2024.
+FirstGen Harness CD reached EOL on December 30, 2023 and EOS on March 30, 2024.
 
 :::
 
