@@ -4,7 +4,7 @@ description: Harness Pipeline Step Execution Architecture
 sidebar_label: Pipeline Step Execution Architecture
 ---
 
-![](./static/harness_pipeline_step_execution_architecture.png)
+<DocImage path={require('./static/harness_pipeline_step_execution_architecture.png')} width="100%" height="100%" title="Click to view full size image" />
 
 This diagram describes the high-level flow of executing a step within a Harness pipeline:
 

@@ -4,7 +4,7 @@ description: Harness Pipeline Get/Create/Update Architecture
 sidebar_label: Pipeline Get/Create/Update Architecture
 ---
 
-![](./static/harness_pipeline_get_operation_architecture.png)
+<DocImage path={require('./static/harness_pipeline_get_operation_architecture.png')} width="100%" height="100%" title="Click to view full size image" />
 
 This diagram illustrates the high-level process of the Pipeline Service handling a "Get" request for Pipeline details.
 
@@ -20,7 +20,7 @@ This diagram illustrates the high-level process of the Pipeline Service handling
 6. **Final Validation**: Finally, the Pipeline service performs comprehensive validation on the entire assembled pipeline YAML, by calling other services, before sending the response back to the user.
 
 
-![](./static/harness_pipeline_create_update_operations_architecture.png)
+<DocImage path={require('./static/harness_pipeline_create_update_operations_architecture.png')} width="100%" height="100%" title="Click to view full size image" />
 
 This diagram describes the high-level flow for creating or updating a Pipeline:
 
