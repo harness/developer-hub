@@ -1,6 +1,6 @@
 ---
-title: Setup Git Integration
-description: Once Internal Developer Portal module is enabled in your account, follow these steps to add a git integration.
+title: Set Up Git Integration
+description: Once the Internal Developer Portal module is enabled in your account, follow these steps to add a Git integration.
 sidebar_position: 20
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
@@ -73,7 +73,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 - Multiple Connectors with different hostname can be used for a single Git Provider at once.
 - While setting up connector, both Account & Repo type for URL is supported.
 - Connection through harness platform and delegate is supported.
-- You can provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration.
+- You can provide the repository URL to verify repository read permission with the given host and credentials before saving the Git integration.
   :::
 
 In the **Connector** tab under IDP **Admin** you can add the connectors.
@@ -88,7 +88,7 @@ import TabItem from '@theme/TabItem';
 
 1. Select **Azure Repo** under **Create or Select a Connector**.
 2. Click on the dropdown under **Azure Repo Connector** and select **+New Connector**.
-3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can as well add multiple organizations as different connectors and use it together.
+3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can also add multiple organizations as different connectors and use them together.
 4. After the connection test runs, select Finish to save the connector.
 
 </TabItem>
@@ -109,7 +109,7 @@ For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for e
 
 :::
 
-4. After the connection test runs, select Finish to save the connector.
+4. After the connection test runs, select **Finish** to save the connector.
 
 </TabItem>
 <TabItem value="github-connector" label="GitHub">
@@ -134,7 +134,7 @@ More instructions on [using github app in github connector](https://developer.ha
 
 :::info
 
-The scope is tied to URL format `https://gitprovider.com/org-name` so it is mandatory for all the git providers to provide the URL till at least org name. Further it can be scoped down to repository or project level as well.
+The scope is tied to URL format `https://gitprovider.com/org-name`, so all the Git Providers must provide the URL until at least the org name. Further, it can be scoped down to the repository or project level as well.
 
 :::
 

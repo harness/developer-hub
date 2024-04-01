@@ -17,7 +17,7 @@ Fully integrated into the Harness platform, IDP reduces the maintenance overhead
 
 ## Demo
 
-Here is a short 4 minute demo of the Harness Internal Developer Portal (IDP) module and all its feature.
+Here is a short 4-minute demo of the Harness Internal Developer Portal (IDP) module and all its features.
 
 <DocVideo src="https://www.youtube.com/embed/r9urqE--aNs?si=GsophnYs-IlLfao2" />
 
