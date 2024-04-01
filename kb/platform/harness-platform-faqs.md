@@ -97,6 +97,10 @@ No, there is no such option currently. To debug permission related issues, check
 
 ## API/Integration
 
+### Does Harness utilize the Kubernetes API endpoint `/api/v1/nodes/<nodename>/proxy/stats/summary` within the delegate to obtain the node metrics data of a worker node?
+
+Harness itself does not directly utilize the `/api/v1/nodes/<nodename>/proxy/stats/summary` endpoint for gathering node metrics data of a worker node within the delegate. However, if there is a specific need to access this data, users have the option to employ a shell script to query this endpoint and obtain the desired metrics.
+
 ### What is the extent of Harness' integration with Microsoft Graph API and its permissions requirements for controlling access to resources like users, groups, mail, etc.?
 
 The Harness application utilizes Microsoft Graph API for fetching a list of security groups when users exceed attribute limits in AAD (Microsoft Entra ID). Additionally, there's integration for SAML Group Authorization. It's important to note that there might be a need to pass the x-api-key header with a token (SAT/PAT) for invoking the Harness API from Microsoft tools.
@@ -317,6 +321,14 @@ curl --location --request GET 'https://app.harness.io/gateway/api/users?accountI
 ```
 
 ## Authentication
+
+### As I migrate from First Generation (FG) to Next Generation (NG) and use Okta for SCIM, I've noticed our user groups have not migrated. Is there an additional step I need to take?
+
+Yes, to ensure that your user groups migrate correctly when moving from First Generation to Next Generation platforms and continue using Okta for SCIM, you will need to configure a new SCIM app specifically for the NG platform.
+
+### Can we obtain the account's private key from the delegate without resorting to a PAT token?
+
+No, it is not possible to obtain the account's private key from the delegate, even with a valid Personal Access Token (PAT). The delegate uses a secure token for encrypted communication with the Harness Manager. However, this communication framework does not provide a method for accessing the account's private key directly through the delegate. This limitation is by design to uphold security protocols. Delegates often operate with scoped permissions at the organization or project level, and allowing access to the account's private key via a delegate would pose a significant security risk. Therefore, regardless of the delegate's ability to communicate with the Harness Manager, access to the account's private key is strictly controlled and not available through delegate operations.
 
 ### Upon successful azure saml login for prod account Harness is redirecting to stage/dev account
 
@@ -607,6 +619,14 @@ The delegate selector in a connector always works as AND and not OR. Let's say y
 You can delete a connector referenced by an entity that is no longer present by enabling the **Force Delete** option in default settings.
 
 ## Delegates
+
+### Is it possible to install multiple delegates of different types under the same name, and would this cause any issues with entities referring to the delegate?
+
+Yes, it is possible to install multiple delegates of different types under the same name without causing issues with entities referring to the delegate. When delegates share the same name, they are grouped together as if they are multiple replicas of a single Kubernetes Deployment, for instance. This grouping does not lead to ID duplication since each delegate instance is assigned a unique ID upon registration. Therefore, the system treats them as part of the same group or cluster, enabling seamless operation and coordination among the different delegate instances while maintaining their individual identities through unique IDs. This approach facilitates scalability and redundancy without complicating the reference mechanism for entities that interact with these delegates.
+
+### Is there documentation where we can see examples of payloads/data the delegates send to Harness?
+
+There isn't exhaustive documentation available that details every piece of data delegates send to the Harness Manager. The data sent over is secured via HTTPS and varies depending on the use case. For Continuous Delivery (CD), examples include variables, context data, logs viewed in the UI, status updates of tasks/steps, and general health checks. It's important to note that sensitive data, such as secrets, are not directly sent; instead, secret expressions are evaluated at runtime by the delegate to ensure security. To obtain specific examples of delegate payloads, customers can set up a man-in-the-middle (MITM) proxy on a delegate to log the data being transmitted during pipeline executions. This approach allows customers to see the exact data being communicated.
 
 ### Do we have account level delegate?
 Yes, we offer account-level delegates. You can create them by navigating to Account Settings > Account Resources > Delegate.
@@ -1668,6 +1688,18 @@ We show the service usage account for the last 30 days.
 
 ## Feature Flag
 
+### After enabling the `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` flag for my account, which allows for multiple selections within allowed values, do I have the option to choose when to enable multiple selections for an input, or is it automatically set to always allow multiple inputs?
+
+Once the `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES` flag is enabled for your account, the feature to allow multiple selections is always active for inputs where allowed values are specified. This means you won't have the flexibility to toggle the multiple selection feature on and off for individual inputs; it will consistently permit multiple inputs for any field where you have defined allowed values, aligning with the extension of the allowed values functionality.
+
+### Is there a feature flag or request available to prevent sending email invitations when a user is added through a user group, considering that adding users to the user group currently triggers email notifications even when the feature flag PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES is enabled?
+
+When the feature flag PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES is activated for an account that utilizes SSO (Single Sign-On) as its authentication mechanism, no email invitations are sent to users upon being onboarded. This applies regardless of whether users are added directly or through a user group, ensuring that email notifications are suppressed under these specific conditions.
+
+### Is the flag DELEGATE_TASK_LOAD_DISTRIBUTION still valid for the fair distribution algorithm for delegates, or do we have to rely solely on delegate task thresholds?
+
+It is enabled for all customers, hence the feature flag DELEGATE_TASK_LOAD_DISTRIBUTION is removed. It is set to true for all accounts across all clusters.
+
 ### How can I hide Harness built-in roles (Harness managed roles), and is it possible to hide account scope roles?
 
 Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`) will hide project and org scope roles. However, there is currently no way to hide account-level roles. This decision was not implemented due to the potential restriction that once we enable FF for the account, nobody will be able to see managed roles, including account admin.
@@ -1762,6 +1794,23 @@ Yes, you can add multiple projects to the same repository. GitX is entity-based,
 No, this isn't currently supported.
 
 ## Governance
+
+### Is there an option in Next Generation (NG) to migrate secrets from one secret manager to another?
+
+Currently, there is no built-in feature within Next Generation (NG) that allows for the direct migration of secrets from one secret manager to another. This capability would be considered an enhancement request.
+
+### Is it possible to capture the timing of a specific method invocation using Prometheus metrics, and can this be monitored through Grafana? Do we need to manually send out these metrics, or is there an existing workflow for this process?
+
+Capturing the exact timing of a method invocation through Prometheus metrics directly is not the typical use case for Prometheus, as it functions primarily as a metrics store that aggregates data. Utilizing timestamps as a key or dimension within Prometheus is generally not advised due to its focus on aggregating metric data rather than tracking individual event timings. Although adding logs could provide some insight, this method requires upfront log configuration and subsequent release, making it less than ideal for immediate or granular tracking needs.
+
+However, alternative solutions exist for capturing such detailed information. For instance, App Dynamics supports the kind of sampling and detailed monitoring that can track method invocation timings, but do note that App Dynamics is not currently in use. Prometheus, while central for metrics management, lacks built-in support for detailed invocation timings without significant custom metric management.
+
+For detailed tracing, including method invocation timing, integration with OpenTelemetry offers a promising approach. OpenTelemetry's tracing capabilities, combined with backend tools like Tempo (currently in prototyping), allow for capturing call graphs and execution times for specific trace IDs. OpenTelemetry also supports sampling strategies for high-latency requests, which can mitigate the overhead of capturing detailed execution data.
+
+If tracking the invocation timing of methods is necessary, utilizing the MetricService for recording durations (as Java Duration objects) or metrics (such as Unix time epochs) is recommended. An example provided includes capturing timestamps for each Delegate heartbeat event, showcasing a practical implementation for method invocation timing without overwhelming the metrics infrastructure.
+
+Ultimately, for capturing detailed execution times or understanding which parts of an application are consuming more time, integrating with a solution like OpenTelemetry and exploring its sampling capabilities is suggested. Prometheus metrics, due to their aggregation nature, might not be the most suitable tool for tracking precise method invocation timings, especially when granularity and real-time tracking are required.
+
 
 ### Which resource currently incorporates Audit Trail RBAC?
 
@@ -1982,6 +2031,12 @@ No, the project identifier can't be renamed because it is set when the project i
 ### Why don't I see data for a new user?
 
 Check the user group assigned to the user. If the user isn't assigned to any user group/role, they will not be able to view or access any relevant data.
+
+## Pipelines
+
+### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a Pull Request (PR)?
+
+To access information about the trigger during pipeline runtime, Harness provides specific expressions. For the username associated with the PR changes, you can use <+pipeline.triggeredBy.name>, which will give you the name of the user who initiated the PR. To get the ID of the trigger that fired the execution, the expression <+pipeline.triggeredBy.triggerIdentifier> can be utilized. However, it's important to note that Harness does not offer an expression to retrieve the URL to the trigger. Therefore, while you can easily access the username and trigger ID, obtaining the trigger URL directly in the pipeline runtime is not supported.
 
 ## Platform Rate Limits
 
@@ -2297,6 +2352,16 @@ No, we don't use the customer secret manager to encrypt delegate tokens. Rather 
 
 ## Security
 
+### Regarding the Just in Time (JIT) provisioning feature as detailed on the Harness Developer documentation, does this feature still initiate an email to the user for confirmation or password creation?
+
+No, the JIT provisioning feature does not send out any emails for confirmation or password creation. The signup process is completed without the need for an invite.
+
+### How is data stored between different tenants/accounts in Harness?
+
+Data between different tenants/accounts in Harness is stored in isolated data stores, ensuring that each tenant's/account's data remains separate and secure. The multi-tenant architecture of Harness provides this isolation. Furthermore, data is encrypted at rest, meaning that the databases encrypt the data at the disk level to enhance security. This encryption ensures that even if physical access to the storage is obtained, the data would still be protected.
+
+Regarding the handling of secrets, they are evaluated at runtime within the delegate's environment and are not sent back to the Harness Manager. This process maintains the confidentiality of secrets, whether they are used directly in tasks or referenced as output variables. The system is designed to ensure that sensitive information remains secure and is only accessible where and when it is needed, adhering to security best practices.
+
 ### In network security policies, what Harness IPs do I need to allowlist to connect to Harness?
 For a list of Harness IPs to allow, go to [Allowlist Harness domains and IPs](https://developer.harness.io/docs/platform/references/allowlist-harness-domains-and-ips).
 
@@ -2361,6 +2426,14 @@ Authorization is used for group mapping. It's optional and not required for SSO 
 Both the Harness Delegate & SaaS support TLS 1.3, the default TLS version. It is worth noting that each specific task implementation can create its own separate HTTP client, which can advertise any TLS version of its choice. The connector check uses the task-specific HTTP client rather than the delegate's HTTP client. Some tasks prefer to use TLSv1.2 in certain use cases, perhaps due to legacy reasons. However, it is possible that this might change in the future, and full TLS 1.3 support might eventually be rolled out. As of now, certain connectors still prefer TLS 1.2.
 
 ## Settings
+
+### Can I format the emails using the first letter of the first and last name in caps (e.g., FirstnameLastname@company.com) while adding them?
+
+When adding emails, the specific formatting of uppercase letters, such as the first letter of the first and last name, does not impact the operation. This is because Harness performs a case-insensitive search for emails, converting all email addresses to lowercase during user creation operations. Therefore, regardless of how you format the capitalization in the email, it will be standardized to lowercase for processing.
+
+### In the process of migrating SecretEngines from Classic to Next Generation (NG) platforms, we have encountered an issue with the secretEngineVersion set to 0 in a Vault example. However, when attempting to create this on NG, we face a constraint that secretEngineVersion cannot be 0. Is there a specific reason for this constraint, and should we simply increase the version number to 1?
+
+Yes, the constraint you're encountering is due to validation rules that were introduced in the NG platform after its initial development. These validations are in place to ensure consistency and correctness across configurations. For the purpose of migrating SecretEngines from the Classic to the NG platform, it is recommended to adjust the secretEngineVersion from 0 to 1. The behaviour of versions 0 and 1 will be the same, with version 1 being the supported configuration in NG. This change is necessary to comply with NG's validation requirements and will facilitate a smooth transition of your SecretEngines to the new platform.
 
 ### Is it possible to change the company name for my Harness Account?
 
