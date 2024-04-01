@@ -620,10 +620,6 @@ You can delete a connector referenced by an entity that is no longer present by 
 
 ## Delegates
 
-### Is it possible to install multiple delegates of different types under the same name, and would this cause any issues with entities referring to the delegate?
-
-Yes, it is possible to install multiple delegates of different types under the same name without causing issues with entities referring to the delegate. When delegates share the same name, they are grouped together as if they are multiple replicas of a single Kubernetes Deployment, for instance. This grouping does not lead to ID duplication since each delegate instance is assigned a unique ID upon registration. Therefore, the system treats them as part of the same group or cluster, enabling seamless operation and coordination among the different delegate instances while maintaining their individual identities through unique IDs. This approach facilitates scalability and redundancy without complicating the reference mechanism for entities that interact with these delegates.
-
 ### Is there documentation where we can see examples of payloads/data the delegates send to Harness?
 
 There isn't exhaustive documentation available that details every piece of data delegates send to the Harness Manager. The data sent over is secured via HTTPS and varies depending on the use case. For Continuous Delivery (CD), examples include variables, context data, logs viewed in the UI, status updates of tasks/steps, and general health checks. It's important to note that sensitive data, such as secrets, are not directly sent; instead, secret expressions are evaluated at runtime by the delegate to ensure security. To obtain specific examples of delegate payloads, customers can set up a man-in-the-middle (MITM) proxy on a delegate to log the data being transmitted during pipeline executions. This approach allows customers to see the exact data being communicated.
@@ -1798,19 +1794,6 @@ No, this isn't currently supported.
 ### Is there an option in Next Generation (NG) to migrate secrets from one secret manager to another?
 
 Currently, there is no built-in feature within Next Generation (NG) that allows for the direct migration of secrets from one secret manager to another. This capability would be considered an enhancement request.
-
-### Is it possible to capture the timing of a specific method invocation using Prometheus metrics, and can this be monitored through Grafana? Do we need to manually send out these metrics, or is there an existing workflow for this process?
-
-Capturing the exact timing of a method invocation through Prometheus metrics directly is not the typical use case for Prometheus, as it functions primarily as a metrics store that aggregates data. Utilizing timestamps as a key or dimension within Prometheus is generally not advised due to its focus on aggregating metric data rather than tracking individual event timings. Although adding logs could provide some insight, this method requires upfront log configuration and subsequent release, making it less than ideal for immediate or granular tracking needs.
-
-However, alternative solutions exist for capturing such detailed information. For instance, App Dynamics supports the kind of sampling and detailed monitoring that can track method invocation timings, but do note that App Dynamics is not currently in use. Prometheus, while central for metrics management, lacks built-in support for detailed invocation timings without significant custom metric management.
-
-For detailed tracing, including method invocation timing, integration with OpenTelemetry offers a promising approach. OpenTelemetry's tracing capabilities, combined with backend tools like Tempo (currently in prototyping), allow for capturing call graphs and execution times for specific trace IDs. OpenTelemetry also supports sampling strategies for high-latency requests, which can mitigate the overhead of capturing detailed execution data.
-
-If tracking the invocation timing of methods is necessary, utilizing the MetricService for recording durations (as Java Duration objects) or metrics (such as Unix time epochs) is recommended. An example provided includes capturing timestamps for each Delegate heartbeat event, showcasing a practical implementation for method invocation timing without overwhelming the metrics infrastructure.
-
-Ultimately, for capturing detailed execution times or understanding which parts of an application are consuming more time, integrating with a solution like OpenTelemetry and exploring its sampling capabilities is suggested. Prometheus metrics, due to their aggregation nature, might not be the most suitable tool for tracking precise method invocation timings, especially when granularity and real-time tracking are required.
-
 
 ### Which resource currently incorporates Audit Trail RBAC?
 
