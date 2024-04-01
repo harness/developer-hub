@@ -4,6 +4,7 @@ description: Once Internal Developer Portal module is enabled in your account, f
 sidebar_position: 20
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
+  - /docs/internal-developer-portal/get-started/onboarding-guide
 ---
 
 This guide describes the steps a Harness account admin can take to set up the IDP module. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
