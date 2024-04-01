@@ -20,6 +20,14 @@ The following list covers the step settings.
 - Method: The [HTTP method](https://restfulapi.net/http-methods/#summary) to use in the step.
 - Request body: The message body of the HTTP message.
 
+
+:::important
+Currently, using secret expressions as a part of URLs in HTTP steps work under the following conditions only.
+* Host names in URLs shouldn't be specified as secret expressions.
+* For servers that respond to URLs like `https://hostname/pro/hooks/<<<secret_reference>>>` with a 400 error code, enable the `ignore_status_code_for_http_connections` for the HTTP step configurations to work.
+:::
+
+
 ## Assertions in the HTTP step
 
 **Assertion** is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode>==200`.
