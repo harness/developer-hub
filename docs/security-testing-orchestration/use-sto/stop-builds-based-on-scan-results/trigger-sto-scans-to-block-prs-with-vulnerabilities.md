@@ -5,7 +5,10 @@ sidebar_label: Trigger STO scans to block pull requests
 sidebar_position: 5
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
+<!-- 
 ## Set up the pipeline
 
 Do the following:
@@ -30,18 +33,30 @@ Do the following:
 
    5. Set **Fail on Severity** to **Medium**, apply your changes, and save the pipeline.   
 
+-->
 
-## Trigger on a changed file
+## Create the Harness pipeline trigger
 
-Now we'll set up a trigger that starts the pipeline automatically when a specific file gets updated.  
+### Trigger on a changed file 
 
-### Create the pipeline trigger
+You can specify a trigger that says: _If a pull request updates any of these files, run the pipeline and scan the repo._ 
 
-1. Select **Pipelines** and add a new GitHub trigger.
+This type of trigger supports uses cases such as:
 
-2. Set up the trigger as follows:
+- Block the PR if any code file specified in the trigger has critical- or high-severity vulnerabilities.
 
-   1. Configuration
+- If the repo has an SBOM file such as `pom.xml`, run an SCA scan and block the PR if the scan detects any critical- or high-severity vulnerabilities. 
+
+#### Create the trigger
+
+1. Go to the pipeline, Select **Triggers** and add a new trigger for your Git provider.
+
+2. Set up the trigger as follows. 
+
+<Tabs>
+  <TabItem value="file-change-config" label="Configuration" default>
+   
+      1. Configuration
 
 		1. **Connector** = Your GitHub connector.
 
@@ -51,6 +66,9 @@ Now we'll set up a trigger that starts the pipeline automatically when a specifi
 
 		4. **Actions** — Select **Open** and **Reopen**. 
 
+  </TabItem>
+
+  <TabItem value="file-change-conditions" label="Conditions">
    2. Conditions 
 
 		1. **Changed Files**:
@@ -59,11 +77,23 @@ Now we'll set up a trigger that starts the pipeline automatically when a specifi
 
 		   2. **Matches value** = The file of interest to trigger the scan.
 
+   </TabItem>
+
+  <TabItem value="file-change-pipeline-input" label="Pipeline input">
+
+
    3. Pipeline Input 
 
         1. **Build Type** should be set to **Git Pull Request**.
 
 3. Select **Create Trigger**. 
+
+   </TabItem>
+
+   <TabItem value="file-change-yaml" label="YAML definition">
+
+  </TabItem>
+</Tabs>
 
 ### Add the webhook in GitHub
 
