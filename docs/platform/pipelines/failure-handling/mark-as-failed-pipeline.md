@@ -13,6 +13,8 @@ Currently, this feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE
 :::
 You can mark an executing pipeline as failed by selecting ``Mark as Failed`` option.
 
+![](../static/make-pipeline-as-failed.png)
+
 After marking as failed, Harness fails currently running/waiting stages. It does not fail the already executed stages.
 
 
@@ -21,9 +23,6 @@ We need to understand the difference between ``Mark as Failed`` at ``stage`` lev
 - If you have a single stage running at a time there is no difference, both the functionality performs the same thing.
 
 - If you are runnning parallel stages, then using ``Mark as Failed`` at ``pipeline`` level send the failure interrupt to each of the running stages. 
-
-
-![](../static/make-pipeline-as-failed.png)
 
 You can perform the same performation by going to each running stage and clicking the existing ``Mark as Failure`` at ``stage`` level.
 
