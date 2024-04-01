@@ -1,6 +1,8 @@
 ---
 id: alb-az-down
 title: ALB AZ down
+redirect_from: 
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/alb-az-down
 ---
 ALB (Application Load Balancer) AZ (Availability Zones) down takes down the AZ on a target application load balancer for a specific duration thereby impacting the delivery. This fault restricts access to certain availability zones for a specific duration.
 

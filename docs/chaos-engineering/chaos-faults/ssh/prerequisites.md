@@ -1,6 +1,8 @@
 ---
 id: prerequisites
 title: Prerequisites
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/prerequisites
 ---
 
 Before executing the chaos experiment, ensure that you have the following set-up ready.

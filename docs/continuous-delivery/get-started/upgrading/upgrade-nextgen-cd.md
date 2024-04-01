@@ -2,9 +2,16 @@
 title: Upgrade to CD NextGen
 description: Learn about the new Harness CD
 sidebar_position: 2
+helpdocs_topic_id: 1fjmm4by22
+helpdocs_category_id: kx4hs8bn38
+helpdocs_is_private: false
+helpdocs_is_published: true
+redirect_from:
+  - /docs/getting-started/harness-first-gen-vs-harness-next-gen
+  - /docs/get-started/harness-first-gen-vs-harness-next-gen
 ---
 
-:::info
+:::warning
 
 This is an End of Life (EOL) notice for the CD FirstGen module.
 
@@ -18,47 +25,51 @@ Harness FirstGen is the Harness version that's been around for years, covering a
 
 Harness NextGen is Harness' new version with a redesigned experience and new Continuous Integration, Feature Flags, Security Testing Orchestration, Service Reliability Management, Cloud Cost Management, and Chaos Engineering modules.
 
-For more information, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
+To compare supported platforms and technologies between Harness CD FirstGen and NextGen, go to:
+
+* [FirstGen supported platforms and technologies](/docs/first-gen/starthere-firstgen/supported-platforms.md)
+* [NextGen supported platforms and technologies](/docs/continuous-delivery/cd-integrations.md)
 
 ## What's happening to the FirstGen CD product?
 
-The Harness FirstGen CD module will be phased out and will reach End of Life (EOL) in about 4/1/2024. 
+The Harness FirstGen CD module will be phased out and will reach End of Life (EOL) in about 4/1/2024.
 
 ### Timeline
+
 The FirstGen to NextGen CD upgrade will occur on the following dates:
 
-- 1/1/2023: Harness First Gen will be in maintenance mode. 
+- 1/1/2023: Harness First Gen will be in maintenance mode.
   - No new features will be added.
   - Security and bug fixes will continue to be addressed.
+  - Harness will no longer accepts feature/enhancement requests or releases new features for the FirstGen CD module.
+  - Harness will continue to support the FirstGen CD module and ensure the current system remains reliable until shutdown. Support includes any customer-found product defects and security issues.
 
-
-- 10/1/2023. End of SMP releases.
+- 10/1/2023: End of SMP releases.
   - Harness will no longer publish new versions of the Self Hosted Harness Platform (SMP) for Harness FirstGen.
-  - Only Harness NextGen versions will be released in our SMP releases. 
+  - Only Harness NextGen versions will be released in our SMP releases.
 
-- 1/1/2024. End of support for FirstGen CD.
+- 1/1/2024: End of support for FirstGen CD.
   - Harness Support will no longer accept support requests for FirstGen CD.
   - Security fixes will still be addressed.
   - Product defects will not be addressed.
- 
-- 1/31/2024. End of support for Delegate-Legacy.
+
+- 1/31/2024: End of support for Delegate-Legacy.
   - Harness Support will no longer accept support requests for Delegate-Legacy in both Harness FirstGen and Harness NextGen (including Self Hosted Harness Platform (SMP))
   - Security fixes will still be addressed.
-  - Product defects will not be addressed. 
+  - Product defects will not be addressed.
 
-- 4/1/2024. FirstGen SaaS product shutdown.
-  - Harness Delegates will no longer register with Harness SaaS.
+- 4/1/2024: FirstGen SaaS product shutdown.
+  - Harness Delegates will no longer register with Harness FirstGen SaaS.
   - Users will no longer be able to use the Harness FirstGen UI to perform CD deployments.
   - Triggers will fail as webhook URLs will be deprecated.
-  - The default experience for signing into Harness will be Harness CD NextGen. 
+  - The default experience for signing into Harness will be Harness CD NextGen.
 
-As a first step towards that change, starting January 1st, 2023, Harness will no longer accept feature/enhancement requests and releasing new features for the FirstGen CD module.
-
-Harness will continue to support the FirstGen CD module and ensure the current system remains reliable. Support includes any customer found product defects and security issues.
+- TBD: FirstGen documentation removed from HDH.
+  - The majority of the documentation currently on the Harness Developer Hub (HDH) applies to Harness NextGen. Until all FirstGen accounts are migrated and a documentation archive/removal date is determined, you can continue to find the [FirstGen documentation on HDH](/docs/first-gen). The documentation in all other sections applies only to NextGen features.
 
 ## What's new in Harness NextGen?
 
-Harness launched the next generation (NextGen) of its flagship CD module ten months ago and since then has expanded the offering and reached the feature parity with the FirstGen CD module. NextGen has been fundamentally redesigned to provide a best in class end-to-end developer experience. 
+Harness launched the next generation (NextGen) of its flagship CD module ten months ago and since then has expanded the offering and reached the feature parity with the FirstGen CD module. NextGen has been fundamentally redesigned to provide a best in class end-to-end developer experience.
 
 Here are some NextGen highlights.
 
@@ -98,7 +109,7 @@ Some CV features:
 
 For details, go to [Continuous Verification](/docs/category/continuous-verification).
 
-### Policy As Code 
+### Policy As Code
 
 - A flexible and customized platform for policy-based control across the software development lifecycle.
 - Provides visibility into regulated applications/environments and exposes which compliance rules were not followed.
@@ -110,7 +121,7 @@ For details, go to [Policy as Code](/docs/category/policy-as-code).
 
 ## Upgrading to NextGen CD
 
-Added an account setting, `allowCrossGenerationAccess`, that you can use to enable cross generational access between CD FirstGen and NextGen. This setting is visible to CD subscribed (free/paid account) users only. This setting can be changed by account admins only. 
+Added an account setting, `allowCrossGenerationAccess`, that you can use to enable cross generational access between CD FirstGen and NextGen. This setting is visible to CD subscribed (free/paid account) users only. This setting can be changed by account admins only.
 
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
 
@@ -127,4 +138,19 @@ When you change the `allowCrossGenerationAccess` setting value in FirstGen or Ne
 | `TRUE` | The **Launch Harness Next Generation** button will be visible in the UI | The **Launch First Generation** button will be visible in the UI |
 | `FALSE` | UI will not show the **Launch Harness Next Generation** button | UI will not show the **Launch First Generation** button |
 
-Reach out to your assigned Customer Success Manager (CSM), Account Executive, or your Customer Success Engineer (CSE) for help upgrading to Harness NextGen, or for any further queries or comments. 
+Reach out to your assigned Customer Success Manager (CSM), Account Executive, or your Customer Success Engineer (CSE) for help upgrading to Harness NextGen, or for any further queries or comments.
+
+### Mapping FirstGen to NextGen entities
+
+Here's a diagram that shows how FirstGen entities like Services, Environments, Workflows, and Pipelines are represented in NextGen:
+
+![](./static/harness-first-gen-vs-harness-next-gen-20.png)
+
+The following table maps the entities based on how you use them for deployment:
+
+|   | FirstGen | NextGen |
+| --- | --- | --- |
+| **What I'm deploying.** | Service | Service |
+| **Where I'm deploying it.** | Environment | Environment |
+| **How I'm deploying it.** | Workflow | Execution |
+| **My release process.** | Pipelines | Pipelines |

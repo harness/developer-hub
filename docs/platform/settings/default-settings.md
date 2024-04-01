@@ -109,7 +109,7 @@ For information about these settings, go to [Set up perspective preferences](/do
 
 For information about these settings, go to [Notification settings](/docs/platform/notifications/notification-settings).
 
-## Supply Chain Assurance
+### Supply Chain Assurance
 
 These settings are for [Harness SSCA](/docs/software-supply-chain-assurance).
 

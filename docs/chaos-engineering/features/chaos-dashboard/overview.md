@@ -2,6 +2,8 @@
 title: Overview
 sidebar_position: 1
 description: Introduction and a guide to view a predefined dashboard
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/overview
 ---
 This section walks you through the concepts of Chaos dashboard and how you can visualize different aspects of a chaos experiment.
 

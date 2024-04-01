@@ -1,6 +1,8 @@
 ---
 id: linux-network-latency
 title: Linux network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-latency
 ---
 
 import Ossupport from './shared/note-supported-os.md'

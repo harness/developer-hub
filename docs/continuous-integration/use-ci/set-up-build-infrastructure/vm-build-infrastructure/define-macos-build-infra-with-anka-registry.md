@@ -46,7 +46,7 @@ This configuration requires:
    * [What is the Anka build cloud?](https://docs.veertu.com/anka/anka-build-cloud/)
    * [Getting started with Anka on EC2 Mac instances](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/)
    * [Anka on AWS EC2 instances](https://docs.veertu.com/anka/aws-ec2-mac/)
-* Familiarity with the [Harness Platform](/docs/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
+* Familiarity with the [Harness Platform](/docs/platform/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
 * Familiarity with Harness Delegates, VM runners, and pools.
   * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
   * [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)
@@ -193,7 +193,7 @@ Firewall restrictions can prevent the script from downloading these dependencies
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.

@@ -1,6 +1,8 @@
 ---
 id: gcp-vm-disk-loss-by-label
 title: GCP VM disk loss by label
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss-by-label
 ---
 GCP VM disk loss by label disrupts the state of GCP persistent disk volume filtered using a label by detaching it from its VM instance for a specific duration.
 

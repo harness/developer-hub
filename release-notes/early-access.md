@@ -6,7 +6,9 @@ sidebar_position: 2
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/early-access/rss.xml" />
 
-These early access (beta) features are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
+These are some of the [early access (beta) features](/docs/platform/get-started/release-status) that are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
+
+This list does not include all beta features, and features can be removed from this page once promoted to general availability (GA).
 
 Early access features are behind feature flags. You can contact [Harness Support](mailto:support@harness.io) to enable a feature you're interested in.
 
@@ -211,14 +213,19 @@ This release introduces a new set of built-in steps for adding scans to your pip
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
 
 
-### Write OPA policies based on STO scan results
+### Wiz integration
 
 * **Release date:** March 2024
-* **Issue number:** STO-6738
-* **Feature flags:**  `STO_DATA_OPA`
+* **Issue number:** STO-6035
+* **Feature flags:** `STO_STEP_PALETTE_WIZ`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+
+Harness currently supports the following: 
+
+1. Orchestrated Wiz scans for container images
+2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
 
 
 ### STO Jira integration
@@ -421,7 +428,7 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 
 You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
-<!-- ### Write OPA policies based on STO scan results
+### Write OPA policies based on STO scan results
 
 * **Release date:** November 2023
 * **Issue number:** STO-6738
@@ -429,8 +436,6 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
-
--->
 
 #### Aqua Security integration
 

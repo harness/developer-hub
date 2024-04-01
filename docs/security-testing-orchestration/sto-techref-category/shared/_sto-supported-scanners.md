@@ -43,6 +43,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Code</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Extraction, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference">Wiz</a> Ingestion  </li>
         	</ul>
      </td>
    </tr>
@@ -126,6 +127,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference">Sysdig</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Extraction, Ingestion  </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference">Wiz</a> Orchestration, Ingestion  </li>
         	</ul>
      </td>
    </tr>

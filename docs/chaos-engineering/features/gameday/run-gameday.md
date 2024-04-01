@@ -2,6 +2,8 @@
 title: Run a GameDay
 sidebar_position: 2
 description: Guide to create and execute a GameDay
+redirect_from:
+   - /docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday
 ---
 
 Learn how to create and execute a [GameDay](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md).

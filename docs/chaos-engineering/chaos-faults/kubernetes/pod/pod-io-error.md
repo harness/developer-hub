@@ -1,6 +1,8 @@
 ---
 id: pod-io-error
 title: Pod IO error
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-error
 ---
 
 import IOFaultsCaution from './shared/io-faults-caution.md'

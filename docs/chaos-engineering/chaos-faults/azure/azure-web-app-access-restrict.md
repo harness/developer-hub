@@ -1,6 +1,8 @@
 ---
 id: azure-web-app-access-restrict
 title: Azure web app access restrict
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-access-restrict
 ---
 Azure web app access restrict causes a split brain condition by restricting the access to an application service instance.
 - This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.

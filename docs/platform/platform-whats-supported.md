@@ -3,115 +3,125 @@ title: What's supported by Harness Platform
 description: Technologies supported by Harness Platform
 sidebar_label: What's supported
 sidebar_position: 1
+helpdocs_topic_id: 1e536z41av
+helpdocs_category_id: kx4hs8bn38
+helpdocs_is_private: false
+helpdocs_is_published: true
+redirect_from:
+  - /docs/getting-started/supported-platforms-and-technologies
+  - /docs/get-started/supported-platforms-and-technologies
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Gitxsup from '/docs/platform/shared/gitx-whats-supported.md'
+import Authsup from '/docs/platform/shared/auth-supported.md'
+import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
+import Secretmgmtsup from '/docs/platform/shared/secret-management-supported.md'
 
+These are the supported Harness Platform features and integrations you can use for deploying and verifying your apps.
 
-This topic lists the supported Harness Platform features and integrations you can use for deploying and verifying your apps.
+For supported platforms and technologies by module, go to the module documentation:
 
-For a comprehensive list that includes all Harness modules, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+* [What's supported in CODE](/docs/code-repository/code-supported)
+* [What's supported in CD and GitOps](/docs/continuous-delivery/cd-integrations)
+* [What's supported in CV](/docs/continuous-delivery/verify/cv-whats-supported)
+* [What's supported in CI](/docs/continuous-integration/ci-supported-platforms)
+* [What's supported in FF](/docs/feature-flags/ff-supported-platforms)
+* [What's supported in CCM](/docs/cloud-cost-management/whats-supported)
+* [What's supported in STO](/docs/security-testing-orchestration/whats-supported)
+* [What's supported in SSCA](/docs/software-supply-chain-assurance/ssca-supported)
+* [What's supported in CE](/docs/chaos-engineering/whats-supported)
+* [What's supported in SRM](/docs/service-reliability-management/srm-whats-supported)
+* [What's supported in CET](/docs/continuous-error-tracking/whats-supported)
+* [What's supported in IDP](/docs/internal-developer-portal/whats-supported)
+* [What's supported in SEI](/docs/software-engineering-insights/sei-supported-platforms)
 
+For supported platforms and technologies for SMP, go to [What's supported in Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-supported-platforms).
 
-  <Tabs>
-  
-
-
-  <TabItem value="Git Experience" label="Git Experience">
-
-
-import Gitxsup from '/docs/get-started/shared/gitx-whats-supported.md'
-
-<Gitxsup />
-
-
-</TabItem>
-  <TabItem value="AuthN" label="AuthN">
-
-
-import Authsup from '/docs/get-started/shared/auth-supported.md'
+## Authentication
 
 <Authsup />
 
-
-</TabItem>
-  <TabItem value="Accounts/Orgs/Projects/Other resources" label="Accounts Orgs Projects">
-
-
-The Harness Platform is structured hierarchically with three levels of access: Account, Organization (Org), and Project. Each level can have its own set of permissions configured, allowing for delegation of responsibilities to various teams. This approach facilitates efficient organization and management of resources, enabling granular access control that is both scalable and easy to manage.
-
-
-### Scopes
-
-- **Account** is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
-
-- **Organization** encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
-
-- **Project** contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
-
-The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
-
-To learn about organizations and projects, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/).
-
-### Resources across scopes
-
-The following table lists the resources that are available at various scopes in Harness:
-
-| **Resources** | **Account** | **Org** | **Project** |
-| --- | --- | --- | --- |
-| **Pipeline** | No | No | Yes |
-| **Services** | Yes | Yes | Yes |
-| **Environments** | Yes | Yes | Yes |
-| **Git Management** | No | No | Yes |
-| **Connectors** | Yes | Yes | Yes |
-| **Secrets** | Yes | Yes | Yes |
-| **SMTP Configuration** | Yes | No | No |
-| **Templates** | Yes | Yes | Yes |
-| **Audit Trail** | Yes | Yes | Yes |
-| **Delegates** | Yes | Yes | Yes |
-| **Governance** | Yes | Yes | Yes |
-
-
-
-</TabItem>
-  <TabItem value="Delegates" label="Delegates">
-
-
-import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-table.md'
+## Delegates
 
 <Delimagetypes />
 
+For more information about delegates, go to:
+
+- [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types)
 - [Deploy delegate on Kubernetes](/docs/platform/delegates/install-delegates/overview)
-
 - [Deploy delegate on Docker](/docs/platform/delegates/install-delegates/overview)
-
 - [Install delegate minimal image without SDKs](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
+- [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md)
 
-- [Install delegate maximal image without certified SDKs](/docs/get-started/supported-platforms-and-technologies/#sdks-installed-with-harness-delegate)
+### SDKs installed with Harness Delegate
 
-</TabItem>
-  <TabItem value="Notifications" label="Notifications">
+The Harness Delegate includes binaries for the SDKs that are required for deployments with Harness-supported integrations. These include binaries for Helm, ChartMuseum, `kubectl`, Kustomize, and so on.
+
+#### Kubernetes Deployments
+
+For Kubernetes deployments, the following SDKs/tools are certified.
+
+| Manifest Type                       | Required Tool/SDK     | Certified Version     |
+| ----------------------------------- | --------------------- | --------------------- |
+| Kubernetes                          | kubectl               | v1.27.0               |
+|                                     | go-template           | v0.4.1                |
+| Helm                                | kubectl               | v1.27.0               |
+|                                     | helm                  | v3.11.0               |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.27.0               |
+|                                     | helm                  | v3.11                 |
+|                                     | chartmuseum           | v0.8.2 and v0.12.0    |
+| Kustomize                           | kubectl               | v1.27.0               |
+|                                     | kustomize             | v4.5.4                |
+| OpenShift                           | kubectl               | v1.27.0               |
+|                                     | oc                    | v4                    |
+
+#### Native Helm deployments
+
+For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md) (Helm chart manifest), the following SDKs/tools are certified:
+
+* `helm` v3.11
+* `kubectl` v.1.27.0
+
+`kubectl` is required if Kubernetes version is 1.16 or later.
+
+#### Install a delegate with custom SDK and 3rd-party tool binaries
+
+To support customization, Harness provides a Harness Delegate image that does not include any third-party SDK binaries. We call this image the No Tools Image.
+
+Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the Delegate YAML.
+
+For steps on using the No Tools Delegate image and installing specific SDK versions, go to [Install a Delegate with 3rd Party Tool Custom Binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+
+## Git Experience
+
+<Gitxsup />
+
+## Notifications and collaboration
 
 Notifications are used to alert your team of new, resurfaced, or critical events. With notifications, you can ensure your team is aware of important events that require action.
 
-Harness Platform supports the following notification methods.
+Harness Platform supports notifications for the following notification methods and collaboration tools:
 
 - [Slack](/docs/platform/notifications/send-notifications-using-slack/)
 - [Email](/docs/platform/notifications/add-smtp-configuration)
 - [Microsoft Teams](/docs/platform/notifications/send-notifications-to-microsoft-teams).
-- PagerDuty
-- Webhook
+- [PagerDuty](/docs/platform/notifications/notification-settings)
+- [Webhook](/docs/platform/notifications/notification-settings)
 
-</TabItem>
-  <TabItem value="Secret management" label="Secrets Mgmt">
+Harness supports approvals for these collaboration tools:
 
-import Secretmgmtsup from '/docs/get-started/shared/secret-management-supported.md'
+- [Jira](/docs/platform/approvals/adding-jira-approval-stages)
+- [ServiceNow](/docs/platform/approvals/service-now-approvals)
 
-<Secretmgmtsup />
+For other providers, you can use [custom approvals](/docs/platform/approvals/custom-approvals) or [manual approvals](/docs/platform/approvals/adding-harness-approval-stages)
 
-</TabItem>
-  <TabItem value="Access Control" label="RBAC">
+## Open Source Software (OSS) components
+
+For a list of the open source libraries and third-party software Harness uses, download the [Harness Open Source Software (OSS) components PDF](./static/harness-open-source-software-components.pdf).
+
+## RBAC
 
 Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, a Harness account administrator assigns resource-related permissions to members of user groups.
 
@@ -128,7 +138,7 @@ Role-based access control (RBAC) lets you control who can access your resources 
 - [Manage user groups](/docs/platform/role-based-access-control/add-user-groups): User groups contain multiple Harness users. You assign [roles](/docs/platform/role-based-access-control/add-manage-roles/) and [resource groups](/docs/platform/role-based-access-control/add-resource-groups/) to user groups. The permissions and access granted by the assigned roles and resource groups are applied to all group members.
 
    You can also assign roles and resource groups to individual users that are not in a group. However, user groups help keep your RBAC organized and make it easier to manage permissions and access. Instead of modifying each user individually, you can edit the permissions and access for the entire group at once.
-   
+
    Harness includes some [built-in user groups](/docs/platform/role-based-access-control/add-user-groups/#built-in-user-groups), and you can [create user groups manually](/docs/platform/role-based-access-control/add-user-groups/#create-user-groups-manually), through [inheritance](/docs/platform/role-based-access-control/add-user-groups/#create-roles-by-inheritance-assign-roles), or through [automated provisioning](/docs/platform/role-based-access-control/add-user-groups/#use-automated-provisioning). You can create user groups at all [scopes](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes).
 
 Using RBAC helps you:
@@ -147,13 +157,69 @@ Using RBAC helps you:
 
    JIT provisioning in Harness lets you provision users automatically when they first sign-in to Harness through SAML SSO. Harness supports JIT provisioning only for new users logging in through an IdP, such as Okta.
 
-</TabItem>
-  <TabItem value="Self-Managed Enterprise Edition" label="Self-Managed EE">
+## Resource hierarchy
 
-import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
+The Harness Platform is structured hierarchically with three levels of access: Account, Organization (Org), and Project. Each level can have its own set of permissions configured, allowing for delegation of responsibilities to various teams. This approach facilitates efficient organization and management of resources, enabling granular access control that is both scalable and easy to manage.
 
-<Smp />
+### Scopes
 
-</TabItem>
-</Tabs>
+- **Account** is the highest level. It is your Harness account, and it encompasses all the resources within your Harness subscription.
 
+- **Organization** encompasses projects, resources, and users in a specific domain or business unit. This allows for the management of resources and permissions unique to an organization, separate from other areas of the account.
+
+- **Project** contains related resources, such as apps, pipelines, and environments. This allows for the management of resources and permissions specific to a particular project, separate from the larger org (business unit) and account.
+
+The scope at which you create resources depends on the level of control and visibility you require. For example, if you create a connector at the account scope, it is available to all organizations and projects within the account. However, if you create a connector at the organization scope, it is only available to that organization and any projects under that organization. It is not available at the account scope or to other organizations. This lets you control access to your resources more effectively and prevent unauthorized access.
+
+To learn about organizations and projects, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization).
+
+### Resources across scopes
+
+The following table lists some resources and their availability at various scopes in Harness:
+
+| **Resources** | **Account** | **Org** | **Project** |
+| --- | --- | --- | --- |
+| **Pipeline** | No | No | Yes |
+| **Services** | Yes | Yes | Yes |
+| **Environments** | Yes | Yes | Yes |
+| **Git Management** | No | No | Yes |
+| **Connectors** | Yes | Yes | Yes |
+| **Secrets** | Yes | Yes | Yes |
+| **SMTP Configuration** | Yes | No | No |
+| **Templates** | Yes | Yes | Yes |
+| **Audit Trail** | Yes | Yes | No |
+| **Delegates** | Yes | Yes | Yes |
+| **Governance** | Yes | Yes | Yes |
+
+## Secrets management
+
+<Secretmgmtsup />
+
+## Supported browsers
+
+The following desktop browsers are supported:
+
+- **Chrome**: latest version
+- **Firefox**: latest version
+- **Safari**: latest version
+- All Chromium-based browsers.
+
+Mobile browsers are not supported.
+
+## Supported screen resolution
+
+Minimum supported screen resolution is 1440x900.
+
+## The Update Framework (TUF)
+
+The Update Framework (TUF) is an open source specification for that provides instructions on how to organize, sign, and interact with metadata to secure package managers.
+
+Harness includes native TUF support via the following:
+
+- Deployment templates: [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+  - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
+- OCI image registry support:
+  - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
+- Enforce the rotation of secrets and key management practices:
+  - Harness provides [token key rotation natively](/docs/platform/automation/api/add-and-manage-api-keys#rotate-tokens).
+- Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).

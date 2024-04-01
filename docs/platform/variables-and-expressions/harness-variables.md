@@ -1417,6 +1417,12 @@ This variable is added to the metadata of the Artifactory artifacts with generic
 
 ![](./static/artifact-file-name-variable.png)
 
+### Artifact rollback variables
+
+You can use the syntax, `<+rollbackArtifact.ARTIFACT_DEFINITION_IDENTIFIER>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment. 
+
+Harness pulls rollback artifact information from last successful deployment. If there's no previous, successful deployment, then the rollback artifact will return null. 
+
 ### Sidecar artifacts
 
 Sidecar artifact expressions use the **Sidecar Identifier** to reference the sidecar artifact.
@@ -2295,6 +2301,6 @@ To achieve this same result in NextGen, you must declare each expression with se
 
 For more information about migrating to NextGen, go to:
 
-- [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen)
+- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)

@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-03-26T10:00
+date: 2024-03-29T10:00
 sidebar_position: 4
 ---
 
@@ -71,6 +71,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## March 2024
 
+### Version 24.03.82601 <!--  March 28, 2024 -->
+
+#### Hotfix
+
+- Added multiple log lines for debugging an issue. (CDS-93910)
+
 ### Harness version 1.30.7, Harness Delegate version 24.03.82600 <!--  March 26, 2024 -->
 
 #### New features and enhancements
@@ -78,6 +84,10 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding hyphen usage. While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage. Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier. Secret identifiers cannot start with a hyphen, following best practices. (PL-46959)
 
 #### Fixed issues
+
+- The delegate metrics endpoint `/api/metrics` had its content type set as `application/json`, causing scraping issues with certain versions of Prometheus due to content type incompatibility. Attempts to switch to text/plain resulted in a 406 response code. We have revised the endpoint to deliver metrics in `plainText`. You can now specify the desired content format `plainText` or `JSON` by setting the "Accept" header in your request, ensuring broader compatibility with different Prometheus versions. (PL-46976, ZD-57489)
+
+- Fixed an issue where [Bitbucket connectors with API access enabled](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access) sometimes became unresponsive. (CDS-93298, ZD-56619, ZD-58844, ZD-59381)
 
 - Setting up a monitored service using cloud metrics from the Google Cloud Operations health source was unable to list dashboards to build query. (CDS-92355)
 

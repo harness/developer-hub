@@ -1,6 +1,8 @@
 ---
 id: azure-disk-loss
 title: Azure disk loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-disk-loss
 ---
 Azure disk loss detaches the virtual disk from an Azure instance. 
 - After a specific duration, the virtual disk is re-attached to the instance. 

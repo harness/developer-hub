@@ -1,6 +1,8 @@
 ---
 id: ecs-network-restrict
 title: ECS network restrict
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-network-restrict
 ---
 
 ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. 

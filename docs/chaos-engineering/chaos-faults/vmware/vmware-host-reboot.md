@@ -1,6 +1,8 @@
 ---
 id: vmware-host-reboot
 title: VMware host reboot
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-host-reboot
 ---
 VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It helps determine the VMware infrastructure resilience when the host reboots.

@@ -32,7 +32,7 @@ The following diagram illustrates a CI build farm using AWS VMs. The [Harness De
 This is an advanced configuration. Before beginning, you should be familiar with:
 
 * Using the AWS EC2 console and interacting with AWS VMs.
-* [Harness key concepts](../../../../get-started/key-concepts.md)
+* [Harness key concepts](/docs/platform/get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
 * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * Drone VM Runners and pools:
@@ -99,7 +99,7 @@ If you have Terraform and Go installed on your EC2 environment, you can use the 
 
 When you reach the step to download the delegate YAML, follow these steps to get the docker-compose.yaml file:
 
-1. In your Harness account, organization, or project, select **Delegates** under **Project Setup**.
+1. In your Harness account, organization, or project, select **Delegates** under **Project Settings**.
 2. Click **New Delegate** and select **Switch back to old delegate install experience**.
 3. Select **Docker** and then select **Continue**.
 4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
@@ -335,7 +335,7 @@ Install a Harness Docker Delegate on your AWS EC2 instance.
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.

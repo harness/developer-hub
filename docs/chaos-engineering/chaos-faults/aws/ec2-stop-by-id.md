@@ -1,6 +1,8 @@
 ---
 id: ec2-stop-by-id
 title: EC2 stop by ID
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-id
 ---
 EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 

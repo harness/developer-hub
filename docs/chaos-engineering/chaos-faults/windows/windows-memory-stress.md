@@ -1,6 +1,6 @@
 ---
 id: windows-memory-stress
-title: Windows Memory stress
+title: Windows Memory stress 
 ---
 
 Windows memory stress applies stress on the memory resources of a Windows OS based VM.
