@@ -2,23 +2,32 @@
 title: Overview
 description: A home for developers to create, manage, and explore software.
 sidebar_position: 1
+sidebar_label: Harness IDP Overview
 redirect_from:
   - /docs/internal-developer-portal/getting-started/overview
 ---
 
-# Overview of Harness IDP
-
-:::note
-To try this module, send an email to idp-interest@harness.io for a demo and we’ll get you started.
-:::
+# Harness IDP Overview
 
 Harness IDP enables you to create new software components quickly while adhering to your company’s best practices. It enables you to manage the software you own by presenting a developer-centric view of all relevant information such as service health, deployments, and alerts. It also enables you to explore the internal software ecosystem of the company, discover technical documentation, APIs, and services, all of which enable better collaboration.
 
 Fully integrated into the Harness platform, IDP reduces the maintenance overhead and investment required from platform engineering teams and is enterprise ready.
 
+<DocVideo src="https://www.youtube.com/embed/sVnI93bCr38?si=MpENxU9qv3me28cv" />
+
+## Demo
+
+Here is a short 4 minute demo of the Harness Internal Developer Portal (IDP) module and all its feature.
+
+<DocVideo src="https://www.youtube.com/embed/r9urqE--aNs?si=GsophnYs-IlLfao2" />
+
+For a live and in-depth demo, please [reach out](https://www.harness.io/demo/internal-developer-portal?utm_source=harness_io&utm_medium=cta&utm_campaign=idp&utm_content=hero) to us.
+
+# Key features
+
 ## Service onboarding pipelines
 
-![](static/pipelines-screenshot.png)
+![](static/new%20app%20onboarding%20with%20idp%20stage.png)
 
 As a platform engineer, you can orchestrate the onboarding of services by creating pipelines in the Harness Pipeline Studio. On the other hand, as a developer, you can create a new backend service, API, or website by submitting a few details as configured by your platform engineering. Developers focus on what they do best, which is writing features, while Platform engineers focus on creating software templates, automating processes, and enforcing standards.
 
@@ -27,6 +36,12 @@ As a platform engineer, you can orchestrate the onboarding of services by creati
 ![](static/catalog-screenshot.png)
 
 The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its code and owned by a team.
+
+## Scorecards
+
+![](static/scorecards%20details.png)
+
+Scorecards play a pivotal role in ensuring software components are developed and utilized while adhering to organizational and industry standards. They provide a quantifiable measure of software maturity and adherence to best practices, thereby aiding developers in enhancing quality and assisting teams in making informed decisions regarding software adoption.
 
 ## Extensibility through plugins
 
