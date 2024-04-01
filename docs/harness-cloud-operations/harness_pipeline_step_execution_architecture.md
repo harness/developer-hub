@@ -1,7 +1,7 @@
 ---
-title: Harness Step Execution Architecture
-description: Harness Step Execution Architecture
-sidebar_label: Step Execution Architecture
+title: Harness Pipeline Step Execution Architecture
+description: Harness Pipeline Step Execution Architecture
+sidebar_label: Pipeline Step Execution Architecture
 ---
 
 ![](./static/harness_pipeline_step_execution_architecture.png)
