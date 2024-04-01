@@ -64,6 +64,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The Command Script step with secret environment variables failed during rollback because the step was unable to fetch the secrets. This issue is fixed. (CDS-93264, ZD-59173)
 - The logs explorer for a Kubernetes deployment displayed an error, `Execution Mode not found for Facilitator Type RESOURCE_RESTRAINT`. This is not an error but an information. This issue is fixed by changing the log to info with an added message, `This must be a custom Facilitator Type`. (CDS-94001)
 - Users were able to see templates belonging to a specific organization in another organization. This issue occurred because Harness was fetching all templates of all organizations in one account. This issue is fixed by adding a filter to the existing query to display all templates of the organization where the project exists. (CDS-93721)
+- Using secret expressions as a part of URL in HTTP steps wasn't working. (CDS-93255)
+
+  This issue is fixed with the following conditions: 
+
+  * Host name in URLs shouldn't be specified as secret expressions.
+  * For servers that respond to URLs like `https://hostname/pro/hooks/<<<secret_reference>>>` with a 400 error code, enable the `ignore_status_code_for_http_connections` setting for the HTTP step configurations to work.
 
 ## March 2024
 
