@@ -15,7 +15,7 @@ You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness p
 Harness currently supports the following: 
 
 1. Orchestrated Wiz scans for container images
-2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
+2. Ingestion of Wiz scan reports (JSON/SARIF format) generated for container images and repositories
 
 ## Important notes for running Wiz scans in STO
 
