@@ -40,6 +40,11 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 <!-- 02 Apr 2024 -->
 
+#### New features and enhancements
+
+* All CI steps send status updates to the Harness Manager directly by HTTP rather than through a delegate. This feature was previously released in beta under the feature flag `CI_LE_STATUS_REST_ENABLED`, and it is now enabled globally. (CI-11770)
+* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect [status updates in PRs](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) due to some statuses failing to send. Previously, you could enable the feature flag `CI_BITBUCKET_STATUS_KEY_HASH` if you encountered this issue with BitBucket Cloud. **Now, the fix enabled by this feature flag is generally available and enabled by default.** Note that adjustments made prior to general availability of this fix might cause some issues with BitBucket PR status updates. You might need to adjust your BitBucket settings if you notice Harness SCM status updates reporting to incorrect PR IDs. (CI-11770)
+
 #### Fixed issues
 
 * When manually running pipelines, the **Branch Name** no longer unintentionally changes to `main` after you input another branch name. This issue occurred due to a backend API call that could sometimes take a long time to respond. (CI-11721, ZD-59730)
