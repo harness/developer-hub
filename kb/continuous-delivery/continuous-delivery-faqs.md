@@ -6546,3 +6546,49 @@ Error: UPGRADE FAILED: unable to build kubernetes objects from current release m
 This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
 
 To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
+
+
+#### Can our git experience be used for services. environments, and pipelines? Can we enforce that all resources for a specific projects only come from a specific git repo?
+
+Yes, git experience can be used for services, envs and infra as well, also one can always enforce git repo for all entities at all levels (account, org, project).
+
+#### Can the internal mapping in Git experience be modified, and how do we prevent a broken state if a GitLab project/repository moves? How can we fix this issue?
+
+Reconfiguration within Harness is required if resources are moved across repositories or Git providers. Although manual, it can be automated through APIs for specific needs.
+
+#### Which API is utilized for modifying configuration in the `update-git-metadata` API request for pipelines?
+
+Please find an example API call below : 
+```sh
+curl --location --request PUT 'https://app.harness.io/gateway/pipeline/api/pipelines/<PIPELINE_IDENTIFIER>/update-git-metadata?accountIdentifier=<ACCOUNT_ID>&orgIdentifier=<ORG_ID>&projectIdentifier=<PROJECT_IDENTIFIER>&connectorRef=<CONNECTOR_REF_TO_UPDATE>&repoName=<REPO_NAME_TO_UPDATE>&filePath=<FILE_PATH_TO_UPDATE>' \
+  -H 'x-api-key: <API_KEY>' \
+  -H 'content-type: application/json' \
+
+```
+Pleae read more on this in the following [Documentation](https://apidocs.harness.io/tag/Pipeline#operation/importPipeline)
+
+#### Is it expected behavior for members of a group with permissions to create/edit Non-Production environments to be able to delete infrastructure definitions within those environments, despite not having explicit deletion permissions?
+
+Yes, The behavior of infrastructure deletion is consistent with environment update operations. Infrastructure operations are treated as environment updates, which explains the ability to delete infrastructure definitions within the environment.
+Please read more on Environment and InfraDefintion behaviour in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#important-notes)
+
+#### Are we planning to maintain Harness DockerHub Images alongside the Harness GCR Images?
+
+Yes, both Docker hub and GAR images are published and maintained.
+
+#### What is the character limit for HTTP response body variable in HTTP steps?
+
+Harness impose a limitation of 256KB on variable character limit for HTTP steps as well.
+
+#### How to troubleshoot "Invalid request: Invalid Load balancer configuration in Service." error?
+
+This can happen in following cases:
+- No target groups attached to LB
+- Multiple services attached to target groups
+- Service is attached to both target groups
+  
+Please read more on ECS Blue-Green Steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#visual-summary)
+
+#### Does Harness support methods to convert `<+pipeline.startTs>` into a readable format, such as 'ddmmyyyyhhmm'?
+No, Harness does not support this conversion date format on variables
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)
