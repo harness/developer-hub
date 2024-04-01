@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-02-05:T10:00:15
+date: 2024-04-05:T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 8
 ---
@@ -48,9 +48,13 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## April 2024
 
-### Version 1.31.x
+### Version 1.31.4
 
-### Fixed issues
+#### Early Access
+
+- Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!--add doc link--> (CDS-72037)
+
+#### Fixed issues
 
 - For SSH and WinRM deployments, the delegate selectors specified for connectors in Azure and AWS infrastructure configurations weren't adhered. The fix for this issue is made available behind the feature flag, `CDS_SSH_WinRM_USE_CONNECTOR_AND_SM_DELEGATE_SELECTORS`. Contact [Harness Support](mailto:support@harness.io) to enable this fix. (CDS-92717, ZD-58399)
 - Harness applications were slow when running pipelines using the `iam-roles` API. This issue is fixed by calling the API on demand to avoid slowing down the initial load of the applications. (CDS-60078, ZD-94281)
