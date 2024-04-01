@@ -16,7 +16,7 @@ The delegate config file (for example, Kubernetes delegate YAML file) contains y
 
 To install a delegate, follow the steps in the relevant delegate installation topic, such as [Install a Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md) or [Install a Docker delegate](/docs/platform/delegates/install-delegates/overview.md).
 
-Once you have installed the delegate in your environment, select **Verify** in the delegate wizard, and Harness will verify that it is receiving heartbeats from the delegate.
+Once you have installed the delegate in your environment, select **Verify** in the delegate wizard, and Harness will verify that it is receiving heartbeats from the delegate.
 
 ![](static/delegate-registration-01.png)
 This means Harness is waiting for the delegate you installed to register.
@@ -48,7 +48,7 @@ CrashLoopBackOff: Kubernetes Cluster Resources are not available.
 ```
 Make sure the Kubernetes Cluster Resources (CPU, memory) are sufficient.
 
-If the delegate didn’t reach a healthy state, try this:
+If the delegate didn't reach a healthy state, try this:
 
 ```
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng

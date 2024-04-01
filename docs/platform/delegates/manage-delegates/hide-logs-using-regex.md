@@ -24,10 +24,10 @@ To hide log information based on regex, do the following:
    <accountID>.*?</accountID>
    ```
 
-2. Create the ConfigMap in the same namespace where you are installing the delegate. 
+2. Create the ConfigMap in the same namespace where you are installing the delegate.
 
    ```
-   kubectl create configmap <CONFIGMAP_NAME> --from-file sanitize-patterns.txt -n <NAMESPACE>         
+   kubectl create configmap <CONFIGMAP_NAME> --from-file sanitize-patterns.txt -n <NAMESPACE>
    ```
 
 3. Mount the volume under the `/opt/harness-delegate` path in your delegate YAML file.

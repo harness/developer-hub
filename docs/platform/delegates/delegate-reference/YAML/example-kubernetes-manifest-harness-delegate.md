@@ -1,6 +1,6 @@
 ---
 title: Example Kubernetes manifest and Helm chart for Harness Delegate
-description: The following provides an example of a Kubernetes manifest and Helm chart used to configure Harness Delegate. 
+description: The following provides an example of a Kubernetes manifest and Helm chart used to configure Harness Delegate.
 # sidebar_position: 2
 helpdocs_topic_id: cjtk5rw8z4
 helpdocs_category_id: vm60533pvt
