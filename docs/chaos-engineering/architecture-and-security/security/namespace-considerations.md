@@ -2,6 +2,8 @@
 title: Namespace considerations
 sidebar_position: 2
 description: Execute chaos experiments on specific namespaces
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/security/namespace-considerations
 ---
 This section discusses the steps required to run chaos experiments on specific namespaces.
 

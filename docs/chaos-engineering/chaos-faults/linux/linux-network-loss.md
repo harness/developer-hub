@@ -1,6 +1,8 @@
 ---
 id: linux-network-loss
 title: Linux network loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-loss
 ---
 
 import Ossupport from './shared/note-supported-os.md'

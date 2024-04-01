@@ -2,6 +2,8 @@
 id: aws-iam-integration
 title: Use IAM roles for authentication
 sidebar_position: 2
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-iam-integration
 ---
 
 ## Authentication methods

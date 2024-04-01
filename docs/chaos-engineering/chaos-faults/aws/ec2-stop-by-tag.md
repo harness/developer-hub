@@ -1,6 +1,8 @@
 ---
 id: ec2-stop-by-tag
 title: EC2 stop by tag
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-tag
 ---
 
 EC2 stop by tag stops an EC2 instance using the provided tag and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.

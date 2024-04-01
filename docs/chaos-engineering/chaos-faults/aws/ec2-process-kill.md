@@ -1,6 +1,8 @@
 ---
 id: ec2-process-kill
 title: EC2 process kill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-process-kill
 ---
 
 EC2 process kill fault kills the target processes running on an EC2 instance. This fault disrupts the application critical processes such as databases or message queues running on the EC2 instance by killing their underlying processes or threads.

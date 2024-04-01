@@ -1,6 +1,8 @@
 ---
 id: ecs-agent-stop
 title: ECS agent stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-agent-stop
 ---
 
 ECS agent stop disrupts the state of infrastructure resources. This fault:

@@ -2,6 +2,8 @@
 title: Overview
 sidebar_position: 1
 description: Understand ChaosHub, its variants, and usage
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/introduction
 ---
 
 This section introduces you to ChaosHub, Enterprise ChaosHub and its use cases.

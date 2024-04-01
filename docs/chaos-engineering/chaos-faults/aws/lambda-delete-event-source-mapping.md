@@ -1,6 +1,8 @@
 ---
 id: lambda-delete-event-source-mapping
 title: Lambda delete event source mapping
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-event-source-mapping
 ---
 Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration. Deleting an event source mapping from a Lambda function is critical. It can lead to failure in updating the database on an event trigger, which can break the service. 
 

@@ -2,6 +2,8 @@
 title: Command probe
 sidebar_position: 4
 description: Features and specification of the command probe
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/probes/cmd-probe
 ---
 
 The command probe allows you to run Bash commands and match the output as part of the entry or exit criteria. The intent behind this probe is to implement a non-standard and imperative way to express the hypothesis. For example, you can check for specific data within a database, parse the value out of a JSON blob that is dumped into a certain path, or check for the existence of a particular string in the service logs.

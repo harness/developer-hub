@@ -1,6 +1,8 @@
 ---
 id: ecs-invalid-container-image
 title: ECS invalid container image
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-invalid-container-image
 ---
 
 ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task. 

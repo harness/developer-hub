@@ -1,7 +1,9 @@
 ---
 title: Troubleshooting guide 
-description: Solutions to common pain points.
+description: Solutions to common pain points
 sidebar_position: 1
+redirect_from:
+  - /docs/category/troubleshooting-chaos-engineering/
 --- 
 
 This section walks you through some common pain points and their workarounds.

@@ -1,6 +1,8 @@
 ---
 id: ec2-http-modify-body
 title: EC2 HTTP modify body
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-body
 ---
 
 EC2 HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.

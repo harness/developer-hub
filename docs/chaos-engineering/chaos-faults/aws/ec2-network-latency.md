@@ -1,6 +1,8 @@
 ---
 id: ec2-network-latency
 title: EC2 network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-latency
 ---
 
 EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s). This fault:

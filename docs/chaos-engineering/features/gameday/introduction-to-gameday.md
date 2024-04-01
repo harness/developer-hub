@@ -2,6 +2,8 @@
 title: Introduction to GameDay
 sidebar_position: 1
 description: Execute chaos experiments during a specific time period
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/gameday/introduction-to-gameday
 ---
 This section describes what a GameDay is, how a typical GameDay is run, and its outcomes.
 

@@ -2,6 +2,8 @@
 title: Chaos experiment
 sidebar_position: 2
 description: Chaos experiment specification and its values
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/configurations/chaos-experiment
 ---
 
 Granular definition of chaos intent specified via image, library, necessary permissions, low-level chaos parameters (default values).
