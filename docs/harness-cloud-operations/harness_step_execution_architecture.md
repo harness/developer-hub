@@ -4,7 +4,7 @@ description: Harness Step Execution Architecture
 sidebar_label: Step Execution Architecture
 ---
 
-![](./static/harness_step_execution_architecture.png)
+![](./static/harness_pipeline_step_execution_architecture.png)
 
 This diagram describes the high-level flow of executing a step within a Harness pipeline:
 
