@@ -1,7 +1,6 @@
 ---
 title: Google Cloud Marketplace
 description: This topic describes the workflows supported to purchase Harness modules on the Google Cloud Marketplace.
-sidebar_label: Google Cloud Marketplace
 sidebar_position: 1
 redirect_from:
   - /docs/platform/get-started/cloud-marketplace-integration/google-cloud-marketplace
