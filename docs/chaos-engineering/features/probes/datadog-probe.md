@@ -341,6 +341,13 @@ probes:
       syntheticsTest:
         publicId: zgs-mq8-pgy
         testType: api
+      metrics:
+        query: avg:system.load.1{*}
+        timeFrame: now-5m
+        comparator:
+          type: "float"
+          criteria: "<="
+          value: "100"
     runProperties:
       probeTimeout: 2s
       attempt: 1
