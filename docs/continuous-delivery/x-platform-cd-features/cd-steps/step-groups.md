@@ -82,9 +82,9 @@ You can refer step group variables outside the step group using the expression, 
 
 You can refer to output variables using expression variable expression which requires the step group name to be present, `<+execution.steps.<stepGroupID>.steps.stepID.outputVariables.[variable name]>`
 
-If you are accessing the output variable in a steo within the same step group you can use a shorter notation, `<+stepGroup.steps.step1Identifier.output.outputVariables.[variable name]>`
+If you are accessing the output variable in a step within the same step group you can use a shorter notation, `<+stepGroup.steps.step1Identifier.output.outputVariables.[variable name]>`.
 
-If your step group is configured as loop, there is an index added at the end of identifier to identify the unique loop instance you can refer the output variable in this case as, `<+execution.steps.<stepGroupID_[index]>.steps.stepID.outputVariables.[variable name]>`
+If your step group is configured as a loop, there is an index added at the end of the identifier to identify the unique loop instance you can use to refer to the output variable. In this case: `<+execution.steps.<stepGroupID_[index]>.steps.stepID.outputVariables.[variable name]>`
 
 
 :::info
