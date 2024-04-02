@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-03-29T10:00
+date: 2024-04-02T10:00
 sidebar_position: 4
 ---
 
@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Delegate.
 
 :::warning important changes
 
-Please note that the following important changes will occur **March 31, 2024**:
+Please note that the following important changes will occur in an upcoming release:
 
 - The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
 
