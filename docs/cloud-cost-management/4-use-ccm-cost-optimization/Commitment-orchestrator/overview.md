@@ -167,6 +167,8 @@ In the Action Center UI, you can:
 You can change and select the mode (either automatic approval or manual approval) during the setup flow. 
 :::
 
+<DocImage path={require('./static/native_user_approval.png')} width="100%" height="100%" title="Click to view full size image" />
+
 ## Beta features:
 In its Beta phase, the Commitment Orchestrator provides:
 1. **Enhanced Visibility**: Commitment Orchestrator gives insight into current account status, including detailed breakdowns of savings and resource utilization across all accounts and regions. (Requires visibility permission as part of the master account connector setup).
