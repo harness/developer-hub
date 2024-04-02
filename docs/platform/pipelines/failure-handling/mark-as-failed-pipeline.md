@@ -2,8 +2,6 @@
 title: Mark pipeline as failed
 description: Mark a pipeline as failed during execution.
 sidebar_position: 5
-redirect_from:
-  - /docs/platform/pipelines/mark-as-failed-pipeline
 ---
 
 :::note
@@ -11,20 +9,20 @@ redirect_from:
 Currently, this feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
-You can mark an executing pipeline as failed by selecting ``Mark as Failed`` option.
+
+You can use the **Mark as Failed** option to mark an in-progress pipeline as failed.
 
 ![](../static/make-pipeline-as-failed.png)
 
-After marking as failed, Harness fails currently running/waiting stages. It does not fail the already executed stages.
+After marking a pipeline as failed, Harness fails in-progress and queued stages. Completed stages aren't marked as failed.
 
 
-## What is difference between Mark as Failed at stage level and Mark as Failed at pipeline level?
-We need to understand the difference between ``Mark as Failed`` at ``stage`` level and ``Mark as Failed`` at ``pipeline`` level.
-- If you have a single stage running at a time there is no difference, both the functionality performs the same thing.
+## Difference between mark stage as failed and mark pipeline as failed
 
-- If you are runnning parallel stages, then using ``Mark as Failed`` at ``pipeline`` level send the failure interrupt to each of the running stages. 
+You can mark an entire pipeline as failed or a single stage. Here's the difference between these options:
 
-You can perform the same performation by going to each running stage and clicking the existing ``Mark as Failure`` at ``stage`` level.
+- If there is only one stage running when you mark either the stage or pipeline as failed, both options have the same impact.
+- If parallel stages are running, then using marking the *pipeline* as failed stops all in-progress parallel stages; whereas marking one *stage* as failed only stops that one stage.
 
 ![](../static/mark-stage-failed.png)
 
@@ -36,3 +34,4 @@ You can perform the same performation by going to each running stage and clickin
 - You must enable `Allow users to mark a running Step as failure` in your Harness account's [default settings](/docs/platform/settings/default-settings).
 
 ![](../static/mark_pipe_failed_settings.png)
+
