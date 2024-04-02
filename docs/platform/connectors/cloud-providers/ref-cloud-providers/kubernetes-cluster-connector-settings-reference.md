@@ -166,6 +166,12 @@ Harness recommends using delegate credentials when possible. This is the simples
 
 When you select a delegate in the connector, the Harness Delegate inherits the Kubernetes service account associated with the delegate pod. The service account associated with the delegate pod must have the Kubernetes `cluster-admin` role.
 
+:::note
+
+It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+:::
+
 ### Specify Master URL and Credentials
 
 This is an alternative to using delegate credentials. It can be required for certain configurations that aren't compatible with inheriting delegate credentials.
