@@ -67,10 +67,6 @@ The Verify step also includes a metric-level option to fail the Verify step when
 
 To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
 
-:::note
-The metric-level option is behind the feature flag `CV_UI_DISPLAY_FAIL_IF_ANY_CUSTOM_METRIC_IN_NO_ANALYSIS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 ### Health source
 
 Harness CV monitors health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service. A health source is an APM or logging tool that monitors and aggregates data in your deployment environment. You can add multiple health sources.
