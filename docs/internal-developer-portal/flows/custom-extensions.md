@@ -16,6 +16,7 @@ The input props that can be specified under `ui:options` for the `OwnerPicker` f
 
 ![](./static/owner-custompicker.png)
 
+
 #### `allowArbitraryValues`
 
 Whether to allow arbitrary user input. Defaults to true.
@@ -124,7 +125,29 @@ Only **string** data `type` is supported for the EntityPicker.
 
 :::
 
-The input props that can be specified under `ui:options` for the `EntityPicker` field extension.
+The input props that can be specified under `ui:options` for the `EntityFieldPicker` field extension.
+
+#### `displayField`
+
+This is used to fetch the value from catalog dynamically, corresponding to the key mentioned.
+
+```YAML
+system:
+    title: System
+    type: string
+    description: System of the component
+    ui:field: EntityFieldPicker
+    ui:displayField: spec.owner
+    ui:options:
+    catalogFilter:
+        kind: 
+        - System
+        - Component
+        - Service
+        - API
+```
+In the above example it will fetch all the owners for the software components `kind` mentioned under `catalogFilter`.
+
 
 #### `allowArbitraryValues`
 
