@@ -6,8 +6,6 @@ sidebar_position: 2
 
 This topic provides detailed information about the different types of user profiles and the specific license requirements for accessing and using Harness Self-Managed Enterprise Edition.
 
-## User profiles
-
 There are four user profiles for Harness Self-Managed Enterprise Edition.
 
 - Demo
@@ -15,18 +13,20 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 - Medium
 - Large
 
+## Profile size and module execution details
+
 | **Size** | **# of users** | **Parallel executions (CD)** | **Parallel executions (CI)** |**Parallel executions (STO)** | **Chaos experiments** |
 | :-- | :-- | :-- | :-- | :-- | :-- |
-| Demo|Up to 10|2|2|2|2|
+| Demo|Up to 10|2|2|2|1|
 | Small|Up to 200|50|50|50|50|
 | Medium|Up to 1000|250|250|250|250|
 | Large|Up to 3000|500|500|500|500|
 
-### Free demo users
+## Free demo users
 
 This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to six simultaneous executions across three modules and one Chaos Engineering experiment.
 
-#### Demo user requirements
+### Demo user requirements
 
 Core CPU and memory requirements depend on the modules you use for demo purposes.
 
@@ -34,11 +34,11 @@ Core CPU and memory requirements depend on the modules you use for demo purposes
 - **STO:** Additional 0.4 core CPU and 750 Mi memory
 - **Chaos Engineering:** Additional 0.4 core CPU and 750 Mi memory
 
-#### Core service requirements
+## Core service requirements
 
 Harness has identified the resource requirements for each service, which you can scale via HPA based on usage. The base specifications of core services are provided below.
 
-##### CI-Manager
+#### CI-Manager
 
    ```yaml
     java:
@@ -52,7 +52,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 3Gi
    ```
 
-##### Access-Control
+#### Access-Control
 
    ```yaml
     java:
@@ -66,7 +66,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 1536Mi
    ```
 
-##### Gateway
+#### Gateway
 
    ```yaml
     java:
@@ -80,7 +80,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 3072Mi
    ```
 
-##### Harness-Manager
+#### Harness-Manager
 
    ```yaml
     java:
@@ -94,7 +94,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 4Gi
    ```
 
-##### Log-Service
+#### Log-Service
 
    ```yaml
     replicaCount: 1
@@ -106,7 +106,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 2Gi
    ```
 
-##### NG-Manager
+#### NG-Manager
 
    ```yaml
     java:
@@ -120,7 +120,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 4Gi
    ```
 
-##### Pipeline-Service
+#### Pipeline-Service
 
    ```yaml
     java:
@@ -134,7 +134,7 @@ Harness has identified the resource requirements for each service, which you can
         memory: 4Gi
    ```
 
-##### Platform-Service
+#### Platform-Service
 
    ```yaml
     java:
@@ -148,13 +148,13 @@ Harness has identified the resource requirements for each service, which you can
         memory: 2Gi
    ```
 
-### Scale small, medium, and large profiles via HPA
+## Scale small, medium, and large profiles via HPA
 
 Harness tested HPA for services by running total of 3,000 pipelines (CI+CD) with one user. Harness tested with ~250 users and 1,500 pipeline executions. Each user executed six pipelines.
 
 You can scale your environment by adding HPA on each service.
 
-#### Use HPA for small profiles
+### Use HPA for small profiles
 
 The following YAML adds autoscaling for a small profile.
 
@@ -167,7 +167,7 @@ The following YAML adds autoscaling for a small profile.
       targetMemory: 80
    ```
 
-#### Use HPA for medium profiles
+### Use HPA for medium profiles
 
 The following YAML adds autoscaling for a medium profile.
 
@@ -180,7 +180,7 @@ The following YAML adds autoscaling for a medium profile.
       targetMemory: 80
    ```
 
-#### Use HPA for large profiles
+### Use HPA for large profiles
 
 The following YAML adds autoscaling for a large profile.
 
