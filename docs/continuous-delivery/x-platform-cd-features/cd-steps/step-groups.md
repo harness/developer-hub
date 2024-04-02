@@ -78,10 +78,17 @@ You can refer step group variables within the step group using the expression, `
 
 You can refer step group variables outside the step group using the expression, `<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]>`.
 
+### Output variables
+
+You can refer to output variables using expression variable expression which requires the step group name to be present, `<+execution.steps.<stepGroupID>.steps.stepID.outputVariables.[variable name]>`
+
+If you are accessing the output variable in a steo within the same step group you can use a shorter notation, `<+stepGroup.steps.step1Identifier.output.outputVariables.[variable name]>`
+
+If your step group is configured as loop, there is an index added at the end of identifier to identify the unique loop instance you can refer the output variable in this case as, `<+execution.steps.<stepGroupID_[index]>.steps.stepID.outputVariables.[variable name]>`
+
+
 :::info
-
 Execution input is not supported for step group variables.
-
 :::
 
 ## Conditional execution
