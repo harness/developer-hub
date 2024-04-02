@@ -3,6 +3,9 @@ title: Sign up for Harness through the AWS Marketplace
 description: Learn about the option to purchase Harness products through the AWS Marketplace.
 sidebar_label: AWS Marketplace
 sidebar_position: 2
+redirect_from:
+  - /docs/get-started/sign-up-for-harness-aws-marketplace
+  - /docs/getting-started/sign-up-for-harness-aws-marketplace
 ---
 
 Follow these steps to purchase Harness products through the AWS Marketplace:

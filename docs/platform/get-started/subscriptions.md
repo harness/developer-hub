@@ -4,8 +4,6 @@ description: View and manage your Harness subscriptions and licenses.
 sidebar_position: 20
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
-  - /docs/get-started/sign-up-for-harness-aws-marketplace
-  - /docs/getting-started/sign-up-for-harness-aws-marketplace
 ---
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
