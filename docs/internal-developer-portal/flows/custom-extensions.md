@@ -1,18 +1,18 @@
 ---
-title: Supported Custom Extensions
-description: These Custom Extensions are supported in Harness IDP
+title: Supported Workflow UI Pickers (Field Extensions)
+description: This page lists all the Workflow UI Field Extensions that are supported in Harness IDP, which can be used as the Workflow form UI pickers.
 sidebar_position: 5
 ---
 
-## Custom Field Extensions
+## Workflow UI Field Extensions
 
 Collecting input from the user is a very large part of the scaffolding process and Software Templates as a whole. Sometimes the built in components and fields just aren't good enough, and sometimes you want to enrich the form that the users sees with better inputs that fit better.
 
-This is where Custom Field Extensions come in.
+This is where Workflow UI Field Extensions come in.
 
 ### OwnerPicker
 
-The input props that can be specified under `ui:options` for the `OwnerPicker` field extension.
+`OwnerPicker` is used for developers to pick a User Group from the list of Groups that exist in the account.
 
 ![](./static/owner-custompicker.png)
 
@@ -245,7 +245,7 @@ entity:
 
 ### 2. `HarnessOrgPicker` 
 
-Fetches all the org id dynamically. 
+Fetches all the org ID dynamically. 
 
 ```YAML
 #Example
@@ -273,7 +273,7 @@ spec:
 
 ### 3. `HarnessProjectPicker` 
 
-Fetches all the project id dynamically. 
+Fetches all the project ID dynamically. 
 
 ```YAML
 # Example template.yaml file
@@ -296,7 +296,7 @@ spec:
 
 ### 4. `HarnessAutoOrgPicker` 
 
-It auto populates org id on project selection. So now when you select an project id as an input the org id gets selected automatically if required as an input.
+It auto populates org ID on project selection. So now when you select an project ID as an input the org ID gets selected automatically if required as an input.
 
 1. For `HarnessAutoOrgPicker` to work, it is suggested to name the Project Identifier under Properties as `projectId` and using the `HarnessProjectPicker`.
 
