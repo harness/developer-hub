@@ -131,6 +131,12 @@ With this option, Harness communicates with GCP indirectly through a Harness Del
 * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
 * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
 
+:::note
+
+It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+:::
+
 #### Use OpenID Connect (OIDC)
 
 Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.

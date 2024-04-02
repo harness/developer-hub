@@ -1,6 +1,8 @@
 ---
 id: aws
 title: Chaos faults for AWS
+redirect_from:
+	- /docs/chaos-engineering/technical-reference/chaos-faults/aws
 ---
 
 <!-- Import statement for Custom Components -->

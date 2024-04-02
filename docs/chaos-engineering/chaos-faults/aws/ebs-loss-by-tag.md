@@ -1,6 +1,8 @@
 ---
 id: ebs-loss-by-tag
 title: EBS loss by tag
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-tag
 ---
 
 EBS (Elastic Block Store) loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.

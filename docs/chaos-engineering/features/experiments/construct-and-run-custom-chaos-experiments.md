@@ -2,6 +2,8 @@
 title: Create and run chaos experiments
 sidebar_position: 20
 description: Guide to create and execute chaos experiments
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments
 ---
 
 import Tabs from '@theme/Tabs';

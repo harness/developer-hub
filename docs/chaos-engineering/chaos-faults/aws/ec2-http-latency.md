@@ -1,6 +1,8 @@
 ---
 id: ec2-http-latency
 title: EC2 HTTP latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-latency
 ---
 
 EC2 HTTP latency disrupts the state of infrastructure resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run command, carried out using SSM Docs that is in-built in the fault.

@@ -2,6 +2,8 @@
 title: HCE SAAS API
 sidebar_position: 1
 description: Simplify executing complex API commands
+redirect_from:
+	- /docs/chaos-engineering/technical-reference/hce-saas-api
 ---
 This section describes the Harness Chaos Engineering (HCE) CLI API and its usage.
 

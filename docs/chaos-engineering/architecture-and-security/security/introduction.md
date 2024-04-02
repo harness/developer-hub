@@ -2,6 +2,8 @@
 sidebar_position: 1
 title: Introduction
 description: Internal security controls and process for HCE
+redirect_from:
+	- /docs/chaos-engineering/technical-reference/security/introduction
 ---
 
 Harness provides several controls to ensure safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments, including: 

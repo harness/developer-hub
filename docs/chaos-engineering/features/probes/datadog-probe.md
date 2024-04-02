@@ -2,6 +2,8 @@
 title: Datadog probe
 sidebar_position: 8
 description: Features and specification of the Datadog probe
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/probes/datadog-probe
 ---
 
 import Tabs from '@theme/Tabs';

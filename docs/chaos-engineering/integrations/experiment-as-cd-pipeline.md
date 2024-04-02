@@ -6,9 +6,7 @@ description: Guide to execute a chaos experiment as CD pipelines
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis).
-
-This tutorial explains how to execute a chaos experiment as part of a Harness CD pipeline where you validate the resiliency of the application in a continuous manner.
+This tutorial uses the `cart-pod-delete` experiment created in the tutorial on [running chaos experiments with API](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md#run-chaos-experiments-with-apis) to execute a chaos experiment as part of a Harness CD pipeline to validate the resiliency of an application in a continuous manner.
 
 As part of the tutorial, we have a pre-curated CD pipeline for deploying our demo application, Online Boutique Shop, to a Kubernetes cluster that you can get from a fork of [this repository](https://github.com/chaosnative/harness-chaos-demo/tree/main/boutique-app-manifests). Also, we have defined a pipeline webhook trigger for the repository such that any code change in the `main` branch triggers the CD pipeline to create a new deployment.
 

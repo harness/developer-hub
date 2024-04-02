@@ -1,6 +1,8 @@
 ---
 id: gcp-vm-disk-loss
 title: GCP VM disk loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss
 ---
 GCP VM disk loss disrupts the state of GCP persistent disk volume using the disk name by detaching the disk volume from its VM instance for a specific duration.
 

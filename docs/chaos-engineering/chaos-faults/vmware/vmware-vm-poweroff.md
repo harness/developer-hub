@@ -1,6 +1,8 @@
 ---
 id: vmware-vm-power-off
 title: VMware VM power off
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-vm-power-off
 ---
 
 VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
