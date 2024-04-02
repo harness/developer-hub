@@ -8,7 +8,7 @@ sidebar_position: 30
 
 Harness Feature Flags helps to identify stale flags and automates the process of removing them from your code.
 
-Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production.
+Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production. Stale flags are flexible and can also be configured to a set amount of days set by the user for smoother Feature Flag management.
 
 ### Find potentially stale flags
 
@@ -22,15 +22,15 @@ By seeing which flags are potentially stale, your team can choose to either manu
 
 Harness defines _potentially stale_ flags as follows
 
-- Flag has not had evaluations in the last 60 days.
+- Flags that have not had evaluations in the last 30 days or more depending on the user setting.
 
 Or
 
-- Flags that have not had any modification to their targeting rules in longer than 60 days.
+- Flags that have not had any modification to their targeting rules in longer than 30 days or more depending on the user setting.
 
 Or
 
-- Flags that have been globally set to a single value for longer than 30 days.
+- Flags that have been globally set to a single value for longer than 30 days or more depending on the user setting.
 
 ### Mark flags for cleanup
 
