@@ -21,11 +21,11 @@ Ideally, rules include policy, resource, filters, and actions.
 
 - **Actions** are operations performed on the filtered resources. Actions include things like terminating an azure vm, deleting an azure storage-container, or sending an email notification.
 
-<DocImage path={require('./static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
+<DocImage path={require('../static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
 So essentially, **a Rule is a file that includes logic defined by a policy that performs certain actions on the resource based on the filters provided by the user**. Rules can include multiple policies, and policies include resource, filters and actions. 
 
-<DocImage path={require('./static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
+<DocImage path={require('../static/rule_example.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::important note
 Number of Rules per Account[Custom + OOTB] can be 300.
@@ -39,7 +39,7 @@ Number of Rules per Account[Custom + OOTB] can be 300.
 4. Select **+ New Rule**. 
 
 
-  <DocImage path={require('./static/asset-governance-rule-creation.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/asset-governance-rule-creation.png')} width="90%" height="90%" title="Click to view full size image" />
 
 5. Enter a name for the rule.
 6. Select the cloud provider.
@@ -48,15 +48,13 @@ Number of Rules per Account[Custom + OOTB] can be 300.
 9. Enter the YAML policy in the rule editor.
 10. Select **Save**. If the policy is invalid, an error message is displayed.
 
-  <DocImage path={require('./static/asset-governance-rule-enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
-
 10. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
 11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule.
 12. After evaluating the output, select **Run Once** to execute the rule. 
 
-  <DocImage path={require('./static/rule_window.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/rule_window.png')} width="90%" height="90%" title="Click to view full size image" />
 
-:::important note
+:::info
 Harness provides some out-of-the-box policies for azure.vm, azure.disk, azure.cosmosdb, etc. that can be enforced. These policies cannot be edited but can be cloned.
 :::
 ### Update a Rule
@@ -67,16 +65,16 @@ You can view the Rules on the Asset Governance Rules page. You can click on Edit
 
 To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
-  <DocImage path={require('./static/update_and_delete.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/update_and_delete.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ## Rule Sets
 
 As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
-  <DocImage path={require('./static/rule_set.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/rule_set.png')} width="90%" height="90%" title="Click to view full size image" />
   
-:::important note
+:::info
 A Rule Set can have upto 30 Rules in it.
 :::
 
@@ -96,10 +94,10 @@ To create a Rule Set, perform the following steps:
 10. Select **Create Rule Set**. 
 The rule set is created successfully.
 
-  <DocImage path={require('./static/create-new-rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/create-new-rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
-  <DocImage path={require('./static/view-rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
+  <DocImage path={require('../static/view-rule-set.png')} width="90%" height="90%" title="Click to view full size image" />
 
 11. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 12. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
@@ -111,7 +109,7 @@ You can view the Rule Set on the Asset Governance Rules page. Expand the rule se
 ### Delete a Rule Set
 To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
- <DocImage path={require('./static/update_and_delete_ruleSet.png')} width="90%" height="90%" title="Click to view full size image" />
+ <DocImage path={require('../static/update_and_delete_ruleSet.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ## Enforcements
 
@@ -127,7 +125,7 @@ While setting up a new Enforcement, you can select the following:
 - **Time**: After setting the frequency, you can choose the time at which it runs.
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
 
-  <DocImage path={require('./static/enforcements.png')} width="95%" height="95%" title="Click to view full size image" />
+  <DocImage path={require('../static/enforcements.png')} width="95%" height="95%" title="Click to view full size image" />
 
 :::important note
 - Number of Targets in an Enforcement can be upto 200.
@@ -148,17 +146,17 @@ To create an Enforcement, perform the following steps:
 7. Select the cloud provider.
 8. Select the Rules or Rule Sets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 9. Select **Continue**. 
-    <DocImage path={require('./static/create_enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
+    <DocImage path={require('../static/create_enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
 10. Select the target accounts and target regions. You could select multiple accounts and regions.
 11. Set the frequency from **Hourly**, **Daily**, or **Weekly** options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 12. Toggle the **Dry Run** mode if you do not want to take action immediately.
 13. Select **Finish**. 
 
-    <DocImage path={require('./static/set-up-schedule.png')} width="90%" height="90%" title="Click to view full size image" />
+    <DocImage path={require('../static/set-up-schedule.png')} width="90%" height="90%" title="Click to view full size image" />
 
 After setting up the schedule, you can view the Enforcement on the **Enforcements** page. 
 
-<DocImage path={require('./static/enforcements_list.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/enforcements_list.png')} width="90%" height="90%" title="Click to view full size image" />
 
 Furthermore, you can disable the Enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) then go to "Target And Schedule", use slider to turn off "Enforce Rule(s) in Dry Run mode" and click on Finish.
 
@@ -170,13 +168,13 @@ You can view any Enforcements on Rule Enforcements page. Click on the enforcemen
 
 To delete an enforcement, simply click on “Delete” from the vertical ellipsis menu (⋮).
 
-<DocImage path={require('./static/update_and_delete_enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/update_and_delete_enforcement.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ## Evaluations
 
 Evaluations include all the data about enforcements run (both RUN ONCE from rule editor and from Enforcement). The Evaluations window also shows you the total cost impact with each Enforcement i.e. the costs or spendings associated with each Evaluation along with the last time that Rule/Rule set was enforced. With Evaluations, you can view and audit all the Enforcements that ran in the past.
 
-<DocImage path={require('./static/evaluations_page.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/evaluations_page.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ### View Evaluations
 
@@ -186,7 +184,7 @@ Evaluations include all the data about enforcements run (both RUN ONCE from rule
 4. You can see all the Evaluations of Rules listed on  the window.
 4. Select the rule for which you want to view the Evaluation details. The target subscription, region, identified resources and evaluation logs are displayed.
 
-<DocImage path={require('./static/evaluations.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/evaluations.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ### Filters in Evaluations List Page
@@ -208,7 +206,7 @@ You can create filters to view selected rules:
 
 5. Select **Apply**.
 
-  <DocImage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
+  <DocImage path={require('../static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
 
 :::important note
 Number of evaluations for which we can compute cost impact is 1,50,000/ Day.

@@ -1,5 +1,5 @@
 ---
-title: Cost Savings
+title: Azure Recommendations
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
