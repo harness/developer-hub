@@ -29,6 +29,8 @@ You can opt-in to the early access (beta) features for Harness CI described in t
 
 For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
 
+<!-- | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Used for some edge cases where Harness expressions in environment variables don't resolve correctly. | Beta | -->
+
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
 | `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Docker layer caching for Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) | Beta |
