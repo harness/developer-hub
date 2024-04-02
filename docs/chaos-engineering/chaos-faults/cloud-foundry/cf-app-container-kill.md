@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app container kill causes a Cloud Foundry app instance container to be killed (crash) and restarted.
 
-<!-- ![CF App Container Kill](./static/images/cf-app-container-kill.png) -->
+![CF App Container Kill](./static/images/cf-app-container-kill.png)
 
 ## Use cases
 CF app container kill:

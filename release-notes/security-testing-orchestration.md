@@ -42,6 +42,8 @@ The following features are now generally available:
 
 - Issues tables in **Security Tests** now include a **Target** column. (STO-4918)
 
+- Harness STO now supports ingesting scan results in stages that run on Harness Cloud Windows AMD64 build infrastructures. This eliminates the need to cache results from a previous Windows stage and then ingest them in a Linux stage. (STO-5428)  
+
 #### Fixed issues
 
 - Fixed an issue with database migrations that impacted upgrading Self-Managed Platform from version 0.13.x to 0.14.x. (STO-7309)

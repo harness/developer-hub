@@ -1,9 +1,10 @@
 ---
-title: Onboarding guide
-description: Once Internal Developer Portal module is enabled in your account, follow these steps to set it up.
+title: Set Up Git Integration
+description: Once the Internal Developer Portal module is enabled in your account, follow these steps to add a Git integration.
 sidebar_position: 20
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
+  - /docs/internal-developer-portal/get-started/onboarding-guide
 ---
 
 This guide describes the steps a Harness account admin can take to set up the IDP module. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
@@ -46,60 +47,60 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 ## Connector Setup
 
-7. Connector setup 
+7. Connector setup
 
 :::warning
+
 ### Limitations
-- Only the following set of connectors are supported  
+
+- Only the following set of connectors are supported
+
   - GitHub
-      - GitHub Enterprise
-      - GitHub App    
-  - GitLab   
-  - Bitbucket      
-      - Bitbucket Cloud
-      - Bitbucket Server    
+    - GitHub Enterprise
+    - GitHub App
+  - GitLab
+  - Bitbucket
+    - Bitbucket Cloud
+    - Bitbucket Server
   - Azure Repository
 
 - Only HTTP mode is supported. SSH connection type is not supported.
 - API access is needed in the connector for the IDP catalog setup.
-:::
+  :::
 
 :::info
-- Multiple Connectors with different hostname can be used for a single Git Provider at once. 
+
+- Multiple Connectors with different hostname can be used for a single Git Provider at once.
 - While setting up connector, both Account & Repo type for URL is supported.
 - Connection through harness platform and delegate is supported.
-- You can provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration.
-:::
+- You can provide the repository URL to verify repository read permission with the given host and credentials before saving the Git integration.
+  :::
 
-In the **Connector** tab under IDP **Admin** you can add the connectors. 
+In the **Connector** tab under IDP **Admin** you can add the connectors.
 ![](static/admin.png)
 ![](static/connector.png)
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-
 
 <Tabs queryString="Connector">
 <TabItem value="azure-connector" label="Azure Repository">
 
 1. Select **Azure Repo** under **Create or Select a Connector**.
-2. Click on the dropdown under **Azure Repo Connector** and select **+New Connector**. 
-3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can as well add multiple organizations as different connectors and use it together. 
+2. Click on the dropdown under **Azure Repo Connector** and select **+New Connector**.
+3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can also add multiple organizations as different connectors and use them together.
 4. After the connection test runs, select Finish to save the connector.
-
 
 </TabItem>
 <TabItem value="bitbucket-connector" label="Bitbucket">
 
 1. Select **Bitbucket** under **Create or Select a Connector**.
-2. Click on the dropdown under **Bitbucket Connector** and select **+New Connector**. 
-3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference). 
+2. Click on the dropdown under **Bitbucket Connector** and select **+New Connector**.
+3. Configure the [Bitbucket connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
 
-:::info 
+:::info
 
-Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data. 
+Same secret can't be configured for both **Password & Personal Access token** as backstage makes use of API token to fetch data.
 Create a secret with token and configure in the Personal Access token field. [Reference for creating token](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
 
 ![](./static/bitbucket-connector.png)
@@ -107,39 +108,35 @@ Create a secret with token and configure in the Personal Access token field. [Re
 For **Bitbucket Cloud** the url needs to have **src** instead of **blob**. for eg. `https://bitbucket.org/org-name/repo-name/src/branch/harness-services/Organization/default.yaml`
 
 :::
-4. After the connection test runs, select Finish to save the connector.
 
+4. After the connection test runs, select **Finish** to save the connector.
 
 </TabItem>
 <TabItem value="github-connector" label="GitHub">
 
 1. Select **GitHub** under **Create or Select a Connector**.
-2. Click on the dropdown under **GitHub Connector** and select **+New Connector**. 
-3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time. 
+2. Click on the dropdown under **GitHub Connector** and select **+New Connector**.
+3. Configure the [GitHub connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference). You can configure connectors for both `github.com` and `GitHub Enterprise` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
 4. After the connection test runs, select Finish to save the connector.
 
 More instructions on [using github app in github connector](https://developer.harness.io/docs/platform/connectors/code-repositories/git-hub-app-support).
-
 
 </TabItem>
 <TabItem value="gitlab-connector" label="GitLab">
 
 1. Select **GitLab** under **Create or Select a Connector**.
-2. Click on the dropdown under **GitLab Connector** and select **+New Connector**. 
+2. Click on the dropdown under **GitLab Connector** and select **+New Connector**.
 3. Configure the [GitLab connector settings](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference). You can configure connectors for both `gitlab.com` and `GitLab on-prem` and use them at once to fetch `catalog-info.yaml` from both the sources at same time.
 4. After the connection test runs, select Finish to save the connector.
-
-
 
 </TabItem>
 </Tabs>
 
 :::info
 
-The scope is tied to URL format `https://gitprovider.com/org-name` so it is mandatory for all the git providers to provide the URL till at least org name. Further it can be scoped down to repository or project level as well. 
+The scope is tied to URL format `https://gitprovider.com/org-name`, so all the Git Providers must provide the URL until at least the org name. Further, it can be scoped down to the repository or project level as well.
 
 :::
-
 
 ## Create and Register Entities
 
