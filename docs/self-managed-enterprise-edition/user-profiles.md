@@ -150,9 +150,9 @@ Harness has identified the resource requirements for each service, which you can
 
 ### Scale small, medium, and large profiles via HPA
 
-You can scale your environment by adding HPA on each service. Harness has tested HPA for services by running total of 3,000 pipelines (CI+CD) with 1 user.
+Harness tested HPA for services by running total of 3,000 pipelines (CI+CD) with 1 user. Harness tested with ~250 users and 1,500 pipeline executions. Each user executed 6 pipelines.
 
-Harness has tested with ~250 users and 1,500 pipeline executions. Each user executed 6 pipelines.
+You can scale your environment by adding HPA on each service.
 
 #### Use HPA for small profiles
 
