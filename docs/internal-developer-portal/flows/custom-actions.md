@@ -163,6 +163,12 @@ This is where Custom Field Extensions come in.
 
 ### EntityPicker
 
+:::info
+
+Only **string** data `type` is supported for the EntityPicker.
+
+:::
+
 The input props that can be specified under `ui:options` for the `EntityPicker` field extension.
 
 #### `allowArbitraryValues`
@@ -324,7 +330,6 @@ owner:
         spec.type: team
 ```
 
-For the full details on the spec.\* values see [here](../software-catalog/descriptor-format.md#kind-group).
 
 #### `defaultNamespace`
 
