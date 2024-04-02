@@ -6592,3 +6592,23 @@ Please read more on ECS Blue-Green Steps in the following [Documentation](https:
 #### Does Harness support methods to convert `<+pipeline.startTs>` into a readable format, such as 'ddmmyyyyhhmm'?
 No, Harness does not support this conversion date format on variables
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)
+
+
+#### Why is Regex not working for my Artifact Filter in Artifactory?
+Artifactory does not support Regex in it's API. Instead Artifactory supports Glob Patterns. You can learn more about the supported syntax at the following [documentation](https://code.visualstudio.com/docs/editor/glob-patterns#_glob-pattern-syntax).
+
+
+#### How do I dynamically pass a single user group or multiple into an Approval Stage?
+First, set the User Groups section in the approval stage to `combined`. This will allow you to pass in a list of User Groups. Harness expects the value to be a list so passing in a string won't work. Instead, pass in an expression as shown below.
+```
+<+<+stage.variables.groups>.split(",")>
+```
+
+Where the variable `groups` can be a list of groups or a single group. For example, both of these example values work for the `groups` variable.
+
+- `groupA,groupB,groupC`
+- `group1`
+
+#### Why am I getting an error that my Pipeline cannot be saved because it needs further configuration?
+This error occurs because there's a misconfiguration with the pipeline. Harness will tell you exactly what needs to be fixed so that you can quickly make those changes. In some edge case scenarios, you may get this error even if your pipeline has not visual misconfigurations. Although there are no issues with the pipeline visually, it's good practice to also check the pipeline YAML to ensure there are no issues with the configuration of the pipeline.
+
