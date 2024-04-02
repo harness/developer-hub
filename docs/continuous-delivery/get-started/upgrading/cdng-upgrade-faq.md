@@ -236,3 +236,11 @@ Some deployment capabilities have been overhauled:
 - Multi-service and multi-environment deployments at scale.
 - Visibility and reporting into software delivery performance.
 - Extended support for custom deployments.
+
+## How long will my data be stored from FirstGen?
+
+Data for pipeline executions is stored for a maximum of 6 months. 
+
+Data retention for other Harness products differ by product and the plan you are subscribed to. For example, Harness CD and CCM have different data retention periods. 
+
+For more information, go to [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/).
