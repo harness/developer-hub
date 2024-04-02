@@ -14,7 +14,7 @@ This document details information about following:
 2. Test scenario and results
 
 ### Environment
-- GKE (Kubernetes Version): 1.26.x 
+- GKE (Kubernetes Version): 1.26.x
 
 ### Database
 - Mongo Atlas M60
@@ -51,41 +51,41 @@ Helm chart : https://github.com/harness/helm-charts/releases/tag/harness-0.9.2
 | policy-mgmt              |    1     |        0.5        |         0.5          |                    harness-0.9.2                     |
 | timescaledb              |    2     |         1         |          2           |                    harness-0.9.2                     |
 
-#### Override file: 
+#### Override file:
 https://github.com/harness/helm-charts/blob/main/src/harness/override-perf-ci-cd-ff.yaml
 
-#### Manager config: 
+#### Manager config:
 update `LOG_STREAMING_SERVICE_EXTERNAL_URL` = `<smp host url>`/log-service/
 
 ### Test scenarios
-  
+
 #### >  1500 concurrent CI executions INLINE
 Each CI pipeline would:
-- initialize a k8s pod and git clone repo  
+- initialize a k8s pod and git clone repo
 - run 5 parallel steps (70 sec sleep)
 - run template with 2 parallel steps (140sec sleep)
 
-Projects: 1  
-Pipelines: 1500  
-Stages per pipeline: 1  
-Delegates: 10 (1cpu/2gi)  
+Projects: 1
+Pipelines: 1500
+Stages per pipeline: 1
+Delegates: 10 (1cpu/2gi)
 
-> Result : **PASS**  
+> Result : **PASS**
 Total Execution Time: **6min**
-  
+
 #### >  1500 concurrent CI executions GitX
 Each CI pipeline would:
 - initialize a k8s pod and git clone repo
 - run 5 parallel steps (140 sec sleep) and echo statements
 
-Projects: 1  
-Pipelines: 1500  
-Stages per pipeline: 1  
-Delegates: 10 (1cpu/2gi)  
+Projects: 1
+Pipelines: 1500
+Stages per pipeline: 1
+Delegates: 10 (1cpu/2gi)
 
-> Result: **PASS**  
+> Result: **PASS**
 Total Execution Time: **5min**
-  
+
 #### >  500 concurrent CD executions INLINE
 Each CD pipeline would:
 - fetch docker artifact from AWS ECR repo
@@ -95,12 +95,12 @@ Each CD pipeline would:
    - Rolling deploy
    - K8s Delete
 
-Projects: 1  
-Pipelines: 500  
-Stages per pipeline: 1   
+Projects: 1
+Pipelines: 500
+Stages per pipeline: 1
 Delegates: 18 (1cpu/4gi)
 
-> Result: **PASS**  
+> Result: **PASS**
 Total Execution Time: **4.5min**
 
 </details>
@@ -113,7 +113,7 @@ This document details information about following:
 2. Test scenario and results
 
 ### Environment
-- GKE (Kubernetes Version) : 1.26.x 
+- GKE (Kubernetes Version) : 1.26.x
 
 ### Database
 - Mongo Atlas M60
@@ -150,38 +150,38 @@ Helm chart : https://github.com/harness/helm-charts/releases/tag/harness-0.8.2
 | policy-mgmt              |    1     |        0.5        |         0.5          |                    harness-0.8.2                     |
 | timescaledb              |    2     |         1         |          2           |                    harness-0.8.2                     |
 
-#### Override file: 
+#### Override file:
 https://github.com/harness/helm-charts/blob/main/src/harness/override-perf-ci-cd-ff.yaml
 
 ### Test scenarios
-  
+
 #### >  1500 concurrent CI executions INLINE
 Each CI pipeline would:
-- initialize a k8s pod and git clone repo  
+- initialize a k8s pod and git clone repo
 - run 4 parallel steps (70 sec sleep)
 - run template with 2 parallel steps (140sec sleep)
 
-Projects: 1  
-Pipelines: 1500  
-Stages per pipeline: 1  
-Delegates: 10 (1cpu/2gi)  
+Projects: 1
+Pipelines: 1500
+Stages per pipeline: 1
+Delegates: 10 (1cpu/2gi)
 
-> Result: **PASS**  
+> Result: **PASS**
 Total Execution Time: **6min**
-  
+
 #### >  1500 concurrent CI executions GitX
-Each CI pipeline would 
+Each CI pipeline would
 - initialize a k8s pod and git clone repo
 - run 5 parallel steps (140 sec sleep) and echo statements
 
-Projects: 1  
-Pipelines: 1500  
-Stages per pipeline: 1  
-Delegates: 10 (1cpu/2gi)  
+Projects: 1
+Pipelines: 1500
+Stages per pipeline: 1
+Delegates: 10 (1cpu/2gi)
 
-> Result: **PASS**  
+> Result: **PASS**
 Total Execution Time: **4.2min**
-  
+
 #### >  500 concurrent CD executions INLINE
 Each CD pipeline would:
 - fetch docker artifact from AWS ECR repo
@@ -191,12 +191,12 @@ Each CD pipeline would:
    - Rolling deploy
    - K8s Delete
 
-Projects : 1  
-Pipelines : 500  
-Stages per pipeline : 1   
+Projects : 1
+Pipelines : 500
+Stages per pipeline : 1
 Delegates : 18 (1cpu/4gi)
 
-> Result : **PASS**  
+> Result : **PASS**
 Total Execution Time: **4.2min**
 
 </details>

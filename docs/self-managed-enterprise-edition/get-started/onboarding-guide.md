@@ -49,7 +49,7 @@ To create your Harness account, do the following:
 2. Select **Sign up**.
 
    After your account is created, you arrive at the **Continuous Delivery** start page.
-   
+
    ![](./static/getting-started-with-self-managed-enterprise-edition-02.png)
 
 ## Create your first project

@@ -92,7 +92,7 @@ There are two ways Harness collects logs:
             timeout: 100s
    ```
 
-- For services without file logging, Harness collects Kubernetes logs. 
+- For services without file logging, Harness collects Kubernetes logs.
 
    ```yaml
     apiVersion: troubleshoot.sh/v1beta2
@@ -159,21 +159,21 @@ After you have [installed the utility](#installation-options), download and prep
 To download the support bundle manifest and prepare it for use, do the following:
 
 - Run the following command applicable for your OS.
-   
+
    **Linux**
-   
+
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/linux.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
    ```
 
    **MacOS**
-   
+
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/macos.sh) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
    ```
 <!--
    **Windows**
-   
+
    ```bash
    bash <(curl -sSL https://raw.githubusercontent.com/harness/helm-charts/main/support-bundle-manifests/scripts/windows.ps1) <YOUR_NAMESPACE> <YOUR_RELEASE_NAME>
    ```
@@ -198,7 +198,7 @@ To download the support bundle manifest and prepare it for use, do the following
    ```
 
    Supported values are:
-   
+
    - x minutes
    - x hours
    - x days
@@ -220,7 +220,7 @@ To download the support bundle manifest and prepare it for use, do the following
    ```
 
    **File Path**
-   
+
    If you are use a different file path for your logs, you can provide the path using the following command. Adding `*.log` or any extension you have provided for the file is important. If you have provided the file path as `/logs/service.txt`, then provide the path in the flag as `/logs/service*.txt`.
 
    ```bash
