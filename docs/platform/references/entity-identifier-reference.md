@@ -39,8 +39,8 @@ Identifiers have the following restrictions:
 * Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_, $ or -. 
 
 	:::note
-	Custom roles cannot start with an underscore( _ ) because Harness-managed role identifiers start with an underscore.
-	Hyphen( - ) is only applicable to Secrets.
+	Custom roles cannot start with an underscore ( _ ) because Harness-managed role identifiers start with an underscore.
+	Hyphens ( - ) are only applicable to secrets.
 	:::
 
 * Identifiers are case-sensitive. 
