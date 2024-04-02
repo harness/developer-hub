@@ -1,9 +1,10 @@
 ---
-title: Subscriptions and licenses
+title: View and manage subscriptions
 description: View and manage your Harness subscriptions and licenses.
 sidebar_position: 20
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
+  - /docs/platform/get-started/subscriptions
 ---
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
@@ -182,3 +183,7 @@ For more information about specific module subscriptions and licenses, go to:
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
 - [FF Subscriptions](/docs/category/subscribe-to-feature-flags)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
+
+## Cloud Marketplace offerings
+
+For information about Cloud Marketplace subscriptions, go to [Cloud marketplace offerings](/docs/category/cloud-marketplace-offerings).

@@ -6,7 +6,7 @@
 
    :::info Compare plans
 
-   Harness CI offers three tiers of subscription plans: **Free**, **Team**, and **Enterprise**. Plan features are summarized on the **Plans** page in your Harness account. For a detailed comparison of plans, go to [Harness CI Pricing and Plans](https://www.harness.io/pricing?module=ci#). For information about the Harness Developer 360 subscription model, go to [Harness Platform subscriptions and licenses](/docs/platform/get-started/subscriptions).
+   Harness CI offers three tiers of subscription plans: **Free**, **Team**, and **Enterprise**. Plan features are summarized on the **Plans** page in your Harness account. For a detailed comparison of plans, go to [Harness CI Pricing and Plans](https://www.harness.io/pricing?module=ci#). For information about the Harness Developer 360 subscription model, go to [Harness Platform subscriptions and licenses](/docs/platform/get-started/subscriptions-licenses/subscriptions).
 
    <!-- ![](/docs/continuous-integration/get-started/static/ci_subscribe_compare_plans.png) -->
 

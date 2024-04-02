@@ -15,7 +15,7 @@ To get an overview of your Harness account, go to **Account Settings** and selec
 
 ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
 
-Here you can find your account details, check hosting status, and inspect your module [subscriptions and licenses](./subscriptions.md).
+Here you can find your account details, check hosting status, and inspect your module [subscriptions and licenses](./subscriptions-licenses/subscriptions.md).
 
 ## Site status and downtime alerts
 
