@@ -97,7 +97,7 @@ No, there is no such option currently. To debug permission related issues, check
 
 ## API/Integration
 
-### Does Harness utilize the Kubernetes API endpoint `/api/v1/nodes/<nodename>/proxy/stats/summary` within the delegate to obtain the node metrics data of a worker node?
+### Does Harness utilize the nodename Kubernetes API endpoint within the delegate to obtain the node metrics data of a worker node?
 
 Harness itself does not directly utilize the `/api/v1/nodes/<nodename>/proxy/stats/summary` endpoint for gathering node metrics data of a worker node within the delegate. However, if there is a specific need to access this data, users have the option to employ a shell script to query this endpoint and obtain the desired metrics.
 
