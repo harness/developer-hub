@@ -126,9 +126,9 @@ Before creating the GCP connector, you need to:
    * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials. If you select this option, you must select if you want Harness to use any available delegate or only use delegates with specific tags.
    :::note
 
-  It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+   It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
 
-  :::
+   :::
    * **Connect through Harness Platform for OIDC:** This option uses OIDC authentication to access public cloud resources without secrets or credentials. For more information, go to [Use OIDC](./ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc).
 6. Select **Save and Continue** to run the connection test. If the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
