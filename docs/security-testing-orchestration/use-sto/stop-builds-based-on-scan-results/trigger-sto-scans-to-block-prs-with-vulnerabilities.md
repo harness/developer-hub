@@ -356,7 +356,7 @@ To verify the branch protection rule, you must ensure that your STO pipeline fai
 
 ## For more information
 
-- The Harness platform docs include [extensive information about triggers](docs/category/triggers). The following topics are highly relevant to STO use cases:
+- The Harness platform docs include [extensive information about triggers](/docs/category/triggers). The following topics are highly relevant to STO use cases:
 
   - [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines/)
   - [Webhook triggers reference](/docs/platform/triggers/triggers-reference/)
