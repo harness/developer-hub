@@ -43,7 +43,7 @@ To create a new workspace, follow these steps:
     * **Name** - Type a unique name to identify the workspace. 
     * **Description** - Type an optional description to help you identify the workspace. 
     * **Connector** - Select the Harness connector to use during provisioning. This should provide the cloud credentials for Harness to use during execution. AWS and GCP are supported out of the box. Azure needs to be complemented with environment variables.
-    * **Workspace Type** - Select the IaC type you would like to use. IaCM currently supports Terraform and ![OpenTofu](https://opentofu.org/)
+    * **Workspace Type** - Select the IaC type you would like to use. IaCM currently supports Terraform and [OpenTofu](https://opentofu.org/)
     * **Version** - Specify the OpenTofu/Terraform version the configuration supports. This version is used to determine which version of Terraform to use during execution. 
     * **Repository** - Specify the Git configuration for the Terraform configuration files. You should specify the Harness Git connector, repository branch, and file path to the configuration files in the repository.
 
