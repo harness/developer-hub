@@ -34,7 +34,7 @@ Creating a thoughtful hierarchy of organizations and projects in your account al
 
 For instructions on accessing your account, go to the [Platform onboarding guide](./onboarding-guide.md).
 
-You can find information about your account on the [Account Overview page](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts), such as your Harness Account Name, Account ID, the Harness SaaS cluster that hosts your account, as well as the [module subscription and license information](/docs/platform/get-started/subscriptions-licenses/subscriptions). You'll need this information to configure your delegates, Terraform provider, CLI, and other automation tools that help in administering your account.
+You can find information about your account on the [Account Overview page](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts), such as your Harness Account Name, Account ID, the Harness SaaS cluster that hosts your account, as well as the [module subscription and license information](/docs/platform/get-started/subscriptions-licenses/subscriptions). You'll need this information to configure your delegates, Terraform provider, CLI, and other automation tools that help in administering your account.
 
 Note that this information is different for the [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition.md), which is not a SaaS offering.
 
