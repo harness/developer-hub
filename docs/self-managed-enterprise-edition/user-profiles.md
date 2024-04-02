@@ -4,7 +4,7 @@ description: This topic describes user profiles for Harness Self-Managed Enterpr
 sidebar_position: 2
 ---
 
-This topic describes user profiles and license requirements for Harness Self-Managed Enterprise Edition.
+This topic provides detailed information about the different types of user profiles and the specific license requirements for accessing and using Harness Self-Managed Enterprise Edition.
 
 ## User profiles
 
@@ -24,7 +24,7 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 
 ### Free demo users
 
-This profile is used for demo purposes to enable you to try Harness Self-Managed Enterprise Edition before you onboard. With this profile, you can run up to six parallel executions across three modules and up to 1 chaos experiments.
+This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to six simultaneous executions across three modules and one Chaos Engineering experiment.
 
 #### Demo user requirements
 
@@ -32,11 +32,11 @@ Core CPU and memory requirements depend on the modules you use for demo purposes
 
 - **CI and CD:** Minimum 3 core CPU and 14 Gi memory
 - **STO:** Additional 0.4 core CPU and 750 Mi memory
-- **Chaos:** Additional 0.4 core CPU and 750 Mi memory
+- **Chaos Engineering:** Additional 0.4 core CPU and 750 Mi memory
 
 #### Core service requirements
 
-Harness has identified the resource requirements for each service, which you can scale via HPA based on usage. Base specifications of core services are below.
+Harness has identified the resource requirements for each service, which you can scale via HPA based on usage. The base specifications of core services are provided below.
 
 ##### CI-Manager
 
@@ -150,7 +150,7 @@ Harness has identified the resource requirements for each service, which you can
 
 ### Scale small, medium, and large profiles via HPA
 
-Harness tested HPA for services by running total of 3,000 pipelines (CI+CD) with 1 user. Harness tested with ~250 users and 1,500 pipeline executions. Each user executed 6 pipelines.
+Harness tested HPA for services by running total of 3,000 pipelines (CI+CD) with one user. Harness tested with ~250 users and 1,500 pipeline executions. Each user executed six pipelines.
 
 You can scale your environment by adding HPA on each service.
 
