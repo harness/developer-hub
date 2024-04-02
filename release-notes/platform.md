@@ -93,7 +93,7 @@ The following deprecated API endpoints are longer supported:
 
 - Fixed an issue where the **Delegate Selector** dropdown wasn't populating delegates when roles were configured with specific delegates instead of all. (PL-48292, ZD-59504)
 
-- When editing WinRM secrets through a reference component, the scope was being derived from the open URL instead of the WinRM Secret's scope, causing secret edits to fail. (PL-48323)
+- Fixed an issue where the scope was derived from the open URL instead of the WinRM Secret's scope when editing WinRM secrets through a reference component, causing secret edits to fail. Scope details are now picked up from the WinRM secret being edited. (PL-48323)
 
 ## March 2024
 
