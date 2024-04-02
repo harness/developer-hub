@@ -22,7 +22,7 @@ The following list covers the step settings.
 
 
 :::important
-Currently, using secret expressions as a part of URLs in HTTP steps work under the following conditions only.
+Currently, Harness doesn't support using secret expressions as part of URLs in HTTP steps.
 * Host names in URLs shouldn't be specified as secret expressions.
 * For servers that respond to URLs like `https://hostname/pro/hooks/<<<secret_reference>>>` with a 400 error code, enable the `ignore_status_code_for_http_connections` for the HTTP step configurations to work.
 :::
