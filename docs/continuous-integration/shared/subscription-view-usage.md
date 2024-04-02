@@ -31,7 +31,7 @@ This section includes the following details:
 
 This section shows the number of current active developers against the total number of licenses, as well as your Harness Cloud build credit usage.
 
-Under the [Developer 360 subscription model](/docs/platform/get-started/subscriptions), all users with permission to access Harness CI module are considered CI Developers and consume a license.
+Under the [Developer 360 subscription model](/docs/platform/get-started/subscriptions-licenses/subscriptions), all users with permission to access Harness CI module are considered CI Developers and consume a license.
 
 Subscription models that don't follow the Developer 360 model count active developers as active codebase committers observed in the builds managed by Harness CI over the last 30 days.
 

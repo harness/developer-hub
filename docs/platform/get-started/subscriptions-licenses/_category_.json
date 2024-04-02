@@ -1,0 +1,10 @@
+{
+   "label":"Harness subscriptions and licenses",
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Harness subscriptions and licenses"
+   }
+}

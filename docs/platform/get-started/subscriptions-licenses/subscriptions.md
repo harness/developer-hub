@@ -1,11 +1,10 @@
 ---
-title: Subscriptions and licenses
+title: View and manage subscriptions
 description: View and manage your Harness subscriptions and licenses.
 sidebar_position: 20
 redirect_from:
   - /docs/platform/get-started/pl-subscription-mgmt
-  - /docs/get-started/sign-up-for-harness-aws-marketplace
-  - /docs/getting-started/sign-up-for-harness-aws-marketplace
+  - /docs/platform/get-started/subscriptions
 ---
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
@@ -185,22 +184,6 @@ For more information about specific module subscriptions and licenses, go to:
 - [FF Subscriptions](/docs/category/subscribe-to-feature-flags)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 
-## Sign up for Harness through the AWS Marketplace
+## Cloud Marketplace offerings
 
-Follow these steps to purchase Harness products through the AWS Marketplace:
-
-1. Go to the [AWS Marketplace](https://aws.amazon.com/marketplace/seller-profile?id=cddecd76-14a6-4b48-98a4-c747994c0cf4) to see a list of available modules.
-2. Select the module you want to purchase.
-3. Select **View purchase options**.
-4. Sign in to your AWS account or create a new account.
-5. Select the configuration you want to purchase.
-
-   :::info
-   If you would like to work with the Harness team to get custom pricing options for Harness on AWS Marketplace on a contract basis, please complete [this form](https://www.harness.io/contact-sales/get-pricing).
-   :::
-
-6. Choose your contract options, and then select **Create contract**.
-7. Select **Pay now** to purchase the contract for the module you selected.
-8. Select **Click here to set up your account**, and then follow the prompts to set up your account.
-
-   A Harness Customer Success Manager will contact you and provision a license for you.
+For information about Cloud Marketplace subscriptions, go to [Cloud marketplace offerings](/docs/category/cloud-marketplace-offerings).
