@@ -6612,3 +6612,5 @@ Where the variable `groups` can be a list of groups or a single group. For examp
 #### Why am I getting an error that my Pipeline cannot be saved because it needs further configuration?
 This error occurs because there's a misconfiguration with the pipeline. Harness will tell you exactly what needs to be fixed so that you can quickly make those changes. In some edge case scenarios, you may get this error even if your pipeline has not visual misconfigurations. Although there are no issues with the pipeline visually, it's good practice to also check the pipeline YAML to ensure there are no issues with the configuration of the pipeline.
 
+#### What is Harness' pipeline execution history retention policy?
+Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
