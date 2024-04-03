@@ -203,9 +203,6 @@ You can use this field to run the [Nmap scanner](https://nmap.org/book/man-brief
 
 <!-- For example, you can include IPv6 tests as follows: `-6` -->
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
-
-<StoSettingCliFlagsCaution />
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
