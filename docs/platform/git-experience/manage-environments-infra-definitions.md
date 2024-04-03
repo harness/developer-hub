@@ -64,7 +64,7 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 
 ### Add a remote environment in a CD pipeline
 
-Adding a remote environment in a CD pipeline stage is no different than adding an inline environment.
+Adding a remote environment in a CD pipeline stage is no different from adding an inline environment.
 
 When adding a remote environment to the stage, you have the ability to choose a specific branch to determine the version of the environment you wish to utilize in your pipeline.
 

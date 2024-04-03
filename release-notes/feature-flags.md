@@ -2,7 +2,6 @@
 title: Feature Flags release notes
 sidebar_label: Feature Flags
 date: 2024-03-28T16:19:25
-tags: [NextGen, "feature flags"]
 sidebar_position: 11
 ---
 
