@@ -27,12 +27,9 @@ This option is disabled for deployment types that do not support containerized s
 
 
 ## Important notes
-
+- CD containerized step groups are supported in Deploy and Custom stages.
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
 - You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
-- Currently, containerized step groups are supported in the following deployment types:
-  - [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
-  - [Serverless.com framework for AWS Lambda deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart#before-you-begin)
 - Permissions configuration are inherited by a step within a step group. This logic has been updated over the course of Harness NextGen's lifespan. This has caused breaking changes for some users. To learn more about it, go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step).
 
 
