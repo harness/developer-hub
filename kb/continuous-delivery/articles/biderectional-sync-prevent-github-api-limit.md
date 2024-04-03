@@ -1,5 +1,5 @@
 ---
-description: KB - How Bidirectional sync prevent Git API Limit issue
+description: KB - How Bidirectional sync prevents Git API Limit issue
 title: Preventing Git API Rate Limits with Bidirectional Sync
 ---
 # Introduction
@@ -8,7 +8,7 @@ This knowledge base article discusses how bidirectional sync can help prevent re
 
 ## API rate limits, what causes them?
 
-Git limits the number of REST API requests that you can make within a specific amount of time. Sometime, the number of API request at a specific period of time is high and it stops the remote entitites from working.
+Git limits the number of REST API requests that you can make within a specific amount of time. Sometimes, the number of API requests in a specific period of time is high and it stops remote entities from working.
 
 ## Solving GitHub API Limits with Bidirectional Sync
 
