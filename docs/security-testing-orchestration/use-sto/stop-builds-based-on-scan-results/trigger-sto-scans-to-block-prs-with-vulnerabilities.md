@@ -53,13 +53,15 @@ This type of trigger supports uses cases such as:
 - If the pull request updates a specific file of interest, such as a `pom.xml` workspace file, run an SCA scan and block the PR if the scan results meet the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) threshold.
 
 
-<details>
+#### Trigger setup
+<!-- details>
 
-<summary>Trigger setup</summary>
+<summary>Trigger setup</summary -->
 
 1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
 
 2. Set up the trigger as follows. 
+
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
@@ -69,7 +71,8 @@ This type of trigger supports uses cases such as:
 
 3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Pull Request** 
 
-4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions) to trigger the pipeline. 
+4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions) to trigger the pipeline 
+
 
 #### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
 
@@ -83,20 +86,19 @@ This type of trigger supports uses cases such as:
 
    <DocImage path={require('./static/trigger-to-block-prs/changed-file-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
-<br/>
-<br/>
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
    
    The pipeline input should be preconfigured correctly, with  **Build Type** set to **Git Pull Request**.
 
+
 #### Test the trigger
 
-After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger)
+After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
   
 <details>
 
-<br/>
+
 
 <summary>YAML trigger example</summary>
 
@@ -151,7 +153,7 @@ trigger:
 </details>
 
 
-</details>
+<!-- /details -->
 
 
 
@@ -161,9 +163,11 @@ You can specify a trigger that says: If a reviewer includes a specific keyword i
 
 This type of trigger is useful when a pipeline execution fails for reasons other than [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/). If the STO scan doesn't finish in the  original execution, a reviewer can add a review comment with a keyword such as `RERUN_STO_PIPELINE`. 
 
-<details>
+<!-- details>
 
-<summary>Trigger setup</summary>
+<summary>Trigger setup</summary -->
+
+#### Trigger setup
 
 1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
 
@@ -191,17 +195,15 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
       <DocImage path={require('./static/trigger-to-block-prs/review-comment-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
-<br/>
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
    
 The pipeline input should be preconfigured correctly, with  **Build Type** should be set to **Git Pull Request**.
-  
-<br/>
+
 
 #### Test the trigger
 
-After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger)
+After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
 
 <details>
 
@@ -254,7 +256,7 @@ trigger:
 </details>
 
 
-</details>
+<!-- /details -->
 
 
 ## Test the outbound webhook and trigger 
