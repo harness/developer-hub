@@ -208,7 +208,7 @@ Listed below is the Datadog Probe schema with common properties shared across al
    <td>The time frame through which the metrics should be queried. It is relative to the present time and hence it must be expressed as <code>now-'timeFrameValue'</code>.</td>
    <td>Mandatory</td>
    <td> <code>type: string</code></td>
-   <td> Average or min or max of the timeframe specified. For example, <code>now-5m</code> provides average, <code>min(now-5m)</code> provides the minimum and <code>max(now-5m)</code> provides the maximum value. </td>
+   <td> Average or min or max of the timeframe specified. For example, <code>now-5m</code> provides average, <code>minvaluefrom(now-5m)</code> provides the minimum and <code>maxvaluefrom(now-5m)</code> provides the maximum value. </td>
   </tr>
   <tr>
    <td>comparator</td>
