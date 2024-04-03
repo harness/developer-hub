@@ -115,7 +115,7 @@ Consider the following example, that passes two parameters, an IP address and a 
 
 2. JSON escaping
 
-* Convert the JSON to a string format using `jq`:
+* Convert the JSON to a string format using `jq` or any other online JSON converter:
 
 > `jq -c . input.json >> escaped-input.json`
 
@@ -150,7 +150,7 @@ This approach consolidates all parameters into a single environment variable the
 
 1. Parameters defined in a single environment variable
 
-You can specify the values of the parameters in a single environment variable, `TARGETS` as shown below:
+You can specify the values of the parameters in a single environment variable, `PARAM_VALS` as shown below:
 
 `ip:{127.0.0.1};port:{3245}`
 
@@ -164,14 +164,14 @@ You can specify the values of the parameters in a single environment variable, `
         {
             "placeholder": "destination_target",
             "data_type": "env",
-            "value": "TARGETS"
+            "value": "PARAM_VALS"
         } 
     ]
 }
 ```
 
 :::note
-The `CHAOS_PARAMETER` and `ABORT_PARAMETER` will be same for all chaos experiments that use the `TARGETS` environment variable to pass parameters.
+The `CHAOS_PARAMETER` and `ABORT_PARAMETER` will be same for all chaos experiments that use the `PARAM_VALS` environment variable to pass parameters.
 
 ![](./static/images/ssh-chaos/prep-3.png)
 :::
@@ -180,13 +180,13 @@ The `CHAOS_PARAMETER` and `ABORT_PARAMETER` will be same for all chaos experimen
 
 You can pass the placeholders and their values (data types) to the environment variable for self-validation purposes.
 
-To define `TARGETS` as the placeholder `{<data-type>:<value>}`, you can pass the same value to the `TARGETS` environment variable.
+To define `PARAM_VALS` as the placeholder `{<data-type>:<value>}`, you can pass the same value to the `PARAM_VALS` environment variable.
 
 ![](./static/images/ssh-chaos/prep-4.png)
 
 You can pass the port details and the placeholders in the environment variable. The chaos script contains the logic to extract the details of the environment variable.
 
-For example, set `TARGETS` with `dest_ip=127.0.0.1` and `source_ip=198.168.12.0`. You can pass the value in the environment variable and use the `CHAOS_PARAMETER` as shown [here](#steps-involved).
+For example, set `PARAM_VALS` with `dest_ip=127.0.0.1` and `source_ip=198.168.12.0`. You can pass the value in the environment variable and use the `CHAOS_PARAMETER` as shown [here](#steps-involved).
 
 #### Advantages of single environment variable parameters
 
