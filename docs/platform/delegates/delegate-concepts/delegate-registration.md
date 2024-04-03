@@ -67,3 +67,5 @@ Without this feature flag enabled, delegates with an immutable image type can re
 The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
 Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+
+
