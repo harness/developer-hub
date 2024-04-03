@@ -4,6 +4,8 @@ description: This tutorial will give an idea on how to create a new service usin
 sidebar_position: 6
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 In this tutorial we will create a self service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
 
 ## Pre-Requisite:
