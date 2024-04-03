@@ -192,7 +192,3 @@ The following YAML adds autoscaling for a large profile.
       targetMemory: 80
    ```
 
-## Acquire a license
-
-Contact [Harness Support](mailto:support@harness.io) for license information.
-
