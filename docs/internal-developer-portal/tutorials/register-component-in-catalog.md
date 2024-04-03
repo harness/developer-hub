@@ -6,6 +6,8 @@ redirect_from:
   - /tutorials/internal-developer-portal/register-component-in-catalog
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
 ## Create an IDP YAML

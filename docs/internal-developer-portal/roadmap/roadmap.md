@@ -4,7 +4,7 @@ description: Learn more about the upcoming features and upgrades to Harness IDP
 sidebar_position: 1
 ---
 
-The following is just an overview, the detailed roadmap is available [here](https://developer.harness.io/roadmap/#idp). 
+This overview page isn't **actively maintained anymore**, please take a look at the detailed roadmap is available on the [Platform Roadmap](https://developer.harness.io/roadmap/#idp) page. 
 
 ## Catalog
 
