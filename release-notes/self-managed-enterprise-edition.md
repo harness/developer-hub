@@ -1,7 +1,6 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-tags: [NextGen, "self-managed-ee"]
 date: 2024-03-29T10:00
 sidebar_position: 16
 ---

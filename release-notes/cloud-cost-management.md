@@ -1,7 +1,6 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-tags: [NextGen, "cloud cost management"]
 date: 2024-03-19T10:00
 sidebar_position: 6
 ---
