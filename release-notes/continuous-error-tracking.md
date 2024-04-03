@@ -1,7 +1,6 @@
 ---
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
-tags: [NextGen, "cet"]
 date: 2023-11-02T17:20
 sidebar_position: 9
 ---

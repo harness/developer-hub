@@ -1,7 +1,6 @@
 ---
 title: Platform release notes
 sidebar_label: Platform
-tags: [NextGen, "platform"]
 date: 2024-03-26:T10:00:30
 sidebar_position: 3
 ---
