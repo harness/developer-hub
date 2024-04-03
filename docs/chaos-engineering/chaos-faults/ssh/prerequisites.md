@@ -75,3 +75,124 @@ For secure password transmission, create a secret with the password and pass it 
 You can configure the secret mount from the UI by selecting or deselecting the button depending on your use of the secret references.
 
 ![SSH experiment](./static/images/ssh-chaos/secret-button.png)
+
+## Setup chaos parameters
+
+You can use two different methods to pass parameters within a chaos experiment, depending on various chaos scenarios. The two approaches for parameter passing are:
+1. Declarative parameter definition
+2. Single environment variable parameters
+
+Both the approaches involve creating a JSON string for parameters and utilizing the `CHAOS_PARAMETER` and `ABORT_PARAMETER` environment variables for chaos and abort scripts, respectively.
+
+### 1. Declarative parameter definition
+
+This approach allows for explicit parameter validation within the JSON, ensuring that each parameter expects certain data types.
+
+#### Steps involved
+* **Parameter preparation:** You can define parameters within a JSON object, specifying placeholders, data types, and values.
+* **String escaping:** The JSON object is converted into an escaped string format, that is suitable to passing into experiments through environment variables.
+
+Consider the following example, that passes two parameters, an IP address and a port number to the chaos experiment.
+
+1. JSON object would look like below:
+
+```
+{
+    "parameters": [
+        {
+            "placeholder": "destination_ip",
+            "data_type": "string",
+            "value": "HOST_IP"
+        },
+        {
+            "placeholder": "port",
+            "data_type": "int",
+            "value": "3258"
+        }
+      ]
+}
+```
+
+2. JSON escaping
+
+* Convert the JSON to a string format using `jq` or any other online JSON converter:
+
+> `jq -c . input.json >> escaped-input.json`
+
+* Display the results:
+
+> `cat escaped-input.json`
+
+The output would look like:
+
+  ```
+  jq -c '@json' escaped-input.json
+  "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+  \"data_type\":\"string\",\"value\":\"HOST_IP\"},
+  {\"placeholder\":\"port\",\"data_type\":\"int\",
+  \"value\":\"3258\"}]}"
+  ```
+
+* The resulting string is utilised in the `CHAOS_PARAMETER` and `ABORT_PARAMETER` as shown below.
+
+  ![](./static/images/ssh-chaos/prep-1.png)
+
+#### Advantages of declarative parameter definition
+* It enables data validation for each parameter thereby enhancing experiment reliability.
+* It prevents script execution with invalid parameters with the help of pre-check validations. 
+
+#### Disadvantages of declarative parameter definition
+* This method requires you to prepare the JSON string for each parameter.
+
+### 2. Single environment variable parameters
+
+This approach consolidates all parameters into a single environment variable thereby simplifying the parameter passing process. This section lists two use cases of the approach:
+
+1. Parameters defined in a single environment variable
+
+You can specify the values of the parameters in a single environment variable, `PARAM_VALS` as shown below:
+
+`ip:{127.0.0.1};port:{3245}`
+
+![](./static/images/ssh-chaos/prep-2.png)
+
+* JSON object would look like:
+
+```
+{
+    "parameters": [
+        {
+            "placeholder": "destination_target",
+            "data_type": "env",
+            "value": "PARAM_VALS"
+        } 
+    ]
+}
+```
+
+:::note
+The `CHAOS_PARAMETER` and `ABORT_PARAMETER` will be same for all chaos experiments that use the `PARAM_VALS` environment variable to pass parameters.
+
+![](./static/images/ssh-chaos/prep-3.png)
+:::
+
+2. Placeholders and their values in the environment variable.
+
+You can pass the placeholders and their values (data types) to the environment variable for self-validation purposes.
+
+To define `PARAM_VALS` as the placeholder `{<data-type>:<value>}`, you can pass the same value to the `PARAM_VALS` environment variable.
+
+![](./static/images/ssh-chaos/prep-4.png)
+
+You can pass the port details and the placeholders in the environment variable. The chaos script contains the logic to extract the details of the environment variable.
+
+For example, set `PARAM_VALS` with `dest_ip=127.0.0.1` and `source_ip=198.168.12.0`. You can pass the value in the environment variable and use the `CHAOS_PARAMETER` as shown [here](#steps-involved).
+
+#### Advantages of single environment variable parameters
+
+* It simplifies parameter management by consolidating the parameters into a single environment variable.
+* It eliminates the need for multiple JSON parameter definitions.
+
+#### Disadvantages of single environment variable parameters
+
+* This method lacks out-of-the-box data type validation, and required manual validation within the chaos script.

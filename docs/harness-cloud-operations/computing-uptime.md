@@ -51,7 +51,8 @@ Pipeline is a core construct of the Harness platform. All of the SLIs defined he
 |-------------------------------------------|-----------------|-----------------------------------------|----------------|
 | Pipeline/Triggers/Input Sets                         | APIs Error rate | More than 1% over 5 min rolling window |Major Outage|
 |                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window |Degraded Performance|
-| Pipeline Executions failure caused by Harness platform | Failure rate Increase| More than 1% over 5 min rolling window |Partial Outage|
+| Pipeline Executions failure caused by Harness platform	| Failure rate Increase	| More than 50% over 5 min rolling window | Major Outage|
+|                                           | Failure rate Increase| More than 1% over 5 min rolling window |Partial Outage|
 |                                           | Slow Executions | 2x of average latency in a rolling window of 5 mins|Degraded Performance|
 | Triggers                                  | Trigger Activations | More than 1% over 5 min rolling window |Degraded Performance|
 
@@ -72,13 +73,6 @@ All the Pipeline and Platform SLIs are applicable here.
 |-------------------------------------------|-----------------|-----------------------------------------|----------------|
 | GitOps | APIs Error rate| More than 1% over 5 min rolling window |Partial Outage|
 |                                           | API Response Time | 95th percentile: > 1s over 5 min rolling window|Degraded Performance|
-
-## CI Continuous Integration
-All the Pipeline and Platform SLIs are applicable here. 
-
-| **SLI**         | **Threshold**                           | **Availability**|
-|-------------------------------------------|-----------------|-----------------------------------------|
-| Pipeline Executions failure caused by Harness platform | Failure rate increases more than 50% over 5 min rolling window | Major Outage|
 
 ## CI Test Intelligence
 All the Pipeline and Platform SLIs are applicable here. 

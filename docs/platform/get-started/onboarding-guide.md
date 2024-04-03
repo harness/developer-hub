@@ -23,7 +23,7 @@ Harness offers both SaaS and on-premises editions.
 <Tabs>
 <TabItem value="saas" label="SaaS" default>
 
-Harness SaaS is a fully-managed cloud version of the Harness Platform. Harness offers free, team, and enterprise plan tiers. For more information about plan options and pricing, go to [Subscriptions and licenses](./subscriptions.md).
+Harness SaaS is a fully-managed cloud version of the Harness Platform. Harness offers free, team, and enterprise plan tiers. For more information about plan options and pricing, go to [Subscriptions and licenses](./subscriptions-licenses/subscriptions.md).
 
 :::tip
 
