@@ -36,7 +36,7 @@ You can automatically [trigger pipelines using Git events](/docs/platform/trigge
 * **Pull request (PR) triggers:** A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. You can specify the type of [pull request events](/docs/platform/triggers/triggers-reference#event-and-actions) to track, such as close, open, update/edit, reopen, and so on.
 * **Push triggers:** A **Push Webhook Event** automatically starts a build in Harness when there is a new branch or tag push event on the pipeline's associated Git repo.
 
-## Difference between DRONE and PLUGIN variables
+## Difference between DRONE\_ and PLUGIN\_ variables
 
 `DRONE_` variables are environment variables that are automatically set at the pipeline level. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline. Many `DRONE_` variables have equivalent `CI_` or `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/run-a-drone-plugin-in-ci.md) that use those variables.
 
@@ -50,7 +50,7 @@ You can automatically [trigger pipelines using Git events](/docs/platform/trigge
 
 These variables contain codebase attributes and information about how builds start (triggers). For more information about codebase attributes and expressions you can use to reference codebase attributes, go to the [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 
-### DRONE_BRANCH
+### DRONE\_BRANCH
 
 For branch builds and PR builds, this variable's value is the target branch for the build.
 
@@ -62,7 +62,7 @@ Depending on the build type, this can be equivalent to the expressions `<+codeba
 
 This variable is similar to [`DRONE_COMMIT_BRANCH`](#drone_commit_branch) and [`DRONE_TARGET_BRANCH`](#drone_target_branch).
 
-### DRONE_BUILD_ACTION
+### DRONE\_BUILD\_ACTION
 
 Only applicable to [PR webhook triggers](#webhook-triggers), this variable describes the PR event that triggered the build, such as `open` or `reopen`.
 
@@ -70,23 +70,23 @@ For all other build types, this variable is not applicable.
 
 This variable is similar, but not equivalent, to the expression `<+trigger.event>`.
 
-### DRONE_BUILD_EVENT
+### DRONE\_BUILD\_EVENT
 
 The type of event that started the build, such as `push`, `pull_request`, or `tag`.
 
 This is similar to the expressions `<+codebase.build.type>` and `<+pipeline.triggerType>`.
 
-### DRONE_BUILD_TRIGGER
+### DRONE\_BUILD\_TRIGGER
 
 Source that started the build, a user or webhook. Similar, but not equivalent, to the expressions `<pipeline.triggerType>` or `<pipeline.triggeredBy.name>`. May be empty.
 
-### DRONE_CALVER
+### DRONE\_CALVER
 
 Only applicable to build started by tag push webhook triggers. If the Git tag is a valid [calendar version](https://calver.org/) string, this value represents the tag as a valid calver string, such as `19.1.0-beta.20190318`.
 
 Harness CI doesn't support `DRONE_CALVER` variations, such as `DRONE_CALVER_SHORT`.
 
-### DRONE_COMMIT
+### DRONE\_COMMIT
 
 The full Git commit SHA for the latest commit in the branch, tag, or PR. Corresponds with the expressions `<+codebase.commitSha>` or `<+trigger.commitSha>`.
 
@@ -100,35 +100,35 @@ This isn't the same as the short SHA returned by <+codebase.shortCommitSha>.
 
 :::
 
-### DRONE_COMMIT_AFTER
+### DRONE\_COMMIT\_AFTER
 
 This variable provides the Git commit SHA after applying a patch. It can be used in conjunction with [`DRONE_COMMIT_BEFORE`](#drone_commit_before) to create a diff.
 
 Possible values include: a unique commit SHA, the same SHA as [`DRONE_COMMIT`](#drone_commit), empty, or all zeros.
 
-### CI_COMMIT_AUTHOR/DRONE_COMMIT_AUTHOR
+### CI\_COMMIT\_AUTHOR/DRONE\_COMMIT\_AUTHOR
 
 User name of the Git account associated with the build. Equivalent to the expressions `<+codebase.gitUser>` and `<+trigger.gitUser>`. Can be `null` or masked in build logs.
 
-### CI_COMMIT_AUTHOR_AVATAR/DRONE_COMMIT_AUTHOR_AVATAR
+### CI\_COMMIT\_AUTHOR\_AVATAR/DRONE\_COMMIT\_AUTHOR\_AVATAR
 
 User avatar of the Git account associated with the build. Equivalent to the expression `<+codebase.gitUserAvatar>`. Can be empty.
 
-### CI_COMMIT_AUTHOR_EMAIL/DRONE_COMMIT_AUTHOR_EMAIL
+### CI\_COMMIT\_AUTHOR\_EMAIL/DRONE\_COMMIT\_AUTHOR\_EMAIL
 
 User email of the Git account associated with the build. Equivalent to the expression `<+codebase.gitUserEmail>`. Can be empty/`null` or masked in build logs.
 
-### CI_COMMIT_AUTHOR_NAME/DRONE_COMMIT_AUTHOR_NAME
+### CI\_COMMIT\_AUTHOR\_NAME/DRONE\_COMMIT\_AUTHOR\_NAME
 
 User-defined display name for the Git user associated with the build. Can be empty.
 
-### DRONE_COMMIT_BEFORE
+### DRONE\_COMMIT\_BEFORE
 
 This variable provides the Git commit SHA before applying a patch. It can be used in conjunction with [`DRONE_COMMIT_AFTER`](#drone_commit_after) to create a diff.
 
 Possible values include: a unique commit SHA, the same SHA as [`DRONE_COMMIT`](#drone_commit), empty, or all zeros.
 
-### CI_COMMIT_BRANCH/DRONE_COMMIT_BRANCH
+### CI\_COMMIT\_BRANCH/DRONE\_COMMIT\_BRANCH
 
 For branch builds and PR builds, this variable's value is the target branch for the build.
 
@@ -140,19 +140,19 @@ Depending on the build type, this can be equivalent to the expressions `<+codeba
 
 This variable is similar to [`DRONE_BRANCH`](#drone_branch) and [`DRONE_TARGET_BRANCH`](#drone_target_branch).
 
-### DRONE_COMMIT_LINK
+### DRONE\_COMMIT\_LINK
 
 Provides a link to the commit, PR, or tag in SCM.
 
 For PR builds, this is equivalent to the expression `<+codebase.pullRequestLink>`.
 
-### CI_COMMIT_MESSAGE/DRONE_COMMIT_MESSAGE
+### CI\_COMMIT\_MESSAGE/DRONE\_COMMIT\_MESSAGE
 
 The latest commit message from a tag, branch, or PR. Equivalent to the expression `<+codebase.commitMessage>`.
 
 When referenced in an `echo`, this value can cause execution errors if the message has multiple lines. The shell might attempt to execute the commit message as a command. You might need to include additional handling if you want to echo multiline commit messages.
 
-### CI_COMMIT_REF/DRONE_COMMIT_REF
+### CI\_COMMIT\_REF/DRONE\_COMMIT\_REF
 
 Provides a Git reference corresponding to the branch, tag, or PR. For example:
 
@@ -164,59 +164,59 @@ For manual builds, this can be empty.
 
 This is similar to `<+codebase.commitRef>`.
 
-### CI_COMMIT_SHA/DRONE_COMMIT_SHA
+### CI\_COMMIT\_SHA/DRONE\_COMMIT\_SHA
 
 The full Git commit SHA for the latest commit in the branch, tag, or PR. Corresponds with the expressions `<+codebase.commitSha>` or `<+trigger.commitSha>`.
 
 It can be the same as [DRONE_COMMIT](#drone_commit).
 
-### CI_REPO_REMOTE/DRONE_GIT_HTTP_URL
+### CI\_REPO\_REMOTE/DRONE\_GIT\_HTTP\_URL
 
 Provides the HTTP(S) URL to clone a pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md), such as `https://github.com/octocat/hello-world.git`.
 
-### DRONE_GIT_SSH_URL
+### DRONE\_GIT\_SSH\_URL
 
 Provides the SSH URL to clone a pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md), such as `ssh://git@github.com:octocat/hello-world.git`.
 
-### DRONE_PULL_REQUEST
+### DRONE\_PULL\_REQUEST
 
 For pull request builds, this variable provides the pull request number. For other builds, this variable is empty. This is equivalent to the expressions `<+codebase.prNumber>` and `<+trigger.prNumber>`.
 
-### DRONE_PULL_REQUEST_TITLE
+### DRONE\_PULL\_REQUEST\_TITLE
 
 For pull request builds, this variable provides the pull request title. For other builds, this variable is empty. This is equivalent to the expressions `<+codebase.prTitle>` and `<+trigger.prTitle>`.
 
-### CI_REMOTE_URL/DRONE_REMOTE_URL
+### CI\_REMOTE\_URL/DRONE\_REMOTE\_URL
 
 Legacy variable provided for backward compatibility only. It is the same as [`DRONE_GIT_HTTP_URL`](#drone_git_http_url).
 
-### CI_REPO/DRONE_REPO
+### CI\_REPO/DRONE\_REPO
 
 Provides the full repository name (account/organization namespace and repository name) for the repo associated with the build, such as `octocat/hello-world`. By comparison, [`DRONE_REPO_NAME`](#drone_repo_name) includes only the repo name and no namespace.
 
-### DRONE_REPO_BRANCH
+### DRONE\_REPO\_BRANCH
 
 Provides the name of the default branch for the repo associated with the build. This can be different from the build's target branch.
 
-### CI_REPO_LINK/DRONE_REPO_LINK
+### CI\_REPO\_LINK/DRONE\_REPO\_LINK
 
 Provides the standard repository link for the repo associated with the build, such as `https://github.com/octocat/hello-world`. It is equivalent to the expressions `<+codebase.repoUrl>` and `<+trigger.repoUrl>`.
 
 `DRONE_REPO_LINK` is different from [`DRONE_GIT_HTTP_URL`](#drone_git_http_url), which is formatted to clone the repo.
 
-### DRONE_REPO_NAME
+### DRONE\_REPO\_NAME
 
 Provides only the name of the repo associated with the build, such as `hello-world` in `octocat/hello-world`. By comparison, [DRONE_REPO](#drone_repo) includes both the account/organization namespace and repo name, and [`DRONE_REPO_NAMESPACE`](#drone_repo_namespace) includes only the namespace.
 
-### DRONE_REPO_NAMESPACE
+### DRONE\_REPO\_NAMESPACE
 
 Provides only the account/organization namespace of the repo associated with the build, such as `octocat` in `octocat/hello-world`. By comparison, [DRONE_REPO](#drone_repo) includes both the account/organization namespace and repo name, and [`DRONE_REPO_NAME`](#drone_repo_name) includes only the repo name.
 
-### DRONE_REPO_OWNER
+### DRONE\_REPO\_OWNER
 
 Duplicate of [`DRONE_REPO_NAMESPACE`](#drone_repo_namespace).
 
-### DRONE_REPO_PRIVATE
+### DRONE\_REPO\_PRIVATE
 
 A Boolean that indicates whether the repository is private or not.
 
@@ -228,11 +228,11 @@ It defaults to `true` for manual builds, regardless of actual privacy.
 
 Similar to [`DRONE_REPO_VISIBILITY`](#drone_repo_visibility).
 
-### DRONE_REPO_SCM
+### DRONE\_REPO\_SCM
 
 Identifies the SCM provider, such as `Github`.
 
-### DRONE_REPO_VISIBILITY
+### DRONE\_REPO\_VISIBILITY
 
 Describes repo visibility as `public`, `private`, or `internal`.
 
@@ -240,7 +240,7 @@ It defaults to `private` for manual builds, regardless of actual visibility.
 
 Similar to [`DRONE_REPO_PRIVATE`](#drone_repo_private).
 
-### DRONE_SEMVER
+### DRONE\_SEMVER
 
 Only applicable to tag builds. If the Git tag is a valid [semantic version](https://semver.org/) string, this value represents the tag as a valid semver string, such as `1.2.3-alpha.1`.
 
@@ -254,7 +254,7 @@ Harness CI also supports these `DRONE_SEMVER` variations:
 * `DRONE_SEMVER_BUILD`: Provides the build from the semver string, such as `001` in `1.2.3+001`.
 * `DRONE_SEMVER_ERROR`: Provides the semver parsing error if the tag is *not* a valid semver string.
 
-### DRONE_SOURCE_BRANCH
+### DRONE\_SOURCE\_BRANCH
 
 For PR builds, this value provides the PR source branch. You can use this value along with [`DRONE_TARGET_BRANCH`](#drone_target_branch) to get the PR base and head branches.
 
@@ -268,11 +268,11 @@ Depending on the build type, this value can be equivalent to the expressions `<+
 
 This variable is similar to [`DRONE_BRANCH`](#drone_branch) and [`DRONE_COMMIT_BRANCH`](#drone_commit_branch).
 
-### DRONE_TAG
+### DRONE\_TAG
 
 For tag builds, this is the tag associated with the build. It is equivalent to `<+codebase.tag>`.
 
-### DRONE_TARGET_BRANCH
+### DRONE\_TARGET\_BRANCH
 
 For branch builds and PR builds, this variable's value is the target branch for the build. You can use this value along with [`DRONE_SOURCE_BRANCH`](#drone_source_branch) to get the PR base and head branches.
 
@@ -300,7 +300,7 @@ If the pipeline's first stage is a CI stage, all timestamps are the same.
 
 These variables are related to the lite-engine service.
 
-### HARNESS_WORKSPACE/DRONE_WORKSPACE
+### HARNESS\_WORKSPACE/DRONE\_WORKSPACE
 
 Always `/harness`, which is the default [workspace](../caching-ci-data/share-ci-data-across-steps-and-stages.md#share-data-between-steps-in-a-stage). This is where Harness clones the codebase, and it is the working directory for all steps in a stage.
 
@@ -318,7 +318,7 @@ The `DRONE_WORKSPACE` environment variable doesn't exist in local runner build i
 
 For descriptions of these and other identifier variables, go to [Identifiers and status variables](#identifier-and-status-variables).
 
-### \_SERVICE_ variables
+### \_SERVICE\_ variables
 
 * `DELEGATE_SERVICE_TOKEN`
 * `DELEGATE_SERVICE_ENDPOINT`
@@ -346,75 +346,75 @@ For commit SHAs and other codebase-related identifiers, go to [Codebase and trig
 
 Identifies the build environment as CI. Always `true` for all builds.
 
-### CI_BUILD_LINK/DRONE_BUILD_LINK
+### CI\_BUILD\_LINK/DRONE\_BUILD\_LINK
 
 Provides a deep link to the Harness [build details](../viewing-builds.md). This value is immutable. Equivalent to the expression `<+pipeline.executionUrl>`.
 
-### CI_BUILD_STATUS/DRONE_BUILD_STATUS
+### CI\_BUILD\_STATUS/DRONE\_BUILD\_STATUS
 
 Provides the overall build status at a point in time. If the stages and steps were passing at that time, the build status defaults to `success`. At build initialization, this may be empty.
 
-### DRONE_FAILED_STAGES
+### DRONE\_FAILED\_STAGES
 
 Can provide a comma-separated list of failed stages at a point in time, if available.
 
-### DRONE_FAILED_STEPS
+### DRONE\_FAILED\_STEPS
 
 Can provide a comma-separated list of failed steps at a point in time, if available.
 
-### DRONE_STAGE_KIND
+### DRONE\_STAGE\_KIND
 
 Always `pipeline`.
 
-### DRONE_STAGE_NAME
+### DRONE\_STAGE\_NAME
 
 The name of the stage that is running. Equivalent to `<+stage.name>`.
 
-### DRONE_STAGE_STATUS
+### DRONE\_STAGE\_STATUS
 
 Provides the overall pipeline status. If all steps up to the current time have passed, then the status is `success` or `true`. If any steps have failed, the status is `failed` or `false`.
 
-### DRONE_STEP_NAME
+### DRONE\_STEP\_NAME
 
 The name of the currently-running step. Equivalent to `<+step.name>`.
 
-### DRONE_STEP_NUMBER
+### DRONE\_STEP\_NUMBER
 
 The numerical identifier of the currently-running step, if available.
 
-### HARNESS_ACCOUNT_ID
+### HARNESS\_ACCOUNT\_ID
 
 Your Harness account ID. Equivalent to `<+account.identifier>`.
 
-### HARNESS_BUILD_ID/CI_BUILD_NUMBER/DRONE_BUILD_NUMBER
+### HARNESS\_BUILD\_ID/CI\_BUILD\_NUMBER/DRONE\_BUILD\_NUMBER
 
 The incremental build ID for pipeline runs. This value is immutable. Equivalent to the expression `<+pipeline.sequenceId>`.
 
-### HARNESS_DELEGATE_ID
+### HARNESS\_DELEGATE\_ID
 
 Delegate identifier.
 
-### HARNESS_EXECUTION_ID
+### HARNESS\_EXECUTION\_ID
 
 A pipeline's immutable UUID. Equivalent to `<pipeline.executionId>`.
 
-### HARNESS_ORG_ID
+### HARNESS\_ORG\_ID
 
 Your Harness organization ID. Equivalent to `<+org.identifier>`.
 
-### HARNESS_PIPELINE_ID
+### HARNESS\_PIPELINE\_ID
 
 A pipeline's identifier, usually based on the pipeline's name. Equivalent to `<+pipeline.identifier>`.
 
-### HARNESS_PROJECT_ID
+### HARNESS\_PROJECT\_ID
 
 The Harness project ID. Equivalent to `<+project.identifier>`.
 
-### HARNESS_STAGE_ID/DRONE_STAGE_NUMBER
+### HARNESS\_STAGE\_ID/DRONE\_STAGE\_NUMBER
 
 The identifier for a stage. Equivalent to `<+stage.identifier>`.
 
-### HARNESS_USER_ID
+### HARNESS\_USER\_ID
 
 ID of the user that started the build.
 
@@ -467,7 +467,7 @@ Other environment variables might existing in your pipelines depending on the bu
 * `USER`: The root or default user ID relative to the build. Not the same as [`HARNESS_USER_ID`](#harness_user_id).
 * `XDG_CONFIG_HOME`
 
-### DRONE_OUTPUT
+### DRONE\_OUTPUT
 
 As an environment variable, `DRONE_OUTPUT` is the path to a `DRONE_OUTPUT.env` file where Plugin steps can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).
 
