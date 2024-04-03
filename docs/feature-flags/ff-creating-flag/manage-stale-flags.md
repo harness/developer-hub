@@ -69,15 +69,21 @@ At this time, the following languages are supported for flag cleanup automation:
  - Kotlin
  - Go
 
-### Set up a flag cleanup pipeline
+## Setting up a Flag Cleanup Pipeline
 
-In order to use flag cleanup automation, you will need to import a Pipeline Template. Here are the steps below:
+In order to use flag cleanup automation, you will need to import a Pipeline Template. You can use the followiung URL to import from: 
 
-#### Permissions
+ `https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml`
+
+Note that the identifier and the name **must** match.
+
+Here are the steps below for setting up an Flag Cleanup Pipeline:
+
+### Permissions
 
 * To import a Template, make sure you have the **Create/Edit** permissions for Templates.
 
-#### Import a template
+### Import a template
 
 You can import a Template in the Account, Org, or Project scope.
 
@@ -87,7 +93,7 @@ This topic explains how to import a Template in the Project scope.
 You can import a Template from the CI or CD module in Harness.  
 This topic shows you how to import a Template to the CD module.
 2. Click **Deployments**.
-3. In **PROJECT SETUP**, click **Templates**.
+3. In **Project Setup**, click **Templates**.
 4. Click **New Template** and then click **Import From Git**.
    
 
@@ -95,7 +101,7 @@ This topic shows you how to import a Template to the CD module.
    
    The **Import Template From Git** settings appear.
    
-   ![An image of the settings for  Importing Template From Git](./static/importtemplatefromgit.png)
+   ![An image of the settings for  Importing Template From Git](./static/import-a-template-from-git-23.png)
 
 5. Enter a **Name** for your Template.
 6. In **Version Label**, enter a version for the Template.
@@ -111,13 +117,7 @@ This topic shows you how to import a Template to the CD module.
 
    ![The GitHub Connector Set Up Page](./static/import-a-template-from-git-25.png)
 
-   For GitHub, the token must have the following scopes:
-
-   ![The token set-up from Github](./static/import-a-template-from-git-26.png)
-
 </details>
-
-
 
 8. In **Repository**, select the repository from where you want to import the Template. If you don't see your repository in the list, enter its name since only a select few repositories are filled here.
    
@@ -144,29 +144,51 @@ Create the branch in your repository before entering it in **Git Branch**. Harn
     
     ![An image of the warning page displaying errors when retrieving a template](./static/import-a-template-from-git-28.png)
 
-
-
-
-
-
-
-
-
-
-- The URL to import from is https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml
-- Note that the identifier and the name must match
+If you'd like to see this demonstrated, check out the following YouTube video from Harness on how to 'Import Flag Cleanup As A Template': 
 
 <DocVideo src="https://www.youtube.com/embed/sSP1nxrBwxo?si=dGI7vBmio6pfhWnX" />
 
-### Training your cleanup configuration file
+### Run the flag cleanup pipeline
 
-You will need update the rules file with the correct tree-sitter query.
+In this step, let's assumne the pipeline is set up and our flags are marked for cleanup. From here, all we need to do is run the pipeline to do the cleanup. Here is how to do that.:
+
+1. Select the repo for the codebase and the branch.
+
+![Step one of running the flag cleanup pipeline](./static/running-cleanup-pipeline-1.png)
+
+2. Select the Github token, Github username, and Harness API Key.
+
+![Step two of running the flag cleanup pipeline](./static/running-cleanup-pipeline-2.png)
+
+3. Select what code to run against. The example repo includes both Go and Java. These are the paths to run against the Go code:
+
+![Step three of running the flag cleanup pipeline](./static/running-cleanup-pipeline-3.png)
+4. Select the DockerHub connector to pull down the plugin container, and then select **Run**.
+
+![Step four of running the flag cleanup pipeline](./static/running-cleanup-pipeline-4.png)
+
+As the pipeline runs, logs from the plugin show it getting the flags and performing the code changes.
+
+![Output of cleanup pipline](./static/output-of-cleanup-pipeline.png)
+
+You can then navigate to the PR and see the changes it made.
+
+## Setting Up Your Cleanup Configuration File
+
+To set up your cleanup configuration file, you will need to update the rules file with the correct tree-sitter query. Check out the following YouTube video from Harness about 'Understanding Tree Sitting Queries'.
 
 <DocVideo src="https://www.youtube.com/embed/Y22vmMNwPYU?si=W-SHEQlHV-3cNYOg" />
 
 ### Secrets configuration for Gitub
 
-- A Github connector to connect to the repo to clone down the code to cleanup. The [demo repo is here](https://github.com/harness/flag_cleanup) and the branch to use is “unscripted”.
+You can find the repo for the Github connector that connects to the repo to clone down the code to cleanup [here](https://github.com/harness/flag_cleanup). The branch to use is titled, `unscripted`.
+
+
+<!-- NEED TO CLARIFY THESE STEPS RATHER THAN DEPENDING ON IMAGES -->
+
+Here this is done, follow these steps below:
+
+ 1. 
 
 ![Step one of importing a pipeline template](./static/setting-up-cleanup-1.png)
 
@@ -181,29 +203,3 @@ You will need update the rules file with the correct tree-sitter query.
 - A Docker connector to pull down the plugin image.
 
 ![Step four of importing a pipeline template](./static/setting-up-cleanup-4.png)
-
-### Run the flag cleanup pipeline
-
-Here the pipeline is set up and our flags marked for cleanup. So now all we need to do is run the pipeline to do the cleanup.
-
-- Select the repo for the codebase and the branch.
-
-![Step one of running the flag cleanup pipeline](./static/running-cleanup-pipeline-1.png)
-
-- Select the Github token, Github username, and Harness API Key.
-
-![Step two of running the flag cleanup pipeline](./static/running-cleanup-pipeline-2.png)
-
-- Select what code to run against. The example repo includes both Go and Java. These are the paths to run against the Go code:
-
-![Step three of running the flag cleanup pipeline](./static/running-cleanup-pipeline-3.png)
-
-- Select the DockerHub connector to pull down the plugin container, and then select **Run**.
-
-![Step four of running the flag cleanup pipeline](./static/running-cleanup-pipeline-4.png)
-
-As the pipeline runs, logs from the plugin show it getting the flags and performing the code changes.
-
-![Output of cleanup pipline](./static/output-of-cleanup-pipeline.png)
-
-You can then navigate to the PR and see the changes it made.
