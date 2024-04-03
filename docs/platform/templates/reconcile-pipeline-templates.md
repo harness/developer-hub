@@ -128,7 +128,7 @@ First, it will ask you to update the stage template, and then the pipeline level
 Please note that every reconciliation requires saving the pipeline. Specifically, if the pipeline is remote, we will need to do a ``git push`` every time to ensure the latest version of the pipeline is saved.
 :::
 
-Pipeline reconciliation allows you to add or remove ``allowed values``. However if you add new values to the parent entity it will not allow the same. Parent entity can have subset of values that are present in child entity.
+Pipeline reconciliation allows you to add or remove ``allowed values`` to your runtime inputs. However if you add new allowed values to the parent entity it will not allow the same. Parent entity can have subset of allowed values that are present in child entity.
 
 For example, You have a Pipeline that uses a stage and step template. 
 
