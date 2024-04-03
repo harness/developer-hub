@@ -19,6 +19,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
+## April 2024
+
+### Version 1.11.3
+
+#### New features and enhancements
+
+- Enhanced Discount Calculation in Cloud Cost Management: To improve the accuracy of discount calculations, we've updated our data utilization strategy. Previously, discounts were calculated based on the `lineitemtype` column, leading to potential inaccuracies under specific filter scenarios. Now, we've integrated the use of `edpdiscount`, `bundleddiscount`, and `privaterateddiscount` columns from the Cost and Usage Report (CUR), ensuring discounts are accurately calculated at the service level. [CCM-20458]
+
 ## March 2024
 
 ### Version 1.10.2
