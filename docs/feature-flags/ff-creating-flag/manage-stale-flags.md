@@ -10,59 +10,64 @@ Harness Feature Flags helps to identify stale flags and automates the process of
 
 Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production. Stale flags are flexible and can also be configured to a set amount of days set by the user for smoother Feature Flag management.
 
-### Find potentially stale flags
+![An image of Harness Feature Flags Stales Flags UI](./static/ff-stales-flags-ui.png)
 
-- At the top of your Feature Flags overview screen, you will find a list of filters.
-- One of those filters is labeled **Potentially Stale Flags**.
-- Click this list to see which flags have been highlighted by Harness as potentially stale.
+### The Different Flag States
 
-By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale.
+To help manage your flags, here are the definitions of the different flag states:
 
-### Definition of potentially stale
+ - Potentially Stale: 
+ -- Any flag that meets any of these criteria (these are ORs, not ANDs)
+ -- Has been disabled for more than 60 days 
+ -- Is enabled but has not received any new targeting rules or rules updates or default rule changes for more than 60 days
+ -- Is enabled but has not received any evaluations for more than 60 days
 
-Harness defines _potentially stale_ flags as follows
+ - Enabled Flags:
+ -- A flag that has been set to 'Enabled' or 'On'.
 
-- Flags that have not had evaluations in the last 30 days or more depending on the user setting.
+ - Active: 
+ -- These are flags that have received evaluation data. 
 
-Or
+ - Changed Last 24 Hours:
+ -- Floats that have received new targeted rules or default rule changes recently.
 
-- Flags that have not had any modification to their targeting rules in longer than 30 days or more depending on the user setting.
+ - Temporary:
+ -- Any flag that is not marked as permanent. 
 
-Or
+ - Permanent:
+ -- Any flag marked as permanent.
 
-- Flags that have been globally set to a single value for longer than 30 days or more depending on the user setting.
-
-### Mark flags for cleanup
-
-When viewing all flags marked as potentially stale, you have two options within Harness
-
-- **Mark as not stale** - this will remove the flag from the _potentially stale_ list for a period of 60 days. If the same criteria are met after 60 days, the flag will appear in the _potentially stale_ list again
-
-- **Mark as Ready for Cleanup** - this will change the flag’s status to _ready for cleanup_ , which will appear in the UI and be used as a list for the flag cleanup pipeline.
-
-Note that once a flag has been marked as _ready for cleanup_, you can still undo this decision by marking the flag as not stale.
+### Navigating Flag Cleanup 
 
 ![A view of the Harness Feature Flags dashboard with the potentially stale flags filter selectd](./static/stale-flags-filter.png)
 
-## Flag cleanup automation
+When viewing all flags marked as potentially stale, there are two options within Harness to help with Flag Cleasn-up:
 
-### What’s needed
+ - **Mark as not stale** - This will remove the flag from the _potentially stale_ list for a period of 60 days. If the set criteria are met after 60 days, the flag will appear in the _potentially stale_ list again.
+
+ - **Mark as Ready for Cleanup** - This will change the flag’s status to _ready for cleanup_ , which will appear in the UI and be used as a list for the flag cleanup pipeline.
+
+Note that once a flag has been marked as _ready for cleanup_, you can still undo this decision by marking the flag as not stale.
+
+## Automating Flag Cleanup
+
+If you would like to automate the process of flag clean-up, here are some steps you can follow in order to put it in place:
+
+### Pre-requisites
 
 In order to leverage Harness’ flag cleanup automation pipeline, you will need the following:
 
-- A valid cleanup [toml configuration file](https://www.google.com/url?q=https://github.com/harness/flag_cleanup/blob/unscripted/docs/1_understanding_rules.md&sa=D&source=docs&ust=1695064949403882&usg=AOvVaw19GoyueRvzdkIJXRnwLyhx)
-- A Harness API key (so we can get the list of stale flags)
-- A Dockerhub connector to download the cleanup plugin
-- [A git connector on Harness](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) - to connect to your code
-- A Github token to create the PR
-
-### Languages supported for flag cleanup
+- A valid cleanup [toml configuration file](https://github.com/harness/flag_cleanup/blob/unscripted/docs/1_understanding_rules.md).
+- A Harness API key (so we can get the list of stale flags).
+- A Dockerhub connector to download the cleanup plugin.
+- [A git connector on Harness](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/) - to connect to your code.
+- A Github token to create the PR.
 
 At this time, the following languages are supported for flag cleanup automation:
 
-- Java
-- Kotlin
-- Go
+ - Java
+ - Kotlin
+ - Go
 
 ### Set up a flag cleanup pipeline
 
