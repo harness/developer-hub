@@ -6,7 +6,7 @@ redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/pipeline-faq
 ---
 
-This page answer some frequently asked questions about pipelines in Harness. For additional information and questions about pipelines generally, pipeline components (such as delegates, connectors, and secrets), and module-specific pipelines (such as CI/CD pipelines), go to the module and Platform documentation and the other FAQ pages.
+This page answers some frequently asked questions about pipelines in Harness. For additional information and questions about pipelines generally, pipeline components (such as delegates, connectors, and secrets), and module-specific pipelines (such as CI/CD pipelines), go to the module and [Platform documentation](/docs/platform) and the other FAQ pages.
 
 ## How many pipelines can I have?
 
