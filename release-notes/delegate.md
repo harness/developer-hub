@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-04-02T10:00
+date: 2024-04-08T10:00
 sidebar_position: 4
 ---
 
@@ -70,6 +70,18 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 <Deleos />
 
 ## March 2024
+
+### Harness version 1.32.x, Harness Delegate version 24.03.82700 <!--  April xx, 2024 -->
+
+#### New features and enhancements
+
+#### Fixed issues
+
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. (PL-47914)
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. (PL-47614)
+
+- Builds triggered by Bitbucket Server push events have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)
 
 ### Version 24.03.82601 <!--  March 28, 2024 -->
 
