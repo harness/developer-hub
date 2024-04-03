@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2024-04-03T10:00
+date: 2024-04-09T10:00
 sidebar_position: 10
 ---
 
@@ -37,17 +37,17 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
-<!-- ### Version 1.22.x -->
+### Version 1.22.x
 
-<!-- xx Apr 2024 -->
+<!-- 09 Apr 2024 -->
 
-<!-- #### Early access features -->
+#### Early access features
 
-<!-- The feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` can resolve some issues where certain variable expressions aren't correctly resolved. Possible use cases include some variables related to looping strategies that incorrectly resolve to null if included in environment variable expressions or empty output variables populating environment variables in child stages. For more information about CI early access features, go to [What's supported for Harness CI](/docs/continuous-integration/ci-supported-platforms). (CI-11882, CI-11305 ZD-57626)
-UPDATE THE CI EARLY ACCESS PAGE -->
+The feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` can resolve some issues where certain variable expressions aren't correctly resolved. Possible use cases include some variables related to looping strategies that incorrectly resolve to null if included in environment variable expressions or empty output variables populating environment variables in child stages. For more information about CI early access features, go to [What's supported for Harness CI](/docs/continuous-integration/ci-supported-platforms). (CI-11882, CI-11305 ZD-57626)
 
-<!-- #### Fixed issues -->
-<!-- Builds triggered by Bitbucket Server push events have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.XXXXX or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798) -->
+#### Fixed issues
+
+Builds triggered by Bitbucket Server push events have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.XXXXX or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
 
 ### Version 1.21.3
 

@@ -29,10 +29,9 @@ You can opt-in to the early access (beta) features for Harness CI described in t
 
 For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
 
-<!-- | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Used for some edge cases where Harness expressions in environment variables don't resolve correctly. | Beta | -->
-
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
+| `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Used for some edge cases where Harness expressions in environment variables don't resolve correctly. | Beta |
 | `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Docker layer caching for Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) | Beta |
 | `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |
 | `CI_SECURE_TUNNEL` | Secure Connect for Harness Cloud (CI-8922).<br/>[Secure Connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. | Beta |
