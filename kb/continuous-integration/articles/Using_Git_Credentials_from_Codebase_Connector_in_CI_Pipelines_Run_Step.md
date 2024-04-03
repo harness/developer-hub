@@ -28,6 +28,12 @@ By using the `.netrc` file, you can execute Git commands within the run step wit
      EOF
    ```
 
+   :::info
+
+   These `DRONE_` variables are [CI environment variables](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var).
+
+   :::
+
 3. In the same Run step, add your Git commands. Git automatically uses the credentials from the `.netrc` file for authentication, enabling seamless manual Git operations.
 
    For example:

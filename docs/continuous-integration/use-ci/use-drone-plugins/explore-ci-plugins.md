@@ -14,12 +14,6 @@ To run plugins in CI pipelines, [use Plugin steps](./run-a-drone-plugin-in-ci.md
 
 <!-- Plugins not documented (see confluence page for comments): GitHub Changelog Generator, Metronome -->
 
-<!-- :::tip
-
-Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .
-
-:::-->
-
 ## Plugins for AWS
 
 | Plugin | Use | Source | Image |

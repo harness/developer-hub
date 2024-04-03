@@ -115,36 +115,46 @@ Specify plugin-specific settings according to the plugin's documentation.
 
 ### Output variables
 
-:::info
+:::warning
 
 Output variables are not available for all plugins.
 
 :::
 
-Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `DRONE_OUTPUT.env` file, you can use expressions to reference output variables in other steps and stages in the pipeline.
+Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes output to the `DRONE_OUTPUT.env` file, you can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference output variables in other steps and stages in the pipeline.
 
-For example, to write to the `DRONE_OUTPUT.env` file, use a command such as the following:
+For example, to write to the `DRONE_OUTPUT.env` file, the plugin must use a command such as the following:
 
 ```
 echo "VAR_NAME=somevalue" >> $DRONE_OUTPUT
 ```
 
-To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
-
-Use either of the following expressions to reference an output variable in another step in the same stage:
+To reference the resulting output variable in another step in the same stage, use either of the following expressions:
 
 ```
 <+steps.STEP_ID.output.outputVariables.VAR_NAME>
-<+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
+To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
 
 ```
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+```
+
+For each expression:
+
+* Replace `STEP_ID` with the ID of the **Plugin** step.
+* Replace `VAR_NAME` with the relevant variable name.
+* In cross-stage references, replace `STAGE_ID` with the ID of the stage where the **Plugin** step exists.
+
+If the step is within a step group, include the step group identifier in the expression, such as:
+
+```
+<+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
-
 
 ### Image Pull Policy
 
