@@ -96,7 +96,7 @@ It can be the same as [`DRONE_COMMIT_SHA`](#drone_commit_sha).
 
 For Bitbucket PR builds (manual or webhook), this expression returns a shortened SHA due to the Bitbucket webhook payload only sending shortened SHAs.
 
-This isn't the same as the short SHA returned by <+codebase.shortCommitSha>.
+This isn't the same as the short SHA returned by `<+codebase.shortCommitSha>`.
 
 :::
 
