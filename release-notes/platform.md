@@ -351,7 +351,7 @@ The following deprecated API endpoints are longer supported:
 
 - You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
-   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex).
+   For more information, go to [hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex).
 
    This item requires Harness Delegate version 24.01.82110 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
