@@ -210,7 +210,7 @@ import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref
 
 ### Additional CLI flags
 
-You can run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) with CLI arguments such as:
+You can run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) binary with CLI arguments such as:
 
 `--only-fixed`
 

@@ -254,6 +254,8 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can use this field to customize the scan with specific command-line flags supported by that scanner. For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`.
 
+For example, the following argument prevents the scan from publishing results to the Console:  `--publish FALSE`.
+
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />

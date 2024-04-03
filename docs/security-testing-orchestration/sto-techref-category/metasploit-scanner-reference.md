@@ -10,15 +10,6 @@ You can scan your application instances and ingest results from Metasploit.
 ## Important notes for running Metasploit scans in STO
 
 
-
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
 ### Root access requirements
 
 

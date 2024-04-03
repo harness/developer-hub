@@ -22,25 +22,10 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
   * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
   * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
 
-
-
-### Docker-in-Docker requirements
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-### For more information
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
 <StoMoreInfo />
+
 
 ## ZAP step settings for STO scans
 
@@ -163,21 +148,21 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<!-- 
+<!--
 
 ### Additional CLI flags
 
-You can run the [`zap_cli`](https://github.com/Grunny/zap-cli) binary with CLI arguments such as:
+NOT YET SUPPORTED https://harness.atlassian.net/browse/STO-7278?focusedCommentId=694683
 
-   * `context export --name DevTest --file-path /harness/zap/contexts/DevTest.context`
-   
-   * `--platform=linux/arm jsmith/my-image`
+You can run the [`zap-cli`](https://github.com/Grunny/zap-cli) binary with additional CLI flags and arguments such as. For example, you could exclude certain URLs from the scan using a regular expression:
 
-:::caution
+`quick-scan -r -e "https\:\/\/myonlineshoestore\.com\/*catalog\?category\=Accessories" `
 
-STO supports passing CLI arguments to ZAP but does not support every possible argument or combination of arguments. Some arguments might not work in the context of STO and could cause the scan to fail. Passing CLI arguments is an advanced feature and requires a working knowledge of ZAP.
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-:::
+<StoSettingCliFlagsCaution />
+
+-->
 
 -->
 

@@ -120,6 +120,9 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
+<!-- 
+
+COMMENTING THIS OUT UNTIL SEMGREP ORCHESTRATION IS AVAILABLE
 ### Additional CLI flags
 
 You can run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with flags such as:
@@ -128,11 +131,12 @@ You can run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner wit
 
 With these flags, `semgrep` considers only ERROR severity rules and ignores files included in `.gitignore`. 
 
-:::caution
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
+<StoSettingCliFlagsCaution />
 
-:::
+-->
+
 
 ### Fail on Severity
 

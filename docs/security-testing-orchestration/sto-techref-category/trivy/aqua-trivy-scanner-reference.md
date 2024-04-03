@@ -208,11 +208,9 @@ You can run the [`trivy image`](https://aquasecurity.github.io/trivy/v0.49/docs/
 
 With these flags, `trivy image` reports only on vulnerabilities with known fixes. 
 
-:::caution
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
-
-:::
+<StoSettingCliFlagsCaution />
 
 <!-- 
 <StoSettingCliFlags />

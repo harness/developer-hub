@@ -9,13 +9,6 @@ You can scan repositories and ingest scan results from  Fortify on Demand.
 
 ## Important notes for running Fortify on Demand scans in STO
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
 
 ### Root access requirements
 

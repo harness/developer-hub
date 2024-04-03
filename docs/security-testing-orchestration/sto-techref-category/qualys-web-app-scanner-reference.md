@@ -9,14 +9,6 @@ You can ingest scan results from Qualys Web Application Scanning results into ST
 
 ## Important notes for running Qualys scans in STO
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
 ### Root access requirements
 
 

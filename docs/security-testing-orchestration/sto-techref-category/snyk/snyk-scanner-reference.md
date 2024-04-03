@@ -177,6 +177,8 @@ With these flags, the Snyk step scans recursively down the repository tree to a 
 
 :::
 
+
+
 ### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';

@@ -9,13 +9,6 @@ You can ingest scan results for your code repositories from Reapsaw.
 
 ## Important notes for running Reapsaw scans in STO
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
 
 ### Root access requirements
 

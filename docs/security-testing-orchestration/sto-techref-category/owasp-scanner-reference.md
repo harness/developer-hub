@@ -11,14 +11,6 @@ You can scan your code repositories and ingest results from [OWASP Dependency-Ch
 ## Important notes for running OWASP scans in STO
 
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
 ### Root access requirements
 
 
@@ -130,11 +122,9 @@ You can run the OWASP [`dependency-check`](https://jeremylong.github.io/Dependen
       
 With these flags, the scanner scans JAR files and outputs the log to a shared folder, where it can be accessed by a later step.  
 
-:::caution
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
-
-:::
+<StoSettingCliFlagsCaution />
 
 
 ### Fail on Severity

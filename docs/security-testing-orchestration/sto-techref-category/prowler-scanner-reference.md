@@ -11,13 +11,6 @@ You can scan your configurations and ingest results from [Prowler](https://githu
 ## Important notes for running Prowler scans in STO
 
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
 
 ### Root access requirements
 
@@ -185,7 +178,9 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: `-excluded-checks s3_bucket_public_access`
+You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: 
+
+`-excluded-checks s3_bucket_public_access`
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
@@ -193,13 +188,10 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 
 ### Fail on Severity
 
-
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
-
 <StoSettingFailOnSeverity />
+
 
 ### Additional Configuration
 

@@ -152,10 +152,6 @@ If you need to specify a session token, add it using the key `AWS_SESSION_TOKEN`
 The AWS region of the image to scan. 
 
 
-
-
-
-
 <!-- 
 ### Ingestion
 

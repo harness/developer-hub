@@ -9,13 +9,6 @@ You can scan your code repositories and ingest results from Nexus IQ.
 
 ## Important notes for running Nexus scans in STO
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
 
 ### Root access requirements
 

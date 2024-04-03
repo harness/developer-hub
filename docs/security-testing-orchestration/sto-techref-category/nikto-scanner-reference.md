@@ -10,14 +10,6 @@ You can scan your application instances and ingest results from [Nikto](https://
 ## Important notes for running Nikto scans in STO
 
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
 ### Root access requirements
 
 
@@ -171,7 +163,13 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you might want to customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: `-Tuning x01`
+You can use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific command-line arguments. For example, you might want to customize the tests that the scanner runs with the `-Tuning` argument. The following example excludes a test from the scan: 
+
+`-Tuning x01`
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 

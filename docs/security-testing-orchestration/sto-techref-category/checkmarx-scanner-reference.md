@@ -11,6 +11,7 @@ You can scan your repositories using Checkmarx. Harness STO supports the followi
 
 ## Important notes for running Checkmarx scans in STO
 
+<!--
 ### Docker-in-Docker requirements
 
 
@@ -18,6 +19,8 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 
 <StoDinDRequirements />
+
+-->
 
 ### Root access requirements
 

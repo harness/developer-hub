@@ -126,11 +126,9 @@ You can run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner wit
 
 With these flags, the `osv` binary scans vulnerabilities in the specified SBOM even if it's included in a `.gitignore` file.
 
-:::caution
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and settings thoroughly before you use them in your production environment.  
-
-:::
+<StoSettingCliFlagsCaution />
 
 
 ### Fail on Severity

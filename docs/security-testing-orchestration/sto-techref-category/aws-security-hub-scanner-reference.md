@@ -9,11 +9,14 @@ You can scan your configurations using [AWS Security Hub](https://docs.aws.amazo
 
 ## Important notes for running AWS Security Hub scans in STO
 
+<!-- 
 ### Docker-in-Docker requirements
 
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
 <StoDinDRequirements />
+
+-->
 
 
 ### Root access requirements 
@@ -107,7 +110,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-
+<!-- 
 ### Additional CLI flags
 
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
@@ -117,6 +120,8 @@ import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
 <StoSettingCliFlagsCaution />
+
+-->
 
 
 ### Fail on Severity

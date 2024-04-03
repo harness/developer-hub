@@ -9,13 +9,6 @@ You can ingest application-instance scan results from OpenVAS.
 
 ## Important notes for running OpenVAS scans in STO
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
 
 ### Root access requirements
 
