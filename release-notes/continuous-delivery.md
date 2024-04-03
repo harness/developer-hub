@@ -52,7 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Early Access
 
-- Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. <!--add doc link--> (CDS-72037)
+- Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (CDS-72037)
 
 #### Fixed issues
 
