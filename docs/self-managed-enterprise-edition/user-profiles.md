@@ -15,24 +15,23 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 
 ## Profile size and module execution details
 
-| **Size** | **# of users** | **Parallel executions (CD)** | **Parallel executions (CI)** |**Parallel executions (STO)** | **Chaos experiments** |
-| :-- | :-- | :-- | :-- | :-- | :-- |
-| Demo|Up to 10|2|2|2|1|
-| Small|Up to 200|50|50|50|50|
-| Medium|Up to 1000|250|250|250|250|
-| Large|Up to 3000|500|500|500|500|
+| **Size** | **# of users** | **Parallel executions (CD)** | **Parallel executions (CI)** |
+| :-- | :-- | :-- | :--
+| Demo|Up to 10|2|2
+| Small|Up to 200|50|50
+| Medium|Up to 1000|250|250
+| Large|Up to 3000|500|500
 
 ## Free demo users
 
-This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to six simultaneous executions across three modules and one Chaos Engineering experiment.
+This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to four simultaneous executions across two modules.
 
 ### Demo user requirements
 
 Core CPU and memory requirements depend on the modules you use for demo purposes.
 
-- **CI and CD:** Minimum 3 core CPU and 14 Gi memory
-- **STO:** Additional 0.4 core CPU and 750 Mi memory
-- **Chaos Engineering:** Additional 0.4 core CPU and 750 Mi memory
+- **CI:** Minimum 3 core CPU and 14 Gi memory
+- **CD:** Minimum 3 core CPU and 14 Gi memory
 
 ## Core service requirements
 
@@ -196,3 +195,4 @@ The following YAML adds autoscaling for a large profile.
 ## Acquire a license
 
 Contact [Harness Support](mailto:support@harness.io) for license information.
+
