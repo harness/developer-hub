@@ -4,9 +4,9 @@ description: Learn about environment variables in Harness CI pipelines.
 sidebar_position: 50
 ---
 
-This topic describes some Harness CI built-in environment variables. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
+This topic describes environment variables you might encounter when using Harness CI. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
 
-Additional environment variables can be present based on your build infrastructure and pipeline configuration. You can use a `printenv` command in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to get a list of environment variables.
+This reference focuses on Harness CI-specific environment variables prefixed by `CI_`, `HARNESS_`, and `DRONE_`. However, additional environment variables can be present based on your build infrastructure, build tools, specific steps used, and other pipeline configuration possibilities. You can use a `printenv` command in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to get a list of environment variables for a specific stage.
 
 ## Reference environment variables
 
@@ -29,7 +29,7 @@ Manual builds occur when you manually run a pipeline from within Harness. If you
 * **Manual pull request (PR) builds**: Manually run a pipeline and select the **Git Pull Request** build type. Harness looks for the source code attached to the specified **Pull Request Number**, and it clones that specific source code for the build.
 * **Manual tag builds:** Manually run a pipeline and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
 
-### Webhook triggers
+### Environment variable values in webhook trigger builds
 
 You can automatically [trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines). [Webhook triggers](/docs/platform/triggers/triggers-reference) listen for specific events in your code repo, and then trigger builds when those events occur.
 
@@ -108,7 +108,7 @@ Possible values include: a unique commit SHA, the same SHA as [`DRONE_COMMIT`](#
 
 ### CI\_COMMIT\_AUTHOR/DRONE\_COMMIT\_AUTHOR
 
-User name of the Git account associated with the build. Equivalent to the expressions `<+codebase.gitUser>` and `<+trigger.gitUser>`. Can be `null` or masked in build logs.
+User name of the Git account associated with the build. Equivalent to the expressions `<+codebase.gitUser>` and `<+trigger.gitUser>`. Can sometimes be `null` or masked in build logs.
 
 ### CI\_COMMIT\_AUTHOR\_AVATAR/DRONE\_COMMIT\_AUTHOR\_AVATAR
 
@@ -116,7 +116,7 @@ User avatar of the Git account associated with the build. Equivalent to the expr
 
 ### CI\_COMMIT\_AUTHOR\_EMAIL/DRONE\_COMMIT\_AUTHOR\_EMAIL
 
-User email of the Git account associated with the build. Equivalent to the expression `<+codebase.gitUserEmail>`. Can be empty/`null` or masked in build logs.
+User email of the Git account associated with the build. Equivalent to the expression `<+codebase.gitUserEmail>`. Can be sometimes be empty/`null` or masked in build logs.
 
 ### CI\_COMMIT\_AUTHOR\_NAME/DRONE\_COMMIT\_AUTHOR\_NAME
 
@@ -289,7 +289,7 @@ This variable is similar to [`DRONE_BRANCH`](#drone_branch) and [`DRONE_COMMIT_B
 These variables provide unix timestamps.
 
 * `CI_BUILD_CREATED`/`DRONE_BUILD_CREATED`: The unix timestamp indicating the time the build object (the execution instance) was created.
-* `CI_BUILD_FINISHED`/`DRONE_BUILD_FINISHED`: Provides the unix timestamp for when the build is finished. However, a running build cannot have a finish timestamp, therefore, the system always sets this value to the same as `DRONE_BUILD_CREATED`.
+* `CI_BUILD_FINISHED`/`DRONE_BUILD_FINISHED`: Provides the unix timestamp for when the build finished. However, a running build cannot have a finish timestamp, therefore, the system always sets this value to the same as `DRONE_BUILD_CREATED`.
 * `CI_BUILD_STARTED`/`DRONE_BUILD_STARTED`: Provides the unix timestamp for when the build was started by the system. Equivalent to `<+pipeline.startTs>`, and the same as `DRONE_BUILD_CREATED`.
 * `DRONE_STAGE_FINISHED`: Provides the unix timestamp for when the stage ends. However, a running stage cannot have a finish timestamp, therefore, the system always sets this value to the same as `DRONE_STAGE_STARTED`.
 * `DRONE_STAGE_STARTED`: Provides the unix timestamp for when a stage started.
@@ -440,7 +440,7 @@ These variables track [matrix strategies](/docs/platform/pipelines/looping-strat
 
 ## Other variables
 
-Other environment variables might existing in your pipelines depending on the build infrastructure, specific steps used, and other configurations, for example:
+Other environment variables might existing in your pipelines depending on the build infrastructure, build tools, specific steps used, and other configurations, for example:
 
 * `AGENT_TOOLSDIRECTORY`
 * `ANDROID_HOME`

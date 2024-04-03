@@ -4298,7 +4298,7 @@ This release does not include new features.
 
   RBAC permissions specific to environment resource identifiers were not being honored. Harness was not calling the ACL when switching to the **Environments** tab in an org. This has been fixed and the RBAC is verified when the **Environments** tab is selected.
 
-- When special characters are used for a trigger **Name** field, the info message looks different than the actual name entered. (CDS-52105)
+- When special characters are used for a trigger **Name** field, the info message looks different from the actual name entered. (CDS-52105)
 
   This issue was happening because users were allowed to use restricted special characters for the trigger **Name** field. We have updated the validation for the **Name** field so now users will not be able to use restricted special characters.
 

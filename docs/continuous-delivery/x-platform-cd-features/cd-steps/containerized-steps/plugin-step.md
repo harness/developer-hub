@@ -117,7 +117,7 @@ Specify plugin-specific settings according to the plugin's documentation.
 
 :::warning
 
-Output variables are not available for all plugins.
+Not all plugins write output variables.
 
 :::
 
@@ -136,7 +136,7 @@ To reference the resulting output variable in another step in the same stage, us
 <+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
 <+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
