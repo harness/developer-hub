@@ -279,9 +279,6 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 
 <StoSettingCliFlagsCaution />
 
-import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
-
-<StoSettingCliFlagsCaution />
 
 <!-- 
 
