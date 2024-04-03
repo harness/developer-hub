@@ -1,10 +1,10 @@
-Thanks for contributing to the Harness Developer Hub! Our code owners will review your PR.
+Thanks for contributing to the Harness Developer Hub! Our code owners will review your submission.
 
 ## Purpose
 
 What is the motivation for this PR? What changes does it include? Include as much or as little detail as needed.
 
-If the PR is related to a specific Jira or GitHub issue, include the issue ID in the PR title.
+If this submission relates to a Jira or GitHub issue, include the issue ID in the title.
 
 Internal Harness contributors - Please edit this summary to include preview links after the preview build finishes.
 
