@@ -1,7 +1,7 @@
 ---
 title: General Helm deployment FAQs
 description: This topic lists some FAQs related to Native and Harness managed Helm deployment
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 ### How can I deploy a specific resource in a Helm chart as part of Harness managed Helm rolling deployment?
