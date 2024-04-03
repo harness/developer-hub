@@ -2,6 +2,8 @@
 title: Custom Dashboards
 description: Using Custom Dashboards to measure key IDP metrics around Software Catalog and Workflows
 sidebar_position: 1
+redirect_from:
+  - /docs/internal-developer-portal/get-started/custom-dashboards
 ---
 
 ## Introduction
