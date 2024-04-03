@@ -28,7 +28,6 @@ This option is disabled for deployment types that do not support containerized s
 
 ## Important notes
 
-- CD containerized step groups are only supported in a Deploy stage. They are not supported in a Custom stage.
 - Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
 - You can use the same cluster to run the Harness Delegate and the containerized step group(s), but it is not required.
 - Currently, containerized step groups are supported in the following deployment types:
