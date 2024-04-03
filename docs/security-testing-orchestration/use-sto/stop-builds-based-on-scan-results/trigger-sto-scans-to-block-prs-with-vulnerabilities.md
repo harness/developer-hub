@@ -8,7 +8,7 @@ sidebar_position: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can create Git event triggers to support a variety of STO workflows and use case. This topic describes how to do the following: 
+You can create Git event triggers to support a variety of STO workflows and use cases. This topic describes how to do the following: 
 
 - Trigger an STO pipeline that detects vulnerabilities and blocks merging when a pull request targets a protected branch and/or updates specific files in the repo. 
 - Include a keyword in a review comment to trigger a new scan if a previous pipeline execution failed.
@@ -30,7 +30,7 @@ The following steps outline the basic workflow:
 
 These workflows require the following:
 
-- A [**connector**](/docs/category/code-repo-connectors/) to your Git service
+- A [**connector**](/docs/category/code-repo-connectors/) to your Git service.
 - A Harness pipeline with an STO repository scan step, for example Bandit or Semgrep.
 - The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan.
 
@@ -65,11 +65,11 @@ This type of trigger supports uses cases such as:
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service
+1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service.
 
-2. **Repository name**
+2. **Repository name**.
 
-3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Pull Request** 
+3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Pull Request**.
 
 4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions) to trigger the pipeline 
 
@@ -89,7 +89,7 @@ This type of trigger supports uses cases such as:
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
    
-   The pipeline input should be preconfigured correctly, with  **Build Type** set to **Git Pull Request**.
+   The pipeline input should be preconfigured correctly, with **Build Type** set to **Git Pull Request**.
 
 
 #### Test the trigger
@@ -161,7 +161,7 @@ trigger:
 
 You can specify a trigger that says: If a reviewer includes a specific keyword in a pull-request review comment, run the pipeline and scan the repo.
 
-This type of trigger is useful when a pipeline execution fails for reasons other than [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/). If the STO scan doesn't finish in the  original execution, a reviewer can add a review comment with a keyword such as `RERUN_STO_PIPELINE`. 
+This type of trigger is useful when a pipeline execution fails for reasons other than [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/). If the STO scan doesn't finish in the original execution, a reviewer can add a review comment with a keyword such as `RERUN_STO_PIPELINE`. 
 
 <!-- details>
 
@@ -175,11 +175,11 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service
+1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service.
 
-2. **Repository name**
+2. **Repository name**.
 
-3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Issue Comment** 
+3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Issue Comment**.
 
 4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions), such as **Create** and **Edit**, to trigger the scan. You can also select **All actions** to allow reviewers to trigger a scan at any time. 
 
@@ -198,7 +198,7 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
    
-The pipeline input should be preconfigured correctly, with  **Build Type** should be set to **Git Pull Request**.
+The pipeline input should be preconfigured correctly, with **Build Type** should be set to **Git Pull Request**.
 
 
 #### Test the trigger
@@ -341,7 +341,7 @@ Now that you've set up the rule, trigger another pipeline execution to verify th
 To verify the branch protection rule, you must ensure that your STO pipeline fails. To configure your pipeline to fail temporarily, you can do one of the following:
 
 - Set [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) to **Low** in the scan step of your pipeline. Then scan a repo with known vulnerabilities. 
-- Add a temporary Run step to your pipeline with the command `exit(1)`
+- Add a temporary Run step to your pipeline with the command `exit(1)`.
 
 ::: 
 
