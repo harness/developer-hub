@@ -9,10 +9,10 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Datadog probe allows you to either query raw metrics or a [Synthetic test](https://docs.datadoghq.com/synthetics/) and use its results to evaluate the probe outcome.
+Datadog probe allows you to query raw metrics or a [Synthetic test](https://docs.datadoghq.com/synthetics/) and use its results to evaluate the probe outcome.
 
-- Synthetics probe querying is supported for both [API tests](https://docs.datadoghq.com/synthetics/api_tests/) and [Browser tests](https://docs.datadoghq.com/synthetics/browser_tests).
-- Synthetics probe querying may only be executed in the **EOT mode**, as the probe evaluation is based on the result of all the test iterations executed through the fault chaos duration. Metrics querying is supported for all the probe modes.
+- Synthetics probe query is supported for both [API tests](https://docs.datadoghq.com/synthetics/api_tests/) and [Browser tests](https://docs.datadoghq.com/synthetics/browser_tests).
+- Synthetics probe query may only be executed in the **EOT mode**, as the probe evaluation is based on the result of all the test iterations executed through the fault chaos duration. Metrics querying is supported for all the probe modes.
 
 :::note
 - If there are no iterations of the synthetics test through the chaos duration of the fault, the probe is marked as failed.
