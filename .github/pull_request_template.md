@@ -11,15 +11,12 @@ Internal Harness contributors - Please edit this summary to include preview link
 ## Merge requirements
 
 - [ ] Successful preview build.
+- [ ] Code owner review.
 - [ ] No merge conflicts.
-- [ ] Up to date with main.
-- [ ] SME/Product review.
-- [ ] Editorial/peer review.
-- [ ] No open change requests from reviewers.
 - [ ] Release notes/new features docs: Feature/version released to at least one prod environment.
 
 ## PR lifecycle
 
-We aim to merge PRs within one week or less. However, sometimes delays happen.
+We aim to merge PRs within one week or less, but delays happen sometimes.
 
-If your PR has been open longer than two weeks without any human activity, please add a comment tagging one of the [code owners](https://github.com/harness/developer-hub/blob/main/.github/CODEOWNERS).
+If your PR is open longer than two weeks without any human activity, please tag a [code owner](https://github.com/harness/developer-hub/blob/main/.github/CODEOWNERS) in a comment.
