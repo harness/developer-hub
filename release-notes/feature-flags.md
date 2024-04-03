@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
-#### Version 2.1.0
+#### Version 1.6.6
 
  - We've made cache & exception handling improvements including:
  -- improving cache locking and synchronization,
