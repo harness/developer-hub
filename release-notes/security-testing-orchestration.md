@@ -22,6 +22,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## April 2024
+
+<!-- 2024-04-03 -->
+
+### Version 1.90.1
+
+#### Fixed issues
+
+- Removed  “Inactive options are coming soon” from the **Request Exemption** dialog box. All options in this dialog box are generally available. (STO-7297)
+- ZAP is no longer a part of OWASP. The UI and documentation have been updated to remove references to OWASP ZAP. (STO-7296)
+
 ## March 2024
 
 ### Version 198.2
