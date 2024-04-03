@@ -1417,6 +1417,12 @@ This variable is added to the metadata of the Artifactory artifacts with generic
 
 ![](./static/artifact-file-name-variable.png)
 
+### Artifact rollback variables
+
+You can use the syntax, `<+rollbackArtifact.ARTIFACT_DEFINITION_IDENTIFIER>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment. 
+
+Harness pulls rollback artifact information from last successful deployment. If there's no previous, successful deployment, then the rollback artifact will return null. 
+
 ### Sidecar artifacts
 
 Sidecar artifact expressions use the **Sidecar Identifier** to reference the sidecar artifact.

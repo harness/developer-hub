@@ -2,6 +2,8 @@
 title: Prerequisites
 sidebar_position: 1
 description: Resources required to run chaos experiments on target environments
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/prerequisites
 ---
 
 This topic describes the resources required to run chaos experiments on your target environments.

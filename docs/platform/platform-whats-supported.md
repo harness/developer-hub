@@ -187,7 +187,7 @@ The following table lists some resources and their availability at various scope
 | **Secrets** | Yes | Yes | Yes |
 | **SMTP Configuration** | Yes | No | No |
 | **Templates** | Yes | Yes | Yes |
-| **Audit Trail** | Yes | Yes | Yes |
+| **Audit Trail** | Yes | Yes | No |
 | **Delegates** | Yes | Yes | Yes |
 | **Governance** | Yes | Yes | Yes |
 

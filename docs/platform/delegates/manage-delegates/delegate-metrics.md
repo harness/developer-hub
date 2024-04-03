@@ -6,7 +6,7 @@ sidebar_position: 2
 
 This topic explains how to configure the Prometheus monitoring tool for metrics collection and the Grafana analytics tool for metrics display.
 
-Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
+Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 The delegate is instrumented for the collection of the following delegate agent metrics.
 
@@ -14,7 +14,7 @@ The delegate is instrumented for the collection of the following delegate agent 
 All metrics reset when you restart the delegate.
 
 :::
-  
+
 | **Metric name** | **Description** |
 | :-- | :-- |
 | `io_harness_custom_metric_task_execution_time` | The amount of time it took to complete a task (in seconds). |
@@ -41,7 +41,7 @@ This topic includes example YAML files you can use to create application manifes
 
 ### Apply the prometheus.yml file
 
-The configuration of Prometheus requires the installation of a Prometheus workload and service in your Kubernetes cluster. Use the following example configuration file to install the `harness-delegate-prometheus-deployment` workload and a service named `harness-delegate-prometheus-service`. The configuration includes a load balancer with an IP address you can use to access the Prometheus UI. 
+The configuration of Prometheus requires the installation of a Prometheus workload and service in your Kubernetes cluster. Use the following example configuration file to install the `harness-delegate-prometheus-deployment` workload and a service named `harness-delegate-prometheus-service`. The configuration includes a load balancer with an IP address you can use to access the Prometheus UI.
 
 ### Example prometheus.yml file
 
@@ -192,7 +192,7 @@ spec:
 
 ```
 
-Use the following command to deploy the configuration file. 
+Use the following command to deploy the configuration file.
 
 ```
 kubectl apply -f prometheus.yml
@@ -254,7 +254,7 @@ spec:
           limits:
             memory: "1Gi"
             cpu: "1000m"
-          requests: 
+          requests:
             memory: 500M
             cpu: "500m"
         volumeMounts:
@@ -281,12 +281,12 @@ metadata:
       prometheus.io/scrape: 'true'
       prometheus.io/port:   '3000'
 spec:
-  selector: 
+  selector:
     app: grafana
-  type: LoadBalancer  
+  type: LoadBalancer
   ports:
     - port: 3000
-      targetPort: 3000     
+      targetPort: 3000
 ```
 
 1. Copy the `grafana.yml` file.
@@ -298,7 +298,7 @@ spec:
    ```
    kubectl apply -f grafana.yml
    ```
-   
+
    :::info note
    This manifest also creates a load balancer and service in your Kubernetes cluster.
    :::
@@ -310,7 +310,7 @@ spec:
 You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. 
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML.
 :::
 
 To configure the delegate resource threshold, make the following changes to the delegate YAML file:

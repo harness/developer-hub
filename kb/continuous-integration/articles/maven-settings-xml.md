@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
 If your Maven tests run in a **Run** step, add the following to the **Command**:
 
 ```
-echo '<+secrets.getValue("account.[settingsXMLSecretID]")>' > settings.xml
+echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
 ```
 
 </TabItem>

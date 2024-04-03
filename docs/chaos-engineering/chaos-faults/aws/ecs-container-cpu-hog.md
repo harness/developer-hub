@@ -1,6 +1,8 @@
 ---
 id: ecs-container-cpu-hog
 title: ECS container CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-cpu-hog
 ---
 ECS container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM documentation that is in-built into the fault. This fault:
 - Causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.

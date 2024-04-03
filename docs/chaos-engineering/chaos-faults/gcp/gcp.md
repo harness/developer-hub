@@ -1,6 +1,8 @@
 ---
 id: gcp
 title: Chaos faults for GCP
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp
 ---
 
 <!-- Import statement for Custom Components -->

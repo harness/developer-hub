@@ -1,7 +1,9 @@
 ---
 title: Linux Execution Plane
-sidebar_position: 2
+sidebar_position: 6
 description: Linux chaos infrastructure components
+redirect_from:
+    - /docs/chaos-engineering/technical-reference/architecture/linux
 ---
 Harness execution plane for Linux includes the **Linux chaos infrastructure daemon service**.
 

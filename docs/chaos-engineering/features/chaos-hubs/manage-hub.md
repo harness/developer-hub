@@ -2,6 +2,8 @@
 title: Manage custom ChaosHub
 sidebar_position: 3
 description: Save and manage experiments in custom ChaosHub
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/manage-hub
 ---
 
 import Launch from '../shared/launch-experiment-from-hub.md'

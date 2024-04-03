@@ -44,7 +44,7 @@ To mark a stage as failed during pipeline execution:
 1. [Go to the execution details](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions) for a currently-running pipeline.
 2. Select the stage you want to mark as failed, and select **Mark Stage As Failed**.
 
-   ![](../static/mark-as-failed-option.png)
+![](../static/mark-stage-failed.png)
 
 3. Select **Confirm**.
 

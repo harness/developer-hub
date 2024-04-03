@@ -3,7 +3,6 @@ title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
 date: 2024-03-27T10:00
-tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
 
@@ -42,13 +41,13 @@ The following features are now generally available:
 
 - Issues tables in **Security Tests** now include a **Target** column. (STO-4918)
 
+- Harness STO now supports ingesting scan results in stages that run on Harness Cloud Windows AMD64 build infrastructures. This eliminates the need to cache results from a previous Windows stage and then ingest them in a Linux stage. (STO-5428)  
+
 #### Fixed issues
 
 - Fixed an issue with database migrations that impacted upgrading Self-Managed Platform from version 0.13.x to 0.14.x. (STO-7309)
 
-- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows. (STO-4918) 
-
-  With this fix, clicking on an issue selects only that issue, even if other scans detected the same issue for that target. (You can use the **Steps** filter to show/hide results from specific scans.)
+- Fixed a UI issue in **Security Tests** when the same issue was detected by multiple scans in the same pipeline. The **Issues** table showed multiple identical rows for that issue, and clicking on an issue selected all of the identical rows. With this fix, the rows are differentiated by **Target**. Clicking on an issue selects only that one issue. (STO-4918)
 
 
 ### Version 1.88.2
@@ -64,12 +63,6 @@ The following features are now generally available:
   :::note
 
   These steps are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
-
-  <!-- 
-
-  - The SAST step is behind the feature flag `STO_ONE_CLICK_SAST`. 
-
-  -->
 
   :::
 
@@ -87,6 +80,17 @@ The following features are now generally available:
     - [**Container**](/docs/security-testing-orchestration/sto-techref-category/built-in/containers) Add an Aqua Trivy or Anchor Grype scan to detect vulnerabilities in your container images.
 
     - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
+
+#### Early Access feature: Wiz scanner integration
+
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
+
+Harness currently supports the following: 
+
+1. Orchestrated Wiz scans for container images
+2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
+
+This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
 
 #### Fixed issues
 

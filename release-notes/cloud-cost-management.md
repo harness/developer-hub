@@ -1,7 +1,6 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-tags: [NextGen, "cloud cost management"]
 date: 2024-03-19T10:00
 sidebar_position: 6
 ---
@@ -18,6 +17,25 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+
+## April 2024
+
+### Version 1.11.3
+
+#### New features and enhancements
+
+- Enhanced Discount Calculation in Cloud Cost Management: To improve the accuracy of discount calculations, we've updated our data utilization strategy. Previously, discounts were calculated based on the `lineitemtype` column, leading to potential inaccuracies under specific filter scenarios. Now, we've integrated the use of `edpdiscount`, `bundleddiscount`, and `privaterateddiscount` columns from the Cost and Usage Report (CUR), ensuring discounts are accurately calculated at the service level. [CCM-20458]
+
+- Updates in Output Terminal in Asset Governance:
+    - Filter: We've added a new feature for filtering the JSON in Evaluations. Users can filter based on the keys of the output and use comparison operators like `==`, `<`, `>`, etc. for comparison against numeric fields and use the `LIKE` operator for comparison against alphabetic fields. [CCM-
+    - Sort: Users can also sort the output based on a specific key in ascending or descending order. For showing outputs with only one particular key, they can use the `pick` option.
+    - Search: Searching in the output terminal in Asset Governance is now available. Users can search for any piece of text in their output. [CCM-16309]
+
+- JSON and CSV Zip Download for Multi Policy Evaluations: For multi-policy evaluations, users can now download them in zip files. Each policy would have a sub-directory inside the zipped directory. Also, we have added two new options to include log files and filters applied (to the original JSON) in the downloaded folder. [CCM-16774]
+
+- Refresh Cost Impact for Evaluations: We've added a new option to "refresh" the cost impact for a particular evaluation for only supported resources. With this option, users can choose to refresh the cost impact to see updated savings. Please note, it can take up to 30 minutes to show the updated results. [CCM-16807]
+
+- Pagination and Ignore Recommendations in Governance Overview Page: Users can now view 5 recommendations per page on the overview screen of Asset Governance. We now also show ignored recommendations in the list with the option to remove them from the `ignored list` in the overview page itself. [CCM-16824]
 
 ## March 2024
 

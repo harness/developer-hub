@@ -28,33 +28,33 @@ HA does not require delegate automation. Automation can be useful, however, when
 
 In addition to compute considerations, you can implement HA for delegates. This means installing multiple delegates in your environment.
 
-For example, in Kubernetes deployments, you can set up two delegates, each in its own pod in the same target Kubernetes cluster. To do so, edit the Kubernetes delegate `spec` you download from Harness to provide multiple replica pods. 
+For example, in Kubernetes deployments, you can set up two delegates, each in its own pod in the same target Kubernetes cluster. To do so, edit the Kubernetes delegate `spec` you download from Harness to provide multiple replica pods.
 
 
-```
-...  
-apiVersion: apps/v1beta1  
-kind: Deployment  
-metadata:  
-  labels:  
-    harness.io/app: harness-delegate  
-    harness.io/account: xxxx  
-    harness.io/name: test  
-  name: test-zeaakf  
-  namespace: harness-delegate  
-spec:  
-  replicas: 2  
-  selector:  
-    matchLabels:  
-      harness.io/app: harness-delegate  
+```yaml
+...
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    harness.io/app: harness-delegate
+    harness.io/account: xxxx
+    harness.io/name: test
+  name: test-zeaakf
+  namespace: harness-delegate
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      harness.io/app: harness-delegate
 ...
 ```
 
 In this example, the `spec` section of the harness-kubernetes.yaml file was changed to provide two replica pods. HA is provided without automation.
 
-A Kubernetes cluster requires only one delegate. To create HA in the cluster, you can increase the number of delegate replica pods. Do not add another delegate to the cluster. 
+A Kubernetes cluster requires only one delegate. To create HA in the cluster, you can increase the number of delegate replica pods. Do not add another delegate to the cluster.
 
-If you want to install Kubernetes delegates in separate clusters, do not use the same harness-kubernetes.yaml and name for both delegates. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This prevents name conflicts. 
+If you want to install Kubernetes delegates in separate clusters, do not use the same `harness-kubernetes.yaml` file and name for both delegates. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This prevents name conflicts.
 
 In every case, the delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, HA is provided by default. The failure of a single delegate does not stop Harness from performing deployments. For greater availability, increase the number of replica pods to run three delegates in case you lose two, and so on.
 
@@ -77,9 +77,9 @@ Before you duplicate the file, review the list of environment variables in the d
 
 ### Step 2: Rename the new delegate
 
-The process that is used to rename a delegate depends on its type. 
+The process that is used to rename a delegate depends on its type.
 
-#### Rename the Kubernetes delegate 
+#### Rename the Kubernetes delegate
 
 To change the name of a Kubernetes delegate, modify the following fields:
 
@@ -96,20 +96,20 @@ To change the name of a Kubernetes delegate, modify the following fields:
 
 The `DELEGATE_NAME` environment variable is specified as a YAML list item:
 
-```
-...  
-        - name: DELEGATE_NAME  
-          value: string  
+```yaml
+...
+        - name: DELEGATE_NAME
+          value: string
 ...
 ```
 
-#### Rename the Docker delegate 
+#### Rename the Docker delegate
 
 To change the name of a Docker delegate, set the `DELEGATE_NAME` environment variable to the new name:
 
-```
-...  
-    - DELEGATE_NAME = my-new-delegate  
+```yaml
+...
+    - DELEGATE_NAME = my-new-delegate
 ...
 ```
 

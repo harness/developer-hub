@@ -1,6 +1,8 @@
 ---
 id: gcp-vm-service-kill
 title: GCP VM service kill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-service-kill
 ---
 GCP VM service kill fault stops a given service for specified duration. As a consequence, the node becomes unschedulable and it transitions to **NotReady** state.
 - GCP VM service kill stops a target service on a node to make it unschedulable for a specific duration.

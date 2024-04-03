@@ -6,6 +6,8 @@ redirect_from:
   - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 Service Onboarding in Harness IDP use Harness pipeline orchestrator and those could be triggered through Software Templates. 
 
 ![](./static/service-onboarding.png)
