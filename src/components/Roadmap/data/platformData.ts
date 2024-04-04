@@ -134,7 +134,7 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "SMP" }],
-        title: "Modules supported",
+        title: "Supported modules",
         description:
           "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
       },
@@ -171,7 +171,7 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "SMP" }],
-        title: "Modules supported",
+        title: "Supported modules",
         description:
           "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering",
       },
