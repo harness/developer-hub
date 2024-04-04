@@ -1,7 +1,9 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-03-28T16:19:25
+date: 2024-04-03T16:19:25
+tags: [NextGen, "feature flags"]
+
 sidebar_position: 11
 ---
 
@@ -13,7 +15,19 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 28th 2024
+### Latest Updated: April 3rd 2024
+
+## April 2024
+
+### .NET SDK
+
+#### Version 1.6.6
+
+ - We've made cache & exception handling improvements including:
+ -- improving cache locking and synchronization,
+ -- improving stream error handling,
+ -- increasing the capacity of dictionary, and
+ -- additional cache recovery checks. (FFM-11089)
 
 ## March 2024
 
