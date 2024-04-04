@@ -132,6 +132,13 @@ export const platformData: Horizon = {
         description:
           "Create and manage customized notification body text",
       },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
+      },
+
     ],
   },
   Released: {
@@ -161,6 +168,12 @@ export const platformData: Horizon = {
         title: "Absolute session timeout",
         description:
           "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering",
       },
       {
         tag: [{ value: "SMP" }],
