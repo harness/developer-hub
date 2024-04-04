@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.6.7
 
- - You can log the flags/groups payload as `info` level log. (FFM-11022)
+ - Logs flags/groups payload as `info` level log. (FFM-11022)
 
 #### Version 1.6.6
 
