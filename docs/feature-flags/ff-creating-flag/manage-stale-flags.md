@@ -41,7 +41,7 @@ To help manage your flags, here are the definitions of the different flag states
 
 ![A view of the Harness Feature Flags dashboard with the potentially stale flags filter selectd](./static/stale-flags-filter.png)
 
-When viewing all flags marked as potentially stale, there are two options within Harness to help with Flag Cleasn-up:
+When viewing all flags marked as potentially stale, there are two options within Harness to help with Flag Clean-up:
 
  - **Mark as not stale** - This will remove the flag from the _potentially stale_ list for a period of 60 days. If the set criteria are met after 60 days, the flag will appear in the _potentially stale_ list again.
 
