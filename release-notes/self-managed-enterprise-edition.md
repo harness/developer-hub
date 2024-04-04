@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-03-29T10:00
+date: 2024-04-05T10:00
 sidebar_position: 16
 ---
 
@@ -65,6 +65,50 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+
+## April x, 2024, patch version 0.15.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.15.1](https://github.com/harness/helm-charts/releases/tag/harness-0.15.1) |
+| Air Gap Bundle | [0.15.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.1) |
+| NG Manager | 1.27.12 |
+| CI Manager | 1.13.2 |
+| Pipeline Service | 1.64.2 |
+| Platform Service | 1.14.1 |
+| Access Control Service | 1.35.5 |
+| Delegate | 24.02.82402 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.86.2 |
+| Test Intelligence Service | 1.12.1 |
+| NG UI | 1.10.8 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.15.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed an issue where cloud-info pods crashed after upgrading to 0.15.0. (CCM-17154)
+
+- Fixed an issue where the GitOps service crashed after upgrading to 0.15.0. (CDS-95152)
 
 ## March 29, 2024, version 0.15.0
 
