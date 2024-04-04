@@ -3,7 +3,6 @@ title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
 date: 2024-03-27T10:00
-tags: [NextGen, "security testing orchestration"]
 sidebar_position: 13
 ---
 
@@ -22,6 +21,17 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2024
+
+<!-- 2024-04-03 -->
+
+### Version 1.90.1
+
+#### Fixed issues
+
+- Removed  “Inactive options are coming soon” from the **Request Exemption** dialog box. All options in this dialog box are generally available. (STO-7297)
+- ZAP is no longer a part of OWASP. The UI and documentation have been updated to remove references to OWASP ZAP. (STO-7296)
 
 ## March 2024
 
