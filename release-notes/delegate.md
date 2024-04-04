@@ -68,13 +68,15 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-## March 2024
+## April 2024
 
-### Version 24.03.82603 <!--  March 28, 2024 -->
+### Version 24.04.82603 <!--  April 4, 2024 -->
 
 #### Hotfix
 
-- Adding addition retries on failures when verifying docker images during CD deployments. (CDS-93180)
+- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180)
+
+## March 2024
 
 ### Version 24.03.82601 <!--  March 28, 2024 -->
 
