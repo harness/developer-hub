@@ -9,9 +9,9 @@ sidebar_position: 2
 Currently, this feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-With the notifications management, you can configure notifications for the delegate events below: 
+With the notifications management, you can configure notifications for the delegate events below:
 
-- Delegate is down 
+- Delegate is down
 - Delegate has expired
 - Delegate expires in 1, 2, 3, or 4 weeks
 
@@ -21,18 +21,16 @@ You can use notifications management to configure and edit notifications for del
 
 ### Add a delegate event notification rule
 
-You can add delegate event notification rules at the account, project, or org scope. In this example, we'll add a new delegate event notification in the account scope.
+You can add delegate event notification rules at the account, project, or org scope.
 
 To add a new delegate event notification rule, do the following:
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add a delegate event notification rule.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
 
     ![](./static/notifications-management.png)
 
-5. Select **Setup New Notification**. The **New Notification Setup** wizard opens.
+3. Select **Setup New Notification**. The **New Notification Setup** wizard opens.
 
    ![](./static/new-notification-setup.png)
 
@@ -48,7 +46,7 @@ To add a new delegate event notification rule, do the following:
       :::
 
    7. Select **Apply**, then select **Continue**. The **Set Channels** screen opens.
-   8. Select your **Notification Channels**. 
+   8. Select your **Notification Channels**.
    9. (Optional) Toggle the **Enable on Save** option on to enable the rule.
 
       :::info
@@ -63,55 +61,47 @@ To add a new delegate event notification rule, do the following:
 
 After you create a delegate event notification rule, if you didn't enable the rule when you first created it, you must enable the rule to receive notifications.
 
-You can enable notification rules at the account, project, or org scope. In this example, we'll enable a notification rule in the account scope.
+You can enable notification rules at the account, project, or org scope.
 
 To enable a delegate event notification rule, do the following.
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-5. Under **Status**, for the rule that you want to enable, toggle the option to the on setting. Harness returns a message that the rule was successfully enabled.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to enable notification rules.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+3. Under **Status**, for the rule that you want to enable, toggle the option to the on setting. Harness returns a message that the rule was successfully enabled.
 
-### Enable a delegate event notification rule
+### Disable a delegate event notification rule
 
 You might need to temporarily disable notification rules you've set.
 
-You can disable notification rules at the account, project, or org scope. In this example, we'll disable a notification rule in the account scope.
+You can disable notification rules at the account, project, or org scope.
 
 To disable a delegate event notification rule, do the following.
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-5. Under **Status**, for the rule that you want to disable, toggle the option to the off setting. Harness returns a message that the rule was successfully disabled.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to disable a delegate event notification rule.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+3. Under **Status**, for the rule that you want to disable, toggle the option to the off setting. Harness returns a message that the rule was successfully disabled.
 
 ### Edit a delegate event notification
 
-You can use notifications management to edit notifications for delegate events from the account, project, or org scope. In this example, we'll edit a delegate event notification in the account scope.
+You can use notifications management to edit notifications for delegate events from the account, project, or org scope.
 
 To manage delegate event notifications, do the following:
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-5. Select **More Options** (&vellip;) corresponding to the notification you want to update, and then select **Edit**. The **Edit Notification Setup** wizard opens. 
-6. Edit your notification information on the necessary screen, selecting **Continue** to step through the wizard until you reach the **Set Channels** screen, then select **Submit** to save your changes.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to edit notifications.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+3. Select **More Options** (&vellip;) corresponding to the notification you want to update, and then select **Edit**. The **Edit Notification Setup** wizard opens.
+4. Edit your notification information on the necessary screen, selecting **Continue** to step through the wizard until you reach the **Set Channels** screen, then select **Submit** to save your changes.
 
 ### Delete a delegate event notification
 
-You delete notifications for delegate events from the account, project, or org scope. In this example, we'll delete a delegate event notification in the account scope.
+You delete notifications for delegate events from the account, project, or org scope.
 
 To delete a delegate event notification, do the following:
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-5. Select **More Options** (&vellip;) corresponding to the notification you want to delete, and then select **Delete**. A confirmation dialog opens.
-6. Select **Delete**.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to delete an event notification.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+3. Select **More Options** (&vellip;) corresponding to the notification you want to delete, and then select **Delete**. A confirmation dialog opens.
+4. Select **Delete**.
 
 ## Manage event notification channels
 
@@ -119,17 +109,15 @@ With notifications management, you can enable or disable notification channels a
 
 ### Add a new channel
 
-In this example, we'll add a new notification channel in the account scope.
+You can add a new notification channel from the account, project, or org scope.
 
 To add a new channel, do the following:
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-5. Select **Channels**, then select **New Channel**. The **Create Channel** dialog opens.
-6. Enter your **Channel Name**.
-7. Select the **Channel Type**. You can enable or disable the following notification channels:
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add a channel.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+3. Select **Channels**, then select **New Channel**. The **Create Channel** dialog opens.
+4. Enter your **Channel Name**.
+5. Select the **Channel Type**. You can enable or disable the following notification channels:
 
    - Slack
    - Email
@@ -137,19 +125,17 @@ To add a new channel, do the following:
    - PagerDuty
    - Webhooks
 
-8. (Optional). Select **+ Add** to add additional channels.
-9. Select **Apply** to save your changes.
+6. (Optional). Select **+ Add** to add additional channels.
+7. Select **Apply** to save your changes.
 
 ### Edit a channel
 
-In this example, we'll edit a notification channel in the account scope.
+You can edit a notification channel from the account, project, or org scope.
 
 To edit a channel, do the following:
 
-1. Sign in to Harness.
-2. Select your account.
-3. Select **Account Settings**, then select **Account Resources**. The Account Resources page opens.
-4. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-5. Select **Channels**.
-6. Select **More Options** (&vellip;) corresponding to the channel you want to update, and then select **Edit**. The **Edit Channel** dialog opens.
-7. Update your channel settings, then select **Apply** to save your changes.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to edit a notification channel.
+2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
+3. Select **Channels**.
+4. Select **More Options** (&vellip;) corresponding to the channel you want to update, and then select **Edit**. The **Edit Channel** dialog opens.
+5. Update your channel settings, then select **Apply** to save your changes.
