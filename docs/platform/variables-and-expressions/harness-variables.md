@@ -824,7 +824,7 @@ https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quic
 
 The execution id of the root or original execution. For instance, this value will be different from the execution's `executionId` when it is a retry. 
 
-Hnere's a example:
+Here's an example:
 - Initial Execution: The `executionId` is `kNHtmOaLTu66f_QNU-wdDw`. This execution failed and triggers a retry. 
 - Retry Execution: The `executionId` is `hrP0KR5aSM-gPGPYMYxV3g`. However, the `resumedExecutionId` is `kNHtmOaLTu66f_QNU-wdDw`.
 
