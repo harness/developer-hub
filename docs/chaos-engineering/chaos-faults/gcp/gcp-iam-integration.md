@@ -58,9 +58,9 @@ gcloud container clusters create CLUSTER_NAME \
 ```
 
 Replace the following:
-***CLUSTER_NAME:** The name of your new cluster.
-***COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
-***PROJECT_ID:** Your Google Cloud project ID.
+* **CLUSTER_NAME:** The name of your new cluster.
+* **COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
+* **PROJECT_ID:** Your Google Cloud project ID.
 
 * To enable Workload Identity on an existing cluster, run the following command:
 
@@ -71,9 +71,9 @@ gcloud container clusters update CLUSTER_NAME \
 ```
 
 Replace the following:
-***CLUSTER_NAME:** The name of your new cluster.
-***COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
-***PROJECT_ID:** Your Google Cloud project ID.
+* **CLUSTER_NAME:** The name of your new cluster.
+* **COMPUTE_REGION:** The compute engine region of your cluster. For zonal clusters, use `--zone=COMPUTE_ZONE`.
+* **PROJECT_ID:** Your Google Cloud project ID.
 
 ### Step 2: Configure HCE to use Workload Identity
 
@@ -98,8 +98,8 @@ gcloud iam service-accounts create GSA_NAME \
 ```
 
 Replace the following:
-***GSA_NAME:** The name of the new IAM service account.
-***GSA_PROJECT:** The project ID of the Google Cloud project for your IAM service account.
+* **GSA_NAME:** The name of the new IAM service account.
+* **GSA_PROJECT:** The project ID of the Google Cloud project for your IAM service account.
 
 
 3. Ensure that this service account has all the roles required to interact with the compute engine resources, which include VM instances and persistent disks depending on the GCP experiments that you want to execute.
@@ -112,10 +112,10 @@ gcloud projects add-iam-policy-binding PROJECT_ID \
 ```
 
 Replace the following:
-***PROJECT_ID:** Your Google Cloud project ID.
-***GSA_NAME:** The name of your IAM service account.
-***GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
-***ROLE_NAME:** The IAM role to assign to your service account, such as roles/spanner.viewer.
+* **PROJECT_ID:** Your Google Cloud project ID.
+* **GSA_NAME:** The name of your IAM service account.
+* **GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
+* **ROLE_NAME:** The IAM role to assign to your service account, such as roles/spanner.viewer.
 
 4. Allow the Kubernetes service account to be used for the GCP experiments to impersonate the GCP IAM service account. You can achieve this by adding an IAM policy binding between the two service accounts. This binding allows the Kubernetes service account to act as the IAM service account. Below is the command to bind the service accounts:
 
@@ -126,10 +126,10 @@ gcloud iam service-accounts add-iam-policy-binding GSA_NAME@GSA_PROJECT.iam.gser
 ```
 
 Replace the following:
-***GSA_NAME:** The name of your IAM service account.
-***GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
-***KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
-***NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
+* **GSA_NAME:** The name of your IAM service account.
+* **GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
+* **KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
+* **NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
 
 5. Annotate the Kubernetes service account to be used for HCE GCP experiments with the email address of the GCP IAM service account. Below is the command:\
 
@@ -140,10 +140,10 @@ iam.gke.io/gcp-service-account=GSA_NAME@GSA_PROJECT.iam.gserviceaccount.com
 ```
 
 Replace the following:
-***KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
-***NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
-***GSA_NAME:** The name of your IAM service account.
-***GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
+* **KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
+* **NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
+* **GSA_NAME:** The name of your IAM service account.
+* **GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
 
 ### Step 3: Update ChaosEngine manifest
 
@@ -170,11 +170,11 @@ gcloud iam service-accounts remove-iam-policy-binding GSA_NAME@GSA_PROJECT.iam.g
 ```
 
 Replace the following:
-***PROJECT_ID:** The project ID of the GKE cluster.
-***NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
-***KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
-***GSA_NAME:** The name of the IAM service account.
-***GSA_PROJECT:** The project ID of the IAM service account.
+* **PROJECT_ID:** The project ID of the GKE cluster.
+* **NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
+* **KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
+* **GSA_NAME:** The name of the IAM service account.
+* **GSA_PROJECT:** The project ID of the IAM service account.
 
 :::note
 It can take up to 30 minutes for cached tokens to expire.
