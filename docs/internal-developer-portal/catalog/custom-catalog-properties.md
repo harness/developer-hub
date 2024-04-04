@@ -83,6 +83,12 @@ metadata:
 ```
 
 - filter: This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. 
+    
+:::info 
+
+**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400
+
+:::
 
 - value: This field contains the value of the entity added under `field`. 
 
@@ -109,6 +115,8 @@ metadata:
 In the above example, we assign the team lead for `location_service` of type `service` as `Jane Harris` instead of `Jane Doe`. So `value_overrides` helps you to assign metadata values to individual software components.  
 
 ### cURL Example
+
+The endpoint could also be used to **append/replace** value for an already existing metadata. 
 
 ```cURL
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
