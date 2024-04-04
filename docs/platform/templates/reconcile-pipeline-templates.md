@@ -4,13 +4,13 @@ description: This topic explains how to reconcile pipeline template changes in H
 sidebar_position: 15
 ---
 
-If any [entity](https://developer.harness.io/docs/platform/references/harness-entity-reference/) referenced in a pipeline is updated, Harness prompts you to update the pipeline if you're viewing the pipeline in Pipeline Studio. Harness detects updates made to the referenced entities using Pipeline Studio or YAML view. Referenced entities are 
+If any [entity](https://developer.harness.io/docs/platform/references/harness-entity-reference/) referenced in a pipeline is updated, Harness prompts you to update the pipeline if you're viewing the pipeline in Pipeline Studio. Harness detects updates made to the referenced entities using Pipeline Studio or YAML view. 
 
 This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline. 
 
 One of the most common example of pipeline reconciliation is when you increase or decrease the number of runtime inputs.
 
-For example, let's consider a scenario with three templates: a pipeline template, a stage template, and a step template. In this scenario, the pipeline serves as the parent template, while the stage and step templates are its child templates. 
+For example, let's consider a scenario with three templates: a pipeline template, a stage template, and a step template. In this scenario, the pipeline serves as the parent template, while the stage is its child template, and the step serves as the stage's child template
 
 **Step Template**
 ```yaml
@@ -116,7 +116,7 @@ template:
       outputVariables: []
 ```
 
-When you have updated a child entity, in this case, the step template, the parent entities, i.e., stage and pipeline templates, need to be updated as well. In this scenario, the concept of reconciliation comes into play.
+When you have updated a child entity, in this case, the step template, the parent entities, i.e., stage and pipeline templates, need to be updated as well. In this scenario, the concept of reconciliation comes into play. 
 
 Now, when you move to the pipeline template, you will see a message: ``Some of the entities referenced in this template have gone out of sync.`` along with a ``Reconcile`` button.
 ![](./static/reconcile_popup.png)
@@ -163,7 +163,7 @@ template:
 
 ```
 
-Now, the parent entity i.e stage or pipeline can have subsets of the above mentioned ``allowed values``. But if you add a new value for example ``e`` then it won't allow you to add the same. 
+Now, the parent entity i.e stage or pipeline can have subsets of the above mentioned ``allowed values``. But if you add a new value for example ``e`` in the parent entity then it won't allow you to add the same since child entity in this case step template doesn't have that updated value in it's allowed value and the parent entity in the above scenario is picking up allowed values from child entity. 
 
 ## How Harness detects changes
 
