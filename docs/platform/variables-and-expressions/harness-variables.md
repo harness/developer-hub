@@ -920,19 +920,21 @@ For remote pipelines, the expression resolves to the Git branch where the pipeli
 
 ## Deployment, pipeline, stage, and step status
 
+<!-- move to status topic and redirect? -->
+
 Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
 
 ![](./static/harness-variables-27.png)
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
-#### Stage status
+### Stage status
 
 The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
 
 You must use the expression after the stage in execution.
 
-#### Step status
+### Step status
 
 The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
@@ -1755,13 +1757,17 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 ## Strategy
 
-You can use Harness expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for nodes (stages/steps) using a matrix or repeat strategy.
+You can use Harness expressions to retrieve the current execution status or identifiers for iterations of a [matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
-The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+### Strategy status
+
+<!-- move to status page and redirect? -->
+
+The statuses of the nodes (stages/steps) using a matrix/repeat looping strategy can be `RUNNING`, `FAILED`, or `SUCCESS`.
 
 Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
 
-### \<+strategy.currentStatus>
+#### \<+strategy.currentStatus>
 
 The current status of the looping strategy for the node with maximum depth.
 
@@ -1771,19 +1777,19 @@ In cases where both the step and the stage have the looping strategy configured,
 
 If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the current stage.
 
-### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
+#### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
 For example, `echo <+strategy.node.cs1.currentStatus>`.
 
-### \<+\<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
+#### \<+\<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
 
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
 For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
 
-### identifierPostFix overview
+### Strategy identifierPostFix
 
 When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique Ids of the child stages/steps/step groups created by the looping operation.
 
@@ -1813,7 +1819,7 @@ strategy:
 
 The above strategy will spawn 4 stages/steps and the `identifierPostfix` values will be `_0`, `_1`, `_2`, and `_3`.
 
-### \<+strategy.identifierPostFix>
+#### \<+strategy.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
 
@@ -1827,19 +1833,19 @@ Let's look at an example using the execution of a stage with the identifier `bui
 
 Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
 
-### \<+step.identifierPostFix>
+#### \<+step.identifierPostFix>
 
 This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
 
-### \<+stage.identifierPostFix>
+#### \<+stage.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
 
-### \<+stepGroup.identifierPostFix>
+#### \<+stepGroup.identifierPostFix>
 
 This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
 
-### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
+#### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
 For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2.
@@ -1853,7 +1859,7 @@ Use the following expressions to obtain the `identifierPostFix` for a specific s
 
 Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
 
-### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.\*>
+#### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.\*>
 
 Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels.
 

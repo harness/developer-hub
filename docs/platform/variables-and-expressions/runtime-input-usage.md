@@ -7,7 +7,7 @@ sidebar_position: 2
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
+For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md). These options are also sometimes available for other entities, such as connectors and triggers.
 
 Runtime input provides a placeholder with the expectation that you'll define this value at runtime.
 
