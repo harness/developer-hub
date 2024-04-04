@@ -1,7 +1,7 @@
 ---
 title: Use Java string methods
 description: You can use any Java string method on Harness expressions.
-sidebar_position: 4
+sidebar_position: 30
 helpdocs_topic_id: 91bhqk7t4q
 helpdocs_category_id: bp8t5hf922
 helpdocs_is_private: false

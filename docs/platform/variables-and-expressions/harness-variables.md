@@ -1,7 +1,7 @@
 ---
 title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
-sidebar_position: 3
+sidebar_position: 20
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
