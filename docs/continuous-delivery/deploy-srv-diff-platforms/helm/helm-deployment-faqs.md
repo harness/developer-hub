@@ -64,6 +64,6 @@ You can achieve this by using the following expression in **Release Name** to sh
 
 ### Troubleshoot 401 Not Authorized issue with Helm connector
 
-First, ensure the credentials that you have passed to the Helm HTTP or OCI Connector are still valid.
+First, ensure the credentials that you have passed to the Helm HTTP or OCI connector are still valid.
 
 You can also `exec` into your Harness Delegate and run the `helm repo add` command on the delegate to manually fetch the repo to see if the delegate can pull it.
