@@ -126,12 +126,12 @@ metadata:
    name: kubernetes-delegate-hpa
    namespace: harness-delegate-ng
    labels:
-       harness.io/name: kubernetes-delegate
+       harness.io/name: PUT_YOUR_DELEGATE_NAME
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: kubernetes-delegate
+    name: PUT_YOUR_DELEGATE_NAME
   minReplicas: 1
   maxReplicas: 1
   targetCPUUtilizationPercentage: 99
