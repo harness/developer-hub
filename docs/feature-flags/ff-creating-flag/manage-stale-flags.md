@@ -150,7 +150,7 @@ If you'd like to see this demonstrated, check out the following YouTube video fr
 
 ### Run the flag cleanup pipeline
 
-In this step, let's assumne the pipeline is set up and our flags are marked for cleanup. From here, all we need to do is run the pipeline to do the cleanup. Here is how to do that.:
+In this step, let's assume the pipeline is set up and our flags are marked for cleanup. From here, all we need to do is run the pipeline to do the cleanup. Here is how to do that:
 
 1. Select the repo for the codebase and the branch.
 
