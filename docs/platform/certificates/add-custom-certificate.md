@@ -4,7 +4,7 @@ description: This topic explains how to add your own signed custom certificate.
 sidebar_position: 1
 sidebar_label: Add a custom certificate
 ---
-:::info note
+:::note
 Currently, this feature is behind the feature flag `PL_CENTRAL_CERTIFICATES_MANAGEMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 

@@ -15,7 +15,7 @@ A Harness monitored service functions as a unified logical entity across three m
 
 ## Create a monitored service at project level
 
-:::info note
+:::note
 Currently, this feature is behind the feature flag `SRM_COMMON_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
@@ -80,7 +80,7 @@ To view the monitored service details within a specific module:
 
 ## Monitored service within the Continuous Delivery (CD) module
 
-:::info note
+:::note
 Currently, this feature is behind the feature flag `SRM_COMMON_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
@@ -109,7 +109,7 @@ You can [create a monitored service](../service-reliability-management/monitored
 
 ## Monitored service within the Continuous Error Tracking (CET) module
 
-:::info note
+:::note
 Currently, this feature is behind the feature flag `CET_PLATFORM_MONITORED_SERVICE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
