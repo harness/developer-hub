@@ -74,7 +74,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180)
+- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180, ZD-58933, ZD-59370, ZD-60138)
 
 ## March 2024
 
