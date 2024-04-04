@@ -17,6 +17,6 @@ In bidirectional sync, changes made on either the Git repository or Harness are 
 :::info note
 Currently the git file cache duration is set to 30 days.
 :::
-Read more on how to enable [Biderectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
+Read more on how to enable [Bidirectional Sync](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
 
 
