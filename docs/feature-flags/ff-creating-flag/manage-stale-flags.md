@@ -19,7 +19,7 @@ To help manage your flags, here are the definitions of the different flag states
  - Potentially Stale: 
  -- Any flag that meets any of these criteria (these are ORs, not ANDs)
  -- Has been disabled for more than 60 days 
- -- Is enabled but has not received any new targeting rules or rules updates or default rule changes for more than 60 days
+ -- Is enabled but has not received any new targeting rules or rule updates or default rule changes for more than 60 days
  -- Is enabled but has not received any evaluations for more than 60 days
 
  - Enabled Flags:
