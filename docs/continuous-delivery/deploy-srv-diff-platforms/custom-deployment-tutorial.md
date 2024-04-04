@@ -295,7 +295,7 @@ If you do not use `<+artifact.image>`, Harness will not attempt to download and 
 
 For non-containerized artifacts, use `<+artifact.path>`.
 
-To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables#artifact).
+To learn more, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables#artifact).
 
 ## Create the Environment
 

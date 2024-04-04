@@ -124,7 +124,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -186,7 +186,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### CloudFormation Parameters Overrides
 

@@ -101,7 +101,7 @@ You can continue typing or select the expression from the list of suggestions.
 
 For more information, go to:
 
-* [Built-in and custom Harness variables reference](../variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](../variables-and-expressions/harness-variables.md)
 * [Write expressions using any JSON parser tool](./expression-v2.md)
 * [Use Java string methods](./expressions-java-methods.md)
 * [Expression status type reference](./status-type-reference.md)

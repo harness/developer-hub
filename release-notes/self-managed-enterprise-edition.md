@@ -2236,7 +2236,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
 
-  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+  For more information about building expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - The `pipelines/execution/{planExecutionId}/notes` API call did not have the `PIPELINE_EXECUTE` permission, so you could not update notes even if you had the permissions to execute the pipeline.
 
