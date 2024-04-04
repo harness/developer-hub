@@ -36,7 +36,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### Fixed issues
 
 - Fixed an issue where spidering in a ZAP scan resulted in the error `Unable to find binary in default location`. (STO-7316)
-- Fixed an issue where ZAP scans that required authentication resulted in the error `Scanner object has no attribute 'hostname'`. This fix also includes changes to the shared paths where you need to include ZAP scrips in your pipeline. For more information, go to [Important notes](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#important-notes-for-running-zap-scans-in-sto) in the ZAP scanner reference. (STO-7288)
+- Fixed an issue where ZAP scans that required authentication resulted in the error `Scanner object has no attribute 'hostname'`. This fix also includes changes to the shared paths where you need to include ZAP scripts in your pipeline. For more information, go to [Important notes](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#important-notes-for-running-zap-scans-in-sto) in the ZAP scanner reference. (STO-7288)
 - ZAP is no longer a part of OWASP. The UI and documentation have been updated to remove references to OWASP ZAP. (STO-7296)
 - Removed  “Inactive options are coming soon” from the **Request Exemption** dialog box. All options in this dialog box are generally available. (STO-7297)
 

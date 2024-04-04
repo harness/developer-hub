@@ -21,7 +21,7 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
   - [Script-based authentication](https://www.zaproxy.org/docs/desktop/start/features/authmethods/#scriptBased)
   - [Form-based authentication](https://www.zaproxy.org/docs/desktop/start/features/authmethods/#formBased)
   - [Script-based session management](https://www.zaproxy.org/docs/desktop/start/features/sessionmanagement/#sbsm) – ECMAScript / JavaScript using Nashorn engine
-    - Other languages such as Zest, Groovy, Python etc. are not currently supported.
+    - Other languages such as Zest, Groovy, Python, etc. are not currently supported.
 
 - ZAP is a highly configurable tool with many options. You should verify that your context, authentication, and other ZAP scripts work as intended before adding them to your STO pipeline.
 
