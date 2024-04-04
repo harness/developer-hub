@@ -177,7 +177,7 @@ Replace the following:
 * **GSA_PROJECT:** The project ID of the IAM service account.
 
 :::note
-It can take up to 30 minutes for cached tokens to expire.
+It takes up to 30 minutes for cached tokens to expire.
 :::
 
 * Remove the annotation from the service account being used for HCE GCP experiments using the following command:
