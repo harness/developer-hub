@@ -71,7 +71,7 @@ To disable a delegate event notification rule, do the following.
 
 1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to disable a delegate event notification rule.
 2. Under **General**, select **Notifications Management**. The Notification Management page opens to the **Rules** tab by default.
-3. Under **Status**, for the rule that you want to disable, toggle the option to the off setting. Harness returns a message that the rule was successfully disabled.
+3. Locate the rule you want to disable and disable the **Status** toggle. Harness confirms that you disabled the rule.
 
 ### Edit a delegate event notification
 
