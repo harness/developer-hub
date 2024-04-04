@@ -21,6 +21,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.6.7
+
+ - Logs flags/groups payload as `info` level log. (FFM-11022)
+
 #### Version 1.6.6
 
  - We've made cache & exception handling improvements including:
