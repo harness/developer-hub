@@ -194,9 +194,9 @@ Here are some Function Definition examples.
 
 function:
   name: <functionName>
-  buildConfig:
+  build_config:
     runtime: nodejs18
-    entryPoint: helloGET
+    entry_point: helloGET
   environment: GEN_2
 function_id: <functionName>
 ```
@@ -209,9 +209,9 @@ function_id: <functionName>
 ```yaml
 function:
   name: my-http-function
-  buildConfig:
+  build_config:
     runtime: nodejs14
-    entryPoint: myFunction
+    entry_point: myFunction
   environment: GEN_2
 function_id: my-http-function
 ```
@@ -227,10 +227,10 @@ function:
   buildConfig:
     runtime: python38
     entryPoint: my_function
+    environmentVariables:
+      MY_VAR: my-value
   environment: GEN_2
 function_id: my-env-function
-  environmentVariables:
-    MY_VAR: my-value
 
 ```
 
@@ -242,16 +242,17 @@ function_id: my-env-function
 ```yaml
 function:
   name: my-storage-function
-  buildConfig:
+  build_config:
     runtime: go111
-    entryPoint: MyFunction
+    entry_point: MyFunction
+  service_config:
+    available_memory: 512
+    timeout: 180s
   environment: GEN_2
+  event_trigger:
+    trigger: projects/_/buckets/my-bucket
+    event_type: google.storage.object.finalize    
 function_id: my-storage-function
-  trigger:
-    eventType: google.storage.object.finalize
-    resource: projects/_/buckets/my-bucket
-  availableMemoryMb: 512
-  timeout: 180s
 
 ```
 
@@ -263,13 +264,13 @@ function_id: my-storage-function
 ```yaml
 function:
   name: canaryDemo-<+env.name>
-  serviceConfig:
+  service_config:
     environment_variables:
       MY_ENV_VAR: "True"
       GCF_FF_KEY: "<+env.variables.GCF_FF_KEY>"
-  buildConfig:
+  build_config:
     runtime: python39
-    entryPoint: hello_world
+    entry_point: hello_world
   environment: GEN_2
 function_id: canaryDemo-<+env.name>
 ```
@@ -290,29 +291,30 @@ function:
   description: "Using Secret Environment Variables"
   region: "us-east1"
   runtime: "nodejs16"
-  entryPoint: myFunction
+  entry_point: myFunction
   max_instances: 1
-  eventTrigger:
+  event_trigger:
     event_type: "providers/cloud.pubsub/eventTypes/topic.publish"
-    resource: "projects/<project>/topics/<topic>"
-  environment_variables:
-    MY_ENV_VAR1: value1
-    MY_ENV_VAR2: value2
-  secret_environment_variables:
-    [
-      {
-        key: "MY_SECERT_ENV_VAR1",
-        project_id: <project_id>,
-        secret: "<secretName1>",
-        version: "<secretVersion1>",
-      },
-      {
-        key: "MY_SECERT_ENV_VAR2",
-        project_id: <project_id>,
-        secret: "<secretName2>",
-        version: "<secretVersion2>",
-      },
-    ]
+    trigger: "projects/<project>/topics/<topic>"
+  service_config:
+    environment_variables:
+      MY_ENV_VAR1: value1
+      MY_ENV_VAR2: value2
+    secret_environment_variables:
+      [
+        {
+          key: "MY_SECERT_ENV_VAR1",
+          project_id: <project_id>,
+          secret: "<secretName1>",
+          version: "<secretVersion1>",
+        },
+        {
+          key: "MY_SECERT_ENV_VAR2",
+          project_id: <project_id>,
+          secret: "<secretName2>",
+          version: "<secretVersion2>",
+        },
+      ]
 ```
 
 </details>
