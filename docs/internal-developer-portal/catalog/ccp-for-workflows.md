@@ -20,7 +20,7 @@ In this tutorial we will be using the catalog metadata ingestion APIs to add add
 1. Now using the following cURL command add a new metadata `onShoreTeamLead` in all your software component of type `services` and using the tag `java`
 
 ```cURL
-curl --location 'https://app.harness.io/v1/catalog/custom-properties' \
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 --header 'Harness-Account: <Add_YOUR_Account_ID>' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: <Add your key>' \
