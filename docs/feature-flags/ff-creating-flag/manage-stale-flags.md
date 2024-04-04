@@ -179,7 +179,7 @@ To set up your cleanup configuration file, you will need to update the rules fil
 
 <DocVideo src="https://www.youtube.com/embed/Y22vmMNwPYU?si=W-SHEQlHV-3cNYOg" />
 
-### Secrets configuration for Gitub
+### Secrets configuration for Github
 
 You can find the repo for the Github connector that connects to the repo to clone down the code to cleanup [here](https://github.com/harness/flag_cleanup). The branch to use is titled, `unscripted`.
 
