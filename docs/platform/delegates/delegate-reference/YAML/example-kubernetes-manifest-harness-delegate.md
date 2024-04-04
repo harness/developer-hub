@@ -123,7 +123,7 @@ spec:
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler
 metadata:
-   name: kubernetes-delegate-hpa
+   name: PUT_YOUR_DELEGATE_NAME
    namespace: harness-delegate-ng
    labels:
        harness.io/name: PUT_YOUR_DELEGATE_NAME
