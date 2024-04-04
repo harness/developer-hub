@@ -31,7 +31,7 @@ Adds a metadata in the already existing software component on IDP Catalog.
 ### URL 
 
 ```bash
-https://app.harness.io/v1/catalog/custom-properties
+https://app.harness.io/gateway/v1/catalog/custom-properties
 ```
 
 ### Headers
@@ -50,24 +50,15 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ```json
 {
-    "field": "metadata.releaseVersion",
+    "field": "metadata.teamLead",
     "filter": {
         "kind": "Component",
         "type": "service",
         "owners": [
-            "harness_account_all_users"
-        ],
-        "lifecycle": [
-            "experimental",
-            "production"
-        ],
-        "tags": [
-            "food-ordering",
-            "java",
-            "tag1"
+            "Product_Engineering"
         ]
     },
-    "value": "1.21.01"
+    "value": "Jane Doe"
 }
 ```
 
@@ -78,7 +69,7 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ![](./static/raw-yaml.png)
 
 ```YAML
-###Example
+###Example Processed Entitiy YAML as displayed in IDP
 
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -87,7 +78,7 @@ metadata:
   description: Description of my new service
   annotations:
        harness.io/project-url: https://app.harness.io/ng/#/account/vpCkHKsDSxK9_KYfjCTMKA/cd/orgs/default/projects/PREQA_NG_Pipelines
-  releaseVersion: 1.21.01
+  teamLead: Jane Doe
 ...
 ```
 
@@ -95,10 +86,32 @@ metadata:
 
 - value: This field contains the value of the entity added under `field`. 
 
+
+### How to assign metadata value for an individual software component?
+
+- value_overrides: This field is used when you want to assign multiple values against a single metadata for different `filter.type` or `filter.kind`. Here's an Example of the Request Body with `value_overrides`:
+
+```JSON
+{
+    "field": "metadata.teamLead",
+    "filter": {
+        "kind": "Component",
+        "type": "service",
+        "owners": [
+            "Product_Engineering"
+        ]
+    },
+    "value_overrides": "[location_service: Jane Harris]",
+    "value": "Jane Doe"
+}
+```
+
+In the above example, we assign the team lead for `location_service` of type `service` as `Jane Harris` instead of `Jane Doe`. So `value_overrides` helps you to assign metadata values to individual software components.  
+
 ### cURL Example
 
 ```cURL
-curl --location 'https://app.harness.io/v1/catalog/custom-properties' \
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 --header 'Harness-Account: px7xd_BFRCi-pfABYXVjvw' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: <Add your key>' \
@@ -162,21 +175,12 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ```json
 {
-    "field": "metadata.releaseVersion",
+    "field": "metadata.teamLead",
     "filter": {
         "kind": "Component",
         "type": "service",
         "owners": [
-            "harness_account_all_users"
-        ],
-        "lifecycle": [
-            "experimental",
-            "production"
-        ],
-        "tags": [
-            "food-ordering",
-            "java",
-            "tag1"
+            "Product_Engineering"
         ]
     }
 }
@@ -194,7 +198,7 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ### cURL Example
 
 ```cURL
-curl --location --request DELETE 'https://qa.harness.io/v1/catalog/custom-properties' \
+curl --location --request DELETE 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 --header 'Harness-Account: px7xd_BFRCi-pABCYXVjvw' \
 --header 'Content-Type: application/json' \
 --header 'x-api-key: {{apiKey}}' \
