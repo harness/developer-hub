@@ -189,7 +189,7 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 ![](./static/raw-yaml.png)
 
 
-- filter: This is used to identify the software components from where you want to delete the entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. 
+- filter: This is used to identify the software components from where you want to delete the metadata information, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. 
 
 ### cURL Example
 
