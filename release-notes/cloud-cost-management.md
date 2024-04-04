@@ -24,8 +24,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### New features and enhancements
 
-- Enhanced Discount Calculation in Cloud Cost Management: To improve the accuracy of discount calculations, we've updated our data utilization strategy. Previously, discounts were calculated based on the `lineitemtype` column, leading to potential inaccuracies under specific filter scenarios. Now, we've integrated the use of `edpdiscount`, `bundleddiscount`, and `privaterateddiscount` columns from the Cost and Usage Report (CUR), ensuring discounts are accurately calculated at the service level. [CCM-20458]
-
 - Updates in Output Terminal in Asset Governance:
     - Filter: We've added a new feature for filtering the JSON in Evaluations. Users can filter based on the keys of the output and use comparison operators like `==`, `<`, `>`, etc. for comparison against numeric fields and use the `LIKE` operator for comparison against alphabetic fields. [CCM-
     - Sort: Users can also sort the output based on a specific key in ascending or descending order. For showing outputs with only one particular key, they can use the `pick` option.
@@ -36,6 +34,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Refresh Cost Impact for Evaluations: We've added a new option to "refresh" the cost impact for a particular evaluation for only supported resources. With this option, users can choose to refresh the cost impact to see updated savings. Please note, it can take up to 30 minutes to show the updated results. [CCM-16807]
 
 - Pagination and Ignore Recommendations in Governance Overview Page: Users can now view 5 recommendations per page on the overview screen of Asset Governance. We now also show ignored recommendations in the list with the option to remove them from the `ignored list` in the overview page itself. [CCM-16824]
+
+
+#### Early access features
+
+- Introduction of `CloudAccountId` and VM `ResourceId` in `ClusterData` Table: This feature is a beta release behind a feature flag. We are introducing `cloudAccountId` and VM `resourceId` in the `clusterData` table. This addition enhances the capabilities of the system, providing more comprehensive data for analysis and management purposes. Please note that this feature is currently in early access and may undergo further improvements based on user feedback. [CCM-15506]
+  
+#### Fixed issues
+
+- Enhanced Discount Calculation in Cloud Cost Management: To improve the accuracy of discount calculations, we've updated our data utilization strategy. Previously, discounts were calculated based on the `lineitemtype` column, leading to potential inaccuracies under specific filter scenarios. Now, we've integrated the use of `edpdiscount`, `bundleddiscount`, and `privaterateddiscount` columns from the Cost and Usage Report (CUR), ensuring discounts are accurately calculated at the service level. [CCM-20458]
+
+- Enhanced Rendering of Timeseries Data for Shared Bucket Cost: Previously, when viewing shared bucket costs using the shared bucket filter, the timeseries data was not rendered correctly. We have implemented a fix to address this issue, ensuring that the timeseries data is now properly displayed. [CCM-16876]
+
+- Improved Cluster Cost Calculation for Grouping by Cluster Cost Category: Previously, when grouping by cluster cost category, `Others` costs were calculated from pod cost, resulting in costs being displayed even if they were 0. To address this, we have enhanced the calculation process to derive costs from node cost instead of pod cost depending on the group by selected. This ensures accurate cost representation, eliminating discrepancies in cases where costs should be zero. [CCM-17050]
 
 ## March 2024
 
