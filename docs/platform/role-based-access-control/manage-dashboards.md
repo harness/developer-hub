@@ -51,7 +51,7 @@ To add and manage permissions for the **Dashboard Viewer** role for users, do th
 
 ## Limit project access for STO dashboards
 
-:::info note
+:::note
 
 Currently, this feature is behind the feature flag `CDB_PROJECT_RBAC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
