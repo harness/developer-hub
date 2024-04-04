@@ -15,12 +15,26 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
 
 ## Important notes for running ZAP scans in STO
 
- If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
+- Harness STO currently supports the following ZAP features:
 
-  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
+  - AJAX spidering with Firefox and Selenium. Other browsers such as Chrome are not currently supported.
+  - [Script-based authentication](https://www.zaproxy.org/docs/desktop/start/features/authmethods/#scriptBased)
+  - [Form-based authentication](https://www.zaproxy.org/docs/desktop/start/features/authmethods/#formBased)
+  - [Script-based session management](https://www.zaproxy.org/docs/desktop/start/features/sessionmanagement/#sbsm) – ECMAScript / JavaScript using Nashorn engine
+    - Other languages such as Zest, Groovy, Python etc. are not currently supported.
+
+- ZAP is a highly configurable tool with many options. You should verify that your context, authentication, and other ZAP scripts work as intended before adding them to your STO pipeline.
+
+- Place your ZAP scripts in the following shared paths for your scan stage:
+  - Context scripts: `/shared/customer_artifacts/context`
+  - All other scripts:  `/shared/customer_artifacts/scripts/<script-type>/filename`
+  - To verify the correct script-type subfolder, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
+    - Examples:
+      - `/shared/customer_artifacts/scripts/session`
+      - `/shared/customer_artifacts/scripts/authentication`
+
+- You need to [specify the full path](#context-name) to the ZAP Context script. 
+
 
 ### Root access requirements 
 
@@ -139,6 +153,31 @@ import StoSettingInstancePath from '../shared/step_palette/instance/_path.md';
 
 
 <StoSettingInstancePath />
+
+### Scan Tool
+
+#### Context Name
+
+The ZAP context script to use for the scan. 
+
+:::note
+
+This  integration has the following known issue:
+  - The **Context Name** field in the ZAP step UI does not capture the specified context file. (STO-7287)
+  - This issue will be fixed shortly.
+  - As a workaround, you can specify the context file in the Settings field. Add a new setting with the following key-value pair: 
+    - key = `product_context_name` 
+    - value = `/shared/customer_artifacts/context/filename.context`
+    
+     <DocImage path={require('../static/sto-7287-zap-workaround.png')} width="50%" height="50%" title="Add setting to specify ZAP context file" />
+
+:::
+
+#### Port
+
+import StoScanToolPort from '../shared/step_palette/tool/_port.md'
+
+<StoScanToolPort  />
 
 ### Ingestion File
 
