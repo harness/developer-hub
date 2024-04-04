@@ -20,6 +20,8 @@ This card can help you display additional information like name of team lead, li
 
 This card component needs to be added in **Layout** under **Admin** section. Here's an example
 
+![](./static/navigation-layout.png)
+
 ```YAML
 - component: EntityAdditionalInfoCard
   specs:
