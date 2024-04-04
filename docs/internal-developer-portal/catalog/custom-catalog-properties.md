@@ -143,6 +143,8 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 ### Response:
 The response will ingest/append a metadata in the desired software component in your IDP catalog.
 
+<DocImage path={require('./static/catalog-custom-property.png')} />
+
 ## Entity Deletion API
 
 ### Endpoint
