@@ -35,6 +35,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Pagination and Ignore Recommendations in Governance Overview Page: Users can now view 5 recommendations per page on the overview screen of Asset Governance. We now also show ignored recommendations in the list with the option to remove them from the `ignored list` in the overview page itself. [CCM-16824]
 
+
+#### Early access features
+
+- Introduction of `CloudAccountId` and VM `ResourceId` in `ClusterData` Table: This feature is a beta release behind a feature flag. We are introducing `cloudAccountId` and VM `resourceId` in the `clusterData` table. This addition enhances the capabilities of the system, providing more comprehensive data for analysis and management purposes. Please note that this feature is currently in early access and may undergo further improvements based on user feedback. [CCM-15506]
+  
 #### Fixed issues
 
 - Enhanced Discount Calculation in Cloud Cost Management: To improve the accuracy of discount calculations, we've updated our data utilization strategy. Previously, discounts were calculated based on the `lineitemtype` column, leading to potential inaccuracies under specific filter scenarios. Now, we've integrated the use of `edpdiscount`, `bundleddiscount`, and `privaterateddiscount` columns from the Cost and Usage Report (CUR), ensuring discounts are accurately calculated at the service level. [CCM-20458]
@@ -42,7 +47,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Enhanced Rendering of Timeseries Data for Shared Bucket Cost: Previously, when viewing shared bucket costs using the shared bucket filter, the timeseries data was not rendered correctly. We have implemented a fix to address this issue, ensuring that the timeseries data is now properly displayed. [CCM-16876]
 
 - Improved Cluster Cost Calculation for Grouping by Cluster Cost Category: Previously, when grouping by cluster cost category, `Others` costs were calculated from pod cost, resulting in costs being displayed even if they were 0. To address this, we have enhanced the calculation process to derive costs from node cost instead of pod cost depending on the group by selected. This ensures accurate cost representation, eliminating discrepancies in cases where costs should be zero. [CCM-17050]
-  
+
 ## March 2024
 
 ### Version 1.10.2
