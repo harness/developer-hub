@@ -120,9 +120,8 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<!-- 
+<!-- COMMENT THIS OUT UNTIL SEMGREP ORCHESTRATION IS AVAILABLE -->
 
-COMMENTING THIS OUT UNTIL SEMGREP ORCHESTRATION IS AVAILABLE
 ### Additional CLI flags
 
 You can run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with flags such as:
@@ -135,7 +134,7 @@ import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-
 
 <StoSettingCliFlagsCaution />
 
--->
+
 
 
 ### Fail on Severity
