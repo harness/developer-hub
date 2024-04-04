@@ -6,7 +6,9 @@ sidebar_position: 40
 
 Collections are groupings representing subdivisions of a [Collection category](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat). By default, each Collection category has one root, or **All**, Collection. For example, the **Teams** category automatically has an **All Teams** Collection. Under the root Collection, you can create any number of Collections and Collection levels.
 
-For example, in the Teams category, you can have a Collection for your Engineering teams, and then you can create a child Collection for the Front End team under the Engineering teams Collection. The resulting hierarchy might look like this:
+![](./static/collections.png)
+
+For example, in the **Teams** category, you can have a Collection for your **Engineering Teams**, and then you can create a child Collection for the **Front End Team** under the **Engineering Teams** Collection. The resulting hierarchy might look like this:
 
 * Harness project
   * Teams (Collection category)
@@ -23,22 +25,26 @@ Inheritance flows down the Collection levels. For example, Collection categories
 Depending upon how Insights should be driven across teams for your organization Collections can be configured in two distinct approaches:
 
 1. Asset-Based Collections
-2. People-Based
+2. People-Based Collections
+
+<DocVideo src="https://www.youtube.com/embed/3sD8K-ratYM?si=h4u6dpUpmYLI_ZEg" />
 
 ### Asset-Based Collections
 
-Asset-based Collections are defined based on digital assets, primarily utilizing Jira projects (or any other Issue Management Platform) and GitHub (or any other SCM) repositories, and other integrations as their foundational elements. 
+Asset-based Collections are defined based on digital assets, primarily utilizing Jira projects (or any other Issue Management Platform) and GitHub (or any other SCM) repositories, and other integrations as their foundational elements.
 
 These teams are organized based on digital assets and code repositories, with the flexibility to apply additional filters as per the requirements.
 
 * Asset-based Collections are centered around specific Jira (Issue Management) projects and GitHub (SCM) repositories, which serve as their primary assets.
-* All insights and metrics in this type of Collection are aligned with the assets defined for each team. For example, if a team defines its focus on Project X, all metrics and dashboards will correspond to Project X.
+* All Insights and Metrics in this type of Collection are aligned with the assets defined for each team. For example, if a team defines its focus on a particular Project, all metrics and dashboards will correspond to that particular project.
 
-### Configure an Asset Based Collection
+### Configure Asset Based Collection
 
 The **Collection Definition** section allows you to configure the Collection as either a people-based or asset-based Collection. Asset-based collections are defined based on a specific asset.
 
 To define a collection based on a specific asset, you will have to add the respective integration and associated integration filters in the Collection definition settings. This enables you to define the criteria that determine how contributors will be associated with the collection.
+
+![](./static/asset-based-collection.png)
 
 ### People-Based Collections
 
@@ -48,10 +54,12 @@ People-based Collections are created based on individual members who belong to a
 * It is recommended to use Trellis exclusively with People-Based Teams. Example: If a team member contributes to three different projects, the metrics and insights from all three projects are considered when evaluating that team member’s performance and contributions.
 * This user-centric approach allows for a comprehensive assessment of an individual’s impact across multiple projects.
 
-### Configure a People-Based Collection
+### Configure People-Based Collection
 
 **People-Based Collections** are defined based on the Contributor data.
 To define a people-based Collection you can add the respective contributor-level filters on the custom attributes in the Collection Definition settings or add contributor data manually or import the data using a CSV.
+
+![](./static/people-based-collection.png)
 
 ## View Collections
 
@@ -98,13 +106,16 @@ Options for editing Collections are only available on **Flat List** view.
 
 8. Follow the steps to define an People Based Collection. To learn more, go to [People Based Collections](#people-based-collections).
    - In the **Collection Definition** settings, Select the **Configure Attribute** option under the **Collections** section. <br /> <br />
+
 ![](./static/people-based-collection-filters.png) <br />
+
    - Add **Filters** using the custom attributes to define the criteria to associate contributors with the Collection. <br /> <br />
+
 ![](./static/people-based-collections.png)
 
-1.  Once you’ve configured the Collection definition, click on **Save** to save the collection.
+9.  Once you’ve configured the Collection definition, click on **Save** to save the collection.
 
-### Manage Insights associations
+## Manage Insights associations
 
 All [Insights](/docs/software-engineering-insights/insights/sei-insights) must be associated with at least one Collection. You can configure these associations through Collection settings or when creating or editing Insights. For information about creating and editing Insights, go to [Insights](/docs/software-engineering-insights/insights/sei-insights).
 
