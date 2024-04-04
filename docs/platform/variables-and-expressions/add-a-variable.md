@@ -47,7 +47,13 @@ This topic explains how to add and reference variables in Harness. It assumes yo
 * Sometimes you can mark variables as required.
    * The **Required** setting is supported for pipeline variables, stage variables, and CD service and environment variables.
    * The **Required** setting is also enforced when the variable is defined in a template and the template is included in a pipeline.
-* Pipelines fail if a variable's default value starts with an asterisk (`*`). Instead, you can wrap the asterisk in double quotes (`"*"`).
+
+
+:::warning
+
+Pipelines fail if a variable's default value starts with an asterisk (`*`). Instead, you can wrap the asterisk or value in double quotes (`"*"`).
+
+:::
 
 ### Variable availability to pipelines, stages, services, and environments
 

@@ -167,6 +167,10 @@ For any expression or runtime input defined in a template, you can add the defau
 
   For example, when using a template with runtime input (`<+input>`), you can append the `default()` method to specify a default value in the parent entity, such as `<+input>.default(default_val_in_parent)`.
 
+### Default values can't start with an asterisk
+
+Pipelines fails if a variable's default value starts with `*`. This includes runtime input values. To avoid this wrap the asterisk or value in quotes, such as `"*"`.
+
 ## Set allowed values
 
 Use allowed values to provide a fixed range of acceptable values for a runtime input.
@@ -199,6 +203,25 @@ If you specify allowed values *and* a [default value](#default-values), the defa
 
 </TabItem>
 </Tabs>
+
+:::info allowed values in JSON
+
+If you use runtime input with allowed values in JSON, use double quotes as necessary to ensure the JSON is valid.
+
+For example, these expressions both resolve to `{x:y}`:
+
+```
+<+input>.allowedValues({"x":"y"})
+"<+input>.allowedValues({x:y})"
+```
+
+If you needed the allowed values to include quotes, such as `{"x": "y"}`, then you need to escape the quotes in the allowed values. For example:
+
+```
+"<+input>.allowedValues({\\\"x\\\": \\\"y\\\"})"
+```
+
+:::
 
 ## Allow multiple selection
 

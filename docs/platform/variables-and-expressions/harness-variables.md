@@ -1,5 +1,5 @@
 ---
-title: Built-in and custom Harness variables reference
+title: Use Harness expressions
 description: List of default (built-in) Harness expressions.
 sidebar_position: 20
 helpdocs_topic_id: lml71vhsim
@@ -13,9 +13,9 @@ import TabItem from '@theme/TabItem';
 
 For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
 
-You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more.
+You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more. You can also [add your own variables](./add-a-variable.md) and use expressions to reference them.
 
-This topic describes some built-in and custom Harness expressions, as well as the prefixes used to identify user-created variables.
+This topic explains how Harness expressions work, how to write and use expressions, some built-in Harness expressions, and some prefixes used to identify user-defined variables.
 
 Expressions are powerful and offer many options for modification or interaction. For more information about using expressions, go to:
 
@@ -31,12 +31,6 @@ Harness variable expressions refer to a value in Harness, such as an entity name
 For example, the expression `<+pipeline.name>` resolves to name of the pipeline where you're using that expression.
 
 **Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
-
-
-:::important limitation
-Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
-:::
-
 
 ## Expression usage
 
@@ -340,6 +334,10 @@ Here's when you can reference expressions resolved from information in each of t
 
 If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
 
+#### Default values can't start with an asterisk
+
+Pipelines fails if a variable's default value starts with `*`. To avoid this wrap the asterisk or value in quotes, such as `"*"`.
+
 ### Variable value size
 
 A variable value (the evaluated expression) is limited to 256 KB.
@@ -365,21 +363,211 @@ namespace: <+infra.namespace>
 
 This values.yaml file will not process successfully. Remove any expressions from comments and the file will process successfully.
 
-### Scripts within expressions
+### Scripts and expressions
 
-You cannot write scripts in expressions. For example, the following script will not work:
+While you *can* use expressions to supply values to scripts, you *can't* write scripts *within* expressions.
 
-```
+For example, the following is not valid:
+
+```sh
 if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 
-Instead, feed the expression value into a variable and then call the variable in your script.
+If your script requires this type of value manipulation, feed the expression value into a variable, and then call that variable in your script. For example:
 
-```
+```sh
 NAME = <+pipeline.name>
 
 if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
+
+#### Complex expressions
+
+When forming complex expressions, such as when using operators with expressions, wrap the entire compound expression statement in the expression delimiter (`<+...>`).
+
+For example:
+
+```
+<+ <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">
+```
+
+#### Ternary operator
+
+When using ternary conditional operators (`?:`), do not include spaces between the operators and values. Ensure the entire expression is wrapped within the expression delimiter `<+...>`.
+
+:::info
+
+When you evaluate Harness expressions using any operator (including ternary operators), the expression values must be available for resolution at the time of the evaluation.
+
+For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.myapplystep.executionUrl>`, ensure that the evaluation using that expression happens after the step `myapplystep` has run.
+
+:::
+
+Ternary operators in Harness follow the standard format, but you cannot use spaces between the operators and values.
+
+For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work.
+
+Use `<+condition?<value_if_true>:<value_if_false>>` instead.
+Ensure the expression is wrapped within `<+ >`:
+
+```
+<+condition?<value_if_true>:<value_if_false>>
+```
+
+<details>
+<summary>Pipeline example</summary>
+
+Here's a simple Harness YAML pipeline example of evaluating a Harness variable value with the ternary operator:
+
+```yaml
+pipeline:
+  name: exp
+  identifier: exp
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: ternarydemo
+        identifier: ternarydemo
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+stage.variables.myvar>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: ternary
+                  identifier: ternary
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        variables:
+          - name: myvar
+            type: String
+            description: ""
+            required: true
+            value: "1.1"
+```
+
+In this example, there is a stage variable named `myvar` with a value of `1.1`. In the `ShellScript` step named `ternary` the variable expression for the stage variable, `<+stage.variables.myvar>`, is evaluated with the ternary expression:
+
+`<+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >`
+
+</details>
+
+Ternary operators are also discussed in the [Harness Knowledge Base](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+
+#### Equals operator
+
+When using the `==` operator, ensure the entire expression is wrapped within `<+...>`.
+
+For example:
+
+```
+<+<+pipeline.name> == "pipeline1">
+<+<+stage.variables.v1> == "dev">
+```
+
+#### Greater than and less than operators
+
+Greater than and less than operators are not supported for string type expression. String expressions only support equal to and not equal to operators.
+
+#### Expressions as strings
+
+When using an expression, if you want to treat it as a string, you usually wrap it in double quotes.
+
+For example, in the following command, the expression `<+stage.name>` is wrapped in double quotes because it is an element in an array of strings.
+
+```
+<+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
+```
+
+When using expressions as strings in JSON, the entire expression must be wrapped in double quotes to make the JSON valid.
+
+For example, consider the following JSON:
+
+```json
+"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
+```
+
+In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string in that part of the JSON. However, the expression `<+<+pipeline.variables.hosts>.split(\",\")>` isn't wrapped in quotation marks because it resolves as a list.
+
+:::warning secrets as strings
+
+Do not wrap `<+secrets.getValue()>` expressions in double quotes. While the secret ID within the `getValue()` method must be wrapped in double quotes, do not wrap the entire expression in double quotes, even when you want to treat it as a string.
+
+This is because these expressions are resolved by an internal Secret Manager function. The value is not a primitive type string, and it must not be wrapped in double quotes.
+
+For example, in the following complex expression, the `<+secrets.getValue()>` expression is not wrapped in double quotes, despite being used in an operation where another expression would be wrapped in double quotes.
+
+```
+<+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
+```
+
+:::
+
+#### Expressions in comments
+
+Harness attempts to resolve expressions in script comments.
+
+Harness recommends removing unneeded expressions from comments so they don't cause unexpected failures or add build time through unnecessary processing.
+
+### Concatenation and interpolation
+
+Harness supports complex usages of string interpolation, such as:
+
+- Substituting an expression value within a path: `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
+- Use an expression to supply the value of an identifier within another expression:
+   - This example uses the index of the looped execution to pick the desired step by ID: `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
+   - This example would print the status of a stage where the stage name is defined as a stage variable: `<+pipeline.stages.<+pipeline.variables.stageName>.status>`
+
+Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string.
+
+Previously, you always used `+` or `concat()` to join multiple expressions together. Now, you can simply list the expressions with spaces between, for example:
+
+```
+<+pipeline.name> <+pipeline.executionId>
+```
+
+The concatenation operator (`+`) and the `concat()` method also work. Note that these options require you to wrap the entire operation in the expression delimiter (`<+...>`). For example, the following syntax is valid:
+
+```
+<+<+pipeline.variables.var1> + "_suffix">
+<+<+pipeline.variables.var1>.concat("_suffix")>
+```
+
+:::info
+
+When concatenating expressions as strings, each expression must evaluate to a string.
+
+If an expression does not satisfy this condition, use the `toString()` [method](/docs/platform/variables-and-expressions/expressions-java-methods) to convert it to a string.
+
+For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`
+
+:::
 
 ### Variable name uniqueness
 
@@ -484,227 +672,6 @@ Whether the number in a variable is treated as a double or string depends on the
 
 If you enter `123` in a string setting, such as a **Name**, it is treated as a string. If you enter `123` in a count setting, such as **Instances**, it is treated as a double.
 
-### Contains method
-
-When using `contains`, ensure the expression is wrapped within `<+ >` and the specific string is within `"`.
-
-For example, `<+<+stage.name>.contains("s1")>`.
-
-### Split method
-
-When using `split`, ensure the expression is wrapped within `<+ >`.
-
-For example, `<+<+pipeline.variables.abc>.split(':')[1]>`.
-
-### Complex expression
-
-When using a complex expression, ensure the expression is wrapped within `<+ >`.
-
-For example:
-
-```
-<+ <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">
-```
-
-### Ternary operator
-
-When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within the expression delimiter `<+ >`.
-
-:::info
-
-When you evaluate Harness expressions using any operator (including ternary operators), the expression values must be available for resolution at the time of the evaluation.
-
-For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.myapplystep.executionUrl>`, ensure that the evaluation using that expression happens after the step `myapplystep` has run.
-
-:::
-
-Ternary operators in Harness follow the standard format, but you cannot use spaces between the operators and values.
-
-For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work.
-
-Use `<+condition?<value_if_true>:<value_if_false>>` instead.
-Ensure the expression is wrapped within `<+ >`:
-
-```
-<+condition?<value_if_true>:<value_if_false>>
-```
-
-<details>
-<summary>Pipeline example</summary>
-
-Here's a simple Harness YAML pipeline example of evaluating a Harness variable value with the ternary operator:
-
-```yaml
-pipeline:
-  name: exp
-  identifier: exp
-  projectIdentifier: CD_Docs
-  orgIdentifier: default
-  tags: {}
-  stages:
-    - stage:
-        name: ternarydemo
-        identifier: ternarydemo
-        description: ""
-        type: Custom
-        spec:
-          execution:
-            steps:
-              - step:
-                  type: ShellScript
-                  name: ShellScript_1
-                  identifier: ShellScript_1
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: echo <+stage.variables.myvar>
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
-              - step:
-                  type: ShellScript
-                  name: ternary
-                  identifier: ternary
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: echo <+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
-        tags: {}
-        variables:
-          - name: myvar
-            type: String
-            description: ""
-            required: true
-            value: "1.1"
-```
-
-In this example, there is a stage variable named `myvar` with a value of `1.1`. In the `ShellScript` step named `ternary` the variable expression for the stage variable, `<+stage.variables.myvar>`, is evaluated with the ternary expression:
-
-`<+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >`
-
-</details>
-
-Ternary operators are also discussed in the [Harness Knowledge Base](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
-
-### Equals operator
-
-When using the `==` operator, ensure the expression is wrapped within `<+ >`.
-
-For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
-
-:::info note
-Greater than and Less than operators are not supported for string expression types. Only Equal to and Not equal to are supported.
-
-:::
-
-### Variable concatenation
-
-Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string.
-
-Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`.
-
-For example, Harness supports complex usages such as the following:
-
-- `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
-- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
-  - This example uses the index of the looped execution to pick the correct step.
-- `<+pipeline.stages.<+pipeline.variables.stagename>.status>`
-  - This example shows an elegant way to print out the status of a stage.
-
-All existing expressions will continue to work. For example, the following syntax will still work.
-
-1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
-2. Use Java `concat` method to add string variables:
-
-- `<+<+pipeline.variables.var1>.concat("_suffix")>`
-
-Ensure the expression is wrapped within `<+ >` in both of these examples.
-
-:::info
-
-When concatenating expressions as strings, each expression must evaluate to a string.
-
-If an expression does not satisfy this condition, use the `toString()` [method](/docs/platform/variables-and-expressions/expressions-java-methods) to convert it to a string.
-
-For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`
-
-:::
-
-### Passing JSON values using variables
-
-When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
-
-For example, consider the following JSON:
-
-```json
-"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
-```
-
-In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
-
-Let's look at an example using allowed values and JSON strings.
-
-A variable with `<+input>.allowedValues({"x":"y"})` and `"<+input>.allowedValues({x:y})"` have the same value, which is `{x:y}`. You can add space in the second example, `"<+input>.allowedValues({x: y})"` to get `{x: y}` and it doesn't cause any errors.
-
-You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"x\\\": \\\"y\\\"})"` produces `{"x": "y"}`.
-
-### Best practices for expressions usage
-
-- When using an expression, if you want to treat it as a string, you must wrap it within quotation marks.
-
-  For example, consider following expression:
-
-  ```
-  <+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
-  ```
-
-  In the above expression, the `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
-
-- While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
-
-  For example, consider the following expression:
-
-  ```
-  <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
-  ```
-
-  In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
-
-- While using method invocation with an expression, the expression before method invocation should also be wrapped within `<+...>`.
-
-  For example, consider the following expression:
-
-  ```
-  <+<+pipeline.variables.var1>.concat("concatenating a string")>
-  ```
-
-  To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
-
-- When using an expression for the Harness secret functor, `<+secrets.getValue("sec")>`, it should not be wrapped within quotation marks.
-
-  This expression gets resolved to another Harness internal functor,`${ngSecretManager.obtain("sec")}`, which is resolved on the delegate. Since its value is not a primitive type string, it should not be wrapped within quotation marks.
-
-  For example, consider the following expression for the value of a pipeline or stage variable:
-
-  ```
-  <+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
-  ```
-
-  This secret expression should not be wrapped within quotation marks.
-
-- If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing. Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
-
-- Usage of `getClass()` in expressions is not supported and will not be evaluated.
-
 ## Debugging expressions
 
 An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions.
@@ -722,7 +689,7 @@ You can use Harness expressions to reference various environment variables and [
 - [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
 - [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
 
-## Account
+## Account variables
 
 ### \<+account.identifier>
 
@@ -738,11 +705,11 @@ Harness account name.
 
 The name of the company for the account.
 
-### Custom account variables
+## Custom variables
 
-For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
+For information about user-defined variables, go to [Add variables](add-a-variable.md).
 
-## Org
+## Org variables
 
 ### \<+org.identifier>
 
@@ -758,11 +725,7 @@ The name of the org.
 
 The description of the org.
 
-### Custom org variables
-
-For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
-
-## Project
+## Project variables
 
 ### \<+project.name>
 
@@ -780,11 +743,7 @@ All Harness Tags attached to the project.
 
 The entity [identifier](../references/entity-identifier-reference.md) of the Harness project.
 
-### Custom project variables
-
-For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
-
-## Pipeline
+## Pipeline variables
 
 ### Pipeline-level variables
 
@@ -1907,6 +1866,12 @@ Harness RBAC is applied to triggers in Harness, but it is not applied to the rep
 For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../triggers/triggering-pipelines.md) that is started when a PR is merged.
 
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
+
+## Secrets
+
+The primary way to reference secrets is with expressions like `<+secrets.getValue("SECRET_ID")>`.
+
+For information about referencing secrets, go to the [Secrets documentation](/docs/category/secrets).
 
 ## Kubernetes
 

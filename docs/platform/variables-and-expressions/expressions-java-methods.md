@@ -10,11 +10,11 @@ redirect_from:
   - /docs/platform/variables-and-expressions/extracting-characters-from-harness-variable-expressions
 ---
 
-You can use any [Java string method](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary) to extract characters or manipulate [expression](./harness-variables.md) strings.
+You can use almost any [Java string method](https://docs.oracle.com/javase/8/docs/api/java/lang/String.html#method.summary) to extract characters or manipulate [expression](./harness-variables.md) strings.
 
 ## Format
 
-The correct format for using a Java method with an expression is:
+The correct format for using a Java method with an expression is to wrap both the expression and the method in the expression delimiter (`<+...>`):
 
 ```
 <+<+expression>.methodName()>
@@ -28,13 +28,23 @@ The content between the expression delimiter (`<+...>`) is passed to [JEXL](http
 <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "harness-software"
 ```
 
+### Escaping
+
+If the method takes multiple, comma-separated arguments, and the method expects the parameters to be strings, you must wrap the expression in double quotes, except if it is a `<+secrets.getValue()>` expression.
+
+Here is an example where an expression supplied as an argument for the `replace()` method. Because the parameter must be a string, the expression is wrapped in quotation marks.
+
+```
+<+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
+```
+
 ## Java string method examples
 
 Here are some examples of Java string methods with expressions.
 
 ### contains()
 
-Use `contains()` to check if a value contains a certain string.
+Use `contains()` to check if a value contains a certain string. Make sure to wrap the expression and the method within the expressions delimiter and wrap the target string in double quotes, such as `<+<+EXPRESSION.TO.SEARCH>.contains("TARGET STRING")>`.
 
 For example, this expression uses `contains()` to check if a trigger payload field contains the string `triggerDemo`:
 
@@ -113,3 +123,7 @@ You can also use multiple, nested methods. For example, assume you have a variab
 ```
 
 This expression evaluates to `ello`.
+
+## Unsupported methods
+
+The `getClass()` method is not supported in expressions and it is not evaluated.
