@@ -340,16 +340,6 @@ Here's when you can reference expressions resolved from information in each of t
 
 If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
 
-### Variable expressions in conditional execution settings
-
-Stages and steps support variable expressions in the JEXL conditions of their **Conditional Execution** settings.
-
-You can only use variable expressions in the JEXL conditions that can be resolved before the stage is run.
-
-Conditional execution settings are used to determine if the stage _should be run_, and therefore you cannot use variable expressions that can't be resolved until the stage _is run_.
-
-For more information on conditional execution, go to [Define conditional executions for steps and stages](/docs/platform/pipelines/step-skip-condition-settings).
-
 ### Variable value size
 
 A variable value (the evaluated expression) is limited to 256 KB.
