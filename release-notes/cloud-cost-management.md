@@ -41,7 +41,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Enhanced Rendering of Timeseries Data for Shared Bucket Cost: Previously, when viewing shared bucket costs using the shared bucket filter, the timeseries data was not rendered correctly. We have implemented a fix to address this issue, ensuring that the timeseries data is now properly displayed. [CCM-16876]
 
-- Improved Cost Calculation for Grouping by Cost Category: Previously, when grouping by cost category, costs were calculated from pod cost, resulting in costs being displayed even if they were 0. This issue particularly occurred in scenarios where cost categories were created using cluster rules. To address this, we have enhanced the calculation process to derive costs from node cost instead of pod cost. This ensures accurate cost representation, eliminating discrepancies in cases where costs should be zero. [CCM-17050]
+- Improved Cluster Cost Calculation for Grouping by Cluster Cost Category: Previously, when grouping by cluster cost category, `Others` costs were calculated from pod cost, resulting in costs being displayed even if they were 0. To address this, we have enhanced the calculation process to derive costs from node cost instead of pod cost depending on the group by selected. This ensures accurate cost representation, eliminating discrepancies in cases where costs should be zero. [CCM-17050]
   
 ## March 2024
 
