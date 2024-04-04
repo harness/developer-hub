@@ -1,19 +1,15 @@
-# Harness Developer Hub Issue/Feature Request
-Thanks for helping us make the Developer Hub better. Feel free to use GitHub Issues for reporting issues or requesting features. 
 
-## Is this an Issue or Feature?
+Thanks for contributing to the Harness Developer Hub! Please use GitHub Issues to report documentation issues or request documentation enhancements, and our code owners will review your issue.
 
-- [ ] Issue
-- [ ] Feature
+**For issues and feature requests for the Harness Platform and modules, use the [Harness Ideas Portal](https://ideas.harness.io/).**
 
+## Type
 
-## If Issue, Tell Us a Little More
+- [ ] Issue (such as typos, broken images/links, or missing/malformed documentation)
+- [ ] Enhancement (such as UX suggestions, new documentation requests, or suggestions for how content is organized/presented)
 
-Please replace this line with a brief summary of your issue and a link to the issue. 
+> :bulb: **Tip:** You can select **Edit this Page** at the bottom of any HDH page to instantly edit that page and submit a PR. This is the fastest way to correct errors and publish other small changes.
 
-### Typo?
-Typos are bound to happen. The quickest way to fix, submit a PR or let us know. 
+## Description
 
-## If Feature, What Would You Like to See
-
-Please replace this line with a brief summary of your idea/feature request. 
+Describe your the issue or enhancement request. Include as much or as little detail as needed. If referencing a specific page, provide the link or file path.

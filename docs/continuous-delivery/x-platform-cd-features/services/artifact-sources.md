@@ -348,7 +348,7 @@ To use a GCR artifact, you create or use a Harness GCP Connector to connect to G
 <details>
 <summary>GCP connector YAML</summary>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 ```yaml
 connector:
@@ -532,7 +532,7 @@ For Google Container Registry (GCR), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 <details>
 <summary>Use Docker Registry for GCR</summary>
@@ -560,7 +560,7 @@ For Google Container Registry (GCR), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 </details>
 
@@ -605,7 +605,7 @@ To use a GCS artifact, you create or use a Harness GCP Connector to connect to G
 <details>
 <summary>GCP connector YAML</summary>
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 ```yaml
 connector:
@@ -805,7 +805,7 @@ For details on all the Google Artifact Registry requirements for the GCP Connect
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in GCP for credentials.
+This example uses a Harness Delegate installed in GCP for credentials.
 
 <details>
 <summary>Google Artifact Registry connector YAML</summary>
@@ -980,7 +980,7 @@ To add an artifact from Google Artifact Registry, do the following:
 
     :::note 
 
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness Delegate, has the required permissions. See the **Permissions** tab in this documentation. 
    
     :::
 
@@ -1014,7 +1014,7 @@ For Google Artifact Registry, the following roles are required:
 
 For more information, go to the GCP documentation [Configure roles and permissions](https://cloud.google.com/artifact-registry/docs/access-control).
 
-Ensure the Harness delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`. 
+Ensure the Harness Delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`. 
 
 
 
@@ -1295,7 +1295,7 @@ You connect to ACR using a Harness Azure Connector. For details on all the Azure
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in Azure for credentials.
+This example uses a Harness Delegate installed in Azure for credentials.
 
 <details>
 <summary>Azure connector for ACR YAML</summary>
@@ -1700,7 +1700,7 @@ You connect to ECR using a Harness AWS connector. For details on all the ECR req
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>ECR connector YAML</summary>
@@ -2031,7 +2031,7 @@ You connect to AWS using a Harness AWS connector. For details on all the AWS req
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>AWS connector YAML</summary>
@@ -2287,7 +2287,7 @@ For AWS AMI artifacts, a version number represents the name of AMI. You can filt
   <TabItem value="YAML" label="YAML" default>
 
 
-This example uses a Harness delegate installed in AWS for credentials.
+This example uses a Harness Delegate installed in AWS for credentials.
 
 <details>
 <summary>AWS connector YAML</summary>
@@ -2672,7 +2672,7 @@ Ensure the connected user account has the following permissions in the Nexus Ser
 
 ![Nexus repo perms for Harness](static/c98a49842e9d8bc5f3d2bef35aeff23c39932602a28d311eec5288cbf0fb22a9.png)
 
-See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+See [Nexus Managing Security](https://help.sonatype.com/en/managing-security.html).
 
 For Nexus 3, when used as a **Docker** repo, the user needs:
 
@@ -2947,12 +2947,7 @@ To add an artifact from Artifactory, do the following:
    - If you selected **Artifact Directory**:
      1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `myticketservice/1.0`.
      2. Set **Artifact Details** to **Value** or **Regex** (to select an artifact based on a pattern). 
-     3. Specify the value or the regex for the artifacts.
-        
-        If you selected **Regex**, enter the **Artifact Path Filter** for the artifacts you want to fetch. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
-            `/myService/latest/front-service.zip`
-            `/myService/latest/back-service.zip`
-        To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
+     3. Specify the value or the regex for the artifact. If you selected **Regex**, enter the **Artifact Path Filter** for the latest artifact you want to fetch.
 
    - If you selected **Artifact Filter**, enter an expression that matches the artifacts you want to fetch. Here are some examples of expressions you can use:
       - `*/*` : Fetch all artifacts from all directories including their subdirectories.
@@ -2973,7 +2968,7 @@ To add an artifact from Artifactory, do the following:
 
    If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
 
-7. Select **Submit**. The Artifact is added to the Service Definition.
+4. Select **Submit**. The Artifact is added to the Service Definition.
 
 
 
@@ -3519,7 +3514,7 @@ The following table lists how many artifact versions Harness displays in its UI 
 | Artifactory(Docker)              | No Limit      | Lexical (descending)                                                                                   |
 | Artifactory(Generic)             | 10000         | Descending order of created at.                                                                        |
 | Github Packages                  | No Limit      | Descending order of created at.                                                                        |
-| Nexus3(Docker)                   | No Limit      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
+| Nexus3(Docker)                   | 50      | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus3(non-Docker)               | 2,147,483,647 | Descending order of last modified at (3.46.0 and newer). Alphabetically descending for older versions. |
 | Nexus2                           | No Limit      | Lexical (descending)                                                                                   |
 | Amazon S3                        | 500           | Descending order of last modified.                                                                     |

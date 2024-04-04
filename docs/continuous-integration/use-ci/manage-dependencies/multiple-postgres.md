@@ -45,7 +45,7 @@ For the **Background** steps to run the PostgreSQL services, the build environme
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 * Enter a **Name** and note the **Id**. You need the **Id** to call the service in later steps in this stage.
@@ -115,7 +115,7 @@ In Harness, go to the pipeline where you want to run the PostgreSQL services. In
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -210,7 +210,7 @@ For the **Run** step to run `psql` commands, the build environment must have the
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 * Enter a **Name**.
@@ -277,7 +277,7 @@ psql -U POSTGRES_USER -d SECOND_DATABASE_NAME -h SECOND_BACKGROUND_STEP_ID -p SE
 
 
 </TabItem>
-  <TabItem value="k8s" label="Self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="Self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -390,7 +390,7 @@ pipeline:
 
 
 </TabItem>
-  <TabItem value="k8s" label="self-hosted Kubernetes cluster">
+  <TabItem value="k8s" label="self-managed Kubernetes cluster">
 
 
 ```yaml
@@ -470,7 +470,7 @@ pipeline:
 
 ## Troubleshooting: Failed to get image entrypoint
 
-If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
+If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
 
 1. In the build infrastructure settings, mount one empty directory volume for each PostgreSQL service.
 

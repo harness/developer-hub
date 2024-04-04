@@ -9,21 +9,12 @@ You can scan your configurations using [AWS Security Hub](https://docs.aws.amazo
 
 ## Important notes for running AWS Security Hub scans in STO
 
-### Docker-in-Docker requirements
+- This integration supports session-based authentication with AWS. You can pass the token as a key-value pair in the [Settings](#settings) field.
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+- If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
 
-<StoDinDRequirements />
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-
-### Root access requirements 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-
-### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
@@ -93,36 +84,41 @@ The access ID for your AWS account.
 
 The access token for your AWS account.
 
-<!-- 
+
 #### Access Region
 
 Your AWS region. 
 
--->
-
-### Log Level, CLI flags, and Fail on Severity
 
 
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
+### Settings
+
+You can use this to add environment variables to your scan environment. To enable session-based authentication with AWS, for example, you can pass `AWS_SESSION_TOKEN` with a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) of your token.
+
+ <DocImage path={require('./static/aws-security-hub-session-token.png')} width="70%" height="70%" title="Add AWS_SESSION_TOKEN to enable session-based authentication" />  
+
+
+<!-- STO-7187 remove legacy configs for scanners with step palettes
 
 ## Security step settings for AWS Security Hub scans in STO (legacy)
 
@@ -152,3 +148,5 @@ import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
+
+-->

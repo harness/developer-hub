@@ -29,7 +29,7 @@ The steps **in** each group run in parallel but each group runs serially.
 
 ## Containerized step groups
 
-By default, the tasks performed by Harness CD steps are run on the Harness delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
+By default, the tasks performed by Harness CD steps are run on the Harness Delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
 
 To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster as the runtime infrastructure for CD steps.
 
@@ -78,17 +78,25 @@ You can refer step group variables within the step group using the expression, `
 
 You can refer step group variables outside the step group using the expression, `<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]>`.
 
+### Output variables
+
+You can reference step group output variables using expressions using the step group name. Here's a sample expression:
+`<+execution.steps.<stepGroupID>.steps.stepID.outputVariables.[variable name]>`.
+
+If you are accessing the output variable in a step within the same step group you can use a shorter notation, `<+stepGroup.steps.step1Identifier.output.outputVariables.[variable name]>`.
+
+If your step group is configured as a loop, an index is added at the end of the identifier to identify the unique loop instance. You can use this index to reference output variables. For example, `<+execution.steps.<stepGroupID_[index]>.steps.stepID.outputVariables.[variable name]>`.
+
+
 :::info
-
 Execution input is not supported for step group variables.
-
 :::
 
 ## Conditional execution
 
 A step group can have its own conditional execution settings separate from the conditional execution settings for the stage. The conditional execution settings of the step group apply to all of its steps.
 
-For more information, go to [step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
+For more information, go to [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings).
 
 The conditional execution settings of any step in a step group overrides the conditional execution settings of the step group.
 
@@ -100,7 +108,7 @@ A step group can have its own failure strategy separate from the failure strateg
 
 The failure strategy can execute the Rollback steps for the step/stage.
 
-Go to [step failure strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) for more information.
+Go to [step failure strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) for more information.
 
 The failure strategy of any step in a step group overrides the Failure Strategy of the step group.
 

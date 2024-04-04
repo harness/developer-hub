@@ -91,7 +91,7 @@ Before creating the GCP connector, you need to:
 
 * **Assign IAM roles to the GCP service account or Harness Delegate that you will attach to the connector.**
   * The necessary IAM roles and policies depend on which GCP service you'll use with Harness and which operations you'll want Harness to perform in GCP.
-  * GCP connectors can also inherit IAM roles from Harness delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
+  * GCP connectors can also inherit IAM roles from Harness Delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
   * If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness Delegate that your GCP connector is using. You might need to wait up to five minutes for the change to take effect.
   * For details about the roles and policies required to use a GCP connector with GKE, GCS, GCR, GAR, or Stackdriver, go to [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
   * The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.
@@ -124,12 +124,17 @@ Before creating the GCP connector, you need to:
 5. Select **Continue** to proceed to **Select Connectivity Mode** and select how you want Harness to connect to GCP. For more information about these options, go to the [Connectivity mode settings in the GCP connector settings reference](./ref-cloud-providers/gcs-connector-settings-reference.md#select-connectivity-mode).
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
    * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness Delegate in GCP. You must choose this option if you chose to inherit delegate credentials. If you select this option, you must select if you want Harness to use any available delegate or only use delegates with specific tags.
+   :::note
+
+   It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+   :::
    * **Connect through Harness Platform for OIDC:** This option uses OIDC authentication to access public cloud resources without secrets or credentials. For more information, go to [Use OIDC](./ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc).
 6. Select **Save and Continue** to run the connection test. If the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
 :::tip
 
-The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 :::
 

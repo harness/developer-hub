@@ -6,11 +6,13 @@ redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
-## Create a new `catalog-info.yaml`
+## Create a new catalog-info.yaml
 
 1. If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
 
@@ -45,7 +47,7 @@ Following are the key fields that you must update:
 
 2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
-## Register the Software Component
+## Register the software component
 
 3. In the left navigation, select **Create**, and then select **Register Software Component**.
 
@@ -64,11 +66,11 @@ The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
 
-## Register Multiple software components together.
+## Register multiple software components together
 
 We can register multiple `catalog-info.yaml` in the following ways.
 
-1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below and it will register all the components. 
+1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below and it will register all the components.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -82,7 +84,7 @@ spec:
     - ./all-components.yaml
 ```
 
-2. If the `catalog -info.yaml` is scattered across repos and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**. 
+2. If the `catalog -info.yaml` is scattered across repos and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
@@ -99,8 +101,8 @@ spec:
     - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
 ```
 
-## Failed to register 
+## Troubleshooting: Failed to register
 
-If after registering an entity your're unable to find the same in your catalog. Please check in the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab wait for few mins it will get registered and if it's under the **Failed** tab try re-registering the entity. 
+If, after registering an entity, your're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. try re-registering the entity.
 
 ![](./static/devtools.png)

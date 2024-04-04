@@ -1,7 +1,7 @@
 ---
 title: Automate onboarding with Harness
 description: Automate the provisioning of resources to Harness via the Harness Terraform Provider.
-sidebar_position: 3
+sidebar_position: 4
 redirect_from:
   - /docs/platform/Resource-Development/Terraform/automate-harness-onboarding
   - /docs/platform/resource-development/terraform/automate-harness-onboarding
@@ -690,7 +690,7 @@ We recommend starting out in the Harness User Interface to get familiar with all
 
 Please review these topics to get familiar with the Harness constructs:
 
-- [Harness Key Concepts](/docs/get-started/key-concepts)
+- [Harness Key Concepts](/docs/platform/get-started/key-concepts.md)
 - [Projects, Orgs, Account](/docs/platform/organizations-and-projects/projects-and-organizations/)
 - [Service, Environments](/docs/continuous-delivery/get-started/services-and-environments-overview/)
 
@@ -752,7 +752,7 @@ resource "harness_platform_connector_helm" "helm" {
 }
 ```
 
-These connectors will require [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
+These connectors will require [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness Delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
 
 ![Secret](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/secret.png)
 

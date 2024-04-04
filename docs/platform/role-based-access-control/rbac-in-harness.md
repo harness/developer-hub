@@ -28,8 +28,8 @@ If you're not familiar with RBAC, check out this blog post on [User and Role Man
 
 Before configuring RBAC in Harness, you should have an understanding of:
 
-- [Harness' key concepts](../../get-started/key-concepts.md)
-- [Creating organizations and projects](../organizations-and-projects/create-an-organization.md)
+- [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+- [Creating organizations and projects](../organizations-and-projects/create-an-organization.md).
 - The functionality of the modules in your Harness account.
 
 The video below gives an overview of RBAC in Harness.
@@ -244,13 +244,20 @@ The _Pipeline Admin_ role has the following permissions:
 5. Select the following permissions:
 
    - For **Pipelines**, select **View**, **Create/Edit**, **Delete**, and **Execute**.
-   - For **Environments**, and then select **View**, **Create/Edit**, and **Access**.
+   - For **Environments**, select **View**, **Create/Edit**, and **Access**.
    - Under **Shared Resources**, select the following:
      - For **Templates**, select **View**, **Create/Edit**, and **Access**.
      - For **Secrets**, select **View**, **Create/Edit**, and **Access**.
      - For **Connectors**, select **View**, **Create/Edit**, **Delete**, and **Access**.
      - For **Variables**, select **View** and **Create/Edit**.
      - For **Delegates**, select **View** and **Create/Edit**.
+   - Under **Policies**, select the following:
+      - For **Governance Policies**, select **View**, **Edit**, **Create** and **Delete**.
+      - For **Governance Policy Sets**, select **View**, **Edit**, **Create** and **Delete**.
+
+      The video below gives an overview of Policies RBAC in Harness.
+
+      <DocVideo src="https://www.loom.com/share/6e11552bd64f4f5d80674e9df1a72b92?sid=4e79bbc9-adf2-477f-adb5-d00300e7b1c8" width="100%" height="600" />
 
 6. Select **Apply Changes**.
 
@@ -317,7 +324,6 @@ For example, if you use Okta as your IdP, you could create a Pipeline Owners gro
 6. Select **Apply**.
 
 For more information about assigning roles and resource groups, go to [Role binding](#role-binding).
-
 </details>
 
 <details>

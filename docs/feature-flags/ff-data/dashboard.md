@@ -12,7 +12,7 @@ With Harness dashboards, you can:
 * Download data in multiple formats to use in other tools. 
 * Schedule delivery and set up alerts on dashboard data.  
 
-For a complete guide to Harness dashboards, go to [Dashboards](/docs/category/dashboards-1).
+For more information, go to [Harness dashboards](/docs/category/harness-dashboards).
 
 This topic provides some highlights and useful information about the Feature Flags dashboard.
 

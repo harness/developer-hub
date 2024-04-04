@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
-If Okta is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If Okta is your identity provider, you can efficiently provision and manage users in your Harness account. Using [Okta's SCIM integration](https://www.okta.com/blog/2017/01/what-is-scim/) with Harness enables Okta to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
 This topic describes how to use an Okta SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both Okta and Harness.
 
@@ -19,7 +19,7 @@ This topic describes how to use an Okta SCIM integration for automated provision
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../get-started/key-concepts.md).
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your Okta account, and you must be an **Account Admin** in Harness.
@@ -48,17 +48,18 @@ To enable automated provisioning, you must add a Harness app to your Okta admini
    ```
 
    Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
+   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
 
-5. For **Audience URI (SP Entity ID)**, enter `app.harness.io`.
-6. For **Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name Format**, and set the **Value** to **user.email**.
-7. For **Group Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name format (optional)**, select an appropriate **Filter**, and enter the appropriate corresponding filter value.
-8. Select **Next**.
-9. In the **Feedback** options, select the relevant option, and then select **Finish**.
+6. For **Audience URI (SP Entity ID)**, enter `app.harness.io`.
+7. For **Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name Format**, and set the **Value** to **user.email**.
+8. For **Group Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name format (optional)**, select an appropriate **Filter**, and enter the appropriate corresponding filter value.
+9. Select **Next**.
+10. In the **Feedback** options, select the relevant option, and then select **Finish**.
 
    ![](./static/provision-users-with-okta-scim-08.png)
 
-10. In your newly created app, select the **General** tab, and then select **Edit** under **App Settings**.
-11. Select **Enable SCIM provisioning**, and then select **Save**.
+11. In your newly created app, select the **General** tab, and then under **App Settings**, select **Edit**.
+12. Select **Enable SCIM provisioning**, and then select **Save**.
 
    ![](./static/provision-users-with-okta-scim-09.png)
 

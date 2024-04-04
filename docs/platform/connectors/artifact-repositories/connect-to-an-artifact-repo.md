@@ -8,13 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You connect Harness to an artifact repo by adding an **Artifact Repositories** Connector.
+You connect Harness to an artifact repo by adding an **Artifact Repositories** [connector](/docs/platform/get-started/key-concepts.md#connectors).
 
 You can connect to an artifact repo inline when developing your Pipeline, or separately in your Account/Org/Project **Connectors**. Once add the Connector, it'll be available in Pipelines and Connectors of the same Account/Org/Project.
-
-### Before you begin
-
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 
 ### AWS, Azure, and Google Cloud Storage artifacts
 
@@ -182,5 +178,5 @@ For details on settings and permissions, see [Nexus Connector Settings Reference
 ### See also
 
 * [Use delegate selectors](../../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
-* [Add a secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Add a secret manager](/docs/platform/get-started/tutorials/add-secrets-manager)
 

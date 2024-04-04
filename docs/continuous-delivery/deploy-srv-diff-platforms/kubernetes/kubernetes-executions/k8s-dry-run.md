@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
 1. In the CD stage **Execution**, select **Add Step**.
 2. Select the **Dry Run** step.
 3. Enter a name for the step.
-4. In **Timeout**, enter how long this step should run before failing and initiating the step or stage [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings).
+4. In **Timeout**, enter how long this step should run before failing and initiating the step or stage [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
     You can use:
 
@@ -118,14 +118,14 @@ You can reference the resolved dry run manifest from the Dry Run step using this
 For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
 
 ```
-<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.manifestDryRun>
 ```
 
 Another example is to use a Harness [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) to perform logic using `kubectl diff`:
 
 ```
 cat << EOM > manifest.yaml
-<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+<+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.manifestDryRun>
 EOM
 cat manifest.yaml
 echo "K8s client/server version:"
@@ -146,7 +146,7 @@ The Apply, Rolling, Canary, and Blue Green deployment steps include a **Skip Dry
 
 By default, Harness uses the `--dry-run` flag on the `kubectl apply` command for all these steps. If the **Skip Dry Run** setting is selected, Harness will not use the `--dry-run` flag.
 
-The **Skip Dry Run** setting is different than the Dry Run step. The Dry Run step only performs a dry run. The Dry Run step does not impact whether or not a deployment step performs a dry run.
+The **Skip Dry Run** setting is different from the Dry Run step. The Dry Run step only performs a dry run. The Dry Run step does not impact whether or not a deployment step performs a dry run.
 
 
 ## Using the Dry Run with a Native Helm Deployment

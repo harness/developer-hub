@@ -11,7 +11,7 @@ helpdocs_is_published: true
 This topic contains general troubleshooting information for error messages and other issues that can arise.
 
 :::note 
-If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
+If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://developer.harness.io/community/).
 :::
 
 ### Login Issues
@@ -308,7 +308,7 @@ To fix this, remove the existing Notification Strategy.  Click the **X** next to
 
 #### Trigger Rejected
 
-If you use a **Webhook** Trigger to execute a Workflow or Pipeline deployment but the name for the artifact in the cURL command is different than the name of the artifact, you might receive this error:
+If you use a **Webhook** Trigger to execute a Workflow or Pipeline deployment but the name for the artifact in the cURL command is different from the name of the artifact, you might receive this error:
 
 
 ```
@@ -401,7 +401,7 @@ If your Harness Application is synched two-way with your Git repo, the Git push 
 
 For example, if you have defined an Infrastructure Definition in your Git YAML files, but its required fields are incomplete, the push to Harness will likely fail.
 
-This is no different than trying to submit incomplete settings in the Harness Manager.
+This is no different from trying to submit incomplete settings in the Harness Manager.
 
 In many cases, it is best to first use Harness Manager to configure your Application, ensuring all required settings are configured, and then sync that with your repo. Unless you remove any required settings in the Git files, the Application will sync with Harness successfully.
 
@@ -1144,11 +1144,11 @@ When you add an ELK verification provider and click SUBMIT, you might see the fo
 
 ##### Cause
 
-The Harness delegate does not have a valid connection to the ELK server.
+The Harness Delegate does not have a valid connection to the ELK server.
 
 ##### Solution
 
-On the same server or instance where the Harness delegate is running, run one of the following cURL commands to verify whether the delegate can connect to the ELK server.
+On the same server or instance where the Harness Delegate is running, run one of the following cURL commands to verify whether the delegate can connect to the ELK server.
 
 If you do not have a username and password for the ELK server:
 
@@ -1340,7 +1340,7 @@ Here is how the error appears in the LDAP Provider dialog.
 
 ##### Cause
 
-This can occur if the Harness delegate is unable to connect to the LDAP server.
+This can occur if the Harness Delegate is unable to connect to the LDAP server.
 
 ##### Solution
 

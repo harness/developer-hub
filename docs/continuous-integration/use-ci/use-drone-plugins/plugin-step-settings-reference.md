@@ -32,9 +32,11 @@ The name of the plugin's Docker image. The image name should include the tag, or
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
 
+For private registries, provide the fully-qualified name (FQN) of the image.
+
 :::info
 
-These fields are optional when using a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure). These fields are only required if the build machine doesn't have the required binaries pre-installed.
+These fields are optional when using a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), [self-managed AWS/GCP/Azure VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure). These fields are only required if the build machine doesn't have the required binaries pre-installed.
 
 :::
 
@@ -57,30 +59,30 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 ### Output variables
 
-:::info
+:::warning
 
-Output variables are not available for all plugins.
+Not all plugins write output variables.
 
-Support for plugin output variables may vary with [self-hosted Cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Support for plugin output variables is unpredictable with [self-managed VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 :::
 
-Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `DRONE_OUTPUT.env` file, you can use expressions to reference output variables in other steps and stages in the pipeline.
+Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes output to the `DRONE_OUTPUT.env` file, you can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference those output variables in other steps and stages in the pipeline.
 
-For example, to write to the `DRONE_OUTPUT.env` file, use a command such as the following:
+For example, to write to the `DRONE_OUTPUT.env` file, the plugin must use a command such as the following:
 
 ```
 echo "VAR_NAME=somevalue" >> $DRONE_OUTPUT
 ```
 
-To reference an output variable in another step in the same stage, use either of the following expressions:
+To reference the resulting output variable in another step in the same stage, use either of the following expressions:
 
 ```
 <+steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
 <+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
@@ -100,9 +102,9 @@ If the step is within a step group, include the step group identifier in the exp
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-<!-- H3 Environment variables
+### Environment variables
 
-Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
+When a Harness CI pipeline runs, it produces a number of environment variables, including many `DRONE_` environment variables. You can reference these in your plugin script, if needed. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
 
 ## Image Pull Policy
 
@@ -129,5 +131,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)

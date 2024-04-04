@@ -5,6 +5,10 @@ sidebar_position: 90
 sidebar_label: GitHub Cloud
 ---
 
+:::info
+The 202401.2 release included a new experience for the GitHub integration, focused on simplifying and streamlining the user journey. The feature is currently in BETA. To learn more, go to [GitHub 2.0](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+:::
+
 GitHub provides hosting for software development and version control using Git.
 
 Use the SEI GitHub integration to integrate SEI with GitHub.
@@ -33,10 +37,6 @@ If you can't use OAuth, you must create a GitHub PAT to configure the SEI GitHub
    * The `read:org` scope under `admin:org`.
 
    ![The admin:org scope selections for a GitHub personal access token.](../static/github-token-scope2.png)
-
-   * The `admin:org_hook` scope is required to track issue cycle time (for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports)). If you don't want to track issue cycle time, you don't need to select this permission.
-
-   ![The admin:org_hook scope selections for a GitHub personal access token.](../static/github-token-scope3.png)
 
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 4. If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
@@ -77,7 +77,7 @@ import TabItem from '@theme/TabItem';
 
 :::info Issue Cycle Time webhook
 
-If you created a personal access token and allowed the `admin:org_hook` permission, SEI creates a user webhook to receive issue cycle time data for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports.md).
+If you created a personal access token and allowed the `admin:org_hook` permission, SEI creates a user webhook to receive issue cycle time data for the [SCM Issue Time Across Stages Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
 
 If you used OAuth, SEI creates an organization webhook instead.
 

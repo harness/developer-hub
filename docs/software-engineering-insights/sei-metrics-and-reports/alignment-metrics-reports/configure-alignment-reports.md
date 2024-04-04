@@ -4,8 +4,6 @@ description: Configure alignment i.e Effort investment reports
 sidebar_position: 30
 sidebar_label: Configure Alignment reports
 ---
-
-
 # Configure Alignment reports
 
 The Effort Investment (Business Alignment) reports can help visualize where your teams expend the most effort and help your teams prioritize their time. This Insight includes the following three widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
@@ -18,7 +16,11 @@ These reports analyze effort investment into task categories, strategic initiati
 
 It helps  visually analyze how the work is trending across different categories, where the resources are allocated and how it is varying over different periods.
 
-To find the list of these reports and metrics, go to [Effort investment reports](./effort-investment-metrics.md).
+:::info
+The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report)
+:::
+
+To find the list of these reports and metrics, go to [Effort investment reports](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
 
 ## Effort Investment Single Stat
 
@@ -70,7 +72,7 @@ To correlate the single stat report and the Trend Report, it's important to ensu
 
 1. Go to the **Insight**, select the settings icon and click on **Add widget**
 2. In the widget explorer, search for and select **Effort Investment Trend Report**
-3. Configure the widget settings. The configuration for the Effort Investment Trend Report is identical to the configuration of the [Effort Investment Single Stat](./configure-alignment-reports#effort-investment-single-stat).
+3. Configure the widget settings. The configuration for the Effort Investment Trend Report is identical to the configuration of the [Effort Investment Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/configure-alignment-reports#effort-investment-single-stat).
 4. Select the **Place Widget** button and place the widget in the Insight by dragging it to the desired location within the Insight. Click on the **Save Layout** button to save your configuration.
 
 ## Effort Investment by Engineer
@@ -133,5 +135,5 @@ In this example, User X's `Remaining Allocation` is 0%, indicating that their en
 
 1. Go to the **Insight**, select the settings icon and click on **Add widget**
 2. In the widget explorer, search for and select **Effort Investment by Engineer**
-3. Configure the widget settings. The configuration for the Effort Investment by Engineer report is identical to the configuration of the [Effort Investment Single Stat](./configure-alignment-reports#effort-investment-single-stat).
+3. Configure the widget settings. The configuration for the Effort Investment by Engineer report is identical to the configuration of the [Effort Investment Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/configure-alignment-reports#effort-investment-single-stat).
 4. Select the **Place Widget** button and place the widget in the Insight by dragging it to the desired location within the Insight. Click on the **Save Layout** button to save your configuration.

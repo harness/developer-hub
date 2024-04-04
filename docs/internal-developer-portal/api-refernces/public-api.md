@@ -10,10 +10,12 @@ redirect_from:
 The following are the list of APIs supported by IDP. 
 
 :::info
-The APIs listed here are [Backstage APIs](https://backstage.io/docs/features/software-catalog/software-catalog-api) exposed through Harness Platform
+The APIs listed here are [Backstage APIs](https://backstage.io/docs/features/software-catalog/software-catalog-api) exposed through Harness Platform and you could find all the APIs for [IDP mentioned in openapi specs](https://apidocs.harness.io/tag/AppConfig)
 :::
 
 In order to use the APIs in Harness platform, you need to generate a Harness API Key as described in [Manage API keys](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys)
+
+
 
 ## Catalog API
 
@@ -62,7 +64,7 @@ curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/loc
  --data-raw '{"type":"url","target":"https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml"}'
 ```
 ### Response:
-The response will register a software compenent in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
+The response will register a software component in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
 
 
 ## Catalog Entities API

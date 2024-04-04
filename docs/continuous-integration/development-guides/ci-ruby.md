@@ -13,12 +13,12 @@ import TabItem from '@theme/TabItem';
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
 
-You can build and test a [Ruby](https://www.ruby-lang.org/en/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [Ruby](https://www.ruby-lang.org/en/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-managed Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've [created a Harness CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components).
 
@@ -41,7 +41,7 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -78,9 +78,9 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
 ```
 
 </TabItem>
-<TabItem value="selfhosted" label="Self-hosted">
+<TabItem value="selfmanaged" label="Self-managed">
 
-With self-hosted build infrastructures, you can:
+With self-managed build infrastructures, you can:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -143,7 +143,7 @@ The following examples run tests in a **Run** step.
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -189,7 +189,7 @@ The following examples use the [Minitest JUnit Formatter](https://github.com/aes
 ```
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -231,7 +231,7 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
 ```
 
 </TabItem>
-  <TabItem value="Self-Hosted">
+  <TabItem value="Self-managed">
 
 ```yaml
 - step:
@@ -252,6 +252,8 @@ You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/doc
 ### Test splitting
 
 Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+
+Stage-level parallelism is recommended for Ruby.
 
 ## Specify version
 
@@ -312,7 +314,7 @@ You will need a [personal access token](https://docs.github.com/en/authenticatio
 </details>
 
 </TabItem>
-<TabItem value="Self-hosted">
+<TabItem value="Self-managed">
 
 Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in your steps. There is no need for a separate install step when using Docker.
 
@@ -446,9 +448,9 @@ pipeline:
 ```
 
 </TabItem>
-  <TabItem value="self" label="Self-hosted">
+  <TabItem value="self" label="Self-managed">
 
-This pipeline uses [self-hosted Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
+This pipeline uses [self-managed Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
 
 If you copy this example, replace the placeholder values with appropriate values for your connector IDs, account/user names, repo names, and other settings. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
@@ -547,6 +549,6 @@ pipeline:
 Now that you have created a pipeline that builds and tests a Ruby app, you could:
 
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-- Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+- Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
+- Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 - Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

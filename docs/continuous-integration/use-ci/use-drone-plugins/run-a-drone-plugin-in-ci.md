@@ -133,13 +133,13 @@ For information about a plugin's settings, go to the plugin's page on the [Drone
 <figcaption>The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
 </figure>
 
-### Output variables
+#### Output variables
 
 For information about output variables produced by plugins, go to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
 
-<!-- H3 Environment variables
+#### Environment variables
 
-Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
+Harness CI supports `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
 
 ### Plugin configuration examples
 
@@ -165,7 +165,7 @@ An example of the **Plugin** step configuration is provided below; however, your
                       artifact_file: artifact.txt ## Provide any '.txt' file name, such as 'artifact.txt' or 'url.txt'. This is a required setting that Harness uses to store the artifact URL and display it on the Artifacts tab. This value is not the name of your uploaded artifact, and it has no relationship to the artifact object itself.
 ```
 
-For more information about uploading and publishing artifacts, go to [Build and upload artifacts](/docs/category/build-and-upload-artifacts).
+For more information about uploading and publishing artifacts, go to [Build and push artifacts and images](/docs/category/build-push-upload-download).
 
 </details>
 

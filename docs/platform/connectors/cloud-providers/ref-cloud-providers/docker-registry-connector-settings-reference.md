@@ -8,7 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Docker connector. You can use this connector to connect to DockerHub, Harbor, Quay, and other Docker V2 compliant container registries, such as [GitHub Container Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ghcr.md).
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+This topic provides settings and permissions for the Docker connector. You can use this connector to connect to DockerHub, Harbor, Quay, and other Docker V2 compliant container registries, such as [GitHub Container Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ghcr.md).
 
 :::info
 
@@ -19,11 +22,38 @@ This topic provides settings and permissions for the Docker connector. You can u
 
 ## Create a Docker connector
 
-1. In Harness, go to the module and project where you want to create the connector, and select **Connectors** (under **Project Setup**). You can also create connectors at the account level.
-2. Select **New Connector**, and then select **Docker Registry**.
-3. Configure the Docker connector settings as described in the sections below.
+<Tabs>
+  <TabItem value="Visual" label="Visual editor" default>
+
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to create the connector.
+2. Select **Connectors**, select **New Connector**, and then select the **Docker Registry** connector.
+3. Configure the Docker connector settings using the guidance provided in the sections below.
 4. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
-5. In the list of connectors, make a note of your Docker connector's ID. Use the ID in your pipeline YAML, such as `connectorRef: docker_connector_ID`.
+5. In the list of connectors, make a note of your Docker connector's ID. When you need to reference this connector, use this ID in your pipeline YAML, such as `connectorRef: docker_connector_ID`.
+
+</TabItem>
+  <TabItem value="YAML" label="YAML editor">
+
+You can create Docker connectors in the YAML editor. For example:
+
+```yaml
+connector:
+  name: My Docker Connector
+  identifier: mydockerconnector
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: default
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: https://docker.dev.harness.io/v2/
+    providerType: DockerHub
+    auth:
+      type: Anonymous
+    executeOnDelegate: true
+```
+
+</TabItem>
+</Tabs>
 
 ## Connector metadata settings
 
@@ -51,14 +81,8 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
 
 You can authenticate anonymously or by username and password.
 
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-
 <Tabs>
   <TabItem value="unpw" label="Username and password" default>
-
 
 * **Username:** Enter the username for your Docker registry account.
 * **Password:** Provide a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets) containing the password or token corresponding with the **Username**.
@@ -73,17 +97,15 @@ For more information, go to the Docker documentation on [Docker Permissions](htt
 
 :::
 
-
 </TabItem>
   <TabItem value="anonymous" label="Anonymous">
 
+Select **Anonymous** to pull images from public Docker registries with anonymous access. This option can encounter issues with limits, such as Docker Hub rate limiting.
 
-If you use anonymous access for a Kubernetes deployment, make sure `imagePullSecrets` is removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
-
+If you use anonymous access with a Kubernetes deployment, make sure `imagePullSecrets` is removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
 
 </TabItem>
 </Tabs>
-
 
 ## Select connectivity mode
 
@@ -91,6 +113,6 @@ You can connect through a Harness Delegate or the Harness Platform. If you plan 
 
 :::tip
 
-The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 :::

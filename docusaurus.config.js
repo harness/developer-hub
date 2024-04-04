@@ -18,7 +18,7 @@ function hideIndexFromSidebarItems(items) {
 const config = {
   title: "Harness Developer Hub",
   tagline:
-    "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
+    "Learn intelligent software delivery at your own pace. Guides, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
   baseUrl: BASE_URL,
   onBrokenLinks: "throw",
@@ -96,7 +96,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "/img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -107,88 +107,12 @@ const config = {
           {
             position: "right",
             type: "dropdown",
-            label: "Tutorials",
-            to: "tutorials",
-            items: [
-              {
-                // type: "doc",
-                label: "All Tutorials",
-                to: "tutorials",
-              },
-              {
-                // type: "doc",
-                label: "Set up CI Pipelines",
-                to: "tutorials/ci-pipelines",
-                // docId: "ci-pipelines",
-                // activeBasePath: "to",
-              },
-              {
-                // type: "doc",
-                label: "Set up CD Pipelines",
-                to: "tutorials/cd-pipelines",
-              },
-              {
-                // type: "doc",
-                label: "Manage Feature Flags",
-                to: "tutorials/feature-flags",
-                // activeBaseRegex: "/feature-flags",
-              },
-              {
-                // type: "doc",
-                label: "Manage Cloud Costs",
-                to: "tutorials/cloud-costs",
-              },
-              {
-                // type: "doc",
-                label: "Orchestrate Security Tests",
-                to: "tutorials/security-tests",
-              },
-              {
-                // type: "doc",
-                label: "Secure Supply Chain",
-                to: "tutorials/secure-supply-chain",
-              },
-              {
-                // type: "doc",
-                label: "Run Chaos Experiments",
-                to: "tutorials/chaos-experiments",
-              },
-              {
-                // type: "doc",
-                label: "Manage Service Reliability",
-                to: "tutorials/service-reliability",
-              },
-              {
-                // type: "doc",
-                label: "Track Errors",
-                to: "tutorials/error-tracking",
-              },
-              {
-                // type: "doc",
-                label: "Manage Developer Portal",
-                to: "tutorials/internal-developer-portal",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Platform",
-                to: "tutorials/platform",
-              },
-              {
-                // type: "doc",
-                label: "Administer Harness Self-Managed EE",
-                to: "tutorials/self-managed-enterprise-edition",
-              },
-            ],
-          },
-          {
-            position: "right",
-            type: "dropdown",
             label: "Documentation",
             to: "docs",
             items: [
               {
-                label: "Get Started",
-                to: "docs/get-started",
+                label: "Platform",
+                to: "docs/platform",
               },
               {
                 label: "Code Repository",
@@ -231,20 +155,12 @@ const config = {
                 to: "docs/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "docs/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
               {
                 label: "Software Engineering Insights",
                 to: "docs/software-engineering-insights",
-              },
-              {
-                label: "Platform",
-                to: "docs/platform",
               },
               {
                 label: "Self-Managed Enterprise Edition",
@@ -257,10 +173,6 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes",
-              },
-              {
-                label: "Roadmap",
-                href: "/roadmap",
               },
               {
                 label: "FAQs",
@@ -281,47 +193,46 @@ const config = {
             ],
           },
           {
-            label: "Certifications",
+            label: "University",
             position: "right",
             type: "dropdown",
-            to: "certifications",
+            to: "university",
             items: [
               {
-                label: "All Certifications",
-                to: "certifications",
+                label: "Learn Harness from Experts",
+                to: "university",
               },
               {
                 label: "Continuous Integration",
-                to: "certifications/continuous-integration",
+                to: "university/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                to: "certifications/continuous-delivery",
+                to: "university/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                to: "certifications/feature-flags",
+                to: "university/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                to: "certifications/cloud-cost-management",
+                to: "university/cloud-cost-management",
               },
               {
                 label: "Security Testing Orchestration",
-                to: "certifications/sto",
+                to: "university/sto",
               },
               {
                 label: "Chaos Engineering",
-                to: "certifications/chaos-engineering",
+                to: "university/chaos-engineering",
               },
               {
                 label: "Instructions",
-                to: "certifications/instructions",
+                to: "university/instructions",
               },
-
               {
                 label: "FAQs",
-                to: "certifications/faqs",
+                to: "university/faqs",
               },
             ],
           },
@@ -340,6 +251,11 @@ const config = {
                 label: "Community",
               },
             ],
+          },
+          {
+            label: "Roadmap",
+            position: "right",
+            href: "/roadmap",
           },
 
           {
@@ -409,10 +325,6 @@ const config = {
                 to: "https://harness.io/products/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "https://www.harness.io/products/continuous-error-tracking",
-              },
-              {
                 label: "Internal Developer Portal",
                 to: "https://www.harness.io/products/internal-developer-portal",
               },
@@ -431,7 +343,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25816ab7a-FdXSKTyIZaxyKQvaysTN0g",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA",
               },
               {
                 label: "API Reference",
@@ -482,6 +394,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Do not sell or share my personal information",
+                to: "https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7",
+              },
             ],
           },
         ],
@@ -493,24 +409,15 @@ const config = {
       },
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
+        // disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
-      /*
-      announcementBar: {
-        id: "support_us",
-        content:
-          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
-        backgroundColor: "#000000",
-        textColor: "#ffffff",
-        isCloseable: true,
-      },
-      */
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
@@ -522,31 +429,14 @@ const config = {
       announcementBarByPath: {
         // list all pathnames in Regular expressions format
         pathRegExp: [
-          // paths for md-doc pages
+          // paths for md-doc pages / global patterns
           "^/docs/first-gen/continuous-delivery.*",
           "^/docs/first-gen/first-gen-quickstarts.*",
-          // paths for category pages
-          "^/docs/category/quickstarts.*",
-          "^/docs/category/continuous-delivery.*",
-          "^/docs/category/continuous-delivery-overview.*",
-          "^/docs/category/general-deployment-features.*",
-          "^/docs/category/deployment-strategies-and-integrations.*",
-          "^/docs/category/aws-.*",
-          "^/docs/category/general-aws-.*",
-          "^/docs/category/azure-.*",
-          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
-          "^/docs/category/google-cloud.*",
-          "^/docs/category/native-helm-deployments.*",
-          "^/docs/category/iis-net-deployments.*",
-          "^/docs/category/kubernetes-deployments.*",
-          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
-          "^/docs/category/terraform-1.*",
-          "^/docs/category/terragrunt.*",
-          "^/docs/category/traditional-deployments-ssh.*",
-          "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification.*",
-          "^/docs/category/model-your-cd-pipeline.*",
-          "^/docs/category/harness-git-based-how-tos.*",
+          "-fg.*",
+          "fg-.*",
+          "firstgen-.*",
+          "first-gen.*",
+          "-firstgen.*",
         ],
       },
       utmCookie: {
@@ -585,11 +475,11 @@ const config = {
       path.resolve(__dirname, "./plugins/redirect-plugin"),
 
       {
-        id: "certifications",
-        path: "certifications",
-        routeBasePath: "certifications",
+        id: "university",
+        path: "university",
+        routeBasePath: "university",
         exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-certifications.js"),
+        sidebarPath: require.resolve("./sidebars-university.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },
@@ -607,18 +497,17 @@ const config = {
         // ... other options
       },
     ],
-    [
-      path.resolve(__dirname, "./plugins/redirect-plugin"),
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
+    //[
+    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
+    //  {
+    //    id: "tutorials",
+    //    path: "tutorials",
+    //    routeBasePath: "tutorials",
+    //    exclude: ["**/shared/**", "**/static/**"],
+    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
+    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
+    //  },
+    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
@@ -663,6 +552,7 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
+  clientModules: [path.join(__dirname, "/client_module/searchBar")],
 };
 
 module.exports = config;

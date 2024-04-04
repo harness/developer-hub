@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info note
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/key-concepts.md).
+:::warning
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts.md).
 :::
 
 Harness provides a summary of your account information and enables you to subscribe to downtime alerts for the cluster hosting your Harness account.

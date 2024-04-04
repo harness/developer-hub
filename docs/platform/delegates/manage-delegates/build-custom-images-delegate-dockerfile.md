@@ -5,9 +5,9 @@ description: This topic describes how to build custom delegate images using the 
 sidebar_position: 7
 ---
 
-You can use the Harness Delegate Dockerfile to build custom delegate images. The [Dockerfile](https://docs.docker.com/engine/reference/builder/) is available in the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile). 
+You can use the Harness Delegate Dockerfile to build custom delegate images. The [Dockerfile](https://docs.docker.com/engine/reference/builder/) is available in the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile).
 
-The repository includes the `Dockerfile-minimal` and `Dockerfile-ubuntu` versions. 
+The repository includes the `Dockerfile-minimal` and `Dockerfile-ubuntu` versions.
 
 :::info note
 If you build and use custom images, you can choose to enable or disable automatic upgrades for Kubernetes delegates. To learn more about automatic upgrades with custom images, go to [Use automatic upgrade with custom delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#use-automatic-upgrade-with-custom-delegate-images).
@@ -88,13 +88,13 @@ To build your custom delegate image, do the following:
    RUN curl -s -L -o delegate.jar $BASEURL/$DELEGATEVERSION/delegate.jar
 
    COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
-   
+
    RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
 
    USER 1001
-   
+
    ```
-   
+
    This copies all the certificates from the local `./my-custom-ca` directory to `/opt/harness-delegate/my-ca-bundle/` directory inside the container.
 
    :::info warning
@@ -127,7 +127,7 @@ ENV DESTINATION_CA_PATH=<PATH_TO_LIST_OF_PODS_IN_THE_BUILD_POD_WHERE_YOU_WANT_TO
 RUN curl -o load_certificates.sh https://raw.githubusercontent.com/harness/delegate-dockerfile/main/immutable-scripts/load_certificates.sh
 
 COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
-   
+
 RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
 
 USER 1001
@@ -195,7 +195,7 @@ ENV SHARED_CA_CERTS_PATH=/opt/harness-delegate/additional_certs_pem_split
 RUN curl -s -L -o delegate.jar $BASEURL/$DELEGATEVERSION/delegate.jar
 
 COPY <PATH_TO_LOCAL_CERTS_DIRECTORY> <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>
-   
+
 RUN bash -c "/opt/harness-delegate/load_certificates.sh <PATH_TO_DIRECTORY_OF_CERTS_IN_THE_CONTAINER>"
 
 USER 1001

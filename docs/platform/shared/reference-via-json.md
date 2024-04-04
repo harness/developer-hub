@@ -77,7 +77,7 @@ Here are sample outputs for the respective JSONPath from the above JSON file:
   "value311"
  ```
 
-:::important notes
+:::info
 
 You cannot use a JSON XPath for nested keys in expressions. For example, `<+secrets.getValue("account.YOUR_SECRET_MANAGER://myVault/harness/testpath/example")>`.
 

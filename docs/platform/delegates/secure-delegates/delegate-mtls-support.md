@@ -12,7 +12,7 @@ Harness supports the following mTLS modes:
 
 - LOOSE: Both non-mTLS and mTLS delegates are accepted.
 
-- STRICT: Only mTLS delegates are accepted. Any non-mTLS delegates are blocked. 
+- STRICT: Only mTLS delegates are accepted. Any non-mTLS delegates are blocked.
 
 :::info note
 mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io) to enable it.
@@ -27,7 +27,7 @@ Project-level certificates are not supported for mTLS delegates.
 
 :::
 
-In the following examples, OpenSSL is used to create the required certificates. For the `Subject`, use the text of your choice. It does not have to match the mTLS DNS name or contain `harness.io`. 
+In the following examples, OpenSSL is used to create the required certificates. For the `Subject`, use the text of your choice. It does not have to match the mTLS DNS name or contain `harness.io`.
 
 ### Create a CA certificate
 
@@ -50,7 +50,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
     default_md = sha256
     x509_extensions = v3_req
     distinguished_name = dn
-    
+
     [dn]
     O = Example ORG
     CN = Client
@@ -73,12 +73,12 @@ In the following examples, OpenSSL is used to create the required certificates. 
      -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \
      -in "client.csr" -out "client.crt"
     ```
-    
+
    :::info note
    You provide the client.crt and client.key to the delegate YAML when you install the delegate.
    :::
 
-5. After you create the certificates, provide the public cert of the CA certificate to Harness support. 
+5. After you create the certificates, provide the public cert of the CA certificate to Harness support.
 6. Provide a unique API prefix to the location where your mTLS endpoint is hosted. You can set any prefix for your directory path, but it must be unique.
 
    :::info note
@@ -87,13 +87,13 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ## Move delegates to mTLS
 
-You can move existing delegates with an immutable image type (image tag `yy.mm.xxxxx`) to mTLS.
+You can move existing delegates (with the image tag in `yy.mm.xxxxx` format) to mTLS, legacy delegates are not supported. For more information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 ### Prerequisites for delegate migration
 
 Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
 
-- The delegate must have an immutable image type (image tag _`yy.mm.xxxxx`_). For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+- The delegate must have an image tag in _`yy.mm.xxxxx`_ format). It cannot be a legacy delegate.
 
 - You must have access to the delegate YAML.
 
@@ -134,7 +134,7 @@ To migrate a delegate for mTLS support, do the following:
 1. In your delegate YAML, add the `client.crt` and `client.key` fields before the `Deployment` section.
 
    ```yaml
-    
+
      ---
 
     apiVersion: v1
@@ -147,7 +147,7 @@ To migrate a delegate for mTLS support, do the following:
       # Replace the values below with base64 encoded PEM files or mount an existing secret.
       client.crt: "{CERT}"
       client.key: "{KEY}"
-    
+
     ---
    ```
 
@@ -178,7 +178,7 @@ To migrate a delegate for mTLS support, do the following:
        secretName: kubernetes-delegate-client-certificate
    ```
 
-6. Add the client certificate and key section in the `ConfigMap` `upgrader-config`, then add your `managerHost` and port. 
+6. Add the client certificate and key section in the `ConfigMap` `upgrader-config`, then add your `managerHost` and port.
 
    ```yaml
    ---

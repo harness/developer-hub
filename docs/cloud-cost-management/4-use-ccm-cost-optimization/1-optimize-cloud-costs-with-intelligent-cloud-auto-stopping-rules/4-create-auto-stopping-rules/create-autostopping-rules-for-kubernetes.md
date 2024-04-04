@@ -27,7 +27,7 @@ The following section lists the support for Kubernetes clusters for AutoStopping
 
 ## Prerequisites
 
-* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../get-started/supported-platforms-and-technologies.md#cloud-cost-management).
+* Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](/docs/cloud-cost-management/whats-supported).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups.
 * For EKS:
 	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../get-started/onboarding-guide/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
@@ -104,6 +104,59 @@ Set dependencies between two or more AutoStopping Rules when you want one Rule t
 2. Select the rule from the **RULES** drop-down list.
 3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then Rule 2 (dependent rule) is warmed up first, and then there will be a delay of 5 seconds before warming up Rule 1.
 4. Once you're done with all the configurations, click **Next**.
+
+#### Inline dependencies
+Inline Dependencies feature allow you to configure workloads and namespaces as dependencies within AutoStopping rules directly, eliminating the need for separate rules for each dependency.
+
+**Possible inline dependencies:**
+- **By Workload Name:** Helps you specify required dependencies by workload name and type without creating a rule for each dependency
+```
+kind: AutoStoppingRule
+apiVersion: ccm.harness.io/v1
+metadata:
+  name: rule1
+  namespace: test
+  annotations:
+    harness.io/cloud-connector-id: Test
+spec:
+  idleTimeMins: 5
+  dependencies:
+    - selector:
+        workload:
+          name: sample
+          namespace: sample
+          type: Deployment
+      wait: 5
+  hideProgressPage: false
+  workloadName: test
+  workloadType: Deployment
+  notifications: {}
+  enabled: true
+
+```
+
+- **By Namespace**: Helps you specify required dependencies by namespace. All workloads in the namespace will be considered as dependencies. 
+
+```
+kind: AutoStoppingRule
+apiVersion: ccm.harness.io/v1
+metadata:
+  name: rule1
+  namespace: test
+  annotations:
+    harness.io/cloud-connector-id: Test
+spec:
+  idleTimeMins: 5
+  dependencies:
+    - selector:
+        namespace: test
+      wait: 5
+  hideProgressPage: false
+  workloadName: test
+  workloadType: Deployment
+  notifications: {}
+  enabled: true
+```
 
 ### Fixed Schedule
 

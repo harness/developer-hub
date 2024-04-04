@@ -413,21 +413,30 @@ The AWS connector has the following settings.
 
 ### Credentials
 
-Specify the credentials that enable Harness to connect your AWS account. There are three primary options:
+Specify the credentials that enable Harness to connect your AWS account. There are four primary options:
 
 * **Assume IAM Role on Delegate:** This assumes the SA of the delegate. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure (such as in an EKS cluster).
    * Ensure the IAM roles attached to the nodes have the right access.
    * This option isn't valid for IAM roles for service accounts (IRSA).
    * If the Harness Delegate is in an EKS cluster that uses IRSA, you must select **Use IRSA**.
    * If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration and select the **Use IRSA** option for your connector credentials. This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
+   * It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
 * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../secrets/add-use-text-secrets.md) for both.
 * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa).
+* **Use OIDC**: Connect to AWS with OIDC. In order to do this you will need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html) in AWS and add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS. 
+
+:::note
+
+The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and CloudFormation deployment types. 
+:::
 
 :::warning
 
-Ensure that the AWS IAM roles applied to the credentials you use (the Harness delegate or the access key) include the policies needed by Harness to deploy to the target AWS service.
+Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) include the policies needed by Harness to deploy to the target AWS service.
 
-If the IAM role used by your AWS connector does not have the policies required by the AWS service you want to access, you can modify or switch the role. This entails changing the role assigned to the AWS account or Harness delegate that your AWS connector is using. When you switch or modify the IAM role used by the connector, it might take up to 5 minutes to take effect.
+If the IAM role used by your AWS connector does not have the policies required by the AWS service you want to access, you can modify or switch the role. This entails changing the role assigned to the AWS account or Harness Delegate that your AWS connector is using. When you switch or modify the IAM role used by the connector, it might take up to 5 minutes to take effect.
 
 Additionally, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure.
 
@@ -439,7 +448,7 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 
 If you want to use a certain AWS account for the connection and then deploy in a different AWS account, select **Enable cross-account access (STS Role)** in your AWS connector's **Credentials** settings. The STS role is supported for EC2 and ECS. It is supported for EKS if you use the IRSA credentials option.
 
-This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. The AWS account used for AWS access in the connector's **Credentials** settings assumes the IAM role you specify in the **Cross account role ARN** field. However, the Harness delegate always runs in the account you specify in the connector's **Credentials** through **AWS Access Key** or **Assume IAM Role on Delegate**.
+This option uses the [AWS Security Token Service](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) (STS) feature. The AWS account used for AWS access in the connector's **Credentials** settings assumes the IAM role you specify in the **Cross account role ARN** field. However, the Harness Delegate always runs in the account you specify in the connector's **Credentials** through **AWS Access Key** or **Assume IAM Role on Delegate**.
 
 In the **Cross account role ARN** field, input the Amazon Resource Name (ARN) of the role that you want the connector to assume. This is an IAM role in the target deployment AWS account.
 
@@ -985,7 +994,7 @@ When used for AWS ECS images for AWS Serverless Lambda deployments, your [AWS co
 
 Additional configuration is required in your ECS cluster and delegate, as explained below.
 
-For instructions on executing Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart).
+For instructions on executing Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart).
 
 ### Permissions
 

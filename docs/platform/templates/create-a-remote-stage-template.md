@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_TEMPLATE_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
-
 Harness enables you to add templates to create re-usable logic and Harness entities (like steps, stages, and pipelines) in your pipelines. Templates enhance developer productivity, reduce onboarding time, and enforce standardization across the teams that use Harness. You can use stage and step templates in pipeline templates, or use stage and step templates while creating pipelines.
 
 When you create a template, you can save it in Harness (**Inline**) or in a Git repository (**Remote**).

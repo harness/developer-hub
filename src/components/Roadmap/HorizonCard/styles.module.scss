@@ -8,7 +8,10 @@
   flex-direction: column;
   gap: 8px;
   border: 2px solid #d9dae5;
-  background-color: white;
+  &:hover {
+    text-decoration: none;
+  }
+  // background-color: white;
   .tag {
     width: auto;
     // height: 24px;
@@ -17,7 +20,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
-     p {
+    p {
       border-radius: 4px;
       padding: 4px 8px;
       font-size: 12px;
@@ -96,3 +99,36 @@
 .platform:focus {
   border-color: var(--primary);
 }
+.iacm:focus {
+  border-color: var(--mod-iacm-200);
+}
+.iacm:hover {
+  border-color: var(--mod-iacm-200);
+}
+.idp:focus {
+  border-color: var(--mod-idp-200);
+}
+.idp:hover {
+  border-color: var(--mod-idp-200);
+}
+.sei:focus {
+  border-color: var(--mod-sei-200);
+}
+.sei:hover {
+  border-color: var(--mod-sei-200);
+}
+
+.code:hover {
+  border-color: var(--mod-code-200);
+}
+.code:focus {
+  border-color: var(--mod-code-200);
+}
+.aida:hover {
+  border-color: var(--purple-700);
+}
+.aida:focus {
+  border-color: var(--purple-700);
+}
+
+

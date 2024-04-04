@@ -21,11 +21,13 @@ While pull requests (PRs) aren't a feature of Git itself, they are often, if not
 
 You can assign reviewers to pull requests and configure mandatory requirements or checks that must pass before the PR can be merged.
 
-<!-- To add: code owners, semantic search -->
+## Semantic search
+
+Supercharge your [code search](../work-in-repos/semantic-search) with [Harness AIDA](/docs/platform/harness-aida/aida-overview).
 
 ## Harness Platform components
 
-Harness Code integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md).
+Harness Code integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md).
 
 ### Pipelines
 
@@ -40,7 +42,7 @@ To learn more about CI and CD pipelines go to:
 
 ### Projects
 
-Repositories you create in Harness Code each belong to a [Harness project](https://developer.harness.io/docs/platform/get-started/key-concepts#organizations--projects). This provides a measure of access control for your repositories.
+Repositories you create in Harness Code each belong to a [Harness project](https://developer.harness.io/docs/platform/get-started/key-concepts#organizations-and-projects). This provides a measure of access control for your repositories.
 
 ### Access control
 

@@ -4,9 +4,11 @@ description: Learn about the steps to add your custom plugin in IDP.
 sidebar_position: 2
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 :::info
 
-**Coming Soon**. This feature is **not available in production environment** yet, meanwhile take a look at the details of custom plugins to get an overview of it. In case you want to try out this feature please reach out to the IDP team.
+This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
 
 :::
 
@@ -93,6 +95,55 @@ new-plugin/
 6. Follow the steps mentioned [here](https://backstage.io/docs/plugins/plugin-development) to build on top of it. 
 7. Once you have the plugin ready, run `yarn tsc` at the root of the backstage app.
 8. **Now cd into your plugin directory and run `yarn build` followed by `yarn pack`. You'll have a `package.tgz` file generated, this file could be used to upload your plugin into IDP.** 
+
+Make sure you have the `dist` folder generated after you do `yarn pack` without that the package can't be read by IDP when uploaded. The `yarn pack` command looks something like this.
+
+```sh
+dev % yarn build
+dev % yarn pack 
+➤ YN0036: Calling the "prepack" lifecycle script
+➤ YN0000: LICENSE
+➤ YN0000: README.md
+➤ YN0000: dist/index.d.ts
+➤ YN0000: dist/index.esm.js
+➤ YN0000: dist/index.esm.js.map
+➤ YN0000: package.json
+➤ YN0036: Calling the "postpack" lifecycle script
+➤ YN0000: Package archive generated in /Users/deba/Documents/backstage-dev-quotes/package.tgz
+➤ YN0000: Done in 2s 341ms
+```
+
+Unzip the `package.tgz` and check for the **dist** folder before you try uploading it into Harness. The unzipped folder for the above given example plugin folder structure would look something like this:
+
+```sh
+new-plugin/
+    dev/
+        index.ts
+    node_modules/
+    dist/
+        index.d.ts
+        index.esm.js
+        index.esm.js.map
+    src/
+        components/
+            ExampleComponent/
+                ExampleComponent.test.tsx
+                ExampleComponent.tsx
+                index.ts
+            ExampleFetchComponent/
+                ExampleFetchComponent.test.tsx
+                ExampleFetchComponent.tsx
+                index.ts
+        index.ts
+        plugin.test.ts
+        plugin.ts
+        routes.ts
+        setupTests.ts
+    .eslintrc.js
+    package.json
+    README.md
+```
+
 </details>
 
 </TabItem>

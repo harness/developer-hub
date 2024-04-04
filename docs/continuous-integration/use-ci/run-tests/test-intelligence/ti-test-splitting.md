@@ -6,11 +6,22 @@ sidebar_position: 60
 
 <!-- Test splitting for python requires `junit_family=xunit1` in the code repo's `pytest.ini` file, or `-o junit_family="xunit1"` in the Build Arguments. CI-9225 automatically includes the build argument, so manual inclusion is no longer required. However, if they use their own reporting (to be used elsewhere than Harness) in pytest.ini, it is overridden. I am not sure if this caveat needs to be documented yet. -->
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 By default, Test Intelligence reduces test time by running only the necessary tests to validate your code changes. You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
-With parallelism, you specify how you want Harness to divide the work for a step or stage. When you use parallelism and test splitting with [Test Intelligence](./set-up-test-intelligence.md), Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
+**This topic explains parallelism and test splitting in *Run Tests* steps. For test splitting/parallelism in *Run* steps, go to [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).**
 
-For general information about how parallelism and test splitting work, go to [Split tests (parallelism)](../speed-up-ci-test-pipelines-using-parallelism.md).
+:::warning Does this topic apply to you?
+
+This topic explains how to set up parallelism and test splitting in **Run Tests** steps.
+
+For test splitting in **Run** steps and conceptual information about parallelism and test splitting functionality, go to [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).
+
+:::
+
+With parallelism, you specify how you want Harness to divide similar workloads. When you use parallelism and test splitting with [Test Intelligence](./set-up-test-intelligence.md), Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
 
 <details>
 <summary>Example: Time saved by combining TI with test splitting</summary>
@@ -36,28 +47,72 @@ To enable test splitting for TI, you must:
 
 ### Define a parallelism strategy
 
-Go to the pipeline where you want to enable parallelism for TI, and define a parallelism strategy on either:
+In the context of test splitting, the `parallelism` strategy defines the number of workloads into which tests can be divided. Each parallel instance (or workload) is a duplicate of the stage where you've defined a parallelism strategy, but each instance runs different tests.
 
-* The stage where you have the **Run Tests** step. (Recommended)
-* On the **Run Tests** step itself.
+<Tabs>
+  <TabItem value="Visual" label="Visual editor">
+
+Define the parallelism strategy on the stage with the **Run Tests** step.
 
 :::warning
+
+You can configure parallelism strategies on stages or steps.
+
+**Harness recommends using stage-level parallelism for test splitting.**
 
 If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
 
 :::
 
-For example:
+1. In your pipeline, select the stage where your tests run, and then select the **Advanced** tab.
+2. Under **Looping Strategies**, select **Parallelism**.
+3. Set the `parallelism` value to the number of workloads that you want to divide your tests into. For example, if you want to create four workloads, set `parallelism: 4`.
+
+   ![Define parallelism in a Run step.](../static/speed-up-ci-test-pipelines-using-parallelism-53.png)
+
+4. Optional: Define `maxConcurrency`. This is a strategy to [optimize parallelism](#optimize-parallelism).
+
+   ```yaml
+   parallelism: 8
+   maxConcurrency: 2
+   ```
+
+</TabItem>
+  <TabItem value="YAML" label="YAML editor" default>
+
+Define the parallelism strategy (`strategy.parallelism`) on the stage with the `RunTests` step.
 
 ```yaml
-        strategy:
-          parallelism: 3 ## Set the number of groups to use for test splitting.
+       strategy: ## Declares a looping strategy.
+         parallelism: 8 ## Specify the number of workloads. This example creates 8 workloads.
+         maxConcurrency: 2 ## Optional setting to optimize parallelism. Limits the number of workloads that can run at once.
 ```
 
-If you are using the Visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+:::warning
 
-For more information about parallelism strategies and optimizing parallelism, go to [Split tests - Define a parallelism strategy](../speed-up-ci-test-pipelines-using-parallelism.md#define-a-parallelism-strategy) and [Split tests - Optimize parallelism](../speed-up-ci-test-pipelines-using-parallelism.md#optimize-parallelism).
+You can configure parallelism strategies on stages or steps.
 
+**Harness recommends using stage-level parallelism for test splitting.**
+
+If you use step-level parallelism, you must ensure that your test runners won't interfere with each other because all parallel steps work in the same directory.
+
+:::
+
+</TabItem>
+</Tabs>
+
+#### Optimize parallelism
+
+In general, a higher `parallelism` value means a faster pipeline run time, because the tests can be divided into more parallel instances. However, this depends on your test suite and resource limitations in your build infrastructure. For example, if you try to run 10 groups of tests, but your build infrastructure can't handle 10 parallel instances, the pipeline can fail or take longer than expected.
+
+To optimize your parallelism strategy:
+
+* Try different parallelism values to determine your infrastructure's limits. Parallelism impacts [resource allocation](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits) for the pipeline. A pipeline with five sequential stages can require fewer resources than a pipeline running five parallel instances of a stage, because the second pipeline has to run all five instances at once.
+* Use `maxConcurrency` to control the flow of parallel instances and avoid overtaxing infrastructure resources. Concurrency limits the number of parallel instances that can run at once and queues additional instances.
+   * For example, if you set `parallelism: 12`, Harness attempts to run 12 instances of the stage at once. If you set `parallelism: 12` and `maxConcurrency: 3`, Harness generates 12 instances of the stage, but only runs three instances at a time. The remaining nine instances are queued, and the queued instances start running as space clears in the concurrency limit (when prior instances finish).
+   * Concurrency allows you to divide tests into more workloads without overloading your system resources.
+   * There are resource requirements to *generate* parallel instances (even if they are not all running at the same time) and handle queues. Try different combinations of `parallelism` and `maxConcurrency` values to determine your ideal configuration.
+* Review the [Best practices for looping strategies](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies.md), including [how to calculate ideal concurrency](/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies#how-to-calculate-ideal-concurrency).
 
 ### Enable Test Splitting on the Run Tests step
 
@@ -81,7 +136,11 @@ Class timing uses test times from previous runs to determine how to split the te
 
 ### Differentiate report names
 
-Modify the **Report Paths** (`reports.paths`) value to include a [Harness expression](/docs/platform/variables-and-expressions/harness-variables), such as `<+strategy.iteration>`, to ensure there is a unique results file for each parallel run. For example:
+With stage-level parallelism, results files are automatically output as separate stage artifacts.
+
+If you want the individual results files to have unique names, you can use an [expression](/docs/platform/variables-and-expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`.
+
+You might need to modify your test tool configurations to support this report naming convention, and you must modify the **Report Paths** (`reports.paths`) value to include the [Harness expression](/docs/platform/variables-and-expressions/harness-variables), such as `<+strategy.iteration>`. For example:
 
 ```yaml
                        reports:
@@ -91,9 +150,88 @@ Modify the **Report Paths** (`reports.paths`) value to include a [Harness expres
                          type: JUnit
 ```
 
+:::warning
+
+**Harness recommends stage-level parallelism for test splitting.** However, if you [defined the parallelism strategy](#define-a-parallelism-strategy) on a step (instead of a stage), you *must* use an [expression](/docs/platform/variables-and-expressions/harness-variables) or variable in the results file name, such as `result_<+strategy.iteration>.xml` or `result_${HARNESS_NODE_INDEX}.xml`, to ensure each parallel instance produces a uniquely-named results file. If you don't use an expression or variable in the results file name, the files overwrite each other or fail due to same-name conflicts. How you enable this varies by language and test tool. For this reason, among others, **Harness recommends using stage-level parallelism for test splitting**.
+
+<details>
+<summary>Recommended maven-surefire-plugin and pom.xml modifications for step-level test splitting</summary>
+
+The following modification is recommended when using test splitting in a Run Tests step with step-level `parallelism`. This modification is recommended because it doesn't change the default behavior and preserves the default test report directory. If you are using stage-level `parallelism`, this modification has no impact and isn't required.
+
+The default maven-surefire-plugin configuration in `pom.xml` is as follows:
+
+```
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+```
+
+When running tests, the default test reports (`*.xml`) are generated in `target/surefire-reports`:
+
+```
+<reportsDirectory default-value="${project.build.directory}/surefire-reports"/>
+```
+
+However, when you run a CI pipeline with test splitting enabled, all test reports are generated in one `surefire-reports` directory. As a result, the [Tests tab](/docs/continuous-integration/use-ci/viewing-builds.md#tests-tab) shows the same number of tests for all parallel runs.
+
+This issue is only present in the [Build details UI](/docs/continuous-integration/use-ci/viewing-builds). In actuality, the tests are split.
+
+To correct the UI issue, make the following changes to `pom.xml` and your Run Tests step:
+
+1. Edit `pom.xml`:
+
+   * Add a property:
+
+   ```
+     <properties>
+       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       <maven.compiler.source>1.7</maven.compiler.source>
+       <maven.compiler.target>1.7</maven.compiler.target>
+	   <reportDir>target/surefire-reports</reportDir>
+     </properties>
+   ```
+
+   * Edit the maven-surefile-plugin configuration:
+
+   ```
+       <plugin>
+         <artifactId>maven-surefire-plugin</artifactId>
+         <version>2.22.1</version>
+	     <configuration>
+	       <reportsDirectory>${reportDir}</reportsDirectory>
+	     </configuration>
+       </plugin>
+   ```
+
+2. In your CI pipeline, edit the **Run Tests** step.
+
+   * Add the following to the step's build arguments:
+
+   ```
+   -DreportDir=reports-<+strategy.iteration> test
+   ```
+
+   * Declare the following in the step's report paths:
+
+   ```
+   **/reports-<+strategy.iteration>/*.xml
+   ```
+
+</details>
+
+:::
+
+### Differentiate parallel runs in logs
+
 You can also use environment variables and expressions to differentiate parallel runs in build logs.
 
-1. Add two environment variables to the `step.spec`: `HARNESS_STAGE_INDEX: <+strategy.iteration>` and `HARNESS_STAGE_TOTAL: <+strategy.iterations>`.
+1. Add two stage variables:
+
+   * `HARNESS_STAGE_INDEX: <+strategy.iteration>` - This is the index of the current parallel run.
+   * `HARNESS_STAGE_TOTAL: <+strategy.iterations>` - This is the total parallel runs.
+
 2. Add a `preCommand` to echo the variables' values so you can easily see the values in build logs.
 
 ```yaml
@@ -103,9 +241,6 @@ You can also use environment variables and expressions to differentiate parallel
                   name: Run Tests with Intelligence
                   spec:
                     ...
-                    envVariables: ## Optional environment variables to differentiate parallel runs.
-                      HARNESS_STAGE_INDEX: <+strategy.iteration> # Index of current parallel run.
-                      HARNESS_STAGE_TOTAL: <+strategy.iterations> # Total parallel runs.
                     preCommand: |- ## Optional. Echo environment variables to differentiate parallel runs in build logs.
                       echo $HARNESS_STAGE_INDEX
                       echo $HARNESS_STAGE_TOTAL

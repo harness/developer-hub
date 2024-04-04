@@ -8,7 +8,7 @@ Harness Delegates are responsible for executing various types of workloads, and 
 
 ## Enable the dynamic threshold for delegate resources
 
-You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
+You can set the delegate to reject new tasks if x% of memory/CPU is being consumed. You can then spin up new delegates when resources are above the threshold. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
 ## Configure Harness Delegate autoscaling using replicas for Helm chart deployments
 
@@ -27,37 +27,95 @@ To auto scale the delegate, do the following:
      enabled: false
      minReplicas: 1
      maxReplicas: 10
-     targetCPUUtilizationPercentage: 80
-     # targetMemoryUtilizationPercentage: 80
+     targetMemoryUtilizationPercentage: 80
+     # targetCPUUtilizationPercentage: 80
    ```
 
 2. Set `enabled` to `true`.
 
 3. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
 
-   To fine-tune your autoscaling, you can set the `targetCPUUtilizationPercentage` to add a new replica if CPU utilization exceeds this percentage.
+   To fine-tune your autoscaling, you can set the `targetMemoryUtilizationPercentage` to add a new replica when memory utilization exceeds this percentage.
 
-4. (Optional) Set the `targetMemoryUtilizationPercentage` to add a new replica if memory utilization exceeds this percentage.
+4. (Optional) Set the `targetCPUUtilizationPercentage` to add a new replica when CPU utilization exceeds this percentage.
 
 5. Save the file, and restart your pods.
 
    When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
 
-## Configure Harness Delegate autoscaling using replicas for Kubernetes
+:::info
+Using CPU-based HPA is not advisable as CPU assignments that exceed 100% are common and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
+:::
+## Configure Harness Delegate autoscaling using replicas for Kubernetes 1.23 and later
 
-The HPA configuration setting is included in the default Kubernetes delegate YAML file. 
+The HPA configuration setting is included in the default Kubernetes delegate YAML file. Harness updated the default HPA in the Harness Delegate YAML versions 24.02.82302 and later to use `autoscaling/v2` instead of `autoscaling/v1`, which was used in earlier delegate versions.
 
-To auto scale the delegate, do the following:
+Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23 and a delegate version 24.02.82302 or later, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` section of your delegate YAML to `autoscaling/v1`. For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes versions lower than 1.23](#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes-versions-earlier-than-123).
+
+To auto scale the delegate for Kubernetes 1.23 and higher, do the following:
 
 1. In your `harness-delegate.yml` file, go to `autoscaling` parameters.
 
 2. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
 
-   To fine-tune your autoscaling, you can set the `targetCPUUtilizationPercentage` to add a new replica if CPU utilization exceeds this percentage. Below is an example of autoscaling the delegate if the CPU usage of delegates goes above 70%.
+   To fine-tune your autoscaling, you can set the `memory` `averageUtilization` to add a new replica if memory utilization exceeds this percentage. Below is an example of autoscaling the delegate if the memory usage of delegates goes above 70% (the default YAML setting).
+
+   ```yaml
+
+   ---
+
+   apiVersion: autoscaling/v2
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: kubernetes-delegate-hpa
+     namespace: harness-delegate-ng
+     labels:
+         harness.io/name: kubernetes-delegate
+   spec:
+    scaleTargetRef:
+      apiVersion: apps/v1
+      kind: Deployment
+      name: kubernetes-delegate
+    minReplicas: 1
+    maxReplicas: 1
+    metrics:
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+
+   ---
+
+   ```
+
+3. (Optional) Set the `cpu` `averageUtilization`to add a new replica if CPU utilization exceeds this percentage.
+
+4. Save the file, and restart your pods.
+
+   When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
+
+## Configure Harness Delegate autoscaling using replicas for Kubernetes versions earlier than 1.23
+
+The HPA configuration setting is included in the default Kubernetes delegate YAML file.
+
+:::warning important version info
+Harness updated the default HPA in the Harness Delegate YAML to use `autoscaling/v2` instead of `autoscaling/v1` which was used in earlier delegate versions.
+
+Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version earlier than 1.23 and a delegate version 24.02.82302 or later, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` section of your delegate YAML to `autoscaling/v1`.
+
+:::
+
+To auto scale the delegate for Kubernetes versions lower than 1.23, do the following:
+
+1. In your `harness-delegate.yml` file, go to `autoscaling` parameters.
+
+2. Replace the `apiVersion` in the `HorizontalPodAutoscaler` section of your delegate YAML to `autoscaling/v1`.
 
    ```yaml
    ---
-   
+
    apiVersion: autoscaling/v1
    kind: HorizontalPodAutoscaler
    metadata:
@@ -72,20 +130,24 @@ To auto scale the delegate, do the following:
        name: harness-delegate
      minReplicas: 2
      maxReplicas: 10
-     targetCPUUtilizationPercentage: 70
-   
+     targetMemoryUtilizationPercentage: 70
+
    ---
    ```
 
-3. (Optional) Set the `targetMemoryUtilizationPercentage` to add a new replica if memory utilization exceeds this percentage.
+3. Specify the minimum and maximum number of replicas you want to use in the `minReplicas` and `maxReplicas` parameters.
 
-4. Save the file, and restart your pods.
+   To fine-tune your autoscaling, you can set the `targetMemoryUtilizationPercentage` to add a new replica if Memory utilization exceeds this percentage. Below is an example of autoscaling the delegate if the Memory usage of delegates goes above 70%.
+
+4. (Optional) Set the `targetCPUUtilizationPercentage` to add a new replica if CPU utilization exceeds this percentage.
+
+5. Save the file, and restart your pods.
 
    When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
 
 ## Example delegate YAML
 
-Here's an example YAML file which configures delegates to have a minimum of 2 replicas. If the CPU or memory usage goes above 80%, new tasks won't be accepted. Once the CPU usage hits 70%, a new pod will be created to handle the load, up to a maximum of 10 replicas. When the CPU usage goes back down below 70%, the number of replicas will be scaled back down to a minimum of 2.
+Here's an example YAML file that configures delegates to have a minimum of 2 replicas. New tasks won't be accepted if the Memory usage goes above 80%. Once the Memory usage hits 70%, a new pod will be created to handle the load, up to a maximum of 10 replicas. When the Memory usage goes down below 70%, the number of replicas will be scaled back down to a minimum of 2.
 
 ```yaml
 apiVersion: v1
@@ -211,14 +273,14 @@ spec:
           value: "true"
         - name: LOG_STREAMING_SERVICE_URL
           value: "https://app.harness.io/log-service/"
-        - name: DELEGATE_RESOURCE_THRESHOLD
+        - name: MEMORY_USAGE_THRESHOLD
           value: ""
         - name: DYNAMIC_REQUEST_HANDLING
           value: "false"
 
 ---
 
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
    name: kubernetes-delegate-hpa
@@ -230,9 +292,15 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: kubernetes-delegate
-  minReplicas: 2
-  maxReplicas: 10
-  targetCPUUtilizationPercentage: 70
+  minReplicas: 1
+  maxReplicas: 1
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 70
 
 ---
 
@@ -292,7 +360,7 @@ metadata:
   name: kubernetes-delegate-upgrader-config
   namespace: harness-delegate-ng
 data:
-  config.yaml: 
+  config.yaml:
     mode: Delegate
     dryRun: false
     workloadName: kubernetes-delegate
@@ -341,9 +409,9 @@ spec:
 
 You can use `terminationGracePeriodSeconds` or `preStopHook` to scale down your delegate pods.
 
-- `terminationGracePeriodSeconds`: This is used to allow the delegate to delay the shutdown so that this process can perform some cleanup. The container shutdown is delayed the specified duration. 
+- `terminationGracePeriodSeconds`: This is used to allow the delegate to delay the shutdown so that this process can perform some cleanup. The container shutdown is delayed the specified duration.
 
-   If there are no tasks running on the delegate pod, it terminates immediately. If the delegate pod is running one or more tasks, it will stop accepting new tasks and terminate as soon as all running tasks complete. 
+   If there are no tasks running on the delegate pod, it terminates immediately. If the delegate pod is running one or more tasks, it will stop accepting new tasks and terminate as soon as all running tasks complete.
 
    For example, if `terminationGracePeriodSeconds` is set to 7200 (two hours), there are three possible scenarios:
 

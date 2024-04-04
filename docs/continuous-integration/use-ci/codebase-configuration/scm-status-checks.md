@@ -72,7 +72,7 @@ These steps explain how to add a status check that uses the GitHub API. For info
 
 8. Configure additional settings as necessary for your script and build infrastructure. For example, you might want to set container resource limits, export output variables, or inject environment variables. For more information about **Run** step settings, go to [Use Run steps](../run-step-settings.md).
 
-The above script is a basic GitHub status check. You can modify the script to include more commands, get other information from the payload, or call a different SCM provider's API. For example, the following script takes different actions depending on the resulting status, and it includes environment variables and [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md):
+The above script is a basic GitHub status check. You can modify the script to include more commands, get other information from the payload, or call a different SCM provider's API. For example, the following script takes different actions depending on the resulting status, and it includes environment variables and [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings.md):
 
 ```shell
 # status="<+execution.steps.STEP_ID.status>"

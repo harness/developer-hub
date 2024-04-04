@@ -6,6 +6,8 @@ redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-a-new-plugin
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 You can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
 **Prerequisites**

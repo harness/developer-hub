@@ -10,10 +10,6 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about the security features in Harness.
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
-## General
-
 ### What security features does Harness provide?
 
 The set of security features that Harness provides includes the following features:
@@ -38,7 +34,7 @@ For more information, go to [Delegates overview](/docs/platform/delegates/delega
 
 ### What data does the delegate send to Harness Manager?
 
-The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. In the case that the WebSocket connection is dropped, the Harness delegate falls back to outbound-only, polling-based task fetch.
+The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (WebSocket over TLS) to send new delegate task event notifications (not the tasks themselves) and exchange connection heartbeats. In the case that the WebSocket connection is dropped, the Harness Delegate falls back to outbound-only, polling-based task fetch.
 
 * **Heartbeat:** The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to let Harness Manager know that it is running.
 * **Deployment data:** The information from the API executions the delegate performs is sent to Harness Manager and shown on the **Deployments** page.

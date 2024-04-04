@@ -4,12 +4,6 @@ description: Store and share environments and infrastructures in your Git repos.
 sidebar_position: 11
 ---
 
-:::info note
-Currently, Git Experience support for environments and infrastructure definition is behind the feature flags `CDS_ENV_GITX` and 
-`CDS_INFRA_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 When you create a new Harness environment or infrastructure definition, you can store it in one of the following ways:
 
 - Inline: Harness stores the entity in its platform.
@@ -70,7 +64,7 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 
 ### Add a remote environment in a CD pipeline
 
-Adding a remote environment in a CD pipeline stage is no different than adding an inline environment.
+Adding a remote environment in a CD pipeline stage is no different from adding an inline environment.
 
 When adding a remote environment to the stage, you have the ability to choose a specific branch to determine the version of the environment you wish to utilize in your pipeline.
 

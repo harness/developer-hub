@@ -3,7 +3,12 @@ title: Harness Community Edition deployments
 description: This topic walks you through deploying setting up Harness CD Community Edition locally and creating and deploying a CD pipeline.
 sidebar_position: 2
 ---
-As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). Follow the instructions below if you are still using the Harness CD CE.
+
+:::warning
+As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness).
+
+Use the instructions on this page only if you are still using the Harness CD CE.
+:::
 
 This quickstart shows you how to set up Harness CD Community Edition locally and create a CD pipeline that deploys a public NGINX image to a local cluster.
 
@@ -34,7 +39,7 @@ You'll learn how to:
   	  - Minikube needs 4GB and 4 CPUs: `minikube start --memory 4g --cpus 4`.
 	+ Kubernetes cluster.
   	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. Don't have a cluster? Go to [Notes](#notes) below.
-	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
+	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/platform/get-started/key-concepts.md) to establish a general understanding of Harness.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 
@@ -407,10 +412,7 @@ To clean up your environment, do the following.
 
 ## Community and Support
 
-Use the following resources to ask questions, find answers, and give feedback:
-
-* Community Forum. Use the [Harness Community Forum](https://community.harness.io/) to ask questions and get answers from Harness experts.
-* Community on Slack. Join [here](https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw).
+Use the [Harness Community](https://developer.harness.io/community) to ask questions, find answers, and give feedback.
 
 ### Upgrade
 
@@ -437,7 +439,7 @@ Try some other tutorials to learn more about Harness CD:
 * [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 * [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart)
-* [Harness YAML overview](/docs/platform/pipelines/harness-yaml-quickstart)
+* [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart)
 
 ## Notes
 

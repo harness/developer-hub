@@ -19,8 +19,8 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 ### Before you begin
 
-* Go to [Harness Key Concepts](../../../get-started/key-concepts.md)
-* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Visual Summary
 
@@ -69,7 +69,7 @@ In Community and Self-Managed Enterprise Edition accounts, Harness uses a ra
 
 
 :::info note
-By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md). 
+By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secret Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secret manager](/docs/platform/get-started/tutorials/add-secrets-manager.md). 
 
 :::
 

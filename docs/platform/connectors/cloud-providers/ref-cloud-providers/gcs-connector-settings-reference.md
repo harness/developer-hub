@@ -18,7 +18,10 @@ Certain roles are required in your GCP account, depending on how you are using t
 
 ### GKE/Kubernetes role requirements
 
-If you use the GCP connector to connect to GKE, the GCP service account used for any credentials requires the **Kubernetes Engine Developer** and **Storage Object Viewer** permissions.
+If you use the GCP connector to connect to GKE, the GCP service account used for any credentials requires:
+
+* **Kubernetes Engine Developer** (`roles/container.clusterAdmin`)
+* **Storage Object Viewer** (`roles/storage.objectViewer`)
 
 For instructions on adding roles to your service account, go to the Google documentation on [Granting Roles to Service Accounts](https://cloud.google.com/iam/docs/granting-roles-to-service-accounts). For more information about GCP roles, go to the GCP documentation on [Understanding Roles](https://cloud.google.com/iam/docs/understanding-roles?_ga=2.123080387.-954998919.1531518087#curated_roles).
 
@@ -37,9 +40,9 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 * Storage Object Viewer (`roles/storage.objectViewer`)
 * Storage Object Admin (`roles/storage.objectAdmin`)
 
-For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
+For more information, go to the GCP [Artifact registry roles reference](https://cloud.google.com/iam/docs/understanding-roles#artifact-registry-roles).
 
-Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md).
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host, for example `gcr.io`. Registry host name is declared in your step settings. For example, you can declare it in the **Host** field in the [Build and Push to GCR step settings](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md).
 
 ### GAR role requirements
 
@@ -47,6 +50,8 @@ For Google Artifact Registry, the following roles are required:
 
 * Artifact Registry Reader
 * Artifact Registry Writer
+
+For more information, go the GCP documentation about [Configuring Roles for Artifact Registry](https://cloud.google.com/artifact-registry/docs/access-control)
 
 ### Google Cloud Operations Suite (Stackdriver) requirements
 
@@ -126,13 +131,22 @@ With this option, Harness communicates with GCP indirectly through a Harness Del
 * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](../../../delegates/delegate-concepts/delegate-overview.md).
 * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate installation overview](../../../delegates/install-delegates/overview).
 
+:::note
+
+It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+:::
+
 #### Use OpenID Connect (OIDC)
 
 Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
 
-:::note
+Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
 
-Currently, the OIDC connectivity mode is compatible with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) only, and it is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::warning
+
+Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

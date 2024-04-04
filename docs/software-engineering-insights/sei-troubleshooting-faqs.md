@@ -103,7 +103,7 @@ The idle session timeout is currently set to 3 hours. This means that when a use
 
 ## Ingestion Satellite
 
-For FAQs & Troubleshooting guide on the Ingestion Satellite, go to the [Ingestion Satellite FAQs & Troubleshooting](./sei-ingestion-satellite/satellite-troubleshooting-and-faqs.md).
+For FAQs & Troubleshooting guide on the Ingestion Satellite, go to the [Ingestion Satellite FAQs & Troubleshooting](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 ## Propels and Tables
 
@@ -159,4 +159,4 @@ For FAQs about the Harness Platform or other Harness modules, go to the [Harness
 
 For general Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
-For further assistance, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
+For further assistance, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://developer.harness.io/community).

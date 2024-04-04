@@ -15,11 +15,12 @@ import TabItem from '@theme/TabItem';
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
-Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
+There are two ways you can run GitHub Actions in Harness CI pipelines:
 
-This topic describes how to use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step to run GitHub Actions. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
+* If you are using Harness Cloud build infrastructure, use the [built-in GitHub Action step](./ci-github-action-step.md).
+* For all other build infrastructures, use the [GitHub Actions Drone plugin](https://github.com/drone-plugins/github-actions) in a **Plugin** step. When your pipeline runs, the GitHub Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
-For information about the specialized **GitHub Action plugin** step, go to [Use the GitHub Action step](./ci-github-action-step.md).
+This topic explains how to use the GitHub Actions Drone plugin in a Plugin step.
 
 ## Add the Plugin step
 
@@ -41,7 +42,7 @@ Use **Settings** to specify the GitHub Action you want to use and to pass variab
 | - | - | - | - |
 | `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
 | `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
-| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required to use [Private Action repos](#private-action-repos), run [Duplicate Actions](#duplicate-actions), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
+| `env` | Conditionally required. Specify a map of environment variables to pass to the Action. Required for [Private Action repos](#private-action-repos), [Duplicate Actions](#duplicate-actions), [Actions requiring a defined working directory](#actions-requiring-a-defined-working-directory), or if otherwise noted in the Action's usage specifications.  | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
 
 :::tip
 
@@ -152,6 +153,34 @@ In this example, two parallel `Plugin` steps run the same GitHub Action. Each st
                          env:
                            XDG_CACHE_HOME: /home/ubuntu/.cache2
 ```
+
+### Actions requiring a defined working directory
+
+Some GitHub Actions need to run on the cloned [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase). The GitHub Action plugin doesn't automatically set a working directory.
+
+If this is required by the Action you want to run, and the Action offers a working directory parameter, then you need to specify the working directory as `/harness`. For example:
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: Action docker publish image
+                  identifier: Action_docker_publish_image
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/github-actions
+                    privileged: true
+                    settings:
+                      uses: elgohr/Publish-Docker-Github-Action@v4
+                      with:
+                        name: dockerhub/publish-docker-image
+                        username: ${{ secrets.DOCKER_USERNAME }}
+                        password: ${{ secrets.DOCKER_PASSWORD }}
+                        workdir: /harness
+```
+
+If the Action ingests the working directory as an environment variable, place it under `env`.
+
+If the Action doesn't offer a way to set a working directory, it most likely won't run in Harness.
 
 ## Pipeline YAML example
 

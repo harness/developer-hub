@@ -4,6 +4,8 @@ description: Learn more about the upcoming features and upgrades to Harness IDP
 sidebar_position: 1
 ---
 
+This overview page isn't **actively maintained anymore**, please take a look at the detailed roadmap is available on the [Platform Roadmap](https://developer.harness.io/roadmap/#idp) page. 
+
 ## Catalog
 
 - Automated Service Discovery

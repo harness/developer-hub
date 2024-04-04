@@ -140,7 +140,7 @@ roleRef:
 
 For Harness CI, the resources required for the Kubernetes cluster depends on the number of builds running in parallel, as well as the resources required for each build.
 
-Below is a rough estimation of the resources required, based on the number of daily builds:
+The following table provides rough estimates of potential resource requirements based on a number of daily builds. Your actual requirements can vary from these examples.
 
 | **PRs/Day** | **Nodes with 4 CPU, 8GB RAM,100GB disk** | **Nodes with 8 CPU, 16GB RAM, 200GB disk** |
 | ----------- | ---------------------------------------- | ------------------------------------------ |
@@ -159,17 +159,39 @@ Below is a rough estimation of the resources required, based on the number of da
 
 ### Use the Credentials of a Specific Harness Delegate
 
-Harness recommends using delegate credentials when possible. [Install and run the Harness Kubernetes delegate](../../../delegates/install-delegates/overview.md) in the target Kubernetes cluster, and then configure the Kubernetes cluster connector to connect to that cluster through that delegate. This is the simplest method to connect to a Kubernetes cluster. You can either provide the authentication details of the target cluster or use a role associated with the Harness Delegate in your cluster.
+Harness recommends using delegate credentials when possible. This is the simplest method to connect to a Kubernetes cluster, if it is appropriate for your configuration.
 
-When you select a delegate, the Harness Delegate inherits the Kubernetes service account associated with the delegate pod. The service account associated with the delegate pod must have the Kubernetes `cluster-admin` role.
+1. [Install and run the Harness Kubernetes delegate](/docs/platform/delegates/install-delegates/overview.md) in the target Kubernetes cluster.
+2. Configure the Kubernetes cluster connector to connect to that cluster through that delegate. You can either provide the authentication details of the target cluster or use a role associated with the Harness Delegate in your cluster.
+
+When you select a delegate in the connector, the Harness Delegate inherits the Kubernetes service account associated with the delegate pod. The service account associated with the delegate pod must have the Kubernetes `cluster-admin` role.
+
+:::note
+
+It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+:::
 
 ### Specify Master URL and Credentials
 
-This is an alternative to [inheriting delegate credentials](#use-the-credentials-of-a-specific-harness-delegate).
+This is an alternative to using delegate credentials. It can be required for certain configurations that aren't compatible with inheriting delegate credentials.
 
-For **Master URL**, provide the Kubernetes master node URL. To get the master URL, use `kubectl cluster-info`.
+1. For **Master URL**, provide the Kubernetes master node URL. To get the master URL, use `kubectl cluster-info`.
+2. For **Authentication**, select and configure one of the authentication methods:
 
-For **Authentication**, select and configure one of the authentication methods described below.
+   * [Username and password](#username-and-password)
+   * [Service Account](#service-account)
+   * [OpenID Connect](#openid-connect)
+
+:::info
+
+In a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings), if you use a [delegate selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md) with a Kubernetes cluster build infrastructure, and your delegate selector specifies a Docker delegate, then your Kubernetes cluster connector must be set to **Specify Master URL and Credentials**.
+
+Kubernetes cluster connectors can't inherit delegate credentials (**Use the Credentials of a Specific Harness Delegate**) from Docker delegates because they are not in the same environment.
+
+This is because, when the Kubernetes cluster connector is set to inherit delegate credentials, the delegate reaches the cluster at `localhost:8080`. With a Docker delegate, the cluster isn't at `localhost:8080` relative to the Docker delegate's environment. Therefore, you must use **Specify Master URL and Credentials** if you want to use a Docker delegate in your stage's delegate selector.
+
+:::
 
 #### Username and Password
 
@@ -191,6 +213,9 @@ Provide the credentials for the *cluster*, not the *platform*.
 #### Service Account
 
 Select or create a Harness encrypted text secret containing the decoded service account token for the service account. The secret must contain the decoded token for the connector to function correctly. The service account doesn't have to be associated with a delegate.
+
+<details>
+<summary>Generate service account token with TokenRequest</summary>
 
 In Kubernetes version 1.24 and later, service account token secrets are no longer automatically generated. Instead, you can use the `TokenRequest` subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the `TokenRequest` subresource:
 
@@ -222,6 +247,105 @@ In Kubernetes version 1.24 and later, service account token secrets are no longe
    ```
 
 4. Paste the token into a Harness encrypted text secret and then use that secret for the connector's **Service Account Token**.
+
+</details>
+
+<details>
+<summary>Obtain the Service Account token using kubectl</summary>
+
+To use a Kubernetes Service Account (SA) and token, you need to use either an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
+
+For example:
+
+1. Create a manifest. This manifest creates a new SA named `harness-service-account` in the `default` namespace:
+
+   ```
+   # harness-service-account.yml
+   apiVersion: v1
+   kind: ServiceAccount
+   metadata:
+     name: harness-service-account
+     namespace: default
+   ```
+
+2. Apply the SA.
+
+   ```
+   kubectl apply -f harness-service-account.yml
+   ```
+
+3. Grant the SA the `cluster-admin` permission.
+
+   ```
+   # harness-clusterrolebinding.yml
+   apiVersion: rbac.authorization.k8s.io/v1beta1
+   kind: ClusterRoleBinding
+   metadata:
+     name: harness-admin
+   roleRef:
+     apiGroup: rbac.authorization.k8s.io
+     kind: ClusterRole
+     name: cluster-admin
+   subjects:
+   - kind: ServiceAccount
+     name: harness-service-account
+     namespace: default
+   ```
+
+4. Apply the `ClusterRoleBinding`.
+
+   ```
+   kubectl apply -f harness-clusterrolebinding.yml
+   ```
+
+5. After adding the SA, run the following commands to get the SA's token. The `| base64 -d` piping decodes the token so you can use it in the connector's credentials.
+
+   ```
+   SERVICE_ACCOUNT_NAME={SA name}
+
+   NAMESPACE={target namespace}
+
+   SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')
+
+   TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)
+
+   echo $TOKEN
+   ```
+
+:::note SA tokens for Kubernetes versions 1.24 and later
+
+The Kubernetes SA token isn't automatically generated for SAs provisioned under Kubernetes versions 1.24 and later. Instead, you must create a new SA token and decode it to the `base64` format.
+
+You can use the following kubectl command to create a SA bound token:
+
+```
+kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
+```
+
+You can also create SAs using manifests, for example:
+
+```
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <service-account-name>
+  namespace: default
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: <token-secret-name>
+  annotations:
+    kubernetes.io/service-account.name: "<service-account-name>"
+```
+
+For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
+
+:::
+
+</details>
 
 #### OpenID Connect
 

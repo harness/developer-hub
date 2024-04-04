@@ -5,9 +5,9 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
         <th>Operating System</th>
         <th>Architecture</th>
         <th>Harness Cloud</th>
-        <th>Self-hosted local runner</th>
-        <th>Self-hosted Cloud provider VMs</th>
-        <th>Self-hosted Kubernetes cluster</th>
+        <th>Self-managed local runner</th>
+        <th>Self-managed AWS/GCP/Azure VMs</th>
+        <th>Self-managed Kubernetes cluster</th>
     </tr>
     <tr>
         <td>Linux</td>
@@ -28,7 +28,7 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     <tr>
         <td>Windows</td>
         <td>amd64</td>
-        <td align="center">Roadmap</td>
+        <td align="center">✅ Ingestion mode only</td>
         <td align="center">❌ Not supported</td>
         <td align="center">Roadmap</td>
         <td align="center">❌ Not supported</td>

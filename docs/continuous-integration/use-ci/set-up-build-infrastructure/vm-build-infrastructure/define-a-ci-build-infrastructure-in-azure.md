@@ -36,7 +36,8 @@ These are the requirements to configure an Azure VM application, Entra ID app re
 1. In Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines), and create a VM to host your Harness Delegate and runner. Select a machine type with 4 vCPU and 16 GiB memory or more. Harness recommends the following machine images:
 
    * [Ubuntu 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview)
-   * [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22)
+   * [Microsoft Windows Server 2022 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272022datacenter%27%29%5D%22)
+   * [Microsoft Windows Server 2019 Datacenter G2](https://az-vm-image.info/?cmd=--query+%22%5B%3Fcontains%28urnAlias%2C+%272019datacenter%27%29%5D%22)
 
 2. Create a resource group for your VM.
 3. Configure the VM to allow ingress on the following:
@@ -119,7 +120,7 @@ instances:
 
 
 </TabItem>
-  <TabItem value="windows" label="Windows Server 2019 pool.yml">
+  <TabItem value="windows" label="Windows Server 2022 pool.yml">
 
 
 ```yaml
@@ -145,7 +146,7 @@ instances:
       password: XXXXXXX
       publisher: MicrosoftWindowsServer
       offer: WindowsServer
-      sku: 2019-Datacenter-with-Containers
+      sku: 2022-datacenter-g2
       version: latest
 ```
 
@@ -205,7 +206,7 @@ Install a Harness Docker Delegate on your Azure VM.
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -252,7 +253,6 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build infrastructure.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
@@ -266,7 +266,6 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 <!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
 <DocImage path={require('../static/ci-stage-settings-vm-infra.png')} />
-
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
@@ -292,16 +291,50 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
             ...
 ```
 
-
 </TabItem>
 </Tabs>
 
-## Troubleshoot self-hosted VM build infrastructure
+### Delegate selectors with self-managed VM build infrastructures
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
+:::note
+
+Currently, delegate selectors for self-managed VM build infrastructures is behind the feature flag `CI_ENABLE_VM_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Although you must install a delegate to use a self-managed VM build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
+
+Delegate selections take precedence in the following order:
+
+1. Stage
+2. Pipeline
+3. Platform (build machine delegate)
+
+This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the platform delegate, which is the delegate that you installed on your primary VM with the runner. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
+
+For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
+
+<details>
+<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+:::note
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
+
+</details>
+
+## Troubleshoot self-managed VM build infrastructure
+
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
 * [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
 * [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
 * [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
 * [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

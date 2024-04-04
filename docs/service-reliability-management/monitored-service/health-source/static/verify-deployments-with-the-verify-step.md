@@ -19,12 +19,9 @@ This topic covers how to add and configure the Verify step.
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](/docs/get-started/key-concepts.md)
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-
-## Supported Platforms and Technologies
-
-See **Continuous Verification** in [Supported Platforms and Technologies](../../../get-started/supported-platforms-and-technologies.md).
+* [What's supported in CV](/docs/continuous-delivery/verify/cv-whats-supported.md)
 
 ## Review: What is Harness Continuous Verification (CV)?
 
@@ -190,7 +187,7 @@ Harness waits 2-3 minutes to allow enough time for the data to be sent to the ve
 
 ## Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../../platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` references the primary artifact.
 
@@ -198,9 +195,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` references the primary a
 
 In Advanced, you can use the following options:
 
-* [Step Skip Condition Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 By default, Harness adds the following Failure Strategy for **Verification Failures**:
 

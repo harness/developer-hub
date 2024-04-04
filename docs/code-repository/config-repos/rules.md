@@ -4,9 +4,13 @@ description: Set up branch rules in Harness Code
 sidebar_position: 30
 ---
 
-In Harness Code, you can create branch rules for a single branch or multiple branches in a repository. Branch rules establish criteria for approving and merging PRs, define who can create and delete branches, and more.
+In Harness Code, you can use branch rules and CODEOWNERS to manage individual repositories.
+
+For broader permissions, such as the ability to view repos within a specific Harness project, go to [Access control](/docs/code-repository/get-started/overview.md#access-control).
 
 ## Add branch rules
+
+In Harness Code, you can create branch rules for a single branch or multiple branches in a repository. Branch rules establish criteria for approving and merging PRs, define who can create and delete branches, and more.
 
 1. Go to the repository where you want to enable branch rules, and select **Settings**.
 2. Select the **Rules** tab.
@@ -30,6 +34,7 @@ The following rules are available when adding branch rules. Some rules require a
 | **Require review from code owners** | This rule requires a [CODEOWNERS file](#codeowners) in your branches. If there is no CODEOWNERS file, Harness can't enforce the rule. |
 | **Require approval of new changes** | This rule requires that you *also* enable **Require a minimum number of reviewers** or **Require review from code owners** (or both). Without at least one of those additional rules, this rule has no effect. |
 | **Require comment resolution** | None. |
+| **Require change request resolution** | None. |
 | **Require status checks to pass** | You must specify the checks that must pass. |
 | **Limit merge strategies** | You must select the allowed merge strategies. |
 | **Auto delete branch on merge** | None. |

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-hashicorp-vault).To store and use encrypted secrets (such as access keys), you can add a HashiCorp Vault Secrets Manager.
 
 ### Before You Begin
 
@@ -106,8 +106,6 @@ path "auth/token/renew-self"
 ```
 
 ### Option: Vault Agent
-
-For a detailed walkthrough, see [How to integrate Harness with Vault using Vault Agent (Delegate)](https://community.harness.io/t/hashicorp-vault-2022-review-how-to-integrate-harness-with-vault-using-vault-agent-delegate/11710) from Harness Community.This option enables the Harness Vault Secrets Manager to authenticate with the Auto-Auth functionality of the [Vault Agent](https://www.vaultproject.io/docs/agent/autoauth).
 
 To authenticate with Vault Agent, make sure you have configured it on the required environment, with entries for **method** and **sinks**. For more information, see [Vault Agent](https://www.vaultproject.io/docs/agent).
 

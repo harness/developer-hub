@@ -29,7 +29,7 @@ The CET Agent can be installed on a variety of operating systems. The Agent requ
 | Windows | 7+ |
 | Windows Server | 2012+ |
 | Alpine | 3.10+ |
-| Amazon Linux (Arm) | 2 (Graviton 2) |
+| Amazon Linux (Arm) | 2 & 3 (Graviton 2 & 3) |
 | Amazon Linux | 2+ |
 | AIX | 6.1+, 7.1, 7.2, 8+ |
 | Mac | 10.15+ (Catalina) |
@@ -65,11 +65,12 @@ Harness recommends using the source attach when using non-Java languages with th
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
 | --- | --- | --- |---|---|
-| 17 | * | 2021-09-30 | - | - |
-| 11 | * | 2018-09-30 | 2023-09-30 | - |
-| 8 | * | 2014-03-31 | 2025-03-31 | - |
-| 7 |  | 2011-07-31 | 2022-07-31 | - |
-| 6 |  | 2006-09-30 | 2018-12-31 | update 20 and above |
+| 21 | * | 2023-09-19 | 2031-09-30 | - |
+| 17 | * | 2021-09-14 | 2029-09-30 | - |
+| 11 | * | 2018-09-25 | 2032-01-31 | - |
+| 8 | * | 2014-03-18 | 2030-12-31 | - |
+| 7 |  | 2011-07-28 | 2022-07-31 | - |
+| 6 |  | 2006-12-11 | 2018-10-31 | update 20 and above |
 
 :::info note
 
@@ -89,11 +90,12 @@ Make sure to include the following VM flags when attaching an Error Tracking Age
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
 | --- | --- | --- |---|---|
-| 17 | * | 2021-09-30 | - | - |
-| 11 | * | 2018-09-30 | 2024-10-30 | - |
-| 8 | * | 2014-03-31 | 2023-06-30 | - |
-| 7 |  | 2011-07-31 | 2020-06-30 | - |
-| 6 |  | 2006-12-31	 | 2016-12-31 | update 20 and above |
+| 21 | * | 2023-09-19 | 2029-09-30 | - |
+| 17 | * | 2021-09-14 | 2027-10-30 | - |
+| 11 | * | 2018-09-25 | 2024-10-30 | - |
+| 8 | * | 2014-03-18 | 2026-11-30 | - |
+| 7 |  | 2011-07-28 | 2020-06-30 | - |
+| 6 |  | 2006-12-11	 | 2016-12-31 | update 20 and above |
 
 OpenJDK support extends to other derivatives, but not all of them are thoroughly tested. Following are some examples:
 
@@ -227,4 +229,4 @@ Following Java plugins are not compatible with the CET Java Agent:
 
 All the technologies that are supported in Harness SaaS are also supported in the Self-Managed Enterprise Edition. 
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).

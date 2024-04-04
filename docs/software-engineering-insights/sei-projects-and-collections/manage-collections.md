@@ -4,7 +4,7 @@ description: Create and edit Collections.
 sidebar_position: 40
 ---
 
-Collections are groupings representing subdivisions of a [Collection category](./manage-collection-cat.md). By default, each Collection category has one root, or **All**, Collection. For example, the Teams category automatically has an **All Teams** Collection. Under the root Collection, you can create any number of Collections and Collection levels.
+Collections are groupings representing subdivisions of a [Collection category](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat). By default, each Collection category has one root, or **All**, Collection. For example, the Teams category automatically has an **All Teams** Collection. Under the root Collection, you can create any number of Collections and Collection levels.
 
 For example, in the Teams category, you can have a Collection for your Engineering teams, and then you can create a child Collection for the Front End team under the Engineering teams Collection. The resulting hierarchy might look like this:
 
@@ -16,7 +16,7 @@ For example, in the Teams category, you can have a Collection for your Engineeri
         * Other Engineering teams...
       * Other teams...
 
-Inheritance flows down the Collection levels. For example, Collection categories and Collections inherit [SEI integrations](/docs/category/integrations) from the associated [Harness project](/docs/category/organizations-and-projects), and child Collections inherit [Insights associations](#manage-insights-associations) from their ancestor Collections. For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./manage-collection-cat.md).
+Inheritance flows down the Collection levels. For example, Collection categories and Collections inherit [SEI integrations](/docs/category/integrations) from the associated [Harness project](/docs/category/organizations-and-projects), and child Collections inherit [Insights associations](#manage-insights-associations) from their ancestor Collections. For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](/docs/software-engineering-insights/sei-projects-and-collections/manage-collection-cat).
 
 ## View Collections
 
@@ -56,7 +56,7 @@ Options for editing Collections are only available on **Flat List** view.
 
 ### Manage Insights associations
 
-All [Insights](../sei-insights.md) must be associated with at least one Collection. You can configure these associations through Collection settings or when creating or editing Insights. For information about creating and editing Insights, go to [Insights](../sei-insights.md).
+All [Insights](/docs/software-engineering-insights/insights/sei-insights) must be associated with at least one Collection. You can configure these associations through Collection settings or when creating or editing Insights. For information about creating and editing Insights, go to [Insights](/docs/software-engineering-insights/insights/sei-insights).
 
 :::info Inheritance
 

@@ -39,7 +39,7 @@ Review the following requirements for local runner build infrastructures:
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -135,7 +135,7 @@ Review the following requirements for local runner build infrastructures:
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -253,7 +253,7 @@ Review the following requirements for Windows local runner build infrastructures
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -392,7 +392,7 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
 </Tabs>
 
 
-:::tip
+:::tip delegate selectors
 
 Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 

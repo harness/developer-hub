@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
@@ -22,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 In addition to a Harness account, this tutorial requires a GitHub account and knowledge of Python, FastAPI, Git, and GitHub.
 
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';
 
 <CISignupTip />
 

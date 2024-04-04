@@ -1,5 +1,5 @@
 ---
-title: Trigger deployments using custom triggers
+title: Trigger pipelines using custom triggers
 description: Trigger deployments using cURL and Webhooks
 sidebar_position: 7
 helpdocs_topic_id: qghequ5vxu
@@ -194,9 +194,7 @@ The response from the cURL command will contain the status of the deployment. Fo
             "planExecutionId":"_iodHvEhT2y_Mn_DLaR32A",  
             "name":"Triggers",  
             "status":"Success",  
-            "tags":[  
-                 
-            ],  
+            "tags":[],  
             "executionTriggerInfo":{  
                "triggerType":"WEBHOOK_CUSTOM",  
                "triggeredBy":{  
@@ -213,9 +211,7 @@ The response from the cURL command will contain the status of the deployment. Fo
             "governanceMetadata":{  
                "id":"0",  
                "deny":false,  
-               "details":[  
-                    
-               ],  
+               "details":[],  
                "message":"",  
                "timestamp":"1663276236674",  
                "status":"pass",  
@@ -292,12 +288,8 @@ The response from the cURL command will contain the status of the deployment. Fo
                   "startTs":1663276236851,  
                   "endTs":1663276251023,  
                   "edgeLayoutList":{  
-                     "currentNodeChildren":[  
-                          
-                     ],  
-                     "nextIds":[  
-                          
-                     ]  
+                     "currentNodeChildren":[],  
+                     "nextIds":[]  
                   },  
                   "nodeRunInfo":{  
                      "whenCondition":"<+OnPipelineSuccess>",  
@@ -315,12 +307,8 @@ The response from the cURL command will contain the status of the deployment. Fo
                   },  
                   "failureInfoDTO":{  
                      "message":"",  
-                     "failureTypeList":[  
-                          
-                     ],  
-                     "responseMessages":[  
-                          
-                     ]  
+                     "failureTypeList":[],  
+                     "responseMessages":[]  
                   },  
                   "nodeExecutionId":"YC_1XgBQSUu79da21J7aVA",  
                   "executionInputConfigured":false  
@@ -344,7 +332,8 @@ The response from the cURL command will contain the status of the deployment. Fo
             "allowStageExecutions":false,  
             "stagesExecution":false  
          }  
-      }  
+      },
+      "executionUrl": "https://app.harness.io/ng/#/account/xxx/cd/orgs/default/projects/CD_Docs/pipeline/Custom/executionS/_iodHvEhT2y_Mn_DLaR32A/pipeline" 
    },  
    "metaData":null,  
    "correlationId":"4b76cec6-c4b3-408c-b66b-7e14540c6e14"  
@@ -400,7 +389,7 @@ You can require that all custom triggers in this Harness account use API key tok
 1. In your Harness account, select **Account Settings**.
 2. Select **Account Resources**.
 3. Select **Default Settings**.
-4. In **General**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
+4. In **Pipeline**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
 
 Now all custom triggers in this account must use an API key token or an authorization error is thrown when the cURL command is run.
 
@@ -412,7 +401,7 @@ Now all custom triggers in this account must use an API key token or an authoriz
 
 When the **Allow Overrides** box is selected at the account level, Harness users will be able to select a different value for this setting at project level. 
 
-In a project, in **Default Settings** > **General**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
+In a project, in **Default Settings** > **Pipeline**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
 
 If **Allow Overrides** is unchecked, then the value of the setting is propagated to all projects in the account.
 

@@ -1,5 +1,5 @@
 
-1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+1. Enter how long you want Harness to try to complete the step before failing and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
    You can use:
 

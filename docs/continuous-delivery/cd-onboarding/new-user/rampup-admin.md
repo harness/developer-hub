@@ -11,9 +11,9 @@ Most of the items in this guide align with the onboarding wizard that is shown w
 
 ## Set up a delegate at the account level
 
-The Harness delegate is a service you run in your local network or VPC to connect Harness SaaS with your artifacts, infrastructure, collaboration, verification, and other providers. 
+The Harness Delegate is a service you run in your local network or VPC to connect Harness SaaS with your artifacts, infrastructure, collaboration, verification, and other providers. 
 
-The first time you connect Harness to a third party resource, the Harness delegate is installed in your target infrastructure, such as a Kubernetes cluster. 
+The first time you connect Harness to a third party resource, the Harness Delegate is installed in your target infrastructure, such as a Kubernetes cluster. 
 
 After the delegate is installed and registers with Harness, you connect Harness to third party resources. 
 
@@ -54,7 +54,7 @@ For more information, go to [What is an organization?](https://developer.harness
 
 Account level resources are available globally for all projects and organizations to access and leverage in their respective scopes.
 
-For more information, go to [View account info and subscribe to downtime alerts](https://developer.harness.io/docs/platform/get-started/view-account-info-and-subscribe-to-alerts/).
+For more information, go to [View account info and subscribe to downtime alerts](https://developer.harness.io/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts).
 
 ## Configure the Harness connectors your teams needs to get started
 
@@ -101,7 +101,7 @@ To experience the full power of Harness Continuous Delivery, we recommend the fo
 4. [Add your environments](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments). 
 5. Automate your onboarding of teams:
    1. After the initial team is onboarded, Harness recommends automating onboarding for the next set of teams.
-   2. Using the Harness [Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider/), you can automate your onboarding of projects, orgs, connectors, services, pipelines, etc. 
+   2. Using the Harness [Terraform Provider](/docs/platform/get-started/tutorials/onboard-terraform-provider), you can automate your onboarding of projects, orgs, connectors, services, pipelines, etc. 
    3. Using Harness [Git Experience](/docs/platform/git-experience/git-experience-overview), you can manage and clone pipelines and templates in Git and share across projects. 
 6.  Automate your pipeline deployments and experiment with steps and conditions.
     1.  Harness offers triggers and APIs to automate the execution of pipelines. Harness recommends you automate the pipeline execution once the pipeline design and structure is relatively mature and not going to change. For more information on triggers and APIs, go to:

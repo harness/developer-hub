@@ -20,6 +20,12 @@ The following list covers the step settings.
 - Method: The [HTTP method](https://restfulapi.net/http-methods/#summary) to use in the step.
 - Request body: The message body of the HTTP message.
 
+
+:::important
+Currently, Harness doesn't support using secret expressions as part of URLs in HTTP steps.
+:::
+
+
 ## Assertions in the HTTP step
 
 **Assertion** is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode>==200`.
@@ -112,8 +118,8 @@ Output variables also support [JEXL expressions](https://commons.apache.org/prop
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
@@ -161,6 +167,10 @@ This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact 
 
 :::
 
+:::important
+This feature requires Harness Delegate version 82400 or later. 
+:::
+
 You can specify a TSL certificate and key for the HTTP step. This enables TLS encryption for your HTTP services. 
 
 1. In **Optional Configuration**, in **Certificate**, select the secret for the certificate, including the `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
@@ -180,7 +190,7 @@ Some services require HTTP headers to be included in connections. Without the he
 
 Harness performs an HTTP capability check with the headers included on the target service.
 
-If the target host server require headers and you do not include headers in the **Headers** setting of the HTTP step, the Harness delegate will fail the deployment with the error `No eligible delegates could perform this task` (`error 400`).
+If the target host server require headers and you do not include headers in the **Headers** setting of the HTTP step, the Harness Delegate will fail the deployment with the error `No eligible delegates could perform this task` (`error 400`).
 
 Add the required headers in **Headers** and run the deployment. Adding the headers will prevent the `400` error.
 
@@ -194,7 +204,7 @@ During a capability check, the non-secret headers are used as is but the secret 
 `x-api-key:<<<api_key>>>`  
 `content-type:application/json`
 
-This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness delegate. 
+This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness Delegate. 
 
 :::info
 Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow these workarounds.
@@ -205,6 +215,26 @@ Using `<<<and>>>` in HTTP requests might result in bad requests on the server si
 :::
 
 Capability checks are basic accessibility checks and do not follow multiple redirects. Hence, Harness returns from the first `302 Found` response during capability checks. 
+
+:::info
+You can enable **Ignore status code for HTTP connections**. When enabled, Harness only requires a valid response from the target HTTP server and does not verify the response code. This is particularly useful when the Harness Delegate is configured with a proxy because socket connection tests conducted by Harness from the delegate do not account for proxy details.
+
+This setting is only relevant for HTTP steps and HTTP Helm repositories.
+
+``Please note this setting can be enabled at Organization,Account as well as Project Level.``
+
+In this example, we will be discussing the process of enabling this setting at the project level.
+
+You can enable the setting by using the steps below:
+1. Enable the setting by navigating to **Project Settings**. 
+2. Select **Default Settings** under **General**.
+3. Under **Continuous Deployment**, you can set **Ignore status code for HTTP connections** as **true**.
+![](./static/Ignore%20status%20code%20for%20HTTP%20connections.png)
+
+This setting is independent of the feature flag; it will always be available. To currently use this feature, we require either the Feature Flag "CDS_USE_HTTP_CHECK_IGNORE_RESPONSE_INSTEAD_OF_SOCKET_NG" to be enabled or the corresponding setting. The feature flag will soon be removed, and this feature will be solely managed by using this setting.
+
+:::
+
 
 ## HTTP polling
 
@@ -463,6 +493,7 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
   spec: {}  
 ...
 ```
+
 
 ## See also
 

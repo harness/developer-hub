@@ -2,13 +2,11 @@
 title: Enable documentation for your component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
 sidebar_position: 40
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-docs
 ---
+
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
 By default, the **Docs** tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the **Docs** tab.
 
@@ -114,7 +112,11 @@ If, for example, you wanted to keep a lean root directory, you could place your 
     └── docs
         └── index.md
 ```
+:::warning
 
+ Please note `dir:../.` does not work in the above use case due to security reasons.
+
+:::
 
 </TabItem>
 <TabItem value="Docs Available in Some Other Location">
@@ -126,7 +128,7 @@ In situations where your TechDocs source content is managed and stored in a loca
 - Bitbucket: `url:https://bitbuckethost.com/project/repo/src/<branch_name>`
 - Azure: `url:https://azurehost.com/organization/project/_git/repository`
 
-Note, just as it's possible to specify a subdirectory with the `dir:` prefix, you can also provide a path to a non-root directory inside the repository which contains the `mkdocs.yml` file and `docs/` directory.
+Note, just as it's possible to specify a subdirectory with the `dir:` prefix, you can also provide a path to a non-root directory inside the repository which contains the `mkdocs.yml` file and `docs/` directory. 
 
 e.g. `url:https://github.com/backstage/backstage/tree/master/plugins/techdocs-backend/examples/documented-component`
 

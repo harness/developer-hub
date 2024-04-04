@@ -12,7 +12,7 @@ redirect_from:
   buttonText="Learn More"
   title="Continue your learning journey."
   tagline="Take a Continuous Integration Certification today!"
-  link="/certifications/continuous-integration"
+  link="/university/continuous-integration"
   closable={true}
   target="_self"
 />
@@ -69,7 +69,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 Use these steps to create a project in your Harness account.
 
-1. Select **Projects**, select **All Projects**, and then select **New Project**.
+1. Select **Project**, select **All Projects** or **Manage Projects**, and then select **New Project**.
 2. Enter a **Name**, such as `CI kubernetes tutorial`.
 3. Leave the **Organization** as **default**.
 4. Select **Save and Continue**.
@@ -85,7 +85,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
-1. Under **Project Setup**, select **Connectors**.
+1. Under **Project Settings**, select **Connectors**.
 2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
 3. Enter a recognizable name, such as `CI kubernetes tutorial connector`, and select **Continue**.
 4. Configure the **Details** as follows, and then select **Continue**:
@@ -196,7 +196,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
+9. Add a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) to your Build stage, and configure it as follows:
 
    - **Name:** Enter a name, such as `Build and push to Docker`.
    - **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
@@ -385,4 +385,4 @@ pipeline:
 
 </details>
 
-After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/tutorials/cd-pipelines).
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/docs/category/cd-and-gitops-tutorials).

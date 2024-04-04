@@ -1,12 +1,13 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-11-24T16:19:25
+date: 2024-04-04T16:19:25
 tags: [NextGen, "feature flags"]
+
 sidebar_position: 11
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/feature-flags/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
@@ -14,11 +15,200 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: February 6th 2024
+### Latest Updated: April 4th 2024
+
+## April 2024
+
+### Golang SDK
+
+#### Version 0.1.19
+
+ - We've added additional debug logging around evaluation logic. (FFM-11091)
+
+### .NET SDK
+
+#### Version 1.6.7
+
+ - Logs flags/groups payload as `info` level log. (FFM-11022)
+
+#### Version 1.6.6
+
+ - We've made cache & exception handling improvements including:
+ -- improving cache locking and synchronization,
+ -- improving stream error handling,
+ -- increasing the capacity of dictionary, and
+ -- additional cache recovery checks. (FFM-11089)
+
+## March 2024
+
+### Android SDK
+
+#### Version 2.1.0
+
+*Enhancements*:
+ - We've provided a new configuration option that allows polling to be disabled. Do have a look at the [streaming and polling mode on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#streaming-and-polling-mode) for information on how to use this feature. (FFM-10961)
+ - This version now updates the `GettingStarted` application to demonstrate usage of all initialzation methods. You can have look at our updated [Initialzation Documentation on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#client-initialization-options) for more details. 
+
+*Bug Fixes*:
+ - We have fixed an issue that resulted in the `initialize` success callback again being triggered if the SDK needed to re-authenticate. This would happen in scenarios such as losing connectivity. Because of this, any code you supplied specifically related to initiailization success would get executed again. The `initialize` callback has been updated to correct this. Do feel free to have a look at the new [callback documentation on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#using-callback) for more information on this. (FFM-10940)
+ - The issue involving having to register for a second, or multiple, event listeners at the same time as an event comes through has been resolved. On the previously registered listener, it could throw an unchecked `ConcurrentModificationException`.
+
+#### Version 2.0.2 
+
+ - We have fixed the non-blocking behaviour. (FFM-8138)
+ - We've updated `okhttp` and `okio-jvm` in relation to CVE-2023-3635. (FFM-10903)
+
+#### Version 2.0.1
+
+ - We've added support for the `Retry-After` header. (FFM-10745)
+ - The `TooManyRequestsException` error has now been resolved. (FFM-10879)
+
+### Flutter SDK
+
+#### Version 2.2.0
+
+ - We've tidied up behaviours around flag deletion: 
+ -- Previously, if a flag was deleted, its evaluations would remain in the SDK cache and any variation calls made to it would result in an out-of-date evaluation for your target. (FFM-8138)
+ -- This update exposes a new `EVALUATION_DETE` event you can listen for which is emitted when a flag has been deleted.
+ - We've fixed an issue in iOS where if an evaluation failed, `null` would be returned instead of the default variation that was supplied.
+ - We've upgraded Feature Flags iOS SDK to 1.3.0.
+ - We've upgraded Feature Flags Android SDK to 2.0.2.
+
+### Golang SDK
+
+#### Version 0.1.18
+
+ - This adds Connection: closes header to metrics requests. (FFM-11039)
+
+### iOS SDK
+
+#### Version 1.3.0
+
+ - We've tidied up behaviour around flag deletion:
+ -- It now exposes new `onDelete` event that you can listen for which is emitted when a flag has been deleted.
+ - Previously, if a flag was deleted, its evaluations would remain in the SDK cache and any variation calls made to it would result in an out-of-date evaluation for your target. (FFM-10877)
+ - It doesn't report metrics when default variation served which would result in inaccurate flag metrics. (FFM-8318)
+
+### Java SDK
+
+#### Version 1.5.2
+
+ - We've removed the metrics flush on map overflow. (FFM-10816)
+ - We've added `Retry-After` HTTP header support. (FFM-10821)
+
+### Javascript SDK
+
+#### Version 1.26.0
+
+ - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
+
+### .NET SDK
+
+#### Version 1.6.5
+
+ - When you're making an evalution, if the Flag or Group cache are found to be in an invalid state, then a cache refresh is made and the evaluation re-attempted once. This cache refresh has a default timeout of 5 seconds, which can be decreased or increased by using the new configuration option `SetCacheRecoveryTimeout(int timeoutMilliseconds)`. (FFM-11022)
+
+#### Version 1.6.4
+
+ - The Evaluation logic refactored to use immutable principles, to aid in maintenance and readability. (FFM-11057)
+ - If the target group cache is found to be in an invalid state, such that any groups that beloing to a flag are not in the cache, the SDK will asynchronously update the group cache and immediately return the default variation.
+ - There are extra evaluation logs added to aid troubleshooting.
+
+#### Version 1.6.3
+
+ - This update now generates additional debug-level logs that detail the flag, target, and the specific reason for the variation result. This includes identifying the exact rule, such as a group rule, that led to the served variation. (FFM-11002)
+
+#### Version 1.6.2
+
+ - The exception handling in auth success callback has been resolved. (FFM-11002)
+
+#### Version 1.6.1
+
+ - We've fixed an analytics issue that caused a target's attributes to not be sent in analytics payloads, as well fail to appear in the UI. (FFM-10943)
+ - We've resolved an issue that caused new targets to not be sent in analytics payloads. This issue commonly happened when multiple instances of the SDK were created.
+
+#### Version 1.6.0
+
+ - We've made further enhancements to the 'evaluations per second' performance. The SDK can now process an extra 90,000 evaluations per second. (FFM-10837)
+ - This version marks `Target.isPrivate` as 'no longer obsolete'. We've also made improvements to the SDK processing of private targets: 
+ -- Previously, the private targets were still stored in cache, but only dropped at the end of a metrics interval. The SDK no longer stores private targets in cache at any point. 
+
+#### Version 1.5.0
+
+ - We've increased evaluation performance for when analytics are enabled. This provides up to an 80% decrease in mean time to process 100k evaluations using 100k unique targets. (FFM-10822)
+ - We've made improvements to analytics cache for per-interval processing. You can now process analytics for unique evaluations for up to 2K flags with 5 variations each and can now process up to 100K unique targets.
+
+### Node.js SDK
+
+#### Version 1.6.1
+
+ - We have fixed an issue that resulted in metrics requests failing and displaying a `400: Bad Request` error message. (FFM-10963)
+ - We've upgraded Axios to 1.6.8 to address a [CVE]( https://security.snyk.io/package/npm/follow-redirects/1.15.5) that highlighted known vulnerabilities in the `follow-redirects` package.
+
+### Python SDK
+
+#### Version 1.6.0
+
+ - We've added support for custom TLS CA certs. (FFM-7006)
+
+#### Version 1.5.0
+
+ - This update keeps track of targets that have been used in evaluations. It will no loner send targets already seen in the mtrics payload. This allows for fair processing of new targets for analytics purposes. (FFM-10837) 
+ - The following bugs have been fixed:
+ -- We've resolved an issue where if a target was marked as `anonymous`, it would be sent in analytics.  
+ -- We've also fixed the typing of `get_flag_kind` method. 
+
+### React SDK
+
+#### Version 1.10.0
+
+ - We've updated the Javascript Client SDK to 1.26.0 and we've updated the `README` to show you how to override the internal logger. (FFM-10886)
+
+#### Version 1.9.0
+
+ - We've updated the internal Javascript Client SDK to v1.25.0 to unlock the ability to change the mechanism used for caching flags. (FFM-10875)
 
 ## February 2024
 
 ### Android SDK
+
+#### Version 2.0.0
+
+ - There's been a major refactoring in the 2.0.0 version of the Android SDK which included some API changes and additional imporovements:
+
+ -- <u>Improvements</u>
+
+This is a major hardening effort of the SDK to improve its overall reliability:
+
+ --- With a now simplified threading model, we now use a dedicated thread for authentication, streaming and polling which lives for the lifetime of the SDK until `close()` is called. Previous `1.x.x` versions of the SDK would start and stop threads on demand and/or submit code to thread pools. This made it difficult to identify critical regions in the code and was error prone.
+ --- A 2nd thread is now used for posting metrics to the analytics backend however all interactions between the two threads are done via a `ConcurrentHashMap()` and passing a read-only authentication token, no other state is needed for metrics.
+ --- The user entry points into the SDK such as `boolVariation()`, `stringVariation()`, `numberVariation()` and so on are now designed in such a way that they will never perform network activity. Instead they will only query the internal cache. This prevents unexpected blocking of UI code or code that is sensitive to delays.
+ --- There is proper use of constructors and final fields to make SDK thread state immutable (and reduce the likelihood of null pointer exceptions where possible).
+ --- Centralized error handling, the SDK will reset itself on dropped connections, timed out connections or any other exception. it will never get into undefined state but restart after a delay of 1 minute.
+ --- Centralized network detection, SDK thread will go to sleep when there is no network and wake up when an Android network online event is detected.
+ 
+ -- <u>API Deprecations</u>
+ 
+ --- The following overloaded versions of `initialize()` have been marked deprecated:
+ ```
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,final Target target, final CloudCache cloudCache, @Nullable final AuthCallback authCallback) throws IllegalStateException
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,
+ final Target target, final AuthCallback authCallback) throws IllegalStateException
+ public void initialize(final Context context, final String apiKey, final CfConfiguration config,
+ final Target target, final CloudCache cloudCache) throws IllegalStateException
+ ```
+ 
+ --- A custom cache can now be configured via a new configuration property `io.harness.cfsdk.CfConfiguration.Builder.cache()` , `AuthCallback` and `AuthResult` have been deprecated. The SDK will now follow the same API style as other Harness SDKs. Instead of providing a callback on `initialize()` you should call `waitForInitialization()` directly after `initialize()`. For example:
+
+ ```
+ client.initialize(this, apiKey, sdkConfiguration, target)
+ if (client.waitForInitialization(30_000)) {
+  // SDK started ok
+  } else {
+    // SDK did not start in time, re-authentication will be retried in the background until success or client.close() is called
+    // You should expect default values to be served
+    }
+```
 
 #### Version 1.2.5
 
@@ -30,6 +220,55 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 2.1.3
 
  - The `CFClient.destroy` is now fixed after not completing correctly on iOS. (FFM-10596)
+
+### iOS SDK
+
+#### Version 1.2.0
+
+ - Resolved an issue where the `AnalyticsManager` class was causing crashes. For context, this class uses a dictionary and does not sanitize the thread when reading/writing which was causing crashes due to race conditions.
+
+### Java SDK
+
+#### Version 1.5.1
+
+ - We've updated logback to remove `CVE-2023-6481`. (FFM-10377)
+ - Used a single `ExecutorService` for `UpdateProcessor`. (FFM-10760)
+
+### JavaScript SDK
+
+### Version 1.25.0
+
+ - It allows the overriding of cache storage mechanism. (FFM-10772)
+ - Removed React Native Android detection. (FFM-10810)
+
+#### Version 1.24.0
+
+ - Disables streaming if Reactive Native + Android are detected. (FFM-10442)
+
+### .NET SDK
+
+#### Version 1.4.3
+
+ - Doesn't make network requests from the Evaluation thread. (FFM-10645)
+ - The cache buffer size is configurable. 
+ - We have fixed an issue where the `Disabling metrics` acion would not disable metrics in all scenarios. 
+
+#### Version 1.4.2
+
+ - We have resolved important issues which prevented evaluation metrics from growing exponentially in memory and flushed frequently, while preserving complete metrics accuracy. (FFM-10627)
+ - Bumped `System.IdentityModel.Tokens.Jwt` from 6.15.0 to 6.34.0.
+ - Wiremock has been upgraded. (FFM-10410)
+ - `Analytics` has now been separated into `EvaluationAnalytics` and `TargetAnalytics`. (FFM-10602)
+
+### React SDK
+
+#### Version 1.8.1
+
+ - We've fixed an issue where the new `useFeatureFlagsClient` hook and the `withFeatureFlagsClient` HOC were not correctly exported, making it more complex to import into your application (FFM-10591)
+ 
+#### Version 1.8.0
+
+- We've added a new `useFeatureFlagsClient` hook and `withFeatureFlagsClient` HOC to allow easy access to the instance of the Javascript Client SDK which the React Client SDK uses under the hood (FFM-10522)
 
 ## January 2024
 

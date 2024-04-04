@@ -26,45 +26,17 @@ This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that i
 
 ## Important notes for running CodeQL scans in STO
 
+### Root access requirements 
 
-
-
-### Root access requirements
-
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
-
-:::note
-
-You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-:::
-
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-<!-- 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
--->
+### For more information
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+<StoMoreInfo />
 
 
 ## CodeQL step settings for STO scans
@@ -75,18 +47,14 @@ The recommended workflow is to add a CodeQL step to a Security Tests or CI Build
 
 ### Scan mode
 
-
 import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
-
 
 <StoSettingScanModeIngest />
 
 
 #### Scan configuration
 
-
 import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
 
 <StoSettingProductConfigName />
 
@@ -96,36 +64,36 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 
 #### Type
 
-
 import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
-
-
 <StoSettingScanTypeRepo />
+
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-
 <StoSettingTargetName />
+
 
 #### Variant
 
-
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
-
-
 
 <StoSettingTargetVariant  />
 
 
 ### Ingestion file
 
-
 import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
-
-
 
 <StoSettingIngestionFile  />
 
@@ -136,34 +104,26 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Log Level
 
-
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
-
-
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
+
 
 #### Additional CLI flags
 
-
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-
 
 <StoSettingCliFlags />
 
-<a name="fail-on-severity"></a>
 
 
 #### Fail on Severity
 
-
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
 
 ### Settings
 
@@ -184,8 +144,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

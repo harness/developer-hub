@@ -32,6 +32,7 @@
         line-height: 20px;
         letter-spacing: 0em;
         text-align: left;
+        color: var(--text-color);
       }
     }
   }
@@ -46,7 +47,7 @@
   left: 0;
   width: 100%;
   border: 1px solid var(--gray-200);
-  background-color: white;
+  background-color: var(--background-color);
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   display: none;
   z-index: 1;
@@ -73,10 +74,14 @@
       line-height: 20px;
       letter-spacing: 0em;
       text-align: left;
+      color: var(--text-color);
     }
   }
   li:hover {
     background-color: var(--primary-1);
+    p {
+      color: black;
+    }
   }
 }
 
@@ -91,7 +96,7 @@
     line-height: 32px;
     letter-spacing: 0em;
     text-align: left;
-    color: var(--gray-700);
+    color: var(--ifm-color-content-light);
     margin-bottom: 16px;
 
     span {
@@ -105,12 +110,12 @@
     line-height: 28px;
     letter-spacing: 0px;
     text-align: left;
-    color: var(--gray-900);
+    color: var(--text-color);
     text-align: justify;
     margin-bottom: 56px;
   }
   .RoadmapSection::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   .RoadmapSection::-webkit-scrollbar-track {
     background: #f1f1f1;
@@ -127,19 +132,22 @@
     display: flex;
     justify-content: space-between;
     align-content: center;
+    transform: rotateX(180deg);
     overflow-x: auto;
     gap: 16px;
-    // border-right: 1px solid var(--gray-200);
+    border-right: transparent;
+    padding-right: 10px;
+    // border-left: 1px solid var(--gray-200);
     .section {
-      // margin-right: 16px;
+      margin: 20px 0;
+      transform: rotateX(180deg);
       padding: 16px;
-      background-color: var(--gray-50);
       border: 1px solid var(--gray-200);
       width: 100%;
       display: flex;
       flex-direction: column;
       height: auto;
-      gap: 10px;
+      gap: 8px;
       min-height: 400px;
       min-width: 350px;
 
@@ -213,6 +221,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      background-color: var(--background-color);
       &:hover {
         background-color: var(--primary-1);
       }
@@ -220,7 +229,9 @@
       &.active {
         font-weight: 700;
         cursor: default;
-        background-color: var(--gray-200);
+        background-color: var(--hover);
+        // color: var(--background-color);
+        color: green;
       }
       li {
         margin: 0;
@@ -230,7 +241,7 @@
         letter-spacing: 0px;
         text-align: left;
         list-style: none;
-        color: var(--gray-700);
+        color: var(--text-color);
         cursor: pointer;
       }
     }
@@ -239,7 +250,7 @@
   .mobileRoadmapColumn {
     margin-right: 16px;
     padding: 16px;
-    background-color: var(--gray-50);
+    // background-color: var(--gray-50);
     border: 1px solid var(--gray-200);
     width: 100%;
     display: flex;

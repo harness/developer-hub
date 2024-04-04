@@ -1,0 +1,19 @@
+# target the EC2 instances with matching tag
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-terminate-by-tag
+    spec:
+      components:
+        env:
+        # tag of the EC2 instance
+        - name: EC2_INSTANCE_TAG
+          value: 'key:value'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'

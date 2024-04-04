@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).
+
+Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
 
 Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](/docs/category/helm).
 
@@ -129,7 +131,7 @@ Click **SUBMIT** and **your workflow is complete.** You can look or modify the d
 
 The following procedure deploys the workflow you created in this guide.
 
-Before deploying the workflow, ensure all Harness delegates that can reach the resources used in the workflow are running. In **Harness**, click **Setup**, and then click **Harness Delegates**.To deploy your workflow, do the following:
+Before deploying the workflow, ensure all Harness Delegates that can reach the resources used in the workflow are running. In **Harness**, click **Setup**, and then click **Harness Delegates**.To deploy your workflow, do the following:
 
 1. In your workflow, click **Deploy**.![](./static/4-helm-workflows-26.png)![](./static/4-helm-workflows-27.png)
 2. In **Notes**, enter information about the deployment that others should know. Harness records all the important details, and maintains the records of each deployment, but you might need to share some information about your deployment.

@@ -17,6 +17,16 @@ Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Conta
 
 :::
 
+:::warning
+
+**Harness recommends [Harness Cloud](../use-harness-cloud-build-infrastructure) for macOS builds.**
+
+This recommendation is due to licensing requirements and the complexity of managing macOS VMs with Anka virtualization.
+
+With Harness Cloud, your builds run on Harness-managed runners, and you can start running builds in minutes.
+
+:::
+
 This topic describes how to use AWS EC2 instances to run a macOS build farm with [Anka's virtualization platform for macOS](https://docs.veertu.com/anka/what-is-anka/). This configuration uses [AWS EC2 instances and dedicated hosts](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/) to host a Harness Delegate and Runner, as well as the Anka Controller, Registry, and Virtualization. Working through the Anka controller and registry, the Harness Runner creates VMs dynamically in response to CI build requests.
 
 For more information about Anka and Mac on EC2 go to the Anka documentation on [What is the Anka Build Cloud](https://docs.veertu.com/anka/anka-build-cloud/), [Setting up the Controller and Registry on Linux/Docker](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/), and [Anka on AWS EC2 Macs - Community AMIs](https://docs.veertu.com/anka/aws-ec2-mac/#community-ami).
@@ -36,7 +46,7 @@ This configuration requires:
    * [What is the Anka build cloud?](https://docs.veertu.com/anka/anka-build-cloud/)
    * [Getting started with Anka on EC2 Mac instances](https://aws.amazon.com/blogs/compute/getting-started-with-anka-on-ec2-mac-instances/)
    * [Anka on AWS EC2 instances](https://docs.veertu.com/anka/aws-ec2-mac/)
-* Familiarity with the [Harness Platform](/docs/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
+* Familiarity with the [Harness Platform](/docs/platform/get-started/key-concepts.md) and [CI pipeline creation](../../prep-ci-pipeline-components.md).
 * Familiarity with Harness Delegates, VM runners, and pools.
   * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
   * [Drone VM runner overview](https://docs.drone.io/runner/vm/overview/)
@@ -183,7 +193,7 @@ Firewall restrictions can prevent the script from downloading these dependencies
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -275,17 +285,51 @@ Configure your pipeline's **Build** (`CI`) stage to use your Anka VMs as build i
 </TabItem>
 </Tabs>
 
+### Delegate selectors with self-managed VM build infrastructures
+
+:::note
+
+Currently, delegate selectors for self-managed VM build infrastructures is behind the feature flag `CI_ENABLE_VM_DELEGATE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Although you must install a delegate to use a self-managed VM build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
+
+Delegate selections take precedence in the following order:
+
+1. Stage
+2. Pipeline
+3. Platform (build machine delegate)
+
+This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the platform delegate, which is the delegate that you installed on your primary VM with the runner. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
+
+For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
+
+<details>
+<summary>Early access feature: Use delegate selectors for codebase tasks</summary>
+
+:::note
+
+Currently, delegate selectors for CI codebase tasks is behind the feature flag `CI_CODEBASE_SELECTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default, delegate selectors aren't applied to delegate-related CI codebase tasks.
+
+With this feature flag enabled, Harness uses your [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) for delegate-related codebase tasks. Delegate selection for these tasks takes precedence in order of [pipeline selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#pipeline-delegate-selector) over [connector selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/#infrastructure-connector).
+
+</details>
 
 ##  Add more Mac nodes and VM templates to the Anka Registry
 
 You can [launch more Anka Virtualization nodes on your EC2 dedicated host](#set-up-anka-virtualization) and [create more VM templates](#create-anka-vm-templates) as needed. After you join a Virtualization node to the Controller cluster, it can pull VM templates from the registry and use them to create VMs.
 
-## Troubleshoot self-hosted VM build infrastructure
+## Troubleshoot self-managed VM build infrastructure
 
-Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-hosted VM build infrastructures, including:
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to self-managed VM build infrastructures, including:
 
 * [Can I use the same build VM for multiple CI stages?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-the-same-build-vm-for-multiple-ci-stages)
 * [Why are build VMs running when there are no active builds?](/kb/continuous-integration/continuous-integration-faqs/#why-are-build-vms-running-when-there-are-no-active-builds)
 * [How do I specify the disk size for a Windows instance in pool.yml?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-specify-the-disk-size-for-a-windows-instance-in-poolyml)
 * [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
-* [Can I limit memory and CPU for Run Tests steps running on self-hosted VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)
+* [Can I limit memory and CPU for Run Tests steps running on self-managed VM build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-limit-memory-and-cpu-for-run-tests-steps-running-on-harness-cloud)

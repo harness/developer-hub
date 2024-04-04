@@ -1,7 +1,7 @@
 ---
 title: Add a stage
 description: Learn how to add and configure a pipeline stage.
-sidebar_position: 3
+sidebar_position: 10
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -15,17 +15,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
+A stage is a part of a [Harness pipeline](/docs/platform/get-started/key-concepts.md#pipelines) that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
 The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
 
 This functionality is limited to the modules and settings that you have access to.
 
-This topic assumes you are familiar with [Harness' key concepts](../../get-started/key-concepts.md) and you have a [Harness project](../organizations-and-projects/create-an-organization.md).
-
 ## Add a stage
 
-1. Create a pipeline in any module in your project.
+1. In any [Harness project](../organizations-and-projects/create-an-organization.md), create a pipeline in any module that supports pipelines.
 2. In your pipeline, select **Add stage**, and then select the stage type:
 
    * **Build:** Build, test, and push artifacts to repositories.
@@ -121,8 +119,8 @@ When you run this pipeline, the value you set for `NAME` in the stage settings i
 
 On the **Advanced** tab, you can configure:
 
-* [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping strategies - Matrix, repeat, parallelism](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 
 ## Add a Custom stage
@@ -144,7 +142,7 @@ Like the standard stages, Custom stages support:
 
 :::info Rollback
 
-Custom stages *don't* support [rollback](./define-a-failure-strategy-for-pipelines.md), but you can use [conditional executions](./w_pipeline-steps-reference/step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
+Custom stages *don't* support [rollback failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines), but you can use [conditional executions](./step-skip-condition-settings.md) to run steps/stages based on the outcomes of other steps or stages. For example, run a step only if a previous step succeeded.
 
 :::
 

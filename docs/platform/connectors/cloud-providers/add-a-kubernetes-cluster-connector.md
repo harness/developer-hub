@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md). For a list of the platforms and technologies supported by Harness, go to [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md).
+You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md).
 
-This page explains how to set up the provider-agnostic Kubernetes cluster connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](../../../get-started/key-concepts.md).
+This page explains how to set up the provider-agnostic Kubernetes cluster connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 This video shows how to add a Kubernetes cluster connector and install the Kubernetes Delegate in the target cluster at the same time:
 
@@ -65,130 +65,28 @@ To use an AKS cluster for deployments, the AKS cluster must have local accounts 
 
    ![](../static/add-a-kubernetes-cluster-connector-06.png)
 
-4. Select **Continue** to proceed to **Configure Credentials**.
+4. Select **Continue** and select how you want Harness to connect to the cluster. For details about these options, go to the [Kubernetes cluster connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+5. Select **Continue** to set up delegates.
 
-### Enter credentials
+   Harness uses Kubernetes cluster connectors at pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates.
 
-1. Select how you want Harness to connect to the cluster. For details about these setting, go to the [Kubernetes cluster connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+   Regardless of the authentication method selected for a Kubernetes cluster connector, you must use Harness Delegates to perform authentication for the connector. Select one of the following:
 
-   - **Specify master URL and credentials:**
-      - Provide the Kubernetes master node URL. To get the master URL, use `kubectl cluster-info`.
-      - Enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a Harness delegate.
-   - **Use the credentials of a specific Harness Delegate:** Select this option to have the connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a delegate while creating your connector, if you haven't installed the delegate already.
-
-<details>
-<summary>Obtain the Service Account token using kubectl</summary>
-
-To use a Kubernetes Service Account (SA) and token, you need to use either an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
-
-For example:
-
-1. Create a manifest. This manifest creates a new SA named `harness-service-account` in the `default` namespace:
-
-   ```
-   # harness-service-account.yml
-   apiVersion: v1
-   kind: ServiceAccount
-   metadata:
-     name: harness-service-account
-     namespace: default
-   ```
-
-2. Apply the SA.
-
-   ```
-   kubectl apply -f harness-service-account.yml
-   ```
-
-3. Grant the SA the `cluster-admin` permission.
-
-   ```
-   # harness-clusterrolebinding.yml
-   apiVersion: rbac.authorization.k8s.io/v1beta1
-   kind: ClusterRoleBinding
-   metadata:
-     name: harness-admin
-   roleRef:
-     apiGroup: rbac.authorization.k8s.io
-     kind: ClusterRole
-     name: cluster-admin
-   subjects:
-   - kind: ServiceAccount
-     name: harness-service-account
-     namespace: default
-   ```
-
-4. Apply the `ClusterRoleBinding`.
-
-   ```
-   kubectl apply -f harness-clusterrolebinding.yml
-   ```
-
-5. After adding the SA, run the following commands to get the SA's token. The `| base64 -d` piping decodes the token so you can use it in the connector's credentials.
-
-   ```
-   SERVICE_ACCOUNT_NAME={SA name}
-
-   NAMESPACE={target namespace}
-
-   SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')
-
-   TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)
-
-   echo $TOKEN
-   ```
-
-:::note SA tokens for Kubernetes versions 1.24 and later
-
-The Kubernetes SA token isn't automatically generated for SAs provisioned under Kubernetes versions 1.24 and later. Instead, you must create a new SA token and decode it to the `base64` format.
-
-You can use the following kubectl command to create a SA bound token:
-
-```
-kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
-```
-
-You can also create SAs using manifests, for example:
-
-```
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: <service-account-name>
-  namespace: default
-
----
-apiVersion: v1
-kind: Secret
-type: kubernetes.io/service-account-token
-metadata:
-  name: <token-secret-name>
-  annotations:
-    kubernetes.io/service-account.name: "<service-account-name>"
-```
-
-For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
-
-:::
-
-</details>
-
-### Set up delegates
-
-Harness uses Kubernetes cluster connectors at pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates. Regardless of the authentication method selected for a Kubernetes cluster connector, you must use Harness Delegates to perform authentication for the connector.
-
-Select one of the following:
    * **Use any available Delegate**: Harness selects an available delegate at runtime. To learn how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
    * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about delegate tags, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If there are no delegates available for your target cluster, you can select **Install new Delegate** if you need to [install a delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) without exiting connector configuration. Delegates can be instaleld on your target cluster or any cluster in your environment that can connect to the cluster.
+   If there are no delegates available for your target cluster, you can select **Install new Delegate** if you need to [install a delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) without exiting connector configuration. Delegates can be installed on your target cluster or any cluster in your environment that can connect to the cluster.
 
-### Connection test
+   :::note
 
-After selecting the delegate connectivity, **Save and Continue** to run the connection test. Harness tests the credentials you provided using the delegates you selected. If the test passes, select **Finish**.
+   It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
 
-During the connection test, Harness uses the provided credentials to list controllers in the **default** namespace in order to validate the credentials. If validation fails, Harness does not save the connector and the connection test fails.
+   :::
 
-If your cluster does not have a **default** namespace, or your credentials do not have permission in the **default** namespace, then you can check **Skip default namespace validation** to skip this check and save your connector's settings. You don't need to uncheck this setting later.
+6. Select **Save and Continue** to run the connection test. Harness tests the credentials you provided using the delegates you selected. If the test passes, select **Finish**.
 
-When you use this connector for a build or deployment, you'll specify a namespace. During a build or deployment, Harness uses this namespace rather than the **default** namespace. When you save a pipeline, Harness validates the namespace connection even if you selected **Skip default namespace validation** in the connector's settings.
+   During the connection test, Harness uses the provided credentials to list controllers in the **default** namespace in order to validate the credentials. If validation fails, Harness does not save the connector and the connection test fails.
+
+   If your cluster does not have a **default** namespace, or your credentials do not have permission in the **default** namespace, then you can check **Skip default namespace validation** to skip this check and save your connector's settings. You don't need to uncheck this setting later.
+
+   When you use this connector for a build or deployment, you'll specify a namespace. During a build or deployment, Harness uses this namespace rather than the **default** namespace. When you save a pipeline, Harness validates the namespace connection even if you selected **Skip default namespace validation** in the connector's settings.
