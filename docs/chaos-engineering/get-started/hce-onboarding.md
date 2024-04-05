@@ -4,7 +4,7 @@ title: HCE onboarding guide
 description: Onboard with HCE
 ---
 
-This guide describes the Harness Chaos Engineering (HCE) and describes how to get started with Harness Chaos Engineering.
+This guide describes the versions of HCE, interaction between different components, and and how to get started with HCE.
 
 ## Before you begin
 
