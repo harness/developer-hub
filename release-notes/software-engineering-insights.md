@@ -25,6 +25,14 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## March 2024
 
+### Version 202403.2.1
+
+<!-- Mar 30, 2024 -->
+
+#### Hotfix
+
+* Added support for a new column **Time Spent In Stage** in the **Issue Time Across Stages report** drill-down. This field now displays the specific amount of time spent in each stage as selected in the Bar Chart widget. (SEI-6202)
+
 ### Version 202403.2
 
 <!-- Mar 29, 2024 -->
