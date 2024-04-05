@@ -1,17 +1,17 @@
 ---
-title: Harness CE powered by LitmusChaos
-sidebar_label: Powered by LitmusChaos
+title: HCE and LitmusChaos
+sidebar_label: HCE and LitmusChaos
 sidebar_position: 4
 description: HCE is powered by open source CNCF project LitmusChaos
 ---
 
-Harness Chaos Engineering (CE) is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). Harness CE adds additional features to make the practice of chaos engineering for enterprises easy.
+Harness Chaos Engineering (HCE) is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). Harness CE adds additional features to make the practice of chaos engineering for enterprises easy.
 
 ![Harness Chaos Engineering Module](./static/overview/HCE-image.png)
 
 Go to [Harness CE versus LitmusChaos](#harness-ce-versus-litmuschaos) for a quick comparison.
 
-## Common capabilities of CE and LitmusChaos
+## Common capabilities of HCE and LitmusChaos
 Following are the common features between Litmus and Harness Chaos Engineering:
 
 1. Scalable platform
@@ -25,7 +25,7 @@ Following are the common features between Litmus and Harness Chaos Engineering:
 9. Scheduling chaos experiments
 10. Resilience probes
 
-## Additional capabilities of Harness CE
+## Additional capabilities of HCE
 
 Harness CE module has the following additional capabilities:
 
@@ -40,23 +40,23 @@ Harness CE module has the following additional capabilities:
 9. [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
 10. [Security chaos faults](/docs/chaos-engineering/chaos-faults/security-chaos)
 11. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
-12. Teaming around chaos hubs
-13. Resilience probes (Dynatrace and [Datadog](/docs/chaos-engineering/features/probes/datadog-probe.md))
+12. Teaming around ChaosHubs
+13. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
 14. [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
 In addition to the above features, CE integrates with these Harness modules:
 
-- Continuous Delivery (CD). Go to [Use CE with CD](/docs/chaos-engineering/integrations/chaos-cd).
-- Feature Flags (FF). Go to [Use CE with FF](/docs/chaos-engineering/integrations/chaos-ff).
-- Service Reliability Management (SRM). Documentation coming soon.
+- Continuous Delivery (CD). Go to [Use HCE with CD](/docs/chaos-engineering/integrations/chaos-cd).
+- Feature Flags (FF). Go to [Use HCE with FF](/docs/chaos-engineering/integrations/chaos-ff).
+- Service Reliability Management. Go to [Use HCE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 ## Harness CE versus LitmusChaos
 
-This section describes the differences between Harness Chaos Engineering (CE ) and the open-source CNCF incubation project, LitmusChaos.
+This section describes the differences between Harness Chaos Engineering (HCE) and the open-source CNCF incubation project, LitmusChaos.
 
-### Chaos management - Basic 
+### Chaos management - Basic
 <table>
     <tr>
         <td><b>Feature</b></td>
