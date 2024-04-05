@@ -48,7 +48,7 @@ Harness CE module has the following additional capabilities:
 
 In addition to the above features, CE integrates with these Harness modules:
 
-- Continuous Delivery (CD). Go to [Use HCE with CD](/docs/chaos-engineering/integrations/chaos-cd).
+- Continuous Delivery (CD). Go to [Use HCE with CD](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
 - Feature Flags (FF). Go to [Use HCE with FF](/docs/chaos-engineering/integrations/chaos-ff).
 - Service Reliability Management. Go to [Use HCE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
 

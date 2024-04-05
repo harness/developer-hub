@@ -73,14 +73,14 @@ HCE doesn't simply focus on fault injection, it helps you set up a fully operati
 2. Extensive fault library and robust suite of [ready-to-use experiments](/docs/chaos-engineering/chaos-faults), with support to construct complex custom experiments with [multiple faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in the desired order.
 3. Centralized control plane which supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
 4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
-5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/chaos-cd.md).
+5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd.md).
 6. [Hypothesis validation using probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided GameDay execution with detailed analytics and reporting based on experiment execution and application resilience.
 8. Chaos events, metrics and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
 
 ## Try Chaos Engineering today
 
-* [Run your first chaos experiment](/docs/chaos-engineering/ce-onboarding-guide/first-chaos-engineering.md)
-* [Executing experiments in a sandbox](/docs/chaos-engineering/ce-onboarding-guide/run-experiments-in-sandbox)
-* [Create chaos experiments from scratch](/docs/chaos-engineering/ce-onboarding-guide/chaos-experiment-from-blank-canvas)
+* [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
+* [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox)
+* [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas)
 

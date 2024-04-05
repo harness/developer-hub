@@ -5,10 +5,10 @@ redirect_from:
   - /docs/chaos-engineering/get-started/whats-supported
 ---
 
-This topic lists the platforms and technologies that Harness Chaos Engineering (CE) supports for deploying chaos infrastructure.
+This topic lists the platforms and technologies that Harness Chaos Engineering (HCE) supports for deploying chaos infrastructure.
 To learn more about chaos infrastructure, go to [Chaos infrastructure](/docs/chaos-engineering/architecture-and-security/architecture#chaos-infrastructure).
 
-Harness Chaos Engineering is supported on the following platforms: 
+Harness Chaos Engineering is supported on the following platforms:
 - [Harness SaaS](#harness-saas)
 - [Harness Self-Managed Enterprise Edition](#harness-self-managed-enterprise-edition)
 - [Harness Self-Managed Enterprise Edition In Offline Environments](#harness-self-managed-enterprise-edition-in-offline-environments)
@@ -67,7 +67,7 @@ Chaos Engineering on Harness Self-Managed Enterprise Edition is in feature parit
   * Contact [Harness Support](mailto:support@harness.io) for access to the Harness Enterprise ChaosHub. Once you have access, you can add the Enterprise ChaosHub as a [custom ChaosHub](/docs/chaos-engineering/features/chaos-hubs/add-chaos-hub.md).
 * Harness AI Development Assistant (AIDA™) for CE
 
-For more information, go to [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition) and [CE on SMP](/docs/chaos-engineering/ce-on-smp/ce-smp-roadmap).
+For more information, go to [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition) and [CE on SMP](/docs/chaos-engineering/get-started/ce-on-smp/ce-smp-roadmap).
 
 ## Harness Self-Managed Enterprise Edition In Offline Environments
 
