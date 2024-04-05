@@ -113,7 +113,26 @@ To delete an archived flag:
 1. Next to the flag you want to delete, select **more options** (**︙**), and then select **Delete**.
 1. On the confirmation screen, select **Delete**.
 
+### Create/Edit Permissions Of A Flag
+
+With **Create Permissions** and **Edit Permissions**, you have the ability to both create and edit all aspects of a flag including within tagging and resource groups. 
+
+Prior to this update, the permission of users were limited to: 
+
+ - **Toggle**: User is able to toggle a flag
+ - **Create/Edit**: Users can create a flag, and edit the flag
+ - **Delete**: Users can delete a flag
+
+The permissions have now be split further giving users more defined rules on what users are able to do within Harness. Some examples include:
+
+ - Users can have permissions to create flags but not be able to edit them in certain environments. 
+ - Users can have permissions to edit flags but are restricted to certain environments. 
+
+The user is creating a target rule here, not a target.  So I would say this is not a bug.  If you want to create a rule on a flag you need the create/edit permission.    If you want to create a target you should switch to the target page and create a target.
+
+#### Editing Permissions Of A Flag
+
+<!-- Insert steps with screenshots here -->
 
 
-
-
+#### 

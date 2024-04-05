@@ -27,6 +27,8 @@ The **Feature Flag Manage Role** default Role is available specifically for Feat
 * Edit Flags
 * View Target Groups
 * Edit Target Groups
+* Create Permissions For Flags
+* Edit Permissions For Flags
 * View Environments and redacted SDK keys 
 
 If you have permissions at the Project level, you can edit Flags within that Project or its Environments. If you have permissions for the Environment, then the role is limited to that Environment only.  
@@ -35,6 +37,8 @@ If you have permissions at the Project level, you can edit Flags within that Pro
 
 The following topics can help you understand how to implement Access Control:
 
+* [Create/Edit Permissions](../ff-creating-flag/edit-and-delete-a-feature-flag.md)
+* [Editing A Flag](../ff-creating-flag/edit-and-delete-a-feature-flag.md)
 * [Manage users](/docs/platform/role-based-access-control/add-users)
 * [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md)
