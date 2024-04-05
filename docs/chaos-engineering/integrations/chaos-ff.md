@@ -1,7 +1,7 @@
 ---
 title: Use HCE with Feature Flags
 sidebar_position: 1
-description: Integrating HCE with FF
+description: Integrate HCE with FF
 redirect_from:
 	- /tutorials/chaos-experiments/chaos-ff
 ---

@@ -1,7 +1,7 @@
 ---
 title: Harness CE free plan
 sidebar_label: Harness CE free plan
-sidebar_position: 40
+sidebar_position: 3
 description: This section discusses HCE free plans
 ---
 
@@ -9,10 +9,10 @@ Harness is the industry’s first software delivery platform to use AI to simpli
 
 [Harness](https://harness.io) offers a free hosted LitmusChaos for those who are trying to get started with LitmusChaos, and also for those who are getting started with Chaos Engineering (CE) in general. The Harness CE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as RBAC and hosted logging—all for free.
 
-Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted Harness CE or the hosted LitmusChaos. 
+Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted Harness CE or the hosted LitmusChaos.
 
 :::info important
-The Harness CE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New signups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
+The Harness CE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
 :::
 
 

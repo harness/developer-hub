@@ -1,7 +1,7 @@
 ---
 title: Harness CE powered by LitmusChaos
 sidebar_label: Powered by LitmusChaos
-sidebar_position: 30
+sidebar_position: 4
 description: HCE is powered by open source CNCF project LitmusChaos
 ---
 

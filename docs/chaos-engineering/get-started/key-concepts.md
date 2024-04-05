@@ -14,16 +14,16 @@ A chaos experiment (experiment in short), injects one or more chaos faults into 
 #### 2. Chaos fault
 A chaos fault (fault in short), refers to the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource and you can customize the fault using the fault tunables, which are defined as part of the Chaos Experiment CR and Chaos Engine CR. Optionally, one or more probes can be defined as part of a chaos fault.
 
-#### 3. ChaosHub 
+#### 3. ChaosHub
 ChaosHub is a collection of experiment templates (defined as workflow CRs) and faults (defined as ChaosExperiment CR and ChaosEngine CR) that helps create and execute new chaos experiments against your target resources. Apart from the Enterprise ChaosHub, which is present by default, custom ChaosHub can be added for the management and distribution of custom experiment templates and faults.
 
 #### 4. Chaos infrastructure
 Chaos infrastructures represent the individual components of a deployment environment. It is a service that runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale. Multiple chaos infrastructures can be added as part of an environment.
 
-#### 5. Environment 
+#### 5. Environment
 A Harness environment represents your deployment environment such as Dev, QA, Staging, Production, etc. Each Environment may contain multiple Chaos Infrastructures. It helps isolate the various environments that your engineering, product owners, QA, and automation teams use under a single Harness project. This allows for better segregation of mission-critical infrastructures with several attached dependencies from dev and staging infrastructures for their safety.
 
-#### 6. Chaos Studio 
+#### 6. Chaos Studio
 Chaos Studio is used for the creation of new chaos experiments using varied chaos faults and templates from the ChaosHub, probes, and custom action steps. New experiments can be created using the guided UI or using the experiment manifest represented by the workflow CR.
 
 #### 7. Resilience score
@@ -35,7 +35,7 @@ Chaos probes automate the chaos hypothesis validation performed during a fault e
 #### 9. Tunables
 A fault execution can be customized by changing the various tunables or parameters that it accepts. While some of them are common across all the faults, such as the Chaos Duration, every fault has its own set of tunables. Wherever applicable, default tunables have been provided which may need to be updated. Otherwise, mandatory tunables always need to be provided.
 
-#### 10. Chaos interval 
+#### 10. Chaos interval
 Chaos Interval is a tunable which specifies the duration between successive iterations of chaos, while the elapsed experiment time is less than the chaos duration.
 
 #### 11. Sequence
@@ -53,10 +53,10 @@ Experiment templates are stored as part of the ChaosHub, which can be used for c
 #### 15. Result fail step
 When an experiment fails, the Fail Step specifies the exact cause of failure for the experiment run. It contains an error code for the classification of the error, a phase for specifying the execution phase during which the error occurred, and finally the reason which is a user-friendly description of the error.
 
-#### 16. Result phase 
+#### 16. Result phase
 Phase determines the status of the overall experiment execution. It may be any one of Awaited, Running, Completed, and Aborted, depending on the experiment outcome.
 
-#### 17. ChaosEngine CR 
+#### 17. ChaosEngine CR
 The ChaosEngine CR is the user-facing chaos Kubernetes CR which connects a target resource instance with a chaos fault to orchestrate the steps of chaos execution. It allows one to specify run-level details such as overriding fault defaults, provide new environment variables and volumes, options to delete or retain experiment pods, and define probes among others. It is also patched to update the status of the fault execution.
 
 #### 18. ChaosExperiment CR

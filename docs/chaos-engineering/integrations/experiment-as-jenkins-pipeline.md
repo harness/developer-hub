@@ -1,5 +1,5 @@
 ---
-title: Walkthrough- Run chaos experiments as Jenkins pipelines
+title: Run chaos experiments as Jenkins pipelines
 sidebar_position: 34
 description: Guide to run a chaos experiment as a Jenkins pipeline
 redirect_from:

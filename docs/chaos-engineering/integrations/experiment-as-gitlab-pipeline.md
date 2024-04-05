@@ -1,5 +1,5 @@
 ---
-title: Walkthrough- Run chaos experiments as GitLab pipelines
+title: Run chaos experiments as GitLab pipelines
 sidebar_position: 32
 description: Guide to run a chaos experiment as a GitLab pipeline
 redirect_from:

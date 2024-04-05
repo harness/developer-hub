@@ -1,5 +1,5 @@
 ---
-title: Walkthrough- Create a chaos experiment from a blank canvas
+title: Create a chaos experiment from a blank canvas
 description: Create a chaos experiment from scratch.
 sidebar_position: 4
 redirect_from:

@@ -1,13 +1,13 @@
 {
   "position": 3,
-  "label": "HCE onboarding guide",
+  "label": "HCE certification",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"HCE onboarding guide"
+      "title":"HCE certification"
    },
   "customProps": {
-    "description": "HCE onboarding guide"
+    "description": "HCE certification"
   }
 }

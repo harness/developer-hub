@@ -1,6 +1,6 @@
 ---
 sidebar_position: 8
-title: Walkthrough- Run chaos experiments in sandbox to build resilience 
+title: Run chaos experiments in sandbox to build resilience
 description: Execute chaos experiments to improve the resilience of an app in a sandbox.
 ---
 
@@ -133,4 +133,4 @@ You can start executing the sandbox again if you run out of time by click **Run*
 </Accordion>
 
 ## Next steps
-[Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/ce-onboarding-guide/developer-certification.md) 
+[Harness Chaos Engineering Developer Certification](/docs/chaos-engineering/ce-onboarding-guide/developer-certification.md)
