@@ -18,7 +18,7 @@ With the introduction of Catalog Entity Ingestion APIs, users now have the capab
 
 ## API Examples and Usage
 
-## Entity Ingestion API
+## Catalog Metadata Ingestion API
 
 ### Endpoint
 
@@ -114,6 +114,35 @@ metadata:
 
 In the above example, we assign the team lead for `location_service` of type `service` as `Jane Harris` instead of `Jane Doe`. So `value_overrides` helps you to assign metadata values to individual software components.  
 
+### How to check for which metadata and entities are affected?
+
+Using **dry_run** users can check for all the metadata and components getting affected by the **Catalog Metadata Ingestion API**, dry_run won't apply any change rather will provide a preview of all the changes as shown in the example below. 
+
+```json
+[
+    {
+        "field": "metadata.offShoreTeamLead",
+        "entities_with_additions": {
+            "count": 0,
+            "entity_refs": []
+        },
+        "entities_with_updates": {
+            "count": 2,
+            "entity_refs": [
+                "component:default/order-service",
+                "component:default/foodservice"
+            ]
+        }
+    }
+]
+```
+As you could see in the example above we display the affected software components under `entity_refs`.
+
+To use **dry_run**  you need to add `?dry_run=true` in the URL
+
+```bash
+https://app.harness.io/gateway/v1/catalog/custom-properties?dry_run=true
+```
 ### cURL Example
 
 The endpoint could also be used to **append/replace** value for an already existing metadata. 
