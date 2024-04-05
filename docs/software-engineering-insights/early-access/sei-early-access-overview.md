@@ -17,7 +17,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
-### Diagnostic Tab
+### Diagnostic Page
 
 * **Release date:** March 2024
 * **Release version:** 202402.2
@@ -27,7 +27,7 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.
 
-### SEI Jira Integration Enhanced Experience
+### SEI GitHub/Jira Integration 2.0 - ReAuth
 
 * **Release date:** February 2024
 * **Issue number:** SEI-5188
@@ -36,24 +36,26 @@ Enabling this feature will allow you to access the new **Diagnostics** page whic
 
 Enabling this feature will allow you to access the new re-authorization flow for the Jira and GitHub Integrations. The feature is related to SEI-3727.
 
-### SEI Jira Integration Enhanced Experience
+[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+
+### SEI Jira Integration 2.0
 
 * **Release date:** January 2024
 * **Issue number:** SEI-3727
 * **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enabling this feature will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App.
+Enabling this Feature Flag will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App. You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
 
-You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
+[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
 
-### SEI GitHub Integration Enhanced Experience
+### SEI GitHub Integration 2.0
 
 * **Release date:** January 2024
 * **Issue number:** SEI-3727
 * **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enabling this feature will allow you to access the new user onboarding process for connecting to GitHub Cloud using the GitHub App.
+Enabling this Feature Flag will allow you to access the new user onboarding process for connecting to GitHub using the GitHub App. You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
 
-You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
+[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
