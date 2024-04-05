@@ -11,6 +11,8 @@ sidebar_label: Usage of Catalog Metadata Ingestion APIs
 
 In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/custom-card) and use the same data to input values in workflows using [Workflow UI Pickers](/docs/internal-developer-portal/flows/custom-extensions).
 
+<DocImage path={require('./static/ccp-usecase.png')} />
+
 ## Pre-requisites
 
 1. You must have components registered in your software catalog. If you don't have any components registered, follow this [tutorial](/docs/internal-developer-portal/catalog/register-software-component) to register one. We recommend you to register [this software component](https://github.com/harness-community/idp-samples/blob/main/example-catalog-info/cataog-info-ccp.yaml) for this tutorial. 
@@ -191,5 +193,3 @@ spec:
 ## Conclusion
 
 Using the Catalog Metadata Ingestion API, you can source information into your catalog from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details and use them to just display the information to users as wells as use them as an input for workflows. 
-
-Illustration Image: To be Added
