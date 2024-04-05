@@ -29,7 +29,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 --data '{
     "properties": [
         {
-            "field": "metadata.onShoreTeamLead",
+            "field": "metadata.additionalInfo.onShoreTeamLead",
             "filter": {
                 "kind": "Component",
                 "type": "service",
