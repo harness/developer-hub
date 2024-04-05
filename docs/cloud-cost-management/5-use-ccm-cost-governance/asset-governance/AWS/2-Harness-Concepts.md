@@ -9,13 +9,13 @@ description: This topic describes how to optimize cloud costs using asset govern
 
 ## Rules
 
-Rules help you set up Asset Governance for your cloud provider. A Rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate all gp2 EBS volumes to gp3. In such a case, we write and run a rule which does this for us.. In such a case, we write and run a rule which does this for us.
+Rules help you set up Asset Governance for your cloud provider. A Rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate all gp2 EBS volumes to gp3. In such a case, we write and run a rule which does this for us. In such a case, we write and run a rule which does this for us.
 
 Ideally, rules include policy, resource, filters, and actions.
 
 - A **policy** is defined in YAML format and consists of filters and actions that are applied to a specific type of cloud resource.
 
-- A **resource** is the type of cloud resource or service on which the rule will be run with the actions and filters, such as Azure VMs, AKS, Cosmos DB, etc.
+- A **resource** is the type of cloud resource or service on which the rule will be run with the actions and filters, such as ec2, s3, elb, etc.
 
 - A **filter**, as the name suggests, is a criteria used to narrow down the results based on the attributes. These attributes can include anything such as tags, metadata, or any other resource property provided by you. When the filter is applied, only those resources that match the criteria specified in the filter are given as a result.
 
@@ -199,7 +199,7 @@ You can create filters to view selected rules:
     * Enforcements
     * Minimum Cost Impact ($)
     * Cloud Provider
-    * Azure Filters
+    * AWS Filters
       - AWS Account
       - Target Regions
 
