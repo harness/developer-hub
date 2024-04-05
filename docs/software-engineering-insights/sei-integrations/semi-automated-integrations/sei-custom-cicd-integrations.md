@@ -25,7 +25,7 @@ Configure the webhook API call according to the following webhook specifications
 
 **Header**
 
-* Authorization: API KEY `<HARNESS_SEI_API_KEY>`
+* Authorization: ApiKey `<HARNESS_SEI_API_KEY>`
 * Content-Type: `application/json`
 
 **Body**
@@ -46,25 +46,26 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
 --header 'Accept: application/json, text/plain, */*' \
 --header 'Referer: https://app.harness.io/' \
 --header 'sec-ch-ua-mobile: ?0' \
---header 'Authorization: API KEY <HARNESS_SEI_API_KEY>' \
+--header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
 --header 'sec-ch-ua-platform: "macOS"' \
 --header 'Content-Type: application/json' \
 --data '{
-    "job_name": "pipelines-testing",
-    "instance_guid": "c9a73c1b-7590-34sa-a82f-c53a469686b7",
-    "instance_name": "azure-integration",
-    "job_full_name": "<PROJECT>/<REPO_NAME>",
-    "job_normalized_full_name": "<PROJECT>/<REPO_NAME>",
-    "result": "FAILED",
-    "user_id": "UNKNOWN",
-    "repo_url": "https://dev.azure.com/<USERNAME>/<PROJECT>/<REPO_NAME>",
-    "start_time": 1684912520000,
-    "duration": 5,
-    "build_number": 7871,
-    "instance_url": "https://dev.azure.com",
-    "branch_name": "main",
-    "project_name": "Project"
+{
+    “job_name”: “pipelines-testing”,
+    “instance_guid”: “c9a73c1b-7590-34sa-a82f-c53a469686b7",
+    “instance_name”: “azure-integration”,
+    “job_full_name”: “<PROJECT>/<REPO_NAME>“,
+    “job_normalized_full_name”: “<PROJECT>/<REPO_NAME>“,
+    “result”: “FAILED”,
+    “user_id”: “UNKNOWN”,
+    “repo_url”: “https://dev.azure.com/<USERNAME>/<PROJECT>/<REPO_NAME>“,
+    “start_time”: 1684912520000,
+    “duration”: 5,
+    “build_number”: 7871,
+    “instance_url”: “https://dev.azure.com”,
+    “branch_name”: “main”,
+    "project_name": "Project" 
 }
 
 ```
