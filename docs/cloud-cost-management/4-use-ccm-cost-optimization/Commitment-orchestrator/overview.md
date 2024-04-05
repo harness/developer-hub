@@ -11,7 +11,7 @@ helpdocs_is_published: true
 # Introduction to Commitment Orchestrator
 
 :::note
-Currently, Commitment Orchestrator is behind the feature flag `CCM_COMMORCH` and `CCM_COMM_SETUP`. If you want to try out this feature, please reach out to the CCM team. We would love to work with you and take feedback.
+Currently, Commitment Orchestrator is behind the feature flags `CCM_COMMORCH` and `CCM_COMM_SETUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
