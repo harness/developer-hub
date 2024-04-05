@@ -40,9 +40,10 @@ Harness CE module has the following additional capabilities:
 9. [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
 10. [Security chaos faults](/docs/chaos-engineering/chaos-faults/security-chaos)
 11. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
-12. Teaming around ChaosHubs
-13. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
-14. [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
+12. [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
+13. Teaming around ChaosHubs
+14. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
+15. [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
@@ -51,6 +52,15 @@ In addition to the above features, CE integrates with these Harness modules:
 - Continuous Delivery (CD). Go to [Use HCE with CD](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
 - Feature Flags (FF). Go to [Use HCE with FF](/docs/chaos-engineering/integrations/chaos-ff).
 - Service Reliability Management. Go to [Use HCE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
+
+## HCE free plans
+[Harness](https://harness.io) offers a free hosted LitmusChaos if you are trying to get started with LitmusChaos or Chaos Engineering in general. The HCE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as RBAC and hosted logging— all for free.
+
+Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted HCE or the hosted LitmusChaos.
+
+:::info important
+The HCE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
+:::
 
 ## Harness CE versus LitmusChaos
 
