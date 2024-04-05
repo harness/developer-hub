@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 # Introduction to Commitment Orchestrator
 
-:::info
+:::note
 Currently, Commitment Orchestrator is behind the feature flag `CCM_COMMORCH` and `CCM_COMM_SETUP`. If you want to try out this feature, please reach out to the CCM team. We would love to work with you and take feedback.
 :::
 
