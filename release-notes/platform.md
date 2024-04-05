@@ -96,7 +96,7 @@ The following deprecated API endpoints are longer supported:
 
 - [ON HOLD] In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. (PL-47614)
 
-- The audit trail filter form lacked a selection option for the resource type "Token," used for API tokens. Although these resource types were logged in the audit trail, the absence of a filtering option made it impossible to filter based on this resource type. A filter component for the "Token" resource type has been added to the audit trail filter form, allowing users to filter audit trail entries for updates in Tokens & API Keys using a dropdown in the Audit Trail Filters. (PL-48606)
+The audit trail filter did not include an option for "Token" resource type, hindering the ability to filter for API token updates. Added a "Token" filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
 
 ### Version 1.31.4<!--  April 3, 2024 -->
 
