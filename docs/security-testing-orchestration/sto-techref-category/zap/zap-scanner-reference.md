@@ -159,7 +159,7 @@ import StoSettingInstancePath from '../shared/step_palette/instance/_path.md';
 
 #### Context Name
 
-The ZAP context script to use for the scan. You need to add the following shared path (**Overview** > **Shared Paths**) to the stage and copy your context script to this path:
+The ZAP context file to use for the scan. You need to add the following shared path (**Overview** > **Shared Paths**) to the stage and copy your context script to this path:
     - `/shared/customer_artifacts/context/`
 
 :::note
