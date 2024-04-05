@@ -31,6 +31,7 @@ In Harness CI, you use [Background steps](./background-step-settings) to [manage
    * **Name:** Enter a name, such as `localstack`.
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter the name and tag of a LocalStack Docker image, such as `localstack/localstack:latest`.
+     For information about LocalStack Community and LocalStack Pro Docker images, go to the [LocalStack documentation on Docker images](https://docs.localstack.cloud/references/docker-images/).
    * **Environment Variables:** Add a variable named `LOCALSTACK_API_KEY` and set the value to an expression referencing your LocalStack API key secret (such as `<+secrets.getValue("my-localstack-api-key")>`).
 
 4. Select **Apply Changes** to save the Background step.
@@ -43,14 +44,14 @@ In your pipeline's Build stage, after the Background step, add a [Run step](../r
 
 * **Name:** Enter a name, such as `localstack health`.
 * **Container Registry:** Select a Docker connector.
-* **Image:** Enter `curlimages/curl:7.83.1`.
+* **Image:** Enter a curl image and tag, such as `curlimages/curl:7.83.1`.
 * **Command:** Enter the following:
 
 ```
 until curl --fail --silent --max-time 1 http://localstack:4566/health; do sleep 2; done
 ```
 
-This cURL command is able to reach the LocalStack service at `localstack:4566` because both the Background step and Run step share the same Docker network in a Harness CI Build stage.
+This cURL command can reach the LocalStack service at `localstack:4566` because both the Background step and Run step share the same Docker network in a Harness CI Build stage.
 
 ## Run the pipeline
 
@@ -97,8 +98,8 @@ pipeline:
                   name: localstack
                   identifier: localstack
                   spec:
-                    connectorRef: docker_hub
-                    image: localstack/localstack:1.2.0
+                    connectorRef: account.harnessImage
+                    image: localstack/localstack:latest
                     shell: Sh
                     envVariables:
                       LOCALSTACK_API_KEY: <+secrets.getValue("localstack-api-key")>
@@ -107,7 +108,7 @@ pipeline:
                   name: localstack health
                   identifier: localstack_health
                   spec:
-                    connectorRef: docker_hub
+                    connectorRef: account.harnessImage
                     image: curlimages/curl:7.83.1
                     shell: Sh
                     command: until curl --fail --silent --max-time 1 http://localstack:4566/health; do sleep 2; done
