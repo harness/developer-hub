@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-04-03:T10:00:30
+date: 2024-04-08:T10:00:30
 sidebar_position: 3
 ---
 
@@ -79,6 +79,24 @@ The following deprecated API endpoints are longer supported:
 
 
 ## April 2024
+
+### Version 1.32.x<!--  April x, 2024 -->
+
+#### New features and enhancements
+
+- AWS Secret Manager Connector will support both Plain Text & Encrypted type Access Key Id. (PL-48420)
+
+#### Fixed issues
+
+- Email steps were failing due to the system's inability to find users with emails containing uppercase letters, as Harness converts and stores all emails in lowercase. (PL-48532, ZD-60291)
+
+- Reset password emails were being sent from the "CG" system for all accounts, causing issues for accounts that are exclusively "NG". Now, if an account is identified as "NG" only, the reset password emails will be dispatched from the "NG" system, rectifying the issue for "NG" only accounts. (PL-38735)
+
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. (PL-47914)
+
+- [ON HOLD] In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. (PL-47614)
+
+- The audit trail filter form lacked a selection option for the resource type "Token," used for API tokens. Although these resource types were logged in the audit trail, the absence of a filtering option made it impossible to filter based on this resource type. A filter component for the "Token" resource type has been added to the audit trail filter form, allowing users to filter audit trail entries for updates in Tokens & API Keys using a dropdown in the Audit Trail Filters. (PL-48606)
 
 ### Version 1.31.4<!--  April 3, 2024 -->
 
