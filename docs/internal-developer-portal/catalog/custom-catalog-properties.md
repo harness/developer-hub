@@ -88,7 +88,7 @@ metadata:
     
 :::info 
 
-**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400
+**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
 
 :::
 
@@ -112,7 +112,7 @@ metadata:
     "value_overrides": [
         {
             "entity_ref": "component:default/location-service",
-            "override_value": "xyz"
+            "override_value": "Dan John"
         }
     ],
     "value": "Jane Doe"
@@ -152,7 +152,7 @@ https://app.harness.io/gateway/v1/catalog/custom-properties?dry_run=true
 ```
 ### cURL Example
 
-The endpoint could also be used to **append/replace** value for an already existing metadata. 
+The endpoint could also be used to **replace** value for an already existing metadata. 
 
 ```cURL
 curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
@@ -184,8 +184,49 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
     ]
 }'
 ```
+
+You can **append** an `array` data type using this API as shown in the example below by using `mode: append` 
+
+```cURL
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
+--header 'Harness-Account: px7xd_BFRCi-pfABYXVjvw' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: <Add your key>' \
+--data '{
+    "properties": [
+        {
+            // "field": "metadata.tags",
+            "field": "metadata.releaseVersions",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "harness_account_all_users"
+                ],
+                "lifecycle": [
+                    "experimental",
+                    "production"
+                ],
+                "tags": [
+                    "food-ordering",
+                    "java",
+                    "tag1"
+                ]
+            },
+            "value": [                  #array of objects
+                {"prod1": "1.5.6"},
+                {"prod2": "1.5.6"},
+                {"prod3": "1.5.6"},
+            ],
+            // "value": ["tag2", "tag3"], #array 
+            "mode": "append" 
+        }
+    ]
+}'
+
+```
 ### Response:
-The response will ingest/append a metadata in the desired software component in your IDP catalog.
+The response will update/append a metadata in the desired software component in your IDP catalog.
 
 
 ## Catalog Metadata Deletion API
