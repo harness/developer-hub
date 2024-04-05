@@ -6616,3 +6616,53 @@ This error occurs because there's a misconfiguration with the pipeline. Harness 
 
 #### What is Harness' pipeline execution history retention policy?
 Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
+
+#### Is there any schema on the Harness platform that needs to be followed for individual items in the a JSON array?
+
+The JSON can be any schema.  You map the fields with the metadata.  If there is a certain metadata for each version, the user should use the same version throughout the pipeline.  The JSON itself has no schema to follow.
+
+
+
+
+#### Is there any way to recover projects that were deleted in one of the organization along with the pipelines and templates that were in place?  For example, a project was deleted from the corporate organization.
+
+One possible approach to be able to recover items such as a deleted project within an organization would be to obtain the YAML from the audit trail to reconstruct the pipeline.
+
+
+
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  Is launch configuration not supported in NextGen.?
+
+Users migrating to NextGen from FirstGen will need to replace Launch Configuration with Launch Template. AWS provides the steps here: https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html
+
+
+
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  In FirstGen, when providing the Base ASG, Harness could pick up the launch configuration from the base ASG and created a configuration for new ASG.  What needs to be changed to migrate the workflow to NextGen for ASG deployment which uses launch configuration instead of launch template?
+
+There has been a redesign in ASG deployments as new features like Instance Refresh came out and few features like Classic LB, LC are being deprecated.
+
+To fix a migrated pipeline, users can take following steps:
+1. Migrate the current Launch Configuration with Launch Template. AWS provides the steps here: https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html
+2. Once this is done, everything should work out of the box. The current pipeline will not work – we can create a new one outlined here: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment. This is behind FF: CDS_ASG_PHASED_DEPLOY_FEATURE_NG which we'll need to enable to kick in this feature.
+
+
+
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  Is it required to create the json for launch template and ASG configurations explicitly?
+
+Harness does not have to provide JSON for ASG / Launch Template if we provide Base ASG in Infrastructure definition.
+
+
+
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  In FirstGen, within the Infrastructure Definition was an option to provide Target Group details.  How could this be provided in the NextGen pipeline?
+
+Although ASG support has been redesigned in NextGen, we will be taking the target groups attached with your base ASG. So, all the target groups that the base ASG you provided in infrastructure is attached with will get attached to your new ASG also. No need to provide the target groups separately.
+
+
+
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  How will the feature flag CDS_ASG_PHASED_DEPLOY_FEATURE_NG work with my ASG deployment after updating my configuration from Launch Configuration to Launch Template?
+
+Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc.  Pipelines using Launch Configuration will also work but it is using an ASG rolling deploy step and it's design is different from FirstGen. You can find more details regarding the rolling deploy step here : https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling
