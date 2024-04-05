@@ -5,7 +5,7 @@ sidebar_position: 1
 sidebar_label: Custom CI/CD integrations
 ---
 
-SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration, such as Jenkins and Circle CI.
+SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration.
 
 Configure the webhook API call according to the following webhook specifications.
 

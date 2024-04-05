@@ -305,6 +305,7 @@ Find the list of demos for the latest Harness SEI features.
 | DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
 | Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
 | Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
+| Collections Walkthrough |<a href="https://www.youtube.com/embed/3sD8K-ratYM?si=oIu9wAkNQOOA0p7J">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |
 
 
 
