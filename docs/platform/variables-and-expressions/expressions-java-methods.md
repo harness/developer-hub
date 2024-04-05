@@ -14,7 +14,7 @@ You can use almost any [Java string method](https://docs.oracle.com/javase/8/doc
 
 ## Format
 
-The correct format for using a Java method with an expression is to wrap both the expression and the method in the expression delimiter (`<+...>`):
+The correct format for using a Java method with an expression is to wrap both the source expression and the method in the expression delimiter (`<+...>`), resulting in nested delimiters. For example:
 
 ```
 <+<+expression>.methodName()>

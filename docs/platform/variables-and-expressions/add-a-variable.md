@@ -187,16 +187,35 @@ Additionally, some step types support step-level runtime environment variable or
 
 Use [expressions](/docs/platform/variables-and-expressions/harness-variables.md) to reference variables in Harness.
 
-For custom variables, the expression you use depends on where you created the variable:
+You can reference variables where ever expression input is accepted, such as pipeline/stage/step settings or scripts.
 
-* Account variable reference: `<+variable.account.VARIABLE_ID>`
-* Org variable reference: `<+variable.org.VARIABLE_ID>`
-* Project variable reference: `<+variable.VARIABLE_ID>`
-* Pipeline variable reference: `<+pipeline.variables.VARIABLE_ID>`
-* Stage variable reference (within the same stage where you defined it): `<+stage.variables.VARIABLE_ID>`
-* StepGroup variable reference: `<+stepGroup.variables.VARIABLE_ID>`
-* Service variable reference: `<+serviceVariables.VARIABLE_ID>`
-* Environment variable reference: `<+env.variables.VARIABLE_ID>`
+For custom variables, the expression you use depends on where you created the variable and from where you are referencing the variable. For example:
+
+* Account variable reference: `<+variable.account.VARIABLE_NAME>`
+* Org variable reference: `<+variable.org.VARIABLE_NAME>`
+* Project variable reference: `<+variable.VARIABLE_NAME>`
+* Pipeline variable reference: `<+pipeline.variables.VARIABLE_NAME>`
+* Stage variable reference (within the same stage where you defined it): `<+stage.variables.VARIABLE_NAME>`
+* StepGroup variable reference (within the same step group where you defined it): `<+stepGroup.variables.VARIABLE_NAME>`
+* Service variable reference: `<+serviceVariables.VARIABLE_NAME>`
+* Environment variable reference: `<+env.variables.VARIABLE_NAME>`
+
+If you are referencing lower-level variables (such as stage, step group, and step variables) outside of the scope where you originally defined them, you must include additional relative pathing in your expression. For example, to reference a stage variable in a different stage that the one where you originally defined it, you could use `<+pipeline.stages.originalStageID.variables.variableName>` instead of `<+stage.variables.variableName>`.
+
+To assist with pathing for length expressions, you can [use JSON parser tools](./expression-v2.md).
+
+:::info
+
+Expressions reference custom variables by *variable name*. If the expression is outside the variable's origin scope, you use *identifiers* to reference the stage, step, or other entity where the variable was defined.
+
+For example:
+
+* Reference in variable's origin scope: `<+stage.variables.variableName>`
+* Reference outside variable's origin scope: `<+pipeline.stages.originalStageID.variables.variableName>`
+
+:::
+
+### Example: Echo variables
 
 Here's a simple script example that echoes some variables in a pipeline:
 
@@ -209,16 +228,35 @@ Here's a simple script example that echoes some variables in a pipeline:
 3. Add a script to echo your variables, such as:
 
    ```
-   echo "Account var: "<+variable.account.VARIABLE_ID>
-   echo "Org var: "<+variable.org.VARIABLE_ID>
-   echo "Project var: " <+variable.VARIABLE_ID>
-   echo "Pipeline var: " <+pipeline.variables.VARIABLE_ID>
-   echo "Stage var: " <+stage.variables.VARIABLE_ID>
+   echo "Account var: "<+variable.account.VARIABLE_NAME>
+   echo "Org var: "<+variable.org.VARIABLE_NAME>
+   echo "Project var: " <+variable.VARIABLE_NAME>
+   echo "Pipeline var: " <+pipeline.variables.VARIABLE_NAME>
+   echo "Stage var: " <+stage.variables.VARIABLE_NAME>
    ```
 
 4. Run the pipeline and find the echoed variables in the execution logs.
 
    ![](./static/add-a-variable-08.png)
+
+### Get variable expressions from the Variables list
+
+After adding pipeline and other types of local variables, you can get the expressions to reference these variables from your pipeline's Variables list.
+
+1. Edit your pipeline and select **Variables** on the right side of the Pipeline Studio.
+2. Locate the variable you want to use, and select the **Copy** icon to copy the expression referencing that variable.
+
+   ![](./static/add-a-variable-11.png)
+
+3. Paste the expression where you want to reference the variable in commands or other settings.
+
+   For example, this command echoes a service variable:
+
+   ```sh
+   echo "<+stage.spec.serviceConfig.serviceDefinition.spec.variables.SERVICE_VARIABLE_ID>"
+   ```
+
+You can also [copy input and output expressions from execution details after a pipeline runs](/docs/platform/variables-and-expressions/harness-variables.md#get-expressions-for-step-input-and-output).
 
 ### Use an account/org/project variable as the value of a pipeline variable
 
@@ -232,34 +270,36 @@ You can use a higher-level variable as the value for pipeline variables (includi
 
    ![](./static/add-a-variable-10.png)
 
-When you run this pipeline, Harness resolves the variables value from the reference to the account/org/project variable.
+6. After creating the local variable, reference your local variable in your pipeline, such as in a step's command or other setting.
 
-For example, to reference a service variable in a Shell Script step:
-
-1. Edit your pipeline and select **Variables** on the right side of the Pipeline Studio.
-2. Locate the variable you want to use, and select the **Copy** icon to copy the expression referencing that variable.
-
-   ![](./static/add-a-variable-11.png)
-
-3. In your Shell Script step, paste the expression where you want to reference the variable in your commands:
+   For example, this command echoes a service variable:
 
    ```sh
    echo "<+stage.spec.serviceConfig.serviceDefinition.spec.variables.SERVICE_VARIABLE_ID>"
    ```
 
-4. Run the pipeline and find the variable's resolved value in the execution logs.
+7. When you run the pipeline, Harness resolves the local variable's value from the reference to the account/org/project variable.
 
-    ![](./static/add-a-variable-12.png)
+   Here's an example of the logs for a Shell Script step that echoes a service variable that takes its value from an account variable. The account variable and service variable both echo the same value.
 
-:::tip
+   ```
+   account var: foo
+   service var: foo
+   ```
 
-You can use [expressions](/docs/platform/variables-and-expressions/harness-variables.md) to reference variables in most pipeline settings. For example, if you have an account variable that stores a service definition, you could use an expression referencing that variable in your CD stage's **Specify Service** setting.
+   ![](./static/add-a-variable-12.png)
+
+### Use account/org/project variables to store pipeline settings
+
+You can use [expressions](/docs/platform/variables-and-expressions/harness-variables.md) to reference variables in most pipeline settings. This is useful for controlling certain pipeline inputs and configurations for which users should select specific values rather than creating their own.
+
+For example, if you have an account variable that stores a service definition, you could use an expression referencing that variable in your CD stage's **Specify Service** setting.
 
 ![](./static/add-a-variable-13.png)
 
 When you run the pipeline, Harness pulls the service definition from the referenced variable.
 
-## Tutorial - Use variables in a CD pipeline
+## Tutorial: Use variables in a CD pipeline
 
 This tutorial demonstrates how to create and use variables in a Harness CD pipeline.
 

@@ -402,9 +402,14 @@ The api will only return Approval details if there are any approval step pending
 
 You cannot do it if the stage is part of the same pipeline. However, using Pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of Pipeline B.
 
-#### How can we use conditionals within variables using jexl?
+#### Can I manipulate and evaluate variable expressions, such as with JEXL, conditionals or ternary operators?
 
-You can use Ternary operators to achieve this use case more information on this [here](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators).
+Yes, there are many ways you can manipulate and evaluate expressions. For more information, go to [Use Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables).
+
+#### Can I use ternary operators with triggers?
+
+Yes, you can [use ternary operators with triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator).
+
 #### How do we easily change git folders in a repo for the git exp project?
 
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
@@ -1297,10 +1302,6 @@ No, email step in pipelines do not support attachments.
 #### Can I control sequence of serial and parellel in  Multi Services/Environments ?
 
 No, we cannot control the sequence for Multi Services/Environment deployments. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/#deploying-in-parallel-or-serial)
-
-#### Do we have an example for ternary operators ?
-
-Yes, pleare refer to the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
 
 #### Does Harness Support Google cloud functions 1st Gen and 2nd Gen?
 Yes, Harness supports both 1st gen and 2nd gen. 
@@ -4295,20 +4296,6 @@ The Output Variable of the shell script is a string, which you are trying to pas
 - Then convert this string into a list of string again before passing it to the repeat strategy.
 
 Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/repeat-strategy)
-
-#### Can a trigger for a CD pipeline be configured to automatically pick up the tag value `<+trigger.payload.tag>` when the pipeline is executed via the trigger, and alternatively pick up `<+pipeline.variables.tag>` when the pipeline is executed manually ?
-
-For the above usecase we should use Ternary operators , refer the [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) for more on this.
-You can give a condition :
-`<+condition?<value_if_true>:<value_if_false>>`
-
-For the true condition `<+pipeline.triggerType>` should be WEHOOK_CUSTOM, please refer [docs](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#ternary-operators) and for the false condition you can put a runtime input `<+input>` or a pipeline variable
-
-Finally the ternary operator condition should look like:
-`<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.tag>:<+trigger.payload.tag>>`
-
-Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/)
-
 
 #### Does the Azure connector support service principles ?
 
