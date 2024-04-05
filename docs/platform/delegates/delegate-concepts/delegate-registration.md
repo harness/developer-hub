@@ -54,7 +54,7 @@ kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 
 ### Allowlist verification
 
-:::info note
+:::note
 
 Currently, allowlist verification for delegate registration is behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 

@@ -27,6 +27,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.6.8
+
+ - We've fixed an issue where evaluation related debug logs, even if debugging wasn't enabled, would cause extra latency when making evaluations. This fix restores performance to do normal pre-logging levels. (FFM-11121)
+ - There are no longer `information` logs json payloads. (FFM-11022)
+
 #### Version 1.6.7
 
  - Logs flags/groups payload as `info` level log. (FFM-11022)

@@ -4,7 +4,7 @@ description: Mark a pipeline as failed during execution.
 sidebar_position: 5
 ---
 
-The **Mark as Failed** button in the pipeline execution details page is used to mark any running pipeline as failed. Selecting this button sends a failure interrupt to all currently rcurrently executing stages of the pipeline, triggering their failure strategies.
+The **Mark as Failed** button in the pipeline execution details page is used to mark any running pipeline as failed. Selecting this button sends a failure interrupt to all currently executing stages of the pipeline, triggering their failure strategies.
 
 ## Requirements
 

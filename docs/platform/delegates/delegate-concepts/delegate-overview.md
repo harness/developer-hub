@@ -247,7 +247,7 @@ This means that if a role does not have these permissions, the user with that ro
 
 ### Delegate task capacity
 
-:::info
+:::note
 This functionality is currently behind the feature flag `DELEGATE_TASK_CAPACITY_CHECK` and is available for Harness NextGen only. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 :::
 
