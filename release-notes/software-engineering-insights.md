@@ -1,7 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-date: 2023-09-01T10:00:10
+date: 2024-03-30T10:00:10
 sidebar_position: 15
 ---
 
