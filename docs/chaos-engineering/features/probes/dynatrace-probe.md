@@ -26,9 +26,7 @@ stringData:
 :::tip
 * Connectivity requirements for the Dynatrace probe: You can establish a connection between the execution plane and Dynatrace by:
 1. Opening port 443 (HTTPS) to make API calls to the Dynatrace probe;
-2. Create a secret that has the Dynatrace token with read permissions.
-
-* Scope required for the Dynatrace API key includes a Dynatrace access token within the `metrics.read`` scope.
+2. Create a secret that has the Dynatrace access token with read permissions (that is, `metrics.read` scope).
 :::
 
 ## Schema
