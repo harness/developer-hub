@@ -358,7 +358,7 @@ upgrader:
   enabled: true
   upgraderDockerImage: "harness/upgrader:latest"
   cronJobServiceAccountName: "upgrader-cronjob-sa"
-  # Use an existing Secret which stores the UPGRADER_TOKEN key instead of creating a new one. The value should be set with the `UPGRADER_TOKEN` key inside the secret.
+  # Use an existing Secret that stores the UPGRADER_TOKEN key instead of creating a new one. The value should be set with the `UPGRADER_TOKEN` key inside the secret.
   ## The use of external secrets allows you to manage credentials from external tools like Vault, 1Password, SealedSecrets, among others.
   ## If set, this parameter takes precedence over "upgraderToken".
   ## Recommendations:
@@ -379,7 +379,7 @@ delegateSecurityContext:
 
 nextGen: true
 
-# Below are the required fields, no default values are populated for these.
+# Below are the required fields. No default values are populated for these.
 # Please add values for the delegate to work.
 
 # Account Id to which the delegate will be connecting.
@@ -418,7 +418,7 @@ shared_certificates:
   #   XXXXXXXXXXXXXXXXXXXXXXXXXXX
   #   -----END CERTIFICATE-------
 
-  # CI Mount targets are the locations that the secrets should be mounted in the CI Images. This will share any CA chain defined in the certs_path key to any CI image
+  # CI Mount targets are the locations where the secrets should be mounted in the CI Images. This will share any CA chain defined in the certs_path key to any CI image
   # configured in the pod.
   ci_mount_targets:
     # - /etc/ssl/certs/ca-bundle.crt
@@ -473,8 +473,8 @@ upgraderCustomCa:
 delegateCustomCa:
   secretName:
 
-# This is the recommended way of using custom certs with CI.
-# Refer to: https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/
+# This is the recommended way to use custom certs with CI.
+# For more information, go to https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates/
 destinationCaPath:
 
 ```
