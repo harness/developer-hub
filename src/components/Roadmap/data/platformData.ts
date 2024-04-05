@@ -173,7 +173,7 @@ export const platformData: Horizon = {
         tag: [{ value: "SMP" }],
         title: "Supported modules",
         description:
-          "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering, Cloud Cost Management - Beta (AWS Cost Visbility)",
+          "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering, Cloud Cost Management - Beta (AWS Cost Visibility)",
       },
       {
         tag: [{ value: "SMP" }],
