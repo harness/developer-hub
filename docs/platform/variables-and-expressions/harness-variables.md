@@ -682,13 +682,6 @@ Expressions that are incorrect or cannot be evaluated using the execution data a
 
 To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it.
 
-## CI codebase and environment variables
-
-You can use Harness expressions to reference various environment variables and [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) attributes in Harness CI pipelines, stages, and steps. For more information, go to:
-
-- [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
-- [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
-
 ## Account variables
 
 ### \<+account.identifier>
@@ -704,6 +697,13 @@ Harness account name.
 ### \<+account.companyName>
 
 The name of the company for the account.
+
+## CI codebase and environment variables
+
+For information about variables and expressions relevant to Harness CI, go to:
+
+- [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
+- [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
 
 ## Custom variables
 
@@ -866,28 +866,6 @@ For remote pipelines, the expression resolves to the Git repository name. For in
 ### \<+pipeline.branch>
 
 For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
-
-## Deployment, pipeline, stage, and step status
-
-<!-- move to status topic and redirect? -->
-
-Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
-
-![](./static/harness-variables-27.png)
-
-You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
-
-### Stage status
-
-The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
-
-You must use the expression after the stage in execution.
-
-### Step status
-
-The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
-
-You must use the expression after the step in execution.
 
 ## InputSet
 
@@ -1161,6 +1139,14 @@ For example:
 Name: `<+pipeline.stages.satr.spec.execution.steps.rolloutDeployment.output.manifest.values.commitId>`
 
 Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
+
+### Helm chart expressions
+
+<!-- Duplicates manifests? Replace import with link to another page? -->
+
+import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+
+<HelmManifestExpressions name="helmexpressions" />
 
 ## Artifact
 
@@ -1704,13 +1690,37 @@ The public IP of the host where the service is deployed.
 
 If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
-## Strategy
+## Secrets
 
-You can use Harness expressions to retrieve the current execution status or identifiers for iterations of a [matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+The primary way to reference secrets is with expressions like `<+secrets.getValue("SECRET_ID")>`.
+
+For information about referencing secrets, go to the [Secrets documentation](/docs/category/secrets).
+
+## Status
+
+<!-- move to status info here from status topic and add redirect from there. -->
+
+Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
+
+![](./static/harness-variables-27.png)
+
+You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
+
+### Stage status
+
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
+
+You must use the expression after the stage in execution.
+
+### Step status
+
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
+
+You must use the expression after the step in execution.
 
 ### Strategy status
 
-<!-- move to status page and redirect? -->
+<!-- move to looping strategy page and redirect? -->
 
 The statuses of the nodes (stages/steps) using a matrix/repeat looping strategy can be `RUNNING`, `FAILED`, or `SUCCESS`.
 
@@ -1737,6 +1747,12 @@ For example, `echo <+strategy.node.cs1.currentStatus>`.
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
 For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
+
+## Strategy
+
+<!-- move to Looping strategy page & redirect? -->
+
+You can use Harness expressions to retrieve the current execution status or identifiers for iterations of a [matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
 
 ### Strategy identifierPostFix
 
@@ -1824,6 +1840,23 @@ Here are some examples:
 - `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
 - `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
 
+### Strategy statuses
+
+For strategy status expressions, go to [Status](#status).
+
+## Tag expressions
+
+You can reference tags using Harness expressions.
+
+You simply reference the tagged entity and then use `tags.TAG_NAME`, like `<+pipeline.tags.docs>`
+
+For example, here are several different references:
+
+- `<+pipeline.tags.TAG_NAME>`
+- `<+stage.tags.TAG_NAME>`
+- `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
+- `<+serviceConfig.service.tags.TAG_NAME>`
+
 ## Triggers
 
 ### \<+trigger.artifact.build>
@@ -1867,15 +1900,11 @@ For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-
 
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 
-## Secrets
-
-The primary way to reference secrets is with expressions like `<+secrets.getValue("SECRET_ID")>`.
-
-For information about referencing secrets, go to the [Secrets documentation](/docs/category/secrets).
-
 ## Kubernetes
 
 ### $\{HARNESS_KUBE_CONFIG_PATH}
+
+<!-- this is not an expression -->
 
 The path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
 
@@ -1917,25 +1946,6 @@ This will help you to:
 
 **Important:** Users must update their delegate to version 1.0.79100 to use this expression.
 
-## Helm chart expressions
-
-import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
-
-<HelmManifestExpressions name="helmexpressions" />
-
-## Tag expressions
-
-You can reference tags using Harness expressions.
-
-You simply reference the tagged entity and then use `tags.TAG_NAME`, like `<+pipeline.tags.docs>`
-
-For example, here are several different references:
-
-- `<+pipeline.tags.TAG_NAME>`
-- `<+stage.tags.TAG_NAME>`
-- `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
-- `<+serviceConfig.service.tags.TAG_NAME>`
-
 ## Migrate FirstGen expressions to NextGen
 
 Use this information if you need to migrate expressions from Harness FirstGen to Harness NextGen.
@@ -1947,6 +1957,12 @@ All FirstGen expressions use the delimiter `${...}`, such as `${approvedBy.name}
 In NextGen, the delimiter is `<+...>`, such as `<+approvedBy.name>`.
 
 :::
+
+For more information about migrating to NextGen, go to:
+
+- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
+- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
+- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 
 <details>
 <summary>AMI expressions</summary>
@@ -2259,9 +2275,3 @@ To achieve this same result in NextGen, you must declare each expression with se
 | `currentStep.type`  | Not applicable in NextGen    |
 
 </details>
-
-For more information about migrating to NextGen, go to:
-
-- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
-- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
-- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)

@@ -4,58 +4,61 @@ description: Learn about the differences between `status`, `currentStatus`, and 
 sidebar_position: 5
 ---
 
-When using expressions in Harness, there are differences between the `status`, `currentStatus`, and `liveStatus` expression types. `status` refers to the running status of a single node. `currentStatus` and `liveStatus` provide the combined statuses of all running steps within a pipeline or stage. The difference between status types is based on how they handle step failures and if the status of steps running in a matrix or strategy is included in the overall status calculation.
+Pipeline and stage status expressions can reference the `status`, `currentStatus`, or `liveStatus`. These variables track different statuses, and they can resolve differently depending on the success or failure of specific steps or stages.
+
+`status` refers to the running status of a single node. `currentStatus` and `liveStatus` provide the combined statuses of all running steps within a pipeline or stage. The difference between status types is based on how they handle step failures and if the status of steps running in a matrix or strategy is included in the overall status calculation.
 
 ### Status
-The `status` refers to the current running status of a single node. It provides information about the state of that specific node without considering the status of its child nodes. It focuses on the immediate status of the node itself.
 
-### Current Status
-The `currentStatus` represents the combined status of all the running steps within a pipeline or stage. It takes into account the statuses of all the individual steps and determines the overall status. If any of the steps have failed, regardless of the running or completed steps, the current status of both the pipeline and the stage will be considered as failed. This means that the failure of even one step can affect the status of the entire pipeline or stage.
+The `status` refers to the current running status of a single node, such as a pipeline, stage, or step. It provides information about the state of that specific node without considering the status of any parent, child, or sibling nodes. It reports the direct status of the target node.
 
-:::info note
-The status of a currently running step inside a matrix is not factored into the current status calculation. This means that the running status of a step within a matrix does not contribute to the overall current status of the pipeline or stage.
+Example expression: `<+pipeline.stages.STAGE_ID.status>`
+
+### currentStatus
+
+The `currentStatus` represents the combined status of all the running steps within a pipeline or stage, except steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
+
+`currentStatus` uses the statuses of all non-matrix steps to determines the overall status. If *any* non-matrix step fails, regardless of the progress or status of other steps, the `currentStatus` of both the pipeline and the stage resolves as `Failed`. This means that the failure of one step can affects the status of the entire pipeline or stage.
+
+:::info
+
+`currentStatus` *ignores* steps generated from matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `currentStatus` is `Success` because `currentStatus` ignores the matrix step.
 
 :::
 
-### Live Status
-Similar to `currentStatus`, `liveStatus` also provides the combined status of all the running steps within a pipeline or stage. It considers the statuses of individual steps to determine the overall status. If any step fails, the `liveStatus` of both the pipeline and the stage will be marked as failed, regardless of the running or completed steps.
+Example expression: `<+pipeline.stages.STAGE_ID.currentStatus>`
 
-:::info note
-Unlike the `currentStatus`, the `liveStatus` calculation includes the status of a stage step running inside a strategy as part of the overall live status. This means that the running status of a step within a strategy contributes to the determination of the live status of the pipeline or stage.
+### liveStatus
 
-::: 
+Like `currentStatus`, `liveStatus` also provides the combined status of all the running steps within a pipeline or stage; however it also considers the status of steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
 
-#### Status examples
-The following example describes an ongoing execution with three steps named step1, step2, and step3 within a stage called stage1.
+`liveStatus` considers the statuses of *all* steps to determine the overall status. If *any* step fails, the `liveStatus` of both the pipeline and the stage resolves as `Failed`, regardless of the individual status of running or completed steps.
 
-Step1 is executed using a matrix strategy, specifically with two values: "john" and "doe".
+:::info
 
-The current status of the steps is as follows:
+`liveStatus` *includes* steps generated by matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `liveStatus` is `Failed` because `liveStatus` includes the matrix step.
 
-- stage1: Running
+:::
 
-- step1: Success
+Example expression: `<+pipeline.stages.stage1.liveStatus>`
 
-- step2: Success
+### Example: Status determination
 
-- step3 (matrix): Running 
+The following example describes an ongoing execution with three steps named `step1`, `step2`, and `step3` within a stage called `stage1`.
 
-   - "john": Failed
+`step1` is executed using a matrix strategy, specifically with two values: `"john"` and `"doe"`.
 
-   - "doe": Success
+Assume this pipeline is running and the stage, steps, and matrix instances of `step3` have the following statuses:
 
-In this example, the status values for stage1 are as follows:
+- `stage1`: Running
+- `step1`: Success
+- `step2`: Success
+- `step3` (matrix): Running
+   - `"john"`: Failed
+   - `"doe"`: Success
 
-- stage1.status: Running (directly taken from the status of stage1)
+In this example, the status values for `stage1` are as follows:
 
-- stage1.currentStatus: Success (derived from the statuses of all steps, excluding step3 with the matrix)
-
-- stage1.liveStatus: Failed (calculated by considering the statuses of all steps, excluding step3 with the matrix)
-
-In summary:
-
-- The  `status` of stage1 is `Running`.
-
-- The `currentStatus` of stage1, which excludes step3 with the matrix, is `Success`.
-
-- The `liveStatus` of stage1, also excluding step3 with the matrix, is `Failed`.
+- The `status` of `stage1` is `Running`. This is taken directly from the execution status of `stage1`.
+- The `currentStatus` of `stage1` is `Success`. This is determined from the statuses of all steps in the stage, excluding the matrix steps generated by `step3`.
+- The `liveStatus` of `stage1` is `Failed`. This is determined by considering the statuses of all steps in the stage, including the matrix steps generated by `step3`.
