@@ -123,16 +123,20 @@ Prior to this update, the permission of users were limited to:
  - **Create/Edit**: Users can create a flag, and edit the flag
  - **Delete**: Users can delete a flag
 
-The permissions have now be split further giving users more defined rules on what users are able to do within Harness. Some examples include:
+The permissions have now be split further. This gives administrators more choices to apply more defined rules on what users are able to do within their environments in Harness. Some examples include:
 
  - Users can have permissions to create flags but not be able to edit them in certain environments. 
  - Users can have permissions to edit flags but are restricted to certain environments. 
 
-The user is creating a target rule here, not a target.  So I would say this is not a bug.  If you want to create a rule on a flag you need the create/edit permission.    If you want to create a target you should switch to the target page and create a target.
+Administrators are able to control what the users can configure within various environments and helps to provide further alignment with security compliance around your products. 
 
 #### Editing Permissions Of A Flag
 
-<!-- Insert steps with screenshots here -->
+   ![The Project Settings pages in Harness](./static/ff-project-settings.png)
+1. Within the Harness UI, scroll down to projects on the left hand side of your screen. 
+2. Under Project Settings, you'll find a line of tabs on the top of the screen. Select *Access Control*.
+3. <!-- Personal Note: Need to confirm steps -->
 
+#### Editing Permissions Within A Resource Group
 
-#### 
+<!-- Personal Note: Need to confirm these steps in QA -->
