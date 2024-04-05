@@ -1,6 +1,6 @@
 ---
 title: Custom Catalog Property
-description: Ingest catalog entities using APIs
+description: Update catalog Metadata using APIs
 sidebar_position: 5
 sidebar_label: Catalog Entity Ingestion APIs
 ---
