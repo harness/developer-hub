@@ -25,15 +25,14 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
 
 - ZAP is a highly configurable tool with many options. You should verify that your context, authentication, and other ZAP scripts work as intended before adding them to your STO pipeline.
 
-- Place your ZAP scripts in the following shared paths for your scan stage:
+- Add the following shared paths (**Overview** > **Shared Paths**) to your scan stage and copy your ZAP scripts to these paths:
   - Context scripts: `/shared/customer_artifacts/context`
   - All other scripts:  `/shared/customer_artifacts/scripts/<script-type>/filename`
   - To verify the correct script-type subfolder, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
     - Examples:
       - `/shared/customer_artifacts/scripts/session`
       - `/shared/customer_artifacts/scripts/authentication`
-
-- You need to [specify the full path](#context-name) to the ZAP Context script. 
+  - You also need to specify the [Context name](#context-name) to use for the scan.
 
 
 ### Root access requirements 
@@ -50,7 +49,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## ZAP step settings for STO scans
 
-The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Scan
 
@@ -158,20 +157,22 @@ import StoSettingInstancePath from '../shared/step_palette/instance/_path.md';
 
 #### Context Name
 
-The ZAP context script to use for the scan. 
+The ZAP context script to use for the scan. You need to add the following shared path (**Overview** > **Shared Paths**) to the stage and copy your context script to this path:
+    - `/shared/customer_artifacts/context/`
 
 :::note
 
-This  integration has the following known issue:
-  - The **Context Name** field in the ZAP step UI does not capture the specified context file. (STO-7287)
+This integration has the following known issue: The **Context Name** field in the ZAP step UI does not capture the specified context file. (STO-7287)
   - This issue will be fixed shortly.
-  - As a workaround, you can specify the context file in the Settings field. Add a new setting with the following key-value pair: 
+  - As a workaround, you can specify the context file in the **Settings** field. Add a new setting with the following key-value pair: 
     - key = `product_context_name` 
     - value = `/shared/customer_artifacts/context/filename.context`
-    
+
      <DocImage path={require('../static/sto-7287-zap-workaround.png')} width="50%" height="50%" title="Add setting to specify ZAP context file" />
 
 :::
+
+
 
 #### Port
 
