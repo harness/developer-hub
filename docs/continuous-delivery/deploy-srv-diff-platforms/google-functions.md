@@ -291,7 +291,8 @@ function:
   description: "Using Secret Environment Variables"
   region: "us-east1"
   runtime: "nodejs16"
-  entry_point: myFunction
+  build_config:
+    entry_point: myFunction
   max_instances: 1
   event_trigger:
     event_type: "providers/cloud.pubsub/eventTypes/topic.publish"
