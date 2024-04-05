@@ -23,15 +23,17 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
   - [Script-based session management](https://www.zaproxy.org/docs/desktop/start/features/sessionmanagement/#sbsm) – ECMAScript / JavaScript using Nashorn engine
     - Other languages such as Zest, Groovy, Python, etc. are not currently supported.
 
-- ZAP is a highly configurable tool with many options. You should verify that your context, authentication, and other ZAP scripts work as intended before adding them to your STO pipeline.
+- ZAP is a highly configurable tool with many options. You should verify that your context file and your authentication and other scripts work as intended before adding them to your STO pipeline.
 
 - Add the following shared paths (**Overview** > **Shared Paths**) to your scan stage and copy your ZAP scripts to these paths:
   - Context scripts: `/shared/customer_artifacts/context`
-  - All other scripts:  `/shared/customer_artifacts/scripts/<script-type>/filename`
-  - To verify the correct script-type subfolder, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
+  - All other scripts: `/shared/customer_artifacts/scripts/<script-type>/filename`
+  - For other script paths, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
     - Examples:
       - `/shared/customer_artifacts/scripts/session`
       - `/shared/customer_artifacts/scripts/authentication`
+      - `/shared/customer_artifacts/scripts/hosts`
+      - `/shared/customer_artifacts/scripts/urlFile`
   - You also need to specify the [Context name](#context-name) to use for the scan.
 
 
