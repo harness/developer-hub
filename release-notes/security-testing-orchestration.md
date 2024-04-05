@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-04-03T10:00
+date: 2024-04-05T10:00
 sidebar_position: 13
 ---
 
@@ -28,10 +28,18 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.90.1
 
+#### New features and enhancements
+
+- OWASP scan steps can now load Java certificates. (STO-7220)
+- The Black Duck Hub scan step has been upgraded to use [Synopsis Detect 9.0.0](https://community.synopsys.com/s/question/0D5Hr00006oIhHaKAK/synopsys-detect-900-for-black-duck-has-been-released). This is a major feature release with new features, enhancements, and fixed issues. (STO-7353, ZD-60592) 
+
 #### Fixed issues
 
-- Removed  “Inactive options are coming soon” from the **Request Exemption** dialog box. All options in this dialog box are generally available. (STO-7297)
+- Fixed an issue where spidering in a ZAP scan resulted in the error `Unable to find binary in default location`. (STO-7316)
+- Fixed an issue where ZAP scans that required authentication resulted in the error `Scanner object has no attribute 'hostname'`. This fix also includes changes to the shared paths where you need to include ZAP scripts in your pipeline. For more information, go to [Important notes](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#important-notes-for-running-zap-scans-in-sto) in the ZAP scanner reference. (STO-7288)
 - ZAP is no longer a part of OWASP. The UI and documentation have been updated to remove references to OWASP ZAP. (STO-7296)
+- Removed  “Inactive options are coming soon” from the **Request Exemption** dialog box. All options in this dialog box are generally available. (STO-7297)
+
 
 ## March 2024
 
