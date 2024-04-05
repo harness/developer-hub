@@ -23,7 +23,13 @@ stringData:
   X-API-KEY: <TOKEN>
 ```
 
-:bulb: **Tip:** Connectivity requirements for Dynatrace include establishing a connection between the execution plane and Dynatrace, which you can achieve by opening port 443 (HTTPS) to make API calls to the Dynatrace probe.
+:::tip
+* Connectivity requirements for the Dynatrace probe: You can establish a connection between the execution plane and Dynatrace by:
+1. Opening port 443 (HTTPS) to make API calls to the Dynatrace probe;
+2. Create a secret that has the Dynatrace token with read permissions.
+
+* Scope required for the Dynatrace API key includes a Dynatrace access token within the `metrics.read`` scope.
+:::
 
 ## Schema
 Listed below is the Dynatrace Probe schema with common properties shared across all probes and properties unique to Dynatrace probe.
