@@ -1,13 +1,13 @@
 ---
-title: Custom Catalog Property
+title: Catalog Metadata Ingestion API
 description: Update catalog Metadata using APIs
 sidebar_position: 5
-sidebar_label: Catalog Entity Ingestion APIs
+sidebar_label: Catalog Metadata Ingestion APIs
 ---
 
 ## Introduction
 
-With the introduction of Catalog Entity Ingestion APIs, users now have the capability to append or update arbitrary metadata associated with catalog entities such as services, libraries, websites, etc without manually adding it to the `catalog-info.yaml`. This feature facilitates the integration of metadata sourced from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details.
+With the introduction of Catalog Metadata Ingestion APIs, users now have the capability to append or update arbitrary metadata associated with catalog entities such as services, libraries, websites, etc without manually adding it to the `catalog-info.yaml`. This feature facilitates the integration of metadata sourced from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details.
 
 ## Key Features
 - **Custom Property Support**: The metadata field in the catalog supports custom properties, enabling users to add tailored metadata to catalog entities.
