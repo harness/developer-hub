@@ -9,12 +9,13 @@ Recommendations help kickstart your journey with governance. Essentially, Harnes
 Listed below are the custodian policies which are used to generate recommendations that Harness offers for AWS. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
 
-### Recommendation: delete-unattached-volumes
-**Description:** Delete unattached volumes
+### Recommendation: delete-unattached-ebs
+**Description:** Delete all ebs volumes which are unattached
+
 **Policy Used:**
 ```yaml
 policies:
-  - name: delete-unattached-volumes
+  - name: delete-unattached-ebs
     resource: ebs
     filters:
       - Attachments: []
@@ -37,6 +38,7 @@ policies:
 
 ### Recommendation: migrate-gp2-to-gp3-ebs-volumes 
 **Description:** Migrate gp2 volumes to gp3
+
 **Policy Used:**
 ```yaml
 policies:
@@ -62,6 +64,7 @@ policies:
 
 ### Recommendation: delete-snapshot-with-no-volume 
 **Description:** Delete snapshots with no volumes
+
 **Policy Used:**
 ```yaml
 policies:
@@ -86,14 +89,15 @@ policies:
 ---
 
 
-### Recommendation: rds-delete-unuseds 
+### Recommendation: stop-unused-rds
 **Description:** Delete unused RDS database
+
 **Policy Used:**
 ```yaml
  policies:
-  - name: rds-delete-unused
+  - name: stop-unused-rds
     resource: rds
-    description: Delete unused RDS database
+    description: Stop unused RDS database
     filters:
       - type: value
         key: DBInstanceStatus
@@ -105,7 +109,7 @@ policies:
         value: 0
         op: equal
     actions:
-      - delete
+      - stop
 ```
 
 **Permissions Required:** 
@@ -113,7 +117,7 @@ policies:
     - ```rds:DescribeDBInstances```
 - **Run Once:** 
     - ```rds:DescribeDBInstances```
-    - ```rds:DeleteDBInstance```
+    - ```rds:StopDBInstance```
 
 ---
 
