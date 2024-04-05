@@ -16,6 +16,8 @@ With the introduction of Catalog Entity Ingestion APIs, users now have the capab
 
 - **Enhanced Personalization**: Users can now personalize their catalog experience to a greater extent, unlocking faster onboarding of entities and facilitating the creation of more personalized scorecards and plugins.
 
+<DocImage path={require('./static/catalog-custom-property.png')} />
+
 ## API Examples and Usage
 
 ## Catalog Metadata Ingestion API
@@ -180,9 +182,8 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 ### Response:
 The response will ingest/append a metadata in the desired software component in your IDP catalog.
 
-<DocImage path={require('./static/catalog-custom-property.png')} />
 
-## Entity Deletion API
+## Catalog Metadata Deletion API
 
 ### Endpoint
 
