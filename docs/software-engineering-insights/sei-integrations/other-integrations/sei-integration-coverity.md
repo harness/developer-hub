@@ -15,19 +15,15 @@ This SEI integration is under development. It provides limited integration suppo
 
 :::
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the SEI module, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Coverity** integration, and select **Install**.
 4. Configure and save the integration.
@@ -37,14 +33,14 @@ import TabItem from '@theme/TabItem';
    * Provide a **Name** for the integration.
    * The **Description** and **Tags** are optional.
 
-
 </TabItem>
   <TabItem value="satellite" label="Satellite">
-
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Coverity server.
 
 Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a satellite.yml file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file
 
@@ -52,17 +48,14 @@ Here’s a sample `satellite.yml` file
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: coverity
-    url: '<COVERITY_URL>' # https://scan.coverity.com/
+    url: '<COVERITY_URL>' 
     username: <COVERITY_USERNAME>
     api_key: <COVERITY_API_KEY>
 ```
-
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
 
 </TabItem>
 </Tabs>

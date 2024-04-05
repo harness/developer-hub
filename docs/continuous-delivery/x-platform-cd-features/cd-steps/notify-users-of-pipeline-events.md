@@ -245,7 +245,7 @@ notificationRules:
       enabled: true
 ```
 :::info note
-Please note that you should be able to include custom headers and payload while creating custom webhook notifications channel(s) as well as while updating the existing ones.
+Please note that you should be able to include custom headers while creating custom webhook notifications channel(s) as well as while updating the existing ones.
 :::
 
 The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
