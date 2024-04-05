@@ -14,7 +14,7 @@ Configure the webhook API call according to the following webhook specifications
 * **Method:** `POST`
 * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
 * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
-* **Header:** Requires Harness SEI API Key authorization. The content type is ```application/json```
+* **Header:** Requires Harness SEI ApiKey authorization. The content type is ```application/json```
 * **Body:** Contains a data object with ```request_type``` and ```payload```.
 
 
@@ -211,7 +211,7 @@ Here is an example using a cURL command:
 
 ```shell
 curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \ # The Base URL is relative to the environment that you're using.
---header 'Authorization: API KEY <HARNESS_SEI_API_KEY>' \
+--header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{
     "integration_id": "<INTEGRATION_ID>",
