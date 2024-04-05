@@ -224,10 +224,10 @@ function_id: my-http-function
 ```yaml
 function:
   name: my-env-function
-  buildConfig:
+  build_config:
     runtime: python38
-    entryPoint: my_function
-    environmentVariables:
+    entry_point: my_function
+    environment_variables:
       MY_VAR: my-value
   environment: GEN_2
 function_id: my-env-function
