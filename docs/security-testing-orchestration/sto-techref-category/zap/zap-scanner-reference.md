@@ -25,18 +25,23 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
 
 - ZAP is a highly configurable tool with many options. You should verify that your context file and your authentication and other scripts work as intended before adding them to your STO pipeline.
 
-- Add the following shared paths (**Overview** > **Shared Paths**) to your scan stage and copy your ZAP scripts to these paths:
+- Add the following shared paths (**Overview** > **Shared Paths**) to your scan stage and copy your ZAP scripts and files to these paths:
 
-  - Scripts: `/shared/customer_artifacts/scripts/<script-type>/filename`
-    - Examples:
-      - `/shared/customer_artifacts/scripts/session`
-      - `/shared/customer_artifacts/scripts/authentication`
-      - `/shared/customer_artifacts/scripts/hosts`
-      - `/shared/customer_artifacts/scripts/urlFile`
-    - For other script paths, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
-  - Context files: `/shared/customer_artifacts/context`
-  
-    You also need to specify the [Context name](#context-name) to use for the scan.
+  - Copy hosts and urlFile files to:
+     - `/shared/customer_artifacts/hosts/`
+     - `/shared/customer_artifacts/urlFile/`
+  - Copy context files to `/shared/customer_artifacts/context`.
+    
+  - You also need to specify the [Context name](#context-name) to use for the scan.
+    - If you're including context, hosts, and/or urlFile files in the same pipeline, they all need to be set to the value passed for the context name. For example:
+       - `/shared/customer_artifacts/context/sto.context`
+       - `/shared/customer_artifacts/hosts/sto.context`
+       - `/shared/customer_artifacts/urlFile/sto.context`  
+   - Copy other scripts to `/shared/customer_artifacts/scripts/<script-type>/`.
+     - Examples:
+       - `/shared/customer_artifacts/scripts/session`
+       - `/shared/customer_artifacts/scripts/authentication`
+      - For other script paths, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
 
 
 ### Root access requirements 
