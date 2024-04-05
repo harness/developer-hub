@@ -23,7 +23,7 @@ The following steps outline the basic workflow:
 
 2. [Create a pull request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger. 
 
-3. [Add a branch protection rule](#add-a-branch-protection-rule) to to ensure that the pull request cannot be merged if the Harness pipeline fails.
+3. [Add a branch protection rule](#add-a-branch-protection-rule) to ensure that the pull request cannot be merged if the Harness pipeline fails.
 
 
 ## Before you begin
@@ -31,7 +31,7 @@ The following steps outline the basic workflow:
 These workflows require the following:
 
 - A [**connector**](/docs/category/code-repo-connectors/) to your Git service.
-- A Harness pipeline with an STO repository scan step, for example Bandit or Semgrep.
+- A Harness pipeline with an STO repository scan step, for example, Bandit or Semgrep.
 - The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan.
 
 
