@@ -109,7 +109,12 @@ metadata:
             "Product_Engineering"
         ]
     },
-    "value_overrides": "[location_service: Jane Harris]",
+    "value_overrides": [
+        {
+            "entity_ref": "component:default/location-service",
+            "override_value": "xyz"
+        }
+    ],
     "value": "Jane Doe"
 }
 ```
