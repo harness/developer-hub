@@ -95,18 +95,18 @@ The timezone settings govern the display value of the settings not their actu
 
 6. You can specify additional fields for the ticket by clicking **Provide Field List**. The properties are specified as key-value pairs, the name being the **field name** (not the label) in ServiceNow and a valid value.
 
-## Use an Expressions in Ticket Number
-In Ticket number, you can use an expression or runtime input to reference the Ticket Number from another ``Service Now Create`` step. You can use this Ticket number when you want to update or approve a particular ticket.
+## Use expressions in Ticket Number
+In **Ticket Number**, you can use an expression or runtime input to reference the **Ticket Number** from another ``Service Now Create`` step. You can use this ticket number when you want to update or approve a particular ticket.
 
 :::info note
  The ``Service now Create`` step must be before the ``Service Now Approval`` and ``Service Now Update``.
 :::
 
-Let's say you've set up a [Service Now](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages.md) step in your process. Now, you want to use the Harness ``Service Now Approval`` step to give the thumbs-up to the ticket, and once it's approved, you want to use the ``Service Now Update`` step to close it. You'll need to have the ticket number in both the Approval and Update steps to make this happen. In this case, you can make things easier by using the expression type in the Ticket Number field for both the Update and Approval steps.
+Let's say you've set up a [Service Now](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages.md) step in your process. Now, you want to use the Harness ``Service Now Approval`` step to approve the ticket, and once it's approved, you want to use the ``Service Now Update`` step to close it. You'll need to have the ticket number in both the Approval and Update steps. In this case, you can make things easier by using the expression type in the **Ticket Number** field for both the Update and Approval steps.
 
 ![](./static/ticket_number.png)
 
-Consider this example yaml:-
+Consider this example YAML:
 
 ```yaml
   tags: {}
@@ -154,7 +154,7 @@ Consider this example yaml:-
 
 ```
 
-When you run the pipeline and check the input of the ``ServiceNowUpdate_1`` step, you'll notice that the ticket number is retrieved from the expression ``<+execution.steps.create.ticket.ticketNumber>``, as depicted in the below screenshot 
+When you run the pipeline and check the input of the ``ServiceNowUpdate_1`` step, you'll notice that the ticket number is retrieved from the expression ``<+execution.steps.create.ticket.ticketNumber>``, as depicted in the below screenshot.
 ![](./static/ticket_number_expressions.png)
 
 ## Apply from template
