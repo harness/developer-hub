@@ -104,4 +104,4 @@ For more information, go to:
 * [Use Harness expressions](../variables-and-expressions/harness-variables.md)
 * [Write expressions using any JSON parser tool](./expression-v2.md)
 * [Use Java string methods](./expressions-java-methods.md)
-* [Add variables](./add-a-variable.md)
+* [Define variables](./add-a-variable.md)

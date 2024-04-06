@@ -1,6 +1,6 @@
 ---
-title: Add variables
-description: Add variables at the account, org, project, and pipeline-level.
+title: Define variables
+description: Define custom variables at the account, org, project, and pipeline scopes.
 sidebar_position: 3
 helpdocs_topic_id: f3450ye0ul
 helpdocs_category_id: bp8t5hf922
@@ -13,7 +13,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In addition to Harness' many [built-in variables](./harness-variables), you can add custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
+In addition to Harness' many [built-in variables](./harness-variables), you can define custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
 
 Account, org, and project variables store values that you can share and use across multiple pipelines or in multiple projects.
 
@@ -31,41 +31,74 @@ The **Specific to Pipeline** variables are pipeline-level variables.
 
 </details>
 
-This topic explains how to add and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md). To manage variables, you need [permission](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
+This topic explains how to define and reference variables in Harness. It assumes you are familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md). To manage variables, you need [permission](../role-based-access-control/add-manage-roles) to view, create/edit, and delete variables.
 
-## Variable usage and definition specifications
+## Custom variable specifications
 
 * Variables can be of type string, secret, or number.
-* Variable values can be [fixed values, runtime inputs, or expressions](./runtime-inputs).
-   * Account, org, and project variables support fixed values only.
-   * Variables created at lower levels (such as pipeline, stage, and service variables) support fixed values, runtime inputs, and expressions.
-* You can reference secrets in pipeline, stage, and service variables.
-* If you delete a variable that is referenced in your pipelines, the [expressions](harness-variables.md) referencing that variable **are not** automatically deleted.
-   * At runtime, when Harness attempts to resolve the expressions, the pipeline can fail or an expression can resolve as `null` if Harness can't find the variable.
-   * After deleting a variable, you must manually check for and remove expressions referencing deleted variables.
-* If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to the [YAML specification for tags](https://yaml.org/spec/1.2.2/#3212-tags).
+* Number type variables are always treated as doubles (double-precision floating-point).
+   * Negative values: `-1.79769313486231E308` to `-4.94065645841247E-324`
+   * Positive values: `4.94065645841247E-324` to `1.79769313486232E308`
+   * For example, if you have a custom pipeline variable named `double_example` with the type `Number` and the value `10.1`, you can reference it with the expression `<+pipeline.variables.double_example>`. Without using a method or condition to convert it to another type, this expression resolves to `10.1` and it is treated as a double.
+   * Number variables can be treated as strings if they are used in fields that expect strings. For example, if you enter `123` in a **Name** field, this is treated as string data because **Name** expects string input. Whereas entering `123` in a count setting, such as **Instances**, causes the value to be treated as a double.
+* You can reference secrets as values for pipeline, stage, and service variables.
 * Sometimes you can mark variables as required.
    * The **Required** setting is supported for pipeline variables, stage variables, and CD service and environment variables.
    * The **Required** setting is also enforced when the variable is defined in a template and the template is included in a pipeline.
 
+### Naming conventions
 
-:::warning
+Adhere to the following restrictions and considerations for variable names:
 
-Pipelines fail if a variable's default value starts with an asterisk (`*`). Instead, you can wrap the asterisk or value in double quotes (`"*"`).
+* Variable names must start with a letter or underscore (`_`).
+* Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`). However, periods and hyphens are not recommended.
+* Variable names and properties can't contain the following reserved keywords: `or, and, eq, ne, lt, gt, le, ge, div, mod, not, null, true, false, new, var, return, shellScriptProvisioner, class`. For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
+* Avoid periods and hyphens in variable names. If you must use them, [period and hyphens required escaping](#use-get-for-variable-names-with-hyphens-and-periods) when referencing those variables in Harness expressions.
+* Variable names must be unique within the same scope. For example, you can't have two stage variables in the same stage with the same name.
+* Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
 
-:::
+### Use get() for variable names with hyphens or periods
 
-### Variable availability to pipelines, stages, services, and environments
+Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
 
-Account, org, and project variables are available to all lower scopes. For example, an org variable is available to all projects and pipelines under that org.
+However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
 
-Variables added to pipelines and stages are available to all stages in the pipeline.
+For example:
 
-Variables added to services and environments are available in all stages that use those services and environments. For more information, check out the [Harness pipeline, stage, and service variables overview video](https://youtu.be/lqbmO6EVGuU).
+```
+<+pipeline.variables.get("pipeline-var")>
+<+pipeline.stages.custom.variables.get("stage-var")>
+<+pipeline.variables.get("pipeline.var")>
+<+pipeline.stages.custom.variables.get("stage.var")>
+```
 
-You can also override service variables at the environment level. For more information, go to [Overriding services at the environment level](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
+This handling is also required for [matrix dimension names](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) with hyphens.
 
-## Add variables
+### Value conventions
+
+* Variable values can be [fixed values, runtime inputs, or expressions](./runtime-inputs).
+   * Account, org, and project variables support fixed values only.
+   * Variables created at lower levels (such as pipeline, stage, and service variables) support fixed values, runtime inputs, and expressions.
+* Pipelines fail if a variable's default value starts with an asterisk (`*`). Instead, you can wrap the asterisk or value in double quotes (`"*"`).
+* If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to the [YAML specification for tags](https://yaml.org/spec/1.2.2/#3212-tags).
+
+### Variable scope and availability
+
+* Account, org, and project variables are available to all lower scopes. For example, an org variable is available to all projects and pipelines under that org.
+* Variables added to pipelines and stages are available to all stages in the pipeline.
+* Variables added to services and environments are available in all stages that use those services and environments.
+   * For more information, check out the [Harness pipeline, stage, and service variables overview video](https://youtu.be/lqbmO6EVGuU).
+   * You can also override service variables at the environment level. For more information, go to [Overriding services at the environment level](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
+
+### Manually remove references to deleted variables
+
+If you delete a variable that is referenced in your pipelines, the [expressions](harness-variables.md) referencing that variable **are not** automatically deleted.
+
+At runtime, when Harness attempts to resolve the expressions, the pipeline can fail or an expression can resolve as `null` if Harness can't find the variable.
+
+**After deleting a variable, you must manually check for and remove expressions referencing deleted variables.**
+
+## Define variables
 
 <Tabs>
 <TabItem value="account" label="Account scope" default>
@@ -262,8 +295,8 @@ You can also [copy input and output expressions from execution details after a p
 
 You can use a higher-level variable as the value for pipeline variables (including pipeline, stage, step group, service, and environment variables).
 
-1. [Add a variable](#add-variables) at the account, or, or project scope that you want to use as the value for a lower-level variable.
-2. Add a variable to a pipeline, stage, step group, or other entity. For example, to add a service variable, select a stage with a service definition, select the **Service** tab, expand the **Advanced** section, and select **New Variable**.
+1. [Define a variable](#define-variables) at the account, org, or project scope that you want to use as the value for a lower-level variable.
+2. Define a variable in a pipeline, stage, step group, or other entity. For example, to define a service variable, select a stage with a service definition, select the **Service** tab, expand the **Advanced** section, and select **New Variable**.
 3. For **Variable Name**, enter a name for your variable.
 4. For **Type**, select **String**.
 5. For **Value**, enter an expression referencing your account, org, or project variable, such as `<+variable.account.VARIABLE_ID>`.

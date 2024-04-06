@@ -23,7 +23,7 @@ Expressions are powerful and offer many options for modification or interaction.
 
 * [Write expressions using any JSON parser tool](./expression-v2.md)
 * [Use Java string methods](./expressions-java-methods.md)
-* [Add variables](./add-a-variable.md)
+* [Define variables](./add-a-variable.md)
 
 ## What is a Harness variable expression?
 
@@ -50,7 +50,7 @@ In the Visual Editor, you can use the **Value type selector** to select **Expres
 
 ![](./static/runtime-inputs-03.png)
 
-Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`. These suggestions don't represent all possible expressions.
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
 
 ![](./static/runtime-inputs-10.png)
 
@@ -71,7 +71,7 @@ For example, this `connectorRef` setting takes it's value from an expression ref
           connectorRef: <+pipeline.variables.myConnector>
 ```
 
-When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`. These suggestions don't represent all possible expressions.
+When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
 
 ![](./static/runtime-inputs-13.png)
 
@@ -79,6 +79,16 @@ You can continue typing or select the expression from the list of suggestions.
 
 </TabItem>
 </Tabs>
+
+:::info
+
+Automated suggestions don't represent all possible expressions.
+
+When Harness automatically suggests expressions, it suggests expressions based on the current context (meaning the setting or place in the YAML where you are entering the expression). While it doesn't suggest expressions that aren't valid in the current context, this doesn't prevent you from entering invalid expressions.
+
+For guidance on building valid expressions, go to [Expression paths](#expression-paths) and [Debugging expressions](#debugging-expressions).
+
+:::
 
 ### Expression paths
 
@@ -113,6 +123,70 @@ To use a relative path, identify the common parent between the step/stage you're
 
 For example, to reference a CD service definition's `imagePath` setting in the same stage where that service definition is defined, you could use the relative expression `<+stage.spec.serviceConfig.serviceDefinition.spec.artifacts.primary.spec.impagePath>`.
 
+### Use expressions only after they can be resolved
+
+When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. This means that if you try to use an expression before Harness has the necessary information to resolve the expression's value, the expression resolves to `null` and the pipeline can fail or execute incorrectly.
+
+This requirement applies regardless of how you are using the expression, such as with operators or in scripts. If Harness can't resolve the target value at the point when the pipeline requests the expression, the expression fails to resolve and the pipeline can fail.
+
+:::warning
+
+Your pipelines must use expressions *only* after Harness has the required information to resolve the expression's value.
+
+:::
+
+For example, assume you want to use this expression: `<+pipeline.stages.Stage_2.spec.execution.steps.Step_C.executionUrl>`. This expression calls the `executionUrl` from a step named `Step_C` that is in `Stage_2`. Since this step is in `Stage_2`, you could not use this expression in a previous stage, because the stage containing this expression's value hasn't run yet. Additionally, if there are steps before `Step_C` in `Stage_2`, those steps can't use this expression either, because they run before `Step_C`.
+
+Here are some guidelines to help you successfully use expressions in pipelines:
+
+- Don't refer to a step's expressions within that same step.
+- Don't refer to values from a subsequent step/stage in a step/stage that runs before the referenced step/stage.
+- Don't refer to step inputs/outputs in a CD stage's **Service** or **Environment** configuration.
+   - In a CD stage, steps run after Harness evaluates the service and environment configuration. Consequently, Harness can't get values for expressions referencing step inputs/outputs while it is evaluating the service and environment configuration.
+   - Similarly, don't refer to step inputs/output in a CI stage's **Infrastructure** or **Codebase** configuration. These are evaluated before steps run, so they can't use expressions referencing steps.
+
+<details>
+<summary>Example: Harness expression resolution throughout a CD stage</summary>
+
+This example demonstrates when and where certain expressions (by prefix) are resolved over the duration of a CD stage, so that you can determine which events need to occur before you can safely reference a certain expression and ensure that it is successfully resolved when the pipeline runs.
+
+<figure>
+
+![](./static/harness-variables-20.png)
+
+<figcaption>Different expressions originate from different parts of a stage. </figcaption>
+</figure>
+
+Here's when you can reference expressions resolved from information in each of these stage sections:
+
+- **Service expressions** can be resolved only after Harness has progressed through the **Service** section of the pipeline. Consequently, you can use service expressions in the **Infrastructure** and **Execution** sections of the stage.
+- **Infrastructure expressions** can be resolved only after Harness has progressed through the **Infrastructure** section of the pipeline.
+  - In the **Infrastructure** section, you can reference **Service** settings.
+  - Since **Execution** follows **Infrastructure**, you can reference **Infrastructure** expressions in **Execution**.
+- **Execution expressions** apply to steps in **Execution**.
+  - Each step's **Execution** expressions can be referenced only after Harness has progressed through that step in the **Execution** section.
+
+<DocImage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
+
+</details>
+
+### Hyphens require escaping
+
+Harness recommends not using hyphens/dashes (`-`) in variable and property names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
+
+For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`
+
+If you must include a hyphen in an expression, such as with `x-auth`, you can wrap the property name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
+
+This also applies to nested usage, such as:
+
+```
+<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>
+<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>
+```
+
+If when referencing custom variables or matrix dimensions with hyphenated names, you must [use the `get()` method](/docs/platform/variables-and-expressions/add-a-variable.md#use-get-for-variable-names-with-hyphens-or-periods).
+
 ## Expression evaluation
 
 Mechanically, Harness passes the content within the delimiter (`<+...>`) to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) for evaluation at runtime.
@@ -133,25 +207,38 @@ echo <+infra.namespace>             # Output example: default
 echo <+infra.releaseName>           # Output example: demo
 ```
 
+:::warning
+
 Expressions can't resolve correctly if the target value isn't available at the time that Harness evaluates the expression. For more information, go to [Use expressions after they can be resolved](#use-expressions-after-they-can-be-resolved).
+
+Additionally, variable values (after evaluation) are limited to 256 KB. Expressions producing evaluated values larger than this can have truncated values or fail to resolve.
+
+:::
 
 ## Expression manipulation
 
 In addition to standard evaluation, expressions can be evaluated and manipulated with Java string methods, JSON parsing, JEXL, interpolation, concatenation, and more.
 
-### Nest delimiters in compound expressions
+### Compound expressions and operators require nested delimiters
 
 When forming complex expressions, such as when using operators or methods with expressions, wrap the entire compound expression statement in the expression delimiter (`<+...>`).
 
-For example, the following compound expression concatenates values from two variables into one list, and then uses the `split()` method on the concatenated list. The original expressions, the concatenated list expression, and the method manipulation are all wrapped in expression delimiters:
+For example, with the equals `==` and not equals `!=` operators, wrap the entire operation in the expression delimiter `<+...>`:
+
+```
+<+<+pipeline.name> == "pipeline1">
+<+<+stage.variables.v1> != "dev">
+```
+
+Complex usage can have multiple levels of nesting. For example, the following compound expression concatenates values from two variables into one list, and then uses the `split()` method on the concatenated list. The original expressions, the concatenated list expression, and the method manipulation are all wrapped in expression delimiters:
 
 `<+ <+<+pipeline.variables.listVar1> + "," + <+pipeline.variables.listVar2>>.split(",")>`
 
-### Use Java string methods
+### Java string methods
 
 You can [use any Java string method on Harness expressions](./expressions-java-methods.md).
 
-### Use JEXL
+### JEXL
 
 You can [use JEXL to build complex expressions](./expression-v2.md).
 
@@ -161,7 +248,7 @@ For example, the following complex expression uses information from a [webhook t
 
 Notice the use of methods, operators, and nested delimiters (`<+...>`) forming a compound expression. Harness evaluates each individual expression and produces a final value by evaluating the entire JEXL expression.
 
-### Use ternary operators
+### Ternary operators
 
 When using ternary conditional operators (`?:`), wrap the entire expression in the expression delimiter `<+...>`, and don't use spaces between the operators and values.
 
@@ -236,40 +323,19 @@ pipeline:
 
 For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
-#### Equals operator
+### Expressions as strings
 
-When using the `==` operator, ensure the entire expression is wrapped within `<+...>`.
+If you want to treat an expression as a string, you wrap it in double quotes, with the exception of secrets expressions (such as `<+secrets.getValue()>`) and some JSON usage.
 
-For example:
+For example, the following command has the expression `<+stage.name>` wrapped in double quotes because it is an element in an array of strings.
 
-```
-<+<+pipeline.name> == "pipeline1">
-<+<+stage.variables.v1> == "dev">
-```
+`<+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>`
 
-#### Greater than and less than operators
+When using expressions as strings in JSON, the entire expression must be wrapped in double quotes, if that is required to make the JSON valid.
 
-Greater than and less than operators are not supported for string type expression. String expressions only support equal to and not equal to operators.
+For example, in the following JSON, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string in that part of the JSON. However, the expression `<+<+pipeline.variables.hosts>.split(\",\")>` isn't wrapped in quotation marks because it resolves as a list.
 
-#### Expressions as strings
-
-When using an expression, if you want to treat it as a string, you usually wrap it in double quotes.
-
-For example, in the following command, the expression `<+stage.name>` is wrapped in double quotes because it is an element in an array of strings.
-
-```
-<+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
-```
-
-When using expressions as strings in JSON, the entire expression must be wrapped in double quotes to make the JSON valid.
-
-For example, consider the following JSON:
-
-```json
-"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
-```
-
-In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string in that part of the JSON. However, the expression `<+<+pipeline.variables.hosts>.split(\",\")>` isn't wrapped in quotation marks because it resolves as a list.
+`"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"`
 
 :::warning secrets as strings
 
@@ -279,9 +345,7 @@ This is because these expressions are resolved by an internal Secret Manager fun
 
 For example, in the following complex expression, the `<+secrets.getValue()>` expression is not wrapped in double quotes, despite being used in an operation where another expression would be wrapped in double quotes.
 
-```
-<+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
-```
+`<+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>`
 
 :::
 
@@ -290,7 +354,7 @@ For example, in the following complex expression, the `<+secrets.getValue()>` ex
 Harness supports complex usages of string interpolation, such as:
 
 - Substituting an expression value within a path: `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
-- Use an expression to supply the value of an identifier within another expression:
+- Using an expression to supply the value of an identifier within another expression:
    - This example uses the index of the looped execution to pick the desired step by ID: `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
    - This example would print the status of a stage where the stage name is defined as a stage variable: `<+pipeline.stages.<+pipeline.variables.stageName>.status>`
 
@@ -319,238 +383,6 @@ For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` eval
 
 :::
 
-## Input and output variables
-
-Your pipelines, stages, and steps can ingest inputs and produce outputs. In general, input variables represent a pipeline's configuration - the settings and values defining how and where an execution runs. Output variables are the results of an execution - such as release numbers, artifact IDs, image tags, user-defined output variables, and so on.
-
-You can use expressions to reference inputs and outputs. For example, you could reference a previous step's output in a subsequent step's command.
-
-The expression to reference an input or output depends on the scope where it was defined and the scope where you're referencing it. Usually, the expression follows the YAML path to the setting, and the full path (starting from `pipeline`) is always a valid reference. For example, to reference the `command` setting for a Run step in a Build stage, you could use an expression like `<+pipeline.stages.BUILD_STAGE_ID.spec.execution.steps.RUN_STEP_ID.spec.command>`. If you were referencing this setting in another step in the same stage, you could use a relative path like `<+execution.steps.RUN_STEP_ID.spec.command>`.
-
-### Get input/output expressions from execution details
-
-In a pipeline's execution details, you can explore inputs and outputs for the pipeline as a whole, as well as for individual steps.
-
-**From the execution details, you can quickly copy the expression to reference any step-level input or output.**
-
-This is useful for determining expression paths, when debugging expressions, or when you're not sure which expression to use for a particular setting or value.
-
-To do this:
-
-1. Go to the execution details page. You can get there by going to your **Executions**, **Builds**, or **Deployments** history and selecting the execution you want to inspect.
-2. To inspect step-level inputs and outputs, select a step in the execution tree, and then select the **Input** and **Output** tabs.
-
-   For example, these are some inputs and outputs for a Kubernetes rollout deployment step:
-
-   <DocImage path={require('./static/rolloutdeployment1.png')} width="50%" height="50%" title="Click to view full size image" /> <DocImage path={require('./static/rolloutdeployment3.png')} width="50%" height="50%" title="Click to view full size image" />
-
-3. To get the expression referencing a particular input/output, hover over the **Input/Output Name** and select the **Copy** icon.
-
-   For example, if you want to reference a Run step's **Command** setting, navigate to the Run step's **Input** on the execution details page, locate **command** under **Input Name**, and select the **Copy** icon. Your clipboard now has the expression for this Run step's command, such as `<+pipeline.stages.stageID.spec.execution.steps.RunStepID.spec.command>`.
-
-   <DocImage path={require('./static/copy-run-command-expression.png')} width="80%" height="80%" title="Click to view full size image" />
-
-   This example copies the **podIP** setting for a Kubernetes rollout deployment step, resulting in an expression such as `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.deploymentInfoOutcome.serverInstanceInfoList[0].podIP>`.
-
-   <DocImage path={require('./static/name.png')} width="80%" height="80%" title="Click to view full size image" />
-
-4. In the same way, you can copy values tied to specific inputs and output. Copying a value copies the literal value, not the expression. To reference this value by an expression, you need to use the **Copy** option for the **Input/Output Name**.
-
-   <DocImage path={require('./static/value.png')} width="60%" height="60%" title="Click to view full size image" />
-
-### Get custom variable and input expressions from the Variables list
-
-You can get expressions for [custom pipeline variables](./add-a-variable.md) and execution inputs from the **Variables** list in the Pipeline Studio.
-
-<DocImage path={require('./static/2d3f480ea623c75e83c074a1e8a6d90d1fb1eccc1d9c3bcda1184179483ef529.png')} width="60%" height="60%" title="Click to view full size image" />
-
-If the variable is local to a scope within the pipeline, such as a stage or step group, you can copy either the local, relative-path expression (to use the expression in the origin scope) or the full path/FQN expression (to use the expression outside the origin scope, such as in another stage).
-
-![](./static/harness-variables-16.png)
-
-## Expression guidelines and boundaries
-
-Review the following guidelines to avoid errors when using variable expressions.
-
-## Use expressions after they can be resolved
-
-When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. Consequently, your pipelines can use expressions only after Harness has the required information to resolve the expression's value. If you try to use an expression before Harness has the necessary information, the expression resolves to null and the pipeline can fail or execute incorrectly.
-
-:::info
-
-When you evaluate Harness expressions using any operator (including ternary operators), the expression values must be available for resolution at the time of the evaluation.
-
-For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.myapplystep.executionUrl>`, ensure that the evaluation using that expression happens after the step `myapplystep` has run.
-
-:::
-
-### Scope
-
-When Harness automatically presents variable expressions in a setting, it only exposes the expressions that can be used in that setting. You will not see a variable expression available in a setting where it cannot be used.
-
-This does not prevent you from trying to use an expression outside of its scope.
-
-Here are some guidelines to help you use expressions successfully:
-
-- Don't refer to a step's expressions within the same step.
-- Don't refer to the settings for a subsequent step in a previous step.
-- Don't refer to inputs or outputs of a stage's **Execution** tab in the stage's **Service** or **Environment** tabs.
-  - The execution takes place after the service and environment settings are used. Consequently, the expressions used in the execution cannot be resolved when running the service and environment sections.
-
-:::info Exception
-You can reference the environment name variable, `<+env.name>`, in a service's Values YAML file, specs, and config files.
-:::
-
-### Demonstration of Harness expression resolution in a CD stage
-
-This example demonstrates when and where certain expressions (by prefix) are resolved over the duration of a CD stage, so that you can determine which events need to occur before you can safely reference a certain expression and ensure that it is successfully resolved when the pipeline runs.
-
-<figure>
-
-![](./static/harness-variables-20.png)
-
-<figcaption>Different expressions originate from different parts of a stage. </figcaption>
-</figure>
-
-Here's when you can reference expressions resolved from information in each of these stage sections:
-
-- **Service expressions** can be resolved only after Harness has progressed through the **Service** section of the pipeline. Consequently, you can use service expressions in the **Infrastructure** and **Execution** sections of the stage.
-- **Infrastructure expressions** can be resolved only after Harness has progressed through the **Infrastructure** section of the pipeline.
-  - In the **Infrastructure** section, you can reference **Service** settings.
-  - Since **Execution** follows **Infrastructure**, you can reference **Infrastructure** expressions in **Execution**.
-- **Execution expressions** apply to steps in **Execution**.
-  - Each step's **Execution** expressions can be referenced only after Harness has progressed through that step in the **Execution** section.
-
-<DocImage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
-
-### Variable value size
-
-A variable value (the evaluated expression) is limited to 256 KB.
-
-### Expressions not allowed in comments of Values YAML or Kustomize patches
-
-You cannot use Harness expressions in comments in:
-
-- Values YAML files (values.yaml) in Kubernetes, Helm chart, or Native Helm deployments.
-- Kustomize patches files.
-
-For example, here is a values.yaml file with a Harness expression in the comment:
-
-```yaml
-name: test
-replicas: 4
-image: <+artifacts.primary.image>
-dockercfg: <+artifacts.primary.imagePullSecret>
-createNamespace: true
-namespace: <+infra.namespace>
-# using expression <+infra.namespace>
-```
-
-This values.yaml file will not process successfully. Remove any expressions from comments and the file will process successfully.
-
-### Variable name uniqueness
-
-<!-- This seems like it's missing information. You couldn't have two pipeline variables or account variables with the same name either? And I think you could have a stage variable and pipeline variable with the same names, but the expression reference would differentiate their scope, eg. https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables-in-a-pipeline ?? -->
-
-When defining variables at the stage level, variable names must be unique within that stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
-
-### Avoid hyphens in variable names
-
-Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
-
-For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`.
-
-If you must reference a variable name that has a hyphen, such as `x-auth`, you can wrap the variable name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
-
-This also works for nested expressions, such as:
-
-```
-<+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>
-<+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>
-```
-
-When referencing your [custom variables](./add-a-variable.md), you need to use the `get()` method, as explained in [Special characters in custom variables can required escaping or additional handling](#special-characters-in-custom-variables-can-require-escaping-or-additional-handling).
-
-### Special characters in custom variables can require escaping or additional handling
-
-When you [add a variable](./add-a-variable.md), note the following restrictions and considerations for variable names:
-
-* Variable names must start with a letter or underscore (`_`).
-* Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`).
-* Variable names can't contain [reserved words](#reserved-words).
-* Periods and hyphens require [additional escaping](#use-get-for-custom-variable-names-with-hyphens-and-periods) when referencing those variable names in Harness expressions, such as `foo` in `<+stage.variables.foo>`. This handling is explained below.
-* Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
-
-#### Use get() for custom variable names with hyphens and periods
-
-Harness recommends [avoiding hyphens in variable names](#avoid-hyphens-in-variable-names).
-
-However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
-
-For example:
-
-```
-<+pipeline.variables.get("pipeline-var")>
-<+pipeline.stages.custom.variables.get("stage-var")>
-<+pipeline.variables.get("pipeline.var")>
-<+pipeline.stages.custom.variables.get("stage.var")>
-```
-
-This handling is also required for [matrix dimension names](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) with hyphens.
-
-### Reserved words
-
-The following keywords are reserved, and cannot be used as a variable name or property.
-
-```
-or
-and
-eq
-ne
-lt
-gt
-le
-ge
-div
-mod
-not
-null
-true
-false
-new
-var
-return
-shellScriptProvisioner
-class
-```
-
-For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
-
-### Number variables
-
-Number type variables are always treated as doubles (double-precision floating-point).
-
-- -1.79769313486231E308 to -4.94065645841247E-324 for negative values.
-- 4.94065645841247E-324 to 1.79769313486232E308 for positive values.
-
-For example, here is a pipeline variable of number type.
-
-```
-  variables:
-    - name: double_example
-      type: Number
-      description: ""
-      value: 10.1
-```
-
-The expression to reference that pipeline variable, `<+pipeline.variables.double_example>`, will be treated as a double when it is resolved to `10.1`.
-
-#### Numbers as doubles and strings
-
-Whether the number in a variable is treated as a double or string depends on the field that you use it in.
-
-If you enter `123` in a string setting, such as a **Name**, it is treated as a string. If you enter `123` in a count setting, such as **Instances**, it is treated as a double.
-
 ## Account variables
 
 ### \<+account.identifier>
@@ -576,7 +408,7 @@ For information about variables and expressions relevant to Harness CI, go to:
 
 ## Custom variables
 
-For information about user-defined variables, go to [Add variables](add-a-variable.md).
+For information about user-defined variables, including naming conventions, special handling, and other usage specifications, go to [Define variables](add-a-variable.md).
 
 ## Org variables
 
@@ -743,6 +575,55 @@ For remote pipelines, the expression resolves to the Git repository name. For in
 ### \<+pipeline.branch>
 
 For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
+
+## Input and output variables
+
+Your pipelines, stages, and steps can ingest inputs and produce outputs. In general, input variables represent a pipeline's configuration - the settings and values defining how and where an execution runs. Output variables are the results of an execution - such as release numbers, artifact IDs, image tags, user-defined output variables, and so on.
+
+You can use expressions to reference inputs and outputs. For example, you could reference a previous step's output in a subsequent step's command.
+
+The expression to reference an input or output depends on the scope where it was defined and the scope where you're referencing it. Usually, the expression follows the YAML path to the setting, and the full path (starting from `pipeline`) is always a valid reference. For example, to reference the `command` setting for a Run step in a Build stage, you could use an expression like `<+pipeline.stages.BUILD_STAGE_ID.spec.execution.steps.RUN_STEP_ID.spec.command>`. If you were referencing this setting in another step in the same stage, you could use a relative path like `<+execution.steps.RUN_STEP_ID.spec.command>`.
+
+### Get input/output expressions from execution details
+
+In a pipeline's execution details, you can explore inputs and outputs for the pipeline as a whole, as well as for individual steps.
+
+**From the execution details, you can quickly copy the expression to reference any step-level input or output.**
+
+This is useful for determining expression paths, when debugging expressions, or when you're not sure which expression to use for a particular setting or value.
+
+To do this:
+
+1. Go to the execution details page. You can get there by going to your **Executions**, **Builds**, or **Deployments** history and selecting the execution you want to inspect.
+2. To inspect step-level inputs and outputs, select a step in the execution tree, and then select the **Input** and **Output** tabs.
+
+   For example, these are some inputs and outputs for a Kubernetes rollout deployment step:
+
+   <DocImage path={require('./static/rolloutdeployment1.png')} width="50%" height="50%" title="Click to view full size image" /> <DocImage path={require('./static/rolloutdeployment3.png')} width="50%" height="50%" title="Click to view full size image" />
+
+3. To get the expression referencing a particular input/output, hover over the **Input/Output Name** and select the **Copy** icon.
+
+   For example, if you want to reference a Run step's **Command** setting, navigate to the Run step's **Input** on the execution details page, locate **command** under **Input Name**, and select the **Copy** icon. Your clipboard now has the expression for this Run step's command, such as `<+pipeline.stages.stageID.spec.execution.steps.RunStepID.spec.command>`.
+
+   <DocImage path={require('./static/copy-run-command-expression.png')} width="80%" height="80%" title="Click to view full size image" />
+
+   This example copies the **podIP** setting for a Kubernetes rollout deployment step, resulting in an expression such as `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.deploymentInfoOutcome.serverInstanceInfoList[0].podIP>`.
+
+   <DocImage path={require('./static/name.png')} width="80%" height="80%" title="Click to view full size image" />
+
+4. In the same way, you can copy values tied to specific inputs and output. Copying a value copies the literal value, not the expression. To reference this value by an expression, you need to use the **Copy** option for the **Input/Output Name**.
+
+   <DocImage path={require('./static/value.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Get custom variable and input expressions from the Variables list
+
+You can get expressions for [custom pipeline variables](./add-a-variable.md) and execution inputs from the **Variables** list in the Pipeline Studio.
+
+<DocImage path={require('./static/2d3f480ea623c75e83c074a1e8a6d90d1fb1eccc1d9c3bcda1184179483ef529.png')} width="60%" height="60%" title="Click to view full size image" />
+
+If the variable is local to a scope within the pipeline, such as a stage or step group, you can copy either the local, relative-path expression (to use the expression in the origin scope) or the full path/FQN expression (to use the expression outside the origin scope, such as in another stage).
+
+![](./static/harness-variables-16.png)
 
 ## InputSet
 
@@ -1359,6 +1240,8 @@ The name of the stage environment.
 
 ![](./static/harness-variables-45.png)
 
+You can reference the environment name variable, `<+env.name>`, in a service's Values YAML file, specs, and config files.
+
 ### \<+env.identifier>
 
 The [entity identifier](../references/entity-identifier-reference.md) of the stage's environment.
@@ -1929,6 +1812,12 @@ Harness highlights expressions that are incorrect or can't be evaluated using th
 
 To test expression that aren't stored in pipeline variables, such as expressions in scripts, you can create a pipeline variable to use for debugging purposes, input the expression as the variable's value, and then use Compiled Mode to debug it.
 
+### String expressions can use greater than or less than
+
+Greater than and less than operators aren't supported for string type expressions.
+
+String expressions only support equal to and not equal to operators.
+
 ### Don't embed scripts in expressions
 
 You *can* use expressions in scripts, and you *can* manipulate expressions with methods and operators; however, **you *can't* write scripts *within* expressions**.
@@ -1947,11 +1836,30 @@ NAME = <+pipeline.name>
 if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
 
-### Limit expressions in comments
+### Limit or remove expressions in comments
 
-Harness resolves all expressions, including expressions in script comments.
+Harness attempts to resolve all expressions, including expressions in script comments.
 
 Harness recommends removing unneeded expressions from comments so they don't cause unexpected failures or add build time through unnecessary processing.
+
+#### Expressions aren't valid in comments in Values YAML and Kustomize patches
+
+Regardless of their validity, you can't use Harness expressions in comments in:
+
+- Values YAML files (values.yaml) in Kubernetes, Helm chart, or Native Helm deployments.
+- Kustomize patches files.
+
+For example, the following values.yaml file won't process correctly because it has an expression in the comment.
+
+```yaml
+name: test
+replicas: 4
+image: <+artifacts.primary.image>
+dockercfg: <+artifacts.primary.imagePullSecret>
+createNamespace: true
+namespace: <+infra.namespace>
+# using expression <+infra.namespace>
+```
 
 ### CI stage initialization fails with a "null value" error
 
