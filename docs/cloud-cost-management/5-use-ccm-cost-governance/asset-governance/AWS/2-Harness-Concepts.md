@@ -183,7 +183,7 @@ Evaluations include all the data about enforcements run (both RUN ONCE from rule
 4. You can see all the Evaluations of Rules listed on  the window.
 4. Select the rule for which you want to view the Evaluation details. The target account, region, identified resources and evaluation logs are displayed.
 
-<DocImage path={require('../static/evaluations.png')} width="90%" height="90%" title="Click to view full size image" />
+<DocImage path={require('../static/evaluations_Aws.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ### Filters in Evaluations List Page
