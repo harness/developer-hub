@@ -68,7 +68,7 @@ To get the full expression for an output variable:
 
 ### Send the notification? 
 
-In general, you want to send a notification only if any output variables are non-zero. If they're all zero, exit. 
+If all the output variables you're interested in are zero, there's no need to send a notification. Exit. 
 
 ```bash
 
@@ -103,7 +103,133 @@ curl -X POST --data-urlencode "payload={
   \"channel\": \"sto-scans\",
   \"username\": \"doug\",
   \"type\": \"mrkdwn\",
-  \"text\": \"ISSUES FOUND! $slack_msg \",
+  \"text\": \"$slack_msg \",
   \"icon_emoji\": \":harnesshd:\"
 }" $slack_hook
 ```
+
+## Pipeline example
+
+Here's a simple pipeline you can copy and paste into Harness:
+
+1. Do the steps in [Before you begin](#before-you-begin).
+
+1. Create a new pipeline with the name `slack_notification_example`.
+
+2. Replace the YAML definition with the example below. 
+
+3. Update the `slack_hook` environment variable with the Harness secret for your Slack webhook. 
+
+4. Save and run the pipeline. 
+
+<details>
+
+<summary>YAML pipeline</summary>
+
+```yaml
+pipeline:
+  identifier: slack_notification_example
+  name: slack_notification_example
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: YOUR_SCAN_STAGE
+        identifier: YOUR_SCAN_STAGE
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: AquaTrivy
+                  name: YOUR_SCAN_STEP
+                  identifier: YOUR_SCAN_STEP
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      type: container
+                      detection: auto
+                    advanced:
+                      log:
+                        level: info
+                    privileged: true
+                    image:
+                      type: docker_v2
+                      name: <+input>
+                      tag: <+input>
+                    sbom:
+                      generate: true
+                      format: spdx-json
+          caching:
+            enabled: false
+            paths: []
+    - stage:
+        name: slack_notify
+        identifier: slack_notify
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Slack_Notify
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+
+                          # Assign variables
+                          new_critical="<+pipeline.stages.YOUR_SCAN_STAGE.spec.execution.steps.YOUR_SCAN_STEP.output.outputVariables.NEW_CRITICAL>"
+                          new_high="<+pipeline.stages.YOUR_SCAN_STAGE.spec.execution.steps.YOUR_SCAN_STEP.output.outputVariables.NEW_HIGH>"
+                          pipeline="YOUR_PIPELINE_ID"
+
+
+                          # Get the total # of issues. If the total is 0, exit without sending a notification
+                          issues_total=$(($critical + $new_critical + $high + $new_high))
+                          if [ "$issues_total" == "0" ]; then
+                            exit 0
+                          fi
+
+                          echo "issues = $issues_total"
+
+                          slack_msg="=======================================================  \n"
+                          slack_msg="$slack_msg New issues detected with CRITICAL and HIGH severity! \n"
+                          slack_msg="$slack_msg Pipeline: \t $pipeline \n"
+                          slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
+                          slack_msg="$slack_msg - NEW_HIGH issues: \t = $new_high \n"
+                          slack_msg="$slack_msg =======================================================  \n"
+
+
+                          curl -X POST --data-urlencode "payload={
+                            \"channel\": \"sto-scans\",
+                            \"username\": \"doug\",
+                            \"type\": \"mrkdwn\",
+                            \"text\": \" $slack_msg \",
+                            \"icon_emoji\": \":harnesshd:\"
+                          }" $slack_hook
+                    environmentVariables:
+                      - name: slack_hook
+                        type: Secret
+                        value: sto-slack-notifications-webhook-url
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+
+```
+
+</details>
