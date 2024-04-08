@@ -54,7 +54,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 0.2.0 
 
- - We've fixed the JWT fields missing in cache on authentication. (FFM-11123)
+ - Fixed the JWT fields missing in the cache on authentication. (FFM-11123, ZD-60936)
  - We've added SDK type, version and lang to HTTP header. (FFM-7037)
 
 ## March 2024
