@@ -88,7 +88,7 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
 <details>
 <summary>Use the Artifactory Drone plugin</summary>
 
-The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/athieriot/drone-artifactory). If you don't (or can't) use the built-in step, you can also run this plugin directly in a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference). You might need to do this if there is a particular configuration or flag that is not supported by the way the plugin is used in the built-in step.
+The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/harness/drone-artifactory). If you don't (or can't) use the built-in step, you can also run this plugin directly in a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference). You might need to do this if there is a particular configuration or flag that is not supported by the way the plugin is used in the built-in step.
 
 The settings are declared slightly differently when using a Plugin step, but you can still pass the `--build-name` and `--build-number` flags when using a Plugin step. For example:
 
@@ -107,6 +107,7 @@ The settings are declared slightly differently when using a Plugin step, but you
                       target: /path/to/target
                       build_name: <+pipeline.name> # You can use an expression or a fixed value.
                       build_number: <+pipeline.executionID> # You can use an expression or a fixed value.
+                      targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
 ```
 
 </details>
