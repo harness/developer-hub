@@ -1009,50 +1009,26 @@ The following expressions are for steps in pipeline stages.
 
 You can [use Harness expressions to retrieve the current execution status or identifiers for iterations of a matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md#looping-strategy-expressions).
 
-## Trigger expressions
+### Trigger expressions
 
-### \<+trigger.artifact.build>
+* General Git trigger and payload expressions: Harness includes built-in expressions for referencing trigger details such as the `<+trigger.type>` or `<+trigger.event>`. For a complete list, go to the [Triggers Reference](../triggers/triggers-reference.md).
+* `<+trigger.artifact.build>`: Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
 
-Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
+   When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
 
-When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
+   ![](./static/harness-variables-50.png)
 
-![](./static/harness-variables-50.png)
+   The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
 
-The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
+   Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
 
-Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
-
-### \<+trigger.artifact.source.connectorRef>
-
-Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
-
-### \<+trigger.artifact.source.imagePath>
-
-Resolves to the image path for the artifact that fired the trigger.
-
-### Git trigger and payload expressions
-
-Harness includes built-in expressions for referencing trigger details such as a PR number.
-
-For example:
-
-- `<+trigger.type>`
-  - Webhook.
-- `<+trigger.event>`
-  - PR, PUSH, etc.
-
-For a complete list, see [Triggers Reference](../triggers/triggers-reference.md).
-
-### Triggers and RBAC
-
-Harness RBAC is applied to triggers in Harness, but it is not applied to the repositories used by the triggers.
-
-For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../triggers/triggering-pipelines.md) that is started when a PR is merged.
-
-You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
-
-* `<+pipeline.triggerType>`: The type of trigger. For more information, go to [Triggers](#triggers).
+* `<+trigger.artifact.source.connectorRef>`: Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
+* `<+trigger.artifact.source.imagePath>`: Resolves to the image path for the artifact that fired the trigger.
+* `<+pipeline.triggeredBy.name>`: The name of the user or the trigger name if the pipeline is triggered using a webhook.
+   * For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
+   * If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
+* `<+pipeline.triggeredBy.email>`: The email of the user who triggered the pipeline. This returns `null` if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
+* `<+pipeline.triggerType>`: The type of trigger. Similar to `<+trigger.type>`.
 
 Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
@@ -1060,19 +1036,20 @@ Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 | :--------------------------- | :------------------- | :------------------------------------------------------------ |
 | ARTIFACT                     | Artifact             | New artifact trigger. For example, new Docker Hub image tag   |
 | SCHEDULER_CRON               | Scheduled            | Scheduled Cron trigger                                        |
-| MANUAL                       | _null_               | Pipeline triggered using the RUN button in the user interface |
+| MANUAL                       | `null`               | Pipeline triggered using the RUN button in the user interface |
 | WEBHOOK_CUSTOM               | Custom               | Custom webhook trigger                                        |
 | WEBHOOK                      | Webhook              | SCM webhook trigger. For example, GitHub pull request         |
 
-### \<+pipeline.triggeredBy.name>
+<details>
+<summary>Triggers and RBAC</summary>
 
-The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
+Harness RBAC is applied to triggers in Harness, but it is not applied to the repositories used by the triggers.
 
-If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
+For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../triggers/triggering-pipelines.md) that is started when a PR is merged.
 
-### \<+pipeline.triggeredBy.email>
+You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 
-The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
+</details>
 
 ## Troubleshooting expressions
 
