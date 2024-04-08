@@ -1,1 +1,1 @@
-You can use this field to customize the scan with flags supported by that scanner.
+You can use this field to run the scanner binary with additional flags supported by that scanner.

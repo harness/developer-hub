@@ -196,29 +196,43 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-### Log Level, CLI flags, and Fail on Severity
 
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 
 <StoSettingLogLevel />
 
-#### Additional CLI flags
+<!--
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+### Additional CLI flags
+
+NOT YET SUPPORTED https://harness.atlassian.net/browse/STO-7278?focusedCommentId=694683
+
+You can run the [`zap-cli`](https://github.com/Grunny/zap-cli) binary with additional CLI flags and arguments such as. For example, you could exclude certain URLs from the scan using a regular expression:
+
+`quick-scan -r -e "https\:\/\/myonlineshoestore\.com\/*catalog\?category\=Accessories" `
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+-->
 
 
-<StoSettingCliFlags />
-
-
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
+
+### Settings
+
+import StoSettingSettings from '../shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
 
 ### Additional Configuration
 

@@ -148,27 +148,31 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-### Additional CLI flags
-
-<!-- https://harness.atlassian.net/browse/STO-6983 -->
-<!-- https://harness.atlassian.net/browse/STO-7003 -->
-
-You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with specific command-line arguments. Useful arguments include:
-
-* `--all-projects` — Search recursively down the repo folder tree.
-* `--detection-depth=n` — The folder depth to scan. This argument has no effect if the repo has fewer levels than the specified depth.
-
-:::note
-
-STO does not support [context-specific arguments](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#less-than-context-specific_options-greater-than) or arguments that appear at the end of the command line, such as Maven or Gradle arguments.
-
-:::
-
 ### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
+
+
+### Additional CLI flags
+
+<!-- https://harness.atlassian.net/browse/STO-6983 -->
+<!-- https://harness.atlassian.net/browse/STO-7003 -->
+
+You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with additional flags. For example, you might want to add a string like this:
+
+`--all-projects --detection-depth=3`
+
+With these flags, the Snyk step scans recursively down the repository tree to a depth of 3 folders. 
+
+:::caution
+
+- Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and arguments thoroughly before you use them in your production environment.  
+
+- STO does not support [context-specific arguments](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#less-than-context-specific_options-greater-than) or arguments that appear at the end of the command line, such as Maven or Gradle arguments.
+
+:::
 
 
 ### Fail on Severity
@@ -177,11 +181,11 @@ import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severi
 
 <StoSettingFailOnSeverity />
 
-
 ### Settings
 
-You can use this field to run the Snyk scan with additional options. 
+import StoSettingSettings from '../shared/step_palette/all/_settings.md';
 
+<StoSettingSettings />
 
 
 ### Show original issue severities overridden by Snyk security policies 

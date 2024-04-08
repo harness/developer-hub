@@ -223,11 +223,13 @@ import StoSettingToolJavaBinaries from './shared/step_palette/tool/java/_binarie
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
+
 <StoSettingLogLevel />
 
+<a name="cli-flags"></a>
 
+### Additional CLI flags
 
-#### Additional CLI flags
 
 You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
@@ -236,6 +238,7 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
 * `-Dsonar.projectVersion=<version_number>` The project version to scan
 
 * `-Dsonar.test.exclusions=**src/test/**/*.*` The test files to include from the scan
+
 
 ##### YAML example
 
@@ -248,11 +251,18 @@ You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.o
                         cli: "-Dsonar.projectVersion=1.2.3"
 ```
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
 ### Fail on Severity
+
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
+
 <StoSettingFailOnSeverity />
+
 
 ### Settings
 
