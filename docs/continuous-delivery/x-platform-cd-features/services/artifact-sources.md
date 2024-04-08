@@ -19,7 +19,7 @@ This topic lists the artifact sources you can use in your Harness services.
 
 You have two options when referencing the artifacts you want to deploy:
 
-- Add an artifact source to the Harness service and reference it using the Harness expression `<+artifacts.primary.image>` in the values YAML file.
+- Add an artifact source to the Harness service and reference it using the [Harness Artifact expression](/docs/platform/variables-and-expressions/harness-variables.md#artifact-expressions) `<+artifacts.primary.image>` in the values YAML file.
 - Hardcode the artifact into the manifests or values YAML file.
 
 ### Use the artifact expression
