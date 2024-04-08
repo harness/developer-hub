@@ -216,7 +216,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-You can use this field to specify environment variables for the scan step. 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
 
 
 ### Additional Configuration

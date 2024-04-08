@@ -207,9 +207,10 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-You can add more settings to the scan step as needed. 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
-If you want to add a CLI argument to the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect), use the [Additional CLI arguments](#additional-cli-flags) field.
+<StoSettingSettings />
+
 
 ### Additional Configuration
 

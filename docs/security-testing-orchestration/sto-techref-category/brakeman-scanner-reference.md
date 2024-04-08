@@ -121,13 +121,12 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
 ### Settings
 
-You can add a `tool_args` setting to run the [Brakeman scanner binary](https://brakemanscanner.org/docs/options/) with specific command-line arguments.  For example, suppose you want to scan only a subpath rather than the full directory. You can use `-path` followed by the path: `tool_args` = `--path some/path/to/app` 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
--->
+<StoSettingSettings />
+
 
 
 ### Additional Configuration

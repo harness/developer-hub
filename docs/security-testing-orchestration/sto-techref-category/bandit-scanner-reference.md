@@ -121,15 +121,13 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 <StoSettingFailOnSeverity />
 
 
-<!-- >
-
 ### Settings
 
-You can add a `tool_args` setting to run the [bandit scanner binary](https://pypi.org/project/bandit/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
-commenting out...this is functionally equivalent to using Additional CLI flags
+<StoSettingSettings />
 
--->
+
 
 ### Additional Configuration
 
