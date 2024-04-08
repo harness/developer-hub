@@ -4692,12 +4692,12 @@ Please read more on CD Service monitoring in the following [Documentation](https
 
 ####  If the Delegate uses a KubeConfig if we are leveraging KubeCTL, where is the KubeConfig stored on the Delegate on using Terraform ?
 
-One may use the command : `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes-expressions)
+One may use the command : `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes-deployment-expressions)
 
 #### What is the recommended approach for implementing Terraform dynamic provisioning of infrastructure, specifically in relation to creating the Terraform file without the `kube_config` specification ?
 
 The recommended approach for utilizing Terraform dynamic provisioning of infrastructure involves creating the Terraform file without including the `kube_config` specification. This practice ensures a more effective implementation of Terraform for dynamic infrastructure provisioning.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes-expressions)
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes-deployment-expressions)
 
 #### Why does the trigger execution details API sometimes return a 400 error after initiating a pipeline, and what's the recommended time gap for reliable execution between these API calls ?
 

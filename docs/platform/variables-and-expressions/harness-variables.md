@@ -436,11 +436,18 @@ If the variable is local to a scope within the pipeline, such as a stage or step
 
 The following sections describe some Harness expressions. This information is not exhaustive.
 
-### Account expressions
+### Account, org, and project expressions
 
 * `<+account.identifier>`: The [identifier](../references/entity-identifier-reference.md) for your [Harness account](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts.md).
 * `<+account.name>`: Your Harness account name.
 * `<+account.companyName>`: The company name associated with your Harness account.
+* `<+org.identifier>`: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization depends on the context where you use the expression.
+* `<+org.name>`: The name of the organization.
+* `<+org.description>`: The description of the organization.
+* `<+project.identifier>`: The [identifier](../references/entity-identifier-reference.md) of a Harness project in your Harness account. The referenced project depends on the context where you use the expression.
+* `<+project.name>:` The name of the Harness project.
+* `<+project.description>`: The description of the Harness project.
+* `<+project.tags>:` All [Harness tags](/docs/platform/references/tags-reference) attached to the project.
 
 ### Approval expressions
 
@@ -557,126 +564,71 @@ To resolve issues experienced with Kubernetes and Native Helm deployments when u
 
 :::
 
-## Instances
+### Deployment instance expressions
 
-The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
+The following instance expressions are supported in [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
-For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
+These deployments can be done on physical data centers, AWS, and Azure. The deployment target determines which expressions you can use.
 
-To use these instance expressions in a step, you must use the repeat [Looping Strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
+* For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+   * `<+instance.hostName>`: The host/container/pod name where the microservice/application is deployed.
+   * `<+instance.host.instanceName>`: Same as `<+instance.hostName>`.
+   * `<+instance.name>`: The name of the instance on which the service is deployed.
+* For Microsoft Azure or AWS:
+   * `<+instance.host.privateIp>`: The private IP of the host where the service is deployed.
+   * `<+instance.host.publicIp>`: The public IP of the host where the service is deployed.
 
-```
+To use instance expressions in pipelines, you must use a [repeat looping strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
+
+```yaml
 repeat:
   items: <+stage.output.hosts>
 ```
 
-![](./static/harness-variables-48.png)
+When you use an instance expression in your pipeline, such as in a **Shell Script** step, Harness applies the script to all target instances. You do not have to loop through instances in your script.
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
+For examples, go to [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
-For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+#### Instance attributes in deployment templates
 
-- `​<+instance.hostName>​`
-- `​<+instance.host.instanceName>`
-- `​<+instance.name>`
-
-For Microsoft Azure or AWS:
-
-- `​<+instance.host.privateIp>​`
-- `​<+instance.host.publicIp>`
-
-### Deployment templates
-
-For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
-
-The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
+For Deployment Templates, you can use instance expressions to reference host properties defined in the **Instance Attributes** in the deployment template.
 
 ![](./static/harness-variables-49.png)
 
-The following expressions refer to instance(s) collected by the mandatory **instancename** field.
+Instances collected by the mandatory **instancename** field can be referenced by the expressions `<+instance.hostName>`, `<+instance.host.instanceName>`, or `<+instance.name>`.
 
-- `​<+instance.hostName>​`
-- `​<+instance.host.instanceName>`
-- `​<+instance.name>`
+To reference the other properties added to **Instance Attributes**, use the expression syntax `<+instance.host.properties.PROPERTY_NAME>`. For example, if you added a property named `artifact`, you could reference it with the expression `<+instance.host.properties.artifact>`.
 
-The expression `<+instance.host.properties.PROPERTY_NAME>` can used to reference the other properties you added to **Instance Attributes**.
+### Kubernetes deployment expressions
 
-For example, in the example above you can see the `artifact` field name mapped to the `artifactBuildNo` property.
+#### HARNESS_KUBE_CONFIG_PATH
 
-To reference `artifact` you would use `<+instance.host.properties.artifact>`.
-
-`instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
-
-### \<+instance.hostName>
-
-The host/container/pod name where the microservice/application is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-### ​\<+instance.host.instanceName>
-
-The same as `<+instance.hostName>`.
-
-### \<+instance.name>
-
-The name of the instance on which the service is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-### \<+instance.host.privateIp>
-
-The private IP of the host where the service is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-### \<+instance.host.publicIp>
-
-The public IP of the host where the service is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-## Kubernetes
-
-### $\{HARNESS_KUBE_CONFIG_PATH}
-
-<!-- this is not an expression -->
-
-The path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
+While this doesn't follow the typical Harness expression syntax, `${HARNESS_KUBE_CONFIG_PATH}` is an expression referencing the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
 
 Harness only generates this kubeconfig file when a delegate is outside of the target cluster and is making a remote connection. When you set up the Kubernetes cluster connector to connect to the cluster, you select the **Specify master URL and credentials** option. The master URL and credentials you supply in the connector are put in the kubeconfig file and used by the remote delegate to connect to the target cluster.
 
 Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using a delegate outside the target cluster and a Kubernetes cluster connector with the **Specify master URL and credentials** option.
 
-If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
+If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to set the environment variable at the beginning of your kubectl script:
+You can use the `${HARNESS_KUBE_CONFIG_PATH}` expression in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to set the environment variable at the beginning of your kubectl script, such as `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. It cannot be used in other scripts such as a Terraform script.
 
-`export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
-
-Example: Get the pods in the default namespace
+For example:
 
 ```
+## Get the pods in the default namespace
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
-```
 
-Example: Restart a deployment object in the Kubernetes Cluster
-
-```
+## Restart a deployment object in the Kubernetes cluster
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl rollout restart deployment/mysql-deployment
 ```
 
-The `${HARNESS_KUBE_CONFIG_PATH}` expression can be used in scripts in Shell script steps. It cannot be used in other scripts such as a Terraform script.
-
-### kubernetes.release.revision
+#### kubernetes.release.revision
 
 You can use the expression `<+kubernetes.release.revision>` to get the deployment revision number.
 
-:::info
-
 This expression requires delegate version 23.04.79106 or later.
-
-:::
 
 You can use this expression:
 
@@ -686,25 +638,25 @@ You can use this expression:
 
 **Important:** Users must update their delegate to version  to use this expression.
 
+### Manifest expressions
 
-## Manifest
+Harness has generic manifest expressions and manifest expressions for specific deployment types.
 
-There are generic and deployment type-specific expressions for manifests.
+Manifest settings are referenced by the manifest ID, which is located at `service.serviceDefinition.spec.manifests.manifest.identifier` in the Harness Service YAML.
 
-Manifest settings are referenced by **Id**.
+<details>
+<summary>Use Service YAML to get manifest expression paths</summary>
 
-You can always determine the expressions you can use by looking at the service YAML.
+Reviewing the Service YAML can help you determine the expressions you can use. For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest `identifier` and the `valuesPaths` in the following YAML:
 
-For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest Id and the `valuesPaths` key in the YAML.
-
-```
+```yaml
 ...
       manifests:
         - manifest:
-            identifier: mymanifest
-            type: K8sManifest
+            identifier: mymanifest                # <+manifests.MANIFEST_ID.identifier>
+            type: K8sManifest                     # <+manifests.MANIFEST_ID.type>
             spec:
-              store:
+              store:                              # <+manifests.MANIFEST_ID.store>
                 type: Harness
                 spec:
                   files:
@@ -715,340 +667,113 @@ For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created
 ...
 ```
 
-Let's look at a few generic manifest expressions.
+</details>
 
-### \<+manifests.MANIFEST_ID.identifier>
+#### Generic manifest expressions
 
-Resolves to the manifest Id in Harness.
+Here are some generic manifest expressions:
 
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-...
-```
+* `<+manifest.MANIFEST_ID.commitId>`: The commit Id of the manifests used in a service. This is captured in the Deployment step [execution output](#get-inputoutput-expressions-from-execution-details).
+* `<+manifests.MANIFEST_ID.identifier>`: Resolves to the manifest `identifier` in Harness. The `MANIFEST_ID` is the same as the resolved value of this expression; however, you could use this to use the manifest ID in a script, for example.
+* `<+manifests.MANIFEST_ID.type>`: Resolves to the manifest `type`.
+* `<+manifests.MANIFEST_ID.store>`: Resolves to where the manifest is stored. In the following example, the manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store):
 
-### \<+manifests.MANIFEST_ID.type>
-
-Resolves to the manifest type. For example, `K8sManifest`.
-
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-            type: K8sManifest
-...
-```
-
-### \<+manifests.MANIFEST_ID.store>
-
-Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
-
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-            type: K8sManifest
-            spec:
-              store:
-                type: Harness
-                spec:
-                  files:
-                    - account:/Templates
-...
-```
-
-### \<+manifest.MANIFEST_ID.commitId>
-
-The commit Id of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
-
-You can copy the expressions for the Id and value of `commitId`.
-
-For example:
-
-Name: `<+pipeline.stages.satr.spec.execution.steps.rolloutDeployment.output.manifest.values.commitId>`
-
-Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
+  ```
+  ...
+        manifests:
+          - manifest:
+              identifier: mymanifest
+              type: K8sManifest
+              spec:
+                store:
+                  type: Harness
+                  spec:
+                    files:
+                      - account:/Templates
+  ...
+  ```
 
 ### Helm chart expressions
-
-<!-- Duplicates manifests? Replace import with link to another page? -->
 
 import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
 
 <HelmManifestExpressions name="helmexpressions" />
 
-## Org variables
+### Pipeline expressions
 
-### \<+org.identifier>
+The following expressions reference information about a pipeline run, such as the execution ID or start time. For expressions referencing custom pipeline variables, go to [Custom variables](#custom-variables). For expressions referencing pipeline triggers, go to [Trigger expressions](#trigger-expressions).
 
-The entity [identifier](../references/entity-identifier-reference.md) of an organization.
+* `<+pipeline.identifier>`: The pipeline's [identifier](../references/entity-identifier-reference.md) for the pipeline.
+* `<+pipeline.name>`: The name of the current pipeline.
+* `<+pipeline.executionId>`: Every pipeline run (execution) is given a universally unique identifier (UUID). The UUID can be referenced anywhere. The UUID forms the unique execution URL, for example:`https://app.harness.io/ng/#/account/:accountId/cd/orgs/default/projects/:projectId/pipelines/:pipelineId/executions/:executionId/pipeline`.
+* `<+pipeline.resumedExecutionId>`: The execution ID of the root or original execution. This value is different from the `executionId` when it is a retry.
+* `<+pipeline.sequenceId>`: The incremental sequential Id for the execution of a pipeline.
 
-![](./static/harness-variables-23.png)
+   While the `<+pipeline.executionId>` is randomly generated for each execution, the `<+pipeline.sequenceId>` increments with each run of the pipeline. The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
 
-### \<+org.name>
+   For CD pipelines, the Id is named execution. For CI pipelines, the Id is named builds.
 
-The name of the org.
+      ![](./static/harness-variables-26.png)
 
-### \<+org.description>
+   You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
-The description of the org.
+* `<+pipeline.executionUrl>`: The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
-## Pipeline variables
+   :::warning
+   Harness has deprecated the version of this expression with an additional period, `<+pipeline.execution.Url>`.
+   :::
 
-The pipeline and stage level variable expressions follow these formats:
+* `<+pipeline.executionMode>`: This expression describes the pipeline's execution mode:
+   * `NORMAL`: A normal execution. It could either have succeeded or failed.
+   * `POST_EXECUTION_ROLLBACK`: A [post-deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments.md) execution.
+   * `PIPELINE_ROLLBACK`: A [rollback pipeline](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) execution.
 
-- **Pipeline-level** variables are referenced by the expression `<+pipeline.variables.VAR_NAME>`. You can use `<+pipeline.variables>` to access all of the pipeline's custom variables as a collection of key-value pairs.
-- **Stage-level** variables are referenced by these expressions:
-  - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
-  - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
-  -  You can use `<+stage.variables>` to access all of the stage's custom variables as a collection of key-value pairs.
+   This expression is useful in [conditional executions](/docs/platform/pipelines/step-skip-condition-settings). For example, you can create a conditional execution to ensure that a step runs only when a post-deployment rollback happens.
 
-### Pipeline-level variables
+* `<+pipeline.startTs>`: The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/).
+* `<+pipeline.selectedStages>`: The list of stages selected for execution.
+* `<+pipeline.delegateSelectors>`: The pipeline-level [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) selected via runtime input.
+* `<+pipeline.storeType>`: If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
+* `<+pipeline.repo>`: For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
+* `<+pipeline.branch>`: For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
 
-Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
-
-<!-- Video:
-https://www.youtube.com/watch?v=lqbmO6EVGuU-->
-<DocVideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
-
-### \<+pipeline.identifier>
-
-The [identifier](../references/entity-identifier-reference.md) (Id) for the pipeline.
-
-![](./static/harness-variables-24.png)
-
-### \<+pipeline.executionId>
-
-Every execution of a pipeline is given a universally unique identifier (UUId). The UUId can be referenced anywhere.
-
-For example, in the following execution URL, the UUId follows `executions` and is `kNHtmOaLTu66f_QNU-wdDw`.
-
-```
-https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
-```
-
-### \<+pipeline.resumedExecutionId>
-
-The execution id of the root or original execution. For instance, this value will be different from the execution's `executionId` when it is a retry. 
-
-Here's an example:
-- Initial Execution: The `executionId` is `kNHtmOaLTu66f_QNU-wdDw`. This execution failed and triggers a retry. 
-- Retry Execution: The `executionId` is `hrP0KR5aSM-gPGPYMYxV3g`. However, the `resumedExecutionId` is `kNHtmOaLTu66f_QNU-wdDw`.
-
-### \<+pipeline.executionUrl>
-
-The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
-
-For example:
-
-```
-https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs/pipelines/Triggers/executions/EpE_zuNVQn2FXjhIkyFQ_w/pipeline
-```
-
-:::warning
-The version of this expression with an additional period, `<+pipeline.execution.Url>`, has been deprecated.
-:::
-
-### \<+pipeline.executionMode>
-
-This expression describes the pipeline's execution mode:
-
-* `NORMAL`: A normal execution. It could either have succeeded or failed.
-* `POST_EXECUTION_ROLLBACK`: A [post-deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments.md) execution.
-* `PIPELINE_ROLLBACK`: A [rollback pipeline](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) execution.
-
-![](./static/execution-mode-expression.png)
-
-You can use this expression in conditional executions.
-
-![](./static/execution-mode-conditional-execution.png)
-
-For example, you can create a conditional execution to ensure that a step runs only when a post-deployment rollback happens. Here's an example of the logs for this conditional execution scenario:
-
-![](./static/execution-mode-execution-output.png)
-
-### \<+pipeline.name>
-
-The name of the current pipeline.
-
-![](./static/harness-variables-25.png)
-
-### \<+pipeline.sequenceId>
-
-The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` is randomly generated for each execution, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
-
-The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
-
-For CD pipelines, the Id is named execution. For CI pipelines, the Id is named builds.
-
-![](./static/harness-variables-26.png)
-
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
-
-### \<+pipeline.startTs>
-
-The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/). For more information, go to [Triggers](/docs/category/triggers).
-
-### \<+pipeline.triggerType>
-
-The type of trigger. For more information, go to [Triggers](/docs/category/triggers).
-
-Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
-
-| **\<+pipeline.triggerType>** | **\<+trigger.type>** | **Description**                                               |
-| :--------------------------- | :------------------- | :------------------------------------------------------------ |
-| ARTIFACT                     | Artifact             | New artifact trigger. For example, new Docker Hub image tag   |
-| SCHEDULER_CRON               | Scheduled            | Scheduled Cron trigger                                        |
-| MANUAL                       | _null_               | Pipeline triggered using the RUN button in the user interface |
-| WEBHOOK_CUSTOM               | Custom               | Custom webhook trigger                                        |
-| WEBHOOK                      | Webhook              | SCM webhook trigger. For example, GitHub pull request         |
-
-### \<+pipeline.triggeredBy.name>
-
-The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
-
-If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
-
-### \<+pipeline.triggeredBy.email>
-
-The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
-
-### \<+pipeline.selectedStages>
-
-The list of stages selected for execution.
-
-### \<+pipeline.delegateSelectors>
-
-The pipeline level delegate selectors selected via runtime input.
-
-### \<+pipeline.storeType>
-
-If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
-
-### \<+pipeline.repo>
-
-For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
-
-### \<+pipeline.branch>
-
-For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
-
-## Project variables
-
-### \<+project.name>
-
-The name of the Harness project.
-
-### \<+project.description>
-
-The description of the Harness project.
-
-### \<+project.tags>
-
-All Harness Tags attached to the project.
-
-### \<+project.identifier>
-
-The entity [identifier](../references/entity-identifier-reference.md) of the Harness project.
-
-## Secrets
+### Secrets expressions
 
 The primary way to reference secrets is with expressions like `<+secrets.getValue("SECRET_ID")>`.
 
 For information about referencing secrets, go to the [Secrets documentation](/docs/category/secrets).
 
-## Service
+### Service expressions
 
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
 
+![](./static/harness-variables-35.png)
 
+* `<+service.name>`: The name of the service defined in the stage where you use this expression.
+* `<+service.description>`: The description of the service.
+* `<+service.tags>`: The [tags](/docs/platform/references/tags-reference) on the service. To reference a specific tag use `<+service.tags.TAG_KEY>`.
+* `<+service.identifier>`: The [identifier](../references/entity-identifier-reference.md) of the service.
+* `<+service.type>`: Resolves to stage service type, such as Kubernetes.
 
-Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2.
+   ![](./static/harness-variables-36.png)
 
-The use of variable expressions is different between v1 and v2.
+* `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
 
-For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
+#### Custom service-level variables
 
-### Service-level variables for service v2
-
-To reference a service variable, use the expression `<+serviceVariables.VARIABLE_NAME>`.
-
-For example, `<+serviceVariables.myvar>`.
-
-### Service-level variables for service v1
-
-Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
-
-<!-- Video:
-https://www.youtube.com/watch?v=lqbmO6EVGuU-->
-<DocVideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
-
-### \<+serviceConfig.serviceDefinition.spec.variables.VAR_NAME>
-
-The value of the service-level variable in `VAR_NAME`.
+You can [define custom variables](./add-a-variable.md) in your environment and service definitions, and you can use expressions to reference those custom variables.
 
 ![](./static/harness-variables-32.png)
 
-Use expression anywhere after the service step in the pipeline.
+Currently, there are two versions of [services and environments](/docs/continuous-delivery/get-started/services-and-environments-overview), v1 and v2. Services and environments v1 are being replaced by services and environments v2.
 
-To reference the variables, click the copy button.
+To reference custom v2 service-level variables, use the expression syntax `<+serviceVariables.VARIABLE_NAME>`.
 
-![](./static/harness-variables-33.png)
+To reference custom v1 service-level variables, use the expression syntax `<+serviceConfig.serviceDefinition.spec.variables.VARIABLE_NAME>`.
 
-There are two options:
+#### Override service variables
 
-- **Copy variable name:** use this option if you will only be referencing this variable in the current stage. Expression:
-  - `<+serviceConfig.serviceDefinition.spec.variables.NAME>`
-- **Copy fully qualified name:** use this option if you will be referencing this variable in another stage. Example:
-  - `<+pipeline.stages.STAGE_NAME.spec.serviceConfig.serviceDefinition.spec.variables.NAME>`
-
-You can use these expressions in any setting in your pipeline. Select the expression option and enter the expression.
-
-![](./static/harness-variables-34.png)
-
-To override the service variable in a script, reference its name and use a new value.
-
-### \<+service.name>
-
-The name of the service where the expression is evaluated.
-
-![](./static/harness-variables-35.png)
-
-### \<+service.description>
-
-The description of the service where the expression is evaluated.
-
-### \<+service.tags>
-
-The tags on the service where the expression is evaluated.
-
-To reference a specific tag use `<+service.tags.TAG_KEY>`.
-
-### \<+service.identifier>
-
-The [entity identifier](../references/entity-identifier-reference.md) of the service where the expression is evaluated.
-
-### \<+service.type>
-
-Resolves to stage service type, such as Kubernetes.
-
-![](./static/harness-variables-36.png)
-
-### \<+service.gitOpsEnabled>
-
-Resolves to a boolean value to indicate whether the GitOps option is enabled (true) or not (false).
-
-![](./static/harness-variables-37.png)
-
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart).
-
-### \<+serviceVariableOverrides.VARIABLE_NAME>
-
-Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
+To [override a service variable during the execution of a step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups),  use`<+serviceVariableOverrides.VARIABLE_NAME>`.  This provides significant flexibility and control over your pipelines.
 
 ### Service artifacts expressions
 
@@ -1563,7 +1288,7 @@ For example, here are several different references:
 - `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
 - `<+serviceConfig.service.tags.TAG_NAME>`
 
-## Triggers
+## Trigger expressions
 
 ### \<+trigger.artifact.build>
 
@@ -1605,6 +1330,28 @@ Harness RBAC is applied to triggers in Harness, but it is not applied to the rep
 For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../triggers/triggering-pipelines.md) that is started when a PR is merged.
 
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
+
+* `<+pipeline.triggerType>`: The type of trigger. For more information, go to [Triggers](#triggers).
+
+Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
+
+| **\<+pipeline.triggerType>** | **\<+trigger.type>** | **Description**                                               |
+| :--------------------------- | :------------------- | :------------------------------------------------------------ |
+| ARTIFACT                     | Artifact             | New artifact trigger. For example, new Docker Hub image tag   |
+| SCHEDULER_CRON               | Scheduled            | Scheduled Cron trigger                                        |
+| MANUAL                       | _null_               | Pipeline triggered using the RUN button in the user interface |
+| WEBHOOK_CUSTOM               | Custom               | Custom webhook trigger                                        |
+| WEBHOOK                      | Webhook              | SCM webhook trigger. For example, GitHub pull request         |
+
+### \<+pipeline.triggeredBy.name>
+
+The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
+
+If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
+
+### \<+pipeline.triggeredBy.email>
+
+The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
 
 ## Troubleshooting expressions
 

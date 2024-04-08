@@ -332,6 +332,12 @@ For example, if you have an account variable that stores a service definition, y
 
 When you run the pipeline, Harness pulls the service definition from the referenced variable.
 
+### Get a list of all pipeline/stage variables
+
+You can use the expression `<+pipeline.variables>` to access all of the pipeline's custom variables as a collection of key-value pairs.
+
+You can use the expression `<+stage.variables>` to access all of the stage's custom variables as a collection of key-value pairs.
+
 ## Tutorial: Use variables in a CD pipeline
 
 This tutorial demonstrates how to create and use variables in a Harness CD pipeline.
