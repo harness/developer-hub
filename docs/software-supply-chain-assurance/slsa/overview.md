@@ -8,7 +8,7 @@ redirect_from:
 
 Software supply chains, made up of all the code, people, systems, and processes that contribute to development and delivery of software artifacts,  are increasingly vulnerable to breaches and compromises, presenting significant security challenges for organizations. To protect against such breaches, The [Supply Chain Levels for Software Artifacts](https://slsa.dev) (SLSA, pronounced "salsa") provides an end-to-end framework for ensuring the integrity of software artifacts throughout software delivery. By adopting SLSA, organizations can proactively strengthen their software build and deployment processes and secure against critical tampering attacks. 
 
-What makes a framework like SLSA effective is its focus on provenance, which is a record of where software comes from (source, ingest, where it was pulled from, what are the build parameters). Provenance can be analyzed and verified for security purposes to ensure that there was no tampering.
+What makes a framework like SLSA effective is its focus on provenance, which is a record of where software comes from (source, ingest, where it was pulled from, what are the build parameters). Provenance can be analyzed and verified for security purposes to ensure that there is no tampering.
 
 With Harness SSCA, organizations can achieve **SLSA Level 1, Level 2 and Level 3** compliance, adhering to all the prescriptive requirements according to the build track of [SLSA v1.0](https://slsa.dev/spec/v1.0/) specification.
 
@@ -22,7 +22,7 @@ With Harness SSCA, organizations can achieve **SLSA Level 1, Level 2 and Level 3
 * **Hardened Builds**: Your infrastructure for running the builds should be hardened, or you can use the [Harness cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment. 
 
 
-With these, the compliance with SLSA is achieved in two phases. First, in your pipeline's build stage, you must configure it to generate and attest the provenance and use the Harness cloud for your builds. This first phase ensures the creation and secure signing of the provenance. The next phase involves verifying the attested provenance and enforcing integrity checks through policy enforcement. This verification and policy application can occur during the build or deployment stages. 
+With these, compliance with SLSA is achieved in two phases. First, in your pipeline's build stage, you must configure it to generate and attest the provenance while using a hosted infrastructure to run your builds. This first phase ensures the creation and secure signing of the provenance. The next phase involves verifying the attested provenance and enforcing integrity checks through policy enforcement. This verification and policy enforcement can occur during the build or deployment stages. 
 
 Here’s how it looks overall:
 
@@ -49,4 +49,4 @@ Here are the steps to follow:
 
 ## How to comply with SLSA Level 3
 
-To achieve [Build L3](https://slsa.dev/spec/v1.0/levels#build-l3), you must me compliant to [L2](https://slsa.dev/spec/v1.0/levels#build-l2), and the infrastructure you are using to run your builds should be hardened, or you can use the [Harness cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment, which is designed to isolate the build processes and prevent any potential influence between runs. Also, the hosted containerized step in Harness CI restricts build steps to access the provenance key information.
+To achieve [Build L3](https://slsa.dev/spec/v1.0/levels#build-l3), you must be compliant to [L2](https://slsa.dev/spec/v1.0/levels#build-l2), and the infrastructure you are using to run your builds should be hardened, or you can use the [Harness cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) environment, which is designed to isolate the build processes and prevent any potential influence between runs. Also, the hosted containerized step in Harness CI restricts build steps to access the provenance key information.
