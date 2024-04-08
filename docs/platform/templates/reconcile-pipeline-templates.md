@@ -116,7 +116,7 @@ template:
       outputVariables: []
 ```
 
-When you have updated a child entity, in this case, the step template, the parent entities, i.e., stage and pipeline templates, need to be updated as well. In this scenario, the concept of reconciliation comes into play. 
+When you update a child entity, the step template and the parent entities, i.e., stage and pipeline templates must be updated as well. In this scenario, the concept of reconciliation comes into play. 
 
 
 When you move to the pipeline template, you can see the message: ``Some of the entities referenced in this template have gone out of sync.`` along with a ``Reconcile`` button.
