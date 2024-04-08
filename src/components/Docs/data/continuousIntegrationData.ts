@@ -82,7 +82,7 @@ import { MODULES } from "@site/src/constants"
           title: "Plugins",
           module: MODULES.ci,
           description:
-            "Plugins perform predefined tasks. Use plugins to incorporate custom scripts, Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+            "Plugins perform predefined tasks. Use plugins to incorporate custom scripts, Jira updates, GitHub Actions, Bitrise Workflow Steps, and more into your CI pipelines.",
           link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
         },
         {

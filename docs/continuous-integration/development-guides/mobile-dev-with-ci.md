@@ -22,9 +22,9 @@ These guides contain a variety of information about mobile development with Harn
 
 ## Plugins and scripts for mobile development
 
-There are several ways to run scripts and use plugins in Harness CI. You can run Bitrise Integrations, GitHub Actions, fastlane scripts, Firebase scripts, Xcode commands, and more.
+There are several ways to run scripts and use plugins in Harness CI. You can run Bitrise Steps, GitHub Actions, fastlane scripts, Firebase scripts, Xcode commands, and more.
 
-* [Use Bitrise Integrations in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin)
+* [Use Bitrise Workflow Steps in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin)
 * [Use GitHub Actions in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step)
 * [Write your own plugins (reusable custom scripts)](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins)
 * [Use a Run step to run any script in Harness CI](/docs/continuous-integration/use-ci/run-step-settings)
@@ -590,9 +590,9 @@ The above example was adapted from a [Canopas blog post that used GitLab CI to d
 :::
 
 </TabItem>
-  <TabItem value="ex4" label="Example: Use Bitrise Integrations">
+  <TabItem value="ex4" label="Example: Use Bitrise Steps">
 
-This example shows how you can run Bitrise Integrations in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to deploy an Android app. This example is based on [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows/workflow-recipes-for-android-apps.html), and the same concepts apply to [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows/workflow-recipes-for-ios-apps.html).
+This example shows how you can run Bitrise Steps in the Harness CI [Bitrise step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to deploy an Android app. This example is based on [Bitrise workflow recipes for Android apps](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows/workflow-recipes-for-android-apps.html), and the same concepts apply to [Bitrise workflow recipes for iOS apps](https://devcenter.bitrise.io/en/steps-and-workflows/introduction-to-workflows/workflow-recipes-for-ios-apps.html).
 
 ```yaml
               - step:
@@ -600,8 +600,8 @@ This example shows how you can run Bitrise Integrations in the Harness CI [Bitri
                   name: change android version
                   identifier: change_android_version
                   spec:
-                    uses: github.com/bitrise-steplib/steps-change-android-versioncode-and-versionname.git ## Specify the Bitrise Integration's GitHub repo.
-                    with: ## Define settings (inputs) required for the integration.
+                    uses: github.com/bitrise-steplib/steps-change-android-versioncode-and-versionname.git ## Specify the Bitrise Step's GitHub repo.
+                    with: ## Define settings (inputs) required for the steps.
                       new_version_name: '1.1.0'
                       new_version_code: '<+pipeline.sequenceId>'
                       build_gradle_path: '/path/to/build.gradle'
@@ -634,7 +634,7 @@ This example shows how you can run Bitrise Integrations in the Harness CI [Bitri
                       package_name: 'my.android.project'
                       app_path: '/path/to/signed/aab'
                       track: 'beta'
-                    env: ## Define environment variables, if required by the integration.
+                    env: ## Define environment variables, if required by the step.
                       SERVICE_ACCOUNT_KEY_URL: <+secrets.getValue("json_key_path")>
 ```
 

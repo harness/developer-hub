@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-04-09T10:00
+date: 2024-04-16T10:00
 sidebar_position: 10
 ---
 
@@ -36,17 +36,27 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
-### Version 1.22.x
+### Version 1.23.x
 
-<!-- 09 Apr 2024 -->
+<!-- 16 Apr 2024  + ADD DELEGATE VERSION IN FIXED ISSUE CI-11556 -->
 
 #### Early access features
 
-The feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` can resolve some issues where certain variable expressions aren't correctly resolved, such as variables related to looping strategies that incorrectly resolve to `null` if included in environment variable expressions, and empty output variables populating environment variables in child stages. For more information about CI early access features, go to [What's supported for Harness CI](/docs/continuous-integration/ci-supported-platforms). (CI-11882, CI-11305 ZD-57626)
+If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
+
+This feature flag addresses specific use cases that require handling empty environment variables in CI pipelines, such as:
+
+* Variables related to [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) sometimes incorrectly resolving to `null` when included in environment variable [expressions](/docs/platform/variables-and-expressions/harness-variables).
+* Potentially empty output variables populating environment variables in child stages.
+* [Bitrise Workflow Steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) requiring empty environment variables.
+
+For more information about CI early access features, go to [What's supported for Harness CI](/docs/continuous-integration/ci-supported-platforms).
 
 #### Fixed issues
 
-Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.XXXXX or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
+* Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.XXXXX or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
+* Fixed an issue where references to deleted/nonexistent secrets sometimes caused pipelines to timeout at the initialize step without any logs. (CI-11891, ZD-60575)
+* <!-- need more detail. see comment on jira. --> (CI-11709, ZD-59521)
 
 ### Version 1.21.3
 
@@ -952,9 +962,9 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 
 ###### New features and enhancements
 
-- You can run GitHub Actions and Bitrise Integrations in your CI pipelines that use Harness Cloud build infrastructure: (CI-6479)
+- You can run GitHub Actions and Bitrise Workflow Steps in your CI pipelines that use Harness Cloud build infrastructure: (CI-6479)
   - Use the **Actions** step to run GitHub Actions.
-  - Use the **Bitrise** step to run Bitrise Integrations.
+  - Use the **Bitrise** step to run Bitrise Workflow Steps.
 - _The remote debugging feature announced in this release was reverted due to a security concern._ (CI-6350)
 - You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. (CI-5996, ZD-36578)
 
