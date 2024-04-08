@@ -100,6 +100,6 @@ In addition to a Harness account, you need the following:
     helm install test-release harness/ -n smp-test -f harness/override-demo.yaml
     ```
 
-12. After the installation is complete, select the `loadbalancerURL`, and then sign in to the Harness UI.
+12. After the installation is complete, paste the `loadbalancerURL` in your browser's address bar, and then sign in to the Harness UI.
 
 
