@@ -204,36 +204,27 @@ import StoSettingImageAccessToken from '/docs/security-testing-orchestration/sto
 <StoSettingImageAccessToken />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
+Use this field to run the [`grype`](https://github.com/anchore/grype?tab=readme-ov-file) binary with CLI arguments such as:
 
-import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags.md';
+`--only-fixed`
 
+With this flag, `grype` reports only vulnerabilities that have known fixes. 
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
-<StoSettingCliFlags />
-
-For example, you can report vulnerabilities with known fixes only using `--only-fixed`.
-
-<a name="fail-on-severity"></a>
+<StoSettingCliFlagsCaution />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
@@ -241,13 +232,12 @@ import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-t
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
 ### Settings
 
-You can add a `tool_args` setting to run the [grype scanner](https://github.com/anchore/grype) with specific command-line arguments. For example, you can report vulnerabilities with known fixes only using `--only-fixed`: `tool_args` = `--only-fixed`.
+import StoSettingSettings from '../shared/step_palette/all/_settings.md';
 
--->
+<StoSettingSettings />
+
 
 ### Additional Configuration
 

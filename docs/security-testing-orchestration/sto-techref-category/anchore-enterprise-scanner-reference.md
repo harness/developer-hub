@@ -216,7 +216,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-You can use this field to provide environment variables to be used during the execution of the step. 
+You can use this field to specify environment variables for the scan step. 
 
 
 ### Additional Configuration

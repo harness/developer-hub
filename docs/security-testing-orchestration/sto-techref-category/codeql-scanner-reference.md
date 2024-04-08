@@ -98,11 +98,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
@@ -110,15 +106,16 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+Use this field to run the [CodeQL scanner binary](https://codeql.github.com/docs/) with additional flags. 
 
-<StoSettingCliFlags />
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
@@ -127,7 +124,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-You can add a `tool_args` setting to run the [CodeQL scanner binary](https://codeql.github.com/docs/) with specific command-line arguments. <!-- For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5` -->
+You can use this field to specify environment variables for running the scanner.
 
 
 ### Additional Configuration
