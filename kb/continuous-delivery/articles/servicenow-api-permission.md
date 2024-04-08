@@ -82,24 +82,24 @@ Required permission: `itil`.
 
 ## General debugging FAQs
 
-### Why is apply from template selection blocked when using ServiceNow create/update step?
+1. **Why is apply from template selection blocked when using ServiceNow create/update step?**
 
-The connector provided is probably missing the `x_harne_harness_ap.integration_user_role` role permission. Another possible reason could be that the delegate might be down.
+   The connector provided is probably missing the `x_harne_harness_ap.integration_user_role` role permission. Another possible reason could be that the delegate might be down.
 
-### Updating a ServiceNow ticket from template results in an error, `Error in fetching issue 125c716edb61a910e9748c3b13961918 .Issue does not exist`.
+2. **Why does updating a ServiceNow ticket from template results in an error, `Error in fetching issue 125c716edb61a910e9748c3b13961918 .Issue does not exist`.**
 
-The selected ticket type might be different from the actual ticket.
+   The selected ticket type might be different from the actual ticket.
 
-### How to debug ACL error?
+3. **How to debug ACL error?**
 
-Assume that the integration user has all above mentioned roles for specific use cases.
+   Assume that the integration user has all above mentioned roles for specific use cases.
 
-1. Identify the user or integration that Harness used as a connector. This could be a specific user, system account, or an integration like an API. 
-2. ServiceNow uses Access Control Lists (ACLs) to control what data a user can access and what they can do with that data. Check the ACLs for the table to which you are trying to insert/update. For example, Incident.
-3. Ensure that the user or integration has the necessary roles to perform the action. This might involve checking their roles, groups, or specific ACL rules. 
-4. If the user or integration does not have the necessary permissions, you will need to update the ACLs. This could involve adding a new ACL rule, or modifying an existing one.
-5. Once the ACLs are updated, create the ServiceNow ticket again. If the insert is successful, the issue has been resolved.
-6. ServiceNow has data restrictions on their UI. You can use the APIs listed above for debugging.
-7. Check if the table, for example Change Request has any scoped applications enabled. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-application-development/page/build/applications/reference/r_TableApplicationAccessFields.html).
-   ![image](../static/debug-approval-step.png)
-8. Check if there are any data policies written on the user's Dev instance on the table. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-platform-administration/page/administer/field-administration/concept/c_DataPolicy.html).
+   1. Identify the user or integration that Harness used as a connector. This could be a specific user, system account, or an integration like an API. 
+   2. ServiceNow uses Access Control Lists (ACLs) to control what data a user can access and what they can do with that data. Check the ACLs for the table to which you are trying to insert/update. For example, Incident.
+   3. Ensure that the user or integration has the necessary roles to perform the action. This might involve checking their roles, groups, or specific ACL rules. 
+   4. If the user or integration does not have the necessary permissions, you will need to update the ACLs. This could involve adding a new ACL rule, or modifying an existing one.
+   5. Once the ACLs are updated, create the ServiceNow ticket again. If the insert is successful, the issue has been resolved.
+   6. ServiceNow has data restrictions on their UI. You can use the APIs listed above for debugging.
+   7. Check if the table, for example Change Request has any scoped applications enabled. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-application-development/page/build/applications/reference/r_TableApplicationAccessFields.html).
+      ![image](../static/debug-approval-step.png)
+   8. Check if there are any data policies written on the user's Dev instance on the table. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-platform-administration/page/administer/field-administration/concept/c_DataPolicy.html).
