@@ -6,6 +6,7 @@ redirect_from:
   - /tutorials/secure-supply-chain/generate-slsa
 ---
 
+## Introduction
 Harness SSCA when used along with Harness CI Hosted Builds([Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/)), ensures that the resulting artifacts have **SLSA Level 3** provenance that every consumer (including the following deployment stage) can verify for artifact integrity prior to making use of this artifact. Build hardening for Level 3 compliance is achieved through: 
 
 1. Built-in infrastructure isolation for every build where new infrastructure is created for every run and deleted after the run completes. 
@@ -18,28 +19,9 @@ In Harness SSCA, when you configure your pipeline to generate and attest SLSA pr
 
 ![SLSA Generation overview](./static/slsa-gen-overview.png "SLSA Generation overview")
 
+### Use CI Build and Push steps
 
-
-## Configure your pipeline to generate and attest SLSA provenance
-
-
-### Enable SLSA Provenance
-
-Navigate to the Overview tab in your Harness Build stage and enable the "Generate SLSA Provenance" option. Next, provide the private key and password to allow the generation of the provenance attestation, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate keys and [Harness Secret Manager](https://developer.harness.io/docs/category/secrets-management) to save. here’s how it looks
-
-
-<DocImage path={require('./static/enable-slsa.png')} width="70%" height="70%" />
-
-### Use Harness Cloud as Infrastructure
-
-Navigate to the Infrastructure tab and select Harness Cloud as the infrastructure for running your builds. This ensures that your builds operate in an isolated environment, avoiding any potential interference between runs.
-
-<DocImage path={require('./static/harness-cloud-slsa.png')} width="70%" height="70%" />
-
-
-### Use Build and Push steps
-
-Having configured the SLSA provenance generation and attestation, it's crucial to understand that this process is exclusive to the use of the Build and Push steps in Harness. This means provenance generation and attestation only occur when building your container images through these specific steps, Build and Push to [Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/), [ACE](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr/), [GCR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr/), and [ECR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings/). You can use these steps in the execution tab for building your image.
+To generate the SLSA provenance and attestation, it's crucial to understand that this process is exclusive to the use of the Build and Push steps in Harness. This means provenance generation and attestation only occur when building your container images through these specific steps, Build and Push to [Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/), [ACE](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr/), [GCR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr/), and [ECR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings/). You can use these steps in the execution tab for building your image.
 
 
 <DocImage path={require('./static/build-push-steps.png')} width="70%" height="70%" />
@@ -51,6 +33,19 @@ Having configured the SLSA provenance generation and attestation, it's crucial t
 * You can also verify the SLSA provenance in the Build stage.
 
 :::
+
+
+## Generate SLSA Provenance
+
+In you Harness pipeline, navigate to the **Overview tab** in your Build stage and enable the "Generate SLSA Provenance" option. This will ensure to generate the provenance describing how the artifact was built, including the build platform, build process, and top-level inputs.
+
+<DocImage path={require('./static/enable-slsa.png')} width="70%" height="70%" />
+
+## Attest the SLSA Provenance
+After enabling the "Generate SLSA Provenance" option, you can provide the private key and password to generate the provenance attestation, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate keys and [Harness Secret Manager](https://developer.harness.io/docs/category/secrets-management) to save. here’s how it looks
+
+
+<DocImage path={require('./static/attest-slsa.png')} width="70%" height="70%" />
 
 
 ## Run the pipeline
