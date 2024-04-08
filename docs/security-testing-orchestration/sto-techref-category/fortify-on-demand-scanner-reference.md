@@ -9,6 +9,7 @@ You can scan repositories and ingest scan results from  Fortify on Demand.
 
 ## Important notes for running Fortify on Demand scans in STO
 
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 
 <StoDinDRequirements />
 
