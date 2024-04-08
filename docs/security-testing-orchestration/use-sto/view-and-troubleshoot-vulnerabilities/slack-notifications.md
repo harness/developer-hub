@@ -13,7 +13,7 @@ This topic describes how to generate Slack notifications for STO-related events 
 
 To set up Slack notifications, you add a simple script to your pipeline that does the following:
 
-1) Determines whether to send a notification.
+1. Determines whether to send a notification.
 
 2. Creates a string variable with your notification content.
 
@@ -46,7 +46,7 @@ To set up Slack notifications, you add a simple script to your pipeline that doe
 
 This is optional but can make your script easier to understand and update. 
 
-Here's an  example:
+Here's an example:
 
 ```bash
 pipeline_url="YOUR_HARNESS_PIPELINE_URL"
