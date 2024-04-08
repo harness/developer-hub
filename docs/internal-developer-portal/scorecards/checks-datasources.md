@@ -49,7 +49,7 @@ We support the following `regex operators` as Operators for all the Data Points.
 
 ### Support for `catalog-info.yaml` metadata as inputs.
 
-Users can now use the entities `annotation` and `harnessData` from `catalog-info.yaml` as input variable(JEXL format) in Scorecard Checks. eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
+Users can now use all of the entity definition from the `catalog-info.yaml` or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties). For example, `<+metadata.testCoverageScore>`, `<+metadata.annotations['backstage.io/techdocs-ref']>`. Checks eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
 
 ```YAML
 ...
