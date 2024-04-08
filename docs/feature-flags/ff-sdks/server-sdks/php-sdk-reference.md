@@ -19,9 +19,11 @@ import Closeclient from '../shared/close-sdk-client.md'
 
 This topic describes how to use the Harness Feature Flags PHP SDK for your PHP application.
 
-For getting started quickly, you can use our [sample code from the PHP SDK README](https://github.com/harness/ff-php-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [PHP SDK GitHub Repository.](https://github.com/harness/ff-php-server-sdk)
+For getting started quickly, you can use our [sample code from the PHP SDK README](https://github.com/harness/ff-php-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [PHP SDK GitHub Repository.](https://github.com/harness/ff-php-client-sdk)
 
-Important: Although the PHP SDK is a Server SDK, you must use a Client SDK Key to connect to it. You also need to install the Feature Flag Relay Proxy to handle Flag evaluations. 
+Important: The PHP SDK Github repository was previously known as `ff-php-server-sdk` it has since been renamed to `ff-php-client-sdk`. This is to make it clearer that the SDK requires a client SDK key.
+The published package is still named `ff-server-sdk` this will change in a future release.
+
 
 ## Before You Begin
 
@@ -34,7 +36,7 @@ Make sure you've read and understood:
 
 ## Version
 
-Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-php-server-sdk/releases)
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-php-client-sdk/releases)
 
 ## Requirements
 
@@ -42,9 +44,7 @@ To use this SDK, make sure you:  
 
 * Install [PHP](https://www.php.net/) version 7.4 or newer
 * Install [Composer](https://getcomposer.org/)
-* Install the [Relay Proxy](https://github.com/harness/ff-proxy) and pass in the URLs you want to use.You cannot use the default Harness URLs when using the Relay Proxy with this SDK.
-* Install [Redis](https://redis.io/)
-* [Download the SDK from our GitHub repository](https://github.com/harness/ff-php-server-sdk)
+* [Download the SDK from our GitHub repository](https://github.com/harness/ff-php-client-sdk)
 * Create a PHP application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-php-server-sample).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
 * [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
@@ -93,9 +93,9 @@ To add a Target, build it and pass in arguments for the following:
 |  |  |  |  |
 | --- | --- | --- | --- |
 | **Parameter** | **Description** | **Required?** | **Example** |
-| `Identifier` | Unique ID for the Target.Read Regex requirements for Target names and identifiers below for accepted characters. | Required | `"identifier" => "HT_1"` |
-| `Name` | Name for this Target. This does not have to be unique. Note: If you don’t provide a value, the name will be the same as the identifier.Read Regex requirements for Target names and identifiers below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `“name" => "Harness_Target_1",` |
-| `Attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `“attributes" =>    [“email” => “sample@sample.com”]` |
+| `identifier` | Unique ID for the Target.Read Regex requirements for Target names and identifiers below for accepted characters. | Required | `"identifier" => "HT_1"` |
+| `name` | Name for this Target. This does not have to be unique. Note: If you don’t provide a value, the name will be the same as the identifier.Read Regex requirements for Target names and identifiers below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `“name" => "Harness_Target_1",` |
+| `attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `“attributes" =>    [“email” => “sample@sample.com”]` |
 
  
 <details>
@@ -137,11 +137,10 @@ You can configure the following base features of the SDK:
 |  |  |  |
 | --- | --- | --- |
 | **Name** | **Description** | **Default Value** |
-| configUrl | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | No default, provide your own value. |
-| eventUrl | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | No default, provide your own value. |
+| base_url | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | No default, provide your own value. |
+| events_url | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | No default, provide your own value. |
 | expireAfter | The amount of time in seconds that data is removed from the cache. | `60` (seconds) |
-| streamEnabled | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
-| analyticsEnabled | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
+| metricsEnabled | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 
  
 
@@ -152,7 +151,7 @@ For example:
 $cfClient = new Client($SDK_KEY, new Target(["name" => "harness", "identifier" => "harness"]), [  
     "base_url" => "http://ff-proxy:7000",  
     "events_url" => "http://ff-proxy:7000",  
-    “analyticsEnabled” => “false”,  
+    “metricsEnabled” => “false”,
 ]); 
 ```
 ### Complete the Initialization
