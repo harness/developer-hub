@@ -111,9 +111,9 @@ curl -X POST --data-urlencode "payload={
 }"  <+secrets.getValue("YOUR_SLACK_WEBHOOK_URL_SECRET")>
 ```
 
-## Pipeline examples
+## Script and pipeline examples for STO Slack notifications
 
-### Slack on scan results
+### Notify on scan results
 
 This pipeline does the following:
 
@@ -125,7 +125,73 @@ This pipeline does the following:
 
 <details>
 
-<summary>Try it yourself</summary>
+<summary>Full script - Try it yourself</summary>
+
+To add this script to an existing pipeline:
+
+1. Do the steps in [Before you begin](#before-you-begin).
+
+2. [Add the script](#add-the-script-to-your-pipeline) to your pipeline. 
+
+4. Update the following placeholders: 
+   - `FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL`
+   - `FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_HIGH`
+     
+      You can [copy and paste](#add-variables-for-your-pipeline-and-scan-results) these expressions from a previous pipeline execution. 
+
+   - `YOUR_HARNESS_PIPELINE_URL`
+   - `YOUR_SLACK_CHANNEL`
+   - `YOUR_SLACK_USERNAME`
+   - `YOUR_SLACK_WEBHOOK_URL_SECRET` 
+
+5. Save and run the pipeline. 
+
+```bash
+
+# 1. Create your variables.
+# -------------------------------------------------------
+new_critical="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL"
+new_high="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_HIGH"
+pipeline="YOUR_HARNESS_PIPELINE_URL"
+
+# 2. If all the variables == 0, exit.
+# -------------------------------------------------------
+# Get the total # of issues. If the total is 0, exit without sending a notification
+issues_total=$(($new_critical + $new_high))
+echo "issues_total = $issues_total"
+if [ "$issues_total" == "0" ]; then
+  exit 0
+fi
+
+# 3. Create your notification content. 
+# ---------------------------------------------------------
+slack_msg="=======================================================  \n"
+slack_msg="$slack_msg WARNING: New issues detected with severity CRITICAL or HIGH. \n"
+slack_msg="$slack_msg $pipeline \n"
+slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
+slack_msg="$slack_msg - NEW_HIGH issues: \t = $new_high \n"
+slack_msg="$slack_msg =======================================================  \n"
+
+echo "SLACK MESSAGE: \N $slack_msg"
+
+# 4. POST the notification. 
+# ---------------------------------------------------------
+curl -X POST --data-urlencode "payload={
+  \"channel\": \"YOUR_SLACK_CHANNEL\",
+  \"username\": \"YOUR_SLACK_CHANNEL\",
+  \"type\": \"mrkdwn\",
+  \"text\": \" $slack_msg \",
+  \"icon_emoji\": \":harnesshd:\"
+}" <+secrets.getValue("YOUR_SLACK_WEBHOOK_URL_SECRET")>
+
+
+```
+
+</details>
+
+<details>
+
+<summary>YAML pipeline - Try it yourself </summary>
 
 To run this pipeline yourself:
 
@@ -143,12 +209,6 @@ To run this pipeline yourself:
    - `YOUR_SLACK_WEBHOOK_URL_SECRET` 
 
 5. Save and run the pipeline. 
-
-</details>
-
-<details>
-
-<summary>YAML pipeline</summary>
 
 ```yaml
 
@@ -193,9 +253,6 @@ pipeline:
                       type: docker_v2
                       name: <+input>
                       tag: <+input>
-                    sbom:
-                      generate: true
-                      format: spdx-json
               - step:
                   type: Run
                   name: send_slack_on_output_vars
@@ -251,7 +308,7 @@ pipeline:
 
 </details>
 
-### Slack on scan step failed
+### Notify when the scan step fails
 
 This pipeline does the following:
 
@@ -263,7 +320,70 @@ This pipeline does the following:
 
 <details>
 
-<summary>Try it yourself</summary>
+<summary>Full script - Try it yourself</summary>
+
+To add this script to an existing pipeline:
+
+1. Do the steps in [Before you begin](#before-you-begin).
+
+2. [Add the script](#add-the-script-to-your-pipeline) to your pipeline. 
+
+4. Update the following placeholders: 
+   - `FULL_EXPRESSION_OUTPUT_VARIABLE_CRITICAL`
+   - `FULL_EXPRESSION_OUTPUT_VARIABLE_HIGH`
+   - `FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL`
+   - `FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_HIGH`
+     
+      You can [copy and paste](#add-variables-for-your-pipeline-and-scan-results) these expressions from a previous pipeline execution. 
+
+   - `YOUR_HARNESS_PIPELINE_URL`
+   - `YOUR_SLACK_CHANNEL`
+   - `YOUR_SLACK_USERNAME`
+   - `YOUR_SLACK_WEBHOOK_URL_SECRET` 
+
+5. Save and run the pipeline. 
+
+```bash
+
+# 1. Create your variables.
+# -------------------------------------------------------
+critical="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL"
+high="FULL_EXPRESSION_OUTPUT_VARIABLE_HIGH"
+new_critical="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL"
+new_high="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_HIGH"
+pipeline="YOUR_HARNESS_PIPELINE_URL"
+
+
+# 2. Generate the output message.
+# -------------------------------------------------------
+slack_msg="=======================================================  \n"
+slack_msg="$slack_msg ERROR: Scan step failed. \n"
+slack_msg="$slack_msg $pipeline \n"
+slack_msg="$slack_msg - CRITICAL issues: \t $critical \n"
+slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
+slack_msg="$slack_msg - HIGH issues: \t = $high \n"
+slack_msg="$slack_msg - NEW_HIGH issues: \t = $new_high \n"
+slack_msg="$slack_msg =======================================================  \n"
+
+
+# 3. POST the notification. 
+# ---------------------------------------------------------
+curl -X POST --data-urlencode "payload={
+  \"channel\": \"YOUR_SLACK_CHANNEL\",
+  \"username\": \"YOUR_SLACK_CHANNEL\",
+  \"type\": \"mrkdwn\",
+  \"text\": \" $slack_msg \",
+  \"icon_emoji\": \":harnesshd:\"
+}" <+secrets.getValue("YOUR_SLACK_WEBHOOK_URL_SECRET")>
+
+
+```
+
+</details>
+
+<details>
+
+<summary>YAML pipeline - Try it yourself </summary>
 
 To run this pipeline yourself:
 
@@ -281,12 +401,6 @@ To run this pipeline yourself:
    - `YOUR_SLACK_WEBHOOK_URL_SECRET` 
 
 5. Save and run the pipeline. 
-
-</details>
-
-<details>
-
-<summary>YAML pipeline</summary>
 
 ```yaml
 
@@ -399,7 +513,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo "Hello, you will only see this if the previus stage didn't fail."
+                        script: echo "Hello, you will only see this if the previous stage didn't fail."
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
