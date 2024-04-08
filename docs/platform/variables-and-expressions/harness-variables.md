@@ -669,8 +669,6 @@ Reviewing the Service YAML can help you determine the expressions you can use. F
 
 </details>
 
-#### Generic manifest expressions
-
 Here are some generic manifest expressions:
 
 * `<+manifest.MANIFEST_ID.commitId>`: The commit Id of the manifests used in a service. This is captured in the Deployment step [execution output](#get-inputoutput-expressions-from-execution-details).
@@ -705,6 +703,7 @@ The following expressions reference information about a pipeline run, such as th
 
 * `<+pipeline.identifier>`: The pipeline's [identifier](../references/entity-identifier-reference.md) for the pipeline.
 * `<+pipeline.name>`: The name of the current pipeline.
+* `<+pipeline.tags>`: The [tags](/docs/platform/references/tags-reference) for a pipeline. To reference a specific tag, use `<+pipeline.tags.TAG_NAME>`.
 * `<+pipeline.executionId>`: Every pipeline run (execution) is given a universally unique identifier (UUID). The UUID can be referenced anywhere. The UUID forms the unique execution URL, for example:`https://app.harness.io/ng/#/account/:accountId/cd/orgs/default/projects/:projectId/pipelines/:pipelineId/executions/:executionId/pipeline`.
 * `<+pipeline.resumedExecutionId>`: The execution ID of the root or original execution. This value is different from the `executionId` when it is a retry.
 * `<+pipeline.sequenceId>`: The incremental sequential Id for the execution of a pipeline.
@@ -747,7 +746,7 @@ For information about referencing secrets, go to the [Secrets documentation](/do
 
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
 
-![](./static/harness-variables-35.png)
+<DocImage path={require('./static/harness-variables-35.png')} width="60%" height="60%" title="Click to view full size image" />
 
 * `<+service.name>`: The name of the service defined in the stage where you use this expression.
 * `<+service.description>`: The description of the service.
@@ -755,7 +754,7 @@ Services represent your microservices and other workloads. Each service contains
 * `<+service.identifier>`: The [identifier](../references/entity-identifier-reference.md) of the service.
 * `<+service.type>`: Resolves to stage service type, such as Kubernetes.
 
-   ![](./static/harness-variables-36.png)
+   <DocImage path={require('./static/harness-variables-36.png')} width="60%" height="60%" title="Click to view full size image" />
 
 * `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
 
@@ -763,7 +762,7 @@ Services represent your microservices and other workloads. Each service contains
 
 You can [define custom variables](./add-a-variable.md) in your environment and service definitions, and you can use expressions to reference those custom variables.
 
-![](./static/harness-variables-32.png)
+<DocImage path={require('./static/harness-variables-32.png')} width="60%" height="60%" title="Click to view full size image" />
 
 Currently, there are two versions of [services and environments](/docs/continuous-delivery/get-started/services-and-environments-overview), v1 and v2. Services and environments v1 are being replaced by services and environments v2.
 
@@ -771,9 +770,11 @@ To reference custom v2 service-level variables, use the expression syntax `<+ser
 
 To reference custom v1 service-level variables, use the expression syntax `<+serviceConfig.serviceDefinition.spec.variables.VARIABLE_NAME>`.
 
-#### Override service variables
+:::tip Override service variables
 
 To [override a service variable during the execution of a step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups),  use`<+serviceVariableOverrides.VARIABLE_NAME>`.  This provides significant flexibility and control over your pipelines.
+
+:::
 
 ### Service artifacts expressions
 
@@ -899,130 +900,28 @@ You can use these expressions to reference files added in a service's **Config F
 
 For more information, go to [Use config files in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files.md#referencing-and-encoding-config-files).
 
-## Stage
+### Stage expressions
 
-The following variables provide information on the pipeline stage.
-
-### Expression examples
-
-Here is an example of how to use `<+stage.variables>`. <!-- the collection of all stage variables rather than one variable -->
-
-```
-for var in <+stage.variables>;
-do
-
-    IFS=":"
-    read -r key value <<< "$var"
-    unset IFS
-    echo "Key: $key"
-    echo "Value: $value"
-
-done
-```
-
-The above Bash script prints all the key-value pairs for the stage variables.
-If the `<+stage.variables>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
-
-```
-Executing command ...
-Key: a
-Value: A
-Key: b
-Value: B
-Key: c
-Value: C
-Command completed with ExitCode (0)
-```
-
-### Stage-level variables
-
-Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
-
-<!-- Video:
-https://www.youtube.com/watch?v=lqbmO6EVGuU-->
-<DocVideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
-
-Once you've created a stage, its settings are in the **Overview** tab. For example, here is the **Overview** tab for a deploy stage.
-
-![](./static/harness-variables-28.png)
-
-In **Advanced**, you can add **Stage Variables**.
-
-Stage variables are custom variables you can add and reference in your stage and pipeline. They're available across the pipeline. You can override their values in later stages.
-
-You can even reference stage variables in the files fetched at runtime.
-
-For example, you could create a stage variable `name` and then reference its identifier in the Kubernetes values.yaml file used by this stage: `name: <+stage.variables.name>`:
-
-```
-name: <+stage.variables.name>
-replicas: 2
-
-image: <+artifacts.primary.image>
-...
-```
-
-When you run this pipeline, the value for `name` is used for the values.yaml file. The value can be a fixed value, expression, or runtime input.
-
-You reference stage variables **within their stage** using the expression `<+stage.variables.VARIABLE_NAME>`.
-
-You reference stage variables **outside their stage** using the expression `<+pipeline.stages.STAGE_NAME.variables.VARIABLE_NAME>`.
-
-### \<+stage.name>
-
-The name of the stage where the expression is evaluated.
+The following expressions reference information for a pipeline stage.
 
 ![](./static/harness-variables-30.png)
 
-### \<+stage.description>
+* `<+stage.name>`: The name of the stage. The resolved value depends on the context where you use the expression.
+* `<+stage.description>`: The description of the stage.
+* `<+stage.tags>`: The [tags](/docs/platform/references/tags-reference) on the stage. To reference a specific tag, use `<+stage.tags.TAG_NAME>`. To reference tags from a stage outside the stage where you use the expression, use `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`.
+* `<+stage.identifier>`: The [identifier](../references/entity-identifier-reference.md) of the stage.
+* `<+stage.output.hosts>`: Lists all of the target hosts when deploying to multiple hosts.
 
-The description of the stage where the expression is evaluated.
+   When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts. To run the step on all hosts, use a [repeat looping strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target. For more information and examples go to [Deployment instance expressions](#deployment-instance-expressions) and [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
 
-### \<+stage.tags>
+* `<+stage.executionUrl>`: The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution. To get the execution URL for a specific stage in a pipeline use `<+pipeline.stages.STAGE_ID.executionUrl>`
+* `<+stage.delegateSelectors>`: The stage-level [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) selected via runtime input.
 
-The tags on the stage where the expression is evaluated. For more information, go to [Tags Reference](../references/tags-reference.md).
+#### Custom stage variables
 
-These tags are different from Docker image tags.
+For information about custom stage variables, go to [Define variables](./add-a-variable.md).
 
-### \<+stage.identifier>
-
-The [entity identifier](../references/entity-identifier-reference.md) of the stage where the expression is evaluated.
-
-### \<+stage.output.hosts>
-
-Lists all of the target hosts when deploying to multiple hosts.
-
-When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts.
-
-To run the step on all hosts, you use the repeat [Looping Strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
-
-```
-repeat:
-  items: <+stage.output.hosts>
-```
-
-Here is an example with a Shell script step.
-
-![](./static/harness-variables-31.png)
-
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
-
-### \<+stage.executionUrl>
-
-The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution.
-
-Use the following fully qualified expression to get the execution URL for a specific stage in the pipeline:
-
-```
-<+pipeline.stages.STAGE_ID.executionUrl>
-
-```
-
-### \<+stage.delegateSelectors>
-
-The stage level delegate selectors selected via runtime input
-
-## Status
+### Status expressions
 
 Pipeline, stage, and step status values are a Java enum. You can see the list of values in the **Status** filter on the Executions, Builds, or Deployments page:
 
@@ -1030,89 +929,51 @@ Pipeline, stage, and step status values are a Java enum. You can see the list of
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
-### Stage status
+* `<+pipeline.stages.STAGE_ID.status>`: The status of a stage. You must use the expression after the target stage has executed.
+* `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>`: The status of a step. You must use the expression after the target step has executed.
 
-The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
+#### Looping strategy statuses
 
-You must use the expression after the stage in execution.
-
-### Step status
-
-The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
-
-You must use the expression after the step in execution.
-
-### Strategy status
-
-<!-- move to looping strategy page and redirect? -->
-
-The statuses of the nodes (stages/steps) using a matrix/repeat looping strategy can be `RUNNING`, `FAILED`, or `SUCCESS`.
+The statuses of the nodes (stages/steps) using a [matrix/repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) can be `RUNNING`, `FAILED`, or `SUCCESS`.
 
 Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
 
-#### \<+strategy.currentStatus>
+* `<+strategy.currentStatus>`: The current status of the looping strategy for the node with maximum depth.
+   * When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
+   * In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
+   * If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the current stage.
+* `<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>`: The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`. For example, `echo <+strategy.node.cs1.currentStatus>`.
+* `<+<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>`: The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`. For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
 
-The current status of the looping strategy for the node with maximum depth.
-
-When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
-
-In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
-
-If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the current stage.
-
-#### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
-
-The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
-
-For example, `echo <+strategy.node.cs1.currentStatus>`.
-
-#### \<+\<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
-
-The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
-
-For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
-
-### Status, currentStatus, and liveStatus
+#### Status, currentStatus, and liveStatus
 
 Pipeline and stage status expressions can reference the `status`, `currentStatus`, or `liveStatus`. These variables track different statuses, and they can resolve differently depending on the success or failure of specific steps or stages.
 
 `status` refers to the running status of a single node. `currentStatus` and `liveStatus` provide the combined statuses of all running steps within a pipeline or stage. The difference between status types is based on how they handle step failures and if the status of steps running in a matrix or strategy is included in the overall status calculation.
 
-#### Status
+* **Status**: `status` expressions (such as `<+pipeline.stages.STAGE_ID.status>`) refer to the current running status of a single node, such as a pipeline, stage, or step. It provides information about the state of that specific node without considering the status of any parent, child, or sibling nodes. It reports the direct status of the target node.
+* **Current Status**: `currentStatus` expression (such as `<+pipeline.stages.STAGE_ID.currentStatus>`) represent the combined status of all the running steps within a pipeline or stage, except steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
 
-The `status` refers to the current running status of a single node, such as a pipeline, stage, or step. It provides information about the state of that specific node without considering the status of any parent, child, or sibling nodes. It reports the direct status of the target node.
+   `currentStatus` uses the statuses of all non-matrix steps to determines the overall status. If *any* non-matrix step fails, regardless of the progress or status of other steps, the `currentStatus` of both the pipeline and the stage resolves as `Failed`. This means that the failure of one step can affects the status of the entire pipeline or stage.
 
-Example expression: `<+pipeline.stages.STAGE_ID.status>`
+   :::info
 
-#### currentStatus
+   `currentStatus` *ignores* steps generated from matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `currentStatus` is `Success` because `currentStatus` ignores the matrix step.
 
-The `currentStatus` represents the combined status of all the running steps within a pipeline or stage, except steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
+   :::
 
-`currentStatus` uses the statuses of all non-matrix steps to determines the overall status. If *any* non-matrix step fails, regardless of the progress or status of other steps, the `currentStatus` of both the pipeline and the stage resolves as `Failed`. This means that the failure of one step can affects the status of the entire pipeline or stage.
+* **Live Status**: Like `currentStatus`, `liveStatus` expressions (such as `<+pipeline.stages.stage1.liveStatus>`) also provides the combined status of all the running steps within a pipeline or stage; however it also considers the status of steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
 
-:::info
+   `liveStatus` considers the statuses of *all* steps to determine the overall status. If *any* step fails, the `liveStatus` of both the pipeline and the stage resolves as `Failed`, regardless of the individual status of running or completed steps.
 
-`currentStatus` *ignores* steps generated from matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `currentStatus` is `Success` because `currentStatus` ignores the matrix step.
+   :::info
 
-:::
+   `liveStatus` *includes* steps generated by matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `liveStatus` is `Failed` because `liveStatus` includes the matrix step.
 
-Example expression: `<+pipeline.stages.STAGE_ID.currentStatus>`
+   :::
 
-#### liveStatus
-
-Like `currentStatus`, `liveStatus` also provides the combined status of all the running steps within a pipeline or stage; however it also considers the status of steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
-
-`liveStatus` considers the statuses of *all* steps to determine the overall status. If *any* step fails, the `liveStatus` of both the pipeline and the stage resolves as `Failed`, regardless of the individual status of running or completed steps.
-
-:::info
-
-`liveStatus` *includes* steps generated by matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `liveStatus` is `Failed` because `liveStatus` includes the matrix step.
-
-:::
-
-Example expression: `<+pipeline.stages.stage1.liveStatus>`
-
-#### Example: Status determination
+<details>
+<summary>Example: Status determination</summary>
 
 The following example describes an ongoing execution with three steps named `step1`, `step2`, and `step3` within a stage called `stage1`.
 
@@ -1133,160 +994,20 @@ In this example, the status values for `stage1` are as follows:
 - The `currentStatus` of `stage1` is `Success`. This is determined from the statuses of all steps in the stage, excluding the matrix steps generated by `step3`.
 - The `liveStatus` of `stage1` is `Failed`. This is determined by considering the statuses of all steps in the stage, including the matrix steps generated by `step3`.
 
-## Step
+</details>
 
-The following instance expressions are for stage steps.
+### Step expressions
 
-### \<+step.name>
+The following expressions are for steps in pipeline stages.
 
-The step name.
+* `<+step.name>`: The step name. The resolved value is relative to the context where you use the expression.
+* `<+step.identifier>`: The step [identifier](/docs/platform/references/entity-identifier-reference/).
+* `<+step.executionUrl>`: The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution. To get the execution URL for a specific step in a pipeline, use `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>`.
+* `<+steps.STEP_ID.retryCount>` or `<+execution.steps.STEP_ID.retryCount>`: When you set a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) to **Retry Step**, you can specify the retry count for a step or all steps in the stage. The `retryCount` expressions resolve to the total number of times a step was retried.
 
-### \<+step.identifier>
+### Strategy expressions
 
-The step [identifier](/docs/platform/references/entity-identifier-reference/).
-
-### \<+step.executionUrl>
-
-The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
-
-Use the following fully qualified expression to get the execution URL for a specific step in the pipeline:
-
-```
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
-```
-
-### \<+steps.STEP_ID.retryCount>
-
-When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
-
-Harness includes a `retryCount` built-in expression that resolves to the total number of times a step was retried:
-
-```
-<+execution.steps.STEP_ID.retryCount>
-```
-
-You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression.
-
-For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
-
-```
-echo "retry count of ShellScript_1: <+execution.steps.ShellScript_1.retryCount>"
-```
-
-During pipeline execution, the expression would resolve to something like this:
-
-```
-retry count of ShellScript_1: 2
-```
-
-## Strategy
-
-<!-- move to Looping strategy page & redirect? -->
-
-You can use Harness expressions to retrieve the current execution status or identifiers for iterations of a [matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
-
-### Strategy identifierPostFix
-
-When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique Ids of the child stages/steps/step groups created by the looping operation.
-
-The `identifierPostFix` is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
-
-For example, here is a matrix strategy for a stage:
-
-```
-strategy:
-  matrix:
-    repo:
-      - docker
-      - gcr
-      - ecr
-```
-
-The above matrix will spawn 3 stages by picking `repo` values `docker`, `gcr`, and `ecr`.
-
-The `identifierPostfix` values would be `_docker`, `_gcr`, and `_ecr` for the different combinations of each stage run.
-
-Let's look at an example for parallelism:
-
-```
-strategy:
-  parallelism: 4
-```
-
-The above strategy will spawn 4 stages/steps and the `identifierPostfix` values will be `_0`, `_1`, `_2`, and `_3`.
-
-#### \<+strategy.identifierPostFix>
-
-This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
-
-When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
-
-If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
-
-If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the `identifierPostFix` of the stage.
-
-Let's look at an example using the execution of a stage with the identifier `build_and_upload` and matrix looping strategy.
-
-Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
-
-#### \<+step.identifierPostFix>
-
-This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
-
-#### \<+stage.identifierPostFix>
-
-This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
-
-#### \<+stepGroup.identifierPostFix>
-
-This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
-
-#### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
-
-This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
-For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2.
-
-Use the following expressions to obtain the `identifierPostFix` for a specific step group:
-
-- `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
-- `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
-
-![](./static/nested-looping-strategy.png)
-
-Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
-
-#### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.\*>
-
-Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels.
-
-Here are some examples:
-
-- `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
-- `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
-- `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
-- `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
-- `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
-- `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
-- `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
-- `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
-- `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
-
-### Strategy statuses
-
-For strategy status expressions, go to [Status](#status).
-
-## Tag expressions
-
-You can reference tags using Harness expressions.
-
-You simply reference the tagged entity and then use `tags.TAG_NAME`, like `<+pipeline.tags.docs>`
-
-For example, here are several different references:
-
-- `<+pipeline.tags.TAG_NAME>`
-- `<+stage.tags.TAG_NAME>`
-- `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
-- `<+serviceConfig.service.tags.TAG_NAME>`
+You can [use Harness expressions to retrieve the current execution status or identifiers for iterations of a matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md#looping-strategy-expressions).
 
 ## Trigger expressions
 
