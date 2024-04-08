@@ -26,7 +26,7 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 
 Core CPU and memory requirements depend on the modules you use for demo purposes. For CI and CD, a minimum 3 core CPU and 14 Gi memory are required.
 
-An override-demo.yaml file is available in the Harness [Helm chart repo](https://github.com/harness/helm-charts/blob/main/src/harness/override-demo.yaml).
+An `override-demo.yaml` file is available in the Harness [Helm chart repo](https://github.com/harness/helm-charts/blob/main/src/harness/override-demo.yaml).
 
 ## Core service requirements
 
