@@ -2,8 +2,8 @@ Thanks for contributing to the Harness Developer Hub! Our code owners will revie
 
 ## Description
 
-* Please describe your changes: \_______________________
-* Jira/GitHub Issue numbers (if any): \_________________
+* Please describe your changes: \__________________________________
+* Jira/GitHub Issue numbers (if any): \______________________________
 * Preview links/images (Internal contributors only): \__________________
 
 ## PR lifecycle
