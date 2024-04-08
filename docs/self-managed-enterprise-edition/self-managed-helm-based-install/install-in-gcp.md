@@ -23,11 +23,16 @@ In addition to a Harness account, you need the following:
    1. Go to your GCP project.
    2. Select **VPC network**. The VPC networks page opens.
    3. In the left nav, select **IP addresses**. The IP addresses page opens.
-   4. Select **Reserve External Static IP Address**, then select **Premium**.
+   4. Select **Reserve External Static IP Address**, then select the following.
+      1. **Network Service Tier:** Premium.
+      2. **IP Version:** IPv4.
+      3. **Type:** Regional.
 
       :::note
-      Make sure the IP address is in the same region as your cluster. Make a note of the IP address. You'll need it later in the installation process.
+      Make sure the IP address is in the same region as your cluster. Make a note of or copy the IP address. You'll need it later in the installation process.
       :::
+
+   5. Select **Reserve**.
 
 ## Install in GCP
 
