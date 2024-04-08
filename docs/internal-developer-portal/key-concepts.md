@@ -5,19 +5,11 @@ sidebar_label: Key Concepts
 sidebar_position: 2
 ---
 
-For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](/docs/get-started/key-concepts).
+Get familiar with these key terms and concepts for Harness IDP. For general Harness Platform concepts, go to [Harness Platform key concepts](/docs/platform/get-started/key-concepts.md).
 
-Before you begin using Harness IDP, you should be familiar with the key concepts.
-
-## Internal Developer Platform
+## Internal Developer Portal
 
 An Internal Developer Portal (IDP) improves the developer experience in an organization, reduces friction in the software delivery cycle and hides the infrastructure complexity for a developer.
-
-## Golden Path
-
-The Golden Path is the opinionated, well-supported and recommend path for build a new software within in an organization. For example, build a backend service, put up a website, create a data pipeline, golden paths to production for new service onboarding.
-
-![](./static/Golden%20Paths%20Dark%20Theme.png)
 
 ## Software Component
 
@@ -44,6 +36,12 @@ The [type of API specs](./get-started/add-api-docs) that could be added in IDP i
 ## Developer Onboarding
 
 Is a way to assess new developers' experience and performance while they start doing meaningful code contribution to the codebase since starting in the org, for example time taken by the new developers to merge their tenth pull request.
+
+## Golden Path
+
+The Golden Path is the opinionated, well-supported, and recommended path for building new software within an organization. For example, build a backend service, put up a website, create a data pipeline, and add golden paths to production for new service onboarding.
+
+![](./static/Golden%20Paths%20Dark%20Theme.png)
 
 ## Software Templates
 

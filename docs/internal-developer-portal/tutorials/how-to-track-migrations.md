@@ -6,6 +6,8 @@ redirect_from:
   - /tutorials/internal-developer-portal/how-to-track-migrations
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 ## Introduction
 In this tutorial we will be using [Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard) for tracking and driving migrations. Recently we have introduced new Data Points for git based Data Sources to extract information from files using regex patterns. In this tutorial we will be building some custom checks using these Data Points to track library and language versions from the contents of metadata files. 
 
@@ -130,5 +132,5 @@ Check the regex used for pattern matching.
 ## Conclusion
 In this tutorial, we covered how to use Scorecards in Harness IDP for tracking and driving migrations. This tool is incredibly useful for maintaining up-to-date information on various aspects of your software projects, such as dependency versions.
 
-For more detailed information and support, refer to the [Harness IDP documentation](https://developer.harness.io/docs/internal-developer-portal) and [community forums](https://join.slack.com/t/harnesscommunity/shared_invite/zt-26s09zk9w-bIWy~~nZguW~P3SrPx6PdA).
+For more detailed information and support, refer to the [Harness IDP documentation](https://developer.harness.io/docs/internal-developer-portal) and [community forums](https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA).
 

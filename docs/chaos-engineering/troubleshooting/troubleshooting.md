@@ -1,7 +1,9 @@
 ---
 title: Troubleshooting guide 
-description: Solutions to common pain points.
+description: Solutions to common pain points
 sidebar_position: 1
+redirect_from:
+  - /docs/category/troubleshooting-chaos-engineering/
 --- 
 
 This section walks you through some common pain points and their workarounds.
@@ -135,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/kubernetes.md). 
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md). 
 
 This could be due to a variety of reasons, such as:
 

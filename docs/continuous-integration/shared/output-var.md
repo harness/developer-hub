@@ -60,7 +60,7 @@ Use either of the following expressions to reference an output variable in anoth
 <+execution.steps.[stepID].output.outputVariables.[varName]>
 ```
 
-Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
 <+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>

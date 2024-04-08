@@ -1,6 +1,8 @@
 ---
 id: security-chaos
 title: Chaos faults for Kube Security
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/security-chaos
 ---
 
 <!-- Import statement for Custom Components -->

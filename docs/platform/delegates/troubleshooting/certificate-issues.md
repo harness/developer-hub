@@ -14,7 +14,7 @@ In some scenarios, the delegate might start to register and then fail. There are
 
 You might experience a `javax.net.ssl.SSLHandshakeException: unable to find valid certification path to requested target` exception.
 
-This typically means the Java truststore file doesn’t have the required certificate to connect to Harness Manager because of a missing Certificate Authority (CA).
+This typically means the Java truststore file doesn't have the required certificate to connect to Harness Manager because of a missing Certificate Authority (CA).
 
 #### Handshake exception solutions
 
@@ -34,7 +34,7 @@ To resolve the handshake exception, do the following:
 <summary>
    Use the OpenSSL tool
    </summary>
-  
+
    To use the OpenSSL tool, do the following:
 
    1. Exec into the delegate pod.
@@ -46,7 +46,7 @@ To resolve the handshake exception, do the following:
       ```
 
       The output will look similar to the example below.
-   
+
        ```
       CONNECTED(00000003)
 
@@ -59,7 +59,7 @@ To resolve the handshake exception, do the following:
       depth=0 C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
 
       verify return:1
-   
+
       ---
 
       Certificate chain
@@ -74,7 +74,7 @@ To resolve the handshake exception, do the following:
       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-   
+
       -----END CERTIFICATE-----
 
       1 s:C = US, ST = CA, L = San Jose, O = Harness Test, OU = Test, CN = *.test.harness.io, emailAddress = test-no-reply@harness.io
@@ -137,7 +137,7 @@ To resolve the handshake exception, do the following:
       connect to smp.test.harness.io
 
       ```
-         
+
    3. Copy the `BEGIN CERTIFICATE` and `END CERTIFICATE` blocks into a new `cacerts.pem` file.
 
    4. Add the CA certificates to the delegate. For more information, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/).
@@ -155,17 +155,17 @@ To resolve the exception when OpenSSL tool isn't present, do the following:
 
    1. Exec into the delegate.
    2. Run the following.
-      
+
       ```
       microdnf install openssl
       ```
 
        Depending on your environment, OpenSSL installation may not succeed.
-    
+
     3. If the installation succeeds, following the OpenSSL steps above. If the installation fails, continue with the steps below.
 
 2. Use the cURL commands below to find the issuers that are missing in your CA bundle. Find the certificate for each issuer by going to the domain in your browser and downloading the certificate.
-   
+
    ```
    curl -vk <YOUR_URL>
    ```
@@ -190,7 +190,7 @@ The solution is similar to resolving the handshake exception. Follow the [steps 
 
 ## Certificate inspection commands
 
-The following commands can help you inspect your certificates. 
+The following commands can help you inspect your certificates.
 
 ### Inspect a certificate chain - x509 PEM file
 
@@ -199,7 +199,7 @@ Keytool -printcert -file /path/to/cert
 ```
 
 ```
-openssl x509 -text -noout -in certificate.pem 
+openssl x509 -text -noout -in certificate.pem
 ```
 
 ### Inspect a truststore file
@@ -208,7 +208,7 @@ openssl x509 -text -noout -in certificate.pem
 keytool -list -v -keystore /path/to/truststore
 ```
 
-## Import x509 certs into a truststore file 
+## Import x509 certs into a truststore file
 
 Keytool cannot import an entire PEM file with multiple certs. If a CA bundle file has multiple PEM blocks, you must divide each block into an individual file, and run the command below.
 

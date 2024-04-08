@@ -1,6 +1,8 @@
 ---
 id: azure
 title: Chaos faults for Azure
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure
 ---
 
 <!-- Import statement for Custom Components -->

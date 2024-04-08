@@ -1,7 +1,9 @@
 ---
 title: Known issues
-description: HCE known issues.
+description: HCE known issues
 sidebar_position: 2
+redirect_from:
+  - /docs/troubleshooting/chaos-engineering/known-issues
 --- 
 
 This section walks you through the known issues in HCE.

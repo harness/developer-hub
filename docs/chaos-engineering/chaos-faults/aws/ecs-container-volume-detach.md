@@ -1,6 +1,8 @@
 ---
 id: ecs-container-volume-detach
-title: ECS Container Volume Detach
+title: ECS container volume detach
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-volume-detach
 ---
 
 ECS container volume detach provides a mechanism to detach and remove volumes associated with ECS task containers in an Amazon ECS (Elastic Container Service) task.

@@ -1,6 +1,8 @@
 ---
 id: ssh-chaos
 title: SSH chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/ssh/ssh-chaos
 ---
 SSH chaos injects chaos on the target host using SSH connections by passing custom chaos logic through a ConfigMap. These scripts are executed using SSH credentials, which are securely referenced in the ConfigMap. This enables direct fault injection on the target host. This experiment offers customisation for the chaos injection logic, providing flexibility and control over chaos experiments.
 
@@ -150,7 +152,10 @@ spec:
       components:
         env:
         - name: CHAOS_PARAMETER
-          value: "raw:{HCE,CSV},raw:{3258}"
+          value: "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+                    \"data_type\":\"string\",\"value\":\"HOST_IP\"},
+                    {\"placeholder\":\"port\",\"data_type\":\"int\",
+                      \"value\":\"3258\"}]}"
 ```
 
 ### Abort parameter
@@ -174,7 +179,10 @@ spec:
       components:
         env:
         - name: ABORT_PARAMETER
-          value: "raw:{HCE,CSV},raw:{3258}"
+          value: "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+                    \"data_type\":\"string\",\"value\":\"HOST_IP\"},
+                    {\"placeholder\":\"port\",\"data_type\":\"int\",
+                      \"value\":\"3258\"}]}"
 ```
 
 :::tip

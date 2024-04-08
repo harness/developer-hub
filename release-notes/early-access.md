@@ -1,12 +1,12 @@
 ---
 title: Early access features
-date: 2024-01-18T10:00
+date: 2024-04-05T10:00
 sidebar_position: 2
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/early-access/rss.xml" />
+These are some of the [early access (beta) features](/docs/platform/get-started/release-status) that are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
 
-These early access (beta) features are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
+This list does not include all beta features, and features can be removed from this page once promoted to general availability (GA).
 
 Early access features are behind feature flags. You can contact [Harness Support](mailto:support@harness.io) to enable a feature you're interested in.
 
@@ -199,7 +199,6 @@ The following early access (beta) features are available for the Harness Securit
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. 
- 
 
 ### Default regular expressions for target baselines
 
@@ -211,14 +210,19 @@ This release introduces a new set of built-in steps for adding scans to your pip
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected.
 
 
-### Write OPA policies based on STO scan results
+### Wiz integration
 
 * **Release date:** March 2024
-* **Issue number:** STO-6738
-* **Feature flags:**  `STO_DATA_OPA`
+* **Issue number:** STO-6035
+* **Feature flags:** `STO_STEP_PALETTE_WIZ`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+
+Harness currently supports the following: 
+
+1. Orchestrated Wiz scans for container images
+2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
 
 
 ### STO Jira integration
@@ -232,16 +236,7 @@ STO includes a Jira integration that enables you to create Jira tickets for issu
 
 ## SRM early access features
 
-The following early access (beta) features are available for the Harness Service Reliability Management module.
-
-### Continuous Verification (CV) fails if the data for configured deployment strategy is not available (SRM-12731)
-
-* **Release date:** December 13, 2022. This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release.
-* **Release version:** Delegate version 77808
-* **Feature flag:** `SRM_LOG_HOST_SAMPLING_ENABLE`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Harness was automatically applying an alternate deployment strategy even if the required data for the deployment configured in the Verify step was not available. Now, Harness does not automatically apply an alternate deployment strategy if the required data is not available. Instead, Harness fails the CV. Harness automatically applies an alternate deployment strategy only if you choose the Auto option in the Continuous Verification Type dropdown list when configuring the Verify step.
+For information about early access (beta) features for Harness Service Reliability Management, go to [SRM early access features](/docs/service-reliability-management/srm-whats-supported/#srm-early-access-features) and the [SRM release notes](./service-reliability-management).
 
 ## Features promoted to GA
 
@@ -392,7 +387,6 @@ No information available. -->
 
 Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference#detect-target-and-variant), [**Semgrep**](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#target-and-variant-detection), and [**ZAP**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#target-and-variant-detection), now include an auto-detect option for targets and variants. This option eliminates the need to specify the target variant manually.
 
-
 #### Open Source Vulnerabilities (OSV) scanner integration
 
 * **GA date:** March 2024
@@ -401,7 +395,6 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 * **Feature flag:** `STO_STEP_PALETTE_OSV`
 
 You can now scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project's dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles). 
-
 
 #### Anchore Enterprise integration
 
@@ -421,7 +414,7 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 
 You can specify a time limit when you request an exemption. The **Exemptions** table includes a **Time Remaining** column that shows when each exemption is scheduled to expire. The table is sorted by this column by default so that soonest-to-expire exemptions are listed first.
 
-<!-- ### Write OPA policies based on STO scan results
+### Write OPA policies based on STO scan results
 
 * **Release date:** November 2023
 * **Issue number:** STO-6738
@@ -429,8 +422,6 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
 You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
-
--->
 
 #### Aqua Security integration
 
@@ -550,3 +541,7 @@ The [Burp integration](/docs/security-testing-orchestration/sto-techref-category
 * **Feature flag:** `STO_STEP_PALETTE_FOSSA`
 
 You can scan container images and repositories using [Fossa](/docs/security-testing-orchestration/sto-techref-category/fossa-scanner-reference), a scanner that detects security vulnerabilities and other issues in open-source projects.
+
+<!-- ### SRM features promoted to GA
+
+No information available. -->

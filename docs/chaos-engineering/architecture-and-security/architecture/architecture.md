@@ -2,6 +2,8 @@
 title: Components of HCE
 sidebar_position: 1
 description: HCE architecture and its components
+redirect_from:
+	- /docs/chaos-engineering/technical-reference/architecture
 ---
 This section describes the Harness Chaos Engineering (HCE) architecture along with the components.
 
@@ -67,6 +69,6 @@ The table below is indicative of low to medium-load working conditions. As chaos
 
 Chaos infrastructure components help facilitate the chaos fault injection and hypothesis validation, and enable chaos automation for target resources.
 
-The [Kubernetes execution plane](/docs/chaos-engineering/architecture-and-security/architecture/kubernetes.md) consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
+The [Kubernetes execution plane](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md) consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
 
-The [Linux execution plane](/docs/chaos-engineering/architecture-and-security/architecture/linux.md) consists of only the Linux chaos infrastructure daemon service.
+The [Linux execution plane](/docs/chaos-engineering/features/chaos-infrastructure/linux-components.md) consists of only the Linux chaos infrastructure daemon service.

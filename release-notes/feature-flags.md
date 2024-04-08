@@ -1,8 +1,9 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-11-24T16:19:25
+date: 2024-04-05T16:19:25
 tags: [NextGen, "feature flags"]
+
 sidebar_position: 11
 ---
 
@@ -14,7 +15,40 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 25th 2024
+### Latest Updated: April 5, 2024
+
+## April 2024
+
+### Android SDK
+
+#### Version 2.1.1
+
+ - This update fixes a `ConcurrentModificationException` that could be thrown if network connectivity was lost and regained. (FFM-11156)
+
+### Golang SDK
+
+#### Version 0.1.19
+
+ - We've added additional debug logging around evaluation logic. (FFM-11091)
+
+### .NET SDK
+
+#### Version 1.6.8
+
+ - We've fixed an issue where evaluation related debug logs, even if debugging wasn't enabled, would cause extra latency when making evaluations. This fix restores performance to do normal pre-logging levels. (FFM-11121)
+ - There are no longer `information` logs json payloads. (FFM-11022)
+
+#### Version 1.6.7
+
+ - Logs flags/groups payload as `info` level log. (FFM-11022)
+
+#### Version 1.6.6
+
+ - We've made cache & exception handling improvements including:
+ -- improving cache locking and synchronization,
+ -- improving stream error handling,
+ -- increasing the capacity of dictionary, and
+ -- additional cache recovery checks. (FFM-11089)
 
 ## March 2024
 
@@ -80,6 +114,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
 
 ### .NET SDK
+
+#### Version 1.6.5
+
+ - When you're making an evalution, if the Flag or Group cache are found to be in an invalid state, then a cache refresh is made and the evaluation re-attempted once. This cache refresh has a default timeout of 5 seconds, which can be decreased or increased by using the new configuration option `SetCacheRecoveryTimeout(int timeoutMilliseconds)`. (FFM-11022)
+
+#### Version 1.6.4
+
+ - The Evaluation logic refactored to use immutable principles, to aid in maintenance and readability. (FFM-11057)
+ - If the target group cache is found to be in an invalid state, such that any groups that beloing to a flag are not in the cache, the SDK will asynchronously update the group cache and immediately return the default variation.
+ - There are extra evaluation logs added to aid troubleshooting.
 
 #### Version 1.6.3
 

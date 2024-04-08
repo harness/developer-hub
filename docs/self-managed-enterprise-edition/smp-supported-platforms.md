@@ -4,9 +4,11 @@ description: Platforms and technologies supported by the on-prem Harness Self-Ma
 sidebar_label: What's supported
 sidebar_position: 1
 ---
-:::info important
+
+:::warning
 
 Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
+
 :::
 
 import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
@@ -25,7 +27,7 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 * [Security Test Orchestration](/docs/security-testing-orchestration/whats-supported)
 * [Service Reliability Management](/docs/service-reliability-management/srm-whats-supported)
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 ## Production environment deployment infrastructure
 

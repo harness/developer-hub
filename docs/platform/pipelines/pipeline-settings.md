@@ -58,7 +58,7 @@ Use this setting to set the image pull policy for the internal Harness images th
 
 ### Concurrent Active Pipeline Executions
 
-This is the number of concurrent pipeline executions allowed per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily by steps such as the wait step or approval step), not those that have executed to completion.
+This is the number of concurrent pipeline executions allowed per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily by steps such as the wait step or approval step), not those that have executed to completion. Users are permitted 200 and 500 Concurrent Pipeline Executions (based on your plan) across the entire account by default. You can increase it to 500 and 1000 Concurrent Pipeline Executions (based on your plan).
 
 Any executions that are triggered when the limit is reached are added to the execution queue. **These executions and their deployments are not failed by Harness.**
 
@@ -71,7 +71,7 @@ The concurrency limits are as follows for each plan tier:
 | Editable | No | Yes | Yes |
 | Scope | Account | Account | Account |
 
-This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum.
+This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
 
@@ -106,6 +106,9 @@ The following parallelism limits apply to each plan:
 
 For example, with a Free plan, you can add a maximum of 10 parallel stages in a pipeline, and you can add a maximum of 10 parallel steps in each of those stages.
 
+Even if you specify a `maxConcurrency` limit of 5 or 10, the moment you do the looping repeat strategy, Harness will already compute the total number of potential stages, if the list generates more than 256 items we will fail there before even running any of the stages and honoring the `maxconcurrency`. 
+
+
 ### Resolved YAML size limit
 
 **Compiled YAML cannot exceed the Harness-enforced limit of 3 MB.**
@@ -123,6 +126,7 @@ Harness has a fixed concurrent and queued stage limit of 20 stages. This means i
 For example, assume a pipeline tries to run 25 stages concurrently, and each stage takes approximately eight hours to complete. Resource consumption by these stages blocks other stages from using those resources for that duration. Harness starts running as many stages as it can based on the available resources and then begins queueing stages, up to a maximum of 20.
 
 Once it reaches the concurrency + queued limit of 20 stages, additional stages fail. In this example, five stages would fail by default of the concurrency and queue limit being full.
+
 
 ## Individual pipeline and module-specific pipeline settings
 

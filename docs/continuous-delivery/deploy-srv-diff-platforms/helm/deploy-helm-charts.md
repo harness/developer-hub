@@ -42,7 +42,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/continuous-delivery/cd-integrations.md).
 
 ## Commands used by Harness to perform a Helm Chart Deployment managed by Harness
 

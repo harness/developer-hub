@@ -820,6 +820,14 @@ For example, in the following execution URL, the UUId follows `executions` and i
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
 ```
 
+### \<+pipeline.resumedExecutionId>
+
+The execution id of the root or original execution. For instance, this value will be different from the execution's `executionId` when it is a retry. 
+
+Here's an example:
+- Initial Execution: The `executionId` is `kNHtmOaLTu66f_QNU-wdDw`. This execution failed and triggers a retry. 
+- Retry Execution: The `executionId` is `hrP0KR5aSM-gPGPYMYxV3g`. However, the `resumedExecutionId` is `kNHtmOaLTu66f_QNU-wdDw`.
+
 ### \<+pipeline.executionUrl>
 
 The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
@@ -1416,6 +1424,12 @@ The file name of the Artifactory artifact.
 This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
 
 ![](./static/artifact-file-name-variable.png)
+
+### Artifact rollback variables
+
+You can use the syntax, `<+rollbackArtifact.ARTIFACT_DEFINITION_IDENTIFIER>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment. 
+
+Harness pulls rollback artifact information from last successful deployment. If there's no previous, successful deployment, then the rollback artifact will return null. 
 
 ### Sidecar artifacts
 
@@ -2295,6 +2309,6 @@ To achieve this same result in NextGen, you must declare each expression with se
 
 For more information about migrating to NextGen, go to:
 
-- [Harness FirstGen vs Harness NextGen](/docs/get-started/harness-first-gen-vs-harness-next-gen)
+- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)

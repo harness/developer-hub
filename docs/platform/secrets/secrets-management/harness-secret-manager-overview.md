@@ -19,8 +19,8 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 ### Before you begin
 
-* Go to [Harness Key Concepts](../../../get-started/key-concepts.md)
-* Go to [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
+* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 
 ### Visual Summary
 

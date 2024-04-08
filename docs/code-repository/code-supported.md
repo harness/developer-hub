@@ -27,4 +27,4 @@ The Harness Code supports these features:
    * You can manage these settings in your user profile.
    * With Harness Self-Managed Enterprise Edition, notifications require an [SMTP configuration](/docs/platform/notifications/add-smtp-configuration).
 
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).

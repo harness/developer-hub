@@ -111,8 +111,8 @@ const config = {
             to: "docs",
             items: [
               {
-                label: "Get Started",
-                to: "docs/get-started",
+                label: "Platform",
+                to: "docs/platform",
               },
               {
                 label: "Code Repository",
@@ -163,10 +163,6 @@ const config = {
                 to: "docs/software-engineering-insights",
               },
               {
-                label: "Platform",
-                to: "docs/platform",
-              },
-              {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
@@ -177,10 +173,6 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes",
-              },
-              {
-                label: "Roadmap",
-                href: "/roadmap",
               },
               {
                 label: "FAQs",
@@ -259,6 +251,11 @@ const config = {
                 label: "Community",
               },
             ],
+          },
+          {
+            label: "Roadmap",
+            position: "right",
+            href: "/roadmap",
           },
 
           {
@@ -346,7 +343,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA",
               },
               {
                 label: "API Reference",
@@ -397,6 +394,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Do not sell or share my personal information",
+                to: "https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7",
+              },
             ],
           },
         ],
@@ -414,6 +415,7 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
       announcementBar: {

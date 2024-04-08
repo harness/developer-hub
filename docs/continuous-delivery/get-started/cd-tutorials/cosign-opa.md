@@ -30,7 +30,7 @@ Ensure that you have the following:
 1. A Harness Enterprise Account, paid or trial.
    1. If you do not have an account, [can sign up](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-cosign-opa).
 2. Completion of the [Kubernetes Manifest tutorial](manifest.md) (either GitOps Workflow or CD Pipeline). This tutorial is a continuation of that tutorial. You will reuse the existing pipeline and other resources you created there.
-3. Familiarity with Harness [pipelines](https://developer.harness.io/docs/get-started/key-concepts#pipelines), [stages](https://developer.harness.io/docs/get-started/key-concepts#stages), and [steps](https://developer.harness.io/docs/continuous-delivery/get-started/key-concepts#step) concepts.
+3. Familiarity with Harness [pipelines](/docs/platform/get-started/key-concepts.md#pipelines), [stages](/docs/platform/get-started/key-concepts.md#stages), and [steps](/docs/platform/get-started/key-concepts.md#steps-and-step-groups) concepts.
 
 ## Architectural Diagrams
 
@@ -160,7 +160,7 @@ The first part of this script downloads and installs the cosign tool, the second
 | sov_image_sign_issuer   | image_sign_issuer    |
 | sov_image_env           | image_env            |
 
-When referencing any of these variables in the following step, use the format `<+execution.steps.cosign_verify.output.outputVariables.sov_image_registry>`. Note that your step name might be different than `cosign_verify`.
+When referencing any of these variables in the following step, use the format `<+execution.steps.cosign_verify.output.outputVariables.sov_image_registry>`. Note that your step name might be different from `cosign_verify`.
 
 The first four variables on this list are used to ensure that the correct image with the right digest is coming from an approved image registry vetted by an appropriate OIDC provider. The last variable is an annotation for the image tag indicating the environment the image is for. You can modify the script and variables based on what information is important to you for image sign validation.
 

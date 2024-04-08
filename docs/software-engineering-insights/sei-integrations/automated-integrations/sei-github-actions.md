@@ -66,7 +66,7 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the environment you are using.
+  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: "<ACCOUNT_ID>"
     application: github_actions
@@ -103,11 +103,11 @@ Following widgets are supported for Github Action integration:
 
 This section provides step-by-step instructions on how to set up a GitHub Actions workflow to allow SEI to ingest the data for the artifacts and environment variables from GitHub Actions.
 
-### Pre-requisites
+### Prerequisites
 
-- A GitHub repository for your project.
+- A GitHub repository for your project
 - SEI API Key & SEI Integration ID
-- Access to GitHub Actions in your repository.
+- Access to GitHub Actions for the repository.
 - Familiarity with environment variables and GitHub Actions configuration.
 
 ### Set up the workflow
@@ -123,30 +123,30 @@ Follow these steps to set up the workflow:
    2. For **Organization Secret**, go to [creating secrets in an organization](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-an-organization) Give the secret a name (e.g., `SEI_API_KEY`) and store the SEI API Key value.
    3. For **Repository Secret**, go to [creating secrets in a repository](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-a-repository)Give the secret a name (e.g., `GITHUB_SECRETS`) and store the **SEI API Key** value.
 3. Create the **GitHub Actions Integration** and make a note of the **Integration ID**, which you will need in the next steps. For more information, go to [configure the integration on the cloud](#configure-the-integration).
+
 4. Append the following steps to your existing GitHub Actions workflow configuration:
 
 ```yaml
 - name: Push artifacts to SEI Endpoint
   id: push_artifacts
   env:
-    base_url: "https://app.harness.io/gratis/sei/api" # Change the URL based on your environment (e.g., Prod1, Prod2, etc.)
+    base_url: "https://app.harness.io/gateway/sei/api/v1" # Change the URL based on your environment (e.g., eu1, asia1, etc.)
     payload: '{"integration_id":"<INTEGRATION_ID>","repository":"${{ github.repository }}","job_run_number":"${{ github.run_number }}","job_name":"${{ github.workflow }}","artifacts":[{"name":"<ADD_IMAGE_NAME>", "location":"<ADD_LOCATION>", "tag":"<ADD_TAG>", "digest":"<ADD_DIGEST>","type":"<ADD_TYPE>", "artifact_created_at":"<ADD_ARTIFACT_CREATED_AT>"}]}'
   run: curl '${{ env.base_url }}/v1/cicd/push_artifacts' -H 'accept:application/json' -H 'authorization:Apikey ${{ secrets.SEI_API_KEY }}' -H 'content-type:application/json' --data-raw '${{ env.payload }}' --compressed --globoff
 
 - name: Push params to SEI Endpoint
   id: push_params
   env:
-    base_url: "https://app.harness.io/gratis/sei/api" # Change the URL based on your environment (e.g., eu1, asia1, etc.)
+    base_url: "https://app.harness.io/gateway/sei/api/v1" # Change the URL based on your environment (e.g., eu1, asia1, etc.)
     payload: '{"integration_id":"<INTEGRATION_ID>","repository":"${{ github.repository }}","job_run_number":"${{ github.run_number }}","job_name":"${{ github.workflow }}","params":[{"name":"<ADD_NAME>","type":"<ADD_TYPE>","value":"<ADD_VALUE>"}]}'
   run: curl '${{ env.base_url }}/v1/cicd/push_job_run_params' -H 'accept:application/json' -H 'authorization:Apikey ${{ secrets.SEI_API_KEY }}' -H 'content-type:application/json' --data-raw '${{ env.payload }}' --compressed --globoff
 ```
 
 5. Make sure to update the `INTEGRATION_ID` in the workflow step with your actual SEI Integration ID. Also, update the `BASE_URL` according to your environment:
+   - **Base URL (PROD2):** https://app.harness.io/gratis/sei/api/v1/
+   - **Base URL (PROD1):** https://app.harness.io/prod1/sei/api/v1/
 
-* **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
-* **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
-
-6. If there is an issue with the SEI endpoint (e.g., if the endpoint is down, 500 internal server error), and you want the workflow run to fail if artifacts are not sent to SEI, use the -f flag in the curl command. For example:
+6. If there is an issue with the SEI endpoint (e.g., if the endpoint is down, 500 Internal Server Error), and you want the workflow run to fail if artifacts are not sent to SEI, use the -f flag in the curl command.
 
 ```bash
    curl -f <REQUEST>
@@ -167,7 +167,7 @@ Follow these steps to set up the workflow:
 - If `type`, `artifact_created_at`, or `digest` are not available you can remove those fields from the object.
 - `type` and `artifact_created_at` are optional fields.
 
-Refer to the metadata below to ingest the environment variables data from GHA into SEI. Note that all the keys mentioned are required fields.
+8. Refer to the metadata below to ingest the environment variables data from GHA into SEI. <br />Note that all the keys mentioned are required fields.
 
 | Keys  | Description                                           |
 | ----- | ----------------------------------------------------- |
@@ -257,7 +257,7 @@ jobs:
       - name: Push artifacts to SEI Endpoint
         id: push_artifacts
         env:
-          base_url: "https://testapi1.propelo.ai" # change the URL based on environment e.g. eu1, asia1, etc.
+          base_url: "https://app.harness.io/gateway/sei/api/v1" # change the URL based on environment e.g. eu1, asia1, etc.
           integration_id: 155
           docker_image: "username/repo"
           tag: v1.18.0
@@ -269,15 +269,15 @@ jobs:
       - name: Push params to SEI Endpoint
         id: push_params
         env:
-          base_url: "https://app.harness.io/gratis/sei/api" # change the URL based on environment e.g. eu1, asia1, etc.
-          payload: '{"integration_id":"<INTEGRATION_ID>","repository":"${{ github.repository }}","job_run_number":"${{ github.run_number }}","job_name":"${{ github.workflow }}","params":[{"name":"docker_image","type":"string","value":"username/repo"}, {"name":"tag","type":"string","value":"v1.18.0"}, {"name":"artifacts_created_at","type":"string","value":"2023-01-01T12:00:00.000+00:00"}]}'
+          base_url: "https://app.harness.io/gateway/sei/api/v1" # change the URL based on environment e.g. eu1, asia1, etc.
+          payload: '{"integration_id":"155","repository":"${{ github.repository }}","job_run_number":"${{ github.run_number }}","job_name":"${{ github.workflow }}","params":[{"name":"docker_image","type":"string","value":"username/repo"}, {"name":"tag","type":"string","value":"v1.18.0"}, {"name":"artifacts_created_at","type":"string","value":"2023-01-01T12:00:00.000+00:00"}]}'
         run: curl '${{ env.base_url }}/v1/cicd/push_job_run_params' -H 'accept:application/json' -H 'authorization:Apikey ${{ secrets.SEI_API_KEY }}' -H 'content-type:application/json' --data-raw '${{ env.payload }}' --compressed --globoff
 ```
 
 :::tip
 
-* If the API endpoint is down, the workflow will not capture artifacts or job run parameters. In such cases, you will have to again execute the github actions workflow.
-* The artifacts from old workflow runs cannot be ingested into Harness SEI.
-* Ensure that the tag names of images are unique to maintain the correct correlation between CI and CD processes.
+- If the SEI API endpoint fails, the workflow will not be able to capture the artifacts or the job run parameters. In such cases, you will need to re-execute the Github Actions workflow.
+- Artifacts data from existing/previous workflow executions cannot be ingested into SEI.
+- Ensure that the tag names of images are unique to maintain the correct correlation between CI and CD processes.
 
-  :::
+:::

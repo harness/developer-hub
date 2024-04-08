@@ -21,9 +21,9 @@ If you are already familiar with setting up Harness CV and the verification step
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
+* [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts.md).
 * [Learn about Kubernetes deployments](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
-* [Refer to the supported platforms and technologies](../../get-started/supported-platforms-and-technologies.md#continuous-verification)
+* [Refer to the supported platforms and technologies](/docs/continuous-delivery/verify/cv-whats-supported.md)
 
 
 ## Deployment strategies for CV
@@ -66,10 +66,6 @@ You can configure the pipeline to fail if there is no data from the health sourc
 The Verify step also includes a metric-level option to fail the Verify step when the analysis of a given custom metric is not possible because there is no data for the custom metric on either the test nodes or the control nodes.
 
 To enable the metric-level fail-on-no-analysis option, in the configuration pane of your Verify step, select **Step Parameters**, expand **Optional**, and select **Fail if any custom metrics has no analysis**.
-
-:::note
-The metric-level option is behind the feature flag `CV_UI_DISPLAY_FAIL_IF_ANY_CUSTOM_METRIC_IN_NO_ANALYSIS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 ### Health source
 

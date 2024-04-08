@@ -1339,12 +1339,11 @@ By using the following expression on the target stage, you will be able to propa
 #### How do I redeploy all services in a new cluster?
  Currently, this isn't possible. You need to redeploy all of your CD pipelines with a new infrastructure target.
 
-#### What documents bundle should I refer to when migrating from CG to NG ?
+#### What documents should I refer to when migrating from CG/FG to NG?
 
-On migration you can refer the following documentations for assistance :
-- [Migrator GH](https://github.com/harness/migrator)
-- [Comparison page to compare different aspects](https://developer.harness.io/docs/get-started/harness-first-gen-vs-harness-next-gen)
-- [Feature Parity Matrix](https://developer.harness.io/assets/files/FirstGen%20and%20NextGen%20CD%20feature%20parity%20matrix-43d79b7d53d3a9abfda19ffa59c6ea78.pdf)
+- [Migrator tool GitHub repository](https://github.com/harness/migrator)
+- [Upgrade guide](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd)
+- [Feature Parity Matrix](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix)
 - [CDNG Upgrade Faq](https://developer.harness.io/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 - [Recording for Project V/S Application](https://www.loom.com/share/62f698a3820e4542a471e4d40d41c686?sid=3dc6f3b9-9369-4133-9452-08795c597351)
 
@@ -2887,7 +2886,7 @@ Please find the pre-requisite for migration documentation [here](https://harness
 
 Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
 
-### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
+#### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
 
 You can select the Artifact filter option and configure the service's Artifact source as needed.
 
@@ -4625,7 +4624,7 @@ Please read more on Native Helm in the following [Documentation](https://develop
 #### Does old version to K8S Server (eg. v1.11.10) service deploy get supported in Harness ?
 
 Yes, if the deployment versions supported in First Genwas available, the NextGen will be available as well.
-Please read more on Supported versions in the following [Documentation](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/)
+For more information, go to [What's supported in Harness Platform](https://developer.harness.io/docs/platform/platform-whats-supported).
 
 #### Does Harness actively working on the connector to make it compatible with Jira Cloud , or should one initiate the setup of a delegate for the Jira connector ?
 
@@ -6400,6 +6399,31 @@ To integrate a new version of the Helm binary with the delegate:
 
 3. Restart the delegate to apply the changes.
 
+#### Why does a variable of type string get converted to an octal equivalent when passed to the manifest?
+
+A variable that is of string type might be getting converted to an octal equivalent when being passed to a kubernetes manifest. Example: The variable `020724`  would be passed through as `8660`.
+
+The go templating is converting to the octal equivalent if the numerical input starts with 0 before applying them to the cluster. Adding double quotes around the JEXL in the values.yaml file shall preserve the actual value (Example: `"<+pipeline.variables.date>"`).
+
+#### What pipeline statuses are considered when determining concurrent active pipeline executions ?
+
+Concurrent active pipeline executions comprises of active and in-progress executions. This includes those that are paused temporarily by steps such as the wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
+
+#### How do I find the output variables of a stage from a pipeline execution through the API?
+
+The output of the pipeline execution can be reetrieved through SubGraph API as described under https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+
+Each nodemap corresponds to a stage in the execution and the output variables along with the values shall be available under the "outcomes" field under "nodemap". 
+
+#### How do I find node and plan execution ids of a pipeline execution?
+
+Node and plan execution ids may be required to fetch details about an execution and query the API for results. 
+Plan execution id is specific to a pipeline execution and can be found in the url of the pipeline execution. For example: `/executions/R0CWuTW8T6Gl7BcshaJpxQ`
+
+Node execution id is specific to a stage and can be fetched from the list of API calls with a filter `stageNodeId`. Below is a sample API call that uses the `stageNodeId`
+
+`https://app.harness.io/gateway/pipeline/api/pipelines/execution/v2/<planexecutionid>?routingId=<accountid>&orgIdentifier=<orgname>&projectIdentifier=<project-name>&accountIdentifier=<accountid>&stageNodeId=<stagenodeid>`
+
 #### Which entities such as service or environment are factors that determine the metrics displayed in Deployment Dashboard?
 
 In our setup, two Looker dashboard models are specifically designed to showcase data solely from pipeline executions with a CD stage. The data aggregation and presentation within these views adapt dynamically based on the chosen attributes for display on the dashboard
@@ -6455,3 +6479,223 @@ Please read more on this in the following [Doumentation](https://developer.harne
 
 Yes, Harness provides the expression `<+pipeline.executionUrl>` to fetch the current variable pipeline execution Url
 Please read more on pipeline expressions in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineexecutionurl)
+
+#### Why am I getting an Invalid Repository Error on my Pipeline Trigger?
+
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set.  It is required for Triggers to reference a Remote Input Set when using Remote Input Sets and Remote Pipelines.
+
+#### Why am I getting an error that my trigger has empty or missing pipelineBranchName?
+
+```
+Failed while requesting Pipeline Execution through Trigger: Unable to continue trigger execution. Pipeline with identifier: $PIPELINE_ID, with org: $ORG, with ProjectId: $PROJ, For Trigger: $TRIGGER has missing or empty pipelineBranchName in trigger's yaml.
+```
+
+If you've recently migrated your Pipeline and Input Set(s) from Inline to Remote, you may encounter this error. To fix this, the Trigger needs to reference a Remote Input Set. It is required for Triggers to reference a Remote Input Set when using Remote Input Sets and Remote Pipelines.
+
+
+#### What's the difference between matchType all and any?
+
+If using a Filtered List to deploy to multiple environments, you can dynamically set which environments to deploy to using tags. The `matchType` field is used to define the operator for the tags list.
+
+All - Only deploy to environments matching all the tags.
+
+Any - Deploy to environments matching any of the tags.
+
+
+#### Why is my pipeline timing out even though my step hasn't reached the timeout yet?
+
+If your pipeline is timing out before your step has a chance to hit the timeout threshold, it's likely that the pipeline itself has a timeout that has already been reached. You can find the relevant pipeline setting in Advanced Settings > Pipeline Timeout Settings.
+
+
+#### Why can't I see any Harness Status Checks in my Github Branch Protection Rules after I already setup the trigger?
+
+To get Harness Status Checks to show up in the Branch Protection Rules, you'll need to trigger the Harness Pipeline at least once with a Pull Request first. Only then can you see the Harness Status Checks in the Github Branch Protection Rules and enforce it on branches.
+
+
+#### How do I setup a Pipeline Trigger for Tag and Branch creation in Github?
+
+The out of the box Github Trigger type does not currently support this however, you can use a Custom Webhook trigger and follow the below steps in order to achieve this. 
+
+1. Create a Custom Webhook trigger
+2. Copy the Webhook URL of the created trigger
+3. Configure a Github Repository Webhook pasting in the URL copied from Step 2 in the Payload URL
+4. Set the content type to `application/json`
+5. Select `Let me select individual events.` for the `Which events would you like to trigger this webhook?` section
+6. Check the `Branch or tag creation` checkbox
+
+
+####  What is a "groupName", and how would I add it to an NRQL query for Continuous Verification?
+
+A groupName is an identifier used to logically group metrics. To add a groupName to a New Relic Query, add it in the `Map Metric(s) to Harness Services` section of the Health Source.
+
+
+#### Why am I unable to Download Deployment Logs via the API?
+
+If the Deployment Stage/Step has no logs to download, the Download Deployment Logs API will fail with the following error
+
+```
+Download DeploymentLogs APi Failed with error : org.springframework.web.client.HttpClientErrorException$NotFound: 404 Not Found: "{<EOL> "error_msg": "cannot list files for prefix"<EOL>}<EOL>"
+```
+
+#### Why am I getting UPGRADE FAILED when trying to deploy my Helm Chart?
+
+```
+Error: UPGRADE FAILED: unable to build kubernetes objects from current release manifest: resource mapping not found for name: "$RESOURCE_NAME" namespace: "" from "": no matches for kind "HorizontalPodAutoscaler" in version "autoscaling/v2beta2" ensure CRDs are installed first
+```
+
+This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
+
+To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
+
+
+#### Can our git experience be used for services. environments, and pipelines? Can we enforce that all resources for a specific projects only come from a specific git repo?
+
+Yes, git experience can be used for services, envs and infra as well, also one can always enforce git repo for all entities at all levels (account, org, project).
+
+#### Can the internal mapping in Git experience be modified, and how do we prevent a broken state if a GitLab project/repository moves? How can we fix this issue?
+
+Reconfiguration within Harness is required if resources are moved across repositories or Git providers. Although manual, it can be automated through APIs for specific needs.
+
+#### Which API is utilized for modifying configuration in the `update-git-metadata` API request for pipelines?
+
+Please find an example API call below : 
+```sh
+curl --location --request PUT 'https://app.harness.io/gateway/pipeline/api/pipelines/<PIPELINE_IDENTIFIER>/update-git-metadata?accountIdentifier=<ACCOUNT_ID>&orgIdentifier=<ORG_ID>&projectIdentifier=<PROJECT_IDENTIFIER>&connectorRef=<CONNECTOR_REF_TO_UPDATE>&repoName=<REPO_NAME_TO_UPDATE>&filePath=<FILE_PATH_TO_UPDATE>' \
+  -H 'x-api-key: <API_KEY>' \
+  -H 'content-type: application/json' \
+
+```
+Pleae read more on this in the following [Documentation](https://apidocs.harness.io/tag/Pipeline#operation/importPipeline)
+
+#### Is it expected behavior for members of a group with permissions to create/edit Non-Production environments to be able to delete infrastructure definitions within those environments, despite not having explicit deletion permissions?
+
+Yes, The behavior of infrastructure deletion is consistent with environment update operations. Infrastructure operations are treated as environment updates, which explains the ability to delete infrastructure definitions within the environment.
+Please read more on Environment and InfraDefintion behaviour in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#important-notes)
+
+#### Are we planning to maintain Harness DockerHub Images alongside the Harness GCR Images?
+
+Yes, both Docker hub and GAR images are published and maintained.
+
+#### What is the character limit for HTTP response body variable in HTTP steps?
+
+Harness impose a limitation of 256KB on variable character limit for HTTP steps as well.
+
+#### How to troubleshoot "Invalid request: Invalid Load balancer configuration in Service." error?
+
+This can happen in following cases:
+- No target groups attached to LB
+- Multiple services attached to target groups
+- Service is attached to both target groups
+  
+Please read more on ECS Blue-Green Steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#visual-summary)
+
+#### Does Harness support methods to convert `<+pipeline.startTs>` into a readable format, such as 'ddmmyyyyhhmm'?
+
+No, Harness does not support this conversion date format on variables
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)
+
+
+#### Why is Regex not working for my Artifact Filter in Artifactory?
+
+Artifactory does not support Regex in it's API. Instead Artifactory supports Glob Patterns. To learn more about the supported syntax, go to [Glob Patterns documentation](https://code.visualstudio.com/docs/editor/glob-patterns#_glob-pattern-syntax).
+
+
+#### How do I dynamically pass a single user group or multiple into an Approval Stage?
+
+First, set the User Groups section in the approval stage to `combined`. This allows you to pass a list of User Groups. Harness expects the value to be a list so passing as a string won't work. Instead, pass an expression as shown below.
+```
+<+<+stage.variables.groups>.split(",")>
+```
+
+The variable `groups` mentioned above can be a list of groups or a single group. 
+
+Both of these example values work for the `groups` variable.
+
+- `groupA,groupB,groupC`
+- `group1`
+
+#### Why am I getting an error that my Pipeline cannot be saved because it needs further configuration?
+
+This error occurs because there's a misconfiguration with the pipeline. Harness will tell you exactly what needs to be fixed so that you can quickly make those changes. In some edge case scenarios, you may get this error even if your pipeline has no visual misconfigurations. Although there are no issues with the pipeline visually, it's good practice to also check the pipeline YAML to ensure there are no issues with the pipeline configuration.
+
+#### What is Harness' pipeline execution history retention policy?
+
+Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
+
+#### Are we still supporting the container step in Continuous Delivery?
+
+Yes, we do support the container step in CD. However, we recommend using **container step group**.
+Read more about [Containerized step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group).
+
+#### Is there an alternative work for usage of container step in Continuous Delivery?
+
+Yes, we recommend using **Container-step-group + run step**.
+Read more about [Containerized step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group).
+
+#### Is there a built-in variable available to determine if the current execution is a retry from another execution?
+
+Currently, there isn't a built-in variable specifically designed to identify if the current execution is a retry from another pipeline. However, there's an expression, `<+pipeline.resumedExecutionId>`, which provides the rootExecutionId for retries. This can be utilized along with `<+pipeline.executionId>` to achieve the desired outcome.
+Read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineresumedexecutionid).
+
+#### How can I determine if a step is being retried during execution?
+
+One can utilize the expression `<+execution.steps.STEP_ID.retryCount>` to determine if a step is being retried during execution, this helps in handling retries within your pipeline.
+Read more about using [Retry count Expression](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/#retry-count-expression).
+
+#### How should customers handle updates to image versions if they mirror our images?
+
+Customers who mirror our organization's images should follow a protocol where they have a one-month window to conduct security scans or other tests on new CI build images before deployment. Harness publishes new versions of required images every two weeks, and each image is backwards-compatible with the previous two releases.
+Read more about [Harness CI Image updates ](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#harness-ci-image-updates)
+
+#### What lead time do customers have before the CI starts running the newer version of images?
+
+Customers typically have a one-month lead time before the CI starts running the newer versions of images. This allows them to conduct necessary tests and security scans on the images before deployment.
+
+#### How can customers prevent outages when handling updates to image versions?
+
+Customers can avoid potential outages by storing images in their own registry and explicitly specifying which version of the image to pull. By following this approach, they ensure continuity and can avoid functionality issues in the pipeline caused by using outdated image versions.
+Read more about specifying the [Harness CI Images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines)
+images used in your pipelines.
+
+#### How does marking a Pipeline as Failed differ from aborting it?
+
+Marking a Pipeline as Failed provides a more controlled approach, allowing users to trigger specific Failure Strategies while maintaining the integrity of the Pipeline execution process. Learn more about [Marking a pipeline as failed](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/#marking-a-pipeline-as-failed).
+
+#### Do common containerized steps like "run" and "git clone" require a CI license to be available in CD step groups?
+
+No, you do not need a CI license to use the "run" and "git clone" steps in a CD step group, even though they are typically listed under the "build" section.
+
+#### Is there any schema on the Harness platform that needs to be followed for individual items in the a JSON array?
+
+The JSON can be any schema. You map the fields with the metadata. If there is specific metadata for each version, users should consistently use the same version throughout the pipeline. The JSON itself does not require a predefined schema to adhere to.
+
+#### Is there any way to recover projects that were deleted in one of the organization along with the pipelines and templates that were in place?
+
+One possible approach to  recover deleted project within an organization would be to retrieve the YAML from the audit trail to reconstruct the pipeline.
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  Is launch configuration not supported in NextGen?
+
+Users migrating to NextGen from FirstGen will need to replace Launch Configuration with Launch Template. AWS provides the steps here: https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  In FirstGen, when providing the Base ASG, Harness could pick up the launch configuration from the base ASG and created a configuration for new ASG.  What needs to be changed to migrate the workflow to NextGen for ASG deployment which uses launch configuration instead of launch template?
+
+There has been a redesign in ASG deployments as new features like Instance Refresh have emerged, while some features like Classic Load Balancer and Launch Configuration are being deprecated.
+To address a migrated pipeline, users can take the following steps:
+1.Migrate the current Launch Configuration to Launch Template. AWS provides the steps here: [AWS Launch Templates Migration Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html).
+2. Once this is completed, everything should work seamlessly. However, the current pipeline will not function properly. To resolve this, we can create a new pipeline following the guidelines outlined here: [AWS ASG Tutorial for Canary Phased Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
+
+:::info note
+Please note that this feature is behind the feature flag CDS_ASG_PHASED_DEPLOY_FEATURE_NG, which needs to be enabled for this feature to take effect.
+:::
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen. Is it necessary to explicitly create the JSON for launch template and ASG configurations?
+
+Harness does not have to provide JSON for ASG / Launch Template if we provide Base ASG in Infrastructure definition.
+
+#### In FirstGen, within the Infrastructure Definition, there was an option to provide Target Group details for a pipeline of type ASG deployment, which has now migrated to NextGen. How can this be provided in the NextGen pipeline?
+
+Although ASG support has been redesigned in NextGen, we will be taking the target groups attached with your base ASG. So, all the target groups that the base ASG you provided in infrastructure is attached with will get attached to your new ASG also. No need to provide the target groups separately.
+
+#### How will the feature flag `CDS_ASG_PHASED_DEPLOY_FEATURE_NG` function with my ASG deployment after updating my configuration from Launch Configuration to Launch Template during the migration of a pipeline from FirstGen to NextGen?
+
+Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).

@@ -84,7 +84,7 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
                "name": "DELEGATE_TAGS",
                "value": ""
              },
-   
+
              {
                "name": "NEXT_GEN",
                "value": "true"
@@ -101,7 +101,7 @@ Create an ECS cluster. Use an EC2 instance type with networking. For more inform
          "requiresCompatibilities": [
          "EC2"
        ],
-     
+
        "cpu": "1024",
        "family": "harness-delegate-task-spec"
      }
@@ -127,15 +127,15 @@ Use the following steps to create a service.
    ```
    ecs create-service --service-name <SERVICE_NAME> --task-definition
    ```
-   
+
    Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. For information on the specification of ECS service parameters, go to [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
-   
+
 2. Use the following instruction to increase the count of replica pods to the desired number:
 
    ```
    harness-delegate-task-spec --cluster <CLUSTER_NAME> --desired-count 1
    ```
-   
+
 ## Deploy a delegate to Amazon Fargate
 
 Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires a delegate with an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).

@@ -1,6 +1,8 @@
 ---
 id: load
 title: Chaos faults for Loadgen
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/load
 ---
 
 <!-- Import statement for Custom Components -->

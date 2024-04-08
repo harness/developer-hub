@@ -58,6 +58,8 @@ In the **Define Health Source** tab of the Add New Health Source page, do the fo
 
 1. In the Create or Select an Existing Connector dialog, select **+ New Connector**.
       
+   **NOTE** : For creating a Grafana Loki connector from Project/Organisation/Account Settings, select the **CustomHealth** connector for configuration.
+
 2. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
  
 3. In the **Headers** tab, enter the following, and select **Next**:

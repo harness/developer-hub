@@ -5,20 +5,40 @@ sidebar_position: 2
 sidebar_label: Jenkins plugin
 ---
 
-The SEI Jenkins Plugins is a tool, written in Java, which is used to send reports about jenkins builds to SEI.
+The **Harness - SEI Jenkins Plugin** is a tool, written in Java, to send reports about builds to Harness SEI.
 
-#### **To install this plugin please follow the following steps.**
+## Configure the integration
+
+1. Select **Integrations** under the **Data Settings**.
+2. Select **Available Integrations**, and locate the **Jenkins integration**, and select **Install**
+3. Add a **Name** for the integration.
+4. The **Description** and **Tags** are optional.
+5. Click on **Next: Create and Add Nodes**. This will display all the available Jenkins instances.
+6. Click on **+Add Instance**. This will generate the **SEI API KEY** which will be used in the **Jenkins Plugin Configuration**.
+
+:::note
+Newly added instances will show up under the Available Instances Tab.
+:::
+
+## Install the Plugin
+
+To install this plugin please follow the following steps.
 
 * Sign-in to **Jenkins** and select **Manage Jenkins**
 * Select **Manage Plugins**
 * Select the **Available plugins** tab.
-* In the **Search Plugin** box, type `SEI`
+* In the **Search** plugin, type in **Harness - SEI Jenkins Plugin**
+* Install the **Harness - SEI Job Reporter Plugin** and click on **Install without restart**
 * Install the plugin called **SEI Job Reporter** by selecting it and clicking **Install without restart**
-* Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success a restart might be needed.
+* Once the plugin installation is complete, the status will change to **Success**. If it doesn't change to Success, then a restart might be needed
+* Set the **Instance Name** and use the **API KEY** you generated earlier as the value for the **Manage Jenkins >> Harness - SEI Job Reporter >> SEI API KEY** field.
+* Set the **Application Type** to the environment where you are configuring the **Plugin**.
+
+![](../static/jenkins-plugin.webp)
 
 ## SEI Job Reporter Plugin
 
-The SEI Job Reporter Plugin, monitors all job runs. As soon as a job run completes it sends the info about job run and failed logs back to SEI SaaS. 
+The SEI Job Reporter Plugin, monitors all job runs. As soon as a job run completes it sends the info about job run and failed logs back to SEI SaaS.
 
 It does not do any periodic push. It gathers info about job stages and steps. If a job run fails and does not have stages the plugin captures the failed job run logs, else if it has stages and no steps, the plugin captures logs for the failed steps, else if it has steps, the plugin captures logs for failed steps. It does not capture the logs for any successful job or stage or step. This plugin supports the failure triage feature.
 

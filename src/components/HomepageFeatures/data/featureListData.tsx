@@ -105,7 +105,7 @@ export const featureList: CardItem[] = [
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: <>Deliver software with the highest velocity, quality, security, reliability, and resilience.</>,
-    link: "docs/category/get-started-with-platform",
+    link: "docs/category/get-started-with-harness",
     type: [docType.Documentation],
   },
   {

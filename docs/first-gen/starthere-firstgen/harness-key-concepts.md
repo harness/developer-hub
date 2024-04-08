@@ -8,18 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/key-concepts.md).
+:::warning
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/get-started/key-concepts.md).
 :::
 
 This topic describes the key concepts of Harness and its **End-to-End Software Delivery Abstraction Model**.
 
 First we'll look at platform and tool integration, and then how you can model a CD Pipeline in Harness.
 
-:::note
 **Want to jump right in?** Use our [Quickstarts](/docs/category/quickstarts) and go from novice to advanced in minutes.
-"position": "To position the category, enter a number and move this to the root level.",
-:::
 
 ## Where Does Harness Fit In?
 

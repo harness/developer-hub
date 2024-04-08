@@ -1,6 +1,8 @@
 ---
 id: linux-process-kill
 title: Linux process kill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-process-kill
 ---
 
 import Ossupport from './shared/note-supported-os.md'
