@@ -122,3 +122,5 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | [Bitrise Integrations](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#bitrise-integrations) | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
 | [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| [IP Whitelisting] | ✅ Supported for Mac, Linux, Windows | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Secure Connect](/docs/continuous-integration/secure-ci/secure-connect) | ✅ Supported for Linux. Mac/ Windows in roadmap. Use IP Whitelisting | ❌ Not supported | ❌ Not supported | ❌ Not supported |
