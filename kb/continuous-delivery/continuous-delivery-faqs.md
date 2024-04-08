@@ -6547,8 +6547,9 @@ This error happens if you have recently upgraded your Kuberenetes Cluster withou
 
 To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
 
-What is a vanity URL in the context of a SAML setup?
-A vanity URL is a customised URL that represents a specific identity or brand. In the context of SAML setup, it refers to a user-defined URL used as the ACS (Assertion Consumer Service) reply URL.
+#### What is a vanity URL in the context of a SAML setup?
+
+A vanity URL is a customized URL that represents a specific identity or brand. In the context of SAML setup, it refers to a user-defined URL used as the ACS (Assertion Consumer Service) reply URL.
 
 How can I ensure I'm using the correct vanity URL in the ACS reply URL?
 Make sure to use the exact vanity URL provided or configured for your application or service when setting up SAML authentication. Double-check the ACS reply URL configuration to ensure it matches the vanity URL.
@@ -6563,13 +6564,13 @@ Is it possible to loop over multiple stages?
 No, looping over the stage set is not possible. You will have to create an individual looping strategy for each stage.
 
 What are reserved symbols in PowerShell, and why are they important in Harness Secrets?
-Symbols such as |, ^, &, <, >, and % are reserved in PowerShell and can have special meanings. It's important to be aware of these symbols, especially when using them as values in Harness secrets.
+Symbols such as `|`, `^`, `&`, `<`, `>`, and `%` are reserved in PowerShell and can have special meanings. It's important to be aware of these symbols, especially when using them as values in Harness secrets.
 
 How should reserved symbols be handled in Harness secrets for PowerShell scripts?
-If a reserved symbol needs to be used as a value in a Harness secret for PowerShell scripts, it should be escaped using the ^ symbol. This ensures that PowerShell interprets the symbol correctly and does not apply any special meanings to it.
+If a reserved symbol needs to be used as a value in a Harness secret for PowerShell scripts, it should be escaped using the `^` symbol. This ensures that PowerShell interprets the symbol correctly and does not apply any special meanings to it.
 
 What is the recommended approach for referencing Harness secret values in PowerShell scripts?
-Instead of directly using <+test.var>, it's recommended to use <+test.get('var')>. This ensures that the secret value is obtained securely and without any issues, especially when dealing with reserved symbols.
+Instead of directly using `<+test.var>`, it's recommended to use `<+test.get('var')>`. This ensures that the secret value is obtained securely and without any issues, especially when dealing with reserved symbols.
 
 Why does the deleted service remain shown on the overview?
 The dashboard is based on historical deployment data based on the selected timeframe. Once the deleted service is not present in the selected timeframe it will stop showing up on the dashboard.
@@ -6599,10 +6600,10 @@ When should tags be specified in Terraform metadata and YAML?
 Tags should be specified in both metadata and YAML if they are present in the metadata. If no tags are specified in the metadata, they do not need to be included in the YAML.
 
 What is the correct format for specifying tags?
-Tags should follow the format Key: "Value" in both Terraform metadata and YAML files. For example, Terraform_Managed: "true". Ensure consistency between the tags specified in the metadata and those included in the YAML. For instance, if the metadata includes tags = ["foo: bar", ], ensure that the YAML representation also reflects this format.
+Tags should follow the format `Key: "Value"` in both Terraform metadata and YAML files. For example, `Terraform_Managed: "true"`. Ensure consistency between the tags specified in the metadata and those included in the YAML. For instance, if the metadata includes `tags = ["foo: bar", ]`, ensure that the YAML representation also reflects this format.
 
 Helm Deploy is failing with a null pointer exception
-This error usually occurs when running a helm deployment on an expired delegate. You will run into errors in case of expired delegates. Please upgrade the delegate to the latest version and retry the execution, Check this Doc for more info - https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/
+This error usually occurs when running a helm deployment on an expired delegate. You will run into errors in case of expired delegates. [Upgrade the delegate to the latest version](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) and retry the execution.
 
 How to auto-populate image tags from the previous stage into the next stage of the pipeline?
 For the chained pipeline, You need to output a variable from the first child pipeline and use it as input in the second child pipeline. Check this doc for more info - https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/
@@ -6613,16 +6614,16 @@ Please use these APIs to download the Audit trial as well as the deployment hist
 https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api/ https://developer.harness.io/docs/category/harness-api-firstgen
 
 How can I print the service name in Harness NG using expressions?
-You can print the service name using the expression <+service.name>.
+You can print the service name using the expression `<+service.name>`.
 
 How can I print the infrastructure name in Harness NG using expressions?
-You can print the infrastructure name using the expression <+infra.name>.
+You can print the infrastructure name using the expression `<+infra.name>`.
 
 How can I print the deployment trigger name in Harness NG using expressions?
-You can print the deployment trigger name using the expression <+pipeline.triggeredBy.name>.
+You can print the deployment trigger name using the expression `<+pipeline.triggeredBy.name>`.
 
 How can I use expressions to reference the primary tag of an artifact and where can I find more artifact-related expressions documentation for Harness NG?
-You can reference the primary tag of an artifact using the expression <+artifacts.primary.tag>. For additional artifact-related expressions and their usage in Harness NG, please refer to the official documentation at Harness Variables and Expressions.
+You can reference the primary tag of an artifact using the expression `<+artifacts.primary.tag>`. For additional artifact-related expressions and their usage in Harness NG, please refer to the official documentation at Harness Variables and Expressions.
 
 How to share templates among a few projects projects but not all?
 We don't support this use case. You can use RBAC to limit template scope at ORG, Project, and account levels. if a template is created at ORG level all projects will have access to it.
@@ -6633,6 +6634,7 @@ Pipelines and Stages are different entities conversion between these is not supp
 How to parse through the pipeline's YAML file to extract a particular value?
 You can use the API to get the pipeline YAML and use Jq to get the required value. Ex -
 
+```
 #!/bin/bash
 
 curl -s -X GET \
@@ -6644,8 +6646,9 @@ curl -s -X GET \
 templateRef=$(jq -r '.data.yamlPipeline' response.json | sed 's/\\n/\n/g' | grep -oP '(?<=templateRef: ).*' | head -n 1)
 
 echo "TemplateRef: $templateRef"
+```
 Can I extract a substring based on a regex pattern in Harness variables?
-No, it's not possible to directly extract a substring based on a regex pattern in Harness variables. Harness supports only the direct Java methods for string manipulation, and since Java lacks a direct function for extracting substrings using regex patterns, this functionality is not available in Harness variables.
 
-Why doesn't Harness support direct substring extraction using regex patterns?
-Harness leverages Java methods for string manipulation in variables, and Java itself lacks a built-in function for extracting substrings based on regex patterns. As a result, Harness cannot provide this functionality directly.
+No, it's not possible to directly extract a substring based on a regex pattern in Harness variables.
+
+Harness supports direct Java methods for string manipulation. Because Java lacks a direct function for extracting substrings using regex patterns, this functionality is not available in Harness variables. However, you can [use other Java string methods](https://developer.harness.io/docs/platform/variables-and-expressions/expressions-java-methods) to extract characters or substrings.
