@@ -179,11 +179,8 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
-
-#### Log Level
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -194,11 +191,16 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <a name="cli-flags"></a>
 
-#### Additional CLI Flags
+### Additional CLI flags
 
-You can use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. For example, you can include IPv6 tests as follows: `tool_args` = `-6`
+Use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. To include IPv6 tests, for example, add this flag: `-6`
 
-#### Fail on Severity
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
@@ -206,13 +208,11 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
 ### Settings
 
-TBD
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
--->
+<StoSettingSettings />
 
 ### Additional Configuration
 

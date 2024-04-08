@@ -108,42 +108,38 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
-
-#### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+### Additional CLI flags
+
+Use this field run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags, for example: 
+
+`--scan /harness/**/*.jar --log /shared/scan_logs/owasp.txt`
+      
+With these flags, the scanner scans JAR files and outputs the log to a shared folder, where it can be accessed by a later step.  
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-
-<StoSettingCliFlags />
-
-You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument:  `--scan ‘directory/**/*.jar’`
-
-<a name="fail-on-severity"></a>
-
-
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
+### Settings
+
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
 
 
 ### Additional Configuration
