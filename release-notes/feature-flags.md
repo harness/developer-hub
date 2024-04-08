@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-04-05T16:19:25
+date: 2024-04-08T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: April 5, 2024
+### Latest Updated: April 8, 2024
 
 ## April 2024
 
@@ -49,6 +49,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  -- improving stream error handling,
  -- increasing the capacity of dictionary, and
  -- additional cache recovery checks. (FFM-11089)
+
+### PHP SDK (Beta)
+
+#### Version 0.2.0 
+
+ - We've fixed the JWT fields missing in cache on authentication. (FFM-11123)
+ - We've added SDK type, version and lang to HTTP header. (FFM-7037)
 
 ## March 2024
 
