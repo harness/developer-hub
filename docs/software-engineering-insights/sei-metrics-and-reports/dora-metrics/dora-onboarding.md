@@ -36,7 +36,7 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 * **Medium:** Deployments occur anywhere from once per week to once per month.
 * **Low:** Deployment occurs less than once per month.
 
-To learn more, go to [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics/dora-metrics)
+To learn more, go to [Deployment Frequency](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 
 ![](./static/deployment-frequency-report.png)
 
