@@ -478,6 +478,14 @@ For example, in the following execution URL, the UUId follows `executions` and i
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
 ```
 
+### \<+pipeline.resumedExecutionId>
+
+The execution id of the root or original execution. For instance, this value will be different from the execution's `executionId` when it is a retry. 
+
+Here's an example:
+- Initial Execution: The `executionId` is `kNHtmOaLTu66f_QNU-wdDw`. This execution failed and triggers a retry. 
+- Retry Execution: The `executionId` is `hrP0KR5aSM-gPGPYMYxV3g`. However, the `resumedExecutionId` is `kNHtmOaLTu66f_QNU-wdDw`.
+
 ### \<+pipeline.executionUrl>
 
 The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
