@@ -2886,7 +2886,7 @@ Please find the pre-requisite for migration documentation [here](https://harness
 
 Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
 
-### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
+#### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
 
 You can select the Artifact filter option and configure the service's Artifact source as needed.
 
@@ -6590,15 +6590,18 @@ This can happen in following cases:
 Please read more on ECS Blue-Green Steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#visual-summary)
 
 #### Does Harness support methods to convert `<+pipeline.startTs>` into a readable format, such as 'ddmmyyyyhhmm'?
+
 No, Harness does not support this conversion date format on variables
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)
 
 
 #### Why is Regex not working for my Artifact Filter in Artifactory?
+
 Artifactory does not support Regex in it's API. Instead Artifactory supports Glob Patterns. To learn more about the supported syntax, go to [Glob Patterns documentation](https://code.visualstudio.com/docs/editor/glob-patterns#_glob-pattern-syntax).
 
 
 #### How do I dynamically pass a single user group or multiple into an Approval Stage?
+
 First, set the User Groups section in the approval stage to `combined`. This allows you to pass a list of User Groups. Harness expects the value to be a list so passing as a string won't work. Instead, pass an expression as shown below.
 ```
 <+<+stage.variables.groups>.split(",")>
@@ -6612,9 +6615,11 @@ Both of these example values work for the `groups` variable.
 - `group1`
 
 #### Why am I getting an error that my Pipeline cannot be saved because it needs further configuration?
+
 This error occurs because there's a misconfiguration with the pipeline. Harness will tell you exactly what needs to be fixed so that you can quickly make those changes. In some edge case scenarios, you may get this error even if your pipeline has no visual misconfigurations. Although there are no issues with the pipeline visually, it's good practice to also check the pipeline YAML to ensure there are no issues with the pipeline configuration.
 
 #### What is Harness' pipeline execution history retention policy?
+
 Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
 
 #### Are we still supporting the container step in Continuous Delivery?
