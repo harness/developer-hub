@@ -6651,6 +6651,7 @@ Customers typically have a one-month lead time before the CI starts running the 
 Customers can avoid potential outages by storing images in their own registry and explicitly specifying which version of the image to pull. By following this approach, they ensure continuity and can avoid functionality issues in the pipeline caused by using outdated image versions.
 Read more about specifying the [Harness CI Images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines)
 images used in your pipelines.
+
 #### How does marking a Pipeline as Failed differ from aborting it?
 
 Marking a Pipeline as Failed provides a more controlled approach, allowing users to trigger specific Failure Strategies while maintaining the integrity of the Pipeline execution process. Learn more about [Marking a pipeline as failed](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/#marking-a-pipeline-as-failed).
