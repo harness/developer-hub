@@ -2886,7 +2886,7 @@ Please find the pre-requisite for migration documentation [here](https://harness
 
 Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when creating an Artifact and apply the regex to filter the path.
 
-### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
+#### How can I make sure build artifacts pulled into Harness come from protected branches before production deployment?
 
 You can select the Artifact filter option and configure the service's Artifact source as needed.
 
@@ -6590,15 +6590,18 @@ This can happen in following cases:
 Please read more on ECS Blue-Green Steps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial/#visual-summary)
 
 #### Does Harness support methods to convert `<+pipeline.startTs>` into a readable format, such as 'ddmmyyyyhhmm'?
+
 No, Harness does not support this conversion date format on variables
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)
 
 
 #### Why is Regex not working for my Artifact Filter in Artifactory?
+
 Artifactory does not support Regex in it's API. Instead Artifactory supports Glob Patterns. To learn more about the supported syntax, go to [Glob Patterns documentation](https://code.visualstudio.com/docs/editor/glob-patterns#_glob-pattern-syntax).
 
 
 #### How do I dynamically pass a single user group or multiple into an Approval Stage?
+
 First, set the User Groups section in the approval stage to `combined`. This allows you to pass a list of User Groups. Harness expects the value to be a list so passing as a string won't work. Instead, pass an expression as shown below.
 ```
 <+<+stage.variables.groups>.split(",")>
@@ -6612,9 +6615,11 @@ Both of these example values work for the `groups` variable.
 - `group1`
 
 #### Why am I getting an error that my Pipeline cannot be saved because it needs further configuration?
+
 This error occurs because there's a misconfiguration with the pipeline. Harness will tell you exactly what needs to be fixed so that you can quickly make those changes. In some edge case scenarios, you may get this error even if your pipeline has no visual misconfigurations. Although there are no issues with the pipeline visually, it's good practice to also check the pipeline YAML to ensure there are no issues with the pipeline configuration.
 
 #### What is Harness' pipeline execution history retention policy?
+
 Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
 
 #### Are we still supporting the container step in Continuous Delivery?
@@ -6651,6 +6656,7 @@ Customers typically have a one-month lead time before the CI starts running the 
 Customers can avoid potential outages by storing images in their own registry and explicitly specifying which version of the image to pull. By following this approach, they ensure continuity and can avoid functionality issues in the pipeline caused by using outdated image versions.
 Read more about specifying the [Harness CI Images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines)
 images used in your pipelines.
+
 #### How does marking a Pipeline as Failed differ from aborting it?
 
 Marking a Pipeline as Failed provides a more controlled approach, allowing users to trigger specific Failure Strategies while maintaining the integrity of the Pipeline execution process. Learn more about [Marking a pipeline as failed](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/#marking-a-pipeline-as-failed).
@@ -6658,3 +6664,38 @@ Marking a Pipeline as Failed provides a more controlled approach, allowing users
 #### Do common containerized steps like "run" and "git clone" require a CI license to be available in CD step groups?
 
 No, you do not need a CI license to use the "run" and "git clone" steps in a CD step group, even though they are typically listed under the "build" section.
+
+#### Is there any schema on the Harness platform that needs to be followed for individual items in the a JSON array?
+
+The JSON can be any schema. You map the fields with the metadata. If there is specific metadata for each version, users should consistently use the same version throughout the pipeline. The JSON itself does not require a predefined schema to adhere to.
+
+#### Is there any way to recover projects that were deleted in one of the organization along with the pipelines and templates that were in place?
+
+One possible approach to  recover deleted project within an organization would be to retrieve the YAML from the audit trail to reconstruct the pipeline.
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  Is launch configuration not supported in NextGen?
+
+Users migrating to NextGen from FirstGen will need to replace Launch Configuration with Launch Template. AWS provides the steps here: https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen.  In FirstGen, when providing the Base ASG, Harness could pick up the launch configuration from the base ASG and created a configuration for new ASG.  What needs to be changed to migrate the workflow to NextGen for ASG deployment which uses launch configuration instead of launch template?
+
+There has been a redesign in ASG deployments as new features like Instance Refresh have emerged, while some features like Classic Load Balancer and Launch Configuration are being deprecated.
+To address a migrated pipeline, users can take the following steps:
+1.Migrate the current Launch Configuration to Launch Template. AWS provides the steps here: [AWS Launch Templates Migration Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/migrate-to-launch-templates.html).
+2. Once this is completed, everything should work seamlessly. However, the current pipeline will not function properly. To resolve this, we can create a new pipeline following the guidelines outlined here: [AWS ASG Tutorial for Canary Phased Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
+
+:::info note
+Please note that this feature is behind the feature flag CDS_ASG_PHASED_DEPLOY_FEATURE_NG, which needs to be enabled for this feature to take effect.
+:::
+
+#### A pipeline of type ASG deployment has migrated from FirstGen to NextGen. Is it necessary to explicitly create the JSON for launch template and ASG configurations?
+
+Harness does not have to provide JSON for ASG / Launch Template if we provide Base ASG in Infrastructure definition.
+
+#### In FirstGen, within the Infrastructure Definition, there was an option to provide Target Group details for a pipeline of type ASG deployment, which has now migrated to NextGen. How can this be provided in the NextGen pipeline?
+
+Although ASG support has been redesigned in NextGen, we will be taking the target groups attached with your base ASG. So, all the target groups that the base ASG you provided in infrastructure is attached with will get attached to your new ASG also. No need to provide the target groups separately.
+
+#### How will the feature flag `CDS_ASG_PHASED_DEPLOY_FEATURE_NG` function with my ASG deployment after updating my configuration from Launch Configuration to Launch Template during the migration of a pipeline from FirstGen to NextGen?
+
+Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).
