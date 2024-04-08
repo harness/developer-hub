@@ -2,6 +2,8 @@
 title: Policy for all AWS faults
 sidebar_position: 3
 description: AWS superset policy to execute all AWS faults
+redirect_from:
+    - /docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults
 ---
 
 This section describes the AWS managed policy and how you can use a superset policy to execute all AWS faults.

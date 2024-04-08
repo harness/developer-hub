@@ -1,6 +1,8 @@
 ---
 id: cloud-foundry
 title: Chaos Faults for Cloud Foundry
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry
 ---
 
 <!-- Import statement for Custom Components -->
@@ -69,6 +71,82 @@ CF app container kill causes a Cloud Foundry app instance container to be killed
 <summary>Use cases</summary>
 
 - Checks resilience upon app instance crash due to container unavailability.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app network loss
+
+CF app network loss injects network loss into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance network loss.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance network loss.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app network latency
+
+CF app network latency injects network latency into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance network latency.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance network latency.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app network corruption
+
+CF app network corruption injects network corruption into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance network corruption.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance network corruption.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="cloud-foundry">
+
+### CF app network duplication
+
+CF app network duplication injects network duplication into a Cloud Foundry app instance.
+
+- Checks resilience upon app instance network duplication.
+- Validates the effectiveness of disaster recovery and high availability of the app.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Checks resilience upon app instance network duplication.
 - Validates the effectiveness of disaster recovery and high availability of the app.
 
 </accordion>

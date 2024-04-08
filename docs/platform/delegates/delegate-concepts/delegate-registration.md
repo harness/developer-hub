@@ -19,36 +19,34 @@ To install a delegate, follow the steps in the relevant delegate installation to
 Once you have installed the delegate in your environment, select **Verify** in the delegate wizard, and Harness will verify that it is receiving heartbeats from the delegate.
 
 ![](static/delegate-registration-01.png)
-This means Harness is waiting for the delegate you installed to register.
 
-Registration can take a few minutes.
-
-Once the delegate registers, the **Verify** screen will indicate that the delegate is running.
+This means Harness is waiting for the delegate you installed to register. Registration can take a few minutes. Once the delegate registers, the **Verify** screen will indicate that the delegate is running.
 
 ### Verify delegate registration manually
 
-The Verify screen also includes troubleshooting steps.
-
-Here are a few of the steps for the Kubernetes delegate.
+The Verify screen also includes troubleshooting steps. Here are a few of the steps for the Kubernetes delegate.
 
 Check the status of the delegate on your cluster:
 
 ```
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
+
 Check the delegate logs:
 
 ```
 kubectl logs -f <harness-delegate> -n harness-delegate-ng
 ```
+
 If the pod isn't up, you might see the following error in your cluster:
 
 ```
 CrashLoopBackOff: Kubernetes Cluster Resources are not available.
 ```
+
 Make sure the Kubernetes Cluster Resources (CPU, memory) are sufficient.
 
-If the delegate didn't reach a healthy state, try this:
+If the delegate didn't reach a healthy state, run the following:
 
 ```
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
@@ -56,7 +54,7 @@ kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 
 ### Allowlist verification
 
-:::info note
+:::note
 
 Currently, allowlist verification for delegate registration is behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -69,3 +67,5 @@ Without this feature flag enabled, delegates with an immutable image type can re
 The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
 
 Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. For more information, go to [Add and manage IP allowlists](/docs/platform/security/add-manage-ip-allowlist/).
+
+

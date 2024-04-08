@@ -1,6 +1,8 @@
 ---
 id: linux
 title: Chaos Faults for Linux
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux
 ---
 
 <!-- Import statement for Custom Components -->

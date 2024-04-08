@@ -71,7 +71,7 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
                type: String
                description: "Name of the build associated with the uploaded artifacts in JFrog"
                required: false
-               value: "some-build-name"
+               value: <+pipeline.name> # You can use an expression or a fixed value.
    ```
 
 - `PLUGIN_BUILD_NUMBER`: Specify the build number associated with the uploaded artifacts in JFrog Artifactory. Use this flag to version and identify different builds of the same project or component.
@@ -82,7 +82,7 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
                type: String
                description: "Build number associated with the uploaded artifacts in JFrog"
                required: false
-               value: "some-build-number"
+               value: <+pipeline.executionID> # You can use an expression or a fixed value.
    ```
 
 <details>
@@ -105,8 +105,8 @@ The settings are declared slightly differently when using a Plugin step, but you
                       url: YOUR_JFROG_ARTIFACTORY_URL
                       source: /path/to/source
                       target: /path/to/target
-                      build_name: ARTIFACTS_BUILD_NAME
-                      build_number: ARTIFACTS_BUILD_NUMBER
+                      build_name: <+pipeline.name> # You can use an expression or a fixed value.
+                      build_number: <+pipeline.executionID> # You can use an expression or a fixed value.
 ```
 
 </details>

@@ -2,6 +2,8 @@
 title: Introduction to ChaosGuard™
 sidebar_position: 1
 description: An additional level of security to guard chaos experiments from chaos-enabled users
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/introduction-to-chaosguard
 ---
 
 This section introduces you through ChaosGuard and describes how Harness provides RBAC (role-based access control) to users or user groups to access the **chaos resources** at different levels using **ChaosGuard**.

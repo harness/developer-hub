@@ -4,6 +4,8 @@ description: Create a Software Component and register it in Software Catalog
 sidebar_position: 2
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
 ## Create an IDP YAML

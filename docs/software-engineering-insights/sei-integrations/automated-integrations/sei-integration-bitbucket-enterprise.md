@@ -18,17 +18,14 @@ The following permissions and settings are required to use the SEI Bitbucket int
 
 ## Configure the integration
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-
 
 <Tabs>
   <TabItem value="private-onprem" label="Private On-Prem" default>
 
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Settings**.
 3. Select **Available Integrations**, and locate the **Bitbucket Enterprise** integration, and select **Install**
 4. Select Install.
@@ -42,15 +39,15 @@ import TabItem from '@theme/TabItem';
    * You can select the **Filters** to define the type of data you want to ingest. The available options are **Fetch Commits**, **Fetch PRs**, **Fetch PRs Reviews**, **Fetch Commits Fields**.
    * Download the `satellite.yml` file and update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-If you encounter any issues during the integration process, go to the [Satellite integration Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
-Here’s a sample satellite.yaml file generated for the Bitbucket enterprise integration:
+Here’s a sample `satellite.yaml`:
 
 ```yaml
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: bitbucket_server

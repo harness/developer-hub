@@ -2,6 +2,8 @@
 title: Walkthrough- Execute custom chaos experiments using API
 sidebar_position: 20
 description: Guide to create and execute custom chaos experiments using API
+redirect_from:
+  - /tutorials/chaos-experiments/first-chaos-experiment-via-api
 ---
 
 import Tabs from '@theme/Tabs';

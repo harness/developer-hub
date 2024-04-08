@@ -1,6 +1,8 @@
 ---
 id: windows-ec2-cpu-hog
 title: Windows EC2 CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/windows-ec2-cpu-hog
 ---
 EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
 

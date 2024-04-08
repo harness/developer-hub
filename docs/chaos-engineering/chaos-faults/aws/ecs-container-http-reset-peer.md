@@ -1,6 +1,8 @@
 ---
 id: ecs-container-http-reset-peer
 title: ECS container HTTP reset peer
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-http-reset-peer
 ---
 
 ECS container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.

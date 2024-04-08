@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-time-chaos
 title: VMware Windows Time Chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-time-chaos
 ---
 
 VMware Windows Time Chaos simulates a time skew scenario on Windows OS based VMware VM.

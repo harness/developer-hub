@@ -1,6 +1,8 @@
 ---
 id: ecs-container-io-stress
 title: ECS container IO stress
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-io-stress
 ---
 
 ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.

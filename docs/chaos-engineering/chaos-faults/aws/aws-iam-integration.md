@@ -2,6 +2,8 @@
 id: aws-iam-integration
 title: Use IAM roles for authentication
 sidebar_position: 2
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-iam-integration
 ---
 
 ## Authentication methods
@@ -20,7 +22,7 @@ There are two methods available for HCE to authenticate itself with AWS and obta
 
 * **Kubernetes Secret** 
 
-  This approach involves providing the necessary credentials through Kubernetes secrets. The advantage of this method is its compatibility with any cluster and platform. It is explained in the Notes section of the experiment docs.
+  This approach involves providing the necessary credentials through Kubernetes secrets. The advantage of this method is its compatibility with any cluster and platform. It is explained in the "notes" section of the experiment documentation.
 
 ## Account terminology and summary of steps for IAM integration
 

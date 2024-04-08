@@ -2,6 +2,8 @@
 title: Connect chaos infrastructures
 sidebar_position: 1
 description: Guide to connect to Kubernetes and Linux chaos infrastructure
+redirect_from:
+  - /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
 ---
 
 import Tabs from '@theme/Tabs';

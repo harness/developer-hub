@@ -1,6 +1,8 @@
 ---
 id: azure-web-app-stop
 title: Azure web app stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-stop
 ---
 
 Azure web app stop shuts down the application. It checks whether the requests have been re-routed to another instance on the application service.

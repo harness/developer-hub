@@ -259,12 +259,6 @@ You can use Harness Cloud build infrastructure in firewalled environments. For m
 
 ## Queue Intelligence
 
-:::note
-
-Currently, Queue Intelligence is behind a feature flag. Contact Harness Support to enable the feature.
-
-:::
-
 With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. This replaces the previous behavior where the Harness Delegate would fail any job that it could not schedule or run immediately.
 
 The Queue Intelligence feature introduces a `queued` state for individual builds. Builds progress through the following states:
@@ -297,6 +291,21 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 
 ### Known issues
 
+#### Harness Cloud macOS platform .netrc file can have incorrect permissions
+
 There is a known issue impacting macOS machines on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) due to incorrect permissions for the `.netrc` file at `/Users/anka/.netrc`. The permissions are set to `644` when they should be `600`.
 
 This can cause errors when installing Cocoapods. If your build installs Cocoapods, uses a macOS platform on Harness Cloud build infrastructure, and fails due to an error like `Couldn't determine repo type for URL` when installing Cocoapods, then, until this issue is fixed, make sure the pipeline edits the permissions on the `.netrc` file before attempting to install Cocoapods.
+
+#### Harness Cloud Windows platforms can fail to clone BitBucket Cloud repos
+
+Due to a [BitBucket Cloud issue](https://jira.atlassian.com/browse/BCLOUD-23158), specific versions of BitBucket Cloud could fail to clone repos on Windows platforms running Git version 2.44.
+
+Atlassian released a fix for this issue; however, if you use a Harness Cloud Windows platform and your build is unable to clone your BitBucket Cloud repo, do the folloiwng:
+
+1. [Disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages).
+2. At the beginning of your build stage, add a a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.
+
+#### Harness Cloud VMs don't support hardware acceleration
+
+Currently, Harness Cloud build machines don't support hardware acceleration. This applies to all platforms and architectures.

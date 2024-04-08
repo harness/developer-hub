@@ -1,8 +1,7 @@
 ---
 title: Delegate release notes
 sidebar_label: Delegate
-tags: [NextGen, "Delegate"]
-date: 2024-03-29T10:00
+date: 2024-04-04T10:00
 sidebar_position: 4
 ---
 
@@ -26,7 +25,7 @@ These release notes describe recent changes to Harness Delegate.
 
 :::warning important changes
 
-Please note that the following important changes will occur **March 31, 2024**:
+Please note that the following important changes will occur in an upcoming release:
 
 - The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
 
@@ -68,6 +67,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
+
+## April 2024
+
+### Version 24.04.82603 <!--  April 4, 2024 -->
+
+#### Hotfix
+
+- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180, ZD-58933, ZD-59370, ZD-60138)
 
 ## March 2024
 

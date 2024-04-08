@@ -146,7 +146,7 @@ The Apply, Rolling, Canary, and Blue Green deployment steps include a **Skip Dry
 
 By default, Harness uses the `--dry-run` flag on the `kubectl apply` command for all these steps. If the **Skip Dry Run** setting is selected, Harness will not use the `--dry-run` flag.
 
-The **Skip Dry Run** setting is different than the Dry Run step. The Dry Run step only performs a dry run. The Dry Run step does not impact whether or not a deployment step performs a dry run.
+The **Skip Dry Run** setting is different from the Dry Run step. The Dry Run step only performs a dry run. The Dry Run step does not impact whether or not a deployment step performs a dry run.
 
 
 ## Using the Dry Run with a Native Helm Deployment

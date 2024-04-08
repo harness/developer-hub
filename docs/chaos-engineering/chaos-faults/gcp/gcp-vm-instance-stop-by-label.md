@@ -1,6 +1,8 @@
 ---
 id: gcp-vm-instance-stop-by-label
 title: GCP VM instance stop by label
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop-by-label
 ---
 GCP VM instance stop by label powers off from the GCP VM instances (filtered by a label before) for a specific duration.
 

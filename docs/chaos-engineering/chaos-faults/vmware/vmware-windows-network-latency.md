@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-network-latency
 title: VMware Windows Network Latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-latency
 ---
 
 VMware Windows Network Latency simulates a network latency scenario on Windows OS based VMware VM.

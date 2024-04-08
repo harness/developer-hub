@@ -6,6 +6,8 @@ redirect_from:
   - /tutorials/internal-developer-portal/how-to-track-migrations
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 ## Introduction
 In this tutorial we will be using [Scorecards](https://developer.harness.io/docs/internal-developer-portal/scorecards/scorecard) for tracking and driving migrations. Recently we have introduced new Data Points for git based Data Sources to extract information from files using regex patterns. In this tutorial we will be building some custom checks using these Data Points to track library and language versions from the contents of metadata files. 
 

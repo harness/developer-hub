@@ -2,6 +2,8 @@
 title: Configuration
 sidebar_position: 3
 description: Steps to configure ChaosGuard and enable it
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/configuring-chaosguard
 ---
 
 This section walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.

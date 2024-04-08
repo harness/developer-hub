@@ -4,7 +4,7 @@ description: Harness Feature Flag Architecture
 sidebar_label: Feature Flag Architecture
 ---
 
-![](./static/harness_ff_architecture.png)
+<DocImage path={require('./static/harness_ff_architecture.png')} width="100%" height="100%" title="Click to view full size image" />
 
 This diagram describes the logical architecture of the Feature Flags system within a production cluster. Comprising three microservices, the Feature Flags architecture is orchestrated as follows:
 
@@ -35,8 +35,7 @@ Feature Flags leverages managed services for scalable data storage and messaging
 3. Timescale is used for the storage of historical evaluation data.
 
 
-
-![](./static/harness_ff_with_proxy_architecture.png)
+<DocImage path={require('./static/harness_ff_with_proxy_architecture.png')} width="100%" height="100%" title="Click to view full size image" />
 
 The Feature Flag proxy offers customers a greater degree of control and resilience. In this model one or more proxies are connected to the Harness SaaS Platform. The proxy fetches the initial flag data and will receive flag change events throughout its lifetime.
 

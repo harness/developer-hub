@@ -5,6 +5,8 @@ description: Step by step tutorial to build a frontend backstage plugin
 sidebar_position: 40
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 ## Introduction 
 
 A Backstage Plugin adds functionality to Backstage. In this tutorial we will be using the a backstage monorepo to build out frontend plugins. 

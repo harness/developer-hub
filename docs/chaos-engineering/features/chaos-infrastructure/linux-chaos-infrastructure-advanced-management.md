@@ -2,7 +2,10 @@
 title: Linux chaos infrastructure advanced management
 sidebar_position: 7
 description: Guide to advanced setup with Linux chaos infrastructure
+redirect_from:
+    - /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
 ---
+
 This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure (LCI).
 
 HCE supports executing Linux faults similar to Kubernetes faults. 
