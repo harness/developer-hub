@@ -139,6 +139,8 @@ To add or edit Workflow profiles:
 3. Select **Workflow** under **Profiles**.
 4. To create a profile, select **+New Workflow Profile**. To edit a profile, select the profile's name in the profiles list.
 
+![](./static/dora-1.png)
+
 :::tip
 
 You can create profiles by copying existing profiles. Make sure to edit copies accordingly and that your Lead Time widgets reference the correct profile.
@@ -150,31 +152,114 @@ You can create profiles by copying existing profiles. Make sure to edit copies a
 DORA Profile is a type of Workflow Profile that allows you to define the thresholds for measuring the DORA metrics for your engineering team. Follow the steps below to configure the DORA profile:
 
 1. In the **Workflow** tab under **Profiles** select **+New Workflow Profile**
+
+![](./static/dora-1.png)
+
 2. Select **DORA profile** as the type for the Workflow profile.
+
+![](./static/dora-2.png)
+
 3. Enter a **Name** for the profile.
 4. Add a profile description. (Optional)
-5. **Lead Time for Changes:** Define the settings for calculating the DORA Lead Time for Changes report. 
-   * Select the Issue Management tool that you want to use to track tasks in your team.
-   * Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages).
-6. **Deployment Frequency:** Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
-   * Choose the tool that you want to use to measure deployments in your team.
-   * Select the existing integrations that you would like to use to calculate the Deployment Frequency.
-   * Configure the additional filters to define the criteria for deployments to be considered in the calculation.
-7. **Mean Time to Restore:** Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
-8. **Change Failure Rate:** Define the configuration for measuring the Change Failure Rate for your team.
 
-   * Select factors to use to calculate failed deployments.
-   * Select factors to use to calculate total deployments. Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
-   * Ensure to select the checkbox incase you want to calculate the Change Failure Rate using only deployments that causes failure.
-   * Choose the integration that you want to use to measure deployments in your team.
-   * Select the existing integrations that you would like to use for the calculation. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them, if desired.
-   * Configure the additional Filters to define the criteria for total deployment and deployments causing failure to be considered in the calculation.
-9. **Association:** Modify the Collection and Project associated with this profile.
+![](./static/dora-3.png)
+
+5. **Lead Time for Changes:** Define the settings for calculating the DORA Lead Time for Changes report.
+   1. Select the Issue Management tool that you want to use to track tasks in your team.
+
+   ![](./static/dora-4.png)
+   
+   2. Select your start event and configure the stages involved in the workflow based on the selected event.
+      1. For tracking Lead Time only using the SCM tool, select the start event as Commit Created
+      2. For measuring Lead Time using Issue Management tools and SCM both or only using Issue Management tool, select the start event as Ticket Created.
+   
+   ![](./static/dora-5.png)
+
+   3. Configure the stages involved in the workflow based on the selected event. To learn more, go to [Development Stages in Lead Time for Changes](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics#development-stages).
+   4. To add custom stages, Click on the plus button within the workflow.
+   
+   ![](./static/dora-6.png)
+
+   5. Add the stage name and description.
+   
+   ![](./static/dora-7.png)
+
+   6. Define the Stage Definition by selecting the trigger event (options include Issue Management, Other CI/CD tools, Harness CI) and setting the event parameters.
+   
+   ![](./static/dora-8.png)
+
+   7. Set acceptable time limits and target times (e.g., IDEAL TIME, ACCEPTABLE TIME) for the custom stage and save it.
+   
+   ![](./static/dora-9.png)
+
+:::note
+
+When configuring a workflow profile in Jira, you have the option to add a release stage to measure Lead Time. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
+
+:::
+
+6. **Deployment Frequency:** Modify this settings to define how you want to calculate Deployment Frequency for your engineering team.
+   1. Choose the tool that you want to use to measure deployments in your team.
+   
+   ![](./static/dora-10.png)
+
+   2. Select the existing integrations that you would like to use to calculate the Deployment Frequency.
+   
+   ![](./static/dora-11.png)
+
+   3. Configure the additional Filters to define the criteria for deployments that are to be considered in the Deployment Frequency calculation.
+   
+   ![](./static/dora-12.png)
+
+
+7. **Mean Time to Restore:** Define the settings for measuring the time it takes a team to recover from a failure in production. The configuration is similar to the settings for Lead Time.
+
+![](./static/dora-13.png)
+
+8. **Change Failure Rate:** Define the configuration for measuring the Change Failure Rate for your team.
+   1. Choose the tool that you want to use to measure deployments in your team.
+   
+   ![](./static/dora-14.png)
+
+   2. Select the existing integrations that you would like to use for the calculation. Configuration details vary by SEI integration type. Default values are pre-populated, and you can change them if desired.
+   
+   ![](./static/dora-15.png)
+
+   3. Select factors to use to calculate failed deployments and total deployments.
+   
+   ![](./static/dora-16.png)
+
+   4. Ensure to select the checkbox in case you want to calculate the Change Failure Rate using only deployments that cause failure.
+   
+   ![](./static/dora-17.png)
+   
+9.  **Association:** Associate the DORA profile with the Collection and Project under which you have created the DORA Insight.
+    
+![](./static/dora-18.png)
+
+![](./static/dora-19.png)
+
 10. Once you have finished configuring the profile setting click on **Save** to save the profile.
+Note that you can also edit existing Collections and associate them with the DORA profile if required.
 
 :::tip
 Note that for calculating DORA metrics, each profile can be associated with only one Collection in a one-to-one mapping
 :::
+
+You can also associate Collections to existing DORA profiles from the **Collections** Tab. Collection categories are shown as tabs on the Collection Settings page.
+
+* To associate a DORA profile with the existing Collections, click on the Associate Workflow Profile option under the Associated Profiles column.
+
+![](./static/dora-20.png)
+
+* Select the DORA profile from the available options. The pop-up dialog box will display the list of all the profiles that can be associated with the current collection.
+
+![](./static/dora-21.png)
+
+* Select the DORA profile and click on the Associate Profile button.
+
+![](./static/dora-22.png)
+
 
 ### Configure the Lead Time Profile
 

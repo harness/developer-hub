@@ -1,8 +1,8 @@
 ---
-title: DORA metrics
+title: DORA Reports
 description: DORA metrics are key metrics for describing a software development team's performance.
 sidebar_position: 10
-sidebar_label: DORA
+sidebar_label: DORA reports
 ---
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
@@ -16,13 +16,13 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 Harness SEI provides the following reports for DORA metrics reporting:
 
 * [Deployment Frequency](#deployment-frequency)
-* [Lead Time for Changes](#lead-time-for-changes)
+* [DORA Lead Time for Changes](#lead-time-for-changes)
 * [Change Failure Rate](#change-failure-rate)
-* [Mean Time to Restore (MTTR)](#mean-time-to-restore-mttr)
+* [DORA Mean Time to Restore (MTTR)](#mean-time-to-restore-mttr)
 
 ## Deployment Frequency
 
-Deployment Frequency represents how often an organization successfully releases software to production.
+The Deployment Frequency report represents how often an organization successfully releases software to production.
 
 To monitor Deployment Frequency, you must create a [DORA type Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile) and add the **Deployment Frequency** widget to your Insights.
 
@@ -41,7 +41,6 @@ To add the **Deployment Frequency** widget to Insights:
 5. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
 The widget automatically detects the relevant Workflow profile based on the Collections associated with the Insight.
-
 
 ![](./static/widget-place.png)
 
@@ -64,6 +63,8 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
 * Collection-level filters.
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
+
+To learn more, go to [Deployment Frequency calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-deployment-frequency-calculation).
 
 :::info
 SEI fetches the history for both the builds jobs and triggers jobs for each pipeline from GitLab. The list of all jobs is available in the job selection tab under Deployment Frequency when configuring the DORA profile.
@@ -97,7 +98,7 @@ Assuming there are 24 tickets in **Done** status in the last 91 days, then the D
 
 ## Lead Time for Changes
 
-DORA calculation for Lead Time is similar to how lead time, in general, is calculated, with the difference being the ability to associate a collection while defining the profile, i.e., at the profile level.
+This report displays the time taken by an issue to go from code committed to code successfully running in production. DORA calculation for Lead Time is similar to how lead time, in general, is calculated, with the difference being the ability to associate a Collection while defining the DORA profile, i.e., at the profile level.
 
 This report represents the amount of time it takes a commit to get into production.
 
@@ -194,7 +195,7 @@ Overall lead time is the sum of the time spent in each stage in a workflow, such
 
 The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
 
-To learn more about how the DORA Lead Time metric is calculated, go to [DORA Lead Time Calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
+To learn more, go to [DORA Lead Time calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
 
 The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
 
@@ -279,6 +280,8 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
 * Widget-level filters.
 * Insight time range, which is the time range selected by the user when viewing the Insight.
 
+To learn more, go to [Change Failure Rate calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-change-failure-rate-calculation).
+
 <details>
 <summary>Change Failure Rate calculation example</summary>
 
@@ -319,13 +322,15 @@ There are several ways to present MTTR in SEI Insights, including:
 * **Time To Restore Service**
 * **[Issue Resolution Time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports)**
 
+To learn more, go to [DORA MTTR calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-mttr-calculation).
+
 ### Add the DORA Mean Time To Restore report
 
 To add the **DORA Mean Time To Restore** report to the Insight:
 
 1. Select **Settings**, and then select **Add Widget**.
 2. Select the **Mean Time To Restore** widget.
-3. Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations. 
+3. Customize the widget by configuring **Filters**. This step allows you to specify conditions (such as `Issue Created In`/`Resolved In`) that contribute to the overall calculations.
 4. Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
 5. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile).
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
