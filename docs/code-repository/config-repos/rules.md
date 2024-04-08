@@ -6,7 +6,7 @@ sidebar_position: 30
 
 In Harness Code, you can use branch rules and CODEOWNERS to manage individual repositories.
 
-For broader permissions, such as the ability to view repos within a specific Harness project, go to [Access control](/docs/code-repository/get-started/overview.md#access-control).
+For broader permissions, such as the ability to view repos within a specific Harness project, go to [Access control](/docs/code-repository/get-started/onboarding-guide.md#manage-access).
 
 ## Add branch rules
 
