@@ -140,9 +140,9 @@ export const platformData: Horizon = {
       },
       {
         tag: [],
-        title: "Multi tenant SaaS in EU",
+        title: "Multi-tenant SaaS in EU",
         description:
-          "Customers can request to be onboarded to a multi tenant Harness SaaS cluster in EU region",
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
       },
 
     ],
