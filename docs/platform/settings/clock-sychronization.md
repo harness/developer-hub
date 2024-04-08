@@ -4,15 +4,17 @@ description: This topic explains recommended settings for clock synchronization.
 sidebar_position: 2
 ---
 
+This topic provides recommended settings for Network Time Protocol (NTP).
+
 As per [ISO/IEC 27001-A.12.4.4 clock synchronization](https://www.isms.online/iso-27001/annex-a/8-17-clock-synchronisation-2022/):
 
-"The cloud service provider should provide information to the cloud service customer regarding the clock used by the cloud service provider's systems, and information about how the cloud service customer can synchronize local clocks with the cloud service clock."
+"_The cloud service provider should provide information to the cloud service customer regarding the clock used by the cloud service provider's systems, and information about how the cloud service customer can synchronize local clocks with the cloud service clock._"
 
 - **Control:** Clocks in all related information management systems should be integrated into a single reference time source for an organization.
 
 - **Implementation:** A standard reference time should be defined for use inside the organization.
 
-## Recommended NTP configuration for Delegate
+## Recommended NTP configuration for Harness Delegate
 
 - Use your local NTP server
 - Use [Google Public NTP](https://developers.google.com/time)
@@ -24,11 +26,11 @@ As per [ISO/IEC 27001-A.12.4.4 clock synchronization](https://www.isms.online/is
 
 ## Configure NTP for a delegate running on Linux
 
-Most Linux distributions use `systemd`, which comes with NTP for clock synchronization. You can verify by running `timedatectl`.
+Most Linux distributions use `systemd`, which comes with NTP for clock synchronization. You can verify `systemd` by running `timedatectl`.
 
 ### Install the NTP service
 
-1. If NTP is not present on your host system, you can use `yum`, `apt-get` to install the NTP service as per your OS. You can also use Chrony, which has flexible implementation of NTP.
+1. If NTP is not present on your host system, you can use `yum`, `apt-get`, or `dnf` to install the NTP service as per your OS. You can also use Chrony, which has flexible implementation of NTP.
 
    You must have root permissions to install the application. Installation varies slightly depending on which Linux distribution you use:
 
@@ -47,12 +49,15 @@ Most Linux distributions use `systemd`, which comes with NTP for clock synchroni
     :::
 
     ```
-    server <-address-> [prefer]
-    server 192.168.1.127 prefer # Local NTP server IP address
+    server <YOUR_PREFERRED_IP_ADDRESS> [prefer]
+    ```
+
+    ```
+    server <YOUR_PREFERRED_IP_ADDRESS> prefer # Local NTP server IP address
     server ntp-time.for.mydomain
     ```
 
-    Below are some useful commands to start/stop.
+    Below are some useful commands to enable, start, restart, and stop the NTP service.
 
     ```
     sudo systemctl enable ntpd
@@ -61,7 +66,7 @@ Most Linux distributions use `systemd`, which comes with NTP for clock synchroni
     sudo systemctl stop ntpd
     ```
 
-    You can find more details regarding list of configured server and their associated synchronization performance characteristics.
+3. You can run the following to list configured servers and their associated synchronization performance characteristics.
 
     ```
     ntpq -p
