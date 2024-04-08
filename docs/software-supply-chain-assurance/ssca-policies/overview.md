@@ -19,8 +19,7 @@ Here's a breakdown of the overall steps involved:
 
 Here’s the overview of SBOM Policy Enforcement step in Harness SSCA:
 
-
-![Overview](./static/sbom-enforcement-overview.png "Overview")
+<DocImage path={require('./static/sbom-enforcement-overview.png')} width="100%" height="100%" />
 
 
 :::info
@@ -33,7 +32,7 @@ The SBOM Policy Enforcement step operates in two stages:
 
 
 
-* Signed attestations created during SBOM Orchestration and stored in the artifact repository are verified using a public key.
+* Signed attestations created during [SBOM Orchestration](../sbom/generate-sbom.md) and stored in the artifact repository are verified using a public key.
 * If verification is successful, policy enforcement proceeds.
 
 **Policy Enforcement on SBOM:**
@@ -42,4 +41,5 @@ The SBOM Policy Enforcement step operates in two stages:
 
 * With the artifact details, the step retrieves the SBOM of the given artifact.
 * From the policy sets, the rules are evaluated against each component within the artifact's SBOM.
-* Finally, a report is generated, highlighting any identified policy violations.
+* If violations are detected based on the SSCA Policy evaluation criteria, the pipeline may issue a warning and proceed further, or it may generate an error and terminate.
+* Finally, a report is generated, highlighting the identified policy violations.

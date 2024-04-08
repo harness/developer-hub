@@ -62,6 +62,13 @@ To create an SBOM Policy Set, follow these steps:
 
 Set the "On what event should the policy set be evaluated" option to "On Step" and click continue.
 
+
+Next, you can define what should happen if a policy fails, you can set it to 
+- **Warn and continue**: The step will warn about the policy violation and continues the execution.
+- **Error and exit**: The step throws and error and terminates the pipeline execution.
+
+![SBOM Policy evaluation criteria](./static/sbom-policy-criteria.png "SBOM Policy evaluation criteria")
+
 Then, click on the "+ add policy" button to proceed with adding policies to your Policy Set.
 
 ![Policy list](./static/policy-list.png "policy list")
