@@ -6619,43 +6619,42 @@ Harness will maintain pipeline execution data for 6 months. You can refer to our
 
 #### Are we still supporting the container step in Continuous Delivery?
 
-Yes, we are. However, the recommended approach now involves using the container step group, which offers enhanced capabilities
-Please read more on containerized step groups in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group)
+Yes, we do support the container step in CD. However, we recommend using **container step group**.
+Read more about [Containerized step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group).
 
 #### Is there an alternative work for usage of container step in Continuous Delivery?
 
-Yes, We recommend using the "Container-step-group + run step" approach, which should work smoothly
-Please read more on containerized step groups in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group)
+Yes, we recommend using **Container-step-group + run step**.
+Read more about [Containerized step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group).
 
 #### Is there a built-in variable available to determine if the current execution is a retry from another execution?
 
-Currently, there isn't a built-in variable specifically designed to identify if the current execution is a retry from another pipeline. However, there's an expression, `<+pipeline.resumedExecutionId>`, which provides the rootExecutionId for retries. This can be utilized in conjunction with `<+pipeline.executionId>` to achieve the desired outcome
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineresumedexecutionid)
+Currently, there isn't a built-in variable specifically designed to identify if the current execution is a retry from another pipeline. However, there's an expression, `<+pipeline.resumedExecutionId>`, which provides the rootExecutionId for retries. This can be utilized along with `<+pipeline.executionId>` to achieve the desired outcome.
+Read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineresumedexecutionid).
 
 #### How can I determine if a step is being retried during execution?
 
-One can utilize the expression `<+execution.steps.STEP_ID.retryCount>` to determine if a step is being retried during execution. This information can be useful for handling retries within your pipeline
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/#retry-count-expression)
+One can utilize the expression `<+execution.steps.STEP_ID.retryCount>` to determine if a step is being retried during execution, this helps in handling retries within your pipeline.
+Read more about using [Retry count Expression](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/#retry-count-expression).
 
 #### How should customers handle updates to image versions if they mirror our images?
 
-Customers who mirror your organization's images should follow a protocol where they have a one-month window to conduct security scans or other tests on new CI build images before deployment. Harness publishes new versions of required images every two weeks, and each image is backwards-compatible with the previous two releases.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#harness-ci-image-updates)
+Customers who mirror our organization's images should follow a protocol where they have a one-month window to conduct security scans or other tests on new CI build images before deployment. Harness publishes new versions of required images every two weeks, and each image is backwards-compatible with the previous two releases.
+Read more about [Harness CI Image updates ](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#harness-ci-image-updates)
 
 #### What lead time do customers have before the CI starts running the newer version of images?
 
-Customers typically have a one-month lead time before the CI starts running the newer versions of images. This allows them to conduct necessary tests and security scans on the images before deployment
+Customers typically have a one-month lead time before the CI starts running the newer versions of images. This allows them to conduct necessary tests and security scans on the images before deployment.
 
 #### How can customers prevent outages when handling updates to image versions?
 
-Customers can avoid potential outages by storing images in their own registry and explicitly specifying which version of the image to pull. By following this approach, they ensure continuity and can avoid functionality issues in the pipeline caused by using outdated image versions
-Please find more on versions of images in the following [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines)
-
+Customers can avoid potential outages by storing images in their own registry and explicitly specifying which version of the image to pull. By following this approach, they ensure continuity and can avoid functionality issues in the pipeline caused by using outdated image versions.
+Read more about specifying the [Harness CI Images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/#specify-the-harness-ci-images-used-in-your-pipelines)
+images used in your pipelines.
 #### How does marking a Pipeline as Failed differ from aborting it?
 
-Marking a Pipeline as Failed provides a more controlled approach, allowing users to trigger specific Failure Strategies while maintaining the integrity of the Pipeline execution process
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/#marking-a-pipeline-as-failed)
+Marking a Pipeline as Failed provides a more controlled approach, allowing users to trigger specific Failure Strategies while maintaining the integrity of the Pipeline execution process. Learn more about [Marking a pipeline as failed](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/#marking-a-pipeline-as-failed).
 
 #### Do common containerized steps like "run" and "git clone" require a CI license to be available in CD step groups?
 
-No, you do not need a CI license to use the "run" and "git clone" steps in a CD step group, even though they are typically listed under the "build" section
+No, you do not need a CI license to use the "run" and "git clone" steps in a CD step group, even though they are typically listed under the "build" section.
