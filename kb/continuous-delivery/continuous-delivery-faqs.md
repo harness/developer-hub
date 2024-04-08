@@ -6547,6 +6547,114 @@ This error happens if you have recently upgraded your Kuberenetes Cluster withou
 
 To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
 
+#### What is a vanity URL in the context of a SAML setup?
+
+A vanity URL is a customized URL that represents a specific identity or brand. In the context of SAML setup, it refers to a user-defined URL used as the ACS (Assertion Consumer Service) reply URL.
+
+#### How can I ensure I'm using the correct vanity URL in the ACS reply URL?
+
+Make sure to use the exact vanity URL provided or configured for your application or service when setting up SAML authentication. Double-check the ACS reply URL configuration to ensure it matches the vanity URL.
+
+#### Did namespace expression become mandatory in infra settings?
+
+By design, we validate all the expressions as we do not allow expressions that can not be resolved.
+
+#### How to add a blank variable in overrides?
+
+Blank values are not allowed for the variables in overrides.
+
+#### Is it possible to loop over multiple stages?
+
+No, looping over the stage set is not possible. You will have to create an individual looping strategy for each stage.
+
+#### What are reserved symbols in PowerShell, and how do I handle them in Harness secrets in Powershell scripts?
+
+Symbols such as `|`, `^`, `&`, `<`, `>`, and `%` are reserved in PowerShell and can have special meanings. It's important to be aware of these symbols, especially when using them as values in Harness secrets.
+
+If a reserved symbol needs to be used as a value in a Harness secret for PowerShell scripts, it should be escaped using the `^` symbol. This ensures that PowerShell interprets the symbol correctly and does not apply any special meanings to it.
+
+The recommended expression to refrence a Harness secret is `<+secrets.getValue('secretID')>`. This ensures that the secret value is obtained securely and without any issues, especially when dealing with reserved symbols.
+
+#### Why does the deleted service remain shown on the overview?
+
+The dashboard is based on historical deployment data based on the selected timeframe. Once the deleted service is not present in the selected timeframe it will stop showing up on the dashboard.
+
+#### What is the difference between "Remote Input Set" and "Import Input Set from Git"?
+
+**Remote Input Set** is used when you create an input set and want to store it remotely in SCM.
+
+**Import Input Set from Git** it is used when you already have an input set YAML in your Git repo that you want to import to Harness. This is a one-time import.
+
+#### Why does a remote input set need a commit message input?
+
+Harness requires a commit message so Harness can store the input set YAML in your Git Repo by making a commit to your Git repo.
+
+#### How can I ensure that one module is executed before the next module in Terraform?
+
+To ensure the correct execution order of modules in Terraform, you can use module dependencies. Terraform supports both implicit and explicit dependencies to determine the order in which modules are executed.
+
+An *implicit dependency* is created when a resource or output of one module is referenced in another module. Terraform automatically detects these dependencies and ensures that modules are executed in the correct order based on them.
+
+To create an *explicit dependency* between modules in Terraform, you can use the `depends_on` parameter in the module block to explicitly specify dependencies between modules. By listing the modules that need to be executed first, you ensure that Terraform follows the specified order.
+
+#### When and how do I specify tags in Terraform metadata and YAML?
+
+Tags should be specified in both metadata and YAML if they are present in the metadata. If no tags are specified in the metadata, they do not need to be included in the YAML.
+
+Tags must follow the format `Key: "Value"` in both Terraform metadata and YAML files. For example, `Terraform_Managed: "true"`. Ensure consistency between the tags specified in the metadata and those included in the YAML. For instance, if the metadata includes `tags = ["foo: bar", ]`, ensure that the YAML representation also reflects this format.
+
+#### Helm Deploy failing with null pointer exception
+
+This error usually occurs when running a helm deployment on an expired delegate. You will run into errors in case of expired delegates. [Upgrade the delegate to the latest version](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration) and retry the execution.
+
+#### Can I auto-populate image tags from the previous stage into the next stage of the pipeline?
+
+For chained pipelines, you need to output a variable from the first child pipeline and use it as input in the second child pipeline. For more information, go to [Chained pipleine output variables](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables).
+
+#### Can I export my entire FirstGen deployment history and audit trail from Harness?
+
+You can use the following Harness FirstGen APIs to download your FirstGen audit trial and deployment history:
+
+* [FirstGen Audit Trails API](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/api/use-audit-trails-api)
+* [FirstGen API](https://developer.harness.io/docs/category/harness-api-firstgen)
+
+####  Some expressions changed between Harness FirstGen and NextGen
+
+For information about differences in expressions between FirstGen to NextGen, go to [Migrating FirstGen expressions to NextGen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#migrate-firstgen-expressions-to-nextgen).
+
+#### Can I limit the projects where templates can be used?
+
+You can't control the visibility of a specific template. Template access is determined by the scope where you create it. For example, a template is created at the organization scope is available to all projects and pipelines under that org.
+
+#### Can I convert a pipeline template to a stage template?
+
+Pipelines and stages are different entities, so you can't convert one to another.
+
+#### How to parse through the pipeline's YAML file to extract a particular value?
+
+You can use the API to get the pipeline YAML and use Jq to get the required value. For example:
+
+```
+#!/bin/bash
+
+curl -s -X GET \
+  'https://app.harness.io/pipeline/api/pipelines/dummy3?accountIdentifier={accountId}&orgIdentifier=default&projectIdentifier=default_project' \
+  -H 'Load-From-Cache: false' \
+  -H 'x-api-key: xxxxxxxxxxxxxxx' \
+  -o response.json
+
+templateRef=$(jq -r '.data.yamlPipeline' response.json | sed 's/\\n/\n/g' | grep -oP '(?<=templateRef: ).*' | head -n 1)
+
+echo "TemplateRef: $templateRef"
+```
+
+For more information, go to [Use JSON parser tools and JEXL](https://developer.harness.io/docs/platform/variables-and-expressions/expression-v2).
+
+#### Can I extract a substring based on a regex pattern in Harness variables?
+
+No, it's not possible to directly extract a substring based on a regex pattern in Harness variables.
+
+Harness supports direct Java methods for string manipulation. Because Java lacks a direct function for extracting substrings using regex patterns, this functionality is not available in Harness variables. However, you can [use other Java string methods](https://developer.harness.io/docs/platform/variables-and-expressions/expressions-java-methods) to extract characters or substrings.
 
 #### Can our git experience be used for services. environments, and pipelines? Can we enforce that all resources for a specific projects only come from a specific git repo?
 
@@ -6556,9 +6664,10 @@ Yes, git experience can be used for services, envs and infra as well, also one c
 
 Reconfiguration within Harness is required if resources are moved across repositories or Git providers. Although manual, it can be automated through APIs for specific needs.
 
-#### Which API is utilized for modifying configuration in the `update-git-metadata` API request for pipelines?
+#### Which API is utilized for modifying configuration in the update-git-metadata API request for pipelines?
 
-Please find an example API call below : 
+Please find an example API call below:
+
 ```sh
 curl --location --request PUT 'https://app.harness.io/gateway/pipeline/api/pipelines/<PIPELINE_IDENTIFIER>/update-git-metadata?accountIdentifier=<ACCOUNT_ID>&orgIdentifier=<ORG_ID>&projectIdentifier=<PROJECT_IDENTIFIER>&connectorRef=<CONNECTOR_REF_TO_UPDATE>&repoName=<REPO_NAME_TO_UPDATE>&filePath=<FILE_PATH_TO_UPDATE>' \
   -H 'x-api-key: <API_KEY>' \
@@ -6570,7 +6679,7 @@ Pleae read more on this in the following [Documentation](https://apidocs.harness
 #### Is it expected behavior for members of a group with permissions to create/edit Non-Production environments to be able to delete infrastructure definitions within those environments, despite not having explicit deletion permissions?
 
 Yes, The behavior of infrastructure deletion is consistent with environment update operations. Infrastructure operations are treated as environment updates, which explains the ability to delete infrastructure definitions within the environment.
-Please read more on Environment and InfraDefintion behaviour in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#important-notes)
+Please read more on Environment and InfraDefintion behaviour in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/#important-notes).
 
 #### Are we planning to maintain Harness DockerHub Images alongside the Harness GCR Images?
 
