@@ -138,6 +138,12 @@ export const platformData: Horizon = {
         description:
           "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
       },
+      {
+        tag: [],
+        title: "Multi-tenant SaaS in EU",
+        description:
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
+      },
 
     ],
   },
