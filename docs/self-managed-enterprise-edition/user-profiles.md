@@ -4,14 +4,14 @@ description: This topic describes user profiles for Harness Self-Managed Enterpr
 sidebar_position: 2
 ---
 
-This topic provides detailed information about the different types of user profiles and the specific license requirements for accessing and using Harness Self-Managed Enterprise Edition.
+This topic provides detailed information about the different types of user profiles for Harness Self-Managed Enterprise Edition.
 
 There are four user profiles for Harness Self-Managed Enterprise Edition.
 
-- Demo
-- Small
-- Medium
-- Large
+- **Demo:** This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to four simultaneous executions across two modules, CI and CD.
+- **Small:** This profile is for up to 200 users.
+- **Medium:** This profile is for up to 1000.
+- **Large:** This profile is for up to 3000.
 
 ## Profile size and module execution details
 
@@ -22,16 +22,11 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 | Medium|Up to 1000|250|250
 | Large|Up to 3000|500|500
 
-## Free demo users
+## Demo user requirements
 
-This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to four simultaneous executions across two modules.
+Core CPU and memory requirements depend on the modules you use for demo purposes. For CI and CD, a minimum 3 core CPU and 14 Gi memory are required.
 
-### Demo user requirements
-
-Core CPU and memory requirements depend on the modules you use for demo purposes.
-
-- **CI:** Minimum 3 core CPU and 14 Gi memory
-- **CD:** Minimum 3 core CPU and 14 Gi memory
+An override-demo.yaml file is available in the Harness [Helm chart repo](https://github.com/harness/helm-charts/blob/main/src/harness/override-demo.yaml).
 
 ## Core service requirements
 
