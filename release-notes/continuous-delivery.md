@@ -2037,7 +2037,7 @@ This release does not include early access features.
   - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
   - `<+strategy.node.strategy_node_identifier.*>`
 
-  For information on using the expressions, go to [Strategy](/docs/platform/variables-and-expressions/harness-variables/#strategy).
+  For information on using the expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
 

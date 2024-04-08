@@ -214,10 +214,13 @@ To get output from a chained pipeline and utilize it in another stage, you need 
 
 At the moment there is no dependency on the instance sync and infrastructure definition. Infra definition is used only to generate infra details the instance sync itself is done for service and environment, only in case if any these are deleted the instance sync will stop and delete instances.
 
-**Note:**
+:::info
+
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
 In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
+
+:::
 
 #### Is it possible to have drop down options for multiple input?
 
@@ -294,10 +297,6 @@ For any manifest object which creates the pod, you have to add this label in its
 #### What does the release name mean in the Infrastructure?
 
 The release name is used to create a harness release history object, which contains some metadata about the workloads. This helps us perform the steady state check.
-
-#### I have a pipeline in CG that has a variable of ```${artifact.buildNo}``` in a command and same variable is not working in NextGen.
-
-You can use artifact.tag in NG , which is equivalent to artifact.buildNo from CG, you can find more details around mapping in : [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrate-firstgen-expressions-to-nextgen)
 
 #### Is it possible to apply Notification Rule on Environment level for workflow failure/success
 
@@ -1531,18 +1530,17 @@ No, it can be only specific to entire account or multiple accounts that an organ
 
 Yes, we can assist with disabling the feature while it's still in beta.
 
-####  Is there a way to get the service artifact source identifier with builtin variables?
+#### Is there a way to get the service artifact source identifier with built-in variables?
 
-Yes, one can try expression `<+artifacts.primary.identifier>`. Please refer more on this in the [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#expression-examples)
+Yes, you can use the [expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+artifacts.primary.identifier>`.
 
 #### Is there a way to cache terraform plugins in delegates?
 
 Yes, one can try to set this environment variable `TF_PLUGIN_CACHE_DIR` . Also refer the following [Documentation](https://developer.hashicorp.com/terraform/cli/config/config-file#provider-plugin-cache)
 
-#### Depooy stage keeps asking for a Service. Can I setup a stage without a service?
+#### Deploy stage keeps asking for a Service. Can I setup a stage without a service?
 
-Yes, you can use custom stage instead of deploy stage. 
-
+You can use custom stage instead of deploy stage if you need to set up a stage without a service.
 
 #### How to do an initial setup of a CD pipeline stage?
 
@@ -1553,7 +1551,6 @@ The modeling of a Deploy stage includes
 3. Define a service.
 4. Target an environment and infrastructure.
 5. Select execution steps.
-
 
 #### How can I verify that my CD pipeline has resulted in a successful deployment? 
 
@@ -1800,21 +1797,7 @@ Once you click on Add under Failure strategies, you can select the timeout failu
 
 #### Variables in NextGen from migration from First Gen to be used in Jira Approval step
 
-Triggered by \<+deploymentTriggeredBy>
-This isn't a variable in Next Gen rather you should use : \<+pipeline.triggeredBy.name>
- 
-Branch: \<+trigger.sourceBranch>
-PR Number: \<+trigger.prNumber>
-PR Title: \<+trigger.prTitle>
-These will not directly work in the Jira Approval step as it doesn't have any reference to the trigger and I am validating this internally on how can we print this information. 
- 
-You can certainly use variables like  \<+pipeline.stages.stagename.name> stagename is the name of your stage say for Deploy and that will resolve correctly to the values.
- 
- Artifact: \<+artifact.displayName>
- Artifact Description \<+artifact.description>
- Artifact Build Number: \<+artifact.buildNo>
- 
-These aren't the correct variables in NG.  [Here are the correct variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact)
+Some expressions are different in Harness NextGen than what they were in FirstGen. For more information, go to [Use Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables).
 
 #### We have a pipeline that is configured to deploy a selected service based on input. There currently isn't a way to filter the list of Deployment executions by the selected service.
 
@@ -2807,7 +2790,7 @@ Yes, it is behind the feature flag `SRM_LOG_FEEDBACK_ENABLE_UI`. Please read mor
 
 #### Is there a way to get the name of the person triggering the execution ?
 
-Yes, one can use the expressions `<+pipeline.triggeredBy.email>` and `<+pipeline.triggeredBy.email>` . Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyname)
+Yes, one can use the [expressions](ttps://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+pipeline.triggeredBy.email>` and `<+pipeline.triggeredBy.email>`.
 
 #### Does `workflow variables` in Current-Gen work same as `regular platform variables` in Next-Gen ?
 
@@ -3149,7 +3132,7 @@ Yes, we support health source like  `New Relic` , `ElasticSearch`, `Sumologic Me
 #### What is the variable type set to if an echo for the variable is made ?
 
 The variable type is available for all inclusion types (ex. int, float,..etc). If one wishes to constraint the value accordingly, they can use expressions in case of the same ( say for int one can use the method `intValue()` or `expression.toInteger()` )
-Please read more on the variable inputs in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#number-variables)
+Please read more on the variable inputs in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables)
 
 #### Do we support exported variables for looping strategies ?
 
@@ -3918,7 +3901,7 @@ This is the default behaviour. One can enable account level setting to display n
 
 #### Is there a limitation on the output size from steps in Harness, specifically when attempting to use a container to process and generate values in YAML configs, base64 encode them, and pass to the next step, where the output variable appears to be truncated?
 
-Yes, there is a limit of 256 KB for the output size from steps in Harness. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#variable-value-size)
+Yes, there is a limit of 256 KB for the output size from steps in Harness.
 
 #### What do we mean by the term delegate expiration ?
 
@@ -4709,12 +4692,12 @@ Please read more on CD Service monitoring in the following [Documentation](https
 
 ####  If the Delegate uses a KubeConfig if we are leveraging KubeCTL, where is the KubeConfig stored on the Delegate on using Terraform ?
 
-One may use the command : `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes)
+One may use the command : `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes-expressions)
 
 #### What is the recommended approach for implementing Terraform dynamic provisioning of infrastructure, specifically in relation to creating the Terraform file without the `kube_config` specification ?
 
 The recommended approach for utilizing Terraform dynamic provisioning of infrastructure involves creating the Terraform file without including the `kube_config` specification. This practice ensures a more effective implementation of Terraform for dynamic infrastructure provisioning.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes)
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#kubernetes-expressions)
 
 #### Why does the trigger execution details API sometimes return a 400 error after initiating a pipeline, and what's the recommended time gap for reliable execution between these API calls ?
 
@@ -5414,8 +5397,7 @@ Please read more on Reconciler APIs in the [API Documentation](https://apidocs.h
 
 #### Can we see the commit associated with the manifest harness pulls for a k8s deploy step ?
 
-To fetch manifest commit id in service one can use the expression `<+manifest.MANIFEST_ID.commitId>`. One can also go through delegate logs for morew suitable requests.
-Please read more on manifest commit Id in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#manifestmanifest_idcommitid)
+To fetch manifest commit id in service one can use the [expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+manifest.MANIFEST_ID.commitId>`. One can also go through delegate logs for morew suitable requests.
 
 #### Does Harness support Triggers in GitX ?
 
@@ -5562,8 +5544,7 @@ Yes, one can use remote stage templates with different branches but same reposit
 
 #### What are the potential statuses of nodes (stages/steps) when utilizing a looping strategy ?
 
-The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy)
+The [statuses of the nodes](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy-expressions) (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
 
 #### Is there a way to create a github repository tag in Harness ?
 
@@ -6464,8 +6445,7 @@ Please read more on this in the following [Doumentation](https://developer.harne
 
 #### How can we refer to the current pipeline execution Url?
 
-Yes, Harness provides the expression `<+pipeline.executionUrl>` to fetch the current variable pipeline execution Url
-Please read more on pipeline expressions in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineexecutionurl)
+Yes, Harness provides the [expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+pipeline.executionUrl>` to fetch the current variable pipeline execution Url.
 
 #### Why am I getting an Invalid Repository Error on my Pipeline Trigger?
 
@@ -6607,7 +6587,7 @@ You can use the following Harness FirstGen APIs to download your FirstGen audit 
 
 ####  Some expressions changed between Harness FirstGen and NextGen
 
-For information about differences in expressions between FirstGen to NextGen, go to [Migrating FirstGen expressions to NextGen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#migrate-firstgen-expressions-to-nextgen).
+For information about differences in expressions between FirstGen to NextGen, go to [Migrate FirstGen expressions to NextGen](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#migrate-firstgen-expressions-to-nextgen).
 
 #### Can I limit the projects where templates can be used?
 
@@ -6730,8 +6710,7 @@ Read more about [Containerized step group](https://developer.harness.io/docs/con
 
 #### Is there a built-in variable available to determine if the current execution is a retry from another execution?
 
-Currently, there isn't a built-in variable specifically designed to identify if the current execution is a retry from another pipeline. However, there's an expression, `<+pipeline.resumedExecutionId>`, which provides the rootExecutionId for retries. This can be utilized along with `<+pipeline.executionId>` to achieve the desired outcome.
-Read more on this in the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipelineresumedexecutionid).
+Currently, there isn't a built-in variable specifically designed to identify if the current execution is a retry from another pipeline. However, there's an [expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables), `<+pipeline.resumedExecutionId>`, which provides the rootExecutionId for retries. This can be utilized along with `<+pipeline.executionId>` to achieve the desired outcome.
 
 #### How can I determine if a step is being retried during execution?
 

@@ -39,7 +39,7 @@ Custom artifact is also supported in **Sidecar**. In **Specify Artifact Reposito
 
 In **Version**, enter the version of the artifact you want to deploy.
 
-You can set **Version** as a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs), and then enter the version when you run the pipeline that deploys this service. You can also use an [expression](/docs/platform/variables-and-expressions/harness-variables#expression-guidelines-and-boundaries) that is evaualted at runtime.
+You can set **Version** as a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs), and then enter the version when you run the pipeline that deploys this service. You can also use an [expression](/docs/platform/variables-and-expressions/harness-variables) that is evaluated at runtime.
 
 ### Provide a script to dynamically pull the artifact location
 
