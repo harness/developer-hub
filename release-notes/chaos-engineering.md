@@ -1,8 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-tags: [NextGen, "chaos engineering"]
-date: 2024-04-01T10:00
+date: 2024-04-09T10:00
 sidebar_position: 5
 ---
 

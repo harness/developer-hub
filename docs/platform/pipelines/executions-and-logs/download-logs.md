@@ -1,6 +1,6 @@
 ---
 title: Download execution logs
-description: Download pipeline or step execution logs via the UI. 
+description: Download pipeline or step execution logs via the UI.
 sidebar_position: 3
 redirect_from:
   - /docs/platform/pipelines/download-logs
@@ -44,7 +44,7 @@ To download step log files, do the following:
 
    ![](../static/download-step-logs.png)
 
-   Harness queries the log service, exports the log, and downloads the `logs.zip` file. 
+   Harness queries the log service, exports the log, and downloads the `logs.zip` file.
 
 4. Open the `logs.zip` file, and extract the contents.
 5. Drill down into the extracted files to locate the log you want to examine.

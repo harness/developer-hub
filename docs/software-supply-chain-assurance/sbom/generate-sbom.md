@@ -94,7 +94,7 @@ The Artifact Source allows you to specify the source of the artifact. Presently,
 
 :::warning Deprecation Alert:
 
-Please note that the previously available `Container` option, has now been deprecated. In its place, we now offer native support for DockerHub and ECR. Additionally, the support for other registries like GCR (Google Container Registry) and ACR (Azure Container Registry) is coming soon. We encourage users to connect to their registries using the dedicated options available within the list of artifact sources.
+Please note that the previously available `Container` option, has now been deprecated. In its place, we now offer native support for DockerHub, ECR, GCR, and ACR. Additionally, the support for other registries is coming soon. We encourage users to connect to their registries using the dedicated options available within the list of artifact sources.
 
 :::
 
@@ -105,7 +105,7 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
+* **Image:** Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
 
 * **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
 
@@ -113,23 +113,9 @@ Please note that the previously available `Container` option, has now been depre
 
 * **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
-<!-- ![](../static/sbom-ssca-orch-step.png) -->
 
-<DocImage path={require('../static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
-:::info GCR and ACR repos
-
-If you're using Docker-compliant GCR or ACR repositories:
-
-1. You can use `DockerHub` as the artifact source
-2. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-   * For ACR, go to [Use Docker Registry for ACR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#azure-container-registry-acr)
-3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
-
-:::
-
-<!-- ![](./static/sbom-build-stage.png) -->
 </TabItem>
 
 <TabItem value="ecr" label="ECR" default>
@@ -138,7 +124,7 @@ If you're using Docker-compliant GCR or ACR repositories:
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Elastic container registry where the artifact is stored.
 
-* **Image:** The repo path (in your container registry) and tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
+* **Image:** Enter the name of your image with tag for the image for which you're generating an SBOM, such as `my-docker-repo/my-artifact:latest`.
 
 * **Region:** The geographical location of your ECR repository.
 
@@ -150,25 +136,55 @@ If you're using Docker-compliant GCR or ACR repositories:
 
 * **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
-<!-- ![](../static/sbom-ssca-orch-step.png) -->
+<DocImage path={require('./static/ecr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
-<DocImage path={require('../static/ecr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
-
-:::info GCR and ACR repos
-
-If you're using Docker-compliant GCR or ACR repositories:
-
-1. You can use `DockerHub` as the artifact source
-2. Configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-   * For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-   * For ACR, go to [Use Docker Registry for ACR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#azure-container-registry-acr)
-3. Use the full URI for the **Image** in your **SSCA Orchestration** step, such as `1234567890.dkr.ecr.REGION.amazonaws.com/IMAGE_NAME:TAG`.
-
-:::
-
-<!-- ![](./static/sbom-build-stage.png) -->
 
 </TabItem>
+
+<TabItem value="gcr" label="GCR" default>
+
+* **Artifact Type:** Select **GCR**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
+
+* **Image:** Enter the name of your image with tag for which you're generating the SBOM, example `docker-image:tag`.
+
+* **Host:** Enter your GCR Host name. The Host name is regional-based. For instance, a common Host name is `gcr.io`, which serves as a multi-regional hostname for the United States. 
+
+* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+
+* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+
+* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+
+
+<DocImage path={require('./static/gcr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
+</TabItem>
+
+<TabItem value="acr" label="ACR" default>
+
+* **Artifact Type:** Select **ACR**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
+
+* **Image:** Enter your image details in the format `<registry-login-server>/<repository>:<tag>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr:test`
+
+* **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
+
+* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+
+* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+
+<DocImage path={require('./static/acr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+
+</TabItem>
+
   <TabItem value="Repository" label="Repository">
 
 * **Artifact Type:** Select **Repository**.
@@ -189,7 +205,7 @@ If you're using Docker-compliant GCR or ACR repositories:
 * **Workspace:** If you cloned the codebase to a different directory than the root workspace directory (`/harness`), enter the path to the subdirectory using the format `/harness/PATH/TO/SUBDIRECTORY`. Leave this field empty if you cloned your codebase into the default directory (`/harness`). Usually, your codebase is only cloned into a non-default directory if you are [cloning multiple codebases](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) into a pipeline.
 * **SBOM Drift:** Select this option if you want to [track changes in SBOM](./SBOM-Drift.md). Harness SSCA can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
 
-<DocImage path={require('../static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
 <!-- ![](./static/sbom-deploy-stage.png) -->
 

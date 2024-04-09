@@ -14,19 +14,34 @@ For more information, see [Authenticating](https://kubernetes.io/docs/reference/
 
 In this topic:
 
-* [Before You Begin](#before-you-begin)
-* [Visual Summary](#visual-summary)
-* [Review: Using a Delegate Inside or Outside of the Target Cluster](#review-using-a-delegate-inside-or-outside-of-the-target-cluster)
-* [Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers](#review-kubernetes-cluster-cloud-provider-vs-platform-cloud-providers)
-* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
-* [Step 2: Cluster Details](#step-2-cluster-details)
-* [Option 1: Inherit from selected Delegate](#option-1-inherit-from-selected-delegate)
-* [Option 2: Enter manually](#option-2-enter-manually)
-* [Step 3: Skip Validation](#step-3-skip-validation)
-* [Step 4: Credential Validation](#step-4-credential-validation)
-* [Review: Permissions Required](#review-permissions-required)
-* [Option: Amazon AWS EKS Support](#option-amazon-aws-eks-support)
-* [Option: OpenShift Support](#option-open-shift-support)
+- [Before You Begin](#before-you-begin)
+- [Visual Summary](#visual-summary)
+- [Review: Using a Delegate Inside or Outside of the Target Cluster](#review-using-a-delegate-inside-or-outside-of-the-target-cluster)
+  - [Using Non-Kubernetes Delegates](#using-non-kubernetes-delegates)
+- [Review: Kubernetes Cluster Cloud Provider vs Platform Cloud Providers](#review-kubernetes-cluster-cloud-provider-vs-platform-cloud-providers)
+- [Review: Permissions for the Kubernetes Role](#review-permissions-for-the-kubernetes-role)
+- [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+- [Step 2: Cluster Details](#step-2-cluster-details)
+- [Option 1: Inherit from selected Delegate](#option-1-inherit-from-selected-delegate)
+- [Option 2: Enter manually](#option-2-enter-manually)
+  - [Master URL](#master-url)
+  - [Username and Password](#username-and-password)
+  - [Service Account Token](#service-account-token)
+    - [Encrypted CA Certificate (Deprecated)](#encrypted-ca-certificate-deprecated)
+  - [Custom](#custom)
+    - [CA Certificate](#ca-certificate)
+    - [Client Certificate](#client-certificate)
+    - [Client Key](#client-key)
+    - [Client Key Passphrase](#client-key-passphrase)
+    - [Client Key Algorithm](#client-key-algorithm)
+  - [OIDC Token](#oidc-token)
+- [Step 3: Skip Validation](#step-3-skip-validation)
+- [Step 4: Credential Validation](#step-4-credential-validation)
+- [Review: Permissions Required](#review-permissions-required)
+  - [Kubernetes Permissions Depend in What You Are Deploying](#kubernetes-permissions-depend-in-what-you-are-deploying)
+- [Option: AWS EKS Support](#option-aws-eks-support)
+- [Option: OpenShift Support](#option-openshift-support)
+    - [OpenShift Notes](#openshift-notes)
 
 ## Before You Begin
 
@@ -356,7 +371,7 @@ When setting up the EKS cluster as a Harness Infrastructure Definition in a Harn
 
 ![](./static/add-kubernetes-cluster-cloud-provider-40.png)
 
-Using the EKS-based Environment in a Workflow is no different than using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
+Using the EKS-based Environment in a Workflow is no different from using any Kubernetes cluster. You simply select the Environment and Infrastructure Provisioner as part of setting up the Workflow.
 
 ## Option: OpenShift Support
 

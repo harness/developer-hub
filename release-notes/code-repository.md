@@ -1,7 +1,6 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-tags: [NextGen, "code repository"]
 date: 2024-03-22T10:00
 sidebar_position: 7
 ---

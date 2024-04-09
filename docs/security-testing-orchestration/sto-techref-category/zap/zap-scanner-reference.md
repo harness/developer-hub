@@ -15,12 +15,34 @@ For an example workflow, go to the [DAST app scans using Zed Attack Proxy (ZAP) 
 
 ## Important notes for running ZAP scans in STO
 
- If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
+- Harness STO currently supports the following ZAP features:
 
-  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
-  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
+  - AJAX spidering with Firefox and Selenium. Other browsers such as Chrome are not currently supported.
+  - [Script-based authentication](https://www.zaproxy.org/docs/desktop/start/features/authmethods/#scriptBased).
+  - [Form-based authentication](https://www.zaproxy.org/docs/desktop/start/features/authmethods/#formBased).
+  - [Script-based session management](https://www.zaproxy.org/docs/desktop/start/features/sessionmanagement/#sbsm) – ECMAScript / JavaScript using Nashorn engine.
+    - Other languages such as Zest, Groovy, Python, etc. are not currently supported.
+
+- ZAP is a highly configurable tool with many options. You should verify that your context file and your authentication and other scripts work as intended before adding them to your STO pipeline.
+
+- Add the following shared paths (**Overview** > **Shared Paths**) to your scan stage and copy your ZAP scripts and files to these paths:
+
+  - Copy hosts and urlFile files to:
+     - `/shared/customer_artifacts/hosts/`
+     - `/shared/customer_artifacts/urlFile/`
+  - Copy context files to `/shared/customer_artifacts/context`.
+    
+  - You also need to specify the [Context name](#context-name) to use for the scan.
+    - If you're including context, hosts, and/or urlFile files in the same pipeline, they all need to be set to the value passed for the context name. For example:
+       - `/shared/customer_artifacts/context/sto.context`
+       - `/shared/customer_artifacts/hosts/sto.context`
+       - `/shared/customer_artifacts/urlFile/sto.context`  
+   - Copy other scripts to `/shared/customer_artifacts/scripts/<script-type>/`.
+     - Examples:
+       - `/shared/customer_artifacts/scripts/session`
+       - `/shared/customer_artifacts/scripts/authentication`
+      - For other script paths, go to the [ZAP community-scripts repo](https://github.com/zaproxy/community-scripts/tree/main).
+
 
 ### Root access requirements 
 
@@ -36,7 +58,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## ZAP step settings for STO scans
 
-The recommended workflow is add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a ZAP step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ### Scan
 
@@ -139,6 +161,33 @@ import StoSettingInstancePath from '../shared/step_palette/instance/_path.md';
 
 
 <StoSettingInstancePath />
+
+### Scan Tool
+
+#### Context Name
+
+The ZAP context file to use for the scan. You need to add the following shared path (**Overview** > **Shared Paths**) to the stage and copy your file to this path:
+    - `/shared/customer_artifacts/context/`
+
+:::note
+
+This integration has the following known issue: The **Context Name** field in the ZAP step UI does not capture the specified context file. (STO-7287)
+  - This issue will be fixed shortly.
+  - As a workaround, you can specify the context file in the **Settings** field. Add a new setting with the following key-value pair: 
+    - key = `product_context_name` 
+    - value = `/shared/customer_artifacts/context/filename.context`
+
+     <DocImage path={require('../static/sto-7287-zap-workaround.png')} width="50%" height="50%" title="Add setting to specify ZAP context file" />
+
+:::
+
+
+
+#### Port
+
+import StoScanToolPort from '../shared/step_palette/tool/_port.md'
+
+<StoScanToolPort  />
 
 ### Ingestion File
 
