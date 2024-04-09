@@ -1,7 +1,7 @@
 ---
 title: Harness Security Testing Orchestration (STO) Overview
 sidebar_label: Overview
-description: How STO enables DevOps teams to left-shift security testing.
+description: How STO enables DevOps teams to shift-left security testing.
 sidebar_position: 10
 helpdocs_topic_id: ap7y94ap7h
 helpdocs_category_id: 8nywcs2sa7
@@ -14,7 +14,7 @@ redirect_from:
 
 Companies perform security testing to avoid introducing vulnerabilities into the products their customers depend on. If a customer catches the security issue instead of the company, trust is lost.
 
-Harness Security Testing Orchestration (STO) enables DevOps teams to left-shift security testing. STO orchestrates scanning, intelligently deduplicates scanner output, prioritizes remediations, and enforces governance in your Harness pipelines. STO puts scanning directly into your pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.
+Harness Security Testing Orchestration (STO) enables DevOps teams to shift-left security testing. STO orchestrates scanning, intelligently deduplicates scanner output, prioritizes remediations, and enforces governance in your Harness pipelines. STO puts scanning directly into your pipelines to ensure that vulnerabilities are caught and fixed before your products are ever released.
 
 This topic describes the security scanning problems facing developers and how STO provides the solutions they need.
 
@@ -56,7 +56,7 @@ In addition, DevOps and security teams need to act on the information provided f
 
 ## Harness Security Testing Orchestration (STO) solution
 
-Harness STO enables DevOps and security teams to left-shift security testing:
+Harness STO enables DevOps and security teams to shift-left security testing:
 
 * **Test:** Test code, OSS libraries, containers, and live apps with popular security scanners as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that scanning is timely and easy to apply.
 * **Remediate:** Repair security vulnerabilities by empowering developers with a prioritized list that is intelligently deduplicated across all scanners. Harness provides dashboards with clear security vulnerabilities identified.

@@ -163,7 +163,7 @@ If a setting is specified in multiple input sets, the value is replaced as each 
 
 ## Manage access to input sets
 
-:::info
+:::note
 
 Currently, input set access control is behind the feature flag `PIE_INPUTSET_RBAC_PERMISSIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. We will also run a migration for you so that existing input sets remain accessible to users.
 

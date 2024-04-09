@@ -1,18 +1,14 @@
 ---
-title: Cost Savings
+title: Azure Recommendations
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
-# Cost Savings
 
-## Recommendations
+Recommendations help kickstart your journey with governance. Essentially, Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
-Recommendations help kickstart your journey with governance. Essentially, we run certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, we showcase recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
+Listed below are the custodian policies which are used to generate recommendations that Harness offers for Azure. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
-Listed below are the custodian policies which are used to generate recommendations that we offer for Azure. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
-
-
-### **1. Recommendation: delete-low-utilised-cosmodb**  
+### Recommendation: delete-low-utilised-cosmodb
 **Description:** Delete low utilised CosmosDB based on total requests in last 72 hours.
 
 **Policy Used:**
@@ -38,7 +34,7 @@ policies:
 
 ---
 
-### **2. Recommendation: delete-unattached-disk**  
+### Recommendation: delete-unattached-disk
 **Description:** Delete all unattached disks. 
 
 **Policy Used:**
@@ -62,7 +58,7 @@ policies:
 
 ---
 
-### **3. Recommendation: delete-low-utilised-load-balancers**  
+### Recommendation: delete-low-utilised-load-balancers
 **Description:** Delete all low utilised load balancers where packet count is less than 1000 in last 72 hours.  
 
 **Policy Used:**
@@ -89,7 +85,7 @@ policies:
 
 ---
 
-### **4. Recommendation: delete-orphaned-network-interface**  
+### Recommendation: delete-orphaned-network-interface
 **Description:** Delete network interface which are not attached to virtual machine.
 
 **Policy Used:**
@@ -113,7 +109,7 @@ policies:
 
 ---
 
-### **5. Recommendation: stop-underutilized-vms**  
+### Recommendation: stop-underutilized-vms
 **Description:** Stop underutilised virtual machines with average CPU utilisation less than 5% in last 72 hours.  
 
 **Policy Used:**
@@ -140,7 +136,7 @@ policies:
 
 ---
 
-### **6. Recommendation: delete-low-utilised-keyvaults**  
+### Recommendation: delete-low-utilised-keyvaults 
 **Description:** Delete KeyVaults with less than 10 API hits in last 72 hours.
 
 **Policy Used:**
@@ -167,7 +163,7 @@ policies:
 
 ---
 
-### **7. Recommendation: delete-low-utilised-sql-server**  
+### Recommendation: delete-low-utilised-sql-server
 **Description:** Delete SQL servers with less than 10% average DTU consumption over last 72 hours.  
 
 **Policy Used:** 
@@ -195,7 +191,7 @@ policies:
 
 ---
 
-### **8. Recommendation: delete-unattached-publicip**  
+### Recommendation: delete-unattached-publicip
 **Description:** Delete public ip which are not attached to any network interface.  
 
 **Policy Used:**
@@ -219,7 +215,7 @@ policies:
 
 ---
 
-### **9. Recommendation: delete-low-utilised-datalake**  
+### Recommendation: delete-low-utilised-datalake
 **Description:** Delete all Datalake Stores with less than 1000 read requests or 1000 write requests in the last 72 hours.
 
 **Policy Used:**
@@ -253,7 +249,7 @@ policies:
 
 ---
 
-### **10. Recommendation: delete-unused-postgresql-servers**  
+### Recommendation: delete-unused-postgresql-servers 
 **Description:** Delete PostgreSQL Servers that have had zero active connections in the last 72 hours. 
 
 **Policy Used:**

@@ -1,7 +1,7 @@
 ---
 title: Delegate release notes
 sidebar_label: Delegate
-date: 2024-04-02T10:00
+date: 2024-04-04T10:00
 sidebar_position: 4
 ---
 
@@ -67,6 +67,14 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
+
+## April 2024
+
+### Version 24.04.82603 <!--  April 4, 2024 -->
+
+#### Hotfix
+
+- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180, ZD-58933, ZD-59370, ZD-60138)
 
 ## March 2024
 
