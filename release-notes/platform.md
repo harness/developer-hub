@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-04-08:T10:00:30
+date: 2024-04-15:T10:00:30
 sidebar_position: 3
 ---
 
@@ -80,7 +80,7 @@ The following deprecated API endpoints are longer supported:
 
 ## April 2024
 
-### Version 1.32.x<!--  April x, 2024 -->
+### Version 1.33.x<!--  April 15, 2024 -->
 
 #### New features and enhancements
 
@@ -94,7 +94,7 @@ The following deprecated API endpoints are longer supported:
 
 - Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. (PL-47914)
 
-- [ON HOLD] In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. (PL-47614)
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. (PL-47614)
 
 The audit trail filter did not include an option for "Token" resource type, hindering the ability to filter for API token updates. Added a "Token" filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
 
