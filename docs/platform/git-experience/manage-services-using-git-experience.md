@@ -78,8 +78,7 @@ To add a remote service to a pipeline, do the following:
 :::info note
 1. When the remote Service is linked to the pipeline, the branch of the Service is displayed as `__DEFAULT__`.
 `__DEFAULT__` resolves to the same branch as the pipeline, when both the service and pipeline where it is linked are in the same repository or the main branch of the repository where the Service resides when it is different.
-2. If a [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md) with a remote service is connected in a Remote Pipeline and both are in the same repository, the pipeline's branch defaults to the main one.
-3. However, if the service is in a different repository, the main branch of the service's repository is automatically chosen as the default.
+2. If a [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md) with a remote service is connected in a Remote Pipeline and both are in the same repository, the pipeline's branch defaults to the main one.However, if the service is in a different repository, the main branch of the service's repository is automatically chosen as the default.
 :::
 
 ## Change an inline service to a remote service
