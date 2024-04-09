@@ -17,10 +17,10 @@ To learn more, go to [DORA Reports](/docs/software-engineering-insights/sei-metr
 
 Deployment Frequency performance is ranked on the following grading scale:
 
-* Elite: More than one deployment per day.
-* High: Deployments occur anywhere from once per day to once per week.
-* Medium: Deployments occur anywhere from once per week to once per month.
-* Low: Deployment occur less than once per month.
+* **Elite:** More than one deployment per day.
+* **High:** Deployments occur anywhere from once per day to once per week.
+* **Medium:** Deployments occur anywhere from once per week to once per month.
+* **Low:** Deployment occur less than once per month.
 
 The Deployment Frequency formula depends on whether you are tracking issue
 management, SCM, or CI/CD. The following factors can contribute to Deployment
@@ -36,7 +36,37 @@ Frequency calculations:
 * Insight time range, which is the time range selected by the user when viewing the
 Insight.
 
-### Calculation Example
+### Calculation Example using Deployment Platform
+
+Consider the following Deployment Frequency configuration:
+
+* SEI integration: Harness NG
+* Filter: Project Category Equals SEI/Demo
+* Calculation parameter: Calculate based on the pipelines started in the selected time range on the Insight
+* Time Range selected on the dashboard: Last 2 weeks
+
+The following table shows the data ingested by the Harness NG SEI integration.
+
+| Field | Value |
+| - | - |
+| Integration | Harness NG |
+| Total Deployments | 960 |
+| Duration | Last 2 weeks = 14 Days |
+| Project | SEI/Demo |
+
+With this configuration, the Deployment Frequency widget shows the total number of times pipeline was started in the Project named SEI/Demo in the given time range.
+
+```bash
+Deployment Frequency = (Total Number of Pipeline Executions) / (Days in the Insight Time Range - 1)
+```
+
+```bash
+Deployment Frequency = 960 / 14 - 1 = 73.84
+```
+
+![](./static/df-ex1.png)
+
+### Calculation Example using Issue Management Platform
 
 Consider the following Deployment Frequency configuration:
 
@@ -48,13 +78,20 @@ Consider the following Deployment Frequency configuration:
 With this configuration, the Deployment Frequency widget shows the total number of
 tickets with a status of Done in the given time range.
 
-**Daily Deployment Frequency = ( Tickets in Done status ) / ( Days in Time Range )** 
+```bash
+Daily Deployment Frequency = ( Tickets in Done status ) / ( Days in the Insight Time Range )
+```
 
-**Daily Deployment Frequency = 24 / 91 = 0.263**
+```bash
+Daily Deployment Frequency = 24 / 91 = 0.263
+```
 
-**Weekly Deployment Frequency = ( Tickets in Done status ) / ( Days in Time Range / 7 )**
+```bash
+Weekly Deployment Frequency = ( Tickets in Done status ) / ( Days in the Insight Time Range / 7 )
+```
 
-**Weekly Deployment Frequency = 24 / 13 = 1.846**
+```bash
+Weekly Deployment Frequency = 24 / 13 = 1.846
+```
 
-Assuming there are 24 tickets in Done status in the last 91 days, then the Deployment
-Frequency is 0.263 deployments per day and 1.846 deployments per week.
+Assuming there are **24 tickets in Done status** in the **Last 91 days**, then the **Deployment Frequency is 0.263 Deployments Per Day** and **1.846 Deployments Per Week**.

@@ -4,7 +4,9 @@ description: Use Workflow profiles to define stages, events, and measurement cri
 sidebar_position: 30
 ---
 
-Workflow profile is an entity in SEI where users define the stages, events, and measurement criteria to assess the entire development process lifecycle. These profiles can be utilized to measure DORA and Lead Time metrics, providing valuable insights into the time taken to ship changes or for bug fixes to reach production.
+In SEI, users can create **Workflow Profiles** to measure and assess the entire software development lifecycle. These profiles allow you to define the stages, events, and measurement criteria that are relevant to your development process.
+
+By utilizing these workflow profiles, you can measure key metrics such as DORA (DevOps Research and Assessment) and Lead Time, which provide valuable insights into the time taken to ship changes or deploy bug fixes to production.
 
 You can configure the profile depending on the factors you want to include in your calculations. For example, you can:
 
@@ -378,9 +380,9 @@ You can change the start event that initiates the first stage, and you can add, 
   
   PR review stages cannot be rearranged. Default values for stages are customizable to meet specific requirements. We can add new custom stages at the beginning of the workflow or after the completion of the Development stages.
 
-* For **Commit Created** Start Event Workflow starts with `Commit Created` followed by PR Creation Time, Time to Comment, Approval Time, and Merge Time stages. Default values are customizable based on specific requirements. Custom stages can only be added after completing the default stages.
+* For **Commit Created** Start Event Workflow starts with **Commit Created** followed by PR Creation Time, Time to Comment, Approval Time, and Merge Time stages. Default values are customizable based on specific requirements. Custom stages can only be added after completing the default stages.
 
-* For **API Event** Start Event Development stages are the same as for `Ticket Created` and the PR review stages cannot be rearranged. The default values are customizable and custom stages can be added at the beginning or after the development stages.
+* For **API Event** Start Event Development stages are the same as for **Ticket Created** and the PR review stages cannot be rearranged. The default values are customizable and custom stages can be added at the beginning or after the development stages.
 
 ### Add a custom stage
 
@@ -393,45 +395,48 @@ To add custom stages, follow these steps:
 
 ![](./static/custom-stage.png)
 
-### Add the Jira Release stage
-
-When configuring a workflow profile in Jira, you have the option to add a release stage to measure Lead Time. This allows you to schedule how features are rolled out to customers or organize completed work for your project.
-
-By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to `Ticket Created` and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
-
-If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile.
 
 ### Measure Lead Time by Jira Statuses
 
-You can choose to measure lead time exclusively by JIRA statuses. This feature is especially useful for teams using JIRA as their primary issue management tool. It is a mandatory configuration for the JIRA releases report.
+You can choose to measure lead time exclusively by **JIRA statuses**. This feature is especially useful for teams using JIRA as their primary issue management tool. It is a mandatory configuration for the JIRA Releases report. Since lead time is being measured by JIRA statuses only, the start event will be **Ticket Created** by default.
 
-Since lead time is being measured by JIRA statuses only, the start event will be `Ticket Created` by default. Additionally, you have the option to add stages to your workflow, each with its name and description, and define the threshold by setting acceptable time limits for each stage.
+You can add custom stages to your workflow, each with a name and description. Additionally, you can define acceptable time limits for each stage to measure the lead time.
 
-<img
-  src={require('./static/jira-status.png').default}
-  alt="Example banner" height="50%" width="100%" border="1"
-/>
+These custom stages, along with the JIRA release stage, can be used to replicate your software delivery process and measure the overall lead time.
 
-To ensure accurate lead time measurement, at least one stage, apart from the release stage, is mandatory when measuring lead time by JIRA statuses. This ensures that the lead time metric captures the entire workflow process with all the steps involved in bringing an issue to its final state.
+![](./static/velocity-15.png)
 
-Intermediate stages allow for a more detailed analysis of the time spent at each phase of the workflow, enabling teams to identify potential bottlenecks and areas for optimization. When measuring lead time by JIRA statuses, stages can only be added before the release stage.
+At least one stage, apart from the release stage, is mandatory when measuring lead time by JIRA statuses. This ensures that the lead time metric captures the entire workflow process with all the steps involved in bringing an issue to its final state.
 
-* For newly created profiles the release stage is disabled by default in the configuration. However, selecting the checkbox to measure Lead Time only using Jira Statuses enables the Release Stage settings.
-* In this case, the selection for the `Issue Management System` and `Start Event` is disabled. Since JIRA is selected as the issue management platform, `Ticket Created` is the only start event supported
-* If you want to switch to Azure as the issue management system, you’ll have to disable the release stage from the profile configuration.
-* You cannot choose a start event other than `Ticket Created` when the release stage is configured as it will lead to incorrect settings.
+Intermediate stages allow for a more detailed analysis of the time spent at each phase of the workflow, helping teams identify potential bottlenecks and areas for optimization. These stages can only be added before the release stage.
+
+* For newly created profiles, the release stage is disabled by default in the configuration. Selecting the checkbox to measure lead time using JIRA statuses enables the release stage settings.
+* The **Issue Management System** and **Start Event** is disabled and cannot be customized. Since JIRA is selected as the Issue Management Platform, **Ticket Created** is the only start event supported
+* If you want to switch to Azure as the Issue Management System, you’ll have to disable the release stage from the profile configuration.
+* You cannot choose a start event other than **Ticket Created** when the release stage is configured as it will lead to incorrect settings.
 
 For existing profiles already in use, the release stage remains disabled by default.
 
-<img
-  src={require('./static/jira-release.png').default}
-  alt="Example banner" height="50%" width="100%" border="1"
-/>
+### Add the Jira Release stage
+
+The **Jira Release Stage** allows you to track the time it takes for features to be rolled out to customers. This helps derive valuable insights into the end-to-end delivery process, beyond just the internal development lifecycle.
+
+![](./static/velocity-16.png)
+
+When you enable the JIRA Release Stage, it measures the lead time from the point where a ticket is resolved (i.e., the Last Stage before the Jira Release Stage) to the actual date when the product or feature is released to the users.
+
+![](./static/velocity-17.png)
+
+By default, the Jira release stage is disabled, so you'll need to enable it to use it. Once enabled, the starting event for the workflow is automatically set to **Ticket Created** and cannot be modified as it will result in incorrect configuration.Similarly, the issue management system is automatically set to Jira by default.
+
+If you want to customize the starting event and Issue Management fields, you'll have to disable the release stage first. Once disabled, you'll be able to customize your starting event and Issue Management configuration for your profile.
 
 In cases where a single ticket is associated with multiple versions, the user can choose between two methods for the calculation:
 
 * **Considering the Earliest Released Version:** This option measures lead time to the first released version linked to the ticket. This approach prioritizes the initial delivery of value to stakeholders, emphasizing the initial completion of the issue and its subsequent release.
 * **Considering the Latest Released Version:** This option measures lead time to the most recently released version associated with the ticket. This approach focuses on the final iteration of the issue, capturing the cumulative development effort and ensuring that the lead time reflects the issue's final state as it reaches users.
+
+![](./static/jira-release.png)
 
 ## Configuration examples​
 
