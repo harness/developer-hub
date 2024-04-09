@@ -531,8 +531,8 @@ jobs:
 
 In addition to project, organization, and account variables, you can use built-in variables or define custom variables within individual pipelines, stages, and steps. To learn more about defining and fetching variables in Harness, go to:
 
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables)
+* [Define variables](/docs/platform/variables-and-expressions/add-a-variable)
 
 
 </TabItem4>

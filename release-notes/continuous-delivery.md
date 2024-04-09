@@ -1074,7 +1074,7 @@ This release does not include early access features.
 
   Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
 
-  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+  For more information about building expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
 
@@ -2037,7 +2037,7 @@ This release does not include early access features.
   - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
   - `<+strategy.node.strategy_node_identifier.*>`
 
-  For information on using the expressions, go to [Strategy](/docs/platform/variables-and-expressions/harness-variables/#strategy).
+  For information on using the expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
 
@@ -5098,9 +5098,9 @@ This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE.
 
   Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one.
 
-- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format \<+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
+- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format `<+serviceVariables.[variable name]>` and Environment variables use the format `<env.variables.[variable name]>`.
 
-  For more information, see Built-in and Custom Harness Variables Reference.
+  For more information, see [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 ##### Early access
 
@@ -5291,7 +5291,7 @@ Environments v2 now support variable expressions you can use to reference the En
 
 For details on Services and Environments v2, go to Services and Environments Overview.
 
-For details on Environment and Infrastructure Definition expressions, go to Built-in and Custom Harness Variables Reference.
+For details on Environment and Infrastructure Definition expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
  <DocVideo src="https://www.loom.com/embed/a16ac5354fba461abe934e04583c65c5" width="100%" height="600" />
 

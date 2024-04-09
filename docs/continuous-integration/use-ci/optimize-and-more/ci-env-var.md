@@ -4,7 +4,7 @@ description: Learn about environment variables in Harness CI pipelines.
 sidebar_position: 50
 ---
 
-This topic describes environment variables you might encounter when using Harness CI. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline.
+This topic describes environment variables you might encounter when using Harness CI. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are pipeline runtime environment variables, and they are available to all stages and steps in the pipeline.
 
 This reference focuses on Harness CI-specific environment variables prefixed by `CI_`, `HARNESS_`, and `DRONE_`. However, additional environment variables can be present based on your build infrastructure, build tools, specific steps used, and other pipeline configuration possibilities. You can use a `printenv` command in a [Run step](/docs/continuous-integration/use-ci/run-step-settings.md) to get a list of environment variables for a specific stage.
 
@@ -38,7 +38,7 @@ You can automatically [trigger pipelines using Git events](/docs/platform/trigge
 
 ## Difference between DRONE\_ and PLUGIN\_ variables
 
-`DRONE_` variables are environment variables that are automatically set at the pipeline level. These are [pipeline variables](/docs/platform/variables-and-expressions/harness-variables#pipeline), and they are available to all stages and steps in the pipeline. Many `DRONE_` variables have equivalent `CI_` or `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/run-a-drone-plugin-in-ci.md) that use those variables.
+`DRONE_` variables are environment variables that are automatically set at the pipeline level. These are pipeline runtime variables, and they are available to all stages and steps in the pipeline. Many `DRONE_` variables have equivalent `CI_` or `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/run-a-drone-plugin-in-ci.md) that use those variables.
 
 `PLUGIN_` variables represent [plugin settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). There are three ways they can be defined depending on their usage and the build infrastructure:
 

@@ -46,7 +46,7 @@ By selecting specific, individual pipelines when configuring the resource group,
 
 ### Can I make my pipeline dependent on the RBAC permissions of the user that runs the pipeline?
 
-Harness doesn't have a variable like `<+currentuser.role>` that returns the role for user running the pipeline; however, you can use a variable to get the user's email address. For more information, go to [Pipeline trigger by email](/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail).
+Harness doesn't have a variable like `<+currentuser.role>` that returns the role for user running the pipeline; however, you can use a variable to get the user's email address. For more information, go to the [pipeline.triggeredBy.email expression](/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions).
 
 You can also set the first step of the pipeline to call the [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) endpoint, which lists all roles assigned to the user, and then configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) that only allows the pipeline to proceed if the roles pass a JEXL condition.
 
@@ -411,7 +411,7 @@ curl -X POST -H 'Content-type: application/json' --data '{
 
 ### I use a Slack bot to send messages about test job results. What is the job URL variable?
 
-In Harness, use the [pipeline execution URL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline_execution_url) `<+pipeline.execution.url>`.
+In Harness, use the pipeline execution URL [expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+pipeline.execution.url>`.
 
 ## Delegates
 

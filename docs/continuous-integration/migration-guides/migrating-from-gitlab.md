@@ -531,8 +531,8 @@ Within a single pipeline, you can define variables at the step, stage, and pipel
 
 To learn more about defining and fetching variables go to:
 
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables)
+* [Define variables](/docs/platform/variables-and-expressions/add-a-variable)
 
 
 </TabItem>

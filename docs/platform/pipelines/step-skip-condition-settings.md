@@ -106,11 +106,13 @@ Due to the potential complexity of JEXL expressions in conditional executions, [
 
 ## Variables and expressions in conditional execution settings
 
-In conditional execution settings, Your JEXL conditions can include [Harness expressions and variables](/docs/platform/variables-and-expressions/harness-variables), including the output of previous steps.
+In conditional execution settings, your JEXL conditions can include [Harness expressions and variables](/docs/platform/variables-and-expressions/harness-variables), including the output of previous steps.
 
 ### Values must be available at evaluation time
 
 The variables and expressions in a JEXL condition must be resolved before the point at which the condition is evaluated.
+
+Conditional execution settings determine whether to run a stage; therefore, a conditional execution can't rely on a variable that isn't resolved until the stage runs.
 
 For example, for a stage conditional execution, the values required for the variables/expressions in the JEXL condition must have been resolved prior to the start of that stage. If the JEXL condition references, for example, a value from a step within the stage, Harness can't resolve the value and the condition can't be evaluated (or evaluates with a `null` value).
 

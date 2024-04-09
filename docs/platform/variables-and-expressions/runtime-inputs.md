@@ -13,7 +13,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-For most settings in Harness pipelines, you can use fixed values, runtime inputs, or expressions.
+For most settings in Harness pipelines, you can use fixed values, runtime inputs, or expressions. These options are also sometimes available for other entities, such as connectors and triggers.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
@@ -50,7 +50,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you can use fixed values in [variables](/docs/platform/variables-and-expressions/add-a-variable).
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you could use a fixed value for your pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) so that the pipeline always uses the same code repo connector and branch.
 
 ## Runtime inputs
 
@@ -64,7 +64,7 @@ For more information, go to [Use runtime input](./runtime-input-usage.md).
 
 ## Expressions
 
-Use expressions to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more.
+Use Harness expressions to reference input, output, and execution variables. These variables represent settings, metadata, and other values that exist in the pipeline before and during execution. These can include environment variables, secrets, [entity identifiers](/docs/platform/references/entity-identifier-reference.md), [user-defined variables](/docs/platform/variables-and-expressions/add-a-variable.md), and more.
 
 At pipeline runtime, Harness replaces the expression with the resolved value.
 
@@ -75,7 +75,7 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 ![](./static/runtime-inputs-03.png)
 
-Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`. These suggestions don't represent all possible expressions.
 
 ![](./static/runtime-inputs-10.png)
 
@@ -90,7 +90,7 @@ You can continue typing or select the expression from the list of suggestions.
 
 When writing pipelines in YAML, enter the expression using the appropriate syntax.
 
-When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`. These suggestions don't represent all possible expressions.
 
 ![](./static/runtime-inputs-13.png)
 
@@ -101,8 +101,7 @@ You can continue typing or select the expression from the list of suggestions.
 
 For more information, go to:
 
-* [Built-in and custom Harness variables reference](../variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](../variables-and-expressions/harness-variables.md)
 * [Write expressions using any JSON parser tool](./expression-v2.md)
 * [Use Java string methods](./expressions-java-methods.md)
-* [Expression status type reference](./status-type-reference.md)
-* [Add variables](./add-a-variable.md)
+* [Define variables](./add-a-variable.md)
