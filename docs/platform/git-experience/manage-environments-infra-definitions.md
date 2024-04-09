@@ -74,7 +74,8 @@ When adding a remote environment to the stage, you have the ability to choose a 
 1. When the remote environment is linked to the pipeline, the environment branch is displayed as `__DEFAULT__`.
 `__DEFAULT__` resolves to the same branch as the pipeline, when both the environment and pipeline where it is linked are in the same repository or the main branch of the repository where the environment resides when it is different.
 2. Infrastructure definition takes the branch of the environment when both reside in the same repository.
-3. When a remote stage template containing a remote environment is linked in a Remote Pipeline, the Stage template branch is defaulted when both entities are in the same repository. If the environment is in a different repository, that repository is taken. Read more about creating [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md).
+3. If you're using a [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md) along with a remote environment in a Remote Pipeline and both are in the same repository, the template's branch will be used by default.
+4. However, if the environment is located in a different repository, the repository where the environment resides will be selected instead.
 :::
 
 ## Change an inline environment to a remote environment
