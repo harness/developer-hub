@@ -2712,7 +2712,7 @@ Running, Failed, and Success
 
 #### How can I see all available variables?
 
-You can rely on our [Built-In variables](docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions.
+You can rely on our [Built-In variables](/docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions.
 
 ### How can I resolve environment variables in JEXL conditions?
 
