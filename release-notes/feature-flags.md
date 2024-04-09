@@ -27,7 +27,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Golang SDK
 
-#### Version 0.1.21
+#### Version 0.1.20
 
  - This update optimises the evaluation logic to be more efficient. (FFM-11183)
 
