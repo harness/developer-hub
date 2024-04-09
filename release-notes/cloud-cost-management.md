@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Fixed issues
 - Commitment Orchestrator UI Column Overlap: We have added a minor fix to address the issue of overlapping columns in Commitment Orchestrator overvoew page. [CCM-16971]
 
-- Resolved Cluster Data Visibility Issue: We witnessed a problem regarding inaccurate cost tracking within the specified date range due to a recent change in the TimescaleDB timeout configuration, leading to failures in the utilization data query and `INSTANCE_BILLING` job. By rerouting read queries to a secondary node and reducing the label's flattening query size, we've restored full visibility of cluster costs up to the present day across all connected connectors. . [CCM-17048]
+- Resolved Cluster Data Visibility Issue: We witnessed a problem regarding inaccurate cost tracking within the specified date range due to a recent change in the primary nodes TimescaleDB timeout configuration, leading to failures in the utilization data query. By rerouting read queries to a secondary node, we have fixed the query performance issue. [CCM-17048]
 
 ### Version 1.11.3
 
