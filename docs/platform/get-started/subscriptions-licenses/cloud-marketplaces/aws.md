@@ -5,6 +5,7 @@ sidebar_position: 2
 redirect_from:
   - /docs/get-started/sign-up-for-harness-aws-marketplace
   - /docs/getting-started/sign-up-for-harness-aws-marketplace
+  - /docs/platform/get-started/subscriptions-licenses/cloud-marketplace-integration/aws-marketplace
 ---
 
 Follow these steps to sign up for Harness through the AWS Marketplace:
