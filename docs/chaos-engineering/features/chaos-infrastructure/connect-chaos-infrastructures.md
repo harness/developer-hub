@@ -24,7 +24,7 @@ To create an environment:
 
 1. Select **+ New Environment**.
 
-1. In the **Create a new environment** screen, specify a **Name** for the environment, and optionally a **Description** and a **Tag**. 
+1. In the **Create a new environment** screen, specify a **Name** for the environment, and optionally a **Description** and a **Tag**.
 1. For **Environment type**, choose either **Production** or **Non-Production**, and then click **Create**.
 
   This creates a new environment.
@@ -50,7 +50,7 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
   Select one of the following:
 
-    * **On Existing Infrastructures** 
+    * **On Existing Infrastructures**
     * **On New Infrastructures**
 
 <Tabs>
@@ -77,11 +77,11 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Under **Choose Access Type**, choose one of the following modes.
 
-    * **Cluster Wide:** This mode of infrastructure installation allows targeting resources across the entire cluster, in all the namespaces, as part of an experiment. 
+    * **Cluster Wide:** This mode of infrastructure installation allows targeting resources across the entire cluster, in all the namespaces, as part of an experiment.
     * **Namespace Mode:** This mode of infrastructure installation allows targeting resources only in the namespace where the chaos infrastructure is deployed.
 
     By default the installation will take place in the `hce` namespace and uses `hce` service account, which can be configured under the K8s cluster details.
-    
+
     Optionally, you can also specify the node selectors and Kubernetes tolerations for chaos infrastructure deployment.
 
     :::tip
@@ -91,9 +91,9 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Select **Next**.
 
-  The Deploying your Infrastructure screen appears. 
+  The Deploying your Infrastructure screen appears.
 
-1. If you're deploying **on existing infrastructure**, select **Done**.  
+1. If you're deploying **on existing infrastructure**, select **Done**.
 
   This is your final step. Harness installs the chaos infrastructure on your behalf.
 
@@ -103,13 +103,13 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. If you're deploying on **new infrastructure**, you must run the given commands and/or download and apply the installation manifest YAML file.
 
-    * **For cluster-wide access:** 
+    * **For cluster-wide access:**
 
       1. Select **Download**, and then copy and run the `kubectl` command shown on your screen to install the chaos infrastructure.
 
       ![Cluster Wide Setup Infrastructure](./static/connect-chaos-infrastructures/cluster-wide-setup-infrastructure.png)
 
-    * **For namespace access:** 
+    * **For namespace access:**
 
       1. Run the first `kubectl` command to create the target namespace.
       1. Run the second `kubectl` command to apply the chaos CRDs.
@@ -149,7 +149,7 @@ To use Helm to install a chaos infrastructure,
 
 ![step 6](./static/connect-chaos-infrastructures/helm-select-6.png)
 
-7. Depending on the type of access you chose, you will see a set of commands. If you select namespace type, you will need to enter some advanced input values. Click **Next**. 
+7. Depending on the type of access you chose, you will see a set of commands. If you select namespace type, you will need to enter some advanced input values. Click **Next**.
 
 ![step 7a](./static/connect-chaos-infrastructures/namespace-7a.png)
 
@@ -180,7 +180,7 @@ Based on the scope of installation, you have to execute the commands.
 
 :::tip
 1. If you install your infrastructure in cluster scope, HCE supports auto-upgrade for such an infrastructure.
-2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure. 
+2. It is important that you remember that the flags in the command are based on the input parameters you provide while installing the infrastructure.
 :::
 
 </TabItem>
@@ -230,7 +230,7 @@ To add the policy module:
   sudo checkmodule -M -m -o timedatectlAllow.mod timedatectlAllow.te
   ```
 
-  This creates the binary policy module file `timedatectlAllow.mod`. 
+  This creates the binary policy module file `timedatectlAllow.mod`.
 
 1. Use the policy module file from the previous step to create a policy module package:
 
@@ -238,7 +238,7 @@ To add the policy module:
   sudo semodule_package -o timedatectlAllow.pp -m timedatectlAllow.mod
   ```
 
-  This creates the policy module package file `timedatectlAllow.pp`. 
+  This creates the policy module package file `timedatectlAllow.pp`.
 
 1. Add the package file from the previous step alongside the other SELinux modules in your system:
 
@@ -259,11 +259,11 @@ To add a Linux chaos infrastructure:
 
   ![Create Infra](./static/connect-chaos-infrastructures/2.select-linux.png)
 
-1. On the next screen, enter a **Name** for the infrastructure, and optionally, a **Description** and **Tags**. 
+1. On the next screen, enter a **Name** for the infrastructure, and optionally, a **Description** and **Tags**.
 
   ![Specify Details](./static/connect-chaos-infrastructures/3.configure-chaos.png)
-  
-  You can also specify the [advanced setup](/docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management#advanced-setup) options for the infrastructure. 
+
+  You can also specify the [advanced setup](/docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management#advanced-setup) options for the infrastructure.
 
 1. Select **Next**.
 
