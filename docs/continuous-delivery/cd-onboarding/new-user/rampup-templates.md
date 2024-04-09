@@ -19,7 +19,7 @@ For more information on templates, go to:
 
 :::note
 
-For general information and a list of Harness built-in variables, please see [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables). 
+For general information and a list of Harness built-in variables, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables). 
 
 :::
 

@@ -53,13 +53,13 @@ Adhere to the following restrictions and considerations for variable names:
 * Variable names must start with a letter or underscore (`_`).
 * Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`). However, periods and hyphens are not recommended.
 * Variable names and properties can't contain the following reserved keywords: `or, and, eq, ne, lt, gt, le, ge, div, mod, not, null, true, false, new, var, return, shellScriptProvisioner, class`. For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
-* Avoid periods and hyphens in variable names. If you must use them, [period and hyphens required escaping](#use-get-for-variable-names-with-hyphens-and-periods) when referencing those variables in Harness expressions.
+* Avoid periods and hyphens in variable names. If you must use them, [period and hyphens require escaping](#use-get-for-variable-names-with-hyphens-and-periods) when referencing those variables in Harness expressions.
 * Variable names must be unique within the same scope. For example, you can't have two stage variables in the same stage with the same name.
 * Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
 
 ### Use get() for variable names with hyphens or periods
 
-Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
+Harness recommends not using hyphens/dashes (`-`) in variable names because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
 
 However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
 
@@ -205,7 +205,7 @@ Similarly, you can add CD service and environment variables within stages that h
 
 :::info
 
-*CD environment variables* are variables for your defined CD environments (such as production or development environments). These can be different from pipeline environment variables that define the execution runtime environment.
+**CD environment variables** are variables for your defined CD environments (such as production or development environments). These can be different from pipeline environment variables that define the execution runtime environment.
 
 :::
 

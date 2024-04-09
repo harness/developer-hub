@@ -462,16 +462,16 @@ For more information, go to [How to install JQ on Ubuntu](https://www.golinuxclo
 <details>
 <summary>Install JQ on Harness Delegate</summary>
 
-1. Open the `delegate.yaml` in a text editor.
+1. Open the `delegate.yaml` file in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
 
-   ```
+   ```yaml
    - name: INIT_SCRIPT
    value: ""
    ```
 3. Replace `value: ""` with the following script to install JQ.
 
-   ```
+   ```yaml
    - name: INIT_SCRIPT
    value: |
     apt install software-properties-common -y

@@ -50,7 +50,7 @@ When you type `<+`, Harness provides suggestions for built-in [expressions](#exp
 
 Fixed Values are values that you define when you configure a setting. These values don't change at runtime.
 
-Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you could use a fixed values for your pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) so that the pipeline always uses the same code repo connector and branch.
+Use fixed values for settings you don't need to change based on the build context, other steps, or runtime operations. For example, you could use a fixed value for your pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) so that the pipeline always uses the same code repo connector and branch.
 
 ## Runtime inputs
 
@@ -75,7 +75,7 @@ In the Pipeline Studio's Visual Editor, you can use the **Value type selector** 
 
 ![](./static/runtime-inputs-03.png)
 
-Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`. These suggestion's don't represent all possible expressions.
+Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`. These suggestions don't represent all possible expressions.
 
 ![](./static/runtime-inputs-10.png)
 

@@ -107,7 +107,7 @@ Harness offers several ways to help you build expression paths:
 
 #### Use FQNs
 
-The format and length of an expression's Fully-Qualified Name (FQN) depends on the type of entity the expression is referencing and where it is located.
+The format and length of an expression's Fully Qualified Name (FQN) depends on the type of entity the expression is referencing and where it is located.
 
 Some expressions have short FQNs, such as `<+account.name>`, which references your Harness account name, or `<+variable.account.accountVariableName>`, which references a [custom account variable](./add-a-variable.md). In contrast, expression referencing specific settings embedded a pipeline's YAML can have much longer FQNs, like this expression for a service variable in a CD stage: `<+pipeline.stages.stageID.spec.serviceConfig.serviceDefinition.spec.variables.serviceVariableName>`.
 
@@ -125,7 +125,7 @@ For example, to reference a CD service definition's `imagePath` setting in the s
 
 ### Use expressions only after they can be resolved
 
-When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. This means that if you try to use an expression before Harness has the necessary information to resolve the expression's value, the expression resolves to `null` and the pipeline can fail or execute incorrectly.
+When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. This means that if you try to use an expression before Harness has the necessary information to resolve the expression's value, the expression resolves to `null`, and the pipeline can fail or execute incorrectly.
 
 This requirement applies regardless of how you are using the expression, such as with operators or in scripts. If Harness can't resolve the target value at the point when the pipeline requests the expression, the expression fails to resolve and the pipeline can fail.
 
@@ -379,13 +379,13 @@ When concatenating expressions as strings, each expression must evaluate to a st
 
 If an expression does not satisfy this condition, use the `toString()` [method](/docs/platform/variables-and-expressions/expressions-java-methods) to convert it to a string.
 
-For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`
+For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
 
 :::
 
 ## Input and output variables
 
-Your pipelines, stages, and steps can ingest inputs and produce outputs. In general, input variables represent a pipeline's configuration - the settings and values defining how and where an execution runs. Output variables are the results of an execution - such as release numbers, artifact IDs, image tags, user-defined output variables, and so on.
+Your pipelines, stages, and steps can ingest inputs and produce outputs. In general, input variables represent a pipeline's configuration — the settings and values defining how and where an execution runs. Output variables are the results of an execution — such as release numbers, artifact IDs, image tags, user-defined output variables, and so on.
 
 You can use expressions to reference inputs and outputs. For example, you could reference a previous step's output in a subsequent step's command.
 
@@ -445,9 +445,9 @@ The following sections describe some Harness expressions. This information is no
 * `<+org.name>`: The name of the organization.
 * `<+org.description>`: The description of the organization.
 * `<+project.identifier>`: The [identifier](../references/entity-identifier-reference.md) of a Harness project in your Harness account. The referenced project depends on the context where you use the expression.
-* `<+project.name>:` The name of the Harness project.
+* `<+project.name>`: The name of the Harness project.
 * `<+project.description>`: The description of the Harness project.
-* `<+project.tags>:` All [Harness tags](/docs/platform/references/tags-reference) attached to the project.
+* `<+project.tags>`: All [Harness tags](/docs/platform/references/tags-reference) attached to the project.
 
 ### Approval expressions
 
@@ -603,7 +603,7 @@ To reference the other properties added to **Instance Attributes**, use the expr
 
 #### HARNESS_KUBE_CONFIG_PATH
 
-While this doesn't follow the typical Harness expression syntax, `${HARNESS_KUBE_CONFIG_PATH}` is an expression referencing the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
+While this doesn't follow the typical Harness expression syntax, `${HARNESS_KUBE_CONFIG_PATH}` is an expression referencing the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting their value to the KUBECONFIG environment variable.
 
 Harness only generates this kubeconfig file when a delegate is outside of the target cluster and is making a remote connection. When you set up the Kubernetes cluster connector to connect to the cluster, you select the **Specify master URL and credentials** option. The master URL and credentials you supply in the connector are put in the kubeconfig file and used by the remote delegate to connect to the target cluster.
 
@@ -632,7 +632,7 @@ This expression requires delegate version 23.04.79106 or later.
 
 You can use this expression:
 
-- In values.yaml, OpenShift Params, and Kustomize Patches.
+- In the `values.yaml` file, OpenShift Params, and Kustomize Patches.
 - To reference the current Harness release number as part of your manifest.
 - To reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
 
@@ -676,7 +676,7 @@ Here are some generic manifest expressions:
 * `<+manifests.MANIFEST_ID.type>`: Resolves to the manifest `type`.
 * `<+manifests.MANIFEST_ID.store>`: Resolves to where the manifest is stored. In the following example, the manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store):
 
-  ```
+  ```yaml
   ...
         manifests:
           - manifest:
@@ -864,8 +864,8 @@ When you run the pipeline, the expressions resolve to their respective label val
 
 #### Artifacts with dockercfg or dockerconfigjson
 
-* `<+artifacts.primary.imagePullSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the values.yaml or manifest file in service definition's **Manifests** section must use the `dockercfg` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockercfg: <+artifacts.primary.imagePullSecret>`.
-* `<+artifacts.primary.dockerConfigJsonSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the values.yaml or manifest files in the service definition's **Manifests** section must use the `dockerconfigjson` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+* `<+artifacts.primary.imagePullSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml ` or manifest file in the service definition's **Manifests** section must use the `dockercfg` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockercfg: <+artifacts.primary.imagePullSecret>`.
+* `<+artifacts.primary.dockerConfigJsonSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml` or manifest files in the service definition's **Manifests** section must use the `dockerconfigjson` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
 
 For more information and examples, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) and [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services.md#pull-an-image-from-a-private-registry).
 
@@ -1103,7 +1103,7 @@ Harness recommends removing unneeded expressions from comments so they don't cau
 
 Regardless of their validity, you can't use Harness expressions in comments in:
 
-- Values YAML files (values.yaml) in Kubernetes, Helm chart, or Native Helm deployments.
+- Values YAML files (`values.yaml`) in Kubernetes, Helm chart, or Native Helm deployments.
 - Kustomize patches files.
 
 For example, the following values.yaml file won't process correctly because it has an expression in the comment.
