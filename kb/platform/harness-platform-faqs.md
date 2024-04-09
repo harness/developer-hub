@@ -154,6 +154,10 @@ We have only one API for access check either if you perform Authorization using 
 
 An API key is created with a minimum duration of 30 days. You can rotate the token at any time.
 
+#### What does 'parentIdentifier' refer to during the creation of an API key?
+
+The `parentIdentifier` in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate `parentIdentifier` ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
+
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
 You can use this [API](https://apidocs.harness.io/tag/Account-Roles#operation/update-role-acc) and create a script to update the user roles.
@@ -375,7 +379,8 @@ Check and confirm if group authorization is enabled for saml setup configured, t
 
 ### How do I capture SAML Tracer information?
 
-You can install SAML Tracer extension in your browser its available for all browsers. 
+You can install SAML Tracer extension in your browser its available for all browsers.
+
 With the SAML-tracer extension running one needs to do the following:
 
 1. At the login page hit "X Clear" in SAML tracer(top left) and then perform a login attempt.
@@ -929,7 +934,7 @@ You can refer the [docs](https://developer.harness.io/docs/platform/delegates/in
 
 Yes, metrics for the Docker Delegate are published. To enable Prometheus scraping, you would likely need to open a port on the container and bind it to the Delegate metric port. This allows Prometheus, running separately, to scrape and collect metrics from the Docker Delegate.
 
-### How Do Delegates Share Information Like Helm Chart Contents Within the Same Stage?
+### How do delegates share information like Helm chart contents within the same stage?
 
 The process of sharing information between delegates within the same stage in Harness follows this flow:
 
@@ -1026,10 +1031,11 @@ You can select the step under any stage and on right side under details tab you 
 
 ### How do I pass xmx and pms value for delegate to use max and min memory allocation pool?
 
+```yaml
 env:
     - name: JAVA_OPTS
       value: "-Xms64M -Xmx2G"
-
+```
 
 ### Can we manually reset the delegate metrics being scraped by Prometheus?
 
@@ -1110,6 +1116,51 @@ Legacy delegates used to have both a watcher and a delegate process; however, im
 Immutable delegates work with the first generation as well. If you have an immutable delegate installation in your first generation, you can reuse it with your next-generation instance. You will need to regenerate the token in the next generation and enable the "next gen" attribute of the delegate to true.
 
 However, if you have legacy delegates in your first generation, you will require new delegate installations.
+
+#### How do I support Docker in Docker for Harness Delegates?
+
+To support Docker in Docker for Harness Delegates, follow these steps:
+
+Check Kubernetes Cloud Provider Compatibility: Ensure that your Kubernetes Cloud Provider supports this configuration. For instance, note that Amazon EKS has ended support for Dockershim, which might affect this approach.
+
+**Set up Delegate Image:**
+
+- Utilize the INIT_SCRIPT variable or build a custom delegate image.
+- Install necessary packages in the image. Here's an example of installations:
+
+```
+microdnf install yum
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+**Update Delegate YAML:**
+- Add volume mounts to enable Docker functionality within the delegate container.
+
+```yaml
+volumes:
+  - name: docker-sock
+    hostPath:
+      path: '/var/run/docker.sock'
+  - name: docker-directory
+    hostPath:
+      path: '/var/lib/docker'
+```
+
+**Configure volume mounts in the YAML file:**
+
+```yaml
+volumeMounts:
+  - mountPath: /var/run/docker.sock
+    name: docker-sock
+    readOnly: false
+  - mountPath: '/var/lib/docker'
+    name: docker-directory
+    readOnly: false
+```
+
+By following these steps, your delegate container should be able to execute Docker commands successfully by utilizing the `docker.sock` from your node hosts. This setup allows for Docker in Docker functionality within your Harness delegate container.
 
 ### Is it possible to access vault secrets across different regions?
 
@@ -1668,6 +1719,22 @@ Add the below commands in the `INIT_SCRIPT` to download and install the Azure cl
 
 Once the shutdown hook is triggered on the delegate, the delegate won't accept new tasks, and it will wait until the existing tasks finish running or the `terminationGracePeriodSeconds` runs out. For more information, go to [Grace period](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process#grace-period).
 
+#### How do I turn off the logging.googleapi.com URL? Do I need to provide any other commands in the delegate startup?"
+
+Our delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality, you must set the `STACK_DRIVER_LOGGING_ENABLED` env variable to `false`. For more information, go to [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
+
+#### How can I validate the configuration of Harness Delegates?
+
+Harness Delegates are primarily configured through variables, which can be adjusted during the deployment of a new delegate. There are several ways to ensure the correctness of these configurations:
+
+- **Pre-Deployment Validation:** Before deploying the delegate, you can validate the variables to ensure they meet your requirements.
+
+- **Describe Commands:** Execute `Describe` commands on your cluster where the delegate pod is deployed. These commands provide detailed information about all configured variables for the delegate.
+
+- **Configmaps Inspection:** Delegate configurations can also be stored in configmaps. By checking for delegate-related configmaps in your cluster, you can verify and review the configurations associated with the delegate.
+
+These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
+
 ## Dashboards
 
 ### Why am I not seeing my deployments on the Overview page of the project?
@@ -2198,6 +2265,12 @@ Harness uses connectors to external secret managers (e.g. Google Secret Manager 
 
 No, we don't support ldap secret engine.
 
+#### Why am I experiencing errors with core_secret_access messages?
+
+This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
+
+To fix it you just need to give the expected permissions to the User's group, for example, for secrets, there are View, Create/Edit, Delete, and Access permissions.
+
 ### How long is an invitation for workshop accounts valid?
 
 It should be valid for 30 days.
@@ -2636,6 +2709,10 @@ They are a way to refer to something in Harness such as an entity name or a conf
 
 Running, Failed, and Success
 
+#### How can I see all available variables?
+
+You can rely on our [Built-In variables](docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions.
+
 ### How can I resolve environment variables in JEXL conditions?
 
 Unfortunately, JEXL conditions do not support the direct usage of environment variables. The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
@@ -2714,93 +2791,19 @@ This happens due to an incorrect cron expression. Harness uses Java cron-utils t
 
 https://www.javainuse.com/cron#google_vignette
 
-#### How to turn off the url logging.googleapi.com? Do I need to provide any other commands in Delegate startup?"
-Our Delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality you just need to set `STACK_DRIVER_LOGGING_ENABLED` variable to false. 
-
-Doc: https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled
-
-
-#### Why I'm experiencing errors with `core_secret_access` messages?
-This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
-
-To fix it you just need to give the expected permissions to the User's group, for example, to secrets we have the following permissions View, Create/Edit, Delete, Access.
-
-#### How can i see all available variables?
-You can rely on our [Built-In variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions. 
-
-#### How can I validate the configuration of Harness delegates?
-
-Harness delegates are primarily configured through variables, which can be adjusted during the deployment of a new delegate. There are several ways to ensure the correctness of these configurations:
-
-**Pre-Deployment Validation:** Before deploying the delegate, you can validate the variables to ensure they meet your requirements.
-
-**Describe Commands:** Execute 'Describe' commands on your cluster where the Delegate Pod is deployed. These commands provide detailed information about all configured variables for the delegate.
-
-**Configmaps Inspection:** Delegate configurations can also be stored in configmaps. By checking for delegate-related configmaps in your cluster, you can verify and review the configurations associated with the delegate.
-
-These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
-
 #### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
 
-Encountering the error message "Oops, something went wrong on our end. Please contact Harness Support." typically indicates an unexpected failure in a backend API call related to the operation you're attempting.
+This error message typically indicates an unexpected failure in a backend API call related to the operation you're attempting.
 
 To address this issue effectively:
 
-**Collect HAR File:** When you encounter this error, gather a HAR (HTTP Archive) file that captures the network traffic and interactions during the operation you were performing.
+- **Collect HAR File:** When you encounter this error, gather a HAR (HTTP Archive) file that captures the network traffic and interactions during the operation you were performing.
 
-**Open a Support Ticket:** With the HAR file in hand, promptly open a support ticket with Harness Support. Provide detailed information about the error along with the attached HAR file. This enables our support team to investigate the issue thoroughly.
+- **Open a Support Ticket:** With the HAR file in hand, open a ticket with Harness Support. Provide detailed information about the error along with the attached HAR file. This enables our support team to investigate the issue thoroughly.
 
-By following these steps, our support team can promptly review the situation, diagnose the underlying cause, and provide you with the necessary assistance to resolve the error swiftly. Your cooperation in providing the HAR file greatly facilitates our troubleshooting efforts and ensures a timely resolution to the issue at hand.
-
-#### What does 'parentIdentifier' refer to during the creation of an API key?
-
-The 'parentIdentifier' in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate 'parentIdentifier' ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
+By following these steps, our support team can promptly review the situation, diagnose the underlying cause, and provide you with the necessary assistance to resolve the error swiftly. Your cooperation in providing the HAR file greatly facilitates our troubleshooting efforts and ensures a timely issue resolution.
 
 #### What does "Exit code 137" mean?
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
-#### How to support docker in docker for harness-delegate?
-
-To support Docker in Docker for Harness delegates, follow these steps:
-
-Check Kubernetes Cloud Provider Compatibility: Ensure that your Kubernetes Cloud Provider supports this configuration. For instance, note that Amazon EKS has ended support for Dockershim, which might affect this approach.
-
-**Set up Delegate Image:**
-
-- Utilize the INIT_SCRIPT variable or build a custom delegate image.
-- Install necessary packages in the image. Here's an example of installations:
-
-```
-microdnf install yum
-yum install -y yum-utils
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-```
-
-**Update Delegate YAML:**
-- Add volume mounts to enable Docker functionality within the delegate container.
-
-```yaml
-volumes:
-  - name: docker-sock
-    hostPath:
-      path: '/var/run/docker.sock'
-  - name: docker-directory
-    hostPath:
-      path: '/var/lib/docker'
-```
-
-**Configure volume mounts in the YAML file:**
-
-```yaml
-volumeMounts:
-  - mountPath: /var/run/docker.sock
-    name: docker-sock
-    readOnly: false
-  - mountPath: '/var/lib/docker'
-    name: docker-directory
-    readOnly: false
-```
-
-By following these steps, your delegate container should be able to execute Docker commands successfully by utilizing the `docker.sock` from your node hosts. This setup allows for Docker in Docker functionality within your Harness delegate container.
