@@ -57,61 +57,18 @@ Feature Flag's Relay Proxy resides between the SDKs and the hosted Harness Featu
 
 ![A in-depth diagram of the Relay Proxy V2 Architecture in HA Mode. ](./images/relay_proxy_v2_ha_mode_indepth.png)
 
-### HA Mode Example using Docker
+### HA Mode with single Redis example
 
-In order to run the Proxy in HA mode, you will need to follow these steps:
+If you want to run the Proxy in HA mode locally with a single redis instance please follow this [getting started example](https://github.com/harness/ff-proxy/tree/v2/examples/ha_mode_with_monitoring).
 
- 1. Configure a ‘Primary’ Proxy.
- 2. Configure at least one ‘Replica’ Proxy.
- 3. Have a Redis instance running that both your Primary and Replica Proxy can hit. 
- 4. In HA mode, both the Primary and Replica Proxy use Redis to communicate. 
+### HA Mode with Redis Cluster
 
-Below is an example `docker-compose` file that you can use for running the Proxy in HA Mode locally:
-
-```
-version: "3.9"
-services:
-  primary:
-    image: "harness/ff-proxy:v2-rc0.8"
-    environment:
-      - PROXY_KEY=<proxy key>
-      - REDIS_ADDRESS=redis:6379
-      - READ_REPLICA=false
-      - AUTH_SECRET=foobar
-    ports:
-      - "7001:7000"
-
-  replica-1:
-    image: "harness/ff-proxy:v2-rc0.8"
-    environment:
-      - LOG_LEVEL=INFO
-      - REDIS_ADDRESS=redis:6379
-      - READ_REPLICA=true
-      - AUTH_SECRET=foobar
-    ports:
-      - "7002:7000"
-      
-  replica-2:
-    image: "harness/ff-proxy:v2-rc0.8"
-    environment:
-      - LOG_LEVEL=INFO
-      - REDIS_ADDRESS=redis:6379
-      - READ_REPLICA=true
-      - AUTH_SECRET=foobar
-    ports:
-      - "7002:7000"
-
-  redis:
-    image: "redis:latest"
-    ports:
-      - "6379:6379"
-```
-
-The example above uses the Docker Image Version `v2-rc0.8` but there may be more up-to-date version available. To check for the lastest RC Image, you can go to [Feature Flags Proxy Repo on Docker](https://hub.docker.com/r/harness/ff-proxy/tags).
+If you want to run the Proxy in HA mode locally with a redis cluster please follow this [getting started example](https://github.com/harness/ff-proxy/tree/v2/examples/redis_cluster_ha_mode_with_monitoring).
 
 ### Single Mode
 
-When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retrieves the configuration from Harness SaaS. It, then, stores it in the cache and opens up a stream with Harness SaaS to listen for changes. Whenever there is an update in Harness SaaS, an event is sent to the Primary Proxy and when the Proxy receives this event, it reaches out to Harness SaaS to fetch the change. The diagram below shows trhe Relay Proxy V2 in Single Proxy Mode:
+When running the Relay Proxy V2 in HA mode, the Primary Proxy starts up and retrieves the configuration from Harness SaaS. It, then, stores it in the cache and opens up a stream with Harness SaaS to listen for changes. Whenever there is an update in Harness SaaS, an event is sent to the Primary Proxy and when the Proxy receives this event, it reaches out to Harness SaaS to fetch the change. The diagram below shows the Relay Proxy V2 in Single Proxy Mode:
+
 
 ![A diagram of the Relay Proxy V2 Architecture in Single Proxy Mode. ](./images/relay_proxy_v2_single_proxy.png)
 
@@ -126,7 +83,7 @@ The below configuration options are required in order for the Primary & Replica 
 | Environment Variable | Example                              | Description                                                                                                                                                                                                                                                              | Default Value |
 |----------------------|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | PROXY_KEY            | d8ba3e2f-3993-4ae1-9bc9-014f5ec68273 | The ProxyKey you want to configure your Proxy to use                                                                                                                                                                                                                     | ""            |
-| REDIS_ADDRESS        | localhost:6379                       | The host and port of the redis server you want your Proxy to connect to                                                                                                                                                                                                  | ""            |
+| REDIS_ADDRESS        | localhost:6379                       | The host and port of the redis server you want your Proxy to connect to. If you're using redis cluster this should be a comma separated list containing the address of each node in your cluster e.g. localhost:6379,localhost:6380,localhost:6381                                                                                                                                                                                                  | ""            |
 | READ_REPLICA         | false                                | Determines if the Proxy runs as a read replica or a Primary                                                                                                                                                                                                              | false         |
 | AUTH_SECRET          | someRandomlyGeneratedSecretYouKeep   | Used by the Proxy to sign the JWT tokens it creates and returns to SDKs when they authenticate with the Proxy. The Proxy then checks that the token provided in any subsequent reqeusts by SDKs has been signed with this secret to ensure auth tokens can't be spoofed. | ""            |
 
