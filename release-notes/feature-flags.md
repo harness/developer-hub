@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 0.1.19
 
- - We've added additional debug logging around evaluation logic. (FFM-11091)
+ - Added additional debug logging around evaluation logic. (FFM-11091)
 
 ### .NET SDK
 
