@@ -1949,6 +1949,8 @@ This can be related to log streaming during the Build and Push step or a Run ste
 
 If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
 
+If your builds timeout with this error during stage initialization, and you are using a Kubernetes cluster build infrastructure, you can contact [Harness Support](mailto:support@harness.io) to enable a beta feature that shortens long environment variables, like commit messages and PR titles.
+
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 
 Yes. To do this, you can add a step that runs in parallel to the Run step, and have that parallel step get the service's logs while the build runs. For an example, go to [Use a parallel step to monitor failures](./articles/parallel-step-for-logging).
