@@ -22,7 +22,7 @@ New to Helm deployments in Harness? Review [Helm Chart Deployment Tutorial](/doc
 
 1. Install the chart on the delegate host.  
    The delegate host must have Helm installed on it. Harness installs Helm with the delegate automatically, so you don't need to do anything unless you have removed Helm for the delegate host.  
-   For information on the Helm binaries installed by default, see [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).  
+   For information on the Helm binaries installed by default, see [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).  
    You can install the chart manually on the host, but it is easier to install it using the `INIT_SCRIPT` environment variable in the delegate YAML.  
 2. Add the `INIT_SCRIPT` environment variable to the StatefulSet (legacy delegate) or deployment (delegate with an immutable image type) object in the delegate YAML, and add your Helm chart installation script. 
 

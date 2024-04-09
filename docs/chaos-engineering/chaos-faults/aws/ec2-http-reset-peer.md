@@ -1,6 +1,8 @@
 ---
 id: ec2-http-reset-peer
 title: EC2 HTTP reset peer
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-reset-peer
 ---
 
 EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault stops the outgoing HTTP requests by resetting the TCP connection for the requests.

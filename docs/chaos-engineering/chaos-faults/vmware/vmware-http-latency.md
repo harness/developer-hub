@@ -1,6 +1,8 @@
 ---
 id: vmware-http-latency
 title: VMware HTTP latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-http-latency
 ---
 VMware HTTP latency injects HTTP response latency into the service of a specific port.
 - This is achieved by starting the proxy server and redirecting the traffic through the proxy server.

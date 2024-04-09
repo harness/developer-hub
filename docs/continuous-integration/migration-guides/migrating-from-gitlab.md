@@ -17,7 +17,7 @@ Harness CI provides proprietary technologies, like Cache Intelligence and Test I
 
 In addition, you can [use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) to include GitHub Actions, Bitrise Integrations, Jira updates, and more in your Harness CI pipelines.
 
-Harness CI is part of The [Harness Platform](/docs/get-started/harness-platform-architecture), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
+Harness CI is part of The [Harness Platform](/docs/platform/get-started/key-concepts.md), which is a self-service CI/CD platform that enables end-to-end software delivery. The Harness Platform includes features, functionality, and additional modules to help you build, test, deploy, and verify software. For example:
 
 * [Secrets management](/docs/category/secrets-management) through the [Harness secrets manager](/docs/platform/secrets/secrets-management/harness-secret-manager-overview) or an [external secrets manager](/docs/platform/get-started/tutorials/add-secrets-manager).
 * Role-Based Access Control (RBAC) helps you control user and group access to Harness resources according to users' roles. Using RBAC increases security and improves efficiency.
@@ -531,8 +531,8 @@ Within a single pipeline, you can define variables at the step, stage, and pipel
 
 To learn more about defining and fetching variables go to:
 
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables)
+* [Define variables](/docs/platform/variables-and-expressions/add-a-variable)
 
 
 </TabItem>

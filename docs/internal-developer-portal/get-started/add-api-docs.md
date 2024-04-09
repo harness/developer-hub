@@ -5,6 +5,8 @@ sidebar_position: 70
 sidebar_label: How to Add API Docs
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 # Introduction 
 
 Software Catalog in Harness IDP provides a comprehensive framework for defining and managing software entities, including APIs. Here’s a guideline to add API specifications, based on the Backstage descriptor format:

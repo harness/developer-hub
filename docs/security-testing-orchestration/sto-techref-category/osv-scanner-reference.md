@@ -5,12 +5,10 @@ sidebar_position: 285
 sidebar_label: Open Source Vulnerabilities (OSV) scanner reference
 ---
 
-You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
+You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
 
 
 ## Important notes for running OSV scans in STO 
-
-Currently, this integration is behind the feature flag `STO_STEP_PALETTE_OSV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 <!-- Currently, this integration supports the following:
 

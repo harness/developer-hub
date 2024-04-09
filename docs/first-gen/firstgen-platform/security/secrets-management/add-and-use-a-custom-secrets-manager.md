@@ -8,18 +8,28 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/custom-secret-manager).Harness provides first-class support and built-in integration for some of the third party Secret Managers. You can configure and make use of other Secrets Managers using the Custom Secrets Manager. It's a shell script that you can execute anywhere that fetches the secret and shares it with Harness. It can be run on a Delegate or a remote machine connected to a Delegate.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/custom-secret-manager).
+
+Harness provides first-class support and built-in integration for some of the third party Secret Managers. You can configure and make use of other Secrets Managers using the Custom Secrets Manager. It's a shell script that you can execute anywhere that fetches the secret and shares it with Harness. It can be run on a Delegate or a remote machine connected to a Delegate.
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Review: Read-Only Secret Manager](#review_read_only_secret_manager)
-* [Step 1. Create an Encrypted Text Secret](#step_1_create_an_encrypted_text_secret)
-* [Step 2: Add Connection Attributes for Target Hosts](#step_2_add_connection_attributes_for_target_hosts)
-* [Step 3. Create a Shell Script Template](#step_3_create_a_shell_script_template)
-* [Step 4. Configure Custom Secrets Manager](#step_4_configure_custom_secrets_manager)
-* [Step 5. Use the Custom Secrets Manager](#step_5_use_the_custom_secrets_manager)
-* [Limitations](#limitations)
+- [Before You Begin](#before-you-begin)
+- [Limitations](#limitations)
+- [Review: Read-Only Secret Manager](#review-read-only-secret-manager)
+- [Step 1. Create an Encrypted Text Secret](#step-1-create-an-encrypted-text-secret)
+- [Step 2: Add Connection Attributes for Target Hosts](#step-2-add-connection-attributes-for-target-hosts)
+- [Step 3. Create a Shell Script Template](#step-3-create-a-shell-script-template)
+- [Step 4. Configure Custom Secrets Manager](#step-4-configure-custom-secrets-manager)
+  - [Display Name](#display-name)
+  - [Shell Script](#shell-script)
+  - [Execute on Delegate](#execute-on-delegate)
+  - [Target Host](#target-host)
+  - [Templatize Connection Attribute](#templatize-connection-attribute)
+  - [Connection Attribute](#connection-attribute)
+  - [Working Directory](#working-directory)
+  - [Test Variables](#test-variables)
+- [Step 5. Use the Custom Secrets Manager](#step-5-use-the-custom-secrets-manager)
 
 ### Before You Begin
 

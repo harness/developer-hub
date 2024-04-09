@@ -1,6 +1,8 @@
 ---
 id: rds-instance-delete
 title: RDS instance delete
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/rds-instance-delete
 ---
 
 RDS instance delete removes an instances from AWS RDS cluster. This makes the cluster unavailable for a specific duration.

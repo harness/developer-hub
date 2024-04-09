@@ -1,0 +1,11 @@
+{
+    "label": "Platform Dashboards",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 60,
+    "link": {
+      "type": "generated-index",
+      "title": "Platform Dashboards"
+    },
+    "customProps": {}
+  }

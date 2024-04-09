@@ -1,6 +1,6 @@
 ---
 title: Create a connector using YAML
-description: This topic explains how to add a connector using the YAML Builder.
+description: This topic explains how to add a connector using the YAML editor.
 # sidebar_position: 2
 helpdocs_topic_id: m0awmzipdp
 helpdocs_category_id: o1zhrfo8n5
@@ -13,11 +13,6 @@ Harness [Connectors](/docs/category/connectors) integrate Harness with your clou
 You can add Connectors using the Harness GUI or via YAML using the Harness YAML Builder.
 
 This topic shows you how to add a Connector using the YAML Builder.
-
-
-### Before you begin
-
-* [Learn Harness' Key Concepts](../../get-started/key-concepts.md)
 
 ### Step 1: Create Secrets or Keys
 

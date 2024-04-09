@@ -14,7 +14,7 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 ## Supported platforms and technologies
 
-For more information and supported versions, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
+For more information and supported versions, go tom [supported platforms and technologies](/docs/continuous-delivery/cd-integrations.md).
 
 ## Limitations and requirements
 
@@ -30,7 +30,7 @@ When executing a job, you can also *dynamically capture* the output from the j
 
 ### What information is available to capture?
 
-Any Jenkins job information in the particular shell session of the pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, go to [built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+Any Jenkins job information in the particular shell session of the pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 Capturing and exporting output in the Jenkins step can be very powerful. For example, a Jenkins step could capture Jenkins build information, and a Harness service could echo the build information and use it in a complex function, and then export the output down the pipeline for further evaluation.
 

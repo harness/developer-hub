@@ -1,6 +1,8 @@
 ---
 id: cf-app-stop
 title: CF app stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry/cf-app-stop
 ---
 
 import CFSecrets from './shared/cf-secrets.md';

@@ -1,6 +1,8 @@
 ---
 id: ec2-io-stress
 title: EC2 IO stress
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-io-stress
 ---
 
 EC2 IO stress disrupts the state of infrastructure resources. This fault:

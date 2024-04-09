@@ -116,7 +116,7 @@ You can use expressions to reference service variables. For example, `<+serviceV
 
 You can reference service variables in your pipeline steps, values YAML, JIRA steps, and so on.
 
-For more information on variables, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+For more information on variables, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 </TabItem>
   <TabItem value="Application Settings and Connection Strings" label="Application Settings and Connection Strings">

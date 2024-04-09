@@ -13,7 +13,7 @@ To transmit data from Microsoft Teams to SEI, you must create a service account 
 
 ## Configure the integration
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Microsoft Teams** integration, and select **Install**.
 4. Wait for the Microsoft login page to appear, and then log in with the service account's credentials.

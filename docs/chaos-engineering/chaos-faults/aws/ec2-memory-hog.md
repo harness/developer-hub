@@ -1,6 +1,8 @@
 ---
 id: ec2-memory-hog
 title: EC2 memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-memory-hog
 ---
 
 EC2 memory hog disrupts the state of infrastructure resources. This fault:

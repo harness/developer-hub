@@ -226,7 +226,7 @@ To enable auto-stopping for kubernetes the provisioning process is a simple depl
 
 The deployment requires a first gen account admin api key. This can be tricky as some new users will not have admin access in FG for their harness account. The best way to navigate to FG to get the key for a new account is in the k8s connector creation wizard when you check to enable auto-stopping, there is a button that links you directly to the api key page. If you are having trouble creating a first gen api key please open a support ticket or contact your CSM.
 
-After deployment you can [follow the auto-stopping rule creation wizard](/docs/get-started/supported-platforms-and-technologies/#supported-ingress-controllers-for-kubernetes-autostopping) to create a test rule in their cluster. Please make sure their ingress controller is supported.
+After deployment you can follow the auto-stopping rule creation wizard to create a test rule in their cluster. Please make sure the [ingress controller is supported](/docs/cloud-cost-management/whats-supported).
 
 ## Additional Activities
 

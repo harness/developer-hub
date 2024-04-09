@@ -10,7 +10,6 @@ helpdocs_is_published: true
 
 This topic provides an overview of how Harness Policy As Code implemented governance.
 
-
 :::note
 Looking for the quickstart? See [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
@@ -20,7 +19,7 @@ Looking for the quickstart? See [Harness Policy As Code Quickstart](/docs/platfo
 
 Before learning about Harness Policy As Code, you should have an understanding of the following:
 
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
+* [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts.md)
 
 ### How does Harness use OPA?
 

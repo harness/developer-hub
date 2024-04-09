@@ -1,8 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-02-05:T10:00:15
-tags: [NextGen, "continuous delivery"]
+date: 2024-04-03:T10:00:15
 sidebar_position: 8
 ---
 
@@ -46,7 +45,63 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## April 2024
+
+### Version 1.31.4
+
+#### Early Access
+
+- Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (CDS-72037)
+
+#### Fixed issues
+
+- For SSH and WinRM deployments, the delegate selectors specified for connectors in Azure and AWS infrastructure configurations weren't adhered. The fix for this issue is made available behind the feature flag, `CDS_SSH_WinRM_USE_CONNECTOR_AND_SM_DELEGATE_SELECTORS`. Contact [Harness Support](mailto:support@harness.io) to enable this fix. (CDS-92717, ZD-58399)
+- Harness applications were slow when running pipelines using the `iam-roles` API. This issue is fixed by calling the API on demand to avoid slowing down the initial load of the applications. (CDS-94281, ZD-60078)
+- Pipeline execution feature usage were not displayed properly in the feature usage dashboard when filtered by organization. This issue is fixed.  (CDS-93831)
+- Fixed an issue where Harness was unable to find Nexus artifacts' tag version. The artifact Ids were set to `<+input>` internally even though Harness UI supplied the fixed value from APIs causing this issue. Tags are now being listed properly. (CDS-93810, ZD-59568)
+- The Nexus 3 artifact triggers returned a null pointer exception. This issue occurred because the Nexus 3 artifact source group Id was empty. This issue is fixed. (CDS-93472, ZD-59186)
+- The Command Script step with secret environment variables failed during rollback because the step was unable to fetch the secrets. This issue is fixed. (CDS-93264, ZD-59173)
+- The logs explorer for a Kubernetes deployment displayed an error, `Execution Mode not found for Facilitator Type RESOURCE_RESTRAINT`. This is not an error but an information. This issue is fixed by changing the log to info with an added message, `This must be a custom Facilitator Type`. (CDS-94001)
+- Users were able to see templates belonging to a specific organization in another organization. This issue occurred because Harness was fetching all templates of all organizations in one account. This issue is fixed by adding a filter to the existing query to display all templates of the organization where the project exists. (CDS-93721)
+
 ## March 2024
+
+### Version 1.30.7
+
+#### Early access
+
+- Harness has updated the logic for inheriting permissions from containerized step groups to steps. Currently, this feature is behind the feature flag `CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CDS-79356)
+  
+  The new logic follows these steps:
+  1. Use the Run Step configuration.
+  2. If there isn't a Run Step configuration, use the Step Group configuration.
+   
+  For more information, go to [Permissions inheritance logic from containerized step groups to steps](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step/). 
+
+- You can create a multi-phase workflow that progressively deploys your new instances to a new ASG incrementally using the ASG Phased Deploy step when creating a Canary deployment. Currently, this feature is behind the feature flag, `CDS_ASG_PHASED_DEPLOY_FEATURE_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. For more information, go to [Canary phased deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#canary-phased-deployment). 
+
+#### Limitations
+
+- Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround. (CDS-92820)
+
+#### Fixed issues
+
+- Harness UI is throwing 404 errors in random pages. This issue is fixed by adding redirects that will help the URLs work in both old and new Harness Nav. (CDS-94036, ZD-59462)
+- The Git cache was getting reset during every webhook event. This bug resulted in cache misses causing increased load time for remote entities. This issue is fixed. (CDS-93603, ZD-59392)
+- Saving a chained pipeline with a templatized child pipeline in a new branch returns an error. This issue is fixed by setting the child pipeline's required info in the Git context so that the template can be retrieved from the current branch. (CDS-92772, ZD-58383)
+- Harness listed all environments or infrastructures when trying to select environment and infrastructure based on specific custom deployments. This issue is fixed by removing the version label was absent in the infrastructure listing API. Filtering is now done based on deployment template identifier. (CDS-91800, ZD-57907)
+- User data related to some churned Harness accounts were not being deleted even after 90 days after service termination. This issue is fixed by creating an annotation based framework that allows Harness to cleanup data of expired Harness accounts. (CDS-90914) 
+- Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. This item requires Harness Delegate version 24.03.82600. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).(CDS-92355)
+- The wrapper for matrix nodes appeared successful even if the matrix nodes were skipped. This issue is resolved by adding a check to see the status of a strategy node's children. If all child nodes are skipped, the strategy node will be skipped now. (CDS-92727)
+- Marking failure strategy for a step with in a stage as ignore failure did not work. The stage status was not shown as success of the step in the stage failed. This issue is fixed. Now, `IgnoreFailed` status is considered as Success for sending the stage notifications. (CDS-92057, ZD-58259)
+- Stage and pipeline are not marked as ResourceWaiting even if the stage is waiting on the resources. This issue is fixed by creating a `ResourceWaitingStepStatusUpdateHandler` logic that will mark the stage and pipeline as `ResourceWaiting`. When the step resumes, the existing `handleStepResponseInternal` logic marks the stage and pipeline as running. (CDS-87769)
+- In the Serverless Prepare Rollback image, the `serverless print` command is used to resolve all Serverless variables and fetch custom stack name, if provided in the Serverless YAML. Earlier, even if the `serverless print` command failed, Harness did not fail the step, and considered the stack name as `<serviceNameInYaml> - <stageNameSpecifiedInHarnessInfra>`. This issue is fixed by updating the Serverless Prepare Rollback step image version to`harnessdev/serverless-preparerollback:3.30.1-2.0.0`. With this new image, Harness will fail the step if the `serverless print` command failed. (CDS-87684)
+  
+  The following changes are implemented as part of this new image: 
+  1. The `serverless print` command would not fail due to plugins being specified in the Serverless YAML. With this new image, Harness does an NPM install (on package.json) before running the `serverless print` command. Make sure that the plugins are specified in the package.json to install them before running the `serverless print` command. Now, if your plugins are specified in the package.json at the same level where your Serverless YAML lies, your plugins would be installed, and correct stack name from Serverless YAML would be fetched. 
+  2. If the `serverless print` command still fails, Harness will fail the step and will not assume the default stack name, `<serviceNameInYaml> - <stageNameSpecifiedInHarnessInfra>`.
+  3. Harness will consider the default stack name when stack name is not specified in Serverless YAML, and when the `serverless print` is successful.
+- Fixed an issue where [Bitbucket connectors with API access enabled](https://developer.harness.io/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#enable-api-access) sometimes became unresponsive. This item requires Harness Delegate version 24.03.82600. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-93298, ZD-56619, ZD-58844, ZD-59381)
 
 ### Version 1.29.6
 
@@ -63,7 +118,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
   
 #### Fixed issues
 
-- The Git cache was getting reset during every webhook event. This bug resulted in cache misses causing increased load time for remote entities. This issue is fixed. (CDS-93603, ZD-59392)
 - Adding the Fetch Linked Apps step in a PR pipeline failed with the error, `Failed to parse yaml file`. This issue is fixed by improving the error response for the Fetch Linked Apps step. (CDS-93056)
 - The path validation process for Google Cloud Storage is optimized for faster and efficient validation. Instead of searching the entire storage, Harness now verifies the provided path directly. (CDS-92796, ZD-58789, ZD-59199)
 - Rolling back the current version of a service from the Services page did not show to which old version of the service did it roll back to. This issue is fixed by displaying the rollback version on the Rollback pop-up window. (CDS-92461)
@@ -72,7 +126,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The secret passed from a parent pipeline to a child pipeline was not getting resolved because the expression functor token for the child pipeline is different from that of the parent pipeline. This issue is fixed. (CDS-92434, ZD-58526)
 - Users were incorrectly prompted about unsaved changes when viewing variables with default values in Pipeline Studio and Input Sets page. This issue is resolved. (CDS-89117, ZD-57388, ZD-57603)
 - When a certain version of a template in use was deleted, the pipeline referring the template threw and error, and did not let the users select an alternate version of the template. As a workaround, users were recommended to edit the YAML directly. Now, this issue is fixed and users can select an alternate version of the template from the pipeline itself. (CDS-87809, ZD-55910)
-- Setting up a monitored service using cloud metrics from the Google Cloud Operations health source is unable to list dashboards to build query. (CDS-92355)
 - The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541, ZD-58686)
 
 ### Version 1.28.11
@@ -1021,7 +1074,7 @@ This release does not include early access features.
 
   Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
 
-  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+  For more information about building expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
 
@@ -1984,7 +2037,7 @@ This release does not include early access features.
   - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
   - `<+strategy.node.strategy_node_identifier.*>`
 
-  For information on using the expressions, go to [Strategy](/docs/platform/variables-and-expressions/harness-variables/#strategy).
+  For information on using the expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
 
@@ -4244,7 +4297,7 @@ This release does not include new features.
 
   RBAC permissions specific to environment resource identifiers were not being honored. Harness was not calling the ACL when switching to the **Environments** tab in an org. This has been fixed and the RBAC is verified when the **Environments** tab is selected.
 
-- When special characters are used for a trigger **Name** field, the info message looks different than the actual name entered. (CDS-52105)
+- When special characters are used for a trigger **Name** field, the info message looks different from the actual name entered. (CDS-52105)
 
   This issue was happening because users were allowed to use restricted special characters for the trigger **Name** field. We have updated the validation for the **Name** field so now users will not be able to use restricted special characters.
 
@@ -5045,9 +5098,9 @@ This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE.
 
   Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one.
 
-- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format \<+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
+- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format `<+serviceVariables.[variable name]>` and Environment variables use the format `<env.variables.[variable name]>`.
 
-  For more information, see Built-in and Custom Harness Variables Reference.
+  For more information, see [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 ##### Early access
 
@@ -5238,7 +5291,7 @@ Environments v2 now support variable expressions you can use to reference the En
 
 For details on Services and Environments v2, go to Services and Environments Overview.
 
-For details on Environment and Infrastructure Definition expressions, go to Built-in and Custom Harness Variables Reference.
+For details on Environment and Infrastructure Definition expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
  <DocVideo src="https://www.loom.com/embed/a16ac5354fba461abe934e04583c65c5" width="100%" height="600" />
 

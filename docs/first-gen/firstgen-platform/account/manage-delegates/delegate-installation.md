@@ -14,34 +14,19 @@ import image_2 from './static/delegate-installation-09.png'
 import image_3 from './static/delegate-installation-10.png'
 
 
-:::note 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification and other providers with the Harness Manager.
+:::warning
+
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/delegates/delegate-concepts/delegate-overview.md).
+
 :::
+
+The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification and other providers with the Harness Manager.
 
 As explained in [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md), when you set up Harness for the first time, you install a Harness Delegate in your target infrastructure (for example, Kubernetes cluster, ECS cluster, EC2 subnet, Pivotal Cloud Foundry space, etc). Once the Delegate is installed, you can set up the resources and model your release process.
 
 Most importantly, the Delegate performs all deployment operations.
 
-:::note 
 For all the topics related to the Harness Delegate, see [Manage Harness Delegates](/docs/category/manage-harness-delegates-firstgen).
-:::
-
-In this article:
-
-* [Limitations and Requirements](#limitations-and-requirements)
-* [What Data does the Delegate Send to the Harness Manager?](#what-data-does-the-delegate-send-to-the-harness-manager)
-* [Where do I Install the Delegate?](#where-do-i-install-the-delegate)
-* [Install the Harness Delegate](#install-the-harness-delegate)
-* [How Does Harness Manager Identify Delegates?](#how-does-harness-manager-identify-delegates)
-* [How Does Harness Manager Pick Delegates?](#how-does-harness-manager-pick-delegates)
-* [Delegate High Availability (HA)](#delegate-high-availability-ha)
-* [Delegate Proxy Settings](#delegate-proxy-settings)
-* [Delegate Scope](#delegate-scope)
-* [Delegate Profiles](#delegate-profiles)
-* [Delegate Selectors](#delegate-selectors)
-* [Delegate Log File](#delegate-log-file)
-* [Add Self-Signed Certificates for Delegate Connections](#add-self-signed-certificates-for-delegate-connections)
-* [Troubleshooting](#troubleshooting)
 
 ## Limitations and Requirements
 

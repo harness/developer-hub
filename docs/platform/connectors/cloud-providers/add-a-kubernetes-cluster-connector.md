@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md). For a list of the platforms and technologies supported by Harness, go to [Supported Platforms and Technologies](../../../../docs/get-started/supported-platforms-and-technologies.md).
+You can connect Harness with your Kubernetes clusters using the provider-agnostic Kubernetes cluster connector or a provider-specific connector, such as the [Google Cloud Platform (GCP) Connector](./connect-to-google-cloud-platform-gcp.md) or [AWS connector](./add-aws-connector.md).
 
-This page explains how to set up the provider-agnostic Kubernetes cluster connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](../../../get-started/key-concepts.md).
+This page explains how to set up the provider-agnostic Kubernetes cluster connector. Once connected, you can use Kubernetes and Harness for provisioning infrastructure, running a CI build farm, and deploying microservices and other workloads to clusters. This page assumes you have some familiarity with [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 This video shows how to add a Kubernetes cluster connector and install the Kubernetes Delegate in the target cluster at the same time:
 
@@ -76,6 +76,12 @@ To use an AKS cluster for deployments, the AKS cluster must have local accounts 
    * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about delegate tags, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
    If there are no delegates available for your target cluster, you can select **Install new Delegate** if you need to [install a delegate](/docs/platform/delegates/delegate-concepts/delegate-overview.md) without exiting connector configuration. Delegates can be installed on your target cluster or any cluster in your environment that can connect to the cluster.
+
+   :::note
+
+   It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
+
+   :::
 
 6. Select **Save and Continue** to run the connection test. Harness tests the credentials you provided using the delegates you selected. If the test passes, select **Finish**.
 

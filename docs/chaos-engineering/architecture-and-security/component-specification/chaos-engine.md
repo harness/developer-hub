@@ -2,6 +2,8 @@
 title: Chaos engine
 sidebar_position: 1
 description: Chaos engine specification and its values
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/configurations/chaos-engine
 ---
 
 Bind an instance of a given app with one or more chaos experiments, define run characteristics, override chaos defaults, define steady-state hypothesis, reconciled by Litmus Chaos Operator.

@@ -1,0 +1,11 @@
+{
+    "label":"Early Access",
+    "position": 15,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Early access features on Harness SEI"
+    }
+ }

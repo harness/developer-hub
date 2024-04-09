@@ -19,7 +19,7 @@ This topic lists the artifact sources you can use in your Harness services.
 
 You have two options when referencing the artifacts you want to deploy:
 
-- Add an artifact source to the Harness service and reference it using the Harness expression `<+artifacts.primary.image>` in the values YAML file.
+- Add an artifact source to the Harness service and reference it using the [Harness service artifacts expression](/docs/platform/variables-and-expressions/harness-variables.md#service-artifacts-expressions) `<+artifacts.primary.image>` in the values YAML file.
 - Hardcode the artifact into the manifests or values YAML file.
 
 ### Use the artifact expression
@@ -2947,12 +2947,7 @@ To add an artifact from Artifactory, do the following:
    - If you selected **Artifact Directory**:
      1. In **Artifact Directory**, enter the path to the artifacts. If the full path is `my-apps/myticketservice/1.0/ticket-service-1.0.jar`, you would enter `myticketservice/1.0`.
      2. Set **Artifact Details** to **Value** or **Regex** (to select an artifact based on a pattern). 
-     3. Specify the value or the regex for the artifacts.
-        
-        If you selected **Regex**, enter the **Artifact Path Filter** for the artifacts you want to fetch. For example, suppose your service has a front end and a back end, and you store the latest artifacts in a `/latest` subfolder, like this:
-            `/myService/latest/front-service.zip`
-            `/myService/latest/back-service.zip`
-        To fetch both artifacts, you can specify `/myService` for the artifact directory and `latest/*.zip` for the artifact path filter.
+     3. Specify the value or the regex for the artifact. If you selected **Regex**, enter the **Artifact Path Filter** for the latest artifact you want to fetch.
 
    - If you selected **Artifact Filter**, enter an expression that matches the artifacts you want to fetch. Here are some examples of expressions you can use:
       - `*/*` : Fetch all artifacts from all directories including their subdirectories.
@@ -2973,7 +2968,7 @@ To add an artifact from Artifactory, do the following:
 
    If you use a runtime input when you deploy the pipeline, Harness will pull the list of artifacts from the repo and prompt you to select one.
 
-7. Select **Submit**. The Artifact is added to the Service Definition.
+4. Select **Submit**. The Artifact is added to the Service Definition.
 
 
 

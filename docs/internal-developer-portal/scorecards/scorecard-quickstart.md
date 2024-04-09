@@ -5,6 +5,8 @@ sidebar_position: 5
 sidebar_label: Scorecard Quickstart
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 ## Introduction
 
 In this tutorial we will be creating a fundamental scorecard utilizing the [Catalog Datasource](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) to monitor the existence of root fields and integrations via annotations within `catalog-info.yaml` metadata. Effectively tracking information within the catalog can serve as the initial step towards enforcing organizational engineering standards.

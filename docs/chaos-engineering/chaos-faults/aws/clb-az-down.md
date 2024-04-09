@@ -1,6 +1,8 @@
 ---
 id: clb-az-down
 title: CLB AZ down
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/clb-az-down
 ---
 
 CLB (Classic Load Balancer) AZ (Availability Zones) down takes down the AZ on a target CLB for a specific duration. This fault restricts access to certain availability zones for a specific duration.

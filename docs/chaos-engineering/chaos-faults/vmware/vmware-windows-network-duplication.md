@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-network-duplication
 title: VMware Windows Network Duplication
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-duplication
 ---
 
 VMware Windows Network Duplication simulates a network duplication scenario on Windows OS based VMware VM.

@@ -282,9 +282,10 @@ Use either of the following expressions to reference an output variable in anoth
 <+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 

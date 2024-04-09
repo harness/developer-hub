@@ -1,6 +1,8 @@
 ---
 id: azure-instance-stop
 title: Azure instance stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop
 ---
 Azure instance stop powers off from an Azure instance for a specific duration. It checks the performance of the application or process running on the instance.
 

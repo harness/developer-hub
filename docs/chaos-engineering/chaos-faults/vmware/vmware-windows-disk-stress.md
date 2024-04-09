@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-disk-stress
 title: VMware Windows Disk Stress
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-disk-stress
 ---
 
 VMware Windows Disk Stress applies stress on the disk resources on Windows OS based VMware VM.

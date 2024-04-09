@@ -20,6 +20,12 @@ The following list covers the step settings.
 - Method: The [HTTP method](https://restfulapi.net/http-methods/#summary) to use in the step.
 - Request body: The message body of the HTTP message.
 
+
+:::important
+Currently, Harness doesn't support using secret expressions as part of URLs in HTTP steps.
+:::
+
+
 ## Assertions in the HTTP step
 
 **Assertion** is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode>==200`.

@@ -219,11 +219,12 @@ Make a note of your AWS Access key and Secret key.
 1. Create an S3 bucket with the following naming convention. For more information, go to [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html). This bucket will be used to retrieve the CUR report from your master AWS accounts.
 
   `harness-ccm-service-data-bucket-<accountid>`
+  
 2. Create another bucket with the following naming convention.
 
   `harness-ccm-service-template-bucket-<accountid>`
 
-  Apply the following bucket policy.
+3. Apply the following bucket policy.
 
   ```
   {

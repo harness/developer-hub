@@ -1572,11 +1572,6 @@ Blue/Green deployments are achieved by swapping routes between the target groups
 
 #### Blue/Green with Incremental Traffic Shift Summary
 
-:::note
-
-Currently, this feature is behind the feature flag `CDS_ASG_SHIFT_TRAFFIC_STEP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Here's a demo video of Blue Green with incremental traffic shift summary:  
 

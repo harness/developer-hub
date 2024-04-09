@@ -2,6 +2,8 @@
 title: Probe acceptance criteria
 sidebar_position: 3
 description: Operations performed on probes
+redirect_from:
+	- /docs/chaos-engineering/technical-reference/probes/probe-acceptance-criteria
 ---
 
 This section describes the various operations that can be performed on resilience probes.

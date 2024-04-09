@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 ### How to add and manage a custom chaos hub?
 

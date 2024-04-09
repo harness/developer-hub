@@ -2,6 +2,8 @@
 title: Edit and update chaos experiments
 sidebar_position: 40
 description: Guide to edit and update chaos expriments
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/experiments/edit-chaos-experiment
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

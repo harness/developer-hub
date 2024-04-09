@@ -10,7 +10,7 @@
 | Implement strategies to optimize pipeline execution and minimize build times | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/) |
 | **3. Utilization and Management of Harness Connectors and Integrations**  | |
 | Configure and manage various Harness Connectors (e.g., Docker, Git)| [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/)|
-| Understand and implement integration with different platforms and OS | [Continuous Integration (CI)](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/#continuous-integration-ci)|
+| Understand and implement integration with different platforms and OS | [What's supported by CI](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms)|
 | **4. Implementing and Managing Docker and Containerization in Harness CI** ||
 | Establish Docker connectivity and manage Docker connectors | [Build and Push to Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) |
 | Develop and optimize Dockerfile configurations and image handling| [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) |

@@ -1,6 +1,8 @@
 ---
 id: ecs-container-http-latency
 title: ECS container HTTP latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-http-latency
 ---
 
 ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.

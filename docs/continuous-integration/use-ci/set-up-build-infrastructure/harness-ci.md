@@ -78,14 +78,14 @@ API key authentication is required. For more information about API keys, go to [
 
 1. Send a `get-default-config` request to get a list of the latest Harness CI build images and tags. You can use the `infra` parameter to get `k8` images or `VM` images.
 
-   ```
+   ```json
    curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY'
    ```
 
    The response payload shows the latest supported images and their tags, for example:
 
-   ```
+   ```json
    {
     "status": "SUCCESS",
      "data": {
@@ -109,14 +109,14 @@ API key authentication is required. For more information about API keys, go to [
 
 2. Send a `get-customer-config` request to get the build images that your CI pipelines currently use. When `overridesOnly` is `true`, which is the default value, this endpoint returns the non-default images that your pipeline uses.
 
-   ```
+   ```json
    curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8&overridesOnly=true" \
    --header 'X-API-KEY: $API_KEY'
    ```
 
    If the response contains `null`, your pipeline is using all default images, for example:
 
-   ```
+   ```json
    {
        "status": "SUCCESS",
        "data": {},
@@ -127,7 +127,7 @@ API key authentication is required. For more information about API keys, go to [
 
 3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
 
-   ```
+   ```json
    curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY' \
    --header 'Content-Type: application/json' \
@@ -145,7 +145,7 @@ API key authentication is required. For more information about API keys, go to [
 
 4. To reset one or more images to their defaults, send a `reset-config` (POST) request with a list of the images to reset.
 
-   ```
+   ```json
    curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY' \
    --header 'Content-Type: application/json' \

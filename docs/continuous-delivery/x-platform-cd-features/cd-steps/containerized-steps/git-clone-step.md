@@ -115,6 +115,9 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The stage fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your stages anyway.
 
+## Run as User
+
+Specify the user Id to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod). This value defaults to `1000` if left unconfigured.
 
 ## Set Container Resources
 

@@ -2,6 +2,8 @@
 title: Connect chaos infrastructures
 sidebar_position: 1
 description: Guide to connect to Kubernetes and Linux chaos infrastructure
+redirect_from:
+  - /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
 ---
 
 import Tabs from '@theme/Tabs';
@@ -261,7 +263,7 @@ To add a Linux chaos infrastructure:
 
   ![Specify Details](./static/connect-chaos-infrastructures/3.configure-chaos.png)
   
-  You can also specify the [advanced setup](/docs/chaos-engineering/architecture-and-security/architecture/linux-chaos-infrastructure-advanced-management#advanced-setup) options for the infrastructure. 
+  You can also specify the [advanced setup](/docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management#advanced-setup) options for the infrastructure. 
 
 1. Select **Next**.
 

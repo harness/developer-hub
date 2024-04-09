@@ -2,6 +2,8 @@
 title: Halt chaos experiments
 sidebar_position: 60
 description: Guide to halt chaos experiments
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/experiments/halt-chaos-experiments
 ---
 
 Halting the execution of a chaos experiment safeguards the target applications against any unwanted and unforeseen consequences due to the experiment. It immediately stops the execution of an experiment and reverts the target resources to their initial state. 

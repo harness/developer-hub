@@ -1,6 +1,8 @@
 ---
 id: nlb-az-down
 title: NLB AZ down
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/nlb-az-down
 ---
 
 The NLB (Network Load Balancer) AZ (Availability Zone) down fault triggers the unavailability of an AZ on a target network load balancer, resulting in potential disruptions to service delivery. This fault deliberately restricts access to specific availability zones by blocking the subnet ACL (Access Control List) for a defined duration. By simulating this scenario, you can assess the resilience and performance of your system when faced with an inaccessible AZ.

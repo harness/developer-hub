@@ -1,6 +1,8 @@
 ---
 id: vmware-dns-chaos
 title: VMware DNS chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-dns-chaos
 ---
 VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. It checks the performance of the application (or process) running on the VMware VMs.
 

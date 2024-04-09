@@ -15,7 +15,7 @@ This topic explains how to install Kubernetes, Docker, and Helm delegates with c
 
 The installation steps are different depending on your delegate version.
 
-If your delegate with an immutable image type version is later than 81202 (image tag 23.10.81202), go to [Install with custom certificates](#installation-with-custom-certificates). 
+If your delegate with an immutable image type version is later than 81202 (image tag 23.10.81202), go to [Install with custom certificates](#installation-with-custom-certificates).
 
 If your delegate with an immutable image type version is earlier than 81202 (image tag 23.10.81202), go to [Install with custom truststore](#install-with-custom-truststore).
 
@@ -97,7 +97,7 @@ To install a Kubernetes delegate with custom certificates, do the following:
    kubectl create secret -n harness-delegate-ng generic mycerts \
      --from-file custom-certs1.pem=site1cert.pem \
      --from-file custom-certs2.pem=site2cert.pem \
-     --from-file custom-certs3.pem=site3cert.pem    
+     --from-file custom-certs3.pem=site3cert.pem
    ```
    :::
 
@@ -302,7 +302,7 @@ To add self-signed certificates for delegate upgrader, do the following:
    kubectl create secret -n harness-delegate-ng generic mycerts \
      --from-file custom-certs1.pem=site1cert.pem \
      --from-file custom-certs2.pem=site2cert.pem \
-     --from-file custom-certs3.pem=site3cert.pem    
+     --from-file custom-certs3.pem=site3cert.pem
    ```
    :::
 
@@ -329,7 +329,7 @@ To add self-signed certificates for delegate upgrader, do the following:
 2. Run the following to set the `upgraderCustomCa.secretName` variable when you install the Helm chart.
 
    ```
-   --set upgraderCustomCa.secretName=<SECRET_NAME> 
+   --set upgraderCustomCa.secretName=<SECRET_NAME>
    ```
 
    This adds your volume mount to the `/ca-bundle` directory.
@@ -379,7 +379,7 @@ For information on best practices for truststore creation, go to [Java Keystore 
 
 2. (Optional) Get a base truststore file from a running delegate instance.
 
-   **Kubernetes delegate** 
+   **Kubernetes delegate**
 
    ```
    kubectl cp -n harness-delegate-ng [pod name]:/opt/java/openjdk/lib/security/cacerts Path/to/destination
@@ -404,7 +404,7 @@ For information on best practices for truststore creation, go to [Java Keystore 
    c. Replace the password placeholder with the password you gave your truststore.
 
    d. Use a unique alias for all imports.
-   
+
 ### Install truststore and custom certs
 
 After the truststore file and custom certificates are configured, you're ready to install them in a Kubernetes or Docker delegate.
@@ -475,14 +475,14 @@ After the truststore file and custom certificates are configured, you're ready t
    - name: JAVA_OPTS
      value: "... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=YOUR_PASSWORD"
    ```
-   
+
 5. Replace the password placeholder with the password you used in your truststore.
 
-   :::info note  
+   :::info note
    You can omit the specification of the `JAVA_OPTS` environment variable if you mount the secret to the same location as the default truststore and give it the same name. The JVM then applies the change automatically.
    :::
 
-### Add custom certificates to the delegate pod 
+### Add custom certificates to the delegate pod
 
 You can add certificates to the delegate pod so any command running on the pod has certificates installed.
 
@@ -505,7 +505,7 @@ In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom ce
    ```
 
 2. Run `update-ca-trust` using `INIT_SCRIPT`.
-   
+
    ```yaml
         - name: INIT_SCRIPT
           value: |-
@@ -515,7 +515,7 @@ In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom ce
    :::info note
    The delegate must be the root user.
    :::
-   
+
    ```yaml
         securityContext:
           allowPrivilegeEscalation: false
@@ -593,7 +593,7 @@ spec:
         imagePullPolicy: Always
         name: delegate
         ports:
-          - containerPort: 8080   
+          - containerPort: 8080
         resources:
           limits:
             cpu: "0.5"
@@ -659,7 +659,7 @@ spec:
           subPath: cert1.crt
         - name: certs
           mountPath : "/usr/local/share/ca-certificates/cert2.crt"
-          subPath: cert2.crt             
+          subPath: cert2.crt
       volumes:
       - name: custom-keystore
         secret:

@@ -1,6 +1,8 @@
 ---
 id: linux-network-duplication
 title: Linux network duplication
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-duplication
 ---
 
 import Ossupport from './shared/note-supported-os.md'

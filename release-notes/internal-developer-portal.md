@@ -1,8 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-tags: [NextGen, "Internal Developer Portal", "IDP"]
-date: 2023-08-09T10:00:15
+date: 2024-03-22T10:00
 sidebar_position: 12
 ---
 
@@ -411,7 +410,7 @@ Since last release, we have released some interesting docs and video tutorials t
 [Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here's a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what's happening in this year's edition of the event. Here's some of the content updates:
 
 - **Himanshu's(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
-- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
+- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/setup-git-integration/), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
 - **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/software-catalog)
 
 #### New features and enhancements

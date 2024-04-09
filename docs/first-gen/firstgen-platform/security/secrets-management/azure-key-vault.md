@@ -8,25 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/azure-key-vault). This topic outlines how to use [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) to maintain your Harness secrets. It includes these sections:
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/azure-key-vault). 
 
-* [Before You Begin](#before_you_begin)
-* [Visual Overview](#visual_overview)
-* [Step 1: Create Azure Reader Role](#step_1_create_azure_reader_role)
-	+ [Azure Portal](#azure_portal)
-	+ [PowerShell Command](#power_shell_command)
-* [Step 2: Configure Secrets Manager in Harness](#step_2_configure_secrets_manager_in_harness)
-* [Step 3: Set Display Name](#step_3_set_display_name)
-* [Step 4: Select Environment](#step_4_select_environment)
-* [Step 5: Enter Client ID and Tenant ID](#step_5_enter_client_id_and_tenant_id)
-* [Option: Enter Subscription](#option_enter_subscription)
-* [Step 6: Create and Exchange Authentication Key](#step_6_create_and_exchange_authentication_key)
-* [Step 7: Fetch Vault](#step_7_fetch_vault)
-* [Step 8: Usage Scope](#step_8_usage_scope)
-* [Step 9: Save the Secrets Manager](#step_9_save_the_secrets_manager)
-* [Step 10: Make Key Vaults Writable](#step_10_make_key_vaults_writable)
-* [Option: Use Existing Azure Key Vault Secrets](#option_use_existing_azure_key_vault_secrets)
-* [Next Steps](#next_steps)
+This topic outlines how to use [Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) to maintain your Harness secrets. It includes these sections:
 
 ### Before You Begin
 
