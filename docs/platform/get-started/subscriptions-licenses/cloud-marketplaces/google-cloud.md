@@ -4,6 +4,7 @@ description: This topic describes the workflows supported to purchase Harness mo
 sidebar_position: 1
 redirect_from:
   - /docs/platform/get-started/cloud-marketplace-integration/google-cloud-marketplace
+  - /docs/platform/get-started/subscriptions-licenses/cloud-marketplace-integration/google-cloud-marketplace
 ---
 
 The [Google Cloud Marketplace](https://cloud.google.com/marketplace?hl=en) enables software vendors to offer their products and services to customers directly through Google Cloud Platform (GCP). It provides a convenient platform for users to discover, purchase, and deploy software solutions directly from the Google Cloud console or through APIs.
