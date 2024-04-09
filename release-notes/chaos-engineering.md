@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-03-22T10:00
+date: 2024-04-09T10:00
 sidebar_position: 5
 ---
 
@@ -20,6 +20,38 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2024
+
+### Version 1.34.0
+
+#### New features and enhancements
+
+* Adds 32-bit Windows support for Windows chaos infrastructure. (CHAOS-4792)
+
+* Speeds up Windows chaos infrastructure installation with the help of a compressed Windows service binary. (CHAOS-4790)
+
+* Improves the error handling mechanism of HTTP probes when sending requests to blocked or unreachable hosts, thereby making monitoring (during chaos experiments) reliable and accurate. (CHAOS-4665)
+
+* Improves system stability and reliability during chaos testing by facilitating graceful abortion for edge cases in Windows memory hog experiment. (CHAOS-4664)
+
+* Provides post-hook recovery support for Windows chaos experiment, which adds system stability and automatic recovery if a chaos service terminates abruptly during a experiment. (CHAOS-4663)
+
+* Introduces global blackhole chaos support in the blackhole chaos experiments, which allows blocking all hosts from a VM, effectively isolating it from network communication. (CHAOS-4661)
+
+* Updates ensure smooth operation of the pod API chaos and pod HTTP chaos faults in case the target pod restarts. (CHAOS-4187)
+
+#### Fixed issues
+
+* Resilience probes were not available for Windows experiments. This is fixed. (CHAOS-4786)
+
+* The ChaosGuard condition blocked the chaos experiments when the application specification did not match. This is fixed. Moving forward, experiments will be blocked only if the application specification matches. (CHAOS-4772)
+
+* While configuring the Datadog resilience probe, the UI displayed the comparator even when the user did not provide the metrics associated with the comparator during the configuration, that is, the conditional rendering was not in place. This is fixed. (CHAOS-4770)
+
+* The "Select Probe" UI overflowed on pagination when it was in full capacity. This is fixed. (CHAOS-4725)
+
+* When you provide a source port for the Linux network loss experiment, all the ports on the VM were targeted. This is fixed. (CHAOS-4591)
 
 ## March 2024
 
