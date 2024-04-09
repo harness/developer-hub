@@ -32,7 +32,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 #### New features and enhancements
 
 - OWASP scan steps can now load Java certificates. (STO-7220)
-- The Black Duck Hub scan step has been upgraded to use [Synopsis Detect 9.0.0](https://community.synopsys.com/s/question/0D5Hr00006oIhHaKAK/synopsys-detect-900-for-black-duck-has-been-released). This is a major feature release with new features, enhancements, and fixed issues. (STO-7353, ZD-60592) 
+- The Black Duck Hub scan step has been upgraded to use [Synopsis Detect 9.5.0](https://community.synopsys.com/s/question/0D5Uh000008jpd2KAA/synopsys-detect-950-for-black-duck-has-been-released). This is a major feature release with new features, enhancements, and fixed issues. (STO-7353, ZD-60592) 
 
 #### Fixed issues
 
