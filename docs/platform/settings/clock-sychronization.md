@@ -4,11 +4,7 @@ description: This topic explains recommended settings for clock synchronization.
 sidebar_position: 2
 ---
 
-This topic provides recommended settings for Network Time Protocol (NTP).
-
-As per [ISO/IEC 27001-A.12.4.4 clock synchronization](https://www.isms.online/iso-27001/annex-a/8-17-clock-synchronisation-2022/):
-
-"_The cloud service provider should provide information to the cloud service customer regarding the clock used by the cloud service provider's systems, and information about how the cloud service customer can synchronize local clocks with the cloud service clock._"
+This topic provides Harness' recommended settings for Network Time Protocol (NTP).
 
 - **Control:** Clocks in all related information management systems should be integrated into a single reference time source for an organization.
 
