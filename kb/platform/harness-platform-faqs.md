@@ -1135,7 +1135,8 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-**Update Delegate YAML:**
+**Update delegate YAML:**
+
 - Add volume mounts to enable Docker functionality within the delegate container.
 
 ```yaml
@@ -1160,7 +1161,7 @@ volumeMounts:
     readOnly: false
 ```
 
-By following these steps, your delegate container should be able to execute Docker commands successfully by utilizing the `docker.sock` from your node hosts. This setup allows for Docker in Docker functionality within your Harness delegate container.
+By following these steps, your delegate container should be able to execute Docker commands successfully by utilizing the `docker.sock` from your node hosts. This setup allows for Docker in Docker functionality within your Harness Delegate container.
 
 ### Is it possible to access vault secrets across different regions?
 
@@ -2269,7 +2270,7 @@ No, we don't support ldap secret engine.
 
 This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
 
-To fix it you just need to give the expected permissions to the User's group, for example, for secrets, there are View, Create/Edit, Delete, and Access permissions.
+To fix it, you must grant the expected permissions to the User's group, for example, for secrets, there are View, Create/Edit, Delete, and Access permissions.
 
 ### How long is an invitation for workshop accounts valid?
 
