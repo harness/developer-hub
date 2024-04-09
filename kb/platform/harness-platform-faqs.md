@@ -2713,3 +2713,94 @@ For more information, go to [Google cloud functions](/docs/faqs/continuous-deliv
 This happens due to an incorrect cron expression. Harness uses Java cron-utils to run to define, parse, and validate cron expressions. Use the below expression to generate the expressions.
 
 https://www.javainuse.com/cron#google_vignette
+
+#### How to turn off the url logging.googleapi.com? Do I need to provide any other commands in Delegate startup?"
+Our Delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality you just need to set `STACK_DRIVER_LOGGING_ENABLED` variable to false. 
+
+Doc: https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled
+
+
+#### Why I'm experiencing errors with `core_secret_access` messages?
+This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
+
+To fix it you just need to give the expected permissions to the User's group, for example, to secrets we have the following permissions View, Create/Edit, Delete, Access.
+
+#### How can i see all available variables?
+You can rely on our [Built-In variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions. 
+
+#### How can I validate the configuration of Harness delegates?
+
+Harness delegates are primarily configured through variables, which can be adjusted during the deployment of a new delegate. There are several ways to ensure the correctness of these configurations:
+
+**Pre-Deployment Validation:** Before deploying the delegate, you can validate the variables to ensure they meet your requirements.
+
+**Describe Commands:** Execute 'Describe' commands on your cluster where the Delegate Pod is deployed. These commands provide detailed information about all configured variables for the delegate.
+
+**Configmaps Inspection:** Delegate configurations can also be stored in configmaps. By checking for delegate-related configmaps in your cluster, you can verify and review the configurations associated with the delegate.
+
+These approaches offer flexibility and reliability in ensuring that Harness delegates are configured correctly to meet your needs.
+
+#### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
+
+Encountering the error message "Oops, something went wrong on our end. Please contact Harness Support." typically indicates an unexpected failure in a backend API call related to the operation you're attempting.
+
+To address this issue effectively:
+
+**Collect HAR File:** When you encounter this error, gather a HAR (HTTP Archive) file that captures the network traffic and interactions during the operation you were performing.
+
+**Open a Support Ticket:** With the HAR file in hand, promptly open a support ticket with Harness Support. Provide detailed information about the error along with the attached HAR file. This enables our support team to investigate the issue thoroughly.
+
+By following these steps, our support team can promptly review the situation, diagnose the underlying cause, and provide you with the necessary assistance to resolve the error swiftly. Your cooperation in providing the HAR file greatly facilitates our troubleshooting efforts and ensures a timely resolution to the issue at hand.
+
+#### What does 'parentIdentifier' refer to during the creation of an API key?
+
+The 'parentIdentifier' in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate 'parentIdentifier' ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
+
+#### What does "Exit code 137" mean?
+
+"Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
+
+#### How to support docker in docker for harness-delegate?
+
+To support Docker in Docker for Harness delegates, follow these steps:
+
+Check Kubernetes Cloud Provider Compatibility: Ensure that your Kubernetes Cloud Provider supports this configuration. For instance, note that Amazon EKS has ended support for Dockershim, which might affect this approach.
+
+**Set up Delegate Image:**
+
+- Utilize the INIT_SCRIPT variable or build a custom delegate image.
+- Install necessary packages in the image. Here's an example of installations:
+
+```
+microdnf install yum
+yum install -y yum-utils
+yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+**Update Delegate YAML:**
+- Add volume mounts to enable Docker functionality within the delegate container.
+
+```yaml
+volumes:
+  - name: docker-sock
+    hostPath:
+      path: '/var/run/docker.sock'
+  - name: docker-directory
+    hostPath:
+      path: '/var/lib/docker'
+```
+
+**Configure volume mounts in the YAML file:**
+
+```yaml
+volumeMounts:
+  - mountPath: /var/run/docker.sock
+    name: docker-sock
+    readOnly: false
+  - mountPath: '/var/lib/docker'
+    name: docker-directory
+    readOnly: false
+```
+
+By following these steps, your delegate container should be able to execute Docker commands successfully by utilizing the `docker.sock` from your node hosts. This setup allows for Docker in Docker functionality within your Harness delegate container.
