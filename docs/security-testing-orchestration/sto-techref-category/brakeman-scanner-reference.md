@@ -104,11 +104,11 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can configure the [`brakeman` scanner](https://brakemanscanner.org/docs/options/) with specific flags. 
-
-For example, suppose you want to scan only a subpath rather than the full directory. You can use `--path` followed by the path:
+Use this field to run the [`brakeman` scanner](https://brakemanscanner.org/docs/options/) with flags and arguments such as:
 
 `--path some/path/to/app` 
+
+With this flag, `brakeman` scans only a subpath rather than the full directory. 
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 

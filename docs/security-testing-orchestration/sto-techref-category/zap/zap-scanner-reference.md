@@ -210,9 +210,11 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 NOT YET SUPPORTED https://harness.atlassian.net/browse/STO-7278?focusedCommentId=694683
 
-You can run the [`zap-cli`](https://github.com/Grunny/zap-cli) binary with additional CLI flags and arguments such as. For example, you could exclude certain URLs from the scan using a regular expression:
+Use this field to run the [`zap-cli`](https://github.com/Grunny/zap-cli) binary with additional CLI flags and arguments such as. For example, you could exclude certain URLs from the scan using a regular expression:
 
 `quick-scan -r -e "https\:\/\/myonlineshoestore\.com\/*catalog\?category\=Accessories" `
+
+This string uses a regular expression that specifies the URLs to exclude from a scan. 
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 

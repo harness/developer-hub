@@ -122,7 +122,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with CLI arguments such as: 
+Use this field to run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with CLI arguments such as: 
 
 `--log-opts="-n 1000" --max-target-megabytes 10 --redact`
 

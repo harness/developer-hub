@@ -160,7 +160,7 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 <!-- https://harness.atlassian.net/browse/STO-6983 -->
 <!-- https://harness.atlassian.net/browse/STO-7003 -->
 
-You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with additional flags. For example, you might want to add a string like this:
+Use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with additional flags such as:
 
 `--all-projects --detection-depth=3`
 
