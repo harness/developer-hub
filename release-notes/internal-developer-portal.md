@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-04-09T17:00
+date: 2024-04-10T13:00
 sidebar_position: 12
 ---
 
@@ -21,9 +21,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 ### Version 0.25.0
 
-<!-- Apr 09, 2024 -->
+<!-- Apr 10, 2024 -->
 
-Welcome to Release 25!, and in this release we bring you features like **Catalog Metadata Ingestion APIs**, say goodbye to manual data entry woes. With our new API, effortlessly ingest metadata in scale into the IDP catalog. 
+Welcome to first release of April, and in this release we bring you features like **Catalog Metadata Ingestion APIs**, say goodbye to manual data entry woes. With our new API, effortlessly ingest metadata in scale into the IDP catalog. 
 
 - **Blogs:** [Introducing new Catalog Ingestion APIs to make Harness IDP truly yours](https://www.harness.io/blog/introducing-new-catalog-ingestion-apis-to-make-harness-idp-truly-yours)
 
@@ -36,11 +36,21 @@ Welcome to Release 25!, and in this release we bring you features like **Catalog
 
 - We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both  `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
 
-- We have added support for a new Workflow UI Picker, `[EntityFieldPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker)` using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
 
 - We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
 
-- Added support for [MkDocs plugins and extensions](https://backstage.io/docs/features/techdocs/faqs/#what-is-the-mkdocs-techdocs-core-plugin) in the TechDocs. [IDP-2540]
+- Added support for [MkDocs plugins and extensions](https://backstage.io/docs/features/techdocs/faqs/#what-is-the-mkdocs-techdocs-core-plugin) in the TechDocs. Here's the list of plugins added.[IDP-2540]
+  - [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox)
+  - [mkdocs-git-authors-plugin](https://github.com/timvink/mkdocs-git-authors-plugin)
+  - [mkdocs-git-revision-date-localized-plugin](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin)
+  - [mkdocs-video](https://pypi.org/project/mkdocs-video/)
+  - [mkdocs-material-extensions](https://pypi.org/project/mkdocs-material-extensions/)
+  - [mkdocs-redirects](https://github.com/mkdocs/mkdocs-redirects)
+  - [mkdocs-awesome-pages-plugin](https://pypi.org/project/mkdocs-awesome-pages-plugin/2.6.1/)
+  - [mkdocs-minify-plugin](https://pypi.org/project/mkdocs-minify-plugin/0.7.1/)
+
+- We have enhanced the [`harness:delete-secret`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#4-harnessdelete-secret) custom action to support deletion of secrets added as runtime inputs. [IDP-2492]
 
 - We now have Audit trails support for all the git integrations. [IDP-2419]
 
