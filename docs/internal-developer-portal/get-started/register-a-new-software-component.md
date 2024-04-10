@@ -1,14 +1,14 @@
 ---
 title: Add a new software component to the catalog
 description: Learn how you can add a new software component to the IDP software catalog.
-sidebar_position: 3
+sidebar_position: 5
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
+Let's start with adding your software components to IDP. You can do so by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
