@@ -1,9 +1,9 @@
 ---
-title: Enable documentation for your component
+title: Enable documentation for your Component
 description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
 sidebar_position: 40
 redirect_from:
-  - /docs/internal-developer-portal/getting-started/enable-docs
+  - /docs/internal-developer-portal/get-started/enable-docs
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
