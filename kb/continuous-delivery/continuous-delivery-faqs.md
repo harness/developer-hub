@@ -6774,3 +6774,27 @@ Although ASG support has been redesigned in NextGen, we will be taking the targe
 #### How will the feature flag `CDS_ASG_PHASED_DEPLOY_FEATURE_NG` function with my ASG deployment after updating my configuration from Launch Configuration to Launch Template during the migration of a pipeline from FirstGen to NextGen?
 
 Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).
+
+
+#### Why am I getting the error: `az command is not found`?
+If you receive the below error
+
+```
+az command not found
+```
+It indicates that the Azure CLI is not installed in your session. This typically happens when running a Shell Script step on the Delegate or when running a script in a CI Build Stage. To fix this, please make sure to install the Azure CLI on the Delegate. Go to [Add Your Custom Tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools) for more information.
+
+#### Why am I unable to deploy to CloudFoundry due to a deployment in flight?
+
+```
+Deployment Failed For: For application '$APP_ID': Cannot update this process while a deployment is in flight.
+```
+
+Cloud Foundry only allows for 1 deployment or update process at a time for an application. If an application is currently deploying or crash looping, Cloud Foundry will block all other updates to this Application. To fix this, either wait for the Application to finish processing the deployment or, if the Application is crash looping, consider rolling back to the previous version. A Rollback in Cloud Foundry does not count as an update or deployment process and can safely be executed if required.
+
+#### Why am I getting a harnessServiceId may not be empty error?
+```
+RuntimeException: harnessServiceId may not be empty
+```
+
+This error occurs if using a Monitored Service with an incorrectly configured Change Source. To fix this, please ensure that the Change Source has a ServiceId defined properly.
