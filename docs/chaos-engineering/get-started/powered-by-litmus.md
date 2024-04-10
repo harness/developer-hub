@@ -71,7 +71,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
    <tr>
         <td>Centralized chaos portal</td>
@@ -168,6 +168,11 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>❌</td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>ChaosGuard</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
 </table>
 
 ### Administration
@@ -218,7 +223,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅</td>
     </tr>
     <tr>
-        <td>Multiple Organisations</td>
+        <td>Multiple organisations</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -268,15 +273,35 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
 <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
-        <td>Integration with Harness CD Pipelines</td>
+        <td>Integration with Harness Continuous Deployment Pipelines</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
-        <td>Integration with Harness CV</td>
+        <td>Integration with Jenkins Pipelines</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Integration with GitLab Pipelines</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Integration with Harness Continuous Verification</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Integration with Harness Feature Flags</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Integration with Service Reliability Management</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -290,7 +315,7 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
         <td><b>CE  (SaaS)</b></td>
-    </tr>    
+    </tr>
     <tr>
         <td>Pod delete</td>
         <td>✅</td>
@@ -463,6 +488,11 @@ Go to [Node faults](/docs/category/node) for more information.
         <td>❌</td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>Kubernetes stress - Kube-resilience </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
   </table>
 
 ### AWS chaos faults
@@ -481,6 +511,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
     </tr>
     <tr>
         <td>CLB AZ down</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+     <tr>
+        <td>NLB AZ down</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -521,6 +556,21 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
     </tr>
     <tr>
         <td>EC2 network loss</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>EC2 process kill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>EC2 stop by id</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>EC2 stop by tag</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -570,6 +620,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>✅</td>
     </tr>
     <tr>
+        <td>EC2 I/O stress</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>RDS instance delete</td>
         <td>❌</td>
         <td>✅</td>
@@ -586,6 +641,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
     </tr>
     <tr>
         <td>ECS task stop </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>ECS task scale </td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -610,6 +670,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>✅</td>
     </tr>
     <tr>
+        <td>ECS container volume detach</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>ECS agent stop</td>
         <td>❌</td>
         <td>✅</td>
@@ -620,12 +685,42 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>✅</td>
     </tr>
     <tr>
+        <td>ECS container HTTP latency </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>ECS container HTTP modify body </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>ECS container HTTP reset peer </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>ECS container HTTP status code </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>ECS container memory hog</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>ECS container I/O stress</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>ECS fargate CPU hog</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>ECS fargate memory hog</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -701,6 +796,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>❌ </td>
         <td>✅</td>
     </tr>
+    <tr>
+        <td>Resource access restrict </td>
+        <td>❌ </td>
+        <td>✅</td>
+    </tr>
 </table>
 
 ### GCP chaos faults
@@ -729,6 +829,11 @@ Go to [Chaos faults for GCP](/docs/chaos-engineering/chaos-faults/gcp) for more 
     </tr>
     <tr>
     <td> GCP VM instance stop by label </td>
+    <td>❌</td>
+    <td>✅</td>
+    </tr>
+    <tr>
+    <td> GCP VM service kill </td>
     <td>❌</td>
     <td>✅</td>
     </tr>
@@ -783,6 +888,7 @@ Got to [Chaos faults for Azure](/docs/chaos-engineering/chaos-faults/azure) for 
 ### VMware chaos faults
 
 Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for more information.
+
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -830,12 +936,17 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
         <td>✅</td>
     </tr>
     <tr>
-        <td>VMware HTTP response modify</td>
+        <td>VMware HTTP modify response</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>VMware network loss</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware network rate limit</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -860,7 +971,57 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
         <td>✅</td>
     </tr>
     <tr>
+        <td>VMware Windows memory hog</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
         <td>VMware disk loss </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows blackhole chaos</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows disk stress</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows network corruption</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows network duplication</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows network latency</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows network loss</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows process kill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows service stop</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>VMware Windows time chaos</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -900,6 +1061,211 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
     </tr>
     <tr>
         <td>App kill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Security chaos faults
+
+Go to [Chaos faults for security](/docs/chaos-engineering/chaos-faults/security-chaos) for more information.
+
+<table>
+    <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>CE  (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>Kube security CIS </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Load chaos faults
+
+Go to [Chaos faults for load](/docs/chaos-engineering/chaos-faults/load) for more information.
+
+<table>
+    <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>CE  (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>Locust loadgen </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### SSH chaos faults
+
+Go to [Chaos faults for SSH](/docs/chaos-engineering/chaos-faults/ssh) for more information.
+
+<table>
+    <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>CE  (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>SSH chaos </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Linux chaos faults
+
+Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for more information.
+
+<table>
+    <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>CE  (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>Linux CPU stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux disk fill </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux disk I/O stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux DNS error </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux DNS spoof </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux memory stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux network corruption </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux network duplication </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux network latency </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux network loss </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux network rate limit </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux process kill </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux service restart </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Linux time chaos </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Windows chaos faults
+
+<table>
+    <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>CE  (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>Windows CPU stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Windows memory stress </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Windows network blackhole chaos </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+</table>
+
+### Cloud Foundry chaos faults
+
+Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/cloud-foundry) for more information.
+
+<table>
+    <tr>
+        <td><b>Feature</b></td>
+        <td><b>Litmus</b></td>
+        <td><b>CE  (SaaS)</b></td>
+    </tr>
+    <tr>
+        <td>CF app container kill </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app network corruption </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app network duplication </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app network latency </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app network loss </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app route unmap </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>CF app stop </td>
         <td>❌</td>
         <td>✅</td>
     </tr>
