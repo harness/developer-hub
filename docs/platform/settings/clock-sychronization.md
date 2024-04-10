@@ -45,7 +45,7 @@ Most Linux distributions use `systemd`, which comes with NTP for clock synchroni
 2. You can add multiple NTP servers in the `ntp.conf` file in the format below.
 
     :::info
-    The prefer option should only be specified once.
+    Add the `prefer` option to one `server` command only in the `ntp.conf` file.
     :::
 
     ```
