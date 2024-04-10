@@ -29,11 +29,6 @@ catalog:
         filters:
           branch: 'main' # string
           repository: '.*' # Regex
-        schedule: # optional; same options as in TaskScheduleDefinition
-          # supports cron, ISO duration, "human duration" as used in code
-          frequency: { minutes: 30 }
-          # supports ISO duration, "human duration" as used in code
-          timeout: { minutes: 3 }
       customProviderId:
         organization: 'new-org' # string
         catalogPath: '/custom/path/catalog-info.yaml' # string
