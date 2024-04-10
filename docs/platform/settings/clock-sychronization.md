@@ -18,7 +18,7 @@ This topic provides Harness' recommended settings for Network Time Protocol (NTP
 ## Recommended NTP configuration for Harness Self-Managed Enterprise Edition
 
 - Use your local NTP server
-- Use Use [Google Public NTP](https://developers.google.com/time)
+- Use [Google Public NTP](https://developers.google.com/time)
 
 ## Configure NTP for a delegate running on Linux
 
@@ -26,7 +26,7 @@ Most Linux distributions use `systemd`, which comes with NTP for clock synchroni
 
 ### Install the NTP service
 
-1. If NTP is not present on your host system, you can use `yum`, `apt-get`, or `dnf` to install the NTP service as per your OS. You can also use Chrony, which has flexible implementation of NTP.
+1. If NTP is not present on your host system, you can use `yum`, `apt-get`, or `dnf` to install the NTP service as per your OS. You can also use Chrony, which has a flexible implementation of NTP.
 
    You must have root permissions to install the application. Installation varies slightly depending on which Linux distribution you use:
 
