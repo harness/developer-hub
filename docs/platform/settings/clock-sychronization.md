@@ -10,25 +10,25 @@ This topic provides Harness' recommended settings for Network Time Protocol (NTP
 
 - **Implementation:** Harness advocates for establishing a standardized reference time within the organization. Defining a common time source ensures coherence across various operations and applications. By establishing a clear reference point, organizations can maintain consistency in timekeeping practices, facilitating seamless coordination and communication across different systems and teams.
 
-## Recommended NTP configuration for Harness Delegate
+### Recommended NTP configuration for Harness Delegate
 
 When configuring NTP for Harness Delegate, ensuring accurate time synchronization is crucial for various operational tasks. Here are two recommended options:
 
 - Use your local NTP server: Leveraging a local NTP server ensures reliable time synchronization within your network environment.
 - Use [Google Public NTP](https://developers.google.com/time): Google Public NTP provides a robust and widely accessible time synchronization service, offering high accuracy and availability.
 
-## Recommended NTP configuration for Harness Self-Managed Enterprise Edition
+### Recommended NTP configuration for Harness Self-Managed Enterprise Edition
 
 Maintaining precise time synchronization is vital for the optimal functioning of Harness Self-Managed Enterprise Edition. Consider the following recommendations for NTP configuration:
 
 - Use your local NTP server: Utilizing a local NTP server offers localized time synchronization, ensuring consistency and reliability within your infrastructure.
 - Use [Google Public NTP](https://developers.google.com/time): Google Public NTP presents a dependable option for time synchronization, delivering accurate time information across diverse network environments.
 
-## Configure NTP for a delegate running on Linux
+### Configure NTP for a delegate running on Linux
 
 Most Linux distributions use `systemd`, which comes with NTP for clock synchronization. You can verify `systemd` by running `timedatectl`.
 
-### Install the NTP service
+#### Install the NTP service
 
 1. If NTP is not present on your host system, you can use `yum`, `apt-get`, or `dnf` to install the NTP service as per your OS. You can also use Chrony, which has a flexible implementation of NTP.
 
