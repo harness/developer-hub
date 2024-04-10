@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="cloud" label="Cloud" default>
 
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, and locate the **Bitbucket Cloud** integration, and select **Install**
 

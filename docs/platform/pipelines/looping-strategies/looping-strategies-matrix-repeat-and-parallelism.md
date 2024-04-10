@@ -458,6 +458,8 @@ The value of the expression depends on where both the expression and looping str
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
+For more information, go to [Status expressions](/docs/platform/variables-and-expressions/harness-variables.md#status-expressions).
+
 ### strategy.node.NODE_ID.currentStatus
 
 In stages/steps using matrix or repeat strategies, use either of the following two expressions to get the current status of the looping strategy for a specific stage or step, as defined by the `NODE_ID`: For example:
@@ -490,6 +492,60 @@ Use the following expressions to access the index values for each iteration of a
 Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+
+### identifierPostFix expressions
+
+<details>
+<summary>What is the identifierPostFix</summary>
+
+When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique IDs of the child stages/steps/step groups created by the looping operation. The `identifierPostFix` is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
+
+For example, the following matrix strategy creates 3 stages based on the `repo` values `docker`, `gcr`, and `ecr`. The `identifierPostfix` values would be `_docker`, `_gcr`, and `_ecr` for the different combinations of each stage run.
+
+```
+strategy:
+  matrix:
+    repo:
+      - docker
+      - gcr
+      - ecr
+```
+
+Similarly, the following parallelism strategy creates four stages/steps with the `identifierPostfix` values of `_0`, `_1`, `_2`, and `_3`.
+
+```
+strategy:
+  parallelism: 4
+```
+
+</details>
+
+* `<+strategy.identifierPostFix>`: This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
+   * When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
+   * If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
+   * If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the `identifierPostFix` of the stage.
+* `<+step.identifierPostFix>`: This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
+* `<+stage.identifierPostFix>`: This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
+* `<+stepGroup.identifierPostFix>`: This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
+* `<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>`: This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
+   * For example, consider two nested step groups, sg1 and sg2 (which is a child of sg1). Both sg1 and sg2 have a looping strategy configured.
+
+      ![](./static/nested-looping-strategy.png)
+
+   * In this example, the expression `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2.
+   * To obtain the `identifierPostFix` for a specific step group, you could use `<+strategy.node.sg1.identifierPostFix>` to retrieve the `identifierPostFix` for the node with the identifier sg1 (parent step group), and you could use `<+strategy.node.sg2.identifierPostFix>` to retrieve the `identifierPostFix` for the node with the identifier sg2 (child step group).
+   * Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
+
+* `<+strategy.node.STRATEGY_NODE_IDENTIFIER.*>`: Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels. Here are some examples:
+   * `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
+   * `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
+   * `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
+   * `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
+   * `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
+   * `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
+   * `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
+   * `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
+   * `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
 
 ## Execution status of stages with looping strategies
 

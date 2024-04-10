@@ -31,7 +31,20 @@ In certain cases, there can be overlapping rules targeting the same resource. Fo
 - Number of targets considered for Recommendations: Top 15
 - Number of regions considered for Recommendations: Top 5 in case of AWS
 :::
-  
+
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
+
+### Cost Correlation
+
+### What’s supported
+
+| Cloud | Cost Correlation | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
+|-------|------------------|---------------------------------|------------------|--------------|--------------------------------|
+| AWS   | aws.ec2, aws.ebs, aws.rds, aws.ebs-snapshot | Yes | Yes | No | Yes |
+| GCP   | None             | No                              | No               | No           | No  |
+| Azure | Every Resource in Billing Report | Yes | Yes | No | No |
+
+### How is Cost Correlation Computed
+Cost Correlation Refresh API: This API is used to refresh or update the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.).You can hit the refresh cost button only once every 30 minutes for any evaluation.
 
 Make use of Harness AIDA to create a new rule. Select the **Create a new rule with AIDA** option. A new rule opens in the rule editor with an auto-generated name. For more information, go to [Harness AIDA for asset governance](../asset-governance/cag-aida/gen-ai-overview.md).

@@ -152,7 +152,10 @@ spec:
       components:
         env:
         - name: CHAOS_PARAMETER
-          value: "raw:{HCE,CSV},raw:{3258}"
+          value: "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+                    \"data_type\":\"string\",\"value\":\"HOST_IP\"},
+                    {\"placeholder\":\"port\",\"data_type\":\"int\",
+                      \"value\":\"3258\"}]}"
 ```
 
 ### Abort parameter
@@ -176,7 +179,10 @@ spec:
       components:
         env:
         - name: ABORT_PARAMETER
-          value: "raw:{HCE,CSV},raw:{3258}"
+          value: "{\"paramaters\":[{\"placeholder\":\"destination_ip\",
+                    \"data_type\":\"string\",\"value\":\"HOST_IP\"},
+                    {\"placeholder\":\"port\",\"data_type\":\"int\",
+                      \"value\":\"3258\"}]}"
 ```
 
 :::tip

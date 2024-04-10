@@ -188,7 +188,7 @@ Now all GitHub webhooks for this project must be authenticated. This means all G
 
 ### Polling frequency
 
-:::info note
+:::note
 
 Currently, this feature is only available for GitHub webhooks, and it is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 

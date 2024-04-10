@@ -6,6 +6,8 @@ redirect_from:
   - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 Service Onboarding in Harness IDP use Harness pipeline orchestrator and those could be triggered through Software Templates. 
 
 ![](./static/service-onboarding.png)
@@ -786,7 +788,7 @@ A template is a kind of entity that exists in the software catalog. You can crea
 
 :::info
 
-Please refer to the [support matrix](/docs/internal-developer-portal/flows/custom-actions#custom-actions-usage-limitations) for custom actions before using them, also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+Please refer to the [support matrix](/docs/internal-developer-portal/flows/custom-actions#custom-actions-usage-limitations) for custom actions before using them, also all input, except for [pipeline expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
 
 :::
 

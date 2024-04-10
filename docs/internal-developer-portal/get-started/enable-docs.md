@@ -6,6 +6,8 @@ redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-docs
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 By default, the **Docs** tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)

@@ -28,9 +28,9 @@ export const ilt: IltCardItem[] = [
     title: "Continuous Integration",
     module: MODULES.ci,
     iltType: iltType.user,
-    description: "Continuous Integration ILT Coming Soon",
+    description: "Deep dive into advanced Continus Integration concepts focused on containerization.",
     version: "Harness CI Enterprise Plan",
-    link: "#",
-    tileType: tileType.commingSoon,
+    link: "https://university-registration.harness.io/ilt-continuous-integration",
+    tileType: tileType.normal,
   },
 ];

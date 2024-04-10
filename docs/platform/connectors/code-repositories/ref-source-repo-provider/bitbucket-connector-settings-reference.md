@@ -236,7 +236,7 @@ The connection test may also fail if the token doesn't have sufficient privilege
 There are two potential causes for this:
 
 * Harness uses the pipeline's codebase connector to send status updates to BitBucket. Check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it is using your BitBucket code repo connector.
-* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
+* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. An enhancement was [released in April 2024](/release-notes/continuous-integration) for this behavior. However, if you modified your BitBucket Cloud settings based on the original handling, you might need to edit the settings again to account for the enhancement. <!-- Prior to GA you could enable a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`, for the handling. -->
 
 ### Some API functions fail for On-Prem repos
 

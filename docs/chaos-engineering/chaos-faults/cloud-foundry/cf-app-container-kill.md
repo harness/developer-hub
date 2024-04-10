@@ -3,7 +3,7 @@ id: cf-app-container-kill
 title: CF app container kill
 ---
 
-import CFSecrets from './shared/cf-secrets.md';
+import CFAndBOSHSecrets from './shared/cf-and-bosh-secrets.md';
 import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app container kill causes a Cloud Foundry app instance container to be killed (crash) and restarted.
@@ -88,7 +88,7 @@ CF app container kill:
   </tr>
 </table>
 
-<CFSecrets />
+<CFAndBOSHSecrets />
 
 <VSphereSecrets />
 
@@ -175,7 +175,7 @@ The `cfDeploymentPlatform` input variable determines the deployment platform use
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-container-kill/cfDeploymentPlatform.yaml yaml)
+[embedmd]:# (./static/manifests/cf-app-container-kill/cfDeploymentPlatform.yaml yaml)
 ```yaml
 # cf deployment platform
 apiVersion: litmuchaos.io/v1alpha1
@@ -185,7 +185,7 @@ metadata:
   labels:
     name: app-container-kill
 spec:
-  cfAppStop/inputs:
+  cfAppContainerKill/inputs:
     duration: 30s
     cfDeploymentPlatform: vSphere
     app: cf-app
@@ -198,7 +198,7 @@ The `skipSSLValidation` input variable determines whether to skip SSL validation
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-container-kill/skipSSLValidation.yaml yaml)
+[embedmd]:# (./static/manifests/cf-app-container-kill/skipSSLValidation.yaml yaml)
 ```yaml
 # skip ssl validation for cf
 apiVersion: litmuchaos.io/v1alpha1
@@ -208,7 +208,7 @@ metadata:
   labels:
     name: app-container-kill
 spec:
-  cfAppStop/inputs:
+  cfAppContainerKill/inputs:
     duration: 30s
     cfDeploymentPlatform: vSphere
     app: cf-app
@@ -222,7 +222,7 @@ The `faultInjectorPort` input variable determines the port used for the fault-in
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/cf-container-kill/faultInjectorPort.yaml yaml)
+[embedmd]:# (./static/manifests/cf-app-container-kill/faultInjectorPort.yaml yaml)
 ```yaml
 # fault injector port
 apiVersion: litmuchaos.io/v1alpha1
@@ -232,7 +232,7 @@ metadata:
   labels:
     name: app-container-kill
 spec:
-  cfAppStop/inputs:
+  cfAppContainerKill/inputs:
     duration: 30s
     cfDeploymentPlatform: local
     app: cf-app

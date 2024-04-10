@@ -185,6 +185,17 @@ The following `INIT_SCRIPT` installs Helm 3:
 </TabItem>
 </Tabs>
 
+### Install Azure CLI
+
+To install the Azure CLI, run the following.
+
+```
+## Install Azure CLI
+rpm --import <https://packages.microsoft.com/keys/microsoft.asc>
+rpm -ivh <https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm>
+microdnf install -y azure-cli
+```
+
 ### Install multiple tools at once
 
 To install multiple tools, you can add all the install scripts to the `INIT_SCRIPT`, for example:

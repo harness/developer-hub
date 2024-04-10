@@ -162,7 +162,7 @@ Here’s a sample `satellite.yml` file which uses username and password for auth
 satellite:
   tenant: <ACCOUNT_NAME>
   api_key: <SEI_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the environment you are using.
+  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     url: '<ATLASSIAN_ORGANIZATION_URL>'
@@ -184,7 +184,7 @@ Here’s a sample `satellite.yml` file which uses a Personal Access Token and pa
 satellite:
   tenant: <ACCOUNT_NAME>
   api_key: <SEI_API_KEY>
-  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the environment you are using.
+  url: "https://app.harness.io/gratis/sei/api" # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     url: '<ATLASSIAN_ORGANIZATION_URL>'
@@ -269,7 +269,7 @@ If you encounter any issues during the integration process, go to the Satellite 
 
 If you also have an [SEI Salesforce integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Under **Salesforce Field Mapping**, select the Jira field that contains your Salesforce case IDs.
@@ -282,7 +282,7 @@ What constitutes a miss depends on your _hygiene categories_. There are several 
 
 To add custom hygiene categories:
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Find your **Jira** integration and edit it.
 4. Select **Add Custom Hygiene Miss Criteria** and configure the new hygiene category:
