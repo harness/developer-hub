@@ -87,7 +87,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.10.8 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
