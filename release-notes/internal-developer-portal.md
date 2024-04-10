@@ -1,8 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-tags: [NextGen, "Internal Developer Portal", "IDP"]
-date: 2023-08-09T10:00:15
+date: 2024-03-22T10:00
 sidebar_position: 12
 ---
 

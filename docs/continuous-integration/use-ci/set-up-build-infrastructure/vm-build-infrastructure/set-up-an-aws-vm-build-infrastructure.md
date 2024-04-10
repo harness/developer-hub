@@ -89,7 +89,7 @@ If you get an error about an unrecognized `refreshenv` command, you might need t
 
 ## Configure the Drone pool on the AWS VM
 
-<!-- I don't think this is possible anymore because of the new delegate install UI.
+<!-- This isn't possible anymore because of the new delegate install UI.
 
 :::tip Option: Use Terraform
 

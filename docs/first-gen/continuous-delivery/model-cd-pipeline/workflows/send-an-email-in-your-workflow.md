@@ -1,6 +1,6 @@
 ---
 title: Send an Email from Your Workflow
-description: You can use the Email Workflow step to send an email to registered Harness User email addresses as part of your Workflow. The Email step is different than the Workflow Notification Strategy, which no…
+description: You can use the Email Workflow step to send an email to registered Harness User email addresses as part of your Workflow.
 sidebar_position: 270
 helpdocs_topic_id: q1xblriy6d
 helpdocs_category_id: a8jhf8hizv
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use the Email Workflow step to send an email to registered Harness User email addresses as part of your Workflow.
 
-The Email step is different than the Workflow Notification Strategy, which notifies Harness User Groups of different Workflow conditions. See [Add a Workflow Notification Strategy](add-notification-strategy-new-template.md).
+The Email step is different from the Workflow Notification Strategy, which notifies Harness User Groups of different Workflow conditions. See [Add a Workflow Notification Strategy](add-notification-strategy-new-template.md).
 
 ### Before You Begin
 

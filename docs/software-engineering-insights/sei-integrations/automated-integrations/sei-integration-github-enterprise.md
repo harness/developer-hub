@@ -19,17 +19,13 @@ The 202401.2 release included a new experience for the GitHub integration, focus
 
 SEI communicates with Github Enterprise by setting up authentication using a **Personal Access Token (PAT)**. you must create a GitHub personal access token to configure the SEI GitHub integration. To learn more on this, Go to [Configuring the authentication](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github#configure-authentication).
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
-
 
 1. Select **Integrations** under **Settings**.
 2. Select **Available Integrations**, locate the **GitHub Enterprise** integration.
@@ -43,18 +39,15 @@ import TabItem from '@theme/TabItem';
    3. **Fetch Projects**: Allow SEI to ingest data from GitHub Projects.
    4. **Fetch Commits**: Allow SEI to ingest commit metadata from GitHub.
    5. **Fetch Commit Files**: Allow SEI to ingest data within commits from GitHub.
-   6. **Connect via GitHub webhook**: Select this option if you want GitHub to push data to SEI through a webhook, rather than SEI pulling data from GitHub. This is an advanced configuration and only recommended if you are confident about using this configuration.
 8. In Integration **Name**, enter a name for the integration.
 9. Finish configuration and **Save** the integration.
-
 
 </TabItem>
   <TabItem value="satellite" label="Satellite">
 
-
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github enterprise server.
 
-Make sure to select the satellite integration checkbox while configuring the integration.
+Make sure to select the satellite integration checkbox while configuring the integration. If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 
@@ -62,7 +55,7 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: github_enterprise
@@ -75,7 +68,6 @@ integrations:
       fetch_issues: true
       fetch_projects: true
       fetch_commit_files: true
-      auto_register_webhook: true
     authentication: multiple_api_keys
     keys:
       - api_key: <GITHUB_PAT_1>
@@ -84,9 +76,6 @@ integrations:
         user_name: <GITHUB_USERNAME>
 
 ```
-
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
 
 </TabItem>
 </Tabs>

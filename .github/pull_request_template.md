@@ -1,19 +1,20 @@
-# Harness Developer Pull Request
-Thanks for helping us make the Developer Hub better. The PR will be looked at
-by the CODEOWNERS. 
+Thanks for contributing to the Harness Developer Hub! Our code owners will review your submission.
 
-## What Type of PR is This?
+## Description
 
-- [ ] Issue
-- [ ] Feature
-- [ ] Maintenance/Chore
+* Please describe your changes: \__________________________________
+* Jira/GitHub Issue numbers (if any): \______________________________
+* Preview links/images (Internal contributors only): \__________________
 
-If tied to an Issue, list the Issue(s) here:
+## PR lifecycle
 
-* *Issue(s)*
+We aim to merge PRs within one week or less, but delays happen sometimes.
 
-## House Keeping
-Some items to keep track of. Screen shots of changes are optional but would help the maintainers review quicker. 
+If your PR is open longer than two weeks without any human activity, please tag a [code owner](https://github.com/harness/developer-hub/blob/main/.github/CODEOWNERS) in a comment.
 
-- [ ] Tested Locally
-- [ ] *Optional* Screenshot. 
+PRs must meet these requirements to be merged:
+
+- [ ] Successful preview build.
+- [ ] Code owner review.
+- [ ] No merge conflicts.
+- [ ] Release notes/new features docs: Feature/version released to at least one prod environment.

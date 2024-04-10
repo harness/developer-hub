@@ -1,8 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-tags: [NextGen, "software engineering insights"]
-date: 2023-09-01T10:00:10
+date: 2024-03-30T10:00:10
 sidebar_position: 15
 ---
 
@@ -24,6 +23,14 @@ These release notes describe recent changes to Harness Software Engineering Insi
 :::
 
 ## March 2024
+
+### Version 202403.2.1
+
+<!-- Mar 30, 2024 -->
+
+#### Hotfix
+
+* Added support for a new column **Time Spent In Stage** in the **Issue Time Across Stages report** drill-down. This field now displays the specific amount of time spent in each stage as selected in the Bar Chart widget. (SEI-6202)
 
 ### Version 202403.2
 

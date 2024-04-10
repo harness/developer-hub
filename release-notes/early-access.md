@@ -1,10 +1,8 @@
 ---
 title: Early access features
-date: 2024-01-18T10:00
+date: 2024-04-05T10:00
 sidebar_position: 2
 ---
-
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/early-access/rss.xml" />
 
 These are some of the [early access (beta) features](/docs/platform/get-started/release-status) that are available in Harness NextGen SaaS. Early access features can be released for the Harness Platform, delegate, or individual modules.
 

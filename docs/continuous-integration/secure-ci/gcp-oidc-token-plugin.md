@@ -8,14 +8,6 @@ The [GCP OIDC plugin](https://github.com/harness-community/drone-gcp-oidc) gener
 
 For general information about using plugins in CI pipelines, go to [Explore plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [Use Drone plugins](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
-## Add OIDC token stage variable
-
-The GCP OIDC plugin requires an OIDC token, which it ingests from a stage variable.
-
-Add a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables) named `PLUGIN_OIDC_TOKEN_ID` and set the value to your OIDC token.
-
-You can store your OIDC ID token in a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) and then use an expression to reference the secret in your stage variable, such as  `<+secrets.getValue("oidc_token_id")>`.
-
 ## Configure the GCP OIDC plugin
 
 To use the GCP OIDC plugin, [add a Plugin step](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md) to your [CI pipeline](../use-ci/prep-ci-pipeline-components.md). For example:

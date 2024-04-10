@@ -69,7 +69,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-## March 2024
+## April 2024
 
 ### Harness version 1.33.x, Harness Delegate version 24.03.82700 <!--  April 09, 2024 -->
 
@@ -80,6 +80,14 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. The name of a user will be sanitized if it does not follow Harness naming conventions during user addition flows. (PL-47614)
 
 - Builds triggered by Bitbucket Server push events have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)
+
+### Version 24.04.82603 <!--  April 4, 2024 -->
+
+#### Hotfix
+
+- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180, ZD-58933, ZD-59370, ZD-60138)
+
+## March 2024
 
 ### Version 24.03.82601 <!--  March 28, 2024 -->
 

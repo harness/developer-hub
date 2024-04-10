@@ -6,11 +6,11 @@ sidebar_position: 1
 
 In order to calculate metrics, you must integrate your SDLC tools with SEI.
 
-SEI integrations are handled through SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. 
+Interactions with third-party systems on Harness SEI are managed through the SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more.
 
 For example, an SEI GitHub integration authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
 
-To integrate a tool with SEI, you can use either an application-specific SEI integration the generic SEI integration.
+You can use any application-specific integration supported by Harness SEI to integrate your tool with SEI. If you need to connect a CI/CD tool that currently lacks integration support from SEI, you have the option to create a custom CI/CD integration separately.
 
 :::info
 Please note that after adding an integration and for each subsequent data sync, it may take up to 24 hours for the data to be fully reflected on SEI. This means that any widgets you configure on Insights using this integration may not display data until the synchronization is completed.
@@ -20,45 +20,73 @@ Please note that after adding an integration and for each subsequent data sync, 
 
 ## Integration Mapping
 
-Integration mapping refers to the process of linking available or new integrations with your current project. Once you have created your project, you can start setting up and mapping integrations as an admin. To map integrations correctly ensure that you have associated the integrations with the project.
+Integration mapping refers to the process of associating existing or new integrations with your current project. After creating the project, you can proceed to set up and map integrations to it. It's important to associate the integrations correctly with the project in order to ensure that the widgets on the Insight display accurate data.
 
 1. To map integrations, go to the **Integration Mapping tab** within the SEI module.
 2. Click on **Map Integrations** and select any existing integrations or create new ones as per the requirement.
 
-## Application-specific SEI integrations
+## Harness SEI supported platforms and technologies
 
-* [Azure DevOps Services](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-* [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-* [Checkmarx SAST](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-checkmarx)
-* [Circle CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci)
-* [Coverity](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-coverity)
-* [Drone CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci)
-* [Gerrit](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-gerrit)
-* [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
-* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
-* [GitHub 2.0 - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
-* [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
-* [Harness NG](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
-* [Helix Core Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
+Harness SEI supports a variety of platforms, repos, tools, and related technologies. The following sections list entities or providers with first-class support in Harness SEI.
+
+### Issue Management Platform
+
+* [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira)
-* [Jira 2.0 - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
+* [Jira Enhanced Integration - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
+* [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
+
+### Source Code Management (SCM)
+
+* [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+* [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
+* [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
+* [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-enterprise)
+* [GitHub Enhanced Integration - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
+* [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
+* [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise)
+* [Perforce Helix Server](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-helix)
+* [Gerrit](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-gerrit)
+
+### CI/CD
+
+* [Circle CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-circleci)
+* [Drone CI](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-droneci)
+* [Jenkins](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin)
+* [Harness NG](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng)
+* [Azure Pipelines](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
+* [GitHub Actions](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-actions)
+
+### Security
+
+* [SonarQube](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube)
+* [Checkmarx](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-checkmarx)
+* [Tenable](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-tenable)
+* [Coverity](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-coverity)
+* [Snyk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-snyk)
+
+### Communication & Collaboration
+
+* [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
 * [Microsoft Teams](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-ms-teams)
+
+### Incident Monitoring
+
 * [PagerDuty](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+
+### Others
+
+* [TestRail](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-testrail)
 * [PostgreSQL](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-postgresql)
 * [Salesforce](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-salesforce)
-* [Slack](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-slack)
-* [Snyk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-snyk)
-* [SonarQube](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-sonarqube)
 * [Splunk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-splunk)
-* [Tenable](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-tenable)
-* [TestRail](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-testrail)
 * [Zendesk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-zendesk)
 
 On-prem integrations and tools without application-specific integrations require [Ingestion Satellites](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-## Other integrations
+## Custom CI/CD integrations
 
-For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/jenkins-plugin).
+SEI supports custom CI/CD integrations through webhooks. You can use this for CI/CD tools that don't have a dedicated SEI integration. For information about custom CI/CD, go to [Custom CI/CD Integrations](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations).
 
 :::tip
 
@@ -68,7 +96,7 @@ In addition to SEI integrations, you can [import CSV files](/docs/software-engin
 
 ## Integration Monitoring
 
-To monitor and track the health status of an integration, you can go to the **Integration Monitoring** tab. 
+To monitor and track the health status of an integration, you can go to **Integration Monitoring**.
 
 Here's how you can verify the integration status:
 
@@ -76,11 +104,14 @@ Here's how you can verify the integration status:
 
 ![](./static/integrations-tab.png)
 
-2. Click on the integration for which you want to verify the status.
+2. Click on the Integration for which you want to verify the status.
 3. Select the **Monitoring** tab.
 
 ![](./static/integration-monitoring.png)
 
-This page allows you to monitor the integration's current status, which could be either `HEALTHY`, `UNKNOWN`, or `FAILED`. 
+This page allows you to monitor the integration's current status, which could be either **HEALTHY**, **UNKNOWN**, or **FAILED**. 
 
-You can also review past ingestion activities under the **Ingestion Logs** section and view their corresponding statuses. Additionally, you can find other details such as the Ingestion Task Start Time, Time to Complete the Ingestion Task and Number of Retries for the Ingestion Scan.
+You can review previous ingestion activities in the **Ingestion Logs** section and view their respective statuses.
+You can also access additional details such as the Ingestion Task Start Time, Time taken to Complete the Ingestion Task, and Number of Retries for the Ingestion Scan.
+
+

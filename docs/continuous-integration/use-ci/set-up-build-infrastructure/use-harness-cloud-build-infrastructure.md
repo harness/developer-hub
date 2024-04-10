@@ -259,12 +259,6 @@ You can use Harness Cloud build infrastructure in firewalled environments. For m
 
 ## Queue Intelligence
 
-:::note
-
-Currently, Queue Intelligence is behind a feature flag. Contact Harness Support to enable the feature.
-
-:::
-
 With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. This replaces the previous behavior where the Harness Delegate would fail any job that it could not schedule or run immediately.
 
 The Queue Intelligence feature introduces a `queued` state for individual builds. Builds progress through the following states:

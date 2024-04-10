@@ -6,6 +6,8 @@ redirect_from:
   - /tutorials/internal-developer-portal/opa-scorecards
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 ## Introduction
 
 :::info
