@@ -888,6 +888,7 @@ Got to [Chaos faults for Azure](/docs/chaos-engineering/chaos-faults/azure) for 
 ### VMware chaos faults
 
 Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for more information.
+
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -1067,6 +1068,8 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
 
 ### Security chaos faults
 
+Go to [Chaos faults for security](/docs/chaos-engineering/chaos-faults/security-chaos) for more information.
+
 <table>
     <tr>
         <td><b>Feature</b></td>
@@ -1080,8 +1083,9 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
     </tr>
 </table>
 
-
 ### Load chaos faults
+
+Go to [Chaos faults for load](/docs/chaos-engineering/chaos-faults/load) for more information.
 
 <table>
     <tr>
@@ -1098,6 +1102,8 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
 
 ### SSH chaos faults
 
+Go to [Chaos faults for SSH](/docs/chaos-engineering/chaos-faults/ssh) for more information.
+
 <table>
     <tr>
         <td><b>Feature</b></td>
@@ -1112,6 +1118,8 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
 </table>
 
 ### Linux chaos faults
+
+Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for more information.
 
 <table>
     <tr>
@@ -1218,12 +1226,14 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
 
 ### Cloud Foundry chaos faults
 
+Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/cloud-foundry) for more information.
+
 <table>
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
         <td><b>CE  (SaaS)</b></td>
-    </tr>  
+    </tr>
     <tr>
         <td>CF app container kill </td>
         <td>❌</td>
