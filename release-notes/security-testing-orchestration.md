@@ -24,10 +24,24 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2024
 
+### Version TBD
+
 <!-- 2024-04-05 -->
+
+#### Early Access feature: Built-in SAST scans
+
+This release introduces a new built-in SAST step that adds a preconfigured [Semgrep scan](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. Semgrep scans are free to STO users and don't require an access token. 
+
+This step is behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it.(STO-6738)
+
+  ![](./static/built-in-scan-steps.png)
+
+
 
 
 ### Version 1.90.1
+
+<!-- 2024-04-05 -->
 
 #### New features and enhancements
 

@@ -45,9 +45,11 @@ The recommended workflow is to add a Semgrep step to a Security Tests or CI Buil
 
 #### Scan Mode
 
-import StoSettingScanMode from '../shared/step_palette/scan/_type.md';
+import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
+
 import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
+<StoSettingScanModeOrch />
 <StoSettingScanModeIngest />
 
 #### Scan Configuration
@@ -88,15 +90,14 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-<!--
 
-#### Workspace (_repository_)
+#### Workspace
 
 import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
--->
+
 
 ### Ingestion File
 
@@ -104,14 +105,12 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-<!--
+### Access Token
 
-Log Level, CLI flags, and Fail on Severity
--------------------------------------------------------------------------------------------------
+import StoSettingAuthAccessToken from '../shared/step_palette/auth/_access-token.md';
 
--->
+<StoSettingAuthAccessToken />
 
-<a name="log-level"></a>
 
 ### Log Level
 
@@ -119,11 +118,13 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
+
 ### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
+
 
 ### Additional Configuration
 
