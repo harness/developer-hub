@@ -6776,7 +6776,7 @@ Although ASG support has been redesigned in NextGen, we will be taking the targe
 Harness has redesigned the NextGen platform to support multiple strategies and accommodate new features provided by AWS like instance refresh, etc. Even though pipelines using Launch Configuration will still work, their design, especially the ASG rolling deploy step, differs from FirstGen. More details about the rolling deploy step can be found here: [ASG Tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#rolling).
 
 
-#### Why am I getting an error that az command is not found?
+#### Why am I getting the error: `az command is not found`?
 If you receive the below error
 
 ```
