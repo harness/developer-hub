@@ -61,9 +61,9 @@ To get the full expression for an output variable:
 
 - Go to the **Pipeline Execution** page for a previous run of your STO pipeline. 
 
-- Navigate to <b>Pipeline</b> &gt; <b>&lt;_scan_stage_id_&gt;</b> &gt; <b>Output</b>.
+- Navigate to <b>Pipeline</b> &gt; <b>_scan_stage_id_</b> &gt; <b>Output</b>.
 
-- Hover next to the output value to access **Click to Copy**.
+- Hover next to the variable name to access **Click to Copy**.
 
   <DocImage path={require('./static/output-variable-click-to-copy.png')} width="100%" height="100%" title="Add shared path for scan results" /> 
 
@@ -90,7 +90,7 @@ Create a string variable for your notification content. Include the pipeline URL
 
 slack_msg="=======================================================  \n"
 slack_msg="$slack_msg WARNING: New vulnerabilities detected with severity CRITICAL or HIGH. \n"
-slack_msg="$slack_msg $pipeline \n"
+slack_msg="$slack_msg $pipeline_url \n"
 slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
 slack_msg="$slack_msg - NEW_HIGH issues: \t = $new_high \n"
 slack_msg="$slack_msg =======================================================  \n"
@@ -152,7 +152,7 @@ To add this script to an existing pipeline:
 # -------------------------------------------------------
 new_critical="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL"
 new_high="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_HIGH"
-pipeline="YOUR_HARNESS_PIPELINE_URL"
+pipeline_url="YOUR_HARNESS_PIPELINE_URL"
 
 # 2. If all the variables == 0, exit.
 # -------------------------------------------------------
@@ -167,7 +167,7 @@ fi
 # ---------------------------------------------------------
 slack_msg="=======================================================  \n"
 slack_msg="$slack_msg WARNING: New issues detected with severity CRITICAL or HIGH. \n"
-slack_msg="$slack_msg $pipeline \n"
+slack_msg="$slack_msg $pipeline_url \n"
 slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
 slack_msg="$slack_msg - NEW_HIGH issues: \t = $new_high \n"
 slack_msg="$slack_msg =======================================================  \n"
@@ -267,7 +267,7 @@ pipeline:
                       high="<+pipeline.stages.container_scan_stage.spec.execution.steps.run_trivy_scan.output.outputVariables.HIGH>"
                       new_critical="<+pipeline.stages.container_scan_stage.spec.execution.steps.run_trivy_scan.output.outputVariables.NEW_CRITICAL>"
                       new_high="<+pipeline.stages.container_scan_stage.spec.execution.steps.run_trivy_scan.output.outputVariables.NEW_HIGH>"
-                      pipeline="YOUR_HARNESS_PIPELINE_URL"
+                      pipeline_url="YOUR_HARNESS_PIPELINE_URL"
 
                       # 2. If all the variables == 0, exit.
                       # -------------------------------------------------------
@@ -282,7 +282,7 @@ pipeline:
                       # ---------------------------------------------------------
                       slack_msg="=======================================================  \n"
                       slack_msg="$slack_msg WARNING: Issues detected with severity CRITICAL or HIGH. \n"
-                      slack_msg="$slack_msg $pipeline \n"
+                      slack_msg="$slack_msg $pipeline_url \n"
                       slack_msg="$slack_msg - CRITICAL issues: \t $critical \n"
                       slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
                       slack_msg="$slack_msg - HIGH issues: \t = $high \n"
@@ -351,14 +351,14 @@ critical="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL"
 high="FULL_EXPRESSION_OUTPUT_VARIABLE_HIGH"
 new_critical="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_CRITICAL"
 new_high="FULL_EXPRESSION_OUTPUT_VARIABLE_NEW_HIGH"
-pipeline="YOUR_HARNESS_PIPELINE_URL"
+pipeline_url="YOUR_HARNESS_PIPELINE_URL"
 
 
 # 2. Generate the output message.
 # -------------------------------------------------------
 slack_msg="=======================================================  \n"
 slack_msg="$slack_msg ERROR: Scan step failed. \n"
-slack_msg="$slack_msg $pipeline \n"
+slack_msg="$slack_msg $pipeline_url \n"
 slack_msg="$slack_msg - CRITICAL issues: \t $critical \n"
 slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
 slack_msg="$slack_msg - HIGH issues: \t = $high \n"
@@ -459,14 +459,14 @@ pipeline:
                       high="<+pipeline.stages.container_scan_stage.spec.execution.steps.trivy_scan_step.output.outputVariables.HIGH>"
                       new_critical="<+pipeline.stages.container_scan_stage.spec.execution.steps.trivy_scan_step.output.outputVariables.NEW_CRITICAL>"
                       new_high="<+pipeline.stages.container_scan_stage.spec.execution.steps.trivy_scan_step.output.outputVariables.NEW_HIGH>"
-                      pipeline="YOUR_HARNESS_PIPELINE_URL"
+                      pipeline_url="YOUR_HARNESS_PIPELINE_URL"
 
                       
                       # 2. Generate the output message.
                       # -------------------------------------------------------
                       slack_msg="=======================================================  \n"
                       slack_msg="$slack_msg ERROR: Scan step failed. \n"
-                      slack_msg="$slack_msg $pipeline \n"
+                      slack_msg="$slack_msg $pipeline_url \n"
                       slack_msg="$slack_msg - CRITICAL issues: \t $critical \n"
                       slack_msg="$slack_msg - NEW_CRITICAL issues: \t $new_critical \n"
                       slack_msg="$slack_msg - HIGH issues: \t = $high \n"
