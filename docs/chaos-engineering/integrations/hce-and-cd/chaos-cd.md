@@ -1,7 +1,7 @@
 ---
 title: Use HCE with Continuous Delivery
-sidebar_position: 2
-description: Integrating HCE with CD
+sidebar_position: 1
+description: Integrate HCE with CD
 redirect_from:
   - /tutorials/chaos-experiments/integration-with-harness-cd
 ---
@@ -44,7 +44,7 @@ To use CE with CD using a selected experiment (though you can use many experimen
 
 ### Step 1: Add a chaos experiment and run it
 
-* [Create a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) and run it to make sure it runs to completion. 
+* [Create a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) and run it to make sure it runs to completion.
 
 * In the example below, the relevant [probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) are added to avoid a false positive or false negative scenario around the resilience score.
 
@@ -63,7 +63,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 1. In your Harness project, select **Deployments > Pipelines**, and then select the pipeline where you want to add a chaos experiment.
 1. In the selected pipeline, select **Add Stage**, and then select a stage type.
 
-	Chaos steps are available for **Feature Flag**, **Deploy**, and **Custom Stage** types. 
+	Chaos steps are available for **Feature Flag**, **Deploy**, and **Custom Stage** types.
 
 	![Select a stage screen with Feature Flag, Deploy, and Custom Stage highlighted](./static/pipeline-add-stage.png)
 
@@ -90,7 +90,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
-	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) in Chaos Studio. 
+	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) in Chaos Studio.
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
 	Selecting these options takes you to Chaos Studio without saving your work.
@@ -100,7 +100,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 1. Back in **Configure Chaos Experiment**, enter the **Expected Resilience Score** for this experiment.
 
 	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated.
-	
+
 	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
 1. (Optional) Expand **Optional Configuration**, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).

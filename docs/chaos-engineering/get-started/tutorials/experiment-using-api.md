@@ -1,7 +1,7 @@
 ---
-title: Walkthrough- Execute custom chaos experiments using API
+title: Execute custom chaos experiments using API
 sidebar_position: 20
-description: Guide to create and execute custom chaos experiments using API
+description: Guide to create and execute custom chaos experiments using API.
 redirect_from:
   - /tutorials/chaos-experiments/first-chaos-experiment-via-api
 ---
@@ -16,7 +16,7 @@ This tutorial explains how to run chaos experiments on Kubernetes using APIs. Yo
 Chaos experiments target a steady-state system and simulate conditions that might induce failure in components such as infrastructure, networks, and services. For example, a Chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
 
 In a chaos experiment, you typically perform the following tasks:
-1. Define and apply a steady state to the test system and specify its service-level objectives (SLOs). 
+1. Define and apply a steady state to the test system and specify its service-level objectives (SLOs).
 2. Develop a hypothesis on how the system will behave if you inject a specific fault.
 3. Inject the fault.
 4. Observe whether the system continues to meet the SLOs.
@@ -25,7 +25,7 @@ In a chaos experiment, you typically perform the following tasks:
 
 Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. To get started, create a new project or ask your administrator to add you to an existing project. Once you have access, navigate to the **Chaos** tab that shows an overview of all the experiment runs.
 
-![HCE Overview](./static/using-api/hce-overview.png)
+![HCE Overview](./static/first-chaos/hce-overview.png)
 
 ### Get variable inputs
 
@@ -64,13 +64,13 @@ You need the following inputs for variables in the API requests in this tutorial
    x-api-key: $API-KEY-TOKEN
    ```
 
-   ![Authorization Header For API Request](./static/first-chaos-via-api/authorization_header.png)
+   ![Authorization Header For API Request](./static/using-api/authorization_header.png)
 
 :::tip
 
 In order to work with Harness CE Postman collection, fork it under your Postman account and update the required variables.
 
-![Variables In Harness CE Postman Collection UX](./static/first-chaos-via-api/postman_variables.png)
+![Variables In Harness CE Postman Collection UX](./static/using-api/postman_variables.png)
 
 :::
 
@@ -129,7 +129,7 @@ GraphQL variables: `registerInfra`
 
 The above mentioned values are pre-filled in Harness CE Postman collection as shown in the below screenshot:
 
-![Register Chaos Infrastructure](./static/first-chaos-via-api/register_infra.png)
+![Register Chaos Infrastructure](./static/using-api/register_infra.png)
 
 A successful response to infrastructure registration contains details about the registered infra:
 
@@ -287,10 +287,9 @@ Check the value of `isActive` field and ensure it is set to `true`. This means t
 
 Above values are pre-filled in Harness CE Postman Collection as shown below:
 
-![Get Infra Details UX](./static/first-chaos-via-api/get_infra_details.png)
+![Get Infra Details UX](./static/using-api/get_infra_details.png)
 
 To run this API using Harness CE Postman collection, update the value of the `infraID` variable retrieved during `registerInfra` API call.
-
 
 ### Create a demo application and an observability infrastructure
 
@@ -364,7 +363,7 @@ workflow-controller-metrics    ClusterIP      10.106.97.173    <none>        909
 
 To access the target application frontend in your browser, use the `CLUSTER-IP` of the `frontend-external` LoadBalancer service.
 
-![Online Boutique](./static/using-api/online-boutique.png)
+![Online Boutique](./static/first-chaos/online-boutique.png)
 
 To access the Grafana dashboard:
 
@@ -373,7 +372,7 @@ To access the Grafana dashboard:
 
 Before fault execution, all the metrics indicate normal application behavior.
 
-![Grafana App Dashboard](./static/using-api/grafana-app-dashboard.png)
+![Grafana App Dashboard](./static/first-chaos/grafana-app-dashboard.png)
 
 
 ### Construct a chaos experiment using APIs
@@ -382,7 +381,7 @@ You have successfully created and deployed the target application. You can now t
 
 Before injecting chaos, the cart page will be accessible from the frontend, as seen at the `/cart` route.
 
-![Online Boutique App Cart](./static/using-api/online-boutique-app-cart.png)
+![Online Boutique App Cart](./static/first-chaos/online-boutique-app-cart.png)
 
 #### Create the chaos experiment and workflow using APIs
 
@@ -416,7 +415,7 @@ GraphQL variables: `createChaosWorkFlow`
 ```
 {
    "identifiers": {
-    "orgIdentifier": "{{org_id}}",	
+    "orgIdentifier": "{{org_id}}",
     "accountIdentifier": "{{account_id}}",
     "projectIdentifier": "{{project_id}}"
   },
@@ -439,9 +438,7 @@ GraphQL variables: `createChaosWorkFlow`
 ```
 
 :::info
-
 To run this API using Harness CE Postman collection, update the value of the `infraID` variable retrieved using the `registerInfra` API call.
-
 :::
 
 The value for `workflowManifest` field is pre-filled in the Harness CE Postman collection. You will need to update this if you are using a different application, other than boutique.
@@ -596,9 +593,7 @@ A sample workflow manifest is shown below:
 ```
 
 :::info
-
 To use your own workflow manifest instead of the default manifest from the Postman collection, escape the JSON manifest before providing it as a value to the `workflowManifest` variable.
-
 :::
 
 
@@ -621,9 +616,7 @@ A sample response: `createChaosWorkFlow`
 ```
 
 :::info
-
 Make note of the value of the `workflowID`, which will be required for subsequent API calls.
-
 :::
 
 Now, you can inspect the configuration used to create a chaos workflow.
@@ -755,11 +748,11 @@ Copy the value of the `notifyID` field.
 
 You can observe the experiment added to the list of chaos experiments. It would show `Running` status. Choose **Current Execution** to view the detailed execution.
 
-![Experiment Executing](./static/using-api/experiment-executing.png)
+![Experiment Executing](./static/first-chaos/experiment-executing.png)
 
 When the fault is being executed, you can observe the detailed view and the logs of the experiment.
 
-![Detailed Chaos Execution](./static/using-api/detailed-chaos-execution.png)
+![Detailed Chaos Execution](./static/first-chaos/detailed-chaos-execution.png)
 
 You can also see the status of the cart deployment pod. When you execute the below command, it displays all the pods in running state. It indicates that pod delete has deleted the cart pod, and replaced it with a new one, whose container is being created.
 
@@ -790,11 +783,11 @@ workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0              
 
 Consequently, if you try to access the frontend cart page, it throws an error that indicates that the application is unreachable.
 
-![Webpage Unavailable](./static/using-api/webpage-unavailable.png)
+![Webpage Unavailable](./static/first-chaos/webpage-unavailable.png)
 
 You can validate this behavior using the application metrics dashboard. The probe success percentage for the application availability (200 response code) would steeply decrease along with the 99th percentile (green line), queries per second (QPS) and access duration. Also, the mean QPS (yellow line) steeply increases. This is because no pod is available to serve the query requests.
 
-![Application Down Dashboard](./static/using-api/application-down-dashboard.png)
+![Application Down Dashboard](./static/first-chaos/application-down-dashboard.png)
 
 #### Step 3: Observe chaos execution using an API
 
@@ -895,17 +888,17 @@ For instance, a field named `phase` would tell if a particular workflow is still
 
 #### Step 4: Evaluate the experiment run
 
-When the experiment completes execution, you will see a resiliency score of 0%. You will also notice that the pod delete fault step failed. Before analyzing the expriment results, you can check that the application has come back to normal state, and is accessible. You can validate this from the Grafana dashboard where you can see visuals that indicate that chaos duration is complete. 
+When the experiment completes execution, you will see a resiliency score of 0%. You will also notice that the pod delete fault step failed. Before analyzing the expriment results, you can check that the application has come back to normal state, and is accessible. You can validate this from the Grafana dashboard where you can see visuals that indicate that chaos duration is complete.
 
-![App Metrics Normalizing](./static/using-api/app-metrics-normalizing.png)
+![App Metrics Normalizing](./static/first-chaos/app-metrics-normalizing.png)
 
 You can see the chaos result which indicates that the experiment **Failed**, and the probe success percentage is 0%. This happened because the `http-cart-service` probe failed, which is a consequence of the cart pod being unavaialble since you injected chaos (pod delete) into the microservice.
 
-![Experiment Failed Probe](./static/using-api/experiment-failed-probe.png)
+![Experiment Failed Probe](./static/first-chaos/experiment-failed-probe.png)
 
 The failed step specifies "Probe execution result didn't met the passing criteria", which validates HTTP probe failure that you previously defined.
 
-![Fail Step Result](./static/using-api/fail-step-result.png)
+![Fail Step Result](./static/first-chaos/fail-step-result.png)
 
 With that, you have successfully executed your first vhaos experiment using chaos APIs. 
 
