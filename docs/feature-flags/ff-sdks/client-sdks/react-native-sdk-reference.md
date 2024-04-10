@@ -14,14 +14,7 @@ import Smpno from '../shared/note-smp-not-compatible.md'
 
 import Closeclient from '../shared/close-sdk-client.md'
 
-
 <Smpno />
-
-# Deprecation Notice
-This React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained.
-We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK,
-please refer to the [React SDK Documentation](/docs/feature-flags/ff-sdks/client-sdks/react-client.md).
-
 
 This topic describes how to use the Harness Feature Flags SDK for your React Native application. 
 
@@ -42,42 +35,33 @@ Latest SDK version can be found on [GitHub Release Page](https://github.com/harn
 
 To use this SDK, make sure you: 
 
-* Install [React 16](https://reactjs.org/) or newer.
+* Install [React 17](https://react.dev/learn/installation) or newer.
 * Install [React Native 0.63](https://reactnative.dev/docs/environment-setup) or newer.
+* Install [Node.js 16](https://nodejs.org/en/download) or a newer version. 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-react-native-client-sdk)
-* Create a React Native application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-react-native-client-sdk).
+
+To follow along with our test code sample, make sure you've done the following:
+
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+* Create a project using [Expo](https://expo.dev/tools#cli).
 
-## Install the SDK
+## Installing the SDK
 
-To set up the React Native SDK, complete the following steps:
+To set up the React Native SDK, you have the following options:
 
-### Install directly to the package.json file
-
-Install the React Native SDK by adding it to your project's `package.json` file:
-
-
-```
-"ff-react-native-client-sdk": "1.0.2",
-```
-### Install using npm
-
-You can also use `npm install`:
-
+ - You can install the React Native SDK using `npm-install` by running the following cammand in your terminal:
 
 ```
 $ npm install --save ff-react-native-client-sdk
 ```
-### Install on IOS
 
-For installing on iOS, run the following commands from the project root folder:
-
+ - You can also install with yarn by running the followiung command in your terminal:
 
 ```
-$ cd ios  
-$ pod install
+yarn add @harnessio/ff-react-native-client-sdk
 ```
+
 ## Initialize the SDK
 
 To initialize the React Native SDK, you need to:
