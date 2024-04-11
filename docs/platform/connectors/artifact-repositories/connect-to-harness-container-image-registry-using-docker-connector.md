@@ -17,11 +17,11 @@ By default, Harness uses the built-in Harness Image Docker connector with anonym
 * [Use credentials for specific stages](#use-credentials-to-pull-harness-images-for-specific-stages)
 * [Pull images from a private registry](#pull-harness-images-from-a-private-registry)
 
-All of these options require [permissions](../../role-based-access-control/permissions-reference) to create, edit, and view connectors at the account [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
+To configure any of these options, you need [permissions](../../role-based-access-control/permissions-reference) to create, edit, and view connectors at the account [scope](/docs/platform/role-based-access-control/rbac-in-harness.md#permissions-hierarchy-scopes).
 
 :::tip Rate Limiting
 
-To prevent rate limiting or throttling issues when pulling images, configure the built-in Harness Image Docker connector to use credentials (instead of anonymous access) and pull images from GCR (instead of Docker Hub). For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
+To prevent rate limiting or throttling issues when pulling images, configure the built-in Harness Image Docker connector to use credentials (instead of anonymous access) and pull images from GCR or ECR (instead of Docker Hub). For instructions, go to [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
 
 :::
 
@@ -38,9 +38,20 @@ If you don't want to change the behavior for your entire account, you can [Use c
 
 3. Select **Edit Details**.
 4. Select **Continue** to go to the **Details** settings.
-5. **Recommended:** To pull images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) instead of Docker Hub, select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `gcr.io/gcr-prod` for **Docker Registry URL**.
-   You can also pull images from Docker Hub by selecting **Docker Hub** and entering `https://registry.hub.docker.com`.
+5. For **Provider Type** and **URL**, do one of the following:
+
+   * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws` for **Docker Registry URL**.
+   * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
+
 6. For **Authentication**, select **Username and Password**, and provide a username and token to access Docker Hub or GCR,depending on the **Docker Registry URL**. The token needs read, write, and delete permissions.
+
+   :::tip
+
+   You can use anonymous access to pull Harness images from GCR, ECR, or Docker Hub. If you want to use anonymous access, select **Anonymous** for **Authentication**.
+
+   :::
+
 7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
    * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
@@ -50,8 +61,6 @@ If you don't want to change the behavior for your entire account, you can [Use c
 8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
    If the connectivity test fails, make sure your connector's credentials are configured correctly and that the token has the necessary permissions.
-
-   ![](../static/connect-to-harness-container-image-registry-using-docker-connector-48.png)
 
 ## Use credentials to pull Harness images for specific stages
 
@@ -73,25 +82,27 @@ If you want to change the behavior for your entire account, you can [configure H
 
    ![](../static/connect-to-harness-container-image-registry-using-docker-connector-47.png)
 
-4. Select **Continue**.
-5. For **Provider Type**, select **Other (Docker V2 compliant)**.
-6. For **Docker Registry URL**, enter `gcr.io/gcr-prod`.
-7. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR. The token needs **Read, Write, Delete** permissions.
-8. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
+4. Select **Continue** to go to the **Details** settings.
+5. For **Provider Type** and **URL**, do one of the following:
+
+   * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
+   * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws` for **Docker Registry URL**.
+   * To pull images from Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
+
+6. For **Authentication**, select **Username and Password**, and provide a username and token to access GCR, ECR, or Docker Hub. The token needs **Read, Write, Delete** permissions.
+7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
    * If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you must select **Connect through Harness Platform**.
    * If you select **Connect through a Harness Delegate**, you can allow Harness to use any available delegate or specify delegates based on tags. For more information about how Harness selects delegates, go to [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview.md) and [Use delegates selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
    * For delegate installation instructions, go to [Delegate installation overview](../../delegates/install-delegates/overview).
 
-9. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
+8. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
    If the connectivity test fails, make sure your connector's credentials are configured correctly and that the token has the necessary permissions.
 
-   ![](../static/connect-to-harness-container-image-registry-using-docker-connector-48.png)
+9. In the **Build** stage where you want to use your Docker connector, go to the [Infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure), and select your Docker connector in the **Override Image Connector** field.
 
-10. In the **Build** stage where you want to use your Docker connector, go to the [Infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure), and select your Docker connector in the **Override Image Connector** field.
-
-   When the pipeline runs, Harness will use the specified connector to download images from the Harness project on GCR.
+   When the pipeline runs, Harness will use the specified connector to download Harness images.
 
    ![](../static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
 
@@ -103,7 +114,7 @@ You can also [use a private registry for STO scanner images](/docs/security-test
 
 ### Download Harness images to your registry
 
-1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
+1. Download the images you need from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), perform any tests or validations necessary for your organization's security policies, and then store the images in your private registry.
 
    :::warning
 
@@ -125,7 +136,7 @@ Create a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-
 
 4. Select **Continue**.
 5. For **Provider Type**, select **Other (Docker V2 compliant)**.
-6. For **Docker Registry URL**, enter the path for your container registry. For example, the path for the public Harness GCR project is `gcr.io/gcr-prod`.
+6. For **Docker Registry URL**, enter the path for your container registry.
 7. For **Authentication**, select **Username and Password**, and provide a username and token to access your registry. The token needs **Read, Write, Delete** permissions.
 8. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
 
@@ -154,12 +165,12 @@ When selecting the connector to use to pull images, Harness follows this hierarc
 
 ## Deprecation notice: app.harness Docker registry
 
-[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
+[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
 
-You will be impacted by this deprecation if:
+The deprecation could impact you if:
 
-* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to the Harness project on GCR](#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, modify the target image registry by following the steps in [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
+* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
 * You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
 
 ## Troubleshoot Harness images
