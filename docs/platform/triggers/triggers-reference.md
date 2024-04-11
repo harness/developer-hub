@@ -421,7 +421,7 @@ In **Pipeline Input** select or create the input set to use when the trigger exe
 
 Here's a sample expression to select input sets, `<+<+trigger.payload.input_set_refs>.split(",")>`.
 
-Here's is a sample Trigger YAML:  
+Here's is a sample trigger YAML:  
 
 ```yaml
 trigger:
