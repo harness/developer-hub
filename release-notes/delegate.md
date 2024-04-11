@@ -70,6 +70,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2024
 
+### Version 24.04.82705 <!--  April 11, 2024 -->
+
+#### Hotfix
+
+- Added support for network load balancers in ASG Blue Green Deployments. (CDS-95510, ZD-60182)
+
 ### Version 24.04.82603 <!--  April 4, 2024 -->
 
 #### Hotfix
