@@ -1,7 +1,7 @@
 ---
 title: AWS SAM
 description: Deploy SAM templates to AWS.
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 Harness supports AWS SAM (Serverless Application Model) deployments. SAM is an open-source framework provided by Amazon Web Services (AWS) that simplifies the deployment and management of serverless applications on AWS. It is an extension of AWS's infrastructure-as-code service, CloudFormation.
