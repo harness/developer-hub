@@ -153,9 +153,13 @@ For information about other Lead Time reports, go to [Lead time reports](/docs/s
 
 This metric refers to the amount of time that passes from the beginning of a development cycle (like the start of a sprint or when a feature is first planned) to the first commit in the SCM. Essentially, it measures how long it takes to start actual coding work after a task is defined.
 
+![](./static/2.png)
+
 #### PR Creation Time
 
 This is the duration between the first commit in a repository and the creation of the first pull request that includes this commit. It reflects how promptly changes are proposed for review after initial development.
+
+![](./static/3.png)
 
 <!--
 
@@ -168,6 +172,8 @@ This metric can be defined as either:
 
 This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
 
+![](./static/4.png)
+
 <!-- Users can choose to calculate this as either:
   
 * Time from PR Creation to First Comment: This metric measures the duration from the moment a pull request is created to the time the first comment is made on it. It's an indicator of the engagement and response time of the team or reviewers.
@@ -177,6 +183,8 @@ This metric measures the duration from the moment a pull request is created to t
 #### Approval Time
 
 This measures the time taken from the creation of a pull request to its first approval. It's a gauge of how quickly a PR is reviewed and approved by the team.
+
+![](./static/5.png)
 
 <!--
 
@@ -188,6 +196,8 @@ This metric can be defined as either:
 #### Merge Time
 
 This is the time taken to merge the first pull request after it has been created. It indicates the speed at which changes are integrated into the main branch.
+
+![](./static/6.png)
 
 <!--
 
