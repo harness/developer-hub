@@ -471,7 +471,6 @@ Here's a sample trigger payload:
 
 **Important notes when using expressions**
 * If the value provided for the input set YAML reference is an expression, Harness checks for the key `input_set_refs` in the trigger payload and use the value provided there.
-* If the value provided for inputSetRefs is empty, Harness checks if `inputYaml` is an expression. If yes, Harness resolves it from the trigger payload with the key `input_yaml`.
 * RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers. 
 * Limitation: You cannot pass the stages or inputRefs as an expression in the trigger payload.
 
