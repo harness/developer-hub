@@ -33,10 +33,14 @@ Latest SDK version can be found on [GitHub Release Page](https://github.com/harn
 
 ## Prerequisites
 
+:::info-note
+The Harness Feature Flag React Native SDK is compatible with Expo. 
+Earlier versions of the Harness Feature Flag React Native SDK may not be compatible with the Expo managed workflow because they use native modules. We recommend upgrading to the 10.x
+:::
+
 To use this SDK, make sure you: 
 
 * Install [React 17](https://react.dev/learn/installation) or newer.
-* Install [React Native 0.63](https://reactnative.dev/docs/environment-setup) or newer.
 * Install [Node.js 16](https://nodejs.org/en/download) or a newer version. 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-react-native-client-sdk)
 
@@ -62,7 +66,7 @@ $ npm install --save ff-react-native-client-sdk
 yarn add @harnessio/ff-react-native-client-sdk
 ```
 
-## Initialize the SDK
+### Initialize the SDK
 
 To initialize the React Native SDK, you need to:
 
@@ -171,8 +175,8 @@ Complete the initialization using the apiKey, cfConfiguration, and cfTarget vari
 ```
 const result = await cfClientInstance.initialize(apiKey, cfConfiguration, cfTarget);
 ```
-### Sample of initializing the SDK
 
+### Code Sample of initializing the SDK
 
 ```
 import cfClientInstance, {CfConfiguration, CfTarget} from 'ff-react-native-client-sdk';  
@@ -189,6 +193,365 @@ const apiKey = "YOUR_API_KEY";
   
 const result = await cfClientInstance.initialize(apiKey, cfConfiguration, cfTarget);
 ```
+
+### Code Samples Using Expo
+
+The following is a complete code example using Expo that you can use to test the `harnessappdemodarkmode` flag you created on the Harness Platform. 
+
+When you run the code, it will:
+
+ - Render a loading screen
+ - Connect to the FF service
+ - Retrieve all flags
+ - Access a flag using the useFeatureFlag hook
+ - Access several flags using the useFeatureFlags hook
+
+The following code can be placed in the `src/App.js` file:
+
+```
+import { StyleSheet, Text, View } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+
+import {
+  FFContextProvider,
+  useFeatureFlag,
+  useFeatureFlags
+} from '@harnessio/ff-react-native-client-sdk'
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <FFContextProvider
+        apiKey="YOUR_API_KEY"
+        target={{
+          identifier: 'reactnativeclientsdk',
+          name: 'ReactNativeClientSDK'
+        }}
+      >
+        <SingleFeatureFlag />
+        <MultipleFeatureFlags />
+      </FFContextProvider>
+
+      <StatusBar style="auto" />
+    </View>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'orange',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: '100%'
+  }
+})
+
+function SingleFeatureFlag() {
+  const flagValue = useFeatureFlag('harnessappdemodarkmode')
+
+  return (
+    <Text>The value of "harnessappdemodarkmode" is {JSON.stringify(flagValue)}</Text>
+  )
+}
+
+function MultipleFeatureFlags() {
+  const flags = useFeatureFlags()
+
+  return (
+    <>
+      <Text>Here are all our flags:</Text>
+      <Text>{JSON.stringify(flags, null, 2)}</Text>
+    </>
+  )
+}
+```
+
+## Using The React Native SDK
+
+### Async mode
+
+By default, the React Native Client SDK will block rendering of children until the initial load of feature flags has completed. 
+
+This ensures that children have immediate access to all flags when they are rendered. 
+
+However, in some circumstances it may be beneficial to immediately render the application and handle display of loading on a component-by-component basis. 
+
+The React Native Client SDK's asynchronous mode allows this by passing the optional async prop when connecting with the `FFContextProvider`.
+
+### Caching evaluations
+In practice, flags rarely change and so it can be useful to cache the last received evaluations from the server to allow your application to get started as fast as possible. Setting the cache option as true or as an object (see interface below) will allow the SDK to store its evaluations to localStorage and retrieve at startup. 
+
+This lets the SDK get started near instantly and begin serving flags, while it carries on authenticating and fetching up-to-date evaluations from the server behind the scenes.
+
+```
+<FFContextProvider
+  apiKey="YOUR_API_KEY"
+  target={{
+    identifier: 'reactclientsdk',
+    name: 'ReactClientSDK'
+  }}
+  options={{
+    cache: true
+  }}
+>
+  <MyApp />
+</FFContextProvider>
+The cache option can also be passed as an object with the following options.
+
+interface CacheOptions {
+  // maximum age of stored cache, in ms, before it is considered stale
+  ttl?: number
+  // storage mechanism to use, conforming to the Web Storage API standard, can be either synchronous or asynchronous
+  // defaults to localStorage
+  storage?: AsyncStorage | SyncStorage
+}
+
+interface SyncStorage {
+  getItem: (key: string) => string | null
+  setItem: (key: string, value: string) => void
+  removeItem: (key: string) => void
+}
+
+interface AsyncStorage {
+  getItem: (key: string) => Promise<string | null>
+  setItem: (key: string, value: string) => Promise<void>
+  removeItem: (key: string) => Promise<void>
+}
+```
+
+### Overriding the Internal Logger
+
+By default, the React Client SDK will log errors and debug messages using the `console` object. In some cases, it can be useful to instead log to a service or silently fail without logging errors.
+
+```
+const myLogger = {
+  debug: (...data) => {
+    // do something with the logged debug message
+  },
+  info: (...data) => {
+    // do something with the logged info message
+  },
+  error: (...data) => {
+    // do something with the logged error message
+  },
+  warn: (...data) => {
+    // do something with the logged warning message
+  }
+}
+
+return (
+  <FFContextProvider
+    apiKey="YOUR_API_KEY"
+    target={{
+      identifier: 'reactclientsdk',
+      name: 'ReactClientSDK'
+    }}
+    options={{
+      logger: myLogger
+    }}
+  >
+    <MyApp />
+  </FFContextProvider>
+)
+```
+
+## Using the API
+
+### FFContextProvider
+The `FFContextProvider` component is used to set up the React context to allow your application to access feature flags using the `useFeatureFlag` and `useFeatureFlags` hooks and `withFeatureFlags` [High Order Components](https://legacy.reactjs.org/docs/higher-order-components.html). At minimum, it requires the `apiKey` you have set up in your Harness Feature Flags account, and the `target`. You can think of a `target` as a user.
+
+The `FFContextProvider` component also accepts an options object, a `fallback` component, an array of `initialEvaluations`, an `onError` handler, and can be placed in Async mode using the `async` prop. The fallback component will be displayed while the SDK is connecting and fetching your flags. The `initialEvaluations` prop allows you pass an array of evaluations to use immediately as the SDK is authenticating and fetching flags. The `onError` prop allows you to pass an event handler which will be called whenever a network error occurs.
+
+```
+import { Text } from 'react-native'
+import { FFContextProvider } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  return (
+    <FFContextProvider
+      async={false} // OPTIONAL: whether or not to use async mode
+      apiKey="YOUR_API_KEY" // your SDK API key
+      target={{
+        identifier: 'targetId', // unique ID of the Target
+        name: 'Target Name',  // name of the Target
+        attributes: { // OPTIONAL: key/value pairs of attributes of the Target
+          customAttribute: 'this is a custom attribute',
+          anotherCustomAttribute: 'this is something else'
+        }
+      }}
+      fallback={<Text>Loading...</Text>} // OPTIONAL: component to display when the SDK is connecting
+      options={{ // OPTIONAL: advanced configuration options
+        cache: false,
+        baseUrl: 'https://url-to-access-flags.com',
+        eventUrl: 'https://url-for-events.com',
+        streamEnabled: true,
+        debug: false,
+        eventsSyncInterval: 60000
+      }}
+      initialEvaluations={evals} // OPTIONAL: array of evaluations to use while fetching
+      onError={handler} // OPTIONAL: event handler to be called on network error
+    >
+      <CompontToDisplayAfterLoad /> <!-- component to display when Flags are available -->
+    </FFContextProvider>
+  )
+}
+```
+
+### useFeatureFlag 
+
+The `useFeatureFlag` hook returns a single named flag value. An optional second argument allows you to set what value will be returned if the flag does not have a value. By default `useFeatureFlag` will return `undefined` if the flag cannot be found.
+
+:::info-note
+When rendered in Async mode, the default value will be returned until the flags are retrieved. Consider using the `useFeatureFlagsLoading` hook to determine when the SDK has finished loading.
+:::
+
+```
+import { Text } from 'react-native'
+import { useFeatureFlag } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  const myFlagValue = useFeatureFlag('flagIdentifier', 'default value')
+
+  return <Text>My flag value is: {myFlagValue}</Text>
+}
+```
+
+The `useFeatureFlags` hook also eturns an object of flag identifier/flag value pairs. You can pass an array of flag identifiers or an object of flag identifier/default value pairs. If an array is used and a flag cannot be found, the returned value for the flag will be undefined. If no arguments are passed, all flags will be returned.
+
+```
+import { Text } from 'react-native'
+import { useFeatureFlag } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  const myFlagValues = useFeatureFlags()
+
+  return (
+    <>
+      <Text>My flag values are:</Text>
+      <Text>{JSON.stringify(myFlagValues, null, 2)}</Text>
+    </>
+  )
+}
+```
+
+#### Getting A Subset Of Flags
+
+```
+const myFlagValues = useFeatureFlags(['flag1', 'flag2'])
+```
+
+#### Getting A Subset Of Flags with Custom Default Values
+
+```
+const myFlagValues = useFeatureFlags({
+  flag1: 'defaultForFlag1',
+  flag2: 'defaultForFlag2'
+})
+```
+
+### usingFeatureFlagsLoading
+
+The `useFeatureFlagsLoading` hook returns a boolean value indicating whether the SDK is currently loading flags from the server.
+```
+import { Text } from 'react-native'
+import {
+  useFeatureFlagsLoading,
+  useFeatureFlags
+} from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  const isLoading = useFeatureFlagsLoading()
+  const flags = useFeatureFlags()
+
+  if (isLoading) {
+    return <Text>Loading...</Text>
+  }
+
+  return (
+    <>
+      <Text>My flag values are:</Text>
+      <Text>{JSON.stringify(flags, null, 2)}</Text>
+    </>
+  )
+}
+```
+
+### useFeatureFlagsClient
+
+The React Native Client SDK internally uses the Javascript Client SDK to communicate with Harness. Sometimes it can be useful to be able to access the instance of the Javascript Client SDK rather than use the existing hooks or higher-order components (HOCs). The `useFeatureFlagsClient` hook returns the current Javascript Client SDK instance that the React Native Client SDK is using. This instance will be configured, initialized and have been hooked up to the various events the Javascript Client SDK provides.
+
+```
+import { Text } from 'react-native'
+import {
+  useFeatureFlagsClient,
+  useFeatureFlagsLoading
+} from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  const client = useFeatureFlagsClient()
+  const loading = useFeatureFlagsLoading()
+
+  if (loading || !client) {
+    return <Text>Loading...</Text>
+  }
+
+  return (
+    <Text>
+      My flag value is: {client.variation('flagIdentifier', 'default value')}
+    </Text>
+  )
+}
+```
+
+### ifFeatureFlag
+
+The `ifFeatureFlag` higher-order component (HOC) wraps your component and conditionally renders only when the named flag is enabled or matches a specific value.
+
+```
+import { Text } from 'react-native'
+import { ifFeatureFlag } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  return <Text>This should render if the flag is on</Text>
+}
+
+const MyConditionalComponent = ifFeatureFlag('flag1')(MyComponent)
+```
+
+You can, then, use `MyConditionalComponent` as a normal component, and only render if `flag1`'s value is true.
+
+#### Conditionally with a specific value
+
+```
+import { Text } from 'react-native'
+import { ifFeatureFlag } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  return <Text>This should render if the flag evaluates to 'ABC123'</Text>
+}
+
+const MyConditionalComponent = ifFeatureFlag('flag1', { matchValue: 'ABC123' })(
+  MyComponent
+)
+```
+
+
+
 ## Evaluate a Flag
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
@@ -200,28 +563,28 @@ There are different methods for the different Variation types and for each metho
 * Identifier of the Flag you want to evaluate
 * The default Variation
 
-#### Evaluate a boolean Variation
+### Evaluate a boolean Variation
 
 
 ```
 //get boolean evaluation  
 let evaluation = await client.boolVariation("demo_bool_evaluation", false)
 ```
-#### Evaluate a number Variation
+### Evaluate a number Variation
 
 
 ```
 //get number evaluation  
 let numberEvaluation = await client.numberVariation("demo_number_evaluation", 0)
 ```
-#### Evaluate a string Variation
+### Evaluate a string Variation
 
 
 ```
 //get string evaluation  
 let stringEvaluation = await client.stringVariation("demo_string_evaluation", "default");
 ```
-#### Evaluate a JSON Variation
+### Evaluate a JSON Variation
 
 
 ```
@@ -235,7 +598,6 @@ let jsonEvaluation = await client.jsonVariation("demo_json_evaluation", {});
 Use `client.registerListener` to register a listener for different events that might be triggered by SDK.
 
 The possible events and their responses are outlined in the following table:
-
 
 
 |  |  |
@@ -327,7 +689,8 @@ unregisterListener(listener: (type: string, flags: any) => void)
 ```
 destroy()
 ```
-## Sample code for a React application
+
+### Sample code for a React application
 
 Here is a sample code for using Harness Feature Flag SDKs with a React Native application. To learn more about using the sample React application, go to the [React Native SDK GitHub repository](https://github.com/harness/ff-react-native-client-sdk).
 
