@@ -408,7 +408,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-when executing pipelines using triggers, you can select stages and provide input sets dynamically. 
+When executing pipelines using triggers, you can select stages and provide input sets dynamically. 
 
 Select **Pipeline Stages** to execute pipelines using triggers. This can be a fixed value or an expression. 
 If you're using fixed value, all stages in the pipeline are displayed. Select a stage or all stages that you want to execute using the trigger.
