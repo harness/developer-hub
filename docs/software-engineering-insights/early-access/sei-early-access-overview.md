@@ -2,7 +2,7 @@
 title: Early access features on Harness SEI
 description: List of all the early access (beta) features that are available on the Harness SEI Module.
 sidebar_position: 1
-sidebar_label: Overview
+sidebar_label: Early access features
 ---
 
 Some Harness SEI features are released behind feature flags to get feedback from a subset of customers before releasing the features to general availability.

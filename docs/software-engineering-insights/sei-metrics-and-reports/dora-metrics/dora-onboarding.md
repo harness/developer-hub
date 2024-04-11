@@ -1,5 +1,5 @@
 ---
-title: DORA Onboarding Guide
+title: DORA Overview
 description: The central hub to learn everything about the DORA metrics on Harness SEI
 sidebar_position: 5
 ---

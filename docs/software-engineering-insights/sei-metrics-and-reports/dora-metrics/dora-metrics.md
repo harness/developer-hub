@@ -37,12 +37,22 @@ To add the **Deployment Frequency** widget to Insights:
 1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **Deployment Frequency** widget.
-4. Configure the widget settings as desired.
+
+![](./static/df-1.png)
+
+4. Configure the widget settings as desired, such as the enable/disable **DORA grading** and **Collection Level Filters**.
+
+![](./static/df-2.png)
+
+:::info
+Editing the Collection Level Filters will reflect the changes in the Collection Settings.
+:::
+
 5. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-The widget automatically detects the relevant Workflow profile based on the Collections associated with the Insight.
+![](./static/df-3.png)
 
-![](./static/widget-place.png)
+The widget automatically detects the Workflow profile associated with the Collection under which the Insight is created and adds the widget to the Insight.
 
 ### Deployment Frequency calculation
 
@@ -122,15 +132,18 @@ The **Lead Time for Changes** widget aggregates lead time across your issue mana
 
 To add the **Lead Time for Changes** widget to Insights:
 
-1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+1. Go to the **Insight** where you want to add the widget. Make sure you are in the correct project.
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **Lead Time for Changes** widget.
+
+![](./static/leadtime-1.png)
+
 4. Configure the **Filters** for the widget (e.g., `Issue Resolved In` for the Last Quarter)
 5. Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
 6. Under the **Settings** tab, specify the associated **Workflow profile**.
 7. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**.
 8. On the **Settings** tab, select the relevant [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile).
-9. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
+9.  Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
 For information about other Lead Time reports, go to [Lead time reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/lead-time-reports).
 
