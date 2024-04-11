@@ -549,7 +549,7 @@ const MyConditionalComponent = ifFeatureFlag('flag1', { matchValue: 'ABC123' })(
 
 You can then use `MyConditionalComponent` as a normal component, and only render if flag1's value matches the passed condition.
 
-#### Loading fallback when in async mode
+#### Load fallback when in async mode
 
 If Async mode is used, by default the component will wait for flags to be retrieved before showing. This behaviour can be overridden by passing an element as `loadingFallback`; when loading the `loadingFallback` will be displayed until the flags are retrieved, at which point the component will either show or hide as normal.
 
