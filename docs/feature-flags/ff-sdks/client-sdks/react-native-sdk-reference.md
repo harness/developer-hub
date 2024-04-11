@@ -272,7 +272,7 @@ By default, the React Native Client SDK will block rendering of children until t
 
 This ensures that children have immediate access to all flags when they are rendered. 
 
-However, in some circumstances it may be beneficial to immediately render the application and handle display of loading on a component-by-component basis. 
+However, in some circumstances it might be beneficial to immediately render the application and handle display of loading on a component-by-component basis. 
 
 The React Native Client SDK's asynchronous mode allows this by passing the optional async prop when connecting with the `FFContextProvider`.
 
