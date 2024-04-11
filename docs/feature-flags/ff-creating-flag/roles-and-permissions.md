@@ -12,12 +12,18 @@ Custom roles and permissions with Harness Feature flags offer precise methods of
 
 Some examples of what you can do with custom roles and permissions include: 
 
- - Limiting the number of users that can create a flag, 
- - creating rules that allow users to edit the rules of a flag in certain environments, 
- - assigning create permissions while removing editing permissions for users,
- - editing permissions within resource groups
+ - Limiting the number of users that can create a flag
+ - creating rules that allow users to edit the rules of a flag in certain environments
+ - assigning create permissions while removing editing permissions for users
+ - editing permissions within resource groups.
 
-### Create/Edit Permissions Of A Flag
+With Harness Feature Flags, each
+
+## Roles
+
+<!-- to do-->
+
+## Permissions 
 
 With **Create Permissions** and **Edit Permissions**, you have the ability to both create and edit all aspects of a flag including within tagging and resource groups. 
 
@@ -33,6 +39,19 @@ The permissions have now be split further. This gives administrators more choice
  - Users can have permissions to edit flags but are restricted to certain environments. 
 
 Administrators are able to control what the users can configure within various environments and helps to provide further alignment with security compliance around your products. 
+
+### Create Permission
+
+<!-- to do. will include a how to and screen shot -->
+
+### Edit Configuration Permission
+
+<!-- to do. will include a how to and screen shot -->
+
+### Edit Rule Permission
+
+<!-- to do. will include a how to and screen shot -->
+
 
 #### Editing Permissions Of A Flag
 

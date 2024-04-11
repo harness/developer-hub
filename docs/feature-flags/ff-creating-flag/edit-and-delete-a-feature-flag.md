@@ -113,30 +113,3 @@ To delete an archived flag:
 1. Next to the flag you want to delete, select **more options** (**︙**), and then select **Delete**.
 1. On the confirmation screen, select **Delete**.
 
-### Create/Edit Permissions Of A Flag
-
-With **Create Permissions** and **Edit Permissions**, you have the ability to both create and edit all aspects of a flag including within tagging and resource groups. 
-
-Prior to this update, the permission of users were limited to: 
-
- - **Toggle**: User is able to toggle a flag
- - **Create/Edit**: Users can create a flag, and edit the flag
- - **Delete**: Users can delete a flag
-
-The permissions have now be split further. This gives administrators more choices to apply more defined rules on what users are able to do within their environments in Harness. Some examples include:
-
- - Users can have permissions to create flags but not be able to edit them in certain environments. 
- - Users can have permissions to edit flags but are restricted to certain environments. 
-
-Administrators are able to control what the users can configure within various environments and helps to provide further alignment with security compliance around your products. 
-
-#### Editing Permissions Of A Flag
-
-   ![The Project Settings pages in Harness](./static/ff-project-settings.png)
-1. Within the Harness UI, scroll down to projects on the left hand side of your screen. 
-2. Under Project Settings, you'll find a line of tabs on the top of the screen. Select *Access Control*.
-3. <!-- Personal Note: Need to confirm steps -->
-
-#### Editing Permissions Within A Resource Group
-
-<!-- Personal Note: Need to confirm these steps in QA -->
