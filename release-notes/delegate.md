@@ -1,7 +1,7 @@
 ---
 title: Delegate release notes
 sidebar_label: Delegate
-date: 2024-04-04T10:00
+date: 2024-04-11T10:00
 sidebar_position: 4
 ---
 
@@ -74,7 +74,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Hotfix
 
-- Added support for network load balancers in ASG Blue Green Deployments. (CDS-95510, ZD-60182)
+- Added support for network load balancers in ASG Blue Green deployments. (CDS-95510, ZD-60182)
 
 ### Version 24.04.82603 <!--  April 4, 2024 -->
 
