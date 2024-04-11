@@ -75,7 +75,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. (PL-47914)
+- Slack channel notifications failed due to an error related to explicitly setting the Host header as `hooks.slack.com`. We have removed the explicit Host header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue. (PL-47914)
 
 - In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. The name of a user will be sanitized if it does not follow Harness naming conventions during user addition flows. (PL-47614)
 
