@@ -39,7 +39,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.26.1
 
- - Replace `btoa` usage with custom `base64` encoding to handle non-`ascii` characters. (FFM-11103)
+ - Replace `btoa` usage with custom Base64 encoding to handle non-ASCII characters. (FFM-11103, ZD-60634)
 
 ### .NET SDK
 
