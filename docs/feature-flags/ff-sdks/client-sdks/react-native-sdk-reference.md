@@ -191,7 +191,7 @@ const apiKey = "YOUR_API_KEY";
 const result = await cfClientInstance.initialize(apiKey, cfConfiguration, cfTarget);
 ```
 
-### Code Samples Using Expo
+### Code samples using Expo
 
 The following is a complete code example using Expo that you can use to test the `harnessappdemodarkmode` flag you created on the Harness Platform. 
 
