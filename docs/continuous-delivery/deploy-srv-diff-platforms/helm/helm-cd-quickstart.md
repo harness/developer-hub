@@ -130,7 +130,7 @@ For detailed steps on Native Helm deployment, go to [Native Helm deployment](/do
 ### Cons
 
 - Versioning: Native Helm does not version deployments.
-- No progressive deployment support. Also, Blue Green or Canary deployment types are not supported (coming soon).
+- No progressive deployment support. Also, Blue/Green or Canary deployment types are not supported (coming soon).
 
 ### Configuring Native Helm 
 
