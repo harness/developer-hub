@@ -530,7 +530,7 @@ const MyConditionalComponent = ifFeatureFlag('flag1')(MyComponent)
 
 You can, then, use `MyConditionalComponent` as a normal component, and only render if `flag1`'s value is true.
 
-#### Conditionally with a specific value
+#### Use conditions with a specific value
 
 ```
 import { Text } from 'react-native'
