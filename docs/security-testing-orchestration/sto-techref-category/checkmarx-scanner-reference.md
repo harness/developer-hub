@@ -168,19 +168,16 @@ import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.
 <StoSettingToolProjectName />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful arguments include:
+Use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with flags such as:
 
 * `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
 * `-LocationPathExclude`— Exclude one or more paths from the scan.
@@ -190,6 +187,9 @@ You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resou
 
 <!-- https://harness.atlassian.net/browse/STO-7006  -->
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 ### Running incremental scans with Checkmarx
 

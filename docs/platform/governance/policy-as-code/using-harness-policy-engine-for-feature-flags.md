@@ -8,8 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::note
 
 :::important
+
 Currently, this feature is behind the Feature Flags `CUSTOM_POLICY_STEP` or `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
