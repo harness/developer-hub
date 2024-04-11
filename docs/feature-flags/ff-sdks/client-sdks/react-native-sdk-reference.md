@@ -33,11 +33,6 @@ Latest SDK version can be found on [GitHub Release Page](https://github.com/harn
 
 ## Prerequisites
 
-:::info-note
-The Harness Feature Flag React Native SDK is compatible with Expo. 
-Earlier versions of the Harness Feature Flag React Native SDK may not be compatible with the Expo managed workflow because they use native modules. We recommend upgrading to the 10.x
-:::
-
 To use this SDK, make sure you: 
 
 * Install [React 17](https://react.dev/learn/installation) or newer.
@@ -84,6 +79,7 @@ Use the following command to import the `cfClientInstance` base instance:
 ```
 import cfClientInstance from 'ff-react-native-client-sdk';
 ```
+
 ### Add your Client SDK Key
 
 To connect to the correct Environment that you set up on the Harness Platform, you need to add the Client SDK Key from that Environment. Input the Client SDK Key into the `apiKey` parameter, for example:
@@ -92,6 +88,7 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 ```
 const apiKey = "YOUR_API_KEY";
 ```
+
 ### Add a Target
 
 <details>
