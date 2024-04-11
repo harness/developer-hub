@@ -418,7 +418,7 @@ function MyComponent() {
 }
 ```
 
-The `useFeatureFlags` hook also eturns an object of flag identifier/flag value pairs. You can pass an array of flag identifiers or an object of flag identifier/default value pairs. If an array is used and a flag cannot be found, the returned value for the flag will be undefined. If no arguments are passed, all flags will be returned.
+The `useFeatureFlags` hook also returns an object of flag identifier/flag value pairs. You can pass an array of flag identifiers or an object of flag identifier/default value pairs. If an array is used and a flag cannot be found, the returned value for the flag will be undefined. If no arguments are passed, all flags will be returned.
 
 ```
 import { Text } from 'react-native'
