@@ -55,7 +55,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### New features and enhancements
 
-- Harness will enable Overrides (V2) in your accounts and migrate your existing Overrides (V1) to the new V2 experience. Contact [Harness Support](mailto:support@harness.io) for queries or assistance regarding the migration.
+- Harness will enable Overrides (V2) in your accounts and migrate your existing Overrides (V1) to the new V2 experience on 20 April, 2024. Contact [Harness Support](mailto:support@harness.io) for queries or assistance regarding the migration.
   
 #### Fixed issues
 
