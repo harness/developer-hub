@@ -6,8 +6,6 @@ helpdocs_topic_id: lbhf2h71at
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from:
-  - /docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart
 ---
 
 This topic shows you how to perform Native Helm deployments using Harness.
