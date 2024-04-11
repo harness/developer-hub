@@ -444,7 +444,7 @@ function MyComponent() {
 const myFlagValues = useFeatureFlags(['flag1', 'flag2'])
 ```
 
-#### Getting A Subset Of Flags with Custom Default Values
+#### Get a subset of flags with custom default values
 
 ```
 const myFlagValues = useFeatureFlags({
