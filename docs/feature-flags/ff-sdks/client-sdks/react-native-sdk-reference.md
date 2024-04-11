@@ -353,7 +353,7 @@ return (
 )
 ```
 
-## Using the API
+## Use the API
 
 ### FFContextProvider
 The `FFContextProvider` component is used to set up the React context to allow your application to access feature flags using the `useFeatureFlag` and `useFeatureFlags` hooks and `withFeatureFlags` [High Order Components](https://legacy.reactjs.org/docs/higher-order-components.html). At minimum, it requires the `apiKey` you have set up in your Harness Feature Flags account, and the `target`. You can think of a `target` as a user.
