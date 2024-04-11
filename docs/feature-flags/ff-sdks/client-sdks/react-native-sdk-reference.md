@@ -317,7 +317,7 @@ interface AsyncStorage {
 }
 ```
 
-### Overriding the Internal Logger
+### Override the internal logger
 
 By default, the React Client SDK will log errors and debug messages using the `console` object. In some cases, it can be useful to instead log to a service or silently fail without logging errors.
 
