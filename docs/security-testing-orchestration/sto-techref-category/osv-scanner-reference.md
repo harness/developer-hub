@@ -114,11 +114,17 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
+Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with with additional flags. 
+
+<!-- 
+
 Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with flags such as:
 
 `--no-ignore --sbom=/path/to/your/sbom.json`
 
 With these flags, the `osv` binary scans vulnerabilities in the specified SBOM even if it's included in a `.gitignore` file.
+
+-->
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 

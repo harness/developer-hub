@@ -122,11 +122,17 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-Use this field to run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with CLI arguments such as: 
+<!--
+
+ such as: 
 
 `--log-opts="-n 1000" --max-target-megabytes 10 --redact`
 
 With these flags, `gitleaks` limits the scan to the last 1000 commits, skips files that are larger than 10 MB, and redacts secrets from the log output. 
+
+-->
+
+Use this field to run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with additional CLI flags.
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
