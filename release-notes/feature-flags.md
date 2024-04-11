@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-04-09T16:19:25
+date: 2024-04-11T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: April 9, 2024
+### Latest Updated: April 11, 2024
 
 ## April 2024
 
@@ -53,6 +53,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  -- improving stream error handling,
  -- increasing the capacity of dictionary, and
  -- additional cache recovery checks. (FFM-11089)
+
+### Node.js SDK 
+
+#### Version 1.7.0
+
+ - Metrics: refactor into class. (FFM-11022)
+ - Applies standard Metrics Enhancements. (FFM-11022)
+ - Fixed issue where only the first prerequisite was being processed. (FFM-9291)
+ - Add `Harness-SDK-Info`, `Harness-AccountID`, or `Harness-EnvironmentID` headers. (FFM-7051)
+ - Add support for custom TLS CAs. (FFM-7017)
 
 ### PHP SDK (Beta)
 
