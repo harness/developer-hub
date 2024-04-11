@@ -200,7 +200,7 @@ When you run the code, it will:
  - Render a loading screen
  - Connect to the FF service.
  - Retrieve all flags.
- - Access a flag using the useFeatureFlag hook
+ - Access a flag using the `useFeatureFlag` hook.
  - Access several flags using the `useFeatureFlags` hook.
 
 The following code can be placed in the `src/App.js` file:
