@@ -4,7 +4,7 @@ description: Set up security in Harness Code
 sidebar_position: 40
 ---
 
-In Harness Code, you can enable security features to protect your code and prevent secrets or vulnerabilities from being pushed to your Git repositories. Blocking secrets and vulnerabilities from being introduced into your repos are crucial for securing your codebase.
+In Harness Code, you can enable security features to protect your code and prevent secrets or vulnerabilities from being pushed to your Git repositories. Blocking secrets and vulnerabilities from being introduced into your repos is crucial for securing your codebase.
 
 ## Enable Secret Scanning
 
@@ -30,7 +30,7 @@ To enable Secret Scanning:
 
 :::warning
 
-Bypassing/ignoring detected secrets is not recommended unless you are absolutely certain the detected secret doesn't represent a potential vulnerability, such as test data containing fake secrets.
+Bypassing/ignoring detected secrets is not recommended unless you are certain the detected secret doesn't represent a potential vulnerability, such as test data containing fake secrets.
 
 :::
 
@@ -43,7 +43,7 @@ For more information and usage instructions for these options, go to the [Gitlea
 
 ## Enable Vulnerability Scanning
 
-In Harness Code, you can prevent vulnerable code from being introduced into your Git repository during a push. Harness Code checks your code against a database of known OSV vulnerabilities. If there are any matches, Harness Code can block the push or displays a warning message to the code author.
+In Harness Code, you can prevent vulnerable code from being introduced into your Git repository during a push. Harness Code checks your code against a database of known OSV vulnerabilities. If there are any matches, Harness Code can block the push or display a warning message to the code author.
 
 You can enable Vulnerability Scanning for individual repositories, and you can choose whether to warn or block detected vulnerabilities. Because some vulnerabilities have a lower severity, you might not want to block every vulnerability. Instead, you can configure Harness Code to warn the code author, rather than block the push.
 
