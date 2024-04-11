@@ -484,7 +484,7 @@ function MyComponent() {
 
 ### useFeatureFlagsClient
 
-The React Native Client SDK internally uses the Javascript Client SDK to communicate with Harness. Sometimes it can be useful to be able to access the instance of the Javascript Client SDK rather than use the existing hooks or higher-order components (HOCs). The `useFeatureFlagsClient` hook returns the current Javascript Client SDK instance that the React Native Client SDK is using. This instance will be configured, initialized and have been hooked up to the various events the Javascript Client SDK provides.
+The React Native Client SDK internally uses the Javascript Client SDK to communicate with Harness. Sometimes it can be useful to be able to access the instance of the Javascript Client SDK rather than use the existing hooks or higher-order components (HOCs). The `useFeatureFlagsClient` hook returns the current Javascript Client SDK instance that the React Native Client SDK is using. This instance will be configured, initialized, hooked up to the various events the Javascript Client SDK provides.
 
 ```
 import { Text } from 'react-native'
