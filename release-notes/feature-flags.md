@@ -35,6 +35,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - Added additional debug logging around evaluation logic. (FFM-11091)
 
+### Javascript SDK
+
+#### Version 1.26.1
+
+ - Replace `btoa` usage with custom `base64` encoding to handle non-`ascii` characters. (FFM-11103)
+
 ### .NET SDK
 
 #### Version 1.6.8
