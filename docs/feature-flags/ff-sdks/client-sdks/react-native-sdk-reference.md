@@ -264,7 +264,7 @@ function MultipleFeatureFlags() {
 }
 ```
 
-## Using The React Native SDK
+## Use the React Native SDK
 
 ### Async mode
 
