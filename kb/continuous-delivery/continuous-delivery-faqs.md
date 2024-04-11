@@ -6804,3 +6804,6 @@ You can use the `<+strategy.identifierPostFix>` expression to get the index of a
 
 #### How do I use Maps in Harness Expressions?
 You can convert the Map to JSON and use the `<+json.select()>` function in order to achieve this. More information can be found in the [JSON and XML Functors documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors/)
+
+#### How do I get the action of my Git Trigger in an expression?
+Git Triggers use Webhooks and where there's a webhook there's usually a payload you can utilize. The action used to trigger the Webhook should also be included in the Git Payload so you can reference the action using `<+trigger.payload.action>`.
