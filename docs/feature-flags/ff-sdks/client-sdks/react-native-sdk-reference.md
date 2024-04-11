@@ -45,7 +45,7 @@ To follow along with our test code sample, make sure you've done the following:
 * [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 * Create a project using [Expo](https://expo.dev/tools#cli).
 
-## Installing the SDK
+## Install the SDK
 
 To set up the React Native SDK, you have the following options:
 
