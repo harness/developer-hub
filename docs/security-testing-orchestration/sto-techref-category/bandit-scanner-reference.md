@@ -107,7 +107,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-You can use this field to run the [`bandit` command](https://bandit.readthedocs.io/en/latest/config.html#bandit-settings) with specific command-line flags. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `-skip testID_1, testID_3, testID_5`
+You can use this field to run the [`bandit` command](https://bandit.readthedocs.io/en/latest/config.html#bandit-settings) with specific command-line flags. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `-skip testID_1, testID_3, testID_5`.
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 

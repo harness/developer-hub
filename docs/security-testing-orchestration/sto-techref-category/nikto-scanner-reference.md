@@ -156,7 +156,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-Use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific flags. For example,the `-Tuning` flag customizes the tests that the scanner runs. The following example excludes a test from the scan: 
+Use this field to run the [nikto scanner](https://manpages.ubuntu.com/manpages/focal/man1/nikto.1.html) with specific flags. For example, the `-Tuning` flag customizes the tests that the scanner runs. The following example excludes a test from the scan: 
 
 `-Tuning x01`
 
