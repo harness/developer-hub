@@ -438,7 +438,7 @@ function MyComponent() {
 }
 ```
 
-#### Getting A Subset Of Flags
+#### Get a subset of flags
 
 ```
 const myFlagValues = useFeatureFlags(['flag1', 'flag2'])
