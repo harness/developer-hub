@@ -174,7 +174,7 @@ CfClient.Instance.Initialize(apiKey, Config.Builder()
     .EventUrl("https://events.ff.harness.io/api/1.0")  
     .SetPollingInterval(60)  
     .SetStreamEnabled(true)  
-    .SetAnalyticsEnabled(false)  
+    .SetAnalyticsEnabled(true)  
     .Build());
 ```
 ### Complete the initialization
