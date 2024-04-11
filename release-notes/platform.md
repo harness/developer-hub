@@ -98,6 +98,14 @@ The following deprecated API endpoints are longer supported:
 
 The audit trail filter did not include an option for "Token" resource type, hindering the ability to filter for API token updates. Added a "Token" filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
 
+- Users experienced authentication issues when switching the OAuth type from SAML, leading to incorrect OAuth authentication status displays. Implemented changes to accurately reflect the status (enabled or disabled) of OAuth authentication for users. (PL-48788, ZD-60869)
+
+- The feature flag subscription indicated it was expired, and the license was not updating automatically. Users had to manually pay each invoice after the billing cycle completed. Users can now view the correct billing due date on their subscription page. Additionally, the system has been updated to automatically charge the credit card on file when an invoice is generated. (PL-48671, ZD-57836)
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like task type or task ID. Enhanced the task rejection metrics by adding taskType and taskId labels. (PL-48488)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's "401" response being propagated to the UI. Implemented error handling to convert a "401" response from the test connection step to a "400", while preserving the original error message, preventing unintended user logouts. (PL-47753, ZD-58629)
+
 ### Version 1.31.4<!--  April 3, 2024 -->
 
 <!-- On RN list, but will not be part of the 1.31.x release per Bharat
