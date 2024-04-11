@@ -102,14 +102,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 The Fossa JSON results file to ingest. 
 
-<!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
 
-
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -120,13 +114,14 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 
 
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
+
 
 
 ### Additional Configuration

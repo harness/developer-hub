@@ -119,6 +119,22 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
+<!-- COMMENT THIS OUT UNTIL SEMGREP ORCHESTRATION IS AVAILABLE
+
+### Additional CLI flags
+
+Use this field to run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with flags such as:
+
+`--severity=ERROR --use-git-ignore`
+
+With these flags, `semgrep` considers only ERROR severity rules and ignores files included in `.gitignore`. 
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+-->
+
 ### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
