@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flags `CUSTOM_POLICY_STEP` and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
