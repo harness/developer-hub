@@ -198,7 +198,7 @@ The following is a complete code example using Expo that you can use to test the
 When you run the code, it will:
 
  - Render a loading screen
- - Connect to the FF service
+ - Connect to the FF service.
  - Retrieve all flags
  - Access a flag using the useFeatureFlag hook
  - Access several flags using the `useFeatureFlags` hook.
