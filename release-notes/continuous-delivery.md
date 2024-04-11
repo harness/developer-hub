@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## April 2024
 
-### Version 1.33.3
+<!---### Version 1.33.3
 
 #### Breaking changes
 
@@ -68,6 +68,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Continuous Verification (CV) telemetry failed if any one of the publish data failed. This occurred because all telemetry information is present in the same try catch block. This issue is fixed by separating telemetry publish events in different try catch blocks. (CDS-94962)
 - Fixed an UI issue where breadcrumbs in the Pipeline Studio pages overlapped. (CDS-93678)
 - Updated the behavior of the Scale step to publish all workload pods as new pods after step run as the Scale step is used to scale pods as well as change traffic on the pod itself. (CDS-91534, ZD-54319)
+--->
 
 ### Version 1.31.4
 
