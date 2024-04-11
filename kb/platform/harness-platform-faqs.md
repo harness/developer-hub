@@ -2036,7 +2036,7 @@ This is a use case of user-group inheritance,
 - When trying to onboard new user to all this Orgs, all you have to do is to add that user in User Group and that will provide you access to all Org.
 - This UG would still be managed to Account Scope.
 
-For more details you can refer this [doc](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
+For more information, go to [Create groups by inheritance](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
 ### Restoring accidentally deleted User Groups
 
@@ -2603,7 +2603,7 @@ There are no hard technical limit for entities in NextGen. For more information,
 
 ### What do we need to backup to recover quickly when Harness infrastructure is lost?
 
-Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours. Back up recommendation is to use Velero tool. You can refer to mentioned doc for further info [docs](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
+Harness recommends that you perform a full backup of the Harness namespace at least once a week, preferably every 24 hours. Back up recommendation is to use Velero tool. For more information, go to [Back up and restore Helm](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
 
 ### Can I do individual backups of SMP instead of full backups?
 
@@ -2769,7 +2769,7 @@ Harness doesn't allow this in the same ASG.
 
 ### How can you control on-demand or spot provisioning within ASG group / target?
 
-We supported spotinst ASG in FirstGen and we also have spotinst for NG also, to know more about it please read the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+We supported spotinst ASG in FirstGen and we also have spotinst for NextGen. For more information, go to [Spot deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
 
 ### How can we disable cron job?
 
