@@ -288,7 +288,7 @@ For reference: [Prune Kubernetes resources](https://developer.harness.io/docs/co
 
 We perform a pod fetch based on this label, which allows us to show deployed pods in the step output and also track the same for instance sync. If we don't add these, both won't work as expected.
 
-For reference: [Steady state check](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#spec-requirements-for-steady-state-check-and-versioning)
+For reference: [Steady state check](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#spec-requirements-for-steady-state-check-and-versioning)
 
 #### Where we need to add label release: \{\{ .Release.Name }}?
 
@@ -3047,7 +3047,7 @@ You can skip the versioning, it can be skipped by using these two ways:
 
 #### After a successful deployment with the namespace "x" and another failed deployment with the same namespace (x), we switched the namespace and now it seems it cannot properly do a helm history.
 
-You can enable the Ignore Release History Failed Status option to have Harness ignore these errors and proceed with install/upgrade. More on this can be referred here: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#ignore-release-history-failed-status)
+You can enable the Ignore Release History Failed Status option to have Harness ignore these errors and proceed with install/upgrade. More on this can be referred here: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#ignore-release-history-failed-status)
 
 #### How can one avoid scale down of Old APP creating a Blue-Green Deployment ?
 
@@ -4589,7 +4589,7 @@ The variable `<+ambiance.metadata.executionMode>` is not currently exposed, and 
 #### Does Harness support OpenTofu native steps in Continuous Module ?
 
 No, Harness does not yet support OpenTofu native steps due to less usage to Terraform.
-Please read more on Native Helm in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/)
+Please read more on Native Helm in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/)
 
 #### Does old version to K8S Server (eg. v1.11.10) service deploy get supported in Harness ?
 
@@ -5441,7 +5441,7 @@ name: INIT_SCRIPT
 - Unlike FirstGen, variables are now not present for Helm2 and Helm3 for immutable delegates
 **Note : One can’t have the same delegate using v2 and v3 for Helm**
 
-Please read more on helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#helm-2-in-native-helm)
+Please read more on helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart/#helm-2-in-native-helm)
 
 #### How are GCP Cloud Run services billed ?
 
