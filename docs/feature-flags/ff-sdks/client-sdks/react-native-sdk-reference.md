@@ -276,7 +276,7 @@ However, in some circumstances it might be beneficial to immediately render the 
 
 The React Native Client SDK's asynchronous mode allows this by passing the optional async prop when connecting with the `FFContextProvider`.
 
-### Caching evaluations
+### Cache evaluations
 In practice, flags rarely change and so it can be useful to cache the last received evaluations from the server to allow your application to get started as fast as possible. Setting the cache option as true or as an object (see interface below) will allow the SDK to store its evaluations to localStorage and retrieve at startup. 
 
 This lets the SDK get started near instantly and begin serving flags, while it carries on authenticating and fetching up-to-date evaluations from the server behind the scenes.
