@@ -453,7 +453,7 @@ const myFlagValues = useFeatureFlags({
 })
 ```
 
-### usingFeatureFlagsLoading
+### useFeatureFlagsLoading
 
 The `useFeatureFlagsLoading` hook returns a boolean value indicating whether the SDK is currently loading flags from the server.
 ```
