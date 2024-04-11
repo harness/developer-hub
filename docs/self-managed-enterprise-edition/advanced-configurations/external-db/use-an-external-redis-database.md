@@ -35,7 +35,7 @@ The following prerequisites are needed:
 
 - A Redis Labs account. To sign up, go to the [Redis Cloud Console](https://app.redislabs.com/#/).
 
-- Redis Enterprise. To download Redis for Ubuntu 20.04, go to [Redis enterprise](https://redis.com/redis-enterprise-software/download-center/software/).
+- Redis Enterprise. To download Redis for Ubuntu 20.04, go to [Redis enterprise](https://redis.io/downloads/#redis-stack-downloads).
 
 - A public or internal domain name, for example `harness-redis-abc.com`.
 

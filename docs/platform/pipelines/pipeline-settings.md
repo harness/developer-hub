@@ -42,7 +42,7 @@ Enable this setting to allow users to manually fail in-progress steps.
 
 ### Export Service Variables as Env Variables
 
-Enable this setting to [export service variables as environment variables in Shell Script steps](/docs/continuous-delivery/x-platform-cd-features/services/export-ser-var-as-env-var/).
+Enable this setting to [export service variables as environment variables in Shell Script steps](/docs/continuous-delivery/x-platform-cd-features/services/export-ser-var-as-env-var).
 
 ### Enable Matrix Labels By Name
 

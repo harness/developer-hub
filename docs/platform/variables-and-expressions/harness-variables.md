@@ -1,11 +1,13 @@
 ---
-title: Built-in and custom Harness variables reference
+title: Use Harness expressions
 description: List of default (built-in) Harness expressions.
-sidebar_position: 3
+sidebar_position: 20
 helpdocs_topic_id: lml71vhsim
 helpdocs_category_id: dr1dwvwa54
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/platform/variables-and-expressions/status-type-reference
 ---
 
 import Tabs from '@theme/Tabs';
@@ -13,39 +15,38 @@ import TabItem from '@theme/TabItem';
 
 For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
 
-You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more.
+You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more. You can also [add your own variables](./add-a-variable.md) and use expressions to reference them.
 
-This topic describes some built-in and custom Harness expressions, as well as the prefixes used to identify user-created variables.
+This topic explains how Harness expressions work, how to write and use expressions, some built-in Harness expressions, and some prefixes used to identify user-defined variables.
 
 Expressions are powerful and offer many options for modification or interaction. For more information about using expressions, go to:
 
 * [Write expressions using any JSON parser tool](./expression-v2.md)
 * [Use Java string methods](./expressions-java-methods.md)
-* [Expression status type reference](./status-type-reference.md)
-* [Add variables](./add-a-variable.md)
+* [Define variables](./add-a-variable.md)
 
 ## What is a Harness variable expression?
 
-Harness variable expressions refer to a value in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates any expressions present in the pipeline and replaces them with the resolved value.
+Harness variable expressions refer to variable values in Harness, such as entity names, configuration settings, custom variables, inputs/outputs, and more. At pipeline runtime, Harness evaluates any expressions present in the pipeline and replaces them with their resolved values.
 
 For example, the expression `<+pipeline.name>` resolves to name of the pipeline where you're using that expression.
 
 **Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
+Harness has many built-in variables and expressions, and you can [define custom variables](./add-a-variable.md) that you can reference with expressions. Custom variables can be broadly scoped (such as account-wide or project-wide variables) or narrowly scoped (such as a variable for a specific pipeline or stage). Custom variables can store values that you need to reuse across many entities, or they can help you configure a specific build, such as runtime flags and environment variables for certain build tools.
 
-:::important limitation
-Pipelines won't run if the default value of variables start with `*`. You can use `*` within `" "` as a workaround.
-:::
-
+Additionally, certain step types, such as [Run steps](/docs/continuous-integration/use-ci/run-step-settings.md) and [Shell Script steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step), can utilize and produce input, environment, and output variables that you define in the step settings. You can also reference these with expressions.
 
 ## Expression usage
 
-Harness variables are declared as expressions using the expression delimiter `<+...>`, such as `<+pipeline.name>` or `<+secrets.getValue("someSecret")>`.
+To reference Harness variables, you use expressions consisting of the expression delimiter `<+...>` and a path to the referenced value, such as `<+pipeline.name>` or `<+secrets.getValue("SECRET_ID")>`.
+
+In addition to [Fixed Values and Runtime Inputs](../variables-and-expressions/runtime-inputs.md), you can use Harness expressions in many settings in pipelines and other entities, like connectors and triggers.
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-In the Pipeline Studio's Visual Editor, you can use the **Value type selector** to select **Expression**.
+In the Visual Editor, you can use the **Value type selector** to select **Expression**.
 
 ![](./static/runtime-inputs-03.png)
 
@@ -64,7 +65,7 @@ You can continue typing or select the expression from the list of suggestions.
 
 When writing pipelines in YAML, enter the expression as the value for a field.
 
-For example, this expression references a [pipeline variable](./add-a-variable.md) named `myConnector`.
+For example, this `connectorRef` setting takes it's value from an expression referencing a [pipeline variable](./add-a-variable.md) named `myConnector`.
 
 ```
           connectorRef: <+pipeline.variables.myConnector>
@@ -79,242 +80,73 @@ You can continue typing or select the expression from the list of suggestions.
 </TabItem>
 </Tabs>
 
-Mechanically, Harness passes the content within the delimiter (`<+...>`) to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) for evaluation.
-
-You can [use JEXL methods to build complex variable expressions](./expression-v2.md). For example, here is a complex expression that uses information from a [webhook trigger](/docs/platform/triggers/triggers-reference.md) payload:
-
-```
-<+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software"
-```
-
-Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) and other steps.
-
-## Java string methods
-
-You can [use any Java string method on Harness variable expressions](./expressions-java-methods.md).
-
-## FQNs and expressions
-
-Everything in Harness can be referenced by a Fully Qualified Name (FQN) expression.
-
-The FQN is the path to a setting in the YAML of your pipeline.
-
-![](./static/harness-variables-14.png)
-
-You can use the expression in nearly any setting in the pipeline editor.
-
-You don't need to build the expression yourself. Harness provides multiple places where you can copy the variable expression.
-
-For example, you can click the copy button in a pipeline execution to get the expressions of output settings and values.
-
-![](./static/harness-variables-15.png)
-
-When building a pipeline in Pipeline Studio, you can copy the FQN of a setting using **Variables**.
-
-![](./static/harness-variables-16.png)
-
-## Stage level and pipeline level expressions
-
-You can create variables at the pipeline and stage level and reference them using the FQN expressions within their scope.
-
-Click **Variables** in the pipeline to view all the inputs and copy their expressions.
-
-<DocImage path={require('./static/21a3df06a049a40a2787e3f0e929617974284e0afd8a86ebe8890d8a4d9c871d.png')} width="60%" height="60%" title="Click to view full size image" />
-
-The pipeline and stage level variable expressions follow these formats:
-
-- **Pipeline-level** expressions use the format `<+pipeline.variables.VAR_NAME>`.
-- **Stage-level** expressions use these formats:
-  - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
-  - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
-- **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
-- **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
-
-### Expression examples
-
-Here is an example of a Shell script step echoing some common variable expressions.
-
-```
-echo "Harness account name: "<+account.name>
-
-echo "Harness comp name: "<+account.companyName>
-
-echo "pipeline executionId: "<+pipeline.executionId>
-
-echo "pipeline sequenceId: "<+pipeline.sequenceId>
-
-echo "stage name: "<+stage.name>
-
-echo "service name: "<+service.name>
-
-echo "service variables: "<+serviceVariables.example_var>
-
-echo "artifact image: "<+artifacts.primary.image>
-
-echo "artifact image path: "<+artifacts.primary.imagePath>
-
-echo "environment name: "<+env.name>
-
-echo "infrastructure connectorRef: "<+infra.connectorRef>
-
-echo "infrastructure namespace: "<+infra.namespace>
-
-echo "infrastructure releaseName: "<+infra.releaseName>
-```
-
-Here is an example of the output.
-
-```
-Harness account name: Harness.io
-
-Harness comp name: Harness.io
-
-pipeline executionId: T4a7uBs7T-qWhNTr-LnFDw
-
-pipeline sequenceId: 16
-
-stage name: dev
-
-service name: nginx
-
-service variables: foo
-
-artifact image: index.docker.io/library/nginx:stable
-
-artifact image path: library/nginx
-
-environment name: quickstart
-
-infrastructure connectorRef: account.harnesstestpmdemocluster
-
-infrastructure namespace: default
-
-infrastructure releaseName: docs
-
-Command completed with ExitCode (0)
-```
-
-Here is another example of how to use `<+stage.variables>`.
-
-```
-for var in <+stage.variables>;
-do
-
-    IFS=":"
-    read -r key value <<< "$var"
-    unset IFS
-    echo "Key: $key"
-    echo "Value: $value"
-
-done
-```
-
-The above Bash script prints all the key-value pairs for the stage variables.
-If the `<+stage.variables>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
-
-```
-Executing command ...
-Key: a
-Value: A
-Key: b
-Value: B
-Key: c
-Value: C
-Command completed with ExitCode (0)
-```
-
-## Input and output variables
-
-You can reference the inputs and outputs of any part of your pipeline.
-
-- **Input variable expressions** reference the values and setting selections you made _in your pipeline_.
-- **Output variable expressions** reference _the results_ of a pipeline's execution.
-
-### Input variables in the pipeline
-
-You can copy and reference the input settings for steps using the pipeline **Variables** panel.
-
-<DocImage path={require('./static/2d3f480ea623c75e83c074a1e8a6d90d1fb1eccc1d9c3bcda1184179483ef529.png')} width="60%" height="60%" title="Click to view full size image" />
-
-Input variables follow this format:
-
-- **Stage-level**: `<+execution.steps.STEP_ID.SETTING>`.
-- **Pipeline-level**: `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.SETTING>`.
-
 :::info
 
-Pipeline and stage custom variable expressions use the _variable name_ to reference the variable. The execution step variables use the _stage/step identifier (ID)_ in references.
+Automated suggestions don't represent all possible expressions.
+
+When Harness automatically suggests expressions, it suggests expressions based on the current context (meaning the setting or place in the YAML where you are entering the expression). While it doesn't suggest expressions that aren't valid in the current context, this doesn't prevent you from entering invalid expressions.
+
+For guidance on building valid expressions, go to [Expression paths](#expression-paths) and [Debugging expressions](#debugging-expressions).
 
 :::
 
-### Input and output variable expressions in executions
+### Expression paths
 
-Inputs and outputs are displayed for every part of the pipeline execution.
+Harness expressions are references to variables, settings, and other values in Harness. When you use a Harness expression, you provide a path for Harness to follow to resolve the expression's value. Expressions can use [relative paths](#use-relative-paths) or [full paths (also referred to as FQNs)](#use-fqns).
 
-Here are the inputs and outputs for a Kubernetes rollout deployment step.
+:::tip path discovery
 
-| **Inputs**                                                                                                                      | **Outputs**                                                                                                                     |
-| :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------ |
-| <DocImage path={require('./static/rolloutdeployment1.png')} width="100%" height="100%" title="Click to view full size image" /> | <DocImage path={require('./static/rolloutdeployment3.png')} width="100%" height="100%" title="Click to view full size image" /> |
+Harness offers several ways to help you build expression paths:
 
-You can copy the expressions for the names or values of any input or output.
+* [Get automated suggestions when typing expressions.](/docs/platform/variables-and-expressions/runtime-inputs.md#expressions)
+* [Get input/output expressions from execution details.](#get-inputoutput-expressions-from-execution-details)
+* [Get custom variable and input expressions from the Variables list.](#get-custom-variable-and-input-expressions-from-the-variables-list)
+* [Use JSON parsing tools to help determine expression paths from complex output or YAML.](./expression-v2.md)
 
-| **Name**                                                                                                          | **Value**                                                                                                          |
-| :---------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
-| <DocImage path={require('./static/name.png')} width="100%" height="100%" title="Click to view full size image" /> | <DocImage path={require('./static/value.png')} width="100%" height="100%" title="Click to view full size image" /> |
-
-Here are the **Name** and **Value** expressions for the `podIP` setting.
-
-- Name:
-
-  ```
-  <+pipeline.stages.k8s_deployment.spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[0].podIP>
-  ```
-
-- Value: `10.100.0.6`
-
-## Using expressions in settings
-
-You can use Harness variable expressions in most settings.
-
-When you select the **Expression** option for a setting, you can type `<+` and the list of available variable expressions appears.
-
-![](./static/harness-variables-19.png)
-
-Select a variable expression to use it as the value for this setting.
-
-At runtime, Harness will replace the variable with the runtime value.
-
-You can also paste expressions that don't appear. For example, expressions that reference settings in previous stages.
-
-For more information, go to [Fixed Values, Runtime Inputs, and Expressions](../variables-and-expressions/runtime-inputs.md).
-
-## Expression guidelines and boundaries
-
-Review the following guidelines to avoid errors when using variable expressions.
-
-### Scope
-
-When Harness automatically presents variable expressions in a setting, it only exposes the expressions that can be used in that setting. You will not see a variable expression available in a setting where it cannot be used.
-
-This does not prevent you from trying to use an expression outside of its scope.
-
-Here are some guidelines to help you use expressions successfully:
-
-- Don't refer to a step's expressions within the same step.
-- Don't refer to the settings for a subsequent step in a previous step.
-- Don't refer to inputs or outputs of a stage's **Execution** tab in the stage's **Service** or **Environment** tabs.
-  - The execution takes place after the service and environment settings are used. Consequently, the expressions used in the execution cannot be resolved when running the service and environment sections.
-
-:::info Exception
-You can reference the environment name variable, `<+env.name>`, in a service's Values YAML file, specs, and config files.
 :::
 
-### Only use expressions after they can be resolved
+#### Use FQNs
 
-When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. Consequently, your pipelines can use expressions only after Harness has the required information to resolve the expression's value. If you try to use an expression before Harness has the necessary information, the expression resolves to null and the pipeline can fail or execute incorrectly.
+The format and length of an expression's Fully Qualified Name (FQN) depends on the type of entity the expression is referencing and where it is located.
 
-#### Demonstration of Harness expression resolution in a CD stage
+Some expressions have short FQNs, such as `<+account.name>`, which references your Harness account name, or `<+variable.account.accountVariableName>`, which references a [custom account variable](./add-a-variable.md). In contrast, expression referencing specific settings embedded a pipeline's YAML can have much longer FQNs, like this expression for a service variable in a CD stage: `<+pipeline.stages.stageID.spec.serviceConfig.serviceDefinition.spec.variables.serviceVariableName>`.
+
+When referencing values within a pipeline, an expression's FQN is the path to the value you are referencing in the context of your pipeline's YAML. **For values in pipelines, the expression's full path/FQN, starting from `pipeline`, always works as a reference point.**
+
+For example, the FQN for an expression referencing a CD service definition's `imagePath` setting is `<+pipeline.stages.stageID.spec.serviceConfig.serviceDefinition.spec.artifacts.primary.spec.impagePath>`. This reflects the path you would step through in the YAML to locate that value.
+
+![YAML example of a CD pipeline with a service definition.](./static/harness-variables-14.png)
+
+#### Use relative paths
+
+To use a relative path, identify the common parent between the step/stage you're referring to and the step/stage where you're using the expression (making the reference), and then use the common parent to start the expression.
+
+For example, to reference a CD service definition's `imagePath` setting in the same stage where that service definition is defined, you could use the relative expression `<+stage.spec.serviceConfig.serviceDefinition.spec.artifacts.primary.spec.impagePath>`.
+
+### Use expressions only after they can be resolved
+
+When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. This means that if you try to use an expression before Harness has the necessary information to resolve the expression's value, the expression resolves to `null`, and the pipeline can fail or execute incorrectly.
+
+This requirement applies regardless of how you are using the expression, such as with operators or in scripts. If Harness can't resolve the target value at the point when the pipeline requests the expression, the expression fails to resolve and the pipeline can fail.
+
+:::warning
+
+Your pipelines must use expressions *only* after Harness has the required information to resolve the expression's value.
+
+:::
+
+For example, assume you want to use this expression: `<+pipeline.stages.Stage_2.spec.execution.steps.Step_C.executionUrl>`. This expression calls the `executionUrl` from a step named `Step_C` that is in `Stage_2`. Since this step is in `Stage_2`, you could not use this expression in a previous stage, because the stage containing this expression's value hasn't run yet. Additionally, if there are steps before `Step_C` in `Stage_2`, those steps can't use this expression either, because they run before `Step_C`.
+
+Here are some guidelines to help you successfully use expressions in pipelines:
+
+- Don't refer to a step's expressions within that same step.
+- Don't refer to values from a subsequent step/stage in a step/stage that runs before the referenced step/stage.
+- Don't refer to step inputs/outputs in a CD stage's **Service** or **Environment** configuration.
+   - In a CD stage, steps run after Harness evaluates the service and environment configuration. Consequently, Harness can't get values for expressions referencing step inputs/outputs while it is evaluating the service and environment configuration.
+   - Similarly, don't refer to step inputs/output in a CI stage's **Infrastructure** or **Codebase** configuration. These are evaluated before steps run, so they can't use expressions referencing steps.
+
+<details>
+<summary>Example: Harness expression resolution throughout a CD stage</summary>
 
 This example demonstrates when and where certain expressions (by prefix) are resolved over the duration of a CD stage, so that you can determine which events need to occur before you can safely reference a certain expression and ensure that it is successfully resolved when the pipeline runs.
 
@@ -336,213 +168,103 @@ Here's when you can reference expressions resolved from information in each of t
 
 <DocImage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
 
-#### CI stage initialization fails with a "null value" error
+</details>
 
-If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
+### Hyphens require escaping
 
-### Variable expressions in conditional execution settings
+Harness recommends not using hyphens/dashes (`-`) in variable and property names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
 
-Stages and steps support variable expressions in the JEXL conditions of their **Conditional Execution** settings.
+For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`
 
-You can only use variable expressions in the JEXL conditions that can be resolved before the stage is run.
+If you must include a hyphen in an expression, such as with `x-auth`, you can wrap the property name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
 
-Conditional execution settings are used to determine if the stage _should be run_, and therefore you cannot use variable expressions that can't be resolved until the stage _is run_.
-
-For more information on conditional execution, go to [Define conditional executions for steps and stages](/docs/platform/pipelines/step-skip-condition-settings).
-
-### Variable value size
-
-A variable value (the evaluated expression) is limited to 256 KB.
-
-### Expressions not allowed in comments of Values YAML or Kustomize patches
-
-You cannot use Harness expressions in comments in:
-
-- Values YAML files (values.yaml) in Kubernetes, Helm chart, or Native Helm deployments.
-- Kustomize patches files.
-
-For example, here is a values.yaml file with a Harness expression in the comment:
-
-```yaml
-name: test
-replicas: 4
-image: <+artifacts.primary.image>
-dockercfg: <+artifacts.primary.imagePullSecret>
-createNamespace: true
-namespace: <+infra.namespace>
-# using expression <+infra.namespace>
-```
-
-This values.yaml file will not process successfully. Remove any expressions from comments and the file will process successfully.
-
-### Scripts within expressions
-
-You cannot write scripts in expressions. For example, the following script will not work:
-
-```
-if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
-```
-
-Instead, feed the expression value into a variable and then call the variable in your script.
-
-```
-NAME = <+pipeline.name>
-
-if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
-```
-
-### Variable name uniqueness
-
-<!-- This seems like it's missing information. You couldn't have two pipeline variables or account variables with the same name either? And I think you could have a stage variable and pipeline variable with the same names, but the expression reference would differentiate their scope, eg. https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables-in-a-pipeline ?? -->
-
-When defining variables at the stage level, variable names must be unique within that stage. You can use the same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
-
-### Avoid hyphens in variable names
-
-Harness recommends not using hyphens/dashes (`-`) in variable names, because these characters can cause issues with headers and they aren't allowed in some Linux distributions and deployment-related software.
-
-For example, this expression won't work: `<+execution.steps.httpstep.spec.headers.x-auth>`.
-
-If you must reference a variable name that has a hyphen, such as `x-auth`, you can wrap the variable name in double quotes (`""`), such as `<+execution.steps.httpstep.spec.headers["x-auth"]>`.
-
-This also works for nested expressions, such as:
+This also applies to nested usage, such as:
 
 ```
 <+execution.steps.httpstep.spec.newHeaders["x-auth"]["nested-hyphen-key"]>
 <+execution.steps.httpstep.spec.newHeaders["x-auth"].nonhyphenkey>
 ```
 
-When referencing your [custom variables](./add-a-variable.md), you need to use the `get()` method, as explained in [Special characters in custom variables can required escaping or additional handling](#special-characters-in-custom-variables-can-require-escaping-or-additional-handling).
+If when referencing custom variables or matrix dimensions with hyphenated names, you must [use the `get()` method](/docs/platform/variables-and-expressions/add-a-variable.md#use-get-for-variable-names-with-hyphens-or-periods).
 
-### Special characters in custom variables can require escaping or additional handling
+## Expression evaluation
 
-When you [add a variable](./add-a-variable.md), note the following restrictions and considerations for variable names:
+Mechanically, Harness passes the content within the delimiter (`<+...>`) to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) for evaluation at runtime.
 
-* Variable names must start with a letter or underscore (`_`).
-* Variable names can contain lowercase and uppercase letters, numbers 0-9, underscores (`_`), periods (`.`), hyphens/dashes (`-`), and dollar signs (`$`).
-* Variable names can't contain [reserved words](#reserved-words).
-* Periods and hyphens require [additional escaping](#use-get-for-custom-variable-names-with-hyphens-and-periods) when referencing those variable names in Harness expressions, such as `foo` in `<+stage.variables.foo>`. This handling is explained below.
-* Additional variable naming restrictions can apply depending on the platforms and tools you use. For example, Kubernetes doesn't allow underscores. Ensure that your expressions resolve to the allowed values of your target platforms.
+For example, `<+pipeline.name>` evaluates to the name of the pipeline where that expression is used.
 
-#### Use get() for custom variable names with hyphens and periods
+Here's an example of a shell script echoing some expressions, along with examples of output from those expressions.
 
-Harness recommends [avoiding hyphens in variable names](#avoid-hyphens-in-variable-names).
-
-However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the `get()` method in the expression, such as `.get("some-var")`.
-
-For example:
-
-```
-<+pipeline.variables.get("pipeline-var")>
-<+pipeline.stages.custom.variables.get("stage-var")>
-<+pipeline.variables.get("pipeline.var")>
-<+pipeline.stages.custom.variables.get("stage.var")>
+```sh
+echo <+pipeline.executionId>        # Output example: 1234-5678-abcd
+echo <+pipeline.sequenceId>         # Output example: 16
+echo <+stage.name>                  # Output example: dev
+echo <+service.name>                # Output example: nginx
+echo <+artifacts.primary.image>     # Output example: index.docker.io/library/nginx:stable
+echo <+artifacts.primary.imagePath> # Output example: library/nginx
+echo <+env.name>                    # Output example: demo
+echo <+infra.namespace>             # Output example: default
+echo <+infra.releaseName>           # Output example: demo
 ```
 
-This handling is also required for [matrix dimension names](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) with hyphens.
+:::warning
 
-### Reserved words
+Expressions can't resolve correctly if the target value isn't available at the time that Harness evaluates the expression. For more information, go to [Use expressions after they can be resolved](#use-expressions-after-they-can-be-resolved).
 
-The following keywords are reserved, and cannot be used as a variable name or property.
-
-```
-or
-and
-eq
-ne
-lt
-gt
-le
-ge
-div
-mod
-not
-null
-true
-false
-new
-var
-return
-shellScriptProvisioner
-class
-```
-
-For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
-
-### Number variables
-
-Number type variables are always treated as doubles (double-precision floating-point).
-
-- -1.79769313486231E308 to -4.94065645841247E-324 for negative values.
-- 4.94065645841247E-324 to 1.79769313486232E308 for positive values.
-
-For example, here is a pipeline variable of number type.
-
-```
-  variables:
-    - name: double_example
-      type: Number
-      description: ""
-      value: 10.1
-```
-
-The expression to reference that pipeline variable, `<+pipeline.variables.double_example>`, will be treated as a double when it is resolved to `10.1`.
-
-#### Numbers as doubles and strings
-
-Whether the number in a variable is treated as a double or string depends on the field that you use it in.
-
-If you enter `123` in a string setting, such as a **Name**, it is treated as a string. If you enter `123` in a count setting, such as **Instances**, it is treated as a double.
-
-### Contains method
-
-When using `contains`, ensure the expression is wrapped within `<+ >` and the specific string is within `"`.
-
-For example, `<+<+stage.name>.contains("s1")>`.
-
-### Split method
-
-When using `split`, ensure the expression is wrapped within `<+ >`.
-
-For example, `<+<+pipeline.variables.abc>.split(':')[1]>`.
-
-### Complex expression
-
-When using a complex expression, ensure the expression is wrapped within `<+ >`.
-
-For example:
-
-```
-<+ <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">
-```
-
-### Ternary operator
-
-When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within the expression delimiter `<+ >`.
-
-:::info
-
-When you evaluate Harness expressions using any operator (including ternary operators), the expression values must be available for resolution at the time of the evaluation.
-
-For example, if you use an expression for the value of a pipeline stage step setting, such as `<+pipeline.stages.mystage.spec.execution.steps.myapplystep.executionUrl>`, ensure that the evaluation using that expression happens after the step `myapplystep` has run.
+Additionally, variable values (after evaluation) are limited to 256 KB. Expressions producing evaluated values larger than this can have truncated values or fail to resolve.
 
 :::
 
-Ternary operators in Harness follow the standard format, but you cannot use spaces between the operators and values.
+## Expression manipulation
 
-For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work.
+In addition to standard evaluation, expressions can be evaluated and manipulated with Java string methods, JSON parsing, JEXL, interpolation, concatenation, and more.
 
-Use `<+condition?<value_if_true>:<value_if_false>>` instead.
-Ensure the expression is wrapped within `<+ >`:
+### Compound expressions and operators require nested delimiters
+
+When forming complex expressions, such as when using operators or methods with expressions, wrap the entire compound expression statement in the expression delimiter (`<+...>`).
+
+For example, with the equals `==` and not equals `!=` operators, wrap the entire operation in the expression delimiter `<+...>`:
 
 ```
-<+condition?<value_if_true>:<value_if_false>>
+<+<+pipeline.name> == "pipeline1">
+<+<+stage.variables.v1> != "dev">
 ```
+
+Complex usage can have multiple levels of nesting. For example, the following compound expression concatenates values from two variables into one list, and then uses the `split()` method on the concatenated list. The original expressions, the concatenated list expression, and the method manipulation are all wrapped in expression delimiters:
+
+`<+ <+<+pipeline.variables.listVar1> + "," + <+pipeline.variables.listVar2>>.split(",")>`
+
+### Java string methods
+
+You can [use any Java string method on Harness expressions](./expressions-java-methods.md).
+
+### JEXL
+
+You can [use JEXL to build complex expressions](./expression-v2.md).
+
+For example, the following complex expression uses information from a [webhook trigger](/docs/platform/triggers/triggers-reference.md) payload:
+
+`<+ <+<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software" >`
+
+Notice the use of methods, operators, and nested delimiters (`<+...>`) forming a compound expression. Harness evaluates each individual expression and produces a final value by evaluating the entire JEXL expression.
+
+### Ternary operators
+
+When using ternary conditional operators (`?:`), wrap the entire expression in the expression delimiter `<+...>`, and don't use spaces between the operators and values.
+
+Ternary operators in Harness follow the standard format, but you can't use spaces between the operators and values.
+
+For example:
+
+* Incorrect: `<+condition ? IF_TRUE : IF_FALSE>`
+* Correct: `<+condition?IF_TRUE:IF_FALSE>`
 
 <details>
-<summary>Pipeline example</summary>
+<summary>Pipeline YAML example manipulating expressions with ternary operators</summary>
 
-Here's a simple Harness YAML pipeline example of evaluating a Harness variable value with the ternary operator:
+This pipeline uses a ternary operator to evaluate a stage variable named `myvar` with a value of `1.1`.
+
+In the second `ShellScript` step, named `ternary`, the stage variable is referenced by the expression `<+stage.variables.myvar>` and evaluated with the ternary expression `== "1.1"?"pass":"fail"`. The entire compound expression is `<+ <+stage.variables.myvar> == "1.1"?"pass":"fail" >`.
 
 ```yaml
 pipeline:
@@ -584,7 +306,7 @@ pipeline:
                     source:
                       type: Inline
                       spec:
-                        script: echo <+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >
+                        script: echo <+ <+stage.variables.myvar> == "1.1"?"pass":"fail" >
                     environmentVariables: []
                     outputVariables: []
                   timeout: 10m
@@ -597,47 +319,59 @@ pipeline:
             value: "1.1"
 ```
 
-In this example, there is a stage variable named `myvar` with a value of `1.1`. In the `ShellScript` step named `ternary` the variable expression for the stage variable, `<+stage.variables.myvar>`, is evaluated with the ternary expression:
-
-`<+ <+stage.variables.myvar> == "1.1"?"this is right":"this is wrong" >`
-
 </details>
 
-Ternary operators are also discussed in the [Harness Knowledge Base](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
+For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
-### Equals operator
+### Expressions as strings
 
-When using the `==` operator, ensure the expression is wrapped within `<+ >`.
+If you want to treat an expression as a string, you wrap it in double quotes, with the exception of secrets expressions (such as `<+secrets.getValue()>`) and some JSON usage.
 
-For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
+For example, the following command has the expression `<+stage.name>` wrapped in double quotes because it is an element in an array of strings.
 
-:::info note
-Greater than and Less than operators are not supported for string expression types. Only Equal to and Not equal to are supported.
+`<+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>`
+
+When using expressions as strings in JSON, the entire expression must be wrapped in double quotes, if that is required to make the JSON valid.
+
+For example, in the following JSON, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string in that part of the JSON. However, the expression `<+<+pipeline.variables.hosts>.split(\",\")>` isn't wrapped in quotation marks because it resolves as a list.
+
+`"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"`
+
+:::warning secrets as strings
+
+Do not wrap `<+secrets.getValue()>` expressions in double quotes. While the secret ID within the `getValue()` method must be wrapped in double quotes, do not wrap the entire expression in double quotes, even when you want to treat it as a string.
+
+This is because these expressions are resolved by an internal Secret Manager function. The value is not a primitive type string, and it must not be wrapped in double quotes.
+
+For example, in the following complex expression, the `<+secrets.getValue()>` expression is not wrapped in double quotes, despite being used in an operation where another expression would be wrapped in double quotes.
+
+`<+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>`
 
 :::
 
-### Variable concatenation
+### Concatenation and interpolation
+
+Harness supports complex usages of string interpolation, such as:
+
+- Substituting an expression value within a path: `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
+- Using an expression to supply the value of an identifier within another expression:
+   - This example uses the index of the looped execution to pick the desired step by ID: `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
+   - This example would print the status of a stage where the stage name is defined as a stage variable: `<+pipeline.stages.<+pipeline.variables.stageName>.status>`
 
 Harness string variables can be concatenated by default. Each expression can be evaluated and substituted in the string.
 
-Previously, Harness users were forced to use a ‘+’, or `.concat()`, the concatenation operator, to join multiple expressions together. Now, you can simply use `<+pipeline.name> <+pipeline.executionId>`.
+Previously, you always used `+` or `concat()` to join multiple expressions together. Now, you can simply list the expressions with spaces between, for example:
 
-For example, Harness supports complex usages such as the following:
+```
+<+pipeline.name> <+pipeline.executionId>
+```
 
-- `us-west-2/nonprod/eks/eks123/<+env.name>/chat/`
-- `<+stage.spec.execution.steps.s1<+strategy.identifierPostFix>.steps.ShellScript_1.output.outputVariables.v1>`
-  - This example uses the index of the looped execution to pick the correct step.
-- `<+pipeline.stages.<+pipeline.variables.stagename>.status>`
-  - This example shows an elegant way to print out the status of a stage.
+The concatenation operator (`+`) and the `concat()` method also work. Note that these options require you to wrap the entire operation in the expression delimiter (`<+...>`). For example, the following syntax is valid:
 
-All existing expressions will continue to work. For example, the following syntax will still work.
-
-1. Use `+` operator to add string value variables: `<+<+pipeline.variables.var1> + "_suffix">`.
-2. Use Java `concat` method to add string variables:
-
-- `<+<+pipeline.variables.var1>.concat("_suffix")>`
-
-Ensure the expression is wrapped within `<+ >` in both of these examples.
+```
+<+<+pipeline.variables.var1> + "_suffix">
+<+<+pipeline.variables.var1>.concat("_suffix")>
+```
 
 :::info
 
@@ -645,963 +379,170 @@ When concatenating expressions as strings, each expression must evaluate to a st
 
 If an expression does not satisfy this condition, use the `toString()` [method](/docs/platform/variables-and-expressions/expressions-java-methods) to convert it to a string.
 
-For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`
+For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
 
 :::
 
-### Passing JSON values using variables
+## Input and output variables
 
-When using expressions in JSON as a string, they must be wrapped in quotation marks for valid JSON.
+Your pipelines, stages, and steps can ingest inputs and produce outputs. In general, input variables represent a pipeline's configuration — the settings and values defining how and where an execution runs. Output variables are the results of an execution — such as release numbers, artifact IDs, image tags, user-defined output variables, and so on.
 
-For example, consider the following JSON:
+You can use expressions to reference inputs and outputs. For example, you could reference a previous step's output in a subsequent step's command.
 
-```json
-"{\"a\":[ { \"name\": \"svc1\", \"version\": \"<+pipeline.variables.version>\", \"hosts\": <+<+pipeline.variables.hosts>.split(\",\")> } ]}"
-```
+The expression to reference an input or output depends on the scope where it was defined and the scope where you're referencing it. Usually, the expression follows the YAML path to the setting, and the full path (starting from `pipeline`) is always a valid reference. For example, to reference the `command` setting for a Run step in a Build stage, you could use an expression like `<+pipeline.stages.BUILD_STAGE_ID.spec.execution.steps.RUN_STEP_ID.spec.command>`. If you were referencing this setting in another step in the same stage, you could use a relative path like `<+execution.steps.RUN_STEP_ID.spec.command>`.
 
-In the JSON above, the expression `<+pipeline.variables.version>` must be wrapped in quotation marks because it resolves as a string inside JSON (and Strings need to be quoted). The expression `<+<+pipeline.variables.hosts>.split(\",\")>` doesn't need to be wrapped in quotation marks because it will be resolved as a list.
+### Get input/output expressions from execution details
 
-Let's look at an example using allowed values and JSON strings.
+In a pipeline's execution details, you can explore inputs and outputs for the pipeline as a whole, as well as for individual steps.
 
-A variable with `<+input>.allowedValues({"x":"y"})` and `"<+input>.allowedValues({x:y})"` have the same value, which is `{x:y}`. You can add space in the second example, `"<+input>.allowedValues({x: y})"` to get `{x: y}` and it doesn't cause any errors.
+**From the execution details, you can quickly copy the expression to reference any step-level input or output.**
 
-You can do this with quotes as well. For example, `"<+input>.allowedValues({\\\"x\\\": \\\"y\\\"})"` produces `{"x": "y"}`.
+This is useful for determining expression paths, when debugging expressions, or when you're not sure which expression to use for a particular setting or value.
 
-### Best practices for expressions usage
+To do this:
 
-- When using an expression, if you want to treat it as a string, you must wrap it within quotation marks.
+1. Go to the execution details page. You can get there by going to your **Executions**, **Builds**, or **Deployments** history and selecting the execution you want to inspect.
+2. To inspect step-level inputs and outputs, select a step in the execution tree, and then select the **Input** and **Output** tabs.
 
-  For example, consider following expression:
+   For example, these are some inputs and outputs for a Kubernetes rollout deployment step:
 
-  ```
-  <+<+pipeline.variables.changeType> =~ ["<+stage.name>","All"]>
-  ```
+   <DocImage path={require('./static/rolloutdeployment1.png')} width="50%" height="50%" title="Click to view full size image" /> <DocImage path={require('./static/rolloutdeployment3.png')} width="50%" height="50%" title="Click to view full size image" />
 
-  In the above expression, the `<+stage.name>` is wrapped within quotation marks because it is an element in a list of strings.
+3. To get the expression referencing a particular input/output, hover over the **Input/Output Name** and select the **Copy** icon.
 
-- While using `,` inside a method invocation with an expression, the expression must be wrapped in quotation marks.
+   For example, if you want to reference a Run step's **Command** setting, navigate to the Run step's **Input** on the execution details page, locate **command** under **Input Name**, and select the **Copy** icon. Your clipboard now has the expression for this Run step's command, such as `<+pipeline.stages.stageID.spec.execution.steps.RunStepID.spec.command>`.
 
-  For example, consider the following expression:
+   <DocImage path={require('./static/copy-run-command-expression.png')} width="80%" height="80%" title="Click to view full size image" />
 
-  ```
-  <+<+pipeline.variables.var2>.replace("a", "<+pipeline.variables.var1>")>
-  ```
+   This example copies the **podIP** setting for a Kubernetes rollout deployment step, resulting in an expression such as `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.deploymentInfoOutcome.serverInstanceInfoList[0].podIP>`.
 
-  In the above expression, `<+pipeline.variables.var1>` must be wrapped in quotation marks because the expression is a string parameter for a method.
+   <DocImage path={require('./static/name.png')} width="80%" height="80%" title="Click to view full size image" />
 
-- While using method invocation with an expression, the expression before method invocation should also be wrapped within `<+...>`.
+4. In the same way, you can copy values tied to specific inputs and output. Copying a value copies the literal value, not the expression. To reference this value by an expression, you need to use the **Copy** option for the **Input/Output Name**.
 
-  For example, consider the following expression:
+   <DocImage path={require('./static/value.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  ```
-  <+<+pipeline.variables.var1>.concat("concatenating a string")>
-  ```
+### Get custom variable and input expressions from the Variables list
 
-  To invoke the method `concat` on the expression `<+pipeline.variables.var1>`, you must wrap `<+pipeline.variables.var1>` within `<+...>` and then invoke the method using `.concat()`.
+You can get expressions for [custom pipeline variables](./add-a-variable.md) and execution inputs from the **Variables** list in the Pipeline Studio.
 
-- When using an expression for the Harness secret functor, `<+secrets.getValue("sec")>`, it should not be wrapped within quotation marks.
+<DocImage path={require('./static/2d3f480ea623c75e83c074a1e8a6d90d1fb1eccc1d9c3bcda1184179483ef529.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  This expression gets resolved to another Harness internal functor,`${ngSecretManager.obtain("sec")}`, which is resolved on the delegate. Since its value is not a primitive type string, it should not be wrapped within quotation marks.
+If the variable is local to a scope within the pipeline, such as a stage or step group, you can copy either the local, relative-path expression (to use the expression in the origin scope) or the full path/FQN expression (to use the expression outside the origin scope, such as in another stage).
 
-  For example, consider the following expression for the value of a pipeline or stage variable:
+![](./static/harness-variables-16.png)
 
-  ```
-  <+<+<+pipeline.variables.var1>=="secret1">?<+secrets.getValue("secret1")>:<+secrets.getValue("defaultSecret")>>
-  ```
+## Expressions reference
 
-  This secret expression should not be wrapped within quotation marks.
+The following sections describe some Harness expressions. This information is not exhaustive.
 
-- If expressions don't need to be evaluated in the pipeline YAML but are added as script comments in the Shell Script step, the Run step, or another step, they will still be processed and evaluated. This might cause failures and unnecessary processing. Review and remove any unnecessary script comments from the pipeline YAML to streamline the evaluation process.
+### Account, org, and project expressions
 
-- Usage of `getClass()` in expressions is not supported and will not be evaluated.
+* `<+account.identifier>`: The [identifier](../references/entity-identifier-reference.md) for your [Harness account](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts.md).
+* `<+account.name>`: Your Harness account name.
+* `<+account.companyName>`: The company name associated with your Harness account.
+* `<+org.identifier>`: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization depends on the context where you use the expression.
+* `<+org.name>`: The name of the organization.
+* `<+org.description>`: The description of the organization.
+* `<+project.identifier>`: The [identifier](../references/entity-identifier-reference.md) of a Harness project in your Harness account. The referenced project depends on the context where you use the expression.
+* `<+project.name>`: The name of the Harness project.
+* `<+project.description>`: The description of the Harness project.
+* `<+project.tags>`: All [Harness tags](/docs/platform/references/tags-reference) attached to the project.
 
-## Debugging expressions
+### Approval expressions
 
-An easy way to debug expressions in your pipeline is to use Compiled Mode in your **Variables** panel. You can enable this mode using a radio button at the top of the **Variables** Panel. When Compile Mode is turned on, all of the expressions in the panel are compiled and their values are displayed. By default, the compilation happens against the pipeline's latest execution. You can change this by selecting from a displayed list of previous executions.
+Whenever a user grants an approval in a [Harness Manual Approval step](/docs/platform/approvals/approvals-tutorial), the pipeline maintains the user information of the approver for the rest of the pipeline execution. You can use these variables in notifications after an approval is granted.
 
-![](./static/expression-evaluator-screen.png)
+:::info
 
-Expressions that are incorrect or cannot be evaluated using the execution data are highlighted in the **Variable** values column. You can switch the panel back to normal mode and correct the expression.
+These expressions apply to Harness Manual Approval *steps* only. They are not applicable to Approval stages or third-party approval steps (such as Jira or ServiceNow approval steps).
 
-To test an expression that isn't part of a variable (say, something in a script), you can create a temporary variable in the panel, assign the expression to it, and use Compiled Mode to debug it.
+:::
 
-## CI codebase and environment variables
+* `<+approval.approvalActivities[0].user.name>`: The Harness username of the approver.
+* `<+approval.approvalActivities[0].user.email>`: The email address of the approver.
+* `<+approval.approvalActivities[0].comments>`: User comments from the approval, formatted as a single string. This variable is populated from the `comment` output variable generated by the Approval step.
 
-You can use Harness expressions to reference various environment variables and [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) attributes in Harness CI pipelines, stages, and steps. For more information, go to:
+Use the index value to get information from different Approval steps in the same pipeline. For example, if you have a Deploy stage with two Approval steps, the pipeline maintains a separate set of approval variable values for each Approval step. Use the array index in the expressions to access the values for a specific approval.
+
+![](./static/approved-user-pipeline-example.png)
+
+### CI codebase and environment variables
+
+For information about variables and expressions relevant to Harness CI, go to:
 
 - [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
 - [CI environment variables reference](/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var.md)
 
-## Account
+### Custom variables
 
-### \<+account.identifier>
+For information about user-defined variables, including naming conventions, special handling, and other usage specifications, go to [Define variables](add-a-variable.md).
 
-The entity [identifier](../references/entity-identifier-reference.md) of the Harness account.
+### Deployment environment expressions
 
-![](./static/harness-variables-22.png)
+In Harness CD, environments represent your deployment targets (such as QA, Prod, and so on). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, and so on. You can use expressions to reference environment values, such as `<+env.name>`, in a service's Values YAML file, specs, and config files, for example.
 
-### \<+account.name>
+* `<+env.name>`: The name of the environment used in the current stage.
+* `<+env.identifier>`: The [entity identifier](../references/entity-identifier-reference.md) of the environment used in the current stage.
+* `<+env.description>`: The description of the environment.
+* `<+env.type>`: The environment type, such as `Production` or `PreProduction`.
+* `<+env.envGroupName>`: The name of the environment group to which the environment belongs, if defined. This expression resolves only if the deployment is done on an environment group.
+* `<+env.envGroupRef>`: The environment group reference. This expression resolves only if the deployment is done on an environment group.
 
-Harness account name.
-
-### \<+account.companyName>
-
-The name of the company for the account.
-
-### Custom account variables
-
-For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
-
-## Org
-
-### \<+org.identifier>
-
-The entity [identifier](../references/entity-identifier-reference.md) of an organization.
-
-![](./static/harness-variables-23.png)
-
-### \<+org.name>
-
-The name of the org.
-
-### \<+org.description>
-
-The description of the org.
-
-### Custom org variables
-
-For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
-
-## Project
-
-### \<+project.name>
-
-The name of the Harness project.
-
-### \<+project.description>
-
-The description of the Harness project.
-
-### \<+project.tags>
-
-All Harness Tags attached to the project.
-
-### \<+project.identifier>
-
-The entity [identifier](../references/entity-identifier-reference.md) of the Harness project.
-
-### Custom project variables
-
-For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
-
-## Pipeline
-
-### Pipeline-level variables
-
-Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
-
-<!-- Video:
-https://www.youtube.com/watch?v=lqbmO6EVGuU-->
-<DocVideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
-
-### \<+pipeline.identifier>
-
-The [identifier](../references/entity-identifier-reference.md) (Id) for the pipeline.
-
-![](./static/harness-variables-24.png)
-
-### \<+pipeline.executionId>
-
-Every execution of a pipeline is given a universally unique identifier (UUId). The UUId can be referenced anywhere.
-
-For example, in the following execution URL, the UUId follows `executions` and is `kNHtmOaLTu66f_QNU-wdDw`.
-
-```
-https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
-```
-
-### \<+pipeline.resumedExecutionId>
-
-The execution id of the root or original execution. For instance, this value will be different from the execution's `executionId` when it is a retry. 
-
-Here's an example:
-- Initial Execution: The `executionId` is `kNHtmOaLTu66f_QNU-wdDw`. This execution failed and triggers a retry. 
-- Retry Execution: The `executionId` is `hrP0KR5aSM-gPGPYMYxV3g`. However, the `resumedExecutionId` is `kNHtmOaLTu66f_QNU-wdDw`.
-
-### \<+pipeline.executionUrl>
-
-The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
-
-For example:
-
-```
-https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs/pipelines/Triggers/executions/EpE_zuNVQn2FXjhIkyFQ_w/pipeline
-```
-
-:::warning
-The version of this expression with an additional period, `<+pipeline.execution.Url>`, has been deprecated.
-:::
-
-### \<+pipeline.executionMode>
-
-This expression describes the pipeline's execution mode:
-
-* `NORMAL`: A normal execution. It could either have succeeded or failed.
-* `POST_EXECUTION_ROLLBACK`: A [post-deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments.md) execution.
-* `PIPELINE_ROLLBACK`: A [rollback pipeline](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) execution.
-
-![](./static/execution-mode-expression.png)
-
-You can use this expression in conditional executions.
-
-![](./static/execution-mode-conditional-execution.png)
-
-For example, you can create a conditional execution to ensure that a step runs only when a post-deployment rollback happens. Here's an example of the logs for this conditional execution scenario:
-
-![](./static/execution-mode-execution-output.png)
-
-### \<+pipeline.name>
-
-The name of the current pipeline.
-
-![](./static/harness-variables-25.png)
-
-### \<+pipeline.sequenceId>
-
-The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` is randomly generated for each execution, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
-
-The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
-
-For CD pipelines, the Id is named execution. For CI pipelines, the Id is named builds.
-
-![](./static/harness-variables-26.png)
-
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
-
-### \<+pipeline.startTs>
-
-The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/). For more information, go to [Triggers](/docs/category/triggers).
-
-### \<+pipeline.triggerType>
-
-The type of trigger. For more information, go to [Triggers](/docs/category/triggers).
-
-Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
-
-| **\<+pipeline.triggerType>** | **\<+trigger.type>** | **Description**                                               |
-| :--------------------------- | :------------------- | :------------------------------------------------------------ |
-| ARTIFACT                     | Artifact             | New artifact trigger. For example, new Docker Hub image tag   |
-| SCHEDULER_CRON               | Scheduled            | Scheduled Cron trigger                                        |
-| MANUAL                       | _null_               | Pipeline triggered using the RUN button in the user interface |
-| WEBHOOK_CUSTOM               | Custom               | Custom webhook trigger                                        |
-| WEBHOOK                      | Webhook              | SCM webhook trigger. For example, GitHub pull request         |
-
-### \<+pipeline.triggeredBy.name>
-
-The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
-
-If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
-
-### \<+pipeline.triggeredBy.email>
-
-The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
-
-### \<+pipeline.selectedStages>
-
-The list of stages selected for execution.
-
-### \<+pipeline.delegateSelectors>
-
-The pipeline level delegate selectors selected via runtime input.
-
-### \<+pipeline.storeType>
-
-If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
-
-### \<+pipeline.repo>
-
-For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
-
-### \<+pipeline.branch>
-
-For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
-
-## Deployment, pipeline, stage, and step status
-
-Deployment status values are a Java enum. You can see the list of values in the deployments **Status** filter:
-
-![](./static/harness-variables-27.png)
-
-You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
-
-#### Stage status
-
-The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
-
-You must use the expression after the stage in execution.
-
-#### Step status
-
-The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
-
-You must use the expression after the step in execution.
-
-## InputSet
-
-Displays the Input Set values for the execution as a JSON value. The list of values can be searched via `<+inputSet>`.
-
-Here's an example where the **Timeout** settings for the two steps preceding the step using `<+inputSet>` are using values from an Input Set:
-
-```
-{pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
-```
-
-## Stage
-
-The following variables provide information on the pipeline stage.
-
-### Stage-level variables
-
-Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
-
-<!-- Video:
-https://www.youtube.com/watch?v=lqbmO6EVGuU-->
-<DocVideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
-
-Once you've created a stage, its settings are in the **Overview** tab. For example, here is the **Overview** tab for a deploy stage.
-
-![](./static/harness-variables-28.png)
-
-In **Advanced**, you can add **Stage Variables**.
-
-Stage variables are custom variables you can add and reference in your stage and pipeline. They're available across the pipeline. You can override their values in later stages.
-
-You can even reference stage variables in the files fetched at runtime.
-
-For example, you could create a stage variable `name` and then reference its identifier in the Kubernetes values.yaml file used by this stage: `name: <+stage.variables.name>`:
-
-```
-name: <+stage.variables.name>
-replicas: 2
-
-image: <+artifacts.primary.image>
-...
-```
-
-When you run this pipeline, the value for `name` is used for the values.yaml file. The value can be a fixed value, expression, or runtime input.
-
-You reference stage variables **within their stage** using the expression `<+stage.variables.VARIABLE_NAME>`.
-
-You reference stage variables **outside their stage** using the expression `<+pipeline.stages.STAGE_NAME.variables.VARIABLE_NAME>`.
-
-### \<+stage.name>
-
-The name of the stage where the expression is evaluated.
-
-![](./static/harness-variables-30.png)
-
-### \<+stage.description>
-
-The description of the stage where the expression is evaluated.
-
-### \<+stage.tags>
-
-The tags on the stage where the expression is evaluated. For more information, go to [Tags Reference](../references/tags-reference.md).
-
-These tags are different from Docker image tags.
-
-### \<+stage.identifier>
-
-The [entity identifier](../references/entity-identifier-reference.md) of the stage where the expression is evaluated.
-
-### \<+stage.output.hosts>
-
-Lists all of the target hosts when deploying to multiple hosts.
-
-When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts.
-
-To run the step on all hosts, you use the repeat [Looping Strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
-
-```
-repeat:
-  items: <+stage.output.hosts>
-```
-
-Here is an example with a Shell script step.
-
-![](./static/harness-variables-31.png)
-
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
-
-### \<+stage.executionUrl>
-
-The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution.
-
-Use the following fully qualified expression to get the execution URL for a specific stage in the pipeline:
-
-```
-<+pipeline.stages.STAGE_ID.executionUrl>
-
-```
-
-### \<+stage.delegateSelectors>
-
-The stage level delegate selectors selected via runtime input
-
-## Service
-
-Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2.
-
-The use of variable expressions is different between v1 and v2.
-
-For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
-
-### Service-level variables for service v2
-
-To reference a service variable, use the expression `<+serviceVariables.VARIABLE_NAME>`.
-
-For example, `<+serviceVariables.myvar>`.
-
-### Service-level variables for service v1
-
-Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
-
-<!-- Video:
-https://www.youtube.com/watch?v=lqbmO6EVGuU-->
-<DocVideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
-
-### \<+serviceConfig.serviceDefinition.spec.variables.VAR_NAME>
-
-The value of the service-level variable in `VAR_NAME`.
-
-![](./static/harness-variables-32.png)
-
-Use expression anywhere after the service step in the pipeline.
-
-To reference the variables, click the copy button.
-
-![](./static/harness-variables-33.png)
-
-There are two options:
-
-- **Copy variable name:** use this option if you will only be referencing this variable in the current stage. Expression:
-  - `<+serviceConfig.serviceDefinition.spec.variables.NAME>`
-- **Copy fully qualified name:** use this option if you will be referencing this variable in another stage. Example:
-  - `<+pipeline.stages.STAGE_NAME.spec.serviceConfig.serviceDefinition.spec.variables.NAME>`
-
-You can use these expressions in any setting in your pipeline. Select the expression option and enter the expression.
-
-![](./static/harness-variables-34.png)
-
-To override the service variable in a script, reference its name and use a new value.
-
-### \<+service.name>
-
-The name of the service where the expression is evaluated.
-
-![](./static/harness-variables-35.png)
-
-### \<+service.description>
-
-The description of the service where the expression is evaluated.
-
-### \<+service.tags>
-
-The tags on the service where the expression is evaluated.
-
-To reference a specific tag use `<+service.tags.TAG_KEY>`.
-
-### \<+service.identifier>
-
-The [entity identifier](../references/entity-identifier-reference.md) of the service where the expression is evaluated.
-
-### \<+service.type>
-
-Resolves to stage service type, such as Kubernetes.
-
-![](./static/harness-variables-36.png)
-
-### \<+service.gitOpsEnabled>
-
-Resolves to a boolean value to indicate whether the GitOps option is enabled (true) or not (false).
-
-![](./static/harness-variables-37.png)
-
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart).
-
-### \<+serviceVariableOverrides.VARIABLE_NAME>
-
-Override a service variable during the execution of a step group. This provides significant flexibility and control over your pipelines. For more information, go to [Override service variables in step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups)
-
-## Manifest
-
-There are generic and deployment type-specific expressions for manifests.
-
-Manifest settings are referenced by **Id**.
-
-You can always determine the expressions you can use by looking at the service YAML.
-
-For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest Id and the `valuesPaths` key in the YAML.
-
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-            type: K8sManifest
-            spec:
-              store:
-                type: Harness
-                spec:
-                  files:
-                    - account:/Templates
-              valuesPaths:
-                - account:/values.yaml
-              skipResourceVersioning: false
-...
-```
-
-Let's look at a few generic manifest expressions.
-
-### \<+manifests.MANIFEST_ID.identifier>
-
-Resolves to the manifest Id in Harness.
-
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-...
-```
-
-### \<+manifests.MANIFEST_ID.type>
-
-Resolves to the manifest type. For example, `K8sManifest`.
-
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-            type: K8sManifest
-...
-```
-
-### \<+manifests.MANIFEST_ID.store>
-
-Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
-
-```
-...
-      manifests:
-        - manifest:
-            identifier: mymanifest
-            type: K8sManifest
-            spec:
-              store:
-                type: Harness
-                spec:
-                  files:
-                    - account:/Templates
-...
-```
-
-### \<+manifest.MANIFEST_ID.commitId>
-
-The commit Id of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
-
-You can copy the expressions for the Id and value of `commitId`.
-
-For example:
-
-Name: `<+pipeline.stages.satr.spec.execution.steps.rolloutDeployment.output.manifest.values.commitId>`
-
-Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
-
-## Artifact
-
-In order to use an artifact expression, you must select an artifact in the service definition of the Harness service you are deploying.
-
-If you have not selected an artifact, you will be prompted to select an artifact at runtime. If the artifact in the service definition is a runtime input, you will be prompted also.
-
-This is true even if the stage does not deploy an artifact, such as a custom stage.
-
-For example, here is how the common artifact expressions resolve for a Kubernetes deployment with a Docker image on Docker Hub:
-
-- **\<+artifacts.primary.tag>:** `stable`
-- **\<+artifacts.primary.image>:** `index.docker.io/library/nginx:stable`
-- **\<+artifacts.primary.imagePath>:** `library/nginx`
-- **\<+artifacts.primary.imagePullSecret>:** `****`
-- **\<+artifacts.primary.dockerConfigJsonSecret>:** `****`
-- **\<+artifacts.primary.type>:** `DockerRegistry`
-- **\<+artifacts.primary.connectorRef>:** `DockerHub`
-
-<details>
-<summary>Example output for all artifact expressions</summary>
-
-Here's an example where we use a Shell Script step to echo all the artifact expressions.
-
-```
-echo "artifacts.primary.image: "<+artifacts.primary.image>
-echo "artifacts.primary.connectorRef: "<+artifacts.primary.connectorRef>
-echo "artifacts.primary.digest: "<+artifacts.primary.digest>
-echo "artifacts.primary.identifier: "<+artifacts.primary.identifier>
-echo "artifacts.primary.imagePath: "<+artifacts.primary.imagePath>
-echo "artifacts.primary.imagePullSecret: "<+artifacts.primary.imagePullSecret>
-echo "artifacts.primary.label: "<+artifacts.primary.label>
-echo "artifacts.primary.metadata: "<+artifacts.primary.metadata>
-echo "artifacts.primary.primaryArtifact: "<+artifacts.primary.primaryArtifact>
-echo "artifacts.primary.tag: "<+artifacts.primary.tag>
-echo "artifacts.primary.type: "<+artifacts.primary.type>
-```
-
-Here's the output:
-
-```
-Executing command ...
-artifacts.primary.image: index.docker.io/johndoe/tweetapp:21
-artifacts.primary.connectorRef: Docker_Hub_with_Pwd
-artifacts.primary.digest: null
-artifacts.primary.identifier: primary
-artifacts.primary.imagePath: johndoe/tweetapp
-artifacts.primary.imagePullSecret: 123abc
-artifacts.primary.metadata: {image=index.docker.io/johndoe/tweetapp:21, tag=21}
-artifacts.primary.primaryArtifact: true
-artifacts.primary.tag: 21
-artifacts.primary.type: DockerRegistry
-Command completed with ExitCode (0)
-```
-
-</details>
-
-### \<+artifacts.primary.tag>
-
-Not Harness tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags. If you are deploying the Docker image `nginx:stable-perl`, the tag would be `stable-perl`.
-
-### \<+artifacts.primary.image>
-
-The full location to the Docker image. For example, `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
-
-For non-containerized artifacts, use `<+artifacts.primary.path>`, described [below](#artifact_path). To see just the image name, use `<+artifacts.primary.imagePath>`.
-
-Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
-
-For example, here is the **Artifacts** section with an artifact:
-
-![](./static/harness-variables-38.png)
-
-Here is the Values YAML file referencing the artifact in **Artifacts**:
-
-```
-name: example
-replicas: 2
-
-image: <+artifacts.primary.image>
-# dockercfg: <+artifacts.primary.imagePullSecret>
-
-createNamespace: true
-namespace: <+infra.namespace>
-
-...
-```
-
-For more information, go to [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
-
-### \<+artifacts.primary.path>
-
-The full path to the non-containerized artifact. This expression is used in non-containerized deployments.
-
-### \<+artifacts.primary.filePath>
-
-The file name of the non-containerized artifact. This expression is used in non-containerized deployments. For example, a ZIP file in AWS S3.
-
-### \<+artifacts.primary.imagePath>
-
-The image name, such as `nginx`. To see the entire image location use `<+artifacts.primary.image>`.
-
-### \<+artifacts.primary.imagePullSecret>
-
-If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in service definition **Manifests** section must use the `dockercfg` parameter.
-
-If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockercfg: <+artifacts.primary.imagePullSecret>`.
-
-values.yaml:
-
-```
-name: <+stage.variables.name>
-replicas: 2
-
-image: <+artifacts.primary.image>
-dockercfg: <+artifacts.primary.imagePullSecret>
-
-createNamespace: true
-namespace: <+infra.namespace>
-...
-```
-
-Go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) for more information.
-
-### \<+artifacts.primary.dockerConfigJsonSecret>
-
-In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
-
-If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
-
-Here is a sample values.yaml:
-
-```
-name: <+stage.variables.name>
-replicas: 2
-
-image: <+artifacts.primary.image>
-dockerconfigjson: <+artifacts.primary.dockerConfigJsonSecret>
-
-createNamespace: true
-namespace: <+infra.namespace>
-...
-```
-
-For more information, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
-
-### \<+artifacts.primary.type>
-
-The type of repository used to add this artifact in the service **Artifacts**. For example, Docker Hub, ECR, or GCR.
-
-### \<+artifacts.primary.connectorRef>
-
-The [entity identifier](../references/entity-identifier-reference.md) for the connector used to connect to the artifact repository.
-
-![](./static/harness-variables-39.png)
-
-### \<+\<+artifacts.primary.label>.get("")>
-
-This expression resolves to the Docker labels of a Docker image.
-
-For example, here are the labels for a Docker image:
-
-- `maintainer=dev@someproject.org`
-- `build_date=2017-09-05`
-- `multi.author=John Doe`
-- `key-value=xyz`
-- `multi.key.value=abc`
-
-In a Harness Shell script step or any setting where you want use the labels, you can reference them.
-
-```
-echo <+<+artifacts.primary.label>.get("maintainer")>
-echo <+<+artifacts.primary.label>.get("build_date")>
-echo <+<+artifacts.primary.label>.get("multi.author")>
-echo <+<+artifacts.primary.label>.get("key-value")>
-echo <+<+artifacts.primary.label>.get("multi.key.value")>
-```
-
-When you run the pipeline, the expressions will resolve to their respective label values.
-
-![](./static/harness-variables-40.png)
-
-### \<+artifacts.primary.metadata.SHA> or \<+artifacts.primary.metadata.SHAV2>
-
-Digest/SHA256 hash of the Docker image.
-Since Docker image manifest API supports two schema versions, schemaVersion1 and schemaVersion2, there could be SHA values corresponding to each version.
-
-Here are the expressions for referencing each version:
-
-SHA value of schemaVersion1: `<+artifacts.primary.metadata.SHA>`
-
-SHA value of schemaVersion2: `<+artifacts.primary.metadata.SHAV2>`
-
-### \<+artifact.primary.identifier>
-
-The Id of the Primary artifact added in a Service **Artifacts** section.
-
-![](./static/harness-variables-41.png)
-
-### \<+artifact.metadata.fileName>
-
-The file name of the Artifactory artifact.
-
-This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
-
-![](./static/artifact-file-name-variable.png)
-
-### Artifact rollback variables
-
-You can use the syntax, `<+rollbackArtifact.ARTIFACT_DEFINITION_IDENTIFIER>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment. 
-
-Harness pulls rollback artifact information from last successful deployment. If there's no previous, successful deployment, then the rollback artifact will return null. 
-
-### Sidecar artifacts
-
-Sidecar artifact expressions use the **Sidecar Identifier** to reference the sidecar artifact.
-
-![](./static/harness-variables-42.png)
-
-The sidecar identifier is set when you add the sidecar artifact. You can see it in the artifact listing.
-
-![](./static/harness-variables-43.png)
-
-Here are the sidecar expressions:
-
-- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.imagePath>`
-- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.image>`
-- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.type>`
-- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag>`
-- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef>`
-
-## Approval
-
-Whenever a user grants an approval in an Approval step, the pipeline maintains the user information of the approver for the rest of the pipeline execution. You can use these variables in notifications after an approval is granted.
-
-These variables are available for Approval steps only, not stages.
-
-:::note
-Currently, the `<+approval>` functor is supported for Harness approvals only.
-:::
-
-In the following example, a Deploy stage has two Approval steps. For each approval, the pipeline maintains a separate set of approval variables. Use the array index to access the variables for a specific approval.
-
-![](./static/approved-user-pipeline-example.png)
-
-### \<+approval.approvalActivities[0].user.name>
-
-The Harness username of the approver.
-
-### \<+approval.approvalActivities[0].user.email>
-
-The email address of the approver.
-
-### \<+approval.approvalActivities[0].comments>
-
-User comments from the approval, formatted as a single string. This variable is populated from the Comment output variable generated by the approval step.
-
-## Config files
-
-Files added in the **Config Files** section of a service are referenced using the following Harness expressions.
-
-- Plain text file contents: `<+configFile.getAsString("CONFIG_FILE_ID")>`
-- Base64-encoded file contents: `<+configFile.getAsBase64("CONFIG_FILE_ID")>`
-
-For more details, go to [Use config files in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files).
-
-If the config file has multiple text or encrypted files attached, you must use fileStore or secrets variables expressions:
-
-- `<+fileStore.getAsString("SCOPED_FILEPATH")>`
-- `<+fileStore.getAsBase64("SCOPED_FILEPATH")>`
-- `<+secrets.getValue("SCOPED_SECRET_ID")>`
-
-Here are some examples:
-
-- `<+configFile.getAsString("cf_file")>`
-- `<+configFile.getAsBase64("cf_file")>`
-- `<+fileStore.getAsString("/folder1/configFile")>`
-- `<+fileStore.getAsBase64("account:/folder1/folder2/configFile")>`
-- `<+secrets.getValue("account.MySecretFileIdentifier")>`
-
-## Environments
-
-### Environment-level variables for service v2
-
-Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2.
-
-The use of variable expressions is different between v1 and v2.
-
-For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
-
-To reference an environment-level variable, use the expression `<+env.variables.variableName>`.
-
-For example, to reference an environment variable named `envvar`, use the following expression:
-
-`<+env.variables.envvar>`
-
-![](./static/harness-variables-44.png)
-
-### \<+env.name>
-
-The name of the stage environment.
-
-![](./static/harness-variables-45.png)
-
-### \<+env.identifier>
-
-The [entity identifier](../references/entity-identifier-reference.md) of the stage's environment.
-
-### \<+env.description>
-
-The description of the environment.
-
-### \<+env.type>
-
-The environment type, such as `Production` or `PreProduction`.
-
-The available values are:
-
-- `PreProduction`
-- `Production`
-
-### \<+env.envGroupName>
-
-The name of the environment group to which the environment belongs (if defined). This expression resolves only if the deployment is done to an environment group.
-
-### \<+env.envGroupRef>
-
-The environment group reference. This expression resolves only if the deployment is done to an environment group.
-
-You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
-
-```
-<+env.type> != "Production"
-```
+<DocImage path={require('./static/harness-variables-45.png')} width="50%" height="50%" title="Click to view full size image" />
 
 :::tip
 
-Environment expressions can be used in service steps as well.
+Environment expressions are useful. For example, you can use them in Service steps, or you can use JEXL to evaluate them in [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings.md), such as `<+env.type> != "Production"`.
 
 :::
 
-## Infrastructure
+#### Custom environment-level variables
 
-The following expressions provide information about the pipeline infrastructure settings. The infrastructure in a pipeline is the **Infrastructure Definition** in the Harness environment used in the CD stage's **Environment** section.
+You can [define custom variables](./add-a-variable.md) in your environment and service definitions, and you can use expressions to reference those custom variables.
 
-### \<+infra.name>
+<DocImage path={require('./static/harness-variables-44.png')} width="50%" height="50%" title="Click to view full size image" />
 
-The name of the infrastructure definition used in the pipeline stage.
+Currently, there are two versions of [services and environments](/docs/continuous-delivery/get-started/services-and-environments-overview), v1 and v2. Services and environments v1 are being replaced by services and environments v2.
 
-![](./static/harness-variables-46.png)
+<!-- "The way you reference these custom variables can be different between v1 and v2." It is not clear that there is any difference or if this change is complete. -->
 
-### \<+infra.infraIdentifier>
+To reference custom environment-level variables, use the expression syntax `<+env.variables.variableName>`.
 
-The Id of the infrastructure definition used in the pipeline stage.
+### Deployment infrastructure expressions
 
-### \<+infra.tags>
+These expressions refer to deployment infrastructure configurations. Infrastructure definitions are associated with a deployment environment and they represent the actual clusters, hosts, etc., where Harness deploys a service.
 
-The [tags on an infrastructure definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-tags) used in the same CD stage where the expression is evaluated.
+* `<+infra.name>`: The name of the infrastructure definition used in a pipeline stage.
 
-To reference a specific tag use `<+infra.tags.TAG_KEY>`.
+   <DocImage path={require('./static/harness-variables-46.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### \<+infra.connectorRef>
+* `<+infra.infraIdentifier>`: The ID of the infrastructure definition used in a pipeline stage.
+* `<+infra.tags>`: The [tags on a CD stage's infrastructure definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-tags). To reference a specific tag use `<+infra.tags.TAG_KEY>`.
+* `<+infra.connectorRef>`: The ID of the Harness connector used in the Deploy stage's infrastructure definition.
+* `<+infra.connector.name>`: The name of the Harness connector used in the infrastructure definition.
+* `<+infra.namespace>`: The namespace used in the infrastructure definition.
+* `<+infra.releaseName>`: The release name used in the infrastructure definition.
 
-The Id of the connector used in the infrastructure definition.
+#### INFRA_KEY and INFRA_KEY_SHORT_ID
 
-### \<+infra.connector.name>
+`<+INFRA_KEY>` references the infrastructure key, which is a unique string that identifies a deployment target infrastructure.
 
-The name of the connector used in the infrastructure definition.
+The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
-### \<+INFRA_KEY>
+`<+INFRA_KEY_SHORT_ID>` is a shortened form of `<+INFRA_KEY>`. The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key.
 
 :::warning
 
-This expression is literally `<+INFRA_KEY>`. In this case `INFRA_KEY` *isn't* a placeholder.
+These expressions are literally `<+INFRA_KEY>` and `<+INFRA_KEY_SHORT_ID>`. These expressions use capital letters.
 
 :::
 
-The infrastructure key. The key is a unique string that identifies a deployment target infrastructure. It is typically used in the **Release Name** setting to add labels to release for tracking.
-
-For example, in the infrastructure definition of a deploy stage, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name.
+Infrastructure keys are typically used in the **Release Name** setting to add labels to release for tracking. For example, in the infrastructure definition of a deploy stage, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name, such as `release-<+INFRA_KEY>`.
 
 ![](./static/harness-variables-47.png)
 
-When you deploy, Harness adds the release name as a label. For example, in a Kubernetes deployment you can see `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
+When the deployment runs, Harness adds the release name as a label. For example, in a Kubernetes deployment, `release-<+INFRA_KEY` might resolve as `harness.io/release-name=release-2f9eadcc06e2c2225265ab3cbb1160bc5eacfd4f`.
 
 ```
 ...
@@ -1615,304 +556,492 @@ Pod Template:
 ...
 ```
 
-Harness can now track the release for comparisons and rollback.
+With the `INFRA_KEY`, Harness can track the release for comparisons and rollback.
 
-The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
+:::info
 
-See also [\<+INFRA_KEY_SHORT_ID>](/docs/platform/variables-and-expressions/harness-variables#infra_key_short_id).
+To resolve issues experienced with Kubernetes and Native Helm deployments when using the long form `release-<+INFRA_KEY>`, Harness now uses `<+INFRA_KEY_SHORT_ID>` in the default expression that Harness uses to generate a release name for the resources in Kubernetes and Native Helm deployments. This means that the **Release name** field, in the **Advanced** section of the **Cluster Details** in the infrastructure definition is now pre-populated with `release-<+INFRA_KEY_SHORT_ID>`.
 
-### \<+INFRA_KEY_SHORT_ID>
+:::
 
-Shortened form of the infrastructure key described in [\<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key).
+### Deployment instance expressions
 
-The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key described in [\<+INFRA_KEY>](/docs/platform/variables-and-expressions/harness-variables#infra_key).
+The following instance expressions are supported in [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
-The shortened form replaces `<+INFRA_KEY>` in the default expression that is used to generate a release name for the resources in Kubernetes and Native Helm deployments. In other words, the **Release name** field in the **Cluster Details** > **Advanced** section of an infrastructure definition is pre-populated with the expression `release-<+INFRA_KEY_SHORT_ID>`. The shorter form resolves issues that Kubernetes and Native Helm deployments experienced with the longer `release-<+INFRA_KEY>` format.
+These deployments can be done on physical data centers, AWS, and Azure. The deployment target determines which expressions you can use.
 
-### \<+infra.namespace>
+* For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+   * `<+instance.hostName>`: The host/container/pod name where the microservice/application is deployed.
+   * `<+instance.host.instanceName>`: Same as `<+instance.hostName>`.
+   * `<+instance.name>`: The name of the instance on which the service is deployed.
+* For Microsoft Azure or AWS:
+   * `<+instance.host.privateIp>`: The private IP of the host where the service is deployed.
+   * `<+instance.host.publicIp>`: The public IP of the host where the service is deployed.
 
-The namespace used in the infrastructure definition.
+To use instance expressions in pipelines, you must use a [repeat looping strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
-### \<+infra.releaseName>
-
-The release name used in the infrastructure definition.
-
-## Step
-
-The following instance expressions are for stage steps.
-
-### \<+step.name>
-
-The step name.
-
-### \<+step.identifier>
-
-The step [identifier](/docs/platform/references/entity-identifier-reference/).
-
-### \<+step.executionUrl>
-
-The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
-
-Use the following fully qualified expression to get the execution URL for a specific step in the pipeline:
-
-```
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
-```
-
-### \<+steps.STEP_ID.retryCount>
-
-When you set the failure strategy to **Retry Step**, you can specify the retry count for a step or all steps in the stage.
-
-Harness includes a `retryCount` built-in expression that resolves to the total number of times a step was retried:
-
-```
-<+execution.steps.STEP_ID.retryCount>
-```
-
-You can use this expression in a Shell Script step script anywhere after the step that you identify in the expression.
-
-For example, here is a script that resolves the retry count for the step with the Id `ShellScript_1`:
-
-```
-echo "retry count of ShellScript_1: <+execution.steps.ShellScript_1.retryCount>"
-```
-
-During pipeline execution, the expression would resolve to something like this:
-
-```
-retry count of ShellScript_1: 2
-```
-
-## Instances
-
-The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
-
-For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
-
-To use these instance expressions in a step, you must use the repeat [Looping Strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
-
-```
+```yaml
 repeat:
   items: <+stage.output.hosts>
 ```
 
-![](./static/harness-variables-48.png)
+When you use an instance expression in your pipeline, such as in a **Shell Script** step, Harness applies the script to all target instances. You do not have to loop through instances in your script.
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
+For examples, go to [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
-For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
+#### Instance attributes in deployment templates
 
-- `​<+instance.hostName>​`
-- `​<+instance.host.instanceName>`
-- `​<+instance.name>`
-
-For Microsoft Azure or AWS:
-
-- `​<+instance.host.privateIp>​`
-- `​<+instance.host.publicIp>`
-
-### Deployment templates
-
-For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
-
-The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
+For Deployment Templates, you can use instance expressions to reference host properties defined in the **Instance Attributes** in the deployment template.
 
 ![](./static/harness-variables-49.png)
 
-The following expressions refer to instance(s) collected by the mandatory **instancename** field.
+Instances collected by the mandatory **instancename** field can be referenced by the expressions `<+instance.hostName>`, `<+instance.host.instanceName>`, or `<+instance.name>`.
 
-- `​<+instance.hostName>​`
-- `​<+instance.host.instanceName>`
-- `​<+instance.name>`
+To reference the other properties added to **Instance Attributes**, use the expression syntax `<+instance.host.properties.PROPERTY_NAME>`. For example, if you added a property named `artifact`, you could reference it with the expression `<+instance.host.properties.artifact>`.
 
-The expression `<+instance.host.properties.PROPERTY_NAME>` can used to reference the other properties you added to **Instance Attributes**.
+### Kubernetes deployment expressions
 
-For example, in the example above you can see the `artifact` field name mapped to the `artifactBuildNo` property.
+#### HARNESS_KUBE_CONFIG_PATH
 
-To reference `artifact` you would use `<+instance.host.properties.artifact>`.
+While this doesn't follow the typical Harness expression syntax, `${HARNESS_KUBE_CONFIG_PATH}` is an expression referencing the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting their value to the KUBECONFIG environment variable.
 
-`instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+Harness only generates this kubeconfig file when a delegate is outside of the target cluster and is making a remote connection. When you set up the Kubernetes cluster connector to connect to the cluster, you select the **Specify master URL and credentials** option. The master URL and credentials you supply in the connector are put in the kubeconfig file and used by the remote delegate to connect to the target cluster.
 
-### \<+instance.hostName>
+Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using a delegate outside the target cluster and a Kubernetes cluster connector with the **Specify master URL and credentials** option.
 
-The host/container/pod name where the microservice/application is deployed.
+If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the delegate is already an in-cluster process.
 
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-### ​\<+instance.host.instanceName>
-
-The same as `<+instance.hostName>`.
-
-### \<+instance.name>
-
-The name of the instance on which the service is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-### \<+instance.host.privateIp>
-
-The private IP of the host where the service is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-### \<+instance.host.publicIp>
-
-The public IP of the host where the service is deployed.
-
-If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
-
-## Strategy
-
-You can use Harness expressions to retrieve the current execution status of the [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for nodes (stages/steps) using a matrix or repeat strategy.
-
-The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
-
-Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
-
-### \<+strategy.currentStatus>
-
-The current status of the looping strategy for the node with maximum depth.
-
-When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
-
-In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
-
-If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the current stage.
-
-### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
-
-The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
-
-For example, `echo <+strategy.node.cs1.currentStatus>`.
-
-### \<+\<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
-
-The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
-
-For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
-
-### identifierPostFix overview
-
-When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique Ids of the child stages/steps/step groups created by the looping operation.
-
-The `identifierPostFix` is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
-
-For example, here is a matrix strategy for a stage:
-
-```
-strategy:
-  matrix:
-    repo:
-      - docker
-      - gcr
-      - ecr
-```
-
-The above matrix will spawn 3 stages by picking `repo` values `docker`, `gcr`, and `ecr`.
-
-The `identifierPostfix` values would be `_docker`, `_gcr`, and `_ecr` for the different combinations of each stage run.
-
-Let's look at an example for parallelism:
-
-```
-strategy:
-  parallelism: 4
-```
-
-The above strategy will spawn 4 stages/steps and the `identifierPostfix` values will be `_0`, `_1`, `_2`, and `_3`.
-
-### \<+strategy.identifierPostFix>
-
-This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
-
-When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
-
-If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
-
-If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the `identifierPostFix` of the stage.
-
-Let's look at an example using the execution of a stage with the identifier `build_and_upload` and matrix looping strategy.
-
-Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
-
-### \<+step.identifierPostFix>
-
-This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
-
-### \<+stage.identifierPostFix>
-
-This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
-
-### \<+stepGroup.identifierPostFix>
-
-This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
-
-### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
-
-This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
-For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2.
-
-Use the following expressions to obtain the `identifierPostFix` for a specific step group:
-
-- `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
-- `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
-
-![](./static/nested-looping-strategy.png)
-
-Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
-
-### \<+strategy.node.STRATEGY_NODE_IDENTIFIER.\*>
-
-Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels.
-
-Here are some examples:
-
-- `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
-- `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
-- `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
-- `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
-- `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
-- `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
-- `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
-- `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
-- `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
-
-## Triggers
-
-### \<+trigger.artifact.build>
-
-Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
-
-When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
-
-![](./static/harness-variables-50.png)
-
-The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
-
-Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
-
-### \<+trigger.artifact.source.connectorRef>
-
-Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
-
-### \<+trigger.artifact.source.imagePath>
-
-Resolves to the image path for the artifact that fired the trigger.
-
-### Git trigger and payload expressions
-
-Harness includes built-in expressions for referencing trigger details such as a PR number.
+You can use the `${HARNESS_KUBE_CONFIG_PATH}` expression in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to set the environment variable at the beginning of your kubectl script, such as `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`. It cannot be used in other scripts such as a Terraform script.
 
 For example:
 
-- `<+trigger.type>`
-  - Webhook.
-- `<+trigger.event>`
-  - PR, PUSH, etc.
+```
+## Get the pods in the default namespace
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 
-For a complete list, see [Triggers Reference](../triggers/triggers-reference.md).
+## Restart a deployment object in the Kubernetes cluster
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+kubectl rollout restart deployment/mysql-deployment
+```
 
-### Triggers and RBAC
+#### kubernetes.release.revision
+
+You can use the expression `<+kubernetes.release.revision>` to get the deployment revision number.
+
+This expression requires delegate version 23.04.79106 or later.
+
+You can use this expression:
+
+- In the `values.yaml` file, OpenShift Params, and Kustomize Patches.
+- To reference the current Harness release number as part of your manifest.
+- To reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+
+**Important:** Users must update their delegate to version  to use this expression.
+
+### Manifest expressions
+
+Harness has generic manifest expressions and manifest expressions for specific deployment types.
+
+Manifest settings are referenced by the manifest ID, which is located at `service.serviceDefinition.spec.manifests.manifest.identifier` in the Harness Service YAML.
+
+<details>
+<summary>Use Service YAML to get manifest expression paths</summary>
+
+Reviewing the Service YAML can help you determine the expressions you can use. For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest `identifier` and the `valuesPaths` in the following YAML:
+
+```yaml
+...
+      manifests:
+        - manifest:
+            identifier: mymanifest                # <+manifests.MANIFEST_ID.identifier>
+            type: K8sManifest                     # <+manifests.MANIFEST_ID.type>
+            spec:
+              store:                              # <+manifests.MANIFEST_ID.store>
+                type: Harness
+                spec:
+                  files:
+                    - account:/Templates
+              valuesPaths:
+                - account:/values.yaml
+              skipResourceVersioning: false
+...
+```
+
+</details>
+
+Here are some generic manifest expressions:
+
+* `<+manifest.MANIFEST_ID.commitId>`: The commit Id of the manifests used in a service. This is captured in the Deployment step [execution output](#get-inputoutput-expressions-from-execution-details).
+* `<+manifests.MANIFEST_ID.identifier>`: Resolves to the manifest `identifier` in Harness. The `MANIFEST_ID` is the same as the resolved value of this expression; however, you could use this to use the manifest ID in a script, for example.
+* `<+manifests.MANIFEST_ID.type>`: Resolves to the manifest `type`.
+* `<+manifests.MANIFEST_ID.store>`: Resolves to where the manifest is stored. In the following example, the manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store):
+
+  ```yaml
+  ...
+        manifests:
+          - manifest:
+              identifier: mymanifest
+              type: K8sManifest
+              spec:
+                store:
+                  type: Harness
+                  spec:
+                    files:
+                      - account:/Templates
+  ...
+  ```
+
+### Helm chart expressions
+
+import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
+
+<HelmManifestExpressions name="helmexpressions" />
+
+### Pipeline expressions
+
+The following expressions reference information about a pipeline run, such as the execution ID or start time. For expressions referencing custom pipeline variables, go to [Custom variables](#custom-variables). For expressions referencing pipeline triggers, go to [Trigger expressions](#trigger-expressions).
+
+* `<+pipeline.identifier>`: The pipeline's [identifier](../references/entity-identifier-reference.md) for the pipeline.
+* `<+pipeline.name>`: The name of the current pipeline.
+* `<+pipeline.tags>`: The [tags](/docs/platform/references/tags-reference) for a pipeline. To reference a specific tag, use `<+pipeline.tags.TAG_NAME>`.
+* `<+pipeline.executionId>`: Every pipeline run (execution) is given a universally unique identifier (UUID). The UUID can be referenced anywhere. The UUID forms the unique execution URL, for example:`https://app.harness.io/ng/#/account/:accountId/cd/orgs/default/projects/:projectId/pipelines/:pipelineId/executions/:executionId/pipeline`.
+* `<+pipeline.resumedExecutionId>`: The execution ID of the root or original execution. This value is different from the `executionId` when it is a retry.
+* `<+pipeline.sequenceId>`: The incremental sequential Id for the execution of a pipeline.
+
+   While the `<+pipeline.executionId>` is randomly generated for each execution, the `<+pipeline.sequenceId>` increments with each run of the pipeline. The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
+
+   For CD pipelines, the Id is named execution. For CI pipelines, the Id is named builds.
+
+      ![](./static/harness-variables-26.png)
+
+   You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+
+* `<+pipeline.executionUrl>`: The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
+
+   :::warning
+   Harness has deprecated the version of this expression with an additional period, `<+pipeline.execution.Url>`.
+   :::
+
+* `<+pipeline.executionMode>`: This expression describes the pipeline's execution mode:
+   * `NORMAL`: A normal execution. It could either have succeeded or failed.
+   * `POST_EXECUTION_ROLLBACK`: A [post-deployment rollback](/docs/continuous-delivery/manage-deployments/rollback-deployments.md) execution.
+   * `PIPELINE_ROLLBACK`: A [rollback pipeline](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines) execution.
+
+   This expression is useful in [conditional executions](/docs/platform/pipelines/step-skip-condition-settings). For example, you can create a conditional execution to ensure that a step runs only when a post-deployment rollback happens.
+
+* `<+pipeline.startTs>`: The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/).
+* `<+pipeline.selectedStages>`: The list of stages selected for execution.
+* `<+pipeline.delegateSelectors>`: The pipeline-level [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) selected via runtime input.
+* `<+pipeline.storeType>`: If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
+* `<+pipeline.repo>`: For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
+* `<+pipeline.branch>`: For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
+
+### Secrets expressions
+
+The primary way to reference secrets is with expressions like `<+secrets.getValue("SECRET_ID")>`.
+
+For information about referencing secrets, go to the [Secrets documentation](/docs/category/secrets).
+
+### Service expressions
+
+Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
+
+<DocImage path={require('./static/harness-variables-35.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* `<+service.name>`: The name of the service defined in the stage where you use this expression.
+* `<+service.description>`: The description of the service.
+* `<+service.tags>`: The [tags](/docs/platform/references/tags-reference) on the service. To reference a specific tag use `<+service.tags.TAG_KEY>`.
+* `<+service.identifier>`: The [identifier](../references/entity-identifier-reference.md) of the service.
+* `<+service.type>`: Resolves to stage service type, such as Kubernetes.
+
+   <DocImage path={require('./static/harness-variables-36.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* `<+service.gitOpsEnabled>`: Resolves to a Boolean value to indicate whether [the GitOps option](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart) is enabled (`true`) or not (`false`).
+
+#### Custom service-level variables
+
+You can [define custom variables](./add-a-variable.md) in your environment and service definitions, and you can use expressions to reference those custom variables.
+
+<DocImage path={require('./static/harness-variables-32.png')} width="60%" height="60%" title="Click to view full size image" />
+
+Currently, there are two versions of [services and environments](/docs/continuous-delivery/get-started/services-and-environments-overview), v1 and v2. Services and environments v1 are being replaced by services and environments v2.
+
+To reference custom v2 service-level variables, use the expression syntax `<+serviceVariables.VARIABLE_NAME>`.
+
+To reference custom v1 service-level variables, use the expression syntax `<+serviceConfig.serviceDefinition.spec.variables.VARIABLE_NAME>`.
+
+:::tip Override service variables
+
+To [override a service variable during the execution of a step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/#override-service-variables-in-step-groups),  use`<+serviceVariableOverrides.VARIABLE_NAME>`.  This provides significant flexibility and control over your pipelines.
+
+:::
+
+### Service artifacts expressions
+
+You can use artifact expressions if you have selected an artifact in the [service definition of a service you are deploying](/docs/continuous-delivery/x-platform-cd-features/services/services-overview). If you have not selected an artifact, or your artifact is configured as runtime input (`<+input>`), you must select an artifact at pipeline runtime.
+
+For more information and artifact expression usage examples, go to [CD artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+
+<details>
+<summary>Example: Kubernetes artifacts expressions</summary>
+
+Here are example values for common artifact expressions for a Kubernetes deployment of a Docker image on Docker Hub:
+
+```
+<+artifacts.primary.tag>                       # Example value: stable
+<+artifacts.primary.image>                     # Example value: index.docker.io/library/nginx:stable
+<+artifacts.primary.imagePath>                 # Example value: library/nginx
+<+artifacts.primary.imagePullSecret>           # Example value: ****
+<+artifacts.primary.dockerConfigJsonSecret>    # Example value: ****
+<+artifacts.primary.type>                      # Example value: DockerRegistry
+<+artifacts.primary.connectorRef>              # Example value: DockerHub
+```
+
+You can also have [rollback artifacts](#rollback-artifacts) and [sidecar artifacts](#sidecar-artifacts).
+
+For a detailed example, go to [Add container images as artifacts for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md) and [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md)
+
+</details>
+
+#### Primary artifact names and paths
+
+Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
+
+* `<+artifacts.primary.image>`: The full location path to the Docker image, such as `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
+   * For non-containerized artifacts, use [`<+artifacts.primary.path>`](#artifact-path-filepath) instead.
+   * To get the image name only, use `<+artifacts.primary.imagePath>`.
+* `<+artifacts.primary.imagePath>`: The image name, such as `nginx`. To get the entire image location path use `<+artifacts.primary.image>`.
+* `<+artifacts.primary.path>`: The full path to the non-containerized artifact. This expression is used in non-containerized deployments.
+* `<+artifacts.primary.filePath>`: The file name of the non-containerized artifact. This expression is used in non-containerized deployments, such as a .zip file in AWS S3.
+
+For more information, go to [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services.md#artifacts) and [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
+
+#### Primary artifact ID, tags, and labels
+
+Use these expressions to get artifact identifiers, tags, and labels.
+
+* `<+artifacts.primary.identifier>`: The **Id** of the **Primary** artifact added in a Service's **Artifacts** section.
+
+   <DocImage path={require('./static/harness-variables-41.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* `<+artifacts.primary.tag>`: The tags on the pushed, pulled, or deployed artifact, such as AMI tags. For example, if you deployed the Docker image `nginx:stable-perl`, the `<+artifacts.primary.tag>` is `stable-perl`. This expression has no relationship to [Harness tags](/docs/platform/references/tags-reference.md).
+
+* `<+<+artifacts.primary.label>.get("")>`: This expression uses the `get()` method to extract Docker labels from a Docker image artifact. Specify the label key in `get()`. For example `<+<+artifacts.primary.label>.get("maintainer")>` pulls the maintainer tag, such as `maintainer=dev@someproject.org`.
+
+<details>
+<summary>Example: Reference artifact labels</summary>
+
+You can reference labels in Shell Script steps or elsewhere, for example:
+
+```
+echo <+<+artifacts.primary.label>.get("maintainer")>
+echo <+<+artifacts.primary.label>.get("build_date")>
+echo <+<+artifacts.primary.label>.get("multi.author")>
+echo <+<+artifacts.primary.label>.get("key-value")>
+echo <+<+artifacts.primary.label>.get("multi.key.value")>
+```
+
+When you run the pipeline, the expressions resolve to their respective label values in the execution logs.
+
+![](./static/harness-variables-40.png)
+
+</details>
+
+#### Primary artifact repo type and connector
+
+* `<+artifacts.primary.type>`: The type of repository used to add this artifact in the service's **Artifacts** section. For example, Docker Hub, ECR, or GCR.
+* `<+artifacts.primary.connectorRef>`: The ID of the Harness connector used to connect to the artifact repository.
+
+#### Primary artifact metadata
+
+* `<+artifacts.primary.metadata.SHA>` or `<+artifacts.primary.metadata.SHAV2>`: Digest/SHA256 hash of the Docker image.
+
+   Since Docker image manifest API supports two schema versions, schemaVersion1 and schemaVersion2, there could be SHA values corresponding to each version. For the SHA value of schemaVersion1, use `<+artifacts.primary.metadata.SHA>`. For the SHA value of schemaVersion2, use `<+artifacts.primary.metadata.SHAV2>`.
+
+* `<+artifact.metadata.fileName>` and `<+artifact.metadata.url>`: The artifact metadata file name and metadata file URL. Not applicable to all artifact types. If populated, you can find these values in the execution details for the **Service** step, under the **Output** tab. For more information, go to [CD artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
+
+   ![](./static/artifact-file-name-variable.png)
+
+#### Artifacts with dockercfg or dockerconfigjson
+
+* `<+artifacts.primary.imagePullSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml ` or manifest file in the service definition's **Manifests** section must use the `dockercfg` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockercfg: <+artifacts.primary.imagePullSecret>`.
+* `<+artifacts.primary.dockerConfigJsonSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml` or manifest files in the service definition's **Manifests** section must use the `dockerconfigjson` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+
+For more information and examples, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) and [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services.md#pull-an-image-from-a-private-registry).
+
+#### Rollback artifacts
+
+You can use the syntax, `<+rollbackArtifact.ARTIFACT_DEFINITION_ID>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment.
+
+Harness pulls rollback artifact information from last successful deployment. If there's no previous successful deployment, then rollback artifact expressions resolve to `null`.
+
+#### Sidecar artifacts
+
+Sidecar artifact expressions include:
+
+- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.imagePath>`
+- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.image>`
+- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.type>`
+- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag>`
+- `<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef>`
+
+Replace `SIDECAR_IDENTIFIER` with the **Sidecar Identifier/ID** assigned when you added the artifact to Harness.
+
+<DocImage path={require('./static/harness-variables-42.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<DocImage path={require('./static/harness-variables-43.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Service config files expressions
+
+You can use these expressions to reference files added in a service's **Config Files** section.
+
+- `<+configFile.getAsString("CONFIG_FILE_ID")>`: Get config file contents as plain text.
+- `<+configFile.getAsBase64("CONFIG_FILE_ID")>`: Get config file contents with Base64-encoding.
+
+For more information, go to [Use config files in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files.md#referencing-and-encoding-config-files).
+
+### Stage expressions
+
+The following expressions reference information for a pipeline stage.
+
+![](./static/harness-variables-30.png)
+
+* `<+stage.name>`: The name of the stage. The resolved value depends on the context where you use the expression.
+* `<+stage.description>`: The description of the stage.
+* `<+stage.tags>`: The [tags](/docs/platform/references/tags-reference) on the stage. To reference a specific tag, use `<+stage.tags.TAG_NAME>`. To reference tags from a stage outside the stage where you use the expression, use `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`.
+* `<+stage.identifier>`: The [identifier](../references/entity-identifier-reference.md) of the stage.
+* `<+stage.output.hosts>`: Lists all of the target hosts when deploying to multiple hosts.
+
+   When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts. To run the step on all hosts, use a [repeat looping strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target. For more information and examples go to [Deployment instance expressions](#deployment-instance-expressions) and [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
+
+* `<+stage.executionUrl>`: The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution. To get the execution URL for a specific stage in a pipeline use `<+pipeline.stages.STAGE_ID.executionUrl>`
+* `<+stage.delegateSelectors>`: The stage-level [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) selected via runtime input.
+
+#### Custom stage variables
+
+For information about custom stage variables, go to [Define variables](./add-a-variable.md).
+
+### Status expressions
+
+Pipeline, stage, and step status values are a Java enum. You can see the list of values in the **Status** filter on the Executions, Builds, or Deployments page:
+
+![](./static/harness-variables-27.png)
+
+You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
+
+* `<+pipeline.stages.STAGE_ID.status>`: The status of a stage. You must use the expression after the target stage has executed.
+* `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>`: The status of a step. You must use the expression after the target step has executed.
+
+#### Looping strategy statuses
+
+The statuses of the nodes (stages/steps) using a [matrix/repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) can be `RUNNING`, `FAILED`, or `SUCCESS`.
+
+Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
+
+* `<+strategy.currentStatus>`: The current status of the looping strategy for the node with maximum depth.
+   * When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
+   * In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
+   * If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the current stage.
+* `<+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>`: The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`. For example, `echo <+strategy.node.cs1.currentStatus>`.
+* `<+<+strategy.node>.get("STRATEGY_NODE_IDENTIFIER").currentStatus>`: The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`. For example, `echo <+<+strategy.node>.get("ShellScript_1").currentStatus>`.
+
+#### Status, currentStatus, and liveStatus
+
+Pipeline and stage status expressions can reference the `status`, `currentStatus`, or `liveStatus`. These variables track different statuses, and they can resolve differently depending on the success or failure of specific steps or stages.
+
+`status` refers to the running status of a single node. `currentStatus` and `liveStatus` provide the combined statuses of all running steps within a pipeline or stage. The difference between status types is based on how they handle step failures and if the status of steps running in a matrix or strategy is included in the overall status calculation.
+
+* **Status**: `status` expressions (such as `<+pipeline.stages.STAGE_ID.status>`) refer to the current running status of a single node, such as a pipeline, stage, or step. It provides information about the state of that specific node without considering the status of any parent, child, or sibling nodes. It reports the direct status of the target node.
+* **Current Status**: `currentStatus` expression (such as `<+pipeline.stages.STAGE_ID.currentStatus>`) represent the combined status of all the running steps within a pipeline or stage, except steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
+
+   `currentStatus` uses the statuses of all non-matrix steps to determines the overall status. If *any* non-matrix step fails, regardless of the progress or status of other steps, the `currentStatus` of both the pipeline and the stage resolves as `Failed`. This means that the failure of one step can affects the status of the entire pipeline or stage.
+
+   :::info
+
+   `currentStatus` *ignores* steps generated from matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `currentStatus` is `Success` because `currentStatus` ignores the matrix step.
+
+   :::
+
+* **Live Status**: Like `currentStatus`, `liveStatus` expressions (such as `<+pipeline.stages.stage1.liveStatus>`) also provides the combined status of all the running steps within a pipeline or stage; however it also considers the status of steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
+
+   `liveStatus` considers the statuses of *all* steps to determine the overall status. If *any* step fails, the `liveStatus` of both the pipeline and the stage resolves as `Failed`, regardless of the individual status of running or completed steps.
+
+   :::info
+
+   `liveStatus` *includes* steps generated by matrix/repeat looping strategies. This means that if a pipeline includes a step generated from a matrix, and the matrix step fails while all other steps succeed, then the `liveStatus` is `Failed` because `liveStatus` includes the matrix step.
+
+   :::
+
+<details>
+<summary>Example: Status determination</summary>
+
+The following example describes an ongoing execution with three steps named `step1`, `step2`, and `step3` within a stage called `stage1`.
+
+`step1` is executed using a matrix strategy, specifically with two values: `"john"` and `"doe"`.
+
+Assume this pipeline is running and the stage, steps, and matrix instances of `step3` have the following statuses:
+
+- `stage1`: Running
+- `step1`: Success
+- `step2`: Success
+- `step3` (matrix): Running
+   - `"john"`: Failed
+   - `"doe"`: Success
+
+In this example, the status values for `stage1` are as follows:
+
+- The `status` of `stage1` is `Running`. This is taken directly from the execution status of `stage1`.
+- The `currentStatus` of `stage1` is `Success`. This is determined from the statuses of all steps in the stage, excluding the matrix steps generated by `step3`.
+- The `liveStatus` of `stage1` is `Failed`. This is determined by considering the statuses of all steps in the stage, including the matrix steps generated by `step3`.
+
+</details>
+
+### Step expressions
+
+The following expressions are for steps in pipeline stages.
+
+* `<+step.name>`: The step name. The resolved value is relative to the context where you use the expression.
+* `<+step.identifier>`: The step [identifier](/docs/platform/references/entity-identifier-reference/).
+* `<+step.executionUrl>`: The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution. To get the execution URL for a specific step in a pipeline, use `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>`.
+* `<+steps.STEP_ID.retryCount>` or `<+execution.steps.STEP_ID.retryCount>`: When you set a [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) to **Retry Step**, you can specify the retry count for a step or all steps in the stage. The `retryCount` expressions resolve to the total number of times a step was retried.
+
+### Strategy expressions
+
+You can [use Harness expressions to retrieve the current execution status or identifiers for iterations of a matrix or repeat looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md#looping-strategy-expressions).
+
+### Trigger expressions
+
+* General Git trigger and payload expressions: Harness includes built-in expressions for referencing trigger details such as the `<+trigger.type>` or `<+trigger.event>`. For a complete list, go to the [Triggers Reference](../triggers/triggers-reference.md).
+* `<+trigger.artifact.build>`: Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../triggers/trigger-on-a-new-artifact.md).
+
+   When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
+
+   ![](./static/harness-variables-50.png)
+
+   The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
+
+   Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
+
+* `<+trigger.artifact.source.connectorRef>`: Resolves to the Harness connector Id for the connector used to monitor the artifact registry that fired the trigger.
+* `<+trigger.artifact.source.imagePath>`: Resolves to the image path for the artifact that fired the trigger.
+* `<+pipeline.triggeredBy.name>`: The name of the user or the trigger name if the pipeline is triggered using a webhook.
+   * For more information, go to [Trigger Pipelines using Git Events](../triggers/triggering-pipelines.md).
+   * If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
+* `<+pipeline.triggeredBy.email>`: The email of the user who triggered the pipeline. This returns `null` if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
+* `<+pipeline.triggerType>`: The type of trigger. Similar to `<+trigger.type>`.
+
+Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
+
+| **\<+pipeline.triggerType>** | **\<+trigger.type>** | **Description**                                               |
+| :--------------------------- | :------------------- | :------------------------------------------------------------ |
+| ARTIFACT                     | Artifact             | New artifact trigger. For example, new Docker Hub image tag   |
+| SCHEDULER_CRON               | Scheduled            | Scheduled Cron trigger                                        |
+| MANUAL                       | `null`               | Pipeline triggered using the RUN button in the user interface |
+| WEBHOOK_CUSTOM               | Custom               | Custom webhook trigger                                        |
+| WEBHOOK                      | Webhook              | SCM webhook trigger. For example, GitHub pull request         |
+
+<details>
+<summary>Triggers and RBAC</summary>
 
 Harness RBAC is applied to triggers in Harness, but it is not applied to the repositories used by the triggers.
 
@@ -1920,68 +1049,82 @@ For example, you might have an [On New Artifact Trigger](../triggers/trigger-on-
 
 You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 
-## Kubernetes
+</details>
 
-### $\{HARNESS_KUBE_CONFIG_PATH}
+## Troubleshooting expressions
 
-The path to a Harness-generated kubeconfig file containing the credentials you provided to Harness. The credentials can be used by kubectl commands by exporting its value to the KUBECONFIG environment variable.
+The following sections describe some common issues or troubleshooting scenarios for expressions. For more troubleshooting information, go to the [Harness Knowledge Base](/kb).
 
-Harness only generates this kubeconfig file when a delegate is outside of the target cluster and is making a remote connection. When you set up the Kubernetes cluster connector to connect to the cluster, you select the **Specify master URL and credentials** option. The master URL and credentials you supply in the connector are put in the kubeconfig file and used by the remote delegate to connect to the target cluster.
+### Debugging expressions
 
-Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using a delegate outside the target cluster and a Kubernetes cluster connector with the **Specify master URL and credentials** option.
+In addition to [getting inputs and outputs from execution details](#get-inputoutput-expressions-from-execution-details), you can debug expressions with Compiled Mode in the pipeline's **Variables** list.
 
-If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
+Open ***Variables** in the Pipeline Studio, and enable **View in Compiled Mode**.
 
-You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) step to set the environment variable at the beginning of your kubectl script:
+With Compiled Mode enabled, all variables in the panel are compiled to display their values based on the most recent execution. You can use the dropdown menu to use inputs from a different run.
 
-`export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
+![](./static/expression-evaluator-screen.png)
 
-Example: Get the pods in the default namespace
+Harness highlights expressions that are incorrect or can't be evaluated using the selected execution data. Once you identify the expressions that aren't evaluating correctly, you can disable Compiled Mode and correct the expressions or variables as needed.
 
+To test expression that aren't stored in pipeline variables, such as expressions in scripts, you can create a pipeline variable to use for debugging purposes, input the expression as the variable's value, and then use Compiled Mode to debug it.
+
+### String expressions can't use greater than or less than
+
+Greater than and less than operators aren't supported for string type expressions.
+
+String expressions only support equal to and not equal to operators.
+
+### Don't embed scripts in expressions
+
+You *can* use expressions in scripts, and you *can* manipulate expressions with methods and operators; however, **you can't write scripts *within* expressions**.
+
+For example, the following is not valid:
+
+```sh
+if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
+
+If your script requires this type of value manipulation, feed the expression into a script-level variable, and then manipulate the script variable to perform the manipulation. For example:
+
+```sh
+NAME = <+pipeline.name>
+
+if ((x * 2) == 5) { $NAME = abc; } else { $NAME = def; }
 ```
 
-Example: Restart a deployment object in the Kubernetes Cluster
+### Limit or remove expressions in comments
 
+Harness attempts to resolve all expressions, including expressions in script comments.
+
+Harness recommends removing unneeded expressions from comments so they don't cause unexpected failures or add build time through unnecessary processing.
+
+#### Expressions aren't valid in comments in Values YAML and Kustomize patches
+
+Regardless of their validity, you can't use Harness expressions in comments in:
+
+- Values YAML files (`values.yaml`) in Kubernetes, Helm chart, or Native Helm deployments.
+- Kustomize patches files.
+
+For example, the following values.yaml file won't process correctly because it has an expression in the comment.
+
+```yaml
+name: test
+replicas: 4
+image: <+artifacts.primary.image>
+dockercfg: <+artifacts.primary.imagePullSecret>
+createNamespace: true
+namespace: <+infra.namespace>
+# using expression <+infra.namespace>
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
-kubectl rollout restart deployment/mysql-deployment
-```
 
-The `${HARNESS_KUBE_CONFIG_PATH}` expression can be used in scripts in Shell script steps. It cannot be used in other scripts such as a Terraform script.
+### CI stage initialization fails with a "null value" error
 
-### kubernetes.release.revision
+If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
 
-Harness expression for the deployment revision number.
+### Default values can't start with an asterisk
 
-You can use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches.
-
-This will help you to:
-
-- Reference the current Harness release number as part of your manifest.
-- Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
-
-**Important:** Users must update their delegate to version 1.0.79100 to use this expression.
-
-## Helm chart expressions
-
-import HelmManifestExpressions from '/docs/continuous-delivery/shared/helm-manifest-expressions.md';
-
-<HelmManifestExpressions name="helmexpressions" />
-
-## Tag expressions
-
-You can reference tags using Harness expressions.
-
-You simply reference the tagged entity and then use `tags.TAG_NAME`, like `<+pipeline.tags.docs>`
-
-For example, here are several different references:
-
-- `<+pipeline.tags.TAG_NAME>`
-- `<+stage.tags.TAG_NAME>`
-- `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
-- `<+serviceConfig.service.tags.TAG_NAME>`
+Pipelines fails if a variable's default value starts with `*`. To avoid this wrap the asterisk or value in quotes, such as `"*"`.
 
 ## Migrate FirstGen expressions to NextGen
 
@@ -1994,6 +1137,12 @@ All FirstGen expressions use the delimiter `${...}`, such as `${approvedBy.name}
 In NextGen, the delimiter is `<+...>`, such as `<+approvedBy.name>`.
 
 :::
+
+For more information about migrating to NextGen, go to:
+
+- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
+- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
+- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 
 <details>
 <summary>AMI expressions</summary>
@@ -2306,9 +1455,3 @@ To achieve this same result in NextGen, you must declare each expression with se
 | `currentStep.type`  | Not applicable in NextGen    |
 
 </details>
-
-For more information about migrating to NextGen, go to:
-
-- [Upgrade guide](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md)
-- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
-- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)

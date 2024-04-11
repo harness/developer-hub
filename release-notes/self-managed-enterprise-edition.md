@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-03-29T10:00
+date: 2024-04-10T10:00
 sidebar_position: 16
 ---
 
@@ -65,6 +65,50 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+
+## April 10, 2024, patch version 0.15.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.15.1](https://github.com/harness/helm-charts/releases/tag/harness-0.15.1) |
+| Air Gap Bundle | [0.15.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.1) |
+| NG Manager | 1.27.12 |
+| CI Manager | 1.13.2 |
+| Pipeline Service | 1.64.2 |
+| Platform Service | 1.14.1 |
+| Access Control Service | 1.35.5 |
+| Delegate | 24.02.82402 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.86.2 |
+| Test Intelligence Service | 1.12.1 |
+| NG UI | 1.10.8 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.15.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed an issue where cloud-info pods crashed after upgrading to 0.15.0. (CCM-17154)
+
+- Fixed an issue where the GitOps service crashed after upgrading to 0.15.0. (CDS-95152)
 
 ## March 29, 2024, version 0.15.0
 
@@ -2236,7 +2280,7 @@ Due to the [GCR deprecation](https://cloud.google.com/artifact-registry/docs/tra
 
   Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
 
-  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+  For more information about building expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - The `pipelines/execution/{planExecutionId}/notes` API call did not have the `PIPELINE_EXECUTE` permission, so you could not update notes even if you had the permissions to execute the pipeline.
 
@@ -3547,7 +3591,7 @@ The Harness Self-Managed Edition Helm chart release 0.9.0 includes major changes
   - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
   - `<+strategy.node.strategy_node_identifier.*>`
 
-  For information on using the expressions, go to [Strategy](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy).
+  For information on using the expressions, go to [Use Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables).
 
 - You can now migrate services with Helm charts from Helm repository-stored artifacts from CG to NG. This will help in migrations. This feature is behind the feature flag `CDS_HELM_MULTIPLE_MANIFEST_SUPPORT_NG`. (CDS-73894)
 

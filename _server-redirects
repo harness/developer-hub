@@ -56,4 +56,7 @@
 /docs/get-started /docs/category/get-started-with-harness
 /docs/category/get-started-with-platform /docs/category/get-started-with-harness
 
+# Added by roshnisarangadharan on April 2024 for bringing Native Helm and Helm deployments under one folder
+/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart /docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart
+
 # Redirects generated from Front Matter [sytem generated goes below here]:

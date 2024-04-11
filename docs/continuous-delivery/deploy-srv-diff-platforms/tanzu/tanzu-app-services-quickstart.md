@@ -720,9 +720,6 @@ doc ticket = https://harness.atlassian.net/browse/CDS-75488
 enhancement ticket = https://harness.atlassian.net/browse/CDS-75250
 
 -->
-
-Use this deployment method when you want to apply a rolling upgrade to an existing deployment. You can also use this method with load-balancing scenarios that require reduced downtime. 
-
 This method deploys a new service or artifact version on all pods or instances in a single environment incrementally.
 
 :::info note

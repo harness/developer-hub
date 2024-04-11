@@ -79,7 +79,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 #### Native Helm deployments
 
-For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md) (Helm chart manifest), the following SDKs/tools are certified:
+For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart) (Helm chart manifest), the following SDKs/tools are certified:
 
 * `helm` v3.11
 * `kubectl` v.1.27.0
