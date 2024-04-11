@@ -585,7 +585,7 @@ function MyComponent({ flags }) {
 const MyComponentWithFlags = withFeatureFlags(MyComponent)
 ```
 
-#### Loading in async mode
+#### Load in async mode
 
 If Async mode is used, the `loading` prop will indicate whether the SDK has completed loading the flags. When loading completes, the `loading` prop will be `false` and the `flags` prop will contain all known flags.
 
