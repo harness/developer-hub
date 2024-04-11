@@ -550,7 +550,89 @@ const MyConditionalComponent = ifFeatureFlag('flag1', { matchValue: 'ABC123' })(
 )
 ```
 
+You can then use `MyConditionalComponent` as a normal component, and only render if flag1's value matches the passed condition.
 
+#### Loading fallback when in async mode
+
+If Async mode is used, by default the component will wait for flags to be retrieved before showing. This behaviour can be overridden by passing an element as `loadingFallback`; when loading the `loadingFallback` will be displayed until the flags are retrieved, at which point the component will either show or hide as normal.
+
+```
+import { Text } from 'react-native'
+import { ifFeatureFlag } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent() {
+  return <Text>This should render if the flag is on</Text>
+}
+
+const MyConditionalComponent = ifFeatureFlag('flag1', {
+  loadingFallback: <Text>Loading...</Text>
+})(MyComponent)
+```
+
+### withFeatureFlags
+
+The `withFeatureFlags` higher-order component (HOC) wraps your component and adds `flags` and loading as additional props. `flags` contains the evaluations for all known flags and `loading` indicates whether the SDK is actively fetching flags.
+
+```
+import { Text } from 'react-native'
+import { withFeatureFlags } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent({ flags }) {
+  return <Text>Flag1's value is {flags.flag1}</Text>
+}
+
+const MyComponentWithFlags = withFeatureFlags(MyComponent)
+```
+
+#### Loading in async mode
+
+If Async mode is used, the `loading` prop will indicate whether the SDK has completed loading the flags. When loading completes, the `loading` prop will be `false` and the `flags` prop will contain all known flags.
+
+```
+import { Text } from 'react-native'
+import { withFeatureFlags } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent({ flags, loading }) {
+  if (loading) {
+    return <Text>Loading...</Text>
+  }
+
+  return <Text>Flag1's value is {flags.flag1}</Text>
+}
+
+const MyComponentWithFlags = withFeatureFlags(MyComponent)
+```
+
+### withFeatureFlagsClient
+
+The React Native Client SDK internally uses the Javascript Client SDK to communicate with Harness. Sometimes it can be useful to be able to access the instance of the Javascript Client SDK rather than use the existing hooks or higher-order components (HOCs). The `withFeatureFlagsClient` HOC wraps your component and adds featureFlagsClient as additional prop. `featureFlagsClient` is the current Javascript Client SDK instance that the React Native Client SDK is using. This instance will be configured, initialized and have been hooked up to the various events the Javascript Client SDK provides.
+
+```
+import { Text } from 'react-native'
+import { withFeatureFlagsClient } from '@harnessio/ff-react-native-client-sdk'
+
+// ...
+
+function MyComponent({ featureFlagsClient }) {
+  if (featureFlagsClient) {
+    return (
+      <Text>
+        Flag1's value is {featureFlagsClient.variation('flag1', 'no value')}
+      </Text>
+    )
+  }
+
+  return <Text>The Feature Flags client is not currently available</Text>
+}
+
+const MyComponentWithClient = withFeatureFlagsClient(MyComponent)
+```
 
 ## Evaluate a Flag
 
