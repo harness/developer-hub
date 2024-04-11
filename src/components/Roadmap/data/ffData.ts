@@ -41,6 +41,12 @@ export const FfData: Horizon = {
     description: "Q2 2024, May-Jul 2024",
     feature: [
       {
+        tag: [{ value: "Flag and Target Management" }],
+        title: "Flag Tag Management v2",
+        description:
+          "Iterative improvements on existing flag tag management such as toggling a group of flags.",
+      },
+      {
         tag: [{ value: "Experimentation" }],
         title: "A/B Testing",
         description:
@@ -100,7 +106,7 @@ export const FfData: Horizon = {
         description: "Ability to use expressions in feature flag pipelines for dynamic changes.",
       },
       {
-        tag: [{ value: "Target Management" }],
+        tag: [{ value: "Flag and Target Management" }],
         title: "Flag Tag Management",
         description: "Ability to add a tag to a group of flags. Customers are using this to show services grouped together, team ownership, or business events related to a feature flag.",
       },

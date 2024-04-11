@@ -1,6 +1,8 @@
 ---
 id: vmware-cpu-hog
 title: VMware CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-cpu-hog
 ---
 
 VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. It checks the performance of the application running on the VMware VMs.

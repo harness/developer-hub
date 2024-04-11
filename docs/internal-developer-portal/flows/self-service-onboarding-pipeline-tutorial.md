@@ -4,6 +4,8 @@ description: This tutorial will give an idea on how to create a new service usin
 sidebar_position: 6
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 In this tutorial we will create a self service onboarding flow to create a new service using cookiecutter template and add it Harness IDP software catalog as a software component using the `catalog-info.yaml` followed by provisioning a Deployment Pipeline for the newly created service, using the [Harness Terraform Provider](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider/). 
 
 ## Pre-Requisite:
@@ -239,7 +241,9 @@ We also have a Terraform Var Files, as mentioned in the below example YAML.
 
 :::info
 
-Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+Software Templates currently support pipelines that are comprised only of [IDP Stage](https://developer.harness.io/docs/internal-developer-portal/flows/idp-stage)[custom stage](https://developer.harness.io/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and [CI stage with Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings/#add-the-run-step) with codebase disabled. Additionally, all inputs, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values).
+
+![](./static/pipeline-varialbles-idp-implementation.png)
 
 :::
 

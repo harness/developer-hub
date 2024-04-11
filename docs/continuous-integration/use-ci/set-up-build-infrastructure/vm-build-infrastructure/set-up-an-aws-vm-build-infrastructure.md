@@ -8,10 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -34,7 +32,7 @@ The following diagram illustrates a CI build farm using AWS VMs. The [Harness De
 This is an advanced configuration. Before beginning, you should be familiar with:
 
 * Using the AWS EC2 console and interacting with AWS VMs.
-* [Harness key concepts](../../../../get-started/key-concepts.md)
+* [Harness key concepts](/docs/platform/get-started/key-concepts.md)
 * [CI pipeline creation](../../prep-ci-pipeline-components.md)
 * [Harness Delegates](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * Drone VM Runners and pools:
@@ -81,9 +79,17 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 3. [Install Docker Compose](https://docs.docker.com/compose/install/).
 4. Attach the IAM role to the EC2 VM. For instructions, go to the AWS documentation on [attaching an IAM role to an instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#attach-iam-role).
 
+### Use a custom Windows AMI
+
+If you plan to use a custom Windows AMI in your AWS VM build farm, you must delete `state.run-once` from your custom AMI.
+
+In Windows, sysprep checks if `state.run-once` exists at `C:\ProgramData\Amazon\EC2Launch\state.run-once`. If the file exists, sysprep doesn't run post-boot scripts (such as `cloudinit`, which is required for Harness VM build infrastructure). Therefore, you must delete this file from your AMI so it doesn't block the VM init script.
+
+If you get an error about an unrecognized `refreshenv` command, you might need to [install Chocolatey](https://chocolatey.org/install) and add it to `$profile` to enable the `refreshenv` command.
+
 ## Configure the Drone pool on the AWS VM
 
-<!-- I don't think this is possible anymore because of the new delegate install UI.
+<!-- This isn't possible anymore because of the new delegate install UI.
 
 :::tip Option: Use Terraform
 
@@ -93,7 +99,7 @@ If you have Terraform and Go installed on your EC2 environment, you can use the 
 
 When you reach the step to download the delegate YAML, follow these steps to get the docker-compose.yaml file:
 
-1. In your Harness account, organization, or project, select **Delegates** under **Project Setup**.
+1. In your Harness account, organization, or project, select **Delegates** under **Project Settings**.
 2. Click **New Delegate** and select **Switch back to old delegate install experience**.
 3. Select **Docker** and then select **Continue**.
 4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
@@ -329,7 +335,7 @@ Install a Harness Docker Delegate on your AWS EC2 instance.
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.

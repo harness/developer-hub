@@ -1,6 +1,8 @@
 ---
 id: ecs-container-http-modify-body
 title: ECS container HTTP modify body
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-http-modify-body
 ---
 
 ECS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.

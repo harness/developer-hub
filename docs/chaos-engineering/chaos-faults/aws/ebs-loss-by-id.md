@@ -1,6 +1,8 @@
 ---
 id: ebs-loss-by-id
 title: EBS loss by ID
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-id
 ---
 
 EBS (Elastic Block Store) loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.

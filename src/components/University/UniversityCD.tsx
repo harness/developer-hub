@@ -399,18 +399,36 @@ export default function CertificationsCD() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-          Intensive two-day course is designed for engineers looking to deepen their understanding and expertise. 
+            Intensive two-day course is designed for engineers looking to deepen
+            their understanding and expertise.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
               {ilt
-                .filter((ilt) => ilt.module === "cd")
+                .filter((ilt) => {
+                  return ilt.tileType === "pre requisite";
+                })
                 .map((ilt) => (
                   <IltCard {...ilt} />
                 ))}
-              {ilt.filter((ilt) => ilt.module === "cd").length < 1 ? (
-                <p>ILT Coming Soon</p>
-              ) : null}
+
+              {/* {ilt
+                .filter((ilt) => {
+                  return ilt.module === "cd";
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))} */}
+              {ilt
+                .filter((ilt) => {
+                  return (
+                    ilt.module === "cd" ||
+                    (ilt.module === "cd" && ilt.tileType === "comming soon")
+                  );
+                })
+                .map((ilt) => (
+                  <IltCard {...ilt} />
+                ))}
             </div>
           </div>
         </div>

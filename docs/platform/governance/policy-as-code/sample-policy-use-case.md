@@ -4,19 +4,19 @@ description: See sample policies and when to use them.
 sidebar_position: 6
 ---
 
-:::important
+:::note
 Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 Harness provides governance using Open Policy Agent (OPA), policy management, and Rego policies.
 You can enforce policies in the following ways:
 
-* **Enforce policies at a scope:** Create a policy and apply it to all pipelines in your account, organization, and project. 
+* **Enforce policies at a scope:** Create a policy and apply it to all pipelines in your account, organization, and project.
 
   Policy evaluation occurs on pipeline-level events like **On Run** and **On Save**.
 For more information, go to [Harness Policy As Code quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
-* **Enforce policies at any stage:** Create a policy step and include a policy set and JSON payload to evaluate. 
+* **Enforce policies at any stage:** Create a policy step and include a policy set and JSON payload to evaluate.
 
   When the pipeline reaches the policy step, policy evaluation occurs. Data such as resolved expressions can be evaluated when the pipeline runs.
 
@@ -65,10 +65,7 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 	    - [Exclude vulnerabilities using STO output variables](#exclude-vulnerabilities-using-sto-output-variables)
 
 
-
-
 ## Policy samples
-
 
 ### Connector policy samples
 
@@ -78,7 +75,7 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 
 #### Enforce authorization type while configuring a Kubernetes connector
 
-Enforce authorization type to prevent users from setting up connectors that might not be standard or in compliance with the account owner's guidelines. 
+Enforce authorization type to prevent users from setting up connectors that might not be standard or in compliance with the account owner's guidelines.
 
 Here is a sample policy that you can evaluate using the **On Save** event for a Harness connector:
 
@@ -116,7 +113,7 @@ package connector
 
 # Choose a connector type to check
 connectorType := "K8sCluster"
-# Choose one or more user groups, identified by the "indentifier" property
+# Choose one or more user groups, identified by the "identifier" property
 AllowedUserGroups := ["_project_all_users"]
 
 deny[msg] {
@@ -165,7 +162,7 @@ deny[msg] {
 
 #### Prevent other developers from deploying into a non-compliant environment
 
-Administrators can enforce policies to restrict the environments that developers can deploy to. 
+Administrators can enforce policies to restrict the environments that developers can deploy to.
 
 Here is a sample policy to do this. This policy can be applied using the **On Run** event for a pipeline:
 
@@ -209,7 +206,7 @@ contains(arr, elem) {
 
 #### Enforce the container registry selected for building and publishing code
 
-Administrators can restrict and prevent users from publishing images to public repos, ensuring that only approved repos can be used. 
+Administrators can restrict and prevent users from publishing images to public repos, ensuring that only approved repos can be used.
 
 Here is a sample policy that can be applied using the **On Run** event for a pipeline:
 
@@ -241,7 +238,7 @@ deny[msg] {
 
 #### Prevent users from leveraging steps that are not allowed by the company
 
-You can restrict developers from using specific steps in their pipelines. 
+You can restrict developers from using specific steps in their pipelines.
 
 Here is a sample policy that can be applied using the **On Save** and **On Run** events for a pipeline:
 
@@ -277,7 +274,7 @@ contains(arr, elem) {
 
 #### Enforce a deployment freeze via policy
 
-Administrators can configure a deployment freeze via policy to supplement the [deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze) feature. The policy is great for one-off freezes as opposed to recurring freezes. 
+Administrators can configure a deployment freeze via policy to supplement the [deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze) feature. The policy is great for one-off freezes as opposed to recurring freezes.
 
 Here is a sample policy to do this, that can be applied using the **On Run** event for a pipeline:
 
@@ -313,10 +310,10 @@ deny[msg] {
         # Find all user groups that are in the project
         userGroup = input.metadata.userGroups[_]
         userGroup.identifier == "groupIdentifier"
-	
+
 	# Ensure if user is not part of the specific group 
         not contains(userGroup.users, input.metadata.user.uuid)
-  
+
 	# Ensure user is running pipeline only from default branch
         input.pipeline.gitConfig.branch == "defaultBranch"
 
@@ -325,7 +322,7 @@ deny[msg] {
 }
 
 ```
-#### Enforce a Stage Name via Regex 
+#### Enforce a Stage Name via Regex
 
 On Pipeline Save you can enforce a stage to adhere to a specific naming convention.
 
@@ -386,7 +383,7 @@ deny[msg] {
 
 ####  Enforce the flag types that are configured for Feature Flags
 
-Enforce policies to configure Feature Flags with a boolean value. 
+Enforce policies to configure Feature Flags with a boolean value.
 Here is a sample policy to do this, which can be applied using the **On Creation** events for a Feature Flag:
 
 ```json
@@ -402,7 +399,7 @@ deny[msg] {
 
 #### Deny the creation of Feature Flags that serve true by default
 
-Enforce policies to prevent users from configuring flags and serving true to all the end users of the flag. It allows for a safer rollout of the flag. 
+Enforce policies to prevent users from configuring flags and serving true to all the end users of the flag. It allows for a safer rollout of the flag.
 Here is a sample policy to do this, which can be applied on feature flag configuration:
 
 ```json
@@ -425,7 +422,7 @@ deny[msg] {
 
 #### Users want to enforce naming conventions for their Feature flags
 
-Establish policies to ensure no one falls outside the proper naming convention for internal flags when naming Feature Flags. 
+Establish policies to ensure no one falls outside the proper naming convention for internal flags when naming Feature Flags.
 Here is a sample policy to do this, which can be applied using the **On Save** event for the Feature Flag:
 
 ```json
@@ -455,7 +452,7 @@ deny[msg] {
 
 #### Enforce the use of stable templates in a pipeline
 
-Enforce policies to ensure that the correct version of a template is used in the pipeline. 
+Enforce policies to ensure that the correct version of a template is used in the pipeline.
 
 Here is a sample policy that can be applied using the `On Save` or `On Run` events for a pipeline:
 
@@ -499,7 +496,7 @@ deny[msg] {
 }
 ```
 
-#### Enforce an Approval step in a stage template 
+#### Enforce an Approval step in a stage template
 
 Ensure that an Approval Step is configured in a stage template when a user is creating a template. Here is a sample policy that can be applied using the **On Save** event of a template.
 
@@ -523,7 +520,7 @@ stages_with_approval[i] {
 
 #### Enforce specific environments to be configured for a stage template
 
-This policy enforces only allowed environments to be configured on a stage template at design time. 
+This policy enforces only allowed environments to be configured on a stage template at design time.
 
 Here is a sample policy that can be applied using the **On Save** of a template.
 
@@ -559,7 +556,7 @@ contains(arr, elem) {
 
 
 #### Enforce use of an approved stage template in a pipeline
- 
+
 You can apply this sample policy using the **On Save** or **On Run** events for a pipeline:
 
 ```json
@@ -643,9 +640,9 @@ deny[msg] {
 
 #### Enforce the stage structure of a pipeline
 
-Enforce policies to ensure pipelines are designed with a recommended or mandatory structure. 
+Enforce policies to ensure pipelines are designed with a recommended or mandatory structure.
 
-This ensures that pipeline designers have the freedom to design a pipeline while following the guardrails. 
+This ensures that pipeline designers have the freedom to design a pipeline while following the guardrails.
 
 Here is a sample policy that can be applied using the **On Save** event for a pipeline:
 
@@ -682,13 +679,13 @@ getIndex(str, stages) = result {
 
 #### Enforce steps in a pipeline
 
-Enforce policies to ensure mandatory steps are configured in a pipeline. 
+Enforce policies to ensure mandatory steps are configured in a pipeline.
 
 Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
 ```json
 
-ppackage pipeline
+package pipeline
 
 # Deny pipelines that are missing required steps
 # NOTE: Try adding "ShellScript" to the 'required_steps' list to see the policy fail
@@ -722,7 +719,7 @@ contains(arr, elem) {
 
 #### Enforce step order in a pipeline
 
-Enforce policies for the ordering of steps that are configured in a pipeline. 
+Enforce policies for the ordering of steps that are configured in a pipeline.
 
 Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
@@ -793,7 +790,7 @@ contains(arr, elem) {
 
 #### Ensure there are no principals in the secret secrets
 
-Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components). 
+Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components).
 
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 
@@ -813,7 +810,7 @@ deny["Principal is not allowed to save secrets"] {
 
 #### Enforce secret naming conventions
 
-Enforce policies to ensure that developers add secrets to Harness with a common naming standard. This makes it easy to identify and manage them. 
+Enforce policies to ensure that developers add secrets to Harness with a common naming standard. This makes it easy to identify and manage them.
 
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 
@@ -831,7 +828,7 @@ deny[msg] {
 
 #### Enforce what secrets manager can be used to save secrets.
 
-Enforce policies to store your secrets in a specific secrets manager. 
+Enforce policies to store your secrets in a specific secrets manager.
 
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 

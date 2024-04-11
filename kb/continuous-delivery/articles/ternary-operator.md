@@ -1,66 +1,52 @@
 ---
-description: KB - An example for Using Ternary Operators with triggers
-title: Using Ternary Operators with triggers
+description: Use ternary operators with triggers
+title: Use ternary operators with triggers
 ---
-# Introduction
 
 The ternary operator, also known as the conditional operator, is a shorthand notation for expressing conditional statements in various programming languages. It takes three operands and allows you to evaluate a condition and choose one of two expressions to execute based on the result of the condition.
 
 The syntax of the ternary operator is generally as follows:
+
 ```
-condition ? expression1 : expression2
+condition?expression1:expression2
 ```
 
 Here's how it works:
 
 1. The "condition" is an expression that evaluates to either true or false.
-
 2. If the condition is true, the expression before the colon (" : ") is executed and becomes the value of the entire expression.
-
 3. If the condition is false, the expression after the colon is executed and becomes the value of the entire expression.
 
+## Example: Use a ternary operator to populate a tag based on how a pipeline started
 
-## Problem Statement
+For this example, assume you need to create a trigger for a CD pipeline that automatically takes the tag value from `<+trigger.payload.tag>` if pipeline is executed from a webhook trigger, or else it takes the tag from from `<+pipeline.variables.tag>` if the pipeline is executed manually.
 
-Let's take an example for ternary operators:  
+Because you can ternary operators with [Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables), you can create a condition like:
 
-Create a trigger for a CD pipeline and it should automatically pick the tag value \<+trigger.payload.tag> when pipeline is executed via trigger and it should pick \<+pipeline.variables.tag> when the pipeline is executed manually.
+`<+condition?IF_TRUE:IF_FALSE>`
 
+For the true condition, `<+pipeline.triggerType>` should be `WEHOOK_CUSTOM`, and for the false condition you can use a runtime input (`<+input>`) or a pipeline variable.
 
-## Resolution
-
-For the above usecase we should use Ternary operators /docs/platform/variables-and-expressions/harness-variables/#ternary-operators 
-
-You can give a condition :
-```
-<+condition?<value_if_true>:<value_if_false>>
-```
- 
-
-For the true condition \<+pipeline.triggerType> should be WEHOOK_CUSTOM /docs/platform/variables-and-expressions/harness-variables/#pipelinetriggertype 
-and for the false condition you can put a runtime input \<+input> or a pipeline varibale
-
-Finally the ternary operator condition should look like: 
+The resulting ternary operator condition could be something like:
 
 ```
 <+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.tag>:<+trigger.payload.tag>>
 ```
 
+## Example: Get a default value from the trigger payload
 
-## Another Case: Use Default Value Based in a Trigger's Payload
+Suppose you have a trigger that provides runtime input for a pipeline from the trigger payload.
 
-Suppose we have a trigger that provides a runtime input for a pipeline based on the trigger's payload.
-
-Normally, in the trigger's runtime input form, we would have this:
+You could configure the trigger as follows, if the value is always available from the payload:
 
 ```
 myVariable: <+trigger.payload.myVariable>
 ```
 
-If we want to provide a default value for `myVariable` when it is missing from the trigger's payload, we can use the following in the trigger's runtime input form:
+However, if you want to provide a default value for `myVariable` when the value is missing from the trigger payload, you can use a ternary operator with Harness expressions, such as:
 
 ```
 <+<+trigger.payload>.contains("myVariable")?<+trigger.payload.myVariable>:"DEFAULT_VALUE">
 ```
 
-This ensures that the value for `myVariable` is provided as "DEFAULT_VALUE" in case the "myVariable" entry is not present in the trigger's payload.
+This ensures that `myVariable` takes a default value of `"DEFAULT_VALUE"` if the variable is not present in the payload.

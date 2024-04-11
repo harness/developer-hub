@@ -6,10 +6,9 @@ sidebar_position: 3
 
 Kubernetes external secrets enable Kubernetes resources to use external data stores securely. You can use Kubernetes-based external secrets for Harness Self-Managed Enterprise Edition license values in your Helm charts.
 
-:::info important
-This feature is currently in beta. For more information about beta features, go to [Beta, Limited GA, and GA definitions](/docs/get-started/release-status/).
+:::note
 
-Contact [Harness Support](mailto:support@harness.io) to get your Harness Self-Managed Enterprise Edition license files.
+Currently, this feature is in [beta](/docs/platform/get-started/release-status). Contact [Harness Support](mailto:support@harness.io) to get your Harness Self-Managed Enterprise Edition license files.
 
 :::
 

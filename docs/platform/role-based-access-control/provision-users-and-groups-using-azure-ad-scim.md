@@ -19,7 +19,7 @@ This topic describes how to use an Microsoft Entra ID SCIM integration for autom
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../get-started/key-concepts.md).
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your Microsoft Entra ID account, and you must be an **Account Admin** in Harness.

@@ -1,8 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-tags: [NextGen, "software engineering insights"]
-date: 2023-09-01T10:00:10
+date: 2024-03-30T10:00:10
 sidebar_position: 15
 ---
 
@@ -25,12 +24,74 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## March 2024
 
+### Version 202403.2.1
+
+<!-- Mar 30, 2024 -->
+
+#### Hotfix
+
+* Added support for a new column **Time Spent In Stage** in the **Issue Time Across Stages report** drill-down. This field now displays the specific amount of time spent in each stage as selected in the Bar Chart widget. (SEI-6202)
+
+### Version 202403.2
+
+<!-- Mar 29, 2024 -->
+
+#### New features and enhancements
+
+* Added support for displaying the decimal Story Points as the nearest integer value in all the reports and drill-down for the Jira integration. (SEI-5758)
+* Added support for three new columns in the **Issue Hygiene report** drill-down. (SEI-5137) (SEI-6259)
+  * **Current Sprint:** This column in the drill down will show the current sprint to which the ticket is assigned.
+  * **Previous Sprints:** This column will display the names of all previous sprints to which the ticket was assigned.
+  * **Sprint Hops:** This column will indicate how many times the ticket has been moved across sprints.
+* Added support to allow users to share an Insight with other contributors and display data for the selected time interval under the Insight settings. (SEI-6173)
+* The **Multi-Series Report**, when configured using the **Issues Report**, now includes support for the **Line Chart** as a visualization type. (SEI-6177)
+
+<img
+  src={require('./static/multi-series-report.png').default}
+  alt="Example banner" height="100%" width="50%" border="0"
+/>
+
+* Added support for a new Propel node **List GitHub Team**s to retrieve the complete list of team names within a specific organization. (SEI-6047)
+* The **Trend Line** in the **Issue Backlog Trend Report** is now set to be dynamic with the selected stacks and labels in the widget. (SEI-5843)
+
+#### Deprecation notice
+
+* The option to download the Triage data using the Download button has now been deprecated. You will be impacted by this if you have enabled Triage rules under your SEI project for the Jenkins integration. Contact [Harness Support](mailto:support@harness.io) for assistance.
+* The option to configure the Github Actions integration using Webhook has been deprecated. (SEI-5739)
+
+#### Early access features
+
+* Improved the **Diagnostic Tab** with the following enhancements.
+  * Support for displaying **Project & Sprint** details has been added to the **Integration Status** section.
+  * Now, clicking on the associated Project name will open the Project details page, displaying all the Issues, Status, and their associated details.
+  * Clicking on the associated Sprint name will now open the Sprint details page, displaying all the Issues included as part of the selected Sprint.
+  * Selecting the issue key under the Sprints or Project tab will now automatically redirect you to the details page of the selected issue. <br /> <br /> This new Diagnostics page feature is currently in **BETA** and is behind the Feature Flag `<SEI_SHOW_DIAGNOSTIC_TILE>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  
+* Added support to measure the incident recovery time using the **DORA MTTR report** for the **PagerDuty integration**. PagerDuty is a cloud-based incident response platform that integrates with various monitoring tools to alert the appropriate teams when an issue occurs with their systems or services. To use this functionality, ensure that you configure the DORA profile to measure the MTTR metric using the PagerDuty integration. <br /> <br />Find the resource below to get started with using this feature.
+  * [Configure the Pagerduty integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+  * [Measure incident recovery time using the DORA Mean Time to Restore report.](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery) <br /> <br />
+  
+  This feature is currently in **BETA** and is accessible behind the Feature Flag `<SEI_MTTR_PAGERDUTY_ENABLED>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  
+
+<DocVideo src="https://www.youtube.com/embed/cKZF4SFxgIE?si=9U7SuECmWTVxxTqz" />
+
+* The **SEI Rally integration** is now supported for the following widgets: **DORA Lead Time for Changes report** & **DORA MTTR report**. This feature is currently in **BETA** is accessible behind the Feature Flag `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+#### Fixed issues
+
+* Improved the error messaging associated with the issue where users were unable to update the contributor data by uploading a CSV file due to incorrect headers in the CSV file. (SEI-5785)
+* Fixed the bug on the **Issue Hops report** where the **Total Tickets** field was displayed as zero for the Rally integration. (SEI-6279)
+* The issue that caused the hygiene filters from being applied to the **Issue Hygiene report** has been resolved.
+* The **DORA Deployment Frequency** and **Change Failure Rate report** was not displaying data correctly when configured with certain **Filters** such as `components`, `labels`, `fix_versions`, `versions`, and `Starts with` and `Contains` **Filter Settings** under the **DORA profile** definition. This issue has been resolved. Note that if you have these Filters configured in your DORA settings, you will need to delete and re-configure the profile settings. (SEI-6164)
+
 ### Version 202403.1.1
 
 #### Hotfix
 
 * Sprint reports and drill-down reports inaccurately included certain issues resolved outside their designated sprint time. This has been fixed to accurately display relevant issues resolved within the sprint period by considering the **Issue Resolved In** field for each item. Tickets falling on the **Outside of Sprint** category are not included in the velocity calculation, as they represent work completed before the start of the sprint. (SEI-6170)
 * Added support to retrieve and display up to 999 active versions for the **Contributor** list. (SEI-5908)
+* The repository selection dropdown was not displaying data in the Collection definition for the Bitbucket integration. This issue has been fixed. (SEI-6245)
 
 ### Version 202403.1
 
@@ -83,8 +144,8 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * Improved the ingestion logic to fetch information for the **Pull Request** related to the **Development Field** in the work item in **Azure Boards** for the **Azure DevOps** integration. Please note that this feature is currently in `BETA`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-2265) (SEI-5064) (SEI-5065)
 * The release includes a new integration for the **Rally Software**.
   Rally is a web-based platform for managing and tracking the entire application development lifecycle, including project management, release planning, iteration planning, and defect tracking. (ECOE-3) <br/> <br/>
-  To learn more, go to [Rally integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-rally). <br/> <br/>
-  This feature is currently in `BETA` is accessible behind the entitlement `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  To learn more, go to [Rally integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally). <br/> <br/>
+  This feature is currently in `BETA` is accessible behind the Feature Flag  `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Fixed issues
 
@@ -116,7 +177,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 #### Early access features
 
-* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the entitlement `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
+* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
 
 #### Fixed issues
 
@@ -125,7 +186,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * There was some inconsistency in the data displayed on the **Sprint Metrics Trend Report** when using [Azure DevOps](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the integration for the **Issue Management Tool**. This has been fixed now. (SEI-4690)
 * In the **Lead time by Time Spent in Stages report** there was an issue where in the extended drill-down view the data was displayed incorrectly. This has been resolved now. (SEI-4753)
 * In the [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) integration, there was a bug where the **Custom Hygienes** were displayed as blank and were only showing story points as the criteria to define the hygiene misses. This has been fixed now. (SEI-5076)
-* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
+* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
 * In the **Issue Backlog Trend report** and the **SCM Issues Resolution Time Report** drill-down, there was an issue where the `Ticket Lifetime (Resolution Time)` column data was not visible in the downloaded CSV file. This issue has been resolved now. (SEI-5237) (SEI-5269)
 * There were two known issues in the **Sprint Metrics Report** related to how certain Jira tasks/items were being counted.
   * Some Jira tasks were still appearing in the report even after they had been removed during the middle of the sprint. This happened because these tasks were included when generating metrics for the report. This has been fixed and now any tasks which are deleted mid-sprint will not appear in the Report. (SEI-5259)

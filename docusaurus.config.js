@@ -111,8 +111,8 @@ const config = {
             to: "docs",
             items: [
               {
-                label: "Get Started",
-                to: "docs/get-started",
+                label: "Platform",
+                to: "docs/platform",
               },
               {
                 label: "Code Repository",
@@ -163,10 +163,6 @@ const config = {
                 to: "docs/software-engineering-insights",
               },
               {
-                label: "Platform",
-                to: "docs/platform",
-              },
-              {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
@@ -177,10 +173,6 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes",
-              },
-              {
-                label: "Roadmap",
-                href: "/roadmap",
               },
               {
                 label: "FAQs",
@@ -207,7 +199,7 @@ const config = {
             to: "university",
             items: [
               {
-                label: "Learn Harness",
+                label: "Learn Harness from Experts",
                 to: "university",
               },
               {
@@ -255,10 +247,19 @@ const config = {
                 label: "Knowledge Base",
               },
               {
+                to: "kb/reference-architectures",
+                label: "Reference Architectures",
+              },
+              {
                 to: "community",
                 label: "Community",
               },
             ],
+          },
+          {
+            label: "Roadmap",
+            position: "right",
+            href: "/roadmap",
           },
 
           {
@@ -346,7 +347,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA",
               },
               {
                 label: "API Reference",
@@ -397,6 +398,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Do not sell or share my personal information",
+                to: "https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7",
+              },
             ],
           },
         ],
@@ -414,18 +419,9 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
-      /*
-      announcementBar: {
-        id: "support_us",
-        content:
-          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
-        backgroundColor: "#000000",
-        textColor: "#ffffff",
-        isCloseable: true,
-      },
-      */
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
@@ -445,29 +441,6 @@ const config = {
           "firstgen-.*",
           "first-gen.*",
           "-firstgen.*",
-          
-          // paths for category pages
-          // "^/docs/category/quickstarts.*",
-          // "^/docs/category/continuous-delivery.*",
-          // "^/docs/category/continuous-delivery-overview.*",
-          // "^/docs/category/general-deployment-features.*",
-          // "^/docs/category/deployment-strategies-and-integrations.*",
-          // "^/docs/category/aws-deployments-and-provisioning.*",
-          // "^/docs/category/general-aws-.*",
-          // "^/docs/category/azure-deployments-and-provisioning*",
-          // "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
-          // "^/docs/category/google-cloud.*",
-          // "^/docs/category/native-helm-deployments.*",
-          // "^/docs/category/iis-net-deployments.*",
-          // "^/docs/category/kubernetes-deployments.*",
-          // "^/docs/category/tanzu-application-service-formerly-pivotal.*",
-          // "^/docs/category/terraform-1.*",
-          // "^/docs/category/terragrunt.*",
-          // "^/docs/category/traditional-deployments-ssh.*",
-          // "^/docs/category/custom-deployments.*",
-          // "^/docs/category/continuous-verification.*",
-          // "^/docs/category/model-your-cd-pipeline.*",
-          // "^/docs/category/harness-git-based-how-tos.*",
         ],
       },
       utmCookie: {

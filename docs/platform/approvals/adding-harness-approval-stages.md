@@ -184,7 +184,7 @@ You can select one of the following types of expression for user groups:
 
 ### Approval notifications to approvers
 
-:::info note
+:::note
 
 Currently, details of service, environment and infrastructure definition for CD stages in approval notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 

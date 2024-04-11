@@ -26,7 +26,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 
 ## Before You Begin
 
-* Review Harness Key Concepts [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
+* Review Harness Key Concepts [Harness Key Concepts](/docs/platform/get-started/key-concepts) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s)
@@ -408,17 +408,17 @@ Per AWS documentation: Example policies for working with the AWS CLI or an AWS S
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use all of the [instance expressions](/docs/platform/variables-and-expressions/harness-variables) to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [\<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [\<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
-* [\<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
+* `<+instance.hostName>`
+* `<+instance.host.hostName>`
+* `<+instance.name>`
 
 For Microsoft Azure or AWS:
 
-* [\<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
-* [\<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
+* `<+instance.host.privateIp>`
+* `<+instance.host.publicIp>`
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

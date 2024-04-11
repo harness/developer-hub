@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-memory-hog
 title: VMware Windows Memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-memory-hog
 ---
 
 VMware Windows Memory hog applies stress on the Memory resources on Windows OS based VMware VM.

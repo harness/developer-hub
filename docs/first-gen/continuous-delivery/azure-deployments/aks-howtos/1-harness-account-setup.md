@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).This topic describes how to set up your Harness account settings to support an Azure deployment.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).
+
+This topic describes how to set up your Harness account settings to support an Azure deployment.
 
 ### Limitations
 

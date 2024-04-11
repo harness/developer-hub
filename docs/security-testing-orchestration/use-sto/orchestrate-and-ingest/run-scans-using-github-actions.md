@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 * The type of step to use depends on your build infrastructure. For Harness Cloud infrastructures, use Action steps. For Kubernetes infrastructures, you can use Action or Plugin steps.
 
-* [GitHub](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#the-components-of-github-actions) and [Harness](/docs/get-started/key-concepts) use slightly different terminologies for similar concepts:
+* [GitHub](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#the-components-of-github-actions) and [Harness](/docs/platform/get-started/key-concepts) use slightly different terminologies for similar concepts:
 
   * GitHub **workflow** = Harness **pipeline**
   * GitHub **job** = Harness **Stage**

@@ -22,9 +22,8 @@ Depending on your requirement, probes can do a lot more than what is discussed e
 
 ## Why is it important?
 
-
-* Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults. 
-* It also brings reusability since you create the validation instance first and use it across different experiments. 
+* **Shareable**: Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults. 
+* **Reusability**: You can create the validation instance first and use it across different experiments. 
 * It avoids repeated creation of same probes for similar requirements. 
 
 This is also in accordance with how chaos engineering pans out:
@@ -40,7 +39,7 @@ HCE faciliates 6 types of resilience probes listed below. Click each probe to na
 3. [Kubernetes probe](/docs/chaos-engineering/features/probes/k8s-probe)
 4. [Prometheus probe](/docs/chaos-engineering/features/probes/prom-probe)
 5. [Datadog probe](/docs/chaos-engineering/features/probes/datadog-probe)
-6. Dynatrace probe
+6. [Dynatrace probe](/docs/chaos-engineering/features/probes/dynatrace-probe)
 7. [SLO probe](/docs/chaos-engineering/features/probes/slo-probe)
 
 ## Generic run properties for all probes

@@ -27,6 +27,7 @@ For guidance on ramping up your teams using templates, go to [Templates ramp-up 
 * When you convert a fixed type input to a runtime input in your template, the input type does not change in the linked pipeline. You must click the template in the linked pipeline to refresh it and save the pipeline again.
 * When you create a pipeline from a template, you cannot add, edit, or delete pipeline variables in the UI.
 * Pipeline templates with chained pipeline stages are not supported.
+* When using multiple nested templates, you must manually reconcile the changes or force reconcile through **More Options** (&vellip;).
 
 ## What is a template in Harness?
 

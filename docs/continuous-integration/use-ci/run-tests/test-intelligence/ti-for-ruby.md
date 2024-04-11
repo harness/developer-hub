@@ -269,6 +269,8 @@ You can add multiple paths. If you specify multiple paths, make sure the files c
 
 Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
+Stage-level parallelism is recommended for Ruby.
+
 ### Pre-Command, Post-Command, and Shell
 
 - **Pre-Command:** Enter commands for setting up the environment before running the tests.

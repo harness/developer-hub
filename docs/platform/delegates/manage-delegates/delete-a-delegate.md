@@ -39,14 +39,14 @@ Use the following command to retrieve a list of deployments:
 The deployment name is specified in the `metadata.name` field of the Kubernetes manifest you used to install the delegate.
 
 ```yaml
-...  
-apiVersion: apps/v1  
-kind: Deployment  
-metadata:  
-  labels:  
-    harness.io/name: doc-demos  
-  name: doc-demos  
-  namespace: harness-delegate-ng  
+...
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    harness.io/name: doc-demos
+  name: doc-demos
+  namespace: harness-delegate-ng
 ...
 ```
 
@@ -70,7 +70,7 @@ Locate the delegate in the Harness account/Project/Org, select more options (⋮
 
 Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient. The grace period is configurable. For more information on graceful shutdown, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process.md).
 
-If you do not delete the delegate in the UI, Harness automatically removes it after six hours. 
+If you do not delete the delegate in the UI, Harness automatically removes it after six hours.
 
 ### Delete a legacy delegate
 

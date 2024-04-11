@@ -2,6 +2,8 @@
 title: Concepts
 sidebar_position: 2
 description: ChaosGuard concepts and how they are enforced
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/chaosguard-concepts
 ---
 This section walks you through the concepts of [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md) and how they enforce advanced security policies on a chaos-enabled platform.
 

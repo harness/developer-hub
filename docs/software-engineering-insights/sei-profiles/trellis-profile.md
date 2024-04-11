@@ -6,6 +6,10 @@ sidebar_position: 20
 
 Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score) are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
 
+:::info
+The 202402.1 release included a new experience for the Trellis profile configuration at the Collection level i.e. Trellis Factors settings, which enhance the effectiveness and accuracy of Trellis Scores calculation based on the custom attributes of the contributors.<br /> <br /> The feature is currently in BETA. To learn more, go to [Trellis Factors](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors)
+:::
+
 To create or edit a Trellis profile:
 
 1. In your Harness project, go to the SEI module.

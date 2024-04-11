@@ -164,7 +164,7 @@ If you want to run particular steps when a stage fails, make sure you add those 
 
 The stage failure strategy applies to all steps that do not have their own failure strategy. A step's failure strategy takes precedence over a step group's failure strategy, which takes precedence over a stage's failure strategy.
 
-Step failure strategies are evaluated before step group's and stage's failure strategy. 
+Step failure strategies are evaluated before step group's and stage's failure strategy.
 
 The order of the steps determines which failure strategy is evaluated first.
 

@@ -1,6 +1,8 @@
 ---
 id: ecs-update-container-timeout
 title: ECS update container timeout
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-update-container-timeout
 ---
 
 ECS update container timeout modifies the start and stop timeouts for ECS containers in Amazon ECS clusters. The fault allows you to specify the duration for which the containers should be allowed to start or stop before they are considered failed.

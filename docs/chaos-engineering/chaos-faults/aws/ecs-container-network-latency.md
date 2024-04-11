@@ -1,6 +1,8 @@
 ---
 id: ecs-container-network-latency
 title: ECS container network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-latency
 ---
 
 ECS container network latency disrupts the state of infrastructure resources. It brings delay on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.

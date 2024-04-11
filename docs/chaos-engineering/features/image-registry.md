@@ -2,6 +2,8 @@
 title: Image registry
 sidebar_position: 4
 description: A repository that hosts container images used by chaos experiments
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/image-registry
 ---
 
 

@@ -120,8 +120,6 @@ You will select this cluster later when your define the target Infrastructure De
 
 The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the delegate anywhere that has connectivity to your AWS account, even locally on your computer.
 
-If you're new to Harness, read [Harness Platform architecture](/docs/get-started/harness-platform-architecture) to learn about how Harness uses a delegate to perform deployment tasks.
-
 1. Follow the steps in [Delegate installation overview](/docs/platform/delegates/install-delegates/overview) to install a Harness Delegate.
 
 2. If you wish to install an ECS Fargate type delegate please see [AWS ECS Fargate Delegate Installation Overview](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).

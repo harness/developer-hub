@@ -1,6 +1,8 @@
 ---
 id: ecs-container-memory-hog
 title: ECS container memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-memory-hog
 ---
 
 ECS container memory hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.

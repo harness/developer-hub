@@ -19,7 +19,7 @@ This topic describes how to use an Okta SCIM integration for automated provision
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../get-started/key-concepts.md).
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your Okta account, and you must be an **Account Admin** in Harness.
@@ -48,7 +48,7 @@ To enable automated provisioning, you must add a Harness app to your Okta admini
    ```
 
    Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
-   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
+   The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
 
 6. For **Audience URI (SP Entity ID)**, enter `app.harness.io`.
 7. For **Attribute Statements (optional)**, enter a name in the **Name** field, select **Basic** for the **Name Format**, and set the **Value** to **user.email**.

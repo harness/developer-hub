@@ -324,7 +324,7 @@ For requirements, recommendations, and settings for using a Kubernetes cluster b
 
 If you want to run Docker commands when using a Kubernetes cluster build infrastructure, Docker-in-Docker (DinD) with privileged mode is required. For instructions, go to [Run DinD in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage).
 
-If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#privileged-mode-is-required-for-docker-in-docker).
+If your cluster doesn't support privileged mode, you must use a different build infrastructure option, such as Harness Cloud, where you can run Docker commands directly on the host without the need for Privileged mode. For more information, go to [Set up a Kubernetes cluster build infrastructure - Privileged mode is required for Docker-in-Docker](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#docker-in-docker-requires-privileged-mode).
 
 ### Can I use Istio MTLS STRICT mode with Harness CI?
 
@@ -1031,7 +1031,7 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 This can occur if an expression or variable is called before it's value is resolved.
 
-In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved).
+In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only successfully [resolve expressions if the target value is available](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#use-expressions-only-after-they-can-be-resolved).
 
 For example, assume you have a step (named, for example, `my-cool-step`) that uses an expression to reference the output variable of a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies). If `my-cool-step` runs before the repeat loop completes, then the expression's value isn't resolved and therefore it isn't available when `my-cool-step` calls that value.
 
@@ -1045,7 +1045,7 @@ Depending on how your expression/variable's value is generated, you need to eith
 
 Similarly, **when using step groups or step group templates with a Kubernetes cluster build infrastructure, Harness can resolve only *stage* variables and *pipeline* variables during initialization.** Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod, and step/step group variables are not. In this case, if you encounter the `null value` error and you are using step-level variables, try configuring these as stage or pipeline variables instead.
 
-Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#stage-level-and-pipeline-level-expressions) if you change them from step variables to stage/pipeline variables.
+Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables) if you change them from step variables to stage/pipeline variables.
 
 ### Initialize step occasionally times out at 8 minutes
 
@@ -1367,7 +1367,7 @@ No. Test reports from tests run in Run steps also appear there if they are [corr
 Yes. How you do this depends on whether your tests run in a **Run** step or a **Run Tests** step. For instructions, go to:
 
 * [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
-* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting/)
+* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting)
 
 ## Test Intelligence
 

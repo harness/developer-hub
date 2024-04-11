@@ -52,7 +52,7 @@ When you install a delegate via the Harness UI, several dependencies in this top
 
 :::
 
-For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts).
 
 <Tabs>
 <TabItem value="Kubernetes">
@@ -333,7 +333,7 @@ To install a delegate, do the following:
 
 6. (Optional) Replace the `YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
 
-   For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+   For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts).
 
    ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
 

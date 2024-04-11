@@ -1,6 +1,8 @@
 ---
 id: windows
 title: Chaos faults for Windows
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/windows
 ---
 
 <!-- Import statement for Custom Components -->

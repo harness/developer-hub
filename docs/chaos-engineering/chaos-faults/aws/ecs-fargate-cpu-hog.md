@@ -1,6 +1,8 @@
 ---
 id: ecs-fargate-cpu-hog
-title: ECS Fargate CPU Hog
+title: ECS Fargate CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-fargate-cpu-hog
 ---
 
 The ECS Fargate CPU Hog experiment enables you to intentionally increase the CPU usage of an ECS task container for a defined period, allowing you to assess and test the container's performance under high CPU utilization conditions or latency caused due to it.

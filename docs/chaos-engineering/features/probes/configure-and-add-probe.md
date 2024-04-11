@@ -2,6 +2,8 @@
 title: Configure and add probes
 sidebar_position: 2
 description: Configure and add probes to your chaos experiment
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe
 ---
 
 This section walks you through how to configure and add probes to a chaos experiment.

@@ -741,7 +741,8 @@ Sign up with a new account and then sign in.
 
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-33.png)
 
-If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
+If you are familiar with Harness, you can skip [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+
 
 ## Updating Harness NextGen
 

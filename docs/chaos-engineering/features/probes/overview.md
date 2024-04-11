@@ -2,6 +2,8 @@
 title: Overview
 sidebar_position: 1
 description: Introduction to probes
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/probes/overview
 ---
 
 This section introduces you to probes, their types, why they are important, and who can use them.

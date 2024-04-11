@@ -104,7 +104,7 @@ pipeline:
 </Tabs>
 
 
-## Destory a workspace
+## Destroy a workspace
 
 You can use the Harness Visual Editor or YAML to create a pipeline that will tear down (destroy) a workspace. 
 

@@ -1,6 +1,8 @@
 ---
 id: rds-instance-reboot
 title: RDS instance reboot
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/rds-instance-reboot
 ---
 
 RDS instance reboot derives the instance under chaos from an RDS cluster.

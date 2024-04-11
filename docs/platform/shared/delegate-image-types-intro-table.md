@@ -4,7 +4,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-
 | Image type | Image tag | Image description |
 | --- | --- | --- |
 | DELEGATE | *`yy.mm.xxxxx`* | The release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |

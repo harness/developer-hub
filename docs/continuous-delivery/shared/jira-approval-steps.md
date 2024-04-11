@@ -252,9 +252,6 @@ If a field in the JEXL criteria includes spaces, enclose the field in quotation 
 
 `<+issue.Priority> == "P1" && <+issue."1-line Update"> == "test" && <+issue."Remaining Estimate"> == "2h" && <+issue.Description> == "new description"`
 
-### Approval variables
-
-After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want to the pipeline to generate notifications about the approval.
 
 ### Notes
 
