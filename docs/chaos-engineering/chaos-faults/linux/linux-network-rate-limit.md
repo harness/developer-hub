@@ -50,7 +50,7 @@ Linux network rate limit:
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example, <code>1.1.1.1,8.8.8.8</code>. </td>
+    <td> List of comma separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. </td>
   </tr>
   <tr>
@@ -112,7 +112,7 @@ spec:
 
 ### Destination IPs
 
-Comma-separated names of the target IPs that are subject to chaos. Tune it using the `destinationIPs` input variable.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. Ports to be targeted for an IP can be specified by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -126,7 +126,7 @@ metadata:
     name: network-rate-limit
 spec:
   networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
+    destinationIPs: '1.1.1.1,192.168.5.6|80|8080'
     networkInterfaces: "eth0"
 ```
 
