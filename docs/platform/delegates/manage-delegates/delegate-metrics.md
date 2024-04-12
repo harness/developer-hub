@@ -391,7 +391,7 @@ The `io_harness_custom_metric_resource_consumption_above_threshold` metric is on
 :::
 
 :::warning Configuration Deprecation Notice
-Delegate configuration to control the task rejections `DYNAMIC_REQUEST_HANDLING` and `DELEGATE_RESOURCE_THRESHOLD` are now deprecated and will be removed in a future version of the delegate. The preferred to configure a resource threshold is by using `DELEGATE_CPU_THRESHOLD` as described below.
+Delegate configuration to control the task rejections `DYNAMIC_REQUEST_HANDLING` and `DELEGATE_RESOURCE_THRESHOLD` are now deprecated and will be removed in a future version of the delegate. The preferred method to configure a resource threshold is by using `DELEGATE_CPU_THRESHOLD` as described below.
 
 :::
 
@@ -402,7 +402,6 @@ To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` e
       - name: DELEGATE_CPU_THRESHOLD
         value: "80"
    ```
-
 
 ## Auto scale using replicas
 
