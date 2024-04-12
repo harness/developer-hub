@@ -8,15 +8,17 @@ redirect_from:
 
 This page answers some frequently asked questions about pipelines in Harness. For additional information and questions about pipelines generally, pipeline components (such as delegates, connectors, and secrets), and module-specific pipelines (such as CI/CD pipelines), go to the module and [Platform documentation](/docs/platform) and the other FAQ pages.
 
-## How many pipelines can I have?
+## General/miscellaneous
+
+### How many pipelines can I have?
 
 There is no limit to the number of pipelines you can create in a project.
 
-## Is there a character limit for pipeline names?
+### Is there a character limit for pipeline names?
 
 Pipeline names are limited to 128 characters.
 
-## When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
+### When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
 
 This behavior is expected when there are more than 20-30 branches in the repo due to pagination. To select branches that are not listed, try manually entering the full branch name. This should allow you to open the pipeline from that branch.
 
@@ -199,6 +201,10 @@ You can use the [getExecutionDetailV2 API](https://apidocs.harness.io/tag/Pipeli
 To minimize GitHub calls from Harness, enabling the bi-directional Git Experience can significantly reduce the number of requests.
 
 ## Pipeline triggers
+
+### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
+
+Harness provides specific expressions to access information about the trigger during pipeline runtime. For the username associated with the PR changes, you can use `<+pipeline.triggeredBy.name>`, which will give you the name of the user who initiated the PR. To get the ID of the trigger that fired the execution, the expression `<+pipeline.triggeredBy.triggerIdentifier>` can be utilized. However, it's important to note that Harness does not offer an expression to retrieve the URL to the trigger. Therefore, while you can easily access the username and trigger ID, obtaining the trigger URL directly in the pipeline runtime is not supported.
 
 ### Can I disable pipeline triggers?
 

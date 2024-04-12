@@ -7,6 +7,8 @@ sidebar_label: Usage of Catalog Metadata Ingestion APIs
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
+<DocVideo src="https://www.youtube.com/embed/mI_KIuMpnBM?si=2SfPcO-JpFvAMJrT" />
+
 ## Introduction
 
 In this tutorial we will be using the catalog metadata ingestion APIs to add additional metadata for the software components in the catalog, display them in the component overview page using [additional info card](/docs/internal-developer-portal/catalog/custom-card) and use the same data to input values in workflows using [Workflow UI Pickers](/docs/internal-developer-portal/flows/custom-extensions).

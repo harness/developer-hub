@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-04-05T10:00
+date: 2024-04-10T10:00
 sidebar_position: 13
 ---
 
@@ -26,8 +26,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version TBD
 
-<!-- 2024-04-05 -->
-
 #### Early Access feature: Built-in SAST scans
 
 This release introduces a new built-in SAST step that adds a preconfigured [Semgrep scan](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. Semgrep scans are free to STO users and don't require an access token. 
@@ -36,7 +34,15 @@ This step is behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](
 
   ![](./static/built-in-scan-steps.png)
 
+### Version 1.92.1
 
+<!-- 2024-04-10 -->
+
+#### Fixed issues
+
+- Fixed an issue with pull-down filters in STO dashboards: If a pipeline had no issues detected, the pipeline would appear in some filters but not others. This fix ensures consistent behavior: all dashboard filters show only pipelines with detected issues. (STO-7179, ZD-58614)
+
+- Introduced a fix to ensure that Git-triggered pipelines run correctly when the **Repository Name** is specified as a runtime input. (STO-7029, ZD-55622)
 
 
 ### Version 1.90.1
