@@ -60,6 +60,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  -- increasing the capacity of dictionary, and
  -- additional cache recovery checks. (FFM-11089)
 
+### Node.js SDK 
+
+#### Version 1.7.0
+
+ - Applies metrics hardening to Node SDK.. (FFM-11022)
+ - Applies standard Metrics Enhancements. (FFM-11022)
+ - Fixed issue where only the first prerequisite was being processed. (FFM-9291)
+ - Adds `Harness-SDK-Info`, `Harness-AccountID`, or `Harness-EnvironmentID` headers. (FFM-7051)
+ - Adds support for custom TLS CA certificates. (FFM-7017)
+
 ### PHP SDK (Beta)
 
 #### Version 0.2.0 
