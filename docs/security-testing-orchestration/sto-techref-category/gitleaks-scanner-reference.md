@@ -12,7 +12,19 @@ Gitleaks can publish results to [Static Analysis Results Interchange Format (SAR
 
 For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
-## For more information
+## Important notes
+
+You can write up your own rules in Gitleaks:
+
+- You can specify a whitelist of public, test, example, and inactive secrets that Gitleaks ignores during a scan. Set up your whitelist in a [.gitleaks.toml file](https://github.com/harness/sto-core/blob/develop/.gitleaks.toml) and place it at the root of your repository. 
+
+  When you update passwords, tokens, or other secrets to make them inactive, you might find it easier to add the no-longer-valid secrets to your whitelist rather than updating them in the codebase.
+
+- You can also write your own [custom detection rules](https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration).
+
+  - For examples, go to the [default Gitleaks config](https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml).
+  - If you want to contribute to the default configuration, go to the [Contributing guidelines](https://github.com/zricethezav/gitleaks/blob/master/README.md).
+  - For information about advanced configurations, go to [Stop leaking secrets - configuration](https://blog.gitleaks.io/stop-leaking-secrets-configuration-2-3-aeed293b1fbf).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
