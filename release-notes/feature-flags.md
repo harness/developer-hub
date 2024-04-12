@@ -58,7 +58,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.7.0
 
- - Node SDK has metrics hardening applied. (FFM-11022)
+ - Applies metrics hardening to Node SDK.. (FFM-11022)
  - Applies standard Metrics Enhancements. (FFM-11022)
  - Fixed issue where only the first prerequisite was being processed. (FFM-9291)
  - Add `Harness-SDK-Info`, `Harness-AccountID`, or `Harness-EnvironmentID` headers. (FFM-7051)
