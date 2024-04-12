@@ -54,7 +54,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
 
    ```
-   bin/mc cp --recursive /data/backup/logs minio/logs
+   bin/mc cp --recursive /bitnami/minio/data/backup/logs minio/logs
    ```
 
 :::
