@@ -6,9 +6,9 @@ sidebar_position: 6
 
 Harness Delegates are responsible for executing various types of workloads, and the amount of resources consumed depends on the specific type of workload being performed. Harness cannot predict the specific resource requirements for a particular workload in advance. Autoscaling Harness Delegate using replicas is a useful feature that can help ensure your deployments are executed efficiently, without downtime or resource overload.
 
-## Enable the dynamic threshold for delegate resources
+## Enable the usage threshold for delegate resources
 
-You can set the delegate to reject new tasks if x% of memory/CPU is being consumed. You can then spin up new delegates when resources are above the threshold. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
+You can set the delegate to reject new tasks if configured resource threshold is being reached. You can then spin up new delegates when resources are above the threshold. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
 ## Configure Harness Delegate autoscaling using replicas for Helm chart deployments
 
@@ -39,9 +39,7 @@ To auto scale the delegate, do the following:
 
 4. (Optional) Set the `targetCPUUtilizationPercentage` to add a new replica when CPU utilization exceeds this percentage.
 
-5. Save the file, and restart your pods.
-
-   When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
+5. Save the file, and upgrade your deployment
 
 :::info
 Using CPU-based HPA is not advisable as CPU assignments that exceed 100% are common and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
@@ -92,9 +90,7 @@ To auto scale the delegate for Kubernetes 1.23 and higher, do the following:
 
 3. (Optional) Set the `cpu` `averageUtilization`to add a new replica if CPU utilization exceeds this percentage.
 
-4. Save the file, and restart your pods.
-
-   When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
+4. Save the file and deploy to your K8S cluster
 
 ## Configure Harness Delegate autoscaling using replicas for Kubernetes versions earlier than 1.23
 
@@ -275,8 +271,6 @@ spec:
           value: "https://app.harness.io/log-service/"
         - name: MEMORY_USAGE_THRESHOLD
           value: ""
-        - name: DYNAMIC_REQUEST_HANDLING
-          value: "false"
 
 ---
 
@@ -419,7 +413,7 @@ You can use `terminationGracePeriodSeconds` or `preStopHook` to scale down your 
 
    - Short tasks: For example, if tasks require 10 minutes to complete, the delegate will delay shutdown until tasks are complete (10 minutes), and then shutdown. In this example, the total delay is 10 minutes, not two hours.
 
-   - Long tasks: For example, if tasks require five hours to complete, the delegate will delay the shutdown, up to the maximum grace period configured (two hours), then Kubernetes sends SIGKILL signal force, killing the delegate and tasks. Tasks will show up as timed out/failed in the UI.
+   - Long tasks: For example, if tasks require five hours to complete, the delegate will delay the shutdown, up to the maximum grace period configured (two hours), then Kubernetes sends SIGKILL signal, force killing the delegate and tasks. Tasks will show up as timed out/failed in the UI.
 
 - `preStopHook`: This is used to allow any other kind of cleanup outside of the main process, for example, if you want to save files. This hook runs in parallel to the `terminationGracePeriodSeconds`, but before the delegate process shutdown is triggered (before the delegate process receives SIGTERM). If the hook's grace period ends, it is terminated. The delegate enters draining mode and only runs tasks already in progress. It will try doing this until all tasks are completed or until it is interrupted by Kubernetes with the SIGKILL signal when the grace period expires.
 
