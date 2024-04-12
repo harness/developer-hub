@@ -32,7 +32,7 @@ To add a new user to a project:
 
 1. In Harness, select a project.
 
-1. Expand the **PROJECT SETUP** menu, and then select **Access Control**.
+1. Expand the **Project setup** menu, and select **Access Control**.
 
 	This page lists all the users added to the current project.
 

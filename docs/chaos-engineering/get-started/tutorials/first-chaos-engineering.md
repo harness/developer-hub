@@ -6,7 +6,7 @@ redirect_from:
   - /tutorials/chaos-experiments/first-chaos-engineering
 ---
 
-In this tutorial, you will understand how to execute a chaos experiment on Kubernetes for the first time.
+In this tutorial, you will apply chaos on a sample boutique application on Kubernetes.
 
 ## Before you begin
 
@@ -16,13 +16,13 @@ In this tutorial, you will understand how to execute a chaos experiment on Kuber
 
 HCE recommends you to visit the [overview](/docs/chaos-engineering/get-started/overview.md), [concepts](/docs/chaos-engineering/get-started/key-concepts.md) and [prerequisites](/docs/chaos-engineering/get-started/tutorials/prerequisites.md) sections to understand what chaos engineering is, why it is important, how it is implemented, the standard chaos experimentation flow, and the permissions required to execute chaos experiments.
 
-## Create a project
+## Step 1: Create a project
 
 1. Create a new project or ask your administrator to add you to an existing project. Once you sign up or login to your account, you can access the **Chaos** tab on the extreme left, which displays the recent experiments that were executed.
 
 ![HCE Overview](./static/first-chaos/hce-overview.png)
 
-### Add a chaos environment
+### Step 2: Add a chaos environment
 
 2. A chaos experiment is executed in a chaos infrastructure that is associated with an **environment**. To create a new environment, navigate to **Environments** page, and choose a **New Environment**. Specify environment name, a description (optional) and tags (optional). Select the environment type, **Production** or **Non-Production**. Finally, click **Create** to add the new environment.
 
@@ -32,7 +32,7 @@ HCE recommends you to visit the [overview](/docs/chaos-engineering/get-started/o
 You can also select one of the environments from the list of environments if it is available instead of creating an environment.
 :::
 
-### Add a chaos infrastructure
+### Step 3: Add a chaos infrastructure
 
 3. Once you have created an environment, you can add chaos infrastructure to it. Depending on your application, you can select **Kubernetes** or **Linux** or **Windows**. In this tutorial, you can select a Kubernetes infrastructure, which you will use to inject faults into Kubernetes resources. You can use an existing infrastructure or create a new one. In this tutorial, you can create a new infrastructure. For this, click **Enable chaos**
 
@@ -62,22 +62,28 @@ The **Cluster-wide access** installation mode allows you to target resources acr
 
 ![Infrastructure State](./static/first-chaos/infrastructure-state.png)
 
-### Create a demo application and observability infrastructure
+### Step 4: Create a demo application and observability infrastructure
 
 Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). Pod delete chaos fault deletes the pods of a deployment, statefulset, daemonset, etc, to validate the resiliency of a microservice application.
 
 9. You can use your own application as a target, however, in this tutorial, use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
-Before we setup our chaos experiment, let us install the target application. Run the following commands to setup the target application microservices and observability infrastructure, including, Grafana, Prometheus and a BlackBox exporter. Installation of the observability infrastructure is optional as it doesn't have any role in executing the experiment, however, it will provide us with a dashboard which will help us validate the health of the constituent application microservices in real time.
+10. Before you setup the chaos experiment, install the target application. Run the following commands to setup the target application microservices and observability infrastructure (optional), including Grafana, Prometheus and a BlackBox exporter. Installing the observability infrastructure (optional) provides a dashboard which helps validate the health of the constituent application microservices in real time.
+
 ```bash
 ❯ kubectl apply -f https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/app.yaml -n hce
+```
 
+```bash
 ❯ kubectl apply -f https://raw.githubusercontent.com/chaosnative/harness-chaos-demo/main/boutique-app-manifests/manifest/monitoring.yaml -n hce
 ```
 
-We are deploying these resources in the existing `hce` namespace, since we had specified the Namespace mode of installation.
+:::info
+* Earlier, you specified the installation mode as **Specific namespace access**, hence the resources are deployed in `hce` namespace.
+* The target application and observability infrastructure pods are available in the `hce` namespace
+:::
 
-Eventually, we will have all the target application and observability infrastructure pods available in the `hce` namespace:
+11. To view the pods in the `hce` namespace, execute the command below:
 
 ```
 ❯ kubectl get pods -n hce
@@ -104,7 +110,8 @@ subscriber-7774bd95d4-4rnwp                    1/1     Running   0              
 workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0               11m
 ```
 
-You can list the services available in the `hce` namespace as following:
+12. To list the services available in the `hce` namespace, execute the command below:
+
 ```
 ❯ kubectl get services -n hce
 
@@ -128,43 +135,50 @@ shippingservice                ClusterIP      10.109.150.169   <none>        500
 workflow-controller-metrics    ClusterIP      10.106.97.173    <none>        9090/TCP         15m
 ```
 
-To access the target application frontend in your browser, use the `frontend-external` LoadBalancer service.
+13. To access the frontend of the target application in your browser, use the `frontend-external` LoadBalancer service.
 
 ![Online Boutique](./static/first-chaos/online-boutique.png)
 
-Similarly you can access the Grafana dashboard, login with the default credentials username `admin` and password `admin`, and browse the Online Boutique application dashboard. Currently, all the metrics are indicating normal application behavior.
+14. Similarly, you can access the Grafana dashboard. Login with the default credentials, that is, username `admin` and password `admin`, and browse the Online Boutique application dashboard. Currently, all the metrics indicate normal application behavior.
 
 ![Grafana App Dashboard](./static/first-chaos/grafana-app-dashboard.png)
 
-### Constructing a chaos experiment
+### Step 5: Construct a chaos experiment
 
-With our target application deployed, we can now create a chaos experiment. We will be targeting the pods of the carts microservice with the Pod Delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
+Since the target application has been deployed, you can now create a chaos experiment. You will target the pods of the `carts` microservice with the **pod delete** fault. Currently, the cart page is healthy and accessible from the frontend, as seen in the `/cart` route.
 
 ![Online Boutique App Cart](./static/first-chaos/online-boutique-app-cart.png)
 
-To create the chaos experiment, go to **Chaos Experiments** page and choose **New Experiment**. Then, add the experiment name and optionally a description and tags. Then, choose the target infrastructure, which we created previously. Choose **Next**. In the Experiment Builder, choose **Templates from Chaos Hubs** and select **Boutique cart delete**.
+15. To create a chaos experiment, go to **Chaos Experiments** page and click **New Experiment**.
 
-This will allow us to create our chaos experiment using a pre-defined template, which already has a pod-delete fault configured to target the Online Boutique application.
+![create new experiment](./static/first-chaos/create-new-experiment-1.png)
 
-Select **Use this template** to continue.
+16. Specify the experiment name and a description (optional) and tags (optional). Choose the target infrastructure that you created earlier, click **Apply**, and click **Next**.
+
+![specify parameters](./static/first-chaos/specify-params-2.png)
+
+17. In the Experiment Builder, choose **Templates from Chaos Hubs** and select **Boutique cart delete**. This allows you to create a chaos experiment using a pre-defined template that already has a pod delete chaos fault configured to target the online boutique application. Select **Use this template** to continue.
 
 ![Boutique Cart Delete Template](./static/first-chaos/boutique-cart-delete-template.png)
 
-You'll notice that we're currently in the **Chaos Studio**, which helps in constructing varied chaos experiments involving different kinds of chaos probes, faults and custom action steps. Since the template has already defined the pod-delete fault, let us inspect at its configuration.
-
-Select the added pod-delete fault icon.
+18. Your target is the `carts` microservice. Hence the appropriate `hce` application namespace and the `app=cartservice` application label has been provided here. Also, application kind is `deployment`. You can discover these entities from within the UI using the search dropdown menu for the respective inputs.
 
 ![Target Application Config](./static/first-chaos/target-application-config.png)
 
-We are targeting the carts microservice and hence the appropriate `hce` application namespace and the `app=cartservice` application label has been provided here, which corresponds to the cart microservice. Also, application kind is `deployment`. It is worth noting that you can discover these entities from within the UI using the search dropdown menu for the respective inputs.
-
-Then, choose the **Tune Fault** tab to view the fault parameters. Here, we the fault execution duration is defined to be 30 seconds with an interval of 10 seconds, so that in every 10 seconds the cart microservice pod(s) get deleted for a total of 30 seconds. The ramp time is empty and by default 0, which refers to the period to wait before and after chaos injection. Lastly, the pod affected percentage is also empty, and by default at least one pod of the cart deployment will be targeted.
+19. Choose the **Tune Fault** tab to view the fault parameters. Here, you can tune the fault parameters. Set **Total Chaos Duration** to 30, **Chaos Interval** to 10, and **Force** to `false`. You can leave the **Pods affected perc** empty for now. The values for `Total Chaos Duration` and `Chaos Interval` indicate that for every value of 10 seconds, the cart microservice pod(s) are deleted for a total of 30 seconds. By default, at least one pod of the cart deployment is targeted.
 
 ![Tune Fault Config](./static/first-chaos/tune-fault-config.png)
 
-Lastly, switch to the **Probes** tab. Here, we have a probe defined by the name of **http-cartservice-probe**, which will validate the availability of the `/cart` URL endpoint when the pod-delete fault will execute. It can be observed that the probe is of type HTTP Probe and it executes in a Continuous mode throughout the fault execution. Further, under probe details, the URL can be observed as `http://frontend/cart` and the response timeout is 15 milliseconds. Therefore, as part of the probe execution GET requests will be made to the specified URL and if no HTTP response is found within 15 milliseconds, the probe will be declared as failed. If all the probe executions pass, then the probe will be regarded as passed. The interval of probe evaluation, retries upon failure and other parameters, check its properties.
+20. Navigate to the **Probes** tab. Here, you can either create a probe or select a pre-defined probe. Click **Select or Add new probes**. In this tutorial, you can select a pre-defined probe and add it to your chaos fault.
 
 ![Probes Config](./static/first-chaos/probes-config.png)
+
+21. Click the filter button and search for `cartservice` which validates the availability of the `/cart` URL endpoint when the pod delete fault is executed. It can be observed that the probe is of type HTTP Probe and it executes in a Continuous mode throughout the fault execution. Further, under probe details, the URL can be observed as `http://frontend/cart` and the response timeout is 15 milliseconds. Therefore, as part of the probe execution GET requests will be made to the specified URL and if no HTTP response is found within 15 milliseconds, the probe will be declared as failed. If all the probe executions pass, then the probe will be regarded as passed. The interval of probe evaluation, retries upon failure and other parameters, check its properties.
+![Probes Config 2](./static/first-chaos/probes-config-2.png)
+
+![Probes Config 3](./static/first-chaos/probes-config-3.png)
+
+![Probes Config 4](./static/first-chaos/probes-config-4.png)
 
 When done, simply close the overlay modal.
 
@@ -178,7 +192,7 @@ When ready, start the experiment execution by selecting **Run** on the top right
 
 ![Experiment Executing](./static/first-chaos/experiment-executing.png)
 
-Once the fault is running, we can check for the detailed view of the experiment. We can follow the logs of the experiment run as it gets executed. 
+Once the fault is running, we can check for the detailed view of the experiment. We can follow the logs of the experiment run as it gets executed.
 
 ![Detailed Chaos Execution](./static/first-chaos/detailed-chaos-execution.png)
 
@@ -236,4 +250,4 @@ We can also observe that the fail step says "Probe execution result didn't met t
 
 Congratulations on running your first chaos experiment! Want to know how to remediate the application so that it passes the experiment run and probe checks? Nump up the experiment pods to at least two so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
 
-Once you've explored this, head over to the next tutorial, where you'll learn how to [create chaos experiments from scratch](./chaos-experiment-from-blank-canvas) and execute them for the same target application.
+Once you've explored this, head over to the next tutorial, where you'll learn how to [create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md) and execute them for the same target application.
