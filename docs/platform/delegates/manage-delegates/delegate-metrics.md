@@ -1,6 +1,6 @@
 ---
 title: Configure delegate metrics and auto scale
-description: This topic describes how to configure Prometheus and Grafana to collect delegate metrics and auto scale using replicas.
+description: This topic describes how to configure Prometheus and Grafana to collect and display delegate metrics and how to auto scale using replicas.
 sidebar_position: 2
 redirect_from:
   - /docs/platform/delegates/manage-delegates/auto-scale-using-replicas
@@ -9,17 +9,10 @@ redirect_from:
 Harness Delegates are responsible for executing various types of workloads, and the amount of resources consumed depends on the specific type of workload being performed. Harness cannot predict the specific resource requirements for a particular workload in advance.
 
 This topic explains how to:
-- [Configure the Prometheus monitoring tool for the metrics collection](#configure-the-prometheus-monitoring-tool-for-the-metrics-collection)
-  - [Apply the prometheus.yml file](#apply-the-prometheusyml-file)
-- [Configure the Grafana analytics tool to display metrics](#configure-the-grafana-analytics-tool-to-display-metrics)
-- [Configure delegate resource threshold](#configure-delegate-resource-threshold)
-- [Auto scale using replicas](#auto-scale-using-replicas)
-  - [Enable the usage threshold for delegate resources](#enable-the-usage-threshold-for-delegate-resources)
-  - [Configure Harness Delegate autoscaling using replicas for Helm chart deployments](#configure-harness-delegate-autoscaling-using-replicas-for-helm-chart-deployments)
-  - [Configure Harness Delegate autoscaling using replicas for Kubernetes 1.23 and later](#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes-123-and-later)
-  - [Configure Harness Delegate autoscaling using replicas for Kubernetes versions earlier than 1.23](#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes-versions-earlier-than-123)
-    - [Example delegate YAML](#example-delegate-yaml)
-  - [Scale down delegate pods](#scale-down-delegate-pods)
+- Configure the Prometheus monitoring tool for the metrics collection.
+- Configure the Grafana analytics tool to display metrics.
+- Configure the delegate resource threshold.
+- Auto scale using replicas.
 
 Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
