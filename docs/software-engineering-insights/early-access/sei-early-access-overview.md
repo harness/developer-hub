@@ -17,15 +17,71 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
-### Diagnostic Page
+### Display historical data for the current issues using Issue Backlog Trend report
 
-* **Release date:** March 2024
-* **Release version:** 202402.2
-* **Issue number:** SEI-5818
-* **Feature flag:** `SHOW_DIAGNOSTIC_TILE`
+* **Release date:** April 2024
+* **Issue number:** SEI-6369
+* **Feature flag:** `SEI_SHOW_HISTORICAL_FILTERS`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.
+Allows you to configure the Issue Backlog Trend report to display historical data for the current issues.
+
+[Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/issue-backlog-trend-report)
+
+### Themes support on DORA profile
+
+* **Release date:** April 2024
+* **Issue number:** SEI-6442
+* **Feature flag:** `SEI_THEME_BASED_DORA`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enables you to configure the DORA profile to establish a theme-based correlation between Pull Requests and Deployments.
+
+[Go To Documentation](/docs/software-engineering-insights/sei-profiles/workflow-profile#configure-the-dora-profile)
+
+### Use the PagerDuty integration to generate the DORA MTTR report
+
+* **Release date:** March 2024
+* **Issue number:** ECOE-118
+* **Feature flag:** `SEI_MTTR_PAGERDUTY_ENABLED`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enables you to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration.
+
+[Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery)
+
+### Rally integration
+
+* **Release date:** March 2024
+* **Issue number:** ECOE-3
+* **Feature flag:** `RALLY`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enables access to the SEI Rally integration used for integrating SEI with the Rally Software.
+
+[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
+
+### New Collection Navigation
+
+* **Release date:** March 2024
+* **Issue number:**  (SEI-5203) (SEI-5690)
+* **Feature flag:** `SEI_NEW_COLLECTION_TREE`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enable this Feature Flag if you want to use the new user experience for Collection Navigation under the Insights.
+
+[Go To Documentation](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections)
+
+### Trellis Factors
+
+* **Release date:** February 2024
+* **Issue number:** SEI-3728
+* **Feature flag:** `SEI_SHOW_TRELIS_NEW_INTERVAL`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Enables the Trellis Profile configuration using Trellis Factors at the Central Profile. This feature is in BETA.
+
+[Go To Documentation](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors)
 
 ### SEI GitHub/Jira Integration 2.0 - ReAuth
 

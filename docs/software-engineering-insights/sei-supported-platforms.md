@@ -78,6 +78,18 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>RALLY</td>
         <td>Enables access to the SEI Rally integration used for integrating SEI with the Rally Software</td>
     </tr>
+    <tr>
+        <td>SEI_THEME_BASED_DORA</td>
+        <td>Enables you to configure the DORA profile to establish a theme-based correlation between Pull Requests and Deployments. </td>
+    </tr>
+    <tr>
+        <td>SEI_MTTR_PAGERDUTY_ENABLED</td>
+        <td>Enables you to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration.</td>
+    </tr>
+    <tr>
+        <td>SEI_SHOW_HISTORICAL_FILTERS</td>
+        <td>Allows you to configure the Issue Backlog Trend report to display historical data for the current issues</td>
+    </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
