@@ -18,8 +18,8 @@ Harness CI supports mobile app development.
 
 These guides contain a variety of information about mobile development with Harness CI, including installing dependencies, running tests, and distribution.
 
-* [Guide: Build iOS and macOS apps with Harness CI](./ci-ios.md)
-* [Guide: Build Android apps with Harness CI](./ci-android.md)
+* [Guide: Build iOS and macOS apps with Harness CI](./ios.md)
+* [Guide: Build Android apps with Harness CI](./android.md)
 
 ## Plugins and scripts for mobile development
 
@@ -29,8 +29,8 @@ There are several ways to run scripts and use plugins in Harness CI. You can run
 * [Use GitHub Actions in Harness CI](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step)
 * [Write your own plugins (reusable custom scripts)](/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins)
 * [Use a Run step to run any script in Harness CI](/docs/continuous-integration/use-ci/run-step-settings)
-* [Deploy Android apps with Harness CI](./ci-android.md#deploy-to-the-google-play-store)
-* [Deploy iOS apps with Harness CI](./ci-ios.md#deploy-to-the-app-store)
+* [Deploy Android apps with Harness CI](./android.md#deploy-to-the-google-play-store)
+* [Deploy iOS apps with Harness CI](./ios.md#deploy-to-the-app-store)
 
 ## Variables and secrets for mobile development
 
