@@ -92,9 +92,9 @@ The following deprecated API endpoints are longer supported:
 
 - Reset password emails were being sent from the "CG" system for all accounts, causing issues for accounts that are exclusively "NG". Now, if an account is identified as "NG" only, the reset password emails will be dispatched from the "NG" system, rectifying the issue for "NG" only accounts. (PL-38735)
 
-- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. (PL-47914)
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. This item requires Harness Delegate version 24.04.82703. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914)
 
-- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. (PL-47614)
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82703. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
 
 The audit trail filter did not include an option for "Token" resource type, hindering the ability to filter for API token updates. Added a "Token" filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
 
