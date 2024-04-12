@@ -1092,7 +1092,7 @@ Build source tasks do use the quota. These are tasks for artifact collections an
 
 ### How can I perform a load test on a Kubernetes delegate?
 
-You can implement Autoscale using replicas. For more information, go to [Auto scale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). Autoscaling is based on load, not on the number of tasks. It doesn't control deployments or run shell scripts that use CPU and memory.
+You can implement Autoscale using replicas. For more information, go to [Auto scale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas/). Autoscaling is based on load, not on the number of tasks. It doesn't control deployments or run shell scripts that use CPU and memory.
 
 - Based on the metrics you use for HPA (Harness recommends CPU/memory), Kubernetes will scale up/down the pod.
 - When the pod is scaled down, it will stop taking new tasks and finish the tasks its executing before terminating.
@@ -1539,7 +1539,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
 ```
 
-For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/).
+For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas/).
 
 ### The Harness Delegate config-watcher is causing heavy usage of disk space and causing alerts in prod nodes. How can we increase the watcher memory settings?
 
