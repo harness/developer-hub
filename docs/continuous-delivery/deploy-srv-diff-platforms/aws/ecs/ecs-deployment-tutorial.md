@@ -502,9 +502,7 @@ The ECS Service Definition is now added to the Service.
 
 :::note
 
-An Amazon ECS deployment type determines the deployment strategy that your service uses. These are provided as deployment controller. Harness support only rolling update (ECS) type controller
-https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-deploymentcontroller.html
-https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
+The Amazon ECS deployment type uses a deployment controller to determines the deployment strategy for your service. Harness support only rolling update (ECS) type controller. For more information, go to [AWS ECS service deployment controller](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-deploymentcontroller.html) and [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
 
 :::
 
