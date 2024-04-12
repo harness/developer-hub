@@ -500,6 +500,14 @@ The ECS Service Definition is now added to the Service.
 
 ![](./static/ecs-deployment-tutorial-42.png)
 
+:::note
+
+An Amazon ECS deployment type determines the deployment strategy that your service uses. These are provided as deployment controller. Harness support only rolling update (ECS) type controller
+https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-service-deploymentcontroller.html
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html
+
+:::
+
 Next, we'll add the Docker image artifact for deployment.
 
 ## Add the Docker image to deploy
