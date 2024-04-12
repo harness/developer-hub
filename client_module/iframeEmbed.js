@@ -24,12 +24,14 @@ function EmbedFunction() {
     if (pagNav) {
       pagNav.style.display = "none";
     }
+
+   
   }
 }
 
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener("load", () => {
-    let interval = setInterval(EmbedFunction, 500);
+    let interval = setInterval(EmbedFunction, 50);
     setTimeout(() => {
       clearInterval(interval);
       interval = 0;
