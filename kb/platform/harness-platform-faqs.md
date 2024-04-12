@@ -4,31 +4,46 @@ description: Frequently asked questions about Harness Platform.
 sidebar_position: 2
 ---
 
-## Access Control
+<!--
 
-### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
+Contributor Guidelines
 
-Use the direct URL with the `accountId` for the desired account, such as:
+Before you add new content, please search for existing FAQs to avoid duplications.
 
-```
-https://app.harness.io/ng/account/:accountId/settings/overview
-```
+Ensure that your contributions are organized according to the following categories:
 
-You can then sign in and change your default account from your profile.
+- Access Control/RBAC
+- API/Integration
+- Authentication
+- Automation
+- Connectors
+- Delegates
+- Dashboards
+- Feature Flags
+- Git Experience
+- Governance
+- Notifications
+- Organizations and Projects
+- Platform rate limits
+- References
+- Secrets
+- Security
+- Settings
+- Self-Managed Enterprise Edition
+- Terraform
+- Variables and Expressions
+- Miscellaneous
 
-### How do I sign out of Harness?
+You can search for a heading, for example, ## Access Control, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
 
-To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
+-->
+
+
+## Access Control/RBAC
 
 ### What is RBAC and how do I manage users and roles?
 
-Harness NextGen platform utilizes Role-Based Access Control (RBAC). Additional details on RBAC can be found in this [blog post](https://www.harness.io/blog/user-role-management) and in the [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness/) documentation.
-
-### What is a Resource Group?
-
-Resource groups are an RBAC component that defines the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more.
-
-For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
+Harness NextGen platform utilizes Role-Based Access Control (RBAC). For more information, go to this [blog post](https://www.harness.io/blog/user-role-management) and [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness/) in the documentation.
 
 ### Are there any built-in roles I can use?
 
@@ -46,10 +61,6 @@ To configure RBAC in Harness, you must:
 4. Assign roles and resource groups to users, user groups, and service accounts.
 5. If you have not already done so, configure authentication.
 
-### Is there additional information on built-in roles for Harness RBAC?
-
-Yes, for more information, go to [Built-in roles](/docs/platform/role-based-access-control/add-manage-roles#built-in-roles).
-
 ### What are the main components of RBAC?
 
 RBAC uses Principals, Resource Groups, and Roles to control access.
@@ -57,6 +68,31 @@ RBAC uses Principals, Resource Groups, and Roles to control access.
 - Principals are entities taking action in the system. These include users, user groups, and service accounts.
 - Resource Groups define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 - Roles define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
+
+
+### What is a Resource Group?
+
+Resource groups are an RBAC component that defines the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more.
+
+For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
+
+### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
+
+Use the direct URL with the `accountId` for the desired account, such as:
+
+```
+https://app.harness.io/ng/account/:accountId/settings/overview
+```
+
+You can then sign in and change your default account from your profile.
+
+### Currently, Azure only supports view access at the project level. However, documentation suggests that view access is only available at the account level. How can we achieve project-level view access using Azure AD?
+
+The access depends on how and where you have added the user. If the user is added at the account level manually or via SCIM, they are automatically part of the All Account Users group, inheriting permissions associated with that group.
+
+However, if the user is only added at the project level, they are added to the All Project Users group, and permissions associated with that user group apply.
+
+Additionally, you can add a user at the account level and manage project-level permissions through Access Control at the project level. The same principle applies to organization-level access.
 
 ### What is Role Binding, and how does it relate to Harness RBAC?
 
@@ -171,6 +207,10 @@ An API key is created with a minimum duration of 30 days. You can rotate the tok
 #### What does 'parentIdentifier' refer to during the creation of an API key?
 
 The `parentIdentifier` in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate `parentIdentifier` ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
+
+### How can I get a list of all users and their roles?
+
+You can use the Get aggregated users API. This will provide with complete details of the users incldying the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -352,9 +392,25 @@ No, it is not possible to obtain the account's private key from the delegate, ev
 
 This limitation is by design to uphold security protocols. Delegates often operate with scoped permissions at the organization or project level, and allowing access to the account's private key via a delegate would pose a significant security risk. Therefore, regardless of the delegate's ability to communicate with Harness Manager, access to the account's private key is strictly controlled and not available through delegate operations.
 
+### Can I use multiple SAML and SCIM apps with Harness?
+
+:::note
+Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness supports multiple identity providers (IdPs) for user authentication using SAML. You can configure a mix of various SAML providers and enable or disable them for user authentication. For more information, go to [Multiple identity providers](/docs/platform/authentication/multiple-identity-providers/).
+
 ### Why is Harness redirecting to a stage/dev account upon a successful Azure SAML login for a prod account?
 
 Ensure that the entity ID is set correctly if you are using multiple accounts. If you are using a vanity URL, the entity ID needs to be set accordingly when setting up SAML in Harness and on the Azure side.
+
+### Where is the attribute for Group Claim in Microsoft Entra ID?
+
+For SAMl with Microsoft Entra ID (formerly Azure), under **Enterprise Applications**, select **SSO Settings**, then select **Edit User and Group properties**. Edit the **Group Claim** and validate that the attribute is set to Group ID. If it is set to any other attribute, you must provide that value when linking the Harness user group with the Microsoft Entra ID group using the authorization.
+
+### Which cron expression builder builder does Harness use for the LDAP sync schedule?
+
+Harness uses Quartz for the cron expression builder in the LDAP sync schedule.
 
 ### Why am I receiving a 400 status code error with an "unsuccessful HTTP call" message when using a Jira step in Harness?
 
@@ -386,6 +442,10 @@ If you encounter a similar problem with this Jira plugin or any other plugin, it
 ### How does SCIM work in Harness, and what are its limitations?
 
 SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
+
+#### What happens if a user's email domain changes and the user is provisioned via SCIM in Harness?
+
+Harness will automaticaly detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
 
 ### How do I sync LDAP groups manually if the linked user group isn't syncing?
 
@@ -471,12 +531,20 @@ It's common for users to encounter an issue while logging in. A user might have 
 
 Harness supports workload identify for Google Secret Manager.
 
+### How do I set up 2FA in Harness?
+
+You can use the QR code sent in the email to setup 2FA. You will also receive a secret key for your user in the same email. Use the code to set up the 2fa or use a third-party [token generator](https://totp.danhersam.com/) to enter your 2FA secret key and have it generates a login code for you. For more information, go to [Set up two-factor authentication](/docs/platform/authentication/two-factor-authentication/#set-up-two-factor-authentication).
+
 ### Why can't I set up/reset MFA?
 
 When 2FA is set as force-enabled on the account level by an admin of the account, users must set up the 2FA for their profile.
 It can be enabled by scanning the QR code sent in the email or using the secret key also sent in the same email using any authenticator app.
 
 For more information, go to [Set up two-factor authentication](https://developer.harness.io/docs/platform/authentication/two-factor-authentication/#set-up-two-factor-authentication) and [Reset two-factor authentication](https://developer.harness.io/docs/platform/authentication/two-factor-authentication/#reset-two-factor-authentication).
+
+### How can I disable 2FA for a user? 
+
+Currently there is no easy way for Harness to disable the 2FA for a user. The user can disable 2FA in their profile if they lost access to the auth app. The user must reach out to their account admin and ask them to resend the 2fa code. Then the user can reset the 2FA auth app, sign in to the account, and disable 2FA from their profile.
 
 ### How can I change my identity provider to OKTA from another other provider?
 
@@ -2737,6 +2805,10 @@ Harness integrates with multiple third-party SCIM providers
 - [Azure AD SCIM](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 - [OneLogin SCIM](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
 
+### How do I sign out of Harness?
+
+To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
+
 ### How can I resolve serialization errors when integrating NextGen Audits for ModuleLicense collection with multiple child classes in YamlDTOs?
 
 The serialization issue in NG Audits for ModuleLicense collection arises when using entity objects instead of DTOs in the YAML for Audit Service. The problem is that entity objects lack JsonSubTypes, causing the Jackson ObjectMapper to struggle with determining the appropriate subType for conversion. The resolution is to utilize DTOs, which inherently possess the JsonSubTypes property, ensuring smooth serialization and deserialization processes in the Audit Service.
@@ -2762,6 +2834,10 @@ Yes. You can use the [migrator tool](https://harness.github.io/migrator/).
 ### What is cron job in the Kubernetes manifest, and why is it needed?
 
 The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cron job is required for the auto upgrade flow.
+
+### Can I subscribe to Harness at the org level?
+
+We don't support licences at the org level, only at the account level. 
 
 ### Does Harness allow you to set 2 AMIs with different CPU architecture?
 
@@ -2808,4 +2884,56 @@ By following these steps, our support team can promptly review the situation, di
 #### What does "Exit code 137" mean?
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
+
+#### Attribute for Group Claim in Azure
+
+For SAMl with Azure(Microsot Entra ID), Under Enterprise Applications-->SSO Setings --> Edit the User and Group properties the edit the Group Claim and validate that the attribute is set to Group ID. In case it is set to any ither attribute you will need to provide that value while linking the Harness user group with the azure group using the authorisation. 
+
+#### Cron Builder in LDAP sync schedule
+
+Harness uses Quartz under the hood for the cron expression builder in LDAP sync schedule
+
+#### Seting up 2FA for Harness
+
+You can use the QR code sent in the email to setup 2FA, also you will receive a secrey key for your user in the same email. You can use the same to setup the 2fa or use a thirty party auth like https://totp.danhersam.com/ where you cna input 2fa secrey key and it generates a login code for you.
+
+#### Multiple SAML and SCIM
+
+Yes you can setup multiple IDP and SCIM Apps with Harness and use it simultaneously. 
+Multiple IDP is behind a FF https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/
+
+#### Get all users with the role they have in Harness
+
+You can get list of all users in Harness using the below API : 
+
+https://apidocs.harness.io/tag/User#operation/getAggregatedUsers
+
+This will provide with complete details of the users incldying the role they have. 
+
+#### Is it possible to update the Organisation or account name for Harness
+
+Yes you can raise a support ticket and get your organisation and company name changed for your Harness account. 
+
+#### What happens if a Users email doamin is changed and the user is provisioned via SCIM in Harness.
+
+Harness will automaticaly detect the change and update the email in Harness using the SCIM app.
+You will not need to do anything manual to update the user email. 
+
+#### Disable 2FA for a user. 
+
+Currently there is no easy way for Harness to disable the 2FA for a user. 
+The user can do so from his profile or if he has lost access to the auth app. He will need to reach out to account admin and ask them to resend the 2fa code and then user can rest the 2fa auth app and login to the account and the disable from his profile.
+
+
+#### Harness subscription on org level
+
+We don't support licences at Org level. It only supported at Account level. 
+
+####Currently harness support view access at project only. Currently document suggest account level view access only.We are providing access through azure. I am not sure if project level view is supported. How it can be achieved using Azure AD?
+
+The access depends on how and where you have added te User, if the user is added at account level manually or via SCIM then the user by default is the part of All Account Users groups and what permission that group has will be inherited by the user.  
+ 
+Now if the user is only added at the project level then he gets added to All Project Users group and permission associated with that user group applies. 
+ 
+It is also possible to add user at account level and manager project level permission at project level Access Control. The same applies to organisation level. 
 
