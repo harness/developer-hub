@@ -24,10 +24,10 @@ All metrics reset when you restart the delegate.
 | `io_harness_custom_metric_task_failed_total` # | The total number of failed tasks. |
 | `io_harness_custom_metric_task_rejected_total` * #| The number of tasks rejected because of a high load on the delegate. |
 | `io_harness_custom_metric_delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-| `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate CPU/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
+| `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate CPU is above a threshold. Provide `DELEGATE_CPU_THRESHOLD` as the env variable in the delegate YAML to configure the CPU threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
-Metrics with * above are only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
+Metrics with * above are only visible if you configure resource threshold in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
 
 Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
 :::
@@ -307,50 +307,21 @@ spec:
 
 ## Configure delegate resource threshold
 
-You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
+You can set the delegate to reject new tasks if configured % of CPU is being reached. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML.
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you configure resource threshold in your delegate YAML.
 :::
 
-To configure the delegate resource threshold, make the following changes to the delegate YAML file:
+:::warning Configuration Deprecation Notice
+Delegate configuration to control the task rejections `DYNAMIC_REQUEST_HANDLING` and `DELEGATE_RESOURCE_THRESHOLD` are now depreacated and will be removed in a future version of delegate. Preferred way of configuring a resource threshold is by using DELEGATE_CPU_THRESHOLD as described below.
 
-1. Set the `JAVA_OPTS` env variable.
+:::
 
-   ```
-   env:
-       - name: JAVA_OPTS
-         value: "-Xmx1536M"
-   ```
-
-2. Set the `DYNAMIC_REQUEST_HANDLING` env variable to `true` to enable dynamic task rejection.
-
-   ```
-   env:
-      - name: DYNAMIC_REQUEST_HANDLING
-        value: "true"
-   ```
-
-3. Set the `DELEGATE_MEMORY_THRESHOLD` env variable to the memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
-
-   ```
-   env:
-      - name: DELEGATE_MEMORY_THRESHOLD
-        value: "80"
-   ```
-   :::info note
-   This step is optional if you want to use the default value of 80%.
-   :::
-
-4. Set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold. When the threshold is exceeded, the delegate rejects new tasks.
+To configure the delegate resource threshold set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```
    env:
       - name: DELEGATE_CPU_THRESHOLD
         value: "80"
    ```
-   :::info note
-   This step is optional if you want to use the default value of infinite, which means no CPU threshold.
-   :::
-
-5. The `DELEGATE_RESOURCE_THRESHOLD` env variable is Deprecated. Use `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD` instead. If it is set, it will only set the Memory threshold.
