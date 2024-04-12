@@ -8,7 +8,7 @@ Harness Delegates are responsible for executing various types of workloads, and 
 
 ## Enable the usage threshold for delegate resources
 
-You can set the delegate to reject new tasks if configured resource threshold is being reached. You can then spin up new delegates when resources are above the threshold. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
+You can set the delegate to reject new tasks when the configured resource threshold is reached. You can then spin up new delegates when resources are above the threshold. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
 ## Configure Harness Delegate autoscaling using replicas for Helm chart deployments
 
@@ -39,7 +39,7 @@ To auto scale the delegate, do the following:
 
 4. (Optional) Set the `targetCPUUtilizationPercentage` to add a new replica when CPU utilization exceeds this percentage.
 
-5. Save the file, and upgrade your deployment
+5. Save the file, and upgrade your deployment.
 
 :::info
 Using CPU-based HPA is not advisable as CPU assignments that exceed 100% are common and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
@@ -90,7 +90,7 @@ To auto scale the delegate for Kubernetes 1.23 and higher, do the following:
 
 3. (Optional) Set the `cpu` `averageUtilization`to add a new replica if CPU utilization exceeds this percentage.
 
-4. Save the file and deploy to your K8S cluster
+4. Save the file, and deploy it to your Kubernetes cluster.
 
 ## Configure Harness Delegate autoscaling using replicas for Kubernetes versions earlier than 1.23
 

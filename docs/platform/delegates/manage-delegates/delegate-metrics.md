@@ -27,7 +27,7 @@ All metrics reset when you restart the delegate.
 | `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate CPU is above a threshold. Provide `DELEGATE_CPU_THRESHOLD` as the env variable in the delegate YAML to configure the CPU threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
-Metrics with * above are only visible if you configure resource threshold in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
+Metrics with * above are only visible if you configure the resource threshold in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
 
 Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
 :::
@@ -307,18 +307,18 @@ spec:
 
 ## Configure delegate resource threshold
 
-You can set the delegate to reject new tasks if configured % of CPU is being reached. You can then spin up new delegates when resources are above the threshold.
+You can set the delegate to reject new tasks if the configured % of CPU is being reached. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
 The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you configure resource threshold in your delegate YAML.
 :::
 
 :::warning Configuration Deprecation Notice
-Delegate configuration to control the task rejections `DYNAMIC_REQUEST_HANDLING` and `DELEGATE_RESOURCE_THRESHOLD` are now depreacated and will be removed in a future version of delegate. Preferred way of configuring a resource threshold is by using DELEGATE_CPU_THRESHOLD as described below.
+Delegate configuration to control the task rejections `DYNAMIC_REQUEST_HANDLING` and `DELEGATE_RESOURCE_THRESHOLD` are now deprecated and will be removed in a future version of the delegate. The preferred to configure a resource threshold is by using `DELEGATE_CPU_THRESHOLD` as described below.
 
 :::
 
-To configure the delegate resource threshold set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks.
+To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```
    env:
