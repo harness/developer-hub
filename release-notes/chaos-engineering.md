@@ -37,7 +37,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 * Resilience probe run were being filtered on incorrect runs. This is fixed now. (CHAOS-4912)
 
-* If syntax errors were identified in a manifest after uploading it, user had to refresh the page and re-upload the YAML. It is fixed now, such that the user can edit the YAML without refreshing it. (CHAOS-4905)
+* If syntax errors were identified in a manifest after uploading it, user had to refresh the page and re-upload the YAML. This is fixed now, and users can edit the YAML without refreshing it. (CHAOS-4905)
 
 ### Version 1.34.5
 
