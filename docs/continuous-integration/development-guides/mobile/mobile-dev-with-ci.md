@@ -1,10 +1,11 @@
 ---
-title: Mobile development with Harness CI
+title: Mobile development with Harness
 description: Use Harness CI for developing mobile apps
-sidebar_position: 100
-sidebar_label: Mobile development
+sidebar_position: 1
+sidebar_label: Mobile development with Harness
 redirect_from:
   - /docs/continuous-integration/use-ci/mobile-dev-with-ci
+  - /docs/continuous-integration/development-guides/mobile-dev-with-ci
 ---
 
 import CISignupTip from '/docs/continuous-integration/shared/ci-signup-tip.md';

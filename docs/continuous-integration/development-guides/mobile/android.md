@@ -1,9 +1,10 @@
 ---
 title: Android
 description: Use a CI pipeline to build and test an Android application.
-sidebar_position: 10
+sidebar_position: 2
 redirect_from:
   - /tutorials/ci-pipelines/build/android
+  - /docs/continuous-integration/development-guides/ci-android
 ---
 
 import Tabs from '@theme/Tabs';
