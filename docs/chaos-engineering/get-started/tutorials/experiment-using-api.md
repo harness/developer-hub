@@ -1,6 +1,6 @@
 ---
 title: Execute custom chaos experiments using API
-sidebar_position: 20
+sidebar_position: 4
 description: Guide to create and execute custom chaos experiments using API.
 redirect_from:
   - /tutorials/chaos-experiments/first-chaos-experiment-via-api

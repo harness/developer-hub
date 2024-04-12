@@ -1,56 +1,72 @@
 ---
 title: Run your first chaos experiment
 description: Run a chaos experiment on Kubernetes for the first time.
-sidebar_position: 3
+sidebar_position: 2
 redirect_from:
   - /tutorials/chaos-experiments/first-chaos-engineering
 ---
 
-In this tutorial, you will execute a chaos experiment on Kubernetes for the first time.
+In this tutorial, you will understand how to execute a chaos experiment on Kubernetes for the first time.
 
-The standard chaos experimentation flow involves identifying the steady state of the system/application under test, hypothesizing around the impact a particular fault or failure would cause, injecting this fault in a controlled manner (with a pre-determined and minimal blast radius), validating whether the hypothesis is proven, and taking appropriate action if it is not, that is, if a weakness is found.
+## Before you begin
 
-Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below describes the steps that you can perform to induce chaos into an application.
+* [HCE overview](/docs/chaos-engineering/get-started/overview.md)
+* [Key concepts](/docs/chaos-engineering/get-started/key-concepts.md)
+* [Prerequisites](/docs/chaos-engineering/get-started/tutorials/prerequisites.md)
 
-![Chaos Engineering Overview](./static/first-chaos/first-goal.png)
+HCE recommends you to visit the [overview](/docs/chaos-engineering/get-started/overview.md), [concepts](/docs/chaos-engineering/get-started/key-concepts.md) and [prerequisites](/docs/chaos-engineering/get-started/tutorials/prerequisites.md) sections to understand what chaos engineering is, why it is important, how it is implemented, the standard chaos experimentation flow, and the permissions required to execute chaos experiments.
 
-## Induce chaos in an application
+## Create a project
 
-To get started, create a new project or ask your administrator to add you to an existing project. Now, you can access the **Chaos** tab, where an overview of all the experiment runs can be observed.
+1. Create a new project or ask your administrator to add you to an existing project. Once you sign up or login to your account, you can access the **Chaos** tab on the extreme left, which displays the recent experiments that were executed.
 
 ![HCE Overview](./static/first-chaos/hce-overview.png)
 
 ### Add a chaos environment
 
-Next, we will create a new environment such that the chaos infrastructures can be added as part of it. Go to **Environments** page, and choose a **New Environment**. Add environment name, and optionally a description and tags. Select the environment type, **Production** or **Non-Production**. Finally, click on **Create** to add the new environment.
+2. A chaos experiment is executed in a chaos infrastructure that is associated with an **environment**. To create a new environment, navigate to **Environments** page, and choose a **New Environment**. Specify environment name, a description (optional) and tags (optional). Select the environment type, **Production** or **Non-Production**. Finally, click **Create** to add the new environment.
 
 ![Create New Environment](./static/first-chaos/create-new-environment.png)
 
+:::tip
+You can also select one of the environments from the list of environments if it is available instead of creating an environment.
+:::
+
 ### Add a chaos infrastructure
 
-Once the environment is added, we can add chaos infrastructures to it. Here, we will add a Kubernetes infrastructure so that we can inject Kubernetes resource faults. Choose **New Chaos Infrastructure**.
+3. Once you have created an environment, you can add chaos infrastructure to it. Depending on your application, you can select **Kubernetes** or **Linux** or **Windows**. In this tutorial, you can select a Kubernetes infrastructure, which you will use to inject faults into Kubernetes resources. You can use an existing infrastructure or create a new one. In this tutorial, you can create a new infrastructure. For this, click **Enable chaos**
 
 ![New Chaos Infrastructure](./static/first-chaos/new-chaos-infrastructure.png)
 
-Select **On New Infrastructures** and select **Continue**. Add a name to your chaos infrastructure and optionally a description and tags. Select **Next**.
+4. This will lead you to a page where you can select an existing infrastructure or create a new infrastructure. Select **On New Infrastructures** and select **Continue**.
 
-After that, choose the mode of installation for Harness Delegate. As a quick primer, Harness Delegate is a remote agent for accessing your Kubernetes cluster resources and injecting faults into them as part of a chaos experiment. The **Cluster Wide** installation mode allows you to target resources across all the namespaces in your cluster while **Namespace Mode** installation restricts chaos injection to only the namespace in which the delegate will be installed. Choose **Namespace mode** installation mode. By default, the delegate will install in the **hce** namespace, but you can change it. Then, select **Done**.
+![enable Chaos](./static/first-chaos/enable-chaos.png)
+
+5. Provide a name, a description (optional) and tags (optional) for your chaos infrastructure. Click **Next**.
+
+![provide name](./static/first-chaos/provide-name.png)
+
+6. In this step, choose the **installation type** as **Kubernetes**, **access type** as **Specific namespace access** (click **Change** to display the **Specific namespace access** access type), **namespace** as **hce**, and **service account name** as **hce**. Click **Next**.
 
 ![Configure Chaos Infrastructure](./static/first-chaos/configure-chaos-infrastructure.png)
 
-Lastly, provided that you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/), deploy your chaos infrastructure by executing the given commands, then downloading and applying the given manifest using your terminal. Once done, choose **Next**.
+:::tip
+The **Cluster-wide access** installation mode allows you to target resources across all the namespaces in your cluster whereas the **Specific namespace access** mode restricts chaos injection to only the namespace in which the delegate is installed.
+:::
+
+7. Ensure you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/). Click **Download** to deploy your chaos infrastructure by downloading and applying the given manifest using your terminal. Once done, choose **Done**.
 
 ![Deploy Chaos Infrastructure](./static/first-chaos/deploy-chaos-infrastructure.png)
 
-It will take a while for the delegate to setup in the k8s cluster. Head to the created environment and as soon as the delegate is ready, the connection status should get reflected as `CONNECTED`.
+8. It may take some time for the delegate to be setup in the Kubernetes cluster. Navigate to **Environments** and once the delegate is ready, the connection status displays as `CONNECTED`.
 
 ![Infrastructure State](./static/first-chaos/infrastructure-state.png)
 
-### Creating a demo application and observability infrastructure
+### Create a demo application and observability infrastructure
 
-Now we are all ready to target our Kubernetes resources. In this quick start document, we will be executing one of the most popular and simplest fault, **Pod Delete**. It simply deletes the pods of a deployment, statefulset, daemonset, etc. to validate the resiliency of a microservice application.
+Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). Pod delete chaos fault deletes the pods of a deployment, statefulset, daemonset, etc, to validate the resiliency of a microservice application.
 
-You can use your own application as a target, however, we will use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
+9. You can use your own application as a target, however, in this tutorial, use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
 Before we setup our chaos experiment, let us install the target application. Run the following commands to setup the target application microservices and observability infrastructure, including, Grafana, Prometheus and a BlackBox exporter. Installation of the observability infrastructure is optional as it doesn't have any role in executing the experiment, however, it will provide us with a dashboard which will help us validate the health of the constituent application microservices in real time.
 ```bash
