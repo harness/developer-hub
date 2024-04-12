@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app network loss injects network latency into a Cloud Foundry app instance, causing it to delay network connectivity.
 
-<!-- ![CF App Network Latency](./static/images/cf-app-network-latency.png) -->
+![CF App Network Latency](./static/images/cf-app-network-latency.png)
 
 ## Use cases
 CF app network latency:

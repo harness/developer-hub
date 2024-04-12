@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app network loss injects network loss into a Cloud Foundry app instance, causing it to lose network connectivity.
 
-<!-- ![CF App Network Loss](./static/images/cf-app-network-loss.png) -->
+![CF App Network Loss](./static/images/cf-app-network-loss.png)
 
 ## Use cases
 CF app network loss:
