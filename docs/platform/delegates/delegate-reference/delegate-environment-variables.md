@@ -98,6 +98,18 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
           value: has_jq, has_gcloud
 ```
 
+### DELEGATE_CPU_THRESHOLD
+
+To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
+
+   ```yaml
+   env:
+       - name: JAVA_OPTS
+         value: "-Xmx1536M"
+      - name: DELEGATE_CPU_THRESHOLD
+        value: "80"
+   ```
+
 ### DELEGATE_TASK_CAPACITY
 
 Harness enables you to configure a maximum number of tasks for each delegate. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it.
