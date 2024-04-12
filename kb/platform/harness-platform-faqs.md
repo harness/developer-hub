@@ -2809,3 +2809,55 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
+#### Attribute for Group Claim in Azure
+
+For SAMl with Azure(Microsot Entra ID), Under Enterprise Applications-->SSO Setings --> Edit the User and Group properties the edit the Group Claim and validate that the attribute is set to Group ID. In case it is set to any ither attribute you will need to provide that value while linking the Harness user group with the azure group using the authorisation. 
+
+#### Cron Builder in LDAP sync schedule
+
+Harness uses Quartz under the hood for the cron expression builder in LDAP sync schedule
+
+#### Seting up 2FA for Harness
+
+You can use the QR code sent in the email to setup 2FA, also you will receive a secrey key for your user in the same email. You can use the same to setup the 2fa or use a thirty party auth like https://totp.danhersam.com/ where you cna input 2fa secrey key and it generates a login code for you.
+
+#### Multiple SAML and SCIM
+
+Yes you can setup multiple IDP and SCIM Apps with Harness and use it simultaneously. 
+Multiple IDP is behind a FF https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/
+
+#### Get all users with the role they have in Harness
+
+You can get list of all users in Harness using the below API : 
+
+https://apidocs.harness.io/tag/User#operation/getAggregatedUsers
+
+This will provide with complete details of the users incldying the role they have. 
+
+#### Is it possible to update the Organisation or account name for Harness
+
+Yes you can raise a support ticket and get your organisation and company name changed for your Harness account. 
+
+#### What happens if a Users email doamin is changed and the user is provisioned via SCIM in Harness.
+
+Harness will automaticaly detect the change and update the email in Harness using the SCIM app.
+You will not need to do anything manual to update the user email. 
+
+#### Disable 2FA for a user. 
+
+Currently there is no easy way for Harness to disable the 2FA for a user. 
+The user can do so from his profile or if he has lost access to the auth app. He will need to reach out to account admin and ask them to resend the 2fa code and then user can rest the 2fa auth app and login to the account and the disable from his profile.
+
+
+#### Harness subscription on org level
+
+We don't support licences at Org level. It only supported at Account level. 
+
+####Currently harness support view access at project only. Currently document suggest account level view access only.We are providing access through azure. I am not sure if project level view is supported. How it can be achieved using Azure AD?
+
+The access depends on how and where you have added te User, if the user is added at account level manually or via SCIM then the user by default is the part of All Account Users groups and what permission that group has will be inherited by the user.  
+ 
+Now if the user is only added at the project level then he gets added to All Project Users group and permission associated with that user group applies. 
+ 
+It is also possible to add user at account level and manager project level permission at project level Access Control. The same applies to organisation level. 
+
