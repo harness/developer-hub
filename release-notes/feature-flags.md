@@ -62,7 +62,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Applies standard Metrics Enhancements. (FFM-11022)
  - Fixed issue where only the first prerequisite was being processed. (FFM-9291)
  - Adds `Harness-SDK-Info`, `Harness-AccountID`, or `Harness-EnvironmentID` headers. (FFM-7051)
- - Add support for custom TLS CA certificates. (FFM-7017)
+ - Adds support for custom TLS CA certificates. (FFM-7017)
 
 ### PHP SDK (Beta)
 
