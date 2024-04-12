@@ -16,9 +16,9 @@ For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/se
 
 You can write up your own rules in Gitleaks:
 
-- You can specify a whitelist of public, test, example, and inactive secrets that Gitleaks ignores during a scan. Set up your whitelist in a [.gitleaks.toml file](https://github.com/harness/sto-core/blob/develop/.gitleaks.toml) and place it at the root of your repository. 
+- You can specify an allowlist of public, test, example, and inactive secrets that Gitleaks ignores during a scan. Set up your allowlist in a [.gitleaks.toml file](https://github.com/harness/sto-core/blob/develop/.gitleaks.toml) and place it at the root of your repository. 
 
-  When you update passwords, tokens, or other secrets to make them inactive, you might find it easier to add the no-longer-valid secrets to your whitelist rather than updating them in the codebase.
+  When you update passwords, tokens, or other secrets to make them inactive, you might find it easier to add the no-longer-valid secrets to your allowlist rather than updating them in the codebase.
 
 - You can also write your own [custom detection rules](https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration).
 
