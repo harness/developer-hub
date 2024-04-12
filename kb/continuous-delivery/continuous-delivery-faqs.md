@@ -6800,7 +6800,7 @@ RuntimeException: harnessServiceId may not be empty
 This error occurs if using a Monitored Service with an incorrectly configured Change Source. To fix this, please ensure that the Change Source has a ServiceId defined properly.
 
 #### How do I get the index of a looping strategy?
-You can use the `<+strategy.identifierPostFix>` expression to get the index of a strategy. For more information, go to the [identifierPostFix expressions](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#identifierpostfix-expressions) documentation.
+You can use the `<+strategy.identifierPostFix>` expression to get the index of a strategy. For more information, go to [identifierPostFix expressions](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#identifierpostfix-expressions) documentation.
 
 #### How do I use maps in Harness expressions?
 You can convert map to JSON and use the `<+json.select()>` function to achieve this. For more information, go to [JSON and XML Functors](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors/) documentation.
