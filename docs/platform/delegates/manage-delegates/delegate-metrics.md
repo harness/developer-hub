@@ -14,6 +14,9 @@ This topic explains how to:
 - Configure the delegate resource threshold.
 - Auto scale using replicas.
 
+
+## Delegate metrics
+
 Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 The delegate is instrumented for the collection of the following delegate agent metrics.
@@ -46,6 +49,62 @@ Metrics with # above the include the suffix `_total` as of Harness Delegate 23.1
 :::
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
+
+### General recommended metrics configuration
+
+Below are the metrics settings recommended by Harness. Tailor these settings according to your organization's specific needs.
+
+#### CPU/Memory
+
+Configuring HPA based on CPU/Memory can be a bit complex for some use cases. However, given the calculations already conducted, we believe 70-80% usage is the most effective HPA indicator.
+
+#### io_harness_custom_metric_task_execution_time
+
+Utilize the P99 metric to establish a baseline after initiating pipeline runs and set an appropriate threshold.
+
+Set a low severity alarm for significant deviations.
+
+A significant change can indicate pipeline performance issues or the addition of a slow pipeline. While an alarm doesn't necessarily signify an issue, it's worth investigating.
+
+HPA isn't suitable for this metric.
+
+#### io_harness_custom_metric_tasks_currently_executing
+
+HPA based on CPU/Memory provides better indicators. Utilize a count metric.
+
+Create a low severity alarm for significant deviations (for example, a 30-50% change).
+
+Set a high severity alarm for zero over a prolonged period (for example, 30 minutes) if delegates are consistently expected to perform tasks.
+
+If the change is expected, the alarm could indicate a need to plan for scaling the delegate fleet due to increased usage. A sudden burst might cause downtime or indicate a problem with pipeline executions or downstream services.
+
+#### io_harness_custom_metric_task_timeout_total
+
+HPA isn't necessary. Ideally, this should be close to zero. Create a high severity alarm for a sufficiently low number.
+
+An alarm might indicate misconfigured pipelines or disruptions in downstream services.
+
+#### io_harness_custom_metric_task_completed_total
+
+While possibly not highly informative, it can be added to the dashboard for insight into processed volume.
+
+Plot count per delegate; all delegates should be similarly utilized.
+
+#### io_harness_custom_metric_task_failed_total
+
+HPA isn't necessary. Ideally, this should be close to zero, but intermittent failures occur and shouldn't trigger alarms.
+
+Establish a baseline and set a high severity alarm for significant deviations. This would signify a serious issue such as a service outage or misconfiguration.
+
+#### io_harness_custom_metric_task_rejected_total
+
+HPA isn't necessary (as this indicates that CPU/Memory thresholds are already reached), but it provides an alternate observation of delegate utilization.
+
+Create a low severity alarm for total unique task rejections. This alarm can indicate a need to scale up the delegate fleet.
+
+#### io_harness_custom_metric_resource_consumption_above_threshold
+
+While this can serve as a simpler HPA metric, we advise against its use in for some scenarios. By the time this metric is triggered, rejection has likely already begun, making it too late for HPA adjustments. Fine-tuning memory/CPU metrics provides a better HPA indicator, allowing scaling before task rejection occurs.
 
 ## Configure the Prometheus monitoring tool for the metrics collection
 
