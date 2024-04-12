@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app network duplication injects network duplication into a Cloud Foundry app instance.
 
-<!-- ![CF App Network Duplication](./static/images/cf-app-network-duplication.png) -->
+![CF App Network Duplication](./static/images/cf-app-network-duplication.png)
 
 ## Use cases
 CF app network duplication:
