@@ -1,7 +1,7 @@
 ---
 title: Delegate release notes
 sidebar_label: Delegate
-date: 2024-04-11T10:00
+date: 2024-04-12T10:00
 sidebar_position: 4
 ---
 
@@ -70,7 +70,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2024
 
-### Version 24.04.82705 <!--  April 11, 2024 -->
+### Version 24.04.82705 <!--  April 12, 2024 -->
 
 #### Hotfix
 
