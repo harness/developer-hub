@@ -1,6 +1,6 @@
 ---
-title: Generate and manage SBOM
-description: Generate and manage SBOM with Harness SSCA
+title: Generate and Manage Software Bill of Materials (SBOM)
+description: Generate and Manage SBOM with Harness SSCA
 sidebar_position: 10
 sidebar_label: Generate SBOM
 redirect_from:
@@ -11,23 +11,20 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-import SbomAbout from '/docs/software-supply-chain-assurance/shared/sbom-about.md';
+A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SSCA facilitates the generation of SBOMs for your software artifacts.
+
+This document elaborates on utilizing the SBOM Orchestration step for SBOM generation. If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
 
-<SbomAbout />
-
-## Generate SBOM in Harness
-
-These instructions describe how to generate SBOM with the Harness **SSCA Orchestration** step. This step uses Syft. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md). For information about enforcing SSCA policies, go to Enforce [SSCA policies](https://developer.harness.io/docs/category/enforce-ssca-policies)
-
+## Requirements
 ### Prepare a pipeline
 
-To generate SBOM in Harness, you need a pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both.
+You can generate the SBOM in both the **Build** and **Deploy** stages of your Harness pipeline.
 
 <details>
-<summary>SBOM generation and enforcement architecture</summary>
+<summary>Example Pipeline for SBOM generation</summary>
 
-These example demonstrate how you could set up Build and Deploy stages to generate SBOM and enforce policies.
+These example demonstrate how you could set up Build and Deploy stages to generate SBOM.
 
 <Tabs>
 <TabItem value="build" label="Build stage" default>
@@ -36,51 +33,51 @@ This example **Build** stage has three steps:
 
 - **Run** step: Build and test an artifact (image).
 - **Build and Push an image to Docker Registry** step: Build and push the image to a Docker registry.
-- **SSCA Orchestration** step: Generate the SBOM.
+- **SBOM Orchestration** step: Generate the SBOM.
 
-<!-- ![](./static/sbom-build-stage.png) -->
 
-<DocImage path={require('./static/sbom-build-stage.png')} />
+<DocImage path={require('./static/sbom-gen-build-stage.png')} width="60%" height="60%" title="Click to view full size image" />
+
 
 </TabItem>
 <TabItem value="deploy" label="Deploy stage">
 
+SBOM Orchestration in deploy stage can only be used in the [Containerized Step Groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups)
 This example **Deploy** stage has two steps:
 
-- [**SSCA Enforcement** step](../ssca-policies/enforce-ssca-policies): Enforce SSCA policies.
-- **Rolling deployment** step: Based on the results of the policy evaluation, deploy the image.
+- **SBOM Orchestration** step: Generate the SBOM.
+- **Rolling deployment** step: Deploy the image.
 
-<!-- ![](./static/sbom-deploy-stage.png) -->
-
-<DocImage path={require('./static/sbom-deploy-stage.png')} />
+<DocImage path={require('./static/sbom-gen-deploy-stage.png')} width="60%" height="60%" title="Click to view full size image" />
 
 </TabItem>
 </Tabs>
 
 </details>
 
-### Generate a key pair
+### Generate the keys for SBOM Attestation - optional
+For enhanced trust and verification of your SBOM's integrity, the SBOM Orchestration step offers optional signing and attestation generation. This functionality requires a private key, password, and corresponding public key. If you choose to skip signing, you can proceed without generating or storing these keys.
 
-Keys are used to sign and verify attestations.
+Here's how to set these keys if you choose to enable signing
 
-1. Use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate a public and private key pair
-2. Create two [Harness file secrets](/docs/platform/secrets/add-file-secrets), one for the private key file and one for the public key file.
-3. Create a [Harness text secret](/docs/platform/secrets/add-use-text-secrets) to store the password for the private key.
+- **Generate the keys**: Begin by generating the keys using [Cosign](https://docs.sigstore.dev/signing/quickstart)
+- **Securely store the keys**: Safeguard the generated private key, public key, and password by creating [Harness file secrets](https://developer.harness.io/docs/platform/secrets/add-file-secrets/) for each.
 
-### Add the SSCA Orchestration step
 
-Use the **SSCA Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
+## Add the SBOM Orchestration step
 
-* In a **Build** stage, add the **SSCA Orchestration** step after the artifact (image) has been pushed to an artifact repository.
-* In a **Deploy** stage, add the **SSCA Orchestration** step before the deployment step.
+Use the **SBOM Orchestration** step to generate an SBOM in either the **Build** or **Deploy** stage of a Harness pipeline.
+
+* In a **Build** stage, add the **SBOM Orchestration** step after the artifact (image) has been pushed to an artifact repository.
+* In a **Deploy** stage, add the **SBOM Orchestration** step before the deployment step.
 
 :::info 
 
-SSCA Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
+SBOM Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
 
 :::
 
-The **SSCA Orchestration** step includes various settings for generating the SBOM for both Containers and Repositories. We will delve into the different fields that need to be configured for each option to support the generation of the SBOM.
+The **SBOM Orchestration** step includes various settings for generating the SBOM for both Containers and Repositories. We will delve into the different fields that need to be configured for each option to support the generation of the SBOM.
 
 * **Name:** Enter a name for the step.
 
@@ -169,7 +166,7 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Artifact Type:** Select **ACR**.
 
-* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
 
 * **Image:** Enter your image details in the format `<registry-login-server>/<repository>:<tag>`. The `<registry-login-server>` is a fully qualified name of your Azure Container Registry. It typically follows the format `<registry-name>.azurecr.io`, where   `<registry-name>` is the name you have given to your container registry instance in Azure. Example input: `automate.azurecr.io/acr:test`
 
@@ -191,7 +188,7 @@ Please note that the previously available `Container` option, has now been depre
 
     :::info
 
-    The **Repository** option requires that your repository is cloned into the stage workspace before the SSCA Orchestration step runs. There are several ways you can do this:
+    The **Repository** option requires that your repository is cloned into the stage workspace before the SBOM Orchestration step runs. There are several ways you can do this:
     * Clone the codebase by default, such as a [Build stage's default codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase).
     * Add a [Git Clone step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/git-clone-step/) or [Run step](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/run-step/) to the Deploy stage.
     * Add a [Git Clone step or Run step to a Build stage](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline).
@@ -213,20 +210,18 @@ Please note that the previously available `Container` option, has now been depre
 </Tabs>
 
 
-### Run the pipeline
+## Run the pipeline
 
-When the pipeline runs, the **SSCA Orchestration** step performs the following actions:
+When the pipeline runs, the **SBOM Orchestration** step performs the following actions:
 
 - Generates an SBOM in the chosen format for both Containers and Repositories.
 - Specifically for Containers:
-  - Generates and signs an attestation using the provided key and password.
-  - Stores the SBOM in Harness and uploads the `.att` file to your container registry to accompany the image.
+  - Generates and signs an attestation using the provided private key and password.
+  - Stores the SBOM in Harness and uploads the `.att` file to your container registry. 
 
-The signed attestation for an Image, stored as an `.att` file, is placed in the artifact repository alongside the Image. 
-
-SBOMs for both Containers and Code Repositories are accessible in the [Artifacts view](../artifact-view.md). Additionally, you can locate the SBOM for any artifact on the **Supply Chain Assurance** tab within the **Execution Details** page in Harness. For detailed insights, please refer to the [view pipeline execution results](../ssca-view-results.md) documentation.
+SBOMs for both Containers and Code Repositories are accessible in the [Artifacts view](../artifact-view.md). Additionally, you can locate the SBOM for any artifact on the **Supply Chain** tab within the **Execution Details** page in Harness. For detailed insights, please refer to the [view pipeline execution results](../ssca-view-results.md#view-sbom-and-drift-analysis) documentation.
 
 
-## Enforce policies
+## Next steps
 
-After generating an SBOM, you can use it to [enforce SSCA policies](../ssca-policies/enforce-ssca-policies.md).
+After generating an SBOM, you can apply [SBOM Policy Enforcement](../ssca-policies/overview.md) to achieve open source governance.
