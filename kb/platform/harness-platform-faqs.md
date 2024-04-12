@@ -1380,7 +1380,7 @@ If this is a mixed-node cluster then the delegate needs to run on Linux nodes. Y
 
 ### Can the delegate's StatefulSet be scaled?
 
-Yes, you can scale the delegate StatefulSet. For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas).
+Yes, you can scale the delegate StatefulSet. For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/#auto-scale-using-replicas).
 
 ### Why is the delegate image based on UBI instead of Ubuntu?
 
