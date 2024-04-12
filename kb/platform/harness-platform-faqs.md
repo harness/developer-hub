@@ -4,11 +4,11 @@ description: Frequently asked questions about Harness Platform.
 sidebar_position: 2
 ---
 
-<!--  
+<!--
 
 Contributor Guidelines
 
-Before adding new content, please search for existing FAQs to avoid duplications.
+Before you add new content, please search for existing FAQs to avoid duplications.
 
 Ensure that your contributions are organized according to the following categories:
 
@@ -34,7 +34,7 @@ Ensure that your contributions are organized according to the following categori
 - Variables and Expressions
 - Miscellaneous
 
-Search for the heading, for example, ## Access Control, and add your new FAQ under the applicable category to retain the file's organization structure.
+You can search for a heading, for example, ## Access Control, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
 
 -->
 
