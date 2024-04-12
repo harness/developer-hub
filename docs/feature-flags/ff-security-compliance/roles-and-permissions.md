@@ -8,7 +8,7 @@ sidebar_position: 35
 
 This topic explains the roles and permissions within Harness Feature Flags. 
 
-Custom roles and permissions with Harness Feature flags offer precise methods of access control to every module on the Harness Platofmr including Feature Flags. Using custom roles and permisions provides you with a way to outline access policies that meet the requirements of your workflow. 
+Custom roles and permissions with Harness Feature flags offer precise methods of access control to every module on the Harness Platform including Feature Flags. Using custom roles and permissions provides you with a way to outline access policies that meet the requirements of your workflow. 
 
 Some examples of what you can do with custom roles and permissions include: 
 
@@ -18,6 +18,10 @@ Some examples of what you can do with custom roles and permissions include:
  - editing permissions within resource groups.
 
 With Harness Feature Flags, each
+
+:::info
+In line with the custom roles and permissions, Role Based Access Control (RBAC) is a useful tool you can set to have more control over your workflow. If you'd like to learn more about [RBAC within the Harness Platform](../../platform/role-based-access-control/rbac-in-harness.md), do have a look at our documentation to learn more.
+:::
 
 ## Roles
 
