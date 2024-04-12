@@ -964,9 +964,9 @@ As a workaround, A project or org or account level variable can be created and A
  
 The shell script will use this API to update the value of the variable - https://apidocs.harness.io/tag/Variables#operation/updateVariable
 
-#### What happens when the CPU and memory usage of a Delegate exceeds a certain threshold with the DYNAMIC_REQUEST_HANDLING flag set to true?
+#### What happens when the CPU usage of a delegate exceeds a certain threshold when the DELEGATE_CPU_THRESHOLD env variable configured?
 
-When CPU and memory usage exceed a specified threshold (or the default value of 70% if not specified) with the DYNAMIC_REQUEST_HANDLING flag set to true, the Delegate will reject tasks and will not attempt to acquire any new tasks. Instead, it will wait until resource usage decreases.
+When CPU usage exceeds a specified threshold with the `DELEGATE_CPU_THRESHOLD` env variable configured, the delegate will reject tasks and will not attempt to acquire any new tasks. Instead, it will wait until resource usage decreases.
 
 #### Will the Delegate crash or shut down if it rejects tasks due to resource usage exceeding the threshold?
 

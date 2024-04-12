@@ -879,9 +879,9 @@ Yes, for more information, go to:
 
 We are in the process of upgrading the Kubectl version. The version upgrade will be completed soon.
 
-### What does delegate resource threshold DYNAMIC_REQUEST_HANDLING do?
+### What does delegate resource threshold DELEGATE_CPU_THRESHOLD do?
 
- By default, delegate task capacity is based on the number of tasks. Some tasks consume far less resources than the others. Enabling `DYNAMIC_REQUEST_HANDLING` allows the delegate to take tasks based on available resources (CPU/Memory) instead. If delegate is overloaded, it would reject a task (default is 80% cpu/mem).
+ By default, delegate task capacity is based on the number of tasks. Some tasks consume far less resources than the others. Enabling `DELEGATE_CPU_THRESHOLD` allows the delegate to take tasks based on available resources (CPU) instead. If delegate is overloaded, it would reject a task.
 
  For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
@@ -1735,7 +1735,7 @@ Yes, you can install custom certificates for Kubernetes delegates. For more info
 
 ### What happens to tasks rejected by the delegate?
 
-Delegates reject tasks or fail to acquire tasks when CPU and memory reach above a certain threshold if the flag `DYNAMIC_REQUEST_HANDLING` is set as true in the YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+Delegates reject tasks or fail to acquire tasks when CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
@@ -1907,9 +1907,9 @@ This feature is currently available in FirstGen. You can use `Restrict users to 
 
 For information about this feature flag, go to [Delegate task capacity](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-task-capacity).
 
-### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100%?
+### What is the behavior when the DELEGATE_CPU_THRESHOLD env variable isn't set when CPU usage reaches 100%?
 
-It will not attempt to acquire any new tasks until the resource level increases. Delegates will not crash or shut down during this process.
+The delegate won't attempt to acquire any new tasks until the resource level increases. Delegates will not crash or shut down during this process.
 
 ### I have the PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES feature flag enabled, why am I still getting emails when I add a user in an Org/Project?
 
