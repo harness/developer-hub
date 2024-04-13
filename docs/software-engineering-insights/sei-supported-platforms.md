@@ -75,12 +75,20 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enable this feature if you want to use the new user experience for Collection Navigation under the Insights</td>
     </tr>
     <tr>
-        <td>SEI_SHOW_DIAGNOSTIC_TILE</td>
-        <td>Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.</td>
-    </tr>
-    <tr>
         <td>RALLY</td>
         <td>Enables access to the SEI Rally integration used for integrating SEI with the Rally Software</td>
+    </tr>
+    <tr>
+        <td>SEI_THEME_BASED_DORA</td>
+        <td>Enables you to configure the DORA profile to establish a theme-based correlation between Pull Requests and Deployments. </td>
+    </tr>
+    <tr>
+        <td>SEI_MTTR_PAGERDUTY_ENABLED</td>
+        <td>Enables you to measure the incident recovery time using the DORA MTTR report for the PagerDuty integration.</td>
+    </tr>
+    <tr>
+        <td>SEI_SHOW_HISTORICAL_FILTERS</td>
+        <td>Allows you to configure the Issue Backlog Trend report to display historical data for the current issues</td>
     </tr>
 </table>
 
@@ -90,9 +98,19 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 ### Harness SEI features promoted to GA
 
-Features promoted to general availability (GA) are removed from the early access features table and announced as new features in the SEI release notes. The SEI release notes also include features released directly to GA.
+Features promoted to general availability (GA) are removed from the early access features table and announced as new features in the SEI release notes. The SEI release notes also include features released directly to GA. 
 
-<!-- 
 Here are some SEI early access features that were recently promoted to GA:
 
--->
+<table>
+    <tr>
+        <td><b>Flag</b></td>
+        <td><b>Description</b></td>
+        <td><b>GA date</b></td>
+    </tr>
+        <tr>
+        <td>SEI_SHOW_DIAGNOSTIC_TILE</td>
+        <td>A new **Diagnostics** page is added with two dedicated sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.</td>
+        <td>April 2024</td>
+    </tr>
+</table>

@@ -81,6 +81,12 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Builds triggered by Bitbucket Server push events have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)
 
+### Version 24.04.82705 <!--  April 12, 2024 -->
+
+#### Hotfix
+
+- Added support for network load balancers in ASG Blue Green deployments. (CDS-95510, ZD-60182)
+
 ### Version 24.04.82603 <!--  April 4, 2024 -->
 
 #### Hotfix

@@ -5,6 +5,9 @@ sidebar_position: 5
 sidebar_label: Catalog Metadata Ingestion APIs
 ---
 
+
+<DocVideo src="https://www.youtube.com/embed/mI_KIuMpnBM?si=2SfPcO-JpFvAMJrT" />
+
 ## Introduction
 
 With the introduction of Catalog Metadata Ingestion APIs, users now have the capability to append or update arbitrary metadata associated with catalog entities such as services, libraries, websites, etc without manually adding it to the `catalog-info.yaml`. This feature facilitates the integration of metadata sourced from internal systems such as cost trackers, service health checkers, security scans, or even from simple spreadsheets tracking personnel details.

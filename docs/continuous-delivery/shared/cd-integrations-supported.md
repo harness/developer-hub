@@ -161,7 +161,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
 <summary>Native Helm</summary>
 
 - **Overview:**
-  - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart)
+  - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart)
 - **Supported connectors for deployment:**
   - Kubernetes Connector
     - Username + Password

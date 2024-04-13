@@ -159,9 +159,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-### Log Level, CLI flags, and Fail on Severity
-
-#### Log Level
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -174,22 +172,28 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 <!-- ============================================================================= -->
 <a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
-You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: `-excluded-checks s3_bucket_public_access`
+You can use this field to run the [prowler scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, this argument excludes specific checks from a scan: 
 
-<!-- ============================================================================= -->
-<a name="fail-on-severity"></a>
+`-excluded-checks s3_bucket_public_access`
 
-#### Fail on Severity
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
+<StoSettingCliFlagsCaution />
 
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
-
 <StoSettingFailOnSeverity />
+
+### Settings
+
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
+
 
 ### Additional Configuration
 

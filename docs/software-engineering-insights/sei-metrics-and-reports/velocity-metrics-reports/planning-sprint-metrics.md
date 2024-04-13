@@ -126,7 +126,7 @@ For example, the **Sprint Metrics Single Stat** widget can help you [use histori
 * **Ideal Range:** Define ideal ranges for metrics such as velocity points, commit ratios, and more. You can set upper and lower bounds to indicate acceptable performance ranges.
 * **Sprint Creep Grace Period:** Define a grace period during which any additional work or changes introduced at the beginning of the sprint are considered part of the original commitment rather than creep.
 * **Additional Done Statuses:** Specify additional ticket statuses that you want to consider equivalent to **Done** for the purpose of metrics calculation.
-* **Issue Management System:** Select the issue management system from which to pull data for the widget. Available systems depend on your configured [integrations](/docs/category/integrations).
+* **Issue Management System:** Select the issue management system from which to pull data for the widget. Available systems depend on your configured [integrations](/docs/category/sei-integrations).
 
 ### Other sprint metrics reports
 

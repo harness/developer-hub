@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-03-29T10:00
+date: 2024-04-11T10:00
 sidebar_position: 16
 ---
 
@@ -14,17 +14,17 @@ import delete_project from './static/delete-project.png'
 
 These release notes describe recent changes to Harness Self-Managed Enterprise Edition, NextGen.
 
-:::danger important upgrade instructions for patch releases 0.14.6, 0.13.4, and 0.12.1
+:::danger important upgrade instructions for patch releases 0.15.1, 0.14.6, 0.13.4, and 0.12.1
 
 If you are currently on version 0.12.0, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.12.1.
 
 If you are currently on version 0.13.0, 0.13.1, 0.13.2, or 0.13.3, you must follow the applicable upgrade process below to upgrade your version to the latest stable release, 0.13.4.
 
-If you are currently on version 0.14.3, 0.14.4, or 0.14.5, you must follow the applicable upgrade process below to latest stable release, 0.14.6.
+If you are currently on version 0.14.3, 0.14.4, 0.14.5, or 0.14.6, you must follow the applicable upgrade process below to latest stable release, 0.15.1.
 
-You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.14.6.
+You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.15.1.
 
-**Upgrade using Helm to version 0.12.1, 0.13.4, or 0.14.6**
+**Upgrade using Helm to version 0.12.1, 0.13.4, 0.14.6, or 0.15.1**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
@@ -54,7 +54,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
 
    ```
-   bin/mc cp --recursive /data/backup/logs minio/logs
+   bin/mc cp --recursive /bitnami/minio/data/backup/logs minio/logs
    ```
 
 :::
@@ -65,6 +65,50 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+
+## April 10, 2024, patch version 0.15.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.15.1](https://github.com/harness/helm-charts/releases/tag/harness-0.15.1) |
+| Air Gap Bundle | [0.15.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.1) |
+| NG Manager | 1.27.12 |
+| CI Manager | 1.13.2 |
+| Pipeline Service | 1.64.2 |
+| Platform Service | 1.14.1 |
+| Access Control Service | 1.35.5 |
+| Delegate | 24.02.82402 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.86.2 |
+| Test Intelligence Service | 1.12.1 |
+| NG UI | 1.10.8 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.15.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.1/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed an issue where cloud-info pods crashed after upgrading to 0.15.0. (CCM-17154)
+
+- Fixed an issue where the GitOps service crashed after upgrading to 0.15.0. (CDS-95152)
 
 ## March 29, 2024, version 0.15.0
 

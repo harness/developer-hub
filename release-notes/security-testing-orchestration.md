@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-04-05T10:00
+date: 2024-04-10T10:00
 sidebar_position: 13
 ---
 
@@ -24,10 +24,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2024
 
-<!-- 2024-04-05 -->
+### Version 1.92.1
+
+<!-- 2024-04-10 -->
+
+#### Fixed issues
+
+- Fixed an issue with pull-down filters in STO dashboards: If a pipeline had no issues detected, the pipeline would appear in some filters but not others. This fix ensures consistent behavior: all dashboard filters show only pipelines with detected issues. (STO-7179, ZD-58614)
+
+- Introduced a fix to ensure that Git-triggered pipelines run correctly when the **Repository Name** is specified as a runtime input. (STO-7029, ZD-55622)
 
 
 ### Version 1.90.1
+
+<!-- 2024-04-05 -->
 
 #### New features and enhancements
 

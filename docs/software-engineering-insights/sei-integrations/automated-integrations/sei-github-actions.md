@@ -115,14 +115,15 @@ This section provides step-by-step instructions on how to set up a GitHub Action
 Follow these steps to set up the workflow:
 
 1. Create an **SEI API Key**
-   - Go to your SEI account and create an API Key.
-   - Give the API Key a Name and Description.
-   - Set the role as `Ingestion`.
+   1. Go to your **SEI account** and create an **API Key**.
+   2. Give the API Key a **Name** and **Description**.
+   3. Set the role as `Ingestion`.
 2. Create **Organization/Repository Secret**
-   - To securely store the SEI API Key, you can create a GitHub secret in either your organization or your repository, depending on your preference.
-   - For Organization Secret, go to [creating secrets in an organization](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-an-organization) Give the secret a name (e.g., `SEI_API_KEY`) and store the SEI API Key value.
-   - For Repository Secret, go to [creating secrets in a repository](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-a-repository)Give the secret a name (e.g., `SEI_API_KEY`) and store the SEI API Key value.
-3. Create the **GitHub Actions Integration** and copy the **Integration ID**, which you will need in the next steps. For more information, go to [Configure the integration](#configure-the-integration).
+   1. To securely store the **SEI API Key**, you can create a **GitHub secret** in either your organization or your repository, depending on your preference.
+   2. For **Organization Secret**, go to [creating secrets in an organization](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-an-organization) Give the secret a name (e.g., `SEI_API_KEY`) and store the SEI API Key value.
+   3. For **Repository Secret**, go to [creating secrets in a repository](https://docs.github.com/en/codespaces/managing-codespaces-for-your-organization/managing-secrets-for-your-repository-and-organization-for-github-codespaces#adding-secrets-for-a-repository)Give the secret a name (e.g., `GITHUB_SECRETS`) and store the **SEI API Key** value.
+3. Create the **GitHub Actions Integration** and make a note of the **Integration ID**, which you will need in the next steps. For more information, go to [configure the integration on the cloud](#configure-the-integration).
+
 4. Append the following steps to your existing GitHub Actions workflow configuration:
 
 ```yaml
@@ -142,15 +143,16 @@ Follow these steps to set up the workflow:
 ```
 
 5. Make sure to update the `INTEGRATION_ID` in the workflow step with your actual SEI Integration ID. Also, update the `BASE_URL` according to your environment:
-
    - **Base URL (PROD2):** https://app.harness.io/gratis/sei/api/v1/
    - **Base URL (PROD1):** https://app.harness.io/prod1/sei/api/v1/
 
 6. If there is an issue with the SEI endpoint (e.g., if the endpoint is down, 500 Internal Server Error), and you want the workflow run to fail if artifacts are not sent to SEI, use the -f flag in the curl command.
 
-   For example: `curl -f <REQUEST>`
+```bash
+   curl -f <REQUEST>
+```
 
-7. Refer to the metadata below to request and ingest the artifact data from GitHub Actions into SEI.
+1. Refer to the metadata below to request and ingest the artifact data from GitHub Actions into SEI.
 
 |                     | Description                                                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -159,11 +161,11 @@ Follow these steps to set up the workflow:
 | tag                 | Tag of the image (e.g., ghcr.io/organization/repository:v0.1.1 where v0.1.1 is the tag/qualifier).               |
 | digest              | Digest/Hash of the generated artifact (e.g., sha256.).                                                           |
 | type                | Type of the generated artifact (optional). If CD is Harness, set type as "container" for correlation.            |
-| artifact_created_at | Creation time of the artifact in ISO format (optional, e.g., "2023-01-01T12:00:00.000+00:00").                   |
+| artifact_created_at | Creation time of the artifact in UTC format (optional).                   |
 
-- name, location, tag, and digest of the artifact are required fields.
-- If type, artifact_created_at, or digest are not available you can remove those fields from the object.
-- type and artifact_created_at are optional fields.
+- `name`, `location`, `tag`, and `digest` of the artifact are required fields.
+- If `type`, `artifact_created_at`, or `digest` are not available you can remove those fields from the object.
+- `type` and `artifact_created_at` are optional fields.
 
 8. Refer to the metadata below to ingest the environment variables data from GHA into SEI. <br />Note that all the keys mentioned are required fields.
 
