@@ -112,7 +112,7 @@ In addition to a Harness account, you need the following:
         gateway: Single
     ```
 
-3. Modify any values as-needed, such as the region and availability zones to which you want to deploy or tagging you want to apply.
+3. Modify any values as needed, such as the region and availability zones to which you want to deploy or any tagging that you want to apply.
 
 4. Currently, eksctl doesn't have a simple methodology to attach the Amazon EBS CSI driver necessary for create the required Persistent Volumes (PVs). Do the following to create the required PVs:
 
