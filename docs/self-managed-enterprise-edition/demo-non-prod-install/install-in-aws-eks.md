@@ -137,9 +137,9 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 
     | Key                       | Value     |
     | ----------------------------------- | --------------------- |
-    | `global.ingress.enabled`                          | `true `             |
-    | `global.loadbalancerURL `                               | `""  `       |
-    | `global.ingress.hosts`                            | `""  `
+    | `global.ingress.enabled`| `true`|
+    | `global.loadbalancerURL`        | `""`|
+    | `global.ingress.hosts`                            | `""`|
 
 
 4. Install the Helm chart.
@@ -175,9 +175,9 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 
     | Key                       | Value     |
     | ----------------------------------- | --------------------- |
-    | `global.ingress.enabled`                          | `true `             |
-    | `global.loadbalancerURL `                               | `"https://<YOUR_ELB_ADDRESS>"  `       |
-    | `global.ingress.hosts`                            | `"<YOUR_ELB_ADDRESS>"  `
+    | `global.ingress.enabled`| `true`|
+    | `global.loadbalancerURL`| `"https://<YOUR_ELB_ADDRESS>"`    |
+    | `global.ingress.hosts`|                  `"<YOUR_ELB_ADDRESS>"  `|
 
 
 8. Upgrade the Helm deployment, applying your new ELB as the load balancer to your configuration.

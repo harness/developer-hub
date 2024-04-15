@@ -70,9 +70,9 @@ To create your test cluster, do the following:
 
    | Key                       | Value     |
     | ----------------------------------- | --------------------- |
-    | `global.ingress.enabled`                          | `true `             |
-    | `global.loadbalancerURL `                               | `"https://<YOUR_IP_ADDRESS>"  `       |
-    | `global.ingress.hosts`                            | `""  `|
+    | `global.ingress.enabled`| `true`|
+    | `global.loadbalancerURL`| `"https://<YOUR_IP_ADDRESS>"  `     |
+    | `global.ingress.hosts`| `""`|
     |`global.ingress.loadBalancerIP`|`<YOUR_IP_ADDRESS>`|
     |`global.ingress.loadBalancerEnabled`|`true`|
     |`platform.bootstrap.networking.defaultbackend.create`|`true`|
