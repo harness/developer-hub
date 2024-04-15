@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-network-corruption
 title: VMware Windows Network Corruption
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-corruption
 ---
 
 VMware Windows Network Corruption simulates a network corruption scenario on Windows OS based VMware VM.

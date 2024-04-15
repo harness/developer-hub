@@ -1,7 +1,9 @@
 ---
 title: Introduction to security templates
 sidebar_position: 1
-description: Introduction to security templates 
+description: Introduction to security templates
+redirect_from:
+	- /docs/chaos-engineering/technical-reference/security/security-templates/introduction
 ---
 
 This section introduces you to various security policies you can use with HCE. 

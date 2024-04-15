@@ -1,6 +1,8 @@
 ---
 id: kubelet-density
 title: Kubelet density
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/kubelet-density
 ---
 
 Kubelet density determines the resilience of the kubelet by creating pods on a specific node.

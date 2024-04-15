@@ -175,10 +175,6 @@ const config = {
                 href: "/release-notes",
               },
               {
-                label: "Roadmap",
-                href: "/roadmap",
-              },
-              {
                 label: "FAQs",
                 to: "docs/faqs",
               },
@@ -251,10 +247,19 @@ const config = {
                 label: "Knowledge Base",
               },
               {
+                to: "kb/reference-architectures",
+                label: "Reference Architectures",
+              },
+              {
                 to: "community",
                 label: "Community",
               },
             ],
+          },
+          {
+            label: "Roadmap",
+            position: "right",
+            href: "/roadmap",
           },
 
           {
@@ -342,7 +347,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA",
               },
               {
                 label: "API Reference",
@@ -551,7 +556,11 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
-  clientModules: [path.join(__dirname, "/client_module/searchBar")],
+  clientModules: [
+    path.join(__dirname, "/client_module/searchBar"),
+    path.join(__dirname, "/client_module/iframeEmbed"),
+  ],
+  // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
 
 module.exports = config;

@@ -2,6 +2,8 @@
 title: Using command probe in various modes 
 sidebar_position: 5
 description: Guide to using the command probe in inline mode and source mode
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage
 ---
 
 import Tabs from '@theme/Tabs';

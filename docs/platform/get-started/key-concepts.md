@@ -34,7 +34,7 @@ Creating a thoughtful hierarchy of organizations and projects in your account al
 
 For instructions on accessing your account, go to the [Platform onboarding guide](./onboarding-guide.md).
 
-You can find information about your account on the [Account Overview page](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts), such as your Harness Account Name, Account ID, the Harness SaaS cluster that hosts your account, as well as the [module subscription and license information](/docs/platform/get-started/subscriptions). You'll need this information to configure your delegates, Terraform provider, CLI, and other automation tools that help in administering your account.
+You can find information about your account on the [Account Overview page](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts), such as your Harness Account Name, Account ID, the Harness SaaS cluster that hosts your account, as well as the [module subscription and license information](/docs/platform/get-started/subscriptions-licenses/subscriptions). You'll need this information to configure your delegates, Terraform provider, CLI, and other automation tools that help in administering your account.
 
 Note that this information is different for the [Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition.md), which is not a SaaS offering.
 
@@ -196,7 +196,7 @@ Components that you can write in YAML can also be managed purely through Git wit
 
 Eventually all FirstGen accounts will be migrated to NextGen.
 
-FirstGen Harness CD reached EOL on 30 December 2023, and it will reach EOS on 30 March 2024.
+FirstGen Harness CD reached EOL on December 30, 2023, and EOS on March 30, 2024.
 
 :::
 

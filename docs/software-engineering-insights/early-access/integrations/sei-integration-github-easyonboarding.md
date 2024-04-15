@@ -171,7 +171,7 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_NAME>
   api_key: <SEI_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: github

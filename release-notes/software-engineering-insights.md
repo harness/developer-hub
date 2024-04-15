@@ -1,8 +1,7 @@
 ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
-tags: [NextGen, "software engineering insights"]
-date: 2023-09-01T10:00:10
+date: 2024-03-30T10:00:10
 sidebar_position: 15
 ---
 
@@ -23,7 +22,98 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## April 2024
+
+### Version 202404.1
+
+#### New features and enhancements
+
+* Added support configuring the **Jira** and **GitHub** integration to ingest data from **Jira Data Center** and **Github Enterprise** without using the **Ingestion Satellite**. To learn more, Contact [Harness Support](mailto:support@harness.io). (SEI-5361)
+* Added performance enhancements to the DORA profile configuration for setting up filters of integrations with large volumes of data. (SEI-6220) (ZD-59940)
+* The **Jira integration** now supports displaying **Story Points** as decimal values, rounded up to two decimal places across all reports and drill-downs. (SEI-6244)
+* The label size in the X-axis of the bar chart has been set to 11 characters across all widgets. (SEI-6346)
+* The **Include only associated PR’s** option under the widget settings in the Issue Lead Time by Stage report has been renamed to **Include the associated Pull Requests and Commits**. (SEI-6372)
+* Added support for configuring the **Themes filter** for **PagerDuty**, **CI/CD**, and all **SCM integrations**. This filter can now be configured in the **Collection Definition** as a checkbox tree, with search functionality. When you add a **Themes filter** for the selected integration in the **Collection Definition**, the relevant widgets will only display data for the selected themes. (SEI-6056) (SEI-6054)
+
+#### Early access features
+
+* Added support for a new filter **Include CFR status** for all **CICD integrations** under the **Deployment Frequency** and **Change Failure Rate** settings of the DORA profile. (SEI-6442) <br /><br />You can now configure the DORA profile to establish a theme-based correlation between Pull Requests and Deployments. This feature is currently in **BETA** and is behind the Feature Flag `<SEI_THEME_BASED_DORA>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* The terminology for the **GitHub Enterprise** integration type has been renamed to **GitHub Enterprise Server**. The new experience for the GitHub and Jira integration is currently in BETA and is behind the Feature Flag `<SEI_EASY_ONBOARDING_GITHUB>` and `<SEI_EASY_ONBOARDING_GITHUB>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6139)
+* Added the following improvements to the **Issue Backlog Trend report.** (SEI-6369)
+  * You can now configure the report to display historical data for the current issues, allowing you to analyze trends over time.
+  * Now you can define the settings for the current issue type using the existing filters and set preferences for tracking trends related to specific issue types using historical data filters i.e. **Status** & **Category**
+  * A new time interval option **Daily** has been added into the widget settings. Now you can choose between the **Day**, **Week**, **Month** and **Quarter** time intervals directly within the widget. <br /><br />To learn more, go to [Issue Backlog Trend Report](/docs/software-engineering-insights/early-access/metrics-reports/issue-backlog-trend-report). This feature is currently in **BETA** and is behind the Feature Flag `<SEI_SHOW_HISTORICAL_FILTERS>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+  ![](./static/issue-trend.png)
+
+#### Fixed issues
+
+* Fixed the bug that was causing the **PAGE NOT FOUND** error on the expanded view of widgets drill down page. (SEI-5926)
+* The issue causing the new **Business Alignment report** drill down to crash for Azure DevOps integration has been resolved. (SEI-6409) (SEI-6455)
+* The issue with the Drilldown displaying all deployments for the **Github Actions** integration due to **Collection filters** not working has been resolved. (SEI-6423) (ZD-60997)
+
 ## March 2024
+
+### Version 202403.2.1
+
+<!-- Mar 30, 2024 -->
+
+#### Hotfix
+
+* Added support for a new column **Time Spent In Stage** in the **Issue Time Across Stages report** drill-down. This field now displays the specific amount of time spent in each stage as selected in the Bar Chart widget. (SEI-6202)
+
+### Version 202403.2
+
+<!-- Mar 29, 2024 -->
+
+#### New features and enhancements
+
+* Added support for displaying the decimal Story Points as the nearest integer value in all the reports and drill-down for the Jira integration. (SEI-5758)
+* Added support for three new columns in the **Issue Hygiene report** drill-down. (SEI-5137) (SEI-6259)
+  * **Current Sprint:** This column in the drill down will show the current sprint to which the ticket is assigned.
+  * **Previous Sprints:** This column will display the names of all previous sprints to which the ticket was assigned.
+  * **Sprint Hops:** This column will indicate how many times the ticket has been moved across sprints.
+* Added support to allow users to share an Insight with other contributors and display data for the selected time interval under the Insight settings. (SEI-6173)
+* The **Multi-Series Report**, when configured using the **Issues Report**, now includes support for the **Line Chart** as a visualization type. (SEI-6177)
+
+<img
+  src={require('./static/multi-series-report.png').default}
+  alt="Example banner" height="100%" width="50%" border="0"
+/>
+
+* Added support for a new Propel node **List GitHub Team**s to retrieve the complete list of team names within a specific organization. (SEI-6047)
+* The **Trend Line** in the **Issue Backlog Trend Report** is now set to be dynamic with the selected stacks and labels in the widget. (SEI-5843)
+
+#### Deprecation notice
+
+* The option to download the Triage data using the Download button has now been deprecated. You will be impacted by this if you have enabled Triage rules under your SEI project for the Jenkins integration. Contact [Harness Support](mailto:support@harness.io) for assistance.
+* The option to configure the Github Actions integration using Webhook has been deprecated. (SEI-5739)
+
+#### Early access features
+
+* Improved the **Diagnostic Tab** with the following enhancements.
+  * Support for displaying **Project & Sprint** details has been added to the **Integration Status** section.
+  * Now, clicking on the associated Project name will open the Project details page, displaying all the Issues, Status, and their associated details.
+  * Clicking on the associated Sprint name will now open the Sprint details page, displaying all the Issues included as part of the selected Sprint.
+  * Selecting the issue key under the Sprints or Project tab will now automatically redirect you to the details page of the selected issue. <br /> <br /> This new Diagnostics page feature is currently in **BETA** and is behind the Feature Flag `<SEI_SHOW_DIAGNOSTIC_TILE>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  
+* Added support to measure the incident recovery time using the **DORA MTTR report** for the **PagerDuty integration**. PagerDuty is a cloud-based incident response platform that integrates with various monitoring tools to alert the appropriate teams when an issue occurs with their systems or services. To use this functionality, ensure that you configure the DORA profile to measure the MTTR metric using the PagerDuty integration. <br /> <br />Find the resource below to get started with using this feature.
+  * [Configure the Pagerduty integration](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+  * [Measure incident recovery time using the DORA Mean Time to Restore report.](/docs/software-engineering-insights/early-access/metrics-reports/mttr-incident-recovery) <br /> <br />
+  
+  This feature is currently in **BETA** and is accessible behind the Feature Flag `<SEI_MTTR_PAGERDUTY_ENABLED>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+  
+
+<DocVideo src="https://www.youtube.com/embed/cKZF4SFxgIE?si=9U7SuECmWTVxxTqz" />
+
+* The **SEI Rally integration** is now supported for the following widgets: **DORA Lead Time for Changes report** & **DORA MTTR report**. This feature is currently in **BETA** is accessible behind the Feature Flag `<RALLY>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+#### Fixed issues
+
+* Improved the error messaging associated with the issue where users were unable to update the contributor data by uploading a CSV file due to incorrect headers in the CSV file. (SEI-5785)
+* Fixed the bug on the **Issue Hops report** where the **Total Tickets** field was displayed as zero for the Rally integration. (SEI-6279)
+* The issue that caused the hygiene filters from being applied to the **Issue Hygiene report** has been resolved.
+* The **DORA Deployment Frequency** and **Change Failure Rate report** was not displaying data correctly when configured with certain **Filters** such as `components`, `labels`, `fix_versions`, `versions`, and `Starts with` and `Contains` **Filter Settings** under the **DORA profile** definition. This issue has been resolved. Note that if you have these Filters configured in your DORA settings, you will need to delete and re-configure the profile settings. (SEI-6164)
 
 ### Version 202403.1.1
 
@@ -31,6 +121,7 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 * Sprint reports and drill-down reports inaccurately included certain issues resolved outside their designated sprint time. This has been fixed to accurately display relevant issues resolved within the sprint period by considering the **Issue Resolved In** field for each item. Tickets falling on the **Outside of Sprint** category are not included in the velocity calculation, as they represent work completed before the start of the sprint. (SEI-6170)
 * Added support to retrieve and display up to 999 active versions for the **Contributor** list. (SEI-5908)
+* The repository selection dropdown was not displaying data in the Collection definition for the Bitbucket integration. This issue has been fixed. (SEI-6245)
 
 ### Version 202403.1
 

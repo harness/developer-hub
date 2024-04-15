@@ -136,33 +136,34 @@ In the `Deployment` specification, locate the `env` field, and then find the `JA
 
 Here's what the default setting looks like:
 
-
-```
-...  
-apiVersion: apps/v1  
-kind: StatefulSet  
-...  
-spec:  
-  ...  
-    spec:  
-      ...  
-        env:  
-        - name: JAVA_OPTS  
-          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"  
+```yaml
+...
+apiVersion: apps/v1
+kind: StatefulSet
+...
+spec:
+  ...
+    spec:
+      ...
+        env:
+        - name: JAVA_OPTS
+          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"
 ...
 ```
+
 Update the `JAVA_OPTS` environment variable with the location of the new `trustStore.jks` file and the password.
 
 For example:
 
 
-```
-      ...  
-        env:  
-        - name: JAVA_OPTS  
-          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M -Djavax.net.ssl.trustStore=<path/to/trustStore.jks> -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStorePassword=<password>"  
+```yaml
+      ...
+        env:
+        - name: JAVA_OPTS
+          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M -Djavax.net.ssl.trustStore=<path/to/trustStore.jks> -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStorePassword=<password>"
 ...
 ```
+
 Next, you can apply the delegate YAML file, described in the next step.
 
 ### Step 5: Start the delegate
@@ -177,5 +178,5 @@ Apply the Kubernetes delegate YAML file you edited:
 ```
 kubectl apply -f harness-delegate.yaml
 ```
-The delegate starts and appears on the **Harness Delegates** page.
+The delegate starts and appears on the **Harness Delegates** page.
 

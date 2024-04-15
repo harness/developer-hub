@@ -1,7 +1,9 @@
 ---
-title: Walkthrough- Run chaos experiments as GitLab pipelines
+title: Run chaos experiments as GitLab pipelines
 sidebar_position: 32
 description: Guide to run a chaos experiment as a GitLab pipeline
+redirect_from:
+  - /tutorials/chaos-experiments/chaos-experiments-on-gitlab
 ---
 
 This tutorial explains how you can create chaos experiments using Harness Chaos Engineering (HCE) and run them in GitLab pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.

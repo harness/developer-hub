@@ -1,6 +1,8 @@
 ---
 id: kube-resilience
 title: Chaos faults for Kube resilience
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience
 ---
 
 ## Introduction

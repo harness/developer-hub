@@ -1,6 +1,8 @@
 ---
 id: ecs-container-network-loss
 title: ECS container network loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-loss
 ---
 
 ECS container network loss disrupts the state of infrastructure resources. 

@@ -276,13 +276,7 @@ In **Advanced**, you can use the following options:
 
 ## Approval variables
 
-After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
-
-
-:::note
-Currently, the `<+approval>` functor is supported for Harness approvals only.
-:::
-
+After an approval is granted, [approval expressions](/docs/platform/variables-and-expressions/harness-variables.md#approval-expressions) store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval. These expressions are not available for all approval types.
 
 ## See also
 

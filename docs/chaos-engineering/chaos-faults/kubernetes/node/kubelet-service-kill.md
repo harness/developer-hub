@@ -1,6 +1,8 @@
 ---
 id: kubelet-service-kill
 title: Kubelet service kill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill
 ---
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** state).

@@ -147,7 +147,7 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 
 A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector) creates a connection between Harness and your Kubernetes cluster. This connector works through a Harness Delegate that you will install on a pod in your cluster.
 
-1. In a Harness CI project, select **Connectors** under **Project Setup**.
+1. In a Harness CI project, select **Connectors** under **Project Settings**.
 2. Select **New Connector**, and then select **Kubernetes cluster**.
 3. Enter a name for the connector and select **Continue**.
 4. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
@@ -168,7 +168,7 @@ A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a
 <Tabs>
   <TabItem value="Visual" label="Visual editor">
 
-1. In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure. Select the **Build** stage, and select the **Infrastructure** tab.
+1. In Harness, create or edit a pipeline. Select the **Build** stage, and select the **Infrastructure** tab.
 2. Select **Kubernetes** for the infrastructure type.
 3. Select the **Operating System**, either **Linux** or **Windows**.
    For more information about Windows builds, go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
@@ -181,7 +181,7 @@ A [Kubernetes Cluster connector](/docs/platform/connectors/cloud-providers/add-a
 </TabItem>
   <TabItem value="YAML" label="YAML editor" default>
 
-In Harness, go to a pipeline where you want to use the Kubernetes cluster build infrastructure, switch to the YAML editor, locate the `CI` stage, and then configure `stage.spec.infrastructure`. At minimum, you must include `type`, `connectorRef`, `namespace`, and `os`, as well as the default value for `automountServiceAccountToken` and `nodeSelector`. For example:
+In Harness, create or edit a pipeline, and switch to the YAML editor, locate the `CI` stage, and then configure `stage.spec.infrastructure`. At minimum, you must include `type`, `connectorRef`, `namespace`, and `os`, as well as the default value for `automountServiceAccountToken` and `nodeSelector`. For example:
 
 ```yaml
 stages:

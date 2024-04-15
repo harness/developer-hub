@@ -2,7 +2,7 @@
 id: vmware-io-stress
 title: VMware IO stress
 redirect_from:
-  - /docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-io-stress
 ---
 
 VMware IO stress causes disk stress on the target VMware VMs. It aims to verify the resilience of applications that share this disk resource with the VM. 

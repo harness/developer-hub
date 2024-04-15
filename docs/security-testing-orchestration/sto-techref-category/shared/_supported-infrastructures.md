@@ -28,7 +28,7 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     <tr>
         <td>Windows</td>
         <td>amd64</td>
-        <td align="center">Roadmap</td>
+        <td align="center">✅ Ingestion mode only</td>
         <td align="center">❌ Not supported</td>
         <td align="center">Roadmap</td>
         <td align="center">❌ Not supported</td>

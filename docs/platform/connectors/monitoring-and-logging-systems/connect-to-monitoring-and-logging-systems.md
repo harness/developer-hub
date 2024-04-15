@@ -22,12 +22,12 @@ This topic explains how to add a verification provider Connector at the Project 
 ### Add AppDynamics
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **AppDynamics** in **Monitoring and Logging Systems**. The AppDynamics connector settings appear.
-   
+2. In **Project Setup**, click **Connectors**.
+3. Click **+** **Connector**, and click **AppDynamics** in **Monitoring and Logging Systems**. The AppDynamics connector settings appear.
+
    ![](../static/connect-to-monitoring-and-logging-systems-11.png)
-   
-4. In **Name**, enter a name for this connector. You will use this name when selecting the Verification Provider in Harness Environments and Workflows. If you plan to use multiple providers of the same type, ensure that you give each provider a different name.
+
+4. In **Name**, enter a name for this connector. You will use this name when selecting the Verification Provider in Harness Environments and Workflows. If you plan to use multiple providers of the same type, ensure that you give each provider a different name.
 5. Click **Continue**.
 6. In the **Controller URL** field, enter the URL of the AppDynamic controller in the format: `http://<Controller_Host>:<port>/controller</port>`. For example, `https://xxxx.saas.appdynamics.com/controller`.
 
@@ -45,50 +45,48 @@ This topic explains how to add a verification provider Connector at the Project 
 ### Add Prometheus
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Prometheus**in **Monitoring and Logging Systems**. The Prometheus connector settings appear.
-   
+2. In **Project Setup**, click **Connectors**.
+3. Click **+** **Connector**, and click **Prometheus**in **Monitoring and Logging Systems**. The Prometheus connector settings appear.
+
    ![](../static/connect-to-monitoring-and-logging-systems-13.png)
 
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure that you give each provider a different name.
-5. Click **Continue**.
-6. In the **URL** field, enter the URL of your Prometheus account. You cannot use a Grafana URL.
-   
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure that you give each provider a different name.
+5. Click **Continue**.
+6. In the **URL** field, enter the URL of your Prometheus account. You cannot use a Grafana URL.
+
    ![](../static/connect-to-monitoring-and-logging-systems-14.png)
 
-   
 :::info note
 You cannot use a Grafana URL.
 :::
 
-
 1. Click **Next**. The Setup Delegates settings appear.
 2. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 3.  Click **Save and Continue**.
-4.  Once the Test Connection succeeds, click **Finish**. Prometheus is listed under the list of Connectors.
+4.  Once the Test Connection succeeds, click**Finish**. Prometheus is listed under the list of Connectors.
 
 ### Add New Relic
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **New Relic** in **Monitoring and Logging Systems**. The New Relic connector settings appear.
-   
-   ![](../static/connect-to-monitoring-and-logging-systems-15.png)
-   
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API. 
+2. In **Project Setup**, click **Connectors**.
+3. Click **+** **Connector**, and click **New Relic** in **Monitoring and Logging Systems**. The New Relic connector settings appear.
 
-:::info note
+   ![](../static/connect-to-monitoring-and-logging-systems-15.png)
+
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+5. Click **Continue**.
+6. In the **New Relic** **URL** field, select the URL of your New Relic Insights API.
+
+:::note
 New Relic supports multiple APIs. Harness connector leverages the NerdGraph API or the deprecated New Relic Insights API that supports NRQL. See Step 8 for more details on connecting to either APIs.
 
 Currently, the NerdGraph API is behind the feature flag `CV_NEWRELIC_NEW_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
-   
+
    ![](../static/connect-to-monitoring-and-logging-systems-16.png)
 
-7.  To get the **New Relic Account ID** for your New Relic account, copy the number after the **/accounts/** portion of the URL in the New Relic Dashboard.
-8.  In **Encrypted** **API Key**, you can choose **Create or Select a secret.**
+7.  To get the **New Relic Account ID** for your New Relic account, copy the number after the **/accounts/** portion of the URL in the New Relic Dashboard.
+8.  In **Encrypted** **API Key**, you can choose **Create or Select a secret.**
 
 For secrets and other sensitive settings, select or create a new [Text Secret](/docs/platform/secrets/add-use-text-secrets). Enter the API key needed to connect with the server.
 
@@ -96,7 +94,7 @@ If you are having trouble connecting to the API, follow the docs linked below de
 
 <details>
 <summary> NerdGraph API </summary>
-   
+
    :::note
    Currently, this feature is behind the feature flag `CV_NEWRELIC_NEW_API`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
    :::
@@ -118,9 +116,9 @@ If you are having trouble connecting to the API, follow the docs linked below de
 1. Click **Continue**. The Setup Delegates settings appear.
 2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 3.  Click **Save and Continue**.
-4.  Once the Test Connection succeeds, click **Finish**. New Relic is listed under the list of Connectors.
+4.  Once the Test Connection succeeds, click **Finish**. New Relic is listed under the list of Connectors.
 
-Usage scope is inherited from the secrets used in the settings. Pro or higher subscription level is needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
+Usage scope is inherited from the secrets used in the settings. Pro or higher subscription level is needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
 
 ### Add Splunk
 
@@ -137,40 +135,40 @@ Usage scope is inherited from the secrets used in the settings. Pro or higher su
    ![](../static/connect-to-monitoring-and-logging-systems-20.png)
 
 
-Splunk APIs require that you authenticate with a non-SAML account. To access your Splunk Cloud deployment using the Splunk REST API and SDKs, submit a support case requesting access on the Support Portal. For managed deployments, Splunk Support opens port 8089 for REST access. You can specify a range of IP addresses to control who can access the REST API. For self-service deployments, Splunk Support defines a dedicated user and sends you credentials that enable that user to access the REST API. For information see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.2.0/RESTTUT/RESTandCloud).
+Splunk APIs require that you authenticate with a non-SAML account. To access your Splunk Cloud deployment using the Splunk REST API and SDKs, submit a support case requesting access on the Support Portal. For managed deployments, Splunk Support opens port 8089 for REST access. You can specify a range of IP addresses to control who can access the REST API. For self-service deployments, Splunk Support defines a dedicated user and sends you credentials that enable that user to access the REST API. For information see [Using the REST API with Splunk Cloud](http://docs.splunk.com/Documentation/Splunk/7.2.0/RESTTUT/RESTandCloud).
 
 Ensure that the Splunk user account used to authenticate Harness with Splunk is assigned to a role that contains the following REST-related capabilities:
 
 * Search.
 * Access to the indexes you want to search.
 
-In the following example we've created a new Splunk role named **Harness User**, and assigned it search capability:
+In the following example we've created a new Splunk role named **Harness User**, and assigned it search capability:
 
 ![](../static/connect-to-monitoring-and-logging-systems-22.png)
 
-We've given this role access to **All non-internal indexes**. However, we could restrict the access to only the few relevant indexes:
+We've given this role access to **All non-internal indexes**. However, we could restrict the access to only the few relevant indexes:
 
 ![](../static/connect-to-monitoring-and-logging-systems-23.png)
 
-1. In the **Username** field, enter the username of your Splunk account.
-2. In **Password** field, you can choose **Create or Select a secret.**
+1. In the **Username** field, enter the username of your Splunk account.
+2. In **Password** field, you can choose **Create or Select a secret.**
 
 
 :::info note
-For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
+For secrets and other sensitive settings, select or create a new [Text Secret.](/docs/platform/secrets/add-use-text-secrets)
 
 :::
 
-1. Click **Connect and Save**. The Setup Delegates settings appear.
-2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
-3.  Click **Save and Continue**.
-4.  Once the Test Connection succeeds, click **Finish**. Splunk is listed under the list of Connectors.
+1. Click **Connect and Save**. The Setup Delegates settings appear.
+2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
+3.  Click **Save and Continue**.
+4.  Once the Test Connection succeeds, click **Finish**. Splunk is listed under the list of Connectors.
 
 ### Add Google Cloud Operations (formerly Stackdriver)
 
 
 :::info note
-For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](../cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](../cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 :::
 
@@ -178,68 +176,68 @@ Google Cloud Metrics and Google Cloud Logs are supported with GCP connector. See
 
 The following roles must be attached to the account used to connect Harness and Google Cloud Operations as a Google Cloud Provider:
 
-* **Stackdriver Logs** - The minimum role requirement is **logging.viewer**
-* **Stackdriver Metrics** - The minimum role requirements are **compute.networkViewer** and **monitoring.viewer**.
+* **Stackdriver Logs** - The minimum role requirement is **logging.viewer**
+* **Stackdriver Metrics** - The minimum role requirements are **compute.networkViewer** and **monitoring.viewer**.
 
-See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
+See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
 
 
 ### Add Splunk Observability [SignalFX]
 
 1. Open a Harness Project.
-   
+
 2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
 
 3. Under **Monitoring and Logging Systems**, select **Splunk Observability [SignalFX]**.
-   
+
    The connector settings dialog appears.
 
-4. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.  
-   
+4. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.
+
    If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 
 5. In the **Credentials** tab, enter the following, and then select **Next**:
 
       - In **URL**, enter the URL of your Splunk Observability [SignalFX] account. The URL format should be one of the following:
-  
+
          - For streaming ingestion: `https://stream.<realm>.signalfx.com`
-  
+
          - For API access: `https://api.<realm>.signalfx.com`
 
          Where `<realm>` is your specific realm identifier.
-   
+
       - In **API Token**, select **Create or Select a Secret**. In the Create or Select an Existing Secret dialog that appears, you can either select an existing token that you have generated in Splunk Observability. The token must have the authorization scope set as `API Token`.
-       
+
       To create a new secret:
 
-         1. Select **+ New Secret Text**. 
-   
+         1. Select **+ New Secret Text**.
+
          2. In the Add new Encrypted Text dialog, select a secret manager and enter a name for the secret.
-   
+
          3.  In **Secret Value**, enter the API token generated in Splunk Observability (SignalFx). The token must have the authorization scope set as `API Token`. To learn about creating Splunk Observability (SignalFx) API access token, go to [Create and manage authentication tokens using Splunk Observability Cloud](https://docs.splunk.com/Observability/admin/authentication/authentication-tokens/tokens.html).
-   
-         4.  Add an optional description and a tag, and then select **Save**.  
-   
+
+         4.  Add an optional description and a tag, and then select **Save**.
+
             The secret appears in the **API Token** field.
-    
+
 6.  In the **Delegates Setup** tab, choose one of the following:
-    
+
       - **Use any available Delegate**: Harness automatically assigns an available delegate.
-   
+
       - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
-    
+
 7.  Select **Save and Continue**. Harness verifies the connection.
-    
+
 8.  After successful verification, select **Finish**.
-    
+
     The Splunk Observability [SignalFX] connector is added to the list of connectors.
-   
+
     ![Splunk Observability [SignalFX] connector](../static/connect-to-monitoring-and-logging-systems-signalfx-35.png)
 
 9.  Select a connector to view its details.
 
    ![Splunk Observability [SignalFX] connector details](../static/connect-to-monitoring-and-logging-systems-signalfx-35a.png)
-    
+
 
 ### Add Datadog
 
@@ -248,11 +246,11 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 2. In **Project Setup**, click **Connectors**.
 
 3. Click **+ Connector**, and click **Datadog** in **Monitoring and Logging Systems**. The Datadog connector settings appear.
-   
+
    ![](../static/connect-to-monitoring-and-logging-systems-24.png)
-   
+
 4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-   
+
 5. Click **Continue**.
 
 6. Connect to a Datadog dashboard. To connect to a Datadog dashboard:
@@ -260,7 +258,7 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
 8. Append a trailing `api/` to create the following URL: `https://app.datadoghq.com/api/`. The trailing forward slash after `api`is mandatory. If your URL has `v1` at the end of it, remove `v1`.
 9.  In URL field, enter the URL `https://app.datadoghq.com/api/`. The trailing forward slash after api (api/) is mandatory.
-    
+
 10. Your URL should look like one of the following:
       - `https://app.datadoghq.com/api/`
       - `https://us3.datadoghq.com/api/`
@@ -269,9 +267,9 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
       - `https://app.ddog-gov.com/api/`
 
    ![](../static/connect-to-monitoring-and-logging-systems-25.png)
-    
+
 11. In **Encrypted APP** Key, enter the application key.
-    
+
     To create an application key in Datadog, do the following:
 
       1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The APIs page appears.
@@ -283,16 +281,16 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
       3.  Copy the application key and, in **Harness**, paste it into the **Application Key** field.
 
 12. In Encrypted API Key, enter the API key for API calls.
-    
+
     To create an API key in Datadog, do the following:
-      
-      1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
-    
+
+      1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
+
          ![](../static/connect-to-monitoring-and-logging-systems-27.png)
-      
-      2.  In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
-      
-      3.  Copy the API key and, in **Harness**, paste it into the **API Key** field.
+
+      2.  In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
+
+      3.  Copy the API key and, in **Harness**, paste it into the **API Key** field.
 
 13. Click **Next**. The Setup Delegates settings appear.
 
@@ -302,7 +300,6 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
 16. Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
 
-
 ### Add Dynatrace
 
 1. Open a Harness Project.
@@ -310,10 +307,10 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
 3.   Under **Monitoring and Logging Systems**, select **Dynatrace**.
 
-4.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.    
+4.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.
 If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 
-5.	In the **Credentials** tab, enter the URL of your Dynatrace account.  
+5.	In the **Credentials** tab, enter the URL of your Dynatrace account.
 You must use HTTPS to establishing connections with Dynatrace.
 
 6.	Select the **API Token field** > **+ New Secret Text**.
@@ -326,7 +323,7 @@ You must use HTTPS to establishing connections with Dynatrace.
       2. In the Dynatrace menu, select **Access tokens** > Select **Generate new token**.
       3. Enter a name for your token.
       4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
-      5. Select the following scopes: 
+      5. Select the following scopes:
          - **Read metrics**: This is needed to fetch data from the Dynatrace service for collecting information to perform verification.
          - **Read entities**: This is necessary to obtain the list of Dynatrace services and the available metrics for the specified service.
       6. Select **Generate token**.
@@ -343,38 +340,37 @@ You must use HTTPS to establishing connections with Dynatrace.
 12.  In the **Delegates Setup** tab, choose one of the following:
 
    - **Use any available Delegate**: Harness automatically assigns an available delegate.
-  
+
    - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
 
-13.  Select **Save** and **Continue**.  
-    Harness verifies the connection. 
+13.  Select **Save** and **Continue**.
+    Harness verifies the connection.
 
-14.  Once the verification is successful, select **Finish**.  
+14.  Once the verification is successful, select **Finish**.
     The Dynatrace connector is added to the list of connectors.
 
 
 ### Add Custom Health
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Custom Health**in **Monitoring and Logging Systems**. The Custom Health connector settings appear.
-   
+2. In **Project Setup**, click **Connectors**.
+3. Click **+** **Connector**, and click **Custom Health**in **Monitoring and Logging Systems**. The Custom Health connector settings appear.
+
    ![](../static/connect-to-monitoring-and-logging-systems-33.png)
-   
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 5. Click **Continue**.
-6. In **URL**, enter the URL of the metrics data provider. For example, **https://mycompany.appd.com.**
-7.  In **Headers**, enter the query headers required by your metrics data provider. In **Key**, enter a valid query key. In **Value**, you can create or select a key by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets)**.** You can also enter a **Plaintext** value**.**
+6. In **URL**, enter the URL of the metrics data provider. For example, **https://mycompany.appd.com.**
+7.  In **Headers**, enter the query headers required by your metrics data provider. In **Key**, enter a valid query key. In **Value**, you can create or select a key by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets)**.** You can also enter a **Plaintext** value**.**
 8.  Click **Next**. The **Parameters** setting appears.
-9.  In **Parameters**, enter the request parameters. In **Key**, enter a valid query key. In **Value**, you can create or select by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets) or enter a **Plaintext** value**.**
+9.  In **Parameters**, enter the request parameters. In **Key**, enter a valid query key. In **Value**, you can create or select by clicking [**Create or Select a Secret**](/docs/platform/secrets/add-use-text-secrets) or enter a **Plaintext** value**.**
 10. Click **Next**. The **Validation Path** settings appear.
 11. In **Request Method**, select **GET** or **POST**.
 12. In **Validation Path**, enter the query string from your metric provider.
 13. Click **Next**. The Setup Delegates settings appear.
 14. You can choose **Connect via any available Delegate** or **Connect only via Delegates which has all of the following tag****.** If you select a Delegate, Harness will always use that Delegate for this Connector.
 15. Click **Save and Continue**.
-16. Once the Test Connection succeeds, click **Finish**. Custom Health is listed under the list of Connectors.
-
+16. Once the Test Connection succeeds, click **Finish**. Custom Health is listed under the list of Connectors.
 
 ### Add Grafana Loki
 
@@ -383,14 +379,14 @@ You must use HTTPS to establishing connections with Dynatrace.
 2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
 
 3. Under **Monitoring and Logging Systems**, select **CustomHealth**.
-   
+
 4. In the Create or Select an Existing Connector dialog, select **+ New Connector**.
-         
+
 5. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-   
+
 6. In the **Headers** tab, enter the following and select **Next**:
 
-   - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication. 
+   - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication.
    - Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on the log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
 
 7. Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
@@ -400,13 +396,13 @@ You must use HTTPS to establishing connections with Dynatrace.
 9. In the **Delegates Setup** tab, choose one of the following:
 
    - **Use any available Delegate**: Harness automatically assigns an available delegate.
-               
+
    - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
 
-11. Select **Save** and **Continue**.  
-               
-   Harness verifies the connection. 
+11. Select **Save** and **Continue**.
 
-11. Once the verification is successful, select **Finish**.  
-               
+   Harness verifies the connection.
+
+11. Once the verification is successful, select **Finish**.
+
    The Grafana Loki connector is added to the list of connectors.

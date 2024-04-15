@@ -1,6 +1,8 @@
 ---
 id: linux-disk-fill
 title: Linux disk fill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-disk-fill
 ---
 
 import Ossupport from './shared/note-supported-os.md'

@@ -1,6 +1,8 @@
 ---
 id: azure-instance-io-stress
 title: Azure instance IO stress
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-io-stress
 ---
 
 Azure instance I/O stress disrupts the state of infra resources. 

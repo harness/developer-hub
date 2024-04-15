@@ -1,7 +1,9 @@
 ---
 title: Execute serial and parallel faults
 sidebar_position: 30
-description: Guide to execute serial and parallel chaos  
+description: Guide to execute serial and parallel chaos
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments
 ---
 import Launch from '/docs/chaos-engineering/features/shared/launch-experiment-from-hub.md'
 

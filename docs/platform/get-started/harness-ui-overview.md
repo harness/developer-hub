@@ -116,7 +116,7 @@ Account settings include:
 * Account-level shared resources like [delegates](/docs/platform/delegates/delegate-concepts/delegate-overview), [variables](/docs/platform/variables-and-expressions/add-a-variable), [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview), [templates](/docs/platform/templates/template), and more.
 * [Access Control](/docs/category/platform-access-control)
 * Security and governance, including [Authentication](/docs/platform/authentication/authentication-overview.md), [Policies](/docs/category/policy-as-code), and [Audit Trail](/docs/category/audit-trail).
-* [Subscriptions](/docs/platform/get-started/subscriptions)
+* [Subscriptions](/docs/platform/get-started/subscriptions-licenses/subscriptions)
 
 Additional options may be present depending on your module usage and access, such as GitOps settings and cloud cost integrations.
 
@@ -189,7 +189,7 @@ Account settings include:
 * Account resources (shared resources such as [delegates](/docs/platform/delegates/delegate-concepts/delegate-overview), [variables](/docs/platform/variables-and-expressions/add-a-variable), [secrets](/docs/platform/secrets/secrets-management/harness-secret-manager-overview), [templates](/docs/platform/templates/template), [default settings](/docs/platform/settings/default-settings), and more)
 * [Policies](/docs/category/policy-as-code)
 * [Access Control](/docs/category/platform-access-control)
-* [Billing, Subscriptions, and Plans](/docs/platform/get-started/subscriptions)
+* [Billing, Subscriptions, and Plans](/docs/platform/get-started/subscriptions-licenses/subscriptions)
 * [Audit Trail](/docs/category/audit-trail)
 * [Organizations](/docs/platform/organizations-and-projects/projects-and-organizations)
 

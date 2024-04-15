@@ -343,22 +343,22 @@ Output variables are exposed values that can be used by other steps or stages in
 To reference an output variable in another step in the same stage, use either of the following expressions:
 
 ```
-<+steps.[stepID].output.outputVariables.[varName]>
-<+execution.steps.[stepID].output.outputVariables.[varName]>
+<+steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
-<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 For each expression:
 
-* Replace `[stepID]` with the ID of the GitHub Actions step
-* Replace `[varName]` with the relevant variable name, wrapped in quotes.
-* In cross-stage references, replace `[stageID]` with the ID of the stage where the GitHub Actions step exists.
+* Replace `STEP_ID` with the ID of the GitHub Actions step
+* Replace `VAR_NAME` with the relevant variable name, wrapped in quotes.
+* In cross-stage references, replace `STAGE_ID` with the ID of the stage where the GitHub Actions step exists.
 
 :::warning
 

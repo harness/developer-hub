@@ -2,6 +2,8 @@
 title: Create a new chaos dashboard
 sidebar_position: 2
 description: Guide to create a new dashboard and visualize entities of a chaos experiment
+redirect_from:
+	- /docs/chaos-engineering/configure-chaos-experiments/chaos-dashboard/create-a-new-dashboard
 ---
 
 import Descriptions from './shared/field-descriptions.md'

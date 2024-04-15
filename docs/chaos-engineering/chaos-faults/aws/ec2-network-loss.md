@@ -1,6 +1,8 @@
 ---
 id: ec2-network-loss
 title: EC2 network loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-loss
 ---
 
 EC2 network loss causes flaky access to the application (or services) by injecting network packet loss to EC2 instance(s). This fault:

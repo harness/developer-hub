@@ -1,8 +1,9 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-11-24T16:19:25
+date: 2024-04-12T16:19:25
 tags: [NextGen, "feature flags"]
+
 sidebar_position: 11
 ---
 
@@ -14,7 +15,77 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: March 27th 2024
+### Latest Updated: April 12, 2024
+
+## April 2024
+
+### Android SDK
+
+#### Version 2.2.0
+
+Bug fixes:
+
+ - The `NetworkInfoProvider` has been replaced. This was due to customers experiencing crashes while using the Harness library for Feature Flags, specifically in the Andriod app. (FFM-11216, ZD-61312)
+
+Security Updates: 
+ - The `bouncycastle` dependency has been updated to 1.78 to remove CVE-2024-29857. (FFM-11222)
+ - The `threeten` dependency has been updated to 2.6.9 to remove CVE-2024-23081. (FFM-11223)
+
+#### Version 2.1.1
+
+ - This update fixes a `ConcurrentModificationException` that could be thrown if network connectivity was lost and regained. (FFM-11156)
+
+### Golang SDK
+
+#### Version 0.1.20
+
+ - Optimized the evaluation logic to be more efficient. (FFM-11183)
+
+#### Version 0.1.19
+
+ - Added additional debug logging around evaluation logic. (FFM-11091)
+
+### Javascript SDK
+
+#### Version 1.26.1
+
+ - Replace `btoa` usage with custom Base64 encoding to handle non-ASCII characters. (FFM-11103, ZD-60634)
+
+### .NET SDK
+
+#### Version 1.6.8
+
+ - We've fixed an issue where evaluation related debug logs, even if debugging wasn't enabled, would cause extra latency when making evaluations. This fix restores performance to do normal pre-logging levels. (FFM-11121)
+ - There are no longer `information` logs json payloads. (FFM-11022)
+
+#### Version 1.6.7
+
+ - Logs flags/groups payload as `info` level log. (FFM-11022)
+
+#### Version 1.6.6
+
+ - We've made cache & exception handling improvements including:
+ -- improving cache locking and synchronization,
+ -- improving stream error handling,
+ -- increasing the capacity of dictionary, and
+ -- additional cache recovery checks. (FFM-11089)
+
+### Node.js SDK 
+
+#### Version 1.7.0
+
+ - Applies metrics hardening to Node SDK.. (FFM-11022)
+ - Applies standard Metrics Enhancements. (FFM-11022)
+ - Fixed issue where only the first prerequisite was being processed. (FFM-9291)
+ - Adds `Harness-SDK-Info`, `Harness-AccountID`, or `Harness-EnvironmentID` headers. (FFM-7051)
+ - Adds support for custom TLS CA certificates. (FFM-7017)
+
+### PHP SDK (Beta)
+
+#### Version 0.2.0 
+
+ - Fixed the JWT fields missing in the cache on authentication. (FFM-11123, ZD-60936)
+ - Added SDK type, version, and lang to the HTTP header. (FFM-7037)
 
 ## March 2024
 
@@ -80,6 +151,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - We have enabled the logger to be overridden so users can use their own logger. (FFM-10880)
 
 ### .NET SDK
+
+#### Version 1.6.5
+
+ - When you're making an evalution, if the Flag or Group cache are found to be in an invalid state, then a cache refresh is made and the evaluation re-attempted once. This cache refresh has a default timeout of 5 seconds, which can be decreased or increased by using the new configuration option `SetCacheRecoveryTimeout(int timeoutMilliseconds)`. (FFM-11022)
 
 #### Version 1.6.4
 

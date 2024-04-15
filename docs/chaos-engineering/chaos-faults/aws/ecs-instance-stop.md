@@ -1,6 +1,8 @@
 ---
 id: ecs-instance-stop
 title: ECS instance stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-instance-stop
 ---
 
 ECS instance stop induces stress on an AWS ECS cluster. It derives the instance under chaos from the ECS cluster.

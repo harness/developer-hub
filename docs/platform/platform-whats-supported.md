@@ -79,7 +79,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 #### Native Helm deployments
 
-For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md) (Helm chart manifest), the following SDKs/tools are certified:
+For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart) (Helm chart manifest), the following SDKs/tools are certified:
 
 * `helm` v3.11
 * `kubectl` v.1.27.0
@@ -187,7 +187,7 @@ The following table lists some resources and their availability at various scope
 | **Secrets** | Yes | Yes | Yes |
 | **SMTP Configuration** | Yes | No | No |
 | **Templates** | Yes | Yes | Yes |
-| **Audit Trail** | Yes | Yes | Yes |
+| **Audit Trail** | Yes | Yes | No |
 | **Delegates** | Yes | Yes | Yes |
 | **Governance** | Yes | Yes | Yes |
 

@@ -1,6 +1,8 @@
 ---
 id: vmware-network-latency
 title: VMware network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-latency
 ---
 VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).
 - It results in flaky access to the application. 

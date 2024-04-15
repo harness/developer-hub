@@ -354,6 +354,7 @@ There are three options for connecting Harness to an AKS cluster:
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you'll need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you won't need to provide any Ids.
+  * It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
 * Use a **Microsoft Azure Cloud Connector** with Service Principal or Managed Identity credentials, as described in this topic.
     + You must assign the **Owner** role or an equivalent custom role, as explained in [AKS role requirements](#aks-role-requirements).
 

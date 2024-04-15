@@ -13,7 +13,7 @@ export default function communityAspects() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.btnContainer}>
-            <Link href="https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w">
+            <Link href="https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA">
               <Tooltip placement="top" overlay="Join Harness Community Slack">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/slack.svg`} />

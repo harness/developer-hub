@@ -1,6 +1,6 @@
 ---
 title: Delegate system requirements
-description: This topic lists the requirements for the Harness Delegate. 
+description: This topic lists the requirements for the Harness Delegate.
 sidebar_position: 2
 helpdocs_topic_id: k7sbhe419w
 helpdocs_category_id: vm60533pvt
@@ -16,14 +16,14 @@ Note the following important information about delegates:
 
 * Deployment limits are set by account type.
 
-* You might need to install multiple delegates, depending on how many continuous delivery tasks you do concurrently, and on the number of compute resources you provide to each delegate. Typically, you need one delegate for every 300 to 500 service instances across your applications.  
+* You might need to install multiple delegates, depending on how many continuous delivery tasks you do concurrently, and on the number of compute resources you provide to each delegate. Typically, you need one delegate for every 300 to 500 service instances across your applications.
 
-	A service instance is created when you use Harness to deploy the underlying infrastructure for the instance.  
+	A service instance is created when you use Harness to deploy the underlying infrastructure for the instance.
 
 	For example, an instance of a Kubernetes workload where Harness creates the pods, or an instance of an ECS task where Harness creates the service for the task.
 
 * The delegate is installed in your network and connects to the Harness Manager.
-  
+
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services, such as Docker or Kubernetes.
 
   | Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
@@ -31,7 +31,7 @@ Note the following important information about delegates:
   | 1 | 2 GB / 0.5 CPU | 10 |
   | 2 | 4 GB / 1 CPU | 20 |
   | 4 | 8 GB / 2 CPU | 40 |
-  | 8 | 16 GB / 4 CPU | 80 | 
+  | 8 | 16 GB / 4 CPU | 80 |
 
   The delegate runs in a Linux/UNIX container.
 
@@ -45,7 +45,7 @@ Note the following important information about delegates:
 
 ## Allowlist Harness domains and IPs
 
-Harness SaaS delegates only need outbound access to the Harness domain name, most commonly, **app.harness.io**, and optionally, to **logging.googleapis.com**. The URL **logging.googleapis.com** is used to provide logs to Harness Support.
+Harness SaaS delegates only need outbound access to the Harness domain name, most commonly, **app.harness.io**, and optionally, to **logging.googleapis.com**. The URL **logging.googleapis.com** is used to provide logs to Harness Support.
 
 Go to [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips.md).
 
@@ -77,8 +77,7 @@ gRPC connections are not required for delegate version 23.12.81803 and later.
 
 If you do not enable gRPC connections, the following limitation applies:
 
-* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events. 
-
+* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events.
 
 ## Add certificates and other software to the delegate
 

@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-blackhole-chaos
 title: VMware Windows Blackhole Chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-blackhole-chaos
 ---
 
 VMware Windows Blackhole Chaos simulates a network blackhole scenario on Windows OS based VMware VM.
