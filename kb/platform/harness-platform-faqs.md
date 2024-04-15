@@ -879,7 +879,7 @@ Yes, for more information, go to:
 
 We are in the process of upgrading the Kubectl version. The version upgrade will be completed soon.
 
-### What does delegate resource threshold DELEGATE_CPU_THRESHOLD do?
+### What does DELEGATE_CPU_THRESHOLD do?
 
  By default, delegate task capacity is based on the number of tasks. Some tasks consume far less resources than the others. Enabling `DELEGATE_CPU_THRESHOLD` allows the delegate to take tasks based on available resources (CPU) instead. If delegate is overloaded, it would reject a task.
 
@@ -947,9 +947,9 @@ You can use the environment variable `TMPDIR` on the delegate to add your direct
 
 The release of the Immutable Delegate version to SMP involves setting the `IMMUTABLE_DELEGATE_DOCKER_IMAGE` version as an environment variable in the manager. When users download the YAML, this version is read from the environment variable, and SaaS utilizes pipelines to update MongoDB entries. During pod startup in SMP, the environment values are populated in the database, facilitating the direct retrieval of the Immutable Delegate version.
 
-### If the DELEGATE_RESOURCE_THRESHOLD is set to zero, does the delegate reject all tasks?
+### If the DELEGATE_CPU_THRESHOLD is set to zero, does the delegate reject all tasks?
 
-No, if `DELEGATE_RESOURCE_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection. Also, we have the default `DELEGATE_RESOURCE_THRESHOLD` value as 80.
+No, if `DELEGATE_CPU_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection.
 
 ### How do I inspect my certificates for delegate certificate issues?
 
@@ -1735,12 +1735,11 @@ Yes, you can install custom certificates for Kubernetes delegates. For more info
 
 ### What happens to tasks rejected by the delegate?
 
-Delegates reject tasks or fail to acquire tasks when the CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+Delegates reject tasks when the CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. Rejected tasks can be acquired by other eligible delegates or by the same delegate when its resources drop below the threshold. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
-Yes, you can specify what threshold to reject the task using `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD`, otherwise, the default value is 80%. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
-
+No, this is not possible at the moment.
 
 ### What is the naming convention used when creating a default delegate token?
 
