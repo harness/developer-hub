@@ -56,7 +56,7 @@ Below are the metrics settings recommended by Harness. Tailor these settings acc
 
 #### CPU/Memory
 
-Configuring HPA based on CPU/Memory can be a bit complex for some use cases. However, given the calculations already conducted, we believe 70-80% usage is the most effective HPA indicator.
+Configuring HPA based on CPU/Memory can be a bit complex for some use cases. However, if the calculations are possible, we believe 70-80% usage is the most effective HPA indicator. Ideally this percentage should be slightly lower than `DELEGATE_CPU_THRESHOLD`, so that HPA is triggered before delegate starts rejecting tasks to avoid task execution failures or slowdown.
 
 #### io_harness_custom_metric_task_execution_time
 
@@ -76,13 +76,13 @@ Create a low severity alarm for significant deviations (for example, a 30-50% ch
 
 Set a high severity alarm for zero over a prolonged period (for example, 30 minutes) if delegates are consistently expected to perform tasks.
 
-If the change is expected, the alarm could indicate a need to plan for scaling the delegate fleet due to increased usage. A sudden burst might cause downtime or indicate a problem with pipeline executions or downstream services.
+If the change is unexpected, the alarm could indicate a need to plan for scaling the delegate fleet due to increased usage. A sudden burst might cause downtime or indicate a problem with pipeline executions or downstream services.
 
 #### io_harness_custom_metric_task_timeout_total
 
 HPA isn't necessary. Ideally, this should be close to zero. Create a high severity alarm for a sufficiently low number.
 
-An alarm might indicate misconfigured pipelines or disruptions in downstream services.
+An alarm might indicate misconfigured pipelines or disruptions in downstream services, but also overloaded delegate.
 
 #### io_harness_custom_metric_task_completed_total
 
@@ -104,7 +104,7 @@ Create a low severity alarm for total unique task rejections. This alarm can ind
 
 #### io_harness_custom_metric_resource_consumption_above_threshold
 
-While this can serve as a simpler HPA metric, we advise against its use in for some scenarios. By the time this metric is triggered, rejection has likely already begun, making it too late for HPA adjustments. Fine-tuning memory/CPU metrics provides a better HPA indicator, allowing scaling before task rejection occurs.
+While this can serve as a simpler HPA metric, we advise to use CPU/Memory for HPA instead if possible. By the time this metric is triggered, rejection has likely already begun, making it too late for HPA adjustments. Fine-tuning CPU/Memory metrics provides a better HPA indicator, allowing scaling before task rejection occurs.
 
 ## Configure the Prometheus monitoring tool for the metrics collection
 
