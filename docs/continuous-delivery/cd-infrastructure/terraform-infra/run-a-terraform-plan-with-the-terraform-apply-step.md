@@ -253,7 +253,9 @@ You can even set a Harness Trigger where you can set the workspace name used in 
 This feature requires Harness Delegate version 81202. This feature is available only to paid customers. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targetted for infrastructure provisioning.
+You can use an AWS Connector to have the terraform plan and apply step assume a role to perform the provisioning of infrastructure. It's an optional configuration that takes in AWS Connector, a Region and a Role ARN. The Terraform step will use these parameters to authenticate with the aws account targeted for infrastructure provisioning.
+
+By default, the AWS assume role session duration is 900 seconds. In order to increase the AWS role session duration, it has been introduced a built-in Environment Variable `HARNESS_AWS_ASSUME_ROLE_DURATION`, which can be used to override assume role session duration. `HARNESS_AWS_ASSUME_ROLE_DURATION` is designed to be used in Terraform Steps in environment variable section, the value have to be set in seconds. This new env var requires Harness Delegate version 827xx.
 
 When configured the optional configuration for AWS Connector these fields can be passed as a fixed value, runtime input, or an expression
 
