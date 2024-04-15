@@ -33,7 +33,7 @@ To provide greater control over the resources used for CD steps, Harness also le
 You can use a CD step group that points to your cluster as the runtime infrastructure. Next, in the step group, you can add the steps supported by containerized step groups.
 
 :::note
-Containerized Step groups cannot have nested step groups, but you can put groups of steps next to each other in a containerized step group:
+Containerized step groups cannot have nested step groups, but you can put groups of steps next to each other in a containerized step group:
 
 ![](./utilities/static/step-groups-04.png)
 
