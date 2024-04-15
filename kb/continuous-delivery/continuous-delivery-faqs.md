@@ -6621,7 +6621,7 @@ Harness will maintain pipeline execution data for 6 months. You can refer to our
 Use case looping strategy, as you can use expressions as well for the strategy condition and those expressions can be generated dynamically.
 
 #### Move template into git folders 
-Changing the path from the Harness UI for any entity doesn’t commit the entity on the new path. It will only change the link to the filepath for that entity. So, if you change filepath from A to B, then now while loading the entity, it will load the filepath B instead of A whenever you use it. 
+Changing the path from the Harness UI for any entity doesn’t commit the entity on the new path. It will only change the link to the filepath for that entity. So, if you change filepath from A to B, then when loading the entity, it will load the filepath B instead of A whenever you use it. 
 
 #### Is there any validation for moving templates between Git folders?
 There is no validation on any file at B exists or not. It will just try to load and present the expected experience.
