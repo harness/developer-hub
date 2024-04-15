@@ -29,7 +29,7 @@ The execution plane helps setup the resources (clusters) and you can use the con
 ## Steps to execute a HCE experiment
 
 To create a chaos experiment, complete the following steps:
-1. [Fulfill the resource requirements](/docs/chaos-engineering/features/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
+1. [Fulfill the resource requirements](/docs/chaos-engineering/get-started/tutorials/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
 2. [Add an environment](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-1-create-an-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
 3. [Add a chaos infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure): The required chaos infrastructure is created within a chaos environment.
 4. [Validate the chaos infrastructure installation](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-3-validate-the-chaos-infrastructure-installation): Once you create your chaos infrastructure, ensure that it has been created in the right manner.

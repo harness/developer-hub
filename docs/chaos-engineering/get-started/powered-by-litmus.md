@@ -5,14 +5,14 @@ sidebar_position: 4
 description: HCE is powered by open source CNCF project LitmusChaos
 ---
 
-Harness Chaos Engineering (HCE) is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). Harness CE adds additional features to make the practice of chaos engineering for enterprises easy.
+Harness Chaos Engineering (HCE) is powered by the open source CNCF chaos engineering project [LitmusChaos](https://github.com/litmuschaos/litmus). HCE adds additional features to make the practice of chaos engineering for enterprises easy.
 
 ![Harness Chaos Engineering Module](./static/overview/HCE-image.png)
 
-Go to [Harness CE versus LitmusChaos](#harness-ce-versus-litmuschaos) for a quick comparison.
+Go to [HCE versus LitmusChaos](#harness-ce-versus-litmuschaos) for a quick comparison.
 
 ## Common capabilities of HCE and LitmusChaos
-Following are the common features between Litmus and Harness Chaos Engineering:
+Following are the common features between Litmus and HCE:
 
 - Scalable platform
 - Declarative chaos fault architecture
@@ -27,7 +27,7 @@ Following are the common features between Litmus and Harness Chaos Engineering:
 
 ## Additional capabilities of HCE
 
-Harness CE module has the following additional capabilities:
+HCE module has the following additional capabilities:
 
 - [Kubelet density chaos fault](/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density)
 - [VMware chaos faults](/docs/chaos-engineering/chaos-faults/vmware/)
@@ -47,11 +47,11 @@ Harness CE module has the following additional capabilities:
 
 ## Integrations with other Harness modules
 
-In addition to the above features, CE integrates with these Harness modules:
+In addition to the above features, HCE integrates with these Harness modules:
 
-- Continuous Delivery (CD). Go to [Use HCE with CD](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
-- Feature Flags (FF). Go to [Use HCE with FF](/docs/chaos-engineering/integrations/chaos-ff).
-- Service Reliability Management. Go to [Use HCE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
+- Continuous Delivery (CD): Go to [Use HCE with CD](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd).
+- Feature Flags (FF): Go to [Use HCE with FF](/docs/chaos-engineering/integrations/chaos-ff).
+- Service Reliability Management: Go to [Use HCE SRM](/docs/chaos-engineering/integrations/use-chaos-with-srm).
 
 ## HCE free plans
 [Harness](https://harness.io) offers a free hosted LitmusChaos if you are trying to get started with LitmusChaos or Chaos Engineering in general. The HCE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as RBAC and hosted logging— all for free.
@@ -62,7 +62,7 @@ Sign up at [app.harness.io](https://app.harness.io) to get started with a free p
 The HCE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness support](https://harness.io).
 :::
 
-## Harness CE versus LitmusChaos
+## HCE versus LitmusChaos
 
 This section describes the differences between Harness Chaos Engineering (HCE) and the open-source CNCF incubation project, LitmusChaos.
 

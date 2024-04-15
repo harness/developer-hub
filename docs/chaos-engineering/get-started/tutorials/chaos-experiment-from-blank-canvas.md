@@ -1,7 +1,7 @@
 ---
 title: Create a chaos experiment from a blank canvas
 description: Create a chaos experiment from scratch.
-sidebar_position: 4
+sidebar_position: 3
 redirect_from:
   - /tutorials/chaos-experiments/chaos-experiment-from-blank-canvas
 ---
