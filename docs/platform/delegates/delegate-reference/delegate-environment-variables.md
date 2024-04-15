@@ -22,15 +22,6 @@ This value is automatically added to the delegate configuration file (the applic
           value: YOUR_ACCOUNT_ID
 ```
 
-### ACCOUNT_SECRET
-
-The Harness account token that is used to register the delegate.
-
-```yaml
-        - name: ACCOUNT_SECRET
-          value: YOUR_ACCOUNT_SECRET
-```
-
 ### DELEGATE_DESCRIPTION
 
 A text description of the delegate. The description is added to the delegate before registration, in Harness Manager or in YAML. This value is displayed on the delegate details page in Harness Manager.
@@ -62,28 +53,6 @@ The namespace for the delegate is taken from the `StatefulSet` namespace.
               fieldPath: metadata.namespace
 ```
 
-### DELEGATE_ORG_IDENTIFIER
-
-The Harness organization [Identifier](../../references/entity-identifier-reference.md) in which the delegate registers.
-
-Delegates at the account level do not have a value for this variable.
-
-```yaml
-        - name: DELEGATE_ORG_IDENTIFIER
-          value: "engg"
-```
-
-### DELEGATE_PROJECT_IDENTIFIER
-
-The Harness project [Identifier](../../references/entity-identifier-reference.md) in which the delegate registers.
-
-Delegates at the account or organization level do not have a value for this variable.
-
-```yaml
-        - name: DELEGATE_PROJECT_IDENTIFIER
-          value: "myproject"
-```
-
 ### DELEGATE_TAGS
 
 Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
@@ -92,10 +61,7 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
 
 ```yaml
         - name: DELEGATE_TAGS
-          value: ""
-
-        - name: DELEGATE_TAGS
-          value: has_jq, has_gcloud
+          value: "has_jq, has_gcloud"
 ```
 
 ### DELEGATE_CPU_THRESHOLD
@@ -103,11 +69,8 @@ Tags are displayed on the delegate details page in Harness Manager. Go to [Tags 
 To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` env variable to the CPU threshold in percentages. When the threshold is exceeded, the delegate rejects new tasks. For more information, go to [Configure delegate metrics and auto scale](/docs/platform/delegates/manage-delegates/delegate-metrics).
 
    ```yaml
-   env:
-       - name: JAVA_OPTS
-         value: "-Xmx1536M"
-      - name: DELEGATE_CPU_THRESHOLD
-        value: "80"
+        - name: DELEGATE_CPU_THRESHOLD
+          value: "80"
    ```
 
 ### DELEGATE_TASK_CAPACITY
@@ -115,7 +78,6 @@ To configure the delegate resource threshold, set the `DELEGATE_CPU_THRESHOLD` e
 Harness enables you to configure a maximum number of tasks for each delegate. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it.
 
 ```yaml
-        env:
         - name: DELEGATE_TASK_CAPACITY
           value: "2"
 
@@ -141,9 +103,9 @@ Used to specify a script that runs when the delegate is initialized. You can use
 
 ```yaml
         - name: INIT_SCRIPT
-          value: echo install wget
-                 apt-get install wget
-                 echo wget installed
+          value: |-  
+            echo "initializing Delegate"
+            echo "Delegate initialized"
 ```
 
 ### JAVA_OPTS
@@ -152,7 +114,7 @@ Use the `JAVA_OPTS` environment variable to add or override JVM parameters. The 
 
 ```yaml
         - name: JAVA_OPTS
-          value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"
+          value: "-XX:+UseContainerSupport -XX:MaxRAMPercentage=70.0 -XX:MinRAMPercentage=40.0 -XX:+HeapDumpOnOutOfMemoryError"
 ```
 
 ### LOG_STREAMING_SERVICE_URL
