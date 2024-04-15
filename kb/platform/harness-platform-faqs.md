@@ -881,7 +881,7 @@ We are in the process of upgrading the Kubectl version. The version upgrade will
 
 ### What does DELEGATE_CPU_THRESHOLD do?
 
- By default, delegate task capacity is based on the number of tasks. Some tasks consume far less resources than the others. Enabling `DELEGATE_CPU_THRESHOLD` allows the delegate to take tasks based on available resources (CPU) instead. If delegate is overloaded, it would reject a task.
+ By default, delegate task capacity is based on the number of tasks. Some tasks consume far fewer resources than others. Enabling `DELEGATE_CPU_THRESHOLD` allows the delegate to take tasks based on available resources (CPU) instead. If the delegate is overloaded, it will reject tasks.
 
  For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
