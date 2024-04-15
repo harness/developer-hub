@@ -787,7 +787,7 @@ spec:
         - name: LOG_STREAMING_SERVICE_URL
           value: "https://app.harness.io/log-service/"
         - name: DELEGATE_CPU_THRESHOLD
-          value: "false"
+          value: 80
 
 ---
 
