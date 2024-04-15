@@ -633,8 +633,8 @@ spec:
 
 Take a look at the **fault parameters**:
 
-* The fault execution duration is defined as `30` seconds with an interval of `10` seconds. This means that, in every `10` seconds, the cart microservice pod(s) are deleted for a total of `30` seconds. 
-* The ramp time is set to `empty` and is `0` by default. This ramp time refers to the period that the fault waits before and after injecting chaos into the application. 
+* The fault execution duration is defined as `30` seconds with an interval of `10` seconds. This means that, in every `10` seconds, the cart microservice pod(s) are deleted for a total of `30` seconds.
+* The ramp time is set to `empty` and is `0` by default. This ramp time refers to the period that the fault waits before and after injecting chaos into the application.
 * The pod affected percentage is set to `empty`, and is `1` by default. This parameter specifies the number of pods in the cart deployment that will be targeted.
 
 ```
@@ -655,10 +655,10 @@ Take a look at the **fault parameters**:
 
 Now take a look at the **Probes** config:
 
-* A probe named **http-cartservice-probe** is defined which is used to validate the availability of the `/cart` URL endpoint when the pod delete fault is executed. 
-* You can see that the probe type is `HTTP` and it is executed in a `Continuous` mode throughout the fault execution. 
-* In probe details section, you can see that the URL is `http://frontend/cart` and the response timeout is set to `15` milliseconds. 
-* Probe execution makes GET requests to the specified URL. If no HTTP response is obtained within `15` milliseconds, it indicates probe failure. 
+* A probe named **http-cartservice-probe** is defined which is used to validate the availability of the `/cart` URL endpoint when the pod delete fault is executed.
+* You can see that the probe type is `HTTP` and it is executed in a `Continuous` mode throughout the fault execution.
+* In probe details section, you can see that the URL is `http://frontend/cart` and the response timeout is set to `15` milliseconds.
+* Probe execution makes GET requests to the specified URL. If no HTTP response is obtained within `15` milliseconds, it indicates probe failure.
 * If all the probe executions pass, this indicates that the probe passed.
 
 ```
@@ -682,7 +682,7 @@ probe:
 
 Now, take a look at **Fault Weights**:
 
-* In the above sample workflow manifest, you will see that the default weight for the fault is set to `10`, which is used to determine the resilience score for the experiment run. 
+* In the above sample workflow manifest, you will see that the default weight for the fault is set to `10`, which is used to determine the resilience score for the experiment run.
 
 
 ### Run the chaos experiment and observe the outcomes
@@ -713,7 +713,7 @@ GraphQL variables: `RunChaosExperiment`
 {
   "workflowID": "{{workflow-id-from-createChaosWorkflow-call}}",
   "identifiers": {
-    "orgIdentifier": "{{org_id}}", 
+    "orgIdentifier": "{{org_id}}",
     "accountIdentifier": "{{account_id}}",
     "projectIdentifier": "{{project_id}}"
   }
@@ -748,11 +748,11 @@ Copy the value of the `notifyID` field.
 
 You can observe the experiment added to the list of chaos experiments. It would show `Running` status. Choose **Current Execution** to view the detailed execution.
 
-![Experiment Executing](./static/first-chaos/experiment-executing.png)
+![Experiment Executing](./static/using-api/experiment-executing.png)
 
 When the fault is being executed, you can observe the detailed view and the logs of the experiment.
 
-![Detailed Chaos Execution](./static/first-chaos/detailed-chaos-execution.png)
+![Detailed Chaos Execution](./static/using-api/detailed-chaos-execution.png)
 
 You can also see the status of the cart deployment pod. When you execute the below command, it displays all the pods in running state. It indicates that pod delete has deleted the cart pod, and replaced it with a new one, whose container is being created.
 
@@ -855,7 +855,7 @@ GraphQL variables: `ListWorkflowRun`
 ```
 {
   "identifiers": {
-    "orgIdentifier": "{{org_id}}", 
+    "orgIdentifier": "{{org_id}}",
     "accountIdentifier": "{{account_id}}",
     "projectIdentifier": "{{project_id}}"
   },
@@ -888,19 +888,19 @@ For instance, a field named `phase` would tell if a particular workflow is still
 
 #### Step 4: Evaluate the experiment run
 
-When the experiment completes execution, you will see a resiliency score of 0%. You will also notice that the pod delete fault step failed. Before analyzing the expriment results, you can check that the application has come back to normal state, and is accessible. You can validate this from the Grafana dashboard where you can see visuals that indicate that chaos duration is complete.
+When the experiment completes execution, you will see a resiliency score of 0%. You will also notice that the pod delete fault step failed. Before analyzing the experiment results, you can check that the application has come back to normal state, and is accessible. You can validate this from the Grafana dashboard where you can see visuals that indicate that chaos duration is complete.
 
 ![App Metrics Normalizing](./static/first-chaos/app-metrics-normalizing.png)
 
-You can see the chaos result which indicates that the experiment **Failed**, and the probe success percentage is 0%. This happened because the `http-cart-service` probe failed, which is a consequence of the cart pod being unavaialble since you injected chaos (pod delete) into the microservice.
+You can see the chaos result which indicates that the experiment **Failed**, and the probe success percentage is 0%. This happened because the `http-cart-service` probe failed, which is a consequence of the cart pod being unavailable since you injected chaos (pod delete) into the microservice.
 
-![Experiment Failed Probe](./static/first-chaos/experiment-failed-probe.png)
+![Experiment Failed Probe](./static/using-api/experiment-failed-probe.png)
 
 The failed step specifies "Probe execution result didn't met the passing criteria", which validates HTTP probe failure that you previously defined.
 
-![Fail Step Result](./static/first-chaos/fail-step-result.png)
+![Fail Step Result](./static/using-api/fail-step-result.png)
 
-With that, you have successfully executed your first vhaos experiment using chaos APIs. 
+With that, you have successfully executed your first chaos experiment using chaos APIs.
 
 For the probe checks and experiment to pass, increase the number of experiment pods to 2 so that one of the deployment pod survives the pod delete fault and keeps the application running.
 
