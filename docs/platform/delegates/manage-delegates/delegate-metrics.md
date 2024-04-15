@@ -56,10 +56,10 @@ Below are the metrics settings recommended by Harness. Tailor these settings acc
 
 #### CPU/Memory
 
-Configuring HPA based on CPU/Memory can be a bit complex for some use cases. However, if the calculations are possible, we believe 70-80% usage is the most effective HPA indicator. Ideally this percentage should be slightly lower than `DELEGATE_CPU_THRESHOLD`, so that HPA is triggered before delegate starts rejecting tasks to avoid task execution failures or slowdown.
+Configuring HPA based on CPU/Memory can be a bit complex for some use cases. However, if the calculations are possible, we believe 70-80% usage is the most effective HPA indicator. Ideally, this percentage should be slightly lower than `DELEGATE_CPU_THRESHOLD`, so that HPA is triggered before the delegate starts rejecting tasks to avoid task execution failures or slowdown.
 
 :::info
-    Using CPU-based HPA is not advisable unless CPU is limited for the delegate container (not limited by default). When CPU is unlimited, exceeding 100% is possible and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
+Using CPU-based HPA is not advisable unless CPU is limited for the delegate container (not limited by default). When CPU is unlimited, exceeding 100% is possible and should not be the sole reason to scale or reject tasks. CPU-based HPA should only be used when the CPU usage goes above 100% for a prolonged period. Instead, memory-based HPA is recommended for autoscaling purposes. Harness suggests using memory-based HPA for better performance and efficiency.
 :::
 
 #### io_harness_custom_metric_task_execution_time
