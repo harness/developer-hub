@@ -6616,3 +6616,27 @@ This error occurs because there's a misconfiguration with the pipeline. Harness 
 
 #### What is Harness' pipeline execution history retention policy?
 Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
+
+#### How to dynamically create steps (in parallel) based on condition?
+Use case looping strategy, as you can use expressions as well for the strategy condition and those expressions can be generated dynamically.
+
+#### Move template into git folders 
+Changing the path from the Harness UI for any entity doesn’t commit the entity on the new path. It will only change the link to the filepath for that entity. So, if you change filepath from A to B, then now while loading the entity, it will load the filepath B instead of A whenever you use it. 
+
+#### Is there any validation for moving templates between Git folders?
+There is no validation on any file at B exists or not. It will just try to load and present the expected experience.
+
+#### What to do when seeing 500 error when pipeline already exists.
+The 500 error message can occur when a pipeline URL is pointing to a pipeline identifier with the wrong case. Check the provision identifier to see if the case is in the correct case.
+
+#### Can you extract build number from pipeline?
+There is no reference in the pipeline to the Build ID at this time
+
+#### Why am I getting Error Message: “Invalid request: Trying to run more than 256 concurrent stages/steps. Please upgrade your plan to Enterprise (Paid) or reduce concurrency”?
+This error message occurs when your pipeline has more than the hard limit of 256 steps. This can be caused by a script that is creating these steps. 
+
+#### How do I pass output variables from one pipeline stage into the other pipeline?
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression <+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]> to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
+
+#### Terraform Stage fails saying “failed to find plan”.
+Within Harness, the Terraform stage requires both the Plan and Apply steps in the same stage to properly trigger.
