@@ -6807,3 +6807,44 @@ You can convert map to JSON and use the `<+json.select()>` function to achieve t
 
 #### How do I get the action of my Git trigger in an expression?
 Git triggers use webhooks, and webhooks usually have a payload that you can utilize. The action used to trigger the webhook must be included in the Git payload so that you can reference the action using the `<+trigger.payload.action>` expression.
+
+#### How can you seamlessly integrate Docker Compose for integration testing into your CI pipeline without starting from scratch?
+
+Run services for integration in the background using a `docker-compose.yaml` file. Connect to these services via their listening ports. Alternatively, while running `docker-compose up` in CI with an existing `docker-compose.yaml` is possible, it can complicate the workflow and limit pipeline control, including the ability to execute each step, gather feedback, and implement failure strategies.
+
+#### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for individuals managing and configuring their own infrastructure?
+
+Yes, you can scale up your AWS VM build infrastructure effectively by considering the following:
+
+**Scaling Up**: Increase capacity by adding more templates, build nodes, and VMs to accommodate growing demands.
+**Cost Optimization**: Implement cost-saving measures such as configuring the runner to hibernate AWS Linux and Windows VMs during idle periods, helping to reduce infrastructure costs.
+For detailed setup and configuration instructions, please refer to [Set up an AWS VM Build Infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/).
+
+#### Which API call is specifically used to retrieve a tag of an artifact from the GAR?
+
+The API call used to fetch a tag of an artifact from the GAR is `/v1/projects/{project}/locations/{region}/repositories/{repositories}/packages/{package}/versions?view=FULL`
+
+#### How can one access the AWS CDK provisioning in their workflow? Are there any Feature flags required?
+
+No, accessing AWS CDK provisioning does not require any Feature flags. However, to utilize AWS CDK provisioning steps in your workflow, ensure that you are operating within a containerized step group specifically designated for AWS CDK provisioning. These steps are only visible when adding a step within that particular step group. If no step is added within the AWS CDK provisioning containerized step group, the associated steps will not be visible.
+
+For more information on AWS CDK provisioning, please refer to the following Harness [documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
+
+#### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
+
+No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
+
+The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
+
+For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
+
+For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-helm-chart-hooks-in-kubernetes-deployments/).
+
+#### How can you enable the `Mark as Failure` pipeline options?
+
+To enable the "Mark as Failure" pipeline, please ensure that you have fulfilled the following requirements:-
+- You must have `Execute` pipeline permission to be able to mark a pipeline as failed.
+- You must enable `Allow users to mark a running Step as failure` in your Harness account's [default settings](/docs/platform/settings/default-settings).
+- This feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+For more refer to the following Harness [documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/).
