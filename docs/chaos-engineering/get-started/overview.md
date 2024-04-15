@@ -12,11 +12,9 @@ Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the b
 ## Overview
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. You need to ensure that your application performs as expected under different failure conditions.
 
-Chaos engineering is **relevant** to all types of systems, including legacy applications and infrastructure. This is particularly important for cloud-native applications since they carry multiple points of failure due to their distributed, and elastic nature.
+Chaos engineering is a technique that is **relevant** to all types of systems, including legacy applications and infrastructure. This is particularly important for cloud-native applications since they carry multiple points of failure due to their distributed, and elastic nature.
 
-Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected. This brings you to a new concept- **Chaos Engineering**.
-
-## What is Chaos Engineering?
+## What is chaos engineering?
 
 In simple terms, Chaos engineering is the technique of inducing chaos, that is, unexpected failures in the application.
 
@@ -27,6 +25,10 @@ The idea is that the design of an application should be resilient and handle any
 A **formal definition** is: _"Chaos engineering is the discipline of performing experiments on software to build confidence in the system's capability to withstand turbulent and unexpected conditions. Failures are intentionally injected into applications to build resilience. By proactively introducing controlled chaos into systems, you can identify weaknesses in your application and prevent catastrophic failures."_
 
 ![](./static/overview/chaos-eng-steps.png)
+
+:::tip
+Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected. This brings you to a new concept- **Chaos Engineering**.
+:::
 
 ## Why is chaos engineering important?
 
