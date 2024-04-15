@@ -50,7 +50,7 @@ Linux network duplication:
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of comma separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
+    <td> List of comma-separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names or domains are targeted. </td>
   </tr>
   <tr>
@@ -102,7 +102,7 @@ spec:
 
 ### Destination IPs
 
-The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. Ports to be targeted for an IP can be specified by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all ports associated with the destination IPs.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
 
 The following YAML snippet illustrates the use of this environment variable:
 
