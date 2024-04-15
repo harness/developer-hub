@@ -6807,3 +6807,33 @@ You can convert map to JSON and use the `<+json.select()>` function to achieve t
 
 #### How do I get the action of my Git trigger in an expression?
 Git triggers use webhooks, and webhooks usually have a payload that you can utilize. The action used to trigger the webhook must be included in the Git payload so that you can reference the action using the `<+trigger.payload.action>` expression.
+
+#### How can one efficiently integrate Docker Compose for integration testing in their CI pipeline without starting from scratch?
+
+Use background steps to run services for integration, like in a `docker-compose.yaml`. Connect to them using the listening port. Alternatively, running `docker-compose up` in CI with the existing `docker-compose.yaml` is possible but, it obfuscates the flow and removes the pipeline control to run each step, gather feedback, and apply flow control such as failure strategies
+
+#### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for those managing and configuring their own infrastructure?
+
+Yes, you can scale up your AWS VM build infrastructure by adding additional templates, build nodes, and VMs. You can also configure the runner to hibernate AWS Linux and Windows VMs when they aren't needed to save costs
+For more information on how to set up and configure your AWS VM build infrastructure, please refer to the Harness [documentation](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/)
+
+#### What specific API call is used to retrieve a tag of an artifact from the GAR?
+
+The API call used to fetch a tag of an artifact from the GAR is `/v1/projects/{project}/locations/{region}/repositories/{repositories}/packages/{package}/versions?view=FULL`
+
+#### How can one access the AWS CDK provisioning in there workflow? Is there any Feature flag required?
+
+No, this feature do not require any Feature flag. However, to access the AWS CDK provisioning steps in your workflow, ensure that you are within a containerized step group specifically designated for AWS CDK provisioning. These steps are only visible when you are adding a step within that particular step group. If you do not add a step within the AWS CDK provisioning containerized step group, you will not see the associated steps
+For more information on AWS CDK provisioning, please refer to the Harness [documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
+
+#### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in FG?
+
+Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-helm-chart-hooks-in-kubernetes-deployments/) specifies the need to "remove" hooks and incorporate them as shell script steps within the workflow in FirstGen. This approach applies to NextGen as well. To utilize Helm hooks unchanged, one should opt for native Helm deployment. However, employing native Helm is hindered by its inability to process hooks and deploy simultaneously. The limitation arises from Helm's post-render functionality, which prevents Harness from processing hooks.
+
+#### How can one enable the `Mark as Failure` pipeline options?
+
+To use the `Mark as Failure` option for pipeline please follow the below requirements: 
+- You must have Execute pipeline permission to be able to mark a pipeline as failed.
+- You must enable `Allow users to mark a running Step as failure` in your Harness account's default settings.
+- This feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact Harness Support to enable the feature.
+For more refer to the Harness [documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/)
