@@ -488,3 +488,45 @@ If you are using a step template, you must go to the template itself and view th
 ### How do I get the stage execution ID to use in a template?
 
 You can use the expression `<+pipeline.stages.STAGE_ID.executionId>` to get the execution ID of a specific stage in the pipeline. Replace `STAGE_ID` with the identifier of the stage you want to reference.
+
+#### How often does the Harness connector Status Check frequency?
+The Status checks are normally run every 30 minutes.
+
+#### Can you set a notification for if a Status Check fails?
+Currently there is no support for notifications with Status Check fails
+
+#### How to change New Harness UI to Old?
+Hover over your profile and there will be a toggle icon. 
+
+#### Does Harness NG community edition support LDAP login?
+Community edition does not support LDAP Login, as of Dec 2023 the Community edition is retired in favor of Gitness.
+
+#### Can you send a Pagerduty when connector disconnected?
+Harness connectors of not support notifications at this time
+
+#### Is it possible to add monitoring for changes to a Harness File-Store object?
+There is currently no support for connecting monitoring services for the Harness file-store.
+
+#### How to check which Harness version you are on?
+Refer to link: https://app.harness.io/gratis/ng/static/versions.html
+
+#### Difference between GitOps agent and Harness delegates?
+GitOps agent creates a worker to that performs all the GitOps tasks specifically, whereas the delegate is used to connect to other third party apps for deployments.
+
+#### Can you run both the GitOps agent and Harness Delegate?
+Gitops agent runs independent of the delegate, there is no conflict between the two running next to each other.
+
+#### When getting error message “[WARNING]: Collection ansible.windows does not support Ansible version 2.13.13”
+Check if the Harness delegate was recently updated and also confirm the version of Ansible that is being executed. 
+
+#### Can Harness console output image files?
+Harness console does not support rendering image files
+
+#### Can Harness execute TSQL scripts in Azure?
+TSQL scripts can be executed with the Run Step or via a shell script as long as Harness has the correct access within Azure to where you would like the script to run.
+
+#### 27. What is SYSTEM - dashboard_cleanup that is seen in Audit Trail?
+It is a scheduled task which is designed to cleanup dashboards which have no tiles. This means no visualization tiles, having hard coded text tiles will also not count.
+
+
+
