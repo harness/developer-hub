@@ -1735,7 +1735,7 @@ Yes, you can install custom certificates for Kubernetes delegates. For more info
 
 ### What happens to tasks rejected by the delegate?
 
-Delegates reject tasks or fail to acquire tasks when CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+Delegates reject tasks or fail to acquire tasks when the CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
