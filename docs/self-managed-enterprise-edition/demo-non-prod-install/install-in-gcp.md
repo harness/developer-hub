@@ -1,10 +1,10 @@
 ---
 title: Install in GCP
 description: Learn how to install Harness Self-Managed Enterprise Edition in GCP.
-sidebar_position: 15
+sidebar_position: 20
 ---
 
-<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
+<DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>
 
 This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in GCP.
 
@@ -34,7 +34,7 @@ In addition to a Harness account, you need the following:
 
    5. Select **Reserve**.
 
-## Install in GCP
+### Install Harness Self-Managed Enterprise Edition in GCP
 
 1. Create a new cluster or use an existing one.
 
@@ -115,4 +115,9 @@ In addition to a Harness account, you need the following:
     ```
 
 12. After the installation is complete, paste the `loadbalancerURL` in your browser's address bar, and then sign in to the Harness UI.
+13. Complete to the post-install next steps.
+
+import Postinstall from '/docs/self-managed-enterprise-edition/shared/post-install-next-steps.md';
+
+<Postinstall />
 
