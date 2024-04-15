@@ -12,7 +12,7 @@ Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the b
 ## Overview
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. You need to ensure that your application performs as expected under different failure conditions.
 
-Chaos engineering is **relevant** to all types of systems, including legacy applications and infrastructure. This is particularly important for cloud-native applications since they carry multiple points of failure due to their distributed, and elastic nature.
+Chaos engineering is **relevant** to all types of systems, including legacy applications and infrastructure. This is particularly important for cloud-native applications since they carry multiple points of failure due to their distributed and elastic nature.
 
 Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected. This brings you to a new concept- **Chaos Engineering**.
 
