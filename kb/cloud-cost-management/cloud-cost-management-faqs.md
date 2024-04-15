@@ -630,3 +630,27 @@ Yes, users can accomplish this by creating a Yearly budget and selecting the mon
 
 #### What is FinOps in Harness?
 FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
+
+#### What happens when disabling an Autostopping rule?
+While disabling the Autostopping rule, the ALB rules created by Harness will be removed.
+
+#### What happens when re-enabling an Autostopping rule?
+While re-enabling the Autostopping rule, Harness adds the ALB rules back. Which will point back to the associated target group.
+
+#### What happens when an Autostopping rule is warming up?
+1. The resources under the Autostopping rule will be started.
+2. The resources will be added to the actual target group.
+3. The ALB rule will start pointing back to the actual target group.
+
+##### How to set all paths to trigger on power for Autostopping rule?
+Set a wildcard(*) on the Path Match in Autostopping rule creation.
+
+#### Why is my dashboard data only going back a month?
+The Reporting Timeframe needs to be a filter, otherwise it defaulted to 30 days.
+
+#### When is perspective and dashboard data ingested from AWS?
+The data for AWS is ingested at 7PM Pacific time once a day.
+
+#### Can you set fixed schedules for Holidays in CCM?
+CCM does not support setting fixed schedules for set holidays at this time.
+
