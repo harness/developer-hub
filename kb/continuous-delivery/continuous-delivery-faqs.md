@@ -966,7 +966,7 @@ The shell script will use this API to update the value of the variable - https:/
 
 #### What happens when the CPU usage of a delegate exceeds a certain threshold when the DELEGATE_CPU_THRESHOLD env variable is configured?
 
-When CPU usage exceeds a specified threshold with the `DELEGATE_CPU_THRESHOLD` env variable configured, the delegate will reject tasks and will not attempt to acquire any new tasks. Instead, it will wait until resource usage decreases.
+When CPU usage exceeds a specified threshold with the `DELEGATE_CPU_THRESHOLD` env variable configured, the delegate rejects the tasks and will not attempt to acquire any new tasks. Instead, it waits until the resource usage decreases.
 
 #### Will the Delegate crash or shut down if it rejects tasks due to resource usage exceeding the threshold?
 
