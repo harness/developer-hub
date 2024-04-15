@@ -10,11 +10,9 @@ In this tutorial, you will apply chaos on a sample boutique application on Kuber
 
 ## Before you begin
 
-* [HCE overview](/docs/chaos-engineering/get-started/overview.md)
+* [What is chaos engineering?](/docs/chaos-engineering/get-started/overview.md)
 * [Key concepts](/docs/chaos-engineering/get-started/key-concepts.md)
-* [Prerequisites](/docs/chaos-engineering/get-started/tutorials/prerequisites.md)
-
-HCE recommends you to visit the [overview](/docs/chaos-engineering/get-started/overview.md), [concepts](/docs/chaos-engineering/get-started/key-concepts.md) and [prerequisites](/docs/chaos-engineering/get-started/tutorials/prerequisites.md) sections to understand what chaos engineering is, why it is important, how it is implemented, the standard chaos experimentation flow, and the permissions required to execute chaos experiments.
+* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/get-started/tutorials/prerequisites.md)
 
 ## Step 1: Create a project
 
@@ -24,7 +22,7 @@ HCE recommends you to visit the [overview](/docs/chaos-engineering/get-started/o
 
 ### Step 2: Add a chaos environment
 
-2. A chaos experiment is executed in a chaos infrastructure that is associated with an **environment**. To create a new environment, navigate to **Environments** page, and choose a **New Environment**. Specify environment name, a description (optional) and tags (optional). Select the environment type, **Production** or **Non-Production**. Finally, click **Create** to add the new environment.
+2. A chaos experiment is executed in a chaos infrastructure that is associated with an **environment**. To create a new environment, navigate to **Environments** page, and choose a **New Environment**. Specify environment name, a description (optional) and tags (optional). Select the environment type, **Production** or **Non-Production**. Finally, select **Create** to add the new environment.
 
 ![Create New Environment](./static/first-chaos/create-new-environment.png)
 
@@ -34,7 +32,7 @@ You can also select one of the environments from the list of environments if it 
 
 ### Step 3: Add a chaos infrastructure
 
-3. Once you have created an environment, you can add chaos infrastructure to it. Depending on your application, you can select **Kubernetes** or **Linux** or **Windows**. In this tutorial, you can select a Kubernetes infrastructure, which you will use to inject faults into Kubernetes resources. You can use an existing infrastructure or create a new one. In this tutorial, you can create a new infrastructure. For this, click **Enable chaos**
+3. Once you have created an environment, you can add chaos infrastructure to it. Depending on your application, you can select **Kubernetes** or **Linux** or **Windows**. In this tutorial, you can select a Kubernetes infrastructure, which you will use to inject faults into Kubernetes resources. You can use an existing infrastructure or create a new one. In this tutorial, you can create a new infrastructure. For this, select **Enable chaos**.
 
 ![New Chaos Infrastructure](./static/first-chaos/new-chaos-infrastructure.png)
 
@@ -46,7 +44,7 @@ You can also select one of the environments from the list of environments if it 
 
 ![provide name](./static/first-chaos/provide-name.png)
 
-6. In this step, choose the **installation type** as **Kubernetes**, **access type** as **Specific namespace access** (click **Change** to display the **Specific namespace access** access type), **namespace** as **hce**, and **service account name** as **hce**. Click **Next**.
+6. In this step, choose the **installation type** as **Kubernetes**, **access type** as **Specific namespace access** (click **Change** to display the **Specific namespace access** access type), **namespace** as **hce**, and **service account name** as **hce**. Select **Next**.
 
 ![Configure Chaos Infrastructure](./static/first-chaos/configure-chaos-infrastructure.png)
 
@@ -54,7 +52,7 @@ You can also select one of the environments from the list of environments if it 
 The **Cluster-wide access** installation mode allows you to target resources across all the namespaces in your cluster whereas the **Specific namespace access** mode restricts chaos injection to only the namespace in which the delegate is installed.
 :::
 
-7. Ensure you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/). Click **Download** to deploy your chaos infrastructure by downloading and applying the given manifest using your terminal. Once done, choose **Done**.
+7. Ensure you have access to your Kubernetes cluster via [kubectl](https://kubernetes.io/docs/reference/kubectl/). Select **Download** to deploy your chaos infrastructure by downloading and applying the given manifest using your terminal. Once done, choose **Done**.
 
 ![Deploy Chaos Infrastructure](./static/first-chaos/deploy-chaos-infrastructure.png)
 
@@ -64,7 +62,7 @@ The **Cluster-wide access** installation mode allows you to target resources acr
 
 ### Step 4: Create a demo application and observability infrastructure
 
-Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). Pod delete chaos fault deletes the pods of a deployment, statefulset, daemonset, etc, to validate the resiliency of a microservice application.
+Once you are all ready to target our Kubernetes resources, you can execute the simplest fault, [**Pod Delete**](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md). Pod delete chaos fault deletes the pods of a deployment, StatefulSet, DaemonSet, etc, to validate the resiliency of a microservice application.
 
 9. You can use your own application as a target, however, in this tutorial, use the [Online Boutique](https://github.com/GoogleCloudPlatform/microservices-demo) microservices demo application as the target.
 
@@ -149,7 +147,7 @@ Since the target application has been deployed, you can now create a chaos exper
 
 ![Online Boutique App Cart](./static/first-chaos/online-boutique-app-cart.png)
 
-15. To create a chaos experiment, go to **Chaos Experiments** page and click **New Experiment**.
+15. To create a chaos experiment, go to **Chaos Experiments** page and select **New Experiment**.
 
 ![create new experiment](./static/first-chaos/create-new-experiment-1.png)
 
@@ -205,11 +203,11 @@ Under probe details, you can see that the URL is `http://frontend/cart` and the 
 
 ![Exp running](./static/first-chaos/exp-running.png)
 
-27. The **Recent experiment runs** displays the runs of an experiment. The latest experiment is displayed in the last bar.
+27. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar.
 
 ![Exp status](./static/first-chaos/exp-status.png)
 
-28. You can also check the status of the cart deployment pod. When you execute the following command, you will get a similar output. The pod delete fault terminates the cart pod and replaces it with a new pod, for which a container is yet to be created.
+28. To check the status of the cart deployment pod, execute the command below. The pod delete fault terminates the cart pod and replaces it with a new pod, for which a container is yet to be created.
 
 ```
 ❯ kubectl get pods -n hce
