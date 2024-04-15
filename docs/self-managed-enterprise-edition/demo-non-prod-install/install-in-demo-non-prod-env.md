@@ -5,9 +5,9 @@ description: Harness supports Self-Managed Enterprise Edition installation in yo
 sidebar_position: 1
 ---
 
-Production-level deployments of Harness Self-Managed Enterprise Edition require engagements with our Post-Sales Engineering to ensure we can assist in setting up and deploying the platform to meet your enterprise-grade objectives such as high availability, build speed, and data reliability.
+For organizations planning to deploy Harness Self-Managed Enterprise Edition in a production environment, Harness requires that you engage with our Post-Sales Engineering team. This will ensure that we can assist you in setting up and deploying the platform to meet your enterprise-grade objectives such as high availability, build speed, and data reliability.
 
-For deployments intended for demonstration, non-production development, or capability assessment of Harness Self-Managed Enterprise Edition, tutorials help you get started quickly on various providers that are analogous to the methodologies utilized internally at Harness for deployment testing.
+On the other hand, if you intend to use Harness Self-Managed Enterprise Edition for demonstration, non-production development, or capability assessment purposes, we offer tutorials to help you get started quickly on various providers. These tutorials are designed to be analogous to the methodologies utilized internally at Harness for deployment testing.
 
 ### Demo/non-production installation requirements
 
