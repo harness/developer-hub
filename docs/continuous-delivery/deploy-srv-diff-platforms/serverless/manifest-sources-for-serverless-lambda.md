@@ -45,7 +45,7 @@ Below describes setting configuration parameters for AWS S3 bucket as a manifest
 4. **File/Folder Path**: Enter the path from the root of the bucket to the `serverless.yml` file.
 
 :::info
-The file path here can be a `.zip` file. Harness will automatically decompress the file when it is pulled from the bucket. 
+Harness supports `.zip` files only. For users using Serverless V1, Harness will automatically decompress the file and save it to a folder when it is pulled from the bucket. Users using the containerized version of Serverless, i.e., Serverless V2, must decompress the `serverless.yml` and other files at the root level.
 :::
 
 ### Harness File Store
