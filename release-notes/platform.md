@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-04-03:T10:00:30
+date: 2024-04-16:T10:00:30
 sidebar_position: 3
 ---
 
@@ -79,6 +79,36 @@ The following deprecated API endpoints are longer supported:
 
 
 ## April 2024
+
+### Version 1.33.5<!--  April 16, 2024 -->
+
+#### New features and enhancements
+
+- AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
+
+- Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46947)
+
+#### Fixed issues
+
+- Email steps were failing due to the system's inability to find users with emails containing uppercase letters, as Harness converts and stores all emails in lowercase. (PL-48532, ZD-60291)
+
+- Reset password emails were being sent from the FirstGen system for all accounts, causing issues for accounts that are exclusively NextGen. Now, if an account is identified as NextGen only, the reset password emails are dispatched from the NextGen system, rectifying the issue for NextGen only accounts. (PL-38735)
+
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914)
+
+- Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48781, ZD-60713)
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
+
+The audit trail filter did not include an option for the **Token** resource type, hindering the ability to filter for API token updates. Added a **Token** filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
+
+- Users experienced authentication issues when switching the OAuth type from SAML, leading to incorrect OAuth authentication status displays. Implemented changes to accurately reflect the status (enabled or disabled) of OAuth authentication for users. (PL-48788, ZD-60869)
+
+- The feature flag subscription indicated it was expired, and the license was not updating automatically. Users had to manually pay each invoice after the billing cycle was completed. Users can now view the correct billing due date on their subscription page. Additionally, the system has been updated to automatically charge the credit card on file when an invoice is generated. (PL-48671, ZD-57836)
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like task type or task ID. Enhanced the task rejection metrics by adding `taskType` and `taskId` labels. (PL-48488)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. Implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. (PL-47753, ZD-58629)
 
 ### Version 1.31.4<!--  April 3, 2024 -->
 
