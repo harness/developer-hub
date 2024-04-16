@@ -11,6 +11,7 @@ import AdminCertificationReviewDetails from "./data/ff-certification-admin-revie
 import DeveloperCertificationExamDetails from "./data/ff-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/ff-certification-developer-review-guide.md";
 import { ilt } from "./data/iltData";
+import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
@@ -382,6 +383,30 @@ export default function FeatureFlags() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
+          <p>
+            Self-paced courses that you can consume on your own time in a webinar style.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {spt
+                .filter((spt) => {
+                  return spt.tileType === "pre requisite";
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+              {ilt
+                .filter((spt) => {
+                  return (
+                    spt.module === "ff" && spt.cardType === "SPT" ||
+                    (spt.module === "ff" && spt.tileType === "comming soon")
+                  );
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

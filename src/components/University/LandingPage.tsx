@@ -7,6 +7,7 @@ import IltCard from "./Card";
 import CertCard, { certType } from "./CertCard";
 import { university } from "./data/certificationsData";
 import { ilt } from "./data/iltData";
+import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const devFeatures = ["Free Plan"];
 const administratorFeatures = ["Enterprise Plan"];
@@ -122,9 +123,8 @@ export default function University() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${
-            activePage === ActivePage.Certifications ? styles.active : ""
-          }`}
+          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
+            }`}
           onClick={handleCertficationClick}
         >
           {activePage !== ActivePage.Certifications ? (
@@ -137,9 +137,8 @@ export default function University() {
 
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
@@ -150,9 +149,8 @@ export default function University() {
         </button>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.SelfPacedTraning ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
@@ -417,6 +415,30 @@ export default function University() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
+          <p>
+            Self-paced courses that you can consume on your own time in a webinar style.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {spt
+                .filter((spt) => {
+                  return spt.tileType === "pre requisite";
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+              {ilt
+                .filter((spt) => {
+                  return (
+                    spt.cardType === "SPT" ||
+                    spt.tileType === "comming soon"
+                  );
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

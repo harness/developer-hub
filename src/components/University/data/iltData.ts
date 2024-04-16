@@ -7,7 +7,7 @@ export const ilt: IltCardItem[] = [
     module: MODULES.platform,
     type: type.user,
     description:
-      "Self-paced, prerequisite course to all module-specific ILT courses.",
+      "Self-paced hands-on, prerequisite course to all module-specific ILT courses.",
     version: "Enterprise Plan of any module",
     link: "https://university-registration.harness.io/introduction-to-the-harness-platform",
     tileType: tileType.preReq,
