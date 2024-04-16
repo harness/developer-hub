@@ -48,7 +48,7 @@ We are excited to announce an upcoming Overrides V2 migration aimed at enhancing
 
 ### Why Overrides V2?
 
-- **Greater Flexibility:** With Overrides V2, you can now manage overrides for any CD entity. This includes service-specific environment overrides and** Global Environment** override variables.
+- **Greater Flexibility:** With Overrides V2, you can now manage overrides for any CD entity. This includes service-specific environment overrides and **Global Environment** override variables.
 - **Enhanced Infrastructure Variable Management:** Beyond the current capabilities, users can now manage infrastructure overrides and service-specific infrastructure overrides.
 - **Independent Management:** Overrides will be represented as their own YAML object, allowing for more streamlined and independent management.
 - **More Granular Configuration:** You can now set up overrides at both the account and organizational level for service and environment entities within a project context.
@@ -116,7 +116,7 @@ You can use expressions to reference service variables. For example, `<+serviceV
 
 You can reference service variables in your pipeline steps, values YAML, JIRA steps, and so on.
 
-For more information on variables, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+For more information on variables, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 </TabItem>
   <TabItem value="Application Settings and Connection Strings" label="Application Settings and Connection Strings">

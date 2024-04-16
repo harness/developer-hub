@@ -14,6 +14,9 @@ Artifacts originating from container images are organized under the **Container*
 
 <DocImage path={require('./static/artifact-landing-page.png')} />
 
+
+The page utilizes a two-tab interface to manage artifact versions. The **All Versions** tab provides a comprehensive view of all existing versions for each artifact. This is valuable for reference purposes or exploring all the data at one place. The **Latest Version** tab specifically presents the artifacts with version involved in the most recent [SBOM generation](./sbom/generate-sbom.md#add-the-sbom-orchestration-step) process.
+
 ### Filters
 
 Filters on the landing page allow users to quickly find specific artifacts based on various criteria such as component name and version, license, deployment status, and policy violations. These filters enhance the efficiency of tracking and managing artifacts.

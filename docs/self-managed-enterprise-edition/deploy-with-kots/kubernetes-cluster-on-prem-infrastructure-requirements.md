@@ -12,12 +12,12 @@ helpdocs_is_published: true
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**. 
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**.
 
 Maintenance mode means the following:
 
 - No new features will be added.
-- Security and bug fixes will continue to be made. 
+- Security and bug fixes will continue to be made.
 
 :::
 
@@ -46,7 +46,7 @@ The following tables list the resource requirements for the installation of Self
 | Proxy | 1 | 0.5 | 0.5 | 0.5 | 0.5 |
 | Ingress | 2 | 0.25 | 0.25 | 0.5 | 0.5 |
 | TimescaleDB | 3 | 2 | 8 | 6 | 24 |
-| KOTS Admin Pods |   |   |   | 4 | 8 |
+| KOTS Admin Pods |  |  |  | 4 | 8 |
 | **Total** |  |  |  | **37.5** | **73.5** |
 
 The compute resources listed for the KOTS admin pods support a full stack. In an existing cluster, the requirements for KOTS are usually lower.
@@ -82,7 +82,7 @@ The following table lists the requirements for the installation of Self-Managed 
 | Proxy | 1 | 0.5 | 0.5 | 0.5 | 0.5 |
 | Ingress | 1 | 0.25 | 0.25 | 0.25 | 0.25 |
 | TimescaleDB | 1 | 2 | 8 | 2 | 8 |
-| Kots Admin Pods |   |   |   | 4 | 8 |
+| Kots Admin Pods |  |  |  | 4 | 8 |
 | **Total** |  |  |  | **19** | **38** |
 
 ## Recommended node specifications
@@ -124,9 +124,9 @@ Add the following URLs to your allowlist:
 
 Provide outbound access to the following URLs:
 
-* proxy.replicated.com​
+* proxy.replicated.com
 * replicated.app
-* k8s.kurl.sh​
+* k8s.kurl.sh
 * app.replicated.com
 
 Outbound access is required for **connected install only**. Outbound access is not required to install in [Airgap mode](https://kots.io/kotsadm/installing/airgap-packages/). If your cluster does not have direct outbound connectivity and requires a proxy for outbound connections, see the following for information on how to create a proxy on the node machines: [https://docs.docker.com/network/proxy](https://docs.docker.com/network/proxy/).
@@ -201,7 +201,7 @@ You can use secure or unencrypted connections to Harness Manager. This option de
 
 For secure connections from your integrations to Harness Manager, you must use a public trusted certificate. This includes your integration with Harness Delegate as well as to Github Webhooks and so on. Harness does not support self-signed certificates for connections to Harness Manager.
 
-For connections from Harness Manager outbound to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into Harness Delegate's JRE keystore manually or by using a Harness Delegate Profile.
+For connections from Harness Manager outbound to an integration, you can use a self-signed certificate. In this case, you must import the self-signed certificate into Harness Delegate's JRE keystore manually or by using a Harness Delegate Profile.
 
 ### Terminate at Harness
 

@@ -152,7 +152,7 @@ Once your GitOps application is updated, you can use the GitOps Sync step to dep
 
 This step triggers a sync for your existing or updated GitOps application.
 
-After selecting this step, in **Advanced Configuration**, select the application you want to sync and configure the sync options.
+After selecting this step, in **Advanced Configuration**, select the application you want to sync and configure the sync options. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
 
 ![](./static/gitopssync-step.png)
 

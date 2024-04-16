@@ -1,7 +1,7 @@
 ---
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
-date: 2023-11-02T17:20
+date: 2024-02-13T17:20
 sidebar_position: 9
 ---
 

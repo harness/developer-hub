@@ -687,9 +687,4 @@ In case of stage failures in subsequent executions ((Assuming the service, envir
 
 :::
 
- - For more details, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
-
-
-
-
-
+For more details, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables/).

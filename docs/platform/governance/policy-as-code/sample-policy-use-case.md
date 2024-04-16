@@ -4,10 +4,6 @@ description: See sample policies and when to use them.
 sidebar_position: 6
 ---
 
-:::note
-Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Harness provides governance using Open Policy Agent (OPA), policy management, and Rego policies.
 You can enforce policies in the following ways:
 

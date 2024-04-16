@@ -15,13 +15,19 @@ To use the `APITokenSecretName`, create a Kubernetes secret as shown below and r
 ```
 apiVersion: v1
 kind: Secret
-metadata: 
+metadata:
   name: dyna-secret
-  namespace: hce 
+  namespace: hce
 type: Opaque
 stringData:
   X-API-KEY: <TOKEN>
 ```
+
+:::tip
+* Connectivity requirements for the Dynatrace probe: You can establish a connection between the execution plane and Dynatrace by:
+1. Opening port 443 (HTTPS) to make API calls to the Dynatrace probe;
+2. Create a secret that has the Dynatrace access token with read permissions (that is, `metrics.read` scope).
+:::
 
 ## Schema
 Listed below is the Dynatrace Probe schema with common properties shared across all probes and properties unique to Dynatrace probe.
@@ -71,7 +77,7 @@ Listed below is the Dynatrace Probe schema with common properties shared across 
    <td>Mandatory</td>
    <td> <code>type: comparator</code></td>
    <td> Various fields to compare the desired and obtained data, includes type, criteria and value. </td>
-  </tr> 
+  </tr>
 </table>
 
 ### Metrics
@@ -170,7 +176,7 @@ Listed below is the Dynatrace Probe schema with common properties shared across 
    <td>Mandatory</td>
    <td> <code>type: comparator</code></td>
    <td> Various fields to compare the desired and obtained data, includes type, criteria and value. </td>
-  </tr>   
+  </tr>
 </table>
 
 ### Metrics

@@ -19,12 +19,12 @@ This feature is currently in [beta](/docs/platform/get-started/release-status). 
 Run the following to install Harness Self-Managed Enterprise Edition using Helm.
 
 ```
-helm install harness harness/harness -n NS -f override-demo.yaml 
+helm install harness harness/harness -n NS -f override-demo.yaml
 ```
 
 ### Add service accounts to the allowlist
 
-After installing Harness through Helm charts, to use OpenShift clusters, you must run additional commands to add security contexts to specific service accounts. Similar to how RBAC resources control user access, administrators can use Security Context Constraints (SCCs) to manage permissions for pods. These permissions include the actions that a pod can perform and the resources it can access. 
+After installing Harness through Helm charts, to use OpenShift clusters, you must run additional commands to add security contexts to specific service accounts. Similar to how RBAC resources control user access, administrators can use Security Context Constraints (SCCs) to manage permissions for pods. These permissions include the actions that a pod can perform and the resources it can access.
 
 SCCs can define a set of conditions that a pod must meet to be accepted into the system. In this specific use case, we need to escalate privileges for certain service accounts by configuring specific SCCs.
 
@@ -59,7 +59,7 @@ done
 
 ### Assign the Nginx ingress controller
 
-By default, when Harness assigns the `loadBalancerIp` to the ingress-controller’s `LoadBalancerService` in OpenShift, the IP is not assigned directly. Run the following to expose the ingress-controller service through the OpenShift client tool.
+By default, when Harness assigns the `loadBalancerIp` to the ingress-controller's `LoadBalancerService` in OpenShift, the IP is not assigned directly. Run the following to expose the ingress-controller service through the OpenShift client tool.
 
 ```
 oc expose service harness-ingress-controller
@@ -71,4 +71,4 @@ Below are troubleshooting steps for two common issues you might encounter in you
 
 - If pods don't load after the Helm installation, find the service account used by the corresponding service in its deployment. Check the OpenShift cluster UI logs and escalate the necessary service account privileges.
 
-- If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service. 
+- If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service.

@@ -95,39 +95,38 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
+### Additional CLI flags
 
-#### Additional CLI flags
+Use this field to run the [`brakeman` scanner](https://brakemanscanner.org/docs/options/) with flags and arguments such as:
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+`--path some/path/to/app` 
 
-<StoSettingCliFlags />
+With this flag, `brakeman` scans only a subpath rather than the full directory. 
 
-For example, suppose you want to scan only a subpath rather than the full directory. You can use `--path` followed by the path: `--path some/path/to/app` 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
 ### Settings
 
-You can add a `tool_args` setting to run the [Brakeman scanner binary](https://brakemanscanner.org/docs/options/) with specific command-line arguments.  For example, suppose you want to scan only a subpath rather than the full directory. You can use `-path` followed by the path: `tool_args` = `--path some/path/to/app` 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
--->
+<StoSettingSettings />
+
 
 
 ### Additional Configuration
