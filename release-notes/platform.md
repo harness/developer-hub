@@ -86,7 +86,7 @@ The following deprecated API endpoints are longer supported:
 
 - AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
 
-- Starting with version 827xx, images will no longer be pushed to app.harness.io/registry. For users needing to pull images, they should use the new location: gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46947)
+- Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46947)
 
 #### Fixed issues
 
