@@ -18,9 +18,9 @@ Chaos engineering is a technique that is **relevant** to all types of systems, i
 
 In simple terms, Chaos engineering is the technique of inducing chaos, that is, unexpected failures in the application.
 
-The general consensus is that something **will** go wrong in an application, so it would be better to practice what actions to take when something goes wrong and ensure that everything recovers.
+The consensus is that something **will** go wrong in an application, so it would be better to practice what actions to take when something goes wrong and ensure that everything recovers.
 
-The idea is that the design of an application should be resilient and handle any failure. By introducing constant chaos during the engineering phase and during the production phase, you may come across issues and potential failure points that you never thought of.
+The idea is that the design of an application should be resilient and handle any failure. By introducing constant chaos during the engineering phase and the production phase, you may come across issues and potential failure points that you never thought of.
 
 A **formal definition** is: _"Chaos engineering is the discipline of performing experiments on software to build confidence in the system's capability to withstand turbulent and unexpected conditions. Failures are intentionally injected into applications to build resilience. By proactively introducing controlled chaos into systems, you can identify weaknesses in your application and prevent catastrophic failures."_
 
@@ -32,7 +32,7 @@ Chaos engineering isn't the same as software testing (manual or automated) which
 
 ## Why is chaos engineering important?
 
-In the current landscape of fast-paced technology, system failures have a significant impact on businesses, customers, and stakeholders. Chaos engineering provides a way to identify potential issues before they become major problems, helping organizations minimize downtime, mitigate risks, and improve reliability .
+In the current landscape of fast-paced technology, system failures have a significant impact on businesses, customers, and stakeholders. Chaos engineering is a way to identify potential issues before they become major problems, helping organizations minimize downtime, mitigate risks, and improve reliability.
 
 ### Shift left chaos engineering
 
@@ -47,13 +47,13 @@ This is accelerated by a need to build confidence in a highly dynamic environmen
 You can build resilient applications using the following steps:
 1. **Choose** or **build** your application;
 2. **Configure** the **chaos control plane**, that is:
-	1. Set up an **environment**;
-	2. Set up a **chaos infrastructure**;
+    1. Set up an **environment**;
+    2. Set up a **chaos infrastructure**;
 3. **Create chaos experiments** in your application;
 4. **Execute** the chaos experiments;
 5. **Analyze** the result.
 
-This suggests that chaos experiments need the appropriate observability infrastructure to aid the validation of the hypotheses around the steady-state. The practice of chaos engineering consists of performing experiments repeatedly, by injecting a variety of potential failures (called **chaos faults**) to simulate real-world failure conditions carried out against different resources (called **targets**).
+This suggests that chaos experiments need the appropriate observability infrastructure to aid the validation of the hypotheses around the steady state. The practice of chaos engineering consists of performing experiments repeatedly, by injecting a variety of potential failures (called **chaos faults**) to simulate real-world failure conditions carried out against different resources (called **targets**).
 
 Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for your organization. The diagram below describes the steps that you can perform to induce chaos into an application.
 
@@ -73,12 +73,12 @@ HCE doesn't simply focus on fault injection, it helps you set up a fully operati
 
 1. Cloud native approach to chaos engineering which supports declarative definition of experiments and Git-based chaos artifact sources (chaos-experiments-as-code).
 2. Extensive fault library and robust suite of [ready-to-use experiments](/docs/chaos-engineering/chaos-faults), with support to construct complex custom experiments with [multiple faults](/docs/chaos-engineering/features/experiments/create-complex-chaos-experiments.md) in the desired order.
-3. Centralized control plane which supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
+3. Centralized control plane that supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
 4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
 5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd.md).
 6. [Hypothesis validation using probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided GameDay execution with detailed analytics and reporting based on experiment execution and application resilience.
-8. Chaos events, metrics and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
+8. Chaos events, metrics, and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
 
 ## Try Chaos Engineering today
 
