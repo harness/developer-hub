@@ -11,7 +11,7 @@ import AdminCertificationReviewDetails from "./data/cd-certification-admin-revie
 import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
 import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
-import IltCard, { iltType } from "./IltCard";
+import IltCard  from "./Card";
 import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
 
@@ -435,13 +435,7 @@ export default function CertificationsCD() {
                   <IltCard {...ilt} />
                 ))}
 
-              {/* {ilt
-                .filter((ilt) => {
-                  return ilt.module === "cd";
-                })
-                .map((ilt) => (
-                  <IltCard {...ilt} />
-                ))} */}
+          
               {ilt
                 .filter((ilt) => {
                   return (

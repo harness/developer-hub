@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import IltCard from "./Card";
 import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
-import DeveloperCertificationReviewGuide from "./data/ff-certification-developer-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/ff-certification-developer-exam-details.md";
-import AdminCertificationReviewDetails from "./data/ff-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/ff-certification-admin-exam-details.md";
-import styles from "./styles.module.scss";
-import Tooltip from "rc-tooltip";
-import IltCard, { iltType } from "./IltCard";
+import AdminCertificationReviewDetails from "./data/ff-certification-admin-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ff-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/ff-certification-developer-review-guide.md";
 import { ilt } from "./data/iltData";
+import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_ff_badge.svg`,

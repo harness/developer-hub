@@ -11,7 +11,7 @@ import DeveloperCertificationExamDetails from "./data/sto-certification-develope
 import DeveloperCertificationReviewGuide from "./data/sto-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/sto-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
-import IltCard from "./IltCard";
+import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [

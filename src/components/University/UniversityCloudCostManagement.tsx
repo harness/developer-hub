@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
-import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import clsx from "clsx";
+import React, { useEffect, useState } from "react";
+import IltCard from "./Card";
 import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
-import DeveloperCertificationReviewGuide from "./data/ccm-certification-developer-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/ccm-certification-developer-exam-details.md";
 import AdminCertificationExamDetails from "./data/ccm-certification-admin-exam-details.md";
 import AdminCertificationReviewDetails from "./data/ccm-certification-admin-review-guide.md";
-import styles from "./styles.module.scss";
-import Tooltip from "rc-tooltip";
-import IltCard, { iltType } from "./IltCard";
+import DeveloperCertificationExamDetails from "./data/ccm-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/ccm-certification-developer-review-guide.md";
 import { ilt } from "./data/iltData";
+import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_ccm_badge.svg`,
@@ -53,31 +52,31 @@ export default function CloudCostManagement() {
       setTab(searchKey);
     }
   }, [searchKey]);
- 
-    useEffect(() => {
-      if (location.search === "?ilt") {
-        setActivePage(ActivePage.InstructorLedTraining);
-      }
-      if (location.search === "?spt") {
-        setActivePage(ActivePage.SelfPacedTraning);
-      }
-    }, []);
 
-    const [activePage, setActivePage] = useState<string>(
-      ActivePage.Certifications
-    );
-    const handleCertficationClick = () => {
-      history.push(`${pathname}?lvl=developer`);
-      setActivePage(ActivePage.Certifications);
-    };
-    const handleInstLedTrainClick = () => {
-      history.push(`${pathname}?ilt`);
+  useEffect(() => {
+    if (location.search === "?ilt") {
       setActivePage(ActivePage.InstructorLedTraining);
-    };
-    const handleSelfPacedTrainingClick = () => {
-      history.push(`${pathname}?spt`);
+    }
+    if (location.search === "?spt") {
       setActivePage(ActivePage.SelfPacedTraning);
-    };
+    }
+  }, []);
+
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.Certifications
+  );
+  const handleCertficationClick = () => {
+    history.push(`${pathname}?lvl=developer`);
+    setActivePage(ActivePage.Certifications);
+  };
+  const handleInstLedTrainClick = () => {
+    history.push(`${pathname}?ilt`);
+    setActivePage(ActivePage.InstructorLedTraining);
+  };
+  const handleSelfPacedTrainingClick = () => {
+    history.push(`${pathname}?spt`);
+    setActivePage(ActivePage.SelfPacedTraning);
+  };
   return (
     <div className={styles.certificationsCCM}>
       <div className={styles.hero}>

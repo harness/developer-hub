@@ -3,8 +3,9 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import clsx from "clsx";
 import React, { useEffect, useState } from "react";
+import { MODULES } from "../../constants";
+import IltCard from "./Card";
 import { certType } from "./CertCard";
-import IltCard from "./IltCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 import AdminCertificationExamDetails from "./data/ci-certification-admin-exam-details.md";
 import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
@@ -14,7 +15,6 @@ import DeveloperCertificationExamDetails from "./data/ci-certification-developer
 import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
 import { ilt } from "./data/iltData";
 import styles from "./styles.module.scss";
-import { MODULES } from "../../constants";
 
 const getCertBadges = (url: string) => [
   {

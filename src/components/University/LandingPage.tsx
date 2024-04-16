@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 // import Link from "@docusaurus/Link";
-import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import clsx from "clsx";
-import Tooltip from "rc-tooltip";
+import IltCard from "./Card";
 import CertCard, { certType } from "./CertCard";
 import { university } from "./data/certificationsData";
-import styles from "./styles.module.scss";
-import IltCard, { iltType } from "./IltCard";
 import { ilt } from "./data/iltData";
+import styles from "./styles.module.scss";
 const devFeatures = ["Free Plan"];
 const administratorFeatures = ["Enterprise Plan"];
 const adminFeatures = ["Enterprise Plan"];
