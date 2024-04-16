@@ -22,7 +22,7 @@ policies:
       - type: recommend
         id: google.compute.instance.IdleResourceRecommender   
 ```
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `recommender.computeInstanceIdleResourceRecommendations.list`
@@ -44,7 +44,7 @@ policies:
         id: google.compute.image.IdleResourceRecommender
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:**
 - `recommender.computeImageIdleResourceRecommendations.list`
@@ -66,7 +66,7 @@ policies:
         id: google.cloudsql.instance.IdleRecommender
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `recommender.cloudsqlIdleInstanceRecommendations.list`
@@ -88,7 +88,7 @@ policies:
         id: google.compute.disk.IdleResourceRecommender
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `recommender.computeDiskIdleResourceRecommendations.list`
@@ -112,7 +112,7 @@ policies:
       - delete
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `compute.routers.list`
@@ -136,7 +136,7 @@ policies:
         value: true
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `redis.instances.list`
@@ -160,7 +160,7 @@ policies:
          env_type: customer
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `compute.instances.update`
@@ -187,7 +187,7 @@ policies:
     - type: delete
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `compute.snapshots.list`
@@ -221,7 +221,7 @@ policies:
       missing-value: 0
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `storage.buckets.list`
@@ -248,7 +248,7 @@ policies:
       - type: stop
 ```
 
-**Savings Computed:** 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - `compute.instances.update`
