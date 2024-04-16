@@ -11,8 +11,9 @@ import AdminCertificationReviewDetails from "./data/cd-certification-admin-revie
 import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
 import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
-import IltCard  from "./Card";
+import IltCard from "./Card";
 import { ilt } from "./data/iltData";
+import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -110,9 +111,8 @@ export default function CertificationsCD() {
 
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${
-            activePage === ActivePage.Certifications ? styles.active : ""
-          }`}
+          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
+            }`}
           onClick={handleCertficationClick}
         >
           {activePage !== ActivePage.Certifications ? (
@@ -125,9 +125,8 @@ export default function CertificationsCD() {
 
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
@@ -138,9 +137,8 @@ export default function CertificationsCD() {
         </button>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.SelfPacedTraning ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
@@ -435,7 +433,7 @@ export default function CertificationsCD() {
                   <IltCard {...ilt} />
                 ))}
 
-          
+
               {ilt
                 .filter((ilt) => {
                   return (
@@ -454,6 +452,30 @@ export default function CertificationsCD() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
+          <p>
+            Self-paced courses that you can consume on your own time in a webinar style.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {spt
+                .filter((spt) => {
+                  return spt.tileType === "pre requisite";
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+              {ilt
+                .filter((spt) => {
+                  return (
+                    spt.module === "cd" && spt.cardType === "SPT" ||
+                    (spt.module === "cd" && spt.tileType === "comming soon")
+                  );
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

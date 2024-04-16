@@ -11,6 +11,7 @@ import AdminCertificationReviewDetails from "./data/ccm-certification-admin-revi
 import DeveloperCertificationExamDetails from "./data/ccm-certification-developer-exam-details.md";
 import DeveloperCertificationReviewGuide from "./data/ccm-certification-developer-review-guide.md";
 import { ilt } from "./data/iltData";
+import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
@@ -380,6 +381,30 @@ export default function CloudCostManagement() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
+          <p>
+            Self-paced courses that you can consume on your own time in a webinar style.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {spt
+                .filter((spt) => {
+                  return spt.tileType === "pre requisite";
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+              {ilt
+                .filter((spt) => {
+                  return (
+                    spt.module === "ccm" && spt.cardType === "SPT" ||
+                    (spt.module === "ccm" && spt.tileType === "comming soon")
+                  );
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

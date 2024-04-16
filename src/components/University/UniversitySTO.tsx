@@ -13,6 +13,7 @@ import DeveloperCertificationReviewGuide from "./data/sto-certification-develope
 // import ArchitectCertificationExamDetails from "./data/sto-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
+import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
@@ -386,6 +387,30 @@ export default function CertificationsSTO() {
       {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
+          <p>
+            Self-paced courses that you can consume on your own time in a webinar style.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {spt
+                .filter((spt) => {
+                  return spt.tileType === "pre requisite";
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+              {ilt
+                .filter((spt) => {
+                  return (
+                    spt.module === "sto" && spt.cardType === "SPT" ||
+                    (spt.module === "sto" && spt.tileType === "comming soon")
+                  );
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+            </div>
+          </div>
         </div>
       )}
     </div>
