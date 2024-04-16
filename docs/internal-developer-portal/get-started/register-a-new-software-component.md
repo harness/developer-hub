@@ -1,20 +1,18 @@
 ---
 title: Add a new software component to the catalog
 description: Learn how you can add a new software component to the IDP software catalog.
-sidebar_position: 30
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 5
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
 
-You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
+Let's start with adding your software components to IDP. You can do so by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
-## Create a new `catalog-info.yaml`
+## Create a new catalog-info.yaml
 
 1. If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
 
@@ -49,7 +47,7 @@ Following are the key fields that you must update:
 
 2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
-## Register the Software Component
+## Register the software component
 
 3. In the left navigation, select **Create**, and then select **Register Software Component**.
 
@@ -67,3 +65,62 @@ Following are the key fields that you must update:
 The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
+
+
+## Register multiple software components together
+
+We can register multiple `catalog-info.yaml` in the following ways.
+
+1. If all your `catalog-info.yaml` are in the root of the same repo you can add the extensions in the target, as shown in the example below and it will register all the components.
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: example-all
+  description: A collection of all Backstage example entities, except users, groups, and templates
+spec:
+  targets:
+    - ./all-apis.yaml
+    - ./all-components.yaml
+```
+
+2. If the `catalog -info.yaml` is scattered across repos and you want to register them together then mention the absolute path in the git provider. Please make sure the **connector** you have created has **account level permissions** and all the repos mentioned under targets are under that **same account**.
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: food-delivery
+  description: A collection of all example entities, except users, groups, and templates
+spec:
+  targets:
+    - https://github.com/account-name/location-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/member-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/delivery-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
+    - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
+```
+
+## Delete/Unregister Software Components
+
+1. Navigate to the **Catalog** page, and select **Component** under Kind, here we are de-registering a template
+
+![](./static/catalog-navigation.png)
+
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**.
+
+![](./static/Unregister-location.png)
+
+5. This will delete the Template.
+
+## Troubleshooting: Failed to register
+
+If, after registering an entity, your're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. try re-registering the entity.
+
+![](./static/devtools.png)

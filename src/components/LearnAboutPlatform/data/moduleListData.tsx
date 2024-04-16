@@ -75,15 +75,6 @@ export const moduleList: CardItem[] = [
     link: "docs/service-reliability-management",
   },
   {
-    title: "Continuous Error Tracking",
-    module: MODULES.cet,
-    // icon: "img/icon_cet.svg",
-    description: (
-      <>Find and fix issues in minutes with code level visibility.</>
-    ),
-    link: "docs/continuous-error-tracking",
-  },
-  {
     title: "Internal Developer Portal",
     module: MODULES.idp,
     // icon: "img/icon_idp.svg",

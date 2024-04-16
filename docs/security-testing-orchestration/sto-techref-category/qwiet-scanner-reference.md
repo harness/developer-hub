@@ -1,45 +1,22 @@
 ---
 title: Qwiet AI (formerly ShiftLeft) scanner reference for STO
-description: Repository scans with Qwiet
+description: Scan code repositories with Qwiet AI.
 sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
 sidebar_position: 330
 ---
 
-You can set up Qwiet scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan your code repositories and ingest results from Qwiet.
 
-## Important notes for running Qwiet scans in STO
-
-
-
-
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-### For more information
-
+## For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
-
 <StoMoreInfo />
+
 
 ## Security step settings for Qwiet scans in STO
 
 ### Target and variant
-
 
 import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 
@@ -61,15 +38,13 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 ### Ingestion file
 
-
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
 
 <StoLegacyIngest />
 
 ### Fail on Severity
 
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 
 <StoSettingFailOnSeverity />

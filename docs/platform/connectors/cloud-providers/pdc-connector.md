@@ -70,7 +70,7 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 3. Enter a name for the connector and select **Continue**.
 4. Enter the target hosts manually or by using a JSON file. Both options are described in detail below.
 5. Select **Continue**.
-6. Select the Harness delegate(s) you want to use to perform the connection, and then select **Save and Continue**.
+6. Select the Harness Delegate(s) you want to use to perform the connection, and then select **Save and Continue**.
 
 
 

@@ -15,7 +15,7 @@ These issues reports help you understand quality in your issue management system
 * **Issues Single Stat**
 * **Issue Hotspots Report**
 
-For information about these reports, go to [Issues reports](../velocity-metrics-reports/issues-reports.md).
+For information about these reports, go to [Issues reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
 
 ## SCM quality reports
 
@@ -27,18 +27,18 @@ These reports help you understand quality in your code and SCM.
 * **SCM Issues Trend Report**
 * **SCM Issues Count Single Stat**
 
-For information about these reports, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
+For information about these reports, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 ## Support quality reports
 
-The **Support Hotspots Report (Support Files Report)** helps you understand quality in your customer support processes. For information about this report, go to [Support reports](../support-metrics.md).
+The **Support Hotspots Report (Support Files Report)** helps you understand quality in your customer support processes. For information about this report, go to [Support reports](/docs/software-engineering-insights/sei-metrics-and-reports/support-metrics).
 
 ## Tool-specific reports
 
 Several tools-specific reports are available with SEI, such as:
 
-* [SonarQube code complexity reports](./sonarqube-reports.md)
-* [TestRail test reports](./testrail-reports.md)
-* [PagerDuty incident reports](./pagerduty-reports.md)
-* [Junit test reports](./junit-reports.md)
-* [Bullseye reports](./bullseye-reports.md)
+* [SonarQube code complexity reports](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/sonarqube-reports)
+* [TestRail test reports](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/testrail-reports)
+* [PagerDuty incident reports](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/pagerduty-reports)
+* [Junit test reports](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/junit-reports)
+* [Bullseye reports](/docs/software-engineering-insights/sei-metrics-and-reports/quality-metrics-reports/bullseye-reports)

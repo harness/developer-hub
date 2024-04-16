@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Functions
 description: Deploy single-purpose functions to Google Cloud.
-sidebar_position: 800
+sidebar_position: 900
 ---
 
 # Google Cloud Functions deployments
@@ -38,6 +38,7 @@ Harness supports the following:
 
 - For Google Cloud Functions 2nd gen, Harness does not support [Google Cloud Source Repository](https://cloud.google.com/functions/docs/deploy#from-source-repo) at this time. Only Google Cloud Storage is supported.
 - For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
+- Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. 
 
 ## Deployment summary
 
@@ -114,7 +115,7 @@ For Google Cloud Storage (GCS), the following roles are required:
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
+Ensure the Harness Delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`.
 
 For Google Cloud Source, the following roles are required:
 
@@ -193,9 +194,9 @@ Here are some Function Definition examples.
 
 function:
   name: <functionName>
-  buildConfig:
+  build_config:
     runtime: nodejs18
-    entryPoint: helloGET
+    entry_point: helloGET
   environment: GEN_2
 function_id: <functionName>
 ```
@@ -208,9 +209,9 @@ function_id: <functionName>
 ```yaml
 function:
   name: my-http-function
-  buildConfig:
+  build_config:
     runtime: nodejs14
-    entryPoint: myFunction
+    entry_point: myFunction
   environment: GEN_2
 function_id: my-http-function
 ```
@@ -223,13 +224,13 @@ function_id: my-http-function
 ```yaml
 function:
   name: my-env-function
-  buildConfig:
+  build_config:
     runtime: python38
-    entryPoint: my_function
+    entry_point: my_function
+    environment_variables:
+      MY_VAR: my-value
   environment: GEN_2
 function_id: my-env-function
-  environmentVariables:
-    MY_VAR: my-value
 
 ```
 
@@ -241,16 +242,17 @@ function_id: my-env-function
 ```yaml
 function:
   name: my-storage-function
-  buildConfig:
+  build_config:
     runtime: go111
-    entryPoint: MyFunction
+    entry_point: MyFunction
+  service_config:
+    available_memory: 512
+    timeout: 180s
   environment: GEN_2
+  event_trigger:
+    trigger: projects/_/buckets/my-bucket
+    event_type: google.storage.object.finalize    
 function_id: my-storage-function
-  trigger:
-    eventType: google.storage.object.finalize
-    resource: projects/_/buckets/my-bucket
-  availableMemoryMb: 512
-  timeout: 180s
 
 ```
 
@@ -262,13 +264,13 @@ function_id: my-storage-function
 ```yaml
 function:
   name: canaryDemo-<+env.name>
-  serviceConfig:
+  service_config:
     environment_variables:
       MY_ENV_VAR: "True"
       GCF_FF_KEY: "<+env.variables.GCF_FF_KEY>"
-  buildConfig:
+  build_config:
     runtime: python39
-    entryPoint: hello_world
+    entry_point: hello_world
   environment: GEN_2
 function_id: canaryDemo-<+env.name>
 ```
@@ -289,29 +291,31 @@ function:
   description: "Using Secret Environment Variables"
   region: "us-east1"
   runtime: "nodejs16"
-  entryPoint: myFunction
+  build_config:
+    entry_point: myFunction
   max_instances: 1
-  eventTrigger:
+  event_trigger:
     event_type: "providers/cloud.pubsub/eventTypes/topic.publish"
-    resource: "projects/<project>/topics/<topic>"
-  environment_variables:
-    MY_ENV_VAR1: value1
-    MY_ENV_VAR2: value2
-  secret_environment_variables:
-    [
-      {
-        key: "MY_SECERT_ENV_VAR1",
-        project_id: <project_id>,
-        secret: "<secretName1>",
-        version: "<secretVersion1>",
-      },
-      {
-        key: "MY_SECERT_ENV_VAR2",
-        project_id: <project_id>,
-        secret: "<secretName2>",
-        version: "<secretVersion2>",
-      },
-    ]
+    trigger: "projects/<project>/topics/<topic>"
+  service_config:
+    environment_variables:
+      MY_ENV_VAR1: value1
+      MY_ENV_VAR2: value2
+    secret_environment_variables:
+      [
+        {
+          key: "MY_SECERT_ENV_VAR1",
+          project_id: <project_id>,
+          secret: "<secretName1>",
+          version: "<secretVersion1>",
+        },
+        {
+          key: "MY_SECERT_ENV_VAR2",
+          project_id: <project_id>,
+          secret: "<secretName2>",
+          version: "<secretVersion2>",
+        },
+      ]
 ```
 
 </details>
@@ -936,7 +940,7 @@ execution:
 
 ### Rollbacks
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically.
 
 The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
 

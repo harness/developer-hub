@@ -396,7 +396,7 @@ To set up future versions of Harness Self-Managed Enterprise Edition, in the KOT
 ## Important next steps
 
 :::note
-You cannot invite other users to Harness until a Harness delegate is installed and a Harness SMTP Collaboration Provider is configured.
+You cannot invite other users to Harness until a Harness Delegate is installed and a Harness SMTP Collaboration Provider is configured.
 :::
 
 1. Install the Harness Delegate: [Delegate Installation Overview](../../firstgen-platform/account/manage-delegates/delegate-installation-overview.md).

@@ -5,8 +5,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, CCMList } from "./data/cloudCostManagementData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CCM() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     // <Layout title="CCM" description="CCM">
@@ -72,19 +73,34 @@ export default function CCM() {
               </ul>
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnCCM)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/cloud-cost-management">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnCCM
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://harness.io/products/cloud-cost">
                 <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/ccm.svg`} />
+          </div> */}
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/ccm.svg`
+                  : `${baseUrl}img/CCM_Landing_Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

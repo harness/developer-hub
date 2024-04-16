@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/releaseNotesData";
+import { docsCards } from "./data/releaseNotesData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -18,11 +18,11 @@ export default function CD() {
             <h1>Harness Release Notes</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/docs">
@@ -43,10 +43,6 @@ export default function CD() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.subSection}>
-        </div>
-        <div className={styles.subSection}>
-      </div>
     </div>
     // </Layout>
   );

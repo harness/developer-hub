@@ -136,7 +136,7 @@ You can turn the synchronization between the Harness Platform and Git on or off.
 
 To turn on synchronization between the Harness Platform and Git: 
 
-1. Ensure that Git Experience has been [enabled](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) for your project.
+1. Ensure that Git Experience has been [enabled](/docs/platform/git-experience/configure-git-experience-for-harness-entities) for your project.
 
 1. Select **Feature Flags**.
 
@@ -175,9 +175,7 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
   Now, whenever you change a flag in Harness, an auto-commit is done automatically, and your flag changes are synced to the flag configuration file (for example, `flags.yaml`) in the Git repository. Auto-committed have the prefix `[AUTO-COMMIT]`, for example:
 
-  
-  <img src={git_5} alt="A screenshot of an auto commit message on GitHub. " height="500" width="700" />
-  
+    ![An auto commit message on GitHub.](./static/5-manage-featureflags-in-git-repos-08.png)
 
 <details>
   <summary>Possible Auto-commit messages</summary>
@@ -220,8 +218,7 @@ To turn off syncing with Git:
 
   When syncing is off, the branch icon is a red warning circle:
 
-  <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
-
+   ![Warning of Git sync toggle turned off](./static/8-git-off.png)
 
 ## Reset the Git connection
 

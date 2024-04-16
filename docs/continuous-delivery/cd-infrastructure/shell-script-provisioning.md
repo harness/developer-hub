@@ -50,7 +50,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
 - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
-- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
 - [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
@@ -234,7 +234,7 @@ pipeline:
 ```
 </details>
 
-When you run this pipeline, the **Shell Script Provision** step show that the `$PROVISIONER_OUTPUT_PATH` environment variable has been initialized on the Harness delegate.
+When you run this pipeline, the **Shell Script Provision** step show that the `$PROVISIONER_OUTPUT_PATH` environment variable has been initialized on the Harness Delegate.
 
 ```
 "PROVISIONER_OUTPUT_PATH" has been initialized to "/opt/harness-delegate/shellScriptProvisioner/F__QtYt1QdOyAc3QKUFIIA-zTte04H7SsG6iU9VIRxOAA-shell1/output.json"

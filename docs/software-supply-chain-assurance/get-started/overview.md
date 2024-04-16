@@ -28,7 +28,7 @@ To realize the [objectives](#software-supply-chain-assurance-objectives), the SS
 
 * SBOM generation and management.
 * Supply chain security policy enforcement.
-* SLSA Level 2 compliance with provenance generation and verification.
+* SLSA Level 3 compliance with provenance generation and verification.
 
 <!-- * Remediation paths to effectively address zero-day vulnerabilities in open-source components. * Comprehensive visibility into component usage and deployment environments.-->
 

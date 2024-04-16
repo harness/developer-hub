@@ -7,7 +7,7 @@ description: Identify active incidents for an entity and learn about the escalat
 | -------------- | ------------------------------------------------------------------------------ |
 | **Created by** | Spotify                                                                        |
 | **Category**   | Monitoring                                                                     |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/pagerduty) |
+| **Source**     | [GitHub](https://github.com/PagerDuty/backstage-plugin) |
 | **Type**       | Open-source plugin                                                             |
 
 ## Configuration
@@ -30,7 +30,7 @@ proxy:
 
 ### Secrets
 
-Since the `PAGERDUTY_TOKEN` variable is used in the application configuration, you must generate a PagerDuty API key and set it as the value of `PAGERDUTY_TOKEN`. For instructions on how to create a PagerDuty API integration, [read the instructions](https://github.com/backstage/backstage/tree/master/plugins/pagerduty#in-pagerduty).
+Since the `PAGERDUTY_TOKEN` variable is used in the application configuration, you must generate a PagerDuty API key and set it as the value of `PAGERDUTY_TOKEN`. For instructions on how to create a PagerDuty API integration, [read the instructions](https://pagerduty.github.io/backstage-plugin-docs/getting-started/pagerduty/#generate-a-general-access-rest-api-token).
 
 ![](./static/pagerduty-secret.png)
 
@@ -79,8 +79,8 @@ metadata:
     pagerduty.com/service-id: [SERVICE_ID]
 ```
 
-[Read more](https://github.com/backstage/backstage/tree/master/plugins/pagerduty#annotating-with-service-id)
+[Read more](https://pagerduty.github.io/backstage-plugin-docs/getting-started/backstage/#annotating-entities)
 
 ## Support
 
-The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is currently owned by PagerDuty and managed in the [PagerDuty repository](https://github.com/PagerDuty/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

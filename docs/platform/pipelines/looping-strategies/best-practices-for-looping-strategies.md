@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/platform/pipelines/best-practices-for-looping-strategies
+  - /docs/platform/pipelines/looping-strategies/when-conditions-inside-looping-strategies
 ---
 
 Harness recommends the following best practices for implementing [looping strategies](./looping-strategies-matrix-repeat-and-parallelism.md) in your pipelines.
@@ -119,3 +120,217 @@ You can use looping strategy expressions to refer to each value in the loop. For
 ![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
 
 The expression `<+repeat.item>` only applies to [repeat strategies](./looping-strategies-matrix-repeat-and-parallelism.md#repeat-strategies). You need to use matrix expressions (such as `<+matrix.jira>`) with [matrix strategies](./looping-strategies-matrix-repeat-and-parallelism.md#matrix-strategies).
+
+## When conditions with looping strategies
+
+Your looping strategies can include `when` conditions that apply to the looping strategy logic, *and* your pipeline can include [conditional executions](/docs/platform/pipelines/step-skip-condition-settings), which are `when` conditions that determine whether to run a particular stage, step, or step group.
+
+It's important to understand where to use each type of `when` condition and how they impact pipeline execution.
+
+Use [when conditions in looping strategies](#when-condition-in-looping-strategy) to evaluate whether to *create instances of a stage/step*. For example:
+
+   * You sometimes want to skip the looping strategy. For example, in a unified deployment pipeline, you might skip a matrix applied to a `prod` deployment stage when the pipeline isn't running against the `prod` environment.
+   * You don't always need to run a stage/step for every item in a matrix.
+   * Your looping strategy is populated by variable input, and you want to skip it if it resolves to be empty.
+
+Use [conditional executions with looping strategies](#conditional-execution-with-looping-strategy) to evaluate whether to *run a stage/step/step group that was generated from a looping strategy*. For example:
+
+ * Only run stages generated from a looping strategy if they run in a particular deployment environment.
+
+You can also use [both conditional executions and looping strategy when conditions](#combination-of-conditional-execution-and-looping-strategy-when-condition) for multi-dimensional evaluation, and you can use [expressions in when conditions](#expressions-in-when-conditions).
+
+### Conditional execution with looping strategy
+
+Conditional executions determine whether a stage, step, or step group should run. If you add a conditional execution to a stage or step with a looping strategy, the conditional execution is evaluated for every instance created by the looping strategy.
+
+In this example, the stage has a matrix looping strategy *and* a conditional execution. When the pipeline runs, multiple stage instances are created by the matrix looping strategy (One for each item in the `jdk` list), and then Harness checks the stage's conditional execution against each instance created by the matrix.
+
+```yaml
+    - stage:
+        name: custom_stage_conditional_execution
+        identifier: custom_stage_conditional_execution
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          echo hey
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          matrix:
+            jdk:
+              - "18"
+              - "17"
+              - "16"
+              - "15"
+              - "14"
+              - "13"
+              - "12"
+              - "11"
+              - "10"
+              - "9"
+        when:
+          pipelineStatus: Success
+          condition: "false"
+```
+
+In this example, the conditional execution is hardcoded to resolve to false, so every stage is skipped.
+
+![](./static/conditional_vs_when.png)
+
+### When condition in looping strategy
+
+In this example, the matrix looping strategy is modified by a `when` condition:
+
+```yaml
+        strategy:
+          when: <+pipeline.name> == "looping_strategy_when"
+          matrix:
+            jdk:
+              - "18"
+              - "17"
+              - ...
+```
+
+In this example, when the pipeline runs, Harness checks the matrix strategy's `when` condition before creating each instance in the matrix. If the condition is met, Harness creates an instance for that item in the matrix. If the condition is not met, Harness doesn't create an instance for that item. This evaluation is repeated for each item in the matrix.
+
+```yaml
+    - stage:
+        name: custom_stage_when_condition
+        identifier: custom_stage_conditional_execution
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          echo hey
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          when: <+pipeline.name> == "looping_strategy_when"
+          matrix:
+            jdk:
+              - "18"
+              - "17"
+              - "16"
+              - "15"
+              - "14"
+              - "13"
+              - "12"
+              - "11"
+              - "10"
+              - "9"
+```
+
+In this example, the `when` condition checks if the pipeline name is `looping_strategy_when`. Since that is not the name of this example pipeline, no stages are created from the matrix.
+
+![](./static/conditional_vs_when2.png)
+
+### Combination of conditional execution and looping strategy when condition
+
+You can also use both conditional executions and looping strategy `when` conditions.
+
+When you use both, Harness first evaluates the looping strategy `when` condition to determine how many instances to create from the looping strategy, based on how many items pass the `when` condition. Then Harness checks each created instance against the conditional execution to determine whether to run each created instance.
+
+Here's an example that uses both. In this example, the matrix looping strategy has a `when` condition that checks if the pipeline name is `looping_strategy_when`. Then, the stage has a conditional execution that checks if the pipeline has executed successfully so far and that the environment name is not `QA`. 
+
+```yaml
+pipeline:
+  name: looping_strategy_when
+  identifier: looping_strategy_when
+  tags: {}
+  projectIdentifier: fdsf
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: sA
+        identifier: sA
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hey
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          when: <+pipeline.name> == "looping_strategy_when"
+          matrix:
+            jdk:
+              - "18"
+              - "17"
+              - "16"
+              - "15"
+              - "14"
+              - "13"
+              - "12"
+              - "11"
+              - "10"
+              - "9"
+        when:
+          pipelineStatus: Success
+          condition: <+environment.name> != "QA"
+  allowStageExecutions: true
+```
+
+When this pipeline runs:
+
+1. Harness checks the looping strategy `when` condition and creates a stage instance for each item in the matrix that passes the condition. In this example, the condition checks that the pipeline name is `looping_strategy_when`. Since that is the pipeline's name, all items in the matrix pass the check and Harness creates a stage for each.
+2. Harness checks each created stage instance against the conditional execution to determine whether to run each stage. In this example, the stage runs if the pipeline has executed successfully so far *and* the environment name is not `QA`. Assuming this pipeline is run for the `prod` environment and no prior stages failed, then all the stage instances in the matrix will run.
+
+### Expressions in when conditions
+
+You can use Harness and JEXL expressions in your `when` conditions, conditional executions, and your looping strategies.
+
+This example reflects a complex use case that involves [pipeline chaining](/docs/platform/pipelines/pipeline-chaining). The previous pipeline in the series of chained pipelines produces an output variable called `number_of_services` that indicates how many services were deployed by that prior pipeline. It also produces a list of the deployed services (stored in `deployed_services`), if any.
+
+The matrix strategy uses the value of the `number_of_services` variable in a `when` condition to determine whether to trigger the matrix strategy in the chained pipeline. If no services (`0`) were deployed, then the chained pipeline skips the matrix strategy. If at least one service (greater than `0`) was deployed, then it executes a matrix strategy that iterates over the list of deployed services (generating one instance per deployed service).
+
+```yaml
+        strategy:
+          when: <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.number_of_services> > 0
+          matrix:
+            service: <+json.list("services", <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.deployed_services>)>
+            maxConcurrency: 4
+```
+
+The above example shows expressions in a `when` condition in a looping strategy. For information about expressions in conditional execution, go to [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings).

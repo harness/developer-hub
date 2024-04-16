@@ -2,10 +2,6 @@
 title: Scorecards
 description: Measure software maturity and enforce best practices
 sidebar_position: 3
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 redirect_from:
   - /docs/internal-developer-portal/features/scorecard
 ---
@@ -29,7 +25,7 @@ Scorecards play a pivotal role in ensuring software components are developed and
 <DocImage path={require('./static/concept-scorecard.png')}/>
 
 - **Check**: A check is a query performed against a data point for a software component which results in either `Pass` or `Fail`.
-- **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, Pagerduty, etc.
+- **Data Source**: Data Sources are third-party providers which can provide a specific type of data for a software component. Example - GitHub, GitLab, Harness, PagerDuty, etc.
 - **Data Points**: For each software component, every data source provides some data points. The data points could be a number, a string or a boolean.
 
 </details>
@@ -87,7 +83,7 @@ Scorecard has two main UI components which are developer facing and lives in the
 
 :::info
 
-Make sure the values under "Filter catalog entities for which the scorecard is evaluated" should match with your entity "owner" and "type" as shown below -
+Make sure the values under **Filter catalog entities for which the scorecard is evaluated** should match with your entity "owner" and "type" as shown below, also **tags** are applied as **AND** operations so if you select multiple tags make sure all of them are present for the software component you want to compute the score for. 
 
 <DocImage path={require('./static/caution-idp-scorecard.png')}/>
 
@@ -99,7 +95,7 @@ Make sure the values under "Filter catalog entities for which the scorecard is e
 
 <DocImage path={require('./static/scorecard-overview.png')}/>
 
-- On clicking the overall health button dispalyed for your scorecard you will be redirected to a page with detailed information regarding the compoenets tracked through the scorecard as well as the time detailed socre of each component.
+- On clicking the overall health button displayed for your scorecard you will be redirected to a page with detailed information regarding the components tracked through the scorecard as well as the time detailed score of each component.
 
 <DocImage path={require('./static/component-overview.png')}/>
 

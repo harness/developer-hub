@@ -1,40 +1,19 @@
 ---
 title: Metasploit scanner reference for STO
-description: Instance scans with Metasploit
+description: Scan application instances with Metasploit.
 sidebar_label: Metasploit scanner reference
 sidebar_position: 230
 ---
 
-You can run Metasploit scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-## Important notes for running Metasploit scans in STO
+You can scan your application instances and ingest results from Metasploit.
 
 
-
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-
-### For more information
-
+## For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
-
 <StoMoreInfo />
+
 
 ## Security step settings for Metasploit scans in STO
 
@@ -76,7 +55,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 
 <StoSettingFailOnSeverity />

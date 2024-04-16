@@ -20,11 +20,11 @@ import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
 
 ### Before you begin
 
-- [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
 - [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 - [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 - Make sure that the Harness Delegate can connect to the Vault URL.
-- Make sure you have View and Create/Edit permissions for secrets.​
+- Make sure you have View and Create/Edit permissions for secrets.
 
 ### Step 1: Add a Secret Manager
 

@@ -62,12 +62,18 @@ You can use the following artifact providers to triggers pipelines:
 - Google Artifact Registry
 - Google Cloud Storage
 
+:::note
+
 The following artifact providers are supported behind the feature flag `CD_TRIGGER_V2`:
 
 - Jenkins
 - Azure Artifacts
 - Nexus3 Registry
 - Amazon Machine Image (AMI)
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 ### Manifest triggers
 
@@ -86,3 +92,5 @@ To add a trigger to a pipeline, do the following:
 2. Select **+ New Trigger** or **Add New Trigger**. The **Triggers** pane opens.
 3. Select the Webhook, Artifact, Manifest, or Scheduled trigger.
 4. Complete the required fields for your trigger type. For steps on setting up different types of triggers, go to the [Triggers documentation](/docs/category/triggers).
+
+

@@ -6,12 +6,16 @@ sidebar_position: 10
 
 Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
 
+:::info
+The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile)
+:::
+
 To create or edit Investment profiles:
 
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Investment** under **Profiles**.
-4. To create a profile, select **New Investment Profile**. To edit an existing profile, select the profile's name in the profiles list.
+4. To create a profile, select **+New Investment Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 ## Basic Info
 
@@ -23,11 +27,15 @@ To create or edit Investment profiles:
 * **Issue Management System:** Select the issue management tool, either **Jira** or **Azure**, to associate with this Investment profile.
 * **Default Profile:** Enable this setting if you want to make this Investment profile the default Investment profile. The default profile is automatically selected when creating new widgets that use Investment profiles.
 
+![](./static/investment-profile.png)
+
 ## Categories
 
 Categories define the data that you want to compare within an Investment profile. For example, you could compare issue types (such as bugs, stories, and tasks), projects, components, or other dimensions (such as infrastructure, support, and development).
 
 To add a category, select **Add Category**, enter a name, and then select **Filters**.
+
+![](./static/investment-categories.png)
 
 ## Allocation Goals
 
@@ -35,12 +43,11 @@ After adding [categories](#categories), you can set goals for how much time you 
 
 Adjust the sliders to define the **Ideal range** for each category. You can set ranges from zero to 100. After defining your ideal range, SEI automatically calculates the **Acceptable range** and **Poor range** based on your ideal.
 
-<figure>
 
-![](./static/investment-profile-ranges.png)
-
-<figcaption>Allocation goals for <b>Bugs</b>, where 20 to 30 percent is the ideal range.</figcaption>
-</figure>
+<img
+  src={require('./static/investment-profile-ranges.png').default}
+  alt="Example banner" height="50%" width="100%" border="0"
+/>
 
 <details>
 <summary>Range calculation example</summary>

@@ -16,7 +16,7 @@ Once OAuth 2.0 SSO is enabled, Harness Users can simply log into Harness using t
 
 ## Before you begin
 
-* Go to [Authentication overview](/docs/platform/Authentication/authentication-overview).
+* Go to [Authentication overview](/docs/platform/authentication/authentication-overview).
 * Go to [Role-based access control (RBAC) in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 * For information on OAuth 2.0, go to [OAuth 2 Simplified](https://aaronparecki.com/oauth-2-simplified/) from Aaron Parecki.
 

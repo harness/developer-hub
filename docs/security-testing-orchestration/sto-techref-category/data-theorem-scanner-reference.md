@@ -1,11 +1,11 @@
 ---
 title: Data Theorem scanner reference for STO
-description: Repository scans with Data Theorem
+description: Scan code repositories with Data Theorem.
 sidebar_label: Data Theorem scanner reference
 sidebar_position: 140
 ---
 
-You can run Data Theorem scans on your instances using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can run repository scans and ingest results from Data Theorem.
 
 
 ## Important notes for running Data Theorem scans in STO
@@ -67,7 +67,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 
 <StoSettingFailOnSeverity />
 

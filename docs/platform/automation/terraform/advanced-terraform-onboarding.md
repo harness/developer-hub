@@ -1,7 +1,7 @@
 ---
 title: Advanced Terraform onboarding
 description: A guide to writing onboarding automation using terraform
-sidebar_position: 4
+sidebar_position: 5
 redirect_from:
   - /docs/platform/Resource-Development/Terraform/advanced-terraform-onboarding
 ---

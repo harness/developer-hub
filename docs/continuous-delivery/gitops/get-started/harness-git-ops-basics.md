@@ -16,6 +16,14 @@ Harness GitOps lets you perform GitOps deployments in Harness. You define the de
 
 Want to jump right in? Try the [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md).
 
+## ArgoCD with Terraform Video Demo
+
+Here's a quick demo showing how you can orchestrate cluster creation with Harness Infrastructure as Code Management, and use an Argo CD-based pipeline with Harness Continuous Delivery and GitOps. 
+
+This is a more advanced demo than a simple GitOps sync, but it shows how Harness integrates GitOps into common DevOps practices.
+
+<DocVideo src="https://www.youtube.com/watch?v=FUSehVlmETM" />
+
 ## Harness GitOps Summary
 
 **What is GitOps?** GitOps is simply using Git to perform Operations Team (Ops) tasks, such as building infrastructure, release automation, and orchestration.
@@ -64,7 +72,7 @@ Harness has multiple Git-based features and it's important to understand the dif
 
 * **GitOps:** used for deploying infrastructure and services. The Git commit in a source manifest repo triggers a sync between the desired state in Git and the live cluster state. This can be used to simply bootstrap clusters or for full service deployments.
 * **Config-as-Code:** Harness supports full [YAML-based configuration of pipelines](/docs/platform/pipelines/harness-yaml-quickstart) and other Harness entities, like connectors. Harness Pipeline Studio includes a full YAML IDE with hints and autocomplete, so you can simply code your Pipelines as YAML.
-* **Harness Git Experience:** Harness can sync your pipelines and other entities with Git repos so you can make all your changes in Git instead of, or in addition to, using the Harness Manager UI. For more information, go to the [Harness Git Experience overview](/docs/platform/Git-Experience/git-experience-overview).
+* **Harness Git Experience:** Harness can sync your pipelines and other entities with Git repos so you can make all your changes in Git instead of, or in addition to, using the Harness Manager UI. For more information, go to the [Harness Git Experience overview](/docs/platform/git-experience/git-experience-overview).
 
 ## Service
 

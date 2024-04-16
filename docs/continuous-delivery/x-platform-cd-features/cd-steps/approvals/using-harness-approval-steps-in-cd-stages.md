@@ -14,9 +14,9 @@ For example, in a [Kubernetes blue green deployment](/docs/continuous-delivery/d
 
 Other approval methods are:
 
-- [Harness Approval stages](/docs/platform/Approvals/adding-harness-approval-stages): Add Approval stages for manual intervention.
-- [Adding Jira Approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages): Add Jira Approval stages and steps.
-- [Adding ServiceNow Approval steps and stages](/docs/platform/Approvals/service-now-approvals): Add ServiceNow Approval stages and steps.
+- [Harness Approval stages](/docs/platform/approvals/adding-harness-approval-stages): Add Approval stages for manual intervention.
+- [Adding Jira Approval stages and steps](/docs/platform/approvals/adding-jira-approval-stages): Add Jira Approval stages and steps.
+- [Adding ServiceNow Approval steps and stages](/docs/platform/approvals/service-now-approvals): Add ServiceNow Approval stages and steps.
 
 ## Visual Summary
 
@@ -111,12 +111,6 @@ If you don't want the User that initiated the pipeline execution to approve this
 Even if the User is in the user group selected in **User Group**, they won't be able to approve this step.
 
 ## Automatic Approvals
-
-:::note
-
-Currently, the automatic approvals feature is behind the feature flag `CDS_AUTO_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can set the Approval step to automatically approve at a specific date and time.
 
@@ -275,14 +269,14 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 In **Advanced**, you can use the following options:
 
 - [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-- [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-- [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+- [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+- [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 - [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-- [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+- [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Approval variables
 
-After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
+After an approval is granted, [approval expressions](/docs/platform/variables-and-expressions/harness-variables.md#approval-expressions) store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval. These expressions are not available for all approval types.
 
 ## See also
 

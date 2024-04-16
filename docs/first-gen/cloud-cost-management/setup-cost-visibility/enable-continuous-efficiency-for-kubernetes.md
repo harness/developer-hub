@@ -127,7 +127,7 @@ From the second cluster onwards, it takes about 2–3 hours for the data to be a
    
      ![](./static/enable-continuous-efficiency-for-kubernetes-54.png)
 4. In **Cluster Details**, select:
-* **Inherit from selected Delegate**: (Recommended) Select this option if the Kubernetes cluster is the same cluster where the Harness delegate was installed.
+* **Inherit from selected Delegate**: (Recommended) Select this option if the Kubernetes cluster is the same cluster where the Harness Delegate was installed.
 
   **Delegate Name**: Select the Delegate.
 	   

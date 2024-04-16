@@ -1,0 +1,11 @@
+{
+    "label": "Zed Attack Proxy (ZAP)",
+    "position": 430,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "Zed Attach Proxy (ZAP)"
+    }
+ }

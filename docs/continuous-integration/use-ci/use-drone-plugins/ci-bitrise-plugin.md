@@ -9,7 +9,7 @@ With the **Bitrise plugin** step (also called the **Bitrise** step), you can use
 
 :::info
 
-Currently, the **Bitrise plugin** step is supported for Harness Cloud build infrastructure only.
+Currently, the **Bitrise plugin** step is supported for Harness Cloud build infrastructure only. For other build infrastructures, you can run Bitrise integrations in a Run step or write a custom plugin.
 
 :::
 
@@ -65,7 +65,7 @@ The `spec` parameters define which Bitrise Integration to use, Bitrise Integrati
 
 If you already configured Bitrise Integrations elsewhere, you can [transfer Bitrise Integrations into Harness CI](#transfer-bitrise-integrations-into-harness-ci).
 
-You can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs) in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses an expression referencing a [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+You can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs) in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses an expression referencing a [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables).
 
 :::
 
@@ -108,7 +108,7 @@ If required by the Integration, add key-value pairs representing environment var
 
 :::tip
 
-* You can use [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs) for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/Pipelines/add-a-stage#stage-variables).
+* You can use [fixed values, runtime inputs, or expressions](/docs/platform/variables-and-expressions/runtime-inputs) for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a variable expression [stage variable](/docs/platform/pipelines/add-a-stage#stage-variables).
 * In the Visual editor, there are separate fields for keys and values. For example, to specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` in the Visual editor, you would enter `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
 :::
@@ -119,8 +119,8 @@ If required by the Integration, add key-value pairs representing environment var
 
 You can set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Transfer Bitrise Integrations into Harness CI
 

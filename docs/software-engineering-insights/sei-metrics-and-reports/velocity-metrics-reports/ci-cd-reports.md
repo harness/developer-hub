@@ -11,7 +11,7 @@ Use CI/CD job reports to analyze metrics and trends related to CI/CD job runs. T
 * **Adoption rates:** Gain a deeper understanding of the adoption rate of CI/CD practices across different teams or departments, which helps identify areas of success and potential improvement.
 * **Pipeline performance analysis:** By tracking job counts over time, you can analyze a pipeline's performance. Changes in the job count, such as an increase in queued jobs or a decrease in completed jobs, can provide insights into the pipeline's efficiency, resource utilization, or potential issues affecting its execution.
 
-These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](../../sei-integrations/sei-integrations-overview.md).
+These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
 ## Job count reports
 
@@ -20,6 +20,8 @@ Use the CI/CD job count reports to understand how often your CI/CD jobs run and 
 * **CI/CD Job Count Report:** A bar chart visualizing the number of CI/CD jobs run in a given time frame. The job count information is represented in the Bar chart format. The widgets supports drill-down for in-depth analysis.
 * **CI/CD Job Count Single Stat:** This report provides a single stat, such as the total number of jobs that ran in a given period of time, a summary of the job count at a given moment, or the number of jobs or stages within the CI/CD pipeline.
 * **CI/CD Job Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs. The data representation is in the Line chart format and does not support drill-down.
+
+![](./static/cicd-jobs-count.png)
 
 When you add a CI/CD Job Count report to an Insight, the **Job End Date** filter is set to a relative time frame by default. The widget is ready to use with the default configuration or you can modify it. For some useful configuration options, go to [Configuration techniques](#configure-cicd-job-reports).
 
@@ -31,6 +33,8 @@ Job duration reports can help you optimize build times by analyzing the total ti
 * **CI/CD Job Duration Single Stat:** Report a single job duration stat. It displays the median or average job execution duration as a numeric value but does not support drill-down.
 * **CI/CD Job Duration Trend Report:** Daily, weekly, and monthly trends in job duration. The data is represented as a Line graph.
 
+![](./static/cicd-job-duration.png)
+
 ## Pipeline job reports
 
 Use the CI/CD pipeline job reports to analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
@@ -39,6 +43,8 @@ Use the CI/CD pipeline job reports to analyze CI/CD job counts over a specific p
 * **CI/CD Pipeline Jobs Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs. 
 * **CI/CD Pipeline Jobs Duration Report:** Total time taken by a job and its children. Use this report to optimize build times.
 * **CI/CD Pipeline Jobs Duration Trend Report:** Daily, weekly, and monthly trends in job duration.
+
+
 
 :::info
 
@@ -61,7 +67,7 @@ Use the CI/CD job configuration change reports to understand how often job confi
 
 ## SCM to CI/CD jobs reports
 
-For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](./scm-reports.md).
+For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 ## Configure CI/CD job reports
 
@@ -79,7 +85,7 @@ _Insight time_ is the time range selected by the user when viewing Insights. If 
 
 If you want the widget to report the status (success or failure) of all jobs in Insight time, configure the widget as follows:
 
-* Job End Date: Insight time
+* Job End Date: `Insight time`
 * Metrics: Job Status
 * Aggregations: Job Name
 
@@ -94,7 +100,7 @@ If you want the widget to report the status (success or failure) of all jobs in 
 
 If you want the widget to highlight failed jobs, add a **Job Status** filter and set it to **Failed**. You can use this configuration in combination with Insight time, such as:
 
-* Job End Date: Insight time
+* Job End Date: `Insight time`
 * Metrics: Job Status
 * Aggregations: Job Name
 * Filter, Job Status: Failed

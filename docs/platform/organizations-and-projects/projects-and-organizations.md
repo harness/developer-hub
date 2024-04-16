@@ -74,7 +74,7 @@ The following table lists the resources that are available at various scopes in 
 | **Secrets** | Yes | Yes | Yes |
 | **SMTP Configuration** | Yes | No | No |
 | **Templates** | Yes | Yes | Yes |
-| **Audit Trail** | Yes | Yes | Yes |
+| **Audit Trail** | Yes | Yes | No |
 | **Delegates** | Yes | Yes | Yes |
 | **Governance** | Yes | Yes | Yes |
 

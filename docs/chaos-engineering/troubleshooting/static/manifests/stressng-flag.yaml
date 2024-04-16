@@ -1,0 +1,28 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: LinuxChaosExperiment
+metadata:
+  name: linux-memory-stress-dev
+  labels:
+    experimentID: "f7e4a412-74ef-4a0a-9b94-d894afb24be9"
+    experimentRunID: "9caeb3ca-b6f3-4e82-b96b-97d57428ef59"
+    context: linux-memory-stress
+    name: linux-memory-stress-dev
+spec:
+  experimentId: "f7e4a412-74ef-4a0a-9b94-d894afb24be9"
+  experimentRunId: "9caeb3ca-b6f3-4e82-b96b-97d57428ef59"
+  cleanupPolicy: retain
+  steps:
+  - - name: task-1
+  tasks:
+  - name: task-1
+    taskType: "chaos"
+    weight: 10
+    chaosInfra: "b8d4e0e6-e883-48ad-8b6c-1886bf6edc21"
+    definition:
+      chaos:
+        experiment: linux-memory-stress
+        stressChaos/inputs:
+          duration: 30s
+          workers: 1
+          memory: 5m
+          stressNGFlags: "--vm-populate"

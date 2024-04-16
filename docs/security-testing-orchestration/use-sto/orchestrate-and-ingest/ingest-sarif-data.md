@@ -1,6 +1,6 @@
 ---
 title: Ingest SARIF scan results into STO
-description: You can easily ingest from any scanner can publish results in SARIF format.
+description: Ingest results from any scanner that supports SARIF.
 sidebar_label: Ingest SARIF scan results
 sidebar_position: 45
 ---
@@ -9,7 +9,7 @@ sidebar_position: 45
 
 ### Important notes for ingesting SARIF data into STO
 
-- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported) and click **Harness STO scanner support** to expand.
+- This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [Scanners supported by STO](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanners-supported-by-sto).
 
 - Harness STO also supports an STO Custom JSON format for unsupported scanners that can't publish to SARIF. For more information, go to [Ingest Results from Unsupported Scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).  
 
@@ -17,15 +17,21 @@ sidebar_position: 45
 
 The following workflow describes how to set up an ingestion pipeline for any scanner that supports SARIF. 
 
-1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
- 
-   ![](../static/ingesting-issues-from-other-scanners-00.png)
+1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** > **Shared Paths** in the visual editor, or add it to the YAML like this:  
+  
+  ```yaml
+      - stage:
+        spec:
+          sharedPaths:
+            - /shared/scan_results
+  ```
+   
 
 2. Publish your scan results to a data file in [SARIF 2.1.0 ](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) format.  
 
    You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. 
 
-3. Copy the SARIF file to the `/shared/customer_artifacts` folder. 
+3. Copy the SARIF file to the `/shared/scan_results` folder. 
 
 3. Add an ingestion step after the Run step and configure it as follows.
 
@@ -51,11 +57,9 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
          log:
          level: debug
       ingestion:
-         file: /path/of/file.sarif
+         file: /shared/scan_results/gitleaks.sarif
    description: gitleaks step
 ```
-
-
 
 ## Example workflows for ingesting SARIF data into STO
 

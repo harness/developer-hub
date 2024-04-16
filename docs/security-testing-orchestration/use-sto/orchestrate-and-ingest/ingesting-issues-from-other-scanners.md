@@ -1,6 +1,6 @@
 ---
 title: Ingest scan results from unsupported scanners into Harness STO
-description: How to ingest data from scan tools that currently have no integration in STO.
+description: Ingest results from scanners that don't support SARIF.
 sidebar_label: Ingest from unsupported scanners
 sidebar_position: 100
 helpdocs_topic_id: ymkcm5lypf
@@ -21,9 +21,14 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
 
 ### Required steps to ingest data from unsupported scanners into STO
 
-1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
- 
-   ![](../static/ingesting-issues-from-other-scanners-00.png)
+1. Add a shared path such as `/shared/scan_results` to the stage. Go to **Overview** > **Shared Paths** in the visual editor, or add it to the YAML like this:  
+  
+   ```yaml
+         - stage:
+         spec:
+            sharedPaths:
+               - /shared/scan_results
+   ```
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
   You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
@@ -194,9 +199,9 @@ The following keywords are reserved and cannot be used in your JSON file:
 
 The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security Tests stage with two steps:
 
-1. A Run step that generates a JSON data file `/shared/customer_artifacts/example.json` in the format described above.
+1. A Run step that generates a JSON data file `/shared/scan_results/example.json` in the format described above.
 
-2. A Custom Ingest step that ingests and normalizes the data from `/shared/customer_artifacts/example.json`. 
+2. A Custom Ingest step that ingests and normalizes the data from `/shared/scan_results/example.json`. 
 
 ![](../static/custom-json-ingest-pipeline-example.png)
 
@@ -223,7 +228,7 @@ pipeline:
                     image: alpine:latest
                     shell: Sh
                     command: |-
-                      cat <<EOF >> /shared/customer_artifacts/example.json
+                      cat <<EOF >> /shared/scan_results/example.json
                       {  
                          "meta":{  
                             "key":[  
@@ -252,8 +257,8 @@ pipeline:
                          ]  
                       }
                       EOF
-                      ls /shared/customer_artifacts
-                      cat /shared/customer_artifacts/example.json
+                      ls /shared/scan_results
+                      cat /shared/scan_results/example.json
               - step:
                   type: CustomIngest
                   name: ingest-scan-data
@@ -269,9 +274,9 @@ pipeline:
                       log:
                         level: info
                     ingestion:
-                      file: /shared/customer_artifacts/example.json
+                      file: /shared/scan_results/example.json
           sharedPaths:
-            - /shared/customer_artifacts
+            - /shared/scan_results
           caching:
             enabled: false
             paths: []

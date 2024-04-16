@@ -1,6 +1,6 @@
 ---
 title: Set up Grype in air-gapped environments
-description: Set up Grype in air-gapped environments
+description: Set up Grype in air-gapped environments.
 sidebar_label: Set up Grype in air-gapped environments
 sidebar_position: 20
 ---

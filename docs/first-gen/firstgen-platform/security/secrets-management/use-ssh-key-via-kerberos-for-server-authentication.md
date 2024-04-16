@@ -50,11 +50,11 @@ Select one of the following options:
 
 * **Key Tab File Path (on Delegate)** - You can choose this option to generate a new TGT from the KDC every time you authenticate with the service. This ensures that the TGT is always valid and not expired when you try to authenticate.
 * **Password** - Select a password for TGT generation. Make sure you use a Harness Encrypted Text secret to save the password and refer to it using this option. Either select an existing secret from the drop down list or create a new one by clicking **+ Create Encrypted Text**. For more information on creating Encrypted Text, see [Harness Encrypted Text secret](use-encrypted-text-secrets.md).
-* **None** - Select this option to skip TGT Generation. If you select this option, you must ensure that the TGT that is on the server running the Harness delegate is always available.
+* **None** - Select this option to skip TGT Generation. If you select this option, you must ensure that the TGT that is on the server running the Harness Delegate is always available.
 
 ### Step 6: Keytab File Path
 
-This field is displayed if you select **Key Tab File Path** for **TGT Generation**. Enter the file path to the keytab file on the server running the Harness delegate. For example, **/home/johndoe/a.keytab**. The file is not uploaded to Harness.
+This field is displayed if you select **Key Tab File Path** for **TGT Generation**. Enter the file path to the keytab file on the server running the Harness Delegate. For example, **/home/johndoe/a.keytab**. The file is not uploaded to Harness.
 
 To use the Kerberos SSH connection to connect to a target host, you select it in **SSH Connection Attributes** while specifying the target host in the Service Infrastructure/ [Infrastructure Definition](../../../continuous-delivery/model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) settings of an environment.
 

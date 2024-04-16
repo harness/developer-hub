@@ -5,15 +5,11 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, STOList } from "./data/securityTestingOrchestrationData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function STO() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
-    // <Layout title="STO" description="STO">
-    //   <ul className={styles.breadCrumb}>
-    //     <li>Get Started</li>
-    //     <li>Orchestrate security tests</li>
-    //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
         <h3>Scan your code, containers and live apps</h3>
@@ -66,19 +62,32 @@ export default function STO() {
               products are ever released.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnSTO)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/security-testing-orchestration">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnSTO
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://harness.io/products/security-testing-orchestration">
                 <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
-          <div>
-            <img src={`${baseUrl}img/sto.svg`} />
+
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/sto.svg`
+                  : `${baseUrl}img/STO_Dark.svg`
+              }
+            />
           </div>
         </div>
       </div>

@@ -6,14 +6,20 @@ sidebar_position: 70
 
 Trellis Scores are a proprietary scoring mechanism from SEI that help you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor, allowing for tailored assessments based on individual profiles.
 
+![](./static/trellis-report.png)
+
 ## Quality
 
 Quality is defined by two metrics: Percentage of rework and percentage of legacy rework.
 
-* **Percentage of Rework:** This measure reflects changes to recently-written code in the past 30 days. A lower percentage of change is associated with a better Trellis Score. Industry standards recommend that an acceptable percentage is between 7.5 and 37.5 percent.
-* **Percentage of Legacy Rework:** This measure reflects changes to old code and changes added more than 30 days ago. A lower percentage of change is associated with a better Trellis Score. Industry standards recommend that an acceptable percentage is between between 7.5 and 37.5 percent.
+* **Percentage of Rework:** This measure reflects changes to the proportion of the codebase that has undergone recent modifications A lower percentage of change is associated with a better Trellis Score. Industry standards recommend that an acceptable percentage is between 7.5 and 37.5 percent.
+
+* **Percentage of Legacy Rework:** This measure reflects the extent of modifications done on older segments of the codebase. A lower percentage of change is associated with a better Trellis Score. Industry standards recommend that an acceptable percentage is between between 7.5 and 37.5 percent.
 
 By default, all changes to code written in the last 30 days are considered rework.
+
+
+![](./static/trellis-quality.png)
 
 :::info What is rework?
 
@@ -25,9 +31,9 @@ Rework is defined as changes to existing code, regardless of the age of the code
 
 :::info
 
-The Impact factor depends on the [Investment profile](../sei-profiles/investment-profile.md). The metrics that contribute to the Impact factor require categories from the Investment profile as input parameters.
+The Impact factor depends on the [Investment profile](/docs/software-engineering-insights/sei-profiles/investment-profile). The metrics that contribute to the Impact factor require categories from the Investment profile as input parameters.
 
-To configure this, go to [Configure the Impact Factor in a Trellis profile](../sei-profiles/trellis-profile.md#enable-the-impact-factor).
+To configure this, go to [Configure the Impact Factor in a Trellis profile](/docs/software-engineering-insights/sei-profiles/trellis-profile#enable-the-impact-factor).
 
 :::
 
@@ -35,6 +41,8 @@ Impact is defined by two metrics: High impact bugs worked on per month and high 
 
 * **High Impact bugs worked on per month:** This measure represents the number of resolved, high impact bug tickets that the developer was assigned to within the selected time frame. The metric value in the report is normalized to show the average number of resolved, high impact bug tickets per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of bugs worked on per month is between 2 and 3.
 * **High Impact stories worked on per month:** This measure represents the number of resolved, high impact story tickets that the developer was assigned to within the selected time frame. The metric value in the report is normalized to show the average number of resolved, high impact story tickets per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 3 and 7.5.
+
+![](./static/trellis-impact2.png)
 
 ## Volume
 
@@ -47,6 +55,8 @@ Volume measures the quantity of code that the developer is working on. The defau
 * **Number of Stories worked on per month:** This is the number of resolved story tickets assigned to a developer within the selected time frame. The metric value in the report is normalized to show the average number of resolved story tickets assigned to a developer per month. If more than one developer worked on the same ticket, developers are credited proportionately. The average number of stories worked on per month is between 5 and 7.
 * **Number of Story Points worked on per month:** This is the number of resolved story points assigned to a developer within the selected time frame. The metric value in the report is normalized to show the average number of resolved story points assigned to a developer per month. If more than one developer worked on the same ticket, developers are credited proportionately.
 
+![](./static/trellis-volume.png)
+
 ## Speed
 
 Speed measures the pace at which developers are writing and submitting code. Speed is determined by the following three metrics:
@@ -54,6 +64,8 @@ Speed measures the pace at which developers are writing and submitting code. Spe
 * **Average Coding Days per Week:** A coding day is any day where a developer commits code. This metric is calculated by dividing the number of coding days by a specified number of weeks. This metric quantifies how consistently developers actively contribute code to the codebase. Higher values indicate frequent code commits, which can indicate faster development. The recommended goal for coding days per week is 3.2 days.
 * **Average PR Cycle Time:** This represents the time elapsed from PR creation to closing. The average PR cycle time should be less than 7 days. This metric is calculated as the elapsed time between PR creation and closure.
 * **Average Time Spent Working On Issues:** This is the average time spent on each issue resolved in the last 30 days or any specified time period. This typically doesn't include time spent in the **Done** status. Time is counted only when the developer is assigned to an issue. The average time spent working on issues should be between 3 and 5 days. This metric is calculated by dividing the total time by the total number of issues recorded in the period.
+
+![](./static/trellis-speed.png)
 
 :::warning
 
@@ -68,6 +80,8 @@ Proficiency measures how many projects are currently being worked on. It is base
 * **Technical Breadth:** This is the number of unique files that were worked on in the last 30 days. It is recommended that technical breadth average between 2 and 3 unique files per month.
 * **Repo Breadth:** This is the number of unique repositories with successful code commits. It is recommended that a developer works on between 2 and 3 unique repos per month.
 
+![](./static/trellis-proficiency.png)
+
 ## Leadership and Collaboration
 
 Leadership and collaboration measures developer teamwork and contribution to peer reviews. This is calculated from the following four metrics:
@@ -77,13 +91,17 @@ Leadership and collaboration measures developer teamwork and contribution to pee
 * **Average Response Time for PR approvals:** This is the average time taken to approve another developer's PR. The industry standard for an PR approval time is between 0.75 and 2 days.
 * **Average Response Time for PR comments:** This is the average time taken for a developer to add review comments on a PR. The industry standard for a responding to a PR comment is between 0.75 and 1.5 days.
 
+![](./static/trellis-collaboration.png)
+
 ## Modify factors and weights
 
-A [Trellis profile](../sei-profiles/trellis-profile.md) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
+A [Trellis profile](/docs/software-engineering-insights/sei-profiles/trellis-profile) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
 
 In the **Factors and Weights** section of your Trellis profile, you can enable and disable individual [factors] to include or exclude them from your Trellis Score calculation.
 
 You can set benchmarks or thresholds for each factor. Benchmarks define target performance levels that need to be met or exceeded for a positive score.
+
+![](./static/trellis-factors.png)
 
 You can also adjust the weight of each factor. Assign a low weight (1-5) to make less important factors have a lower impact on your score. Assign a higher weight (5-10) to make more important factors have a higher impact on your score.
 
@@ -94,9 +112,9 @@ Weights are relative. For example, if all factors are weighted 5, then all facto
 Add these widgets to your Insights to analyze Trellis Scores.
 
 * **Trellis Score Report:** Trellis Scores by developer.
-* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](../sei-projects-and-collections/manage-collections.md).
+* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 * **Individual Raw Stats:** A table of base values that contribute to Trellis Scores.
-* **Raw Stats by Collection:** Base values organized by [Collection](../sei-projects-and-collections/manage-collections.md).
+* **Raw Stats by Collection:** Base values organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
 
 ### Raw stats
 
@@ -115,12 +133,8 @@ By default, the **Individual Raw Stats** widget shows the following raw, pre-cal
 
 You can edit the widget to show different values (add/remove columns) or apply filtering.
 
-<figure>
+![](./static/raw-stats.png)
 
-![](./static/trellis-score-raw-stats.png)
-
-<figcaption>Individual Raw Stats</figcaption>
-</figure>
 
 You can use the **Download** icon to download the raw stats report.
 
@@ -139,8 +153,8 @@ You can also limit access to Trellis Scores. The support for Trellis Scores is c
 
 This allows users to associate profiles with specific Projects and Collections within an organization. This helps in managing and applying profiles effectively.
 
-* Projects: Contributors can select a project to view available Collections and assign Trellis profiles to specific projects. This feature helps in organizing and categorizing teams under different projects, allowing for a more granular management of Trellis profiles.
-* Collections: Contributors can select Collections that may apply a Trellis profile. By associating Collection with Trellis profiles, contributors can ensure that the right profiles are applied to the appropriate teams or units within the organization. This facilitates customized score calculations.
+* **Projects:** Contributors can select a project to view available Collections and assign Trellis profiles to specific projects. This feature helps in organizing and categorizing teams under different projects, allowing for a more granular management of Trellis profiles.
+* **Collections:** Contributors can select Collections that may apply a Trellis profile. By associating Collection with Trellis profiles, contributors can ensure that the right profiles are applied to the appropriate teams or units within the organization. This facilitates customized score calculations.
 
 #### Exclusions
 

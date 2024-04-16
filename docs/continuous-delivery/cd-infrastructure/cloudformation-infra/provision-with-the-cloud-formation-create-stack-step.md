@@ -36,11 +36,11 @@ In **Name**, enter a name for the step, for example, **C****reate EC2 Instance
 
 Harness will create an [Entity Id](/docs/platform/references/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
 
-See [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md).
+See [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md).
 
 ### Timeout
 
-In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
 ### Provisioner Identifier
 
@@ -112,7 +112,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -177,7 +177,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Option: CloudFormation Parameters Overrides
 
@@ -236,8 +236,8 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

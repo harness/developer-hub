@@ -39,7 +39,7 @@ Custom artifact is also supported in **Sidecar**. In **Specify Artifact Reposito
 
 In **Version**, enter the version of the artifact you want to deploy.
 
-You can set **Version** as a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs), and then enter the version when you run the pipeline that deploys this service. You can also use an [expression](/docs/platform/variables-and-expressions/harness-variables#expression-guidelines-and-boundaries) that is evaualted at runtime.
+You can set **Version** as a [runtime input](/docs/platform/variables-and-expressions/runtime-inputs), and then enter the version when you run the pipeline that deploys this service. You can also use an [expression](/docs/platform/variables-and-expressions/harness-variables) that is evaluated at runtime.
 
 ### Provide a script to dynamically pull the artifact location
 
@@ -235,7 +235,7 @@ namespace: <+infra.namespace>
 
 For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
-[Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
+[Harness Variables and Expressions](/docs/platform/variables-and-expressions/harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
 
 ## Shell script step
 

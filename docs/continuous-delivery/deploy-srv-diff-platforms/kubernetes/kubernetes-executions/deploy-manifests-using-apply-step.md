@@ -147,7 +147,7 @@ Here are the options:
 
 * **File Path setting:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path or expression in the step.
-	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input sets and overlays](/docs/platform/Pipelines/input-sets).
+	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input sets and overlays](/docs/platform/pipelines/input-sets).
 * **File path field:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path in the step.
 	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](/docs/platform/pipelines/add-a-stage/).
@@ -178,7 +178,7 @@ Kubernetes command flags are command-line options that can be passed to a Kubern
 
 You can add command flags in your Apply step and Harness will run them after the `kubectl apply -f <filename>` command it runs to deploy your manifest.
 
-The availability of specific command flags is based on the version of the kubectl binary that is installed on the Harness delegate performing deployment. For example, `kubectl apply -f <filename> --server-side` is only available on kubectl version 1.22. 
+The availability of specific command flags is based on the version of the kubectl binary that is installed on the Harness Delegate performing deployment. For example, `kubectl apply -f <filename> --server-side` is only available on kubectl version 1.22. 
 
 To use command flags, do the following:
 

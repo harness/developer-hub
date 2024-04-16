@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
-If Microsoft Entra ID is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [Microsoft Entra ID's SCIM integration](https://learn.microsoft.com/en-us/azure/active-directory/architecture/sync-scim) with Harness enables Microsoft Entra ID to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If Microsoft Entra ID is your identity provider, you can efficiently provision and manage users in your Harness account. Using [Microsoft Entra ID's SCIM integration](https://learn.microsoft.com/en-us/azure/active-directory/architecture/sync-scim) with Harness enables Microsoft Entra ID to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
 This topic describes how to use an Microsoft Entra ID SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both Microsoft Entra ID and Harness.
 
@@ -19,7 +19,7 @@ This topic describes how to use an Microsoft Entra ID SCIM integration for autom
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../get-started/key-concepts.md).
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your Microsoft Entra ID account, and you must be an **Account Admin** in Harness.
@@ -30,14 +30,14 @@ You need a Harness [API key and unexpired token](/docs/platform/automation/api/a
 
 In Microsoft Entra ID, add Harness to your list of managed SaaS applications from the Microsoft Entra ID [Application Gallery](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/overview-application-gallery).
 
-1. In your [Azure portal](https://portal.azure.com/), under **Azure services**, select **Azure Active Directory**.
+1. In your [Azure portal](https://portal.azure.com/), under **Azure services**, select **Microsoft Entra ID (formerly Active Directory)**.
 2. Select **Enterprise applications**, and then select **All applications**.
 3. Select **New application**.
 4. Search for `Harness`, select **Harness** in the results list, and then select **Add** to add the application to your list of managed SaaS apps in Microsoft Entra ID.
 
 ## Enable Microsoft Entra ID provisioning for Harness
 
-1. In your Azure portal, under **Azure services**, select **Azure Active Directory**.
+1. In your Azure portal, under **Azure services**, select **Microsoft Entra ID (formerly Active Directory)**.
 2. Select **Enterprise Applications**, and then select **All applications**.
 3. Select the **Harness** app.
 4. Select **Provisioning**.
@@ -60,12 +60,12 @@ In Microsoft Entra ID, add Harness to your list of managed SaaS applications fro
 8. Select **Save**.
 9. Under **Mappings**:
 
-   1. Enable **Provision Azure Active Directory Groups** and **Provision Azure Active Directory Users**.
+   1. Enable **Provision Microsoft Entra ID (formerly Active Directory) Groups** and **Provision Microsoft Entra ID (formerly Active Directory) Users**.
 
       ![](./static/provision-users-and-groups-using-azure-ad-scim-35.png)
 
-   2. Select **Provision Azure Active Directory Users** and review the user **Attribute Mappings**. These user attributes are synchronized from Microsoft Entra ID to Harness. Attributes marked as **Matching** are used to match Harness user accounts with Microsoft Entra ID user accounts when user attributes need to be updated. Make any changes as necessary.
-   3. Exit the user attribute mappings, and select **Provision Azure Active Directory Groups**.
+   2. Select **Provision Microsoft Entra ID (formerly Active Directory) Users** and review the user **Attribute Mappings**. These user attributes are synchronized from Microsoft Entra ID to Harness. Attributes marked as **Matching** are used to match Harness user accounts with Microsoft Entra ID user accounts when user attributes need to be updated. Make any changes as necessary.
+   3. Exit the user attribute mappings, and select **Provision Microsoft Entra ID (formerly Active Directory) Groups**.
    4. Review the group **Attribute Mappings**. These group attributes are synchronized from Microsoft Entra ID to Harness. Attributes marked as **Matching** are used to match Harness user groups with Microsoft Entra ID user groups when group attributes need to be updated. Make any changes as necessary.
 
 11. Under **Settings**, switch **Provisioning Status** to **On** to enable the Microsoft Entra ID provisioning service for Harness.

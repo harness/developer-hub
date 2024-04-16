@@ -3,11 +3,6 @@ title: Manage Harness environments and infrastructures from Git
 description: Store and share environments and infrastructures in your Git repos.
 sidebar_position: 11
 ---
-:::info note
-Currently, Git Experience support for environments and infrastructure definition is behind the feature flags `CDS_ENV_GITX` and 
-`CDS_INFRA_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 When you create a new Harness environment or infrastructure definition, you can store it in one of the following ways:
 
@@ -22,6 +17,14 @@ The topic explains how to use the Remote option to store a Harness environment o
 
 * Make sure you have a Git repo with at least one branch.​
 * Make sure you have a [Harness Git connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) with a Personal Access Token (PAT) for your Git account.​
+
+## Visual summary
+
+Here's a quick video of how you can manage services, environments, and infrastructue definitions through Git Experience.
+
+<!-- Video:
+https://www.youtube.com/watch?v=ZvtyLxmtHTo-->
+<DocVideo src="https://www.youtube.com/watch?v=ZvtyLxmtHTo" />
 
 ## Create a remote environment
 
@@ -41,6 +44,7 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 
     ![](./static/yaml-path.png)
 
+
 ##  Create a remote infrastructure definition
 
 1. In the remote environment, select **Infrastructure Definition**.
@@ -53,22 +57,24 @@ In **Project Settings**, select **Environments**. To learn more about creating e
 8. For the new infrastructure definition, select **More Options** (&vellip;) and then select **Edit**.
 
     ![](./static/infra-def-edit.png)
-9. Click the YAML path to view your Infrastructure Definition YAML file in your Git repo.
+   
+10. Click the YAML path to view your Infrastructure Definition YAML file in your Git repo.
 
     ![](./static/infra-def-2.png)
 
 ### Add a remote environment in a CD pipeline
 
-Adding a remote environment in a CD pipeline stage is no different than adding an inline environment.
+Adding a remote environment in a CD pipeline stage is no different from adding an inline environment.
 
 When adding a remote environment to the stage, you have the ability to choose a specific branch to determine the version of the environment you wish to utilize in your pipeline.
 
 ![](./static/env-branch-switching-remote.png)
 
-:::note
-
-If you are adding a remote service, environment, or infrastructure definition to a remote pipeline, by default the remote service, environment, or infrastructure definition will pick up the same branch as the remote pipeline.
-
+:::info note
+1. When the remote environment is linked to the pipeline, the environment branch is displayed as `__DEFAULT__`.
+`__DEFAULT__` resolves to the same branch as the pipeline, when both the environment and pipeline where it is linked are in the same repository or the main branch of the repository where the environment resides when it is different.
+2. Infrastructure definition takes the branch of the environment when both reside in the same repository.
+3. When a remote stage template containing a remote environment is linked in a Remote Pipeline, the Stage template branch is defaulted when both entities are in the same repository. If the environment is in a different repository, that repository is taken. Read more about creating [remote stage template](/docs/platform/templates/create-a-remote-stage-template.md).
 :::
 
 ## Change an inline environment to a remote environment
@@ -89,3 +95,4 @@ The same settings used when creating a remote environment appear. Configure the 
 3. Select **Move to Git**.
 
 The same settings used when creating a remote infrastructure definition appear. Configure the settings just as you would for a new remote infrastructure definition.
+

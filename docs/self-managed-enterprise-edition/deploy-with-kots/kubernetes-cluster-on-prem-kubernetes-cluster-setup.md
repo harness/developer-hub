@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-<DocsTag  backgroundColor= "#ff8ac1" text="Paid product"  textColor="#ca136c"  />
+<DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of May 31, 2023.
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**.
 
 Maintenance mode means the following:
 
@@ -23,15 +23,14 @@ Maintenance mode means the following:
 
 :::info important
 
-Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023.
-
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTs.
 :::
 
-This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://docs.replicated.com/reference/kots-cli-getting-started) for installation.
+This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://docs.replicated.com/reference/kots-cli-getting-started) for installation.
 
 To install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen**, first you install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **FirstGen**, and then you install NextGen as an application.
 
-We assume that you are very familiar with Kubernetes, and can perform the standard Kubernetes and managing configurations using [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) overlays.Installing Harness Self-Managed Enterprise Edition into an existing Kubernetes cluster is a simple process where you prepare your existing cluster and network, and use the KOTS admin tool and Kustomize to complete the installation and deploy Harness.
+We assume that you are very familiar with Kubernetes, and can perform the standard Kubernetes and managing configurations using [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) overlays. Installing Harness Self-Managed Enterprise Edition into an existing Kubernetes cluster is a simple process where you prepare your existing cluster and network, and use the KOTS admin tool and Kustomize to complete the installation and deploy Harness.
 
 ## Cluster requirements
 
@@ -132,14 +131,14 @@ For GCP, the External IP address must be [Premium Tier](https://cloud.google.com
 
 Set up DNS to resolve the domain name you want to use for Harness Self-Managed Enterprise Edition to the static IP address you reserved in the previous step.
 
-For example, the domain name **harness.abc.com** would resolve to the static IP:
+For example, the domain name **harness.abc.com** would resolve to the static IP:
 
 ```
 host harness.abc.com
 harness.abc.com has address 192.0.2.0
 ```
 
-The above DNS setup can be tested by running `host <domain_name>`.
+The above DNS setup can be tested by running `host <domain_name>`.
 
 ## Review: OpenShift clusters
 
@@ -172,7 +171,7 @@ The following steps will install KOTS from your private repository and the Harne
    --registry-password <rw-password>
    ```
 
-3. Obtain the Harness license file from your Harness Customer Success contact or email [support@harness.io](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io).
+3. Obtain the Harness license file from your Harness Customer Success contact or email [support@harness.io](https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=support@harness.io).
 4. Obtain the Harness air-gap file from Harness.
 5. Log into your cluster.
 6. Install KOTS and Harness using the following instruction:
@@ -395,6 +394,11 @@ You can change the settings later in the KOTS admin console **Config** tab:
 
 #### gRPC and load balancer settings
 
+:::info note
+gRPC settings are not required for delegate version 23.12.81803 and later.
+
+:::
+
 In **Scheme**, if you select HTTPS, the GRPC settings appear.
 
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-19.png)
@@ -483,10 +487,10 @@ To set up future versions of Harness Self-Managed Enterprise Edition, in the KOT
 
 1. Install Harness Delegate: [Delegate Installation Overview](../../first-gen/firstgen-platform/account/manage-delegates/delegate-installation-overview.md).
 
-2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager.  
+2. Set up an SMTP Collaboration Provider in Harness for email notifications from the Harness Manager.
    Ensure you open the correct port for your SMTP provider, such as [Office 365](https://support.office.com/en-us/article/server-settings-you-ll-need-from-your-email-provider-c82de912-adcc-4787-8283-45a1161f3cc3).
 
-3. [Add a Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.
+3. [Add a Secrets Manager](/docs/platform/get-started/tutorials/add-secrets-manager). By default, Harness Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.
 
 After Harness Self-Managed Enterprise Edition installation, configure a new Secret Manager (Vault, AWS, etc). You will need to open your network for the Secret Manager connection.
 
@@ -721,7 +725,7 @@ Now you can add Harness Self-Managed Enterprise Edition NextGen as a new applica
 
    ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-31.png)
 
-10. In a new browser tab, go to the following URL, replacing `<LB_URL>` with the URL you entered in the **Application URL** setting in the KOTS admin console:
+10. In a new browser tab, go to the following URL, replacing `<LB_URL>` with the URL you entered in the **Application URL** setting in the KOTS admin console:
 
 `<LB_URL>/auth/#/signup`
 
@@ -737,9 +741,8 @@ Sign up with a new account and then sign in.
 
 ![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-33.png)
 
-If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../get-started/key-concepts.md).
+If you are familiar with Harness, you can skip [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
-Try the [Tutorials and quickstarts](../../get-started/tutorials).
 
 ## Updating Harness NextGen
 

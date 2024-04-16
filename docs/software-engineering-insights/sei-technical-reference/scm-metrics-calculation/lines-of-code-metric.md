@@ -1,6 +1,6 @@
 ---
 title: Lines of Code
-description: How is Lines of Code metric calculqted on SEI?
+description: How is Lines of Code metric calculated on SEI?
 sidebar_label: Lines of Code
 sidebar_position: 20
 ---
@@ -27,7 +27,7 @@ The metric value in the trellis report is normalized to show the average number 
 
 In the Raw Stats report, the metric displays the total number of lines of code contributed by the engineer within the selected time frame.
 
-To learn more, go to [Trellis Scores](../../sei-metrics-and-reports/trellis-score.md).
+To learn more, go to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
 
 ### SCM Reports
 
@@ -37,7 +37,7 @@ The Lines of Code metric in SCM reports provides a more granular representation 
 * **Lines of Code Deleted:** It measures the lines of code a developer deletes for an associated pull request.
 * **Total Lines or Lines of Code Modified or Changed:** It measures the total lines of code changed as a result of the addition or deletion of lines for an associated pull request or commit in the respective report.
 
-To learn more, go to [SCM Reports](../../sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md).
+To learn more, go to [SCM Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 ## Scope of Measurement across different platforms
 

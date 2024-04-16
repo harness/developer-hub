@@ -30,7 +30,7 @@ This plugin does not require a delegate proxy to be set up because GitHub is pub
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
+This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then you could find the following YAML code auto-ingested in the **CI/CD** section:
 
 ```yaml
 - name: ci-cd

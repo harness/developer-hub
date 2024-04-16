@@ -8,6 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+<CTABanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/university/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ## Background services, caches, and shared volumes
@@ -72,7 +81,7 @@ You can use [step groups](./group-ci-steps-using-step-groups.md) to organize com
 Expressions and runtime inputs make your pipelines more dynamic.
 
 * [Variables and expressions](/docs/category/variables-and-expressions/)
-* [Stage variables](/docs/platform/Pipelines/add-a-stage#stage-variables)
+* [Stage variables](/docs/platform/pipelines/add-a-stage#stage-variables)
 * [Fixed values, runtime inputs, and expressions](/docs/platform/variables-and-expressions/runtime-inputs)
 * [CI environment variables reference](./ci-env-var.md)
 * [Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
@@ -88,16 +97,16 @@ Use [templates](/docs/category/templates/) to share and utilize pre-build pipeli
 
 Use these strategies to automate and manage build sequences.
 
-* [Queue Intelligence](./queue-intelligence.md)
+* [Queue Intelligence](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)
 * [Run specific stages in a pipeline](/docs/platform/pipelines/run-specific-stage-in-pipeline/)
-* [Define failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
+* [Define failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Automated triggers](/docs/category/triggers/)
 
 There are many ways you can incorporate third party tools and services in your CI pipelines, such as GitHub Actions, Slack notifications, and Jira issue updates.
 
 * [Explore plugins](../use-drone-plugins/explore-ci-plugins.md)
-* [Bring-your-own Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager)
+* [Bring-your-own Secrets Manager](/docs/platform/get-started/tutorials/add-secrets-manager)
 * [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support)
 * [Send notifications](/docs/category/notifications)
 * [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)
@@ -106,4 +115,4 @@ There are many ways you can incorporate third party tools and services in your C
 
 Check your infrastructure monitoring tools for potential bottlenecks during the time windows when your builds are running. Increasing memory or CPU capacity in your Build steps might help speed up your builds.
 
-You can also [enforce pipeline concurrency limits](docs/platform/pipelines/w_pipeline-steps-reference/pipeline-settings.md).
+You can also [enforce pipeline concurrency limits](/docs/platform/pipelines/pipeline-settings.md).

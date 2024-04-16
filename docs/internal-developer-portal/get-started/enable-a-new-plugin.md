@@ -1,16 +1,14 @@
 ---
 title: Enable a plugin
 description: Learn how to enable a plugin in Harness IDP and use it in your software catalog.
-sidebar_position: 50
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 7
 redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-a-new-plugin
 ---
 
-You can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
+Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
 **Prerequisites**
 
@@ -45,7 +43,7 @@ All administrative configurations, such as plugins, layouts, connectors, configu
 
 2. The **Plugins** navigation option directs the user to the plugins list page, which showcases a collection of curated plugins. On this page, there are distinct sections dedicated to both enabled and disabled plugins, providing a clear differentiation between the two categories.
 
-![](static/att_4_for_21398290667.png)
+![](static/plugins-screenshot.png)
 
 3. Select the desired plugin card. 
 The **Plugin details** page is displayed. The page provides information such as the plugin's name, details, layout, and configurations. It also includes an option to add a plugin secret. The plugin's layout section is read-only and displays the exported cards, tabs, or pages provided by the plugin.

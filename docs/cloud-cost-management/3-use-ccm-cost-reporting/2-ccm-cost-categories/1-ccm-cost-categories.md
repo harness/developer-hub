@@ -57,6 +57,11 @@ The new cost category appears.
 
 ![](./static/cost-category-builder-1.png)
 
+
+:::info
+You can create a maximum of 25 cost categories.
+:::
+
 ### Create cost buckets
 
 1. Select **New Cost Bucket**.
@@ -64,7 +69,7 @@ The new cost category appears.
 3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
    Add a new row for each rule until the cost bucket correctly includes all costs incurred. These rules are defined using the OR operator. You can add another cost category as a rule when defining your cost buckets.
 
-:::important important
+:::warning
 
 - You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
 
@@ -75,8 +80,9 @@ To illustrate, consider the scenario of creating a cost category, `CC1`, which i
 
 Consider an example where you have a cost category named `CC1`, which includes a cost bucket called `CB1`. Additionally, you have another cost category named `CC2`, which includes a cost bucket called `CB2`. When defining the cost bucket rules, it is essential to avoid adding `CC2` as a rule in `CC1` and adding `CC1` as a rule in `CC2`. Similarly, it is not allowed to create a nested structure where CC1 nests CC2, which in turn nests CC3, then CC4, and finally circles back to CC1.
 
-- You can nest cost categories to a maximum of 20 levels.
-  :::
+- You can nest cost categories to a maximum of 5 levels.
+
+:::
 
 Typically, you want to create multiple cost buckets in the cost category. For example, if the Cost Category is for departments, you would create a cost bucket for each department such as finance, operations, facilities, and so on.
 
@@ -90,7 +96,7 @@ The AND and OR operators are used to filter data based on more than one conditio
 
   ![](./static/use-ccm-cost-categories-04.png)
 
-:::important note
+:::info
 You can create a maximum of 1000 cost buckets.
 :::
 
@@ -98,7 +104,7 @@ You can create a maximum of 1000 cost buckets.
 
 You can copy cost buckets from one cost category to multiple cost categories simultaneously. You have the flexibility to choose any number of buckets for copying. Upon selection, a popup prompt appears, allowing you to specify the target cost categories for copying the selected buckets. Upon successful completion, you receive a success notification along with relevant details.
 
-:::important note
+:::info
 While copying, you may encounter issues if the destination cost category already has a bucket with the same name as the copied one. In such cases, you can address the conflict by renaming the bucket before attempting the copy operation again.
 :::
 
@@ -127,7 +133,7 @@ To copy cost buckets from one cost category to another, perform the following st
 
 ![](./static/cost-category-builder-2.png)
 
-:::important note
+:::info
 You can create a maximum of 10 shared cost buckets.
 :::
 

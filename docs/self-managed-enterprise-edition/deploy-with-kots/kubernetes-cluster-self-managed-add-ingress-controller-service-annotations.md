@@ -10,19 +10,18 @@ helpdocs_is_published: true
 
 :::info note
 
-This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of May 31, 2023. 
+This is an End of Life (EOL) notice for the KOTS installation method. This method is in maintenance mode as of **May 31, 2023**.
 
 Maintenance mode means the following:
 
 - No new features will be added.
-- Security and bug fixes will continue to be made. 
+- Security and bug fixes will continue to be made.
 
 :::
 
 :::info important
 
-Harness will no longer support KOTS based installations and upgrades beginning December 1, 2023. Harness customer support will not take any incoming questions on KOTs after end of business PST on December 1, 2023. 
-
+Harness ended support of KOTS-based installations and upgrades as of **December 1, 2023**. Harness customer support will no longer take any incoming questions on KOTS.
 :::
 
 You can customize the behavior of the Nginx Ingress controller with annotations. This topic explains how to use the KOTS admin tool to configure the Ingress controller with annotations.
@@ -45,7 +44,7 @@ You can customize the behavior of the Nginx Ingress controller with annotations.
 
     ![](./static/kubernetes-cluster-self-managed-add-ingress-controller-service-annotations-03.png)
 
-5. Type your annotations into the text area. 
+5. Type your annotations into the text area.
 
     For more information, go to [NGINX Ingress Controller Annotations](https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/) and [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/) in Kubernetes.io.
 

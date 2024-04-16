@@ -60,7 +60,7 @@ async function docsPluginEnhanced(context, options) {
           : undefined,
         copyright: copyright,
       });
-   
+
       function toFeedAuthor(author) {
         return { name: author.name, link: author.url, email: author.email };
       }
@@ -119,6 +119,7 @@ async function docsPluginEnhanced(context, options) {
       ).then((items) =>
         items.forEach((item) => {
           feed.addItem(item);
+
           const feedModule = new Feed({
             id: item.id,
             title: item.title,
@@ -136,14 +137,28 @@ async function docsPluginEnhanced(context, options) {
             0,
             rssPath.lastIndexOf("/") + 1
           );
-          fs.outputFile(
-            path.join(outDir, rssBasePath, item.id, "rss.xml"),
-            feedModule.rss2()
-          );
+          // console.log("item", item.id);
+          if (item.id == "index") {
+            fs.writeFileSync(
+              path.join(outDir, rssBasePath, "rss.xml"),
+              feedModule.rss2()
+            );
+            return;
+          } else {
+            fs.writeFileSync(
+              path.join(outDir, rssBasePath, item.id, "rss.xml"),
+              feedModule.rss2()
+            );
+          }
         })
       );
-
-      fs.outputFile(path.join(outDir, rssPath), feed.rss2());
+      // console.log(path.join(outDir, rssPath));
+      // console.log({ feed: feed.rss2() });
+      try {
+        fs.writeFileSync(path.join(outDir, rssPath), feed.rss2());
+      } catch (err) {
+        console.error(err);
+      }
     },
   };
 }

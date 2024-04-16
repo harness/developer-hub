@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to start executions using the `StartExecution` Harness API.
 
-You can start a Workflow and a Pipeline using APIs. For more information, see [Trigger Workflows or Pipelines Using GraphQL API](trigger-workflow-or-a-pipeline-using-api.md) and [Harness Blog Post](https://community.harness.io/t/deployment-api-is-live/419). The API access is tied to an [API Key](../../security/access-management-howtos/api-keys.md) created in the Access Management section in Continuous Security.
+You can start a Workflow and a Pipeline using APIs. For more information, see [Trigger Workflows or Pipelines Using GraphQL API](trigger-workflow-or-a-pipeline-using-api.md). The API access is tied to an [API Key](../../security/access-management-howtos/api-keys.md) created in the Access Management section in Continuous Security.
 
 ## Use Cases
 

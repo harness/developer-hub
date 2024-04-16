@@ -76,7 +76,7 @@ Next we need to install the CF CLI on the Delegate so it can perform operations 
 
 The host running the Harness Delegate must run the CF CLI in order to execute the required commands.
 
-You can follow the steps in [Installing the cf CLI](https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html) from Pivotal to install the CLI, or you can use a Harness Delegate Profile to install the CLI, described below.
+You can follow the steps in [Installing the cf CLI](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/install-go-cli.html) from Pivotal to install the CLI, or you can use a Harness Delegate Profile to install the CLI, described below.
 
 1. In Harness, navigate to the Harness Delegates page if you are not already there.
 2. Click **Manage Delegate Profiles**, and then click **Add Delegate Profile**.
@@ -117,7 +117,7 @@ Next, we can use the Delegate to set up Harness' connections to TAS and Artifact
 Harness integrates with many different types of repositories and providers. For this tutorial, you will connect to your TAS account.
 
 :::note
-The TAS user account you use must have **Admin**, **Org Manager**, or **Space Manager** role. The user account must be able to update spaces, orgs, and applications. For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Pivotal.
+The TAS user account you use must have **Admin**, **Org Manager**, or **Space Manager** role. The user account must be able to update spaces, orgs, and applications. For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/roles.html) from VMWare Tanzu.
 :::
 
 1. In **Setup**, click **Cloud Providers**.

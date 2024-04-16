@@ -1,6 +1,6 @@
 ---
 title: Gitleaks scanner reference for STO
-description: Repository scans with Gitleaks
+description: Scan code repositories with Gitleaks.
 sidebar_label: Gitleaks scanner reference
 sidebar_position: 200
 
@@ -35,12 +35,15 @@ The recommended workflow is to add a GitLeaks step to a Security Tests or CI Bui
 ### Scan Mode
 
 
-import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/scan/_type.md';
+
+import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
+
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 
-<StoSettingScanMode />
+
+<!-- StoSettingScanMode / -->
 <StoSettingScanModeIngest />
 <StoSettingScanModeOrch /> 
 
@@ -51,7 +54,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 ### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -60,49 +63,39 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 ### Target
 
 
-<!-- ============================================================================= -->
-<a name="target-type"></a>
-
 #### Type
 
-
-import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-
-
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
 
-<!-- ============================================================================= -->
-<a name="target-name"></a>
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
-
-<!-- ============================================================================= -->
-<a name="target-variant"></a>
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
-<!-- ============================================================================= -->
-<a name="target-workspace"></a>
 
 #### Workspace (_repository_)
 
-
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-
+import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -111,7 +104,8 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 ### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+
 
 
 <StoSettingIngestionFile  />
@@ -119,44 +113,46 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 
 
-### Log Level, CLI flags, and Fail on Severity
+### Log Level
 
-<a name="log-level"></a>
-
-
-#### Log Level
-
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
+
+<!--
+
+ such as: 
+
+`--log-opts="-n 1000" --max-target-megabytes 10 --redact`
+
+With these flags, `gitleaks` limits the scan to the last 1000 commits, skips files that are larger than 10 MB, and redacts secrets from the log output. 
+
+-->
+
+Use this field to run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with additional CLI flags.
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+### Fail on Severity
 
-
-<StoSettingCliFlags />
-
-<a name="fail-on-severity"></a>
-
-
-#### Fail on Severity
-
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
+
 ### Settings
 
-You can add a `tool_args` setting to run the [Gitleaks scanner binary](https://github.com/gitleaks/gitleaks#usage) with specific command-line arguments. For example, you can redact secrets from the scanner output using `-redact`: `tool_args : --redact` 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
-You can also use `tool_args` to [speed up your Gitleaks scans](#speeding-up-gitleaks-scans).
+<StoSettingSettings />
+
+You can also use this field to [speed up your Gitleaks scans](#speeding-up-gitleaks-scans).
 
 
 ### Additional Configuration
@@ -173,10 +169,10 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 ## Speeding up Gitleaks scans
 
@@ -217,7 +213,7 @@ Here's an example of a configured Gitleaks step.
 
 The following pipeline shows an end-to-end ingestion workflow. The pipeline consists of a Build stage with two steps:
 
-1. A Run step that sends a `gitleaks detect` command to the local Gitleaks container to scan the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) specified for the pipeline. This command specifies the output file for the scan results: `/shared/customer_artifacts/sarif_simple.sarif`. 
+1. A Run step that sends a `gitleaks detect` command to the local Gitleaks container to scan the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) specified for the pipeline. This command specifies the output file for the scan results: `/shared/scan_results/sarif_simple.sarif`. 
 
 2. A Gitleaks step that auto-detects the data file type (SARIF) and then ingests and normalizes the data from the output file. 
 
@@ -251,7 +247,7 @@ pipeline:
                           image: zricethezav/gitleaks:latest
                           shell: Sh
                           command: |
-                            gitleaks detect --source /harness --report-path /shared/customer_artifacts/ingest-data.sarif --report-format 'sarif' --exit-code 0 --redact -v
+                            gitleaks detect --source /harness --report-path /shared/scan_results/ingest-data.sarif --report-format 'sarif' --exit-code 0 --redact -v
                           resources:
                             limits:
                               memory: 2048Mi
@@ -273,9 +269,9 @@ pipeline:
                             log:
                               level: info
                           ingestion:
-                            file: /shared/customer_artifacts/ingest-data.sarif
+                            file: /shared/scan_results/ingest-data.sarif
           sharedPaths:
-            - /shared/customer_artifacts
+            - /shared/scan_results
           caching:
             enabled: false
             paths: []
@@ -345,7 +341,7 @@ pipeline:
                               memory: 2048Mi
                               cpu: 2000m
           sharedPaths:
-            - /shared/customer_artifacts
+            - /shared/scan_results
           caching:
             enabled: false
             paths: []

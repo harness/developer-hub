@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/getStartedData";
+import { docsCards } from "./data/getStartedData";
 
 export default function gs() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -18,10 +18,10 @@ export default function gs() {
             <h1>Get Started</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials">
+            <Link href="/kb">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes">
@@ -41,15 +41,6 @@ export default function gs() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
-        <>
-          <div className={styles.sectionDivider}></div>
-          <div className={styles.subSection}>
-            <h3>Featured Tutorials</h3>
-            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-          </div>
-        </>
-      )}
     </div>
     // </Layout>
   );

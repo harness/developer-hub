@@ -28,8 +28,8 @@ import TabItem from '@theme/TabItem';
   <TabItem value="cloud" label="Cloud" default>
 
 
-1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Integrations** under **Data Settings**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
+2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, and locate the **Bitbucket Cloud** integration, and select **Install**
 
    To integrate with the on-premises offering, Bitbucket Data Center, install the **Bitbucket Enterprise** integration and use an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
@@ -46,8 +46,6 @@ import TabItem from '@theme/TabItem';
   <TabItem value="satellite" label="Satellite">
 
 The Bitbucket Cloud integration does not support configuration using the Ingestion Satellite.
-
-
 
 </TabItem>
 </Tabs>

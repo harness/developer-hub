@@ -26,7 +26,6 @@ Review the following:
 
 * [Harness key concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
 * [Templates overview](template.md).
-* [CI tutorials](/docs/continuous-integration/get-started/tutorials)
 
 ### Permissions
 

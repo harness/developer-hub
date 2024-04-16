@@ -68,7 +68,7 @@ The recommendations are categorized as the following:
 
 The cost-optimized recommendations are computed as the following:
 
-* The lower bound is based on the 50th percentiles of CPU samples and memory peaks.
+* The lower bound is determined by analyzing the 50th percentiles of CPU samples and memory peaks. This means that the recommendations will consider the average or median usage levels of CPU and memory resources over a given period.
 * There is no upper bound for CPU samples and memory peaks are based on the 95th percentile. It is recommended not to set the upper bound for the CPU samples, because the CPU is considered a compressible resource. If your application starts hitting the CPU limits, Kubernetes starts throttling the pods.
 * There is no limit set for the CPU. This is to avoid the throttling of the workloads when there is a spike in CPU usage. The usage of the CPU may go up in certain conditions, for example during the pod start. In such a scenario, the CPU can burst and get the required additional resources.
 * The potential monthly spend and savings are calculated based on the 90th percentiles of CPU samples and memory peaks.
@@ -87,7 +87,7 @@ The potential monthly spend and savings are calculated based on the 90th percent
 
 #### Example
 
-Let's try to understand how the recommendations are computed using the following example. The following example illustrates how the resources can be optimized using the cost-optimized recommendations:
+Let's try to understand how the recommendations are computed using the following example. The following example illustrates how the resources can be optimized using the performance-optimized recommendations:
 
 ![](./static/workload-recommendations-03.png)
 ```

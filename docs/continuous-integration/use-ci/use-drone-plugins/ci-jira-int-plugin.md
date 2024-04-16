@@ -6,7 +6,7 @@ sidebar_position: 60
 
 To stay aligned and better serve customers, development teams need to understand how a feature is being released, when Jira issues have been deployed, and whether a build has passed or failed. Jira integrations in your CI pipelines provide insights into feature development and release information in Jira by automatically updating the **Deployment** or **Build** fields in Jira.
 
-To integrate Harness CI and Jira, install the **CI Enterprise by Harness** app in your Jira instance, generate an authentication token, and then add a **Plugin** step to your pipeline. If you haven't created a Harness CI pipeline before, try one of the [CI tutorials](../../get-started/tutorials.md).
+To integrate Harness CI and Jira, install the **CI Enterprise by Harness** app in your Jira instance, generate an authentication token, and then add a **Plugin** step to your pipeline.
 
 ## Install the app
 
@@ -19,16 +19,13 @@ The **CI Enterprise by Harness** app uses the [Jira Drone plugin](https://plugin
 ## Add a Plugin step
 
 
-import Tabs3 from '@theme/Tabs';
-import TabItem3 from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
+<Tabs>
+<TabItem value="Visual" label="Visual">
 
-
-<Tabs3>
-  <TabItem3 value="Visual" label="Visual">
-
-
-1. In your CI pipeline's **Build** stage, add a [Plugin step](./plugin-step-settings-reference.md).
+1. Add a [Plugin step](./plugin-step-settings-reference.md) to the **Build** stage of your [pipeline](../prep-ci-pipeline-components.md).
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a container registry connector with Docker Hub access.
 4. In the **Image** field, enter `plugins/jira`.
@@ -43,9 +40,8 @@ import TabItem3 from '@theme/TabItem';
 | `STATE` | Optional | If included, Harness updates Jira only if builds/deployments achieve the specified status.<br/>Accepted values include: `pending`, `in_progress`, `cancelled`, `failed`, `rolled_back`, or `successful`.<br/>If omitted, Harness updates Jira for all build/deployments, regardless of status. | `successful` |
 | `LOG_LEVEL` | Optional | Either `debug` or `info`.<br/>Set to `debug` to print the response from Jira in the build logs. | `debug` |
 
-
-  </TabItem3>
-  <TabItem3 value="YAML" label="YAML" default>
+</TabItem>
+<TabItem value="YAML" label="YAML" default>
 
 The following YAML example describes a [Plugin step](./plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
 
@@ -91,10 +87,8 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 
 </details>
 
-
-  </TabItem3>
-</Tabs3>
-
+</TabItem>
+</Tabs>
 
 ## Run your pipeline
 
@@ -106,10 +100,8 @@ After the build runs, you can see updates to **Build** and **Deployment** fields
 
 <DocImage path={require('./static/ci-jira-int-ticket-details.png')} />
 
-:::info How does Harness determine which Jira issue and field to update?
+### How does Harness determine which Jira issue and field to update?
 
 The presence of the `ENVIRONMENT_NAME` setting in the **Plugin** step determines whether Harness updates the **Deployment** or **Build** field in Jira. If `ENVIRONMENT_NAME` is included, Harness updates the **Deployment** field. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field.
 
 When the pipeline runs, Harness scans for a Jira issue number, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build.
-
-:::

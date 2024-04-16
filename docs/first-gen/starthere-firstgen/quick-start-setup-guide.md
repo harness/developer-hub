@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../get-started/tutorials).
+:::warning
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/get-started/harness-ui-overview).
 :::
 
 Harness includes a built-in Tour that walks you through deploying the Harness Sample App

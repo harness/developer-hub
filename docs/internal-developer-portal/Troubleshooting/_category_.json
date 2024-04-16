@@ -1,0 +1,11 @@
+{
+    "label": "Troubleshoot & FAQs",
+    "collapsible": "true",
+    "collapsed": "true",
+    "position": 1020,
+    "link": {
+      "type": "generated-index",
+      "title": "Troubleshoot and FAQ for IDP"
+    },
+    "customProps": {}
+  }

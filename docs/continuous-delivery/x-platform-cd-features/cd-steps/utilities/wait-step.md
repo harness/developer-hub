@@ -58,7 +58,7 @@ When the Wait step is running, it provides **Mark as Success** and **Mark as Fai
 
 ![](../cd-general-steps/static/wait-step-28.png)
 
-For information on failure strategies, go to [define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+For information on failure strategies, go to [define a failure strategy on stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
 For example, let's say a Wait step has the failure strategy **Manual Intervention**. When the user selects **Mark as Failed**, they are prompted with the **Manual Intervention** options:
 
@@ -69,5 +69,5 @@ If no failure strategy is set at the step or stage level, then selecting **Mark 
 ## Important notes
 
 * The Wait step is available in approval, custom, CD, and feature flag stages.
-* The Wait step does not use a Harness delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
+* The Wait step does not use a Harness Delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
 

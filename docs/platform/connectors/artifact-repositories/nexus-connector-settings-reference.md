@@ -22,7 +22,7 @@ The user account associated with the connector must have the following permissio
 
 ![](../static/nexus-connector-settings-reference-05.png)
 
-For more information, go to the Sonatype documentation on [Managing Nexus security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+For more information, go to the Sonatype documentation on [Managing Nexus security](https://help.sonatype.com/en/managing-security.html).
 
 ## Artifact type support
 

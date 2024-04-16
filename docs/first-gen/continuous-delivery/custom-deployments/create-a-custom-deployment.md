@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness provides deployment support for all of the major platforms, listed in the[​Continuous Delivery](/docs/category/continuous-delivery) category.
+Harness provides deployment support for all of the major platforms, listed in the [Continuous Delivery](/docs/category/continuous-delivery) category.
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as WebLogic, WebSphere, or [Google Cloud functions](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598). For these situations, Harness provides a custom deployment option using Deployment Templates.
+In some cases, you might be using a platform that does not have first class support in Harness, such as WebLogic, WebSphere, or Google Cloud functions. For these situations, Harness provides a custom deployment option using Deployment Templates.
 
 Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
@@ -23,8 +23,6 @@ You can review some of the other custom options Harness provides in addition to 
 * [Custom Shell Script Approvals](../model-cd-pipeline/approvals/shell-script-ticketing-system.md)
 * [Shell Script Provisioner](../model-cd-pipeline/infrastructure-provisioner/ssh-provisioner-category/shell-script-provisioner.md)
 * [Custom Verification Overview](../continuous-verification/custom-metrics-and-logs-verification/custom-verification-overview.md)
-
-Google Cloud Function deployments using Deployment Templates are covered in [Google Cloud Functions with Harness Deployment Template](https://community.harness.io/t/google-cloud-functions-with-harness-deployment-template/598).
 
 ### Visual Summary
 

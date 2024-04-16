@@ -107,12 +107,12 @@ Perform the following steps to view the GCP Cost Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](/docs/platform/Dashboards/create-dashboards)
-* [Create Visualizations and Graphs](/docs/platform/Dashboards/create-visualizations-and-graphs)
+* [Create Dashboards](/docs/platform/dashboards/create-dashboards)
+* [Create Visualizations and Graphs](/docs/platform/dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](/docs/platform/Dashboards/use-dashboard-actions)
-* [Download Dashboard Data](/docs/platform/Dashboards/download-dashboard-data)
-* [Create Conditional Alerts](/docs/platform/Dashboards/create-conditional-alerts)
-* [Schedule and Share Dashboards](/docs/platform/Dashboards/share-dashboards)
+* [Use Dashboard Actions](/docs/platform/dashboards/use-dashboard-actions)
+* [Download Dashboard Data](/docs/platform/dashboards/download-dashboard-data)
+* [Create Conditional Alerts](/docs/platform/dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](/docs/platform/dashboards/share-dashboards)

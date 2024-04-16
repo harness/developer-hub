@@ -201,6 +201,12 @@ For On-Prem repos, if the repo URL has an extra segment before the project ID, s
 
 Select whether you want Harness to connect directly to your Bitbucket account or repo, or if you want Harness to communicate with your Bitbucket account or repo through a delegate. If you plan to use this connector with [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you must select **Connect through Harness Platform**.
 
+:::tip
+
+The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+
+:::
+
 ### Delegates Setup
 
 If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
@@ -230,7 +236,7 @@ The connection test may also fail if the token doesn't have sufficient privilege
 There are two potential causes for this:
 
 * Harness uses the pipeline's codebase connector to send status updates to BitBucket. Check the pipeline's [codebase configuration](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) to confirm that it is using your BitBucket code repo connector.
-* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.
+* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. An enhancement was [released in April 2024](/release-notes/continuous-integration) for this behavior. However, if you modified your BitBucket Cloud settings based on the original handling, you might need to edit the settings again to account for the enhancement. <!-- Prior to GA you could enable a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`, for the handling. -->
 
 ### Some API functions fail for On-Prem repos
 

@@ -17,7 +17,7 @@ The endpoint for pushing artifacts data in SEI is in the below format:
 <BASE_URL>/v1/cicd/push_artifacts
 ```
 
-Users must replace `<BASE_URL>` with the base API URL of SEI, which varies based on the regions. For example: https://eu1.api.propelo.ai or https://api.propelo.ai
+Users must replace `<BASE_URL>` with the base API URL of Harness SEI, which varies based on the environment. For example: `https://app.harness.io/gateway/sei/api/v1/` or `https://app.harness.io/gratis/sei/api/`
 
 ### Usage Instructions
 

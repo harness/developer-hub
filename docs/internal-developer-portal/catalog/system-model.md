@@ -1,15 +1,16 @@
 ---
 title: System Model
 description: Organize the various software components, services, and tools
-sidebar_position: 90
+sidebar_position: 3
 sidebar_label: System Model
 redirect_from:
   - /docs/internal-developer-portal/get-started/system-model
 ---
 
-The systems model of IDP, as inspired by the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), is an approach to managing and understanding complex software ecosystems. This model is particularly relevant in the context of DevOps and microservices architectures, where the large number of interdependent components can be overwhelming.
+The systems model of Harness Internal Developer Portal, based on the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), helps manage and understand complex software ecosystems. This model is important for DevOps and microservices, where many connected parts can be hard to manage.
 
-In the context of IDP, the systems model is used to describe and organize the various software components, services, and tools that make up an organization's technical landscape. It is structured around five key concepts: Domains, Systems, APIs, Components, and Resources.
+The System Model describes, how we manage dependencies in Harness IDP, thereby organizing software components, services, and tools in their technical landscape. It structures around five key concepts: Domains, Systems, APIs, Components, and Resources.
+
 
 ![](static/intro-system.png)
 
@@ -87,7 +88,8 @@ system: core
 ```
 
 ### City Domains and Expansion
-#### New part of city: For example, expanding the city, a new Domain AI is created.
+
+**The city is expanding and creating a new Domain AI as a new part of the city.**
 
 ```YAML
 kind: Domain
@@ -96,7 +98,8 @@ name: ai
 
 ![](static/conclusion-system.png)
 
-Now to get the backend service and it's dependencies and ownership right in the software catalog we write an IDP YAML with the help of following conecpts: 
+
+To set up the backend service in the software catalog, we create an IDP YAML file. This file includes concepts such as dependencies and ownership.
 
 ### Neighborhoods: Domains
 
@@ -110,8 +113,9 @@ name: data-analytics-district
 ```
 
 ### Buildings: Systems
-Structure: Systems are akin to buildings, each encapsulating a set of functionalities provided by various components.
-Example: The "Customer Insights Tower" in the Data Analytics District represents a System comprising data processing services, analytics tools, and customer feedback components.
+1. **Structure:** Systems are akin to buildings, each encapsulating a set of functionalities provided by various components.
+
+2. **Example:** The "Customer Insights Tower" in the Data Analytics District represents a System comprising data processing services, analytics tools, and customer feedback components.
 
 ```YAML
 kind: System
@@ -150,6 +154,71 @@ kind: Resource
 type: cloud-service
 name: cloud-storage
 ```
+
+## Relations
+
+This is a (non-exhaustive) list of relations that are known to be in active use.
+
+Each relation has a _source_ (implicitly: the entity that holds the relation), a _target_ (the entity to which the source has a relation), and a _type_ that tells what relation the source has with the target. The relation is directional; there are commonly pairs of relation types and the entity at the other end will have the opposite relation in the opposite direction (e.g. when querying for `A`, you will see `A.ownedBy.B`, and when querying `B`, you will see `B.ownerOf.A`).
+
+### `ownedBy` and `ownerOf`
+
+An ownership relation where the owner is usually an organizational entity [User Group](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/). 
+
+In IDP, the owner of an entity is the singular entity (commonly a User Group in Harness) that bears ultimate responsibility for the entity, and has the authority and capability to develop and maintain it. They will be the point of contact if something goes wrong, or if features are to be requested. The main purpose of this relation is for display purposes in IDP, so that people looking at catalog entities can get an understanding of to whom this entity belongs. It is not to be used by automated processes to for example assign authorization in runtime systems. There may be others that also develop or otherwise touch the entity, but there will always be one ultimate owner.
+
+This relation is commonly generated based on `spec.owner` of the owned entity, where present.
+
+### `providesApi` and `apiProvidedBy`
+
+A relation with an [API](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#3-api) entity, typically from a
+[Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component).
+
+These relations express that a component exposes an API - meaning that it hosts callable endpoints from which you can consume that API.
+
+This relation is commonly generated based on `spec.providesApis` of the component or system in question.
+
+### `consumesApi` and `apiConsumedBy`
+
+A relation with an [API](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#3-api) entity, typically from a
+[Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component).
+
+These relations express that a component consumes an API - meaning that it depends on endpoints of the API.
+
+This relation is commonly generated based on `spec.consumesApis` of the component or system in question.
+
+### `dependsOn` and `dependencyOf`
+
+A relation denoting a dependency on another entity.
+
+This relation is a general expression of being in need of that other entity for an entity to function. It can for example be used to express that a website
+component needs a library component as part of its build, or that a service component uses a persistent storage resource.
+
+This relation is commonly generated based on `spec.dependsOn` of the component or resource in question.
+
+### `parentOf` and `childOf`
+
+A parent/child relation to build up a tree, used for example to describe the organizational structure between [ User Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
+
+This relation is commonly based on `spec.parent` and/or `spec.children`.
+
+### `memberOf` and `hasMember`
+
+A membership relation, typically for Users in [Groups](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/).
+
+This relation is commonly based on `spec.memberOf`.
+
+### `partOf` and `hasPart`
+
+A relation with a [Domain](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#1-domain), [System](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#2-system) or [Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component) entity, typically from a
+[Component](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#4-component),
+[API](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#3-api), or
+[System](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#2-system).
+
+These relations express that a component belongs to a larger component; a component, API or resource belongs to a system; or that a system is grouped
+under a domain.
+
+This relation is commonly based on `spec.system` or `spec.domain`.
 
 ## Definitions and Reference
 
@@ -195,4 +264,4 @@ Cloud storage buckets and CDN services used by a video streaming system.
 
 ## Conclusion 
 
-In practice, implementing a systems model like the one used by Backstage, involves creating a centralized catalog or repository where all the information about systems, components, and their relationships is stored and managed.
+In practice, implementing a systems model like the one used by Backstage, involves creating a centralized catalog or repository where all the information about systems, components, and their relationships is stored and managed. This dependency management in Harness IDP enables developers to have service onboarding using seamless integrations. 

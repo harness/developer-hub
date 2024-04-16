@@ -32,7 +32,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **2.1.0.**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-flutter-client-sdk/releases)
 
 ## Flutter and Dart requirements
 
@@ -95,6 +95,13 @@ JavaScript SDK version to get the latest updates. For the newest JavaScript SDK 
 
 * [JavaScript SDK GitHub Repo](https://github.com/harness/ff-javascript-client-sdk/releases)
 * [official Feature Flags Releases Page](https://developer.harness.io/release-notes/feature-flags)
+
+## Release mode for Android applications
+In release mode, Flutter applies optimizations that can affect the behavior of native Android code, including code used by our Flutter Android plugin.
+
+Please add the following rule to your ProGuard configuration to ensure proper functionality when running your Android app in release mode
+
+`-keep class io.harness.cfsdk.** { *; }`
 
 ## Initialize the SDK
 

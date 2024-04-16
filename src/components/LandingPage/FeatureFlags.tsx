@@ -5,15 +5,11 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
 import { FeaturedList, FFList } from "./data/featureFlagsData";
-
+import { useColorMode } from "@docusaurus/theme-common";
 export default function FF() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
-    // <Layout title="FF" description="FF">
-    //   <ul className={styles.breadCrumb}>
-    //     <li>Get Started</li>
-    //     <li>Manage feature flags</li>
-    //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
         <h3>Rollout new features progressively</h3>
@@ -64,19 +60,34 @@ export default function FF() {
               flag is like a powerful if statement.
             </p>
             <div className={styles.alignCenter}>
-              <Link
-                className={clsx("button button--lg", styles.btn, styles.btnFF)}
-                to="#all-tutorials"
-              >
-                Tutorials <i className="fa-solid fa-arrow-right"></i>
+              <Link href="/docs/feature-flags">
+                <button
+                  className={clsx(
+                    "button button--lg",
+                    styles.btn,
+                    styles.btnFF
+                  )}
+                >
+                  Documentation <i className="fa-solid fa-arrow-right"></i>
+                </button>
               </Link>
               <Link href="https://harness.io/products/feature-flags">
                 <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
-          <div>
+          {/* <div>
             <img src={`${baseUrl}img/ff.svg`} />
+          </div> */}
+          <div className={styles.illustrationContainer}>
+            <img
+              className={styles.illustration}
+              src={
+                colorMode === "light"
+                  ? `${baseUrl}img/ff.svg`
+                  : `${baseUrl}img/FF_Landing_Page_dark_mode.svg`
+              }
+            />
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 The following table lists the major supported features for Harness Self-Managed Enterprise Edition offerings.
 
 Solution| Supported Platform| Connected | HA | Monitoring| Disaster Recovery | 
-| ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | 
-| Kubernetes Cluster| Kubernetes - GKE - AKS - EKS | Yes| Coming soon| Prometheus, Grafana | Coming soon                                  
+| :-----------------------------------------------------------------: | :----------------------------: | :-----------: | :----------------: | :-------------------: | :-----------------: | 
+| Kubernetes Cluster| Kubernetes - GKE - AKS - EKS | Yes| Yes | Prometheus, Grafana | Yes
 
 ### Supported Kubernetes versions
 
@@ -12,6 +12,8 @@ Solution| Supported Platform| Connected | HA | Monitoring| Disaster Recovery |
 * Harness commits to support new minor versions of Kubernetes within three months of the first stable release. For example, if the stable release of 1.28.0 occurs on August 31, Harness extends compatibility by November 30.
 
 ### Terms of support
+
+The support policy is 12 months of full support, followed by 6 months of limited support for critical security fixes only.
 
 Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
 

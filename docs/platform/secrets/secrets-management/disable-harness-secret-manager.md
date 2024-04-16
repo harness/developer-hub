@@ -10,14 +10,14 @@ helpdocs_is_published: true
 
 Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Accounts, Organizations, or Projects.
 
-You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md) to store secrets.
+You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](/docs/platform/get-started/tutorials/add-secrets-manager.md) to store secrets.
 
 This topic explains how to disable the built-in Harness Secret Manager.
 
 ### Before you begin
 
 * [Harness Secret Management Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
-* [Add a Secret Manager](/docs/platform/secrets/secrets-management/add-secrets-manager.md)
+* [Add a Secret Manager](/docs/platform/get-started/tutorials/add-secrets-manager.md)
 * [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 * Make sure you have Account Admin permissions to disable the built-in Secret Manager.  
 For more information, go to [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).

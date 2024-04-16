@@ -57,7 +57,7 @@ The following ports and permissions are required to add LDAP as a Harness SSO pr
 
 #### Ports
 
-The Harness LDAP connection is between the Harness delegate and your LDAP server. The delegate uses the following ports:
+The Harness LDAP connection is between the Harness Delegate and your LDAP server. The delegate uses the following ports:
 
 - HTTPS: 443.
 - LDAP without SSL: 389.
@@ -65,7 +65,7 @@ The Harness LDAP connection is between the Harness delegate and your LDAP server
 
 #### Permissions
 
-Authentication with an LDAP server is called the Bind operation. The Bind operation exchanges authentication information between the LDAP client (Harness delegate) and your LDAP server. The security-related semantics of this operation are in RFC4513.
+Authentication with an LDAP server is called the Bind operation. The Bind operation exchanges authentication information between the LDAP client (Harness Delegate) and your LDAP server. The security-related semantics of this operation are in RFC4513.
 
 When you configure Harness with LDAP, you will enter a Bind DN (distinguished name) for the LDAP directory user account used to authenticate.
 
@@ -76,7 +76,7 @@ The specific permissions needed by Harness depend on the LDAP directory service 
 
 ### Add LDAP SSO Provider
 
-Adding your LDAP Provider to Harness initially involves establishing a connection from Harness (specifically, the Harness delegate) and querying your LDAP directory for the users and groups you want to sync with Harness for SSO.
+Adding your LDAP Provider to Harness initially involves establishing a connection from Harness (specifically, the Harness Delegate) and querying your LDAP directory for the users and groups you want to sync with Harness for SSO.
 
 #### Querying Your LDAP Directory
 
@@ -295,7 +295,7 @@ Before you enable LDAP for SSO and log out of Harness to test it, ensure that yo
 1. In Harness, mouseover **Continuous Security**, and then click **Access Management**.
 2. Click **SSO Provider Setup** to view the LDAP Provider.
 3. Click the checkbox under **Enabled**. A confirmation dialog appears.![](./static/sso-ldap-120.png)
-   The confirmation dialog reminds you to ensure the Harness Delegate can connect to the LDAP server, and both are up and running. Any interruption in the connection will impact users' ability to log in to Harness.If you want to confirm the Harness delegate can connect and query the LDAP Provider, then close this dialog, open the LDAP Provider you configured in **Access Management**, and use the **TEST QUERY**, **TEST USER**, and **TEST GROUP** buttons in the **LDAP Provider** settings to verify connectivity and queries.
+   The confirmation dialog reminds you to ensure the Harness Delegate can connect to the LDAP server, and both are up and running. Any interruption in the connection will impact users' ability to log in to Harness.If you want to confirm the Harness Delegate can connect and query the LDAP Provider, then close this dialog, open the LDAP Provider you configured in **Access Management**, and use the **TEST QUERY**, **TEST USER**, and **TEST GROUP** buttons in the **LDAP Provider** settings to verify connectivity and queries.
 4. Click **CONFIRM**. The LDAP SSO Provider is enabled.
 
 ### Log In Using Synched User
@@ -386,7 +386,7 @@ Here is how the error appears in the LDAP Provider dialog.
 
 ##### Cause
 
-This can occur if the Harness delegate is unable to connect to the LDAP server.
+This can occur if the Harness Delegate is unable to connect to the LDAP server.
 
 ##### Solution
 

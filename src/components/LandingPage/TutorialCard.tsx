@@ -135,7 +135,9 @@ export default function TutorialCard(props): JSX.Element {
 export function TutorialCards({ sectionClass, data }): JSX.Element {
   return data.map((section) => (
     <div className={sectionClass}>
-      <h3 id={section.name}>{section.name}</h3>
+      <h3 id={section.name} style={{ color: "var(--text-color)" }}>
+        {section.name}
+      </h3>
       {section.description && <p>{section.description}</p>}
       <TutorialCard FeatureList={section.list} />
     </div>

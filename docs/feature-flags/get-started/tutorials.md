@@ -1,12 +1,13 @@
 ---
-title: Tutorials
-description: Dive in with a Feature Flags tutorial.
+title: Feature Flags tutorials
+sidebar_label: Tutorials
+description: Learn about Harness Feature Flags with these tutorials.
 sidebar_position: 3
-redirect_from:
-  - /docs/feature-flags/ff-onboarding/tutorials
 ---
 
-Try Feature Flags with this step-by-step tutorial:
+Use these tutorials to get started with Harness Feature Flags or delve into advanced use cases.
 
-* [Add Feature Flags to a JavaScript app](/tutorials/feature-flags/typescript-react)
-* [Use Feature Flags for trunk-based development](/tutorials/feature-flags/trunk-based)
+* [Use Feature Flags for trunk-based development](./trunk-based-development.md)
+* [Use the Feature Flags Java SDK](./java-quickstart.md)
+* [Make flags resilient during a mobile web browser refresh](./mobile-browser-refresh.md)
+* [Add feature flags to a JavaScript app](./typescript-react.md)

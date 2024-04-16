@@ -1,7 +1,7 @@
 ---
 title: View issues in target baselines over time in the Security Testing Overview
 description: The STO Overview page enables you to see all detected issues in your target baselines.
-sidebar_position: 10
+sidebar_position: 30
 sidebar_label: View issues in target baselines
 helpdocs_topic_id: 2ap1uol6ti
 helpdocs_category_id: utstv3qzqt
@@ -22,7 +22,7 @@ import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-star
 
 </details>
 
-To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline target, such as a feature or developer branch, go to the build results for that target and click **Security Tests**.
+To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
 
 <figure>
 

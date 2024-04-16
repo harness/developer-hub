@@ -32,7 +32,7 @@ Make sure you read and understand:
 
 ## Version
 
-This SDK is currently in **beta version 0.5.1**. 
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-apex-server-sdk/releases)
 
 ## Requirements
 

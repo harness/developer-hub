@@ -2,6 +2,5 @@ You can specify a _baseline_ for each target. This is usually the "root" variant
 
 * Compares each issue detected in the scanned variant against the target baseline.  
 * Places each issue into one of two buckets: 
-  *  "New" issues in the current variant only, or
-  *  "Common" issues also in the baseline (or, if no baseline is specified, in the previous scan).
-
+  *  New issues in the current variant only, or
+  *  Common issues also in the baseline (or, if no baseline is specified, in the previous scan).

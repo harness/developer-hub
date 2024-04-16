@@ -19,7 +19,7 @@ For steps on setting up different types of triggers, go to the [Triggers documen
 
 There is a YAML editor for triggers. When creating or editing a trigger, switch to **YAML** to access the YAML editor.
 
-Here's an example of the YAML for a trigger.
+Here's an example of the YAML for a GitLab webhook trigger.
 
 ```yaml
 trigger:  
@@ -78,7 +78,7 @@ trigger:
 
 ### Payload Type
 
-Either **Custom** or a Git provider: **Azure**, **GitHub**, **Bitbucket**, **GitLab**.
+Either **Custom** or a Git provider: **Harness Code**, **Azure**, **GitHub**, **Bitbucket**, **GitLab**.
 
 For the **Custom** payload type, you must create a secure token and add it to your custom Git provider. Whenever you regenerate a secure token, any preceding tokens become invalid, and you must update your Git provider with the new token.
 
@@ -88,9 +88,11 @@ Select the [code repo connector](/docs/category/code-repo-connectors) that conne
 
 If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
+A connector is not required for the **Custom** and **Harness Code** [payload types](#payload-type).
+
 #### Code repo connector permissions for webhook triggers
 
-Git event webhook triggers require specific permissions:
+Git event webhook triggers require specific permissions on the connector:
 
 * The user account you use to create the token must have the permission to configure repo webhooks in your Git provider.
 * The personal access token used for [code repo connector authentication](/docs/platform/connectors/code-repositories/connect-to-code-repo/#code-repo-connector-permissions-and-access) must have the appropriate permissions scopes depending on the Git provider.
@@ -124,6 +126,9 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul><br/>This event type doesn't support the **Changed Files** [condition](#branch-and-changed-files-conditions), because the Azure DevOps API doesn't provide a mechanism to fetch files in a PR. |
 | | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 | | Push | Azure SCM push triggers respond to commit actions by default. This event type supports the **Changed Files** [condition](#branch-and-changed-files-conditions). |
+| **Harness Code** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul> |
+| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| | Push |  |
 
 Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
@@ -183,7 +188,7 @@ Now all GitHub webhooks for this project must be authenticated. This means all G
 
 ### Polling frequency
 
-:::info note
+:::note
 
 Currently, this feature is only available for GitHub webhooks, and it is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -402,6 +407,73 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 :::
 
 ## Pipeline Input
+
+When executing pipelines using triggers, you can select stages and provide input sets dynamically. 
+
+Select **Pipeline Stages** to execute pipelines using triggers. This can be a fixed value or an expression. 
+If you're using fixed value, all stages in the pipeline are displayed. Select a stage or all stages that you want to execute using the trigger.
+
+Here's a sample expressions to select pipeline stages, `<+<+trigger.payload.stages_to_execute>.split(",")>`.
+
+In **Pipeline Input** select or create the input set to use when the trigger executes the pipeline. This can be a fixed value or an expression.
+
+![](./static/create-input-set.png)
+
+Here's a sample expression to select input sets, `<+<+trigger.payload.input_set_refs>.split(",")>`.
+
+Here's is a sample trigger YAML:  
+
+```yaml
+trigger:
+  name: test
+  identifier: test
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute: <+<+trigger.payload.stages_to_execute>.split(",")>
+  orgIdentifier: default
+  projectIdentifier: Sarthak
+  pipelineIdentifier: Testing
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions:
+          - key: <+trigger.payload.sample_key>
+            operator: Equals
+            value: sample_value
+        headerConditions: []
+  inputYaml: |
+    pipeline:
+      identifier: Testing
+      stages:
+        - stage:
+            identifier: Custom
+            type: Custom
+            variables:
+              - name: var1
+                type: String
+                value: "78"
+  inputSetRefs: <+<+trigger.payload.input_set_refs>.split(",")>
+
+```
+Here's a sample trigger payload:   
+
+
+```yaml
+{
+    "sample_key": "sample_value",
+    "stages_to_execute" : "Custom,Custom2",
+    "input_set_refs" : "inputSet1,inputSet2"
+}
+```
+
+**Important notes when using expressions**
+* If the value provided for the input set YAML reference is an expression, Harness checks for the key `input_set_refs` in the trigger payload and uses the value provided there.
+* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers. 
+* Limitation: You cannot pass the stages or inputRefs as an expression in the trigger payload.
+
 
 You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use, such as Harness Service and artifact.
 

@@ -1,5 +1,5 @@
 <!-- details>
-<summary>Orchestrated scan settings</summary -->
+<summary>Orchestration scan settings</summary -->
 
 The following settings are required for Security steps where the `policy_type` is `orchestratedScan`.
 
@@ -16,7 +16,7 @@ The following settings are required for Security steps where the `policy_type` i
 
   You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
-For a complete workflow description and example, go to [Run an Orchestrated Scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto).
+For a complete workflow description and example, go to [Run an Orchestration Scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto).
 
 
 <!-- /details -->

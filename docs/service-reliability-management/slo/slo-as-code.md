@@ -68,7 +68,7 @@ On the **Advanced** tab, select the delegate that you created as the default del
 Select **Apply Changes** to save and add the Terraform Plan step to the pipeline.
 
 ## Create a webhook trigger
-To learn how to create a webhook trigger, go to [Trigger Deployments using Custom Triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/).
+To learn how to create a webhook trigger, go to [Trigger pipelines using custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/).
 
 
 ## Add a webhook to the GitHub repository

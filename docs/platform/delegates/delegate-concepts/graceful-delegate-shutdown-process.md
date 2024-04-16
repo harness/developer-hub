@@ -4,7 +4,11 @@ description: Read about the process of graceful delegate shutdown.
 sidebar_position: 5
 ---
 
-Harness Delegate is designed to shut down gracefully. The process of graceful delegate shutdown is as follows:
+Harness Delegate is designed to shut down gracefully.
+
+## Shutdown without upgrade
+
+The process of graceful delegate shutdown without upgrade is as follows:
 
 - The delegate receives an instruction to quit.
 - A grace period begins during which the delegate:
@@ -14,13 +18,25 @@ Harness Delegate is designed to shut down gracefully. The process of graceful de
 - Delegates that have not quit are force-terminated.
 - Incomplete tasks are discarded.
 
+## Shutdown with upgrade
+
+The process of graceful delegate shutdown with `upgrader` is as follows:
+
+- When `upgrader` updates the delegate image, it starts a new delegate and waits for a heartbeat and healthy state.
+- When the delegate is connected, `upgrader` terminates the old pod. However, the old pod will not be terminated immediately. It will first
+   - Stop accepting new tasks.
+   - Wait for currently executing tasks to finish before terminating. The maximum time `upgrader` waits for tasks to finish before force-termination is 10 minutes.
+:::info
+The wait time before force-termination is configured using `terminationGracePeriodSeconds` in the Kubernetes delegate YAML. When you download the YAML from Harness, it's set to 10 minutes by default.
+
+:::
 ## Grace period
 
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
-The length of the grace period is configurable. 
+The length of the grace period is configurable.
 
 | **Delegate type** | **Grace period** | **Default interval** |
 | :-- | :--: | :--: |
@@ -37,16 +53,16 @@ The grace period is not currently configurable for Helm deployments.
 Open the delegate manifest file and locate the container `spec` (`spec.containers`). Change the `terminationGracePeriodSeconds` as shown in the following YAML. In the example below, `terminationGracePeriodSeconds` is set to 10 minutes.
 
 ```yaml
- spec:  
-     terminationGracePeriodSeconds: 600  
-     restartPolicy: Always  
-     containers:  
-     - image: example/org:custom-delegate  
-       imagePullPolicy: Always  
-       name: delegate  
-       securityContext:  
-         allowPrivilegeEscalation: false  
-         runAsUser: 0   
+ spec:
+     terminationGracePeriodSeconds: 600
+     restartPolicy: Always
+     containers:
+     - image: example/org:custom-delegate
+       imagePullPolicy: Always
+       name: delegate
+       securityContext:
+         allowPrivilegeEscalation: false
+         runAsUser: 0
 ```
 
 ### Configure the default interval for an Amazon ECS deployment
@@ -106,7 +122,7 @@ For more information on `stopTimeout`, go to [Container timeouts](https://docs.a
                "name": "DELEGATE_TAGS",
                "value": ""
              },
-   
+
              {
                "name": "NEXT_GEN",
                "value": "true"
@@ -124,7 +140,7 @@ For more information on `stopTimeout`, go to [Container timeouts](https://docs.a
          "requiresCompatibilities": [
          "EC2"
        ],
-     
+
        "cpu": "1024",
        "family": "harness-delegate-task-spec"
      }
@@ -139,15 +155,15 @@ docker container stop -t=600 <delegatename>
 ```
 
 :::info note
-In the syntax above, you can choose to use `–-time` or `-t`.
+In the syntax above, you can choose to use `--time` or `-t`.
 :::
 
 ## Graceful shutdown events
 
 The event that initiates the graceful shutdown depends on delegate type.
 
-| **Delegate environment** | **Trigger** 
-| :-- | :--: 
-| Kubernetes | Pod termination, eviction, or user-initiated scaling 
-| Docker | `docker stop` command 
-| Shell | `./stop.sh` instruction 
+| **Delegate environment** | **Trigger**
+| :-- | :--:
+| Kubernetes | Pod termination, eviction, or user-initiated scaling
+| Docker | `docker stop` command
+| Shell | `./stop.sh` instruction

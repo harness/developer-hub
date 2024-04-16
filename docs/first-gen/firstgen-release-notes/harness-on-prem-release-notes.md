@@ -16,6 +16,28 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](/docs/first-g
 
 Release notes are displayed with the most recent release first.
 
+## January 8, 2024, version 81720
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 81720 |
+| Delegate | 81604 |
+| Watcher | 80505 |
+| Verification Service | 81708 |
+| UI | 81701 |
+| Learning Engine | 67903 | 
+| Gateway | 1.15.0 |
+
+### Fixed issues
+
+- Audit trails were missing for deleted SCIM user groups. Added audits for Delete user group from SCIM to resolve the issue. (PL-38401)
+
+- Fixed the `java.io.InterruptedIOException` message in delegate logs by adding the source URL and removing duplicate error logs. (PL-40118)
+
+      This item requires Harness Delegate version 23.12.81803. For information about features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate). 
+
 
 ## November 30, 2023, version 81310
 
@@ -1155,8 +1177,7 @@ Fix: We now first apply the pattern filter to all artifacts and then limit it to
 **Important information regarding certificates and Delegate upgrade to OpenJDK 11:**  
   
 As part of our migration to OpenJDK 11, Delegates will download OpenJDK 11 and get started with it instead of the previous OpenJDK 8 that was used. This means that Delegates will have Java installed on a different path. Any user actions which modify or use older Java versions would be affected. Some of the most common scenarios include adding certificates to the default Java keystore and running additional Java applications using Delegates installed Java (e.g. from a profile or init script).  
-  
-See [Information regarding certificates and Delegate upgrade to OpenJDK 11](https://community.harness.io/t/information-regarding-certificates-and-delegate-upgrade-to-openjdk-11/12074).
+
 :::
 
 We're pleased to present Harness On-Premise Minor Release 75281.
@@ -1420,11 +1441,11 @@ The following new features were added to the Harness platform components:
 
 ##### Platform
 
-* Add Azure Active Directory users that belong to more than the 150 group limit (PL-21670) via SAML.
-	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Azure Active Directory limits the number of groups it will emit in a token to 150 for SAML assertions.
+* Add Microsoft Entra ID (formerly Active Directory) users that belong to more than the 150 group limit (PL-21670) via SAML.
+	+ When Azure AD users have large numbers of group memberships, the number of groups listed in the token can grow the token size. Microsoft Entra ID (formerly Active Directory) limits the number of groups it will emit in a token to 150 for SAML assertions.
 	+ To add users that belong to more than 150 groups, you simply add the Client ID and secret for your registered app to Harness.
 	+ This feature is behind the feature flag `AZURE_SAML_150_GROUPS_SUPPORT`.
-	+ See [SAML SSO with Azure Active Directory](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
+	+ See [SAML SSO with Microsoft Entra ID (formerly Active Directory)](../firstgen-platform/security/access-management-howtos/single-sign-on-sso-with-saml.md#saml-sso-with-azure-active-directory).
 
 ##### CD
 

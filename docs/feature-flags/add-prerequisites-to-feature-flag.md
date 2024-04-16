@@ -26,8 +26,9 @@ At present, Harness currently *does not* support nested prerequities as this fun
 1. Go to the Feature Flag you want to add the Prerequisite to.
 1. Select **+ New Prerequisite**.
 
-   
-   <img src={pre_req_1} alt="A screenshot of the Write_Java Flag with the Prerequisites button highlighted." height="500" width="400" />
+
+   ![A screenshot of the Write_Java Flag with the Prerequisites button highlighted.](./static/3-add-prerequisites-to-feature-flag-02.png)
+
    
 
 1. In **Add Prerequisites**, click **+ Prerequisites**.
@@ -37,6 +38,6 @@ At present, Harness currently *does not* support nested prerequities as this fun
    For the example below, the `Read_Java` flag must be set to `True` before this flag can be enabled.
 1. Select **Save**. The Prerequisite flag is listed on the Feature Flag page and must be met before you can turn on the Feature Flag.
 
+   !["A screenshot of the Prerequisite flag added to the Write_Java flag.](./static/3-add-prerequisites-to-feature-flag-03.png)
    
-   <img src={pre_req_2} alt="A screenshot of the Prerequisite flag added to the Write_Java flag." height="500" width="400" />
    

@@ -77,10 +77,6 @@ module.exports = {
       to: "/docs/platform/role-based-access-control/permissions-reference",
     },
     {
-      from: "/docs/category/users",
-      to: "/docs/category/access-control-1",
-    },
-    {
       from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
       to: "/docs/platform/role-based-access-control/add-user-groups",
     },
@@ -666,11 +662,6 @@ module.exports = {
     },
 
     // Created by Rashmi Sahoo to fix PL redirects April 27th, 2023
-    {
-      from: "/docs/category/role-based-access-control",
-      to: "/docs/category/access-control-1",
-    },
-
     {
       from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/",
       to: "/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate",

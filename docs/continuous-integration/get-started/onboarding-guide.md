@@ -24,13 +24,13 @@ Review the following resources to learn about the features, components, and key 
 
 Learn about the [pipeline creation process in Harness CI](../use-ci/prep-ci-pipeline-components.md), and then create your own:
 
-* [Tutorial: Build on Harness Cloud](/tutorials/ci-pipelines/fastest-ci)
-* [Tutorial: Build on a Kubernetes cluster](/tutorials/ci-pipelines/kubernetes-build-farm)
+* [Tutorial: Build on Harness Cloud](./tutorials)
+* [Tutorial: Build on a Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 * [Generic process: Create a Harness CI pipeline](../use-ci/prep-ci-pipeline-components.md#create-a-harness-ci-pipeline)
 
 ### Build infrastructure options
 
-Harness offers several build infrastructure options, including Harness-hosted and self-hosted options. To compare build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+Harness offers several build infrastructure options, including Harness-managed and self-managed options. To compare build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
 Harness recommends starting with [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), which you can start using in minutes and is available for all plan tiers.
 
@@ -44,15 +44,13 @@ Explore the documentation to learn what your Harness CI pipelines can do.
 
 * [Build images, push images, and upload artifacts.](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact)
 * [Use caching](/docs/category/share-and-cache-ci-data) and [manage dependencies](/docs/category/manage-dependencies).
-* Run [scripts](../use-ci/run-ci-scripts/run-step-settings.md) and [tests](/docs/category/run-tests).
+* Run [scripts](../use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
 * [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
 * [Apply optimization strategies](../use-ci/optimize-and-more/optimizing-ci-build-times.md).
 
 :::tip
 
-With Harness CI, you can build and test code in any language.
-
-For guidance on some popular languages and platforms, check out the [CI language guides](/tutorials/ci-pipelines/build) and [Mobile development with Harness CI](/docs/continuous-integration/use-ci/mobile-dev-with-ci).
+With Harness CI, you can build and test code in any language. For guidance on some popular languages and platforms, check out the [CI development guides](/docs/category/development-guides).
 
 :::
 
@@ -64,8 +62,8 @@ If you plan to use [Harness Cloud build infrastructure](../use-ci/set-up-build-i
 
 ## Become a Harness Certified Expert
 
-There are three tiers of [Harness CI certifications](/certifications/continuous-integration).
+There are three tiers of [Harness CI certifications](/university/continuous-integration).
 
-* **Developer certification:**: The [CI Developer certification](/certifications/continuous-integration?lvl=developer) is the starting point for evaluating your understanding of Harness CI.
-* **Administrator certification:** Building on the CI Developer certification, the [CI Administrator certification](/certifications/continuous-integration?lvl=administrator) tests your skills across CI and the Harness Platform.
-* **Architect certification:** Building upon the CI Administrator certification, the [CI Architect certification](/certifications/continuous-integration?lvl=architect) goes further into design, implementation, and management of CI.
+* **Developer certification:**: The [CI Developer certification](/university/continuous-integration) is the starting point for evaluating your understanding of Harness CI.
+* **Administrator certification:** Building on the CI Developer certification, the [CI Administrator certification](/university/continuous-integration) tests your skills across CI and the Harness Platform.
+* **Architect certification:** Building upon the CI Administrator certification, the [CI Architect certification](/university/continuous-integration) goes further into design, implementation, and management of CI.

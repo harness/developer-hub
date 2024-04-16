@@ -1,6 +1,6 @@
 {
     "label":"Troubleshoot CI",
-    "position": 50,
+    "position": 60,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",

@@ -21,7 +21,7 @@ For steps on setting up the Harness Delegate, see [Delegate Installation and Man
 
 ### Set Up WinRM on Instances and Network
 
-WinRM is a management protocol used by Windows to remotely communicate with another server, in our case, the Harness delegate. WinRM communicates over HTTP (5985)/HTTPS (5986), and is included in all recent Windows operating systems.
+WinRM is a management protocol used by Windows to remotely communicate with another server, in our case, the Harness Delegate. WinRM communicates over HTTP (5985)/HTTPS (5986), and is included in all recent Windows operating systems.
 
 For WinRM, you need the following networking configured:
 

@@ -1,6 +1,6 @@
 ---
 title: CodeQL scanner reference for STO
-description: Repository scans with CodeQL
+description: Scan code repositories with CodeQL.
 sidebar_label: CodeQL scanner reference
 sidebar_position: 120
 ---
@@ -15,7 +15,7 @@ The following steps outline the basic workflow:
 
 2. Add the SARIF data to your pipeline. If you ran the scan outside the pipeline, do the following:
 
-   1. In the stage where you ingest the results, go to **Overview** > **Shared Paths** and create a folder under `/shared` such as `/shared/customer_artifacts`.
+   1. In the stage where you ingest the results, go to **Overview** > **Shared Paths** and create a folder under `/shared` such as `/shared/scan_results`.
 
    2. Use a Run step to add your scan results to the shared folder.
 
@@ -26,77 +26,35 @@ This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that i
 
 ## Important notes for running CodeQL scans in STO
 
+### Root access requirements 
 
-
-
-### Root access requirements
-
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
-
-:::note
-
-You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-:::
-
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-<!-- 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
--->
+### For more information
+
+import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+<StoMoreInfo />
 
 
 ## CodeQL step settings for STO scans
 
-The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. You can also configure CodeQL scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
+The recommended workflow is to add a CodeQL step to a Security Tests or CI Build stage and then configure it as described below. 
 
+### Scan 
 
+### Scan mode
 
-
-
-<details>
-<summary>CodeQL Step Palette</summary>
-
-![](./static/codeql-security-scan-step.png)
-
-</details>
-
-
-### Scan Mode
-
-
-import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
-
+import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
 
 <StoSettingScanModeIngest />
 
 
-### Scan Configuration
+#### Scan configuration
 
-
-import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
-
+import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
 
@@ -106,74 +64,69 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 #### Type
 
-
-import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
-
-
+import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
+
+#### Detect target and variant 
+
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
+
 #### Name 
 
+import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
-import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+<StoSettingTargetName />
 
-
-<StoSettingProductID />
 
 #### Variant
 
-
-import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
-
+import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 
 ### Ingestion file
 
-
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
+### Log Level
 
-<a name="log-level"></a>
-
-#### Log Level
-
-
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
-
-#### Additional CLI flags
 
 
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+### Additional CLI flags
+
+Use this field to run the [CodeQL scanner binary](https://codeql.github.com/docs/) with additional flags. 
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-<StoSettingCliFlags />
+### Fail on Severity
 
-<a name="fail-on-severity"></a>
-
-
-#### Fail on Severity
-
-
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
+
 ### Settings
 
-You can add a `tool_args` setting to run the [CodeQL scanner binary](https://codeql.github.com/docs/) with specific command-line arguments. <!-- For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5` -->
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
 
 
 ### Additional Configuration
@@ -190,10 +143,10 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->
@@ -201,7 +154,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## CodeQL pipeline example
 
-The following pipeline example is an ingestion workflow. It consists of two steps.  A Run step installs CodeQL, scans the repository defined in the Codebase object, and publishes the scan results to a SARIF file. A CodeQL step then ingests the SARIF file. 
+The following pipeline illustrates a simple ingestion scan. It consists of two steps.  A Run step generates an example CodeQL data file in SARIF format. A CodeQL step then ingests the data. 
 
 ![](./static/codeql-ingestion-pipeline-example.png)
 
@@ -309,17 +262,11 @@ pipeline:
                       file: /harness/codeql.sarif
           sharedPaths:
             - /var/run
-            - /shared/customer_artifacts/
+            - /shared/scan_results/
   identifier: codeql_ingestion
   name: codeql ingestion 
 
 ```
-
-
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-
-
-<StoSettingYAMLexample />
 
 <!-- END yaml pipeline example ----------------------------------------------------------------------------- -->
 

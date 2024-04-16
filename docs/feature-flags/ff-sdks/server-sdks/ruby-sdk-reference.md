@@ -33,7 +33,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.2.1**.
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-ruby-server-sdk/releases)
 
 ## Requirements
 

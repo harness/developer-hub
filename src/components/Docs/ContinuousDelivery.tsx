@@ -7,23 +7,24 @@ import "rc-tooltip/assets/bootstrap.css";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/continuousDeliveryData";
-
+import { docsCards } from "./data/continuousDeliveryData";
+import { useColorMode } from "@docusaurus/theme-common";
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
   return (
     <div className="container">
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_cd.svg`} />
-            <h1>Continuous Delivery & GitOps Documentation</h1>
+            <h1>Continuous Delivery & GitOps</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/cd-pipelines">
+            <Link href="/kb/continuous-delivery">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
-                Tutorials
+                Knowledge Base
               </button>
             </Link>
             <Link href="/release-notes/continuous-delivery">
@@ -51,22 +52,27 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Make your software releases more efficient and reliable with
-              Harness Continuous Delivery.
+              Harness Continuous Delivery (CD) and GitOps enables deployment of
+              application and infrastructure changes in a safe and sustainable
+              way. Your CD pipelines and GitOps workflows can automate all of
+              the steps necessary to get your changes into production. Make your
+              software releases more efficient and reliable with Harness CD and
+              GitOps.
             </p>
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/cd.svg`
+                    : `${baseUrl}img/CD_Landing_Page_dark_mode.svg`
+                }
+              />
+            </div>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {featuredTutorials && featuredTutorials.length > 0 && (
-        <>
-          <div className={styles.sectionDivider}></div>
-          <div className={styles.subSection}>
-            <h3>Featured Tutorials</h3>
-            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-          </div>
-        </>
-      )}
     </div>
     // </Layout>
   );

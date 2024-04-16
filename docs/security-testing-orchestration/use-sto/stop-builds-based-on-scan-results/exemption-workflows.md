@@ -1,11 +1,11 @@
 ---
 title: Exemptions to override Fail on Severity thresholds for specific issues in STO
-description: You can specify exemptions (ignore rules) for specific security issues. An ignore rule allows pipeline builds to proceed even if a security scan detects an issue. 
+description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Override the Fail on Severity threshold for specific issues
 sidebar_position: 60
 ---
 
-The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
+The `fail_on_severity` setting causes a pipeline build to fail if a scanner detects one or more issues with the specified severity (Critical, High, Medium, etc.) or higher. Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
 
 :::note 
 Developers and SecOps users can request exemptions, but only SecOps users can approve them.
@@ -18,12 +18,12 @@ Here are some situations where you might want to request an exemption for a spec
 - The security risk is low and remediation would require too much effort or expense.
 - The scanner identifies this as a vulnerability but it is, in fact, a false positive.
 - You can specify a time limit for an exemption (for example, expires in 7 days). In some cases, you might want to exempt an issue so you can deploy an important release. You could request an exemption if it expires within your organization's SLA for fixing security issues.
-- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations), which can help you remediate your issues using AI.
+- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) to help you remediate your issues using AI.
 
 
 import request_exemption from '../static/request-exemption.png'
 import open_exemption_details from '../static/open-exemption-details.png'
-import approve_exemption_01 from '../static/approve-exemption-01.png'
+import baseline_not_defined from '../static/exemption-workflows-no-baseline-defined.png'
 
 
 ## What happens when an STO exemption gets approved
@@ -125,19 +125,25 @@ This workflow requires SecOps user permissions.
 
 3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
 
- :::note 
- The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
- :::
+    :::note notes
+
+    - The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
+
+    - Consider the **Requested Duration** for the exemption request. When you approve a request, the exemption remains active only for the specified time window (for example, 7 days from the approval time). 
+
+    - It is good practice to [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target). If the target does not have a baseline defined, you won't see any exemption details. Instead, you will see a link to define the target baseline. 
+
+       <img src={baseline_not_defined} alt="Can't view exemption details because the target has no baseline" height="50%" width="50%" />
+
+    :::
 
  4. Select one of the following:
  
-    - **Approve** The request is approved. This issue will not block future pipeline executions.
-    - **Reject** The request moves to the Rejected tab, where a SecOps user can approve it later if appropriate. 
+    - **Approve** The request is approved. This issue will not block future pipeline executions for the requested duration (see **Time Remaining** in the **Approved** table).
+    - **Reject** The request moves to the **Rejected** table, where a SecOps user can approve it later if appropriate. 
     - **Cancel** The request is cancelled and removed from the exemption list. If a user wants an exemption for the issue, they must file a new request. 
 
-
-
-<img src={approve_exemption_01} alt="Approve, Reject, and Cancel buttons for an STO exemption" height="50%" width="50%" />
+     ![](../static/exemptions-approved.png)
  
           
 ## Good practice: Review and update STO exemptions periodically
@@ -152,11 +158,14 @@ It is good practice for a SecOps user in your organization to review all exempti
 
 To review all exemptions, select **Security Testing Orchestration** > **Exemptions** in the left menu. This page shows the high-level information for all pending, approved, rejected, and expired exemptions. 
 
+You can view the **Time Remaining** for approved exemptions and **Requested Duration** for pending, rejected, and expired exemptions. 
+
 SecOps users can do the following in this page:
 
 * Reject pending and approved exemptions
 * Approve pending and rejected exemptions
 * Re-open expired exemptions
 * Cancel (delete) pending, approved, rejected, or expired exemptions
+
 
    ![](../static/exemption-security-review.png)

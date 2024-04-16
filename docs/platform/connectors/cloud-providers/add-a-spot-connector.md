@@ -6,11 +6,11 @@ sidebar_position: 6
 
 This topic describes how to connect Harness with your Spot cloud.
 
-## Install the Harness delegate
+## Install the Harness Delegate
 
-The Harness delegate is a service you run in your local network or VPC to connect Harness with your artifact repos, Spot infrastructure, and any other providers needed for deployments.
+The Harness Delegate is a service you run in your local network or VPC to connect Harness with your artifact repos, Spot infrastructure, and any other providers needed for deployments.
 
-Expand the following section to learn how to install the Harness delegate.
+Expand the following section to learn how to install the Harness Delegate.
 
 <details>
 <summary>Use the delegate installation wizard</summary>
@@ -25,7 +25,7 @@ Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yL
 </details>
 
 
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
+import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
 
 
 <details>
@@ -162,7 +162,7 @@ Perform the following steps to add a Spot connector in Harness Manager.
 3. In **Cloud Providers**, select **Spot**. The Spot connector settings appear. 
 4. Enter a connector name, enter an optional description and tag, and then select **Continue**.
    
-   Harness automatically creates an [Id](/docs/platform/References/entity-identifier-reference) for the connector. The Id is based on the connector's name.
+   Harness automatically creates an [Id](/docs/platform/references/entity-identifier-reference) for the connector. The Id is based on the connector's name.
 5. In **Authentication**, select one of the following options.
     * **Plaintext** - Enter the **Spot Account Id** and **API Token**. For API token, you can either create a new secret or use an existing one.
     * **Encrypted** - You can create or select a secret for your Spot account Id and API token.

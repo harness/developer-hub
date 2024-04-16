@@ -8,49 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../faqs/harness-security-faqs.md).This article addresses some frequently asked questions about Harness security features.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../faqs/harness-security-faqs.md).
 
-<!-- TOC start -->
-- [Before You Begin](#before-you-begin)
-- [General](#general)
-  * [What security features does Harness provide?](#what-security-features-does-harness-provide)
-  * [Are Delegate communications secure?](#are-delegate-communications-secure)
-  * [What data does the Delegate send to the Harness Manager?](#what-data-does-the-delegate-send-to-the-harness-manager)
-- [Harness ​Role-based access control (RBAC)](#harness-role-based-access-control-rbac)
-  * [How does Harness implement RBAC?](#how-does-harness-implement-rbac)
-  * [How are users added?](#how-are-users-added)
-  * [Can users be added dynamically?](#can-users-be-added-dynamically)
-  * [Are there best practices for setting up Harness users?](#are-there-best-practices-for-setting-up-harness-users)
-- [Harness Authentication](#harness-authentication)
-  * [How are Harness users authenticated?](#how-are-harness-users-authenticated)
-  * [How is SAML SSO supported?](#how-is-saml-sso-supported)
-  * [Can I adjust password policies?](#can-i-adjust-password-policies)
-  * [Do you support Single Sign-On (SSO)?](#do-you-support-single-sign-on-sso)
-  * [Do you support Two-Factor Authentication (2FA)?](#do-you-support-two-factor-authentication-2fa)
-- [Secrets Management](#secrets-management)
-  * [How are secrets managed in Harness?](#how-are-secrets-managed-in-harness)
-  * [Where can I use a secret?](#where-can-i-use-a-secret)
-  * [How do I create a secret?](#how-do-i-create-a-secret)
-  * [How do I use a secret?](#how-do-i-use-a-secret)
-  * [Can I limit a secret to certain users?](#can-i-limit-a-secret-to-certain-users)
-  * [Can I use my existing secrets in Harness?](#can-i-use-my-existing-secrets-in-harness)
-  * [Can I migrate secrets between secrets managers?](#can-i-migrate-secrets-between-secrets-managers)
-  * [Are my secrets exposed in logs?](#are-my-secrets-exposed-in-logs)
-  * [Can I view all my setup events and changes in Harness?](#can-i-view-all-my-setup-events-and-changes-in-harness)
-  * [Can I view deployment history?](#can-i-view-deployment-history)
-  * [What can I see in the audit trail?](#what-can-i-see-in-the-audit-trail)
-  * [Can I filter audit events?](#can-i-filter-audit-events)
-- [Governance](#governance)
-  * [Does Harness provide governance features?](#does-harness-provide-governance-features)
-  * [How do set up governance?](#how-do-set-up-governance)
-- [IP Whitelisting](#ip-whitelisting)
-  * [Can I whitelist IPs for connections to my Harness accounts?](#can-i-whitelist-ips-for-connections-to-my-harness-accounts)
-  * [Can I whitelist IPs for the Harness Delegate?](#can-i-whitelist-ips-for-the-harness-delegate)
-- [API Keys](#api-keys)
-  * [Can I register Harness with third-party apps?](#can-i-register-harness-with-third-party-apps)
-  * [Is there a limit on how many API calls I can make?](#is-there-a-limit-on-how-many-api-calls-i-can-make)
-  * [Can I use an API key to track deployments?](#can-i-use-an-api-key-to-track-deployments)
-<!-- TOC end -->
+This article addresses some frequently asked questions about Harness security features.
 
 ### Before You Begin
 

@@ -6,9 +6,7 @@ sidebar_position: 1
 
 This topic provides answers to common questions about upgrading from Harness Continuous Delivery (CD) FirstGen to NextGen.
 
-For steps on upgrading, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
-
-For information on the differences between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
+For more information, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
 
 ## Harness NextGen overview video
 
@@ -99,7 +97,7 @@ Harness Policy as Code does the following for you:
 
 ### Delegate
 
-Harness NextGen supports an improved delegate. It uses a new type of [image](/docs/platform/Delegates/delegate-concepts/delegate-image-types) and supports the following features:
+Harness NextGen supports an improved delegate. It uses a new type of [image](/docs/platform/delegates/delegate-concepts/delegate-image-types) and supports the following features:
 
 - Deploy delegate images with or without third-party client tools. We recommend you use the delegate minimal image for added security.
 - By default, the delegate is automatically updated. There is an option to disable automatic updates.
@@ -156,11 +154,11 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
 
   NextGen does support tags, but there is not a centralized management feature for them as in FirstGen.
 
-  - For details on NextGen tags, go to [Tags reference](/docs/platform/References/tags-reference).
+  - For details on NextGen tags, go to [Tags reference](/docs/platform/references/tags-reference).
 
 - **SSO providers**. NextGen supports the same SSO providers as FirstGen, but you must reconfigure the SSO provider setup in NextGen.
 
-  - For details on NextGen SSO providers, go to [Authentication overview](/docs/platform/Authentication/authentication-overview).
+  - For details on NextGen SSO providers, go to [Authentication overview](/docs/platform/authentication/authentication-overview).
 
 - **Deployment history for CD dashboards**. Harness NextGen does not retain the deployment data from FirstGen. Harness will recalculate the deployment stats and metrics by using NextGen CD deployments.
 
@@ -238,3 +236,11 @@ Some deployment capabilities have been overhauled:
 - Multi-service and multi-environment deployments at scale.
 - Visibility and reporting into software delivery performance.
 - Extended support for custom deployments.
+
+## How long will my data be stored from FirstGen?
+
+Data for pipeline executions is stored for a maximum of 6 months. 
+
+Data retention for other Harness products differ by product and the plan you are subscribed to. For example, Harness CD and CCM have different data retention periods. 
+
+For more information, go to [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/).

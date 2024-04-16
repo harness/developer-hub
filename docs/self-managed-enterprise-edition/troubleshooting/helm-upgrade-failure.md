@@ -15,7 +15,7 @@ This error should not surface in charts 0.2.93 or newer.
 :::
 
    ```
-   UPGRADE FAILED: execution error at (harness-demo/charts/harness/charts/platform/charts/minio/templates/NOTES.txt:91:4): 
+   UPGRADE FAILED: execution error at (harness-demo/charts/harness/charts/platform/charts/minio/templates/NOTES.txt:91:4):
    PASSWORDS ERROR: You must provide your current passwords when upgrading the release.
                     Note that even after reinstallation, old credentials may be needed as they may be kept in persistent volume claims.
                     Further information can be obtained at https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues/#credential-errors-while-upgrading-chart-releases
@@ -35,7 +35,7 @@ To set the root password, do the following:
    export ROOT_PASSWORD=$(kubectl get secret --namespace "harness-test" minio -o jsonpath="{.data.root-password}" | base64 -d)
    ```
 
-2. Add the following instruction to the command. 
+2. Add the following instruction to the command.
 
    ```
    --set auth.rootPassword=$ROOT_PASSWORD
@@ -46,7 +46,7 @@ To set the root password, do the following:
    ```
    helm upgrade <chartname> <chartsource> -n <namespace> -f override.yaml --set harness.platform.minio.auth.rootPassword=$ROOT_PASSWORD
    ```
-   
+
 #### Update the oldvalues.yaml file
 
 If you've already set the `auth.rootPassword` value one time, you can update and remove the `oldvalues.yaml` file.

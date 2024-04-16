@@ -15,7 +15,7 @@ Harness offers support for all major APM vendors and log providers, but there ar
 
 ## Before You Begin
 
-[Add Custom Health as a Verification Provider](..//docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-custom-health)
+[Add Custom Health as a Verification Provider](..//docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#step-add-custom-health)
 
 ## Review: CV Setup Options
 
@@ -161,7 +161,7 @@ Select how long you want Harness to analyze and monitor the APM data points. Har
 
 The recommended **Duration** is **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../../platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables.md) to reference the artifact in the stage Service settings.
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -169,9 +169,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanced-settings).
 

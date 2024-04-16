@@ -126,7 +126,7 @@ stages:
                       - "11"
                       - "10"
                       - "9"
-                  maxConcurrency: 2
+                    maxConcurrency: 2
       tags: {}
       strategy:
         matrix:
@@ -140,7 +140,7 @@ stages:
           exclude:
             - service: svc1
               environment: env1
-        maxConcurrency: 2
+          maxConcurrency: 2
 ```
 
 </details>
@@ -183,12 +183,20 @@ You can also use matrix values as variable values. For example, this [Action ste
         token: <+secrets.getValue("github_token")>
 ```
 
+### Avoid hyphens and periods in matrix tag/dimension names
+
+Harness recommends avoiding hyphens and periods in matrix tag/dimension names, such as `matrixTag` instead of `matrix-tag`.
+
+However, if you need to reference a matrix dimension name that includes a period or hyphen/dash, you must wrap the tag in double quotes and use the `get()` method in the expression, such as `<+stage.matrix.get("python-version")>`.
+
+If a dimension with a hyphen/dash or period is not referenced correctly, the expression resolves as null and doesn't throw an error.
+
 ### Matrix expressions in multi-layer matrix strategies
 
 If a stage and step both have matrix strategies with the same tag labels, you need to use specific expressions to reference matrix values in the step or stage.
 
 - `<+stage.matrix.TAG>`: Use this expression to reference a value in a stage level matrix strategy.
-- `<+matrix.TAG`: Use this expression to reference a value in a step level matrix strategy.
+- `<+matrix.TAG>`: Use this expression to reference a value in a step level matrix strategy.
 
 For example:
 
@@ -247,7 +255,7 @@ By default, Harness uses indices for the matrix naming strategy (stages are name
 
 #### Use matrix axes as stage labels
 
-You can turn on a setting at the account, organization, or project level to use the names of the matrix indices as labels.
+You can set **Enable Matrix Labels by Name** at the account, organization, or project level. This setting uses the names of the matrix indices as labels.
 
 1. Navigate to the **Default Settings** for your account, organization, or project:
    - To modify account settings, select **Account Settings**, select **Account Resources**, and then select **Default Settings**.
@@ -259,7 +267,7 @@ You can turn on a setting at the account, organization, or project level to use 
 
 #### Use a custom label for matrix stages
 
-You can use the keyword `nodeName` when specifying your matrix axes to define your stage naming convention. Expressions are supported, so you can customize the name as required. For example:
+You can use the `nodeName` key in your `matrix` YAML to define a matrix stage naming convention. Expressions are supported, so you can customize the name as required. For example:
 
 ```yaml
 matrix:
@@ -267,6 +275,10 @@ matrix:
   env: [env1, env2]
   nodeName: stage_<+matrix.service>_<+matrix.env>
 ```
+
+When you specify a `nodeName`, the original/parent stage name is prepended to the `nodeName`. Therefore, the final, resolved name of each stage is `OriginalStageName_nodeName`.
+
+If the resolved value of `nodeName` is the same for multiple stages, Harness automatically appends an index identifier to the name, such as `OriginalStageName_nodeName_0`, `OriginalStageName_nodeName_1`, and so on.
 
 ### Matrix examples and best practices
 
@@ -328,15 +340,106 @@ repeat:
 
 For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
+#### Use a custom label for repeat stages and steps
+You can use the keyword `nodeName` when specifying your repeat items to define your stage and step naming convention. Expressions are supported, so you can customize the name as required. For example:
+
+##### Customize the stage name:
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: custom_1
+        identifier: custom_1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+        strategy:
+          repeat:
+            items:
+              - host1
+              - host2
+              - host3
+            nodeName: TestDeploy_<+repeat.item>
+```
+![](./static/looping_name_example_1.png)
+
+##### Customize the step name:
+
+```yaml
+tags: {}
+  stages:
+    - stage:
+        name: custom_stage_2
+        identifier: custom_stage_2
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo hello_world
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items:
+                        - host1
+                        - host2
+                        - host3
+                      nodeName: Test_Deploy_step_<+repeat.item>
+
+
+```
+![](./static/looping_name_example_2.png)
+:::info 
+When creating a CI pipeline where both stage and step uses looping strategy and you want to use expressions inside nodeName in step then you have to use ``Test_Deploy_step_<+step.item>`` instead of ``Test_Deploy_step_<+repeat.item>``.
+:::
+
+:::info note
+1. When you use `nodeName`, the final name of the stages will be ``OriginalStageName_nodeName``, and the original stage name will be there.
+2. If the evaluated value of `nodeName` is the same in multiple stages, it will automatically append ``OriginalStageName_nodeName_0``, ``OriginalStageName_nodeName_1`` to the repeats. 
+:::
+
 ## Looping strategies as runtime input
 
 You can configure stage, step, and step group looping strategies as [runtime input](/docs/platform/variables-and-expressions/runtime-inputs) in your pipelines and templates.
 
-When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run the a pipeline with a `parallelism` strategy, and then run the same pipeline with a `matrix` strategy, simply by providing different runtime input.
+When you configure looping strategies as runtime input, you select the strategy and provide the strategy specifications at pipeline runtime. This means you can run s pipeline with a `parallelism` strategy and then run the same pipeline with a `matrix` strategy by providing different runtime input.
 
-The following video demonstrates how to configure and use runtime input for looping strategies.
+To do this, go to the **Looping Strategy** settings where you want to configure the looping strategy to be specified at runtime, select the **Thumbtack** icon, and change the input type to **Runtime Input**.
 
-<DocVideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
+![Selecting runtime input for the looping strategy.](./static/looping-runtime-input.png)
+
+When you run the pipeline, you'll be prompted to define the looping strategy configuration ([parallelism](#parallelism-strategies), [matrix](#matrix-strategies), or [repeat](#repeat-strategies)) for that run.
+
+Due to the potential complexity of looping strategies, [input sets](/docs/platform/pipelines/input-sets) are useful for looping strategies as runtime input. Input sets contain pre-defined runtime inputs that you select at runtime. This eliminates the need to manually enter the entire looping strategy each time.
 
 ## Looping strategy expressions
 
@@ -355,7 +458,9 @@ The value of the expression depends on where both the expression and looping str
 
 Possible statuses for nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, or `SUCCESS`.
 
-### strategy.node.NODE_ID.currentStatus>
+For more information, go to [Status expressions](/docs/platform/variables-and-expressions/harness-variables.md#status-expressions).
+
+### strategy.node.NODE_ID.currentStatus
 
 In stages/steps using matrix or repeat strategies, use either of the following two expressions to get the current status of the looping strategy for a specific stage or step, as defined by the `NODE_ID`: For example:
 
@@ -387,3 +492,85 @@ Use the following expressions to access the index values for each iteration of a
 Because stages and steps can't have the same identifier, the index value of the [iteration count](#iteration-counts) is appended to the base stage/step identifier to create unique identifiers for each stage/step instance created by the looping strategy. If you need to use an expression that references the identifier of a stage/step instance in a looping strategy, you must use the identifier with the appended index value.
 
 For example, assume a looping strategy is applied to a stage with the identifier `my_build_stage`. The expression `<+pipeline.stages.my_build_stage.variables>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_stage_0.variables>`.
+
+### identifierPostFix expressions
+
+<details>
+<summary>What is the identifierPostFix</summary>
+
+When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique IDs of the child stages/steps/step groups created by the looping operation. The `identifierPostFix` is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
+
+For example, the following matrix strategy creates 3 stages based on the `repo` values `docker`, `gcr`, and `ecr`. The `identifierPostfix` values would be `_docker`, `_gcr`, and `_ecr` for the different combinations of each stage run.
+
+```
+strategy:
+  matrix:
+    repo:
+      - docker
+      - gcr
+      - ecr
+```
+
+Similarly, the following parallelism strategy creates four stages/steps with the `identifierPostfix` values of `_0`, `_1`, `_2`, and `_3`.
+
+```
+strategy:
+  parallelism: 4
+```
+
+</details>
+
+* `<+strategy.identifierPostFix>`: This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
+   * When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
+   * If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
+   * If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the `identifierPostFix` of the stage.
+* `<+step.identifierPostFix>`: This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
+* `<+stage.identifierPostFix>`: This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
+* `<+stepGroup.identifierPostFix>`: This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
+* `<+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>`: This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
+   * For example, consider two nested step groups, sg1 and sg2 (which is a child of sg1). Both sg1 and sg2 have a looping strategy configured.
+
+      ![](./static/nested-looping-strategy.png)
+
+   * In this example, the expression `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2.
+   * To obtain the `identifierPostFix` for a specific step group, you could use `<+strategy.node.sg1.identifierPostFix>` to retrieve the `identifierPostFix` for the node with the identifier sg1 (parent step group), and you could use `<+strategy.node.sg2.identifierPostFix>` to retrieve the `identifierPostFix` for the node with the identifier sg2 (child step group).
+   * Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
+
+* `<+strategy.node.STRATEGY_NODE_IDENTIFIER.*>`: Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels. Here are some examples:
+   * `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
+   * `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
+   * `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
+   * `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
+   * `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
+   * `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
+   * `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
+   * `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
+   * `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
+
+## Execution status of stages with looping strategies
+
+The status of a stage with looping strategy is based on the highest priority execution status among its child stages:
+
+* Negative statuses takes precedence over positive status.
+* If _any one_ child stage has negative status, then the parent stage takes that negative status.
+* If _multiple_ child stages have negative statuses, the parent stage takes the negative status with the highest priority.
+* If _all_ child stages have a positive status, the parent stage takes the positive status with the highest priority.
+
+Negative status are prioritized as follows, from highest to lowest:
+
+1. Aborted
+2. Failed
+3. Freeze failed
+4. Approval rejected
+5. Expired
+
+Positive statuses are prioritized as follows, from highest to lowest:
+
+1. Ignore Failed
+2. Succeeded
+
+Here are some examples of the looping strategy status logic:
+
+* If one child stage is `Failed` and another child stage is `Expired`, then the parent becomes `Failed` because `Failed` has higher priority than `Expired`.
+* If one child stage is `Ignore failed` and another child stage is `Succeeded`, then the parent becomes `Ignore failed` because `Ignore failed` has higher priority than `Succeeded`.
+* If one child stageis `Expired` and all other child stages  are `Succeeded`, then the parent becomes `Expired` because negative statuses take priority over positive statuses, even if only one child stage has a negative status.

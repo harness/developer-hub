@@ -1,19 +1,21 @@
 import React from "react";
 import clsx from "clsx";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
-import HomepageCertifications from "@site/src/components/HomepageCertifications";
+import HomepageUniversity from "@site/src/components/HomepageUniversity";
 import Feedback from "@site/src/components/Feedback";
 import MDXContent from "@theme/MDXContent";
 import Lottie from "lottie-react";
 import allModuleAnimation from "./assets/hdh_hero.json";
+import allModuleAnimationDark from "./assets/hdh_hero-dark.json";
 
 import styles from "./index.module.scss";
 
+import { useColorMode } from "@docusaurus/theme-common";
 function HomepageHeader() {
+  const { colorMode } = useColorMode();
   const { siteConfig } = useDocusaurusContext();
   return (
     <>
@@ -24,7 +26,13 @@ function HomepageHeader() {
         </div>
       </header>
       <div className={styles.heroImg}>
-        <Lottie animationData={allModuleAnimation} loop={true} />
+        <Lottie
+          animationData={
+            colorMode === "dark" ? allModuleAnimationDark : allModuleAnimation
+          }
+          loop={true}
+        />
+        {/* <Lottie animationData={allModuleAnimationDark} loop={true} /> */}
       </div>
     </>
   );
@@ -32,6 +40,7 @@ function HomepageHeader() {
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
+
   return (
     <MDXContent>
       <Layout
@@ -50,7 +59,7 @@ export default function Home(): JSX.Element {
             <Feedback />
           </main>
 
-          <HomepageCertifications />
+          <HomepageUniversity />
         </div>
       </Layout>
     </MDXContent>

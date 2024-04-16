@@ -13,10 +13,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone** or **Run** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
+In addition to the pipeline's default [codebase](./create-and-configure-a-codebase.md), you can use **Git Clone**, **Run**, and **Plugin** steps to clone additional code repos into the pipeline's workspace. For example, you can use this to:
 
 * Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
+* Clone codebases without using the built-in clone codebase function.
 
 :::info Large file storage
 
@@ -28,7 +29,7 @@ If you need to clone LFS-enabled repositories or run `git lfs` commands (such as
 
 When you add a **Build** stage to a CI pipeline, you specify the Git account or repository where your code is stored. The codebase declared in a pipeline's first stage becomes the pipeline's default codebase, and this repo is cloned into the workspace automatically when the pipeline runs.
 
-For more information about creating pipelines, configuring the **Build** stage, and specifying the default codebase, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md), [Create and configure a codebase](./create-and-configure-a-codebase.md), and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+For more information about creating pipelines, configuring the **Build** stage, and specifying the default codebase, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md), [Configure codebase](./create-and-configure-a-codebase.md), and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add a Git Clone or Run step
 
@@ -106,7 +107,10 @@ You can't specify `/harness/` as a target directory for a **Git Clone** step bec
 
 The number of commits to fetch when the step clones the repo.
 
-For manually-triggered builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits. For all other trigger types, the default depth is `0`, which fetches all commits from the relevant branch.
+The default depth varies by build and trigger type:
+
+* For manually-triggered branch and tag builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits.
+* For manually-triggered PR builds and all auto-triggered builds (such as webhook triggers), the default depth is `0`. This means each `git clone` operation fetches all commits from the relevant branch.
 
 For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
@@ -137,8 +141,8 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ### SSH-keyscan timeout
 
@@ -184,7 +188,7 @@ Add this variable to all stages where you need to override the `SSH-keyscan` tim
   <TabItem value="run" label="Add a Run step">
 
 
-You can use scripts in [Run steps](../run-ci-scripts/run-step-settings.md) to clone multiple repos into a stage.
+You can use `git` commands in [Run steps](../run-step-settings.md) to clone multiple repos into a stage. You can also provide arguments to clone subdirectories, clone recursively, and so on.
 
 For example, this step clones a GitHub repository.
 
@@ -205,20 +209,25 @@ To use this command, you would replace:
 * `REPO_NAME` with the name of the GitHub repo to clone.
 * `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
 
-For information about **Run** step settings, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+For information about **Run** step settings, go to [Run scripts](../run-step-settings.md).
 
 
 </TabItem>
 </Tabs>
 
+:::tip
+
+When cloning additional codebases that use the same credentials as your default codebase, you can [use your default codebase connector's credentials in your Run step](/kb/continuous-integration/articles/Using_Git_Credentials_from_Codebase_Connector_in_CI_Pipelines_Run_Step).
+
+:::
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an image using code from both repos, such as a [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
 
-Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
+Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. This is because the pipeline's default codebase files are cloned in the root folder (`/harness`), while other codebase files are cloned into subfolders.
 
-Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to move cloned files around the workspace before building the image.
+Depending on the default codebase, you might need to specify a non-root path for build files. You can also use commands, such as `cp`, in [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to move cloned files around the workspace before building the image.
 
 ## YAML examples
 
@@ -366,3 +375,6 @@ This example also uses [stage variables](../set-up-build-infrastructure/ci-stage
 </TabItem>
 </Tabs>
 
+## Use a Plugin step
+
+As an alternative to the **Git Clone** and **Run** steps, you can clone a codebase by running the [Git Drone plugin](https://plugins.drone.io/plugins/git) in a [Plugin step](../use-drone-plugins/run-a-drone-plugin-in-ci.md).

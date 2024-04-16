@@ -8,13 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can connect Harness to Jira using a Harness Jira Connector. This Connector allows you to create and update Jira issues, and to use Jira issues in Approval steps.
+You can connect Harness to Jira using a Harness Jira connector. This [connector](/docs/platform/get-started/key-concepts.md#connectors) allows you to create and update Jira issues, and to use Jira issues in Approval steps.
 
 Looking for How-tos? Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/), [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages), and [Adding Jira Approval Stages and Steps](../../approvals/adding-jira-approval-stages.md).
-
-### Before you begin
-
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
 
 ### Limitations
 

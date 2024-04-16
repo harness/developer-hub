@@ -4,10 +4,6 @@ description: Identify and automatically open pull requests to remove stale featu
 sidebar_position: 30
 ---
 
-:::info note
-Stale flag management and cleanup automation is a beta feature.
-:::
-
 ## Manage stale flags
 
 Harness Feature Flags helps to identify stale flags and automates the process of removing them from your code.
@@ -70,7 +66,7 @@ At this time, the following languages are supported for flag cleanup automation:
 
 ### Set up a flag cleanup pipeline
 
-In order to use flag cleanup automation during the beta phase, you will need to [import a pipeline template](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/).
+In order to use flag cleanup automation you will need to [import a pipeline template](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/).
 
 - The URL to import from is https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml
 - Note that the identifier and the name must match

@@ -12,7 +12,7 @@ SCM reports help you analyze activity in your SCM tools, including:
 * Review collaboration.
 * Most active repositories and files.
 
-Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](../../sei-integrations/sei-integrations-overview.md).
+Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
 ## SCM code activity reports
 
@@ -30,7 +30,7 @@ Use SCM code activity reports to analyze direct coding activity in your SCM tool
 
 :::info Trellis Scores
 
-Some code velocity metrics contribute to [Trellis Scores](../trellis-score.md):
+Some code velocity metrics contribute to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score):
 
 * Coding days are part of the **Speed** factor.
 * Number of commits per month is part of the **Volume** factor.
@@ -40,7 +40,7 @@ Some code velocity metrics contribute to [Trellis Scores](../trellis-score.md):
 
 ### SCM Committers Report
 
-With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](../../sei-projects-and-collections/manage-collections.md):
+With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections):
 
 * The number of PRs they have worked on.
 * The number of commits they've made.
@@ -60,7 +60,7 @@ This information helps you with:
 * **SCM Change Volume to CI/CD Jobs Single Stat:** Report a single stat related to the frequency or volume of deployed code changes.
 * **Code Volume Vs. Deployment Report**
 
-For more information about CI/CD job reports, go to [CI/CD job reports](./ci-cd-reports.md).
+For more information about CI/CD job reports, go to [CI/CD job reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports).
 
 ## SCM issues reports
 
@@ -88,7 +88,7 @@ Use the **SCM Issues Resolution Time Report** to analyze the overall time taken 
 
 The **SCM Issues Time Across Stages Report** analyzes cycle time for SCM issues. You can configure this widget by project, repository, or other parameters to help you identify the Kanban state where issues spend the most time.
 
-Only GitHub is supported, and your [GitHub SEI integration](../../sei-integrations/automated-integrations/sei-integration-github.md) must have the appropriate configuration to ingest issue cycle time data.
+Only GitHub is supported, and your [GitHub SEI integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github) must have the appropriate configuration to ingest issue cycle time data.
 
 ## SCM PR reports
 
@@ -120,6 +120,11 @@ Use the **SCM Review Collaboration Report** to understand how a team performs co
 
 You can configure this widget to track PRs merged or PRs closed by the team, along with other filters such as destination branch, project, and so on.
 
+<img
+  src={require('./static/scm-review-collaboration.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
+
 ### SCM PRs Report
 
 The **SCM PRs Report** shows a high level view of PRs moving through your SCM tool. This is a versatile report that analyzes different attributes in the development process through your SCM tool. You can configure this report to inspect data by assignee, destination branch, reviewer, repository, and more. For example, you can use this report to:
@@ -127,6 +132,11 @@ The **SCM PRs Report** shows a high level view of PRs moving through your SCM to
 * Analyze how many PRs each developer raises.
 * Analyze PR comments and categorize them based on a threshold.
 * Better understand the overall contribution of the team.
+
+<img
+  src={require('./static/scm-pr-report.png').default}
+  alt="Example banner" height="50%" width="50%" border="1"
+/>
 
 On the **Filters** tab, you can configure what data feeds into this widget by creating inclusive and exclusive filters. For example, you can set the widget to show PRs in closed status in the last 7 days.
 
@@ -154,6 +164,10 @@ The SCM Coding Days Report can be configured to track the following metrics:
 * **Average Coding Days Per Month:** The average number of days per month where code commits were made. A minimum of 28 days is required to calculate this metric.
 * **Median Coding Days Per Month:** The median number of days per month where code commits were made. A minimum of 28 days is required to calculate this metric.
 
+<img
+  src={require('./static/scm-coding-days.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 ### SCM PR Lead Time by Stage Report
 
@@ -168,66 +182,29 @@ To add the **SCM PR Lead Time by Stage Report** to Insights:
 5. On the **Settings** tab, select the relevant [Workflow profile](#workflow-profiles-for-lead-time), and then select **Next: Place Widget**.
 6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
-### Workflow profiles for lead time
-
-Lead time is based on time spent in stages defined in a [Workflow profile](../../sei-profiles/workflow-profile.md).
-
-The default configuration for a [PR-based Workflow profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
-
-* PR creation time.
-* Time to first comment.
-* Approval time.
-* Merge time.
-
-When [calculating lead time](#pr-lead-time-calculation), the time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then the *time to first comment* is zero.
-
-You can configure grading thresholds (good, acceptable, and slow) for each stage. These thresholds determine grades that appear on your PR lead time widgets. Grades are reported for each stage as well as a cumulative grade for all stages combined.
-
-You can modify Workflow profile stages and grades according to your team's SDLC process. If you only want to track PR lead time in SCM, make sure the **Start Event** is **Commit Created**. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
-
-For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+<img
+  src={require('./static/scm-pr-leadtime-stage.png').default}
+  alt="Example banner" height="50%" width="100%" border="1"
+/>
 
 ### PR lead time calculation
 
 Several SCM PR reports include lead time. Lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue lifetime for SCM issues. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](#workflow-profiles-for-lead-time). The time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then the *time to first comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the pull request, then the *time to comment* is zero.
 
-The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default Workflow profile configuration, which has four stages: PR creation time, time to first comment, approval time, and merge time.
+The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based Workflow profile, which has four stages: PR creation time, time to comment, approval time, and merge time.
 
 When reviewing these examples, consider the following:
 
-* *Time to first comment* helps you understand the lead time between PR creation time and the first review.
+* *Time to Comment* helps you understand the lead time between PR creation time and the associated review.
 * There are two ways to track the time taken for a PR approval:
-  * Default *Approval Time* configuration: The overall approval time, starting from PR creation.
-  * *Approval Time* minus *Time to first comment*: Time spent in the review cycle when an active reviewer is involved.
+  * **Default *Approval Time* configuration:** The overall approval time, starting from PR creation.
+  * ***Approval Time* minus *Time to Comment*:** Time spent in the review cycle when an active reviewer is involved.
 * The *overall lead time* is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
 
 <details>
 <summary>SCM PR Lead Time calculation example #1</summary>
-
-For this example, assume the following series of events occurs:
-
-1. Contributor makes a commit (`Commit created event`).
-2. Contributor creates a Pull Request (`Pull Request created event`).
-3. The Pull Request is approved by an approver (`Pull Request approval event`).
-4. The Pull Request is merged to the repository (`Pull Request Merged event`).
-
-As a result the following calculations are made:
-
-```
-PR creation time = Pull Request created event - Commit created event
-Time to first comment = Pull Request approval event - Pull Request created event
-Approval Time = 0
-Merge Time = Pull Request Merged event - Pull Request approval event
-```
-
-Approval Time is calculated as `0` because there were no review comments made on the PR.
-
-</details>
-
-<details>
-<summary>SCM PR Lead Time calculation example #2</summary>
 
 For this example, assume the following series of events occurs:
 
@@ -249,7 +226,7 @@ Merge Time = Pull Request Merged event - Pull Request approval event
 </details>
 
 <details>
-<summary>SCM PR Lead Time calculation example #3</summary>
+<summary>SCM PR Lead Time calculation example #2</summary>
 
 For this example, assume the following series of events occurs:
 

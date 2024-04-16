@@ -12,7 +12,7 @@ For more information about the acquisition, go to the [Harness blog](https://www
 
 ## Get started with Harness
 
-If you're new to Harness, go to [Get started with Harness](/docs/get-started).
+If you're new to Harness, go to [Get started with Harness](/docs/category/get-started-with-harness).
 
 ## Authentication, access, and user management
 
@@ -56,8 +56,8 @@ The following terms are the same:
 * Tables
 * Trellis Score
 
-The The following features are currently not supported in the SEI module of Harness: 
+The following features are currently not supported in the SEI module of Harness: 
 
-* Licence Usafe
+* License Usage
 * Delegates (Alternative: Ingestion Satellites)
 * Connectors (Alternative: Integrations)

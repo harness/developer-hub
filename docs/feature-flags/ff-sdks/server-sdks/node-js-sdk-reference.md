@@ -32,7 +32,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.4.0**.
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-nodejs-server-sdk/releases)
 
 ## Requirements
 
@@ -162,10 +162,10 @@ You can configure the following features of the SDK:
 | --- |------------------------------------------------------------------------------------------------------------------------------------------| --- |
 | **Name** | **Description**                                                                                                                          | **Default Value** |
 | baseUrl | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
+| eventsUrl | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
 | pollInterval | The interval **in milliseconds** that we poll for changes when you are using stream mode.                                                 | `60` (seconds) |
 | enableStream | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode.                                                         | `true` |
-| analyticsEnabled | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
+| enableAnalytics | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 
 For example:
 
@@ -352,24 +352,31 @@ setInterval(() => {
 ## Troubleshooting
 The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
 
-| **Code** | **Description**                                        |
-|----------|:-------------------------------------------------------|
-| **1000** | Successfully initialized                               |
-| **1001** | Failed to initialize due to authentication error       |
-| **1002** | Failed to initialize due to a missing or empty API key |
-| **2000** | Successfully authenticated                             |
-| **3000** | SDK Closing                                            |
-| **3001** | SDK closed successfully                                |
-| **4000** | Polling service started                                |
-| **4001** | Polling service stopped                                |
-| **5000** | Streaming service started                              |
-| **5001** | Streaming service stopped                              |
-| **5002** | Streaming event received                               |
-| **5003** | Streaming disconnected and is retrying to connect      |
-| **5004** | Streaming stopped                                      |
-| **6000** | Evaluation was successfully                            |
-| **6001** | Evaluation failed and the default value was returned   |
-| **7000** | Metrics service has started                            |
-| **7001** | Metrics service has stopped                            |
-| **7002** | Metrics posting failed                                 |
-| **7003** | Metrics posting success                                |
+| **Code** | **Description**                                                                                               | **Log Level** |
+|----------|:--------------------------------------------------------------------------------------------------------------|---------------|
+| **1000** | Successfully initialized                                                                                      | Info          |
+| **1001** | Failed to initialize due to authentication error                                                              | Error         |
+| **1002** | Failed to initialize due to a missing or empty API key                                                        | Error         |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish | Info          |
+| **2000** | Successfully authenticated                                                                                    | Info          |
+| **2001** | Authentication failed with a non-recoverable error                                                            | Error         |
+| **2002** | Authentication failed and is retrying                                                                         | Warn          |
+| **2003** | Authentication failed and max retries have been exceeded                                                      | Error         |
+| **3000** | SDK closing                                                                                                   | Info          |
+| **3001** | SDK closed successfully                                                                                       | Info          |
+| **4000** | Polling service started                                                                                       | Info          |
+| **4001** | Polling service stopped                                                                                       | Info          |
+| **5000** | Streaming connected                                                                                           | Info          |
+| **5001** | Streaming disconnected                                                                                        | Warn          |
+| **5002** | Streaming event received                                                                                      | Debug         |
+| **5003** | Streaming disconnected and is retrying to connect                                                             | Info          |
+| **5004** | Streaming service stopped                                                                                     | Info          |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                          | Warn          |
+| **6000** | Evaluation was successful                                                                                     | Debug         |
+| **6001** | Evaluation failed and the default value was returned                                                          | Info          |
+| **7000** | Metrics service has started                                                                                   | Info          |
+| **7001** | Metrics service has stopped                                                                                   | Info          |
+| **7002** | Metrics posting failed                                                                                        | Warn          |
+| **7003** | Metrics posting success                                                                                       | Debug         |
+| **7004** | Metrics max target size exceeded                                                                              | Warn          |
+| **7007** | Metrics max evaluation size reached                                                                           | Warn          |

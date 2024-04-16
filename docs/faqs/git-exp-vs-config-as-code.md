@@ -28,7 +28,6 @@ For more information, go to [Git Experience](/docs/category/git-experience).
 
 You can use Configuration as Code to configure pipelines, triggers, workflows, environments, and services and perform nearly all the same actions in YAML as in the Harness UI. With Configuration as Code, you can add and manage all configurations in Git. Harness stores your Git configuration in its database and automatically updates its local copy with any Git changes. Additionally, it receives updates from the UI and updates the database record, then synchronizes the changes with Git. 
 
-
 :::note
 You cannot choose a non-default branch to test changes for any entity. Also, configurations can only be managed in a central Git repository.
 :::
@@ -87,8 +86,8 @@ There were Git sync issues with Configuration as Code while maintaining the corr
 For more information, go to:
 
 - [Pipelines](/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
-- [Input Set](/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
-- [Templates](/docs/platform/Templates/templates-best-practices#remote-template-versioning)
+- [Input Set](/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience)
+- [Templates](/docs/platform/templates/templates-best-practices#remote-template-versioning)
 - [Services](/docs/platform/git-experience/manage-services-using-git-experience.md)
 
 ## Why does Harness support the storage of only a few entities in Git?

@@ -28,7 +28,7 @@ When creating a Dynatrace query:
 
 ## Before You Begin
 
-[Add Dynatrace as a verification provider](/docs/platform/connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
+[Add Dynatrace as a verification provider](/docs/platform/connectors/monitoring-and-logging-systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
 
 
 :::info
@@ -38,14 +38,14 @@ To allow Harness to access Dynatrace metrics through the Dynatrace API, you must
 
 ## Review: CV Setup Options
 
-To use the Verify step, you will need a Harness Service Reliability Management Monitored Service. In the simplest terms a Harness Monitored Service is a Service and Environment combination, that Harness monitors for:
+To use the Verify step, you will need a Harness Monitored Service. In the simplest terms a Harness Monitored Service is a Service and Environment combination, that Harness monitors for:
 
 * Any changes, such as deployments, infrastructure changes, and incidents
 * Any health trend deviations using logs and metrics obtained from APM and Logging tools respectively
 
-No matter where you set up the Monitored Service, once it's set up, it's available to both Service Reliability Management and CD modules.
+There are other ways to set up a Monitored Service. Whichever way you choose, the process is the same. To learn more see: [Monitored Service](docs/platform/monitored-service.md)
 
-In this topic, we set up the Harness Monitored Service as part of the Verify step setup.
+In this topic we'll set up the Monitored Service as part of the **Verify** step.
 
 ## Step 1: Add Verify Step
 
@@ -181,7 +181,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/variables-and-expressions/harness-variables.md)
+In **Artifact Tag**, use a [Harness expression](/docs/platform/variables-and-expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -189,9 +189,9 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/../../platform/delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+* [Select Delegates with Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 
 ## Step 9: Deploy and Review Results

@@ -14,7 +14,7 @@ export default function Iacm() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img width={64} src={`${baseUrl}img/iacm-icon.svg`} />
-            <h1>Infrastructure as Code Management Documentation</h1>
+            <h1>Infrastructure as Code Management</h1>
           </div>
           {/*
             TODO: Re-add this when the release notes are added to the docs
@@ -35,11 +35,6 @@ export default function Iacm() {
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      {/* <div className={styles.sectionDivider}></div> */}
-      <div className={styles.subSection}>
-        {/* <h3>Featured Tutorials</h3> */}
-        {/* <TutorialCard FeatureList={FeaturedList} featuredCard={true} /> */}
-      </div>
     </div>
   );
 }

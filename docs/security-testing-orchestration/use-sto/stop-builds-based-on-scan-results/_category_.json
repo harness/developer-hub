@@ -1,6 +1,6 @@
 {
     "label": "Stop builds based on scan results",
-    "position": 40,
+    "position": 50,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

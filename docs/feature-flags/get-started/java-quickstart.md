@@ -1,11 +1,11 @@
 ---
 title: Get started with an SDK
 description: This quickstart shows you how to create a Feature Flag in Harness and use Feature Flags (FF) SDK in your Java application.
-tags: 
+tags:
    - feature flag
    - java SDK
    - Quickstart
-sidebar_position: 40
+sidebar_position: 6
 helpdocs_topic_id: qym3qtrexy
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false

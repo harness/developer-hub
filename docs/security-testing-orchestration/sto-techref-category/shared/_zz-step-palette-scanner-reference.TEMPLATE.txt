@@ -34,7 +34,7 @@ You can also set up an Aqua Trivy scan in a [Security step](#security-step-confi
 </details>
 
 
-### Scan settings
+### Scan
 
 
 #### Scan Mode
@@ -43,7 +43,7 @@ You can also set up an Aqua Trivy scan in a [Security step](#security-step-confi
 #### Scan Configuration
 
 
-### Target Settings
+### Target
 
 
 #### Type
@@ -59,7 +59,7 @@ You can also set up an Aqua Trivy scan in a [Security step](#security-step-confi
 ### Ingestion File
 
 ```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 ```
 
 <StoSettingIngestionFile  />
@@ -72,7 +72,8 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 #### Log Level
 
 ```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+
 ```
 
 <StoSettingLogLevel />
@@ -82,7 +83,8 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 ```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+
 ```
 
 <StoSettingCliFlags />
@@ -93,7 +95,8 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 #### Fail on Severity
 
 ```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+
 ```
 <StoSettingFailOnSeverity />
 
@@ -112,10 +115,10 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 

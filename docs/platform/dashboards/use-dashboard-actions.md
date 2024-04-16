@@ -27,7 +27,7 @@ Perform the following steps to use Dashboard actions:
 	</tr>
 	<tr>
 		<td valign="top">Download</td>
-		<td>Downloads the dashboard in PDF or CSV format. See <a href="/docs/platform/Dashboards/download-dashboard-data">Download Dashboard Data</a>.</td>
+		<td>Downloads the dashboard in PDF or CSV format. See <a href="/docs/platform/dashboards/download-dashboard-data">Download Dashboard Data</a>.</td>
 	</tr>
 	<tr>
 		<td valign="top">Reset filters</td>

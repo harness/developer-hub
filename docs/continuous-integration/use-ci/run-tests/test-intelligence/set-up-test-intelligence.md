@@ -18,7 +18,7 @@ import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 :::info
 
-Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../../run-ci-scripts/run-step-settings.md) to run tests.
+Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../../run-step-settings.md) to run tests.
 
 :::
 
@@ -54,7 +54,7 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **R
   - The TI service can receive real-time Git webhook notifications for any commit or merge. The TI service pulls the Git commit-graph and other metadata from Git for test selection.
   - When the TI Test Runner Agent sends a call graph generated from a PR, the TI service keeps that data in a staging area in case the PR doesn't get merged into the target branch (such as `main`). Once the TI receives the merge notification from Git, it updates and inserts the partial call graph with the target branch's call graph.
 - **Test Runner Agent:** The Test Runner Agent runs on the build infrastructure. It's responsible for communicating with the TI service. Whenever a **Run Tests** step initializes, the Test Runner Agent provides the TI service with the build number, commit-id, and other details, and the TI service returns the list of selected tests. The Test Runner Agent runs the selected tests. After all the tests run, the Agent parses the test results and uploads the results along with the newly-generated call graph.
-- **Run Tests step:** While you can also run tests in a [Run step](../../run-ci-scripts/run-step-settings.md), to enable Test Intelligence, you must use the **Run Tests** step.
+- **Run Tests step:** While you can also run tests in a [Run step](../../run-step-settings.md), to enable Test Intelligence, you must use the **Run Tests** step.
   - The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
   - TI identifies the programming language and uses the **Run Tests** step to run the selected tests in that step's container. The **Run Tests** step, through the Test Runner Agent, parses the test results and returns the results to the TI service.
 
@@ -71,7 +71,7 @@ Test Intelligence is available for:
 - [Python](./ti-for-python.md)
 - [Ruby](./ti-for-ruby.md)
 
-For other codebases, you can use [Run steps](../../run-ci-scripts/run-step-settings.md) to run tests.
+For other codebases, you can use [Run steps](../../run-step-settings.md) to run tests.
 
 ## Enable Test Intelligence
 
@@ -103,8 +103,18 @@ config:
 
 ## View test reports and test selection
 
-For information about test reports for Test Intelligence, go to [View tests](../viewing-tests.md).
+Test results and test selection are reported on the **Tests** tab. The visualization call graph provides insights into why each test was selected. You can drill down into selected tests to examine selected classes/methods in more detail. For more information about test reports and test selection, go to [View tests](../viewing-tests.md).
 
-## Troubleshooting Test Intelligence
+## Troubleshoot Test Intelligence
 
-For troubleshooting guidance related to Test Intelligence, go to [Troubleshoot CI - Test Intelligence issues](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md#test-intelligence-issues).
+Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to Test Intelligence, including:
+
+* [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
+* [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
+* [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
+* [Ruby Test Intelligence can't find rspec helper file.](/kb/continuous-integration/continuous-integration-faqs/#ruby-test-intelligence-cant-find-rspec-helper-file)
+* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
+* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
+* [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)
+* [Errors when running TI with Maven.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-errors-with-maven)
+* [Gradle version not compatible with Test Intelligence.](/kb/continuous-integration/continuous-integration-faqs/#gradle-version-not-compatible-with-test-intelligence)

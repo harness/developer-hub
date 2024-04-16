@@ -28,14 +28,14 @@ For getting started quickly, you can use our [sample code from the .NET SDK READ
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.4.0**
+Latest SDK version can be found on [GitHub Release Page](https://github.com/harness/ff-dotnet-server-sdk/releases)
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
@@ -88,8 +88,10 @@ public static String apiKey = "YOUR_API_KEY";
 ### Add a Target
 
 <details>
-<summary>What is a Target?</summary> 
+<summary>What is a Target?</summary>
+
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.
+
 </details>
 
 For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
@@ -172,7 +174,7 @@ CfClient.Instance.Initialize(apiKey, Config.Builder()
     .EventUrl("https://events.ff.harness.io/api/1.0")  
     .SetPollingInterval(60)  
     .SetStreamEnabled(true)  
-    .SetAnalyticsEnabled(false)  
+    .SetAnalyticsEnabled(true)  
     .Build());
 ```
 ### Complete the initialization
@@ -391,3 +393,35 @@ namespace getting_started
     }  
 }
 ```
+
+## Troubleshooting
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                                                  | **Log Level** |
+|----------|:-----------------------------------------------------------------------------------------------------------------|---------------|
+| **1000** | Successfully initialized                                                                                         | Info          |
+| **1001** | Failed to initialize due to authentication error                                                                 | Error         |
+| **1002** | Failed to initialize due to a missing or empty API key                                                           | Error         |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish    | Info          |
+| **2000** | Successfully authenticated                                                                                       | Info          |
+| **2001** | Authentication failed with a non-recoverable error                                                               | Error         |
+| **2002** | Authentication failed and is retrying                                                                            | Warn          |
+| **2003** | Authentication failed and max retries have been exceeded                                                         | Error         |
+| **3000** | SDK closing                                                                                                      | Info          |
+| **3001** | SDK closed successfully                                                                                          | Info          |
+| **4000** | Polling service started                                                                                          | Info          |
+| **4001** | Polling service stopped                                                                                          | Info          |
+| **5000** | Streaming connected                                                                                              | Info          |
+| **5001** | Streaming disconnected                                                                                           | Warn          |
+| **5002** | Streaming event received                                                                                         | Debug         |
+| **5003** | Streaming disconnected and is retrying to connect                                                                | Info          |
+| **5004** | Streaming service stopped                                                                                        | Info          |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                             | Warn          |
+| **6000** | Evaluation was successful                                                                                        | Debug         |
+| **6001** | Evaluation failed and the default value was returned                                                             | Info          |
+| **7000** | Metrics service has started                                                                                      | Info          |
+| **7001** | Metrics service has stopped                                                                                      | Info          |
+| **7002** | Metrics posting failed                                                                                           | Warn          |
+| **7003** | Metrics posting success                                                                                          | Debug         |
+| **7004** | Metrics max target size exceeded                                                                                 | Warn          |
+| **7007** | Metrics max evaluation size reached                                                                              | Warn          |

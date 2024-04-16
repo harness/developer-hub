@@ -70,7 +70,7 @@ You can add up to 50,000 users in paid plans. Free plans and Harness Community E
 
 ### Invitation emails
 
-When you add a user, Harness checks your [authentication method](/docs/platform/Authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent:
+When you add a user, Harness checks your [authentication method](/docs/platform/authentication/authentication-overview) and email invite preferences to determine if an email invitation should be sent:
 
 * **Login via a Harness Account or Public OAuth Providers:** The invited user gets an email invitation. The user is listed on **Pending Users** until the user accepts the invitation.
 * **SAML**, **LDAP**, or **OAuth** *and* you have enabled the feature flag `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES`: Harness adds the user directly to the **Active Users** list, and Harness *doesn't* send an email to the user.
