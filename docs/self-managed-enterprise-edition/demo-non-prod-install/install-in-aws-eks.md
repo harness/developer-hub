@@ -1,6 +1,6 @@
 ---
-title: Install in AWS
-description: Learn how to install Harness Self-Managed Enterprise Edition in AWS.
+title: Install in AWS EKS
+description: Learn how to install Harness Self-Managed Enterprise Edition in AWS EKS.
 sidebar_position: 15
 ---
 
@@ -138,8 +138,8 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
     | Key                       | Value     |
     | ----------------------------------- | --------------------- |
     | `global.ingress.enabled`| `true`|
-    | `global.loadbalancerURL`        | `""`|
-    | `global.ingress.hosts`                            | `""`|
+    | `global.loadbalancerURL`| `""`|
+    | `global.ingress.hosts`| `""`|
 
 
 4. Install the Helm chart.
@@ -150,19 +150,19 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 
    As EKS has the ability to create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the AWS EKS documentation. For this tutorial, we'll take advantage of this functionality by creating our Load Balancer first manually.
 
-4. Save the reference `loadbalancer.yaml` file and apply it into your cluster.
+5. Save the reference `loadbalancer.yaml` file and apply it into your cluster.
 
    ```
    kubectl create -f loadbalancer.yaml -n harness
    ```
 
-5. Get the ELB URL.
+6. Get the ELB URL.
 
    ```
    kubectl get service -n harness
    ```
 
-6. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
+7. Make a note of the `EXTERNAL-IP` for the `harness-ingress-controller`. It should look like `<string>.us-east-2.elb.amazonaws.com`.
 
 
    ```

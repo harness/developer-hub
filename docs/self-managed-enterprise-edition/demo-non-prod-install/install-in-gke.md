@@ -19,7 +19,6 @@ In addition to a Harness account, you need the following:
 - Access to Helm charts
 - An external IP address
 
-
 ### Create a test cluster
 
 To create your test cluster, do the following:
