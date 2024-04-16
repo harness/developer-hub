@@ -262,4 +262,4 @@ You can see that the value expected and the value obtained don't match. Hence, t
 
 Congratulations on running your first chaos experiment! Want to know how to remediate the application so that it passes the experiment run and probe checks? Increase the experiment pods to at least two so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
 
-Once you've explored this, head over to the next tutorial, where you'll learn how to [create chaos experiments from scratch](./chaos-experiment-from-blank-canvas) and execute them for the same target application.
+Once you've explored this, head over to the next tutorial, where you'll learn how to [create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md) and execute them for the same target application.
