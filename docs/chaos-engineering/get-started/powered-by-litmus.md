@@ -9,7 +9,7 @@ Harness Chaos Engineering (HCE) is powered by the open source CNCF chaos enginee
 
 ![Harness Chaos Engineering Module](./static/overview/HCE-image.png)
 
-Go to [HCE versus LitmusChaos](#harness-ce-versus-litmuschaos) for a quick comparison.
+Go to [HCE versus LitmusChaos](#hce-versus-litmuschaos) for a quick comparison.
 
 ## Common capabilities of HCE and LitmusChaos
 Following are the common features between Litmus and HCE:

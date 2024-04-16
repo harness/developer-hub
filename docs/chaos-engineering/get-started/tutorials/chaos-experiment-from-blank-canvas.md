@@ -1,56 +1,132 @@
 ---
-title: Create a chaos experiment from a blank canvas
+title: Create chaos experiment from a blank canvas
 description: Create a chaos experiment from scratch.
 sidebar_position: 3
 redirect_from:
   - /tutorials/chaos-experiments/chaos-experiment-from-blank-canvas
 ---
 
-This tutorial guides you through creating chaos experiments from scratch. Here, you'll construct a chaos experiment from scratch in the Chaos Studio.
+In this tutorial, you will create chaos experiments from scratch and execute them on the sample boutique application.
 
-## Constructing a chaos experiment from scratch
+This experiment follows the same steps of [your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md) by creating a chaos environment, and infrastructure and using the same boutique application by targeting the pods of the `cart` microservice, except the way you create an experiment. Creating a chaos experiment involves the following steps:
 
-In the [first chaos experiment tutorial](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md), you used the **Boutique cart delete** template to create the chaos experiment. This time around, let us define the same experiment with minor changes from scratch. We will again target the pods of the carts microservice with the pod delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
+1. Create a project/receiving an invite for a project with relevant access;
+2. Create an environment;
+3. Create a chaos infrastructure;
+4. Create a chaos experiment.
 
-![Online Boutique App Cart](./static/chaos-experiment-from-blank-canvas/online-boutique-app-cart.png)
+In the last step, instead of choosing a pre-defined experiment, you will choose from a variety of experiments. This way of choosing a chaos experiment from a list will set the foundation for you to understand how to execute different experiments on different platforms with varied targets based on your requirements.
 
-To create the chaos experiment, go to **Chaos Experiments** in the sidebar menu and choose **New Experiment**. Then, add the experiment name and optionally a description and tags. Then, choose the target infrastructure, which we created previously. Choose **Next**. In the Experiment Builder, choose **Blank Canvas** and select **Start with blank canvas**.
+## Before you begin
 
-![Chaos Studio](./static/chaos-experiment-from-blank-canvas/chaos-studio.png)
+* [What is chaos engineering?](/docs/chaos-engineering/get-started/overview.md)
+* [Prerequisites to execute chaos experiments](/docs/chaos-engineering/get-started/tutorials/prerequisites.md)
+* [Execute your first chaos experiment using a template](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
 
-Let us try to define our pod delete fault. Choose **Add**. From the **Enterprise Chaos Hub** select pod delete fault under the Kubernetes category.
+### Step 1: Set up environment and infrastructure
 
-![Pod Delete Fault](./static/chaos-experiment-from-blank-canvas/pod-delete-fault.png)
+1. Follow the steps to set up [your environment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-2-add-a-chaos-environment) and [chaos infrastructure](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-3-add-a-chaos-infrastructure).
 
-Specify the target application namespace, type and label. We will be targeting the carts microservice and hence we will provide the appropriate `hce` namespace and the `app=cartservice` label which corresponds to the cart microservice. The application kind will be `deployment`. 
+### Step 2: Construct a chaos experiment from a blank canvas
 
-![Specify Target Application](./static/chaos-experiment-from-blank-canvas/specify-target-application.png)
+2. Once you have your environment and chaos infrastructure in place, you can create a chaos experiment. To create an experiment, navigate to **Chaos Experiments** in the sidebar menu and click **New Experiment**.
 
-Then, choose the **Tune Fault** tab to configure the fault parameters. Here, we will define the fault execution duration to be 30 seconds, with an interval of 10 seconds, so that in every 10 seconds we will be deleting the cart deployment pods for a total of 30 second duration. Lastly we have specified the pod affected percentage to be 50% so that half of all the deployment pods and at minimum one pod will be deleted in each iteration of chaos.
+![create new experiment](./static/first-chaos/create-new-experiment-1.png)
+
+3. Specify the experiment name and a description (optional) and tags (optional). Choose the target infrastructure, click **Apply**, and click **Next**.
+
+![specify parameters](./static/first-chaos/specify-params-2.png)
+
+4. In the Experiment Builder, select **Blank Canvas** and click **Start with blank canvas**.
+
+![blank canvas](./static/chaos-experiment-from-blank-canvas/blank-canvas.png)
+
+5. This will lead you to the page where you can add chaos faults to your experiment. Click **Add**.
+
+![click add](./static/chaos-experiment-from-blank-canvas/add-experiments.png)
+
+6. Search for **"pod delete"** in the search bar and select "Pod Delete" fault from the result of the search.
+
+![select fault](./static/chaos-experiment-from-blank-canvas/select-fault.png)
+
+7. Add details in the **Target Application** tab, such as the `hce` namespace, `app=cartservice` label, and application kind `deployment`.
+
+![target app](./static/chaos-experiment-from-blank-canvas/target-app.png)
+
+8. In the **Tune Fault** tab, specify **total chaos duration** as 30, **chaos interval** as 5, **pods affected perc** as 50, and the default weight to 10.
 
 ![Tune Fault](./static/chaos-experiment-from-blank-canvas/tune-fault.png)
 
-Lastly, choose the **Probes** tab. Here, we have a default application **health-check** probe defined which validates the target application health before and after the fault injection to ensure that the application is unharmed due to the experiment. Let us add one more probe so that we can validate the carts microservice health. Select **Deploy new Probe**, ensure that the probe type is `HTTP Probe`, select **Continue** and then again select **Continue**. Now, we need to provide the HTTP probe URL so that the probe can make GET requests at that URL and check if the status code in response is 200 for the successful validation of the probe. Provide the URL `http://frontend/cart`, which is the URL for the cart page. Also, reduce the response timeout to 5 seconds. Then, select **Setup the Probe**.
+:::tip
+The `pods affected perc` describes the percentage of pods that are affected due to the unexpected pod deletion. A minimum of one pod is deleted.
+:::
 
-![HTTP Probe](./static/chaos-experiment-from-blank-canvas/http-probe.png)
+### Step 3: Create a new HTTP probe
+8. In the **Probes** tab, you can create a new probe. For this, click **Select or Add new probes**.
 
-When done, simply close the overlay modal. We have added the Pod Delete fault now.
+![Probes Config](./static/first-chaos/probes-config.png)
 
-In the last step, choose the **Set Fault Weight** tab. We will use the default weight of 10 for the fault.
+9. Select **New probe**.
 
-![Set Fault Weight](./static/chaos-experiment-from-blank-canvas/set-fault-weight.png)
+![new probe](./static/chaos-experiment-from-blank-canvas/new-probe.png)
 
-## Observing chaos execution
+10. Select **Kubernetes** as the infrastructure type, and **HTTP** as the probe type. This leads you to the probe configuration screen.
 
-When ready, start the experiment execution by selecting **Run** on the top right corner of the screen. You'll be able to observe the experiment added to the list of chaos experiments and it should be in a `Running` status. Choose **Current Execution** to get a detailed view.
+![select type probe](./static/chaos-experiment-from-blank-canvas/select-probe-2.png)
 
-![Experiment Executing](./static/chaos-experiment-from-blank-canvas/experiment-executing.png)
+11. Specify the name of the probe, description (optional), and tag (optional). Click **Configure Properties**.
 
-Once the fault is running, we can check for the detailed view of the experiment. We can follow the logs of the experiment run as it gets executed. 
+![configure probe](./static/chaos-experiment-from-blank-canvas/configure-3.png)
 
-![Detailed Chaos Execution](./static/chaos-experiment-from-blank-canvas/detailed-chaos-execution.png)
+12. Specify the timeout as 5s, attempt as 2, and interval as 10s. Click **Configure Details**.
 
-At the same time, we can also check for the status of the cart deployment pod. Upon executing the following command you will get a similar output. It is evident that the Pod Delete fault has caused the cart pod to be terminated and a new pod has recently replaced it, for whose container is yet to be created.
+![probe properties](./static/chaos-experiment-from-blank-canvas/properties-4.png)
+
+13. Enter the URL as `http://frontend/cart` which is the URL for the cart page.
+
+![probe url](./static/chaos-experiment-from-blank-canvas/url-5.png)
+
+14. Specify the method as `GET` so that the probe can make GET requests at the URL specified earlier. Select **Compare response code**, criteria as **==**, and response code as `200` for the successful validation of the probe. Click **Setup Probe**.
+
+![response](./static/chaos-experiment-from-blank-canvas/response-6.png)
+
+15. Once you create a probe, click it, and select **Add to Fault**.
+
+![add to fault](./static/chaos-experiment-from-blank-canvas/add-to-fault.png)
+
+16. Select mode as **Continuous** and click **Apply changes**.
+
+![continuous](./static/chaos-experiment-from-blank-canvas/continuous-mode.png)
+
+17. Click **Apply changes** again to confirm all parameters configuration. Click 'X' to close the overlay modal. Click **Apply changes** again.
+
+![apply changes](./static/chaos-experiment-from-blank-canvas/apply-changes.png)
+
+### Step 4: Verify cart page health
+
+18. Before executing the experiment, verify that the cart page is healthy and accessible from the front end, as seen at the `/cart` route.
+
+![Online Boutique App Cart](./static/chaos-experiment-from-blank-canvas/online-boutique-app-cart.png)
+
+### Step 5: Observe chaos execution
+
+19. When all the prerequisites are fulfilled and parameters are set, you can start the experiment execution by selecting **Run** on the top right corner of the screen.
+
+![Run and save](./static/first-chaos/run-n-save.png)
+
+20. You can see that once you click **Run**, an experiment run is scheduled. You can see the status of every step in the tab.
+
+![Exp running](./static/first-chaos/exp-running.png)
+
+21. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar with the status as `RUNNING`.
+
+![Exp status](./static/first-chaos/exp-status.png)
+
+22. You can view the detailed execution (that is, logs) of the experiment by navigating to the experiment run and then the **Logs** tab.
+
+![Experiment log](./static/chaos-experiment-from-blank-canvas/experiment-logs.png)
+
+23. You can check the status of the cart deployment pod by executing the following command on the terminal.
 
 ```
 ❯ k get pods -n hce
@@ -77,33 +153,15 @@ subscriber-7774bd95d4-4rnwp                    1/1     Running   0              
 workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0              5h41m
 ```
 
-Consequently, if we try to access the frontend cart page, we get the following error which indicates that the application is now unreachable. This makes sense since the cart pod has been deleted and a new pod is yet to initialize, same as in the previous tutorial.
+The output on the terminal indicates that the cart pod was terminated and a new pod replaced it (whose container is yet to be created).
+
+24. As a consequence, if you try to access the frontend cart page, you will see a `500` error.
+
 ![Webpage Unavailable](./static/chaos-experiment-from-blank-canvas/webpage-unavailable.png)
 
-We can validate this behavior using the application metrics dashboard as well. The probe success percentage for website availability (200 response code) is now steeply decreasing along with the 99th percentile (green line) queries per second (QPS) and access duration for the application microservices. Also, the mean QPS (yellow line) is steeply increasing. This is because there's no pod available right now to service the query requests.
 
-![Application Down Dashboard](./static/chaos-experiment-from-blank-canvas/application-down-dashboard.png)
-
-## Evaluating the experiment run
-
-This time when the experiment execution concludes, we get a resiliency score of 50%. The Pod Delete fault has failed this time as well.
-
-![Experiment Failed](./static/chaos-experiment-from-blank-canvas/experiment-failed.png)
-
-Before we analyze the experiment result, we can validate that the application is now again normally accessible, without any errors from the Grafana dashboard.
-
-![App Metrics Normalizing](./static/chaos-experiment-from-blank-canvas/app-metrics-normalizing.png)
-
-We can now check the check the chaos result, where it can be observed that the fault verdict is **Failed** and the Probe Success Percentage is 50%. This is because although the default probe execution in Edge mode validated the target application to be healthy before and after the chaos, the cart service URL HTTP probe has failed. The failure of this probe can be attributed to the unavailability of the cart pod due to the injection of the Pod Delete fault.  
-
-![Experiment Result Failed](./static/chaos-experiment-from-blank-canvas/experiment-result-failed.png)
-
-We can also check the Chaos Results tab to get a summary of the experiment execution, where the fail step can be observed to be "Probe execution result didn't met the passing criteria", referring the the failure of HTTP probe that we had defined.
-
-![Result Fail Step](./static/chaos-experiment-from-blank-canvas/result-fail-step.png)
+25. You can [validate the behavior](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-6-observing-chaos-execution) of the application and [evaluate the experiment run](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-7-evaluate-the-experiment-run).
 
 ## Conclusion
 
-With that, you have successfully created and executed a chaos experiment from scratch!
-
-For more information about creating and running chaos experiments, go to [Configure chaos experiments](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md).
+With that, you have successfully created and executed a chaos experiment from scratch! Your next step can be to [execute a chaos experiment using API](/docs/chaos-engineering/get-started/tutorials/experiment-using-api.md).

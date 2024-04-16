@@ -203,7 +203,7 @@ Under probe details, you can see that the URL is `http://frontend/cart` and the 
 
 ![Exp running](./static/first-chaos/exp-running.png)
 
-27. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar.
+27. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar with the status as `RUNNING`.
 
 ![Exp status](./static/first-chaos/exp-status.png)
 
