@@ -784,6 +784,23 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 
 A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component.md).
 
+## Delete/Unregister Template
+
+1. Navigate to the **Catalog** page, and select **Template** under Kind.
+
+![](./static/catalog-navigation.png)
+
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**.
+
+![](./static/Unregister-location.png)
+
+5. This will delete the Template.
+
 ## Available template actions
 
 :::info
