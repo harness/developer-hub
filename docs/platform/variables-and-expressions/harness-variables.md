@@ -432,6 +432,50 @@ If the variable is local to a scope within the pipeline, such as a stage or step
 
 ![](./static/harness-variables-16.png)
 
+### Get input/output expressions used in a from execution context
+
+You can get the information about the resolved expressions along with it's value for each step in Step detail pane.
+
+Let's consider a following example:
+```yaml
+pipeline:
+  name: pipeline
+  identifier: pipeline
+  projectIdentifier: docs_play
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom
+        identifier: custom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo {$executionUrl}
+                    environmentVariables:
+                      - name: executionUrl
+                        type: String
+                        value: <+pipeline.executionUrl>
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+```
+![](./static/executionContext.png)
+
+Execution context is a table of keys and values, with the keys being the expressions that were referred to within the step. In the above example, in step **ShellScript_1** 
+  
 ## Expressions reference
 
 The following sections describe some Harness expressions. This information is not exhaustive.
