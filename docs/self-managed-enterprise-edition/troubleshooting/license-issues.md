@@ -27,20 +27,20 @@ Use the following steps to confirm that your Harness installation includes a Nex
    mongo
    ```
 
-4. Use the following commands to authenticate to the database in the `admin` role: 
+4. Use the following commands to authenticate to the database in the `admin` role:
 
    ```
    use admin
    db.auth(`admin`, <password>)
    ```
-   
+
 5. Set the context to Harness NextGen and run the `find` operation to locate the license for Harness NextGen:
-   
+
    ```
    use ng-harness
    db.moduleLicenses.find({})
    ```
-   
+
 6. If the licenses are present in the database, then proceed with `Refresh a NextGen license`.
 
 ## Refresh a NextGen license
@@ -62,9 +62,9 @@ Use the following commands to discard the `redis` cache for the NG license.
    ```
    kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
    ```
-   
+
    Copy the service name.
-   
+
 3. Delete the license keys:
 
    ```

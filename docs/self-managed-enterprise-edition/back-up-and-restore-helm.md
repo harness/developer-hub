@@ -1,29 +1,29 @@
 ---
 title: Back up and restore Harness Self-Managed Enterprise Edition Helm installations
 sidebar_label: Back up and restore Helm installations
-description: Learn how to back up and restore on-prem Harness Self-Managed Enterprise Edition Helm installations. 
+description: Learn how to back up and restore on-prem Harness Self-Managed Enterprise Edition Helm installations.
 sidebar_position: 26
 ---
 
 Harness recommends using Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition.
 
-## Install Velero 
+## Install Velero
 
-You can install Velero using several methods, but Harness recommends installation using a Container Storage Interface (CSI) plugin. CSI is a standard interface that enables container orchestrators, such as Kubernetes, to manage different storage systems in a consistent and modular way. The CSI specification defines a set of APIs that container orchestrators can use to discover and manage storage systems, create and delete volumes, attach and detach volumes from nodes, and perform other storage-related operations. CSI drivers implement these APIs to provide integration with specific storage systems. 
+You can install Velero using several methods, but Harness recommends installation using a Container Storage Interface (CSI) plugin. CSI is a standard interface that enables container orchestrators, such as Kubernetes, to manage different storage systems in a consistent and modular way. The CSI specification defines a set of APIs that container orchestrators can use to discover and manage storage systems, create and delete volumes, attach and detach volumes from nodes, and perform other storage-related operations. CSI drivers implement these APIs to provide integration with specific storage systems.
 
 If installation with a CSI plugin is not a viable option for your environment, you may use one of the Velero integrations with cloud providers. For more information, go to [Providers](https://velero.io/docs/v1.11/supported-providers/) in the Velero documentation.
 
 :::info note
 
-The following backup solution has been tested for Istio-based environments. It can restore the sidecars when backing up the Kubernetes objects. 
+The following backup solution has been tested for Istio-based environments. It can restore the sidecars when backing up the Kubernetes objects.
 
 :::
 
 To install Velero, do the following:
 
-1. Create a VolumeSnapshot with `velero.io/csi-volumesnapshot-class: "true"`, and ensure you are using the Storage class and snapshot with the same CSI driver. 
+1. Create a VolumeSnapshot with `velero.io/csi-volumesnapshot-class: "true"`, and ensure you are using the Storage class and snapshot with the same CSI driver.
 
-2. Follow the instructions in the [Velero documentation](https://velero.io/docs/v1.11/csi/) to install Velero with CSI support. 
+2. Follow the instructions in the [Velero documentation](https://velero.io/docs/v1.11/csi/) to install Velero with CSI support.
 
     When the installation is complete, create a backup.
 
@@ -43,13 +43,13 @@ The following command shows an example restore:
 
 :::info note
 
-Delete TimescaleDB endpoints after restoring data. TimescaleDB cannot operate on stale endpoints and needs to be refreshed on system restart. 
+Delete TimescaleDB endpoints after restoring data. TimescaleDB cannot operate on stale endpoints and needs to be refreshed on system restart.
 
 :::
 
 ### Example backup and restore workflow
 
-In this example, the Harness application is deployed in the Harness namespace. Velero and MinIO are deployed in a namespace Velero. 
+In this example, the Harness application is deployed in the Harness namespace. Velero and MinIO are deployed in a namespace Velero.
 
 Velero takes two kinds of backups: Backups with Volume (VolumeSnapshots) and Kubernetes resource Backups. For VolumeSnapshots, the CSI supported storage class is required. In this example, The application is deployed in a `standard-rwo` storage class, which is driven by pd.csi.storage.gke.io. This driver is used in VolumeSnapshotClass as well. Make sure the VolumeSnapshotClass is labeled with `velero.io/csi-volumesnapshot-class: "true"` so Velero recognizes it.
 
@@ -122,10 +122,10 @@ To backup with volume, do the following:
 
     After the backup completes, you can see the volumeSnapShotContents were created. The snapshots of the MongoDB PVs are stored there.
 
-7. Create a disaster, scale the MongoDB pods down, and delete the PVs. 
+7. Create a disaster, scale the MongoDB pods down, and delete the PVs.
 
 8. Restore the MongoDB from a backup.
 
     `velero restore create --from-backup harness-backup`
 
-    The PVs are recreated, but the PVs are not bound to the Harness namespace. Scale the MongoDB pods back to 3. This creates the PVs with the data that was backed up from the volumeSnapshots. 
+    The PVs are recreated, but the PVs are not bound to the Harness namespace. Scale the MongoDB pods back to 3. This creates the PVs with the data that was backed up from the volumeSnapshots.
