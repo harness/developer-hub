@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 // import Link from "@docusaurus/Link";
-import Link from "@docusaurus/Link";
 import { useHistory, useLocation } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import clsx from "clsx";
-import Tooltip from "rc-tooltip";
+import IltCard from "./Card";
 import CertCard, { certType } from "./CertCard";
 import { university } from "./data/certificationsData";
-import styles from "./styles.module.scss";
-import IltCard, { iltType } from "./IltCard";
 import { ilt } from "./data/iltData";
+import styles from "./styles.module.scss";
 const devFeatures = ["Free Plan"];
 const administratorFeatures = ["Enterprise Plan"];
 const adminFeatures = ["Enterprise Plan"];
+
+export enum ActivePage {
+  Certifications = "Certifications",
+  SelfPacedTraning = "Self-Paced Training",
+  InstructorLedTraining = "Instructor-Led Training",
+}
 
 export const getCertBadges = (url: string) => [
   {
@@ -50,7 +54,9 @@ export const getCertLevel = (search: string) => {
 
 export default function University() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  const [showCerts, setShowCerts] = useState<boolean>(true);
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.Certifications
+  );
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
@@ -73,17 +79,26 @@ export default function University() {
 
   useEffect(() => {
     if (location.search === "?ilt") {
-      setShowCerts(false);
+      setActivePage(ActivePage.InstructorLedTraining);
+    }
+    if (location.search === "?spt") {
+      setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
+
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
-    setShowCerts(true);
+    setActivePage(ActivePage.Certifications);
   };
   const handleInstLedTrainClick = () => {
     history.push(`${pathname}?ilt`);
-    setShowCerts(false);
+    setActivePage(ActivePage.InstructorLedTraining);
   };
+  const handleSelfPacedTrainingClick = () => {
+    history.push(`${pathname}?spt`);
+    setActivePage(ActivePage.SelfPacedTraning);
+  };
+
   return (
     <div className={styles.university}>
       <div className={styles.hero}>
@@ -107,10 +122,12 @@ export default function University() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${showCerts ? styles.active : ""}`}
+          className={`${styles.certBtn} ${
+            activePage === ActivePage.Certifications ? styles.active : ""
+          }`}
           onClick={handleCertficationClick}
         >
-          {!showCerts ? (
+          {activePage !== ActivePage.Certifications ? (
             <img src="/img/certification_icon_unactive.svg" />
           ) : (
             <img src="/img/certification_icon.svg" />
@@ -121,18 +138,31 @@ export default function University() {
         <button
           onClick={handleInstLedTrainClick}
           className={`${styles.InstLedTrainBtn} ${
-            !showCerts ? styles.active : ""
+            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
           }`}
         >
-          {showCerts ? (
-            <img src="/img/Instructor_led_trainin_logo.svg" />
-          ) : (
+          {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
           )}
           Instructor-Led Training
         </button>
+        <button
+          onClick={handleSelfPacedTrainingClick}
+          className={`${styles.InstLedTrainBtn} ${
+            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+          }`}
+        >
+          {activePage === ActivePage.SelfPacedTraning ? (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+          )}
+          Self-Paced Training
+        </button>
       </div>
-      {showCerts ? (
+      {activePage === ActivePage.Certifications && (
         <div className={styles.tabs}>
           <h2>Certifications</h2>
           <p>
@@ -354,7 +384,9 @@ export default function University() {
             </div>
           </div>
         </div>
-      ) : (
+      )}
+
+      {activePage === ActivePage.InstructorLedTraining && (
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
@@ -379,6 +411,12 @@ export default function University() {
                 ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {activePage === ActivePage.SelfPacedTraning && (
+        <div className={styles.tabs}>
+          <h2>Self-Paced Training</h2>
         </div>
       )}
     </div>
