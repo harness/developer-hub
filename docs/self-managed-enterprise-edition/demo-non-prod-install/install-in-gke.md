@@ -1,7 +1,8 @@
 ---
-title: Install in GKE
+title: Install in Google Kubernetes Engine (GKE)
 description: Learn how to install Harness Self-Managed Enterprise Edition in GKE.
 sidebar_position: 25
+sidebar_label: Install in GKE
 ---
 
 <DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>

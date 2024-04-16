@@ -1,7 +1,8 @@
 ---
-title: Install in AWS EKS
-description: Learn how to install Harness Self-Managed Enterprise Edition in AWS EKS.
+title: Install in Amazon Elastic Kubernetes Service (Amazon EKS)
+description: Learn how to install Harness Self-Managed Enterprise Edition in Amazon Elastic Kubernetes Service (Amazon EKS).
 sidebar_position: 15
+sidebar_label: Install in Amazon EKS
 ---
 
 <DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>

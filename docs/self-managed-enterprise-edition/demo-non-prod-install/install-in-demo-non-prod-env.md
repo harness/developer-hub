@@ -35,7 +35,7 @@ Harness Helm charts also ship with configurations for both an out-of-the-box NGI
 
 You can install Harness Self-Managed Enterprise Edition on the following cloud platforms:
 
-- [AWS EKS](/docs/self-managed-enterprise-edition/demo-non-prod-install/install-in-aws-eks.md)
-- [GCP](/docs/self-managed-enterprise-edition/demo-non-prod-install/install-in-gcp.md)
-- [GKE](/docs/self-managed-enterprise-edition/demo-non-prod-install/install-in-gke.md)
+- [Amazon EKS](/docs/self-managed-enterprise-edition/demo-non-prod-install/install-in-aws-eks.md)
+- [Google Cloud Platform (GCP)](/docs/self-managed-enterprise-edition/demo-non-prod-install/install-in-gcp.md)
+- [Google Kubernetes Engine (GKE)](/docs/self-managed-enterprise-edition/demo-non-prod-install/install-in-gke.md)
 

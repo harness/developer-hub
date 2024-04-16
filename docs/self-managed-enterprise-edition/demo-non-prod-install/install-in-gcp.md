@@ -1,12 +1,13 @@
 ---
-title: Install in GCP
+title: Install in Google Cloud Platform (GCP)
 description: Learn how to install Harness Self-Managed Enterprise Edition in GCP.
 sidebar_position: 20
+sidebar_label: Install in GCP
 ---
 
 <DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>
 
-This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in GCP.
+This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in Google Cloud Platform (GCP).
 
 For Helm installation instructions, go to [Helm installation](/docs/category/helm-installation/) or the Harness Helm chart [readme](https://github.com/harness/helm-charts/tree/main?tab=readme-ov-file#harness-helm-charts).
 
