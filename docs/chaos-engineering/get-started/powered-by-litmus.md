@@ -14,36 +14,36 @@ Go to [HCE versus LitmusChaos](#harness-ce-versus-litmuschaos) for a quick compa
 ## Common capabilities of HCE and LitmusChaos
 Following are the common features between Litmus and HCE:
 
-1. Scalable platform
-2. Declarative chaos fault architecture
-3. Kubernetes chaos faults
-4. Chaos faults as CRDs
-5. Chaos metrics
-6. Chaos hubs
-7. Chaos infrastructure architecture
-8. Chaos experiments structure
-9. Scheduling chaos experiments
-10. Resilience probes
+- Scalable platform
+- Declarative chaos fault architecture
+- Kubernetes chaos faults
+- Chaos faults as CRDs
+- Chaos metrics
+- Chaos hubs
+- Chaos infrastructure architecture
+- Chaos experiments structure
+- Scheduling chaos experiments
+- Resilience probes
 
 ## Additional capabilities of HCE
 
 HCE module has the following additional capabilities:
 
-1. [Kubelet density chaos fault](/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density)
-2. [VMware chaos faults](/docs/chaos-engineering/chaos-faults/vmware/)
-3. [AWS chaos faults](/docs/chaos-engineering/chaos-faults/aws/)
-4. [GCP chaos faults](/docs/chaos-engineering/chaos-faults/gcp/)
-5. [Azure chaos faults](/docs/chaos-engineering/chaos-faults/azure/)
-6. [Linux chaos faults](/docs/chaos-engineering/chaos-faults/linux/)
-7. [Windows chaos faults](/docs/chaos-engineering/chaos-faults/windows/)
-8. [Cloud Foundry chaos faults](/docs/chaos-engineering/chaos-faults/cloud-foundry)
-9. [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
-10. [Security chaos faults](/docs/chaos-engineering/chaos-faults/security-chaos)
-11. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
-12. [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
-13. Teaming around ChaosHubs
-14. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
-15. [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
+- [Kubelet density chaos fault](/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density)
+- [VMware chaos faults](/docs/chaos-engineering/chaos-faults/vmware/)
+- [AWS chaos faults](/docs/chaos-engineering/chaos-faults/aws/)
+- [GCP chaos faults](/docs/chaos-engineering/chaos-faults/gcp/)
+- [Azure chaos faults](/docs/chaos-engineering/chaos-faults/azure/)
+- [Linux chaos faults](/docs/chaos-engineering/chaos-faults/linux/)
+- [Windows chaos faults](/docs/chaos-engineering/chaos-faults/windows/)
+- [Cloud Foundry chaos faults](/docs/chaos-engineering/chaos-faults/cloud-foundry)
+- [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
+- [Security chaos faults](/docs/chaos-engineering/chaos-faults/security-chaos)
+- [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
+- [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
+- Teaming around ChaosHubs
+- Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
+- [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
@@ -59,7 +59,7 @@ In addition to the above features, HCE integrates with these Harness modules:
 Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted HCE or the hosted LitmusChaos.
 
 :::info important
-The HCE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the HCE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
+The HCE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New sign ups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness support](https://harness.io).
 :::
 
 ## HCE versus LitmusChaos
