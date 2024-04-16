@@ -879,9 +879,9 @@ Yes, for more information, go to:
 
 We are in the process of upgrading the Kubectl version. The version upgrade will be completed soon.
 
-### What does delegate resource threshold DYNAMIC_REQUEST_HANDLING do?
+### What does DELEGATE_CPU_THRESHOLD do?
 
- By default, delegate task capacity is based on the number of tasks. Some tasks consume far less resources than the others. Enabling `DYNAMIC_REQUEST_HANDLING` allows the delegate to take tasks based on available resources (CPU/Memory) instead. If delegate is overloaded, it would reject a task (default is 80% cpu/mem).
+ By default, delegate task capacity is based on the number of tasks. Some tasks consume far fewer resources than others. Enabling `DELEGATE_CPU_THRESHOLD` allows the delegate to take tasks based on available resources (CPU) instead. If the delegate is overloaded, it will reject tasks.
 
  For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
@@ -947,9 +947,9 @@ You can use the environment variable `TMPDIR` on the delegate to add your direct
 
 The release of the Immutable Delegate version to SMP involves setting the `IMMUTABLE_DELEGATE_DOCKER_IMAGE` version as an environment variable in the manager. When users download the YAML, this version is read from the environment variable, and SaaS utilizes pipelines to update MongoDB entries. During pod startup in SMP, the environment values are populated in the database, facilitating the direct retrieval of the Immutable Delegate version.
 
-### If the DELEGATE_RESOURCE_THRESHOLD is set to zero, does the delegate reject all tasks?
+### If the DELEGATE_CPU_THRESHOLD is set to zero, does the delegate reject all tasks?
 
-No, if `DELEGATE_RESOURCE_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection. Also, we have the default `DELEGATE_RESOURCE_THRESHOLD` value as 80.
+No, if `DELEGATE_CPU_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection.
 
 ### How do I inspect my certificates for delegate certificate issues?
 
@@ -1092,7 +1092,7 @@ Build source tasks do use the quota. These are tasks for artifact collections an
 
 ### How can I perform a load test on a Kubernetes delegate?
 
-You can implement Autoscale using replicas. For more information, go to [Auto scale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). Autoscaling is based on load, not on the number of tasks. It doesn't control deployments or run shell scripts that use CPU and memory.
+You can implement Autoscale using replicas. For more information, go to [Auto scale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas/). Autoscaling is based on load, not on the number of tasks. It doesn't control deployments or run shell scripts that use CPU and memory.
 
 - Based on the metrics you use for HPA (Harness recommends CPU/memory), Kubernetes will scale up/down the pod.
 - When the pod is scaled down, it will stop taking new tasks and finish the tasks its executing before terminating.
@@ -1380,7 +1380,7 @@ If this is a mixed-node cluster then the delegate needs to run on Linux nodes. Y
 
 ### Can the delegate's StatefulSet be scaled?
 
-Yes, you can scale the delegate StatefulSet. For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas).
+Yes, you can scale the delegate StatefulSet. For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas).
 
 ### Why is the delegate image based on UBI instead of Ubuntu?
 
@@ -1539,7 +1539,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
 ```
 
-For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/).
+For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas/).
 
 ### The Harness Delegate config-watcher is causing heavy usage of disk space and causing alerts in prod nodes. How can we increase the watcher memory settings?
 
@@ -1735,12 +1735,11 @@ Yes, you can install custom certificates for Kubernetes delegates. For more info
 
 ### What happens to tasks rejected by the delegate?
 
-Delegates reject tasks or fail to acquire tasks when CPU and memory reach above a certain threshold if the flag `DYNAMIC_REQUEST_HANDLING` is set as true in the YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+Delegates reject tasks when the CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. Rejected tasks can be acquired by other eligible delegates or by the same delegate when its resources drop below the threshold. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
-Yes, you can specify what threshold to reject the task using `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD`, otherwise, the default value is 80%. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
-
+No, this is not possible at the moment.
 
 ### What is the naming convention used when creating a default delegate token?
 
@@ -1907,9 +1906,9 @@ This feature is currently available in FirstGen. You can use `Restrict users to 
 
 For information about this feature flag, go to [Delegate task capacity](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-task-capacity).
 
-### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100%?
+### What is the behavior when the DELEGATE_CPU_THRESHOLD env variable isn't set when CPU usage reaches 100%?
 
-It will not attempt to acquire any new tasks until the resource level increases. Delegates will not crash or shut down during this process.
+The delegate won't attempt to acquire any new tasks until the resource level increases. Delegates will not crash or shut down during this process.
 
 ### I have the PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES feature flag enabled, why am I still getting emails when I add a user in an Org/Project?
 
