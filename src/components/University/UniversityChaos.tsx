@@ -4,7 +4,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
-import { getCertLevel } from "./LandingPage";
+import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/ce-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/ce-certification-developer-exam-details.md";
 
@@ -52,19 +52,30 @@ export default function CertificationsChaos() {
       setTab(searchKey);
     }
   }, [searchKey]);
-  const [showCerts, setShowCerts] = useState<boolean>(true);
+
   useEffect(() => {
     if (location.search === "?ilt") {
-      setShowCerts(false);
+      setActivePage(ActivePage.InstructorLedTraining);
+    }
+    if (location.search === "?spt") {
+      setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
+
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.Certifications
+  );
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
-    setShowCerts(true);
+    setActivePage(ActivePage.Certifications);
   };
   const handleInstLedTrainClick = () => {
     history.push(`${pathname}?ilt`);
-    setShowCerts(false);
+    setActivePage(ActivePage.InstructorLedTraining);
+  };
+  const handleSelfPacedTrainingClick = () => {
+    history.push(`${pathname}?spt`);
+    setActivePage(ActivePage.SelfPacedTraning);
   };
   return (
     <div className={styles.certificationsCE}>
@@ -94,10 +105,12 @@ export default function CertificationsChaos() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${showCerts ? styles.active : ""}`}
+          className={`${styles.certBtn} ${
+            activePage === ActivePage.Certifications ? styles.active : ""
+          }`}
           onClick={handleCertficationClick}
         >
-          {!showCerts ? (
+          {activePage !== ActivePage.Certifications ? (
             <img src="/img/certification_icon_unactive.svg" />
           ) : (
             <img src="/img/certification_icon.svg" />
@@ -108,19 +121,32 @@ export default function CertificationsChaos() {
         <button
           onClick={handleInstLedTrainClick}
           className={`${styles.InstLedTrainBtn} ${
-            !showCerts ? styles.active : ""
+            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
           }`}
         >
-          {showCerts ? (
-            <img src="/img/Instructor_led_trainin_logo.svg" />
-          ) : (
+          {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
           )}
           Instructor-Led Training
         </button>
+        <button
+          onClick={handleSelfPacedTrainingClick}
+          className={`${styles.InstLedTrainBtn} ${
+            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+          }`}
+        >
+          {activePage === ActivePage.SelfPacedTraning ? (
+            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+          )}
+          Self-Paced Training
+        </button>
       </div>
       {/* Tab Content */}
-      {showCerts && (
+      {activePage === ActivePage.Certifications && (
         <div className={styles.tabs}>
           <h2>Certifications</h2>
           <ul className={styles.tabItems}>
@@ -383,7 +409,7 @@ export default function CertificationsChaos() {
           </div>
         </div>
       )}
-      {!showCerts && (
+      {activePage === ActivePage.InstructorLedTraining && (
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
@@ -412,6 +438,11 @@ export default function CertificationsChaos() {
                 ))}
             </div>
           </div>
+        </div>
+      )}
+      {activePage === ActivePage.SelfPacedTraning && (
+        <div className={styles.tabs}>
+          <h2>Self-Paced Training</h2>
         </div>
       )}
     </div>

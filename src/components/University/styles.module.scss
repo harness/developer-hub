@@ -16,9 +16,11 @@
   .hero {
     display: flex;
     .left {
+      margin-top: -72px;
       flex-basis: 45%;
       .linkBack {
         margin-bottom: 16px;
+        padding: 0 16px;
       }
     }
     .right {
@@ -43,12 +45,13 @@
     }
   }
   .btns {
-    margin-top: 32px;
+    margin-top: 72px;
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
 
     .certBtn {
-      min-width: 227px;
+      width: 227px;
       height: 52px;
       padding: 10px 32px 10px 32px;
       border-radius: 50px;
@@ -749,7 +752,7 @@
       }
       .right {
         flex-basis: unset;
-        margin-top: 36px;
+        // margin-top: 36px;
         img {
           width: 100px;
         }
@@ -795,6 +798,19 @@
   }
 }
 
+@media screen and (max-width: 980px) {
+  .linkBack {
+    margin-top: 40px;
+  }
+  .btns {
+    flex-wrap: wrap;
+    .certBtn,
+    .InstLedTrainBtn {
+      width: 330px;
+    }
+  }
+}
+
 @media screen and (max-width: 599px) {
   /* for mobile */
   .university,
@@ -808,6 +824,9 @@
   .certificationsPlatform {
     padding: 10px;
     background: none;
+      .linkBack {
+    margin-top: 80px;
+  }
     .hero {
       .right {
         background: url(/img/cert_harness_bg.svg) no-repeat;
@@ -820,8 +839,13 @@
         }
       }
     }
+
     .btns {
       flex-direction: column;
+      .certBtn,
+      .InstLedTrainBtn {
+        width: 330px;
+      }
     }
     .tabs {
       margin-top: 20px;
