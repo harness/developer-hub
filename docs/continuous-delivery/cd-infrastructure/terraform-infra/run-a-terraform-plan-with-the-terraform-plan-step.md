@@ -537,8 +537,6 @@ Enable the **Store terraform plan on delegate** option on the Terraform Plan ste
 
 After you enable this option, select the **Inherit From Plan** option in the **Apply Inherit** or **Destroy Inherit** steps' **Configuration Type** field and enter the Provisioner Id used by the Terraform Plan step.
 
-
-
 Here's a video demo of how to store Terraform Plan files on delegate: 
 
 <!-- Video:
