@@ -19,7 +19,7 @@ To enforce SSCA policies in a Harness pipeline, you need:
 
 You can add the **SBOM Policy Enforcement** step to either the **Build** or **Deploy** stage of a Harness pipeline.
 
-* In a **Build** stage, add the step after the artifact (image) has been pushed to an artifact repository.
+* In a **Build** stage, add the step after the [SBOM generation](../sbom/generate-sbom.md) step.
 * In a **Deploy** stage, add the step before the deployment step.
 
 :::info

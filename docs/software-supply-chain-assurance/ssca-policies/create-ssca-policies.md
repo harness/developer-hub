@@ -65,7 +65,7 @@ Set the "On what event should the policy set be evaluated" option to "On Step" a
 
 Next, you can define what should happen if a policy fails, you can set it to 
 - **Warn and continue**: The step will warn about the policy violation and continues the execution.
-- **Error and exit**: The step throws and error and terminates the pipeline execution.
+- **Error and exit**: The step throws and error and terminates the pipeline execution. You can handle this by setting a [failure strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/).
 
 ![SBOM Policy evaluation criteria](./static/sbom-policy-criteria.png "SBOM Policy evaluation criteria")
 
