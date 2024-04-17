@@ -31,7 +31,7 @@ The **Feature Flag Admin Role** is a default Role available specifically for Fea
 * Managing and inviting **Users**.
 
 
-[The Access Control Panel for the Feature Flag Admin Role](../ff-security-compliance/static/ff-admin-role-access-control.png)
+ ![The Access Control Panel for the Feature Flag Admin Role](../ff-security-compliance/static/ff-admin-role-access-control.png)
 
 
 If you have permissions at the Project level, you can edit Flags within that Project or its Environments. If you have permissions for the Environment, then the role is limited to that Environment only.  
@@ -48,7 +48,7 @@ Here's a guide to creating a role or managing permissions for the Feature Flags 
  3. From here, you can add a new role or select an existing one to modify.
  4. Within the role, select **Feature Flags**. This action will display the Feature flags and Target Management permissions. 
 
- [The Panel for the Feature Flag Role Permissions](../ff-security-compliance/static/ff-feature-flag-role-permissions.png)
+ ![The Panel for the Feature Flag Role Permissions](../ff-security-compliance/static/ff-feature-flag-role-permissions.png)
 
 Feature flags is governed by the following permissions:
 
@@ -71,7 +71,7 @@ To set roles and permissions at the Project level, navigate to the **Project** s
 
 Here's how you can create and manage resource groups for the Feature flags and Target Management at the account level. Additionally, you can refer to [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md) document to learn more.
 
-[The Feature Flag Permissions for Resource Groups](../ff-security-compliance/static/ff-resource-groups-permissions.png)
+ ![The Feature Flag Permissions for Resource Groups](../ff-security-compliance/static/ff-resource-groups-permissions.png)
 
  1. Navigate to **Account Settings > Access Control >
  Resource groups within your Harness Account.
