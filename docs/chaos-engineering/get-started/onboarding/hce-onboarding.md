@@ -1,10 +1,10 @@
 ---
-sidebar_position: 5
-title: HCE onboarding guide
-description: Onboard with HCE
+sidebar_position: 1
+title: Overview
+description: An overview of onboarding with HCE
 ---
 
-This guide describes the versions of HCE, the interaction between different components, and how to get started with HCE.
+This section describes the versions of HCE, the interaction between different components, and how to get started with HCE.
 
 ## Before you begin
 
