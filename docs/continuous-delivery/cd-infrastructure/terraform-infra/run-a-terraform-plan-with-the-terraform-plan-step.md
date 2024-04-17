@@ -530,6 +530,10 @@ Enable this option to store the Terraform Plan on Harness Delegate temporarily. 
 
 After you enable this option, select the **Inherit From Plan** option in the **Apply Inherit** step **Configuration Type** field and enter the Id used by the Terraform Plan step.
 
+This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+This option also requires Harness Delegate version 82700.
+
 Here's a video demo of how to store Terraform Plan files on delegate: 
 
 <!-- Video:
