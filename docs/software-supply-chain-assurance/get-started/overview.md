@@ -4,6 +4,7 @@ sidebar_label: Overview
 description: Secure your software supply chain with Harness SSCA.
 sidebar_position: 1
 ---
+<DocsTag icon="fa-solid fa-cubes" text= "Limited GA" link="/docs/software-supply-chain-assurance"/>
 
 Today's software development landscape heavily relies on open-source components and third-party libraries. While this reliance streamlines development and expedites product delivery, it simultaneously exposes the software supply chain to potential risks, including security vulnerabilities, licensing discrepancies, and the looming threat of supply chain attacks.
 
