@@ -2,7 +2,7 @@
 title: Harness Self-Managed Enterprise Edition Onboarding Guide
 sidebar_label: Onboarding guide
 description: This topic provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing the on-prem Harness Self-Managed Enterprise Edition.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 09gjhl0tcw
 helpdocs_category_id: tvlmjozubh
 helpdocs_is_private: false
