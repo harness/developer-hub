@@ -52,6 +52,7 @@ policies:
       - type: value
         key: lastAttachTimestamp
         value:
+        op: eq
     actions:
       - type: delete
 ```
@@ -224,11 +225,10 @@ policies:
     filters:
       - type: recommend
         id: google.compute.disk.IdleResourceRecommender
-        type: value
+      - type: value
         key: lastAttachTimestamp
         value: 
         op: ne
-    
     actions:
       - type: snapshot
         name_format: "{disk[name]:.50}-{now:%Y-%m-%d}"
