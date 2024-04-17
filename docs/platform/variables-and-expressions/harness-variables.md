@@ -474,7 +474,7 @@ pipeline:
 ```
 ![](./static/executionContext.png)
 
-Execution context is a table of keys and values, with the keys being the expressions that were referred to within the step. In the above example, in step **ShellScript_1** 
+Execution context is a table of keys and values, with the keys being the expressions that were referred to within the step. In the above example, in step **ShellScript_1** we have defined an Input/environment variable `executionUrl`
   
 ## Expressions reference
 
