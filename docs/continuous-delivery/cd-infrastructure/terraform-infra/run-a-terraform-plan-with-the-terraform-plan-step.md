@@ -526,7 +526,6 @@ and found no differences, so no changes are needed.
 
 ## Store Terraform Plan on Harness Delegate
 
-
 :::important
 * This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
@@ -537,12 +536,6 @@ Enable the **Store terraform plan on delegate** option on the Terraform Plan ste
 
 After you enable this option, select the **Inherit From Plan** option in the **Apply Inherit** or **Destroy Inherit** steps' **Configuration Type** field and enter the Provisioner Id used by the Terraform Plan step.
 
-Here's a video demo of how to store Terraform Plan files on delegate: 
-
-<!-- Video:
-https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-416a-94ac-24f2a86f7a88-->
-<DocVideo src="https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=60467f35-e0d6-43c8-93cc-538668cc4c21" />
-
 **Important notes**
 
 * You must execute the Terraform Plan and Terraform Apply/Destroy steps on the same pod to be able to use the stored plan file. If your delegate has multiple pod replicas, make sure to [Run the Terraform steps on the pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
@@ -550,6 +543,11 @@ https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-41
 * If the delegate pods are restarted, the Terraform plan files disappear from the location where they are stored. To not loose the Terraform plan files during the new delegate deployment rollout or restart, you have to setup a persistent volume and mount the directory where Terraform plan files are stored. If your delegate has multiple pod replicas, you must setup a persistent volume with access mode, `ReadWriteMany`. Go to this [example](https://medium.com/@Sushil_Kumar/readwritemany-persistent-volumes-in-google-kubernetes-engine-a0b93e203180) to know more about how to setup persistent volume for Google GKE.
 * The Terraform plan file is cleaned up after the Terraform Apply/Destroy step is executed or after the pipeline execution is complete.
 
+Here's a video demo of how to store Terraform Plan files on delegate: 
+
+<!-- Video:
+https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-416a-94ac-24f2a86f7a88-->
+<DocVideo src="https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=60467f35-e0d6-43c8-93cc-538668cc4c21" />
 
 ## Skip state storage
 
