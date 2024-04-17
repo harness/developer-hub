@@ -1,27 +1,32 @@
 ---
-title: Install in Amazon Elastic Kubernetes Service (Amazon EKS)
+title: Install in a demo/non-prod environment in AWS
 description: Learn how to install Harness Self-Managed Enterprise Edition in Amazon Elastic Kubernetes Service (Amazon EKS).
 sidebar_position: 15
-sidebar_label: Install in Amazon EKS
+sidebar_label: Install in AWS
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <DocsTag  backgroundColor= "#4279fd" text="Harness Demo Feature"  textColor="#ffffff"/>
 
-This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in Amazon Web Services (AWS) Elastic Kubernetes Service (EKS).
+This topic explains how to install a demo/non prod environment version of Harness Self-Managed Enterprise Edition in Amazon Web Services (AWS).
 
-For Helm installation instructions, go to [Helm installation](/docs/category/helm-installation/) or the Harness Helm chart [readme](https://github.com/harness/helm-charts/tree/main?tab=readme-ov-file#harness-helm-charts).
+### Prerequisites
 
-## Prerequisites
-
-This topic assumes you have experience with AWS EKS, such as setting up projects, namespaces, and clusters.
+This topic assumes you have experience with AWS, such as setting up projects, namespaces, and clusters.
 
 In addition to a Harness account, you need the following:
 
-- Access to an AWS EKS project
+- Access to an AWS project
 - Access to Helm charts
 - An elastic IP address
 
+Before you install Harness Self-Managed Enterprise Edition, you must create a test cluster.
+
 ### Create a test cluster
+
+To create a test cluster using eksctl, do the following:
 
 1. Install and configure eksctl.
 2. Save the following to a `sample-demo-cluster.yaml` file.
@@ -141,7 +146,6 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
     | `global.ingress.enabled`| `true`|
     | `global.loadbalancerURL`| `""`|
     | `global.ingress.hosts`| `""`|
-
 
 4. Install the Helm chart.
 
