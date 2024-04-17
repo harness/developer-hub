@@ -474,8 +474,16 @@ pipeline:
 ```
 ![](./static/executionContext.png)
 
-Execution context is a table of keys and values, with the keys being the expressions that were referred to within the step. In the above example, in step **ShellScript_1** we have defined an Input/environment variable `executionUrl`
-  
+**Execution context** is a table of keys and values, with the keys being the expressions that were referred to within the step. In the above example, in step **ShellScript_1** we have defined an Input/environment variable `executionUrl` with an expression type. Once you run the pipeline, click on the step **ShellScript_1** and select Execution context in the step details pane.
+
+You can also get expressions for **step level variable** and execution inputs from the **Execution Context**.
+
+![](./static/expression_executionContext.png)
+
+:::info note
+Please note that secrets will not be displayed in the Execution context.
+:::
+
 ## Expressions reference
 
 The following sections describe some Harness expressions. This information is not exhaustive.
