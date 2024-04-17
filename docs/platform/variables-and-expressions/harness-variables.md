@@ -434,9 +434,9 @@ If the variable is local to a scope within the pipeline, such as a stage or step
 
 ### Get input/output expressions used in a from execution context
 
-You can get the information about the resolved expressions along with it's value for each step in Step detail pane.
+The **Execution Context** provides information about resolved expressions and their values for each step in the **Step Detail** pane. Its purpose is to aid in debugging previous executions of the pipeline, serving as an additional tool alongside the Input/Output variables listed for each step.
 
-Let's consider a following example:
+Let's consider the following example:
 ```yaml
 pipeline:
   name: pipeline
@@ -474,14 +474,16 @@ pipeline:
 ```
 ![](./static/executionContext.png)
 
-**Execution context** is a table of keys and values, with the keys being the expressions that were referred to within the step. In the above example, in step **ShellScript_1** we have defined an Input/environment variable `executionUrl` with an expression type. Once you run the pipeline, click on the step **ShellScript_1** and select Execution context in the step details pane.
+**Execution context** is a table of keys and values with keys being the expressions that were referred within the step. In the above example, in the step, **ShellScript_1**, we have defined an input/environment variable, `executionUrl` with an expression type. Once you run the pipeline, click on the **ShellScript_1** step and then select Execution Context in the Step Details pane.
 
-You can also get expressions for **step level variable** and execution inputs from the **Execution Context**.
+You can also get the expressions for **step level variable** and execution inputs from **Execution Context**.
 
 ![](./static/expression_executionContext.png)
 
 :::info note
-Please note that secrets will not be displayed in the Execution context.
+Some important points to note:
+1. Secrets are not displayed in the Execution Context.
+2. The Execution Context is non-editable, meaning you won't be able to add or remove items from it.
 :::
 
 ## Expressions reference
