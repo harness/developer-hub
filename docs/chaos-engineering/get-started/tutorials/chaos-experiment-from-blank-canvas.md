@@ -8,7 +8,7 @@ redirect_from:
 
 In this tutorial, you will create chaos experiments from scratch and execute them on the sample boutique application.
 
-This experiment follows the same steps of [your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md) by creating a chaos environment, and infrastructure and using the same boutique application by targeting the pods of the `cart` microservice, except the way you create an experiment. Creating a chaos experiment involves the following steps:
+This experiment follows the same steps of [your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md) by creating a chaos environment and infrastructure and using the same boutique application by targeting the pods of the `cart` microservice, except the way you create an experiment. Creating a chaos experiment involves the following steps:
 
 1. Create a project/receiving an invite for a project with relevant access;
 2. Create an environment;
@@ -29,11 +29,11 @@ In the last step, instead of choosing a pre-defined experiment, you will choose 
 
 ### Step 2: Construct a chaos experiment from a blank canvas
 
-2. Once you have your environment and chaos infrastructure in place, you can create a chaos experiment. To create an experiment, navigate to **Chaos Experiments** in the sidebar menu and click **New Experiment**.
+2. Once you have your environment and chaos infrastructure in place, you can create a chaos experiment. To create an experiment, navigate to **Chaos Experiments** in the left nav, and then select **New Experiment**.
 
 ![create new experiment](./static/first-chaos/create-new-experiment-1.png)
 
-3. Specify the experiment name and a description (optional) and tags (optional). Choose the target infrastructure, click **Apply**, and click **Next**.
+3. Specify the experiment name, a description (optional), and tags (optional). Choose the target infrastructure, click **Apply**, and click **Next**.
 
 ![specify parameters](./static/first-chaos/specify-params-2.png)
 
@@ -41,7 +41,7 @@ In the last step, instead of choosing a pre-defined experiment, you will choose 
 
 ![blank canvas](./static/chaos-experiment-from-blank-canvas/blank-canvas.png)
 
-5. This will lead you to the page where you can add chaos faults to your experiment. Click **Add**.
+5. This opens the page where you can add chaos faults to your experiment. Click **Add**.
 
 ![click add](./static/chaos-experiment-from-blank-canvas/add-experiments.png)
 
@@ -53,12 +53,12 @@ In the last step, instead of choosing a pre-defined experiment, you will choose 
 
 ![target app](./static/chaos-experiment-from-blank-canvas/target-app.png)
 
-8. In the **Tune Fault** tab, specify **total chaos duration** as 30, **chaos interval** as 5, **pods affected perc** as 50, and the default weight to 10.
+8. In the **Tune Fault** tab, specify **TOTAL CHAOS DURATION** as 30, **CHAOS INTERVAL** as 5, **PODS AFFECTED PERC** as 50, and the default weight to 10.
 
 ![Tune Fault](./static/chaos-experiment-from-blank-canvas/tune-fault.png)
 
 :::tip
-The `pods affected perc` describes the percentage of pods that are affected due to the unexpected pod deletion. A minimum of one pod is deleted.
+The **PODS AFFECTED PERC** describes the percentage of pods that are affected due to the unexpected pod deletion. A minimum of one pod is deleted.
 :::
 
 ### Step 3: Create a new HTTP probe
@@ -70,7 +70,7 @@ The `pods affected perc` describes the percentage of pods that are affected due 
 
 ![new probe](./static/chaos-experiment-from-blank-canvas/new-probe.png)
 
-10. Select **Kubernetes** as the infrastructure type, and **HTTP** as the probe type. This leads you to the probe configuration screen.
+10. Select **Kubernetes** as the infrastructure type, and **HTTP** as the probe type. This opens the probe configuration screen.
 
 ![select type probe](./static/chaos-experiment-from-blank-canvas/select-probe-2.png)
 
@@ -98,7 +98,7 @@ The `pods affected perc` describes the percentage of pods that are affected due 
 
 ![continuous](./static/chaos-experiment-from-blank-canvas/continuous-mode.png)
 
-17. Click **Apply changes** again to confirm all parameters configuration. Click 'X' to close the overlay modal. Click **Apply changes** again.
+17. Click **Apply changes** again to confirm all parameters configuration. Click **X** to close the overlay modal. Click **Apply changes** again.
 
 ![apply changes](./static/chaos-experiment-from-blank-canvas/apply-changes.png)
 
@@ -110,23 +110,25 @@ The `pods affected perc` describes the percentage of pods that are affected due 
 
 ### Step 5: Observe chaos execution
 
-19. When all the prerequisites are fulfilled and parameters are set, you can start the experiment execution by selecting **Run** on the top right corner of the screen.
+19. When all the prerequisites are fulfilled and parameters are set, you can start the experiment execution by selecting **Run**.
 
 ![Run and save](./static/first-chaos/run-n-save.png)
 
-20. You can see that once you click **Run**, an experiment run is scheduled. You can see the status of every step in the tab.
+:::info note
+You can see that once you click **Run**, an experiment run is scheduled. You can see the status of every step in the tab.
 
 ![Exp running](./static/first-chaos/exp-running.png)
+:::
 
-21. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar with the status as `RUNNING`.
+20. Select **Recent experiment runs** to view the runs of an experiment. The latest experiment is displayed in the last bar with the status as `RUNNING`.
 
 ![Exp status](./static/first-chaos/exp-status.png)
 
-22. You can view the detailed execution (that is, logs) of the experiment by navigating to the experiment run and then the **Logs** tab.
+21. You can view the detailed execution (that is, logs) of the experiment by navigating to the experiment run and then the **Logs** tab.
 
 ![Experiment log](./static/chaos-experiment-from-blank-canvas/experiment-logs.png)
 
-23. You can check the status of the cart deployment pod by executing the following command on the terminal.
+22. You can check the status of the cart deployment pod by executing the following command on the terminal.
 
 ```
 ❯ k get pods -n hce
@@ -155,12 +157,11 @@ workflow-controller-6d5d75dc7c-v9vqc           1/1     Running   0              
 
 The output on the terminal indicates that the cart pod was terminated and a new pod replaced it (whose container is yet to be created).
 
-24. As a consequence, if you try to access the frontend cart page, you will see a `500` error.
+23. As a consequence, if you try to access the frontend cart page, you will see a `500` error.
 
 ![Webpage Unavailable](./static/chaos-experiment-from-blank-canvas/webpage-unavailable.png)
 
-
-25. You can [validate the behavior](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-6-observing-chaos-execution) of the application and [evaluate the experiment run](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-7-evaluate-the-experiment-run).
+24. You can [validate the behavior](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-6-observing-chaos-execution) of the application and [evaluate the experiment run](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-7-evaluate-the-experiment-run).
 
 ## Conclusion
 
