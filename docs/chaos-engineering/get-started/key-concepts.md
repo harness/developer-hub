@@ -56,11 +56,11 @@ When an experiment fails, the Fail Step specifies the exact cause of failure for
 #### 16. Result phase
 Phase determines the status of the overall experiment execution. It may be any one of Awaited, Running, Completed, and Aborted, depending on the experiment outcome.
 
-#### 17. ChaosEngine CR
+#### 17. ChaosEngine Custom Resource (CR)
 The ChaosEngine CR is the user-facing chaos Kubernetes CR which connects a target resource instance with a chaos fault to orchestrate the steps of chaos execution. It allows one to specify run-level details such as overriding fault defaults, provide new environment variables and volumes, options to delete or retain experiment pods, and define probes among others. It is also patched to update the status of the fault execution.
 
-#### 18. ChaosExperiment CR
+#### 18. ChaosExperiment Custom Resource (CR)
 ChaosExperiment CR contains the low-level execution information for the execution of a Chaos Fault. The CR holds granular details of a fault such as the container image, library, necessary permissions, and chaos parameters among others. Most of the ChaosExperiment CR parameters are tunables that can be overridden from the ChaosEngine CR.
 
-#### 19. Workflow CR
-A workflow CR is used to define a number of “operations” which are coupled together in a specific sequence to achieve a desired chaos impact. These operations are either chaos faults or any other custom action related to the experiment, such as load generation.
+#### 19. Workflow Custom Resource (CR)
+A workflow CR is used to define a number of "operations" which are coupled together in a specific sequence to achieve a desired chaos impact. These operations are either chaos faults or any other custom action related to the experiment, such as load generation.
