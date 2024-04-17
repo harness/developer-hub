@@ -526,7 +526,7 @@ and found no differences, so no changes are needed.
 
 ## Store Terraform Plan on Harness Delegate
 
-Enable this option to store the Terraform Plan on Harness Delegate. This is particularly useful if you don't have or don't want to save the Terraform Plan files on Secrets Manager. 
+Enable this option to store the Terraform Plan on Harness Delegate temporarily. This is particularly useful if you don't have or don't want to save the Terraform Plan files on Secrets Manager. 
 
 After you enable this option, select the **Inherit From Plan** option in the **Apply Inherit** step **Configuration Type** field and enter the Id used by the Terraform Plan step.
 
@@ -542,9 +542,6 @@ https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-41
 * Harness stores the Terraform Plan files at the `./tf-plan/` directory inside the working directory (default path, `/opt/harness-delegate/`) of the delegate, i.e., the files are stored at, `/opt/harness-delegate/./tf-plan/`.
 * Delegate pods will restart the plan files if persistent volume is not set for the delegate pod.
 * The Terraform plan file is cleaned up after the Terraform Apply/Destroy step is executed or after the pipeline execution is complete.
-
-
-
 
 
 ## Skip state storage
