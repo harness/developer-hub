@@ -8,234 +8,72 @@ Recommendations help kickstart your journey with governance. Essentially, Harnes
 
 Listed below are the custodian policies which are used to generate recommendations that Harness offers for GCP. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
-### Recommendation: gcp-idle-compute-vm
-**Description:** List GCP Idle Compute Instance Recommendations
+### Recommendation: delete-gcp-idle-compute-images
+**Description:** Delete GCP recommended idle images
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: gcp-idle-compute-vm
+  - name: delete-gcp-idle-compute-images
     description: |
-      List GCP Idle Compute Instance Recommendations
-    resource: gcp.instance
-    filters:
-      - type: recommend
-        id: google.compute.instance.IdleResourceRecommender   
-```
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:** 
-- `recommender.computeInstanceIdleResourceRecommendations.list`
-
----
-
-### Recommendation: gcp-idle-compute-images
-**Description:** List GCP Idle Compute Images Recommendations
-
-**Policy Used:**
-```yaml
-policies:
-  - name: gcp-idle-compute-images
-    description: |
-      List GCP Idle Compute Images Recommendations
+      Delete GCP images which are not used to create a disk for at least 15 days and not used in any instance template. 
+      These idle images are fetched from GCP recommender.
     resource: gcp.image
     filters:
       - type: recommend
         id: google.compute.image.IdleResourceRecommender
+    actions:
+      - type: delete
 ```
-
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:**
-- `recommender.computeImageIdleResourceRecommendations.list`
-
----
-
-### Recommendation:  gcp-idle-sql-instances
-**Description:** List GCP Idle SQL Instance Recommendations
-
-**Policy Used:**
-```yaml
-policies:
-  - name: gcp-idle-sql-instances
-    description: |
-      List GCP Idle SQL Instance Recommendations
-    resource: gcp.sql-instance
-    filters:
-      - type: recommend
-        id: google.cloudsql.instance.IdleRecommender
-```
-
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
-- `recommender.cloudsqlIdleInstanceRecommendations.list`
+- Dry Run: `recommender.computeImageIdleResourceRecommendations.list`
+- Run Once:
+  - `recommender.computeImageIdleResourceRecommendations.list`
+  - `compute.images.delete`
 
 ---
 
-### Recommendation: gcp-idle-persistent-disks
-**Description:** List GCP Idle Persistent Disks Recommendations
+### Recommendation: delete-gcp-never-attached-disks
+**Description:** Delete GCP recommended idle persistent disks which were never attached to a VM and is blank
 
 **Policy Used:**
 ```yaml
 policies:
-  - name: gcp-idle-persistent-disks
+  - name: delete-gcp-never-attached-disks
     description: |
-      List GCP Idle Persistent Disks Recommendations
+      Delete GCP disks which are created at least 15 days ago and never attached to a VM and is blank. 
+      These idle disks are fetched from GCP recommender.
     resource: gcp.disk
     filters:
       - type: recommend
         id: google.compute.disk.IdleResourceRecommender
-```
-
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:** 
-- `recommender.computeDiskIdleResourceRecommendations.list`
-
----
-
-### Recommendation: gcp-network-unattached-routers
-**Description:** Deletes unattached Cloud Routers
-
-**Policy Used:**
-```yaml
-policies:
-  - name: gcp-network-unattached-routers
-    description: Deletes unattached Cloud Routers
-    resource: gcp.router
-    filters:
       - type: value
-        key: interfaces
-        value: absent
+        key: lastAttachTimestamp
+        value:
     actions:
-      - delete
+      - type: delete
 ```
-
+  
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
-**Permissions Required:** 
-- `compute.routers.list`
+**Permissions Required:**
+- Dry Run: `recommender.computeDiskIdleResourceRecommendations.list`
+- Run Once:
+  - `recommender.computeDiskIdleResourceRecommendations.list`
+  - `compute.disks.delete`
 
 ---
 
-### Recommendation: gcp-memorystore-for-redis-auth
-**Description:** GCP Memorystore for Redis has AUTH disabled
-
-**Policy Used:**
-```yaml
-policies:
-  - name: gcp-memorystore-for-redis-auth
-    description: |
-      GCP Memorystore for Redis has AUTH disabled
-    resource: gcp.redis
-    filters:
-      - type: value
-        key: authEnabled
-        op: ne
-        value: true
-```
-
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:** 
-- `redis.instances.list`
-
----
-
-### Recommendation: gcp-add-multiple-labels
-**Description:** Label all existing instances with multiple labels 
-
-**Policy Used:** 
-```yaml
-policies:
-  - name: gcp-add-multiple-labels
-    resource: gcp.instance
-    description: |
-      Label all existing instances with multiple labels
-    actions:
-     - type: set-labels
-       labels:
-         environment: test
-         env_type: customer
-```
-
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:** 
-- `compute.instances.update`
-
----
-
-### Recommendation: gcp-delete-old-snapshot
-**Description:** Delete gcp snapshots older than 14 days
-
-**Policy Used:**
-```yaml
-policies:
-  - name: gcp-delete-old-snapshot
-    resource: gcp.snapshot
-    description: |
-      Delete gcp snapshots older than 14 days
-    filters:   
-    - type: value
-      key: creationTimestamp
-      op: greater-than
-      value_type: age
-      value: 14
-    actions:
-    - type: delete
-```
-
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:** 
-- `compute.snapshots.list`
-
----
-
-### Recommendation: gcp-list-low-utilised-bucket
-**Description:** List low utilised gcp buckets over last 7 days
-
-**Policy Used:**
-```yaml
-policies:
-  - name: gcp-list-low-utilised-bucket
-    description: |
-      List low utilised gcp buckets over last 7 days
-    resource: gcp.bucket
-    filters:
-    - type: metrics
-      name: storage.googleapis.com/network/sent_bytes_count
-      aligner: ALIGN_COUNT
-      days: 7
-      value: 1024
-      op: less-than
-      missing-value: 0
-    - type: metrics
-      name: storage.googleapis.com/network/received_bytes_count
-      aligner: ALIGN_COUNT
-      days: 7
-      value: 1024
-      op: less-than
-      missing-value: 0
-```
-
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
-
-**Permissions Required:** 
-- `storage.buckets.list`
-
----
-
-### Recommendation: gcp-stop-forever-running-instance
+### Recommendation:  gcp-stop-forever-running-instance
 **Description:** Stop the gcp instances that have an uptime greater than 30 days.
-
+   
 **Policy Used:**
 ```yaml
 policies:
   - name: gcp-stop-forever-running-instance
-    description:
+    description: |
       Stop the gcp instances that have an uptime greater than 30 days.
     resource: gcp.instance
     filters:
@@ -244,6 +82,10 @@ policies:
         aligner: ALIGN_NONE
         value: 2592000
         op: greater-than
+      - type: value
+        key: status
+        value: "RUNNING"
+        op: eq
     actions:
       - type: stop
 ```
@@ -251,7 +93,160 @@ policies:
 **Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
-- `compute.instances.update`
+- Dry Run:
+  - `compute.instances.list`
+  - `monitoring.timeSeries.list`
+
+- Run Once:
+  - `compute.instances.list`
+  - `monitoring.timeSeries.list`
+  - `compute.instances.stop`
+
+---
+
+### Recommendation: gcp-delete-old-snapshot
+**Description:** Delete gcp snapshots older than 14 days.
+  
+**Policy Used:**
+```yaml
+policies:
+  - name:  gcp-delete-old-snapshot
+    resource: gcp.snapshot
+    description: |
+      Delete gcp snapshots older than 14 days.
+    filters:
+      - type: value
+        key: creationTimestamp
+        op: greater-than
+        value_type: age
+        value: 14
+    actions:
+      type: delete
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `compute.snapshots.list`
+
+- Run Once:
+  - `compute.snapshots.list`
+  - `compute.snapshots.delete`
+
+---
+
+### Recommendation: stop-underutilized-instances
+**Description:** Stop underutilised instances with average CPU utilisation less than 5% in last 3 days.
+
+**Policy Used:**
+```yaml
+policies:
+  - name: stop-underutilized-instances
+    resource: gcp.instance
+    description: Stop underutilised instances with average CPU utilisation less than 5% in last 3 days
+    filters:
+      - type: metrics
+        name: compute.googleapis.com/instance/cpu/utilization
+        aligner: ALIGN_MEAN
+        days: 3
+        value: 5
+        op: less-than
+      - type: value
+        key: status
+        value: "RUNNING"
+        op: eq
+    actions:
+      - type: stop
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `compute.instances.list`
+  - `monitoring.timeSeries.list`
+
+- Run Once:
+  - `compute.instances.list`
+  - `monitoring.timeSeries.list`
+  - `compute.instances.stop`
+
+---
+
+
+### Recommendation: stop-underutilized-sql-instances
+**Description:** Stop underutilised sql instances with average CPU utilisation less than 5% in last 3 days
+
+**Policy Used:**
+```yaml
+policies:
+  - name: stop-underutilized-sql-instances
+    resource: gcp.sql-instance
+    description: |
+      Stop underutilised sql instances with average CPU utilisation less than 5% in last 3 days
+    filters:
+      - type: metrics
+        name: cloudsql.googleapis.com/database/cpu/utilization
+        aligner: ALIGN_MEAN
+        days: 3
+        value: 5
+        op: less-than
+    actions:
+      - type: stop
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- Dry Run:
+  - `cloudsql.instances.list`
+  - `monitoring.timeSeries.list`
+
+- Run Once:
+  - `cloudsql.instances.list`
+  - `monitoring.timeSeries.list`
+  - `cloudsql.instances.update`
+
+---
+
+### Recommendation: snapshot-and-delete-gcp-unattached-disk
+**Description:** Snapshot and delete GCP recommended idle persistent disks which are unattached
+
+**Policy Used:** 
+```yaml
+policies:
+  - name: snapshot-and-delete-gcp-unattached-disk
+    description: |
+      Snapshot and delete GCP disks which are detached for at least 15 days.
+      These idle disks are fetched from GCP recommender.
+    resource: gcp.disk
+    filters:
+      - type: recommend
+        id: google.compute.disk.IdleResourceRecommender
+        type: value
+        key: lastAttachTimestamp
+        value: 
+        op: ne
+    
+    actions:
+      - type: snapshot
+        name_format: "{disk[name]:.50}-{now:%Y-%m-%d}"
+      - type: delete
+      
+```
+
+**Savings Computed:** Savings are determined as 35% of the total cost. Implementing this recommendation would result in a 35% reduction in the maintenance cost of that disk, bringing it down to 92%. Thus, we consider the minimum savings achievable, which is 35%.
+
+**Permissions Required:** 
+- Dry Run:
+  - `recommender.computeDiskIdleResourceRecommendations.list`
+
+- Run Once:
+  - `recommender.computeDiskIdleResourceRecommendations.list`
+  - `compute.disks.delete`
+
+---
 
 ## Custom Policies
 

@@ -121,7 +121,7 @@ For example, a user can create an Enforcement to schedule the deletion of all GC
 While setting up a new Enforcement, you can select the following:
 - **Cloud provider**: Currently we support AWS, Azure and GCP.
 - **Rules/ Rule Sets**: You can select the Rules or Rule Sets that your Enforcement will consist of.
-- **Target Accounts and Regions**: The target accounts and regions that you will be running the Enforcements on.
+- **Target Projects**: The target projects that you will be running the Enforcements on.
 - **Frequency**: The frequency for running the Enforcement. Currently, it can be set for hourly, daily or weekly.
 - **Time**: After setting the frequency, you can choose the time at which it runs.
 - **Dry Run Mode**: You can choose to run your Enforcement in Dry Run mode which will generate a simulation of the rule enforcement instead of performing actions.
@@ -162,7 +162,7 @@ Furthermore, you can disable the Enforcement at any time using the toggle button
 
 ### Update an Enforcement
 
-You can view any Enforcements on Rule Enforcements page. Click on the enforcement to view details such as the rules, target accounts, and regions included in the enforcement. For updating, you can use the "Edit" button from the vertical ellipsis menu (⋮) to update the enforcements as per your convenience.
+You can view any Enforcements on Rule Enforcements page. Click on the enforcement to view details such as the rules and target projects included in the enforcement. For updating, you can use the "Edit" button from the vertical ellipsis menu (⋮) to update the enforcements as per your convenience.
 
 ### Delete an Enforcement
 
