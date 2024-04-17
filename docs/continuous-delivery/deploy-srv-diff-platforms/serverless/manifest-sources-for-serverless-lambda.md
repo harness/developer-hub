@@ -45,7 +45,7 @@ Below describes setting configuration parameters for AWS S3 bucket as a manifest
 4. **File/Folder Path**: Enter the path from the root of the bucket to the `serverless.yml` file.
 
 :::info
-Harness supports `.zip` files only. Harness expects that you keep the Serverless manifest files to be zipped inside a folder for Serverless V1, and keep the files at root for Serverless V2. 
+Harness supports `.zip` files only. Harness expects that you keep the Serverless manifest files zipped inside a folder for Serverless V1, and at root for Serverless V2. 
 :::
 
 ### Harness File Store
