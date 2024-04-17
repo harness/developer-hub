@@ -526,13 +526,18 @@ and found no differences, so no changes are needed.
 
 ## Store Terraform Plan on Harness Delegate
 
-Enable this option to store the Terraform Plan on Harness Delegate temporarily. This is particularly useful if you don't have or don't want to save the Terraform Plan files on Secrets Manager. 
 
-After you enable this option, select the **Inherit From Plan** option in the **Apply Inherit** step **Configuration Type** field and enter the Id used by the Terraform Plan step.
+:::important
+* This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
-This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* This option also requires Harness Delegate version 82700.
+:::
 
-This option also requires Harness Delegate version 82700.
+Enable the **Store terraform plan on delegate** option on the Terraform Plan step to store the Terraform Plan on Harness Delegate temporarily. This is particularly useful if you don't want to save the Terraform Plan files on Secrets Manager or there is a file size limit on Secrets Manager. 
+
+After you enable this option, select the **Inherit From Plan** option in the **Apply Inherit** or **Destroy Inherit** steps' **Configuration Type** field and enter the Provisioner Id used by the Terraform Plan step.
+
+
 
 Here's a video demo of how to store Terraform Plan files on delegate: 
 
@@ -542,9 +547,9 @@ https://www.loom.com/share/f8cf2e7abe094d08829902831a4081b5?sid=f522eb06-4a86-41
 
 **Important notes**
 
-* You must execute the Terraform Plan and Terraform Apply/Destroy steps on the same pod to be able to use the stored plan file. For more information, go to [Run all pipeline steps in one pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
+* You must execute the Terraform Plan and Terraform Apply/Destroy steps on the same pod to be able to use the stored plan file. If your delegate has multiple pod replicas, make sure to [Run the Terraform steps on the pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
 * Harness stores the Terraform Plan files at the `./tf-plan/` directory inside the working directory (default path, `/opt/harness-delegate/`) of the delegate, i.e., the files are stored at, `/opt/harness-delegate/./tf-plan/`.
-* Delegate pods will restart the plan files if persistent volume is not set for the delegate pod.
+* If the delegate pods are restarted, the Terraform plan files disappear from the location where they are stored. To not loose the Terraform plan files during the new delegate deployment rollout or restart, you have to setup a persistent volume and mount the directory where Terraform plan files are stored. If your delegate has multiple pod replicas, you must setup a persistent volume with access mode, `ReadWriteMany`. Go to this [example](https://medium.com/@Sushil_Kumar/readwritemany-persistent-volumes-in-google-kubernetes-engine-a0b93e203180) to know more about how to setup persistent volume for Google GKE.
 * The Terraform plan file is cleaned up after the Terraform Apply/Destroy step is executed or after the pipeline execution is complete.
 
 
