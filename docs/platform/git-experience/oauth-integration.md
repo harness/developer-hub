@@ -24,7 +24,7 @@ Harness supports OAuth integration for the following Git providers:
 * Bitbucket SaaS
 
 :::info note
-Harness does not support Oauth integration for Azure repos.
+Harness does not support OAuth integration for Azure repos. Additionally, please note that we don't support OAuth for On-prem GIT systems.
 :::
 This topic explains how to configure OAuth for GitHub.
 
