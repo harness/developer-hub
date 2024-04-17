@@ -71,6 +71,8 @@ To set roles and permissions at the Project level, navigate to the **Project** s
 
 Here's how you can create and manage resource groups for the Feature flags and Target Management at the account level. Additionally, you can refer to [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md) document to learn more.
 
+[The Feature Flag Permissions for Resource Groups](../ff-security-compliance/static/ff-resource-groups-permissions.png)
+
  1. Navigate to **Account Settings > Access Control >
  Resource groups within your Harness Account.
  2. Add a new resource group or select an existing one
