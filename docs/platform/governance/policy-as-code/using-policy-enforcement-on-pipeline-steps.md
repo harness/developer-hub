@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::important
-Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 This topic explains steps to create policies using the Harness Policy As Code and apply them to your pipeline steps. Harness Policy As Code uses the Open Policy Agency (OPA) to store policies on the Harness Platform. For more information, go to [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
 
 ## Before you begin

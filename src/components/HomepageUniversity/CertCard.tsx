@@ -38,6 +38,7 @@ export default function CertCard({
   link = "#",
   thumb = false,
   numberOfCerts,
+  ILT_available,
 }: CardItem) {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
@@ -65,6 +66,12 @@ export default function CertCard({
             <img src="/img/icon_cert.svg" /> {numberOfCerts} Certifications
           </div>
         )}
+        {ILT_available && (
+          <div className={styles.numberOfCerts}>
+            <img src="/img/Instructor_led_trainin_logo.svg" />
+            Instructor-Led Training Available
+          </div>
+        )}
         <p>{description}</p>
         {version && (
           <div className={styles.productVersion}>
@@ -75,4 +82,3 @@ export default function CertCard({
     </Link>
   );
 }
-

@@ -470,7 +470,7 @@ pipeline:
 
 ## Troubleshooting: Failed to get image entrypoint
 
-If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
+If you get a `failed to get image entrypoint` error when using a Kubernetes cluster build infrastructure, you might need to [mount volumes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#volumes) for the PostgreSQL data and then reference those volumes in the **Background** steps.
 
 1. In the build infrastructure settings, mount one empty directory volume for each PostgreSQL service.
 

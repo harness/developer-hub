@@ -100,19 +100,20 @@ metadata:
   name: autostopping-sample-ig
   namespace: autostopping-sample
   annotations:
-     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-    ingressClassName: nginx
-    rules:
-    - http:
-       paths:
-       - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: autostopping-sample-svc
-              port:
-                 number: 80
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: autostopping-sample-svc
+            port:
+              number: 80
+
 ```
 
 2. Create an AutoStopping Rule. Before applying this YAML, make sure that the `cloud-connector-id` is updated and the namespace of the Rule is the same as the `autostopping-sample-app` application.

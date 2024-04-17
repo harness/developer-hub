@@ -61,7 +61,8 @@ import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
 ###  Operating systems and architectures supported by STO
 
 
-import StoInfraSupport from '/docs/security-testing-orchestration/get-started/shared/_supported-infrastructures.md';
+import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-infrastructures.md';
+
 
 
 <StoInfraSupport />

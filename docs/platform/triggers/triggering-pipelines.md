@@ -418,6 +418,7 @@ If a pipeline doesn't start in response to an incoming event, do the following:
 - Check the execution history (select **Execution History** in the top right of the Pipeline Studio).
 - Verify that the runtime inputs are correct.
 - Check the payloads sent from the Git provider and compare the relevant fields with your trigger conditions. For example, in GitHub you can view the full payload of each event sent from a specific webhook.
+- If you are using a self-hosted Git server, check to be sure your server can make HTTPS requests to the Harness Git webhooks URL `https://app.harness.io/gateway/ng/api/webhook`.
 
 ### Common causes of Webhook registration failure
 

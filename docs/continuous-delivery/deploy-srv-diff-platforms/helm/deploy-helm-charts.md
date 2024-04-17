@@ -38,10 +38,11 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
   - [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)
 
   Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+- The release name for the Helm deployment shouldn't exceed length 53. For more information, go to [Helm documentation](https://helm.sh/docs/chart_template_guide/getting_started/#adding-a-simple-template-call).
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/get-started/supported-platforms-and-technologies).
+See [Supported Platforms and Technologies](/docs/continuous-delivery/cd-integrations.md).
 
 ## Commands used by Harness to perform a Helm Chart Deployment managed by Harness
 

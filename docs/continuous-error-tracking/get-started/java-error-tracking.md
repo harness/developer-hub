@@ -1,7 +1,7 @@
 ---
-title: Demo - Find and fix Java exceptions
+title: Try CET - Find and fix Java exceptions
 description: Introducing Error Tracking - how to identify all exceptions and fix them quickly.
-sidebar_position: 11
+sidebar_position: 3
 redirect_from:
   - /tutorials/error-tracking/java-error-tracking
 ---

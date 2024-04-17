@@ -8,8 +8,9 @@ sidebar_position: 5
 
 This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an OpenShift environment. [Red Hat OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift) is a cloud-based platform that utilizes Kubernetes to assist developers in the building of applications. It provides automated installation, upgrades, and life cycle management of the container stack, which includes the operating system, Kubernetes, cluster services, and applications. This can be done on any cloud platform.
 
-:::info important
-This feature is currently in beta. Harness has tested and verified OpenShift version 4.13.x. For more information about beta features, go to [Beta, Limited GA, and GA definitions](/docs/get-started/release-status/).
+:::note
+
+This feature is currently in [beta](/docs/platform/get-started/release-status). Harness has tested and verified OpenShift version 4.13.x.
 
 :::
 
@@ -18,12 +19,12 @@ This feature is currently in beta. Harness has tested and verified OpenShift ver
 Run the following to install Harness Self-Managed Enterprise Edition using Helm.
 
 ```
-helm install harness harness/harness -n NS -f override-demo.yaml 
+helm install harness harness/harness -n NS -f override-demo.yaml
 ```
 
 ### Add service accounts to the allowlist
 
-After installing Harness through Helm charts, to use OpenShift clusters, you must run additional commands to add security contexts to specific service accounts. Similar to how RBAC resources control user access, administrators can use Security Context Constraints (SCCs) to manage permissions for pods. These permissions include the actions that a pod can perform and the resources it can access. 
+After installing Harness through Helm charts, to use OpenShift clusters, you must run additional commands to add security contexts to specific service accounts. Similar to how RBAC resources control user access, administrators can use Security Context Constraints (SCCs) to manage permissions for pods. These permissions include the actions that a pod can perform and the resources it can access.
 
 SCCs can define a set of conditions that a pod must meet to be accepted into the system. In this specific use case, we need to escalate privileges for certain service accounts by configuring specific SCCs.
 
@@ -58,7 +59,7 @@ done
 
 ### Assign the Nginx ingress controller
 
-By default, when Harness assigns the `loadBalancerIp` to the ingress-controller’s `LoadBalancerService` in OpenShift, the IP is not assigned directly. Run the following to expose the ingress-controller service through the OpenShift client tool.
+By default, when Harness assigns the `loadBalancerIp` to the ingress-controller's `LoadBalancerService` in OpenShift, the IP is not assigned directly. Run the following to expose the ingress-controller service through the OpenShift client tool.
 
 ```
 oc expose service harness-ingress-controller
@@ -70,4 +71,4 @@ Below are troubleshooting steps for two common issues you might encounter in you
 
 - If pods don't load after the Helm installation, find the service account used by the corresponding service in its deployment. Check the OpenShift cluster UI logs and escalate the necessary service account privileges.
 
-- If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service. 
+- If you receive an ingress 404 default backend, check the ingress configuration in the override file of your service.

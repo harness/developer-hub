@@ -90,7 +90,7 @@ You can create a Perspective by grouping your resources the way you wish. For ex
 
 
 :::note
-You can create up to 250 Perspectives.
+You can create up to 10,000 Perspectives.
 :::
 
 Perform the following steps to create a Perspective:
@@ -123,7 +123,8 @@ Perform the following steps to create a Perspective:
 
 
 :::note
-When you create a new Perspective, data across all cloud service providers and clusters are displayed. If you want to restrict the data to a particular cloud service provider, you must apply a filter in the Cloud Provider field.
+- When you create a new Perspective, data across all cloud service providers and clusters are displayed. If you want to restrict the data to a particular cloud service provider, you must apply a filter in the Cloud Provider field.
+
 :::
 
 
@@ -199,6 +200,10 @@ You can also add a Perspective to a folder when you create it or move it to a fo
 You can also move a Perspective to a folder from its more options (⋮) setting.
 
 ![](./static/create-cost-perspectives-30.png)
+
+:::important note
+There are no limits as to how many folders can be made.
+:::
 
 
 

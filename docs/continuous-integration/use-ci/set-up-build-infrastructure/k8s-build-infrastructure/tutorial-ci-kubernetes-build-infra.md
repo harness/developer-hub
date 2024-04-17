@@ -69,7 +69,7 @@ Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-e
 
 Use these steps to create a project in your Harness account.
 
-1. Select **Projects**, select **All Projects**, and then select **New Project**.
+1. Select **Project**, select **All Projects** or **Manage Projects**, and then select **New Project**.
 2. Enter a **Name**, such as `CI kubernetes tutorial`.
 3. Leave the **Organization** as **default**.
 4. Select **Save and Continue**.
@@ -85,7 +85,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For more information, go to the [GitHub connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
-1. Under **Project Setup**, select **Connectors**.
+1. Under **Project Settings**, select **Connectors**.
 2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
 3. Enter a recognizable name, such as `CI kubernetes tutorial connector`, and select **Continue**.
 4. Configure the **Details** as follows, and then select **Continue**:

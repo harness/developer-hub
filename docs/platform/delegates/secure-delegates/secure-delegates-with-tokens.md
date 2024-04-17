@@ -85,12 +85,12 @@ To update and restart an existing Kubernetes delegate, do the following:
 
 1. Edit the `harness-delegate.yaml` file you downloaded originally with the new token and then run `kubectl apply -f harness-delegate.yaml` to restart the delegate pods.
 
-2. Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field. 
+2. Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field.
 
    ```yaml
-   ...  
-   ---  
-     
+   ...
+   ---
+
    apiVersion: v1
    kind: Secret
    ...
@@ -113,21 +113,21 @@ To update and restart an existing Docker delegate, do the following:
 1. Paste the token in the delegate settings:
 
    ```yaml
-   version: "3.7"  
-   services:  
-     harness-ng-delegate:  
-       restart: unless-stopped  
-       deploy:  
-         resources:  
-           limits:  
-             cpus: "0.5"  
-             memory: 2048M  
-       image: harness/delegate:23.01.78102  
-       environment:  
-         - ACCOUNT_ID=12345678910  
-         - ACCOUNT_SECRET=[enter new token here]  
-         - MANAGER_HOST_AND_PORT=https://app.harness.io  
-         - WATCHER_STORAGE_URL=https://app.harness.io/public/pro  
+   version: "3.7"
+   services:
+     harness-ng-delegate:
+       restart: unless-stopped
+       deploy:
+         resources:
+           limits:
+             cpus: "0.5"
+             memory: 2048M
+       image: harness/delegate:23.01.78102
+       environment:
+         - ACCOUNT_ID=12345678910
+         - ACCOUNT_SECRET=[enter new token here]
+         - MANAGER_HOST_AND_PORT=https://app.harness.io
+         - WATCHER_STORAGE_URL=https://app.harness.io/public/pro
    ...
    ```
 
@@ -147,7 +147,7 @@ To revoke tokens, do the following:
 
    ![](static/secure-delegates-with-tokens-06.png)
 
-2. Select **Revoke**. The token is revoked. The Harness Manager will not accept connections from any delegates using this revoked token.
+2. Select **Revoke**. The token is revoked. The Harness Manager will not accept connections from any delegates using this revoked token.
 
 ## Option: Rotate tokens
 

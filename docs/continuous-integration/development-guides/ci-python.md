@@ -274,6 +274,8 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 
+Stage-level parallelism is recommended for Python.
+
 ## Specify version
 
 <Tabs>

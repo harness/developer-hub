@@ -62,6 +62,10 @@ const doYourCustomStuff = () => {
 
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener("load", () => {
-    setInterval(doYourCustomStuff, 500);
+    let interval = setInterval(doYourCustomStuff, 500);
+    setTimeout(() => {
+      clearInterval(interval);
+      interval = 0;
+    }, 2000);
   });
 }

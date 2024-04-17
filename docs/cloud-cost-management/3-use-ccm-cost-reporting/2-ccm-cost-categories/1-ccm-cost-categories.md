@@ -57,6 +57,11 @@ The new cost category appears.
 
 ![](./static/cost-category-builder-1.png)
 
+
+:::info
+You can create a maximum of 25 cost categories.
+:::
+
 ### Create cost buckets
 
 1. Select **New Cost Bucket**.
@@ -75,7 +80,7 @@ To illustrate, consider the scenario of creating a cost category, `CC1`, which i
 
 Consider an example where you have a cost category named `CC1`, which includes a cost bucket called `CB1`. Additionally, you have another cost category named `CC2`, which includes a cost bucket called `CB2`. When defining the cost bucket rules, it is essential to avoid adding `CC2` as a rule in `CC1` and adding `CC1` as a rule in `CC2`. Similarly, it is not allowed to create a nested structure where CC1 nests CC2, which in turn nests CC3, then CC4, and finally circles back to CC1.
 
-- You can nest cost categories to a maximum of 20 levels.
+- You can nest cost categories to a maximum of 5 levels.
 
 :::
 

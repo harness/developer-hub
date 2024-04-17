@@ -10,7 +10,7 @@
 | Implement strategies to optimize pipeline execution and minimize build times | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/) |
 | **3. Utilization and Management of Harness Connectors and Integrations**  | |
 | Configure and manage various Harness Connectors (e.g., Docker, Git)| [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/)|
-| Understand and implement integration with different platforms and OS | [Continuous Integration (CI)](https://developer.harness.io/docs/get-started/supported-platforms-and-technologies/#continuous-integration-ci)|
+| Understand and implement integration with different platforms and OS | [What's supported by CI](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms)|
 | **4. Implementing and Managing Docker and Containerization in Harness CI** ||
 | Establish Docker connectivity and manage Docker connectors | [Build and Push to Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry) |
 | Develop and optimize Dockerfile configurations and image handling| [Harness CI images](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/) |
@@ -26,7 +26,7 @@
 | Configure and synchronize Harness Test Intelligence with main/master branches              | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) |
 | Implement strategies to improve and optimize test execution times                          | [Split tests (parallelism)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) |
 | **8. Advanced CI Features and Troubleshooting in Harness** ||
-| Implement and utilize advanced features like caching and conditional executions in CI      | [Stage and step conditional execution settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
+| Implement and utilize advanced features like caching and conditional executions in CI      | [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings) |
 | Diagnose, troubleshoot, and resolve common issues and errors in CI stages| [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **9. Implementation of Plugins and Extensions in Harness CI**  | |
 | Understand, install, and manage plugins in the Harness CI environment | [Use Drone plugins](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci)                                                                          |

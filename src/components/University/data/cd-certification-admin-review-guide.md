@@ -13,7 +13,7 @@
 | Utilizing Harness CD features for deployments| [CD steps, stages, and strategies](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies/) |
 | Addressing deployment issues | [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments)|
 | **4. Effective Use of Harness Expressions and Variables**  | |
-| Using Harness expressions and variables within deployments| [Extracting characters from Harness variable expressions](https://developer.harness.io/docs/platform/variables-and-expressions/extracting-characters-from-harness-variable-expressions/) |
+| Using Harness expressions and variables within deployments| [Use Harness expressions](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) |
 | Managing and referring service variables at runtime | [Services and environments basics](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview/)|
 | **5. Harness Configuration Management and Parameter Control** | |
 | Managing parameters securely using Harness | [Kubernetes steps timeouts and deadline parameters](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-steps-timeouts-and-deadline-parameters/) |
@@ -38,8 +38,8 @@
 | Implementing deployment halts or restrictions | [Freeze deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze/)  |
 | Managing stability during critical times  | [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/)|
 | **12. Harness UI and UX Proficiency** ||
-| Navigating and utilizing Harness UI for configurations | [Harness UI Overview](https://developer.harness.io/docs/get-started/harness-ui-overview/) |
-| Efficiently locating and modifying configurations within the UI| [Account Settings](https://developer.harness.io/docs/get-started/harness-ui-overview/#account-settings)|
+| Navigating and utilizing Harness UI for configurations | [Harness UI Overview](https://developer.harness.io/docs/platform/get-started/harness-ui-overview) |
+| Efficiently locating and modifying configurations within the UI| [Account Settings](https://developer.harness.io/docs/platform/get-started/harness-ui-overview)|
 | **13. Custom and Advanced Deployment Strategies**  |  |
 | Creating and managing custom deployment strategies| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/) |
 | Handling deployment to various infrastructure types| [Deployment concepts and strategies](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts/)|

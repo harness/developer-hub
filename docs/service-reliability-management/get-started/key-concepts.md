@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Learn SRM concepts.
-sidebar_position: 20
+sidebar_position: 2
 redirect_from:
   - /docs/service-reliability-management/getting-started/service-reliability-management-basics
 ---

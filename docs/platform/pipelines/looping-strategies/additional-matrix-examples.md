@@ -369,7 +369,7 @@ pipeline:
 
 You can use expressions as values for matrix dimensions. You can also use expressions to extract values from elsewhere, such as from pipeline or stage variables.
 
-For example, the following pipeline uses a matrix strategy that loops over a series of Jira issues. The issue numbers are derived from the pipeline variable `jiraTickets`, which is populated at runtime (as indicated by it's value `<+input>`). The matrix strategy uses an expression with the split method to separate the individual issue numbers from the pipeline variable: `<+pipeline.variables.example>.split(',')`.
+For example, the following pipeline uses a matrix strategy that loops over a series of Jira issues. The issue numbers are derived from the pipeline variable `jiraTickets`, which is populated at runtime (as indicated by it's value `<+input>`). The matrix strategy uses an expression with the split method to separate the individual issue numbers from the pipeline variable: `<+<+pipeline.variables.example>.split(',')>`.
 
 ```yaml
 pipeline:
@@ -411,7 +411,7 @@ pipeline:
                   failureStrategies: []
                   strategy:
                     matrix:
-                      jiraTicket: <+pipeline.variables.jiraTickets>.split(',')
+                      jiraTicket: <+<+pipeline.variables.jiraTickets>.split(',')>
         tags: {}
   variables:
     - name: jiraTickets

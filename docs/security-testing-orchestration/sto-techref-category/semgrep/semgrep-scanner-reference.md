@@ -23,9 +23,9 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 -->
 
-### Root access requirements
+### Root access requirements 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
@@ -64,7 +64,6 @@ import StoSettingScanTypeRepo     from '../shared/step_palette/target/type/_repo
 
 <StoSettingScanTypeRepo />
 
-<!--
 
 #### Target and variant detection
 
@@ -72,9 +71,8 @@ import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto
 import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
-<StoSettingScanTypeAutodetectNote/
+<StoSettingScanTypeAutodetectNote/>
 
--->
 
 #### Name
 
@@ -121,6 +119,22 @@ import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
+<!-- COMMENT THIS OUT UNTIL SEMGREP ORCHESTRATION IS AVAILABLE
+
+### Additional CLI flags
+
+Use this field to run the [`semgrep`](https://semgrep.dev/docs/cli-reference/) scanner with flags such as:
+
+`--severity=ERROR --use-git-ignore`
+
+With these flags, `semgrep` considers only ERROR severity rules and ignores files included in `.gitignore`. 
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+-->
+
 ### Fail on Severity
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
@@ -140,8 +154,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

@@ -2,7 +2,6 @@
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
 date: 2023-11-15T10:00:20
-tags: [NextGen, "service reliability management"]
 sidebar_position: 14
 ---
 
@@ -11,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/service-reliability-management/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/service-reliability-management/rss.xml" />
 
 These release notes describe recent changes to Harness Service Reliability Management (NextGen SaaS).
 

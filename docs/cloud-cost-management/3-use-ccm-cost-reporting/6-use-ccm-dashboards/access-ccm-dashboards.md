@@ -43,5 +43,9 @@ To access the dashboards outside the CCM module, perform the following steps:
 2. Select **By Harness** or **Cloud Cost** to filter the list.
 3. Click the required tile to view the corresponding dashboard.
 
+:::important note
+The data scan limit is 350 GB per query. Users can avoid hitting this limit by applying necessary filters to reduce the result-set as per their requirements.
+:::
+
 ## See also
 * [Use Dashboard Actions](../../../platform/dashboards/use-dashboard-actions.md)

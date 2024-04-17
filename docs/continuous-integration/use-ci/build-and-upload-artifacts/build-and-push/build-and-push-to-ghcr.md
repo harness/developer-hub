@@ -145,13 +145,28 @@ The [Docker build-time variables](https://docs.docker.com/engine/reference/comma
 
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#target), equivalent to the `--target` flag, such as `build-env`.
 
-### Remote Cache Image
+### Remote Cache Image (Docker layer caching)
 
-Use this setting to enable remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+Use this setting to [enable remote Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `NAMESPACE/IMAGE_NAME`.
 
 The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
+
+<details>
+<summary>Early access feature: Docker layer caching with Harness Cloud</summary>
+
+:::note
+
+Currently, Docker layer caching with Harness Cloud is behind the feature flags `CI_ENABLE_DLC` and `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Harness Cloud can manage the Docker layer [cache backend](https://docs.docker.com/build/cache/backends/) for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
+
+If your build runs on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you can enable Docker layer caching for Harness Cloud, select **Enable Docker layer caching** in your **Build and Push to Docker** step.
+
+</details>
 
 ### Environment Variables (plugin runtime flags)
 
@@ -176,15 +191,15 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ### Conditions, looping, and failure strategies
 
 You can find the following settings on the **Advanced** tab in the step settings pane:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings): Set conditions to determine when/if the step should run.
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings): Control what happens to your pipeline when a step fails.
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings): Set conditions to determine when/if the step should run.
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps): Control what happens to your pipeline when a step fails.
 * [Use looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism): Define a matrix, repeat, or parallelism strategy for an individual step.
 
 ## Troubleshoot Build and Push steps

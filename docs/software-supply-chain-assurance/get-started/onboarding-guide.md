@@ -28,3 +28,9 @@ Learn about the features, components, and key concepts of Harness SSCA:
 * View [attestations, violations](/docs/software-supply-chain-assurance/ssca-view-results), and [artifacts](/docs/software-supply-chain-assurance/artifact-view)
 * [Create and manage remediation trackers](/docs/category/remediation-tracker)
 * [Manage access control](/docs/software-supply-chain-assurance/ssca-access-control)
+
+## Tutorials
+
+Tutorials go into detail on specific use cases for SSCA.
+
+* [Automate SBOM drift detection for GitHub repositories](/docs/software-supply-chain-assurance/sbom/automate-sbom-drift-detection)

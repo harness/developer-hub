@@ -7,25 +7,9 @@ sidebar_position: 350
 
 You can ingest configuration scan results from ScoutSuite.
 
-## Important notes for running ScoutSuite scans in STO
-
-
-### Docker-in-Docker requirements
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-### For more information
+## For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 

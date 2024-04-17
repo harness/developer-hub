@@ -1,8 +1,7 @@
 ---
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
-tags: [NextGen, "cet"]
-date: 2023-11-02T17:20
+date: 2024-02-13T17:20
 sidebar_position: 9
 ---
 
@@ -11,7 +10,7 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-error-tracking/rss.xml" />
 
 These release notes describe recent changes to Harness Continuous Error Tracking.
 

@@ -8,19 +8,24 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).By default, Harness Basic Workflows for Lambda have two steps:
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
+
+By default, Harness Basic Workflows for Lambda have two steps:
 
 * **AWS Lambda** - This step deploys the function and also sets the Lambda aliases and tags for the function.
 * **Rollback AWS Lambda** - If a deployment fails, this step uses aliases to roll back to the last successful version of a Lambda function.
 
 In this topic:
 
-* [Before You Begin](#before_you_begin)
-* [Step 1: Create the Lambda Workflow](#step_1_create_the_lambda_workflow)
-* [Step 2: Configure Lambda Aliases and Tags](#step_2_configure_lambda_aliases_and_tags)
-* [Review: Rollback AWS Lambda Step](#review_rollback_aws_lambda_step)
-* [Example: Lambda Workflow Deployment](#example_lambda_workflow_deployment)
-* [Next Steps](#next_steps)
+- [Before You Begin](#before-you-begin)
+- [Step 1: Create the Lambda Workflow](#step-1-create-the-lambda-workflow)
+- [Step 2: Configure Lambda Aliases and Tags](#step-2-configure-lambda-aliases-and-tags)
+  - [Versioning with Aliases](#versioning-with-aliases)
+  - [Tags](#tags)
+    - [Existing Tags are Replaced During Deployment](#existing-tags-are-replaced-during-deployment)
+- [Review: Rollback AWS Lambda Step](#review-rollback-aws-lambda-step)
+- [Example: Lambda Workflow Deployment](#example-lambda-workflow-deployment)
+- [Next Steps](#next-steps)
 
 ### Before You Begin
 

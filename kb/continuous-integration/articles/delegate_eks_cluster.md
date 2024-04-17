@@ -30,7 +30,7 @@ exit status 1
 
 ## Solution
 
-1. Configure the [Service account in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name). For example:
+1. Configure the [Service account in the Kubernetes cluster build infrastructure settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#service-account-name). For example:
 
    ```yaml
    infrastructure:

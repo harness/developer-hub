@@ -255,17 +255,17 @@ These methods must **not** be executed on the application's main thread as they 
 
 The `eventsListener` method provides a way to register a listener for different events that might be triggered by SDK.
 
-The possible events and their responses are outlined in the following table:
+The possible events, reasons for being emitted, and their responses are outlined in the following table:
 
 
 
-|  |  |
-| --- | --- |
-| **EVENT\_TYPE** | **Response** |
-| SSE\_START | - |
-| SSE\_END | - |
-| EVALUATION\_CHANGE | `Evaluation` |
-| EVALUATION\_RELOAD | `List<Evaluation>` |
+|                    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |                    |
+|--------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
+| **EVENT\_TYPE**    | **Reason**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | **Response**       |
+| SSE\_START         | The SDK has successfully opened a streaming connection to the Feature Flags service, and is listening for events. No further action required from your application code.                                                                                                                                                                                                                                                                                                                                                  | -                  |
+| SSE\_END           | The SDK has closed the streaming connection to the Feature Flags service and is no longer listening for events. <br/>This can happen if the SDK is shutdown, of if there is a transient networking issue, and the SDK will attempt to reconnect. In both cases, no further action required from your application code.                                                                                                                                                                                                    | -                  |
+| EVALUATION\_CHANGE | The SDK has streamed a new evaluation after a flag has been changed using the Harness web application. You should evaluate a flag to get the latest variation. <br/>*Note* this is for individual flag changes only, and this event is not applicable to target group changes. <br/>See `EVALUATION_RELOAD` for streaming target group changes.                                                                                                                                                                           | `Evaluation`       |
+| EVALUATION\_RELOAD | This event can be emitted for 3 reasons. For all 3 reasons, you should evaluate any flags to get the latest variation. <br/>1) A target group change has been made using the Harness web application, and all evaluations has been reloaded. <br/>2) Streaming has been disabled and the SDK is in polling mode, and a poll has completed which has reloaded all evaluations. <br/>3) The SDK has disconnected from the stream and has entered polling mode, and a poll has completed which has reloaded all evaluations. | `List<Evaluation>` |
 
 For example:
 
@@ -424,29 +424,29 @@ class MainActivity : AppCompatActivity() {
 ## Troubleshooting
 The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
 
-| **Code** | **Description**                                                                                               |
-|----------|:--------------------------------------------------------------------------------------------------------------|
-| **1000** | Successfully initialized                                                                                      |
-| **1001** | Failed to initialize due to authentication error                                                              |
-| **1002** | Failed to initialize due to a missing or empty API key                                                        |
-| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish |
-| **2000** | Successfully authenticated                                                                                    |
-| **2001** | Authentication failed with a non-recoverable error                                                            |
-| **2002** | Authentication failed and is retrying                                                                         |
-| **2003** | Authentication failed and max retries have been exceeded                                                      |
-| **3000** | SDK closing                                                                                                   |
-| **3001** | SDK closed successfully                                                                                       |
-| **4000** | Polling service started                                                                                       |
-| **4001** | Polling service stopped                                                                                       |
-| **5000** | Streaming service started                                                                                     |
-| **5001** | Streaming service stopped                                                                                     |
-| **5002** | Streaming event received                                                                                      |
-| **5003** | Streaming disconnected and is retrying to connect                                                             |
-| **5004** | Streaming stopped                                                                                             |
-| **5005** | Stream is still retrying to connect after 4 attempts                                                          |
-| **6000** | Evaluation was successful                                                                                     |
-| **6001** | Evaluation failed and the default value was returned                                                          |
-| **7000** | Metrics service has started                                                                                   |
-| **7001** | Metrics service has stopped                                                                                   |
-| **7002** | Metrics posting failed                                                                                        |
-| **7003** | Metrics posting success                                                                                       |
+| **Code** | **Description**                                                                                               | **Log Level** |
+|----------|:--------------------------------------------------------------------------------------------------------------|---------------|
+| **1000** | Successfully initialized                                                                                      | Info          |
+| **1001** | Failed to initialize due to authentication error                                                              | Error         |
+| **1002** | Failed to initialize due to a missing or empty API key                                                        | Error         |
+| **1003** | `WaitForInitialization` configuration option was provided and the SDK is waiting for initialization to finish | Info          |
+| **2000** | Successfully authenticated                                                                                    | Info          |
+| **2001** | Authentication failed with a non-recoverable error                                                            | Error         |
+| **2002** | Authentication failed and is retrying                                                                         | Warn          |
+| **2003** | Authentication failed and max retries have been exceeded                                                      | Error         |
+| **3000** | SDK closing                                                                                                   | Info          |
+| **3001** | SDK closed successfully                                                                                       | Info          |
+| **4000** | Polling service started                                                                                       | Info          |
+| **4001** | Polling service stopped                                                                                       | Info          |
+| **5000** | Streaming connected                                                                                           | Info          |
+| **5001** | Streaming disconnected                                                                                        | Warn          |
+| **5002** | Streaming event received                                                                                      | Debug         |
+| **5003** | Streaming disconnected and is retrying to connect                                                             | Info          |
+| **5004** | Streaming service stopped                                                                                     | Info          |
+| **5005** | Stream is still retrying to connect after 4 attempts                                                          | Warn          |
+| **6000** | Evaluation was successful                                                                                     | Debug         |
+| **6001** | Evaluation failed and the default value was returned                                                          | Info          |
+| **7000** | Metrics service has started                                                                                   | Info          |
+| **7001** | Metrics service has stopped                                                                                   | Info          |
+| **7002** | Metrics posting failed                                                                                        | Warn          |
+| **7003** | Metrics posting success                                                                                       | Debug         |

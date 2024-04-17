@@ -220,6 +220,26 @@ under a domain.
 
 This relation is commonly based on `spec.system` or `spec.domain`.
 
+```YAML
+# Example catalog-info.yaml
+...
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:pet-managers
+  dependsOn:
+    - Component:manager
+    - Component:ng-manager
+    - Resource:sample-s3-bucket
+  providesApis:
+    - accesscontrol-service
+    - petstore
+    - internal/streetlights
+    - hello-world
+  subcomponentOf: sample-service  
+...
+```
+
 ## Definitions and Reference
 
 ### 1. Domain

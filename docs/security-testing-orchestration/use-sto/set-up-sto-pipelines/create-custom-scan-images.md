@@ -36,7 +36,9 @@ The following steps describe the general workflow.
 
 ## Hands-on example: add Yarn and PNPM to an OWASP image
 
-Suppose you're a security engineer and you want to start using STO and [OWASP Dependency Check](https://owasp.org/www-project-dependency-check/) to scan and validate the code repositories maintained by your organization. One development team uses [Yarn](https://yarnpkg.com/) and another team uses [PNPM](https://pnpm.io/). Your initial scans are failing because the base image doesn't include these packages.   
+Suppose you're a security engineer and you want to start using STO and [OWASP Dependency Check](https://owasp.org/www-project-dependency-check/) to scan and validate the code repositories maintained by your organization. One development team uses [Yarn](https://yarnpkg.com/) and another team uses [PNPM](https://pnpm.io/). Your initial scans are failing because the base image doesn't include these packages. 
+
+The following steps illustrate how to create an OWASP image that you can use to scan repositories that use Yarn AND repositories that use PNPM. (OWASP assumes that a scanned repo uses one package manager only. A scan will fail if the repo includes files associated with different managers.) 
 
 
 ### Extend the base image with Yarn and PNPM

@@ -4,7 +4,6 @@ description: Try out adding JavaScript Feature Flags to a TypeScript and React A
 sidebar_position: 8
 redirect_from:
   - /docs/feature-flags/ff-onboarding/tutorials
-  - /docs/feature-flags/get-started/tutorials
   - /tutorials/feature-flags/typescript-react
 ---
 

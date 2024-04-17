@@ -29,11 +29,6 @@ catalog:
         filters:
           branch: 'main' # string
           repository: '.*' # Regex
-        schedule: # optional; same options as in TaskScheduleDefinition
-          # supports cron, ISO duration, "human duration" as used in code
-          frequency: { minutes: 30 }
-          # supports ISO duration, "human duration" as used in code
-          timeout: { minutes: 3 }
       customProviderId:
         organization: 'new-org' # string
         catalogPath: '/custom/path/catalog-info.yaml' # string
@@ -62,13 +57,6 @@ catalog:
           topic:
             include: ['backstage-include'] # optional array of strings
             exclude: ['experiments'] # optional array of strings
-      validateLocationsExist:
-        organization: 'backstage' # string
-        catalogPath: '/catalog-info.yaml' # string
-        filters:
-          branch: 'main' # string
-          repository: '.*' # Regex
-        validateLocationsExist: true # optional boolean
       visibilityProviderId:
         organization: 'backstage' # string
         catalogPath: '/catalog-info.yaml' # string

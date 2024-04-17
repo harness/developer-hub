@@ -219,11 +219,12 @@ Make a note of your AWS Access key and Secret key.
 1. Create an S3 bucket with the following naming convention. For more information, go to [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html). This bucket will be used to retrieve the CUR report from your master AWS accounts.
 
   `harness-ccm-service-data-bucket-<accountid>`
+  
 2. Create another bucket with the following naming convention.
 
   `harness-ccm-service-template-bucket-<accountid>`
 
-  Apply the following bucket policy.
+3. Apply the following bucket policy.
 
   ```
   {
@@ -790,7 +791,7 @@ enabled = true
 
 # See available regions in the documentation:
 # https://aws.amazon.com/about-aws/global-infrastructure/regions_az
-region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1"
 
 # Static credentials
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]
@@ -812,7 +813,7 @@ prometheusQuery = "avg_over_time(aws_spot_current_price{region=\"%s\", product_d
 [provider.amazon.pricing]
 # See available regions in the documentation:
 #
-region = "us-east-1" [AWS Setup - Region where user is set up]
+region = "us-east-1"
 
 # Static credentials
 accessKey = "" [AWS Setup - Add a new user - Use saved aws access key]

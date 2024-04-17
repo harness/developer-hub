@@ -5,12 +5,10 @@ sidebar_position: 285
 sidebar_label: Open Source Vulnerabilities (OSV) scanner reference
 ---
 
-You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV SAST supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
+You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/), a tool that finds existing vulnerabilities that affect your project’s dependencies. OSV supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
 
 
 ## Important notes for running OSV scans in STO 
-
-Currently, this integration is behind the feature flag `STO_STEP_PALETTE_OSV`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 <!-- Currently, this integration supports the following:
 
@@ -77,13 +75,13 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeRepo />
 
-#### Target and variant detection
+#### Detect target and variant 
 
-Auto-detection is not available for ingestion scans.
+import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
-When scanning code repositories, the step detects these values as follows:
-- To detect the target, the step runs `git config --get remote.origin.url`. 
-- To detect the variant, the step runs `git rev-parse --abbrev-ref HEAD`. The default assumption is that the `HEAD` branch is the one you want to scan.
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
@@ -107,10 +105,6 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-<!-- 
-### Log Level, CLI flags, and Fail on Severity
--->
-
 ### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -120,9 +114,21 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with additional flags. 
 
-<StoSettingCliFlags />
+<!-- 
+
+Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with flags such as:
+
+`--no-ignore --sbom=/path/to/your/sbom.json`
+
+With these flags, the `osv` binary scans vulnerabilities in the specified SBOM even if it's included in a `.gitignore` file.
+
+-->
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
 ### Fail on Severity
@@ -131,9 +137,11 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 <StoSettingFailOnSeverity />
 
-<!-- 
 ### Settings
--->
+
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
 
 ### Additional Configuration
 
@@ -149,8 +157,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

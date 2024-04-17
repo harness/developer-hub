@@ -74,14 +74,11 @@ Infrastructure is where the build runs the steps in this stage. It is a build fa
 
 The first stage requires you to configure a build infrastructure. In stages after the first, you can either **Propagate from an existing stage** or **Use a New Infrastructure**.
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <Tabs>
-  <TabItem value="cloud" label="Cloud">
-
+  <TabItem value="cloud" label="Cloud" default>
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
@@ -92,184 +89,21 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-
 </TabItem>
-  <TabItem value="kubernetes" label="Kubernetes" default>
-
+  <TabItem value="kubernetes" label="Kubernetes">
 
 <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following **Platform** settings are available:
+Kubernetes cluster build infrastructure has the following **Platform** settings:
 
 * **Select the Operating System:** Select the relevant OS.
 * **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector).
 * **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/variables-and-expressions/runtime-inputs).
 
+For information about **Advanced** settings for Kubernetes cluster build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 The following **Advanced** settings are available for the **Kubernetes** infrastructure:
-
-### Volumes
-
-You can add a list of volumes you want to mount onto the pod where the stage runs.
-
-* **Mount Path:** Enter the path to the volume.
-* **Type:** Select **Empty Directory**, **Host Path**, or **Persistent Volume Claim**.
-* If **Type** is **Empty Directory**, you can specify the storage **Medium** and volume's maximum memory **Size**.
-* If **Type** is **Host Path**, you must specify **Path** and you can specify an optional **Path Type**.
-* If **Type** is **Persistent Volume Claim**, you must specify a **Claim Name** and whether the volume is **Read Only**.
-
-The following YAML example shows two Empty Directory volumes that would be used for PostgreSQL data.
-
-```yaml
-            spec:
-              connectorRef: YOUR_K8S_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_K8S_CLUSTER_NAMESPACE
-              volumes:
-                - mountPath: /tmp/pgdata1
-                  type: EmptyDir
-                  spec:
-                    medium: ""
-                - mountPath: /tmp/pgdata2
-                  type: EmptyDir
-                  spec:
-                    medium: ""
-```
-
-### Service Account Name
-
-Specify a Kubernetes service account that you want step containers to use when communicating with the Kubernetes API server. Leave this field blank if you want to use the namespace's default service account. You must set this field in any of the following cases:
-
-* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, *and* the stage has a step that uses a Harness AWS connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
-* Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
-* Your Kubernetes cluster connector inherits authentication credentials from the Delegate.
-
-### Automount Service Account Token
-
-By default, this option is selected and Kubernetes mounts a token for the Service Account when it creates a pod, which enables the pod to communicate with the Kubernetes API server. When this option is not selected, the service account token is not mounted.
-
-### Labels
-
-You can add Kubernetes labels, as key-value pairs, to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. You can find pods associated with specific stages, organizations, projects, pipelines, builds, or any custom labels you want to query, for example:
-
-```
-kubectl get pods -l stageID=mycibuildstage
-```
-
-For more information, go to the Kubernetes documentation on [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
-
-Custom label values must the following regex in order to be generated:
-
-```
-^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$
-```
-
-Harness adds the following labels automatically:
-
-* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
-* `stageName`: See `pipeline.stages.stage.name` in the Pipeline YAML.
-* `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
-* `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
-* `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
-* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`, for example:
-
-```
-https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline
-```
-
-### Annotations
-
-You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to the Kubernetes documentation on [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
-
-### Container Security Context
-
-Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) for the stage (pod) and steps (containers):
-
-* **Privileged:** Run all containers with the [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) flag enabled. This flag is disabled by default. You can override this setting in individual Run and Run Tests steps.
-* **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
-* **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Read-Only Root Filesystem:** Run all steps with a read-only root filesystem that has no writable layer.
-* **Run as Non-Root** and **Run as User:** Go to [Run as non-root or a specific user](#run-as-non-root-or-a-specific-user).
-
-#### Run as non-root or a specific user
-
-You can use the **Run as Non-Root** and **Run as User** settings to run builds as a non-root user or a specific user ID.
-
-:::warning
-
-Using a non-root user can require other changes to your pipeline.
-
-With a Kubernetes cluster build infrastructure, all [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). This tool requires root access to build the Docker image. It doesn't support non-root users.
-
-If you enable **Run as Non-Root**, then you must:
-
-* Run the **Build and Push** step as root by setting **Run as User** to `0` on the **Build and Push** step. This will use the root user for that individual step only.
-* If your security policy doesn't allow running as root for any step, you must use the Buildah Drone plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
-
-:::
-
-* **Run as Non-Root:** Enable this option to run all steps as a non-root user. If enabled, you must specify a default user ID for all containers in the **Run as User** field.
-* **Run as User:** Specify a user ID, such as `1000`, to use for all containers (steps) in the pod (stage). You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
-
-### Priority Class
-
-Set the Build stage pod's [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) in case there are resource shortages the host node. You can specify a `PriorityClass` from your build infrastructure or use the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
-
-If you leave this field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
-
-### Node Selector
-
-A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which whitelist the set of candidate nodes based on your stage pod's requirements.
-
-### Tolerations
-
-A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) that allow (but do not require) Build stage pods to be scheduled onto nodes with matching taints. For example:
-
-```yaml
-              tolerations:
-                - effect: NoSchedule
-                  key: key1
-                  operator: Equal
-                  value: value1
-                - effect: NoSchedule
-                  key: key2
-                  operator: Equal
-                  value: value2
-```
-
-#### Multiple tolerations with the same key
-
-Keys are reserved keywords used to validate unique FQNs. If you have multiple tolerations with the same key, you must include an `identifier` to differentiate them. For example:
-
-```yaml
-              tolerations:
-                - identifier: identifier1
-                  effect: NoSchedule
-                  key: key1
-                  operator: Equal
-                  value: value1
-                - identifier: identifier2
-                  effect: NoSchedule
-                  key: key1
-                  operator: Equal
-                  value: value2
-```
-
-### Host Names
-
-A list of [HostAliases](https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/) to set pod-level override of hostname resolution.
-
-### Init Timeout
-
-Set the timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
-
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 8 minutes.
-
-### Override Image Connector
-
-By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
-
 
 </TabItem>
   <TabItem value="local" label="Local">
@@ -318,4 +152,12 @@ The **Execution** tab is where you add steps to the stage. For details about dif
 
 ## Advanced
 
-The **Advanced** tab contains settings for [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps).
+The **Advanced** tab contains settings for [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md), [conditional executions](/docs/platform/pipelines/step-skip-condition-settings), [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
+
+:::info
+
+If you use a delegate selector with a Kubernetes cluster build infrastructure, and your delegate selector specifies a Docker delegate, your Kubernetes cluster connector must be set to [Specify Master URL and Credentials](/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#specify-master-url-and-credentials).
+
+Kubernetes cluster connectors can't inherit delegate credentials (use the credentials of a specific Harness Delegate) from Docker delegates because they are not in the same environment.
+
+:::

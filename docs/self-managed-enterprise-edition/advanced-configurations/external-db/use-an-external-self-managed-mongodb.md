@@ -124,7 +124,7 @@ To set up a MongoDB VM, do the following:
    ```
    echo "deb [arch=amd64] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/4.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.4.list
    ```
-   
+
 6. Run the following command to issue a MongoDB public GPG key.
 
    ```
@@ -172,12 +172,12 @@ To set up a MongoDB VM, do the following:
     ```
     replication:
       replSetName: rs0
-    
+
     # ...
     net:
       port: 27017
-      bindIp: 0.0.0.0 
-    
+      bindIp: 0.0.0.0
+
     security:
       authorization: enabled
       keyFile: /etc/keyFile
@@ -194,7 +194,7 @@ To set up a MongoDB VM, do the following:
     chmod 400 keyFile
     chown mongodb:mongodb keyFile
     ````
- 
+
 16. Log in to the remaining two VMs, and run following commands.
 
     ```
@@ -204,7 +204,7 @@ To set up a MongoDB VM, do the following:
     chmod 400 keyFile
     chown mongodb:mongodb keyFile
     ```
-    
+
     ```
     sudo systemctl start mongod
     ```
@@ -279,13 +279,13 @@ To set up a MongoDB VM, do the following:
         mongo:
           installed: false
           protocol: mongodb
-          hosts: 
-          - 10.10.10.10,10.10.10.11,10.10.10.12 
+          hosts:
+          - 10.10.10.10,10.10.10.11,10.10.10.12
           secretName: "mongo-secret"
           userKey: "keyone"
           passwordKey: "keytwoTe$tp@ssw0rD#@"
           extraArgs: "retryWrites=true&authSource=admin"
-          
+
       --
       --
       platform:
@@ -304,7 +304,7 @@ To set up a MongoDB VM, do the following:
     helm install my-release harness/harness -n <namespace> -f override.yaml
     ```
 
-<!-- 
+<!--
 ## TLS support
 
 TLS is supported with MongoDB Atlas using the `mongodb+srv` protocol. No additional change is required in the `override.yaml` file to enable TLS for MongoDB Atlas.

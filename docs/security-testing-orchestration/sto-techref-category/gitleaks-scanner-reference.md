@@ -70,13 +70,14 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 <StoSettingScanTypeRepo />
 
 
-<!-- #### Target and variant detection 
+#### Target and variant detection 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
+
 
 #### Name 
 
@@ -112,47 +113,46 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
+
+<!--
+
+ such as: 
+
+`--log-opts="-n 1000" --max-target-megabytes 10 --redact`
+
+With these flags, `gitleaks` limits the scan to the last 1000 commits, skips files that are larger than 10 MB, and redacts secrets from the log output. 
+
+-->
+
+Use this field to run the [`gitleaks`](https://github.com/gitleaks/gitleaks) scanner with additional CLI flags.
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
-
-
-
-<StoSettingCliFlags />
-
-<a name="fail-on-severity"></a>
-
-
-#### Fail on Severity
-
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
-
 <StoSettingFailOnSeverity />
+
 
 ### Settings
 
-You can add a `tool_args` setting to run the [Gitleaks scanner binary](https://github.com/gitleaks/gitleaks#usage) with specific command-line arguments. For example, you can redact secrets from the scanner output using `-redact`: `tool_args : --redact` 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
-You can also use `tool_args` to [speed up your Gitleaks scans](#speeding-up-gitleaks-scans).
+<StoSettingSettings />
+
+You can also use this field to [speed up your Gitleaks scans](#speeding-up-gitleaks-scans).
 
 
 ### Additional Configuration
@@ -169,8 +169,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

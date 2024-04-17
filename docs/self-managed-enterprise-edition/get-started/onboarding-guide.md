@@ -13,6 +13,8 @@ redirect_from:
   - /docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition
   - /docs/self-managed-enterprise-edition/introduction/smee-tutorials
   - /docs/self-managed-enterprise-edition/get-started/tutorials
+  - /docs/getting-started/self-hosted-on-prem
+  - /docs/get-started/self-managed-on-prem
 ---
 
 This topic provides an architecture overview, installation links, and the basics on how to create a Harness account and your first project. Perform these tasks soon after you install Harness Self-Managed Enterprise Edition, before you move on to other configuration tasks.
@@ -42,12 +44,12 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 To create your Harness account, do the following:
 
-1. On the Harness **Sign up** page, enter your email address and a secure password.
+1. On the Harness **Sign up** page, enter your email address and a secure password.
 
 2. Select **Sign up**.
 
    After your account is created, you arrive at the **Continuous Delivery** start page.
-   
+
    ![](./static/getting-started-with-self-managed-enterprise-edition-02.png)
 
 ## Create your first project
@@ -74,8 +76,8 @@ To get started with Harness Self-Managed Enterprise Edition, go to the following
 
 * Harness CCM: [Cloud Cost Management (CCM) overview](/docs/cloud-cost-management/get-started/overview).
 * Harness CET: [Continuous Error Tracking (CET) onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).
-* Harness CI: [Continuous Integration (CI) tutorials](/docs/continuous-integration/get-started/overview).
+* Harness CI: [Continuous Integration (CI) overview](/docs/continuous-integration/get-started/overview).
 * Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
 * Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).
 * Harness STO: [Security Testing Orchestration (STO) overview](../../security-testing-orchestration/get-started/overview.md).
-* Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/category/get-started-with-ce).
+* Harness Chaos Engineering: [Get started with Harness Chaos Engineering (CE)](/docs/category/get-started-with-hce).

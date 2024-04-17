@@ -1,0 +1,13 @@
+	{
+  "position": 5,
+  "label": "Architecture and security",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Architecture and security"
+   },
+  "customProps": {
+    "description": "Architecture and security aspects explained."
+  }
+}

@@ -11,16 +11,9 @@ You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails
 ## Important notes for running Brakeman scans in STO
 
 
-### Docker-in-Docker requirements
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-<StoDinDRequirements />
-
-
 ### Root access requirements 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
 
@@ -65,13 +58,13 @@ import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
 <StoSettingScanTypeRepo />
 
 
-<!-- #### Detect target and variant 
+#### Detect target and variant 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
 
 
 
@@ -102,39 +95,38 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
+### Additional CLI flags
 
-#### Additional CLI flags
+Use this field to run the [`brakeman` scanner](https://brakemanscanner.org/docs/options/) with flags and arguments such as:
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+`--path some/path/to/app` 
 
-<StoSettingCliFlags />
+With this flag, `brakeman` scans only a subpath rather than the full directory. 
 
-For example, suppose you want to scan only a subpath rather than the full directory. You can use `--path` followed by the path: `--path some/path/to/app` 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
-<!-- 
-
 ### Settings
 
-You can add a `tool_args` setting to run the [Brakeman scanner binary](https://brakemanscanner.org/docs/options/) with specific command-line arguments.  For example, suppose you want to scan only a subpath rather than the full directory. You can use `-path` followed by the path: `tool_args` = `--path some/path/to/app` 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
--->
+<StoSettingSettings />
+
 
 
 ### Additional Configuration
@@ -151,8 +143,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

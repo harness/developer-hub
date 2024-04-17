@@ -1,16 +1,13 @@
 ---
-title: Onboarding guide
+title: Set up Continuous Error Tracking (CET)
 description: Add a monitored service and install an Error Tracking Agent.
-sidebar_position: 20
+sidebar_position: 2
+sidebar_label: Onboarding guide
 redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-setup
 ---
 
-# Set up Continuous Error Tracking (CET)
-
-
-This topic describes how to add a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot faults and exceptions in your code.
-
+Learn how to add a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot faults and exceptions in your code.
 
 ## Add a monitored service
 

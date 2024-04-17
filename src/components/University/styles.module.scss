@@ -16,9 +16,11 @@
   .hero {
     display: flex;
     .left {
+      margin-top: -72px;
       flex-basis: 45%;
       .linkBack {
         margin-bottom: 16px;
+        padding: 0 16px;
       }
     }
     .right {
@@ -42,8 +44,86 @@
       }
     }
   }
+  .btns {
+    margin-top: 72px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .certBtn {
+      width: 227px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid var(--primary-9);
+      background-color: white;
+      color: var(--primary-9);
+      &:hover {
+        cursor: pointer;
+        background-color: var(--gray-100);
+      }
+
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+    .InstLedTrainBtn {
+      min-width: 330px;
+      height: 52px;
+      padding: 10px 32px 10px 32px;
+      border: 2px solid var(--primary-9);
+      border-radius: 50px;
+      font-family: Inter;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+      letter-spacing: 0px;
+      text-align: left;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-9);
+      background-color: white;
+      &:hover {
+        cursor: pointer;
+        background-color: var(--gray-100);
+      }
+      img {
+        width: 28px;
+        height: 22.67px;
+        top: 4.67px;
+        left: 2px;
+      }
+    }
+    .active {
+      background-color: var(--primary-9);
+      border: 2px solid var(--primary-9);
+      color: white;
+      &:hover {
+        background-color: var(--primary-10);
+      }
+    }
+  }
   .tabs {
     margin-top: 72px;
+    h2,
+    p {
+      margin-bottom: 32px;
+    }
     ul.tabItems {
       border-bottom: 1px solid var(--gray-200);
       padding: 0;
@@ -289,7 +369,7 @@
             // display: flex;
             // flex-direction: column;
             height: auto;
-            min-height: 400px;
+            min-height: 250px;
             border-bottom: 2px solid #d9dae5;
 
             .titleLine {
@@ -672,7 +752,7 @@
       }
       .right {
         flex-basis: unset;
-        margin-top: 36px;
+        // margin-top: 36px;
         img {
           width: 100px;
         }
@@ -718,6 +798,19 @@
   }
 }
 
+@media screen and (max-width: 980px) {
+  .linkBack {
+    margin-top: 40px;
+  }
+  .btns {
+    flex-wrap: wrap;
+    .certBtn,
+    .InstLedTrainBtn {
+      width: 330px;
+    }
+  }
+}
+
 @media screen and (max-width: 599px) {
   /* for mobile */
   .university,
@@ -731,6 +824,9 @@
   .certificationsPlatform {
     padding: 10px;
     background: none;
+      .linkBack {
+    margin-top: 80px;
+  }
     .hero {
       .right {
         background: url(/img/cert_harness_bg.svg) no-repeat;
@@ -741,6 +837,14 @@
           width: 25%;
           height: auto;
         }
+      }
+    }
+
+    .btns {
+      flex-direction: column;
+      .certBtn,
+      .InstLedTrainBtn {
+        width: 330px;
       }
     }
     .tabs {

@@ -56,3 +56,7 @@ Node is identified in case metrics were reported by your verification provider u
 
 #### While creating  SLO via terraform provider can see request was successful but SLO is not showing up in UI
 Please check the variable passed is correct(like for healthSourceRef its identifier of the source and not name)
+
+#### What is Metric packs
+
+With Metrics Packs section you can select the metrics that you want to use for the health source. The options available are Errors and Performance.

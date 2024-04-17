@@ -23,7 +23,7 @@ If used as a Docker Repo, the user needs:
 * List images and tags
 * Pull images
 
-See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
+See [Nexus Managing Security](https://help.sonatype.com/en/managing-security.html).
 
 ## Artifact Type Support
 

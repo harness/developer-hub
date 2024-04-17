@@ -1,12 +1,11 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-tags: [NextGen, "Internal Developer Portal", "IDP"]
-date: 2023-08-09T10:00:15
+date: 2024-04-10T13:00
 sidebar_position: 12
 ---
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/internal-developer-portal/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
@@ -17,6 +16,124 @@ Review the notes below for details about recent changes to Harness Internal Deve
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2024
+
+### Version 0.25.0
+
+<!-- Apr 10, 2024 -->
+
+Welcome to first release of April, and in this release we bring you features like **Catalog Metadata Ingestion APIs**, say goodbye to manual data entry woes. With our new API, effortlessly ingest metadata in scale into the IDP catalog. 
+
+- **Blogs:** [Introducing new Catalog Ingestion APIs to make Harness IDP truly yours](https://www.harness.io/blog/introducing-new-catalog-ingestion-apis-to-make-harness-idp-truly-yours)
+
+- **New Docs:** [Get started with IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/), [Harness IDP Overview](https://developer.harness.io/docs/internal-developer-portal/get-started/overview), [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties), [Usage of Catalog Metadata Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/ccp-for-workflows), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
+
+- **New Videos:** Our team presented a talk on "[Architecting Multi-tenant Backstage Instances in a Shared Kubernetes Cluster](https://youtu.be/TPHsBduIvm0?si=wWp9b5kXXNKDGrX0)" at the recently held [Backstagecon Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/backstagecon/).  
+
+
+#### New features and enhancements
+
+- We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both  `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
+
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+
+- We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
+
+- Added support for [MkDocs plugins and extensions](https://backstage.io/docs/features/techdocs/faqs/#what-is-the-mkdocs-techdocs-core-plugin) in the TechDocs. Here's the list of plugins added.[IDP-2540]
+  - [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox)
+  - [mkdocs-git-authors-plugin](https://github.com/timvink/mkdocs-git-authors-plugin)
+  - [mkdocs-git-revision-date-localized-plugin](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin)
+  - [mkdocs-video](https://pypi.org/project/mkdocs-video/)
+  - [mkdocs-material-extensions](https://pypi.org/project/mkdocs-material-extensions/)
+  - [mkdocs-redirects](https://github.com/mkdocs/mkdocs-redirects)
+  - [mkdocs-awesome-pages-plugin](https://pypi.org/project/mkdocs-awesome-pages-plugin/2.6.1/)
+  - [mkdocs-minify-plugin](https://pypi.org/project/mkdocs-minify-plugin/0.7.1/)
+
+- We have enhanced the [`harness:delete-secret`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#4-harnessdelete-secret) custom action to support deletion of secrets added as runtime inputs. [IDP-2492]
+
+- We now have Audit trails support for all the git integrations. [IDP-2419]
+
+- [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards) are now available to use in IDP. We have support for few OOTB dashboards as well. [IDP-1456]
+
+
+#### Bug Fixes
+
+- Fixed issues, with empty string & null entries for user groups, in access control. [IDP-2509]
+- Fixed issues with Entities marked as secret to be visible to owners only. [IDP-2182]
+
+
+## March 2024
+
+### Version 0.24.0
+
+<!-- Mar 22, 2024 -->
+
+#### New features and enhancements
+
+- We have improved the permission framework, wherein the support user won't be able to view the docs. [IDP-2477]
+
+- User can now provide the repository url to verify for repository read permission with the given host and credentials before saving the git integration, while creating the connectors. [IDP-2213]
+
+- We have added support for [sub-groups](https://docs.gitlab.com/ee/user/group/subgroups/) in the GitLab Datasources. [IDP-2510]
+
+- We now have support for custom properties, to push append or update arbitrary metadata associated with Catalog entities (services, libraries, websites, etc.) and will help users to automate the process of `catalog-info.yaml` creation, we provide an API that users can call from their pipeline or even manually to add or modify properties in the metadata field for any catalog entity(s). [IDP-2228]
+
+#### Bug Fixes
+
+- Fixed the issue for broken API Plugin, now all plugin data would be loading seamlessly for users once configured. [IDP-2461]
+- Fixed the issue with plugin icon on plugins page. [IDP-2431]
+- Fixed the issue with URL allow list, now host name field is marked mandatory to add the URL. [IDP-2414]
+
+### Version 0.23.0
+
+<!-- Mar 11, 2024 -->
+
+Continuing with the increased adoption of self-service flows, this release we're happy to introduce an intuitive minimalistic UI for the workflows page along with support for output variables on workflows page, to streamline user experiences seamlessly.
+
+- **Blogs:** [Why Harness IDP, powered by Backstage, is Your Gateway to Effortless Developer Portal Excellence](https://www.harness.io/blog/why-harness-idp-powered-by-backstage-is-your-gateway-to-effortless-developer-portal-excellence)
+
+- **New Docs:** [Custom Card Plugin](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-card), [Catalog Entity YAML Examples](https://developer.harness.io/docs/internal-developer-portal/catalog/yaml-file)
+
+- **New Videos:** [Custom Card Plugin](https://youtu.be/Qi1PIWSPves), [Workflow Upgrades](https://youtu.be/aethqdKmZOo)
+
+#### New features and enhancements
+
+- Now we have a [new UI](https://youtu.be/aethqdKmZOo) for the Workflows page, as part of the Backstage Upgrades. [IDP-2355]
+
+![](./static/new-template.png)
+
+- We have added a new custom processor to convert the email-id used under `owner` field in `catalog-info.yaml` to an `user` incase the username is part of the email-id. [IDP-2369]
+
+- We have added a new [Custom Card Plugin](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-card) to help users display the information, stored under the root fields of `catalog-info.yaml`, on a card in the overview tab. [IDP-2352]
+
+- We have added a new [Evaluate expression](https://developer.harness.io/docs/internal-developer-portal/scorecards/checks-datasources#catalog) datapoint under the Catalog datasource to match input values for all the root fields `apiVersion`, `kind`, `metadata`, and `spec` only and the supported values under the root field. [IDP-2111]
+
+- Now you can configure the output of `trigger:harness-custom-pipeline` to display the pipeline [output variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#input-and-output-variables), by setting the `showOutputVariables: true` under `inputs`and adding `output` as shown in the example below: [IDP-2328]
+
+```YAML
+...
+output:
+  text:
+    - title: Output Variable
+      content: |
+        Output Variable **test2** is `${{ steps.trigger.output.test2 }}` 
+    - title: Another Output Variable
+      content: |
+        Output Variable **test1** with fqnPath is `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}` 
+...
+```
+There are two ways in which you can add the output variable to the template syntax. 
+
+1. You can directly mention the output variable name `${{ steps.trigger.output.test2 }}`, here `test2` is the output variable name we created in the pipeline. 
+
+2. You can copy the JEXL expression of the output variable and remove the JEXL constructs, `${{ steps.trigger.output['pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1'] }}`, here the part `pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test1` comes from `<+pipeline.stages.testci.spec.execution.steps.Run_1.output.outputVariables.test2>` copied from execution logs. 
+
+![](./static/output-variables.png)
+
+#### Bug Fixes
+
+- Fixed the issue with missing labelSelector annotation resulting in scorecards checks failure message not getting displayed for some k8s related checks. [IDP-2270] 
 
 ## February 2024
 
@@ -84,7 +201,7 @@ spec:
 
 We are seeing a lot of excitement among our customers around Self Service Workflows to derive value for their developers. This release is especially for you if you are using IDP workflows for user/service onboarding.
 
-- **New Docs:** [API Docs](https://apidocs.harness.io/tag/AllowList), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
+- **New Docs:** [API Docs](https://apidocs.harness.io/tag/IP-Allowlist), [How to write IDP templates](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates), [List of on-hold Plugins](https://developer.harness.io/docs/internal-developer-portal/plugins/on-hold-plugins)
 - **New Videos:** [Ignoring Developer Experience is Hurting Your Organization: DX is Critical](https://youtu.be/ka6kHPMGGpc?si=MCcVZdvP2bGCCI3h)
 
 
@@ -313,7 +430,7 @@ Since last release, we have released some interesting docs and video tutorials t
 
 - **Video Tutorial:** [How to use self-service-onboarding](https://youtu.be/0GoK3SD1rxs?si=1Z28hvZ9nihYtdmL), [How to register your software components in Software Catalog](https://youtu.be/YgtIMDGMzJE?si=wiFzozj8Zo9dEEOF)
 - **Tutorial:** [How to add API docs in Harness IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/add-api-docs)
-- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/internal-developer-portal/features/api-reference)
+- **Docs:** [Software System Model](/docs/internal-developer-portal/catalog/system-model), [API Spec Reference](https://developer.harness.io/docs/category/api-references)
 
 #### New features and enhancements
 
@@ -339,7 +456,7 @@ Since last release, we have released some interesting docs and video tutorials t
 [Backstagecon](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/backstagecon/) & Kubecon is round the corner, consider catching up with Harness' team in the event at **Booth B15**. Also here's a [sneak peak](https://www.harness.io/blog/road-to-backstagecon-2023-a-sneak-peek-into-an-exciting-lineup-a-recap-of-2022) of what's happening in this year's edition of the event. Here's some of the content updates:
 
 - **Himanshu's(Product Manager for IDP) Backstagecon Talk:** [What Does Backstage Really Offer?](https://www.youtube.com/watch?v=4FTkeJY2Hcc)
-- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/onboarding-guide/), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
+- **Docs:** [Updated Onboarding Guide](/docs/internal-developer-portal/get-started/setup-git-integration/), [Public API](/docs/internal-developer-portal/api-refernces/public-api)
 - **Tutorial:** [How to add Links in Software Components](/docs/internal-developer-portal/catalog/software-catalog)
 
 #### New features and enhancements

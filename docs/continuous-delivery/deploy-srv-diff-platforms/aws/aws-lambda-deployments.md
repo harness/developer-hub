@@ -21,6 +21,7 @@ This topic covers the basics of Harness' Lambda support and provides examples on
 - Currently, Lambda functions can be packaged as ZIP files in S3 Buckets or as containers in AWS ECR.
   - If Harness were to support another repository, like Nexus, when the container is fetched by the API, AWS spins up AWS resources (S3, ECR) anyways, and so Harness has limited support to S3 and ECR.
   - The containers must exist in ECR. Containers are not supported in other repositories.
+- Currently, Lambda functions can't be deployed with an OIDC-enabled AWS Connector. 
 
 ## AWS IAM permissions
 

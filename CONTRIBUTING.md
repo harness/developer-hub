@@ -108,13 +108,28 @@ HDH is powered by [Markdown](https://daringfireball.net/projects/markdown/). Tak
 
 ## Additional metadata
 
-When adding a new Markdown file, above the initial H1 tag, a `description` is needed for SEO, and `keywords` are recommended. For example:
+When adding a new Markdown file, above the initial H1 tag, a `description` is needed for SEO. You can include optional `keywords`. For example:
 
 ```
 ---
+title: NodeJS and Docker pipeline
 sidebar_position: 1
 description: This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline
-keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
+keywords: [Tutorial, Continuous Integration, NodeJS, Docker]
+---
+
+```
+
+`keywords` are only available in the page metadata. They are not rendered when published.
+
+`tags` are similar to keywords; however, they offer interactive functionality. If included, tags appear at the bottom of the page. Selecting a tag directs the user to a page listing all pages with that tag. Only use tags if they are used holistically; otherwise the use of tags creates pages with only a few links, rather than accurately representing the full offering of thematically-related content.
+
+```
+---
+title: NodeJS and Docker pipeline
+sidebar_position: 1
+description: This build automation guide walks you through building a NodeJS and Docker Application in a CI Pipeline
+tags: [Tutorial, "Continuous Integration", NodeJS, Docker]
 ---
 
 ```

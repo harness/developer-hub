@@ -30,16 +30,16 @@ The **Tests** metric provides more options for **Columns**, **Filters**, **Stack
 <details>
 <summary>Changes made to the Dropdown Custom Case Field in TestRail is not reflected</summary>
 
-In some cases, changes made to a Dropdown Custom Case Field in TestRail may not be properly reflected if the "Save Field" button is disabled.
+In some cases, changes made to a **Dropdown Custom Case Field** in TestRail may not be properly reflected if the **Save Field** button is disabled.
 
-* Navigate to the **TestRail administration** panel.
-* Select **"Administration"** from the main menu
-* Click on **"Custom Fields"** in the **"Customizations"** section
-* Edit the **Dropdown Custom Case Field**
-* Inside the custom field settings, locate the **"Projects Options"** section.&#x20;
-* Select the other option and not "**All Projects"**&#x20;
-* After selecting the other option, switch back to **"All Projects"** as your choice.
-* Ensure the **"Save Field"** button is not disabled.
-* Save the field (Note: Make sure the Save Field button is not disabled, if its disabled changes will not be reflected).
+1. Navigate to the **TestRail administration** panel.
+2. Select **Administration** from the main menu
+3. Click on **Custom Fields** in the **Customizations** section
+4. Edit the **Dropdown Custom Case Field**
+5. Inside the custom field settings, locate the **Projects Options** section.
+6. Select the other option and not **All Projects**.
+7. After selecting the other option, switch back to **All Projects** as your choice.
+8. Ensure the **Save Field** button is not disabled.
+9. Save the field. Make sure the **Save Field** button is *not* disabled. If it is disabled, changes aren't reflected.
 
 </details>

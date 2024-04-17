@@ -2,7 +2,7 @@
 title: Harness Continuous Error Tracking (CET) Overview
 sidebar_label: Overview
 description: Get an overview of Harness Continuous Error Tracking (CET).
-sidebar_position: 10
+sidebar_position: 1
 redirect_from:
   - /docs/continuous-error-tracking/getting-started/cet-overview
 ---
@@ -21,11 +21,10 @@ CET consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM
 
 ![Harness Error Tracking](./static/et-quickstart-overview-diagram.png)
 
-## Further reading
-
-- [Demo - Find and fix Java exceptions](./java-error-tracking.md)
-- [Supported platforms and technologies](../whats-supported.md)
-
 ## Next steps
 
-[Install and setup Continuous Error Tracking](./onboarding-guide.md).
+- [Try CET](./java-error-tracking.md)
+- [CET onboarding guide](./onboarding-guide.md)
+- [Supported platforms and technologies](../whats-supported.md)
+
+

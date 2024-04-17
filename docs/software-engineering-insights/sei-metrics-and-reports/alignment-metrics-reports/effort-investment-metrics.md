@@ -4,6 +4,9 @@ description: Supported reports for Effort investment or Business Alignment on SE
 sidebar_position: 25
 sidebar_label: Effort investment metrics
 ---
+:::info
+The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report)
+:::
 
 Effort investment, also known as alignment, helps you analyze how engineering teams invest their efforts and align with business needs and strategic initiatives. With these metrics, you can:
 
@@ -35,7 +38,7 @@ Use [Business Alignment Insights](/docs/software-engineering-insights/insights/s
 
 Effort investment metrics are driven by [Investment profiles](/docs/software-engineering-insights/sei-profiles/investment-profile). When you add an effort investment widget to an Insight, you select an Investment profile to associate with the widget. The data ingested by the widget depends on the categories defined in the Investment profile.
 
-Reports can be filtered by different attributes available through your [integrations](/docs/category/integrations), including custom fields specified in the integration or [Collection](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview). If you include multiple filters, they are inherently combined with an `AND` operator.
+Reports can be filtered by different attributes available through your [integrations](/docs/category/sei-integrations), including custom fields specified in the integration or [Collection](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview). If you include multiple filters, they are inherently combined with an `AND` operator.
 
 ### Categories
 
@@ -49,4 +52,4 @@ After adding [categories](#categories), you can set goals for how much time you 
 
 Adjust the sliders to define the Ideal range for each category. You can set ranges from zero to 100. After defining your ideal range, SEI automatically calculates the Acceptable range and Poor range based on your ideal.  SEI implements the concept of blast radius on the provided ideal range. The radius is determined by the ideal range.
 
-Reports can be filtered by different attributes available through your [integrations](/docs/category/integrations), including custom fields specified in the integration or [Collection](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview). If you include multiple filters, they are inherently combined with an `AND` operator.
+Reports can be filtered by different attributes available through your [integrations](/docs/category/sei-integrations), including custom fields specified in the integration or [Collection](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview). If you include multiple filters, they are inherently combined with an `AND` operator.

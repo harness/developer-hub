@@ -18,6 +18,7 @@ This topic describes how to deploy AWS ASG deployments using Harness and the Spo
 * Spot Elastigroup deployments support AMI artifacts only.
 * Spot Elastigroup deployments support only Basic, Canary, and Blue Green execution types.
 * Your spot account must be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
+* Currently, Harness does not support using Spot Elastigroup with an OIDC-enabled AWS connector.
 
 ## Connect to a Spot cloud provider
 
@@ -336,8 +337,8 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
@@ -379,8 +380,8 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
         * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 6. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 7. Select **Apply Changes**. 
@@ -468,8 +469,8 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
 5. In the **Advanced** settings of all steps, you can use the following options:
     * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+    * [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+    * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
     * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
     * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 

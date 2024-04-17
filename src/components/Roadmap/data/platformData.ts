@@ -51,6 +51,12 @@ export const platformData: Horizon = {
         description:
           "",
       },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Multi tenant SMP",
+        description:
+          "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
+      },
     ],
   },
   Next: {
@@ -126,6 +132,19 @@ export const platformData: Horizon = {
         description:
           "Create and manage customized notification body text",
       },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
+      },
+      {
+        tag: [],
+        title: "Multi-tenant SaaS in EU",
+        description:
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
+      },
+
     ],
   },
   Released: {
@@ -155,6 +174,30 @@ export const platformData: Horizon = {
         title: "Absolute session timeout",
         description:
           "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering, Cloud Cost Management - Beta (AWS Cost Visibility)",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Backup and restore",
+        description:
+          "Use Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Disaster Recovery",
+        description:
+          "Setup a disaster recovery (DR) cluster for better node failure tolerance",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "External Database",
+        description:
+          "Configure external databases as a self-managed solution",
       },
     ],
 

@@ -26,7 +26,7 @@ Harness address this scenario using Barriers. Barriers allow you to synchronize 
 
 Barriers have an effect only when two or more stages/step groups use the same barrier name (**Barrier Reference** setting in the Barrier step), and are executed in parallel in a pipeline. When executed in parallel, both stages/step groups will cross the barrier at the same time. There are additional constraints when these parallel steps are generated using looping strategies. For more information, go to [Important notes](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers#notes).
 
-If a stage/step group fails before reaching its barrier point, the stage/step group signals the other stages/step groups that have the same barrier, and the other stages/step groups will react as if they failed as well. At that point, each stage/step group will act according to its [define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
+If a stage/step group fails before reaching its barrier point, the stage/step group signals the other stages/step groups that have the same barrier, and the other stages/step groups will react as if they failed as well. At that point, each stage/step group will act according to its [define a failure strategy on stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps).
 
 Here's a visualization of three stages run in parallel using Barriers. Stages A and B will wait for each other to reach Barrier X and Stages B and C will wait for each other to reach Barrier Y.
 

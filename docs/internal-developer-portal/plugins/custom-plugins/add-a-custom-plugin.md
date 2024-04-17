@@ -4,9 +4,11 @@ description: Learn about the steps to add your custom plugin in IDP.
 sidebar_position: 2
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 :::info
 
-**Coming Soon**. This feature is **not available in production environment** yet, meanwhile take a look at the details of custom plugins to get an overview of it. In case you want to try out this feature please reach out to the IDP team.
+This feature is in **BETA** and is available behind the feature flag `IDP_ENABLE_CUSTOM_PLUGINS`. If you want to try out this feature, please reach out to the IDP team. We would love to work with you and take feedback.
 
 :::
 

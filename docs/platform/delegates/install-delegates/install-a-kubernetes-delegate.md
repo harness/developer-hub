@@ -10,6 +10,11 @@ helpdocs_is_published: true
 
 This topic describes how to install the legacy Kubernetes delegate, which always auto upgrades to the default delegate version associated with a Harness Manager version.
 
+import Delk8ssup from '/docs/platform/shared/delegate-install-k8s-supported-vernos.md'
+
+<Delk8ssup />
+
+
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
@@ -363,7 +368,7 @@ All delegates include proxy settings you can use to change how the delegate conn
 You can run scripts on delegate using `INIT_SCRIPT`. For example, if you wanted to install software on the delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the delegate YAML. A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688). For more information, go to [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
   ```
-  - name: INIT_SCRIPT  value: |-    echo install wget    apt-get install wget    echo wget installed
+  - name: INIT_SCRIPT  value: |-    echo install wget    microdnf install wget    echo wget installed
   ```
 
 #### POLL_FOR_TASKS
@@ -460,7 +465,7 @@ The namespace for the delegate is taken from the `StatefulSet` namespace.
 
 By default, Harness does not include a value for `serviceName` in the `StatefulSet` in the delegate YAML:
 
-```
+```yaml
 ...
 apiVersion: apps/v1
 kind: StatefulSet
@@ -482,6 +487,7 @@ spec:
         harness.io/name: myDelegate
 ...
 ```
+
 You do not need to change `serviceName`, but you can if you have a static code analysis tool that flags it or some other use case.
 
 Add the delegate name as the value using the syntax `harness.io/name: [Delegate name]`.

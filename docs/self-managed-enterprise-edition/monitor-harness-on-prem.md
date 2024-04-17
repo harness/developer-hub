@@ -170,7 +170,7 @@ For this example, we use the Prometheus operator packaged by Bitnami as an exter
 
 ```yaml
 bootstrap:
-  database: 
+  database:
     mongodb:
       metrics:
         enabled: true
@@ -238,42 +238,42 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 3. Sign in to the Grafana dashboard home page.
 
 4. Set Prometheus as the data source:
-  
+
   Go to settings, select **Data sources**, and then select **Add data source**.
 
   ![](./static/monitor-harness-on-prem-prom1.png)
 
 5. Select **Prometheus**.
- 
-6. Configure the URL settings to connect to your locally-hosted Prometheus setup, with the locally-hosted Grafana instance. 
+
+6. Configure the URL settings to connect to your locally-hosted Prometheus setup, with the locally-hosted Grafana instance.
 
 7. Deploy prometheus and grafana on the same cluster, and use kubeDNS resolution. For example, if you want to connect pod A to pod B, on pod A, the hostname of B should be:
 
   `http://serviceNameOfPodB.<namespaceOfPodB>.svc.cluster.local:<port>`
 
-  This requires the following information: 
+  This requires the following information:
 
-    - Service name of where prometheus is hosted. 
-    - Namespace in which prometheus is hosted. 
+    - Service name of where prometheus is hosted.
+    - Namespace in which prometheus is hosted.
     - Port at  which prometheus is hosted.
 
-  This makes our present URL look like: 
+  This makes our present URL look like:
 
   `http://my-release-kube-prometheus-prometheus.default.svc.cluster.local:9090/`
 
   :::warning
-  The final URL should be similar to the above URL, according to your system specifications. Any extra space or character in the URL field causes the data source testing to fail. 
+  The final URL should be similar to the above URL, according to your system specifications. Any extra space or character in the URL field causes the data source testing to fail.
   :::
 
 8. Configure the **Prometheus type** and **Prometheus version** fields.
 
-9. Select **Save & test**. A confirmation that the data source is working displays. 
+9. Select **Save & test**. A confirmation that the data source is working displays.
 
 ### Add a Grafana dashboard
 
 Now you can add a dashboard to view metrics via query.
 
-- To add a dashboard, go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
+- To add a dashboard, go to **Dashboards** and then select **New Dashboard** and **Add a new panel**.
 
 Custom dashboards are available in the Harness public repository:
 
@@ -289,7 +289,7 @@ In this example, the Prometheus server is installed in the same cluster as your 
 
 ## Monitor Harness services
 
-Harness Self-Managed Enterprise Edition currently supports monitoring for four Harness services. 
+Harness Self-Managed Enterprise Edition currently supports monitoring for four Harness services.
 
 - `access-control`
 
@@ -299,9 +299,9 @@ Harness Self-Managed Enterprise Edition currently supports monitoring for four H
 
 - `harness-manager`
 
-You can monitor the services by enabling monitoring in the override file. For more information, go to [Required overrides](#required-overrides). 
+You can monitor the services by enabling monitoring in the override file. For more information, go to [Required overrides](#required-overrides).
 
-Harness has the following comprehensive metrics available for the services: 
+Harness has the following comprehensive metrics available for the services:
 
 - Mean Error Rate
 - HTTP Error Rate
@@ -322,4 +322,4 @@ To load the dashboard, do the following:
 2. Select **Data source**, and then select **Prometheus**.
 3. Run the query at the bottom of the page to test the data source.
 
-   The metrics for the services are available to view on the dashboard. 
+   The metrics for the services are available to view on the dashboard.

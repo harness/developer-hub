@@ -161,3 +161,4 @@ You can delete an AutoStopping rule from the Summary of Rules Page or from the d
 3. Click **Delete**.
 
    ![](./static/autostopping-dashboard-49.png)
+

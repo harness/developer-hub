@@ -8,34 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides an overview of how Harness Policy As Code implemented governance.
-
-
-:::note
-Looking for the quickstart? See [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
-
-:::
-
-### Before you begin
-
-Before learning about Harness Policy As Code, you should have an understanding of the following:
-
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
-
-### How does Harness use OPA?
+You can use Harness Policy As Code to implement governance in your Harness account and modules.
 
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
 
 You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied.
 
-Currently, you can define and store policies directly in the OPA service in Harness.
+You can define and store policies directly in the OPA service in Harness or use the [Git Experience to store policies in a Git repository](./configure-gitexperience-for-opa.md).
 
-Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible registries) to define and store the policies used in Harness.
+## Governance Examples with Harness OPA
 
-### Governance Examples with Harness OPA
-
-#### Example A: Pipeline > On Save
-
+### Example: Apply policy when saving a pipeline
 
 When a Pipeline is saved, there needs to be an Approval step before deploying to a production environment.
 
@@ -43,15 +26,14 @@ When a Pipeline is saved, there needs to be an Approval step before deploying to
 * **Warning:** a warning message appears: `You need an Approval step. If you save the Pipeline and deploy, Harness will throw an error.`
 * **Failure:** you configure a Pipeline with a Deploy stage that deploys to a prod environment without an Approval stage before it. When you save the Pipeline, Harness throws an error message indicating the rule was enforced and the Pipeline fails validation.
 
-#### Example B: Pipeline > On Run
-
+### Example: Apply policy when a pipeline runs
 
 On deployment, I need my pod CPU and memory to be pre-defined.
 
 * **Success:** you deploy the Pipeline and during the dry run the pod CPU and memory have been defined and populated in the deployment manifest. As a result, the dry run progresses. Harness indicates that the rule was evaluated and the action was valid.
 * **Failure:** pod CPU and memory were not defined in the deployment manifest. As a result, the dry run fails. Harness indicates that a rule was enforced and the deployment is prevented.
 
-### Harness OPA Server
+## Harness OPA Server
 
 The Harness OPA server is an OPA server managed by Harness.
 
@@ -59,7 +41,7 @@ In Harness, you add Rego policies to a Policy Set and select the Harness entitie
 
 When certain events happen (e.g. saving or running a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action using the Policy Set.
 
-### Harness Policies
+## Harness Policies
 
 A policy is a single rule. Policies are written as code in the OPA Rego policy language.
 
@@ -80,36 +62,37 @@ Policies are written in the OPA policy language, Rego.
 * **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 * See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
 
-#### Policy Editor
+### Policy Editor
 
 Harness policies are written and tested using the built-in policy editor.
 
-![](../../governance/policy-as-code/static/harness-governance-overview-07.png)
+![](./static/harness-governance-overview-07.png)
 
 For an example of how to use the policy editor, see [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart).
 
-#### Policy Library
+### Policy Library
 
 The Policy Editor includes a library of policies that cover many common governance scenarios.
 
 Sample policies are also useful references while writing your policy. When you import an example, a sample payload is also loaded for testing the policy.
 
-![](../../governance/policy-as-code/static/harness-governance-overview-08.png)
+![](./static/harness-governance-overview-08.png)
 
 You can simply use the library policies to quickly generate the policy you want to create.
 
-#### Select Input
+### Select Input
 
 In the Policy Editor, you can select sample entities to test your policy on. For example, Pipelines.
 
-![](../../governance/policy-as-code/static/harness-governance-overview-09.png)
-#### Testing Terminal
+![](./static/harness-governance-overview-09.png)
+
+### Testing Terminal
 
 The Testing Terminal lets you test the policy against real inputs while you're developing it. You can select input payloads from previous evaluations to test what will happen when your policy is evaluated.
 
-![](../../governance/policy-as-code/static/harness-governance-overview-10.png)
+![](./static/harness-governance-overview-10.png)
 
-#### Policy Input Payload User Metadata
+### Policy Input Payload User Metadata
 
 The input payload contains user metadata for the user that initiated the event. Metadata includes roles, groups, etc, and is added to every evaluation automatically. For example:
 
@@ -149,7 +132,7 @@ This enables enforcing policies with advanced and attribute-based access control
 
 For more information, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-### Harness Policy Set
+## Harness Policy Set
 
 You define a set of rules (policies) that are evaluated together in a Policy Set.
 
@@ -165,7 +148,7 @@ Policy Sets are saved at the Harness account, Organization, or Project level, an
 
 A Policy Set at the account level applies to all entities in the Orgs and Projects in the account. A Policy Set at the Project level only applies to entities in that Project alone.
 
-### Entities and Events
+## Entities and Events
 
 When you create a policy, you identify the Harness entities were the policy is applied.
 
@@ -177,7 +160,7 @@ Currently, governance can be applied to the following Harness entities and event
 
 Soon, policies can be applied to more entities, such as Connectors, Services, Environments, Cloud Cost Management, Infrastructure Provisioners.
 
-#### Pipelines
+### Pipelines
 
 Policies are evaluated against Harness Pipelines. The input payload is an expanded version of the Pipeline YAML, including expanded references of stages/steps. 
 
@@ -193,7 +176,7 @@ Severities:
 
 The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
-#### Feature Flags
+### Feature Flags
 
 Policies are evaluated against Harness [Feature Flags](/docs/feature-flags/get-started/overview).  
 
@@ -205,7 +188,11 @@ Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
 See [Use Harness Policy As Code for Feature Flags](/docs/platform/governance/policy-as-code/using-harness-policy-engine-for-feature-flags.md).
 
-#### Custom
+### Repositories
+
+Policies are evaluated against [Harness Code repositories](/docs/code-repository/config-repos/security.md).
+
+### Custom
 
 You can define a policy with the entity type Custom.
 
@@ -213,7 +200,7 @@ The Custom entity type provides flexibility to enforce policy evaluations agains
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 
-### Policy and Policy Set Hierarchy and Inheritance
+## Policy and Policy Set Hierarchy and Inheritance
 
 Policies and Policy Sets are saved at the Harness Account, Organization, or Project level in the Harness. Where the Policy or Policy set is saved determines its scope. 
 
@@ -221,11 +208,10 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 * A policy at the Org level can only be added to Policy Sets in that Org and its Project.
 * A policy at the Project level can only be added to Policy Sets in that Project.
 
-![](../../governance/policy-as-code/static/harness-governance-overview-13.png)
+![](./static/harness-governance-overview-13.png)
 
-### See also
+## See also
 
 * [Harness Policy As Code Quickstart](/docs/platform/governance/policy-as-code/harness-governance-quickstart)
 * [Add a Policy Step to a Pipeline](/docs/platform/governance/policy-as-code/add-a-governance-policy-step-to-a-pipeline)
 * [Harness Policy As Code Overview for Feature Flags](/docs/feature-flags/harness-policy-engine)
-

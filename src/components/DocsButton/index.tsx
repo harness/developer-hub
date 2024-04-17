@@ -17,7 +17,7 @@ const DocsButton: React.FC<Props> = (props) => {
   const baseUrl = siteConfig.url;
 
   return (
-      <Link to={baseUrl + props.link} className="link">
+      <Link to={props.link} className="link">
         {props.tooltip ? (
           <Tooltip placement="top" overlay={<span>{props.tooltip}</span>}>
             <button className={`doc-button  ${size ? size : "small"}`}>

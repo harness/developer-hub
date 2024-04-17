@@ -87,14 +87,14 @@ import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image
 <StoSettingScanTypeCont />
 
 
-<!-- #### Detect target and variant 
+#### Detect target and variant 
 
 
 import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectContainer/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
@@ -191,21 +191,23 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 For Extraction scans, the name of the image that you want to extract from Anchore. 
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
-You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `--force` to reset the image analysis status to `not_analyzed`.  
+Use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with flags such as `--force`. This flag resets the image analysis status to `not_analyzed`.  
+
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
@@ -214,7 +216,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Settings
 
-You can use this field to provide environment variables to be used during the execution of the step. 
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
+
+<StoSettingSettings />
 
 
 ### Additional Configuration
@@ -231,8 +235,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

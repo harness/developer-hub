@@ -7,6 +7,8 @@ helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+  - /docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference
 ---
 
 You can scan your container images using [Aqua Trivy](https://github.com/aquasecurity/trivy), a comprehensive and versatile open-source scanner. 
@@ -84,13 +86,13 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 <StoSettingScanTypeCont />
 
 
-<!-- #### Detect target and variant 
+#### Detect target and variant 
 
 import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
 import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectContainer/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
@@ -143,16 +145,11 @@ import StoSettingImageName from '../shared/step_palette/image/_name.md';
 
 import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
-
-
 <StoSettingImageTag />
 
 #### Access ID
 
-
 import StoSettingImageAccessID from '../shared/step_palette/image/_access-id.md';
-
-
 
 <StoSettingImageAccessID />
 
@@ -193,35 +190,35 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
 
-<a name="log-level"></a>
-
-#### Log Level
-
+### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
-
-
 <StoSettingLogLevel />
 
-<a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
+Use this field to run the [`trivy image`](https://aquasecurity.github.io/trivy/v0.49/docs/target/container_image/) scanner with flags such as:
 
-import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
+`--ignore-unfixed --scanners vuln`
 
+With these flags, the scanner reports only on vulnerabilities with known fixes. 
 
+import StoSettingCliFlagsCaution from '../shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+<!-- 
 <StoSettingCliFlags />
 
 For example, you can customize the security issues to detect using the `scanners` argument. To scan vulnerabilities only, add `--scanners vuln` to this field.
 
-<a name="fail-on-severity"></a>
+-->
 
 
-#### Fail on Severity
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
@@ -229,12 +226,12 @@ import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severi
 
 <StoSettingFailOnSeverity />
 
-<!-- 
 ### Settings
 
-You can add a `tool_args` setting to run the scanner with specific command-line arguments. For example, you can customize the security issues to detect using the scanners argument. To scan vulnerabilities only, specify `tool_args` = `--scanners vuln`. 
+import StoSettingSettings from '../shared/step_palette/all/_settings.md';
 
--->
+<StoSettingSettings />
+
 
 ### Additional Configuration
 
@@ -250,8 +247,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

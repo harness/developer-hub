@@ -11,21 +11,12 @@ You can scan your repositories using Checkmarx. Harness STO supports the followi
 
 ## Important notes for running Checkmarx scans in STO
 
-### Docker-in-Docker requirements
+### Root access requirements 
 
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
+
 
 ### For more information
 
@@ -72,13 +63,13 @@ import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.
 <StoSettingScanTypeRepo />
 
 
-<!-- #### Target and variant detection 
+#### Target and variant detection 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
@@ -177,19 +168,16 @@ import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.
 <StoSettingToolProjectName />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful arguments include:
+Use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with flags such as:
 
 * `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
 * `-LocationPathExclude`— Exclude one or more paths from the scan.
@@ -199,6 +187,9 @@ You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resou
 
 <!-- https://harness.atlassian.net/browse/STO-7006  -->
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 ### Running incremental scans with Checkmarx
 
@@ -246,8 +237,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

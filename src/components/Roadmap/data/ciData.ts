@@ -11,7 +11,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Go",
+        title: "Build Cache for Bazel",
         description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {
@@ -71,7 +71,7 @@ export const CiData: Horizon = {
       },
       {
         tag: [{ value: "Fast" }],
-        title: "Build Cache for Bazel",
+        title: "Build Cache for Go",
         description: "Build Cache accelerates builds by intelligently identifying and reusing unchanged build outputs from previous builds, instead of unnecessarily rebuilding them from scratch.",
       },
       {
@@ -103,6 +103,11 @@ export const CiData: Horizon = {
         tag: [{ value: "Fast" }],
         title: "Flaky tests management",
         description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
+      },
+      {
+        tag: [{ value: "Fast" }, { value: "Beta" }],
+        title: "Test Intelligence for JavaScript-based languages and tools",
+        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
       },
       {
         tag: [{ value: "Artifact Management" }],

@@ -1,4 +1,4 @@
-For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart) deployment types, you can add multiple Helm charts to a Harness service.
+For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart) deployment types, you can add multiple Helm charts to a Harness service.
 
 ![picture 0](static/048f14a5e9803bcf519ecaa9f7c3aa83a7d81cf5468b6c4db2d51b3d22b5fc3e.png)
 

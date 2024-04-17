@@ -122,7 +122,7 @@ This is an `TabItem` 2.
 
 ## Code Formatting
 
-Can enable syntax highlighting with these [common languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/src/vendor/prism/includeLangs.js).
+Can enable syntax highlighting with these [common languages](https://github.com/FormidableLabs/prism-react-renderer/blob/master/packages/generate-prism-languages/index.ts).
 
 ```js
 console.log("Check out Harness, Today!");
@@ -209,7 +209,7 @@ and Size [small, medium, large].
 "Subscribe to RSS" size="medium"/> />
 ```
 
-<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-integration/rss.xml" tooltip=
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/continuous-integration/rss.xml" tooltip=
 "Subscribe to RSS" size="medium"/>
 
 ## Pills
@@ -228,3 +228,15 @@ clicked and hoovered. Though pills can contain links also.
 <DocsTag  text="Default without icon" link="/docs/security-testing-orchestration" />
 <DocsTag  backgroundColor= "#ff8ac1" text="With out icon"  textColor="#ca136c"  />
 <DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
+
+## Embed Mode
+If needing to embed HDH externally, can use the embed request parameter e.g `embed=true`. Below
+is an example of an iframe. 
+
+```
+<iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
+ ```
+
+ #### Iframe Render
+
+<iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
