@@ -30,13 +30,15 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 Harness is in the process of updating the STO UI. The following changes are cosmetic and do not affect the underlying YAML definitions of STO pipelines. Harness expects all of these changes to be deployed in all namespaces by the end of April 2024. 
 
-- The **Security** stage is used for running scans in STO-only workflows. Previously, this stage was called **Security Tests**. (STO-7384)
+- The **Security Tests** stage is now called **Security** when you add a new stage and select the stage type.  (STO-7384)
+
+  <DocImage path={require('./static/sto-7384-security-stage-name-update-when-adding-new-stage.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
 
 - The **Custom Scan** step is used for scanner integrations that do not have their own configuration step. Previously, this step was called **Security**. This step also has a new icon. (STO-7385)
 
   **Custom Scan** appears at the end of the list of Security Test steps in the Step Library. 
 
-  <DocImage path={require('./static/sto-7455-custom-scan-step-in-step-library.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
+  <DocImage path={require('./static/sto-7385-custom-scan-step-in-step-library.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
 
 #### Fixed issues
 
