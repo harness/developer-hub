@@ -36,7 +36,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 2. In **Variations**, click the edit icon.
 
    
-   <img src={edit_vars} alt="The Edit Variations icon." height="500" width="444" />
+    ![The Edit Variations icon.](./static/3-manage-variations-00.png)    
     
 
 3. In **Edit Variations**, you can add or delete a Variation and also edit the following:
@@ -46,7 +46,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    * **Default rules for the flag**: The rules that are served by default for this Flag, for example, when the Flag is enabled, serve the `Enabled` Variation.
 
       
-      <img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="594" />
+       ![The Edit Variations page.](./static/3-manage-variations-01.png)
        
 
 ## Edit the Variations served for your current Environment
@@ -54,8 +54,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In the **Targeting** tab, under **When the Default Flag is Enabled** and **When the Default Flag is Disabled**, select the Variations you want to set as the default.
 
-   
-   <img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="594" />
+    ![The Targeting tab of a Flag, which highlights where you can change which Flag Variation is served.](./static/3-manage-variations-02.png)
     
 
    :::info note
