@@ -1,6 +1,6 @@
 ---
-title: Walkthrough- Use HCE with Service Reliability Management (SRM)
-sidebar_label: Use CE with Service Reliability Management
+title: Use HCE with Service Reliability Management (SRM)
+sidebar_label: Use HCE with Service Reliability Management
 sidebar_position: 35
 description: Integrating HCE with SRM
 redirect_from:
@@ -8,15 +8,15 @@ redirect_from:
 ---
 
 Within Harness, you can see the impact of chaos faults on your target environment by using [SRM](/docs/service-reliability-management).
-To do this, you connect any chaos fault within an experiment to monitored services. A monitored service in Harness is a combination of a service and environment that [SRM](/docs/service-reliability-management) monitors for changes, events, and health trends. 
+To do this, you connect any chaos fault within an experiment to monitored services. A monitored service in Harness is a combination of a service and environment that [SRM](/docs/service-reliability-management) monitors for changes, events, and health trends.
 
-For example, let's say you use SRM to monitor services and to correlate change events to service health. Now you want to see how one or more chaos faults impacts services in your target environment. By adding the target environment as one or more monitored services, and linking faults to those services, you can see the impacts on service health in SRM when you run experiments containing those faults. 
+For example, let's say you use SRM to monitor services and to correlate change events to service health. Now you want to see how one or more chaos faults impacts services in your target environment. By adding the target environment as one or more monitored services, and linking faults to those services, you can see the impacts on service health in SRM when you run experiments containing those faults.
 
 For more information on monitored services, go to the [SRM documentation](/docs/service-reliability-management).
 
 ## Before you begin
 
-Create one or more monitored services that represent your target environment for running chaos experiments. Then create one or more Service Level Objectives (SLOs) for the monitored service(s). For instructions, go to: 
+Create one or more monitored services that represent your target environment for running chaos experiments. Then create one or more Service Level Objectives (SLOs) for the monitored service(s). For instructions, go to:
 
 * [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service).
 * [Create your first SLO](/docs/service-reliability-management/get-started/create-first-slo)
@@ -47,8 +47,8 @@ To check the impact of a fault on a monitored service:
 1. In Harness, select **Service Reliability**.
 
 	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/get-started/slo-dashboard) appears, listing SLOs, their associated monitored service, status, [error budget](/docs/service-reliability-management/get-started/slo-dashboard#error-budget-details), etc.
-	
-	![The SRM SLOs dashboard, listing 3 SLOs, and their associated monitored services](./static/srm/srm-slo-dashboard.png) 
+
+	![The SRM SLOs dashboard, listing 3 SLOs, and their associated monitored services](./static/srm/srm-slo-dashboard.png)
 
 	Here you can find the monitored service(s) corresponding to your target environment.
 
@@ -68,7 +68,7 @@ To check the impact of a fault on a monitored service:
 
 1. Below the timeline, in the Changes section, select a change event to see [SLO details](/docs/service-reliability-management/get-started/slo-dashboard#slo-details-page).
 
-	Here you can see performance trends and error budget for the SLO, among other details. 
+	Here you can see performance trends and error budget for the SLO, among other details.
 
 1. To go to the chaos experiment corresponding to this change event, select **View Chaos Experiment**.
 

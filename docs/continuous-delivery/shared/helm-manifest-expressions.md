@@ -1,4 +1,4 @@
-For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart) deployments, you can use the following built-in expressions in your pipeline stage steps to reference chart details.
+For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart) deployments, you can use the following built-in expressions in your pipeline stage steps to reference chart details.
 
 |                     Expression                      |                                                      Description                                                      |
 | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |

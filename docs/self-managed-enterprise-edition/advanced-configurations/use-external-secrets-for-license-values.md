@@ -16,7 +16,7 @@ The following values are available in `global.license.secrets.kubernetesSecrets`
    - `secretName`: Name of the Kubernetes secrets containing Harness license keys
    - `keys.CG_LICENSE`: Name of the secret key containing a FirstGen License
    - `keys.NG_LICENSE`: Name of the secret key containing a NextGen License
-   
+
       ```yaml
          global:
            license:
@@ -37,7 +37,7 @@ To configure a Kubernetes-based external secret as a a NextGen Harness license v
 1. Create a Kubernetes secret that includes your NextGen Harness license.
 
 2. Update your `override.yaml` file to include the following.
-   
+
    ```yaml
          global:
            license:

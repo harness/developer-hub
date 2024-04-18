@@ -1,7 +1,7 @@
 ---
 title: Enable the module
 description: Enable the Harness Internal Developer Portal in your account.
-sidebar_position: 10
+sidebar_position: 2
 redirect_from:
   - /docs/internal-developer-portal/getting-started/enabling-module
 ---

@@ -21,11 +21,8 @@ Review the following topics before you add step groups.
 - Currently, Harness supports step groups in Deploy and Custom stages only. For information about using step groups in CI, go to [Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
 - When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
 - Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
-- Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
 
-![](./utilities/static/step-groups-04.png)
 
-The steps **in** each group run in parallel but each group runs serially.
 
 ## Containerized step groups
 
@@ -34,6 +31,14 @@ By default, the tasks performed by Harness CD steps are run on the Harness Deleg
 To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster as the runtime infrastructure for CD steps.
 
 You can use a CD step group that points to your cluster as the runtime infrastructure. Next, in the step group, you can add the steps supported by containerized step groups.
+
+:::note
+Containerized step groups cannot have nested step groups, but you can put groups of steps next to each other in a containerized step group:
+
+![](./utilities/static/step-groups-04.png)
+
+The steps **in** each group run in parallel but each group runs serially.
+:::
 
 For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
 

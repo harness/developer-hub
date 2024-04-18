@@ -1,7 +1,8 @@
 ---
 title: Delegate release notes
 sidebar_label: Delegate
-date: 2024-04-04T10:00
+tags: [NextGen, "Delegate"]
+date: 2024-04-16T10:00
 sidebar_position: 4
 ---
 
@@ -46,9 +47,9 @@ Please note that the following important changes will occur in an upcoming relea
 
    </details>
 
-- Delegate tokens not used within the last 30 days will be revoked automatically.
+- Delegate tokens not used within the last 90 days will be revoked automatically.
 
-   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
+   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 90 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
 
 :::
 
@@ -69,6 +70,28 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 <Deleos />
 
 ## April 2024
+
+### Harness version 1.33.5, Harness Delegate version 24.04.82707 <!--  April 16, 2024 -->
+
+#### New features and enhancements
+
+- Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. (PL-46947)
+
+#### Fixed issues
+
+- Slack channel notifications failed due to an error related to explicitly setting the Host header as `hooks.slack.com`. We have removed the explicit Host header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue. (PL-47914)
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. The name of a user will be sanitized if it does not follow Harness naming conventions during user addition flows. (PL-47614)
+
+- Builds triggered by Bitbucket Server push events had incorrect date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)  
+
+- Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. (PL-48781, ZD-60713)
+
+### Version 24.04.82705 <!--  April 12, 2024 -->
+
+#### Hotfix
+
+- Added support for network load balancers in ASG Blue Green deployments. (CDS-95510, ZD-60182)
 
 ### Version 24.04.82603 <!--  April 4, 2024 -->
 

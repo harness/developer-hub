@@ -1,11 +1,11 @@
 ---
-title: HQL AppScan scanner reference for STO
-description: Ingest DAST scan results from HQL AppScan.
-sidebar_label: HQL AppScan scanner reference
+title: HCL AppScan scanner reference for STO
+description: Ingest DAST scan results from HCL AppScan.
+sidebar_label: HCL AppScan scanner reference
 sidebar_position: 215
 ---
 
-You can ingest DAST scan results from [HQL AppScan](https://www.hcl-software.com/appscan).
+You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan).
 
 The standard workflow is to add a Security step to your CI Build or Security Tests stage and configure it as described below.
 
@@ -17,7 +17,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Security step settings for HQL AppScan scans in STO
+## Security step settings for HCL AppScan scans in STO
 
 ### Target and variant
 
@@ -25,7 +25,7 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 <StoLegacyTargetAndVariant />
 
-### HQL AppScan scan settings
+### HCL AppScan scan settings
 
 * `product_name` = `app_scan`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
