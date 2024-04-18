@@ -6851,7 +6851,7 @@ For more refer to the following Harness [documentation](https://developer.harnes
 
 #### How can we fully stop a pipeline if it was aborted but still shows a running status, preventing us from aborting it again?
 
-Please reach out to [Harness support](support@harness.io) to enable the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`. Once this flag is enabled, any future pipelines being executed will no longer experience the issue of being stuck in a running status after being aborted
+Please reach out to [Harness Support](mailto:support@harness.io) to enable the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`. Once this flag is enabled, any future pipelines being executed will no longer experience the issue of being stuck in a running status after being aborted
 
 #### Why, despite the activation of the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`, does the retried execution of an aborted pipeline persistently display a running status?
 
