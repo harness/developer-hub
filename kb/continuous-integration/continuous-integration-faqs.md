@@ -1276,6 +1276,9 @@ To address this error, enable the [Optimize setting](https://developer.harness.i
 
 You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
 
+### Why is my initialize step timing out?
+One possible reason as to why the initialize step is timing out can be due to an incorrect secret reference in a Harness Expression in one of the Stage's steps. Harness' Expression Engine runs prior to the initialize step running and if the secret referenced in the expression is invalid, the amount of time it takes to retry getting the secret value until failure could be long enough for the initialize step to timeout. To fix this, please ensure that all secrets referenced in Harness Expressions are valid.
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
