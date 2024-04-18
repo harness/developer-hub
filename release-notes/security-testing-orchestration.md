@@ -24,7 +24,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2024
 
-### Version TBD
+### STO Manager version 1.22.1
+
+<!-- 2024-04-18 -->
 
 #### New features and enhancements
 
