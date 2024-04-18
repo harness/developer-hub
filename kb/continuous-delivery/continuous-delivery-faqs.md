@@ -6872,3 +6872,115 @@ Users can utilize the following API to retry a failed stage: [retryPipeline](htt
 #### When attempting to import a **.yaml file** from GitHub to create a new pipeline, the message `This file is already in use by another pipeline` is displayed. Given that there are no other pipelines in this project, is there a possibility of a duplicate entry that I may not be aware of?
 
 It's possible that there are two pipeline entities in the database, each linked to the same file path from the Harness account and the GitHub URL. Trying to import the file again may trigger the `File Already Imported` pop-up on the screen. However, users can choose to bypass this check by clicking the `Import` button again.
+
+#### What is the process for cloning autostopping rules in Harness?
+
+To clone an autostopping rule in Harness, follow these steps:
+
+Navigate to the AutoStopping Rules dashboard in Harness.
+Select the autostopping rule you want to clone.
+Click on the three-dot menu and choose "Clone".
+Provide a new name for the cloned rule.
+Review and adjust the configuration of the cloned rule as needed.
+Save the cloned rule.
+
+#### How can I revert to the old UI in Harness?
+
+To switch back to the old UI in Harness, adjust the user preference settings in your Account Settings.
+
+#### Is it possible to switch the Harness UI language to French?
+
+No, localization is currently not supported in the Harness Platform, including switching the UI language to French.
+
+#### Does the Community Edition of Harness support RBAC (Role-Based Access Control)?
+
+Yes, the Community Edition of Harness supports Role-Based Access Control (RBAC).
+
+#### How to Install Powershell on harness delegate?
+
+To install PowerShell on a Harness Custom Delegate, you can use the INIT_SCRIPT environment variable in the delegate YAML file to run a script that installs PowerShell. Here's an example script that you can use:
+```
+name: INIT_SCRIPT
+  value: |
+    #!/bin/bash
+    sudo apt-get update
+    sudo apt-get install -y powershell
+```
+
+This script uses the apt-get package manager to install PowerShell on the delegate. You can modify the script to use a different package manager if needed. Once you have added the script to the delegate YAML file, apply the changes to the delegate using the kubectl apply command.
+For more details on how to create custom images delegate dockerfile
+https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/
+
+#### Would like to know what are the account using older delegate version?
+You can determine if an account is using an older delegate version by checking the Delegate release notes. The release notes provide information about features that require a specific delegate version. If the account is using a version older than the required version for a specific feature, then they are using an older delegate version.
+
+You can also use check article here to verify which is the supported version for your account and check delegate version which you are using. https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images
+
+
+#### Does the S3 Trigger support detecting file additions in Harness Next Gen?
+
+Yes, the S3 trigger is supported in Harness Next Gen. It can detect when a new file is added to an S3 bucket and trigger a deployment pipeline accordingly.
+
+#### Can I move a service from one project to another in Harness?
+
+No, Harness currently does not support moving resources between projects or organizations. Therefore, you cannot move a service from one project to another.
+
+#### How do I assign the "create projects" role in Harness?
+
+To assign the "create projects" role in Harness, follow these steps:
+
+Ensure you have a role with permissions to view, create/edit, and delete roles, such as Account Admin.
+Navigate to the scope where you want to create the role:
+For account scope: Go to Account Settings > Access Control.
+For organization scope: Go to Account Settings > Organizations > Select the relevant organization > Access Control.
+For project scope: Go to Projects > Select the relevant project > Access Control.
+Select "Roles" in the header, then choose "New Role".
+Enter a name for the role, and optionally provide a description and tags.
+Click "Save" and select permissions for the role.
+Apply the changes.
+
+#### How can I generate a policy to block deployments when all tests are not successful?
+
+Yes, you can create a policy to block deployments when all tests are not successful. Here's an example policy that can be applied using the On Run event for a pipeline:
+
+```
+package pipeline
+
+# Deny pipelines if any test step fails
+deny[msg] {
+    # Find all test steps
+    step = input.pipeline.stages[_].stage.spec.execution.steps[_].step
+    step.type == "Test"
+    # ... where the step failed
+    step.status == "FAILED"
+    # Show a human-friendly error message
+    msg := sprintf("test step '%s' failed", [step.name])
+}
+```
+
+This policy will deny pipeline execution if any test step fails. You can modify this policy to suit your specific requirements.
+
+####  What is <+infra.tags.endpoint>?
+
+<+infra.tags.endpoint> is not available as a Harness Variable. Refer to the Supported Infra Harness Variable documentation for more details.
+
+#### How to Install Terraform on Harness Delegate?
+
+To install Terraform on a custom image delegate, you can use the INIT_SCRIPT environment variable in the delegate YAML file. Here's an example installation script to install Terraform on a custom image delegate:
+ 
+ Terraform installation
+```
+set +x
+apt-get update
+apt-get install wget
+apt-get -y install git
+wget https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip
+apt-get install unzip
+unzip terraform_0.13.3_linux_amd64.zip
+cp terraform /usr/bin/
+terraform --version
+```
+You can modify this script to install a different version of Terraform if needed. Once you have modified the script, add it to the INIT_SCRIPT environment variable in the delegate YAML file. When you deploy the custom image delegate, the script will be executed during initialization and Terraform will be installed on the delegate.
+ 
+I recommend reviewing the document available at:
+https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/
