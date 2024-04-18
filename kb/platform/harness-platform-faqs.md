@@ -2936,3 +2936,52 @@ Now if the user is only added at the project level then he gets added to All Pro
  
 It is also possible to add user at account level and manager project level permission at project level Access Control. The same applies to organisation level. 
 
+### How can we provide a project access to organization-level resources?
+
+Under the organization, select Access Control, head to Resource Groups.
+Create a new resource group if none was created already.
+Under Resource Scope, select Specified Projects.
+Click Edit and select the projects in need of the resources under the organization.
+Make sure to place a checkmark next to Include Organization-level Resources.
+Click Apply, then Save.
+
+Users under the project will now have access to the resources available to the organization.
+
+### How can we provide a project access to account-level resources?
+
+Under Account Settings, select Access Control, head to Resource Groups.
+Create a new resource group if none was created already.
+Under Resource Scope, select Specified Organizations (and their Projects).
+Click Edit and a popup window will display.
+Make sure to place a checkmark next to Include Account-level Resources.
+Click on Select Organization (and its Projects) and select the org in the dropdown.
+Make sure to place a checkmark next to Include Project-level Resources.
+Place the bullet next to Specified and locate the projects that require the account-level resources.
+Click Apply, then Save.
+
+Users under the project will now have access to the resources available to the account.
+
+#### Is it possible to export secrets from FirstGen and move them to NextGen?
+
+Due to security reasons, exporting secrets from the Secrets Manager is not available.  Having such an option available would expose the secrets to any user with access.  Due to this, Harness does not allow exporting secrets.  The only option is to manually review each between FG and NG to confirm if they point to the same entries.
+
+#### Is there a way for new users to sign in to Harness with their  SAML SSO credentials and automatically provision the users with the appropriate access?
+
+Utilizing Just-in-Time (JIT) provisioning, Harness can allow new users to automatically be provisioned when signing into Harness for the first time with their SAML SSO credentials.  To utilizing JIT provisioning, the feature flag PL_ENABLE_JIT_USER_PROVISION must be enabled for the account.
+
+For more information on utilizing this feature, please visit https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/.
+
+#### While I am in the office, I am able to login to Harness.  However, I am unable to login to Harness while working from home.  Is there some restriction from logging into Harness with my account?
+
+Harness allows customers to manage an IP allow list so that organizations can provide a list of approved IP address to sign in to the Harness platform.  This allow list may include the office IP address and possibly the VPN IP address for users that work remotely.
+
+Please consult with your Harness admin within your organization for more details.
+
+#### How can we find out which pipelines are using a particular template in its project?
+
+One can simply view which pipelines are using the template by doing the following:
+Access Templates section from the project.
+Click the template in question.
+Click on the Referenced By section.
+
+A list of entities will appear in which one can identify the pipelines where the template is being utilized.
