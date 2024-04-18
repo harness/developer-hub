@@ -28,7 +28,7 @@ Before you install Harness Self-Managed Enterprise Edition, you must create a te
 
 To create a test cluster using eksctl, do the following:
 
-1. Install and configure eksctl. For more information, go to {Installation](https://eksctl.io/installation/) in the eksctl documentation.
+1. Install and configure eksctl. For more information, go to [Installation](https://eksctl.io/installation/) in the eksctl documentation.
 2. Save the following to a `sample-demo-cluster.yaml` file.
 
     ```yaml
