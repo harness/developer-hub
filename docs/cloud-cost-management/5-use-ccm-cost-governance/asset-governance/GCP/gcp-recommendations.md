@@ -4,7 +4,7 @@ description: This topic describes how to optimize cloud costs using asset govern
 # sidebar_position: 2
 ---
 
-Recommendations help kickstart your journey with governance. Essentially, Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled Azure subscriptions. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
+Recommendations help kickstart your journey with governance. Essentially, Harness runs certain policies behind the scenes to generate recommendations for your governance-enabled GCP projects. These policies not only help to cut costs but also increase the efficiency of your system. On the Governance Overview page, Harness showcases recommendations that will benefit you to save costs on associated resources. You can click on any recommendation to view its details. 
 
 Listed below are the custodian policies which are used to generate recommendations that Harness offers for GCP. Along with each policy, you can also find their respective descriptions, the logic behind savings computation and the permissions required to generate or apply these recommendations.
 
@@ -236,7 +236,7 @@ policies:
       
 ```
 
-**Savings Computed:** Savings are determined as 35% of the total cost. Implementing this recommendation would result in a 35% reduction in the maintenance cost of that disk, bringing it down to 92%. Thus, we consider the minimum savings achievable, which is 35%.
+**Savings Computed:** Savings are considered as 35% of the total cost. Implementing this recommendation would result in 35% to 92% reduction in the maintenance cost of that disk. Thus, we have considered the minimum savings achievable, which is 35%. Ref: https://cloud.google.com/compute/docs/viewing-and-applying-idle-resources-recommendations
 
 **Permissions Required:** 
 - Dry Run:
