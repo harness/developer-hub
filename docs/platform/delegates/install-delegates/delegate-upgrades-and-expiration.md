@@ -231,7 +231,7 @@ To configure the delegate upgrade schedule, do the following:
 
 If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images.
 
-When this feature is configured, Harness Delegate images won't be fetched from the public Docker Hub but from the designated mirror.
+When this feature is configured, Harness Delegate images are fetched from the designated mirror, instead of public Docker Hub.
 
 ```yaml
 mode: Delegate
