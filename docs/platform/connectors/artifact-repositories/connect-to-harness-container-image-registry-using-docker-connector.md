@@ -44,7 +44,7 @@ If you don't want to change the behavior for your entire account, follow the ste
    * To pull [Harness images from GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gcr.io/gcr-prod` for **Docker Registry URL**.
    * To pull [Harness images from ECR](https://gallery.ecr.aws/harness), select **Other (Docker V2 compliant)** for **Provider Type**, and then enter `https://gallery.ecr.aws` for **Docker Registry URL**.
 
-   If you want to change the connector back to Docker Hub, select **Docker Hub** and entering `https://registry.hub.docker.com`.
+   If you want to change the connector back to Docker Hub, select **Docker Hub** and enter `https://registry.hub.docker.com`.
 
 6. For **Authentication**, select **Anonymous**. You can use anonymous access to pull Harness images from GCR, ECR, or Docker Hub.
 7. Select **Continue** to go to **Select Connectivity Mode**, and then configure the connector to connect through a Harness Delegate or the Harness Platform.
