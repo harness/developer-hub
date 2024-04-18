@@ -208,7 +208,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
 
 :::tip
 
-You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Workflow Steps in your CI pipelines.
 
 :::
 
