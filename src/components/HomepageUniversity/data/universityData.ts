@@ -18,6 +18,7 @@ export const university: CardItem[] = [
       "Continuous Integration focuses on building and testing your code. Your Continuous Integration pipeline should provides a bird's-eye view and analyze the root causes of issues.",
     link: "/university/continuous-integration",
     numberOfCerts: 3,
+    ILT_available: true,
   },
 
   {
