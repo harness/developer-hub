@@ -227,6 +227,26 @@ To configure the delegate upgrade schedule, do the following:
 
    The schedule change for CronJob will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
 
+### Configure an optional registry mirror for delegate images
+
+If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images.
+
+If this feature is configured, Harness Delegate images will not be pulled from the public Docker Hub, but from the configured mirror.
+
+```yaml
+mode: Delegate
+dryRun: false
+workloadName: delegate-name
+namespace: harness-delegate-ng
+containerName: delegate
+registryMirror: us.gsr.io/gcr-mirror
+delegateConfig:
+  accountId: <YOUR_ACCOUNT_ID>
+  managerHost: <MANAGER_HOST>
+```
+
+When `upgrader` wants to upgrade the delegate to `harness/delegate:verno`, it will use the image from `us.gsr.io/gcr-mirror/harness/delegate:verno`.
+
 ## Use automatic upgrade with custom delegate images
 
 You may choose to use a custom delegate image for the following reasons:
