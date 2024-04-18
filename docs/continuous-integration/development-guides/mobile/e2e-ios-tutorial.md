@@ -4,7 +4,7 @@ description: Build and publish a React Native iOS app to TestFlight using Fastla
 sidebar_position: 3
 ---
 
-[Harness CI Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/) offers Mac infrastructure that you can use to build, test, and publish iOS applications.
+[Harness CI Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) offers Mac infrastructure that you can use to build, test, and publish iOS applications.
 
 [React Native](https://reactnative.dev/) is an open source UI framework from [Meta](https://www.meta.com/). React Native enables developers to write natively-rendered Android and iOS applications in the [React](https://react.dev/) framework.
 
