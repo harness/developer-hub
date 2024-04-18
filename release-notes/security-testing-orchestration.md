@@ -279,6 +279,11 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
 <!-- 2024-02-07 -->
 
+#### Deprecation notice: SonarQube support for scans in Java 11
+
+[SonarQube has deprecated support for running scans in a Java 11 runtime environment.](https://community.sonarsource.com/t/java-11-is-deprecated-as-a-runtime-env-to-scan-your-projects/96597) It can still scan older Java code, but the scanner must be run in Java 17.  Upgrading the the scanner to Java 17 is incompatible with older SonarQube servers. You might need to upgrade your SonarQube server version because of this change. (STO-6970, ZD-57092)
+
+
 #### Enhancements
 
 - You can now [configure a Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference/#show-original-issue-severities-overridden-by-snyk-security-policies) to show the original score when a [Snyk Enterprise security policy](https://docs.snyk.io/enterprise-configuration/policies/security-policies) overrode the severity of an issue coming from the `snyk` CLI. You can see this information in **Issue Details**.  (STO-7041)
@@ -311,6 +316,7 @@ Fixed an issue on Self-Managed Enterprise Edition platforms where approving or r
 
 <!-- 2024-01-17 -->
 
+
 #### Feature enhancements
 
 - You can now run STO scans with a [CI Free](https://www.harness.io/pricing?module=ci#) license. In a CI Build step, select **Add step** and then go to **Security** and **Security Tests** in the step library. All STO steps are available. The only limits to this functionality are those imposed by the CI Free license. (STO-6824) 
@@ -321,6 +327,8 @@ Fixed an issue on Self-Managed Enterprise Edition platforms where approving or r
 ### January 11 runner update
 
 <!-- 2024-01-11 -->
+
+
 
 #### Feature enhancements
 
