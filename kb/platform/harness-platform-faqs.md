@@ -4,31 +4,46 @@ description: Frequently asked questions about Harness Platform.
 sidebar_position: 2
 ---
 
-## Access Control
+<!--
 
-### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
+Contributor Guidelines
 
-Use the direct URL with the `accountId` for the desired account, such as:
+Before you add new content, please search for existing FAQs to avoid duplications.
 
-```
-https://app.harness.io/ng/account/:accountId/settings/overview
-```
+Ensure that your contributions are organized according to the following categories:
 
-You can then sign in and change your default account from your profile.
+- Access Control/RBAC
+- API/Integration
+- Authentication
+- Automation
+- Connectors
+- Delegates
+- Dashboards
+- Feature Flags
+- Git Experience
+- Governance
+- Notifications
+- Organizations and Projects
+- Platform rate limits
+- References
+- Secrets
+- Security
+- Settings
+- Self-Managed Enterprise Edition
+- Terraform
+- Variables and Expressions
+- Miscellaneous
 
-### How do I sign out of Harness?
+You can search for a heading, for example, ## Access Control, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
 
-To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
+-->
+
+
+## Access Control/RBAC
 
 ### What is RBAC and how do I manage users and roles?
 
-Harness NextGen platform utilizes Role-Based Access Control (RBAC). Additional details on RBAC can be found in this [blog post](https://www.harness.io/blog/user-role-management) and in the [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness/) documentation.
-
-### What is a Resource Group?
-
-Resource groups are an RBAC component that defines the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more.
-
-For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
+Harness NextGen platform utilizes Role-Based Access Control (RBAC). For more information, go to this [blog post](https://www.harness.io/blog/user-role-management) and [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness/) in the documentation.
 
 ### Are there any built-in roles I can use?
 
@@ -46,10 +61,6 @@ To configure RBAC in Harness, you must:
 4. Assign roles and resource groups to users, user groups, and service accounts.
 5. If you have not already done so, configure authentication.
 
-### Is there additional information on built-in roles for Harness RBAC?
-
-Yes, for more information, go to [Built-in roles](/docs/platform/role-based-access-control/add-manage-roles#built-in-roles).
-
 ### What are the main components of RBAC?
 
 RBAC uses Principals, Resource Groups, and Roles to control access.
@@ -57,6 +68,31 @@ RBAC uses Principals, Resource Groups, and Roles to control access.
 - Principals are entities taking action in the system. These include users, user groups, and service accounts.
 - Resource Groups define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 - Roles define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
+
+
+### What is a Resource Group?
+
+Resource groups are an RBAC component that defines the objects that a user or service account can access. Objects are any Harness resource, including projects, pipelines, connectors, secrets, delegates, environments, users, and more.
+
+For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
+
+### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
+
+Use the direct URL with the `accountId` for the desired account, such as:
+
+```
+https://app.harness.io/ng/account/:accountId/settings/overview
+```
+
+You can then sign in and change your default account from your profile.
+
+### Currently, Azure only supports view access at the project level. However, documentation suggests that view access is only available at the account level. How can we achieve project-level view access using Azure AD?
+
+The access depends on how and where you have added the user. If the user is added at the account level manually or via SCIM, they are automatically part of the All Account Users group, inheriting permissions associated with that group.
+
+However, if the user is only added at the project level, they are added to the All Project Users group, and permissions associated with that user group apply.
+
+Additionally, you can add a user at the account level and manage project-level permissions through Access Control at the project level. The same principle applies to organization-level access.
 
 ### What is Role Binding, and how does it relate to Harness RBAC?
 
@@ -168,9 +204,13 @@ We have only one API for access check either if you perform Authorization using 
 
 An API key is created with a minimum duration of 30 days. You can rotate the token at any time.
 
-#### What does 'parentIdentifier' refer to during the creation of an API key?
+### What does 'parentIdentifier' refer to during the creation of an API key?
 
 The `parentIdentifier` in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate `parentIdentifier` ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
+
+### How can I get a list of all users and their roles?
+
+You can use the Get aggregated users API. This will provide with complete details of the users incldying the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -352,9 +392,25 @@ No, it is not possible to obtain the account's private key from the delegate, ev
 
 This limitation is by design to uphold security protocols. Delegates often operate with scoped permissions at the organization or project level, and allowing access to the account's private key via a delegate would pose a significant security risk. Therefore, regardless of the delegate's ability to communicate with Harness Manager, access to the account's private key is strictly controlled and not available through delegate operations.
 
+### Can I use multiple SAML and SCIM apps with Harness?
+
+:::note
+Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+Harness supports multiple identity providers (IdPs) for user authentication using SAML. You can configure a mix of various SAML providers and enable or disable them for user authentication. For more information, go to [Multiple identity providers](/docs/platform/authentication/multiple-identity-providers/).
+
 ### Why is Harness redirecting to a stage/dev account upon a successful Azure SAML login for a prod account?
 
 Ensure that the entity ID is set correctly if you are using multiple accounts. If you are using a vanity URL, the entity ID needs to be set accordingly when setting up SAML in Harness and on the Azure side.
+
+### Where is the attribute for Group Claim in Microsoft Entra ID?
+
+For SAMl with Microsoft Entra ID (formerly Azure), under **Enterprise Applications**, select **SSO Settings**, then select **Edit User and Group properties**. Edit the **Group Claim** and validate that the attribute is set to Group ID. If it is set to any other attribute, you must provide that value when linking the Harness user group with the Microsoft Entra ID group using the authorization.
+
+### Which cron expression builder builder does Harness use for the LDAP sync schedule?
+
+Harness uses Quartz for the cron expression builder in the LDAP sync schedule.
 
 ### Why am I receiving a 400 status code error with an "unsuccessful HTTP call" message when using a Jira step in Harness?
 
@@ -387,6 +443,10 @@ If you encounter a similar problem with this Jira plugin or any other plugin, it
 
 SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
 
+### What happens if a user's email domain changes and the user is provisioned via SCIM in Harness?
+
+Harness will automaticaly detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
+
 ### How do I sync LDAP groups manually if the linked user group isn't syncing?
 
 You can Navigate to Authentication tab and go to LDAP setting and try Synchronize User group option.
@@ -409,6 +469,10 @@ With the SAML-tracer extension running, do the following:
 If you have multiple Harness instances and use the Azure SAML app, it is possible that the SAML app may redirect to a different Harness instance than the one you intended.
 
 To prevent this, make sure to specify the Entity ID below the Authorization when creating the SAML app integration in the Harness UI. This is especially important if you have both sandbox and production Harness instances.
+
+### How does JIT provisioning work for SAML SSO users?
+
+Harness supports Just-in-Time (JIT) provisioning, automatically provisioning new users when they sign in with their SAML SSO credentials for the first time. To use JIT provisioning, ensure the feature flag `PL_ENABLE_JIT_USER_PROVISION` is enabled for the account. For more information, go to [Just-in-time user provisioning](https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/).
 
 ### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
 
@@ -471,12 +535,20 @@ It's common for users to encounter an issue while logging in. A user might have 
 
 Harness supports workload identify for Google Secret Manager.
 
+### How do I set up 2FA in Harness?
+
+You can use the QR code sent in the email to setup 2FA. You will also receive a secret key for your user in the same email. Use the code to set up the 2fa or use a third-party [token generator](https://totp.danhersam.com/) to enter your 2FA secret key and have it generates a login code for you. For more information, go to [Set up two-factor authentication](/docs/platform/authentication/two-factor-authentication/#set-up-two-factor-authentication).
+
 ### Why can't I set up/reset MFA?
 
 When 2FA is set as force-enabled on the account level by an admin of the account, users must set up the 2FA for their profile.
 It can be enabled by scanning the QR code sent in the email or using the secret key also sent in the same email using any authenticator app.
 
 For more information, go to [Set up two-factor authentication](https://developer.harness.io/docs/platform/authentication/two-factor-authentication/#set-up-two-factor-authentication) and [Reset two-factor authentication](https://developer.harness.io/docs/platform/authentication/two-factor-authentication/#reset-two-factor-authentication).
+
+### How can I disable 2FA for a user? 
+
+Currently there is no easy way for Harness to disable the 2FA for a user. The user can disable 2FA in their profile if they lost access to the auth app. The user must reach out to their account admin and ask them to resend the 2fa code. Then the user can reset the 2FA auth app, sign in to the account, and disable 2FA from their profile.
 
 ### How can I change my identity provider to OKTA from another other provider?
 
@@ -811,9 +883,9 @@ Yes, for more information, go to:
 
 We are in the process of upgrading the Kubectl version. The version upgrade will be completed soon.
 
-### What does delegate resource threshold DYNAMIC_REQUEST_HANDLING do?
+### What does DELEGATE_CPU_THRESHOLD do?
 
- By default, delegate task capacity is based on the number of tasks. Some tasks consume far less resources than the others. Enabling `DYNAMIC_REQUEST_HANDLING` allows the delegate to take tasks based on available resources (CPU/Memory) instead. If delegate is overloaded, it would reject a task (default is 80% cpu/mem).
+ By default, delegate task capacity is based on the number of tasks. Some tasks consume far fewer resources than others. Enabling `DELEGATE_CPU_THRESHOLD` allows the delegate to take tasks based on available resources (CPU) instead. If the delegate is overloaded, it will reject tasks.
 
  For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
 
@@ -879,9 +951,9 @@ You can use the environment variable `TMPDIR` on the delegate to add your direct
 
 The release of the Immutable Delegate version to SMP involves setting the `IMMUTABLE_DELEGATE_DOCKER_IMAGE` version as an environment variable in the manager. When users download the YAML, this version is read from the environment variable, and SaaS utilizes pipelines to update MongoDB entries. During pod startup in SMP, the environment values are populated in the database, facilitating the direct retrieval of the Immutable Delegate version.
 
-### If the DELEGATE_RESOURCE_THRESHOLD is set to zero, does the delegate reject all tasks?
+### If the DELEGATE_CPU_THRESHOLD is set to zero, does the delegate reject all tasks?
 
-No, if `DELEGATE_RESOURCE_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection. Also, we have the default `DELEGATE_RESOURCE_THRESHOLD` value as 80.
+No, if `DELEGATE_CPU_THRESHOLD` is set to zero, it behaves as if the feature is off, and the delegate acquires tasks as normal without rejection.
 
 ### How do I inspect my certificates for delegate certificate issues?
 
@@ -1024,7 +1096,7 @@ Build source tasks do use the quota. These are tasks for artifact collections an
 
 ### How can I perform a load test on a Kubernetes delegate?
 
-You can implement Autoscale using replicas. For more information, go to [Auto scale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/). Autoscaling is based on load, not on the number of tasks. It doesn't control deployments or run shell scripts that use CPU and memory.
+You can implement Autoscale using replicas. For more information, go to [Auto scale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas/). Autoscaling is based on load, not on the number of tasks. It doesn't control deployments or run shell scripts that use CPU and memory.
 
 - Based on the metrics you use for HPA (Harness recommends CPU/memory), Kubernetes will scale up/down the pod.
 - When the pod is scaled down, it will stop taking new tasks and finish the tasks its executing before terminating.
@@ -1162,7 +1234,7 @@ Immutable delegates work with the first generation as well. If you have an immut
 
 However, if you have legacy delegates in your first generation, you will require new delegate installations.
 
-#### How do I support Docker in Docker for Harness Delegates?
+### How do I support Docker in Docker for Harness Delegates?
 
 To support Docker in Docker for Harness Delegates, follow these steps:
 
@@ -1312,7 +1384,7 @@ If this is a mixed-node cluster then the delegate needs to run on Linux nodes. Y
 
 ### Can the delegate's StatefulSet be scaled?
 
-Yes, you can scale the delegate StatefulSet. For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas).
+Yes, you can scale the delegate StatefulSet. For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas).
 
 ### Why is the delegate image based on UBI instead of Ubuntu?
 
@@ -1471,7 +1543,7 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
 ```
 
-For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/).
+For more information, go to [Autoscale using replicas](/docs/platform/delegates/manage-delegates/delegate-metrics/#auto-scale-using-replicas/).
 
 ### The Harness Delegate config-watcher is causing heavy usage of disk space and causing alerts in prod nodes. How can we increase the watcher memory settings?
 
@@ -1667,12 +1739,11 @@ Yes, you can install custom certificates for Kubernetes delegates. For more info
 
 ### What happens to tasks rejected by the delegate?
 
-Delegates reject tasks or fail to acquire tasks when CPU and memory reach above a certain threshold if the flag `DYNAMIC_REQUEST_HANDLING` is set as true in the YAML. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+Delegates reject tasks when the CPU reaches a certain threshold if the `DELEGATE_CPU_THRESHOLD` env variable is set in the delegate YAML. Rejected tasks can be acquired by other eligible delegates or by the same delegate when its resources drop below the threshold. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ### Can we set the delegate to reject new tasks if x% of memory is being consumed?
 
-Yes, you can specify what threshold to reject the task using `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD`, otherwise, the default value is 80%. For more information, go to [Configure delegate resource threshold](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold).
-
+No, this is not possible at the moment.
 
 ### What is the naming convention used when creating a default delegate token?
 
@@ -1763,11 +1834,11 @@ Add the below commands in the `INIT_SCRIPT` to download and install the Azure cl
 
 Once the shutdown hook is triggered on the delegate, the delegate won't accept new tasks, and it will wait until the existing tasks finish running or the `terminationGracePeriodSeconds` runs out. For more information, go to [Grace period](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process#grace-period).
 
-#### How do I turn off the logging.googleapi.com URL? Do I need to provide any other commands in the delegate startup?"
+### How do I turn off the logging.googleapi.com URL? Do I need to provide any other commands in the delegate startup?
 
-Our delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality, you must set the `STACK_DRIVER_LOGGING_ENABLED` env variable to `false`. For more information, go to [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
+Delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality, you must set the `STACK_DRIVER_LOGGING_ENABLED` env variable to `false`. For more information, go to [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
 
-#### How can I validate the configuration of Harness Delegates?
+### How can I validate the configuration of Harness Delegates?
 
 Harness Delegates are primarily configured through variables, which can be adjusted during the deployment of a new delegate. There are several ways to ensure the correctness of these configurations:
 
@@ -1839,9 +1910,9 @@ This feature is currently available in FirstGen. You can use `Restrict users to 
 
 For information about this feature flag, go to [Delegate task capacity](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-task-capacity).
 
-### What is the behavior when DYNAMIC_REQUEST_HANDLING is set to false or not set at all when memory reaches 100%?
+### What is the behavior when the DELEGATE_CPU_THRESHOLD env variable isn't set when CPU usage reaches 100%?
 
-It will not attempt to acquire any new tasks until the resource level increases. Delegates will not crash or shut down during this process.
+The delegate won't attempt to acquire any new tasks until the resource level increases. Delegates will not crash or shut down during this process.
 
 ### I have the PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES feature flag enabled, why am I still getting emails when I add a user in an Org/Project?
 
@@ -2026,6 +2097,31 @@ Check to be sure you have the required Role and permission granted to view Proje
 ### Why am I getting an error while creating a template using a service account token generated under a project?
 
 You are likely using a token scoped to a project when creating a resource at the account level, the same applies to a project token while creating a resource at the organization level. To create resources across different levels (account/organization/project), your token must be at a higher level or at the same level as the scope.
+
+### How do we provide project access to organization-level resources?
+
+1. Under the organization, select **Access Control**, and then select **Resource Groups**.
+2. Create a new resource group if none exists.
+3. Under **Resource Scope**, select **Specified Projects**.
+4. Select **Edit**, and then select the projects requiring access under the organization.
+5. Select **Include Organization-level Resources**.
+6. Select **Apply**, then **Save**.
+
+Users within the project now have access to organization-level resources.
+
+### How do we provide project access to account-level resources?
+
+1. Under **Account Settings**, select **Access Control**, then go to **Resource Groups**.
+2. Create a new resource group if necessary.
+3. Under **Resource Scope**, select **Specified Organizations (and their Projects)**.
+4. Select **Edit**.
+5. Enable **Include Account-level Resources**.
+6. Select the organization (and its projects) from the dropdown.
+7. Enable **Include Project-level Resources**.
+8. Select **Specified**, then select the projects that require account-level resources.
+9. Select **Apply**, then **Save**.
+
+Users within the project now have access to account-level resources.
 
 ### Can you manage org level entities at the account level?
 
@@ -2233,6 +2329,10 @@ For more information, go to [Force delete](/docs/platform/references/entity-dele
 
 Harness doesn't currently support referencing the Custom Secret Manager template stored in Git. Create an inline template as a workaround.
 
+### Why can't secrets be exported from FirstGen to NextGen?
+
+Exporting secrets from the Secrets Manager is not possible due to security reasons, as it would expose them to unauthorized users. Harness does not support exporting secrets. The only option is to manually compare entries between FirstGen and NextGen to confirm if they match.
+
 ### What is the default timeout for the Custom Secret Manager script? Is this timeout configurable?
 
 By default, it's set to 60 seconds, and the timeout is not configurable.
@@ -2273,7 +2373,7 @@ Harness uses connectors to external secret managers (e.g. Google Secret Manager 
 
 No, we don't support LDAP secret engine.
 
-#### Why am I experiencing errors with core_secret_access messages?
+### Why am I experiencing errors with core_secret_access messages?
 
 This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
 
@@ -2711,7 +2811,7 @@ They are a way to refer to something in Harness such as an entity name or a conf
 
 Running, Failed, and Success.
 
-#### How can I see all available variables?
+### How can I see all available variables?
 
 You can rely on our [Built-In variables](/docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions.
 
@@ -2737,15 +2837,33 @@ Harness integrates with multiple third-party SCIM providers
 - [Azure AD SCIM](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 - [OneLogin SCIM](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
 
+### How do I sign out of Harness?
+
+To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
+
 ### How can I resolve serialization errors when integrating NextGen Audits for ModuleLicense collection with multiple child classes in YamlDTOs?
 
 The serialization issue in NG Audits for ModuleLicense collection arises when using entity objects instead of DTOs in the YAML for Audit Service. The problem is that entity objects lack JsonSubTypes, causing the Jackson ObjectMapper to struggle with determining the appropriate subType for conversion. The resolution is to utilize DTOs, which inherently possess the JsonSubTypes property, ensuring smooth serialization and deserialization processes in the Audit Service.
 
 It's essential to note that the Audit Service doesn't directly serialize or deserialize YAML; instead, it expects the old and new YAML as strings. However, the choice of using DTOs over entity objects is crucial for resolving any potential serialization challenges. Always ensure that the service generating audits has access to all required DTOs to prevent code duplication and facilitate efficient integration with NG Audits.
 
+### How do we identify pipelines using a specific template?
+
+1. Navigate to the **Templates** section in the project.
+2. Select the desired template.
+3. Open the **Referenced By** section.
+
+A list of entities will display, showing the pipelines utilizing the template.
+
 ### How can I execute a simple Shell or Bash script step?
 
 With a custom stage, you don't need to define a service. This is the preferred method to execute a shell or bash script step.
+
+### How can we manage access to Harness from different locations?
+
+Harness allows organizations to manage an IP allow list, enabling approved IP addresses, including office and VPN IP addresses, to access the platform. Contact [Harness Support](mailto:support@harness.io) for assistance.
+
+
 
 ### How does Harness handle data retention for exiting customers?
 
@@ -2762,6 +2880,10 @@ Yes. You can use the [migrator tool](https://harness.github.io/migrator/).
 ### What is cron job in the Kubernetes manifest, and why is it needed?
 
 The Kubernetes manifest has a component called upgrader. The upgrader is a cron job that runs every hour. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The cron job is required for the auto upgrade flow.
+
+### Can I subscribe to Harness at the org level?
+
+We don't support licences at the org level, only at the account level. 
 
 ### Does Harness allow you to set 2 AMIs with different CPU architecture?
 
@@ -2793,7 +2915,7 @@ This happens due to an incorrect cron expression. Harness uses Java cron-utils t
 
 https://www.javainuse.com/cron#google_vignette
 
-#### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
+### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
 
 This error message typically indicates an unexpected failure in a backend API call related to the operation you're attempting.
 
@@ -2805,7 +2927,7 @@ To address this issue effectively:
 
 By following these steps, our support team can promptly review the situation, diagnose the underlying cause, and provide you with the necessary assistance to resolve the error swiftly. Your cooperation in providing the HAR file greatly facilitates our troubleshooting efforts and ensures a timely issue resolution.
 
-#### What does "Exit code 137" mean?
+### What does "Exit code 137" mean?
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 

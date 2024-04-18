@@ -228,7 +228,7 @@ To address these issues, you can do one of the following:
 
 ### What is the Harness Cloud build credit limit for the Free plan?
 
-The Free plan allows 2,000 build minutes per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
+The Free plan allows 2,000 build credits per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
 
 ### Can I use xcode for a MacOS build with Harness Cloud?
 
@@ -1948,6 +1948,8 @@ exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message 
 This can be related to log streaming during the Build and Push step or a Run step executing a build script. It indicates that the logs are too large for the log streaming service to handle.
 
 If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
+
+If your builds time out with this error during stage initialization, and you're using a Kubernetes cluster build infrastructure, you can contact [Harness Support](mailto:support@harness.io) to enable a beta feature that shortens long environment variables, such as commit messages and PR titles.
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 

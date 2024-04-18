@@ -54,7 +54,7 @@ To create a firewall rule, do the following:
 
 2. Go to the **Firewall** tab, and create a new rule using the below configurations.
 
-   Protocol| Port| Description | 
+   Protocol| Port| Description |
    | ----------------------------------------------------------------- | ---------------------------- | ----------- |
    | ICMP| * | Redis gossip protocol|
    | UDP| 53, 5353 | Redis DNS|
@@ -88,7 +88,7 @@ To create your VMs, do the following:
      ```shell
      wget <redis-download-url>
      ```
-    
+
     ```shell
     tar xf <redis-file-name>
     ```
@@ -128,7 +128,7 @@ To create DNS records, do the following:
 
 To configure your Redis cluster, do the following:
 
-1. Open `https://<EXTERNAL_IP_OF_NODE1>:8443` in your browser, and then complete the following on the node setup page. 
+1. Open `https://<EXTERNAL_IP_OF_NODE1>:8443` in your browser, and then complete the following on the node setup page.
 
    1. Enable Flash Storage.
 
@@ -148,7 +148,7 @@ To configure your Redis cluster, do the following:
      You can skip the cluster key for now if the page opens. (You can procure a license key from Redis Labs later, if required.)
      :::
 
-3. Open `https://<EXTERNAL_IP_OF_NODE2>:8443` in your browser, and then complete the following on the node setup page. 
+3. Open `https://<EXTERNAL_IP_OF_NODE2>:8443` in your browser, and then complete the following on the node setup page.
 
    1. Enable Flash Storage.
 
@@ -164,7 +164,7 @@ To configure your Redis cluster, do the following:
 
    7. Select **Create**.
 
-3. Open `https://<EXTERNAL_IP_OF_NODE3>:8443` in your browser, and then complete the following on the node setup page. 
+3. Open `https://<EXTERNAL_IP_OF_NODE3>:8443` in your browser, and then complete the following on the node setup page.
 
    1. Enable Flash Storage.
 
@@ -215,7 +215,7 @@ To test your connectivity using, do the following:
    ```
 
 2. Run the following.
-  
+
    ```shell
    ping
    ```
@@ -223,7 +223,7 @@ To test your connectivity using, do the following:
   The expected response is `pong`.
 
 3. Run the following.
-   
+
    ```shell
    set foo bar
    ```

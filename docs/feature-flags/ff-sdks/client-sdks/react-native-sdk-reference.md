@@ -401,7 +401,7 @@ function MyComponent() {
 
 The `useFeatureFlag` hook returns a single named flag value. An optional second argument allows you to set what value will be returned if the flag does not have a value. By default `useFeatureFlag` will return `undefined` if the flag cannot be found.
 
-:::info-note
+::: info
 When rendered in Async mode, the default value will be returned until the flags are retrieved. Consider using the `useFeatureFlagsLoading` hook to determine when the SDK has finished loading.
 :::
 

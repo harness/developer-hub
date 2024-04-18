@@ -7,7 +7,7 @@ description: Execute chaos experiments to improve the resilience of an app in a 
 This tutorial guides you through an interactive tutorial that uses a sample application (**Podtato head**) to execute a chaos experiment and improve the resilience of the application.
 
 ## Prerequisites
-Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps. Refer to [this](/docs/chaos-engineering/certifications/ developer-certification#steps-involved-in-obtaining-developer-certification) diagram to understand the entire flow.
+Before you begin the tutorial, you need to have a Harness account. To create one, follow the below-mentioned steps. Refer to [this](/docs/chaos-engineering/certifications/developer-certification#obtaining-developer-certification) diagram to understand the entire flow.
 
 ### Create a Harness account
 

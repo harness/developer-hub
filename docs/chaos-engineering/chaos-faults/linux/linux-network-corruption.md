@@ -50,13 +50,13 @@ Linux network corruption:
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of target IPs. For example, <code>1.1.1.1,8.8.8.8</code> </td>
+    <td> List of comma-separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
     <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted. </td>
   </tr>
   <tr>
     <td> packetCorruptionPercentage </td>
     <td> Percentage of packets to corrupt. For example, <code> 50 </code>. </td>
-    <td> Default: 100% </td>
+    <td> Default: 100 % </td>
   </tr>
   <tr>
     <td> sourcePorts </td>
@@ -102,7 +102,7 @@ spec:
 
 ### Destination IPs
 
-The `destinationIPs` input variable subjects the comma-separated names of target IPs to chaos.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. Providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -116,7 +116,7 @@ metadata:
     name: network-corruption
 spec:
   networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
+    destinationIPs: '1.1.1.1,192.168.5.6|80|8080'
     networkInterfaces: "eth0"
 ```
 

@@ -25,7 +25,14 @@ function EmbedFunction() {
       pagNav.style.display = "none";
     }
 
-   
+    const cookieConsent = document.querySelector(".ot-sdk-row");
+    if (cookieConsent) {
+      cookieConsent.style.display = "none";
+    }
+    const cookieOverlay = document.querySelector(".onetrust-pc-dark-filter");
+    if (cookieOverlay) {
+      cookieOverlay.style.display = "none";
+    }
   }
 }
 

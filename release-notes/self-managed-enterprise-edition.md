@@ -247,7 +247,7 @@ gsutil -m cp \
 
    Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` of your delegate YAML to `autoscaling/v1`.
 
-   For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes).
+   For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes).
 
    This update only affects new delegate installations. Your existing, running delegates are not affected.
    :::

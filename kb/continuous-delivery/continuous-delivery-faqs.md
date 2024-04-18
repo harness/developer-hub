@@ -964,9 +964,9 @@ As a workaround, A project or org or account level variable can be created and A
  
 The shell script will use this API to update the value of the variable - https://apidocs.harness.io/tag/Variables#operation/updateVariable
 
-#### What happens when the CPU and memory usage of a Delegate exceeds a certain threshold with the DYNAMIC_REQUEST_HANDLING flag set to true?
+#### What happens when the CPU usage of a delegate exceeds a certain threshold when the DELEGATE_CPU_THRESHOLD env variable is configured?
 
-When CPU and memory usage exceed a specified threshold (or the default value of 70% if not specified) with the DYNAMIC_REQUEST_HANDLING flag set to true, the Delegate will reject tasks and will not attempt to acquire any new tasks. Instead, it will wait until resource usage decreases.
+When CPU usage exceeds a specified threshold with the `DELEGATE_CPU_THRESHOLD` env variable configured, the delegate rejects the tasks and will not attempt to acquire any new tasks. Instead, it waits until the resource usage decreases.
 
 #### Will the Delegate crash or shut down if it rejects tasks due to resource usage exceeding the threshold?
 
@@ -6798,3 +6798,77 @@ RuntimeException: harnessServiceId may not be empty
 ```
 
 This error occurs if using a Monitored Service with an incorrectly configured Change Source. To fix this, please ensure that the Change Source has a ServiceId defined properly.
+
+#### How do I get the index of a looping strategy?
+You can use the `<+strategy.identifierPostFix>` expression to get the index of a strategy. For more information, go to [identifierPostFix expressions](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#identifierpostfix-expressions) documentation.
+
+#### How do I use maps in Harness expressions?
+You can convert map to JSON and use the `<+json.select()>` function to achieve this. For more information, go to [JSON and XML Functors](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors/) documentation.
+
+#### How do I get the action of my Git trigger in an expression?
+Git triggers use webhooks, and webhooks usually have a payload that you can utilize. The action used to trigger the webhook must be included in the Git payload so that you can reference the action using the `<+trigger.payload.action>` expression.
+
+#### How can you seamlessly integrate Docker Compose for integration testing into your CI pipeline without starting from scratch?
+
+Run services for integration in the background using a `docker-compose.yaml` file. Connect to these services via their listening ports. Alternatively, while running `docker-compose up` in CI with an existing `docker-compose.yaml` is possible, it can complicate the workflow and limit pipeline control, including the ability to execute each step, gather feedback, and implement failure strategies.
+
+#### Are there guidelines or recommendations for scaling up VM build infrastructures, such as those hosted on EC2, for individuals managing and configuring their own infrastructure?
+
+Yes, you can scale up your AWS VM build infrastructure effectively by considering the following:
+
+**Scaling Up**: Increase capacity by adding more templates, build nodes, and VMs to accommodate growing demands.
+**Cost Optimization**: Implement cost-saving measures such as configuring the runner to hibernate AWS Linux and Windows VMs during idle periods, helping to reduce infrastructure costs.
+For detailed setup and configuration instructions, please refer to [Set up an AWS VM Build Infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure/).
+
+#### Which API call is specifically used to retrieve a tag of an artifact from the GAR?
+
+The API call used to fetch a tag of an artifact from the GAR is `/v1/projects/{project}/locations/{region}/repositories/{repositories}/packages/{package}/versions?view=FULL`
+
+#### How can one access the AWS CDK provisioning in their workflow? Are there any Feature flags required?
+
+No, accessing AWS CDK provisioning does not require any Feature flags. However, to utilize AWS CDK provisioning steps in your workflow, ensure that you are operating within a containerized step group specifically designated for AWS CDK provisioning. These steps are only visible when adding a step within that particular step group. If no step is added within the AWS CDK provisioning containerized step group, the associated steps will not be visible.
+
+For more information on AWS CDK provisioning, please refer to the following Harness [documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
+
+#### Does Harness support Helm hooks (excluding service hooks) similar to the support provided in First Gen?
+
+No, Harness does not support Helm hooks in Kubernetes deployments in the same way as in First Gen.
+
+The recommended approach in both First Gen and NextGen is to remove Helm hooks and integrate them as shell script steps within the workflow. This method is applicable in both generations of Harness.
+
+For unchanged utilization of Helm hooks, native Helm deployment can be chosen. However, native Helm's ability to process hooks and deploy simultaneously is limited. This limitation stems from Helm's post-render functionality, which prevents Harness from processing hooks effectively.
+
+For detailed instructions on integrating Helm charts in Kubernetes deployments with Harness, please refer to the Harness [documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/kubernetes-deployments/use-helm-chart-hooks-in-kubernetes-deployments/).
+
+#### How can you enable the `Mark as Failure` pipeline options?
+
+To enable the "Mark as Failure" pipeline, please ensure that you have fulfilled the following requirements:-
+- You must have `Execute` pipeline permission to be able to mark a pipeline as failed.
+- You must enable `Allow users to mark a running Step as failure` in your Harness account's [default settings](/docs/platform/settings/default-settings).
+- This feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+For more refer to the following Harness [documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/).
+
+#### How can we fully stop a pipeline if it was aborted but still shows a running status, preventing us from aborting it again?
+
+Please reach out to [Harness Support](mailto:support@harness.io) to enable the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`. Once this flag is enabled, any future pipelines being executed will no longer experience the issue of being stuck in a running status after being aborted
+
+#### Why, despite the activation of the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`, does the retried execution of an aborted pipeline persistently display a running status?
+
+Enabling the `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE` feature flag only affects the execution of new pipelines. It doesn't apply to retried executions since the flag isn't active for those retries.
+
+#### Should steps be skipped when a user selects `skip pre-flight check` under their service and infrastructure during pipeline execution?
+
+Preflight checks occur before the pipeline execution begins, ensuring the validity of pipeline inputs and connectors. If these checks fail, the pipeline won't initiate. It's important to note that any errors encountered during the pipeline execution are associated with the service step within the pipeline, not the preflight checks. Additionally, preflight checks do not validate artifacts and manifests within the service.
+
+#### Can Harness deploy the latest tag version published to our artifact server?
+
+Yes, in Harness, you can deploy the latest tag version to your artifact server. By leveraging the `<+lastPublished.tag>` expression, Harness can fetch the most recent tag version available on the artifact server. For comprehensive instructions on implementing this approach, please consult the following Harness [documentation](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/)
+
+#### What is the equivalent method to rerun a specific pipeline execution, resembling the functionality of selecting "retry from failed stage" from the UI?
+
+Users can utilize the following API to retry a failed stage: [retryPipeline](https://apidocs.harness.io/tag/Pipeline-Execute#operation/retryPipeline). Additionally, users can supply the necessary input data set required to rerun the failed pipeline.
+
+#### When attempting to import a **.yaml file** from GitHub to create a new pipeline, the message `This file is already in use by another pipeline` is displayed. Given that there are no other pipelines in this project, is there a possibility of a duplicate entry that I may not be aware of?
+
+It's possible that there are two pipeline entities in the database, each linked to the same file path from the Harness account and the GitHub URL. Trying to import the file again may trigger the `File Already Imported` pop-up on the screen. However, users can choose to bypass this check by clicking the `Import` button again.
