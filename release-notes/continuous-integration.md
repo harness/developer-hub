@@ -57,7 +57,7 @@ If you currently use a Ruby test glob pattern starting with `/`, you must either
 #### Fixed issues
 
 * Increased the default machine size for the [Harness CI Cloud macOS platform](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). The default size was inadvertently decreased during a prior upgrade to Sonoma, and some users experienced `No space left on device` errors as a result. (CI-11620, ZD-59225)
-* Incorporated some improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054) <!-- would help to have more detail -->
+* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054) <!-- would help to have more detail -->
 
 ### Version 1.23.1
 
