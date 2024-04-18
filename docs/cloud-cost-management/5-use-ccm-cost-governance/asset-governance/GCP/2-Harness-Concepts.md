@@ -15,11 +15,11 @@ Ideally, rules include policy, resource, filters, and actions.
 
 - A **policy** is defined in YAML format and consists of filters and actions that are applied to a specific type of cloud resource.
 
-- A **resource** is the type of cloud resource or service on which the rule will be run with the actions and filters, such as GCP instance, snapshot, bucket, etc.
+- A **resource** is a type of cloud resource or service on which the rule will be run with the actions and filters, such as GCP instance, snapshot, bucket, etc.
 
 - A **filter**, as the name suggests, is a criteria used to narrow down the results based on the attributes. These attributes can include anything such as tags, metadata, or any other resource property provided by you. When the filter is applied, only those resources that match the criteria specified in the filter are given as a result.
 
-- **Actions** are operations performed on the filtered resources. Actions include things like deleting unattached cloud routers, listing idle SQL instances, or deleting gcp snapshots.
+- **Actions** are operations performed on the filtered resources. Actions include things like deleting unattached cloud routers, listing idle SQL instances, or deleting GCP snapshots.
 
 <DocImage path={require('../static/anatomy_of_a_rule.png')} width="70%" height="70%" title="Click to view full size image" />
 
@@ -55,7 +55,7 @@ Number of Rules per Account[Custom + OOTB] can be 300.
   <DocImage path={require('../static/rule_window_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
 :::info
-Harness provides some out-of-the-box policies for gcp.bucket, gcp.image, gcp.instance, gcp.router, etc. that can be enforced. These policies cannot be edited but can be cloned.
+Harness provides some out-of-the-box policies for gcp.bucket, gcp.image, gcp.instance, gcp.router, etc. that you can enforce. These policies can only be cloned, not edited.
 :::
 
 ### Update a Rule
@@ -64,14 +64,14 @@ You can view the Rules on the Asset Governance Rules page. You can click on Edit
 
 ### Delete a Rule
 
-To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
+To delete a **Rule Set**, click **Delete** from the vertical ellipsis menu (⋮).
 
   <DocImage path={require('../static/update_and_delete_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
 
 
 ## Rule Sets
 
-As mentioned previously, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
+As mentioned earlier, a Rule can have multiple policies. However, when there are multiple rules with multiple policies, it can become hard to manage them all together. This is where **Rule Sets** can be used. Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. By organizing rules into sets, organizations improve accessibility and simplify maintenance, as enforcements can be made against the entire rule set rather than individual rules.
 
   <DocImage path={require('../static/rule_set_gcp.png')} width="90%" height="90%" title="Click to view full size image" />
   
@@ -114,7 +114,7 @@ To delete a Rule Set, click on Delete from the vertical ellipsis menu (⋮).
 
 ## Enforcements
 
-Enforcements enable you to enforce a certain set of Rules or Rule Sets (also known as governance guardrails) against a specific set of targets (accounts, projects, or subscriptions) to run periodically. Sometimes, we need rules to run periodically, such as every day, week, or month. However, running these rules manually every day or week at a specified time creates extra overhead and is a slow process prone to manual errors. To solve this, Enforcements allow users to set up a timely schedule and choose the day, time, and frequency for their rules or rule sets.
+Enforcements enable you to enforce a certain set of Rules or Rule Sets (also known as governance guardrails) against a specific set of targets (accounts, projects, or subscriptions) to run periodically. Sometimes, we need rules to run periodically, such as every day, week, or month. However, running these rules manually every day or week at a specified time creates extra overhead and is a slow process prone to manual errors. To solve this, you can use **Enforcements** that allow you to set up a timely schedule and choose the day, time, and frequency for their rules or rule sets.
 
 For example, a user can create an Enforcement to schedule the deletion of all GCP snapshots older than 14 days. This Enforcement will run on the **days specified by the user**, at the **specified time**, and with the **specified frequency (hourly, daily, monthly**). For instance, you could set it to run daily at 2:00 AM to ensure that any snapshots meeting the criteria are removed. Alternatively, you might choose to run it hourly during peak usage times, or monthly for less critical cleanup tasks. 
 
