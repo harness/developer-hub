@@ -12,7 +12,33 @@ Gitleaks can publish results to [Static Analysis Results Interchange Format (SAR
 
 For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
 
-## For more information
+## Important notes
+
+You can write up your own rules in Gitleaks:
+
+- You can specify an allowlist of secrets that are inactive, rotated, deactivated, or false positives. Gitleaks ignores these secrets during a scan. Set up your allowlist in a [.gitleaks.toml file](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) and place it at the root of your repository. 
+
+  :::note
+
+  It is best practice to update your allowlist with secrets that are inactive, rotated, deactivated, or false positives. Otherwise, Gitleaks will continue to detect these secrets in your commit history even after they have been updated in your code.
+
+  :::
+  
+  The following steps outline the recommended workflow:
+
+  1. Run a Gitleaks scan and review the detected passwords, tokens, and other secrets.
+
+  2. Rotate or deactivate all secrets that are currently active.
+
+  2. Compile a list of all secrets that are now inactive, rotated, deactivated, or false positives.
+
+  4. Update the allowlist in `.gitleaks.toml`  to include these secrets.
+
+- You can also write your own [custom detection rules](https://github.com/gitleaks/gitleaks?tab=readme-ov-file#configuration).
+
+  - For examples, go to the [default Gitleaks config](https://github.com/zricethezav/gitleaks/blob/master/config/gitleaks.toml).
+  - If you want to contribute to the default configuration, go to the [Contributing guidelines](https://github.com/zricethezav/gitleaks/blob/master/README.md).
+  - For information about advanced configurations, go to [Stop leaking secrets - configuration](https://blog.gitleaks.io/stop-leaking-secrets-configuration-2-3-aeed293b1fbf).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -26,11 +52,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
-<!--
-
-
-
--->
 
 ### Scan Mode
 
@@ -290,7 +311,7 @@ pipeline:
         repoName: dvpwa
         build: <+input>
   identifier: Gitleaks_docsexample_INGESTION
-  name: Gitleaks docs-example INGESTION
+  name: Gitleaks_docsexample_INGESTION
 
 
 ```
@@ -360,5 +381,5 @@ pipeline:
         repoName: dvpwa
         build: <+input>
   identifier: gitleaks_docs_example_ORCHESTRATION
-  name: gitleaks docs example - ORCHESTRATION
+  name: gitleaks_docs_example_ORCHESTRATION
 ```
