@@ -57,12 +57,3 @@ Administrators are able to control what the users can configure within various e
 <!-- to do. will include a how to and screen shot -->
 
 
-#### Editing Permissions Of A Flag
-
-1. Within the Harness UI, scroll down to projects on the left hand side of your screen. 
-2. Under Project Settings, you'll find a line of tabs on the top of the screen. Select *Access Control*.
-3. <!-- Personal Note: Need to confirm steps -->
-
-#### Editing Permissions Within A Resource Group
-
-<!-- Personal Note: Need to confirm these steps in QA -->

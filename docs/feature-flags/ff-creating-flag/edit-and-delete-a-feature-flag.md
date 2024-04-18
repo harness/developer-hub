@@ -1,6 +1,6 @@
 ---
-title: Edit or archive flags
-description: After you have created a flag, you can edit or archive it.
+title: Edit or deleting feature flags
+description: After you have created a flag, you can edit or delete it.
 tags: 
    - helpDocs
    - feature flag
@@ -11,11 +11,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-import edit_flag from './static/2-edit-and-delete-a-feature-flag-06.png'
-
-
-## Edit the details of a flag
+## Editing a Feature flag
 
 After you have created a flag, you can edit the following details:
 
