@@ -6872,3 +6872,10 @@ Users can utilize the following API to retry a failed stage: [retryPipeline](htt
 #### When attempting to import a **.yaml file** from GitHub to create a new pipeline, the message `This file is already in use by another pipeline` is displayed. Given that there are no other pipelines in this project, is there a possibility of a duplicate entry that I may not be aware of?
 
 It's possible that there are two pipeline entities in the database, each linked to the same file path from the Harness account and the GitHub URL. Trying to import the file again may trigger the `File Already Imported` pop-up on the screen. However, users can choose to bypass this check by clicking the `Import` button again.
+
+#### Why is my GitOps Sync Step Failing with the error Application does not correspond to the service(s) selected in the pipeline execution?
+```
+Application{name: '$APP_NAME', agentIdentifier: '$AGENT_ID', errorMessage: 'Application does not correspond to the service(s) selected in the pipeline execution.'}
+```
+This error is caused by an inconsistency in the Deploy Stage's Service and the selected Application's Services. GitOps cannot sync a Service that isn't correlated to the Application. To fix this, navigate to the GitOps Application in the `GitOps` Menu under the `Continuous Delivery & GitOps` module and select `App Details`. Once there, confirm that the Service that's configured for the Application is the same as the Service configured in the Pipeline's Deploy Stage.
+
