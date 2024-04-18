@@ -40,7 +40,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
     <DocImage path={require('./static/sto-7385-custom-scan-step-in-step-library.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
 
-- Harness STO now supports ingesting scan results in stages that run on ARM64 build infrastructures. This eliminates the need to cache results from a previous ARM64 stage and then ingest them in a stage on a supported platform. (STO-5428)  
+- Harness STO now supports ingesting scan results in stages that run on ARM64 build infrastructures. This eliminates the need to cache results from a previous ARM64 stage and then ingest them in a stage on a supported platform. (STO-7236)  
 
 #### Fixed issues
 
