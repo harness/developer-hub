@@ -93,14 +93,14 @@ Each CI pipeline would:
 - run 5 parallel steps (100 sec sleep)
 - run template with 2 parallel steps (140sec sleep)
 
-Projects : 1
-Pipelines : 2000
-Stages per pipeline : 1
-Delegates : 15 (1cpu/4gi)
-Trigger type : webhook
-Test class : [CI_PIPELINE_WEBHOOK_RUN](../locust_tasks/ci_pipeline_webhook_run.py)
+Projects: 1
+Pipelines: 2000
+Stages per pipeline: 1
+Delegates: 15 (1cpu/4gi)
+Trigger type: webhook
+Test class: CI_PIPELINE_WEBHOOK_RUN
 
-> Result : **PASS**
+> Result: **PASS**
 Avg Execution Time: **6.45min**
 
 ##### >  2000 concurrent CD Executions INLINE
@@ -116,7 +116,7 @@ Projects: 1
 Pipelines: 2000
 Stages per pipeline: 1
 Delegates: 47 (1cpu/4gi)
-Test class: [CD_PIPELINE_RUN](../locust_tasks/cd_pipeline_run.py)
+Test class: CD_PIPELINE_RUN
 
 > Result: **PASS**
 Avg Execution Time: **5.20min**
@@ -188,7 +188,7 @@ Pipelines: 2000
 Stages per pipeline: 1
 Delegates: 15 (1cpu/4gi)
 Trigger type: webhook
-Test class: [CI_PIPELINE_WEBHOOK_RUN](../locust_tasks/ci_pipeline_webhook_run.py)
+Test class: CI_PIPELINE_WEBHOOK_RUN
 
 > Result : **PASS**
 Avg Execution Time: **6.5min**
@@ -206,7 +206,7 @@ Projects: 1
 Pipelines: 1500
 Stages per pipeline: 1
 Delegates: 40 (1cpu/4gi)
-Test class: [CD_PIPELINE_RUN](../locust_tasks/cd_pipeline_run.py)
+Test class: CD_PIPELINE_RUN
 
 > Result: **PASS**
 Avg Execution Time: **5.1min**
@@ -273,12 +273,12 @@ Each CI pipeline would
 - run 5 parallel steps (100 sec sleep)
 - run template with 2 parallel steps (140sec sleep)
 
-Projects : 1
-Pipelines : 2000
-Stages per pipeline : 1
-Delegates : 15 (1cpu/4gi)
-Trigger type : webhook
-Test class : [CI_PIPELINE_WEBHOOK_RUN](../locust_tasks/ci_pipeline_webhook_run.py)
+Projects: 1
+Pipelines: 2000
+Stages per pipeline: 1
+Delegates: 15 (1cpu/4gi)
+Trigger type: webhook
+Test class: CI_PIPELINE_WEBHOOK_RUN
 
 > Result : **PASS**
 Avg Execution Time: **6.5min**
@@ -293,7 +293,7 @@ Pipelines : 1500
 Stages per pipeline : 1
 Delegates : 15 (1cpu/2gi)
 Trigger type : webhook
-Test class : [CI_PIPELINE_REMOTE_RUN](../locust_tasks/ci_pipeline_remote_run.py)
+Test class : CI_PIPELINE_REMOTE_RUN
 
 > Result : **PASS**
 Avg Execution Time: **8.5min**
@@ -311,7 +311,7 @@ Projects: 1
 Pipelines: 1000
 Stages per pipeline: 1
 Delegates: 26 (1cpu/4gi)
-Test class: [CD_PIPELINE_RUN](../locust_tasks/cd_pipeline_run.py)
+Test class: CD_PIPELINE_RUN
 
 > Result: **PASS**
 Avg Execution Time: **4.5min**
