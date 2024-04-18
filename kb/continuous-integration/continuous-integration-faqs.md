@@ -228,7 +228,7 @@ To address these issues, you can do one of the following:
 
 ### What is the Harness Cloud build credit limit for the Free plan?
 
-The Free plan allows 2,000 build minutes per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
+The Free plan allows 2,000 build credits per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
 
 ### Can I use xcode for a MacOS build with Harness Cloud?
 
