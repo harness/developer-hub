@@ -24,6 +24,25 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2024
 
+### Version TBD
+
+#### New features and enhancements
+
+Harness is in the process of updating the STO UI. The following changes are cosmetic and do not affect the underlying YAML definitions of STO pipelines. Harness expects all of these changes to be deployed in all namespaces by the end of April 2024. 
+
+- The **Security** stage is used for running scans in STO-only workflows. Previously, this stage was called **Security Tests**. (STO-7384)
+
+- The **Custom Scan** step is used for scanner integrations that do not have their own configuration step. Previously, this step was called **Security**. This step also has a new icon. (STO-7385)
+
+  **Custom Scan** appears at the end of the list of Security Test steps in the Step Library. 
+
+  <DocImage path={require('./static/sto-7455-custom-scan-step-in-step-library.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
+
+#### Fixed issues
+
+- Fixed a UI issue where the [**Context Name**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#context-name) field in the ZAP step did not capture the specified file. (STO-7287)
+
+
 ### Version 1.92.1
 
 <!-- 2024-04-10 -->
