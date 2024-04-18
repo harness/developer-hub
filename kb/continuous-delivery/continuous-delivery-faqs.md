@@ -6848,3 +6848,30 @@ To enable the "Mark as Failure" pipeline, please ensure that you have fulfilled 
 - This feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 For more refer to the following Harness [documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/).
+
+#### The pipeline was aborted, however, the status still shows running.  It is not allowing us to abort the pipeline.  What can be done to completely stop the pipeline?
+
+Contact Harness support to enable the feature flag CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE.  Once this is enabled, any future pipelines being executed will no longer experience this issue.
+
+#### The feature flag CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE was enabled to prevent executed pipelines from staying in a running state even though it was aborted.  However, retrying the failed execution of the pipeline is still showing running after being aborted.  Why does the aborted retried execution still show running?
+
+The CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE feature flag, once enabled, will only work for any pipelines being executed.  However, it will not work on executions that are being retried as the feature flag was not enabled for that retried execution.
+
+#### When running a pipeline, should steps be skipped when the user selects 'skip pre-flight check' under their service and infrastructure?
+
+Preflight checks run before the pipeline execution starts. If those fail, the pipeline execution won’t even start. Any error seen is part of the service step which is part of pipeline execution and not part of preflight checks.  Preflight checks only validate the Pipeline inputs and connectors referenced in the pipeline, but not the artifacts and manifests in the service.
+
+#### Is there a way for Harness to deploy the latest tag version published to our artifact server?
+
+Harness can utilize the expression <+lastPublished.tag> in order to obtain the latest tag version available on the artifact server.  For more information on how to utilize this expression, please visit https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/.
+
+#### How can we rerun a given pipeline execution similar to using the "retry from failed stage" option from the UI?
+
+Users can utilize the following API to retry a failed stage: https://apidocs.harness.io/tag/Pipeline-Execute#operation/retryPipeline
+
+Users can also provide the input data set required to rerun the failed pipeline.
+
+#### When trying to import a .yaml file from GitHub to create a new pipeline, I get the message "This file is already in use by another pipeline". Since we don't have any other pipelines in this project, is there is a duplicate entry somewhere that I may not be aware about?
+
+There may be two pipeline entities in the database with the file path in question associated with the Harness account and with the GitHub url. Attempting to import the file again triggers the 'File Already Imported' pop-up on the screen.
+Additionally, users have the option to bypass this check by clicking the 'Import' button again.
