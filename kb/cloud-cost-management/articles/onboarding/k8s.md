@@ -15,7 +15,7 @@ There are two ways to enable a connection from Harness to your cluster.
 
 The first option is to deploy a delegate into the target cluster, and give it a certain level of access depending on what you want to achieve with the Kubernetes connection. By deploying a delegate directly into the cluster you do not have to manage secrets, but simply controlled the access Harness has in your cluster by modifying the Kubernetes service account that is bound to the delegate deployment.
 
-You should size your delegate according to the cluster nodes. If a cluster has <=70 nodes the recommended sizing is 1CPU and 4GB. For >70 we recommend 2CPU and 14GB.
+You should size your delegate according to the cluster nodes. If a cluster has less than 70 nodes the recommended sizing is 1CPU and 4GB. For more than 70 we recommend 2CPU and 14GB.
 
 ![](../../static/k8s_delegate.png)
 
