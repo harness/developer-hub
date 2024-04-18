@@ -191,12 +191,12 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
    helm upgrade harness harness/ -f override-demo.yaml -n harness
    ```
 
-9. kubectl destroy two pods to inherit the new configuration.
+   kubectl destroy two pods to inherit the new configuration.
    - The ingress controller pod (for example, `harness-ingress-controller-7f8bc86bb8-mrj94`)
    - The gateway pod (for example, `gateway-59c47c595d-4fvt2`)
 
-10. Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
-11. Complete to the post-install next steps.
+9.  Navigate to the sign up UI at `https://<YOUR_ELB_ADDRESS>/auth/#/signup` to create your admin user.
+10. Complete to the post-install next steps.
 
 import Postinstall from '/docs/self-managed-enterprise-edition/shared/post-install-next-steps.md';
 
