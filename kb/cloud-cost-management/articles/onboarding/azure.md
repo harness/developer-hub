@@ -29,7 +29,7 @@ The first step is to [create a billing export](https://developer.harness.io/docs
 
 To do this, assign `Storage Blob Data Reader` to the `Harness Continuous Efficiency App` identity for the container in the storage account which holds the billing export.
 
-![](../../static/azure_cur.png)
+![](../../static/azure_export.png)
 
 ### Harness CCM Azure Connector
 
