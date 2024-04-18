@@ -318,6 +318,11 @@
 }
 
 /* darkmode css */
+html[data-theme="dark"] .tabs__item--active {
+  color: black;
+  background-color: var(--primary-1);
+  border-bottom-color: var(--primary);
+}
 iframe {
   border: var(--card-border);
 }
