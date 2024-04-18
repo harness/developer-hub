@@ -4,7 +4,7 @@ title: Overview
 description: An overview of onboarding with HCE
 ---
 
-This section describes the versions of HCE, the interaction between different components, and how to get started with HCE.
+This topic describes the versions of HCE, the interaction between different components, and how to get started with HCE.
 
 ## Before you begin
 
