@@ -1,6 +1,6 @@
 ---
 title: Install in a demo/non-prod environment in AWS
-description: Learn how to install Harness Self-Managed Enterprise Edition in Amazon Elastic Kubernetes Service (Amazon EKS).
+description: Learn how to install Harness Self-Managed Enterprise Edition in AWS.
 sidebar_position: 15
 sidebar_label: Install in AWS
 ---
@@ -28,7 +28,7 @@ Before you install Harness Self-Managed Enterprise Edition, you must create a te
 
 To create a test cluster using eksctl, do the following:
 
-1. Install and configure eksctl.
+1. Install and configure eksctl. For more information, go to {Installation](https://eksctl.io/installation/) in the eksctl documentation.
 2. Save the following to a `sample-demo-cluster.yaml` file.
 
     ```yaml
@@ -122,9 +122,9 @@ To create a test cluster using eksctl, do the following:
 
 4. Currently, eksctl doesn't have a simple methodology to attach the Amazon EBS CSI driver necessary for create the required Persistent Volumes (PVs). Do the following to create the required PVs:
 
-   1. Create an IAM role for your EKS cluster to utilize the EBS CSI Driver
+   1. Create an IAM role for your EKS cluster to utilize the EBS CSI Driver.
 
-   2. Enable the EBS CSI Driver for your EKS cluster
+   2. Enable the EBS CSI Driver for your EKS cluster.
 
 eksctl should automatically configure a Kubernetes config for your kubectl within your terminal session. If not, ensure you have a connection to your new cluster. For more information, go to [Getting started with Amazon EKS – AWS Management Console and AWS CLI](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html#eks-configure-kubectl) in the AWS EKS documentation.
 
@@ -153,7 +153,7 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
     helm install harness harness/ -f override-demo.yaml -n harness
     ```
 
-   As EKS has the ability to create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the AWS EKS documentation. For this tutorial, we'll take advantage of this functionality by creating our Load Balancer first manually.
+   AWS EKS has the ability to create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. For this tutorial, we'll take advantage of this functionality by creating our Load Balancer first manually.
 
 5. Save the reference `loadbalancer.yaml` file and apply it into your cluster.
 
