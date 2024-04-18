@@ -82,3 +82,6 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 - [Can't generate SonarQube report due to shallow clone](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
 - [Add the sonar.projectVersion to a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#add-the-sonarprojectversion-to-a-harness-pipeline)
 - [SonarQube doesn't scan the main branch and pull request branches in the same pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
+
+#### Why am I getting the error Missing target_name for scan_type [repository] scan.
+This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
