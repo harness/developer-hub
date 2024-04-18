@@ -1027,9 +1027,9 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 ## Pipeline initialization and Harness CI images
 
-### Initialize step to fails with a "Null value" error
+### Initialize step fails with a "Null value" error or timeout
 
-This can occur if an expression or variable is called before it's value is resolved.
+This can occur if an expression or variable is called before it's value is resolved, if a variable/expression references a secret that doesn't exist, or if an expression incorrectly references a secret (such as the incorrect scope path or secret ID).
 
 In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only successfully [resolve expressions if the target value is available](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#use-expressions-only-after-they-can-be-resolved).
 
@@ -1275,9 +1275,6 @@ exit status 255 Found possible error on line 70. Log: signal: killed . Possible 
 To address this error, enable the [Optimize setting](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#optimize) in the Build and Push step.
 
 You can also try [adjusting container resources](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry#set-container-resources), if these settings are applicable to your build infrastructure.
-
-### Why is my initialize step timing out?
-One possible reason as to why the initialize step is timing out can be due to an incorrect secret reference in a Harness Expression in one of the Stage's steps. Harness' Expression Engine runs prior to the initialize step running and if the secret referenced in the expression is invalid, the amount of time it takes to retry getting the secret value until failure could be long enough for the initialize step to timeout. To fix this, please ensure that all secrets referenced in Harness Expressions are valid.
 
 ## Upload artifacts
 

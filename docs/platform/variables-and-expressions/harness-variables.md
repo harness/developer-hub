@@ -1173,9 +1173,9 @@ namespace: <+infra.namespace>
 # using expression <+infra.namespace>
 ```
 
-### CI stage initialization fails with a "null value" error
+### CI stage initialization fails with a "null value" error or timeout
 
-If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
+If a Build (`CI`) stage fails at initialization with a "null value" error or timeout, this can indicate that an expression was called before its value could be resolved or that the expression references a nonexistent value. For more information, go to [Initialize step fails with a "null value" error or timeout](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-fails-with-a-null-value-error-or-timeout).
 
 ### Default values can't start with an asterisk
 
