@@ -231,7 +231,7 @@ To configure the delegate upgrade schedule, do the following:
 
 If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images.
 
-If this feature is configured, Harness Delegate images will not be pulled from the public Docker Hub, but from the configured mirror.
+When this feature is configured, Harness Delegate images won't be fetched from the public Docker Hub but from the designated mirror.
 
 ```yaml
 mode: Delegate
@@ -245,7 +245,7 @@ delegateConfig:
   managerHost: <MANAGER_HOST>
 ```
 
-When `upgrader` wants to upgrade the delegate to `harness/delegate:verno`, it will use the image from `us.gsr.io/gcr-mirror/harness/delegate:verno`.
+During an upgrade, when upgrader seeks to update the delegate to `harness/delegate:verno`, it will utilize the image from `us.gsr.io/gcr-mirror/harness/delegate:verno`.
 
 ## Use automatic upgrade with custom delegate images
 
