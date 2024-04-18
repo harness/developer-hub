@@ -245,7 +245,7 @@ delegateConfig:
   managerHost: <MANAGER_HOST>
 ```
 
-During an upgrade, when upgrader seeks to update the delegate to `harness/delegate:verno`, it will utilize the image from `us.gsr.io/gcr-mirror/harness/delegate:verno`.
+During an upgrade, when `upgrader` seeks to update the delegate to `harness/delegate:verno`, it will utilize the image from `us.gsr.io/gcr-mirror/harness/delegate:verno`.
 
 ## Use automatic upgrade with custom delegate images
 
