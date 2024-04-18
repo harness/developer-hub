@@ -20,6 +20,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## April 2024
 
+### Version 1.13.0
+
+#### Fixed issues
+- Governance Enforcement Failure: We have added a minor fix to address the issue of governance enforcement failure when recommendations contain multiple accounts or subscriptions. Previously, attempting to create an enforcement from that screen could sometimes result in failure. This issue has been successfully resolved. [CCM-17192]
+  
+- Improved Precision in Perspective Reports: Previously, when choosing the current month during perspective setup, the report would present data from the past 7 days. We have promptly added a fix so that it accurately portrays data for the entire current month. [CCM-17100]
+
 ### Version 1.12.0
 
 #### New features and enhancements
