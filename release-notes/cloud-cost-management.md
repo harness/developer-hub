@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Version 1.13.0
 
 #### Fixed issues
-- Governance Enforcement Failure: We have added a minor fix to address the issue of governance enforcement failure when recommendations contain multiple accounts or subscriptions. Previously, attempting to create an enforcement from that screen could sometimes result in failure. This issue has been successfully resolved. [CCM-17192]
+- Improved Governance Enforcement: We have added a minor fix for governance enforcement when recommendations contain multiple accounts or subscriptions so that the enforcement is created efficiently. [CCM-17192]
   
 - Improved Precision in Perspective Reports: Previously, when choosing the current month during perspective setup, the report would present data from the past 7 days. We have promptly added a fix so that it accurately portrays data for the entire current month. [CCM-17100]
 
@@ -46,7 +46,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Commitment Orchestrator UI Column Overlap: We have added a minor fix to address the issue of overlapping columns in Commitment Orchestrator overview page. [CCM-16971]
 
 - Resolved Cluster Data Visibility Issue: We resolved a problem regarding inaccurate cost tracking within the specified date range due to a recent change in the primary node's TimescaleDB timeout configuration, which led to failures in the utilization data query. By rerouting read queries to a secondary node, we fixed the query performance issue. [CCM-17048]
-- 
+
 ### Version 1.11.3
 
 #### New features and enhancements
