@@ -36,9 +36,9 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
-### Version 1.23.x
+### Version 1.23.1
 
-<!-- 16 Apr 2024  + ADD DELEGATE VERSION IN FIXED ISSUE CI-11556 -->
+<!-- 16 Apr 2024-->
 
 #### Early access features
 
@@ -54,7 +54,7 @@ For more information about CI early access features, go to [What's supported for
 
 #### Fixed issues
 
-* Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.XXXXX or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
+* Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.82707 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
 * Fixed an issue where references to deleted/nonexistent secrets sometimes caused pipelines to timeout at the initialize step without any logs. (CI-11891, ZD-60575)
 * Added a fix to trim long environment variables, such as the commit message and PR title, during pod creation in stage initialization. This is currently an opt-in fix for affected customers. If you're using a Kubernetes cluster build infrastructure and experiencing initialization timeout with an error message like `rpc error: code = ResourceExhausted desc = trying to send message larger than max`, contact [Harness Support](mailto:support@harness.io) to enable this fix in your account. (CI-11709, ZD-59521)
 
