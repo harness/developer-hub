@@ -204,7 +204,7 @@ We have only one API for access check either if you perform Authorization using 
 
 An API key is created with a minimum duration of 30 days. You can rotate the token at any time.
 
-#### What does 'parentIdentifier' refer to during the creation of an API key?
+### What does 'parentIdentifier' refer to during the creation of an API key?
 
 The `parentIdentifier` in the context of creating an API key refers to the Parent Entity Identifier of the API key. This identifier indicates the entity or resource to which the API key is associated or belongs. It helps organize and manage API keys within the system by specifying their parent entity, such as a user, organization, application, or another relevant entity. When creating an API key, providing the appropriate `parentIdentifier` ensures that the key is properly linked to the intended entity, allowing for effective access control and management.
 
@@ -443,7 +443,7 @@ If you encounter a similar problem with this Jira plugin or any other plugin, it
 
 SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
 
-#### What happens if a user's email domain changes and the user is provisioned via SCIM in Harness?
+### What happens if a user's email domain changes and the user is provisioned via SCIM in Harness?
 
 Harness will automaticaly detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
 
@@ -469,6 +469,10 @@ With the SAML-tracer extension running, do the following:
 If you have multiple Harness instances and use the Azure SAML app, it is possible that the SAML app may redirect to a different Harness instance than the one you intended.
 
 To prevent this, make sure to specify the Entity ID below the Authorization when creating the SAML app integration in the Harness UI. This is especially important if you have both sandbox and production Harness instances.
+
+### How does JIT provisioning work for SAML SSO users?
+
+Harness supports Just-in-Time (JIT) provisioning, automatically provisioning new users when they sign in with their SAML SSO credentials for the first time. To use JIT provisioning, ensure the feature flag `PL_ENABLE_JIT_USER_PROVISION` is enabled for the account. For more information, go to [Just-in-time user provisioning](https://developer.harness.io/docs/platform/role-based-access-control/provision-use-jit/).
 
 ### Do user permissions in Harness with JIT provisioning and SAML authentication inherit from the SAML provider, or do they require separate configuration in the Harness Account?
 
@@ -1230,7 +1234,7 @@ Immutable delegates work with the first generation as well. If you have an immut
 
 However, if you have legacy delegates in your first generation, you will require new delegate installations.
 
-#### How do I support Docker in Docker for Harness Delegates?
+### How do I support Docker in Docker for Harness Delegates?
 
 To support Docker in Docker for Harness Delegates, follow these steps:
 
@@ -1830,11 +1834,11 @@ Add the below commands in the `INIT_SCRIPT` to download and install the Azure cl
 
 Once the shutdown hook is triggered on the delegate, the delegate won't accept new tasks, and it will wait until the existing tasks finish running or the `terminationGracePeriodSeconds` runs out. For more information, go to [Grace period](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process#grace-period).
 
-#### How do I turn off the logging.googleapi.com URL? Do I need to provide any other commands in the delegate startup?"
+### How do I turn off the logging.googleapi.com URL? Do I need to provide any other commands in the delegate startup?
 
-Our delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality, you must set the `STACK_DRIVER_LOGGING_ENABLED` env variable to `false`. For more information, go to [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
+Delegates send logs to Harness by default. Harness uses these logs for debugging and support. To disable this functionality, you must set the `STACK_DRIVER_LOGGING_ENABLED` env variable to `false`. For more information, go to [Delegate environment variables](/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
 
-#### How can I validate the configuration of Harness Delegates?
+### How can I validate the configuration of Harness Delegates?
 
 Harness Delegates are primarily configured through variables, which can be adjusted during the deployment of a new delegate. There are several ways to ensure the correctness of these configurations:
 
@@ -2094,6 +2098,31 @@ Check to be sure you have the required Role and permission granted to view Proje
 
 You are likely using a token scoped to a project when creating a resource at the account level, the same applies to a project token while creating a resource at the organization level. To create resources across different levels (account/organization/project), your token must be at a higher level or at the same level as the scope.
 
+### How do we provide project access to organization-level resources?
+
+1. Under the organization, select **Access Control**, and then select **Resource Groups**.
+2. Create a new resource group if none exists.
+3. Under **Resource Scope**, select **Specified Projects**.
+4. Select **Edit**, and then select the projects requiring access under the organization.
+5. Select **Include Organization-level Resources**.
+6. Select **Apply**, then **Save**.
+
+Users within the project now have access to organization-level resources.
+
+### How do we provide project access to account-level resources?
+
+1. Under **Account Settings**, select **Access Control**, then go to **Resource Groups**.
+2. Create a new resource group if necessary.
+3. Under **Resource Scope**, select **Specified Organizations (and their Projects)**.
+4. Select **Edit**.
+5. Enable **Include Account-level Resources**.
+6. Select the organization (and its projects) from the dropdown.
+7. Enable **Include Project-level Resources**.
+8. Select **Specified**, then select the projects that require account-level resources.
+9. Select **Apply**, then **Save**.
+
+Users within the project now have access to account-level resources.
+
 ### Can you manage org level entities at the account level?
 
 This is a use case of user-group inheritance,
@@ -2300,6 +2329,10 @@ For more information, go to [Force delete](/docs/platform/references/entity-dele
 
 Harness doesn't currently support referencing the Custom Secret Manager template stored in Git. Create an inline template as a workaround.
 
+### Why can't secrets be exported from FirstGen to NextGen?
+
+Exporting secrets from the Secrets Manager is not possible due to security reasons, as it would expose them to unauthorized users. Harness does not support exporting secrets. The only option is to manually compare entries between FirstGen and NextGen to confirm if they match.
+
 ### What is the default timeout for the Custom Secret Manager script? Is this timeout configurable?
 
 By default, it's set to 60 seconds, and the timeout is not configurable.
@@ -2340,7 +2373,7 @@ Harness uses connectors to external secret managers (e.g. Google Secret Manager 
 
 No, we don't support LDAP secret engine.
 
-#### Why am I experiencing errors with core_secret_access messages?
+### Why am I experiencing errors with core_secret_access messages?
 
 This error occurs when a user possesses the permission to execute a pipeline, yet lacks access to the project/organization/account secrets. This issue becomes critical when the pipeline's configuration includes resources that rely on these secrets. Consequently, users attempting to trigger or view the execution without proper secret access will encounter this error message.
 
@@ -2778,7 +2811,7 @@ They are a way to refer to something in Harness such as an entity name or a conf
 
 Running, Failed, and Success.
 
-#### How can I see all available variables?
+### How can I see all available variables?
 
 You can rely on our [Built-In variables](/docs/platform/variables-and-expressions/harness-variables/) that will be available during your pipeline executions.
 
@@ -2814,9 +2847,23 @@ The serialization issue in NG Audits for ModuleLicense collection arises when us
 
 It's essential to note that the Audit Service doesn't directly serialize or deserialize YAML; instead, it expects the old and new YAML as strings. However, the choice of using DTOs over entity objects is crucial for resolving any potential serialization challenges. Always ensure that the service generating audits has access to all required DTOs to prevent code duplication and facilitate efficient integration with NG Audits.
 
+### How do we identify pipelines using a specific template?
+
+1. Navigate to the **Templates** section in the project.
+2. Select the desired template.
+3. Open the **Referenced By** section.
+
+A list of entities will display, showing the pipelines utilizing the template.
+
 ### How can I execute a simple Shell or Bash script step?
 
 With a custom stage, you don't need to define a service. This is the preferred method to execute a shell or bash script step.
+
+### How can we manage access to Harness from different locations?
+
+Harness allows organizations to manage an IP allow list, enabling approved IP addresses, including office and VPN IP addresses, to access the platform. Contact [Harness Support](mailto:support@harness.io) for assistance.
+
+
 
 ### How does Harness handle data retention for exiting customers?
 
@@ -2868,7 +2915,7 @@ This happens due to an incorrect cron expression. Harness uses Java cron-utils t
 
 https://www.javainuse.com/cron#google_vignette
 
-#### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
+### How can I resolve the error: "Oops, something went wrong on our end. Please contact Harness Support."?
 
 This error message typically indicates an unexpected failure in a backend API call related to the operation you're attempting.
 
@@ -2880,59 +2927,7 @@ To address this issue effectively:
 
 By following these steps, our support team can promptly review the situation, diagnose the underlying cause, and provide you with the necessary assistance to resolve the error swiftly. Your cooperation in providing the HAR file greatly facilitates our troubleshooting efforts and ensures a timely issue resolution.
 
-#### What does "Exit code 137" mean?
+### What does "Exit code 137" mean?
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
-
-#### Attribute for Group Claim in Azure
-
-For SAMl with Azure(Microsot Entra ID), Under Enterprise Applications-->SSO Setings --> Edit the User and Group properties the edit the Group Claim and validate that the attribute is set to Group ID. In case it is set to any ither attribute you will need to provide that value while linking the Harness user group with the azure group using the authorisation. 
-
-#### Cron Builder in LDAP sync schedule
-
-Harness uses Quartz under the hood for the cron expression builder in LDAP sync schedule
-
-#### Seting up 2FA for Harness
-
-You can use the QR code sent in the email to setup 2FA, also you will receive a secrey key for your user in the same email. You can use the same to setup the 2fa or use a thirty party auth like https://totp.danhersam.com/ where you cna input 2fa secrey key and it generates a login code for you.
-
-#### Multiple SAML and SCIM
-
-Yes you can setup multiple IDP and SCIM Apps with Harness and use it simultaneously. 
-Multiple IDP is behind a FF https://developer.harness.io/docs/platform/authentication/multiple-identity-providers/
-
-#### Get all users with the role they have in Harness
-
-You can get list of all users in Harness using the below API : 
-
-https://apidocs.harness.io/tag/User#operation/getAggregatedUsers
-
-This will provide with complete details of the users incldying the role they have. 
-
-#### Is it possible to update the Organisation or account name for Harness
-
-Yes you can raise a support ticket and get your organisation and company name changed for your Harness account. 
-
-#### What happens if a Users email doamin is changed and the user is provisioned via SCIM in Harness.
-
-Harness will automaticaly detect the change and update the email in Harness using the SCIM app.
-You will not need to do anything manual to update the user email. 
-
-#### Disable 2FA for a user. 
-
-Currently there is no easy way for Harness to disable the 2FA for a user. 
-The user can do so from his profile or if he has lost access to the auth app. He will need to reach out to account admin and ask them to resend the 2fa code and then user can rest the 2fa auth app and login to the account and the disable from his profile.
-
-
-#### Harness subscription on org level
-
-We don't support licences at Org level. It only supported at Account level. 
-
-####Currently harness support view access at project only. Currently document suggest account level view access only.We are providing access through azure. I am not sure if project level view is supported. How it can be achieved using Azure AD?
-
-The access depends on how and where you have added te User, if the user is added at account level manually or via SCIM then the user by default is the part of All Account Users groups and what permission that group has will be inherited by the user.  
- 
-Now if the user is only added at the project level then he gets added to All Project Users group and permission associated with that user group applies. 
- 
-It is also possible to add user at account level and manager project level permission at project level Access Control. The same applies to organisation level. 
 
