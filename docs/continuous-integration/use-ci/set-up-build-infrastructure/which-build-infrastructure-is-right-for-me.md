@@ -13,7 +13,7 @@ With Harness CI, you can run builds on [Harness-managed machines (Harness Cloud)
 | ------------- | --------------------- |
 | Maintained and updated by Harness. | Maintained and updated by you or your cloud services provider. |
 | Preinstalled with common software/tools.<br/>You can add additional tools at runtime. | Configuration determined by you or your cloud services provider. |
-| Default monthly build credit allowance with the ability to purchase additional credits. | Costs vary for physical hardware maintenance, cloud services provider pricing models, or other factors. |
+| Use build credits to cover build minutes.<br/>Default credits allowance varies by plan. | Costs vary for physical hardware maintenance, cloud services provider pricing models, or other factors. |
 
 Learn more about each option below, including recommended use cases, supported platforms, and feature compatibility.
 
