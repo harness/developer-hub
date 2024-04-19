@@ -671,10 +671,10 @@ No, you can delete the CUR file in order to save on S3 storage costs.
 No, you can set up CUR in master account in AWS. That will have data for all linked accounts too. In CCM, you can setup just one connector having CUR for this master account. 
 For linked accounts connectors in CCM, you can choose one or both of Optimization/Visibility features. 
 
-#### I just setup a fresh Azure connector following the help docs. It fails in validation step and says “Authorization permission mismatch”. I am 100% sure all input is correct. What is happening ?
+#### After setting up a fresh Azure connector following the help docs. It fails in validation step and says “Authorization permission mismatch”. I am 100% sure all input is correct. What is happening ?
 Sometimes Azure takes time to propagate/refresh the access settings on the storage account. Wait for few mins 3-5mins and click on Test button again in portal.
 
-#### Do I need to add Kubernetes cloud provider connectors for each Kubernetes cluster?
+#### Do you need to add Kubernetes cloud provider connectors for each Kubernetes cluster?
 Yes, you need to add a Kubernetes cloud provider for each Kubernetes cluster. One connector can access only one cluster.
 
 
