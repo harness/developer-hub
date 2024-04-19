@@ -12,7 +12,7 @@ Checkmarx offers an extensive suite of tools to support secure application devel
 
 With Harness STO, you can do the following:
 - Run local SAST scans using the CxConsole CLI (orchestration mode).
-- Extract results from a Checkmarx SAST server (extraction mode).
+- Extract results from a CxSAST server (extraction mode).
 - Ingest results from any Checkmarx scanner that can publish in SARIF format (ingestion mode).
 
 ## Important notes for running Checkmarx scans in STO
