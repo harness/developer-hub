@@ -1,7 +1,7 @@
 ---
 title: CI onboarding guide
 description: A self-service onboarding guide for Harness CI.
-sidebar_position: 3
+sidebar_position: 4
 sidebar_label: Onboarding guide
 ---
 
@@ -9,24 +9,23 @@ Harness CI simplifies the code development and testing process. In Harness CI pi
 
 This guide explains what you need to know to get started using Harness CI to build and test your code.
 
-## Complete Harness Platform onboarding
+## Onboard to the Harness Platform
 
 If you're new to Harness, review the [Harness Platform onboarding guide](/docs/platform/get-started/onboarding-guide) and [Harness Platform key concepts](/docs/platform/get-started/key-concepts) before onboarding to CI.
 
-## Learn about Harness CI concepts and features
+## Learn about Harness CI
 
-Review the following resources to learn about the features, components, and key concepts of Harness CI.
+Learn about the features, components, and key concepts of Harness CI:
 
-* [CI overview](./overview.md): Learn about Harness CI architecture and key features.
-* [CI key concepts](./key-concepts.md): Get definitions of common components and functions you'll encounter in Harness CI, such as pipelines, stages, steps, plugins, and more.
+* [CI overview](./overview.md): Learn about Harness CI architecture and key features, such as Harness Intelligence and Harness Cloud.
+* [CI key concepts](./key-concepts.md): Learn about common terminology and functionality in Harness CI, such as pipelines, stages, steps, plugins, and more.
 
 ## Create your first Harness CI pipeline
 
-Learn about the [pipeline creation process in Harness CI](../use-ci/prep-ci-pipeline-components.md), and then create your own:
+Learn about [creating pipelines in Harness CI](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md) and then try it for yourself:
 
-* [Tutorial: Build on Harness Cloud](./tutorials)
-* [Tutorial: Build on a Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
-* [Generic process: Create a Harness CI pipeline](../use-ci/prep-ci-pipeline-components.md#create-a-harness-ci-pipeline)
+* [Tutorial - Build on Harness Cloud](./tutorials.md)
+* [Tutorial - Build on a Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra)
 
 ### Build infrastructure options
 

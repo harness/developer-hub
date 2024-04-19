@@ -37,7 +37,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 ## April 2024
 
 <!-- Harness Intelligence overhaul: Cache Intelligence GA + available to all build infras. Harness-managed DLC GA + available for all infras. -->
-<!-- Early access: Tests V2 `CIE_ENABLE_RUNTEST_V2` -->
+<!-- Early access: Tests V2 `CIE_ENABLE_RUNTEST_V2` - Includes TI for Python, Ruby, Java/Kotlin/Scala by default.  Doesn't include C# yet. Don't need Python TI FF for Python TI in Test V2 step. -->
 
 ### Version 1.23.1
 

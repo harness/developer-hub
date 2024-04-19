@@ -1,7 +1,7 @@
 ---
 title: Try Harness CI
 description: Explore Harness CI and the features that make it four times faster than the leading competitors.
-sidebar_position: 4
+sidebar_position: 5
 helpdocs_topic_id: x0d77ktjw8
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
