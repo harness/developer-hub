@@ -23,12 +23,6 @@ export const platformData: Horizon = {
       },
       {
         tag: [],
-        title: "Single Tenant SaaS",
-        description:
-          "Customers can request to be onboarded to a single tenant Harness SaaS cluster",
-      },
-      {
-        tag: [],
         title: "Account Migration",
         description:
           "Customers can request to be migrated to a different SaaS cluster",
@@ -50,12 +44,6 @@ export const platformData: Horizon = {
         title: "Project movement across organization",
         description:
           "",
-      },
-      {
-        tag: [{ value: "SMP" }],
-        title: "Multi tenant SMP",
-        description:
-          "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
       },
     ],
   },
@@ -91,6 +79,12 @@ export const platformData: Horizon = {
         tag: [],
         title: "Console log line limit",
         description: "Ability to increase the console log line limits",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Multi tenant SMP",
+        description:
+          "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
       },
     ],
   },
