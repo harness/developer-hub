@@ -114,8 +114,6 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with additional flags. 
-
  
 Use this field to run the [`osv`](https://google.github.io/osv-scanner/usage/) scanner with flags such as:
 
