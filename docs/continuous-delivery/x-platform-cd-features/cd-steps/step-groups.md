@@ -2,6 +2,8 @@
 title: Group steps using step groups
 description: This topic describes how to add steps to pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/x-platform-cd-features/cd-steps/
 ---
 
 Steps can be added to pipelines individually or as a step group.
