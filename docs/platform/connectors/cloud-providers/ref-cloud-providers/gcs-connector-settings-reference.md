@@ -139,16 +139,21 @@ It is possible to create a connector with a non-existent delegate. This behavior
 
 #### Use OpenID Connect (OIDC)
 
-Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
-
-Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
-
-
 :::note
 
 Currently, the OIDC connectivity mode is not compatible with Google Cloud Functions. You can't deploy Google Cloud Functions with OIDC-enabled GCP connectors. Currently, this feature is behind the feature flag `PL_GCP_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
+
+Select the **Connect through Harness Platform for OIDC** option to allow Harness to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
+
+Select the **Connect through Harness Delegate for OIDC** option to allow Harness Delegate to communicate directly with GCP through OIDC. This option uses OIDC authentication to access public cloud resources without secrets or credentials.
+
+To connect to GCP with OIDC, you must configure an [OIDC identity provider](https://cloud.google.com/identity-platform/docs/web/oidc#configuring_the_provider) in GCP and add it in a trust relationship with an IAM role you create that Harness will use to operate in GCP. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
+
+   * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`
+
+   * OIDC audience: `sts.amazonaws.com](https://iam.googleapis.com/projects/<YOUR_GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<YOUR_WORKLOAD_POOL_ID>/providers/<YOUR_PROVIDER_ID>`
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
