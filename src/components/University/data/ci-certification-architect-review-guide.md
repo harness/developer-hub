@@ -8,7 +8,7 @@
 | Implement and troubleshoot dependency caching mechanisms | [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
 | **3. Implementing and Managing CI Pipelines**  ||
 | Develop and troubleshoot pipeline triggers | [Troubleshoot failed triggers](https://developer.harness.io/docs/platform/triggers/troubleshoot-registered-triggers/)|
-| Optimize CI pipeline efficiency and speed| [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)  |
+| Optimize CI pipeline efficiency and speed | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |
 | **4. Ensuring Security and Compliance in CI Pipelines**  | |
 | Implement secrets management and ensure secure build processes  | [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager)|
 | Adhere to the Principle of Least Privilege (PoLP) in CI/CD | [Roles and resource groups work together](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/#roles-and-resource-groups-work-together) |

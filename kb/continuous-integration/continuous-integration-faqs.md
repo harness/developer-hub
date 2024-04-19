@@ -2027,7 +2027,7 @@ While it is possible to [trigger deployments with artifact triggers](https://dev
 
 ### What are the best practices to improve build time?
 
-For information about making your pipelines faster and more efficient, go to [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
+There are many [optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) for making your pipelines faster and more efficient.
 
 ### How do I reduce the time spent downloading dependencies for CI builds?
 

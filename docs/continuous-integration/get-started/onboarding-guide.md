@@ -45,7 +45,6 @@ Explore the documentation to learn what your Harness CI pipelines can do.
 * [Use caching](/docs/category/share-and-cache-ci-data) and [manage dependencies](/docs/category/manage-dependencies).
 * Run [scripts](../use-ci/run-step-settings.md) and [tests](/docs/category/run-tests).
 * [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and [write your own plugins](../use-ci/use-drone-plugins/custom_plugins.md).
-* [Apply optimization strategies](../use-ci/optimize-and-more/optimizing-ci-build-times.md).
 
 :::tip
 

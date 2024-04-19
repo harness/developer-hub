@@ -3,11 +3,11 @@
 | **1. Understanding of CI/CD Concepts and Best Practices** ||
 | Distinguish between Continuous Integration, Continuous Delivery, and Continuous Deployment | [Harness Continuous Integration (CI) overview](https://developer.harness.io/docs/continuous-integration/get-started/overview) |
 | Identify key concepts related to CI/CD pipelines and their steps| [Key concepts](https://developer.harness.io/docs/continuous-integration/get-started/key-concepts)|
-| Recognize best practices for implementing CI/CD in software development workflows | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
+| Recognize best practices for implementing CI/CD in software development workflows | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |
 | **2. Harness CI Pipeline Creation and Optimization** ||
 | Construct a Harness CI pipeline and establish its stages and steps | [CI onboarding guide](https://developer.harness.io/docs/continuous-integration/get-started/onboarding-guide) |
-| Diagnose and resolve common errors and issues within the CI pipeline   | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/) |
-| Implement strategies to optimize pipeline execution and minimize build times | [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/) |
+| Diagnose and resolve common errors and issues within the CI pipeline   | [Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci) |
+| Implement strategies to optimize pipeline execution and minimize build times | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |
 | **3. Utilization and Management of Harness Connectors and Integrations**  | |
 | Configure and manage various Harness Connectors (e.g., Docker, Git)| [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/)|
 | Understand and implement integration with different platforms and OS | [What's supported by CI](https://developer.harness.io/docs/continuous-integration/ci-supported-platforms)|
@@ -17,7 +17,7 @@
 | Diagnose and mitigate common Docker-related issues and errors | [Troubleshoot CI](/docs/category/troubleshoot-ci)|
 | **5. Harness CI Configuration and Codebase Management** ||
 | Understand and implement the configuration of Harness CI Codebase | [Configure codebase](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) |
-| Optimize and manage code repository, connectors, and trigger settings| [Optimize and enhance CI pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
+| Optimize and manage code repository, connectors, and trigger settings | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |
 | **6. Authentication and Security Management in Harness CI** ||
 | Configure and manage authentication methods for various connectors (e.g., Git, Docker)     | [Using Git Credentials from Codebase Connector in CI Pipeline's Run Step](https://developer.harness.io/kb/continuous-integration/articles/using_git_credentials_from_codebase_connector_in_ci_pipelines_run_step/) |
 | Implement and utilize Secrets Management tools with Harness CI | [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager) |
