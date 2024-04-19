@@ -41,7 +41,7 @@ Hygiene misses are based on hygiene categories. The built-in categories are:
 * **Missed Resolution Time:** The ticket wasn't in a resolved status before the goal resolution time expired.
 * **Inactive Assignees:** The ticket was assigned to an inactive user.
 
-Data for hygiene categories are derived from your [integrations](/docs/category/integrations).
+Data for hygiene categories are derived from your [integrations](/docs/category/sei-integrations).
 
 You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview). You can have up to ten categories.
 
@@ -60,7 +60,7 @@ You can modify the importance of each category when you [configure the Issue Hyg
 
 <!--image - .gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab-->
 
-5. On the **Settings** tab, select the issue management system to use for this widget. Available options are based on your configured [SEI integrations](/docs/category/integrations).
+5. On the **Settings** tab, select the issue management system to use for this widget. Available options are based on your configured [SEI integrations](/docs/category/sei-integrations).
 
 :::tip
 

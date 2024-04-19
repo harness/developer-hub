@@ -206,3 +206,13 @@ For each setting that requires runtime input, Harness either:
 * Displays an error for any required settings that don't have a value assigned.
 
 If any required settings don't have a value, you must manually input a value before you can run the pipeline.
+
+### Get the resolved input
+
+You can use the [expression](/docs/platform/variables-and-expressions/harness-variables.md) `<+inputSet>` to get the input set values for a pipeline execution as JSON.
+
+Here's an example of a resolved `<+inputSet>` expression:
+
+```
+{pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
+```

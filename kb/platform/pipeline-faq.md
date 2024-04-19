@@ -6,19 +6,65 @@ redirect_from:
   - /docs/platform/pipelines/w_pipeline-steps-reference/pipeline-faq
 ---
 
+<!--
+
+Contributor Guidelines
+
+Before you add new content, please search for existing FAQs to avoid duplications.
+
+Ensure that your contributions are organized according to the following categories:
+
+- General/miscellaneous
+- Pipeline access control
+- API
+- Pipeline triggers
+- Stop pipelines
+- Chain pipelines
+- Delete pipelines
+- Pipeline executions and logs
+- Pipeline notifications
+- Delegates
+- Variables
+
+You can search for a heading, for example, ## API, and add your new FAQ under the category that's appropriate to keep the file's organizational structure.
+
+-->
+
 This page answers some frequently asked questions about pipelines in Harness. For additional information and questions about pipelines generally, pipeline components (such as delegates, connectors, and secrets), and module-specific pipelines (such as CI/CD pipelines), go to the module and [Platform documentation](/docs/platform) and the other FAQ pages.
 
-## How many pipelines can I have?
+## General/miscellaneous
+
+### How many pipelines can I have?
 
 There is no limit to the number of pipelines you can create in a project.
 
-## Is there a character limit for pipeline names?
+### Is there a character limit for pipeline names?
 
 Pipeline names are limited to 128 characters.
 
-## When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
+### When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
 
 This behavior is expected when there are more than 20-30 branches in the repo due to pagination. To select branches that are not listed, try manually entering the full branch name. This should allow you to open the pipeline from that branch.
+
+### How can I switch from the new Harness nav 2.0 UI to the legacy one?
+
+Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
+
+### Does the Harness NextGen community edition support LDAP login?
+
+Community edition did not support LDAP. As of December 2023, the community edition is retired in favor of Gitness.
+
+### Can monitoring be added for changes to a Harness file-store object?
+
+Currently, there is no support for connecting monitoring services for the Harness file-store.
+
+### How can I determine which Harness version I am using?
+
+Refer to the link: `https://app.harness.io/gratis/ng/static/versions.html`.
+
+### Can Harness console output image files?
+
+Harness console does not support rendering image files.
 
 ## Pipeline access control
 
@@ -46,7 +92,7 @@ By selecting specific, individual pipelines when configuring the resource group,
 
 ### Can I make my pipeline dependent on the RBAC permissions of the user that runs the pipeline?
 
-Harness doesn't have a variable like `<+currentuser.role>` that returns the role for user running the pipeline; however, you can use a variable to get the user's email address. For more information, go to [Pipeline trigger by email](/docs/platform/variables-and-expressions/harness-variables/#pipelinetriggeredbyemail).
+Harness doesn't have a variable like `<+currentuser.role>` that returns the role for user running the pipeline; however, you can use a variable to get the user's email address. For more information, go to the [pipeline.triggeredBy.email expression](/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions).
 
 You can also set the first step of the pipeline to call the [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) endpoint, which lists all roles assigned to the user, and then configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) that only allows the pipeline to proceed if the roles pass a JEXL condition.
 
@@ -200,6 +246,10 @@ To minimize GitHub calls from Harness, enabling the bi-directional Git Experienc
 
 ## Pipeline triggers
 
+### How can I obtain the triggered build version value, trigger ID, or trigger URL during pipeline runtime when a pipeline is triggered by a PR?
+
+Harness provides specific expressions to access information about the trigger during pipeline runtime. For the username associated with the PR changes, you can use `<+pipeline.triggeredBy.name>`, which will give you the name of the user who initiated the PR. To get the ID of the trigger that fired the execution, the expression `<+pipeline.triggeredBy.triggerIdentifier>` can be utilized. However, it's important to note that Harness does not offer an expression to retrieve the URL to the trigger. Therefore, while you can easily access the username and trigger ID, obtaining the trigger URL directly in the pipeline runtime is not supported.
+
 ### Can I disable pipeline triggers?
 
 On the Triggers page, switch the **Enabled** toggle to disable a trigger.
@@ -270,7 +320,7 @@ Harness deprecated the pause button because it was inconsistent and put pipeline
 
 ### With chained pipelines, when the main pipeline runs, which pipeline settings take precedence?
 
-Settings are triggered and utilized as the pipeline progresses. For example, the main pipeline runs initially and uses the main pipeline's settings. When the pipeline reaches the Pipeline stage (the chained/child pipeline), it uses the child pipeline's settings while executing the chained pipeline. 
+Settings are triggered and utilized as the pipeline progresses. For example, the main pipeline runs initially and uses the main pipeline's settings. When the pipeline reaches the Pipeline stage (the chained/child pipeline), it uses the child pipeline's settings while executing the chained pipeline.
 
 For example, if the main pipeline has notification settings and the child pipeline has different notification settings, the child pipeline settings only apply while the child pipeline runs. Otherwise the main pipeline settings are used.
 
@@ -308,7 +358,7 @@ When a pipeline is deleted, the audit details are retained, and the execution lo
 
 ## Pipeline executions and logs
 
-## Account verification error with Harness Cloud builds on Free plan
+### Account verification error with Harness Cloud builds on Free plan
 
 Recently Harness has been the victim of several Crypto attacks that use our Harness-managed build infrastructure (Harness Cloud) to mine cryptocurrencies. Harness Cloud is available to accounts on the Free tier of Harness CI. Unfortunately, to protect our infrastructure, Harness now limits the use of the Harness Cloud build infrastructure to business domains and block general-use domains, like Gmail, Hotmail, Yahoo, and other unverified domains.
 
@@ -359,9 +409,25 @@ You can search by pipeline name or tag.
 
 Connectors are often tied to a secret, such as a password or SSH key, that can expire. Expired credentials are a common cause of execution failures with connector errors. If your build fails due to a connector error, check your connector's configuration to confirm that the credentials aren't expired.
 
+### How frequently does the Harness connector perform status checks?
+
+Status checks typically occur every 30 minutes.
+
 ### VAULT operation error: Decryption failed after 3 retries for secret
 
 Such errors in pipeline execution can arise from issues with the network's or the delegate's connection to the Vault where the secret exists. First, verify that the delegates are operational and that the connectors used in the pipelines are connected properly. If either the delegate or connector connectivity test fails, log in to the delegate and attempt to reach the connector URL from there manually.
+
+### Can Harness execute TSQL scripts in Azure?
+
+TSQL scripts can be executed with the Run Step or via a shell script, provided that Harness has the correct access within Azure to run the script.
+
+### What is "SYSTEM - dashboard_cleanup" seen in Audit Trail?
+
+It is a scheduled task designed to clean up dashboards that have no tiles. This includes dashboards with no visualization tiles, and even those with hard-coded text tiles.
+
+### When encountering the error message "WARNING: Collection ansible.windows does not support Ansible version 2.13.13," what should be checked?
+
+Check if the Harness Delegate was recently updated, and also confirm the version of Ansible being executed.
 
 ## Pipeline notifications
 
@@ -411,7 +477,11 @@ curl -X POST -H 'Content-type: application/json' --data '{
 
 ### I use a Slack bot to send messages about test job results. What is the job URL variable?
 
-In Harness, use the [pipeline execution URL expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline_execution_url) `<+pipeline.execution.url>`.
+In Harness, use the pipeline execution URL [expression](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables) `<+pipeline.execution.url>`.
+
+### Can a PagerDuty notification be sent when a connector is disconnected?
+
+Harness connectors do not support notifications at this time.
 
 ## Delegates
 
@@ -463,6 +533,14 @@ The secrets pulled by a delegate during pipeline execution do not make their way
 
 Delegates connect to various [secret managers](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview) as the pipeline progresses, but the secret information itself is not sent to Harness. This ensures that production secrets remain secure and are not exposed within the Harness platform.
 
+### What is the difference between a GitOps agent and Harness Delegates?
+
+A GitOps agent creates a worker specifically for GitOps tasks, while the delegate is used to connect to other third-party apps for deployments.
+
+### Can both the GitOps agent and Harness Delegate be run simultaneously?
+
+The GitOps agent operates independently of the delegate, so there is no conflict between running both simultaneously.
+
 ## Variables
 
 ### How do I  make environment variables available to all steps?
@@ -485,6 +563,11 @@ echo "$variables"
 
 If you are using a step template, you must go to the template itself and view the template YAML to view the shell script contents.
 
-### How do I get the stage execution ID to use in a template?
+### How do I obtain the stage execution ID to use in a template?
 
-You can use the expression `<+pipeline.stages.STAGE_ID.executionId>` to get the execution ID of a specific stage in the pipeline. Replace `STAGE_ID` with the identifier of the stage you want to reference.
+You can utilize the expression `<+pipeline.stages.STAGE_ID.executionId>` to retrieve the execution ID of a specific stage in the pipeline. Replace `STAGE_ID` with the identifier of the stage you wish to reference.
+
+### Is it possible to set a notification for a failed status check?
+
+Currently there is no support for notifications when a status check fails.
+

@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-04-03:T10:00:15
+date: 2024-04-16:T10:00:15
 sidebar_position: 8
 ---
 
@@ -47,11 +47,33 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## April 2024
 
+Version 1.33.5
+
+#### Breaking changes
+
+- The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but made mandatory now as the APIs require these to work. (CDS-94245)
+
+#### New features and enhancements
+
+- Harness will enable Overrides (V2) in your accounts and migrate your existing Overrides (V1) to the new V2 experience on 20 April, 2024. Contact [Harness Support](mailto:support@harness.io) for queries or assistance regarding the migration.
+  
+#### Fixed issues
+
+- Fixed an issue where the Nexus 2 artifactory registry drop-down listed duplicate group IDs. (CDS-94376, ZD-60041)
+- Terraform deployment failed when using AWS connectors (IRSA credential type with assume cross account role) in Terraform steps. This issue occurred when the Terraform Apply step was trying to assume a different role from the AWS backend configuration. The default duration for assuming the role in the `aws-java-sdk` is 15 minutes. When the Terraform Apply step exceeded 15 minutes, the Terraform output threw an error. This issue is resolved by introducing a new Harness variable, `HARNESS_AWS_ASSUME_ROLE_DURATION`. In Terraform steps, you can now set the environment variable value to override the default duration to assume AWS roles. This item requires Harness Delegate version 01.04.82700. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-94355, ZD-60095)
+- Unable to load the AWS resources during an Amazon ECS Blue Green deployment. The API call for fetching elastic load balancer call was not being made in the stage causing this issue. This issue is fixed now. (CDS-94084, ZD-59734)
+- The dashboard widget in the Deployments Dashboard showed a mismatch in the executions count. This issue is fixed by synching the missing data for dashboards. (CDB-1599, ZD-60164)
+- Fixed an issue where Harness was unable to integrate Google Cloud Operations with Continuous Verification (CV) for service monitoring. This item requires Harness Delegate version 01.04.82700. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-93479)
+- Fixed an issue where users were unable to create Zendesk tickets for the Platform module. (CDS-95061, ZD-60650, ZD-60734)
+- Continuous Verification (CV) telemetry failed if any one of the publish data failed. This occurred because all telemetry information is present in the same try catch block. This issue is fixed by separating telemetry publish events in different try catch blocks. (CDS-94962)
+- Fixed an UI issue where breadcrumbs in the Pipeline Studio pages overlapped. (CDS-93678)
+- Updated the behavior of the Scale step to publish all workload pods as new pods after step run as the Scale step is used to scale pods as well as change traffic on the pod itself. (CDS-91534, ZD-54319)
+
 ### Version 1.31.4
 
 #### Early Access
 
-- Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (CDS-72037)
+- Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. For more details, go to [Mark pipeline as failed](/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/).(CDS-72037)
 
 #### Fixed issues
 
@@ -1074,7 +1096,7 @@ This release does not include early access features.
 
   Alternatively, you can use the following expression: `<+pipeline.stages.STAGE_ID.spec.manifests.MANIFEST_ID.samTemplateFile>.`
 
-  For more information about building expressions, go to [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
+  For more information about building expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Triggering a Jenkins job through an HTTP POST request resulted in an exception named `IllegalArgumentException`. Consequently, the Jenkins build step failed. The exception was caused by incorrect encoding of the Jenkins job parameters in the URL. (CDS-81070, ZD-51879, ZD-52069)
 
@@ -2037,7 +2059,7 @@ This release does not include early access features.
   - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
   - `<+strategy.node.strategy_node_identifier.*>`
 
-  For information on using the expressions, go to [Strategy](/docs/platform/variables-and-expressions/harness-variables/#strategy).
+  For information on using the expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
 
@@ -5098,9 +5120,9 @@ This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE.
 
   Now you can set Helm Chart Version using a Runtime Input when using HTTP Helm, AWS S3, and Google GCS stores. You can view the list of chart versions available at runtime in Run Pipeline, and select the required one.
 
-- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format \<+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
+- You can now copy the FQNs for Service and Environment V2 variables. The Service variables use the format `<+serviceVariables.[variable name]>` and Environment variables use the format `<env.variables.[variable name]>`.
 
-  For more information, see Built-in and Custom Harness Variables Reference.
+  For more information, see [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
 ##### Early access
 
@@ -5291,7 +5313,7 @@ Environments v2 now support variable expressions you can use to reference the En
 
 For details on Services and Environments v2, go to Services and Environments Overview.
 
-For details on Environment and Infrastructure Definition expressions, go to Built-in and Custom Harness Variables Reference.
+For details on Environment and Infrastructure Definition expressions, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables).
 
  <DocVideo src="https://www.loom.com/embed/a16ac5354fba461abe934e04583c65c5" width="100%" height="600" />
 

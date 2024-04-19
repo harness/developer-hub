@@ -1,7 +1,7 @@
 ---
 title: Manage access control
 description: Manage SSCA Roles and Permissions with RBAC.
-sidebar_position: 80
+sidebar_position: 90
 ---
 
 # Manage SSCA Access Control

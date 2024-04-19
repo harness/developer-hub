@@ -228,7 +228,7 @@ To address these issues, you can do one of the following:
 
 ### What is the Harness Cloud build credit limit for the Free plan?
 
-The Free plan allows 2,000 build minutes per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
+The Free plan allows 2,000 build credits per month. For more information, go to [Harness Cloud billing and build credits](https://developer.harness.io/docs/continuous-integration/get-started/ci-subscription-mgmt#harness-cloud-billing-and-build-credits).
 
 ### Can I use xcode for a MacOS build with Harness Cloud?
 
@@ -1027,11 +1027,11 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 ## Pipeline initialization and Harness CI images
 
-### Initialize step to fails with a "Null value" error
+### Initialize step fails with a "Null value" error or timeout
 
-This can occur if an expression or variable is called before it's value is resolved.
+This can occur if an expression or variable is called before it's value is resolved, if a variable/expression references a secret that doesn't exist, or if an expression incorrectly references a secret (such as the incorrect scope path or secret ID).
 
-In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only [use expressions after they are resolved](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#only-use-expressions-after-they-can-be-resolved).
+In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only successfully [resolve expressions if the target value is available](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#use-expressions-only-after-they-can-be-resolved).
 
 For example, assume you have a step (named, for example, `my-cool-step`) that uses an expression to reference the output variable of a step in a [repeat looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism#repeat-strategies). If `my-cool-step` runs before the repeat loop completes, then the expression's value isn't resolved and therefore it isn't available when `my-cool-step` calls that value.
 
@@ -1045,7 +1045,7 @@ Depending on how your expression/variable's value is generated, you need to eith
 
 Similarly, **when using step groups or step group templates with a Kubernetes cluster build infrastructure, Harness can resolve only *stage* variables and *pipeline* variables during initialization.** Step/group variables resolve as null. This is because stage and pipeline variables are available to be resolved when creating the Kubernetes pod, and step/step group variables are not. In this case, if you encounter the `null value` error and you are using step-level variables, try configuring these as stage or pipeline variables instead.
 
-Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#stage-level-and-pipeline-level-expressions) if you change them from step variables to stage/pipeline variables.
+Make sure to update the [expressions referencing the variables](https://developer.harness.io/docs/platform/variables-and-expressions/add-a-variable#reference-variables) if you change them from step variables to stage/pipeline variables.
 
 ### Initialize step occasionally times out at 8 minutes
 
@@ -1948,6 +1948,8 @@ exit status 1 rpc error: code = ResourceExhausted desc = grpc: received message 
 This can be related to log streaming during the Build and Push step or a Run step executing a build script. It indicates that the logs are too large for the log streaming service to handle.
 
 If your build uses tee commands to print logs to the console, consider removing these commands or output these logs to a file that you can then [upload as an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/artifacts-tab) or [send by email](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin).
+
+If your builds time out with this error during stage initialization, and you're using a Kubernetes cluster build infrastructure, you can contact [Harness Support](mailto:support@harness.io) to enable a beta feature that shortens long environment variables, such as commit messages and PR titles.
 
 ### Can I get logs for a service running on Harness Cloud when a specific Run step is executing?
 

@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
 
-Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
+Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as "charts." For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
 ## Helm client version compatibility
 
@@ -28,7 +28,7 @@ Harness validates Helm client compatibility against the following versions:
 - 3.11.3
 - 3.12.3
 - 3.13.3
-- 3.14.2 
+- 3.14.2
 
 :::info note
 You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
@@ -120,7 +120,7 @@ To an ingress ALB, do the following:
    ```
 2. Replace `<YOU_HOST_URL>` with your load balancer's URL.
 
-3. Replace `<YOUR_SUBNETS>` with your subnets. 
+3. Replace `<YOUR_SUBNETS>` with your subnets.
 
    This sets traffic to internal only `alb.ingress.kubernetes.io/scheme: internal`.
 

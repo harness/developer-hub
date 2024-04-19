@@ -287,7 +287,7 @@ CircleCI _orbs_ are reusable shareable configuration packages that combine jobs,
 
 Harness CI has two options for reusable, pre-packaged functionality:
 
-* [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Integrations, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
+* [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Workflow Steps, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
 * [Create standardized step templates](/docs/platform/templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
 
 ## Comparison: Specify a codebase or Docker image
@@ -531,8 +531,8 @@ jobs:
 
 In addition to project, organization, and account variables, you can use built-in variables or define custom variables within individual pipelines, stages, and steps. To learn more about defining and fetching variables in Harness, go to:
 
-* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
-* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables)
+* [Define variables](/docs/platform/variables-and-expressions/add-a-variable)
 
 
 </TabItem4>

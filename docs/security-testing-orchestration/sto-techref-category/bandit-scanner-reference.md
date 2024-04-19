@@ -98,41 +98,36 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 <StoSettingIngestionFile  />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+You can use this field to run the [`bandit` command](https://bandit.readthedocs.io/en/latest/config.html#bandit-settings) with specific command-line flags. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `-skip testID_1, testID_3, testID_5`.
 
-<StoSettingCliFlags />
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
- For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `-skip testID_1, testID_3, testID_5`
+<StoSettingCliFlagsCaution />
 
 
-#### Fail on Severity
+### Fail on Severity
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
 
-<!-- >
-
 ### Settings
 
-You can add a `tool_args` setting to run the [bandit scanner binary](https://pypi.org/project/bandit/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
-commenting out...this is functionally equivalent to using Additional CLI flags
+<StoSettingSettings />
 
--->
+
 
 ### Additional Configuration
 

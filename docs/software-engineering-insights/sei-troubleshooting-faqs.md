@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting & FAQs
 description: SEI troubleshooting and FAQs
-sidebar_position: 80
+sidebar_position: 90
 ---
 
 This page includes FAQs and troubleshooting information for SEI and the Harness Platform. 

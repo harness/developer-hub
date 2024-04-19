@@ -247,6 +247,10 @@ const config = {
                 label: "Knowledge Base",
               },
               {
+                to: "kb/reference-architectures",
+                label: "Reference Architectures",
+              },
+              {
                 to: "community",
                 label: "Community",
               },
@@ -552,7 +556,11 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
-  clientModules: [path.join(__dirname, "/client_module/searchBar")],
+  clientModules: [
+    path.join(__dirname, "/client_module/searchBar"),
+    path.join(__dirname, "/client_module/iframeEmbed"),
+  ],
+  // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
 
 module.exports = config;

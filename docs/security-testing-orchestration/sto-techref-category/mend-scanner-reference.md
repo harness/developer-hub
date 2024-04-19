@@ -253,14 +253,7 @@ import StoSettingToolProjectVersion from './shared/step_palette/tool/project/_ve
 
 -->
 
-<!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
-
-
-### Log Level, CLI flags, and Fail on Severity
-
-<a name="log-level"></a>
-
-#### Log Level
+### Log Level
 
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
@@ -269,20 +262,24 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
-#### Additional CLI flags
+### Additional CLI flags
 
-Use this field to run the Mend scanner with specific command-line arguments.
+Use this field to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional flags. 
 
 <!-- 
-
-You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. 
-
 
 For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `log.files.path /tmp/sto_scan_logs`.
 
 TBD This sounds like a reasonable use case, based on what I saw in the Mend docs, but I haven't tried it. Might be worth testing before adding to this topic. -->
 
-#### Fail on Severity
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
+
+
+
+
+### Fail on Severity
 
 
 import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
@@ -290,12 +287,11 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 <StoSettingFailOnSeverity />
 
-<!-- 
 ### Settings
 
-You can add a `tool_args` setting to run the scanner with additional arguments. For example, you can pipe your scan output to a file like this: `tool-args > /tmp/sto_scan_logs/scan-session-output.LATEST.txt`.
+import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
-TBD Don't know if this is a good example, or even if it works...I'm assuming the Settings field in the step palette is intended more for non-scanner-specific command-line arguments. -->
+<StoSettingSettings />
 
 
 ### Additional Configuration

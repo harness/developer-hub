@@ -19,13 +19,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Secure" }],
         title: "OIDC Support for AWS",
         description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your AWS resources without secrets or credentials",
-      },
-      {
-        tag: [],
-        title: "Single Tenant SaaS",
-        description:
-          "Customers can request to be onboarded to a single tenant Harness SaaS cluster",
+          "Use OpenID Connect (OIDC) to allow Harness to communicate directly with your AWS resources without secrets or credentials",
       },
       {
         tag: [],
@@ -53,7 +47,7 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "SMP" }],
-        title: "Multi tenant SMP",
+        title: "Multi-tenant SMP",
         description:
           "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
       },
@@ -137,6 +131,12 @@ export const platformData: Horizon = {
         title: "Supported modules",
         description:
           "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
+      },
+      {
+        tag: [],
+        title: "Multi-tenant SaaS in EU",
+        description:
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
       },
 
     ],
