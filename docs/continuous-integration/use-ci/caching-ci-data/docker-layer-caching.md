@@ -8,73 +8,55 @@ When a layer changes in your Docker image, that layer, and all subsequent layers
 
 To maximize time savings, you must write your Dockerfiles to [use the cache efficiently](https://docs.docker.com/build/cache/#how-can-i-use-the-cache-efficiently).
 
+## Harness-managed Docker layer caching
 
+Harness can manage the [Docker layer cache backend](https://docs.docker.com/build/cache/backends/) for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
 
-
-
-
-
-## Docker layer caching
-
-
-
-### Docker layer caching with Harness Cloud
-
-:::note
-
-Currently, Docker layer caching with Harness Cloud is behind the feature flags `CI_ENABLE_DLC` and `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+You can use Harness-managed Docker layer caching with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md); however Harness-managed Docker layer caching applies to built-in [Build and Push steps](/docs/category/build-and-push) only.
 
 <!-- DLC uses the buildx plugin rather than kaniko or drone-docker. Example - GCR buildx plugin: https://github.com/drone-plugins/drone-buildx-gcr -->
 
-:::
+### Docker layer caching with Harness CI Cloud
 
-[Harness Cloud](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) can manage the Docker layer [cache backend](https://docs.docker.com/build/cache/backends/) for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
+When you use Harness-managed Docker layer caching with [Harness CI Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), you don't need to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud
 
-To enable Docker layer caching for Harness Cloud, select __Enable Docker layer caching__ in your [Build and Push to Docker step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
+To enable Docker layer caching with Harness CI cloud, select __Enable Docker layer caching__ in your [Build and Push steps](/docs/category/build-and-push).
 
-### Docker layer caching with other build infrastructures
+### Docker layer caching with self-managed build infrastructures
 
-Other build infrastructures can leverage remote Docker caching using your existing Docker registry.
+Self-managed build infrastructure is any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) other than Harness CI Cloud.
 
-:::note
+To enable Docker layer caching with self-managed build infrastructures, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches, and then select __Enable Docker layer caching__ in your [Build and Push steps](/docs/category/build-and-push).
 
-Harness is developing support for other storage backends with self-managed runners.
+If your storage isn't S3-compatible or your don't want to use access key and secret key authentication, consider using [remote cache image](#remote-cache-image) instead.
 
-:::
+## Remote cache image
 
-Each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Docker build steps, enabling them to share the same remote cache.
-
-You can enable the **Remote Cache Image** option in the following steps:
-
-* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md)
-* [Build and Push to ECR](../build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md)
-* [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md)
-* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md)
-
-### Remote cache images vs Docker Layer Caching
-
-Remote Docker caching can dramatically improve build times by sharing data across pipelines, stages, and steps. Remote caching leverages your existing Docker registry to pull previously built layers.
-
-Remote caching isn't available for all build infrastructures. If available for your build infrastructure, you can enable the **Remote Cache Image** option in the following steps:
-
-* [Build and Push to Docker](../build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry.md)
-* [Build and Push to ECR](../build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GAR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gar.md)
-* [Build and Push to GCR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr.md)
-* [Build and Push to ACR](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr.md)
+Remote cache image is an alternative to Harness-managed Docker layer caching. It functions similarly to Docker layer caching to improve build times by sharing data across pipelines, stages, and steps.
 
 :::info
 
-Harness Cloud can manage the Docker layer cache backend for you, without relying on your Docker registry, which can further reduce build times. To learn more, go to [Docker Layer Caching](./docker-layer-caching.md).
+If you enable both Harness-managed Docker layer caching *and* remote cache image on the same [Build and Push step](/docs/category/build-and-push), then Harness uses the remote cache image setting and ignores Harness-managed Docker layer caching.
 
 :::
 
+Remote caching leverages your existing Docker registry to pull previously built layers. Each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Build and Push steps, enabling them to share the same remote cache.
 
+To enable remote cache image in your [Build and Push steps](/docs/category/build-and-push):
 
+1. Select the **Remote Cache Image** option.
+2. Enter the name of the remote cache repository/registry and image, depending on the step you are using. For example:
 
+   * Build and Push to Docker: `NAMESPACE/IMAGE` or `REGISTRY/IMAGE`
+   * Build and Push to GCR: `gcr.io/PROJECT_ID/IMAGE`
+   * Build and Push to GAR: `LOCATION-docker.pkg.dev/PROJECT_ID/REPO/IMAGE`
+   * Build and Push to ECR: `APP/IMAGE`
+   * Build and Push to ACR: `CONTAINER_REGISTRY.azurecr.io/IMAGE`
 
+3. For the best performance, make sure:
 
+   * The remote cache repo/registry exists in the same host/account and project/organization as the build image.
+   * The specified repo/registry and image already exist. For some providers, Harness can automatically create the repository if it doesn't already exist, but this is not guaranteed. For any provider, Harness needs an existing image to overwrite.
 
 ## Optimize Docker images and Dockerfiles
 

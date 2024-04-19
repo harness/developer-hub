@@ -84,23 +84,11 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 ### Caching
 
-Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
-
-### Docker layer caching
-
-[Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
+Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For more information and available options, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
 ### Artifact repos
 
 Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can [push your artifacts](/docs/category/build-push-upload-download). Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
-
-### Services
-
-A service represents your microservices, Serverless functions, and other workloads logically. You can deploy, monitor, or change each service independently.
-
-### Service definition
-
-When you add a service to a stage, the service definition represents the real artifacts, manifests, and variable settings of that service. You can propagate or override a service in later stages of the pipeline.
 
 ## Platform components
 

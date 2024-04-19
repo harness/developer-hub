@@ -12,7 +12,13 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 
 There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache.
 
-With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), Harness automatically caches and restores common dependencies. Cache Intelligence doesn't require you to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
+With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), Harness automatically caches and restores common dependencies.
+
+You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+
+When you use Cache Intelligence with Harness CI Cloud, you don't need to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
+
+With other build infrastructures, you [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
 
 ## Test Intelligence
 
@@ -48,7 +54,7 @@ Here's how Harness Test Intelligence performed with some popular open-source rep
 
 ## Harness-managed Docker layer caching
 
-With [Docker layer caching with Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md), Harness can manage the Docker layer cache backend for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
+With [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md), Harness can manage the Docker layer cache backend for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
 
 <!-- ## Build Intelligence -->
 
