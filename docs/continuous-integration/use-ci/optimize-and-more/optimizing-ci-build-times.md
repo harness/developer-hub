@@ -66,7 +66,7 @@ These strategies help you streamline complex pipelines and reuse pipelines and p
 
 ### Step groups
 
-You can use [step groups](./group-ci-steps-using-step-groups.md) to organize complex or busy stages and improve build times.
+You can [use step groups](/docs/platform/pipelines/use-step-groups.md) to organize complex or busy stages and improve build times.
 
 ### Looping strategies
 

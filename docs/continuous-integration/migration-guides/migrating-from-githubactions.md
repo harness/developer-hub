@@ -37,7 +37,7 @@ Harness CI offers the following additional advantages over GitHub Actions:
 
 Both Harness CI and GitHub Actions use workflows to organize builds. In Harness CI, these workflows are called pipelines. In both products, workflows are divided into major segments, which are called *stages* in Harness CI and *jobs* in GitHub Actions. Each stage or job includes one or more steps or individual commands.
 
-In GitHub Actions, if a job has a lot of steps, those steps might be organized into groups, which are called *stages*. Similarly, in Harness CI, you can use [step groups](../use-ci/optimize-and-more/group-ci-steps-using-step-groups.md) to group steps within a stage.
+In GitHub Actions, if a job has a lot of steps, those steps might be organized into groups, which are called *stages*. Similarly, in Harness CI, you can [use step groups](/docs/platform/pipelines/use-step-groups.md) to group steps within a stage.
 
 The following truncated examples provide a simple comparison of stage and step structure in GitLab CI and Harness CI.
 
