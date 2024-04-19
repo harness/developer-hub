@@ -1,5 +1,5 @@
 ---
-title: Commitment Orchestrator
+title: Commitment Orchestrator for AWS EC2 Convertible RIs and Compute Savings Plans
 description: This topic describes Commitment Orchestrator and its working.
 # sidebar_position: 2
 helpdocs_topic_id: 
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Introduction to Commitment Orchestrator
+# Introduction to Commitment Orchestrator (Beta)
 
 :::note
 Currently, Commitment Orchestrator is behind the feature flags `CCM_COMMORCH` and `CCM_COMM_SETUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -194,7 +194,7 @@ In its Beta phase, the Commitment Orchestrator provides:
 ## FAQs
 1. Which cloud providers are supported at the moment?
 
---> Currently, we support AWS Compute Saving Plans and Convertible RIs.
+--> Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
 
 2. Is Audit trails support available?
 
