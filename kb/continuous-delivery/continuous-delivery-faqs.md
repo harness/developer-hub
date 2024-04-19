@@ -1151,7 +1151,7 @@ See site for more details [here](https://developer.harness.io/docs/platform/pipe
 
 #### Harness rollback deployments. 
 
-Harness Rollback deployments initiate a rollback of the most recent successful deployment. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
 
 #### Do we allow one-time scheduling of pipeline execution ?
 
