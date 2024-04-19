@@ -17,7 +17,7 @@ import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
 ## Harness CI features
 
-For highlights of key CI features, go to [Harness CI overview](/docs/continuous-integration/get-started/overview.md) and [Harness CI key concepts](/docs/continuous-integration/get-started/key-concepts.md).
+For an overview of key CI features, go to [Harness CI overview](/docs/continuous-integration/get-started/overview.md) and [Harness CI key concepts](/docs/continuous-integration/get-started/key-concepts.md).
 
 For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration).
 
@@ -31,6 +31,7 @@ For more information about early access features, including early access feature
 
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
+| `CIE_ENABLE_RUNTEST_V2` | [Tests V2 step](/docs/continuous-integration/use-ci/run-tests/tests-v2.md) | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
 | `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Docker layer caching for Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) | Beta |
 | `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |

@@ -36,7 +36,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
-<!-- Harness Intelligence overhaul: Cache Intelligence GA + available to all build infras. Harness-managed DLC GA + available for all infras. Tests V2 -->
+<!-- Harness Intelligence overhaul: Cache Intelligence GA + available to all build infras. Harness-managed DLC GA + available for all infras. -->
+<!-- Early access: Tests V2 `CIE_ENABLE_RUNTEST_V2` -->
 
 ### Version 1.23.1
 

@@ -1,7 +1,7 @@
 ---
 title: CI onboarding guide
 description: A self-service onboarding guide for Harness CI.
-sidebar_position: 2
+sidebar_position: 3
 sidebar_label: Onboarding guide
 ---
 
