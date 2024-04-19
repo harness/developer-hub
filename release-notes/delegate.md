@@ -79,6 +79,8 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. We have implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. (PL-47753, ZD-58629)
 
+- 2FA reset emails were failing to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. (PL-48980, ZD-61314, ZD-61420, ZD-61486)
+
 ### Harness version 1.33.5, Harness Delegate version 24.04.82707 <!--  April 16, 2024 -->
 
 #### New features and enhancements
