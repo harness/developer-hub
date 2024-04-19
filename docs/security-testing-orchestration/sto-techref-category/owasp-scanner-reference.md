@@ -118,17 +118,13 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-<!-- 
+
 
 Use this field to run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags, for example: 
 
-`--scan /harness/**/*.jar --log /shared/scan_logs/owasp.txt`
+`--disableYarnAudit --log /shared/scan_logs/owasp.txt`
       
-With these flags, the scanner scans JAR files and outputs the log to a shared folder, where it can be accessed by a later step. 
-
--->
-
-Use this field to run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags.
+With these flags, the scanner skips the yarn Audit Analyzer and outputs the log to a shared folder, where it can be accessed by a later step. 
 
 import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
 
