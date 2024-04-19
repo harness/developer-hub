@@ -108,7 +108,7 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | - | - | - | - | - |
 | [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul> | ✅ Supported | ✅ Supported | ✅ Supported |
+| [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Cache to S3/GCS](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Multilayer caching](/docs/continuous-integration/use-ci/caching-ci-data/multilayer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |

@@ -11,7 +11,7 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 
 Cache Intelligence is a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, and it is one of several [caching options](./share-ci-data-across-steps-and-stages.md) offered by Harness CI.
 
-With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), Harness automatically caches and restores common dependencies. You can use it with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md). <!-- Currently, Cache Intelligence is only available for Linux and Windows platforms on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), the Harness-managed build environment. -->
+With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), Harness automatically caches and restores common dependencies. You can use it with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 ```yaml
 - stage:
