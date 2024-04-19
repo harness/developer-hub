@@ -205,7 +205,7 @@ To install Harness GitOps Agent with mTLS enabled, make sure that you've met the
 - Keep the following items ready:
    - CA certificate. 
    - Client certificate and key created using the previously created CA certificate.
-   - mTLS enabled for your account and host to be used for GitOps Agent connection <YOUR_FQDN>.agent.harness.io
+   - mTLS enabled for your account and host to be used for GitOps Agent connection `<YOUR_FQDN>.agent.harness.io`.
 
 Follow the steps below to install mTLS GitOps Agent
 1. Add GitOps Agent Helm chart repository to your Helm:
