@@ -201,7 +201,7 @@ For installing GitOps Agent to run in mTLS mode, Harness uses GitOps Agent Helm 
 
 To install Harness GitOps Agent with mTLS enabled, make sure that you've met the following conditions:
 - Download the `overrides.yaml` file from the Harness UI.
-- Configure mTLS for Harness Delegate[Delegate mTLS support](/docs/platform/Delegates/secure-delegates/delegate-mtls-support)
+- Configure mTLS for Harness Delegate[Delegate mTLS support](/docs/platform/delegates/secure-delegates/delegate-mtls-support/)
 - Keep the following items ready:
    - CA certificate. 
    - Client certificate and key created using the previously created CA certificate.
