@@ -503,7 +503,7 @@ Escaping is required for some punctuation. Note the use of double quotes around 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
 
 
-## Given a step matrix, where each step generates a random integer for an output variable, retrieve these values at different steps later and sum them together
+### Given a step matrix, where each step generates a random integer for an output variable, retrieve these values at different steps later and sum them together
 
 Solution:
 
@@ -573,4 +573,4 @@ pipeline:
 
 When you execute the above pipeline YAML, it will generate three random integer values in the step `ShellScript_1` and sum them up in the subsequent step `ShellScript_2`. For instance, if it generates the random integers 68, 3, and 58 in the first step, their sum would be 129.
 
-![](./static/output_example_matrix.png)
+![](./static/output_example_matrix_example.png)
