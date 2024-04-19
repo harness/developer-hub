@@ -501,3 +501,76 @@ pipeline:
 Escaping is required for some punctuation. Note the use of double quotes around the entire object.
 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
+
+
+## Given a step matrix, where each step generates a random integer for an output variable, retrieve these values at different steps later and sum them together
+
+Solution:
+
+Requirements:-
+1. Enable project setting **Enable Json Support for expressions**.
+2. Install jq library.
+
+![](./static/project_setting.png)
+
+```yaml
+pipeline:
+  name: 
+  identifier: project
+  projectIdentifier: project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cs1
+        identifier: cs1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: random_number=$((1 + $RANDOM % 100))
+                    environmentVariables: []
+                    outputVariables:
+                      - name: random_num
+                        type: String
+                        value: random_number
+                  timeout: 10m
+                  strategy:
+                    matrix:
+                      groups:
+                        - name: firstGroup
+                        - name: secondGroup
+                        - name: thirdGroup
+              - step:
+                  type: ShellScript
+                  name: ShellScript_2
+                  identifier: ShellScript_2
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          t='<+json.format(<+pipeline.stages.cs1.spec.execution.steps.ShellScript_1>)>'
+
+                          echo $t | jq 'to_entries | map(select(.key | startswith("ShellScript_"))) | .[].value.outcome.output.outputVariables.random_num' | jq -s 'map(tonumber) | add'
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+When you execute the above pipeline YAML, it will generate three random integer values in the step `ShellScript_1` and sum them up in the subsequent step `ShellScript_2`. For instance, if it generates the random integers 68, 3, and 58 in the first step, their sum would be 129.
+
+![](./static/output_example_matrix.png)
