@@ -1,7 +1,7 @@
 ---
 title: Edit and update chaos experiments
 sidebar_position: 40
-description: Guide to edit and update chaos expriments
+description: Guide to edit and update chaos experiments
 redirect_from:
   - /docs/chaos-engineering/configure-chaos-experiments/experiments/edit-chaos-experiment
 ---
@@ -15,7 +15,7 @@ You can edit an existing chaos experiment to update the experiment's metadata, f
 
 ## Edit a chaos experiment
 
-Described below are the steps to edit a chaos experiment. 
+Described below are the steps to edit a chaos experiment.
 
 ### Step 1: Click Edit experiment
 
@@ -37,78 +37,74 @@ You can execute the chaos experiment with advanced security options: **runAsUser
 
 2. **runAsGroup**: Specifies the group ID used to start all the processes in the experiment pod containers. Default group ID is 0.
 
-To select one of the options, 
+To select one of the options,
 
 ### Step 1: Navigate to your experiment
 
 * Click **Experiment builder** tab. Click **Advanced Options** on the right side of the screen.
 
-![run as user group](./static/edit-experiment/advanced-1.png)
+  ![run as user group](./static/edit-experiment/advanced-1.png)
 
 ### Step 2: Select the option and save
 
 * Click **Security** tab and select/unselect one or both the options.
 
-![advanced](./static/edit-experiment/advanced-2.png)
+  ![advanced](./static/edit-experiment/advanced-2.png)
 
 ### Step 3: Save the changes
 
-Click **Save**.
+* Click **Save**.
 
-![save changes](./static/edit-experiment/save-3.png)
+  ![save changes](./static/edit-experiment/save-3.png)
 
 ## Update old experiment manifests
 
-When you upgrade the chaos infrastructure, you also need to update the images in the experiment manifest (yaml file) corresponding to the updated chaos infrastructure. The upgraded images should match the images in the Enterprise Chaos Hub. 
+When you upgrade the chaos infrastructure, you also need to update the images in the experiment manifest (yaml file) corresponding to the updated chaos infrastructure. The upgraded images should match the images in the Enterprise Chaos Hub.
 
 ### Which image version should you use?
 
-To determine the latest version of images, navigate to Enterprise Chaos Hub, and search for **chaos-go-runner**. The value associated with **chaos-go-runner** in the manifest in Enterprise Chaos Hub is the latest version. 
+To determine the latest version of images, navigate to Enterprise Chaos Hub, and search for **chaos-go-runner**. The value associated with **chaos-go-runner** in the manifest in Enterprise Chaos Hub is the latest version.
 
 ![navigate](./static/edit-experiment/update-1.png)
 
 To update the experiment manifest, follow the steps below.
 
-### Step 1: Navigate to Chaos Experiments page
+### Step 1: Navigate to Chaos Experiments page and select experiment
 
-![navigate](./static/edit-experiment/navigate-1.png)
+* Select the experiment whose manifest you wish to update, and click the **Experiment Builder** tab.
 
-### Step 2: Select experiment
+  ![select](./static/edit-experiment/exp-builder-2.png)
 
-Select the experiment whose manifest you wish to update, and click the **Experiment Builder** tab.
+### Step 2: Click YAML to edit
 
-![select](./static/edit-experiment/exp-builder-2.png)
+* The **VISUAL** is usually displayed, click the **YAML** to edit it. Click **Edit Yaml**.
 
-### Step 3: Click YAML to edit 
+  ![save](./static/edit-experiment/yaml-3.png)
 
-The **VISUAL** is usually displayed, click the **YAML** to edit it. Click **Edit Yaml**.
+  ![save](./static/edit-experiment/edit-4.png)
 
-![save](./static/edit-experiment/yaml-3.png)
+### Step 3: Search instances of chaos-go-runner
 
-![save](./static/edit-experiment/edit-4.png)
+* Find **chaos-go-runner** in the manifest and replace the corresponding version with the latest version.
 
-### Step 4: Search instances of chaos-go-runner
+  ![save](./static/edit-experiment/find-5.png)
 
-Find **chaos-go-runner** in the manifest and replace the corresponding version with the latest version.
+### Step 4: Click Save
 
-![save](./static/edit-experiment/find-5.png)
+* Once you update the images, click **Save** at the top right.
 
-### Step 5: Click Save
-
-Once you update the images, click **Save** at the top right.
-
-![save](./static/edit-experiment/save-6.png)
+  ![save](./static/edit-experiment/save-6.png)
 
 :::tip
 When you create a new experiment, the images in the experiment manifest are configured to match the images in the Enterprise Chaos Hub.
 :::
 
-The steps mentioned earlier will update the experiment manifests to match the version in the Enterprise Chaos Hub. 
+The steps mentioned earlier will update the experiment manifests to match the version in the Enterprise Chaos Hub.
 
 ## Bulk update cron schedules
 
 You can update multiple cron-scheduled chaos experiments in one go. One important aspect is that you can **bulk update** multiple cron schedules to a **single value**, that is, the cron schedules you select to update will all update to a single common value. You **can't** map different cron schedules to their respective values while performing a bulk update.
-You can: 
+You can:
 1. Bulk disable active schedules
 2. Bulk enable inactive cron schedules
 3. Bulk stop running experiments
@@ -117,8 +113,8 @@ To enable/disable a cron schedule,
 
 ### Step 1: Click Bulk update
 
-Once you click **Bulk update** at the top right of the **Chaos Experiments** page, you will see two options: 
-1. Reschedule cron 
+Once you click **Bulk update** at the top right of the **Chaos Experiments** page, you will see two options:
+1. Reschedule cron
 2. Enable/disable cron
 
 Select one of the above based on your requirements.

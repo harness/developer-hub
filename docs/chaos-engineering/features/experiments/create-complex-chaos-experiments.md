@@ -9,7 +9,7 @@ import Launch from '/docs/chaos-engineering/features/shared/launch-experiment-fr
 
 import Analyze from '/docs/chaos-engineering/features/experiments/shared/analyze-chaos-experiment.md'
 
-This section describes adding and executing serial and parallel faults within a single chaos experiment, analyzing chaos experiments and launching an experiment from chaos hub. 
+This section describes adding and executing serial and parallel faults within a single chaos experiment, analyzing chaos experiments and launching an experiment from chaos hub.
 
 You can add multiple faults in a single chaos experiment to validate the resiliency of the entire application stack.
 
@@ -21,19 +21,18 @@ You can add multiple faults in a single chaos experiment to validate the resilie
 
 1. To add a fault that runs in parallel to another fault, point your mouse below an existing fault, and then select **Add**. You can follow the same process to add a serial fault.
 
-![Complex Faults Experiment](./static/create-complex-chaos-experiments/add-parallel.png)
+	![Complex Faults Experiment](./static/create-complex-chaos-experiments/add-parallel.png)
 
 :::note
 For Linux, experiments with a parallel fault are currently not supported.
 :::
 
-The image below shows a single experiment that consists of serial and parallel faults. 
-* Faults **A**, **B**, and **C** are parallel faults, that is, they begin execution at the same time. 
-* Faults **A**, **B**, **C** and faults **D** and **E** are serial, that is, the former completes execution, and the latter begins execution. 
+The image below shows a single experiment that consists of serial and parallel faults.
+* Faults **A**, **B**, and **C** are parallel faults, that is, they begin execution at the same time.
+* Faults **A**, **B**, **C** and faults **D** and **E** are serial, that is, the former completes execution, and the latter begins execution.
 * Similarly, faults **H** and **I** are serial faults, where **H** completes execution, and **I** begins.
 
-
-![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)
+	![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)
 
 ## Analyze chaos experiments
 

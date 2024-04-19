@@ -6,7 +6,7 @@ redirect_from:
 	- /docs/chaos-engineering/technical-reference/security/introduction
 ---
 
-Harness provides several controls to ensure safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments, including: 
+Harness provides several controls to ensure safe execution of chaos experiments on your infrastructure. This section explains security considerations and associated features across administrative and runtime environments, including:
 
 - [Connectivity from target clusters and request authentication](#connectivity-from-target-clusters-and-authentication-of-requests)
 - [Kubernetes roles for the chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure)
@@ -18,8 +18,8 @@ Harness provides several controls to ensure safe execution of chaos experiments 
 Further sections provide a quick summary of the internal security controls and processes for the chaos module to help you gain insights into how security is baked into the build process. The processes include:
 
 - Base images
-- Vulnerability scanning 
-- Pen testing 
+- Vulnerability scanning
+- Pen testing
 
 ### Connectivity from target clusters and authentication of requests
 

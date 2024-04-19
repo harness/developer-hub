@@ -21,15 +21,15 @@ This section discusses various operations that can be performed on [resilience p
 
 * HCE allows you to create probes for multiple infrastructures, namely, Kubernetes, Linux, and Windows. The type of probes allowed on each of these infrastructures is listed below.
 
-| Kubernetes | Linux     | Windows |
-|------------|-----------|---------|
-| HTTP       | HTTP      | HTTP    |
-| Command    | Command   |         |
-| Datadog    | Datadog   |         |
-| Dynatrace  | Dynatrace |         |
-| SLO        |           |         |
-| Prometheus |           |         |
-| Kubernetes |           |         |
+	| Kubernetes | Linux     | Windows |
+	|------------|-----------|---------|
+	| HTTP       | HTTP      | HTTP    |
+	| Command    | Command   |         |
+	| Datadog    | Datadog   |         |
+	| Dynatrace  | Dynatrace |         |
+	| SLO        |           |         |
+	| Prometheus |           |         |
+	| Kubernetes |           |         |
 
 * Based on the type of probe you select, enter the values to set up the probe.
 
