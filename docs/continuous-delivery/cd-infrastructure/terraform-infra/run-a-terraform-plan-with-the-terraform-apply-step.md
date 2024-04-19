@@ -48,6 +48,10 @@ Next, you add the Terraform Apply step, select **Inherit from Plan** in **Config
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-02.png)
 
+:::warning
+Currently, **Configuration Type** cannot be set to **Inherit from Plan** if the **Run on Remote Workspace** checkbox is checked. 
+:::
+
 For steps on using the Terraform Plan with the Apply step, see:
 
 * [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
@@ -150,7 +154,7 @@ Click the provider where your files are hosted.
 
 ![](./static/provision-infra-dynamically-with-terraform-02.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**) or [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/connectors/code-repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) or [AWS Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 ### Git
 
@@ -174,7 +178,7 @@ The following sections cover common Terraform Apply step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
 ### AWS S3
 
@@ -300,7 +304,7 @@ Click **Submit**. The remote file(s) are added.
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
 ##### S3 provider
 
@@ -340,7 +344,7 @@ You can use an inline or remote state file.
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
 #### AWS S3
 
