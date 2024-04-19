@@ -6941,7 +6941,7 @@ Apply the changes.
 
 #### How can I generate a policy to block deployments when all tests are not successful?
 
-Yes, you can create a policy to block deployments when all tests are not successful. Here's an example policy that can be applied using the On Run event for a pipeline:
+Yes, you can create a policy to block deployments when all tests are not successful. Here's an example policy that can be applied using the **On Run** event for a pipeline:
 
 ```
 package pipeline
