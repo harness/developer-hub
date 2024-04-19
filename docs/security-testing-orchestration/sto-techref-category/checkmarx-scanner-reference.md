@@ -13,7 +13,7 @@ Checkmarx offers an extensive suite of tools to support secure application devel
 With Harness STO, you can do the following:
 - Run local SAST scans using the CxConsole CLI (orchestration mode).
 - Extract results from a CxSAST server (extraction mode).
-- Ingest results from any Checkmarx scanner that can publish in SARIF format (ingestion mode).
+- [Ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO
 
@@ -25,7 +25,7 @@ With Harness STO, you can do the following:
 
   - Extraction mode  — The Checkmarx step can extract and ingest scan results for Checkmarx SAST (CxSAST). 
 
-  - Ingestion mode — The Checkmarx step can ingest results from any Checkmarx scanner that can publish results in SARIF format. 
+  - Ingestion mode — The Checkmarx step can ingest results from any Checkmarx scanner that can publish results in [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html). 
 
     - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions/) and then ingest your scan results using a Checkmarx step.  
 
