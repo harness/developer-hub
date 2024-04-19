@@ -82,13 +82,11 @@ The following deprecated API endpoints are longer supported:
 
 ### Version 1.34.x<!--  April 22, 2024 -->
 
-#### New features and enhancements
-
-
-
 #### Fixed issues
 
+- The link to Slack on the UI Help section was not functioning. The community link has been updated to ensure it works correctly. (PL-48948)
 
+- When a new pipeline for approval was created, but the approval email was not being sent, preventing testing of the link within the approval email. Resolved this issue that prevented notifications from being sent to multiple emails configured in a userGroup for email notifications. (PL-48854)
 
 ### Version 1.33.5<!--  April 16, 2024 -->
 
