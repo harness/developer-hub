@@ -92,6 +92,20 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
+- There was a request for an alternative solution to upgrade custom delegate images without direct pulls from Docker Hub. We introduced an optional registry mirror configuration in the Delegate Upgrader. Customers utilizing a Docker pull-through registry cache can now specify a registry mirror for delegate images. With this feature, Harness Delegate images will be sourced from the configured mirror instead of the public Docker Hub, ensuring a smoother upgrade process. For instance, to upgrade to harness/delegate:82707, the Upgrader will use the image from the specified mirror us.gsr.io/gcr-mirror/harness/delegate:82707. (PL-47920)
+
+   ```
+   
+   mode: Delegate
+   dryRun: false
+   workloadName: delegate-name
+   namespace: harness-delegate-ng
+   containerName: delegate
+   registryMirror: us.gsr.io/gcr-mirror
+   delegateConfig:
+   
+   ```
+
 - AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
 
 - Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46947)
