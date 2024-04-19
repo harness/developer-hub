@@ -6912,7 +6912,7 @@ For more details on how to create custom images delegate dockerfile
 go to [Custom Images Delegate Dockerfile](]https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/)
 
 #### Would like to know what are the account using older delegate version?
-You can determine if an account is using an older delegate version by checking the Delegate release notes. The release notes provide information about features that require a specific delegate version. If the account is using a version older than the required version for a specific feature, then they are using an older delegate version.
+You can determine if an account is using an older delegate version by checking the delegate release notes. The release notes provide information about features that require a specific delegate version. If the account is using a version older than the required version for a specific feature, then they are using an older delegate version.
 
 You can also use check article here to verify which is the supported version for your account and check delegate version which you are using. https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images
 
