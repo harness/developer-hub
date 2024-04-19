@@ -142,7 +142,7 @@ See also:
 
 Steps can produce or assign values to environment variables, and some steps require or allow environment variables as input.
 
-There are also a variety of environment variables related to pipeline, stage, and step metadata. For more information, go to the [CI environment variables reference](./optimize-and-more/ci-env-var.md).
+There are also a variety of environment variables related to pipeline, stage, and step metadata. For more information, go to the [CI environment variables reference](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md).
 
 ## Visual and YAML editors
 

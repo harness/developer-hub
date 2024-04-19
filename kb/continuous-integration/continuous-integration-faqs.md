@@ -1100,7 +1100,7 @@ Yes, you can [pull Harness CI images from a private registry](https://developer.
 
 ### What pipeline environment variables are there for CI pipelines?
 
-Go to [CI environment variables reference](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/ci-env-var).
+Go to the [CI environment variables reference](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/ci-env-var).
 
 ### Docker Hub rate limiting
 
