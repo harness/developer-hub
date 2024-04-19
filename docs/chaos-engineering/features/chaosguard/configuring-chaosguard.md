@@ -5,6 +5,8 @@ description: Steps to configure ChaosGuard and enable it
 redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/configuring-chaosguard
 ---
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 This section walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.
 
@@ -17,21 +19,33 @@ Conditions describe a set of constraints that are applied to an execution contex
 
 To configure a condition,
 
-1. Click **ChaosGuard** on the left-hand side of the **Chaos** homepage. Click **Conditions** on the top right corner of the ChaosGuard page. This displays the conditions that you created earlier. You can use one of these or create a new condition.
+1. In the **Chaos** module, select **ChaosGuard**, and then select **Conditions**. Te **Conditions** page lists your existing conditions. You can use the existing conditions or create a new condition.
 
-	![navigate](./static/configure-chaosguard/navigate-1.png)
+	![navigate to chaos](./static/configure-chaosguard/navigate-1.png)
 
-2. To create a new condition, click **New condition**.
+2. To create a condition, click **New condition**.
 
 	![new-condition](./static/configure-chaosguard/new-condition.png)
 
-3. Provide a name, a description (optional), and tags (optional). Click **Save**. This saves the new condition you created.
+3. Provide a name, a description (optional), and tags (optional). Click **Save**.
 
 	![edit-condition](./static/configure-chaosguard/edit-condition.png)
 
-This creates a blank canvas, and you can define the constraints for the condition using a YAML manifest or using the visual editor.
+This creates a blank canvas, and you can define the constraints for the condition using a **YAML manifest** or using the **visual editor** or **Harness AIDA**.
 
-### Add conditions using visual editor
+<Tabs>
+  <TabItem value="YAML">
+
+1. You can add conditions using the YAML too.
+
+	![select](./static/configure-chaosguard/select-1.png)
+
+2. Click **YAML** and specify the relevant values corresponding to the respective names.
+
+	![yaml edit](./static/configure-chaosguard/yaml-edit.png)
+
+</TabItem>
+  <TabItem value="Visual editor">
 
 1. To add conditions using a visual editor, navigate to the **visual** tab of condition you created earlier.
 
@@ -53,17 +67,8 @@ This creates a blank canvas, and you can define the constraints for the conditio
 
 	![using](./static/configure-chaosguard/condition-using.png)
 
-### Add conditions using YAML
-
-1. You can add conditions using the YAML too.
-
-	![select](./static/configure-chaosguard/select-1.png)
-
-2. Click **YAML** and specify the relevant values corresponding to the respective names.
-
-	![yaml edit](./static/configure-chaosguard/yaml-edit.png)
-
-### Add conditions using AIDA
+</TabItem>
+  <TabItem value="AIDA">
 
 1. Instead of selecting the required parameters, you can generate conditions with the help of Harness AIDA. AIDA assistant shows up when you are configuring a condition. You can choose one of the suggestions provided by Harness AIDA by clicking on it or writing something along the same lines as the suggestions.
 
@@ -76,6 +81,9 @@ This creates a blank canvas, and you can define the constraints for the conditio
 3. If the generated YAML does not meet your conditions, click **Try again**. In the snippet below, you will see that AIDA applies the YAML generated to the editor.
 
     ![aida apply](./static/configure-chaosguard/aida-apply-3.png)
+
+</TabItem>
+</Tabs>
 
 ## Configuring rules
 
