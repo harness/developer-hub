@@ -120,6 +120,14 @@ gsutil -m cp \
 
 #### Harness Platform
 
+- Introduced separate environment variables to manage delegate resource thresholds for CPU and Memory when dynamic handling is enabled. Use `CPU_USAGE_THRESHOLD` for CPU control (default: no limit). Use `MEMORY_USAGE_THRESHOLD` for memory control (default: 80%). If you are using `RESOURCE_USAGE_THRESHOLD` (deprecated), it exclusively controls the memory threshold. (PL-47746)
+
+- The UI has been updated to include an HTTP Event Collector (HEC) Auth Token option in the Splunk Connector, allowing users to select HEC-type authentication. (PL-46977)
+
+- In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding hyphen usage. While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage. Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier. Secret identifiers cannot start with a hyphen, following best practices. (PL-46959)
+
+- You can now add multiple emails to User Group notifications. This support allows you to include Harness Users or add emails separated by commas. (PL-46480)
+
 #### Security Testing Orchestration
 
 - The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
@@ -132,8 +140,6 @@ gsutil -m cp \
   - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables) 
 
 ### Fixed issues
-
-
 
 #### Chaos Engineering
 
@@ -209,7 +215,23 @@ gsutil -m cp \
 
 #### Harness Platform
 
+- Fixed an issue where the scope was derived from the open URL instead of the WinRM Secret's scope when editing WinRM secrets through a reference component, causing secret edits to fail. Scope details are now picked up from the WinRM secret being edited. (PL-48323)
 
+- Fixed an issue where the **Delegate Selector** dropdown wasn't populating delegates when roles were configured with specific delegates instead of all. (PL-48292, ZD-59504)
+
+- Upgrade attempts from Harness Helm Chart 0.13.4 to 0.14.0 or 0.14.1 resulted in change-data-capture pod failures. We have resolved the initialization issue with the change-data-capture pod, which stemmed from the fileLogging parameters. (PL-47993)
+
+- In the old Git sync flow, the system failed to fetch connector details because the `branch` and `yamlGitRef` attributes were not included in the query process after the method was changed to utilize scope uniqueId and identifier. We have updated the system to account for the `branch` and `yamlGitRef` parameters, ensuring connector details now load correctly. (PL-47942, ZD-58953, ZD-59089)
+
+- Actions to create, edit, or delete Streaming Destinations were not being recorded in Audit Trails. This issue has been fixed, and these actions are now correctly captured in Audit Trails. (PL-47910)
+
+- Perpetual tasks experienced significant delays in reassignment after the current delegate was shut down. We have addressed the issue of prolonged delays in perpetual task reassignment following delegate shutdowns by increasing the frequency of cron jobs that reset the perpetual task state for reassignment. This item is available with Harness Platform version 1.28.11 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47781, ZD-58497, ZD-58522, ZD-58650)
+
+- Fixed the issue that allowed the creation of user Personal Access Tokens (PATs) at the organization and project scope via API, ensuring consistent listing and management in the UI. PATs can only be created at the account scope. (PL-47558)
+
+- Delegate logs were unavailable due to the system not automatically switching to app.harness.io as the remote logging service when GCP was blocked by a firewall. The auto-switching mechanism for the remote logging destination is fixed, ensuring accessibility to delegate logs when GCP is blocked by a firewall. This item is available with Harness Platform version 1.28.11 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46958, ZD-57844)
+
+- The user aggregate API did not support selected view permissions, leading to errors when a user was granted view permission for specific user groups due to the lack of permissions on the `USERGROUP` resource as a whole. We have resolved this issue by allowing users to be granted view permissions for selected user groups. Now, only those user groups specified will be visible to the user. (PL-31279)
 
 #### Security Testing Orchestration
 
