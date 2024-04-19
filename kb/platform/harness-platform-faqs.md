@@ -732,13 +732,16 @@ There isn't exhaustive documentation available that describes all the types of d
 
 It's important to note that sensitive data, such as secrets, are not directly sent; instead, secret expressions are evaluated at runtime by the delegate to ensure security. To obtain specific examples of delegate payloads, customers can set up a man-in-the-middle (MITM) proxy on a delegate to log the data being transmitted during pipeline executions. This approach allows customers to see the exact data being communicated.
 
-### Do Harness have account-level delegates?
+### Does Harness have account-level delegates?
 
 Yes, we offer account-level delegates. You can create them by navigating to **Account Settings** > **Account Resources** > **Delegates**.
 
 ### Does the DELEGATE_RESOURCE_THRESHOLD check the memory threshold on the request resource or limit resources of the delegate pod?
 
 The `DELEGATE_RESOURCE_THRESHOLD` environment variable is deprecated. Use `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD` instead. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+
+### Does the default Harness Delegate include jq?
+Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
 
 ### Does the Docker delegate also show expiry message in UI if the image is older than the expiry threshold?
 
@@ -2931,5 +2934,3 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
-### Does the default Harness Delegate include jq?
-Harness keeps the delegate image as minimal as possible so, it does not come with `jq` by default. To install `jq` on the delegate, must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
