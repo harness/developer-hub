@@ -42,12 +42,6 @@ The cache retention window is 15 days, which resets whenever the cache is update
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-:::note
-
-Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. On the stage's **Overview** tab, select **Enable Cache Intelligence**.
 3. If you're using an unsupported build tool, a non-default cache location, or a Windows platform, then you must add [custom cache paths](#customize-cache-paths). For a list of supported tools, go to [Supported tools and paths](#supported-tools-and-paths).
@@ -103,12 +97,6 @@ Cache Intelligence stores the data to be cached in the `/harness` directory by d
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
-:::note
-
-Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
@@ -180,12 +168,6 @@ You can define custom cache keys if you don't want to use the default cache key 
 
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
-:::note
-
-Currently, the Cache Intelligence Visual Editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 1. Edit the pipeline, and select the **Build** stage where you want to enable Cache Intelligence.
 2. Select the **Overview** tab for the stage.
