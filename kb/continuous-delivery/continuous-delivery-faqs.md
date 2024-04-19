@@ -6873,9 +6873,9 @@ Users can utilize the following API to retry a failed stage: [retryPipeline](htt
 
 It's possible that there are two pipeline entities in the database, each linked to the same file path from the Harness account and the GitHub URL. Trying to import the file again may trigger the `File Already Imported` pop-up on the screen. However, users can choose to bypass this check by clicking the `Import` button again.
 
-#### Why is my GitOps Sync Step Failing with the error "Application does not correspond to the service(s) selected in the pipeline execution"?
+#### Why is the GitOps Sync step failing with the error, "Application does not correspond to the service(s) selected in the pipeline execution"?
 ```
 Application{name: '$APP_NAME', agentIdentifier: '$AGENT_ID', errorMessage: 'Application does not correspond to the service(s) selected in the pipeline execution.'}
 ```
-This error is caused by an inconsistency in the Deploy Stage's Service and the selected Application's Services. GitOps cannot sync a Service that isn't correlated to the Application. To fix this, navigate to the GitOps Application in the `GitOps` Menu under the `Continuous Delivery & GitOps` module and select `App Details`. Once there, confirm that the Service that's configured for the Application is the same as the Service configured in the Pipeline's Deploy Stage.
+This error is caused by an inconsistency in the service(s) used in the deploy stage and the selected application. GitOps cannot sync a service that isn't correlated to the application. To fix this, go to the Continuous Delivery module, and select **GitOps** > **Applications** and then select the application. In **App Details**, check if the service configured for the application is the same as the service configured in the pipeline's deploy stage.
 
