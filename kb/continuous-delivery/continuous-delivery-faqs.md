@@ -6960,7 +6960,7 @@ deny[msg] {
 
 This policy will deny pipeline execution if any test step fails. You can modify this policy to suit your specific requirements.
 
-####  What is <+infra.tags.endpoint>?
+####  What is `<+infra.tags.endpoint>`?
 
 `<+infra.tags.endpoint>` is not available as a Harness Variable. Refer to the Supported Infra Harness Variable documentation for more details.
 
