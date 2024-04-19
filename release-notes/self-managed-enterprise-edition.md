@@ -67,6 +67,77 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 :::
 
 
+## April xx, 2024, version 0.16.x
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.16.x](https://github.com/harness/helm-charts/releases/tag/harness-0.16.x) |
+| Air Gap Bundle | [0.16.x](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.16.x) |
+| NG Manager | 1.27.12 |
+| CI Manager | 1.13.2 |
+| Pipeline Service | 1.64.2 |
+| Platform Service | 1.14.1 |
+| Access Control Service | 1.35.5 |
+| Delegate | 24.02.82402 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.86.2 |
+| Test Intelligence Service | 1.12.1 |
+| NG UI | 1.10.8 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.16.x/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.x/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+#### Security Testing Orchestration
+
+- The [Aqua Security step](/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference) can now ingest assurance policy violations. These violations appear as INFO-level issues in **Security Tests**. (STO-7164)
+
+- The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FAILURES`, that captures the number of assurance policy violations detected by the scan. You can use this variable to enforce governance policies if the pipeline detects any assurance policy violations. (STO-6499)
+
+- For more information, go to:
+
+  - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables) 
+
+#### Early access features
+
+- You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected. 
+
+   - For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type). 
+   - This is an Early Access feature behind the feature flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable it.(STO-7127)
+
+### Fixed issues
+
+#### Security Testing Orchestration
+
+- The step palette now correctly filters through nested step categories and only returns steps when a match is found. It also matches on the category name as it did previously. (STO-7298)
+
+- Fixed the **Target Type** menu to show only supported types for Fossa and Semgrep. (STO-7165)
+
+- Fixed an issue where the **Triggers** link was broken after navigating to a pipeline from an STO context such as **STO Overview**. (STO-7249)
+
+- Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
+
+
+
 ## April 10, 2024, patch version 0.15.1
 
 This release includes the following Harness module and component versions.
