@@ -6982,5 +6982,4 @@ terraform --version
 ```
 You can modify this script to install a different version of Terraform if needed. Once you have modified the script, add it to the INIT_SCRIPT environment variable in the delegate YAML file. When you deploy the custom image delegate, the script will be executed during initialization and Terraform will be installed on the delegate.
  
-I recommend reviewing the document available at:
 To learn more, go to [Build Custom Image Delegates](https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/)
