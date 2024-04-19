@@ -5,7 +5,7 @@ sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---
 
-Checkmarx offers an extensive suite of tools to support secure application development. Harness STO makes it easy to 
+Checkmarx offers an extensive suite of tools to support secure application development. Harness STO makes it easy to: 
 - Run automated Checkmarx scans of your code repositories, web applications, open-source components, and other targets.
 - Ingest, correlate, and deduplicate your scan results.
 - Use STO's extensive array of tools to [discover](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) and [fix](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) vulnerabilities quickly.  
