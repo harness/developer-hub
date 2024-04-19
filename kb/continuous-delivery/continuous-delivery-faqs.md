@@ -6962,7 +6962,7 @@ This policy will deny pipeline execution if any test step fails. You can modify 
 
 ####  What is <+infra.tags.endpoint>?
 
-<+infra.tags.endpoint> is not available as a Harness Variable. Refer to the Supported Infra Harness Variable documentation for more details.
+`<+infra.tags.endpoint>` is not available as a Harness Variable. Refer to the Supported Infra Harness Variable documentation for more details.
 
 #### How to Install Terraform on Harness Delegate?
 
