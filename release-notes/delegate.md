@@ -87,20 +87,6 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 #### Fixed issues
 
-- There was a request for an alternative solution to upgrade custom delegate images without direct pulls from Docker Hub. We introduced an optional registry mirror configuration in the Delegate Upgrader. Customers utilizing a Docker pull-through registry cache can now specify a registry mirror for delegate images. With this feature, Harness Delegate images will be sourced from the configured mirror instead of the public Docker Hub, ensuring a smoother upgrade process. For instance, to upgrade to harness/delegate:82707, the Upgrader will use the image from the specified mirror us.gsr.io/gcr-mirror/harness/delegate:82707. (PL-47920)
-
-   ```
-   
-   mode: Delegate
-   dryRun: false
-   workloadName: delegate-name
-   namespace: harness-delegate-ng
-   containerName: delegate
-   registryMirror: us.gsr.io/gcr-mirror
-   delegateConfig:
-   
-   ```
-
 - Slack channel notifications failed due to an error related to explicitly setting the Host header as `hooks.slack.com`. We have removed the explicit Host header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue. (PL-47914)
 
 - In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. The name of a user will be sanitized if it does not follow Harness naming conventions during user addition flows. (PL-47614)
