@@ -6873,7 +6873,7 @@ Users can utilize the following API to retry a failed stage: [retryPipeline](htt
 
 It's possible that there are two pipeline entities in the database, each linked to the same file path from the Harness account and the GitHub URL. Trying to import the file again may trigger the `File Already Imported` pop-up on the screen. However, users can choose to bypass this check by clicking the `Import` button again.
 
-#### Why is my GitOps Sync Step Failing with the error Application does not correspond to the service(s) selected in the pipeline execution?
+#### Why is my GitOps Sync Step Failing with the error "Application does not correspond to the service(s) selected in the pipeline execution"?
 ```
 Application{name: '$APP_NAME', agentIdentifier: '$AGENT_ID', errorMessage: 'Application does not correspond to the service(s) selected in the pipeline execution.'}
 ```
