@@ -435,3 +435,5 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **7001** | Metrics service has stopped                                                                                   | Info          |
 | **7002** | Metrics posting failed                                                                                        | Warn          |
 | **7003** | Metrics posting success                                                                                       | Debug         |
+| **7004** | Metrics max target size exceeded                                                                              | Warn          |
+| **7007** | Metrics max evaluation size reached                                                                           | Warn          |
