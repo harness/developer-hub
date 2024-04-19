@@ -6896,7 +6896,7 @@ No, localization is currently not supported in the Harness Platform, including s
 
 Yes, the Community Edition of Harness supports Role-Based Access Control (RBAC).
 
-#### How to Install Powershell on harness delegate?
+#### How to Install Powershell on the Harness Delegate?
 
 To install PowerShell on a Harness Custom Delegate, you can use the INIT_SCRIPT environment variable in the delegate YAML file to run a script that installs PowerShell. Here's an example script that you can use:
 ```
