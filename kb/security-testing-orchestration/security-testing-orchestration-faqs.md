@@ -36,7 +36,9 @@ To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled 
 
 ### Why doesn't the STO dashboard populate the data from targets?
 
-This happens when scan executions don't have baselines set. You must set test target baselines to shown this data on your STO dashboards.
+This happens when scan executions don't have baselines set. You must set test target baselines to show this data on your STO dashboards. 
+
+Every scanned target needs a baseline to enable the full suite of STO features. For more information, go to [Target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
 ## Aqua scans
 
