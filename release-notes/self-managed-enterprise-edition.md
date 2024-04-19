@@ -243,7 +243,6 @@ gsutil -m cp \
 
 - Fixed an issue that would cause a pipeline creation or update to fail if a Security Tests stage used a Harness Code repository. (STO-7208)
 
-
 ### Early access features
 
 #### Continuous Integration
@@ -256,8 +255,6 @@ gsutil -m cp \
 
    - For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type). 
    - This is an Early Access feature behind the feature flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable it.(STO-7127)
-
-
 
 ## April 10, 2024, patch version 0.15.1
 
