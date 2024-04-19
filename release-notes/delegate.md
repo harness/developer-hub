@@ -73,13 +73,11 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ### Harness version 1.34.x, Harness Delegate version 24.04.828xx <!--  April 22, 2024 -->
 
-#### New features and enhancements
-
-
-
 #### Fixed issues
 
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like `taskType` or `task ID`. We have enhanced the task rejection metrics by adding `taskType` and `taskId` labels. (PL-48488)
 
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. We have implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. (PL-47753, ZD-58629)
 
 ### Harness version 1.33.5, Harness Delegate version 24.04.82707 <!--  April 16, 2024 -->
 
@@ -88,6 +86,20 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 - Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. (PL-46947)
 
 #### Fixed issues
+
+- There was a request for an alternative solution to upgrade custom delegate images without direct pulls from Docker Hub. We introduced an optional registry mirror configuration in the Delegate Upgrader. Customers utilizing a Docker pull-through registry cache can now specify a registry mirror for delegate images. With this feature, Harness Delegate images will be sourced from the configured mirror instead of the public Docker Hub, ensuring a smoother upgrade process. For instance, to upgrade to harness/delegate:82707, the Upgrader will use the image from the specified mirror us.gsr.io/gcr-mirror/harness/delegate:82707. (PL-47920)
+
+   ```
+   
+   mode: Delegate
+   dryRun: false
+   workloadName: delegate-name
+   namespace: harness-delegate-ng
+   containerName: delegate
+   registryMirror: us.gsr.io/gcr-mirror
+   delegateConfig:
+   
+   ```
 
 - Slack channel notifications failed due to an error related to explicitly setting the Host header as `hooks.slack.com`. We have removed the explicit Host header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue. (PL-47914)
 
