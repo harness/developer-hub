@@ -22,7 +22,7 @@ The following sections explain how this subscription model works across the vari
 
 ### Who is a developer?
 
-Every user who contributes to software development, deployment, operations, and optimization is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model.
+"Developer" means each person who contributes to code development, deployment, security, maintenance, optimization or any other technical activities related to software code, that is managed with Harness.
 
 These users use Harness to create code repositories, build software, test and secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more.
 
