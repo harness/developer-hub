@@ -6909,7 +6909,7 @@ name: INIT_SCRIPT
 
 This script uses the apt-get package manager to install PowerShell on the delegate. You can modify the script to use a different package manager if needed. Once you have added the script to the delegate YAML file, apply the changes to the delegate using the kubectl apply command.
 For more details on how to create custom images delegate dockerfile
-https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/
+go to [Custom Images Delegate Dockerfile](]https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/)
 
 #### Would like to know what are the account using older delegate version?
 You can determine if an account is using an older delegate version by checking the Delegate release notes. The release notes provide information about features that require a specific delegate version. If the account is using a version older than the required version for a specific feature, then they are using an older delegate version.
