@@ -654,3 +654,27 @@ The data for AWS is ingested at 7PM Pacific time once a day.
 #### Can you set fixed schedules for Holidays in CCM?
 CCM does not support setting fixed schedules for set holidays at this time.
 
+#### AWS validation says “error processing data” what could be the reason?
+Itcould mean that either the batch job which syncs data has issue OR cloudfunction which processes and ingests data has some issue.
+
+#### How long does it take to show AWS Billing data in CCM ?
+Under 1.5 hrs. Once data is available at source, CCM should be able to show in under 1.5 hrs. 
+AWS by itself may ingest data at “source” bucket 4 times a day.
+
+#### What is the data retention policy in CCM for Connectors?
+There is no data retention present for CCM. All data that is older than 5 years old will be deleted.
+
+#### Do I need to keep the AWS Cost and Usage Report files from their source S3 bucket once it is ingested in CCM?
+No, you can delete the CUR file in order to save on S3 storage costs.
+
+#### Do I need to setup AWS Cost and Usage Reports for each linked account in AWS?
+No, you can set up CUR in master account in AWS. That will have data for all linked accounts too. In CCM, you can setup just one connector having CUR for this master account. 
+For linked accounts connectors in CCM, you can choose one or both of Optimization/Visibility features. 
+
+#### I just setup a fresh Azure connector following the help docs. It fails in validation step and says “Authorization permission mismatch”. I am 100% sure all input is correct. What is happening ?
+Sometimes Azure takes time to propagate/refresh the access settings on the storage account. Wait for few mins 3-5mins and click on Test button again in portal.
+
+#### Do I need to add Kubernetes cloud provider connectors for each Kubernetes cluster?
+Yes, you need to add a Kubernetes cloud provider for each Kubernetes cluster. One connector can access only one cluster.
+
+
