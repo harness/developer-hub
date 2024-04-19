@@ -35,7 +35,7 @@ With Harness STO, you can do the following:
 
     - As part of the setup process, you need to verify your login information for the Checkmarx product that you want to use, and then specify this information in the GitHub Action or Drone Plugin step. 
 
-    - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark AST](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
+    - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark One](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
 
     - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
