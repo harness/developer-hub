@@ -26,22 +26,23 @@ To help bring down the cloud costs, providers often offer special discounted rat
 
 Here's how Savings Plans are referred to by major cloud providers:
 
-Amazon Web Services (AWS): In the context of AWS, Savings Plans are known as Savings Plans.
-Microsoft Azure: Azure refers to its equivalent of Savings Plans as Azure Reserved VM Instances (RIs) or Azure Reserved Capacity.
-Google Cloud Platform (GCP): GCP's counterpart to Savings Plans is called Committed Use Discounts (CUDs) or Committed Use Contracts (CUCs).
+- **Amazon Web Services (AWS)**: In the context of AWS, Savings Plans are known as Savings Plans.
+- **Microsoft Azure**: Azure refers to its equivalent of Savings Plans as Azure Reserved VM Instances (RIs) or Azure Reserved Capacity.
+- **Google Cloud Platform (GCP)**: GCP's counterpart to Savings Plans is called Committed Use Discounts (CUDs) or Committed Use Contracts (CUCs).
 
 It's essential for organizations to carefully analyze their usage patterns before making commitments to ensure they choose the most suitable Reserved Instances for their needs.
 
-Commitments in the cloud, such as Reserved Instances (RIs) or other long-term contracts, can pose challenges in various situations if not managed correctly.
+Commitments in the cloud, such as Reserved Instances (RIs) or other long-term contracts, can pose challenges in various situations if not managed correctly. To highlight a few:
 
-If the organization's workload patterns or compute spend changes significantly due to policy or market factors, commitments made based on initial assumptions may no longer align with actual resource needs.Rapid changes in technology or the adoption of new services may render existing commitments less cost-effective or even obsolete.
-Overcommitting to a specific cloud provider or service may lead to vendor lock-in, making it challenging to switch to a different provider or adopt a multi-cloud strategy. Economic or business uncertainties can make long-term commitments risky, especially if there's a chance of downsizing or changes in strategy.
+- If the organization's workload patterns or compute spend changes significantly due to policy or market factors, commitments made based on initial assumptions may no longer align with actual resource needs. 
+- Rapid changes in technology or the adoption of new services may render existing commitments less cost-effective or even obsolete.
+- Overcommitting to a specific cloud provider or service may lead to vendor lock-in, making it challenging to switch to a different provider or adopt a multi-cloud strategy. 
+- Economic or business uncertainties can make long-term commitments risky, especially if there's a chance of downsizing or changes in strategy.
+- Some commitments, such as rigid long-term contracts, may lack flexibility to adapt to changing circumstances or unexpected events.
+- Overcommitting resources may result in underutilization, leading to inefficient use of commitments and potentially higher overall costs due to unnecessary commitment plans.
+- While managing commitments, there's always overhead in understanding the context of the need of purchase and to identify what to purchase next among the multiple options for commitments, It requires continuous manual effort and is a lot more human error prone in case of wrong predictions.
 
-Some commitments, such as rigid long-term contracts, may lack flexibility to adapt to changing circumstances or unexpected events 
-Overcommitting resources may result in underutilization, leading to inefficient use of commitments and potentially higher overall costs due to unnecessary commitment plans.
-Overhead in management of commitments: While managing commitments, there's always overhead in understanding the context of the need of purchase and to identify what to purchase next among the multiple options for commitments, It requires continuous manual effort and is a lot more human error prone in case of wrong predictions.
-
-At Harness, we are committed to bring in the power of **AI and ML** to manage the commitments. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of Commitment Orchestrator, we focus on managing your commitments for optimal performance and mitigating the problems associated with manual management of commitments.
+At Harness, we are committed to bring in the power of **AI and ML to manage the commitments**. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of **Commitment Orchestrator for AWS EC2 Convertible RIs and Compute Savings Plans**, we focus on managing your commitments for optimal performance and mitigating the problems associated with manual management of commitments.
 
 ## What is over commitment and under commitment?
 In the context of cloud spend or cloud bills breakdown,, over-commitment and under-commitment typically refer to the utilization of resources compared to the commitments made through discount plans like Reserved Instances (RIs) or Savings Plan (SPs). 
@@ -156,7 +157,7 @@ The Commitment Orchestrator facilitates the following:
 - **SP Purchase Plan**: We send out monthly recommendations for purchasing Compute SP (Savings Plans), provided there isn't an existing SP in place already. Upon receipt, you will have 24 hours to approve the request. If not approved within this timeframe, the recommendation will expire. However, rest assured that our systems will automatically regenerate the recommendation for your consideration.
   
 - **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Standard Purchase (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend. 
-Additionally, if there are no existing t3.nano RIs, a seed RI (t3.nano) will be purchased. If any other RI exists, we will leverage it to obtain a t3.nano to ensure that the t3.nano also expires along with the original RI.
+Additionally, if there are no existing AWS EC2 t3.nano RIs, a seed RI (t3.nano) will be purchased. If any other RI exists, we will leverage it to obtain a t3.nano to ensure that the t3.nano also expires along with the original RI.
 
 - **RI Exchange Plan**: If you're considering exchanging RI, our system provides recommendations that will be generated multiple times daily. Whether you choose to approve individual exchanges or group them, you have the flexibility to manage your resources efficiently. Just like with purchase plans, recommendations may change based on the compute spend variations, and if not acted upon within 24 hours, they will expire and be regenerated automatically.
 
