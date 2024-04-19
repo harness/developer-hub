@@ -163,9 +163,9 @@ You can [add package dependencies](https://developer.apple.com/documentation/xco
 Add caching to your stage.
 
 <Tabs>
-  <TabItem value="hosted" label="Harness Cloud" default>
+  <TabItem value="cacheint" label="Cache Intelligence" default>
 
-Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) by adding `caching` to your `stage.spec`.
+Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) by adding `caching` to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -179,9 +179,9 @@ Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cac
 ```
 
 </TabItem>
-  <TabItem value="selfmanaged" label="Self-managed">
+  <TabItem value="builtin" label="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)

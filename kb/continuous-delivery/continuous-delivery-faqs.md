@@ -2816,9 +2816,9 @@ Feel free to reach out to us in case of issues.
 
 No, It won’t use a license if an artifact isn’t being deployed onto a target host.
 
-#### Is cache intelligence available between CD steps, or just for CI ?
+#### Is Cache Intelligence available for CD?
 
-It is only present in CI as caching dependencies needs to build an artifact is a CI only concept.
+Cache Intelligence caches build dependencies. It is currently only available for Harness CI.
 
 #### Can we not not use `<+input>.executionInput()`  in the ternary operator to wait for user entry ?
 

@@ -113,10 +113,10 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) t
 
 ## Cache dependencies
 
-Add caching to your Build (`CI`) stage.
+Add caching to your Build stage.
 
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Cache Intelligence">
 
 Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add caching to your `stage.spec` and specify the `paths` to cache:
 
@@ -133,9 +133,9 @@ Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-i
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)

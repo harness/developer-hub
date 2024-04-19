@@ -73,11 +73,11 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
 Add caching to your stage.
 
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Cache Intelligence">
 
 Cache your Python module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-Add caching to your `stage.spec`.
+Add caching to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -92,9 +92,9 @@ Add caching to your `stage.spec`.
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)

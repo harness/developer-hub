@@ -8,17 +8,13 @@ Harness CI Intelligence features are designed to smartly speed up builds and boo
 
 ## Cache Intelligence
 
-Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
-
-There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache.
+Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, [caching these dependencies](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md) for quick retrieval at runtime can save a significant amount of time.
 
 With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), Harness automatically caches and restores common dependencies.
 
 You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-When you use Cache Intelligence with Harness CI Cloud, you don't need to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
-
-With other build infrastructures, you [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
+When you use Cache Intelligence with Harness CI Cloud, you don't need to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud. With other build infrastructures, you [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
 
 ## Test Intelligence
 

@@ -65,9 +65,11 @@ If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-step-sett
 Add caching to your stage.
 
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Cache Intelligence">
 
-Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
+Cache your Go module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+Add `caching.enabled.true` to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -77,9 +79,9 @@ Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -386,7 +388,7 @@ If you copy this example, replace the placeholder values with appropriate values
 <details>
 <summary>Pipeline with one specific Go version</summary>
 
-Here is a single-stage pipeline using cache intelligence, with steps to install Go 1.20, build and test.
+Here is a single-stage pipeline using Cache Intelligence with steps to install Go 1.20, build, and test.
 
 ```yaml
 pipeline:
@@ -459,7 +461,7 @@ pipeline:
 <details>
 <summary>Pipeline with multiple Go versions</summary>
 
-Here is a single-stage pipeline using cache intelligence, with a matrix looping strategy for Go versions 1.19 and 1.20.
+Here is a single-stage pipeline using Cache Intelligence with a matrix looping strategy for Go versions 1.19 and 1.20.
 
 ```yaml
 pipeline:

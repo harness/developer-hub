@@ -57,5 +57,5 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-* [Why can't I enable Cache Intelligence in my CI pipeline?](/kb/continuous-integration/continuous-integration-faqs/#why-cant-i-enable-cache-intelligence-in-my-ci-pipeline)
+* [How do I enable Cache Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-enable-cache-intelligence)
 * [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)

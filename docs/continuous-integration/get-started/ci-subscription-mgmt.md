@@ -131,7 +131,7 @@ The following table lists concurrency limits for each OS type and plan tier.
 
 #### Storage
 
-Harness stores cached data used by [Cache Intelligence](../use-ci/caching-ci-data/cache-intelligence.md) in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
+Harness stores cached data used by [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
 
 * Free: 2 GB
 * Team: 5 GB

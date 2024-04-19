@@ -1745,13 +1745,9 @@ To ensure robustness in your pipeline, consider adding a Failure Strategy to the
 
 ## Cache Intelligence
 
-### Cache Intelligence on Harness Cloud Infrastructure
+### How do I enable Cache Intelligence?
 
-[Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is available on Linux and Windows platforms on Harness Cloud build infrastructure only.
-
-### Why can't I enable Cache Intelligence in my CI pipeline?
-
-Currently, [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is only available for Linux and Windows platforms on Harness Cloud build infrastructure. For more information, go to [Cache Intelligence - Supported build infrastructures](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence#supported-build-infrastructures).
+Go to [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 ### What is the Cache Intelligence cache storage limit?
 

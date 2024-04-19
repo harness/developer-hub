@@ -5,7 +5,7 @@
 | Implement and troubleshoot networking and connectivity issues  | [Troubleshoot CI](/docs/category/troubleshoot-ci) |
 | **2. Managing Build Environments and Dependencies** | |
 | Navigate and solve issues in Docker-in-Docker build environments  | [Run Docker-in-Docker in a Build stage](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/run-docker-in-docker-in-a-ci-stage) |
-| Implement and troubleshoot dependency caching mechanisms | [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/)|
+| Implement and troubleshoot dependency caching mechanisms | [Cache Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence)|
 | **3. Implementing and Managing CI Pipelines**  ||
 | Develop and troubleshoot pipeline triggers | [Troubleshoot failed triggers](https://developer.harness.io/docs/platform/triggers/troubleshoot-registered-triggers/)|
 | Optimize CI pipeline efficiency and speed | [Optimization strategies](https://developer.harness.io/docs/continuous-integration/use-ci/prep-ci-pipeline-components/#optimization-strategies) |

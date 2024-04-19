@@ -37,6 +37,14 @@ Harness Cloud allows up to 2GB of cache storage per account. All pipelines in th
 
 The cache retention window is 15 days, which resets whenever the cache is updated.
 
+<!--Harness stores cached data used by [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) in Harness managed storage. The maximum amount of cache data that you can store depends on the plan you are subscribed to:
+
+* Free: 2 GB
+* Team: 5 GB
+* Enterprise: 10 GB
+
+Harness does not directly limit the number of caches you can store, but once you reach your storage limit, Harness continues to save new caches while automatically evicting old caches. -->
+
 ## Enable Cache Intelligence
 
 <Tabs>
@@ -322,5 +330,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
-* [Why can't I enable Cache Intelligence in my CI pipeline?](/kb/continuous-integration/continuous-integration-faqs/#why-cant-i-enable-cache-intelligence-in-my-ci-pipeline)
 * [What is the Cache Intelligence cache storage limit?](/kb/continuous-integration/continuous-integration-faqs/#what-is-the-cache-intelligence-cache-storage-limit)

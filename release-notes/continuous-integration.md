@@ -34,10 +34,21 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
-## April 2024
+<!-- ## May 2024 -->
 
-<!-- Harness Intelligence overhaul: Cache Intelligence GA + available to all build infras. Harness-managed DLC GA + available for all infras. S3 Global Object Storage settings to use with non-Cloud infra. -->
+<!-- Version ?.??.? -->
+
+<!-- #### New features and enhancements -->
+
+<!-- [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available for all build infrastructures. -->
+<!-- [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) is now generally available for all build infrastructures. -->
+<!-- You can [define S3-compatible object storage](/docs/platform/settings/default-settings/#continuous-integration) to use Cache Intelligence and Harness-managed Docker layer caching with self-managed build infrastructures. -->
+
+<!-- #### Early access features --->
+
 <!-- Early access: Tests V2 `CIE_ENABLE_RUNTEST_V2` - Includes TI for Python, Ruby, Java/Kotlin/Scala by default.  Doesn't include C# yet. Don't need Python TI FF for Python TI in Test V2 step. -->
+
+## April 2024
 
 ### Version 1.23.1
 
@@ -567,7 +578,7 @@ Improved the consistency of [built-in codebase expression](/docs/continuous-inte
 ###### Early access features
 
 * Enable and configure Cache Intelligence in the Visual editor. (CI-8917)
-   * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   * The Cache Intelligence visual editor fields are behind the feature flag `CI_CACHE_INTELLIGENCE`.
    * You can enable and configure [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
 
 <!-- this change added the key and paths fields to the UI -->
@@ -606,7 +617,7 @@ The **Copy** button is now available when editing input sets in the YAML editor.
 ###### Early access features
 
 * Enable Cache Intelligence in the Visual editor. (CI-8571)
-   * The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+   * The **Enable Cache Intelligence** UI field is behind the feature flag `CI_CACHE_INTELLIGENCE`.
    * You can enable [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor. For more information, go to the [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) documentation. This enhancement only applies to Harness Cloud build infrastructure.
 
 ###### Fixed issues

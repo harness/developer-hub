@@ -61,7 +61,7 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
 ## Cache dependencies
 
 <Tabs>
-<TabItem value="cloud" label="Harness Cloud" default>
+<TabItem value="cacheint" label="Cache Intelligence" default>
 
 You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec` and specify the cache paths (in `paths` and `sharedPaths`).
 
@@ -78,9 +78,9 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
 ```
 
 </TabItem>
-<TabItem value="selfmanaged" label="Self-managed">
+<TabItem value="builtin" label="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
