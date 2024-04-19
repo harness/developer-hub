@@ -169,7 +169,7 @@ import StoSettingInstancePath from '../shared/step_palette/instance/_path.md';
 The ZAP context file to use for the scan. You need to add the following shared path (**Overview** > **Shared Paths**) to the stage and copy your file to this path:
     - `/shared/customer_artifacts/context/`
 
-:::note
+<!-- :::note
 
 This integration has the following known issue: The **Context Name** field in the ZAP step UI does not capture the specified context file. (STO-7287)
   - This issue will be fixed shortly.
@@ -180,6 +180,8 @@ This integration has the following known issue: The **Context Name** field in th
      <DocImage path={require('../static/sto-7287-zap-workaround.png')} width="50%" height="50%" title="Add setting to specify ZAP context file" />
 
 :::
+
+-->
 
 
 

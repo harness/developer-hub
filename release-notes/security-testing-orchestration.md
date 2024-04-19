@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-04-10T10:00
+date: 2024-04-18T10:00
 sidebar_position: 13
 ---
 
@@ -23,6 +23,31 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 ## April 2024
+
+### STO Manager version 1.22.1
+
+<!-- 2024-04-18 -->
+
+#### New features and enhancements
+
+- Harness is in the process of updating the STO UI. The following changes are cosmetic and do not affect the underlying YAML definitions of STO pipelines. Harness expects all of these changes to be deployed in all namespaces by the end of April 2024. 
+
+  - The **Security Tests** stage is now called **Security** when you add a new stage and select the stage type. (STO-7384)
+
+    <DocImage path={require('./static/sto-7384-security-stage-name-update-when-adding-new-stage.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
+
+  - The **Custom Scan** step is used for scanner integrations that do not have their own configuration step. Previously, this step was called **Security**. This step also has a new icon. (STO-7385)
+
+    **Custom Scan** appears at the end of the list of Security Test steps in the Step Library. 
+
+    <DocImage path={require('./static/sto-7385-custom-scan-step-in-step-library.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
+
+- Harness STO now supports ingesting scan results in stages that run on ARM64 build infrastructures. This eliminates the need to cache results from a previous ARM64 stage and then ingest them in a stage on a supported platform. (STO-7236)  
+
+#### Fixed issues
+
+- Fixed a UI issue where the [**Context Name**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#context-name) field in the ZAP step did not capture the specified file. (STO-7287)
+
 
 ### Version 1.92.1
 
