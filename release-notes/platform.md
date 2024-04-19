@@ -100,6 +100,8 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
+- 2FA reset emails were failing to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. (PL-48980)
+
 - Email steps were failing due to the system's inability to find users with emails containing uppercase letters, as Harness converts and stores all emails in lowercase. (PL-48532, ZD-60291)
 
 - Reset password emails were being sent from the FirstGen system for all accounts, causing issues for accounts that are exclusively NextGen. Now, if an account is identified as NextGen only, the reset password emails are dispatched from the NextGen system, rectifying the issue for NextGen only accounts. (PL-38735)
@@ -110,7 +112,7 @@ The following deprecated API endpoints are longer supported:
 
 - In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
 
-The audit trail filter did not include an option for the **Token** resource type, hindering the ability to filter for API token updates. Added a **Token** filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
+- The audit trail filter did not include an option for the **Token** resource type, hindering the ability to filter for API token updates. Added a **Token** filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
 
 - Users experienced authentication issues when switching the OAuth type from SAML, leading to incorrect OAuth authentication status displays. Implemented changes to accurately reflect the status (enabled or disabled) of OAuth authentication for users. (PL-48788, ZD-60869)
 
