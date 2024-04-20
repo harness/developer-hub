@@ -47,7 +47,28 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## April 2024
 
-Version 1.33.5
+### Version 1.34.x
+
+#### Early access
+
+- You can now store Terraform Plan files on Harness Delegate temporarily. This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. This feature requires Harness Delegate version 24.04.82705 or later. For more information, go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate). (CDS-85209)
+
+#### Fixed issues
+
+- The create trigger API response was updated to a new version without notice. This issue is fixed by updating the field `stagesToExecuteV2` back to `stagesToExecute` in the create trigger API response. (CDS-95526, ZD-61419)
+- The expression, `<+lastPublished.tag>` did not fetch the latest artifact version for Nexus3 repository. Nexus3 artifact sources with `<+lastPublishedTag>`were relying on lexical ordering instead of the order of tags causing this issue. This issue is fixed by honoring the order of tags. (CDS-95312, ZD-61173)
+- User profile appears at the new navigation in the Harness UI allowing users to create keys at an organization and project level. This issue is fixed by removing the project and org identifiers from the API payload when creating API keys. (CDS-95250, ZD-61325)
+- Fixed an issue where the snapshot build was failing due to erroneous changes in Continuous Verification (CV). The GRPC registration from IDP, IACM, and CV services now include server interceptor class bindings from the application itself. (CDS-95241)
+- Queries in `harness-prod2-cvng.verificationJobInstances` scanned 35K+ documents but returned none. This issue is fixed by adding more query indexes for `VerificationJobInstances`. (CDS-95219)
+- Harness CV has reclassified the `javax.ws.rs.NotFoundException` from error to warning. (CDS-95136)
+- Fixed an issue where notification for the Verify step failure was having unresolved variable in error details. (CDS-94886, ZD-60617)
+- Fields from multiple manifest other than the primary manifest appeared in the pipeline when using multiple Helm charts. This issue is fixed. Now, only fields of the primary manifest appear in the run pipeline form. If primary manifest is not selected in pipeline, then Harness will prompt you to select the primary manifest in the run pipeline form. (CDS-94460, ZD-59994)
+- Fixed an issue where infrastructure did not appear as a runtime input for chained pipelines in the run pipeline form. (CDS-94272)
+- New Relic verification did not work as expected. The last null entry was leading to an error when decoding the response object. A code enhancement to ignore any null entry fixed this issue. (CDS-94113, ZD-59612)
+- Fixed an issue where service inputs did not appear in template inputs for nested templates where the service was fixed inside the nested template. (CDS-92836)
+- IDP and other new modules did not appear in the default module list. This issue is fixed. If a feature flag is turned on for a module, it will now appear in the module selector in the new navigation experience. (CDS-85185, ZD-59478)
+
+### Version 1.33.5
 
 #### Breaking changes
 
@@ -71,7 +92,7 @@ Version 1.33.5
 
 ### Version 1.31.4
 
-#### Early Access
+#### Early access
 
 - Harness has introduced a **Mark as Failure** button on the Pipeline Execution Details page to send a Failure interrupt to all currently executing stages of the pipeline, triggering their Failure Strategies. This functionality is behind the `FF CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. For more details, go to [Mark pipeline as failed](/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/).(CDS-72037)
 
