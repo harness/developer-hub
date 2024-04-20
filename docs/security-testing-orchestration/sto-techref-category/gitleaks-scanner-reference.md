@@ -71,7 +71,7 @@ Harness recommends that you configure the Gitleaks step to [redact secrets in th
 
 ### Speed up your scans
 
-If your scan times are unacceptably high, you can configure the Gitleaks step to [limit the number of commits to scan](#additional-cli-flags). By default, Gitleaks scans the entire commit history. 
+To speed up your scan times, you can configure the Gitleaks step to [limit the number of commits to scan](#additional-cli-flags). By default, Gitleaks scans the entire commit history. 
 
 ### Write custom detection rules
 

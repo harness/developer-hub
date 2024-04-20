@@ -118,8 +118,6 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 ### Additional CLI flags
 
-
-
 Use this field to run the OWASP [`dependency-check`](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scan with additional CLI flags, for example: 
 
 `--disableYarnAudit --log /shared/scan_logs/owasp.txt`
