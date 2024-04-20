@@ -197,7 +197,7 @@ The following keywords are reserved and cannot be used in your JSON file:
 
 ## Pipeline example for ingesting data from an unsupported schema into STO
 
-The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security Tests stage with two steps:
+The following pipeline shows an end-to-end ingestion workflow. The pipeline consist of a Security stage with two steps:
 
 1. A Run step that generates a JSON data file `/shared/scan_results/example.json` in the format described above.
 

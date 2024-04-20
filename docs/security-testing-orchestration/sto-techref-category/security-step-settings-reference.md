@@ -85,7 +85,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### Security steps and scanner templates in STO
 
-The Step library includes a **Security** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
+The Step library includes a **Custom Scan** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
 
 Some scanners also have *scanner templates* with UIs that simplify the process of setting up a scanner.
 

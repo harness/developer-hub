@@ -185,7 +185,7 @@ If you get this message when scanning a repo that doesn't use Yarn, there might 
 
 ## Security step settings for OWASP scans in STO (legacy)
 
-You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can set up OWASP scans using a Security step: create a CI Build or Security stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 #### Target and variant
 

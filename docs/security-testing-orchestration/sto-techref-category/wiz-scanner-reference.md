@@ -69,7 +69,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	Do the following:
 
-	1. Add a CI Build or Security Tests stage to your pipeline.
+	1. Add a CI Build or Security stage to your pipeline.
 	2. Add a Wiz step to the stage.
 
 <br/>
@@ -113,7 +113,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	Do the following:
 
-	1. Add a CI Build or Security Tests stage to your pipeline.
+	1. Add a CI Build or Security stage to your pipeline.
 	2. Add a Wiz step to the stage.
 
    	<br/>
@@ -158,7 +158,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security Tests stage to your pipeline.
+   	1. Add a CI Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
 
@@ -204,7 +204,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security Tests stage to your pipeline.
+   	1. Add a CI Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
    #### Copy scan results to the shared path

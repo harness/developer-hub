@@ -16,7 +16,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Security step settings for Reapsaw scans in STO
 
-To ingest your results, add a Security step to a Build or Security Tests stage and configure it as described below.
+To ingest your results, add a Security step to a Build or Security stage and configure it as described below.
 
 ### Target and variant
 

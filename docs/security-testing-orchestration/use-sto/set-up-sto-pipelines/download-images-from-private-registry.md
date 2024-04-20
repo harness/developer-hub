@@ -99,7 +99,7 @@ You need a Docker connector that points to your private container registry. For 
 
 ### Scanner template setup
 
-Do the following if you're using a scanner template rather than a generic **Security** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration).
+Do the following if you're using a scanner template rather than a generic **Custom Scan** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration).
 
 1. In the stage where you're setting up the scanner template, go to the **Infrastructure** tab. 
 
@@ -115,9 +115,9 @@ Do the following if you're using a scanner template rather than a generic **Secu
 
 ### Security step setup 
 
-Do the following if you're using a generic **Security** step for you scan:
+Do the following if you're using a generic **Custom Scan** step for you scan:
 
-1. Open the **Security** step and add these settings: 
+1. Open the **Custom Scan** step and add these settings: 
 
    * `runner_registry_domain`  —  The URL of the registry where the images are stored. 
      
@@ -133,7 +133,7 @@ Do the following if you're using a generic **Security** step for you scan:
 
   :::note
 
-  These settings are supported by the **Security** step only. They are not supported by scanner templates.
+  These settings are supported by the **Custom Scan** step only. They are not supported by scanner-specific steps such as **Semgrep** or **Trivy**.
 
   :::
 

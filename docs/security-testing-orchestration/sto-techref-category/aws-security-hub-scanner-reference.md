@@ -122,7 +122,7 @@ You can use this to add environment variables to your scan environment. To enabl
 
 ## Security step settings for AWS Security Hub scans in STO (legacy)
 
-You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 * `product_name` : `aws-security-hub`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `configuration`
