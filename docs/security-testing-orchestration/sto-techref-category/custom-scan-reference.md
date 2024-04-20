@@ -9,7 +9,7 @@ The Custom Step step enables you to configure supported scanners that don't yet 
 
 <details>
 
-<summary>Supported scanners that use a Custom Ingest step</summary>
+<summary>Supported scanners that use a Custom Scan step</summary>
 
 - [Clair](/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference)
 - [Data Theorem](/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference)
