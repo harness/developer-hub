@@ -314,73 +314,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
 
-## Security step settings for Mend scans in STO (legacy)
-
-:::note
-You can set up Mend scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Mend step](#mend-step-settings-for-sto-scans) instead.
-:::
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Mend scan settings
-
-* `product_name` = `whitesource`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `ingestionOnly`, `dataLoad`, or `orchestratedScan`
-* `scan_type` = `container` or `repository`
-* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`.
-* [`product_access_id`](#access-id)
-* [`product_access_token`](#access-token)
-* [`product_include`](#include)
-* `product_config_name` = `default`
-* [`fail_on_severity`](#fail-on-severity)
-* `tool_args` You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `tool_args log.files.path /tmp/sto_scan_logs`.
-
-		
-#### Lookup settings
-
-Lookup settings are required for `dataLoad` and `orchestratedScan` modes.
-
-*  `product_lookup_type` You can specify the Mend product or project by token or by name.
-    - When `policy_type` is set to `dataLoad`: 
-      - `byName`
-      - `byTokens`
-    - When `policy_type` is set to `orchestratedScan`: 
-      - `appendToProductByName`
-      - `appendToProductByToken`
-
-Required for `dataLoad` and `orchestratedScan` modes: 
-* [`product_product_name`](#product-name--token)
-* [`product_product_token`](#product-name--token)
-
-Required for `dataLoad` modes: 
-* [`product_project_name`](#project-name--token)
-* [`product_project_token`](#project-name--token)
-
-#### Container scan settings
-
-
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-
-
-<StoLegacyContainer />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->
 
 ## Mend orchestration pipeline example
 

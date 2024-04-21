@@ -118,35 +118,3 @@ You can use this to add environment variables to your scan environment. To enabl
  <DocImage path={require('./static/aws-security-hub-session-token.png')} width="70%" height="70%" title="Add AWS_SESSION_TOKEN to enable session-based authentication" />  
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for AWS Security Hub scans in STO (legacy)
-
-You can set up an AWS Security Hub scan using a Security step: create a CI Build or Security stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-* `product_name` : `aws-security-hub`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `configuration`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `dataLoad` or `ingestionOnly`
-* `product_config_name` : `default`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-#### Target and variant
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-<StoLegacyTargetAndVariant />
-
-#### Configuration settings
-
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-
-<StoLegacyConfig  />
-
-
-#### Ingestion file
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-<StoLegacyIngest />
-
--->

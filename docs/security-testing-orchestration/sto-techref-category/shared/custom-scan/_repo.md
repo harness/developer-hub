@@ -9,7 +9,7 @@ These settings apply to Custom Scan steps where both of these conditions are tru
 
 <!-- TOC end -->
 
-#### Repository name
+#### Repository Project
 
 ###### Key
 
@@ -17,9 +17,9 @@ These settings apply to Custom Scan steps where both of these conditions are tru
 repository_project
 ```
 ###### Value
-The code repository to scan. This appears as the target name in the UI
+The code repository to scan. This appears as the target name in the UI.
 
-#### Variant
+#### Repository Branch
 
 ##### Key
 ```

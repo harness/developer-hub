@@ -149,38 +149,3 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for Brakeman scans in STO (legacy)
-
-:::note
-You can set up Brakeman scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Brakeman step](#brakeman-step-settings-for-sto-scans) instead.
-:::
-
-#### Target and variant
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-<StoLegacyTargetAndVariant />
-
-#### Brakeman scan settings
-
-* `product_name` = `brakeman`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
-* `product_config_name` = `default`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the brakeman scanner with specific command-line arguments. For example, you can generate warnings with only the highest confidence using `-w3`: `tool_args` = `-w3`
-
-#### Ingestion file
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-<StoLegacyIngest />
-
-
-#### Fail on Severity
-
-<StoSettingFailOnSeverity />
-
--->
