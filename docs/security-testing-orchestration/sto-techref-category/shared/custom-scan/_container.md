@@ -25,6 +25,7 @@ container_type
 ```
 
 ##### Value
+
 One of the following:
 ```
 local_image

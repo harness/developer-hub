@@ -410,7 +410,7 @@ pipeline:
 
 </details>
 
-<!-- hiding this example, since it uses the old-style Security step rather than the scanner template 
+<!-- hiding this example, since it uses the old-style Security (now Custom Scan) step 
 
 ## Anchore Enterprise dataLoad example
 

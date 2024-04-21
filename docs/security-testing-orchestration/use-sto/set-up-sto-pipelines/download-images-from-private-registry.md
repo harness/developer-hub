@@ -94,14 +94,14 @@ You need a Docker connector that points to your private container registry. For 
 
 3. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
 
-   - [Scanner template step](#scanner-template-setup)
-   - [Security step](#security-step-setup)
+   - [Scanner-specific step](#scanner-template-setup)
+   - [Custom Scan step](#security-step-setup)
 
-### Scanner template setup
+### Scanner step setup
 
-Do the following if you're using a scanner template rather than a generic **Custom Scan** step. A scanner template is a **Security Test** step with a scanner-specific UI, such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference), [**CodeQL**](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference#codeql-step-settings-for-sto-scans), and [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration).
+Do the following if you're using a scanner step such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) or [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration) rather than a generic **Custom Scan** step. 
 
-1. In the stage where you're setting up the scanner template, go to the **Infrastructure** tab. 
+1. In the stage where you're setting up the step, go to the **Infrastructure** tab. 
 
 2. Under **Advanced**, go to **Override Image Connector (optional)** and select the connector to your private registry. You might need to scroll down to see this option.
 
@@ -113,11 +113,11 @@ Do the following if you're using a scanner template rather than a generic **Cust
    
    2. Set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
-### Security step setup 
+### Custom Scan step setup 
 
-Do the following if you're using a generic **Custom Scan** step for you scan:
+Do the following if you're using a generic [**Custom Scan**](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step for your scan:
 
-1. Open the **Custom Scan** step and add these settings: 
+1. Open the step and add these settings: 
 
    * `runner_registry_domain`  —  The URL of the registry where the images are stored. 
      

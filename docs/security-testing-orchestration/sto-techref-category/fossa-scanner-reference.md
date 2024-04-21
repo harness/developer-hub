@@ -21,13 +21,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 The recommended workflow is add a Fossa step to a Security Tests or CI Build stage and then configure it as described below. 
 
 
-<!--details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details -->
-
 ### Scan
 
 

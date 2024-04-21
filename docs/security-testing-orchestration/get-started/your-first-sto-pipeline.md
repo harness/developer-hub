@@ -169,13 +169,13 @@ steps:
 </Tabs>
 
 <!-- details>
-<summary> Key concept: scanner templates</summary>
+<summary> Key concept: Custom Scan steps and scanner-specific steps</summary>
 
-The Step Library includes a Security step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**.
+The Step Library includes a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**.
 
-The Step Library also includes <a href="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates">scanner templates</a> for popular scanners such as Bandit, OWASP, Snyk, Grype, and SonarQube. These steps have preconfigured options that greatly simplify the process of setting up a scanner.
+The Step Library also includes scanner-specific steps for popular scanners such as Bandit, OWASP, Snyk, Grype, and SonarQube. These steps have preconfigured options that greatly simplify the process of setting up a scan.
 
-In the Bandit scanner template, for example, the **Scan Configuration** and **Target Type** fields are read-only because each option supports one option only. If a scanner supports multiple target types, such as repositories and container images, **Target Type** is editable and the menu is pre-populated with the supported target types.
+In the Bandit step, for example, the **Scan Configuration** and **Target Type** fields are read-only because each option supports one option. If a scanner supports multiple target types, such as repositories and container images, **Target Type** is editable and the menu is pre-populated with the supported target types.
 
 </details -->
 

@@ -4,9 +4,9 @@ The following use cases require a Docker-in-Docker background step in your pipel
 - [Custom Scan steps](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) on Kubernetes and Docker build infrastructures
   - Required for all target types and Orchestration/DataLoad modes
 
-The following use cases do not require Docker-in-Docker:
+The following use cases do not require a Docker-in-Docker background step:
 - Harness Cloud AMD64 build infrastructures
-- SAST/DAST/configuration scans that use [scanner templates (not Security steps)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto)
+- SAST/DAST/configuration scans that use a scanner-specific step and not a Custom Scan step.
 - [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) where the data file has already been generated
 
 <details>
