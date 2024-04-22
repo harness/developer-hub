@@ -24,7 +24,7 @@
 | Understand and implement access control using Harness RBAC configurations | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)|
 | **7. Implementing and Utilizing Test Intelligence in Harness CI** | |
 | Configure and synchronize Harness Test Intelligence with main/master branches              | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) |
-| Implement strategies to improve and optimize test execution times                          | [Split tests (parallelism)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) |
+| Implement strategies to improve and optimize test execution times                          | [Test step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2) |
 | **8. Advanced CI Features and Troubleshooting in Harness** ||
 | Implement and utilize advanced features like caching and conditional executions in CI      | [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings) |
 | Diagnose, troubleshoot, and resolve common issues and errors in CI stages| [Troubleshoot CI](/docs/category/troubleshoot-ci) |

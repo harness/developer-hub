@@ -1448,7 +1448,7 @@ If you encounter errors with Python TI, make sure that:
 * Your build tool is pytest or unittest.
 * The Python 3 binary is present. This means it is preinstalled on the build machine or available in the step's [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#container-registry-and-image).
 * If you use another command to invoke Python 3, such as `python`, you have added an alias, such as `python3 = "python"`.
-* If you get code coverage errors, your [Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#command) doesn't need coverage flags (`--cov` or `coverage`).
+* If you get code coverage errors, your [Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#command-and-shell) doesn't need coverage flags (`--cov` or `coverage`).
 
 ### Does Test Intelligence support dynamic code?
 

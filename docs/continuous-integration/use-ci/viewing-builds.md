@@ -64,13 +64,10 @@ This tab presents test results from **Run** or **Run Tests** steps. For more inf
 
 ### Other tabs
 
-The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report [Error Tracking](#error-tracking-run-tests-step) information and information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
+The **Policy Evaluations**, **Security Tests**, and **Error Tracking** tabs report information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/governance/policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
-## Dashboards
-
-For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/dashboards/dashboards-overview).
-
-## Error Tracking (Run Tests step)
+<details>
+<summary>Error Tracking (Run Tests step - Deprecated)</summary>
 
 If you [enabled error tracking in the Run Tests step](./run-tests/tests-v1/ti-for-java-kotlin-scala.md#do-you-want-to-enable-error-tracking), a list of code error events are reported on the **Error Tracking** tab. For each event, the following are reported:
 
@@ -100,3 +97,9 @@ Select the event's **Location** to open the [Automated Root Cause Analysis (ARC)
 <DocImage path={require('./static/ci-builds-et-arc.png')} />
 
 :::
+
+</details>
+
+## Dashboards
+
+For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/dashboards/dashboards-overview).

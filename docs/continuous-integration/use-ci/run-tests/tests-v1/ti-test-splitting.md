@@ -23,11 +23,11 @@ To enable parallelism/test splitting in the **Test** step, refer to the [Test st
 
 By default, Test Intelligence reduces test time by running only the necessary tests to validate your code changes. You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
-:::warning
+:::warning Does this topic apply to you?
 
-This topic explains parallelism and test splitting in **Run Tests** steps *only*.
+This topic explains test splitting/parallelism in **Run Tests** steps *only*.
 
-For test splitting/parallelism in **Run** steps, go to [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).
+For test splitting/parallelism in **Run** steps, go to [Split tests in Run steps](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).
 
 For test splitting/parallelism in **Test** steps, go to the [Test step documentation](../tests-v2.md).
 
