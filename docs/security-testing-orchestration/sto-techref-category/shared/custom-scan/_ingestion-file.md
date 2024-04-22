@@ -1,4 +1,4 @@
-This setting applies to Custom Scan steps where the `policy_type` is [`ingestionOnly`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+This setting applies to Custom Scan steps when the `policy_type` is [`ingestionOnly`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
 ##### Key
 

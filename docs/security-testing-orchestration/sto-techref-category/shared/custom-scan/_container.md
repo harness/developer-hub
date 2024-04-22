@@ -1,7 +1,7 @@
 <!-- details>
 <summary>Container image scan settings</summary -->
 
-These settings apply to Custom Scan steps where both of these conditions are true:
+These settings apply to Custom Scan steps when both of these conditions are true:
 1. The `policy_type` is `orchestratedScan` or `dataLoad`.
 2. The `scan_type` is `containerImage`.
 
