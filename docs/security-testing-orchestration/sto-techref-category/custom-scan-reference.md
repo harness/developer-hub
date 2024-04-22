@@ -5,6 +5,9 @@ sidebar_label: Custom Scan step reference
 sidebar_position: 135
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 The Custom Step step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
 
 import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that-use-custom-scan-step.md';
@@ -23,6 +26,44 @@ import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that
 
 
 ## Custom Scan settings reference
+
+To set up a scanner, you add key-value pairs under **Settings**. The following sections describe the different settings and requirements.
+
+<details>
+
+<summary>Scanner configuration in a Custom Scan step</summary>
+
+<Tabs>
+<TabItem value="Visual" label="Visual editor" default>
+
+<DocImage path={require('./static/custom-scan-settings-in-visual-editor.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+
+
+</TabItem>
+<TabItem value="YAML" label="YAML editor">
+
+``` yaml
+- step:
+    type: Security
+    name: custom_scan_xray
+    identifier: custom_scan_xray
+    spec:
+      privileged: true
+      settings:
+        policy_type: ingestionOnly
+        scan_type: containerImage
+        product_name: xray
+        product_config_name: default
+        target_name: YOUR_REPO/YOUR_IMAGE
+        target_variant: YOUR_TAG
+        ingestion_file: /shared/scan_results/xray2.json
+```
+
+</TabItem>
+</Tabs>
+
+</details>
+
 
 ### Scanner settings
 
