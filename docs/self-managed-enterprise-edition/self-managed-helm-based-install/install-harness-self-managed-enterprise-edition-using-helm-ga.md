@@ -141,9 +141,9 @@ You can use the script provided below to configure a vanity URL based on your lo
 
 Before using this script, ensure the following prerequisites are met:
 
-- You must have a subdomain URL mapped to your load balancer's static IP. The subdomain URL must adhere to one of the following formats:
-  - `http://smp.myorganization.com`
-  - `https://smp.myorganization.com`
+- You must have a subdomain URL mapped to your load balancer's static IP. The subdomain URL must adhere to one of the following example formats:
+  - `http://mysubdomain.mysite.com`
+  - `https://mysubdomain.mysite.com`
 
 #### Execution
 
