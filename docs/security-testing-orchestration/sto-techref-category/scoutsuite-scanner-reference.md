@@ -47,7 +47,7 @@ import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

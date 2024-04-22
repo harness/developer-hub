@@ -71,18 +71,17 @@ In most cases, this should match the repo name used in your Git provider.
 
 ###  Ingestion settings
 
-
 import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
-
 
 <StoLegacyIngest />
 
+
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
+
 
 ## Veracode pipeline example (dataLoad)
 
