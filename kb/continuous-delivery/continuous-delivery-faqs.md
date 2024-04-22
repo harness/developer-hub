@@ -6886,7 +6886,7 @@ By default Harness does not remove resources from previous deployments. If you w
 For detailed instructions on how this functionality works, please check out the Harness documentation - [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/)
 
 
-#### In terraform how do you return a null value from a for each
+#### In terraform how do you return a null value from a `for_each`
 
 In Terraform, you can return a null value from a `for_each` expression by using the `null` function or the `null` literal directly.
 Here's an example of how you can use both approaches:
@@ -6924,7 +6924,7 @@ resource "aws_instance" "my_instances" {
   # Other resource attributes...
 }
 ```
-Both approaches will result in `key2` in the `my_map` variable being set to a `null` value, causing Terraform to not create an instance for that key when using for_each.
+Both approaches will result in `key2` in the `my_map` variable being set to a `null` value, causing Terraform to not create an instance for that key when using `for_each`.
 
 #### Why am I getting an error that the input set does not exist in the selected Branch?
-This happens because pipelines and input sets need to exist in the same branch when storing them in Git. If your pipeline exists in the `dev` branch for example but, your input set exists in the `main` branch, loading the pipeline in the `dev` branch and attempting to load the input set will cause this error. To fix this, please ensure that both the pipeline and input set exist in the same branch and same repository.
+This happens because pipelines and input sets need to exist in the same branch when storing them in Git. For example, if your pipeline exists in the `dev` branch but your input set exists in the `main` branch, then loading the pipeline in the `dev` branch and attempting to load the input set will cause this error. To fix this, please ensure that both the pipeline and input set exist in the same branch and same repository.
