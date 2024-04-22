@@ -236,7 +236,7 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- STO-7187 remove legacy configs for scanners with step palettes
 
-## Security step settings for Nmap scans in STO (legacy)
+## Custom Scan step settings for Nmap scans in STO (legacy)
 
 :::note
 You can set up Nmap scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Nmap step](#nmap-step-settings-for-sto) instead.

@@ -17,7 +17,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-## Security step settings for Fortify on Demand scans in STO
+## Custom Scan step settings for Fortify on Demand scans in STO
 
 ### Target and variant
 

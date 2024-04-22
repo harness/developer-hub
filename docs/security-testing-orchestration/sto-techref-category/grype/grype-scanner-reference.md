@@ -260,7 +260,7 @@ While Harness updates the database every time it rebuilds the Grype image, this 
  
 <!-- STO-7187 remove legacy configs for scanners with step palettes 
 
-## Security step settings for Grype scans in STO (legacy)
+## Custom Scan step settings for Grype scans in STO (legacy)
  
 :::note
 You can set up Grype scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Grype step](#grype-step-settings-for-sto) instead.

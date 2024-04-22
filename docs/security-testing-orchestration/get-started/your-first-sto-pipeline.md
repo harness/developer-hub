@@ -38,7 +38,7 @@ You'll learn how to:
 1. Run the pipeline and analyze the security issues found by the scanner.
 2. Select a baseline for your test targets and use the baseline to identify "shift-left" issues in a downstream branch only vs. "shift-right" issues also found in the baseline branch.
 3. View issue details in the Harness UI and use these details to pinpoint and resolve issues in your code.
-4. Set up a security step to fail automatically if it detects an issue with the specified severity or higher.
+4. Set up a scan step to fail automatically if it detects an issue with the specified severity or higher.
 5. Request an exemption ("ignore rule") for a specific issue.
 6. Approve the exemption. Once approved, the exemption won't fail the pipeline even if it equals or exceeds the severity threshold.
 
@@ -427,7 +427,7 @@ You've now learned the core STO features and workflows. Here are the next steps 
 
 ### Add steps or stages for CI/CD workflows
 
-You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
+You know how to implement pipelines when scanners detect security issues, and how to create Ignore Rules for specific issues. Once you set up your Security Test steps, baselines, and exemptions, you can add more stages and steps to implement your CI/CD workflows.
 
 For some examples of integrated workflows, go to [Build/scan/push workflows for container images in STO](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows).
 
@@ -451,7 +451,7 @@ deny[sprintf("CI stage '%s' is missing required step '%s'", [stage.name, existin
      not contains(existing_steps, required_step)                           # ... check if it's present in the existing steps
 }
 
-# steps that must be present in every CI stage - try to create a CI stage without a Security step to see the policy fail
+# steps that must be present in every CI stage - try to create a CI stage without a Security Test step to see the policy fail
 required_steps = ["Security"]
 
 contains(arr, elem) {
@@ -461,10 +461,10 @@ contains(arr, elem) {
 
 ### Add failure strategies to a CI/CD stage
 
-You can implement [Failure Strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous security steps. One use case for this would be to enable manual interventions when a Security step generates a failure. You can set up a workflow like this:
+You can implement [Failure Strategies](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous security steps. One use case for this would be to enable manual interventions when a Security Test step generates a failure. You can set up a workflow like this:
 
-1. A Build step is downstream from the Security step. It has a failure strategy that's set to run on [All Errors](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/#error-types).
-2. The scanner detects issues and the Security step generates an error.
+1. A Build step is downstream from the Security Test step. It has a failure strategy that's set to run on [All Errors](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps/#error-types).
+2. The scanner detects issues and the Security Test step generates an error.
 3. The Failure Strategy in the Build step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the pipeline execution or allow it to proceed.
 

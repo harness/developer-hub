@@ -255,7 +255,7 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- STO-7187 remove legacy configs for scanners with step palettes
 
-## Security step settings for Aqua Trivy scans in STO (legacy)
+## Custom Scan step settings for Aqua Trivy scans in STO (legacy)
 
 :::note
 You can set up Aqua Trivy scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Aqua Trivy step](#aqua-trivy-step-settings-for-sto-scans) instead.

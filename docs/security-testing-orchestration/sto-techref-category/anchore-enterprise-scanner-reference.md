@@ -244,7 +244,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## Anchore Enterprise orchestration example
 
-This example uses a Security step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
+This example uses an Anchore step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
 
 1. A Background step that runs Docker-in-Docker. This is [required](#docker-in-docker-requirements) to scan container images.
 2. An Anchore step that does the following:
@@ -339,17 +339,17 @@ pipeline:
 
 ## Anchore Enterprise dataLoad example
 
-This example uses a Security step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
+This example uses a Security Test step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
 
 1. A Background step that runs Docker-in-Docker. This is [required](#docker-in-docker-requirements) to scan container images.
-2. A Security step that does the following:
+2. A Security Test step that does the following:
 
    1. Extracts the `owasp/nettacker:latest` image from Anchore Enterprise.
    2. Logs in to the Anchore Enterprise API based on the `product_domain`, `product_access_id`, `product_access_token` settings.
    3. Scans the extracted image.
    4. Deduplicates and normalizes the scan data and ingests it into STO. 
 
-Note that in this example, the resource limages for the Security step are increased to ensure that the container used to run the scan has enough memory and CPU.
+Note that in this example, the resource limages for the Security Test step are increased to ensure that the container used to run the scan has enough memory and CPU.
 
 ```yaml
 

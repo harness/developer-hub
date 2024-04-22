@@ -28,7 +28,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Security step settings for Fortify scans in STO
+## Custom Scan step settings for Fortify scans in STO
 
 ### Target and variant
 

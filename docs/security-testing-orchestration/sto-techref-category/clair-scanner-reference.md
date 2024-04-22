@@ -5,31 +5,20 @@ sidebar_label: Clair scanner reference
 sidebar_position: 110
 ---
 
-You can scan container images using [Clair](https://github.com/quay/clair), an open-source project for the static analysis of vulnerabilities in application containers. Create a CI Build or Security stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can scan container images using [Clair](https://github.com/quay/clair), an open-source project for the static analysis of vulnerabilities in application containers. 
 
-## Important notes for running Clair scans in STO
+To set up a Clair scan:
 
+1. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to a Build or Security stage.
 
-### Docker-in-Docker requirements
+2. Review the [Important notes for Custom Scan steps](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and relevant information.
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+   If you're using Kubernetes or Docker build infrastructure, add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to the stage. 
 
-<StoDinDRequirements />
-
-### Root access requirements
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
+2. Add the following `key:value` pairs to **Settings**.
 
 
-### For more information
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
-
-## Security step settings for Clair scans in STO
+## Custom Scan step settings for Clair scans in STO
 
 
 ### Target and variant

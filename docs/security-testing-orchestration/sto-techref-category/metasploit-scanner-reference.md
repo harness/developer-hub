@@ -15,7 +15,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 
-## Security step settings for Metasploit scans in STO
+## Custom Scan step settings for Metasploit scans in STO
 
 ### Target and variant
 

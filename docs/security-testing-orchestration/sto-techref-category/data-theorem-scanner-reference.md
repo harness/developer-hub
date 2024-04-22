@@ -35,7 +35,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-## Security step settings for Data Theorem scans in STO
+## Custom Scan step settings for Data Theorem scans in STO
 
 ### Target and variant
 
