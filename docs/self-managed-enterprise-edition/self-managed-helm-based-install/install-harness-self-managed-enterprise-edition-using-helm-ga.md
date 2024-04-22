@@ -133,13 +133,31 @@ To an ingress ALB, do the following:
 </TabItem>
 </Tabs>
 
-### Configure a vanity URL based on your load balancer
+### Optional: Configure a vanity URL based on your load balancer
 
-You can use the following script to configure a vanity URL based on your load balancer.
+### Optional: Configure a Vanity URL based on your Load Balancer
+
+You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vality-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
+
+#### Prerequisites
+
+Before using this script, ensure the following prerequisites are met:
+
+- You must have a subdomain URL mapped to your load balancer's static IP. The subdomain URL must adhere to one of the following formats:
+  - `http://smp.myorganization.com`
+  - `https://smp.myorganization.com`
+
+#### Execution
+
+Execute this script within your cluster environment, providing three argument inputs:
+
+1. Namespace
+2. Account ID
+3. Subdomain URL
 
 ```
 if [ "$#" -ne 3 ]; then
-    echo "Usage: $0 <YOUR_NAMESPACE> <YOUR_ACCOUNT_ID> <YOUR_SUBDOMAIN_URL>"
+    echo "Usage: $0 <namespace> <accountId> <subdomainUrl>"
     exit 1
 fi
 
