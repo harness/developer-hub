@@ -306,7 +306,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) is available for C# (.NET Core); however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use Run Tests steps to [run unit tests with Test Intelligence on C# codebases](/docs/continuous-integration/use-ci/run-tests/ti-overview.md).
+With this feature flag enabled, you can use **Run Tests** steps to [run unit tests with Test Intelligence on C# codebases](/docs/continuous-integration/use-ci/run-tests/ti-overview.md).
 
 <Tabs>
   <TabItem value="Harness Cloud" default>

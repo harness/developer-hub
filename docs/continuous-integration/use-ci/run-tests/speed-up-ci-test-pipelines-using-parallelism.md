@@ -91,7 +91,7 @@ This example uses [Harness Cloud build infrastructure](../set-up-build-infrastru
           execution:
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -138,7 +138,7 @@ This example uses a [Kubernetes cluster build infrastructure](/docs/category/set
           execution:
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -469,7 +469,7 @@ With Harness CI, you can split tests for any language or tool. Here are some exa
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -511,7 +511,7 @@ This example use Maven.
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -550,7 +550,7 @@ This example uses Mocha.
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -590,7 +590,7 @@ This example uses Mocha.
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -630,7 +630,7 @@ This example uses pytest.
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -670,7 +670,7 @@ This example uses Minitest.
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -710,7 +710,7 @@ This example uses CTest. Note that CTest has parallelize functions built-in as w
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:
@@ -749,7 +749,7 @@ This example uses CTest. Note that CTest has parallelize functions built-in as w
           ...
             steps:
               - step:
-                  type: Run ## Test splitting can be applied to any Run or Run Tests steps where you run tests.
+                  type: Run ## Test splitting can be applied to any Run steps where you run tests.
                   name: tests
                   identifier: tests
                   spec:

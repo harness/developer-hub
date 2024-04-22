@@ -259,11 +259,11 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** or **Test** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 If you're using Kotlin, you can improve your unit test times with Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature.
 
-Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>

@@ -162,7 +162,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Run tests
 
-You can use **Run** and **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Test** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 These examples run tests in a **Run** step.
 
@@ -209,7 +209,7 @@ These examples run tests in a **Run** step.
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format.
 
-If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
+If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Test steps (Test Intelligence)](#run-tests-with-test-intelligence).
 
 ```yaml
 reports:

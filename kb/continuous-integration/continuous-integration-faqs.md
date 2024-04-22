@@ -1388,9 +1388,21 @@ For information about how Test Selection selects tests, go to [Test Intelligence
 
 ### If the Run Tests step fails, does the Post-Command script run?
 
+:::warning
+
+The **Run Tests** step is deprecated in favor of the new **Test** step.
+
+:::
+
 No. The Post-Command script runs only if the Run Tests step succeeds.
 
 ### Can I limit memory and CPU for Run Tests steps running on Harness Cloud?
+
+:::warning
+
+The **Run Tests** step is deprecated in favor of the new **Test** step.
+
+:::
 
 No. Resource limits are not customizable when using Harness Cloud or self-managed VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
 
@@ -1430,7 +1442,7 @@ You can. However, Harness doesn't recommend using Test Intelligence with Rails a
 
 :::warning
 
-This question applies to the deprecated **Run Tests** step.
+The **Run Tests** step is deprecated in favor of the new **Test** step.
 
 :::
 

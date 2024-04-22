@@ -239,7 +239,7 @@ If you enabled [Intelligence Mode](#intelligence-mode), **you must run your pipe
 
 ### Why do I have to run the pipeline twice?
 
-The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after adding the Run Tests step.
+The first time you run a pipeline after adding the Run Test step, Harness creates a baseline for test selection in future builds. Test selection _isn't_ applied to this run because Harness has no baseline against which to compare changes and select tests. You'll start seeing test selection and time savings on the second run after you have added the **Test** step.
 
 ## Ignore tests or files
 

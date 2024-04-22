@@ -60,7 +60,7 @@ This tab provides a list of commits that triggered the build, along with source 
 
 ### Tests tab
 
-This tab presents test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
+This tab presents test results from **Run** or **Test** steps. For more information, go to [View tests](./run-tests/viewing-tests.md).
 
 ### Other tabs
 

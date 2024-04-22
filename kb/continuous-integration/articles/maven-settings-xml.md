@@ -56,16 +56,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="run" label="Run step" default>
+  <TabItem value="run" label="Run or Test step" default>
 
-If your Maven tests run in a **Run** step, add the following to the **Command**:
+If your Maven tests run in a **Run** or **Test** step, add the following to the **Command**:
 
 ```
 echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
 ```
 
 </TabItem>
-  <TabItem value="run-tests" label="Run Tests step">
+  <TabItem value="run-tests" label="Run Tests step (deprecated)">
 
 If your Maven tests run in a **Run Tests** step, add the following to the **Pre-Command**:
 
