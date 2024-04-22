@@ -72,7 +72,7 @@ In most cases, this should match the repo name used in your Git provider.
 ###  Ingestion settings
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 
 <StoLegacyIngest />

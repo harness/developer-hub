@@ -63,7 +63,7 @@ import StoLegacyContainer  from './shared/custom-scan/_container.md';
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 
 <StoLegacyIngest />
