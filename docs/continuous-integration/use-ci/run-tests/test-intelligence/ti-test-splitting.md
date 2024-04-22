@@ -21,7 +21,7 @@ For test splitting in **Run** steps and conceptual information about parallelism
 
 :::
 
-With parallelism, you specify how you want Harness to divide similar workloads. When you use parallelism and test splitting with [Test Intelligence](./set-up-test-intelligence.md), Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
+With parallelism, you specify how you want Harness to divide similar workloads. When you use parallelism and test splitting with [Test Intelligence](../ti-overview.md), Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
 
 <details>
 <summary>Example: Time saved by combining TI with test splitting</summary>

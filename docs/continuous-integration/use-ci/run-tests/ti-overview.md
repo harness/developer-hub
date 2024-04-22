@@ -10,6 +10,7 @@ redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/
   - /docs/continuous-integration/use-ci/run-tests/set-up-test-intelligence
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence
 ---
 
 import Tabs from '@theme/Tabs';
@@ -18,13 +19,13 @@ import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 :::info
 
-Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../../run-step-settings.md) to run tests.
+Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../run-step-settings.md) to run tests.
 
 :::
 
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build, and running all unit tests every time the code changes is expensive and time-consuming.
 
-Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with TI](./ti-test-splitting.md) to further optimize your test times.
+Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with TI](./test-intelligence/ti-test-splitting.md) to further optimize your test times.
 
 ## How does Test Intelligence work?
 
@@ -64,27 +65,27 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **R
 
 Test Intelligence is available for:
 
-- [Java](./ti-for-java-kotlin-scala.md)
-- [Kotlin](./ti-for-java-kotlin-scala.md)
-- [Scala](./ti-for-java-kotlin-scala.md)
-- [C#](./ti-for-csharp.md)
-- [Python](./ti-for-python.md)
-- [Ruby](./ti-for-ruby.md)
+- [Java](./test-intelligence/ti-for-java-kotlin-scala.md)
+- [Kotlin](./test-intelligence/ti-for-java-kotlin-scala.md)
+- [Scala](./test-intelligence/ti-for-java-kotlin-scala.md)
+- [C#](./test-intelligence/ti-for-csharp.md)
+- [Python](./test-intelligence/ti-for-python.md)
+- [Ruby](./test-intelligence/ti-for-ruby.md)
 
-For other codebases, you can use [Run steps](../../run-step-settings.md) to run tests.
+For other codebases, you can use [Run steps](../run-step-settings.md) to run tests.
 
 ## Enable Test Intelligence
 
 Using TI doesn't require you to change your build and test processes. To enable TI, you must [use a supported codebase](#supported-codebases-for-test-intelligence) and add a Run Tests step to your pipeline. For instructions and more information, go to:
 
-- [Enable TI for Java, Kotlin, or Scala](./ti-for-java-kotlin-scala.md)
-- [Enable TI for C#](./ti-for-csharp.md)
-- [Enable TI for Python](./ti-for-python.md)
-- [Enable TI for Ruby](./ti-for-ruby.md)
+- [Enable TI for Java, Kotlin, or Scala](./test-intelligence/ti-for-java-kotlin-scala.md)
+- [Enable TI for C#](./test-intelligence/ti-for-csharp.md)
+- [Enable TI for Python](./test-intelligence/ti-for-python.md)
+- [Enable TI for Ruby](./test-intelligence/ti-for-ruby.md)
 
 You'll start seeing test selection and time savings on the second run after adding the Run Tests step. The first time you run a pipeline after adding the Run Tests step, Harness creates a baseline for test selection in future runs.
 
-Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md). You can also configure TI to [ignore tests or files](#ignore-tests-or-files).
+Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./test-intelligence/ti-test-splitting.md). You can also configure TI to [ignore tests or files](#ignore-tests-or-files).
 
 ## Ignore tests or files
 
@@ -103,7 +104,7 @@ config:
 
 ## View test reports and test selection
 
-Test results and test selection are reported on the **Tests** tab. The visualization call graph provides insights into why each test was selected. You can drill down into selected tests to examine selected classes/methods in more detail. For more information about test reports and test selection, go to [View tests](../viewing-tests.md).
+Test results and test selection are reported on the **Tests** tab. The visualization call graph provides insights into why each test was selected. You can drill down into selected tests to examine selected classes/methods in more detail. For more information about test reports and test selection, go to [View tests](./viewing-tests.md).
 
 ## Troubleshoot Test Intelligence
 

@@ -4,7 +4,7 @@ description: Harness CI Intelligence leverages a suite of CI features to optimiz
 sidebar_position: 3
 ---
 
-Harness CI Intelligence features are designed to smartly speed up builds and boost efficiency.
+Harness Continuous Integration (CI) Intelligence features are designed to smartly speed up builds and boost efficiency.
 
 ## Cache Intelligence
 
@@ -20,17 +20,20 @@ When you use Cache Intelligence with Harness CI Cloud, you don't need to bring y
 
 ## Test Intelligence
 
-Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
+Testing is an important part of Continuous Integration. Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
 
-Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI can dramatically improve test times by running only the unit tests required to confirm the quality of the code changes that triggered the build. Instead of always running all unit tests, TI selects a subset of unit tests and skips the rest. Harness TI can also automatically split tests to run them in parallel.
+Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI can dramatically improve test times by running only the unit tests required to confirm the quality of the code changes that triggered the build.
 
-Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change build and test processes.
+Instead of always running all unit tests, TI selects the subset of relevant unit tests and skips the rest. You can also configure Harness TI to automatically split tests and run them in parallel.
 
-To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Test Intelligence overview](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence.md).
+Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. Using TI doesn't require you to change your build and test processes.
+
+To learn more about the Test Intelligence architecture, how it works, and how to enable it, go to [Test Intelligence overview](/docs/continuous-integration/use-ci/run-tests/ti-overview.md).
 
 While Test Intelligence is only for unit tests, you can [run a variety of tests in your CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci.md).
 
-### Time and cost savings with Test Intelligence
+<details>
+<summary>Example: Time and cost savings with Test Intelligence</summary>
 
 We ran Test Intelligence on our biggest repository, Harness-Core. Here's what we achieved:
 
@@ -49,6 +52,8 @@ Here's how Harness Test Intelligence performed with some popular open-source rep
 | Spring Cloud Alibaba | 0.744 mins                           | 0.59 mins                         |
 | Incubator Shenyu     | 1.16 min                             | 0.4 min                           |
 | Sentinel             | 1.90 min                             | 1 min                             |
+
+</details>
 
 ## Harness-managed Docker layer caching
 

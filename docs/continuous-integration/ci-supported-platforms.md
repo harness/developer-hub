@@ -51,7 +51,7 @@ For more information about early access features, including early access feature
 
 CI_INDIRECT_LOG_UPLOAD possibly moving to Account settings
 
-Harness Cloud flags: CI_ENABLE_BARE_METAL, HOSTED_BUILDS, CIE_HOSTED_VMS, CIE_HOSTED_VMS_MAC (will not GA due to limited resources)
+Harness Cloud flags: CI_ENABLE_BARE_METAL, HOSTED_BUILDS, CIE_HOSTED_VMS
 
 <!-- unknown: CI_DISABLE_RESOURCE_OPTIMIZATION, CI_EXTRA_ADDON_RESOURCE, DISABLE_CI_STAGE_DEL_SELECTOR, ENABLE_K8_BUILDS (probably remove since K8s is paid only), CI_PARSE_SAVINGS -->
 
@@ -74,4 +74,4 @@ Here are some CI early access features that were recently promoted to GA:
 
 <!-- possibly already globally enabled: CI_RUBY_TI -->
 <!-- CI_LE_STATUS_REST_ENABLED: In July 2023, this feature was rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step] (/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/container-step) to fail. This feature flag was disabled by default and had to be re-enabled if CI-to-Harness-Manager communications needed to support client connections with additional certificates. In or before April 2024, it was globally enabled again. -->
-<!-- Additional cache intelligence flags: CI_USE_S3_FOR_CACHE, CI_CACHE_OVERRIDE_FALSE, CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled) -->
+<!-- Additional cache intelligence flags: CI_USE_S3_FOR_CACHE, CI_CACHE_OVERRIDE_FALSE, CI_USE_GCS_FOR_MACOS_CACHE (use GCS for Cache Intelligence for MacOS hosted if the flag is enabled) - To enable Cache Intelligence on Harness CI Cloud macOS platform need these flags: CIE_HOSTED_VMS_MAC, CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED -->

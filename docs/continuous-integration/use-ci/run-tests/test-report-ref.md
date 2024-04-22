@@ -59,7 +59,7 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
 <details>
 <summary>Gradle</summary>
 
-This example runs Gradle with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
+This example runs Gradle with [Test Intelligence](./ti-overview.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
 
 ```yaml
               - step:
@@ -143,7 +143,7 @@ If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with
 <details>
 <summary>Pytest with Test Intelligence (Run Tests step)</summary>
 
-This example runs pytest with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
+This example runs pytest with [Test Intelligence](./ti-overview.md).
 
 ```yaml
               - step:
@@ -230,43 +230,6 @@ If your test tool doesn't automatically produce test results in JUnit XML format
                           - UnitTestResults.xml
 ```
 
-<!-- Framework example
-The following example runs tests with [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
-
-```yaml
-                  - step:
-                      type: RunTests
-                      name: runTests
-                      identifier: runTest
-                      spec:
-                        language: Csharp
-                        buildEnvironment: Framework
-                        frameworkVersion: "5.0"
-                        buildTool: Nunitconsole
-                        args: . "C:/Program Files (x86)/NUnit.org/nunit-console/nunit3-console.exe" dotnet-agent/TestProject1/bin/Debug/net48/TestProject1.dll --result="UnitTestResults.xml;transform=nunit3-junit.xslt"
-                        packages: TestProject1
-                        namespaces: TestProject1
-                        runOnlySelectedTests: true
-                        preCommand: |-
-                          wget https://github.com/nunit/nunit-console/releases/download/3.13/NUnit.Console-3.13.0.msi -o nunit.msi
-                          ./nunit.msi
-                          git status
-                          cd dotnet-agent/TestProject1
-                          wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
-                          .\dotnet-install.ps1
-                          dotnet build
-                          cd ..
-                          cd ..
-                          wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt -o nunit3-junit.xslt
-                        reports:
-                          type: JUnit
-                          spec:
-                            paths:
-                              - UnitTestResults.xml
-                        shell: Powershell
-```
--->
-
 </details>
 
 ### Clojure
@@ -306,7 +269,7 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 <details>
 <summary>Maven Surefire Plugin</summary>
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./test-intelligence/set-up-test-intelligence.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./ti-overview.md).
 
 ```yaml
               - step:

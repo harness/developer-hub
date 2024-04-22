@@ -1373,15 +1373,15 @@ Yes. How you do this depends on whether your tests run in a **Run** step or a **
 
 ### How do I use Test Intelligence?
 
-For instructions, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+For instructions, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview).
 
 ### Can Test Intelligence speed up my build times? What are the benefits of Test Intelligence?
 
-Test Intelligence improves test time by running only the unit tests required to confirm the quality of the code changes that triggered a build. It can identify negative trends and help you gain insight into unit test quality. For more information, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+Test Intelligence improves test time by running only the unit tests required to confirm the quality of the code changes that triggered a build. It can identify negative trends and help you gain insight into unit test quality. For more information, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview).
 
 ### What criteria does Test Intelligence use to select tests?
 
-For information about how Test Selection selects tests, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+For information about how Test Selection selects tests, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview).
 
 ### Does Test Intelligence split tests? Why would I use test splitting with Test Intelligence?
 
@@ -1407,7 +1407,7 @@ No call graph is generated if Test Intelligence selects to run all tests because
 
 Additionally, the first run with TI *doesn't* include test selection, because Harness must establish a baseline for comparison in future runs. On subsequent runs, Harness can use the baseline to select relevant tests based on the content of the code changes.
 
-For information about how and when TI selects tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence#how-does-test-intelligence-work)
+For information about how and when TI selects tests, go to [How does Test Intelligence work?](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview#how-does-test-intelligence-work)
 
 ### Ruby Test Intelligence can't find rspec helper file
 

@@ -16,7 +16,7 @@ Currently, TI for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Su
 
 :::
 
-Using [Test Intelligence (TI) ](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
+Using [Test Intelligence (TI) ](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
 ## Enable TI for C#
 
@@ -98,8 +98,6 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
    If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
-   <!-- ![](../static/set-up-test-intelligence-04.png) -->
-
    <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
@@ -124,7 +122,7 @@ The first time you run a pipeline after adding the Run Test step, Harness create
 
 Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
 
-You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+You can also configure TI to [ignore tests or files](../ti-overview.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 

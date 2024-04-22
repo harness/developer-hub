@@ -225,7 +225,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
 
 :::tip
 
-For some languages, you can leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature to reduce unit test time.
+For some languages, you can leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature to reduce unit test time.
 
 Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
 

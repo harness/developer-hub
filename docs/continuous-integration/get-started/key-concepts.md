@@ -66,11 +66,11 @@ With Kubernetes cluster build infrastructure, you can use the **Run as User** se
 
 ## Tests
 
-In a CI pipeline, you can use **Run** and **Run Tests** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
+In a CI pipeline, you can use **Run** and **Test** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
 
 ### Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/test-intelligence/set-up-test-intelligence). For more information, go to [Test Intelligence overview](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+[Test Intelligence](../use-ci/run-tests/ti-overview.md) speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality.
 
 ## Plugins
 

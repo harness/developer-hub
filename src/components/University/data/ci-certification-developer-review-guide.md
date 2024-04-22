@@ -23,7 +23,7 @@
 | Implement and utilize Secrets Management tools with Harness CI | [Use secrets managers](https://developer.harness.io/docs/platform/get-started/tutorials/add-secrets-manager) |
 | Understand and implement access control using Harness RBAC configurations | [Role-based access control (RBAC) in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/)|
 | **7. Implementing and Utilizing Test Intelligence in Harness CI** | |
-| Configure and synchronize Harness Test Intelligence with main/master branches              | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) |
+| Configure and synchronize Harness Test Intelligence with main/master branches              | [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview) |
 | Implement strategies to improve and optimize test execution times                          | [Split tests (parallelism)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) |
 | **8. Advanced CI Features and Troubleshooting in Harness** ||
 | Implement and utilize advanced features like caching and conditional executions in CI      | [Define conditional executions for stages and steps](/docs/platform/pipelines/step-skip-condition-settings) |
