@@ -1,5 +1,5 @@
 ---
-title: CCM onboarding guide
+title: CCM onboarding path
 description: Ramp up on Harness CCM
 sidebar_position: 1
 ---
@@ -23,9 +23,10 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 | **Step**                                                          | **Details**                                                                | **Demo video**                                                         |
 | ----------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| <a href="#step-1-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
+| <a href="#step-1-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                                                                        |
 | <a href="#step-2-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                                                                        |
-| <a href="#step-3-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                                                                        |
+| <a href="#step-3-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
+
 
 ### <a href="#phase-2"> Phase 2: Cost reporting</a>
 
@@ -61,28 +62,29 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 ## Phase 1: Initial setup
 
-### Step 1. Setup cost visibility
+### Step 1. Configure SSO
 
-First step in setting up Harness CCM is to create the cloud connector for respective cloud providers. A cloud connector is the configuration details which Harness uses to access the cloud provider APIs. At first, CCM will have the readonly permissions to access the cost data from the cloud providers.
+Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. The user can choose between a variety of SSO integrations according to their needs.
 
-Connector setup varies based on the cloud provider.
-
-- [Setup cost visibiltiy for AWS](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
-- [Setup cost visibiltiy for Azure](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
-- [Setup cost visibiltiy for GCP](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
-- [Setup cost visibiltiy for Kubernetes](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
-
-After the connectors are created, it will take atleast 24hrs for the cost data to be visible in CCM.
+For more information, go to [Authentication](docs/platform/authentication/authentication-overview.md).
 
 ### Step 2. Configure RBAC
 
 CCM provides various set of RBAC permissions to control access to various entities. For more information go to [CCM Roles and Permissions](docs/cloud-cost-management/access-control/ccm-roles-and-permissions.md).
 
-### Step 3. Configure SSO
 
-Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. The user can choose between a variety of SSO integrations according to their needs.
+### Step 3. Setup cost visibility
 
-For more information, go to [Authentication](docs/platform/authentication/authentication-overview.md).
+First step in setting up Harness CCM is to create the cloud connector for respective cloud providers. A cloud connector is the configuration details which Harness uses to access the cloud provider APIs. At first, CCM will have the readonly permissions to access the cost data from the cloud providers.
+
+Connector setup varies based on the cloud provider.
+
+- [Setup cost visibility for AWS](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md)
+- [Setup cost visibiltiy for Azure](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md)
+- [Setup cost visibiltiy for GCP](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md)
+- [Setup cost visibiltiy for Kubernetes](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes.md)
+
+After the connectors are created, it will take atleast 24hrs for the cost data to be visible in CCM.
 
 ## Phase 2: Cost reporting
 
@@ -162,6 +164,8 @@ Furthermore, AutoStopping is versatile and can seamlessly integrate with a varie
 - Azure VMs
 - GCP VMs
 
+All the supported configurations for AutoStopping is available at the [What's supported](https://developer.harness.io/docs/cloud-cost-management/whats-supported) page.
+
 For more information on AutoStopping, go to [AutoStopping](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/review-autostopping-rules-reqs.md).
 
 #### Sample application
@@ -172,4 +176,52 @@ For more information on AutoStopping sample app, go to [Sample app](tutorials/cl
 
 #### Rollout AutoStopping rules for all non-prod accounts
 
-TODO - Write down the process
+After successfully testing AutoStopping with the sample application in a practical setting, the next step is to implement AutoStopping across all non-production accounts. If a central team manages the cloud resources, they should oversee the deployment of AutoStopping. However, if different teams control various cloud resources, each team should take responsibility for integrating their resources with AutoStopping.
+
+AutoStopping is well-supported by APIs and Terraform, which simplifies the creation of rules at scale. Once AutoStopping is operational, its configuration can be converted into API calls or Terraform scripts. These can then be uniformly applied to other cloud resources.
+
+For more information see [API docs](https://apidocs.harness.io/tag/Cloud-Cost-AutoStopping-Rules-V2) / [Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs).
+
+## Phase 4: Cost governance
+
+### Step 1. Setup budgets
+
+Harness CCM Budgets enable you to create custom budgets and receive notifications if your spending exceeds or is projected to exceed these budgets. These budgets are adaptable, constructed from [Perspectives](#step-1-explore-cost-using-perspectives), and can encompass data across various cloud providers. You can opt for a dynamic budget that incorporates a growth rate or set your budget based on the previous period's spending. CCM also provides alerts for any budget overruns, assisting you in managing your cloud expenditures effectively.
+
+For more information on budgets, go to [Budgets](https://developer.harness.io/docs/category/budgets).
+
+### Step 2. Asset governance
+
+Asset governance enables you to manage your cloud resources by filtering, tagging, and then applying actions to them. The YAML syntax allows defininition of rules to enable well-managed cloud infrastructure that's both secure and cost optimized. Asset governance is built on top of the popular open-source [Cloud Custodian](https://cloudcustodian.io/).
+
+Asset governance is the easiest way to get started with optimization of your cloud spend. 
+
+#### Enable Asset governance for cloud connectors
+
+Asset governance is supported for AWS, Azure and GCP. For asset governance to work, connectors needs to be created for each AWS account, Azure subscriptions or GCP projects other than the master billing connector. Existing connectors can be edited to enable Asset governance. Adding the GOVERNANCE tag to the connector yaml (Account Settings -> Account Resources -> Connectors) will also enable this feature. 
+
+```yaml
+connector:
+  name: connector name
+  identifier: id
+  accountIdentifier: harness account id
+  type: CEAws
+  spec:
+    ....
+    featuresEnabled:
+      - VISIBILITY
+      - OPTIMIZATION
+      - GOVERNANCE        -> Add this tag
+```
+
+#### Asset governance recommendations
+
+Once the connector permissions are updated, asset governance generates recommendations. These recommendations are generated daily for few selected resources that cloud custodian supports. Once the recommendations are generated, it will be available along with other recommendations. Enforcement can be setup to apply the recommendation.
+
+#### Rolling out asset governance at scale
+
+Once asset governance is tested on few resources, it can be rolled out to take actions periodically on supported cloud resources. 
+
+- connector creation apis
+- gov apis
+- setting enforcements
