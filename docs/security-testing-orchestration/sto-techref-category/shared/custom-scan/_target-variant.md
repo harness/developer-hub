@@ -3,7 +3,7 @@ Every Custom Scan step needs a target name and variant.
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [Target name](#target-name)
-- [Variant](#variant)
+- [Target variant](#target-variant)
 
 <!-- TOC end -->
 
@@ -17,11 +17,11 @@ target_name
 A [user-defined label](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) for the code repository, container, application, or configuration to scan. Specify a unique, descriptive name. This makes it much easier to navigate your scan results in the STO UI.
 
 
-#### Variant
+#### Target Variant
 
 ##### Key
 ```
-variant
+target_variant
 ```
 
 ##### Value
