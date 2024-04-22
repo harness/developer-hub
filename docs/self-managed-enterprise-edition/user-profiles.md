@@ -8,12 +8,12 @@ This topic provides detailed information about the different types of user profi
 
 There are four user profiles for Harness Self-Managed Enterprise Edition.
 
-- **Demo:** This profile is used for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to four simultaneous executions across two modules, CI and CD.
-- **Small:** This profile is for up to 200 users.
-- **Medium:** This profile is for up to 1000.
-- **Large:** This profile is for up to 3000.
+- **Demo:** This profile for up to 10 users is for demonstration purposes to allow you to test Harness Self-Managed Enterprise Edition before onboarding. This profile enables you to run up to four simultaneous executions across two modules, CI and CD.
+- **Small:** This profile for up to 200 users requires a licensed version of Harness Self-Managed Enterprise Edition. This profile enables you to run up to 100 simultaneous executions across two modules, CI and CD.
+- **Medium:** This profile for up to 1000 users requires a licensed version of Harness Self-Managed Enterprise Edition. This profile enables you to run up to 500 simultaneous executions across two modules, CI and CD.
+- **Large:** This profile for up to 3000 users requires a licensed version of Harness Self-Managed Enterprise Edition. This profile enables you to run up to 1000 simultaneous executions across two modules, CI and CD.
 
-## Profile size and module execution details
+### Profile size and module execution details
 
 | **Size** | **# of users** | **Parallel executions (CD)** | **Parallel executions (CI)** |
 | :-- | :-- | :-- | :--
@@ -22,168 +22,59 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 | Medium|Up to 1000|250|250
 | Large|Up to 3000|500|500
 
-## Demo user requirements
+### Demo user requirements
 
 Core CPU and memory requirements depend on the modules you use for demo purposes. For CI and CD, a minimum 3 core CPU and 14 Gi memory are required.
 
-An `override-demo.yaml` file is available in the Harness [Helm chart repo](https://github.com/harness/helm-charts/blob/main/src/harness/override-demo.yaml).
+### Override files
 
-## Core service requirements
+Override files are available in the Harness [Helm chart repo](https://github.com/harness/helm-charts/blob/main/src/harness/).
 
-Harness has identified the resource requirements for each service, which you can scale via HPA based on usage. The base specifications of core services are provided below.
+- Demo: `override-demo.yaml`
+- Small: `override-small.yaml`
+- Medium: `override-medium.yaml`
+- Large: `override-large.yaml`
 
-#### CI-Manager
+#### Example installation and upgrade commands
 
-   ```yaml
-    java:
-      memory: "2048m"
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 3Gi
-      requests:
-        cpu: 2
-        memory: 3Gi
+You can use the following commands to upgrade/install via Helm for each profile. For complete Helm installation instructions, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
+
+##### Demo
+
+   ```
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml -f override-demo.yaml
    ```
 
-#### Access-Control
-
-   ```yaml
-    java:
-      memory: 384m
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 1536Mi
-      requests:
-        cpu: 1
-        memory: 1536Mi
+   ```
+   helm upgrade my-release harness/harness-prod -n <namespace> -f override.yaml -f override-demo.yaml
    ```
 
-#### Gateway
+##### Small
 
-   ```yaml
-    java:
-      memory: 1536
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 3072Mi
-      requests:
-        cpu: 256m
-        memory: 3072Mi
+```
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml -f override-small.yaml
    ```
 
-#### Harness-Manager
-
-   ```yaml
-    java:
-      memory: "2048"
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 4Gi
-      requests:
-        cpu: 1
-        memory: 4Gi
+   ```
+   helm upgrade my-release harness/harness-prod -n <namespace> -f override.yaml -f override-small.yaml
    ```
 
-#### Log-Service
+#### Medium
 
-   ```yaml
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 2Gi
-      requests:
-        cpu: 1
-        memory: 2Gi
+```
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml -f override-medium.yaml
    ```
 
-#### NG-Manager
-
-   ```yaml
-    java:
-      memory: "2048m"
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 4Gi
-      requests:
-        cpu: 2
-        memory: 4Gi
+   ```
+   helm upgrade my-release harness/harness-prod -n <namespace> -f override.yaml -f override-medium.yaml
    ```
 
-#### Pipeline-Service
+##### Large
 
-   ```yaml
-    java:
-      memory: "3072m"
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 4Gi
-      requests:
-        cpu: 2
-        memory: 4Gi
+```
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml -f override-large.yaml
    ```
 
-#### Platform-Service
-
-   ```yaml
-    java:
-      memory: "1536m"
-    replicaCount: 1
-    resources:
-      limits:
-        memory: 2Gi
-      requests:
-        cpu: 1
-        memory: 2Gi
    ```
-
-## Scale small, medium, and large profiles via HPA
-
-Harness tested HPA for services by running total of 3,000 pipelines (CI+CD) with one user. Harness tested with ~250 users and 1,500 pipeline executions. Each user executed six pipelines.
-
-You can scale your environment by adding HPA on each service.
-
-### Use HPA for small profiles
-
-The following YAML adds autoscaling for a small profile.
-
-   ```yaml
-   autoscaling:
-      enabled: true
-      minReplicas: 1
-      maxReplicas: 2
-      targetCPU: 80
-      targetMemory: 80
+   helm upgrade my-release harness/harness-prod -n <namespace> -f override.yaml -f override-large.yaml
    ```
-
-### Use HPA for medium profiles
-
-The following YAML adds autoscaling for a medium profile.
-
-   ```yaml
-    autoscaling:
-      enabled: true
-      minReplicas: 1
-      maxReplicas: 3
-      targetCPU: 80
-      targetMemory: 80
-   ```
-
-### Use HPA for large profiles
-
-The following YAML adds autoscaling for a large profile.
-
-   ```yaml
-    autoscaling:
-      enabled: true
-      minReplicas: 1
-      maxReplicas: 4
-      targetCPU: 80
-      targetMemory: 80
-   ```
-
