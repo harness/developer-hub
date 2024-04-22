@@ -1,7 +1,8 @@
 ---
-title: Infrstructure as Code Management release notes
-sidebar_label: Infrstructure as Code Management
-date: 2024-04-18T10:00
+title: Infrastructure as Code Management release notes
+sidebar_label: Infrastructure as Code Management
+date: 2024-04-22T20:00
+tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
 
@@ -25,6 +26,6 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 ### Version: 0.181.0
 <!-- Released on: 04 April 2024 -->
 #### Layout & Design Refinement:
-  - **Enhanced Layout:** Increased spacing around store cards to prevent overlap of check marks and enhance readability and accessibility.
-  - **Sensitive Field Icons:** The eye/hide icon is now exclusively used with sensitive fields to improve privacy and clarity.
+  - **Enhanced Layout:** Increased spacing around store cards to prevent overlap of check marks and enhance readability and accessibility. (IAC-1601)
+  - **Sensitive Field Icons:** The eye/hide icon is now exclusively used with sensitive fields to improve privacy and clarity. (IAC-1694)
 ---
