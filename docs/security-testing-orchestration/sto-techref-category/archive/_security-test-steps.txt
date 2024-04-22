@@ -51,7 +51,7 @@ To configure an Anchore Enterprise scan in a Security step, add the following to
 ### Target and variant (required)
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -95,7 +95,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -156,7 +156,7 @@ You can set up ECR scans using a Security step, but this is a legacy functionali
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -203,7 +203,7 @@ You can set up an AWS Security Hub scan using a Security step: create a CI Build
 
 #### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -241,7 +241,7 @@ STO supports the following `policy_type` settings for Bandit:
 
 #### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -275,7 +275,7 @@ You can set up Black Duck Hub scans using a Security step, but this is a legacy 
 
 #### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -325,7 +325,7 @@ You can set up Brakeman scans using a Security step, but this is a legacy functi
 
 #### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -361,7 +361,7 @@ You can set up Burp scans using a Security step, but this is a legacy functional
 
 #### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -457,7 +457,7 @@ You can set up Checkmarx scans using a Security step, but this is a legacy funct
 
 #### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
@@ -500,7 +500,7 @@ You can set up Mend scans using a Security step, but this is a legacy functional
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -566,7 +566,7 @@ You can set up OWASP scans using a Security step: create a CI Build or Security 
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -611,7 +611,7 @@ You can set up Prisma Cloud scans using a Security step, but this is a legacy fu
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -660,7 +660,7 @@ You can set up Prowler scans using a Security step, but this is a legacy functio
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
@@ -721,7 +721,7 @@ STO supports the following scan modes for SonarQube:
 #### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />

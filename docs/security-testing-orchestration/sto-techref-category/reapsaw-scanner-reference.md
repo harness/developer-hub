@@ -20,7 +20,7 @@ To ingest your results, add a Security step to a Build or Security stage and con
 
 ### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
