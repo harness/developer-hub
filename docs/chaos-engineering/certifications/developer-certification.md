@@ -1,12 +1,12 @@
 ---
 sidebar_position: 9
 title: HCE Developer certification
-description: Become a Harness certified chaos engineering developer
+description: Become a Harness-certified chaos engineering developer
 ---
 
 This tutorial guides you through registering for the Harness Chaos developer exam certification and completing it.
 
-Before you begin, refer to [onboarding guide](/docs/chaos-engineering/get-started/hce-onboarding.md) and [executing experiments in sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox.md).
+Before you begin, refer to the [Chaos Engineering overview](/docs/chaos-engineering/get-started/onboarding/hce-onboarding.md) and [Run chaos experiments in sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox.md).
 
 ## Obtaining developer certification
 
@@ -42,7 +42,7 @@ In the preceding diagram, steps 4 (navigate to app.harness.io) and 1 (register f
 
    ![proceed](./static/dev-cert/proceed.png)
 
-7. Read through the terms and condition, click **Agree and continue**.
+7. Read through the terms and conditions, click **Agree and Continue**.
 
    ![agree](./static/dev-cert/agree-continue.png)
 
@@ -50,7 +50,7 @@ In the preceding diagram, steps 4 (navigate to app.harness.io) and 1 (register f
 
    ![ready](./static/dev-cert/begin.png)
 
-9. Choose the options that you think suit the questions the best. At the end, the screen will display a code, along with 4 options. Go to the sandbox and enter the code.
+9. Choose the options that you think suit the questions the best. At the end, the screen will display a code, with 4 options. Go to the sandbox and enter the code.
 
    ![enter code](./static/dev-cert/enter-code.png)
 
@@ -58,7 +58,7 @@ In the preceding diagram, steps 4 (navigate to app.harness.io) and 1 (register f
 
    ![generate code](./static/dev-cert/generate-code.png)
 
-11. The code generated on this page is one of the options on the Harness university exam page. Select the code that was generated for you, and click **Submit exam**.
+11. The code generated on this page is one of the options on the Harness University exam page. Select the code generated for you, and click **Submit exam**.
 
   ![enter code](./static/dev-cert/enter-code.png)
 

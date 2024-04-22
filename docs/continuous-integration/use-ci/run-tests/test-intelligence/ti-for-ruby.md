@@ -147,7 +147,7 @@ This example shows a pipeline that:
               spec:
                 language: Ruby
                 buildTool: Rspec
-                testGlobs: "**/test/unit/**/*_test.rb" ## Optional
+                testGlobs: "test/unit/**/*_test.rb" ## Optional
                 runOnlySelectedTests: true ## Must be 'true' to use TI.
                 enableTestSplitting: true ## Optional. Apply parallelism to further improve test times.
 ```

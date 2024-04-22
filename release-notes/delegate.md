@@ -47,9 +47,9 @@ Please note that the following important changes will occur in an upcoming relea
 
    </details>
 
-- Delegate tokens not used within the last 30 days will be revoked automatically.
+- Delegate tokens not used within the last 90 days will be revoked automatically.
 
-   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
+   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 90 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
 
 :::
 

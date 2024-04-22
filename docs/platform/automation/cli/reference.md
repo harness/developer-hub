@@ -20,15 +20,15 @@ VERSION:
 
 COMMANDS:
    update, upgrade                 Check for updates and upgrade the CLI
-   secret, secret-token            Secrets specific commands. eg: apply (create/update), delete
-   service, svc                    Service specific commands, eg: apply (create/update), delete, list
-   environment, env                Environment specific commands, eg: apply (create/update), delete, list
-   connector, conn                 Connector specific commands, eg: apply (create/update), delete, list
-   gitops-application, gitops-app  Gitops application specific commands, eg: apply (create/update), delete, list
-   gitops-cluster, gitops-cluster  Gitops Cluster specific commands, eg: apply (create/update), delete, list
-   gitops-repository, gitops-repo  Gitops repository specific commands, eg: apply (create/update), delete, list
-   infrastructure, infra           Infrastructure specific commands, eg: apply (create/update), delete, list
-   pipeline, pipeline              Pipeline specific commands, eg: apply (create/update), delete, run, list
+   secret, secret-token            Secrets specific commands. eg: apply (create/update)
+   service, svc                    Service specific commands, eg: apply (create/update), list
+   environment, env                Environment specific commands, eg: apply (create/update), list
+   connector, conn                 Connector specific commands, eg: apply (create/update), list
+   gitops-application, gitops-app  Gitops application specific commands, eg: apply (create/update), list
+   gitops-cluster, gitops-cluster  Gitops Cluster specific commands, eg: apply (create/update), list
+   gitops-repository, gitops-repo  Gitops repository specific commands, eg: apply (create/update), list
+   infrastructure, infra           Infrastructure specific commands, eg: apply (create/update), list
+   pipeline, pipeline              Pipeline specific commands, eg: apply (create/update), run, list
    login, login                    Login with account identifier and api key.
    account, acc                    Fetch Account details
    help, h                         Shows a list of commands or help for one command
@@ -54,23 +54,23 @@ Setup Harness CD & GitOps in a few commands
 
 `harness update`             - Updates the CLI.
 
-`harness secret`             - Creates, deletes, or updates a Harness Secret.
+`harness secret`             - Creates or updates a Harness Secret.
 
-`harness connector`          - Creates, deletes, or updates a Harness Connector.
+`harness connector`          - Creates or updates a Harness Connector.
 
-`harness gitops-repository`  - Creates, deletes, or updates a GitOps Repository.
+`harness gitops-repository`  - Creates or updates a GitOps Repository.
 
-`harness gitops-cluster`     - Creates, deletes, or updates a GitOps Cluster.
+`harness gitops-cluster`     - Creates or updates a GitOps Cluster.
 
-`harness gitops-application` - Creates, deletes, or updates a GitOps Application.
+`harness gitops-application` - Creates or updates a GitOps Application.
 
-`harness environment`        - Creates, deletes, or updates a Harness Environment.
+`harness environment`        - Creates or updates a Harness Environment.
 
-`harness infrastructure`     - Creates, deletes, or updates a Harness Infeastructure.
+`harness infrastructure`     - Creates or updates a Harness Infeastructure.
 
-`harness service`            - Creates, deletes, or updates a Harness Service.
+`harness service`            - Creates or updates a Harness Service.
 
-`harness pipeline`           - Creates, deletes, updates, or runs a Harness Pipeline.
+`harness pipeline`           - Creates, updates or runs a Harness Pipeline.
 
 ## Global options
 
@@ -96,7 +96,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness secret apply - Create a new secret or Update  an existing one.
+      harness secret apply - Create a new secret or Update an existing one.
    
    USAGE:
       harness secret apply [command options] [arguments...]
@@ -118,7 +118,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness connector apply - Create a new connector or Update  an existing one.
+      harness connector apply - Create a new connector or Update an existing one.
 
    USAGE:
       harness connector apply [command options] [arguments...]
@@ -142,7 +142,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness environment apply - Create a new environment or Update  an existing one.
+      harness environment apply - Create a new environment or Update an existing one.
    
    USAGE:
       harness environment apply [command options] [arguments...]
@@ -157,7 +157,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness infrastructure apply - Create a new infrastructure or Update  an existing one.
+      harness infrastructure apply - Create a new infrastructure or Update an existing one.
    
    USAGE:
       harness infrastructure apply [command options] [arguments...]
@@ -175,7 +175,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness service apply - Create a new service or Update  an existing one.
+      harness service apply - Create a new service or Update an existing one.
    
    USAGE:
       harness service apply [command options] [arguments...]
@@ -193,7 +193,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness gitops-cluster apply - Create a new gitops-cluster or Update  an existing one.
+      harness gitops-cluster apply - Create a new gitops-cluster or Update an existing one.
    
    USAGE:
       harness gitops-cluster apply [command options] [arguments...]
@@ -227,7 +227,7 @@ Setup Harness CD & GitOps in a few commands
    
    ```
    NAME:
-      harness gitops-repository apply - Create a new gitops-repository or Update  an existing one.
+      harness gitops-repository apply - Create a new gitops-repository or Update an existing one.
    
    USAGE:
       harness gitops-repository apply [command options] [arguments...]
@@ -244,7 +244,7 @@ Setup Harness CD & GitOps in a few commands
 
    ```
    NAME:
-      harness gitops-application apply - Create a new gitops-application or Update  an existing one.
+      harness gitops-application apply - Create a new gitops-application or Update an existing one.
    
    USAGE:
       harness gitops-application apply [command options] [arguments...]
@@ -261,7 +261,7 @@ Setup Harness CD & GitOps in a few commands
 10. `harness pipeline apply help`
     ```
     NAME:
-       harness pipeline apply - Create a new pipeline or Update  an existing one.
+       harness pipeline apply - Create a new pipeline or Update an existing one.
 
     USAGE:
        harness pipeline apply [command options] [arguments...]

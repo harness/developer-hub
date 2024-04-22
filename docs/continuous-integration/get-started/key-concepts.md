@@ -76,7 +76,7 @@ Test Intelligence speeds up your test cycles by running only the unit tests requ
 
 Drone plugins are Docker containers that perform predefined tasks, such as deploying code, publishing artifacts, sending notifications, and more. They run in **Plugin** steps in your CI pipelines. You can use existing pre-built plugins or write your own. For more information, go to [Use Plugins](/docs/category/use-plugins/).
 
-If you're using Harness Cloud build infrastructure, you can use the built-in [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+If you're using Harness Cloud build infrastructure, you can use the built-in [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Workflow Steps in your CI pipelines.
 
 ## Dependencies and background services
 

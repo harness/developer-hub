@@ -17,8 +17,7 @@ You can use plugins for anything. If it can be scripted, it can be a plugin. For
 
 You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) and [GitHub Actions Marketplace](https://github.com/marketplace?type=actions).
 
-The [Bitrise Integrations library](https://bitrise.io/integrations/steps) is not supported in the CD Plugin step at this time.
-
+[Bitrise Workflow Steps](https://bitrise.io/integrations/steps) aren't supported in the CD Plugin step at this time.
 
 ## Creating custom plugins
 

@@ -77,6 +77,38 @@ tags:
   - java
 ```
 
+### Add Relations
+
+For the relationship graph to get populated, you need to add the dependencies in the `catalog-info.yaml`
+
+![](./static/relations.png)
+
+The field `spec.owner` is a reference. In this case, the string `group:pet-managers` was given by the user. That means that the kind is `Group`, the namespace is left out, and the name is pet-managers.
+
+The entries in `providesApis` are references. In this case, none of them needs to specify a kind since we know from the context that that's the only kind that's supported here. The second entry specifies a namespace but the other ones don't, and in this context, the default is to refer to the same namespace as the originating entity (external-systems here). So the three references essentially expand to `api:external-systems/petstore`, `api:internal/streetlights`, and `api:external-systems/hello-world`. We expect there to exist three API kind entities in the catalog matching those references.
+
+[Read More about relations](https://developer.harness.io/docs/internal-developer-portal/catalog/system-model#relations), in the system model docs. Also reference once mentioned for a single component `catalog-info.yaml` doesn't need to be included in the dependant components catalog-info.yaml to show up in the relationship graph of both the entities. 
+
+
+```YAML
+# Example catalog-info.yaml
+...
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:pet-managers
+  dependsOn:
+    - Component:manager
+    - Component:ng-manager
+    - Component:platform-service
+  providesApis:
+    - accesscontrol-service
+    - petstore
+    - internal/streetlights
+    - hello-world
+...
+```
+
 ### Provide external links (Optional)
 
 External hyperlinks related to the entity can be added for contextual information:

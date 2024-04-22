@@ -44,6 +44,9 @@ export default function SSCA() {
             and enable rapid responses to new threats. Learn how you can set up your
             pipelines to secure your software supply chain.
             </p>
+            <p>
+            The Harness SSCA module is currently in a <strong> Limited General Availability (GA) </strong> release.
+            </p>
           </div>
         </div>
       </div>

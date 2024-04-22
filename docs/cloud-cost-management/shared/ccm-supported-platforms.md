@@ -257,7 +257,7 @@ The following data can be consumed through dashboards:
 | --- | --- | --- | --- | --- | --- |
 |AutoStopping | ✅  | ✅  | ✅  | ✅ \*  | ✅ |
 |Recommendations | ✅  | ✅  | ✅  | ✅ | ✅ |
-|Commitment Orchestrator | Coming soon | |  |  |  |
+|Commitment Orchestrator | EC2 (beta) | |  |  |  |
 
 \* - Review the information within the AutoStopping section to access details about supported Kubernetes providers.
 <details>
