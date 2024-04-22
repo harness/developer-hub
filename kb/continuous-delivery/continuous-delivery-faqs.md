@@ -193,7 +193,7 @@ However, apart from these differences, basic JSON documents are considered valid
 
 #### Under what condition does an immutable delegate automatically upgrade?
 
-Autoupgrade initiates when a new version of the delegate is published, not when the delegate is expired.
+Auto-upgrade initiates when a new version of the delegate is published, not when the delegate is expired.
 
 #### Is there an environment variable to set when starting the container to force the Docker delegate to use client tool libs from harness-qa-public QA repo?
 
@@ -211,7 +211,7 @@ Yes, NG dashboards support Custom Group (CG) data, and you can create custom das
  
 To get output from a chained pipeline and utilize it in another stage, you need to specify the expression of the output variable for the chained pipeline at the parent pipeline level in the output section.
 
-#### If I delete an infradef after deployments are done to it, what are the implications other than potential dashboard data loss for those deployments ?
+#### If I delete an infrastructure definition after deployments are done to it, what are the implications other than potential dashboard data loss for those deployments ?
 
 At the moment there is no dependency on the instance sync and infrastructure definition. Infrastructure definition is used only to generate infrastructure details. The instance sync is done for service and environment. Only in case if any these are deleted, the instance sync will stop and delete instances.
 
@@ -355,7 +355,7 @@ You can achieve this by invoking the Harness API using PowerShell. The API endpo
 
 #### Is there a configuration option to preserve more than two older release secrets and config maps in Kubernetes deployments?
 
-No, currently, there is no configurable option to increase the number of older release secrets and config maps that can be preserved. The number of stored releases is fixed.
+No. Currently, there is no configurable option to increase the number of older release secrets and config maps that can be preserved. The number of stored releases are fixed.
 
 #### How is the release history stored for Kubernetes deployments?
 
@@ -373,17 +373,17 @@ Yes, you can access the raw `plan.out` file by using the `humanReadableFilePath`
 
 Yes, you can override values in the Helm chart during the service deployment in Kubernetes.
 
-#### How can I use values files to override Helm chart values during deployment?
+#### How can I use the values files to override Helm chart values during deployment?
 
-You can define your input values in separate files, known as values files. These files can be stored and optionally tracked in Git. Harness allows you to specify these values files in your service definition, which will be used during the deployment.
+You can define your input values in separate files known as values files. These files can be stored and optionally tracked in Git. Harness allows you to specify these values files in your service definition, which will be used during the deployment.
 
 #### What is the advantage of using values files over '--set' option for Helm chart overrides?
 
 Using values files provides a more organized and maintainable way to manage overrides in Helm charts. It is considered a best practice, and it allows you to easily track and version your input values for deployments.
 
-#### How can Harness detect if the sub tickets in Jira are closed before the approval process runs?
+#### How can Harness detect if the sub-tickets in Jira are closed before the approval process runs?
 
-The first step is to make API calls to the Jira issue endpoint. By inspecting the response from the API call, you can check if the 'subtask' field is populated for the main issue.  Once you identify the subtask issue keys from the API response, you can create a loop to retrieve the status of each sub ticket using their respective issue keys. This will allow you to determine if the sub tickets are closed or not before proceeding with the approval process in Harness.
+The first step is to make API calls to the Jira issue endpoint. By inspecting the response from the API call, you can check if the 'subtask' field is populated for the main issue.  Once you identify the subtask issue keys from the API response, you can create a loop to retrieve the status of each sub-ticket using their respective issue keys. This will allow you to determine if the sub-tickets are closed or not before proceeding with the approval process in Harness.
 
 #### Can we use matrices to deploy multiple services to multiple environments when many values in services and environments are not hardcoded?
 
@@ -393,13 +393,13 @@ Yes, you can use matrices for deploying multiple services to multiple environmen
 
 Some examples of values that are not hardcoded include chart versions, values YAMLs, infradef, and namespaces. These are currently treated as runtime inputs.
 
-#### When querying the Harness Approval API, the Approval Details are returning with message No Approval found for execution
+#### When querying the Harness Approval API, the approval details are returning with the message, No approval found for execution.
 
-The api will only return Approval details if there are any approval step pending for approval, If there are no such executions currently than its expected to return No Approval found for execution
+The API will only return Approval details if there are any approval step pending for approval. If there are no such executions currently, then its expected to return No Approval found for execution
 
 #### Trigger another stage with inputs in a given pipeline?
 
-You cannot do it if the stage is part of the same pipeline. However, using Pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of Pipeline B.
+You cannot do it if the stage is part of the same pipeline. However, using pipeline A and running a custom trigger script inside it can trigger the CI stage which is part of pipeline B.
 
 #### Can I manipulate and evaluate variable expressions, such as with JEXL, conditionals or ternary operators?
 
@@ -409,111 +409,115 @@ Yes, there are many ways you can manipulate and evaluate expressions. For more i
 
 Yes, you can [use ternary operators with triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator).
 
-#### How do we easily change git folders in a repo for the git exp project?
+#### How do we easily change Git folders in a repo for the GitEx project?
 
 The default branch and file path will not be changeable after the creation as we store data in Git end and only metadata is stored in Harness. 
-You can change it to the required path while creating the initial entity you can select the folder other than.harness Now you can recreate the entity using the same yaml and make minor changes like file path and entity id.
+You can change it to the required path. While creating the initial entity, you can select the folder other than `.harness`. Now, you can recreate the entity using the same YAML and make minor changes in it like file path and entity Id.
 
-#### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repo?
+#### How long is the main repo content cached before the latest pipeline code version is pulled from the remote Github repository?
 
-The content is cached for each branch the file has been fetched for to date. The expiry time for content is 30 days. 
+The content is cached for each branch from where the file has been fetched for to date. The expiry time for the content is 30 days. 
 
-We don’t auto-reload cache on Back End as a synchronous job or similar. Any execution of that particular pipeline or involving that particular template/input set updates the cached content as we fetch everything from GIT during execution.
+We don’t auto-reload cache on backend as a synchronous job or similar. Any execution of that particular pipeline or involving that particular template/input set updates the cached content as we fetch everything from Git during execution.
 
-Until any user-driven operation is performed, e.g. reload-from-git button on UI, execution of the pipeline / any entity via RUN button / UI or execution of entity via trigger etc.
+Until any user-driven operation is performed, for example, reload-from-git button on UI, execution of the pipeline/any entity via the RUN button/UI or execution of entity via trigger, and so on.
 
-#### Is there a way to force the pipeline editor to read the latest version from the remote Github repo?
+#### Is there a way to force the pipeline editor to read the latest version from the remote GitHub repository?
 
-Yes, the “reload-from-git” option on three dots does the job.
+Yes, the “reload-from-git” option in more options does the job.
 
-#### Not able to delete the template having an “Ad” string in between with adblocker installed?
+#### What am I not able to delete the template having an “Ad” string in between with adblocker installed?
 
-It will happen due to an ad blocker extension installed on the user system - and it will happen only for the template with the name of the template Eg:(Sysdig AdHoc) containing an “Ad” string in between, and when this is sent in the API as a path or a query param - this will get blocked by the ad blocker.
+It will happen due to an ad blocker extension installed on the user system. It will happen only for the template with 'Ad' in the name. For example, Sysdig AdHoc containing an “Ad” string. When this is sent in the API as a path or a query param, this will get blocked by the ad blocker.
  
-These ad blockers have some rules for the URIs - if it contains strings like “advert”, “ad”, “double-click”, “click”, or something similar - they block it.
+These ad blockers have some rules for the URIs: if it contains strings like “advert”, “ad”, “double-click”, “click”, or something similar, they block it.
 
-#### Pipeline variables are not being translated in HTTP step assertion and output variables.
+#### Pipeline variables are not being translated in the HTTP step assertion and output variables.
 
-Expression to assert Numeric values, Please note that asserting on integers should be done without quotes since both sides of the assertions should be of number format (for JEXL).
+Expression to assert numeric values:   
 
 * ```<+httpResponseCode>==200```
 * ```200==<+httpResponseCode>```
 * ```<+pipeline.variables.EXPECTED_RESPONSE>==<+httpResponseCode>```
 
-Expression to assert on Strings would require double quotes. Please note that it would require Double Quotes on both ends.
+Note that asserting on integers should be done without quotes since both sides of the assertions should be of number format (for JEXL).
 
-#### Can I customize the looping conditions and behaviour?
+Expression to assert on Strings would require double quotes. Note that it would require double quotes on both ends.
 
-Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-#### What are the use cases for utilizing a Looping Strategy in Harness NextGen?
+#### Can I customize the looping conditions and behavior?
+
+Yes, Harness NextGen often offers customization options to define the loop exit conditions, maximum iteration counts, sleep intervals between iterations, and more information [here](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism).
+
+#### What are the use cases for utilizing looping strategy in Harness NextGen?
 
 Looping strategies are useful for scenarios like canary deployments, gradual rollouts, and validation checks where you want to keep iterating until you achieve the desired result.
 
-#### Can I deploy different versions of serverless functions using Harness?
+#### Can I deploy different versions of Serverless functions using Harness?
 
-Yes, Harness generally allows users to deploy multiple versions of serverless functions, helping in testing and gradual rollout.
+Yes, Harness generally allows users to deploy multiple versions of Serverless functions, helping in testing and gradual rollout.
 
 #### At the organizational level, I aim to establish a user group to which I can assign a resource group containing numerous distinct pipelines across specific projects.
 
-We don’t support this. We don’t support specific pipeline selections for specific projects for an Organization. But the User can limit the access to the projects by selecting specific projects as Scopes to apply in Org level resource group.
+We don’t support specific pipeline selections for specific projects for an organization. But the user can limit the access to the projects by selecting specific projects as scopes to apply in the org level resource group.
 
-#### Does Harness support blue-green or canary deployments for serverless applications?
+#### Does Harness support Blue/Green or Canary deployments for Serverless applications?
 
-Yes, Harness supports advanced deployment strategies like blue-green and canary deployments for serverless applications. These strategies allow you to roll out updates gradually and mitigate risks associated with new releases.
+Yes, Harness supports advanced deployment strategies like Blue/Green and Canary deployments for Serverless applications. These strategies allow you to roll out updates gradually and mitigate risks associated with new releases.
 
-#### Can I set up automated testing for my serverless applications with Harness?
+#### Can I set up automated testing for my Serverless applications with Harness?
 
-Absolutely. Harness enables you to incorporate automated testing into your deployment pipelines, including unit tests, integration tests, and performance tests. This ensures that your serverless applications meet quality standards before reaching production.
+Absolutely. Harness enables you to incorporate automated testing into your deployment pipelines, including unit tests, integration tests, and performance tests. This ensures that your Serverless applications meet quality standards before reaching production.
 
-#### How does Harness handle rollbacks in serverless deployments?
+#### How does Harness handle rollbacks in Serverless deployments?
 
-If an issue arises during a deployment, Harness can automatically trigger a rollback to the previous version of your serverless application. This helps maintain system stability and minimizes downtime.
+If an issue arises during a deployment, Harness can automatically trigger a rollback to the previous version of your Serverless application. This helps maintain system stability and minimizes downtime.
 
-#### Can I set up advanced deployment strategies for Google Cloud Functions, like canary deployments?
+#### Can I set up advanced deployment strategies like Canary deployment for Google Cloud Functions?
 
-The harness supports advanced deployment strategies like canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
+Harness supports advanced deployment strategies like Canary deployments for Google Cloud Functions. This allows you to roll out updates gradually and assess their impact before a full release.
 
-#### Zero results returned when trying to find deployment data from 2020?
+#### Zero results returned when trying to find deployment data from 2020.
 
-We do have 6 month Data retention period as mentioned in [Documentation](https://www.harness.io/pricing?module=cd#) 
-So older deployments will not be available.
+We have a 6 month data retention period as mentioned in [Documentation](https://www.harness.io/pricing?module=cd#). 
+Deployments older that that are not available.
+
+<!---what's this
 
 #### Currently we make use of this feature from FirstGen. Is there, or will there be an equivalent feature in Next Gen?
 
-Consider the below mentionings :
+Consider the below mentions :
 - Reference 1 : [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint/)
 - Reference 2 : You can Use Webhook notifications in NG to inform an external application of an event. Refer to this [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/#webhook-notifications) 
+  
+--->
 
-#### How to use spilt function on variable
+#### How to use spilt function on variable?
 
 You can split on any delimiter and use index based access.
-For ex: if you have a variable with prod-environment-variable so you can use below to get prod
+For example, if you have a variable with prod-environment-variable, you can use the below expression to get prod:  
 ```<+<+pipeline.variables.envVar>.split('-')[0]>```
 
-#### How to use Substring function on variable
+#### How to use the substring function on variable?
 
-You can use substring function and need to pass starting and end index
-For ex: if you have a variable with prod-environment-variable so you can use below to get prod
+You can use the substring function when you need to pass the starting and end index.
+For example, if you have a variable with prod-environment-variable, you can use the below expression to get prod:  
 ```<+<+pipeline.variables.envVar>.substring(0,3)>```
 
-#### How to pass value to a variable manually while running from ui if same pipeline is configured to run via trigger and using variable from trigger.
+#### How to pass value to a variable manually while running from UI if same pipeline is configured to run via trigger and using variable from trigger.
 
-You can check the triggerType variable to identify if pipeline was invoked via trigger or manually and can use below jell condition 
+You can check the triggerType variable to identify if pipeline was invoked via trigger or manually and can use the following JEXL condition:
 ```<+<+pipeline.triggerType>=="MANUAL"?<+pipeline.variables.targetBranch>:<+trigger.targetBranch>>```
 
-#### How to concatenate secrets with string
+#### How to concatenate secrets with string?
 
-You use either of following expressions:
+You use either of the following expressions:
 
-```<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>```
-
-OR
-
-```<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>```
+* ```<+secrets.getValue("test_secret_" + <+pipeline.variables.envVar>)>```
+* ```<+secrets.getValue("test_secret_".concat(<+pipeline.variables.envVar>))>```
 
 #### Can a non-git-sync'd pipeline consume a git-sync'd template from a non-default branch?
 
-Yes an Inline pipeline can consume a template from non-default branch.
+Yes, an inline pipeline can consume a template from non-default branch.
 
 :::info Template Library
 
@@ -521,61 +525,57 @@ Reference specific versions of a template on a different branch from the pipelin
 
 While using Harness Git Experience for pipelines and templates, you can now link templates from specific branches.
 
-Previously, templates were picked either from the same branch as the pipeline, if both pipelines and templates were present in the same repository, or from the default branch of the repository, if templates were stored in a different repository than the pipeline.
+Previously, templates were picked either from the same branch as the pipeline if both pipelines and templates were present in the same repository, or from the default branch of the repository if templates were stored in a different repository than the pipeline.
 
-The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
+The default logic will continue to be used if no branch is specified when selecting the template. But, if a specific branch is picked while selecting the template, then templates are always picked from the specified branch only.
 
 :::
 
 #### Is there a way to generate a dynamic file with some information in one stage of the pipeline and consume that file content in a different pipeline stage?
 
-For CI :
+For CI:
 
-You can refer to this [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/).
+Go to this [Documentation](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages/) for more details.
 
-For CD :
+For CD:
 
-You can use API to create file in harness file store and then refer it to other stage. Refer [here](https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders).
+You can use API to create a file in Harness file store and then refer it to other stage. For more details, go to [API documentation](https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders).
 
-Or
-
-You can just write a file on the delegate and use the same delegate.
+Or, you can just write a file on the delegate and use the same delegate.
 
 #### How to do a Flank Deployment in Harness?
 
-You can use Deployment Templates for this use case. You can find more information on this [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/).
+You can use deployment templates for this use case. You can find more information on this [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/).
 
-#### How to test harness entities (service, infra, environment) changes through automation
+#### How to test Harness entities (service, infra, environment) changes through automation?
 
-Harness by default will not let the user push something or create any entity which is not supported or incorrect as our yaml validator always make sure the entity is corrected in the right format.
+Harness by default will not let the user push something or create any entity which is not supported or is incorrect as our YAML validator always makes sure the entity is corrected in the right format.
  
-You can use yaml lint to verify the yaml format of the entity and in order to answer your question there is no way to perform testing (automation testing, unit testing) etc of harness entities before releasing any change within those entities.
+You can use YAML lint to verify the YAML format of the entity. There is no way to perform testing (automation testing, unit testing, etc.) of Harness entities before releasing any change within those entities.
 
 #### What kind of order do we apply to the Docker Tags as part of the artifact we show for the users? 
 
 Except for the latest version of Nexus, it is in alphabetical order.
 
-#### Is there a way to use a Pipeline within a pipeline in a template? 
+#### Is there a way to use a pipeline within a pipeline in a template? 
 
-We do not support this, nor do we plan to at this time, due to the complexity already with step, stage and pipeline templates being nested within each other. 
+We do not support this, nor do we plan to at this time due to the complexity already with step, stage, and pipeline templates being nested within each other. 
 
 Resolving inputs across those levels is very expensive and difficult to manage for end users.
 
-#### In Harness can we refer to a secret created in Org in the Account level connector?
-No higher-level entity can refer to lower-scoped entities e.g. we cannot refer to a secret created in Org in the Account level connector.
+#### In Harness can we refer to a secret created in org in the account level connector?
+No, higher-level entity can refer to lower-scoped entities. For example, we cannot refer to a secret created in org in the account level connector.
 
 #### Do we have multi-select for inputs in NG as we had in FG?
 
-Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. You must specify the allowed values in the input as mentioned in the above examples.
+Multiple selection is allowed for runtime inputs defined for pipelines, stages, and Shell Script variables. You must specify the allowed values in the input as mentioned in the above examples.
 
 The multiple selection functionality is currently behind the feature flag, ```PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES```. Contact Harness Support to enable the feature.
 
 #### In the declarative rollback, it will rollback also the secrets and config maps used in the last successful execution and can we retain more than 2 older release secrets and config maps?
-?
 
-During rollback, Harness reapplies the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state.  
-Harness uses a fixed limit of 2 in its release history cleanup logic. This value cannot be changed. 
-Refer more on this in [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes)
+During rollback, Harness reapplies the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state. Harness uses a fixed limit of 2 in its release history cleanup logic. This value cannot be changed. 
+For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes).
 
 #### Is this the right format to push a secret to the Azure key vault? secret.setVaule("azurevauly://avidentifier/pathToSecret", secretVaule)
 secret.setValue is not supported. Secrets can be referred to only using ```secret.getValue("azurevauly://avidentifier/pathToSecret")``` or `secret.getValue("secretIdentifierInHarness")`
