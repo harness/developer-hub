@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Flows
+title: Getting Started with Workflows
 description: Learn about writing new templates
 sidebar_position: 90
 sidebar_label: Getting Started with Workflows
