@@ -13,7 +13,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
   <DocImage path={require('./static/AG5.png')} width="120%" height="120%" title="Click to view full size image" />
 
   - **Total Evaluations** — The total number of evaluations performed to date.
-  - **Total Enforcements** — The total number of active enforcements created to date.
+  - **Total Active Enforcements** — The total number of active enforcements created to date.
   - **Total Savings** —  The total cost savings achieved from day one to date.
   - **Savings in Timeframe** — The total cost savings achieved in the timeframe selected.
   - **Evaluations in Timeframe** — The total number of evaluations in the timeframe selected.
