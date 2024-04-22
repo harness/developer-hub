@@ -1,7 +1,7 @@
 ---
 title: Run tests in CI pipelines
 description: Use Run and Test steps to run tests in CI pipelines.
-sidebar_position: 10
+sidebar_position: 1
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci
   - /tutorials/ci-pipelines/test/

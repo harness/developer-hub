@@ -1,7 +1,7 @@
 ---
 title: Split tests in Run steps
 description: Split tests for any language. Use parallelism to improve test times.
-sidebar_position: 41
+sidebar_position: 45
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
