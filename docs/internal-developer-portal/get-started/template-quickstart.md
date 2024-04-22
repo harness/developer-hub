@@ -22,9 +22,15 @@ In this tutorial, we will create a template to add a new repository in GitHub.
 2. Add a **New Git Integration** with type as **GitHub**.
 3. Now Select the GitHub **Connector** and **Save Changes**, [follow the steps to add a new connector](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) 
 
+:::info
+
+Make sure the Connector URL used here is pointed towards the org where you want to create the new repo and the token used have write permission for the repo also **Enable the API** while creating connector.
+
+:::
+
 ## Create Template
 
-**If you want to use our sample templates you can skip this step and go to register the template**
+**If you want to use our sample templates you can skip this step and go to register template step**
 
 The template is defined in a YAML file named `template.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
