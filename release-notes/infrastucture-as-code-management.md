@@ -24,11 +24,7 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 
 ### Version: 0.181.0
 <!-- Released on: 04 April 2024 -->
-#### New features and enhancements:
-* [IAC-1601]: add more spacing on store cards by @simonharness in https://github.com/wings-software/iac-server/pull/780
-* [IAC-1626]: Update monaco packages by @willd0yle in https://github.com/wings-software/iac-server/pull/782
-* [IAC-418]: Add husky pre commit check by @willd0yle in https://github.com/wings-software/iac-server/pull/781
-* [IAC-1694]: Only show show/hide button if an output is marked as sensitive by @willd0yle in https://github.com/wings-software/iac-server/pull/789
-* [IAC-1685]: update docker file location in manifests by @harnessmark in https://github.com/wings-software/iac-server/pull/790
-
+#### Layout & Design Refinement:
+  - **Enhanced Layout:** Increased spacing around store cards to prevent overlap of check marks and enhance readability and accessibility.
+  - **Sensitive Field Icons:** The eye/hide icon is now exclusively used with sensitive fields to improve privacy and clarity.
 ---
