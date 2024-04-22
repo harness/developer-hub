@@ -221,60 +221,31 @@ reports:
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) to run unit tests with Test Intelligence.
-
-<Tabs>
-  <TabItem value="Harness Cloud" default>
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) is available for Python.
 
 ```yaml
-- step:
-    type: RunTests
-    name: Run Python Tests
-    identifier: Run_Python_Tests
-    spec:
-      language: Python
-      buildTool: Pytest
-      runOnlySelectedTests: true
-      preCommand: |
-        python3 -m venv .venv
-        . .venv/bin/activate
+              - step:
+                  type: Test
+                  name: runTestsWithIntelligence
+                  identifier: runTestsWithIntelligence
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    command: |-
+                      python3 -m venv .venv
+                      . .venv/bin/activate
 
-        python3 -m pip install -r requirements/test.txt
-        python3 -m pip install -e .
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+
+                      pytest
+                    shell: Python
+                    intelligenceMode: true
 ```
-
-</TabItem>
-  <TabItem value="Self-managed">
-
-```yaml
-- step:
-    type: RunTests
-    name: Run Python Tests
-    identifier: Run_Python_Tests
-    spec:
-      connectorRef: account.harnessImage
-      image: python:latest
-      language: Python
-      buildTool: Pytest
-      runOnlySelectedTests: true
-      preCommand: |
-        python3 -m venv .venv
-        . .venv/bin/activate
-
-        python3 -m pip install -r requirements/test.txt
-        python3 -m pip install -e .
-```
-
-</TabItem>
-</Tabs>
 
 ### Test splitting
 
-Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
-
-Stage-level parallelism is recommended for Python.
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 ## Specify version
 

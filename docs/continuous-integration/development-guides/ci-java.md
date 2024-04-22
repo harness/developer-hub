@@ -144,75 +144,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-<Tabs>
-<TabItem value="hosted" label="Harness cloud" default>
-
-You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
-
-<Tabs>
-<TabItem value="run" label="Run step" default>
-
-This example uses two [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build and test with Maven.
-
-```yaml
-- step:
-    type: Run
-    name: build
-    identifier: build
-    spec:
-      shell: Sh
-      command: |
-        mvn clean package dependency:copy-dependencies
-- step:
-    type: Run
-    name: run test
-    identifier: run_test
-    spec:
-      shell: Sh
-      command: |-
-        mvn test
-      reports:
-        type: JUnit
-        spec:
-          paths:
-            - target/surefire-reports/*.xml
-```
-
-</TabItem>
-<TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-
-You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature.
-
-Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
-
-The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
-
-```yaml
-- step:
-    type: RunTests
-    name: Run Tests
-    identifier: Run_Tests
-    spec:
-      language: Java
-      buildTool: Maven
-      args: test
-      packages: io.harness.
-      runOnlySelectedTests: true
-      postCommand: mvn package -DskipTests
-      reports:
-        type: JUnit
-        spec:
-          paths:
-            - "target/surefire-reports/*.xml"
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="selfmanaged" label="Self-managed">
-
-You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** or **Test** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 <Tabs>
 <TabItem value="run" label="Run step" default>
@@ -246,37 +178,26 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-step-s
 ```
 
 </TabItem>
-<TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+<TabItem value="test" label="Test step (Test Intelligence)">
 
-You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature.
-
-Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
-
-The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
+You must use the **Test** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature.
 
 ```yaml
-- step:
-    type: RunTests
-    name: Run Tests
-    identifier: Run_Tests
-    spec:
-      connectorRef: account.harnessImage
-      image: maven:3.8-jdk-11
-      language: Java
-      buildTool: Maven
-      args: test
-      packages: io.harness.
-      runOnlySelectedTests: true
-      postCommand: mvn package -DskipTests
-      reports:
-        type: JUnit
-        spec:
-          paths:
-            - "target/surefire-reports/*.xml"
+              - step:
+                  type: Test
+                  name: RunTestsWithIntelligence
+                  identifier: RunTestsWithIntelligence
+                  spec:
+                    command: |-
+                      mvn test
+                      mvn package -DskipTests
+                    shell: Sh
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    intelligenceMode: true
+                    reports:
+                      - "target/surefire-reports/*.xml"
 ```
-
-</TabItem>
-</Tabs>
 
 </TabItem>
 </Tabs>
@@ -295,7 +216,7 @@ reports:
 
 ### Test splitting
 
-Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 ## Specify version
 
@@ -391,21 +312,19 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: RunTests
-                  name: RunTests_1
-                  identifier: RunTests_1
+                  type: Test
+                  name: RunTestsWithIntelligence
+                  identifier: RunTestsWithIntelligence
                   spec:
-                    language: Java
-                    buildTool: Maven
-                    args: test
-                    packages: io.harness
-                    runOnlySelectedTests: true
-                    postCommand: mvn package -DskipTests
+                    command: |-
+                      mvn test
+                      mvn package -DskipTests
+                    shell: Sh
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    intelligenceMode: true
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+                      - "target/surefire-reports/*.xml"
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1

@@ -59,24 +59,38 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
 <details>
 <summary>Gradle</summary>
 
-This example runs Gradle with [Test Intelligence](./ti-overview.md). You can also run Java tests in [Run steps](./run-tests-in-ci.md).
+Run step:
 
 ```yaml
               - step:
-                  type: RunTests
-                  identifier: Run_Tests_with_Intelligence
-                  name: Run Tests with Intelligence
+                  type: Run
+                  ...
                   spec:
-                    args: test --tests
-                    buildTool: Gradle
-                    enableTestSplitting: true
-                    language: Java
+                    shell: Sh
+                    command: |-
+                     test --tests
+                    ...
                     reports:
+                      type: JUnit
                       spec:
                         paths:
                           - "/harness/results.xml"
                       type: JUnit
-                    runOnlySelectedTests: true
+```
+
+Test step:
+
+```yaml
+              - step:
+                  type: Test
+                  name: Intelligent Tests
+                  identifier: test
+                  spec:
+                    command: test --tests
+                    shell: Sh
+                    ...
+                    reports:
+                      - "/harness/results.xml"
 ```
 
 </details>
@@ -141,31 +155,28 @@ If you use [test splitting](./speed-up-ci-test-pipelines-using-parallelism) with
 </details>
 
 <details>
-<summary>Pytest with Test Intelligence (Run Tests step)</summary>
+<summary>Pytest with Test Intelligence (Test step)</summary>
 
 This example runs pytest with [Test Intelligence](./ti-overview.md).
 
 ```yaml
               - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
+                  type: Test
+                  name: Intelligent Tests
+                  identifier: test
                   spec:
-                    language: Python
-                    buildTool: Pytest
-                    args: "--junitxml=out_report.xml"
-                    runOnlySelectedTests: true
-                    preCommand: |
+                    command: |-
                       python3 -m venv .venv
                       . .venv/bin/activate
 
                       python3 -m pip install -r requirements/test.txt
                       python3 -m pip install -e .
+
+                      pytest --junitxml=out_report.xml
+                    shell: Python
+                    ...
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
+                      - out_report.xml*
 ```
 
 </details>
@@ -269,24 +280,40 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
 <details>
 <summary>Maven Surefire Plugin</summary>
 
-This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs tests with Maven and [Test Intelligence](./ti-overview.md).
+This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/).
+
+Run step:
 
 ```yaml
               - step:
-                  type: RunTests
-                  identifier: Run_Tests_with_Intelligence
-                  name: Run Tests with Intelligence
+                  type: Run
+                  ...
                   spec:
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                    buildTool: Maven
-                    enableTestSplitting: true
-                    language: Java
+                    shell: Sh
+                    command: |-
+                     test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    ...
                     reports:
+                      type: JUnit
                       spec:
                         paths:
                           - "target/surefire-reports/*.xml"
                       type: JUnit
-                    runOnlySelectedTests: true
+```
+
+Test step:
+
+```yaml
+              - step:
+                  type: Test
+                  name: Intelligent Tests
+                  identifier: test
+                  spec:
+                    command: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    shell: Sh
+                    ...
+                    reports:
+                      - "target/surefire-reports/*.xml"
 ```
 
 </details>
