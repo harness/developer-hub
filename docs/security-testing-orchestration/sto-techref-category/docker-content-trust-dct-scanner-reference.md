@@ -55,7 +55,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 ### Container image scan settings
 
 
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoLegacyContainer  from './shared/custom-scan/_container.md';
 
 
 <StoLegacyContainer />
