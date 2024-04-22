@@ -1,26 +1,36 @@
 ---
-title: Enable TI for Python
-description: Set up TI for Python codebases.
-sidebar_position: 30
+title: Use Run Tests step for C# (pending deprecation)
+description: Set up TI for C# codebases with .NET Core or NUnit.
+sidebar_position: 50
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-csharp
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
+:::warning
 
-:::note
+Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step.
 
-Currently, TI for Python is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the **Test** step doesn't yet support TI for C#. Until support is added for this language, you can continue to use the **Run Tests** step for TI with C#.
+
+While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
 
 :::
 
-Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
+:::note
 
-## Enable TI for Python
+Currently, TI for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-You can enable TI for Python in three steps:
+:::
+
+Using [Test Intelligence (TI) ](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
+
+## Enable TI for C#
+
+You can enable TI for C# in three steps:
 
 <!-- no toc -->
 1. [Add the Run Tests step.](#add-the-run-tests-step)
@@ -33,27 +43,38 @@ Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructur
 
 :::info
 
-To use TI for Python, your codebase must be Python 3.
+To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
 
 :::
 
-In the Run Tests step, you must select **Run only selected tests** (`runOnlySelectedTests: true`). For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
+You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
 ```yaml
-              - step:
+             - step:
                   type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
+                  identifier: runTestsWithIntelligence
+                  name: runTestsWithIntelligence
                   spec:
-                    language: Python
-                    buildTool: Pytest ## Specify pytest or unittest.
+                    connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
+                    image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
+                    language: Csharp
+                    buildEnvironment: Core
+                    frameworkVersion: "6.0"
+                    buildTool: Dotnet ## Specify Dotnet or Nunit.
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
+                    namespaces: aw,fc
                     runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                    preCommand: |- ## Optional
-                      python3 -m venv .venv
-                      . .venv/bin/activate
-
-                      python3 -m pip install -r requirements/test.txt
-                      python3 -m pip install -e .
+                    preCommand: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="$PATH:/root/.dotnet/tools"
+                      dotnet restore
+                      dotnet build
+                    postCommand: trx2junit results.trx
+                    reports: ## Reports must be in JUnit XML format.
+                        type: JUnit
+                        spec:
+                          paths:
+                            - results.xml
 ```
 
 For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
@@ -120,7 +141,7 @@ You can also configure TI to [ignore tests or files](../ti-overview.md#ignore-te
   <TabItem value="cloud" label="Harness Cloud" default>
 
 
-This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Python with pytest and Test Intelligence.
+This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
 
 ```yaml
 pipeline:
@@ -144,21 +165,27 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
+                  identifier: runTestsWithIntelligence
+                  name: runTestsWithIntelligence
                   spec:
-                    language: Python
-                    buildTool: Pytest ## Specify pytest or unittest.
-                    runOnlySelectedTests: true  ## Must be 'true' to enable TI.
-                    preCommand: |- ## Optional
-                      python3 -m venv .venv
-                      . .venv/bin/activate
-
-                      python3 -m  pip install pytest
-                      python3 -m pip install -r requirements/dev.txt
-                      python3 -m pip install -e .
-                    envVariables:
-                      PYTHONPATH: /harness ## Exclude if not applicable.
+                    language: Csharp
+                    buildEnvironment: Core
+                    frameworkVersion: "6.0"
+                    buildTool: Dotnet ## Specify Dotnet or Nunit.
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
+                    namespaces: aw,fc
+                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
+                    preCommand: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="$PATH:/root/.dotnet/tools"
+                      dotnet restore
+                      dotnet build
+                    postCommand: trx2junit results.trx
+                    reports: ## Reports must be in JUnit XML format.
+                        type: JUnit
+                        spec:
+                          paths:
+                            - results.xml
           platform:
             arch: Amd64
             os: Linux
@@ -172,7 +199,7 @@ pipeline:
   <TabItem value="sh" label="Self-managed">
 
 
-This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Python with pytest and Test Intelligence.
+This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
 
 ```yaml
 pipeline:
@@ -196,23 +223,29 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
+                  identifier: runTestsWithIntelligence
+                  name: runTestsWithIntelligence
                   spec:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: python:latest ## Specify if required by your build infrastructure.
-                    language: Python
-                    buildTool: Pytest ## Specify pytest or unittest.
-                    runOnlySelectedTests: true  ## Must be 'true' to enable TI.
-                    preCommand: |- ## Optional
-                      python3 -m venv .venv
-                      . .venv/bin/activate
-
-                      python3 -m  pip install pytest
-                      python3 -m pip install -r requirements/dev.txt
-                      python3 -m pip install -e .
-                    envVariables:
-                      PYTHONPATH: /harness ## Exclude if not applicable.
+                    image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
+                    language: Csharp
+                    buildEnvironment: Core
+                    frameworkVersion: "6.0"
+                    buildTool: Dotnet ## Specify Dotnet or Nunit.
+                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
+                    namespaces: aw,fc
+                    runOnlySelectedTests: true ## Must be 'true' to enable TI.
+                    preCommand: |-
+                      dotnet tool install -g trx2junit
+                      export PATH="$PATH:/root/.dotnet/tools"
+                      dotnet restore
+                      dotnet build
+                    postCommand: trx2junit results.trx
+                    reports: ## Reports must be in JUnit XML format.
+                        type: JUnit
+                        spec:
+                          paths:
+                            - results.xml
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -253,7 +286,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
 
-For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of a Docker image that has the binaries necessary to run the commands in this step, such as `python:latest`. If you don't include a tag, Harness uses the `latest` tag.
+For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of a Docker image that has the binaries necessary to run the commands in this step, such as `mcr.microsoft.com/dotnet/sdk:6.0`. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
@@ -265,36 +298,66 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 ### Language
 
-Select **Python**.
+Select **C#**.
 
 ### Build Tool
 
-Select the build automation tool: [Pytest](https://docs.pytest.org/en/latest/) or [Unittest](https://docs.python.org/3/library/unittest.html).
+Select the build automation tool: [DOTNET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) or [NUnit](https://nunit.org/).
+
+### Build Environment
+
+Select the build environment to test.
+
+<!--
+:::info .NET Framework
+
+.NET Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only. You must specify `buildEnvironment: Framework` in your pipeline's YAML, for example:
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: runTests
+                  identifier: runTest
+                  spec:
+                    language: Csharp
+                    buildEnvironment: Framework
+                    frameworkVersion: "5.0"
+                    buildTool: Nunitconsole
+                    ...
+```
+
+:::
+-->
+
+### Framework Version
+
+Select the framework version to test.
+
+### Namespaces
+
+You can supply a comma-separated list of namespace prefixes that you want to test.
 
 ### Build Arguments
 
-This setting is optional for Python. You can provide additional runtime arguments for tests, such as `--junitxml=out_report.xml`.
+Enter commands to use as input or runtime arguments for the build tool. You don't need to repeat the build tool, such as `dotnet`; this is declared in **Build Tool**.
 
-If you include **Build Arguments** for Python:
+For .NET, provide runtime arguments for tests, such as `/path/to/test.dll /path/to/testProject.dll`.
 
-* You don't need to repeat the build tool, such as `pytest` or `unittest`; this is declared in **Build Tool**.
-* You don't need to include coverage flags (`--cov` or `coverage`).
-* Python 3 is required. If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
-* The Python 3 binary is required. Python 3 is preinstalled on Harness Cloud runners. For other build infrastructures, the binary must be preinstalled on the build machine, available in the specified [Container Registry and Image](#container-registry-and-image), or manually installed at runtime in [Pre-Command](#pre-command-post-command-and-shell).
+For NUnit, provide runtime executables and arguments for tests, such as `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`.
+
+:::info
+
+* Harness expects `dll` injection. `csproj` isn't supported.
+* Don't inject another instrumenting agent, such as a code coverage agent, in the `args` string.
+* For NUnit, you must include both runtime arguments and executables in the `args` string.
+
+:::
 
 ### Test Report Paths
 
-This setting is optional for Python. You can use this setting if you want your test reports to be stored somewhere other than the default location or have a different name than the default report name.
+This setting is required for the Run Tests step to [publish test results](../viewing-tests.md).
 
-You can specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
-
-```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - out_report.xml*
-```
+Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 
@@ -302,31 +365,23 @@ You can add multiple paths. If you specify multiple paths, make sure the files c
 
 Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
-Stage-level parallelism is recommended for Python.
-
 ### Pre-Command, Post-Command, and Shell
 
 * **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as:
 
    ```
-   python3 -m venv .venv
-   . .venv/bin/activate
-
-   python3 -m pip install -r requirements/test.txt
-   python3 -m pip install -e .
+   dotnet tool install -g trx2junit
+   export PATH="$PATH:/root/.dotnet/tools"
+   dotnet restore
+   dotnet build
    ```
 
-:::info
-
-   * Python 3 is required to use TI for Python. You can use **Pre-Command** to install the Python 3 binary if it is not already installed on the build machine or available in the specified [Container Registry and Image](#container-registry-and-image). Python 3 is preinstalled on Harness Cloud build infrastructure.
-   * If you use another command, such as `python`, to invoke Python 3, you must add an alias, such as `python3 = "python"`.
-   * You don't need to install coverage tools in **Pre-Command**. If you install a coverage tool, Harness uses the version you install instead of the included version.
-   * You can specify `PYTHONPATH` in the [Environment Variables](#environment-variables).
-
-:::
-
-* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests.
+* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `trx2junit results.trx`.
 * **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
+
+### Packages
+
+This setting is required for C#. Provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`.
 
 ### Run Only Selected Tests
 
@@ -336,7 +391,7 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 
 ### Test Globs
 
-You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you can override it with any other pattern, such as `.test.py`. Because test selection is at the file-level, the test globs pattern references file names. You can include directory structures, such as `microservice1/**/test_*.py`.
+You can override the default test globs pattern. For example, if the default pattern is `**/*Tests.csproj`, you could override this with any other pattern, such as `**/*Test_*.cs`.
 
 <!-- ### Output Variables
 
@@ -362,22 +417,6 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 [Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are inherently available to steps as environment variables.
 
 :::
-
-#### PYTHONPATH
-
-You can set [`PYTHONPATH`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH) in the step's `envVariables`, if required. For example:
-
-```yaml
-              - step:
-                  type: RunTests
-                  name: Run Python Tests
-                  identifier: Run_Python_Tests
-                  spec:
-                    language: Python
-                    ...
-                    envVariables:
-                      PYTHONPATH: /harness
-```
 
 ### Additional container settings
 
@@ -419,5 +458,3 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
 * [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
-* [Does Test Intelligence support dynamic code?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-support-dynamic-code)
-* [Errors when running TI on Python code.](/kb/continuous-integration/continuous-integration-faqs/#python-test-intelligence-errors)

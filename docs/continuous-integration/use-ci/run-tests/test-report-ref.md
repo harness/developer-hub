@@ -1,7 +1,7 @@
 ---
 title: Format test reports
 description: Test reports must be in JUnit XML format to appear on the Tests tab.
-sidebar_position: 50
+sidebar_position: 30
 redirect_from:
   - /docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref
 ---

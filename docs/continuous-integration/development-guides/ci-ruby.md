@@ -214,7 +214,7 @@ The following examples use the [Minitest JUnit Formatter](https://github.com/aes
 
 ### Run tests with Test Intelligence
 
-You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby).
+You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby).
 
 <Tabs>
   <TabItem value="Harness Cloud" default>

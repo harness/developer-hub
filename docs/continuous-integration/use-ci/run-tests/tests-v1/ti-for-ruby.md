@@ -1,12 +1,22 @@
 ---
-title: Enable TI for Ruby
+title: Use the Run Tests step for Ruby (deprecated)
 description: Set up TI for Ruby codebases.
 sidebar_position: 40
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+
+:::warning
+
+Harness is deprecating the **Run Tests** step in favor of the new **Test** step.
+
+While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
+
+:::
 
 Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 

@@ -1364,10 +1364,13 @@ No. Test reports from tests run in Run steps also appear there if they are [corr
 
 ### Does Harness support test splitting (parallelism)?
 
-Yes. How you do this depends on whether your tests run in a **Run** step or a **Run Tests** step. For instructions, go to:
+Yes, you can [split tests in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism).
 
-* [Split tests for tests in Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
-* [split tests for tests in Run Tests steps (Test Intelligence plus test splitting)](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting)
+### Does Test Intelligence split tests? Why would I use test splitting with Test Intelligence?
+
+Test Intelligence doesn't split tests. Instead, Test Intelligence selects specific tests to run based on the changes made to your code. It can reduce the overall number of tests that run each time you make changes to your code.
+
+For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2). This can further reduce your test time by splitting the selected tests into parallel workloads.
 
 ## Test Intelligence
 
@@ -1383,12 +1386,6 @@ Test Intelligence improves test time by running only the unit tests required to 
 
 For information about how Test Selection selects tests, go to [Test Intelligence overview](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/ti-overview).
 
-### Does Test Intelligence split tests? Why would I use test splitting with Test Intelligence?
-
-Test Intelligence doesn't split tests. Instead, Test Intelligence selects specific tests to run based on the changes made to your code. It can reduce the overall number of tests that run each time you make changes to your code.
-
-For additional time savings, you can [apply test splitting in addition to Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting). This can further reduce your test time by splitting the selected tests into parallel workloads.
-
 ### If the Run Tests step fails, does the Post-Command script run?
 
 No. The Post-Command script runs only if the Run Tests step succeeds.
@@ -1399,7 +1396,7 @@ No. Resource limits are not customizable when using Harness Cloud or self-manage
 
 ### How can I understand the relationship between code changes and the selected tests?
 
-On the Tests tab, the visualization call graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR. For more information, go to [View tests - Results from Run Tests steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests#results-from-run-tests-steps-test-intelligence).
+On the Tests tab, the visualization call graph provides insights into why each test was selected. It visually represents the relationship between the selected tests and the specific code changes in the PR. For more information, go to [View tests - Results from Test steps with Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/viewing-tests#results-from-test-steps-with-test-intelligence).
 
 ### On the Tests tab, the Test Intelligence call graph is empty and says "No call graph is created when all tests are run"
 
@@ -1427,37 +1424,19 @@ set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelli
 
 ### Can I use Test Intelligence for Ruby on Rails?
 
-You can, however, Harness doesn't recommend using Test Intelligence with Rails apps using [Spring](https://github.com/rails/spring).
+You can. However, Harness doesn't recommend using Test Intelligence with Rails apps using [Spring](https://github.com/rails/spring).
 
 ### Test Intelligence fails due to Bazel not installed, but the container image has Bazel
 
-If your [build tool](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool) is Bazel, and you use a [container image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
+:::warning
+
+This question applies to the deprecated **Run Tests** step.
+
+:::
+
+If your [build tool](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#build-tool) is Bazel, and you use a [container image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
 Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) prior to the **Run Tests** step.
-
-### Gradle version not compatible with Test Intelligence.
-
-For information about Gradle compatibility with TI and how to modify `build.gradle` for TI, go to [Enable TI for Java, Kotlin, or Scala - Build Tool - Java Gradle compatibility](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
-
-### Test Intelligence errors with Maven
-
-If you encounter issues with Test Intelligence when using Maven as your build tool, check the following configurations:
-
-* If your `pom.xml` contains `<argLine>`, you might need to modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool - Java Maven argLine setup](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
-* If you attach Jacoco or any agent while running unit tests, then you must modify your argLine setup as explained in [Enable TI for Java, Kotlin, Scala - Build tool - Java Maven argLine setup](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala/#build-tool).
-* If you use Jacoco, Surefire, or Failsafe, make sure that `forkCount` is not set to `0`. For example, the following configuration in `pom.xml` removes `forkCount` and applies `useSystemClassLoader` as a workaround:
-
-   ```xml
-   <plugin>
-       <groupId>org.apache.maven.plugins</groupId>
-       <artifactId>maven-surefire-plugin</artifactId>
-       <version>2.22.1</version>
-       <configuration>
-           <!--  <forkCount>0</forkCount> -->
-           <useSystemClassLoader>false</useSystemClassLoader>
-       </configuration>
-   </plugin>
-   ```
 
 ### Python Test Intelligence errors
 
@@ -1467,9 +1446,9 @@ If you encounter errors with Python TI, make sure that:
 * You don't use resource file relationships. TI for Python doesn't support resource file relationships.
 * You don't use dynamic loading and metaclasses. TI for Python might miss tests or changes in repos that use dynamic loading or metaclasses.
 * Your build tool is pytest or unittest.
-* The Python 3 binary is present. This means it is preinstalled on the build machine, available in the step's [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#container-registry-and-image), or installed at runtime in the step's [Pre-Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#pre-command-post-command-and-shell).
+* The Python 3 binary is present. This means it is preinstalled on the build machine or available in the step's [Container Registry and Image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#container-registry-and-image).
 * If you use another command to invoke Python 3, such as `python`, you have added an alias, such as `python3 = "python"`.
-* If you get code coverage errors, your [Build Arguments](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#build-arguments) don't need coverage flags (`--cov` or `coverage`), and you don't need to install coverage tools in [Pre-Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/#pre-command-post-command-and-shell).
+* If you get code coverage errors, your [Command](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2/#command) doesn't need coverage flags (`--cov` or `coverage`).
 
 ### Does Test Intelligence support dynamic code?
 

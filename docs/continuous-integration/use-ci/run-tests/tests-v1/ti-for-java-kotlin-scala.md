@@ -1,26 +1,28 @@
 ---
-title: Enable TI for C#
-description: Set up TI for C# codebases with .NET Core or NUnit.
-sidebar_position: 50
+title: Use Run Tests step for Java, Kotlin, or Scala (deprecated)
+description: Set up TI for Java, Kotlin, or Scala codebases.
+sidebar_position: 20
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala
 ---
-
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
+:::warning
 
-:::note
+Harness is deprecating the **Run Tests** step in favor of the new **Test** step.
 
-Currently, TI for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
 
 :::
 
-Using [Test Intelligence (TI) ](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
+Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
-## Enable TI for C#
+## Enable TI for Java, Kotlin, or Scala
 
-You can enable TI for C# in three steps:
+You can enable TI for Java, Kotlin, or Scala in three steps:
 
 <!-- no toc -->
 1. [Add the Run Tests step.](#add-the-run-tests-step)
@@ -31,40 +33,27 @@ You can enable TI for C# in three steps:
 
 Add the **Run Tests** step to the [Build stage](../../set-up-build-infrastructure/ci-stage-settings.md) in a [CI pipeline](../../prep-ci-pipeline-components.md).
 
-:::info
-
-To use TI for C#, you must use .NET Core or NUnit.<!-- or Framework. Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [Framework build environment](#build-environment) in the YAML editor. -->
-
-:::
-
 You must select **Run only selected tests** (`runOnlySelectedTests: true`) to enable Test Intelligence. For information about each setting, go to [Run Tests step settings](#run-tests-step-settings).
 
 ```yaml
-             - step:
+              - step:
                   type: RunTests
-                  identifier: runTestsWithIntelligence
-                  name: runTestsWithIntelligence
+                  name: Run Tests
+                  identifier: Run_Tests
                   spec:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
-                    language: Csharp
-                    buildEnvironment: Core
-                    frameworkVersion: "6.0"
-                    buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
-                    namespaces: aw,fc
+                    image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## Specify your build tool.
+                    args: test
+                    packages: io.harness.
                     runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                    preCommand: |-
-                      dotnet tool install -g trx2junit
-                      export PATH="$PATH:/root/.dotnet/tools"
-                      dotnet restore
-                      dotnet build
-                    postCommand: trx2junit results.trx
+                    postCommand: mvn package -DskipTests
                     reports: ## Reports must be in JUnit XML format.
-                        type: JUnit
-                        spec:
-                          paths:
-                            - results.xml
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/reports/*.xml"
 ```
 
 For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
@@ -126,12 +115,10 @@ You can also configure TI to [ignore tests or files](../ti-overview.md#ignore-te
 
 ## Pipeline YAML examples
 
-
 <Tabs>
   <TabItem value="cloud" label="Harness Cloud" default>
 
-
-This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
+This example shows a pipeline that uses Harness Cloud build infrastructure and runs tests on Java with Maven and Test Intelligence. By changing the `language` value, you can use this pipeline for Kotlin or Scala.
 
 ```yaml
 pipeline:
@@ -155,27 +142,20 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  identifier: runTestsWithIntelligence
-                  name: runTestsWithIntelligence
+                  name: Run Tests
+                  identifier: Run_Tests
                   spec:
-                    language: Csharp
-                    buildEnvironment: Core
-                    frameworkVersion: "6.0"
-                    buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
-                    namespaces: aw,fc
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
+                    args: test
+                    packages: io.harness.
                     runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                    preCommand: |-
-                      dotnet tool install -g trx2junit
-                      export PATH="$PATH:/root/.dotnet/tools"
-                      dotnet restore
-                      dotnet build
-                    postCommand: trx2junit results.trx
+                    postCommand: mvn package -DskipTests
                     reports: ## Reports must be in JUnit XML format.
-                        type: JUnit
-                        spec:
-                          paths:
-                            - results.xml
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/reports/*.xml"
           platform:
             arch: Amd64
             os: Linux
@@ -184,12 +164,10 @@ pipeline:
             type: Cloud
 ```
 
-
-</TabItem>
+  </TabItem>
   <TabItem value="sh" label="Self-managed">
 
-
-This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on C# with .NET Core and Test Intelligence.
+This example shows a pipeline that uses a Kubernetes cluster build infrastructure and runs tests on Java with Maven and Test Intelligence. By changing the `language` value, you can use this pipeline for Kotlin or Scala.
 
 ```yaml
 pipeline:
@@ -213,29 +191,22 @@ pipeline:
             steps:
               - step:
                   type: RunTests
-                  identifier: runTestsWithIntelligence
-                  name: runTestsWithIntelligence
+                  name: Run Tests
+                  identifier: Run_Tests
                   spec:
                     connectorRef: account.harnessImage ## Specify if required by your build infrastructure.
-                    image: mcr.microsoft.com/dotnet/sdk:6.0 ## Specify if required by your build infrastructure.
-                    language: Csharp
-                    buildEnvironment: Core
-                    frameworkVersion: "6.0"
-                    buildTool: Dotnet ## Specify Dotnet or Nunit.
-                    args: --no-build --verbosity normal ## Equivalent to 'dotnet test --no-build --verbosity normal' in a Run step or shell.
-                    namespaces: aw,fc
+                    image: maven:3.8-jdk-11 ## Specify if required by your build infrastructure.
+                    language: Java ## Specify Java, Kotlin, or Scala.
+                    buildTool: Maven ## For Java or Kotlin, specify Bazel, Maven, or Gradle. For Scala, specify Bazel, Maven, Gradle, or Sbt.
+                    args: test
+                    packages: io.harness.
                     runOnlySelectedTests: true ## Must be 'true' to enable TI.
-                    preCommand: |-
-                      dotnet tool install -g trx2junit
-                      export PATH="$PATH:/root/.dotnet/tools"
-                      dotnet restore
-                      dotnet build
-                    postCommand: trx2junit results.trx
+                    postCommand: mvn package -DskipTests
                     reports: ## Reports must be in JUnit XML format.
-                        type: JUnit
-                        spec:
-                          paths:
-                            - results.xml
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/reports/*.xml"
           infrastructure:
             type: KubernetesDirect
             spec:
@@ -246,10 +217,8 @@ pipeline:
               os: Linux
 ```
 
-
-</TabItem>
+  </TabItem>
 </Tabs>
-
 
 ## Run Tests step settings
 
@@ -276,7 +245,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 For **Container Registry**, provide a Harness container registry connector, such as a Docker connector, that connects to the container registry where the **Image** is located.
 
-For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of a Docker image that has the binaries necessary to run the commands in this step, such as `mcr.microsoft.com/dotnet/sdk:6.0`. If you don't include a tag, Harness uses the `latest` tag.
+For **Image**, provide the FQN (fully-qualified name) or artifact name and tag of a Docker image that has the binaries necessary to run the commands in this step, such as `maven:3.8-jdk-11`. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
@@ -286,92 +255,136 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 </details>
 
+<details>
+<summary>Bazel container images</summary>
+
+If your [build tool](#build-tool) is Bazel, and you use a Bazel container image to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
+
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-step-settings.md) prior to the **Run Tests** step.
+
+</details>
+
 ### Language
 
-Select **C#**.
+Select the source code language to build: **Java**, **Kotlin**, or **Scala**.
 
 ### Build Tool
 
-Select the build automation tool: [DOTNET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) or [NUnit](https://nunit.org/).
+Select the build automation tool: [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), [Gradle](https://gradle.org/), or [Sbt](https://www.scala-sbt.org/) (Scala only).
 
-### Build Environment
+<details>
+<summary>Bazel container images</summary>
 
-Select the build environment to test.
+If your build tool is Bazel, and you use a [container image](#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
-<!--
-:::info .NET Framework
+Bazel is already installed on Harness Cloud runners. For other build infrastructures, you must manually confirm that Bazel is already installed. If Bazel isn't already installed on your build infrastructure, you need to install Bazel in a [**Run** step](/docs/continuous-integration/use-ci/run-step-settings.md) prior to the **Run Tests** step.
 
-.NET Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only. You must specify `buildEnvironment: Framework` in your pipeline's YAML, for example:
+</details>
 
-```yaml
-              - step:
-                  type: RunTests
-                  name: runTests
-                  identifier: runTest
-                  spec:
-                    language: Csharp
-                    buildEnvironment: Framework
-                    frameworkVersion: "5.0"
-                    buildTool: Nunitconsole
-                    ...
+<details>
+<summary>Java Maven argLine setup</summary>
+
+If you use Maven with Java and your `pom.xml` contains `<argLine>` *or* you attach Jacoco or any agent while running unit tests, then you must modify your `pom.xml` to include `<harnessArgLine>` in the `<properties>` and the Maven plugin `<configuration>`. For example:
+
+```xml
+<!-- Add harnessArgLine to pom properties. -->
+<properties>
+        <harnessArgLine></harnessArgLine>
+</properties>
+
+...
+
+<!-- Add harnessArgLine to Maven plugin configuration. -->
+<plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-surefire-plugin</artifactId>
+      <version>2.22.2</version>
+      <configuration>
+          <argLine>${harnessArgLine}  @{argLine}  </argLine>
+      </configuration>
+</plugin>
 ```
 
-:::
--->
+<!-- pom.xml with argLine
 
-### Framework Version
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
 
-Select the framework version to test.
+**Before:**
 
-### Namespaces
+```
+<argLine> something
+</argLine>
+```
 
-You can supply a comma-separated list of namespace prefixes that you want to test.
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini
+</argLine>
+``` -->
+
+</details>
+
+<details>
+<summary>Java Gradle compatibility</summary>
+
+If you use Java with Gradle, Test Intelligence assumes `./gradlew` is present in the root of your project. If not, TI falls back to the Gradle tool to run the tests. As long as your Gradle version has test filtering support, it is compatible with Test Intelligence.
+
+Add the following to your `build.gradle` to make it compatible with Test Intelligence:
+
+```
+// This adds HARNESS_JAVA_AGENT to the testing command if it's
+// provided through the command line.
+// Local builds will still remain same as it only adds if the
+// parameter is provided.
+tasks.withType(Test) {
+  if(System.getProperty("HARNESS_JAVA_AGENT")) {
+    jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
+  }
+}
+
+// This makes sure that any test tasks for subprojects don't
+// fail in case the test filter does not match.
+gradle.projectsEvaluated {
+        tasks.withType(Test) {
+            filter {
+                setFailOnNoMatchingTests(false)
+            }
+        }
+}
+```
+
+</details>
 
 ### Build Arguments
 
-Enter commands to use as input or runtime arguments for the build tool. You don't need to repeat the build tool, such as `dotnet`; this is declared in **Build Tool**.
+This setting is required for Java, Kotlin, and Scala.
 
-For .NET, provide runtime arguments for tests, such as `/path/to/test.dll /path/to/testProject.dll`.
+Enter commands to use as input or runtime arguments for the build tool. You don't need to repeat the build tool, such as `maven`, this is declared in **Build Tool**.
 
-For NUnit, provide runtime executables and arguments for tests, such as `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`.
-
-:::info
-
-* Harness expects `dll` injection. `csproj` isn't supported.
-* Don't inject another instrumenting agent, such as a code coverage agent, in the `args` string.
-* For NUnit, you must include both runtime arguments and executables in the `args` string.
-
-:::
+This can be as simple as `test` or you can include additional flags, such as: `test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
 
 ### Test Report Paths
 
-This setting is required for the Run Tests step to [publish test results](../viewing-tests.md).
+This setting is required for the Run Tests step to [publish test results](/docs/continuous-integration/use-ci/run-tests/viewing-tests).
 
-Specify one or more paths to files that store [test results in JUnit XML format](../../run-tests/test-report-ref.md). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](/docs/continuous-integration/use-ci/run-tests/test-report-ref). [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
 
 ### Test Splitting (parallelism)
 
-Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
+Used to [enable test splitting (parallelism) for TI](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-test-splitting).
 
 ### Pre-Command, Post-Command, and Shell
 
-* **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as:
-
-   ```
-   dotnet tool install -g trx2junit
-   export PATH="$PATH:/root/.dotnet/tools"
-   dotnet restore
-   dotnet build
-   ```
-
-* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `trx2junit results.trx`.
+* **Pre-Command:** You can enter commands for setting up the environment before running the tests, such as `mvn clean package dependency:copy-dependencies`
+* **Post-Command:** You can enter commands used for cleaning up the environment after running the tests, such as `mvn package -DskipTests`.
 * **Shell:** If you supplied a script in **Pre-command** or **Post-command**, select the corresponding shell script type.
 
 ### Packages
 
-This setting is required for C#. Provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`.
+Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If you do not provide a list, Harness auto-detects the packages.
 
 ### Run Only Selected Tests
 
@@ -379,9 +392,70 @@ This option must be selected (`true`) to enable Test Intelligence.
 
 If this option is not selected (`false`), TI is disabled and all tests run on every build.
 
-### Test Globs
+### Test Annotations
 
-You can override the default test globs pattern. For example, if the default pattern is `**/*Tests.csproj`, you could override this with any other pattern, such as `**/*Test_*.cs`.
+You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method.
+
+This setting is optional. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
+
+This setting is located under **Additional Configuration** in the Visual editor, or you can configure it in YAML as:
+
+```yaml
+testAnnotations: annotation1, annotation2, annotation3
+```
+
+### Do you want to enable Error Tracking?
+
+:::info
+
+This setting available for Java only, and it requires the [CET module](/docs/continuous-error-tracking/get-started/overview). This setting is configurable in the Visual editor only (not YAML).
+
+:::
+
+Error tracking helps you be more proactive at discovering and remediating errors early in the software delivery lifecycle. It helps you more easily discover issues and assess the quality of code before it reaches production.
+
+Select **Yes** to enable error tracking. When enabled, a set of commands are auto-populated in the [Pre-Command](#pre-command-post-command-and-shell). Review these commands to ensure that they are compatible with your build. The auto-populated commands are enclosed in `#ET-SETUP-BEGIN` and `#ET-SETUP-END`.
+
+<details>
+<summary>CET Java Error Tracking Pre-command example</summary>
+
+```shell
+#ET-SETUP-BEGIN
+PROJ_DIR=$PWD
+cd /opt
+arch=`uname -m`
+if [ $arch = "x86_64" ]; then
+  if cat /etc/os-release | grep -iq alpine ; then
+    wget -qO- https://get.et.harness.io/releases/latest/alpine/harness-et-agent.tar.gz | tar -xz
+  else
+    wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+  fi
+elif [ $arch = "aarch64" ]; then
+  wget -qO- https://get.et.harness.io/releases/latest/arm/harness-et-agent.tar.gz | tar -xz
+fi
+export ET_COLLECTOR_URL=https://app.harness.io/<cluster_value>/et-collector
+export ET_APPLICATION_NAME=$HARNESS_PIPELINE_ID
+export ET_ENV_ID=_INTERNAL_ET_CI
+export ET_DEPLOYMENT_NAME=$HARNESS_BUILD_ID
+export ET_ACCOUNT_ID=$HARNESS_ACCOUNT_ID
+export ET_ORG_ID=$HARNESS_ORG_ID
+export ET_PROJECT_ID=$HARNESS_PROJECT_ID
+# export ET_SHUTDOWN_GRACETIME=30000
+export JAVA_TOOL_OPTIONS="-agentpath:/opt/harness/lib/libETAgent.so"
+# Uncomment the line below if using Java version 10 or above
+# export JAVA_TOOL_OPTIONS="-Xshare:off -XX:-UseTypeSpeculation -XX:ReservedCodeCacheSize=512m -agentpath:/opt/harness/lib/libETAgent.so"
+cd $PROJ_DIR
+#ET-SETUP-END
+```
+
+</details>
+
+<!--You might need to modify the `ET_COLLECTOR_URL` depending on the cluster your account is on:
+
+* For Prod 1 Harness accounts: `https://app.harness.io/prod1/et-collector`
+* For Prod 2 Harness accounts: `https://app.harness.io/gratis/et-collector`-->
+
+Error tracking output is reported on the [Error Tracking tab](../../viewing-builds.md) when the pipeline runs.
 
 <!-- ### Output Variables
 
@@ -439,7 +513,7 @@ These settings specify the maximum resources used by the container at runtime. T
 
 ### Timeout
 
-The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) or [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md).
+You can set the step's timeout limit. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) or [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md).
 
 ## Troubleshoot Test Intelligence
 
@@ -448,3 +522,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Does Test Intelligence split tests? Can I use parallelism with Test Intelligence?](/kb/continuous-integration/continuous-integration-faqs/#does-test-intelligence-split-tests-why-would-i-use-test-splitting-with-test-intelligence)
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
 * [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
+* [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)

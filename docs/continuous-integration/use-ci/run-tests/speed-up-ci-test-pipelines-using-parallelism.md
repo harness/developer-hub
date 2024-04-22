@@ -1,7 +1,7 @@
 ---
 title: Split tests (parallelism)
 description: Split tests for any language. Use parallelism to improve test times.
-sidebar_position: 40
+sidebar_position: 41
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -20,13 +20,13 @@ With Harness CI, you can split tests for any language or test tool. This uses te
 
 When you [run tests in Harness CI](./run-tests-in-ci.md), you use **Run** and **Run Tests** steps. You can enable test splitting on either of these steps. **However, the specific steps you take to configure test splitting depend on which step you use.**
 
-**This topic explains parallelism and test splitting in *Run* steps. For test splitting/parallelism in *Run Tests* steps, go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).**
+**This topic explains parallelism and test splitting in *Run* steps. For test splitting/parallelism in *Run Tests* steps, go to [Split tests (parallelism) with TI](./tests-v1/ti-test-splitting.md).**
 
 :::warning Does this topic apply to you?
 
 This topic explains how to set up parallelism and test splitting in **Run** steps.
 
-For test splitting in **Run Tests** steps, go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).
+For test splitting in **Run Tests** steps, go to [Split tests (parallelism) with TI](./tests-v1/ti-test-splitting.md).
 
 :::
 
@@ -384,7 +384,7 @@ You can include `echo $FILES` to print the list of assigned tests in each step's
 
 Test splitting is configured differently in **Run Tests** steps than in **Run** steps.
 
-If you define a parallelism strategy on a **Run Tests** step, Harness automatically splits tests by class timing. For information about enabling test splitting in a **Run Tests** step, go to [Split tests (parallelism) with TI](./test-intelligence/ti-test-splitting.md).
+If you define a parallelism strategy on a **Run Tests** step, Harness automatically splits tests by class timing. For information about enabling test splitting in a **Run Tests** step, go to [Split tests (parallelism) with TI](./tests-v1/ti-test-splitting.md).
 
 ## Produce test reports
 

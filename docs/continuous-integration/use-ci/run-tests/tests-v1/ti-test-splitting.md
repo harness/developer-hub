@@ -1,7 +1,9 @@
 ---
-title: Split tests (parallelism) with TI
-description: Use test splitting (parallelism) to optimize TI.
+title: Enable parallelism on a Run Tests step (deprecated)
+description: You can enable parallelism on a Run Tests step.
 sidebar_position: 60
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting
 ---
 
 <!-- Test splitting for python requires `junit_family=xunit1` in the code repo's `pytest.ini` file, or `-o junit_family="xunit1"` in the Build Arguments. CI-9225 automatically includes the build argument, so manual inclusion is no longer required. However, if they use their own reporting (to be used elsewhere than Harness) in pytest.ini, it is overridden. I am not sure if this caveat needs to be documented yet. -->
@@ -9,15 +11,25 @@ sidebar_position: 60
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::warning
+
+Harness is deprecating the **Run Tests** step in favor of the new **Test** step.
+
+While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
+
+To enable parallelism/test splitting in the **Test** step, refer to the [Test step documentation](../tests-v2.md).
+
+:::
+
 By default, Test Intelligence reduces test time by running only the necessary tests to validate your code changes. You can enable parallelism and test splitting in your **Run Tests** steps to further optimize test times.
 
-**This topic explains parallelism and test splitting in *Run Tests* steps. For test splitting/parallelism in *Run* steps, go to [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).**
+:::warning
 
-:::warning Does this topic apply to you?
+This topic explains parallelism and test splitting in **Run Tests** steps *only*.
 
-This topic explains how to set up parallelism and test splitting in **Run Tests** steps.
+For test splitting/parallelism in **Run** steps, go to [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).
 
-For test splitting in **Run** steps and conceptual information about parallelism and test splitting functionality, go to [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md).
+For test splitting/parallelism in **Test** steps, go to the [Test step documentation](../tests-v2.md).
 
 :::
 
