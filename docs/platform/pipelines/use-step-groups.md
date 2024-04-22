@@ -84,7 +84,7 @@ Running groups or steps in parallel can have significant impacts on resource all
 
 ### Parallelism impacts resource consumption
 
-Consider [resource consumption](../set-up-build-infrastructure/resource-limits.md) when running steps in parallel. Pipelines reserve memory and CPU resources in advance for each stage, and the amount of reserved memory and CPU is determined by the highest utilization at any point in the stage.
+Consider [resource consumption](/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits.md) when running steps in parallel. Pipelines reserve memory and CPU resources in advance for each stage, and the amount of reserved memory and CPU is determined by the highest utilization at any point in the stage.
 
 For example, the stage depicted in the following screenshot reaches peak resource consumption when Step Group 1 is running. The pipeline reserves 1700Mi of memory and 1200m of CPU in anticipation of this workload. If the pipeline's build infrastructure can't reserve enough resources, the pipeline fails.
 

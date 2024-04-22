@@ -122,7 +122,7 @@ For example:
 ```
 
 You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
-[Test results must be in JUnit XML format](../../run-tests/test-report-ref.md).
+[Test results must be in JUnit XML format](./test-report-ref.md).
 
 [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported.
 
@@ -225,7 +225,7 @@ If you enabled [Intelligence Mode](#intelligence-mode), **you must run your pipe
 
    If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
-   <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
+   <DocImage path={require('./static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds.md).
 

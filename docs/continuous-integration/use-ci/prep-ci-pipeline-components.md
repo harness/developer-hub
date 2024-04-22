@@ -191,7 +191,7 @@ Strategies to automate and manage build sequences include:
 
 There are many ways you can incorporate third party tools and services in your CI pipelines, including:
 
-* [Plugins](../use-drone-plugins/explore-ci-plugins.md)
+* [Plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins.md)
 * [Secrets Managers](/docs/platform/get-started/tutorials/add-secrets-manager)
 * [Notifications](/docs/category/notifications)
 * [Branch protection and status checks](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks.md)

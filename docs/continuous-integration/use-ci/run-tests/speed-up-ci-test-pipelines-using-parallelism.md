@@ -22,7 +22,7 @@ In a **Run** step, you can split tests for any language or test tool by using te
 
 This topic explains test splitting/parallelism in **Run** steps *only*.
 
-For test splitting/parallelism in **Test** steps, go to the [Tests step documentation](./tests-v2.mdd).
+For test splitting/parallelism in **Test** steps, go to the [Tests step documentation](./tests-v2.md).
 
 :::
 
