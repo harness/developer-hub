@@ -5,14 +5,8 @@ sidebar_label: Jfrog Xray scanner reference
 sidebar_position: 420
 ---
 
+
 You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.
-
-<!-- 
-
-RP INCLUDE FIRST INTRO SENTENCE
-https://jfrog.com/help/r/get-started-with-the-jfrog-platform/jfrog-xray
-
--->
 
 The standard workflow is to create a CI Build or Security stage to your pipeline, add a Security Test step, and then use `setting:value` pairs to configure the step as specified below.
 
@@ -35,9 +29,12 @@ The standard workflow is to create a CI Build or Security stage to your pipeline
 
     For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
-4. Set up the Xray scanner.
+4. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to the stage and add the following settings.
 
-    Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to the stage and add the following settings.
+5. Review the [Important notes for Custom Scan steps
+](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and information.
+
+6. Add the following settings to the Custom Scan step. 
 
     1. [Product name](#product-name)
     1. [Scan type](#scan-type)
