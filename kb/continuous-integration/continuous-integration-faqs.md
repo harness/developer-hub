@@ -1027,9 +1027,9 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 ## Pipeline initialization and Harness CI images
 
-### Initialize step to fails with a "Null value" error
+### Initialize step fails with a "Null value" error or timeout
 
-This can occur if an expression or variable is called before it's value is resolved.
+This can occur if an expression or variable is called before it's value is resolved, if a variable/expression references a secret that doesn't exist, or if an expression incorrectly references a secret (such as the incorrect scope path or secret ID).
 
 In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only successfully [resolve expressions if the target value is available](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#use-expressions-only-after-they-can-be-resolved).
 
