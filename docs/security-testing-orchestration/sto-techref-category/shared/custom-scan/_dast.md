@@ -13,7 +13,7 @@ These settings apply to Custom Scan steps where both of these conditions are tru
 - [Instance protocol](#instance-protocol)
 - [Instance port](#instance-port)
 - [Instance username](#instance-username)
-- [Instance username](#instance-username-1)
+- [Instance username](#instance-password)
 
 <!-- TOC end -->
 
@@ -76,7 +76,7 @@ instance_username
 
 The username for authenticating with the scanned app.
 
-#### Instance username
+#### Instance password
 
 ##### Key
 ```

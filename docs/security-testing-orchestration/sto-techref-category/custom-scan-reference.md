@@ -24,16 +24,94 @@ import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that
 
 ## Custom Scan settings reference
 
-### Scanner-specific settings
+### Scanner settings
 
-The following settings are required for most scanners. For more information, go to the reference for the specific scanner you're setting up.
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
 
-- `product_name`
-- `scan_type`
-- `policy_type`
-- `product_config_name`
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
 
 <CustomScannersThatUseCustomStep />
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+Go to the relevant scanner reference.
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+Must be one of the following. For supported values, go to the relevant scanner reference.
+
+```
+containerImage
+```
+```
+repository
+```
+```
+instance
+```
+```
+configuration
+```
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+Must be one of the following. For supported values, go to the relevant scanner reference.
+
+```
+containerImage
+```
+```
+repository
+```
+```
+instance
+```
+```
+configuration
+```
+
+#### Product config name
+
+Required for most scanner integrations. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+For supported values, go to the relevant scanner reference.
 
 
 ### Target and variant
