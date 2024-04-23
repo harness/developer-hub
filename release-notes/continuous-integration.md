@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-04-23T10:00
+date: 2024-04-30T10:00
 sidebar_position: 10
 ---
 
@@ -36,6 +36,14 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
+### Version 1.25.x
+
+<!-- xx April 2024 -->
+
+#### Fixed issues
+
+The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
+
 ### Version 1.24.2
 
 <!-- 23 Apr 2024 -->
@@ -50,14 +58,10 @@ If you currently use a Ruby test glob pattern starting with `/`, you must either
 
 :::
 
-<!-- #### Early access features
-
-* (CI-11792) CI_NEW_VERSION_GODOTENV ?? -->
-
 #### Fixed issues
 
 * Increased the default machine size for the [Harness CI Cloud macOS platform](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). The default size was inadvertently decreased during a prior upgrade to Sonoma, and some users experienced `No space left on device` errors as a result. (CI-11620, ZD-59225)
-* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054) <!-- would help to have more detail -->
+* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054)
 
 ### Version 1.23.1
 
