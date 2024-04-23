@@ -18,7 +18,7 @@ Refer to [overview of chaos dashboards](/docs/chaos-engineering/features/chaos-d
 To create a new visualization in a new dashboard, follow the steps mentioned below.
 
 ### Step 1: Click Dashboard
-* To create a new dashboard, navigate to **Chaos Dashboards** and click **Go to Dashboards**.
+* To create a new dashboard, navigate to **Chaos Dashboards** and select **Go to Dashboards**.
 
 ![click-dashboard](./static/create-a-new-dashboard/click-dashboard-1.png)
 
@@ -91,7 +91,7 @@ To visualize the number of successful experiment runs for a specific time period
 
 ### Step 8: Pivot the results
 
-* To visualize the results with respect to passed and failed experiment runs, click the settings button of the **Experiment Status** and click **Pivot**.
+* To visualize the results with respect to passed and failed experiment runs, click the settings button of the **Experiment Status** and select **Pivot**.
 
 ![save-field](./static/create-a-new-dashboard/pivot-12.png)
 

@@ -63,7 +63,7 @@ There are two types of logs:
 
 ## Verify Windows infrastructure service status
 
-To verify the status of the service, navigate to the command prompt on your Windows. Search for **Task Manager**, click **More details** and check the status of **WindowsChaosInfrastructure**.
+To verify the status of the service, navigate to the command prompt on your Windows. Search for **Task Manager**, select **More details** and check the status of **WindowsChaosInfrastructure**.
 
 1. If the status reads **Running**, it means the windows infrastructure is up and running.
 

@@ -8,8 +8,8 @@ This section describes the execution plane of Harness Chaos Engineering (HCE).
 **Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. The execution plane helps set up the resources (clusters) and you can use the control plane to interact with the cluster and create chaos experiments.
 
 You can install the execution plane components through the chaos infrastructure in clusters (external or internal depending on the type of chaos infrastructure used). Some of the components common to all chaos infrastructures include:
-1. **Workflow controller**: Helps execute chaos experiments.
-2. **Subscriber**: Serves as a bridge between the execution plane and control plane. It also performs other tasks required to orchestrate the chaos experiment executions.
+- **Workflow controller**: Helps execute chaos experiments.
+- **Subscriber**: Serves as a bridge between the execution plane and control plane. It also performs other tasks required to orchestrate the chaos experiment executions.
 
 The resource utilization matrix for execution plane components is summarized below. These components are installed in the target cluster as a part of the Kubernetes-based chaos infrastructure.
 
