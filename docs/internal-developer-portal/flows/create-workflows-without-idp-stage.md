@@ -35,56 +35,86 @@ The template is defined in a YAML file named `template.yaml`. The [syntax](https
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
-# some metadata about the template itself
 metadata:
-  name: Template Quickstart
-  title: Demo Template Quickstart
-  description: scaffolder v1beta3 template demo
+  name: react-ssr-template
+  title: React SSR Template
+  description: Create a website powered with Next.js
+  tags:
+    - recommended
+    - react
 spec:
-  owner: service.owner
-  type: service
-  # these are the steps which are rendered in the frontend with the form input
+  owner: web@example.com
+  type: website
   parameters:
-    - title: Fill in some steps
+    - title: Provide some simple information
       required:
-        - name
-        - repoUrl
+        - component_id
+        - owner
       properties:
-        name:
+        component_id:
           title: Name
           type: string
           description: Unique name of the component
+          ui:field: EntityNamePicker
+        description:
+          title: Description
+          type: string
+          description: Help others understand what this website is for.
+        owner:
+          title: Owner
+          type: string
+          description: Owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
         repoUrl:
           title: Repository Location
           type: string
-
-  # here's the steps that are executed in series in the scaffolder backend
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
   steps:
-    - id: fetch-base
-      name: Fetch Base
+    - id: template
+      name: Fetch Skeleton + Template
       action: fetch:template
       input:
-        url: ./template
+        url: ./skeleton
+        copyWithoutRender:
+          - .github/workflows/*
         values:
-          name: ${{ parameters.name }}
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
           owner: ${{ parameters.owner }}
 
     - id: publish
       name: Publish
       action: publish:github
       input:
-        allowedHosts: ['github.com']
-        description: This is ${{ parameters.name }}
+        allowedHosts: ["github.com"]
+        description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
 
-  # some outputs which are saved along with the job for use in the frontend
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+
   output:
     links:
       - title: Repository
-        url: ${{ steps['publish'].output.remoteUrl }}
+        url: ${{ steps.publish.output.remoteUrl }}
       - title: Open in catalog
         icon: catalog
-        entityRef: ${{ steps['register'].output.entityRef }}
+        entityRef: ${{ steps.register.output.entityRef }}
 ```
 
 In the above template we have used the [GitHub based Custom Actions](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), `fetch:template` and `publish:github`. 
@@ -98,7 +128,7 @@ In the above template we have used the [GitHub based Custom Actions](https://www
 ![](static/create-page-sidebar.png)
 ![](static/create-page.png)
 
-3. Enter the URL to your new `template.yaml`. You can as well try to register this [already available template](https://github.com/harness-community/idp-samples/blob/main/template-quickstart.yaml). 
+3. Enter the URL to your new `template.yaml`. You can as well try to register this [already available template](https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml). 
 
 ![](static/url-on-register-page.png)
 
@@ -116,13 +146,18 @@ In the above template we have used the [GitHub based Custom Actions](https://www
 
 ![](static/Launch-template.png)
 
-7. Now fill the fields as:
-    - Name: Add a name for your component.
-    - Repository Location: The repo location should be of the format `github.com?repo=NEW_REPO_NAME&owner=ORG_NAME`, where NEW_REPO_NAME, is the name of the repository you want to create and ORG_NAME is the name (`backstage` here ) that appears just `github.com` in the URL, `https://github.com/backstage`  
+7. Now fill the fields as displayed in the image below
+  - Name: Name of the component that will be registered in the IDP 
+  - Description: Describe the usage of the component
+  - Owner (Dropdown): Select an user group as the owner of the component being created.
+  - Owner: The GitHub org under which you want to create the new repository. The org is usually picked from the URL used in tge **Connector**. 
+  - Repository: Give a name to the newly created repository. 
 
 ![](static/fill-template.png)
 
-8. Now Trigger the flow, it will fetch the docs and add it to the newly created repo. 
+![](static/fill-template-1.png)
+
+8. Now Trigger the flow, it will create a repository and register it back in your software catalog. 
 
 ![](static/run-flows.png)
 
