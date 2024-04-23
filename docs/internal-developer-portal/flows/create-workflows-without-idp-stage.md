@@ -1,18 +1,15 @@
 ---
-title: Getting Started with Workflows
+title: Create Workflows without using the Harness Pipelines
 description: Learn about writing new templates
 sidebar_position: 90
-sidebar_label: Getting Started with Workflows
+sidebar_label: Create Workflows without Harness Pipelines
 ---
 
 <DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
-## Introduction
+## Goal
 
-In Harness IDP, software template enables platform engineers to automate the process of service creation. As a platform engineer, you can create a template that prompts developers for details and creates a repository with a basic setup that includes a CI/CD process. 
-
-In this tutorial, we will create a template to add a new repository in GitHub. 
-
+This will help you setup a Workflow in IDP which automates GitHub Repo Onboarding for users.
 
 ## Pre-requisite
 
@@ -34,7 +31,6 @@ Make sure the Connector URL used here is pointed towards the org where you want 
 
 The template is defined in a YAML file named `template.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
-The following is the example template with [custom action](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#1-triggerharness-custom-pipeline) to create a new repository. 
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
