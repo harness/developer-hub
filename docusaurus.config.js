@@ -267,12 +267,12 @@ const config = {
 
           {
             position: "right",
-            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  btn-nav button--nav">Sign in</button></span>',
+            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
             href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
             position: "right",
-            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class="btn-nav button button--cta">Sign Up</button></span>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],
