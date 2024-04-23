@@ -67,6 +67,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - New Relic verification did not work as expected. The last null entry was leading to an error when decoding the response object. A code enhancement to ignore any null entry fixed this issue. (CDS-94113, ZD-59612)
 - Fixed an issue where service inputs did not appear in template inputs for nested templates where the service was fixed inside the nested template. (CDS-92836)
 - IDP and other new modules did not appear in the default module list. This issue is fixed. If a feature flag is turned on for a module, it will now appear in the module selector in the new navigation experience. (CDS-85185, ZD-59478)
+- The Retry Step Group failure strategy option appeared for steps. This option should appear only when selecting failure strategy for a step group. This issue is fixed. We also have the failure strategy, Proceed with Default Values, applicable for limited scenarios. This option will now appear in the failure strategy list wherever applicable. (PIPE-16868, ZD-61102)
 
 ### Version 1.33.5
 
