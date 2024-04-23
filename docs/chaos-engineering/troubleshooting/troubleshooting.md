@@ -137,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md). 
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/control-plane) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md).
 
 This could be due to a variety of reasons, such as:
 
@@ -147,7 +147,7 @@ This could be due to a variety of reasons, such as:
 
 #### Debug
 
-1. Check the subscriber's health; if the subscriber isn’t active, it can’t fetch the tasks to create the experiment. In such a case, check the logs of the subscriber and restart the subscriber pod.
+1. Check the subscriber's health; if the subscriber isn't active, it can't fetch the tasks to create the experiment. In such a case, check the logs of the subscriber and restart the subscriber pod.
 2. Check the logs of the control plane components, such as Chaos Manager and Kubernetes IFS.
 
 ### While executing an experiment, it directly moves to ERROR state and the execution data for the run is absent

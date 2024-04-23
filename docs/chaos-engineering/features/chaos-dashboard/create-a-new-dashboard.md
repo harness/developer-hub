@@ -14,11 +14,11 @@ This section will guide you through creating a new chaos dashboard, and creating
 
 Refer to [overview of chaos dashboards](/docs/chaos-engineering/features/chaos-dashboard/overview.md) to understand what a chaos dashboard is, and how you can view a predefined chaos dashboard.
 
-## Create a new visualization 
+## Create a new visualization
 To create a new visualization in a new dashboard, follow the steps mentioned below.
 
 ### Step 1: Click Dashboard
-* To create a new dashboard, navigate to **Chaos Dashboards** and click **Go to Dashboards**. 
+* To create a new dashboard, navigate to **Chaos Dashboards** and click **Go to Dashboards**.
 
 ![click-dashboard](./static/create-a-new-dashboard/click-dashboard-1.png)
 
@@ -32,14 +32,14 @@ To create a new visualization in a new dashboard, follow the steps mentioned bel
 ![specify-params](./static/create-a-new-dashboard/specify-parameters-3.png)
 
 :::tip
-Don't forget to add the **Tags** value because this is the field based on which the dashboards are filtered by modules. 
+Don't forget to add the **Tags** value because this is the field based on which the dashboards are filtered by modules.
 :::
 
 * Click **Continue**. This creates an empty dashboard. You can add visualizations (also known as **panels**) by editing this dashboard.
 
 ### Step 3: Edit dashboard
 
-As mentioned earlier, you can edit a dashboard that you created. 
+As mentioned earlier, you can edit a dashboard that you created.
 
 * Click **Edit Dashboard** to edit the dashboard that you created in the previous step.
 
@@ -64,7 +64,7 @@ To visualize the number of successful experiment runs for a specific time period
 
 ![select-fields](./static/create-a-new-dashboard/select-fields-6.png)
 
-* This will display a left bar with different fields. 
+* This will display a left bar with different fields.
 
 ![add-7](./static/create-a-new-dashboard/add-7.png)
 
@@ -91,7 +91,7 @@ To visualize the number of successful experiment runs for a specific time period
 
 ### Step 8: Pivot the results
 
-* To visualize the results with respect to passed and failed experiment runs, click the settings button of the **Experiment Status** and click **Pivot**. 
+* To visualize the results with respect to passed and failed experiment runs, click the settings button of the **Experiment Status** and click **Pivot**.
 
 ![save-field](./static/create-a-new-dashboard/pivot-12.png)
 
@@ -104,7 +104,7 @@ To visualize the number of successful experiment runs for a specific time period
 * If you wish to save your visualization, click **Save**. Otherwise, you can **Cancel** and add visualizations again.
 
 :::info note
-You can find the definitions for many of the fields [here](/docs/chaos-engineering/get-started/key-concepts.md).
+You can find the definitions for many of the fields [here](/docs/chaos-engineering/architecture-and-security/architecture/components).
 :::
 
 ## Description of fields used
@@ -113,4 +113,4 @@ You can find the definitions for many of the fields [here](/docs/chaos-engineeri
 
 ## Next steps
 
-* [Best practices to build effective dashboards](/docs/platform/dashboards/dashboard-best-practices.md) 
+* [Best practices to build effective dashboards](/docs/platform/dashboards/dashboard-best-practices.md)

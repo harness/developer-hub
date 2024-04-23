@@ -16,7 +16,7 @@ The diagram below gives a peek into the HCE architecture.
 
 ![Overview](./static/overview.png)
 
-**Harness control plane** is used to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults which help achieve the desired chaos impact on the target resources. You can sign in (or get an invite) to the Harness platform and leverage the interactive UI dashboard to:
+**Harness control plane** consists of microservices that help the [web-based portal](https://app.harness.io) perform its functionalities. This portal helps create, schedule, and monitor chaos experiments. It comes with a set of chaos faults which help achieve the desired chaos impact on the target resources. You can sign in (or get an invite) to the Harness platform and leverage the interactive UI dashboard to:
 
 - [Create chaos environment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-2-add-a-chaos-environment);
 - [Create chaos infrastructure](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-3-add-a-chaos-infrastructure);
