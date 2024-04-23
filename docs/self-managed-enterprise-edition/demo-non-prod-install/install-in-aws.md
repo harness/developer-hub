@@ -149,17 +149,309 @@ eksctl should automatically configure a Kubernetes config for your kubectl withi
 
 4. Install the Helm chart.
 
-   ```
+    ```
     helm install harness harness/ -f override-demo.yaml -n harness
     ```
 
    AWS EKS has the ability to create and attach Elastic Load Balancers as a Kubernetes Resource. For more information, go to [Application load balancing on Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/alb-ingress.html) in the EKS documentation. For this tutorial, we'll take advantage of this functionality by creating our Load Balancer first manually.
 
-5. Save the reference `loadbalancer.yaml` file and apply it into your cluster.
+5. Save the following reference `loadbalancer.yaml` file and apply it into your cluster.
+  
+     ```yaml
+       ---
+       # Source: networking/templates/nginx/controller.yaml
+       apiVersion: v1
+       kind: ServiceAccount
+       metadata:
+         name: harness-serviceaccount
+         namespace: harness
+       ---
+       # Source: networking/templates/nginx/controller.yaml
+       apiVersion: v1
+       kind: ConfigMap
+       metadata:
+         name: harness-ingress-controller
+         namespace: harness
+         labels:
+       data:
+         proxy-body-size: 1024m
+         proxy-read-timeout: "600"
+         proxy-send-timeout: "600"
+       ---
+       # Source: networking/templates/nginx/controller.yaml
+       apiVersion: rbac.authorization.k8s.io/v1
+       kind: Role
+       metadata:
+         name: harness-role
+         namespace: harness
+       rules:
+       - apiGroups:
+         - ""
+         resources:
+         - namespaces
+         verbs:
+         - get
+       - apiGroups:
+         - ""
+         resources:
+         - configmaps
+         - pods
+         - secrets
+         - endpoints
+         verbs:
+         - update
+         - get
+         - list
+         - watch
+       - apiGroups:
+         - ""
+         resources:
+         - services
+         verbs:
+         - get
+         - list
+         - update
+         - watch
+       - apiGroups:
+         - extensions
+         - networking.k8s.io
+         resources:
+         - ingresses
+        verbs:
+         - get
+         - list
+         - watch
+       - apiGroups:
+         - extensions
+         - networking.k8s.io
+         resources:
+         - ingresses/status
+         verbs:
+         - update
+       - apiGroups:
+         - ""
+         resourceNames:
+         - ingress-controller-leader-harness
+         resources:
+         - configmaps
+         verbs:
+         - get
+         - update
+       - apiGroups:
+         - ""
+         resources:
+         - configmaps
+         verbs:
+         - create
+       - apiGroups:
+         - ""
+         resources:
+         - endpoints
+         verbs:
+         - create
+         - get
+         - update
+       - apiGroups:
+         - ""
+         resources:
+         - events
+         verbs:
+         - create
+         - patch
+       ---
+       # Source: networking/templates/nginx/controller.yaml
+       apiVersion: rbac.authorization.k8s.io/v1
+       kind: RoleBinding
+       metadata:
+         name: harness-role-hsa-binding
+         namespace: harness
+       roleRef:
+         apiGroup: rbac.authorization.k8s.io
+         kind: Role
+         name: harness-role
+       subjects:
+         - kind: ServiceAccount
+           name: harness-serviceaccount
+           namespace: harness
+       ---
+       # Source: networking/templates/nginx/controller.yaml
+       apiVersion: v1
+       kind: Service
+       metadata:
+         name: harness-ingress-controller
+         namespace: harness
+         labels:
+         annotations:
+       spec:
+         selector:
+           app: harness-ingress-controller
+         type: 'LoadBalancer'
+         # externalTrafficPolicy: 'Cluster'
+         ports:
+         - name: health
+           protocol: TCP
+           port: 10254
+           targetPort: 10254
+         - name: http
+           port: 80
+           protocol: TCP
+           targetPort: http
+         - name: https
+           port: 443
+           protocol: TCP
+           targetPort: https
+       ---
+       # Source: networking/templates/nginx/default-backend.yaml
+       apiVersion: v1
+       kind: Service
+       metadata:
+         name: default-backend
+         namespace: harness
+         labels:
+       spec:
+         ports:
+         - name: http
+           port: 80
+           protocol: TCP
+           targetPort: 8080
+         selector:
+           app: default-backend
+         type: ClusterIP
+       ---
+       # Source: networking/templates/nginx/controller.yaml
+       kind: Deployment
+       apiVersion: apps/v1
+       metadata:
+         name: harness-ingress-controller
+         namespace: harness
+         labels:
+       spec:
+         replicas: 1
+         selector:
+           matchLabels:
+             app: harness-ingress-controller
+         progressDeadlineSeconds: 300
+         strategy:
+           rollingUpdate:
+             maxSurge: 1
+             maxUnavailable: 1
+           type: RollingUpdate
+         template:
+           metadata:
+             labels:
+               app: "harness-ingress-controller"
+           spec:
+             affinity:
+               podAntiAffinity:
+                 requiredDuringSchedulingIgnoredDuringExecution:
+                   - labelSelector:
+                       matchLabels:
+                         app: "harness-ingress-controller"
+                     topologyKey: kubernetes.io/hostname
+             serviceAccountName: harness-serviceaccount
+             terminationGracePeriodSeconds: 60
+             securityContext:
+               runAsUser: 101
+             containers:
+             - image: us.gcr.io/k8s-artifacts-prod/ingress-nginx/controller:v1.0.0-alpha.2
+               name: nginx-ingress-controller
+               imagePullPolicy: IfNotPresent
+               envFrom:
+               - configMapRef:
+                   name: harness-ingress-controller
+               resources:
+                 limits:
+                   memory: 512Mi
+                 requests:
+                   cpu: "0.5"
+                   memory: 512Mi
+               ports:
+                 - name: http
+                   containerPort: 8080
+                   protocol: TCP
+                 - name: https
+                   containerPort: 8443
+                   protocol: TCP
+               livenessProbe:
+                 httpGet:
+                   path: /healthz
+                   port: 10254
+                   scheme: HTTP
+                 initialDelaySeconds: 30
+                 timeoutSeconds: 5
+               securityContext:
+                 allowPrivilegeEscalation: false
+               env:
+               - name: POD_NAME
+                 valueFrom:
+                   fieldRef:
+                     apiVersion: v1
+                     fieldPath: metadata.name
+               - name: POD_NAMESPACE
+                 valueFrom:
+                   fieldRef:
+                     apiVersion: v1
+                     fieldPath: metadata.namespace
+               args:
+               - /nginx-ingress-controller
+               - --ingress-class=harness
+               - --default-backend-service=$(POD_NAMESPACE)/default-backend
+               - --election-id=ingress-controller-leader
+               - --watch-namespace=$(POD_NAMESPACE)
+               - --update-status=true
+               - --configmap=$(POD_NAMESPACE)/harness-ingress-controller
+               - --http-port=8080
+               - --https-port=8443
+               - --default-ssl-certificate=$(POD_NAMESPACE)/harness-cert
+               - --publish-service=$(POD_NAMESPACE)/harness-ingress-controller
+       ---
+       # Source: networking/templates/nginx/default-backend.yaml
+       kind: Deployment
+       apiVersion: apps/v1
+       metadata:
+         name: default-backend
+         namespace: harness
+         labels:
+       spec:
+         replicas: 1
+         selector:
+           matchLabels:
+             app: default-backend
+         template:
+           metadata:
+             labels:
+               app: default-backend
+           spec:
+             serviceAccountName: harness-serviceaccount
+             terminationGracePeriodSeconds: 60
+             containers:
+             - name: default-http-backend
+               image: registry.k8s.io/defaultbackend-amd64:1.5
+               imagePullPolicy: IfNotPresent
+               livenessProbe:
+                 httpGet:
+                   path: /healthz
+                   port: 8080
+                   scheme: HTTP
+                 initialDelaySeconds: 30
+                 timeoutSeconds: 5
+               resources:
+                 limits:
+                   memory: 20Mi
+                 requests:
+                   cpu: 10m
+                   memory: 20Mi
+               securityContext:
+                 runAsUser: 65534
+               ports:
+               - name: http
+                 containerPort: 8080
+                 protocol: TCP
+      ```
 
-   ```
-   kubectl create -f loadbalancer.yaml -n harness
-   ```
+      ```
+      kubectl create -f loadbalancer.yaml -n harness
+      ```
 
 6. Get the ELB URL.
 
