@@ -35,6 +35,10 @@ Make sure the Connector URL used here is pointed towards the org where you want 
 
 3. Enter the URL to register this [already available template](https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml). 
 
+```sh
+https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml
+```
+
 ![](static/url-on-register-page.png)
 
 4. Select **Import**.
