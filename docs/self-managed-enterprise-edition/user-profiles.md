@@ -52,29 +52,30 @@ You can use the following commands to upgrade/install via Helm for each profile.
 ##### Small
 
 ```
-   helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
-   ```
+helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
+```
 
-   ```
-   helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
-   ```
+```
+helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-small.yaml
+```
 
 #### Medium
 
 ```
-   helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
-   ```
+helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
+```
 
-   ```
-   helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
-   ```
+```
+helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-medium.yaml
+```
 
 ##### Large
 
 ```
-   helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
-   ```
+helm install my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
+```
 
-   ```
-   helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
-   ```
+```
+helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
+```
+
