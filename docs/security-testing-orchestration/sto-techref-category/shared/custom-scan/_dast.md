@@ -13,7 +13,7 @@ These settings apply to Custom Scan steps when both of these conditions are true
 - [Instance protocol](#instance-protocol)
 - [Instance port](#instance-port)
 - [Instance username](#instance-username)
-- [Instance username](#instance-password)
+- [Instance password](#instance-password)
 
 <!-- TOC end -->
 
