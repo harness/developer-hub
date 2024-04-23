@@ -46,9 +46,9 @@ To create the litmus SCC,
 - Copy the contents of the [litmus SCC manifest](./static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
 - Apply this manifest to your chaos infrastructure.
 
-```bash
-kubectl apply -f litmus-scc.yaml
-```
+  ```bash
+  kubectl apply -f litmus-scc.yaml
+  ```
 
 __Output__
 
@@ -58,9 +58,9 @@ securitycontextconstraints.security.openshift.io/litmus-scc created
 ```
 - Authenticate all `hce` service accounts with `litmus-scc`:
 
-```bash
-oc adm policy add-scc-to-user litmus-scc -z <SERVICE-ACCOUNT-NAME> --as system:admin -n <CHAOS-NAMESPACE>
-```
+  ```bash
+  oc adm policy add-scc-to-user litmus-scc -z <SERVICE-ACCOUNT-NAME> --as system:admin -n <CHAOS-NAMESPACE>
+  ```
 
 :::note
 - Replace `<CHAOS-NAMESPACE>` with the namespace where litmus is installed. (Here litmus)

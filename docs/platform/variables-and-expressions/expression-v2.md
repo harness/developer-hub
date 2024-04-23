@@ -605,8 +605,8 @@ With script support, Harness enables you to define functions, utilize loops, and
 Use the `function` keyword in JEXL to define functions. For example, the following expression contains a JEXL script that defines a function called `identityFunction` that takes one parameter. The function returns the value of the key parameter. The entire statement is wrapped in the expression delimiter (`<+...>`).
 
 ```js
-<+ var identityFunction = function(keyName) {
-     return key;
+<+ var identityFunction = function(keyNameInput) {
+     return keyNameInput;
 }
    var keyName = "keyName";
    identityFunction(keyName);
@@ -625,8 +625,8 @@ The following example demonstrates how you can use a loop in JEXL to iterate ove
 var numbers = [1, 2, 3, 4, 5];
 var sum = 0;
 
-for (var i = 0; i < numbers.length; i++) {
-  sum = sum + numbers[i];
+for (number: numbers) {
+  sum = sum + number;
 }
 
 sum;

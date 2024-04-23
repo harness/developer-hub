@@ -42,9 +42,9 @@ It can be observed that currently the pipeline is able to deploy the application
 
 6. Run the pipeline.
 
-The pipeline will attempt to deploy the application as part of the CD deployment stage. However, the stage will fail with an error due to the failure of the **Boutique Cart Delete** chaos step, causing the CD to initiate a rollback and revert to the previous healthy deployment.
+   The pipeline will attempt to deploy the application as part of the CD deployment stage. However, the stage will fail with an error due to the failure of the **Boutique Cart Delete** chaos step, causing the CD to initiate a rollback and revert to the previous healthy deployment.
 
-![CD Pipeline Failed](./static/cd-pipeline-failed.png)
+   ![CD Pipeline Failed](./static/cd-pipeline-failed.png)
 
 At this point we can validate that the application is still accessible, which indicates that the rollback was indeed successful.
 
