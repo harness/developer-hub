@@ -22,38 +22,6 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-## Important upcoming changes
-
-:::warning important changes
-
-Please note that the following important changes will occur in an upcoming release:
-
-- The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
-
-   <details>
-   <summary>Legacy delegate installation flow</summary>
-
-   #### New Delegate Page
-
-   The `Switch back to old delegate install experience` link will be removed.
-
-   ![](./static/switch-to-old-delegate-install.png)
-
-   #### Legacy delegate installation flow deprecated
-
-   You will no longer be able to reach the legacy delegate installation flow.
-
-   ![](./static/old-delegate-install-exp.png)
-
-   </details>
-
-- Delegate tokens not used within the last 90 days will be revoked automatically.
-
-   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 90 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
-
-:::
-
-
 <details>
 <summary>Deprecation notice</summary>
 
