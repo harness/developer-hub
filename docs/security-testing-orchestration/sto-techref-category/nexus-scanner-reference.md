@@ -15,17 +15,16 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Nexus scans in STO
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
 <details>
-<summary>Nexus configuration in a Security step</summary>
+<summary>Nexus configuration in a Custom Scan step</summary>
 
 
 import security_step_nexus from './static/security-step-nexus.png'
 
 
 
-<img src={security_step_nexus} alt="Configuring a Nexus scan in a Security step" height="50%" width="50%" />
+<img src={security_step_nexus} alt="Configuring a Nexus scan in a Custom Scan step" height="50%" width="50%" />
 
 
 </details>

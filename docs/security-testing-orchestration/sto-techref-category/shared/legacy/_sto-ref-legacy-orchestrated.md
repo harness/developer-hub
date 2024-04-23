@@ -1,7 +1,7 @@
 <!-- details>
 <summary>Orchestration scan settings</summary -->
 
-The following settings are required for Security steps where the `policy_type` is `orchestratedScan`.
+The following settings are required for Custom Scan steps where the `policy_type` is `orchestratedScan`.
 
 <!-- 
 * `product_site_id` The access ID used to look up a specific product in the scanner. 

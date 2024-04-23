@@ -7,7 +7,7 @@ sidebar_position: 215
 
 You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan).
 
-The standard workflow is to add a Security step to your CI Build or Security stage and configure it as described below.
+The standard workflow is to add a Custom Scan step to your Build or Security stage and configure it as described below.
 
 
 ## For more information

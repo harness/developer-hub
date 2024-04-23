@@ -85,7 +85,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Gitleaks step settings for STO scans
 
-The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
+The recommended workflow is to add a GitLeaks step to a Security or Build stage and then configure it as described below.  
 
 
 ### Scan Mode

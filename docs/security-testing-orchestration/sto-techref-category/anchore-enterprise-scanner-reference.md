@@ -5,7 +5,7 @@ sidebar_label: Anchore Enterprise scanner reference
 sidebar_position: 20
 ---
 
-You can scan your repositories and other components used in your code with [Anchore Enterprise](https://docs.anchore.com/current/docs/), a scanner that provides visibility into supply chain security risks. 
+You can scan your container images with [Anchore Enterprise](https://docs.anchore.com/current/docs/), a software supply chain management solution that identifies vulnerabilities, malware, misconfigurations, and secrets for faster remediation.
 
 ## Important notes for running Anchore Enterprise scans in STO
 
@@ -50,11 +50,10 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
-<!-- step-palette -->
 
 ## Anchore Enterprise step settings in STO
 
-The recommended workflow is add an Anchore Enterprise step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add an Anchore Enterprise step to a Build or Security stage and then configure it as described below. 
 
 ### Scan
 
@@ -244,7 +243,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## Anchore Enterprise orchestration example
 
-This example uses an Anchore step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
+This example uses an Anchore step in Orchestration mode to scan a repository. The pipeline has one Security stage with two steps:
 
 1. A Background step that runs Docker-in-Docker. This is [required](#docker-in-docker-requirements) to scan container images.
 2. An Anchore step that does the following:
@@ -335,101 +334,5 @@ pipeline:
 
 </details>
 
-<!-- hiding this example, since it uses the old-style Security (now Custom Scan) step 
 
-## Anchore Enterprise dataLoad example
-
-This example uses a Security Test step in Orchestration mode to scan a repository. The pipeline has one SecurityTests stage with two steps:
-
-1. A Background step that runs Docker-in-Docker. This is [required](#docker-in-docker-requirements) to scan container images.
-2. A Security Test step that does the following:
-
-   1. Extracts the `owasp/nettacker:latest` image from Anchore Enterprise.
-   2. Logs in to the Anchore Enterprise API based on the `product_domain`, `product_access_id`, `product_access_token` settings.
-   3. Scans the extracted image.
-   4. Deduplicates and normalizes the scan data and ingests it into STO. 
-
-Note that in this example, the resource limages for the Security Test step are increased to ensure that the container used to run the scan has enough memory and CPU.
-
-```yaml
-
-pipeline:
-  allowStageExecutions: false
-  projectIdentifier: STO
-  orgIdentifier: default
-  identifier: anchore_dataload
-  name: anchore dataload
-  tags: {}
-  stages:
-    - stage:
-        name: build
-        identifier: build
-        type: SecurityTests
-        spec:
-          cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              containerSecurityContext:
-                privileged: true
-              os: Linux
-          sharedPaths:
-            - /var/run
-            - /shared/scan_results
-          execution:
-            steps:
-              - step:
-                  type: Background
-                  name: Background_1
-                  identifier: Background_1
-                  spec:
-                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
-                    image: docker:dind
-                    shell: Sh
-                    privileged: true
-                    entrypoint:
-                      - dockerd
-                    resources:
-                      limits:
-                        memory: 2048Mi
-                        cpu: 1000m  
-              - step:
-                  type: Security
-                  name: Security_1
-                  identifier: Security_1
-                  spec:
-                    privileged: true
-                    settings:
-                      policy_type: dataLoad
-                      scan_type: container
-                      product_name: anchore
-                      product_config_name: default
-                      product_domain: https://anchore.myorg.org/api
-                      product_access_id: jane.smith@myorg.org
-                      product_access_token: <+secrets.getValue("anchoretoken")>
-                      product_image_name: owasp/nettacker:latest
-                      target_name: owasp/nettacker
-                      target_variant: latest
-                      LOG_LEVEL: debug
-                    imagePullPolicy: Always
-                    resources:
-                      limits:
-                        memory: 4Gi
-                        cpu: 1000m
-          caching:
-            enabled: false
-            paths: []
-          slsa_provenance:
-            enabled: false
-        variables:
-          - name: runner_tag
-            type: String
-            value: dev
-
-```
--->
 

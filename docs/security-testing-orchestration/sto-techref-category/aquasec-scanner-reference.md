@@ -5,7 +5,7 @@ sidebar_label: Aqua Security scanner reference
 sidebar_position: 25
 ---
 
-You can ingest container-image scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
+You can scan your container images and ingest scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
 
 The Aqua Security step can also ingest assurance policy violations. These violations appear as INFO-level issues in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
 
@@ -39,7 +39,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Aqua Custom Scan step settings for STO scans
 
-The recommended workflow is add an Aqua Security step to a Security or Build stage and then configure it as described below.
+The recommended workflow is to add an Aqua Security step to a Security or Build stage and then configure it as described below.
 
 
 ### Scan

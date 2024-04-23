@@ -16,7 +16,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Reapsaw scans in STO
 
-To ingest your results, add a Security step to a Build or Security stage and configure it as described below.
+The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
 
 ### Target and variant
 

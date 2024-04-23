@@ -5,7 +5,7 @@ sidebar_label: Sysdig scanner reference
 sidebar_position: 395
 ---
 
-You can scan container images using [Sysdig Vulnerability engine](https://docs.sysdig.com/en/docs/sysdig-secure/vulnerabilities/). Create a CI Build or Security stage, add a Sysdig step, and then add the `setting:value` pairs as specified below.
+You can scan container images using [Sysdig Vulnerability engine](https://docs.sysdig.com/en/docs/sysdig-secure/vulnerabilities/). Create a Build or Security stage, add a Sysdig step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Sysdig scans in STO
 
@@ -32,7 +32,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Sysdig step settings for STO scans
 
-The recommended workflow is add a Sysdig step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Sysdig step to a Security or Build stage and then configure it as described below.
 
 
 ### Scan

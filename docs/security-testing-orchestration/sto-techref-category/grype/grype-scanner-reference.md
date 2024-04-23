@@ -42,7 +42,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Grype step settings for STO
 
-The recommended workflow is add a Grype step to a Security or Build stage and then configure it as described below. 
+The recommended workflow is to add a Grype step to a Security or Build stage and then configure it as described below. 
 
 
 ### Scan
@@ -258,69 +258,3 @@ While Harness updates the database every time it rebuilds the Grype image, this 
 
 
  
-<!-- STO-7187 remove legacy configs for scanners with step palettes 
-
-## Custom Scan step settings for Grype scans in STO (legacy)
- 
-:::note
-You can set up Grype scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Grype step](#grype-step-settings-for-sto) instead.
-:::
-
-
-#### Important Notes
-
-* STO supports Grype scans of containers and repositories.
-* STO supports [orchestrationscans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Grype scan Settings
-
-* `product_name` = `grype`
-* `policy_type` = `orchestratedScan`
-* `scan_type` = `repository` or `container`
-* `product_config_name` = `default`
-* `container_domain` — The image registry domain, for example `docker.io`
-* `container_project` — The image owner and project, for example `harness/delegate`
-* `container_tag` — The tag of the image to scan, for example `latest`
-* `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-<!-- 
-The following settings are also required, depending on the container type:
-+ if `container_type` = `docker_v2`
-	- `container_access_id`: Username
-	- `container_access_token`: Password/token 
-+ if `container_type` = `aws_ecr`
-	- `container_access_id`: Username
-	- `container_access_token`: Password/token 
-	- `container_region`: Image registry AWS region
-+ if `container_type` = `jfrog_artifactory`
-	- `container_access_id`: Username
-	- `container_access_token`: Password/token
-
-
-
-#### Container scan settings
-
-
-import StoLegacyContainer from '../shared/legacy/_sto-ref-legacy-container.md';
-
-
-<StoLegacyContainer />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->

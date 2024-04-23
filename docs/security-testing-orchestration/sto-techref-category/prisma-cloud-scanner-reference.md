@@ -36,7 +36,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Prisma Cloud step settings for STO
 
-The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration).
+The recommended workflow is to add a PrismaCloud step to a Security or Build stage and then configure it as described below.
 
 
 ### Scan

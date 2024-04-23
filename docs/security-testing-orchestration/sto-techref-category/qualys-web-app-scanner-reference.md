@@ -19,13 +19,14 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Qualys scans in STO
 
-### Target and variant
+The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
 
+### Target and variant
 
 import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
-
 <StoLegacyTargetAndVariant />
+
 
 ### Qualys scan settings
 

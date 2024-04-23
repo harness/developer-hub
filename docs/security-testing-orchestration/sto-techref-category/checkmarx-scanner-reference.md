@@ -39,7 +39,7 @@ With Harness STO, you can do the following:
 
     - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
-    - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file after the scan step. 
+    - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file. 
 
 ### Root access requirements 
 
@@ -58,7 +58,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Checkmarx step settings for STO scans
 
-The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Checkmarx step to a Security or Build stage and then configure it as described below. 
 
 
 ### Scan

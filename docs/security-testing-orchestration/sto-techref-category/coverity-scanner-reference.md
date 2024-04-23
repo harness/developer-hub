@@ -11,16 +11,6 @@ You can ingest scan results from [Coverity Scan](https://scan.coverity.com/), a 
 
 ## Important notes for running Coverity scans in STO
 
-<!-- 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
--->
 
 ### Root access requirements
 
@@ -45,7 +35,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The following steps outline the recommended workflow:
 
-1. Add a CI Build or an STO Security stage to your pipeline.
+1. Add a Build or Security stage to your pipeline.
 
 2. Add a Run step to upload your Coverity scan results to the pipeline workspace. 
 

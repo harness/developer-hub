@@ -47,7 +47,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Snyk step settings for STO
 
-The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
 ### Scan
@@ -239,48 +239,4 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
 
-## Custom Scan step settings for Snyk scans in STO (legacy)
-
-:::note
-You can set up Snyk scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Snyk step](#snyk-step-settings-for-sto) instead.
-:::
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Snyk scan settings
-
-* `product_name` = `snyk`:
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `containerImage` or `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)
-	+ accepted value for `containerImage`: `ingestionOnly`
-	+ accepted values for `repository`: `orchestratedScan`, `ingestionOnly`
-* `product_access_token`
-* `product_config_name` : `default`
-* `snyk_api` :  URL to the Snyk instance, if you're using an on-prem installation.
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-#### Container scan settings
-
-
-import StoLegacyContainer from '../shared/legacy/_sto-ref-legacy-container.md';
-
-
-<StoLegacyContainer />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->

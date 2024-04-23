@@ -1,12 +1,13 @@
 ---
-title: Black Duck Hub scanner reference for STO
-description: Scan code repositories and container images with Black Duck Open Hub scanner.
-sidebar_label: Black Duck Hub scanner reference
+title: Black Duck scanner reference for STO
+description: Scan code repositories and container images with Black Duck.
+sidebar_label: Black Duck scanner reference
 sidebar_position: 70
 ---
 
+You can scan your repositories and container images using [Black Duck Hub](https://sig-product-docs.synopsys.com/bundle/bd-hub/page/Welcome.html), a Software Composition Analysis (SCA) tool for managing software supply chains, understanding third-party components, and minimizing risks from known vulnerabilities and licensing. 
 
-You can scan your repositories and container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
+<!-- https://sig-product-docs.synopsys.com/bundle/bd-hub/page/Administration/Hub101.html -->
 
 ## Important notes for running Black Duck Hub scans in STO
 
@@ -34,7 +35,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Black Duck Hub step settings for STO scans
 
-The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a BlackDuck step to a Security or Build stage and then configure it as described below.
 
 
 ### Scan

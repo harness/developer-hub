@@ -4,7 +4,7 @@ description: Repository scans with Fortify on Demand
 sidebar_position: 150
 ---
 
-You can run Fortify scans on your repositories using a Security step: create a CI Build or Security stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can run Fortify scans on your repositories using a Custom Scan step: create a CI Build or Security stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Important notes for running Fortify on Demand scans in STO
 

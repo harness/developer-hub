@@ -268,7 +268,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 ## Wiz step settings reference
 
-The recommended workflow is add a Wiz step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Wiz step to a Security Tests or CI Build stage and then configure it as described below.
 
 
 ### Scan

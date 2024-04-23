@@ -31,7 +31,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Bandit step settings for STO scans
 
-The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Bandit step to a Security or Build stage and then configure it as described below.
 
 ### Scan
 

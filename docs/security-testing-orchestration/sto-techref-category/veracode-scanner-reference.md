@@ -37,14 +37,14 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Required Settings for Veracode scans in STO
 
-To set up a Veracode scan, add a Security step to your pipeline and add the following settings:
+To set up a Veracode scan, add a Custom Scan step to your pipeline and add the following settings:
 
 * `product_name` = `veracode`
 * `scan_type` = `repository`
 * `policy_type` — STO supports the following scan policy types for Veracode:
-	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestration Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
+	+ `orchestratedScan`  — A Custom Scan step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestration Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
 	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
-	+ `dataLoad` — A Security step downloads and ingests results from an external scanner.
+	+ `dataLoad` — A Custom Scan step downloads and ingests results from an external scanner.
 * `product_config_name` = `default`
 * `repository_project` — The name of the repo that gets scanned as shown in the Veracode UI. You use the [Codebase Config object](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) in the Harness pipeline to determine the URL of the repo to scan.  
 In most cases, this should match the repo name used in your Git provider.
@@ -87,9 +87,9 @@ import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md'
 
 The following pipeline example illustrates a dataLoad workflow to ingest data from Veracode. It consists of two steps: 
 
-1. A Background step that runs a Docker-in-Docker service (required if you're using a Security step to configure your integration). 
+1. A Background step that runs a Docker-in-Docker service (required if you're using a Custom Scan step to configure your integration). 
 
-2. A Security step that specifies the information needed to ingest the scan results from the Veracode server.
+2. A [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step that specifies the information needed to ingest the scan results from the Veracode server.
 
 ![](./static/veracode-pipeline-example.png)
 

@@ -17,6 +17,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Tenable scans in STO
 
+The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
+
 ### Target and variant
 
 
