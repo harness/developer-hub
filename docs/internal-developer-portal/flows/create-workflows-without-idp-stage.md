@@ -1,6 +1,6 @@
 ---
 title: Create Workflows without using the Harness Pipelines
-description: Learn about writing new templates
+description: Create an IDP workflow purely using Backstage Scaffolder actions and without using Harness pipelines
 sidebar_position: 90
 sidebar_label: Create Workflows without Harness Pipelines
 ---
@@ -9,7 +9,7 @@ sidebar_label: Create Workflows without Harness Pipelines
 
 ## Goal
 
-This will help you setup a Workflow in IDP which automates GitHub Repo Onboarding for users.
+This tutorial will help you create an IDP Self Service Workflow which automates GitHub Repo Onboarding for users. This is also an example to demonstrate that you can build IDP Flows by using Backstage Scaffolder actions and without using Harness pipelines. This however, is not our recommended approach as we recommend using a Harness pipeline to leverage features like Access Control and Governence.
 
 ## Pre-requisite
 
@@ -27,7 +27,7 @@ Make sure the Connector URL used here is pointed towards the org where you want 
 
 ## Create Template
 
-**If you want to use our sample templates you can skip this step and go to register template step**
+**If you want to use our sample workflow you can skip this step and go to "Register Template in IDP" step***
 
 The template is defined in a YAML file named `template.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
 
@@ -69,13 +69,6 @@ spec:
           name: ${{ parameters.name }}
           owner: ${{ parameters.owner }}
 
-    - id: fetch-docs
-      name: Fetch Docs
-      action: fetch:plain
-      input:
-        targetPath: ./community
-        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
-
     - id: publish
       name: Publish
       action: publish:github
@@ -94,7 +87,7 @@ spec:
         entityRef: ${{ steps['register'].output.entityRef }}
 ```
 
-In the above template we have used the [GitHub based Custom Actions](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), `fetch:template`, `fetch:plain` and `publish:github`. 
+In the above template we have used the [GitHub based Custom Actions](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), `fetch:template` and `publish:github`. 
 
 1. Copy the above template file in your git provider, and save it as `template.yaml`. 
 
