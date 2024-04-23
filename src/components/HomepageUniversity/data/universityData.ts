@@ -1,6 +1,22 @@
 import { MODULES } from "../../../constants";
 import { CardItem } from "../../University/CertCard";
 // Define the certs section cards here
+
+
+
+// CardItem = {
+//   title: string;
+//   module: MODULES;
+//   type?: certType;
+//   description: JSX.Element | string;
+//   version?: string;
+//   link?: string;
+//   thumb?: boolean;
+//   numberOfCerts?: number;
+//   ILT_available?: boolean;
+//   SPT_available?: boolean;
+// };
+
 export const university: CardItem[] = [
   {
     title: "Continuous Delivery & GitOps",
