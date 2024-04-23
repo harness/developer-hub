@@ -184,7 +184,7 @@ kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-a
 
 ##### Example command
 
-For example, the command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace, `abc123` account ID, and `http://smp.harnessurl.com` subdomain URL.
+The example command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace, `abc123` account ID, and `http://smp.harnessurl.com` subdomain URL.
 
 ```
 ./configure-vanity-url.sh mynamespace abc123 http://smp.harnessurl.com
