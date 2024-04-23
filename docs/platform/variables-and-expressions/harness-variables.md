@@ -321,6 +321,26 @@ pipeline:
 
 </details>
 
+Ternary operator and semicolon as constant in same expression is not supported.
+
+Expression : <+ 
+                Env name: <+env.name> 
+                Service Name: <+<+<+env.name>.contains("dev")>?<+env.name>:"No Env">
+             >
+
+Above expression will not get resolved as semicolon is used as constant string with ternary operator. As a workaround for this expression to work we should create
+a new variable for ternary expression and use this varible in original expression.
+
+Take above expression as example:
+
+We can create a test variable with this expression as value <+<+<+env.name>.contains("dev")>?<+env.name>:"No Env"> and replace the original expression with same. suppose variable created is at pipeline level then our final expression will be as below and it will work.
+
+Expression: <+ 
+                Env name: <+env.name> 
+                Service Name: <+pipeline.variables.test>
+             >
+
+
 For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
 ### Expressions as strings
