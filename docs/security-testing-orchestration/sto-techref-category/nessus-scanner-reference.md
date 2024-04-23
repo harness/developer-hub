@@ -15,6 +15,84 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Nessus scans in STO
 
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+nessus
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+instance
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+`Must be one of the following. For supported values, go to the relevant scanner reference.`
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+Required for most scanner integrations. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+nessus-web-application
+```
+
 ### Target and variant
 
 
@@ -23,6 +101,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 <StoLegacyTargetAndVariant />
 
+<!--
 ### Nessus scan settings
 
 * `product_name` = `nessus`
@@ -38,14 +117,41 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 * `product_config_name` : `nessus-web-application`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+-->
+
 
 ### Instance
 
 
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
 
 <StoLegacyInstance />
+
+### Product access
+
+These settings are available to access your Nessus instance when `policy_type` is `orchestratedScan`. 
+
+#### Product access keys
+
+```
+product_domain
+```
+```
+product_access_id
+```
+```
+product_access_token
+```
+```
+product_policy_id
+```
+```
+product_scanner_id
+```
+```
+product_template_uuid
+```
 
 ### Ingestion file
 
