@@ -182,6 +182,14 @@ kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPE
 kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
 ```
 
+##### Example command
+
+For example, the command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace and `abc123` account ID.
+
+```
+./configure-vanity-url.sh mynamespace abc123
+```
+
 ### Deploy Harness modules
 
 Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
