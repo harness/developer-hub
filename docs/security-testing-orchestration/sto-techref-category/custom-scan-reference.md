@@ -129,16 +129,13 @@ policy_type
 Must be one of the following. For supported values, go to the relevant scanner reference.
 
 ```
-containerImage
+orchestratedScan
 ```
 ```
-repository
+ingestionOnly
 ```
 ```
-instance
-```
-```
-configuration
+dataLoad
 ```
 
 #### Product config name

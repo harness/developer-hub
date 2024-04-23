@@ -31,13 +31,100 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Fortify on Demand scans in STO
 
-### Target and variant
+### Scanner settings
 
+These settings are required. 
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```yaml
+fortifyondemand
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+repository
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+Must be one of the following. For supported values, go to the relevant scanner reference.
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+```
+dataLoad
+```
+
+#### Product config name
+
+Required for most scanner integrations. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+If `product_lookup_type` = `Static`:
+
+```
+sast
+```
+If `product_lookup_type` = `Dynamic`:
+
+```
+dast
+```
+
+
+### Target and variant
 
 import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
-
 <StoLegacyTargetAndVariant />
+
+<!-- 
 
 ### Fortify on Demand scan settings
 
@@ -66,6 +153,90 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 	+ `sast` ( if `product_lookup_type` = `Static`)
 	+ `dast` ( if `product_lookup_type` = `Dynamic`)
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+-->
+
+### Product access
+
+These settings are available to access your Fortify on Demand SaaS instance when `policy_type` is `orchestratedScan` or `dataLoad`. 
+
+#### Product access keys
+```
+product_name
+```
+```
+product_domain
+```
+```
+product_access_id
+```
+```
+product_access_token
+```
+```
+product_owner_id
+```
+```
+product_entitlement
+```
+```
+product_scan_type
+```
+```
+product_app_name
+```
+```
+product_release_name
+```
+```
+product_target_language
+```
+```
+product_target_language_version
+```
+```
+product_audit_type
+```
+
+#### Product scan settings
+
+##### Key
+
+```
+product_scan_settings
+```
+
+##### Values
+
+```
+Custom
+```
+```
+default
+```
+
+#### Product lookup type
+
+
+##### Key
+
+```
+product_lookup_type
+```
+
+##### Values
+
+```
+Dynamic
+```
+```
+Static
+```
+```
+Mobile
+```
+
+
 
 ### Ingestion file
 
