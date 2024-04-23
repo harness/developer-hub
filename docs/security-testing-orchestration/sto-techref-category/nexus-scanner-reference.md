@@ -15,19 +15,79 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Nexus scans in STO
 
+### Scanner settings
 
-<details>
-<summary>Nexus configuration in a Custom Scan step</summary>
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
 
-
-import security_step_nexus from './static/security-step-nexus.png'
-
-
-
-<img src={security_step_nexus} alt="Configuring a Nexus scan in a Custom Scan step" height="50%" width="50%" />
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
 
 
-</details>
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+nexusiq
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+repository
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+Must be one of the following.
+
+```
+orchestratedScan
+```
+```
+dataLoad
+```
+
+#### Product config name
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+default
+```
 
 ### Target and variant
 
@@ -37,6 +97,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 <StoLegacyTargetAndVariant />
 
+<!-- 
 ### Nexus scan settings
 
 * `product_name` = `nexusiq`
@@ -57,6 +118,117 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 	+ `product_config_name`
 		- Accepted values(s): `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+-->
+
+### Product access
+
+These settings are available to access your NexusIQ SaaS instance when `policy_type` is `orchestratedScan`. 
+
+#### Product domain
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_domain
+```
+
+##### Value
+
+The URL of your NexusIQ instance.
+
+
+
+
+#### Product access Id
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_access_id
+```
+
+##### Value
+
+The password used to log in to the NexusIQ UI.
+
+
+
+#### Product access token
+
+
+##### Key
+```
+product_access_token
+```
+
+##### Value
+
+The password used to log in to the NexusIQ UI. (This is not an API access token.)
+
+You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access token and access it using the format `<+secrets.getValue("project.my-secret")>`. 
+
+
+
+#### Product organization Id
+
+
+##### Key
+```
+product_organization_id
+```
+
+##### Value
+
+The organization defined in Nexus. You can use the [Organizations API](https://help.sonatype.com/iqserver/automating/rest-apis/organizations-rest-api---v2) to get a list of all your organizations. 
+
+
+
+#### Product project name
+
+
+##### Key
+```
+product_project_name
+```
+
+##### Value
+
+The [application ID](https://help.sonatype.com/iqserver/managing/application-management) of the Nexus application. This also corresponds to `application-id` used in the [NexusIQ CLI](https://help.sonatype.com/iqserver/integrations/nexus-iq-cli).
+
+
+#### Product lookup type
+
+
+##### Key
+```
+product_lookup_type
+```
+
+##### Value
+
+One of the following:
+
+```
+byPrivateId
+```
+```
+byPublicId
+```
+
+#### Product lookup Id
+
+You can use the following keys to specify the lookup Id, depending on the product lookup type(#product-lookup-type):
+
+```
+product_private_id
+```
+```
+product_public_id
+```
+
 
 ### Ingestion file
 
