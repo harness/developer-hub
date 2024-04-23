@@ -17,6 +17,7 @@ CE comprises two parts:
 2. **Chaos infrastructure**
 
 The diagram below gives a peek into the HCE architecture.
+
 ![Architecture](./static/architecture/hce-architecture.png)
 
 ## Harness control plane
@@ -50,7 +51,7 @@ This is a NoSQL MongoDB database microservice accountable for storing users' inf
 
 ## Harness execution plane
 
-**Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. 
+**Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure.
 
 The resource utilization matrix for execution plane components is summarized below. These components are installed in target cluster as a part of the Kubernetes based chaos infrastructure.
 
