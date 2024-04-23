@@ -25,101 +25,6 @@ Make sure the Connector URL used here is pointed towards the org where you want 
 
 :::
 
-## Create Template
-
-**If you want to use our sample workflow you can skip this step and go to "Register Template in IDP" step***
-
-The template is defined in a YAML file named `template.yaml`. The [syntax](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines#how-to-write-idp-templates) of the template definition is owned by [backstage.io](https://backstage.io/docs/features/software-templates/writing-templates) while the workflow runs on a Harness pipeline of your choice.
-
-
-```YAML
-apiVersion: scaffolder.backstage.io/v1beta3
-kind: Template
-metadata:
-  name: react-ssr-template
-  title: React SSR Template
-  description: Create a website powered with Next.js
-  tags:
-    - recommended
-    - react
-spec:
-  owner: web@example.com
-  type: website
-  parameters:
-    - title: Provide some simple information
-      required:
-        - component_id
-        - owner
-      properties:
-        component_id:
-          title: Name
-          type: string
-          description: Unique name of the component
-          ui:field: EntityNamePicker
-        description:
-          title: Description
-          type: string
-          description: Help others understand what this website is for.
-        owner:
-          title: Owner
-          type: string
-          description: Owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
-    - title: Choose a location
-      required:
-        - repoUrl
-      properties:
-        repoUrl:
-          title: Repository Location
-          type: string
-          ui:field: RepoUrlPicker
-          ui:options:
-            allowedHosts:
-              - github.com
-  steps:
-    - id: template
-      name: Fetch Skeleton + Template
-      action: fetch:template
-      input:
-        url: ./skeleton
-        copyWithoutRender:
-          - .github/workflows/*
-        values:
-          component_id: ${{ parameters.component_id }}
-          description: ${{ parameters.description }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          owner: ${{ parameters.owner }}
-
-    - id: publish
-      name: Publish
-      action: publish:github
-      input:
-        allowedHosts: ["github.com"]
-        description: This is ${{ parameters.component_id }}
-        repoUrl: ${{ parameters.repoUrl }}
-
-    - id: register
-      name: Register
-      action: catalog:register
-      input:
-        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
-        catalogInfoPath: "/catalog-info.yaml"
-
-  output:
-    links:
-      - title: Repository
-        url: ${{ steps.publish.output.remoteUrl }}
-      - title: Open in catalog
-        icon: catalog
-        entityRef: ${{ steps.register.output.entityRef }}
-```
-
-In the above template we have used the [GitHub based Custom Actions](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), `fetch:template` and `publish:github`. 
-
-1. Copy the above template file in your git provider, and save it as `template.yaml`. 
 
 ## Register Template in IDP
 
@@ -128,7 +33,7 @@ In the above template we have used the [GitHub based Custom Actions](https://www
 ![](static/create-page-sidebar.png)
 ![](static/create-page.png)
 
-3. Enter the URL to your new `template.yaml`. You can as well try to register this [already available template](https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml). 
+3. Enter the URL to register this [already available template](https://github.com/backstage/software-templates/blob/main/scaffolder-templates/react-ssr-template/template.yaml). 
 
 ![](static/url-on-register-page.png)
 
