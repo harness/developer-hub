@@ -56,7 +56,7 @@ GCP may throw an error stating that a cluster has unschedulable pods. This may o
 
 #### Workaround
 
-Depending on the size of the cluster you are using, without [autoscaling](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) enabled or enough space, your cluster can't run the delegate (remote component that helps access your k8s cluster and inject faults).
+If your Kubernetes cluster isn't big enough and doesn't have [autoscaling](https://cloud.google.com/kubernetes-engine/docs/how-to/scaling-apps#autoscaling_deployments) enabled, it can't run the delegate (remote component that helps access your k8s cluster and inject faults).
 To fix this issue, perform the following steps:
 1. Add more space or turn on autoscaling
 2. Wait for the cluster to restart
@@ -137,7 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md).
+When you execute an experiment but it moves to the `Queued` state, it means that the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md).
 
 This could be due to a variety of reasons, such as:
 

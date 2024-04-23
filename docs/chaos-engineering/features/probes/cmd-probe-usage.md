@@ -29,7 +29,7 @@ This section guides you through steps to use the [**command probe**](/docs/chaos
 
 To use the command probe in the **inline** mode:
 
-3. Enter the **Type**, **Comparison criteria**, **Value**. Toggle to switch off the **Source** mode. Click **Setup probe**.
+3. Enter the **Type**, **Comparison criteria**, and **Value**. Toggle to switch off the **Source** mode. Click **Setup probe**.
 
     ![Step 2](./static/cmd-probe-usage/inline-3.png)
 
@@ -56,7 +56,7 @@ You can add other specifications too (example, `imagePullPolicy`). You can refer
 
 ### Validation in inline mode
 
-When the probe in **inline mode** is used in a chaos experiment, you can see that the probe failed. This is because the actual value is an empty value but the expected value is different. The experiment doesn't specify any environment variable that could associate with a user name, so the resultant value is empty.
+When the probe in **inline mode** is used in a chaos experiment, you can see that the probe failed. This is because the actual value is an empty value but the expected value is different. The experiment doesn't specify any environment variable that could be associated with a user name, so the resultant value is empty.
 
   ![validation inline](./static/cmd-probe-usage/val-inline.png)
 

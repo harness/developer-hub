@@ -9,7 +9,7 @@ import Launch from '/docs/chaos-engineering/features/shared/launch-experiment-fr
 
 import Analyze from '/docs/chaos-engineering/features/experiments/shared/analyze-chaos-experiment.md'
 
-This section describes adding and executing serial and parallel faults within a single chaos experiment, analyzing chaos experiments and launching an experiment from chaos hub.
+This section describes how to add and execute serial and parallel faults within a single chaos experiment, analyze chaos experiments, and launch an experiment from ChaosHub.
 
 You can add multiple faults in a single chaos experiment to validate the resiliency of the entire application stack.
 
@@ -28,8 +28,8 @@ For Linux, experiments with a parallel fault are currently not supported.
 :::
 
 The image below shows a single experiment that consists of serial and parallel faults.
-* Faults **A**, **B**, and **C** are parallel faults, that is, they begin execution at the same time.
-* Faults **A**, **B**, **C** and faults **D** and **E** are serial, that is, the former completes execution, and the latter begins execution.
+* Faults **A**, **B**, and **C** are parallel faults. They begin execution at the same time.
+* Faults **A**, **B**, **C** and faults **D** and **E** are serial. **A**, **B**, and **C**  complete execution and then  **D** and **E** begin execution.
 * Similarly, faults **H** and **I** are serial faults, where **H** completes execution, and **I** begins.
 
 	![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)

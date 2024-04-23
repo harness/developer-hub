@@ -94,7 +94,7 @@ Resilience probes are supported by the following features:
 
 - You can create system (default probes) at the project level **only once**.
 - Once you create a default probe, you can't delete or disable or update it.
-- If you have more that one resilience probe in your chaos experiment, you can disable, delete or update the system probe.
+- If you have more than one resilience probe in your chaos experiment, you can disable, delete or update the system probe.
 - Default probes are a part of resilience probes and are entered as annotations in the experiment manifest.
 
 ## Image registry support

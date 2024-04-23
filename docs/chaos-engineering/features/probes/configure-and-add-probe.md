@@ -125,12 +125,15 @@ spec:
 ## Add a probe while creating an experiment
 
 ### Step 1. Add a probe
-1. To add a probe for a fault while constructing an experiment, once you add a fault to the experiment you'll be prompted to configure it. You can simply switch to the **Probes** tab to access the list of probes for the fault. By default, most of the experiments will have a default target application health check.
+1. Once you add a fault to the experiment you'll be prompted to configure it. To add a probe to the fault, select **Probes**. This tab shows the  list of available probes. By default, most of the experiments will have a default target application health check.
 
     ![Probe List](./static/validate-hypothesis-using-probes/probe-list.png)
 
 ### Step 2. Deploy a probe
-2. Select **Deploy new Probe** to add a new probe. Next, you will need to specify the name, type, and mode of the probe. Select **Continue**. Then specify the probe properties. Select **Continue**. Finally, specify the probe-specific details and select **Setup the Probe** to add the probe.
+2. Select **Deploy new Probe** and configure it as follows.
+    1. Specify the name, type, and mode of the probe. Click **Continue**.
+    2. Specify the probe properties. Select **Continue**.
+    3. Finally, specify the probe-specific details and select **Setup the Probe** to add the probe.
 
     ![New Probe Overview](./static/validate-hypothesis-using-probes/new-probe-overview.png)
 
