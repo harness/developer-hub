@@ -321,14 +321,14 @@ pipeline:
 
 </details>
 
-Ternary operator and semicolon as constant in same expression is not supported.
+Ternary operator and colon as constant in same expression is not supported.
 
 Expression : <+ 
                 Env name: <+env.name> 
                 Service Name: <+<+<+env.name>.contains("dev")>?<+env.name>:"No Env">
              >
 
-Above expression will not get resolved as semicolon is used as constant string with ternary operator. As a workaround for this expression to work we should create
+Above expression will not get resolved as colon is used as constant string with ternary operator. As a workaround for this expression to work we should create
 a new variable for ternary expression and use this varible in original expression.
 
 Take above expression as example:
