@@ -267,15 +267,23 @@ const config = {
             position: "right",
           },
           {
+            type: "custom-signin",
             position: "right",
-            html: '<button class="button button--nav">Sign in</button>',
-            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
+            type: "custom-signup",
             position: "right",
-            html: '<button class="button button--cta">Sign up</button>',
-            href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
+          // {
+          //   position: "right",
+          //   html: '<button class="button button--nav">Sign in</button>',
+          //   href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
+          // },
+          // {
+          //   position: "right",
+          //   html: '<button class="button button--cta">Sign up</button>',
+          //   href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+          // },
         ],
       },
       footer: {
