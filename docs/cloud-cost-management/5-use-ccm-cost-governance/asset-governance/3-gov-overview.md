@@ -25,7 +25,7 @@ Here is an in-depth explanation of the Overview page and the information it disp
   
     Additional to this, for each recommendation, Harness shows more details like:
     - **Potential Monthly Savings**: Monthly cost savings that can be realized if the recommendations are applied.
-    - **Potential Monthly Spend**: PPotential Monthly Spend is the monthly spend for all the resources that surfaced out as part of recommendations. Why potential? Because the resource might be newly added and Harness looks at the last 30 days of cost data which might not be present for all the days for newly created resources.
+    - **Potential Monthly Spend**: Potential Monthly Spend is the monthly spend for all the resources that surfaced out as part of recommendations. Why potential? Because the resource might be newly added and Harness looks at the last 30 days of cost data which might not be present for all the days for newly created resources.
     - **Resource Count**: Number of resources to which the recommendation will be applied.
     - **Ignored list tag** if the recommendation is added to the "Ignored list".
     - Option to **view details** about the recommendation like which Account (in case of Azure, AWS)/ Project (in case of GCP), resource (AWS, Azure) the recommendation was applied to, the enforcements, etc.
@@ -35,17 +35,19 @@ Here is an in-depth explanation of the Overview page and the information it disp
 - Number of regions considered for Recommendations: Top 5 in case of AWS
 :::
 
+To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/governance).
+
 You can see a list of all recommendations offered by Harness for each Cloud provider here:
 
 - [Asset Governance recommendations for AWS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/AWS-recommendations)
 - [Asset Governance recommendations for Azure](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/Azure/azure-recommendations)
 - [Asset Governance recommendations for GCP](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/GCP/gcp-recommendations)
 
-## Cost Correlation Refresh API
+## Cost Correlation
 
 ### What’s supported
 
-| Cloud | Cost Correlation | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
+| Cloud | Cost Correlation Refresh API | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
 |-------|------------------|---------------------------------|------------------|--------------|--------------------------------|
 | AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb` | Yes ✅ | Yes ✅ | Yes ✅ | Yes ✅ |
 | GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image` | No ❌                             | Yes ✅               | Yes ✅         | No ❌ |
