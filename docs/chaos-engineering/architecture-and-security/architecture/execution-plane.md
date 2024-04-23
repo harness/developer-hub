@@ -11,7 +11,7 @@ You can install the execution plane components through the chaos infrastructure 
 1. **Workflow controller**: Helps execute chaos experiments.
 2. **Subscriber**: Serves as a bridge between the execution plane and control plane. It also performs other tasks required to orchestrate the chaos experiment executions.
 
-The resource utilization matrix for execution plane components is summarized below. These components are installed in target cluster as a part of the Kubernetes-based chaos infrastructure.
+The resource utilization matrix for execution plane components is summarized below. These components are installed in the target cluster as a part of the Kubernetes-based chaos infrastructure.
 
 :::tip
 The table below is indicative of low to medium-load working conditions. As chaos activity increases, more resources will be required, and the values represented here may vary.
@@ -26,11 +26,8 @@ The table below is indicative of low to medium-load working conditions. As chaos
 
 ## Chaos infrastructure
 
-- Chaos infrastructure components help facilitate the chaos fault injection and hypothesis validation, and enable chaos automation for target resources.
+- Chaos infrastructure components help facilitate the chaos fault injection and hypothesis validation and enable chaos automation for target resources.
 
 - The [Kubernetes execution plane](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md) consists of chaos infrastructure components like workflow controllers, subscribers, event trackers, and backend execution infrastructure components like [ChaosExperiment CR](/docs/chaos-engineering/architecture-and-security/architecture/components#1-chaos-experiment), [ChaosEngine CR](/docs/chaos-engineering/architecture-and-security/architecture/components#17-chaosengine-custom-resource-cr), etc.
 
 - The [Linux execution plane](/docs/chaos-engineering/features/chaos-infrastructure/linux-components.md) consists of only the Linux chaos infrastructure daemon service.
-
-
-
