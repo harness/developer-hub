@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-04-17T16:19:25
+date: 2024-04-23T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-### Latest Updated: April 17, 2024
+### Latest Updated: April 23, 2024
 
 ## April 2024
 
@@ -36,6 +36,16 @@ Security Updates:
  - This update fixes a `ConcurrentModificationException` that could be thrown if network connectivity was lost and regained. (FFM-11156)
 
 ### Golang SDK
+
+#### Version 0.1.21
+
+*Enhancements*:
+ - SDK support for processing `AND/OR` rules:
+  -- note that this feature is not enabled yet and the SDK will continue to use existing group rule format until further notice. (FFM-11297)
+ - Internal metrics code enhancements.
+
+*Bug Fixes*:
+ - Fixes an issue where only a single target would be registered in a metrics window.(FFM-11297)
 
 #### Version 0.1.20
 
