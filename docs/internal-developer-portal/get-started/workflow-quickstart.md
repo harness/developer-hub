@@ -75,7 +75,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 # some metadata about the template itself
 metadata:
-  name: Workflows Quickstart
+  name: Workflows-Quickstart
   title: Create a New GitHub Repository
   description: Creates a new GitHub Repository 
 spec:
@@ -123,7 +123,7 @@ spec:
 
 In the above template we have used the [Harness Trigger Custom Action](https://www.npmjs.com/package/@backstage/plugin-scaffolder-backend-module-github), which takes the **exact variable name** `github_org` and `github_repo` you created for your pipeline as input and a **token** as `apikey`
 
-11. Copy the above template file in your git provider, and save it as `template.yaml`. 
+11. Copy the above template file in your git provider, and save it as `workflow.yaml`. 
 
 ## Register Template in IDP
 
@@ -132,7 +132,7 @@ In the above template we have used the [Harness Trigger Custom Action](https://w
 ![](static/create-page-sidebar.png)
 ![](static/create-page.png)
 
-13. Enter the URL to your new `template.yaml`.
+13. Enter the URL to your new `workflow.yaml`.
 ![](static/url-on-register-page.png)
 
 14. Select **Import**.
@@ -141,7 +141,7 @@ In the above template we have used the [Harness Trigger Custom Action](https://w
 
 15. Now click on the template name
 
-![](static/template-name.png)
+![](static/workflowquickstart.png)
 
 ## Use Workflows to Create a Repo
 
@@ -150,14 +150,14 @@ In the above template we have used the [Harness Trigger Custom Action](https://w
 ![](static/Launch-template.png)
 
 17. Now fill the fields as:
-    - Name: Add a name for your component.
-    - Repository Location: The repo location should be of the format `github.com?repo=NEW_REPO_NAME&owner=ORG_NAME`, where NEW_REPO_NAME, is the name of the repository you want to create and ORG_NAME is the name (`backstage` here ) that appears just `github.com` in the URL, `https://github.com/backstage`  
+    - Repository Location: Add a name for the repository you wanted to create. 
+    - GitHub Organization: Add the org where you want add your new repository, usually GitHub URL are of the format `https://github.com/org_name/repo_name/` 
 
-![](static/fill-template.png)
+![](static/fill-template-fields.png)
 
-18. Now Trigger the flow, it will fetch the docs and add it to the newly created repo. 
+18. Now Trigger the flow, it will create a new GitHub repo. 
 
-![](static/run-flows.png)
+![](static/create-repo-run.png)
 
 ## Delete the Template
 
