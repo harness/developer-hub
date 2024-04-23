@@ -47,14 +47,14 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 
 ### What’s supported
 
-| Cloud | Cost Correlation Refresh API | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
+| Cloud | Cost Correlation | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
 |-------|------------------|---------------------------------|------------------|--------------|--------------------------------|
 | AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb` | Yes ✅ | Yes ✅ | Yes ✅ | Yes ✅ |
 | GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image` | No ❌                             | Yes ✅               | Yes ✅         | No ❌ |
 | Azure | Every Resource in Billing Report | Yes ✅ | Yes ✅ | Yes ✅ | No ❌ |
 
-### How is Cost Correlation Computed
-Cost Correlation Refresh API: This API is used to refresh or update the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.).You can hit the refresh cost button only once every 30 minutes for any evaluation.
+### Cost Correlation Refresh API
+This API is used to refresh or update the cost of all resources in the evaluation. It is exposed to resolve cases where the cost for any resource is not yet part of CUR, Billing Report, or Billing Data (due to newly deployed resources, etc.).You can hit the refresh cost button only once every 30 minutes for any evaluation.
 
 :::note
 Cost co-relation for GCP would work only if detailed billing export is setup.
