@@ -423,18 +423,11 @@ Specify the credentials that enable Harness to connect your AWS account. There a
    * It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
 * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../secrets/add-use-text-secrets.md) for both.
 * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa).
-* **Use OIDC**: Connect to AWS with OIDC. To do this you will need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html) in AWS and add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
+* **Use OIDC**: Connect to AWS with OIDC. To do this you will need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html) in AWS and add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS. Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider.
 
    * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`
 
    * OIDC audience: `sts.amazonaws.com`
-
-:::note
-
-The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and CloudFormation deployment types.
-:::
 
 :::warning
 
