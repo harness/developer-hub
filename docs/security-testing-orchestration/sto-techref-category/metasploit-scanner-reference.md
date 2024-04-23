@@ -17,6 +17,98 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for Metasploit scans in STO
 
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+metasploit
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+instance
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+
+#### Product config name
+
+Required for most scanner integrations. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+Specify one of the following.
+
+Brute-force test a host for SSH weak ssh/pass:
+
+```
+metasploit-weak-ssh
+```
+
+Check HTTPS (443) for Heartbleed vulnerability:
+
+```
+metasploit-openssl-heartbleed
+```
+
+Finds and applies Metaspoit module by CVE:
+
+```
+dynamic-by-cve
+```
+
+
 ### Target and variant
 
 
@@ -25,6 +117,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 <StoLegacyTargetAndVariant />
 
+<!-- 
 ### Metasploit scan settings
 
 * `product_name` = `metasploit`
@@ -35,6 +128,8 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
    - `metasploit-openssl-heartbleed`  &nbsp; &nbsp; Check HTTPS (443) for Heartbleed vulnerability
    - `dynamic-by-cve`  &nbsp; &nbsp; Finds and applies Metaspoit module by CVE 
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+-->
 
 ### Instance scan settings
 
