@@ -91,7 +91,7 @@ source:
 
 ### Memory stress fault stressng flag usage
 
-When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilises all of the available resources in the target system, thereby simulating an out of memory scenario.
+When a memory stress fault (such as [Linux memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-memory-stress) or [Linux CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-cpu-stress)) is executed, the fault utilizes all of the available resources in the target system, thereby simulating an out of memory scenario.
 You can use another fault parameter, `stressNGFlags` to provide flexibility in the parameters passed to the VM.
 
 #### Workaround
@@ -137,11 +137,7 @@ The `--vm-populate` in the above manifest populates the memory, thereby stressin
 
 ### Executing an experiment moves it to QUEUED state
 
-<<<<<<< HEAD
 When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/control-plane) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md).
-=======
-When you execute an experiment but it moves to the `Queued` state, it means that the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/architecture.md) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md).
->>>>>>> main
 
 This could be due to a variety of reasons, such as:
 
