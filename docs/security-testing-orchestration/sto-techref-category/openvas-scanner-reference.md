@@ -16,6 +16,110 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Custom Scan step settings for OpenVAS scans in STO
 
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+openvas
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+instance
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+Specify one of the following.
+
+```
+default
+```
+
+Do a host discovery scan on the network:
+
+```
+host-discovery
+```
+
+Do a network discovery scan:
+
+```
+network-discovery
+```
+
+Do a full and very deep discovery scan: 
+
+```
+full-and-very-deep
+```
+
+Do a system discovery scan on the network:
+
+```
+openvas-system-discovery
+```
+
 ### Target and variant
 
 
@@ -24,6 +128,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 <StoLegacyTargetAndVariant />
 
+<!-- 
 ### OpenVAS scan settings
 
 * `product_name` = `openvas`
@@ -41,10 +146,27 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Instance scan settings
+-->
+
+### Product access
+
+These settings are available to access your OpenVAS SaaS instance when `policy_type` is `orchestratedScan`. 
+
+#### Product access keys
+```
+product_domain
+```
+```
+product_app_id
+```
+```
+product_access_token
+```
+
+### Instance
 
 
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
 
 <StoLegacyInstance />
