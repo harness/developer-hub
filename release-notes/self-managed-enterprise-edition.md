@@ -24,7 +24,7 @@ If you are currently on version 0.14.3, 0.14.4, 0.14.5, or 0.14.6, you must foll
 
 You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.15.1.
 
-**Upgrade using Helm to version 0.12.1, 0.13.4, 0.14.6, or 0.15.1**
+**Upgrade using Helm to version 0.12.1, 0.13.4**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
@@ -36,25 +36,41 @@ If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the
 If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
 1. Exec into your MinIO pod.
-2. Copy the files from `/bitnami/minio/data` to `/data/backup directory`.
-3. Perform your Harness upgrade.
-4. Exec into your MinIO pod after the upgrade has successfully completed.
-5. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
+2. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
+
+   ```
+    env | grep MINIO_ROOT_PASSWORD
+   ```
+3.Run the following commands.
+
+   ```
+   bin/mc alias set minio http://minio:9000
+        # Access Key: admin
+        # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_2>
+   ```
+
+   ```
+   mkdir /data/backup/
+   bin/mc cp --recursive minio/logs /data/backup/
+   ```
+4. Perform your Harness upgrade.
+5. Exec into your MinIO pod after the upgrade has successfully completed.
+6. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
 
    ```
     env | grep MINIO_ROOT_PASSWORD
    ```
 
-6. Run the following commands.
+7. Run the following commands.
 
    ```
    bin/mc alias set minio http://minio:9000
         # Access Key: admin
-        # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_5>
+        # Secret Key: <PASTE_THE_PASSWORD_COPIED_IN_STEP_6>
    ```
 
    ```
-   bin/mc cp --recursive /bitnami/minio/data/backup/logs minio/logs
+   bin/mc cp --recursive /bitnami/minio/data/backup/logs/ minio/logs
    ```
 
 :::
