@@ -134,7 +134,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 -->
 
-### Container image scan settings
+### Container image
 
 
 import StoLegacyContainer  from './shared/custom-scan/_container.md';

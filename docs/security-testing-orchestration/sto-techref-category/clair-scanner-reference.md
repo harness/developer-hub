@@ -20,7 +20,7 @@ To set up a Clair scan:
 
 ## Custom Scan step settings for Clair scans in STO
 
-## Scanner settings
+### Scanner settings
 
 These settings are required.
 
