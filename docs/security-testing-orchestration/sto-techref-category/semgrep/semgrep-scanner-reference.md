@@ -18,7 +18,7 @@ The following tutorials include detailed examples of how to run a [Semgrep scan]
 
 - This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)).  
 
-  To run scans using [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your access token in the [Access token](#access-token) field. 
+  To run scans using a licensed version of [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your Semgrep token in the [Access token](#access-token) field. 
 
   For information about the security rulesets supported by different Semgrep products, go to the [Semgrep Registry](https://semgrep.dev/explore).
 
