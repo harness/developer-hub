@@ -103,9 +103,11 @@ Based on the values in the table above:
 
 ### Credit allowance by plan tier
 
-All plans receive 2000 free credits every month. These credits can be consumed by all users within the account registered to run builds on Harness Cloud. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
+Plan credits can be consumed by all users within the account registered to run builds on Harness Cloud.
 
-Customers on paid (**Team** or **Enterprise**) plans have the option to purchase extra credits, via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
+Free plans receive 2000 free credits every month. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
+
+Customers on paid (**Team** or **Enterprise**) plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
 
 Harness notifies you when you are running low on build credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 

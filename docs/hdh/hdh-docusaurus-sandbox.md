@@ -228,3 +228,15 @@ clicked and hoovered. Though pills can contain links also.
 <DocsTag  text="Default without icon" link="/docs/security-testing-orchestration" />
 <DocsTag  backgroundColor= "#ff8ac1" text="With out icon"  textColor="#ca136c"  />
 <DocsTag icon = "fa-solid fa-hand-dots"  backgroundColor= "#cbe2f9"   textColor="#0b5cad" iconColor="#6938c0" text="Community" link="/docs/security-testing-orchestration"  />
+
+## Embed Mode
+If needing to embed HDH externally, can use the embed request parameter e.g `embed=true`. Below
+is an example of an iframe. 
+
+```
+<iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>
+ ```
+
+ #### Iframe Render
+
+<iframe src="https://developer.harness.io/docs/platform/get-started/onboarding-guide?embed=true" title="HDH Embed Example" height="600" width="940"></iframe>

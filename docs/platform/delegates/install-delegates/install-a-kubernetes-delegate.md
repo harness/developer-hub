@@ -167,7 +167,7 @@ You're ready to connect Harness to your artifact server and cluster. After those
 
 The YAML provided for the Harness Delegate defaults to the `cluster-admin` role to ensure you can apply updates. If you can't use `cluster-admin` because you are using a cluster in your company, you'll need to edit the delegate YAML.
 
-The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each entity type Harness uses.
+The set of permissions should include `list`, `get`, `create`, `watch`(to fetch the pod events), and `delete` permissions for each entity type Harness uses.
 
 If you don't want to use `resources: ["*"]` for the role, you can list out the resources you want to grant. Harness requires `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above.
 
@@ -500,3 +500,4 @@ For example, if your delegate name is `myDelegate`, add `harness.io/name: myDele
       harness.io/name: myDelegate
 ...
 ```
+

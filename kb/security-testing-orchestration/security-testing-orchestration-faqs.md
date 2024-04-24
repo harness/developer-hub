@@ -36,7 +36,9 @@ To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled 
 
 ### Why doesn't the STO dashboard populate the data from targets?
 
-This happens when scan executions don't have baselines set. You must set test target baselines to shown this data on your STO dashboards.
+This happens when scan executions don't have baselines set. You must set test target baselines to show this data on your STO dashboards. 
+
+Every scanned target needs a baseline to enable the full suite of STO features. For more information, go to [Target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
 ## Aqua scans
 
@@ -82,3 +84,6 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 - [Can't generate SonarQube report due to shallow clone](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
 - [Add the sonar.projectVersion to a Harness pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#add-the-sonarprojectversion-to-a-harness-pipeline)
 - [SonarQube doesn't scan the main branch and pull request branches in the same pipeline](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-doesnt-scan-the-main-branch-and-pull-request-branches-in-the-same-pipeline)
+
+#### Why am I getting the error Missing target_name for scan_type [repository] scan.
+This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.

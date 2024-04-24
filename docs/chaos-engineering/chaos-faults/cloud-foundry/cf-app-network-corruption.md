@@ -8,7 +8,7 @@ import VSphereSecrets from './shared/vsphere-secrets.md';
 
 CF app network corruption injects network loss into a Cloud Foundry app instance, causing it to lose network connectivity.
 
-<!-- ![CF App Network Corruption](./static/images/cf-app-network-corruption.png) -->
+![CF App Network Corruption](./static/images/cf-app-network-corruption.png)
 
 ## Use cases
 CF app network corruption:

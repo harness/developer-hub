@@ -147,7 +147,7 @@ This example shows a pipeline that:
               spec:
                 language: Ruby
                 buildTool: Rspec
-                testGlobs: "**/test/unit/**/*_test.rb" ## Optional
+                testGlobs: "test/unit/**/*_test.rb" ## Optional
                 runOnlySelectedTests: true ## Must be 'true' to use TI.
                 enableTestSplitting: true ## Optional. Apply parallelism to further improve test times.
 ```
@@ -286,6 +286,8 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 ### Test Globs
 
 You can override the default test globs pattern. For example, the default for RSpec is `**/spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`, which would look for a `/spec` directory at the root level, rather than anywhere in the workspace.
+
+Starting with [version 1.24.0](/release-notes/continuous-integration), Ruby test globs starting with `/` are treated as absolute paths. If, prior to this change, you used a glob starting with `/`, you must either replace the leading slash or add `**` accordingly.
 
 <!-- ### Output Variables
 

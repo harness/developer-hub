@@ -120,14 +120,14 @@ import { MODULES } from "@site/src/constants"
     },
 
     {
-      name: "Key concepts",
+      name: "HCE components",
       list: [
         {
           title: "Familiarize with chaos engineering concepts",
           module: MODULES.ce,
           description:
             "Familiarize with chaos engineering concepts.",
-          link: "/docs/chaos-engineering/get-started/key-concepts",
+          link: "/docs/chaos-engineering/architecture-and-security/architecture/components",
         },
       ],
     }, 

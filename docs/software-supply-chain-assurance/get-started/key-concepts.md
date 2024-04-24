@@ -92,7 +92,7 @@ To learn more about CI and CD pipelines go to:
 Pipelines are comprised of stages and steps.
 
 * **Stages:** A stage is a subset of a pipeline that contains one major segment of the workflow. For example, a CI (build) stage includes steps for building, pushing, and testing your code.
-* **Steps:** A stage contains one or more steps. Each step is a series of commands that perform a task. For example, you can use an **SSCA Orchestration** step to generate SBOM.
+* **Steps:** A stage contains one or more steps. Each step is a series of commands that perform a task. For example, you can use an **SBOM Orchestration** step to generate SBOM.
 
 ### Connectors
 

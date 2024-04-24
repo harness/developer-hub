@@ -222,10 +222,8 @@ spec:
                    value: "true"
                  - name: LOG_STREAMING_SERVICE_URL
                    value: "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/"
-                 - name: DELEGATE_RESOURCE_THRESHOLD
-                   value: ""
-                 - name: DYNAMIC_REQUEST_HANDLING
-                   value: "false"
+                 - name: DELEGATE_CPU_THRESHOLD
+                   value: "80"
               volumeMounts:
                  - mountPath: /opt/harness-delegate/ca-bundle/
                    name: custom-certs

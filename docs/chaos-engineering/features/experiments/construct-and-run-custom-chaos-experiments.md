@@ -48,19 +48,19 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 
 1. The **Experiment Builder** tab is displayed. Click **Add** to add a fault to the experiment
 
-![Experiment Builder tab with Add button](./static/construct-and-run-custom-chaos-experiments/experiment-builder-add.png)
+	![Experiment Builder tab with Add button](./static/construct-and-run-custom-chaos-experiments/experiment-builder-add.png)
 
 2. Select the fault you want to add to the experiment individually.
 
-![Select Faults](./static/construct-and-run-custom-chaos-experiments/select-faults.png)
+	![Select Faults](./static/construct-and-run-custom-chaos-experiments/select-faults.png)
 
-3. For each fault you select, tune the fault's properties. Properties will be different for different faults. 
+3. For each fault you select, tune the fault's properties. Properties will be different for different faults.
 
 	* To tune each fault:
 
 		* **Specify the target application (only for pod-level Kubernetes faults):** This lets the application's corresponding pods be targeted.
 
-		![target app](./static/construct-and-run-custom-chaos-experiments/target-app.png)
+			![target app](./static/construct-and-run-custom-chaos-experiments/target-app.png)
 
 		* **Tune fault parameters:** Every fault has a set of common parameters, such as the chaos duration, ramp time, etc., and a set of unique parameters that may be customised as needed.
 
@@ -68,7 +68,7 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 
 		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/features/experiments/resilience-score) of the experiment.
 
-		![Tune Fault](./static/construct-and-run-custom-chaos-experiments/tune-fault.png)
+			![Tune Fault](./static/construct-and-run-custom-chaos-experiments/tune-fault.png)
 
 </TabItem>
   <TabItem value="Templates from Chaos Hubs">
@@ -78,9 +78,9 @@ For more information on infrastructure, go to [Connect chaos infrastructures](/d
 	* Select **Experiment Type** to see available ChaosHubs to select templates from.
 	* Select a template to see a preview of the faults included.
 
-	![Fault Templates](./static/construct-and-run-custom-chaos-experiments/fault-templates.png)
+		![Fault Templates](./static/construct-and-run-custom-chaos-experiments/fault-templates.png)
 
-:::info note		
+:::info note
 You can edit the template to add more faults or update the existing faults.
 :::
 
@@ -96,7 +96,7 @@ You can edit the experiment to update the existing faults or add more of them.
 </TabItem>
 </Tabs>
 
-Construct the chaos fault using one of the three options mentioned earlier and save the experiment. 
+Construct the chaos fault using one of the three options mentioned earlier and save the experiment.
 
 	![Save experiment options](./static/construct-and-run-custom-chaos-experiments/save-experiment.png)
 
