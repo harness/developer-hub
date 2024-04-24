@@ -59,7 +59,6 @@ Required permission: `itil`.
 
 ### Update multiple ServiceNow tickets without templates
 
-This functionality is behind the feature flag, `CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable this functionality.
 
 ### Update a ServiceNow ticket from templates
 
