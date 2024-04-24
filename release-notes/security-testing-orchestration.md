@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## April 2024
 
-### Version TBD
+### Version 1.93.0
 
 #### Early Access feature: Built-in SAST scans
 
