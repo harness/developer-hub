@@ -5,6 +5,9 @@ sidebar_label: Semgrep settings reference
 sidebar_position: 20
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 You can ingest scan results from [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories.
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
@@ -13,15 +16,6 @@ The following tutorials include detailed examples of how to run a [Semgrep scan]
 
 ## Important notes for running Semgrep scans in STO
 
-<!--
-
-### Docker-in-Docker requirements
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-<StoDinDRequirements />
-
--->
 
 ### Root access requirements 
 
@@ -34,6 +28,128 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
 <StoMoreInfo />
+
+## Set-up workflows
+
+<!-- 1 --------------------------------------------------------------------->
+ 
+<details>
+
+<summary>Add a built-in SAST scanner (easiest)</summary>
+
+:::note
+
+This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+:::
+
+To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
+
+
+#### Add the built-in SAST scanner
+
+Do the following:
+
+1. Add a Build or Security stage to your pipeline.
+2. Configure the stage to point to the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
+3. Go to the **Execution** tab, click **Add step**, and select the **SAST** built-in scanner.
+
+   <DocImage path={require('./static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+
+4. Select **Semgrep** and then **Add scanner**.
+5. Save your pipeline and then click **Run**. 
+
+   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+
+
+</details>
+
+
+
+<details>
+
+<summary>Orchestration scans</summary>
+
+To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
+
+
+#### Add the Semgrep scanner
+
+Do the following:
+
+1. Add a Build or Security stage to your pipeline.
+2. Configure the stage to point to the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
+2. Add a Semgrep step to the stage.
+
+<br/>
+#### Set up the Semgrep scanner
+
+##### Required settings
+
+1. Scan mode = [Orchestration](#scan-mode)
+2. Target and Variant Detection = [Auto](#detect-target-and-variant)
+
+
+##### Optional settings
+
+- [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
+- [Log Level](#log-level) — Useful for debugging
+
+#### Scan the repository
+
+Save your pipeline and then select **Run**. 
+
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+
+
+</details>
+
+
+<!-- 2 --------------------------------------------------------------------->
+
+<details>
+<summary>Ingestion scans</summary>
+
+
+#### Add a shared path for your scan results
+
+1. Add a Build or Security stage to your pipeline.
+2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
+
+#### Copy scan results to the shared path
+
+There are two primary workflows to do this:
+
+- Add a Run step that runs a Semgrep scan from the command line and then copies the results to the shared path.
+- Copy results from a Semgrep scan that ran outside the pipeline. 
+
+For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+
+
+#### Set up the Semgrep scanner
+
+Add a Semgrep step to the stage and set it up as follows.
+
+##### Required settings
+
+1. [Scan mode](#scan-mode) = Ingestion
+2. [Target name](#name) — Usually the repo name
+2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
+3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/semgrep-scan.json`
+
+##### Optional settings
+
+- [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
+- [Log Level](#log-level) — Useful for debugging
+
+#### Scan the repository
+
+Save your pipeline and then select **Run**. 
+
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+
+
+</details>
 
 ## Semgrep step configuration
 
