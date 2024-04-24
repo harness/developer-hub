@@ -17,13 +17,86 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
 
+### Scanner settings
+
+These settings are required.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+scoutsuite
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+Must be one of the following. For supported values, go to the relevant scanner reference.
+
+```
+configuration
+```
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+`Must be one of the following. For supported values, go to the relevant scanner reference.`
+
+```
+ingestionOnly
+```
+
+#### Product config name
+
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+default
+```
+
 ### Target and variant
 
 import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
-
+<!-- 
 ### ScoutSuite scan settings
 
 * `product_name` = `scoutsuite` (aws only)
@@ -34,9 +107,11 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 ### Configuration scan settings 
 
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
+import StoLegacyConfig from './shared/custom-scan/_config.md';
 
 <StoLegacyConfig  />
+
+-->
 
 ### Ingestion file
 
