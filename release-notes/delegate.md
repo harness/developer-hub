@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-04-16T10:00
+date: 2024-04-24T10:00
 sidebar_position: 4
 ---
 
@@ -38,6 +38,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 <Deleos />
 
 ## April 2024
+
+### Harness version 1.34.2, Harness Delegate version 24.04.82804 <!--  April 24, 2024 -->
+
+#### Fixed issues
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like `taskType` or `task ID`. We have enhanced the task rejection metrics by adding `taskType` and `taskId` labels. (PL-48488)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. We have implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. (PL-47753, ZD-58629)
+
+- 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. (PL-48980, ZD-61314, ZD-61420, ZD-61486)
 
 ### Harness version 1.33.5, Harness Delegate version 24.04.82707 <!--  April 16, 2024 -->
 
