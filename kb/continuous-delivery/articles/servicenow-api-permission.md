@@ -85,11 +85,11 @@ Required permission: `itil`.
 
    The connector provided is probably missing the `x_harne_harness_ap.integration_user_role` role permission. Another possible reason could be that the delegate might be down. Also, check if Integration for [Harness Software Delivery Platform app](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) is installed in your ServiceNow instance from the ServiceNow store before using templates to update ServiceNow tickets. 
 
-2. **Why does updating a ServiceNow ticket from template results in an error, `Error in fetching issue 125c716edb61a910e9748c3b13961918 .Issue does not exist`.**
+2. **Why does updating a ServiceNow ticket from a template result in the error: `Error in fetching issue 125c716edb61a910e9748c3b13961918 .Issue does not exist`.**
 
    The selected ticket type might be different from the actual ticket.
 
-3. **How to debug ACL error?**
+3. **How do you debug an ACL error?**
 
    Assume that the integration user has all above mentioned roles for specific use cases.
 
@@ -98,7 +98,7 @@ Required permission: `itil`.
    3. Ensure that the user or integration has the necessary roles to perform the action. This might involve checking their roles, groups, or specific ACL rules. 
    4. If the user or integration does not have the necessary permissions, you will need to update the ACLs. This could involve adding a new ACL rule, or modifying an existing one.
    5. Once the ACLs are updated, create the ServiceNow ticket again. If the insert is successful, the issue has been resolved.
-   6. ServiceNow has data restrictions on their UI. You can use the APIs listed above for debugging.
+   6. ServiceNow has data restrictions on their UI. There can be various UI policies configured on ServiceNow that may not allow you to perform the operation directly on UI even it is possible via Harness. You can directly use the APIs listed above for debugging permission issues.
    7. Check if the table, for example Change Request has any scoped applications enabled. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-application-development/page/build/applications/reference/r_TableApplicationAccessFields.html).
       ![image](../static/debug-approval-step.png)
    8. Check if there are any data policies written on the user's Dev instance on the table. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-platform-administration/page/administer/field-administration/concept/c_DataPolicy.html).
