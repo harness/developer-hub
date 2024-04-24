@@ -250,7 +250,7 @@ These steps are described in detail below.
 
 Harness automatically generates a containerized step group containing the steps needed for the SAM build and deploy.
 
-When the step group setting **Enable container based execution** is enabled, the step group is containerized. SAM runs on containerized step groups only. You need not install SAM CLI on Harness Delegate as SAM steps are baked in with the SAM CLI. Hence, the SAM steps run in the containers that re brought up inside the pod within the Kubernetes cluster configured in the step group configuration. 
+When the step group setting **Enable container based execution** is enabled, the step group is containerized. SAM runs on containerized step groups only. You need not install SAM CLI on Harness Delegate as Harness provided SAM step images are baked within the SAM CLI. SAM steps run in the containers that are brought up inside the pod within the Kubernetes cluster configured in the step group configuration. 
 
 When the **Enable container based execution** setting is disabled, the Harness Delegate performs all tasks on its host system.
 
