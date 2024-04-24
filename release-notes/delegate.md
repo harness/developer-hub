@@ -71,7 +71,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## April 2024
 
-### Harness version 1.34.2, Harness Delegate version 24.04.82804 <!--  April 23, 2024 -->
+### Harness version 1.34.2, Harness Delegate version 24.04.82804 <!--  April 24, 2024 -->
 
 #### Fixed issues
 
