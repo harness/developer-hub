@@ -18,12 +18,85 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
 
+### Scanner settings
+
+These settings are all required.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+reapsaw
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+repository
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+Required for most scanner integrations. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+default
+```
+
 ### Target and variant
 
 import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
+<!-- 
 ### Reapsaw scan settings
 
 * `product_name` = `reapsaw`
@@ -31,6 +104,8 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `ingestionOnly`
 * `product_config_name` = `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+-->
 
 ### Ingestion file
 
