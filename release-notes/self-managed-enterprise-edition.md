@@ -24,7 +24,7 @@ If you are currently on version 0.14.3, 0.14.4, 0.14.5, or 0.14.6, you must foll
 
 You can perform your normal upgrade process if you are currently on a version earlier than 0.12.0. Harness recommends that you upgrade to 0.15.1.
 
-**Upgrade using Helm to version 0.12.1, 0.13.4**
+**Upgrade version 0.12.1 or 0.13.4 using Helm**
 
 If you use `helm` to upgrade Harness Self-Managed Enterprise Edition, follow the upgrade process below.
 
@@ -55,7 +55,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
 4. Perform your Harness upgrade.
 5. Exec into your MinIO pod after the upgrade has been completed.
-6. Run the following command and copy the `MINIO_ROOT_PASSWORD`.
+6. Run the following command, and then copy the `MINIO_ROOT_PASSWORD`.
 
    ```
     env | grep MINIO_ROOT_PASSWORD
