@@ -35,6 +35,87 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <StoMoreInfo />
 
+## Custom Scan step settings for Tenable scans in STO
+
+The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
+
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+The scanner name. Required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+veracode
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+repository
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+```
+dataLoad
+```
+
+#### Product config name
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```
+default
+```
+
+<!-- 
 ## Required Settings for Veracode scans in STO
 
 To set up a Veracode scan, add a Custom Scan step to your pipeline and add the following settings:
@@ -69,7 +150,78 @@ In most cases, this should match the repo name used in your Git provider.
 
    <!-- invalid link: The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes in more detail how you can find your application IDs and project names. -->
 
-###  Ingestion settings
+
+### Product access
+
+These settings are available to access your Veracode instance when `policy_type` is `orchestratedScan` or `dataLoad`. 
+
+You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access tokens and access them using the format `<+secrets.getValue("project.my-secret")>`. 
+
+#### Product authorization type
+
+##### Key
+
+```
+product_auth_type
+```
+
+##### Value
+
+
+```
+apiKey
+```
+
+Go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*. 
+
+`usernamePassword` is not recommended.
+
+#### Product access Id
+
+##### Key
+
+```
+product_access_id
+```
+
+##### Value
+
+Your API key.
+
+#### Product access token
+
+##### Key
+
+```
+product_access_token
+```
+
+##### Value
+
+Your API Secret key.
+
+
+#### Product application Id
+
+##### Key
+
+```
+product_app_id
+```
+
+##### Value
+
+
+To determine the App ID, go to the home page for the Veracode app with the results you want to scan. The App ID is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
+    
+`https://analysiscenter.veracode.com/auth/index.jsp#HomeAppProfile:88881:1973759` 
+
+
+
+
+
+
+###  Ingestion file
 
 import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
