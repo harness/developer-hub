@@ -83,7 +83,7 @@ Required permission: `itil`.
 
 1. **Why is apply from template selection blocked when using ServiceNow create/update step?**
 
-   The connector provided is probably missing the `x_harne_harness_ap.integration_user_role` role permission. Another possible reason could be that the delegate might be down.
+   The connector provided is probably missing the `x_harne_harness_ap.integration_user_role` role permission. Another possible reason could be that the delegate might be down. Also, check if Integration for [Harness Software Delivery Platform app](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.2?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh) is installed in your ServiceNow instance from the ServiceNow store before using templates to update ServiceNow tickets. 
 
 2. **Why does updating a ServiceNow ticket from template results in an error, `Error in fetching issue 125c716edb61a910e9748c3b13961918 .Issue does not exist`.**
 
