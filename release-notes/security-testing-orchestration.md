@@ -28,11 +28,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### Early Access feature: Built-in SAST scans
 
-This release introduces a new built-in SAST step that adds a preconfigured [Semgrep scan](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it.  
+This release introduces a new built-in SAST step that adds a preconfigured [Semgrep scan](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-6738) 
 
-This step is behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it.(STO-6738)
+This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
-  ![](./static/built-in-scan-steps.png)
+  <DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
 #### New feature: Orchestrated Semgrep scans
 
