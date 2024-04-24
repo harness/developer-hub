@@ -68,49 +68,53 @@ The standard workflow is to create a CI Build or Security stage to your pipeline
 </details>
 
 
-## XRay scanner settings
+## Custom Scan step settings for JFrog XRay scans in STO
 
-### Product name
+### Scanner settings 
 
-#### Key
+These settings  are required. 
+
+#### Product name
+
+##### Key
 ```
 product_name
 ```
 
-#### Value
+##### Value
 ```
 xray
 ```
 
-### Scan type
+#### Scan type
 
-#### Key
+##### Key
 ```
 scan_type
 ```
-#### Value
+##### Value
 ```
 containerImage
 ```
 
-### Policy type
+#### Policy type
 
-#### Key
+##### Key
 ```
 policy_type
 ```
-#### Value
+##### Value
 ```
 ingestionOnly
 ```
 
-### Product config
+#### Product config
 
-#### Key
+##### Key
 ```
 product_config_name
 ```
-#### Value
+##### Value
 ```
 default
 ```
