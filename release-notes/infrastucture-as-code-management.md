@@ -40,3 +40,9 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 <!-- Released on: 21 March 2024 -->
 #### New features and enhancements:
   - **Enhanced Lock Icon Tooltips and Warnings:** We've updated the tooltips and warning messages for the lock icon in Workspace resources to improve clarity and accessibility. (IAC-1577)
+
+### Version: 0.175.0
+<!-- Released on: 15 March 2024 -->
+#### Fixed issues:
+  - **Improved Header Visibility:** We resolved the issue of overlapping headers in side-by-side workspace state comparisons, enhancing readability and accessibility for the 'View Execution' and filename headers. (IAC-1573)
+  - **Planned Changes Count Accuracy:** We refined the 'Planned changes' count to include only Added, Changed, and Deleted resources, excluding Unchanged resources, for a more accurate reflection of significant changes. (IAC-1561)
