@@ -24,6 +24,8 @@ policies:
       - delete
 ```
 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** 
 - **Dry Run:** 
     - ```ec2:DetachVolume```
@@ -35,6 +37,37 @@ policies:
 
 ---
 
+### Recommendation: elb-low-request-count-list
+**Description:** List ELBs with low request count
+
+**Policy Used:**
+```yaml
+policies:
+  - name: elb-low-request-count-list
+    resource: elb
+    description: List ELBs with low request count
+    filters:
+      - type: metrics
+        name: RequestCount
+        statistics: Sum
+        days: 7
+        value: 7
+        missing-value: 0
+        op: less-than
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- **Dry Run:** 
+    - ```cloudwatch:GetMetricData```
+    - ```elasticloadbalancing:DescribeLoadBalancers```
+
+- **Run Once:** 
+    - ```cloudwatch:GetMetricData```
+    - ```elasticloadbalancing:DescribeLoadBalancers```
+
+---
 
 ### Recommendation: migrate-gp2-to-gp3-ebs-volumes 
 **Description:** Migrate gp2 volumes to gp3
@@ -51,6 +84,8 @@ policies:
     - type: modify
       volume-type: gp3
 ```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days. Then, 20% of that sum is taken as the savings.
 
 **Permissions Required:** 
 - **Dry Run:** 
@@ -78,6 +113,8 @@ policies:
     actions:
       - delete
 ```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
 
 **Permissions Required:** 
 - **Dry Run:** 
@@ -112,12 +149,64 @@ policies:
       - stop
 ```
 
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
 **Permissions Required:** 
 - **Dry Run:** 
     - ```rds:DescribeDBInstances```
 - **Run Once:** 
     - ```rds:DescribeDBInstances```
     - ```rds:StopDBInstance```
+
+---
+
+### Recommendation: elb-delete-unused
+**Description:** Delete unused ELB 
+
+**Policy Used:**
+```yaml
+policies:
+  - name: elb-delete-unused
+    resource: elb
+    filters:
+      - Instances: []
+    actions:
+      - delete
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- **Dry Run:** 
+    - ```elasticloadbalancing:DescribeLoadBalancers```
+- **Run Once:** 
+    - ```elasticloadbalancing:DescribeLoadBalancers```
+    - ```elasticloadbalancing:DeleteLoadBalancer```
+
+---
+
+### Recommendation: release-unattached-eips
+**Description:** Release unattached Elastic IPs
+
+**Policy Used:**
+```yaml
+policies:
+  - name: release-unattached-eips
+    resource: aws.elastic-ip
+    filters:
+      - AssociationId: absent
+    actions:
+      - release
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- **Dry Run:** 
+    - ```ec2:DescribeAddresses```
+- **Run Once:** 
+    - ```ec2:DescribeAddresses```
+    - ```ec2:ReleaseAddress```
 
 ---
 
