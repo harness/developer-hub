@@ -1,15 +1,15 @@
 ---
-id: PCF chaos components and their deployment architecture
-title: PCF chaos components and deployment architecture
+id: CF chaos components and their deployment architecture
+title: CF chaos components and deployment architecture
 sidebar_position: 1
-description : Chaos components and their deployment architecture used in PCF fault injection
+description : Chaos components and their deployment architecture used in CF fault injection
 ---
 
-This section describes the components and their deployment architecture associated with injecting chaos on PCF (Pivotal Cloud Foundry).
+This section describes the components and their deployment architecture associated with injecting chaos on Cloud Foundry (CF).
 
 ## Overview
 
-You can use HCE to test the resilience of your PCF-based microservices by executing chaos experiments on various layers of PCF, ranging from application processes (supported for JVM-based apps currently) to the underlying host (VMware) infrastructure.
+You can use HCE to test the resilience of your CF-based microservices by executing chaos experiments on various layers of CF, ranging from application processes (supported for JVM-based apps currently) to the underlying host (VMware) infrastructure.
 HCE supports [resilience probes](/docs/chaos-engineering/features/probes/overview.md) which facilitates:
 - Out-of-the-box faults against different target types;
 - Automated validation of:
@@ -22,12 +22,12 @@ You can natively combine custom actions such as load generation when you execute
 ![](./static/images/test-resilience-1.png)
 
 :::info note
-Currently, the native PCF faults are supported from TAS/CF versions which have `containerd` as the default runtime (roughly since CF v6.7+).
+Currently, the native CF faults are supported from TAS/CF versions which have `containerd` as the default runtime (roughly since CF v6.7+).
 :::
 
 ## Chaos components
 
-HCE leverages two components that are installed in the user's PCF environment to execute PCF faults:
+HCE leverages two components that are installed in the user's CF environment to execute CF faults:
 
 - **Linux chaos infrastructure**
     - Also known as Linux chaos agent or LCI in short.
@@ -44,7 +44,7 @@ HCE leverages two components that are installed in the user's PCF environment to
 
 CFI leverages the standard Cloud Foundry APIs (that are exposed by the CF cloud controller), and the container runtime (`containerd`) APIs to result in the desired fault conditions.
 
-When you create a PCF chaos experiment, LCI performs the following actions:
+When you create a CF chaos experiment, LCI performs the following actions:
 1. Fetch the tasks from the HCE control plane.
 2. Parse application-specific and fault-specific inputs.
 3. Launch the CFI with the appropriate flags to implement the chaos business logic.
@@ -52,9 +52,9 @@ When you create a PCF chaos experiment, LCI performs the following actions:
 
 ## Prerequisites for fault execution
 
-To successfully execute a PCF fault, you have to fulfill the following prerequisites:
+To successfully execute a CF fault, you have to fulfill the following prerequisites:
 
-- Outbound connectivity from the PCF VM (where the LCI is installed) to:
+- Outbound connectivity from the CF VM (where the LCI is installed) to:
     - Harness control plane
     - CF cloud controller endpoint
 
@@ -69,7 +69,7 @@ To successfully execute a PCF fault, you have to fulfill the following prerequis
 
 ## Chaos components deployment modes
 
-Harness supports two deployment modes in the PCF environment for the chaos components mentioned earlier. It is designed to support different networking configurations (or constraints) within enterprises.
+Harness supports two deployment modes in the CF environment for the chaos components mentioned earlier. It is designed to support different networking configurations (or constraints) within enterprises.
 
 ### Run LCI in Diego cells hosting the app instances
 
@@ -86,9 +86,9 @@ In this model, the blast radius can extend to multiple cells as a part of a sing
 
 ![](./static/images/deployment-tanzu-4.png)
 
-## PCF faults classification
+## CF faults classification
 
-HCE supports three broad categories of native faults for PCF applications.
+HCE supports three broad categories of native faults for CF applications.
 
 ### 1. Purely CF-API driven faults
 
@@ -112,6 +112,6 @@ BOSH_ENVIRONMENT=XXXXXXXXXXXXXXXXXX
 ```
 
 :::tip
-- This excludes the VMware and Linux OS based faults, which, though relevant in the PCF context are treated more as infrastructure faults.
-- You can execute the 3 types of native PCF faults described below in any of the deployment modes (with [Diego cells hosting the instance](#run-lci-in-diego-cells-hosting-the-app-instances) or with [Tanzu ops manager](#run-lci-with-tanzu-ops-manager))
+- This excludes the VMware and Linux OS based faults, which, though relevant in the CF context are treated more as infrastructure faults.
+- You can execute the 3 types of native CF faults described below in any of the deployment modes (with [Diego cells hosting the instance](#run-lci-in-diego-cells-hosting-the-app-instances) or with [Tanzu ops manager](#run-lci-with-tanzu-ops-manager))
 :::
