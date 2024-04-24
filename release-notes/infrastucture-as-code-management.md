@@ -29,3 +29,14 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
   - **Enhanced Layout:** Increased spacing around store cards to prevent overlap of check marks and enhance readability and accessibility. (IAC-1601)
   - **Sensitive Field Icons:** The eye/hide icon is now exclusively used with sensitive fields to improve privacy and clarity. (IAC-1694)
 ---
+
+## March 2024
+### Version: 0.178.0
+<!-- Released on: 25 March 2024 -->
+#### New features and enhancements:
+  - **Connector Validation Enhancement:** We've implemented a validation check for connectors when creating or editing workspaces. This update ensures that all connectors used are currently available and of the correct type before proceeding with the operation, to help prevent errors related to non-existent or incorrect type connectors, enhancing the reliability and efficiency of workspace management. (IAC-1602)
+
+### Version: 0.176.0
+<!-- Released on: 21 March 2024 -->
+#### New features and enhancements:
+  - **Enhanced Lock Icon Tooltips and Warnings:** We've updated the tooltips and warning messages for the lock icon in Workspace resources to improve clarity and accessibility. (IAC-1577)
