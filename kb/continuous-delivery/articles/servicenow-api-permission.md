@@ -12,7 +12,7 @@ This KB discusses the permissions required for ServiceNow create, update, and ap
 Harness uses the following API to create a ServiceNow ticket without templates:  
 
 ```
-curl --location --request POST '{instance_url}/api/now/table/incident?sysparm_display_value=all' \
+curl --location --request POST '{instance_url}/api/now/table/<ticket_type>'\
 --header 'Authorization: Basic {bearer token}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
