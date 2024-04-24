@@ -31,10 +31,8 @@ These settings are required for most scanners. For more information, go to the r
 - [Product config name](#product-config-name)
 
 
-
 #### Product name
 
-The scanner name. Required for all Custom Scan steps. 
 
 ##### Key
 ```
