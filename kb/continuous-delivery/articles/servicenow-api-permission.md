@@ -30,6 +30,10 @@ Required permission: `itil`.
 Harness uses custom script APIs to create a ticket using form templates.
 Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
 
+:::note 
+This flow requires the Harness app to be installed in ServiceNow, so that it helps in debugging. Review [Important notes for using templates](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#important-notes-for-using-templates) for more details.
+:::
+
 ### Create a ServiceNow ticket from a standard templates
 
 This is supported only for change request ticket types.
@@ -44,7 +48,7 @@ Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
 Harness uses the following API to update a ServiceNow ticket without templates:  
 
 ```
-curl --location --request PATCH '{instance_url}/api/now/table/incident/57bea4ef1b41e150c312755e034bcbd1?sysparm_display_value=all' \
+curl --location --request PATCH '{instance_url}/api/now/table/<ticket_type>' \
 --header 'Authorization: Basic {bearer token}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -70,7 +74,7 @@ Required permission: `x_harne_harness_ap.integration_user_role`.
 Harness uses the following API to get the fields of the ServiceNow ticket for which the approval or rejection criteria is specified in the Approval step.
 
 ```
-curl --location --request GET '{instance_url}/api/now/table/incident?sysparm_display_value=all&sysparm_query=number=INC0011331' \
+curl --location --request GET '{instance_url}/api/now/table/<ticket_type>' \
 --header 'Authorization: Basic {bearer token}' \
 ```
 
