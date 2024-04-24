@@ -32,7 +32,7 @@ Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
 
 ### Create a ServiceNow ticket from a standard templates
 
-This is supported only for change request task types.
+This is supported only for change request ticket types.
 
 Harness uses custom script APIs to create a ticket using form template.
 Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
