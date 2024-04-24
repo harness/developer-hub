@@ -16,12 +16,22 @@ The following tutorials include detailed examples of how to run a [Semgrep scan]
 
 ## Important notes for running Semgrep scans in STO
 
+- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)).  
 
-### Root access requirements 
+  To run scans using [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your access token in the [Access token](#access-token) field. 
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+  For information about the security rulesets supported by different Semgrep products, go to the [Semgrep Registry](https://semgrep.dev/explore).
 
-<StoRootRequirements />
+- If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
+
+  You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+- The following topics contain useful information for setting up scanner integrations in STO:
+
+  - [What's supported in STO](/docs/security-testing-orchestration/whats-supported)
+  - [Security Testing Orchestration FAQs](/docs/faqs/security-testing-orchestration)
+  - [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines)
+
 
 ### For more information
 
