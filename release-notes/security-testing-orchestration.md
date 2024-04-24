@@ -32,7 +32,7 @@ This release introduces a new built-in SAST step that adds a preconfigured [Semg
 
 This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
-  <DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+<DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
 #### New feature: Orchestrated Semgrep scans
 
