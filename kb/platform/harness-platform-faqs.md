@@ -809,7 +809,11 @@ The `DELEGATE_TASK_CAPACITY` feature flag allows you to configure the maximum nu
 
 ### When do delegates expire, and how does expiration affect their compatibility?
 
-Delegates expire six months (24 weeks) from the date the delegate image was released on DockerHub. Although delegate expiration doesn't stop them from working immediately, issues may arise if the backend has advanced too far ahead, rendering the delegate no longer forward-compatible. While delegates are backward compatible, it's highly recommended to upgrade at least once every six months to ensure optimal performance and compatibility.
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if they are not upgraded 8 months after the image is released.
+
+If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. You must update the delegate every 8 months.
+
+For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
 
 ### Can I do additional encoding of the Harness Delegate token?
 
