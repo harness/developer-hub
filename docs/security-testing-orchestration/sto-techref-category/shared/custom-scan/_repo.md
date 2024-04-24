@@ -17,9 +17,13 @@ These settings apply to Custom Scan steps when both of these conditions are true
 repository_project
 ```
 ###### Value
-The code repository to scan. This appears as the target name in the UI.
+
+The name of the repo to scan. To specify the repo URL, edit  the [Codebase Config object](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) in the Harness pipeline.  
+
+In most cases, this should match the repo name used in your Git provider.
 
 #### Repository Branch
+
 
 ##### Key
 ```
@@ -27,4 +31,7 @@ repository_branch
 ```
 
 ##### Value
-The repository branch to scan.
+
+The branch that gets reported in STO for the ingested results. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.  
+     
+In most cases, this field should match the name of the Git branch that is getting scanned.

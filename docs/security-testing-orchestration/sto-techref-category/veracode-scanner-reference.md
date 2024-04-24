@@ -150,6 +150,11 @@ In most cases, this should match the repo name used in your Git provider.
 
    <!-- invalid link: The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes in more detail how you can find your application IDs and project names. -->
 
+### Repository
+
+import StoLegacyRepo from './shared/custom-scan/_repo.md'; 
+
+<StoLegacyRepo />
 
 ### Product access
 
