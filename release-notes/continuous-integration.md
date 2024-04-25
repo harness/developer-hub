@@ -42,7 +42,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### Fixed issues
 
-The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
+* The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
+* Fixed an issue where pod cleanup could be missed due to duplicate data. (CI-11995)
 
 ### Version 1.24.2
 
