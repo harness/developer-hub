@@ -7,7 +7,7 @@ description: Deploy and view clusters, namespaces, workloads and more using Rafa
 | -------------- | ------------------------------------------------------------------------------- |
 | **Created by** | Rafay Systems                                                                         |
 | **Category**   | Monitoring                                                                      |
-| **Source**     | [GitHub](https://docs.rafay.co/backstage/setup/) |
+| **Source**     | [GitHub](https://docs.rafay.co/backstage/overview/#backstage-plugin) |
 | **Type**       | Open-source plugin                                                              |
 
 ## Configuration
@@ -31,7 +31,7 @@ In the above YAML, replace `<rafay_console_url>` with the real console url eg.,`
 
 ### Secrets
 
-Since the `X-RAFAY-API-KEYID` variable is used in the application configuration, you must generate a RAFAY API key and set it as the value of variable `X-RAFAY-API-KEYID`. For information about how to generate a API key, go to the [instructions](https://docs.rafay.co/automation/api/apis/#api-keys).
+Since the `X-RAFAY-API-KEYID` variable is used in the application configuration, you must generate a RAFAY API key and set it as the value of variable `X-RAFAY-API-KEYID`. For information about how to generate a API key, go to the [instructions](https://docs.rafay.co/security/rbac/users/#api-keys).
 
 ![](./static/rafay-variable.png)
 
@@ -121,4 +121,4 @@ This plugin exports new cards under overview tab for a service or for any other 
 
 ## Support
 
-The plugin is owned by Rafay Systems and managed in the public [npm package](https://www.npmjs.com/package/@rafaysystems/backstage-plugin-rafay/v/0.1.9?activeTab=code). Reach out to [Rafay Systems](https://rafay.co/) to report bugs or suggest new features for the plugin.
+The plugin is owned by Rafay Systems and managed in the public [npm package](https://www.npmjs.com/package/@rafaysystems/backstage-plugin-rafay/v/0.1.9?activeTab=code). Reach out to [Rafay Systems](https://docs.rafay.co/) to report bugs or suggest new features for the plugin.

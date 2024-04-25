@@ -374,7 +374,7 @@ spec:
           url: "frontend-service.default.svc.cluster.local"
           method:
             # call http get method and verify the response code
-            get: 
+            get:
               # criteria which should be matched
               criteria: == # <, >, <=, >=, ==, !=, oneof, between
               # expected response code for the http request, which should follow the specified criteria
@@ -382,7 +382,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -416,7 +416,7 @@ spec:
           url: "http://frontend-service.default.svc.cluster.local"
           method:
             # call http get method and verify the response code
-            get: 
+            get:
               # criteria which should be matched
               criteria: contains
               # expected response body for the http request, which should follow the specified criteria
@@ -424,7 +424,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -458,7 +458,7 @@ spec:
           url: "backend.default.svc.cluster.local"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # value of the http body, used for the post request
               body: "{\"name\":\"foo\",\"description\":\"bar\"}"
               # http body content type
@@ -470,7 +470,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -504,7 +504,7 @@ spec:
           url: "backend.default.svc.cluster.local"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # value of the http body, used for the post request
               body: "{\"name\":\"foo\",\"description\":\"bar\"}"
               # http body content type
@@ -516,7 +516,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -552,7 +552,7 @@ spec:
           url: "backend.default.svc.cluster.local"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"
@@ -605,7 +605,7 @@ spec:
             credentials: "dXNlcm5hbWU6cGFzc3dvcmQ="
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"
@@ -656,7 +656,7 @@ spec:
             credentials: "dXNlcm5hbWU6cGFzc3dvcmQ="
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"
@@ -712,7 +712,7 @@ spec:
             caFile: "/mnt/ca.crt"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"

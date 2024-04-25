@@ -432,6 +432,60 @@ If the variable is local to a scope within the pipeline, such as a stage or step
 
 ![](./static/harness-variables-16.png)
 
+### Get input/output expressions used in a from execution context
+
+The **Execution Context** provides information about resolved expressions and their values for each step in the **Step Detail** pane. Its purpose is to aid in debugging previous executions of the pipeline, serving as an additional tool alongside the Input/Output variables listed for each step.
+
+Let's consider the following example:
+```yaml
+pipeline:
+  name: pipeline
+  identifier: pipeline
+  projectIdentifier: docs_play
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom
+        identifier: custom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo {$executionUrl}
+                    environmentVariables:
+                      - name: executionUrl
+                        type: String
+                        value: <+pipeline.executionUrl>
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+```
+![](./static/executionContext.png)
+
+**Execution context** is a table of keys and values with keys being the expressions that were referred within the step. In the above example, in the step, **ShellScript_1**, we have defined an input/environment variable, `executionUrl` with an expression type. Once you run the pipeline, click on the **ShellScript_1** step and then select Execution Context in the Step Details pane.
+
+You can also get the expressions for **step level variable** and execution inputs from **Execution Context**.
+
+![](./static/expression_executionContext.png)
+
+:::info note
+Some important points to note:
+1. Secrets are not displayed in the Execution Context.
+2. The Execution Context is non-editable, meaning you won't be able to add or remove items from it.
+:::
+
 ## Expressions reference
 
 The following sections describe some Harness expressions. This information is not exhaustive.
@@ -735,6 +789,7 @@ The following expressions reference information about a pipeline run, such as th
 * `<+pipeline.storeType>`: If the pipeline is stored in Harness, the expression resolves to `inline`. If the pipeline is stored in a Git repository, the expression resolves to `remote`.
 * `<+pipeline.repo>`: For remote pipelines, the expression resolves to the Git repository name. For inline pipelines, the expression resolves to `null`.
 * `<+pipeline.branch>`: For remote pipelines, the expression resolves to the Git branch where the pipeline exists. For inline pipelines, the expression resolves to `null`.
+* `<pipeline.orgIdentifier`>: The [identifier](../references/entity-identifier-reference.md) of an organization in your Harness account. The referenced organization is the pipeline's organization. 
 
 ### Secrets expressions
 
@@ -1118,9 +1173,9 @@ namespace: <+infra.namespace>
 # using expression <+infra.namespace>
 ```
 
-### CI stage initialization fails with a "null value" error
+### CI stage initialization fails with a "null value" error or timeout
 
-If a Build (`CI`) stage fails at initialization with a "null value" error, this can indicate that an expression was called before its value could be resolved. For more information, go to [Initialize step fails with a "null value" error](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-to-fails-with-a-null-value-error).
+If a Build (`CI`) stage fails at initialization with a "null value" error or timeout, this can indicate that an expression was called before its value could be resolved or that the expression references a nonexistent value. For more information, go to [Initialize step fails with a "null value" error or timeout](https://developer.harness.io/kb/continuous-integration/continuous-integration-faqs#initialize-step-fails-with-a-null-value-error-or-timeout).
 
 ### Default values can't start with an asterisk
 

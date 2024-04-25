@@ -11,9 +11,9 @@ Currently, this feature is behind the feature flag `PL_CENTRAL_NOTIFICATIONS`. C
 
 With notifications management, you can configure notifications for the delegate events below:
 
-- Delegate is down
-- Delegate has expired
-- Delegate expires in 1, 2, 3, or 4 weeks
+- Delegate Disconnected
+- Delegate Expired
+- Delegate Expires in 1, 2, 3, or 4 weeks
 
 ## Manage notification rules
 
@@ -30,7 +30,7 @@ To add a delegate event notification rule, do the following:
 
     ![](./static/notifications-management.png)
 
-3. Select **Setup New Notification**. The **New Notification Setup** wizard opens.
+3. Select **New Notification**. The **New Notification Setup** wizard opens.
 
    ![](./static/new-notification-setup.png)
 
@@ -40,7 +40,6 @@ To add a delegate event notification rule, do the following:
    4. Select **Add Condition**. The **Create Condition** dialog opens.
    5. In **Condition Name**, enter a name for your notification condition, for example, `Delegate expires soon`.
    6. Select **Add Events**, and then select the events you want to be notified about, such as **About to expire in 2 weeks**. You can select multiple events.
-
    7. Select **Apply**, then select **Continue**. The **Set Channels** screen opens.
    8. Select your **Notification Channels**.
    9. To enable the rule now, toggle the **Enable on Save** option. If you don't want to enable the rule now, you can [enable the delegate event notification rule](#enable-a-delegate-event-notification-rule) later on the **Notifications Management** page

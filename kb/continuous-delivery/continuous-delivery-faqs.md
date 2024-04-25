@@ -1151,7 +1151,7 @@ See site for more details [here](https://developer.harness.io/docs/platform/pipe
 
 #### Harness rollback deployments. 
 
-Harness Rollback deployments initiate a rollback of the most recent successful deployment. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
 
 #### Do we allow one-time scheduling of pipeline execution ?
 
@@ -6848,3 +6848,83 @@ To enable the "Mark as Failure" pipeline, please ensure that you have fulfilled 
 - This feature is behind the feature flag `CDS_MARK_PIPELINE_AS_FAILURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 For more refer to the following Harness [documentation](https://developer.harness.io/docs/platform/pipelines/failure-handling/mark-as-failed-pipeline/).
+
+#### How can we fully stop a pipeline if it was aborted but still shows a running status, preventing us from aborting it again?
+
+Please reach out to [Harness Support](mailto:support@harness.io) to enable the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`. Once this flag is enabled, any future pipelines being executed will no longer experience the issue of being stuck in a running status after being aborted
+
+#### Why, despite the activation of the feature flag `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE`, does the retried execution of an aborted pipeline persistently display a running status?
+
+Enabling the `CDS_FIX_RETRY_FAILED_PIPELINE_WITH_USE_SERVICES_FROM_STAGE` feature flag only affects the execution of new pipelines. It doesn't apply to retried executions since the flag isn't active for those retries.
+
+#### Should steps be skipped when a user selects `skip pre-flight check` under their service and infrastructure during pipeline execution?
+
+Preflight checks occur before the pipeline execution begins, ensuring the validity of pipeline inputs and connectors. If these checks fail, the pipeline won't initiate. It's important to note that any errors encountered during the pipeline execution are associated with the service step within the pipeline, not the preflight checks. Additionally, preflight checks do not validate artifacts and manifests within the service.
+
+#### Can Harness deploy the latest tag version published to our artifact server?
+
+Yes, in Harness, you can deploy the latest tag version to your artifact server. By leveraging the `<+lastPublished.tag>` expression, Harness can fetch the most recent tag version available on the artifact server. For comprehensive instructions on implementing this approach, please consult the following Harness [documentation](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/)
+
+#### What is the equivalent method to rerun a specific pipeline execution, resembling the functionality of selecting "retry from failed stage" from the UI?
+
+Users can utilize the following API to retry a failed stage: [retryPipeline](https://apidocs.harness.io/tag/Pipeline-Execute#operation/retryPipeline). Additionally, users can supply the necessary input data set required to rerun the failed pipeline.
+
+#### When attempting to import a **.yaml file** from GitHub to create a new pipeline, the message `This file is already in use by another pipeline` is displayed. Given that there are no other pipelines in this project, is there a possibility of a duplicate entry that I may not be aware of?
+
+It's possible that there are two pipeline entities in the database, each linked to the same file path from the Harness account and the GitHub URL. Trying to import the file again may trigger the `File Already Imported` pop-up on the screen. However, users can choose to bypass this check by clicking the `Import` button again.
+
+#### Why is the GitOps Sync step failing with the error, "Application does not correspond to the service(s) selected in the pipeline execution"?
+```
+Application{name: '$APP_NAME', agentIdentifier: '$AGENT_ID', errorMessage: 'Application does not correspond to the service(s) selected in the pipeline execution.'}
+```
+This error is caused by an inconsistency in the service(s) used in the deploy stage and the selected application. GitOps cannot sync a service that isn't correlated to the application. To fix this, go to the Continuous Delivery module, and select **GitOps** > **Applications** and then select the application. In **App Details**, check if the service configured for the application is the same as the service configured in the pipeline's deploy stage.
+
+#### Why aren't my old Kubernetes Resources not deleted when deploying a new version?
+
+By default Harness does not remove resources from previous deployments. If you would like Harness to remove the older resources, you will need to enable the `Enable Kubernetes Pruning` option under the Optional Configuration in either the `K8sRollingDeploy` or `K8sBlueGreenDeploy` step.
+
+For detailed instructions on how this functionality works, please check out the Harness documentation - [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/)
+
+
+#### In terraform how do you return a null value from a `for_each`
+
+In Terraform, you can return a null value from a `for_each` expression by using the `null` function or the `null` literal directly.
+Here's an example of how you can use both approaches:
+
+Using the `null` function:
+```
+variable "my_map" {
+  type = map(any)
+  default = {
+    key1 = "value1"
+    key2 = null
+  }
+}
+
+resource "aws_instance" "my_instances" {
+  for_each = var.my_map
+
+  # Other resource attributes...
+}
+```
+
+Using the `null` literal directly:
+```
+variable "my_map" {
+  type = map(any)
+  default = {
+    key1 = "value1"
+    key2 = null
+  }
+}
+
+resource "aws_instance" "my_instances" {
+  for_each = var.my_map
+
+  # Other resource attributes...
+}
+```
+Both approaches will result in `key2` in the `my_map` variable being set to a `null` value, causing Terraform to not create an instance for that key when using `for_each`.
+
+#### Why am I getting an error that the input set does not exist in the selected Branch?
+This happens because pipelines and input sets need to exist in the same branch when storing them in Git. For example, if your pipeline exists in the `dev` branch but your input set exists in the `main` branch, then loading the pipeline in the `dev` branch and attempting to load the input set will cause this error. To fix this, please ensure that both the pipeline and input set exist in the same branch and same repository.

@@ -26,6 +26,11 @@ The following table differentiates between delegate images based on key features
 | DELEGATE-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime | x | &#x2713; | x | &#x2713; | |
 | DELEGATE-LEGACY<br /><br />**Deprecated**: Not recommended for use in new Harness accounts | &#x2713; | x | &#x2713; | x | |
 
+:::info
+Harness Delegate images are multi-architecture under the same tag. If you navigate to a specific delegate tag, you will find a digest for each architecture. The correct digest is pulled depending on the host architecture.
+
+:::
+
 ## Third-party tools included in the DELEGATE image type
 
   | **Third-party tool/SDK** | **78101 and earlier** | **78306 and later** |

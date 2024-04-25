@@ -287,7 +287,7 @@ CircleCI _orbs_ are reusable shareable configuration packages that combine jobs,
 
 Harness CI has two options for reusable, pre-packaged functionality:
 
-* [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Integrations, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
+* [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Workflow Steps, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
 * [Create standardized step templates](/docs/platform/templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
 
 ## Comparison: Specify a codebase or Docker image

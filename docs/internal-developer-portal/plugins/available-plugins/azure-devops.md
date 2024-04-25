@@ -7,7 +7,7 @@ description: Easily view your Azure Pipelines within the Software Catalog.
 | -------------- | ----------------------------------------------------------------------------- |
 | **Created by** | keyloop                                                                      |
 | **Category**   | CI/CD                                                                         |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/azure-devops) |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/azure-devops/plugins/azure-devops#azure-devops-plugin) |
 | **Type**       | Open-source plugin                                                            |
 
 ## Configuration
@@ -116,4 +116,4 @@ In this case `<project-name>` will be the name of your Team Project and `<build-
 
 ## Support
 
-The plugin is owned by keyloop and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by keyloop and managed in the [Backstage repository](https://github.com/backstage/community-plugins/tree/main/workspaces/azure-devops/plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

@@ -93,6 +93,13 @@ import {
             link: "/release-notes/feature-flags",
           },
           {
+            title: "Infrastructure as Code Management release notes",
+            module: MODULES.iacm,
+            description:
+              "",
+            link: "/release-notes/infrastucture-as-code-management",
+          },
+          {
             title: "Internal Developer Portal release notes",
             module: MODULES.idp,
             description:
