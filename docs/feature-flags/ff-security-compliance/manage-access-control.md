@@ -73,10 +73,8 @@ Here's how you can create and manage resource groups for the Feature flags and T
 
  ![The Feature Flag Permissions for Resource Groups](../ff-security-compliance/static/ff-resource-groups-permissions.png)
 
- 1. Navigate to **Account Settings > Access Control >
- Resource groups within your Harness Account.
- 2. Add a new resource group or select an existing one
- to modify.
+ 1. Navigate to **Account Settings > Access Control > Resource groups** within your Harness Account.
+ 2. Add a new resource group or select an existing one to modify.
  3. Set the "Resource Scope" accordingly if you are creating one.
  4. Within the Resources, select **Feature Flags**, Proxy Keys**, or both if that's what you require.
 
