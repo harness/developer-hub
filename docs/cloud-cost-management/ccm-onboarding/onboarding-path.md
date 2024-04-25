@@ -186,7 +186,7 @@ For more information on AutoStopping, go to [AutoStopping](docs/cloud-cost-manag
 
 AutoStopping is configured individually for each application. CCM facilitates testing AutoStopping by offering a sample HTTP application that can be installed into the cloud account. This allows users to assess and validate the functionality of AutoStopping in a practical setting.
 
-For more information on AutoStopping sample app, go to [Sample app](tutorials/cloud-costs/cloud-autostopping/kubernetes-autostopping-quick-start-guide.md).
+For more information on AutoStopping sample app, go to [Sample app](docs/cloud-cost-management/4-use-ccm-cost-optimization/autostopping-guides/kubernetes-autostopping-quick-start-guide.md).
 
 #### Rollout AutoStopping rules for all non-prod accounts
 
