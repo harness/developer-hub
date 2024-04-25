@@ -131,7 +131,7 @@ Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.
 
    :::info
 
-   Harness recommends [using GitHub Apps with GitHub connectors](./git-hub-app-support.md) for [increased rate limits](for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
+   Harness recommends [using GitHub Apps with GitHub connectors](./git-hub-app-support.md) for [increased rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
 
    :::
 

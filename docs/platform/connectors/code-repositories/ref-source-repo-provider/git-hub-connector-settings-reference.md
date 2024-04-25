@@ -79,7 +79,7 @@ Authentication is required for all accounts and repos, including read-only repos
 
 :::info
 
-Whenever possible, Harness recommends [using GitHub Apps with GitHub connectors](../git-hub-app-support.md) for [increased rate limits](for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
+Whenever possible, Harness recommends [using GitHub Apps with GitHub connectors](../git-hub-app-support.md) for [increased rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
 
 :::
 
@@ -158,7 +158,7 @@ You can use a GitHub App to authenticate a Harness GitHub connector. To use this
 
 :::info
 
-Harness recommends [using GitHub Apps with GitHub connectors](../git-hub-app-support.md) for [increased rate limits](for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
+Harness recommends [using GitHub Apps with GitHub connectors](../git-hub-app-support.md) for [increased rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
 
 :::
 
