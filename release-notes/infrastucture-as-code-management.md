@@ -1,7 +1,7 @@
 ---
 title: Infrastructure as Code Management release notes
 sidebar_label: Infrastructure as Code Management
-date: 2024-04-22T20:00
+date: 2024-04-25T17:00
 tags: [Infrastructure as Code Management]
 sidebar_position: 17
 ---
@@ -46,3 +46,10 @@ These release notes describe recent changes to Harness Infrastructure as Code Ma
 #### Fixed issues
   - **Improved Header Visibility:** We resolved the issue of overlapping headers in side-by-side workspace state comparisons, enhancing readability and accessibility for the **View Execution** and **filename** headers. (IAC-1573)
   - **Planned Changes Count Accuracy:** We refined the **Planned changes** count to include only **Added, Changed, and Deleted** resources, excluding **Unchanged** resources, for a more accurate reflection of significant changes. (IAC-1561)
+---
+
+## February 2024
+### Version: 0.152.0
+<!-- Released on: 08 February 2024 -->
+#### Fixed issues
+- **Improved Variable Deletion Permissions:** Fixed an oversight where permissions for variable deletion were not checked during workspace updates. Previously, checks were only performed via the */variable* endpoint using the **DELETE method**. This update ensures that permissions are verified against both the individual deletions and the broader workspace variable updates, maintaining security without modifying the core architecture between **iac-server** and **sprox**. (IAC-1362)
