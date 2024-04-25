@@ -52,7 +52,7 @@ Here are the steps to archive a flag:
 
    ![The **more options** menu shown for one flag, with edit and archive options](./static/archive-flag.png)
 
- 3. The Archive Flag confirmation screen appears next. If the flag you're archiving is a prerequisite to a another flag, you can select the flag from this screen to remove the dependency, and then try archiving again. 
+ 3. The Archive Flag confirmation screen appears next. If the flag you're archiving is a prerequisite to another flag, you can select the flag from this screen to remove the dependency, and then try archiving again. 
    
    ![The Archive Warning Message pop-up](./static/ff-archive-flag-warning-message.png)
    
