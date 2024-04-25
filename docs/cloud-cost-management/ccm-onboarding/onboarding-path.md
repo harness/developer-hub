@@ -57,8 +57,8 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 | **Step**                                        | **Details**                                 | **Demo video** |
 | ----------------------------------------------- | ------------------------------------------- | -------------- |
-| <a href="#phase5-step-1">Terraform provider</a> | Manage CCM entities using Terraform         |                |
-| <a href="#phase5-step-2">CCM APIs</a>           | Integrate with CCM APIs to extend the usage |                |
+| <a href="#phase5-step-1">CCM APIs</a>           | Integrate with CCM APIs to extend the usage |                |
+| <a href="#phase5-step-2">Terraform provider</a> | Manage CCM entities using Terraform         |                |
 
 
 ## Phase 1: Initial setup
@@ -206,13 +206,13 @@ For more information on budgets, go to [Budgets](https://developer.harness.io/do
 
 ### Step 2. Asset governance
 
-Asset governance enables you to manage your cloud resources by filtering, tagging, and then applying actions to them. The YAML syntax allows defininition of rules to enable well-managed cloud infrastructure that's both secure and cost optimized. Asset governance is built on top of the popular open-source [Cloud Custodian](https://cloudcustodian.io/).
+Asset governance helps you manage your cloud resources by allowing you to filter and tag them, and then apply specific actions. It uses YAML syntax to define rules, facilitating a well-managed, secure, and cost-optimized cloud infrastructure. This process is built on the well-known open-source platform, [Cloud Custodian](https://cloudcustodian.io/).
 
-Asset governance is the easiest way to get started with optimization of your cloud spend. 
+Asset governance provides a straightforward approach to optimizing your cloud spending.
 
 #### Enable Asset governance for cloud connectors
 
-Asset governance is supported for AWS, Azure and GCP. For asset governance to work, connectors needs to be created for each AWS account, Azure subscriptions or GCP projects other than the master billing connector. Existing connectors can be edited to enable Asset governance. Adding the GOVERNANCE tag to the connector yaml (Account Settings -> Account Resources -> Connectors) will also enable this feature. 
+Asset governance is compatible with AWS, Azure, and GCP. To implement it, you must create connectors for each AWS account, Azure subscription, or GCP project, in addition to the master billing connector. You can edit existing connectors to activate asset governance. Additionally, adding the "GOVERNANCE" tag to the connector's YAML configuration (found under Account Settings -> Account Resources -> Connectors) will enable this feature.
 
 ```yaml
 connector:
@@ -230,15 +230,26 @@ connector:
 
 #### Asset governance recommendations
 
-Once the connector permissions are updated, asset governance generates recommendations. These recommendations are generated daily for few selected resources that cloud custodian supports. Once the recommendations are generated, it will be available along with other recommendations. Enforcement can be setup to apply the recommendation periodically.
+Once the connector permissions are updated, asset governance generates recommendations. These are produced daily for a select group of resources supported by Cloud Custodian. Once created, these recommendations become available alongside other suggestions. After reviewing a recommendation, you can apply it directly from the asset governance user interface. Additionally, you can set up enforcement to apply the recommendation on a regular basis.
 
-#### Rolling out asset governance at scale
+For more information on Asset governance, go to [Asset governance](docs/cloud-cost-management/5-use-ccm-cost-governance/asset-governance/3-gov-overview.md).
 
-Once asset governance is tested on few resources, it can be rolled out to take actions periodically on supported cloud resources. To rollout asset governance rules at scale, following steps needs to be performed.
+## Phase 5: Automation
 
-1. Create cloud connectors. Cloud connectors needs to be created seperately for each cloud provider. Connector creation APIs can be used to create connectors in an automated way.
-2. 
+The entire CCM feature setup can be automated to seamlessly integrate into an organization's automation processes. This automation includes creating cloud connectors as new cloud accounts are provisioned, automatically establishing asset governance rules to manage cloud accounts, setting up AutoStopping rules for new cloud resources, and other use cases.
 
-- connector creation apis
-- gov apis
-- setting enforcements
+CCM supports this level of automation through the use of CCM APIs and a Terraform provider.
+
+### Step 1. CCM APIs
+
+The CCM API documentation is accessible at [Harness API docs](https://apidocs.harness.io/). To utilize the CCM APIs, you can use either a service account or a personal access token. It is advisable for the service account to have CCM admin permissions to enable the execution of all CCM-related actions.
+
+For more information on service accounts and API keys, go to [Service accounts](docs/platform/role-based-access-control/add-and-manage-service-account.md).
+
+### Step 2. Terraform provider
+
+CCM resources can also be created using Harness Terraform provider. Terraform provider supports creation of connectors and AutoStopping rules.
+
+1. [Create connectors using Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws)
+2. [Create AutoStopping rules using Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/autostopping_rule_vm)
+
