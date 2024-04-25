@@ -44,7 +44,7 @@ Security Updates:
   - Note that this feature is not enabled yet and the SDK will continue to use the existing group rule format until further notice. (FFM-11297)
  - Internal metrics code enhancements.
 
-*Fixed Issues*:
+*Fixed issues*:
  - Fixed an issue where only a single target would be registered in a metrics window.(FFM-11297)
 
 #### Version 0.1.20
