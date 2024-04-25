@@ -10,14 +10,15 @@ redirect_from:
 This topic walks you through the steps required to set up CCM for Azure in a self-managed platform.
 
 **Figure: Azure CCM Self-Managed Enterprise Edition architecture diagram**
+<DocImage path={require('./static/azure-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
 
-<docimage path={require('./static/azure-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
+The flow at a high level works very similar to our saas enviornment. We support syncing data from multiple exports residing in different source storage accounts into CCM via a destination storage account(staging).
 
 You need to perform the following tasks to set up CCM for Azure. For Step 1, 2 and 3 Sign in to your [Azure Portal](https://portal.azure.com/#home): 
 
 1. [Setup a new Application via App Registration](#setup-a-new-application-via-app-registration).
 2. [Create a new Client secret](#create-a-new-client-secret).
-3. [Setup a new Storage Account and a new Storage Container](#setup-a-new-storage-account-and-a-new-storage-container).
+3. [Create a new Destination Storage Account and a new Storage Container](#create-a-new-destination-storage-account-and-a-new-storage-container).
 4. [Deploy workloads via Helm charts](#deploy-workloads-via-helm-charts).
    
 ## Setup a new Application via App Registration
@@ -26,7 +27,7 @@ You need to perform the following tasks to set up CCM for Azure. For Step 1, 2 a
 2. For Supported account types select: `Accounts in any organizational directory (Any Microsoft Entra ID tenant - Multitenant)`.
 3. Click on Register. For more information, go to [Quickstart: Register an App](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app).
 
-  <docimage path={require('./static/azure-app-registration.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-app-registration.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 ## Create a new Client secret
@@ -35,7 +36,7 @@ You need to perform the following tasks to set up CCM for Azure. For Step 1, 2 a
 Copy & Save **Directory (tenant) ID** → `tenantId`
 Copy & Save **Application (client) ID** → `clientId`.
 
-  <docimage path={require('./static/azure-client-id-and-tenant-id.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-client-id-and-tenant-id.png')} width="50%" height="50%" title="Click to view full size image" />
 
 3. Now click on **Certificates & secrets** in the left panel.
 4. Go to **Client secrets (0)** tab.
@@ -44,7 +45,7 @@ Copy & Save **Application (client) ID** → `clientId`.
 7. Select **Expires** from the drop down select `730 days (24 months)`(or the maximum allowed time).
 8. Click **Add** Button.
 
-  <docimage path={require('./static/azure-client-secret.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-client-secret.png')} width="50%" height="50%" title="Click to view full size image" />
 
 9. From the new Client secret, Copy & Save **Value** → `clientSecret`. For more information, go to [Add credentials](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app#add-credentials).
 
@@ -58,7 +59,8 @@ Make a note of the following:
 - clientSecret
 :::
 
-## Setup a new Storage Account and a new Storage Container
+## Create a new Destination Storage Account and a new Storage Container
+This will act as a staging area for CCM to sync data from multiple billing exports.
 1. Select a **Subscription** from the drop down.
 2. Select a **Resource Group** from the drop down.
 3. Enter **Storage account** name `ccmbillingdatasmp`. Save **Storage account name**  → `storageName`
@@ -66,7 +68,7 @@ Make a note of the following:
 5. In **Blob storage** section, enable `Allow cross-tenant replication`
 6. Click on Review.
 
-  <docimage path={require('./static/azure-storage-account-creation.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-storage-account-creation.png')} width="50%" height="50%" title="Click to view full size image" />
 
 7. Click on **Create**. For more information, go to [Create a storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-portal).
 8. Once the storage account is created, Go to **Containers** in left panel.
@@ -74,15 +76,15 @@ Make a note of the following:
 10. Enter **Name** as `billingdatacontainer`. Save **Name** as → `containerName`
 11. Click on **Create**. For more information, go to [Create a container](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container).
 
-  <docimage path={require('./static/azure-container-creation.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-container-creation.png')} width="50%" height="50%" title="Click to view full size image" />
 
 12. Go to **Shared access signature** in left panel.
 13. Check all **Allowed resource types** which are `Service`, `Container` and `Object`.
 14. Add 10 years to **End** in **Start and expiry date/time**.
-15. Click on **Generate SAS and connection string**.
+15. Click on **Generate SAS and connection string**. This is required to sync data from multiple source account to destination storage account.
 16. Save **SAS token** → `sasToken` starting from `sv=`, ignore `?` in beginning. For more information, go to [Create your SAS tokens](https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/create-sas-tokens?view=doc-intel-4.0.0#use-azure-storage-explorer).
 
-  <docimage path={require('./static/azure-destination-storage-sas-token.png')} width="50%" height="50%" title="Click to view full size image" />
+  <DocImage path={require('./static/azure-destination-storage-sas-token.png')} width="50%" height="50%" title="Click to view full size image" />
 
 :::info
 Make a note of the following:
@@ -154,7 +156,7 @@ helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 
 ## Handling Kubernetes secrets
 
-When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **HARNESS_CE_AZURE_CLIENTID** value is "clientId", it would be stored as `Y2xpZW50SWQ==` after encoding.
+When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **HARNESS_CE_AZURE_CLIENTID** value is "clientId", it would be stored as `Y2xpZW50SWQ==` after encoding. After changing secrets, kindly bounce the corresponding pods.
 
 The following are the secrets specific to CCM services:
 
