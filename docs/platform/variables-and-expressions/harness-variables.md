@@ -321,19 +321,16 @@ pipeline:
 
 </details>
 
-Ternary operator and colon as constant in same expression is not supported.
+We do not support using a ternary operator with colon as constant in the same expression.
 
 Expression : <+ 
                 Env name: <+env.name> 
                 Service Name: <+<+<+env.name>.contains("dev")>?<+env.name>:"No Env">
              >
 
-Above expression will not get resolved as colon is used as constant string with ternary operator. As a workaround for this expression to work we should create
-a new variable for ternary expression and use this varible in original expression.
+The above expression will not get resolved as colon is used as a constant string with the ternary operator. As a workaround for this expression to work we should create a new variable for ternary expression and use this variable in the original expression.
 
-Take above expression as example:
-
-We can create a test variable with this expression as value <+<+<+env.name>.contains("dev")>?<+env.name>:"No Env"> and replace the original expression with same. suppose variable created is at pipeline level then our final expression will be as below and it will work.
+In the example expression above, we can create a test variable with this expression as value `<+<+<+env.name>.contains("dev")>?<+env.name>:"No Env">` and replace the original expression with the same. Suppose the variable created is at the pipeline level, then our final expression will be as shown below, and it will work.
 
 Expression: <+ 
                 Env name: <+env.name> 
