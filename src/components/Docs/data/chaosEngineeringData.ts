@@ -91,13 +91,6 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/chaos-engineering/chaos-faults/kube-resilience/",
         },
         {
-          title: "Security chaos faults",
-          module: MODULES.ce,
-          description:
-            "Execute security chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/security-chaos/",
-        },
-        {
           title: "Kube-resilience chaos faults",
           module: MODULES.ce,
           description:
