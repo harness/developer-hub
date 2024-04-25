@@ -43,7 +43,7 @@ Details are toggle elements.
 
 As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which detail the link is on and expand the appropriate section if a detail. 
 
-- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox#secone-level-detail-heading
+- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox#second-level-detail-heading
 
 <details>
 <summary>First Level Detail</summary>
