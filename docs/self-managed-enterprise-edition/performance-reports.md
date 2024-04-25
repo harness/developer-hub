@@ -20,16 +20,11 @@ The reports outline the various services utilized within the Harness Self-Manage
 
 ### Concurrent CI executions
 
-The test scenarios involve concurrent CI executions under varying conditions:
-
-- **INLINE CI executions**: CI pipelines are initiated with specific steps, including initializing Kubernetes pods, cloning repositories, and executing parallel steps with sleep intervals. These tests evaluate the platform's ability to handle high loads of CI executions efficiently.
-- **GitX CI executions**: Similar to INLINE CI executions, but with additional echo statements included in the steps. This variation helps assess the platform's performance with different CI execution configurations.
+Concurrent CI executions are initiated with specific steps, including initializing Kubernetes pods, cloning repositories, and executing parallel steps with sleep intervals. These tests evaluate the platform's ability to handle high loads of CI executions efficiently.
 
 ### Concurrent CD executions
 
 Concurrent CD executions involve fetching Docker artifacts from external repositories and executing sequential steps, including Canary deploy, Canary delete, Rolling deploy, and Kubernetes Delete. These tests focus on the platform's ability to orchestrate complex deployment workflows under heavy loads.
-
-The test reports offer valuable insights into the performance, scalability, and reliability of Harness Self-Managed Enterprise Edition. They demonstrate the platform's capability to handle concurrent CI/CD executions effectively across different scenarios and workload conditions. The detailed results and observations serve as a reference for evaluating the platform's suitability for various deployment environments and project requirements.
 
 ## Performance test reports
 
