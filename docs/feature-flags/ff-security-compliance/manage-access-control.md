@@ -18,7 +18,7 @@ Harness provides Role-Based Access Control (RBAC) that enables you to control us
 
 This topic describes the roles available for Feature Flags. For more information about how RBAC works in Harness and instructions for implementing access control, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-## Creating & Managing Roles
+## Creating and Managing Roles
 
 The **Feature Flag Admin Role** is a default Role available specifically for Feature Flags. The administrator roles gives you the ability to grant and revoke  permissions at an environment level. This includes:
 
@@ -67,7 +67,7 @@ For the Organization level, open the same account settings and proceed to **Orga
 
 To set roles and permissions at the Project level, navigate to the **Project** section from the module navigation bar, and select **Access Control**. Follow similar steps as above to establish the roles and permissions for the project level.
 
-## Creating & Managing Resorce Groups
+## Creating and Managing Resorce Groups
 
 Here's how you can create and manage resource groups for the Feature flags and Target Management at the account level. Additionally, you can refer to [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md) document to learn more.
 
