@@ -22,11 +22,11 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/chaos-engineering/get-started/overview",
         },
         {
-          title: "Terminology",
+          title: "Key concepts",
           module: MODULES.ce,
           description:
             "Familiarize yourself with chaos engineering terminology.",
-          link: "/docs/chaos-engineering/get-started/key-concepts",
+          link: "/docs/chaos-engineering/architecture-and-security/architecture/components",
         },
   ],
 },

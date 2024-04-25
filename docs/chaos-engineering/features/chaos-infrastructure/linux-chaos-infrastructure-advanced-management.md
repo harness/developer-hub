@@ -8,7 +8,7 @@ redirect_from:
 
 This section describes the [advanced setup](#advanced-setup), [infrastructure service](#infrastructure-service), [logs](#logs), and [resilience probes](#resilience-probes-for-linux) associated with the Linux chaos infrastructure (LCI).
 
-HCE supports executing Linux faults similar to Kubernetes faults. 
+HCE supports executing Linux faults similar to Kubernetes faults.
 
 ## Before you begin
 * [Connect to Linux infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure)
@@ -48,10 +48,10 @@ LCI does not currently support:
 ## Infrastructure service
 The Linux chaos infrastructure is installed as an executable binary on your Linux machine. This infrastructure is managed as a `Systemd` service.
 - The service starts automatically when the system starts.
-- If the service stops unexpectedly, it automatically attempts to restart after a cooldown period of 5 seconds.
+- If the service stops unexpectedly, it automatically attempts to restart after a cool down period of 5 seconds.
 - By default, the service ensures that the chaos infrastructure process is owned by the root user.
 
-To check if the infrastructure service is active and running, use the following command: 
+To check if the infrastructure service is active and running, use the following command:
 ```
 systemctl status linux-chaos-infrastructure.service
 ```
@@ -90,5 +90,5 @@ HCE allows you to create the below probes for Linux:
 3. [Datadog](/docs/chaos-engineering/features/probes/datadog-probe)
 4. [Dynatrace](/docs/chaos-engineering/features/probes/dynatrace-probe)
 
-When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information. 
+When you try to enable or disable a Linux probe, two mandatory fields `type` and `attempt` (with empty values) are added to the probe. Even if you edit these values, they will not reflect in the updated experiment manifest. This is because the final values for the earlier-mentioned mandatory fields are picked from the database associated with the specific probe. Go to [known issues](/docs/chaos-engineering/troubleshooting/known-issues) for more information.
 
