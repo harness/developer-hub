@@ -56,7 +56,7 @@ Here are the steps to archive a flag:
    
    ![The Archive Warning Message pop-up](./static/ff-archive-flag-warning-message.png)
    
- 4. If you're sure you want to archive the flag, type the name or ID of the flag in the field provided, and then select **Archive**. Be aware you can restore the archived flag within 30 days.
+ 4. If you're sure you want to archive the flag, type the ID of the flag in the field provided, and then select **Archive**. Be aware you can restore the archived flag within 30 days.
 
 ### Restore a flag
 
@@ -67,14 +67,8 @@ When you restore a flag, it's restored to all environments. All of the flag's co
 Here are the steps to restore an archived flag:
 
  1. Select the Harness project containing the flag you'd like to restore. Navigate to **Feature Flags** which will display all of your flags in your project. 
- 2. 
-
-
-
-   A list of archived flags is displayed.
-
-1. Next to the flag you want to restore, select **more options** (**︙**), and then select **Restore**.
-1. On the confirmation screen, select **Restore**.
+ 2. Next to the flag you want to restore, select **more options** (**︙**), and then select **Restore**.
+ 3. On the confirmation screen, select **Restore**.
 
 ## Check for stale flags
 
