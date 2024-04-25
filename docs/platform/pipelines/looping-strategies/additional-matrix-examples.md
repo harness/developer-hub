@@ -503,7 +503,7 @@ Escaping is required for some punctuation. Note the use of double quotes around 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
 
 
-### Generate random integers using a matrix and then find their aggregate sum in the next step.
+### Generate random integers using a matrix and then find their aggregate sum.
 
 Solution:
 
