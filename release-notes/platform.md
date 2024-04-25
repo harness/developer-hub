@@ -94,7 +94,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- We've added an optional registry mirror configuration for delegate `upgrader`. If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images. For more information, go to [Configure an optional registry mirror for delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#configure-an-optional-registry-mirror-for-delegate-images). (PL-47920, ZD-59005)
+- We've added an optional registry mirror configuration for delegate `upgrader`. If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images. For more information, go to [Configure an optional registry mirror for delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#configure-an-optional-registry-mirror-for-delegate-images). This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47920, ZD-59005)
 
 - AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
 
