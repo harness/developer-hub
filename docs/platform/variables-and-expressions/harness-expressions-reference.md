@@ -6,7 +6,6 @@ redirect_from:
   - /docs/platform/variables-and-expressions/status-type-reference
 ---
 
-## Expressions reference
 
 The following sections describe some Harness expressions. This information is not exhaustive.
 
