@@ -8,13 +8,9 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can ingest scan results from [Semgrep](https://www.semgrep.com).
+You can ingest scan results from [Semgrep](https://www.semgrep.com). 
 
-<!-- The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
-- [SAST code scans using Semgrep](./sast-scan-semgrep)
-- [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-only)
-
--->
+For a quick introduction, go to the [SAST code scans using Semgrep](./sast-scan-semgrep) tutorial.
 
 ## Important notes for running Semgrep scans in STO
 
@@ -42,8 +38,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <StoMoreInfo />
 
 ## Set-up workflows
-
-<!-- 1 --------------------------------------------------------------------->
  
 <details>
 
