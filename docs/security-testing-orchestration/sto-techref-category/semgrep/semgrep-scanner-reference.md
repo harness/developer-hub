@@ -16,7 +16,7 @@ The following tutorials include detailed examples of how to run a [Semgrep scan]
 
 ## Important notes for running Semgrep scans in STO
 
-- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)).  
+- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)).  
 
   To run scans using a licensed version of [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your Semgrep token in the [Access token](#access-token) field. 
 
@@ -60,7 +60,7 @@ To scan a code repository, you need [Harness Code Repository](/docs/code-reposit
 
 Do the following:
 
-1. Add a Build or Security stage to your pipeline.
+1. Add a **Build** or **Security** stage to your pipeline.
 2. Configure the stage to point to the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
 3. Go to the **Execution** tab, click **Add step**, and select the **SAST** built-in scanner.
 
@@ -87,7 +87,7 @@ To scan a code repository, you need [Harness Code Repository](/docs/code-reposit
 
 Do the following:
 
-1. Add a Build or Security stage to your pipeline.
+1. Add a **Build** or **Security** stage to your pipeline.
 2. Configure the stage to point to the [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan. 
 2. Add a Semgrep step to the stage.
 
@@ -123,7 +123,7 @@ The pipeline scans your code repository and then shows the results in [Security 
 
 #### Add a shared path for your scan results
 
-1. Add a Build or Security stage to your pipeline.
+1. Add a **Build** or **Security** stage to your pipeline.
 2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
 #### Copy scan results to the shared path

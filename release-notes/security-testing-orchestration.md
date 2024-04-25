@@ -36,7 +36,7 @@ This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Supp
 
 #### New feature: Orchestrated Semgrep scans
 
-Harness STO now supports running [Semgrep scans](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) in Orchestration mode. (STO-3525)
+Harness STO now supports running [Semgrep scans](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) in **Orchestration** mode. (STO-3525)
 
 
 
