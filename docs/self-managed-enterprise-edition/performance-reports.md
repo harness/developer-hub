@@ -6,6 +6,8 @@ sidebar_position: 27
 
 This topic includes a series of test reports focusing on the performance and scalability of Harness Self-Managed Enterprise Edition. The reports provide detailed insights into the test environment, resource configurations, test scenarios, and their outcomes.
 
+The test reports offer valuable insights into the performance, scalability, and reliability of Harness Self-Managed Enterprise Edition. They demonstrate the platform's capability to handle concurrent CI/CD executions effectively across different scenarios and workload conditions. The detailed results and observations serve as a reference for evaluating the platform's suitability for various deployment environments and project requirements.
+
 ## Test environment
 
 The test reports document the environment in which the performance tests were conducted. This includes details such as the Kubernetes version used (GKE), the database configuration (Mongo Atlas M60), and the Redis setup (GCP Memory Store).
@@ -31,7 +33,7 @@ The test reports offer valuable insights into the performance, scalability, and 
 
 ## Performance test reports
 
-Harness publishes performance test reports with each release. Select a report below to view test report details.
+Harness publishes performance test reports with each release. Select a report below to view report details.
 
 ### 2024 reports
 
