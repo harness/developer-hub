@@ -39,7 +39,7 @@ Security Updates:
 
 #### Version 0.1.21
 
-*New Features and Enhancements*:
+*New features and enhancements*:
  - SDK support for processing `AND/OR` rules:
   - Note that this feature is not enabled yet and the SDK will continue to use the existing group rule format until further notice. (FFM-11297)
  - Internal metrics code enhancements.
