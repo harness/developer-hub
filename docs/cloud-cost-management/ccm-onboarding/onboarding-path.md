@@ -25,7 +25,8 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 | ----------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
 | <a href="#step-1-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                                                                        |
 | <a href="#step-2-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                                                                        |
-| <a href="#step-3-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
+| <a href="#step-3-review-use-cases">Review usecases</a>            | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
+| <a href="#step-4-setup-cost-visibility">Setup cost visibility</a> | Review use cases and success criteria against what is supported today      |                                                                        |
 
 
 ### <a href="#phase-2"> Phase 2: Cost reporting</a>
@@ -73,8 +74,11 @@ For more information, go to [Authentication](docs/platform/authentication/authen
 
 CCM provides various set of RBAC permissions to control access to various entities. For more information go to [CCM Roles and Permissions](docs/cloud-cost-management/access-control/ccm-roles-and-permissions.md).
 
+### Step 3. Review usecases
 
-### Step 3. Setup cost visibility
+CCM supports AWS, GCP, and Azure cloud providers. It offers various features that cater to different cloud resources across these platforms. To confirm that your specific use case is fully supported by CCM, please refer to the [What's Supported in Harness CCM](docs/cloud-cost-management/whats-supported.md) section.
+
+### Step 4. Setup cost visibility
 
 First step in setting up Harness CCM is to create the cloud connector for respective cloud providers. A cloud connector is the configuration details which Harness uses to access the cloud provider APIs. At first, CCM will have the readonly permissions to access the cost data from the cloud providers.
 
