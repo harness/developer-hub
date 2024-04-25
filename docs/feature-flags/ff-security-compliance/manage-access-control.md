@@ -36,7 +36,7 @@ The **Feature Flag Admin Role** is a default Role available specifically for Fea
 
 If you have permissions at the Project level, you can edit Flags within that Project or its Environments. If you have permissions for the Environment, then the role is limited to that Environment only.  
 
-## Editing and updating permissions
+## Creating and Managing Permissions
 
 You can create a role or manage permissions for **Resource Groups**, **Default Settings**, **Projects**, **User Groups**, **Service Accounts**, **Roles** and **Users**. 
 
@@ -53,7 +53,7 @@ Here's a guide to creating a role or managing permissions for the Feature Flags 
 Feature flags is governed by the following permissions:
 
  **Create**: Enables users to create new feature flags.
- **~Edit Config**: Enables users to edit existing configs.
+ **Edit Config**: Enables users to edit existing configs.
  **Edit Rules**: Enables users to edit rules.
  **Toggle**: Enables users to toggle the feature flags on or off.
  **Delete**: Allows users to delete any targets.
