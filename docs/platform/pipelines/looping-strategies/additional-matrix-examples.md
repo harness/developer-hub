@@ -559,7 +559,7 @@ pipeline:
 ```
 
 #### Second step
-In step 2 
+In step 2, we are using [json.format](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors.md#format) and jq to extract those values and add them together.
 ```yaml
               - step:
                   type: ShellScript
@@ -579,7 +579,5 @@ In step 2
                     outputVariables: []
                   timeout: 10m
 ```
-
-When you execute the above pipeline YAML, it will generate three random integer values in the step `ShellScript_1` and sum them up in the subsequent step `ShellScript_2`. For instance, if it generates the random integers 68, 3, and 58 in the first step, their sum would be 129.
 
 ![](./static/output_example_matrix_example.png)
