@@ -41,7 +41,7 @@ Security Updates:
 
 *Enhancements*:
  - SDK support for processing `AND/OR` rules:
-  -- Note that this feature is not enabled yet and the SDK will continue to use existing group rule format until further notice. (FFM-11297)
+  - Note that this feature is not enabled yet and the SDK will continue to use the existing group rule format until further notice. (FFM-11297)
  - Internal metrics code enhancements.
 
 *Bug Fixes*:
