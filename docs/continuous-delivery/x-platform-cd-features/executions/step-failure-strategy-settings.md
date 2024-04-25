@@ -62,7 +62,7 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Rollback Stage** | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
 | **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed**.|
-|**Proceed with Default Values** | This failure strategy is used when user is not able to provide the input during execution. | Same as step | N/A |
+|**Proceed with Default Values** |This failure-strategy is used when the user is not able to provide the inputs for any stage/step during the execution. In that case users can define this Failure-strategy on stage/step to continue the execution using the default value configured on the input field. | Same as step | Same as step |
 
 ## Failure strategy takes precedence over conditional execution
 
