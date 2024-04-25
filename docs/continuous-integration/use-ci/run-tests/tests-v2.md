@@ -88,9 +88,17 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 Use these fields to define the commands that you need to run in this step.
 
-For **Shell**, select the shell type. If the step includes commands that aren't supported for the selected shell type, the step fails. Required binaries must be available on the build infrastructure or through a specified [Container Registry and Image](#container-registry-and-image).
+For **Shell**, select the shell type. If the step includes commands that aren't supported for the selected shell type, the step fails. Required binaries must be available on the build infrastructure or through a specified [Container Registry and Image](#container-registry-and-image). The default shell type, if unspecified, is `Sh`.
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
+
+:::info
+
+Harness has a built-in environment variable named `JAVA_TOOL_OPTIONS`.
+
+You can *append* additional settings to this value, but **do not override the default value**.
+
+:::
 
 ### Intelligence Mode
 
@@ -105,6 +113,8 @@ For example:, the default for RSpec is `**/spec/**/*_spec.rb`, and you could ove
 As another example, the default for a Python test tool could be `*_test.py` or `test_*.py`, you could override it with any other pattern, such as `.test.py`. Because test selection is at the file-level, the test globs pattern references file names. You can include directory structures, such as `microservice1/**/test_*.py`.
 
 ### Report Paths
+
+This setting is optional. If unspecified, Harness uses the default JUnit report path `**/*.xml`.
 
 You can use this setting if your test reports are stored in a non-default location or have a non-default name pattern.
 
@@ -121,10 +131,7 @@ For example:
                       - tmp/junit.xml
 ```
 
-You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates.
-[Test results must be in JUnit XML format](./test-report-ref.md).
-
-[Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported.
+You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) is supported. [Test results must be in JUnit XML format](./test-report-ref.md).
 
 ### Output Variables
 
