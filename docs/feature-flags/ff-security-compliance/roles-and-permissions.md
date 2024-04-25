@@ -25,7 +25,15 @@ In line with the custom roles and permissions, Role Based Access Control (RBAC) 
 
 ## Roles
 
-<!-- to do-->
+ ![The Feature Flag Admin Role in Harness](./static/ff-feature-flag-admin-role.png)
+
+  ![The Feature Flag Admin Role Control Panel in Harness](./static/ff-admin-role-access-control.png)
+
+Harness Feature Flags includes built-in roles for you to manage RBAC within the module. To examine the permissions assigned to these roles, to view them:
+
+ 1. Select **Account Settings**, and then select **Access Control** along the top of the page, or by scrolling down.
+ 2. To view a role at the organization scope, go to **Organizations** and select the relevant organization. On the left hand side, select **Organization Settings**, and then select Access Control.
+ 3. Lastly, to view a role at the project scope, go to **Projects** and select the relevant project.  On the left hand panel, select **Project Settings** and then select **Access Control** in the header or by scrolling down the page.
 
 ## Permissions 
 
@@ -44,16 +52,4 @@ The permissions have now be split further. This gives administrators more choice
 
 Administrators are able to control what the users can configure within various environments and helps to provide further alignment with security compliance around your products. 
 
-### Create Permission
-
-<!-- to do. will include a how to and screen shot -->
-
-### Edit Configuration Permission
-
-<!-- to do. will include a how to and screen shot -->
-
-### Edit Rule Permission
-
-<!-- to do. will include a how to and screen shot -->
-
-
+<!--This is a comment. Will link pages on hot to edit config, edit permissions and create permission in a separate PR here. -->
