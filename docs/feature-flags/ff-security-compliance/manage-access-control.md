@@ -27,7 +27,7 @@ The **Feature Flag Admin Role** is a default Role available specifically for Fea
 * Editing and deleting **Projects**,
 * Managing **User Groups**,
 * Creating, editing, managing and deleting **Service Accounts**,
-* Creating, Editing and deleting **Roles**, and
+* Creating, editing and deleting **Roles**, and
 * Managing and inviting **Users**.
 
 
