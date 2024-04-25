@@ -6931,4 +6931,14 @@ This happens because pipelines and input sets need to exist in the same branch w
 
 #### How are the statistics on the continuous delivery overview page calculated?
 
-The [continous delivery overview page](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#overview-and-services-dashboards) displays stats for deloyments and 
+The [continous delivery overview page](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#overview-and-services-dashboards) displays statistics for deloyments and services that can sometimes have numbers that seem unreasonable or incorrect. However, these numbers are correct and are generally caused by the time frame that the statistic is measured over. 
+
+For example, say that we have a statistic `failure rate` that is measured over a 30 period. Then we collect the following data:
+
+Days 0 - 30 `failure rate`: 5%
+Days 31 - 60 `failure rate`: 15%
+
+Then when displaying the `failure rate` for the last 30 days you would see `15%` and you would see that your `failure rate` increased by `300%`!
+So the statistic will have a red arrow pointing up marked as a `300%` increment in failure rate. 
+
+This value is not incorrect, but measures the change in rate. 
