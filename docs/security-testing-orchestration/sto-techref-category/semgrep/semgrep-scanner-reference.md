@@ -8,7 +8,7 @@ sidebar_position: 20
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can ingest scan results from [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories.
+You can ingest scan results from [Semgrep](https://www.semgrep.com).
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
 - [SAST code scans using Semgrep](./sast-scan-semgrep)
@@ -293,70 +293,50 @@ In the **Advanced** settings, you can use the following options:
 
 ## YAML pipeline example
 
-The following pipeline example illustrates an ingestion workflow. It consists of two steps:
-
-* A Run step that uses a [Semgrep container](https://hub.docker.com/r/returntocorp/semgrep) to scan the codebase defined for the pipeline and then publish the results to a SARIF data file.
-* A Semgrep step that ingests the SARIF data.
+The following pipeline example illustrates an orchestration workflow. It consists of a Semgrep step that scans a code repository and then ingests, normalizes, and deduplicates the results.
 
 ![](../static/semgrep-ingest-pipeline.png)
 
 ```yaml
 pipeline:
-  projectIdentifier: STO
+  name: semgrep-orch-test
+  identifier: semgreporchtest
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_GIT_CONNECTOR_ID
+        repoName: YOUR_GIT_REPO_NAME
+        build: <+input>
   stages:
     - stage:
-        name: semgrep-ingest
-        identifier: semgrepingest
-        type: CI
+        name: semgrep-orch
+        identifier: semgreporch
+        description: ""
+        type: SecurityTests
         spec:
           cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
           execution:
             steps:
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: semgrep --sarif --config auto -o /harness/results.sarif /harness
-                    envVariables:
-                      SEMGREP_APP_TOKEN: <+secrets.getValue("semgrepkey")>
-                    connectorRef: YOUR_CONTAINER_IMAGE_REGISTRY_CONNECTOR_ID
-                    image: returntocorp/semgrep
-                    resources:
-                      limits:
-                        memory: 4096M
               - step:
                   type: Semgrep
                   name: Semgrep_1
                   identifier: Semgrep_1
                   spec:
-                    mode: ingestion
+                    mode: orchestration
                     config: default
                     target:
-                      name: test
                       type: repository
-                      variant: test
+                      detection: auto
                     advanced:
                       log:
                         level: info
-                    ingestion:
-                      file: /harness/results.sarif
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_NAMESPACE
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-  identifier: smpsemgrep
-  name: smp-semgrep
-  properties:
-    ci:
-      codebase:
-        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
-        build: <+input>
 ```
