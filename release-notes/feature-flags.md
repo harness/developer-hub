@@ -45,7 +45,7 @@ Security Updates:
  - Internal metrics code enhancements.
 
 *Bug Fixes*:
- - Fixes an issue where only a single target would be registered in a metrics window.(FFM-11297)
+ - Fixed an issue where only a single target would be registered in a metrics window.(FFM-11297)
 
 #### Version 0.1.20
 
