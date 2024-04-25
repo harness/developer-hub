@@ -101,3 +101,4 @@ To delete an archived flag:
 1. In your Harness project, navigate to **Feature Flags > Feature Flags**, and then select the **Archived** filter at the top of the page.
 2. Next to the flag you want to delete, select **more options** (**︙**), and then select **Delete**.
 3. On the confirmation screen, select **Delete**.
+
