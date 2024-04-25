@@ -320,10 +320,10 @@ Install the Harness Docker Runner on the Windows machine that you specified in t
 </TabItem>
 <TabItem value="service" label="Install as a service (.msi)">
 
-The advantage to installing the Docker Runner as a service on a Windows platform is that the service restarts when the runner machine restarts. This can be helpful if your workflow requires the runner machine to restart on a schedule or after certain events.
+The advantage to installing the Docker Runner as a Windows service is that the service restarts when the runner machine restarts. This can be helpful if your workflow requires the runner machine to restart on a schedule or after certain events.
 
 1. Download the [Windows Harness Docker Runner MSI file (`harness-docker-runner-svc.msi`)](https://github.com/harness/harness-docker-runner/releases) on the Windows machine where you want to run the Harness Docker Runner. This should be the machine that you specified in the delegate's `RUNNER_URL`.
-2. Launch the downloaded `harness-docker-runner-svc.msi` file to start the installation process, and then accept the license, select **Next**, and finish the installation.
+2. Launch the downloaded `harness-docker-runner-svc.msi` file to start the installation process. Then accept the license, select **Next**, and finish the installation.
 
    :::info Troubleshoot Windows Security issues
 
@@ -339,7 +339,7 @@ The advantage to installing the Docker Runner as a service on a Windows platform
       6. If a warning message appears, select **Yes** and **Continue**.
       7. Restart or continue the installation process.
 
-   If you get an error that `This installation package could not be opened`, you might need to [change ownership of the file](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753659(v=ws.10)) to Administrators, allow full control, and then restart or continue the installation process. If you're not already an administrator, you might need to elevate your permissions using [User Account Control (UAC)](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control).
+   If you get the error message `This installation package could not be opened`, you might need to [change ownership of the file](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753659(v=ws.10)) to Administrators, allow full control, and then restart or continue the installation process. If you're not already an administrator, you might need to elevate your permissions using [User Account Control (UAC)](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control).
 
    :::
 
