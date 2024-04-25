@@ -11,11 +11,11 @@ This section describes the components and their deployment architecture associat
 
 You can use HCE to test the resilience of your CF-based microservices by executing chaos experiments on various layers of CF, ranging from application processes (supported for JVM-based apps currently) to the underlying host (VMware) infrastructure.
 HCE supports [resilience probes](/docs/chaos-engineering/features/probes/overview.md) which facilitates:
-- Out-of-the-box faults against different target types;
-- Automated validation of:
-  - Resilience of the services (known as performance metrics);
-  - Status endpoints;
-  - Healthcheck scripts.
+- Out-of-the-box faults against different target types
+- Automated validation of
+  - Resilience of the services (known as performance metrics)
+  - Status endpoints
+  - Healthcheck scripts
 
 You can natively combine custom actions such as load generation when you execute these experiments as a part of Harness pipelines.
 
@@ -35,7 +35,7 @@ HCE leverages two components that are installed in the user's CF environment to 
     - It is responsible for reporting the outcomes of the chaos experiments to the control plane.
 
 - **Cloud Foundry fault injector**
-    - Also known CFI in short.
+    - In short, CFI.
     - It is a tool launched just-in-time by the Linux agent to run as a time-bound or transient process.
 
 ![](./static/images/control-plane-2.png)
@@ -90,15 +90,15 @@ In this model, the blast radius can extend to multiple cells as a part of a sing
 
 HCE supports three broad categories of native faults for CF applications.
 
-### 1. Purely CF-API driven faults
+### Purely CF-API driven faults
 
 These faults involve out-of-band state manipulation of the apps that are deployed in the CF environment using only the Cloud Foundry APIs exposed by the CF cloud controller. For example, [app stop](/docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-stop.md), app delete, [app route unmap](/docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-route-unmap.md), app service unbind.
 
-### 2. Application instance (or container) level faults
+### Application instance (or container) level faults
 
 These faults involve in-machine actions that impact the individual application instances that run as containers in the Diego cells. CF APIs are leveraged to extract the instance metadata (such as location, and container IDs) after which the instances are either killed ([app instance kill](/docs/chaos-engineering/chaos-faults/cloud-foundry/cf-app-container-kill.md)) or subjected to network, stress or I/O based fault injection.
 
-### 3. Application framework (or process) level faults
+### Application framework (or process) level faults
 
 These faults involve in-machine actions that impact specific app processes running in the app containers. Currently, HCE supports JVM-based apps to inject these faults. The fault inputs reference the exact classes and methods to inject in-app latency, exceptions etc.
 
@@ -112,6 +112,6 @@ BOSH_ENVIRONMENT=XXXXXXXXXXXXXXXXXX
 ```
 
 :::tip
-- This excludes the VMware and Linux OS based faults, which, though relevant in the CF context are treated more as infrastructure faults.
-- You can execute the 3 types of native CF faults described below in any of the deployment modes (with [Diego cells hosting the instance](#run-lci-in-diego-cells-hosting-the-app-instances) or with [Tanzu ops manager](#run-lci-with-tanzu-ops-manager))
+- This excludes the VMware and Linux OS based faults, which, though relevant in the CF context, are treated more as infrastructure faults.
+- You can execute 3 types of native CF faults described earlier in any of the deployment modes (with [Diego cells hosting the instance](#run-lci-in-diego-cells-hosting-the-app-instances) or with [Tanzu ops manager](#run-lci-with-tanzu-ops-manager))
 :::
