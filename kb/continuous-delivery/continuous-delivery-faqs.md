@@ -6928,3 +6928,7 @@ Both approaches will result in `key2` in the `my_map` variable being set to a `n
 
 #### Why am I getting an error that the input set does not exist in the selected Branch?
 This happens because pipelines and input sets need to exist in the same branch when storing them in Git. For example, if your pipeline exists in the `dev` branch but your input set exists in the `main` branch, then loading the pipeline in the `dev` branch and attempting to load the input set will cause this error. To fix this, please ensure that both the pipeline and input set exist in the same branch and same repository.
+
+#### How are the statistics on the continuous delivery overview page calculated?
+
+The [continous delivery overview page](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#overview-and-services-dashboards) displays stats for deloyments and 
