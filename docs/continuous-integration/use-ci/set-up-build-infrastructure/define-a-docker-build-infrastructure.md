@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
+You can configure CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
 * [Set up a Linux local runner build infrastructure](#set-up-a-linux-local-runner)
 * [Set up a macOS local runner build infrastructure](#set-up-a-macos-local-runner)
