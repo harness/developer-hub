@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-04-16T10:00
+date: 2024-04-23T10:00
 sidebar_position: 10
 ---
 
@@ -54,9 +54,32 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
+### Version 1.24.2
+
+<!-- 23 Apr 2024 -->
+
+#### New features and enhancements
+
+In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), test globs starting with `/` are correctly treated as absolute paths. (CI-11819, ZD-57661, ZD-61493)
+
+:::warning
+
+If you currently use a Ruby test glob pattern starting with `/`, you must either replace the leading slash or add `**` accordingly.
+
+:::
+
+<!-- #### Early access features
+
+* (CI-11792) CI_NEW_VERSION_GODOTENV ?? -->
+
+#### Fixed issues
+
+* Increased the default machine size for the [Harness CI Cloud macOS platform](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). The default size was inadvertently decreased during a prior upgrade to Sonoma, and some users experienced `No space left on device` errors as a result. (CI-11620, ZD-59225)
+* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054) <!-- would help to have more detail -->
+
 ### Version 1.23.1
 
-<!-- 16 Apr 2024-->
+<!-- 16 Apr 2024 -->
 
 #### Early access features
 

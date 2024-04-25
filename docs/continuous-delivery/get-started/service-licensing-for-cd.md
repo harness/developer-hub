@@ -62,7 +62,7 @@ Examples:
 Harness deploys serverless functions to architectures such as AWS Lambda, AWS SAM, Google Functions, Serverless.com Framework, Azure Web apps, and more. In all these architectures, Harness does not track any instances of functions deployed.
 
 ```
-Harness CD consumes 1 Service License for every 6 unique functions deployed.
+Harness CD consumes 1 Service License for every 5 unique functions deployed.
 ```
 
 Examples:

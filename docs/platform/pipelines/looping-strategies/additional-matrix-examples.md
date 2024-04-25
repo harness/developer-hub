@@ -503,7 +503,7 @@ Escaping is required for some punctuation. Note the use of double quotes around 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
 
 
-### Given a step matrix, where each step generates a random integer for an output variable, retrieve these values at different steps later and sum them together
+### Generate random integers using a matrix and then find their aggregate sum.
 
 Solution:
 
@@ -513,6 +513,10 @@ Requirements:-
 
 ![](./static/project_setting.png)
 
+We are going to create a two-step process: the first step is for generating random integers, and the second step is for calculating their aggregate sum.
+
+#### First step 
+In this step we are using built-in variable in Bash `$RANDOM` that generates a random integer, here it generates a random integer between 1 and 100 and stores it in the variable `random_number` and we are using this variable as an **output variable** that can be referenced in other step as well.
 ```yaml
 pipeline:
   name: 
@@ -552,6 +556,11 @@ pipeline:
                         - name: firstGroup
                         - name: secondGroup
                         - name: thirdGroup
+```
+
+#### Second step
+In step 2, we are using [json.format](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors.md#format) and jq to extract those values and add them together.
+```yaml
               - step:
                   type: ShellScript
                   name: ShellScript_2
@@ -570,7 +579,5 @@ pipeline:
                     outputVariables: []
                   timeout: 10m
 ```
-
-When you execute the above pipeline YAML, it will generate three random integer values in the step `ShellScript_1` and sum them up in the subsequent step `ShellScript_2`. For instance, if it generates the random integers 68, 3, and 58 in the first step, their sum would be 129.
 
 ![](./static/output_example_matrix_example.png)

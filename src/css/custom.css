@@ -428,10 +428,13 @@ h2 {
   background-color: var(--white);
   border: 1px solid var(--primary-7);
   color: var(--primary-7);
-  margin-right: -0.75rem;
+  /* margin-right: -0.75rem; */
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
+}
+.btn-nav {
+  margin: 8px 0px 8px 12px;
 }
 
 .button--nav:hover {
@@ -806,8 +809,81 @@ figure p {
 
   display: none;
 }
+
+/*== start of code for tooltips ==*/
+.tool {
+  display: inline-block;
+}
+[hover-tooltip] {
+  --caret-height: 4px;
+  --caret-width: 6px;
+  --distance: 10px;
+  --tooltip-bg-color: #373737;
+  position: relative;
+  cursor: default;
+}
+
+[hover-tooltip]:hover::before {
+  content: attr(hover-tooltip);
+  font-size: 12px;
+  text-align: center;
+  position: absolute;
+  display: block;
+  left: 50%;
+  min-width: 150px;
+  max-width: 200px;
+  bottom: calc(100% + var(--distance));
+  transform: translate(-50%);
+  animation: fade-in 300ms ease;
+  background: var(--tooltip-bg-color);
+  border-radius: 4px;
+  padding: 10px;
+  color: #ffffff;
+  z-index: 1;
+}
+
+[hover-tooltip]:hover::after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 50%;
+  width: 0;
+  height: 0;
+  bottom: calc(100% + calc(var(--distance) - var(--caret-height)));
+  margin-left: calc(- var(--caret-width) / 2);
+  border: 1px solid black;
+  border-color: var(--tooltip-bg-color) transparent transparent transparent;
+  border-width: var(--caret-height) var(--caret-width) 0;
+  animation: fade-in 300ms ease;
+  z-index: 1;
+}
+
+[hover-tooltip][tooltip-position="bottom"]:hover::before {
+  bottom: auto;
+  top: calc(100% + var(--distance));
+}
+
+[hover-tooltip][tooltip-position="bottom"]:hover::after {
+  bottom: auto;
+  top: calc(100% + calc(var(--distance) - var(--caret-height)));
+  border-color: transparent transparent var(--tooltip-bg-color);
+  border-width: 0 var(--caret-width) var(--caret-height);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @media screen and (max-width: 996px) {
   #search-button {
     display: block;
+  }
+  [hover-tooltip]:hover::before {
+    transform: translate(-30%);
   }
 }

@@ -76,7 +76,6 @@ To add the URL for a load balancer, do the following:
 <!---
 <TabItem value="ELB" label="ELB">
 
-
 </TabItem>
 
 --->
@@ -132,6 +131,64 @@ To an ingress ALB, do the following:
 
 </TabItem>
 </Tabs>
+
+### Optional: Configure a vanity URL based on your load balancer
+
+You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vality-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
+
+#### Prerequisites
+
+Before using this script, ensure the following prerequisites are met:
+
+- You must have a subdomain URL mapped to your load balancer's static IP. The subdomain URL must adhere to one of the following example formats:
+  - `http://mysubdomain.mysite.com`
+  - `https://mysubdomain.mysite.com`
+
+#### Execution
+
+Execute this script within your cluster environment, providing three argument inputs:
+
+1. Namespace
+2. Account ID
+3. Subdomain URL
+
+```
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <namespace> <accountId> <subdomainUrl>"
+    exit 1
+fi
+
+# Assign the first argument to namespace
+namespace="$1"
+
+# Assign the second argument to accountId
+accountId="$2"
+
+# Assign the second argument to subdomainUrl
+subdomainUrl="$3"
+
+MONGO_PASS=$(kubectl get secret -n $namespace mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode)
+kubectl exec -it mongodb-replicaset-chart-0 -n $namespace -- mongo <<EOF
+use admin
+db.auth('admin', '${MONGO_PASS}')
+use gateway
+db.account_refs.update({"uuid":"${accountId}"},{\$set:{"subdomainUrl": "${subdomainUrl}"}})
+db.account_refs.find()
+use harness
+db.accounts.update({"_id":"${accountId}"},{\$set:{"subdomainUrl": "${subdomainUrl}"}})
+db.accounts.find()
+EOF
+kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'
+kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
+```
+
+##### Example command
+
+The example command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace, `abc123` account ID, and `http://smp.harnessurl.com` subdomain URL.
+
+```
+./configure-vanity-url.sh mynamespace abc123 http://smp.harnessurl.com
+```
 
 ### Deploy Harness modules
 
@@ -217,7 +274,6 @@ ssca:
 # -- Enable to deploy SSCA to your cluster
 enabled: true
 ```
-
 
 ### Add a Harness license
 

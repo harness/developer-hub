@@ -7,7 +7,7 @@ description: View CI/CD pipeline executions running in CircleCI.
 | -------------- | ----------------------------------------------------------------------------- |
 | **Created by** | Spotify                                                                       |
 | **Category**   | CI/CD                                                                         |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/circleci) |
+| **Source**     | [GitHub](https://github.com/CircleCI-Public/backstage-plugin/tree/main/plugins/circleci#circleci-plugin) |
 | **Type**       | Open-source plugin                                                            |
 
 ## Configuration
@@ -77,4 +77,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/CircleCI-Public/backstage-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

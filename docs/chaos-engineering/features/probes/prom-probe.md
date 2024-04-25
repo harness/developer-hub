@@ -421,8 +421,8 @@ spec:
           query: "sum(rate(http_requests_total{code=~\"2..\"}[1m])) by (job)"
           comparator:
             # criteria which should be followed by the actual output and the expected output
-            #supports >=,<=,>,<,==,!= comparision
-            criteria: ">" 
+            #supports >=,<=,>,<,==,!= comparison
+            criteria: ">"
             # expected value, which should follow the specified criteria
             value: "0"
           auth:
