@@ -41,8 +41,9 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 | **Step**                                                                      | **Details**                                                                                              | **Demo video** |
 | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------- |
-| <a href="#phase3-step-1">Recommendations</a>                                  | Explore right sizing recommendations for node pools and other resource types                             |                |
-| <a href="#phase3-step-2">AutoStopping - Stop resources when they are idle</a> | Create AutoStopping rules to stop resources (VMs, k8s workloads, ECS tasks etc) when they are not in use |                |
+| <a href="#phase3-step-1">Setup cloud connectors</a>                           | Set up cloud connectors enabling optimization permissions                                                |                |
+| <a href="#phase3-step-2">Recommendations</a>                                  | Explore right sizing recommendations for node pools and other resource types                             |                |
+| <a href="#phase3-step-3">AutoStopping - Stop resources when they are idle</a> | Create AutoStopping rules to stop resources (VMs, k8s workloads, ECS tasks etc) when they are not in use |                |
 
 ### <a href="#phase-4"> Phase 4: Cost governance</a>
 
@@ -126,8 +127,21 @@ For more information, go to [Cost anomalies](docs/first-gen/cloud-cost-managemen
 
 Utilizing Cloud Cost Management not only offers in-depth insights into cloud expenses but also generates actual cost savings by implementing optimization techniques on cloud resources.
 
+### Step 1. Setup cloud connectors
 
-### Step 1. Recommendations
+As part of the Cost Reporting setup, cloud connectors for retrieving cost data are already established. These connectors are configured at either the master or billing account level and provide read-only access to the billing data.
+
+To enable optimization features, CCM requires individual cloud connectors with read-write permissions.
+
+For AWS, these connectors must be set up at the level of each individual AWS child account. For more details, refer to the [AWS setup guide](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-aws.md).
+
+For GCP, you need to create connectors for each GCP project. For more information, refer to the [GCP setup guide](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-gcp.md).
+
+For Azure, connectors should be created for each Azure subscription. For instructions, refer to the [Azure setup guide](docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure.md).
+
+If you need to create multiple connectors, this process can be automated using the [connector creation APIs](https://apidocs.harness.io/tag/Connectors#operation/createConnector). Alternatively, you can use the [Harness Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs) for this task.
+
+### Step 2. Recommendations
 
 CCM can provide three types of recommendations.
 
@@ -149,7 +163,7 @@ The workflow unfolds as follows:
 
 For more information on Jira workflow, go to [View and apply recommendations](docs/cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/1-home-recommendations.md).
 
-### Step 2. AutoStopping
+### Step 3. AutoStopping
 
 Cloud resources utilized for non-production setups, like QA and UAT, often remain idle for extended periods. AutoStopping efficiently addresses this by intelligently stopping these resources when not in use and automatically restarting them when needed. This feature helps minimize idle costs associated with maintaining these environments.
 
@@ -216,11 +230,14 @@ connector:
 
 #### Asset governance recommendations
 
-Once the connector permissions are updated, asset governance generates recommendations. These recommendations are generated daily for few selected resources that cloud custodian supports. Once the recommendations are generated, it will be available along with other recommendations. Enforcement can be setup to apply the recommendation.
+Once the connector permissions are updated, asset governance generates recommendations. These recommendations are generated daily for few selected resources that cloud custodian supports. Once the recommendations are generated, it will be available along with other recommendations. Enforcement can be setup to apply the recommendation periodically.
 
 #### Rolling out asset governance at scale
 
-Once asset governance is tested on few resources, it can be rolled out to take actions periodically on supported cloud resources. 
+Once asset governance is tested on few resources, it can be rolled out to take actions periodically on supported cloud resources. To rollout asset governance rules at scale, following steps needs to be performed.
+
+1. Create cloud connectors. Cloud connectors needs to be created seperately for each cloud provider. Connector creation APIs can be used to create connectors in an automated way.
+2. 
 
 - connector creation apis
 - gov apis
