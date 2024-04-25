@@ -8,6 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 This topic provides settings and permissions for the GitHub connector. For instructions and more information about code repo connectors, go to [Connect to a Git repository](../connect-to-code-repo.md).
 
 ## Overview settings
@@ -34,14 +37,8 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 
 Enter the URL for the GitHub account or repository that you want to connect to. The required value is determined by the **URL Type** and **Connection Type**.
 
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-
 <Tabs>
-  <TabItem value="account" label="URL Type: Account" default>
-
+<TabItem value="account" label="URL Type: Account" default>
 
 In the **GitHub Account URL** field, provide only the account-identifying portion of the GitHub URL, such as `https://github.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
@@ -52,20 +49,16 @@ In the **GitHub Account URL** field, provide only the account-identifying portio
 
 This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your GitHub account that Harness can use to test the connector. Harness uses this repo to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-
 </TabItem>
-  <TabItem value="repo" label="URL Type: Repository">
-
+<TabItem value="repo" label="URL Type: Repository">
 
 In the **GitHub Repository URL** field, provide the complete URL to the GitHub repository that you want this connector to point to. The URL format depends on the **Connection Type**:
 
 * **HTTP:** `https://github.com/YOUR_ACCOUNT_NAME/YOUR_REPO_NAME.git`
 * **SSH:** `git@github.com:YOUR_ACCOUNT_NAME/YOUR_REPO_NAME.git`
 
-
 </TabItem>
 </Tabs>
-
 
 :::info GitHub Enterprise URLs
 
@@ -84,10 +77,14 @@ Authentication is required for all accounts and repos, including read-only repos
 * For **HTTP** connections, you can use **Username and Token**, **OAuth**, or **GitHub App** authentication.
 * For **SSH** connections, you must use **SSH Key** authentication.
 
+:::info
+
+Whenever possible, Harness recommends [using GitHub Apps with GitHub connectors](../git-hub-app-support.md) for [increased rate limits](for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
+
+:::
 
 <Tabs>
-  <TabItem value="usertoken" label="Username and Token" default>
-
+<TabItem value="usertoken" label="Username and Token" default>
 
 1. For **Authentication**, select **Username and Token**.
 2. In the **Username** field, enter your personal GitHub account name. You can use either plaintext or a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
@@ -113,10 +110,8 @@ You can validate your token from the command line before using it in Harness. Fo
 
 :::
 
-
 </TabItem>
-  <TabItem value="oauth" label="OAuth">
-
+<TabItem value="oauth" label="OAuth">
 
 :::note
 
@@ -127,10 +122,8 @@ Currently, OAuth for GitHub connectors is behind a feature flag. Contact [Harnes
 1. For **Authentication**, select **OAuth**.
 2. Select **Link to GitHub** to open a new browser tab and authorize access to your GitHub organization/account.
 
-
 </TabItem>
-  <TabItem value="ssh" label="SSH Key">
-
+<TabItem value="ssh" label="SSH Key">
 
 SSH connections require an SSH key or a GitHub deploy key.
 
@@ -158,12 +151,16 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 :::
 
-
 </TabItem>
-  <TabItem value="ghapp" label="GitHub App">
-
+<TabItem value="ghapp" label="GitHub App (Recommended)">
 
 You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
+
+:::info
+
+Harness recommends [using GitHub Apps with GitHub connectors](../git-hub-app-support.md) for [increased rate limits](for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
+
+:::
 
 1. For **Authentication**, select **GitHub App**.
 2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
@@ -180,10 +177,8 @@ You can use a GitHub App to authenticate a Harness GitHub connector. To use this
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
-
 </TabItem>
 </Tabs>
-
 
 ### Enable API access
 
@@ -193,10 +188,8 @@ API access is required for any operations that require Harness to call GitHub AP
 
 Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
-
 <Tabs>
-  <TabItem value="pat" label="Personal Access Token" default>
-
+<TabItem value="pat" label="Personal Access Token" default>
 
 1. For **API Authentication**, select **Personal Access Token**.
 2. In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](/docs/platform/secrets/add-use-text-secrets).
@@ -217,8 +210,7 @@ Enabling API access requires configuring an API authentication method, either a 
 </details>
 
 </TabItem>
-  <TabItem value="ghapp" label="GitHub App">
-
+<TabItem value="ghapp" label="GitHub App">
 
 To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/connectors/code-repositories/git-hub-app-support).
 
@@ -237,10 +229,8 @@ To use this authentication method, you need to create and install a GitHub App, 
 
 4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/secrets/add-file-secrets).
 
-
 </TabItem>
 </Tabs>
-
 
 ## Connectivity Mode settings
 
@@ -265,7 +255,7 @@ The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/c
 
 If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
 
-If you want to use specific delegates, you must identify those delegates. For more information, go to [Use delegate selectors](../../../delegates/manage-delegates/select-delegates-with-selectors.md).
+If you want to use specific delegates, you must identify those delegates. For more information, go to [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Kubernetes delegate with self-signed certificates
 
