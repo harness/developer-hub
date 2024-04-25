@@ -140,10 +140,10 @@ export default function CertificationsCD() {
           className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
             }`}
         >
-          {activePage === ActivePage.SelfPacedTraning ? (
-            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+         {activePage === ActivePage.SelfPacedTraning ? (
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           ) : (
-            <img src="/img/Instructor_led_trainin_logo.svg" />
+            <img src="/img/self-paced-training-logo-active.svg" />
           )}
           Self-Paced Training
         </button>
