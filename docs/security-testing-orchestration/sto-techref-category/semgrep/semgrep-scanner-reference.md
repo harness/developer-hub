@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 You can ingest scan results from [Semgrep](https://www.semgrep.com). 
 
-For a quick introduction, go to the [SAST code scans using Semgrep](./sast-scan-semgrep) tutorial.
+For a quick introduction, go to the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) tutorial.
 
 ## Important notes for running Semgrep scans in STO
 
