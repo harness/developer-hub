@@ -22,16 +22,6 @@ The standard workflow is to create a CI Build or Security stage to your pipeline
 
 3. Copy your scan results to the shared path. 
 
-<!-- 
-    There are two primary workflows to do this:
-
-    - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
-    - Copy results from a Wiz scan that ran outside the pipeline. 
-
-    For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
-
--->
-
 4. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to the stage and add the following settings.
 
 5. Review the [Important notes for Custom Scan steps
