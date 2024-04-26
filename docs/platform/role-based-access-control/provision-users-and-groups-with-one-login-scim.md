@@ -32,10 +32,6 @@ You must be an Administrator in your OneLogin account, and you must be an **Acco
 
 You need a Harness [API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
 
-import Scim from '/docs/platform/shared/use-scim.md'
-
-<Scim />
-
 ## Add the Harness app to OneLogin
 
 For more information, go to the OneLogin documentation on [Adding apps](https://www.onelogin.com/getting-started/free-trial-plan/add-apps-manual).

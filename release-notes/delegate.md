@@ -33,7 +33,9 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
+<Deleos />
 
 ## April 2024
 
