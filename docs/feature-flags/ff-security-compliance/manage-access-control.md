@@ -52,16 +52,16 @@ Here's a guide to creating a role or managing permissions for the Feature Flags 
 
 Feature flags is governed by the following permissions:
 
- **Create**: Enables users to create new feature flags.
- **Edit Config**: Enables users to edit existing configs.
- **Edit Rules**: Enables users to edit rules.
- **Toggle**: Enables users to toggle the feature flags on or off.
- **Delete**: Allows users to delete any targets.
+ * **Create**: Enables users to create new feature flags.
+ * **Edit Config**: Enables users to edit existing configs.
+ * **Edit Rules**: Enables users to edit rules.
+ * **Toggle**: Enables users to toggle the feature flags on or off.
+ * **Delete**: Allows users to delete any targets.
 
 Target Management is governed by the following permissions:
 
- **Create/Edit**: Enables users to create new targets and edit existing ones.
- **Delete**: Allows users to delete any targets.
+ * **Create/Edit**: Enables users to create new targets and edit existing ones.
+ * **Delete**: Allows users to delete any targets.
 
 For the Organization level, open the same account settings and proceed to **Organizations**. Choose your organization and under **Organization Level Access Control** and **Audit Trail**, select **Access Control**. Here, configure the roles and permissions at the organization level in a manner similar to the account level process.
 
@@ -76,7 +76,7 @@ Here's how you can create and manage resource groups for the Feature flags and T
  1. Navigate to **Account Settings > Access Control > Resource groups** within your Harness Account.
  2. Add a new resource group or select an existing one to modify.
  3. Set the "Resource Scope" accordingly if you are creating one.
- 4. Within the Resources, select **Feature Flags**, Proxy Keys**, or both if that's what you require.
+ 4. Within the Resources, select **Feature Flags**, **Proxy Keys**, or both if that's what you require.
 
 ## See also
 
