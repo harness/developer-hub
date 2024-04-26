@@ -13,11 +13,6 @@ This topic describes the different phases and steps involved in onboarding with 
 
 This section lists the major onboarding phases and provides links to more details.
 
-:::note
-
-Steps with an asterisk **"\*"** have YAML examples that can be used for setting up the step.
-
-:::
 
 ### <a href="#phase-1"> Phase 1: Initial setup</a>
 
