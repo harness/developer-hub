@@ -14,7 +14,7 @@ This topic walks you through the steps required to set up CCM for Azure in a sel
 
 The flow at a high level works very similar to our SaaS enviornment. We support syncing data from multiple Azure account exports residing in different source storage accounts into CCM via a destination storage account (staging).
 
-The goal of this particular documentation page is to set up an Azure Destination Storage Account and Application Registration, then configue an existing Harness SMP deployment to utilize these components to act as a "staging area" for future Azure CURs to be processed and made available for our Harness CCM capabilities.
+The goal of this particular documentation page is to set up an Azure Destination Storage Account and Application Registration, then configue an existing Harness SMP deployment to utilize these components to act as a "staging area" for future Azure Billing Exports to be processed and made available for our Harness CCM capabilities.
 
 **Figure: Azure CCM Self-Managed Documentation Goal**
 <DocImage path={require('./static/azure-smp-arch-initial-setup.jpeg')} title="Click to view full size image" />
@@ -388,11 +388,11 @@ Please ensure your Persistent Volumes related to TimescaleDB is at least 100Gi, 
 
 ## Next steps
 
-At this point, your "staging area" for future Microsoft Azure CUR reports is ready and we can follow our standard methodologies for onboarding these assets.
+At this point, your "staging area" for future Microsoft Azure Billing Exports is ready and we can follow our standard methodologies for onboarding these assets.
 
 **Figure: Azure CCM Self-Managed Documentation Next Steps**
 <DocImage path={require('./static/azure-smp-arch-next-steps.jpeg')} title="Click to view full size image" />
 
-- Use [Azure connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) to set up Azure CURs and push them to our configured destination storage account.
+- Use [Azure connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-azure) to set up Azure Billing Exports and push them to our configured destination storage account.
 - Use [Kubernetes connector setup](https://developer.harness.io/docs/cloud-cost-management/get-started/onboarding-guide/set-up-cost-visibility-for-kubernetes#create-ccm-connector) to expand visibility and reporting for Azure Kubernetes and other Kubernetes clusters hosted in Azure.
 
