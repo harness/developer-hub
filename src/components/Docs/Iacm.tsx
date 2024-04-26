@@ -5,8 +5,10 @@ import styles from "./styles.module.scss";
 import { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
 import { docsCards } from "./data/iacmData";
+import { useColorMode } from "@docusaurus/theme-common";
 
 export default function Iacm() {
+  const { colorMode } = useColorMode();
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
@@ -31,6 +33,16 @@ export default function Iacm() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>Manage your Infrastructure as Code End-to-End.</p>
+            <div className={styles.illustrationContainer}>
+              <img
+                className={styles.illustration}
+                src={
+                  colorMode === "light"
+                    ? `${baseUrl}img/iacm_landing.svg`
+                    : `` //`${baseUrl}img/iacm_landing_dark_mode.svg` to be added once created in Figma
+                }
+              />{" "}
+            </div>
           </div>
         </div>
       </div>
