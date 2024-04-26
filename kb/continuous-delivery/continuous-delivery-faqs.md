@@ -6929,11 +6929,11 @@ Both approaches will result in `key2` in the `my_map` variable being set to a `n
 #### Why am I getting an error that the input set does not exist in the selected Branch?
 This happens because pipelines and input sets need to exist in the same branch when storing them in Git. For example, if your pipeline exists in the `dev` branch but your input set exists in the `main` branch, then loading the pipeline in the `dev` branch and attempting to load the input set will cause this error. To fix this, please ensure that both the pipeline and input set exist in the same branch and same repository.
 
-#### How are the statistics on the continuous delivery overview page calculated?
+#### How are the statistics on the Continuous Delivery overview page calculated?
 
-The [continous delivery overview page](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#overview-and-services-dashboards) displays statistics for deloyments and services that can sometimes have numbers that seem unreasonable or incorrect. However, these numbers are correct and are generally caused by the time frame that the statistic is measured over. 
+The [Continous Celivery overview page](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#overview-and-services-dashboards) displays statistics for deployments and services that can sometimes seem unreasonable or incorrect. However, these numbers are correct and are generally caused by the time frame that the statistic is measured over. 
 
-For example, say that we have a statistic `failure rate` that is measured over a 30 period. Then we collect the following data:
+For example, say that we have a statistic `failure rate` that is measured over 30 days. Then we collect the following data:
 
 Days 0 - 30 `failure rate`: 5%
 Days 31 - 60 `failure rate`: 15%
@@ -6941,4 +6941,4 @@ Days 31 - 60 `failure rate`: 15%
 Then when displaying the `failure rate` for the last 30 days you would see `15%` and you would see that your `failure rate` increased by `300%`!
 So the statistic will have a red arrow pointing up marked as a `300%` increment in failure rate. 
 
-This value is not incorrect, but measures the change in rate. 
+This value accurately measures the change in the failure rate, from 5% to 15%. 
