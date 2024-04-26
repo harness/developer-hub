@@ -18,8 +18,6 @@ export default function Iacm() {
             <img width={64} src={`${baseUrl}img/iacm-icon.svg`} />
             <h1>Infrastructure as Code Management</h1>
           </div>
-          {/*
-            TODO: Re-add this when the release notes are added to the docs
             <div className={styles.btnContainer}>
               <Link href="/release-notes/infrastructure-as-code-management">
                 <button className={styles.btn}>
@@ -28,11 +26,11 @@ export default function Iacm() {
                 </button>
               </Link>
             </div>
-          */}
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
-            <p>Manage your Infrastructure as Code End-to-End.</p>
+            <p>Harness Infrastructure as Code allows you to define, deploy, and manage infrastructure across environments, ensuring compliance and control.
+            Key features include cost estimation, approval steps, PR automation, policy enforcement, and drift detection, which can integrate seamlessly with other Harness modules and third-party services, enhancing your DevOps lifecycle.</p>
             <div className={styles.illustrationContainer}>
               <img
                 className={styles.illustration}
