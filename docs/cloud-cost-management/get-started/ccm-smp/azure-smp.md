@@ -12,7 +12,7 @@ This topic walks you through the steps required to set up CCM for Azure in a sel
 **Figure: Azure CCM Self-Managed Enterprise Edition architecture diagram**
 <DocImage path={require('./static/azure-smp-arch.png')} title="Click to view full size image" />
 
-The flow at a high level works very similar to our SaaS enviornment. We support syncing data from multiple Azure account exports residing in different source storage accounts into CCM via a destination storage account (staging).
+The flow at a high level works similarly to our SaaS environment. We support syncing data from multiple Azure account exports residing in different source storage accounts into CCM via a destination storage account (staging).
 
 The goal of this particular documentation page is to set up an Azure Destination Storage Account and Application Registration, then configue an existing Harness SMP deployment to utilize these components to act as a "staging area" for future Azure Billing Exports to be processed and made available for our Harness CCM capabilities.
 
