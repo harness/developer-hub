@@ -52,6 +52,8 @@ Depending on your target environment, you'll need to update the `override.yaml` 
 
 ### Add a load balancer
 
+You can use either Istio or Nginx as your ingress controller based on your specific technical requirements. Harness Self-Managed Enterprise Edition integrates with your chosen solution, providing enhanced traffic management, security, and streamlined DevOps workflows.
+
 Use the following procedure to add a load balancer.
 
 <Tabs>
