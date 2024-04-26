@@ -267,8 +267,8 @@ const config = {
           {
             position: "right",
             html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav" id="signInBtn">Sign in</button></span>',
-            href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
-            className:"signInBtn"
+            href: "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io&timestamp=1",
+            
             
           },
           {
