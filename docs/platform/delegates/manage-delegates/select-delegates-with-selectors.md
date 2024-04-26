@@ -161,7 +161,7 @@ To define a delegate selector in a step as an expression:
    You can also select a built-in expression from the list Harness generates as you type.
    :::
 
-7. (Optional) Select **+Add** to enter additional expressions.
+7. (Optional) Select **Add** to enter additional expressions.
 8. (Optional) Select ***YAML** to view your updated pipeline YAML.
 9.  Select **Save**.
 
