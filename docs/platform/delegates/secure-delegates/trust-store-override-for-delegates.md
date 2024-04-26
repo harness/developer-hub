@@ -99,6 +99,7 @@ YSEY1QSteDwsOoBrp+uvFRTp2InBuThs4pFsiv9kuXclVzDAGySj4dzp30d8tbQk
 CAUw7C29C79Fv1C5qfPrmAESrciIxpg0X40KPMbp1ZWVbd4=
 -----END CERTIFICATE-----
 ```
+
 In this example, we'll name the file `DigiCertGlobalRootCA.pem`.
 
 Run the following command to create a truststore:
