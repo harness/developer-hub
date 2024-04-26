@@ -30,7 +30,6 @@ const config = {
     mermaid: true,
   },
   themes: ["@docusaurus/theme-mermaid"],
-
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "harness", // Usually your GitHub org/user name.
@@ -267,12 +266,14 @@ const config = {
 
           {
             position: "right",
-            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
+            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav" id="signInBtn">Sign in</button></span>',
             href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
+            className:"signInBtn"
+            
           },
           {
             position: "right",
-            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta"  id="signUpBtn">Sign Up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],
@@ -558,6 +559,7 @@ const config = {
   clientModules: [
     path.join(__dirname, "/client_module/searchBar"),
     path.join(__dirname, "/client_module/iframeEmbed"),
+    path.join(__dirname, "/client_module/auth"),
   ],
   // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
