@@ -23,10 +23,10 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 | **Step**                                                          | **Details**                                                                | **Demo video**                                                         |
 | ----------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| <a href="#step-1-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                                                                        |
-| <a href="#step-2-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                                                                        |
-| <a href="#step-3-review-use-cases">Review usecases</a>            | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
-| <a href="#step-4-setup-cost-visibility">Setup cost visibility</a> | Review use cases and success criteria against what is supported today      |                                                                        |
+| <a href="#step-1-review-use-cases">Review usecases</a>            | Review use cases and success criteria against what is supported today      |                                                                        |
+| <a href="#step-2-configure-sso">Configure SSO</a>                 | SAML SSO with Harness, Okta, OneLogin, Keycloak, etc                       |                                                                        |
+| <a href="#step-3-configure-rbac">Configure RBAC</a>               | Configure access control to restrict access                                |                                                                        |
+| <a href="#step-4-setup-cost-visibility">Setup cost visibility</a> | Create cloud connectors and kubernetes connectors for cost data visibility | <a href="https://youtu.be/sHvw0-6y6tU" target="_blank">Watch Video</a> |
 
 
 ### <a href="#phase-2"> Phase 2: Cost reporting</a>
@@ -64,19 +64,20 @@ Steps with an asterisk **"\*"** have YAML examples that can be used for setting 
 
 ## Phase 1: Initial setup
 
-### Step 1. Configure SSO
+### Step 1. Review usecases
+
+CCM supports AWS, GCP, and Azure cloud providers. It offers various features that cater to different cloud resources across these platforms. To confirm that your specific use case is fully supported by CCM, please refer to the [What's Supported in Harness CCM](docs/cloud-cost-management/whats-supported.md) section.
+
+
+### Step 2. Configure SSO
 
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. The user can choose between a variety of SSO integrations according to their needs.
 
 For more information, go to [Authentication](docs/platform/authentication/authentication-overview.md).
 
-### Step 2. Configure RBAC
+### Step 3. Configure RBAC
 
 CCM provides various set of RBAC permissions to control access to various entities. For more information go to [CCM Roles and Permissions](docs/cloud-cost-management/access-control/ccm-roles-and-permissions.md).
-
-### Step 3. Review usecases
-
-CCM supports AWS, GCP, and Azure cloud providers. It offers various features that cater to different cloud resources across these platforms. To confirm that your specific use case is fully supported by CCM, please refer to the [What's Supported in Harness CCM](docs/cloud-cost-management/whats-supported.md) section.
 
 ### Step 4. Setup cost visibility
 
