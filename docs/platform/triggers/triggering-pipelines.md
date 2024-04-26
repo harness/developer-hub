@@ -455,9 +455,9 @@ You can configure multiple triggers for the same pipeline. By scoping the action
 
 Leave out by the `synchronize` and `close` events from the event selection. These events cause both triggers to execute the pipeline.
 
-### Trigger creation failed due to incorrectly configured OAuth App integration
+### OAuth misconfiguration caused trigger creation failure
 
 When connecting to Git, if your organization has enabled OAuth App access restrictions, then you might receive an error like `Although you appear to have the correct authorization credentials, <your-org> organization has enabled OAuth App access restrictions, meaning that data access to third-parties is limited`. 
 
-If you recieve this error, then that likely means you have not integrated [OAuth with Git Experience](/docs/platform/git-experience/oauth-integration) on the Harness side.
-For more on the Git Experience at Harness go to [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview).
+If you receive this error, it likely means you have not integrated [OAuth with Git Experience](/docs/platform/git-experience/oauth-integration) in Harness.
+For more information, go to [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview).
