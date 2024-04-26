@@ -22,12 +22,15 @@ The standard workflow is to create a CI Build or Security stage to your pipeline
 
 3. Copy your scan results to the shared path. 
 
+<!-- 
     There are two primary workflows to do this:
 
     - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
     - Copy results from a Wiz scan that ran outside the pipeline. 
 
     For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+
+-->
 
 4. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to the stage and add the following settings.
 
@@ -140,7 +143,7 @@ import CustomScanFailOnSeverity from './shared/custom-scan/_fail-on-severity.md'
 
 ## YAML pipeline example
 
-The following pipeline example shows a simple ingestion workflow. The Run step installs the `jf` cli, scans a local image, and saves the results to `/shared/scan_results/xray2.json`. The Custom Scan step then ingests the results.
+The following pipeline example shows a simple ingestion workflow. The Run step downloads a results file to `/shared/scan_results/xray2.json`. The Custom Scan step then ingests the file.
 
 For information about running scans using XRay, go to the JFrog documentation.  
 
@@ -149,7 +152,7 @@ For information about running scans using XRay, go to the JFrog documentation.
 pipeline:
   name: xray_ingest_example
   identifier: xray_ingest_example
-  projectIdentifier: dbothwellstosandbox
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   properties:
@@ -178,26 +181,19 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: Run_1
-                  identifier: Run_1
+                  name: pull_from_s3
+                  identifier: pull_from_s3
                   spec:
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR_ID
+                    image: amazon/aws-cli
                     shell: Sh
-                    command: |-
-                      # 
-                      # 1. Install the jf CLI
-                      # 
-                      # https://docs.jfrog-applications.jfrog.io/jfrog-applications/jfrog-cli/install
-                      # curl -fL "https://install-cli.jfrog.io" | sh; jf setup <+secrets.getValue("YOUR_JF_INSTALL_KEY")>
-
-                      # 2. Scan a local image, save the results to a shared folder
-                      # https://docs.jfrog-applications.jfrog.io/jfrog-applications/jfrog-cli/cli-for-jfrog-security/authentication
-                      # https://docs.jfrog-applications.jfrog.io/jfrog-applications/jfrog-cli/cli-for-jfrog-security/scan-your-binaries
-                      # jf docker scan --format json YOUR_REPO/YOUR_IMAGE:YOUR_TAG \
-                      #   --url="YOUR_JFROG_XRAY_URL" \
-                      #   --username="YOUR_JFROG_USERNAME" \
-                      #   --password="<+secrets.getValue("YOUR_JFROG_PASSWORD")>" \
-                      #    > /shared/scan_results/xray2.json 
-
+                    command: aws s3api get-object --bucket my-xray-scan-results --key YOUR_RESULTS_FILE /shared/scan_results/YOUR_RESULTS_FILE
+                    envVariables:
+                      AWS_ACCESS_KEY_ID: <+secrets.getValue("YOUR_AWS_ACCESS_KEY")>
+                      AWS_SECRET_ACCESS_KEY: <+secrets.getValue("YOUR_SECRET_ACCESS_KEY")>
+                      AWS_DEFAULT_REGION: us-east-1
+                  when:
+                    stageStatus: Success
               - step:
                   type: Security
                   name: custom_scan_xray
@@ -211,7 +207,7 @@ pipeline:
                       product_config_name: default
                       target_name: YOUR_REPO/YOUR_IMAGE
                       target_variant: YOUR_TAG
-                      ingestion_file: /shared/scan_results/xray2.json
+                      ingestion_file: /shared/scan_results/YOUR_RESULTS_FILE
           sharedPaths:
             - /shared/scan_results/
 
