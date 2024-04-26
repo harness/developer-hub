@@ -186,14 +186,14 @@ When selecting the connector to use to pull images, Harness follows this hierarc
 1. Check for a connector specified at the stage level, such as when [pulling Harness images from a private registry](#pull-harness-images-from-a-private-registry) or [using credentials to pull Harness images for specific stages](#use-credentials-to-pull-harness-images-for-specific-stages).
 2. If there is no stage-level connector, use the account-level Harness Image connector (ID: `account.harnessImage`), which can use the default anonymous access configuration or you can configure it to [always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
 
-## Deprecation notice: app.harness Docker registry
+## End of life notice: app.harness Docker registry
 
-[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 May 2024.
+[Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci) are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 Feb 2024. The registry end point will be end of life on 15 May 2024.
 
-The deprecation could impact you if:
+The end of life could impact you if:
 
 * Your built-in Harness Docker connector (`account.harnessImage`) is configured to use the `app.harness` Docker registry. To avoid errors when the deprecation takes place, modify the target image registry by following the steps in [Configure Harness to always use credentials to pull Harness images](#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
+* You [pull Harness images from a private registry](#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors post end of life, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness) or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
 * You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
 
 ## Troubleshoot Harness images
