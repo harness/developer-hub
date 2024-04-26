@@ -4,7 +4,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0",
     "build": "export NODE_OPTIONS=--max-old-space-size=7096 && docusaurus build",
@@ -32,7 +31,9 @@
     "@docusaurus/theme-mermaid": "3.2.1",
     "@docusaurus/theme-search-algolia": "3.2.1",
     "@mdx-js/react": "^3.0.0",
+    "@netlify/functions": "^2.6.0",
     "clsx": "^2.0.0",
+    "cookie": "^0.6.0",
     "docusaurus-plugin-sass": "^0.2.5",
     "fs-extra": "^11.2.0",
     "lottie-react": "^2.4.0",
@@ -43,6 +44,7 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.21.1",
     "sass": "^1.69.5",
+    "serverless-http": "^3.2.0",
     "update-notifier": "^7.0.0"
   },
   "devDependencies": {

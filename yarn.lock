@@ -1526,7 +1526,7 @@
     "@docusaurus/theme-search-algolia" "3.2.1"
     "@docusaurus/types" "3.2.1"
 
-"@docusaurus/react-loadable@5.5.2", "react-loadable@npm:@docusaurus/react-loadable@5.5.2":
+"@docusaurus/react-loadable@5.5.2":
   version "5.5.2"
   resolved "https://registry.npmjs.org/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz"
   integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
@@ -1855,6 +1855,26 @@
   integrity sha512-9ZrPIU4MGf6et1m1ov3zKf+q9+deetI51zprKB1D/z3NOb+rUxxtEl3mCjW5wTGh6VhRdwPueh1oRzi6ezkA8A==
   dependencies:
     "@types/mdx" "^2.0.0"
+
+"@netlify/functions@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@netlify/functions/-/functions-2.6.0.tgz#801a6fe8ceef2ce1512c637a28e53e6a3aae289b"
+  integrity sha512-vU20tij0fb4nRGACqb+5SQvKd50JYyTyEhQetCMHdakcJFzjLDivvRR16u1G2Oy4A7xNAtGJF1uz8reeOtTVcQ==
+  dependencies:
+    "@netlify/serverless-functions-api" "1.14.0"
+
+"@netlify/node-cookies@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@netlify/node-cookies/-/node-cookies-0.1.0.tgz#dda912ba618527695cf519fafa221c5e6777c612"
+  integrity sha512-OAs1xG+FfLX0LoRASpqzVntVV/RpYkgpI0VrUnw2u0Q1qiZUzcPffxRK8HF3gc4GjuhG5ahOEMJ9bswBiZPq0g==
+
+"@netlify/serverless-functions-api@1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@netlify/serverless-functions-api/-/serverless-functions-api-1.14.0.tgz#2bedff76cf898e24e48161aa2508776c4d261ed1"
+  integrity sha512-HUNETLNvNiC2J+SB/YuRwJA9+agPrc0azSoWVk8H85GC+YE114hcS5JW+dstpKwVerp2xILE3vNWN7IMXP5Q5Q==
+  dependencies:
+    "@netlify/node-cookies" "^0.1.0"
+    urlpattern-polyfill "8.0.2"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3415,6 +3435,11 @@ cookie-signature@1.0.6:
 cookie@0.6.0:
   version "0.6.0"
   resolved "https://registry.npmjs.org/cookie/-/cookie-0.6.0.tgz"
+  integrity sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==
+
+cookie@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.6.0.tgz#2798b04b071b0ecbff0dbb62a505a8efa4e19051"
   integrity sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==
 
 copy-text-to-clipboard@^3.2.0:
@@ -8441,6 +8466,14 @@ react-loadable-ssr-addon-v5-slorber@^1.0.1:
   dependencies:
     "@babel/runtime" "^7.10.3"
 
+"react-loadable@npm:@docusaurus/react-loadable@5.5.2":
+  version "5.5.2"
+  resolved "https://registry.npmjs.org/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz"
+  integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
+  dependencies:
+    "@types/react" "*"
+    prop-types "^15.6.2"
+
 react-modal@^3.16.1:
   version "3.16.1"
   resolved "https://registry.npmjs.org/react-modal/-/react-modal-3.16.1.tgz"
@@ -9054,6 +9087,11 @@ serve-static@1.15.0:
     escape-html "~1.0.3"
     parseurl "~1.3.3"
     send "0.18.0"
+
+serverless-http@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/serverless-http/-/serverless-http-3.2.0.tgz#68acc7735f7c876733c04f038ee20f31f5ebfc9b"
+  integrity sha512-QvSyZXljRLIGqwcJ4xsKJXwkZnAVkse1OajepxfjkBXV0BMvRS5R546Z4kCBI8IygDzkQY0foNPC/rnipaE9pQ==
 
 set-function-length@^1.2.1:
   version "1.2.2"
@@ -9849,6 +9887,11 @@ url-loader@^4.1.1:
     loader-utils "^2.0.0"
     mime-types "^2.1.27"
     schema-utils "^3.0.0"
+
+urlpattern-polyfill@8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/urlpattern-polyfill/-/urlpattern-polyfill-8.0.2.tgz#99f096e35eff8bf4b5a2aa7d58a1523d6ebc7ce5"
+  integrity sha512-Qp95D4TPJl1kC9SKigDcqgyM2VDVO4RiJc2d4qe5GrYm+zbIQCWWKAFaJNQ4BhdFeDGwBmAxqJBwWSJDb9T3BQ==
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
