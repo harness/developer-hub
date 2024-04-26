@@ -53,7 +53,7 @@ For information about user-defined variables, including naming conventions, spec
 
 ### Deployment environment expressions
 
-In Harness CD, environments represent your deployment targets (such as QA, Prod, and so on). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, and so on. You can use expressions to reference environment values, such as `<+env.name>`, in a service's Values YAML file, specs, and config files, for example.
+In Harness CD, environments represent your deployment targets (such as QA, Prod, and so on). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, and so on. You can use expressions to reference environment values, such as `<+env.name>`, in a service's Values YAML file, specs, and config files, for example:
 
 * `<+env.name>`: The name of the environment used in the current stage.
 * `<+env.identifier>`: The [entity identifier](../references/entity-identifier-reference.md) of the environment used in the current stage.
@@ -101,7 +101,7 @@ These expressions refer to deployment infrastructure configurations. Infrastruct
 
 `<+INFRA_KEY>` references the infrastructure key, which is a unique string that identifies a deployment target infrastructure.
 
-The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer` and set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
+The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer`, and a set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
 `<+INFRA_KEY_SHORT_ID>` is a shortened form of `<+INFRA_KEY>`. The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key.
 
@@ -158,7 +158,7 @@ repeat:
   items: <+stage.output.hosts>
 ```
 
-When you use an instance expression in your pipeline, such as in a **Shell Script** step, Harness applies the script to all target instances. You do not have to loop through instances in your script.
+When you use an instance expression in your pipeline, such as in a **Shell Script** step, Harness applies the script to all target instances. You do not need to loop through instances in your script.
 
 For examples, go to [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/run-a-script-on-multiple-target-instances).
 
@@ -445,7 +445,7 @@ For more information and examples, go to [Pull an Image from a Private Registry 
 
 #### Rollback artifacts
 
-You can use the syntax, `<+rollbackArtifact.ARTIFACT_DEFINITION_ID>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment.
+You can use the syntax `<+rollbackArtifact.ARTIFACT_DEFINITION_ID>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment.
 
 Harness pulls rollback artifact information from last successful deployment. If there's no previous successful deployment, then rollback artifact expressions resolve to `null`.
 
