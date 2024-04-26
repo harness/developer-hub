@@ -362,7 +362,7 @@ kubectl edit secret nextgen-ce -n <namespace>
 ```
 AZURE_APP_CLIENT_SECRET: "<base64 of clientSecret>"
 ```
-After these secrets are implemented, please `kubectl delete` the `nextgen` pods for this release to start a newly configured pod.
+After these secrets are implemented, please `kubectl delete` the `nextgen-ce` pods for this release to start a newly configured pod.
 
 The following are some secrets from platform-service that you need to update:
 
@@ -380,7 +380,7 @@ SMTP_PORT: <base64 of SMTP_PORT>
 SMTP_USE_SSL: <base64 of SMTP_USE_SSL>
 SMTP_USERNAME: <base64 of SMTP_USERNAME>
 ```
-After these secrets are implemented, please `kubectl delete` any pods related to `platform-service` for this release to start newly configured pods.
+After these secrets are implemented, please `kubectl delete` any pods related to `platform-service` and `batch-processing` for this release to start newly configured pods.
 
 :::info
 Please ensure your Persistent Volumes related to TimescaleDB is at least 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. These volumes are critical for capabilities like Recommendations and Anomalies within CCM.
