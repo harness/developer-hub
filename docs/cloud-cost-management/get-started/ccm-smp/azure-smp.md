@@ -19,7 +19,7 @@ The goal of this particular documentation page is to set up an Azure Destination
 **Figure: Azure CCM Self-Managed Documentation Goal**
 <DocImage path={require('./static/azure-smp-arch-initial-setup.jpeg')} title="Click to view full size image" />
 
-This goal will consist of four tasks. For Step 1, 2 and 3 please sign in to your [Azure Portal](https://portal.azure.com/#home): 
+This goal consists of four tasks. For steps 1, 2, and 3 sign in to your [Azure Portal](https://portal.azure.com/#home): 
 
 1. [Setup a new Application via App Registration](#setup-a-new-application-via-app-registration).
 2. [Create a new Client secret](#create-a-new-client-secret).
