@@ -26,6 +26,10 @@ You must be an Administrator in your Microsoft Entra ID account, and you must be
 
 You need a Harness [API key and unexpired token](/docs/platform/automation/api/add-and-manage-api-keys) that has all **Users** and **User Groups** [permissions](/docs/platform/automation/api/api-permissions-reference). API keys inherit permissions from the user they are associated with. If you use an API key for a [service account](./add-and-manage-service-account.md), make sure the service account has all **Users** and **User Groups** permissions.
 
+import Scim from '/docs/platform/shared/use-scim.md'
+
+<Scim />
+
 ## Add Harness in Microsoft Entra ID
 
 In Microsoft Entra ID, add Harness to your list of managed SaaS applications from the Microsoft Entra ID [Application Gallery](https://learn.microsoft.com/en-us/azure/active-directory/manage-apps/overview-application-gallery).
