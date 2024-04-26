@@ -31,7 +31,7 @@ In line with the custom roles and permissions, Role Based Access Control (RBAC) 
 
 Harness Feature Flags includes built-in roles for you to manage RBAC within the module. To examine the permissions assigned to these roles:
 
- 1. Select **Account Settings**, and then select **Access Control** along the top of the page, or by scrolling down.
+ 1. At the account level scope, you can view the roles by selecting **Account Settings**, and then selecting **Access Control** along the top of the page, or by scrolling down.
  2. To view a role at the organization scope, go to **Organizations** and select the relevant organization. On the left hand side, select **Organization Settings**, and then select Access Control.
  3. Lastly, to view a role at the project scope, go to **Projects** and select the relevant project.  On the left hand panel, select **Project Settings** and then select **Access Control** in the header or by scrolling down the page.
 
