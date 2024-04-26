@@ -27,7 +27,7 @@ This goal consists of four tasks. For steps 1, 2, and 3 sign in to your [Azure P
 4. [Deploy workloads via Helm charts](#deploy-workloads-via-helm-charts).
 
 :::info
-There are several times where we will ask you to note some items as suggested `variables`, please keep these values handy in a document or note of your choice as they will be used later in the process.
+There are several times when you'll need to note some items as suggested `variables`. Keep these values in a document or note as they will be used later in the process.
 :::
    
 ## Setup a new Application via App Registration
