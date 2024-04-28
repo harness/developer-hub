@@ -6942,3 +6942,19 @@ Then when displaying the `failure rate` for the last 30 days you would see `15%`
 So the statistic will have a red arrow pointing up marked as a `300%` increment in failure rate. 
 
 This value accurately measures the change in the failure rate, from 5% to 15%. 
+
+#### How do I reference a parent Step Group's variable without using it's ID in the Harness Expression?
+
+You can refer to a parent stepGroup's variable by using the `.getParentStepGroup` expression. For example, if you have a variable `var1` in the parent step group you can reference it like so `<+stepGroup.getParentStepGroup.variables.var1>`
+
+#### Why am I getting the error "Host information is missing in Command Step"?
+```
+Invalid argument(s): Host information is missing in Command Step. Please make sure the looping strategy (repeat) is provided.
+```
+If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, please set the `Repeat` looping strategy for the Command step. For more information on the Command Step and the supported looping strategies, please visit the Harness Documentation - [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm)
+
+#### How does the Encrypt json output setting work in the Terraform Apply stage?
+This setting will temporarily create a secret that stores the Terraform output JSON. The secret will be created using the Harness Secret Manager provider and will be available for use during the pipeline execution. The secret is then deleted at the end of the execution. More information on this can be found in the Harness documentation - [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs)
+
+#### How do I retrieve encrypted Terraform Output data from a Terraform Apply stage?
+To retrieve encrypted Terraform Output data, find the `TF_JSON_OUTPUT_ENCRYPTED` output variable and reference it using a Harness Expression. For example, `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`. The value will be encrypted in the Harness UI but, the values will be available in downstream steps and stages. More information on this can be found in the Harness documentation - [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs)
