@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Apply step
+title: Kubernetes Patch step
 description: Make changes to specific workloads in a Kubernetes cluster without affecting other fields.
 sidebar_position: 7
 ---
