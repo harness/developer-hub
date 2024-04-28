@@ -143,7 +143,7 @@ The following merge strategy types are supported for the Patch step.
     nginx-deployment-7c99566855-f2s2c:    redis:latest,
     ```
     
-    Now, if you reapply the `nginx_patch.yaml` mentioned in the **Strategic Merge Path** option, you will get nginx containers with Redis:  
+    Now, if you reapply the `nginx_patch.yaml` mentioned in the **Strategic** option, you will get nginx containers with Redis:  
 
     
     ```
