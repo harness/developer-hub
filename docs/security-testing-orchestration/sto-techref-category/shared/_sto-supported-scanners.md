@@ -11,7 +11,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
         <th>Commercial</th>
     </tr>
     <tr>
-        <td valign="top">SAST</td>
+        <td valign="top">SAST</td> 
         <td valign="top">
          	<ul>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
@@ -24,7 +24,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
         	</ul>
         </td>
-        <td valign="top">
+        <td valign="top"> 
         	<ul>
           		<li>
                 <a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> 
@@ -48,7 +48,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
      </td>
    </tr>
     <tr>
-        <td valign="top">SCA</td>
+        <td valign="top">SCA</td> 
         <td valign="top">
          	<ul>
              <li><a href="/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference">Open Source Vulnerabilities (OSV)</a> Orchestration, Ingestion </li>
@@ -67,16 +67,17 @@ If you use a scanner that isn't listed in the following table, you can still ing
      </td>
    </tr>
           <tr>
-        <td valign="top">Secrets</td>
+        <td valign="top">Secrets</td> 
         <td valign="top">
           <ul>
+            <li></li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference">Aqua Trivy (_Containers_)</a> Orchestration, Ingestion  </li>            
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks (_SAST_)</a>  Orchestration, Ingestion </li>
           </ul>
         </td>
-        <td valign="top">
+        <td valign="top"> 
          	<ul>                      
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (_DAST_)</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (_SAST_)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode (_SAST/SCA_) </a> Orchestration, Extraction, Ingestion </li>
           </ul>
      </td>
@@ -90,7 +91,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
-        <td valign="top">
+        <td valign="top"> 
         	<ul>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a> Extraction, Ingestion</li> 
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference">Burp Enterprise</a> Orchestration, Extraction, Ingestion</li>
@@ -106,7 +107,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
      </td>
    </tr>
     <tr>
-        <td valign="top">Container Images</td>
+        <td valign="top">Container Images</td> 
         <td valign="top">
          	<ul>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
@@ -114,7 +115,7 @@ If you use a scanner that isn't listed in the following table, you can still ing
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
-        <td valign="top">
+        <td valign="top"> 
         	<ul>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference">Anchore Enterprise</a> Orchestration, Extraction, Ingestion </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/aquasec-scanner-reference">Aqua Security</a> Orchestration, Ingestion </li>
