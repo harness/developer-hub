@@ -16,9 +16,14 @@ Here're some of the advantages of using a Patch step in your Kubernetes deployme
 - Concurrency: Since patch operations only modify specific fields of a resource, they can be performed concurrently with other operations on the same resource without the risk of conflicts or race conditions.
 - Compatibility: The patch command is compatible with various Kubernetes client libraries and API versions, allowing you to perform updates programmatically from different environments and programming languages.
 
+## Prerequisites
+
+- This feature is currently behind the feature flag, `CDS_K8S_PATCH_STEP_NG`. Contact [Harness support](mailto:support@harness.io) to enable it.
+- This feature requires Harness Delegate version 828xx or later.
+  
 ## Limitations
 
-You will not be able to rollback your deployment with patched resources. Rolling back will only rollback your original deployment. 
+- You will not be able to roll back your deployment with patched resources. Rolling back will only rollback your original deployment. 
 
 ## Adding a Patch step
 
