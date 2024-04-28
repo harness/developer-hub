@@ -6958,3 +6958,37 @@ This setting will temporarily create a secret that stores the Terraform output J
 
 #### How do I retrieve encrypted Terraform Output data from a Terraform Apply stage?
 To retrieve encrypted Terraform Output data, find the `TF_JSON_OUTPUT_ENCRYPTED` output variable and reference it using a Harness Expression. For example, `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`. The value will be encrypted in the Harness UI but, the values will be available in downstream steps and stages. More information on this can be found in the Harness documentation - [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs)
+
+#### How do I setup TLS in GitOps Agent?
+To setup TLS in the GitOps Agent, mount the certificates onto the Agent deployment
+```
+containers:
+  volumeMounts:
+  - mountPath: /path/to/cert
+    name: your-tls-cert-volume
+volumes:
+- name: your-tls-cert-volume
+  configMap:
+    name: your-tls-cert-configMap
+    defaultMode: 420
+```
+
+Next, set the `SSL_CERT_FILE` environment variable in the Agent deployment manifest
+```
+containers:
+- command:
+    - /app/agent
+  name: gitops-agent
+  image: harness/gitops-agent:v0.72.0
+  imagePullPolicy: Always
+  env:
+    - SSL_CERT_FILE: "/path/to/cert/crt.pem"
+```
+
+This environment variable will tell the Agent to look at the file specified in the given path. In this example the Agent will look at `/path/to/cert/cert/crt.pem` and use it for TLS.
+
+#### Why am I getting an invalid request when trying to get the deployment status of a pipeline?
+```
+Invalid request: Trigger event history doesn't exist for event with eventId 123456789012345678012346 Exception occurred: Trigger event history doesn't exist for event with eventId 123456789012345678012346
+```
+If you are receiving the above error even after you've confirmed that the pipeline was triggered, it's possible that you triggered the API to lookup the status of the deployment faster than when the deployment actually happened. To fix this, please add a `sleep` to your script or wait a few seconds before using the API to ensure ample time for the pipeline's status to register and be querried.
