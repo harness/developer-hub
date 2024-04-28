@@ -6992,3 +6992,18 @@ This environment variable will tell the Agent to look at the file specified in t
 Invalid request: Trigger event history doesn't exist for event with eventId 123456789012345678012346 Exception occurred: Trigger event history doesn't exist for event with eventId 123456789012345678012346
 ```
 If you are receiving the above error even after you've confirmed that the pipeline was triggered, it's possible that you triggered the API to lookup the status of the deployment faster than when the deployment actually happened. To fix this, please add a `sleep` to your script or wait a few seconds before using the API to ensure ample time for the pipeline's status to register and be querried.
+
+#### How to find the workspace name used in a pipeline execution and print out the value at run time?
+
+To get the workspace name used in a pipeline execution, you can use the following expression `<+pipeline.stages.$STAGE_ID.spec.execution.steps.$STEP_ID.spec.workspace>`.
+
+#### When a Shell Script step is run on a delegate in a Custom stage, what is the environment that it is run within? As in, what is the current working directory it uses?
+
+The default directory that the Shell Script steps run in is `/tmp` and is removed after the step finishes it's execution.
+
+#### Why am I getting a Forbidden error in the Harness Console?
+```
+INFO 3/15/2024, 1:56:45 PM Starting job to create pod harness-pod-1234567 on harness namespace
+ERROR 3/15/2024, 1:56:45 PM failed to watch pod event: Forbidden
+```
+This error occurs if the Delegate doesn't have `get` permssions for pod events. To fix this, please review the Role/ClusterRole bound to the Delegate's Service Account and ensure that the proper permissions are specified. More information about our recommendation for Delegate Role Based Access Control in Kubernetes can be found in the Harness Documentation - [Deploy using a custom role](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#deploy-using-a-custom-role)
