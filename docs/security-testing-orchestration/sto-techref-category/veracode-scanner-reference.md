@@ -14,28 +14,25 @@ Veracode is a popular tool for scanning code repositories for security issues an
 
 ## Important notes for running Veracode scans in STO 
 
-* Before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications.  
-For specific requirements, got to the [Veracode docs](https://docs.veracode.com) and search for *Veracode Packaging Requirements*.
-* You also need access credentials so that STO can communicate with your Veracode instance. Harness recommends using API keys, not usernames and passwords, for your Veracode integrations  
-For instructions, go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*.  
-Harness recommends you create [text secrets](/docs/platform/secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("my-secret")>`.
+- Before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications.  
+
+  For specific requirements, go to the [Veracode docs](https://docs.veracode.com) and search for *Veracode Packaging Requirements*.
+
+- You also need access credentials so that STO can communicate with your Veracode instance. Harness recommends using API keys, not usernames and passwords, for your Veracode integrations  
+
+  For instructions, go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*.  
+
+- Harness recommends you create [text secrets](/docs/platform/secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("my-secret")>`.
+
 <!-- invalid links: The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) and [Veracode - Activate Scenario](https://community.harness.io/t/veracode-activate-scenario/1067) blog posts include useful information about how to ingest Veracode scan results into Harness. -->
 
-### Root access requirements 
+## Workflow description
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
+import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
 
-<StoRootRequirements />
+<StoLegacyWorkflow />
 
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-## Custom Scan step settings for Tenable scans in STO
+## Custom Scan step settings for Veracode scans
 
 The recommended workflow is to add a Custom Scan step to a Security or Build stage and then configure it as described below.
 

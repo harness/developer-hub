@@ -6,13 +6,11 @@ sidebar_position: 400
 ---
 
 
-You can scan your application instances and ingest results from Tenable.
+You can scan your application instances and ingest results from Tenable. The following steps describe the workflow. 
 
-## For more information
+import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
+<StoLegacyWorkflow />
 
 
 ## Custom Scan step settings for Tenable scans in STO

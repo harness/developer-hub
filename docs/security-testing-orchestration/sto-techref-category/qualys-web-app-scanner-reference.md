@@ -5,16 +5,11 @@ sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
 sidebar_position: 320
 ---
 
-You can ingest scan results from Qualys Web Application Scanning (WAS) into STO.
+You can ingest your application scan results from Qualys Web Application Scanning (WAS) into STO. The following steps describe the workflow.
 
+import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
-## For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
+<StoLegacyWorkflowIngestOnly />
 
 
 ## Custom Scan step settings for Qualys scans in STO

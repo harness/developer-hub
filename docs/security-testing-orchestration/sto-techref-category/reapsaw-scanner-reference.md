@@ -5,13 +5,11 @@ sidebar_label: Reapsaw scanner reference scanner reference
 sidebar_position: 340
 ---
 
-You can ingest scan results for your code repositories from Reapsaw.
+You can ingest scan results for your code repositories from Reapsaw. The following steps describe the workflow.
 
-## For more information
+import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
+<StoLegacyWorkflowIngestOnly />
 
 
 ## Custom Scan step settings for Reapsaw scans in STO

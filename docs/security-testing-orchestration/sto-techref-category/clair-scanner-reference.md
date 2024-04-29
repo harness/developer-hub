@@ -5,20 +5,14 @@ sidebar_label: Clair scanner reference
 sidebar_position: 110
 ---
 
-You can scan container images using [Clair](https://github.com/quay/clair), an open-source project for the static analysis of vulnerabilities in application containers. 
+You can scan container images and ingest results from [Clair](https://github.com/quay/clair). The following steps describe the workflow. 
 
-To set up a Clair scan:
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-1. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to a Build or Security stage.
-
-2. Review the [Important notes for Custom Scan steps](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and relevant information.
-
-   If you're using Kubernetes or Docker build infrastructure, add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to the stage. 
-
-2. Add the following `key:value` pairs to **Settings**.
+<StoLegacyWorkflow />
 
 
-## Custom Scan step settings for Clair scans in STO
+## Custom Scan step settings for Clair
 
 ### Scanner settings
 
@@ -42,7 +36,7 @@ product_name
 ##### Value
 
 ```yaml
-docker-content-trust
+clair
 ```
 
 #### Scan type
@@ -85,7 +79,7 @@ ingestionOnly
 
 #### Product config name
 
-Required for most scanner integrations. 
+Required for orchestration scans. 
 
 ##### Key
 ```

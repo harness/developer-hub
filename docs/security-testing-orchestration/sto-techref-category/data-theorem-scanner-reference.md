@@ -5,37 +5,14 @@ sidebar_label: Data Theorem scanner reference
 sidebar_position: 140
 ---
 
-You can run repository scans and ingest results from Data Theorem.
+You can extract and ingest scan results for your code repositories from [Data Theorem](https://www.datatheorem.com/). The following steps describe the workflow. 
+
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+
+<StoLegacyWorkflow />
 
 
-## Important notes for running Data Theorem scans in STO
-
-
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-## Custom Scan step settings for Data Theorem scans in STO
+## Custom Scan step settings for Data Theorem scans
 
 ### Scanner settings
 
@@ -45,7 +22,6 @@ These settings are required for most scanners. For more information, go to the r
 - [Scan type](#scan-type)
 - [Policy type](#policy-type)
 - [Product config name](#product-config-name)
-
 
 
 #### Product name
@@ -118,6 +94,13 @@ default
 import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
+
+
+### Code repository
+
+import StoLegacyCodeRepository  from './shared/custom-scan/_repo.md';
+
+<StoLegacyCodeRepository />
 
 <!-- 
 ### Data Theorem scan settings

@@ -5,17 +5,11 @@ sidebar_label: HCL AppScan scanner reference
 sidebar_position: 215
 ---
 
-You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan).
+You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan). The following steps describe the workflow. 
 
-The standard workflow is to add a Custom Scan step to your Build or Security stage and configure it as described below.
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-
-## For more information
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
-
+<StoLegacyWorkflow />
 
 ## Custom Scan step settings for HCL AppScan scans in STO
 

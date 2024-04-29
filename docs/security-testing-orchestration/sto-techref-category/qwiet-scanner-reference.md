@@ -5,13 +5,11 @@ sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
 sidebar_position: 330
 ---
 
-You can scan your code repositories and ingest results from Qwiet.
+You can scan your code repositories and ingest results from Qwiet. The following steps describe the workflow.
 
-## For more information
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
+<StoLegacyWorkflow />
 
 
 ## Custom Scan step settings for Qwiet scans in STO

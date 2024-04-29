@@ -5,36 +5,14 @@ sidebar_label: Docker Content Trust (DCT) scanner reference
 sidebar_position: 150
 ---
 
-You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/).
+You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/). The following steps describe the workflow.
 
-## Important notes for running Docker Content Trust scans in STO
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+<StoLegacyWorkflow />
 
 
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-## Custom Scan step settings for Docker Content Trust scans in STO
+## Custom Scan step settings for Docker Content Trust
 
 ### Scanner settings
 

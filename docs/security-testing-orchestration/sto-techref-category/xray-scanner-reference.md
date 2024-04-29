@@ -6,36 +6,21 @@ sidebar_position: 420
 ---
 
 
-You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.
+You can ingest scan results from JFrog Xray. The following steps describe the workflow. 
 
-The standard workflow is to create a CI Build or Security stage to your pipeline, add a Security Test step, and then use `setting:value` pairs to configure the step as specified below.
+import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
-:::note
-- Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
-:::
+<StoLegacyWorkflowIngestOnly />
 
-## Workflow description
+#### Required settings
 
-1. Add a CI Build or Security stage to your pipeline.
-	
-2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
-
-3. Copy your scan results to the shared path. 
-
-4. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step to the stage and add the following settings.
-
-5. Review the [Important notes for Custom Scan steps
-](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and information.
-
-6. Add the following settings to the Custom Scan step. 
-
-    1. [Product name](#product-name)
-    1. [Scan type](#scan-type)
-    1. [Policy type](#policy-type)
-    1. [Product config name](#product-config-name)
-    1. [Target and variant](#target-and-variant)
-    1. [Ingestion file](#ingestion-file)
-    1. [Fail on severity](#fail-on-severity)
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+- [Target and variant](#target-and-variant)
+- [Ingestion file](#ingestion-file)
+- [Fail on severity](#fail-on-severity)
 
 <details>
 
@@ -61,7 +46,7 @@ The standard workflow is to create a CI Build or Security stage to your pipeline
 </details>
 
 
-## Custom Scan step settings for JFrog XRay scans in STO
+## Custom Scan step settings for JFrog XRay
 
 ### Scanner settings 
 

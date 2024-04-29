@@ -7,13 +7,13 @@ sidebar_position: 250
 
 You can scan your code repositories and ingest results from Nexus IQ.
 
-## For more information
+To set up a Nexus IQ scan:
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-<StoMoreInfo />
+<StoLegacyWorkflow />
 
-## Custom Scan step settings for Nexus scans in STO
+## Custom Scan step settings for Nexus scans
 
 ### Scanner settings
 
@@ -138,14 +138,12 @@ product_domain
 
 The URL of your NexusIQ instance.
 
-
-
-
 #### Product access Id
 
 The scanner name. Required for all Custom Scan steps. 
 
 ##### Key
+
 ```
 product_access_id
 ```
@@ -155,11 +153,10 @@ product_access_id
 The password used to log in to the NexusIQ UI.
 
 
-
 #### Product access token
 
-
 ##### Key
+
 ```
 product_access_token
 ```

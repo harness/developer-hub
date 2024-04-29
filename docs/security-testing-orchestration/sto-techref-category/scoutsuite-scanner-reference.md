@@ -5,13 +5,12 @@ sidebar_label: ScoutSuite scanner reference
 sidebar_position: 350
 ---
 
-You can ingest configuration scan results from ScoutSuite.
+You can ingest configuration scan results from ScoutSuite. The following steps describe the workflow. 
 
-## For more information
+import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+<StoLegacyWorkflow />
 
-<StoMoreInfo />
 
 ## Custom Scan step settings for ScoutSuite scans in STO
 

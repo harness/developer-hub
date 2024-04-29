@@ -7,11 +7,12 @@ sidebar_position: 240
 
 You can scan your application instances and ingest results from Nessus.
 
-## For more information
+To set up a Nessus scan:
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-<StoMoreInfo />
+<StoLegacyWorkflow />
+
 
 ## Custom Scan step settings for Nessus scans in STO
 
@@ -68,7 +69,6 @@ policy_type
 
 ##### Value
 
-`Must be one of the following. For supported values, go to the relevant scanner reference.`
 
 ```
 orchestratedScan
@@ -80,7 +80,6 @@ ingestionOnly
 
 #### Product config name
 
-Required for most scanner integrations. 
 
 ##### Key
 ```

@@ -5,32 +5,15 @@ sidebar_label: Fortify Static Code Analyzer scanner reference
 sidebar_position: 170
 ---
 
-You can ingest repository scan results from Fortify.
+You can ingest repository scan results from Fortify. The following steps describe the workflow. 
 
-## Important notes for running Fortify scans in STO
+import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+<StoLegacyWorkflowIngestOnly />
 
 
-<StoRootRequirements />
+## Custom Scan step settings for Fortify scans
 
-
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-
-## Custom Scan step settings for Fortify scans in STO
-
-### Scanner settings
 
 ### Scanner settings
 
@@ -42,12 +25,12 @@ These settings are required for most scanners. For more information, go to the r
 - [Product config name](#product-config-name)
 
 
-
 #### Product name
 
 The scanner name. Required for all Custom Scan steps. 
 
 ##### Key
+
 ```
 product_name
 ```
@@ -69,8 +52,6 @@ scan_type
 
 ##### Value
 
-Must be one of the following. For supported values, go to the relevant scanner reference.
-
 ```
 repository
 ```
@@ -78,7 +59,6 @@ repository
 
 #### Policy type
 
-The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
 
 ##### Key
 ```

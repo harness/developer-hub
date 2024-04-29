@@ -5,16 +5,15 @@ sidebar_label: OpenVAS scanner reference
 sidebar_position: 280
 ---
 
-You can ingest application-instance scan results from OpenVAS.
+You can scan your applications and ingest scan results from OpenVAS. The following steps describe the workflow. 
 
-## For more information
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
+<StoLegacyWorkflow />
 
 
-## Custom Scan step settings for OpenVAS scans in STO
+
+## Custom Scan step settings for OpenVAS scans
 
 ### Scanner settings
 
@@ -63,13 +62,12 @@ instance
 The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
 
 ##### Key
+
 ```
 policy_type
 ```
 
 ##### Value
-
-
 
 ```
 orchestratedScan
@@ -80,7 +78,6 @@ ingestionOnly
 
 
 #### Product config name
-
 
 
 ##### Key
@@ -163,13 +160,15 @@ product_app_id
 product_access_token
 ```
 
-### Instance
 
+
+### Instance
 
 import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
-
 <StoLegacyInstance />
+
+
 
 ### Ingestion file
 

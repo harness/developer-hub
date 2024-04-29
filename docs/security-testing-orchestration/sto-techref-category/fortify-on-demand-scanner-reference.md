@@ -5,31 +5,13 @@ sidebar_label: Fortify on Demand scanner reference
 sidebar_position: 180
 ---
 
-You can scan repositories and ingest scan results from  Fortify on Demand.
+You can scan repositories and ingest scan results from  Fortify on Demand. The following steps describe the workflow. 
 
-## Important notes for running Fortify on Demand scans in STO
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+<StoLegacyWorkflow />
 
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-### For more information
-
-
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-
-<StoMoreInfo />
-
-## Custom Scan step settings for Fortify on Demand scans in STO
+## Custom Scan step settings for Fortify on Demand
 
 ### Scanner settings
 

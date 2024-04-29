@@ -7,13 +7,11 @@ sidebar_position: 230
 
 You can scan your application instances and ingest results from Metasploit.
 
+To set up a Metasploit scan:
 
-## For more information
+import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
-<StoMoreInfo />
-
+<StoLegacyWorkflow />
 
 ## Custom Scan step settings for Metasploit scans in STO
 
@@ -79,8 +77,6 @@ ingestionOnly
 
 #### Product config name
 
-Required for most scanner integrations. 
-
 ##### Key
 ```
 product_config_name
@@ -88,7 +84,7 @@ product_config_name
 
 ##### Value
 
-Specify one of the following.
+Specify one of the following if you're setting up orchestration scan.
 
 Brute-force test a host for SSH weak ssh/pass:
 
@@ -134,7 +130,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 ### Instance scan settings
 
 
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
 
 <StoLegacyInstance />
