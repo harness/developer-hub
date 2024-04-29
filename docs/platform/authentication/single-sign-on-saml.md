@@ -38,7 +38,7 @@ If you provision users and groups via SCIM API, use the following settings for y
 - **SCIM connector base URL:** `https://app.harness.io/gateway/ng/api/scim/account/<YOUR_ACCOUNT_ID`
    - Replace `YOUR_ACCOUNT_ID` with your Harness account ID.
    The URL depends on the Harness production cluster you use: Prod1: `https://app.harness.io`, Prod2: `https://app.harness.io/gratis`, or Prod3: `https://app3.harness.io`.
-- **Unique identifier:** field for users: `userName`
+- **Unique identifier:** `userName`
 - **Authentication Mode:** HTTP Header
 - **Authorization:** `<YOUR_SERVICE_ACCOUNT_TOKEN>`
 
@@ -46,7 +46,7 @@ You must also do the following:
 
 - Enable provisioning to Harness.
 - Assign your user groups.
-- Push your groups.
+- Push your groups to Harness.
 
 ## SAML SSO with Harness
 
