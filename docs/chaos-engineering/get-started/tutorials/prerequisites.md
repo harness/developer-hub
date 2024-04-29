@@ -6,7 +6,7 @@ redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/prerequisites
 ---
 
-This section describes the requirements, such as chaos infrastructure and project-level permissions required to execute chaos experiments on your target environments.
+This section describes the requirements and project-level permissions required to execute chaos experiments on your target environments.
 
 - Prepare yourself with the right permissions (`Chaos Resources Role Permissions` in `Access Control`).
 - Prepare yourself with the right permissions on the cloud account or the Kubernetes cluster or the VM (Kube RBAC, IAM Roles).
