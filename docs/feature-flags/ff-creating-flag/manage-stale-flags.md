@@ -17,7 +17,6 @@ Stale flags are flags that are no longer needed as the change behind them has be
 To help manage your flags, here are the definitions of the different flag states:
 
  - Potentially Stale: 
- -- Any flag that meets any of these criteria (these are ORs, not ANDs)
  -- Has been disabled for more than 60 days 
  -- Is enabled but has not received any new targeting rules or rule updates or default rule changes for more than 60 days
  -- Is enabled but has not received any evaluations for more than 60 days
@@ -68,6 +67,7 @@ At this time, the following languages are supported for flag cleanup automation:
  - Java
  - Kotlin
  - Go
+ - Javascript
 
 ## Setting up a Flag Cleanup Pipeline
 
