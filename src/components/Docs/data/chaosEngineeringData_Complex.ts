@@ -91,13 +91,6 @@ import { MODULES } from "@site/src/constants"
             "Execute Cloud Foundry chaos faults",
           link: "/docs/chaos-engineering/chaos-faults/cloud-foundry/",
         },
-         {
-          title: "Security faults",
-          module: MODULES.ce,
-          description:
-            "Execute security chaos faults",
-          link: "/docs/chaos-engineering/chaos-faults/security-chaos/",
-        },
   ],
 },
 ];

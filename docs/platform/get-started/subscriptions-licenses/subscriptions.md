@@ -35,7 +35,7 @@ The following Harness modules are directly involved in a developer's day-to-day 
 - **Code Repository (CODE):** All users with permission to access Harness CODE module are considered CODE Developers and consume a license.
 - **Continuous Integration (CI):** All users with permission to access Harness CI module are considered CI Developers and consume a license.
 - **Internal Developer Portal (IDP):** All users with permissions to access Harness IDP module are considered IDP Developers and consume a license.
-- **Software Engineering Insights (SEI):** All users read from a configured SCM or Issue Management tool are considered SEI Developers and consume a license.
+- **Software Engineering Insights (SEI):** All users read from a configured SCM (Source Code Management) tool are considered SEI Developers and consume a license.
 
 ### Modules with no direct developer tracking (consumption entitlements)
 
@@ -53,7 +53,7 @@ CD deploys software services onto infrastructure platforms spanning traditional 
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
 - A VM in the traditional VM-based apps.
-- Six serverless functions in serverless environments.
+- Five serverless functions in serverless environments.
 
 CD tracks **Service** license consumption instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
@@ -76,7 +76,7 @@ SRM helps manage SLOs/SLIs for various services in an R&D organization. A **Serv
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
 - A VM in the traditional VM-based apps.
-- Six serverless functions in serverless environments.
+- Five serverless functions in serverless environments.
 
 SRM tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 
@@ -90,7 +90,7 @@ CE helps run chaos experiments across various services in an R&D organization, t
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
 - A VM in the traditional VM-based apps.
-- Six serverless functions in serverless environments.
+- Five serverless functions in serverless environments.
 
 CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 

@@ -52,6 +52,8 @@ Depending on your target environment, you'll need to update the `override.yaml` 
 
 ### Add a load balancer
 
+You can use either Istio or Nginx as your ingress controller based on your specific technical requirements. Harness Self-Managed Enterprise Edition integrates with your chosen solution, providing enhanced traffic management, security, and streamlined DevOps workflows.
+
 Use the following procedure to add a load balancer.
 
 <Tabs>
@@ -180,6 +182,14 @@ db.accounts.find()
 EOF
 kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'
 kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
+```
+
+##### Example command
+
+The example command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace, `abc123` account ID, and `http://smp.harnessurl.com` subdomain URL.
+
+```
+./configure-vanity-url.sh mynamespace abc123 http://smp.harnessurl.com
 ```
 
 ### Deploy Harness modules
