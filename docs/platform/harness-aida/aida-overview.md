@@ -8,7 +8,7 @@ The Harness Platform leverages Harness AI Development Assistant (AIDA:tm:) to re
 
 ## Enable AIDA
 
-To enable module-specific AIDA features in your Harness account, go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.
+To enable module-specific AIDA features in your Harness account, go to **Account Settings**, select **Account Resources** (if in Nav 1.0, Nav 2.0 **Account Resources** is deprecated), select **Default Settings**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.
 
 ## AIDA features
 
