@@ -6,7 +6,7 @@ sidebar_position: 7
 
 This topic describes the settings for the Kubernetes Patch step.
 
-The Patch step allows you to make changes to specific workloads in a Kubernetes cluster without affecting other fields. This step prevents downtime by making specific changes to the deployed service YAML. 
+The Patch step allows you to make changes to specific resources or workloads in a Kubernetes cluster without affecting other fields. This step prevents downtime by making specific changes to the deployed service YAML. 
 
 Here're some of the advantages of using a Patch step in your Kubernetes deployments:  
 
@@ -37,7 +37,7 @@ Name of the step.
 
 ### Workload
 
-Specify the workload to which you want to make changes. 
+Specify the resource or workload to which you want to make changes in the format, `[namespace/]Kind/Name`. 
 
 ### Merge Strategy Type
 
