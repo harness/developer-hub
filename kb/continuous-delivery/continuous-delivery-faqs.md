@@ -6982,7 +6982,7 @@ Go to [Manage Harness environments and infrastructures from Git](https://develop
 
 #### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?
 
-Yes, our current capability includes support for Google Cloud Platform (GCP) and Amazon Web Services (AWS) in terms of OIDC integration.
+Yes, we currently support OIDC integration for [Google Cloud Platform (GCP)(https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#use-openid-connect-oidc) and [Amazon Web Services (AWS)](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
 Within the next three months, we aim to further enhance this support, facilitating authentication, short-lived token acquisition based on Harness context, and various operational tasks like deployment, builds, or secret retrieval within the respective cloud provider environments.
 GCP integration and AWS integration is currently available for utilization.
 Please refer to Harness documentation for more info on: [GCP Connectors with OIDC](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#use-openid-connect-oidc) and [AWS Connector with OIDC](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials)
