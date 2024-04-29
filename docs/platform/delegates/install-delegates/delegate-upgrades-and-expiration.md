@@ -16,7 +16,7 @@ The automatic upgrade feature is enabled by default for the Kubernetes manifest 
 
 ## How automatic upgrade works in the Kubernetes manifest
 
-The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:23.03.78314`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
+The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:yy.mm.verno`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
 
 To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
 
@@ -274,14 +274,14 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     {
     "metaData": {},
     "resource": {
-        "latestSupportedVersion": "23.04.78910",
-        "latestSupportedMinimalVersion": "23.04.78910.minimal"
+        "latestSupportedVersion": "24.04.82804",
+        "latestSupportedMinimalVersion": "24.04.82804.minimal"
     },
     "responseMessages": []
     }
     ```
 
-    When the `upgrader` makes a request, it tries to change the image to `harness/delegate:23.04.78910`. You can take either the `harness/delegate:23.04.78910` image or the `harness/delegate:23.04.78910.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:23.04.78910`.
+    When the `upgrader` makes a request, it tries to change the image to `harness/delegate:24.04.82804`. You can take either the `harness/delegate:24.04.82804` image or the `harness/delegate:24.04.82804.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:24.04.82804`.
 
 2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
 
@@ -295,12 +295,12 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     ```json
     {
     "metaData": {},
-    "resource": "Updated Delegate image tag to artifactory-abc/harness/delegate:23.04.78910",
+    "resource": "Updated Delegate image tag to artifactory-abc/harness/delegate:24.04.82804",
     "responseMessages": []
     }
     ```
 
-    The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:23.04.78910` image.
+    The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:24.04.82804` image.
 
 ## Delegate expiration policy
 

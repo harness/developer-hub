@@ -462,7 +462,7 @@ export default function CertificationsCI() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     spt.module === "ci" && spt.cardType === "SPT" ||
