@@ -227,7 +227,7 @@ No. AIDA does not offer Rest APIs to be used by Harness users.
 
 ### How can I export all AutoStopping rules?
 
-Currently, Harness doesn't support direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, we recommend using the `List AutoStopping Rules` API method.
+Currently, Harness doesn't support direct functionality for exporting all AutoStopping rules. To create a report of all your AutoStopping rules, Harness recommends using the `List AutoStopping Rules` API method.
 
 ### How can CCM Admin roles be removed from users who were directly assigned these roles?
 
