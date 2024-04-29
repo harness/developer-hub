@@ -6972,7 +6972,7 @@ deny[msg] {
 ```
 You can always update the template versions manually. Go to [Reconcile Pipeline Templates](https://developer.harness.io/docs/platform/templates/reconcile-pipeline-templates/) for more information. 
 
-#### How can one effectively manage remote environments and infrastructures within Harness-SMP?
+#### How can one effectively manage remote environments and infrastructures within Harness SMP?
 
 To enable remote environments and infrastructures in your Service Management Platform (SMP), follow these implementation guidelines:
 
