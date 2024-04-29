@@ -2602,9 +2602,6 @@ You can manage 2FA in two ways:
 
 To check whether 2FA is enabled for your user account, select your User Profile. You can toggle the **Two-Factor Authentication** indicator. For more information, go to [Two-factor authentication](/docs/platform/authentication/two-factor-authentication/).
 
-
-the user profile to check and confirm. This can be enabled on the user level and can differ from other user settings.
-
 ### Does Harness Support ever have write access to our account?
 
 No, Harness never has write access to your account.
