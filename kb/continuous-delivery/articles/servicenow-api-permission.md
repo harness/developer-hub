@@ -38,7 +38,6 @@ This flow requires the Harness app to be installed in ServiceNow, so that it hel
 
 This is supported only for change request ticket types.
 
-Harness uses custom script APIs to create a ticket using form template.
 Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
 
 ## Update ServiceNow tickets 
@@ -67,7 +66,7 @@ Required permission: `itil`.
 ### Update a ServiceNow ticket from templates
 
 Harness uses custom script to call ServiceNow APIs to update a ticket from templates.
-Required permission: `x_harne_harness_ap.integration_user_role`.
+Required permission: `itil_admin`, `x_harne_harness_ap.integration_user_role`.
 
 ## ServiceNow Approval step
 
@@ -95,7 +94,7 @@ Required permission: `itil`.
 
 3. **How do you debug an ACL error?**
 
-   Assume that the integration user has all above mentioned roles for specific use cases.
+   Assuming that the integration user has all above mentioned roles for specific use cases.
 
    1. Identify the user or integration that Harness used as a connector. This could be a specific user, system account, or an integration like an API. 
    2. ServiceNow uses Access Control Lists (ACLs) to control what data a user can access and what they can do with that data. Check the ACLs for the table to which you are trying to insert/update. For example, Incident.
