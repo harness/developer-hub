@@ -7000,7 +7000,7 @@ Go to [Code coverage in Harness CI](https://developer.harness.io/docs/continuous
 #### Does the `/rebase` command functional when used from the PR comment?
 
 Yes, Harness supports the `/rebase` command from PR comments.
-If encountering a failure, please verify that there are no conflicts present in the git branch being utilized.
+If encountering a failure, verify that there are no conflicts present in the git branch being utilized.
 Go to [Git Repository Merge PRs](https://developer.harness.io/docs/code-repository/pull-requests/merge-pr/) for more information.
 
 #### Does Harness support storing the Terraform Plan on the Harness Delegate temporarily?
