@@ -157,7 +157,7 @@ The following table provides rough estimates of potential resource requirements 
 * **Description:** Optional text string.
 * **Tags:** Optional [tags](../../../references/tags-reference.md).
 
-### Use the Credentials of a Specific Harness Delegate
+### Use the credentials of a specific Harness Delegate
 
 Harness recommends using delegate credentials when possible. This is the simplest method to connect to a Kubernetes cluster, if it is appropriate for your configuration.
 
@@ -172,7 +172,7 @@ It is possible to create a connector with a non-existent delegate. This behavior
 
 :::
 
-### Specify Master URL and Credentials
+### Specify master URL and credentials
 
 This is an alternative to using delegate credentials. It can be required for certain configurations that aren't compatible with inheriting delegate credentials.
 
@@ -193,7 +193,7 @@ This is because, when the Kubernetes cluster connector is set to inherit delegat
 
 :::
 
-#### Username and Password
+#### Username and password
 
 Harness doesn't recommend basic (username and password) authentication, and it is disabled for some connectors.
 
@@ -210,48 +210,11 @@ Provide the credentials for the *cluster*, not the *platform*.
 * **Username:** Username for the Kubernetes cluster. For example, `admin` or `john@example.com`. You enter plaintext or use a Harness [Encrypted Text secret](../../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 * **Password:** Password for the Kubernetes cluster, such as a basic authentication password. You must select or create a Harness [Encrypted Text secret](../../../../first-gen/firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 
-#### Service Account
+#### Service account
 
 Select or create a Harness encrypted text secret containing the decoded service account token for the service account. The secret must contain the decoded token for the connector to function correctly. The service account doesn't have to be associated with a delegate.
 
-<details>
-<summary>Generate service account token with TokenRequest</summary>
-
-In Kubernetes version 1.24 and later, service account token secrets are no longer automatically generated. Instead, you can use the `TokenRequest` subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the `TokenRequest` subresource:
-
-1. Create a `TokenRequest` manifest. Write a YAML or JSON manifest that describes the `TokenRequest` object. The manifest should specify the namespace and name of the `ServiceAccount` for which you want to obtain a token. Here's an example `TokenRequest` manifest:
-
-   ```yaml
-   apiVersion: authentication.k8s.io/v1
-   kind: TokenRequest
-   metadata:
-     name: my-token-request
-   spec:
-     audiences:
-       - api
-     expirationSeconds: 3600
-   ```
-
-   In this example, the `audiences` field specifies the intended audience of the token, which is set to `api`. The `expirationSeconds` field determines the token's validity period (in this case, `3600` seconds or one hour).
-
-2. Apply the `TokenRequest`. Use the kubectl command-line tool to apply the `TokenRequest` manifest to the Kubernetes cluster:
-
-   ```
-   kubectl apply -f token-request.yaml
-   ```
-
-3. Retrieve the token. After applying the `TokenRequest`, a `TokenRequest` object is created in the cluster. You can retrieve the token using the following command:
-
-   ```
-   kubectl get tokenrequest my-token-request -o jsonpath='{.status.token}' | base64
-   ```
-
-4. Paste the token into a Harness encrypted text secret and then use that secret for the connector's **Service Account Token**.
-
-</details>
-
-<details>
-<summary>Obtain the Service Account token using kubectl</summary>
+##### Obtain the service account token using kubectl
 
 To use a Kubernetes Service Account (SA) and token, you need to use either an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
 
@@ -259,7 +222,7 @@ For example:
 
 1. Create a manifest. This manifest creates a new SA named `harness-service-account` in the `default` namespace:
 
-   ```
+   ```yaml
    # harness-service-account.yml
    apiVersion: v1
    kind: ServiceAccount
@@ -276,7 +239,7 @@ For example:
 
 3. Grant the SA the `cluster-admin` permission.
 
-   ```
+   ```yaml
    # harness-clusterrolebinding.yml
    apiVersion: rbac.authorization.k8s.io/v1beta1
    kind: ClusterRoleBinding
@@ -319,12 +282,13 @@ The Kubernetes SA token isn't automatically generated for SAs provisioned under 
 You can use the following kubectl command to create a SA bound token:
 
 ```
-kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
+kubectl describe sa K8s-cluster-connector -n kube-system
+kubectl -n kube-system get secret K8s-cluster-connector-secret -o jsonpath='{.data.token}' | base64 --decode
 ```
 
 You can also create SAs using manifests, for example:
 
-```
+```yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -344,8 +308,6 @@ metadata:
 For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
 
 :::
-
-</details>
 
 #### OpenID Connect
 
@@ -423,3 +385,4 @@ Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 - The Kubernetes containers must be OpenShift-compatible containers. If you're already using OpenShift, then this is already configured. Be aware that OpenShift can't deploy any Kubernetes container. You can get OpenShift images from the public repos at [https://hub.docker.com/u/openshift](https://hub.docker.com/u/openshift) and [https://access.redhat.com/containers](https://access.redhat.com/containers).
 - Useful documentation for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/) and [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 - You need the following permissions on Secret, Pod, and Event to run Harness CI builds in an OpenShift cluster: `create`, `get`, `list`, `watch`, `update`, `delete`
+
