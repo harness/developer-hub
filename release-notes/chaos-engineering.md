@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-04-24T10:00
+date: 2024-05-01T10:00
 sidebar_position: 5
 ---
 
@@ -20,6 +20,20 @@ The release notes describe recent changes to Harness Chaos Engineering.
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## May 2024
+
+## Version 1.36.2
+
+#### Fixed issues
+
+- Fixed an issue where accounts that started with an underscore could not execute a Linux chaos experiment. (CHAOS-5185)
+
+- Fixed an issue where a chaos experiment failed when the probe (legacy) names of the chaos faults were the same. (CHAOS-5064)
+
+- Fixed an issue where editing the SLO probe evaluation window resulted in an `Internal server error`. (CHAOS-5022)
+
+- Fixed an issue in the UI where chaos experiments with the toggle option to enable (or disable) cloud secret was enabled automatically after saving the experiment. (CHAOS-4987)
 
 ## April 2024
 
