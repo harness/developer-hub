@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-04-30T10:00
+date: 2024-04-29T10:00
 sidebar_position: 10
 ---
 
@@ -36,9 +36,9 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
-### Version 1.25.x
+### Version 1.25.0
 
-<!-- xx April 2024 -->
+<!-- 29 April 2024 -->
 
 #### Fixed issues
 
