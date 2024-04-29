@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-04-23:T10:00:15
+date: 2024-04-29:T10:00:15
 sidebar_position: 8
 ---
 
@@ -46,6 +46,12 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 </details>
 
 ## April 2024
+
+### Version 1.35.4
+
+#### Fixed issues
+
+-The fetch tag to fetch the repository for the Artifactory repository type expired after 90000 milliseconds. This timeout occurred because the fetch task has a hardcoded timeout limit of 90000 milliseconds. This issue is fixed now. Earlier, while fetching the repositories for Artifactory, to fetch the package type Harness made API calls to each repository to get the package type. With this change, if the API response has package type, we avoid the extra API call. (CDS-95485, ZD-60868)
 
 ### Version 1.34.2
 
