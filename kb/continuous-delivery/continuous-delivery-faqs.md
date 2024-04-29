@@ -6987,7 +6987,7 @@ Within the next three months, we aim to further enhance this support, facilitati
 
 #### Does Harness enforce any policy that denies the fetching of the latest tag of an image, as indicated by the error message : `admission webhook: <webhook-name> denied the request. Validation error: An image tag is required. rule require-image-tag failed at path`?
 
-Harness does not enforce any policy regarding fetching the latest tag of images.
+Harness does not enforce any policy regarding fetching the latest image tags.
 To debug this error, consider the following implementations:
 - Ensure the correct image tag is specified in the YAML configuration.
 - For more details, go to [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/).
