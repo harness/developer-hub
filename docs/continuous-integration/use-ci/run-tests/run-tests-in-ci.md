@@ -9,7 +9,7 @@ redirect_from:
 
 You can run all types of tests in CI pipeline, including integration tests, functional tests, mutation tests, unit tests, and more.
 
-To run tests in CI pipelines, you can use **Run** steps or **Run Intelligent Tests** steps (also known as **Test** steps).
+To run tests in CI pipelines, you can use **Run** steps or **Test Intelligence** steps (also known as **Test** steps).
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

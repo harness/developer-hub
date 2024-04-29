@@ -46,7 +46,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 <!-- #### Early access features --->
 
-<!-- Use the new [**Test** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing and Test Intelligence. Currently, this step supports Python, Ruby, Java, Kotlin, and Scala. This step will eventually fully replace the deprecated **Run Tests** step. -->
+<!-- Use the new [**Test** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing and Test Intelligence. Currently, this step supports Python, Ruby, and Java. This step will eventually fully replace the deprecated **Run Tests** step. -->
 
 <!-- #### Deprecations and removals -->
 

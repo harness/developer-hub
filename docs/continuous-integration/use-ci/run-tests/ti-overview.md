@@ -63,9 +63,9 @@ Using TI doesn't require you to change your build and test processes.
 <Tabs>
 <TabItem value="testv2" label="Test step" default>
 
-You can [use the **Test** step](./tests-v2.md) to run unit tests with or without TI on Python, Ruby, Java, Kotlin, and Scala codebases.
+You can [use the **Test** step](./tests-v2.md) to run unit tests with or without TI on Python, Ruby, and Java codebases.
 
-To use TI on a C# codebase, you must use the [deprecated Run Tests step](./tests-v1/ti-for-csharp.md) until the **Test** step supports this language.
+To use TI on a C#, Kotlin, or Scala codebase, you must use the [deprecated Run Tests step](./tests-v1/ti-for-csharp.md) until the **Test** step supports this language.
 
 For unsupported code bases, you can use [Run steps](../run-step-settings.md) to run unit tests.
 

@@ -12,10 +12,10 @@ Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If 
 
 :::
 
-You can use the **Run Intelligent Tests** step, also known as the **Test** step, to run unit tests with or without [Test Intelligence](./ti-overview.md) on Python, Ruby, Java, Kotlin, and Scala codebases.
+You can use the **Test Intelligence** step, also known as the **Test** step, to run unit tests with or without [Test Intelligence](./ti-overview.md) on Python, Ruby, and Java codebases.
 
-<!-- Doesn't include C# yet. -->
-<!-- Doesn't include java error tracking. -->
+<!-- Doesn't include C#, Kotlin, or Scala yet. -->
+<!-- Will not include java error tracking (deprecated). -->
 
 ## Configure the Test step
 
@@ -29,7 +29,6 @@ Add the **Test** step to the [Build stage](/docs/continuous-integration/use-ci/s
                   spec:
                     command: mvn test  # Required. All other settings are optional.
                     shell: sh # Optional shell type.
-                    parallelism : 4 # Enable test splitting.
                     connectorRef: account.harnessImage # Container registry connector.
                     image: repo/image # Container image to use to run the commands.
                     privileged: false
@@ -39,13 +38,7 @@ Add the **Test** step to the [Build stage](/docs/continuous-integration/use-ci/s
                     reports: # Test report path.
                       - "**/*.xml"
                     envVariables:
-                      aaa: "ddd"
-                      bbb: "ccc"
-                    outputVariables:
-                      - name: o1
-                      - name: o2
-                    imagePullPolicy: Always
-                    runAsUser: "2"
+                      MAVEN_OPTS: "-Djansi.force=true"
 ```
 
 ### Metadata
@@ -90,13 +83,19 @@ Use these fields to define the commands that you need to run in this step.
 
 For **Shell**, select the shell type. If the step includes commands that aren't supported for the selected shell type, the step fails. Required binaries must be available on the build infrastructure or through a specified [Container Registry and Image](#container-registry-and-image). The default shell type, if unspecified, is `Sh`.
 
-In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
+In the **Command** field, enter commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
 :::info
 
-Harness has a built-in environment variable named `JAVA_TOOL_OPTIONS`.
+Harness uses a built-in environment variable named `JAVA_TOOL_OPTIONS`.
 
 You can *append* additional settings to this value, but **do not override the default value**.
+
+:::
+
+:::info
+
+Incremental builds don't work for Bazel if you give the entire repo in the **Command**. All modules are built for Bazel.
 
 :::
 
