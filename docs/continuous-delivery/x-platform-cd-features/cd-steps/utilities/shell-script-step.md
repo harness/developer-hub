@@ -766,7 +766,7 @@ kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.names
 ```
 
 :::info note
-The export ``KUBECONFIG` is only needed if the delegate is not installed in the target cluster. If your delegate is already installed in the target cluster, you can skip adding this export to your shell script.
+You need not export ``KUBECONFIG` to your shell script if you've already installed delegate on the target cluster.
 :::
 
 The step might look like this:
