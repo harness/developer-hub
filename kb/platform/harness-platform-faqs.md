@@ -2934,3 +2934,25 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
+### I tried to login with SSO It tells me my account is not enabled for SSO. I have a demo account that was created ages ago with the same email address.
+
+You can follow below steps:
+```
+Login to https://app.harness.io/auth/#/signin using your username and password.
+If you have forgotten the password, please use the reset password option and try logging in with your username and password.
+After logging in, it should take you to your demo account. Use the switch option, and it should ask for SSO and set the account as default. Next time, you should be able to use the SSO option.
+https://developer.harness.io/docs/platform/authentication/switch-account/
+```
+
+### I am getting asked for 2FA although for other users, it's not asking.
+
+Please check if 2FA is enabled on your user level; navigate to the user profile to check and confirm. This can be enabled on the user level and can differ from other user settings.
+
+### What is the base image of the Harness delegate?
+
+Delegate has a base image: RedHat Universal Base Image (redhat/ubi8). 
+
+### dnf or yum is not working on harness delegate.
+
+You can try using microdnf as the delegate has RHEL based image and by default, we do not ship dnf or apt.
+
