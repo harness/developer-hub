@@ -765,6 +765,10 @@ export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
 kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.namespace> -o jsonpath='{.items[?(@.spec.selector.matchLabels.harness\.io/color=="'$(kubectl get service/<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName> -n <+infra.namespace> -o jsonpath='{.spec.selector.harness\.io/color}')'")].metadata.name}') --replicas=0
 ```
 
+:::info note
+The export ``KUBECONFIG` is only needed if the delegate is not installed in the target cluster. If your delegate is already installed in the target cluster, you can skip adding this export to your shell script.
+:::
+
 The step might look like this:
 
 ```
