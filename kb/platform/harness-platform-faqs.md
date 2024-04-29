@@ -8,7 +8,7 @@ sidebar_position: 2
 
 Contributor Guidelines
 
-Before you add new content, please search for existing FAQs to avoid duplications.
+Before you add new content, search for existing FAQs to avoid duplications.
 
 Ensure that your contributions are organized according to the following categories:
 
@@ -195,10 +195,7 @@ Yes, for more information, go to:
 
 ### Can you link the docs to the API endpoint used to authorize a user with API token?
 
-We have only one API for access check either if you perform Authorization using Bearer Token or Api key token.
-
-- [documentation 1](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList)
-- For API tokens categories: Service Account v/s Personal access tokens, please refer to understand it. [documentation 2](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/).
+Harness has an API to to check whether you perform Authorization using bearer token or API key token. For more information, go to [Get access control list](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList) in the API documentation. For API token categories: Service Account vs. Personal access tokens, go to [Add and mange API keys](/docs/platform/automation/api/add-and-manage-api-keys/).
 
 ### How can I set my API key to expire in 24 hours?
 
@@ -445,7 +442,7 @@ SCIM in Harness is primarily used for user provisioning and de-provisioning. It 
 
 ### What happens if a user's email domain changes and the user is provisioned via SCIM in Harness?
 
-Harness will automaticaly detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
+Harness will automatically detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
 
 ### How do I sync LDAP groups manually if the linked user group isn't syncing?
 
@@ -454,6 +451,15 @@ You can Navigate to Authentication tab and go to LDAP setting and try Synchroniz
 ### I'm trying to link a SSO group. Why don't I see the option for my user group?
 
 Confirm that group authorization is enabled for the configured SAML setup.
+
+### Why does my demo account receive a "SSO not enabled" message when attempting to sign in via SSO?? 
+
+To verify whether your account has SSO enabled, do the following:
+
+1. Sign in to `https://app.harness.io/auth/#/signin` with your username and password.
+   If you have forgotten your password, use the reset password option. After you log in, you can access your demo account.
+2. Use the switch option. For more information, go to [Switch account](/docs/platform/authentication/switch-account/). Harness will prompt you for for SSO.
+3. Set the account as the default. The next time you sign in, you can use the SSO option.
 
 ### How do I capture SAML Tracer information?
 
@@ -546,7 +552,7 @@ It can be enabled by scanning the QR code sent in the email or using the secret 
 
 For more information, go to [Set up two-factor authentication](https://developer.harness.io/docs/platform/authentication/two-factor-authentication/#set-up-two-factor-authentication) and [Reset two-factor authentication](https://developer.harness.io/docs/platform/authentication/two-factor-authentication/#reset-two-factor-authentication).
 
-### How can I disable 2FA for a user? 
+### How can I disable 2FA for a user?
 
 Currently there is no easy way for Harness to disable the 2FA for a user. The user can disable 2FA in their profile if they lost access to the auth app. The user must reach out to their account admin and ask them to resend the 2fa code. Then the user can reset the 2FA auth app, sign in to the account, and disable 2FA from their profile.
 
@@ -694,7 +700,7 @@ Go to the [AWS documentation on SMTP credentials](https://docs.aws.amazon.com/se
 
 ### Create Connector API seems to not work for orgs and failing with the error INVALID_IDENTIFIER_REF while trying to create a vault connector.
 
-Please check and confirm if the token used here is proper and you are using the org or account prefix before passing the secret reference.
+Confirm that the token is correct and that you're using the org or account prefix before passing the secret reference.
 
 ### Are trial accounts able to use the GitHub connector to attach their GitHub account?
 
@@ -735,6 +741,10 @@ It's important to note that sensitive data, such as secrets, are not directly se
 ### Does Harness have account-level delegates?
 
 Yes, we offer account-level delegates. You can create them by navigating to **Account Settings** > **Account Resources** > **Delegates**.
+
+### What is the base image of the Harness Delegate?
+
+Harness Delegate is a Red Hat Enterprise Linux (RHEL)-based image. A Windows-based image is not available. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 ### Does the DELEGATE_RESOURCE_THRESHOLD check the memory threshold on the request resource or limit resources of the delegate pod?
 
@@ -1204,6 +1214,10 @@ For more information, go to [Delegate sizes](https://developer.harness.io/docs/p
 ### Can we point auto update to our Helm chart. Can we point auto update to a different registry?
 
 You can set auto upgrade to true in the helm command and control the upgrade and the repository. For more information, go to [Use automatic upgrade with custom delegate images](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+
+### Why isn't dnf or yum working with my delegate?
+
+You can try using microdnf. The delegate is a RHEL-based image. We don't ship dnf or apt by default.
 
 ### Can we create a delegate token with the name using which it was previously created and then deleted?
 
@@ -2579,6 +2593,18 @@ The account name shown in the authenticator app when setting up 2FA is from the 
 
 However, once 2FA is enabled by a user, only that specific user can disable it. Account administrators are unable to disable 2FA for individual users once it has been activated by the user themselves.
 
+### Why am I prompted for 2FA when other users aren't?
+
+You can manage 2FA in two ways:
+
+**Individual user:** you can set up 2FA for your own User Profile without impacting other user accounts.
+**All account users:** if you have Create/Edit permissions for Authentication Settings, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's Login Settings.
+
+To check whether 2FA is enabled for your user account, select your User Profile. You can toggle the **Two-Factor Authentication** indicator. For more information, go to [Two-factor authentication](/docs/platform/authentication/two-factor-authentication/).
+
+
+the user profile to check and confirm. This can be enabled on the user level and can differ from other user settings.
+
 ### Does Harness Support ever have write access to our account?
 
 No, Harness never has write access to your account.
@@ -2746,7 +2772,7 @@ Yes. For more information, go to [Install using Helm](/docs/self-managed-enterpr
 
 ### Why is my Terraform plugin crashing when using the Harness provider?
 
-Generally, this issue is related to a bug in our provider. Before opening a ticket, please try using the latest provider version. Run your script again to see if the problem persists. If the issue continues, please proceed to open a support ticket for further assistance.
+Generally, this issue is related to a bug in our provider. Before opening a ticket, try using the latest provider version. Run your script again to see if the problem persists. If the issue continues, contact [Harness Support](mailto:support@harness.io) for assistance.
 
 ### We don't have certain projects, but the Harness Terraform modules continue to read them. How can we remove unwanted data that exists in Harness?
 
@@ -2933,26 +2959,4 @@ By following these steps, our support team can promptly review the situation, di
 ### What does "Exit code 137" mean?
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
-
-### I tried to login with SSO It tells me my account is not enabled for SSO. I have a demo account that was created ages ago with the same email address.
-
-You can follow below steps:
-```
-Login to https://app.harness.io/auth/#/signin using your username and password.
-If you have forgotten the password, please use the reset password option and try logging in with your username and password.
-After logging in, it should take you to your demo account. Use the switch option, and it should ask for SSO and set the account as default. Next time, you should be able to use the SSO option.
-https://developer.harness.io/docs/platform/authentication/switch-account/
-```
-
-### I am getting asked for 2FA although for other users, it's not asking.
-
-Please check if 2FA is enabled on your user level; navigate to the user profile to check and confirm. This can be enabled on the user level and can differ from other user settings.
-
-### What is the base image of the Harness delegate?
-
-Delegate has a base image: RedHat Universal Base Image (redhat/ubi8). 
-
-### dnf or yum is not working on harness delegate.
-
-You can try using microdnf as the delegate has RHEL based image and by default, we do not ship dnf or apt.
 
