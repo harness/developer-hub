@@ -6970,7 +6970,7 @@ deny[msg] {
 	)
 }
 ```
-One can always update the template versions manually, please refer to Harness documentation for more info on: [Reconcile Pipeline Templates](https://developer.harness.io/docs/platform/templates/reconcile-pipeline-templates/) 
+You can always update the template versions manually. Go to [Reconcile Pipeline Templates](https://developer.harness.io/docs/platform/templates/reconcile-pipeline-templates/) for more information. 
 
 #### How can one effectively manage remote environments and infrastructures within Harness-SMP?
 
