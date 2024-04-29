@@ -38,12 +38,11 @@ HCE module has the following additional capabilities:
 7. [Windows chaos faults](/docs/chaos-engineering/chaos-faults/windows/)
 8. [Cloud Foundry chaos faults](/docs/chaos-engineering/chaos-faults/cloud-foundry)
 9. [Load chaos faults](/docs/chaos-engineering/chaos-faults/load)
-10. [Security chaos faults](/docs/chaos-engineering/chaos-faults/security-chaos)
-11. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
-12. [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
-13. Teaming around ChaosHubs
-14. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
-15. [Chaosguard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
+10. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
+11. [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
+12. Teaming around ChaosHubs
+13. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
+14. [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules
 
@@ -1061,23 +1060,6 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
     </tr>
     <tr>
         <td>App kill</td>
-        <td>❌</td>
-        <td>✅</td>
-    </tr>
-</table>
-
-### Security chaos faults
-
-Go to [Chaos faults for security](/docs/chaos-engineering/chaos-faults/security-chaos) for more information.
-
-<table>
-    <tr>
-        <td><b>Feature</b></td>
-        <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
-    </tr>
-    <tr>
-        <td>Kube security CIS </td>
         <td>❌</td>
         <td>✅</td>
     </tr>

@@ -63,12 +63,6 @@ export const categories: FaultCardItem[] = [
     category: "load",
   },
   {
-    title: "Security chaos",
-    description: <>Chaos faults for security CIS </>,
-    faults: SecuritychaosExperiments.length,
-    category: "security-chaos",
-  },
-  {
     title: "SSH",
     description: <>Chaos faults for SSH</>,
     faults: SshExperiments.length,
