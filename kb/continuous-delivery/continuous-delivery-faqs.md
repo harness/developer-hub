@@ -7003,15 +7003,6 @@ Yes, Harness supports the `/rebase` command from PR comments.
 If encountering a failure, please verify that there are no conflicts present in the git branch being utilized.
 Please refer to Harness documentation for more info on: [Git Repository Merge PRs](https://developer.harness.io/docs/code-repository/pull-requests/merge-pr/)
 
-#### Does Harness support Test Intelligence (TI) for Python in CI?
-
-Yes, this feature is currently behind the FF: `CI_PYTHON_TI`.
-To enable TI for Python use three steps:
-- Add the Run Tests step. 
-- Trigger test selection.
-- (Optional) Add test splitting.
-Please refer to Harness documentation for more info on: [Enable TI for Python](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-python/)
-
 #### Does Harness support storing the Terraform Plan on the Harness Delegate temporarily?
 
 Yes, Users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
