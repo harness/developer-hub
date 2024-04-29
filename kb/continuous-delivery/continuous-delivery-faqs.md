@@ -6995,7 +6995,7 @@ To debug this error, consider the following implementations:
 #### Does Harness support coverage testing in Python? Additionally, can coverage testing be used alongside split testing?
 
 Yes, Harness supports code coverage testing alongside split testing in Python.
-Please refer to Harness documentation on: [Code coverage in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/code-coverage) and [Split tests (parallelism) in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+Go to [Code coverage in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/code-coverage) and [Split tests (parallelism) in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for more information.
 
 #### Does the `/rebase` command functional when used from the PR comment?
 
