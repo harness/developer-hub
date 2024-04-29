@@ -8,6 +8,17 @@ redirect_from:
 
 This section describes the requirements, such as chaos infrastructure and project-level permissions required to execute chaos experiments on your target environments.
 
+- Prepare yourself with the right permissions (`Chaos Resources Role Permissions` in `Access Control`).
+- Prepare yourself with the right permissions on the cloud account or the Kubernetes cluster or the VM (Kube RBAC, IAM Roles).
+- Enable the necessary Feature Flags (as a general step) and corresponding sanity checks (such as places to click, and entities to see enabled).
+- Prepare the target systems (VMs or K8s).
+- Prepare **network connectivity**, identify **proxy requirements**, **firewall rules** (if any).
+- Identify application (or infrastructure) steady state parameters (even if this requires manual effort)- using APMs or logs or other methods.
+- Identify image registry requirements and steps to set it up with secrets.
+- Identify specific needs, especially Kubernetes, such as namespace quotas, workloads should carry specific labels or annotations, workloads should carry resource limits, every outbound container needs proxy environments, workloads should reside in specific nodes or groups.
+- Identify permissions for advanced use cases, which may vary, such as SCC, IRSA, etc.
+- ChaosHub requirement and connectivity to Git sources.
+
 ## Requirements for individual chaos faults
 
 In the [chaos faults reference](/docs/chaos-engineering/chaos-faults/), you'll find fault-specific requirements listed in the **Use cases** section of each fault, as shown, for example, in the use cases for the [Kubelet service kill](/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill#use-cases) fault.
