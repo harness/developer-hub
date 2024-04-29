@@ -6943,7 +6943,7 @@ So the statistic will have a red arrow pointing up marked as a `300%` increment 
 
 This value accurately measures the change in the failure rate, from 5% to 15%. 
 
-#### Can one effectively enforce the reconciliation of changes in the template with the consuming pipelines in a forceful manner?
+#### Can one effectively enforce the reconciliation of changes in the template with consuming pipelines in a forceful manner?
 
 Yes, one can utilize Open Policy Agent (OPA) to enforce the use of a stable template, ensuring consistency across consuming pipelines.
 Here's an example OPA policy:
