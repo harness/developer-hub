@@ -6978,7 +6978,7 @@ To enable remote environments and infrastructures in your Service Management Pla
 
 - Make sure your SMP is updated to the latest version. 
 - Activate the feature flag, `CDS_ENV_GITX` on the designated environment.
-Please refer to the Harness documentation for more info on: [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions)
+Go to [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions) for more information.
 
 #### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?
 
