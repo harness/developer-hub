@@ -25,6 +25,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
 * Rollback steps can use expressions that refer to steps executed during the previous pipeline execution. The expressions are automatically resolved with values from the original execution.
 * The stages should roll back in reverse order when  deployment rollback is triggered.
 * Rolling back to a previous post-production deployment is only possible for executions that occurred within the past 30 days.
+* You cannot roll back an execution if it is marked successful by the ignore failures failure strategy.
 
 ## Roll back deployments
 

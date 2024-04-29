@@ -209,14 +209,22 @@ Services variables allow your function definition to be reusable across multiple
 
 You can override service variables using [Harness environment overrides](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments). Overrides can also be used to change the function definition when it is deployed to different environments.
 
-Here's a function definition example using service variables:
+Here's a sample function definition using service variables:
 
 ```json
 {
-  "functionName": "<+serviceVariables.functionName>",
-  "runtime": "<+serviceVariables.runtime>",
-  "handler": "<+serviceVariables.handler>",
-  "role": "<+serviceVariables.roleARN>"
+   "functionName": "<+serviceVariables.functionName>",
+   "handler": "<+serviceVariables.handler>",
+   "memorySize": "<+serviceVariables.memorySize>",
+   "runtime": "<+serviceVariables.runtime>",
+   "timeout": "<+serviceVariables.timeout>",
+    "environment": {
+        "variables": {
+            "VariablesName1": "<+serviceVariables.variableName1>",
+            "VariablesName2": "<+serviceVariables.variableName2>"
+        }
+    },
+   "role": "<+serviceVariables.roleARN>"
 }
 ```
 

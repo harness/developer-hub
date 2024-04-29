@@ -103,7 +103,7 @@ Used to specify a script that runs when the delegate is initialized. You can use
 
 ```yaml
         - name: INIT_SCRIPT
-          value: |-  
+          value: |-
             echo "initializing Delegate"
             echo "Delegate initialized"
 ```

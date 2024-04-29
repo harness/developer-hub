@@ -393,7 +393,7 @@ export default function CloudCostManagement() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     spt.module === "ccm" && spt.cardType === "SPT" ||

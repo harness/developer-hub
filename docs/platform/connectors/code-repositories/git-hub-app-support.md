@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use a GitHub App to provide authentication for a GitHub connector. This enables API access to GitHub through the GitHub App.
 
-Harness recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods.
+Harness recommends using GitHub Apps for GitHub connectors, because GitHub Apps offer more granular permissions than other authentication methods and [increased rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
 
 The following video uses Harness Continuous Delivery to demonstrate the benefits, features, and configuration of GitHub Apps in Harness.
 

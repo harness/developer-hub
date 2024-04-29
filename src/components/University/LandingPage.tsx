@@ -427,11 +427,11 @@ export default function University() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
-                    spt.cardType === "SPT" ||
-                    spt.tileType === "comming soon"
+                    spt.cardType === "SPT" &&
+                    spt.tileType === "normal"
                   );
                 })
                 .map((spt) => (
