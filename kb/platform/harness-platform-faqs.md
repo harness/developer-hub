@@ -195,7 +195,7 @@ Yes, for more information, go to:
 
 ### Can you link the docs to the API endpoint used to authorize a user with API token?
 
-Harness has an API to to check whether you perform Authorization using bearer token or API key token. For more information, go to [Get access control list](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList) in the API documentation. For API token categories: Service Account vs. Personal access tokens, go to [Add and mange API keys](/docs/platform/automation/api/add-and-manage-api-keys/).
+Harness has an API to to check whether you perform authorization using bearer or API key token. For more information, go to [Get access control list](https://apidocs.harness.io/tag/Access-Control-List#operation/getAccessControlList) in the API documentation. For API token categories: Service Account vs. Personal access tokens, go to [Add and manage API keys](/docs/platform/automation/api/add-and-manage-api-keys/).
 
 ### How can I set my API key to expire in 24 hours?
 
