@@ -23,7 +23,7 @@ Here're some of the advantages of using a Patch step in your Kubernetes deployme
   
 ## Limitations
 
-- You will not be able to roll back your deployments with patched resources. Rolling back will only rollback your original deployment. 
+- You will not be able to roll back your deployments with patched resources. Rollback will only roll back your original deployment. 
 
 ## Adding a Patch step
 
