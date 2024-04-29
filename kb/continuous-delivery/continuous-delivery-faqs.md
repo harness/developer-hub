@@ -7008,3 +7008,67 @@ Go to [Git Repository Merge PRs](https://developer.harness.io/docs/code-reposito
 Yes, users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
 This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
+
+#### What options are available for freezing deployments in Harness?
+In Harness, you can freeze deployments at different levels such as project, environment, or organization.
+
+#### What portion of the YAML file configuration specifies that a delegate is visible only at a specific project?
+When configuring delegates in YAML files, the specific visibility scope (whether it's at the account, organization, or project level) is not explicitly defined within the delegate.yaml file. Instead, the visibility is determined by the scope of the delegate token used during registration.
+
+For example, if the token used during registration is scoped at the project level, the delegate will be registered within that particular project. This principle applies similarly to organization and account levels. Additionally, delegates can be added at the Project, Org, and Account levels, with their availability dependent on the implicit hierarchy within Harness (Account > Org > Project).
+
+For more detailed information and insights into delegate scope and configuration, you can refer to this document: [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-scope).
+
+#### How can I specify freeze windows for specific test environments within projects in Harness?
+To specify freeze windows for specific test environments within projects, you can utilize the Freeze Window feature at the project level in harness.io. This allows you to halt specific environments as needed.
+
+#### Is there a programmatic way to determine which user created a feature flag and/or target group in Harness?
+Yes, there is. You can utilize the Harness Audit API to retrieve JSON responses for specific resources like feature flags and target groups. This API provides audit events for all resources, allowing you to filter and find the create event for a particular feature flag or target group. The documentation for the Audit API can be found [here](https://apidocs.harness.io/tag/Audit). Additionally, when retrieving all information about a feature flag through the API, you'll find the "owner" data point, which directly provides information about the user who created the feature flag.
+
+However, it's worth noting that while this information is directly available for feature flags, it may not be as straightforward for target groups. Features, Targets, and Target Groups are separate resources in Harness. If you need to filter for features and target groups created by a specific user or group of users, you may need to adjust your filter accordingly in the Audit API call.
+
+#### What permission is required to archive a feature flag in Harness, and how can we customize permissions to meet our needs?
+To archive a feature flag in Harness, users typically need the "Delete" permission. However, if you have specific requirements, such as allowing developers to create, edit, and archive feature flags without granting them the ability to delete flags, you can customize permissions using Harness RBAC (Role-Based Access Control).
+
+For instance, you can create custom roles within Harness that grant users the ability to create and edit feature flags but not delete them. Then, for engineers who require delete permissions, you can create another custom role solely for granting delete access. By assigning these custom roles accordingly to developers based on their needs, you can ensure that permissions align with your organizational requirements.
+
+For detailed guidance on deleting an archived flag and leveraging RBAC for customized permissions, you can refer to the following documentation: [Delete an Archived Flag](https://developer.harness.io/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag/#delete-an-archived-flag).
+
+#### How can I handle uppercase environment identifiers in Harness variables and deploy pipelines?
+Harness variables provide flexibility in managing environment identifiers, but dealing with uppercase identifiers like UAT and DR can pose challenges. One common requirement is converting these identifiers to lowercase for consistency. Here's how you can address this:
+- Using [Ternary Operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
+- Updating Environment Setup: Another approach is to update your environment setup to ensure identifiers like UAT and DR are stored in lowercase. By maintaining consistency in the environment setup, you can avoid issues with case sensitivity in your deployment pipelines.
+
+#### How can I switch the Git repository for templates and pipelines in Harness when moving to a new provider?
+When preparing to migrate your templates and resources to a new Git provider, updating the repository details in Harness is straightforward. Here's how you can do it:
+- Edit YAML Files: Open the YAML files for each template and pipeline that you want to migrate.
+- Update Git Details: Look for the section in the YAML file that specifies the Git connector, repository, and path. Update this information with the details of your new Git provider.
+- Commit Changes: Once you've made the necessary updates, commit the modified YAML files to your new Git repository.
+
+Harness will automatically fetch the resources from the new location. However, managing numerous resources during this transition can be daunting. To prevent any issues with references, ensure that all pipelines referencing specific template versions are also updated to use the new Git details.
+
+#### Does Harness offer a replay feature similar to Jenkins?
+Yes, Harness provides a feature similar to Jenkins' "Replay" option, allowing you to rerun a specific build or job with the same parameters and settings as a previous execution. In Harness, this functionality is known as "retry failed executions." You can resume pipeline deployments from any stage or from a specific stage within the pipeline.
+
+To learn more about how to utilize this feature in Harness, you can refer to our documentation on failure handling and resuming pipeline deployments [here](https://developer.harness.io/docs/platform/pipelines/failure-handling/resume-pipeline-deployments/).
+
+#### Is there a way to clean up state storage in Terraform if it becomes out of sync during testing?
+If your Terraform state storage becomes out of sync during testing, there isn't a direct method to clean it up. Changing the application ID isn't recommended as it could lead to additional complications.
+
+Instead, you use other options:
+- Manual Cleanup: You can manually delete the state file from the storage location. However, ensure that you have a backup of the state file before proceeding to avoid any data loss or unintended consequences.
+- Terraform CLI: Utilize the Terraform CLI to force a refresh of the state. This can help synchronize the state with the actual infrastructure. Again, exercise caution and ensure proper backups before making any changes.
+It's essential to proceed with caution when making changes to the Terraform state to avoid disruptions to your infrastructure.
+
+#### How can I cancel/abort a pipeline execution via the Harness API?
+To abort a pipeline execution using the Harness API, you can use the putHandleInterrupt API endpoint. This API allows you to cancel a running pipeline by providing the execution ID as a parameter.
+
+You can find more details about this API and its usage in the Harness API documentation [here](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt).
+
+#### How can I prevent terraform state drift caused by AWS ECR permissions policies created by Harness?
+Terraform state drift due to AWS ECR permissions policies created by Harness, there are a couple of approaches you can take to mitigate this issue:
+
+- Pre-create ECR Repository: To avoid state drift, consider creating the ECR repository with the necessary permissions beforehand. Craft an IAM policy that grants the required permissions for Harness actions, such as creating and updating services, tasks, and container instances. Attach this policy to the IAM role used by the ECS cluster. By doing this, you ensure that the ECR repository has the correct permissions from the start, reducing the likelihood of drift.
+- Modify Harness AWS Connector Permissions: Another option is to prevent Harness from altering IAM policies by adjusting the permissions within the Harness AWS connector. However, be cautious with this approach as it may impact the functionality of your deployment pipeline. Removing permissions related to IAM policy modification from the Harness AWS connector can prevent unwanted changes to ECR permissions policies. Evaluate the impact on your workflow before implementing this solution.
+
+By managing permissions and considering the implications of changes made by Harness, you can effectively address terraform state drift and maintain the stability of your deployment environment. 
