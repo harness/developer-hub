@@ -7008,3 +7008,30 @@ Go to [Git Repository Merge PRs](https://developer.harness.io/docs/code-reposito
 Yes, users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
 This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
+#### There is no way to set variables at the environment level while using V2 - is that correct?
+You can create a variable directly in Environment as well by navigating to override and select the environment tag, so if a service variable with same name exist it will treated as override otherwise otherwise it will create a variable and you can access using service variable syntax
+
+
+#### I was reviewing Harness Download/copy command, it says "Copy: During deployment runtime, Harness uses the metadata to download the artifact to the Harness Delegate. The delegate then copies the artifact to the target host(s).”, so from where I can get the or need to configure the metadata.
+
+This we pick from the service used for the deployment, so ideally you might have already configured a artefact so we use the same config to get the metadata and no need to define explicitly.
+
+#### I want to use copy artifact instead of download, my target host is windows which support SSH access,
+And your doc says "Copy Artifact SSH deployment type only)", but when I go to deploy stage choosing deployment type, I don't see SSH, I only see WINRM.
+
+So If you use Winrm type deployment  than we give an option of winrm as by default winrm will be used to connect to the windows host
+
+#### While using command step why the script type can only be pwsh, I think this is powershell core while the delegate don't have powershell core on it, why you don't supprt other script like bash?
+
+Command step depends on type of deployment so if your deployment type is winrm than you will only get powershell as script option while if you ssh type deployment than you will see bash as an option, but still if you want to use interchangeably you have below option:
+1. Add shell script step instead of command step and there you can change the shell type
+2. If you want to use command step so do not select option Run on Delegate so that it will run on host instead of delegate 
+
+
+#### Is it possible to update cron trigger programatically
+
+Yes you can use api https://apidocs.harness.io/tag/Triggers/#operation/updateTrigger and pass the body of the existing trigger along with updating the cron expression with new value
+
+#### How to do iisreset running on windows machine
+
+You can create winrm connector and use powershell script to perform the iisreset, need to make sure user  credentials used for connection has the admin access
