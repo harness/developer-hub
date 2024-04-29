@@ -6942,3 +6942,69 @@ Then when displaying the `failure rate` for the last 30 days you would see `15%`
 So the statistic will have a red arrow pointing up marked as a `300%` increment in failure rate. 
 
 This value accurately measures the change in the failure rate, from 5% to 15%. 
+
+#### Can one effectively enforce the reconciliation of changes in the template with consuming pipelines in a forceful manner?
+
+Yes, one can utilize Open Policy Agent (OPA) to enforce the use of a stable template, ensuring consistency across consuming pipelines.
+Here's an example OPA policy:
+```yaml
+package pipeline
+
+template := "account.deploystagetemplate"
+stableVersion := "v2"
+
+
+# Deny a pipeline if the stage uses the template above
+# without the stable version stated
+deny[msg] {
+	stage = input.pipeline.stages[_].stage
+
+	# Check if the stage matches but doesn't have a template
+	stage.template.templateRef == template
+	stage.template.versionLabel != stableVersion
+
+	# Show a human-friendly error message
+	msg = sprintf(
+		"Stage %s, has template %s, with version %s, it should be version %s",
+		[stage.name, template, stage.template.versionLabel, stableVersion],
+	)
+}
+```
+You can always update the template versions manually. Go to [Reconcile Pipeline Templates](https://developer.harness.io/docs/platform/templates/reconcile-pipeline-templates/) for more information. 
+
+#### How can one effectively manage remote environments and infrastructures within Harness SMP?
+
+To enable remote environments and infrastructures in your Service Management Platform (SMP), follow these implementation guidelines:
+
+- Make sure your SMP is updated to the latest version. 
+- Activate the feature flag, `CDS_ENV_GITX` on the designated environment.
+Go to [Manage Harness environments and infrastructures from Git](https://developer.harness.io/docs/platform/git-experience/manage-environments-infra-definitions) for more information.
+
+#### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?
+
+Yes, we currently support OIDC integration for [Google Cloud Platform (GCP)(https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#use-openid-connect-oidc) and [Amazon Web Services (AWS)](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
+Within the next three months, we aim to further enhance this support, facilitating authentication, short-lived token acquisition based on Harness context, and various operational tasks like deployment, builds, or secret retrieval within the respective cloud provider environments.
+
+#### Does Harness enforce any policy that denies the fetching of the latest tag of an image, as indicated by the error message : `admission webhook: <webhook-name> denied the request. Validation error: An image tag is required. rule require-image-tag failed at path`?
+
+Harness does not enforce any policy regarding fetching the latest image tags.
+To debug this error, consider the following implementations:
+- Ensure the correct image tag is specified in the YAML configuration.
+- For more details, go to [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/).
+
+#### Does Harness support coverage testing in Python? Additionally, can coverage testing be used alongside split testing?
+
+Yes, Harness supports code coverage testing alongside split testing in Python.
+Go to [Code coverage in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/code-coverage) and [Split tests (parallelism) in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for more information.
+
+#### Does the `/rebase` command functional when used from the PR comment?
+
+Yes, Harness supports the `/rebase` command from PR comments.
+If encountering a failure, verify that there are no conflicts present in the git branch being utilized.
+Go to [Git Repository Merge PRs](https://developer.harness.io/docs/code-repository/pull-requests/merge-pr/) for more information.
+
+#### Does Harness support storing the Terraform Plan on the Harness Delegate temporarily?
+
+Yes, users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
+This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
+Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
