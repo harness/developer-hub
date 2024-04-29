@@ -6990,7 +6990,7 @@ Within the next three months, we aim to further enhance this support, facilitati
 Harness does not enforce any policy regarding fetching the latest tag of images.
 To debug this error, consider the following implementations:
 - Ensure the correct image tag is specified in the YAML configuration.
-- Refer to the Harness documentation for the correct expression usage, particularly regarding the retrieval of the latest published tag: [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/)
+- For more details, go to [Latest Published Tag](https://developer.harness.io/kb/continuous-delivery/articles/last-published-tag/).
 
 #### Does Harness support coverage testing in Python? Additionally, can coverage testing be used alongside split testing?
 
