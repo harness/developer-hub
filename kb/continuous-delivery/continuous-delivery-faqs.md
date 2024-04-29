@@ -7015,5 +7015,5 @@ Please refer to Harness documentation for more info on: [Enable TI for Python](h
 #### Does Harness support storing the Terraform Plan on the Harness Delegate temporarily?
 
 Yes, Users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
-This feature is behind the FF: `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE` and on delegate version `827xx or more`.
+This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Please refer to Harness documentation for more info: [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a)
