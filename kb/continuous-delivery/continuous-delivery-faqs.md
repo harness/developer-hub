@@ -1151,7 +1151,7 @@ See site for more details [here](https://developer.harness.io/docs/platform/pipe
 
 #### Harness rollback deployments. 
 
-Harness Rollback deployments initiate a rollback of the most recent successful deployment. Note that this feature is behind a feature flag '''POST_PROD_ROLLBACK'''. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
 
 #### Do we allow one-time scheduling of pipeline execution ?
 
@@ -6879,3 +6879,66 @@ Application{name: '$APP_NAME', agentIdentifier: '$AGENT_ID', errorMessage: 'Appl
 ```
 This error is caused by an inconsistency in the service(s) used in the deploy stage and the selected application. GitOps cannot sync a service that isn't correlated to the application. To fix this, go to the Continuous Delivery module, and select **GitOps** > **Applications** and then select the application. In **App Details**, check if the service configured for the application is the same as the service configured in the pipeline's deploy stage.
 
+#### Why aren't my old Kubernetes Resources not deleted when deploying a new version?
+
+By default Harness does not remove resources from previous deployments. If you would like Harness to remove the older resources, you will need to enable the `Enable Kubernetes Pruning` option under the Optional Configuration in either the `K8sRollingDeploy` or `K8sBlueGreenDeploy` step.
+
+For detailed instructions on how this functionality works, please check out the Harness documentation - [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/)
+
+
+#### In terraform how do you return a null value from a `for_each`
+
+In Terraform, you can return a null value from a `for_each` expression by using the `null` function or the `null` literal directly.
+Here's an example of how you can use both approaches:
+
+Using the `null` function:
+```
+variable "my_map" {
+  type = map(any)
+  default = {
+    key1 = "value1"
+    key2 = null
+  }
+}
+
+resource "aws_instance" "my_instances" {
+  for_each = var.my_map
+
+  # Other resource attributes...
+}
+```
+
+Using the `null` literal directly:
+```
+variable "my_map" {
+  type = map(any)
+  default = {
+    key1 = "value1"
+    key2 = null
+  }
+}
+
+resource "aws_instance" "my_instances" {
+  for_each = var.my_map
+
+  # Other resource attributes...
+}
+```
+Both approaches will result in `key2` in the `my_map` variable being set to a `null` value, causing Terraform to not create an instance for that key when using `for_each`.
+
+#### Why am I getting an error that the input set does not exist in the selected Branch?
+This happens because pipelines and input sets need to exist in the same branch when storing them in Git. For example, if your pipeline exists in the `dev` branch but your input set exists in the `main` branch, then loading the pipeline in the `dev` branch and attempting to load the input set will cause this error. To fix this, please ensure that both the pipeline and input set exist in the same branch and same repository.
+
+#### How are the statistics on the Continuous Delivery overview page calculated?
+
+The [Continous Delivery overview page](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments#overview-and-services-dashboards) displays statistics for deployments and services that can sometimes seem unreasonable or incorrect. However, these numbers are correct and are generally caused by the time frame that the statistic is measured over. 
+
+For example, say that we have a statistic `failure rate` that is measured over 30 days. Then we collect the following data:
+
+Days 0 - 30 `failure rate`: 5%
+Days 31 - 60 `failure rate`: 15%
+
+Then when displaying the `failure rate` for the last 30 days you would see `15%` and you would see that your `failure rate` increased by `300%`!
+So the statistic will have a red arrow pointing up marked as a `300%` increment in failure rate. 
+
+This value accurately measures the change in the failure rate, from 5% to 15%. 

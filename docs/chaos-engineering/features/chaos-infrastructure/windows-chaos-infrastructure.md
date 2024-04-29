@@ -5,7 +5,7 @@ description: Guide to advanced setup with Windows chaos infrastructure
 ---
 This section describes the [advanced setup](#advanced-setup), [logs](#logs), and [resilience probes](#resilience-probes-for-windows) associated with the Windows chaos infrastructure.
 
-HCE supports executing Windows faults similar to Linux faults. 
+HCE supports executing Windows faults similar to Linux faults.
 
 ## Before you begin
 * [Prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md)
@@ -43,12 +43,12 @@ You can tune the other flags of the infrastructure with the following flags:
 
 ## Infrastructure service
 The Windows chaos infrastructure is installed as an executable binary on your Windows VM. The service binary is present in `C:\\HCE\windows-chaos-infrastructure.exe` path. The config file is present in `C:\\HCE\config.yaml` path.
- 
+
 ## Logs
 Logs that are generated are stored in the `C:\\HCE\logs` directory by default.
- 
+
 There are two types of logs:
-1. **Infrastructure logs:** Infrastructure logs are generated as a result of any infrastructure operation that is not directly related to the execution of an experiment. Every experiment run has a new log folder with all connectivity logs. 
+1. **Infrastructure logs:** Infrastructure logs are generated as a result of any infrastructure operation that is not directly related to the execution of an experiment. Every experiment run has a new log folder with all connectivity logs.
 
 :::info
 - The file is rotated based on its size; when the file size is a specified size, it is archived in a separate file with the timestamp of rotation suffixed to the file name. By default, this value is **5 MB**.
@@ -63,14 +63,14 @@ There are two types of logs:
 
 ## Verify Windows infrastructure service status
 
-To verify the status of the service, navigate to the command prompt on your Windows. Search for **Task Manager**, click **More details** and check the status of **WindowsChaosInfrastructure**. 
+To verify the status of the service, navigate to the command prompt on your Windows. Search for **Task Manager**, select **More details** and check the status of **WindowsChaosInfrastructure**.
 
-1. If the status reads **Running**, it means the windows infrastructure is up and running. 
+1. If the status reads **Running**, it means the windows infrastructure is up and running.
 
 ![](./static/windows-infrastructure/add-pwd-1.png)
 
 
-2. If it reads **Stopped**, right click and select **Start**. 
+2. If it reads **Stopped**, right click and select **Start**.
 
 ![](./static/windows-infrastructure/start-service-2.png)
 

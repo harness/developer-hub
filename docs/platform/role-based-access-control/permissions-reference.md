@@ -123,7 +123,7 @@ This topic describes permissions relevant to [RBAC in Harness](./rbac-in-harness
 
 | Resource | Permissions |
 | ---  | ----------- |
-| Feature flags | <ul><li>Toggle: Turn Feature Flags on/off</li><li>Create/Edit</li><li>Delete</li></ul> |
+| Feature flags | <ul><li>Toggle: Turn Feature Flags on/off</li><li>Create Flag</li> <li>Edit Rule</li> <li>Edit Configuration</li><li>Delete</li></ul>|
 | Target Management | <ul><li>Create/Edit: Create and edit Targets and Target Groups to control visibility of a variation of a Feature Flag</li><li>Delete: Delete Targets and Target Groups</li></ul> |
 
 ### GitOps
