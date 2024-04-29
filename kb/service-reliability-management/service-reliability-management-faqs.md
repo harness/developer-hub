@@ -58,5 +58,19 @@ Node is identified in case metrics were reported by your verification provider u
 Please check the variable passed is correct(like for healthSourceRef its identifier of the source and not name)
 
 #### What is Metric packs
-
 With Metrics Packs section you can select the metrics that you want to use for the health source. The options available are Errors and Performance.
+
+
+#### Verification is not working, and we are seeing:
+`Data collection task failed with exception: DataCollectionDSLException: Variable formulaList is being used before declaration.` 
+
+We saw a similar issue earlier where we observed Perpetual tasks experienced significant delays in reassignment after the current delegate was shut down and worked on fix as part of the release, so please check and verify if none of your delegate is running an older version:
+https://developer.harness.io/release-notes/platform/#fixed-issues-3
+
+#### I am seeing the below lines under execution logs, what does this actually mean?
+`Verify step configured to use deployed node(service instance) details from CD. Received Node details from CD: Deployed in this stage: Nodes before deployment: Nodes after deployment: We couldn't find deployed node details from CD, hence falling back to default analysis based on node details from APM provider.` 
+
+It usually means you have enabled to use deployed node from CD step, but it looks like you are not doing actual deployment(canary, rollout etc) as part of CD step and maybe using a custom script to deploy or scale up/down so in that case the node will not be identified and we will fallback to relying upon your configured health source to provide the data as part of the query response.
+
+#### Verification step results say "0 out of 1" for the section "Metrics in Violation." Although I have configured two metrics, it does appear both metrics were indeed analyzed. Why then would it show "0 out of 1" instead of "0 out of 2"?
+It shows the number of metrics that returned data. There is a possibility that you might have configured two metrics that you wanted to verify, but because only 1 of them returned data, you are seeing a 0/1 in the UI vs a 0/2
