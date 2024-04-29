@@ -57,11 +57,13 @@ Review the following information carefully to ensure you select the correct cred
    * **AWS Access Key:** Provide an [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for the IAM role you want the connector to use.
    * **Use IRSA:** Required if you use IAM roles for service accounts, including IRSA in EKS clusters with OIDC Provider. Additional configuration is required, as explained in [Use IRSA](#use-irsa).
    * **Use OIDC**: Select this option to connect to AWS with OIDC. This requires the user to create an OIDC identity provider in AWS and add it in a trust relationship with an IAM role that Harness will assume when doing any AWS operations with this connector.
+
    :::note
 
    The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
    :::
+
 2. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 3. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#test-region-and-aws-govcloud-support).
 4. Select **Continue** to proceed to **Select Connectivity Mode**.

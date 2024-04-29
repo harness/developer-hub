@@ -6172,8 +6172,11 @@ Yes, one can deploy using custom artifact without using the S3 artifact. Please 
 
 #### How does the AWS connector currently handle OIDC authentication?
 
-Users can now leverage the AWS connector to configure OIDC authentication. This only leverages the account ID parameter when we send the token payload to the AWS STS service. This feature is provided behind the feature flag `FF:CDS_AWS_OIDC_AUTHENTICATION`
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings)
+Users can now leverage the AWS connector to configure OIDC authentication.
+
+This feature is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This only leverages the account ID parameter when Harness sends the token payload to the AWS STS service. For more information, go to [Harness AWS connector settings](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings).
 
 #### How can I force a template consumer to a new version?
 
