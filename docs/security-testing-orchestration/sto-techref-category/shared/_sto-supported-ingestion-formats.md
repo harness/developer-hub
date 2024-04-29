@@ -10,14 +10,14 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Brakeman** — JSON
 - **Burp** — XML
 - **Checkmarx** — XML, SARIF  <!-- - **Clair** — JSON -->
-- **CodeQL** — JSON, SARIF
+- **CodeQL** — JSON (_recommended_), SARIF
 - **Coverity** — XML
 - **Data Theorem** — JSON
 - **Docker Content Trust** — JSON
 - **Fortify** — JSON
 - **Fortify on Demand** — JSON
 - **Fossa** — JSON
-- **Gitleaks** — JSON, SARIF
+- **Gitleaks** — JSON (_recommended_), SARIF
 - **HQL AppScan** — XML 
 - **Grype** — JSON
 - **Mend (_formerly Whitesource_)** — JSON  
@@ -33,7 +33,7 @@ Harness STO can automatically ingest, aggregate, normalize, and deduplicate data
 - **Qwiet** — JSON
 - **Reapsaw** — JSON    <!-- - **Scoutsuite** — JSON -->
 - **Semgrep** — SARIF
-- **Snyk** — JSON, SARIF
+- **Snyk** — JSON (_recommended_), SARIF
 - **SonarQube** — JSON
 - **Sysdig** — JSON 
 - **Tenable** — JSON
