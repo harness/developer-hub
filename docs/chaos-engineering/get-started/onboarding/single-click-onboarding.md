@@ -14,7 +14,7 @@ This topic guides you through setting up the chaos infrastructure, executing cha
 
 1. In the left menu, select **Overview** and then select **Select a Cluster** where you can choose a cluster so that you can execute chaos experiments.
 
-    ![select cluster](./static/single-click/select-cluster-1.png)
+     ![select cluster](./static/single-click/select-cluster-1.png)
 
 2. Select an environment from the list and click **Next**.
 
