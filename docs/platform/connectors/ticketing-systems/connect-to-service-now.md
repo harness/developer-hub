@@ -100,7 +100,9 @@ To use ADFS credentials for authentication:
 
 
 :::info note
-This feature requires Harness Delegate 799xx or higher.
+OIDC authentication support is not available for any connectors in Legacy Delegates.
+
+The support for OIDC is made available and tested from Delegate versions 24.03.82600 and higher.
 :::
 
 Harness supports persistent refresh tokens only to authenticate via OpenID Connect (OIDC) for a **Refresh Token** with a **Grant Type** of `refresh_token`. For more information on refresh token grant types, go to [Refreshing Access Tokens](https://www.oauth.com/oauth2-servers/access-tokens/refreshing-access-tokens/) in the OAuth documentation.

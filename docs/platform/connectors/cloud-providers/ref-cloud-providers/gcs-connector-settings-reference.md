@@ -116,6 +116,12 @@ Select this option to allow the connector to inherit its authentication credenti
 
 Select this option if you want to [use OIDC](#use-openid-connect-oidc).
 
+:::info note
+OIDC authentication support is not available for any connectors in Legacy Delegates.
+
+The support for OIDC is made available and tested from Delegate versions 24.03.82600 and higher.
+:::
+
 ### Select Connectivity Mode
 
 Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details**.

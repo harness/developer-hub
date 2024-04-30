@@ -58,6 +58,12 @@ Review the following information carefully to ensure you select the correct cred
    * **Use IRSA:** Required if you use IAM roles for service accounts, including IRSA in EKS clusters with OIDC Provider. Additional configuration is required, as explained in [Use IRSA](#use-irsa).
    * **Use OIDC**: Select this option to connect to AWS with OIDC. This requires the user to create an OIDC identity provider in AWS and add it in a trust relationship with an IAM role that Harness will assume when doing any AWS operations with this connector.
 
+   :::info note
+   OIDC authentication support is not available for any connectors in Legacy Delegates.
+
+   The support for OIDC is made available and tested from Delegate versions 24.03.82600 and higher.
+   :::
+
    :::note
 
    The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.

@@ -351,6 +351,12 @@ For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/r
 
 These settings come from your OIDC provider authorization server or the provider app you use to log in.
 
+:::info note
+OIDC authentication support is not available for any connectors in Legacy Delegates.
+
+The support for OIDC is made available and tested from Delegate versions 24.03.82600 and higher.
+:::
+
 The following settings are from the authorization server settings:
 
 * **Master URL:** The issuer URI for the provider authentication server.
