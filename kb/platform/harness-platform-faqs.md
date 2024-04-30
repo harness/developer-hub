@@ -405,6 +405,10 @@ No, it is not possible to obtain the account's private key from the delegate, ev
 
 This limitation is by design to uphold security protocols. Delegates often operate with scoped permissions at the organization or project level, and allowing access to the account's private key via a delegate would pose a significant security risk. Therefore, regardless of the delegate's ability to communicate with Harness Manager, access to the account's private key is strictly controlled and not available through delegate operations.
 
+### Does Harness SAML work with any SSO provider?
+
+Yes, Harness provides support for OKTA and Azure Onelogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file. 
+
 ### Can I use multiple SAML and SCIM apps with Harness?
 
 :::note
@@ -420,6 +424,18 @@ Ensure that the entity ID is set correctly if you are using multiple accounts. I
 ### Where is the attribute for Group Claim in Microsoft Entra ID?
 
 For SAMl with Microsoft Entra ID (formerly Azure), under **Enterprise Applications**, select **SSO Settings**, then select **Edit User and Group properties**. Edit the **Group Claim** and validate that the attribute is set to Group ID. If it is set to any other attribute, you must provide that value when linking the Harness user group with the Microsoft Entra ID group using the authorization.
+
+### When creating multiple Harness apps in Microsoft Entra ID, why can't I use the app.harness.io entity ID?
+
+The entity is unique for each application. You can use any entity ID and add it in the Harness UI when setting up SSO.
+
+### When we have a user group established through SCIM and others connected via SSO within the same IDP, how do both methods populate the users?
+
+When a user group is created through SCIM, it synchronizes and directly creates the user groups and users within the IDP as they exist. However, for SSO-linked user groups, users are populated only when they sign in to Harness using SAML.
+
+### We removed users from a user group in our SSO app, why does the Harness UI still show the users? 
+
+The synchronization with SSO-linked groups occurs exclusively upon user login to Harness. Whether it involves adding or removing users, these updates only take place during a login operation.
 
 ### Which cron expression builder builder does Harness use for the LDAP sync schedule?
 
@@ -791,6 +807,18 @@ To resolve the issue:
 - Check Helm chart modifications: If modifications were made to the Helm chart locally, they might have caused discrepancies in deployed values. Utilize the Helm template to inspect YAML values for debugging.
 - Adjust namespace limits: If applicable, ensure that there are no namespace limits conflicting with the Helm delegate installation. If found, consider changing the namespace to resolve the issue.
 
+### Can I use an earlier Harness Delegate version?
+
+Yes, but Harness doesn't recommend using delegate images that are not current. However, if you require an earlier image version, check the [repository on Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
+
+### Can we configure the delegate upgrade schedule?
+
+Yes, you can configure the delegate upgrade schedule. For more information, go to [Configure the delegate upgrade schedule](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#configure-the-delegate-upgrade-schedule).
+
+### Can delegates have HA if they're in different locations?
+
+If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production. 
+
 ### Is the DelegateManagerGrpcClientModule used for delegate connection to the manager over gRPC?
 
 The `DelegateManagerGrpcClientModule` facilitates gRPC communication between the delegate and the manager. However, while it's involved in tasks such as sending task executions and serving as a fallback mechanism for sending task responses, it's recommended to consult the CI team for confirmation on its specific usage, as there might be additional or alternative configurations in place.
@@ -800,6 +828,73 @@ The `DelegateManagerGrpcClientModule` facilitates gRPC communication between the
 The Kubernetes configuration (KubeConfig) on the delegate is typically stored at `${HARNESS_KUBE_CONFIG_PATH}`. For more information, go to [Harness Kubernetes expressions](/docs/platform/variables-and-expressions/harness-variables/#kubernetes-deployment-expressions).
 
 However, if you're unable to locate it at the specified path or within the delegate pod, it's important to confirm whether you're using built-in Terraform steps or running the Terraform CLI in a script and what stage type is being employed. For Terraform dynamic provisioning of infrastructure, you must create a Terraform file without the kube_config specification. In this scenario, since the Kubernetes connector is utilized, the delegate autonomously determines the context for Terraform.
+
+### How do I rename a Kubernetes delegate?
+
+To change the name of a Kubernetes delegate, modify the following fields:
+
+```
+Secret.metadata.name
+Deployment.metadata.labels.harness.io/name
+Deployment.metadata.name
+Deployment.spec.selector.matchLabels.harness.io/name
+Deployment.spec.template.metadata.labels.harness.io/name
+Deployment.spec.containers.envFrom.secretRef
+Deployment.metadata.spec.template.spec.env.name: DELEGATE_NAME
+Service.metadata.selector.harness.io/name
+CronJob.metadata.labels.harness.io/name
+CronJob.metadata.name
+```
+
+The `DELEGATE_NAME` environment variable is specified as a YAML list item:
+
+```yaml
+        - name: DELEGATE_NAME
+          value: string
+```
+
+### How do I rename a Docker delegate?
+
+To change the name of a Docker delegate, set the `DELEGATE_NAME` environment variable to the new name:
+
+```
+    - DELEGATE_NAME = newnamedelegate
+```
+
+### What are the Harness gRPC limitations?
+
+If you do not enable gRPC connections, the following limitation applies:
+
+Cloud Cost Management (CCM) does not collect events.
+
+gRPC connections are not required for delegate version 23.12.81803 and later.
+
+### Do we run Harness Delegate as root?
+
+Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.
+
+### What is delegate allowlist verification?
+
+Delegate allowlist verification is currently behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+When the feature flag is enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy. Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. 
+
+### How do I configure the delegate grace period?
+
+Open the delegate manifest file and locate the container `spec` (`spec.containers`). Change the `terminationGracePeriodSeconds` as shown in the following YAML. In the example below, `terminationGracePeriodSeconds` is set to 10 minutes.
+
+```yaml
+ spec:
+     terminationGracePeriodSeconds: 600
+     restartPolicy: Always
+     containers:
+     - image: example/org:custom-delegate
+       imagePullPolicy: Always
+       name: delegate
+       securityContext:
+         allowPrivilegeEscalation: false
+         runAsUser: 0
+```
 
 ### Is mTLS supported between the delegate and connectors in Harness?
 
@@ -907,7 +1002,6 @@ You can stop the legacy delegate and download new YAML from the Harness UI to in
 Yes, for more information, go to:
 
 - [Delegate installation options](https://developer.harness.io/docs/platform/delegates/install-delegates/overview).
-  
 - [Connect to GCP](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
 ### When will the kubectl version be updated in the default Harness Delegate image?
@@ -2909,8 +3003,6 @@ With a custom stage, you don't need to define a service. This is the preferred m
 
 Harness allows organizations to manage an IP allow list, enabling approved IP addresses, including office and VPN IP addresses, to access the platform. Contact [Harness Support](mailto:support@harness.io) for assistance.
 
-
-
 ### How does Harness handle data retention for exiting customers?
 
 Harness manages data retention for exiting customers by implementing a straightforward process. Upon the expiration or offboarding of a customer account, all associated data is promptly removed from the system.
@@ -2929,7 +3021,7 @@ The Kubernetes manifest has a component called upgrader. The upgrader is a cron 
 
 ### Can I subscribe to Harness at the org level?
 
-We don't support licences at the org level, only at the account level. 
+We don't support licenses at the org-level, only at the account-level.
 
 ### Does Harness allow you to set 2 AMIs with different CPU architecture?
 
@@ -2977,129 +3069,3 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
-### Can multiple IDP work even when the IDP are different like Azure and OKTA?
-
-Yes Once the FF PL_ENABLE_MULTIPLE_IDP_SUPPORT is enabled for your account you can configure multiple IDP it can either multiple IDP of OKta , Azure etc or all different like 1 of OKTA, other of Azure. 
-Once you click on Single Sign on it asks the User which IDP to select for login and then redirects based on that. 
-
-
-### How much older version can a delegate run on?
-
-We recommend upgrading your delegate timely as it contains fixes and optimisations. Delegates expire after 6 months from the release of the delegate image on Docker Hub. Delegates do not stop working after expiration because delegates are backward-compatible, they might have issues as the Harness manager might have moved too far ahead.
-
-### Can we spin a older version Harness Delegate?
-
-Yes you can do so, Harness does not recommend the use of delegate images that are not current. However, if you require an earlier image version, check the repository on https://hub.docker.com/r/harness/delegate/tags
-
-### Can we configure delegate upgrade schedule?
-
-Yes you can configure the delegate upgrade schedule. You can follow our documentation here : https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#configure-the-delegate-upgrade-schedule
-
-### Delegate High Availability if delegate are in different locations.
-
-If there are delegates in different locations it is not High Availability. As if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If the one delegate deployed to the production  environment stops running , this will stop your production executions as there is no other delegate in Production. 
-
-### Renaming a kubernetes delegate
-
-Yes you can rename a kubernetes delegate. 
-
-To change the name of a Kubernetes delegate, modify the following fields:
-```
-Secret.metadata.name
-Deployment.metadata.labels.harness.io/name
-Deployment.metadata.name
-Deployment.spec.selector.matchLabels.harness.io/name
-Deployment.spec.template.metadata.labels.harness.io/name
-Deployment.spec.containers.envFrom.secretRef
-Deployment.metadata.spec.template.spec.env.name: DELEGATE_NAME
-Service.metadata.selector.harness.io/name
-CronJob.metadata.labels.harness.io/name
-CronJob.metadata.name
-```
-The DELEGATE_NAME environment variable is specified as a YAML list item:
-
-```
-        - name: DELEGATE_NAME
-          value: string
-```
-
-### Renaming a docker delegate
-
-To change the name of a Docker delegate, set the DELEGATE_NAME environment variable to the new name:
-
-```
-    - DELEGATE_NAME = newnamedelegate
-```
-
-### Harness Delegate Images
-
-Harness provides the following delegate images. Each image includes a set of tools that target a particular scenario.
-
-```
-Delegate Image :harness/delegate:yy.mm.verno	
-Includes the delegate and its dependencies. Includes client tools such as kubectl, Helm, and ChartMuseum.
-Delegate Image: harness/delegate:yy.mm.verno.minimal	
-Includes the delegate and its dependencies.
-```
-
-### Harness gRPC limitations
-
-If you do not enable gRPC connections, the following limitation applies:
-
-Cloud Cost Management (CCM) does not collect events.
-
-gRPC connections are not required for delegate version 23.12.81803 and later.
-
-
-### Do we require to run Harness Delegate as root. 
-
-Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (INIT_SCRIPT), you can use a non-root account or install the application without the delegate
-
-### What are the different delegate images types?
-
-There are 3 different delegate image types : 
-
-DELEGATE
-DELEGATE-MINIMAL
-DELEGATE-LEGACY
-
-### What is delegate allowlist verification?
-
-This is behind a FF PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST. Once it is enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager.
-Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification.
-The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy.
-Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. 
-
-### How to configure delegate grace period?
-
-You can do so by Opening the delegate manifest file and locate the container spec (spec.containers). Change the terminationGracePeriodSeconds. 
-```
-spec:
-     terminationGracePeriodSeconds: 600
-     restartPolicy: Always
-     containers:
-     - image: example/org:test-delegate
-       imagePullPolicy: Always
-       name: delegate
-       securityContext:
-         allowPrivilegeEscalation: false
-         runAsUser: 0
-```
-
-### Can Harness SAML work with any SSO provider?
-
-Yes Harness provides support for OKTA, Azure Onelogin out of the box , but you can add any custom SSO with Harness.
-All you need is Harness SAML Endpoint URL, SAML metadata file. 
-
-### While creating multipel Harness apps in Microsoft Entra ID it doesnt allow using app.harness.io entity ID.
-
-Yes as the entity is unique for each application. Hence you can use any entity id and input the same in Harness UI while setting up SSO. 
-
-
-### We have a user group created via SCIM and other linked with SSO user group in same IDP how does the both populate the users. 
-
-While the user griup which was created using SCIM it directly sync and creates the user groups and users as it is in our IDP, but for SSO linked, Once the users login into Harness using the SAMl only then they will be populated in the user group.
-
-### We removed 5 users from a user group in our SSO app but Harness Ui still shows the users. 
-
-The sync with SSO linked group will only happen once the user logs into Harness. Be it addition or removal it will only happen when a login operation is performed.
