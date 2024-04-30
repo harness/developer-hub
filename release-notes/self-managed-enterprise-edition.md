@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-04-11T10:00
+date: 2024-04-30T10:00
 sidebar_position: 16
 ---
 
@@ -67,7 +67,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 :::
 
 
-## April xx, 2024, version 0.16.0
+## April 30, 2024, version 0.16.0
 
 This release includes the following Harness module and component versions.
 
