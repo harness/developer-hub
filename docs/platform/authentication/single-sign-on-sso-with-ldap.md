@@ -245,6 +245,25 @@ To configure a synchronization schedule, in **Enter a custom cron expression**, 
 
 The page includes a tabular breakdown of the cron expression for ease of understanding and verification. The **Cron expression** field shows you whether or not the cron expression is valid.
 
+:::note
+The Cron(Quartz) Expression field will accept string consisting of six or seven subexpressions (fields) that describe individual details of the schedule. Unix Cron Expression consisting of five subexpressions is not supported.
+
+A sample of the the Quartz expression is below:
+QUARTZ Expression
+```
+0 0 4 7 ? 2014  
+| | | |   | |  
+| | | |   | \------- YEAR (2014)  
+| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)  
+| | | \------------- MONTH (JULY)  
+| | \--------------- DAY_OF_MONTH (4th)  
+| \----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
+\------------------- MINUTE (0)
+```
+
+For more information please refer [Cron Expressions](https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm) documentation.
+:::
+
 ### Add a Harness User Group with LDAP users
 
 Once you have configured an LDAP SSO Provider for Harness, you can create a Harness User Group and sync it to your LDAP directory.
