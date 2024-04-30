@@ -94,7 +94,7 @@ An artifact scanner can detect one or more of the following types of issues in y
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Container</a> Ingestion</li>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference">Sysdig</a> Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/sysdig-scanner-reference">Sysdig</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Extraction, Ingestion  </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference">Wiz</a> Orchestration, Ingestion  </li>
          </ul>
