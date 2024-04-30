@@ -407,7 +407,7 @@ This limitation is by design to uphold security protocols. Delegates often opera
 
 ### Does Harness SAML work with any SSO provider?
 
-Yes, Harness provides support for OKTA and Azure Onelogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file. 
+Yes, Harness provides support for Okta and Azure Onelogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file. 
 
 ### Can I use multiple SAML and SCIM apps with Harness?
 
@@ -433,7 +433,7 @@ The entity is unique for each application. You can use any entity ID and add it 
 
 When a user group is created through SCIM, it synchronizes and directly creates the user groups and users within the IDP as they exist. However, for SSO-linked user groups, users are populated only when they sign in to Harness using SAML.
 
-### We removed users from a user group in our SSO app, why does the Harness UI still show the users? 
+### We removed users from a user group in our SSO app, why are they still in the Harness UI? 
 
 The synchronization with SSO-linked groups occurs exclusively upon user login to Harness. Whether it involves adding or removing users, these updates only take place during a login operation.
 
