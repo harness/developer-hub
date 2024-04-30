@@ -377,6 +377,13 @@ curl --location --request GET 'https://app.harness.io/gateway/api/users?accountI
 --header 'authorization: Bearer ${token}' \
 ```
 
+### Why am I getting an error when I try to create an API Key?
+```
+Invalid request: Maximum limit has reached
+```
+
+This error indicates that you've reached the maximum number of API Keys available for your user. Harness has a hard limit of 5 API Keys per user. To fix this, please delete one of your existing API Keys or consider using a Service Account instead.
+
 ## Authentication
 
 ### As I migrate from FirstGen to NextGen and use Okta for SCIM, I've noticed our user groups haven't migrated. Is there an additional step I need to take?
