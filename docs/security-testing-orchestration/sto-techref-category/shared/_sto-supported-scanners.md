@@ -156,7 +156,7 @@ The following scanners detect misconfigurations in your cloud environment that c
         </td>
         <td valign="top">
          <ul>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a>  Extraction </li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a>  Extraction, Ingestion </li>
          </ul>
      </td>
    </tr>
