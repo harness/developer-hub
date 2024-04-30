@@ -377,12 +377,12 @@ curl --location --request GET 'https://app.harness.io/gateway/api/users?accountI
 --header 'authorization: Bearer ${token}' \
 ```
 
-### Why am I getting an error when I try to create an API Key?
+### Why am I getting an error when I try to create an API key?
 ```
 Invalid request: Maximum limit has reached
 ```
 
-This error indicates that you've reached the maximum number of API Keys available for your user. Harness has a hard limit of 5 API Keys per user. To fix this, please delete one of your existing API Keys or consider using a Service Account instead.
+This error indicates that you've reached the maximum amount of API keys available for your user. Harness has a limit of 5 API keys per user. To resolve this error, delete one of your existing API keys or use a service account instead.
 
 ## Authentication
 
