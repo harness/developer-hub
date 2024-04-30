@@ -55,7 +55,7 @@ A code scanner can detect one or more of the following types of issues in your s
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Code</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud</a> Orchestration, Extraction, Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference">Wiz</a> Ingestion  </li>
          </ul>
      </td>
