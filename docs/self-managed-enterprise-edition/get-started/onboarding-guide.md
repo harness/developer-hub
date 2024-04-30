@@ -44,12 +44,12 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 To create your Harness account, do the following:
 
-1. On the Harness **Sign up** page, enter your email address and a secure password.
+1. On the Harness **Sign up** page, enter your email address and a secure password.
 
 2. Select **Sign up**.
 
    After your account is created, you arrive at the **Continuous Delivery** start page.
-   
+
    ![](./static/getting-started-with-self-managed-enterprise-edition-02.png)
 
 ## Create your first project

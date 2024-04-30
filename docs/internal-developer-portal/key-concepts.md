@@ -31,7 +31,7 @@ TechDocs is Spotify's homegrown docs-like-code solution built directly into Back
 
 Software Catalog in Harness IDP provides a comprehensive framework for defining and managing software entities, including APIs.
 
-The [type of API specs](./get-started/add-api-docs) that could be added in IDP includes openapi, asyncapi, graphql and grpc.
+The [type of API specs](/docs/internal-developer-portal/techdocs/add-api-docs) that could be added in IDP includes openapi, asyncapi, graphql and grpc.
 
 ## Developer Onboarding
 

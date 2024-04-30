@@ -19,7 +19,7 @@ The Harness account ID for the account with which this delegate registers.
 The Harness account token that is used to register the delegate.
 
 ```
-- DELEGATE_TOKEN = d229ee88bf7bbxxxx6ea
+- DELEGATE_TOKEN = XXXXXXxxxxxxxxxx
 ```
 
 ### MANAGER_HOST_AND_PORT

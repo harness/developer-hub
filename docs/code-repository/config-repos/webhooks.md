@@ -1,7 +1,7 @@
 ---
 title: Configure webhooks
 description: Set up webhooks for your Harness Code repositories.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 You can set up webhooks for your Harness Code repositories. Webhooks can serve a variety of purposes, such as sending notifications or triggering builds.

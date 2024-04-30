@@ -18,7 +18,7 @@ Here's a breakdown of the process:
 ![Overview of the process](./static/automate-sbom-drift/overview.png)
 
 :::info
-For maintain consistency, we'll refer to our `main` branch as both the base and default branch throughout this tutorial. You can choose to use your respective branch as you follow along.
+For maintaining consistency, we'll refer to our `main` branch as both the base and default branch throughout this tutorial. You can choose to use your respective branch as you follow along.
 :::
 
 ## Prerequisites

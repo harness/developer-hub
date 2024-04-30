@@ -46,7 +46,7 @@ External database setup includes the following network requirements:
 
 For MongoDB Enterprise Edition versions, Harness recommends Ops Manager for replica set management. Ops Manager is a MongoDB database management tool to monitor alerts, backup, and replica set management.
 
-For MongoDB Community Editions versions, Harness recommends the following third-party monitoring tools: 
+For MongoDB Community Editions versions, Harness recommends the following third-party monitoring tools:
 
 - Datadog/App Dynamics (alerts)
 - Percona (MongoDB management tool)

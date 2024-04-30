@@ -80,16 +80,6 @@ export default function SMP() {
               </Link>
             </div>
           </div>
-          <div className={styles.illustrationContainer}>
-            <img
-              className={styles.illustration}
-              src={
-                colorMode === "light"
-                  ? `${baseUrl}img/platform.svg`
-                  : `${baseUrl}img/Harness_Platform_dark_mode.svg`
-              }
-            />
-          </div>
         </div>
       </div>
       <div className={styles.subSection}>

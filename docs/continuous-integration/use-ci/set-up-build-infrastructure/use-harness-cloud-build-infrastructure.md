@@ -12,7 +12,7 @@ With Harness Cloud, you can run builds in isolation on Harness-managed VMs that 
 
 Harness Cloud provides the following advantages:
 
-* Free monthly credits for up to 2,000 build minutes.
+* Use build credits to run builds on Harness-managed machines. No need to set up you own machines.
 * Starter pipelines for different programming languages.
 * Blazing fast builds on Linux, macOS, and Windows.
 * Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
@@ -31,7 +31,9 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 ## Billing and build credits
 
-All plans get 2000 free build credits each month. Customers on Team and Enterprise plans can purchase additional build credits. Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+Free plans get 2000 free build credits each month. If you're on a Team or Enterprise plan, build credit allowances are factored into your plan, and you can purchase additional build credit packages.
+
+Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
@@ -208,7 +210,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
 
 :::tip
 
-You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Workflow Steps in your CI pipelines.
 
 :::
 
@@ -259,7 +261,7 @@ You can use Harness Cloud build infrastructure in firewalled environments. For m
 
 ## Queue Intelligence
 
-With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. This replaces the previous behavior where the Harness Delegate would fail any job that it could not schedule or run immediately.
+With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. 
 
 The Queue Intelligence feature introduces a `queued` state for individual builds. Builds progress through the following states:
 

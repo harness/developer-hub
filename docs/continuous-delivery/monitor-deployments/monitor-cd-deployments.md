@@ -38,12 +38,6 @@ The **Services** dashboard provides an overview of all the services and service 
 
 ## Individual service dashboards
 
-:::note
-
-Currently, the following service dashboard functionality is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Click a service in the **Total Services** table to drill down and show more service details:
 
 <DocImage path={require('./static/service-dashboard.png')} width="60%" height="60%" title="Click to view full size image" />

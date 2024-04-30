@@ -413,24 +413,64 @@ The AWS connector has the following settings.
 
 ### Credentials
 
-Specify the credentials that enable Harness to connect your AWS account. There are four primary options:
+Specify the credentials that enable Harness to connect your AWS account. There are four primary options.
 
-* **Assume IAM Role on Delegate:** This assumes the SA of the delegate. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure (such as in an EKS cluster).
-   * Ensure the IAM roles attached to the nodes have the right access.
-   * This option isn't valid for IAM roles for service accounts (IRSA).
-   * If the Harness Delegate is in an EKS cluster that uses IRSA, you must select **Use IRSA**.
-   * If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration and select the **Use IRSA** option for your connector credentials. This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
-   * It is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows customers to replace a delegate with a new one of the same name or tag.
-* **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../secrets/add-use-text-secrets.md) for both.
-* **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa).
-* **Use OIDC**: Connect to AWS with OIDC. In order to do this you will need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html) in AWS and add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS. 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="iam" label="Assume IAM Role on Delegate" default>
+
+The **Assume IAM Role on Delegate** option assumes the SA of the delegate.
+
+This is often the simplest method for connecting Harness to your AWS account and services. Make sure the IAM roles attached to the nodes have the right access.
+
+Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure (such as in an EKS cluster).
+
+#### Assume IAM Role vs Use IRSA
+
+There are some instances where you need to use the **Use IRSA** option instead of the **Assume IAM Role on Delegate** option:
+
+* The **Assume IAM Role on Delegate** option isn't valid for IAM roles for service accounts (IRSA).
+* If your Harness Delegate is in an EKS cluster that uses IRSA, you must select **Use IRSA**.
+* If you deploy pods to Fargate nodes in an EKS cluster, and your nodes needs IAM credentials, you must configure IRSA in your AWS EKS configuration and select the **Use IRSA** option for your connector credentials. This is due to [Fargate limitations](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html#:~:text=The%20Amazon%20EC2%20instance%20metadata%20service%20(IMDS)%20isn%27t%20available%20to%20Pods%20that%20are%20deployed%20to%20Fargate%20nodes.).
+
+</TabItem>
+<TabItem value="access" label="AWS Access Key">
+
+With the **AWS Access Key** option, you provide the [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](/docs/platform/secrets/add-use-text-secrets.md) for both.
+
+</TabItem>
+<TabItem value="irsa" label="Use IRSA">
+
+The **Use IRSA** option allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources.
+
+By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
+
+For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add-aws-connector/#use-irsa).
+
+</TabItem>
+<TabItem value="oidc" label="Use OIDC">
 
 :::note
 
-The `Use OIDC` credential option is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Currently, this option is only supported for Kubernetes, Helm, Terraform, ECS, and CloudFormation deployment types. 
+Additionally, this option requires Harness Delegate version 24.03.82603 or later.
+
 :::
+
+Select **Use OIDC** to connect to AWS with OIDC.
+
+To do this, you need to create an [OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html) in AWS. Then you need to add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS.
+
+Use the following Harness OIDC provider endpoint and OIDC audience settings to create your OIDC identity provider:
+
+* Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
+* OIDC audience: `sts.amazonaws.com`
+
+</TabItem>
+</Tabs>
 
 :::warning
 
@@ -441,6 +481,8 @@ If the IAM role used by your AWS connector does not have the policies required b
 Additionally, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure.
 
 The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+
+Finally, it is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows you to replace a delegate with a new one that has the same name or tag.
 
 :::
 
@@ -786,10 +828,8 @@ spec:
           value: "true"
         - name: LOG_STREAMING_SERVICE_URL
           value: "https://app.harness.io/log-service/"
-        - name: DELEGATE_RESOURCE_THRESHOLD
-          value: ""
-        - name: DYNAMIC_REQUEST_HANDLING
-          value: "false"
+        - name: DELEGATE_CPU_THRESHOLD
+          value: "80"
 
 ---
 
@@ -951,7 +991,7 @@ A **Provisioner** setting is added and configured as a runtime input.
 
 7. Configure the following fields to connect to a cluster:
    * In **Connector**, create or select an AWS connector.
-   * (Optional) In **Region**, specify an AWS Region if you want the next field (**Cluster**) to show clusters from only that AWS Region. 
+   * (Optional) In **Region**, specify an AWS Region if you want the next field (**Cluster**) to show clusters from only that AWS Region.
       The Cluster field, by default, fetches all the clusters in all the AWS Regions associated with the AWS account. The credentials that the AWS connector uses, on the other hand, might limit the connector to only certain AWS Regions. In such a scenario, specifying the AWS Region ensures that the Cluster field is populated with a usable list of clusters.
    * In **Cluster**, select the Kubernetes cluster that you want to use.
    * In **Namespace**, select a namespace to use on the Kubernetes cluster.

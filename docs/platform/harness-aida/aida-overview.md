@@ -8,7 +8,25 @@ The Harness Platform leverages Harness AI Development Assistant (AIDA:tm:) to re
 
 ## Enable AIDA
 
-To enable module-specific AIDA features in your Harness account, go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.
+To enable module-specific AIDA features in your Harness account, do the following:
+
+#### Navigation 1.0
+
+1. Go to **Account Settings**.
+2. Select **Account Resources**, then select **Default Settings**.
+3. Select the **Harness AI Development Assistant** tile.
+4. Enable the **Harness AI Development Assistant (AIDA)** setting.
+5. Optional: Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.
+
+#### Navigation 2.0
+
+1. Go to **Account Settings**.
+2. Under **General**, select **Default Settings**. 
+3. Select the **Harness AI Development Assistant** tile.
+4. Enable the **Harness AI Development Assistant (AIDA)** setting.
+5. Optional: Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.
+
+For more information about navigation 2.0, go to [Harness navigation 2.0](https://developer.harness.io/docs/platform/get-started/harness-ui-overview/#harness-navigation-version-20).
 
 ## AIDA features
 
@@ -17,7 +35,7 @@ To enable module-specific AIDA features in your Harness account, go to **Account
 | Platform | Harness Support                                                                                                                  | AIDA can answer questions and suggest relevant documentation to help you browse and discover Harness features and documentation.                                                                                          | Generally available |
 | Platform | Harness Support                                                                                                                  | AIDA provides content recommendations when you create a support ticket.                                                                                                                                                   | Generally available |
 | Platform | [Dashboard Intelligence](/docs/platform/dashboards/use-dashboard-intelligence-by-aida)                                           | AIDA empowers you to craft customized dashboards with widget-level control through interactive prompts.                                                                                                                   | Generally available |
-| Platform | [Code Generation](./aida-code-gen)                                                                                               | With the Harness AIDA IDE extension, you can increase productivity by generating multi-line code updates through comments in your IDE, eliminating the need to manually write common functions or look up unknown syntax. | Development         |
+| Platform | [Code Generation](/docs/platform/harness-aida/aida-code-gen)                                                                                               | With the Harness AIDA IDE extension, you can increase productivity by generating multi-line code updates through comments in your IDE, eliminating the need to manually write common functions or look up unknown syntax. | Development         |
 | CCM      | [Generate governance rules](/docs/category/harness-aida-for-asset-governance)                                                    | Generate rules for asset governance accompanied with detailed descriptions to optimize your cloud spend.                                                                                                                  | Generally available |
 | CD       | Troubleshoot CD deployments                                                                                                      | Resolve your deployment failures with AIDA's root cause analysis (RCA).                                                                                                                                                   | Generally available |
 | CD       | Policy As Code Assistant                                                                                                         | Generate and integrate Open Policy Agent (OPA) Rego policies to meet your compliance standards.                                                                                                                           | Development         |

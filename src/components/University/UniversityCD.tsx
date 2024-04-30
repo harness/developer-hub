@@ -4,15 +4,16 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
-import { getCertLevel } from "./LandingPage";
+import { ActivePage, getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
 import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
 import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 import ArchitectCertificationReviewDetails from "./data/cd-certification-architect-review-guide.md";
 import ArchitectCertificationExamDetails from "./data/cd-certification-architect-exam-details.md";
-import IltCard, { iltType } from "./IltCard";
+import IltCard from "./Card";
 import { ilt } from "./data/iltData";
+import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -55,20 +56,29 @@ export default function CertificationsCD() {
       setTab(searchKey);
     }
   }, [searchKey]);
-
-  const [showCerts, setShowCerts] = useState<boolean>(true);
   useEffect(() => {
     if (location.search === "?ilt") {
-      setShowCerts(false);
+      setActivePage(ActivePage.InstructorLedTraining);
+    }
+    if (location.search === "?spt") {
+      setActivePage(ActivePage.SelfPacedTraning);
     }
   }, []);
+
+  const [activePage, setActivePage] = useState<string>(
+    ActivePage.Certifications
+  );
   const handleCertficationClick = () => {
     history.push(`${pathname}?lvl=developer`);
-    setShowCerts(true);
+    setActivePage(ActivePage.Certifications);
   };
   const handleInstLedTrainClick = () => {
     history.push(`${pathname}?ilt`);
-    setShowCerts(false);
+    setActivePage(ActivePage.InstructorLedTraining);
+  };
+  const handleSelfPacedTrainingClick = () => {
+    history.push(`${pathname}?spt`);
+    setActivePage(ActivePage.SelfPacedTraning);
   };
   return (
     <div className={styles.certificationsCD}>
@@ -101,10 +111,11 @@ export default function CertificationsCD() {
 
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${showCerts ? styles.active : ""}`}
+          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
+            }`}
           onClick={handleCertficationClick}
         >
-          {!showCerts ? (
+          {activePage !== ActivePage.Certifications ? (
             <img src="/img/certification_icon_unactive.svg" />
           ) : (
             <img src="/img/certification_icon.svg" />
@@ -114,21 +125,31 @@ export default function CertificationsCD() {
 
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            !showCerts ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+            }`}
         >
-          {showCerts ? (
-            <img src="/img/Instructor_led_trainin_logo.svg" />
-          ) : (
+          {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+          ) : (
+            <img src="/img/Instructor_led_trainin_logo.svg" />
           )}
           Instructor-Led Training
         </button>
+        <button
+          onClick={handleSelfPacedTrainingClick}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+            }`}
+        >
+         {activePage === ActivePage.SelfPacedTraning ? (
+            <img src="/img/self-paced-training-logo-inactive.svg" />
+          ) : (
+            <img src="/img/self-paced-training-logo-active.svg" />
+          )}
+          Self-Paced Training
+        </button>
       </div>
-
       {/* Tab Content */}
-      {showCerts && (
+      {activePage === ActivePage.Certifications && (
         <div className={styles.tabs}>
           <h2>Certifications</h2>
           <ul className={styles.tabItems}>
@@ -395,7 +416,7 @@ export default function CertificationsCD() {
           </div>
         </div>
       )}
-      {!showCerts && (
+      {activePage === ActivePage.InstructorLedTraining && (
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
@@ -412,13 +433,7 @@ export default function CertificationsCD() {
                   <IltCard {...ilt} />
                 ))}
 
-              {/* {ilt
-                .filter((ilt) => {
-                  return ilt.module === "cd";
-                })
-                .map((ilt) => (
-                  <IltCard {...ilt} />
-                ))} */}
+
               {ilt
                 .filter((ilt) => {
                   return (
@@ -428,6 +443,36 @@ export default function CertificationsCD() {
                 })
                 .map((ilt) => (
                   <IltCard {...ilt} />
+                ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {activePage === ActivePage.SelfPacedTraning && (
+        <div className={styles.tabs}>
+          <h2>Self-Paced Training</h2>
+          <p>
+            Self-paced courses that you can consume on your own time in a webinar style.
+          </p>
+          <div className={clsx(styles.tabContent, styles.active)}>
+            <div className={styles.cardContainer}>
+              {spt
+                .filter((spt) => {
+                  return spt.tileType === "pre requisite";
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
+                ))}
+              {spt
+                .filter((spt) => {
+                  return (
+                    spt.module === "cd" && spt.cardType === "SPT" ||
+                    (spt.module === "cd" && spt.tileType === "comming soon")
+                  );
+                })
+                .map((spt) => (
+                  <IltCard {...spt} />
                 ))}
             </div>
           </div>

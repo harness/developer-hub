@@ -167,7 +167,7 @@ You're ready to connect Harness to your artifact server and cluster. After those
 
 The YAML provided for the Harness Delegate defaults to the `cluster-admin` role to ensure you can apply updates. If you can't use `cluster-admin` because you are using a cluster in your company, you'll need to edit the delegate YAML.
 
-The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each entity type Harness uses.
+The set of permissions should include `list`, `get`, `create`, `watch`(to fetch the pod events), and `delete` permissions for each entity type Harness uses.
 
 If you don't want to use `resources: ["*"]` for the role, you can list out the resources you want to grant. Harness requires `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above.
 
@@ -224,7 +224,7 @@ JVM options for the delegate. Use this variable to override or add JVM parameter
 The Harness account Id for the account where this delegate will attempt to register. This value is added automatically to the delegate config file (YAML, etc) when you add the delegate.
 
   ```
-  - name: ACCOUNT_ID  value: H5W8iol5TNWc4G9h5A2MXg
+  - name: ACCOUNT_ID  value: XXXXXXxxxxxx
   ```
 
 #### DELEGATE_TOKEN
@@ -232,7 +232,7 @@ The Harness account Id for the account where this delegate will attempt to regis
 The Harness account token used to register the delegate.
 
   ```
-  - name: DELEGATE_TOKEN  value: d239xx88bf7xxxxxxx836ea
+  - name: DELEGATE_TOKEN  value: XXXXXXxxxxxxx
   ```
 
 #### MANAGER_HOST_AND_PORT
@@ -500,3 +500,4 @@ For example, if your delegate name is `myDelegate`, add `harness.io/name: myDele
       harness.io/name: myDelegate
 ...
 ```
+

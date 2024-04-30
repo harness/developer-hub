@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2023-08-09T10:00:15
+date: 2024-04-10T13:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,52 @@ Review the notes below for details about recent changes to Harness Internal Deve
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2024
+
+### Version 0.25.0
+
+<!-- Apr 10, 2024 -->
+
+Welcome to first release of April, and in this release we bring you features like **Catalog Metadata Ingestion APIs**, say goodbye to manual data entry woes. With our new API, effortlessly ingest metadata in scale into the IDP catalog. 
+
+- **Blogs:** [Introducing new Catalog Ingestion APIs to make Harness IDP truly yours](https://www.harness.io/blog/introducing-new-catalog-ingestion-apis-to-make-harness-idp-truly-yours)
+
+- **New Docs:** [Get started with IDP](https://developer.harness.io/docs/internal-developer-portal/get-started/), [Harness IDP Overview](https://developer.harness.io/docs/internal-developer-portal/get-started/overview), [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties), [Usage of Catalog Metadata Ingestion APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/ccp-for-workflows), [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards)
+
+- **New Videos:** Our team presented a talk on "[Architecting Multi-tenant Backstage Instances in a Shared Kubernetes Cluster](https://youtu.be/TPHsBduIvm0?si=wWp9b5kXXNKDGrX0)" at the recently held [Backstagecon Europe](https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/co-located-events/backstagecon/).  
+
+
+#### New features and enhancements
+
+- We now support a new [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) framework, which will allow users to have multiple connectors, with different host name, for a single git provider at once. For eg., Users can now use connectors for both  `github.com` and `github enterprise` to fetch entity yaml from both the sources at the same time. [IDP-2213]
+
+- We have added support for a new Workflow UI Picker, [`EntityFieldPicker`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker) using which users can use the data present in catalog as an input for the workflows. [IDP-2441]
+
+- We have added a new plugin, to support [GitHub Codespaces](https://developer.harness.io/docs/internal-developer-portal/plugins/available-plugins/github-codespaces) integration in the software catalog.[IDP-2469]
+
+- Added support for [MkDocs plugins and extensions](https://backstage.io/docs/features/techdocs/faqs/#what-is-the-mkdocs-techdocs-core-plugin) in the TechDocs. Here's the list of plugins added.[IDP-2540]
+  - [mkdocs-glightbox](https://github.com/blueswen/mkdocs-glightbox)
+  - [mkdocs-git-authors-plugin](https://github.com/timvink/mkdocs-git-authors-plugin)
+  - [mkdocs-git-revision-date-localized-plugin](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin)
+  - [mkdocs-video](https://pypi.org/project/mkdocs-video/)
+  - [mkdocs-material-extensions](https://pypi.org/project/mkdocs-material-extensions/)
+  - [mkdocs-redirects](https://github.com/mkdocs/mkdocs-redirects)
+  - [mkdocs-awesome-pages-plugin](https://pypi.org/project/mkdocs-awesome-pages-plugin/2.6.1/)
+  - [mkdocs-minify-plugin](https://pypi.org/project/mkdocs-minify-plugin/0.7.1/)
+
+- We have enhanced the [`harness:delete-secret`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#4-harnessdelete-secret) custom action to support deletion of secrets added as runtime inputs. [IDP-2492]
+
+- We now have Audit trails support for all the git integrations. [IDP-2419]
+
+- [Custom Dashboards](https://developer.harness.io/docs/internal-developer-portal/dashboard/custom-dashboards) are now available to use in IDP. We have support for few OOTB dashboards as well. [IDP-1456]
+
+
+#### Bug Fixes
+
+- Fixed issues, with empty string & null entries for user groups, in access control. [IDP-2509]
+- Fixed issues with Entities marked as secret to be visible to owners only. [IDP-2182]
+
 
 ## March 2024
 
@@ -554,7 +600,7 @@ contents:
 
 - The Backstage version has been upgraded to [1.14](https://backstage.io/docs/releases/v1.14.0). (IDP-632)
 - The following GitHub-based plugins are now available in IDP:
-  - [GitHub Actions](https://github.com/backstage/backstage/tree/master/plugins/github-actions)
+  - [GitHub Actions](https://github.com/backstage/community-plugins/tree/main/workspaces/github-actions/plugins/github-actions#github-actions-plugin)
   - [GitHub Insights](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-insights)
   - [GitHub Pull Requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests).
 - IDP now includes support for GitHub and Google OAuth applications. You can configure a GitHub or Google OAuth application in the IDP Admin view. These applications are used by the GitHub-based plugins to use the logged-in user's credentials when making API requests. (IDP-676, IDP-661, IDP-647)

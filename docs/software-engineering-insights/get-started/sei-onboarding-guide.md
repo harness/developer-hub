@@ -230,7 +230,7 @@ To learn more about how to use the satellite to configure an integration, go to 
 
 You can also create custom CI/CD integration. Find the instructions to create a custom CI/CD integration on SEI [here](/docs/software-engineering-insights/sei-integrations/semi-automated-integrations/sei-custom-cicd-integrations).
 
-The required credentials and method of authentication vary with the integration type and the third-party tool. To learn more about how to configure the integration on SEI, refer to the [integration-specific documentation](/docs/category/integrations-1).
+The required credentials and method of authentication vary with the integration type and the third-party tool. To learn more about how to configure the integration on SEI, refer to the [integration-specific documentation](/docs/category/sei-integrations).
 
 ## Phase 4: Collection Setup
 
@@ -299,12 +299,10 @@ Find the list of demos for the latest Harness SEI features.
 | Insights on Harness SEI |<a href="https://youtu.be/gJ1gLT6ldGs">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sei-insights) |
 | Role-Based Access Control on Harness SEI |<a href="https://youtu.be/7GProEXyB9c">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/access-control/sei-roles-and-permissions) |
 | Account Level Settings on Harness SEI |<a href="https://youtu.be/NCzw--puYmY">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
-| Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
-| Business Alignment 2.0 - BETA |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
-| Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights) |
+| Project Level Settings on Harness SEI |<a href="https://youtu.be/Jbza13xRnMU?si=80HvIXvaqE9Uf7hD">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/) |
+| Business Alignment 2.0 - BETA |<a href="https://youtu.be/f3fLqermTGo?si=bqY_sfda1QzxJWQj">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report) |
+| Trellis Scores - Reimagined - BETA |<a href="https://youtu.be/KsdTv3z2BkA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors) |
 | DORA Metrics Explained |<a href="https://youtu.be/443Zhm_bAqs?si=8WdhRC0Kp_X7KZKz">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
 | Dev Insight Explained |<a href="https://youtu.be/Jibzk-KF7PA">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/developer-insight) |
 | Sprints Insight Explained |<a href="https://youtu.be/OPhoRbRuZCU?si=TcgUlFs06Uf906ZH">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/insights/sprint-metrics-insight) |
-
-
-
+| Collections Walkthrough |<a href="https://www.youtube.com/embed/3sD8K-ratYM?si=oIu9wAkNQOOA0p7J">Watch on YouTube</a> | [Click here](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections) |

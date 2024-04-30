@@ -11,7 +11,7 @@ Use the SEI SonarQube integration to integrate SEI with SonarQube or SonarCloud.
 
 ## Requirements
 
-To use the SEI SonarQube integration you need a SonarQube API token.
+To use the SEI SonarQube integration you need a **SonarQube API Token**.
 
 * The user creating the token must have **Administer System** permissions.
    * To configure permissions in SonarQube, go to **Administration**, then **Security**, and then **Global Permissions**.
@@ -19,19 +19,15 @@ To use the SEI SonarQube integration you need a SonarQube API token.
 * For instructions on creating API tokens, go to the SonarQube documentation on [Generating and using tokens](https://docs.sonarsource.com/sonarqube/9.7/user-guide/user-account/generating-and-using-tokens/).
 * Copy the key somewhere that you can retrieve it when you configure the integration.
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **SonarQube** integration, and select **Install**.
 4. Configure and save the integration.
@@ -46,14 +42,14 @@ import TabItem from '@theme/TabItem';
 
 To integrate with the on-premises SonarQube instances, you must use an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
-
 </TabItem>
   <TabItem value="satellite" label="Satellite">
-
 
 The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the SonarQube server.
 
 Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a ```satellite.yml``` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
+
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml`
 
@@ -61,7 +57,7 @@ Here’s a sample `satellite.yml`
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: sonarqube
@@ -77,8 +73,6 @@ integrations:
 ### Troubleshooting
 
 In case you do not see data for all projects initially, consider enabling the `use_privileged_APIs` metadata field i.e. set the field to `True`. This needs the generated `SONARQUBE_API_KEY` to have the `Requires ‘Administer System’` permissions in SonarQube. For more information, go to [SonarQube Documentation](https://next.sonarqube.com/sonarqube/web_api/api/projects/search).
-
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 </TabItem>
 </Tabs>
