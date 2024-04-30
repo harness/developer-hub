@@ -8,7 +8,6 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 :::warning
 
@@ -345,10 +344,6 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 ### Test Globs
 
 You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you can override it with any other pattern, such as `.test.py`. Because test selection is at the file-level, the test globs pattern references file names. You can include directory structures, such as `microservice1/**/test_*.py`.
-
-<!-- ### Output Variables
-
-<OutVar /> -->
 
 ### Environment Variables
 

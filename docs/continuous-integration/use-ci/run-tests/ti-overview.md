@@ -16,7 +16,6 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build, and running all unit tests every time the code changes is expensive and time-consuming.
 

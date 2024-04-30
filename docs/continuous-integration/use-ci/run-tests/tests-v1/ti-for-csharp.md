@@ -8,7 +8,6 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 :::warning
 
@@ -392,10 +391,6 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 ### Test Globs
 
 You can override the default test globs pattern. For example, if the default pattern is `**/*Tests.csproj`, you could override this with any other pattern, such as `**/*Test_*.cs`.
-
-<!-- ### Output Variables
-
-<OutVar /> -->
 
 ### Environment Variables
 

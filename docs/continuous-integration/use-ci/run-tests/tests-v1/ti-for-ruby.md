@@ -8,7 +8,6 @@ redirect_from:
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 :::warning
 
@@ -296,10 +295,6 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 You can override the default test globs pattern. For example, the default for RSpec is `**/spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`, which would look for a `/spec` directory at the root level, rather than anywhere in the workspace.
 
 Starting with [version 1.24.0](/release-notes/continuous-integration), Ruby test globs starting with `/` are treated as absolute paths. If, prior to this change, you used a glob starting with `/`, you must either replace the leading slash or add `**` accordingly.
-
-<!-- ### Output Variables
-
-<OutVar /> -->
 
 ### Environment Variables
 

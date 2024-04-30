@@ -32,6 +32,7 @@ For more information about early access features, including early access feature
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
 | `CIE_ENABLE_RUNTEST_V2` | [Tests V2 step.](/docs/continuous-integration/use-ci/run-tests/tests-v2.md) | Beta |
+| `CI_ENABLE_OUTPUT_SECRETS`, `CI_SKIP_NON_EXPRESSION_EVALUATION` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
 | `CI_ENABLE_VM_DELEGATE_SELECTOR` | Delegate selectors for self-managed VM build infrastructures (CI-11545).<br/>With this feature flag enabled, you can use [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) with [self-managed VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). | Beta |
 | `CI_SECURE_TUNNEL` | Secure Connect for Harness Cloud (CI-8922).<br/>[Secure Connect for Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect) facilitates private networking with Harness Cloud runners. | Beta |

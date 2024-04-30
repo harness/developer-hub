@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-04-23T10:00
+date: 2024-04-29T10:00
 sidebar_position: 10
 ---
 
@@ -54,6 +54,15 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
+### Version 1.25.0
+
+<!-- 29 April 2024 -->
+
+#### Fixed issues
+
+* The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
+* Fixed an issue where pod cleanup could be missed due to duplicate data. (CI-11995)
+
 ### Version 1.24.2
 
 <!-- 23 Apr 2024 -->
@@ -68,14 +77,16 @@ If you currently use a Ruby test glob pattern starting with `/`, you must either
 
 :::
 
-<!-- #### Early access features
+#### Early access features
 
-* (CI-11792) CI_NEW_VERSION_GODOTENV ?? -->
+You can enable type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). If you select the **Secret** type, Harness treats the output variable value as a secret and applies [secrets masking](/docs/platform/secrets/add-use-text-secrets#secrets-in-outputs) where applicable. This is an [early access feature](/release-notes/early-access) behind the feature flags `CI_ENABLE_OUTPUT_SECRETS` and `CI_SKIP_NON_EXPRESSION_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+<DocImage path={require('/docs/continuous-integration/use-ci/static/run-step-output-var-type.png')} width="60%" height="60%" title="Click to view full size image" />
 
 #### Fixed issues
 
 * Increased the default machine size for the [Harness CI Cloud macOS platform](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). The default size was inadvertently decreased during a prior upgrade to Sonoma, and some users experienced `No space left on device` errors as a result. (CI-11620, ZD-59225)
-* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054) <!-- would help to have more detail -->
+* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054)
 
 ### Version 1.23.1
 
