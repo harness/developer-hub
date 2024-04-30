@@ -2981,7 +2981,6 @@ By following these steps, our support team can promptly review the situation, di
    ```
    - name: INIT_SCRIPT  
     value: ""
-  ```
 2. Replace `value: ""` with the following:    
    ```
    ## Install Azure CLI
