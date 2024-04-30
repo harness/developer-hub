@@ -7115,7 +7115,7 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
-#### How to pass a list or array to a path field in Kubernetes Manifest?
+#### How do I pass a list or array to a path field in a Kubernetes Manifest?
 
 In order to pass a list or array to a path field, you'll need to enable the `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR` Feature Flag. Please open a ticket with Harness Support to get this enabled on your account. After the Feature Flag has been enabled, you can add an array to a path field in a Kubernetes Manifest by using the `<+<+stage.variables.var1>.split(",")>` expression. Where the variable `var1` has a value of `path1,path2,path3`.
 
