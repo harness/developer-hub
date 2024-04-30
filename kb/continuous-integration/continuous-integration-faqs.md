@@ -32,11 +32,6 @@ For support operating systems, architectures, and cloud providers, go to [Which 
 
 Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
 
-#### Not able to utilize Kubernetes autoscaling feature to distribute pipeline workload. Though autoscaling is enabled on Kubernetes cluster, the pipeline is using resources from only one node and if the pipeline requires more resource so rather than utilizing the auto scale feature from cluster
-
-While using CI Build step we create a pod and launch different container within it so that if you are running in parallel, we need to reserve and launch the container accordingly and as all are running within single pod so we can not distribute on different node.
-Below is the doc that talks about the calculation of resource in details: https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/
-
 ## Local runner build infrastructure
 
 ### Can I run builds locally? Can I run builds directly on my computer?
@@ -390,6 +385,14 @@ If you notice either sporadic pod evictions or failures in the Initialize step i
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
 ```
+
+### I can't use Kubernetes autoscaling to distribute the pipeline workload.
+
+In a Build stage, Harness creates a pod and launches each step in a container within the pod.
+
+[Harness reserves node resources based on the pipeline configuration.](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits)
+
+Even if you enable autoscaling on your cluster, the pipeline uses resources from one node only.
 
 ### AKS builds timeout
 
@@ -949,10 +952,6 @@ You can add a Run step to the beginning of your Build stage that runs `ls -ltr`.
 ### Why is the codebase connector config not saved?
 
 Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
-
-### I am trying to figure out how I can use a label on a github pull request as a condition 
-You can use below format and can replace the labelkey to actual key
-`<+eventPayload.pull_request.labels[0].labelkey>`
 
 ## SCM status updates and PR checks
 
@@ -1887,6 +1886,16 @@ You can use the [putHandleInterrupt API](https://apidocs.harness.io/tag/Pipeline
 ### Can I add notifications, such as failure notifications, to stage templates?
 
 While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
+
+### Can I use a GitHub PR label as a condition for a trigger or conditional execution?
+
+Yes. You can use the following expression in a JEXL condition or trigger configuration.
+
+```
+<+eventPayload.pull_request.labels[0].LABEL_KEY>
+```
+
+Replace `LABEL_KEY` with your label's actual key.
 
 ## Logs and execution history
 
