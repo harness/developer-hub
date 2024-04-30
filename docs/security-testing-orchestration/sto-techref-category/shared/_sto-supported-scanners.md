@@ -15,7 +15,7 @@ A code scanner can detect one or more of the following types of issues in your s
 * **SCA (Software Composition Analysis)** Known vulnerabilities in open-source libraries and packages used by the code. 
 * **Secrets** Hard-coded secrets such as access keys and passwords.
 * **IaC** Known vulnerabilties in Infrastructure-as-Code files such as Terraform configurations.
-* **Misconfiguration** Known vulnerabilities in software configurations. 
+* **Misconfigurations** Known vulnerabilities in software configurations. 
 
 
 <table>
