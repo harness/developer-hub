@@ -7136,3 +7136,15 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+#### How do I pass a list or array to a path field in a Kubernetes Manifest?
+
+In order to pass a list or array to a path field, you'll need to enable the `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR` Feature Flag. Please open a ticket with Harness Support to get this enabled on your account. After the Feature Flag has been enabled, you can add an array to a path field in a Kubernetes Manifest by using the `<+<+stage.variables.var1>.split(",")>` expression. Where the variable `var1` has a value of `path1,path2,path3`.
+
+#### How do I get Rollback functionality in a non-deploy stage?
+
+Rollback is a functionality exclusive to Deploy stages however, you can use Harness Failure Strategies and Conditional Execution configuration in order to achieve similar behavior.
+
+1. Set your step's Failure Strategy to `Proceed with Default Values` for all Errors you wish to run your rollback step for.
+2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
+
+This will allow you to only run the Rollback step if the desired step failed.
