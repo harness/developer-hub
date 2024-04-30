@@ -117,8 +117,9 @@ For information about the specific vulnerabilities detected by each scanner, go 
         <td valign="top">
           <ul>
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference">OpenVAS</a> Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference">ZAP</a> Orchestration, Ingestion </li>
+          <li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>           
+          <li><a href="/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference">OpenVAS</a> Orchestration, Ingestion </li>
+          <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference">ZAP</a> Orchestration, Ingestion </li>
          </ul>
         </td>
         <td valign="top">
@@ -129,7 +130,6 @@ For information about the specific vulnerabilities detected by each scanner, go 
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/hql-appscan-scanner-reference">HQL AppScan</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/metasploit-scanner-reference">Metasploit Pro</a> Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qualys-web-app-scanner-reference">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus vulnerability scan</a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus web app scan</a> Orchestration, Ingestion </li>
