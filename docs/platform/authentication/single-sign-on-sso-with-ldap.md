@@ -252,9 +252,9 @@ A sample of the Quartz expression is below:
 
 ```
 0 0 4 7 ? 2014  
-| | | |   | |  
-| | | |   | \------- YEAR (2014)  
-| | | |   \--------- DAY_OF_WEEK (NOT_SPECIFIED)  
+| | | | |  |  
+| | | | |  \-------- YEAR (2014)  
+| | | | \----------- DAY_OF_WEEK (NOT_SPECIFIED)  
 | | | \------------- MONTH (JULY)  
 | | \--------------- DAY_OF_MONTH (4th)  
 | \----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
