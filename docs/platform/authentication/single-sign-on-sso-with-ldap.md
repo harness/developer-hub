@@ -248,8 +248,8 @@ The page includes a tabular breakdown of the cron expression for ease of underst
 :::note
 The Cron(Quartz) Expression field will accept string consisting of six or seven subexpressions (fields) that describe individual details of the schedule. Unix Cron Expression consisting of five subexpressions is not supported.
 
-A sample of the the Quartz expression is below:
-QUARTZ Expression
+A sample of the Quartz expression is below:
+
 ```
 0 0 4 7 ? 2014  
 | | | |   | |  
