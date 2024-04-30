@@ -218,94 +218,52 @@ Select or create a Harness encrypted text secret containing the decoded service 
 
 To use a Kubernetes Service Account (SA) and token, you need to use either an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
 
-For example:
+To create a new SA token and decode it to base64 format using `kubectl`, do the following:
 
-1. Create a manifest. This manifest creates a new SA named `harness-service-account` in the `default` namespace:
+1. Create a SA in Kubernetes using the `kubectl create serviceaccount` command.
 
-   ```yaml
-   # harness-service-account.yml
-   apiVersion: v1
-   kind: ServiceAccount
-   metadata:
-     name: harness-service-account
-     namespace: default
-   ```
+    ```bash
+    kubectl create serviceaccount my-sa
+    ```
 
-2. Apply the SA.
+2. Get the token associated with the SA. You can do this by describing the SA using `kubectl describe serviceaccount`.
 
-   ```
-   kubectl apply -f harness-service-account.yml
-   ```
+    ```bash
+    kubectl describe serviceaccount my-sa
+    ```
 
-3. Grant the SA the `cluster-admin` permission.
+    Look for the `Tokens` section in the output. There you will find the name of the token associated with the SA. For example:
 
-   ```yaml
-   # harness-clusterrolebinding.yml
-   apiVersion: rbac.authorization.k8s.io/v1beta1
-   kind: ClusterRoleBinding
-   metadata:
-     name: harness-admin
-   roleRef:
-     apiGroup: rbac.authorization.k8s.io
-     kind: ClusterRole
-     name: cluster-admin
-   subjects:
-   - kind: ServiceAccount
-     name: harness-service-account
-     namespace: default
-   ```
+    ```yaml
+    Name:                my-sa
+    Namespace:           default
+    Labels:              <none>
+    Annotations:         <none>
+    Image pull secrets:  <none>
+    Mountable secrets:   my-sa-token-harness
+    Tokens:              my-sa-token-harness
+    Events:              <none>
+    ```
 
-4. Apply the `ClusterRoleBinding`.
+3. Get the secret associated with the token. You can do this by describing the token using `kubectl describe secret <YOUR_TOKEN_NAME>`. For example:
 
-   ```
-   kubectl apply -f harness-clusterrolebinding.yml
-   ```
+    ```bash
+    kubectl describe secret my-sa-token-harness
+    ```
 
-5. After adding the SA, run the following commands to get the SA's token. The `| base64 -d` piping decodes the token so you can use it in the connector's credentials.
+    Replace `my-sa-token-harness` with the actual name of the token.
 
-   ```
-   SERVICE_ACCOUNT_NAME={SA name}
+4. After you have the token secret, you can decode it to base64 format using `kubectl get secret <YOUR_TOKEN_SECRET_NAME> -o jsonpath='{.data.token}' | base64 --decode`. For example:
 
-   NAMESPACE={target namespace}
+    ```bash
+    kubectl get secret <YOUR_SA_TOKEN> -o jsonpath='{.data.token}' | base64 --decode
+    ```
 
-   SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')
+    Replace `<YOUR_SA_TOKEN>` with the actual name of the token secret.
 
-   TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)
+This will output the token in plain text, decoded from base64 format.
 
-   echo $TOKEN
-   ```
-
-###### SA tokens for Kubernetes versions 1.24 and later
-
-The Kubernetes SA token isn't automatically generated for SAs provisioned under Kubernetes versions 1.24 and later. Instead, you must create a new SA token and decode it to the `base64` format.
-
-You can use the following kubectl command to create a SA bound token:
-
-```
-kubectl describe sa K8s-cluster-connector -n kube-system
-kubectl -n kube-system get secret K8s-cluster-connector-secret -o jsonpath='{.data.token}' | base64 --decode
-```
-
-You can also create SAs using manifests, for example:
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: <service-account-name>
-  namespace: default
-
----
-apiVersion: v1
-kind: Secret
-type: kubernetes.io/service-account-token
-metadata:
-  name: <token-secret-name>
-  annotations:
-    kubernetes.io/service-account.name: "<service-account-name>"
-```
-
-For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
+For more information, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) in the Kubernetes documentation.
 
 #### OpenID Connect
 
