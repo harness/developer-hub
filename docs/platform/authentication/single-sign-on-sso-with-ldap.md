@@ -261,7 +261,7 @@ A sample of the Quartz expression is below:
 \------------------- MINUTE (0)
 ```
 
-For more information please refer [Cron Expressions](https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm) documentation.
+For more information, please refer [Cron Expressions](https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm) documentation.
 :::
 
 ### Add a Harness User Group with LDAP users
