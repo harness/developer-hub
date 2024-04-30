@@ -10,10 +10,10 @@ The Patch step allows you to make changes to specific resources or workloads in 
 
 Here're some of the advantages of using a Patch step in your Kubernetes deployments:  
 
-- Efficiency: Instead of sending the entire resource specification for an update, you can send only the specific fields that need to be modified. This reduces the amount of data transferred over the network, and can improve the efficiency of resource updates, especially for large resources.
-- Granular control: The Patch command allows you to make precise changes to the Kubernetes resources by specifying which fields you want to modify. This level of granularity gives you more control over the update process and can help prevent unintended changes to other fields of the resource.
+- Efficiency: Instead of sending the entire resource specification for an update, you can send the specific fields to be modified. This reduces the amount of data transferred over the network and improves the efficiency of resource updates, especially for large resources.
+- Granular control: The Patch command allows you to make precise changes to the Kubernetes resources by specifying which fields you want to modify. This level of granularity gives you more control over the update process and helps prevent unintended changes to other fields of the resource.
 - Atomic updates: Kubernetes applies patches atomically, ensuring that either all changes are applied successfully or none of them are. This atomicity helps maintain consistency and integrity of resources in the cluster, especially when making multiple modifications simultaneously.
-- Concurrency: Since patch operations only modify specific fields of a resource, they can be performed concurrently with other operations on the same resource without the risk of conflicts or race conditions.
+- Concurrency: Kubernetes applies patches atomically, ensuring that either all changes are applied successfully or none of them are. This atomicity helps maintain the consistency and integrity of resources in the cluster, especially when making multiple modifications simultaneously.
 - Compatibility: The patch command is compatible with various Kubernetes client libraries and API versions, allowing you to perform updates programmatically from different environments and programming languages.
 
 ## Prerequisites
