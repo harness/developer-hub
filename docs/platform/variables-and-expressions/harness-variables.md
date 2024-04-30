@@ -319,6 +319,28 @@ pipeline:
 
 </details>
 
+We do not support using a ternary operator with colon as constant in the same expression.
+
+Let's look at the following sample expression:
+
+```
+<+ 
+   Env name: <+env.name> 
+   Service Name: <+<+<+env.name>.contains("dev")>?<+env.name>:"No Env">
+>
+```
+
+The above expression will not get resolved as colon is used as a constant string with the ternary operator. As a workaround for this expression to work we should create a new variable for ternary expression and use this variable in the original expression.
+
+In the example expression above, we can create a test variable with this expression as value `<+<+<+env.name>.contains("dev")>?<+env.name>:"No Env">` and replace the original expression with the same. Suppose the variable created is at the pipeline level, then our final expression will be as shown below, and it will work.
+
+```
+<+ 
+   Env name: <+env.name> 
+   Service Name: <+pipeline.variables.test>
+>
+```
+
 For more information about using ternary operators in Harness, go to [Using Ternary Operators with Triggers](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
 ### Expressions as strings

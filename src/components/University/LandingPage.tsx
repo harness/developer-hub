@@ -153,9 +153,9 @@ export default function University() {
             }`}
         >
           {activePage === ActivePage.SelfPacedTraning ? (
-            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           ) : (
-            <img src="/img/Instructor_led_trainin_logo.svg" />
+            <img src="/img/self-paced-training-logo-active.svg" />
           )}
           Self-Paced Training
         </button>
@@ -427,11 +427,11 @@ export default function University() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
-                    spt.cardType === "SPT" ||
-                    spt.tileType === "comming soon"
+                    spt.cardType === "SPT" &&
+                    spt.tileType === "normal"
                   );
                 })
                 .map((spt) => (
