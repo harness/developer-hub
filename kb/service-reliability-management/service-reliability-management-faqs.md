@@ -88,6 +88,14 @@ This usually means you are trying to use a deployed node from a CD Deploy step, 
 
 Manually marking a CV step as successful doesn't change the status immediately. It can take up to a minute or more to update while Harness cancels data collection and learning engine tasks behind the scenes.
 
+### Verify step doesn't verify the Prometheus health source.
+
+If verification isn't happening for your health source, check the following configurations:
+
+* Your query is correctly formatted.
+* You selected **Continuous Verification** under the query's **Assign** section.
+* You've selected the appropriate services to apply the metric to.
+
 ## Minimally deviated control pods
 
 ### Does Harness always take the minimally deviated control pod (the "worst of best")?
