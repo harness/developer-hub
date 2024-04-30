@@ -69,6 +69,13 @@ RBAC uses Principals, Resource Groups, and Roles to control access.
 - Resource Groups define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 - Roles define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
 
+### Are there any features in Harness that I can prevent a pipeline from re-running via RBAC?
+
+Rerun shares the same RBAC as RUN features. Therefore, users who can run the pipeline can also re-run, as there is no separate RBAC for Rerun.
+
+### Does Harness NextGen Free edition support RBAC?
+
+Yes, Harness NextGen Free edition supports RBAC. For a feature comparison and supported functionality, go to the [pricing](https://www.harness.io/pricing) page on `Harness.io`.
 
 ### What is a Resource Group?
 
@@ -335,6 +342,8 @@ Harness imposes a rate-limiting policy on API requests to ensure system stabilit
 
 No, Harness doesn't currently support this functionality.
 
+You can use the 'getUsers` API to get a list of users that you can parse to create a CSV file. For more information, go to [Get users](https://apidocs.harness.io/tag/User#operation/getUsers) in the API documentation.
+
 ### How many types of API tokens are there?
 
 There are two types of API tokens, one can be created at the user profile level. These are prefixed with `pat.xxxx....`, meaning personal account token. The second one can be created at the service account level, which is prefixed as `sat.xxxxx....`, meaning service account token.
@@ -376,6 +385,13 @@ curl --location --request GET 'https://app.harness.io/gateway/api/users?accountI
 --header 'accept: application/json, text/plain, */*' \
 --header 'authorization: Bearer ${token}' \
 ```
+
+### Why am I getting an error when I try to create an API key?
+```
+Invalid request: Maximum limit has reached
+```
+
+This error indicates that you've reached the maximum amount of API keys available for your user. Harness has a limit of 5 API keys per user. To resolve this error, delete one of your existing API keys or use a service account instead.
 
 ## Authentication
 
