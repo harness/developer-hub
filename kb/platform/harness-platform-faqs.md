@@ -817,11 +817,24 @@ Yes, you can configure the delegate upgrade schedule. For more information, go t
 
 ### Can delegates have HA if they're in different locations?
 
-If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production. 
+If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production.
+
+### Can I run the apt-get command on the delegate pod?
+
+No, the delegate is based on the RHEL. You can use the dnf or microdnf-based commands.
+
+### How do I install zip on the delegate?
+
+You can run the follwing command to install zip on the delegate:
+
+```
+microdnf install yum
+yum install -y zip
+```
 
 ### Is the DelegateManagerGrpcClientModule used for delegate connection to the manager over gRPC?
 
-The `DelegateManagerGrpcClientModule` facilitates gRPC communication between the delegate and the manager. However, while it's involved in tasks such as sending task executions and serving as a fallback mechanism for sending task responses, it's recommended to consult the CI team for confirmation on its specific usage, as there might be additional or alternative configurations in place.
+The `DelegateManagerGrpcClientModule` streamlines gRPC communication between the delegate and Harness Manager. Its responsibilities include dispatching task executions and acting as a failsafe for transmitting task responses. For guidance on its optimal utilization, contact Contact [Harness Support](mailto:support@harness.io) to ensure alignment with any supplementary or alternative configurations that might be in effect.
 
 ### Where is the Kubernetes configuration (KubeConfig) stored on the delegate if it's being utilized for Terraform (TF) Kubernetes steps?
 
@@ -2837,6 +2850,10 @@ This query for `MANUAL` returns results for users provisioned that were provisio
 db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"MANUAL"})
 ```
 
+### How do I enable GitOps in Harness Self-Managed Enterprise Edition?
+
+Set `global.gitops` to `true` in your `values.yaml` file and then re-apply the file.
+
 ### Is there a hard technical limit for entities in NextGen?
 
 There are no hard technical limit for entities in NextGen. For more information, go to [Harness entity reference](https://developer.harness.io/docs/platform/references/harness-entity-reference). We have performance data on the specified test environment. For more information, go to [Performance reports](https://developer.harness.io/docs/self-managed-enterprise-edition/performance-reports/).
@@ -3069,15 +3086,3 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
-### Can a user run the apt-get command on the delegate pod?
-No, the delegate is based on the RHEL. So the user can use the dnf, microdnf based commands.
-
-### How to install zip on delegate?
-You can install the zip by the below command:
-```
-microdnf install yum
-yum install -y zip
-```
-
-### How to enable the GitOps in Harness On-Prem?
-The user needs to mark the global.gitops as true in the values yaml and apply it again.
