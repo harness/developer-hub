@@ -275,7 +275,7 @@ For example:
    echo $TOKEN
    ```
 
-:::note SA tokens for Kubernetes versions 1.24 and later
+###### SA tokens for Kubernetes versions 1.24 and later
 
 The Kubernetes SA token isn't automatically generated for SAs provisioned under Kubernetes versions 1.24 and later. Instead, you must create a new SA token and decode it to the `base64` format.
 
@@ -306,8 +306,6 @@ metadata:
 ```
 
 For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
-
-:::
 
 #### OpenID Connect
 
