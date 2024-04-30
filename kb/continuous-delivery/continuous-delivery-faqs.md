@@ -7148,3 +7148,53 @@ Rollback is a functionality exclusive to Deploy stages however, you can use Harn
 2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
 
 This will allow you to only run the Rollback step if the desired step failed.
+
+#### I copied and pasted a script from my Windows OS into the Harness script step.  I noticed the yaml section has the entire script in a single line instead of a whole block of code.  How can we correct this?
+
+The issue with your code showing in a single line in the yaml section may be due to copying/pasting from different sources, in this case, from Windows to the Harness UI.
+ 
+One suggestion is to use dos2unix which should remove the '\r'.  There may be other tools available online to help remove the additional '\r\n' from the text.  Some Windows users utilize Notepad++, brought up the Replace All option to replace the '\r\n' as well as any additional '\' symbols.  One can then copy and paste from Notepad++ to Harness to correctly provide the whole block of code instead of one single line.
+
+
+
+#### How do we reference step group variables within the same step group?
+
+One can use the expression <+execution.steps.[step group id].variables.[variable name]> to refer to step group variables within a step group.
+
+
+
+#### How do we reference step group variables outside the step group?
+
+One can use the expression <+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]> to refer to step group variables outside the same step group.
+
+
+
+#### I've created a few step templates at the project level utilizing the Command Step. When I go to use them inside the same project, mwhy is my pipeline not able to find the templates?
+
+This template command step/script is used when establishing SSH or WinRM connections this Command Step/Script will be made available.  Here's a link where it references this in our docs: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/
+
+
+
+#### I am writing policy in Account level and trying to test by selecting the pipeline for On Run. I am getting error "Policy evaluations are created when policy sets are enforced on your Harness entities."
+
+The feature flag OPA_PIPELINE_GOVERNANCE has to be enabled for your account in order to fix this issue pertaining to policy sets being enforced.  Contact the Harness support desk to have this FF enabled for your account.
+
+
+
+#### Is there a way to have multiple options be available for one variable within the same pipeline?
+
+The feature flag PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES has to be enabled for the account in order to have multiple options available for one variable in the same pipeline.  Contact Harness support to have this FF enabled for the account.
+
+
+
+#### How can we obtain an output variable from the previous stage in a chained pipeline from another stage?
+
+Users can provide an expression to reference the output variable for the chained pipeline.  For more information, please reference the doc https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/
+
+
+
+#### The curl command can trigger the clean up execution without issue from my local terminal, but when I put the same command in one of the pipeline steps, there is a curl command error.
+
+The OS being referenced is within the base image being used to run within the Harness platform.  For example, if your deployment is running a base version of Linux (depending on the base image you are utilizing) then this issue may occur.
+ 
+This may resolve your issue if you try updating the curl command before running it (using yum or apt depending on what Linux flavor you are using).  We would like confirmation once you are able to do this.
