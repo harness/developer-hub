@@ -7136,73 +7136,74 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
-#### Can we use the shell variable within the Harness expression to fetch the secret in a shell script step?
+#### Can I use shell variables in Harness expressions to fetch a secret in a shell script step?
 
-You wouldn't be able to use the shell variable within the harness expression as the harness expression will be resolved before the step starts and the shell variable will only be populated when you execute the script.
+You can't use a shell variable in a Harness expression because the Harness expression is resolved before the step starts, and the shell variable doesn't populate until the shell script step run.
 
-#### What type of connection test is performed for a Docker connector that's configured with anonymous auth type?
+However, you could write a variable that stores a Harness expression referencing a secret, and then use that variable in your script. This way the expression can be resolved independently of the script running.
 
-The connection test will check if the registry endpoint URL is reachable
+#### What is the connection test for a Docker connector with anonymous authentication?
 
-#### How is the anonymous Docker connector showing a successful connection despite the Docker public registry endpoint being blocked in the proxy used by the delegate?
+The connection test checks if Harness can reach the registry endpoint URL.
 
-We specifically check if the server's response code is 400 or not while verifying DockerConnectivity with anonymous credentials. This situation might occur if the proxy, which is set up to block connections, returns a 403 or any other client error code other than 400
+#### How can a Docker connector with anonymous authentication have a successful connection test if the Docker public registry endpoint is blocked by the delegate proxy?
 
-#### Can we run the CD stage in Harness cloud similar to running the CI stage?
+Specifically, Harness checks that the server's response code is 400 while verifying Docker connectivity with anonymous credentials. This situation can occur if the proxy, which is set up to block connections, returns a 403 or any client error code other than 400.
 
-No, CD stage must be running on delegate which is running in customer's infra
+#### Can I use Harness CI Cloud build infrastructure for Deploy or Custom stages?
 
-#### Can we run the CI plugin step and clone step in CD stage?
+No. Harness CI Cloud is only for Continuous Integration builds (Build stages).
 
-Yes, you could add CI plugin step and clone step within a containerized step group in a CD/custom stage
+#### Can I use Plugin or Git Clone steps in Deploy or Custom stages?
 
-#### Where does the steps added in the containerized step group get executed?
+Yes, you can add these steps in containerized step groups in Deploy or Custom stages.
 
-They will be executed on a separate pod which will be getting created during the runtime.
+#### Can I use any CI steps in a containerized step group?
 
-#### If I add multiple steps in the containerized step group, will it create separate pod for each steps?
+No. Only some step types are available in containerized step groups.
 
-No, one pod will be created for a containerized step group and all the step containers will be running within the same pod
+#### Where are steps in containerized step groups executed?
 
-#### When is the pod created during the execution of the containerized step group get cleaned up?
+They are executed on a separate pod created at runtime.
 
-The pod will be cleaned up as soon as the step group execution got completed
+The pod is cleaned up after step group execution ends.
 
-#### Does the pod created during the execution of the containerized step group get cleaned up if the execution failed?
+#### Are separate pods created for each step in a containerized step group?
 
-Yes, the pod gets cleaned up irrespective of the execution status
+No. Harness creates one pod for the containerized step group and runs all step containers in the group on that pod.
 
-#### Why do we not see the files created in the run step within containerized step group in the subsequent shell script step?
+#### Can I access files from a containerized step group in a subsequent shell script step?
 
-Containerized step group will be running on a separate pod and the shell script step will be running either on the delegate or on a remote host hence the files generated in the containerized step group will not be accessible in the shell script step
+No. Containerized step groups are isolated on a separate pod from other steps. Files generated in the containerized step group aren't available in outside steps.
 
-#### Is it possible to execute the containerized step group on a VM infrastructure or a local build infrastructure, similar to how we can run the CI stage on various infrastructures?
+#### Can I run a containerized step group on a self-managed VM or local infrastructure?
 
-No, Containerized step group can only be configured to run on Kubernetes infrastructure
+No, containerized step group can only run on Kubernetes infrastructure.
 
-#### Is there a built in clone step that can be added to CD stage?
+#### Does the containerized step group's command override CMD and/or ENTRYPOINT?
 
-You could add a git clone step within a containerized step group in CD/custom stage
+The step group's **Command** is overwritten the image's default entrypoint, if it has one.
 
-#### Can we add all the CI steps within the containerized step group?
+If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**
 
-You can not add all the CI steps within the containerized step group however the basic CI steps such as run, git clone, plugin etc can be added
+#### Can I pass a list or array to a path field in a Kubernetes Manifest?
 
-#### Does the value for "Command" in the container step override CMD and/or ENTRYPOINT?
+Currently, to pass a list or array to a path field, you'll must enable the feature flag `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-Any command that is going in the command section will be overwritten by the default entry point of the image
+Once enabled, you can add an array to a path field in a Kubernetes Manifest by:
 
-#### Is there any way to execute the entrypoint of the image used in the container step?
+1. Creating a stage variable containing your list or array contents, such as `path1,path2,path3`.
+2. Passing the array to the manifest by using the following expression:
 
-You could manually execute the entry point in the command section after running the other custom commands
+   ```
+   <+<+stage.variables.VARNAME>.split(",")>
+   ```
 
-#### How do I pass a list or array to a path field in a Kubernetes Manifest?
+#### Can I rollback a non-deploy stage?
 
-In order to pass a list or array to a path field, you'll need to enable the `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR` Feature Flag. Please open a ticket with Harness Support to get this enabled on your account. After the Feature Flag has been enabled, you can add an array to a path field in a Kubernetes Manifest by using the `<+<+stage.variables.var1>.split(",")>` expression. Where the variable `var1` has a value of `path1,path2,path3`.
+Rollback is a functionality exclusive to Deploy stages.
 
-#### How do I get Rollback functionality in a non-deploy stage?
-
-Rollback is a functionality exclusive to Deploy stages however, you can use Harness Failure Strategies and Conditional Execution configuration in order to achieve similar behavior.
+However, you can use Failure Strategies and Conditional Executions to achieve similar behavior.
 
 1. Set your step's Failure Strategy to `Proceed with Default Values` for all Errors you wish to run your rollback step for.
 2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
