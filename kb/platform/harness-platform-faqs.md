@@ -758,6 +758,8 @@ It's important to note that sensitive data, such as secrets, are not directly se
 
 Yes, Harness offers account-level delegates. You can create them by navigating to **Account Settings** > **Account Resources** > **Delegates**.
 
+You can install delegates at the account, org, or project level.
+
 ### What is the base image of the Harness Delegate?
 
 Harness Delegate is a Red Hat Enterprise Linux (RHEL)-based image. A Windows-based image is not available. For more information, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
