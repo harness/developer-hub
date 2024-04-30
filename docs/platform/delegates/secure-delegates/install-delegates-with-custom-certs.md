@@ -106,7 +106,7 @@ To install a Kubernetes delegate with custom certificates, do the following:
               readOnly: true
    ```   
 
-   2. Add the following YAML under `spec.template.spec`. Replace `<YOUR_SECRET_NAME>` with the value used in creating the secret in step 1.
+   2. Add the following YAML under `spec.template.spec`. Replace `<YOUR_SECRET_NAME>` with the value you used when you created the secret in step 1.
    
    ```yaml
          volumes:
