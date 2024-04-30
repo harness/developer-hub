@@ -399,7 +399,7 @@ export default function CertificationsSTO() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     spt.module === "sto" && spt.cardType === "SPT" ||

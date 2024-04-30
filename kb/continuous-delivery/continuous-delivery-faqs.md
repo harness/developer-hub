@@ -6172,8 +6172,11 @@ Yes, one can deploy using custom artifact without using the S3 artifact. Please 
 
 #### How does the AWS connector currently handle OIDC authentication?
 
-Users can now leverage the AWS connector to configure OIDC authentication. This only leverages the account ID parameter when we send the token payload to the AWS STS service. This feature is provided behind the feature flag `FF:CDS_AWS_OIDC_AUTHENTICATION`
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings)
+Users can now leverage the AWS connector to configure OIDC authentication.
+
+This feature is currently behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This only leverages the account ID parameter when Harness sends the token payload to the AWS STS service. For more information, go to [Harness AWS connector settings](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#harness-aws-connector-settings).
 
 #### How can I force a template consumer to a new version?
 
@@ -7008,3 +7011,15 @@ Go to [Git Repository Merge PRs](https://developer.harness.io/docs/code-reposito
 Yes, users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
 This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
+
+#### Harness is pulling old Helm dependencies that are not in the Chart.yaml.
+
+Check the following:
+* Service configuration.
+* Whether you have configured the override. 
+* Whether the chart is getting pulled from the correct location.
+* List of manifests.
+
+#### How to get stage.Selected env?
+
+You can use environment variables like `<+env.name>` or `<+env.identifier>`, so that it resolves to the environment used for that stage.
