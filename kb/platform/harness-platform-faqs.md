@@ -468,7 +468,7 @@ You can Navigate to Authentication tab and go to LDAP setting and try Synchroniz
 
 Confirm that group authorization is enabled for the configured SAML setup.
 
-### Why does my demo account receive a "SSO not enabled" message when attempting to sign in via SSO?? 
+### Why does my demo account receive a "SSO not enabled" message when attempting to sign in via SSO?
 
 To verify whether your account has SSO enabled, do the following:
 
