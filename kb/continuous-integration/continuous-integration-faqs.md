@@ -2098,3 +2098,26 @@ For troubleshooting and FAQs for Platform components that aren't specific to CI,
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
 <!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
+
+## When checking the 'restore cache' logs of a pipeline execution, it is referring to multiple s3 cache keys of different pipelines in the project.  Due to this, the cache size is increased to a huge amount of storage size.  What can be done to prevent this from happening?
+
+The user will need to introduce a new stage variable in the restore step PLUGIN_ENABLE_SEPARATOR = true.
+
+This would enable the user to use cache keys with same prefix without fetching other pipelines cache. If the user does not wish to use the stage variable, the user will have to make sure that any two pipelines do not have cache-keys with exact same prefix.
+
+
+
+## Is there a way to upload files to an S3 bucket and place them at the root of the bucket?
+
+Currently it is not possible to upload files to an S3 bucket to the root of the budket due to the glob pattern we use.  It would cause issues such as files with the same name being saved in the same directory.  As a workaround, users can have a run step to flatten the directory before uploading. More information can be found on the following external site: https://www.baeldung.com/linux/flattening-nested-directory
+
+
+## Is it possible to use the queue step in a build stage?
+
+The Queue step is only available under the Custom Stage section and is not available under the Build stage.
+
+
+
+## When creating or trying to clone or amend any of the lead or cycle time (time in stages) widgets, the `save` button is greyed out.  When you hover over it you get an error stating "Please select a JIRA only based workflow profile under the settings tab of this report."
+
+Did you try associating the relevant profile under the "Settings" tab in the Widget settings ? The profile for the "Lead time spent in Stages" should have the "Measure lead time by JIRA statuses only" checkbox enabled. This widget supports a workflow purely based on the "Jira statuses".
