@@ -7101,17 +7101,17 @@ You can use environment variables like `<+env.name>` or `<+env.identifier>`, so 
 
 #### How do I adjust the kubectl rollout command in Harness?
 
-You can export the kubeconfig and can run kubectl command manually by using shell script step
+You can export kubeconfig and can run the kubectl command manually by using the shell script step
 
-#### We have this step in Harness first Gen that sets the desired capacity of the ASG in percentage or count. We cannot find that step or a replacement for the ASG options in Next Gen.
+#### We have this step in Harness First Gen that sets the desired capacity of the ASG in percentage or count. We cannot find that step or a replacement for the ASG options in Next Gen.
 
-Under ASG setup the option to set Desired Instance is available.
+Under ASG setup, the option to set **Desired Instance** is available.
 
-#### How do I get the logs from a Kubernetes Job that's been deployed via Helm?
+#### How do I get the logs from a Kubernetes job deployed via Helm?
 
-If you are interested in seeing the deployment logs, then you will be able to see the detailed logs within execution for the command applied(with manifest applied and status), but if you want to check the logs after deployment, then you need to use shell script and can run kubectl logs command after exporting the kubeconfig
+You can view the detailed logs for the command applied (with manifest applied and status) in Execution. To view logs after deployment, use shell script and run the `kubectl logs` command after exporting kubeconfig.
 
-#### "buffer already closed for writing" what does it mean?
+#### What does "buffer already closed for writing" mean?
 
-This error comes mostly while using ssh/winrm connection while some command was still executing and the connection is closed by the host, need to debug further by looking into logs and server resource constraints.
+This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
