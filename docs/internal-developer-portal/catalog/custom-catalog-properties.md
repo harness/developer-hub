@@ -55,19 +55,35 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ```json
 {
-    "field": "metadata.teamLead",
-    "filter": {
-        "kind": "Component",
-        "type": "service",
-        "owners": [
-            "Product_Engineering"
-        ]
-    },
-    "value": "Jane Doe"
+    "properties": [
+        {
+            "field": "metadata.teamLead",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "Product_Engineering"
+                ]
+            },
+            "value": "Jane Doe"
+        }
+    ]
 }
 ```
 
-- field: It contains the information on the metadata name to be added, here in the above example it would ingest the `releaseVersion` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `releaseVersion` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+
+
+- **filter:** This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
+    
+:::info 
+
+**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
+
+:::
+
+- **value:** This field contains the value of the entity added under `field`. 
+
 
 ![](./static/inspect-entity.png)
 
@@ -87,15 +103,6 @@ metadata:
 ...
 ```
 
-- filter: This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. 
-    
-:::info 
-
-**Error Handling**: We validate the body of the API and certain fields like `kind`, `metadata`, `metadata.name`, `metadata.namespace`, are uneditable and if you try to change these, the endpoint returns an Error Code 400. Also make sure your metadata updates adhere to the [backstage schema](https://github.com/backstage/backstage/tree/master/packages/catalog-model/src/schema)
-
-:::
-
-- value: This field contains the value of the entity added under `field`. 
 
 
 ### How to assign metadata value for an individual software component?
@@ -104,21 +111,25 @@ metadata:
 
 ```JSON
 {
-    "field": "metadata.teamLead",
-    "filter": {
-        "kind": "Component",
-        "type": "service",
-        "owners": [
-            "Product_Engineering"
-        ]
-    },
-    "value_overrides": [
+    "properties": [        
         {
-            "entity_ref": "component:default/location-service",
-            "override_value": "Dan John"
+            "field": "metadata.teamLead",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "Product_Engineering"
+                ]
+            },
+            "value_overrides": [
+                {
+                    "entity_ref": "component:default/location-service",
+                    "override_value": "Dan John"
+                }
+            ],
+            "value": "Jane Doe"
         }
-    ],
-    "value": "Jane Doe"
+    ]
 }
 ```
 
@@ -264,25 +275,29 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 
 ```json
 {
-    "field": "metadata.teamLead",
-    "filter": {
-        "kind": "Component",
-        "type": "service",
-        "owners": [
-            "Product_Engineering"
-        ]
-    }
+    "properties": [   
+        {
+            "field": "metadata.teamLead",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "Product_Engineering"
+                ]
+            }
+        }
+    ]
 }
 ```
 
-- field: It contains the information on the metadata name to be deleted, here in the above example it would ingest the `releaseVersion` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+- **field:** It contains the information on the metadata name to be deleted, here in the above example it would ingest the `releaseVersion` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
 
 ![](./static/inspect-entity.png)
 
 ![](./static/raw-yaml.png)
 
 
-- filter: This is used to identify the software components from where you want to delete the metadata information, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. 
+- **filter:** This is used to identify the software components from where you want to delete the metadata information, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
 
 ### cURL Example
 
