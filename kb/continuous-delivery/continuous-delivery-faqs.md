@@ -7012,22 +7012,23 @@ Yes, users can now store the terraform plan on the delegate and leverage it in t
 This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
 
-####  We have added tags in pipeline but for some reason, in the execution the tags are not present for some reason.
+####  We have added tags in the pipeline but, during execution, the tags are not present.
 
-The issue can be with the terraform, where in the case of pipeline creation via tf, we need to define tags in the template and the in the tf resource to get it applied properly.
+The issue can be with Terraform. When you create a pipeline with Terraform, you must define tags in the template as well as the Terraform resource to get it applied properly.
 
-#### When running a terraform, this pipeline is pulling a previous state from another pipeline, what could be the issue.
+#### When running Terraform, pipeline is pulling a previous state from another pipeline, what could be the issue?
 
-If you are running the pipeline on the same delegate make sure Provisioner Identifier is different for both the plan.
+If you are running the pipeline on the same delegate, make sure that Provisioner Identifier is different for both plans.
 
-#### We have a updated manifest file for deployment, but delegate seems to be fetching old manifest how can we update this.
+#### We have an updated manifest file for deployment, but delegate seems to be fetching old manifest. How can we update this?
 
-You can clear the local cached repo : Local repository is stored at : 
+You can clear the local cached repo. 
+Local repository is stored at : 
 
 ```
 /opt/harness-delegate/repository/gitFileDownloads/Nar6SP83SJudAjNQAuPJWg/<connector-id>/<repo-name>/<sha1-hash-of-repo-url>
 ```
-#### We are facing missing terraform backend config issue in terraform plan step logs, though we have configured backend.
+#### We are facing missing Terraform backend configuration issue in the Terraform Plan step logs though we have configured backend.
 
-You have to declare the backend block in terraform configuration. You might have provided in harness backend-configuration, but in your terraform configuration doesn’t exist any terraform “backend” block. 
+You have to declare the backend block in the Terraform configuration. You might have provided the config in Harness, but the `backend` block might not exist in the Terraform configuration.
  

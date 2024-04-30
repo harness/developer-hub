@@ -88,6 +88,6 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 #### Why am I getting the error Missing target_name for scan_type [repository] scan.
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
-#### I'm trying to create a dashboard to display the STO metrics of my project. But my Organization is not getting listed in the filter, hence I'm not able to get my project filtered as well.
+#### I'm trying to create a dashboard to display the STO metrics for my project. But, my Organization is not getting listed in the filter. Hence, I'm not able to get my project filtered as well.
 
-The dashboard only populates projects that have had a baseline scan run. You will need to add baseline to pipelines which needs to be displayed in dashboard.
+The dashboard only populates projects that had a baseline scan run. You might want to add baseline to pipelines to display them in the dashboard.
