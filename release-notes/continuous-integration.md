@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-04-29T10:00
+date: 2024-05-07T10:00
 sidebar_position: 10
 ---
 
@@ -33,6 +33,16 @@ You will be impacted by this deprecation if:
 * You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
+
+## May 2024
+
+### Version 1.26.x
+
+<!-- 07 May 2024 -->
+
+#### Fixed issues
+
+Fixed a dynamic resizing issue that could cut off the list of steps when viewing the [build details page](/docs/continuous-integration/use-ci/viewing-builds) on a macOS machine. (CI-7952)
 
 ## April 2024
 
