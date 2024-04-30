@@ -2977,14 +2977,12 @@ By following these steps, our support team can promptly review the situation, di
 
 ### How to install the latest version of Azure CLI in Harness Delegate?
 
-1. Locate the `INIT_SCRIPT` in the `Deployment` object of the `delegate.yaml` file.
-   ```
-   - name: INIT_SCRIPT  
-    value: ""
-2. Replace `value: ""` with the following:    
-   ```
-   ## Install Azure CLI
-   rpm --import <https://packages.microsoft.com/keys/microsoft.asc>
-   rpm -ivh <https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm>
-   microdnf install -y azure-cli
-   ```
+Add the below commands in the `INIT_SCRIPT` to download and install the Azure CLI for the delegate.
+
+```yaml
+- name: INIT_SCRIPT
+  value: |
+    rpm --import <https://packages.microsoft.com/keys/microsoft.asc>
+    rpm -ivh <https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm>
+    microdnf install -y azure-cli
+```
