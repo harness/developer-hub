@@ -3069,3 +3069,15 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
+### Can a user run the apt-get command on the delegate pod?
+No, the delegate is based on the RHEL. So the user can use the dnf, microdnf based commands.
+
+### How to install zip on delegate?
+You can install the zip by the below command:
+```
+microdnf install yum
+yum install -y zip
+```
+
+### How to enable the GitOps in Harness On-Prem?
+The user needs to mark the global.gitops as true in the values yaml and apply it again.

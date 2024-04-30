@@ -2085,6 +2085,92 @@ For steps, you can set a custom timeout limit in each step's **Optional Configur
 
 Currently, Approval steps aren't compatible with CI stages.
 
+### Is the email step supported in the CI stage?
+There's no native email step in the CI stage but a user can use the email plugin to achieve this requirement.
+Docs for reference: https://plugins.drone.io/plugins/email, https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci/
+
+
+### Are the SSCA module images needed in the CI pipeline?
+No, The SSCA module-specific images are not used in CI unless you are trying/implementing SSCA steps.
+
+
+### How to enable the debug logs in the build pipeline?
+You can add a stage variable PLUGIN_VERBOSITY with the value set to debug to get more detailed information.
+
+### Is there a way to pull the 2nd last Git release tag?
+No, as per the current design, it's not possible.
+
+### Is the user able to tag the commit in bitbucket to the committed code from the hanress pipeline?
+There's no out-of-the-box solution to tag the commit but you can use the shell script or run step as per your requirement.
+
+### Do we have a way of creating ci pipelines using Terraform?
+Yes, You can use the terrafrom provider to achieve that.
+Doc for reference: https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline
+
+### How can the user build the image without pushing using the built-in step?
+For Harness Cloud, local runner, or self-managed VM:
+
+```
+You need to add a Variable in the stage and enter the following:
+Name: PLUGIN_DRY_RUN
+Type: String
+Value: true
+```
+
+For Kubernetes infra: add the PLUGIN_NO_PUSH variable to the Build and Push step's Environment Variables.
+```
+envVariables:
+PLUGIN_NO_PUSH: true
+```
+
+### How can user build the image without pushing using buildah plugin with Kubernetes Infra?
+Add the following stage variable to the stage where you run the Buildah plugin:
+```
+variables:
+- name: PLUGIN_DRY_RUN
+type: String
+description: ""
+required: false
+value: "true"
+```
+
+### Is there a way to mark the build as failed in bitbucket if any other stage failed in the pipeline?
+As per the current design, the status update is for each CI stage, so if the CI stage is executed as successful it will show the green checkmark in the bitbucket. There's no way to send the failed status of the CD stage to the bitbucket if the CI stage succeeds and any other stage fails.
+
+### Is there a way to execute one of the steps in the background?
+Yes, the background step runs for the entire lifetime of a Build stage.
+
+### Is there a way to configure the pipeline so that it sends only ONE status check per pipeline execution, instead of multiple?
+No, Currently, Harness CI updates the build status on a PR for each individual Build stage. However, if you don't want to send a status check for a specific stage in pipeline execution, you can disable Clone Codebase for that Build stage in your pipeline, and then use a Git Clone or Run step to clone your codebase.
+
+### What does the Image Migration plugin do?
+This plugin facilitates the copying of images from one registry to another. You can pull the desired image from the source registry and push it to the designated destination registry.
+
+### Where can I push images using this Image Migration plugin?
+1. Docker registries that support basic authentication (username and password)
+1. AWS ECR registries accessed by AWS access key and secret
+1. GAR registries that support GAR access token authentication
+
+### What registries does the Image Migration plugin support?
+1. Public Docker registries
+1. Docker registries that don't require authentication
+1. Private registries that support basic authentication (username and password)
+1. Private AWS ECR registries accessed by AWS access key and secret
+1. GAR registries that support GAR access token authentication
+
+### How to export artifacts by email in the CI Stage?
+You can use the Drone Email plugin to export reports, data, and other artifacts by email.
+Doc for reference: https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin
+
+### Can user confirm whether the cache is present or not before installing dependencies?
+Yes, Harness supports the conditional restore cache step.
+Doc for reference: https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache
+
+### Is there an option to show the list of all branches as a dropdown list for cloning the git repo?
+As per the current design, dropdown functionality is not available for the branches in the git clone.
+
+
+
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).

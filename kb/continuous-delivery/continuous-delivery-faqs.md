@@ -7136,3 +7136,80 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+
+#### Can a user import the service from git by using Harness API?
+No, As per the current API design it's not supported.
+
+#### How can a user easily disable the pipeline triggers?
+Users can enable/disable the trigger through this API: https://apidocs.harness.io/tag/Triggers/#operation/updateTrigger
+
+#### How can the user use the Plugin step in the CD/Custom stage pipeline?
+If the user wants to use the Plugin step in the custom stage, you need to add the step group with Enable container-based execution.
+Doc for reference: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/
+
+#### Can a user change the GitOps cluster authentication mechanism from UI in Harness?
+Yes, the user can change the authentication type of GitOps cluster from the Harness UI.
+
+#### Can the user add the timeout value to the pipeline without adding to the pipeline template?
+If the user wants to make the pipeline timeout changes, the user needs to make the change in the template only if you are using that.
+
+# # # # Can the two releases have the same name?
+Yes, the release name is created based on serviceIdentifier-environmentIdentifier-connectorRef-namespace. If both pipeline have same serviceIdentifier, environmentIdentifier, connectorRef, namespace it will generate the same release name.
+
+#### In the freeze window can any user execute the pipeline?
+No, only the Admin or the user who has freeze override permission can able to execute the pipeline.
+
+#### Is the environment required in a custom stage?
+No, the environment is not mandatory in a custom stage.
+
+#### How the custom artifact source work?
+In the custom artifact, you need to write your own script with the necessary credentials to fetch the artifacts.
+
+#### If the user cats the secret value in the file and tries to echo it, the secret will be displayed in console logs or not?
+In the Harness console logs the secret will be masked.
+
+
+#### If one of the executions is stuck at the resource constraint step so how can a user check the other pipeline that is currently running?
+User can click on the resource constraint step and check the already running execution in the list.
+
+#### Can user run the same pipeline multiple times on the same infrastructure?
+Yes, but the user has to enable the Allow simultaneous deployments on the same infrastructure option in the infrastructure.
+
+#### Can user create the remote-based input set in the inline-based pipeline?
+No, As per the current design if the pipeline is inline the input set can only be created inline and if the pipeline is remote the input set can only be created as remote.
+
+#### Is there a way to delete the orphaned resources that were present in an old manifest, but no longer present in the manifest used for the current deployment?
+Yes, user can use the Kubernetes pruning functionality to delete those resources.
+Doc for reference: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/
+
+#### When a clone of Pipeline1 is made (say Pipeline2), is Service1 also cloned to a new service Service2? Or does Pipeline2 utilizes the same service Service1?
+When a clone of Pipeline1 is made (Pipeline2), so Pipeline2 uses the same service Service1. Service is not cloned with the pipeline.
+
+#### If user changes the service configurations from inside Pipeline2, does that reflect in Pipeline1 as well?
+If you change the Service Inputs inside Pipeline2 it will not sync to Pipeline1. But if you made the changes in the Service Config, it will reflect in the Pipeline1 pipeline service also.
+
+#### The user has a shell script step in the custom stage but the includeInfraSelectors configuration is not available in the step.
+The includeInfraSelectors configuration is only available when you are adding the Shell Script step to a Kubernetes deployment in the CD stage.
+
+#### Input set RBAC can also restrict the user by changing the values after applying the input set on the pipeline at the time of execution?
+No, The permission will only work on InputSet, not after applying to the execution form.
+
+#### Can user delete the specific version of the template?
+Yes, After selecting the delete template option, in the next window user can select the specific version for deletion.
+
+#### Is there a way to pass the value from one pipeline to another pipeline?
+You can use the Harness API to fetch the execution details of another pipeline and retrieve the desired output variables. You can then parse the API response and publish the variables to be used in other steps or pipelines.
+API docs: https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+
+#### Is it possible to add attachments when using the update Jira step?
+As per the current design, harness doesn't support adding attachments with the Jira step.
+
+#### How do I decode and write the secret to a .json file in my pipeline?
+You can decode and write the secret using commands like:
+
+```
+echo <+secrets.getValue("my_secret")> | base64 -d > /harness/secrets.json
+
+cat > /harness/secrets.json << 'EOF' MySecret:<+secrets.getValue("my_secret")> EOF
+```
+
