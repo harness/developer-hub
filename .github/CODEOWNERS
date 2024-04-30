@@ -42,7 +42,7 @@ README.md @ravilach
 /docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
 
 # CCM Docs
-/docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+/docs/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @nikunj-badjatya
 
 # CET Docs
 /docs/continuous-error-tracking/ @M-Tsur
@@ -63,7 +63,7 @@ README.md @ravilach
 /docs/software-supply-chain-assurance/ @sunilgupta-harness @tejakummarikuntla
 
 # IACMS Docs
-/docs/infra-as-code-management/ @RickCraig
+/docs/infra-as-code-management/ @RickCraig @richardblack-Harness
 
 # FF Docs
 /docs/feature-flags/ @HarnessTheChaos @jenniferopal
@@ -214,7 +214,7 @@ src/components/Roadmap/data/codeData.ts @aimurphy
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal
 
 #IACM Roadmap
-src/components/Roadmap/data/iacmData.ts @RickCraig
+src/components/Roadmap/data/iacmData.ts @RickCraig @richardblack-Harness
 
 #IDP Roadmap
 src/components/Roadmap/data/idpData.ts @Debanitrkl

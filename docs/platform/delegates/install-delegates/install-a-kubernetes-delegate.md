@@ -224,7 +224,7 @@ JVM options for the delegate. Use this variable to override or add JVM parameter
 The Harness account Id for the account where this delegate will attempt to register. This value is added automatically to the delegate config file (YAML, etc) when you add the delegate.
 
   ```
-  - name: ACCOUNT_ID  value: H5W8iol5TNWc4G9h5A2MXg
+  - name: ACCOUNT_ID  value: XXXXXXxxxxxx
   ```
 
 #### DELEGATE_TOKEN
@@ -232,7 +232,7 @@ The Harness account Id for the account where this delegate will attempt to regis
 The Harness account token used to register the delegate.
 
   ```
-  - name: DELEGATE_TOKEN  value: d239xx88bf7xxxxxxx836ea
+  - name: DELEGATE_TOKEN  value: XXXXXXxxxxxxx
   ```
 
 #### MANAGER_HOST_AND_PORT

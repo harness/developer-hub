@@ -48,7 +48,7 @@ To use CE with CD using a selected experiment (though you can use many experimen
 
 * In the example below, the relevant [probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) are added to avoid a false positive or false negative scenario around the resilience score.
 
-![Completed chaos experiments with probes shown](./static/exp-run-complete-with-probes.png)
+	![Completed chaos experiments with probes shown](./static/exp-run-complete-with-probes.png)
 
 ### Step 2: Add a chaos experiment to a CD pipeline
 
@@ -117,15 +117,15 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 #### Example 1: Failure strategy for one chaos step
 
-In this example, the failure strategy is **Rollback** for **All Errors** on a specific chaos step. You can also choose different types of errors and different strategies to use for each.
+* In this example, the failure strategy is **Rollback** for **All Errors** on a specific chaos step. You can also choose different types of errors and different strategies to use for each.
 
-![Failure strategy for a chaos step](./static/fail-strategy-one-exp.png)
+	![Failure strategy for a chaos step](./static/fail-strategy-one-exp.png)
 
 #### Example 2: Conditional failure step at the end of several chaos steps
 
-In this example, the failure strategy uses a **Shell Script** step after all the chaos steps in the CD pipeline. This step conditionally applies a shell script that specifies actions to take in case of failure. You can configure this step to add the script, and specify the conditions under which it is executed.
+* In this example, the failure strategy uses a **Shell Script** step after all the chaos steps in the CD pipeline. This step conditionally applies a shell script that specifies actions to take in case of failure. You can configure this step to add the script, and specify the conditions under which it is executed.
 
-![Conditional failure Shell Script step shown in a CD pipeline after many chaos steps](./static/fail-strategy-many-exp.png)
+	![Conditional failure Shell Script step shown in a CD pipeline after many chaos steps](./static/fail-strategy-many-exp.png)
 
 ## What happens when the CD pipeline runs with a chaos step
 

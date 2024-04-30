@@ -128,6 +128,13 @@ Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.
 1. In your Harness project, select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and select **GitHub** under **Code Repositories**.
 3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md).
+
+   :::info
+
+   Harness recommends [using GitHub Apps with GitHub connectors](./git-hub-app-support.md) for [increased rate limits](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28#primary-rate-limit-for-github-app-installations).
+
+   :::
+
 4. After the connection test runs, select **Finish** to save the connector.
 
 ## Connect to GitLab

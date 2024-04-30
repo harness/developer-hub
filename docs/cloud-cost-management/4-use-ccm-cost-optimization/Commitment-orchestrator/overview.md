@@ -24,6 +24,8 @@ To help bring down the cloud costs, providers often offer special discounted rat
 
 2. **Savings Plans**: Savings Plans are a flexible pricing model introduced by cloud service providers that offer customers significant discounts on their usage in exchange for committing to a consistent amount of usage, measured in dollars per hour, for a one- or three-year term. Unlike Reserved Instances, Savings Plans offer more flexibility in terms of instance type, region, and operating system, making them suitable for workloads with variable usage patterns.
 
+<DocImage path={require('./static/ri_vs_sp.png')} width="70%" height="70%" title="Click to view full size image" />
+
 Here's how Savings Plans are referred to by major cloud providers:
 
 - **Amazon Web Services (AWS)**: In the context of AWS, Savings Plans are known as Savings Plans.
@@ -43,6 +45,8 @@ Commitments in the cloud, such as Reserved Instances (RIs) or other long-term co
 - While managing commitments, there's always overhead in understanding the context of the need of purchase and to identify what to purchase next among the multiple options for commitments, It requires continuous manual effort and is a lot more human error prone in case of wrong predictions.
 
 At Harness, we are committed to bring in the power of **AI and ML to manage the commitments**. Harness CCM helps you to track everything about your cloud spends so that you have an optimized cloud spend. With our latest addition of **Commitment Orchestrator for AWS EC2 Convertible RIs and Compute Savings Plans**, we focus on managing your commitments for optimal performance and mitigating the problems associated with manual management of commitments.
+
+<DocImage path={require('./static/harness_co.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ## What is over commitment and under commitment?
 In the context of cloud spend or cloud bills breakdown,, over-commitment and under-commitment typically refer to the utilization of resources compared to the commitments made through discount plans like Reserved Instances (RIs) or Savings Plan (SPs). 
@@ -82,12 +86,12 @@ Commitment Orchestrator can be found on our dashboard under [Cloud Costs module]
 ### Step 1 : Setting up the master account 
 
 You need to select the master account with the right permissions to be added via connector on which you want to enable orchestration. You can either select an existing connector for your master account or create one. 
-<DocImage path={require('./static/Step1.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/Step1.png')} width="80%" height="80%" title="Click to view full size image" />
 
 
 ### Step 2: Exclude Instance types 
 Commitment Orchestrator provides you with an option to choose the instances you would like to exclude when orchestrating instances for Compute Usage.
-<DocImage path={require('./static/Step2.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/Step2.png')} width="80%" height="80%" title="Click to view full size image" />
 
 :::important note 
 The purchases will happen only at master account level and thus will be in turn applicable for child accounts as well. The exclusion list will only be considered for the compute spend calulations and actual RI/SP may be used against the instances if they are part of child accounts.
@@ -98,14 +102,14 @@ Coverage Percentage: The Coverage percentage is the percentage of your compute s
 
 SP/RI split: Out of the totally compute spend, you have the option to split it between Convertible Reserved Instances and Compute Savings Plan. Out of total coverage, the system automatically calculates the maximum guardrail for purchasing the Savings Plans given the past compute spend data to ensure limiting any over purchase of saving plans. You can reduce the percentage by increasing share of Reserved Instances. However, you can't increase the coverage via Savings Plan beyond the max limit.
 
-<DocImage path={require('./static/Step3.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/Step3.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ### Step 4: Review
 After all the set-up steps, you can review and finalise your inputs.
-<DocImage path={require('./static/Step4.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/Step4.png')} width="80%" height="80%" title="Click to view full size image" />
 
 Post set-up, you can view your dashboard with all the information required . You can manipulate the information shown according to the filters such as Instances and Regions and see all the information related to Computer Coverage, Savings, Commitment Utilisation alongwith Log history. This way, the dashboard allows you to easily keep a track of your commitments and make informed decisions.
-<DocImage path={require('./static/Dashboard_CO.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/Dashboard_CO.png')} width="80%" height="80%" title="Click to view full size image" />
 
 ## Steps to configure:
 
@@ -152,6 +156,8 @@ The Commitment Orchestrator supports six action states currently:
 * **EXPIRED**: The recommended action has expired.
 * **ERROR**: The approval process encounters an error.
 * **COMPLETED**: The approved recommendation has been successfully completed.
+
+<DocImage path={require('./static/action_state.png')} width="90%" height="90%" title="Click to view full size image" />
 
 The Commitment Orchestrator facilitates the following:
 - **SP Purchase Plan**: We send out monthly recommendations for purchasing Compute SP (Savings Plans), provided there isn't an existing SP in place already. Upon receipt, you will have 24 hours to approve the request. If not approved within this timeframe, the recommendation will expire. However, rest assured that our systems will automatically regenerate the recommendation for your consideration.

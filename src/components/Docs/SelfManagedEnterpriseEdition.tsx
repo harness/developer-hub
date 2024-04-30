@@ -46,16 +46,7 @@ export default function CD() {
               lowest possible cost. It helps you stay within the governance
               boundaries required to achieve organizational objectives.
             </p>
-            <div className={styles.illustrationContainer}>
-              <img
-                className={styles.illustration}
-                src={
-                  colorMode === "light"
-                    ? `${baseUrl}img/platform.svg`
-                    : `${baseUrl}img/Harness_Platform_dark_mode.svg`
-                }
-              />
-            </div>
+
           </div>
         </div>
       </div>

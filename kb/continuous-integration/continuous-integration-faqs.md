@@ -360,7 +360,7 @@ No. Mounting a service account isn't required if the pod doesn't need to communi
 
 ### What types of volumes can be mounted on a CI build pod?
 
-You can mount many types of volumes, such as empty directories, host paths, and persistent volumes, onto the build pod. Use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) in the Kubernetes cluster build infrastructure settings to do this.
+You can mount many types of volumes, such as empty directories, host paths, and persistent volumes, onto the build pod. Use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#volumes) in the Kubernetes cluster build infrastructure settings to do this.
 
 ### How can I run the build pod on a specific node?
 
@@ -1027,9 +1027,9 @@ For troubleshooting information for Git event (webhook) triggers, go to [Trouble
 
 ## Pipeline initialization and Harness CI images
 
-### Initialize step to fails with a "Null value" error
+### Initialize step fails with a "Null value" error or timeout
 
-This can occur if an expression or variable is called before it's value is resolved.
+This can occur if an expression or variable is called before it's value is resolved, if a variable/expression references a secret that doesn't exist, or if an expression incorrectly references a secret (such as the incorrect scope path or secret ID).
 
 In Build (CI) stages, steps run in separate containers/build pods, and the pipeline can only successfully [resolve expressions if the target value is available](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables#use-expressions-only-after-they-can-be-resolved).
 
@@ -1547,7 +1547,7 @@ You could do this by [running DinD in a Background step](https://developer.harne
 
 This error suggests that there is an issue accessing the entrypoint of the Docker image. It can occur in a Kubernetes cluster build infrastructure when running PostgreSQL services in Background steps.
 
-To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+To resolve this error, you might need to mount volumes for the PostgreSQL data in the build infrastructure's [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#volumes) setting, and then reference those volumes in the Background step running your PostgreSQL instance. For instructions, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 ### Does the Harness Run step overwrite the base image container entry point?
 
@@ -1829,7 +1829,7 @@ Yes. Depending on the build infrastructure, Background steps can either use exis
 
 ### How do I add volumes for PostgreSQL data in the build workspace?
 
-With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
+With a Kubernetes cluster build infrastructure, use the [Volumes](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#volumes) setting to add one empty directory volume for each PostgreSQL service you plan to run. For moe information, go to [Troubleshooting: Failed to get image entry point](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/multiple-postgres#troubleshooting-failed-to-get-image-entrypoint).
 
 ### Can I run a LocalStack service in a Background step?
 

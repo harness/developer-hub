@@ -69,6 +69,16 @@ The new group and metric are created. The query specifications and mapping setti
    * Total 
    * Count
 
+:::note
+
+You can find the values necessary for each query using the Azure UI. Generally you need to follow these steps:
+
+1. Select the [Azure Metric](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/analyze-metrics) you want to analyze.
+2. Click on the [`Share` option](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/analyze-metrics#share-your-charts) in the dashboard and select `Copy Link`.
+3. Input your URL into a [URL decoder](https://meyerweb.com/eric/tools/dencoder/). This should result in you seeing a JSON payload.
+4. In the JSON payload you decoded, you should be able to find the **resource ID**, **metric namespace**, and **metric name**. 
+
+:::
 
 
 #### Assign services

@@ -68,7 +68,7 @@ To install a Docker delegate with custom certificates, do the following:
    ```
    docker run --cpus=1 -u root --memory=2g \
      -v PUT_YOUR_PATH_TO_CUSTOM_CERT:/opt/harness-delegate/ca-bundle/abc.pem \
-     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \         
+     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \

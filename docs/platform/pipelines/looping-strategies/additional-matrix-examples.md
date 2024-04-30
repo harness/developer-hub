@@ -501,3 +501,83 @@ pipeline:
 Escaping is required for some punctuation. Note the use of double quotes around the entire object.
 
 Also, when an expression is used in a JSON string, it must be wrapped in quotation marks, for example, `<+pipeline.variables.version>` in the above pipeline YAML.
+
+
+### Generate random integers using a matrix and then find their aggregate sum.
+
+Solution:
+
+Requirements:-
+1. Enable project setting **Enable Json Support for expressions**.
+2. Install jq library.
+
+![](./static/project_setting.png)
+
+We are going to create a two-step process: the first step is for generating random integers, and the second step is for calculating their aggregate sum.
+
+#### First step 
+In this step we are using built-in variable in Bash `$RANDOM` that generates a random integer, here it generates a random integer between 1 and 100 and stores it in the variable `random_number` and we are using this variable as an **output variable** that can be referenced in other step as well.
+```yaml
+pipeline:
+  name: 
+  identifier: project
+  projectIdentifier: project
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: cs1
+        identifier: cs1
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: random_number=$((1 + $RANDOM % 100))
+                    environmentVariables: []
+                    outputVariables:
+                      - name: random_num
+                        type: String
+                        value: random_number
+                  timeout: 10m
+                  strategy:
+                    matrix:
+                      groups:
+                        - name: firstGroup
+                        - name: secondGroup
+                        - name: thirdGroup
+```
+
+#### Second step
+In step 2, we are using [json.format](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors.md#format) and jq to extract those values and add them together.
+```yaml
+              - step:
+                  type: ShellScript
+                  name: ShellScript_2
+                  identifier: ShellScript_2
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          t='<+json.format(<+pipeline.stages.cs1.spec.execution.steps.ShellScript_1>)>'
+
+                          echo $t | jq 'to_entries | map(select(.key | startswith("ShellScript_"))) | .[].value.outcome.output.outputVariables.random_num' | jq -s 'map(tonumber) | add'
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+```
+
+![](./static/output_example_matrix_example.png)

@@ -38,7 +38,7 @@ export default function CE() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness Chaos Engineering (CE) provides the end-to-end tooling
+              Harness Chaos Engineering (HCE) provides the end-to-end tooling
               required to achieve Continuous Resilience in your Software
               Delivery Life Cycle. Using Harness CE, your developers, QA teams,
               and SREs inject chaos experiments in a controlled fashion, either

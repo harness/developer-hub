@@ -13,4 +13,15 @@ export const spt: IltCardItem[] = [
      tileType: tileType.preReq,
      cardType: cardType.SPT,
    },
+   {
+    title: "Continuous Delivery & GitOps",
+    module: MODULES.cd,
+     type: type.user,
+     description:
+       "Self-paced webinar style course introducing Harness Continuous Delivery & GitOps.",
+     version: "Harness CD & GitOps Free/Team Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-continuous-delivery-gitops",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
 ];

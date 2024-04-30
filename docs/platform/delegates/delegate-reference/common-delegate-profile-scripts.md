@@ -114,7 +114,7 @@ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Sta
 
 ### Git CLI
 
-Run `microdnf update` before you run`microdnf` commands.
+Run `microdnf update` before you run `microdnf` commands.
 
 ```
 microdnf update

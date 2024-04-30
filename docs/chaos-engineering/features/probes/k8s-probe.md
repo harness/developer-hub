@@ -385,7 +385,7 @@ spec:
           operation: "absent"
         mode: "EOT"
         runProperties:
-          probeTimeout: 5s 
-          interval: 2s 
+          probeTimeout: 5s
+          interval: 2s
           attempt: 1
 ```
