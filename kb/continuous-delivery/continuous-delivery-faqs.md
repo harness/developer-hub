@@ -2511,11 +2511,11 @@ No, harness only executes the PowerShell script on the default PowerShell termin
 If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
 
 #### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
-These details are not available by default as only(status, time, pipeline name url etc0 is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
 
 #### How to create role binding (to a usergroup) through the api
 You can use below api by updating the details
-‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’
+`https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string`
 
 #### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
 You can configure failure strategy and use retry option for multiple run
@@ -2542,7 +2542,6 @@ curl -i -X PUT \
   -H 'Content-Type: application/json' \
   -H 'x-api-key: REDACTED' \
   -d '["gmail.com","harness.io"]'
-
 ```
 
 #### Can the domain whitelisting api be used for ip allowlist as well?
@@ -2559,7 +2558,7 @@ The variable access works only in the context of current executing pipelines. We
 
 #### How can we utilise output variables from one pipeline stage or execution in another execution?
 
-To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression <+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]> to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
 
 Harness also has an endpoint you can use in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
 This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
@@ -2605,6 +2604,7 @@ Within the same step group we can shorten the expression for accessing step vari
 #### Is there a short notation for accessing step output variable within same stage and outside of step group?
 
 We can also shorten the expression for accessing output variables of a step inside the step group to be accessed by another step outside the step group. Below is the expression example:
+
 ```
 <+execution.steps.somestepgroup.steps.ShellScript_1.output.outputVariables.myvar>
 ```
