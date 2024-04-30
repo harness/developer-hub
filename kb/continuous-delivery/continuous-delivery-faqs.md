@@ -7011,3 +7011,23 @@ Go to [Git Repository Merge PRs](https://developer.harness.io/docs/code-reposito
 Yes, users can now store the terraform plan on the delegate and leverage it in the apply step. This now bypasses the restriction to store the plan in a secrets manager and let users store it locally.
 This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
+
+####  We have added tags in pipeline but for some reason, in the execution the tags are not present for some reason.
+
+The issue can be with the terraform, where in the case of pipeline creation via tf, we need to define tags in the template and the in the tf resource to get it applied properly.
+
+#### When running a terraform, this pipeline is pulling a previous state from another pipeline, what could be the issue.
+
+If you are running the pipeline on the same delegate make sure Provisioner Identifier is different for both the plan.
+
+#### We have a updated manifest file for deployment, but delegate seems to be fetching old manifest how can we update this.
+
+You can clear the local cached repo : Local repository is stored at : 
+
+```
+/opt/harness-delegate/repository/gitFileDownloads/Nar6SP83SJudAjNQAuPJWg/<connector-id>/<repo-name>/<sha1-hash-of-repo-url>
+```
+#### We are facing missing terraform backend config issue in terraform plan step logs, though we have configured backend.
+
+You have to declare the backend block in terraform configuration. You might have provided in harness backend-configuration, but in your terraform configuration doesn’t exist any terraform “backend” block. 
+ 
