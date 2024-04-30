@@ -7136,3 +7136,63 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+#### Can we use the shell variable within the Harness expression to fetch the secret in a shell script step?
+
+You wouldn't be able to use the shell variable within the harness expression as the harness expression will be resolved before the step starts and the shell variable will only be populated when you execute the script.
+
+#### What type of connection test is performed for a Docker connector that's configured with anonymous auth type?
+
+The connection test will check if the registry endpoint URL is reachable
+
+#### How is the anonymous Docker connector showing a successful connection despite the Docker public registry endpoint being blocked in the proxy used by the delegate?
+
+We specifically check if the server's response code is 400 or not while verifying DockerConnectivity with anonymous credentials. This situation might occur if the proxy, which is set up to block connections, returns a 403 or any other client error code other than 400
+
+#### Can we run the CD stage in Harness cloud similar to running the CI stage?
+
+No, CD stage must be running on delegate which is running in customer's infra
+
+#### Can we run the CI plugin step and clone step in CD stage?
+
+Yes, you could add CI plugin step and clone step within a containerized step group in a CD/custom stage
+
+#### Where does the steps added in the containerized step group get executed?
+
+They will be executed on a separate pod which will be getting created during the runtime.
+
+#### If I add multiple steps in the containerized step group, will it create separate pod for each steps?
+
+No, one pod will be created for a containerized step group and all the step containers will be running within the same pod
+
+#### When is the pod created during the execution of the containerized step group get cleaned up?
+
+The pod will be cleaned up as soon as the step group execution got completed
+
+#### Does the pod created during the execution of the containerized step group get cleaned up if the execution failed?
+
+Yes, the pod gets cleaned up irrespective of the execution status
+
+#### Why do we not see the files created in the run step within containerized step group in the subsequent shell script step?
+
+Containerized step group will be running on a separate pod and the shell script step will be running either on the delegate or on a remote host hence the files generated in the containerized step group will not be accessible in the shell script step
+
+#### Is it possible to execute the containerized step group on a VM infrastructure or a local build infrastructure, similar to how we can run the CI stage on various infrastructures?
+
+No, Containerized step group can only be configured to run on Kubernetes infrastructure
+
+#### Is there a built in clone step that can be added to CD stage?
+
+You could add a git clone step within a containerized step group in CD/custom stage
+
+#### Can we add all the CI steps within the containerized step group?
+
+You can not add all the CI steps within the containerized step group however the basic CI steps such as run, git clone, plugin etc can be added
+
+#### Does the value for "Command" in the container step override CMD and/or ENTRYPOINT?
+
+Any command that is going in the command section will be overwritten by the default entry point of the image
+
+#### Is there any way to execute the entrypoint of the image used in the container step?
+
+You could manually execute the entry point in the command section after running the other custom commands
+
