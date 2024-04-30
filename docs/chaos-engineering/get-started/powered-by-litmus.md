@@ -125,7 +125,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
   <tr>
         <td>Chaos experiments CRUD</td>
@@ -179,7 +179,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Rest/GraphQL APIs</td>
@@ -233,7 +233,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Two-factor authentication</td>
@@ -313,9 +313,59 @@ Go to [Pod faults](/docs/category/pod) for more information.
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
+    </tr>
+     <tr>
+        <td>Container kill</td>
+        <td>✅</td>
+        <td>✅</td>
     </tr>
     <tr>
+        <td>Disk fill</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+ <tr>
+        <td>Pod API block kill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td> Pod API latency</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+ <tr>
+        <td>Pod API modify body</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Pod API modify header</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+ <tr>
+        <td>Pod API status code</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+<tr>
+        <td>Pod autoscaler</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+<tr>
+        <td>Pod CPU hog exec</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+    <tr>
+        <td>Pod CPU hog</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+<tr>
         <td>Pod delete</td>
         <td>✅</td>
         <td>✅</td>
@@ -327,21 +377,6 @@ Go to [Pod faults](/docs/category/pod) for more information.
     </tr>
     <tr>
         <td>Pod DNS spoof</td>
-        <td>✅</td>
-        <td>✅</td>
-    </tr>
-    <tr>
-        <td>Pod I/O stress</td>
-        <td>✅</td>
-        <td>✅</td>
-    </tr>
-    <tr>
-        <td>Container kill</td>
-        <td>✅</td>
-        <td>✅</td>
-    </tr>
-    <tr>
-        <td>Disk fill</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
@@ -370,23 +405,48 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>✅</td>
         <td>✅</td>
     </tr>
-    <tr>
-        <td>Pod memory hog</td>
+<tr>
+        <td>Pod I/O attribute override</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+<tr>
+        <td>Pod I/O error </td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+<tr>
+        <td>Pod I/O latency</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+ <tr>
+        <td>Pod I/O stress</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
-    <tr>
+ <tr>
         <td>Pod memory hog exec</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
-    <tr>
-        <td>Pod CPU hog</td>
+<tr>
+        <td>Pod memory hog</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+<tr>
+        <td>Pod network corruption</td>
+        <td>✅</td>
+        <td>✅</td>
+    </tr>
+  <tr>
+        <td>Pod network duplication</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
     <tr>
-        <td>Pod CPU hog exec</td>
+        <td>Pod network latency</td>
         <td>✅</td>
         <td>✅</td>
     </tr>
@@ -400,24 +460,14 @@ Go to [Pod faults](/docs/category/pod) for more information.
         <td>✅</td>
         <td>✅</td>
     </tr>
-    <tr>
-        <td>Pod network latency</td>
-        <td>✅</td>
-        <td>✅</td>
-    </tr>
-    <tr>
-        <td>Pod network corruption</td>
-        <td>✅</td>
+<tr>
+        <td>Pod network rate limit</td>
+        <td>❌</td>
         <td>✅</td>
     </tr>
-    <tr>
-        <td>Pod network duplication</td>
-        <td>✅</td>
-        <td>✅</td>
-    </tr>
-    <tr>
-        <td>Pod autoscaler</td>
-        <td>✅</td>
+<tr>
+        <td>Time chaos</td>
+        <td>❌</td>
         <td>✅</td>
     </tr>
 </table>
@@ -430,12 +480,7 @@ Go to [Node faults](/docs/category/node) for more information.
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
-    </tr>
-    <tr>
-        <td>Docker service kill</td>
-        <td>✅</td>
-        <td>✅</td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Kubelet service kill</td>
@@ -473,22 +518,17 @@ Go to [Node faults](/docs/category/node) for more information.
         <td>✅</td>
     </tr>
     <tr>
-        <td>Kubernetes node network latency</td>
+        <td>Node network latency</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
-        <td>Kubernetes node network loss</td>
+        <td>Node network loss</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
         <td>Kubernetes stress - Kubelet density </td>
-        <td>❌</td>
-        <td>✅</td>
-    </tr>
-    <tr>
-        <td>Kubernetes stress - Kube-resilience </td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -501,7 +541,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>ALB AZ down</td>
@@ -564,7 +604,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>✅</td>
     </tr>
     <tr>
-        <td>EC2 stop by id</td>
+        <td>EC2 stop by Id</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -635,6 +675,11 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
     </tr>
     <tr>
         <td>ECS instance kill</td>
+        <td>❌</td>
+        <td>✅</td>
+    </tr>
+     <tr>
+        <td>ECS instance stop</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -714,12 +759,12 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
         <td>✅</td>
     </tr>
     <tr>
-        <td>ECS fargate CPU hog</td>
+        <td>ECS Fargate CPU hog</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
     <tr>
-        <td>ECS fargate memory hog</td>
+        <td>ECS Fargate memory hog</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
@@ -763,7 +808,7 @@ Go to [Chaos faults for AWS](/docs/chaos-engineering/chaos-faults/aws) for more 
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Lambda delete function concurrency</td>
@@ -809,7 +854,7 @@ Go to [Chaos faults for GCP](/docs/chaos-engineering/chaos-faults/gcp) for more 
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>GCP disk loss</td>
@@ -845,7 +890,7 @@ Got to [Chaos faults for Azure](/docs/chaos-engineering/chaos-faults/azure) for 
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Azure instance stop</td>
@@ -892,7 +937,7 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>VMware VM power off</td>
@@ -1031,7 +1076,7 @@ Go to [Chaos faults for VMware](/docs/chaos-engineering/chaos-faults/vmware) for
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Latency</td>
@@ -1073,7 +1118,7 @@ Go to [Chaos faults for load](/docs/chaos-engineering/chaos-faults/load) for mor
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Locust loadgen </td>
@@ -1107,7 +1152,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for m
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Linux CPU stress </td>
@@ -1187,7 +1232,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/linux) for m
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>Windows CPU stress </td>
@@ -1214,7 +1259,7 @@ Go to [Chaos faults for Linux](/docs/chaos-engineering/chaos-faults/cloud-foundr
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>CE  (SaaS)</b></td>
+        <td><b>HCE (SaaS)</b></td>
     </tr>
     <tr>
         <td>CF app container kill </td>
