@@ -32,10 +32,8 @@ Use the steps below to install custom certificates for a Docker, Kubernetes, or 
 
    :::
 
-
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>
-
 
 To install a Docker delegate with custom certificates, do the following:
 
@@ -83,14 +81,14 @@ To install a Kubernetes delegate with custom certificates, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n <namespace> generic <secret-name> --from-file custom-cert1=<certificate file name>
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> --from-file custom-cert1=<certificate file name>
    ```
 
    :::info note
    You can install multiple certificates by adding additional `--from-file` arguments. For example:
 
    ```
-   kubectl create secret -n <namespace> generic <secret-name> \
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> \
      --from-file custom-cert1=site1cert.pem \
      --from-file custom-cert2=site2cert.pem \
      --from-file custom-cert3=site3cert.pem
@@ -99,7 +97,8 @@ To install a Kubernetes delegate with custom certificates, do the following:
 
 2. Modify the delegate manifest file to include a volume mount.
 
-   The following yaml should be placed under `spec.template.spec.containers`
+   1. Add the following YAML under `spec.template.spec.containers`.
+   
    ```yaml
            volumeMounts:
             - mountPath: /opt/harness-delegate/ca-bundle/
@@ -107,7 +106,8 @@ To install a Kubernetes delegate with custom certificates, do the following:
               readOnly: true
    ```   
 
-   The following yaml should be placed under `spec.template.spec`. Replace `<secret-name>` with the value used in creating the secret in step 1.
+   2. Add the following YAML under `spec.template.spec`. Replace `<YOUR_SECRET_NAME>` with the value used in creating the secret in step 1.
+   
    ```yaml
          volumes:
           - name: custom-certs
@@ -116,24 +116,20 @@ To install a Kubernetes delegate with custom certificates, do the following:
               defaultMode: 400
    ```
 
-3. Set the security context to provide operator access to the mounted files.
-
-    The following yaml should be placed under `spec.template.spec`
+4. Set the security context to provide operator access to the mounted files. Add the following YAML under `spec.template.spec`.
+   
     ```yaml
           securityContext:
             fsGroup: 1001
     ```
 
-4. Use the root user. This is the default and may not need to be modified.
-
-    The following yaml should be placed under `spec.template.spec.containers`
+6. Use the root user. This is the default and might not require modification. Add the following YAML under `spec.template.spec.containers`.
+   
     ```yaml
             securityContext:
               allowPrivilegeEscalation: false
               runAsUser: 0
     ```
-
-
 
 #### Kubernetes delegate with custom certificates YAML example
 
@@ -295,14 +291,14 @@ To add self-signed certificates for delegate upgrader, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n <namespace> generic <secret-name> --from-file custom-cert1=<certificate file name>
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> --from-file custom-cert1=<certificate file name>
    ```
 
    :::info note
    You can install multiple certificates by adding additional `--from-file` arguments. For example:
 
    ```
-   kubectl create secret -n <namespace> generic <secret-name> \
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> \
      --from-file custom-cert1=site1cert.pem \
      --from-file custom-cert2=site2cert.pem \
      --from-file custom-cert3=site3cert.pem
@@ -440,10 +436,8 @@ After the truststore file and custom certificates are configured, you're ready t
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-
 </TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-
 
 1. Use your custom truststore to create a secret.
 
@@ -453,41 +447,41 @@ After the truststore file and custom certificates are configured, you're ready t
 
 2. Modify the delegate manifest file to include a volume mount.
 
-   The following yaml should be placed under `spec.template.spec.containers`
-   ```yaml
-           volumeMounts:
-            - mountPath: /cacerts
-              name: custom-truststore
-              readOnly: true
-   ```   
+   1. Add the following YAML under `spec.template.spec.containers`.
 
-   The following yaml should be placed under `spec.template.spec`. Replace `<secret-name>` with the value used in creating the secret in step 1.
-   ```yaml
-         volumes:
-          - name: custom-truststore
-            secret:
-              secretName: <secret-name>
-              defaultMode: 400
-   ```
+      ```yaml
+              volumeMounts:
+               - mountPath: /cacerts
+                 name: custom-truststore
+                 readOnly: true
+      ```   
 
-3. Set the security context to provide operator access to the mounted files.
+   2. Add the following YAML under `spec.template.spec`. Replace `<YOUR_SECRET_NAME>` with the value you used when you created the secret in step 1.
+   
+      ```yaml
+            volumes:
+             - name: custom-truststore
+               secret:
+                 secretName: <secret-name>
+                 defaultMode: 400
+      ```
 
-    The following yaml should be placed under `spec.template.spec`
+4. Set the security context to provide operator access to the mounted files. Add the following YAML under `spec.template.spec`.
+   
     ```yaml
           securityContext:
             fsGroup: 1001
     ```
 
-4. Use the root user. This is the default and may not need to be modified.
-
-    The following yaml should be placed under `spec.template.spec.containers`
+6. Use the root user. This is the default and might not require modifications. Add the following YAML under `spec.template.spec.containers`.
+   
     ```yaml
             securityContext:
               allowPrivilegeEscalation: false
               runAsUser: 0
     ```
 
-5. Update the `JAVA_OPTS` environment variable with information about your custom truststore. Replace the password placeholder with the password you used in your truststore.
+8. Update the `JAVA_OPTS` environment variable with information about your custom truststore. Replace the password placeholder with the password you used in your truststore.
 
     ```yaml
                      - name: JAVA_OPTS
