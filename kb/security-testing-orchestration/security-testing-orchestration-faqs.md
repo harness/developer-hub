@@ -95,3 +95,6 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
 
+#### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
+
+An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches.
