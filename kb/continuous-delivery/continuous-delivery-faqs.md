@@ -7099,3 +7099,19 @@ Check the following:
 
 You can use environment variables like `<+env.name>` or `<+env.identifier>`, so that it resolves to the environment used for that stage.
 
+#### How do I adjust the kubectl rollout command in Harness?
+
+You can export kubeconfig and can run the kubectl command manually by using the shell script step
+
+#### We have this step in Harness First Gen that sets the desired capacity of the ASG in percentage or count. We cannot find that step or a replacement for the ASG options in Next Gen.
+
+Under ASG setup, the option to set **Desired Instance** is available.
+
+#### How do I get the logs from a Kubernetes job deployed via Helm?
+
+You can view the detailed logs for the command applied (with manifest applied and status) in Execution. To view logs after deployment, use shell script and run the `kubectl logs` command after exporting kubeconfig.
+
+#### What does "buffer already closed for writing" mean?
+
+This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
+
