@@ -3069,3 +3069,184 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
+#### How can a user delete older versions of a template within Harness?
+
+- Access the Templates section.
+- Click on the 3 dots of the template in question.
+- Select Delete Template
+- Select the template versions you want to delete.
+
+Note: The stable template will not be able to be deleted.
+
+
+
+
+#### When a template version is removed but is referenced within a pipeline, will this require a reconciliation to move the template to a new version?
+
+When a user deletes a particular template version, the version gets removed from the template in the pipeline where you have referenced that particular template with the particular pipeline.
+
+In the event a reconciliation does not help, one will need to select another version which exists for that template from the given dropdown to select another version.
+
+
+
+#### I have a resource I am unable to delete.  How can I force delete a resource that is no longer being used?
+
+Only an account-level admin will have the ability to force delete a resource.
+
+- Click on the Account Settings section
+- Click on Account Resources
+- Click on the General section to give you the option to enable this feature.
+
+
+
+#### How do I enable the new Navigation Design within the Harness NextGen platform?
+
+- Hover over My Profile on the bottom-left of the Harness screen.
+- Click on the bullet next to New Navigation Design to enable this feature.
+
+
+
+#### How do I disable the new Navigation Design within the Harness NextGen platform?
+
+- Hover over My Profile on the bottom-left of the Harness screen.
+- Click on the bullet next to New Navigation Design to disable this feature.
+
+
+
+#### If we deploy new versions of templates, what is expected Harness behavior when existing pipeline consumes a fixed version vs "always use a stable version"?
+
+Versioning a template enables you to create a new template without modifying the existing one. When you plan to introduce a major change in a project that depends on an existing template, you can use versioning. You can create multiple versions of a template.
+
+
+
+#### What is the best practice around template versioning and consumption that Harness proposes?
+
+You can make changes to the same version of the template, as long as the template's inputs remain unaltered. You must create a new version of the template for any changes in the inputs.
+
+
+
+#### Which version will the templates take of an already configured pipeline trigger?
+
+This will depend on how the template is configured.  One can select the version that needs to be selected if the latest one is not configured to be used by default.
+
+
+
+#### When will we see the message for "Some of the entities referenced in this pipeline have gone out of sync"?
+
+Harness APIs detect pipeline template changes that require reconciliation. Harness warns you in the UI when a pipeline references a template with updated entities you must reconcile.
+
+
+
+#### What is the purpose of reconciliation within pipeline template changes?
+
+Harness detects updates made to referenced entities if those updates are made outside of Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline.
+
+
+
+#### How will automated pipeline triggers behave when there is reconciliation required?
+
+The automated pipeline triggers will not work until the reconciliation is complete.
+
+
+
+#### What is the frequency that we need to reconcile pipeline template changes?
+
+If changes are made within the pipeline, then no reconciliation is required.  However, if changes are made outside of the pipeline and it has an entity that was recently updated, then reconciliation is required.  For example, if you update the environment on the Environment tab and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
+
+
+
+#### Can we upgrade the pipeline that is using templates without reconciliation?
+
+If changes are made within the pipeline, then no reconciliation is required.  However, if changes are made outside of the pipeline and it has an entity that was recently updated, then reconciliation is required.  For example, if you update the environment on the Environment tab and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
+
+
+
+#### When I try to upgrade the pipeline to a higher version, why is it forcing me to do reconcile, even after updating and saving the pipeline with a new template version?
+
+This may be due to the changes that are being made within the pipeline template.  There may be a major change in the runtime inputs which may trigger the reconcile option to come up.
+
+
+
+#### Sometimes we see the error "Template has been changed. Reconcile to enable editing" when attempting to run my pipeline.  What is causing this message to occur?
+
+There may have been a major change such as some runtime inputs that were updated which may be causing the message to show.
+
+
+
+#### We have moved our secrets from the Harness vault to another.  We have not made changes to the secrets themselves, only copied to a new vault.  What would be the best way to have all our secrets point to the new vault location?
+
+Make the changes to the secret itself and point to the new vault where it is being kept.  This may be the best option as it is unlikely that the default Harness vault will not be editable.
+
+
+
+#### There is an active deployment shown on the Overview page of my project.  However, when looking through its history, it is shown that the same deployment has finished successfully.  What needs to be done in order for the Overview page to reflect the same information as the pipeline executions screen?
+
+The feature flag DEBEZIUM_ENABLED may have to be enabled for the account.  Please reach out to Harness support and ask to confirm if the FF DEBEZIUM_ENABLED has been enabled for the account.
+
+
+#### Can feature flags be enabled just for organizations and projects without enabling them on the account level?
+
+Feature flags currently can be enabled on the account level only.
+
+
+
+#### What is the Harness recommendation to get all pipelines updated when underlying configs have been updated in the Git repository?
+
+We do have a feature which should have with your requirement - Git Bi-directional Sync 
+ 
+Harness Git Experience syncs unidirectionally, from Harness to your Git repos. You can also have Harness Git Experience sync bidirectionally between Harness and your Git repo.
+With bidirectional sync for Git Experience, changes made on either the Git repo or Harness are synched automatically.
+ 
+Doc for more info -https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/
+
+
+
+#### How will the Git Bi-directional Sync feature handle the default pipeline repo branch having a branch-protection in-place?
+
+Branch protection rules are GIT properties. Harness cannot tamper or bypass any of it. So, we can only do whatever the “token” that you use supports.
+Harness making a push is as good as a user making a push from their CLI.
+If you are concerned about “reloading from git” that you always have to fetch the data from GIT, and, on first glance, it shows stale data, then this will help as it will always show latest copy.
+
+If you are not on bidirectional sync, we don’t update anything automatically on Harness. We use latest version but only while execution. Apart from that, you would always see stale pipeline/entity based on last time it was executed or it was reloaded on demand. If you are on bidirectional sync, then it would always show updated copy from GIT.
+
+
+
+#### After enabling Git Bi-directional Sync, will Harness push to a Git repo against a branch with a push branch-protection in place?
+
+Bi-directional Sync can be enabled with push branch protection in place on the target branch.  Harness will not override the branch-protection as this is set on Git and will handle any push like any normal user pushing to their Git repo.
+
+
+
+#### When trying to obtain all the branches from the GitHub repository in the artifact section, why is it that the UI only shows the first 30 brances and not retrieve all branches in the repository?
+
+This limitation is related to the Github API itself. In order to increase the number of results, you must define the following query string: per_page=100
+ 
+Further details on this can be found here: https://docs.github.com/en/rest/branches/branches?apiVersion=2022-11-28#list-branches
+
+
+
+#### I am trying to approve the harness pipeline using API call.  Where do we find the callback_id parameter as it is a needed query parameter?
+
+The Callback ID can be assigned in the Approval step.  This is so that you can easily find the step in your API call.
+
+Inside the Approval step, there is a section called Approval Callback Identifier.  Assign an ID that will be easy to reference within your API call.
+
+
+
+#### An error occurred while provisioning Harness within the Okta application: Automatic provisioning of user app Harness failed: Error while creating user - Conflict. Errors reported by remote server: You can only add upto 200 users. Please fix this on the Tasks Page
+
+Perform a sync within Okta.  After the re-push, new users will now be able to be provisioned successfully into Harness.
+
+
+
+#### I'm not able to update a SAML-connected group with a new SAML name via API. I need to update ALL of our User Groups to match a new group naming standard.  Gives the error: "Exception while fetching data (/updateUserGroup) : Invalid request: SSO Provider already linked to the group. Try unlinking first."
+
+Ensure in the API call that the tag samlSettings is set to null.
+samlSettings: null
+
+
+
+#### I am seeing an error frequently in the delegate logs.  It reads " io.harness.delegate.task.citasks.vm.helper.HttpHelper - Retrying failed to check pool owner".  Is this a critical error that needs to be addressed?
+
+These logs are normal and should not affect any functionality. Before submitting a task to a delegate we run some capability checks to see if that delegate has the connection to the VM runner. In cases where delegate is not able to connect the capability check is failing and that delegate is ignored for the task. You can ignore these logs.
+
