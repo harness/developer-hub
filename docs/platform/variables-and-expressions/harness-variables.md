@@ -13,15 +13,18 @@ import TabItem from '@theme/TabItem';
 
 For most settings in Harness pipelines, you can use [fixed values, runtime inputs, or expressions](./runtime-inputs.md).
 
-You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution variables. These variables represent settings and values that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more. You can also [add your own variables](./add-a-variable.md) and use expressions to reference them.
+You can use expressions (also called Harness expressions, variable expressions, or sometimes Harness variables) to reference Harness input, output, and execution values. These values represent settings, variables, and other data that exist in the pipeline before and during execution. These can include environment variables, secrets, pipeline/stage/step identifiers, and more. You can also [add your own variables](./add-a-variable.md) and use expressions to reference them.
 
-This topic explains how Harness expressions work, how to write and use expressions, some built-in Harness expressions, and some prefixes used to identify user-defined variables.
+You use Harness expressions to reference stored values in Harness. While you can reference all variables with expressions, not all expressions reference true variables. However, Harness expressions are interchangeably referred to as Harness variables because they references stored values in the same way variables do in code.
+
+This topic explains how Harness expressions work and how to write and use expressions.
 
 Expressions are powerful and offer many options for modification or interaction. For more information about using expressions, go to:
 
 * [Write expressions using any JSON parser tool](./expression-v2.md)
 * [Use Java string methods](./expressions-java-methods.md)
 * [Define variables](./add-a-variable.md)
+* [Harness expressions reference](./harness-expressions-reference.md)
 
 ## What is a Harness variable expression?
 

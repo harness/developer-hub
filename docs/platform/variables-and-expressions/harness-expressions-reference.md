@@ -1,13 +1,16 @@
 ---
 title: Harness Expressions Reference
-description: List of default (built-in) Harness expressions.
+description: List of useful built-in Harness expressions.
 sidebar_position: 21
 redirect_from:
   - /docs/platform/variables-and-expressions/status-type-reference
 ---
 
+Harness expressions are used to reference stored values in Harness. These can be YAML paths, JSON paths, user-defined variables, settings, secrets, and more.
 
-The following sections describe some Harness expressions. This information is not exhaustive.
+While you can reference all variables with expressions, not all expressions reference true variables. However, Harness expressions are interchangeably referred to as Harness variables because they references stored values in the same way variables do in code.
+
+This pages describe some [Harness expressions](./harness-variables.md) that you might find useful. Due to the way Harness generates expressions and the potential variations of pipeline, account, org, and project configurations, it is impossible to create an exhaustive list of all expressions.
 
 ### Account, org, and project expressions
 
@@ -28,7 +31,7 @@ Whenever a user grants an approval in a [Harness Manual Approval step](/docs/pla
 
 :::info
 
-These expressions apply to Harness Manual Approval *steps* only. They are not applicable to Approval stages or third-party approval steps (such as Jira or ServiceNow approval steps).
+These expressions apply to Harness Manual Approval *steps* only. They don't apply to Approval stages or third-party approval steps (such as Jira or ServiceNow approval steps).
 
 :::
 
@@ -101,7 +104,7 @@ These expressions refer to deployment infrastructure configurations. Infrastruct
 
 `<+INFRA_KEY>` references the infrastructure key, which is a unique string that identifies a deployment target infrastructure.
 
-The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifer`, and a set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, in case of a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
+The infrastructure key is a combination of `serviceIdentifier`, `environmentIdentifier`, and a set of values unique to each infrastructure definition implementation (Kubernetes cluster, etc.) hashed using `SHA-1`. For example, for a Kubernetes Infrastructure, the infrastructure key is a hash of `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. The format is `sha-1(service.id-env.id-[set of unique infra values])`.
 
 `<+INFRA_KEY_SHORT_ID>` is a shortened form of `<+INFRA_KEY>`. The shortened form is obtained by removing all but the first six characters of the hash of the infrastructure key.
 
@@ -207,7 +210,7 @@ You can use this expression:
 
 - In the `values.yaml` file, OpenShift Params, and Kustomize Patches.
 - To reference the current Harness release number as part of your manifest.
-- To reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+- To reference versioned ConfigMaps and secrets in custom resources and fields unknown by Harness.
 
 **Important:** Users must update their delegate to version  to use this expression.
 
@@ -220,7 +223,7 @@ Manifest settings are referenced by the manifest ID, which is located at `servic
 <details>
 <summary>Use Service YAML to get manifest expression paths</summary>
 
-Reviewing the Service YAML can help you determine the expressions you can use. For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest `identifier` and the `valuesPaths` in the following YAML:
+Reviewing the Service YAML can help you determine the expressions you can use. For example, you can create the expression `<+manifests.mymanifest.valuesPaths>` using the manifest `identifier` and the `valuesPaths` in the following YAML:
 
 ```yaml
 ...
@@ -287,7 +290,7 @@ The following expressions reference information about a pipeline run, such as th
 
       ![](./static/harness-variables-26.png)
 
-   You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
+   You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For more information and examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/tutorial-ci-kubernetes-build-infra) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-cd-other-modules).
 
 * `<+pipeline.executionUrl>`: The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
@@ -379,7 +382,7 @@ For a detailed example, go to [Add container images as artifacts for Kubernetes 
 
 #### Primary artifact names and paths
 
-Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
+Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your `values.yaml` file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
 
 * `<+artifacts.primary.image>`: The full location path to the Docker image, such as `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
    * For non-containerized artifacts, use [`<+artifacts.primary.path>`](#artifact-path-filepath) instead.
@@ -438,8 +441,8 @@ When you run the pipeline, the expressions resolve to their respective label val
 
 #### Artifacts with dockercfg or dockerconfigjson
 
-* `<+artifacts.primary.imagePullSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml ` or manifest file in the service definition's **Manifests** section must use the `dockercfg` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockercfg: <+artifacts.primary.imagePullSecret>`.
-* `<+artifacts.primary.dockerConfigJsonSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml` or manifest files in the service definition's **Manifests** section must use the `dockerconfigjson` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+* `<+artifacts.primary.imagePullSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml` file or manifest file in the service definition's **Manifests** section must use the `dockercfg` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockercfg: <+artifacts.primary.imagePullSecret>`.
+* `<+artifacts.primary.dockerConfigJsonSecret>`: If your Kubernetes cluster doesn't have permission to access a private Docker registry, the `values.yaml` file or manifest file in the service definition's **Manifests** section must use the `dockerconfigjson` parameter. Then, if you add the Docker image in the service definition's **Artifacts** section, you can reference it with `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
 
 For more information and examples, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) and [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services.md#pull-an-image-from-a-private-registry).
 
@@ -447,7 +450,7 @@ For more information and examples, go to [Pull an Image from a Private Registry 
 
 You can use the syntax `<+rollbackArtifact.ARTIFACT_DEFINITION_ID>` to pull artifact rollback information. For example, use `<+rollbackArtifact.metadata.image>` to pull the metadata of the artifact image used in the last successful deployment.
 
-Harness pulls rollback artifact information from last successful deployment. If there's no previous successful deployment, then rollback artifact expressions resolve to `null`.
+Harness pulls rollback artifact information from the last successful deployment. If there's no previous successful deployment, then rollback artifact expressions resolve to `null`.
 
 #### Sidecar artifacts
 
@@ -486,7 +489,7 @@ The following expressions reference information for a pipeline stage.
 * `<+stage.identifier>`: The [identifier](../references/entity-identifier-reference.md) of the stage.
 * `<+stage.output.hosts>`: Lists all of the target hosts when deploying to multiple hosts.
 
-   When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts. To run the step on all hosts, use a [repeat looping strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target. For more information and examples go to [Deployment instance expressions](#deployment-instance-expressions) and [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
+   When you are deploying to multiple hosts, such as with an SSH, WinRM, or deployment template stage, you can run the same step on all of the target hosts. To run the step on all hosts, use a [repeat looping strategy](../pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target. For more information and examples, go to [Deployment instance expressions](#deployment-instance-expressions) and [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
 
 * `<+stage.executionUrl>`: The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution. To get the execution URL for a specific stage in a pipeline use `<+pipeline.stages.STAGE_ID.executionUrl>`
 * `<+stage.delegateSelectors>`: The stage-level [delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors) selected via runtime input.
@@ -526,9 +529,9 @@ Pipeline and stage status expressions can reference the `status`, `currentStatus
 `status` refers to the running status of a single node. `currentStatus` and `liveStatus` provide the combined statuses of all running steps within a pipeline or stage. The difference between status types is based on how they handle step failures and if the status of steps running in a matrix or strategy is included in the overall status calculation.
 
 * **Status**: `status` expressions (such as `<+pipeline.stages.STAGE_ID.status>`) refer to the current running status of a single node, such as a pipeline, stage, or step. It provides information about the state of that specific node without considering the status of any parent, child, or sibling nodes. It reports the direct status of the target node.
-* **Current Status**: `currentStatus` expression (such as `<+pipeline.stages.STAGE_ID.currentStatus>`) represent the combined status of all the running steps within a pipeline or stage, except steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
+* **Current Status**: `currentStatus` expressions (such as `<+pipeline.stages.STAGE_ID.currentStatus>`) represent the combined status of all the running steps within a pipeline or stage, except steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
 
-   `currentStatus` uses the statuses of all non-matrix steps to determines the overall status. If *any* non-matrix step fails, regardless of the progress or status of other steps, the `currentStatus` of both the pipeline and the stage resolves as `Failed`. This means that the failure of one step can affects the status of the entire pipeline or stage.
+   `currentStatus` uses the statuses of all non-matrix steps to determine the overall status. If *any* non-matrix step fails, regardless of the progress or status of other steps, the `currentStatus` of both the pipeline and the stage resolves as `Failed`. This means that the failure of one step can affect the status of the entire pipeline or stage.
 
    :::info
 
@@ -536,7 +539,7 @@ Pipeline and stage status expressions can reference the `status`, `currentStatus
 
    :::
 
-* **Live Status**: Like `currentStatus`, `liveStatus` expressions (such as `<+pipeline.stages.stage1.liveStatus>`) also provides the combined status of all the running steps within a pipeline or stage; however it also considers the status of steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
+* **Live Status**: Like `currentStatus`, `liveStatus` expressions (such as `<+pipeline.stages.stage1.liveStatus>`) also provide the combined status of all the running steps within a pipeline or stage; however, it also considers the status of steps generated from [matrix/repeat looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md).
 
    `liveStatus` considers the statuses of *all* steps to determine the overall status. If *any* step fails, the `liveStatus` of both the pipeline and the stage resolves as `Failed`, regardless of the individual status of running or completed steps.
 
