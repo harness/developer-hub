@@ -122,9 +122,9 @@ Before creating the GCP connector, you need to:
    * **Use the credentials of a specific Harness Delegate:** Allow the connector to inherit its authentication credentials from the Harness Delegate that is running in GCP.
    * **OIDC:** Enables OIDC authentication. For more information, go to [Use OIDC](./ref-cloud-providers/gcs-connector-settings-reference.md#use-openid-connect-oidc).
    :::info note
-   OIDC authentication support is not available for any connectors in Legacy Delegates.
+   OIDC authentication support is not available for connectors in legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
-   The support for OIDC is made available and tested from Delegate versions 24.03.82600 and higher.
+   OIDC support requires Harness Delegate version 24.03.82603 or later.
    :::
 5. Select **Continue** to proceed to **Select Connectivity Mode** and select how you want Harness to connect to GCP. For more information about these options, go to the [Connectivity mode settings in the GCP connector settings reference](./ref-cloud-providers/gcs-connector-settings-reference.md#select-connectivity-mode).
    * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP. This connectivity mode is required for [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
