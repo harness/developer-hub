@@ -59,30 +59,30 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 ### Output variables
 
-:::info
+:::warning
 
-Output variables are not available for all plugins.
+Not all plugins write output variables.
 
-Support for plugin output variables may vary with [self-managed AWS/GCP/Azure VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+Support for plugin output variables is unpredictable with [self-managed VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 :::
 
-Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `DRONE_OUTPUT.env` file, you can use expressions to reference output variables in other steps and stages in the pipeline.
+Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes output to the `DRONE_OUTPUT.env` file, you can use [expressions](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) to reference those output variables in other steps and stages in the pipeline.
 
-For example, to write to the `DRONE_OUTPUT.env` file, use a command such as the following:
+For example, to write to the `DRONE_OUTPUT.env` file, the plugin must use a command such as the following:
 
 ```
 echo "VAR_NAME=somevalue" >> $DRONE_OUTPUT
 ```
 
-To reference an output variable in another step in the same stage, use either of the following expressions:
+To reference the resulting output variable in another step in the same stage, use either of the following expressions:
 
 ```
 <+steps.STEP_ID.output.outputVariables.VAR_NAME>
 <+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
 <+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
@@ -102,9 +102,9 @@ If the step is within a step group, include the step group identifier in the exp
 <+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-<!-- H3 Environment variables
+### Environment variables
 
-Harness CI supports `DRONE_` environment variables. For more information, go to the CI environment variables reference ../optimize-and-more/ci-env-var.md .-->
+When a Harness CI pipeline runs, it produces a number of environment variables, including many `DRONE_` environment variables. You can reference these in your plugin script, if needed. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
 
 ## Image Pull Policy
 

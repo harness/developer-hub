@@ -53,9 +53,9 @@ Ensure the following:
 
 ![TimescaleDB architecture](../static/timescaledb-self-managed-architecture.png)
 
-TimescaleDB replication architecture uses the native replication capabilities of PostgreSQL to ensure high availability and fault tolerance. It employs a controller-worker configuration, where the controller node handles read and write operations, while the worker nodes act as standby databases for data replication. 
+TimescaleDB replication architecture uses the native replication capabilities of PostgreSQL to ensure high availability and fault tolerance. It employs a controller-worker configuration, where the controller node handles read and write operations, while the worker nodes act as standby databases for data replication.
 
-Write-ahead logs (WAL) are generated on the controller node and streamed to the standby nodes, allowing them to apply the changes and maintain data consistency. TimescaleDB extends the replication protocol with optimizations specific to time-series data, ensuring accurate replication of time-series operations and metadata. 
+Write-ahead logs (WAL) are generated on the controller node and streamed to the standby nodes, allowing them to apply the changes and maintain data consistency. TimescaleDB extends the replication protocol with optimizations specific to time-series data, ensuring accurate replication of time-series operations and metadata.
 
 In the event of controller node failure, a standby node can be promoted as the new controller, ensuring uninterrupted data access and minimal downtime. PostgreSQL does not provide support for automatic failover.
 
@@ -102,7 +102,7 @@ To set up a TimescaleDB VM, do the following:
 4. Add the TimescaleDB third party repository.
 
    Debian:
-   
+
    ```
    echo "deb https://packagecloud.io/timescale/timescaledb/debian/ $(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/timescaledb.list
    ```
@@ -198,7 +198,7 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
    ```
    CREATE database tsdb;
    ```
-   
+
 9. Connect to the database you created.
 
    ```
@@ -250,7 +250,7 @@ To configure replication, do the following:
 1. Make sure you are logged in to the VM with superUser access on postgres user.
 
 2. Run the following on one of your replicas.
-   
+
    ```
    sudo su - postgres
    ssh-keygen -t rsa
@@ -337,7 +337,7 @@ To configure replication, do the following:
     ```
 
 13. Create the first replication slot at the psql slot. You can use any name. This example uses `replica_1_slot`.
-    
+
     ```
     SELECT * FROM pg_create_physical_replication_slot('replica_1_slot');
     ```
@@ -345,9 +345,9 @@ To configure replication, do the following:
    Repeat this step for each replica.
 
 14. Restart PostgreSQL on your controller and your replicas (run as root).
-    
+
     ```
-    service postgresql restart 
+    service postgresql restart
     ```
 
 ### Initiate replication
@@ -356,17 +356,17 @@ After you've completed the above steps, you can initiate your replication. Follo
 To initiate replication, do the following:
 
 1. Stop the PostgreSQL service.
-   
+
    ```
    service postgresql stop
    ```
 
 2. Copy the existing data and create a backup.
-   
+
    ```
    sudo su - postgres
    ```
- 
+
    ```
    cd /var/lib/postgresql/13
    mv main main.org
@@ -382,7 +382,7 @@ To initiate replication, do the following:
    The backup utility prompts you for the `reptest` password.
 
 4. Create a `standby.signal` file in your data directory.
-   
+
    ```
    touch /var/lib/postgresql/13/main/standby.signal
    chmod -R 0700 /var/lib/postgresql/13/main
@@ -396,8 +396,8 @@ To initiate replication, do the following:
    service postgresql restart
    ```
 
-6. Run the following to check the logs and verify that the replica works. 
-   
+6. Run the following to check the logs and verify that the replica works.
+
    ```
    tail -f /var/log/postgresql/postgresql-13-main.log
    ```
@@ -449,7 +449,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
          passwordKey: "Te$tp@ssw0rD#@"
          sslEnabled: false
          certName: "tsdb-cert"
-         certKey: "cert" 
+         certKey: "cert"
    ```
 
 ### Enable SSL
@@ -535,7 +535,7 @@ To recover the former primary and add host replication, do the following.
 
    The former primary instance is now a new secondary instance.
 
-<!-- 
+<!--
 ## TLS support
 
 You can enable TLS for TimescaleDB.
@@ -544,7 +544,7 @@ To enable TLS, do the following:
 
 1. Save the ca certificate in the `server_ca.cer` file.
 
-2. Run the following command to create the secret in Kubernetes. 
+2. Run the following command to create the secret in Kubernetes.
 
    ```
    kubectl create secret generic timescale-client-tls --from-file ca.crt=server-ca.cer -n <YOUR_NAMESPACE>

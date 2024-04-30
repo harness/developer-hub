@@ -37,8 +37,8 @@ Delegate communication includes the following functions:
 
 Harness Delegate does not have a root image. There are two non-root images that use similar tags. For example:
 
-- `harness/delegate:22.03.74411`: Includes client tools like `kubectl`, Helm, and ChartMuseum.
-- `harness/delegate:22.03.74411.minimal`: Does not include client tools. If you want to add tools to the image, Harness recommends that you create a custom image.
+- `harness/delegate:yy.mm.verno`: Includes client tools like `kubectl`, Helm, and ChartMuseum.
+- `harness/delegate:yy.mm.verno.minimal`: Does not include client tools. If you want to add tools to the image, Harness recommends that you create a custom image.
 
 ### Install a delegate
 
@@ -247,7 +247,7 @@ This means that if a role does not have these permissions, the user with that ro
 
 ### Delegate task capacity
 
-:::info
+:::note
 This functionality is currently behind the feature flag `DELEGATE_TASK_CAPACITY_CHECK` and is available for Harness NextGen only. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 :::
 

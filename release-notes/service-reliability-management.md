@@ -1,8 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-11-15T10:00:20
-tags: [NextGen, "service reliability management"]
+date: 2024-04-19T10:00:20
 sidebar_position: 14
 ---
 
@@ -22,6 +21,16 @@ These release notes describe recent changes to Harness Service Reliability Manag
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## April 2024
+
+### Version 1.5.0
+
+#### Fixed issues
+
+- Fixed an issue where the **View Deployment** button in the change impact screen was not leading the user to the relevant page. (CHAOS-4517)
+
+- Fixed an issue where adding a new SLO to a composite SLO by editing it would re-calculate the weightage and override any value entered by the user. Now, the weights are calculated automatically only when a new composite SLO is created.(CHAOS-4534)
 
 ## November 2023
 

@@ -308,7 +308,7 @@ To fix this, remove the existing Notification Strategy.  Click the **X** next to
 
 #### Trigger Rejected
 
-If you use a **Webhook** Trigger to execute a Workflow or Pipeline deployment but the name for the artifact in the cURL command is different than the name of the artifact, you might receive this error:
+If you use a **Webhook** Trigger to execute a Workflow or Pipeline deployment but the name for the artifact in the cURL command is different from the name of the artifact, you might receive this error:
 
 
 ```
@@ -401,7 +401,7 @@ If your Harness Application is synched two-way with your Git repo, the Git push 
 
 For example, if you have defined an Infrastructure Definition in your Git YAML files, but its required fields are incomplete, the push to Harness will likely fail.
 
-This is no different than trying to submit incomplete settings in the Harness Manager.
+This is no different from trying to submit incomplete settings in the Harness Manager.
 
 In many cases, it is best to first use Harness Manager to configure your Application, ensuring all required settings are configured, and then sync that with your repo. Unless you remove any required settings in the Git files, the Application will sync with Harness successfully.
 

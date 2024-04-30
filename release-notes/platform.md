@@ -2,17 +2,14 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-03-26:T10:00:30
+date: 2024-04-25:T10:00:30
 sidebar_position: 3
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 import delete_project from './static/delete-project.png'
-
-
 
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="https://developer.harness.io/release-notes/platform/rss.xml" />
 
@@ -61,13 +58,13 @@ Below is further explanation for each type of secret manager Harness currently s
    4. Vault Agent: Secret storage is not required in the Harness Built-in Secret Manager.
    5. Kubernetes Auth: Secret storage is not required in the Harness Built-in Secret Manager.
 
-3. Harness supports two authentication methods for **Azure Key Vault**: 
+3. Harness supports two authentication methods for **Azure Key Vault**:
    1. With the credentials option, the Azure Authentication key must be stored in the Harness Built-in Secret Manager.
    2. With the credentials of a specific Harness Delegate option, secret storage is not required in Harness Built-in Secret Manager.
 
 4. Harness supports only one authentication method for **GCP Key Management Service**, for which the GCP KMS Credentials file must be stored in the Harness Built-in Secret Manager.
 
-5. Harness supports two authentication methods for **GCP Secrets Manager**: 
+5. Harness supports two authentication methods for **GCP Secrets Manager**:
    1. With the credentials option, the Google Secrets Manager Credentials File must be stored in the Harness Built-in Secret Manager.
    2. With the credentials of a specific Harness Delegate option, secret storage is not required in Harness Built-in Secret Manager.
 
@@ -81,6 +78,67 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 
+## April 2024
+
+### Version 1.34.2<!--  April 23, 2024 -->
+
+#### Fixed issues
+
+- The link to Slack on the UI Help section was not functioning. The community link has been updated to ensure it works correctly. (PL-48948, ZD-61203)
+
+- When a new pipeline for approval was created, but the approval email was not being sent, preventing testing of the link within the approval email. Resolved this issue that prevented notifications from being sent to multiple emails configured in a user group for email notifications. (PL-48854, ZD-60366, ZD-61333)
+
+- 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. This item requires Harness Delegate version 24.04.82804. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate) (PL-48980, ZD-61314, ZD-61420, ZD-61486)
+
+### Version 1.33.5<!--  April 16, 2024 -->
+
+#### New features and enhancements
+
+- We've added an optional registry mirror configuration for delegate `upgrader`. If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images. For more information, go to [Configure an optional registry mirror for delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#configure-an-optional-registry-mirror-for-delegate-images). This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47920, ZD-59005)
+
+- AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
+
+- Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46947)
+
+#### Fixed issues
+
+- 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48980, ZD-61314, ZD-61420, ZD-61486)
+
+- Email steps were failing due to the system's inability to find users with emails containing uppercase letters, as Harness converts and stores all emails in lowercase. (PL-48532, ZD-60291)
+
+- Reset password emails were being sent from the FirstGen system for all accounts, causing issues for accounts that are exclusively NextGen. Now, if an account is identified as NextGen only, the reset password emails are dispatched from the NextGen system, rectifying the issue for NextGen only accounts. (PL-38735)
+
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914)
+
+- Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48781, ZD-60713)
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
+
+- The audit trail filter did not include an option for the **Token** resource type, hindering the ability to filter for API token updates. Added a **Token** filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
+
+- Users experienced authentication issues when switching the OAuth type from SAML, leading to incorrect OAuth authentication status displays. Implemented changes to accurately reflect the status (enabled or disabled) of OAuth authentication for users. (PL-48788, ZD-60869)
+
+- The feature flag subscription indicated it was expired, and the license was not updating automatically. Users had to manually pay each invoice after the billing cycle was completed. Users can now view the correct billing due date on their subscription page. Additionally, the system has been updated to automatically charge the credit card on file when an invoice is generated. (PL-48671, ZD-57836)
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like task type or task ID. Enhanced the task rejection metrics by adding `taskType` and `taskId` labels. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48488)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. Implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47753, ZD-58629)
+
+### Version 1.31.4<!--  April 3, 2024 -->
+
+<!-- On RN list, but will not be part of the 1.31.x release per Bharat
+
+#### New features and enhancements
+
+- Harness now automatically revokes delegate tokens that have not been used by any delegate in the last 30 days. (PL-47602)
+-->
+
+#### Fixed issues
+
+- Fixed an issue where the **Delegate Selector** dropdown wasn't populating delegates when roles were configured with specific delegates instead of all. (PL-48292, ZD-59504)
+
+- Fixed an issue where the scope was derived from the open URL instead of the WinRM Secret's scope when editing WinRM secrets through a reference component, causing secret edits to fail. Scope details are now picked up from the WinRM secret being edited. (PL-48323)
+
 ## March 2024
 
 ### Version 1.30.7<!--  March 26, 2024 -->
@@ -88,9 +146,10 @@ The following deprecated API endpoints are longer supported:
 #### New features and enhancements
 
 - `harness-ingress-controller` arguments are now configurable through overrides. (PL-46366, ZD-55035)
-    They can be controlled by
 
-    ```
+   They can be controlled by the following YAML configuration.
+
+    ```yaml
     nginx:
       controller:
         watchNamespace: ""
@@ -106,21 +165,22 @@ The following deprecated API endpoints are longer supported:
         controllerClass: ""
     ```
 
-    - You can provide any extra arguments like this
+    - You can provide any extra arguments like this:
 
-    ```
-    nginx:
-      controller:
-        extraCommandArgs:
-          - --argument=example-argument
-    ```
+       ```yaml
+       nginx:
+         controller:
+           extraCommandArgs:
+             - --argument=example-argument
+       ```
 
-    - Ingress controller can now be deployed with a ClusterRole
-    ```
-    nginx:
-      clusterRole:
-        create: true
-    ```
+    - Ingress controller can now be deployed with a `ClusterRole`:
+
+       ```yaml
+       nginx:
+         clusterRole:
+           create: true
+       ```
 
 - In the recent update to `ng-manager` version 1.28.0, we have implemented enhancements to the validation mechanism for secret identifiers. We now provide more flexibility and precision in validating secret identifiers, particularly regarding hyphen usage. While previously disallowed, secret identifiers can now contain hyphens. However, there are specific rules governing their usage. Hyphens are now permitted anywhere in the secret identifier, including at the end of the string. The updated validation allows for multiple occurrences of hyphens within the secret identifier. Secret identifiers cannot start with a hyphen, following best practices. This item requires Harness Delegate version 24.03.82600. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-46959)
 
@@ -262,7 +322,7 @@ The following deprecated API endpoints are longer supported:
 
    Since `autoscaling/v2` has been GA with Kubernetes 1.23 and higher, if you have a Kubernetes version lower than 1.23, you must manually change the `apiVersion` in the `HorizontalPodAutoscaler` of your delegate YAML to `autoscaling/v1`.
 
-   For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes](/docs/platform/delegates/manage-delegates/auto-scale-using-replicas/#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes).
+   For more information, go to [Configure Harness Delegate autoscaling using replicas for Kubernetes](/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-harness-delegate-autoscaling-using-replicas-for-kubernetes).
 
 
    This update only affects new delegate installations. Your existing, running delegates are not affected.
@@ -338,7 +398,7 @@ The following deprecated API endpoints are longer supported:
 
 - You can now hide sensitive log information in the Harness UI based on regular expression patterns. (PL-46531, ZD-56849)
 
-   For more information, go to [Hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex). 
+   For more information, go to [hide log information using regex patterns](/docs/platform/delegates/manage-delegates/hide-logs-using-regex).
 
    This item requires Harness Delegate version 24.01.82110 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -369,18 +429,18 @@ The following deprecated API endpoints are longer supported:
 
 - `K8S_WATCH` perpetual tasks remained `TASK_ASSIGNED` despite being assigned to non-existent delegates. (PL-43973)
 
-   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events. 
+   This issue was fixed by implementing a CronJob to reset perpetual tasks associated with invalid delegates, ensuring proper handling of Kubernetes events.
 
    This item is available with Harness Platform version 1.22.3 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Running `terraform apply` for an existing SSO-linked user group resulted in an empty user list. (PL-43763, ZD-55505)
 
-   This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored. 
+   This issue has been resolved. Now, when the user group payload is SSO-linked, the existing users are maintained as is, and the users list in the payload is ignored.
      - In cases where the existing user group is SSO-linked and needs to be overridden and delinked in the update payload, the existing users will be replaced with the users list provided in the payload.
 
 - The `platform-service` was not publishing the response count metric. (PL-43123)
 
-   This has been resolved, and the `platform-service` will now consistently publish the response count metrics. 
+   This has been resolved, and the `platform-service` will now consistently publish the response count metrics.
 
 ### Version 1.21.5 <!--  January 22, 2024 -->
 
@@ -389,9 +449,9 @@ The following deprecated API endpoints are longer supported:
 - Tooltips in the left navigation were incorrectly displayed behind the stage execution details panel. Now, tooltips are visible on the Execution page. (PL-43993)
 - Fixed the ACL list roles API to correctly display `HarnessManaged`, `CreatedAt`, and `LastModifiedAt` date fields, ensuring accurate role management data in responses. (PL-43952)
 - Multi-select dropdowns would reset to the top after each selection. This issue is fixed for all multi-select dropdowns unless explicitly specified by the user. (PL-43925)
-- When editing user group data, member data was not added as expected. Now, the user group data related to the user group members is not lost when the user group is updated. (PL-43855, ZD-55944)  
+- When editing user group data, member data was not added as expected. Now, the user group data related to the user group members is not lost when the user group is updated. (PL-43855, ZD-55944)
 - Fixed an issue where searching for user groups containing special characters resulted in a 500 error due to invalid regex patterns in the search term. Now, the `usergroup` list API validates regex patterns and provides a clear error message for invalid search terms. (PL-43761)
-- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connectors working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China, and so on). Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector. (PL-43333, ZD-54717)  
+- The Azure endpoints were not being set based on the Azure environment selected. This led to Azure connectors working correctly only for Azure public cloud and not for other variants of Azure cloud (like Azure Gov, Azure China, and so on). Now, the correct Azure resource manager endpoint will be chosen based on the environment selected in the connector. (PL-43333, ZD-54717)
 
 ### Version 1.20.9 <!--  January 15, 2024 -->
 
@@ -507,7 +567,7 @@ Currently, allowlist verification for delegate registration is behind the featur
 
 - For user groups provisioned from SCIM to Harness, for the corresponding user groups created in Harness, the user group `identifier` is derived from the display name of the user group in the SCIM provider. Harness replaces `.` (dots) and `-` (dashes) with an `_` (underscore). All other special characters (`#`, `?`, `%`, and so on) and spaces are removed. Leading digits`0` through `9` and `$` are also removed. (PL-42535, ZD-53830, ZD-55294)
 
-   All special characters except `.`, `-`, and non-leading `$` and digits `0` through `9` are removed. 
+   All special characters except `.`, `-`, and non-leading `$` and digits `0` through `9` are removed.
 
    **Example 1:** For a user group in SCIM with the name `Harness.Group?Next#Gen-First`, the user group created in Harness will have the `identifier`: `Harness_GroupNextGen_First`.
 
@@ -600,7 +660,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - In UAT, with SAML set up but not enabled, when users logged out, Harness redirected to Okta, not `uat.harness.io`. (PL-32445)
 
-   This issue is fixed. The SAML logout URL is now only used when SAML is enabled for an account. 
+   This issue is fixed. The SAML logout URL is now only used when SAML is enabled for an account.
 
 - Harness removed the `delegate-service` from the default delegate YAML init container. (PL-37616)
 
@@ -707,7 +767,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 ###### Fixed issues
 
-- The YAML builder didn't allow you to create secrets when there wasn't an existing secret. 
+- The YAML builder didn't allow you to create secrets when there wasn't an existing secret.
 
    This issue is fixed. You can now create secrets using YAML even if no previous secret exists. (PL-42148, ZD-52583)
 
@@ -738,7 +798,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Deleted accounts sent delegate API calls to Harness Manager for authentication. (PL-41113)
 
-  Calls from delegates of deleted accounts are no longer authenticated by Harness Manager.   
+  Calls from delegates of deleted accounts are no longer authenticated by Harness Manager.
 
    This item is available with Harness Platform version 81401 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -930,19 +990,19 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness showed JSON Web Token URLs in Delegate task logs associated with shell script task failures. (PL-39102)
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Harness did not handle the `Unknown Host Exception` error appropriately and, consequently, showed the misleading "Delegates are not available for performing operation" message when you configured LDAP incorrectly (for example, you entered an incorrect host or port number). (PL-28077)
 
   This issue has been fixed.
 
-  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.09.80804. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The UI allowed all users to select the **Copy token** option from the **More Options** (&vellip;) menu. (PL-41155)
 
@@ -998,7 +1058,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
     - You used a regex query to update role assignments in a project.
-    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
+    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments.
     - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
 
 - When Harness is configured to use the AppRole ID to fetch an authentication token from HashiCorp Vault, Harness generates a large number of requests for those tokens. The volume of requests causes performance issues. (PL-40754)
@@ -1033,7 +1093,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The delegate expiration policy has been extended from 3 months to 6 months. You now only have to update delegates once every 6 months. (PL-39452)
 
-   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+   This item requires Harness Delegate version 23.09.80505. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The OWASP Java HTML Sanitizer version is upgraded to 20220608.1. (PL-40807)
 
@@ -1057,7 +1117,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The count of failed streams on the **Failed Streaming** card (on the **Account Audit Trail** page) continued to include problematic destinations even after those destinations were removed. (PL-40641, ZD-49004)
 
-  This issue is now fixed. The error count includes only available destinations. 
+  This issue is now fixed. The error count includes only available destinations.
 
 - A role that you created would not appear when you typed its name on the **Manage Role Bindings** page. Therefore, you could not use the Harness application to bind that role to a user group. The issue was caused by the role assignment API retrieving only the first 100 roles in the ascending order (the page size is 100), and the associated client-side search being limited to those 100 roles. If the role you wanted was not part of this initial set of roles, it did not appear in your search. (PL-40363, ZD-48229)
 
@@ -1128,7 +1188,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - To support MongoDB 5.0, the Debezium library has been upgraded to version 1.9. (PL-40491)
 
-- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway. 
+- If you use the App Role authentication method in the Hashicorp Vault connector, you can choose to cache the vault token. The token is cached on the Harness Delegate for a time duration equal to the TTL of the vault token, with 1% leeway.
 
   By default, caching is enabled for all existing connectors. To disable caching, go to the connector's YAML configuration and set the `enableCache` parameter to `false`. Harness UI support to enable and disable caching will be added in a subsequent release. (PL-39821)
 
@@ -1136,23 +1196,23 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 ###### Fixed issues
 
-- When you navigated to the Pipelines page, Harness checked for a Continuous Integration license. If you did not have a CI license, you were redirected to the CI Start Trial page because the Pipelines page was once part of the CI module. 
+- When you navigated to the Pipelines page, Harness checked for a Continuous Integration license. If you did not have a CI license, you were redirected to the CI Start Trial page because the Pipelines page was once part of the CI module.
 
   The issue has been resolved by the removal of such a check from the Pipelines page on the Projects tab. This change also resolves similar issues involving a redirect to Start Trial pages for other Harness modules. (PL-40611, ZD-48952)
 
-- If the number of service instances went down to zero and came back up after a duration of 1 day, they were not displayed on custom dashboards. 
+- If the number of service instances went down to zero and came back up after a duration of 1 day, they were not displayed on custom dashboards.
 
-  This issue is resolved, and custom dashboards now show service instances when the count is greater than zero. (CDS-75585, ZD-47848) 
+  This issue is resolved, and custom dashboards now show service instances when the count is greater than zero. (CDS-75585, ZD-47848)
 
 - During a long network outage that impacted the delegate, attempts made by the delegate to reconnect the websocket failed. The issue was caused by the delegate attempting to reconnect the websocket only once, after failing to send five heartbeats in succession. (PL-40547, ZD-48579)
 
   The issue is now fixed. During long network outages, the delegate attempts to reconnect the websocket every time it fails to send a heartbeat.
 
-    This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+    This item requires Harness Delegate version 23.08.80308. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Updates to the role assignments of a user group in one project caused role assignments to get updated in other projects in the organization. The issue was observed in the following scenario:
     - You used a regex query to update role assignments in a project.
-    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments. 
+    - Identifiers of other projects in the organization overlapped with that of the project in which you updated role assignments.
     - Identifiers of user groups in those other projects matched the identifier of the user group you updated. (PL-39780, ZD-46314)
 
   The issue is now fixed.
@@ -1179,7 +1239,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Previously, the **Select a Project** pane displayed duplicate projects. The issue was caused by Harness Manager allowing users to create projects with the same `projectIdentifier` key in different organizations. (PL-40302, ZD-48700)
 
-  The issue has been resolved by the use of a unique key that combines the project and organization identifiers. 
+  The issue has been resolved by the use of a unique key that combines the project and organization identifiers.
 
 - The Setup Vault step of the Azure Key Vault connector wizard continued to use the previous secret reference even after you changed it. (PL-40269, ZD-48150)
 
@@ -1187,7 +1247,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Harness Manager did not show role assignments for a service account at the organization and project scopes if the parent scope (the account scope and organization scope, respectively) had a service account with the same identifier. (PL-40245, ZD-47906)
 
-  The issue is now fixed, and any affected service accounts will be displayed correctly. 
+  The issue is now fixed, and any affected service accounts will be displayed correctly.
 
 - Harness API requests for creating an API key for a service account returned an HTTP 200 OK status code even if the API request did not have a valid service account ID. Consequently, the `harness_platform_apikey` resource for Terraform failed to create the API key at the intended scope. The issue was caused by Harness failing to validate the service account identifier. (PL-40243, ZD-47921)
 
@@ -1215,7 +1275,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - The YAML diff editor that shows changes to the YAML configuration associated with an event (**Account Settings** > **Audit Trail** > **Event Summary**) showed an inline diff, making it difficult for you to copy changes. (PL-40265, ZD-45911)
 
-  The diff editor now displays a side-by-side diff from which you can copy the changes you want. 
+  The diff editor now displays a side-by-side diff from which you can copy the changes you want.
 
 - When you selected a project on the Projects page and then selected Pipelines, you were redirected to the page for getting started with the Continuous Integration module. (PL-40150, ZD-46389)
 
@@ -1223,7 +1283,7 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 -  On the Project Connectors page, when you attempt to sort the connectors by when they were last updated, they get sorted by their connectivity status instead. (PL-40013, ZD-47483)
 
-  This issue is resolved, and you can now sort the connectors by when they were last updated. 
+  This issue is resolved, and you can now sort the connectors by when they were last updated.
 
 - Harness NextGen could not support SMTP without authentication because the user name and password fields were required. (PL-39863, ZD-48323)
 
@@ -1245,9 +1305,9 @@ The List projects API now returns a 404 `ENTITY_NOT_FOUND` response for projects
 
 - Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
-  This issue has been resolved through improved message read performance and an increased read timeout. 
+  This issue has been resolved through improved message read performance and an increased read timeout.
 
-  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+  This item requires Harness Delegate version 23.08.80104. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - If the delegates that were eligible to execute a pipeline task (delegates that were within the account-organization-project scope of the pipeline and matched any configured delegate selectors) did not have the required tools or connectivity to execute the task, the task timeout message included delegates that did not meet the eligibility criteria. (PL-39624, ZD-46460, ZD-46513)
 
@@ -1347,7 +1407,7 @@ This item requires Harness Delegate version 23.07.79904. For information about f
 
   This item requires Harness Delegate version 23.07.79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
+- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474).
 
   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
@@ -1385,7 +1445,7 @@ This item requires Harness Delegate version 23.07.79904. For information about f
 
 - SAML provider **Name** and **Friendly Name** fields allowed special characters. (PL-39070)
 
-    This issue is fixed by `displayName` and `logoutURL` field validations. The `displayName` only allows alphanumeric characters, `_`, `-`, `.`, and spaces. The `logoutURL` must be a valid HTTPS URL format. 
+    This issue is fixed by `displayName` and `logoutURL` field validations. The `displayName` only allows alphanumeric characters, `_`, `-`, `.`, and spaces. The `logoutURL` must be a valid HTTPS URL format.
 
 - When creating a service account with the same name in a different scope, an error was thrown. (PL-38885)
 
@@ -1421,7 +1481,7 @@ This item requires Harness Delegate version 23.07.79904. For information about f
 
 - Free and Community accounts are now limited to 100 connectors. (PL-32654)
 
-- The dialog for adding an encrypted text secret now includes an option to test a referenced secret. (PL-31083) 
+- The dialog for adding an encrypted text secret now includes an option to test a referenced secret. (PL-31083)
 
 - The dialog that enables you to select a connector did not list connectors in any order. (PL-27568)
 
@@ -1766,7 +1826,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
   - Principal Type Filter: Filters role assignments based on principal type.
 
-  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator.
 
   - Disabled Filter: Filters disabled role assignments. (PL-31352)
 
@@ -1828,7 +1888,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - A pipeline becomes unresponsive when invalid YAML is pasted in the run pipeline form. (PIE-8668)
 
-  The issue has been fixed by adding a check for invalid pipeline YAML when pipeline is added via the YAML pipeline studio. 
+  The issue has been fixed by adding a check for invalid pipeline YAML when pipeline is added via the YAML pipeline studio.
 
 - The table view on the pipelines list page is reset to page 1 when a pipeline is deleted. (PIE-8572)
 
@@ -2141,11 +2201,11 @@ For more information, see [Built-in user groups](/docs/platform/role-based-acces
 
 - Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
 
-- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. 
+- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope.
 (PL-29496, ZD-36050)
   This helps you keep a track of the role assignments within a specific scope.
 
-- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
+- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
 
   The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
 

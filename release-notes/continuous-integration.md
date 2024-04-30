@@ -1,8 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-tags: [NextGen, "continuous integration"]
-date: 2024-03-26T10:00
+date: 2024-04-29T10:00
 sidebar_position: 10
 ---
 
@@ -35,11 +34,82 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
+## April 2024
+
+### Version 1.25.0
+
+<!-- 29 April 2024 -->
+
+#### Fixed issues
+
+* The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
+* Fixed an issue where pod cleanup could be missed due to duplicate data. (CI-11995)
+
+### Version 1.24.2
+
+<!-- 23 Apr 2024 -->
+
+#### New features and enhancements
+
+In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), test globs starting with `/` are correctly treated as absolute paths. (CI-11819, ZD-57661, ZD-61493)
+
+:::warning
+
+If you currently use a Ruby test glob pattern starting with `/`, you must either replace the leading slash or add `**` accordingly.
+
+:::
+
+#### Early access features
+
+You can enable type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). If you select the **Secret** type, Harness treats the output variable value as a secret and applies [secrets masking](/docs/platform/secrets/add-use-text-secrets#secrets-in-outputs) where applicable. This is an [early access feature](/release-notes/early-access) behind the feature flags `CI_ENABLE_OUTPUT_SECRETS` and `CI_SKIP_NON_EXPRESSION_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+<DocImage path={require('/docs/continuous-integration/use-ci/static/run-step-output-var-type.png')} width="60%" height="60%" title="Click to view full size image" />
+
+#### Fixed issues
+
+* Increased the default machine size for the [Harness CI Cloud macOS platform](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). The default size was inadvertently decreased during a prior upgrade to Sonoma, and some users experienced `No space left on device` errors as a result. (CI-11620, ZD-59225)
+* Incorporated improvements to address some inconsistencies with [test splitting](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism). (CI-11773, ZD-60054)
+
+### Version 1.23.1
+
+<!-- 16 Apr 2024 -->
+
+#### Early access features
+
+If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
+
+This feature flag addresses specific use cases that require handling empty environment variables in CI pipelines, such as:
+
+* Variables related to [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) sometimes incorrectly resolving to `null` when included in environment variable [expressions](/docs/platform/variables-and-expressions/harness-variables).
+* Potentially empty output variables populating environment variables in child stages.
+* [Bitrise Workflow Steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) requiring empty environment variables.
+
+For more information about CI early access features, go to [What's supported for Harness CI](/docs/continuous-integration/ci-supported-platforms).
+
+#### Fixed issues
+
+* Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.82707 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
+* Fixed an issue where references to deleted/nonexistent secrets sometimes caused pipelines to timeout at the initialize step without any logs. (CI-11891, ZD-60575)
+* Added a fix to trim long environment variables, such as the commit message and PR title, during pod creation in stage initialization. This is currently an opt-in fix for affected customers. If you're using a Kubernetes cluster build infrastructure and experiencing initialization timeout with an error message like `rpc error: code = ResourceExhausted desc = trying to send message larger than max`, contact [Harness Support](mailto:support@harness.io) to enable this fix in your account. (CI-11709, ZD-59521)
+
+### Version 1.21.3
+
+<!-- 03 Apr 2024 -->
+
+#### New features and enhancements
+
+* All CI steps send status updates to the Harness Manager directly by HTTP rather than through a delegate. This feature was previously released in beta under the feature flag `CI_LE_STATUS_REST_ENABLED`, and it is now enabled globally. (CI-11770)
+* BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect [status updates in PRs](/docs/continuous-integration/use-ci/codebase-configuration/scm-status-checks) due to some statuses failing to send. Previously, you could enable the feature flag `CI_BITBUCKET_STATUS_KEY_HASH` if you encountered this issue with BitBucket Cloud. **Now, the fix enabled by this feature flag is generally available and enabled by default.** Note that adjustments made prior to general availability of this fix might cause some issues with BitBucket PR status updates. You might need to adjust your BitBucket settings if you notice Harness SCM status updates reporting to incorrect PR IDs. (CI-11770)
+
+#### Fixed issues
+
+When manually running pipelines, the **Branch Name** no longer unintentionally changes to `main` after you input another branch name. This issue occurred due to a backend API call that could sometimes take a long time to respond. (CI-11721, ZD-59730)
+
 ## March 2024
 
 ### Version 1.20.2
 
-<!-- Mar 26, 2024 -->
+<!-- 26 Mar 2024 -->
 
 #### Fixed issues
 
@@ -926,9 +996,9 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 
 ###### New features and enhancements
 
-- You can run GitHub Actions and Bitrise Integrations in your CI pipelines that use Harness Cloud build infrastructure: (CI-6479)
+- You can run GitHub Actions and Bitrise Workflow Steps in your CI pipelines that use Harness Cloud build infrastructure: (CI-6479)
   - Use the **Actions** step to run GitHub Actions.
-  - Use the **Bitrise** step to run Bitrise Integrations.
+  - Use the **Bitrise** step to run Bitrise Workflow Steps.
 - _The remote debugging feature announced in this release was reverted due to a security concern._ (CI-6350)
 - You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. (CI-5996, ZD-36578)
 

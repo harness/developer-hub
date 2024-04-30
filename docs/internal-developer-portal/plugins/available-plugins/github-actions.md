@@ -7,7 +7,7 @@ description: View CD/CD pipeline executions from GitHub Actions.
 | -------------- | ----------------------------------------------------------------------------------- |
 | **Created by** | Spotify                                                                             |
 | **Category**   | CI/CD                                                                               |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/github-actions) |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/github-actions/plugins/github-actions#github-actions-plugin) |
 | **Type**       | Open-source plugin                                                                  |
 
 ## Configuration
@@ -30,7 +30,7 @@ This plugin does not require a delegate proxy to be set up because GitHub is pub
 
 ## Layout
 
-This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
+This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then you could find the following YAML code auto-ingested in the **CI/CD** section:
 
 ```yaml
 - name: ci-cd
@@ -66,4 +66,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage/tree/master/plugins/github-actions) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/community-plugins/tree/main/workspaces/github-actions/plugins/github-actions#github-actions-plugin) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

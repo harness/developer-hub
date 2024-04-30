@@ -44,7 +44,7 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 To create your Harness account, do the following:
 
-1. On the Harness **Sign up** page, enter your email address and a secure password.
+1. On the Harness **Sign up** page, enter your email address and a secure password.
 
 2. Select **Sign up**.
 

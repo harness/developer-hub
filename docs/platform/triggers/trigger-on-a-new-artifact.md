@@ -53,12 +53,17 @@ You can use the following artifact providers to triggers pipelines:
 - Google Artifact Registry
 - Google Cloud Storage
 
+:::note
 The following artifact providers are supported behind the feature flag `CD_TRIGGER_V2`:
 
 - Jenkins
 - Azure Artifacts
 - Nexus3 Registry
 - Amazon Machine Image (AMI)
+
+Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 ## Important notes
 

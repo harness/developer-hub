@@ -366,6 +366,7 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **7004** | Metrics max target size exceeded                                                         |
 | **7005** | Metrics batch targets sending success                                                    |
 | **7006** | Metrics batch targets sending failed                                                     |
+| **7007** | Metrics max evaluation size reached                                                      |
 | **8005** | Fetching flag by identifier request failed and is retrying                               |
 | **8006** | Fetching group by identifier request failed and is retrying                              |
 | **8007** | Fetching all flags request failed and is retrying                                        |

@@ -15,19 +15,16 @@ To use the SEI Tenable integration you need a Tenable API Key. Copy the key some
 
 The user creating the token must have one of the following roles: **Basic**, **Scan Operator**, **Standard**, **Scan Manager**, or **Administrator**.
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Tenable** integration, and select **Install**.
 4. Configure and save the integration.
@@ -38,12 +35,10 @@ import TabItem from '@theme/TabItem';
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
 
-
 </TabItem>
   <TabItem value="satellite" label="Satellite">
 
 The Tenable integration does not support installation using the Ingestion Satellite.
-
 
 </TabItem>
 </Tabs>

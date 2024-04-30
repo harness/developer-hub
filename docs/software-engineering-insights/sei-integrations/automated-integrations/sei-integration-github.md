@@ -41,19 +41,15 @@ If you can't use OAuth, you must create a GitHub PAT to configure the SEI GitHub
 3. Copy the token somewhere that you can retrieve it when you configure the integration.
 4. If your GitHub organization uses SAML SSO, enable SSO for your personal access token. For instructions, go to the GitHub documentation on [Authorizing a personal access token for use with SAML SSO](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, go to the **SEI Module**, and select **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **GitHub Enterprise** or **GitHub Cloud** integration, depending on your GitHub configuration.
 4. Select **Install**.
@@ -71,9 +67,8 @@ import TabItem from '@theme/TabItem';
    * **Fetch Projects:** Allow SEI to ingest data from GitHub Projects.
    * **Fetch Commits:** Allow SEI to ingest commit metadata from GitHub.
    * **Fetch Commit Files:** Allow SEI to ingest data within commits from GitHub.
-   * **Connect via GitHub webhook:** Select this option if you want GitHub to *push data to SEI* through a webhook, rather than SEI *pulling data from GitHub*. This is an advanced configuration and only recommended if you are confident about using this configuration.
 
-9. Finish configuration and save the integration.
+9. Finish configuration and **Save** the integration.
 
 :::info Issue Cycle Time webhook
 
@@ -83,14 +78,12 @@ If you used OAuth, SEI creates an organization webhook instead.
 
 :::
 
-
 </TabItem>
   <TabItem value="satellite" label="Satellite">
 
+The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github Server.
 
-The steps for configuring the integration using **Satellite** is similar to configuring the integration on cloud, with the exception of using satellite to communicate with the Github server.
-
-Make sure to select the satellite integration checkbox while configuring the integration.
+Make sure to select the satellite integration checkbox while configuring the integration. If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
 
 Here’s a sample `satellite.yml` file:
 
@@ -98,7 +91,7 @@ Here’s a sample `satellite.yml` file:
 satellite:
   tenant: <ACCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: github
@@ -115,9 +108,6 @@ integrations:
       - apikey: <GITHUB_PAT>
 
 ```
-
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
 
 </TabItem>
 </Tabs>

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Continuous Delivery & GitOps (CD) module uses 'Services' as a key construct in defining and managing the pieces of software that you want to deploy. Since the core value of the CD module is in deploying these services, most Harness customers either directly license by Services (legacy model) or license by Developers (Developer 360 model) and receive services as an included entitlement. More details on the Developer 360 model are available [here](https://developer.harness.io/docs/platform/get-started/subscriptions).
+Harness Continuous Delivery & GitOps (CD) module uses 'Services' as a key construct in defining and managing the pieces of software that you want to deploy. Since the core value of the CD module is in deploying these services, most Harness customers either directly license by Services (legacy model) or license by Developers (Developer 360 model) and receive services as an included entitlement. More details on the Developer 360 model are available [here](/docs/platform/get-started/subscriptions-licenses/subscriptions).
 
 ## Service
 
@@ -62,7 +62,7 @@ Examples:
 Harness deploys serverless functions to architectures such as AWS Lambda, AWS SAM, Google Functions, Serverless.com Framework, Azure Web apps, and more. In all these architectures, Harness does not track any instances of functions deployed.
 
 ```
-Harness CD consumes 1 Service License for every 6 unique functions deployed.
+Harness CD consumes 1 Service License for every 5 unique functions deployed.
 ```
 
 Examples:

@@ -1,11 +1,13 @@
 ---
 title: Set Up Git Integration
 description: Once the Internal Developer Portal module is enabled in your account, follow these steps to add a Git integration.
-sidebar_position: 20
+sidebar_position: 4
 redirect_from:
   - /docs/internal-developer-portal/getting-started/setting-up-idp
   - /docs/internal-developer-portal/get-started/onboarding-guide
 ---
+
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
 
 This guide describes the steps a Harness account admin can take to set up the IDP module. Presently, the module needs to be enabled on request. [Read more](./enabling-module.md).
 

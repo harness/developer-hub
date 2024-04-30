@@ -431,7 +431,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 
-<StoSettingLogLevel />
+<StoSettingCliFlags />
 
 :::caution
 

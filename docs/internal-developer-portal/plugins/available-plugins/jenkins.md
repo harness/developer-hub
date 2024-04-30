@@ -7,7 +7,7 @@ description: View CI/CD executions running within your Jenkins instance.
 | -------------- | ---------------------------------------------------------------------------- |
 | **Created by** | [@timja](https://github.com/timja)                                           |
 | **Category**   | CI/CD                                                                        |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/jenkins) |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/jenkins/plugins/jenkins#jenkins-plugin-alpha) |
 | **Type**       | Open-source plugin                                                           |
 
 ## Configuration
@@ -71,4 +71,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by [@timja](https://github.com/timja) and managed in the [Backstage repository](https://github.com/backstage/backstage/tree/master/plugins/jenkins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by [@timja](https://github.com/timja) and managed in the [Backstage repository](https://github.com/backstage/community-plugins/tree/main/workspaces/jenkins/plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

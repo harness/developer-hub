@@ -44,9 +44,9 @@ Since the delegate is declaratively defined in YAML, it is easy to add custom sc
 
 ### Delegate Helm chart deployments
 
-For delegate Helm chart deployments, add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation. You can find the [default values.yaml in the delegate-helm-chart GitHub repo](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
+For delegate Helm chart deployments, add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation. You can find the default `values.yaml` file in the Delegate Helm chart [GitHub repo](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
 
-For example, the following `values.yaml` entry installs Kubectl on amd64 architecture. The exact install URL depends on your architecture. For additional architecture installation commands, go to the Kubernetes documentation on [Installing kubectl]( https://kubernetes.io/docs/tasks/tools/#kubectl).
+For example, the following `values.yaml` file entry installs Kubectl on amd64 architecture. The exact install URL depends on your architecture. For additional architecture installation commands, go to the Kubernetes documentation on [Installing kubectl]( https://kubernetes.io/docs/tasks/tools/#kubectl).
 
 ```yaml
 # Script to run before delegate installation
@@ -184,6 +184,17 @@ The following `INIT_SCRIPT` installs Helm 3:
 
 </TabItem>
 </Tabs>
+
+### Install Azure CLI
+
+To install the Azure CLI, run the following.
+
+```
+## Install Azure CLI
+rpm --import <https://packages.microsoft.com/keys/microsoft.asc>
+rpm -ivh <https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm>
+microdnf install -y azure-cli
+```
 
 ### Install multiple tools at once
 

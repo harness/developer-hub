@@ -58,7 +58,7 @@ When you build a custom delegate image, you modify the image you select with use
 The first lines of the script provide information about the base image and user privileges. This example uses the minimal image with delegate minor version 77029.
 
 ```
-FROM harness/delegate:22.10.77029.minimal
+FROM harness/delegate:24.04.82804.minimal
 USER root
 ```
 
@@ -102,7 +102,7 @@ USER harness
 The complete script is as follows:
 
 ```
-FROM harness/delegate:22.10.77029.minimal
+FROM harness/delegate:24.04.82804.minimal
 USER root
 
 RUN microdnf update \

@@ -44,7 +44,7 @@ Along with the delegate token, you will also need to provide your Harness `accou
 https://app.harness.io/ng/#/account/6_vVHzo9Qeu9fXvj-AcQCb/settings/overview
 ```
 
-`6_vVHzo9Qeu9fXvj-AcQCb` is the `accountId`. 
+`6_vVHzo9Qeu9fXvj-AcQCb` is the `accountId`.
 
 :::info note
 
@@ -52,7 +52,7 @@ When you install a delegate via the Harness UI, several dependencies in this top
 
 :::
 
-For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts).
 
 <Tabs>
 <TabItem value="Kubernetes">
@@ -72,10 +72,10 @@ import Delk8ssup from '/docs/platform/shared/delegate-install-k8s-supported-vern
    ```
    choco install minikube
    ```
-   
+
    :::info
    For Chocolatey installation instructions, go to [Installing Chocolatey](https://chocolatey.org/install) in the Chocolatey documentation.
-   
+
    For additional options to install minikube on Windows, go to [minikube start](https://minikube.sigs.k8s.io/docs/start/) in the minikube documentation.
    :::
 
@@ -120,7 +120,7 @@ helm search repo harness-delegate
 
 We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
 ```
-NAME                                	CHART VERSION	APP VERSION	DESCRIPTION                                
+NAME                                	CHART VERSION	APP VERSION	DESCRIPTION
 harness-delegate/harness-delegate-ng	1.0.8        	1.16.0     	A Helm chart for deploying harness-delegate
 ```
 
@@ -136,7 +136,7 @@ To install a delegate, do the following:
 
    ![](./static/install-a-k8s-delegate-helm.png)
 
-4. Under **Select where you want to install your Delegate**, select **Kubernetes**.   
+4. Under **Select where you want to install your Delegate**, select **Kubernetes**.
 
 5. Under **Install your Delegate**, select **Helm Chart**.
 
@@ -204,7 +204,7 @@ provider "helm" {
 }
 ```
 
-Now replace the variables in the file with your Harness account ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. 
+Now replace the variables in the file with your Harness account ID and delegate token values. Replace `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
@@ -260,7 +260,7 @@ curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/
 
 Open the `harness-delegate.yaml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE`, and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (for example, `firstk8sdel`), Harness `accountId`, and delegate token values, respectively.
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. 
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
@@ -333,7 +333,7 @@ To install a delegate, do the following:
 
 6. (Optional) Replace the `YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, to find your Harness cluster location, select **Account Settings**, and then select **Overview**. In **Account Overview**, look in **Account Settings**. It is listed next to **Harness Cluster Hosting Account**.
 
-   For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/view-account-info-and-subscribe-to-alerts).
+   For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/get-started/subscriptions-licenses/view-account-info-and-subscribe-to-alerts).
 
    ![](./static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
 
@@ -386,7 +386,7 @@ To deploy using a custom cluster role, do the following:
 
    In this example, the `cluster-admin` role is defined.
 
-3. Save the delegate YAML file. 
+3. Save the delegate YAML file.
 
 ## Verify delegate connectivity
 
@@ -414,7 +414,7 @@ import Selector from '/docs/platform/shared/selector-infrastructure.md'
 
 The delegate installer provides troubleshooting information for each installation process. If the delegate cannot be verified, select **Troubleshoot** for steps you can use to resolve the problem. This section includes the same information.
 
-Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
+Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?**
 
 If the steps did not resolve the problem, select **No**, and use the form to describe the issue. You'll also find links to Harness Support and to [Delegate docs](/docs/platform/delegates/delegate-concepts/delegate-overview/).
 

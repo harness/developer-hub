@@ -39,7 +39,9 @@ Latest SDK version can be found on [GitHub Release Page](https://github.com/harn
 
 To use this SDK, make sure you:
 
-* Install Go version 1.6 or newer.
+- Starting with SDK version v0.1.21, Golang version 1.20 or later is required.
+- Earlier versions of the SDK require Golang versions newer than 1.6 but older than 1.19.
+- For installation details, please refer to [Golang's official installation guide](https://go.dev/doc/install).
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-golang-server-sdk)
 * Create a Go application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/getting_started.go).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
@@ -435,3 +437,5 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **7001** | Metrics service has stopped                                                                                   | Info          |
 | **7002** | Metrics posting failed                                                                                        | Warn          |
 | **7003** | Metrics posting success                                                                                       | Debug         |
+| **7004** | Metrics max target size exceeded                                                                              | Warn          |
+| **7007** | Metrics max evaluation size reached                                                                           | Warn          |

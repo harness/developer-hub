@@ -19,13 +19,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Secure" }],
         title: "OIDC Support for AWS",
         description:
-          "Use OpenID Connect (OIDC) functionality to allow Harness to communicate directly with your AWS resources without secrets or credentials",
-      },
-      {
-        tag: [],
-        title: "Single Tenant SaaS",
-        description:
-          "Customers can request to be onboarded to a single tenant Harness SaaS cluster",
+          "Use OpenID Connect (OIDC) to allow Harness to communicate directly with your AWS resources without secrets or credentials",
       },
       {
         tag: [],
@@ -53,7 +47,7 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "SMP" }],
-        title: "Multi tenant SMP",
+        title: "Multi-tenant SMP",
         description:
           "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
       },
@@ -132,6 +126,19 @@ export const platformData: Horizon = {
         description:
           "Create and manage customized notification body text",
       },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Infrastructure as Code Mgmt, Internal Developer Portal, Software Supply Chain Assurance, Code Repository",
+      },
+      {
+        tag: [],
+        title: "Multi-tenant SaaS in EU",
+        description:
+          "Customers can request to be onboarded to a multi-tenant Harness SaaS cluster in the EU region",
+      },
+
     ],
   },
   Released: {
@@ -161,6 +168,12 @@ export const platformData: Horizon = {
         title: "Absolute session timeout",
         description:
           "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
+      },
+      {
+        tag: [{ value: "SMP" }],
+        title: "Supported modules",
+        description:
+          "Continuous Delivery and GitOps, Continuous Integration, Security Test Orchestration, Feature Flags, Service Reliability Management, Chaos Engineering, Cloud Cost Management - Beta (AWS Cost Visibility)",
       },
       {
         tag: [{ value: "SMP" }],

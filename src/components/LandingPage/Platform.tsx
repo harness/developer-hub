@@ -77,20 +77,6 @@ export default function Platform() {
               </Link>
             </div>
           </div>
-          {/* <div>
-            <img src={`${baseUrl}img/platform.svg`} />
-          </div> */}
-
-          <div className={styles.illustrationContainer}>
-            <img
-              className={styles.illustration}
-              src={
-                colorMode === "light"
-                  ? `${baseUrl}img/platform.svg`
-                  : `${baseUrl}img/Harness_Platform_dark_mode.svg`
-              }
-            />
-          </div>
         </div>
       </div>
       <div className={styles.subSection}>

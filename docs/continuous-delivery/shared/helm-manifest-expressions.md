@@ -1,4 +1,4 @@
-For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart) deployments, you can use the following built-in expressions in your pipeline stage steps to reference chart details.
+For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts) and [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart) deployments, you can use the following built-in expressions in your pipeline stage steps to reference chart details.
 
 |                     Expression                      |                                                      Description                                                      |
 | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
@@ -14,6 +14,9 @@ For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/d
 | `<+manifests.MANIFEST_ID.helm.metadata.commitId>`   | Store commit Id, available only when manifest is stored in a Git repo and Harness is configured to use latest commit. |
 | `<+manifests.MANIFEST_ID.helm.metadata.branch>`     | Store branch name, available only when manifest is stored in a Git repo and Harness is configured to use a branch.    |
 
+Select **Fetch Helm Chart Metadata** in the **Manifest Details** page's **Advanced** section to enable this functionality.
+
+![picture 0](static/helm-chart-metadata-00.png)
 
 The `MANIFEST_ID` is located in `service.serviceDefinition.spec.manifests.manifest.identifier` in the Harness service YAML. In the following example, it is `nginx`:
 
@@ -36,6 +39,7 @@ service:
               chartName: nginx
               helmVersion: V3
               skipResourceVersioning: false
+              fetchHelmChartMetadata: true
               commandFlags:
                 - commandType: Template
                   flag: mychart -x templates/deployment.yaml
@@ -43,3 +47,4 @@ service:
 
 ```
 
+It can be also be fetched using the expression `<+manifestConfig.primaryManifestId>`. This expression is supported in multiple Helm chart manifest configuration.

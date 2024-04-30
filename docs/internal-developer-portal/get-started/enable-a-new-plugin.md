@@ -1,12 +1,14 @@
 ---
 title: Enable a plugin
 description: Learn how to enable a plugin in Harness IDP and use it in your software catalog.
-sidebar_position: 50
+sidebar_position: 7
 redirect_from:
   - /docs/internal-developer-portal/getting-started/enable-a-new-plugin
 ---
 
-You can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
+Now that you have [populated your Catalog with Software Components](/docs/internal-developer-portal/get-started/register-a-new-software-component), you can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
 **Prerequisites**
 

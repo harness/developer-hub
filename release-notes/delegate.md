@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-04-02T10:00
+date: 2024-04-25T10:00
 sidebar_position: 4
 ---
 
@@ -22,38 +22,6 @@ These release notes describe recent changes to Harness Delegate.
 
 :::
 
-## Important upcoming changes
-
-:::warning important changes
-
-Please note that the following important changes will occur in an upcoming release:
-
-- The `Switch back to old delegate install experience` link will be removed on the New Delegate page, and the old delegate installation flow will be deprecated.
-
-   <details>
-   <summary>Legacy delegate installation flow</summary>
-
-   #### New Delegate Page
-
-   The `Switch back to old delegate install experience` link will be removed.
-
-   ![](./static/switch-to-old-delegate-install.png)
-
-   #### Legacy delegate installation flow deprecated
-
-   You will no longer be able to reach the legacy delegate installation flow.
-
-   ![](./static/old-delegate-install-exp.png)
-
-   </details>
-
-- Delegate tokens not used within the last 30 days will be revoked automatically.
-
-   This update will not impact the tokens you use to run delegates. When delegates are running, communication takes place using the token. Harness will now examine tokens that have not communicated with Harness Manager in the last 30 days. If a token has not communicated with Harness Manager during this time, it will be considered unused, and it will automatically be revoked. For more information, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens).
-
-:::
-
-
 <details>
 <summary>Deprecation notice</summary>
 
@@ -68,6 +36,48 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
+
+## April 2024
+
+### Harness version 1.34.2, Harness Delegate version 24.04.82804 <!--  April 24, 2024 -->
+
+#### Fixed issues
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like `taskType` or `task ID`. We have enhanced the task rejection metrics by adding `taskType` and `taskId` labels. (PL-48488)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. We have implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. (PL-47753, ZD-58629)
+
+- 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. (PL-48980, ZD-61314, ZD-61420, ZD-61486)
+
+### Harness version 1.33.5, Harness Delegate version 24.04.82707 <!--  April 16, 2024 -->
+
+#### New features and enhancements
+
+- Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. (PL-46947)
+
+- We've added an optional registry mirror configuration for delegate `upgrader`. If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images. For more information, go to [Configure an optional registry mirror for delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#configure-an-optional-registry-mirror-for-delegate-images). (PL-47920, ZD-59005)
+
+#### Fixed issues
+
+- Slack channel notifications failed due to an error related to explicitly setting the Host header as `hooks.slack.com`. We have removed the explicit Host header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue. (PL-47914)
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. The name of a user will be sanitized if it does not follow Harness naming conventions during user addition flows. (PL-47614)
+
+- Builds triggered by Bitbucket Server push events had incorrect date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)
+
+- Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. (PL-48781, ZD-60713)
+
+### Version 24.04.82705 <!--  April 12, 2024 -->
+
+#### Hotfix
+
+- Added support for network load balancers in ASG Blue Green deployments. (CDS-95510, ZD-60182)
+
+### Version 24.04.82603 <!--  April 4, 2024 -->
+
+#### Hotfix
+
+- Added additional retries on failures when verifying Docker images during CD deployments. (CDS-93180, ZD-58933, ZD-59370, ZD-60138)
 
 ## March 2024
 

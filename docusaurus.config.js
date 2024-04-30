@@ -6,7 +6,6 @@ const darkCodeTheme = themes.dracula;
 const path = require("path");
 
 const BASE_URL = process.env.BASE_URL || "/";
-
 function hideIndexFromSidebarItems(items) {
   const result = items.filter((item) => {
     return !(item.type === "doc" && item.id === "index");
@@ -247,6 +246,10 @@ const config = {
                 label: "Knowledge Base",
               },
               {
+                to: "kb/reference-architectures",
+                label: "Reference Architectures",
+              },
+              {
                 to: "community",
                 label: "Community",
               },
@@ -257,19 +260,19 @@ const config = {
             position: "right",
             href: "/roadmap",
           },
-
           {
             type: "custom-coveo-search",
             position: "right",
           },
+
           {
             position: "right",
-            html: '<button class="button button--nav">Sign in</button>',
+            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
             href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
             position: "right",
-            html: '<button class="button button--cta">Sign up</button>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],
@@ -552,7 +555,11 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
-  clientModules: [path.join(__dirname, "/client_module/searchBar")],
+  clientModules: [
+    path.join(__dirname, "/client_module/searchBar"),
+    path.join(__dirname, "/client_module/iframeEmbed"),
+  ],
+  // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
 
 module.exports = config;

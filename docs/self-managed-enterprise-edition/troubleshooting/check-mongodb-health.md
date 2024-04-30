@@ -1,12 +1,12 @@
 ---
-title: Check MongoDB health 
+title: Check MongoDB health
 description: Learn how to check for MongoDB health before using Helm to install the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 50
 ---
 
 Use these instructions to check the health of MongoDB before using Helm to install Harness Self-Managed Enterprise Edition.
 
-In the following command sequence, replace `harness-smp1` with your namespace. 
+In the following command sequence, replace `harness-smp1` with your namespace.
 
 ```
 ns=<namespace>
@@ -21,10 +21,10 @@ The expected response is as follows:
 ```
 source: mongodb-replicaset-chart-1.mongodb-replicaset-chart.harness-smp1.svc.cluster.local:27017
 	syncedTo: Fri Jan 13 2023 13:16:48 GMT+0000 (UTC)
-	2 secs (0 hrs) behind the primary 
+	2 secs (0 hrs) behind the primary
 source: mongodb-replicaset-chart-2.mongodb-replicaset-chart.harness-smp1.svc.cluster.local:27017
 	syncedTo: Fri Jan 13 2023 13:16:49 GMT+0000 (UTC)
-	1 secs (0 hrs) behind the primary 
+	1 secs (0 hrs) behind the primary
 ```
 
 In this example, the first source is two seconds behind the primary; the second source is one second behind the primary. If the `syncedTo` value is excessive, consider troubleshooting your installation of MongoDB.

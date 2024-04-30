@@ -24,8 +24,8 @@ Harness provides the following delegate images. Each image includes a set of too
 
 | **Delegate Image**  | **Description** |
 | --- | --- |
-| harness/delegate:*yy.mm.xxxxx* | Includes the delegate and its dependencies. Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
-| harness/delegate:*yy.mm.xxxxx*.minimal | Includes the delegate and its dependencies. |
+| harness/delegate:*yy.mm.verno* | Includes the delegate and its dependencies. Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
+| harness/delegate:*yy.mm.verno*.minimal | Includes the delegate and its dependencies. |
 
 For detailed information on Docker delegate installation, go to [Install a Docker delegate](/docs/platform/delegates/install-delegates/overview.md).
 
