@@ -14,7 +14,7 @@ For [Kubernetes Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/d
 | `<+manifests.MANIFEST_ID.helm.metadata.commitId>`   | Store commit Id, available only when manifest is stored in a Git repo and Harness is configured to use latest commit. |
 | `<+manifests.MANIFEST_ID.helm.metadata.branch>`     | Store branch name, available only when manifest is stored in a Git repo and Harness is configured to use a branch.    |
 
-To enable this functionality you need to select the `Fetch Helm Chart Metadata` option in Advanced section of manifest window.
+Select **Fetch Helm Chart Metadata** in the **Manifest Details** page's **Advanced** section to enable this functionality.
 
 ![picture 0](static/helm-chart-metadata-00.png)
 
@@ -47,4 +47,4 @@ service:
 
 ```
 
-It can be also be fetched using the expression `<+manifestConfig.primaryManifestId>`. This expression is supported in multiple helm chart manifest configuration.
+It can be also be fetched using the expression `<+manifestConfig.primaryManifestId>`. This expression is supported in multiple Helm chart manifest configuration.
