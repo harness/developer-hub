@@ -677,4 +677,7 @@ Sometimes Azure takes time to propagate/refresh the access settings on the stora
 #### Do you need to add Kubernetes cloud provider connectors for each Kubernetes cluster?
 Yes, you need to add a Kubernetes cloud provider for each Kubernetes cluster. One connector can access only one cluster.
 
+#### Why am I seeing 100% for Azure Cost Trend?
+With Azure cost trends, if the Reporting Timeframe is set to a larger subset of time than the Time / Period it will return 100%. The Reporting Timeframe needs to be a shorter timeframe than the Time / Period or any Cost Period set.
+
 
