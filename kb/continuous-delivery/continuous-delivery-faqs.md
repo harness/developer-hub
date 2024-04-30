@@ -7115,3 +7115,62 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+#### Request logs for last 12 months
+
+If the account has retension enabled for 12 months then for the deployment logs, can you try below:
+Go to the deployments page.
+Click on three dots next to “Start New Deployment“
+Export Logs
+You may run into issues with downloading too many logs. So put a filter to see the deployment logs for 2 month window and then download them.
+
+#### Unable to get script out variable
+
+This error occurs in scenarios where the script exits before we get a chance to export the variable. You should remove the exit scenario for success exit code and let the script exit on its own. 
+
+#### Yaml issue in piepline giving error
+
+Always make sure the tab spacing is correct in the yaml. 
+You can use the yaml validator to validate the same. 
+
+#### Harness delegate alert when down
+
+You can reach out to Harness Support to enable PL_CENTRAL_NOTIFICATIONS so that you can configure alerts/notifications when a delegate is unavailable/down. 
+
+#### Deleting Service which still has active instances.
+
+Harness recommends the running instances are cleaned up, or if you don't want the same and juts want the service to be deleted use the Force delete option. 
+Account Settings --> Account Resources --> Default Settings --> General, Enable the force delete and them you will be abel to delete the services.
+
+#### Timeout issues in Custom HTTP Step
+
+In case you are seeing timeout issues in HTTP step, you can directly run the curl command from the delegate to validate if its the issue in the network. 
+
+#### Can we adjust the column width on pipeline UI?
+
+Unfortunately currnetly you can adjust the width on the pipeline UI. It by default shows you the name, status, service, environment and execution start time. 
+
+#### Order of artifact versions in dropdown list 
+
+It not possible to change the order , the below shows how the order for display works for all artifact types : 
+ 
+https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifact-limits-and-display-in-the-harness-ui
+
+#### Need to create centralised notification on slack for Harness NG
+
+You can do the same but you will need to setup it for each pipeline. 
+Open a pipeline on the right you will see Notify. But doing it for all deployment in a centralized way is not possible currently.
+
+#### At NextGen,Even if I update the license key, can I continue to use the same key as before the update? Or will a new string of license keys be issued each time there is an update?
+
+So in earlier kots based setup the FF needs to be added as part of license key file but with helm bases installation thats not the case and just need to update Feature Flags using the override.yaml file for your base installation.
+ 
+For Feature Flags that affect ng-manager, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
+
+#### Is it possible to display a custom error from a shell script instead of the default "Shell Script execution failed. Please check execution logs ?
+
+The error like above in a shell script execution failure comes from the execution and that can't be customised.
+
+#### I have added 19 services within the pipeline and i wanted to run 3-4 services by selecting them from the drop-down list. How to achieve this?
+
+You an make it as runtime input and on execution you can select the services its more like a drop down list.
+
