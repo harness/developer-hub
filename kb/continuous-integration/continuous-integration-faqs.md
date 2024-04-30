@@ -6,14 +6,6 @@ redirect_from:
   - /docs/faqs/continuous-integration-ci-faqs
 ---
 
-### Can I use Harness CI for mobile app development?
-
-Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/development-guides/mobile-dev-with-ci)
-
-### I have a MacOS build, do I have to use homebrew as the installer?
-
-No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
-
 ## Build infrastructure
 
 ### What is build infrastructure and why do I need it for Harness CI?
@@ -31,6 +23,10 @@ For support operating systems, architectures, and cloud providers, go to [Which 
 ### Can I use multiple build infrastructures in one pipeline?
 
 Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
+
+### I have a MacOS build, do I have to use homebrew as the installer?
+
+No. Your build infrastructure can be configured to use whichever tools you like. For example, Harness Cloud build infrastructure includes pre-installed versions of xcode and other tools, and you can install other tools or versions of tools that you prefer to use. For more information, go to the [CI macOS and iOS development guide](https://developer.harness.io/docs/continuous-integration/development-guides/ci-ios).
 
 ## Local runner build infrastructure
 
@@ -914,7 +910,7 @@ If you want to force all stages to use the same commit ID, even if there are cha
 
 * Error: During the **Initialize** step, when cloning the default codebase, `git fetch` throws `fetch-pack: invalid index-pack output`.
 * Cause: This can occur with large code repos and indicates that the build machine might have insufficient resources to clone the repo.
-* Soltuion: To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
+* Solution: To resolve this, edit the pipeline's YAML and allocate `memory` and `cpu` resources in the `codebase` configuration. For example:
 
 ```yaml
 properties:
@@ -982,6 +978,18 @@ You can add a Run step to the beginning of your Build stage that runs `ls -ltr`.
 ### Why is the codebase connector config not saved?
 
 Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
+
+### Can I get a list of all branches available for a manual branch build?
+
+This is not available in Harness.
+
+### Can I configure a trigger or manual tag build that pulls the second-to-last Git tag?
+
+There is no built-in functionality for this.
+
+Depending on your tag naming convention, if it is possible to write a regex that could resolve correctly for your repo, then you could configure a trigger to do this.
+
+For manual tag builds, you need to enter the tag manually at runtime.
 
 ## SCM status updates and PR checks
 
@@ -1060,7 +1068,7 @@ You could try modifying the permissions of the code repo connector's token so th
 
 Removing API access from the connector is not recommended because API access is required for other connector functions, such as cloning codebases from PRs, auto-populating branch names when you manually run builds, and so on.
 
-### Why was the PR build status not updated for an Approval stage?
+### Why wasn't PR build status updated for an Approval stage? Can I mark the build failed if any non-Build stage fails?
 
 Build status updates occur for Build stages only.
 
@@ -1131,6 +1139,8 @@ If you have security concerns about using anonymous access or pulling Harness-sp
 ### Can I use my own private registry to store Harness CI images?
 
 Yes, you can [pull Harness CI images from a private registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry).
+
+If you take this approach, you might not need all the Harness images. For example, you only need the SSCA images if you use the SSCA module.
 
 ### Build failed with "failed to pull image" or "ErrImagePull"
 
@@ -1389,6 +1399,12 @@ With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog s
 
 These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
+### Can I upload files at the root of an S3 bucket?
+
+Currently, you can't upload files to the root of an S3 bucket due to the glob pattern that Harness uses.
+
+If there are too many nested directories in your uploaded files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
+
 ## Test reports
 
 ### Test reports missing or test suites incorrectly parsed
@@ -1614,6 +1630,10 @@ You could do this by [running DinD in a Background step](https://developer.harne
 
 If your GCP connector inherits credentials from the delegate, Harness uses the node pool's authentication configuration while pulling the image. Harness can't extract the secret and mount it under  `imagePullSecrets` in this case.
 
+### Can I tag code committed from a Harness pipeline?
+
+When Harness performs an automated commit in your codebase, you can't tag the code. However, if your pipeline includes commits to your codebase, you can include the tag commands in your script.
+
 ## Entry point
 
 ### What does the "Failed to get image entrypoint" error indicate in a Kubernetes cluster build?
@@ -1821,6 +1841,16 @@ You can use conditional executions and failure strategies to [check if a cache w
 If a file becomes corrupted in the bucket during the restoration process, the best practice is to remove the corrupted file from the bucket.
 
 To ensure robustness in your pipeline, consider adding a Failure Strategy to the restore step to mitigate pipeline failures. For example, you can [check if a cache was downloaded and, if it wasn't, install the dependencies that would be provided by the cache](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache).
+
+### The Restore Cache from S3 step logs reference multiple S3 cache keys from different pipelines and pull a huge amount of cached data. Why is this happening?
+
+This can happen when you create pipelines by cloning existing pipelines. For more information and resolution instructions, go to [Caching in cloned pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-in-cloned-pipelines)
+
+### Can I cache files at the root of an S3 bucket?
+
+Currently, you can't upload files to the root of an S3 bucket due to the glob pattern that Harness uses.
+
+If there are too many nested directories in your cached files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
 
 ## Cache Intelligence
 
@@ -2114,6 +2144,10 @@ No. Currently CI stages don't support secret type output variables from CD or cu
 
 While it is possible to [trigger deployments with artifact triggers](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/), there are currently no CI-specific triggers for artifacts.
 
+### Can I use Queue steps in Build stages?
+
+No. Queue steps are only available for Custom stages.
+
 ## Performance and build time
 
 ### What are the best practices to improve build time?
@@ -2161,6 +2195,14 @@ Currently, Approval steps aren't compatible with CI stages.
 ## General issues with connectors, secrets, delegates, and other Platform components
 
 For troubleshooting and FAQs for Platform components that aren't specific to CI, such as RBAC, secrets, secrets managers, connectors, delegates, and otherwise, go to the [Harness Platform Knowledge Base](https://developer.harness.io/kb/platform) or [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen).
+
+### Can I use Harness CI for mobile app development?
+
+Yes. [Harness CI offers many options for mobile app development.](https://developer.harness.io/docs/continuous-integration/development-guides/mobile-dev-with-ci)
+
+### Can I use Terraform to create CI pipelines?
+
+Yes, you can use the [Harness Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
