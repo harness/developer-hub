@@ -95,7 +95,13 @@ These settings are for the Harness CD module.
 
 ### Continuous Integration
 
-To use [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features, such as Cache Intelligence and Harness-managed Docker layer caching, with [build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) *other than Harness CI Cloud*, you must provide S3-compatible object storage where Harness can store and manage your caches.
+:::note
+
+Currently, Harness-managed caching with self-managed build infrastructures is behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable these features.
+
+:::
+
+To use [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) caching features, such as Cache Intelligence and Harness-managed Docker layer caching, with [self-managed build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md), you must provide S3-compatible object storage where Harness can store and manage your caches.
 
 Use the **S3-Compatible Object Store for Self-Managed Build Infrastructure** settings to connect your S3-compatible object storage to your Harness account. If you want to define different object storage for individual organizations or projects, you must [allow overrides](#allow-overrides) and then change these settings at the lower scopes.
 

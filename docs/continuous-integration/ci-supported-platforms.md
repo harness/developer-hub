@@ -31,6 +31,7 @@ For more information about early access features, including early access feature
 
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
+| `CI_ENABLE_DLC_SELF_HOSTED`, `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` | [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) for self-managed build infrastructures. | Beta |
 | `CIE_ENABLE_RUNTEST_V2` | [Tests V2 step.](/docs/continuous-integration/use-ci/run-tests/tests-v2.md) | Beta |
 | `CI_ENABLE_OUTPUT_SECRETS`, `CI_SKIP_NON_EXPRESSION_EVALUATION` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
@@ -64,8 +65,8 @@ Here are some CI early access features that were recently promoted to GA:
 
 | Flag | Description | GA date |
 | ---  | ----------- | ------- |
-| `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) | May 2024 |
-| `CI_CACHE_INTELLIGENCE` | Cache Intelligence in the Visual editor (CI-8571, CI-8917).<br/>You can [enable and configure Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Previously, you could only enable Cache Intelligence through the YAML editor.<br/>Cache intelligence is available for all build infrastructures. | May 2024 |
+| `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) for Harness Cloud build infrastructure. | May 2024 |
+| `CI_CACHE_INTELLIGENCE` | You can [enable and configure Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) in the Pipeline Studio's Visual editor. Cache intelligence is GA for Harness Cloud build infrastructure. | May 2024 |
 | `CI_BITBUCKET_STATUS_KEY_HASH` | Addresses an issue with [Harness build status updates in Bitbucket PRs](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#status-doesnt-update-in-bitbucket-cloud-prs) | April 2024 |
 | `CI_LE_STATUS_REST_ENABLED` | Send status updates to Harness Manager directly by HTTP (CI-8338).<br/>This feature causes CI steps to send status updates to the [Harness Manager](/docs/platform/get-started/key-concepts.md#harness-manager) directly by HTTP, rather than through a delegate. | Early 2024 |
 | `QUEUE_CI_EXECUTIONS`, `QUEUE_CI_EXECUTIONS_CONCURRENCY` | [Queue Intelligence for Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md#queue-intelligence) | Early 2024 |

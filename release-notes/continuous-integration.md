@@ -40,13 +40,12 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 <!-- #### New features and enhancements -->
 
-<!-- [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available for all build infrastructures. -->
-<!-- [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) is now generally available for all build infrastructures. -->
-<!-- You can [define S3-compatible object storage](/docs/platform/settings/default-settings/#continuous-integration) to use Cache Intelligence and Harness-managed Docker layer caching with self-managed build infrastructures. (INTERNAL NOTE: This might be an early access feature behind FFs per CI-11953. If so, move this release note under Early access features and add the FFs+FF note to /docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features and /docs/platform/settings/default-settings#continuous-integration.) -->
+<!-- [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) and [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) are available for Harness CI Cloud build infrastructure. For other build infrastructures, these features are available in [early access](/release-notes/early-access). -->
 
 <!-- #### Early access features --->
 
-<!-- Use the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing with Test Intelligence. Currently, this step supports Python, Ruby, and Java. This step will eventually fully replace the deprecated **Run Tests** step. -->
+<!-- * You can use [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) and [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) with self-managed build infrastructures. These are [early access features](/release-notes/early-access) behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the features. (CI-11953) -->
+<!-- * Use the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing with Test Intelligence. Currently, this step supports Python, Ruby, and Java. This step will eventually fully replace the deprecated **Run Tests** step. -->
 
 <!-- #### Deprecations and removals -->
 
