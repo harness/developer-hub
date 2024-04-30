@@ -32,11 +32,17 @@ Public APIs for this functionality are on the [STO roadmap](https://developer.ha
 
 ### These is no Test Execution Summary widget in the list of dashboard widgets
 
-To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+To use this widget, you must have the `CI_TI_DASHBOARDS_ENABLED` feature flag enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 
 ### Why doesn't the STO dashboard populate the data from targets?
 
 This happens when scan executions don't have baselines set. You must set test target baselines to show this data on your STO dashboards. 
+
+Every scanned target needs a baseline to enable the full suite of STO features. For more information, go to [Target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
+
+#### I'm trying to create a dashboard to display the STO metrics for my project, but my organization is not getting listed in the filter. Hence, I'm not able to get my project filtered.
+
+The dashboard only populates projects that had a baseline scan run previously. Check that your scanned targets have baselines defined if they don't appear in the dashboard.
 
 Every scanned target needs a baseline to enable the full suite of STO features. For more information, go to [Target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
@@ -88,6 +94,4 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 #### Why am I getting the error Missing target_name for scan_type [repository] scan.
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
-#### I'm trying to create a dashboard to display the STO metrics for my project. But, my organization is not getting listed in the filter. Hence, I'm not able to get my project filtered as well.
 
-The dashboard only populates projects that had a baseline scan run before. You might want to add baseline to pipelines to display them in the dashboard.
