@@ -7136,13 +7136,74 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
-#### How do I pass a list or array to a path field in a Kubernetes Manifest?
+#### Can I use shell variables in Harness expressions to fetch a secret in a shell script step?
 
-In order to pass a list or array to a path field, you'll need to enable the `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR` Feature Flag. Please open a ticket with Harness Support to get this enabled on your account. After the Feature Flag has been enabled, you can add an array to a path field in a Kubernetes Manifest by using the `<+<+stage.variables.var1>.split(",")>` expression. Where the variable `var1` has a value of `path1,path2,path3`.
+You can't use a shell variable in a Harness expression because the Harness expression is resolved before the step starts, and the shell variable doesn't populate until the shell script step run.
 
-#### How do I get Rollback functionality in a non-deploy stage?
+However, you could write a variable that stores a Harness expression referencing a secret, and then use that variable in your script. This way the expression can be resolved independently of the script running.
 
-Rollback is a functionality exclusive to Deploy stages however, you can use Harness Failure Strategies and Conditional Execution configuration in order to achieve similar behavior.
+#### What is the connection test for a Docker connector with anonymous authentication?
+
+The connection test checks if Harness can reach the registry endpoint URL.
+
+#### How can a Docker connector with anonymous authentication have a successful connection test if the Docker public registry endpoint is blocked by the delegate proxy?
+
+Specifically, Harness checks that the server's response code is 400 while verifying Docker connectivity with anonymous credentials. This situation can occur if the proxy, which is set up to block connections, returns a 403 or any client error code other than 400.
+
+#### Can I use Harness CI Cloud build infrastructure for Deploy or Custom stages?
+
+No. Harness CI Cloud is only for Continuous Integration builds (Build stages).
+
+#### Can I use Plugin or Git Clone steps in Deploy or Custom stages?
+
+Yes, you can add these steps in containerized step groups in Deploy or Custom stages.
+
+#### Can I use any CI steps in a containerized step group?
+
+No. Only some step types are available in containerized step groups.
+
+#### Where are steps in containerized step groups executed?
+
+They are executed on a separate pod created at runtime.
+
+The pod is cleaned up after step group execution ends.
+
+#### Are separate pods created for each step in a containerized step group?
+
+No. Harness creates one pod for the containerized step group and runs all step containers in the group on that pod.
+
+#### Can I access files from a containerized step group in a subsequent shell script step?
+
+No. Containerized step groups are isolated on a separate pod from other steps. Files generated in the containerized step group aren't available in outside steps.
+
+#### Can I run a containerized step group on a self-managed VM or local infrastructure?
+
+No, containerized step group can only run on Kubernetes infrastructure.
+
+#### Does the containerized step group's command override CMD and/or ENTRYPOINT?
+
+The step group's **Command** is overwritten the image's default entrypoint, if it has one.
+
+If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**
+
+#### Can I pass a list or array to a path field in a Kubernetes Manifest?
+
+Currently, to pass a list or array to a path field, you'll must enable the feature flag `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Once enabled, you can add an array to a path field in a Kubernetes Manifest by:
+
+1. Creating a stage variable containing your list or array contents, such as `path1,path2,path3`.
+2. Passing the array to the manifest by using the following expression:
+
+   ```
+   <+<+stage.variables.VARNAME>.split(",")>
+   ```
+
+#### Can I rollback a non-deploy stage?
+
+Rollback is a functionality exclusive to Deploy stages.
+
+However, you can use Failure Strategies and Conditional Executions to achieve similar behavior.
 
 1. Set your step's Failure Strategy to `Proceed with Default Values` for all Errors you wish to run your rollback step for.
 2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
