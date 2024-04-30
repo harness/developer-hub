@@ -7022,4 +7022,4 @@ Check the following:
 
 #### How to get stage.Selected env?
 
-You can use environment variables like <+env.name> or <+env.identifier>, so that it resolves to the environment used for that stage.
+You can use environment variables like `<+env.name>` or `<+env.identifier>`, so that it resolves to the environment used for that stage.
