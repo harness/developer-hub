@@ -60,3 +60,7 @@ Please check the variable passed is correct(like for healthSourceRef its identif
 #### What is Metric packs
 
 With Metrics Packs section you can select the metrics that you want to use for the health source. The options available are Errors and Performance.
+
+#### Prometheus Health source is configured correctly but the verification step is not working as expected and no verification is happening.
+
+Check if  query is correct and  Continuous Verification is selected under assign section of query and Select the services you want to apply the metric.
