@@ -1,62 +1,123 @@
 ---
 title: Service Reliability Management (SRM) FAQs
 description: Frequently asked questions about Harness Service Reliability Management (SRM).
-# sidebar_position: 2
+sidebar_position: 10
 ---
-# FAQ
 
-### Please explain query type : service based vs host based.
+## Health sources
 
-Service based query will return the metrics for the service without any grouping on the basis of host/pod name. 
-Host based query will return the metrics for the service with groups on the basis of host/pod name. 
-Please note that for all the health sources, we take the service based query from the user and convert it to host based for CV if required. 
-For Custom Health source, we take both from the user as per the use-case.
+### Why do I have to specify a start and end time when creating a health source?
 
-### Calculation on how many total comparisons will be required on the order of control, canary and queries.
+The initial start and end times are placeholders. When Harness makes an actual query, the times are updated. These times are required parameters in either the query path (for Get requests) or the body (for Post requests).
 
-This can be calculated as: (no of queries) * (canary node * primary node)
+### The Dynatrace health source returns a "Token is missing required scope" error.
 
-### What if test pod/ control pod gets restarted/deleted while canary verification is on and in progress
+Make sure your API token has `Read metrics` and `Read entities` permissions.
 
-If test pod gets restarted, it would emit the same normal metrics or some new error metrics to the health-source. We will collect these and analysis will be done accordingly. 
-If it shuts down and a different pod is spun up, it will again be considered as canary and analysed for the remainder of the verification duration. 
-If a control node is restarted, we expect it to emit some metrics - either error or normal metrics. In both the cases, since its a control host, those metrics will be treated as control data. 
-If a control pod shuts down and a new pod is spun up in its place, the new pod will be considered as canary. But it should not affect the verification since its on the same application version which is deployed.
+### The Dynatrace health source doesn't list any services
 
-### Is it harness always takes minimally deviated control pod ? if yes , why is the logic based on "worst of best"? and what will be shown on UI
+Only services with marked **Key Requests** are shown. Confirm that the service you want has at least one metric marked as **Key Request**.
 
-Yes. The logic is that the version running in the production is already good and the one which is being deployed should be similar to it. If the canary pod metrics are too different from primary pod A but close to primary pod B, it doesn't mean the canary pod is not working properly. Even then there are thresholds which can be applied and finally ML analysis
+## Metrics
 
-### Looks like with each datapoint the control pod doesn't change, does that mean the minimally deviated pod is chosen with first data point comparison? if yes why is it so?
+### What are Metrics Packs?
 
-It can change, with each minute we analyse data from 1st minute to nth minute and figure out what is the minimally deviated pod for each test pod.
+In **Metrics Packs** you select the error and performance metrics to use for a health source.
 
-### For a new metric how we will compare only against custom thresholds and not old trend.
+### Can I apply custom thresholds to new metrics to exclude old trends?
 
-For a new metric, we can only check for fixed value thresholds, not percentage deviation thresholds
+For new metrics, Harness can check for fixed value thresholds only, not percentage deviation thresholds.
 
-#### Why is it that I have to specify a start and end time when creating the health source? 
-Start and end time is place holder so that while making actual query this will be updated and required to refer in either query path(in case of get request) or body(in case of post)
+### What is the difference between the service based and host based query types?
 
-#### Getting Token is missing required scope while using Dynatrace as health source
-Check if api token used is having Read metrics and Read entities scope
+Host based queries return service metrics grouped by host/pod name.
 
-####  No Service is getting listed while using Dynatrace health source
-Only services with marked Key Requests are shown, so could you please check and confirm if service which you are expecting is having any metric marked as key request.
+Service based queries return service metrics without any grouping by host/pod names.
 
-#### Marking step as success manually for Prometheus CV  takes sometime time to reflect
-Marking a CV step as success manually will not change the status and you can expect a delay of (10 sec - 1 min) as this needs to cancel all the data collection/ learning engine task and that takes some time to reflect
+For all the health sources, Harness converts your service based queries to a host based queries for CV, if required.
 
-#### How to verify deployment for  Non APM metric(or OpenTelemetry app) from NewRelic Health Source Connector
-You can create a Custom metric health source and use the NewRelic Health Source Connector and you can use NRQL query to fetch the metric data
+For custom health sources, Harness takes either type according to the use case.
 
+## Verification
 
-#### Primary/Canary node is not getting identified while doing verification 
-Node is identified in case metrics were reported by your verification provider used here (AppD, Prometheus, etc.) for the duration of the analysis window, so you can check the API call being made and see if nodes were reporting data or not during that time. You can also navigate to the provider dashboard and verify directly.
+### What happens if the test/control pod is restarted/deleted while canary verification is in progress?
 
-#### While creating  SLO via terraform provider can see request was successful but SLO is not showing up in UI
-Please check the variable passed is correct(like for healthSourceRef its identifier of the source and not name)
+If the test pod restarts, it emits the normal metrics or new error metrics to the health source. Harness collects these and analyzes them accordingly.
 
-#### What is Metric packs
+If the test pod shuts down and is replaced by a new pod, the new pod is considered the canary and analyzed for the remainder of the verification duration.
 
-With Metrics Packs section you can select the metrics that you want to use for the health source. The options available are Errors and Performance.
+If the control node restarts, Harness expects it to emit either error or normal metrics. In both cases, Harness treats the metrics as control data, since the node is a control host.
+
+If a control pod shuts down and is replaced by a new pod, the new pod is considered the canary. This shouldn't impact the verification because the pod is on the same deployed application version.
+
+### The primary or canary node isn't identified during verification.
+
+The node is identified in case metrics are reported by your verification provider (such as AppD or Prometheus) for the duration of the analysis window.
+
+Check the API call being made to determine if any nodes reported data during that time.
+
+You can also verify this by checking the provider dashboard.
+
+### Verification fails with a "Data collection task failed" error.
+
+If you get the following error, make sure your Harness Delegate is updated to the latest version.
+
+`Data collection task failed with exception: DataCollectionDSLException: Variable formulaList is being used before declaration.`
+
+An issue was present in a previous version that caused perpetual tasks to experience significant delays in reassignment after the active delegate shut down.
+
+### Can I use a NewRelic health source connector to verify deployment of a Non-APM metric (or OpenTelemetry app)?
+
+To do this, you can create a custom metric health source that uses your NewRelic health source connector, and then use an NRQL query to fetch the metric data.
+
+## Execution logs and step results
+
+### Verify step logs contain "We couldn't find deployed node details from CD".
+
+The following message can occur in Verify step execution logs:
+
+`Verify step configured to use deployed node(service instance) details from CD. Received Node details from CD: Deployed in this stage: Nodes before deployment: Nodes after deployment: We couldn't find deployed node details from CD, hence falling back to default analysis based on node details from APM provider.`
+
+This usually means you are trying to use a deployed node from a CD Deploy step, but the deployment (such as a canary or rollout deployment) hasn't occurred or you are using a custom script to deploy or scale up/down. In these cases, Harness can't identify the deployed node. As a fallback, Harness attempts to pull data for the query response from your configured health source.
+
+### In the Verify step results, the total number of metrics under Metrics in Violation is different from the total number of configured metrics.
+
+**Metrics in Violation** reports the total number of metrics that returned data. Configured metrics that don't report data aren't included in the total.
+
+### The status takes a long time to update after manually marking a CV step as successful.
+
+Manually marking a CV step as successful doesn't change the status immediately. It can take up to a minute or more to update while Harness cancels data collection and learning engine tasks behind the scenes.
+
+## Minimally deviated control pods
+
+### Does Harness always take the minimally deviated control pod (the "worst of best")?
+
+Yes. Harness takes the minimally deviated control pod.
+
+The logic is that is that the version running in the production is already good; therefore the one being deployed should be similar to it.
+
+For example, if the canary pod metrics deviate excessively from primary pod A while remaining close to primary pod B, then it's possible that the canary pod is still functioning properly. From there, you can apply thresholds and ML analysis to arrive at a final determination.
+
+### Is the minimally deviated pod chosen based on the first data point comparison?
+
+No. For each minute, Harness analyzes data from the first to *n*th minute to determine which test pod is minimally deviated.
+
+If it seems that the control pod doesn't change, this means that the same pod is consistently evaluated as the "worst of the best".
+
+## SLOs
+
+### When creating an SLO via Terraform provider, the request succeeds, but the SLO doesn't appear in the UI.
+
+Confirm that all variables passed are correct. For example, `healthSourceRef` is the health source ID, not the name.
+
+<!-- (I can't understand what the following question means, so I am commenting it out until someone can edit it for clarification.)
+
+## Calculation on how many total comparisons will be required on the order of control, canary and queries.
+
+The total required comparisons are calculated as:
+
+```
+(number of queries) * (canary node * primary node)
+```
+
+--->
