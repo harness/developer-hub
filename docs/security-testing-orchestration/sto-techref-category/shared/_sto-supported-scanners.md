@@ -150,7 +150,7 @@ The following scanners detect misconfigurations in your cloud environment that c
        <tr>
         <td valign="top">
           <ul>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/scoutsuite-scanner-reference">ScoutSuite</a> Orchestration, Extraction, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/scoutsuite-scanner-reference">ScoutSuite</a> Ingestion</li>
           </ul>
         </td>
         <td valign="top">
