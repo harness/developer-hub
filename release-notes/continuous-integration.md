@@ -42,15 +42,15 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 <!-- [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available for all build infrastructures. -->
 <!-- [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) is now generally available for all build infrastructures. -->
-<!-- You can [define S3-compatible object storage](/docs/platform/settings/default-settings/#continuous-integration) to use Cache Intelligence and Harness-managed Docker layer caching with self-managed build infrastructures. -->
+<!-- You can [define S3-compatible object storage](/docs/platform/settings/default-settings/#continuous-integration) to use Cache Intelligence and Harness-managed Docker layer caching with self-managed build infrastructures. (INTERNAL NOTE: This might be an early access feature behind FFs per CI-11953. If so, move this release note under Early access features and add the FFs+FF note to /docs/continuous-integration/ci-supported-platforms#harness-ci-early-access-features and /docs/platform/settings/default-settings#continuous-integration.) -->
 
 <!-- #### Early access features --->
 
-<!-- Use the new [**Test** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing and Test Intelligence. Currently, this step supports Python, Ruby, and Java. This step will eventually fully replace the deprecated **Run Tests** step. -->
+<!-- Use the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing with Test Intelligence. Currently, this step supports Python, Ruby, and Java. This step will eventually fully replace the deprecated **Run Tests** step. -->
 
 <!-- #### Deprecations and removals -->
 
-<!-- Harness is beginning to deprecate the **Run Tests** step in favor of the new [**Test** step](/docs/continuous-integration/use-ci/run-tests/tests-v2). Until removal, you can configure the **Run Tests** step in the YAML Editor, and it is backwards compatible. However, Harness recommends adopting the new **Test** step as soon as possible to take advantage of improved functionality and avoid service disruptions when the **Run Tests** step is removed. -->
+<!-- Harness is beginning to deprecate the **Run Tests** step in favor of the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) (also known as the **Test** step). Until removal, you can configure the **Run Tests** step in the YAML Editor, and it is backwards compatible. However, Harness recommends adopting the new **Test** step as soon as possible to take advantage of improved functionality and avoid service disruptions when the **Run Tests** step is removed. -->
 
 ## April 2024
 
