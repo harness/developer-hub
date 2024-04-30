@@ -630,3 +630,9 @@ Yes, users can accomplish this by creating a Yearly budget and selecting the mon
 
 #### What is FinOps in Harness?
 FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
+
+#### When is the Tune Recommendation section visible?
+
+You can only tune nodepood and workload recommendation. You cannot tune VM reccs as we get those straight from the cloud provider.
+
+"Tuning" for VMs, as shown in the docs, is not available 100% of the time.
