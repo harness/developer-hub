@@ -386,6 +386,14 @@ If you notice either sporadic pod evictions or failures in the Initialize step i
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
 ```
 
+### I can't use Kubernetes autoscaling to distribute the pipeline workload.
+
+In a Build stage, Harness creates a pod and launches each step in a container within the pod.
+
+[Harness reserves node resources based on the pipeline configuration.](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits)
+
+Even if you enable autoscaling on your cluster, the pipeline uses resources from one node only.
+
 ### AKS builds timeout
 
 Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
@@ -1878,6 +1886,16 @@ You can use the [putHandleInterrupt API](https://apidocs.harness.io/tag/Pipeline
 ### Can I add notifications, such as failure notifications, to stage templates?
 
 While notifications are a pipeline-level setting that is not explicitly available at the stage level, you can use Plugin steps to add notifications in your stage templates. Configure the Plugin step to use a [use a Drone plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci) or a [custom plugin](https://developer.harness.io/docs/continuous-integration/use-ci/use-drone-plugins/custom_plugins) to send an [email notification](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/drone-email-plugin), [Slack notification](https://plugins.drone.io/plugins/slack), or otherwise.
+
+### Can I use a GitHub PR label as a condition for a trigger or conditional execution?
+
+Yes. You can use the following expression in a JEXL condition or trigger configuration.
+
+```
+<+eventPayload.pull_request.labels[0].LABEL_KEY>
+```
+
+Replace `LABEL_KEY` with your label's actual key.
 
 ## Logs and execution history
 
