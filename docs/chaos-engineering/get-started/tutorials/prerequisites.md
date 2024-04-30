@@ -13,11 +13,16 @@ This section describes the requirements and project-level permissions required t
 - Enable the necessary Feature Flags (as a general step) and corresponding sanity checks (such as places to click, and entities to see enabled).
 - Prepare the target systems (VMs or K8s).
 - Prepare **network connectivity**, identify **proxy requirements**, **firewall rules** (if any).
-- Identify application (or infrastructure) steady state parameters (even if this requires manual effort)- using APMs or logs or other methods.
-- Identify image registry requirements and steps to set it up with secrets.
-- Identify specific needs, especially Kubernetes, such as namespace quotas, workloads should carry specific labels or annotations, workloads should carry resource limits, every outbound container needs proxy environments, workloads should reside in specific nodes or groups.
+- Identify application (or infrastructure) steady-state parameters (even if this requires manual effort)- using APMs or logs or other methods.
+- Identify image registry requirements and steps to set up the registry with secrets.
+- Identify specific needs, especially for Kubernetes. You might need to specify:
+	- Namespace quotas
+	- Workload-specific labels or annotations
+	- Workload resource limits
+	- Proxy environments for outbound container
+	- Specific nodes or groups where workloads should reside
 - Identify permissions for advanced use cases, which may vary, such as SCC, IRSA, etc.
-- ChaosHub requirement and connectivity to Git sources.
+- ChaosHub requirements and connectivity to Git sources.
 
 ## Requirements for individual chaos faults
 
