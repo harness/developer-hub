@@ -7115,3 +7115,27 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+#### How can I design a pipeline to deploy helm charts hosted in a remote private helm registry and using Kustomize to patch the helm charts?
+Native helm does not support Kustomize, however a hook functionality where you can perform pre apply action which can be part of the hook itself. Please check this once if this helps with the use case: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks 
+
+#### Can you set default delegate tag per project
+Delegates cannot be set per project
+
+#### Pipeline is does not skip steps in step group when the step fails
+You need to add <+stage.liveStatus> == "SUCCESS" on the Conditional Execution JEXL condition for the steps in the group to check if the stage has passed or not
+
+#### Can you have the Aqua Security Step pick up a image that is passed with PLUGIN_NO_PUSH
+No with the current configuration of the Aqua Security Step, it will not pick up the local image.
+
+#### What is the update release repo step looking for from the end user for GitOps?
+For the Update Release Repo step, you can also enter variables in this step to update key-value pairs in the config file you are deploying. If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them. 
+
+#### How can I move a project from one organization to another?
+You will need to copy the yaml of the connector and paste it into the new Org.
+
+#### If I specify delegate on project level. Can it be selected by the other projects within the same organization or other organizations randomly?
+You cannot specify per project and the delegate will not be available to select between projects.
+
+####  How can I look for account level connector in harness for my project?
+To view account level connectors you can go into the Account settings and then click on Account Resources. From there you should see the Connectors option which will show the account level connectors.
+
