@@ -1389,6 +1389,12 @@ With a Kubernetes cluster build infrastructure, the [Upload Artifacts to JFrog s
 
 These are derived from your [Artifactory connector](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts/upload-artifacts-to-jfrog#artifactory-connector).
 
+### Can I upload files at the root of an S3 bucket?
+
+Currently, you can't upload files to the root of an S3 bucket due to the glob pattern that Harness uses.
+
+If there are too many nested directories in your uploaded files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
+
 ## Test reports
 
 ### Test reports missing or test suites incorrectly parsed
@@ -1822,6 +1828,16 @@ If a file becomes corrupted in the bucket during the restoration process, the be
 
 To ensure robustness in your pipeline, consider adding a Failure Strategy to the restore step to mitigate pipeline failures. For example, you can [check if a cache was downloaded and, if it wasn't, install the dependencies that would be provided by the cache](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/run-if-no-cache).
 
+### The Restore Cache from S3 step logs reference multiple S3 cache keys from different pipelines and pull a huge amount of cached data. Why is this happening?
+
+This can happen when you create pipelines by cloning existing pipelines. For more information and resolution instructions, go to [Caching in cloned pipelines](https://developer.harness.io/docs/continuous-integration/use-ci/caching-ci-data/saving-cache#caching-in-cloned-pipelines)
+
+### Can I cache files at the root of an S3 bucket?
+
+Currently, you can't upload files to the root of an S3 bucket due to the glob pattern that Harness uses.
+
+If there are too many nested directories in your cached files, you can use a **Run** step to [flatten nested directories](https://www.baeldung.com/linux/flattening-nested-directory) to cache before running the Save Cache or Upload Artifact step. users can have a run step to flatten the directory before uploading.
+
 ## Cache Intelligence
 
 ### Cache Intelligence on Harness Cloud Infrastructure
@@ -2114,6 +2130,10 @@ No. Currently CI stages don't support secret type output variables from CD or cu
 
 While it is possible to [trigger deployments with artifact triggers](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/), there are currently no CI-specific triggers for artifacts.
 
+### Can I use Queue steps in Build stages?
+
+No. Queue steps are only available for Custom stages.
+
 ## Performance and build time
 
 ### What are the best practices to improve build time?
@@ -2171,26 +2191,3 @@ For troubleshooting and FAQs for Platform components that aren't specific to CI,
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
 <!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
-
-## When checking the 'restore cache' logs of a pipeline execution, it is referring to multiple s3 cache keys of different pipelines in the project.  Due to this, the cache size is increased to a huge amount of storage size.  What can be done to prevent this from happening?
-
-The user will need to introduce a new stage variable in the restore step PLUGIN_ENABLE_SEPARATOR = true.
-
-This would enable the user to use cache keys with same prefix without fetching other pipelines cache. If the user does not wish to use the stage variable, the user will have to make sure that any two pipelines do not have cache-keys with exact same prefix.
-
-
-
-## Is there a way to upload files to an S3 bucket and place them at the root of the bucket?
-
-Currently it is not possible to upload files to an S3 bucket to the root of the budket due to the glob pattern we use.  It would cause issues such as files with the same name being saved in the same directory.  As a workaround, users can have a run step to flatten the directory before uploading. More information can be found on the following external site: https://www.baeldung.com/linux/flattening-nested-directory
-
-
-## Is it possible to use the queue step in a build stage?
-
-The Queue step is only available under the Custom Stage section and is not available under the Build stage.
-
-
-
-## When creating or trying to clone or amend any of the lead or cycle time (time in stages) widgets, the `save` button is greyed out.  When you hover over it you get an error stating "Please select a JIRA only based workflow profile under the settings tab of this report."
-
-Did you try associating the relevant profile under the "Settings" tab in the Widget settings ? The profile for the "Lead time spent in Stages" should have the "Measure lead time by JIRA statuses only" checkbox enabled. This widget supports a workflow purely based on the "Jira statuses".
