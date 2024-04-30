@@ -69,6 +69,13 @@ RBAC uses Principals, Resource Groups, and Roles to control access.
 - Resource Groups define what objects can be acted on. Objects include organizations, projects, pipelines, connectors, users, and more.
 - Roles define what actions can be taken on objects. Actions include view, create, edit, delete, and so on.
 
+### Are there any features in Harness that I can prevent a pipeline from re-running via RBAC?
+
+Rerun shares the same RBAC as RUN features. Therefore, users who can run the pipeline can also re-run, as there is no separate RBAC for Rerun.
+
+### Does Harness NextGen Free edition support RBAC?
+
+Yes, Harness NextGen Free edition supports RBAC. For a feature comparison and supported functionality, go to the [pricing](https://www.harness.io/pricing) page on `Harness.io`.
 
 ### What is a Resource Group?
 
@@ -334,6 +341,8 @@ Harness imposes a rate-limiting policy on API requests to ensure system stabilit
 ### Can I get user group and user lists in CSV or Excel?
 
 No, Harness doesn't currently support this functionality.
+
+You can use the 'getUsers` API to get a list of users that you can parse to create a CSV file. For more information, go to [Get users](https://apidocs.harness.io/tag/User#operation/getUsers) in the API documentation.
 
 ### How many types of API tokens are there?
 
