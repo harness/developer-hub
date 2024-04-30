@@ -32,6 +32,11 @@ For support operating systems, architectures, and cloud providers, go to [Which 
 
 Yes, each stage can have a different build infrastructure. Additionally, depending on your stage's build infrastructure, you can also run individual steps on containers rather than the host. This flexibility allows you to choose the most suitable infrastructure for each part of your CI pipeline.
 
+#### Not able to utilize Kubernetes autoscaling feature to distribute pipeline workload. Though autoscaling is enabled on Kubernetes cluster, the pipeline is using resources from only one node and if the pipeline requires more resource so rather than utilizing the auto scale feature from cluster
+
+While using CI Build step we create a pod and launch different container within it so that if you are running in parallel, we need to reserve and launch the container accordingly and as all are running within single pod so we can not distribute on different node.
+Below is the doc that talks about the calculation of resource in details: https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/resource-limits/
+
 ## Local runner build infrastructure
 
 ### Can I run builds locally? Can I run builds directly on my computer?
@@ -944,6 +949,10 @@ You can add a Run step to the beginning of your Build stage that runs `ls -ltr`.
 ### Why is the codebase connector config not saved?
 
 Changes to a pipeline's codebase configuration won't save if all CI stages in the pipeline have **Clone Codebase** disabled in the Build stage's settings.
+
+### I am trying to figure out how I can use a label on a github pull request as a condition 
+You can use below format and can replace the labelkey to actual key
+`<+eventPayload.pull_request.labels[0].labelkey>`
 
 ## SCM status updates and PR checks
 
