@@ -71,7 +71,7 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 }
 ```
 
-- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `releaseVersion` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+- **field:** It contains the information on the metadata name to be added, here in the above example it would ingest the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
 
 
 - **filter:** This is used to identify the software components where you want to ingest the new entity, you can filter through `kind`, `type`, `owners`, `lifecycle` and `tags`. **Where `kind`, `type` and `owners` are mandatory fields.** 
@@ -102,7 +102,6 @@ metadata:
   teamLead: Jane Doe
 ...
 ```
-
 
 
 ### How to assign metadata value for an individual software component?
@@ -290,7 +289,7 @@ https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
 }
 ```
 
-- **field:** It contains the information on the metadata name to be deleted, here in the above example it would ingest the `releaseVersion` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
+- **field:** It contains the information on the metadata name to be deleted, here in the above example it would delete the `teamLead` under metadata. **This won't append your catalog-info.yaml stored in your git**, rather you could view the changes on IDP. 
 
 ![](./static/inspect-entity.png)
 
