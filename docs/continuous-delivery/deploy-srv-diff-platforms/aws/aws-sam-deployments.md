@@ -31,7 +31,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 
 - Harness supports Go templating with SAM templates and values.yaml files.
 - Currently, you cannot add artifacts to your Harness SAM service.
-- You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
+- You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed. For more information, go to [AWS documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html#ref-sam-cli-build-options).
 - Harness doesn't support a controlled AWS SAM Rollback after a deployment pipeline failure occurs. AWS SAM will deploy the lambda function and if it fails during stack creation, cloudformation will roll it back. After a succesful AWS SAM deployment, Harness is not able to initiate a rollback, due to the AWS SAM cli's limitation to trigger rollback on demand.
 - Currently, OIDC-enabled AWS connectors are not supported for AWS SAM deployments.
 
@@ -250,7 +250,9 @@ These steps are described in detail below.
 
 Harness automatically generates a containerized step group containing the steps needed for the SAM build and deploy.
 
-When the step group setting **Enable container based execution** is enabled, the step group is containerized. When it is disabled, the Harness Delegate performs all tasks on its host system.
+When the step group setting **Enable container based execution** is enabled, the step group is containerized. SAM runs on containerized step groups only. You need not install SAM CLI on Harness Delegate as Harness provided SAM step images are baked within the SAM CLI. SAM steps run in the containers that are brought up inside the pod within the Kubernetes cluster configured in the step group configuration. 
+
+When the **Enable container based execution** setting is disabled, Harness Delegate cannot perform the SAM deployment.
 
 You need to configure the following mandatory settings:
 

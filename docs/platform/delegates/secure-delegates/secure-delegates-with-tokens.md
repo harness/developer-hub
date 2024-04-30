@@ -122,7 +122,7 @@ To update and restart an existing Docker delegate, do the following:
            limits:
              cpus: "0.5"
              memory: 2048M
-       image: harness/delegate:23.01.78102
+       image: harness/delegate:yy.mm.verno
        environment:
          - ACCOUNT_ID=12345678910
          - ACCOUNT_SECRET=[enter new token here]

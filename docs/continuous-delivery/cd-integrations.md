@@ -79,10 +79,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback">declarative rollback</a> behavior for services. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDC_SERVICE_DASHBOARD_REVAMP_NG</td>
-        <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Limited GA.</b></td>
-    </tr>
-    <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
         <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability. <b>This feature is in Beta.</b></td>
     </tr>

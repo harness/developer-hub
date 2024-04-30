@@ -7,7 +7,7 @@ description: Components to display code quality metrics from SonarCloud and Sona
 | -------------- | ------------------------------------------------------------------------------ |
 | **Created by** | [SDA SE](https://sda.se/)                                                      |
 | **Category**   | Quality                                                                        |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/blob/master/plugins/sonarqube) |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/sonarqube/plugins/sonarqube#sonarqube-plugin) |
 | **Type**       | Open-source plugin                                                             |
 
 
@@ -58,8 +58,8 @@ metadata:
     sonarqube.org/project-key: <instance-name>/<project-key>
 ```
 
-[Read more](https://github.com/backstage/backstage/blob/master/plugins/sonarqube/README.md#getting-started)
+[Read more](https://github.com/backstage/community-plugins/tree/main/workspaces/sonarqube/plugins/sonarqube#sonarqube-plugin)
 
 ## Support
 
-The plugin is owned by SDA SE and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by SDA SE and managed in the [Backstage repository](https://github.com/backstage/community-plugins/tree/main/workspaces/sonarqube/plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

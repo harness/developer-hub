@@ -27,6 +27,9 @@ The following table differentiates between delegate images based on key features
 | DELEGATE-LEGACY<br /><br />**Deprecated**: Not recommended for use in new Harness accounts | &#x2713; | x | &#x2713; | x | |
 
 :::info
+
+Harness Delegate is a Red Hat Enterprise Linux (RHEL)-based image. A Windows-based image is not available.
+
 Harness Delegate images are multi-architecture under the same tag. If you navigate to a specific delegate tag, you will find a digest for each architecture. The correct digest is pulled depending on the host architecture.
 
 :::
