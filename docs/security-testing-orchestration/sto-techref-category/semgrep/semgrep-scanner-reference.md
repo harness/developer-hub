@@ -14,11 +14,9 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 ## Important notes for running Semgrep scans in STO
 
-- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)).  
+- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)). For information about the security rulesets supported by different Semgrep products, go to the [Semgrep Registry](https://semgrep.dev/explore). 
 
-  To run scans using a licensed version of [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your Semgrep token in the [Access token](#access-token) field. 
-
-  For information about the security rulesets supported by different Semgrep products, go to the [Semgrep Registry](https://semgrep.dev/explore).
+  To run scans using a licensed version of [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your Semgrep token in the [Access token](#access-token) field.   
 
 - If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
 
