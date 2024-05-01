@@ -85,11 +85,11 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    accountID: YOUR_K8S_ACCOUNT_ID
+    accountID: HARNESS_ACCOUNT_ID
   ports:
     - protocol: TCP
-      port: ## Specify port number
-      targetPort: ## Specify port number
+      port: 20001
+      targetPort: 20001
 ```
 
 #### Istio ProxyConfig

@@ -9,7 +9,7 @@ description: This topic describes how to optimize cloud costs using asset govern
 
 ## Rules
 
-Rules help you set up Asset Governance for your cloud provider. A Rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate all gp2 EBS volumes to gp3. In such a case, we write and run a rule which does this for us. In such a case, we write and run a rule which does this for us.
+Rules help you set up Asset Governance for your cloud provider. A Rule is essentially a small file with a set of logic that you can run on your cloud infrastructure. For example, there might be a scenario in which you want to migrate all gp2 EBS volumes to gp3. In such a case, we write and run a rule which does this for us. 
 
 Ideally, rules include policy, resource, filters, and actions.
 
