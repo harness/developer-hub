@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.93.0
 
-#### Early Access feature: Built-in SAST scans
+#### Early access feature: Built-in SAST scans
 
 This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-6738) 
 

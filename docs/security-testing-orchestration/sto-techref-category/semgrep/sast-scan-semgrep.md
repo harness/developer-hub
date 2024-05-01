@@ -67,13 +67,13 @@ Do the following:
 
 ## Run the pipeline and check your results
 
-1. Run the pipeline: click **Run** (top right). The **Run Pipeline** dialog box appears. 
+1. Run the pipeline: click **Run** (top right). The **Run Pipeline** dialog box appears.
 
 2. Enter the repository and branch to scan.
 
    When you scan a codebase for the first time, the standard practice is to scan the root branch. This is usually the `main` or `master` branch.
 
-3. Run the pipeline and then wait for the execution to finish. 
+3. Run the pipeline and then wait for the execution to finish.
 
    If the scan detected any critical vulnerabilities, the pipeline fails with the message `Exited with message: fail_on_severity is set to critical and that threshold was reached.`
 
