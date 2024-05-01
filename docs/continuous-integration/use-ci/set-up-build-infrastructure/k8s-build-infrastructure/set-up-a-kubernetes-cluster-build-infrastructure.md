@@ -89,8 +89,8 @@ spec:
     accountID: HARNESS_ACCOUNT_ID
   ports:
     - protocol: TCP
-      port: 20001 ## Harness lite engine port.
-      targetPort: ## Specify port number.
+      port: 20001
+      targetPort: 20001
 ```
 
 #### Istio ProxyConfig
