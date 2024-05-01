@@ -117,7 +117,7 @@ For information about the specific vulnerabilities detected by each scanner, go 
           <ul>
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/metasploit-scanner-reference">Metasploit Framework</a> Orchestration, Ingestion </li>
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
-          <li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>           
+          <li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion </li>           
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference">OpenVAS</a> Ingestion </li>
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference">ZAP</a> Orchestration, Ingestion </li>
          </ul>

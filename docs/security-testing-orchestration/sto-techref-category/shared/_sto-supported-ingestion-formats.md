@@ -9,10 +9,10 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 
 - **Anchore Enterprise** — JSON
 - **Aqua Security** — JSON
-- **Aqua Trivy** — JSON (_recommended_), SARIF
+- **Aqua Trivy** — JSON _(recommended)_, SARIF
 - **AWS ECR** — JSON
 - **AWS Security Hub** — JSON
-- **Bandit** — JSON (_recommended_), SARIF
+- **Bandit** — JSON _(recommended)_, SARIF
 - **Black Duck Hub** — JSON
 - **Brakeman** — JSON
 - **Burp** — XML
@@ -24,10 +24,10 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **Fortify** — JSON
 - **Fortify on Demand** — JSON
 - **Fossa** — JSON
-- **Gitleaks** — JSON (_recommended_), SARIF
+- **Gitleaks** — JSON _(recommended)_, SARIF
 - **HQL AppScan** — XML 
 - **Grype** — JSON
-- **Mend (_formerly Whitesource_)** — JSON  
+- **Mend _(formerly Whitesource)_** — JSON  
 - **Nessus** — XML
 - **Nexus** — JSON
 - **Nikto** — XML
@@ -40,11 +40,11 @@ Harness recommends that you publish and ingest using the scanner-specific JSON f
 - **Qwiet** — JSON
 - **Reapsaw** — JSON    <!-- - **Scoutsuite** — JSON -->
 - **Semgrep** — SARIF
-- **Snyk** — JSON (_recommended_), SARIF
+- **Snyk** — JSON _(recommended)_, SARIF
 - **SonarQube** — JSON
 - **Sysdig** — JSON 
 - **Tenable** — JSON
 - **Veracode** — XML
 - **JFrog Xray** — JSON
-- **Wiz** - JSON (_recommended_), SARIF
+- **Wiz** - JSON _(recommended)_, SARIF
 - **Zed Attack Proxy (ZAP)** — JSON
