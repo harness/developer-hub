@@ -817,7 +817,7 @@ Yes, you can configure the delegate upgrade schedule. For more information, go t
 
 ### Can delegates have HA if they're in different locations?
 
-If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production.
+If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If a delegate in the production environment stops running, this stops production executions as there is no other delegate in production.
 
 ### Can I run the apt-get command on the delegate pod?
 
@@ -825,7 +825,7 @@ No, the delegate is based on the RHEL. You can use the dnf or microdnf-based com
 
 ### How do I install zip on the delegate?
 
-You can run the follwing command to install zip on the delegate:
+You can run the following command to install zip on the delegate:
 
 ```
 microdnf install yum
