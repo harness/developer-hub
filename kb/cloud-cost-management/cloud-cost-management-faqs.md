@@ -340,6 +340,12 @@ No, you would have to manually apply preferred instance families for each recomm
 
 No, we do not provide asset governance recommendations at the perspective level.
 
+### When is the Tune Recommendation section visible?
+
+You can only tune nodepod and workload recommendations. You can't tune VM recommendations, which are taken directly from the cloud provider.
+
+"Tuning" for VMs is not always available.
+
 ## Governance
 
 ### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
