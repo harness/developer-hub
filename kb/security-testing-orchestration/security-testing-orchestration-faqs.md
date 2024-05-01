@@ -99,3 +99,9 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
 
+#### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
+
+An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to:
+
+- [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration)
+- STO release notes > [Version 1.83.1](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831)
