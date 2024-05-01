@@ -5,7 +5,8 @@ sidebar_label: Semgrep settings reference
 sidebar_position: 20
 ---
 
-You can ingest scan results from [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories.
+
+You can ingest scan results from [Semgrep](https://www.semgrep.com).
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
 - [SAST code scans using Semgrep](./sast-scan-semgrep)
