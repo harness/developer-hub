@@ -121,7 +121,7 @@ gsutil -m cp \
 
 ### New features and enhancements
 
-- Added support for Kubernetes true-up fees when using amortized costs with AWS. (CCM-15397)
+- Added support for Kubernetes cost true-up with AWS amortized costs. (CCM-15397)
 
 ## April 10, 2024, patch version 0.15.1
 
