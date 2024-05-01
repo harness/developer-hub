@@ -407,7 +407,15 @@ This limitation is by design to uphold security protocols. Delegates often opera
 
 ### Does Harness SAML work with any SSO provider?
 
-Yes, Harness provides support for Okta and Azure Onelogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file. 
+Yes, Harness provides support for Okta and Azure Onelogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file.
+
+### How do I resolve Okta provisioning errors due to user limits?
+
+Perform a sync within Okta to resolve the user limit error during Harness provisioning.
+
+### How can I update SAML-connected groups with a new name via API?
+
+Set `samlSettings` to `null` in the API call to update SAML-connected groups with new names.
 
 ### Can I use multiple SAML and SCIM apps with Harness?
 
@@ -785,7 +793,16 @@ Harness Delegate is a Red Hat Enterprise Linux (RHEL)-based image. A Windows-bas
 The `DELEGATE_RESOURCE_THRESHOLD` environment variable is deprecated. Use `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD` instead. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ### Does the default Harness Delegate include jq?
+
 Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
+
+### Why am I getting a retry failed message in my delegate logs?
+
+You might get the following error in your delegate logs.
+
+```io.harness.delegate.task.citasks.vm.helper.HttpHelper - Retrying failed to check pool owner.```
+
+The logs are standard and won't impact functionality. Harness conducts capability checks before assigning tasks to delegates to verify their connection to the VM runner. If a delegate fails to connect, it's skipped for that task. You can disregard these logs.
 
 ### Does the Docker delegate also show expiry message in UI if the image is older than the expiry threshold?
 
@@ -817,7 +834,7 @@ Yes, you can configure the delegate upgrade schedule. For more information, go t
 
 ### Can delegates have HA if they're in different locations?
 
-If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production. 
+If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production.
 
 ### Is the DelegateManagerGrpcClientModule used for delegate connection to the manager over gRPC?
 
@@ -877,7 +894,7 @@ Harness Delegates do not require root account access. Kubernetes and Docker dele
 
 Delegate allowlist verification is currently behind the feature flag `PL_ENFORCE_DELEGATE_REGISTRATION_ALLOWLIST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-When the feature flag is enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy. Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly. 
+When the feature flag is enabled, delegates with an immutable image type can register if their IP/CIDR address is included in the allowed list received by Harness Manager. Without this feature flag enabled, delegates with an immutable image type can register without allowlist verification. The IP address/CIDR should be that of the delegate or the last proxy between the delegate and Harness Manager in the case of a proxy. Harness Manager verifies registration requests by matching the IP address against an approved list and allows or denies registration accordingly.
 
 ### How do I configure the delegate grace period?
 
@@ -2460,6 +2477,10 @@ For more information, go to [Force delete](/docs/platform/references/entity-dele
 
 Harness doesn't currently support referencing the Custom Secret Manager template stored in Git. Create an inline template as a workaround.
 
+### We've relocated our secrets from the Harness vault to another without altering the secrets themselves, only copying them to a new vault. What's the optimal method to ensure all our secrets now reference the new vault location?
+
+Updating the secret itself to point to the new vault where it's stored might be the best approach, considering the default Harness vault may not be editable.
+
 ### Why can't secrets be exported from FirstGen to NextGen?
 
 Exporting secrets from the Secrets Manager is not possible due to security reasons, as it would expose them to unauthorized users. Harness does not support exporting secrets. The only option is to manually compare entries between FirstGen and NextGen to confirm if they match.
@@ -2857,7 +2878,7 @@ Harness recommends you use the Velero tool for backups. For more information, go
 
 Volume types are controlled by storage class, its not Harness controlled.
 
-You can modify the storage class setting by the [link](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs) but you would lose the data if aws doesn't support direct upgrade from gp2 to gp3.
+You can modify the [storage class](https://kubernetes.io/docs/concepts/storage/storage-classes/#aws-ebs), but you would lose the data if AWS doesn't support direct upgrade from gp2 to gp3.
 
 ### Is there a plan to integrate Git into SMP?
 
@@ -2981,11 +3002,51 @@ Harness integrates with multiple third-party SCIM providers
 
 To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
 
+### How can I switch from the new Harness nav 2.0 UI to the legacy nav?
+
+Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
+
+### Can I enable feature flags for organizations and projects without enabling them for the account scope?
+
+Currently, feature flags are only enabled at the account-level.
+
 ### How can I resolve serialization errors when integrating NextGen Audits for ModuleLicense collection with multiple child classes in YamlDTOs?
 
 The serialization issue in NG Audits for ModuleLicense collection arises when using entity objects instead of DTOs in the YAML for Audit Service. The problem is that entity objects lack JsonSubTypes, causing the Jackson ObjectMapper to struggle with determining the appropriate subType for conversion. The resolution is to utilize DTOs, which inherently possess the JsonSubTypes property, ensuring smooth serialization and deserialization processes in the Audit Service.
 
 It's essential to note that the Audit Service doesn't directly serialize or deserialize YAML; instead, it expects the old and new YAML as strings. However, the choice of using DTOs over entity objects is crucial for resolving any potential serialization challenges. Always ensure that the service generating audits has access to all required DTOs to prevent code duplication and facilitate efficient integration with NG Audits.
+
+### How do I delete an earlier template version?
+
+To delete a template you no longer use, do the following:
+
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to delete a template.
+2. Select **Templates**.
+3. Select **More Options** (&vellip;) corresponding to the template you want to delete.
+4. Select **Delete Template**.
+5. Select the template version(s) you want to delete.
+
+You can't delete the stable template version.
+
+### When a template version is removed but is referenced within a pipeline, is reconciliation required to move the template to a new version?
+
+When you delete a template version, the version is removed from the template in the pipeline where you have referenced that template with the particular pipeline.
+
+If reconciliation doesn't help, you must select another template version.
+
+### Why does the artifact section of the UI only display the first 30 branches from a GitHub repository instead of retrieving all branches?
+
+This is a limitation of the GitHub API. To increase the number of results, you must define the query string `per_page=100`.
+
+For more information, go to [List branches](https://docs.github.com/en/rest/branches/branches?apiVersion=2022-11-28#list-branches) in the GitHub documentation.
+
+### How can I force delete a resource that I no longer use?
+
+Only an account-level admins have the ability to force delete a resource.
+
+1. Select **Account Settings**.
+2. Select **Account Resources**.
+3. Click on the **General** section to give you the option to enable this feature.
 
 ### How do we identify pipelines using a specific template?
 
@@ -3068,4 +3129,8 @@ By following these steps, our support team can promptly review the situation, di
 ### What does "Exit code 137" mean?
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
+
+### What does Harness recommend for template versioning and consumption?
+
+You can make changes to the same version of the template, as long as the template's inputs remain unaltered. You must create a new version of the template for any changes to inputs.
 
