@@ -3069,3 +3069,42 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
+#### Why my delgate is not starting with "Failed to build trust key store" message ?
+The default java truststore has a default password that we use to read the truststore information. If the password for the default truststore is changed we must tell the jvm with jvm args what is the password. If we do not provide the argument the jvm will attempt to read the truststore with the default password and will fail with the above message.
+
+
+#### Will the delegate start if there is a failure in the commands provided in INIT_SCRIPT?
+If there is any failure while executing the commands in the INITI_SCRIPT the delegate will not start.
+
+#### How can we pass custom logback xml for docker delegate?
+
+We can create our own custom logback xml file and while running the docker delegate mount the file in docker container and use JAVA_OPTS variable to provide the path to the same. Below is a sample example:
+
+```
+docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloads/utility/temp/custom-logback.xml,target=/opt/harness-delegate/custom-logback.xml \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=xxx \
+  -e DELEGATE_TOKEN=xxxx \
+  -e JAVA_OPTS="-Dlogback.configurationFile=/opt/harness-delegate/custom-logback.xml" \
+  -e DELEGATE_TAGS="" \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:24.04.82709
+
+```
+
+#### Why the helm cli install fails for minimal delegate?
+Helm now recommend using the "get_helm.sh" file for downloading the helm binaries. The script file also has a line which does a hash validation for the file using openssl. The minimal delegate by default dose not have the openssl installed and hence before installing helm openssl needs to be installed.
+
+#### Can we install multiple version of helm on delegate?
+We can have multiple version of helm on the delegate but only the helm cli to which the env points at delegate startup can be used in the default step.
+
+#### Apart from third party binaries are there any other difference between minimal and non-minimal delegate images?
+The only difference between the minimal and non-minimal delegate image is the third party binaries bundled in these images, from harness deleagte code perspective there is no change.
+
+#### How to check the logs for commands specified in the INIT_SCCRIPT?
+During pod initialisation we first run the commands in the INIT_SCRIPT. So you can check the kubernetes pod log to see all the command execution logs.
+
+#### Does execution of INIT_SCRIPT commands get logged in delegate logs?
+No, the INIT_SCRIPT is run before the delegate process comes up. These are not part of the delegate log.
