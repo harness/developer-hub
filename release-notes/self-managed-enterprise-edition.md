@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-04-11T10:00
+date: 2024-05-01T10:00
 sidebar_position: 16
 ---
 
