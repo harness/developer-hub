@@ -464,7 +464,7 @@ export default function CertificationsCD() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     spt.module === "cd" && spt.cardType === "SPT" ||

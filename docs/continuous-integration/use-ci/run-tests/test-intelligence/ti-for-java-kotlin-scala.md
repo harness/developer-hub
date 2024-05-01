@@ -6,7 +6,6 @@ sidebar_position: 20
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
@@ -448,10 +447,6 @@ cd $PROJ_DIR
 * For Prod 2 Harness accounts: `https://app.harness.io/gratis/et-collector`-->
 
 Error tracking output is reported on the [Error Tracking tab](../../viewing-builds.md) when the pipeline runs.
-
-<!-- ### Output Variables
-
-<OutVar /> -->
 
 ### Environment Variables
 

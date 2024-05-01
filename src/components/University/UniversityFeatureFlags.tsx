@@ -395,7 +395,7 @@ export default function FeatureFlags() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
                     spt.module === "ff" && spt.cardType === "SPT" ||
