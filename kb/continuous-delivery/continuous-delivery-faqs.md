@@ -39,7 +39,11 @@ module "transit-gateway" {
   source = "git::https://gitlab.com/rubrik-octo/lab/source-modules.git//site-deploy/transit-gateway"
 }
 ```
-Here, you see a single Git repository named 'source-modules` that has multiple modules inside various folders. By using '//' at the end of the source location, you can instruct Terraform to checkout a specific folder. 
+Here, you see a single Git repository named 'source-modules` that has multiple modules inside various folders. By using '//' at the end of the source location, you can instruct Terraform to checkout a specific folder.
+
+#### Terraform stage fails with "failed to find plan".
+
+The Terraform stage requires both Plan and Apply steps in the same stage to properly trigger.
 
 #### Do we need to install jq library in delegate machine or does Harness provide jq by default?
 
@@ -2507,11 +2511,11 @@ No, harness only executes the PowerShell script on the default PowerShell termin
 If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
 
 #### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
-These details are not available by default as only(status, time, pipeline name url etc0 is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
 
 #### How to create role binding (to a usergroup) through the api
 You can use below api by updating the details
-‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’
+`https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string`
 
 #### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
 You can configure failure strategy and use retry option for multiple run
@@ -2538,7 +2542,6 @@ curl -i -X PUT \
   -H 'Content-Type: application/json' \
   -H 'x-api-key: REDACTED' \
   -d '["gmail.com","harness.io"]'
-
 ```
 
 #### Can the domain whitelisting api be used for ip allowlist as well?
@@ -2553,12 +2556,12 @@ v1/ip-allowlist
 
 The variable access works only in the context of current executing pipelines. We do not have a built-in way to access some other pipeline execution variables from another pipeline.
 
+#### How can we utilise output variables from one pipeline stage or execution in another execution?
 
-#### How can we utilise output variables from one pipeline execution in another execution?
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
 
-We have a api which can be used in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+Harness also has an endpoint you can use in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
 This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
-
 
 #### How to know if a connector is failing ?
 
@@ -2601,6 +2604,7 @@ Within the same step group we can shorten the expression for accessing step vari
 #### Is there a short notation for accessing step output variable within same stage and outside of step group?
 
 We can also shorten the expression for accessing output variables of a step inside the step group to be accessed by another step outside the step group. Below is the expression example:
+
 ```
 <+execution.steps.somestepgroup.steps.ShellScript_1.output.outputVariables.myvar>
 ```
@@ -6699,7 +6703,27 @@ This error occurs because there's a misconfiguration with the pipeline. Harness 
 
 #### What is Harness' pipeline execution history retention policy?
 
-Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
+[Harness retains pipeline execution data for 6 months.](https://developer.harness.io/docs/platform/references/data-retention)
+
+#### Can I create dynamically create parallel steps based on a condition?
+
+You can use Harness expressions in looping strategies to achieve this.
+
+#### Can I move a template stored in a Git repo?
+
+Changing the path in the Harness UI for an entity stored in Git doesn't commit the entity on the new path. It only changes the link to the filepath for that entity.
+
+There is no validation when changing the path in Harness. If the entity doesn't exist at the given path, it fails to be pulled when called by Harness.
+
+You'll need to change the path in Harness as well as manually move the entity in your Git repo.
+
+#### When creating a pipeline, I got an error that the pipeline already exists
+
+This 500 error code can occur when a pipeline URL points to a pipeline identifier with the wrong case. Make sure the casing is correct in the provision identifier.
+
+#### What does this error message mean: "Invalid request: Trying to run more than 256 concurrent stages/steps."
+
+This error message occurs when your pipeline attempts to run more than 256 steps at once. This can be caused by a looping strategy creating parallel or matrixed steps.
 
 #### Are we still supporting the container step in Continuous Delivery?
 
