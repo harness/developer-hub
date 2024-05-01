@@ -687,6 +687,6 @@ This feature is not available for Harness Self-Managed Enterprise Edition.
 
 ### Connector not found when running the pipeline
 
-"Error: Stage Stage_Name: Connector not found - [Connector_ID] with scope [Project]"
+```Error: Stage [Stage_Name]: Connector not found - [Connector_ID] with scope [Project]```
 
 For these errors, review whether the service is configured with the correct artifact type connector or whether the specific connector type exists in the project.

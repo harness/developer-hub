@@ -6588,7 +6588,7 @@ This error usually occurs when running a helm deployment on an expired delegate.
 
 #### Can I auto-populate image tags from the previous stage into the next stage of the pipeline?
 
-For chained pipelines, you need to output a variable from the first child pipeline and use it as input in the second child pipeline. For more information, go to [Chained pipleine output variables](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables).
+For chained pipelines, you need to output a variable from the first child pipeline and use it as input in the second child pipeline. For more information, go to [Chained pipeline output variables](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables).
 
 #### Can I export my entire FirstGen deployment history and audit trail from Harness?
 
@@ -7243,76 +7243,93 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+#### Can I import a service from Git with Harness API?
 
-#### Can a user import the service from git by using Harness API?
-No, As per the current API design it's not supported.
+No.
 
-#### How can a user easily disable the pipeline triggers?
-Users can enable/disable the trigger through this API: https://apidocs.harness.io/tag/Triggers/#operation/updateTrigger
+#### How do I disable pipeline triggers?
 
-#### How can the user use the Plugin step in the CD/Custom stage pipeline?
-If the user wants to use the Plugin step in the custom stage, you need to add the step group with Enable container-based execution.
-Doc for reference: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/
+You can disable triggers through the **Triggers** page in the UI, or you can use the [Update Trigger endpoint](https://apidocs.harness.io/tag/Triggers/#operation/updateTrigger).
 
-#### Can a user change the GitOps cluster authentication mechanism from UI in Harness?
-Yes, the user can change the authentication type of GitOps cluster from the Harness UI.
+#### Can I change the GitOps cluster authentication mechanism within the Harness UI?
 
-#### Can the user add the timeout value to the pipeline without adding to the pipeline template?
-If the user wants to make the pipeline timeout changes, the user needs to make the change in the template only if you are using that.
+Yes.
 
-# # # # Can the two releases have the same name?
-Yes, the release name is created based on serviceIdentifier-environmentIdentifier-connectorRef-namespace. If both pipeline have same serviceIdentifier, environmentIdentifier, connectorRef, namespace it will generate the same release name.
+#### Can I add a timeout limit to a pipeline created from a template without editing the template?
 
-#### In the freeze window can any user execute the pipeline?
-No, only the Admin or the user who has freeze override permission can able to execute the pipeline.
+No. You must edit the template to do this.
+
+#### Can the two releases have the same name?
+
+Yes. The release name is based on `serviceIdentifier-environmentIdentifier-connectorRef-namespace`. If both pipeline have same `serviceIdentifier`, `environmentIdentifier`, `connectorRef`, and `namespace`, then both releases have the same name.
+
+#### In the freeze window, can any user execute the pipeline?
+
+No. Only Admins or users with freeze override permissions can execute pipelines during freeze windows.
 
 #### Is the environment required in a custom stage?
-No, the environment is not mandatory in a custom stage.
 
-#### How the custom artifact source work?
-In the custom artifact, you need to write your own script with the necessary credentials to fetch the artifacts.
+No.
 
-#### If the user cats the secret value in the file and tries to echo it, the secret will be displayed in console logs or not?
-In the Harness console logs the secret will be masked.
+#### How does the custom artifact source work?
 
+In the custom artifact, you must write your own script with the necessary credentials to fetch the artifacts.
 
-#### If one of the executions is stuck at the resource constraint step so how can a user check the other pipeline that is currently running?
-User can click on the resource constraint step and check the already running execution in the list.
+#### If I cat and echoe a secret value, is the secret masked in console logs?
 
-#### Can user run the same pipeline multiple times on the same infrastructure?
-Yes, but the user has to enable the Allow simultaneous deployments on the same infrastructure option in the infrastructure.
+This depends on the exact handling and whether Harness can still recognize the concatenated secret as a secret.
 
-#### Can user create the remote-based input set in the inline-based pipeline?
-No, As per the current design if the pipeline is inline the input set can only be created inline and if the pipeline is remote the input set can only be created as remote.
+For information about secrets masking, go to [Secrets in outputs](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets#secrets-in-outputs).
 
-#### Is there a way to delete the orphaned resources that were present in an old manifest, but no longer present in the manifest used for the current deployment?
-Yes, user can use the Kubernetes pruning functionality to delete those resources.
-Doc for reference: https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/
+#### If an execution is stuck at the resource constraint step, how do I check if the other pipeline is currently running?
 
-#### When a clone of Pipeline1 is made (say Pipeline2), is Service1 also cloned to a new service Service2? Or does Pipeline2 utilizes the same service Service1?
-When a clone of Pipeline1 is made (Pipeline2), so Pipeline2 uses the same service Service1. Service is not cloned with the pipeline.
+In the execution details, select the resource constraint step and check the running executions in the given list.
 
-#### If user changes the service configurations from inside Pipeline2, does that reflect in Pipeline1 as well?
-If you change the Service Inputs inside Pipeline2 it will not sync to Pipeline1. But if you made the changes in the Service Config, it will reflect in the Pipeline1 pipeline service also.
+#### Can I run the same pipeline multiple times concurrently on the same infrastructure?
 
-#### The user has a shell script step in the custom stage but the includeInfraSelectors configuration is not available in the step.
-The includeInfraSelectors configuration is only available when you are adding the Shell Script step to a Kubernetes deployment in the CD stage.
+Yes, but you must enable **Allow simultaneous deployments on the same infrastructure** option in the infrastructure definition.
 
-#### Input set RBAC can also restrict the user by changing the values after applying the input set on the pipeline at the time of execution?
-No, The permission will only work on InputSet, not after applying to the execution form.
+#### Can I create a remotely stored input when running an inline pipeline?
 
-#### Can user delete the specific version of the template?
-Yes, After selecting the delete template option, in the next window user can select the specific version for deletion.
+No. Currently, inline-stored pipelines can only use inline-stored input sets.
 
-#### Is there a way to pass the value from one pipeline to another pipeline?
-You can use the Harness API to fetch the execution details of another pipeline and retrieve the desired output variables. You can then parse the API response and publish the variables to be used in other steps or pipelines.
-API docs: https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2
+#### Is there a way to delete orphaned resources from an old manifest that aren't in the current deployment's manifest?
 
-#### Is it possible to add attachments when using the update Jira step?
-As per the current design, harness doesn't support adding attachments with the Jira step.
+Yes. You can use [Kubernetes pruning](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources) to do this.
 
-#### How do I decode and write the secret to a .json file in my pipeline?
-You can decode and write the secret using commands like:
+#### If I clone a pipeline, does Harness also make clones of the services used in the pipeline?
+
+No. Harness creates a clone of the pipeline that uses the same service instance from the original pipeline. The service isn't cloned.
+
+#### If I change the service configuration in a cloned pipeline, does Harness also change the original pipeline?
+
+No, cloned pipelines are independent of each other.
+
+However, if both pipelines use the same service, and you edit the service itself, then those changes are reflected in the pipelines accordingly.
+
+#### I have a Shell Script step in a Custom stage, but the includeInfraSelectors configuration isn't available
+
+The `includeInfraSelectors` configuration is only available when you add the Shell Script step to a Kubernetes deployment in a Deploy stage.
+
+#### Can input set RBAC change user-input values for input sets when a pipeline runs?
+
+No. The RBAC controlling input sets only controls the ability to create/edit input sets, not how they are used in pipelines or how users define runtime input.
+
+#### Can I delete a specific version of a template?
+
+Yes. After selecting **Delete template**, you are prompted to selected a version to delete.
+
+#### Is there a way to pass a value from one pipeline to another pipeline?
+
+Yes. There are many ways to do this such as with pipeline chaining, caching, variables, and [API](https://apidocs.harness.io/tag/Pipeline-Execution-Details#operation/getExecutionDetailV2).
+
+#### Is it possible to add attachments with the Update Jira step?
+
+Currently, this isn't supported.
+
+#### How do I decode and write a secret to a JSON file in my pipeline?
+
+You can decode and write the secret using commands such as:
 
 ```
 echo <+secrets.getValue("my_secret")> | base64 -d > /harness/secrets.json
@@ -7340,7 +7357,7 @@ No. Harness CI Cloud is only for Continuous Integration builds (Build stages).
 
 #### Can I use Plugin or Git Clone steps in Deploy or Custom stages?
 
-Yes, you can add these steps in containerized step groups in Deploy or Custom stages.
+Yes, you can add these steps in [containerized step groups](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups) in Deploy or Custom stages.
 
 #### Can I use any CI steps in a containerized step group?
 
@@ -7453,96 +7470,58 @@ To view connectors outside of a pipeline, you need to go to the account settings
 
 The issue with your code showing in a single line in the yaml section may be due to copying/pasting from different sources, in this case, from Windows to the Harness UI.
 
-One suggestion is to use dos2unix which should remove the '\r'.  There may be other tools available online to help remove the additional '\r\n' from the text.  Some Windows users utilize Notepad++, brought up the Replace All option to replace the '\r\n' as well as any additional '\' symbols.  One can then copy and paste from Notepad++ to Harness to correctly provide the whole block of code instead of one single line.
+One suggestion is to use `dos2unix` which should remove the `\r`.  There may be other tools available online to help remove the additional `\r\n` from the text. For example, in Notepad++, you can use the Replace All option to replace the `\r\n` as well as any additional `\` symbols. You can then copy and paste from Notepad++ to Harness to enter a correctly formatted codeblock.
 
-#### How do we reference step group variables within the same step group?
+#### Can I reference step group variables elsewhere in my pipeline?
 
-One can use the expression <+execution.steps.[step group id].variables.[variable name]> to refer to step group variables within a step group.
+Yes.
 
-#### How do we reference step group variables outside the step group?
+To reference step group varibles in the same step group, use expressions like `<+execution.steps.[step group id].variables.[variable name]>`.
 
-One can use the expression `<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]>` to refer to step group variables outside the same step group.
+To reference step group variables outside the step group where you defined them, use expressions like `<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]>`.
 
-#### I've created a few step templates at the project level utilizing the Command Step. When I go to use them inside the same project, mwhy is my pipeline not able to find the templates?
+#### When attempting to test a policy set, I get the error "Policy evaluations are created when policy sets are enforced on your Harness entities."
 
-This template command step/script is used when establishing SSH or WinRM connections this Command Step/Script will be made available.  Here's a link where it references this in our docs: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/
+To resolve this issue, you need to enable the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-#### I am writing policy in Account level and trying to test by selecting the pipeline for On Run. I am getting error "Policy evaluations are created when policy sets are enforced on your Harness entities."
+#### Can I have multiple values for one variable in a pipeline?
 
-The feature flag OPA_PIPELINE_GOVERNANCE has to be enabled for your account in order to fix this issue pertaining to policy sets being enforced.  Contact the Harness support desk to have this FF enabled for your account.
+You can redefine variables throughout pipeline execution.
 
-#### Is there a way to have multiple options be available for one variable within the same pipeline?
+If you want to have multiple, alternating options available for one variable in the same pipeline, you need to enable the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-The feature flag PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES has to be enabled for the account in order to have multiple options available for one variable in the same pipeline.  Contact Harness support to have this FF enabled for the account.
+#### I can use a curl command to clean up execution in my local terminal, but when I put the same command in a pipeline, there is a curl command error.
 
-#### How can we obtain an output variable from the previous stage in a chained pipeline from another stage?
+The OS referenced is in the base image used to run the pipeline in the Harness platform. For example, if your deployment runs a base version of Linux, then this issue can occur.
 
-Users can provide an expression to reference the output variable for the chained pipeline.  For more information, please reference the doc https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/
+Try updating the curl binary before running it, using yum or apt depending on what Linux flavor you are using.
 
-#### The curl command can trigger the clean up execution without issue from my local terminal, but when I put the same command in one of the pipeline steps, there is a curl command error.
+#### How do I update role binding for a service account or user group?
 
-The OS being referenced is within the base image being used to run within the Harness platform.  For example, if your deployment is running a base version of Linux (depending on the base image you are utilizing) then this issue may occur.
+You can edit the roles in the Harness Platform or use these endpoints:
 
-This may resolve your issue if you try updating the curl command before running it (using yum or apt depending on what Linux flavor you are using).  We would like confirmation once you are able to do this.
+* [Delete Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/deleteRoleAssignment): Remove a role assignment.
+* [Create Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/postRoleAssignments): Add a role.
 
-#### How can I update role binding for a service account or user group?
+#### Can I pass sensitive data in a Harness GitOps deployment?
 
-You can actually use our API to make these updates. Here's what you need to do:
-
-Deleting Role Assignments: If you want to get rid of an old role assignment, you can use this endpoint: [Delete Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/deleteRoleAssignment).
-Creating Role Assignments: And if you need to assign a new role, you can do that using this endpoint: [Create Role Assignment API](https://apidocs.harness.io/tag/Role-Assignments#operation/postRoleAssignments).
-
-#### How can we pass sensitive data in Harness GitOps deployment?
-
-We can utilize Mozilla SOPS. SOPS enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
+You can use [Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/sops), which enables you to securely manage sensitive data by encrypting it before storing it in your Git repository.
 
 Once encrypted, SOPS decrypts the data during deployment using keys stored as Kubernetes secrets, ensuring that your sensitive information remains protected.
 
-For detailed guidance on managing secrets with Mozilla SOPS, you can refer to our documentation here: [Managing Secrets with Mozilla SOPS](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/sops/).
+#### I keep encountering rate limit errors during deployments, leading to failures and leaving our app in an inconsistent state. How can we prevent these failures?
 
-#### We've been encountering rate limit errors during our deployments, leading to failures and leaving our app in an inconsistent state. How can we prevent these failures?
+Harness recommends taking the following steps:
 
-We recommend taking the following steps:
-
-- Increase AWS Limits: One potential solution is to increase your AWS limits, which might resolve the issue. You can request a quota increase by referring to the AWS documentation on Service Quotas: [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html).
-- Utilize "Setup Backoff Strategy" in AWS Connector: We offer a feature called "Setup Backoff Strategy" in our AWS connector, designed to mitigate rate limit problems like the one you're facing. You can configure this strategy directly on the AWS Connector. Here's our documentation on AWS Connector settings for reference: [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy).
-- Understand Timeout, Retries, and Backoff with Jitter: It's beneficial to familiarize yourself with how timeouts, retries, and backoff with jitter work. AWS has provided detailed information on these strategies in their document titled "Timeouts, Retries, and Backoff with Jitter," which you can access [here](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/).
+- Increase AWS Limits by requesting an [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) increase.
+- Utilize **Setup Backoff Strategy** in the [AWS Connector Settings](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy).
+- Understand Timeout, Retries, and Backoff with Jitter, as explained in the [AWS documentation](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/).
 
 The Selection of backoff and retry strategies depends on your specific scenario and preferences. You can start with a simple fixed delay strategy and then explore using the jitter strategy for backoff if needed. Jitter can be particularly helpful in scenarios of overload or contention.
 
-#### What is the process for cloning autostopping rules in Harness?
+#### Can I install Powershell on a Harness Delegate?
 
-To clone an autostopping rule in Harness, follow these steps:
-- **Navigate to AutoStopping Rules Dashboard:** Start by navigating to the AutoStopping Rules dashboard within Harness.
-- **Select the Rule to Clone:** Identify the autostopping rule that you wish to clone from the list displayed on the dashboard.
-- **Access Clone Option:** Click on the three-dot menu associated with the selected autostopping rule. From the dropdown menu that appears, choose the "Clone" option.
-- **Provide a New Name:** Once you've initiated the cloning process, you'll be prompted to provide a new name for the cloned rule. Enter a descriptive name to distinguish it from the original rule.
-- **Review and Adjust Configuration:** Take a moment to review the configuration settings of the cloned rule. If necessary, make any adjustments or modifications to tailor it to your specific requirements.
-- **Save the Cloned Rule:** After finalizing the configuration adjustments, save the cloned rule to confirm and complete the cloning process.
-
-Following these steps will allow you to efficiently clone autostopping rules in Harness, enabling you to replicate existing configurations and streamline your workflow.
-
-#### How to Install Powershell on harness delegate?
-
-To install PowerShell on a Harness Custom Delegate, you can follow these steps:
-
-- Open the delegate YAML file for editing.
-- Add an environment variable called INIT_SCRIPT and set its value to a script that installs PowerShell. Here's an example script:
-
-```
-- name: INIT_SCRIPT
-  value: |
-    #!/bin/bash
-    sudo apt-get update
-    sudo apt-get install -y powershell
-```
-
-- Save the changes to the delegate YAML file.
-- Apply the changes to the delegate using the kubectl apply command.
-
-This script uses the apt-get package manager to install PowerShell on the delegate. If you need to use a different package manager, you can modify the script accordingly.
-
-For more detailed instructions on creating custom images for delegates using a Dockerfile, you can refer to the documentation here: [Build Custom Images Delegate Dockerfile](https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/).
+Yes. For more information, go to [Build Custom Images Delegate Dockerfile](https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/).
 
 #### Is there a way to reference the branch name where the pipeline definition is stored and use it as the branch name in the Pipeline line input set?
 
