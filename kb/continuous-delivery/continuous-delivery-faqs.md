@@ -6975,6 +6975,82 @@ So the statistic will have a red arrow pointing up marked as a `300%` increment 
 
 This value accurately measures the change in the failure rate, from 5% to 15%. 
 
+#### How do I reference a parent Step Group's variable without using it's ID in the Harness Expression?
+
+You can refer to a parent stepGroup's variable by using the `.getParentStepGroup` expression. For example, if you have a variable `var1` in the parent step group, you can reference it like this: `<+stepGroup.getParentStepGroup.variables.var1>`
+
+#### Why am I getting the error "Host information is missing in Command Step"?
+
+```
+Invalid argument(s): Host information is missing in Command Step. Please make sure the looping strategy (repeat) is provided.
+```
+
+If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, set the `Repeat` looping strategy for the Command step. For more information on the Command step and the supported looping strategies, go to [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm) documentation.
+
+#### How does the Encrypt json output setting work in the Terraform Apply stage?
+
+This setting will temporarily create a secret that stores the Terraform output JSON. The secret will be created using the Harness Secret Manager provider and will be available for use during the pipeline execution. The secret is then deleted at the end of the execution. For more information, go to [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs).
+
+#### How do I retrieve encrypted Terraform Output data from a Terraform Apply stage?
+
+To retrieve encrypted Terraform Output data, find the `TF_JSON_OUTPUT_ENCRYPTED` output variable and reference it using a Harness expression. For example, `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`. The value will be encrypted in the Harness UI but, the values will be available in downstream steps and stages. For more information, go to [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs).
+
+#### How do I setup TLS in GitOps Agent?
+
+To setup TLS in the GitOps Agent, mount the certificates onto the Agent deployment:
+
+```
+containers:
+  volumeMounts:
+  - mountPath: /path/to/cert
+    name: your-tls-cert-volume
+volumes:
+- name: your-tls-cert-volume
+  configMap:
+    name: your-tls-cert-configMap
+    defaultMode: 420
+```
+
+Next, set the `SSL_CERT_FILE` environment variable in the Agent deployment manifest:
+
+```
+containers:
+- command:
+    - /app/agent
+  name: gitops-agent
+  image: harness/gitops-agent:v0.72.0
+  imagePullPolicy: Always
+  env:
+    - SSL_CERT_FILE: "/path/to/cert/crt.pem"
+```
+
+This environment variable will tell the Agent to look at the file specified in the given path. In this example, the Agent will look at `/path/to/cert/cert/crt.pem` and use it for TLS.
+
+#### Why am I getting an invalid request when trying to get the deployment status of a pipeline?
+
+```
+Invalid request: Trigger event history doesn't exist for event with eventId 123456789012345678012346 Exception occurred: Trigger event history doesn't exist for event with eventId 123456789012345678012346
+```
+
+If you are receiving the above error even after you've confirmed that the pipeline was triggered, it's possible that you triggered the API to lookup the status of the deployment faster than when the deployment actually happened. To fix this, add a `sleep` to your script or wait a few seconds before using the API to ensure ample time for the pipeline's status to register, and be queried.
+
+#### How to find the workspace name used in a pipeline execution and print out the value at run time?
+
+To get the workspace name used in a pipeline execution, you can use the expression, `<+pipeline.stages.$STAGE_ID.spec.execution.steps.$STEP_ID.spec.workspace>`.
+
+#### When a Shell Script step is run on a delegate in a Custom stage, what is the environment that it is run within? As in, what is the current working directory it uses?
+
+The default directory that the Shell Script steps run in is `/tmp` and is removed after the step finishes its execution.
+
+#### Why am I getting a Forbidden error in the Harness console?
+
+```
+INFO 3/15/2024, 1:56:45 PM Starting job to create pod harness-pod-1234567 on harness namespace
+ERROR 3/15/2024, 1:56:45 PM failed to watch pod event: Forbidden
+```
+
+This error occurs if the delegate doesn't have `get` permissions for pod events. To fix this, review the Role/ClusterRole bound to the delegate's Service Account and ensure that the proper permissions are specified. More information about our recommendation for Delegate Role Based Access Control in Kubernetes can be found in [Deploy using a custom role](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#deploy-using-a-custom-role).
+
 #### Can one effectively enforce the reconciliation of changes in the template with consuming pipelines in a forceful manner?
 
 Yes, one can utilize Open Policy Agent (OPA) to enforce the use of a stable template, ensuring consistency across consuming pipelines.
