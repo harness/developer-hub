@@ -1,21 +1,21 @@
 The following sections describe the scanners supported by Harness STO, based on the target type:
 
-- [Code repo scanners](#code-repository-scanners)
+- [Code repo scanners](#code-repo-scanners)
 - [Artifact scanners](#artifact-scanners)
 - [Instance scanners](#instance-scanners)
-- [Cloud Provider scanners](#cloud-provider-scanners)
+- [Configuration scanners](#configuration-scanners)
 - [Other scanners](#other-scanners)
 
 
 #### Code repo scanners
 
-A code scanner can detect one or more of the following types of issues in your source code. For information about the specific vulnerabilities detected by each scanner, go to the external scanner documentation. 
+A code scanner can detect one or more of the following issue types in your source code. For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation. 
 
-* **SAST (Static Application Security Testing)** Known vulnerabilities in open-source and proprietary code.
-* **SCA (Software Composition Analysis)** Known vulnerabilities in open-source libraries and packages used by the code. 
-* **Secrets** Hard-coded secrets such as access keys and passwords.
-* **IaC** Known vulnerabilties in Infrastructure-as-Code files such as Terraform configurations.
-* **Misconfigurations** Known vulnerabilities in software configurations. 
+* **SAST (Static Application Security Testing):** Known vulnerabilities in open-source and proprietary code.
+* **SCA (Software Composition Analysis):** Known vulnerabilities in open-source libraries and packages used by the code.
+* **Secrets:** Hard-coded secrets such as access keys and passwords.
+* **IaC:** Known vulnerabilities in Infrastructure-as-Code files such as Terraform configurations.
+* **Misconfigurations:** Known vulnerabilities in software configurations.
 
 
 <table>
@@ -29,9 +29,9 @@ A code scanner can detect one or more of the following types of issues in your s
           <li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/coverity-scanner-reference">Coverity</a> Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a>  Orchestration, Ingestion </li>        
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a> Orchestration, Ingestion </li>        
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code(<i>open-source option</i>) </a> Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>open-source option</i>) </a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
          </ul>
         </td>
@@ -64,10 +64,10 @@ A code scanner can detect one or more of the following types of issues in your s
 
 #### Artifact scanners
 
-An artifact scanner can detect one or more of the following types of issues in your container images and other artifacts. For information about the specific vulnerabilities detected by each scanner, go to the external scanner documentation. 
+An artifact scanner can detect one or more of the following issue types in your container images and other artifacts. For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation.
 
-* **SCA (Software Composition Analysis)** Known vulnerabilities in open-source libraries and packages used by the code. 
-* **Container Scanning** identifies vulnerabilities in container images.
+* **SCA (Software Composition Analysis):** Known vulnerabilities in open-source libraries and packages used by the code. 
+* **Container Scanning:** Identify vulnerabilities in container images.
 
 <table>
     <tr>
@@ -103,9 +103,9 @@ An artifact scanner can detect one or more of the following types of issues in y
 
 #### Instance scanners
 
-A instance scanner scans a running application for vulnerabilties by simulating a malicious external actor exploiting known vulnerabilties. This is also known as a DAST (Dynamic Application Security Testing) scan. 
+An instance scanner scans a running application for vulnerabilities by simulating a malicious external actor exploiting known vulnerabilities. This is also known as a DAST (Dynamic Application Security Testing) scan.
 
-For information about the specific vulnerabilities detected by each scanner, go to the external scanner documentation. 
+For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation. 
 
 <table>
     <tr>
@@ -139,7 +139,7 @@ For information about the specific vulnerabilities detected by each scanner, go 
 
 #### Configuration scanners
 
-The following scanners detect misconfigurations in your cloud environment that can result in vulnerabilities. For information about the specific vulnerabilities detected by each scanner, go to the external scanner documentation.
+The following scanners detect misconfigurations in your cloud environment that can result in vulnerabilities. For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation.
 
 <table>
     <tr>
