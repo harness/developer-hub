@@ -54,6 +54,10 @@ Pod eviction during an Aqua scan can be attributed to resource constraints, espe
 
 To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
 
+### Can the Aqua Security scan use an image built with PLUGIN_NO_PUSH?
+
+No. The Aqua Security scan can't pick up a local image.
+
 ## AWS ECR scans
 
 ### How do I configure a session token in the AWS ECR scan step?
