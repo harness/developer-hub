@@ -5991,7 +5991,12 @@ API (https://developer.harness.io/release-notes/self-managed-enterprise-edition)
 Yes, you can test the deletion of resources removed/renamed in the Helm chart by using the --prune flag with the Helm upgrade command. This flag will remove any resources that are no longer defined in the chart. You can also use the --dry-run flag to simulate the upgrade and see what changes will be made without actually applying them.
 
 #### Can I move a connector from one project to another?
-There is no option as such which can move one connector from one project to another.
+
+No. You must recreate the connector in the other project.
+
+#### How can I move a project from one organization to another?
+
+No. You must recreate the project under the other org.
 
 #### What does error missing permission core_secret_access?
 This error message indicates that the user or role does not have the required permission to access secrets in Harness. To resolve this issue, you need to grant the user or role the "core_secret_access" permission. This permission allows users to access secrets in Harness. You can grant this permission by going to the User Group or Role that the user belongs to and adding the "core_secret_access" permission if you are still facing issues.
@@ -7233,3 +7238,25 @@ However, you can use Failure Strategies and Conditional Executions to achieve si
 2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
 
 This will allow you to only run the Rollback step if the desired step failed.
+
+#### Can I design a pipeline to deploy Helm charts hosted in a remote private Helm registry and using Kustomize to patch the Helm charts?
+
+Native Helm doesn't support Kustomize; however, you could use [service hooks](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks) for this.
+
+#### Can you set a default delegate or delegate tag for a project
+
+No.
+
+#### Why doesn't the pipeline skip steps in a step group when another step in the group fails?
+
+If you want this to occur, you neeed to define a conditional execution of `<+stage.liveStatus> == "SUCCESS"` on each step in the group.
+
+#### What does the Update Release Repo step expect for GitOps?
+
+For the Update Release Repo step, you can enter variables in the step to update key-value pairs in the config file you are deploying. If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them.
+
+#### How do I view account-level connectors in a Harness project?
+
+When selecting a connector for a step or other configuration, switch to the **Account** tab to view account-level connectors.
+
+To view connectors outside of a pipeline, you need to go to the account settings and then view the account connectors from there.
