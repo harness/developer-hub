@@ -7052,22 +7052,20 @@ If you are running the pipeline on the same delegate, make sure that Provisioner
 
 #### We have an updated manifest file for deployment, but delegate seems to be fetching old manifest. How can we update this?
 
-You can clear the local cached repo. 
-Local repository is stored at : 
+You can clear the local cached repo.
 
-```
-/opt/harness-delegate/repository/gitFileDownloads/Nar6SP83SJudAjNQAuPJWg/<connector-id>/<repo-name>/<sha1-hash-of-repo-url>
-```
+Local repository is stored at `/opt/harness-delegate/repository/gitFileDownloads/Nar6SP83SJudAjNQAuPJWg/<connector-id>/<repo-name>/<sha1-hash-of-repo-url>`.
+
 #### We are facing missing Terraform backend configuration issue in the Terraform Plan step logs though we have configured backend.
 
 You have to declare the backend block in the Terraform configuration. You might have provided the config in Harness, but the `backend` block might not exist in the Terraform configuration.
- 
+
 #### What options are available for freezing deployments in Harness?
-                     
+
 In Harness, you can freeze deployments at different levels such as project, environment, or organization.
 
 #### What portion of the YAML file configuration specifies that a delegate is visible only at a specific project?
-                     
+
 When configuring delegates in YAML files, the specific visibility scope (whether it's at the account, organization, or project level) is not explicitly defined within the delegate.yaml file. Instead, the visibility is determined by the scope of the delegate token used during registration.
 
 For example, if the token used during registration is scoped at the project level, the delegate will be registered within the project. This principle applies to organization and account levels as well. Additionally, delegates can be added at the project, org, and account levels, with their availability depending on the implicit hierarchy within Harness (account > org > project).
@@ -7075,17 +7073,17 @@ For example, if the token used during registration is scoped at the project leve
 For more details, go to [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-scope).
 
 #### How can I specify freeze windows for specific test environments within projects in Harness?
-  
+
 To specify freeze windows for specific test environments within projects, you can utilize the Freeze Window feature at the project level in Harness. This allows you to halt specific environments as needed.
 
 #### Is there a programmatic way to determine which user created a feature flag and/or target group in Harness?
-  
-Yes, there is. You can utilize the Harness Audit API to retrieve JSON responses for specific resources like feature flags and target groups. This API provides audit events for all resources, allowing you to filter and find the create event for a particular feature flag or target group. Additionally, when retrieving all information about a feature flag through the API, you'll find the "owner" data point, which directly provides information about the user who created the feature flag. For more details, go to [Audit API documentation](https://apidocs.harness.io/tag/Audit). 
+
+Yes, there is. You can utilize the Harness Audit API to retrieve JSON responses for specific resources like feature flags and target groups. This API provides audit events for all resources, allowing you to filter and find the create event for a particular feature flag or target group. Additionally, when retrieving all information about a feature flag through the API, you'll find the "owner" data point, which directly provides information about the user who created the feature flag. For more details, go to [Audit API documentation](https://apidocs.harness.io/tag/Audit).
 
 However, it's worth noting that while this information is directly available for feature flags, it may not be as straightforward for target groups. Features, Targets, and Target Groups are separate resources in Harness. If you want to filter features and target groups created by a specific user or group of users, you may need to adjust your filter accordingly in the Audit API call.
 
 #### What permission is required to archive a feature flag in Harness, and how can we customize permissions to meet our needs?
-  
+
 To archive a feature flag in Harness, users typically need the "Delete" permission. However, if you have specific requirements, such as allowing developers to create, edit, and archive feature flags without granting them the ability to delete flags, you can customize permissions using Harness RBAC (Role-Based Access Control).
 
 For instance, you can create custom roles within Harness that grant users the ability to create and edit feature flags, but not delete them. Then, for engineers who require delete permissions, you can create another custom role solely for granting delete access. By assigning these custom roles accordingly to developers based on their needs, you can ensure that permissions align with your organizational requirements.
@@ -7093,13 +7091,15 @@ For instance, you can create custom roles within Harness that grant users the ab
 For guidance on deleting an archived flag and leveraging RBAC for customized permissions, go to [Delete an Archived Flag](https://developer.harness.io/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag/#delete-an-archived-flag).
 
 #### How can I handle uppercase environment identifiers in Harness variables and deploy pipelines?
-  
+
 Harness variables provide flexibility in managing environment identifiers, but dealing with uppercase identifiers like UAT and DR can pose challenges. One common requirement is converting these identifiers to lowercase for consistency. Here's how you can address this:
+
 - Using [Ternary Operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
+
 - Updating Environment Setup: Another approach is to update your environment setup to ensure identifiers like UAT and DR are stored in lowercase. By maintaining consistency in the environment setup, you can avoid issues with case sensitivity in your deployment pipelines.
 
 #### How can I switch the Git repository for templates and pipelines in Harness when moving to a new provider?
-  
+
 When preparing to migrate your templates and resources to a new Git provider, updating the repository details in Harness is straightforward. Here's how you can do it:
 - Edit YAML Files: Open the YAML files for each template and pipeline that you want to migrate.
 - Update Git Details: Look for the section in the YAML file that specifies the Git connector, repository, and path. Update this information with the details of your new Git provider.
@@ -7108,40 +7108,42 @@ When preparing to migrate your templates and resources to a new Git provider, up
 Harness will automatically fetch the resources from the new location. However, managing numerous resources during this transition can be daunting. To prevent any issues with references, ensure that all pipelines referencing specific template versions are also updated to use the new Git details.
 
 #### Does Harness offer a replay feature similar to Jenkins?
-  
+
 Yes, Harness provides a feature similar to Jenkins' **Replay** option, allowing you to rerun a specific build or job with the same parameters and settings as the previous execution. In Harness, this functionality is known as **Retry Failed Executions**. You can resume pipeline deployments from any stage or from a specific stage within the pipeline.
 
 To learn more about how to utilize this feature in Harness, go to [Resume pipeline deployments](https://developer.harness.io/docs/platform/pipelines/failure-handling/resume-pipeline-deployments/) documentation.
 
 #### Is there a way to clean up state storage in Terraform if it becomes out of sync during testing?
-                     
+
 If your Terraform state storage becomes out of sync during testing, there isn't a direct method to clean it up. Changing the application Id isn't recommended as it could lead to additional complications.
 
 Instead, you use other options:
+
 - Manual Cleanup: You can manually delete the state file from the storage location. However, ensure that you have a backup of the state file before proceeding to avoid any data loss or unintended consequences.
-- Terraform CLI: Utilize the Terraform CLI to force refresh the state. This can help synchconize the state with the actual infrastructure. 
+- Terraform CLI: Utilize the Terraform CLI to force refresh the state. This can help synchconize the state with the actual infrastructure.
+
 Exercise caution when making changes to the Terraform state to avoid disruptions to your infrastructure. Ensure to backup properly before making any changes.
 
 #### How can I cancel/abort a pipeline execution via Harness APIs?
-                     
+
 To abort a pipeline execution, use the `putHandleInterrupt` API endpoint. This API allows you to cancel a running pipeline by providing the execution Id as a parameter.
 
 You can find more details about this API and its usage in [Harness API documentation](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt).
 
 #### How can I prevent Terraform state drift caused by AWS ECR permissions policies created by Harness?
-                     
+
 There are a couple of approaches you can take to mitigate this issue:
 
 - Pre-create ECR repository: To avoid state drift, consider creating the ECR repository with the necessary permissions beforehand. Create an IAM policy that grants the required permissions for Harness actions, such as creating and updating services, tasks, and container instances. Attach this policy to the IAM role used by the ECS cluster. By doing this, ensure that the ECR repository has the correct permissions from the start, reducing the likelihood of drift.
 - Modify Harness AWS connector permissions: Another option is to prevent Harness from altering IAM policies by adjusting the permissions within the Harness AWS connector. However, be cautious with this approach as it may impact the functionality of your deployment pipeline. Removing permissions related to the IAM policy from the Harness AWS connector can prevent unwanted changes to ECR permissions policies. Evaluate the impact on your workflow before implementing this solution.
 
-By managing permissions and considering the implications of changes made by Harness, you can effectively address Terraform state drift and maintain the stability of your deployment environment. 
+By managing permissions and considering the implications of changes made by Harness, you can effectively address Terraform state drift and maintain the stability of your deployment environment.
 
 #### Harness is pulling old Helm dependencies that are not in the Chart.yaml.
 
 Check the following:
 * Service configuration.
-* Whether you have configured the override. 
+* Whether you have configured the override.
 * Whether the chart is getting pulled from the correct location.
 * List of manifests.
 
@@ -7238,6 +7240,39 @@ However, you can use Failure Strategies and Conditional Executions to achieve si
 2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
 
 This will allow you to only run the Rollback step if the desired step failed.
+
+#### Can I set variables at the environment level with environments V2?
+
+You can add variables directly in the Environment by navigating to override and selecting the environment tag.
+
+If a service variable with same name exist, it is treated as overridden, otherwise it creates a variable you can access with the service variable expression syntax.
+
+#### Where do I get the metadata for the Harness download/copy command?
+
+This metadata is detected in the service used for the deployment. Ideally, you would have already configured an artifact, and the command would use the same config to get the metadata.
+
+#### Can I use SSH to copy an artifact to a target Windows host?
+
+If your deployment type is WinRM, then WinRM is the default option used to connect to the Windows host.
+
+#### Why can't I use a particular shell type with the Command step?
+
+Command step depends on type of deployment.
+
+If your deployment type is WinRM, then you only have the powershell shell option; whereas, if your deployment type is SSH, then you have the bash shell option.
+
+If you want to use these shells interchangeably, you can either:
+
+* Add shell script step instead of command step.
+* Use the command step without selecting **Run on Delegate**, so that it will run on host instead of the delegate.
+
+#### Can I update a cron trigger programatically?
+
+Yes, you can use the [Update Trigger endpoint](https://apidocs.harness.io/tag/Triggers/#operation/updateTrigger) and pass the entirety of the updated trigger YAML (including the updated cron expression) in the body.
+
+#### How do I perform iisreset on a Windows machine?
+
+You can create a WinRM connector and use a powershell script to perform the iisreset. Make sure the user credentials used for the connection have admin access.
 
 #### Can I design a pipeline to deploy Helm charts hosted in a remote private Helm registry and using Kustomize to patch the Helm charts?
 
