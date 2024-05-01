@@ -39,7 +39,11 @@ module "transit-gateway" {
   source = "git::https://gitlab.com/rubrik-octo/lab/source-modules.git//site-deploy/transit-gateway"
 }
 ```
-Here, you see a single Git repository named 'source-modules` that has multiple modules inside various folders. By using '//' at the end of the source location, you can instruct Terraform to checkout a specific folder. 
+Here, you see a single Git repository named 'source-modules` that has multiple modules inside various folders. By using '//' at the end of the source location, you can instruct Terraform to checkout a specific folder.
+
+#### Terraform stage fails with "failed to find plan".
+
+The Terraform stage requires both Plan and Apply steps in the same stage to properly trigger.
 
 #### Do we need to install jq library in delegate machine or does Harness provide jq by default?
 
@@ -2507,11 +2511,11 @@ No, harness only executes the PowerShell script on the default PowerShell termin
 If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
 
 #### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
-These details are not available by default as only(status, time, pipeline name url etc0 is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
 
 #### How to create role binding (to a usergroup) through the api
 You can use below api by updating the details
-‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’
+`https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string`
 
 #### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
 You can configure failure strategy and use retry option for multiple run
@@ -2538,7 +2542,6 @@ curl -i -X PUT \
   -H 'Content-Type: application/json' \
   -H 'x-api-key: REDACTED' \
   -d '["gmail.com","harness.io"]'
-
 ```
 
 #### Can the domain whitelisting api be used for ip allowlist as well?
@@ -2553,12 +2556,12 @@ v1/ip-allowlist
 
 The variable access works only in the context of current executing pipelines. We do not have a built-in way to access some other pipeline execution variables from another pipeline.
 
+#### How can we utilise output variables from one pipeline stage or execution in another execution?
 
-#### How can we utilise output variables from one pipeline execution in another execution?
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
 
-We have a api which can be used in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+Harness also has an endpoint you can use in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
 This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
-
 
 #### How to know if a connector is failing ?
 
@@ -2601,6 +2604,7 @@ Within the same step group we can shorten the expression for accessing step vari
 #### Is there a short notation for accessing step output variable within same stage and outside of step group?
 
 We can also shorten the expression for accessing output variables of a step inside the step group to be accessed by another step outside the step group. Below is the expression example:
+
 ```
 <+execution.steps.somestepgroup.steps.ShellScript_1.output.outputVariables.myvar>
 ```
@@ -5987,7 +5991,12 @@ API (https://developer.harness.io/release-notes/self-managed-enterprise-edition)
 Yes, you can test the deletion of resources removed/renamed in the Helm chart by using the --prune flag with the Helm upgrade command. This flag will remove any resources that are no longer defined in the chart. You can also use the --dry-run flag to simulate the upgrade and see what changes will be made without actually applying them.
 
 #### Can I move a connector from one project to another?
-There is no option as such which can move one connector from one project to another.
+
+No. You must recreate the connector in the other project.
+
+#### How can I move a project from one organization to another?
+
+No. You must recreate the project under the other org.
 
 #### What does error missing permission core_secret_access?
 This error message indicates that the user or role does not have the required permission to access secrets in Harness. To resolve this issue, you need to grant the user or role the "core_secret_access" permission. This permission allows users to access secrets in Harness. You can grant this permission by going to the User Group or Role that the user belongs to and adding the "core_secret_access" permission if you are still facing issues.
@@ -6699,7 +6708,27 @@ This error occurs because there's a misconfiguration with the pipeline. Harness 
 
 #### What is Harness' pipeline execution history retention policy?
 
-Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
+[Harness retains pipeline execution data for 6 months.](https://developer.harness.io/docs/platform/references/data-retention)
+
+#### Can I create dynamically create parallel steps based on a condition?
+
+You can use Harness expressions in looping strategies to achieve this.
+
+#### Can I move a template stored in a Git repo?
+
+Changing the path in the Harness UI for an entity stored in Git doesn't commit the entity on the new path. It only changes the link to the filepath for that entity.
+
+There is no validation when changing the path in Harness. If the entity doesn't exist at the given path, it fails to be pulled when called by Harness.
+
+You'll need to change the path in Harness as well as manually move the entity in your Git repo.
+
+#### When creating a pipeline, I got an error that the pipeline already exists
+
+This 500 error code can occur when a pipeline URL points to a pipeline identifier with the wrong case. Make sure the casing is correct in the provision identifier.
+
+#### What does this error message mean: "Invalid request: Trying to run more than 256 concurrent stages/steps."
+
+This error message occurs when your pipeline attempts to run more than 256 steps at once. This can be caused by a looping strategy creating parallel or matrixed steps.
 
 #### Are we still supporting the container step in Continuous Delivery?
 
@@ -7136,15 +7165,98 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
-#### How do I pass a list or array to a path field in a Kubernetes Manifest?
+#### Can I use shell variables in Harness expressions to fetch a secret in a shell script step?
 
-In order to pass a list or array to a path field, you'll need to enable the `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR` Feature Flag. Please open a ticket with Harness Support to get this enabled on your account. After the Feature Flag has been enabled, you can add an array to a path field in a Kubernetes Manifest by using the `<+<+stage.variables.var1>.split(",")>` expression. Where the variable `var1` has a value of `path1,path2,path3`.
+You can't use a shell variable in a Harness expression because the Harness expression is resolved before the step starts, and the shell variable doesn't populate until the shell script step run.
 
-#### How do I get Rollback functionality in a non-deploy stage?
+However, you could write a variable that stores a Harness expression referencing a secret, and then use that variable in your script. This way the expression can be resolved independently of the script running.
 
-Rollback is a functionality exclusive to Deploy stages however, you can use Harness Failure Strategies and Conditional Execution configuration in order to achieve similar behavior.
+#### What is the connection test for a Docker connector with anonymous authentication?
+
+The connection test checks if Harness can reach the registry endpoint URL.
+
+#### How can a Docker connector with anonymous authentication have a successful connection test if the Docker public registry endpoint is blocked by the delegate proxy?
+
+Specifically, Harness checks that the server's response code is 400 while verifying Docker connectivity with anonymous credentials. This situation can occur if the proxy, which is set up to block connections, returns a 403 or any client error code other than 400.
+
+#### Can I use Harness CI Cloud build infrastructure for Deploy or Custom stages?
+
+No. Harness CI Cloud is only for Continuous Integration builds (Build stages).
+
+#### Can I use Plugin or Git Clone steps in Deploy or Custom stages?
+
+Yes, you can add these steps in containerized step groups in Deploy or Custom stages.
+
+#### Can I use any CI steps in a containerized step group?
+
+No. Only some step types are available in containerized step groups.
+
+#### Where are steps in containerized step groups executed?
+
+They are executed on a separate pod created at runtime.
+
+The pod is cleaned up after step group execution ends.
+
+#### Are separate pods created for each step in a containerized step group?
+
+No. Harness creates one pod for the containerized step group and runs all step containers in the group on that pod.
+
+#### Can I access files from a containerized step group in a subsequent shell script step?
+
+No. Containerized step groups are isolated on a separate pod from other steps. Files generated in the containerized step group aren't available in outside steps.
+
+#### Can I run a containerized step group on a self-managed VM or local infrastructure?
+
+No, containerized step group can only run on Kubernetes infrastructure.
+
+#### Does the containerized step group's command override CMD and/or ENTRYPOINT?
+
+The step group's **Command** is overwritten the image's default entrypoint, if it has one.
+
+If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**
+
+#### Can I pass a list or array to a path field in a Kubernetes Manifest?
+
+Currently, to pass a list or array to a path field, you'll must enable the feature flag `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Once enabled, you can add an array to a path field in a Kubernetes Manifest by:
+
+1. Creating a stage variable containing your list or array contents, such as `path1,path2,path3`.
+2. Passing the array to the manifest by using the following expression:
+
+   ```
+   <+<+stage.variables.VARNAME>.split(",")>
+   ```
+
+#### Can I rollback a non-deploy stage?
+
+Rollback is a functionality exclusive to Deploy stages.
+
+However, you can use Failure Strategies and Conditional Executions to achieve similar behavior.
 
 1. Set your step's Failure Strategy to `Proceed with Default Values` for all Errors you wish to run your rollback step for.
 2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
 
 This will allow you to only run the Rollback step if the desired step failed.
+
+#### Can I design a pipeline to deploy Helm charts hosted in a remote private Helm registry and using Kustomize to patch the Helm charts?
+
+Native Helm doesn't support Kustomize; however, you could use [service hooks](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks) for this.
+
+#### Can you set a default delegate or delegate tag for a project
+
+No.
+
+#### Why doesn't the pipeline skip steps in a step group when another step in the group fails?
+
+If you want this to occur, you neeed to define a conditional execution of `<+stage.liveStatus> == "SUCCESS"` on each step in the group.
+
+#### What does the Update Release Repo step expect for GitOps?
+
+For the Update Release Repo step, you can enter variables in the step to update key-value pairs in the config file you are deploying. If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them.
+
+#### How do I view account-level connectors in a Harness project?
+
+When selecting a connector for a step or other configuration, switch to the **Account** tab to view account-level connectors.
+
+To view connectors outside of a pipeline, you need to go to the account settings and then view the account connectors from there.
