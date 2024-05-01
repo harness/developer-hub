@@ -7383,9 +7383,12 @@ No, containerized step group can only run on Kubernetes infrastructure.
 
 #### Does the containerized step group's command override CMD and/or ENTRYPOINT?
 
-The step group's **Command** is overwritten the image's default entrypoint, if it has one.
+When using a Dockerfile with CMD or ENTRYPOINT defined, the value specified in the **Command** field of the Harness container step is overridden by the default entry point of the Docker image.
 
-If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**
+However, there are a few of options to work with CMD, ENTRYPOINT, and custom commands together:
+
+- **Execute Entry Point Manually:** You can manually execute the entry point in the "Command" section of the container step after running any other custom commands. This allows you to leverage the default behavior defined in the Dockerfile while also executing additional commands as needed.
+- **Use Containerized Step Groups:** Consider using containerized step groups, where you can add the Docker image as a background step. This setup will execute the default entry point of the image while allowing you to manage other steps concurrently. For more details, refer to the [containerized step groups documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
 
 #### Can I pass a list or array to a path field in a Kubernetes Manifest?
 
@@ -7511,29 +7514,19 @@ Once encrypted, SOPS decrypts the data during deployment using keys stored as Ku
 
 #### I keep encountering rate limit errors during deployments, leading to failures and leaving our app in an inconsistent state. How can we prevent these failures?
 
-Harness recommends taking the following steps:
+There are several approaches that Harness recommends, depending on which provider you're using:
 
 - Increase AWS Limits by requesting an [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html) increase.
 - Utilize **Setup Backoff Strategy** in the [AWS Connector Settings](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-backoff-strategy).
 - Understand Timeout, Retries, and Backoff with Jitter, as explained in the [AWS documentation](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/).
-
-The Selection of backoff and retry strategies depends on your specific scenario and preferences. You can start with a simple fixed delay strategy and then explore using the jitter strategy for backoff if needed. Jitter can be particularly helpful in scenarios of overload or contention.
-
-#### Can I install Powershell on a Harness Delegate?
-
-Yes. For more information, go to [Build Custom Images Delegate Dockerfile](https://developer.harness.io/docs/platform/delegates/manage-delegates/build-custom-images-delegate-dockerfile/).
-
-#### Is there a way to reference the branch name where the pipeline definition is stored and use it as the branch name in the Pipeline line input set?
-
-To reference the branch name for a pipeline run stored in Git and utilize it within the Pipeline line input set. Here's how you can achieve this:
-
-- Utilize <+pipeline.branch>: When manually triggering the pipeline, you can use the expression <+pipeline.branch> to reference the branch name where the pipeline definition is stored. This expression effectively captures the branch name associated with the pipeline being executed.
-
-By following this approach, you can seamlessly reference the branch name into your pipeline execution, ensuring that the correct branch is utilized for each run.
+- For [GitHub rate limit issues](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#network-connection-times-out-when-fetching-large-repos), you can:
+   - Use a GitHub App for authentication in your GitHub connector.
+   - Contact [Harness Support](mailto:support@harness.io) to enable the feature flag `CDS_OPTIMIZED_GIT_FETCH_FILES`, which allows Harness to pull only the necessary files required for deployment based on the commit ID from GitHub.
+   - Leverage [Gitx Bidirectional Sync Setup](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/).
 
 #### Is it possible to move a service from one project to another in Harness?
 
-Unfortunately, at the moment, Harness does not offer the capability to transfer resources, such as services, between projects or organizations. As a result, moving a service from one project to another directly within Harness is not supported.
+No. You have to manually recreate the service in the other project.
 
 #### How should I handle updating Harness delegate images for automation jobs?
 
@@ -7545,32 +7538,17 @@ For detailed instructions on using the script to fetch the latest delegate versi
 
 #### Can I retry only the failed instances in a matrix loop deployment?
 
-You can retry only the failed instances in a matrix loop deployment by enabling the retry feature in the pipeline settings. To do this, navigate to the pipeline's settings and select the "Advanced" tab. Under the "Pipeline Failure Strategy" section, enable the "Retry" option. This will allow you to retry the failed instances while skipping the ones that were successful.
+To retry only the failed instances in a matrix loop deployment, enable the retry feature in your pipeline settings. To do this, edit the pipeline configuration, select the **Advanced** tab, and, under the **Pipeline Failure Strategy** section, enable the **Retry** option.
 
-For more detailed information on step and stage failure strategies, you can refer to the following document: [Step Failure Strategy Settings](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings/).
+For more information, go to [Step Failure Strategy Settings](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-#### How to enable Harness "AIDA" feature on our account?
+#### How do I enable Harness AIDA on my account?
 
-To enable the AIDA feature, please follow these steps:
-- Go to Account Settings.
-- Select Account Resources.
-- Click on the Harness AIDA tile.
-- Enable the Harness AI Development Assistant (AIDA) setting.
-Optionally, select "Allow Overrides" if you want to be able to enable/disable AIDA for individual projects.
-
-For more detailed instructions, you can refer to this document: Link to [AIDA Overview Documentation](https://developer.harness.io/docs/platform/harness-aida/aida-overview/#enable-aida).
-
-#### GitHub rate limit issues with the Git Experience in Harness, leading to pipeline failures. How can we address these issues and enhance our developer experience?
-
-GitHub rate limit issues can impact pipeline runs in Harness, causing multiple failures. To address this, we recommend enabling the optimized git fetch files flag for your account. This flag, called **CDS_OPTIMIZED_GIT_FETCH_FILES**, allows Harness to pull only the necessary files required for deployment based on the commit ID from GitHub. Enabling this flag can significantly improve performance by reducing the amount of data fetched from GitHub. You can find additional information on how to set up the optimized git fetch files flag in our documentation: [Connect to Code Repo](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo/#network-connection-times-out-when-fetching-large-repos).
-
-Furthermore, Consider leveraging Gitx bidirectional sync, a feature that creates a specialized cache for pipelines and templates. This cache functions as local storage, reducing the reliance on GitHub during pipeline runs. You can find detailed instructions on setting up Gitx bidirectional sync here: [Gitx Bidirectional Sync Setup](https://developer.harness.io/docs/platform/git-experience/gitexp-bidir-sync-setup/).
-
-Implementing these solutions should help mitigate GitHub rate limit issues and improve your overall developer experience with Harness.
+Instructions to enable AIDA are provided in the [AIDA Overview](https://developer.harness.io/docs/platform/harness-aida/aida-overview/#enable-aida).
 
 #### How can I generate a policy to block deployments when all tests are not successful?
 
-You can create a policy to block deployments when all tests are not successful. Here's an example policy that can be applied using the On Run event for a pipeline:
+Yes. Here's an example policy that denies pipeline execution if any test step fails and can be applied using the **On Run** event for a pipeline:
 
 ```
 package pipeline
@@ -7587,117 +7565,86 @@ deny[msg] {
 }
 ```
 
-This policy will deny pipeline execution if any test step fails. You can modify this policy to suit your specific requirements.
+#### How do I create a trigger to deploy the "last successfully deployed version"?
 
-#### I'm creating a pipeline trigger but I'm not sure how to specify it to deploy the "last successfully deployed version". How do you do this?
+To achieve this, use Harness expressions in a [new artifact trigger](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact), such as `<+lastPublished.tag>`.
 
-To achieve this, you can utilize Harness Variables tailored to your trigger's requirements. For your specific need of deploying the last successfully deployed version, you can use the variable <+lastPublished.tag>.
+For example, if you want the pipeline to deploy the artifact version that initiated the trigger, you can use the expression `<+trigger.artifact.build>`. However, if you want the pipeline to deploy the last successfully published artifact version, then use `<+lastPublished.tag>`.
 
-Here's how it works:
+#### How can I securely deploy .pfx certificate files in Harness?
 
-- If you want the pipeline to deploy the artifact version that initiated the trigger, you can use the expression <+trigger.artifact.build>.
-- However, if you prefer the pipeline to deploy the last successfully published artifact version, <+lastPublished.tag> is the variable to use.
+Storing a `.pfx` certificate file directly in Harness File Store or Secret Manager isn't feasible. However, you can convert the `.pfx` file into Base64 format:
 
-Here's the link for your reference: [Triggering Pipelines on a New Artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/).
+1. Convert the `.pfx` file into Base64 format.
+2. Save the Base64 string in either a Secret or File Store.
+3. Reference the stored Base64 string using the appropriate variables:
+   - If saved as a Secret, use `<+secrets.getValue("SCOPED_SECRET_ID")>`.
+   - If saved in File Store, use `<+fileStore.getAsString("SCOPED_FILEPATH")>`.
+4. After referencing, convert the Base64 string back into binary format using a command such as:
 
-#### How can I securely deploy .pfx certificate files in Harness Nextgen?
+   ```
+   <+secrets.getValue("testcert.txt")> | base64 -d > testcert.pfx
+   ```
 
-Storing a .pfx certificate file directly in Harness File Store or Secret Manager isn't feasible. However, you can convert the .pfx file into Base64 format and save the Base64 string in File Store or Secret Manager.
+For more information, go to [Use Config Files in Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files/).
 
-Here's how you can proceed:
+#### Can I change the Harness UI language to French?
 
-- Convert the .pfx file into Base64 format.
-- Save the Base64 string in either a Secret or File Store.
-- Reference the stored Base64 string using the appropriate variables:
-  - If saved in a Secret: `<+secrets.getValue("SCOPED_SECRET_ID")>`
-  - If saved in a File Store: `<+fileStore.getAsString("SCOPED_FILEPATH")>`
-- After referencing, convert the Base64 string back into binary format using a command like this: `<+secrets.getValue("testcert.txt")> | base64 -d > testcert.pfx`
+No, localization is currently not supported in the Harness Platform.
 
-For more detailed guidance, you can refer to our documentation on using config files in your deployments: [Using Config Files in Deployments](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files/).
+#### Does the Community Edition of Harness support RBAC?
 
-#### Is it possible to switch the Harness UI language to French?
+Yes.
 
-No, localization is currently not supported in the Harness Platform, including switching the UI language to French.
+#### Does the S3 Trigger support detecting file additions?
 
-#### Does the Community Edition of Harness support RBAC (Role-Based Access Control)?
+Yes.
 
-Yes, the Community Edition of Harness supports Role-Based Access Control (RBAC).
+#### What is the NextGen equivalent for the WinRM_ConnectionAttribute variable from Harness FirstGen?
 
-#### Does the S3 Trigger support detecting file additions in Harness Next Gen?
+In Harness NextGen, the WinRM connection is included in the infrastructure definition. You can utilize an expression or runtime input to specify which credential identifier it will use for the WinRM connection.
 
-Yes, the S3 trigger is supported in Harness Next Gen. It can detect when a new file is added to an S3 bucket and trigger a deployment pipeline accordingly.
+#### Can I compare environment services in Harness?
 
-#### Is there an equivalent solution for the ${WinRM__ConnectionAttribute} Variable in NextGen Pipelines?
+Currently, this isn't possible in the UI; however, you can use the Harness API to retrieve environment configurations and compare them externally.
 
-For next-gen deployments, the WinRM connection is included in the infrastructure definition. You can utilize an expression or runtime input to specify which credential identifier it will use for the WinRM connection.
+#### Can I get execution logs for the last 12 months?
 
-#### Is there a way to compare environment services in Harness NG?
+If your account has 12-month data retention enabled, then:
 
-Currently, there isn't a built-in feature for this in Harness NextGen. However, you can achieve it by using the Harness API to retrieve environment configurations and compare them externally. Another option is to utilize a third-party tool for comparing configurations.
+1. Go to the deployments page.
+2. Select **More Options** (&vellip;), and select **Start New Deployment**.
+3. Select **Export Logs**.
 
-#### How does the "Command" value in a Harness container step interact with CMD and ENTRYPOINT in a Dockerfile?
+If you encounter an error related to downloading too many logs, add a filter to the deployment to limit it to a smaller timeframe for each export.
 
-When using a Dockerfile with CMD or ENTRYPOINT defined, the value specified in the "Command" field of the Harness container step will be overridden by the default entry point of the Docker image. However, there are a few of options to work with CMD, ENTRYPOINT, and custom commands together:
-- **Execute Entry Point Manually:** You can manually execute the entry point in the "Command" section of the container step after running any other custom commands. This allows you to leverage the default behavior defined in the Dockerfile while also executing additional commands as needed.
-- **Use Containerized Step Groups:** Consider using containerized step groups, where you can add the Docker image as a background step. This setup will execute the default entry point of the image while allowing you to manage other steps concurrently. For more details, refer to the [containerized step groups documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
+#### I can't get a scripts output variable
 
-These approaches provide flexibility in how you manage commands and leverage the default behavior of Docker images with CMD and ENTRYPOINT configurations.
+This can happen if the script exits before the variable is exported. Make sure the script isn't exiting too soon, such as a force exit command.
 
-#### Request logs for last 12 months
+#### Can I delete a service that has active instances?
 
-If the account has retension enabled for 12 months then for the deployment logs, can you try below:
-Go to the deployments page.
-Click on three dots next to “Start New Deployment“
-Export Logs
-You may run into issues with downloading too many logs. So put a filter to see the deployment logs for 2 month window and then download them.
+Harness recommends cleaning up the running instances, otherwise you can use the force delete option:
 
-#### Unable to get script out variable
-
-This error occurs in scenarios where the script exits before we get a chance to export the variable. You should remove the exit scenario for success exit code and let the script exit on its own. 
-
-#### Yaml issue in piepline giving error
-
-Always make sure the tab spacing is correct in the yaml. 
-You can use the yaml validator to validate the same. 
-
-#### Harness delegate alert when down
-
-You can reach out to Harness Support to enable PL_CENTRAL_NOTIFICATIONS so that you can configure alerts/notifications when a delegate is unavailable/down. 
-
-#### Deleting Service which still has active instances.
-
-Harness recommends the running instances are cleaned up, or if you don't want the same and juts want the service to be deleted use the Force delete option. 
-Account Settings --> Account Resources --> Default Settings --> General, Enable the force delete and them you will be abel to delete the services.
+1. Go to **Account Settings**, select **Account Resources**.
+2. Select **Default settings**, select **General**, and then select **Enable force delete**.
 
 #### Timeout issues in Custom HTTP Step
 
-In case you are seeing timeout issues in HTTP step, you can directly run the curl command from the delegate to validate if its the issue in the network. 
+Try directly running the curl command from the delegate to determine if there is a network issue.
 
-#### Can we adjust the column width on pipeline UI?
+#### Can I adjust the column width in the execution history?
 
-Unfortunately currnetly you can adjust the width on the pipeline UI. It by default shows you the name, status, service, environment and execution start time. 
+No.
 
-#### Order of artifact versions in dropdown list 
+#### Can I change the order of the artifact versions in the dropdown list?
 
-It not possible to change the order , the below shows how the order for display works for all artifact types : 
+No.
 
-https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifact-limits-and-display-in-the-harness-ui
+#### Can I create global Slack notifications in Harness?
 
-#### Need to create centralised notification on slack for Harness NG
+No. You can set up notifications for each pipeline individually, but not globally.
 
-You can do the same but you will need to setup it for each pipeline. 
-Open a pipeline on the right you will see Notify. But doing it for all deployment in a centralized way is not possible currently.
+#### Can I display a custom error from a shell script instead of the default "Shell Script execution failed."?
 
-#### At NextGen,Even if I update the license key, can I continue to use the same key as before the update? Or will a new string of license keys be issued each time there is an update?
-
-So in earlier kots based setup the FF needs to be added as part of license key file but with helm bases installation thats not the case and just need to update Feature Flags using the override.yaml file for your base installation.
-
-For Feature Flags that affect ng-manager, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
-
-#### Is it possible to display a custom error from a shell script instead of the default "Shell Script execution failed. Please check execution logs ?
-
-The error like above in a shell script execution failure comes from the execution and that can't be customised.
-
-#### I have added 19 services within the pipeline and i wanted to run 3-4 services by selecting them from the drop-down list. How to achieve this?
-
-You an make it as runtime input and on execution you can select the services its more like a drop down list.
+No.
