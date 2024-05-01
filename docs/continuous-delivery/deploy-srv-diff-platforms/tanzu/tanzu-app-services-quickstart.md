@@ -54,29 +54,20 @@ You can connect Harness to a TAS space by adding a TAS connector. Perform the fo
    Expand the sections below to learn more about installing delegates.
 
 <details>
-<summary>Use the delegate installation wizard</summary>
+<summary>Installing Harness Delegate</summary>
 
-1. In your Harness project, select **Project Setup**.
-2. Select **Delegates**.
-3. Select **Install a Delegate**.
-4. Follow the delegate installation wizard.
+In your Harness project, select **Project Setup** > **Delegates** > **Install Delegate**, and then follow the delegate installation wizard. Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yLMCxs3onH8) to guide you through the process.
 
-Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yLMCxs3onH8) to guide you through the process.
+You can also install the default Harness Delegate. For more information, go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate). 
+
+To learn more about delegate, watch the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) video.
+
 
 </details>
-
-import DelegateInstall from '/docs/platform/get-started/tutorials/install-delegate.md';
-
-<details>
-<summary>Install a delegate using the terminal</summary>
-<DelegateInstall />
-</details>
-
-To learn more, watch the [Delegate overview](/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 9.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
-10. Select **Save and Continue**.
-11. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
+10.  Select **Save and Continue**.
+11.  Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
 
 ## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness Delegate
 
@@ -92,10 +83,6 @@ After the delegate pods are created, you must edit your Harness Delegate YAML to
    
    :::info
    Harness Delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian based distributions like Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
-   :::
-
-   :::info
-   Make sure to use your API token for pivnet login in the following script.
    :::
 
 import Tabs from '@theme/Tabs';   
@@ -117,7 +104,7 @@ import TabItem from '@theme/TabItem';
     echo y | yum install cf7-cli -y
 
     # autoscaler plugin
-    # download and install pivnet
+    # download and install pivnet. Use your API token for pivnet login.
     wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
     pivnet login --api-token=<replace with api token>
 
@@ -170,7 +157,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>    
 </Tabs>
    
-4. Apply the profile to the delegate profile and check the logs.
+1. Apply the profile to the delegate profile and check the logs.
 
    The output for `cf --version` is `cf version 7.2.0+be4a5ce2b.2020-12-10`.
 
@@ -776,58 +763,6 @@ Now the pipeline stage is complete and can be deployed.
 The deployment was successful.
 
 In your project's **Deployments**, you can see the deployment listed.
-
-### Blue Green Deployment Support with a configurable amount of Tanzu Applications to maintain
-
-:::note
-
-Currently, TAS Blue Green Deployment Support with a configurable amount of application versions to keep is behind the feature flag `CDS_PCF_SUPPORT_BG_WITH_2_APPS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-By default Harness keeps 3 Versions of Tanzu Apps for Blue Green Deployment. The Active, the inactive, and then the 3rd previous deployment as a backup. This behavior is now configurable with the **Existing Version to Keep** option.  If the user says 0, Harness will only maintain 2. The Active and Inactive applications. If the user wishes to maintain 3 they can configure 1 and Harness will maintain Active, Inactive, and third previous successfully deployed version of the application. 
-
-In the PCF BG App Setup step, we have removed the backend validation for existing versions to keep to greater than 0. This made sure we kept more than 2 versions of the applications available for rollback.
-
-**Configuration Cases**
-
-**Case 1:** If existing versions to keep is > 0
-Deployment remains the same
-
-**Case 2:** If existing versions to keep is 0
-In the BG App setup delegate task, we will skip the renaming of the old inactive to app__0 and directly do a cf push keeping the new app name as app__inactive. This will deploy the manifest to the same old application. Ensuring no new versions are maintained. 
-
-Check if this removes old routes from app__inactive, no we are detaching all old routes first from the inactive app and then run a cf push
-
-The **App Resize** & **Swap Routes Step** would remain the same when the existing versions to keep is 0. 
-
-In the** Swap Rollback Step**, we will ignore the value of the Upsize inactive service from step params
-
-In the **Swap Rollback Step** (if it executes), we aren’t deleting the new application created as we previously did, as we are not creating a new application Harness is modifying the old application only, and depending upon if the swap routes step was successful or no.
-
-If the **Swap routes step** was successful: We only need to switch the name and the routes for the ACTIVE and INACTIVE(new application) applications.
-
-If the **Swap routes step** wasn't successful: We don’t need to change anything. 
-
-
-```YAML
-- step:
-                  name: BG App Setup
-                  identifier: BGAppSetup
-                  type: BGAppSetup
-                  timeout: 10m
-                  spec:
-                    tasInstanceCountType: FromManifest
-                    existingVersionToKeep: 0 ## This is the new field added to specify how many versions we keep
-                    additionalRoutes: []
-                    tempRoutes: []
-```
-
-Here's a demo video:  
-
-<!-- Video:
-https://www.loom.com/share/5533c4832652403bac6ef06c5c926c2b?sid=11f56157-d01f-4915-ba88-5c269087615a-->
-<DocVideo src="https://www.loom.com/share/5533c4832652403bac6ef06c5c926c2b?sid=11f56157-d01f-4915-ba88-5c269087615a" />
 
 
 ## Next steps
