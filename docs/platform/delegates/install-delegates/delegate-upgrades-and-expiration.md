@@ -340,7 +340,7 @@ This policy applies to delegates with the `yy.mm.verno` image tag. It does not a
 :::
 
 :::info
-For Harness Self-Managed Enterprise Edition, support is limited to the delegate version released with the most recent version. When you upgrade your Harness Self-Managed Enterprise Edition, the supported delegate version is included.
+Harness Self-Managed Enterprise Edition support is limited to the delegate version released with the most recent version. When you upgrade Harness Self-Managed Enterprise Edition, the supported delegate version is included.
 
 :::
 
