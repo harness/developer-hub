@@ -7372,52 +7372,50 @@ When selecting a connector for a step or other configuration, switch to the **Ac
 
 To view connectors outside of a pipeline, you need to go to the account settings and then view the account connectors from there.
 
-#### Why two charts have been deployed in my cluster after running helm deployment two times?
-Helm chart deployment is release specific. If the release names are different between two deployments it sees the new deployment as a new release and does not consider the one which was already installed and go ahead and install a new chart under the new release. This is default helm behaviour.
+#### Why have two charts been deployed in my cluster after running a Helm deployment two times?
+Helm chart deployment is release-specific. If the release names are different between two deployments it sees the new deployment as a new release and does not consider the one which was already installed and goes ahead and installs a new chart under the new release. This is default Helm behavior.
 
-#### Why my steps do not run on same delegate host despite havng same selector?
-In next gen the delegte selector are at delegate group levels. There can be multiple replicas running inside the same name or multiple docker delegates running under the same name. So it is possible that same delegate name is selcted but executed on different host.
-To run them on the same host we need to use the delegate affinity. Below is a doc reference on how we can achieve this:
-https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+#### Why do my steps not run on the same delegate host despite having the same selector?
+In NextGen, the delegate selectors are at delegate group levels. There can be multiple replicas running inside the same name or multiple docker delegates running under the same name. So same delegate name might be selected but executed on a different host.
+To run them on the same host we need to use the delegate affinity. To learn how to achieve this, go to [Run All Pipeline Steps in One Pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
+)
 
-#### Can we use Kuberenetes connector to get the kubernetes context in a shell step?
-It is not possible currently to get the kuberenets context from kubernetes connector. If it is part of k8 deploy stage we have a option to use the kubeconfig created for the deploy stage but we can not directly use the kubernetes connector to get the kubeconfig and use it in the shell step.
+#### Can we use a Kubernetes connector to get the Kubernetes context in a shell step?
+It is not possible currently to get the Kubernetes context from Kubernetes connector. If it is part of K8s deploy stage we have a option to use the kubeconfig created for the deploy stage, but we can not directly use the Kubernetes connector to get the kubeconfig and use it in the shell step.
 
-#### How to use a variables defined in a json file available in git for exporting the variable in a pipeline?
+#### Am I able to export a variable to my pipeline from variables defined in a json file in git?
 There is no built in way to achieve this. However you can access the file inside the pipeline and use a json parser to read the values and export it as variables. Then we can use the exported variables in any stage in the pipeline.
 
 #### Is it possible to use the git connector for establising connectivity to git for fetching any file?
 We can not directly use the connector in shell step. If needed we can store the git credentials in a secret and use secret reference in git cli commands to connect to git endpoints.
 
 #### If the assigned delegate executing a task goes down does the task gets re-assigned to other available delegates?
-Once a delegate is assigned the task and if it gets disconnected for some reason after accepting the task, the task fails, we do not perform the re-assignment. If the step is idempotent in nature we can use retry startegy to re-execute the task.
+If a delegate fails or disconnects, then the assigned task will fail. We do not perform the re-assignment. If the step is idempotent then we can use a retry strategy to re-execute the task.
 
-#### Do we queue the task and wait for the delegates to come up if no delegates is available to take the task ?
-We will continue broadcasting the task to delegates as per the delegate selection however once the threshold expires we do not keep the task and fail it with the error that there was no available delegates for the task.
+#### If there are no delegates available to take a task, do we queue the task and wait for delegates to come up?
+We will continue broadcasting the task to delegates as per the delegate selection. However, once the threshold expires we do not keep the task and fail it with the error that there was no available delegates for the task.
 
-
-#### WHy my rendered manifest is truncated in the logs?
+#### Why is my rendered manifest truncated in the logs?
 We have a log limit for each log line. As the manifest entry is part of the a single log-line, if the manifest goes beyond the log line threshold it gets truncated.
 
-#### How to see the complete rendered manifest if it is big and get truncated by the log line limit?
-You can have access to the manifests.yaml or kubernetes-dry-run-manifests.yaml which has the complete rendered manifest using service hooks.
+You can access the full rendered manifest through manifests.yaml or kubernetes-dry-run-manifests.yaml using service hooks.
  
 Below is example of a service hook command, you can add it as a post hook to template or pre hook to wait for steady state:
 ```
 cp /opt/harness-delegate/repository/k8s/*/manifests-dry-run.yaml /opt/harness-delegate/test.yaml
 ```
 
-#### Can a project level service account be used to access account resource ?
-Project level service account can not be assigned a role for accessing account or org level resources.
+#### Can a project level service account be used to access account level resources?
+A project level service account can not be assigned a role for accessing account or org level resources.
 
-#### Why can not we specify infrastructure if "All environments" option is used for multiple environment deployment?
-When "All envrionments" option is selected we do not provide infra selection in the pipeline editor. The infra is available to be selected in the run form.
+#### If the "All environments" option is used for a multiple environment deployment, why can we not specify infrastructure?
+When the "All environments" option is selected we do not provide infrastructure selection in the pipeline editor. The infrastructure options are available in the run form.
 
-#### How to use all environments and selective infrastructure combination for multiple environment deployment?
-For this purpose filtered list should be used. You can specify "Filter on Entities" as Environment in first filter and select "Type" as all. Now for the infrastructure you can add another filter and provide the tag filter.
+#### How do I use all environments and only select infrastructure for multiple environment deployments?
+Use filtered lists for this purpose. You can specify "Filter on Entities" as Environment in the first filter and select "Type" as all. Now for the infrastructure you can add another filter and provide the tag filter.
 
-#### What is the value for provider url and audience for OIDC aws connetor?
-Below are the values for this:
+#### What values should I enter for `provider url` and `audience` for the OIDC AWS connector?
+Use the following values:
 ```
 Provider URL - https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>
 Audience: sts.amazonaws.com
@@ -7427,60 +7425,52 @@ Audience: sts.amazonaws.com
 The custom trigger api response containes a generic url for pipeline execution and not the exact pipeline execution. If we need the exact pipeline execution for any specific trigger we need to use the trigger activity page.
 
 
-#### Why the user with no permission to environment is able to edit service and infrastructure specific override?
-The user does not need environment related permission for service and infrastructure specific override but only service edit/create permission. Hence even when they do not have access to a specific environment they will still be able to edit this override.
+#### Why can a user with no permissions in an environment edit service and infrastructure specific overrides?
+The user does not need environment related permissions for service and infrastructure specific overrides but only service edit/create permission. Hence even when they do not have access to a specific environment they will still be able to edit this override.
 
 
-#### How to get a file from a different source and use it in terraform step during runtime?
-You can have a shell script step in which you fetch the file from your corresponding source and have it stored on the delegate at any specific path and refer that path in your terraform config. You just need to ensure that your plan and apply runs on the same delegate. Below is documentaiton for how you can achieve that:
+#### How do I get a file from a different source and use it in a terraform step during runtime?
+You can have a shell script step in which you fetch the file from your corresponding source and have it stored on the delegate at any specific path and refer that path in your terraform config. You just need to ensure that your plan and apply runs on the same delegate. Below is documentation for how you can achieve that:
 https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
 
-#### While copying the curl for list organisation api from apidocs sample the call is successful but retruning no values.
-While using curl outside the api documenation we need to remove all the parameters to which we are not passing any value and by default there will be a "string" place holder for reference to pass a string value to the same.
+#### Why is the curl command from the `list organization` apidocs sample returning no values when I use it?
+While using curl outside the api documentation we need to remove all the parameters to which we are not passing any value. By default there will be a "string" place holder for parameters.
 
 #### How can we automatically create a new service whenever a new service yaml is uploaded to my source repo?
 We can create a pipeline with api call for service creation and in that pipeline we can add a trigger to our source repo where service yaml is uploaded. Now whenever there will be a new service yaml the pipeline will get triggered and we can fetch this new service yaml using git cli in the shell step and use the yaml to make the api call for service creation.
 
 
-#### How to get fully rendered manifest for kubernetes and helm deployment?
-You can have access to the manifests.yaml or kubernetes-dry-run-manifests.yaml which has the complete rendered manifest using service hooks.
- 
-Below is example of a service hook command, you can add it as a post hook to template or pre hook to wait for steady state:
-
-```
- cp /opt/harness-delegate/repository/k8s/*/manifests-dry-run.yaml /opt/harness-delegate/test.yaml
-```
 
 #### If there are stages in parallel does the execution wait till all the stage in parallel finish execution?
-If there are multiple stages in the pipeline the execution will not proceed to next sequential stage untill all the execution of stages in that parallel series complete execution.
+If there are multiple stages in the pipeline the execution will not proceed to next sequential stage until all the execution of stages in that parallel series complete execution.
 
-#### Why my k8 deployment timesout in 10 minutes in wait for steady state while the step timeout is higher? 
-This timeout is from kubernetes event check for steady state. Kubernetes listens for the event after the deployment to confirm if the rollout has been success or not. 
+#### Why does my K8s deployment time out in 10 minutes while in `wait for steady state` when the step timeout is higher? 
+This timeout is from the Kubernetes event check for steady state. Kubernetes listens for the event after the deployment to confirm if the rollout has been success or not. 
 After its own threshold crosses it errors out with the below:
 ```
 deployment spelling-grammar-llm-service-deployment exceeded its progress deadline
 ```
  
-Hence it is a failure for us also and we are failing the pipeline as soon as kubernetes is throwing the above error. You need will need to check the application log for the pods on why they are not coming up within the specified threshold.
+Therefore, we also consider it a failure and fail the pipeline as soon as Kubernetes throws the above error. You will need to check the application log for the pods on why they are not coming up within the specified threshold.
 
-#### Multiple selection does not work for file path in primary manifest.
-The use of allowed values is to give option for selection list for the values however for multiple selection we only provide option where it is allowed and not where it is restricted , the manifest path for instance. You can also check in the run form, if you create a pipeline runtime variable with allowed values, we will allow you to select multiple value in the run form but the same selection is not allowed for manifest path as there can only be one primary manifest and the use case is not supported for manifest path selection.
+#### Why does multiple selection not work for a file path in the primary manifest.
+The use of allowed values allow us to give options for a selection list. However, for multiple selection, we only provide these options for allowed paths (i.e. the manifest path). You can check in the run form: if you create a pipeline runtime variable with allowed values, we will then allow you to select multiple values in te run form. However, the same selection is not allowed for the manifest path because there can only be one primary manifest.
 
-#### What happens to the api tokens post expiration?
-Any api using the expired token for authentication will start failing. From UI perspective we do clean up of the expired token and they will be automatically purged.
+#### What happens to api tokens post expiration?
+Any api using the expired token for authentication will start failing. From a UI perspective we clean the expired tokens. They will be automatically purged.
 
 
-#### How the communication between a delegate and connector happen?
-Whenever a task is created in harness all the information for executing the task is passed on to the delegate by the manager. So if any task needs to use a connector for establishing any connection , it will use the configuration from the connector and execute the corresponding task for connection. 
+#### How does the communication between a delegate and connector happen?
+Whenever a task is created in harness all the information for executing the task is passed on to the delegate by the manager. If any task needs to use a connector for establishing any connection, it will use the configuration from the connector and execute the corresponding task for connection. 
  
 So we can think of connectors as configuration holder while the actual connection attempt to the end points are performed as tasks by the delegate itself.
 
-#### How to handle chart dependencies if the dependent chart is in some different repo?
-If you are adding your dependency chart in some source repo you will have to clone it separately as part of the pre hook on delegate, also in Charts.yaml when you are mentioning the dependency you will need to specify the path of dependency chart where you downloaded.
+#### How do I handle chart dependencies if the dependent chart is in a different repo?
+If you are adding your dependency chart in a source repo you will have to clone it separately as part of the pre hook on delegate. Also, in Charts.yaml when you are mentioning the dependency you will need to specify the path of dependency chart where you downloaded.
 As the dependency update is a command run by using helm it will be able to resolve the file path you provide if you have already downloaded the dependency chart.
 
 #### Are the files downloaded as part of service hook cleared after execution?
-The file will not be cleared as they have been downloaded explicitly however you can add another post service hook to remove these files from delegate.
+The file will not be cleared as they have been downloaded explicitly, however you can add another post service hook to remove these files from delegate.
 
-#### Why the filter option for pipeline executions based on a branch is greyed out?
+#### Why is the filter option greyed out for pipeline executions based on a branch?
 The option is used for filtering remote pipelines. If there are no remote pipelines executions, this option will not be highlighted.
