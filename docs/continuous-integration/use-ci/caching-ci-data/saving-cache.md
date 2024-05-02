@@ -34,8 +34,22 @@ If you are using Harness Cloud build infrastructure, you can use [Cache Intellig
 You need:
 
 * A dedicated S3 bucket for your Harness CI cache operations.
+
+   :::warning
+
+   You must use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
+
+   :::
+
 * An [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) with read/write access to your S3 bucket.
    * Adjustments to delegate, build infrastructure, and other settings can be required for certain AWS permissions configurations, such as IRSA or ARN. For details, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference) and [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+   :::info
+
+   The **Save Cache to S3** step doesn't work on Windows platforms using AWS cross-account roles. [This is an AWS limitation.](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html) For a workaround, go to the [CI knowledge base](/kb/continuous-integration/articles/s3-cache-windows-cross-account).
+
+   :::
+
 * An optional [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html), if you want to automatically delete old cache data from your S3 bucket.
 
 Here is an example of an S3 cache bucket policy:
@@ -67,12 +81,6 @@ Here is an example of an S3 cache bucket policy:
     ]
 }
 ```
-
-:::warning
-
-You must use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
-
-:::
 
 ### Caching with non-private ACL
 
@@ -498,3 +506,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
+* [Save Cache to S3 doesn't work with Windows platforms with cross-account roles.](/kb/continuous-integration/articles/s3-cache-windows-cross-account)

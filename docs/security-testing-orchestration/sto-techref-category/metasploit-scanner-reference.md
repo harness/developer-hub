@@ -1,11 +1,11 @@
 ---
 title: Metasploit scanner reference for STO
-description: Scan application instances with Metasploit.
-sidebar_label: Metasploit scanner reference
+description: Scan application instances with Metasploit Framework.
+sidebar_label: Metasploit Framework scanner reference
 sidebar_position: 230
 ---
 
-You can scan your application instances and ingest results from Metasploit.
+You can scan your application instances and ingest results from Metasploit Framework.
 
 To set up a Metasploit scan:
 
