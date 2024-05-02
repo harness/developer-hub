@@ -45,6 +45,21 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 </details>
 
+## May 2024
+
+### Version 1.36.x
+
+#### Early access
+
+- We have introduced a Patch step for Kubernetes deployments to make changes to specific resources or workloads in a Kubernetes cluster without affecting other fields. This step helps Spinnaker users migrate to Harness. Spinnaker has a stage type called Kubernetes Patch. This feature provides parity with that. This feature is currently behind the feature flag, `CDS_K8S_PATCH_STEP_NG`. Contact [Harness support](mailto:support@harness.io) to enable it. This feature also requires Harness Delegate version 24.04.82804 or later. For more information, go to [Kubernetes Patch step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step/.) (CDS-86983)
+
+#### Fixed issues
+
+- Fixed an issue where the new Nav in the Harness NextGen UI was unable to hide the **Launch FirstGen** button. (CDS-95845, ZD-61778)
+- Fixed an issue where the expressions field did not render properly. Harness now supports multi-line text fields for expressions. (CDS-95843)
+- Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
+
+
 ## April 2024
 
 ### Version 1.35.4
