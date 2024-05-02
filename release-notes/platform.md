@@ -78,6 +78,28 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 
+## May 2024
+
+### Version 1.36.x<!--  May xx, 2024 -->
+
+#### Fixed issues
+
+- When adding users to a User Group, the search string persisted in the input field even after a user was selected. We have updated the User Group Form page to automatically clear the search query once a user is selected, enhancing usability. (PL-49256, ZD-62169)
+
+- Org and Project Admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
+
+- Delegates were incorrectly displayed as connected despite being configured with non-agent endpoints. Resolved this by ensuring the isNg flag is correctly propagated when delegates send heartbeats to the manager, ensuring accurate connection status. This item requires Harness Delegate version 24.04.82900. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate)(PL-48891, ZD-60974)
+
+- Intermittent Socket Timeout Exceptions were occurring in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. We have addressed the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. This item requires Harness Delegate version 24.04.82900. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate)(PL-47940, ZD-58006)
+
+- Local login was failing for users assigned admin permissions via a User Group. The method to verify if a user is an account admin only considered direct user assignments and did not account for User Group roles. We have revised the validation process to include both User and User Group assignments when checking for admin status. Moving forward, to be recognized as an admin, users must have specific Role assignments outlined below; merely assigning the _account_admin role will no longer suffice for admin recognition.
+
+   Role : _account_admin
+
+   Resource-group : _all_resources_including_child_scopes, _all_account_level_resources.
+
+
+
 ## April 2024
 
 ### Version 1.34.2<!--  April 23, 2024 -->
