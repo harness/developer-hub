@@ -17,7 +17,6 @@ You can store your policies in one of the following Git providers:
 - Bitbucket Cloud
 - Bitbucket Server
 - Azure Repos
-- GitLab
 
 ## Prerequisites
 
