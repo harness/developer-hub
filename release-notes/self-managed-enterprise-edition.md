@@ -272,6 +272,47 @@ gsutil -m cp \
    - For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type). 
    - This is an Early Access feature behind the feature flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable it.(STO-7127)
 
+## May 1, 2024, patch version 0.15.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.15.2](https://github.com/harness/helm-charts/releases/tag/harness-0.15.2) |
+| Air Gap Bundle | [0.15.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.15.2) |
+| NG Manager | 1.27.12 |
+| CI Manager | 1.13.2 |
+| Pipeline Service | 1.64.2 |
+| Platform Service | 1.14.1 |
+| Access Control Service | 1.35.5 |
+| Delegate | 24.02.82402 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.86.2 |
+| Test Intelligence Service | 1.12.1 |
+| NG UI | 1.10.8 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.15.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.15.2/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+- Added support for Kubernetes true-up fees using amortized costs with AWS. (CCM-17154)
+
 ## April 10, 2024, patch version 0.15.1
 
 This release includes the following Harness module and component versions.
