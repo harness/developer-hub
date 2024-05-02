@@ -489,7 +489,7 @@ When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab inc
 
 :::note
 
-The Issue Comment event trigger for Github does not support the `<+trigger.branch>` expression.
+Currently, the `<+trigger.branch>` expression for Issue Comment event triggers is behind the feature flag `CDS_USE_EXECUTION_TRIGGER_PAYLOAD_TO_EVALUATE_BRANCH_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
