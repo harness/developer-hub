@@ -366,9 +366,9 @@ A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There
 
 #### Can you tell me which specific authentication flows are supported for OIDC authentication to Kubernetes? Or are you saying that Harness only supports the Okta identity provider and not any OIDC provider? Also, for authenticating to Kubernetes, I'm assuming based on the UI prompt for client Id and client secret that it should be a Client Credential authentication flow, and that makes sense for system to system authentication.
 
-Currently Harness supports only Password authentication flow ([OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/)). 
+Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
 
-`client_id` and `client_secret` are required for password authentication flow, [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) that we’re currently supporting. 
+We are using [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) for password authentication flow. `client_id` and `client_secret` are required for this password authentication flow.
 
 ### Terraform
 
