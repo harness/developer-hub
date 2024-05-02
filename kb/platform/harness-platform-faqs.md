@@ -792,9 +792,25 @@ Harness Delegate is a Red Hat Enterprise Linux (RHEL)-based image. A Windows-bas
 
 The `DELEGATE_RESOURCE_THRESHOLD` environment variable is deprecated. Use `DELEGATE_MEMORY_THRESHOLD` and `DELEGATE_CPU_THRESHOLD` instead. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
+### Why does the Helm CLI install fail for the minimal delegate?
+
+Helm now recommends using the `get_helm.sh` file to download the Helm binaries, which requires openssl. The minimal delegate doesn't include openssl, so it must be installed before installing Helm.
+
+### Can we install multiple versions of Helm on the delegate?
+
+Yes, we can have multiple versions of Helm on the delegate, but only the Helm CLI to which the environment points at delegate startup can be used in the default step.
+
+### Are there any differences between minimal and non-minimal delegate images besides third-party binaries?
+
+No, from a Harness delegate code perspective, the only difference between minimal and non-minimal delegate images is the bundled third-party binaries.
+
 ### Does the default Harness Delegate include jq?
 
 Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
+
+### Why isn't my delegate starting with a "Failed to build trust key store" message?
+
+The default Java truststore uses a default password. If this password is changed, it must be provided to the JVM using JVM args. Otherwise, the JVM will attempt to read the truststore with the default password and fail with the message `Failed to build trust key store`.
 
 ### Why am I getting a retry failed message in my delegate logs?
 
@@ -807,6 +823,10 @@ The logs are standard and won't impact functionality. Harness conducts capabilit
 ### Does the Docker delegate also show expiry message in UI if the image is older than the expiry threshold?
 
 Yes, Docker delegates also show the expiry status in the UI if the image is beyond the expiry threshold.
+
+### How do I check the logs for commands specified in the INIT_SCRIPT?
+
+During pod initialization, the commands in the `INIT_SCRIPT` are executed. Check the Kubernetes pod log to see all command execution logs.
 
 ### Is it possible to configure the delegate to continue running tasks for an additional 1-2 minutes after revoking the delegate?
 
@@ -828,9 +848,13 @@ To resolve the issue:
 
 Yes, but Harness doesn't recommend using delegate images that are not current. However, if you require an earlier image version, check the [repository on Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
 
-### Can we configure the delegate upgrade schedule?
+### Is the delegate upgrade schedule configurable?
 
 Yes, you can configure the delegate upgrade schedule. For more information, go to [Configure the delegate upgrade schedule](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#configure-the-delegate-upgrade-schedule).
+
+### Does the execution of INIT_SCRIPT commands get logged in delegate logs?
+
+No, `INIT_SCRIPT` commands are run before the delegate process comes up and are not part of the delegate log.
 
 ### Can delegates have HA if they're in different locations?
 
@@ -3010,7 +3034,7 @@ Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
 
 Currently, feature flags are only enabled at the account-level.
 
-### How can I resolve serialization errors when integrating NextGen Audits for ModuleLicense collection with multiple child classes in YamlDTOs?
+### How can I resolve serialization errors when integrating NextGen Audits for ModuleLicense collection with multiple child classes in YAML DTOs?
 
 The serialization issue in NG Audits for ModuleLicense collection arises when using entity objects instead of DTOs in the YAML for Audit Service. The problem is that entity objects lack JsonSubTypes, causing the Jackson ObjectMapper to struggle with determining the appropriate subType for conversion. The resolution is to utilize DTOs, which inherently possess the JsonSubTypes property, ensuring smooth serialization and deserialization processes in the Audit Service.
 
@@ -3130,7 +3154,28 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
-### What does Harness recommend for template versioning and consumption?
 
-You can make changes to the same version of the template, as long as the template's inputs remain unaltered. You must create a new version of the template for any changes to inputs.
+
+
+
+### Will the delegate start if there is a failure in the commands provided in INIT_SCRIPT?
+
+No, the delegate will not start if there is any failure while executing the commands in the `INIT_SCRIPT`.
+
+### How can I pass a custom logback XML for Docker delegates?
+
+Mount the custom logback XML file in the Docker container and use the `JAVA_OPTS` variable to provide the path.
+
+```bash
+docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloads/utility/temp/custom-logback.xml,target=/opt/harness-delegate/custom-logback.xml \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=xxx \
+  -e DELEGATE_TOKEN=xxxx \
+  -e JAVA_OPTS="-Dlogback.configurationFile=/opt/harness-delegate/custom-logback.xml" \
+  -e DELEGATE_TAGS="" \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
+```
 
