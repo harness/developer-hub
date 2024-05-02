@@ -39,17 +39,17 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2024
 
-### Harness version 1.36.x, Harness Delegate version 24.04.82900 <!--  May xx, 2024 -->
+### Version 24.04.82900 <!--  May xx, 2024 -->
 
 #### Fixed issues
 
-Delegates were incorrectly displayed as connected despite being configured with non-agent endpoints. Resolved this by ensuring the isNg flag is correctly propagated when delegates send heartbeats to the manager, ensuring accurate connection status. (PL-48891, ZD-60974)
+Delegates were incorrectly displayed as connected despite being configured with non-agent endpoints. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to the manager, ensuring accurate connection status. (PL-48891, ZD-60974)
 
-Intermittent Socket Timeout Exceptions were occurring in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. We have addressed the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. (PL-47940, ZD-58006)
+Intermittent Socket Timeout Exceptions occurred in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. Resolved the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. (PL-47940, ZD-58006)
 
-- Local login was failing for users assigned admin permissions via a User Group. The method to verify if a user is an account admin only considered direct user assignments and did not account for User Group roles. We have revised the validation process to include both User and User Group assignments when checking for admin status. Moving forward, to be recognized as an admin, users must have specific Role assignments outlined below; merely assigning the _account_admin role will no longer suffice for admin recognition. (PL-47632)
-   Role : _account_admin
-   Resource-group : _all_resources_including_child_scopes, _all_account_level_resources.
+- Local login was failing for users assigned admin permissions via a user group. The method to verify if a user is an account admin only considered direct user assignments and did not account for user group roles. Revised the validation process to include both user and user group assignments when checking for admin status. Now, to be recognized as an admin, users must have the specific role assignments outlined below; assigning the `_account_admin` role alone is no longer sufficient for admin rights. (PL-47632)
+   - Role: `_account_admin`
+   - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
 
 ## April 2024
 
