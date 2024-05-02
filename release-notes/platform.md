@@ -77,7 +77,6 @@ The following deprecated API endpoints are longer supported:
 - POST api/resourcegroup/filter
 - GET api/resourcegroup
 
-
 ## May 2024
 
 ### Version 1.36.x<!--  May xx, 2024 -->
@@ -98,7 +97,7 @@ The following deprecated API endpoints are longer supported:
 
    Resource-group : _all_resources_including_child_scopes, _all_account_level_resources.
 
-
+   This item requires Harness Delegate version 24.04.82900. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate)
 
 ## April 2024
 
