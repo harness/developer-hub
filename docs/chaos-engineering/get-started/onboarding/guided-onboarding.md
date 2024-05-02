@@ -47,15 +47,7 @@ This topic describes the following operations:
 
     ![](./static/guided/run-checks-4.png)
 
-### Customize Discovery Agent
-
-6. HCE creates the discovery agent that will automatically discover services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc.
-
-:::tip
-If you want to customize the discovery agent, navigate to project settings and create a discovery agent. Enter a **Discovery Agent Name** and **Tags** (optional).
-
-    ![](./static/guided/create-agent-5.png)
-:::
+6. HCE creates the discovery agent that will automatically discover services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To use a custom discovery agent, refer to [customize discovery agent](#customize-discovery-agent).
 
 7. Once you complete the steps mentioned earlier, HCE looks for services in your cluster (which may take a while).
 
@@ -135,21 +127,50 @@ If you want to customize the discovery agent, navigate to project settings and c
 
 ### View resilience score
 
-Once the experiments you selected complete their execution, you can see the resilience score of these experiments.
+- Once the experiments you selected complete their execution, you can see the resilience score of these experiments.
 
-![](./static/guided/res-score-22.png)
+    ![](./static/guided/res-score-22.png)
 
-You can check the resilience summary once you fulfill the checklist requirements.
+- You can check the resilience summary once you fulfill the checklist requirements.
 
- ![](./static/guided/view-progress-23.png)
+    ![](./static/guided/view-progress-23.png)
 
-You can click **View** to see the progress of different clusters executing various chaos experiments.
+- You can click **View** to see the progress of different clusters executing various chaos experiments.
 
- ![](./static/guided/view-cluster-res-24.png)
+    ![](./static/guided/view-cluster-res-24.png)
 
+## Customize Discovery Agent
+
+1. If you want to customize the discovery agent, navigate to **Chaos** and select **Discovery**. Click **New Discovery Agent**.
+
+    ![](./static/guided/discovery.png)
+
+2. Select an **environment**, an **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces and period of detecting the services. Select **Create New Discovery Agent**.
+
+    ![](./static/guided/add-details-discovery.png)
+
+### Edit Discovery Agent
+
+1. To edit a discovery agent, navigate to the agent and click **Edit**. Make the necessary changes to the required fields.
+
+    ![](./static/guided/edit-dis-agent-1.png)
+
+2. Select **Update Discovery Agent**.
+
+    ![](./static/guided/edit-details-discovery.png)
+
+### Delete Discovery Agent
+
+1. To delete a discovery agent, navigate to the agent to delete, and select **Delete**.
+
+    ![](./static/guided/delete-1.png)
+
+2. Select **Delete**.
+
+    ![](./static/guided/confirm-2.png)
 ## Next steps
 
-Don't forget to check other walkthroughs! Some of them are right here.
+Don't forget to check other walkthroughs! Some of them are listed below.
 
 * [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
 * [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox.md)
