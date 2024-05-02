@@ -349,7 +349,7 @@ For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/r
 
 #### OpenID Connect
 
-These settings come from your OIDC provider authorization server or the provider app you use to log in.
+These settings come from your OIDC provider authorization server or the provider app you use to log in. This option requires Harness Delegate version 24.03.82603 or later.
 
 The following settings are from the authorization server settings:
 

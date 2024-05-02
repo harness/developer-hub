@@ -32,10 +32,10 @@ README.md @ravilach
 /docs/continuous-delivery/ @krishi0408 @roshnisarangadharan @SushrutHarness
 
 # Continuous Integration Docs
-/docs/continuous-integration/ @aimurphy
+/docs/continuous-integration/ @nofarblue @rustd
 
 # CODE Docs
-/docs/code-repository/ @aimurphy
+/docs/code-repository/ @pwolf-harness @hitesharinga
 
 # STO Docs
 /docs/security-testing-orchestration/ @douglas-j-bothwell
@@ -129,10 +129,10 @@ README.md @ravilach
 /release-notes/continuous-error-tracking.md @M-Tsur
 
 # CI Release Notes
-/release-notes/continuous-integration.md @aimurphy
+/release-notes/continuous-integration.md @nofarblue @rustd
 
 # CODE Release Notes
-/release-notes/code-repository.md @aimurphy
+/release-notes/code-repository.md @pwolf-harness @hitesharinga
 
 # Delegate Release Notes
 /release-notes/delegate.md @brian-f-harness @harishkammanahalli
@@ -167,7 +167,7 @@ README.md @ravilach
 /kb/ @deepanshuHarness
 
 # CI KB
-/kb/continuous-integration/ @aimurphy @deepanshuHarness
+/kb/continuous-integration/ @nofarblue @rustd @deepanshuHarness
 
 # CD KB
 /kb/continuous-delivery/ @krishi0408 @SushrutHarness @roshnisarangadharan
@@ -205,10 +205,10 @@ src/components/Roadmap/data/cdData.ts @krishi0408 @SushrutHarness @roshnisaranga
 src/components/Roadmap/data/cdData.ts @krishi0408 @neelanjan00 @SmritiSatya
 
 #CI Roadmap
-src/components/Roadmap/data/ciData.ts @aimurphy
+src/components/Roadmap/data/ciData.ts @nofarblue @rustd
 
 #Code Roadmap
-src/components/Roadmap/data/codeData.ts @aimurphy
+src/components/Roadmap/data/codeData.ts @pwolf-harness @hitesharinga
 
 #FF Roadmap
 src/components/Roadmap/data/ffData.ts @HarnessTheChaos @jenniferopal

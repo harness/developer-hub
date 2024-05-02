@@ -39,7 +39,11 @@ module "transit-gateway" {
   source = "git::https://gitlab.com/rubrik-octo/lab/source-modules.git//site-deploy/transit-gateway"
 }
 ```
-Here, you see a single Git repository named 'source-modules` that has multiple modules inside various folders. By using '//' at the end of the source location, you can instruct Terraform to checkout a specific folder. 
+Here, you see a single Git repository named 'source-modules` that has multiple modules inside various folders. By using '//' at the end of the source location, you can instruct Terraform to checkout a specific folder.
+
+#### Terraform stage fails with "failed to find plan".
+
+The Terraform stage requires both Plan and Apply steps in the same stage to properly trigger.
 
 #### Do we need to install jq library in delegate machine or does Harness provide jq by default?
 
@@ -2507,11 +2511,11 @@ No, harness only executes the PowerShell script on the default PowerShell termin
 If the command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
 
 #### Can we get details what branch did trigger the pipeline and who did it; the time the pipeline failed or terminated,  while using Microsoft Teams Notification 
-These details are not available by default as only(status, time, pipeline name url etc0 is only sent and if you need these details might ned to use custom shell script
+These details are not available by default as only (status, time, pipeline name url etc) is only sent and if you need these details might ned to use custom shell script
 
 #### How to create role binding (to a usergroup) through the api
 You can use below api by updating the details
-‘’’ https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string' \ ‘’’
+`https://app.harness.io/authz/api/roleassignments/multi?accountIdentifier=string&orgIdentifier=string&projectIdentifier=string`
 
 #### If there is temporary failure/communication issue for sometime while connecting to service how to make sure step is tried multiple times instead of getting failed with tried once
 You can configure failure strategy and use retry option for multiple run
@@ -2538,7 +2542,6 @@ curl -i -X PUT \
   -H 'Content-Type: application/json' \
   -H 'x-api-key: REDACTED' \
   -d '["gmail.com","harness.io"]'
-
 ```
 
 #### Can the domain whitelisting api be used for ip allowlist as well?
@@ -2553,12 +2556,12 @@ v1/ip-allowlist
 
 The variable access works only in the context of current executing pipelines. We do not have a built-in way to access some other pipeline execution variables from another pipeline.
 
+#### How can we utilise output variables from one pipeline stage or execution in another execution?
 
-#### How can we utilise output variables from one pipeline execution in another execution?
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
 
-We have a api which can be used in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+Harness also has an endpoint you can use in a shell script step or a http step to make an api call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
 This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
-
 
 #### How to know if a connector is failing ?
 
@@ -2601,6 +2604,7 @@ Within the same step group we can shorten the expression for accessing step vari
 #### Is there a short notation for accessing step output variable within same stage and outside of step group?
 
 We can also shorten the expression for accessing output variables of a step inside the step group to be accessed by another step outside the step group. Below is the expression example:
+
 ```
 <+execution.steps.somestepgroup.steps.ShellScript_1.output.outputVariables.myvar>
 ```
@@ -5987,7 +5991,12 @@ API (https://developer.harness.io/release-notes/self-managed-enterprise-edition)
 Yes, you can test the deletion of resources removed/renamed in the Helm chart by using the --prune flag with the Helm upgrade command. This flag will remove any resources that are no longer defined in the chart. You can also use the --dry-run flag to simulate the upgrade and see what changes will be made without actually applying them.
 
 #### Can I move a connector from one project to another?
-There is no option as such which can move one connector from one project to another.
+
+No. You must recreate the connector in the other project.
+
+#### How can I move a project from one organization to another?
+
+No. You must recreate the project under the other org.
 
 #### What does error missing permission core_secret_access?
 This error message indicates that the user or role does not have the required permission to access secrets in Harness. To resolve this issue, you need to grant the user or role the "core_secret_access" permission. This permission allows users to access secrets in Harness. You can grant this permission by going to the User Group or Role that the user belongs to and adding the "core_secret_access" permission if you are still facing issues.
@@ -6699,7 +6708,27 @@ This error occurs because there's a misconfiguration with the pipeline. Harness 
 
 #### What is Harness' pipeline execution history retention policy?
 
-Harness will maintain pipeline execution data for 6 months. You can refer to our [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/#:~:text=Pipeline%20execution%20data%20is%20stored,plan%20you%20are%20subscribed%20to) documentation for more information.
+[Harness retains pipeline execution data for 6 months.](https://developer.harness.io/docs/platform/references/data-retention)
+
+#### Can I create dynamically create parallel steps based on a condition?
+
+You can use Harness expressions in looping strategies to achieve this.
+
+#### Can I move a template stored in a Git repo?
+
+Changing the path in the Harness UI for an entity stored in Git doesn't commit the entity on the new path. It only changes the link to the filepath for that entity.
+
+There is no validation when changing the path in Harness. If the entity doesn't exist at the given path, it fails to be pulled when called by Harness.
+
+You'll need to change the path in Harness as well as manually move the entity in your Git repo.
+
+#### When creating a pipeline, I got an error that the pipeline already exists
+
+This 500 error code can occur when a pipeline URL points to a pipeline identifier with the wrong case. Make sure the casing is correct in the provision identifier.
+
+#### What does this error message mean: "Invalid request: Trying to run more than 256 concurrent stages/steps."
+
+This error message occurs when your pipeline attempts to run more than 256 steps at once. This can be caused by a looping strategy creating parallel or matrixed steps.
 
 #### Are we still supporting the container step in Continuous Delivery?
 
@@ -6946,6 +6975,82 @@ So the statistic will have a red arrow pointing up marked as a `300%` increment 
 
 This value accurately measures the change in the failure rate, from 5% to 15%. 
 
+#### How do I reference a parent Step Group's variable without using it's ID in the Harness Expression?
+
+You can refer to a parent stepGroup's variable by using the `.getParentStepGroup` expression. For example, if you have a variable `var1` in the parent step group, you can reference it like this: `<+stepGroup.getParentStepGroup.variables.var1>`
+
+#### Why am I getting the error "Host information is missing in Command Step"?
+
+```
+Invalid argument(s): Host information is missing in Command Step. Please make sure the looping strategy (repeat) is provided.
+```
+
+If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, set the `Repeat` looping strategy for the Command step. For more information on the Command step and the supported looping strategies, go to [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm) documentation.
+
+#### How does the Encrypt json output setting work in the Terraform Apply stage?
+
+This setting will temporarily create a secret that stores the Terraform output JSON. The secret will be created using the Harness Secret Manager provider and will be available for use during the pipeline execution. The secret is then deleted at the end of the execution. For more information, go to [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs).
+
+#### How do I retrieve encrypted Terraform Output data from a Terraform Apply stage?
+
+To retrieve encrypted Terraform Output data, find the `TF_JSON_OUTPUT_ENCRYPTED` output variable and reference it using a Harness expression. For example, `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`. The value will be encrypted in the Harness UI but, the values will be available in downstream steps and stages. For more information, go to [Encrypt the Terraform Apply JSON outputs](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs).
+
+#### How do I setup TLS in GitOps Agent?
+
+To setup TLS in the GitOps Agent, mount the certificates onto the Agent deployment:
+
+```
+containers:
+  volumeMounts:
+  - mountPath: /path/to/cert
+    name: your-tls-cert-volume
+volumes:
+- name: your-tls-cert-volume
+  configMap:
+    name: your-tls-cert-configMap
+    defaultMode: 420
+```
+
+Next, set the `SSL_CERT_FILE` environment variable in the Agent deployment manifest:
+
+```
+containers:
+- command:
+    - /app/agent
+  name: gitops-agent
+  image: harness/gitops-agent:v0.72.0
+  imagePullPolicy: Always
+  env:
+    - SSL_CERT_FILE: "/path/to/cert/crt.pem"
+```
+
+This environment variable will tell the Agent to look at the file specified in the given path. In this example, the Agent will look at `/path/to/cert/cert/crt.pem` and use it for TLS.
+
+#### Why am I getting an invalid request when trying to get the deployment status of a pipeline?
+
+```
+Invalid request: Trigger event history doesn't exist for event with eventId 123456789012345678012346 Exception occurred: Trigger event history doesn't exist for event with eventId 123456789012345678012346
+```
+
+If you are receiving the above error even after you've confirmed that the pipeline was triggered, it's possible that you triggered the API to lookup the status of the deployment faster than when the deployment actually happened. To fix this, add a `sleep` to your script or wait a few seconds before using the API to ensure ample time for the pipeline's status to register, and be queried.
+
+#### How to find the workspace name used in a pipeline execution and print out the value at run time?
+
+To get the workspace name used in a pipeline execution, you can use the expression, `<+pipeline.stages.$STAGE_ID.spec.execution.steps.$STEP_ID.spec.workspace>`.
+
+#### When a Shell Script step is run on a delegate in a Custom stage, what is the environment that it is run within? As in, what is the current working directory it uses?
+
+The default directory that the Shell Script steps run in is `/tmp` and is removed after the step finishes its execution.
+
+#### Why am I getting a Forbidden error in the Harness console?
+
+```
+INFO 3/15/2024, 1:56:45 PM Starting job to create pod harness-pod-1234567 on harness namespace
+ERROR 3/15/2024, 1:56:45 PM failed to watch pod event: Forbidden
+```
+
+This error occurs if the delegate doesn't have `get` permissions for pod events. To fix this, review the Role/ClusterRole bound to the delegate's Service Account and ensure that the proper permissions are specified. More information about our recommendation for Delegate Role Based Access Control in Kubernetes can be found in [Deploy using a custom role](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/#deploy-using-a-custom-role).
+
 #### Can one effectively enforce the reconciliation of changes in the template with consuming pipelines in a forceful manner?
 
 Yes, one can utilize Open Policy Agent (OPA) to enforce the use of a stable template, ensuring consistency across consuming pipelines.
@@ -6985,8 +7090,9 @@ Go to [Manage Harness environments and infrastructures from Git](https://develop
 
 #### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?
 
-Yes, we currently support OIDC integration for [Google Cloud Platform (GCP)(https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#use-openid-connect-oidc) and [Amazon Web Services (AWS)](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
-Within the next three months, we aim to further enhance this support, facilitating authentication, short-lived token acquisition based on Harness context, and various operational tasks like deployment, builds, or secret retrieval within the respective cloud provider environments.
+Yes, we currently support OIDC integration for [Google Cloud Platform (GCP)](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#use-openid-connect-oidc) and [Amazon Web Services (AWS)](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials).
+
+Additional support is coming soon, including facilitating authentication, short-lived token acquisition based on Harness context, and various operational tasks like deployment, builds, or secret retrieval within the respective cloud provider environments.
 
 #### Does Harness enforce any policy that denies the fetching of the latest tag of an image, as indicated by the error message : `admission webhook: <webhook-name> denied the request. Validation error: An image tag is required. rule require-image-tag failed at path`?
 
@@ -7012,12 +7118,30 @@ Yes, users can now store the terraform plan on the delegate and leverage it in t
 This feature is behind the feature flag, `CDS_STORE_TERRAFORM_PLAN_FILE_LOCALLY_ON_DELEGATE`. Harness Delegate version 827xx or later is required for this feature.
 Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/#store-terraform-plan-on-harness-delegate) and [Demo Video](https://www.loom.com/share/bc5a4f382d584b228b4ea2c82eb94a7c?sid=b9fac5c3-c11b-4f50-acff-f4fd2b3cc83a) for more information.
 
+####  We have added tags in the pipeline but, during execution, the tags are not present.
+
+The issue can be with Terraform. When you create a pipeline with Terraform, you must define tags in the template as well as the Terraform resource to get it applied properly.
+
+#### When running Terraform, pipeline is pulling a previous state from another pipeline, what could be the issue?
+
+If you are running the pipeline on the same delegate, make sure that Provisioner Identifier is different for both plans.
+
+#### We have an updated manifest file for deployment, but delegate seems to be fetching old manifest. How can we update this?
+
+You can clear the local cached repo.
+
+Local repository is stored at `/opt/harness-delegate/repository/gitFileDownloads/Nar6SP83SJudAjNQAuPJWg/<connector-id>/<repo-name>/<sha1-hash-of-repo-url>`.
+
+#### We are facing missing Terraform backend configuration issue in the Terraform Plan step logs though we have configured backend.
+
+You have to declare the backend block in the Terraform configuration. You might have provided the config in Harness, but the `backend` block might not exist in the Terraform configuration.
+
 #### What options are available for freezing deployments in Harness?
-                     
+
 In Harness, you can freeze deployments at different levels such as project, environment, or organization.
 
 #### What portion of the YAML file configuration specifies that a delegate is visible only at a specific project?
-                     
+
 When configuring delegates in YAML files, the specific visibility scope (whether it's at the account, organization, or project level) is not explicitly defined within the delegate.yaml file. Instead, the visibility is determined by the scope of the delegate token used during registration.
 
 For example, if the token used during registration is scoped at the project level, the delegate will be registered within the project. This principle applies to organization and account levels as well. Additionally, delegates can be added at the project, org, and account levels, with their availability depending on the implicit hierarchy within Harness (account > org > project).
@@ -7025,17 +7149,17 @@ For example, if the token used during registration is scoped at the project leve
 For more details, go to [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-scope).
 
 #### How can I specify freeze windows for specific test environments within projects in Harness?
-  
+
 To specify freeze windows for specific test environments within projects, you can utilize the Freeze Window feature at the project level in Harness. This allows you to halt specific environments as needed.
 
 #### Is there a programmatic way to determine which user created a feature flag and/or target group in Harness?
-  
-Yes, there is. You can utilize the Harness Audit API to retrieve JSON responses for specific resources like feature flags and target groups. This API provides audit events for all resources, allowing you to filter and find the create event for a particular feature flag or target group. Additionally, when retrieving all information about a feature flag through the API, you'll find the "owner" data point, which directly provides information about the user who created the feature flag. For more details, go to [Audit API documentation](https://apidocs.harness.io/tag/Audit). 
+
+Yes, there is. You can utilize the Harness Audit API to retrieve JSON responses for specific resources like feature flags and target groups. This API provides audit events for all resources, allowing you to filter and find the create event for a particular feature flag or target group. Additionally, when retrieving all information about a feature flag through the API, you'll find the "owner" data point, which directly provides information about the user who created the feature flag. For more details, go to [Audit API documentation](https://apidocs.harness.io/tag/Audit).
 
 However, it's worth noting that while this information is directly available for feature flags, it may not be as straightforward for target groups. Features, Targets, and Target Groups are separate resources in Harness. If you want to filter features and target groups created by a specific user or group of users, you may need to adjust your filter accordingly in the Audit API call.
 
 #### What permission is required to archive a feature flag in Harness, and how can we customize permissions to meet our needs?
-  
+
 To archive a feature flag in Harness, users typically need the "Delete" permission. However, if you have specific requirements, such as allowing developers to create, edit, and archive feature flags without granting them the ability to delete flags, you can customize permissions using Harness RBAC (Role-Based Access Control).
 
 For instance, you can create custom roles within Harness that grant users the ability to create and edit feature flags, but not delete them. Then, for engineers who require delete permissions, you can create another custom role solely for granting delete access. By assigning these custom roles accordingly to developers based on their needs, you can ensure that permissions align with your organizational requirements.
@@ -7043,13 +7167,15 @@ For instance, you can create custom roles within Harness that grant users the ab
 For guidance on deleting an archived flag and leveraging RBAC for customized permissions, go to [Delete an Archived Flag](https://developer.harness.io/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag/#delete-an-archived-flag).
 
 #### How can I handle uppercase environment identifiers in Harness variables and deploy pipelines?
-  
+
 Harness variables provide flexibility in managing environment identifiers, but dealing with uppercase identifiers like UAT and DR can pose challenges. One common requirement is converting these identifiers to lowercase for consistency. Here's how you can address this:
+
 - Using [Ternary Operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/): While if-else statements aren't directly supported in variables, you can leverage the ternary operator to achieve conditional logic.
+
 - Updating Environment Setup: Another approach is to update your environment setup to ensure identifiers like UAT and DR are stored in lowercase. By maintaining consistency in the environment setup, you can avoid issues with case sensitivity in your deployment pipelines.
 
 #### How can I switch the Git repository for templates and pipelines in Harness when moving to a new provider?
-  
+
 When preparing to migrate your templates and resources to a new Git provider, updating the repository details in Harness is straightforward. Here's how you can do it:
 - Edit YAML Files: Open the YAML files for each template and pipeline that you want to migrate.
 - Update Git Details: Look for the section in the YAML file that specifies the Git connector, repository, and path. Update this information with the details of your new Git provider.
@@ -7058,40 +7184,42 @@ When preparing to migrate your templates and resources to a new Git provider, up
 Harness will automatically fetch the resources from the new location. However, managing numerous resources during this transition can be daunting. To prevent any issues with references, ensure that all pipelines referencing specific template versions are also updated to use the new Git details.
 
 #### Does Harness offer a replay feature similar to Jenkins?
-  
+
 Yes, Harness provides a feature similar to Jenkins' **Replay** option, allowing you to rerun a specific build or job with the same parameters and settings as the previous execution. In Harness, this functionality is known as **Retry Failed Executions**. You can resume pipeline deployments from any stage or from a specific stage within the pipeline.
 
 To learn more about how to utilize this feature in Harness, go to [Resume pipeline deployments](https://developer.harness.io/docs/platform/pipelines/failure-handling/resume-pipeline-deployments/) documentation.
 
 #### Is there a way to clean up state storage in Terraform if it becomes out of sync during testing?
-                     
+
 If your Terraform state storage becomes out of sync during testing, there isn't a direct method to clean it up. Changing the application Id isn't recommended as it could lead to additional complications.
 
 Instead, you use other options:
+
 - Manual Cleanup: You can manually delete the state file from the storage location. However, ensure that you have a backup of the state file before proceeding to avoid any data loss or unintended consequences.
-- Terraform CLI: Utilize the Terraform CLI to force refresh the state. This can help synchconize the state with the actual infrastructure. 
+- Terraform CLI: Utilize the Terraform CLI to force refresh the state. This can help synchconize the state with the actual infrastructure.
+
 Exercise caution when making changes to the Terraform state to avoid disruptions to your infrastructure. Ensure to backup properly before making any changes.
 
 #### How can I cancel/abort a pipeline execution via Harness APIs?
-                     
+
 To abort a pipeline execution, use the `putHandleInterrupt` API endpoint. This API allows you to cancel a running pipeline by providing the execution Id as a parameter.
 
 You can find more details about this API and its usage in [Harness API documentation](https://apidocs.harness.io/tag/Pipeline-Execute/#operation/putHandleInterrupt).
 
 #### How can I prevent Terraform state drift caused by AWS ECR permissions policies created by Harness?
-                     
+
 There are a couple of approaches you can take to mitigate this issue:
 
 - Pre-create ECR repository: To avoid state drift, consider creating the ECR repository with the necessary permissions beforehand. Create an IAM policy that grants the required permissions for Harness actions, such as creating and updating services, tasks, and container instances. Attach this policy to the IAM role used by the ECS cluster. By doing this, ensure that the ECR repository has the correct permissions from the start, reducing the likelihood of drift.
 - Modify Harness AWS connector permissions: Another option is to prevent Harness from altering IAM policies by adjusting the permissions within the Harness AWS connector. However, be cautious with this approach as it may impact the functionality of your deployment pipeline. Removing permissions related to the IAM policy from the Harness AWS connector can prevent unwanted changes to ECR permissions policies. Evaluate the impact on your workflow before implementing this solution.
 
-By managing permissions and considering the implications of changes made by Harness, you can effectively address Terraform state drift and maintain the stability of your deployment environment. 
+By managing permissions and considering the implications of changes made by Harness, you can effectively address Terraform state drift and maintain the stability of your deployment environment.
 
 #### Harness is pulling old Helm dependencies that are not in the Chart.yaml.
 
 Check the following:
 * Service configuration.
-* Whether you have configured the override. 
+* Whether you have configured the override.
 * Whether the chart is getting pulled from the correct location.
 * List of manifests.
 
@@ -7115,3 +7243,234 @@ You can view the detailed logs for the command applied (with manifest applied an
 
 This error occurs in SSH or WinRM connections when some command is still executing and the connection is closed by the host. It needs further debugging by looking into logs and server resource constraints.
 
+#### Can I use shell variables in Harness expressions to fetch a secret in a shell script step?
+
+You can't use a shell variable in a Harness expression because the Harness expression is resolved before the step starts, and the shell variable doesn't populate until the shell script step run.
+
+However, you could write a variable that stores a Harness expression referencing a secret, and then use that variable in your script. This way the expression can be resolved independently of the script running.
+
+#### What is the connection test for a Docker connector with anonymous authentication?
+
+The connection test checks if Harness can reach the registry endpoint URL.
+
+#### How can a Docker connector with anonymous authentication have a successful connection test if the Docker public registry endpoint is blocked by the delegate proxy?
+
+Specifically, Harness checks that the server's response code is 400 while verifying Docker connectivity with anonymous credentials. This situation can occur if the proxy, which is set up to block connections, returns a 403 or any client error code other than 400.
+
+#### Can I use Harness CI Cloud build infrastructure for Deploy or Custom stages?
+
+No. Harness CI Cloud is only for Continuous Integration builds (Build stages).
+
+#### Can I use Plugin or Git Clone steps in Deploy or Custom stages?
+
+Yes, you can add these steps in containerized step groups in Deploy or Custom stages.
+
+#### Can I use any CI steps in a containerized step group?
+
+No. Only some step types are available in containerized step groups.
+
+#### Where are steps in containerized step groups executed?
+
+They are executed on a separate pod created at runtime.
+
+The pod is cleaned up after step group execution ends.
+
+#### Are separate pods created for each step in a containerized step group?
+
+No. Harness creates one pod for the containerized step group and runs all step containers in the group on that pod.
+
+#### Can I access files from a containerized step group in a subsequent shell script step?
+
+No. Containerized step groups are isolated on a separate pod from other steps. Files generated in the containerized step group aren't available in outside steps.
+
+#### Can I run a containerized step group on a self-managed VM or local infrastructure?
+
+No, containerized step group can only run on Kubernetes infrastructure.
+
+#### Does the containerized step group's command override CMD and/or ENTRYPOINT?
+
+The step group's **Command** is overwritten the image's default entrypoint, if it has one.
+
+If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**
+
+#### Can I pass a list or array to a path field in a Kubernetes Manifest?
+
+Currently, to pass a list or array to a path field, you'll must enable the feature flag `CDS_ENABLE_NEW_PARAMETER_FIELD_PROCESSOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Once enabled, you can add an array to a path field in a Kubernetes Manifest by:
+
+1. Creating a stage variable containing your list or array contents, such as `path1,path2,path3`.
+2. Passing the array to the manifest by using the following expression:
+
+   ```
+   <+<+stage.variables.VARNAME>.split(",")>
+   ```
+
+#### Can I rollback a non-deploy stage?
+
+Rollback is a functionality exclusive to Deploy stages.
+
+However, you can use Failure Strategies and Conditional Executions to achieve similar behavior.
+
+1. Set your step's Failure Strategy to `Proceed with Default Values` for all Errors you wish to run your rollback step for.
+2. Set your Rollback step's Conditional Execution to `If the previous step fails`.
+
+This will allow you to only run the Rollback step if the desired step failed.
+
+#### Can I set variables at the environment level with environments V2?
+
+You can add variables directly in the Environment by navigating to override and selecting the environment tag.
+
+If a service variable with same name exist, it is treated as overridden, otherwise it creates a variable you can access with the service variable expression syntax.
+
+#### Where do I get the metadata for the Harness download/copy command?
+
+This metadata is detected in the service used for the deployment. Ideally, you would have already configured an artifact, and the command would use the same config to get the metadata.
+
+#### Can I use SSH to copy an artifact to a target Windows host?
+
+If your deployment type is WinRM, then WinRM is the default option used to connect to the Windows host.
+
+#### Why can't I use a particular shell type with the Command step?
+
+Command step depends on type of deployment.
+
+If your deployment type is WinRM, then you only have the powershell shell option; whereas, if your deployment type is SSH, then you have the bash shell option.
+
+If you want to use these shells interchangeably, you can either:
+
+* Add shell script step instead of command step.
+* Use the command step without selecting **Run on Delegate**, so that it will run on host instead of the delegate.
+
+#### Can I update a cron trigger programatically?
+
+Yes, you can use the [Update Trigger endpoint](https://apidocs.harness.io/tag/Triggers/#operation/updateTrigger) and pass the entirety of the updated trigger YAML (including the updated cron expression) in the body.
+
+#### How do I perform iisreset on a Windows machine?
+
+You can create a WinRM connector and use a powershell script to perform the iisreset. Make sure the user credentials used for the connection have admin access.
+
+#### Can I design a pipeline to deploy Helm charts hosted in a remote private Helm registry and using Kustomize to patch the Helm charts?
+
+Native Helm doesn't support Kustomize; however, you could use [service hooks](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks) for this.
+
+#### Can you set a default delegate or delegate tag for a project
+
+No.
+
+#### Why doesn't the pipeline skip steps in a step group when another step in the group fails?
+
+If you want this to occur, you neeed to define a conditional execution of `<+stage.liveStatus> == "SUCCESS"` on each step in the group.
+
+#### What does the Update Release Repo step expect for GitOps?
+
+For the Update Release Repo step, you can enter variables in the step to update key-value pairs in the config file you are deploying. If there is a matching variable name in the variables of the Harness service or environment used in this pipeline, the variable entered in this step will override them.
+
+#### How do I view account-level connectors in a Harness project?
+
+When selecting a connector for a step or other configuration, switch to the **Account** tab to view account-level connectors.
+
+To view connectors outside of a pipeline, you need to go to the account settings and then view the account connectors from there.
+
+#### Why have two charts been deployed in my cluster after running a Helm deployment two times?
+Helm chart deployment is release-specific. If the release names are different between two deployments it sees the new deployment as a new release and does not consider the one which was already installed and goes ahead and installs a new chart under the new release. This is default Helm behavior.
+
+#### Why do my steps not run on the same delegate host despite having the same selector?
+In NextGen, the delegate selectors are at delegate group levels. There can be multiple replicas running inside the same name or multiple docker delegates running under the same name. So same delegate name might be selected but executed on a different host.
+To run them on the same host we need to use the delegate affinity. To learn how to achieve this, go to [Run All Pipeline Steps in One Pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
+)
+
+#### Can we use a Kubernetes connector to get the Kubernetes context in a shell step?
+It is not possible currently to get the Kubernetes context from Kubernetes connector. If it is part of K8s deploy stage we have a option to use the kubeconfig created for the deploy stage, but we can not directly use the Kubernetes connector to get the kubeconfig and use it in the shell step.
+
+#### Am I able to export a variable to my pipeline from variables defined in a json file in git?
+There is no built in way to achieve this. However you can access the file inside the pipeline and use a json parser to read the values and export it as variables. Then we can use the exported variables in any stage in the pipeline.
+
+#### Is it possible to use the git connector for establising connectivity to git for fetching any file?
+We can not directly use the connector in shell step. If needed we can store the git credentials in a secret and use secret reference in git cli commands to connect to git endpoints.
+
+#### If the assigned delegate executing a task goes down does the task gets re-assigned to other available delegates?
+If a delegate fails or disconnects, then the assigned task will fail. We do not perform the re-assignment. If the step is idempotent then we can use a retry strategy to re-execute the task.
+
+#### If there are no delegates available to take a task, do we queue the task and wait for delegates to come up?
+We will continue broadcasting the task to delegates as per the delegate selection. However, once the threshold expires we do not keep the task and fail it with the error that there was no available delegates for the task.
+
+#### Why is my rendered manifest truncated in the logs?
+We have a log limit for each log line. As the manifest entry is part of the a single log-line, if the manifest goes beyond the log line threshold it gets truncated.
+
+You can access the full rendered manifest through manifests.yaml or kubernetes-dry-run-manifests.yaml using service hooks.
+ 
+Below is example of a service hook command, you can add it as a post hook to template or pre hook to wait for steady state:
+```
+cp /opt/harness-delegate/repository/k8s/*/manifests-dry-run.yaml /opt/harness-delegate/test.yaml
+```
+
+#### Can a project level service account be used to access account level resources?
+A project level service account can not be assigned a role for accessing account or org level resources.
+
+#### If the "All environments" option is used for a multiple environment deployment, why can we not specify infrastructure?
+When the "All environments" option is selected we do not provide infrastructure selection in the pipeline editor. The infrastructure options are available in the run form.
+
+#### How do I use all environments and only select infrastructure for multiple environment deployments?
+Use filtered lists for this purpose. You can specify "Filter on Entities" as Environment in the first filter and select "Type" as all. Now for the infrastructure you can add another filter and provide the tag filter.
+
+#### What values should I enter for `provider url` and `audience` for the OIDC AWS connector?
+Use the following values:
+```
+Provider URL - https://app.harness.io/ng/api/oidc/account/<YOUR_HARNESS_ACCOUNT_ID>
+Audience: sts.amazonaws.com
+```
+
+#### Can we get the pipeline execution url from the custom trigger api response?
+The custom trigger api response containes a generic url for pipeline execution and not the exact pipeline execution. If we need the exact pipeline execution for any specific trigger we need to use the trigger activity page.
+
+
+#### Why can a user with no permissions in an environment edit service and infrastructure specific overrides?
+The user does not need environment related permissions for service and infrastructure specific overrides but only service edit/create permission. Hence even when they do not have access to a specific environment they will still be able to edit this override.
+
+
+#### How do I get a file from a different source and use it in a terraform step during runtime?
+You can have a shell script step in which you fetch the file from your corresponding source and have it stored on the delegate at any specific path and refer that path in your terraform config. You just need to ensure that your plan and apply runs on the same delegate. Below is documentation for how you can achieve that:
+https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
+
+#### Why is the curl command from the `list organization` apidocs sample returning no values when I use it?
+While using curl outside the api documentation we need to remove all the parameters to which we are not passing any value. By default there will be a "string" place holder for parameters.
+
+#### How can we automatically create a new service whenever a new service yaml is uploaded to my source repo?
+We can create a pipeline with api call for service creation and in that pipeline we can add a trigger to our source repo where service yaml is uploaded. Now whenever there will be a new service yaml the pipeline will get triggered and we can fetch this new service yaml using git cli in the shell step and use the yaml to make the api call for service creation.
+
+
+
+#### If there are stages in parallel does the execution wait till all the stage in parallel finish execution?
+If there are multiple stages in the pipeline the execution will not proceed to next sequential stage until all the execution of stages in that parallel series complete execution.
+
+#### Why does my K8s deployment time out in 10 minutes while in `wait for steady state` when the step timeout is higher? 
+This timeout is from the Kubernetes event check for steady state. Kubernetes listens for the event after the deployment to confirm if the rollout has been success or not. 
+After its own threshold crosses it errors out with the below:
+```
+deployment spelling-grammar-llm-service-deployment exceeded its progress deadline
+```
+ 
+Therefore, we also consider it a failure and fail the pipeline as soon as Kubernetes throws the above error. You will need to check the application log for the pods on why they are not coming up within the specified threshold.
+
+#### Why does multiple selection not work for a file path in the primary manifest.
+The use of allowed values allow us to give options for a selection list. However, for multiple selection, we only provide these options for allowed paths (i.e. the manifest path). You can check in the run form: if you create a pipeline runtime variable with allowed values, we will then allow you to select multiple values in te run form. However, the same selection is not allowed for the manifest path because there can only be one primary manifest.
+
+#### What happens to api tokens post expiration?
+Any api using the expired token for authentication will start failing. From a UI perspective we clean the expired tokens. They will be automatically purged.
+
+
+#### How does the communication between a delegate and connector happen?
+Whenever a task is created in harness all the information for executing the task is passed on to the delegate by the manager. If any task needs to use a connector for establishing any connection, it will use the configuration from the connector and execute the corresponding task for connection. 
+ 
+So we can think of connectors as configuration holder while the actual connection attempt to the end points are performed as tasks by the delegate itself.
+
+#### How do I handle chart dependencies if the dependent chart is in a different repo?
+If you are adding your dependency chart in a source repo you will have to clone it separately as part of the pre hook on delegate. Also, in Charts.yaml when you are mentioning the dependency you will need to specify the path of dependency chart where you downloaded.
+As the dependency update is a command run by using helm it will be able to resolve the file path you provide if you have already downloaded the dependency chart.
+
+#### Are the files downloaded as part of service hook cleared after execution?
+The file will not be cleared as they have been downloaded explicitly, however you can add another post service hook to remove these files from delegate.
+
+#### Why is the filter option greyed out for pipeline executions based on a branch?
+The option is used for filtering remote pipelines. If there are no remote pipelines executions, this option will not be highlighted.

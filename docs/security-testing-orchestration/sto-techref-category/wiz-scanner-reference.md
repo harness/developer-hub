@@ -10,6 +10,7 @@ import TabItem from '@theme/TabItem';
 
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
+
 You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
 
 Harness currently supports the following: 

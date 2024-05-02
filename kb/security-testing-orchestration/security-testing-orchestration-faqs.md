@@ -32,11 +32,17 @@ Public APIs for this functionality are on the [STO roadmap](https://developer.ha
 
 ### These is no Test Execution Summary widget in the list of dashboard widgets
 
-To use this widget, the `CI_TI_DASHBOARDS_ENABLED` feature flag must be enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
+To use this widget, you must have the `CI_TI_DASHBOARDS_ENABLED` feature flag enabled for your account. This feature flag enables the Unit Tests Metrics dashboard. Contact [Harness Support](mailto:support@harness.io) to enable this feature flag.
 
 ### Why doesn't the STO dashboard populate the data from targets?
 
 This happens when scan executions don't have baselines set. You must set test target baselines to show this data on your STO dashboards. 
+
+Every scanned target needs a baseline to enable the full suite of STO features. For more information, go to [Target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
+
+#### I'm trying to create a dashboard to display the STO metrics for my project, but my organization is not getting listed in the filter. Hence, I'm not able to get my project filtered.
+
+The dashboard only populates projects that had a baseline scan run previously. Check that your scanned targets have baselines defined if they don't appear in the dashboard.
 
 Every scanned target needs a baseline to enable the full suite of STO features. For more information, go to [Target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
@@ -47,6 +53,10 @@ Every scanned target needs a baseline to enable the full suite of STO features. 
 Pod eviction during an Aqua scan can be attributed to resource constraints, especially with a large image size (around 4GB).
 
 To address pod eviction during an Aqua scan, increase container resource limits by adjusting the resource requests and limits for the container.
+
+### Can the Aqua Security scan use an image built with PLUGIN_NO_PUSH?
+
+No. The Aqua Security scan can't pick up a local image.
 
 ## AWS ECR scans
 
@@ -87,3 +97,11 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 
 #### Why am I getting the error Missing target_name for scan_type [repository] scan.
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
+
+
+#### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
+
+An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to:
+
+- [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration)
+- STO release notes > [Version 1.83.1](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831)
