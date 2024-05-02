@@ -17,6 +17,23 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+## May 2024
+
+### Version 1.14.3
+
+#### New features and enhancements
+
+- RBAC Support for Active Recommendations: To enhance security and control over active recommendations, we have implemented Role-Based Access Control (RBAC) support. With this update, only admin users with edit access or commitments can approve or reject recommendations. This feature ensures that sensitive actions related to active recommendations are limited to authorized users to improve overall security.
+
+- Introduction of Anomaly Workflows: We have added Anomaly Workflows to enhance anomaly management within the CCM platform. With this feature, when a user marks an anomaly as a False Anomaly, it will be automatically moved to the Ignore list within the Anomaly Settings drawer. Furthermore, users now have the option to undo this action directly from the Anomaly Settings drawer, providing greater flexibility and control over anomaly management processes.
+  
+- Multi-Select Cloud Providers Filter: We have enhanced the Recommendations and Governance Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously providing more flexibility in with governance evaluations.
+
+#### Fixed issues
+
+- Governance Rules List Pagination: We have added a minor fix on the Governance Rules List page where the page number now resets properly when applying either the cloud provider or rule type filter.
+
+- Granularity Adjustment for Cluster Data Retrieval: With this fix, we have ensured that data retrieval aligns with the specified granularity settings: fetching from the daily data table for DAILY granularity and from the hourly table for HOURLY granularity.
 
 ## April 2024
 
