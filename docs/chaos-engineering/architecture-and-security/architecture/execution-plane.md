@@ -2,6 +2,8 @@
 title: Execution plane
 sidebar_position: 3
 description: Execution plane and its components
+redirect_from:
+    - /docs/chaos-engineering/architecture-and-security/architecture
 ---
 This section describes the execution plane of Harness Chaos Engineering (HCE).
 

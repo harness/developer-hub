@@ -72,7 +72,7 @@ token:
     ...
 
 ```
-Without the above parameter input the pipeline won't be executed. Please [take a look at this example](https://github.com/Debanitrkl/backstage-test/blob/0d4dbb877d683ad8764a4a89e636bcf99d16eb32/template.yaml#L58C1-L62C37) 
+Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/Debanitrkl/backstage-test/blob/e0aa88ee2a7f8a3be0fb8abdb5bb59781a76055d/template-ca-check-devspaces.yaml#L34-L38) 
 
 :::
 
@@ -118,37 +118,61 @@ There are two ways in which you can add the output variable to the template synt
 
 ### 2. `trigger:trigger-pipeline-with-webhook`
 
-This custom action could be used to trigger a pipeline execution based on the [webhook url](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#trigger-a-deployment-using-the-curl-command-for-a-custom-trigger) input for [custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/#create-the-custom-trigger). 
+This custom action could be used to trigger a pipeline execution based on the **input-set identifier** and a webhook name. Usually a single deployment pipeline has different input-set as per the environment it's going to be deployed and developers can just specify the input-set id aligning with the environment name to trigger the deployment pipeline. 
 
-![](./static/trigger-webhook-ca.png)
+![](static/input-set-list.png)
 
+Developers need to mention the input set identifier instead of the name in the workflows input, usually identifier are names devoid of any special characters and spaces, eg, `input set-test` name would have an identifier as `inputsettest`. It is suggested to provide all the available input-set as `enums` in the template to avoid any ambiguity by developers.  
+
+![](static/inputsetidentifier.png) 
+
+Here's an example workflow based on this workflows [template](https://github.com/harness-community/idp-samples/blob/main/workflows-ca-inputset.yaml). 
+
+![](static/input-form-ca.png)
 
 ```YAML
 ## Example
 ...
 steps:
-- id: trigger
+  - id: trigger
     name: Creating your react app
     action: trigger:trigger-pipeline-with-webhook
     input:
-    triggerWebhookurl: ${{ parameters.triggerWebhookurl }}
-    x_api_key: ${{ parameters.x_api_key }}
+      url: "YOUR PIPELINE URL"
+      inputSetName: ${{ parameters.inputSetName }}
+      triggerName: ${{ parameters.triggerName }}
+      apikey: ${{ parameters.token }}
 ...
 
 ```
 
-In the above example API key is an optional parameter, and is required in case of **Mandate Authorization for Custom Webhook Triggers** is set to **true** for **Pipeline** under **Default Settings** in **Account Settings**.  
+:::info 
 
-Here's an [example template](https://github.com/Debanitrkl/backstage-test/blob/main/temp-new-trigger.yaml) using the above mentioned custom action.
+In the above example the `apikey` parameter takes input from Harness Token which is specified under spec as a mandatory paramenter as mentioned below
+
+```YAML
+...
+token:
+    title: Harness Token
+    type: string
+    ui:widget: password
+    ui:field: HarnessAuthToken
+    ...
+
+```
+Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/Debanitrkl/backstage-test/blob/e0aa88ee2a7f8a3be0fb8abdb5bb59781a76055d/template-ca-check-devspaces.yaml#L34-L38) 
+
+:::
 
 #### Output
 
-1. `Title` : Name of the Pipeline. 
-2.  `url` : Execution URL of the Pipeline eg: `https://app.harness.io/ng/account/********************/module/idp-admin/orgs/default/projects/communityeng/pipelines/uniteddemo/executions/**********/pipeline?storeType=INLINE`
+1. `API URL:` : The webhook URL used to execute the pipeline. 
+2. `Pipeline Details` : Redirects you to the pipeline in Harness Pipeline Editor. 
+3. `UI URL`: Lists all the recent executions of the pipeline. 
 
 Once you create the workflow with this custom action, you can see the pipeline URL running in the background and executing the flow. 
 
-![](./static/flow-custom-action.png)
+![](static/output-ca.png)
 
 
 ### 3. `harness:create-secret`

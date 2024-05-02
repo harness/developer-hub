@@ -3,7 +3,7 @@ title: HCE control plane
 sidebar_position: 2
 description: HCE control plane
 redirect_from:
-    - /docs/chaos-engineering/technical-reference/architecture
+    - /docs/chaos-engineering/architecture-and-security/architecture
 ---
 This section describes the control plane of Harness Chaos Engineering (HCE).
 
