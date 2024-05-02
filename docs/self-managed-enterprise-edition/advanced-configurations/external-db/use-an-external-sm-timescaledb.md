@@ -167,7 +167,7 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
    ```
    psql
    ```
- 
+
    Upon successful connection, you'll see a message similar to the one below, followed by the psql prompt:
 
    ```
@@ -564,6 +564,76 @@ To enable TLS, do the following:
 4. Upgrade Harness with your updated `override.yaml` file.
 -->
 
+## Enable the pg_cron extension
+
+To utilize the power of scheduled tasks within your PostgreSQL database, you must enable the `pg_cron` extension on your database instance.
+
+`pg_cron` functions as a cron-based job scheduler that operates internally within the database as an extension. It adheres to the familiar syntax of regular cron while empowering you to schedule PostgreSQL commands directly from within your database environment.
+
+This approach offers more efficiency compared to relying solely on TimescaleDB. With the capabilities of `pg_cron`, the system efficiently schedules and executes aggregation tasks essential for generating metric data.
+
+### Installation of pg_cron on Postgres database
+
+For installations on Red Hat, CentOS, Fedora, or Amazon Linux running PostgreSQL 16 using the PostgreSQL Global Development Group (PGDG):
+
+```bash
+# Install the pg_cron extension
+sudo yum install -y pg_cron_16
+```
+
+For installations on Debian or Ubuntu with PostgreSQL 16 using `apt.postgresql.org`:
+
+```bash
+# Install the pg_cron extension
+sudo apt-get -y install postgresql-16-cron
+```
+
+Alternatively, you can opt to build `pg_cron` from its source:
+
+```bash
+git clone https://github.com/citusdata/pg_cron.git
+cd pg_cron
+```
+
+Ensure that `pg_config` is within your path, for instance:
+
+```bash
+export PATH=/usr/pgsql-16/bin:$PATH
+make && sudo PATH=$PATH make install
+```
+
+To ensure the `pg_cron` background worker starts alongside PostgreSQL, add `pg_cron` to `shared_preload_libraries` within the `postgresql.conf` file:
+
+```conf
+# add to postgresql.conf
+# required to load pg_cron background worker on start-up
+shared_preload_libraries = 'pg_cron'
+```
+
+By default, the `pg_cron` background worker assumes its metadata tables exist within the "postgres" database. However, you can customize this behavior by setting the `cron.database_name` configuration parameter in the `postgresql.conf` file:
+
+```conf
+# add to postgresql.conf
+# optionally, specify the database in which the pg_cron background worker should run (defaults to postgres)
+cron.database_name = 'postgres'
+```
+
+Previously restricted to GMT time, `pg_cron` now enables you to adapt timezones by setting `cron.timezone` in the `postgresql.conf` file. For example:
+
+```conf
+# add to postgresql.conf
+# optionally, specify the timezone in which the pg_cron background worker should run (defaults to GMT). E.g:
+cron.timezone = 'PRC'
+```
+
+After restarting PostgreSQL, execute `CREATE EXTENSION pg_cron;` as a superuser to create the necessary pg_cron functions and metadata tables:
+
+```sql
+-- run as superuser:
+CREATE EXTENSION pg_cron;
+GRANT USAGE ON SCHEMA cron TO <DATABASE_USER>;
+```
+
 ## Upgrade TimescaleDB
 
 You can upgrade your self-managed TimescaleDB installation in-place. A major upgrade is when you upgrade from one major version of TimescaleDB to the next major version. For example, when you upgrade from TimescaleDB 13 to TimescaleDB 14.
@@ -583,3 +653,5 @@ sudo rm -rf /var/lib/postgresql/
 sudo rm -rf /var/log/postgresql/
 sudo rm -rf /etc/postgresql/
 ```
+
+
