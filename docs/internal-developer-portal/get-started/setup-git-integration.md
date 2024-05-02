@@ -13,7 +13,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 **Prerequisite**: IDP should be provisioned for the given account. The required resources, services, configurations etc. should be in place before starting the harness catalog onboarding flow
 
-- Only users who are **Harness Account Admin** or assigned with **IDP Admin** role having the adequate permission for the as displayed below can perform the onboarding. We recommend creating an **IDP Admin** role with the below mentioned permission and assign it to your team who will be responsible for configuring IDP. Here's the detailed [documentation on how to assign roles](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#assign-roles-and-resource-groups) 
+- Only users who are **Harness Account Admin** or assigned with **IDP Admin** role having the permission as displayed below can perform the onboarding. Here's the detailed [documentation on how to assign roles](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups/#assign-roles-and-resource-groups) 
 
 ![](static/assign-role.png)
 
