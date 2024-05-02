@@ -6,7 +6,9 @@ This procedure describes how to refine a suggestion by providing more informatio
 
     You can send feedback to Harness about a specific remediation. Under **Helpful?**, click **No**. Then enter in your feedback and choose **Submit**. 
 
-    ![](./static/aida-remediation-feedback.png)
+    <!-- ![](./static/aida-remediation-feedback.png) -->
+
+    <DocImage path={require('./static/aida-remediation-feedback.png')} width="50%" height="50%" title="Click to view full size image" />
      
 
 2. If you want to optimize the advice with additional information or context, do the following: 
@@ -19,16 +21,16 @@ This procedure describes how to refine a suggestion by providing more informatio
 
    3. Add any additional context in the text pane. For example, you might want to include relevant code immediately before the snippet where the vulnerability was identified, in addition to the snippet itself. Then select **Generate**.  
 
-    <DocImage path={require('./static/ai-remediation-issue-refine.png')} width="60%" height="60%" title="Click to view full size image" />
+      <DocImage path={require('./static/ai-remediation-issue-refine.png')} width="50%" height="50%" title="Click to view full size image" />
     
 3. To generate remediations for another occurrence, do the following:
 
    1. In **Issue Details**, scroll down to the occurrence of interest and then select **Unsure how to remediate? Ask AI**. (You might need to wait a few seconds for the remediation to appear.)
 
-    <DocImage path={require('./static/ai-remediation-occurrences.png')} width="60%" height="60%" title="Click to view full size image" />
+      <DocImage path={require('./static/ai-remediation-occurrences.png')} width="50%" height="50%" title="Click to view full size image" />
 
    2. To further refine the suggested remediation with an additional code snippet, select **Edit Snippet** and then re-generate.
 
-    <DocImage path={require('./static/ai-remediation-occurrence-3.png')} width="60%" height="60%" title="Click to view full size image" />
+      <DocImage path={require('./static/ai-remediation-occurrence-3.png')} width="50%" height="50%" title="Click to view full size image" />
 
     
