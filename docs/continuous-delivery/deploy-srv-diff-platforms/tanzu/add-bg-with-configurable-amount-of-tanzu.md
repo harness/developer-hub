@@ -1,5 +1,5 @@
 ---
-title: Blue Green Deployment Support with a configurable amount of Tanzu Applications to maintain
+title: Blue Green Deployment Support with a configurable amount of Tanzu Applications
 description: Blue Green deployment configuration use cases for Tanzu
 sidebar_position: 5
 redirect_from:
