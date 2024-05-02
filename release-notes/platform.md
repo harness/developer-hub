@@ -85,7 +85,7 @@ The following deprecated API endpoints are longer supported:
 
 - When adding users to a User Group, the search string persisted in the input field even after a user was selected. We have updated the User Group Form page to automatically clear the search query once a user is selected, enhancing usability. (PL-49256, ZD-62169)
 
-- Org and Project Admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
+- Account Admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
 
 - Delegates were incorrectly displayed as connected despite being configured with non-agent endpoints. Resolved this by ensuring the isNg flag is correctly propagated when delegates send heartbeats to the manager, ensuring accurate connection status. This item requires Harness Delegate version 24.04.82900. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate)(PL-48891, ZD-60974)
 
