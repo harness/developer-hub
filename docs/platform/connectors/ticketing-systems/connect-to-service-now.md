@@ -98,6 +98,7 @@ To use ADFS credentials for authentication:
 </TabItem>
 <TabItem value="oidc" label="OIDC Refresh token">
 
+
 :::info note
 This feature requires Harness Delegate 799xx or higher.
 :::
