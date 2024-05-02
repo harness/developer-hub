@@ -117,9 +117,9 @@ gsutil -m cp \
   .
 ```
 
-### Fixed issues
+### New features and enhancements
 
-- ()
+- Upgraded `migrator` from 1.22.0 to 1.59.0 to leverage new functionality and bug fixes. (CDS-96365)
 
 ## May 1, 2024, patch version 0.15.2
 
