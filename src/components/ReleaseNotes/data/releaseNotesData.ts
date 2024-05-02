@@ -97,7 +97,7 @@ import {
             module: MODULES.iacm,
             description:
               "",
-            link: "/release-notes/infrastucture-as-code-management",
+            link: "/release-notes/infrastructure-as-code-management",
           },
           {
             title: "Internal Developer Portal release notes",

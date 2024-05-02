@@ -16,20 +16,6 @@ Currently, Secure Connect for Harness Cloud is behind the feature flag `CI_SECUR
 * **Can Harness CI Cloud securely connect to my complex and private firewalled infrastructure?** Yes. You can use Secure Connect for Harness CI Cloud to connect to your private assets through a secure tunnel.
 * **Can I prove that Harness CI Cloud is secure so I can get it approved quickly by the required stakeholders (security team, ARB, DevOps platform team, infrastructure teams, and so on)?** Yes. Harness CI Cloud has been penetration tested by external experts, and it is [ISO and SOC2](https://trust.harness.io/) certified. If you're already using Harness CI Cloud, additional approval isn't needed to enable Secure Connect to connect to your firewalled assets.
 
-<!--
-
-Harness CI Cloud enterprise readiness
-
-| Secure | Trust | Govern |
-| -----  | ----- | ------ |
-| Connect with on-prem/private cloud network | Meet regulatory compliance standards | Fine grained access control |
-| Dedicated build infrastructure | Pentested by external experts | Policy as code |
-| Passwordless with OIDC | SLSA compliance (build L2 level only in Harness CI Cloud) | Templates |
-| Encryption at rest and in transit | Business continuity and disaster recovery (No customer intervention) | Audit trail |
-| Ensure artifact integrity and prevent tampering | Highly available (99.99% uptime SLA) | End-to-end visibility with dashboards and reports |
-|  | Highly Scalable |  |
--->
-
 ## What is Secure Connect for Harness Cloud
 
 With Secure Connect for Harness CI Cloud, you can connect to your sensitive assets through a secure tunnel. This allows you to use Harness Cloud build infrastructure with privately-hosted assets, such as internal artifacts repositories and on-premises code repositories. Secure Connect is a faster alternative to allowlisting IPs.

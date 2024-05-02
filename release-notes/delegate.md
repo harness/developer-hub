@@ -65,13 +65,15 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 - Docker delegate images are no longer pushed to `app.harness.io/registry`. To pull images, use `gcr.io/gcr-prod/harness/delegate:<IMAGE_TAG>`. (PL-46947)
 
+- We've added an optional registry mirror configuration for delegate `upgrader`. If you use Docker pull through registry cache (`https://docs.docker.com/docker-hub/mirror/`), you can configure `upgrader` to use an optional registry mirror for your delegate images. For more information, go to [Configure an optional registry mirror for delegate images](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#configure-an-optional-registry-mirror-for-delegate-images). (PL-47920, ZD-59005)
+
 #### Fixed issues
 
 - Slack channel notifications failed due to an error related to explicitly setting the Host header as `hooks.slack.com`. We have removed the explicit Host header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue. (PL-47914)
 
 - In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. The name of a user will be sanitized if it does not follow Harness naming conventions during user addition flows. (PL-47614)
 
-- Builds triggered by Bitbucket Server push events had incorrect date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)  
+- Builds triggered by Bitbucket Server push events had incorrect date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. (CI-11556, ZD-58798)
 
 - Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. (PL-48781, ZD-60713)
 

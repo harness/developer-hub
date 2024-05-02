@@ -3,7 +3,7 @@ title: HCE components
 sidebar_position: 1
 description: HCE architecture and its components
 redirect_from:
-	- /docs/chaos-engineering/technical-reference/architecture
+	- /docs/chaos-engineering/get-started/key-concepts
 ---
 This section describes the Harness Chaos Engineering (HCE) components.
 

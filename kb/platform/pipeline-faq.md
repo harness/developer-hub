@@ -22,6 +22,7 @@ Ensure that your contributions are organized according to the following categori
 - Chain pipelines
 - Delete pipelines
 - Pipeline executions and logs
+- Pipeline templates
 - Pipeline notifications
 - Delegates
 - Variables
@@ -42,13 +43,29 @@ There is no limit to the number of pipelines you can create in a project.
 
 Pipeline names are limited to 128 characters.
 
+### What Harness method does recommend to update all pipelines when underlying configs were updated in the Git repository?
+
+Harness Git Experience typically syncs unidirectionally, from Harness to your Git repos. However, with bidirectional sync enabled, changes made on either the Git repo or Harness are automatically synchronized.
+
+For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
+
+### How does bidirectional sync for Git Experience handle a default pipeline repo with branch protection?
+
+Branch protection rules in Git serve as safeguards that cannot be tampered with or bypassed by Harness. Therefore, our actions are restricted to the capabilities of the access token you provide.
+
+When Harness initiates a push, it operates with the same authority as a user issuing commands through their CLI. Harness Git Experience ensures that you're always working with the latest updates, eliminating any chance of stale data.
+
+If you're not utilizing bidirectional sync, Harness won't automatically update anything. While execution utilizes the latest version, outside of that, you might encounter outdated pipelines or entities based on the last time they were executed or manually reloaded. However, with bidirectional sync enabled, you'll consistently see the most up-to-date version pulled directly from Git.
+
+For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
+
 ### When I try to open a Git-stored pipeline, why doesn't the branch dropdown display all the branches?
 
 This behavior is expected when there are more than 20-30 branches in the repo due to pagination. To select branches that are not listed, try manually entering the full branch name. This should allow you to open the pipeline from that branch.
 
-### How can I switch from the new Harness nav 2.0 UI to the legacy one?
+### Where to find the callback_id parameter needed for approving the Harness pipeline via API?
 
-Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
+Set the **Callback ID** in the Approval step, under **Approval Callback Identifier**.
 
 ### Does the Harness NextGen community edition support LDAP login?
 
@@ -254,6 +271,10 @@ Harness provides specific expressions to access information about the trigger du
 
 On the Triggers page, switch the **Enabled** toggle to disable a trigger.
 
+### How do automated pipeline triggers behave when reconciliation is required?
+
+The automated pipeline triggers will not work until the reconciliation is complete.
+
 ### What is the webhook identifier for a pipeline trigger?
 
 On the Triggers list, you can find a trigger's [identifier (ID)](https://developer.harness.io/docs/platform/references/entity-identifier-reference/) under the trigger name. You can get the webhook URL by selecting the **Link** icon in the **Webhook** column.
@@ -385,6 +406,10 @@ You can use Harness expressions to reference the status of completed stages and 
 
 This can be useful, for example, when configuring [conditional executions](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings).
 
+### Why does the Overview page show an active deployment while the pipeline history indicates it finished successfully?
+
+You might need to enable the feature flag `DEBEZIUM_ENABLED` for your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
 ### How long are Harness deployment logs visible in the UI?
 
 The default pipeline execution [data retention](https://developer.harness.io/docs/platform/references/data-retention) period is six months. However, dashboard and list filters in the UI often default to 30 days. If you're looking for executions older than 30 days, make sure the filter is not limiting the visible data.
@@ -428,6 +453,42 @@ It is a scheduled task designed to clean up dashboards that have no tiles. This 
 ### When encountering the error message "WARNING: Collection ansible.windows does not support Ansible version 2.13.13," what should be checked?
 
 Check if the Harness Delegate was recently updated, and also confirm the version of Ansible being executed.
+
+## Pipeline templates
+
+### What is the frequency that we need to reconcile pipeline template changes?
+
+If changes are made within the pipeline, then no reconciliation is required.  However, if changes are made outside of the pipeline and it has an entity that was recently updated, then reconciliation is required.  For example, if you update the environment on the Environment tab and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
+
+### Which version will the templates take of an already configured pipeline trigger?
+
+This will depend on how the template is configured. You can select the version that needs to be selected if the latest one is not configured to be used by default.
+
+### What is the purpose of reconciliation within pipeline template changes?
+
+Harness detects updates made to referenced entities if those updates are made outside of Pipeline Studio. When you are viewing a pipeline in Pipeline Studio, if a referenced entity has an update, Harness informs you and prompts you to update the pipeline. This process of updating the referenced entities in the pipeline is called pipeline reconciliation. The process ensures that you are aware that referenced entities have updates, and you can choose to integrate those changes into the pipeline.
+
+For more information, go to [Reconcile pipeline template changes](/docs/platform/templates/reconcile-pipeline-templates/).
+
+### When I try to upgrade a pipeline to a later version, why is it forcing me to reconcile, even after updating and saving the pipeline with a new template version?
+
+This could be due to modifications in the pipeline template. Significant changes in runtime inputs might prompt the appearance of the reconcile option.
+
+### If we deploy new versions of templates, what happens when an existing pipeline consumes a fixed version vs "always use a stable version"?
+
+Versioning a template enables you to create a new template without modifying the existing one. When you plan to introduce a major change in a project that depends on an existing template, you can use versioning. You can create multiple versions of a template.
+
+### Can I upgrade a pipeline that is using templates without reconciliation?
+
+If changes are made within the pipeline, then no reconciliation is required.  However, if changes are made outside of the pipeline and it has an entity that was recently updated, then reconciliation is required.  For example, if you update the environment on the **Environment tab** and not in Pipeline Studio, Harness prompts you to reconcile the pipeline.
+
+### What causes entities referenced pipeline to go out of sync?
+
+When Harness APIs detect pipeline template changes that require reconciliation, you get the following error.
+
+```Some of the entities referenced in this pipeline have gone out of sync.```
+
+For more information, go to [Reconcile pipeline template changes](/docs/platform/templates/reconcile-pipeline-templates/).
 
 ## Pipeline notifications
 
