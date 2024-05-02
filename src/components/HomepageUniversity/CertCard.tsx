@@ -77,7 +77,7 @@ export default function CertCard({
         )}
         {SPT_available && (
           <div className={styles.numberOfCerts}>
-            <img src="/img/Instructor_led_trainin_logo.svg" />
+            <img src="/img/self-paced-training-logo-active.svg" />
             Self Paced Training Available
           </div>
         )}

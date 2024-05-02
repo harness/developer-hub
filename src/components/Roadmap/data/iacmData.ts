@@ -45,11 +45,31 @@ export const IacmData: Horizon = {
     description: "Q2 2024, May-Jul 2024",
     feature: [
       {
-        tag: [],
+        tag: [{ value: "Developer Experience" }],
         title: "Module Registry",
         description: "Private module Registry to test and publish approved modules",
       },
       {
+        tag: [{ value: "Security" }],
+        title: "Security Plugins",
+        description: "Plugins for tfsec, tflint, and checkov that can be added to the IaCM pipeline to find security vulnerabilities and misconfiguration",
+      },
+      {
+        tag: [{ value: "Simplify Onboarding" }],
+        title: "Workspace templates",
+        description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
+      },
+      {
+        tag: [],
+        title: "Custom arguments support",
+        description: "Users will have the flexibility to modify which arguments will be used during execution, allowing additional customization",
+      },
+    ],
+  },
+  Later: {
+    description: "Q3 2024+, Aug 2024 & beyond",
+    feature: [
+     {
         tag: [{ value: "Security" },{ value: "Enterprise" }],
         title: "SMP (on-prem)",
         description: "Supporting implementing IaCM in private environments",
@@ -78,21 +98,6 @@ export const IacmData: Horizon = {
         tag: [{ value: "Developer Experience" }],
         title: "Ephemeral environments",
         description: "Users will be able to control the TTL configuration of each managed Workspace",
-      },
-      {
-        tag: [{ value: "Simplify Onboarding" }],
-        title: "Workspace templates",
-        description: "Users will be able to create Workspaces that will inherit cost, OPA, and other configurations from templates, simplifying onboarding and enforcing best practices",
-      },
-    ],
-  },
-  Later: {
-    description: "Q3 2024+, Aug 2024 & beyond",
-    feature: [
-      {
-        tag: [{ value: "Developer Experience" }],
-        title: "Run tasks",
-        description: "Users will be able to run specific commands against the remote state",
       },
       {
         tag: [],

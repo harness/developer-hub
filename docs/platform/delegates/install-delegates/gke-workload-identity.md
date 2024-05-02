@@ -120,7 +120,7 @@ Deploy a Harness Delegate onto the GKE cluster.
     - Creates a Google Service Account (GSA) `harness-delegate`.
     - Adds an IAM binding policy to the `harness-delegate` service account (SA), with the role `roles/iam.workloadIdentityUser` and a member "serviceAccount:$GOOGLE_CLOUD_PROJECT.svc.id.goog[\default/harness-builder]".
     - Adds a `harness-delegate` SA with the role `roles/artifactregistry.createOnPushRepoAdmin`, enabling it to push images to GAR.
-    - Creats a KSA `harness-builder` annotated with `iam.gke.io/gcp-service-account` to `harness-delegate`, allowing it to impersonate the GSA thereby enabling it to push the built application image to GAR.
+    - Creates a KSA `harness-builder` annotated with `iam.gke.io/gcp-service-account` to `harness-delegate`, allowing it to impersonate the GSA thereby enabling it to push the built application image to GAR.
 
 ## Test it with a CI pipeline
 
