@@ -42,4 +42,4 @@ The SBOM Policy Enforcement step operates in two stages:
 * With the artifact details, the step retrieves the SBOM of the given artifact.
 * From the policy sets, the rules are evaluated against each component within the artifact's SBOM.
 * If violations are detected based on the SSCA Policy evaluation criteria, the pipeline may issue a warning and proceed further, or it may generate an error and terminate.
-* Finally, a report is generated, highlighting the identified policy violations.
+* Finally, a detailed list of all the policy violations is generated.
