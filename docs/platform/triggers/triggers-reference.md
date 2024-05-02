@@ -489,7 +489,7 @@ When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab inc
 
 :::note
 
-In order to have the <+trigger.branch> expression working for an Issue Comment event trigger, the feature flag `CDS_USE_EXECUTION_TRIGGER_PAYLOAD_TO_EVALUATE_BRANCH_EXPRESSION` must be enabled.
+Currently, the `<+trigger.branch>` expression for Issue Comment event triggers is behind the feature flag `CDS_USE_EXECUTION_TRIGGER_PAYLOAD_TO_EVALUATE_BRANCH_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
