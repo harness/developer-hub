@@ -98,6 +98,10 @@ To use ADFS credentials for authentication:
 </TabItem>
 <TabItem value="oidc" label="OIDC Refresh token">
 
+:::info note
+This feature requires Harness Delegate 799xx or higher.
+:::
+
 Harness supports persistent refresh tokens only to authenticate via OpenID Connect (OIDC) for a **Refresh Token** with a **Grant Type** of `refresh_token`. For more information on refresh token grant types, go to [Refreshing Access Tokens](https://www.oauth.com/oauth2-servers/access-tokens/refreshing-access-tokens/) in the OAuth documentation.
 
 All refresh tokens must be valid and updated when revoked. Permissions granted in ServiceNow to this connector depend on the associated resource owner for the credentials/refresh token.
