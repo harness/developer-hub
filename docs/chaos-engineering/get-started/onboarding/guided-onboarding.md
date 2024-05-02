@@ -8,8 +8,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This topic describes the following operations:
-1. Create an environment and chaos infrastructure with single clicks.
-2. Discover services on your cluster.
+1. Create an environment and an infrastructure with single clicks.
+2. Automatically discover services on your cluster.
 3. Create network maps (with a single click).
 4. Choose the chaos experiments to run.
 5. View the resilience of chaos experiments.
@@ -32,14 +32,14 @@ This topic describes the following operations:
 
     ![](./static/guided/select-1.png)
 
-### Select chaos environment
+### Select an environment
 
-3. As the first step, select a chaos environment from a list of environments and click **Next**.
+3. As the first step, select an environment from a list of environments and click **Next**.
 
     ![](./static/guided/select-env-2.png)
 
-### Select chaos infrastructure
-4. It may take a while to set up the environment. In the second step, select a chaos infrastructure from the list of chaos infrastructure and click **Next**.
+### Select an infrastructure
+4. It may take a while to set up the environment. In the second step, select an infrastructure from the list of infrastructure and click **Next**.
 
     ![](./static/guided/select-infra-3.png)
 
@@ -47,11 +47,15 @@ This topic describes the following operations:
 
     ![](./static/guided/run-checks-4.png)
 
-### Configure Discovery Agent
+### Customize Discovery Agent
 
-6. To configure the **Discovery Agent**, enter a **Discovery Agent Name** and **Tags** (optional). The next step (optional) collects information about blocked namespaces, service discovery periods, etc.
+6. HCE creates the discovery agent that will automatically discover services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc.
+
+:::tip
+If you want to customize the discovery agent, navigate to project settings and create a discovery agent. Enter a **Discovery Agent Name** and **Tags** (optional).
 
     ![](./static/guided/create-agent-5.png)
+:::
 
 7. Once you complete the steps mentioned earlier, HCE looks for services in your cluster (which may take a while).
 
@@ -64,6 +68,8 @@ This topic describes the following operations:
     ![](./static/guided/discovery-complete-7.png)
 
 9. HCE prompts you to select one of the options- whether you wish to create network maps automatically or not.
+
+### Choose between automatic and customizable network mao creation
 
 <Tabs>
  <TabItem value="Automatic">
