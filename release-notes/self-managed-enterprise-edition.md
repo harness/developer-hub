@@ -80,6 +80,47 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **Security advisories:** Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
+## May 2, 2024, patch version 0.14.7
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.7](https://github.com/harness/helm-charts/releases/tag/harness-0.14.7) |
+| Air Gap Bundle | [0.14.7](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.7) |
+| NG Manager | 1.24.7 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.83.8 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.6 |
+| LE NG | 1.1.0 |
+
+**Alternative air gap bundle download method**
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.7/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.7/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements
+
+- Upgraded `migrator` from 1.22.0 to 1.59.0 to leverage new functionality and bug fixes. (CDS-96365)
+
 ## May 1, 2024, patch version 0.15.2
 
 This release includes the following Harness module and component versions.
