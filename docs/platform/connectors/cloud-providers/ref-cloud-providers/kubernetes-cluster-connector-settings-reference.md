@@ -351,12 +351,6 @@ For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/r
 
 These settings come from your OIDC provider authorization server or the provider app you use to log in.
 
-:::info note
-OIDC authentication support is not available for connectors in legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
-
-OIDC support requires Harness Delegate version 24.03.82603 or later.
-:::
-
 The following settings are from the authorization server settings:
 
 * **Master URL:** The issuer URI for the provider authentication server.

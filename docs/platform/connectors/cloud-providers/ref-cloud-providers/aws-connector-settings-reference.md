@@ -435,12 +435,6 @@ Specify the credentials that enable Harness to connect your AWS account. There a
 
    :::
 
-   :::info note
-   OIDC authentication support is not available for connectors in legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
-
-   OIDC support requires Harness Delegate version 24.03.82603 or later.
-   :::
-
 :::warning
 
 Ensure that the AWS IAM roles applied to the credentials you use (the Harness Delegate or the access key) include the policies needed by Harness to deploy to the target AWS service.

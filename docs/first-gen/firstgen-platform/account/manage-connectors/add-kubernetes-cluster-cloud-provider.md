@@ -270,12 +270,6 @@ Specify the encryption algorithm used when the certificate was created. Typicall
 
 These settings come from the OIDC provider authorization server you have set up and others come from the provider app you are using to log in with.
 
-:::info note
-OIDC authentication support is not available for connectors in legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
-
-OIDC support requires Harness Delegate version 24.03.82603 or later.
-:::
-
 First let's look at the authorization server-related settings:
 
 * **Identity Provider URL:** The issuer URI for the provider authentication server.

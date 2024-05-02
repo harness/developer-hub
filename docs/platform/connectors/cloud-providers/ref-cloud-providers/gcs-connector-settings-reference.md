@@ -116,12 +116,6 @@ Select this option to allow the connector to inherit its authentication credenti
 
 Select this option if you want to [use OIDC](#use-openid-connect-oidc).
 
-:::info note
-OIDC authentication support is not available for connectors in legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
-
-OIDC support requires Harness Delegate version 24.03.82603 or later.
-:::
-
 ### Select Connectivity Mode
 
 Select how you want Harness to communicate with GCP. The available options depend on what you chose for **Details**.
@@ -160,6 +154,12 @@ To connect to GCP with OIDC, you must configure an [OIDC identity provider](http
    * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<YOUR_ACCOUNT_ID>`
 
    * OIDC audience: `https://iam.googleapis.com/projects/<YOUR_GCP_PROJECT_ID>/locations/global/workloadIdentityPools/<YOUR_WORKLOAD_POOL_ID>/providers/<YOUR_PROVIDER_ID>`
+
+   :::info note
+   OIDC authentication support is not available for connectors in legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+
+   OIDC support requires Harness Delegate version 24.03.82603 or later.
+   :::
 
 If accessing Google cloud resources, use [workload identity federation](https://cloud.google.com/iam/docs/workload-identity-federation) to grant short term access to the Harness GCP connector. For instructions, go to [Configure OIDC with GCP WIF for Harness Cloud builds](/docs/continuous-integration/secure-ci/configure-oidc-gcp-wif-ci-hosted).
 
