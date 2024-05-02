@@ -368,7 +368,7 @@ A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There
 
 Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
 
-We are using [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) for password authentication flow. `client_id` and `client_secret` are required for this password authentication flow.
+`client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
 
 ### Terraform
 
