@@ -13,7 +13,7 @@ sidebar_position: 180
 
 You can scan your repositories and ingest scan results from [Fortify on Demand](https://www.microfocus.com/documentation/fortify-on-demand/). The following steps describe the workflow. 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
 
 <StoLegacyWorkflow />
 

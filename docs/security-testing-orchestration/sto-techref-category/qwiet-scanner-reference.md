@@ -14,7 +14,7 @@ sidebar_position: 330
 
 You can scan your code repositories and ingest results from Qwiet. The following steps describe the workflow.
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
 
 <StoLegacyWorkflow />
 

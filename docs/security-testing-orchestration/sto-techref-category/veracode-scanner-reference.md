@@ -35,7 +35,7 @@ You can scan your code repositories and ingest results from [Veracode](https://d
 
 ## Workflow description
 
-import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
+import StoLegacyWorkflow  from './shared/custom-scan/_workflow-repo.md';
 
 <StoLegacyWorkflow />
 

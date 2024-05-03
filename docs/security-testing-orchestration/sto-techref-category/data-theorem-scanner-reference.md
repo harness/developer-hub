@@ -13,7 +13,7 @@ sidebar_position: 140
 
 You can extract and ingest scan results for your code repositories from [Data Theorem](https://www.datatheorem.com/). The following steps describe the workflow. 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
 
 <StoLegacyWorkflow />
 
