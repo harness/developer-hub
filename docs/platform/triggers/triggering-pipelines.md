@@ -482,19 +482,13 @@ To skip a build, include one of the following keywords in the commit message:
 
 The keywords must appear anywhere within the commit message, even if surrounded by other text. For example, This is a [ci skip] commit.
 
-### Special Characters
-
-The system recognizes keywords even if they contain special characters between keywords.
-
 ### Supported Platforms
 
 This functionality is applicable across various version control platforms, including:
 
 - GitHub
 - GitLab
-- Azure DevOps
 - Bitbucket
 ### Events
-
 The skipping mechanism operates for both **push** and **pull request** events in Git repositories.
 
