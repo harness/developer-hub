@@ -249,7 +249,7 @@ This step simply merges the new PR.
 
 The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app. 
 
-Configuring the Deployment Repo manifest is required for this step to execute correctly, since it fetches these details from the ApplicationSet template.
+Configuring the Deployment Repo manifest in your Service is required for this step to execute correctly.
 
 This information is displayed on the **Output** tab of the step.
 
