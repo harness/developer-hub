@@ -125,7 +125,7 @@ Next, we'll create a Harness service that points to the `config.json` files in t
 2. Select **New Service**.
 3. In **Name**, enter **PR Example**.
 4. In **Manifests**, select **Add Release Repo Manifest**.
-5. In **Release Repo Store**, select the Harness Git connector to the repository which contains your ApplicationSet manifests. If you do not already have this configured, you will need to create a connector to your repository.
+5. In **Release Repo Store**, select the Harness Git connector to the repository which contains your `config.json` files. If you do not already have this configured, you will need to create a connector to your repository.
 
 :::note
     
@@ -133,7 +133,7 @@ For information on setting up a Harness Git connector, go to [Connect to a Git r
     
 :::
 
-### Specify manifest details
+### Specify Release Repo manifest details
 
 Now we'll define the manifest to use for the PR pipeline. We'll use the path to the `config.json` files. We'll use the expression `<+env.name>` in the path so that we can dynamically select the path based on the Harness environment we select: **dev** or **prod**.
 
@@ -147,6 +147,18 @@ In **Manifest Details**, enter the following settings and then click **Submit**.
 
     ![](static/harness-git-ops-application-set-tutorial-53.png)
 
+5. Select **Submit**.
+6. In the top-right corner, select **Save**.
+
+### Specify Deployment Repo manifest details
+
+Once the Release Repo manifests are correctly configured, we add the Deployment Repo manifests in a similar manner. This specifies the path to your ApplicationSet template.
+
+In **Manifest Details**, enter the following settings and then click **Submit**.
+1. **Manifest Name:** enter **Application Set**.
+2. **Git Fetch Type:** select **Latest from Branch**.
+3. **Branch:** enter the name of the main branch (master, main, etc).
+4. **File Path:** enter `examples/git-generator-files-discovery/git-generator-files.yaml`.
 5. Select **Submit**.
 6. In the top-right corner, select **Save**.
 
@@ -235,7 +247,9 @@ This step simply merges the new PR.
 
 ### Fetch Linked Apps step
 
-The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app.
+The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app. 
+
+Configuring the Deployment Repo manifest is required for this step to execute correctly, since it fetches these details from the ApplicationSet template.
 
 This information is displayed on the **Output** tab of the step.
 
