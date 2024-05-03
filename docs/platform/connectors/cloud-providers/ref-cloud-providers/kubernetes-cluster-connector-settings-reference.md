@@ -214,6 +214,35 @@ Provide the credentials for the *cluster*, not the *platform*.
 
 Select or create a Harness encrypted text secret containing the decoded service account token for the service account. The secret must contain the decoded token for the connector to function correctly. The service account doesn't have to be associated with a delegate.
 
+##### Generate the service account token
+
+The Kubernetes SA token isn't automatically generated for SAs provisioned under Kubernetes versions 1.24 and later. Instead, you must create a new SA token and decode it to the `base64` format.
+
+You can use the following kubectl command to create a SA bound token:
+
+```
+kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
+```
+
+You can also create SAs using manifests, for example:
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: <service-account-name>
+  namespace: default
+
+---
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: <token-secret-name>
+  annotations:
+    kubernetes.io/service-account.name: "<service-account-name>"
+```
+
 ##### Obtain the service account token using kubectl
 
 To use a Kubernetes Service Account (SA) and token, you need to use either an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
