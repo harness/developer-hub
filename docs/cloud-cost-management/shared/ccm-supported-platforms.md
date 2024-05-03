@@ -618,8 +618,6 @@ The following table provides the feature support matrix for CCM on Harness Self-
 |Recommendations |✅ | ✅ | ✅ | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
-|Cluster Orchestrator|❌ | ❌ | ❌ | ❌ | 
-|Commitment Orchestrator|❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
 
 
@@ -636,13 +634,11 @@ The following table provides the feature support matrix for CCM on Harness Self-
 |Recommendations |✅ | ✅ | ✅ | ✅ | 
 |AutoStopping | ❌ | ❌ | ❌ | ❌ | 
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
-|Cluster Orchestrator|❌ | ❌ | ❌ | ❌ | 
-|Commitment Orchestrator|❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
 
 :::note
-- Perspective preferences are now supported on Harness SMP.
 - Margin Obfuscation is not supported on Harness SMP.
+- Istio virtual services are available for Azure in strict mode.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
 :::

@@ -11,7 +11,7 @@ This topic walks you through the steps required to set up CCM for GCP in a self-
 
 **Figure: GCP CCM Self-Managed Enterprise Edition architecture diagram**
 
-<DocImage path={require('./static/gcp-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/gcp-smp-arch.png')} width="90%" height="90%" title="Click to view full size image" />
 
 ## Major Components
 - **K8s Job:** In the cloud-hosted infra, a K8s Job is configured to run daily. This job performs all necessary steps to ingest GCP billing data from BigQuery to ClickHouse, utilizing a GCS bucket as an intermediary and then eventually to ClickHouse table.
@@ -121,7 +121,7 @@ ccm:
 
 ### Step 3: Handling Kubernetes Secrets
 
-On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as ``YWNjZXNzS2V5``
+On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as ``YWNjZXNzS2V5``. After changing secrets, kindly bounce the corresponding pods.
 
 Command: ```echo -n "accessKey" | base64```
 
