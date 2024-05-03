@@ -71,12 +71,6 @@ Required role: `change_manager`.
 
 Harness uses the following API to update a ServiceNow ticket from templates:
 
-```
-@Headers("Content-Type: application/json")
-@POST("api/sn_chg_rest/change/standard/{sys_id}?")
-Call<JsonNode> createTicketUsingStandardTemplate(@Header("Authorization") String authorization,
-    @Path("sys_id") String sys_id, @QueryMap Map<String, String> queryParams);
-```
 
 ## ServiceNow Approval step
 
