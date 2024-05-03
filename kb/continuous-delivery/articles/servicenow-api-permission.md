@@ -71,6 +71,11 @@ Required role: `change_manager`.
 
 Harness uses the following API to update a ServiceNow ticket from templates:
 
+```
+curl --location --request POST '{instance_url}/api/sn_chg_rest/change/standard/{sys_id}?backout_plan=ABORT&test_plan=TEST'\
+--header 'Authorization: Basic {bearer token}' \
+--header 'Content-Type: application/json' \
+```
 
 ## ServiceNow Approval step
 
