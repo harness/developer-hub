@@ -8,13 +8,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This topic describes the following operations:
-1. Create an environment and an infrastructure with single clicks.
-2. Automatically discover services on your cluster.
-3. Create network maps (with a single click).
-4. Choose the chaos experiments to run.
-5. View the resilience of chaos experiments.
+1. [Create an environment with single click.](#select-an-environment)
+2. [Create an infrastructure with single click.](#select-an-infrastructure)
+3. [Automatically discover services on your cluster.](#automatically-create-discovery-agent)
+4. [Create network maps with a single click.](#create-network-maps)
+5. [Choose the chaos experiments to run.](#create-chaos-experiments)
+6. [View the resilience of chaos experiments.](#view-resilience-score)
 
-## Before you begin
+## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
 * [Onboarding overview](/docs/chaos-engineering/get-started/onboarding/hce-onboarding.md)
@@ -22,24 +23,25 @@ This topic describes the following operations:
 
 ## Steps to discover services, create network maps, and execute chaos experiments
 
-1. Navigate to **Chaos** module and click **Overview** to find the onboarding option.
+1. Navigate to the **Chaos** module and select **Overview** to find the onboarding option.
 
     ![](./static/guided/select-cluster-0.png)
 
 ### Choose between automatic and customizable experiment creation
 
-2. In this topic, you will create network maps and execute chaos experiments, so select **No, I will choose**.
+2. Select **No, I will choose** as you will create network maps and execute chaos experiments in this step.
 
     ![](./static/guided/select-1.png)
 
 ### Select an environment
 
-3. As the first step, select an environment from a list of environments and click **Next**.
+3. Select an environment from a list of environments and click **Next**. It may take a while to set up the environment.
 
     ![](./static/guided/select-env-2.png)
 
 ### Select an infrastructure
-4. It may take a while to set up the environment. In the second step, select an infrastructure from the list of infrastructure and click **Next**.
+
+4. Select an infrastructure from the list of infrastructure and select **Next**.
 
     ![](./static/guided/select-infra-3.png)
 
@@ -47,7 +49,9 @@ This topic describes the following operations:
 
     ![](./static/guided/run-checks-4.png)
 
-6. HCE creates the discovery agent that will automatically discover services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To use a custom discovery agent, refer to [customize discovery agent](#customize-discovery-agent).
+### Automatically create Discovery Agent
+
+6. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To know how to use a custom discovery agent, go to [customize discovery agent](#customize-discovery-agent).
 
 7. Once you complete the steps mentioned earlier, HCE looks for services in your cluster (which may take a while).
 
@@ -59,14 +63,14 @@ This topic describes the following operations:
 
     ![](./static/guided/discovery-complete-7.png)
 
-9. HCE prompts you to select one of the options- whether you wish to create network maps automatically or not.
+9. HCE prompts you to select one of the options to create network maps automatically or not.
 
-### Choose between automatic and customizable network mao creation
+### Choose between automatic and customizable network map creation
 
 <Tabs>
  <TabItem value="Automatic">
 
-9a. Select **Yes** to automatically create network maps. Click **Create Network Maps**.
+9a. Select **Yes** to automatically create network maps. Select **Create Network Maps**.
 
     ![](./static/guided/create-map-8.png)
 
@@ -78,19 +82,19 @@ This topic describes the following operations:
 
 <TabItem value="Customize">
 
-9a. Select **No** to customize network map creation and click **Create Network Maps**.
+9a. Select **No** to customize network map creation and select **Create Network Maps**.
 
     ![](./static/guided/network-map-11.png)
 
-9b. Enter a **Network Map Name**, **Tag** (optional), and **Description** (optional). Click **Confirm**.
+9b. Enter a **Network Map Name**, **Tag** (optional), and **Description** (optional). Select **Confirm**.
 
     ![](./static/guided/new-map-12.png)
 
-9c. This creates network maps and lists them on the UI.
+This creates network maps and lists them on the UI.
 
     ![](./static/guided/save-map-14.png)
 
-9d. To select and save some or all the created network maps, click **Save network map**.
+9c. To select and save some or all the created network maps, select **Save network map**.
 
     ![](./static/guided/created-nm-15.png)
 
@@ -99,15 +103,15 @@ This topic describes the following operations:
 
 ### Create chaos experiments
 
-10. HCE lists the network maps for you to choose from. Select one and click **Next: Create Chaos Experiments**.
+10. HCE lists the network maps for you to choose from. Choose one and select **Next: Create Chaos Experiments**.
 
     ![](./static/guided/list-map-10.png)
 
-11. You can choose between **Basic**, **Intermediate**, and **Advanced** chaos experiments (categorized based on their blast radius). Click **Create Experiments** to initiate the process.
+11. You can choose between **Basic**, **Intermediate**, and **Advanced** chaos experiments (categorized based on their blast radius). Select **Create Experiments** to initiate the process.
 
     ![](./static/guided/choose-exp-17.png)
 
-12. Based on your choice, HCE creates chaos experiments and lists the network maps associated with the experiments on the UI. Click **Complete** or **Exit**.
+12. Based on your choice, HCE creates chaos experiments and lists the network maps associated with the experiments on the UI. Select **Complete** or **Exit**.
 
     ![](./static/guided/done-creating-19.png)
 
@@ -117,7 +121,7 @@ This topic describes the following operations:
 
     ![](./static/guided/sample-exp-20.png)
 
-14. Congratulations! You have successfully:
+Congratulations! You have successfully:
 
  - Discovered services
  - Created network maps
@@ -145,7 +149,7 @@ This topic describes the following operations:
 
     ![](./static/guided/discovery.png)
 
-2. Select an **environment**, an **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces and period of detecting the services. Select **Create New Discovery Agent**.
+2. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
 
     ![](./static/guided/add-details-discovery.png)
 
@@ -161,13 +165,14 @@ This topic describes the following operations:
 
 ### Delete Discovery Agent
 
-1. To delete a discovery agent, navigate to the agent to delete, and select **Delete**.
+1. To delete a discovery agent, navigate to the agent you want to delete, and select **Delete**.
 
     ![](./static/guided/delete-1.png)
 
 2. Select **Delete**.
 
     ![](./static/guided/confirm-2.png)
+
 ## Next steps
 
 Don't forget to check other walkthroughs! Some of them are listed below.
