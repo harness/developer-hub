@@ -326,12 +326,14 @@ EOS means the following:
 - Security fixes will still be addressed.
 
 - Product defects will not be addressed.
+- If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
 
 EOL means the following:
 
 - In addition to the EOS clauses, security fixes will not be addressed.
 
 #### Example delegate expiration
+
  For delegates with an immutable image type, the image tag is `yy.mm.verno`. A delegate version `24.05.84200` would reach EOS in November 2024 and EOL in January 2025.
 
 :::note
