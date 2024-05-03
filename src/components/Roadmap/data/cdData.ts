@@ -4,21 +4,6 @@ export const CdData: Horizon = {
     description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
-        tag: [],
-        title: "Kubernetes Traffic Shifting Support",
-        description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
-      },
-      {
-        tag: [{ value: "AWS" }],
-        title: "AWS OIDC Support for Deployments",
-        description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
-      },
-      {
-        tag: [{ value: "GCP" }],
-        title: "GCP OIDC Support for Deployments",
-        description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
-      },
-      {
         tag: [{ value: "AWS" }],
         title: "Lambda Deployments with Canary and traffic shifting",
         description: "Users can now perform Lambda Deployments with Canary",
@@ -59,7 +44,7 @@ export const CdData: Horizon = {
         description: "User’s can migrate their Spinnaker Pipelines to Harness",
       },
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}],
         title: "Continuous Verification using Manifest",
         description: "Users can now initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
       },
@@ -118,11 +103,6 @@ export const CdData: Horizon = {
         title: "Support Multiple Repository Sources",
         description: "Users can reference files in separate sources for their GitOps deployments.",
       },
-      // {
-      //   tag: [{value: "GitOps"}],
-      //   title: "Arm Support for GitOps Agent",
-      //   description: ""
-      // }
       {
         tag: [{value: "Continuous Verification"}],
         title: "Add Google Big Query as a New Health Source",
@@ -170,4 +150,24 @@ export const CdData: Horizon = {
       },
     ],
   },
+  "Released": {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [],
+        title: "Kubernetes Traffic Shifting Support",
+        description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
+      },
+      {
+        tag: [{ value: "AWS" }],
+        title: "AWS OIDC Support for Deployments",
+        description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
+      },
+      {
+        tag: [{ value: "GCP" }],
+        title: "GCP OIDC Support for Deployments",
+        description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
+      },
+    ]
+  }
 };
