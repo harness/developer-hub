@@ -605,18 +605,40 @@ AWS is the only supported installation infrastructure. If you do not install Har
 
 The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. 
   
-| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
-| --- | --- | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Cost categories | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Recommendations |✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+#### Connected Environment 
 
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
+| --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ✅ | ✅ | ✅ | 
+|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ✅ | ✅ | ✅ | 
+|Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | 
+|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | 
+|Asset governance | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator|❌ | ❌ | ❌ | ❌ | 
+|Commitment Orchestrator|❌ | ❌ | ❌ | ❌ | 
+|Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
+
+
+#### Air-gapped environment
+
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
+| --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ❌  | ❌  | ✅ |
+|Cost categories | ✅  | ❌  | ❌  | ✅ | 
+|Budgets | ✅ | ❌  | ❌  | ✅ | 
+|BI dashboards |✅  | ❌  | ❌  | ✅ | 
+|Anomaly detection  | ✅ | ❌  | ❌  | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | 
+|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | 
+|Asset governance | ❌ | ❌ | ❌ | ❌ | 
+|Cluster Orchestrator|❌ | ❌ | ❌ | ❌ | 
+|Commitment Orchestrator|❌ | ❌ | ❌ | ❌ | 
+|Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
 
 :::note
 - Perspective preferences are now supported on Harness SMP.
