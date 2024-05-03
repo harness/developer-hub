@@ -1,6 +1,7 @@
 ---
 title: Delegate image version support status
 description: This topic lists delegate image versions and their support status.
+sidebar_position: 1
 ---
 
 This topic lists supported delegate images and their status. Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). If delegates are past their EOS date, Harness does not support them. For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).

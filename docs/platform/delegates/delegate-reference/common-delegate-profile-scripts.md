@@ -1,7 +1,7 @@
 ---
 title: Common delegate initialization scripts
 description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature in coming soon. This topic provides information on script availability and som…
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: auveebqv37
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
