@@ -825,22 +825,22 @@ Deprecated `host` expressions (In NextGen, host properties are available using `
 
 | FirstGen | NextGen |
 | -------- | ------- |
-| `pcf.finalRoutes`    | `pcf.finalRoutes`     |
+| `pcf.finalRoutes`    | `pcf.finalRoutes`. Supported only for Blue Green deployment.  |
 | `pcf.oldAppRoutes`    | `pcf.oldAppRoutes`   |
 | `pcf.oldAppRoutes[0]`  | `pcf.oldAppRoutes[0]` |
-| `pcf.tempRoutes`    | `pcf.tempRoutes`   |
-| `pcf.newAppRoutes`     | `pcf.newAppRoutes`    |
+| `pcf.tempRoutes`    | `pcf.tempRoutes`. Supported only for Blue Green deployment   |
+| `pcf.newAppRoutes`     | `pcf.newAppRoutes`. Supported only for Basic and Canary deployments.     |
 | `pcf.newAppRoutes[0]`   | `pcf.newAppRoutes[0]`  |
-| `pcf.newAppName`   | `pcf.newAppName`      |
 | `pcf.newAppGuid`<br/>`host.pcfElement.applicationId`  | `pcf.newAppGuid`   |
-| `pcf.oldAppName`      | `pcf.oldAppName`   |
-| `pcf.activeAppName`     | `pcf.activeAppName`    |
-| `pcf.inActiveAppName`     | `pcf.inActiveAppName`   |
+| `pcf.newAppName`   | `pcf.newAppName`. Supported only for Basic and Canary deployments.  |
+| `pcf.oldAppName` | `pcf.oldAppName`. Supported only for Basic and Canary deployments. |
+| `pcf.activeAppName`     | `pcf.activeAppName`. Supported only for Blue Green deployment    |
+| `pcf.inActiveAppName`     | `pcf.inActiveAppName`. Supported only for Blue Green deployment   |
 | `pcf.oldAppGuid`    | `pcf.oldAppGuid`   |
 | `infra.pcf.cloudProvider.name`     | `infra.connector.name`  |
 | `infra.pcf.organization`    | `infra.organization`  |
 | `infra.pcf.space`     | `infra.space`  |
-| `host.pcfElement.displayName`    | Basic or Canary deployment: `pcf.newAppName`<br/>Blue Green deployment: `pcf.inActiveAppName`     |
+| `host.pcfElement.displayName`    | Basic or Canary deployment: `pcf.newAppName` <br/>Blue Green deployment: `pcf.inActiveAppName`,    |
 | `host.pcfElement.instanceIndex`    |    |
 
 </details>

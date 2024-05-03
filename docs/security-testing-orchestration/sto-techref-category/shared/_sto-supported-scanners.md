@@ -33,7 +33,7 @@ A code scanner can detect one or more of the following issue types in your sourc
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference">Open Source Vulnerabilities (OSV)</a> Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP Dependency Check</a> Orchestration, Ingestion</li>       
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>open-source option</i>) </a> Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>open-source option</i>) </a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
          </ul>
         </td>
@@ -56,6 +56,7 @@ A code scanner can detect one or more of the following issue types in your sourc
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Extraction, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>paid option</i>) </a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Code</a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Infrastructure as Code</a> Ingestion _(beta)_</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference">Snyk Open Source</a> Orchestration, Ingestion</li>
