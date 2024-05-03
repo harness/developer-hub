@@ -28,7 +28,7 @@ Required permission: `itil`.
 ### Create a ServiceNow ticket from a form templates
 
 Harness uses custom script APIs to create a ticket using form templates.
-Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
+Required permission: `itil`.
 
 :::note 
 This flow requires the Harness app to be installed in ServiceNow, so that it helps in debugging. Review [Important notes for using templates](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#important-notes-for-using-templates) for more details.
@@ -36,7 +36,9 @@ This flow requires the Harness app to be installed in ServiceNow, so that it hel
 
 ### Create a ServiceNow ticket from a standard templates
 
-This is supported only for change request ticket types.
+This is supported only for change request ticket types. 
+
+While fetching fields, if the `change_manager` permission is not available, then Harness fetches only the read-only fields mentioned `description`, `backout_plan`, `test_plan`, and `implementation_plan`.
 
 Required permission: `itil`, `x_harne_harness_ap.integration_user_role`.
 
