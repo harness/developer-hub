@@ -5,7 +5,12 @@ sidebar_label: ScoutSuite scanner reference
 sidebar_position: 350
 ---
 
-You can ingest configuration scan results from ScoutSuite. The following steps describe the workflow. 
+<DocsTag   text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
+
+You can ingest configuration scan results from [ScoutSuite](https://github.com/nccgroup/ScoutSuite). The following steps describe the workflow. 
 
 import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
 

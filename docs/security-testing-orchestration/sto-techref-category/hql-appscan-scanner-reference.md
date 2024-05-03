@@ -5,6 +5,11 @@ sidebar_label: HCL AppScan scanner reference
 sidebar_position: 215
 ---
 
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
+
+
 You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan). The following steps describe the workflow. 
 
 import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';

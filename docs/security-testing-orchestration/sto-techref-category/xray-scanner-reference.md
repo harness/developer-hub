@@ -5,8 +5,12 @@ sidebar_label: Jfrog Xray scanner reference
 sidebar_position: 420
 ---
 
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
 
-You can ingest scan results from JFrog Xray. The following steps describe the workflow. 
+You can ingest scan results for your container images from [JFrog Xray](https://jfrog.com/help/r/jfrog-security-documentation). The following steps describe the workflow. 
 
 import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 

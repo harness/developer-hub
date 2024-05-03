@@ -5,25 +5,25 @@ sidebar_label: Sysdig scanner reference
 sidebar_position: 395
 ---
 
-You can scan container images using [Sysdig Vulnerability engine](https://docs.sysdig.com/en/docs/sysdig-secure/vulnerabilities/). Create a Build or Security stage, add a Sysdig step, and then add the `setting:value` pairs as specified below.
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
+
+You can scan container images using [Sysdig Vulnerability engine](https://docs.sysdig.com/en/docs/sysdig-secure/vulnerabilities/). Add a Sysdig step to a Build or Security stage and then configure it as described below. 
+
 
 ## Important notes for running Sysdig scans in STO
 
-### Docker-in-Docker requirements
+- You need to run the scan step with root access if either of the following apply:
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
 
-<StoDinDRequirements />
+  - You need to add trusted certificates to your scan images at runtime. 
 
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-### Root access requirements 
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
-
-
-### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 

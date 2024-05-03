@@ -5,6 +5,10 @@ sidebar_label: Coverity settings reference
 sidebar_position: 125
 ---
 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<br/>
+<br/>
 
 You can ingest scan results from [Coverity Scan](https://scan.coverity.com/), a Synopsis service that scans open-source coding projects for developers that have registered their products with Coverity Scan. 
 

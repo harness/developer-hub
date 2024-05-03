@@ -5,11 +5,11 @@ sidebar_label: CodeQL scanner reference
 sidebar_position: 120
 ---
 
-<!-- hiding this topic until the integration is ready to GA -->
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
 
-You can scan your code repositories using [CodeQL](https://codeql.github.com/), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
-
-The following steps outline the basic workflow:
+You can scan your code repositories using [CodeQL](https://codeql.github.com/). The following steps outline the basic workflow:
 
 1. Run a CodeQL scan, either externally or as part of a Run step, and publish the results to SARIF.
 

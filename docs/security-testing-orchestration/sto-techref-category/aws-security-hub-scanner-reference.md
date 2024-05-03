@@ -5,7 +5,14 @@ sidebar_label: AWS Security Hub scanner reference
 sidebar_position: 50
 ---
 
-You can scan your configurations using [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html), which provides a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. 
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag   text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
+
+You can scan your application instances and configurations and ingest the scan results from [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html). 
 
 ## Important notes for running AWS Security Hub scans in STO
 
@@ -45,8 +52,13 @@ import StoSettingProductConfigName from './shared/step_palette/scan/_config-name
 #### Type
 
 import StoSettingScanTypeConfig  from './shared/step_palette/target/type/_config.md';
+import StoSettingScanTypeInst    from './shared/step_palette/target/type/_app.md';
 
+
+<StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
+
+
 
 
 #### Name 

@@ -5,8 +5,15 @@ sidebar_label: Tenable scanner reference
 sidebar_position: 400
 ---
 
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
 
-You can scan your application instances and ingest results from Tenable. The following steps describe the workflow. 
+You can scan your container images and application instances using [Tenable](https://docs.tenable.com/) and then ingest the results from Harness. The following steps describe the workflow. 
 
 import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
 
@@ -75,6 +82,9 @@ policy_type
 
 ```
 orchestratedScan
+```
+```
+dataLoad
 ```
 ```
 ingestionOnly

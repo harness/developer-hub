@@ -5,6 +5,12 @@ sidebar_label: Data Theorem scanner reference
 sidebar_position: 140
 ---
 
+<DocsTag   text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
+
 You can extract and ingest scan results for your code repositories from [Data Theorem](https://www.datatheorem.com/). The following steps describe the workflow. 
 
 import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';

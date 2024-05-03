@@ -5,6 +5,11 @@ sidebar_label: Reapsaw scanner reference scanner reference
 sidebar_position: 340
 ---
 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<br/>
+<br/>
+
 You can ingest scan results for your code repositories from Reapsaw. The following steps describe the workflow.
 
 import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';

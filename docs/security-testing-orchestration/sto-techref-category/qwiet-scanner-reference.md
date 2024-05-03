@@ -5,6 +5,13 @@ sidebar_label: Qwiet AI (formerly ShiftLeft) scanner reference
 sidebar_position: 330
 ---
 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
+
 You can scan your code repositories and ingest results from Qwiet. The following steps describe the workflow.
 
 import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
@@ -67,8 +74,6 @@ policy_type
 ```
 
 ##### Value
-
-`Must be one of the following. For supported values, go to the relevant scanner reference.`
 
 ```
 orchestratedScan

@@ -5,14 +5,16 @@ sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---
 
-Checkmarx offers an extensive suite of tools to support secure application development. Harness STO makes it easy to: 
-- Run automated Checkmarx scans of your code repositories, web applications, open-source components, and other targets.
-- Ingest, correlate, and deduplicate your scan results.
-- Use STO's extensive array of tools to [discover](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) and [fix](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) vulnerabilities quickly.  
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
 
 With Harness STO, you can do the following:
-- Run local SAST scans using the CxConsole CLI (orchestration mode).
-- Extract results from a CxSAST server (extraction mode).
+- Run local SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) (orchestration mode).
+- Extract results from a [Checkmarx SAST](https://checkmarx.com/resource/documents/en/34965-44074-checkmarx-sast.html) server (extraction mode).
 - [Ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO

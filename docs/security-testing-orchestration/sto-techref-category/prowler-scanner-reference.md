@@ -5,8 +5,13 @@ sidebar_label: Prowler scanner reference
 sidebar_position: 310
 ---
 
+<DocsTag text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
 
-You can scan your configurations and ingest results from [Prowler](https://github.com/prowler-cloud/prowler), an open-source tool for performing AWS, Azure, Google Cloud and Kubernetes security best practices assessments, audits, incident response, continuous monitoring, hardening, forensics readiness, and remediations.
+You can scan your configurations and ingest results from [Prowler](https://github.com/prowler-cloud/prowler). The default workflow is to add a Prowler step to a Build or Security stage and configure it as described below.
 
 ## Important notes for running Prowler scans in STO
 

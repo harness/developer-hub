@@ -5,8 +5,13 @@ sidebar_label: Semgrep settings reference
 sidebar_position: 20
 ---
 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto" />
+<br/>
+<br/>
 
-You can ingest scan results from [Semgrep](https://www.semgrep.com).
+You can scan your code repositories and ingest results from [Semgrep](https://www.semgrep.com).
 
 The following tutorials include detailed examples of how to run a [Semgrep scan](https://semgrep.dev/docs/cli-reference) in a Run step and ingest the results:
 - [SAST code scans using Semgrep](./sast-scan-semgrep)

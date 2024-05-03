@@ -5,6 +5,10 @@ sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
 sidebar_position: 320
 ---
 
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
+
 You can ingest your application scan results from Qualys Web Application Scanning (WAS) into STO. The following steps describe the workflow.
 
 import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';

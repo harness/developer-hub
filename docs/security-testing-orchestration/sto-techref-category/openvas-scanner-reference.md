@@ -5,7 +5,12 @@ sidebar_label: OpenVAS scanner reference
 sidebar_position: 280
 ---
 
-You can scan your applications and ingest scan results from OpenVAS. The following steps describe the workflow. 
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<br/>
+<br/>
+
+You can scan your application instances and ingest results from [OpenVAS](https://www.openvas.org/). The following steps describe the workflow. 
 
 import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
 
@@ -69,9 +74,6 @@ policy_type
 
 ##### Value
 
-```
-orchestratedScan
-```
 ```
 ingestionOnly
 ```

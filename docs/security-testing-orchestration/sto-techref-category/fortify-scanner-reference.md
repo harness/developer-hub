@@ -5,7 +5,11 @@ sidebar_label: Fortify Static Code Analyzer scanner reference
 sidebar_position: 170
 ---
 
-You can ingest repository scan results from Fortify. The following steps describe the workflow. 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
+<br/>
+
+You can ingest repository scan results from [Fortify Static Code Analyzer](https://www.microfocus.com/documentation/fortify-static-code-analyzer-and-tools/). The following steps describe the workflow. 
 
 import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
