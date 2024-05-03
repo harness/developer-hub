@@ -58,7 +58,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Fixed an issue where the new Nav in the Harness NextGen UI was unable to hide the **Launch FirstGen** button. (CDS-95845, ZD-61778)
 - Fixed an issue where the expressions field did not render properly. Harness now supports multi-line text fields for expressions. (CDS-95843)
 - Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
-
+- Fixed an issue where the drop-down capability for the **Region** field in the AWS Serverless Lambda **Infrastructure Details** page was missing. 
 
 ## April 2024
 
