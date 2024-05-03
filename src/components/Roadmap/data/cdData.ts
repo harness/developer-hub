@@ -10,16 +10,6 @@ export const CdData: Horizon = {
       },
       {
         tag: [{ value: "AWS" }],
-        title: "AWS OIDC Support for Deployments",
-        description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
-      },
-      {
-        tag: [{ value: "GCP" }],
-        title: "GCP OIDC Support for Deployments",
-        description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
-      },
-      {
-        tag: [{ value: "AWS" }],
         title: "Lambda Deployments with Canary and traffic shifting",
         description: "Users can now perform Lambda Deployments with Canary",
       },
@@ -132,6 +122,16 @@ export const CdData: Horizon = {
         tag: [],
         title: "Kubernetes Traffic Shifting Support",
         description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
+      },
+      {
+        tag: [{ value: "AWS" }],
+        title: "AWS OIDC Support for Deployments",
+        description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
+      },
+      {
+        tag: [{ value: "GCP" }],
+        title: "GCP OIDC Support for Deployments",
+        description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
       },
     ]
   },
