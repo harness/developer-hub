@@ -77,6 +77,8 @@ The following image shows information that is displayed on the **Output** tab of
 
 You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
 
+Configuring the Deployment Repo manifest in your service is required for this step to execute correctly.
+
 Harness fetches the ApplicationSet YAML file from its file store and identifies the related Harness GitOps app(s). For example: 
 
 ```
