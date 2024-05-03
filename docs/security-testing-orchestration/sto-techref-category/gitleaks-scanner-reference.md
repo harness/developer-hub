@@ -24,7 +24,7 @@ This section describes recommended best practices and references to useful infor
 
 ### Update your allowlist with inactive secrets
 
-You can specify an allowlist of secrets that are inactive, rotated, deactivated, or false positives. Gitleaks ignores these secrets during a scan. Set up your allowlist in a [.gitleaks.toml file](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) and place it at the root of your repository. For more information about this format, 
+You can specify an allowlist of secrets that are inactive, rotated, deactivated, or false positives. Gitleaks ignores these secrets during a scan. Set up your allowlist in a [.gitleaks.toml file](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) and place it at the root of your repository. 
 
 :::note
 
