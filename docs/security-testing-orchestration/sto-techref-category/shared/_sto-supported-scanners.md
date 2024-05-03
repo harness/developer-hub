@@ -131,7 +131,6 @@ For information about the specific vulnerabilities detected by each scanner, go 
         </td>
         <td valign="top">
          <ul>
-              <li><a href="/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference">AWS Security Hub</a> Extraction, Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference">Burp Enterprise</a> Orchestration, Extraction, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/hql-appscan-scanner-reference">HCL AppScan</a> Ingestion</li>
