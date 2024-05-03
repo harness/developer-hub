@@ -9,11 +9,6 @@ export const CdData: Horizon = {
         description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
       },
       {
-        tag: [],
-        title: "Kubernetes Traffic Shifting Support",
-        description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
-      },
-      {
         tag: [{ value: "AWS" }],
         title: "AWS OIDC Support for Deployments",
         description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
@@ -129,5 +124,15 @@ export const CdData: Horizon = {
         description: "Harness will support GitOps Deployments to pull secrets from an external secret manager.",
       },
     ],
+  },
+  "Released": {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [],
+        title: "Kubernetes Traffic Shifting Support",
+        description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
+      },
+    ]
   },
 };
