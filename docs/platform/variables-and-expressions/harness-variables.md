@@ -840,7 +840,7 @@ Deprecated `host` expressions (In NextGen, host properties are available using `
 | `infra.pcf.cloudProvider.name`     | `infra.connector.name`  |
 | `infra.pcf.organization`    | `infra.organization`  |
 | `infra.pcf.space`     | `infra.space`  |
-| `host.pcfElement.displayName`    | Basic or Canary deployment: `pcf.newAppName`<br/>Blue Green deployment: `pcf.inActiveAppName`     |
+| `host.pcfElement.displayName`    | Basic or Canary deployment: `pcf.newAppName`, `pcf.oldAppName` <br/>Blue Green deployment: `pcf.inActiveAppName`, `pcf.activeAppName`     |
 | `host.pcfElement.instanceIndex`    |    |
 
 </details>
