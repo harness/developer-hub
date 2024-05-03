@@ -16,6 +16,7 @@ EOS means the following:
 - Security fixes will still be addressed.
 
 - Product defects will not be addressed.
+- If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
 
 ### End of life (EOL)
 
