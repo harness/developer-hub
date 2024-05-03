@@ -121,7 +121,7 @@ ccm:
 
 ### Step 3: Handling Kubernetes Secrets
 
-On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as ``YWNjZXNzS2V5``. After changing secrets, kindly bounce the corresponding pods.
+On installing/upgrading charts you will see K8s secrets created with default value in the cluster. You need to update these secrets with the above noted values. Before updating the secrets you need to convert the secret into base64 encoded, let say the `HMAC_ACCESS_KEY` value is: `accessKey`, then it would it be stored as ``YWNjZXNzS2V5``. After changing secrets, we will provide directives to `kubectl delete` the corresponding pods in order for your release to inherit new changes.
 
 Command: ```echo -n "accessKey" | base64```
 
