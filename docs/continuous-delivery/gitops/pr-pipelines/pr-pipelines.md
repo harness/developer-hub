@@ -152,7 +152,7 @@ In **Manifest Details**, enter the following settings and then click **Submit**.
 
 ### Specify Deployment Repo manifest details
 
-Once the Release Repo manifests are correctly configured, we add the Deployment Repo manifests in a similar manner. This specifies the path to your ApplicationSet template.
+Follow these steps once the Release Repo manifests are correctly configured to specify the path to your ApplicationSet template.
 
 In **Manifest Details**, enter the following settings and then click **Submit**.
 1. **Manifest Name:** enter **Application Set**.
@@ -249,7 +249,7 @@ This step simply merges the new PR.
 
 The Fetch Linked Apps step provides app information, such as the app name, agent identifier, and URL to the Harness GitOps app. 
 
-Configuring the Deployment Repo manifest in your Service is required for this step to execute correctly.
+Configuring the Deployment Repo manifest in your service is required for this step to execute correctly.
 
 This information is displayed on the **Output** tab of the step.
 
