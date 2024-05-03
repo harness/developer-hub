@@ -706,7 +706,7 @@ helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 
 ## Handling Kubernetes secrets
 
-When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding.
+When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding. After changing secrets, we will provide directives to `kubectl delete` the corresponding pods in order for your release to inherit new changes.
 
 The following are the secrets specific to CCM services:
 
