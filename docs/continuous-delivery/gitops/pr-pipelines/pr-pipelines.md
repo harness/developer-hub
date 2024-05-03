@@ -70,8 +70,6 @@ Before updating your application's `config.json` values, Harness also resolves t
 
 Once you link GitOps clusters to an environment, whenever you select an environment in a pipeline, you can select the environment's linked GitOps clusters. This ensures that you can control where applications are to be updated even within the same environment.
 
-Next, you need to link your GitOps clusters to your Harness environment.
-
 Link the **engineering-dev** GitOps cluster to the `dev` environment and **engineering-prod** GitOps cluster to the `prod` environment.
 
 To link the Harness GitOps clusters with the `dev` environment, do the following:
