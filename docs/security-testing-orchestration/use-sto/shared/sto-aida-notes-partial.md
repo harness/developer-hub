@@ -7,7 +7,7 @@ Before you can use Harness AIDA, you must do the following:
 
 - AI will always provide an answer. However, if there is no known remediation within the model’s training, the answer might be invalid. For this reason, an AI suggestion might require further research to confirm its validity.
 
-- Before you implement an AI-generated suggestion, consider carefully the reliability and extent of the publicly-known information about the detected issue. The accuracy, reliability, and completeness of a suggestion depends on the public knowledge about that issue. An AI-generated suggestion is not guaranteed to remediate the issue and could possibly introduce other issues.
+- Before you implement an AI-generated suggestion, consider carefully the reliability and extent of the publicly-known information about the detected issue. The accuracy, reliability, and completeness of a suggestion depends on the public knowledge about that issue. An AI-generated suggestion is not guaranteed to remediate the issue and could introduce other issues.
 
 - You should also consider the suggestion's applicability to your specific target and use case. An issue might have no known remediation, especially if it was recently discovered. An issue might have multiple suggested remediations that are contradictory or applicable only to specific use cases.
 
