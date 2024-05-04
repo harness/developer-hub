@@ -29,6 +29,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## AWS Security Hub step configuration
 
+The default workflow is to add an AWS Security Hub step to a Build or Security stage and configure it as described below.
+
 ### Scan
 
 #### Scan Mode
