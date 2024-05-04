@@ -8,6 +8,6 @@
 
 3. Review the [Important notes for Custom Scan steps](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and relevant information.
 
-   If you're running an orchestrated or extraction scan on a Kubernetes or Docker build infrastructure, you need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to the stage. 
+   If you're setting up an [`orchestratedScan`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) or a [`dataLoad`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto) scan on a Kubernetes or Docker build infrastructure, you need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to the stage. 
 
 4. Add the following `key:value` pairs to **Settings**.

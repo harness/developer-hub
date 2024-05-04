@@ -82,10 +82,8 @@ ingestionOnly
 ```
 
 
-
 #### Product config name
 
-Required for orchestration scans. 
 
 ##### Key
 ```
@@ -96,6 +94,20 @@ product_config_name
 
 ```yaml
 default
+```
+
+### Product access 
+
+These settings are available to access the Clair API when `policy_type` is `orchestratedScan`. 
+
+```
+product_url
+```
+```
+product_access_id
+```
+```
+product_access_token
 ```
 
 
