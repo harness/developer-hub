@@ -24,6 +24,40 @@ import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that
   - [Security Testing Orchestration FAQs](/docs/faqs/security-testing-orchestration)
   - [Optimize STO pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/optimize-sto-pipelines)
 
+## Workflow descriptions
+
+<details>
+<summary>Ingestion-only workflows</summary>
+
+This workflow applies to scanner integrations that support Ingestion mode only.
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+<details>
+<summary>Orchestration/extraction workflows for code repositories</summary>
+
+This workflow applies to scanner integrations that support Ingestion mode only.
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow-repo.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>All other workflows</summary>
+
+This workflow applies to scanner integrations that support Ingestion mode only.
+
+import CustomScanWorkflow from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflow />
+
+</details>
 
 ## Custom Scan settings reference
 
@@ -175,6 +209,12 @@ import CustomScanContainer from './shared/custom-scan/_container.md';
 import CustomScanAppInstance from './shared/custom-scan/_dast.md';
 
 <CustomScanAppInstance />
+
+### Configurations 
+
+import CustomScanAppConfig from './shared/custom-scan/_config.md';
+
+<CustomScanAppConfig />
 
 ### Ingestion file
 
