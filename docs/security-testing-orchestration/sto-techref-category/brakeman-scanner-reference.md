@@ -5,13 +5,13 @@ sidebar_label: Brakeman scanner reference
 sidebar_position: 80
 ---
 
-<DocsTag   text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag   text="Code repo scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"  link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails applications. 
+You can scan your code repositories using [Brakeman](https://brakemanscanner.org/) and ingest your results into Harness STO. 
 
 
 ## Important notes for running Brakeman scans in STO

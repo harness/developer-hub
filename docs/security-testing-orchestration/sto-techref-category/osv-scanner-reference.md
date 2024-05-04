@@ -11,7 +11,7 @@ sidebar_label: Open Source Vulnerabilities (OSV) scanner reference
 <br/>
 <br/>
 
-You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/). OSV supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
+You can scan your code repositories using [Open Source Vulnerabilities (OSV)](https://google.github.io/osv-scanner/) and ingest your results into Harness STO. OSV supports a [variety of languages and lockfiles](https://google.github.io/osv-scanner/supported-languages-and-lockfiles).
 
 
 ## Important notes for running OSV scans in STO 
@@ -24,22 +24,12 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
 -->
 
-<!-- 
-### Docker-in-Docker requirements
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
--->
-
 
 ### Root access requirements 
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
-
 
 
 ### For more information

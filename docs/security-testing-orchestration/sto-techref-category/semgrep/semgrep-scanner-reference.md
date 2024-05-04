@@ -7,14 +7,14 @@ sidebar_position: 20
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can ingest scan results from [Semgrep](https://www.semgrep.com). 
+You can scan your code repositories using [Semgrep](https://www.semgrep.com) and ingest the results into STO. 
 
 For a quick introduction, go to the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) tutorial.
 

@@ -11,7 +11,7 @@ sidebar_position: 290
 <br/>
 <br/>
 
-You can scan your code repositories and ingest results from [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/).
+You can scan your code repositories using [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) and ingest your scan results into Harness STO.
 
 
 ## Important notes for running OWASP scans in STO
@@ -28,7 +28,6 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 ## OWASP step configuration
 
 The recommended workflow is to add an OWASP step to a Security or Build stage and then configure it as described below. 
-
 
 ### Scan Mode
 

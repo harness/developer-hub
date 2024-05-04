@@ -5,16 +5,14 @@ sidebar_label: Coverity settings reference
 sidebar_position: 125
 ---
 
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
-<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Code repo scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"  link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-You can ingest scan results from [Coverity Scan](https://scan.coverity.com/), a Synopsis service that scans open-source coding projects for developers that have registered their products with Coverity Scan. 
-
+You can ingest scan results from [Coverity Scan](https://scan.coverity.com/) into Harness STO. 
 
 ## Important notes for running Coverity scans in STO
-
 
 ### Root access requirements
 

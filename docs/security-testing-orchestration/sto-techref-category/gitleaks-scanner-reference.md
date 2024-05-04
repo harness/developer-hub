@@ -7,12 +7,12 @@ sidebar_position: 200
 ---
 <DocsTag   text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
 
-You can scan your code repositories and ingest results using [Gitleaks](https://github.com/gitleaks). 
+You can scan your code repositories using [Gitleaks](https://github.com/gitleaks) and ingest your results into Harness STO. 
 
 Gitleaks can publish results in [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning), an open data format supported by many scan tools. 
 
