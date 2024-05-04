@@ -153,6 +153,8 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 These settings are available to access your OpenVAS SaaS instance when `policy_type` is `orchestratedScan`. 
 
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
+
 #### Product access keys
 ```
 product_domain

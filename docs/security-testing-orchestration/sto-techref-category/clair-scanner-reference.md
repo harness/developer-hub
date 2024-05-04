@@ -100,6 +100,8 @@ default
 
 These settings are available to access the Clair API when `policy_type` is `orchestratedScan`. 
 
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords and tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
+
 ```
 product_url
 ```

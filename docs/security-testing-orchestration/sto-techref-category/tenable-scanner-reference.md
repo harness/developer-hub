@@ -144,7 +144,7 @@ import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
 These settings are available to access your Tenable instance when `policy_type` is `orchestratedScan`. 
 
-You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access tokens and access them using the format `<+secrets.getValue("project.my-secret")>`. 
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
 
 #### Product access keys
 ```

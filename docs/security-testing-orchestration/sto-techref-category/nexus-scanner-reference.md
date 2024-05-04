@@ -132,6 +132,8 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 These settings are available to access your NexusIQ SaaS instance when `policy_type` is `orchestratedScan`. 
 
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
+
 #### Product domain
 
 The scanner name. Required for all Custom Scan steps. 
@@ -157,7 +159,7 @@ product_access_id
 
 ##### Value
 
-The password used to log in to the NexusIQ UI.
+The Harness secret for the  password used to log in to the NexusIQ UI.
 
 
 #### Product access token
@@ -170,9 +172,9 @@ product_access_token
 
 ##### Value
 
-The password used to log in to the NexusIQ UI. (This is not an API access token.)
+The Harness secret for the password used to log in to the NexusIQ UI. (This is not an API access token.)
 
-You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access token and access it using the format `<+secrets.getValue("project.my-secret")>`. 
+
 
 
 
