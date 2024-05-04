@@ -12,11 +12,11 @@ sidebar_position: 250
 <br/>
 <br/>
 
-You can scan your code repositories and ingest results from Nexus IQ.
+You can scan your code repositories and ingest results from [Nexus IQ](https://docs.developer.tech.gov.sg/docs/ship-hats-docs/tools/nexus-iq/nexus-iq-overview).
 
 To set up a Nexus IQ scan:
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
 
 <StoLegacyWorkflow />
 

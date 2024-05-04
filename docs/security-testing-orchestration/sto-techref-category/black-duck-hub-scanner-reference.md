@@ -13,7 +13,7 @@ sidebar_position: 70
 <br/>
 <br/>
 
-You can scan your repositories and container images using [Black Duck Hub](https://sig-product-docs.synopsys.com/bundle/bd-hub/page/Welcome.html). 
+You can scan your repositories and container images using [Black Duck Hub](https://sig-product-docs.synopsys.com/bundle/bd-hub/page/Welcome.html) and ingest the results into Harness STO. 
 
 <!-- https://sig-product-docs.synopsys.com/bundle/bd-hub/page/Administration/Hub101.html -->
 
