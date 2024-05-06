@@ -93,11 +93,11 @@ The following deprecated API endpoints are longer supported:
 
 - Local login was failing for users assigned admin permissions via a user group. The method to verify if a user is an account admin only considered direct user assignments and did not account for user group roles. Revised the validation process to include both user and user group assignments when checking for admin status. Now, to be recognized as an admin, users must have the specific role assignments outlined below; assigning the `_account_admin` role alone is no longer sufficient for admin rights. 
 
-   - Role: `_account_admin`
+   - Role: `_account_admin`.
 
-   Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
+   - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
 
-   This item requires Harness Delegate version 24.04.82900. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate)
+   This item requires Harness Delegate version 24.04.82900. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## April 2024
 
