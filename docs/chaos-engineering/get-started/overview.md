@@ -27,8 +27,10 @@ A **formal definition** is: _"Chaos engineering is the discipline of performing 
 ![](./static/overview/chaos-eng-steps.png)
 
 :::tip
-Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected. This brings you to a new concept- **Chaos Engineering**.
+Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected.
 :::
+
+Chaos experiments target a steady-state system and simulate conditions that might induce failure in components such as infrastructure, networks, and services. For example, a chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
 
 ## Why is chaos engineering important?
 
@@ -62,10 +64,10 @@ Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for y
 ### Standard chaos experiment flow of control
 
 The standard chaos experimentation flow involves the following steps:
-1. Identify the steady state of the system or application under test;
+1. Identify the steady state of the system or application under test and specify its service-level objectives (SLOs);
 2. Hypothesize around the impact a particular fault or failure would cause;
 3. Inject this failure (or chaos fault) in a controlled manner (with a pre-determined and minimal blast radius);
-4. Validate whether the hypothesis is proven, and take appropriate actions if a weakness is found.
+4. Validate whether the hypothesis is proven and if system meets the SLOs, and take appropriate actions if a weakness is found.
 
 ## Benefits of HCE
 

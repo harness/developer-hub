@@ -20,7 +20,7 @@ In this tutorial, you will apply chaos on a sample boutique application on Kuber
 
     ![HCE Overview](./static/first-chaos/hce-overview.png)
 
-### Step 2: Add a chaos environment
+### Step 2: Create an environment
 
 2. A chaos experiment is executed in a chaos infrastructure that is associated with an **environment**. To create a new environment, navigate to the **Environments** page, and choose a **New Environment**. Specify the environment name, a description (optional), and tags (optional). Select the environment type, **Production** or **Non-Production**. Finally, select **Create** to add the new environment.
 
@@ -30,7 +30,7 @@ In this tutorial, you will apply chaos on a sample boutique application on Kuber
 You can also select one of the environments from the list of environments if it is available instead of creating an environment.
 :::
 
-### Step 3: Add a chaos infrastructure
+### Step 3: Create an infrastructure
 
 3. Once you have created an environment, you can add chaos infrastructure to it. Depending on your application, you can select **Kubernetes**, **Linux** or **Windows**. In this tutorial, you can select a Kubernetes infrastructure, which you will use to inject faults into Kubernetes resources. You can use an existing infrastructure or create a new one. In this tutorial, you can create a new infrastructure. For this, select **Enable chaos**.
 
@@ -262,4 +262,5 @@ You can see that the value expected and the value obtained don't match. Hence, t
 
 Congratulations on running your first chaos experiment! Want to know how to remediate the application so as to pass the experiment run and probe checks? Increase the experiment pods to at least two so that at least one deployment pod survives the pod delete fault and helps the application stay afloat. Try running it on your own!
 
-Once you've explored this, head over to the next tutorial, where you'll learn how to [create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md) and execute them for the same target application.
+Below are some recommendations for you:
+- [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md)
