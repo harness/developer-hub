@@ -356,11 +356,14 @@ pipeline:
 
 [GitHub's merge queue feature](https://github.blog/2023-07-12-github-merge-queue-is-generally-available/) is compatible with Harness webhook triggers. Use the following settings to configure a merge queue trigger:
 
-- Trigger type: GitHub webhook
-- [Payload Type](/docs/platform/triggers/triggers-reference/#payload-type): GitHub.
-- [Connector](/docs/platform/triggers/triggers-reference/#connector): Your Harness GitHub connector.
-- [Event](/docs/platform/triggers/triggers-reference#event-and-actions): Push.
-- [Conditions](/docs/platform/triggers/triggers-reference/#conditions-settings): Configure conditions that detect branches with the GitHub temporary merge queue branch name prefix (`gh-readonly-queue`) and a non-empty commit SHA for that branch. The [Harness expression](/docs/platform/triggers/triggers-reference/#reference-payload-fields) `<+trigger.payload.head_commit>` gets the commit SHA from the webhook payload for the temporary merge queue branch push event.
+
+**Configuration**: You can configure to trigger pipelines that responds automatically to Git events.
+  - Trigger type: GitHub webhook
+  - [Payload Type](/docs/platform/triggers/triggers-reference/#payload-type): GitHub.
+  - [Connector](/docs/platform/triggers/triggers-reference/#connector): Your Harness GitHub connector.
+  - [Event](/docs/platform/triggers/triggers-reference#event-and-actions): Push.
+
+**[Conditions](/docs/platform/triggers/triggers-reference/#conditions-settings)**: Configure conditions that detect branches with the GitHub temporary merge queue branch name prefix (`gh-readonly-queue`) and a non-empty commit SHA for that branch. The [Harness expression](/docs/platform/triggers/triggers-reference/#reference-payload-fields) `<+trigger.payload.head_commit>` gets the commit SHA from the webhook payload for the temporary merge queue branch push event.
   - [Branch Condition](/docs/platform/triggers/triggers-reference/#branch-and-changed-files-conditions): **Branch Name** **Starts With** `gh-readonly-queue`.
   - [Payload Condition](/docs/platform/triggers/triggers-reference/#payload-conditions): `<+trigger.payload.head_commit>` **Not Equals** `null`.
 
@@ -408,6 +411,10 @@ trigger:
               spec:
                 branch: <+trigger.branch>
 ```
+
+Another way to queue a pipeline execution is by adding a [Queue](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/) step. After [configuring the Git webhook trigger](#configure-the-trigger), add a Queue step in your pipeline at the beginning of the execution. In the Queue step's Step Parameters, in **Run next queued execution after completion of**, select **Pipeline** to initiate the queue and hold the pipeline until the previous step completes before the current pipeline starts. 
+
+![](./static/queue-pipeline.png)
 
 ## Troubleshoot Git event triggers
 
