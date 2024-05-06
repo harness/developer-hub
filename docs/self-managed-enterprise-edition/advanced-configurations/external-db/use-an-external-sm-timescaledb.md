@@ -626,7 +626,7 @@ Previously restricted to GMT, `pg_cron` now enables you to adapt timezones by se
 cron.timezone = 'PRC'
 ```
 
-After restarting PostgreSQL, execute `CREATE EXTENSION pg_cron;` as a superuser to create the necessary pg_cron functions and metadata tables:
+After restarting PostgreSQL, execute `CREATE EXTENSION pg_cron;` as a superuser to create the necessary `pg_cron` functions and metadata tables:
 
 ```sql
 -- run as superuser:
