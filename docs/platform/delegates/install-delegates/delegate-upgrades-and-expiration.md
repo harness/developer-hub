@@ -300,15 +300,6 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:24.04.82804` image.
 
-## Delegate expiration policy
-
-Delegates expire after 6 months from the release of the delegate image on Docker Hub, with 2-month upgrade period. For more information, go to [Expiration support policy](#expiration-support-policy).
-
-Delegates do not stop working after expiration. Because delegates are only backward-compatible, they might have issues if the back end has moved too far ahead. Harness recommends that you upgrade your delegates before they expire. For more information about delegate releases, go to the [Delegate release notes](/release-notes/delegate).
-
-:::info important
-If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. You must update the delegate every 8 months.
-:::
 
 ### Delegate expiration support policy
 
