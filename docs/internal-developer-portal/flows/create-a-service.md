@@ -212,7 +212,7 @@ Now that our pipeline is ready to execute when a project name and a GitHub repos
 <Tabs>
 <TabItem value="GitHub">
 
-[Source](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/nextjs/template.yaml)
+[Source](https://github.com/harness-community/idp-samples/blob/main/template-github.yaml)
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -277,6 +277,7 @@ spec:
 </TabItem>
 <TabItem value="GitLab">
 
+[Source](https://github.com/harness-community/idp-samples/blob/main/template-gitlab.yaml)
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
