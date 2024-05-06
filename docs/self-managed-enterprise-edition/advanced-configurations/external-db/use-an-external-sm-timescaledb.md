@@ -566,13 +566,13 @@ To enable TLS, do the following:
 
 ## Enable the pg_cron extension
 
-To utilize the power of scheduled tasks within your PostgreSQL database, you must enable the `pg_cron` extension on your database instance.
+To utilize scheduled tasks within your PostgreSQL database, you must enable the `pg_cron` extension on your database instance.
 
 `pg_cron` functions as a cron-based job scheduler that operates internally within the database as an extension. It adheres to the familiar syntax of regular cron while empowering you to schedule PostgreSQL commands directly from within your database environment.
 
 This approach offers more efficiency compared to relying solely on TimescaleDB. With the capabilities of `pg_cron`, the system efficiently schedules and executes aggregation tasks essential for generating metric data.
 
-### Installation of pg_cron on Postgres database
+### Install pg_cron on your Postgres database
 
 For installations on Red Hat, CentOS, Fedora, or Amazon Linux running PostgreSQL 16 using the PostgreSQL Global Development Group (PGDG):
 
