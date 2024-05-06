@@ -247,7 +247,7 @@ metadata:
 
 To use a Kubernetes Service Account (SA) and token, you need to use either an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
 
-To create a new SA token and decode it to base64 format using `kubectl`, do the following:
+To obtain the service account token using kubectl, do the following:
 
 1. Create a SA in Kubernetes using the `kubectl create serviceaccount` command.
 
