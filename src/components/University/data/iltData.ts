@@ -35,4 +35,15 @@ export const ilt: IltCardItem[] = [
     tileType: tileType.normal,
     cardType: cardType.ILT,
   },
+  {
+    title: "Security Testing Orchestration",
+    module: MODULES.sto,
+    type: type.user,
+    description:
+      "Deep dive into advanced Security Testing Ochestration concepts using multiple scanning technologies.",
+    version: "Harness STO Enterprise Plan",
+    link: "https://university-registration.harness.io/ilt-security-testing-orchestration",
+    tileType: tileType.normal,
+    cardType: cardType.ILT,
+  },
 ];
