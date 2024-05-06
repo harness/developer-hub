@@ -38,9 +38,10 @@ This flow requires the Harness app to be installed in ServiceNow. Review [Import
 
 This is supported only for change request ticket types. 
 
-While fetching fields, if the `change_manager` permission is not available, then Harness considers the `description`, `backout_plan`, `test_plan`, and `implementation_plan` fields as read-only. 
+While fetching fields, if the `change_manager` permission is not available, then Harness considers the `description`, `backout_plan`, `test_plan`, and `implementation_plan` fields as read-only instead of adhering to ServiceNow properties. 
 
 Required permission: `itil`.
+
 Required role: `change_manager`.
 
 Harness uses the following API to create a ServiceNow ticket from templates:
