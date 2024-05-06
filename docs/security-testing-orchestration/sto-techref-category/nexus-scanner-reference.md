@@ -34,7 +34,7 @@ These settings are required for most scanners. For more information, go to the r
 
 #### Product name
 
-The scanner name. Required for all Custom Scan steps. 
+The scanner name. This is required for all Custom Scan steps. 
 
 ##### Key
 ```
@@ -136,7 +136,7 @@ You should [create Harness text secrets](/docs/platform/secrets/add-use-text-sec
 
 #### Product domain
 
-The scanner name. Required for all Custom Scan steps. 
+The scanner name. This is required for all Custom Scan steps. 
 
 ##### Key
 ```
@@ -149,7 +149,7 @@ The URL of your NexusIQ instance.
 
 #### Product access Id
 
-The scanner name. Required for all Custom Scan steps. 
+The scanner name. This is required for all Custom Scan steps. 
 
 ##### Key
 
@@ -159,7 +159,7 @@ product_access_id
 
 ##### Value
 
-The Harness secret for the  password used to log in to the NexusIQ UI.
+The Harness secret for the password used to log in to the NexusIQ UI.
 
 
 #### Product access token

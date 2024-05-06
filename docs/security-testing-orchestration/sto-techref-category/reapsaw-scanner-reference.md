@@ -33,7 +33,7 @@ These settings are all required.
 
 #### Product name
 
-The scanner name. Required for all Custom Scan steps. 
+The scanner name. This is required for all Custom Scan steps. 
 
 ##### Key
 ```

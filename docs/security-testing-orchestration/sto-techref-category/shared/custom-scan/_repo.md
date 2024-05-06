@@ -9,7 +9,7 @@ These settings apply to Custom Scan steps when both of these conditions are true
 
 <!-- TOC end -->
 
-#### Repository Project
+#### Repository project
 
 ###### Key
 
@@ -22,7 +22,7 @@ The name of the repo to scan. To specify the repo URL, edit  the [Codebase Confi
 
 In most cases, this should match the repo name used in your Git provider.
 
-#### Repository Branch
+#### Repository branch
 
 
 ##### Key

@@ -149,7 +149,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Domain 
 
-The URL of the SonarQube server. Required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
+The URL of the SonarQube server. This is required for Orchestration and Extraction scans. This value corresponds to the [`sonar.host.url`](https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/analysis-parameters/#mandatory-parameters) setting in SonarQube.
 
 
 import StoSettingAuthDomain from './shared/step_palette/auth/_domain.md';

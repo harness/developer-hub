@@ -34,7 +34,7 @@ These settings are required for most scanners. For more information, go to the r
 
 #### Product name
 
-The scanner name. Required for all Custom Scan steps. 
+The scanner name. This is required for all Custom Scan steps. 
 
 ##### Key
 ```

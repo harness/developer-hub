@@ -19,7 +19,7 @@ target_name
 A user-defined label for the code repository, container, application, or configuration to scan. Specify a unique, descriptive name. This makes it much easier to navigate your scan results in the STO UI.
 
 
-#### Target Variant
+#### Target variant
 
 ##### Key
 
