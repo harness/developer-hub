@@ -19,6 +19,8 @@ In Harness SSCA, when you configure your pipeline to generate and attest SLSA pr
 
 ![SLSA Generation overview](./static/slsa-gen-overview.png "SLSA Generation overview")
 
+<DocVideo src="https://youtu.be/shU2tbSoC1k?si=ZHftRb_gpnCHEtUi" />
+
 ### Use CI Build and Push steps
 
 To generate the SLSA provenance and attestation, it's crucial to understand that this process is exclusive to the use of the Build and Push steps in Harness. This means provenance generation and attestation only occur when building your container images through these specific steps, Build and Push to [Docker](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/), [ACE](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-acr/), [GCR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-gcr/), and [ECR](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-ecr-step-settings/). You can use these steps in the execution tab for building your image.

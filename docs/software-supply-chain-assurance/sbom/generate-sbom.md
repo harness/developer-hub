@@ -15,6 +15,7 @@ A Software Bill of Materials (SBOM) is an exhaustive list of all components, lib
 
 This document elaborates on utilizing the SBOM Orchestration step for SBOM generation. If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
+<DocVideo src="https://youtu.be/k5TAO1RLJvY?si=y_mC2cq5YD8MziK-" />
 
 ## Requirements
 ### Prepare a pipeline
