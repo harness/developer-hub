@@ -349,7 +349,7 @@ This YAML code is governed by Backstage. You can change the name and description
 
 ![](./static/template-1.png)
 ![](./static/template-2.png)
-![](./static/template-3.png)
+
 
 Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 
