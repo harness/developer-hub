@@ -35,7 +35,7 @@ The following Harness modules are directly involved in a developer's day-to-day 
 - **Code Repository (CODE):** All users on the Harness Platform, who have permission to access Harness CODE module are considered CODE Developers and consume a license.
 - **Continuous Integration (CI):** All users on the Harness Platform, who have permission to access Harness CI module are considered CI Developers and consume a license.
 - **Internal Developer Portal (IDP):** All users on the Harness Platform, who have permission to access Harness IDP module are considered IDP Developers and consume a license.
-- **Feature Flags (FF):** All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, will be considered as FF Developers and will consume a license.
+- **Feature Flags (FF):** All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered FF Developers and consume a license.
 - **Software Engineering Insights (SEI):** All users read from a configured SCM (Source Code Management) tool are considered SEI Developers and consume a license.
 
 ### Modules with no direct developer tracking (consumption entitlements)
