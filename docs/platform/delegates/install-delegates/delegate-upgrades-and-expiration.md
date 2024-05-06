@@ -301,9 +301,11 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
     The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:24.04.82804` image.
 
 
-### Delegate expiration support policy
+## Delegate expiration support policy
 
-Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released.
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). 
+
+Delegates do not stop working after expiration. Because delegates are only backward-compatible, they might have issues if the backend has moved too far ahead. Harness recommends that you upgrade your delegates before they expire.
 
 | Release | EOS | EOL |
 | --- | --- | --- |
