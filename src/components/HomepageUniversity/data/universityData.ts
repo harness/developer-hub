@@ -61,6 +61,7 @@ export const university: CardItem[] = [
       "Seamlessly integrate security scanners and orchestrate tests anywhere across your build pipelines.",
     link: "/university/sto",
     numberOfCerts: 2,
+    ILT_available: true,
   },
   {
     title: "Chaos Engineering",
