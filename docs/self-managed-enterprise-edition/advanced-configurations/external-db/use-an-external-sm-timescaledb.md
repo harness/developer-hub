@@ -610,7 +610,7 @@ To ensure the `pg_cron` background worker starts alongside PostgreSQL, add `pg_c
 shared_preload_libraries = 'pg_cron'
 ```
 
-By default, the `pg_cron` background worker assumes its metadata tables exist within the "postgres" database. However, you can customize this behavior by setting the `cron.database_name` configuration parameter in the `postgresql.conf` file:
+By default, the `pg_cron` background worker assumes its metadata tables exist within the Postgres database. However, you can customize this behavior by setting the `cron.database_name` configuration parameter in the `postgresql.conf` file:
 
 ```conf
 # add to postgresql.conf
@@ -618,7 +618,7 @@ By default, the `pg_cron` background worker assumes its metadata tables exist wi
 cron.database_name = 'postgres'
 ```
 
-Previously restricted to GMT time, `pg_cron` now enables you to adapt timezones by setting `cron.timezone` in the `postgresql.conf` file. For example:
+Previously restricted to GMT, `pg_cron` now enables you to adapt timezones by setting `cron.timezone` in the `postgresql.conf` file. For example:
 
 ```conf
 # add to postgresql.conf
