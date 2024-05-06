@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-05-01T10:00
+date: 2024-05-06T10:00
 sidebar_position: 5
 ---
 
@@ -23,7 +23,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## May 2024
 
-## Version 1.36.2
+## Version 1.36.5
 
 #### Fixed issues
 
