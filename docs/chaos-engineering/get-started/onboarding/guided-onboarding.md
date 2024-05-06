@@ -82,7 +82,7 @@ This topic describes the following operations:
 
 <TabItem value="Customize">
 
-9a. Select **No** to customize network map creation and select **Create Network Maps**.
+9a. Select **No, I will choose** to customize network map creation and select **Create Network Maps**.
 
     ![](./static/guided/network-map-11.png)
 
