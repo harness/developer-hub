@@ -36,6 +36,7 @@ For supported platforms and technologies by module, go to the module documentati
 * [What's supported in CET](/docs/continuous-error-tracking/whats-supported)
 * [What's supported in IDP](/docs/internal-developer-portal/whats-supported)
 * [What's supported in SEI](/docs/software-engineering-insights/sei-supported-platforms)
+* [What's supported in IACM](/docs/infra-as-code-management/whats-supported)
 
 For supported platforms and technologies for SMP, go to [What's supported in Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-supported-platforms).
 
