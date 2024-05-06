@@ -11,7 +11,7 @@ This topic walks you through the steps required to set up CCM for AWS in a self-
 
 **Figure: AWS CCM Self-Managed Enterprise Edition architecture diagram**
 
-<DocImage path={require('./static/aws-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/aws-smp-arch.png')} width="90%" height="90%" title="Click to view full size image" />
 
 You need to perform the following tasks to set up CCM for AWS: 
 
