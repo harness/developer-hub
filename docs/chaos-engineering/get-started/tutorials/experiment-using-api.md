@@ -389,7 +389,7 @@ Before injecting chaos, the cart page will be accessible from the frontend, as s
 
 #### Create the chaos experiment and workflow using APIs
 
-- [Create the chaos experiment](docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments) and specify the infrastructure ID that you created earlier.
+- [Create the chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md) and specify the infrastructure ID that you created earlier.
 
 - This allows you to create your chaos experiment with the [pod delete fault](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete.md) that is configured to target the online boutique application.
 
