@@ -811,6 +811,7 @@ figure p {
 }
 
 /*== start of code for tooltips ==*/
+
 .tool {
   display: inline-block;
 }
@@ -878,6 +879,7 @@ figure p {
     opacity: 1;
   }
 }
+/*== end of code for tooltips ==*/
 
 @media screen and (max-width: 996px) {
   #search-button {
