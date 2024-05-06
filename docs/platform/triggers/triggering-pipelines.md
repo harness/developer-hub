@@ -465,7 +465,11 @@ For more information, go to [Harness Git Experience Overview](/docs/platform/git
 
 
 ## Skipping CI/CD Pipeline Builds
+:::note
 
+Currently, the following service dashboard functionality is behind the feature flag `CDS_SKIP_WEBHOOK_TRIGGER_EXECUTION_ON_SPECIAL_KEYWORDS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 You can skip CI/CD pipeline builds based on specified keywords within commit messages. It ensures that builds are triggered only when necessary, enhancing efficiency in development workflows.
 
 ### Usage
