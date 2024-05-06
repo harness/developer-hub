@@ -7476,51 +7476,43 @@ The file will not be cleared as they have been downloaded explicitly, however yo
 The option is used for filtering remote pipelines. If there are no remote pipelines executions, this option will not be highlighted.
 
 #### What authentication flows (grant types) are supported for AWS and GCP OIDC?
-For the Kubernetes Connector, We go through the client credentials. For AWS and GCP we have implemented it slightly differently. For AWS OIDC is also implicit - Use OIDC: Connect to AWS with OIDC. 
+For the Kubernetes connector, we go through the client credentials. For AWS and GCP we have implemented it slightly differently. For AWS OIDC is also implicit - Use OIDC: Connect to AWS with OIDC. 
 
 To do this you will need to create an OIDC identity provider in AWS and add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS.
 
-#### Can you tell me which specific authentication flows are supported for OIDC authentication to Kubernetes?
-Currently, Harness supports only Password authentication flow ( OAuth 2.0 Password Grant Type ) https://oauth.net/2/grant-types/password/
+#### What authentication is supported to connect Harness PODS and Linux Target server?
+For SSH Deployments, Harness uses an SSH Key to authenticate to the Linux host to perform deployments. The Delegate can run in Kubernetes as long as the Kubernetes cluster has access to the target Linux hosts.
 
-#### I am assuming based on the UI prompting for a client ID and client secret that it should be a Client Credential authentication flow, and that makes sense for system-to-system authentication.
-client_id and client_secret are required for the password authentication flow that we’re currently supporting. (RFC 6749: The OAuth 2.0 Authorization Framework ) https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1
-
-#### What kind of authentication to use between Harness PODS and Linux Target server?
-For SSH Deployments, Harness uses an SSH Key to authenticate with the Linux host to perform deployments. The Delegate can run in K8s as long as the Kubernetes cluster has access to the target Linux hosts.
-
-#### What is the purpose of the RoleARN in the Terraform Plan?
-The RoleARN specified in the Terraform plan is attempting to execute an "sts:AssumeRole" action on the designated AWS IAM role.
+#### What is the purpose of the RoleARN in Terraform Plan?
+The RoleARN specified in Terraform Plan is attempting to execute an "sts:AssumeRole" action on the designated AWS IAM role.
 
 #### What is the default duration for assuming the role in the AWS Java SDK?
 The default duration for assuming the role in the aws-java-sdk is 15 minutes.
 
-#### What does FF HARNESS_AWS_ASSUME_ROLE_DURATION do?
-Once FF HARNESS_AWS_ASSUME_ROLE_DURATION is enabled, you can set the environment variable value to override the default duration for assuming AWS roles. This feature requires Harness Delegate version 01.04.82700 or higher.
+#### What does the feature flag, `HARNESS_AWS_ASSUME_ROLE_DURATION` do?
+Once the `HARNESS_AWS_ASSUME_ROLE_DURATION` feature flag is enabled, you can set the environment variable value to override the default duration for assuming AWS roles. This feature requires Harness Delegate version 01.04.82700 or higher.
 
-#### Is there a support for running Harness delegates in Azure Container Instances, similar to what is available for AWS ECI?
-Delegate can be installed on ACI.  You can use the following repo to verify how to do so via Terraform: https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd
+#### Does Harness support running delegates in Azure Container Instances, similar to what is available for AWS ECI?
+Delegate can be installed on ACI.  You can use [this repository](https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd) to verify how to do this via Terraform.
 
-#### Is there a way to change what connector/repo/path is used to fetch a template or pipeline in the GitExperience Project?
+#### Is there a way to change what connector/repository/path is used to fetch a template or pipeline in the Git Experience project?
 When migrating your templates and other resources to a new Git provider, you can update the connector, repository, and path for each template and pipeline in Harness. 
 
 This can be achieved by editing the YAML file for each resource and updating the Git details section with the new connector, repository, and path information.
 
-#### Do we have a replay feature in harness like Jenkins?
-In Jenkins, the “Replay” option allows you to re-run a specific build or job with the same parameters and settings as a previous build. This is same in Harness we call it retrying failed executions from any stage
- 
-https://developer.harness.io/docs/platform/pipelines/failure-handling/resume-pipeline-deployments/ or From a specific stage.
+#### Do we have a replay feature in Harness like Jenkins?
+In Jenkins, the “Replay” option allows you to re-run a specific build or job with the same parameters and settings as a previous build. This is same in Harness we call it [retry failed executions from any stage] (https://developer.harness.io/docs/platform/pipelines/failure-handling/resume-pipeline-deployments/) or from a specific stage.
 
-#### Is there a way to clean up state storage if during testing it gets out of sync? Is there a way to do so to change the application ID?
+#### Is there a way to clean up state storage during testing if it gets out of sync? Is there a way to do so to change the application ID?
 If the state storage becomes out of sync during testing, there isn't a direct method to clean it up. Changing the application ID is not advisable as it may lead to other complications.
  
 Instead, you could consider manually deleting the state file from the storage location or utilizing the Terraform CLI to force a refresh of the state. However, exercise caution and ensure a backup of the state file before proceeding with any changes to mitigate potential risks and consequences.
 
-#### What ECR permissions policy that Harness create as part of the AWS lambda service deployment?
+#### What ECR permissions policy that Harness create as part of the AWS Lambda service deployment?
 Harness creates the policy which is essential for performing various ECS-related actions like creating and updating services, tasks, and container instances.
 
-#### How to avoid this Harness is creating a permissions policy and applying it to an AWS ECR repository that we are specifying as an artifact location for our AWS lambda deployment configuration in Harness. These permissions are creating terraform state drift on the ECR repository?
-To prevent terraform state drift, it's advisable to create the ECR repository with the required permissions beforehand. This can be achieved by crafting an IAM policy that grants the necessary permissions and attaching it to the IAM role utilized by the ECS cluster.
+#### How to avoid Harness creating a permissions policy and applying it to an AWS ECR repository that we are specifying as an artifact location for our AWS Lambda deployment configuration in Harness. These permissions are creating Terraform state drift on the ECR repository?
+To prevent Terraform state drift, we recommend that you create the ECR repository with the required permissions beforehand. This can be achieved by crafting an IAM policy that grants the necessary permissions and attaching it to the IAM role utilized by the ECS cluster.
 
 Alternatively, you can prevent Harness from altering IAM policies by removing the relevant permissions from the Harness AWS connector. However, this could affect the functionality of your deployment pipeline.
 
@@ -7533,10 +7525,10 @@ You can achieve similar functionality using Overrides in Harness. Overrides enab
 You can establish a default set of values for these inputs and then utilize overrides to populate them based on user selections. 
 
 This streamlines the user experience by presenting only the relevant options, while automatically filling in the remaining values based on the selection.
-For more detailed information documentation: https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides/
+For more information, go to [Service overrides](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides/).
 
 #### How can policy evaluations be conducted through an API?
-Unfortunately as of today, we cannot do policy evaluations via API today.
+Currently, we cannot do policy evaluations via APIs.
 
 #### How can different versions be deployed to separate clusters or stages within a single pipeline?
-You can make use of Enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.
+You can enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.
