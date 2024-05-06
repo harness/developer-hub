@@ -3,7 +3,7 @@ description: KB - Debug ServiceNow create, update, and approval steps
 title: ServiceNow create, update, and approval API permissions
 ---
 
-This KB discusses the permissions required for ServiceNow create, update, and approval steps.
+This KB discusses the permissions required for ServiceNow create, update, and approval steps. Make sure that you've the permissions required for the `ticket` and `getMetadata` APIs apart from the permissions mentioned in the following sections. 
 
 ## Create ServiceNow tickets
 
@@ -38,9 +38,18 @@ This flow requires the Harness app to be installed in ServiceNow. Review [Import
 
 This is supported only for change request ticket types. 
 
-While fetching fields, if the `change_manager` permission is not available, then Harness fetches only the read-only fields mentioned `description`, `backout_plan`, `test_plan`, and `implementation_plan`.
+While fetching fields, if the `change_manager` permission is not available, then Harness considers the `description`, `backout_plan`, `test_plan`, and `implementation_plan` fields as read-only. 
 
 Required permission: `itil`.
+Required role: `change_manager`.
+
+Harness uses the following API to create a ServiceNow ticket from templates:
+
+```
+curl --location --request POST '{instance_url}/api/sn_chg_rest/change/standard/{sys_id}?backout_plan=ABORT&test_plan=TEST'\
+--header 'Authorization: Basic {bearer token}' \
+--header 'Content-Type: application/json' \
+```
 
 ## Update ServiceNow tickets 
 
@@ -65,17 +74,12 @@ Required permission: `itil`.
 
 ### Update a ServiceNow ticket from templates
 
-Harness uses custom script to call ServiceNow APIs to update a ticket from templates.
+Harness uses custom script APIs to update a ticket using form templates.
 Required permission: `itil_admin`, `x_harne_harness_ap.integration_user_role`.
-Required role: `change_manager`.
 
-Harness uses the following API to update a ServiceNow ticket from templates:
-
-```
-curl --location --request POST '{instance_url}/api/sn_chg_rest/change/standard/{sys_id}?backout_plan=ABORT&test_plan=TEST'\
---header 'Authorization: Basic {bearer token}' \
---header 'Content-Type: application/json' \
-```
+:::note 
+This flow requires the Harness app to be installed in ServiceNow. Review [Important notes for using templates](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages/#important-notes-for-using-templates) for more details.
+:::
 
 ## ServiceNow Approval step
 
@@ -114,3 +118,4 @@ Required permission: `itil`.
    7. Check if the table, for example Change Request has any scoped applications enabled. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-application-development/page/build/applications/reference/r_TableApplicationAccessFields.html).
       ![image](../static/debug-approval-step.png)
    8. Check if there are any data policies written on the user's Dev instance on the table. For details, go to [ServiceNow documentation](https://docs.servicenow.com/bundle/vancouver-platform-administration/page/administer/field-administration/concept/c_DataPolicy.html).
+   9. When using custom tables (not Incident, Problem, Change Request, and Change Task in create/update using form templates), make sure to grant cross-scope privileges for the required table with templates (via the Harness app in ServiceNow store). For details, go to [Custom table support](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages/#custom-table-support).
