@@ -65,7 +65,7 @@ CD tracks **Service** license consumption instead of **Developers**. All Service
 
 Harness Feature Flags is a feature flag rollout and management module that tracks **Developers** and **MAU** (Monthly Active Users) for license consumption.
 
-All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, will be considered as **FF Developers** and will consume a license.
+All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered **FF Developers** and consume a license.
 **Monthly Active Users (MAUs)** represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
 
 </details>
