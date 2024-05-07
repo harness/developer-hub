@@ -74,7 +74,7 @@ A code scanner can detect one or more of the following issue types in your sourc
 An artifact scanner can detect one or more of the following issue types in your container images and other artifacts. For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation.
 
 * **SCA (Software Composition Analysis):** Known vulnerabilities in open-source libraries and packages used by the code. 
-* **Container Scanning:** Identify vulnerabilities in container images.
+* **Container Scanning:** Known vulnerabilities in container images.
 
 <table>
     <tr>
