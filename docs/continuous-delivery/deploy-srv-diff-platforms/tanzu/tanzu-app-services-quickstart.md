@@ -183,7 +183,7 @@ import TabItem from '@theme/TabItem';
 The CF Command script does not require `cf login`. Harness logs in using the credentials in the TAS cloud provider set up in the infrastructure definition for the workflow executing the CF Command.
 :::
 
-## Create the deploy stage
+## Create a Deploy stage
 
 Pipelines are collections of stages. For this tutorial, we'll create a new pipeline and add a single stage.
 
@@ -201,7 +201,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
    
    ![](static/deploy-tas-service.png)
 
-## Create the Harness TAS service
+## Create Harness TAS service
 
 Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
@@ -373,7 +373,7 @@ The standard override rules apply to an artifact bundle with these exceptions:
 
 :::
 
-## Define the TAS target infrastructure
+## Define target infrastructure
 
 
 You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
@@ -429,7 +429,7 @@ The following provisioners are supported for TAS deployments:
 - Azure Blueprint
 - Shell Script
 
-#### Adding dynamic provisioning to the stage
+#### Add dynamic provisioning to the stage
 
 To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
 
@@ -456,7 +456,7 @@ For documentation on each of the required steps for the provisioner you selected
 - [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
 
 
-#### Mapping provisioner output
+#### Map provisioner output
 
 Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
 
@@ -517,7 +517,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 <figcaption>Figure: Mapped outputs.</figcaption>
 </figure>
 
-## TAS execution strategies
+## Select an execution strategy
 
 Now you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the pipeline.
 
