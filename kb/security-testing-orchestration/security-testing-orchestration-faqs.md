@@ -110,6 +110,3 @@ An enhancement has been made to ensure the orchestration step always downloads r
 
 - [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration)
 - STO release notes > [Version 1.83.1](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831)
-
-#### How to add labels to prisma cloud scan if you're  underlying infrastructure is kubernetes?
-To add labels to the Prisma Cloud scan if your underlying infrastructure is Kubernetes, you can add key and value pairs under the optional settings in the Prisma Cloud scan step. These key-value pairs will be added as labels.
