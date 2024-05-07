@@ -88,10 +88,14 @@ Go to [Troubleshoot "vulnerability database build date exceeds max allowed age" 
 
 Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference#owasp-step-generates-yarn-audit-analyzer-exception) in the OWASP scanner reference.
 
-## Prisma Cloud
+## Prisma Cloud scans
 
-#### How do I add labels to a Prisma Cloud scan when my build infrastructure is Kubernetes?
+#### How do I add labels to a Prisma Cloud scan when my build infrastructure is Kubernetes or Docker?
 To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs to **Settings (optional)** in your Prisma Cloud scan step. These key-value pairs will be added as labels when you run the scan.
+
+:::note 
+This is currently supported on Kubernetes and Docker build infrastructures only. Harness has a roadmap item to support this on Harness Cloud infrastructures.
+:::
 
 ## Sonar scans
 
