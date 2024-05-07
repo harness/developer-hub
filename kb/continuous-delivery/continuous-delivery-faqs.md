@@ -7474,3 +7474,6 @@ The file will not be cleared as they have been downloaded explicitly, however yo
 
 #### Why is the filter option greyed out for pipeline executions based on a branch?
 The option is used for filtering remote pipelines. If there are no remote pipelines executions, this option will not be highlighted.
+
+#### How to disable logs from pushing from GitOps agent to Stackdriver?
+To disable logging to Stackdriver in GitOps, you can set GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER to false in the agent ConfigMap.
