@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-04-25T10:00
+date: 2024-05-02T10:00
 sidebar_position: 4
 ---
 
@@ -36,6 +36,16 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
+
+:::danger Breaking change: Updated Delegate Expiration Policy
+
+Harness has updated the delegate expiration policy to 6 months with a 2-month EOL upgrade period.
+
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+
+For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
+
+:::
 
 ## April 2024
 
