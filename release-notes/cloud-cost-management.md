@@ -29,6 +29,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
 - Multi-Select Cloud Providers Filter: We have enhanced the Recommendations and Governance Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously, providing more flexibility with governance evaluations. [CCM-17150]
 
+- Child Account Exclusion in Commitment Orchestrator: With this functionality, users can selectively exclude child accounts from commitment utilization calculations, allowing for more precise management of Reserved Instances (RIs) and Savings Plans (SPs) across their organisation. [CCM-17184]
+
 #### Fixed issues
 
 - Governance Rules List Pagination: We have added a minor fix on the Governance Rules List page where the page number now resets properly when applying either the cloud provider or rule type filter. [CCM-17279]
