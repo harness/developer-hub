@@ -31,6 +31,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Child Account Exclusion in Commitment Orchestrator: With this functionality, users can selectively exclude child accounts from commitment utilization calculations, allowing for more precise management of Reserved Instances (RIs) and Savings Plans (SPs) across their organisation. [CCM-17184]
 
+- Audit Trail Integration for changes in Commitments: Commitment orchestration flow changes like change of coverage or split between SP & RI and commitment actions approval or rejection is now captured in audit trails. [CCM-17267]
+
 #### Fixed issues
 
 - Governance Rules List Pagination: We have added a minor fix on the Governance Rules List page where the page number now resets properly when applying either the cloud provider or rule type filter. [CCM-17279]
