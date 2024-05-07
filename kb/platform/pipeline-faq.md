@@ -632,3 +632,13 @@ You can utilize the expression `<+pipeline.stages.STAGE_ID.executionId>` to retr
 
 Currently there is no support for notifications when a status check fails.
 
+#### Why did updating the app ID in NextGen to the new Microsoft Entra ID app cause a conflict with FirstGen mapping in SAML authentication, despite them being considered separate instances?
+When creating a new SAML app integration in NextGen, it automatically inherits the settings from the existing FirstGen app integration. Consequently, any modifications made to the SAML app integration in NextGen will also impact the integration in FirstGen. 
+ 
+This occurs because the SAML app integration settings are stored at the account level, affecting all instances associated with that account. To prevent conflicts between the SAML app integrations in FirstGen and NextGen, ensure that the email addresses used in both instances match.
+
+#### How can I create a delegate with Terraform?
+The `main.tf` sample file includes a delegate token option, facilitating automatic delegate registration at the token's scope upon installation. For instance, a project token automatically registers the delegate at the project scope. To locate the listed delegate, navigate to the project where the token was generated.
+
+#### What are there discrepancies between the user list, access control, and dashboard?
+Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.
