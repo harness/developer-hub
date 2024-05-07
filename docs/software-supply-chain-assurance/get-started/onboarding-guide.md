@@ -25,7 +25,7 @@ Learn about the features, components, and key concepts of Harness SSCA:
 * [Generate or ingest SBOM](/docs/category/generate-or-ingest-sbom)
 * [Create and enforce SSCA policies](/docs/category/enforce-ssca-policies)
 * [Generate and verify SLSA Provenance](/docs/category/comply-with-slsa)
-* View [attestations, violations](/docs/software-supply-chain-assurance/ssca-view-results), and [artifacts](/docs/software-supply-chain-assurance/artifact-view)
+* View pipeline executed results - [SBOMs, Policy violations, SLSA provenance](/docs/software-supply-chain-assurance/ssca-view-results), and [artifacts](/docs/software-supply-chain-assurance/artifact-view)
 * [Create and manage remediation trackers](/docs/category/remediation-tracker)
 * [Manage access control](/docs/software-supply-chain-assurance/ssca-access-control)
 
