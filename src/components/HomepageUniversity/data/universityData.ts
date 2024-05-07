@@ -36,6 +36,7 @@ export const university: CardItem[] = [
     link: "/university/continuous-integration",
     numberOfCerts: 3,
     ILT_available: true,
+    SPT_available: true,
   },
 
   {
