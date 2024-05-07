@@ -25,11 +25,13 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 #### New features and enhancements
 
-- We now have an updated [onboarding flow](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#getting-started) for new users, to onboard your already existing harness services as well as new services into IDP as part of the getting started with the module.  [IDP-2213]
+- We now have an updated [onboarding flow](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#getting-started) for new users, to onboard your already existing harness services as well as new services into IDP as part of the getting started with the module. This new onboarding flow is async wherein users could skip it and add a [git-integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) later under admin section  [IDP-2213]
 
 - We have updated the custom action [`trigger:trigger-pipeline-with-webhook`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook) to trigger workflows based on pipeline [`inputset`](https://developer.harness.io/docs/platform/pipelines/input-sets/#create-input-sets) id. [IDP-2611]
 
 - Added support for [Splunk OnCall Backstage Plugin](https://github.com/backstage/community-plugins/tree/main/workspaces/splunk/plugins/splunk-on-call#splunk-on-call) and [Architecture Decision Records (ADR) Backstage Plugin](https://github.com/backstage/community-plugins/tree/main/workspaces/adr/plugins/adr#architecture-decision-records-adr-plugin). [IDP-2470] [IDP-2594]
+
+- As part of our new infrastructure evolution initiative, we have refactored our present infrastructure to extend support for our customers in EU region.
 
 
 ## April 2024
