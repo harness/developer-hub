@@ -35,16 +35,6 @@ You'll learn how to:
 * Your Harness Delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it.
 * For the test connection in the connector, Harness uses the CF SDK to get the list of organizations. If the credentials are correct, you get a list of organizations. Otherwise, the connection fails. For more information, see the [Cloud Foundry documentation](https://apidocs.cloudfoundry.org/196/organizations/list_all_organizations.html).
 
-## Steps
-
-1. [Connect to a TAS provider](#connect-to-a-tas-provider)
-2. [Install CF CLI on Harness Delegate](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate)
-3. [Create a pipeline and create a Deploy stage](#create-a-deploy-stage)
-4. [Create a Harness TAS service](#create-harness-tas-service)
-5. [Define target infrastructure](#define-target-infrastructure)
-6. [Select an execution strategy](#select-an-execution-strategy)
-7. [Deploy](#deploy-and-review)
-
 ## Connect to a TAS provider
 
 You can connect Harness to a TAS space by adding a TAS connector. Perform the following steps to add a TAS connector.
