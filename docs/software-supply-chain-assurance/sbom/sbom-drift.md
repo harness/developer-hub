@@ -1,11 +1,11 @@
 ---
-title: SBOM Drift
-description: View the SBOM drift between two versions
-sidebar_label: SBOM Drift
+title: SBOM Drift Detection
+description: Detect SBOM drift between two versions
+sidebar_label: SBOM Drift Detection
 sidebar_position: 34
 ---
 
-Harness SSCA's SBOM Diff feature is designed for tracking changes in Software Bill of Materials (SBOM) over a period of time. It provides a detailed analysis of the addition or removal of components and licenses, facilitating better management and oversight of software artifacts.
+Harness SSCA's SBOM Drift Detection feature is designed for detectin g changes in Software Bill of Materials (SBOM) over a period of time. It provides a detailed analysis of the addition or removal of components and licenses, facilitating better management and oversight of software artifacts.
 
 ## Key Features of SBOM Drift
 
