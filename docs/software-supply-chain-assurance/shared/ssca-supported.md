@@ -3,19 +3,30 @@ The Harness SSCA module supports the following tools and standards.
 ### Code Repositories
 
 * Harness Code Repository
-* GitHub (integrated using 3rd party Git Connectors on Harness Pipeline's Security Stage)
-* GitLab (integrated using 3rd party Git Connectors on Harness Pipeline's Security Stage)
-* BitBucket (integrated using 3rd party Git Connectors on Harness Pipeline's Security Stage)
-* Azure Code Repos (integrated using 3rd party Git Connectors on Harness Pipeline's Security Stage)
+
+The following code repository providers are integrated using 3rd party Git Connectors on Harness Pipeline's Security Stage.
+* GitHub 
+* GitLab
+* BitBucket
+* Azure Code Repos
 
 ### CI/CD Pipelines
 
 * Harness CI (as native steps in Harness Pipeline's Build Stage) 
-* Harness CD (as native steps in Harness Pipeline's Deploy Stage)
-* GitHub (integrated using Pipeline Triggers on Harness Pipeline's Security Stage)
-* GitLab (integrated using Pipeline Triggers on Harness Pipeline's Security Stage)
-* BitBucket (integrated using Pipeline Triggers on Harness Pipeline's Security Stage)
-* Azure Code Repos (integrated using Pipeline Triggers on Harness Pipeline's Security Stage)
+* Harness CD & GitOps (as native steps in Harness Pipeline's Deploy Stage)
+
+The following CI/CD pipeline providers are integrated using Pipeline Triggers on Harness Pipeline's Security Stage.
+
+* GitHub
+* GitLab
+* BitBucket 
+* Azure Code Repos
+
+### Artifact Repositories
+
+* Docker Hub
+* GCR
+* Amazon ECR
 
 ### SBOM Generation Tools
 
@@ -28,12 +39,6 @@ The Harness SSCA module supports the following tools and standards.
 
 * SPDX
 * CycloneDX
-
-### Artifact Repositories
-
-* Docker Hub
-* GCR
-* Amazon ECR
 
 ### SLSA Build Level
 
