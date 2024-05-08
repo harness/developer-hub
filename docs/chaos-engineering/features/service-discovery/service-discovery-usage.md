@@ -4,7 +4,7 @@ sidebar_position: 2
 description: Customize discovery agent
 ---
 
-This section describes how you can [create], [edit] and [delete] a discovery agent.
+This section describes how you can [create](#customize-discovery-agent), [edit](#edit-discovery-agent), and [delete](#delete-discovery-agent) a discovery agent.
 
 ## Before you begin, review the following
 
@@ -12,11 +12,11 @@ This section describes how you can [create], [edit] and [delete] a discovery age
 
 When you are onboarding, one of the steps involves discovering services. HCE creates the discovery agent that automatically discovers services for your application.
 
-If you want to customize the discovery agent, follow the steps mentioned below.
+If you want to customize the discovery agent, follow the steps below.
 
 ### Customize Discovery Agent
 
-1. If you want to customize the discovery agent, navigate to **Chaos** and select **Discovery**. Click **New Discovery Agent**.
+1. To customize the discovery agent, navigate to **Chaos** and select **Discovery**. Click **New Discovery Agent**.
 
     ![](./static/usage/discovery.png)
 
@@ -36,7 +36,7 @@ If you want to customize the discovery agent, follow the steps mentioned below.
 
 ### Delete Discovery Agent
 
-1. To delete a discovery agent, navigate to the agent you want to delete, and select **Delete**.
+1. To delete a discovery agent, navigate to the agent you want to delete and select **Delete**.
 
     ![](./static/usage/delete-1.png)
 
