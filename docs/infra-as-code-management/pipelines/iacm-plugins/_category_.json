@@ -1,12 +1,12 @@
 {
-    "label":"Get started with IaCM",
-    "position": 10,
+    "label":"Plugins",
+    "position": 21,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Get started with Harness IaCM"
+       "title":"Plugins"
     },
     "customProps":{
        "helpdocs_category_id":""
