@@ -1,6 +1,8 @@
 ---
 id: pod-network-latency
 title: Pod network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency
 ---
 
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
@@ -120,6 +122,10 @@ Pod network latency:
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
       </tr>
     </table>
+
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
 
 ### Network latency
 

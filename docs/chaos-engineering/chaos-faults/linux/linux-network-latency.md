@@ -1,6 +1,8 @@
 ---
 id: linux-network-latency
 title: Linux network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-network-latency
 ---
 
 import Ossupport from './shared/note-supported-os.md'
@@ -12,7 +14,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
 ![Linux network latency](./static/images/linux-network-latency.png)
 
 ## Use cases
-- Induces Network Latency on the target Linux machines.
+- Induces network latency on the target Linux machines.
 - Simulates latency in connectivity access by delaying the network requests of the machine.
 
 <Ossupport />
@@ -42,13 +44,13 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords. For example: <code>google.com,litmuschaos.io</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
+    <td> List of the target host names or keywords. For example: <code>google.com,litmuschaos.io</code> </td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all host names/domains will be targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. For example: <code>1.1.1.1,8.8.8.8</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
+    <td> List of comma- separated target IPs. Also supports a list of target destination ports for a given IP, that are separated by a pipe (<code>|</code>). For example, <code>1.1.1.1,35.24.108.92|3000|8080</code>. </td>
+    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all host names/domains will be targeted</td>
   </tr>
   <tr>
     <td> latency </td>
@@ -57,7 +59,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
   </tr>
   <tr>
     <td> jitter </td>
-    <td> Amount of jitter to be added in ms. Jitter will define the max randomised deviation from the provided latency value. For example: <code> 100 </code> </td>
+    <td> Amount of jitter to be added in ms. Jitter will define the max randomized deviation from the provided latency value. For example: <code> 100 </code> </td>
     <td> Defaults to 0 </td>
   </tr>
   <tr>
@@ -94,7 +96,7 @@ spec:
 
 ### Destination IPs
 
-The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -108,7 +110,7 @@ metadata:
     name: network-latency
 spec:
   networkChaos/inputs:
-    destinationIPs: '1.1.1.1'
+    destinationIPs: '1.1.1.1,192.168.5.6|80|8080'
     networkInterfaces: "eth0"
 ```
 

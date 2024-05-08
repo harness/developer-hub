@@ -26,7 +26,7 @@ Supported security protocols for WinRM include Kerberos and Windows New Technolo
 
 ## Before You Begin
 
-* Review Harness Key Concepts [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
+* Review Harness Key Concepts [Harness Key Concepts](/docs/platform/get-started/key-concepts) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s)
@@ -270,7 +270,13 @@ Ensure the mapped settings are set to the **Expression** option.
 
 For WinRM PDC deployments, you use the expression `<+provisioner.OUTPUT_NAME>` for the **Host Array Path** setting. 
 
-For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<+HOST_PROPERTY>`. For example, `<+public_dns>`.
+`OUTPUT_NAME` depends on your provisioner outputs configuration, make sure `OUTPUT_NAME` to be an array object.
+
+In case the `OUTPUT_NAME` is stored into several output objects, make sure the map the full path to it.
+
+Below you will see a Terraform provisioner example where terraform `OUTPUT_NAME` is called 'hostInstances'.
+
+For the subsequent **Host Data Mapping** key-value pairs, you use the expression format `<HOST_PROPERTY>`. For example, `<+public_dns>` or `<+privateIp>` which are part of terraform output configuration in below snippet example.
 
 Here's an example:
 
@@ -329,20 +335,15 @@ resource "aws_instance" "example" {
   }
 }
 
-output "hostname" {
-  value = aws_instance.example.public_dns
-}
-
-output "privateIp" {
-  value = aws_instance.example.private_ip
-}
-
-output "subnetId" {
-  value = aws_subnet.example.id
-}
-
-output "region" {
-  value = provider.aws.region
+output "hostInstances" {
+  value = [
+    {
+      public_dns  = aws_instance.example.public_dns
+      privateIp = aws_instance.example.private_ip
+      subnetId  = aws_subnet.example.id
+      region    = provider.aws.region
+    }
+  ]
 }
 
 ```
@@ -407,17 +408,17 @@ Per AWS documentation: Example policies for working with the AWS CLI or an AWS S
 
 ### Reference hosts in steps using expressions
 
-You can use all of the `<+instance...>` expressions to reference your hosts.
+You can use all of the [instance expressions](/docs/platform/variables-and-expressions/harness-variables) to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [\<+instance.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostname)
-* [\<+instance.host.hostName>](/docs/platform/variables-and-expressions/harness-variables#instancehostinstancename)
-* [\<+instance.name>](/docs/platform/variables-and-expressions/harness-variables#instancename)
+* `<+instance.hostName>`
+* `<+instance.host.hostName>`
+* `<+instance.name>`
 
 For Microsoft Azure or AWS:
 
-* [\<+instance.host.privateIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostprivateip)
-* [\<+instance.host.publicIp>](/docs/platform/variables-and-expressions/harness-variables#instancehostpublicip)
+* `<+instance.host.privateIp>`
+* `<+instance.host.publicIp>`
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

@@ -1,6 +1,8 @@
 ---
 id: ec2-stop-by-id
 title: EC2 stop by ID
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-id
 ---
 EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
@@ -98,6 +100,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination.</td>

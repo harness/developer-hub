@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](https://docs.harness.io).
+:::warning
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](https://docs.harness.io).
 :::
 
 Harness sanitizes deployment logs and any script outputs to mask text secret values.
@@ -18,9 +18,7 @@ First, let's review secrets in Harness, and then look at how Harness sanitizes l
 
 ## Review: Secrets in Harness
 
-:::note 
 The following information is also covered in [What is Secrets Management?](../../security/secrets-management/secret-management.md).
-:::
 
 You can create secrets in Harness as described in
 

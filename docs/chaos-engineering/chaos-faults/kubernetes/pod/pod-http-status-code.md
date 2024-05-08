@@ -1,6 +1,8 @@
 ---
 id: pod-http-status-code
 title: Pod HTTP status code
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code
 ---
 
 Pod HTTP status code is a Kubernetes pod-level fault that injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.

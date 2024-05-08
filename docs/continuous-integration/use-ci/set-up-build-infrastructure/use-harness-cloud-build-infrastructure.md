@@ -12,7 +12,7 @@ With Harness Cloud, you can run builds in isolation on Harness-managed VMs that 
 
 Harness Cloud provides the following advantages:
 
-* Free monthly credits for up to 2,000 build minutes.
+* Use build credits to run builds on Harness-managed machines. No need to set up you own machines.
 * Starter pipelines for different programming languages.
 * Blazing fast builds on Linux, macOS, and Windows.
 * Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
@@ -31,7 +31,9 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 ## Billing and build credits
 
-All plans get 2000 free build credits each month. Customers on Team and Enterprise plans can purchase additional build credits. Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+Free plans get 2000 free build credits each month. If you're on a Team or Enterprise plan, build credit allowances are factored into your plan, and you can purchase additional build credit packages.
+
+Harness can invoice in arrears for overages. For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
 Free plans require credit card validation to use Harness Cloud. If you don't want to provide a credit card, consider using [local runner build infrastructure](./define-a-docker-build-infrastructure).
 
@@ -47,6 +49,12 @@ Review the following image specifications for information about image components
 * [Windows Server 2022 (Windows amd64) image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
 
 **You can customize the Harness Cloud build environment.** In your pipelines, you can [select specific versions of pre-installed tools](#specify-versions), ensure that a step [uses a specific version every time](#lock-versions-or-install-additional-tools), or [install additional tools and versions](#lock-versions-or-install-additional-tools) that aren't preinstalled on the Harness Cloud images. You can run these steps on the host machine or as separate Docker images.
+
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
 
 ## Requirements for connectors and secrets
 
@@ -133,6 +141,12 @@ pipeline:
 </TabItem>
 </Tabs>
 
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
+
 ### Harness Cloud best practices
 
 * Don't hardcode system environment variables. Instead, use references like `$HOME` or `$USER`.
@@ -196,7 +210,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
 
 :::tip
 
-You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+You can also use the [Bitrise step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Workflow Steps in your CI pipelines.
 
 :::
 
@@ -247,13 +261,7 @@ You can use Harness Cloud build infrastructure in firewalled environments. For m
 
 ## Queue Intelligence
 
-:::note
-
-Currently, Queue Intelligence is behind a feature flag. Contact Harness Support to enable the feature.
-
-:::
-
-With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. This replaces the previous behavior where the Harness Delegate would fail any job that it could not schedule or run immediately.
+With Queue Intelligence, Harness CI can queue and run build jobs in sequence when the build infrastructure receives more jobs than it can run concurrently. 
 
 The Queue Intelligence feature introduces a `queued` state for individual builds. Builds progress through the following states:
 
@@ -282,3 +290,24 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Built-in Harness Docker Connector isn't working with Harness Cloud build infrastructure.](/kb/continuous-integration/continuous-integration-faqs/#built-in-harness-docker-connector-doesnt-work-with-harness-cloud-build-infrastructure)
 * [Can I use xcode for a MacOS build with Harness Cloud?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-xcode-for-a-macos-build-with-harness-cloud)
 * [Can I get logs for a service running on Harness Cloud when a specific Run step is executing?](/kb/continuous-integration/continuous-integration-faqs/#can-i-get-logs-for-a-service-running-on-harness-cloud-when-a-specific-run-step-is-executing)
+
+### Known issues
+
+#### Harness Cloud macOS platform .netrc file can have incorrect permissions
+
+There is a known issue impacting macOS machines on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) due to incorrect permissions for the `.netrc` file at `/Users/anka/.netrc`. The permissions are set to `644` when they should be `600`.
+
+This can cause errors when installing Cocoapods. If your build installs Cocoapods, uses a macOS platform on Harness Cloud build infrastructure, and fails due to an error like `Couldn't determine repo type for URL` when installing Cocoapods, then, until this issue is fixed, make sure the pipeline edits the permissions on the `.netrc` file before attempting to install Cocoapods.
+
+#### Harness Cloud Windows platforms can fail to clone BitBucket Cloud repos
+
+Due to a [BitBucket Cloud issue](https://jira.atlassian.com/browse/BCLOUD-23158), specific versions of BitBucket Cloud could fail to clone repos on Windows platforms running Git version 2.44.
+
+Atlassian released a fix for this issue; however, if you use a Harness Cloud Windows platform and your build is unable to clone your BitBucket Cloud repo, do the folloiwng:
+
+1. [Disable Clone Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages).
+2. At the beginning of your build stage, add a a [Run step](/docs/continuous-integration/use-ci/run-step-settings) that uses the `harness/drone-git` image and Git commands to clone your BitBucket cloud repo.
+
+#### Harness Cloud VMs don't support hardware acceleration
+
+Currently, Harness Cloud build machines don't support hardware acceleration. This applies to all platforms and architectures.

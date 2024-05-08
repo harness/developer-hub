@@ -1,6 +1,8 @@
 ---
 id: ec2-http-status-code
 title: EC2 HTTP status code
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-status-code
 ---
 EC2 HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server.
 

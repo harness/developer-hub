@@ -178,7 +178,7 @@ Select whether you want Harness to connect directly to your GitLab account or re
 
 :::tip
 
-The **Secure Connect** option is for [secure connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
+The **Secure Connect** option is for [Secure Connect with Harness Cloud](/docs/continuous-integration/secure-ci/secure-connect).
 
 :::
 

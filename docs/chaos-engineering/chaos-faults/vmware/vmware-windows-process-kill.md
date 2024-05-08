@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-process-kill
 title: VMware Windows Process Kill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-process-kill
 ---
 
 VMware Windows Process Kill simulates a process kill scenario on Windows OS based VMware VM.

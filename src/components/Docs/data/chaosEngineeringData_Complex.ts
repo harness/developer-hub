@@ -91,13 +91,6 @@ import { MODULES } from "@site/src/constants"
             "Execute Cloud Foundry chaos faults",
           link: "/docs/chaos-engineering/chaos-faults/cloud-foundry/",
         },
-         {
-          title: "Security faults",
-          module: MODULES.ce,
-          description:
-            "Execute security chaos faults",
-          link: "/docs/chaos-engineering/chaos-faults/security-chaos/",
-        },
   ],
 },
 ];
@@ -120,14 +113,14 @@ import { MODULES } from "@site/src/constants"
     },
 
     {
-      name: "Key concepts",
+      name: "HCE components",
       list: [
         {
           title: "Familiarize with chaos engineering concepts",
           module: MODULES.ce,
           description:
             "Familiarize with chaos engineering concepts.",
-          link: "/docs/chaos-engineering/get-started/key-concepts",
+          link: "/docs/chaos-engineering/architecture-and-security/architecture/components",
         },
       ],
     }, 

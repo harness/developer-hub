@@ -34,8 +34,22 @@ If you are using Harness Cloud build infrastructure, you can use [Cache Intellig
 You need:
 
 * A dedicated S3 bucket for your Harness CI cache operations.
+
+   :::warning
+
+   You must use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
+
+   :::
+
 * An [AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector) with read/write access to your S3 bucket.
    * Adjustments to delegate, build infrastructure, and other settings can be required for certain AWS permissions configurations, such as IRSA or ARN. For details, go to the [AWS connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference) and [Add an AWS connector](/docs/platform/connectors/cloud-providers/add-aws-connector).
+
+   :::info
+
+   The **Save Cache to S3** step doesn't work on Windows platforms using AWS cross-account roles. [This is an AWS limitation.](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html) For a workaround, go to the [CI knowledge base](/kb/continuous-integration/articles/s3-cache-windows-cross-account).
+
+   :::
+
 * An optional [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html), if you want to automatically delete old cache data from your S3 bucket.
 
 Here is an example of an S3 cache bucket policy:
@@ -67,12 +81,6 @@ Here is an example of an S3 cache bucket policy:
     ]
 }
 ```
-
-:::warning
-
-You must use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
-
-:::
 
 ### Caching with non-private ACL
 
@@ -128,7 +136,7 @@ The Harness AWS connector to use when saving the cache to S3. The AWS IAM roles 
 
 This step supports AWS connectors using **AWS access key**, **Assume IAM role on delegate**, and **IRSA** authentication methods *without* cross-account access (ARN/STS).
 
-[IRSA requires modifications to the delegate YAML](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings:~:text=Configure%20IRSA%20credentials%20for%20AWS%20connectors) and build infrastructure settings. The service account to be used for uploading to S3 must be specified in the delegate YAML and in the [Service Account Name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#service-account-name) in the stage's build infrastructure settings.
+[IRSA requires modifications to the delegate YAML](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference#harness-aws-connector-settings:~:text=Configure%20IRSA%20credentials%20for%20AWS%20connectors) and build infrastructure settings. The service account to be used for uploading to S3 must be specified in the delegate YAML and in the [Service Account Name](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#service-account-name) in the stage's build infrastructure settings.
 
 This step *doesn't* support AWS connectors that have enabled cross-account access (ARN/STS) for any authentication method.
 
@@ -204,8 +212,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../../platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ### Set shared paths for cache locations outside the stage workspace
 
@@ -334,8 +342,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Go, Node, and Maven cache key and path requirements
 
@@ -443,7 +451,7 @@ If you have multiple stages that run in parallel, **Save Cache** steps might enc
 
 This is necessary for any [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md) that causes stages to run in parallel, either literal parallel stages or matrix/repeat strategies that generate multiple instances of a stage.
 
-To skip the **Save Cache** step in all except one parallel stage, add the following [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) to the **Save Cache** step(s):
+To skip the **Save Cache** step in all except one parallel stage, add the following [conditional execution](/docs/platform/pipelines/step-skip-condition-settings) to the **Save Cache** step(s):
 
 
 <Tabs>
@@ -483,6 +491,14 @@ This `when` definition causes the step to run only if *both* of the following co
 
 The JEXL expression `<+strategy.iteration> == 0` references the looping strategy's iteration index value assigned to each stage. The iteration index value is a zero-indexed value appended to a step or stage's identifier when it runs in a [looping strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism.md). Although the stages run concurrently, each concurrent instance has a different index value, starting from `0`. By limiting the **Save Cache** step to run on the `0` stage, it only runs in one of the concurrent instances.
 
+## Caching in cloned pipelines
+
+When you clone a pipeline that has Save/Restore Cache steps, cache keys generated by the cloned pipeline use the original pipeline's cache key as a prefix. For example, if the original pipeline's cache key is `some-cache-key`, the cloned pipeline's cache key is `some-cache-key2`. This can cause problems if the Restore Cache step in the original pipeline looks for caches with the matching cache key prefix and pulls the caches for both pipelines.
+
+To prevent this issue, Harness can add separators (`/`) to your GCS cache keys to prevent accidental prefix matching and pulling incorrect caches from cloned pipelines. To enable the separator, add this [stage variable](/docs/platform/pipelines/add-a-stage/#stage-variables): `PLUGIN_ENABLE_SEPARATOR: true`.
+
+If you don't enable the separator, make sure your cloned pipelines [generate unique cache keys](#key) to avoid the prefix matching issue.
+
 ## Troubleshoot caching
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related to caching, data sharing, dependency management, workspaces, shared paths, and more. For example:
@@ -490,3 +506,4 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Why are changes made to a container image filesystem in a CI step is not available in the subsequent step that uses the same container image?](/kb/continuous-integration/continuous-integration-faqs/#why-are-changes-made-to-a-container-image-filesystem-in-a-ci-step-is-not-available-in-the-subsequent-step-that-uses-the-same-container-image)
 * [How can I use an artifact in a different stage from where it was created?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-use-an-artifact-in-a-different-stage-from-where-it-was-created)
 * [How can I check if the cache was restored?](/kb/continuous-integration/continuous-integration-faqs/#how-can-i-check-if-the-cache-was-restored)
+* [Save Cache to S3 doesn't work with Windows platforms with cross-account roles.](/kb/continuous-integration/articles/s3-cache-windows-cross-account)

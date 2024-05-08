@@ -1,12 +1,14 @@
 ---
 title: Add a new software component to the catalog
 description: Learn how you can add a new software component to the IDP software catalog.
-sidebar_position: 30
+sidebar_position: 5
 redirect_from:
   - /docs/internal-developer-portal/getting-started/register-a-new-software-component
 ---
 
-You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
+Let's start with adding your software components to IDP. You can do so by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
 <DocVideo src="https://www.youtube.com/embed/YgtIMDGMzJE?si=AYnisVn-lHX-4STw" />
 
@@ -64,6 +66,7 @@ The new component will be available in your catalog.
 
 ![](static/imported-entity.png)
 
+
 ## Register multiple software components together
 
 We can register multiple `catalog-info.yaml` in the following ways.
@@ -98,6 +101,23 @@ spec:
     - https://github.com/account-name/order-service/blob/main/catalog-info.yaml
     - https://github.com/account-name/menu-service/blob/main/catalog-info.yaml
 ```
+
+## Delete/Unregister Software Components
+
+1. Navigate to the **Catalog** page, and select **Component** under Kind, here we are de-registering a template
+
+![](./static/catalog-navigation.png)
+
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**.
+
+![](./static/Unregister-location.png)
+
+5. This will delete the Template.
 
 ## Troubleshooting: Failed to register
 

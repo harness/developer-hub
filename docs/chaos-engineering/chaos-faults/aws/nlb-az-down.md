@@ -1,6 +1,8 @@
 ---
 id: nlb-az-down
 title: NLB AZ down
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/nlb-az-down
 ---
 
 The NLB (Network Load Balancer) AZ (Availability Zone) down fault triggers the unavailability of an AZ on a target network load balancer, resulting in potential disruptions to service delivery. This fault deliberately restricts access to specific availability zones by blocking the subnet ACL (Access Control List) for a defined duration. By simulating this scenario, you can assess the resilience and performance of your system when faced with an inaccessible AZ.
@@ -99,6 +101,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration between the attachment and detachment of the volumes (in seconds) </td>
         <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple volumes </td>

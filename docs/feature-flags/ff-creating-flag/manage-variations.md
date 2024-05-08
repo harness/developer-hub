@@ -12,11 +12,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-import edit_vars from './static/3-manage-variations-00.png'
-import edit_var_form from './static/3-manage-variations-01.png'
-import manage_vars from './static/3-manage-variations-02.png'
-
-
 When you create a Feature Flag, it has default Variations that are served when the Flag is toggled `ON` or `OFF`. You can accept these default Variations or you can change them. 
 
 For example:
@@ -36,7 +31,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 2. In **Variations**, click the edit icon.
 
    
-   <img src={edit_vars} alt="The Edit Variations icon." height="500" width="300" />
+    ![The Edit Variations icon.](./static/3-manage-variations-00.png)    
     
 
 3. In **Edit Variations**, you can add or delete a Variation and also edit the following:
@@ -46,7 +41,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    * **Default rules for the flag**: The rules that are served by default for this Flag, for example, when the Flag is enabled, serve the `Enabled` Variation.
 
       
-      <img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
+       ![The Edit Variations page.](./static/3-manage-variations-01.png)
        
 
 ## Edit the Variations served for your current Environment
@@ -54,8 +49,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In the **Targeting** tab, under **When the Default Flag is Enabled** and **When the Default Flag is Disabled**, select the Variations you want to set as the default.
 
-   
-   <img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="400" />
+    ![The Targeting tab of a Flag, which highlights where you can change which Flag Variation is served.](./static/3-manage-variations-02.png)
     
 
    :::info note

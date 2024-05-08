@@ -26,7 +26,7 @@ To create or edit a **Trellis profile**:
 * In your **Harness project**, go to the **SEI** module.
 * Select **Account**.
 * Select **Trellis** under **Profiles**.
-* To create a profile, select **+Add Profile**. To edit an existing profile, select the profile's name in the profiles list.
+* To create a profile, select **+New Trellis Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 :::info
 To calculate the Trellis Score, this profile must be associated with the collection under which your Trellis Insight is configured.
@@ -68,11 +68,15 @@ You can also create new integrations and associate the integration with the curr
 
 ## Create the Insight
 
-1. Select the **Collection** under which your **Trellis Profile** is associated. If you already have Insights in your project:
-   1. Select any Insight. For instructions, go to [View Insights](/docs/software-engineering-insights/insights/sei-insights).
-   2. In the header, select **All Insights**, and then select **Manage Insights**.
-   3. Select **New Insight**.
-2. If you don't have any Insight under the collection click on the **Associate Insight to this Collection** button.
+1. Log in to the **Harness Platform** and go to the SEI module.
+2. Go the **Project** scope and select your **Project**.
+3. If you don't have any existing Insight, then click on the **Create Insight** button on the landing page to create a new Insight.
+
+![](./static/create-insight.png)
+
+4. If you already have existing Insights in your selected Project, then go to any Insight. For instructions, go to [View Insights](#view-insights).
+5. In the header, select **All Insights**, and then select **Manage Insights**.
+6. Select **Create Insight**.
 
 ### Insight settings
 

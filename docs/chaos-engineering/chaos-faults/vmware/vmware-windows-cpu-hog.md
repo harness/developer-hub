@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-cpu-hog
 title: VMware Windows CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-cpu-hog
 ---
 
 VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM.

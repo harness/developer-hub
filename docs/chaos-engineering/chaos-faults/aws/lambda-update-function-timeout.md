@@ -1,6 +1,8 @@
 ---
 id: lambda-update-function-timeout
 title: Lambda update function timeout
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-function-timeout
 ---
 Lambda update function timeout causes a timeout of a Lambda function, thereby updating the timeout to a specific value for a certain duration. Timeout errors interrupt the flow of the given function.
 Hitting a timeout is a frequent scenario with Lambda functions. This can break the service and impact the delivery. Such scenarios can occur despite the availability aids provided by AWS. 
@@ -98,6 +100,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive instance termination.</td>

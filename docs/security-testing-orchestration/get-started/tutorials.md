@@ -5,7 +5,11 @@ sidebar_position: 30
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/sto-tutorials
   - /docs/security-testing-orchestration/get-started/sto-tutorials/tutorials
+  - /tutorials/security-tests/gitlab-ci-integration
+  - /docs/security-testing-orchestration/get-started/sto-tutorials/gitlab-ci-integration
 ---
+
+<!-- STO-7367 Gitlab tutorial is broken, will redirect to updated topic when this is fixed -->
 
 The following workflows and tutorials are available.
 
@@ -23,7 +27,7 @@ The following workflows and tutorials are available.
 
   - [DAST app scans using Zed Attack Proxy](../sto-techref-category/zap/dast-scan-zap) This "quick-start" tutorial shows how to scan an application instance using [Zed Attack Proxy (ZAP)](https://www.zaproxy.org), an open-source penetration tool for testing web applications. 
 
-  - [Trigger automated scans using GitLab merge requests](../use-sto/set-up-sto-pipelines/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event.
+  <!-- - [Trigger automated scans using GitLab merge requests](../use-sto/set-up-sto-pipelines/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event. -->
 
 - Integrated end-to-end workflows:
 

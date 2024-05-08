@@ -117,8 +117,6 @@ Deploy your Workflow and see the `terraform plan` executed in the first Terraf
 
 If you select the **Set as Terraform Plan** option, you can display the output of the plan using the variable expression `${terraformApply.tfplan}`. For example, you can display the plan output in a [Shell Script](../model-cd-pipeline/workflows/capture-shell-script-step-output.md) step.
 
-For help in parsing the plan output, see [Parsing Terraform Plan Output](https://community.harness.io/t/parsing-terraform-plan-output/545) on Harness Community.
-
 The `${terraformApply.tfplan}` expression does not support plan files larger than 15MB.
 
 ### Review: Terraform Plan File Output Variable

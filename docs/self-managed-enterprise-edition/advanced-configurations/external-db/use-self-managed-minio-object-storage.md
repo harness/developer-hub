@@ -36,7 +36,7 @@ import Strongpass from '/docs/self-managed-enterprise-edition/shared/strong-pass
 
 <Strongpass />
 
-<!-- 
+<!--
 ## TLS support
 
 ### MinIO Google bucket
@@ -105,7 +105,7 @@ To set up the Nginx load balancer, do the following:
       server minio3.internal:9000;
       server minio4.internal:9000;
    }
-   
+
    upstream minio_console {
       least_conn;
       server minio1.internal:9001;
@@ -113,12 +113,12 @@ To set up the Nginx load balancer, do the following:
       server minio3.internal:9001;
       server minio4.internal:9001;
    }
-   
+
    server {
       listen       80;
       listen  [::]:80;
       server_name  <external-ip-of-VM>;
-   
+
       # Allow special characters in headers
       ignore_invalid_headers off;
       # Allow any size file to be uploaded.
@@ -127,22 +127,22 @@ To set up the Nginx load balancer, do the following:
       # Disable buffering
       proxy_buffering off;
       proxy_request_buffering off;
-   
+
       location / {
          proxy_set_header Host $http_host;
          proxy_set_header X-Real-IP $remote_addr;
          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
          proxy_set_header X-Forwarded-Proto $scheme;
-   
+
          proxy_connect_timeout 300;
          # Default is HTTP/1, keepalive is only enabled in HTTP/1.1
          proxy_http_version 1.1;
          proxy_set_header Connection "";
          chunked_transfer_encoding off;
-   
+
          proxy_pass http://minio_s3; # This uses the upstream directive definition to load balance
       }
-   
+
       location /minio/ui/ {
          rewrite ^/minio/ui/(.*) /$1 break;
          proxy_set_header Host $http_host;
@@ -150,19 +150,19 @@ To set up the Nginx load balancer, do the following:
          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
          proxy_set_header X-Forwarded-Proto $scheme;
          proxy_set_header X-NginX-Proxy true;
-   
+
          # This is necessary to pass the correct IP to be hashed
          real_ip_header X-Real-IP;
-   
+
          proxy_connect_timeout 300;
 
          # To support websockets in MinIO versions released after January 2023
          proxy_http_version 1.1;
          proxy_set_header Upgrade $http_upgrade;
          proxy_set_header Connection "upgrade";
-   
+
          chunked_transfer_encoding off;
-   
+
          proxy_pass http://minio_console; # This uses the upstream directive definition to load balance
       }
    }
@@ -241,30 +241,30 @@ To configure your MinIO servers, do the following:
    # with 4 drives each at the specified hostname and drive locations.
    # The command includes the port that each MinIO server listens on
    # (default 9000)
-   
+
    MINIO_VOLUMES="http://minio{1...4}.internal:9000/mnt/disks/disk1"
-   
+
    # Set all MinIO server options
    #
    # The following explicitly sets the MinIO Console listen address to
    # port 9001 on all network interfaces. The default behavior is dynamic port selection.
-   
+
    MINIO_OPTS="--console-address :9001"
-   
+
    # Set the root username. This user has unrestricted permissions to
    # perform S3 and administrative API operations on any resource in the deployment.
    #
    # Defer to your organizations requirements for superadmin user name.
-   
+
    MINIO_ROOT_USER=minioadmin
-   
+
    # Set the root password
    #
    # Use a long, random, unique string that meets your organizations
    # requirements for passwords.
-   
+
    MINIO_ROOT_PASSWORD=Te$tp@ssw0rD#@
-   
+
    # Set to the URL of the load balancer for the MinIO deployment
    # This value *must* match across all MinIO servers. If you do
    # not have a load balancer, set this value to to any *one* of the
@@ -277,17 +277,17 @@ To configure your MinIO servers, do the following:
 10. Start the MinIO service.
 
    ```
-   sudo systemctl start minio.service 
+   sudo systemctl start minio.service
    ```
 
 11. Check the MinIO status.
- 
+
    ```
    sudo systemctl status minio.service
    ```
 
 12. Repeat the process for your other three VMs.
-   
+
 ## Test MinIO connectivity
 
 To test your MinIO connectivity, do the following:

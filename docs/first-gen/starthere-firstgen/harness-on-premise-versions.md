@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-This content is for Harness [FirstGen](../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
+:::warning
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/self-managed-enterprise-edition/get-started/onboarding-guide).
 :::
 
 In addition to the Harness SaaS offering, Harness offers on-premises editions named Harness Self-Managed Enterprise Edition.

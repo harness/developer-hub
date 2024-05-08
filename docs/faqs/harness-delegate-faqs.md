@@ -10,10 +10,6 @@ helpdocs_is_published: true
 
 This topic addresses some frequently asked questions about Harness Delegates.
 
-## General
-
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 ### What is the Harness Delegate?
 
 The Harness Delegate is a service you run in your local network or VPC to connect all of your artifact, infrastructure, collaboration, verification, and other providers with Harness Manager.
@@ -151,8 +147,6 @@ For more information, go to [Automate delegate installation](../platform/delegat
 
 ## Delegate requirements
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 ### What are the delegate system requirements?
 
 One delegate size does not fit all use cases, so Harness lets you pick from several options:
@@ -257,15 +251,11 @@ Yes. For more information, go to [Truststore override for delegates](/docs/platf
 
 ## Copying and downloading artifacts by using the delegate
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 ### How does the delegate download or copy an artifact to the target host?
 
 For container-based deployments such as Kubernetes, the delegate pulls the artifact from a repository to the target container.
 
 ## Delegate and Kubernetes namespaces
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 ### What Kubernetes namespace does the delegate use?
 

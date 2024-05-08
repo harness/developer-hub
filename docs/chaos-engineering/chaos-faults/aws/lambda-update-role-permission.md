@@ -1,6 +1,8 @@
 ---
 id: lambda-update-role-permission
 title: Lambda update role permission
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-role-permission
 ---
 Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
 
@@ -129,6 +131,11 @@ Below is an example AWS policy to execute the fault when `POLICY_ARN` environmen
         <td> The interval (in seconds) between successive policy/role detach/update.</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>

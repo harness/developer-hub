@@ -225,7 +225,7 @@ To configure replication, do the following:
 
     ```
     sudo su -
-    service postgresql restart 
+    service postgresql restart
     ```
 
 ### Initiate replication
@@ -272,7 +272,7 @@ To initiate replication, do the following:
    service postgresql restart
    ```
 
-6. Run the following to check the logs and verify that the replica works. 
+6. Run the following to check the logs and verify that the replica works.
 
    ```
    tail -f /var/log/postgresql/postgresql-14-main.log
@@ -313,7 +313,7 @@ Follow the steps below to set up a Harness Self-Managed Enterprise Edition clust
    ```
 
 3. Run the following command to create a `postgres-secret` in your Harness Self-Managed Enterprise Edition cluster.
-   
+
    ```
    kubectl apply -f postgres-secret.yaml -n <namespace>
    ```

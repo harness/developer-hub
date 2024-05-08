@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-network-loss
 title: VMware Windows Network Loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-network-loss
 ---
 
 VMware Windows Network Loss simulates a network loss scenario on Windows OS based VMware VM.

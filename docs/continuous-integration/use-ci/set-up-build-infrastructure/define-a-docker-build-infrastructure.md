@@ -8,14 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 <DocsTag  text="Free plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Team plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" /> <DocsTag  text="Enterprise plan" link="/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt" />
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
+You can configure CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Harness Docker Runner. When the pipeline runs, the Harness Docker Runner runs the build actions in the environment where it is installed. The delegate handles communication between the Harness Platform and the Harness Docker Runner.
 
 * [Set up a Linux local runner build infrastructure](#set-up-a-linux-local-runner)
 * [Set up a macOS local runner build infrastructure](#set-up-a-macos-local-runner)
@@ -39,7 +37,7 @@ Review the following requirements for local runner build infrastructures:
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -83,10 +81,10 @@ For more information about delegates and delegate installation, go to [Delegate 
 The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
-2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
+2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`:
 
    ```
-   export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
+   export CI_MOUNT_VOLUMES="path/to/local/cert;/etc/ssl/certs/ca-certificates.crt,path/to/local/cert2;/etc/ssl/certs/cacerts.pem"
    ```
 
    :::info
@@ -95,25 +93,17 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::
 
-3. Enable execution permissions for the Runner. For example:
+3. Enable execution permissions for the Runner, for example:
 
    ```
    sudo chmod +x harness-docker-runner-linux-arm64
    ```
 
-4. Start the runner binary. For example:
+4. Start the runner binary, for example:
 
    ```
    sudo ./harness-docker-runner-linux-arm64 server
    ```
-
-Here is an example of the three commands to install the Linux arm64 Harness Docker Runner with self-signed certificates:
-
-```
-export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-sudo chmod +x harness-docker-runner-linux-arm64
-./harness-docker-runner-linux-arm64 server
-```
 
 ### Define build infrastructure
 
@@ -135,7 +125,7 @@ Review the following requirements for local runner build infrastructures:
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -180,10 +170,10 @@ For more information about delegates and delegate installation, go to [Delegate 
 The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) corresponding to your build farm's OS and architecture.
-2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
+2. (Optional) To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`:
 
    ```
-   export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
+   export CI_MOUNT_VOLUMES="path/to/local/cert;/etc/ssl/certs/ca-certificates.crt,path/to/local/cert2;/etc/ssl/certs/cacerts.pem"
    ```
 
    :::info
@@ -192,13 +182,13 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
    :::
 
-3. Enable execution permissions for the Runner. For example:
+3. Enable execution permissions for the Runner, for example:
 
    ```
    sudo chmod +x harness-docker-runner-darwin-amd64
    ```
 
-4. Start the runner binary. For example:
+4. Start the runner binary, for example:
 
    ```
    ./harness-docker-runner-darwin-amd64 server
@@ -223,14 +213,6 @@ The Harness Docker Runner service performs the build work. The delegate needs th
 
 </details>
 
-Here is an example of the three commands to install the Darwin amd64 Harness Docker Runner with self-signed certificates:
-
-```
-export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
-sudo chmod +x harness-docker-runner-darwin-arm64
-./harness-docker-runner-darwin-arm64 server
-```
-
 ### Define build infrastructure
 
 After configuring the host machine, you need to [set the pipeline's build infrastructure](#set-the-pipelines-build-infrastructure).
@@ -253,7 +235,7 @@ Review the following requirements for Windows local runner build infrastructures
 
 1. In Harness, go to **Account Settings**, select **Account Resources**, and then select **Delegates**.
 
-   You can also create delegates at the project scope. To do this, go to your Harness CI project, select **Project Setup**, and then select **Delegates**.
+   You can also create delegates at the project scope. In your Harness project, select **Project Settings**, and then select **Delegates**.
 
 2. Select **New Delegate** or **Install Delegate**.
 3. Select **Docker**.
@@ -301,18 +283,21 @@ For more information about delegates and delegate installation, go to [Delegate 
 
 ### Install the Harness Docker Runner
 
-The Harness Docker Runner service performs the build work. The delegate needs the runner to run CI builds.
+The Harness Docker Runner performs the build work. The delegate needs the runner to run CI builds.
+
+On Windows platforms, you can install the Docker Runner as a process (using a `.exe`) or a service (using a `.msi`). The advantage to installing the Docker Runner as a service is that the service automatically starts when the runner machine restarts.
 
 :::warning
 
-Run the Harness Docker Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
-
-Use PowerShell to run these commands.
+Install the Harness Docker Runner on the Windows machine that you specified in the delegate's `RUNNER_URL`.
 
 :::
 
-1. On the target Windows machine where you want to run the Harness Docker Runner, download the Windows [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases).
-2. Open a terminal with Administrator privileges.
+<Tabs>
+<TabItem value="process" label="Install as a process (.exe)" default>
+
+1. Download the Windows [Harness Docker Runner executable](https://github.com/harness/harness-docker-runner/releases) on the Windows machine where you want to run the Harness Docker Runner. This should be the Windows machine that you specified in the delegate's `RUNNER_URL`.
+2. Use PowerShell to run these commands. Open a terminal with Administrator privileges.
 3. (Optional) To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
@@ -326,18 +311,56 @@ Use PowerShell to run these commands.
 
    :::
 
-4. Run the following command to start the runner binary:
+4. Start the runner binary:
 
    ```
    harness-docker-runner-windows-amd64.exe server
    ```
 
-Here is an example of the two commands to install the Windows amd64 Harness Docker Runner with self-signed certificates:
+</TabItem>
+<TabItem value="service" label="Install as a service (.msi)">
 
-```
-$env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
-harness-docker-runner-windows-amd64.exe server
-```
+The advantage to installing the Docker Runner as a Windows service is that the service restarts when the runner machine restarts. This can be helpful if your workflow requires the runner machine to restart on a schedule or after certain events.
+
+1. Download the [Windows Harness Docker Runner MSI file (`harness-docker-runner-svc.msi`)](https://github.com/harness/harness-docker-runner/releases) on the Windows machine where you want to run the Harness Docker Runner. This should be the machine that you specified in the delegate's `RUNNER_URL`.
+2. Launch the downloaded `harness-docker-runner-svc.msi` file to start the installation process. Then accept the license, select **Next**, and finish the installation.
+
+   :::info Troubleshoot Windows Security issues
+
+   By default, Windows Security doesn't trust external or unrecognized MSI files. To proceed with installation, you might need to authorize/trust the application or change permissions on the file.
+
+   Error codes 2502 or 2503 occur if the Windows MSI installation service isn't authorized to write to the `C:\windows\Temp` folder during the installation process. To resolve this, do the following:
+
+      1. In File Explorer, go to `C:\Windows`.
+      2. Right-click the `Temp` folder, and select **Properties**.
+      3. Select the **Security** tab, and then select **Advanced**.
+      4. Make sure an appropriate user is selected for **Principal**, such as an Administrator, and then select **Full control** for **Basic permissions**.
+      5. Select **OK** and then select **Apply**.
+      6. If a warning message appears, select **Yes** and **Continue**.
+      7. Restart or continue the installation process.
+
+   If you get the error message `This installation package could not be opened`, you might need to [change ownership of the file](https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753659(v=ws.10)) to Administrators, allow full control, and then restart or continue the installation process. If you're not already an administrator, you might need to elevate your permissions using [User Account Control (UAC)](https://learn.microsoft.com/en-us/windows/security/application-security/application-control/user-account-control).
+
+   :::
+
+3. (Optional) To test the service availability, open a terminal with Administrator privileges and run:
+
+   ```
+   curl http://localhost:3000/healthz
+   ```
+
+Windows Docker Runner service logs are located at `C:\Windows\system32\harness-docker-runner-TIMESTAMP.log`. If your Windows installation doesn't use the default `C:\Windows\system32` file path, you can find the log files at `INSTALL_DIRECTORY\harness-docker-runner-TIMESTAMP.log`.
+
+:::warning
+
+Don't manually start, stop, or delete the Runner service. This can cause problems with orphaned files or subprocesses.
+
+If you need to remove the service, follow the uninstall instructions in the [Windows Harness Docker Runner MSI Readme](https://github.com/harness/harness-docker-runner?tab=readme-ov-file#uninstallation).
+
+:::
+
+</TabItem>
+</Tabs>
 
 ### Define build infrastructure
 
@@ -347,20 +370,16 @@ After configuring the host machines, you need to [set the pipeline's build infra
 
 Edit the CI pipeline where you want to use the local runner build infrastructure.
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual" default>
-
 
 1. In the pipeline's **Build** stage, select the **Infrastructure** tab.
 2. Select **Local** for the **Infrastructure**.
 3. Select the relevant **Operating System** and **Architecture**.
 4. Save your pipeline.
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML">
-
 
 In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` specifications, for example:
 
@@ -387,12 +406,10 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
   * `type`: `Docker`
   * `spec`: `{}`
 
-
 </TabItem>
 </Tabs>
 
-
-:::tip
+:::tip delegate selectors
 
 Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
@@ -428,9 +445,9 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [How do I check that the Docker daemon is running?](/kb/continuous-integration/continuous-integration-faqs/#how-do-i-check-if-the-docker-daemon-is-running-in-a-local-runner-build-infrastructure)
 * [Clone codebase fails due to missing plugin](/kb/continuous-integration/continuous-integration-faqs/#clone-codebase-fails-due-to-missing-plugin)
 * [Runner can't find an available, non-overlapping IPv4 address pool](/kb/continuous-integration/continuous-integration-faqs/#runner-cant-find-an-available-non-overlapping-ipv4-address-pool)
-* [Docker daemon fails with invalid working directory path on Windows](/kb/continuous-integration/continuous-integration-faqs/#docker-daemon-fails-with-invalid-working-directory-path-on-windows-local-runner-build-infrastructure)
 * [Runner process quits after terminating SSH connection](/kb/continuous-integration/continuous-integration-faqs/#runner-process-quits-after-terminating-ssh-connection-for-local-runner-build-infrastructure)
 * [Can I use self-signed certs with local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#can-i-use-self-signed-certs-with-local-runner-build-infrastructure)
 * [Git connector SCM connection errors when using self-signed certificates](/kb/continuous-integration/continuous-integration-faqs/#git-connector-scm-connection-errors-when-using-self-signed-certificates)
 * [Step continues running for a long time after the command is complete](/kb/continuous-integration/continuous-integration-faqs/#step-continues-running-for-a-long-time-after-the-command-is-complete)
 * [Is a Docker image required to use the Run step on local runner build infrastructure?](/kb/continuous-integration/continuous-integration-faqs/#is-a-docker-image-required-to-use-the-run-step-on-local-runner-build-infrastructure)
+* [Docker daemon fails with invalid working directory path on Windows](/kb/continuous-integration/continuous-integration-faqs/#docker-daemon-fails-with-invalid-working-directory-path-on-windows-local-runner-build-infrastructure)

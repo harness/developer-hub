@@ -6,7 +6,6 @@ sidebar_position: 40
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
@@ -147,7 +146,7 @@ This example shows a pipeline that:
               spec:
                 language: Ruby
                 buildTool: Rspec
-                testGlobs: "**/test/unit/**/*_test.rb" ## Optional
+                testGlobs: "test/unit/**/*_test.rb" ## Optional
                 runOnlySelectedTests: true ## Must be 'true' to use TI.
                 enableTestSplitting: true ## Optional. Apply parallelism to further improve test times.
 ```
@@ -269,6 +268,8 @@ You can add multiple paths. If you specify multiple paths, make sure the files c
 
 Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
+Stage-level parallelism is recommended for Ruby.
+
 ### Pre-Command, Post-Command, and Shell
 
 - **Pre-Command:** Enter commands for setting up the environment before running the tests.
@@ -285,9 +286,7 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 
 You can override the default test globs pattern. For example, the default for RSpec is `**/spec/**/*_spec.rb`, and you could override it with any other pattern, such as `spec/features/**/*_spec.rb`, which would look for a `/spec` directory at the root level, rather than anywhere in the workspace.
 
-<!-- ### Output Variables
-
-<OutVar /> -->
+Starting with [version 1.24.0](/release-notes/continuous-integration), Ruby test globs starting with `/` are treated as absolute paths. If, prior to this change, you used a glob starting with `/`, you must either replace the leading slash or add `**` accordingly.
 
 ### Environment Variables
 
@@ -341,7 +340,7 @@ These settings specify the maximum resources used by the container at runtime. T
 
 ### Timeout
 
-The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) or [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md).
 
 ## Troubleshoot Test Intelligence
 

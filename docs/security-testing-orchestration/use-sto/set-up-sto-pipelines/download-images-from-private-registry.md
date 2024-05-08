@@ -20,7 +20,7 @@ To do this, you need to:
 
 Harness STO supports [three workflows](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/ssl-setup-in-sto#supported-workflows-for-adding-custom-ssl-certificates) for running scans with custom certificates.
 
-In this workflow, you set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and Harness Manager.
+In this workflow, you set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and Harness Manager.
 
 :::info
 Running container image scans as a non-root user is not currently supported.

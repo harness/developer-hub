@@ -1,6 +1,8 @@
 ---
 id: disk-fill
 title: Disk fill
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill
 ---
 
 Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node. This fault evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.

@@ -1,6 +1,8 @@
 ---
 id: lambda-toggle-event-mapping-state
 title: Lambda toggle event mapping state
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-toggle-event-mapping-state
 ---
 
 Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery. 
@@ -103,6 +105,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>

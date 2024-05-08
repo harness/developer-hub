@@ -1,7 +1,10 @@
 ---
 id: gcp-vm-instance-stop
 title: GCP VM instance stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop
 ---
+
 GCP VM instance stop powers off from a GCP VM instance using the instance name (or a list of instance names) before for a specific duration.
 - This fault checks the performance of the application (or process) running on the VM instance.
 - When the `MANAGED_INSTANCE_GROUP` environment variable is set to `enable`, the fault does not start the instances after chaos. Instead, the fault checks the instance group for new instances.

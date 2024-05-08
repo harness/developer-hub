@@ -1,6 +1,8 @@
 ---
 id: pod-network-partition
 title: Pod network partition
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition
 ---
 
 Pod network partition is a Kubernetes pod-level fault that blocks 100 percent ingress and egress traffic of the target application by creating a network policy.
@@ -74,6 +76,10 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
         <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
     </table>
+
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
 
 ### Destination IPs and destination hosts
 

@@ -51,7 +51,7 @@ This example runs `pytest`, includes [code coverage](./run-tests/code-coverage.m
 
 :::tip
 
-In Harness CI, you can [use test splitting (parallelism)](./run-tests/speed-up-ci-test-pipelines-using-parallelism) to improve test times for any language or test tool.
+In Harness CI, you can [use test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism.md) to improve test times for any language or test tool.
 
 :::
 
@@ -448,7 +448,7 @@ Variable values can be [fixed values, runtime inputs, or expressions](/docs/plat
 
 :::tip Stage variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#stage-variables) are inherently available to steps as environment variables.
+[Stage variables](/docs/platform/pipelines/add-a-stage.md#stage-variables) are inherently available to steps as environment variables.
 
 :::
 
@@ -502,8 +502,8 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## Run step logs and test results
 

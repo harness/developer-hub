@@ -1,6 +1,8 @@
 ---
 id: vmware-disk-loss
 title: VMware disk loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-disk-loss
 ---
 
 VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.

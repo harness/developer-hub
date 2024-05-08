@@ -144,6 +144,5 @@ You should be able to view the plan, apply, and destroy steps.
 
 ### Next Steps
 
-* Review [Terraform documentation](../../terraform-category/terrform-provisioner.md) on Harness.
-* Check out our Community article on Harness and Terraform:  [Harness ❤️ Terraform](https://community.harness.io/t/harness-terraform/232)
+Review [Terraform documentation](../../terraform-category/terrform-provisioner.md).
 

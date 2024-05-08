@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 ### How to add and manage a custom chaos hub?
 
@@ -24,7 +24,7 @@ To connect to a private chaos hub repository, connect to a Harness GitHub connec
 
 Faults refer to the failures that are injected into the target resource as part of an experiment. Whereas a chaos experiment is a set of different faults coupled together to achieve a desired chaos impact.
 
-### What are the possible reasons I can’t see tunables in Tune Fault UI?
+### What are the possible reasons I can't see tunables in Tune Fault UI?
 
 Since the tuning of a chaos experiment is highly declarative, sometimes it may cause parsing issues, these may be the possible reasons:
 
@@ -46,7 +46,7 @@ Total Resilience for one single experiment = (Weight Given to that experiment * 
 
 ![Resilience Score](./static/chaos-engineering-faq-resilience-score.png)
 
-### I’m having trouble creating an experiment YAML from scratch, can I generate one?
+### I'm having trouble creating an experiment YAML from scratch, can I generate one?
 
 Yes, you can generate a YAML file by choosing the normal flow of creating an experiment (blank canvas or through a template), in the YAML/Visual toggle you can see a generated YAML based on the inputs provided by you. A generated YAML can also be downloaded after navigating to `Chaos Experiments` and clicking on `Download Experiments`.
 
@@ -57,14 +57,14 @@ To report an issue which is not mentioned here, head over to **Help** in Harness
 
 ## Security
 
-### What are the identity providers supported by Harness Chaos for user authentication? 
+### What are the identity providers supported by Harness Chaos for user authentication?
 
-The Harness platform is fully integrated with several public OAuth providers, with support for two-factor authentication and domain whitelisting. 
-To learn more, go to [authentication overview](/docs/platform/authentication/authentication-overview.md). 
+The Harness platform is fully integrated with several public OAuth providers, with support for two-factor authentication and domain whitelisting.
+To learn more, go to [authentication overview](/docs/platform/authentication/authentication-overview.md).
 
-### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users’ environments?
+### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users' environments?
 
-The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/chaos-faults/prerequisites/chaos-infrastructure/connect-chaos-infrastructures.md). 
+The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures.md).
 
 ### What are the permissions and privileges required to deploy and run the chaos infrastructure?
 
@@ -82,25 +82,25 @@ A chaos infrastructure could be inactive due to a variety of reasons. When you t
 
 The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. To learn more, go to [chaos access control](/docs/chaos-engineering/architecture-and-security/security/introduction#user-authorization-and-role-based-access-control).
 
-### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment? 
+### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment?
 
 The chaos infrastructure can be installed in a cluster-wide scope (with the ability to discover and inject chaos on microservices across namespaces and infrastructure components such as nodes and volumes) as well as in a namespace-specific scope (where discovery and chaos injection are limited to resources within a specific namespace).
 
-In addition, users can provide a custom service account to carry out experiments, thereby limiting the fault types in the user environment. To learn more, go to [blast radius control using permissions](/docs/chaos-engineering/architecture-and-security/security/introduction#blast-radius-control-using-permissions). 
+In addition, users can provide a custom service account to carry out experiments, thereby limiting the fault types in the user environment. To learn more, go to [blast radius control using permissions](/docs/chaos-engineering/architecture-and-security/security/introduction#blast-radius-control-using-permissions).
 
-### How does Harness Chaos access cloud resources in the users’ environment?
+### How does Harness Chaos access cloud resources in the users' environment?
 
 Harness Chaos experiment pods consume Kubernetes secrets that contain access credentials, which are leveraged to make provider-specific API calls to the cloud platform to inject chaos. To learn more, go to [Secrets management](/docs/chaos-engineering/architecture-and-security/security/introduction#secrets-management).
 
-### Can cloud service accounts be used instead of user credentials to access cloud resources? 
+### Can cloud service accounts be used instead of user credentials to access cloud resources?
 
 When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. To learn more, go to [IAM integration for AWS authentication](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration).
 
-### How does Harness Chaos access APM platforms to perform hypothesis validation? 
+### How does Harness Chaos access APM platforms to perform hypothesis validation?
 
 Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/probes/cmd-probe.md).
 
-### What are the details about the user and the user’s environment accessed and stored by Harness?
+### What are the details about the user and the user's environment accessed and stored by Harness?
 
 The following user information is stored in the Harness database and object store:
 
@@ -109,11 +109,11 @@ The following user information is stored in the Harness database and object stor
 
 The information is purged on a policy basis, with defaults set at "x" days.
 
-### How can I track the actions of a user on the Harness platform? 
+### How can I track the actions of a user on the Harness platform?
 
-Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail/audit-trail.md). 
+Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail/audit-trail.md).
 
-### Can Harness perform security chaos tests in the users’ environments?
+### Can Harness perform security chaos tests in the users' environments?
 
 Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the correct rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](/docs/chaos-engineering/chaos-faults/load/locust-loadgen/).
 

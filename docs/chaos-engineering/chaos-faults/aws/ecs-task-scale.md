@@ -1,6 +1,8 @@
 ---
 id: ecs-task-scale
 title: ECS task scale
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-task-scale
 ---
 ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS tasks based on the services and checks the task availability. This fault affects the availability of a task in an ECS cluster.
 

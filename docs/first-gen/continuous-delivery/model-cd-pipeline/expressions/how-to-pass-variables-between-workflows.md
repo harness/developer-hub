@@ -113,5 +113,5 @@ Now that we have a Workflow pushing variables and a Workflow echoing them, we ca
 
 Using this simple method of publishing variables, teams can tackle a wide variety of use cases.
 
-If you want to share some ideas, join the [Harness Community](http://community.harness.io/).
+If you want to share some ideas, join the [Harness Community](https://developer.harness.io/community).
 

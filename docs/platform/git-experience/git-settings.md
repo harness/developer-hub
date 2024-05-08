@@ -10,9 +10,9 @@ This topic explains how to view and edit the default settings for Git Experience
 
 ## Use default connector for Git Experience
 
-To avoid selecting the same connector repeatedly, you can enable the default connector settings **Default Connector For Git Experience with Entities - Pipelines/InputSets/Templates**. When this setting is enabled, the default connector is preselected during pipeline or template creation. You can, however, use any other connector if necessary. 
+To avoid selecting the same connector repeatedly, you can enable the default connector settings **Default Connector For Git Experience with Entities - Pipelines/InputSets/Templates**. When this setting is enabled, the default connector is preselected during pipeline or template creation. You can, however, use any other connector if necessary.
 
-To enable this setting in Harness, do the following: 
+To enable this setting in Harness, do the following:
 
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to enable the default connector settings. This setting is available at the account, organization, and project scope.
 
@@ -21,7 +21,7 @@ To enable this setting in Harness, do the following:
    * To enable the default connector settings at the project scope, go to **Projects**, select the relevant project, and then select **Default Settings**.
 2. Select **Git Experience**.
 3. In **Default Connector For Git Experience with Entities - Pipelines/InputSets/Templates**, select a connector to set it as a default connector.
-   
+
    ![](./static/default-connector-gitx.png)
 
 4. Enable this setting.
@@ -51,7 +51,7 @@ To enable this setting in Harness, do the following:
 ## Enforce Git Experience
 
 To ensure that your resource configurations are saved only in Git repositories, you can enforce Git experience in your Harness account.
-You can do this by enabling `Enforce git experience for pipelines and templates`. 
+You can do this by enabling `Enforce git experience for pipelines and templates`.
 
 This setting applies to the following resources:
 
@@ -60,7 +60,7 @@ This setting applies to the following resources:
 
 Harness disables inline pipelines and templates, and users can only create remote pipelines and templates after enabling this setting. You can still create inline input sets corresponding to existing inline pipelines.
 
-To enable this setting in Harness, do the following: 
+To enable this setting in Harness, do the following:
 
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to enable the default connector settings. This setting is available at the account, organization, and project scope.
 
@@ -83,7 +83,7 @@ This setting applies to the following resources:
 * Input sets
 * Templates
 
-To set the default storage type for entities in Harness, do the following: 
+To set the default storage type for entities in Harness, do the following:
 
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to enable the default connector settings. This setting is available at the account, organization, and project scope.
 
@@ -102,7 +102,7 @@ This setting applies to the following resources:
 * Input sets
 * Templates
 
-To set the default repository for Git Experience entities, do the following: 
+To set the default repository for Git Experience entities, do the following:
 
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to enable the default connector settings. This setting is available at the account, organization, and project scope.
 
@@ -115,7 +115,7 @@ To set the default repository for Git Experience entities, do the following:
 
 ## Set allowed repositories for Git Experience
 
-To set the allowed repositories for Git Experience entities, do the following: 
+To set the allowed repositories for Git Experience entities, do the following:
 
 1. In Harness, go to the [scope](#scopes-and-refinement) where you want to enable the default connector settings. This setting is available at the account, organization, and project scope.
 

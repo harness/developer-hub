@@ -124,7 +124,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -186,7 +186,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 See:
 
 * [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/variables-and-expressions/harness-variables.md)
+* [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md)
 
 ### CloudFormation Parameters Overrides
 
@@ -253,8 +253,8 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 In **Advanced**, you can use the following options:
 
 * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

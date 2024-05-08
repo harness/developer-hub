@@ -1,40 +1,19 @@
 ---
 title: Metasploit scanner reference for STO
-description: Scan application instances with Metasploit.
-sidebar_label: Metasploit scanner reference
+description: Scan application instances with Metasploit Framework.
+sidebar_label: Metasploit Framework scanner reference
 sidebar_position: 230
 ---
 
-You can scan your application instances and ingest results from Metasploit.
-
-## Important notes for running Metasploit scans in STO
+You can scan your application instances and ingest results from Metasploit Framework.
 
 
-
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-
-### For more information
-
+## For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
-
 <StoMoreInfo />
+
 
 ## Security step settings for Metasploit scans in STO
 

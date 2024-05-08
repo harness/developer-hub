@@ -1,6 +1,8 @@
 ---
 id: azure-instance-cpu-hog
 title: Azure instance CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-cpu-hog
 ---
 
 Azure instance CPU hog disrupts the state of infrastructure resources. 

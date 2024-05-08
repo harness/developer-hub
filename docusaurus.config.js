@@ -6,7 +6,6 @@ const darkCodeTheme = themes.dracula;
 const path = require("path");
 
 const BASE_URL = process.env.BASE_URL || "/";
-
 function hideIndexFromSidebarItems(items) {
   const result = items.filter((item) => {
     return !(item.type === "doc" && item.id === "index");
@@ -111,8 +110,8 @@ const config = {
             to: "docs",
             items: [
               {
-                label: "Get Started",
-                to: "docs/get-started",
+                label: "Platform",
+                to: "docs/platform",
               },
               {
                 label: "Code Repository",
@@ -163,10 +162,6 @@ const config = {
                 to: "docs/software-engineering-insights",
               },
               {
-                label: "Platform",
-                to: "docs/platform",
-              },
-              {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
               },
@@ -177,10 +172,6 @@ const config = {
               {
                 label: "Release Notes",
                 href: "/release-notes",
-              },
-              {
-                label: "Roadmap",
-                href: "/roadmap",
               },
               {
                 label: "FAQs",
@@ -207,7 +198,7 @@ const config = {
             to: "university",
             items: [
               {
-                label: "Learn Harness",
+                label: "Learn Harness from Experts",
                 to: "university",
               },
               {
@@ -255,24 +246,33 @@ const config = {
                 label: "Knowledge Base",
               },
               {
+                to: "kb/reference-architectures",
+                label: "Reference Architectures",
+              },
+              {
                 to: "community",
                 label: "Community",
               },
             ],
           },
-
+          {
+            label: "Roadmap",
+            position: "right",
+            href: "/roadmap",
+          },
           {
             type: "custom-coveo-search",
             position: "right",
           },
+
           {
             position: "right",
-            html: '<button class="button button--nav">Sign in</button>',
+            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
             href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
             position: "right",
-            html: '<button class="button button--cta">Sign up</button>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],
@@ -346,7 +346,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-25b35u8j5-qAvb~7FJ1NFXbiW4AN101w",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-2frobs97n-HwsLuNvfb6A7dEf_HKspHA",
               },
               {
                 label: "API Reference",
@@ -397,6 +397,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Do not sell or share my personal information",
+                to: "https://preferences.harness.io/form/opt_out?locationCode=NP-P3&privacyRequestPolicyId=2efa55cb-13a6-49c8-bab1-1a8f7efd00b7",
+              },
             ],
           },
         ],
@@ -414,18 +418,9 @@ const config = {
       docs: {
         sidebar: {
           hideable: true,
+          autoCollapseCategories: true,
         },
       },
-      /*
-      announcementBar: {
-        id: "support_us",
-        content:
-          "Welcome to Harness Developer Hub. Help us improve by providing feedback.",
-        backgroundColor: "#000000",
-        textColor: "#ffffff",
-        isCloseable: true,
-      },
-      */
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
@@ -437,31 +432,14 @@ const config = {
       announcementBarByPath: {
         // list all pathnames in Regular expressions format
         pathRegExp: [
-          // paths for md-doc pages
+          // paths for md-doc pages / global patterns
           "^/docs/first-gen/continuous-delivery.*",
           "^/docs/first-gen/first-gen-quickstarts.*",
-          // paths for category pages
-          "^/docs/category/quickstarts.*",
-          "^/docs/category/continuous-delivery.*",
-          "^/docs/category/continuous-delivery-overview.*",
-          "^/docs/category/general-deployment-features.*",
-          "^/docs/category/deployment-strategies-and-integrations.*",
-          "^/docs/category/aws-.*",
-          "^/docs/category/general-aws-.*",
-          "^/docs/category/azure-.*",
-          "^/docs/category/cicd-artifact-build-and-deploy-pipelines.*",
-          "^/docs/category/google-cloud.*",
-          "^/docs/category/native-helm-deployments.*",
-          "^/docs/category/iis-net-deployments.*",
-          "^/docs/category/kubernetes-deployments.*",
-          "^/docs/category/tanzu-application-service-formerly-pivotal.*",
-          "^/docs/category/terraform-1.*",
-          "^/docs/category/terragrunt.*",
-          "^/docs/category/traditional-deployments-ssh.*",
-          "^/docs/category/custom-deployments.*",
-          "^/docs/category/continuous-verification.*",
-          "^/docs/category/model-your-cd-pipeline.*",
-          "^/docs/category/harness-git-based-how-tos.*",
+          "-fg.*",
+          "fg-.*",
+          "firstgen-.*",
+          "first-gen.*",
+          "-firstgen.*",
         ],
       },
       utmCookie: {
@@ -577,7 +555,11 @@ const config = {
     path.join(__dirname, "/plugins/focusOnAnchor-plugin"),
     //path.join(__dirname, "/plugins/scarf-plugin"),
   ],
-  clientModules: [path.join(__dirname, "/client_module/searchBar")],
+  clientModules: [
+    path.join(__dirname, "/client_module/searchBar"),
+    path.join(__dirname, "/client_module/iframeEmbed"),
+  ],
+  // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
 
 module.exports = config;

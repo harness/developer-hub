@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 System for Cross-Domain Identity Management (SCIM) is an open standard protocol for automated user provisioning. In Harness, automated provisioning involves creating users and user groups, assigning users to groups, and managing some user attributes (such as names and email addresses). In addition to creating users and groups, automated provisioning also edits and removes users and user groups as and when required.
 
-If OneLogin is your identity provider, you can efficiently provision and manage users in your Harness account, organizations, and projects. Using [OneLogin's SCIM integration](https://developers.onelogin.com/scim) with Harness enables OneLogin to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
+If OneLogin is your identity provider, you can efficiently provision and manage users in your Harness account. Using [OneLogin's SCIM integration](https://developers.onelogin.com/scim) with Harness enables OneLogin to serve as a single identity manager, to add and remove users, and to provision user groups. This is especially efficient for managing users at scale.
 
 This topic describes how to use a OneLogin SCIM integration for automated provisioning in Harness. To configure this integration, you must take steps in both OneLogin and Harness.
 
@@ -25,7 +25,7 @@ With the OneLogin SCIM integration, don't change provisioned users' email addres
 You need an understanding of:
 
 * System for Cross-domain Identity Management (SCIM).
-* [Harness' key concepts](../../get-started/key-concepts.md).
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 You must be an Administrator in your OneLogin account, and you must be an **Account Admin** in Harness.

@@ -1,6 +1,8 @@
 ---
 id: ecs-container-cpu-hog
 title: ECS container CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-cpu-hog
 ---
 ECS container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM documentation that is in-built into the fault. This fault:
 - Causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
@@ -155,6 +157,11 @@ Below is an example AWS policy to execute the fault.
         <td> Path to the AWS secret credentials.</td>
         <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
+      <tr>
+          <td> SERVICE_NAME </td>
+          <td> Target ECS service name. </td>
+          <td> For example, <code>app-svc</code>. For more information, go to <a href="#ecs-service-name"> ECS service name.</a></td>
+        </tr>
       <tr> 
         <td> CPU_CORE </td>
         <td> Number of CPU cores to consume.</td>
@@ -236,6 +243,39 @@ spec:
           value: '100'
         - name: CPU_CORE
           value: '0'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'
+```
+
+### ECS service name
+
+Service name whose tasks are stopped. Tune it by using the `SERVICE_NAME` environment variable. 
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/ecs-stress-chaos/service-name.yaml yaml)
+```yaml
+# stop the tasks of an ECS cluster
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-task-stop
+    spec:
+      components:
+        env:
+        # provide the name of ECS cluster
+        - name: CLUSTER_NAME
+          value: 'demo'
+        - name: SERVICE_NAME
+          vale: 'test-svc'
+        - name: REGION
+          value: 'us-east-1'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```

@@ -1,25 +1,15 @@
 In your Harness account, go to **Account Settings** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section on the **Overview** page. You can select **Manage** to go to the **Subscriptions** page.
 
-<!-- ![](/docs/platform/get-started/static/pl_account_overview.png) -->
-
 <DocImage path={require('/docs/platform/get-started/static/pl-account-overview.png')} />
 
 #### Subscriptions page
 
-If you purchased your module with a Developer 360 subscription, the Subscriptions page displays the the developer license count (**Developers**), as well as the consumption entitlement, for example, for CD, this would show **Services** or **Service Instances**.
+For Developer 360 module subscriptions, the **Subscriptions** page displays the the developer license count (**Developers**), as well as the consumption entitlement, depending on the module's licensing unit.
 
-:::info
-
-Fields vary by module, based on the licensing unit of the module.
-
-:::
-
-<!-- ![](/docs/platform/get-started/static/subscriptions-new.png) -->
+For example, consumption entitlement for CD could include **Services** or **Service Instances**.
 
 <DocImage path={require('/docs/platform/get-started/static/subscriptions-new.png')} />
 
-If you didn't purchase your module with a Developer 360 subscription, the Subscriptions page displays the **License Count** for your module-specific license, which is **CD Services** or **CD Service Instances** for CD.
-
-<!-- ![](/docs/platform/get-started/static/subscriptions-legacy.png) -->
+For module subscriptions not purchased under a Developer 360 subscription, the **Subscriptions** page displays the **License Count** for your module-specific license. For example, for CD this is **CD Services** or **CD Service Instances**.
 
 <DocImage path={require('/docs/platform/get-started/static/subscriptions-legacy.png')} />

@@ -27,7 +27,7 @@ Supercharge your [code search](../work-in-repos/semantic-search) with [Harness A
 
 ## Harness Platform components
 
-Harness Code integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md).
+Harness Code integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md).
 
 ### Pipelines
 
@@ -42,7 +42,7 @@ To learn more about CI and CD pipelines go to:
 
 ### Projects
 
-Repositories you create in Harness Code each belong to a [Harness project](https://developer.harness.io/docs/platform/get-started/key-concepts#organizations--projects). This provides a measure of access control for your repositories.
+Repositories you create in Harness Code each belong to a [Harness project](https://developer.harness.io/docs/platform/get-started/key-concepts#organizations-and-projects). This provides a measure of access control for your repositories.
 
 ### Access control
 

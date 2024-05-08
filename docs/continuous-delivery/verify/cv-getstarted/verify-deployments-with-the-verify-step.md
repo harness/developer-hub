@@ -13,9 +13,9 @@ This topic provides an overview of the prerequisites and steps involved in setti
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](/docs/get-started/key-concepts).
+* [Learn Harness' Key Concepts](/docs/platform/get-started/key-concepts).
 * [Learn about Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
-* [Refer to the supported platforms and technologies](../../../get-started/supported-platforms-and-technologies.md)
+* [Refer to the supported platforms and technologies](../cv-whats-supported.md)
 
 
 ## Deployment strategies for CV
@@ -48,7 +48,7 @@ Harness uses the data points within this duration for analysis. For instance, if
 
 ### Artifact tag
 
-Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Service artifacts expressions](/docs/platform/variables-and-expressions/harness-variables.md#service-artifacts-expressions).
 
 
 ### Fail on no analysis. 

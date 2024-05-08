@@ -66,7 +66,7 @@ To increase the PV size, do the following:
    ```
    kubectl delete statefulset <YOUR_STATEFULSET-NAME>
    ```
-   
+
    ```
    helm upgrade <YOUR_RELEASE_NAME> <YOUR_CHART_NAME> -f override.yaml
    ```

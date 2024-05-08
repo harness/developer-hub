@@ -16,21 +16,17 @@ To integrate with Harness CI, use the [SEI Harness NG integration](./sei-integra
 The following permissions and settings are required to use the SEI Drone CI integration:
 
 * You have set up the Drone platform for your CI pipelines.
-* You need your Drone personal API token. To find your token in Drone, select your avatar to go to your **Account Settings**. Either keep the Drone **Account Settings** page open or copy the token somewhere that you can retrieve it when you configure the integration.
-
+* You need your **Drone Personal API Token**. To find your token in Drone, select your avatar to go to your **Account Settings**. Either keep the Drone **Account Settings** page open or copy the token somewhere that you can retrieve it when you configure the integration.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Configure the integration
-
 
 <Tabs>
   <TabItem value="cloud" label="Cloud" default>
 
-
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account Scope**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Drone CI** integration, and select **Install**.
 4. Configure and save the integration.
@@ -50,13 +46,15 @@ The steps for configuring the integration using **Satellite** is similar to conf
 
 Make sure to select the satellite integration checkbox while configuring the integration. Once you save the integration a `satellite.yml` file will be automatically generated and downloaded to your computer. Update it following the instructions [here](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
+If you experience any issues while configuring the integration using the Ingestion Satellite, refer to the [Ingestion Satellite Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
+
 Here’s a sample `satellite.yml` file:
 
 ```yaml
 satellite:
   tenant: <ACCCOUNT_ID>
   api_key: <ACCOUNT_API_KEY>
-  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the environment you are using.
+  url: 'https://app.harness.io/gratis/sei/api' # Note that this URL is relative to the Environment of your Harness Account.
 integrations:
   - id: '<INTEGRATION_ID>'
     application: droneci
@@ -67,9 +65,6 @@ integrations:
       fetch_steplogs: true
       is_push_based: false
 ```
-
-If you encounter any issues during the integration process, go to the Satellite integration [Troubleshooting and FAQs](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-troubleshooting-and-faqs).
-
 
 </TabItem>
 </Tabs>

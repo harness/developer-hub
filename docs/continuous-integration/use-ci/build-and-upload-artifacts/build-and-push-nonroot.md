@@ -4,12 +4,12 @@ description: Use the buildah plugin if you can't use the built-in Build and Push
 sidebar_position: 23
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md).
 
-With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
+Kaniko requires root access to build the Docker image. It doesn't support non-root users. If your Kubernetes cluster build infrastructure is configured to run as non-root, you can either [enable root access individual steps](#enable-root-access-for-a-single-step) or [use the Buildah plugin](#use-the-buildah-plugin), which doesn't require root access.
 
 ## Enable root access for a single step
 
@@ -24,15 +24,13 @@ If your security policy doesn't allow running as root for any step, you must use
 To use the Buildah plugin, you must meet the following requirements:
 
 * You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
-* The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/ci-stage-settings.md#run-as-non-root-or-a-specific-user).
+* The Build stage must use a [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) configured to [run as non-root](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user).
 * `anyuid` SCC is required. For more information, go to the OpenShift documentation on [Managing Security Context Constraints](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html).
 
 ### Add a Plugin step
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
-
 
 At the point in your pipeline where you want to build and upload an image, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `buildah` plugin.
 
@@ -58,10 +56,8 @@ At the point in your pipeline where you want to build and upload an image, add a
    * `password`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
    * For more information and additional settings, including AWS S3 settings, go to [Buildah plugin settings](#buildah-plugin-settings).
 
-
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 At the point in your pipeline where you want to build and upload an image, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `buildah` plugin, for example:
 
@@ -107,10 +103,8 @@ This step requires the following specifications:
    * `password`: An [expression](/docs/platform/variables-and-expressions/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/variables-and-expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
    * For more information and additional settings, including AWS S3 settings, go to [Buildah plugin settings](#buildah-plugin-settings).
 
-
 </TabItem>
 </Tabs>
-
 
 #### Buildah plugin settings
 
@@ -176,7 +170,7 @@ This YAML example shows a Build (`CI`) stage with a Kubernetes cluster build inf
 
 You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
 
-The following configuration is valid with the Docker Buildah plugin (`plugins/buildah-docker`) only.
+The following configuration is valid with the Docker Buildah plugin (`plugins/buildah-docker`) only. For other configurations, go to [Build without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push).
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Docker Buildah plugin.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.

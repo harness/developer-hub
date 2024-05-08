@@ -1,7 +1,7 @@
 ---
-title: Run specific stages in pipeline
+title: Run specific stages
 description: Run specific stages in a pipeline.
-sidebar_position: 7
+sidebar_position: 20
 helpdocs_topic_id: 95q2sp1hpr
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -12,7 +12,7 @@ A pipeline is an end-to-end process that completes a workflow, such as delivers 
 
 You might encounter situations where you want to run some, but not all, stages. For example, if only one stage fails, you might want to rerun only the failed stage. In Harness, you can select specific stages to run, rather than the entire pipeline.
 
-This topic assumes you're familiar with [Harness' key concepts](../../get-started/key-concepts.md), you have a [Harness project](../organizations-and-projects/create-an-organization.md), and you have a pipeline with multiple [stages](../pipelines/add-a-stage.md). You must also have **Execute** permissions for pipelines in your project, such as the [Pipeline Executor role](../role-based-access-control/add-manage-roles.md).
+This topic assumes you're familiar with [Harness' key concepts](/docs/platform/get-started/key-concepts.md), you have a [Harness project](../organizations-and-projects/create-an-organization.md), and you have a pipeline with multiple [stages](../pipelines/add-a-stage.md). You must also have **Execute** permissions for pipelines in your project, such as the [Pipeline Executor role](../role-based-access-control/add-manage-roles.md).
 
 ## Dependent and independent stages
 
@@ -50,6 +50,6 @@ You can view the execution details in the pipeline's execution history.
 
 ## Rerun stages from execution history
 
-When viewing execution details for a previous pipeline run, you can select **Re-run** or **Re-run Stage** to rerun a single stage. If necessary, you're prompted to provide runtime inputs.
+When [viewing execution details](/docs/category/execution-history-and-logs) for a previous pipeline run, you can select **Re-run** or **Re-run Stage** to rerun a single stage. If necessary, you're prompted to provide runtime inputs.
 
 ![](./static/run-specific-stage-in-pipeline-49.png)

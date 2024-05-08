@@ -1,6 +1,8 @@
 ---
 id: ec2-cpu-hog
 title: EC2 CPU hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog
 ---
 EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes CPU chaos on the target EC2 instances using the `EC2_INSTANCE_ID` environment variable for a specific duration.
 
@@ -116,6 +118,11 @@ Below is an example AWS policy to execute the fault.
             <th> Description </th>
             <th> Notes </th>
         </tr>
+        <tr>
+        <td> MACHINE </td>
+        <td> Whether chaos is applied on a Windows VM or a Linux VM. </td>
+        <td> </td>
+    </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration to insert chaos (in seconds). </td>

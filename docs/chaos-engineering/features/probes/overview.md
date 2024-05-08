@@ -2,15 +2,17 @@
 title: Overview
 sidebar_position: 1
 description: Introduction to probes
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/probes/overview
 ---
 
 This section introduces you to probes, their types, why they are important, and who can use them.
 
 ## What is a probe?
 
-Probes are pluggable checks that can be defined within the chaos engine for any chaos experiment. A probe and its specification are defined in the chaos engine. The probe is triggered by a chaos runner when the chaos engine begins exection. 
+Probes are pluggable checks that can be defined within the chaos engine for any chaos experiment. A probe and its specification are defined in the chaos engine. The probe is triggered by a chaos runner when the chaos engine begins execution.
 
-A probe explores the behavior of a system in a chaotic or unpredictable manner. It helps understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior. It also helps validate the declarative hypothesis set by the user. 
+A probe explores the behavior of a system in a chaotic or unpredictable manner. It helps understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior. It also helps validate the declarative hypothesis set by the user.
 
 ![Probe](./static/overview/probe.png)
 

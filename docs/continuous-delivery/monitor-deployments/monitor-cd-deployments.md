@@ -38,17 +38,13 @@ The **Services** dashboard provides an overview of all the services and service 
 
 ## Individual service dashboards
 
-:::note
-
-Currently, the following service dashboard functionality is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Click a service in the **Total Services** table to drill down and show more service details:
 
-<DocImage path={require('./static/eebdfe6a596f69e0fd2dca49ce04dd5659094aab8d76ef38886fa905659ffac9.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('./static/service-dashboard.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Clicking on any card in this dashboard filters the executions list to display executions relevant to the service and environment/artifact.
+### Summary
+
+Clicking on any card in this dashboard filters the executions list to display executions relevant to the service and environment/artifact under the **Summary** tab.
 
 An individual service's dashboard includes the following features.
 
@@ -58,7 +54,7 @@ If you do not see the environment cards in the dashboard, you will see the messa
 
 :::
 
-### Open tasks
+#### Open tasks
 
 The **See Open Tasks** banner will appear when there are deployments with the following statuses:
 
@@ -76,7 +72,7 @@ If the **See Open Tasks** button is not displayed, you can see all tasks using t
 
 <DocImage path={require('./static/9f67ae3af9c7f548f8bd9f802008e0d5d8710b167c9c4a00d4e8b611aa370401.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### Environments tab
+#### Environments tab
 
 The **Environments** tab lists the environments and environment groups where the service has been deployed by one or more pipelines.
 
@@ -99,7 +95,7 @@ Each environment card shows the following:
 
 - **Deployments:** each deployment to a selected environment or environment group. If you filter using **My Deployments** you see only those deployments that your user account initiated.
 
-### How instance information is obtained
+#### How instance information is obtained
 
 Harness runs a perpetual task that constantly polls for the same combination of Harness service/artifact + Harness environment + Harness infrastructure definition. The instance count and details are updated as a result of this polling.
 
@@ -109,7 +105,7 @@ The perpetual task is alive for 2 weeks, even after the instances are downsized/
 
 **Deployed By** will show `AUTO_SCALED` for instances that are scaled outside of the Harness deployment. For example, if you log into the Kubernetes cluster and manually auto-scale instances.
 
-### Artifacts tab
+#### Artifacts tab
 
 The **Artifacts** tab shows how the service is mapped to multiple artifacts.
 
@@ -129,7 +125,7 @@ Each artifact card shows the following:
 
 - **Deployments:** each deployment of the service or a selected artifact. If you filter using **My Deployments** you see only those deployments that your user account initiated.
 
-### View in table
+#### View in table
 
 The **View in Table** setting shows all of the instances of the service in all of the environments used with the service.
 
@@ -137,7 +133,7 @@ The **View in Table** setting shows all of the instances of the service in all o
 
 Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
 
-### Custom sequencing
+#### Custom sequencing
 
 In the **Environment** tab, you can use **Custom Sequence** to arrange the environment cards.
 
@@ -155,7 +151,7 @@ Now the environment cards are reordered.
 
 You can disable custom sequencing by toggling it off.
 
-### Chart Versions tab
+#### Chart Versions tab
 
 :::note Important Notes
 
@@ -170,6 +166,21 @@ The **Chart Versions** tab shows tiles for each Helm chart used to deploy the se
 To view details for a specific Helm chart, click the version link in the tile.
 
 <DocImage path={require('/docs/continuous-delivery/monitor-deployments/static/cds-77310-chart-version-tile-callouts.png')} width="80%" height="80%" title="Click to view full size image" />
+
+### Metrics
+
+The **Metrics** tab under a particular service provides details of the service deployments, failure rate, deployment frequency, active service instances, the underlying environment and infrastructure for the service instance, and a summary of instances over a selected period. 
+
+<DocImage path={require('./static/service-dashboard-metrics.png')} width="100%" height="100%" title="Click to view full size image" />
+
+### Configuration
+
+You can view the configuration of the selected service in Visual and YAML view under this tab.
+
+### Referenced by
+
+This tab lists all pipelines that are using the selected service.  
+
 
 ## Platform Dashboards
 

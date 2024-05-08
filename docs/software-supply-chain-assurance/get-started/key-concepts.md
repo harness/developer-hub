@@ -76,7 +76,7 @@ Provenance attestations are stored as `.att` files in the artifact repository al
 
 ## Harness Platform components
 
-The Harness SSCA module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md).
+The Harness SSCA module integrates with other Harness modules and uses components that are common to the Harness Platform. For more information about Harness Platform terminology and concepts, go to [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 ### Pipelines
 
@@ -92,24 +92,13 @@ To learn more about CI and CD pipelines go to:
 Pipelines are comprised of stages and steps.
 
 * **Stages:** A stage is a subset of a pipeline that contains one major segment of the workflow. For example, a CI (build) stage includes steps for building, pushing, and testing your code.
-* **Steps:** A stage contains one or more steps. Each step is a series of commands that perform a task. For example, you can use an **SSCA Orchestration** step to generate SBOM.
+* **Steps:** A stage contains one or more steps. Each step is a series of commands that perform a task. For example, you can use an **SBOM Orchestration** step to generate SBOM.
 
 ### Connectors
 
 [Connectors](/docs/category/connectors) contain the information necessary to integrate and work with third-party tools, such as Git providers and artifact repos. For example, a GitHub connector authenticates with a GitHub account and/or repo and fetches files as part of a deploy stage. Harness uses connectors at pipeline runtime to authenticate and run operations in external tools.
 
 Connectors require different permissions depending on your build environment and the tasks your pipeline performs. For example, if your pipeline builds and pushes an image to Docker Hub, you need a connector that can connect to your Docker Hub repo and push images.
-
-:::info
-
-For SSCA, you must use [Docker Registry connectors](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for Docker-compliant container registries, such as Docker Hub, Docker-compliant Amazon ECR, or Docker-compliant GCR.
-
-If you're using Docker-compliant ECR or GCR repos, you must configure your [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) connector as a valid [artifact source](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources).
-
-* For ECR, go to [Use Docker Registry for ECR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#amazon-elastic-container-registry-ecr).
-* For GCR, go to [Use Docker Registry for GCR](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources#google-container-registry-gcr)
-
-:::
 
 ### Delegates
 

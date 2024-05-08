@@ -1,6 +1,8 @@
 ---
 id: ec2-memory-hog
 title: EC2 memory hog
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-memory-hog
 ---
 
 EC2 memory hog disrupts the state of infrastructure resources. This fault:
@@ -127,6 +129,11 @@ Below is an example AWS policy to execute the fault.
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
     </tr>
     <tr>
+        <td> MACHINE </td>
+        <td> Whether chaos is applied on a Windows VM or a Linux VM. </td>
+        <td> </td>
+    </tr>
+    <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds).</td>
         <td> Default: 60 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
@@ -144,7 +151,7 @@ Below is an example AWS policy to execute the fault.
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
-        <td> Default: 500MB. For more information, go to <a href="#memory-consumption-in-megabytes"> memory consumption in megabytes.</a></td>
+        <td> Default: 500 MB. For more information, go to <a href="#memory-consumption-in-megabytes"> memory consumption in megabytes.</a></td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>

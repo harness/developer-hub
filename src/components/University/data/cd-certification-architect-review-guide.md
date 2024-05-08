@@ -31,7 +31,7 @@
 | Implement optimal Harness setups for varied cloud platforms (e.g., AWS, Azure)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms) |
 | Manage and troubleshoot deployments in varied environments (e.g., AWS EKS, Lambda)| [Deploy services on different platforms](https://developer.harness.io/docs/category/deploy-services-on-different-platforms)|
 | **9. Automating and Customizing Workflow Triggers in Harness** ||
-| Design and implement custom pipeline triggers with parameters | [Trigger deployments using custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)|
+| Design and implement custom pipeline triggers with parameters | [Trigger pipelines using custom triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/)|
 | Ensure secure and authorized trigger execution in Harness workflows| [Manage input sets and triggers in Git Experience](https://developer.harness.io/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/)|
 | **10. Harness Best Practices for Scalable and Efficient CD**  ||
 | Implement best practices for utilizing Harness features for scalable and efficient CD | [Scale Kubernetes pods](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas/) |

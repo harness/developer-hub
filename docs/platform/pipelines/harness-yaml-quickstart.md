@@ -1,7 +1,7 @@
 ---
-title: Harness YAML overview
-description: You can use YAML to create pipelines in Harness
-sidebar_position: 2
+title: Write pipelines in YAML
+description: You can use YAML to create pipelines in Harness.
+sidebar_position: 0
 helpdocs_topic_id: 1eishcolt3
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false
@@ -305,12 +305,29 @@ Here's an example of the step group structure:
                                     - step:
                                         ...
 ```
+### Service entity schema 
+A Harness [service](/docs/continuous-delivery/x-platform-cd-features/services/services-overview) contains a Service Definition that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
+
+
+Harness service schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/service-yaml-v2.yaml).
+
+
+### Environment entity schema
+A Harness [environment](/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview) represents where you are deploying your application. You categorize each environment as prod or non-prod.
+
+Harness environment schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/environment-yaml-v2.yaml).
+
+### Infrastructure definition entity schema
+A Harness [Infrastructure Definition](/docs/continuous-delivery/get-started/services-and-environments-overview/#infrastructure-definitions) includes specific infrastructure details for the deployment, such as the Harness connector that provides credentials for the cluster and the cluster namespace.
+
+Harness environment schema is available at [github.com/harness/harness-schema](https://github.com/harness/harness-schema/blob/main/v0/pipeline/stages/cd/infra-structure-definition-yaml.yaml).
+
 
 ## Variables and advanced settings
 
 ### Conditional executions
 
-Use `when` to define [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings) for stages and steps.
+Use `when` to define [conditional execution settings](/docs/platform/pipelines/step-skip-condition-settings) for stages and steps.
 
 You must indent `when` to the same depth as either `step.identifier` or `stage.identifier`.
 
@@ -321,7 +338,7 @@ You must indent `when` to the same depth as either `step.identifier` or `stage.i
 
 ### Failure strategies
 
-Use `failureStrategies` to define [failure strategies for stages and steps](./define-a-failure-strategy-on-stages-and-steps.md). You can also define failure strategies for pipelines to [rollback failed pipelines](./define-a-failure-strategy-for-pipelines.md).
+Use `failureStrategies` to define [failure strategies for stages and steps](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps.md). You can also define failure strategies for pipelines to [rollback failed pipelines](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-for-pipelines).
 
 ```yaml
               failureStrategies:  
@@ -394,7 +411,6 @@ pipeline:
             - name:
               identifier:
 ```
-
 ## Other entities in YAML
 
 In addition to pipelines, you can define other Harness components in YAML, such as triggers, connectors, and input sets.

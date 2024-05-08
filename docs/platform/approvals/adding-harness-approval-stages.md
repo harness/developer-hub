@@ -322,7 +322,7 @@ You can select one of the following types of expression for user groups:
 
 ### Approval notifications to approvers
 
-:::info note
+:::note
 
 Currently, details of service, environment and infrastructure definition for CD stages in approval notifications is behind the feature flag `CDS_APPROVAL_AND_STAGE_NOTIFICATIONS_WITH_CD_METADATA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -347,13 +347,31 @@ These notifications help approvers to make their decision. There are two kinds o
 
 Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running, and upcoming stages is shown. 
 
+#### CD execution metadata feature in notifications
+
+- Execution metadata like service, environment, and infrastructure identifiers are present for CD stages in approval notifications.
+- For upcoming CD stages with multiple services and(or) multiple environments, approval notifications support services, environments, infrastructures and environment groups' identifiers.
+
+
+#### Limitations of CD execution metadata feature in notifications
+
+- In certain situations, values for certain fields might not be resolved for future stages. In such cases, the notification will contain unresolved expressions for those fields. For instance, if a service is configured as an expression in a CD stage that comes after the current stage, then the notification will have an unresolved expression for that service.
+
+  For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
+
+  Go to this [knowledge base article](/kb/continuous-delivery/articles/harness-approval-notifications) for approval messages best practices.
+
+- Artifact details are not supported currently.
+- Environment and infrastructure filters' details are not supported currently.
+- GitOps CD stage metadata is not supported.
+- Custom stage metadata is not supported.
+
 ### Advanced settings
 
 Go to:
-
-- [Step Skip Condition Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-- [Step Failure Strategy Settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+- [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+- [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+- [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
 - [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 - [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 - [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
@@ -361,6 +379,9 @@ Go to:
 ### Approval variables
 
 After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
+- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+- [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### Notes
 

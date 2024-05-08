@@ -1,6 +1,8 @@
 ---
 id: ecs-update-container-resource-limit
 title: ECS update container resource limit
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-update-container-resource-limit
 ---
 
 ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task.

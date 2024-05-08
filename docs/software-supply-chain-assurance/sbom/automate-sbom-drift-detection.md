@@ -18,12 +18,12 @@ Here's a breakdown of the process:
 ![Overview of the process](./static/automate-sbom-drift/overview.png)
 
 :::info
-For maintain consistency, we'll refer to our `main` branch as both the base and default branch throughout this tutorial. You can choose to use your respective branch as you follow along.
+For maintaining consistency, we'll refer to our `main` branch as both the base and default branch throughout this tutorial. You can choose to use your respective branch as you follow along.
 :::
 
 ## Prerequisites
 
-Before you begin, make sure you understand [SBOM generation](/docs/software-supply-chain-assurance/sbom/generate-sbom) and [SBOM drift](/docs/software-supply-chain-assurance/sbom/SBOM-Drift).
+Before you begin, make sure you understand [SBOM generation](/docs/software-supply-chain-assurance/sbom/generate-sbom) and [SBOM drift](/docs/software-supply-chain-assurance/sbom/sbom-drift).
 
 You need:
 
@@ -174,7 +174,7 @@ Now that the trigger is in place, you can initiate it by either making a commit 
 
 :::warning
 It's crucial to have the SBOM for the main branch available to monitor any drift from new pull requests. Additionally, maintaining an up-to-date SBOM for the main branch is essential for successfully detecting SBOM drift when the `pull request submission` trigger is activated.
-::
+:::
 
 After you trigger the pipeline and it executes successfully, you will find the SBOM for the main branch in the **Artifacts** section within SSCA.
 

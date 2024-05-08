@@ -1,6 +1,8 @@
 ---
 id: ebs-loss-by-tag
 title: EBS loss by tag
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-tag
 ---
 
 EBS (Elastic Block Store) loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.
@@ -102,6 +104,11 @@ Below is an example AWS policy to execute the fault.
         <td> Percentage of total EBS volumes to target </td>
         <td> Default: 0 (corresponds to 1 volume), provide numeric value only. For more information, go to <a href="#target-percent-of-volumes"> target percentage of volumes.</a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Time duration for chaos insertion (sec) </td>

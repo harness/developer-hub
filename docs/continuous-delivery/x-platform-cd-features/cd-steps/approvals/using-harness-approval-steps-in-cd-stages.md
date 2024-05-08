@@ -73,6 +73,7 @@ Approval steps should not be added to run in parallel with other steps, includin
 - GitOps CD stage metadata is not supported.
 - Custom stage metadata is not supported.
 
+
 ## See also
 
 - [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)

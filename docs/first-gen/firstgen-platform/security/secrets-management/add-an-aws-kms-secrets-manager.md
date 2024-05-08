@@ -8,26 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager).To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secrets Manager.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/platform/secrets/secrets-management/add-an-aws-kms-secrets-manager).
 
-In this topic:
-
-* [Before You Begin](add-an-aws-kms-secrets-manager.md#before-you-begin)
-* [Step 1: Configure Secrets Manager](add-an-aws-kms-secrets-manager.md#step-1-configure-secrets-manager)
-* [Step 2: Display Name](add-an-aws-kms-secrets-manager.md#step-2-display-name)
-* [Option: Credentials Type](add-an-aws-kms-secrets-manager.md#option-credentials-type)
-* [Option: Assume IAM Role on Delegate](add-an-aws-kms-secrets-manager.md#option-assume-iam-role-on-delegate)
-	+ [Delegate Selector](add-an-aws-kms-secrets-manager.md#delegate-selector)
-* [Option: AWS Access Keys Manually](add-an-aws-kms-secrets-manager.md#option-aws-access-keys-manually)
-	+ [Access Key](add-an-aws-kms-secrets-manager.md#access-key)
-	+ [Secret Key](add-an-aws-kms-secrets-manager.md#secret-key)
-* [Option: Assume Role Using STS on Delegate](add-an-aws-kms-secrets-manager.md#option-assume-role-using-sts-on-delegate)
-	+ [Role ARN](add-an-aws-kms-secrets-manager.md#role-arn)
-	+ [External ID](add-an-aws-kms-secrets-manager.md#external-id)
-	+ [Assume Role Duration](add-an-aws-kms-secrets-manager.md#assume-role-duration)
-* [Step 3: Key ARN](add-an-aws-kms-secrets-manager.md#step-3-key-arn)
-* [Step 4: Region](add-an-aws-kms-secrets-manager.md#step-4-region)
-* [Step 5: Usage Scope](add-an-aws-kms-secrets-manager.md#step-5-usage-scope)
+To store and use encrypted secrets (such as access keys) and files, you can add an AWS KMS Secrets Manager.
 
 ### Before You Begin
 

@@ -38,7 +38,7 @@ Here's an example configuration of TAS as Cloud Provider in Harness.
 
 TAS user account with Admin, Org Manager, or Space Manager role. The user account must be able to update spaces, orgs, and applications.
 
-For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.pivotal.io/pivotalcf/2-3/concepts/roles.html) from Tanzu.
+For more information, see [Orgs, Spaces, Roles, and Permissions](https://docs.vmware.com/en/VMware-Tanzu-Application-Service/5.0/tas-for-vms/roles.html) from Tanzu.
 
 ## Step 1: Add the Cloud Provider
 
