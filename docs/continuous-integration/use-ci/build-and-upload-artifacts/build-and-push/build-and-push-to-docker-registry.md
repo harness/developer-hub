@@ -111,6 +111,9 @@ Later in the pipeline, you can use the same expression to pull the tagged image,
 
 :::
 
+### Base Image Connector
+Select an authenticated connector to download base images from a Docker-compliant registry. If you do not specify a Base Image Connector, the step downloads base images without authentication. Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
+
 ### Optimize
 
 With Kubernetes cluster build infrastructures, select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
