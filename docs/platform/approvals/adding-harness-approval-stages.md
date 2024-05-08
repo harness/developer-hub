@@ -369,9 +369,9 @@ Use the **Include stage execution details in approval** option to include stage 
 ### Advanced settings
 
 Go to:
-- [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-- [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-- [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
+- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings)
+- [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
+- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
 - [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 - [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 - [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
@@ -379,9 +379,6 @@ Go to:
 ### Approval variables
 
 After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
-- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
-- [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### Notes
 
