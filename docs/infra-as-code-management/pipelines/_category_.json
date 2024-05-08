@@ -1,0 +1,15 @@
+{
+    "label":"Pipelines",
+    "position": 21,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Pipelines"
+    },
+    "customProps":{
+       
+       "helpdocs_category_id":""
+    }
+ }
