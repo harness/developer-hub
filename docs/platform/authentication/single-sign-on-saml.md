@@ -750,7 +750,7 @@ With JIT, you add users to Keycloak, and they will automatically be added to Har
 	| **Master SAML Processing URL** | `https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`                                                               |
 
 :::info note
-If the account uses vanity URL, then use the same in SAML setup. eg: `https://<yourvanityurl>/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`
+If the account uses a vanity URL, then use the vanity URL in your SAML setup. For example, `https://<yourvanityurl>/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`.
 :::
 
 4. Select **Save**.
