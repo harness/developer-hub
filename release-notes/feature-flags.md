@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 0.1.22
 
- -  Refactor evaluation logic to remove inefficiencies in the GetAttr(ibute) function. (FFM-11332)
+ -  Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
  - Upgraded the Go SDK version in analytics. 
 
 ## April 2024
