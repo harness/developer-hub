@@ -195,6 +195,10 @@ Pipeline B:
 
 ![picture 3](../new-user/static/a724a004d825cf4eb946aa0a2033f09cdaacbc1ea6d3185bf4d3eaa63177cf99.png)  
 
+
+:::info note
+Please note that barrier step is only supported within a single pipeline.
+:::
 ## Run the pipelines
 
 Run pipeline A first and then pipeline B immediately after. 
