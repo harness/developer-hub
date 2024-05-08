@@ -1,10 +1,10 @@
 ---
-title: Introduction
+title: Service discovery overview
 sidebar_position: 1
 description: An introduction to service discovery and its significance
 ---
 
-This section introduces you to **service discovery** for **Kubernetes infrastructure**, its significance, and its purpose.
+This topic introduces you to **service discovery** for **Kubernetes infrastructure**, its significance, and its purpose.
 
 ### What is a discovered service?
 Discovered service is an entity on the Harness platform (also known as the control plane) that corresponds to a Kubernetes service on your (user) cluster. It includes details about the connections made from and to it.
@@ -29,7 +29,7 @@ HCE performs the following steps to discover services in your cluster:
 HCE tests the resilience of the application, and HCE uses the discovered services to:
 
 - Identify the various available services in the chaos module, that is, the chaos targets in the Kubernetes cluster that you can deploy using Harness or other means.
-- Record the resources backing the above services (logical resources such as deployment, pods, containers, processes, FQDNs, ports, physical resources such as nodes, storage, etc.)
+- Record the resources backing the above services (logical resources such as deployment, pods, containers, processes, FQDNs, ports, physical resources such as nodes, storage, and so on).
 - Highlight the given service's position and the lineage within the topology view.
 
 As an HCE user, service discovery simplifies your decision-making around:

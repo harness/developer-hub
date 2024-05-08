@@ -1,27 +1,27 @@
 ---
-title: Introduction
+title: Network maps overview
 sidebar_position: 1
 description: An introduction to network maps and their significance
 ---
 
-This section describes network maps, their significance, and how to create, edit, and delete them.
+This topic describes network maps, their significance, and how to create, edit, and delete them.
 
-## Before you begin
+### Before you begin
 
 - [Service discovery](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md)
 
 ### What is a network map?
 
-A network map is a resource on the Harness platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, deploy, etc.) on a group of services.
+A network map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, deploy, and so on) on a group of services.
 
 ### Why is a network map required?
 
 Network maps help:
 
 - Test, monitor, and deploy a group of services.
-- Determine the resilience coverage and resilience score for the overall network map and its constituent services
+- Determine the resilience coverage and resilience score for the overall network map and its constituent services.
 - Manage experiments associated with them.
-- Perform trend analysis
+- Perform trend analysis.
 
 ### How is a network map used?
 
@@ -53,13 +53,13 @@ You can [create](#create-network-map), [edit](#edit-network-map), and [delete](#
 
 ### Edit network map
 
-To edit a network map, select the vertical menu and select **Edit**. Make the necessary changes and select **Save**.
+To edit a network map, select **More Options** (&vellip;), then select **Edit**. Make the necessary changes and select **Save**.
 
 ![](./static/edit-8.png)
 
 ### Delete network map
 
-1. To delete a network map, select the vertical menu and select **Delete**.
+1. To delete a network map, select **More Options** (&vellip;), then select **Delete**.
 
     ![](./static/delete-6.png)
 
