@@ -36,6 +36,7 @@ All metrics reset when you restart the delegate.
 | `io_harness_custom_metric_task_rejected_total` * #| The number of tasks rejected because of a high load on the delegate. |
 | `io_harness_custom_metric_delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
 | `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate CPU is above a threshold. Provide `DELEGATE_CPU_THRESHOLD` as the env variable in the delegate YAML to configure the CPU threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
+| `ldap_sync_group_flush_total` | Publishes the total count for a user group when the LDAP group sync returned 0 users for that group. The metric publishes the `accountIdentifier` , `GroupDN` and the `count`. |
 
 :::info note
 Metrics with * above are only visible if you configure the resource threshold in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
