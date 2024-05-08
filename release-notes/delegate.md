@@ -39,16 +39,16 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## May 2024
 
-### Version 24.04.82900 <!--  May xx, 2024 -->
+### Version 24.04.82901 <!--  May 8, 2024 -->
 
 #### Fixed issues
 
-- Delegates with mtls enabled were able to send heartbeat to manager despite being configured with non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to the manager. (PL-48891, ZD-60974)
+- Delegates with mTLS enabled were able to send a heartbeat to Harness Manager despite being configured with a non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to Harness Manager. (PL-48891, ZD-60974)
 
 - Intermittent socket timeout exceptions occurred in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. Resolved the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. (PL-47940, ZD-58006)
 
 - Local login was failing for users assigned admin permissions via a user group. The method to verify if a user is an account admin only considered direct user assignments and did not account for user group roles. Revised the validation process to include both user and user group assignments when checking for admin status. Now, to be recognized as an admin, users must have the specific role assignments outlined below; assigning the `_account_admin` role alone is no longer sufficient for admin rights. (PL-47632)
-   - Role: `_account_admin`
+   - Role: `_account_admin`.
    - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
 
 ## April 2024
