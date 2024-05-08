@@ -26,6 +26,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  -  Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
  - Upgraded the Go SDK version in analytics. 
 
+### React Client SDK
+
+#### Version 1.11.0
+
+ - We've reduced the ES (ECMAScript) target to 2018. (FFM-11353)
+ - The Javascript SDK has also been updated. 
+
 ## April 2024
 
 ### Android SDK
