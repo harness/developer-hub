@@ -34,6 +34,7 @@ export default async (req: Request, context: Context) => {
     return_to: body.return_to,
   });
 
+  
   return new Response(JSON.stringify("Success !"), {
     status: 200,
     headers: {

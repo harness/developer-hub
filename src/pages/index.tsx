@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Layout from "@theme/Layout";
@@ -17,6 +17,30 @@ import { useColorMode } from "@docusaurus/theme-common";
 function HomepageHeader() {
   const { colorMode } = useColorMode();
   const { siteConfig } = useDocusaurusContext();
+
+  // useEffect(() => {
+  //   async function Calling() {
+  //     try {
+  //       const response = await fetch("http://localhost:8888/api/setCookie", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json", // Specify the content type as JSON
+  //         },
+  //         body: JSON.stringify({
+  //           // Convert the body object to JSON string
+  //           account_id: " body.account_id",
+  //           token: "body.token",
+  //           return_to: "body.return_to",
+  //         }),
+  //       });
+  //     } catch (error) {
+  //       // Handle errors here
+  //       console.log(error);
+  //     }
+  //   }
+  //   Calling();
+  // }, []);
+
   return (
     <>
       <header className={clsx("container", styles.heroBanner)}>
