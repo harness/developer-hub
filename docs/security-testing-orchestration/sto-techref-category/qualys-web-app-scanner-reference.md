@@ -5,27 +5,10 @@ sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
 sidebar_position: 320
 ---
 
-You can ingest scan results from Qualys Web Application Scanning results into STO.
-
-## Important notes for running Qualys scans in STO
-
-### Docker-in-Docker requirements
+You can ingest scan results from Qualys Web Application Scanning (WAS) into STO.
 
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-### For more information
+## For more information
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';

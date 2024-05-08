@@ -60,7 +60,7 @@ Use either of the following expressions to reference an output variable in anoth
 <+execution.steps.[stepID].output.outputVariables.[varName]>
 ```
 
-Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
+To reference an output variable in a stage other than the one where the output variable originated, use either of the following expressions:
 
 ```
 <+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
@@ -73,6 +73,24 @@ Use either of the following expressions to reference an output variable in a dif
 
 <figcaption>To reference an output variable, the variable expression must include the originating step's ID and the variable's name.</figcaption>
 </figure>
+
+<details>
+<summary>Early access feature: Secret type selection</summary>
+
+:::note
+
+Currently, this [early access feature](/release-notes/early-access) is behind the feature flags `CI_ENABLE_OUTPUT_SECRETS` and `CI_SKIP_NON_EXPRESSION_EVALUATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can enable type selection for output variables in **Run** steps.
+
+<DocImage path={require('/docs/continuous-integration/use-ci/static/run-step-output-var-type.png')} width="60%" height="60%" title="Click to view full size image" />
+
+If you select the **Secret** type, Harness treats the output variable value as a secret and applies [secrets masking](/docs/platform/secrets/add-use-text-secrets#secrets-in-outputs) where applicable.
+
+</details>
+
 
 <details>
 <summary>Early access feature: Output variables as environment variables</summary>

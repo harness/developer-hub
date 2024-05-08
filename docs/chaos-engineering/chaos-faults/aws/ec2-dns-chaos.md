@@ -1,6 +1,8 @@
 ---
 id: ec2-dns-chaos
 title: EC2 DNS chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-dns-chaos
 ---
 
 EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
@@ -123,6 +125,11 @@ Below is an example AWS policy to execute the fault.
         <th> Description </th>
         <th> Notes </th>
       </tr>
+      <tr>
+        <td> MACHINE </td>
+        <td> Whether chaos is applied on a Windows VM or a Linux VM. </td>
+        <td> </td>
+    </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>

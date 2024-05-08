@@ -1,7 +1,7 @@
 ---
 title: Add SMTP configuration
 description: Explains how to configure SMTP for email-based deployment notifications, approvals, and tracking.
-sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: d43r71g20s
 helpdocs_category_id: y9pmm3ig37
 helpdocs_is_private: false
@@ -121,7 +121,7 @@ Select the Pipeline Events for which you want to send notifications. Click **Con
 ![](./static/add-smtp-configuration-08.png)
 In **Notification Method**, select **Email**.
 
-Enter the email addresses to which you want to send the notifications.
+Enter comma-separated user email addresses to which you want to send the notifications.
 
 Select the User groups which you want to notify.
 

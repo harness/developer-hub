@@ -151,7 +151,7 @@ For information on Bitbucket Webhooks, see [Manage webhooks](https://confluence.
 
 Webhooks do not work with older versions of Bitbucket. You need to install the [Post Webhooks for Bitbucket](https://marketplace.atlassian.com/apps/1215474/post-webhooks-for-bitbucket?hosting=server&tab=overview) plugin in Bitbucket to enable Harness to allow two-way sync with Bitbucket.
 
-If you are using a locally-hosted Bitbucket server and a different Webhooks plugin, the push event payload sent to Harness is different than the [Post Webhooks for Bitbucket](https://marketplace.atlassian.com/apps/1215474/post-webhooks-for-bitbucket?hosting=server&tab=overview) plugin, and this payload can cause issues. Ensure that you install the [Post Webhooks for Bitbucket](https://marketplace.atlassian.com/apps/1215474/post-webhooks-for-bitbucket?hosting=server&tab=overview) plugin. The Post Webhooks for Bitbucket plugin will send the push event payload in a format Harness can use.
+If you are using a locally-hosted Bitbucket server and a different Webhooks plugin, the push event payload sent to Harness is different from the [Post Webhooks for Bitbucket](https://marketplace.atlassian.com/apps/1215474/post-webhooks-for-bitbucket?hosting=server&tab=overview) plugin, and this payload can cause issues. Ensure that you install the [Post Webhooks for Bitbucket](https://marketplace.atlassian.com/apps/1215474/post-webhooks-for-bitbucket?hosting=server&tab=overview) plugin. The Post Webhooks for Bitbucket plugin will send the push event payload in a format Harness can use.
 
 ## Step: Test and Save
 

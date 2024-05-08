@@ -1,6 +1,8 @@
 ---
 id: ec2-network-latency
 title: EC2 network latency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-latency
 ---
 
 EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s). This fault:
@@ -177,6 +179,10 @@ Below is an example AWS policy to execute the fault.
             <td> For example, 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
     </table>
+
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
 
 ### Network packet latency
 

@@ -6,7 +6,6 @@ redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt
 ---
 
-
 import Admin from '/docs/continuous-integration/shared/subscription-add-billing-admin.md';
 import Cancel from '/docs/continuous-integration/shared/subscription-cancel.md';
 import Create from '/docs/continuous-integration/shared/subscription-create.md';
@@ -16,6 +15,8 @@ import Invoice from '/docs/continuous-integration/shared/subscription-view-invoi
 import View from '/docs/continuous-integration/shared/subscription-view-subscriptions.md';
 import License from '/docs/continuous-integration/shared/subscription-view-usage.md';
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <Overview />
 
@@ -48,7 +49,9 @@ If you would like to switch between paid plans or downgrade to the Free plan, yo
 
 ## Billing
 
-You can manage your payment method and billing admins in your Harness account. Go to **Account settings** and then select **Billing**.
+You can manage your payment method and billing admins in your Harness account.
+
+In the legacy navigation, go to **Account settings** and then select **Billing**. In nav 2.0, **Billing** is under the **Subscriptions** section.
 
 ### Update your billing information
 
@@ -100,9 +103,11 @@ Based on the values in the table above:
 
 ### Credit allowance by plan tier
 
-All plans receive 2000 free credits every month. These credits can be consumed by all users within the account registered to run builds on Harness Cloud. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
+Plan credits can be consumed by all users within the account registered to run builds on Harness Cloud.
 
-Customers on paid (**Team** or **Enterprise**) plans have the option to purchase extra credits, via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
+Free plans receive 2000 free credits every month. Any free credits that are unused at the end of the month expire automatically and do not roll over from one month to the next.
+
+Customers on paid (**Team** or **Enterprise**) plans can purchase credits via credit packages. These purchased credits can be rolled over from one month to the next, but generally expire one year from the date the credit package was originally purchased, or, if you have signed an Order Form with Harness, the credits expire on the date stated on your Order Form.
 
 Harness notifies you when you are running low on build credits, and Harness can invoice in arrears for overages. For more information, go to [Credit overages (overuse)](#credit-overages-overuse).
 

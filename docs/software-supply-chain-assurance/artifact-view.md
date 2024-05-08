@@ -14,6 +14,9 @@ Artifacts originating from container images are organized under the **Container*
 
 <DocImage path={require('./static/artifact-landing-page.png')} />
 
+
+The page utilizes a two-tab interface to manage artifact versions. The **All Versions** tab provides a comprehensive view of all existing versions for each artifact. This is valuable for reference purposes or exploring all the data at one place. The **Latest Version** tab specifically presents the artifacts with version involved in the most recent [SBOM generation](./sbom/generate-sbom.md#add-the-sbom-orchestration-step) process.
+
 ### Filters
 
 Filters on the landing page allow users to quickly find specific artifacts based on various criteria such as component name and version, license, deployment status, and policy violations. These filters enhance the efficiency of tracking and managing artifacts.
@@ -27,6 +30,11 @@ By selecting any artifact version, you are taken to the Artifact details page. T
 This tab provides information about the components that make up the artifact. It lists each component, its version, associated licenses, package manager, purl, and supplier. This tab is crucial for understanding the artifact's makeup and identifying potential security or compliance issues.
 
 <DocImage path={require('./static/artifact-view-components-tab.png')} />
+
+### Component labels with image layers
+The Artifact view not only enables you to see all the components within your artifact but also accurately identifies the specific image layer each component originates from. For instance, by hovering over the icon next to the component name, you can determine whether it is part of the application image, the base image, or the underlying operating system distribution. This precise labeling provides a deeper insight into the composition of your software, thereby enhancing your ability to effectively address security risks. For more information on this feature, please refer to the [Label components from image](./label-components-from-image.md) document.
+
+<DocImage path={require('./static/artifact-view-components-label.png')} />
 
 ### Deployment view 
 

@@ -23,7 +23,7 @@ For more information, go to the Salesforce documentation on [creating or cloning
 
 ## Configure the integration
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Salesforce** integration, and select **Install**.
 4. Configure the integration. You must use OAuth authentication.
@@ -32,7 +32,7 @@ For more information, go to the Salesforce documentation on [creating or cloning
 
 You can link Salesforce tickets to Jira issues by using a custom Jira field.
 
-1. In your Harness project, go to the SEI module, and select **Account**.
+1. In your **Harness Project**, select the **SEI Module**, and go to your **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
 3. Find your [SEI Jira integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) and edit it.
 4. Under **Salesforce Mapping**, select the Jira field that contains your Salesforce case IDs.

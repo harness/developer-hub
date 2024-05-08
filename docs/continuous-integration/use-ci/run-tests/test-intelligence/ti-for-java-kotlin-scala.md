@@ -6,7 +6,6 @@ sidebar_position: 20
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
@@ -449,10 +448,6 @@ cd $PROJ_DIR
 
 Error tracking output is reported on the [Error Tracking tab](../../viewing-builds.md) when the pipeline runs.
 
-<!-- ### Output Variables
-
-<OutVar /> -->
-
 ### Environment Variables
 
 You can inject environment variables into the step container and use them in the step's commands. You must input a **Name** and **Value** for each variable.
@@ -505,7 +500,7 @@ These settings specify the maximum resources used by the container at runtime. T
 
 ### Timeout
 
-You can set the step's timeout limit. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+You can set the step's timeout limit. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) or [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md).
 
 ## Troubleshoot Test Intelligence
 

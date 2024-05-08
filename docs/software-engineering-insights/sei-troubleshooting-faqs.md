@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting & FAQs
 description: SEI troubleshooting and FAQs
-sidebar_position: 80
+sidebar_position: 90
 ---
 
 This page includes FAQs and troubleshooting information for SEI and the Harness Platform. 
@@ -159,4 +159,4 @@ For FAQs about the Harness Platform or other Harness modules, go to the [Harness
 
 For general Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
-For further assistance, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
+For further assistance, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://developer.harness.io/community).

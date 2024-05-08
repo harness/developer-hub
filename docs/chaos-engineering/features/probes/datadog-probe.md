@@ -2,18 +2,21 @@
 title: Datadog probe
 sidebar_position: 8
 description: Features and specification of the Datadog probe
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/probes/datadog-probe
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Datadog probe allows you to query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results through the fault's chaos duration to evaluate the probe outcome.
+Datadog probe allows you to query raw metrics or a [Synthetic test](https://docs.datadoghq.com/synthetics/) and use its results to evaluate the probe outcome.
 
-- Both [API tests](https://docs.datadoghq.com/synthetics/api_tests/) and [Browser tests](https://docs.datadoghq.com/synthetics/browser_tests) are supported.
-- The probe may only be executed in the **EOT mode**, as the probe evaluation is based on the result of all the test iterations executed through the fault chaos duration.
+- Synthetics probe query is supported for both [API tests](https://docs.datadoghq.com/synthetics/api_tests/) and [Browser tests](https://docs.datadoghq.com/synthetics/browser_tests).
+- Synthetics probe query may only be executed in the **EOT mode**, as the probe evaluation is based on the result of all the test iterations executed through the fault chaos duration. Metrics querying is supported for all the probe modes.
 
 :::note
-If there are no iterations of the synthetics test through the chaos duration of the fault, the probe is marked as failed.
+- If there are no iterations of the synthetics test through the chaos duration of the fault, the probe is marked as failed.
+- Raw metrics are not yet available for Linux chaos infrastructure.
 :::
 
 ## Providing secrets
@@ -141,6 +144,20 @@ Listed below is the Datadog Probe schema with common properties shared across al
    <td>N/A <code>type: string</code></td>
    <td>Name of the Kubernetes secret containing the Datadog secret keys. Only required for Kubernetes chaos infrastructure</td>
   </tr>
+  <tr>
+   <td>syntheticsTest</td>
+   <td>Synthetic test details for the probe</td>
+   <td>Optional</td>
+   <td><code>type: syntheticsTest</code></td>
+   <td>Provide the Synthetic test details. It could be an API or a Browser test</td>
+  </tr>
+  <tr>
+   <td>metrics</td>
+   <td>Metrics details for the probe</td>
+   <td>Optional</td>
+   <td><code>type: metrics</code></td>
+   <td>Provide the Datadog metrics details</td>
+  </tr>
 </table>
 
 ### Synthetics test
@@ -166,6 +183,72 @@ Listed below is the Datadog Probe schema with common properties shared across al
    <td>Mandatory</td>
    <td><code>api, browser</code></td>
    <td>The <code>testType</code> holds the type of the synthetic test. It can one of api and browser</td>
+  </tr>
+</table>
+
+### Metrics
+
+<table>
+  <tr>
+   <th><strong>Field</strong></th>
+   <th><strong>Description</strong></th>
+   <th><strong>Type</strong></th>
+   <th><strong>Range</strong></th>
+   <th><strong>Notes</strong></th>
+  </tr>
+  <tr>
+   <td>query</td>
+   <td>Datadog metrics query</td>
+   <td>Mandatory</td>
+   <td>N/A <code>type: string</code></td>
+   <td></td>
+  </tr>
+  <tr>
+   <td>timeFrame</td>
+   <td>The time frame through which the metrics should be queried. It is relative to the present time and hence it must be expressed as <code>now-'timeFrameValue'</code>.</td>
+   <td>Mandatory</td>
+   <td> <code>type: string</code></td>
+   <td> Average or min or max of the timeframe specified. For example, <code>now-5m</code> provides average, <code>minvaluefrom(now-5m)</code> provides the minimum and <code>maxvaluefrom(now-5m)</code> provides the maximum value. </td>
+  </tr>
+  <tr>
+   <td>comparator</td>
+   <td>Checks for the correctness of the probe output</td>
+   <td>Mandatory</td>
+   <td> <code>type: comparator</code></td>
+   <td> Various fields to compare the desired and obtained data, includes type, criteria and value. </td>
+  </tr>
+</table>
+
+### Comparator
+
+<table>
+  <tr>
+   <td><strong>Field</strong> </td>
+   <td><strong>Description</strong> </td>
+   <td><strong>Type</strong> </td>
+   <td><strong>Range</strong> </td>
+   <td><strong>Notes</strong> </td>
+  </tr>
+  <tr>
+   <td>type </td>
+   <td>Flag to hold type of the data used for comparison </td>
+   <td>Mandatory </td>
+   <td><code>float</code> </td>
+   <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. </td>
+  </tr>
+  <tr>
+   <td>criteria </td>
+   <td>Flag to hold criteria for the comparison </td>
+   <td>Mandatory </td>
+   <td>It supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int and float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type. </td>
+   <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation. </td>
+  </tr>
+  <tr>
+   <td>value </td>
+   <td>Flag to hold value for the comparison </td>
+   <td>Mandatory </td>
+   <td>N/A <code>type: string</code> </td>
+   <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation. </td>
   </tr>
 </table>
 
@@ -258,6 +341,13 @@ probes:
       syntheticsTest:
         publicId: zgs-mq8-pgy
         testType: api
+      metrics:
+        query: avg:system.load.1{*}
+        timeFrame: now-5m
+        comparator:
+          type: "float"
+          criteria: "<="
+          value: "100"
     runProperties:
       probeTimeout: 2s
       attempt: 1
@@ -267,6 +357,48 @@ probes:
 
   </TabItem>
 </Tabs>
+
+### Metrics
+
+To trigger a probe that queries Datadog metrics, specify the `metrics` properties.
+
+Use the following example to tune this:
+
+```yaml
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: pod-delete
+    spec:
+      probe:
+      - name: "datadog-probe"
+        type: "datadogProbe"
+        datadogProbe/inputs:
+          datadogSite: us5.datadoghq.com
+          metrics:
+            query: avg:system.load.1{*}
+            timeFrame: now-5m
+            comparator:
+              type: "float"
+              criteria: "<="
+              value: "100"
+          datadogCredentialsSecretName: dd-secret
+        mode: "EOT"
+        runProperties:
+          probeTimeout: 5s
+          interval: 2s
+          attempt: 1
+          stopOnFailure: false
+```
 
 ### API test
 

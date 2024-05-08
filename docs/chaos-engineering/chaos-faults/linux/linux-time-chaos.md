@@ -1,6 +1,8 @@
 ---
 id: linux-time-chaos
 title: Linux time chaos
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/linux/linux-time-chaos
 ---
 
 

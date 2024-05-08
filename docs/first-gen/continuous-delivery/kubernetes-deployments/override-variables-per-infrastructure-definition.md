@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).This topic describes how to override specific sets of variables for Kubernetes at the Infrastructure Definition level. You can override the `values.yaml` in your Service at the Infrastructure level and different Services can have different overrides in the same namespace.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).
+
+This topic describes how to override specific sets of variables for Kubernetes at the Infrastructure Definition level. You can override the `values.yaml` in your Service at the Infrastructure level and different Services can have different overrides in the same namespace.
 
 ### Before You Begin
 
@@ -194,8 +196,3 @@ You need to configure a shell script to handle the assignment of these variables
   ![](./static/override-variables-per-infrastructure-definition-136.png)
 
 7. Deploy the third Infrastructure Definition. This time both the variables are overridden with values specific to InfraDef3.
-
-### Next Steps
-
-Check out the community article on publishing variable outputs: [Publish Variables](https://community.harness.io/t/publish-variables/227)
-

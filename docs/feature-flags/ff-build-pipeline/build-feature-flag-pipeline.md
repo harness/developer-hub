@@ -28,7 +28,7 @@ https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](/docs/get-started/key-concepts.md) and how to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
+You should be familiar with the [Harness' Key Concepts](/docs/platform/get-started/key-concepts.md) and how to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 ## Create a pipeline
 

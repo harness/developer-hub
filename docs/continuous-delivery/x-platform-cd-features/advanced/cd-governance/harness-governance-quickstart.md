@@ -4,12 +4,6 @@ description: Learn how to use OPA policies in Harness to enforce governance acro
 sidebar_position: 2
 ---
 
-
-:::note
-Currently, this feature is behind the feature flag, `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness Policy As Code provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies. You can use Harness Policy As Code to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc).
 
 This quickstart shows you how to use Harness OPA integration to enforce Pipeline governance.
@@ -31,7 +25,7 @@ You'll learn how to:
 ### Before you begin
 
 * **What you don't need:** this quickstart is only intended to show you how Pipeline governance works and so we use a simple Pipeline that only contains an Approval stage. You do not need a Kubernetes cluster or other host as a CD deployment target or CI build farm. You do not need a running Harness Delegate.
-* Review [Harness Key Concepts](/docs/get-started/key-concepts) to establish a general understanding of Harness.
+* Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to establish a general understanding of Harness.
 * The [Harness Policy As Code overview](/docs/platform/governance/policy-as-code/harness-governance-overview) provides a concise overview of Harness Policy As Code.
 * **New to OPA Policy Authoring?** OPA policies are written in OPA's Rego policy language. We'll provide the policy you need for this quickstart, but it's also helpful to have some familiarity with Rego before writing and reading policies.
 	+ **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).

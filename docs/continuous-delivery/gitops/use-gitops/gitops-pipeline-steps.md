@@ -77,6 +77,8 @@ The following image shows information that is displayed on the **Output** tab of
 
 You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
 
+Configuring the Deployment Repo manifest in your service is required for this step to execute correctly.
+
 Harness fetches the ApplicationSet YAML file from its file store and identifies the related Harness GitOps app(s). For example: 
 
 ```
@@ -152,7 +154,7 @@ Once your GitOps application is updated, you can use the GitOps Sync step to dep
 
 This step triggers a sync for your existing or updated GitOps application.
 
-After selecting this step, in **Advanced Configuration**, select the application you want to sync and configure the sync options.
+After selecting this step, in **Advanced Configuration**, select the application you want to sync and configure the sync options. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
 
 ![](./static/gitopssync-step.png)
 

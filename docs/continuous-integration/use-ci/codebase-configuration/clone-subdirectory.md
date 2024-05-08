@@ -18,7 +18,7 @@ Disabling the built-in clone step removes access to some associated functionalit
 
 ## Determine if you need to disable Clone Codebase
 
-* **Clone with my git commands instead of using the built-in clone step:** If **Clone Codebase** is enabled, then the build clones the pipeline's [default codebase](./create-and-configure-a-codebase.md#configure-the-default-codebase) automatically. If you don't want to clone the default codebase, you must [disable Clone Codebase](./create-and-configure-a-codebase/#disable-clone-codebase-for-specific-stages) so that you can clone the repo with your desired `git` commands.
+* **Clone with my git commands instead of using the built-in clone step:** If **Clone Codebase** is enabled, then the build clones the pipeline's [default codebase](./create-and-configure-a-codebase.md#configure-the-default-codebase) automatically. If you don't want to clone the default codebase, you must [disable Clone Codebase](./create-and-configure-a-codebase.md#disable-clone-codebase-for-specific-stages) so that you can clone the repo with your desired `git` commands.
 * **Clone with my git commands and use the built-in clone step:** If you want to clone files from another repo *in addition to* the default codebase, then *do not* disable **Clone Codebase**. For this pattern, follow the instructions in [Clone multiple code repos in one pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md) and use the **Run** step option.
 
 ## Add a Run step with git commands

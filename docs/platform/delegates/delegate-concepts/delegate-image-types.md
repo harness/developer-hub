@@ -14,7 +14,7 @@ import Delimagetypes from '/docs/platform/shared/delegate-image-types-intro-tabl
 
 ## Image type comparison
 
-Harness gives you the option to select delegate images with or without third-party client tools. The use of a delegate packaged with third-party binaries speeds the construction of a CD pipeline; Harness CI and STO do not make use of these libraries. The inclusion of third-party binaries, however, increases attack vectors. Consider security as well as ease of use, in your choice of delegate images. 
+Harness gives you the option to select delegate images with or without third-party client tools. The use of a delegate packaged with third-party binaries speeds the construction of a CD pipeline; Harness CI and STO do not make use of these libraries. The inclusion of third-party binaries, however, increases attack vectors. Consider security as well as ease of use, in your choice of delegate images.
 
 Harness rigorously scans delegate images for vulnerabilities. Harness cannot, however, guarantee the elimination of CVEs from delegate images that include third-party client tools. The vulnerabilities that third-party client tools introduce in delegate images cannot be eliminated until the vulnerabilities are repaired in the third-party tools.
 
@@ -25,6 +25,14 @@ The following table differentiates between delegate images based on key features
 | DELEGATE <br /><br />**Base image**: RedHat Universal Base Image (redhat/ubi8)<br />**Recommended use**: Quick deployment of a pipeline | &#x2713; | x | &#x2713;| &#x2713; | Installed as a Kubernetes Deployment resource.<br /><br />Renamed from "immutable delegate." |
 | DELEGATE-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime | x | &#x2713; | x | &#x2713; | |
 | DELEGATE-LEGACY<br /><br />**Deprecated**: Not recommended for use in new Harness accounts | &#x2713; | x | &#x2713; | x | |
+
+:::info
+
+Harness Delegate is a Red Hat Enterprise Linux (RHEL)-based image. A Windows-based image is not available.
+
+Harness Delegate images are multi-architecture under the same tag. If you navigate to a specific delegate tag, you will find a digest for each architecture. The correct digest is pulled depending on the host architecture.
+
+:::
 
 ## Third-party tools included in the DELEGATE image type
 
@@ -49,5 +57,3 @@ The following table provides instructions for retrieval of delegate images.
 | --- | --- |
 | DELEGATE | `docker pull harness/delegate:` *`<yy.mm.xxxxx>`* |
 | DELEGATE-MINIMAL | `docker pull harness/delegate:` *`<yy.mm.xxxxx>.minimal`* |
-
-

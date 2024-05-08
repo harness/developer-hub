@@ -1,6 +1,8 @@
 ---
 id: lambda-update-function-memory
 title: Lambda update function memory
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-function-memory
 ---
 Lambda update function memory causes the memory of a Lambda function to update to a specific value for a certain duration. This fault:
 - Determines a safe overall memory limit value for the function. Smaller the memory limit, higher will be the time taken by the Lambda function under load.
@@ -104,6 +106,11 @@ Below is an example AWS policy to execute the fault.
         <td> The interval (in seconds) between successive instance termination.</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>

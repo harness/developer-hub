@@ -1,6 +1,8 @@
 ---
 id: vmware-network-loss
 title: VMware network loss
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-network-loss
 ---
 VMware network loss injects network packet loss from the VMware VM(s) into the application (or service).
 - This results in flaky access to the application. 
@@ -150,6 +152,10 @@ stringData:
         <td> It can be set up using a secret. </td>
       </tr>
      </table>
+
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
 
 ### Network packet loss
 

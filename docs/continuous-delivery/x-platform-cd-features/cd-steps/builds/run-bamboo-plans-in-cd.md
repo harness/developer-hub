@@ -20,7 +20,7 @@ Harness integrates with Bamboo, enabling you to run Bamboo plans as part of your
 
 ## Supported platforms and technologies
 
-For more information, go to [supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies).
+For more information, go to [supported platforms and technologies](/docs/continuous-delivery/cd-integrations.md).
 
 ## Add the Bamboo step
 

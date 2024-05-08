@@ -1,6 +1,8 @@
 ---
 id: ecs-update-task-role
 title: ECS update task role
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-update-task-role
 ---
 
 ECS update task role allows you to modify the IAM task role associated with an Amazon ECS (Elastic Container Service) task.

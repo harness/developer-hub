@@ -7,7 +7,7 @@ description: View monitoring info from Dynatrace for services in your Software C
 | -------------- | ------------------------------------------------------------------------------ |
 | **Created by** | [Dynatrace](https://www.dynatrace.com/)                                                      |
 | **Category**   | Monitoring                                                                        |
-| **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/dynatrace) |
+| **Source**     | [GitHub](https://github.com/backstage/community-plugins/tree/main/workspaces/dynatrace/plugins/dynatrace#dynatrace) |
 | **Type**       | Open-source plugin                                                             |
 
 
@@ -86,5 +86,5 @@ The `SYNTHETIC_ID` can be found in Dynatrace by browsing to the Synthetic monito
 
 ## Support
 
-The plugin is owned by Backstage and managed in this [repository](https://github.com/backstage/backstage/tree/master/plugins/dynatrace) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by Backstage and managed in this [repository](https://github.com/backstage/community-plugins/tree/main/workspaces/dynatrace/plugins/dynatrace#dynatrace) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
 

@@ -15,7 +15,7 @@ This topic explains how to install Kubernetes, Docker, and Helm delegates with c
 
 The installation steps are different depending on your delegate version.
 
-If your delegate with an immutable image type version is later than 81202 (image tag 23.10.81202), go to [Install with custom certificates](#installation-with-custom-certificates). 
+If your delegate with an immutable image type version is later than 81202 (image tag 23.10.81202), go to [Install with custom certificates](#installation-with-custom-certificates).
 
 If your delegate with an immutable image type version is earlier than 81202 (image tag 23.10.81202), go to [Install with custom truststore](#install-with-custom-truststore).
 
@@ -27,23 +27,17 @@ For information on delegate types, go to [Delegate image types](/docs/platform/d
 
 Use the steps below to install custom certificates for a Docker, Kubernetes, or Helm delegate with an an immutable image type version later than 23.10.81202.
 
-import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
-
-<Addperm />
-
-
-<Tabs>
-  <TabItem value="docker" label="Docker delegate" default>
-
-
-To install a Docker delegate with custom certificates, do the following:
-
-1. Prepare the custom cert file(s).
-
    :::info note
    Certificates must be PEM format.
 
    :::
+
+<Tabs>
+  <TabItem value="docker" label="Docker delegate" default>
+
+To install a Docker delegate with custom certificates, do the following:
+
+1. Prepare the custom cert file(s).
 
 2. Mount the file(s) to the `/opt/harness-delegate/ca-bundle/` directory inside the delegate container.
 
@@ -68,7 +62,7 @@ To install a Docker delegate with custom certificates, do the following:
    ```
    docker run --cpus=1 -u root --memory=2g \
      -v PUT_YOUR_PATH_TO_CUSTOM_CERT:/opt/harness-delegate/ca-bundle/abc.pem \
-     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \         
+     -e DELEGATE_NAME=PUT_YOUR_DELEGATE_NAME \
      -e NEXT_GEN="true" \
      -e DELEGATE_TYPE="DOCKER" \
      -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
@@ -87,48 +81,55 @@ To install a Kubernetes delegate with custom certificates, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> --from-file custom-cert1=<certificate file name>
    ```
 
    :::info note
    You can install multiple certificates by adding additional `--from-file` arguments. For example:
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts \
-     --from-file custom-certs1.pem=site1cert.pem \
-     --from-file custom-certs2.pem=site2cert.pem \
-     --from-file custom-certs3.pem=site3cert.pem    
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> \
+     --from-file custom-cert1=site1cert.pem \
+     --from-file custom-cert2=site2cert.pem \
+     --from-file custom-cert3=site3cert.pem
    ```
    :::
 
-2. Modify the `harness-delegate.yaml` file to include a volume mount. Mount the secret to the `/opt/harness-delegate/ca-bundle/` directory.
+2. Modify the delegate manifest file to include a volume mount.
 
+   1. Add the following YAML under `spec.template.spec.containers`.
+   
    ```yaml
-        volumeMounts:
-        - mountPath: /opt/harness-delegate/ca-bundle/
-          name: custom-certs
-          readOnly: true
-      volumes:
-      - name: custom-certs
-        secret:
-          secretName: mycerts
-          defaultMode: 400
+           volumeMounts:
+            - mountPath: /opt/harness-delegate/ca-bundle/
+              name: custom-certs
+              readOnly: true
+   ```   
+
+   2. Add the following YAML under `spec.template.spec`. Replace `<YOUR_SECRET_NAME>` with the value you used when you created the secret in step 1.
+   
+   ```yaml
+         volumes:
+          - name: custom-certs
+            secret:
+              secretName: <secret-name>
+              defaultMode: 400
    ```
 
-3. Set the security context to provide operator access to the mounted files.
+4. Set the security context to provide operator access to the mounted files. Add the following YAML under `spec.template.spec`.
+   
+    ```yaml
+          securityContext:
+            fsGroup: 1001
+    ```
 
-   ```yaml
-   securityContext:
-     fsGroup: 1001
-   ```
-
-4. Use the root user.
-
-   ```yaml
-        securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 0
-   ```
+6. Use the root user. This is the default and might not require modification. Add the following YAML under `spec.template.spec.containers`.
+   
+    ```yaml
+            securityContext:
+              allowPrivilegeEscalation: false
+              runAsUser: 0
+    ```
 
 #### Kubernetes delegate with custom certificates YAML example
 
@@ -222,10 +223,8 @@ spec:
                    value: "true"
                  - name: LOG_STREAMING_SERVICE_URL
                    value: "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/"
-                 - name: DELEGATE_RESOURCE_THRESHOLD
-                   value: ""
-                 - name: DYNAMIC_REQUEST_HANDLING
-                   value: "false"
+                 - name: DELEGATE_CPU_THRESHOLD
+                   value: "80"
               volumeMounts:
                  - mountPath: /opt/harness-delegate/ca-bundle/
                    name: custom-certs
@@ -292,17 +291,17 @@ To add self-signed certificates for delegate upgrader, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> --from-file custom-cert1=<certificate file name>
    ```
 
    :::info note
    You can install multiple certificates by adding additional `--from-file` arguments. For example:
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts \
-     --from-file custom-certs1.pem=site1cert.pem \
-     --from-file custom-certs2.pem=site2cert.pem \
-     --from-file custom-certs3.pem=site3cert.pem    
+   kubectl create secret -n <YOUR_NAMESPACE> generic <YOUR_SECRET_NAME> \
+     --from-file custom-cert1=site1cert.pem \
+     --from-file custom-cert2=site2cert.pem \
+     --from-file custom-cert3=site3cert.pem
    ```
    :::
 
@@ -323,13 +322,13 @@ To add self-signed certificates for delegate upgrader, do the following:
 1. Create a Kubernetes secret with the custom cert file.
 
    ```
-   kubectl create secret -n harness-delegate-ng generic mycerts --from-file custom-certs.pem=custom_certs.pem
+   kubectl create secret -n <namespace> generic <secret-name> --from-file custom-cert1=<certificate file name>
    ```
 
 2. Run the following to set the `upgraderCustomCa.secretName` variable when you install the Helm chart.
 
    ```
-   --set upgraderCustomCa.secretName=<SECRET_NAME> 
+   --set upgraderCustomCa.secretName=<SECRET_NAME>
    ```
 
    This adds your volume mount to the `/ca-bundle` directory.
@@ -379,7 +378,7 @@ For information on best practices for truststore creation, go to [Java Keystore 
 
 2. (Optional) Get a base truststore file from a running delegate instance.
 
-   **Kubernetes delegate** 
+   **Kubernetes delegate**
 
    ```
    kubectl cp -n harness-delegate-ng [pod name]:/opt/java/openjdk/lib/security/cacerts Path/to/destination
@@ -404,7 +403,7 @@ For information on best practices for truststore creation, go to [Java Keystore 
    c. Replace the password placeholder with the password you gave your truststore.
 
    d. Use a unique alias for all imports.
-   
+
 ### Install truststore and custom certs
 
 After the truststore file and custom certificates are configured, you're ready to install them in a Kubernetes or Docker delegate.
@@ -437,10 +436,8 @@ After the truststore file and custom certificates are configured, you're ready t
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-
 </TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-
 
 1. Use your custom truststore to create a secret.
 
@@ -448,41 +445,54 @@ After the truststore file and custom certificates are configured, you're ready t
    kubectl create secret -n harness-delegate-ng generic mysecret --from-file harness_trustStore.jks=harness_trustStore.jks
    ```
 
-2. Add a volume mount with read-only permission to the `harness-delegate.yaml` file.
+2. Modify the delegate manifest file to include a volume mount.
 
-   ```yaml
-        volumeMounts:
-        - mountPath: /cacerts
-          name: custom-truststore
-          readOnly: true
-      volumes:
-      - name: custom-truststore
-        secret:
-          secretName: mysecret
-          defaultMode: 400
-   ```
+   1. Add the following YAML under `spec.template.spec.containers`.
 
-3. Set the security context to provide the operator access to the mounted files.
+      ```yaml
+              volumeMounts:
+               - mountPath: /cacerts
+                 name: custom-truststore
+                 readOnly: true
+      ```   
 
-   ```yaml
-   securityContext:
-     fsGroup: 1001
-   ```
-
-4. Update the `JAVA_OPTS` environment variable with information about your custom truststore.
-
-   ```yaml
-   - name: JAVA_OPTS
-     value: "... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=YOUR_PASSWORD"
-   ```
+   2. Add the following YAML under `spec.template.spec`. Replace `<YOUR_SECRET_NAME>` with the value you used when you created the secret in step 1.
    
-5. Replace the password placeholder with the password you used in your truststore.
+      ```yaml
+            volumes:
+             - name: custom-truststore
+               secret:
+                 secretName: <secret-name>
+                 defaultMode: 400
+      ```
 
-   :::info note  
+4. Set the security context to provide operator access to the mounted files. Add the following YAML under `spec.template.spec`.
+   
+    ```yaml
+          securityContext:
+            fsGroup: 1001
+    ```
+
+6. Use the root user. This is the default and might not require modifications. Add the following YAML under `spec.template.spec.containers`.
+   
+    ```yaml
+            securityContext:
+              allowPrivilegeEscalation: false
+              runAsUser: 0
+    ```
+
+8. Update the `JAVA_OPTS` environment variable with information about your custom truststore. Replace the password placeholder with the password you used in your truststore.
+
+    ```yaml
+                     - name: JAVA_OPTS
+                       value: "... -Djavax.net.ssl.trustStore=/cacerts/harness_trustStore.jks -Djavax.net.ssl.trustStorePassword=YOUR_PASSWORD"
+    ```
+
+   :::info note
    You can omit the specification of the `JAVA_OPTS` environment variable if you mount the secret to the same location as the default truststore and give it the same name. The JVM then applies the change automatically.
    :::
 
-### Add custom certificates to the delegate pod 
+### Add custom certificates to the delegate pod
 
 You can add certificates to the delegate pod so any command running on the pod has certificates installed.
 
@@ -505,7 +515,7 @@ In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom ce
    ```
 
 2. Run `update-ca-trust` using `INIT_SCRIPT`.
-   
+
    ```yaml
         - name: INIT_SCRIPT
           value: |-
@@ -515,7 +525,7 @@ In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom ce
    :::info note
    The delegate must be the root user.
    :::
-   
+
    ```yaml
         securityContext:
           allowPrivilegeEscalation: false
@@ -593,7 +603,7 @@ spec:
         imagePullPolicy: Always
         name: delegate
         ports:
-          - containerPort: 8080   
+          - containerPort: 8080
         resources:
           limits:
             cpu: "0.5"
@@ -659,7 +669,7 @@ spec:
           subPath: cert1.crt
         - name: certs
           mountPath : "/usr/local/share/ca-certificates/cert2.crt"
-          subPath: cert2.crt             
+          subPath: cert2.crt
       volumes:
       - name: custom-keystore
         secret:

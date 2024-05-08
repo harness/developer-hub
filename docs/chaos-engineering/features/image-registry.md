@@ -1,7 +1,9 @@
 ---
 title: Image registry
-sidebar_position: 2
+sidebar_position: 4
 description: A repository that hosts container images used by chaos experiments
+redirect_from:
+  - /docs/chaos-engineering/configure-chaos-experiments/image-registry
 ---
 
 
@@ -9,16 +11,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-This section describes an image registry, and how it can be used within a chaos experiment. 
+This section describes how you can use an image registry within a chaos experiment.
 
 Image registry is a repository that hosts container images which are used by chaos experiments. Registries can be **public** or **private**. HCE allows you to use custom image registries for chaos experiments.
 
 :::tip
-- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use default image registry. 
+- You can configure the image registry to be used with the default probes. If you haven't configured a probe yet, the experiment will use the default image registry.
 - HCE doesn't provide image registry support at the moment for default probes.
 :::
 
-Follow the steps mentioned below to use default or custom values of image registry in your chaos experiment. 
+Follow the steps mentioned below to use default or custom values of the image registry in your chaos experiment.
 
 <Tabs>
  <TabItem value="Custom values">
@@ -65,10 +67,10 @@ container:
 </TabItem>
  <TabItem value="Default values">
 
-## Default image registry 
+## Default image registry
 
 ### Step 1: Navigate to Image Registry
-* To use a default image, select **Use default values**, and click **Save** to save your changes. 
+* To use a default image, select **Use default values**, and then click **Save**.
 
   ![select-save](./static/image-registry/click-save.png)
 

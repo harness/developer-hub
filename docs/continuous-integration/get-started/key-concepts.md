@@ -10,7 +10,7 @@ redirect_from:
   - /docs/continuous-integration/ci-quickstarts/ci-pipeline-basics
 ---
 
-This topic covers basic terminology and concepts related to CI pipelines. For general Harness Platform terminology and concepts, go to [Harness key concepts](../../get-started/key-concepts.md). For information about creating pipelines and configuring pipeline components go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
+This topic covers basic terminology and concepts related to CI pipelines. For general Harness Platform terminology and concepts, go to [Harness key concepts](/docs/platform/get-started/key-concepts.md). For information about creating pipelines and configuring pipeline components go to [CI pipeline creation overview](../use-ci/prep-ci-pipeline-components.md).
 
 ## Pipelines
 
@@ -60,7 +60,7 @@ Steps run as the root user, generally. For example, with Harness Cloud build inf
 
 For services running on containers (which are steps where you specify a **Container Registry** and **Image** to use to execute the step's commands), you can use the **Run as User** setting to specify a user to use for that container.
 
-With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/#run-as-user-or-run-as-non-root) and then override the default user as needed for individual steps.
+With Kubernetes cluster build infrastructure, you can use the **Run as User** setting to specify a user to use for individual steps, or you can [set a default user for all steps](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md#run-as-non-root-or-a-specific-user) and then override the default user as needed for individual steps.
 
 :::
 
@@ -76,7 +76,7 @@ Test Intelligence speeds up your test cycles by running only the unit tests requ
 
 Drone plugins are Docker containers that perform predefined tasks, such as deploying code, publishing artifacts, sending notifications, and more. They run in **Plugin** steps in your CI pipelines. You can use existing pre-built plugins or write your own. For more information, go to [Use Plugins](/docs/category/use-plugins/).
 
-If you're using Harness Cloud build infrastructure, you can use the built-in [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+If you're using Harness Cloud build infrastructure, you can use the built-in [GitHub Action step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Workflow Steps in your CI pipelines.
 
 ## Dependencies and background services
 
@@ -88,7 +88,7 @@ Caching expedites job execution by reusing data from expensive fetch operations 
 
 ### Docker layer caching
 
-[Docker layer caching](../../../docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
+[Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
 
 ### Artifact repos
 

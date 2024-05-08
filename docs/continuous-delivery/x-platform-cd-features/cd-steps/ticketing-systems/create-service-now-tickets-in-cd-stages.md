@@ -52,7 +52,7 @@ The timezone settings govern the display value of the settings not their actu
 
 3. In **Name**, enter a name that describes the step.
 
-4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)).
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 
@@ -87,21 +87,19 @@ Select **Create From Form Template** to create a ticket by using an existing for
 In **Template Name**, you can enter the name of an existing template, select from the list of existing templates displayed when you select the field, or provide an expression. You can also search the templates you need.
 
 :::note
-Existing templates are listed and can be searched only if the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE` is enabled. To enable the feature flag, contact [Harness Support](mailto:support@harness.io).
 
 Make sure you have met the following requirements for searching form templates:
 - Harness Delegate version 81200 or later.
 - Integration for Harness Software Delivery Platform app version 1.0.2 or later.
 :::
 
-If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
+This option updates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates. If there are many templates with the same name, the most current one is used to create tickets. Select **Apply Changes**.
 
 Your ServiceNow ticket is now added to your Pipeline.
 
 ## Create from Standard Template
 
 :::note
-This feature is behind the feature flag `CDS_GET_SERVICENOW_STANDARD_TEMPLATE`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
 
 This feature requires Harness Delegate version 81200 or later
 :::
@@ -169,7 +167,7 @@ For standard use cases, the custom table being used should allow access to this 
 
 This section describes how to use custom tables via the Harness ServiceNow app in the ServiceNow store.
 
-:::\notes
+:::note
 
 - Cross-scope privileges are required to be added for the ServiceNow user only when using custom tables with templates (via the Harness app on the ServiceNow store).
 - The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.

@@ -6,12 +6,6 @@ redirect_from:
   - /docs/continuous-delivery/x-platform-cd-features/advanced/rollback-deployments
 ---
 
-:::info
-
-Currently, this feature is behind the feature flag `POST_PROD_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Post deployment rollback initiates a rollback of your most recent successful deployment. This allows rapid, predictable recovery from a deployment that succeeded on technical criteria, but that you want to roll back for other reasons.
 
 ## Important notes
@@ -31,6 +25,7 @@ Post deployment rollback initiates a rollback of your most recent successful dep
 * Rollback steps can use expressions that refer to steps executed during the previous pipeline execution. The expressions are automatically resolved with values from the original execution.
 * The stages should roll back in reverse order when  deployment rollback is triggered.
 * Rolling back to a previous post-production deployment is only possible for executions that occurred within the past 30 days.
+* You cannot roll back an execution if it is marked successful by the ignore failures failure strategy.
 
 ## Roll back deployments
 

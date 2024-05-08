@@ -8,8 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info note
-Currently, this feature is behind the feature flag `NG_TEMPLATE_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+:::note
+Currently, this feature is behind the feature flag `NG_TEMPLATE_GITX`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
 :::
 
@@ -25,10 +25,10 @@ This topic walks you through the steps to create a remote step template.
 
 ### Objectives
 
-You'll learn how to: 
+You'll learn how to:
 
 * Create a remote run step template.
-* Define template parameters.​
+* Define template parameters.
 
 ### Before you begin
 
@@ -43,76 +43,76 @@ You must have **Create/Edit** and **Access** permissions for templates to create
 
 ### Remote Step Template overview
 
-Harness' templates allow you to design reusable content, logic, and parameters, ensuring that the application is the major focus of your pipelines.​ Instead of creating pipelines from scratch each time, Harness lets you select from pre-built templates and link them to your pipelines. The process of developing pipelines thus becomes easier by reducing duplication and increasing reusability.
+Harness' templates allow you to design reusable content, logic, and parameters, ensuring that the application is the major focus of your pipelines. Instead of creating pipelines from scratch each time, Harness lets you select from pre-built templates and link them to your pipelines. The process of developing pipelines thus becomes easier by reducing duplication and increasing reusability.
 
-You can share your work with your team and reuse it in your pipelines.​
+You can share your work with your team and reuse it in your pipelines.
 
-You can view all your templates in Harness under **Templates** based on their scope. ​We will also call this the Template Library in this topic.
+You can view all your templates in Harness under **Templates** based on their scope. We will also call this the Template Library in this topic.
 
-Harness lets you save your templates in Git repositories.​ For example, if you have a core step that you want all of your pipelines to use, you can put the template in a core repo and then refer to it. Now you can reuse this step template in multiple pipelines.
+Harness lets you save your templates in Git repositories. For example, if you have a core step that you want all of your pipelines to use, you can put the template in a core repo and then refer to it. Now you can reuse this step template in multiple pipelines.
 
 For information on inline step templates, go to [Create a step template](run-step-template-quickstart.md).
 
 ### Use a template in a pipeline
 
-Harness resolves the repositories when your pipeline starts up. After that, the same resource is used during the execution of the pipeline. When you use the templates in your pipelines, once the templates are fully expanded, the final pipeline runs as if it were defined entirely in the source repo.​
+Harness resolves the repositories when your pipeline starts up. After that, the same resource is used during the execution of the pipeline. When you use the templates in your pipelines, once the templates are fully expanded, the final pipeline runs as if it were defined entirely in the source repo.
 
 You can have one of the following scenarios when using a template in your pipeline:
 
 * The remote stage template and the pipeline exist in the same Git repo.
-* The remote stage template and the pipeline exist in different Git repos​.
-* The pipeline exists in Harness and the stage template exists in a Git repo.​
+* The remote stage template and the pipeline exist in different Git repos.
+* The pipeline exists in Harness and the stage template exists in a Git repo.
 
-Let's see how you can use a template in each of these situations.​
+Let's see how you can use a template in each of these situations.
 
 #### Remote step template and the pipeline exist in the same Git repo
 
-To use the template in your pipeline if your remote step template and pipeline are both present in the same Git repository, make sure your pipeline and template are both present in the same branch.​
+To use the template in your pipeline if your remote step template and pipeline are both present in the same Git repository, make sure your pipeline and template are both present in the same branch.
 
 #### Remote step template and the pipeline exist in different Git repos
 
-To use the template in your pipeline if your remote step template and pipeline are present in different Git repositories,​ make sure your template is present in the default branch of the specific repo.
+To use the template in your pipeline if your remote step template and pipeline are present in different Git repositories, make sure your template is present in the default branch of the specific repo.
 
 #### Pipeline exists in Harness and the Step Template exists in Git repo
 
-To use the template in your inline pipeline​, make sure your template is present in the default branch of your Git repository.
+To use the template in your inline pipeline, make sure your template is present in the default branch of your Git repository.
 
 ### Step 1: Create a remote step template
 
-You can create a step template from your account, org, or project. ​This topic explains the steps to create a step template from the project scope.
+You can create a step template from your account, org, or project. This topic explains the steps to create a step template from the project scope.
 
 To create a remote step template from the project scope, do the following:
 
 1. In your Harness, go to your project.
 2. Select **Project Settings**, then, under **Project-level resources**, select **Templates**.
 3. Select **+ New Template**, and then select **Step**. The **Create New Step Template** settings open.
-4. In **Name**, enter a name for the template.​
+4. In **Name**, enter a name for the template.
 5. (Optional) Select the pencil icon to enter a **Description**.
 6. (Optional) Select the pencil icon to add **Tags**.
-7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
+7. In **Version Label**, enter the version of the stage, for example, `v1`. Versioning a template enables you to create a new template without modifying the existing one. For more information, go to [Versioning](template.md).
 8. Under **How do you want to set up your template?**, select **Remote**.
-9. In **Git Connector**, select or create a Git connector to the repo for your project.​ For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
+9. In **Git Connector**, select or create a Git connector to the repo for your project. For steps, go to [Code Repo Connectors](/docs/category/code-repo-connectors).
 
      :::info note
-   
-     The Git connector must use the **Enable API access** option and **Username and Token** authentication. 
-   
+
+     The Git connector must use the **Enable API access** option and **Username and Token** authentication.
+
      Harness requires the token for API access.
-   
+
      Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.
-   
-     ![](./static/create-a-remote-pipeline-template-24.png)  
-   
+
+     ![](./static/create-a-remote-pipeline-template-24.png)
+
      For GitHub, the token must have the following scopes:
-   
+
      ![](./static/create-a-remote-pipeline-template-25.png)
-   
+
      :::
 
-10. In **Repository**, select your repository. If your repository isn't listed, enter its name. ​Create the repository in Git before entering it in **Select Repository** . Harness does not create the repository for you.
-11. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. ​Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​
+10. In **Repository**, select your repository. If your repository isn't listed, enter its name. Create the repository in Git before entering it in **Select Repository** . Harness does not create the repository for you.
+11. In **Git Branch**, select your branch. If your branch isn't listed, enter its name. Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.
 12. Harness auto-populates the **YAML Path**. You can change this path and the file name.
-13. Select **Start**.​  
+13. Select **Start**.
 
     Your step template is created and you can now add steps from the step Library.
 
@@ -122,36 +122,36 @@ To create a remote step template from the project scope, do the following:
 
 To add step parameters, do the following:
 
-1. In **Step Library**, select **Shell Script** under **Utilities**. The **Step Parameters** settings open.​
-2. ​In **Script**, enter your script.
+1. In **Step Library**, select **Shell Script** under **Utilities**. The **Step Parameters** settings open.
+2. In **Script**, enter your script.
 3. Specify your **Input Variables** and **Output Variables**.
-4. In **Execution Target**,​ specify where you want to execute the script. You can select **Specify on Target Host** or **On Delegate**. For more information, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
+4. In **Execution Target**, specify where you want to execute the script. You can select **Specify on Target Host** or **On Delegate**. For more information, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
 5. Select **Save**. The **Save Template to Git** settings open.
 
     ![](./static/create-a-remote-step-template-21.png)
 
 6. In **Select Branch to Commit**, You can select one of the following:
-	- **Commit to an existing branch:** You can start a pull request if you like.​
-	- **Commit to a new branch**:​ Enter the new branch name. You can start a pull request if you like.
+	- **Commit to an existing branch:** You can start a pull request if you like.
+	- **Commit to a new branch**: Enter the new branch name. You can start a pull request if you like.
 
-7. Select **Save**. 
+7. Select **Save**.
 
     Your step template is saved to the repo branch.
-	
-	​![](./static/create-a-remote-step-template-22.png)
+
+    ![](./static/create-a-remote-step-template-22.png)
 
 8. Click the YAML file to see the YAML for the step template.
-9. Edit the YAML. For example, change the name of the template.​
-10. Commit your changes to Git.​
-11. Return to Harness and refresh the page.​​
+9. Edit the YAML. For example, change the name of the template.
+10. Commit your changes to Git.
+11. Return to Harness and refresh the page.
 
     A **Template Updated** message opens.
-	
+
 	![](./static/create-a-remote-step-template-23.png)
 
 12. Select **Update**.
 
-    The changes you made in Git are now applied to Harness.​​
+    The changes you made in Git are now applied to Harness.
 
 ### Next steps
 

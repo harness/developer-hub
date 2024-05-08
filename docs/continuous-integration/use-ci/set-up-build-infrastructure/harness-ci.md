@@ -8,21 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
 
-
-When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required [Harness images from Google Container Registry (GCR)](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
-
-:::info
-
-Harness CI images are not the same as the [pre-built public images](./public-docker-images.md). Harness CI images are essential images used by Harness to run CI pipelines. Pre-built public images are extended versions of official Docker images that you can optionally use to quickly set up a specific build environment.
-
-:::
+When a Harness CI pipeline runs, an *initialize* step runs automatically before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness images from Docker Hub (the default), the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness), depending on how you configure your accounts and pipelines to [connect to the Harness container registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ## Harness CI images list
 
-You can find Harness CI images in the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
+You can find Harness CI images on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), or the [Harness ECR public gallery](https://gallery.ecr.aws/harness).
 
 Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
 
@@ -78,14 +70,14 @@ API key authentication is required. For more information about API keys, go to [
 
 1. Send a `get-default-config` request to get a list of the latest Harness CI build images and tags. You can use the `infra` parameter to get `k8` images or `VM` images.
 
-   ```
+   ```json
    curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY'
    ```
 
    The response payload shows the latest supported images and their tags, for example:
 
-   ```
+   ```json
    {
     "status": "SUCCESS",
      "data": {
@@ -109,14 +101,14 @@ API key authentication is required. For more information about API keys, go to [
 
 2. Send a `get-customer-config` request to get the build images that your CI pipelines currently use. When `overridesOnly` is `true`, which is the default value, this endpoint returns the non-default images that your pipeline uses.
 
-   ```
+   ```json
    curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8&overridesOnly=true" \
    --header 'X-API-KEY: $API_KEY'
    ```
 
    If the response contains `null`, your pipeline is using all default images, for example:
 
-   ```
+   ```json
    {
        "status": "SUCCESS",
        "data": {},
@@ -127,7 +119,7 @@ API key authentication is required. For more information about API keys, go to [
 
 3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
 
-   ```
+   ```json
    curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY' \
    --header 'Content-Type: application/json' \
@@ -145,7 +137,7 @@ API key authentication is required. For more information about API keys, go to [
 
 4. To reset one or more images to their defaults, send a `reset-config` (POST) request with a list of the images to reset.
 
-   ```
+   ```json
    curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
    --header 'X-API-KEY: $API_KEY' \
    --header 'Content-Type: application/json' \
@@ -161,13 +153,7 @@ API key authentication is required. For more information about API keys, go to [
 
 ## Deprecation notice: app.harness Docker registry
 
-Harness images are available on Docker Hub and the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness is deprecating the Harness-hosted `app.harness` Docker registry effective 15 February 2024.
-
-You will be impacted by this deprecation if:
-
-* Your built-in Harness Docker connector (`account.harnessImage`) is configured to the `app.harness` Docker registry. To avoid errors when the deprecation takes place, [configure the built-in Docker connector to use credentialed access to the Harness project on GCR](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#configure-harness-to-always-use-credentials-to-pull-harness-images).
-* You [pull Harness images from a private registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/#pull-harness-images-from-a-private-registry), and you are currently pulling the latest images from the `app.harness` Docker registry. To avoid errors when the deprecation takes place, make sure you are pulling images from the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness).
-* You have other Docker connectors configured to the `app.harness` Docker registry. Edit these connectors to use `https://registry.hub.docker.com` instead.
+Harness images are available on Docker Hub, the [Harness project on GCR](https://console.cloud.google.com/gcr/images/gcr-prod/global/harness), and the [Harness ECR public gallery](https://gallery.ecr.aws/harness). In a continuation of this effort, and to improve stability when pulling Harness-required images, Harness deprecated the Harness-hosted `app.harness` Docker registry effective 15 February 2024. For more information, go to [Connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector.md#deprecation-notice-appharness-docker-registry).
 
 ## Troubleshoot Harness images
 

@@ -7,7 +7,6 @@ sidebar_position: 30
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import OutVar from '/docs/continuous-integration/shared/output-var.md';
 
 
 :::note
@@ -304,6 +303,7 @@ You can add multiple paths. If you specify multiple paths, make sure the files c
 
 Used to [enable test splitting (parallelism) for TI](./ti-test-splitting.md).
 
+Stage-level parallelism is recommended for Python.
 
 ### Pre-Command, Post-Command, and Shell
 
@@ -338,10 +338,6 @@ If this option is not selected (`false`), TI is disabled and all tests run on ev
 ### Test Globs
 
 You can override the default test globs pattern. For example, if the default is `*_test.py` or `test_*.py`, you can override it with any other pattern, such as `.test.py`. Because test selection is at the file-level, the test globs pattern references file names. You can include directory structures, such as `microservice1/**/test_*.py`.
-
-<!-- ### Output Variables
-
-<OutVar /> -->
 
 ### Environment Variables
 
@@ -411,7 +407,7 @@ These settings specify the maximum resources used by the container at runtime. T
 
 ### Timeout
 
-The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md) or [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution proceeds according to any [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) or [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md).
 
 ## Troubleshoot Test Intelligence
 

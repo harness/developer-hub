@@ -6,6 +6,8 @@ redirect_from:
   - /docs/internal-developer-portal/features/service-onboarding-pipelines
 ---
 
+<DocsTag  backgroundColor= "#cbe2f9" text="Tutorial"  textColor="#0b5cad"  />
+
 Service Onboarding in Harness IDP use Harness pipeline orchestrator and those could be triggered through Software Templates. 
 
 ![](./static/service-onboarding.png)
@@ -543,6 +545,315 @@ As you can see above in the `Outputs` section, `actions` and `steps` can also ou
 
 You can read more about all the `inputs` and `outputs` defined in the actions in code part of the `JSONSchema`
 
+It is important to remember that all examples are based on [react-jsonschema-form](https://rjsf-team.github.io/react-jsonschema-form/).
+
+
+## Input Examples
+
+## Simple text input
+
+### Simple input with basic validations
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      name:
+        title: Simple text input
+        type: string
+        description: Description about input
+        maxLength: 8
+        pattern: '^([a-zA-Z][a-zA-Z0-9]*)(-[a-zA-Z0-9]+)*$'
+        ui:autofocus: true
+        ui:help: 'Hint: additional description...'
+```
+
+### Multi line text input
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      multiline:
+        title: Text area input
+        type: string
+        description: Insert your multi line string
+        ui:widget: textarea
+        ui:options:
+          rows: 10
+        ui:help: 'Hint: Make it strong!'
+        ui:placeholder: |
+          apiVersion: backstage.io/v1alpha1
+            kind: Component
+            metadata:
+              name: backstage
+            spec:
+              type: library
+              owner: CNCF
+              lifecycle: experimental
+```
+
+## Arrays options
+
+### Array with custom titles
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      volume_type:
+        title: Volume Type
+        type: string
+        description: The volume type to be used
+        default: gp2
+        enum:
+          - gp2
+          - gp3
+          - io1
+          - io2
+          - sc1
+          - st1
+          - standard
+        enumNames:
+          - 'General Purpose SSD (gp2)'
+          - 'General Purpose SSD (gp3)'
+          - 'Provisioned IOPS (io1)'
+          - 'Provisioned IOPS (io2)'
+          - 'Cold HDD (sc1)'
+          - 'Throughput Optimized HDD (st1)'
+          - 'Magnetic (standard)'
+```
+
+### A multiple choices list
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      name:
+        title: Select environments
+        type: array
+        items:
+          type: string
+          enum:
+            - production
+            - staging
+            - development
+        uniqueItems: true
+        ui:widget: checkboxes
+```
+
+### Array with another types
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      arrayObjects:
+        title: Array with custom objects
+        type: array
+        minItems: 0
+        ui:options:
+          addable: true
+          orderable: true
+          removable: true
+        items:
+          type: object
+          properties:
+            array:
+              title: Array string with default value
+              type: string
+              default: value3
+              enum:
+                - value1
+                - value2
+                - value3
+            flag:
+              title: Boolean flag
+              type: boolean
+              ui:widget: radio
+            someInput:
+              title: Simple text input
+              type: string
+```
+
+## Boolean options
+
+### Boolean
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      name:
+        title: Checkbox boolean
+        type: boolean
+```
+
+### Boolean Yes or No options
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      name:
+        title: Yes or No options
+        type: boolean
+        ui:widget: radio
+```
+
+### Boolean multiple options
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      name:
+        title: Select features
+        type: array
+        items:
+          type: boolean
+          enum:
+            - 'Enable scraping'
+            - 'Enable HPA'
+            - 'Enable cache'
+        uniqueItems: true
+        ui:widget: checkboxes
+```
+
+## Conditional Inputs in Templates
+
+### Use parameters as condition in steps
+
+```yaml
+- name: Only development environments
+  if: ${{ parameters.environment === "staging" and parameters.environment === "development" }}
+  action: debug:log
+  input:
+    message: 'development step'
+
+- name: Only production environments
+  if: ${{ parameters.environment === "prod" or parameters.environment === "production" }}
+  action: debug:log
+  input:
+    message: 'production step'
+```
+
+### Conditionally set parameters
+
+```yaml
+spec:
+  parameters:
+    - title: Fill in some steps
+      properties:
+        path:
+          title: path
+          type: string
+
+  steps:
+    - id: fetch
+      name: Fetch template
+      action: fetch:template
+      input:
+        url: ${{ parameters.path if parameters.path else '/root' }}
+```
+
+### Use parameters as conditional for fields
+
+```yaml
+parameters:
+  - title: Fill in some steps
+    properties:
+      includeName:
+        title: Include Name?
+        type: boolean
+        default: true
+
+    dependencies:
+      includeName:
+        allOf:
+          - if:
+              properties:
+                includeName:
+                  const: true
+            then:
+              properties:
+                lastName:
+                  title: Last Name
+                  type: string
+```
+
+1. **`One Of`**: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
+
+```YAML
+dependencies:
+  technology:
+    oneOf:
+      - properties:
+          technology:
+            enum:
+              - java
+          java version:
+            type: "string"
+            enum:
+              - java8
+              - java11
+```
+2. **`All Of`**: Helps you create a dropdown in the template, where only all the options available could be selected.
+
+```YAML
+type: object
+allOf:
+- properties:
+    lorem:
+      type:
+      - string
+      - boolean
+      default: true
+- properties:
+    lorem:
+      type: boolean
+    ipsum:
+      type: string
+```
+3. **`Any Of`**: Helps you to select from multiple properties where both can't be selected together at once. 
+
+```YAML
+type: object
+properties:
+  age:
+    type: integer
+    title: Age
+  items:
+    type: array
+    items:
+      type: object
+      anyOf:
+      - properties:
+          foo:
+            type: string
+      - properties:
+          bar:
+            type: string
+anyOf:
+- title: First method of identification
+  properties:
+    firstName:
+      type: string
+      title: First name
+      default: Chuck
+    lastName:
+      type: string
+      title: Last name
+- title: Second method of identification
+  properties:
+    idCode:
+      type: string
+      title: ID code
+```
+
+For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
+
 ## Built in Filters
 
 Template filters are functions that help you transform data, extract specific information,
@@ -638,78 +949,6 @@ The `projectSlug` filter generates a project slug from a repository URL
 - **Input**: `github.com?repo=backstage&org=backstage`
 - **Output**: `backstage/backstage`
 
-## Conditional Inputs in Templates
-
-1. One Of: Helps you create a dropdown in the template, where only one of all the options available could be selected. 
-
-```YAML
-dependencies:
-  technology:
-    oneOf:
-      - properties:
-          technology:
-            enum:
-              - java
-          java version:
-            type: "string"
-            enum:
-              - java8
-              - java11
-```
-2. All Of: Helps you create a dropdown in the template, where only all the options available could be selected.
-
-```YAML
-type: object
-allOf:
-- properties:
-    lorem:
-      type:
-      - string
-      - boolean
-      default: true
-- properties:
-    lorem:
-      type: boolean
-    ipsum:
-      type: string
-```
-3. Any Of: Helps you to select from multiple properties where both can't be selected together at once. 
-
-```YAML
-type: object
-properties:
-  age:
-    type: integer
-    title: Age
-  items:
-    type: array
-    items:
-      type: object
-      anyOf:
-      - properties:
-          foo:
-            type: string
-      - properties:
-          bar:
-            type: string
-anyOf:
-- title: First method of identification
-  properties:
-    firstName:
-      type: string
-      title: First name
-      default: Chuck
-    lastName:
-      type: string
-      title: Last name
-- title: Second method of identification
-  properties:
-    idCode:
-      type: string
-      title: ID code
-```
-
-For more such references and validate your conditional steps take a look at the [react-json schema project](https://rjsf-team.github.io/react-jsonschema-form/). 
 
 ## Upload a file using template
 
@@ -782,11 +1021,30 @@ As you could see in the example below under `inputset`, `exampleVar` takes input
 
 A template is a kind of entity that exists in the software catalog. You can create a `template.yaml` file and register the URL with the catalog. For information about registering a template, go to [Add a new software component to the catalog](/docs/internal-developer-portal/get-started/register-a-new-software-component.md).
 
+## Delete/Unregister Template
+
+1. Navigate to the **Catalog** page, and select **Template** under Kind.
+
+![](./static/catalog-navigation.png)
+
+2. Select the Template Name you want to Unregister.
+3. Now on the Template overview page, click on the 3 dots on top right corner and select **Unregister Entity**.
+
+![](./static/unregister-entity.png)
+
+4. Now on the Dialog box select **Unregister Location**.
+
+![](./static/Unregister-location.png)
+
+5. This will delete the Template.
+
 ## Available template actions
 
 :::info
 
-Please refer to the [support matrix](/docs/internal-developer-portal/flows/custom-actions#custom-actions-usage-limitations) for custom actions before using them, also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+Please refer to the [support matrix](/docs/internal-developer-portal/flows/custom-actions#custom-actions-usage-limitations) for custom actions before using them, also all input, except for [pipeline input as variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#pipeline-expressions), must be of [fixed value](https://developer.harness.io/docs/platform/variables-and-expressions/runtime-inputs/#fixed-values). 
+
+![](./static/pipeline-varialbles-idp-implementation.png)
 
 :::
 

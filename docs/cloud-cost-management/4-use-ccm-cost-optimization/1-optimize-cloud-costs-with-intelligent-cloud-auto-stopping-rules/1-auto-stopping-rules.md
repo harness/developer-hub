@@ -60,6 +60,12 @@ Using AutoStopping Rules you can automatically turn off cloud resources when idl
 
 To troubleshoot AutoStopping rules, go to [Troubleshoot AutoStopping rules and Proxy](../../../troubleshooting/cloud-cost-management/autostopping-troubleshooting.md).
 
+
+:::important note
+- There's no limit on max number of dependencies for a rule. 
+- For RDS, warm up time is dependent on cluster(or instance) size. RDS warm up can take up to ~25 minutes. For other resources, warm up will be completed under 2 minutes and max of 5 minutes.
+:::
+
 ## Learn more
 
 * [Harness Blog - Active Management of Idle Cloud Costs](https://www.harness.io/blog/cloud-autostopping)

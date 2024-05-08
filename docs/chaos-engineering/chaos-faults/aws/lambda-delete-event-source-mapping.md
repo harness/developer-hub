@@ -1,6 +1,8 @@
 ---
 id: lambda-delete-event-source-mapping
 title: Lambda delete event source mapping
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-event-source-mapping
 ---
 Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration. Deleting an event source mapping from a Lambda function is critical. It can lead to failure in updating the database on an event trigger, which can break the service. 
 
@@ -102,6 +104,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>

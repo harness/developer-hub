@@ -10,13 +10,11 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
 
-### General
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
 #### What CD platforms and tools does Harness support?
 
-Harness [supports all of the most common platforms](../get-started/supported-platforms-and-technologies.md) and deployment use cases.
+Harness [supports all of the most common platforms](/docs/continuous-delivery/cd-integrations.md) and deployment use cases.
 
 Here's a summary of Harness CD support for popular platforms and tools.
 
@@ -155,8 +153,6 @@ Yes, select **Re-run Pipeline**.
 
 ### Kubernetes
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### What is a Harness Kubernetes deployment?
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
@@ -220,7 +216,7 @@ Harness includes both Kubernetes and Helm deployments, and you can use Helm char
 
 * Harness [Kubernetes deployments](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
-* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
+* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
 	+ **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did two bad Native Helm deployments, the second one will roll back to the first. Harness will roll back to the last successful version.
 
@@ -368,9 +364,13 @@ You use a Harness Kubernetes Canary or Blue Green deployment and apply the hooks
 
 A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There is no Tiller involved in this process because Harness is not running any Helm commands.
 
-### Terraform
+#### Can you tell me which specific authentication flows are supported for OIDC authentication to Kubernetes? Or, are you saying that Harness only supports the Okta identity provider and not any OIDC provider? Also, for authenticating to Kubernetes, I'm assuming based on the UI prompt for client Id and client secret that it should be a Client Credential authentication flow, and that makes sense for system to system authentication.
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
+Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
+
+`client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
+
+### Terraform
 
 #### How does Harness support Terraform?
 
@@ -417,8 +417,6 @@ Yes. You can use the API or Terraform which will also dynamically generate the Y
 
 ### Harness Configure as Code
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### Can I create my deployments using YAML?
 
 Yes. Harness allows you to configure settings such as pipelines, triggers, connectors, environments, and services using [YAML in Harness](../platform/pipelines/harness-yaml-quickstart.md). You can use YAML to achieve any configuration for which you would use the Harness platform GUI.
@@ -427,8 +425,6 @@ Yes. Harness allows you to configure settings such as pipelines, triggers, conne
 
 ### Harness Git Experience
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### Can I sync my Harness project with my repo?
 
 Yes. You can sync your Harness project with a Git repo. The Harness project can be synced with one repo and the connectors used in the project can be synced in the same repo or separately with other repos or branches.
@@ -436,8 +432,6 @@ Yes. You can sync your Harness project with a Git repo. The Harness project can 
 See [Harness Git Experience Quickstart](../platform/git-experience/configure-git-experience-for-harness-entities.md).
 
 ### Community Edition
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Do you have a free version of Harness CD?
 
@@ -537,11 +531,7 @@ For more information, go to:
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
 - [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
 
-
-
 ### Azure Web Apps
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### Can I deploy Azure Web Apps?
 
@@ -577,8 +567,6 @@ For more information, go to [Azure Web Apps deployments](/docs/continuous-delive
 
 ### AWS ASG
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### What is an ASG deployment?
 
 Here's a summary of how Harness deploys new ASG versions:
@@ -612,8 +600,6 @@ AWS has the following limitations to keep in mind:
 - Launch configurations per region: 200.
 
 ### AWS ECS
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness ECS deployment?
 
@@ -712,8 +698,6 @@ During failure scenarios, ECS circuit breaker performs a rollback automatically 
 
 ### AWS Lambda
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### What is a Lambda deployment?
 
 In Harness, you specify the location of the function definition, artifact, and AWS account. Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the new version on each deployment.
@@ -748,8 +732,6 @@ Harness supports all of the popular Git platforms for storing your function defi
 
 ### Spot Elastigroup
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### What is a Spot deployment in Harness?
 
 You can deploy AWS ASGs using Harness and the Spot Elastigroup management platform.
@@ -761,8 +743,6 @@ You can deploy AWS ASGs using Harness and the Spot Elastigroup management platfo
 - Spot Elastigroup deployments support only basic, canary, and blue green execution types.
 
 ### Google Cloud Functions
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### What is a Google Cloud Function deployment?
 
@@ -790,8 +770,6 @@ Harness supports the following:
 
 ### AWS Lambda (Serverless.com Framework)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### What is a Lambda Serverless.com Framework deployment?
 
 You can deploy a Serverless Lambda application to AWS Lambda using Harness.
@@ -817,8 +795,6 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Tanzu Application Services (TAS)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 ### What is a TAS deployment?
 
 You can deploy an image to your TAS space using a TAS manifest, vars files, and AutoScalar.
@@ -832,9 +808,6 @@ You must install the CF CLI v7, autoscaler, and Create-Service-Push plugins on t
 Basic, canary, blue green, and rolling.
 
 ### Traditional deployments
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 
 #### What are traditional deployments?
 
@@ -856,8 +829,6 @@ Harness provides deployment support for all of the major artifact, approval, pro
 
 Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../platform/triggers/trigger-deployments-using-custom-triggers.md).
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
-
 #### What is a Harness custom deployment?
 
 Harness provides deployment support for all of the major platforms.
@@ -868,7 +839,7 @@ Custom deployments use shell scripts to connect to target platforms, obtain targ
 
 ### Harness entities
 
-For an overview of Harness entities, see [Learn Harness' key concepts](../get-started/key-concepts.md).
+For an overview of Harness entities, see [Learn Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 #### What are organizations and projects?
 
@@ -935,8 +906,6 @@ For example, a GitHub connector authenticates with a GitHub account and repo and
 See Harness [Connectors how-tos](/docs/category/connectors).
 
 ### Secrets management
-
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../get-started/supported-platforms-and-technologies.md).
 
 #### How does Harness manage secrets?
 

@@ -105,6 +105,11 @@ export const CiData: Horizon = {
         description: "Identify, track, and manage flaky tests, improving test reliability and build stability.",
       },
       {
+        tag: [{ value: "Fast" }, { value: "Beta" }],
+        title: "Test Intelligence for JavaScript-based languages and tools",
+        description: "Accelerate test cycles of applications written in JavaScript-based languages with Test Intelligence, selectively running only tests that are related the code changes made.",
+      },
+      {
         tag: [{ value: "Artifact Management" }],
         title: "Hosted Artifacts Management",
         description: "Manage your build artifacts with ease using hosted artifacts management, providing a secure, scalable solution for storing and accessing your CI/CD artifacts.",

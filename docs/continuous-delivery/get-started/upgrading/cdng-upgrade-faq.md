@@ -6,9 +6,7 @@ sidebar_position: 1
 
 This topic provides answers to common questions about upgrading from Harness Continuous Delivery (CD) FirstGen to NextGen.
 
-For steps on upgrading, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
-
-For information on the differences between Harness FirstGen and NextGen, go to [Harness FirstGen vs Harness NextGen](../../../get-started/harness-first-gen-vs-harness-next-gen.md).
+For more information, go to [Upgrade to CD NextGen](./upgrade-nextgen-cd.md).
 
 ## Harness NextGen overview video
 
@@ -238,3 +236,11 @@ Some deployment capabilities have been overhauled:
 - Multi-service and multi-environment deployments at scale.
 - Visibility and reporting into software delivery performance.
 - Extended support for custom deployments.
+
+## How long will my data be stored from FirstGen?
+
+Data for pipeline executions is stored for a maximum of 6 months. 
+
+Data retention for other Harness products differ by product and the plan you are subscribed to. For example, Harness CD and CCM have different data retention periods. 
+
+For more information, go to [Data Retention](https://developer.harness.io/docs/platform/references/data-retention/).

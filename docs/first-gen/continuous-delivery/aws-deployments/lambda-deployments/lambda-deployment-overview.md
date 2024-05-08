@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/get-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).Harness has first-class support for AWS Lambda deployments, enabling you to deploy your functions without having to worry about compute constraints or complexity.
+This content is for [Harness FirstGen](/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart.md).
+
+Harness has first-class support for AWS Lambda deployments, enabling you to deploy your functions without having to worry about compute constraints or complexity.
 
 See the How-tos for connecting AWS Lambda and creating AWS Lambda deployments.
 

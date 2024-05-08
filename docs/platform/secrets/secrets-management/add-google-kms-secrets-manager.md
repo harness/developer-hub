@@ -18,7 +18,7 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../../get-started/key-concepts.md)
+* [Harness' key concepts](/docs/platform/get-started/key-concepts.md)
 * [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
 * [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
 

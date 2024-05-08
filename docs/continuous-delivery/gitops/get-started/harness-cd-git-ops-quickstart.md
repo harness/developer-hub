@@ -195,6 +195,35 @@ In your cloud platform Kubernetes cluster you can see the agent workload:
 
 Now that you have the Harness GitOps Agent installed, running, and registered, you can configure the remaining components.
 
+## Installing mTLS GitOps Agent
+
+For installing GitOps Agent to run in mTLS mode, Harness uses GitOps Agent Helm charts. For this, you must download the `overrides.yaml` file from the Harness UI.
+
+To install Harness GitOps Agent with mTLS enabled, make sure that you've met the following conditions:
+- Download the `overrides.yaml` file from the Harness UI.
+- Configure mTLS for Harness Delegate[Delegate mTLS support](/docs/platform/delegates/secure-delegates/delegate-mtls-support/)
+- Keep the following items ready:
+   - CA certificate. 
+   - Client certificate and key created using the previously created CA certificate.
+   - mTLS enabled for your account and host to be used for GitOps Agent connection `<YOUR_FQDN>.agent.harness.io`.
+
+Follow the steps below to install mTLS GitOps Agent
+1. Add GitOps Agent Helm chart repository to your Helm:
+   ```bash
+   helm repo add gitops-agent https://harness.github.io/gitops-helm/
+   ```
+2. Using the `overrides.yaml` file, install GitOps Agent with mTLS enabled:
+   ```bash
+   helm install argocd gitops-agent/gitops-helm --values overrides.yaml --namespace <NAMESPACE> \
+   --set harness.configMap.http.agentHttpTarget=https://<FQDN>.agent.harness.io/gitops \
+   --set harness.gitopsServerHost=https://<FQDN>.agent.harness.io/gitops \
+   --set harness.configMap.http.mtls=true \
+   --set harness.secrets.mtlsClientCert=<B64ENCODED_CLIENT_CERT> \
+   --set harness.secrets.mtlsClientKey=<B64ENCODED_CLIEN_KEY>
+   ```
+   - `B64ENCODED_CLIENT_CERT` - base64 encoded content of client certificate
+   - `B64ENCODED_CLIEN_KEY` - base64 encoded content of client key
+
 ## Step 2: Add a Harness GitOps repository
 
 GitOps Repositories store the source manifests you want to sync with destination environments.

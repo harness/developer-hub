@@ -11,7 +11,7 @@ This topic walks you through the steps required to set up CCM for AWS in a self-
 
 **Figure: AWS CCM Self-Managed Enterprise Edition architecture diagram**
 
-<DocImage path={require('./static/aws-smp-arch.png')} width="50%" height="50%" title="Click to view full size image" />
+<DocImage path={require('./static/aws-smp-arch.png')} width="90%" height="90%" title="Click to view full size image" />
 
 You need to perform the following tasks to set up CCM for AWS: 
 
@@ -219,11 +219,12 @@ Make a note of your AWS Access key and Secret key.
 1. Create an S3 bucket with the following naming convention. For more information, go to [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html). This bucket will be used to retrieve the CUR report from your master AWS accounts.
 
   `harness-ccm-service-data-bucket-<accountid>`
+  
 2. Create another bucket with the following naming convention.
 
   `harness-ccm-service-template-bucket-<accountid>`
 
-  Apply the following bucket policy.
+3. Apply the following bucket policy.
 
   ```
   {
@@ -705,7 +706,7 @@ helm upgrade <chart-name> <chart-directory> -n <namespace> -f override.yaml
 
 ## Handling Kubernetes secrets
 
-When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding.
+When installing or upgrading the Helm charts, Kubernetes secrets with default values are created within the cluster. These generated secrets should be updated with the values mentioned above. Before updating the secrets, you need to convert the secret into base64 encoded format. For example, if your **AWS_DESTINATION_BUCKET** value is "harness-ccm-service-data-bucket-12345678", it would be stored as `aGFybmVzcy1jY20tc2VydmljZS1kYXRhLWJ1Y2tldC0xMjM0NTY3OA==` after encoding. After changing secrets, we will provide directives to `kubectl delete` the corresponding pods in order for your release to inherit new changes.
 
 The following are the secrets specific to CCM services:
 

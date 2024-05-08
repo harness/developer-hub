@@ -1,6 +1,8 @@
 ---
 id: lambda-delete-function-concurrency
 title: Lambda delete function concurrency
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-function-concurrency
 ---
 Lambda delete function concurrency is an AWS fault that deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
 
@@ -95,6 +97,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive deletions of reserved concurrency (in seconds).</td>

@@ -1,6 +1,8 @@
 ---
 id: pod-network-corruption
 title: Pod network corruption
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-corruption
 ---
 
 Pod network corruption is a Kubernetes pod-level chaos fault that injects corrupted packets of data into the specified container. This is achieved by starting a traffic control (tc) process with netem rules to add egress packet corruption.
@@ -106,6 +108,10 @@ Pod network corruption:
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a>.</td>
       </tr>
     </table>
+
+:::tip
+If the environment variables `DESTINATION_HOSTS` or `DESTINATION_IPS` are left empty, the default behaviour is to target all hosts. To limit the impact on all the hosts, you can specify the IP addresses of the service (use commas to separate multiple values) or the DNS or the FQDN names of the services in `DESTINATION_HOSTS`.
+:::
 
 ### Network packet corruption
 

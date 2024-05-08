@@ -22,11 +22,11 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/chaos-engineering/get-started/overview",
         },
         {
-          title: "Terminology",
+          title: "Key concepts",
           module: MODULES.ce,
           description:
             "Familiarize yourself with chaos engineering terminology.",
-          link: "/docs/chaos-engineering/get-started/key-concepts",
+          link: "/docs/chaos-engineering/architecture-and-security/architecture/components",
         },
   ],
 },
@@ -89,13 +89,6 @@ import { MODULES } from "@site/src/constants"
           description:
             "Execute kube-resilience chaos faults.",
           link: "/docs/chaos-engineering/chaos-faults/kube-resilience/",
-        },
-        {
-          title: "Security chaos faults",
-          module: MODULES.ce,
-          description:
-            "Execute security chaos faults.",
-          link: "/docs/chaos-engineering/chaos-faults/security-chaos/",
         },
         {
           title: "Kube-resilience chaos faults",

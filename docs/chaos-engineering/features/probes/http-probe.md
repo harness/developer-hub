@@ -1,6 +1,9 @@
 ---
 title: HTTP probe
 sidebar_position: 3
+description: Features and specification of the HTTP probe
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/probes/http-probe
 ---
 
 HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is a part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
@@ -13,7 +16,7 @@ HTTP POST method sends a `POST` request to the provided URL.
 In the case of a complex `POST` request in which the body spans multiple lines, the `bodyPath` attribute is used to specify the path to a file consisting of the same. This file is available to the experiment pod through a ConfigMap resource, wherein the ConfigMap name is defined in the [chaos engine](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-engine/contents/) or the [chaos experiment](https://litmuschaos.github.io/litmus/experiments/concepts/chaos-resources/chaos-experiment/contents/) CR. The `body` and `bodyPath` attributes are mutually exclusive. Go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe) to learn more.
 :::
 
-## Defining the probe
+## Probe definition
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
@@ -371,7 +374,7 @@ spec:
           url: "frontend-service.default.svc.cluster.local"
           method:
             # call http get method and verify the response code
-            get: 
+            get:
               # criteria which should be matched
               criteria: == # <, >, <=, >=, ==, !=, oneof, between
               # expected response code for the http request, which should follow the specified criteria
@@ -379,7 +382,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -413,7 +416,7 @@ spec:
           url: "http://frontend-service.default.svc.cluster.local"
           method:
             # call http get method and verify the response code
-            get: 
+            get:
               # criteria which should be matched
               criteria: contains
               # expected response body for the http request, which should follow the specified criteria
@@ -421,7 +424,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -455,7 +458,7 @@ spec:
           url: "backend.default.svc.cluster.local"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # value of the http body, used for the post request
               body: "{\"name\":\"foo\",\"description\":\"bar\"}"
               # http body content type
@@ -467,7 +470,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -501,7 +504,7 @@ spec:
           url: "backend.default.svc.cluster.local"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # value of the http body, used for the post request
               body: "{\"name\":\"foo\",\"description\":\"bar\"}"
               # http body content type
@@ -513,7 +516,7 @@ spec:
         mode: "Continuous"
         runProperties:
           probeTimeout: 5s
-          interval: 2s 
+          interval: 2s
           attempt: 1
           probePollingInterval: 2s
 ```
@@ -549,7 +552,7 @@ spec:
           url: "backend.default.svc.cluster.local"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"
@@ -602,7 +605,7 @@ spec:
             credentials: "dXNlcm5hbWU6cGFzc3dvcmQ="
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"
@@ -653,7 +656,7 @@ spec:
             credentials: "dXNlcm5hbWU6cGFzc3dvcmQ="
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"
@@ -709,7 +712,7 @@ spec:
             caFile: "/mnt/ca.crt"
           method:
             # call http post method and verify the response code
-            post: 
+            post:
               # the configMap should be mounted to the experiment which contains http body
               # use the mounted path here
               bodyPath: "/mnt/body.yml"

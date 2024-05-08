@@ -49,7 +49,7 @@ We support the following `regex operators` as Operators for all the Data Points.
 
 ### Support for `catalog-info.yaml` metadata as inputs.
 
-Users can now use the entities `annotation` and `harnessData` from `catalog-info.yaml` as input variable(JEXL format) in Scorecard Checks. eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
+Users can now use all of the entity definition from the `catalog-info.yaml` or from additional properties [ingested using APIs](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties) as input variable(JEXL format) in Scorecard Checks. For example, `<+metadata.testCoverageScore>`, `<+metadata.annotations['backstage.io/techdocs-ref']>`. Checks eg., `<+metadata.harnessData.name>` will fetch the value for the branch in the following YAML as `catalog-info.yaml`.
 
 ```YAML
 ...
@@ -339,7 +339,19 @@ spec:
 
 ### Pre-Requisites
 
-- For the functioning of Harness Data Source related checks, the Harness CI/CD plugin should be configured with new annotations in catalog info YAML, `harness.io/pipelines` and `harness.io/services` as mentioned in the setup steps instruction of [Harness CI/CD plugin](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd#harness-nextgen-cicd-plugin)
+- For the functioning of Harness Data Source related checks, the Harness CI/CD plugin should be configured with annotations in catalog info YAML, `harness.io/pipelines` and `harness.io/services`.
+
+- `harness.io/pipelines`: The pipeline URL is used as input and it should only be fetched from under **Projects** and not from specific modules. 
+
+Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/pipelines/pipeline_id`
+
+![](./static/projects-pipelines.png)
+
+- `harness.io/services`: The URL for the Service should be used as an input and it should only be fetched from under **Projects** and not from specific modules.
+
+Here's an example of the URL input: `https://app.harness.io/ng/account/account_id/home/orgs/org_id/projects/project_id/services/service_id`
+
+![](./static/service-projects.png)
 
 :::info
 

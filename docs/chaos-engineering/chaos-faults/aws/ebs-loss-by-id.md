@@ -1,6 +1,8 @@
 ---
 id: ebs-loss-by-id
 title: EBS loss by ID
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-id
 ---
 
 EBS (Elastic Block Store) loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.
@@ -100,6 +102,11 @@ Below is an example AWS policy to execute the fault.
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
         <td> Default: 30 s. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
+      <tr>
+            <td> AWS_SHARED_CREDENTIALS_FILE </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
+        </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between the attachment and detachment of the volumes (in seconds). </td>

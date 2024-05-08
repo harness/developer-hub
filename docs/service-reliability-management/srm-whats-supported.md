@@ -5,68 +5,58 @@ sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+This topic lists health sources and change sources supported by Harness Service Reliability Management (SRM).
 
-This topic provides a comprehensive list of health sources and change sources supported by Harness Service Reliability Management (SRM). It covers both Harness SaaS and Harness Self-Managed Enterprise Edition (SMP).
+All SRM features supported in Harness SaaS are also supported in the Self-Managed Enterprise Edition.
 
-## Harness SaaS
+For more information about SRM features and functionality, go to [Harness SRM overview](/docs/service-reliability-management/get-started/overview.md) and [Harness SRM key concepts](/docs/service-reliability-management/get-started/key-concepts).
 
-<Tabs>
-<TabItem value="Health sources" label="Health sources">
+For information about upcoming and recently released features, go to the [SRM product roadmap](https://developer.harness.io/roadmap/#srm), [SRM release notes](/release-notes/service-reliability-management), and [SRM early access features](#srm-early-access-features)
 
-Health sources in Harness SRM are APM (Application Performance Monitoring) or log providers that allow you to monitor changes in your service's health trends. The following health sources are supported:
+For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 
-<details>
-<summary><b>Harness supported health sources</b></summary>
+## Health sources
+
+Health sources in Harness SRM are APM (Application Performance Monitoring) or log providers that allow you to monitor changes in your service's health trends.
+
+Harness SRM supports the following health sources:
 
 - AppDynamics
 - CloudWatch
-- Custom health source
 - Datadog
 - Dynatrace
 - Elasticsearch
-- Google Cloud Operations
+- Google Cloud Operations (formerly Stackdriver)
 - Loki
 - New Relic
 - Prometheus
 - Splunk Log
 - Splunk Observability (formerly SignalFX)
 - Sumologic
-
-</details>
+- Custom health source
 
 To learn how to add a health source, go to [Health sources](/docs/category/health-sources-catalog).
 
-</TabItem>
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
+## Change sources
 
-<TabItem value="Change sources" label="Change sources">
+Change sources enable you to monitor change events related to deployments, infrastructure changes, and incidents.
 
+Harness SRM supports the following change sources:
 
-Change sources enable you to monitor change events related to deployments, infrastructure changes, and incidents. Harness SRM supports the following change sources:
-
-
-<details>
-<summary><b>Harness supported change sources</b></summary>
-
-- Custom change source
-- Harness CD
-- Harness CD NextGen
+- Harness Continuous Delivery
 - Harness Chaos Engineering
 - Harness Feature Flag
 - PagerDuty
-
-</details>
+- Custom change source
 
 To learn how to add a change source, go to [Change sources](/docs/category/change-sources-catalog).
 
-</TabItem>
-
-
-<TabItem value="Governance" label="Governance">
+## Governance
 
 Harness Policy As Code uses [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) as the central service to store and enforce policies for the different entities and processes across the Harness platform.
 
@@ -80,14 +70,14 @@ Soon, you will be able to use remote Git or other repos (for example, OCI-compat
 - [Harness Policy As Code quickstart](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-quickstart)
 - [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline)
 
-</TabItem>
+## SRM early access features
 
-</Tabs>
+Some Harness SRM features are released behind feature flags to get feedback from a subset of customers before releasing the features to general availability.
 
+You can opt-in to the early access (beta) features for Harness SRM described in the following table. Contact [Harness Support](mailto:support@harness.io) to enable specific early access features in your Harness account. Include the feature flag or name with your request.
 
-## Harness Self-Managed Enterprise Edition (SMP)
+For more information about early access features, including early access features for the Harness Platform, delegate, and other Harness modules, go to [Early access features](/release-notes/early-access).
 
-All SRM features supported in Harness SaaS are also supported in the Self-Managed Enterprise Edition. 
-
-For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/get-started/supported-platforms-and-technologies.md).
-
+| Flag | Description | Availability |
+| ---  | ----------- | ------------ |
+| `SRM_LOG_HOST_SAMPLING_ENABLE` | Harness was automatically applying an alternate deployment strategy even if the required data for the deployment configured in the Verify step was not available.<br/>Now, Harness does not automatically apply an alternate deployment strategy if the required data is not available. Instead, Harness fails the CV.<br/>Harness automatically applies an alternate deployment strategy only if you choose the Auto option in the Continuous Verification Type dropdown list when configuring the Verify step. | Beta<br/>Note: This feature was released for early access in 2022. Early access features from past releases might have been promoted to GA since their original release. |

@@ -29,22 +29,12 @@ You can configure the Snyk step to [show the original CVSS score](#show-the-orig
 
 -->
 
+### Root access requirements 
 
-### Docker-in-Docker requirements
-
-
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
-
-<StoDinDRequirements />
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
+
 
 ### For more information
 
@@ -93,9 +83,7 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-
 import StoSettingScanType from '../shared/step_palette/scan/_type.md';
-
 
 import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
@@ -105,6 +93,16 @@ import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
+
+#### Target and variant detection 
+
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
+import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
+
+<StoSettingScanTypeAutodetectRepo/>
+<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
@@ -150,27 +148,31 @@ import StoSettingIngestionFile from '../shared/step_palette/ingest/_file.md';
 
 <StoSettingIngestionFile  />
 
-### Additional CLI flags
-
-<!-- https://harness.atlassian.net/browse/STO-6983 -->
-<!-- https://harness.atlassian.net/browse/STO-7003 -->
-
-You can use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with specific command-line arguments. Useful arguments include:
-
-* `--all-projects` — Search recursively down the repo folder tree.
-* `--detection-depth=n` — The folder depth to scan. This argument has no effect if the repo has fewer levels than the specified depth.
-
-:::note
-
-STO does not support [context-specific arguments](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#less-than-context-specific_options-greater-than) or arguments that appear at the end of the command line, such as Maven or Gradle arguments.
-
-:::
-
 ### Log Level
 
 import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
+
+
+### Additional CLI flags
+
+<!-- https://harness.atlassian.net/browse/STO-6983 -->
+<!-- https://harness.atlassian.net/browse/STO-7003 -->
+
+Use this field to run the [Snyk scanner](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary) with additional flags such as:
+
+`--all-projects --detection-depth=3`
+
+With these flags, the Snyk step scans recursively down the repository tree to a depth of 3 folders. 
+
+:::caution
+
+- Passing CLI flags is an advanced feature. Some flags might not work in the context of STO. You should test your flags and arguments thoroughly before you use them in your production environment.  
+
+- STO does not support [context-specific arguments](https://docs.snyk.io/snyk-cli/cli-commands-and-options-summary#less-than-context-specific_options-greater-than) or arguments that appear at the end of the command line, such as Maven or Gradle arguments.
+
+:::
 
 
 ### Fail on Severity
@@ -179,11 +181,11 @@ import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severi
 
 <StoSettingFailOnSeverity />
 
-
 ### Settings
 
-You can use this field to run the Snyk scan with additional options. 
+import StoSettingSettings from '../shared/step_palette/all/_settings.md';
 
+<StoSettingSettings />
 
 
 ### Show original issue severities overridden by Snyk security policies 
@@ -232,8 +234,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

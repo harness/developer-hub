@@ -1,11 +1,11 @@
 ---
-title: Reivew infrasturcture changes via pull request automation
+title: Review infrasturcture changes via pull request automation
 description: Learn how to set up a PR pipeline for infrastructure changes. 
 sidebar_position: 40
 ---
 
 Harness IaCM supports reviewing infrastructure changes via pull request automation. 
-This functionality allows developers to see the changes, such as the plan details, as comments in the PR, so they can see what will be the resource changes before applying the plan
+This functionality allows developers to see the changes, such as the plan details, as comments in the PR, so they can see what will be the resource changes before applying the plan. Additionally, Harness IaCM also supports [Open Policy Agent (OPA)](https://developer.harness.io/docs/infra-as-code-management/workspaces/opa-workspace) for more advanced policy enforcement.
 
 Follow these steps to enable PR automation:
 
@@ -32,4 +32,10 @@ Follow these steps to enable PR automation:
    ![Resources](./static/trigger.png)
 
    You will see the plan as a comment in the PR
+
    ![Resources](./static/pr-comment.png)
+
+
+:::info
+As a security measure, comments will not be populated if the repository is public. To override it, add the Environment Variable `HARNESS_PASSWORD_API`  with the git repository token/secret set as the value.
+:::

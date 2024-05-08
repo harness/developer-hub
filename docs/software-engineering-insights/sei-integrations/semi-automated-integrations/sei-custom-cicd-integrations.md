@@ -5,7 +5,7 @@ sidebar_position: 1
 sidebar_label: Custom CI/CD integrations
 ---
 
-SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration, such as Jenkins and Circle CI.
+SEI supports custom CI/CD integrations through webhooks. Use this for CI/CD tools that don't have a dedicated SEI integration.
 
 Configure the webhook API call according to the following webhook specifications.
 
@@ -14,7 +14,7 @@ Configure the webhook API call according to the following webhook specifications
 * **Method:** `POST`
 * **Base URL (PROD2):** `https://app.harness.io/gratis/sei/api/v1/custom-cicd`
 * **Base URL (PROD1):** `https://app.harness.io/prod1/sei/api/v1/custom-cicd`
-* **Header:** Requires Harness SEI API Key authorization. The content type is ```application/json```
+* **Header:** Requires Harness SEI ApiKey authorization. The content type is ```application/json```
 * **Body:** Contains a data object with ```request_type``` and ```payload```.
 
 
@@ -25,7 +25,7 @@ Configure the webhook API call according to the following webhook specifications
 
 **Header**
 
-* Authorization: API KEY `<HARNESS_SEI_API_KEY>`
+* Authorization: ApiKey `<HARNESS_SEI_API_KEY>`
 * Content-Type: `application/json`
 
 **Body**
@@ -46,24 +46,26 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \
 --header 'Accept: application/json, text/plain, */*' \
 --header 'Referer: https://app.harness.io/' \
 --header 'sec-ch-ua-mobile: ?0' \
---header 'Authorization: API KEY <HARNESS_SEI_API_KEY>' \
+--header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36' \
 --header 'sec-ch-ua-platform: "macOS"' \
 --header 'Content-Type: application/json' \
 --data '{
-    "job_name": "pipelines-testing",
-    "instance_guid": "c9a73c1b-7590-34sa-a82f-c53a469686b7",
-    "instance_name": "azure-integration",
-    "job_full_name": "<PROJECT>/<REPO_NAME>",
-    "job_normalized_full_name": "<PROJECT>/<REPO_NAME>",
-    "result": "FAILED",
-    "user_id": "UNKNOWN",
-    "repo_url": "https://dev.azure.com/<USERNAME>/<PROJECT>/<REPO_NAME>",
-    "start_time": 1684912520000,
-    "duration": 5,
-    "build_number": 7871,
-    "instance_url": "https://dev.azure.com",
-    "branch_name": "main"
+{
+    “job_name”: “pipelines-testing”,
+    “instance_guid”: “c9a73c1b-7590-34sa-a82f-c53a469686b7",
+    “instance_name”: “azure-integration”,
+    “job_full_name”: “<PROJECT>/<REPO_NAME>“,
+    “job_normalized_full_name”: “<PROJECT>/<REPO_NAME>“,
+    “result”: “FAILED”,
+    “user_id”: “UNKNOWN”,
+    “repo_url”: “https://dev.azure.com/<USERNAME>/<PROJECT>/<REPO_NAME>“,
+    “start_time”: 1684912520000,
+    “duration”: 5,
+    “build_number”: 7871,
+    “instance_url”: “https://dev.azure.com”,
+    “branch_name”: “main”,
+    "project_name": "Project" 
 }
 
 ```
@@ -76,7 +78,7 @@ Please note that the API endpoint mentioned in the webhook specifications is rel
 
 Payload is an object with required and optional fields.
 
-#### Required Fields:
+#### Required Fields
 
 | Field | Data Type | Description |
 | - | - | - |
@@ -89,7 +91,7 @@ Payload is an object with required and optional fields.
 | `duration` | integer | Job duration in milliseconds. |
 | `result` | string | The result of the job, either `SUCCESS` or `FAILURE`. |
 
-#### Optional Fields:
+#### Optional Fields
 
 | Field | Data Type | Description |
 | - | - | - |
@@ -105,43 +107,29 @@ Payload is an object with required and optional fields.
 | `artifacts` | array of objects | An array of information about the job run, including input, output, type, location, name, qualifier, hash, and metadata. |
 | `trigger_chain` | array of objects | Information about the chain of triggers. |
 | `branch_name` | string | The name of the branch related to the job. |
+| `project_name` | string | The name of the Project related to the job. |
+| `execution_id` | string | Unique identifier for the specific job execution |
+| `cfr_status` | boolean | Status of the CFR stage |
+| `themes` | list of string | List of the theme names |
 
 Here is an example payload:
 
 ```sh
 {
-    "pipeline": "Node.js CI",
-    "user_id": "SCMTrigger",
-    "repo_url": "https://api.github.com/users/rajpropelo",
-    "start_time": 1679467494000,
+    "instance_guid": "666ba79b-3f3d-4236-ac04-4686ce526705",
+    "job_full_name": "Pipeline-2",
+    "execution_id": "UNIQUE_EXECUTION_ID",
+    "pipeline": "Pipeline-2",
+    "project_name": "Project-A",
+    "user_id": "NISHITH",
+    "repo_url": "https://api.github.com/users/nishith.patel",
+    "start_time": 1711603545000,
     "result": "success",
-    "duration": 77000,
-    "build_number": 4487150517,
-    "instance_guid": "89d2491c-764a-4f77-93d9-18e8e372b795",
-    "instance_name": "Custom CI/CD Instance",
-    "instance_url": "https://custom-cicd.acme.com/",
-    "job_run": {
-        "stages": [
-            {
-                "displayName": "Build_Stage",
-                "displayDescription": "Build_Stage",
-                "result": "succeeded",
-                "state": "completed",
-                "durationInMillis": 5000,
-                "steps": [
-                    {
-                        "displayName": "BUILD_STEP",
-                        "displayDescription": "BUILD_STEP",
-                        "result": "succeeded",
-                        "state": "completed",
-                        "durationInMillis": 5000
-                    }
-                ]
-            }
-        ]
-    },
-    "job_full_name": "Node.js CI--readme updated",
-    "qualified_name": "Node.js CI--readme updated",
+    "duration": 780000,
+    "instance_name": "Jenkins-1",
+    "instance_url": "http://localhost:8800",
+    "job_run": null,
+    "qualified_name": "Pipeline-2",
     "branch_name": "master",
     "module_name": null,
     "scm_commit_ids": [
@@ -176,10 +164,12 @@ Here is an example payload:
             "id": "SCMTrigger",
             "type": "SCMTriggerCause"
         }
-    ]
+    ],
+    "cfr_status": true
+    "themes":["themex","themey","themex/themey"]
+    
 }
 ```
-
 
 ## Generate UUID / GUID
 
@@ -208,7 +198,7 @@ Here is an example using a cURL command:
 
 ```shell
 curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \ # The Base URL is relative to the environment that you're using.
---header 'Authorization: API KEY <HARNESS_SEI_API_KEY>' \
+--header 'Authorization: ApiKey <HARNESS_SEI_API_KEY>' \
 --header 'Content-Type: application/json' \
 --data '{
     "integration_id": "<INTEGRATION_ID>",

@@ -1,8 +1,7 @@
 ---
 title: Code Repository release notes
 sidebar_label: Code Repository
-tags: [NextGen, "code repository"]
-date: 2024-03-01T10:00
+date: 2024-04-02T10:00
 sidebar_position: 7
 ---
 
@@ -21,11 +20,34 @@ These release notes describe recent changes to Harness Code Repository.
 
 :::
 
+## April 2024
+
+### Version 0.79.4
+
+<!-- 02 Apr 24 -->
+
+#### New features and enhancements
+
+* You can [enable secret scans, vulnerability scans, and OPA policies for repos](/docs/code-repository/config-repos/security).
+* Added a button to copy relative file paths.
+* Added support for a `cmd/ctrl + enter` keyboard shortcut to submit a PR comment or description.
+* Resolved comments in PRs are now collapsed by default.
+
 ## March 2024
 
-<!-- 01 March 2024 -->
+### Version 0.75.0
+
+<!-- 22 Mar 24 -->
+
+#### New features and enhancements
+
+* You can copy links to PR comments.
+* You can view entire files in PR diff view.
+* On the list of PRs, you can right-click and open a PR in a new tab or window.
 
 ### Version 0.72.4
+
+<!-- 01 March 2024 -->
 
 #### New features and enhancements
 

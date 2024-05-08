@@ -127,16 +127,16 @@ Your resulting allowlist will impose a further filter on logins to Harness via b
 
 ## Allow public access to resources
 
-:::important
+:::note
 Currently, this feature is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCESS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
 Public access to resources allows you to grant public access to view Harness resources without requiring authentication. 
 
-:::info note
+:::note
 
-Currently, with this feature, you can allow public access to your pipelines. For more information, go to [Allow public access to executions](/docs/platform/pipelines/allow-public-access-to-executions).
+Currently, with this feature, you can allow public access to your pipelines. For more information, go to [Allow public access to executions](/docs/platform/pipelines/executions-and-logs/allow-public-access-to-executions).
 
 :::
 

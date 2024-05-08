@@ -188,7 +188,7 @@ Now all GitHub webhooks for this project must be authenticated. This means all G
 
 ### Polling frequency
 
-:::info note
+:::note
 
 Currently, this feature is only available for GitHub webhooks, and it is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -408,6 +408,79 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
+When executing pipelines using triggers, you can select stages and provide input sets dynamically. 
+
+Select **Pipeline Stages** to execute pipelines using triggers. This can be a fixed value or an expression.
+
+### Select pipeline stages and input sets as a fixed value
+
+If you select fixed value for pipeline stages, all stages in the pipeline are dispalyed. Select a stage or all stages that you want to execute using the trigger.
+
+For input sets, in **Pipeline Input**, select or create the input set to use when the trigger executes the pipeline. 
+
+### Select pipeline stages and input sets using expressions
+
+Here's a sample expression to select pipeline stages, `<+<+trigger.payload.stages_to_execute>.split(",")>`.
+
+In **Pipeline Input**, select or create the input set using expressions. Here's a sample expression to select input sets, `<+<+trigger.payload.input_set_refs>.split(",")>`.
+
+![](./static/create-input-set.png)
+
+Here's is a sample trigger YAML:  
+
+```yaml
+trigger:
+  name: test
+  identifier: test
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute: <+<+trigger.payload.stages_to_execute>.split(",")>
+  orgIdentifier: default
+  projectIdentifier: Sarthak
+  pipelineIdentifier: Testing
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions:
+          - key: <+trigger.payload.sample_key>
+            operator: Equals
+            value: sample_value
+        headerConditions: []
+  inputYaml: |
+    pipeline:
+      identifier: Testing
+      stages:
+        - stage:
+            identifier: Custom
+            type: Custom
+            variables:
+              - name: var1
+                type: String
+                value: "78"
+  inputSetRefs: <+<+trigger.payload.input_set_refs>.split(",")>
+
+```
+Here's a sample trigger payload:   
+
+
+```yaml
+{
+    "sample_key": "sample_value",
+    "stages_to_execute" : "Custom,Custom2",
+    "input_set_refs" : "inputSet1,inputSet2"
+}
+```
+
+### Important notes when using expressions
+
+* If the value provided for the input set YAML reference is an expression, Harness checks for the key `input_set_refs` in the trigger payload and uses the value provided there.
+* RBAC for input sets cannot be considered in pipelines executed by triggers as Harness won't know which user executed the pipeline using triggers. 
+* Limitation: You cannot pass the stages or inputRefs as an expression in the trigger payload.
+
+
 You can specify [runtime inputs](../pipelines/input-sets) for the trigger to use, such as Harness Service and artifact.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
@@ -422,7 +495,7 @@ When Git Experience is enabled for your Pipeline, the **Pipeline Input** tab inc
 
 :::note
 
-The Issue Comment event trigger for Github does not support the `<+trigger.branch>` expression.
+Currently, the `<+trigger.branch>` expression for Issue Comment event triggers is behind the feature flag `CDS_USE_EXECUTION_TRIGGER_PAYLOAD_TO_EVALUATE_BRANCH_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

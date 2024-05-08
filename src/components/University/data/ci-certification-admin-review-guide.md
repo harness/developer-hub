@@ -4,7 +4,7 @@
 | -------------------------------------------------------------------------------------------------------------------------------------- | ------------------------|
 | **1. Introduction to Harness and Key Concepts** ||
 | Understand continuous integration fundamentals, including critical stages or steps | [Harness CI](/docs/continuous-integration/get-started/key-concepts) |
-|Grasp the core concepts: "Pipeline, Stages, Step Groups, Steps" and Harness hierarchy "Account, Organizations, Projects" | [Key Concepts](/docs/get-started/key-concepts/) |
+|Grasp the core concepts: "Pipeline, Stages, Step Groups, Steps" and Harness hierarchy "Account, Organizations, Projects" | [Key Concepts](/docs/platform/get-started/key-concepts) |
 | Familiarize with Harness Manager and the role of Harness Delegate for CI capability | [CI key concepts](/docs/continuous-integration/get-started/key-concepts) |
 | **2. Harness Build Infrastructure and Configuration** ||
 | Explore Harness Cloud supported platforms, OS, and build infrastructures | [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/) |
@@ -21,7 +21,7 @@
 | **5. Pipeline Execution Strategies** ||
 | Get to grips with execution environments: running steps on host vs. containers | [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/) |
 | Manage outputs, PR status updates, and understand chained pipelines | [Output variables with chained pipeline](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables/) |
-| Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Pipeline and steps reference](/docs/category/pipeline-and-steps-reference) |
+| Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Pipelines](/docs/category/pipelines) |
 | **6. Security and Access Control** ||
 | Understand RBAC with user groups, roles, role bindings, and service account considerations | [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) |
 | Configure access and permissions, including tags and resource groups | [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference) |

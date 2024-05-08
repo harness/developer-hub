@@ -17,29 +17,30 @@ By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme setting
 The proxy settings are in the `harness-delegate.yaml` file:
 
 ```yaml
-...  
-        - name: PROXY_HOST  
-          value: ""  
-        - name: PROXY_PORT  
-          value: ""  
-        - name: PROXY_SCHEME  
-          value: ""  
-        - name: NO_PROXY  
-          value: ""  
-        - name: PROXY_MANAGER  
-          value: "true"  
-        - name: PROXY_USER  
-          valueFrom:  
-            secretKeyRef:  
-              name: doc-example-proxy  
-              key: PROXY_USER  
-        - name: PROXY_PASSWORD  
-          valueFrom:  
-            secretKeyRef:  
-              name: doc-example-proxy  
-              key: PROXY_PASSWORD  
+...
+        - name: PROXY_HOST
+          value: ""
+        - name: PROXY_PORT
+          value: ""
+        - name: PROXY_SCHEME
+          value: ""
+        - name: NO_PROXY
+          value: ""
+        - name: PROXY_MANAGER
+          value: "true"
+        - name: PROXY_USER
+          valueFrom:
+            secretKeyRef:
+              name: doc-example-proxy
+              key: PROXY_USER
+        - name: PROXY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: doc-example-proxy
+              key: PROXY_PASSWORD
 ...
 ```
+
 The `PROXY_MANAGER` setting determines whether the delegate bypasses proxy settings to reach the Harness Manager in the cloud. If you want to bypass, enter `false`.
 
 #### In-Cluster Kubernetes delegate with proxy

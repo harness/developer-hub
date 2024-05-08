@@ -71,7 +71,7 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
                type: String
                description: "Name of the build associated with the uploaded artifacts in JFrog"
                required: false
-               value: "some-build-name"
+               value: <+pipeline.name> # You can use an expression or a fixed value.
    ```
 
 - `PLUGIN_BUILD_NUMBER`: Specify the build number associated with the uploaded artifacts in JFrog Artifactory. Use this flag to version and identify different builds of the same project or component.
@@ -82,13 +82,13 @@ You can use [stage variables](/docs/platform/pipelines/add-a-stage/#stage-variab
                type: String
                description: "Build number associated with the uploaded artifacts in JFrog"
                required: false
-               value: "some-build-number"
+               value: <+pipeline.executionID> # You can use an expression or a fixed value.
    ```
 
 <details>
 <summary>Use the Artifactory Drone plugin</summary>
 
-The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/athieriot/drone-artifactory). If you don't (or can't) use the built-in step, you can also run this plugin directly in a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference). You might need to do this if there is a particular configuration or flag that is not supported by the way the plugin is used in the built-in step.
+The built-in **Upload Artifacts to JFrog Artifactory** step uses the [Artifactory Drone plugin](https://github.com/harness/drone-artifactory). If you don't (or can't) use the built-in step, you can also run this plugin directly in a [Plugin step](../../use-drone-plugins/plugin-step-settings-reference). You might need to do this if there is a particular configuration or flag that is not supported by the way the plugin is used in the built-in step.
 
 The settings are declared slightly differently when using a Plugin step, but you can still pass the `--build-name` and `--build-number` flags when using a Plugin step. For example:
 
@@ -105,8 +105,9 @@ The settings are declared slightly differently when using a Plugin step, but you
                       url: YOUR_JFROG_ARTIFACTORY_URL
                       source: /path/to/source
                       target: /path/to/target
-                      build_name: ARTIFACTS_BUILD_NAME
-                      build_number: ARTIFACTS_BUILD_NUMBER
+                      build_name: <+pipeline.name> # You can use an expression or a fixed value.
+                      build_number: <+pipeline.executionID> # You can use an expression or a fixed value.
+                      targetProps: key1=123;projectName=ExampleApp # Optional metadata/properties
 ```
 
 </details>
@@ -130,8 +131,8 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 
 ## View artifacts on the Artifacts tab
 

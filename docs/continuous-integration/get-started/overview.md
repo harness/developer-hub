@@ -12,9 +12,11 @@ redirect_from:
   - /tutorials/ci-pipelines/ci-overview
 ---
 
-Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
+Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process.
 
-CI executes pipeline steps in containers, isolating code and dependencies from other steps. When you create a pipeline, you specify a container to use, and then Harness locates and launches the container in which the step runs. You don't need to manage a dependency chain when steps and plugins run in their own containers.
+In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
+
+CI executes pipeline steps in containers, isolating code and dependencies from other steps. When you create a pipeline, you can specify a container to use, and then Harness locates and launches the container in which the step runs. You don't need to manage a dependency chain when steps and plugins run in their own containers.
 
 <details>
 <summary>Video: Introduction to Harness CI</summary>
@@ -34,11 +36,11 @@ The following video introduces Harness CI and walks through a basic Harness CI p
 <figcaption>Harness CI architecture diagram.</figcaption>
 </figure>
 
-The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
+The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) is central to CI processes and is in charge of CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
 
 The [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
 
-The Delegate manages your build infrastructure to run build jobs and tests as needed, and sends data back to the Harness Manager. You can use this data for DAG orchestration, debugging, health checks, analytics, notifications, and the generation of ML models.
+The delegate manages your build infrastructure to run build jobs and tests as needed, and sends data back to the Harness Manager. You can use this data for DAG orchestration, debugging, health checks, analytics, notifications, and the generation of ML models.
 
 When a CI pipeline build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
 
@@ -58,36 +60,31 @@ If you want to try creating a pipeline for yourself, these tutorials walk throug
 
 For information about CI pipeline components, go to the [CI key concepts](/docs/continuous-integration/get-started/key-concepts).
 
-## CI features
-
-Here are some key features of Harness CI. For information about general Harness Platform concepts, go to [Harness key concepts](/docs/get-started/key-concepts).
-
-### Harness Cloud
+## Harness CI Cloud
 
 You can run builds on your own build infrastructure or on Harness-managed build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
-With Harness Cloud, you can run builds in isolation on Harness-managed virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
+With [Harness CI Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you can run builds in isolation on Harness-managed virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with tools, packages, and settings commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
-Harness Cloud provides the following advantages:
-
-- Free monthly credits for up to 2,000 build minutes.
-- Starter pipelines for different programming languages.
-- Blazing fast builds on Linux, macOS, and Windows.
-- Get the latest features first. Features may be enabled for Harness Cloud build infrastructure before rolling out to other build infrastructure options.
-
-:::info What happens when pipelines run on Harness Cloud?
-
-During a pipeline build that uses Harness Cloud build infrastructure, Harness runs each CI stage in a new, ephemeral VM.
+When a pipeline builds on Harness Cloud build infrastructure, Harness runs each CI stage in a new, ephemeral VM.
 
 ![Example pipeline on Harness Cloud](./static/hosted-builds-on-virtual-machines-quickstart-11.png)
 
 The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically shuts down.
 
-:::
+## Harness CI Intelligence
 
-For more information about using Harness Cloud for your CI pipelines, including supported platforms, image specifications, and YAML examples, go to [Use Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For information about build credit consumption and billing, go to [Subscriptions and licenses](./ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+Harness CI Intelligence features are designed to smartly speed up builds and boost efficiency.
+
+### Cache Intelligence
+
+Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
+
+There are several ways to configure caching in Harness CI, such as Cache Intelligence, Save and Restore Cache steps, and mounting volumes. Save and Restore Cache steps and mounted volumes require you to manage the cache.
+
+With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), Harness automatically caches and restores common dependencies. Cache Intelligence doesn't require you to bring your own storage, because the cache is stored in the Harness-managed environment, Harness Cloud.
 
 ### Test Intelligence
 
@@ -121,6 +118,19 @@ Here's how Harness Test Intelligence performed with some popular open-source rep
 | Incubator Shenyu     | 1.16 min                             | 0.4 min                           |
 | Sentinel             | 1.90 min                             | 1 min                             |
 
+
+### Harness-managed Docker layer caching
+
+With [Docker layer caching with Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching), Harness can manage the Docker layer cache backend for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
+
+## Other CI features
+
+Here are some other key features of Harness CI.
+
+For information about upcoming and recently released features, go to the [CI product roadmap](https://developer.harness.io/roadmap/#ci), [CI release notes](/release-notes/continuous-integration), and [CI early access features](/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features).
+
+For information about general Harness Platform concepts and features, go to [Harness key concepts](/docs/platform/get-started/key-concepts).
+
 ### Platform integration
 
 Harness CI is seamlessly integrated with other Harness modules, such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), [Feature Flags](/docs/feature-flags), and [Security Testing Orchestration](/docs/security-testing-orchestration). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the phases of your pipelines.
@@ -132,6 +142,8 @@ CI pipeline steps run as containers, making it language-agnostic. Containers are
 ### Visual and YAML pipeline editors
 
 Scripting pipelines can be time-consuming and tedious. It may be difficult to envision the sequence of events in more complex pipelines. Harness CI's Pipeline Studio provides both a YAML editor and a graphical, visual editor. In the visual editor, you can easily add, remove, edit, and rearrange steps and stages. You can also use the YAML editor, which functions similarly to any other IDE, to configure your pipelines-as-code. You can also switch between the two for a combined approach.
+
+For more information about YAML in Harness, go to [Write pipelines in YAML](/docs/platform/pipelines/harness-yaml-quickstart.md).
 
 ### Harness Git Experience
 

@@ -5,27 +5,48 @@ sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---
 
-You can scan your repositories using Checkmarx. Harness STO supports the following workflows:
-* Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
-* Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans.
+Checkmarx offers an extensive suite of tools to support secure application development. Harness STO makes it easy to: 
+- Run automated Checkmarx scans of your code repositories, web applications, open-source components, and other targets.
+- Ingest, correlate, and deduplicate your scan results.
+- Use STO's extensive array of tools to [discover](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) and [fix](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) vulnerabilities quickly.  
+
+With Harness STO, you can do the following:
+- Run local SAST scans using the CxConsole CLI (orchestration mode).
+- Extract results from a CxSAST server (extraction mode).
+- [Ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO
 
-### Docker-in-Docker requirements
+### Supported Checkmarx workflows
 
+- Harness STO supports the following:
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+  - Orchestration mode — The Checkmarx step runs SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html).
 
+  - Extraction mode  — The Checkmarx step can extract and ingest scan results for Checkmarx SAST (CxSAST). 
 
-<StoDinDRequirements />
+  - Ingestion mode — The Checkmarx step can ingest results from any Checkmarx scanner that can publish results in [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html). 
 
-### Root access requirements
+    - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions/) and then ingest your scan results using a Checkmarx step.  
 
+    - For Checkmarx SAST (CxSAST), Checkmarx SCA (CxSCA), and Checkmarx Flow (CxFlow) scans, you can use a [Checkmarx CxFlow Github Action](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action).
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+    - For Checkmarx One scans, you can use a [Checkmark AST Github Action](https://github.com/Checkmarx/ast-github-action). 
 
+    - As part of the setup process, you need to verify your login information for the Checkmarx product that you want to use, and then specify this information in the GitHub Action or Drone Plugin step. 
+
+    - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark One](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
+
+    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+
+    - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file after the scan step. 
+
+### Root access requirements 
+
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements-no-dind.md';
 
 <StoRootRequirements />
+
 
 ### For more information
 
@@ -72,13 +93,13 @@ import StoSettingScanTypeRepo     from './shared/step_palette/target/type/_repo.
 <StoSettingScanTypeRepo />
 
 
-<!-- #### Target and variant detection 
+#### Target and variant detection 
 
 import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
 
 <StoSettingScanTypeAutodetectRepo/>
-<StoSettingScanTypeAutodetectNote/       -->
+<StoSettingScanTypeAutodetectNote/>
 
 #### Name 
 
@@ -177,19 +198,16 @@ import StoSettingToolProjectName from './shared/step_palette/tool/project/_name.
 <StoSettingToolProjectName />
 
 
-### Log Level, CLI flags, and Fail on Severity
-
-
-#### Log Level
+### Log Level
 
 import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
-#### Additional CLI flags
+### Additional CLI flags
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. Useful arguments include:
+Use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with flags such as:
 
 * `-incremental` — Run an [incremental scan](#running-incremental-scans-with-checkmarx).
 * `-LocationPathExclude`— Exclude one or more paths from the scan.
@@ -199,6 +217,9 @@ You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resou
 
 <!-- https://harness.atlassian.net/browse/STO-7006  -->
 
+import StoSettingCliFlagsCaution from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags-caution.md';
+
+<StoSettingCliFlagsCaution />
 
 ### Running incremental scans with Checkmarx
 
@@ -246,8 +267,8 @@ In the **Additional Configuration** settings, you can use the following options:
 
 In the **Advanced** settings, you can use the following options:
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
+* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 

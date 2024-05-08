@@ -450,6 +450,8 @@ The AutoStopping policy performs the following actions:
 - Create an IAM role for optimization
 - Permissions for creating AutoStopping Rules
 
+The following template illustrates the relevant permissions needed for AutoStopping to work seamlessly. 
+
 ```
  HarnessOptimizationLambdaExecutionRole:
     Type: "AWS::IAM::Role"
@@ -468,68 +470,99 @@ The AutoStopping policy performs the following actions:
 
 ```
 HarnessOptimsationLambdaPolicy:
-    "Type": "AWS::IAM::ManagedPolicy"
-    "Condition": "CreateHarnessOptimisationPolicy"
-    "Properties":
-      "Description": "Policy granting Harness Access to Enable Cost Optimisation"
-      "PolicyDocument":
-        "Version": "2012-10-17"
-        "Statement":
-          - "Effect": "Allow"
-            "Action":
-              - "ec2:CreateNetworkInterface"
-              - "ec2:CreateNetworkInsightsPath"
-              - "ec2:CreateNetworkInterfacePermission"
-              - "ec2:CreateNetworkAcl"
-              - "ec2:*"
-              - "ec2:CreateNetworkAclEntry"
-              - "logs:CreateLogGroup"
-              - "logs:CreateLogStream"
-              - "logs:PutLogEvents"
-            "Resource": "*"
-      "Roles":
-        - "!Ref HarnessOptimizationLambdaExecutionRole"
+    Type: 'AWS::IAM::ManagedPolicy'
+    Condition: CreateHarnessOptimisationPolicy
+    Properties:
+      Description: Policy granting Harness Access to Enable Cost Optimisation
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Action:
+              - 'ec2:CreateNetworkInterface'
+              - 'ec2:CreateNetworkInsightsPath'
+              - 'ec2:CreateNetworkInterfacePermission'
+              - 'ec2:CreateNetworkAcl'
+              - 'ec2:*'
+              - 'ec2:CreateNetworkAclEntry'
+              - 'logs:CreateLogGroup'
+              - 'logs:CreateLogStream'
+              - 'logs:PutLogEvents'
+            Resource: "*"
+      Roles:
+        - !Ref HarnessOptimizationLambdaExecutionRole
 ```
 
 ```
-HarnessOptimisationPolicy:
-    "Type": "AWS::IAM::ManagedPolicy"
-    "Condition": "CreateHarnessOptimisationPolicy"
-    "Properties":
-      "Description": "Policy granting Harness Access to Enable Cost Optimisation"
-      "PolicyDocument":
-        "Version": "2012-10-17"
-        "Statement":
-              - "Effect": "Allow"
-                "Action":
-                  - "elasticloadbalancing:*"
-                  - "ec2:StopInstances"
-                  - "autoscaling:*"
-                  - "ec2:Describe*"
-                  - "iam:CreateServiceLinkedRole"
-                  - "iam:ListInstanceProfiles"
-                  - "iam:ListInstanceProfilesForRole"
-                  - "iam:AddRoleToInstanceProfile"
-                  - "iam:PassRole"
-                  - "ec2:StartInstances"
-                  - "ec2:*"
-                  - "iam:GetUser"
-                  - "ec2:ModifyInstanceAttribute"
-                  - "iam:ListRoles"
-                  - "acm:ListCertificates"
-                  - "lambda:*"
-                  - "cloudwatch:ListMetrics"
-                  - "cloudwatch:GetMetricData"
-                  - "route53:GetHostedZone"
-                  - "route53:ListHostedZones"
-                  - route53:ListHostedZonesByName"
-                  - "route53:ChangeResourceRecordSets"
-                  - "route53:ListResourceRecordSets"
-                  - "route53:GetHealthCheck"
-                  - "route53:GetHealthCheckStatus"
-                  - "cloudwatch:GetMetricStatistics"
-                "Resource": "*"
-      "Roles":
+  HarnessOptimisationPolicy:
+    Type: 'AWS::IAM::ManagedPolicy'
+    Condition: CreateHarnessOptimisationPolicy
+    Properties:
+      Description: Policy granting Harness Access to Enable Cost Optimisation
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+              - Effect: Allow
+                Action:
+                  - elasticloadbalancing:*
+                  - ec2:StopInstances
+                  - autoscaling:*
+                  - ec2:Describe*
+                  - iam:CreateServiceLinkedRole
+                  - iam:ListInstanceProfiles
+                  - iam:ListInstanceProfilesForRole
+                  - iam:AddRoleToInstanceProfile
+                  - iam:PassRole
+                  - ec2:StartInstances
+                  - ec2:*
+                  - iam:GetUser
+                  - ec2:ModifyInstanceAttribute
+                  - iam:ListRoles
+                  - acm:ListCertificates
+                  - lambda:*
+                  - cloudwatch:ListMetrics
+                  - cloudwatch:GetMetricData
+                  - route53:GetHostedZone
+                  - route53:ListHostedZones
+                  - route53:ListHostedZonesByName
+                  - route53:ChangeResourceRecordSets
+                  - route53:ListResourceRecordSets
+                  - route53:GetHealthCheck
+                  - route53:GetHealthCheckStatus
+                  - cloudwatch:GetMetricStatistics
+                  - ecs:ListClusters
+                  - ecs:ListContainerInstances
+                  - ecs:ListServices
+                  - ecs:ListTaskDefinitions
+                  - ecs:ListTasks
+                  - ecs:DescribeCapacityProviders
+                  - ecs:DescribeClusters
+                  - ecs:DescribeContainerInstances
+                  - ecs:DescribeServices
+                  - ecs:DescribeTaskDefinition
+                  - ecs:DescribeTasks
+                  - ecs:DescribeTaskSets
+                  - ecs:RunTask
+                  - ecs:StopTask
+                  - ecs:StartTask
+                  - ecs:UpdateService
+                  - rds:DescribeDBClusters
+                  - rds:DescribeDBInstances
+                  - rds:ListTagsForResource
+                  - rds:AddTagsToResource
+                  - rds:RemoveTagsFromResource
+                  - rds:ModifyDBInstance
+                  - rds:StartDBCluster
+                  - rds:StartDBInstance
+                  - rds:StopDBCluster
+                  - rds:StopDBInstance
+                  - s3:ListBucket
+                  - s3:GetObject
+                  - s3:ListAllMyBuckets
+                  - s3:GetBucketLocation
+                  - secretsmanager:GetSecretValue
+                Resource: "*"
+      Roles:
         - !Ref HarnessCloudFormationRole
 ```
 

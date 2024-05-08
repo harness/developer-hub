@@ -1,0 +1,28 @@
+apiVersion: litmuschaos.io/v1alpha1
+kind: MachineChaosExperiment
+metadata:
+  name: windows-blackhole-chaos-4ap
+  labels:
+    context: windows-blackhole-chaos
+    name: windows-blackhole-chaos-4ap
+spec:
+  infraType: "windows"
+  steps:
+    - - name: windows-blackhole-chaos-4ap
+  tasks:
+    - name: windows-blackhole-chaos-4ap
+      infraId: ""
+      definition:
+        chaos:
+          fault: windows-blackhole-chaos
+          env:
+            - name: DESTINATION_HOSTS
+              value: ""
+            - name: IP_ADDRESSES
+              value: ""
+            - name: SERVER_HOST
+              value: ""
+            - name: DURATION
+              value: "30s"
+            - name: RAMP_TIME
+              value: ""

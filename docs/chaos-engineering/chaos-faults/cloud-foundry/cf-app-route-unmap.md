@@ -1,6 +1,8 @@
 ---
 id: cf-app-route-unmap
 title: CF app route unmap
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/cloud-foundry/cf-app-route-unmap
 ---
 
 import CFSecrets from './shared/cf-secrets.md';

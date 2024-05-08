@@ -45,7 +45,7 @@ The timezone settings govern the display value of the settings not their actu
 1. In a Harness CD or Approval stage, in **Execution**, select **Add Step**.
 2. Select **ServiceNow Update**. The ServiceNow Update settings appear.
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps)).
+4. In **Timeout**, enter how long you want Harness to try to create the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)).
 5. In **ServiceNow Connector**, create or select the [ServiceNow connector](/docs/platform/connectors/ticketing-systems/connect-to-service-now) to use.
 6. In **Ticket Type**, select a ServiceNow ticket type from the list.
 
@@ -65,8 +65,6 @@ The timezone settings govern the display value of the settings not their actu
 
   :::note 
   The **Update Multiple** option appears only if you select **Change Task** in the **Ticket Type** field. 
-
-  This feature is behind the feature flag `CDS_NG_UPDATE_MULTIPLE_SNOW_CHANGE_REQUEST`. To enable this feature, contact [Harness Support](mailto:support@harness.io).
 
   This feature requires Harness Delegate version 80800 or later.
   :::
@@ -97,12 +95,76 @@ The timezone settings govern the display value of the settings not their actu
 
 6. You can specify additional fields for the ticket by clicking **Provide Field List**. The properties are specified as key-value pairs, the name being the **field name** (not the label) in ServiceNow and a valid value.
 
+## Use expressions in Ticket Number
+In **Ticket Number**, you can use an expression or runtime input to reference the **Ticket Number** from another ``Service Now Create`` step. You can use this ticket number when you want to update or approve a particular ticket.
+
+:::info note
+ The ``Service now Create`` step must be before the ``Service Now Approval`` and ``Service Now Update``.
+:::
+
+Let's say you've set up a [Service Now](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages.md) step in your process. Now, you want to use the Harness ``Service Now Approval`` step to approve the ticket, and once it's approved, you want to use the ``Service Now Update`` step to close it. You'll need to have the ticket number in both the Approval and Update steps. In this case, you can make things easier by using the expression type in the **Ticket Number** field for both the Update and Approval steps.
+
+![](./static/ticket_number.png)
+
+Consider this example YAML:
+
+```yaml
+  tags: {}
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  name: create
+                  identifier: create
+                  type: ServiceNowCreate
+                  timeout: 5m
+                  spec:
+                    connectorRef: account.testSNow
+                    ticketType: problem
+                    fields:
+                      - name: description
+                        value: create ticket
+                      - name: short_description
+                        value: Try out expressions and update in the doc
+                    createType: Normal
+              - step:
+                  type: ServiceNowUpdate
+                  name: ServiceNowUpdate_1
+                  identifier: ServiceNowUpdate_1
+                  spec:
+                    useServiceNowTemplate: false
+                    connectorRef: account.testSNow
+                    ticketType: problem
+                    ticketNumber: <+execution.steps.create.ticket.ticketNumber>
+                    fields:
+                      - name: description
+                        value: close
+                      - name: short_description
+                        value: close the ticket
+                      - name: state
+                        value: "4"
+                  timeout: 10m
+        tags: {}
+
+```
+
+When you run the pipeline and check the input of the ``ServiceNowUpdate_1`` step, you'll notice that the ticket number is retrieved from the expression ``<+execution.steps.create.ticket.ticketNumber>``, as depicted in the below screenshot.
+![](./static/ticket_number_expressions.png)
+
 ## Apply from template
 
 1. Select **Apply From Template** to update a ticket using an existing form template.
 2. In **Template Name**, enter the name of an existing template or provide an expression.  
    All the fields corresponding to the Template are listed.
 3. Select **Apply Changes**.
+
+This option updates tickets with values as defined in the linked form template for the associated table. This is achieved via scripted APIs defined in the ServiceNow integration app for Harness templates.
 
 ## Custom table support
 

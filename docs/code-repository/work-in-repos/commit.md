@@ -12,20 +12,19 @@ This topic primarily explains how to work with commits in the Harness Code UI. F
 
 ## Create a commit
 
-1. In your Harness project, go to the **Code** module, select **Repositories**, and then select your repository.
-2. On the **Files** page, select the branch you want to work on from the branch dropdown menu.
+1. When viewing a repository in Harness Code, go to **Files** and select the branch you want to work on from the branch dropdown menu.
 
    Commits made in the Harness Code UI can be committed directly to the selected branch. *You are editing a remote branch when you commit in Harness Code.* Make sure you select the correct branch or [create a branch](./branch.md#create-a-branch) to isolate your changes.
 
-3. Select the file you want to edit or create a **New File**.
-4. Modify the file as desired. If you are editing an existing file, select **Edit** to enable editing.
+2. Select the file you want to edit or create a **New File**.
+3. Modify the file as desired. If you are editing an existing file, select **Edit** to enable editing.
 
    You must commit your changes to save them. There is no way to preserve an uncommitted draft within the Harness Code UI. However, you can isolate work-in-progress by selecting the **Create a new branch** option when you commit changes.
 
-5. Select **Commit changes**.
-6. Enter a **Commit message** and optional extended description.
-7. Select whether you want to **Commit directly to the current branch** or **Create a new branch and start a PR**.
-8. Select **Commit** to commit your changes.
+4. Select **Commit changes**.
+5. Enter a **Commit message** and optional extended description.
+6. Select whether you want to **Commit directly to the current branch** or **Create a new branch and start a PR**.
+7. Select **Commit** to commit your changes.
 
    If you selected **Commit directly to the current branch**, your changes are instantly applied to the current branch.
 

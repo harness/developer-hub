@@ -1,6 +1,8 @@
 ---
 id: vmware-windows-service-stop
 title: VMware Windows Service Stop
+redirect_from:
+  - /docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-service-stop
 ---
 
 VMware Windows Service Stop simulates a service stop scenario on Windows OS based VMware VM.

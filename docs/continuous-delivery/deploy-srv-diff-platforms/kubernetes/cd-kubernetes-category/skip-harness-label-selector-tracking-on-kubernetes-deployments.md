@@ -5,7 +5,20 @@ sidebar_position: 9
 ---
 
 :::note
-Currently, this feature is behind the feature flag `SKIP_ADDING_TRACK_LABEL_SELECTOR_IN_ROLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+You need to enable setting **Disable addition of Harness track selector in Kubernetes deployments**.
+
+``Please note this setting can be enabled at Organization,Account as well as Project Level.``
+
+In this example, we will be discussing the process of enabling this setting at the project level.
+
+You can enable the setting by using the steps below:
+1. Enable the setting by navigating to **Project Settings**. 
+2. Select **Default Settings** under **General**.
+3. Under **Continuous Deployment**, you can set **Disable addition of Harness track selector in Kubernetes deployments** as **true**.
+![](./static/SKIP_ADDING_TRACK_LABEL_SELECTOR_IN_ROLLING.png)
+
+This setting is independent of the feature flag; it will always be available. To currently use this feature, we require either the Feature Flag ``SKIP_ADDING_TRACK_LABEL_SELECTOR_IN_ROLLING`` to be enabled or the corresponding setting. The feature flag will soon be removed, and this feature will be solely managed by using this setting.
+
 :::
 
 You can prevent Harness from using its default Kubernetes label selector, `harness.io/track: stable`, during canary deployments. Skipping this label can help when you have existing, non-Harness deployed services or naming conflicts. 
