@@ -36,6 +36,21 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## April 2024
 
+### Version 1.27.0
+
+#### New features
+
+- This release adds support for CI resource classes, which you can use to allocate resources when running builds in Harness Cloud. (CI-8920)
+
+#### Fixed issues 
+
+- Added support for proxies via Secure Connect for Github App connectors. (CI-12130, ZD-61883)
+
+- Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
+
+- Fixed a UI issue where the Pipeline Execution UI didn't update the stage selector (left) correctly if the pipeline used a parallelism or matrix strategy. As a result, users could not see artifacts properly. (CI-12047)
+
+
 ### Version 1.25.0
 
 <!-- 29 April 2024 -->
