@@ -8,7 +8,7 @@ sidebar_position: 30
 
 Harness Feature Flags helps to identify stale flags and automates the process of removing them from your code.
 
-Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production. Stale flags are flexible and can also be configured to a number of days set by the user for smoother Feature Flag management.
+Stale flags are feature flags that are no longer needed because their associated features may have been fully integrated into the production environment, or no longer needs any control in production. Stale flags are flexible and can also be configured to a number of days set by the user for smoother Feature Flag management.
 
 ![An image of Harness Feature Flags Stales Flags UI](./static/ff-stales-flags-ui.png)
 
@@ -17,9 +17,9 @@ Stale flags are flags that are no longer needed as the change behind them has be
 To help manage your flags, here are the definitions of the different flag states:
 
  - Potentially Stale: 
- -- Has been disabled for more than 60 days 
- -- Is enabled but has not received any new targeting rules or rule updates or default rule changes for more than 60 days
- -- Is enabled but has not received any evaluations for more than 60 days
+ -- Has been disabled
+ -- Is enabled but has not received any new targeting rules or rule updates or default rule changes 
+ -- Is enabled but has not received any evaluations
 
  - Enabled Flags:
  -- A flag that has been set to 'Enabled' or 'On'.
@@ -181,25 +181,24 @@ To set up your cleanup configuration file, you will need to update the rules fil
 
 ### Secrets configuration for Github
 
+![The GitHub Connector for importing a pipeline template](./static/setting-up-cleanup-1.png)
+
 You can find the repo for the Github connector that connects to the repo to clone down the code to cleanup [here](https://github.com/harness/flag_cleanup). The branch to use is titled, `unscripted`.
 
+Here is some additional information regarding the secrets configuration in the demo repo to guide you:
 
-<!-- NEED TO CLARIFY THESE STEPS RATHER THAN DEPENDING ON IMAGES -->
+![A Github token to allow the creation of PRs.](./static/setting-up-cleanup-2.png)
 
-Here this is done, follow these steps below:
+ - A Github token to allow the creation of PRs.
 
- 1. 
 
-![Step one of importing a pipeline template](./static/setting-up-cleanup-1.png)
+![A Harness API key to get the list of flags for cleanup](./static/setting-up-cleanup-3.png)
 
-- A Github token to allow the creation of PRs.
-
-![Step two of importing a pipeline template](./static/setting-up-cleanup-2.png)
-
-- A Harness API key to get the list of flags marked for cleanup.
-
-![Step three of importing a pipeline template](./static/setting-up-cleanup-3.png)
-
-- A Docker connector to pull down the plugin image.
+ - A Harness API key to get the list of flags
+   
 
 ![Step four of importing a pipeline template](./static/setting-up-cleanup-4.png)
+
+ - A Docker connector to pull down the plugin image.
+
+
