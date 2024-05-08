@@ -37,7 +37,7 @@ The `terraform init` command prepares a working directory containing Terraform c
 - **Configuration Comparison**: Analyzes current versus desired states to identify necessary changes.
 - **Change Proposal**: Lists the actions that `terraform apply` will execute to reach the desired state.
 
-### Apply Plan Changes
+### Apply
 `terraform apply` executes the proposed plan to modify the infrastructure state:
 - **Executing Plan**: Implements the changes outlined in the plan to modify resource states.
 - **State Update**: Updates the state file to reflect the new status of the infrastructure.
