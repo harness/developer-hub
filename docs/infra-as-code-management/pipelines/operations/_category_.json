@@ -1,12 +1,12 @@
 {
-    "label":"Pipelines",
+    "label":"Operations",
     "position": 20,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Pipelines"
+       "title":"Pipeline Operations"
     },
     "customProps":{
        "helpdocs_category_id":""

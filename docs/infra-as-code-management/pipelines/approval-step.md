@@ -29,6 +29,6 @@ Note that the approval plan step has a timeout of up to *60 minutes*. You can co
 
 During pipeline execution, once the approval plan appears, you can see all the changes and decide whether to approve or reject the changes. Approving runs the **Apply** command. Rejecting causes the pipeline to fail.
 
-If you have the right access control, you can select on each resource and see which attributes have changed. 
+If you have the right access control, you can select each resource and see which attributes have changed. 
 
 ![Resources](./static/approval-runtime.png)

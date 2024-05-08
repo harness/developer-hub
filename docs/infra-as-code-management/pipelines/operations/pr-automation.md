@@ -1,5 +1,5 @@
 ---
-title: Review infrasturcture changes via pull request automation
+title: Review infrastructure changes via pull request automation
 description: Learn how to set up a PR pipeline for infrastructure changes. 
 sidebar_position: 40
 ---

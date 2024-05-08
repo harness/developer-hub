@@ -18,7 +18,7 @@ If you view an executed pipeline and select the **Apply** step, you will see tha
 
 ![Output](./static/output.png)
 
-The following example shows how to pass a variable from an IaCM stage to an another stage. If you are interested in using the "bucket_name" as an input, you either copy the current value or the path to the variables, meaning that the value will be fetched at runtime.
+The following example shows how to pass a variable from an IaCM stage to another stage. If you are interested in using the "bucket_name" as an input, you either copy the current value or the path to the variables, meaning that the value will be fetched at runtime.
 
 `<+pipeline.stages.iacstage.spec.execution.steps.apply.output.outputVariables.bucket_name>`
 

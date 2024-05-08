@@ -21,7 +21,7 @@ The supported commands include:
 - `detect-drift`
 - `validate`
 
-![Terraform Plugins](../../static/pipelines/tf_plugins.png)
+![Terraform Plugins](./static/tf_plugins.png)
 
 ## Command Descriptions
 
