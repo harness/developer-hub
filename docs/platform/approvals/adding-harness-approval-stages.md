@@ -84,7 +84,18 @@ Click the **Approval** step.
 
 Set a default for the step timeout. Leave enough time for the Users in **Approvers** to see and respond to the waiting step.
 
-The default timeout for an Approval step is **1d** (24 hours). You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+The default timeout for an Approval step is **1d** (24 hours).
+
+You can use:
+
+- `w`  for week
+- `d`  for day
+- `h`  for hour
+- `m`  for minutes
+- `s`  for seconds
+- `ms` for milliseconds
+
+For example, 1d for one day.
 
 The maximum timeout duration is 53 weeks. The timeout countdown appears when the step in executed.
 
@@ -92,29 +103,24 @@ The maximum timeout duration is 53 weeks. The timeout countdown appears when the
 
 ### Add message
 
-In **Approval Message**, add the message for the Users in **Approvers**.
+1. In **Approval Message**, add the message for the users in **Approvers**.
 
-### Include stage execution details in approval
+2. Enable the **Include Pipeline execution history in approval details** option to show approvers the pipeline's execution history. This can help an approver compare the current execution info with historical data.
+3. Enable the **Auto-Reject previous deployments paused in this step on approval** option to reject old executions waiting for approval when a latest step is approved.
 
-Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision.
+   :::info Limitations:
 
-### Auto-reject previous deployments in approval
+   - If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+   - If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
 
-Enable this option to reject old executions waiting for approval when a latest step is approved.
-
-:::info
-
-If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
-
-:::
+   :::
 
 ### Select approvers
 
-In **Approvers**, in **User Groups**, select the Harness User Groups across Project/Org/Account scope, that will approve the step.
+1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
+2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
 
 ![](./static/adding-harness-approval-stages-17.png)
-
-In **Number of approvers**, enter how many of the Users in the User Groups must approve the step.
 
 ### Prevent approval by pipeline executor
 
@@ -122,7 +128,7 @@ If you don't want the User that initiated the Pipeline execution to approve this
 
 ### Approver inputs
 
-You can enter variables and when the approver views the step they can provide new values for the variables.
+In **Inputs to be provided by approver**, you can enter variables and when the approver views the step they can provide new values for the variables.
 
 If there are multiple approvers, the first approver sees the variables as you entered them in the step. If the first approver enters new values, the next approver sees the values the first approver entered.
 
@@ -233,6 +239,13 @@ Go to:
 - [Step Skip Condition Settings](../pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 - [Step Failure Strategy Settings](../pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 - [Use delegate selectors](../delegates/manage-delegates/select-delegates-with-selectors.md)
+- [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+- [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+- [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+### Approval variables
+
+After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
 
 ### Notes
 
