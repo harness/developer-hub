@@ -318,3 +318,6 @@ target not created 'target'
 ```
 
 This error occurs if a user is trying to add a target that already exists.
+
+#### How to retrieve the feature flag state for a specific target via API?
+The best approach today to achieve this usecase is If you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.

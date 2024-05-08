@@ -420,6 +420,10 @@ The Azure users that are added to your Azure app must have their email addresses
 
 To set this **User name** email address as the method for identifying users, in the Azure app **Single sign-on** section, the Azure app must use the **user.userprincipalname** as the **Unique User Identifier**, and **user.userprincipalname** must use **Email address** as the **name identifier format**.
 
+:::info note
+If **user.userprincipalname** can't use an email address as the **Name ID format**, then **user.email** should be used as the unique identifier in the **Identifier (Entity ID)** field.
+:::
+
 To set this up in your Azure app, do the following:
 
 1. In your Azure app, in the **Single sign-on** blade, in **User Attributes & Claims**, click the edit icon (pencil). The **User Attributes & Claims** settings appear.
@@ -748,6 +752,10 @@ With JIT, you add users to Keycloak, and they will automatically be added to Har
 	| **Home URL**                   | `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`                                                                            |
 	| **Valid post logout redirect URIs** | `https://app.harness.io/ng/account/<YOUR ACCOUNT ID>/main-dashboard`                                                                       |
 	| **Master SAML Processing URL** | `https://app.harness.io/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`                                                               |
+
+:::info note
+If the account uses a vanity URL, then use the vanity URL in your SAML setup. For example, `https://<yourvanityurl>/gateway/api/users/saml-login?accountId=<YOUR ACCOUNT ID>`.
+:::
 
 4. Select **Save**.
 5. In the newly-created client's configuration, enter the following values.

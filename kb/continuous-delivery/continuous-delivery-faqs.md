@@ -7474,3 +7474,61 @@ The file will not be cleared as they have been downloaded explicitly, however yo
 
 #### Why is the filter option greyed out for pipeline executions based on a branch?
 The option is used for filtering remote pipelines. If there are no remote pipelines executions, this option will not be highlighted.
+
+#### What authentication flows (grant types) are supported for AWS and GCP OIDC?
+For the Kubernetes connector, we go through the client credentials. For AWS and GCP we have implemented it slightly differently. For AWS OIDC is also implicit - Use OIDC: Connect to AWS with OIDC. 
+
+To do this you will need to create an OIDC identity provider in AWS and add it in a trust relationship with an IAM role you create that Harness will use to operate in AWS.
+
+#### What authentication is supported to connect Harness PODS and Linux Target server?
+For SSH Deployments, Harness uses an SSH Key to authenticate to the Linux host to perform deployments. The Delegate can run in Kubernetes as long as the Kubernetes cluster has access to the target Linux hosts.
+
+#### What is the purpose of the RoleARN in Terraform Plan?
+The RoleARN specified in Terraform Plan is attempting to execute an "sts:AssumeRole" action on the designated AWS IAM role.
+
+#### What is the default duration for assuming the role in the AWS Java SDK?
+The default duration for assuming the role in the aws-java-sdk is 15 minutes.
+
+#### What does the feature flag, `HARNESS_AWS_ASSUME_ROLE_DURATION` do?
+Once the `HARNESS_AWS_ASSUME_ROLE_DURATION` feature flag is enabled, you can set the environment variable value to override the default duration for assuming AWS roles. This feature requires Harness Delegate version 01.04.82700 or higher.
+
+#### Does Harness support running delegates in Azure Container Instances, similar to what is available for AWS ECI?
+Delegate can be installed on ACI.  You can use [this repository](https://gist.github.com/rssnyder/40ebf23bc352a2fbf75005239367abcd) to verify how to do this via Terraform.
+
+#### Is there a way to change what connector/repository/path is used to fetch a template or pipeline in the Git Experience project?
+When migrating your templates and other resources to a new Git provider, you can update the connector, repository, and path for each template and pipeline in Harness. 
+
+This can be achieved by editing the YAML file for each resource and updating the Git details section with the new connector, repository, and path information.
+
+#### Do we have a replay feature in Harness like Jenkins?
+In Jenkins, the “Replay” option allows you to re-run a specific build or job with the same parameters and settings as a previous build. This is same in Harness we call it [retry failed executions from any stage] (https://developer.harness.io/docs/platform/pipelines/failure-handling/resume-pipeline-deployments/) or from a specific stage.
+
+#### Is there a way to clean up state storage during testing if it gets out of sync? Is there a way to do so to change the application ID?
+If the state storage becomes out of sync during testing, there isn't a direct method to clean it up. Changing the application ID is not advisable as it may lead to other complications.
+ 
+Instead, you could consider manually deleting the state file from the storage location or utilizing the Terraform CLI to force a refresh of the state. However, exercise caution and ensure a backup of the state file before proceeding with any changes to mitigate potential risks and consequences.
+
+#### What ECR permissions policy that Harness create as part of the AWS Lambda service deployment?
+Harness creates the policy which is essential for performing various ECS-related actions like creating and updating services, tasks, and container instances.
+
+#### How to avoid Harness creating a permissions policy and applying it to an AWS ECR repository that we are specifying as an artifact location for our AWS Lambda deployment configuration in Harness. These permissions are creating Terraform state drift on the ECR repository?
+To prevent Terraform state drift, we recommend that you create the ECR repository with the required permissions beforehand. This can be achieved by crafting an IAM policy that grants the necessary permissions and attaching it to the IAM role utilized by the ECS cluster.
+
+Alternatively, you can prevent Harness from altering IAM policies by removing the relevant permissions from the Harness AWS connector. However, this could affect the functionality of your deployment pipeline.
+
+#### How can we configure our Harness pipeline to ensure that our Terraform scripts run on the same delegate that deploys the application?
+You can use a Delegate Selector in your pipeline or stage to specify the delegate that should be used for the Terraform steps.  This should ensure that your Terraform steps use the infrastructure selectors for choosing a delegate.
+
+#### What is the most efficient method in Harness to allow users to select from one set of options while automatically populating the remaining variables without requiring user intervention?
+You can achieve similar functionality using Overrides in Harness. Overrides enable you to define values for runtime inputs based on the specific environment or infrastructure where the pipeline is executed.
+
+You can establish a default set of values for these inputs and then utilize overrides to populate them based on user selections. 
+
+This streamlines the user experience by presenting only the relevant options, while automatically filling in the remaining values based on the selection.
+For more information, go to [Service overrides](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides/).
+
+#### How can policy evaluations be conducted through an API?
+Currently, we cannot do policy evaluations via APIs.
+
+#### How can different versions be deployed to separate clusters or stages within a single pipeline?
+You can enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.

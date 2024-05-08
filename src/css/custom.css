@@ -811,6 +811,7 @@ figure p {
 }
 
 /*== start of code for tooltips ==*/
+
 .tool {
   display: inline-block;
 }
@@ -850,7 +851,7 @@ figure p {
   width: 0;
   height: 0;
   bottom: calc(100% + calc(var(--distance) - var(--caret-height)));
-  margin-left: calc(- var(--caret-width) / 2);
+  margin-left: calc(-1 * var(--caret-width) / 2);
   border: 1px solid black;
   border-color: var(--tooltip-bg-color) transparent transparent transparent;
   border-width: var(--caret-height) var(--caret-width) 0;
@@ -878,6 +879,7 @@ figure p {
     opacity: 1;
   }
 }
+/*== end of code for tooltips ==*/
 
 @media screen and (max-width: 996px) {
   #search-button {

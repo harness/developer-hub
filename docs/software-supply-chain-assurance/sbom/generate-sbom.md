@@ -15,6 +15,7 @@ A Software Bill of Materials (SBOM) is an exhaustive list of all components, lib
 
 This document elaborates on utilizing the SBOM Orchestration step for SBOM generation. If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
 
+<DocVideo src="https://youtu.be/k5TAO1RLJvY?si=y_mC2cq5YD8MziK-" />
 
 ## Requirements
 ### Prepare a pipeline
@@ -108,7 +109,7 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
 
 <DocImage path={require('./static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
@@ -131,7 +132,7 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
 <DocImage path={require('./static/ecr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
@@ -154,7 +155,7 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
 
 <DocImage path={require('./static/gcr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
@@ -176,7 +177,7 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
 
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](./SBOM-Drift.md). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
 <DocImage path={require('./static/acr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
@@ -200,7 +201,7 @@ Please note that the previously available `Container` option, has now been depre
    To generate an SBOM for the entire repository, leave this field empty.
 * **Git Branch:** The branch of the repository for which you want to generate the SBOM.
 * **Workspace:** If you cloned the codebase to a different directory than the root workspace directory (`/harness`), enter the path to the subdirectory using the format `/harness/PATH/TO/SUBDIRECTORY`. Leave this field empty if you cloned your codebase into the default directory (`/harness`). Usually, your codebase is only cloned into a non-default directory if you are [cloning multiple codebases](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) into a pipeline.
-* **SBOM Drift:** Select this option if you want to [track changes in SBOM](./SBOM-Drift.md). Harness SSCA can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
+* **SBOM Drift:** Select this option if you want to [track changes in SBOM](/docs/software-supply-chain-assurance/sbom/sbom-drift). Harness SSCA can detect the changes by comparing the generated SBOM against a specified base/primary SBOM.
 
 <DocImage path={require('./static/repo-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
