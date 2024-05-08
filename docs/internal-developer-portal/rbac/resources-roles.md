@@ -163,7 +163,7 @@ These policies are available apart from the above platform level RBAC, and can b
 
 ### Hide Catalog Entities
 
-Catalog Entities can be hidden from the users, except for the owner user-group by using the tags like `hidden`, `secrets` and `private` as shown in the example below. 
+Catalog Entities can be hidden from the users, except for the owner user-group by using either one of the `hidden`,`secrets` or `private` tag as shown in the example below.
 
 ```YAML
 apiVersion: backstage.io/v1alpha1
