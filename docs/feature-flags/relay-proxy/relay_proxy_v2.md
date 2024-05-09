@@ -30,7 +30,7 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 ### Requirements
 
-- Container orchestration system (Kubernetes, Docker, ect.)
+- Container orchestration system (Kubernetes, Docker, etc.)
 - Redis instance (for production deployments)
 - Network access to `https://config.ff.harness.io` and `https://events.ff.harness.io`
 - A Harness Relay Proxy Key
