@@ -793,7 +793,7 @@ Deprecated `host` expressions (In NextGen, host properties are available using `
 
 | FirstGen | NextGen |
 | -------- | ------- |
-| `rollbackArtifact.buildNo`   | `artifact.tagrollback`<br/>`artifact.imagerollback`<br/>`artifact.imagePathrollback`<br/>`artifact.typerollback`<br/>`artifact.connectorRef`<br/>For sidecar artifact: `rollbackArtifact.sidecars.sidecar_Id`[property]    |
+| `rollbackArtifact.buildNo`   | `artifact.tagrollback`<br/>`artifact.imagerollback`<br/>`artifact.imagePathrollback`<br/>`artifact.typerollback`<br/>`artifact.connectorRef`<br/>`<+rollbackArtifact.version>`<br/>For sidecar artifact: `rollbackArtifact.sidecars.sidecar_Id`[property]    |
 | `rollbackArtifact.metadata.image`    | `rollbackArtifact.image`    |
 | `rollbackArtifact.metadata.tag`     | `rollbackArtifact.tag`    |
 | `rollbackArtifact.buildFullDisplayName`    |         |
