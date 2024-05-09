@@ -449,6 +449,10 @@ The synchronization with SSO-linked groups occurs exclusively upon user login to
 
 Harness uses Quartz for the cron expression builder in the LDAP sync schedule.
 
+###  Does the HTTP step support EdgeGrid authentication?
+
+You can pass the Client token, Access token, and Nonce as the header for the HTTP step for EdgeGrid authorization.
+
 ### Why am I receiving a 400 status code error with an "unsuccessful HTTP call" message when using a Jira step in Harness?
 
 The following 400 Invalid format error typically occurs when using a Jira step in Harness:
@@ -3158,10 +3162,6 @@ By following these steps, our support team can promptly review the situation, di
 
 "Exit code 137" typically indicates an out-of-memory error. When a process in a system exhausts its allocated memory resources, the operating system sends a termination signal to the process. In the case of "Exit code 137," this signal signifies that the process was terminated due to running out of memory. This error commonly occurs when a program or container attempts to allocate more memory than is available, leading to termination by the system to prevent resource exhaustion and potential system instability.
 
-
-
-
-
 ### Will the delegate start if there is a failure in the commands provided in INIT_SCRIPT?
 
 No, the delegate will not start if there is any failure while executing the commands in the `INIT_SCRIPT`.
@@ -3183,6 +3183,3 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 
-###  Does the HTTP step support EdgeGrid authorization?
-
-You can pass the Client token, Access token, and Nonce as the header for the HTTP step for EdgeGrid authorization.
