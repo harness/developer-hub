@@ -10,7 +10,7 @@ This functionality allows developers to see the changes, such as the plan detail
 Follow these steps to enable PR automation:
 
 1. Create a PR pipeline.
-   Create a pipeline similar to the way described in the [provision workspace topic](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace), and select "Pull Request" as the operation
+   Create a pipeline similar to the way described in the [provision workspace topic](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace.md), and select "Pull Request" as the operation
    ![Resources](./static/pr.png)
    
 2. Create a trigger on a PR event.

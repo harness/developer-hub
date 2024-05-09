@@ -57,8 +57,8 @@ To create a new workspace, follow these steps:
 
       * **From Git Repo (Explicit)** Users can define a specific folder for ``.tfvar`` files (which can be different from the Terraform code's location). These files can be in the same or different repository as the Terraform code.
 
-   The values defined inline with the Workspace will take precedence over the git configuration.
+   The values defined in line with the Workspace will take precedence over the git configuration.
 
    ![Workspace variables](./static/workspace-variables.png)
 
-Please take a look at the following documentation to learn how to [provision Workspace](/docs/infra-as-code-management/workspaces/provision-workspace.md)
+Please take a look at the following documentation to learn how to [provision Workspace](docs/infra-as-code-management/pipelines/operations/provision-workspace.md)
