@@ -90,8 +90,10 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 #### Type
 
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeCont />
+<StoSettingScanTypeRepo />
 
 
 #### Detect target and variant 

@@ -22,6 +22,34 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## May 2024
+
+### Version 1.94.4
+
+#### New features 
+
+- You can now use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/) and [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) in Security stages without a CI license. (STO-7442)
+
+- You can now scan code repositories using the [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scan step. (STO-7531)
+
+- The Sonarqube scan step includes new UI options for configuring branch scans and pull-request scans in orchestration and extraction mode. (STO-5799) 
+
+  - You can go to **Scan Configuration** and select **Branch Scan** or **Extraction Scan**.
+  - For branch scans in orchestration mode, you can now auto-detect the branch. Go to **Analysis Type** and select **Auto Detect**. 
+  - The step UI has the following new options for pull-request scans: 
+    - **Pull Request Key** 
+    - **Project Key** 
+    - **Pull Request Branch** _(orchestration mode only)_ 
+    - **Pull Request Base** _(orchestration mode only)_ 
+    
+     Previously, you needed to specify these settings using additional CLI arguments such as `-Dsonar.projectKey`, `-Dsonar.pullrequest.branch` and `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`. 
+ 
+
+#### Fixed issues
+
+- Fixed an issue where the Built-in Grype step would time out when uploading scan results. (STO-7464, ZD-61941)
+
+
 ## April 2024
 
 ### UI update 1.15.0
