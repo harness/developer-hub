@@ -46,7 +46,7 @@ Container kill:
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target. It takes numeric values only. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage </a></td>
-      </tr> 
+      </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to container kill.</td>
@@ -162,7 +162,7 @@ spec:
 
 ### Signal for kill
 
-Linux signal passed when killing the container. Its default value is set to `SIGTERM`. Tune it by using the `SIGNAL` environment variable. 
+Linux signal passed when killing the container. Its default value is set to `SIGTERM`. Tune it by using the `SIGNAL` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
