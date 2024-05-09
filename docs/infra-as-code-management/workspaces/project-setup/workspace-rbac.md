@@ -4,7 +4,7 @@ description:  Learn how to apply permissions and access control on Workspace
 sidebar_position: 20
 ---
 
-Users can control who has different types of access to the Workspace in a project. Create/edit a Role, and select the "Infrastructure as Code Management" section
+You can control who has different types of access to the Workspace in a project. Create/edit a Role, and select the "Infrastructure as Code Management" section
 
 ![Resources](./static/workspace-rbac.png)
 
@@ -19,9 +19,9 @@ For each Role, you can define the following set of permissions:
 7. **Access State** - Permitting users to view the state (including historical revisions)
 
 ## Using Resource Groups
-Users can utilize Resource Groups functionality to specify which users can access a specific Workspace. 
-To do that, users should create a resource group, add the specific (or all) Workspaces, and bind it to a specific user or user group. 
+You can utilize Resource Groups functionality to specify which users can access a specific Workspace. 
+For this, create a resource group, add the specific (or all) Workspaces, and bind it to a specific user or user group. 
 
 ![Resources](./static/workspace-rg.png)
 
-To learn more about Resource Groups, refer to [this documentation](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/)
+To learn more about Resource Groups, go to [this documentation](https://developer.harness.io/docs/platform/role-based-access-control/add-resource-groups/)

@@ -61,4 +61,4 @@ To create a new workspace, follow these steps:
 
    ![Workspace variables](./static/workspace-variables.png)
 
-Please take a look at the following documentation to learn how to [provision Workspace](docs/infra-as-code-management/pipelines/operations/provision-workspace.md)
+Go to [provision Workspace](docs/infra-as-code-management/pipelines/operations/provision-workspace.md) to learn how to provision Workspace.

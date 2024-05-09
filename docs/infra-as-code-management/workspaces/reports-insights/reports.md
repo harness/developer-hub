@@ -1,5 +1,5 @@
 ---
-title: IaCM Report
+title: IaCM reporting
 description: Learn how to use the reports to get insight into Workspaces activities, cost, and provisioning status
 sidebar_position: 30
 ---

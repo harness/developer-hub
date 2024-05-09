@@ -1,5 +1,5 @@
 ---
-title: Add an IaCM Approval step
+title: Add an IaCM approval step
 description: Learn how to use the approval step to review resource changes before applying them.
 sidebar_position: 20
 ---
