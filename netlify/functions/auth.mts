@@ -1,9 +1,11 @@
 import type { Context } from "@netlify/functions";
+import cookie from "cookie";
 interface Body {
   token: string;
   account_id: string;
   return_to: string;
 }
+
 export default async (req: Request, context: Context) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", {
@@ -34,8 +36,25 @@ export default async (req: Request, context: Context) => {
     return_to: body.return_to,
   });
 
-  
-  return new Response(JSON.stringify("Success !"), {
+  context.cookies.set({
+    name: "account",
+    value: body.account_id,
+    domain: "http://localhost:8888/",
+    sameSite: "None",
+    maxAge: 3600000 * 24 * 14,
+    httpOnly: true,
+    path: "/",
+  });
+  context.cookies.set({
+    name: "token",
+    value: body.token,
+    domain: "http://localhost:8888/",
+    sameSite: "None",
+    maxAge: 3600000 * 24 * 14,
+    httpOnly: true,
+    path: "/",
+  });
+  return new Response("Success !", {
     status: 200,
     headers: {
       "Access-Control-Allow-Origin": "*",
