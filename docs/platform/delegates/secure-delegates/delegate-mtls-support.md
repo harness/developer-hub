@@ -31,7 +31,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ### Create a CA certificate
 
-- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (ca.crt) to Harness to enable mTLS.
+- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (`ca.crt`) to Harness to enable mTLS.
 
     ```
      openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \
@@ -75,7 +75,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
     ```
 
    :::info note
-   You provide the client.crt and client.key to the delegate YAML when you install the delegate.
+   You provide the `client.crt` and `client.key` to the delegate YAML when you install the delegate.
    :::
 
 5. After you create the certificates, provide the public cert of the CA certificate to Harness support.
@@ -153,7 +153,7 @@ To migrate a delegate for mTLS support, do the following:
 
 2. In the `Deployment` section, update the `name:` value from `MANAGER_HOST_AND_PORT` to `https://\<YOUR_FQDN>.agent.harness.io`.
 
-3. Update the `LOG_STREAMING_SERVICE_URL` value to `https://\<YOUR_FQDN>.agent.harness.io/log-service/`
+3. Update the `LOG_STREAMING_SERVICE_URL` value to `https://\<YOUR_FQDN>.agent.harness.io/log-service/`.
 
 4. Add the two environment variables below.
 
