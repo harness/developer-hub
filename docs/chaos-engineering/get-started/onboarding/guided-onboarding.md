@@ -51,7 +51,7 @@ This topic describes the following operations:
 
 ### Automatically create Discovery Agent
 
-6. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To know how to use a custom discovery agent, go to [customize discovery agent](#customize-discovery-agent).
+6. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To know how to use a custom discovery agent, go to [customize discovery agent](/docs/chaos-engineering/features/service-discovery/service-discovery-usage.md).
 
 7. Once you complete the steps mentioned earlier, HCE looks for services in your cluster (which may take a while).
 
@@ -143,35 +143,7 @@ Congratulations! You have successfully:
 
     ![](./static/guided/view-cluster-res-24.png)
 
-## Customize Discovery Agent
 
-1. If you want to customize the discovery agent, navigate to **Chaos** and select **Discovery**. Click **New Discovery Agent**.
-
-    ![](./static/guided/discovery.png)
-
-2. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
-
-    ![](./static/guided/add-details-discovery.png)
-
-### Edit Discovery Agent
-
-1. To edit a discovery agent, navigate to the agent and click **Edit**. Make the necessary changes to the required fields.
-
-    ![](./static/guided/edit-dis-agent-1.png)
-
-2. Select **Update Discovery Agent**.
-
-    ![](./static/guided/edit-details-discovery.png)
-
-### Delete Discovery Agent
-
-1. To delete a discovery agent, navigate to the agent you want to delete, and select **Delete**.
-
-    ![](./static/guided/delete-1.png)
-
-2. Select **Delete**.
-
-    ![](./static/guided/confirm-2.png)
 
 ## Next steps
 
