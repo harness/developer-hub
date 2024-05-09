@@ -12,9 +12,9 @@ This page describes key concepts related to Harness SEI features and functionali
 
 ## Projects
 
-Projects are a centralized hub in Harness SEI enabling users to organize and navigate across Collection hierarchies, and easily access dashboards associated with specific Collections.
+**Projects** are a centralized hub in Harness SEI enabling users to organize and navigate across Collection hierarchies, and easily access Insights associated with specific Collections.
 
-By default, a Project consists of two top-level Collection categories: Teams and Sprints, each with options to customize. Each Collection category can have other Collections defined under them in parent-child relationships.
+By default, a **Project** consists of two top-level Collection categories: **Teams** and **Sprints**, each with options to customize. Each Collection category can have other Collections defined under them in parent-child relationships.
 
 For more information, Go to [Projects and Collections](/docs/software-engineering-insights/sei-projects-and-collections/project-and-collection-overview)
 
@@ -58,7 +58,7 @@ Harness SEI offers many types of integrations, including:
 
 ## Profiles
 
-A profile in SEI represents an entity where users define a specific set of metrics, criteria, and parameters that are used to assess and evaluate different aspects of software engineering processes, performance, and productivity.
+A **Profile** in SEI represents an entity where users define a specific set of metrics, criteria, and parameters that are used to assess and evaluate different aspects of software engineering processes, performance, and productivity.
 
 SEI provides 3 different types of profiles:
 
