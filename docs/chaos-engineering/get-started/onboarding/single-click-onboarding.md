@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Single-click onboarding
+title: Automated onboarding
 description: Set up infrastructure with a single click and execute chaos experiments.
 ---
 

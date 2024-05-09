@@ -24,22 +24,6 @@ This section describes the requirements and project-level permissions required t
 - Identify permissions for advanced use cases, which may vary, such as SCC, IRSA, etc.
 - ChaosHub requirements and connectivity to Git sources.
 
-## Requirements for individual chaos faults
-
-In the [chaos faults reference](/docs/chaos-engineering/chaos-faults/), you'll find fault-specific requirements listed in the **Use cases** section of each fault, as shown, for example, in the use cases for the [Kubelet service kill](/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill#use-cases) fault.
-
-## Chaos infrastructure requirements
-
-The table below lists the chaos infrastructure execution plane components and the required resources. You can install these components in your target cluster, allowing the chaos infrastructure to run experiments here. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
-
-| Deployment | Container | CPU<br />required | Memory<br />required | Image |
-|------------|-----------|-------------------|----------------------|-------|
-| chaos-operator-ce  | chaos-operator-ce     | 125m | 300M | chaosnative/chaos-operator          |
-| chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
-| subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
-| workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
-
-
 ## Add users to a project to run chaos experiments
 
 You must have at least one user in a project, and set up permissions such that the user can perform chaos experiments. The following steps generate an email invitation to the new user(s) to add themselves to the project.
@@ -61,3 +45,19 @@ To add a new user to a project:
 	![Add New User](./static/add-new-user.png)
 
 1. Select **Apply**.
+
+## Requirements for individual chaos faults
+
+In the [chaos faults reference](/docs/chaos-engineering/chaos-faults/), you'll find fault-specific requirements listed in the **Use cases** section of each fault, as shown, for example, in the use cases for the [Kubelet service kill](/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill#use-cases) fault.
+
+## Chaos infrastructure requirements
+
+The table below lists the chaos infrastructure execution plane components and the required resources. You can install these components in your target cluster, allowing the chaos infrastructure to run experiments here. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
+
+| Deployment | Container | CPU<br />required | Memory<br />required | Image |
+|------------|-----------|-------------------|----------------------|-------|
+| chaos-operator-ce  | chaos-operator-ce     | 125m | 300M | chaosnative/chaos-operator          |
+| chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
+| subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
+| workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
+
