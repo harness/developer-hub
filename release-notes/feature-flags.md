@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 1.6.1
 
 *New features and enhancements*:
- - SDK support has been added for `AND/OR` rules. Please note that this is currently a feature and not generally available yet. (FFM-11455)
+ - SDK support has been added for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11455)
  - Improved the retry logic used by SDK `http` requests, as well as the clarity of logs if requests fail. (FFM-11441)
 
 *Fixed issues*:
