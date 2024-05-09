@@ -38,7 +38,6 @@ You can search for a heading, for example, ## Access Control, and add your new F
 
 -->
 
-
 ## Access Control/RBAC
 
 ### What is RBAC and how do I manage users and roles?
@@ -258,8 +257,8 @@ Yes, the Harness API is accessible from the React (or any JavaScript library) ap
 
 To resolve CORS issues:
 
-- **Same Origin:** If your UI and API share the same origin (e.g., UI and API both on app.harness.io), there won't be CORS calls.
-- **Different Origin:** If your app is on a different origin (e.g., example.com/harness) and makes non-GET requests to app.harness.io/api/, the browser initiates a pre-flight request.
+- **Same Origin:** If your UI and API share the same origin (for example, UI and API both on `app.harness.io`), there won't be CORS calls.
+- **Different Origin:** If your app is on a different origin (for example, `example.com/harness`) and makes non-GET requests to `app.harness.io/api/`, the browser initiates a pre-flight request.
 - **Server Configuration:** Ensure your API server includes the necessary CORS headers, such as access-control-allow-origin and access-control-allow-headers, to explicitly allow the requesting origin and any custom headers like x-api-key.
 
 By configuring your server to allow the necessary origins and headers, you can address CORS issues when making API calls from your React app. This ensures a smooth interaction with the Harness API while securing your application.
@@ -298,7 +297,7 @@ There are two types of scope, one is complete scope(which indicates ALL) and the
 
 This feature is not currently in NextGen, but Harness does have viewer permissions in place.
 
-### Harness NG project admin permission after creating a project
+### What are the NextGen default project admin permissions?
 
 When you create a project using the API, by default the Project inherits the project admin permissions on creation from the Service Account where the API token was generated.
 
@@ -306,7 +305,7 @@ When you create a project using the API, by default the Project inherits the pro
 
 When you create a token in Harness under Service Account, the validity of the token is determined based on how it was created. If you have specified an expiry date, the token will expire on that date. However, if you want the token to never expire, you can select the **No Expiration** option.
 
-### Delegate disconnected status in the API
+### How do I fectch delegate disconnected status via the API?
 
 ```
 {delegateList(filters: [{accountId: "xxxxx"}], limit: 10) {
@@ -324,7 +323,6 @@ When you create a token in Harness under Service Account, the validity of the to
  }
 
 ```
-
 
 ### Why do I get a 400 error when creating a connector via the Create Connector API?
 
@@ -1181,7 +1179,7 @@ Run to the command below to test the certificate chain you used to install Harne
 curl -cacerts path/to/ca-certs/file https://<MANAGER_HOST>/api/account/<ACCOUNT_ID>/status
 ```
 
-Then Install the certificate on the delegate.
+Then install the certificate on the delegate.
 
 For more information, go to [Handshake exception](https://developer.harness.io/docs/platform/delegates/troubleshooting/certificate-issues#handshake-exception).
 
@@ -1234,7 +1232,7 @@ The process of sharing information between delegates within the same stage in Ha
 
 1. **Task T1 - Downloading values.yaml File:**
    - Harness Manager creates Task T1, instructing it to download the `values.yaml` file.
-   - Delegate1 is assigned Task T1, and it retrieves the `values.yaml` file from the designated source (e.g., Git/Remote).
+   - Delegate1 is assigned Task T1, and it retrieves the `values.yaml` file from the designated source (for example, Git/Remote).
    - Delegate1 then sends the contents of the `values.yaml` file back to Harness Manager.
 
 2. **Task T2 - Downloading and Applying Manifest Files:**
@@ -1244,7 +1242,7 @@ The process of sharing information between delegates within the same stage in Ha
 
 3. **Delegate2's Actions:**
    - Delegate2 executes the following actions:
-     - Downloads the manifest files from the specified source (e.g., Git, Remote, Helm Artifact Source).
+     - Downloads the manifest files from the specified source (for example, Git, Remote, Helm Artifact Source).
      - Utilizes the content of the `values.yaml` file to render the manifest files, customizing them as needed.
      - Applies the rendered manifest files to the target cluster.
 
@@ -1364,17 +1362,17 @@ The TTL (Time To Live) for legacy delegates is set to 7 days. For delegates with
 
 Having one less delegate instance during a task with a long `terminationGracePeriodSeconds` for reasons other than upgrades can impact the availability of delegate resources. Other tasks may fail to get scheduled because there are not enough delegates available to handle them. This can lead to inefficiencies and delays in task processing. It's crucial to consider the potential impact on the overall system and task scheduling when using extended termination grace periods.
 
-### If we enable proxy in delegate does that mean it is including all communication of "Connectors" - Artifact Servers, Source Repo Providers, Collaboration Providers? and also Cloud Providers?
+### If we enable proxy in delegate does that mean it is including all communication of "Connectors" - Artifact Servers, Source Repo Providers, Collaboration Providers, and Cloud Providers?
 
-Yes that's correct any outbound connection made via delegate through Harness will use that proxy
+Yes that's correct any outbound connection made via delegate through Harness will use that proxy.
 
 ### What are the delegate size guidelines?
 
-For more information, go to [Delegate sizes](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-sizes) and [Delegate requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements/).
+For more information, go to [Delegate sizes](/docs/platform/delegates/delegate-concepts/delegate-overview/#delegate-sizes) and [Delegate requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/).
 
 ### Can we point auto update to our Helm chart. Can we point auto update to a different registry?
 
-You can set auto upgrade to true in the helm command and control the upgrade and the repository. For more information, go to [Use automatic upgrade with custom delegate images](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
+You can set auto upgrade to true in the Helm command and control the upgrade and the repository. For more information, go to [Use automatic upgrade with custom delegate images](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#use-automatic-upgrade-with-custom-delegate-images).
 
 ### Why isn't dnf or yum working with my delegate?
 
@@ -1593,7 +1591,7 @@ Yes, you can scale the delegate StatefulSet. For more information, go to [Autosc
 
 5. ./aws/install
 
-### What Prometheus metrics are exposed on the delegate?
+### Which Prometheus metrics are exposed on the delegate?
 
 For a list of Prometheus metrics exposed on the Harness Delegate, go to [Delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
@@ -2060,7 +2058,7 @@ It is enabled for all customers, hence the feature flag `DELEGATE_TASK_LOAD_DIST
 
 Enabling the flags (`PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`) will hide project and org scope roles. However, there is currently no way to hide account-level roles. This decision was not implemented due to the potential restriction that once we enable the feature flags for the account, nobody will be able to see managed roles, including account admin.
 
-### Is it possible to hide Project/Org level default In-Built roles?
+### Is it possible to hide Project/Org level default built-in roles?
 
 Yes, this feature is currently behind the feature flags `PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`. Contact[Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -2141,11 +2139,11 @@ The expression `<+trigger.commitSha>` is available when the event comes from a G
 
 When you push commits from the command line, the email address that you have configured in [Git](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/setting-your-commit-email-address) is associated with your commits. However, for web-based operations, GitHub provides an option to maintain privacy regarding your email address. To ensure that you can fetch the correct user email through the expression `<codebase.gitUserEmail>`, you will need to disable the ["Keep my email addresses private"](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-email-preferences/blocking-command-line-pushes-that-expose-your-personal-email-address) option in your GitHub settings.
 
-### Can the same Github Repository be used for different projects with GitX Enabled?
+### Can the same Github repository be used for different projects with GitX enabled?
 
 Yes, you can add multiple projects to the same repository. GitX is entity-based, not project-based.
 
-### I have my Environment at Org/Project/Account Level can I Git sync them?
+### I have environments at the Org/Project/Account levels, can I Git sync them?
 
 No, this isn't currently supported.
 
@@ -2551,7 +2549,7 @@ Our previous setup allowed configurations where credentials from one secret mana
 
 ### How can we use the external secret managers to store secrets?
 
-Harness uses connectors to external secret managers (e.g. Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. To connect to a custom secret manger requires a secret credential stored in Harness secret manager.
+Harness uses connectors to external secret managers (for example Google Secret Manager or Hashicorp Vault) to resolve/store secrets used by pipelines and elsewhere in the Harness platform. To connect to a custom secret manger requires a secret credential stored in Harness secret manager.
 
 ### Does Harness support referencing a LDAP secret?
 
@@ -2992,7 +2990,7 @@ When using a complex expression, ensure the expression is wrapped within `<+ >`.
 
 The `liveStatus` expression is designed for use within step groups under a matrix. Unlike stageStatus, which doesn't consider running or completed steps under a matrix, liveStatus calculates the status of steps, including those in the running or completed state
 
-### What are Harness built-in and Custom Variables?
+### What are Harness built-in and custom variables?
 
 They are a way to refer to something in Harness such as an entity name or a configuration setting.
 
