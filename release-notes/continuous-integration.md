@@ -40,7 +40,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### New features
 
-- This release adds support for CI resource classes, which you can use to allocate resources when running builds in Harness Cloud. (CI-8920)
+- This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. (CI-10509)
 
 #### Fixed issues 
 
