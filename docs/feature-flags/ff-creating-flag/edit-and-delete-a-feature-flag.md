@@ -72,13 +72,13 @@ Here are the steps to restore an archived flag:
 
 ## Check for stale flags
 
-You might want to check if you have stale flags so that you can decide whether to archive them. In Harness, flags are counted as potentially stale if in the past 60 days:
+You might want to check if you have stale flags so that you can decide whether to archive them. In Harness, flags are counted as potentially stale if:
 
 * They haven't been changed or evaluated.
 * Their default rules or target rules haven't been added to, or updated.
 * They haven't been toggled on or off.
 
-If a flag gets stale, and then any of the above occurs, the flag is no longer considered stale.
+The time in which a flag is identified as stakle is set by the user. If a flag gets stale, and then any of the above occurs, the flag is no longer considered stale.
 
 To view a list of potentially stale flags:
 
