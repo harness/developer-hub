@@ -372,7 +372,6 @@ Go to:
 - [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings)
 - [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 - [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
-- [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 - [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 - [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
