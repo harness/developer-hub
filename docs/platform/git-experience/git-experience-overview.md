@@ -26,6 +26,7 @@ With Harness Git Experience, you can easily select the repository and branch fro
 
 The following Git providers are supported for Harness Git Sync:​
 
+* Harness Code Repository
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
