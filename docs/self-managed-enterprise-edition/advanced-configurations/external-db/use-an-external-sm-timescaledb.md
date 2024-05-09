@@ -602,7 +602,7 @@ export PATH=/usr/pgsql-16/bin:$PATH
 make && sudo PATH=$PATH make install
 ```
 
-To ensure the `pg_cron` background worker starts alongside PostgreSQL, add `pg_cron` to `shared_preload_libraries` within the `postgresql.conf` file:
+To ensure the `pg_cron` background worker starts with PostgreSQL, add `pg_cron` to `shared_preload_libraries` within the `postgresql.conf` file:
 
 ```conf
 # add to postgresql.conf
@@ -622,7 +622,7 @@ Previously restricted to GMT, `pg_cron` now enables you to adapt timezones by se
 
 ```conf
 # add to postgresql.conf
-# optionally, specify the timezone in which the pg_cron background worker should run (defaults to GMT). E.g:
+# optionally, specify the timezone in which the pg_cron background worker should run (defaults to GMT). For example:
 cron.timezone = 'PRC'
 ```
 
