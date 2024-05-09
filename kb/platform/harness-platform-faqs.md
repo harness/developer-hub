@@ -3183,6 +3183,6 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 
-###  Does harness http step support edgegrid auth?
+###  Does the HTTP step support EdgeGrid authorization?
 
-You can pass Client token, Access token, Nonce as header for http step and it should work.
+You can pass the Client token, Access token, and Nonce as the header for the HTTP step for EdgeGrid authorization.
