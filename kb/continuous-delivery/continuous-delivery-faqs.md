@@ -7532,3 +7532,17 @@ Currently, we cannot do policy evaluations via APIs.
 
 #### How can different versions be deployed to separate clusters or stages within a single pipeline?
 You can enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.
+
+#### How to assign a json stored as secret file to variable
+You can use below command to achieve the same
+```
+echo -n "<+secrets.getValue("account.jsonfilesecret")>" > /var/tmp/secret.json
+json=$(cat /var/tmp/secret1.json)
+```
+
+#### Are environment level <+input> fields supported in the Pipeline run screen
+Any variable used as <+input> will be asked to provide a value at the runtime.
+
+#### Can you tell me which steps for a custom stage run directly on the delegate?
+Usually all the actual task execution occurs on delegate, you can add shell script step to execute the command on delegate.
+
