@@ -438,7 +438,7 @@ See [Harness Git Experience Quickstart](../platform/git-experience/configure-git
 Harness CD has two free options to get started. 
 
 - The [Harness CD & GitOps SaaS Free Plan](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg) is the recommended option for new users since there is no server side installation to manage.
-- If a self-managed yet lightweight option is needed, then the recommended otion is to use [Gitness](https://gitness.com/).
+- If a self-managed yet lightweight option is needed, then the recommended option is to use [Gitness](https://gitness.com/).
 
 As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). 
 
@@ -947,13 +947,13 @@ See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and
 
 #### Error evaluating certain expressions in a Harness pipeline
 
-Some customers have raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
+Some customers have raised concerns about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
 
 So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
 
 #### How to carry forward the output variable when looping steps?
 
-If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use  `<+strategy.iteration>` to denote the iteration count.
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consecutive steps or with in the loop, you can use  `<+strategy.iteration>` to denote the iteration count.
 
 For example, assume a looping strategy is applied to a step with the identifier `my_build_step.` which has an output variable `my_variable` The expression `<+pipeline.stages.my_build_step.output.outputVariables.my_variable>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_step_0.output.outputVariables.my_variable>`
 
@@ -961,7 +961,7 @@ If you are using with in the loop you can denote the same as `<+pipeline.stages.
 
 See [Iteration Counts](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
 
-#### How do I get the output variables from pieeline execution using Harness NG API?
+#### How do I get the output variables from pipeline execution using Harness NG API?
 
 We have an api to get the pipeline summary:
  
