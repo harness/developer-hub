@@ -197,7 +197,7 @@ Pipeline B:
 
 
 :::info note
-Please note that barrier step is only supported within a single pipeline.
+Barrier step is only supported within a single pipeline.
 :::
 ## Run the pipelines
 
