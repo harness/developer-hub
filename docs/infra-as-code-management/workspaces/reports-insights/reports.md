@@ -1,5 +1,5 @@
 ---
-title: Infrastructure as Code Management reports
+title: IaCM Report
 description: Learn how to use the reports to get insight into Workspaces activities, cost, and provisioning status
 sidebar_position: 30
 ---

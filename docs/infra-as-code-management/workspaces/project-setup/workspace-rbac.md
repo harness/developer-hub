@@ -1,7 +1,7 @@
 ---
-title: Workspace RBAC
+title: Role-based access control (RBAC)
 description:  Learn how to apply permissions and access control on Workspace 
-sidebar_position: 40
+sidebar_position: 20
 ---
 
 Users can control who has different types of access to the Workspace in a project. Create/edit a Role, and select the "Infrastructure as Code Management" section

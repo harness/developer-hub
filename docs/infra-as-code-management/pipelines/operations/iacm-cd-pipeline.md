@@ -1,5 +1,5 @@
 ---
-title: Create a single pipeline to provision resources during deployment
+title: Provision resources during deployment
 description: Learn how to create a single pipeline to provision or update resources used during deployment.
 sidebar_position: 30
 ---

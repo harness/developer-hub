@@ -1,5 +1,5 @@
 ---
-title: Drift Detection with IaCM 
+title: Drift Detection 
 description: Learn how to detect and get notified on drift 
 sidebar_position: 60
 ---

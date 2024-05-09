@@ -1,6 +1,6 @@
 ---
-title: Review workspace resources, states, and execution history
-description: Explore the details of a workspace.
+title: Review insights
+description: Review workspace resources, states, and execution history.
 sidebar_position: 30
 ---
 
