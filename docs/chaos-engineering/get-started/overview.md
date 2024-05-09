@@ -67,7 +67,7 @@ The standard chaos experimentation flow involves the following steps:
 1. Identify the steady state of the system or application under test and specify its service-level objectives (SLOs);
 2. Hypothesize around the impact a particular fault or failure would cause;
 3. Inject this failure (or chaos fault) in a controlled manner (with a pre-determined and minimal blast radius);
-4. Validate whether the hypothesis is proven and if system meets the SLOs, and take appropriate actions if a weakness is found.
+4. Validate whether the hypothesis is proven and if the system meets the SLOs, and take appropriate actions if a weakness is found.
 
 ## Benefits of HCE
 
