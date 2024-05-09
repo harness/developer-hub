@@ -602,7 +602,7 @@ export PATH=/usr/pgsql-16/bin:$PATH
 make && sudo PATH=$PATH make install
 ```
 
-To ensure the `pg_cron` background worker starts with PostgreSQL, add `pg_cron` to `shared_preload_libraries` within the `postgresql.conf` file:
+To ensure that the `pg_cron` background worker starts with PostgreSQL, add `pg_cron` to `shared_preload_libraries` within the `postgresql.conf` file:
 
 ```conf
 # add to postgresql.conf
@@ -610,7 +610,7 @@ To ensure the `pg_cron` background worker starts with PostgreSQL, add `pg_cron` 
 shared_preload_libraries = 'pg_cron'
 ```
 
-By default, the `pg_cron` background worker assumes its metadata tables exist within the Postgres database. However, you can customize this behavior by setting the `cron.database_name` configuration parameter in the `postgresql.conf` file:
+By default, the `pg_cron` background worker assumes that its metadata tables exist within the Postgres database. However, you can customize this behavior by setting the `cron.database_name` configuration parameter in the `postgresql.conf` file:
 
 ```conf
 # add to postgresql.conf
