@@ -659,7 +659,7 @@ For ECR artifacts, Harness passes in the `PLUGINS_ECR_AWS_ACCESS_KEY` and `PLUGI
 
 For S3 artifacts, Harness passes in the `PLUGIN_S3_AWS_ACCESS_KEY` and `PLUGIN_S3_AWS_SECRET_KEY` as environment variables.
 
-For more information on how to use a Serverless Harness Connector with a containerized step group, go to [Using Serverless.com Harness Connectors with Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#using-aws-sam-and-serverlesscom-harness-connectors-with-containerized-step-groups)
+For more information on how to use a Serverless Harness Connector with a containerized step group, go to [Using Serverless.com Harness Connectors with Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#using-aws-sam-and-serverlesscom-harness-connectors-with-containerized-step-groups).
 
 ### Step group
 
@@ -740,7 +740,7 @@ To configure the Serverless Prepare Rollback step, do the following:
 
 1. Open the Serverless Prepare Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-preparerollback:3.30.1-2.0.0`.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, you can specify the default: `harnessdev/serverless-preparerollback:3.30.1-2.0.0`.
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -754,7 +754,7 @@ To configure the Serverless Package step, do the following:
 
 1. Open the Serverless Package step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-package:3.30.1-1.1.0`.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-package:DEFAULT_TAG'](https://gallery.ecr.aws/harness/harness/serverless-package).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
