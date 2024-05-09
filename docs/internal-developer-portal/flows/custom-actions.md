@@ -72,7 +72,7 @@ token:
     ...
 
 ```
-Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/Debanitrkl/backstage-test/blob/e0aa88ee2a7f8a3be0fb8abdb5bb59781a76055d/template-ca-check-devspaces.yaml#L34-L38) 
+Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68) 
 
 :::
 
@@ -160,7 +160,7 @@ token:
     ...
 
 ```
-Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/Debanitrkl/backstage-test/blob/e0aa88ee2a7f8a3be0fb8abdb5bb59781a76055d/template-ca-check-devspaces.yaml#L34-L38) 
+Without the above parameter input the pipeline won't be executed. [Take a look at this example](https://github.com/harness-community/idp-samples/blob/eb9988020d3917c0bca7daccb354ba670626221b/tutorial-self-service-flow-template.yaml#L64-L68) 
 
 :::
 
