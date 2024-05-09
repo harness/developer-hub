@@ -81,10 +81,6 @@ The following deprecated API endpoints are longer supported:
 
 ### Version 1.37.x<!--  May 13, 2024 -->
 
-#### New features and enhancements
-
-- Upgraded curl in SMP from version `8.1.2` to `8.7.1` to address security vulnerabilities. (PL-49016)
-
 #### Fixed issues
 
 - An "uuid may not be empty" error occurred when configuring LDAP settings. This was due to the LDAP identifier being sent as an empty string instead of null if it didn't already exist. The issue has been resolved, and the identifier is now correctly sent as null, preventing the error. (PL-50657)
