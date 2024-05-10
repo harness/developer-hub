@@ -272,9 +272,9 @@
   --mod-iacm-100: #f6fff2;
 
   /* Module Colors/Code (Gitness) */
-  --mod-code-300: #9a0041;
-  --mod-code-200: #ff006a;
-  --mod-code-100: #fff1f7;
+  --mod-code-300: #0672b6;
+  --mod-code-200: #2bb1f2;
+  --mod-code-100: #e2f5ff;
 
   /* ----- */
   --ifm-link-decoration: none;
@@ -564,6 +564,22 @@ details summary::before {
 
 .color-ce {
   color: var(--mod-ce-200);
+}
+
+.color-code {
+  color: var(--mod-code-200);
+}
+
+.color-idp {
+  color: var(--mod-idp-200);
+}
+
+.color-sei {
+  color: var(--mod-sei-200);
+}
+
+.color-iacm {
+  color: var(--mod-iacm-200);
 }
 
 .table-of-contents ul li span[class*="color-"] {
