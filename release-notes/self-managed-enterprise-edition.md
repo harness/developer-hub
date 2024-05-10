@@ -102,7 +102,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.7.6 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -145,7 +145,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.14.5 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -239,7 +239,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.7.6 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -321,7 +321,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.14.5 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -376,7 +376,7 @@ gsutil -m cp \
 - For more information, go to:
 
   - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables) 
+  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
 
 ### Fixed issues
 
@@ -558,7 +558,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.10.8 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
