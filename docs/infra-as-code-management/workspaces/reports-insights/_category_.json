@@ -1,12 +1,12 @@
 {
-    "label":"Pipelines",
-    "position": 20,
+    "label":"Reporting & Insights",
+    "position": 40,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Pipelines"
+       "title":"Workspace Reporting and insights"
     },
     "customProps":{
        "helpdocs_category_id":""

@@ -1,12 +1,12 @@
 {
-    "label":"Pipelines",
-    "position": 20,
+    "label":"Project Setup",
+    "position": 30,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Pipelines"
+       "title":"Setup"
     },
     "customProps":{
        "helpdocs_category_id":""
