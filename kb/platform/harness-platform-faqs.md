@@ -82,6 +82,15 @@ Resource groups are an RBAC component that defines the objects that a user or se
 
 For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
 
+### Can we provision users and user groups with GitHub's people and teams?
+
+No. Harness currently supports the following provisioning methods:
+
+- Okta SCIM
+- Microsoft Entra ID SCIM
+- OneLogin SCIM
+- Just-in-time provisioning
+
 ### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
 
 Use the direct URL with the `accountId` for the desired account, such as:
@@ -3195,9 +3204,3 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 
-### Can we provision the users and user groups with the GitHub's people and Teams?
-No, As per the current design only the below are supported
-1. Okta SCIM
-1. Microsoft Entra ID SCIM
-1. OneLogin SCIM
-1. Just-in-time provisioning
