@@ -7546,3 +7546,15 @@ Any variable used as `<+input>` will be asked to provide a value at the runtime.
 #### Can you tell me which steps for a custom stage run directly on the delegate?
 Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
 
+#### Can user delete the service without removing the active instances?
+Yes, User can delete the services that have active instance by enabling the Force delete option in the account settings.
+
+#### Is it possible to update the exsiting Jira from harness pipeline?
+Yes, You can update the existing Jira by using the Jira Update step.
+
+#### Is stage output host looping startegy is supported with the custom stage pipeline?
+No, Stage output host looping startegy is only supported with CD stage.
+Doc for reference: https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#repeat-on-multiple-target-hosts
+
+#### Can a user create/update a confluence page from harness step?
+No, As per the current design, there's no native step to create/update a confluence page.
