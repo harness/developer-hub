@@ -27,7 +27,7 @@ When integrating users through any SAML provider, it is important to note that u
 
 ## Use System for Cross-domain Identity Management (SCIM) protocol
 
-To ensure continuous and real-time synchronization of user group bindings and access controls, it is recommended to utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained.
+To ensure continuous and real-time synchronization of user group bindings and access controls, Harness recommends that you utilize the System for Cross-domain Identity Management (SCIM) protocol. SCIM enables real-time syncing of user additions with Harness user groups, ensuring that user permissions and access rights are consistently applied and maintained.
 
 For implementation details and further guidance on provisioning users with SCIM, go to [Okta SCIM](/docs/platform/role-based-access-control/provision-users-with-okta-scim), [Microsoft Entra SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), and [OneLogin SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim).
 
