@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-08T10:00
+date: 2024-05-10T10:00
 sidebar_position: 16
 ---
 
@@ -90,7 +90,7 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.14.8](https://github.com/harness/helm-charts/releases/tag/harness-0.14.8) |
 | Air Gap Bundle | [0.14.8](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.8) |
-| NG Manager | 1.24.7 |
+| NG Manager | 1.24.9 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
 | Platform Service | 1.12.0 |
