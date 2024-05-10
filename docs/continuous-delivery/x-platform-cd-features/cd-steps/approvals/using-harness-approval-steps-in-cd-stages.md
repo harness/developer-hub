@@ -76,7 +76,6 @@ Approval steps should not be added to run in parallel with other steps, includin
 
 ## See also
 
-- [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
 - [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 - [Using Harness Approval APIs](/kb/continuous-delivery/articles/harness-approval-api)
 
