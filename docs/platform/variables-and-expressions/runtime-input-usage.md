@@ -96,6 +96,34 @@ When you run a pipeline that includes default values for runtime input, if you p
 
 To avoid unwanted `null` values, consider using a [ternary operator](https://developer.harness.io/kb/continuous-delivery/articles/ternary-operator/).
 
+### Empty strings
+
+You cannot use an empty string directly in a Harness expression to represent the absence of a value when working with dropdowns or other input types. Harness expressions are designed to handle strings, numbers, booleans, and lists, but they don't have a dedicated representation for no value.
+
+However, there are a few strategies you can use to manage this situation:
+
+**Default Values:** If you want a pipeline to proceed without an explicit selection in the dropdown, you can set a default value within the pipeline itself. This means if the user doesn't choose a city, a pre-determined city will be used.
+
+For example, you could use a Harness expression like this in the pipeline stage where the city is needed:
+
+`<+ input("city") ? input("city") : "New York" +>`
+
+This expression will check if the `"city"` input has a value. If it does, it uses that value. If not, it defaults to New York.
+
+**Conditional Logic:** You can implement conditional logic in your pipeline to handle cases where the dropdown input is empty. This would involve using Harness expressions to check if the input is empty and then executing a specific branch of the pipeline accordingly.
+
+For example:
+
+`<+ if (input("city") != "") { 
+     // Execute steps if a city is selected
+  } else { 
+     // Execute steps if no city is selected
+  } +>`
+  
+**Special Value:** You can designate a specific string like None or Not Applicable as an option in your dropdown to represent the absence of a real city choice. This allows users to explicitly select that they don't want to provide a city, and you can then handle this value within your pipeline logic.
+
+The best approach depends on the specific logic of your pipeline and what you want to achieve when no city is selected.
+
 ### Use a JSON object as the default value
 
 You can use a JSON object, such as the JSON-formatted body of a webhook payload, as the default value for runtime input. Here's an example of a default value that uses a JSON object. Note the use of double quotes around the entire expression and slashes to escape commas and double quotes within the object.
