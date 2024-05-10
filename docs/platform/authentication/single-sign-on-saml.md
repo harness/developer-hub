@@ -367,7 +367,7 @@ To get this information, do the following:
 3. In your  account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Select **New Client Secret**.
 5. Add a description and click **Add**.
-6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../secrets/add-use-text-secrets).
+6. You must copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](../secrets/add-use-text-secrets).
 7. Select the above secret reference in the **Client Secret** field in your Harness account.
 
 When the user authenticating SAML is part of more than 150 groups in Microsoft Entra ID, you must set `User.Read.All` access for the application if you want to configure the optional **Client ID** and **Client Secret**. For more information on Azure application permissions, go to [Application permissions](https://learn.microsoft.com/en-us/graph/permissions-reference#application-permissions-93) in the Azure documentation.
@@ -594,7 +594,7 @@ To get this information, do the following:
 3. In your Microsoft Entra ID account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
 5. Add a description and click Add.
-6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](/docs/platform/secrets/add-use-text-secrets).
+6. You must copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, go to [Use Encrypted text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 7. Select the above secret reference in the Client Secret field in your Harness account.
 
@@ -629,7 +629,7 @@ Enabling OneLogin authentication on Harness requires configuration on both platf
    ![](./static/single-sign-on-saml-102.png)
 
 8. Skip all other **Application Details** fields, and click **Save**.
-9.  Navigate to OneLogin's **Applications** > **SSO** tab. At the upper right, select **More Actions** > **SAML Metadata**.
+9. Navigate to OneLogin's **Applications** > **SSO** tab. At the upper right, select **More Actions** > **SAML Metadata**.
 
 	![](./static/single-sign-on-saml-103.png)
 
