@@ -89,7 +89,7 @@ The following deprecated API endpoints are longer supported:
 
 - Login issues occurred in NextGen when FirstGen delegates were scaled down because the LDAP Authentication task was initially sent to FirstGen Delegates. If a FirstGen delegate wasn't available, the task would expire before being sent to a NextGen delegate. Compounding the issue, the timer at the Gateway was set to expire before the delegate task, leading to failed login attempts. We have implemented a solution that prioritizes sending the LDAP Authentication task to NextGen delegates first if the feature flag `PL_USE_NG_DELEGATE_LDAP_AUTH` is enabled, thereby enhancing the reliability of login processes in NextGen environments. (PL-48541, ZD-60437)
 
-- The AWS connector was failing due to permission issues related to the AWS region in use. Specifically, the `aws-java-sdk-core` version 1.12.261 does not support the ap-south-2 region, resulting in an unrecognized client exception. The support to add new regions is taken up as an enhancement requiring the AWS SDK upgrade and changing Harness UI and backend flows. (PL-48451, ZD-58686)
+Customers encountered problems with Pod Disruption Budgets (PDBs) in the Harness namespace, leading to issues during patching cycles due to incorrectly targeted PDB rules. We have updated the PDB rules for the `cloud-info`, `anomaly-detection`, `gateway`, and `next-gen-ui` services to accurately select the correct pods, ensuring smooth operations during maintenance activities. (PL-49350, ZD-62353)
 
 ### Version 1.36.5<!--  May 06, 2024 -->
 
