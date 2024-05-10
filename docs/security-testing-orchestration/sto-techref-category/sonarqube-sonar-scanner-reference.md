@@ -335,9 +335,63 @@ If there's a proxy between your Harness pipeline and your SonarQube server, you 
 - `JVM_HTTP_PROXY_PORT : 3735`
 - `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
 - `JVM_HTTPS_PROXY_PORT : 3745`
-- `JVM_NO_PROXY : sonar.myorg.local` 
+- `JVM_NO_PROXY : sonar.myorg.local`
 
- 
+## Generate coverage reports and upload to SonarQube
+
+You can set up your pipeline to generate test coverage reports and then get them pushed up to your SonarQube instance. To do this:
+
+1. Add a **Run** step to your pipeline before the Sonarqube step.
+
+2. Set the **Image** field to a base image that's compatible with the code repo you're scanning.
+
+3. Add commands to install `coverage` and any other dependencies required by your code repo.
+
+4. Add a `coverage` command to generate a coverage report. The specific usage depends on the language and platform.
+
+5. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
+
+6. Update your SonarQube step with the path to the coverage report.
+
+   - This step is required only if you saved your report to a non-default folder and/or filename.
+
+   - To specify the report path, add the CLI argument for the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example, you could specify a Python report page like this: `-Dsonar.python.coverage.reportPaths`
+
+For more information, go to [Test Coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/overview/) in the SonarQube documentation.
+
+:::note
+
+You must ensure that you generate reports that `sonar-cli` can find and upload, and that your SonarQube instance can ingest. Carefully review the specific language reference to make sure that you publish your reports in the correct format.
+
+:::
+
+Here’s an example Run step that generates a coverage report for a Python 3.9 code repo.
+
+```yaml
+
+- step:
+    type: Run
+    name: Run_Tests
+    identifier: generate_python_coverage_report
+    spec:
+      connectorRef: account.harnessImage
+      image: python:3.9-alpine
+      shell: Sh
+      command: |-
+        # Install coverage and other
+        # dependencies required by the code repo.
+        pip install pytest-django pytest-cov 
+        python3 -m pip install coverage
+        pip install -r requirements.txt
+
+        # Run coverage commands to generate a report
+        # and then convert the report to XML.
+        # This method ensures that SonarQube can ingest the resulting report.
+        coverage run -m pytest --ds=epizza.settings **/tests || true
+        coverage xml
+
+```
+
 ## Troubleshoot Sonar Scans
 
 ### Can't generate SonarQube report due to shallow clone
