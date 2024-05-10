@@ -82,7 +82,7 @@ Resource groups are an RBAC component that defines the objects that a user or se
 
 For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
 
-### Does Harness support provision users and user groups via GitHub?
+### Does Harness support provisioning users and user groups via GitHub?
 
 No. Harness currently supports the following provisioning methods:
 
