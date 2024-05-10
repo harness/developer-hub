@@ -3181,3 +3181,19 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 
+### SSO Group Sync Issue
+
+When you have linked your user group created in Harness UI with a SSO group be it Okta, Miceosoft Entra or any other SSO provider and see issue when a user present in the user group logs in but isn't add to the group in Harness UI. You first need to validate if the sync works. 
+As the Group validate isn't done with the login as login using SSO works differently from the Group authorisation.
+You need to make sure if the entity id is correct and matches the same in your SSO app and the group attribute used is also correct. 
+
+### Delegate Minimal Image 
+
+Delegate minimal image is used to minimize vulnerabilities as it doesnt come with the third-party client tools pre installed, Hence reducing the risk of CVEs.
+The delegate image has a minimal tag ex: yy.mm.xxxxx.minimal
+
+### SSLHandshakeException exception in Delegate certificate
+
+Sometimes you see the below error in delegate logs : javax.net.ssl.SSLHandshakeException: unable to find valid certification path
+This means the java truststore file doesn't have the required certificate to connect to Harness Manager, it might be because of a missing Certificate Authority. 
+
