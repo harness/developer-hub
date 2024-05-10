@@ -7546,3 +7546,26 @@ Any variable used as `<+input>` will be asked to provide a value at the runtime.
 #### Can you tell me which steps for a custom stage run directly on the delegate?
 Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
 
+#### How do I pass user data in ASG-type deployment?
+We support user data in ASG deployments via service. You can define the Userdata values in service and during deployment, it will get added to ASG deployment.
+#### Can we use an ansible tag as an input parameter during pipeline execution?
+Depends on how are you accessing the ansible tags in Harness, if tags are accessible via a variable in the script, you can output the variable and use conditional execution to run the selective steps.
+#### How can I restrict a user to provide CPU and Memory values of CI step within the limit in harness?
+This can be achieved via an OPA policy. You can create an OPA policy to check the values values for CPU and memory and warn and prevent the user from saving the pipeline if the values exceed your limit.
+Here is an example of run step -
+```
+package pipeline_environment
+deny[msg] {
+input.pipeline.stages[_].stage.spec.execution.steps[_].step.spec.resources.limits.memory > "500M"
+    # Error message with details about the naming convention
+    msg := "Pipeline is using more memory than allowed"
+}
+deny[msg] {
+input.pipeline.stages[_].stage.spec.execution.steps[_].step.spec.resources.limits.cpu > "0.5"
+ msg := "Pipeline is using more CPU than allowed"
+}
+```
+#### What's the difference between custom webhooks version V2 and V3?
+Custom webhook(V2) triggers use insecure URLs that can be formed as long as account, org, project, pipeline, and trigger IDs are known. Now(V3), a unique custom webhook token is generated internally for all custom webhook triggers when they're created. This token cannot be changed.
+#### Is there an option to use a different version for custom webhook triggers?
+Yes, version V3 of custom webhook triggers is available. However, it is not enabled by default. Customers can request to enable version V3, which operates behind a feature flag named "SPG_DISABLE_CUSTOM_WEBHOOK_V3_URL".
