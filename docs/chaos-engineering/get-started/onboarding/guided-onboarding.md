@@ -8,8 +8,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This topic describes the following operations:
-1. [Create an environment with single click.](#select-an-environment)
-2. [Create an infrastructure with single click.](#select-an-infrastructure)
+1. [Create an environment.](#select-an-environment)
+2. [Create an infrastructure.](#select-an-infrastructure)
 3. [Automatically discover services on your cluster.](#automatically-create-discovery-agent)
 4. [Create network maps with a single click.](#create-network-maps)
 5. [Choose the chaos experiments to run.](#create-chaos-experiments)
@@ -35,7 +35,7 @@ This topic describes the following operations:
 
 ### Select an environment
 
-3. Select an environment from a list of environments and click **Next**. It may take a while to set up the environment.
+3. Select an environment from a list of environments and select **Next**. It may take a while to set up the environment.
 
     ![](./static/guided/select-env-2.png)
 
@@ -45,7 +45,7 @@ This topic describes the following operations:
 
     ![](./static/guided/select-infra-3.png)
 
-5. The next step verifies some permissions by running pre-configured checks, after which you can click **Next**.
+5. The next step verifies some permissions by running pre-configured checks, after which you can select **Next**.
 
     ![](./static/guided/run-checks-4.png)
 
@@ -59,7 +59,7 @@ This topic describes the following operations:
 
 ### Create Network Maps
 
-8. Once HCE discovers the services, the UI lists them for your reference. Click **Create Network Maps**.
+8. Once HCE discovers the services, the UI lists them for your reference. Select **Create Network Maps**.
 
     ![](./static/guided/discovery-complete-7.png)
 
@@ -117,7 +117,7 @@ This creates network maps and lists them on the UI.
 
 ### Execute chaos experiments
 
-13. Click **Run** to execute the chaos experiments.
+13. Select **Run** to execute the chaos experiments.
 
     ![](./static/guided/sample-exp-20.png)
 
@@ -139,7 +139,7 @@ Congratulations! You have successfully:
 
     ![](./static/guided/view-progress-23.png)
 
-- You can click **View** to see the progress of different clusters executing various chaos experiments.
+- You can select **View** to see the progress of different clusters executing various chaos experiments.
 
     ![](./static/guided/view-cluster-res-24.png)
 
