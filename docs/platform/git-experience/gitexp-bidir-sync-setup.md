@@ -38,10 +38,10 @@ This topic explains how to set up and use bidirectional sync.
 
 To set up bi-directional sync, do the following:
 
-1. In your Harness account, go to **Account Settings**, select **Account Resources**, and then select **Default Settings**.
+1. In your Harness account, go to **Account Settings**, and then select **Default Settings**.
 2. Expand **Git Experience**, and then enable the **Enable Bi-Directional Sync** setting.
    
-   <DocImage path={require('./static/ecce92a26a5f4f2e902240c10010066d329b54bc0a3515b58a1e5f2d1e8c9b6c.png')} width="60%" height="60%" title="Click to view full size image" />  
+   <DocImage path={require('./static/enable-bidirectional-sync.png')} width="60%" height="60%" title="Click to view full size image" />  
 3. Select **Save**.
 
 When you create the webhook in Harness, it is automatically registered in your repo. For webhook registration, ensure that the Harness Git connector you use in the steps below has the necessary credentials. For example, for GitHub, ensure that you use a GitHub user account that is a repo admin and that the Personal Access Token includes all repo, user, and `admin:repo_hook` options for scopes.

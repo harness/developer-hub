@@ -26,7 +26,7 @@ With Harness Git Experience, you can easily select the repository and branch fro
 
 The following Git providers are supported for Harness Git Sync:​
 
-* Harness Code Repository
+* [Harness Code Repository](/docs/code-repository/)
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
@@ -65,10 +65,9 @@ Harness Git Experience lets you choose a Git-First approach for managing Harness
 
 You can do this by creating a resource with the **Remote** option and specifying the Git repo and branch where you want to save your configurations.
 
-
 For example, you can create a pipeline by choosing the **Remote** option and save it in Git by providing the repo name and branch name along with the file path.
 
-![picture 0](static/4bf16b3027a09d352305e9491d2e707d17b4f821aa6f896f671422dd732e9521.png)  
+![picture 0](static/create-pipeline-remote-git-experience.png)  
 
 Harness Git Experience lets you modify the configurations stored in Git through the Harness UI and save it back to Git.
 
@@ -148,6 +147,12 @@ Harness Git Experience helps you do the following:
 ### What do I need to enable Harness Git Experience?
 
 #### Git connector
+
+:::note
+
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repo, you will not require a Git Connector and can skip this step!
+
+:::
 
 A Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
 

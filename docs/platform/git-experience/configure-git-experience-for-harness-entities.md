@@ -24,6 +24,10 @@ You'll learn how to:
 
 Make sure you have the following set up Before you begin this quickstart:
 
+:::info note
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you will not require a Git Connector and can skip this step!
+:::
+
 - Make sure you have a Git repo with at least one branch.
 - Make sure you have a Git connector with a Personal Access Token (PAT) for your Git account.​​
 - A Personal Access Token (PAT) for your Git account.
@@ -31,10 +35,10 @@ Make sure you have the following set up Before you begin this quickstart:
   - You add the PAT to Harness as a Text Secret and it is encrypted using a Harness Secret Manager.
   - Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
 
-    Make sure you configure SSO for your GitHub token when enabling Git provider access via SSO.
+   Make sure you configure SSO for your GitHub token when enabling Git provider access via SSO.
 
   - The PAT must have the following scope:
-    - GitHub:![](./static/configure-git-experience-for-harness-entities-35.png)
+      - GitHub:![](./static/configure-git-experience-for-harness-entities-35.png)
       - Bitbucket:![](./static/configure-git-experience-for-harness-entities-36.png)
   - To enable Git Experience for your resources, make sure that you have Create/Edit permissions for them.​​
 
@@ -47,6 +51,7 @@ Make sure your repo has at least one branch, such as main or master. For most Gi
 
 The following section lists the support for Git providers for Harness Git Sync:​
 
+- [Harness Code Repository](/docs/code-repository/)
 - GitHub
 - Bitbucket Cloud
 - Bitbucket Server
@@ -60,6 +65,10 @@ Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properti
 You can store your resources and configurations in Git by selecting the **Remote** option while creating the resources.
 
 For this, you must specify a Harness Git Connector, a repo, branch details, and a file path.
+
+:::info note
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you will not require a Git Connector.
+:::
 
 This topic explains how to create a remote pipeline and execute it using Harness Git Experience.
 
@@ -111,7 +120,9 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
+Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third party provider. If you choose Harness Code Repository, you will not need to configure a **Git Connector** and can skip to selecting your **Git Branch** below.
+
+Otherwise, in **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 
