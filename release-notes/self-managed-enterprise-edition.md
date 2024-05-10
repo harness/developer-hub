@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-08T10:00
+date: 2024-05-10T10:00
 sidebar_position: 16
 ---
 
@@ -82,6 +82,49 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+## May 10, 2024, patch version 0.14.8
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.14.8](https://github.com/harness/helm-charts/releases/tag/harness-0.14.8) |
+| Air Gap Bundle | [0.14.8](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.8) |
+| NG Manager | 1.24.9 |
+| CI Manager | 1.12.5 |
+| Pipeline Service | 1.61.5 |
+| Platform Service | 1.12.0 |
+| Access Control Service | 1.33.2 |
+| Delegate | 24.02.82203 |
+| Change Data Capture | 1.5.3 |
+| STO Core | 1.83.8 |
+| Test Intelligence Service | 1.8.1 |
+| NG UI | 1.7.6 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.14.8/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.8/sto_images.tgz" \
+  .
+```
+
+### Early access feature
+
+- The current behavior for artifact and manifest triggers is that, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
+
+   You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
+
 ## May 8, 2024, version 0.16.1
 
 This release includes the following Harness module and component versions.
@@ -102,7 +145,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.14.5 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -125,9 +168,9 @@ gsutil -m cp \
 
 ### Early access feature
 
-- Currently, in artifact and manifest triggers, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
+- The current behavior for artifact and manifest triggers is that, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
 
-   You can now change this behavior for artifact and manifest triggers to guarantee a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
+   You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
 
 ## May 8, 2024, patch version 0.15.3
 
@@ -172,9 +215,9 @@ gsutil -m cp \
 
 ### Early access feature
 
-- Currently, in artifact and manifest triggers, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
+- The current behavior for artifact and manifest triggers is that, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
 
-   You can now change this behavior for artifact and manifest triggers to guarantee a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
+   You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
 
 ## May 2, 2024, patch version 0.14.7
 
@@ -196,7 +239,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.7.6 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -278,7 +321,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.14.5 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
@@ -333,7 +376,7 @@ gsutil -m cp \
 - For more information, go to:
 
   - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables) 
+  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
 
 ### Fixed issues
 
@@ -515,7 +558,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.10.8 |
 | LE NG | 1.1.0 |
 
-**Alternative air gap bundle download method**
+#### Alternative air gap bundle download method
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
 
