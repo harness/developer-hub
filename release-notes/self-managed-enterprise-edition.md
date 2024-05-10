@@ -168,9 +168,9 @@ gsutil -m cp \
 
 ### Early access feature
 
-- Currently, in artifact and manifest triggers, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
+- The current behavior for artifact and manifest triggers is that, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
 
-   You can now change this behavior for artifact and manifest triggers to guarantee a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
+   You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
 
 ## May 8, 2024, patch version 0.15.3
 
@@ -215,9 +215,9 @@ gsutil -m cp \
 
 ### Early access feature
 
-- Currently, in artifact and manifest triggers, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
+- The current behavior for artifact and manifest triggers is that, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
 
-   You can now change this behavior for artifact and manifest triggers to guarantee a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
+   You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
 
 ## May 2, 2024, patch version 0.14.7
 
