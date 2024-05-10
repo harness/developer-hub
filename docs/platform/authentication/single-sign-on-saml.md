@@ -129,7 +129,7 @@ Sometimes users might have mixed case email addresses in Okta. In these situatio
 5. In **Audience URI (SP Entity ID)**, enter `app.harness.io`. The SAML application identifier is always `app.harness.io`.
 6. In **Default RelayState**, enter a valid URL. This is the page where users land after a successful sign-in using SAML into the SP.
 7. In **Name ID format**, enter the username format you are sending in the SAML Response. The default format is **Unspecified**.
-8. In **Application username**, enter the default value to use for the username with the application.
+8. In **Application username**, enter the default username.
 9.  In **Attribute Statements (optional)**, enter name in the **Name** field, select **Name Format** as **Basic**, and select the **Value** as **user.email**.
 
     When you create a new SAML integration or modify an existing one, you can define custom attribute statements. These statements are inserted into the SAML assertions shared with your app. For more information, go to the Okta documentation on [Defining Attribute Statements](https://help.okta.com/oie/en-us/Content/Topics/Apps/Apps_App_Integration_Wizard_SAML.htm#).
