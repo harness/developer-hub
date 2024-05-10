@@ -32,22 +32,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - You can now scan code repositories using the [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scan step. (STO-7531)
 
-- The Sonarqube scan step includes new UI options for configuring branch scans and pull-request scans in orchestration and extraction mode. (STO-5799) 
-
-  - You can go to **Scan Configuration** and select **Branch Scan** or **Extraction Scan**.
-  - For branch scans in orchestration mode, you can now auto-detect the branch. Go to **Analysis Type** and select **Auto Detect**. 
-  - The step UI has the following new options for pull-request scans: 
-    - **Pull Request Key** 
-    - **Project Key** 
-    - **Pull Request Branch** _(orchestration mode only)_ 
-    - **Pull Request Base** _(orchestration mode only)_ 
-    
-     Previously, you needed to specify these settings using additional CLI arguments such as `-Dsonar.projectKey`, `-Dsonar.pullrequest.branch` and `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`. 
  
 
 #### Fixed issues
 
 - Fixed an issue where the Built-in Grype step would time out when uploading scan results. (STO-7464, ZD-61941)
+
+- Fixed an issue where OPA failed with the error `Unexpected error occurred while evaluating Policies`. With this fix, STO limits the number of occurrences per issue (max 1000) that it sends to OPA. (STO-7562, ZD-63083)
 
 
 ## April 2024
