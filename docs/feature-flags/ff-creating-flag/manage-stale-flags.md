@@ -28,7 +28,7 @@ To help manage your feature flags, here are the definitions of the different fla
  -- These are flags that have received evaluation data. 
 
  - Changed Last 24 Hours:
- -- Floats that have received new targeted rules or default rule changes recently.
+ -- Flags that have received new targeted rules or default rule changes recently.
 
  - Temporary:
  -- Any flag that is not marked as permanent. 
