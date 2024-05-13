@@ -6,8 +6,8 @@ export const SscaData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Unified security view",
-        description: "A unified view on OSS dependencies, vulnerabilities, and deployment details for artifacts all  in one place.",
+        title: "Unified Security View",
+        description: "A unified view on OSS dependencies, vulnerabilities, and deployment details for artifacts all in one place.",
       },
       {
         tag: [],
@@ -26,7 +26,7 @@ export const SscaData: Horizon = {
     feature: [
       {
         tag: [],
-        title: "Posture Management",
+        title: "Code Repo Posture Management",
         description: "Config check to ensure that your source code repositories, artifacts and CI/CD Tools used in supply chain are appropriately monitored for best practices",
       },
       {
@@ -36,7 +36,7 @@ export const SscaData: Horizon = {
       },
       {
         tag: [],
-        title: "Report generation",
+        title: "Report Generation",
         description: "Generate and download reports based on compliance standards such as CIS, OWASP and SLSA",
       }
     ],
