@@ -90,15 +90,19 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 #### Type
 
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeCont />
+<StoSettingScanTypeRepo />
 
 
 #### Detect target and variant 
 
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
 import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
+<StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
 <StoSettingScanTypeAutodetectNote/>
 
