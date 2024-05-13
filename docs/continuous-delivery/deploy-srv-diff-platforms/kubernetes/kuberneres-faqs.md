@@ -1,3 +1,11 @@
+---
+title: Kubernetes General FAQs
+description: Frequently asked questions about Kubernetes deployments.
+sidebar_position: 800
+---
+
+This article addresses some frequently asked questions about Kubernetes deployments in Harness.
+
 #### I'm getting `Secret in version "v1" cannot be handled as a Secret: illegal base64 data at input byte`.  What does it mean?
 
 Kubernetes secrets need to be encoded with base64.  If the encoding is wrong you might get this error.  If you're creating a Kubernetes secrets and it's not base64 encoded, then you can use stringData instead. For more information, go to [Constraints on Secret names and data](https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data).
