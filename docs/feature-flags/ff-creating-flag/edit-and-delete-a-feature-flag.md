@@ -78,7 +78,7 @@ You might want to check if you have stale flags so that you can decide whether t
 * Their default rules or target rules haven't been added to, or updated.
 * They haven't been toggled on or off.
 
-The time in which a flag is identified as stakle is set by the user. If a flag gets stale, and then any of the above occurs, the flag is no longer considered stale.
+The time in which a flag is identified as stale is set by the user. If a flag gets stale, and then any of the above occurs, the flag is no longer considered stale.
 
 To view a list of potentially stale flags:
 
