@@ -132,11 +132,18 @@ import TabItem from '@theme/TabItem';
    git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
 
    # Add catalog-info.yaml location to catalog
-    curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/locations' \
+    curl --location 'https://idp.harness.io/<+account.identifier>/idp/api/catalog/locations' \
     --header 'x-api-key: Harness PAT' \
-    --header 'Harness-Account: Account_ID' \
+    --header 'Harness-Account: <+account.identifier>' \
     --data-raw '{"type":"url","target":"https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>/blob/main/catalog-info.yaml"}'
    ```
+
+:::info
+
+In the above script you need to add the **[Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens)** to make the API call to register your catalog, 
+
+:::
+
 
 6. Click **Apply Changes**.
 
