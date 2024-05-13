@@ -320,9 +320,9 @@ No. Harness CI Cloud uses Harness-managed VM images that already have Docker ins
 
 Currently, caching build images with Harness CI Cloud isn't supported.
 
-### When running the build in Harness cloud, does the built in steps run within a container or they will be running as a VM process?
+### When running a build in Harness cloud, does a build-in step run within a container or does it run as a VM process?
 
-By default, the built-in steps will be running inside a container within the build VM.
+By default, a built-in step runs inside a container within the build VM.
 
 ## Kubernetes clusters
 
@@ -1769,21 +1769,21 @@ This can occur if a Plugin step doesn't have the image's Fully Qualified Name (F
 
 Make sure to use the FQN for the image when pulling from an internal private container registry.
 
-### What tool does the harness github action plugin uses in the backgound to run the actions?
+### What tool does a Harness GitHub Action plugin use in the backgound to run an action?
 
-Github action drone plugin uses ```nektos/act``` in background to run github actions
+The Github Action Drone plugin uses ```nektos/act``` in the background to run GitHub Actions.
 
-###  Does the Harness Github action plugin support exporting the output variable?
+###  Does the Harness Github action plugin support exporting output variables?
 
-Currently Github action plugin doesn’t support exporting the output variable, however the built-in Github action step that can be added in Harness cloud build pipeline supports exporting the output variable
+Currently Github action plugin doesn’t support exporting the output variable, however the built-in Github action step that can be added in Harness cloud build pipeline supports exporting output variables.
 
-### Which container image is being by the Harness Github action plugin to run the github action?
+### Which container image is being by the Harness Github Action plugin to run the github action?
 
 The current version of nektos/act used in the  github action plugin uses the image ```node:12-buster-slim``` to run the action.
 
-### Do we need dind container running in the background step to be able to run Harness GHA plugin?
+### Do we need a Docker-in-Docker (dind) container running in the background step to be able to run Harness GHA plugin?
 
-Dind is not required to be run as a background step as the GHA plugin image is built with the dind base image making it readily available within the GHA plugin.
+Docker-in-Docker is not required to be run as a background step because the GHA plugin image is built with the dind base image making it readily available within the GHA plugin.
 
 ## Workspaces, shared volumes, and shared paths
 
