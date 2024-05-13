@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
-import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import Layout from "@theme/Layout";
-import HomepageFeatures from "@site/src/components/HomepageFeatures";
-import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
-import HomepageUniversity from "@site/src/components/HomepageUniversity";
 import Feedback from "@site/src/components/Feedback";
+import HomepageFeatures from "@site/src/components/HomepageFeatures";
+import HomepageUniversity from "@site/src/components/HomepageUniversity";
+import LearnAboutPlatform from "@site/src/components/LearnAboutPlatform";
+import Layout from "@theme/Layout";
 import MDXContent from "@theme/MDXContent";
+import clsx from "clsx";
 import Lottie from "lottie-react";
-import allModuleAnimation from "./assets/hdh_hero.json";
+import React from "react";
 import allModuleAnimationDark from "./assets/hdh_hero-dark.json";
+import allModuleAnimation from "./assets/hdh_hero.json";
 
 import styles from "./index.module.scss";
 
