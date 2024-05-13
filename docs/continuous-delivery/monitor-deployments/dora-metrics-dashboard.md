@@ -70,7 +70,7 @@ Here's a sample `revert_execution_id_var` variable :
       required: false
       value: <+input>
 ```
-In the pipeline YAML, you can add the following expression as a tag to call the variable:  
+In the pipeline YAML, you can add the following sample expression as a tag to call the variable:  
 
 ```
 tags:
