@@ -1,0 +1,400 @@
+---
+title: GitLab triggers to block merge requests with vulnerabilities
+description: Trigger STO scans to block GitLab merge requests with vulnerabilities.
+sidebar_label: GitLab triggers to block merge requests
+sidebar_position: 10
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+You can create GitLab event triggers to support a variety of STO workflows and use cases. This topic describes how to do the following:
+
+- Trigger an STO pipeline in response to a GitLab MR that targets a protected branch and/or updates specific files.
+- Include a keyword in a review comment to trigger a new scan if a previous pipeline execution failed.
+
+<!-- 
+- Set branch protection rules that block merge requests if the STO pipeline fails.
+
+-->
+
+
+The following steps outline the basic workflow:
+
+1. [Create a trigger](#create-the-trigger) for your Harness pipeline.
+
+   This should automatically register an outbound webhook in your Git repo.
+
+2. [Create a merge request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger.
+
+<!-- 
+3. [Add a branch protection rule](#add-a-branch-protection-rule) to ensure that the merge request cannot be merged if the Harness pipeline fails.
+-->
+
+
+## Before you begin
+
+These workflows require the following:
+
+- A [**Harness connector**](/docs/category/code-repo-connectors/) to your GitLab account.
+- A Harness pipeline with an code-repository scan step such as Semgrep.
+- The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan.
+
+
+## Create the trigger (Harness)
+
+The following sections describe two triggers that can be very useful in the context of STO scanning:
+
+- [Trigger on a changed file](#trigger-on-a-changed-file)
+- [Trigger on a review comment](#trigger-on-a-pr-review-comment)
+
+### Trigger on a changed file
+
+You can specify a trigger that says: If a merge request updates any of these files, run the pipeline and scan the repo.
+
+This type of trigger supports uses cases such as:
+
+- If the merge request updates any file that matches the trigger filter, run a SAST scan and block the PR if the scan results meet the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) threshold.
+
+- If the merge request updates a specific file of interest, such as a `pom.xml` workspace file, run an SCA scan and block the PR if the scan results meet the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) threshold.
+
+
+#### Trigger setup
+<!-- details>
+
+<summary>Trigger setup</summary -->
+
+1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
+
+2. Set up the trigger as follows. 
+
+
+#### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
+
+1. [**Connector**](/docs/category/code-repo-connectors/) to your GitLab account.
+
+2. **Repository name**.
+
+3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **merge request**.
+
+4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions) to trigger the pipeline 
+
+
+#### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
+
+ The following conditions are the most relevant to this workflow. You can add other conditions as needed. Triggers are complex filters in which all conditions are AND-ed together.
+
+   1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines), such as `main`.
+
+   2. [**Changed Files**](/docs/platform/triggers/triggers-reference#branch-and-changed-files-conditions) The files that trigger the STO pipeline if they have updates in the PR. You can specify multiple files using the [operators](/docs/platform/triggers/triggers-reference#operators) **In**, **Not In**, and **Regex**.
+
+   Here's a simple example: trigger a build if a PR seeks to update a specific `pom.xml` in the `main` branch.
+
+   <DocImage path={require('./static/trigger-to-block-prs/changed-file-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" />
+
+
+#### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input)
+
+   The pipeline input should be configured correctly, with **Build Type** set to **Git Pull Request**.
+
+
+#### Test the trigger
+
+After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
+
+<details>
+
+<summary>YAML trigger example</summary>
+
+```yaml
+
+trigger:
+  name: gitlab-trigger-on-mr-changed-file
+  identifier: gitlabtriggeronmrchangedfile
+  enabled: true
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  stagesToExecute: []
+  projectIdentifier: sto_tutorials
+  pipelineIdentifier: triggertestgitlab
+  source:
+    type: Webhook
+    spec:
+      type: Gitlab
+      spec:
+        type: MergeRequest
+        spec:
+          connectorRef: your_gitlab_connector_id
+          autoAbortPreviousExecutions: false
+          payloadConditions:
+            - key: changedFiles
+              operator: Equals
+              value: README.rst
+            - key: targetBranch
+              operator: Equals
+              value: main
+          headerConditions: []
+          repoName: dvpwa-gitlab-tutorial
+          actions:
+            - Open
+            - Update
+            - Reopen
+  inputYaml: |
+    pipeline:
+      identifier: triggertestgitlab
+      properties:
+        ci:
+          codebase:
+            build:
+              type: PR
+              spec:
+                number: <+trigger.prNumber>
+
+
+```
+
+</details>
+
+
+<!-- /details -->
+
+
+
+### Trigger on a merge-request comment
+
+You can specify a trigger that says: If a reviewer includes a specific keyword in a pull-request review comment, run the pipeline and scan the repo.
+
+This type of trigger is useful when a pipeline execution fails for reasons other than [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/). If the STO scan doesn't finish in the original execution, a reviewer can add a review comment with a keyword such as `RERUN_STO_PIPELINE`. 
+
+<!-- details>
+
+<summary>Trigger setup</summary -->
+
+#### Trigger setup
+
+1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
+
+2. Set up the trigger as follows. 
+
+#### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
+
+1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service.
+
+2. **Repository name**.
+
+3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Merge Request**.
+
+4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions), such as **Open**, **Reopen**, and **Edit**, to trigger the scan. You can also select **All actions** to allow reviewers to trigger a scan at any time. 
+
+#### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
+
+ The following conditions are the most relevant to this workflow. You can add other conditions as needed. Triggers are complex filters in which all conditions are AND-ed together. 
+
+   1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
+
+   2. Enter the following [**JEXL condition**](/docs/platform/triggers/triggers-reference#jexl-conditions) with the keyword to trigger a new scan: 
+
+      `<+trigger.payload.object_attributes.description>.contains("RERUN_STO_SCAN")`
+
+      <DocImage path={require('./static/trigger-to-block-prs/review-comment-condition-example-simple.GITLAB.png')} width="60%" height="60%" title="JEXL condition to trigger GitLab scan based a comment string" /> 
+
+
+#### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input)
+
+The pipeline input should be configured correctly, with **Build Type** set to **Git Pull Request**.
+
+#### Test the trigger
+
+After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
+
+<details>
+
+<summary>YAML trigger example</summary>
+
+```yaml
+
+trigger:
+  name: trigger-on-mr-comment
+  identifier: triggeronmrcomment
+  enabled: true
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  stagesToExecute: []
+  projectIdentifier: sto_tutorials
+  pipelineIdentifier: triggertestgitlab
+  source:
+    type: Webhook
+    spec:
+      type: Gitlab
+      spec:
+        type: MergeRequest
+        spec:
+          connectorRef: dbothwell1gitlab
+          autoAbortPreviousExecutions: false
+          payloadConditions:
+            - key: targetBranch
+              operator: Equals
+              value: main
+          headerConditions: []
+          jexlCondition: "<+trigger.payload.object_attributes.description>.contains(\"RERUN_STO_SCAN\") "
+          repoName: dvpwa-gitlab-tutorial
+          actions:
+            - Open
+            - Reopen
+            - Update
+  inputYaml: |
+    pipeline:
+      identifier: triggertestgitlab
+      properties:
+        ci:
+          codebase:
+            build:
+              type: branch
+              spec:
+                branch: <+trigger.branch>
+
+
+
+```
+
+</details>
+
+
+<!-- /details -->
+
+
+## Test the outbound webhook and trigger
+
+### Verify the webhook (GitLab)
+
+Once you add a trigger to your pipeline, your Git service provider should create a webhook for the trigger automatically. This is true for all non-custom webhooks and all Git providers supported by Harness.
+
+1. Go to your GitLab account, and then select **Settings** > **Webhooks**.
+
+   <DocImage path={require('./static/trigger-to-block-prs/gitlab-new-trigger.png')} width="50%" height="50%" title="GitLab webhook for new trigger" />
+
+2. If you don't see a webhook, you can add one manually. For more information, go to [Register the webhook in the Git provider](/docs/platform/triggers/triggering-pipelines/#register-the-webhook-in-the-git-provider).
+
+
+### Test the webhook and trigger
+
+1. Create a merge request in your GitLab repo to verify that the trigger works as intended.
+
+    - To verify the [changed-file trigger](#trigger-on-a-changed-file) described above:
+
+        - Go to the root branch you specified in the trigger.
+        - Update the file you specified in the trigger. Then create a merge request in a new branch.
+
+    - To verify the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, create a merge request and then add a review comment with the keyword you specified.
+
+        - Go to the root branch you specified in the trigger.
+        - Create a merge request in a new branch.
+        - Add a review comment with the keyword you specified in the trigger.
+
+3. Go to the GitLab pipeline for your merge request. The STO pipeline execution appears as an external check. 
+
+    <DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-external-check-running.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+
+3. Go to the **Pipeline Executions** page of your Harness pipeline and verify that the trigger starts a new execution.
+
+    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-02-new-pipeline-execution.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+
+4. If the Harness pipeline fails, the GitLab external check fails and blocks the merge request.
+
+    <figure>
+    <DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-external-check-failed.png')} width="60%" height="60%" title="Add shared path for scan results" /> 
+
+    <figcaption>Figure 1: Harness external check in merge-request pipeline failed.</figcaption>
+    </figure>
+
+    <figure>
+    <DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-blocked.png')} width="60%" height="60%" title="Add shared path for scan results" /> 
+
+    <figcaption>Figure 2: GitLab merge request blocked.</figcaption>
+    </figure>
+
+If the trigger doesn't work as intended, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
+
+<!-- 
+
+## Send a Slack notification if the scan step succeeds
+
+The final step is to add a Run step that [sends a Slack notification](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/slack-notifications) to one or more users with the necessary permission to [merge into the protected branch](https://docs.gitlab.com/ee/user/project/protected_branches.html).
+
+In the following example, the Run step sends a notification only if the pipline found no 
+
+<details>
+
+<summary>Run step example</summary>
+
+```yaml
+              - step:
+                  type: Run
+                  name: send_slack
+                  identifier: send_slack
+                  spec:
+                    shell: Sh
+                    command: |
+                      # Assign variables
+                      pipeline=https://qa.harness.io/ng/account/BdsgiWzwT7CQFeJl9XkQ3A/module/sto/orgs/default/projects/dbothwellstosandbox/pipelines/bandit_slack_notifications_test/
+                      gitlab_merge_request=<+trigger.payload.object_attributes.url>
+
+                      slack_msg="=======================================================  \n"
+                      slack_msg="$slack_msg STO scan succeeded. \n"
+                      slack_msg="$slack_msg OK to merge."
+                      slack_msg="$slack_msg STO pipeline: $pipeline"
+                      slack_msg="$slack_msg GitLab merge request: $gitlab_merge_request"
+                      slack_msg="$slack_msg =======================================================  \n"
+
+                      echo "SLACK MESSAGE: \N $slack_msg"
+
+                      curl -X POST --data-urlencode "payload={
+                        \"channel\": \"sto-scans\",
+                        \"username\": \"doug\",
+                        \"type\": \"mrkdwn\",
+                        \"text\": \" $slack_msg \",
+                        \"icon_emoji\": \":harnesshd:\"
+                      }" <+secrets.getValue("sto-slack-notifications-webhook-url")>
+
+```
+</details>
+
+### Test the notification
+
+Now that you've set up the rule, trigger another pipeline execution to verify that the rule stops the merge request.
+
+:::note
+
+To verify the branch protection rule, you must ensure that your STO pipeline fails. To configure your pipeline to fail temporarily, you can do one of the following:
+
+- Set [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) to **Low** in the scan step of your pipeline. Then scan a repo with known vulnerabilities.
+- Add a temporary Run step to your pipeline with the command `exit(1)`.
+
+:::
+
+1. Trigger another pipeline execution.
+
+   - For the [changed-file trigger](#trigger-on-a-changed-file) described above, make and push a change. Then create a merge request.
+
+   - For the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, add a review comment with the keyword you specified.
+
+3. Now, merging is blocked if the Harness pipeline fails.
+
+   ![](./static/trigger-to-block-prs/pr-check-failed.png)
+
+-->
+
+## For more information
+
+- The Harness platform docs include [extensive information about triggers](/docs/category/triggers). The following topics are highly relevant to STO use cases:
+
+  - [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines/)
+  - [Webhook triggers reference](/docs/platform/triggers/triggers-reference/)
+
+- For detailed information about outbound webhooks and branch protection rules, go to the docs for your source code management (SCM) provider. This topic describes a few simple GitLab workflows, but these topics are outside the scope of Harness documentation.
+
+
+
+

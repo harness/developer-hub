@@ -1,27 +1,29 @@
 ---
-title: Trigger STO scans to block pull requests with vulnerabilities
-description: How to trigger STO scans to block PRs with vulnerabilities.
-sidebar_label: Trigger STO scans to block pull requests
+title: GitHub triggers to block pull requests with vulnerabilities
+description: Trigger STO scans to block GitHub PRs with vulnerabilities.
+sidebar_label: GitHub triggers to block pull requests
 sidebar_position: 5
+redirect_from:
+  - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-You can create Git event triggers to support a variety of STO workflows and use cases. This topic describes how to do the following: 
+You can create GitHub event triggers to support a variety of STO workflows and use cases. This topic describes how to do the following:
 
-- Trigger an STO pipeline that detects vulnerabilities and blocks merging when a pull request targets a protected branch and/or updates specific files in the repo. 
+- Trigger an STO pipeline that detects vulnerabilities and blocks merging when a pull request targets a protected branch and/or updates specific files in the repo.
 - Include a keyword in a review comment to trigger a new scan if a previous pipeline execution failed.
-- Set branch protection rules that block pull requests if the STO pipeline fails. 
- 
+- Set branch protection rules that block pull requests if the STO pipeline fails.
+
 
 The following steps outline the basic workflow:
 
-1. [Create a trigger](#create-the-trigger) for your Harness pipeline. 
+1. [Create a trigger](#create-the-trigger) for your Harness pipeline.
 
-   This should automatically register an outbound webhook in your Git repo. 
+   This should automatically register an outbound webhook in your Git repo.
 
-2. [Create a pull request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger. 
+2. [Create a pull request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger.
 
 3. [Add a branch protection rule](#add-a-branch-protection-rule) to ensure that the pull request cannot be merged if the Harness pipeline fails.
 
@@ -30,8 +32,8 @@ The following steps outline the basic workflow:
 
 These workflows require the following:
 
-- A [**connector**](/docs/category/code-repo-connectors/) to your Git service.
-- A Harness pipeline with an STO repository scan step, for example, Bandit or Semgrep.
+- A [**Harness connector**](/docs/category/code-repo-connectors/) to your GitHub account.
+- A Harness pipeline with an code-repository scan step such as Semgrep.
 - The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan.
 
 
@@ -42,9 +44,9 @@ The following sections describe two triggers that can be very useful in the cont
 - [Trigger on a changed file](#trigger-on-a-changed-file)
 - [Trigger on a review comment](#trigger-on-a-pr-review-comment)
 
-### Trigger on a changed file 
+### Trigger on a changed file
 
-You can specify a trigger that says: If a pull request updates any of these files, run the pipeline and scan the repo. 
+You can specify a trigger that says: If a pull request updates any of these files, run the pipeline and scan the repo.
 
 This type of trigger supports uses cases such as:
 
@@ -65,7 +67,7 @@ This type of trigger supports uses cases such as:
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service.
+1. [**Connector**](/docs/category/code-repo-connectors/) to your GitHub account.
 
 2. **Repository name**.
 
@@ -76,29 +78,27 @@ This type of trigger supports uses cases such as:
 
 #### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
 
- The following conditions are the most relevant to this workflow. You can add other conditions as needed. Triggers are complex filters in which all conditions are AND-ed together. 
+ The following conditions are the most relevant to this workflow. You can add other conditions as needed. Triggers are complex filters in which all conditions are AND-ed together.
 
-   1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines), such as `main`. 
+   1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines), such as `main`.
 
-   2. [**Changed Files**](/docs/platform/triggers/triggers-reference#branch-and-changed-files-conditions) The files that trigger the STO pipeline if they have updates in the PR. You can specify multiple files using the [operators](/docs/platform/triggers/triggers-reference#operators) **In**, **Not In**, and **Regex**. 
+   2. [**Changed Files**](/docs/platform/triggers/triggers-reference#branch-and-changed-files-conditions) The files that trigger the STO pipeline if they have updates in the PR. You can specify multiple files using the [operators](/docs/platform/triggers/triggers-reference#operators) **In**, **Not In**, and **Regex**.
 
-   Here's a simple example: trigger a build if a PR seeks to update a specific `pom.xml` in the `main` branch. 
+   Here's a simple example: trigger a build if a PR seeks to update a specific `pom.xml` in the `main` branch.
 
-   <DocImage path={require('./static/trigger-to-block-prs/changed-file-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+   <DocImage path={require('./static/trigger-to-block-prs/changed-file-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" />
 
 
-#### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
-   
-   The pipeline input should be preconfigured correctly, with **Build Type** set to **Git Pull Request**.
+#### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input)
+
+   The pipeline input should be configured correctly, with **Build Type** set to **Git Pull Request**.
 
 
 #### Test the trigger
 
 After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
-  
+
 <details>
-
-
 
 <summary>YAML trigger example</summary>
 
@@ -196,9 +196,9 @@ This type of trigger is useful when a pipeline execution fails for reasons other
       <DocImage path={require('./static/trigger-to-block-prs/review-comment-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
 
-#### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
-   
-The pipeline input should be preconfigured correctly, with **Build Type** should be set to **Git Pull Request**.
+#### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input)
+
+The pipeline input should be configured correctly, with **Build Type** set to **Git Pull Request**.
 
 
 #### Test the trigger
@@ -259,31 +259,31 @@ trigger:
 <!-- /details -->
 
 
-## Test the outbound webhook and trigger 
+## Test the outbound webhook and trigger
 
-### Verify the webhook (Git)
+### Verify the webhook (GitHub)
 
-Once you add a trigger to your pipeline, your Git service provider should create a webhook for the trigger automatically. This is true for all non-custom webhooks and all Git providers supported by Harness. 
+Once you add a trigger to your pipeline, your Git service provider should create a webhook for the trigger automatically. This is true for all non-custom webhooks and all Git providers supported by Harness.
 
-1. Go to your repo in your SCM provider, navigate to the repo's webhook settings, and verify that the webhook got registered. In GitHub, for example, go to **Settings** > **Webhooks**. 
+1. Go to your GitHub account, and then select **Settings** > **Webhooks**.
 
-   <DocImage path={require('./static/trigger-to-block-prs/github-new-trigger.png')} width="50%" height="50%" title="GitHub webhook for new trigger" /> 
+   <DocImage path={require('./static/trigger-to-block-prs/gitlab-new-trigger.png')} width="50%" height="50%" title="GitHub webhook for new trigger" />
 
 2. If you don't see a webhook, you can add one manually.
 
 For more information, go to [Register the webhook in the Git provider](/docs/platform/triggers/triggering-pipelines/#register-the-webhook-in-the-git-provider).
 
 
-### Test the webhook and trigger 
+### Test the webhook and trigger
 
-To test your trigger, update your Git repo to verify that the trigger works as intended. 
+To test your trigger, update your GitHub repo to verify that the trigger works as intended.
 
 - To verify the [changed-file trigger](#trigger-on-a-changed-file) described above:
 
   - Go to the root branch you specified in the trigger.
   - Update the file you specified in the trigger. Then create a pull request in a new branch.
 
-- To verify the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, create a pull request and then add a review comment with the keyword you specified. 
+- To verify the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, create a pull request and then add a review comment with the keyword you specified.
 
   - Go to the root branch you specified in the trigger.
   - Create a pull request in a new branch.
@@ -291,7 +291,7 @@ To test your trigger, update your Git repo to verify that the trigger works as i
 
 You should now see the following:
 
-1. In the Git repo, the request and response were successful.
+1. In the GitHub repo, the request and response were successful.
 
    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-01-req-response-successful.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
@@ -299,7 +299,7 @@ You should now see the following:
 
     <DocImage path={require('./static/trigger-to-block-prs/test-trigger-02-new-pipeline-execution.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
-3. In the Git pull request, the pipeline execution appears as an automated check. 
+3. In the GitHub pull request, the pipeline execution appears as an automated check. 
 
     <DocImage path={require('./static/trigger-to-block-prs/test-trigger-03-check-running-in-pr.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
@@ -310,13 +310,13 @@ If the trigger doesn't work as intended, go to [Troubleshoot Git event triggers]
 
 The final step is to ensure that a PR cannot be merged if the STO pipeline fails. To do this, you create a protection rule for your root branch.
 
-The following steps describe a simple setup in GitHub. For more information, go to [Managing a branch protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) in the GitHub documentation. 
+The following steps describe a simple setup in GitHub. For more information, go to [Managing a branch protection rule](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule) in the GitHub documentation.
 
-If you're using a different SCM, go to the SCM documentation and search for `branch protection`. 
+If you're using a different SCM, go to the SCM documentation and search for `branch protection`.
 
 ### Add the protection rule
 
-1. Go to your Git repo and select **Settings** > **Branches** > **Add Rule**.
+1. Go to your GitHub repo and select **Settings** > **Branches** > **Add Rule**.
 
 2. In **Branch name pattern**, add a string or regular expression for the branch or branches you want to protect. This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
 
@@ -324,9 +324,9 @@ If you're using a different SCM, go to the SCM documentation and search for `bra
 
 4. Select **Require status checks to pass before merging**.
 
-5. In the search field below, enter the first characters of the check name and then select the check. 
+5. In the search field below, enter the first characters of the check name and then select the check.
 
-   <DocImage path={require('./static/trigger-to-block-prs/add-check-to-branch-protection-rule.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+   <DocImage path={require('./static/trigger-to-block-prs/add-check-to-branch-protection-rule.png')} width="50%" height="50%" title="Add shared path for scan results" />
 
 6. Configure any other settings as appropriate.
 
@@ -340,18 +340,18 @@ Now that you've set up the rule, trigger another pipeline execution to verify th
 
 To verify the branch protection rule, you must ensure that your STO pipeline fails. To configure your pipeline to fail temporarily, you can do one of the following:
 
-- Set [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) to **Low** in the scan step of your pipeline. Then scan a repo with known vulnerabilities. 
+- Set [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) to **Low** in the scan step of your pipeline. Then scan a repo with known vulnerabilities.
 - Add a temporary Run step to your pipeline with the command `exit(1)`.
 
-::: 
+:::
 
 1. Trigger another pipeline execution.
 
    - For the [changed-file trigger](#trigger-on-a-changed-file) described above, make and push a change. Then create a pull request.
 
-   - For the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, add a review comment with the keyword you specified. 
+   - For the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, add a review comment with the keyword you specified.
 
-3. Now, merging is blocked if the Harness pipeline fails. 
+3. Now, merging is blocked if the Harness pipeline fails.
 
    ![](./static/trigger-to-block-prs/pr-check-failed.png)
 
@@ -363,7 +363,7 @@ To verify the branch protection rule, you must ensure that your STO pipeline fai
   - [Trigger pipelines using Git events](/docs/platform/triggers/triggering-pipelines/)
   - [Webhook triggers reference](/docs/platform/triggers/triggers-reference/)
 
-- For detailed information about outbound webhooks and branch protection rules, go to the docs for your source code management (SCM) provider. This topic describes a few simple GitHub workflows, but these topics are outside the scope of Harness documentation. 
+- For detailed information about outbound webhooks and branch protection rules, go to the docs for your source code management (SCM) provider. This topic describes a few simple GitHub workflows, but these topics are outside the scope of Harness documentation.
 
 
 
