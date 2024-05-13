@@ -119,6 +119,10 @@ gsutil -m cp \
   .
 ```
 
+### New features and enhancements
+
+- Upgraded `migrator` to 1.59.0 to leverage new functionality and bug fixes. (CDS-96365)
+
 ### Early access feature
 
 - The current behavior for artifact and manifest triggers is that, when a build is removed from the artifact server, it is automatically deleted from the cache of the trigger. As a result, if this build is uploaded again, the trigger will use it once more to initiate the underlying pipeline.
@@ -365,7 +369,7 @@ gsutil -m cp \
 
 - 'Secret Identifier' will now allow `-` (hyphen) when provided as user input. For more information, go to [Entity identifier reference](https://developer.harness.io/docs/platform/references/entity-identifier-reference/) (PL-48009)
 
-- For customers needing to bypass mutual TLS (mTLS) authentication for Current Generation (CG) delegates, even with strict mode enabled on the account, we have introduced the feature flag PL_DISABLE_MTLS_CHECK_ON_CG_DELEGATES. This update allows specific disabling of mTLS checks for CG delegates, providing greater flexibility in security settings. (PL-47825, ZD-58762, ZD-60565)
+- For customers needing to bypass mutual TLS (mTLS) authentication for Current Generation (CG) delegates, even with strict mode enabled on the account, we have introduced the feature flag `PL_DISABLE_MTLS_CHECK_ON_CG_DELEGATES`. This update allows specific disabling of mTLS checks for CG delegates, providing greater flexibility in security settings. (PL-47825, ZD-58762, ZD-60565)
 
 #### Security Testing Orchestration
 
