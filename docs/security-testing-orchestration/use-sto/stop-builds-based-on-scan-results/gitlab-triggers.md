@@ -293,75 +293,27 @@ Once you add a trigger to your pipeline, your Git service provider should create
         - Create a merge request in a new branch.
         - Add a review comment with the keyword you specified in the trigger.
 
-3. Go to the GitLab pipeline for your merge request. The STO pipeline execution appears as an external check. 
+3. Go to the GitLab pipeline for your merge request. The STO pipeline execution appears as an external check.
+
+    When you create a merge request, GitLab creates an external status check and sends a payload to the Harness webhook. Then it waits for a response that indicates the pipeline status (`pending`, `passed`, or `failed`).
+
+    For more information, go to [External status checks](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html) in the GitLab documentation.
 
     <DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-external-check-running.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
 
 3. Go to the **Pipeline Executions** page of your Harness pipeline and verify that the trigger starts a new execution.
 
-    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-02-new-pipeline-execution.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-02-new-pipeline-execution.png')} width="50%" height="50%" title="Add shared path for scan results" />
 
-4. If the Harness pipeline fails, the GitLab external check fails and blocks the merge request.
+4. Go to the **Merge Request** page in GitLab and wait for the merge-request checks to finish.
 
-    <figure>
-    <DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-external-check-failed.png')} width="60%" height="60%" title="Add shared path for scan results" /> 
+   When the Harness pipeline finishes, it sends a response to GitLab that reports the execution status. If the response is `failed`, the external check fails and blocks the merge request.
 
-    <figcaption>Figure 1: Harness external check in merge-request pipeline failed.</figcaption>
-    </figure>
-
-    <figure>
-    <DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-blocked.png')} width="60%" height="60%" title="Add shared path for scan results" /> 
-
-    <figcaption>Figure 2: GitLab merge request blocked.</figcaption>
-    </figure>
 
 If the trigger doesn't work as intended, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
 
-<!-- 
 
-## Send a Slack notification if the scan step succeeds
-
-The final step is to add a Run step that [sends a Slack notification](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/slack-notifications) to one or more users with the necessary permission to [merge into the protected branch](https://docs.gitlab.com/ee/user/project/protected_branches.html).
-
-In the following example, the Run step sends a notification only if the pipline found no 
-
-<details>
-
-<summary>Run step example</summary>
-
-```yaml
-              - step:
-                  type: Run
-                  name: send_slack
-                  identifier: send_slack
-                  spec:
-                    shell: Sh
-                    command: |
-                      # Assign variables
-                      pipeline=https://qa.harness.io/ng/account/BdsgiWzwT7CQFeJl9XkQ3A/module/sto/orgs/default/projects/dbothwellstosandbox/pipelines/bandit_slack_notifications_test/
-                      gitlab_merge_request=<+trigger.payload.object_attributes.url>
-
-                      slack_msg="=======================================================  \n"
-                      slack_msg="$slack_msg STO scan succeeded. \n"
-                      slack_msg="$slack_msg OK to merge."
-                      slack_msg="$slack_msg STO pipeline: $pipeline"
-                      slack_msg="$slack_msg GitLab merge request: $gitlab_merge_request"
-                      slack_msg="$slack_msg =======================================================  \n"
-
-                      echo "SLACK MESSAGE: \N $slack_msg"
-
-                      curl -X POST --data-urlencode "payload={
-                        \"channel\": \"sto-scans\",
-                        \"username\": \"doug\",
-                        \"type\": \"mrkdwn\",
-                        \"text\": \" $slack_msg \",
-                        \"icon_emoji\": \":harnesshd:\"
-                      }" <+secrets.getValue("sto-slack-notifications-webhook-url")>
-
-```
-</details>
-
-### Test the notification
+### Test the external status check
 
 Now that you've set up the rule, trigger another pipeline execution to verify that the rule stops the merge request.
 
@@ -380,11 +332,21 @@ To verify the branch protection rule, you must ensure that your STO pipeline fai
 
    - For the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, add a review comment with the keyword you specified.
 
-3. Now, merging is blocked if the Harness pipeline fails.
+Now, merging is blocked if the Harness pipeline fails.
 
-   ![](./static/trigger-to-block-prs/pr-check-failed.png)
+<figure>
+<DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-external-check-failed.png')} width="60%" height="60%" title="Add shared path for scan results" /> 
 
--->
+<figcaption>Figure 1: Harness external check in merge-request pipeline failed.</figcaption>
+</figure>
+
+<figure>
+<DocImage path={require('./static/trigger-to-block-prs/gitlab-mr-blocked.png')} width="60%" height="60%" title="Add shared path for scan results" /> 
+
+<figcaption>Figure 2: GitLab merge request blocked.</figcaption>
+</figure>
+
+
 
 ## For more information
 
