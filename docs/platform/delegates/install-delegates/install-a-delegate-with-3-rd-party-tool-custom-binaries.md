@@ -225,6 +225,31 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
         ./get_helm.sh
 ```
 
+### Install credentials plugin for GKE and AKS infrastructure types
+
+Add the following install scripts to the `INIT_SCRIPT` to install the credentials plugin for GKE and AKS infrastructure types if you're using `kubectl` version 1.26.x or later.
+
+
+:::note
+If you're using a custom delegate with `kubelogin` and certificate type of authentication, then you must install Azure CLI. Alternatively, you can install the `harness-credentials-plugin` to take care of this flow without Azure CLI.
+:::
+
+```yaml
+  - name: INIT_SCRIPT
+    value: |
+
+        ## for AKS
+        mkdir -m 777 -p client-tools/kubelogin/v0.1.1 \
+        && curl -s -L -o client-tools/kubelogin/v0.1.1/kubelogin https://app.harness.io/public/shared/tools/kubelogin/release/v0.1.1/bin/linux/$TARGETARCH/kubelogin
+        export PATH=/opt/harness-delegate/client-tools/kubelogin/v0.1.1/:$PATH
+
+        ## for GKE or AKS with certificate auth type
+        mkdir -m 777 -p client-tools/harness-credentials-plugin/v0.1.0 \
+        && curl -s -L -o client-tools/harness-credentials-plugin/v0.1.0/harness-credentials-plugin 
+        export PATH=/opt/harness-delegate/client-tools/harness-credentials-plugin/v0.1.0/:$PATH
+```
+
+
 ## Apply the changes
 
 You can modify the delegate YAML before or after you install the delegate.
