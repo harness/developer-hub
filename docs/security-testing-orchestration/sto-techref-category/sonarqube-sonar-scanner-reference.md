@@ -343,29 +343,51 @@ You can set up your pipeline to generate test coverage reports and then get them
 
 1. Add a **Run** step to your pipeline before the Sonarqube step.
 
-2. Set the **Image** field to a base image that's compatible with the code repo you're scanning.
+2. Set the **Image** field to a base image that's compatible with the repo you're scanning.
 
-3. Add commands to install `coverage` and any other dependencies required by your code repo.
+3. Add commands to install the binary and any other dependencies required to generate the coverage report. 
+
+3. Add the commands necessary to generate the report.
+
+4. Add a [failure strategy](docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/) to the Run step and configure it to ignore all failures.
+
+   This step is optional, but recommended if you want the pipeline to proceed even if it can't generate a coverage report. 
+
+4. Update your SonarQube step with the path to the coverage report.
+
+   - This step is required only if you saved your report to a non-default folder and/or filename.
+
+   - To specify the report path, add the CLI argument for the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. 
+
+
+
+:::note important notes
+
+- You must ensure that you generate reports that `sonar-cli` can find and upload, and that your SonarQube instance can ingest.
+
+- For more information, go to [Test Coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/overview/) in the SonarQube documentation.
+
+- Carefully review the specific language reference to make sure that you install the required binaries and dependencies, and that you publish your reports in the correct format.
+
+:::
+
+#### Example: generate a Python coverage report
+
+Here's an example workflow for generating a Python 3.9 coverage report:
+
+1. Add the **Run** step.
+
+2. Set the **Image** to `python:3.9-alpine`.
+
+3. Add commands to install `coverage` and any other dependencies required to generate the report.
 
 4. Add a `coverage` command to generate a coverage report. The specific usage depends on the language and platform.
 
 5. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
 
-6. Update your SonarQube step with the path to the coverage report.
+6. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`
 
-   - This step is required only if you saved your report to a non-default folder and/or filename.
-
-   - To specify the report path, add the CLI argument for the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example, you could specify a Python report page like this: `-Dsonar.python.coverage.reportPaths`
-
-For more information, go to [Test Coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/overview/) in the SonarQube documentation.
-
-:::note
-
-You must ensure that you generate reports that `sonar-cli` can find and upload, and that your SonarQube instance can ingest. Carefully review the specific language reference to make sure that you publish your reports in the correct format.
-
-:::
-
-Here’s an example Run step that generates a coverage report for a Python 3.9 code repo.
+Here's what the Run step looks like in YAML:
 
 ```yaml
 
@@ -387,7 +409,7 @@ Here’s an example Run step that generates a coverage report for a Python 3.9 c
         # Run coverage commands to generate a report
         # and then convert the report to XML.
         # This method ensures that SonarQube can ingest the resulting report.
-        coverage run -m pytest --ds=epizza.settings **/tests || true
+        coverage run -m pytest **/tests 
         coverage xml
 
 ```
