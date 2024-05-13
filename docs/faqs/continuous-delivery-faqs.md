@@ -740,7 +740,7 @@ No. We support only one stack in the SAM Deploy step.
 
 It's not supported. We support deploying to one stack only in the SAM Deploy step. 
 
-For this scenario, we suggest that you have one pipeline with two Deploy stages with two different services and stacingks. Altenratively, you can have one pipeline with one Deploy stage and specify two different services on the Service page, and specify runtime input for the stack in the SAM Deploy step. 
+For this scenario, we suggest that you have one pipeline with two Deploy stages with two different services and stacks. Altenratively, you can have one pipeline with one Deploy stage and specify two different services in the **Service** tab, and in the **SAM Deploy** step > **Stack Name** field, select runtime input. 
 
 ![](./static/aws-sam-faq.png)
 
