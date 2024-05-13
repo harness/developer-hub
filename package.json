@@ -33,7 +33,6 @@
     "@mdx-js/react": "^3.0.0",
     "@netlify/functions": "^2.6.3",
     "clsx": "^2.0.0",
-    "cookie": "^0.6.0",
     "docusaurus-plugin-sass": "^0.2.5",
     "fs-extra": "^11.2.0",
     "lottie-react": "^2.4.0",
