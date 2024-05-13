@@ -7536,3 +7536,38 @@ Currently, we cannot do policy evaluations via APIs.
 #### How can different versions be deployed to separate clusters or stages within a single pipeline?
 You can enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.
 
+#### What are the minimum RBAC permissions needed for GitOps?
+Minimum RBAC requirements depend on the applications and the destination cluster setup. So it is not straightforward to determine minimum requirements.
+
+#### Can Harness support ServiceNow Utah version ?
+Yes, ServiceNow Utah version is certified.
+
+#### Is it possible to deploy multiple TAS applications using a single manifest?
+As of now, we don't support or certify deploying multiple applications using a single manifest.
+
+#### In a Harness GitOps deployment, what is the most likely cause of a delay between a merged pull request and the corresponding GitOps application sync trigger?
+In a GitOps deployment using ArgoCD, a delay can occur between a code change and the corresponding application update. This is because the ArgoCD application controller periodically checks the Git repository for changes.
+
+To improve responsiveness, you can adjust the ArgoCD controller's resynchronization interval to a lower value. This will make it check for updates more frequently. However, a lower interval can increase the load on the Git repository.
+
+Here are some resources for configuring the resynchronization interval in ArgoCD:
+
+https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-semantics
+https://argo-cd.readthedocs.io/en/stable/faq/#how-often-does-argo-cd-check-for-changes-to-my-git-or-helm-repository
+
+#### Does Harness support the 'serverless-fintch' plugin in native serverless deployment?
+No, Harness does not currently support the 'serverless-finch' plugin natively.
+
+#### Can we force developers to use pre-existing input sets in Harness pipelines to prevent manual configuration errors?
+Harness doesn't enforce input sets, but restricting pipeline execution to system accounts with pre-configured triggers using API calls or Git commits can achieve this.
+
+####  How to install poetry on the Harness serverless image (`harnessdev/serverless-package:3.30.1-1.1.0) to avoid "command not found" errors?
+While Harness offers a new image (harnessdev/serverless-preparerollback:3.30.1-2.0.0) that installs package.json dependencies, you can build a custom image with poetry using a Dockerfile like this (replace in pipeline): 
+
+FROM harnessdev/serverless-package:3.30.1-1.1.0
+RUN apk add --no-cache py3-pip && pip install poetry
+
+Note: This approach locks you into the pre-installed Python version. Consider using a custom image for specific version control.
+
+#### In harness platform, is it possible to configure a schedule trigger to run at 11:45 AM on the third Sunday of every month using a cron expression with a hashtag (#) for the weekday (e.g., "45 11 ? * Sun#3 *")?
+No, the Harness platform does not currently support cron expressions with this kind of setup.
