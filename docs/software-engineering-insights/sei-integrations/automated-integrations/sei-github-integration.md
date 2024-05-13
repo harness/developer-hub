@@ -4,7 +4,7 @@ description: Integrate SEI with GitHub Cloud and Enterprise
 sidebar_position: 90
 sidebar_label: GitHub
 redirect_from:
-  - /docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration
 ---
 
 GitHub provides hosting for software development and version control using Git.

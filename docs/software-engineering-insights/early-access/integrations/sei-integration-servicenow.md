@@ -12,6 +12,8 @@ This integration allows you to track, manage, and analyze incidents, and change 
 Please note that the integration currently allows authentication only through the **Username** and **Password** of your **ServiceNow** account.
 :::
 
+<DocVideo src="https://www.youtube.com/embed/Qcb3u558_7U?si=xlI0rIfuYrTWMTGI" />
+
 ## Add the integration
 
 ### Step 1: Select the integration
