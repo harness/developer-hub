@@ -82,14 +82,14 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## May 13, 2024, patch version 0.14.9
+## May 13, 2024, patch version 0.14.10
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.14.9](https://github.com/harness/helm-charts/releases/tag/harness-0.14.9) |
-| Air Gap Bundle | [0.14.9](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.9) |
+| Helm Chart | [0.14.10](https://github.com/harness/helm-charts/releases/tag/harness-0.14.10) |
+| Air Gap Bundle | [0.14.10](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.10) |
 | NG Manager | 1.24.9 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
@@ -108,14 +108,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.14.9/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.9/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/sto_images.tgz" \
   .
 ```
 
