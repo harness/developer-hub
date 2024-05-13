@@ -17,6 +17,15 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
+### ServiceNow integration
+
+* **Release date:** May 2024
+* **Issue number:** SEI-6838
+* **Feature flag:** `SEI_SERVICE_NOW`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Integrate SEI with the ServiceNow Platform. This integration is still under development.
+
 ### New Sprint Metrics
 
 * **Release date:** April 2024

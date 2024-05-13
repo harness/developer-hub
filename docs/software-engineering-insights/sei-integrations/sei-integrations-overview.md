@@ -32,7 +32,7 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 ### Issue Management Platform
 
 * [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
-* [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira)
+* [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
 * [Jira Enhanced Integration - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
 * [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
 
@@ -40,8 +40,8 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 
 * [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
 * [Bitbucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
-* [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
-* [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-enterprise)
+* [GitHub Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
+* [GitHub Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration-enterprise)
 * [GitHub Enhanced Integration - BETA](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
 * [GitLab Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
 * [GitLab Enterprise](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab-enterprise)
@@ -73,6 +73,7 @@ Harness SEI supports a variety of platforms, repos, tools, and related technolog
 ### Incident Monitoring
 
 * [PagerDuty](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-pagerduty)
+* [ServiceNow](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)
 
 ### Others
 

@@ -4,7 +4,7 @@ description: Get introduced to SEI.
 sidebar_position: 1
 ---
 
-Harness Software Engineering Insights (SEI) helps you to increase developer productivity and improve security through data-led insights and workflow automation. Harness SEI connects various DevOps tools to provide a single view of the software factory, enabling users to discover bottlenecks, assess team productivity, and enhance the overall developer experience.
+Harness Software Engineering Insights (SEI) helps you to increase developer productivity and improve developer experience through data-led insights and workflow automation. Harness SEI connects various DevOps tools to provide a single view of the software factory, enabling users to discover bottlenecks, assess team productivity, and enhance the overall developer experience.
 
 ![](./static/overview.png)
 

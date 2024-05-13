@@ -18,7 +18,7 @@ The following table lists SEI support for platforms, repos, registries, and rela
 | **Type of integration** | **SCM** | **CI/CD** | **Security** | **Issue Tracking and Management** | **Communication and collaboration** | **Others** |
 | -- | -- | -- | -- | -- | -- | -- |
 | Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li><li>Rally Software (BETA)</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
-| Other | <ul><li>Perforce Helix Server</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Coverity</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
+| Other | <ul><li>Perforce Helix Server</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Coverity</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>ServiceNow</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
 
 :::info Note:
 
@@ -81,6 +81,10 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>SEI_SHOW_ALL_METRICS</td>
         <td>Allows you to configure the Sprint Metrics Percentage Trend report using the new Sprint metrics</td>
     </tr>
+    <tr>
+        <td>SEI_SERVICE_NOW</td>
+        <td>Integrate SEI with the ServiceNow Platform. This integration is still under development.</td>
+    </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
@@ -105,18 +109,18 @@ Here are some SEI early access features that were recently promoted to GA:
         <td>April 2024</td>
     </tr>
     <tr>
-        <td>SEI_EASY_ONBOARDING_GITHUB</td>
-        <td>Enables access to the new user experience for connecting to Jira Cloud & Data Center using the Jira Connect App</td>
+        <td>SEI_EASY_ONBOARDING_JIRA</td>
+        <td>Enables access to the new user experience for connecting to [Jira Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#connect-with-jira-cloud) & [Data Center](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#connect-with-jira-software-data-center) using the [Jira Connect App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#configure-the-integration-using-the-jira-connect-app)</td>
         <td>April 2024</td>
     </tr>
     <tr>
-        <td>SEI_EASY_ONBOARDING_JIRA</td>
-        <td>Enables access to the new user experience for connecting to Jira Cloud & Data Center using the Jira Connect App</td>
+        <td>SEI_EASY_ONBOARDING_GITHUB</td>
+        <td>Enables access to the new user experience for connecting to [GitHub Organization (Cloud)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#connect-with-github-cloud) & [GitHub Enterprise Server](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#connect-with-github-enterprise-server) using the [SEI GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#configure-the-integration-using-the-github-app)</td>
         <td>April 2024</td>
     </tr>
     <tr>
         <td>SEI_SHOULD_ENABLE_REAUTH</td>
-        <td>Enables access to new re-authorization user experience for a GitHub integration</td>
+        <td>Enables access to new re-authorization user experience for a [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)</td>
         <td>April 2024</td>
     </tr>
 </table>
