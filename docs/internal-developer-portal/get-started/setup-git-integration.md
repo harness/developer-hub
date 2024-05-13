@@ -38,7 +38,8 @@ This guide describes the steps a Harness account admin can take to set up the ID
 ### Limitations
 
 - Only the following set of connectors are supported
-
+  
+  - Harness Code Repository
   - GitHub
     - GitHub Enterprise
     - GitHub App
@@ -62,25 +63,48 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 :::
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+<Tabs queryString="Git-Provider">
+<TabItem value="harness-code-repo-enabled" label="Harness Code Repository Enabled">
+
+4. In case you are already using Harness Code Repository, a default connector with only **Read Permission** would be available for the code repo set-up under the same account as that of IDP. Note this connector is uneditable and managed by Harness.
+
+![](static/new-git-integration-hce-enabled.png)
+
+5. You can as well create a new connector for other git-providers under the **+New Integration**.  If you already have a connector available which you want to use in IDP to save your `catalog-info.yaml`, then select the connector under **Select Git Connector**, use a URL to validate and save the connector. If you don't have your connector configured already follow the steps mentioned below. 
+
+![](static/set-up-connector.png)
+
+</TabItem>
+<TabItem value="other-git-provider" label="Harness Code Repository Not Enabled">
+
 4. Select the **Git Provider** you want to configure from the available options.
 
 ![](static/select-git-provider.png)
 
-5. If you already have an connector available which you want to use in IDP to save your `catalog-info.yaml`, then select the connector under **Select Git Connector**, use a URL to validate and save the connector. If you don't have your connector configured already follow the steps mentioned below. 
+5. If you already have a connector available which you want to use in IDP to save your `catalog-info.yaml`, then select the connector under **Select Git Connector**, use a URL to validate and save the connector. If you don't have your connector configured already follow the steps mentioned below. 
 
 ![](static/set-up-connector.png)
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+</TabItem>
+</Tabs>
+
 
 <Tabs queryString="Connector">
+<TabItem value="harness-code-repo" label="Harness Code Repository">
+
+1. **We don't allow to create a new connector for Harness Code Repository.**
+
+</TabItem>
 <TabItem value="azure-connector" label="Azure Repository">
 
 1. Select **Azure Repo** icon followed by **Create or Select a Connector**.
 2. From the dropdown under **Select Azure Repo Connector** and either select an already present connector or create **+New Connector**.
 3. [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo). You can also add multiple organizations as different connectors and use them together.
 4. After the connection test runs, select Finish to save the connector.
-
 
 
 </TabItem>
@@ -159,6 +183,27 @@ The scope is tied to URL format `https://gitprovider.com/org-name`, so all the G
 
 12. Now add the details on where the entities will be created in git:
 
+<Tabs queryString="set-up-path">
+<TabItem value="path-to-save-yaml" label="Harness Code Repository YAML Path">
+
+- **Connector** - The connector is selected by default.
+
+- **Directory Path** - Give a path for the directory in which you want to write the `catalog-info.yaml` files.
+
+![](static/select-path.png)
+
+- **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
+
+![](static/copy-repo-path.png)
+
+Validate the permission and the catalog-info.yaml files would be created in your directory in Code repository. 
+
+![](static/validate-permission.png)
+
+</TabItem>
+<TabItem value="other-git-provider-yaml-path" label="Other Git Providers YAML Path">
+
+
 - **Connector** - Select the connector of the git provider you want to use. 
 
 - **Repo** - Enter the full path to your repo. Example
@@ -180,6 +225,9 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 ![](static/write-catalog.png)
 
+</TabItem>
+</Tabs>
+
 
 </TabItem>
 <TabItem value="sample-service" label="Start with Sample Service">
@@ -190,6 +238,27 @@ https://github.com/sathish-soundarapandian/onboarding-test
 
 9. Now this will be added to the git provider: 
 
+<Tabs queryString="set-up-path">
+<TabItem value="path-to-save-yaml" label="Harness Code Repository YAML Path">
+
+- **Connector** - The connector is selected by default.
+
+- **Directory Path** - Give a path for the directory in which you want to write the `catalog-info.yaml` files.
+
+![](static/select-path.png)
+
+- **Repo Path** - Go to the Code Repository and under files select **Clone** and copy the repository path. 
+
+![](static/copy-repo-path.png)
+
+Validate the permission and the catalog-info.yaml files would be created in your directory in Code repository. 
+
+![](static/validate-permission.png)
+
+</TabItem>
+<TabItem value="other-git-provider-yaml-path" label="Other Git Providers YAML Path">
+
+
 - **Connector** - Select the connector of the git provider you want to use. 
 
 - **Repo** - Enter the full path to your repo. Example
@@ -199,9 +268,9 @@ https://github.com/sathish-soundarapandian/onboarding-test.git
 https://github.com/sathish-soundarapandian/onboarding-test
 ```
 
-- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup.
+- The provided repo in the repo URL should belong to the same organization / project for which the connector has been setup. Ex -
 
-- Example **In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
+**In connector** - The account path is `https://github.com/sathish-soundarapandian`. So the repo url in IDP onboarding flow should be `https://github.com/sathish-soundarapandian/{SOME_REPO}`. It cannot be `https://github.com/{SOMETHING_ELSE}/{SOME_REPO}` - this will not work.
 
 - Provided repo should exist with a valid default HEAD branch. Ideally this will be case when the repo is initialized with README file
 
@@ -210,6 +279,9 @@ https://github.com/sathish-soundarapandian/onboarding-test
 - Path - Defaults to harness-services. Can be changed as well.
 
 ![](static/write-catalog.png)
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 </Tabs>
