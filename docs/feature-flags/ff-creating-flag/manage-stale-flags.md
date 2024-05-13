@@ -8,7 +8,7 @@ sidebar_position: 30
 
 Harness Feature Flags helps to identify stale flags and automates the process of removing them from your code.
 
-Stale flags are feature flags that are no longer needed because their associated features may have been fully integrated into the production environment, or no longer needs any control in production. Stale flags are flexible and can also be configured to a number of days set by the user for smoother Feature Flag management.
+Stale flags are feature flags that are no longer needed because their associated features may have been fully integrated into the production environment, or no longer need any control in production. Stale flags are flexible and can also be configured to a number of days set by the user for smoother Feature Flag management.
 
 ![An image of Harness Feature Flags Stales Flags UI](./static/ff-stales-flags-ui.png)
 
