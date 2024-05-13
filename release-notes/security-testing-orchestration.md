@@ -22,6 +22,25 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## May 2024
+
+### Version 1.94.4
+
+#### New features 
+
+- You can now use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/) and [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) in Security stages without a CI license. (STO-7442)
+
+- You can now scan code repositories using the [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scan step. (STO-7531)
+
+ 
+
+#### Fixed issues
+
+- Fixed an issue where the Built-in Grype step would time out when uploading scan results. (STO-7464, ZD-61941)
+
+- Fixed an issue where OPA failed with the error `Unexpected error occurred while evaluating Policies`. With this fix, STO limits the number of occurrences per issue (max 1000) that it sends to OPA. (STO-7562, ZD-63083)
+
+
 ## April 2024
 
 ### UI update 1.15.0

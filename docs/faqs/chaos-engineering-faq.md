@@ -139,7 +139,7 @@ When you edit an experiment that has multiple repositories, a pop up asks if you
 ![report 2](./static/hce-report-2.png)
 
 :::tip
-* You can download the choas experiment report.
+* You can download the chaos experiment report.
 * The probe result summary can be seen in the experiment logs too.
 :::
 

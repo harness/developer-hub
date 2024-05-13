@@ -7,6 +7,7 @@ redirect_from:
   - /tutorials/security-tests/cicd-integrated-pipeline
   - /tutorials/security-tests/your-first-sto-pipeline
   - /docs/security-testing-orchestration/get-started/sto-tutorials/your-first-sto-pipeline
+  - /docs/security-testing-orchestration/get-started/tutorials/onboarding-guide
 ---
 
 <CTABanner
@@ -59,7 +60,7 @@ This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a>
 
 1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/williamwissemann/dvpwa.
 
-2. If you don't have a GitHub connector, do the following:
+2. If you don't have a Harness connector to your GitHub account, do the following:
 
    1. In your Harness project, select **Project Setup** > **Connectors**.
    2. Select **New Connector**, then select **Code Repositories** > **GitHub**.

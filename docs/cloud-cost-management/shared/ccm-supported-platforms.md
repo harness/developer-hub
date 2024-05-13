@@ -605,22 +605,40 @@ AWS is the only supported installation infrastructure. If you do not install Har
 
 The following table provides the feature support matrix for CCM on Harness Self-Managed Enterprise Edition. 
   
-| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **Connected environment** | **Air-gapped environment** |
-| --- | --- | --- | --- | --- | --- | --- |
-|Perspectives | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Cost categories | ✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Anomaly detection  | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|Currency standardization | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Recommendations |✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-|AutoStopping | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
-|Asset governance | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+#### Connected Environment 
 
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
+| --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ✅ | ✅ | ✅ |
+|Cost categories | ✅  | ✅ | ✅ | ✅ | 
+|Budgets | ✅ | ✅ | ✅ | ✅ | ✅ |
+|BI dashboards |✅  | ✅ | ✅ | ✅ | 
+|Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | 
+|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | 
+|Asset governance | ❌ | ❌ | ❌ | ❌ | 
+|Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
+
+
+#### Air-gapped environment
+
+| **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | 
+| --- | --- | --- | --- | --- |
+|Perspectives | ✅  | ❌  | ❌  | ✅ |
+|Cost categories | ✅  | ❌  | ❌  | ✅ | 
+|Budgets | ✅ | ❌  | ❌  | ✅ | 
+|BI dashboards |✅  | ❌  | ❌  | ✅ | 
+|Anomaly detection  | ✅ | ❌  | ❌  | ✅ |
+|Currency standardization | ❌ | ❌ | ❌ | ❌ | 
+|Recommendations |✅ | ✅ | ✅ | ✅ | 
+|AutoStopping | ❌ | ❌ | ❌ | ❌ | 
+|Asset governance | ❌ | ❌ | ❌ | ❌ | 
+|Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
 
 :::note
-- Perspective preferences are now supported on Harness SMP.
 - Margin Obfuscation is not supported on Harness SMP.
+- Istio virtual services are available for Azure in strict mode.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
 :::

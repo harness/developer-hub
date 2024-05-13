@@ -108,24 +108,14 @@ Make sure your personal access token has the following permissions: `api`, `read
 
 :::
 
-
 </TabItem>
   <TabItem value="oauth" label="OAuth">
-
-
-:::note
-
-Currently, OAuth for GitLab connectors is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 1. For **Authentication**, select **OAuth**.
 2. Select **Link to GitLab** to open a new browser tab and authorize access to your GitLab account.
 
-
 </TabItem>
   <TabItem value="ssh" label="SSH Key">
-
 
 SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 

@@ -80,6 +80,15 @@
       &.idp:hover {
         border-color: var(--mod-idp-200);
       }
+      &.code:hover {
+        border-color: var(--mod-code-200);
+      }
+      &.sei:hover {
+        border-color: var(--mod-sei-200);
+      }
+      &.iacm:hover {
+        border-color: var(--mod-iacm-200);
+      }
     }
     ul.docTypes {
       display: flex;

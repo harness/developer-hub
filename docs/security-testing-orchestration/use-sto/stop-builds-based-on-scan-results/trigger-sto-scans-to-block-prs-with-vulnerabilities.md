@@ -198,7 +198,7 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input) 
    
-The pipeline input should be preconfigured correctly, with **Build Type** should be set to **Git Pull Request**.
+The pipeline input should be preconfigured correctly, with **Build Type** set to **Git Pull Request**.
 
 
 #### Test the trigger

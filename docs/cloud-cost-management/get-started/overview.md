@@ -10,6 +10,9 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview
 ---
+:::info
+Our new Overview page is behind a Feature Flag **"CCM_OVERVIEW_V1"**. Contact Harness Support to enable the feature. 
+:::
 
 In today's world, it's pertinent to understand and manage costs associated with your cloud resources. Optimum utilization of cloud resources saves costs. As the complexity increases, it becomes challenging to keep track of cloud expenses.
 
@@ -19,7 +22,7 @@ Furthermore, typical cost management tools are designed to provide monthly billi
 
 Harness Cloud Cost Management (formerly Continuous Efficiency) is a solution that provides engineers and DevOps granular detail of their resource consumption hourly. Harness Cloud Cost Management (CCM) is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
 
-![](./static/continuous-efficiency-overview-03.png)
+![](./static/updated_overview.png)
 
 ### Visual Summary
 

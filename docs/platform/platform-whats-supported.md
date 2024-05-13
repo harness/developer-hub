@@ -36,6 +36,7 @@ For supported platforms and technologies by module, go to the module documentati
 * [What's supported in CET](/docs/continuous-error-tracking/whats-supported)
 * [What's supported in IDP](/docs/internal-developer-portal/whats-supported)
 * [What's supported in SEI](/docs/software-engineering-insights/sei-supported-platforms)
+* [What's supported in IACM](/docs/infra-as-code-management/whats-supported)
 
 For supported platforms and technologies for SMP, go to [What's supported in Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-supported-platforms).
 
@@ -112,8 +113,8 @@ Harness Platform supports notifications for the following notification methods a
 
 Harness supports approvals for these collaboration tools:
 
-- [Jira](/docs/platform/approvals/adding-jira-approval-stages)
-- [ServiceNow](/docs/platform/approvals/service-now-approvals)
+- [Jira](/docs/platform/approvals/adding-jira-approval-stages): Supports on-premise version < 9.0. For Jira on-premise >= 9.0 version support, enable the feature flag, `SPG_USE_NEW_METADATA`.
+- [ServiceNow](/docs/platform/approvals/service-now-approvals): Supports [Utah](https://docs.servicenow.com/bundle/utah-release-notes/page/release-notes/family-release-notes.html) version and earlier.
 
 For other providers, you can use [custom approvals](/docs/platform/approvals/custom-approvals) or [manual approvals](/docs/platform/approvals/adding-harness-approval-stages)
 

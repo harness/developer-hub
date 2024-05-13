@@ -19,6 +19,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 ## May 2024
 
+### Version 1.16.0
+
+#### New features and enhancements
+
+- Expanded Azure Region Options: We have added a new 'All' option in Azure regions, which enables users to run a Governance policy across all regions. [CCM-17588]
+
+- Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
+
+- Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. [CCM-17380]
+
+#### Fixed issues
+
+- Label Adjustment for Clarity: We have added a minor change to update label from "Active Rules" to "Total Rules" for enhanced clarity and accuracy in Autostopping UI. [CCM-16450]
+
+- SMP Overview Screen Total Cost: We have updated the query used to retrieve active spend on the overview page for SMP to ensure accurate data representation. This fix ensures alignment between the total cost displayed on the SMP Overview Screen and the data presented in perspectives. [CCM-17380]
+
+- Perspective Dashboard Optimization: As part of this fix, we have disabled redundant parentheses from BigQuery SQL query to optimize the perspective and cost category queries, enhancing query efficiency and performance.
+  
 ### Version 1.14.3
 
 #### New features and enhancements
@@ -28,6 +46,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Introduction of Anomaly Workflows: We have added Anomaly Workflows to enhance anomaly management within the CCM platform. With this feature, when a user marks an anomaly as a False Anomaly, it will be automatically moved to the Ignore list within the Anomaly Settings drawer. Furthermore, users now have the option to undo this action directly from the Anomaly Settings drawer, providing greater flexibility and control over anomaly management processes. [CCM-17311]
   
 - Multi-Select Cloud Providers Filter: We have enhanced the Recommendations and Governance Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously, providing more flexibility with governance evaluations. [CCM-17150]
+
+- Child Account Exclusion in Commitment Orchestrator: With this functionality, users can selectively exclude child accounts from commitment utilization calculations, allowing for more precise management of Reserved Instances (RIs) and Savings Plans (SPs) across their organisation. [CCM-17184]
+
+- Audit Trail Integration for changes in Commitments: Commitment orchestration flow changes like change of coverage or split between SP & RI and commitment actions approval or rejection is now captured in audit trails. [CCM-17267]
 
 #### Fixed issues
 
