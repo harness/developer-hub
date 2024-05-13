@@ -744,6 +744,8 @@ For this scenario, we suggest that you have one pipeline with two Deploy stages 
 
 ![](./static/aws-sam-faq.png)
 
+![](./static/aws-sam-runtime.png)
+
 ### Spot Elastigroup
 
 #### What is a Spot deployment in Harness?
