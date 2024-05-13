@@ -123,6 +123,10 @@ For details, go to [Policy as Code](/docs/category/policy-as-code).
 
 Added an account setting, `allowCrossGenerationAccess`, that you can use to enable cross generational access between CD FirstGen and NextGen. This setting is visible to CD subscribed (free/paid account) users only. This setting can be changed by account admins only.
 
+:::info note
+After migrating from FirstGen to NextGen, please clean up the user accounts in FirstGen.
+:::
+
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
 
 To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI.
