@@ -105,6 +105,19 @@ import TabItem from '@theme/TabItem';
    pip install cookiecutter
    cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
+   # Add catalog-info.yaml content
+    echo "apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: <+pipeline.variables.project_name>
+      description: This is a nextjs app.
+      annotations:
+        backstage.io/techdocs-ref: dir:.
+    spec:
+      type: documentation
+      lifecycle: experimental" > catalog-info.yaml
+
+
    # Create repository
    curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
 
@@ -114,9 +127,15 @@ import TabItem from '@theme/TabItem';
    git config --global user.email "support@harness.io"
    git config --global user.name "Harness Support"
    git add .
-   git commit -m "Project init"
+   git commit -m "Project init and Added catalog-info.yaml"
    git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
    git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+
+   # Add catalog-info.yaml location to catalog
+    curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/locations' \
+    --header 'x-api-key: Harness PAT' \
+    --header 'Harness-Account: Account_ID' \
+    --data-raw '{"type":"url","target":"https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>/blob/main/catalog-info.yaml"}'
    ```
 
 6. Click **Apply Changes**.
@@ -163,6 +182,19 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
    pip install cookiecutter
    cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
+
+   # Add catalog-info.yaml content
+    echo "apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: <+pipeline.variables.project_name>
+      description: This is a nextjs app.
+      annotations:
+        backstage.io/techdocs-ref: dir:.
+    spec:
+      type: documentation
+      lifecycle: experimental" > catalog-info.yaml
+
    # Create repository
    curl --request POST --header "PRIVATE-TOKEN: <+pipeline.variables.gitlab_token>" "https://gitlab.com/api/v4/projects" --form "name=<+pipeline.variables.gitlab_repo>" --form "description=<+pipeline.variables.project_name> - A Next.js app" --form "visibility=public"
 
@@ -175,6 +207,13 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
    git commit -m "Project init"
    git remote add origin https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git
    git push --set-upstream https://oauth2:<+pipeline.variables.gitlab_token>@gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git main
+   
+   # Add catalog-info.yaml location to catalog
+    curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/locations' \
+    --header 'x-api-key: Harness PAT' \
+    --header 'Harness-Account: Account_ID' \
+    --data-raw '{"type":"url","target":"https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>/blob/main/catalog-info.yaml"}'   
+
    ```
 
 6. Click **Apply Changes**.
