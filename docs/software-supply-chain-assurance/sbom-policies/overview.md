@@ -2,6 +2,8 @@
 title: Overview
 description: learn to create SSCA policies and enforce them.
 sidebar_position: 1
+redirect_from:
+  - /docs/software-supply-chain-assurance/sbom-policies/overview
 ---
 
 The creation of a Software Bill of Materials (SBOM) significantly enhances software transparency. The comprehensive view not only brings visibility but also opens up the opportunity to improve security and ensure compliance. It enables organizations to define and implement specific rules governing the use of open source components, including the criteria to allow or deny components. By applying these rules, organizations can effectively mitigate security risks, comply with licensing obligations, and exert greater control over their software supply chain.
@@ -13,8 +15,8 @@ Here's a breakdown of the overall steps involved:
 
 
 1. Create an [OPA policy set](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
-2. [Write policy definitions](/docs/software-supply-chain-assurance/ssca-policies/define-ssca-policies)
-3. [Enforce the policies on SBOM](./enforce-ssca-policies.md)
+2. [Write policy definitions](/docs/software-supply-chain-assurance/sbom-policies/define-sbom-policies)
+3. [Enforce the policies on SBOM](./enforce-sbom-policies.md)
 4. View [policy violations](/docs/software-supply-chain-assurance/ssca-view-results) and take actions
 
 Here’s the overview of SBOM Policy Enforcement step in Harness SSCA:
@@ -41,5 +43,5 @@ The SBOM Policy Enforcement step operates in two stages:
 
 * With the artifact details, the step retrieves the SBOM of the given artifact.
 * From the policy sets, the rules are evaluated against each component within the artifact's SBOM.
-* If violations are detected based on the SSCA Policy evaluation criteria, the pipeline may issue a warning and proceed further, or it may generate an error and terminate.
+* If violations are detected based on the Policy evaluation criteria, the pipeline may issue a warning and proceed further, or it may generate an error and terminate.
 * Finally, a detailed list of all the policy violations is generated.
