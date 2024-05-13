@@ -101,7 +101,7 @@ This topic shows you how to import a Template to the CD module.
    
    The **Import Template From Git** settings appear.
    
-   ![An image of the settings for  Importing Template From Git](./static/import-a-template-from-git-23.png)
+   ![An image of the settings for Importing Template From Git](./static/import-a-template-from-git-23.png)
 
 5. Enter a **Name** for your Template.
 6. In **Version Label**, enter a version for the Template.
