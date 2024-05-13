@@ -1,17 +1,17 @@
 import type { Context } from "@netlify/functions";
-import cookie from "cookie";
+
 interface Body {
   token: string;
   account_id: string;
   return_to: string;
 }
-
 export default async (req: Request, context: Context) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Origin": "http://localhost:3001",
         "Access-Control-Allow-Methods": "POST,OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type,Authorization",
       },
@@ -24,40 +24,40 @@ export default async (req: Request, context: Context) => {
     });
   }
   const body: Body = await req.json();
-  console.log(body);
+
   if (!body.account_id || !body.token || !body.return_to) {
     return new Response(JSON.stringify("Missing required fields "), {
       status: 400,
     });
   }
-  console.log({
-    account_id: body.account_id,
-    token: body.token,
-    return_to: body.return_to,
+
+  console.log(context.site.url);
+
+  // context.cookies.set({
+  //   name: "token",
+  //   value: body.token,
+  //   domain: "developer.harness.io",
+  //   path: "/",
+  //   httpOnly: false,
+  //   secure: false,
+  // });
+  context.cookies.set({
+    name: "account_id",
+    value: body.account_id,
+    domain: "localhost",
+    path: "/",
+    httpOnly: false,
+    secure: false,
   });
 
-  context.cookies.set({
-    name: "account",
-    value: body.account_id,
-    domain: "http://localhost:8888/",
-    sameSite: "None",
-    maxAge: 3600000 * 24 * 14,
-    httpOnly: true,
-    path: "/",
-  });
-  context.cookies.set({
-    name: "token",
-    value: body.token,
-    domain: "http://localhost:8888/",
-    sameSite: "None",
-    maxAge: 3600000 * 24 * 14,
-    httpOnly: true,
-    path: "/",
-  });
-  return new Response("Success !", {
+
+
+
+  return new Response(JSON.stringify("Success !"), {
     status: 200,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": "true",
+      "Access-Control-Allow-Origin": "http://localhost:3001",
       "Access-Control-Allow-Methods": "POST,OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type,Authorization",
     },
