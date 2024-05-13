@@ -14,7 +14,7 @@ Stale flags are feature flags that are no longer needed because their associated
 
 ### The Different Flag States
 
-To help manage your flags, here are the definitions of the different flag states:
+To help manage your feature flags, here are the definitions of the different flag states:
 
  - Potentially Stale: 
  -- Has been disabled
