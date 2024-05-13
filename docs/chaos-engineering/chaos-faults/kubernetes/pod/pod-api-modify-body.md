@@ -58,42 +58,42 @@ Pod API modify body:
       </tr>
       <tr>
         <td> PATH_FILTER </td>
-        <td> API path or route used for the filtering </td>
-        <td> It will target all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
+        <td> API path or route used for the filtering. </td>
+        <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
       </tr>
       <tr>
         <td> HEADERS_FILTERS </td>
-        <td> Filters for HTTP request headers accept multiple headers in the format of <code>key1:value1,key2:value2</code>, separated by commas. </td>
+        <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>. </td>
         <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
       </tr>
       <tr>
         <td> METHODS </td>
-        <td> The HTTP request method type accepts HTTP methods in capital case, separated by commas, such as "GET, POST". </td>
+        <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
         <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
       </tr>
       <tr>
         <td> QUERY_PARAMS </td>
-        <td> The HTTP request query parameters filters accept multiple query parameters in the format of <code>param1:value1,param2:value2</code>, separated by commas. </td>
+        <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
         <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
       </tr>
-      <tr>
+<tr>
         <td> SOURCE_HOSTS </td>
-        <td> This includes source host names as filters, separated by commas, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
         <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
       </tr>
       <tr>
         <td> SOURCE_IPS </td>
-        <td> This includes source ips as filters, separated by commas, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
         <td> For more information, go to <a href="#advanced-filters">source ips</a>.</td>
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> This comprises destination host names used as filters, separated by commas, indicating the hosts on which we are calling the API. This specification applies exclusively to the "egress" type. </td>
+        <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
         <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> This comprises destination ips used as filters, separated by commas, indicating the hosts on which we are calling the API. This specification applies exclusively to the "egress" type. </td>
+        <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
         <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
       </tr>
       <tr>
@@ -448,13 +448,13 @@ spec:
 
 ### Advanced filters
 
-- `HEADERS_FILTERS`: The HTTP request headers filters, accepts multiple headers in the format of `key1:value1,key2:value2`, separated by commas.
-- `METHODS`: The HTTP request method type filters, accepts HTTP methods in capital case, separated by commas i.e, `GET,POST`.
-- `QUERY_PARAMS`: The HTTP request query parameters filters, accept multiple query parameters in the format of `param1:value1,param2:value2`, separated by commas.
-- `SOURCE_HOSTS`: Source host names filters, separated by commas, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` ENV.
-- `SOURCE_IPS`: Source IPs filters, separated by commas, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` ENV.
-- `DESTINATION_HOSTS`: Destination host names filters, separated by commas, indicating the hosts on which we are calling the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` ENV.
-- `DESTINATION_IPS`: Destination IPs filters, separated by commas, indicating the hosts on which we are calling the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` ENV.
+- `HEADERS_FILTERS`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
+- `METHODS`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
+- `QUERY_PARAMS`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
+- `SOURCE_HOSTS`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `SOURCE_IPS`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_HOSTS`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_IPS`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -481,18 +481,18 @@ spec:
             # provide the headers filters
             - name: HEADERS_FILTERS
               value: 'key1:value1,key2:value2'
-            # provide the methods filters  
+            # provide the methods filters
             - name: METHODS
               value: 'GET,POST'
-            # provide the query params filters  
+            # provide the query params filters
             - name: QUERY_PARAMS
               value: 'param1:value1,param2:value2'
-            # provide the source hosts filters  
+            # provide the source hosts filters
             - name: SOURCE_HOSTS
               value: 'host1,host2'
-            # provide the source ips filters  
+            # provide the source ips filters
             - name: SOURCE_IPS
-              value: 'ip1,ip2'  
+              value: 'ip1,ip2'
             # provide the connection type
             - name: SERVICE_DIRECTION
               value: 'ingress'
