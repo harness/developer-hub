@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-10T10:00
+date: 2024-05-13T10:00
 sidebar_position: 16
 ---
 
@@ -82,14 +82,14 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## May 10, 2024, patch version 0.14.8
+## May 13, 2024, patch version 0.14.9
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.14.8](https://github.com/harness/helm-charts/releases/tag/harness-0.14.8) |
-| Air Gap Bundle | [0.14.8](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.8) |
+| Helm Chart | [0.14.9](https://github.com/harness/helm-charts/releases/tag/harness-0.14.9) |
+| Air Gap Bundle | [0.14.9](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.9) |
 | NG Manager | 1.24.9 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
@@ -108,14 +108,14 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.14.8/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.9/sto_images.tgz" \
   .
 ```
 
