@@ -2213,3 +2213,17 @@ Yes, you can use the [Harness Terraform provider](https://registry.terraform.io/
 <!-- Please do a keyword search (cmd+F) to avoid making duplicate entries. For example, `buildkit`, `lfs`, `kaniko`, `buildah`, etc. -->
 
 <!-- Please follow a sequential heading structure. The level 4 headings don't show up on the mini-TOC. This makes it impossible for customers to scan the questions in the Mini-TOC and then jump directly to their question. It is also inappropriate, from an accessibility perspective, to skip heading levels. -->
+
+### When using the --no-push option in a Harness build step, where is the locally built image stored ?
+Harness doesn't store the built image directly with --no-push in Kaniko builds; Kaniko stores layers locally (e.g., /kaniko) and requires exporting as an image or tarball for using in subsequent steps.
+https://github.com/drone/drone-kaniko/blob/main/cmd/kaniko-docker/main.go#L191
+https://github.com/GoogleContainerTools/kaniko/tree/cf9a334cb027e6bc6a35c94a3b120b34880750a9?tab=readme-ov-file#flag---tar-path
+
+### In a CI/CD pipeline using Drone CI and the drone-aws-sam plugin, how can you pass multiple arguments to the AWS SAM build command? 
+When using the drone-aws-sam plugin in a Drone CI pipeline, you can pass multiple arguments to the AWS SAM build command by specifying them in the build_command_options field of the plugin configuration. The arguments should be separated by spaces and enclosed in double quotes if they contain spaces or special characters.
+eg : build_command_options: "--no-cached --debug --parameter-overrides 'ParameterKey=KeyPairName, ParameterValue=MyKey ParameterKey=InstanceType, ParameterValue=t1.micro'
+
+### A background service consistently generates logs containing "SIGQUIT: quit PC=0x46d441 m=0 sigcode=0..." messages during a specific stage execution within a Harness pipeline. These messages appear only in logs scraped from the container and streamed to an external monitoring tool, not directly in the CI/CD platform logs.What are some potential causes of this behavior, and what general troubleshooting steps can be taken to identify the root cause?
+Harness runs the service defined in the background step in a separate go-routine, which will be available until the lifetime of the stage. The service gets automatically killed during cleanup after the execution of the stage.
+
+The container logs you're seeing basically mean that the go-routine has received the termination signal, most likely during pod clean-up. It does look like the logs are quite verbose, which could indicate that debug mode is enabled for this particular step.
