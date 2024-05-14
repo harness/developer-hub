@@ -51,7 +51,7 @@ This topic shows you how to create a Secret Manager Template at the Project scop
    ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
    KIND='variable'
 
-   #IDENTIFIER="cyberark-vault/LOB_prod/T-App-Conjur/Application-CNC-Conjur-Keys-test-secret-cluster.centene.com-admin/username"
+   #IDENTIFIER="cyberark-vault/LOB_prod/T-App-Conjur/Application-CNC-Conjur-Keys-test-secret-cluster.YOUR_CLUSTER.com-admin/username"
    IDENTIFIER='<+spec.environmentVariables.IDENTIFIER>'
 
    #
@@ -94,6 +94,75 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 14. Select **Save**.
 
    For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../templates/create-a-secret-manager-template.md).
+
+#### Example YAML
+
+```yaml
+template:
+  name: Conjur
+  identifier: Conjur
+  versionLabel: "1.0"
+  type: SecretManager
+  tags: {}
+  icon:
+  spec:
+    shell: Bash
+    delegateSelectors: []
+    source:
+      type: Inline
+      spec:
+        script: |-
+          CONJUR_APPLIANCE_URL='<+spec.environmentVariables.CONJUR_APPLIANCE_URL>'
+          HOST_ID='<+spec.environmentVariables.HOST_ID>'
+          API_KEY='<+secrets.getValue(<+spec.environmentVariables.API_KEY_SECRET_ID>)>'
+          AUTHENTICATOR='<+spec.environmentVariables.AUTHENTICATOR>'
+          ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
+          KIND='variable'
+
+          # Secret Identifier in Conjur
+          # Example format: cyberark-vault/LOB_prod/T-App-Conjur/Application-CNC-Conjur-Keys-test-secret-cluster.ORGANIZATION.com-admin/username
+          IDENTIFIER='<+spec.environmentVariables.IDENTIFIER>'
+
+          #
+          # Authenticate first to get an access token
+          # ref: https://docs.conjur.org/Latest/en/Content/Developer/Conjur_API_Authenticate.htm
+          #
+          FULL_AUTH_URL="$CONJUR_APPLIANCE_URL/$AUTHENTICATOR/$ACCOUNT/$HOST_ID/authenticate"
+          ACCEPT_HEADER='Accept-Encoding: base64'
+          ACCESS_TOKEN=$(curl --request POST --header "$ACCEPT_HEADER" --data "$API_KEY" "$FULL_AUTH_URL")
+
+          #  Use the token to retrieve a secret
+          RETRIEVAL_URL="$CONJUR_APPLIANCE_URL/secrets/$ACCOUNT/$KIND/$IDENTIFIER"
+          AUTH_HEADER="Authorization: Token token=\"${ACCESS_TOKEN}\""
+          ACCEPT_HEADER_JSON="Accept: application/json"
+
+          # Set secret variable, which is expected to be set as the value of the secret.
+          secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON" | head -n 1)"
+
+          # DEBUG
+          # secret=$RETRIEVAL_URL
+    environmentVariables:
+      - name: CONJUR_APPLIANCE_URL
+        type: String
+        value: <+input>
+      - name: HOST_ID
+        type: String
+        value: <+input>
+      - name: API_KEY_SECRET_ID
+        type: String
+        value: <+input>
+      - name: AUTHENTICATOR
+        type: String
+        value: <+input>
+      - name: ACCOUNT
+        type: String
+        value: <+input>
+      - name: IDENTIFIER
+        type: String
+        value: <+input>
+    outputVariables: []
+    onDelegate: true
+```
 
 ### Step 2: Add a Custom Secret Manager
 
