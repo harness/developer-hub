@@ -165,7 +165,10 @@ Harness configurations are stored in repositories. These configuration files can
 
 :::info note
 You must have valid Git credentials and a repo within this Git account before you enable Harness Git Experience.
+:::
 
+:::note
+If changes are made in Git, metadata such as id and scope parameters are not validated, but the spec is. If errors occur, you will be presented with an invalid YAML view.
 :::
 
 ### Next steps
