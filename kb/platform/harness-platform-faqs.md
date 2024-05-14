@@ -3179,22 +3179,20 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
 
-### Give an example of an API request to update a secret file using binary file content?
+### How can you update a secret file using binary file content through an API request?
 
-curl -XPUT 'https://app.harness.io/gateway/ng/api/v2/secrets/files/filesecret?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&projectIdentifier=Nishant_Test_Project&orgIdentifier=Nishant_Test_2' \
+To update a secret file using binary file content, you can use the following cURL command:
 
+```bash
+curl -X PUT 'https://app.harness.io/gateway/ng/api/v2/secrets/files/filesecret?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&projectIdentifier=Nishant_Test_Project&orgIdentifier=Nishant_Test_2' \
   -H 'Harness-Account: <account_id>' \
-
   -H 'x-api-key: replace_this_with_token' \
-
   -F 'spec={"secret":{"type":"SecretFile","name":"<file_secret>","identifier":"<file_secret>","description":"","tags":{},"orgIdentifier":"<org_name>","projectIdentifier":"<proj_name>","spec":{"secretManagerIdentifier":"harnessSecretManager"}}}' \
-
   -F 'file=@/path/to/the/file'
+```
 
-Please note that you need to replace the placeholders (<account_id>, <file_secret>, <org_name>, <proj_name>, and /path/to/the/file) with the actual values specific to your environment and requirements.
+Ensure to replace `<account_id>`, `<file_secret>`, `<org_name>`, `<proj_name>`, and `/path/to/the/file` with your actual data. This command sends a PUT request to update a secret file in Harness, specifying the file path and necessary headers.
 
-### Is it possible to integrate on-the-fly generation of AWS credentials from Vault within the Harness platform's AWS Connector for seamless interaction with AWS services? Can this be achieved simply by importing a secret using its path within Vault?
+### Is it possible to integrate Vault's capability for on-the-fly generation of AWS credentials with the Harness platform's AWS Connector to facilitate seamless interactions with AWS services? Additionally, can this be achieved simply by importing a secret using its path within Vault?
 
-Currently, directly integrating Vault's on-the-fly AWS credential generation within the Harness platform's AWS Connector isn't supported. While the aws ecr login command suggests potential token generation, chaining these functionalities isn't possible.
-
-However, harness platform might offer a custom secret manager option. This allows for custom logic development to retrieve credentials on-the-fly from Vault, providing more flexibility.
+No, the Harness AWS Connector does not support direct integration with Vault for on-the-fly AWS credential generation, including for services like AWS ECR. The `aws ecr login` command implies a potential for token generation, but integrating this process directly with the AWS Connector is not feasible. However, Harness does offer a Custom Secret Manager feature, which allows for the development of custom scripts to dynamically retrieve AWS credentials from Vault. This option provides greater flexibility but requires setting up custom logic rather than simply importing a secret's path from Vault.
