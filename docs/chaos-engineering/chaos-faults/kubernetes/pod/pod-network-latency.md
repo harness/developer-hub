@@ -8,21 +8,21 @@ redirect_from:
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
 - Initiates a traffic control (tc) process with netem rules to add egress delays.
 - Degrades the network without marking the pod as unhealthy or unworthy of traffic by kube-proxy (unless there is a liveness probe that measures the latency and restarts (or crashes) the container).
-- Issues with microservice communication across the services can be resolved by using middleware that switches the traffic based on certain SLOs or performance parameters. 
+- Issues with microservice communication across the services can be resolved by using middleware that switches the traffic based on certain SLOs or performance parameters.
   - Such issues can also be resolved by setting up alerts and notifications to highlight a degradation, so that they can be addressed, and rectified. A
-  - Issues can also be resolved by understanding the impact of the failure and determining the last point before degradation in the application stack. 
+  - Issues can also be resolved by understanding the impact of the failure and determining the last point before degradation in the application stack.
 
 ![Pod Network Latency](./static/images/pod-network-latency.png)
 
 ## Use cases
 Pod network latency:
 - Tests the application's resilience to lossy or flaky networks.
-- Simulates issues within the pod network or microservice communication across the services in different availability zones or regions. 
-- Applications may stall or become corrupt while waiting endlessly for a data packet. This fault can reduce the blast radius to the traffic that you wish to test by specifying the IP addresses. 
-- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across the services or poor cni-performance in the inter-pod-communication network). 
+- Simulates issues within the pod network or microservice communication across the services in different availability zones or regions.
+- Applications may stall or become corrupt while waiting endlessly for a data packet. This fault can reduce the blast radius to the traffic that you wish to test by specifying the IP addresses.
+- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across the services or poor cni-performance in the inter-pod-communication network).
 - Simulates a jittery connection with transient latency spikes between microservices.
 - Simulates a slow response on specific third-party or dependent components or services.
-- Simulates a degraded data-plane of service-mesh infrastructure.  
+- Simulates a degraded data-plane of service-mesh infrastructure.
 
 
 ### Prerequisites
@@ -55,7 +55,7 @@ Pod network latency:
         <td> JITTER </td>
         <td> Network jitter (in milliseconds). Provide numeric values. </td>
         <td> Defaults to 0. For more information, go to <a href="#jitter">jitter</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster. </td>
@@ -80,22 +80,22 @@ Pod network latency:
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod network latency. </td>
         <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
-      </tr> 
+      </tr>
       <tr>
         <td> DESTINATION_IPS </td>
         <td> Comma-separated IP addresses and ports of the services or pods or the CIDR blocks (range of IPs) whose accessibility is impacted. Comma separated IP(S) or CIDR(S) can be provided.</td>
         <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="#destination-ips-and-destination-hosts">destination IPs</a>.</td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
         <td> DNS names or FQDN names of the services and ports whose accessibility is impacted. </td>
         <td> If these values are not provided, the fault induces network chaos for all IPs or destinations or DESTINATION_IPS if already defined. For more information, go to <a href="#destination-ips-and-destination-hosts">destination hosts</a>.</td>
-      </tr>   
+      </tr>
       <tr>
         <td> SOURCE_PORTS </td>
         <td> Ports of the target application, the accessibility to which is impacted </td>
         <td> Comma separated port(s) can be provided. If not provided, it will induce network chaos for all ports. For more information, go to <a href="#source-and-destination-ports">source ports</a>.</td>
-      </tr>  
+      </tr>
       <tr>
         <td> DESTINATION_PORTS </td>
         <td> Ports of the destination services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
@@ -103,7 +103,7 @@ Pod network latency:
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. Provie numeric values. </td>
+        <td> Percentage of total pods to target. Provide numeric values. </td>
         <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a>.</td>
       </tr>
       <tr>
@@ -283,7 +283,7 @@ spec:
 
 ### Network interface
 
-Name of the ethernet interface considered to shape the traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable. 
+Name of the ethernet interface considered to shape the traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -317,7 +317,7 @@ spec:
 
 ### Jitter
 
-Specified whether or not to allow a network delay variation (in ms). Its default value is `0`. Tune it by using the `JITTER` environment variable. 
+Specified whether or not to allow a network delay variation (in ms). Its default value is `0`. Tune it by using the `JITTER` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 

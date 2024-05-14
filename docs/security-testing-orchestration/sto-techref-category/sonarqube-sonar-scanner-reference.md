@@ -77,11 +77,11 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
+The predefined configuration to use for the scan. 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
-
-<StoSettingProductConfigName />
+- **Default**  
+- **Branch Scan**  
+- **Pull Request** 
 
 
 ### Target
@@ -300,8 +300,8 @@ In the **Advanced** settings, you can use the following options:
 ## SonarQube pull-request scan configuration
 
 To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
-    - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
-    - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
+    - `-Dsonar.pullrequest.key=`[`<+codebase.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
+    - `-Dsonar.pullrequest.branch=`[`<+codebase.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
     - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
 
       If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
@@ -326,6 +326,7 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 ```
 
 </details>
+
 
 ## SonarQube proxy settings
 

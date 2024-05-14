@@ -8,8 +8,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 This topic describes the following operations:
-1. [Create an environment with single click.](#select-an-environment)
-2. [Create an infrastructure with single click.](#select-an-infrastructure)
+1. [Create an environment.](#select-an-environment)
+2. [Create an infrastructure.](#select-an-infrastructure)
 3. [Automatically discover services on your cluster.](#automatically-create-discovery-agent)
 4. [Create network maps with a single click.](#create-network-maps)
 5. [Choose the chaos experiments to run.](#create-chaos-experiments)
@@ -35,7 +35,7 @@ This topic describes the following operations:
 
 ### Select an environment
 
-3. Select an environment from a list of environments and click **Next**. It may take a while to set up the environment.
+3. Select an environment from a list of environments and select **Next**. It may take a while to set up the environment.
 
     ![](./static/guided/select-env-2.png)
 
@@ -45,13 +45,13 @@ This topic describes the following operations:
 
     ![](./static/guided/select-infra-3.png)
 
-5. The next step verifies some permissions by running pre-configured checks, after which you can click **Next**.
+5. The next step verifies some permissions by running pre-configured checks, after which you can select **Next**.
 
     ![](./static/guided/run-checks-4.png)
 
 ### Automatically create Discovery Agent
 
-6. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To know how to use a custom discovery agent, go to [customize discovery agent](#customize-discovery-agent).
+6. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To know how to use a custom discovery agent, go to [customize discovery agent](/docs/chaos-engineering/features/service-discovery/service-discovery-usage.md).
 
 7. Once you complete the steps mentioned earlier, HCE looks for services in your cluster (which may take a while).
 
@@ -59,7 +59,7 @@ This topic describes the following operations:
 
 ### Create Network Maps
 
-8. Once HCE discovers the services, the UI lists them for your reference. Click **Create Network Maps**.
+8. Once HCE discovers the services, the UI lists them for your reference. Select **Create Network Maps**.
 
     ![](./static/guided/discovery-complete-7.png)
 
@@ -117,7 +117,7 @@ This creates network maps and lists them on the UI.
 
 ### Execute chaos experiments
 
-13. Click **Run** to execute the chaos experiments.
+13. Select **Run** to execute the chaos experiments.
 
     ![](./static/guided/sample-exp-20.png)
 
@@ -139,39 +139,11 @@ Congratulations! You have successfully:
 
     ![](./static/guided/view-progress-23.png)
 
-- You can click **View** to see the progress of different clusters executing various chaos experiments.
+- You can select **View** to see the progress of different clusters executing various chaos experiments.
 
     ![](./static/guided/view-cluster-res-24.png)
 
-## Customize Discovery Agent
 
-1. If you want to customize the discovery agent, navigate to **Chaos** and select **Discovery**. Click **New Discovery Agent**.
-
-    ![](./static/guided/discovery.png)
-
-2. Select an **environment**, **infrastructure**, **Discovery Agent Name** and **namespace**. The next step (optional) requires information such as node selector, blacklisted namespaces, and period of detecting the services. Select **Create New Discovery Agent**.
-
-    ![](./static/guided/add-details-discovery.png)
-
-### Edit Discovery Agent
-
-1. To edit a discovery agent, navigate to the agent and click **Edit**. Make the necessary changes to the required fields.
-
-    ![](./static/guided/edit-dis-agent-1.png)
-
-2. Select **Update Discovery Agent**.
-
-    ![](./static/guided/edit-details-discovery.png)
-
-### Delete Discovery Agent
-
-1. To delete a discovery agent, navigate to the agent you want to delete, and select **Delete**.
-
-    ![](./static/guided/delete-1.png)
-
-2. Select **Delete**.
-
-    ![](./static/guided/confirm-2.png)
 
 ## Next steps
 

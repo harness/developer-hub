@@ -7573,3 +7573,18 @@ This approach locks you into the pre-installed Python version. Consider using a 
 
 #### In Harness Platform, is it possible to configure a schedule trigger to run at 11:45 AM on the third Sunday of every month using a cron expression with a hashtag (#) for the weekday (e.g., "45 11 ? * Sun#3 *")?
 No, Harness Platform does not currently support cron expressions with this kind of setup.
+
+#### How to assign a JSON stored as secret file to variable?
+You can use below command to achieve this:
+```
+echo -n "<+secrets.getValue("account.jsonfilesecret")>" > /var/tmp/secret.json
+json=$(cat /var/tmp/secret1.json)
+```
+
+#### Are environment level `<+input>` fields supported in the pipeline run screen?
+Any variable used as `<+input>` will be asked to provide a value at the runtime.
+
+#### Can you tell me which steps for a custom stage run directly on the delegate?
+Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
+
+

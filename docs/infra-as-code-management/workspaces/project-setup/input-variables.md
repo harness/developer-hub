@@ -1,7 +1,7 @@
 ---
-title: Using Harness pipeline variables
+title: Using pipeline variables
 description: Learn how to use Harness pipeline variables in your Workspaces
-sidebar_position: 50
+sidebar_position: 10
 ---
 
 Harness IaCM can use [Harness pipeline variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/) as Environment Variables or Terraform Variables within your Workspace.

@@ -161,6 +161,27 @@ These policies are available apart from the above platform level RBAC, and can b
 
 ![](./static/rbac-admin-usecase.png)
 
+### Hide Catalog Entities
+
+Catalog Entities can be hidden from the users, except for the owner user-group by using either one of the `hidden`,`secrets` or `private` tag as shown in the example below.
+
+```YAML
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: my-new-service
+  description: Description of my new service
+  tags:
+    - hidden
+spec:
+  type: service
+  lifecycle: production
+  owner: team-a
+```
+
+## Workflow Access 
+
+Access to [IDP Self Service Workflows](https://developer.harness.io/docs/internal-developer-portal/flows/service-onboarding-pipelines) is inherited by the [access to the pipeline](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) used to power them, i.e., if a user has permissions to `Run` a pipeline then only they can trigger a workflow. 
 
 
 

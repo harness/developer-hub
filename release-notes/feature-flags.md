@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-04-25T16:19:25
+date: 2024-05-09T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,34 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: April 25, 2024
+#### Last updated: May 9, 2024
+
+## May 2024
+
+### Golang SDK
+
+#### Version 0.1.22
+
+ -  Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
+ - Upgraded the Go SDK version in analytics. 
+
+ ### Python SDK
+
+#### Version 1.6.1
+
+*New features and enhancements*:
+ - SDK support has been added for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11455)
+ - Improved the retry logic used by SDK `http` requests, as well as the clarity of logs if requests fail. (FFM-11441)
+
+*Fixed issues*:
+ - Only deletes cache key if it exists. (FFM-11331, ZD-62250)
+
+### React Client SDK
+
+#### Version 1.11.0
+
+ - We've reduced the ES (ECMAScript) target to 2018. (FFM-11353)
+ - The Javascript SDK has also been updated. 
 
 ## April 2024
 
