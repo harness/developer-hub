@@ -409,6 +409,7 @@ trigger:
                 branch: <+trigger.branch>
 ```
 
+
 ## Troubleshoot Git event triggers
 
 ### Pipelines don't start after trigger events
@@ -461,3 +462,38 @@ When connecting to Git, if your organization has enabled OAuth App access restri
 
 If you receive this error, it likely means you have not integrated [OAuth with Git Experience](/docs/platform/git-experience/oauth-integration) in Harness.
 For more information, go to [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview).
+
+
+## Skipping CI/CD Pipeline Builds
+
+:::info note
+Currently, this functionality is behind the feature flag `CDS_SKIP_WEBHOOK_TRIGGER_EXECUTION_ON_SPECIAL_KEYWORD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature
+::: 
+
+You can skip CI/CD pipeline builds based on specified keywords within commit messages. It ensures that builds are triggered only when necessary, enhancing efficiency in development workflows.
+
+### Usage
+
+To skip a build, include one of the following keywords in the commit message:
+
+- [skip ci]
+- [ci skip]
+- [skip pipeline]
+- [pipeline skip]
+- [no_ci]
+
+### Text Position
+
+The keywords must appear anywhere within the commit message, even if surrounded by other text. For example, **This is a [ci skip] commit**.
+
+### Supported Platforms
+
+This functionality is applicable across various version control platforms, including:
+
+- GitHub
+- GitLab
+- Bitbucket
+
+### Events
+The skipping mechanism operates for both **push** and **pull request** events in Git repositories.
+

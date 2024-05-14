@@ -730,6 +730,24 @@ For a full list of supported fields, go to [AWS Lambda Create Function Request](
 
 Harness supports all of the popular Git platforms for storing your function definition files.
 
+### AWS SAM
+
+#### Can we deploy multiple stacks (multiple SAM build and deployments in a single pipeline) using a single service?
+
+No. We support only one stack in the SAM Deploy step.
+
+#### There is an option to specify multiple manifest files on the service definition. Can we have both the stacks' manifests defined in the same service and use it (any suggestions and examples around this)?
+
+It's not supported. We support deploying to one stack only in the SAM Deploy step. 
+
+For this scenario, we suggest that you have one pipeline with two Deploy stages with two different services and stacks. 
+
+Alternatively, you can have one pipeline with one Deploy stage and specify two different services in the **Service** tab, and in the **SAM Deploy** step > **Stack Name** field, select runtime input. 
+
+![](./static/aws-sam-faq.png)
+
+![](./static/aws-sam-runtime.png)
+
 ### Spot Elastigroup
 
 #### What is a Spot deployment in Harness?

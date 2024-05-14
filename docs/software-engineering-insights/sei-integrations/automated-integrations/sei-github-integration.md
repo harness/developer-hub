@@ -1,23 +1,18 @@
 ---
-title: SEI GitHub Enhanced integration - BETA
+title: SEI GitHub integration
 description: Integrate SEI with GitHub Cloud and Enterprise
 sidebar_position: 90
-sidebar_label: GitHub 2.0
+sidebar_label: GitHub
 redirect_from:
-  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github-easyonboarding
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration
 ---
 
 GitHub provides hosting for software development and version control using Git.
 
-:::info **ABOUT THIS INTEGRATION**
-
-The new experience for the GitHub integration is currently in BETA and is behind the Feature Flag `<SEI_EASY_ONBOARDING_GITHUB>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-:::
-
 To integrate SEI with Github, you must choose your Github type. SEI supports two integrations to integrate SEI with GitHub:
 
-* GitHub Cloud
-* GitHub Enterprise
+* GitHub Organization (Cloud)
+* GitHub Enterprise Server (On-Prem)
 
 ![](../static/github-type.png)
 
@@ -33,7 +28,7 @@ In other words, the owner of the GitHub personal access token that is associated
 For the integration type as Cloud, you can choose how you want to connect GitHub i.e.
 
 * GitHub App
-* GitHub Access Token
+* GitHub Access Token i.e. Personal Access Token (classic)
 
 ![](../static/github-cloud-types.png)
 
@@ -127,7 +122,7 @@ The support for Connecting via Webhook has been deprecated as part of this featu
 
 8. Click on **Validate Connection** to validate the connection, and once successful, you'll have the integration set up under the **Your Integrations** tab.
 
-## Connect with GitHub Enterprise
+## Connect with GitHub Enterprise Server
 
 To connect with the **GitHub Enterprise**, you can use the **Ingestion Satellite** to integrate with on-premises GitHub Enterprise instances. The configuration process for the integration is similar to setting up the integration in the cloud but instead uses the satellite to communicate with the GitHub server.
 
