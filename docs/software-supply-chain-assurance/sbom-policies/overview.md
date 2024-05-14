@@ -3,7 +3,7 @@ title: Overview
 description: learn to create SSCA policies and enforce them.
 sidebar_position: 1
 redirect_from:
-  - /docs/software-supply-chain-assurance/sbom-policies/overview
+  - /docs/software-supply-chain-assurance/ssca-policies/overview
 ---
 
 The creation of a Software Bill of Materials (SBOM) significantly enhances software transparency. The comprehensive view not only brings visibility but also opens up the opportunity to improve security and ensure compliance. It enables organizations to define and implement specific rules governing the use of open source components, including the criteria to allow or deny components. By applying these rules, organizations can effectively mitigate security risks, comply with licensing obligations, and exert greater control over their software supply chain.
