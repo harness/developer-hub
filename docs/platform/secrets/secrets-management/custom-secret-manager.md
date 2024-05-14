@@ -25,6 +25,8 @@ This topic explains how to add and use a Custom Secret Manager in Harness.
 
 ### Permissions
 
+The following permissions are required to create a custom secret manager. However, these permissions are not required to use the custom resource manager after it's created.
+
 * Create/Edit Secrets
 * Create/Edit Connectors
 

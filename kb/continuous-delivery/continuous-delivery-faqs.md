@@ -7475,6 +7475,9 @@ The file will not be cleared as they have been downloaded explicitly, however yo
 #### Why is the filter option greyed out for pipeline executions based on a branch?
 The option is used for filtering remote pipelines. If there are no remote pipelines executions, this option will not be highlighted.
 
+#### How to disable pushing logs from the GitOps Agent to Stackdriver?
+To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to False in the the agent ConfigMap.
+
 #### What authentication flows (grant types) are supported for AWS and GCP OIDC?
 For the Kubernetes connector, we go through the client credentials. For AWS and GCP we have implemented it slightly differently. For AWS OIDC is also implicit - Use OIDC: Connect to AWS with OIDC. 
 
@@ -7532,6 +7535,44 @@ Currently, we cannot do policy evaluations via APIs.
 
 #### How can different versions be deployed to separate clusters or stages within a single pipeline?
 You can enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.
+
+#### What are the minimum RBAC permissions needed for GitOps?
+Determining minimum requirements for RBAC is not straightforward. It varies based on applications and the destination cluster setup. 
+
+#### Can Harness support ServiceNow Utah version ?
+Yes, ServiceNow Utah version is certified.
+
+#### Is it possible to deploy multiple TAS applications using a single manifest?
+As of now, we don't support or certify deploying multiple applications using a single manifest.
+
+#### In a Harness GitOps deployment, what is the most likely cause of delay between a merged pull request and the corresponding GitOps application sync trigger?
+In a GitOps deployment using ArgoCD, delay can occur between a code change and the corresponding application update. This is because the ArgoCD application controller periodically checks the Git repository for changes.
+
+To improve responsiveness, you can adjust the ArgoCD controller's resynchronization interval to a lower value. This will make it check for updates more frequently. However, a lower interval can increase the load on the Git repository.
+
+Here are some resources for configuring the resynchronization interval in ArgoCD:
+
+* [Automated sync semantics](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-semantics)
+* [How often does ArgoCD check for changes to my Git or Helm repository](https://argo-cd.readthedocs.io/en/stable/faq/#how-often-does-argo-cd-check-for-changes-to-my-git-or-helm-repository)
+
+#### Does Harness support the 'serverless-fintch' plugin in native serverless deployment?
+Currently, Harness does not support the 'serverless-finch' plugin natively.
+
+#### Can we force developers to use pre-existing input sets in Harness pipelines to prevent manual configuration errors?
+Harness doesn't enforce input sets. To achieve this, you can restrict pipeline execution to system accounts with pre-configured triggers using API calls or Git commits.
+
+####  How to install poetry on the Harness Serverless image (harnessdev/serverless-package:3.30.1-1.1.0) to avoid "command not found" errors?
+While Harness offers a new image (harnessdev/serverless-preparerollback:3.30.1-2.0.0) that installs package.json dependencies, you can build a custom image with poetry using a Dockerfile like this (replace in pipeline): 
+
+FROM harnessdev/serverless-package:3.30.1-1.1.0
+RUN apk add --no-cache py3-pip && pip install poetry
+
+:::note
+This approach locks you into the pre-installed Python version. Consider using a custom image for specific version control.
+:::
+
+#### In Harness Platform, is it possible to configure a schedule trigger to run at 11:45 AM on the third Sunday of every month using a cron expression with a hashtag (#) for the weekday (e.g., "45 11 ? * Sun#3 *")?
+No, Harness Platform does not currently support cron expressions with this kind of setup.
 
 #### How to assign a JSON stored as secret file to variable?
 You can use below command to achieve this:

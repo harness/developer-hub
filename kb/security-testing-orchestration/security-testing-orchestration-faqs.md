@@ -90,7 +90,7 @@ Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orche
 
 ## Prisma Cloud scans
 
-#### How do I add labels to a Prisma Cloud scan when my build infrastructure is Kubernetes or Docker?
+### How do I add labels to a Prisma Cloud scan when my build infrastructure is Kubernetes or Docker?
 To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs to **Settings (optional)** in your Prisma Cloud scan step. These key-value pairs will be added as labels when you run the scan.
 
 :::note 
