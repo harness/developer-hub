@@ -1,59 +1,23 @@
 ---
-title: Add a custom secret manager
-description: This topic explains how to create and use a Custom Secret Manager.
+title: Add a CyberArk Conjur custom secret manager
+description: This topic explains how to create CyberArk Conjur custom secret manager.
 # sidebar_position: 2
-helpdocs_topic_id: mg09uspsx1
-helpdocs_category_id: 48wnu4u0tj
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
-Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account.
+You can link CyberArk Conjur to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
-You can also access your encrypted secrets stored in third-party Secret Managers using the Harness Custom Secret Manager.
+## Before you begin
 
-import Storeauth from '/docs/platform/shared/store-auth-credentials.md'
+You need an understanding of:
 
-<Storeauth />
+- [Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+- [Secrets Management](/docs/platform/secrets/secrets-management/harness-secret-manager-overview).
+- [Storing authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials).
 
-This topic explains how to add and use a Custom Secret Manager in Harness.
+## CyberArk Conjur secret manager permission requirements
 
-### Before you begin
-
-* [Harness Secret Manager Overview](/docs/platform/secrets/secrets-management/harness-secret-manager-overview)
-* [Store authentication credentials](/docs/platform/secrets/secrets-management/store-authentication-credentials)
-
-### Permissions
-
-The following permissions are required to create a custom secret manager. However, these permissions are not required to use the custom resource manager after it's created.
-
-* Create/Edit Secrets
-* Create/Edit Connectors
-
-    ![](../../secrets/static/custom-secret-manager-31.png)
-
-:::info important
-
-* Harness Custom Secret Manager is a read-only Secret Manager. It's not possible to create reference secrets. However, Harness Custom Secret Manager enables you to define templates that include logic to connect to and retrieve secrets from the secret manager. Your template specifies how the secret is retrieved and whether it's a string or JSON format.
-* Harness can read/decrypt secrets, but it cannot write secrets to the Custom Secrets Manager.
-
-:::
-
-### Harness Custom Secret Manager Overview
-
-Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Account.
-
-Harness integrates with the following third-party Secret Managers along with a built-in Secret Manager:
-
-* AWS KMS
-* AWS Secrets Manager
-* Azure Key Vault
-* GCP KMS
-* HashiCorp Vault
-
-You can use third-party Secrets Managers not integrated with Harness to store encrypted secrets. With Harness Custom Secret Manager, you can integrate Harness with your third-party Secret Managers and read or access your secrets.
-
-Your Custom Secret Manager uses a shell script that you can execute either on a delegate or on a remote host which is connected to the delegate. Harness fetches and reads your secrets from the third-party Secret Manager through this shell script.
+- Make sure you have Create/Edit permissions for secrets.
+- Make sure you have **Create/Edit** permissions for connectors.
 
 ### Step 1: Create a Secret Manager Template
 
@@ -75,9 +39,59 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 6. (Optional) In **Tags**, select the pencil icon and assign a tag.
 7. Enter a **Version Label**.
 8. (Optional) Select the upload icon and upload a **Logo**.
-9.  Under **Save To**, select **Project**, then select **Start**.
+9. Under **Save To**, select **Project**, then select **Start**.
 10. Select your **Script Type**, then select your script location.
-11. Enter your script in **Script**, then select **Save**.
+11. Enter the following script in **Script**.
+
+   ```bash
+   CONJUR_APPLIANCE_URL='<+spec.environmentVariables.CONJUR_APPLIANCE_URL>'
+   HOST_ID='<+spec.environmentVariables.HOST_ID>'
+   API_KEY='<+secrets.getValue(<+spec.environmentVariables.API_KEY_SECRET_ID>)>'
+   AUTHENTICATOR='<+spec.environmentVariables.AUTHENTICATOR>'
+   ACCOUNT='<+spec.environmentVariables.ACCOUNT>'
+   KIND='variable'
+
+   #IDENTIFIER="cyberark-vault/LOB_prod/T-App-Conjur/Application-CNC-Conjur-Keys-test-secret-cluster.centene.com-admin/username"
+   IDENTIFIER='<+spec.environmentVariables.IDENTIFIER>'
+
+   #
+   # Authenticate first to get an access token
+   # ref: https://docs.conjur.org/Latest/en/Content/Developer/Conjur_API_Authenticate.htm
+   #
+
+   FULL_AUTH_URL="$CONJUR_APPLIANCE_URL/$AUTHENTICATOR/$ACCOUNT/$HOST_ID/authenticate"
+   ACCEPT_HEADER='Accept-Encoding: base64'
+   ACCESS_TOKEN=$(curl --request POST --header "$ACCEPT_HEADER" --data "$API_KEY" "$FULL_AUTH_URL")
+
+   #  Use the token to retrieve a secret
+   RETRIEVAL_URL="$CONJUR_APPLIANCE_URL/secrets/$ACCOUNT/$KIND/$IDENTIFIER"
+   AUTH_HEADER="Authorization: Token token=\"${ACCESS_TOKEN}\""
+   ACCEPT_HEADER_JSON="Accept: application/json"
+
+   secret="$(curl --request GET $RETRIEVAL_URL --header "$AUTH_HEADER" --header "$ACCEPT_HEADER_JSON" | head -n 1)"
+
+   # DEBUG
+   secret=$RETRIEVAL_URL
+   ```
+
+12. Select **Configuration**, then Select **Add Input Variable**.
+13. Set up the following input variables.
+
+   - `CONJUR_APPLIANCE_URL`
+      - **Type**: String
+   - `HOST_ID`
+      - **Type**: String
+   - `API_KEY_SECRET_ID`
+      - **Type**: String
+      - **Value**: `conjur_api_key`
+   - `AUTHENTICATOR`
+      - **Type**: String
+   - `ACCOUNT`
+      - **Type**: String
+   - `IDENTIFIER`
+      - **Type**: String
+
+14. Select **Save**.
 
    For detailed steps to create a Secret Manager Template, go to [Create a Secret Manager Template](../../templates/create-a-secret-manager-template.md).
 
@@ -97,7 +111,7 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 
 4. Enter a **Name** for your Custom Secret Manager. Select **Continue**.
 5. Select **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../templates/create-a-secret-manager-template.md) listed.
-6. Select the desired scope and select a Secret Manager Template from the Template Library.
+6. Select the desired scope and select a your CyberArk Conjur Secret Manager template from the Template Library.
 
    ![](../../secrets/static/custom-secret-manager-35.png)
 
@@ -110,7 +124,7 @@ This topic shows you how to add a Custom Secret Manager in the project scope.
 
 9. Select **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
 10. Select **Continue**.
-11. In **Delegates** **Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
+11. In **Delegates Setup**, enter [**Selectors**](../../delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Select **Save and Continue**.
 12. In **Connection Test**, select **Finish** after your connection is successful.
 
 ### Step 3: Use the Custom Secret Manager
