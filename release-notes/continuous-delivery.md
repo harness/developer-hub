@@ -52,7 +52,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### Fixed issues
 
 - Fixed an issue where users were not able to configure **Job Parameters** for a Jenkins job. (CDS-95864, ZD-61927)
-- The **Feed** field in the Artifact Details page for Azure artifacts threw a null point exception error. This issue occurred due to the presence of a whitespace in the Azure project name due to which Harness was not able to parse the URL as an URI object. This issue is fixed by encoding the URL to convert the whitespace in the project name to `%20` as per the UTF-8 standard to avoid the null pointer exception. (CDS-95752, ZD-61696)
+- The **Feed** field in the Artifact Details page for Azure artifacts threw a null pointer exception error. This issue occurred due to the presence of a whitespace in the Azure project name due to which Harness was not able to parse the URL as an URI object. This issue is fixed by encoding the URL to convert the whitespace in the project name to `%20` as per the UTF-8 standard to avoid the null pointer exception. (CDS-95752, ZD-61696)
 
 ### Version 1.36.5
 
