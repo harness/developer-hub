@@ -222,6 +222,15 @@ Once you enable the PLugin it will approximately take around 30 minutes for the 
 
 :::
 
+14. Once the plugin is Enabled, to add it in your sidenav as shown in the image below go to the **Layout** under **Admin**.
+
+![](./static/to-do-plugin.png)
+
+15. Under the **Sidenav** configuration, add the plugin name as a `SidebarItem` with reference to your plugin `to: component name` under `props`. Read more about [Configuring Layout of IDP Catalog pages](Configuring Layout of IDP Catalog pages). 
+
+![](static/plugin-layout.png)
+
+
 ## Edit/Delete Plugin
 
 Once your Plugin is enabled you can find the plugin under Enabled Plugin tab as well as under Custom Plugin tab with `Enabled` tag, but you can edit or delete plugin only under custom plugins tab. Now click on the 3 dots at top of the Plugin card to edit or delete plugin. 
