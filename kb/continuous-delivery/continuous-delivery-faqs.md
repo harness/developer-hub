@@ -7546,7 +7546,7 @@ Yes, ServiceNow Utah version is certified.
 As of now, we don't support or certify deploying multiple applications using a single manifest.
 
 #### In a Harness GitOps deployment, what is the most likely cause of delay between a merged pull request and the corresponding GitOps application sync trigger?
-In a GitOps deployment using ArgoCD, a delay can occur between a code change and the corresponding application update. This is because the ArgoCD application controller periodically checks the Git repository for changes.
+In a GitOps deployment using ArgoCD, delay can occur between a code change and the corresponding application update. This is because the ArgoCD application controller periodically checks the Git repository for changes.
 
 To improve responsiveness, you can adjust the ArgoCD controller's resynchronization interval to a lower value. This will make it check for updates more frequently. However, a lower interval can increase the load on the Git repository.
 
