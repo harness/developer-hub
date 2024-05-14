@@ -8,7 +8,7 @@ sidebar_position: 135
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Custom Step step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
+The Custom Scan step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
 
 import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that-use-custom-scan-step.md';
 
