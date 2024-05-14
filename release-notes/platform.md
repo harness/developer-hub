@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-05-06:T10:00:30
+date: 2024-05-14:T10:00:30
 sidebar_position: 3
 ---
 
@@ -78,6 +78,18 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## May 2024
+
+### Version 1.37.6<!--  May 14, 2024 -->
+
+#### Fixed issues
+
+- An `UUID may not be empty` error occurred when configuring LDAP settings. This was due to the LDAP identifier being sent as an empty string instead of null if it didn't already exist. The issue has been resolved, and the identifier is now correctly sent as null, preventing the error. (PL-50657)
+
+- The `getUserGroupList` API was returning inconsistent results, such as missing groups, due to issues with the sorting functionality based solely on the `lastModifiedAt` timestamp. We've enhanced the sorting mechanism in the User Group List API by introducing a secondary sort field to serve as a tiebreaker. This ensures consistent and reliable ordering across queries, significantly improving the stability and accuracy of paginated results. (PL-48886, ZD-61135)
+
+- Login issues occurred in NextGen when FirstGen delegates were scaled down because the LDAP Authentication task was initially sent to FirstGen Delegates. If a FirstGen delegate wasn't available, the task would expire before being sent to a NextGen delegate. Compounding the issue, the timer at the Gateway was set to expire before the delegate task, leading to failed login attempts. We have implemented a solution that prioritizes sending the LDAP Authentication task to NextGen delegates first if the feature flag `PL_USE_NG_DELEGATE_LDAP_AUTH` is enabled, thereby enhancing the reliability of login processes in NextGen environments. (PL-48541, ZD-60437)
+
+- Pod Disruption Budgets (PDBs) in the Harness namespace caused issues during patching cycles due to incorrectly targeted rules. Harness updated PDB rules for the `cloud-info`, `anomaly-detection`, `gateway`, and `next-gen-ui` services to select the correct pods, ensuring smooth operations during maintenance activities. (PL-49350, ZD-62353)
 
 ### Version 1.36.5<!--  May 06, 2024 -->
 
