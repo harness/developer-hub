@@ -1,7 +1,7 @@
 ---
 title: Add a CyberArk Conjur custom secret manager
-description: This topic explains how to create CyberArk Conjur custom secret manager.
-# sidebar_position: 2
+description: This tutorial explains how to create CyberArk Conjur custom secret manager.
+sidebar_position: 9
 ---
 
 You can link CyberArk Conjur to Harness and use it to store any sensitive data you use in Harness, including secrets.
@@ -16,7 +16,7 @@ You need an understanding of:
 
 ## CyberArk Conjur secret manager permission requirements
 
-- Make sure you have Create/Edit permissions for secrets.
+- Make sure you have **Create/Edit** permissions for secrets.
 - Make sure you have **Create/Edit** permissions for connectors.
 
 ### Step 1: Create a Secret Manager Template
@@ -79,17 +79,22 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 
    - `CONJUR_APPLIANCE_URL`
       - **Type**: String
+      - **Value**: <+input>
    - `HOST_ID`
       - **Type**: String
+      - **Value**: <+input>
    - `API_KEY_SECRET_ID`
       - **Type**: String
       - **Value**: `conjur_api_key`
    - `AUTHENTICATOR`
       - **Type**: String
+      - **Value**: <+input>
    - `ACCOUNT`
       - **Type**: String
+      - **Value**: <+input>
    - `IDENTIFIER`
       - **Type**: String
+      - **Value**: <+input>
 
 14. Select **Save**.
 
