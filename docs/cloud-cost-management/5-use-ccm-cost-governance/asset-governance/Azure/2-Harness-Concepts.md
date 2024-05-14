@@ -229,7 +229,7 @@ After the output is rendered, users can search for any keywords in the output te
 The JSON output can be downloaded in either JSON format or a CSV format(original or flatted) into a single zip archive.
 
 #### JSON Filtering
-The output can be filtered based on the keys present in the JSON output. Currently, filtering on the basis of `==`, `!=`, `<`, `<=`, `>`, `>=` is supported. This feature enables users to extract specific fields, filter out irrelevant data, and perform relevant queries on JSON datasets.
+The output can be filtered based on the keys present in the JSON output. Currently, filtering on the basis of `==`, `!=`, `<`, `<=`, `>`, `>=` is supported in terms of numeric key values and if the key's value is a string, string matching using `LIKE` is supported. This feature enables users to extract specific fields, filter out irrelevant data, and perform relevant queries on JSON datasets.
 
 #### Sorting
 The output can be sorted based on the keys present in the JSON output in either an `ASCENDING` or `DESCENDING` manner.
@@ -238,6 +238,6 @@ The output can be sorted based on the keys present in the JSON output in either 
 If output needs to be streamlined and only a few keys-value pairs are required, 'Pick' functionality can be used. Using this, users can pick only the required keys and see the data associated with them in the output.
 
 :::info
-If multiple Regions and/or multiple Subscriptions are selected, the Output Terminal will render the links to the Evaluations page for all the individual evaluations per Region-Subscription pair. From that page, upon clicking on individual evaluations, detailed output and logs can be seen.
+If multiple Regions and/or multiple Subscriptions are selected, the Output Terminal will render the links to the Evaluations page for all the individual evaluations per Subscription-Region pair. From that page, upon clicking on individual evaluations, detailed output and logs can be seen.
 :::
 
