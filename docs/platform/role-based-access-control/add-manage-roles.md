@@ -144,3 +144,31 @@ Creating roles is one part of [configuring RBAC in Harness](/docs/platform/role-
 Roles, which grant permissions, work alongside [resource groups](/docs/platform/role-based-access-control/add-resource-groups), which grant access.
 
 After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).
+
+## Adding Account Admin permissions to users in a Custom Resource Group
+
+You can create a resource group and assign role bindings to the user group. This ensures that any new user added to this resource group automatically receives the necessary roles.
+
+To add new users to a custom Resource Group and do Role bindings:
+
+1. Go to **Account Settings**, select **Access Control**, and then choose **Resource Group**.
+2. Create a new **Resource Group**, select the desired resource types, and click **Save**.
+3. Return to **Account Settings**, select **Access Control**, then choose **Users**.
+4. Click **New User**, enter the user's email, and click **Add** under **Role Bindings**.
+5. Click **Select a role** under **Roles** and choose **Account Admin** from the drop down.
+6. Click **All Resources Including** under **Resource Groups** and select your respective **Resource Group**.
+7. Click **Apply** to send an invitation to the user's email. After the user accepts the invite, the role binding process is complete.
+8. After you have clicked on apply, an invitation to the specified user email will be sent. After the user accepts the invite, the role binding process is comlete.
+9. The user can now login through their account and access only those resources that are allowed in the resource groups with their **Account Admin** permissions.
+
+To add an existing user to a custom Resource Group and do Role bindings:
+
+1. Go to **Account Settings**, select **Access Control**, and then choose **Resource Group**.
+2. Create a new **Resource Group**, select the desired resource types, and click **Save**.
+3. Return to **Account Settings**, select **Access Control**, then choose **Users**.
+4. In the search bar, search for the user that you wish to do the **Account Admin** role binding, and select the user.
+5. Go to the **Role Bindings** tab and click on **Manage Role Bindings**.
+6. Click **Add** under **Role Bindings**. Click **Select a role** under **Roles** and choose **Account Admin** from the drop down.
+7. Click **All Resources Including** under **Resource Groups** and select your respective **Resource Group** from the drop down.
+8. Click **Apply** and you will receive a notificattion stating **Role Assignments updated successfully** and the role binding process is complete.
+9. The user can now login through their account and access only those resources that are allowed in the resource groups with their **Account Admin** permissions.
