@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### New features and enhancements
 
-- Expanded Azure Region Options: We have added a new 'All' option in Azure regions, which enables users to run a Governance policy across all regions. [CCM-17588]
+- Expanded Azure Region Options: We have introduced a new `allregions` option in Azure regions, allowing users to execute any Rule or establish an Enforcement across all regions with just one Evaluation for a Subscription. This boosts efficiency and helps prevent exceeding Azure API limits when executing a Rule for a Subscription across multiple regions. Instead of running on multiple regions it will now run only on one single region i.e `allregions`. [CCM-17185, CCM-16771]
 
 - Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
 
