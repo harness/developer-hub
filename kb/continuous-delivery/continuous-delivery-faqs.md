@@ -7587,6 +7587,40 @@ Any variable used as `<+input>` will be asked to provide a value at the runtime.
 #### Can you tell me which steps for a custom stage run directly on the delegate?
 Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
 
+#### Does Harness support the ability to apply Kubernetes patches against existing resources?
+Yes, the new Kubernetes Patch step enables users to apply specific configurations on deployments or post-deployment processes.
+To effectively employ this feature, it is imperative to fulfill the following prerequisites:
+- Ensure that your delegate version is 828xx or newer.
+- Enable the Feature Flag `CDS_K8S_PATCH_STEP_NG` within your operational environment.
+To learn more about this step, go to [Kubernetes Patch Step](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-patch-step)
+
+#### How do I export deployments from the UI or the API??
+You can download pipeline or step execution logs via the UI. You can download the pipeline, stage, and step execution logs via the API.
+The process of downloading logs is the same for all Harness modules. Your access to certain modules and settings limits the functionality available to you.
+To effectively employ this feature, enable the Feature Flag `SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS` within your operational environment.
+For more information, go to [Download execution logs](https://developer.harness.io/docs/platform/pipelines/executions-and-logs/download-logs/)
+
+#### Can I utilize Harness variables in the base manifest or kustomization.yaml?
+No, Harness variables cannot be directly used in the base manifest or kustomization.yaml files, 
+They can only be utilized within kustomize patches that are added in the Kustomize Patches Manifest Details section.
+For more information, go to [Deploy to Kubernetes using Kustomize](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments/#limitations)
+
+#### What does the error message `No trigger signature matched with AccountId and Signature` indicate?
+This error message typically indicates that no trigger signatures were found in the system corresponding to the provided AccountId and Signature.
+You may encounter this error if the system fails to locate any Build triggers associated with the specified AccountId and Signature.
+To troubleshoot this error please: 
+- Verify AccountId and Signature: Ensure that the AccountId and Signature provided are accurate and valid.
+- Test with Different Parameters: Changes to trigger’s artifact path just before pushing the tag can lead to this issue
+- Check Trigger Configuration: Review the configuration of your Build triggers to confirm that they are correctly set up and associated with the relevant Signature.
+For more information, go to [Webhook triggers reference](https://developer.harness.io/docs/platform/triggers/triggers-reference/)
+
+#### Can I use GitHub Actions with Kubernetes-based builds in Harness CI?
+While the built-in GitHub Actions step is not compatible with Kubernetes builds, you can utilize the GitHub Action Drone plugin with k8s-based builds. 
+However, it's important to note that this integration has limitations.
+- Shared Root Volume: In Kubernetes builds, there's no shared root volume between steps, which means the common GitHub Actions pattern of using an action to install tooling for later steps won't function as expected.
+- Output Variables: Additionally, the GitHub Action Drone plugin lacks support for output variables, rendering the usage of output variables that an action may publish in later steps impossible.
+For more information, go to [Migrating from GitHub Actions to Harness Continuous Delivery](https://developer.harness.io/docs/continuous-delivery/cd-onboarding/new-user/migrate-github-action-to-harness/)
+
 #### Can user delete a service without removing its active instances?
 Yes, a user can delete services that have active instances by enabling the Force delete option in the account settings.
 
@@ -7599,4 +7633,3 @@ For more information, go to [Looping Strategies](https://developer.harness.io/do
 
 #### Can a user create/update a confluence page from a Harness step?
 No, currently there is no native step to create or update a confluence page.
-
