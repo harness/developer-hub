@@ -95,28 +95,6 @@ To create a monitored service, on the Verify settings page, do the following:
 
       If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and Harness assigns the existing monitored service to the Verify step.
 
-
-## Select a monitored service template during runtime
-
-
-:::important
-This feature is currently behind the feature flag, `CV_MONITORED_SERVICE_TEMPLATIZATION`. To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io).
-:::
-
-Apart from [creating a monitored service](#create-a-monitored-service), Harness also provides you with the option to select a monitored service template during runtime. 
-
-To select a monitored service template during runtime, on the Verify step settings page, do the following:
-
-1. In **Monitored Service** > **Monitored Service Type**, select **Template**.
-2. In Template input, select **Runtime input** type.
-3. Select **Apply Changes**.
-   
-   ![](./static/monitored-service-template-as-runtime-input.png)
-
-When you run the pipeline, you have the option to select the service template of your choice under **Execution** > **Step: Verify** > **Monitored service template**.
-
-![](./static/monitored-service-template-1.png)
-
 ## Add a health source
 
 A health source is an APM tool that monitors and aggregates data in your deployment environment. 
