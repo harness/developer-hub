@@ -7587,4 +7587,22 @@ Any variable used as `<+input>` will be asked to provide a value at the runtime.
 #### Can you tell me which steps for a custom stage run directly on the delegate?
 Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
 
+#### Does harness http step support edgegrid auth?
 
+As of now we do not support edgegrid auth
+
+#### Is it possible to have a webhook that triggers when a file-store object is changed?
+
+Yes, we can. To learn more go to [Conditions Settings in the Triggers Reference Doc](https://developer.harness.io/docs/platform/triggers/triggers-reference/#conditions-settings)
+
+#### How do you validate a cloudformation stack before creating it?
+
+To validate the cloudformation stack, you can install the aws cli on the delegate and use a shell script to validate the template by running :
+
+``` 
+aws cloudformation validate-template --template-body file://<path-to-your-template-file>
+```
+
+#### What does the error "buffer already closed for writing" mean?
+
+The error message "buffer already closed for writing" typically occurs in the context of Windows Remote Management (WinRM) when there's an attempt to write data to a buffer that has already been closed. It usually suggests that the buffer (a temporary storage area) where data is supposed to be written to has already been marked as closed

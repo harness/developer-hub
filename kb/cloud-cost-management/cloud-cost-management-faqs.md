@@ -672,6 +672,34 @@ Currently, it's only possible to include a custom message in the scheduled deliv
 
 The sharing option for the Harness dashboard requires selecting a specific user group within Harness itself and defining different levels of access. Therefore, someone who is not part of any group in Harness will not have access to the dashboard.
 
+### Table calculation to show top 12 services and then other services
+
+Table calculation to show show top 12 services and then other services
+
+```
+if(row() <= 12, ${aws.aws_servicecode}, "Other")
+```
+### How to calculate percentage change in cost in dashboards
+
+We can create a table calculation to calculate the cost
+
+```
+round(((${previous_month}-${last_to_last_month})/${last_to_last_month})*100,2)
+```
+Previous month and last month are custom measure here.
+
+### How can we add a filter based on a key, so that the values shown are based on key selected.
+
+you can add a filter for key and then link the value filter to it: [Doc](https://cloud.google.com/looker/docs/filters-user-defined-dashboards#setting_up_linked_filters)
+
+### Can we see pull/attribute AWS support costs?
+
+Yes, it comes in as line item AWS support when we group by AWS services
+
+### Is there a way, we can show billing data by hour for a specific AWS account, by AWS service in dashboards?
+
+As of now we do not expose data at an hourly granularity for cloud providers
+
 ## Budgets
 
 ### Do the models used in Harness CCM budgets adjust as we get more cost data?
