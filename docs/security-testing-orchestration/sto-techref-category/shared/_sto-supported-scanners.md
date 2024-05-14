@@ -9,7 +9,7 @@ The following sections describe the scanners supported by Harness STO, based on 
 
 #### Code repo scanners
 
-A code scanner can detect one or more of the following issue types in your source code. For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation. 
+A code scanner can detect one or more of the following issue types in your source code. For information about the specific vulnerabilities detected by each scanner, go to the scanner provider's documentation.
 
 * **SAST (Static Application Security Testing):** Known vulnerabilities in open-source and proprietary code.
 * **SCA (Software Composition Analysis):** Known vulnerabilities in open-source libraries and packages used by the code.
@@ -32,7 +32,7 @@ A code scanner can detect one or more of the following issue types in your sourc
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference">Gitleaks</a> Orchestration, Ingestion </li> 
            <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/osv-scanner-reference">Open Source Vulnerabilities (OSV)</a> Orchestration, Ingestion </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP Dependency Check</a> Orchestration, Ingestion</li>       
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP Dependency Check</a> Orchestration, Ingestion</li>  
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference">Semgrep Code (<i>open-source option</i>) </a> Orchestration, Ingestion</li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
