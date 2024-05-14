@@ -33,25 +33,22 @@ export default async (req: Request, context: Context) => {
 
   console.log(context.site.url);
 
-  // context.cookies.set({
-  //   name: "token",
-  //   value: body.token,
-  //   domain: "developer.harness.io",
-  //   path: "/",
-  //   httpOnly: false,
-  //   secure: false,
-  // });
+  context.cookies.set({
+    name: "token",
+    value: body.token,
+    domain: "developer.harness.io",
+    path: "/",
+    httpOnly: true,
+    secure: true,
+  });
   context.cookies.set({
     name: "account_id",
     value: body.account_id,
-    domain: "localhost",
+    domain: "developer.harness.io",
     path: "/",
-    httpOnly: false,
-    secure: false,
+    httpOnly: true,
+    secure: true,
   });
-
-
-
 
   return new Response(JSON.stringify("Success !"), {
     status: 200,
