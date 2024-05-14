@@ -351,7 +351,7 @@ You can set up your pipeline to generate test coverage reports and then get them
 
 4. Add a [failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/) to the Run step and configure it to ignore all failures.
 
-   This step is optional, but recommended if you want the pipeline to proceed even if it can't generate a coverage report. 
+   This step is required if you want the pipeline to proceed even if it can't generate a coverage report. 
 
 4. Update your SonarQube step with the path to the coverage report.
 
