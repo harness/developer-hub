@@ -341,7 +341,7 @@ If there's a proxy between your Harness pipeline and your SonarQube server, you 
 
 You can set up your pipeline to generate test coverage reports and then get them pushed up to your SonarQube instance. To do this:
 
-1. Add a **Run** step to your pipeline before the Sonarqube step.
+1. Add a **Run** step to your pipeline before the SonarQube step.
 
 2. Set the **Image** field to a base image that's compatible with the repo you're scanning.
 
@@ -358,8 +358,6 @@ You can set up your pipeline to generate test coverage reports and then get them
    - This step is required only if you saved your report to a non-default folder and/or filename.
 
    - To specify the report path, add the CLI argument for the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. 
-
-
 
 :::note important notes
 
@@ -385,7 +383,7 @@ Here's an example workflow for generating a Python 3.9 coverage report:
 
 5. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
 
-6. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`
+6. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`.
 
 Here's what the Run step looks like in YAML:
 
