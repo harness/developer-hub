@@ -11,7 +11,7 @@ sidebar_position: 180
 <DocsTag  text="Ingestion" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
-You can scan your repositories and ingest scan results from [Fortify on Demand](https://www.microfocus.com/documentation/fortify-on-demand/). The following steps describe the workflow. 
+You can scan your repositories and ingest scan results from [Fortify on Demand](https://www.microfocus.com/documentation/fortify-on-demand/). The following steps describe the workflow.
 
 import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
 
@@ -21,7 +21,7 @@ import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
 
 ### Scanner settings
 
-These settings are required. 
+These settings are required.
 
 - [Product name](#product-name)
 - [Scan type](#scan-type)
@@ -31,7 +31,7 @@ These settings are required.
 
 #### Product name
 
-The scanner name. This is required for all Custom Scan steps. 
+The scanner name. This is required for all Custom Scan steps.
 
 ##### Key
 ```
@@ -46,7 +46,7 @@ fortifyondemand
 
 #### Scan type
 
-The target type to scan. 
+The target type to scan.
 
 ##### Key
 ```
@@ -149,9 +149,7 @@ These settings are available to access your Fortify on Demand SaaS instance when
 You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords and tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
 
 #### Product access keys
-```
-product_name
-```
+
 ```
 product_domain
 ```
@@ -184,6 +182,9 @@ product_target_language_version
 ```
 ```
 product_audit_type
+```
+```
+product_data_center
 ```
 
 #### Product scan settings
