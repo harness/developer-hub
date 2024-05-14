@@ -7537,7 +7537,7 @@ Currently, we cannot do policy evaluations via APIs.
 You can enable the multi-service and multi-environment deployment strategy in your CD stage to deploy different service versions to different clusters or stages within the same pipeline using overrides at environment value.
 
 #### What are the minimum RBAC permissions needed for GitOps?
-Minimum RBAC requirements depend on the applications and the destination cluster setup. So it is not straightforward to determine minimum requirements.
+Determining minimum requirements for RBAC is not straightforward. It varies based on applications and the destination cluster setup. 
 
 #### Can Harness support ServiceNow Utah version ?
 Yes, ServiceNow Utah version is certified.
