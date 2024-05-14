@@ -1,6 +1,6 @@
 Before you can use Harness AIDA, you must do the following:
   1. Read the [AIDA Data Privacy Overview](https://www.harness.io/legal/aida-privacy).
-  2. Sign an [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness.
+  2. Read the [End-User License Agreement](https://www.harness.io/legal/aida-terms) with Harness. This is a legal agreement between you and Harness Inc. that governs your use of AIDA
   3. Enable AIDA in your Harness account. Go to **Account Settings**, select **Account Resources**, select the **Harness AIDA** tile, and then enable the **Harness AI Development Assistant (AIDA)** setting. Select **Allow Overrides** if you want to be able to enable/disable AIDA for individual projects.  
 
 :::caution
