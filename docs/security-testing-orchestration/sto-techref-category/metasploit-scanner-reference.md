@@ -90,7 +90,7 @@ product_config_name
 
 ##### Value
 
-Specify one of the following if you're setting up orchestration scan.
+Specify one of the following if you're setting up an orchestration scan.
 
 Brute-force test a host for SSH weak ssh/pass:
 

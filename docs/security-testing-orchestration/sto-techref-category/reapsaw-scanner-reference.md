@@ -99,6 +99,13 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 <StoLegacyTargetAndVariant />
 
+### Repository
+
+import StoLegacyRepo  from './shared/custom-scan/_repo.md';
+
+<StoLegacyTargetAndVariant />
+
+
 <!-- 
 ### Reapsaw scan settings
 

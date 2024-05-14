@@ -136,8 +136,6 @@ You should [create Harness text secrets](/docs/platform/secrets/add-use-text-sec
 
 #### Product domain
 
-The scanner name. This is required for all Custom Scan steps. 
-
 ##### Key
 ```
 product_domain
@@ -149,7 +147,6 @@ The URL of your NexusIQ instance.
 
 #### Product access Id
 
-The scanner name. This is required for all Custom Scan steps. 
 
 ##### Key
 
@@ -159,7 +156,7 @@ product_access_id
 
 ##### Value
 
-The Harness secret for the password used to log in to the NexusIQ UI.
+The access Id used to log in to the NexusIQ UI.
 
 
 #### Product access token
@@ -176,8 +173,6 @@ The Harness secret for the password used to log in to the NexusIQ UI. (This is n
 
 
 
-
-
 #### Product organization Id
 
 
@@ -189,7 +184,6 @@ product_organization_id
 ##### Value
 
 The organization defined in Nexus. You can use the [Organizations API](https://help.sonatype.com/iqserver/automating/rest-apis/organizations-rest-api---v2) to get a list of all your organizations. 
-
 
 
 #### Product project name
@@ -226,7 +220,7 @@ byPublicId
 
 #### Product lookup Id
 
-You can use the following keys to specify the lookup Id, depending on the product lookup type(#product-lookup-type):
+You can use the following keys to specify the lookup Id, depending on the [product lookup type](#product-lookup-type):
 
 ```
 product_private_id

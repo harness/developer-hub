@@ -26,14 +26,12 @@ The recommended workflow is to add a Custom Scan step to a Security or Build sta
 
 ### Scanner settings
 
-These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+These settings are all required.
 
 - [Product name](#product-name)
 - [Scan type](#scan-type)
 - [Policy type](#policy-type)
 - [Product config name](#product-config-name)
-
-
 
 #### Product name
 
@@ -100,15 +98,15 @@ product_config_name
 
 ##### Value
 
+Use the legacy Nessus scan inside tenableIO:
+
 ```
-default
+legacy-web-application-scan
 ```
 
 ### Target and variant
 
-
 import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
-
 
 <StoLegacyTargetAndVariant />
 
@@ -169,7 +167,7 @@ product_template_uuid
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md';
 
 
 <StoLegacyIngest />

@@ -93,29 +93,33 @@ product_config_name
 
 ##### Value
 
+Specify one of the following.
+
+Run a default scan:
+
 ```
 default
 ```
 
-Do a host discovery scan on the network:
+Run a host discovery scan on the network:
 
 ```
 host-discovery
 ```
 
-Do a network discovery scan:
+Run a network discovery scan:
 
 ```
 network-discovery
 ```
 
-Do a full and very deep discovery scan: 
+Run a full and very deep discovery scan: 
 
 ```
 full-and-very-deep
 ```
 
-Do a system discovery scan on the network:
+Run a system discovery scan on the network:
 
 ```
 openvas-system-discovery
