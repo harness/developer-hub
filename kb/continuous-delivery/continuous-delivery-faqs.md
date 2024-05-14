@@ -7552,7 +7552,7 @@ To improve responsiveness, you can adjust the ArgoCD controller's resynchronizat
 
 Here are some resources for configuring the resynchronization interval in ArgoCD:
 
-https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-semantics
+* [Automated sync semantics](https://argo-cd.readthedocs.io/en/stable/user-guide/auto_sync/#automated-sync-semantics)
 https://argo-cd.readthedocs.io/en/stable/faq/#how-often-does-argo-cd-check-for-changes-to-my-git-or-helm-repository
 
 #### Does Harness support the 'serverless-fintch' plugin in native serverless deployment?
