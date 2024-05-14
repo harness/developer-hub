@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-08T10:00
+date: 2024-05-13T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 :::
 
 ## May 2024
+
+### Version 24.05.82902 <!--  May 10, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with the delegate health endpoint, enabling the delegate to perform several websocket reconnection attempts before Kubernetes evicts the pod. (PL-50540, ZD-59551, ZD-62207)
 
 ### Version 24.04.82901 <!--  May 8, 2024 -->
 

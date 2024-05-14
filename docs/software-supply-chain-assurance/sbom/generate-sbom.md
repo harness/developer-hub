@@ -84,17 +84,23 @@ The **SBOM Orchestration** step includes various settings for generating the SBO
 
 * **Step Mode:** Select **Generation**.
 
-* **SBOM Tool:** Select **Syft**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
+* **SBOM Tool:** Select **Syft or cdxgen**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
 
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
 
-The Artifact Source allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
+If you're using Syft to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
 
-:::warning Deprecation Alert:
+| Programming Language | Name of Variable | Value         | 
+|----------------------|----------------|-----------------|
+| Go          | `SYFT_GOLANG_SEARCH_REMOTE_LICENSES`             | true
+| Java                 | `SYFT_JAVA_USE_NETWORK`         | true    |
+| JavaScript                  | `SYFT_JAVASCRIPT_SEARCH_REMOTE_LICENSES`           | true     |
 
-Please note that the previously available `Container` option, has now been deprecated. In its place, we now offer native support for DockerHub, ECR, GCR, and ACR. Additionally, the support for other registries is coming soon. We encourage users to connect to their registries using the dedicated options available within the list of artifact sources.
+<DocImage path={require('./static/syft-flags.png')} width="50%" height="50%" title="Click to view full size image" />
 
-:::
+By setting these variables, Syft can more effectively fetch and populate the licensing data for the components in your SBOM. This not only enhances the quality of the SBOM but also improves its overall [SBOM score](./sbom-score.md). If your SBOM contains `NOASSERTIONS`, it indicates that Syft was unable to retrieve necessary data.
+
+The **Artifact Source** allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>

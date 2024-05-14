@@ -1,6 +1,6 @@
 ---
-title: Review workspace resources, states, and execution history
-description: Explore the details of a workspace.
+title: Review insights
+description: Review workspace resources, states, and execution history.
 sidebar_position: 30
 ---
 
@@ -14,7 +14,7 @@ Once you have created the workspace and performed an update, you should see how 
 
     ![Resources](./static/resources-tab.png)
 
-2. Select the **State** tab, where you can see the state file and compare the differences between former revisions. This can be very useful if you want to track changes of resources.
+2. Select the **State** tab, where you can see the state file and compare the differences between former revisions. This can be very useful if you want to track resource changes.
 
     ![State](./static/state.png)
 

@@ -9,42 +9,68 @@ sidebar_label: Trellis Factors
 The Trellis Factors feature is currently in BETA and is behind the Feature Flag `SEI_SHOW_TRELIS_NEW_INTERVAL` and `SEI_TRELLIS_BY_JOB_ROLES`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-The Trellis Scores feature on SEI provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity. Trellis Scores are calculated from factors such as Code Quality, Code Volume, Speed, Impact, Proficiency, and Collaboration. You can adjust the weight given to each factor in the **Trellis Central Profile** which acts as the single source of truth for your Trellis Score calculations.
+The Trellis Central Profile is where you customize the factors and weights used to calculate the Trellis Scores in the SEI module. The Trellis Scores feature provides a proprietary scoring mechanism to evaluate and understand your engineering team's productivity based on factors such as code quality, code volume, speed, impact, proficiency, and collaboration. In the Trellis Central Profile, you can adjust the weight assigned to each factor when calculating the overall Trellis Scores.
 
-This topic outlines the improved user journey for configuring **Trellis Central Profiles**, customising **Trellis Groups**, and defining thresholds for **Factors** associated with Trellis Profiles to calculate Trellis Scores.
+This topic explains the improved user experience for configuring and managing Trellis Central Profile, customizing Trellis Groups, and defining thresholds for the factors included in the profile to calculate Trellis Scores.
 
-The following permissions are needed to calculate the Trellis Scores:
+:::info CRITERIA TO CONFIGURE THE TRELLIS FACTORS
+
+The following permissions are needed to customize the Trellis Central Profile or the Trellis Factors:
 
 1. To perform **Admin Level** operations on the **Trellis Central profile**, you need to have **Edit & Manage** access to **SEI Configuration Settings**
 2. To configure **Trellis Sub-Profiles** i.e. **Collection** specific Trellis profiles, one must have **Collection Edit/Create** access to the SEI project
 3. At least one **Contributor** with an associated **Email ID** must be present in the newly created account. For more information, go to [Contributors](/docs/software-engineering-insights/sei-projects-and-collections/manage-contributors).
 
+:::
+
 The two main components while configuring the Trellis Factors are:
 
-1. Trellis Central Profile
-2. Trellis Groups
+* [Trellis Central Profile](#trellis-central-profile)
+* [Trellis Groups](#trellis-groups)
 
 ## Important concepts
 
 ### Trellis Central Profile
 
-The **Trellis Central Profile** allows you to personalize the standards and thresholds that are shared among all teams within an account for determining the Trellis Score. These standards can be further customized at the **Collection** level that will create Trellis Sub-Profiles and automatically associate the Sub-Profile with the Collection.
+The **Trellis Central Profile** allows you to personalize the shared standards and thresholds for determining the Trellis Score across all teams within your account. You can further customize these standards at the Collection level, creating new Trellis sub-profiles. These customized sub-profiles will be automatically associated with their respective Collections. Note that customizing the sub-profiles does not change the original Trellis Central Profile settings.
 
-Every newly created Collection is by default associated with the Trellis Central Profile. This means that the Trellis Profile will be enabled automatically for both the newly created Collection and the Root Collection that is created automatically during project creation.
+Every newly created Collection is automatically associated with the Trellis Central Profile by default. This means the Trellis Profile settings are enabled for both the new Collection and the Root Collection created during initial project setup.
 
 ![](../static/trellis-central-profile.png)
 
 ### Trellis Groups
 
-**Trellis Groups** represent **Custom Attribute** based **Trellis Sub-Profiles** within the defined Central profile. This functionality allows users to customize their trellis calculation settings and thresholds specifically to the custom attributes. For example: Contributor roles. 
+**Trellis Groups** represent **Custom Attribute** based **Trellis Sub-Profiles** within the Central profile. Trellis Groups allow you to customize the trellis calculation settings and thresholds for specific attributes. This provides a more granular and personalized way to calculate Trellis Scores.
 
-This offers a more granular and personalized approach to calculating Trellis Scores.
+With Trellis Groups, you can fine-tune how factors like Code Quality, Volume, Speed, Impact, Proficiency, and Collaboration are evaluated. The customizations are based on the responsibilities and expectations associated with different custom attributes. For example, you could create separate calculation rules for different engineering roles.
 
-With Trellis Groups, you can fine-tune the evaluation of factors such as **Code Quality**, **Volume**, **Speed**, **Impact**, **Proficiency**, and **Collaboration** based on the specific responsibilities and expectations associated with different Custom attributes. For example: Contributor Attribute roles in the Engineering team.
+The **Default Group** covers all items that don't belong to any other defined Trellis Group. You can also customize the **Factors and Weights** for the Default Group.
 
-The **Default Group** in the profile configuration covers all the items that do not belong to any other defined groups. The **Factors and Weights** associated with the **Default Group** can be customised.
+## Configure the Trellis Central profile
 
-### Add Filters
+To configure the Trellis Factors, please follow the steps below:
+
+### Step 1: Enable Trellis Score Calculation
+
+:::info
+You can skip this step if you already have Trellis Score Calculation enabled in your Collection definition
+:::
+
+Go to the Collection where you want to calculate Trellis Score and enable the Trellis Score option. Note that every newly created Collection is automatically associated with the Trellis Central Profile by default.
+
+### Step 2: Customize the Trellis Central Profile
+
+* In your Harness Account, select the Trellis Factors under Profiles.
+* You will land on the **Trellis Central Profile** settings. This is where you can add, edit, delete Trellis Groups and enable/disable the Factors impacting the Trellis Calculations.
+
+### Step 3: Add Trellis Groups
+
+* Click on **Add Trellis Groups** to create a unique group and define matching criteria for identifying users based on custom contributor attributes like `Role` and `Location`.
+* Make sure that the Trellis group name and matching criteria are unique.
+
+![](../static/trellis-groups.png)
+
+### Step 4: Add Filters
 
 **Filters** are the criteria/conditions that determine which contributor fall into each sub-group.
 
@@ -58,11 +84,9 @@ To set up these Filters:
 Note that adding a Contributor to two or more sub-profiles is not supported.
 :::
 
-### Factors & Weights
+### Step 5: Define the Factors and Weights
 
 **Factors** are the items (Quality, Impact, Volume, Speed, Proficiency, and Leadership and Collaboration) that contribute to your Trellis Score.
-
-With **Factors and Weights**, you can:
 
 * Enable and disable individual factors to include or exclude them from your Trellis Score calculation.
 * Adjust the weight of each factor. Assign a low weight (1-5) to make less important factors have a lower impact on your score. Assign a higher weight (5-10) to make more important factors have a higher impact on your score.
@@ -73,25 +97,28 @@ In the sub sections for the individual Factors, you can:
 * Adjust the metrics that are included in each factor's calculation.
 * Define target performance ranges for each metric. These ranges will be considered for the rating calculation.
 
-## Configure the Trellis Central profile
+### Step 6: Save the Central Profile
 
-To configure the Trellis Factors, please follow the steps below:
+Once you've completed configuring the settings for the Trellis Central Profile, click on Save and Publish Changes to save the default settings based on which Trellis Scores will be calculated.
 
-1. In your **SEI project**, go to the **Settings**
-2. Select **Trellis Factors** under **Profiles**
-3. By default, you will land on the **Trellis Central Profile** settings. Click on **Add Trellis Groups** to create a unique group and define matching criteria for identifying users based on custom contributor attributes like `Role` and `Location`.
-4. Make sure that the Trellis group name and matching criteria are unique.
+## Configure the Trellis Factors for a specific Collections
 
-![](../static/trellis-groups.png)
+When a new Collection is created, it is automatically associated with the Trellis Central Profile by default. However, you can customize the Trellis factors for a specific Collection:
 
-5. Define **Factors and Weights** for each of the **sub profile i.e.** **Trellis Groups** in the Trellis Central Profile. Adjust weights to specific factors such as Code Quality, Volume, Speed, Impact, Proficiency, and Collaboration.
-6. You can enable or disable factors contributing to Trellis Score calculations for specific groups. Similarly, you can enable or disable Trellis Groups to control their contribution to the overall scoring.
+* In your **Harnesss Account**, select your **Project**.
+* Select **Collections** in the left-navigation menu.
+* Select the **Collection** where you want to customize the **Trellis Factors** contributing to the **Trellis Metric** calculations.
+* Enable the **Trellis Contributor Scoring** option (if disabled).
+* Customize the **Factors** or **Trellis Groups** as needed. 
+* Save the Collection settings.
 
-## Trellis Sub Profiles at the Collection level
+This will create a new **Collection Specific Trellis Profile** that is derived from the existing Central profile.
 
-Whenever a new Collection is created, it is by default automatically associated with the Trellis Central Profile.
+In a **Collection-Specific Profile**, any Trellis Groups added by Admins at the Central level are automatically included, but remain disabled by default. This allows the Collection Admin to decide which Groups are relevant for calculating Scores in their Collection.
 
-* **Collection Admins** are not allowed to create new Trellis Groups, nor perform CRUD operations on the Trellis Central Profile. Any changes made to factors or Trellis Groups at the collection level will create a new **Collection Specific Trellis Profile** that is derived from the existing central profile.
-* When associated with a new **Collection Specific Trellis Profile**, Trellis Groups that are added by admins at the central profile level are added into collection-level settings but remain disabled by default. This configuration allows Collection Admin to have the flexibility to determine which Trellis Groups are relevant when calculating Trellis Scores.
-* Similarly, Trellis Groups that are removed by **SEI ADMIN** at the central profile level are automatically removed from the collection-level profiles.
-* Changes made by the **Collection Admin** at the profile level can be applied to all existing collections, including child-level collections and those collections to which the Collection Admin has access.
+If Trellis Groups are removed from the Central Profile by the SEI Admin, they are also automatically removed from all Collection-level Profiles.
+Changes made by the Collection Admin to their Collection-Specific Profile can be applied to all existing Collections they have access to, including child Collections.
+
+:::info
+Users with the **SEI Collection Admin** role cannot create new Trellis Groups or make changes directly to the central **Trellis Central Profile**. They can only customize the Trellis Score Calculation settings for their specific Collections.
+:::

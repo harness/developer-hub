@@ -439,7 +439,7 @@ The entity is unique for each application. You can use any entity ID and add it 
 
 When a user group is created through SCIM, it synchronizes and directly creates the user groups and users within the IDP as they exist. However, for SSO-linked user groups, users are populated only when they sign in to Harness using SAML.
 
-### We removed users from a user group in our SSO app, why are they still in the Harness UI? 
+### We removed users from a user group in our SSO app, why are they still in the Harness UI?
 
 The synchronization with SSO-linked groups occurs exclusively upon user login to Harness. Whether it involves adding or removing users, these updates only take place during a login operation.
 
@@ -482,13 +482,21 @@ If you encounter a similar problem with this Jira plugin or any other plugin, it
 
 SCIM in Harness is primarily used for user provisioning and de-provisioning. It simplifies user management but has limitations. SCIM does not handle role bindings or permissions directly. Admins must manage role bindings and permissions within Harness separately, even when using SCIM for user provisioning.
 
+### Why won't my user group SSO providers sync?
+
+When you've connected your user group in the Harness UI with a Single Sign-On (SSO) provider like Okta, Microsoft Azure, and so on, you might encounter an issue where a user, present in the designated user group is unable to sign in.
+
+The initial step is to verify if the synchronization process is functioning properly. The validation of group membership doesn't occur during the login process itself, as SSO login operates differently from group authorization.
+
+Verify that the entity ID is correct and matches across both your SSO application and the Harness UI. Additionally, verify that the group attribute being utilized is correctly configured to ensure integration between the SSO provider and Harness UI.
+
 ### What happens if a user's email domain changes and the user is provisioned via SCIM in Harness?
 
 Harness will automatically detect the change and update the email address in Harness using the SCIM app. You won't need to manually update the user's email address.
 
 ### How do I sync LDAP groups manually if the linked user group isn't syncing?
 
-You can Navigate to Authentication tab and go to LDAP setting and try Synchronize User group option.
+You can Navigate to the **Authentication** tab, go to the LDAP setting, and try the **Synchronize User Group** option.
 
 ### I'm trying to link a SSO group. Why don't I see the option for my user group?
 
@@ -809,6 +817,12 @@ No, from a Harness delegate code perspective, the only difference between minima
 ### Does the default Harness Delegate include jq?
 
 Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
+
+### What is the delegate minimal image?
+
+The delegate minimal image serves a crucial role in vulnerability mitigation. By design, it excludes third-party client tools, thereby significantly reducing the potential for Common Vulnerabilities and Exposures (CVEs). This ensures a lean and secure environment, minimizing the attack surface and enhancing overall system integrity.
+
+The delegate image has a minimal tag. For example, `yy.mm.verno.minimal`.
 
 ### Why isn't my delegate starting with a "Failed to build trust key store" message?
 

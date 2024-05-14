@@ -1,5 +1,5 @@
 ---
-title: Drift Detection with IaCM 
+title: Drift Detection 
 description: Learn how to detect and get notified on drift 
 sidebar_position: 60
 ---
@@ -10,7 +10,7 @@ Harness IaCM helps to detect drift and simplifies the process of reconciling - u
 
 To detect drift, follow these steps:
 
-1. Create a Pipeline with an Infrastructure as Code Management stage, as described [here](https://developer.harness.io/docs/infra-as-code-management/workspaces/provision-workspace)
+1. Create a Pipeline with an Infrastructure as Code Management stage, as described [here](https://developer.harness.io/docs/infra-as-code-management/pipelines/operations/provision-workspace.md)
 2. Choose a Workspace or set it as a runtime input
 3. Select "Detect Drift" when prompted to choose operation
 
