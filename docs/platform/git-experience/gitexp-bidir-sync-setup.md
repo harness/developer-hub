@@ -50,9 +50,9 @@ You will need a webhook to your repo to use bi-directional sync:
 
 4. In Harness, do one the following, depending on the scope at which you want to create a webhook: 
 
-  - To configure a webhook at the account scope, go to **Account Resources** > **Webhooks**, and then select **New Webhook**.
-  - To configure a webhook at the organization scope, go to **Account Resources** > **Organizations**, select your organization, and then, in the **Organization Resources** section, select **Webhooks**.
-  - To configure a webhook at the project scope, go to **Projects**, select your project, and then select **Webhooks**.
+  - To configure a webhook at the account scope, go to **Account Settings** > **Account-level Resources** > **Webhooks**, and then select **New Webhook**.
+  - To configure a webhook at the organization scope, go to **Organization Resources** > **Organization-level Resources** > **Webhooks**, and then select **New Webhook**.
+  - To configure a webhook at the project scope, go to **Project Settings** > **Project-level Resources** > **Webhooks**, and then select **New Webhook**.
 
 5. In **Git Connector**, select or create a [Harness Git Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) for your repo.
 6. In **Repository**, select the repo where you are going to store the Harness entities, such as pipelines.

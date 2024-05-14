@@ -24,10 +24,6 @@ You'll learn how to:
 
 Make sure you have the following set up Before you begin this quickstart:
 
-:::info note
-If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you will not require a Git Connector and can skip this step!
-:::
-
 - Make sure you have a Git repo with at least one branch.
 - Make sure you have a Git connector with a Personal Access Token (PAT) for your Git account.​​
 - A Personal Access Token (PAT) for your Git account.
@@ -42,9 +38,12 @@ If you are using [Harness Code Repository](/docs/code-repository/) as your Git R
       - Bitbucket:![](./static/configure-git-experience-for-harness-entities-36.png)
   - To enable Git Experience for your resources, make sure that you have Create/Edit permissions for them.​​
 
+:::info note
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you will not require a Git Connector or a PAT.
+:::
+
 :::note
 Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo, and the branch is created.
-
 :::
 
 ## Supported Git providers
@@ -120,7 +119,7 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third party provider. If you choose Harness Code Repository, you will not need to configure a **Git Connector** and can skip to selecting your **Git Branch** below.
+Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third party provider. If you choose Harness Code Repository, you will not need to configure a **Git Connector** and can skip to selecting your **Repository** below.
 
 Otherwise, in **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
