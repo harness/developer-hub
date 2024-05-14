@@ -79,22 +79,22 @@ This topic shows you how to create a Secret Manager Template at the Project scop
 
    - `CONJUR_APPLIANCE_URL`
       - **Type**: String
-      - **Value**: <+input>
+      - **Value**: `<+input>`
    - `HOST_ID`
       - **Type**: String
-      - **Value**: <+input>
+      - **Value**: `<+input>`
    - `API_KEY_SECRET_ID`
       - **Type**: String
       - **Value**: `conjur_api_key`
    - `AUTHENTICATOR`
       - **Type**: String
-      - **Value**: <+input>
+      - **Value**: `<+input>`
    - `ACCOUNT`
       - **Type**: String
-      - **Value**: <+input>
+      - **Value**: `<+input>`
    - `IDENTIFIER`
       - **Type**: String
-      - **Value**: <+input>
+      - **Value**: `<+input>`
 
 14. Select **Save**.
 
