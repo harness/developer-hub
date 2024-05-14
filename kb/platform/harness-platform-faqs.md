@@ -82,6 +82,15 @@ Resource groups are an RBAC component that defines the objects that a user or se
 
 For more information, go to [Add resource groups](/docs/platform/role-based-access-control/add-resource-groups).
 
+### Does Harness support provisioning users and user groups via GitHub?
+
+No. Harness currently supports the following provisioning methods:
+
+- Okta SCIM
+- Microsoft Entra ID SCIM
+- OneLogin SCIM
+- Just-in-time provisioning
+
 ### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
 
 Use the direct URL with the `accountId` for the desired account, such as:

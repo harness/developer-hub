@@ -7587,4 +7587,16 @@ Any variable used as `<+input>` will be asked to provide a value at the runtime.
 #### Can you tell me which steps for a custom stage run directly on the delegate?
 Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
 
+#### Can user delete a service without removing its active instances?
+Yes, a user can delete services that have active instances by enabling the Force delete option in the account settings.
+
+#### Is it possible to update an existing Jira ticket from a Harness pipeline?
+Yes, you can update an existing Jira ticket by using the Jira Update step.
+
+#### Is a stage output host looping strategy supported with a custom stage pipeline?
+No, Stage output host looping strategy is only supported within a CD stage.
+For more information, go to [Looping Strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#repeat-on-multiple-target-hosts)
+
+#### Can a user create/update a confluence page from a Harness step?
+No, currently there is no native step to create or update a confluence page.
 
