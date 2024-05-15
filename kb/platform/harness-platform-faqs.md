@@ -154,6 +154,20 @@ No, there is no such option currently. To debug permission related issues, check
 
 ## API/Integration
 
+### How can you update a secret file using binary file content through an API request?
+
+To update a secret file using binary file content, you can use the following cURL command:
+
+```bash
+curl -X PUT 'https://app.harness.io/gateway/ng/api/v2/secrets/files/filesecret?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&projectIdentifier=Nishant_Test_Project&orgIdentifier=Nishant_Test_2' \
+  -H 'Harness-Account: <account_id>' \
+  -H 'x-api-key: replace_this_with_token' \
+  -F 'spec={"secret":{"type":"SecretFile","name":"<file_secret>","identifier":"<file_secret>","description":"","tags":{},"orgIdentifier":"<org_name>","projectIdentifier":"<proj_name>","spec":{"secretManagerIdentifier":"harnessSecretManager"}}}' \
+  -F 'file=@/path/to/the/file'
+```
+
+Replace `<account_id>`, `<file_secret>`, `<org_name>`, `<proj_name>`, and `/path/to/the/file` with your actual data. This command sends a PUT request to update a secret file in Harness, specifying the file path and necessary headers.
+
 ### Does Harness utilize the nodename Kubernetes API endpoint within the delegate to obtain the node metrics data of a worker node?
 
 Harness itself does not directly utilize the `/api/v1/nodes/<nodename>/proxy/stats/summary` endpoint for gathering node metrics data of a worker node within the delegate. However, if there is a specific need to access this data, users have the option to employ a shell script to query this endpoint and obtain the desired metrics.
@@ -734,6 +748,10 @@ The max delay is 60 seconds. Harness runs the PT iterator every 60 seconds for t
 It depends on task to task, you can find the interval for your task in the `perpetualTaskScheduleConfig` in the dms db.
 
 ## Connectors
+
+### Can Vault's dynamic AWS credential generation integrate smoothly with Harness's AWS Connector? Can this be done by importing a secret directly from Vault?
+
+No, the Harness AWS Connector does not support direct integration with Vault for on-the-fly AWS credential generation, including for services like AWS ECR. The `aws ecr login` command implies a potential for token generation, but integrating this process directly with the AWS Connector is not feasible. However, Harness does offer a Custom Secret Manager feature, which allows for the development of custom scripts to dynamically retrieve AWS credentials from Vault. This option provides greater flexibility but requires setting up custom logic rather than simply importing a secret's path from Vault.
 
 ### What steps can we take to prevent encountering 429 errors when using DockerHub connectors in Harness?
 
@@ -3203,4 +3221,3 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
-
