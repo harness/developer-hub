@@ -4,7 +4,7 @@ title: Overview
 description: An overview of onboarding with HCE
 ---
 
-This topic describes the versions of HCE, the interaction between different components, and how to get started with HCE.
+This topic describes the versions of HCE, and how to get started with HCE.
 
 ## Before you begin
 
@@ -26,9 +26,17 @@ To create a chaos experiment, complete the following steps:
 5. [Create a demo application](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#creating-a-demo-application-and-observability-infrastructure): You can either create a demo application or use your application on which you can execute chaos experiments.
 6. [Create and run a chaos experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md): Once you have set up your application, you can decide which resources to target and execute the chaos experiments on.
 
+## Automated and guided onboarding
+
+1. To get hands-on experience executing chaos experiments, navigate to **Chaos** module and select **Overview**. Select **Select a cluster** where you can choose between automatic and customizable onboarding.
+
+![](./static/onboard/onboard-1.png)
+
+2. If you choose **Yes, in a single step!**, go to [automated onboarding](/docs/chaos-engineering/get-started/onboarding/single-click-onboarding.md), and if you choose **No, I will choose**, go to [guided onboarding](/docs/chaos-engineering/get-started/onboarding/guided-onboarding.md).
+
+![](./static/onboard/onboard-2.png)
+
 ## Next steps
 
-For a guided experience, try:
-* [Run your first chaos experiment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering.md)
-* [Executing experiments in a sandbox](/docs/chaos-engineering/certifications/run-experiments-in-sandbox.md)
-* [Create chaos experiments from scratch](/docs/chaos-engineering/get-started/tutorials/chaos-experiment-from-blank-canvas.md)
+* [Automated onboarding](/docs/chaos-engineering/get-started/onboarding/single-click-onboarding.md)
+* [Guided onboarding](/docs/chaos-engineering/get-started/onboarding/guided-onboarding.md)

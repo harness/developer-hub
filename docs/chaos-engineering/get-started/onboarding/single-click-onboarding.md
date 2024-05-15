@@ -10,39 +10,49 @@ This topic guides you through setting up the chaos infrastructure, executing cha
 
 * [Overview of HCE onboarding.](/docs/chaos-engineering/get-started/onboarding/hce-onboarding.md)
 
-### Execute chaos experiments
+:::tip
+Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature
+:::
 
-1. In the left menu, select **Overview** and then select **Select a Cluster** where you can choose a cluster so that you can execute chaos experiments.
+## Automatically execute chaos experiments
 
-     ![select cluster](./static/single-click/select-cluster-1.png)
+If you chose to onboard automatically, follow the steps below.
 
-2. Select an environment from the list and select **Next**.
+### Select an environment
+
+1. Select an environment from the list and select **Next**.
 
     ![select env](./static/single-click/select-env-2.png)
 
-3. Select the target infrastructure on which you want to execute the chaos experiments. Select **Apply**.
+### Select an infrastructure
+
+2. Select the target infrastructure on which you want to execute the chaos experiments. Select **Apply**.
 
     ![select infrastructure](./static/single-click/select-infra-3.png)
 
-4. Based on your inputs earlier, HCE discovers services in your cluster (that is, **service discovery**) to create chaos experiments.
+### Automatically discover services
+
+3. Based on your inputs earlier, HCE discovers services in your cluster (that is, **service discovery**) to create chaos experiments.
 
     ![service discovery](./static/single-click/service-discovery-4.png)
 
-5. HCE automatically creates chaos experiments and selects a few experiments to execute.
+### Automatically create experiments
+
+4. HCE automatically creates chaos experiments and selects a few experiments to execute.
 
     ![create experiment](./static/single-click/create-exp-5.png)
 
-6. HCE chooses to execute safe chaos experiments, that is, experiments that have a low blast radius.
+5. HCE chooses to execute safe chaos experiments, that is, experiments that have a low blast radius.
 
     ![execute experiment](./static/single-click/exec-exp-6.png)
 
 ### View logs and resilience dashboard
 
-7. You can see the status of the chaos experiment execution, as well as view the experiment execution. You can also see the resilience score of the experiment if you select **View Resilience Dashboard**.
+6. You can see the status of the chaos experiment execution, as well as view the experiment execution. You can also see the resilience score of the experiment if you select **View Resilience Dashboard**.
 
     ![experiment status](./static/single-click/exp-status-7.png)
 
-8. To view the experiment execution logs, select **View Execution** which opens on a new page. Here, you can see the logs of the experiment.
+7. To view the experiment execution logs, select **View Execution** which opens on a new page. Here, you can see the logs of the experiment.
 
     ![error log](./static/single-click/error-log-8.png)
 
@@ -53,6 +63,7 @@ This topic guides you through setting up the chaos infrastructure, executing cha
     ![view progress](./static/single-click/view-progress-9.png)
 
 2. Select **View** on the infrastructure where you executed the chaos experiment.
+
     ![cluster view](./static/single-click/cluster-view-10.png)
 
 ## Conclusion
