@@ -128,6 +128,17 @@ PCF deployments require CLI 7. For installation instructions, go to [Install Clo
 
 Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate container `spec`. To install additional tools on the delegate, add your custom scripts to the `INIT_SCRIPT`.
 
+:::important
+Several tools require `unzip` in the manifest. Add the following YAML before you add any of the below scripts.
+
+```yaml
+  - name: INIT_SCRIPT
+    value: |
+        microdnf install -y zip unzip
+```
+
+:::
+
 These examples show how to install some common tools.
 
 <Tabs>
@@ -138,6 +149,7 @@ The following `INIT_SCRIPT` installs the AWS CLI:
 ```yaml
   - name: INIT_SCRIPT
     value: |
+        microdnf install -y zip unzip
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
         ./aws/install
@@ -164,6 +176,7 @@ The following `INIT_SCRIPT` installs Terraform:
 ```yaml
   - name: INIT_SCRIPT
     value: |
+        microdnf install -y zip unzip
         curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
         unzip terraform_0.12.25_linux_amd64.zip
         mv ./terraform /usr/bin/
@@ -203,7 +216,7 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
 ```yaml
   - name: INIT_SCRIPT
     value: |
-
+        microdnf install -y zip unzip
         ## Install AWS CLI
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
