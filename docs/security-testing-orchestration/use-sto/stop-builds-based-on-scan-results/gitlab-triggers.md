@@ -13,10 +13,6 @@ You can create GitLab event triggers to support a variety of STO workflows and u
 - Trigger an STO pipeline in response to a GitLab MR that targets a protected branch and/or updates specific files.
 - Include a keyword in a review comment to trigger a new scan if a previous pipeline execution failed.
 
-<!-- 
-- Set branch protection rules that block merge requests if the STO pipeline fails.
-
--->
 
 
 The following steps outline the basic workflow:
@@ -161,6 +157,10 @@ trigger:
 
 
 
+  
+
+
+
 ### Trigger on a merge-request comment
 
 You can specify a trigger that says: If a reviewer includes a specific keyword in a pull-request review comment, run the pipeline and scan the repo.
@@ -264,6 +264,17 @@ trigger:
 
 <!-- /details -->
 
+## Set up the failure criteria on the scan step
+
+You can configure your pipeline to fail if the scan finds vulnerabilities that match a specified filter. You can use one of two methods:
+
+- [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows)
+
+  Every STO scan step has a `fail_on_severity` setting that fails the step if a scan detects issues with the specified severity or higher. You can also create exemptions ("Ignore rules") for specific issues to override this behavior.
+
+- [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+
+   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference Id, CVE age, title, and number of occurrences.
 
 ## Test the outbound webhook and trigger
 
