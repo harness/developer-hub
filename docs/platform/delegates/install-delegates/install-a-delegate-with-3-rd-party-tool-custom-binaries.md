@@ -129,7 +129,7 @@ PCF deployments require CLI 7. For installation instructions, go to [Install Clo
 Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate container `spec`. To install additional tools on the delegate, add your custom scripts to the `INIT_SCRIPT`.
 
 :::important
-Many tools require you to include `unzip` in the manifest. Add the following YAML before you add any of the below scripts.
+Several tools require `unzip` in the manifest. Add the following YAML before you add any of the below scripts.
 
 ```yaml
   - name: INIT_SCRIPT
