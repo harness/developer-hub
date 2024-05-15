@@ -55,10 +55,10 @@ import PlatformList from '/docs/continuous-delivery/shared/platform-support.md'
 - **Versions and tooling support:**
   - Kubectl Client Versions:
     - 1.16
-    - 1.27
+    - 1.28.7
     - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
     - By default, Harness ships with kubectl client - 1.24.3
-    - Harness has certified versions 1.25, 1.26, and 1.27 of kubectl. You must install the respective client version of the delegate for Harness to leverage it.
+    - Harness has certified versions 1.25, 1.26, 1.27, and 1.28.7 of kubectl. You must install the respective client version of the delegate for Harness to leverage it.
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
