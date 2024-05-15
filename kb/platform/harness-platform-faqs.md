@@ -3203,4 +3203,11 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
+#### How to export all users in an account as CSV?
+Currently, Harness doesn't support direct functionality for exporting all users. To export users from Harness, you can utilize the getUsers API. For more information, go to getUsers in the API documentation.
 
+#### What is the significance of the 'parentIdentifier' parameter when creating an API key?
+The 'parentIdentifier' during the creation of an API key typically refers to the identifier of the entity to which the API key is associated or linked. 
+
+#### Does Harness ng community edition support LDAP login?
+Harness NG Community Edition does not support LDAP login.
