@@ -240,12 +240,12 @@ If you're using a custom delegate with `kubelogin` and certificate type of authe
 
         ## for AKS
         mkdir -m 777 -p client-tools/kubelogin/v0.1.1 \
-        && curl -s -L -o client-tools/kubelogin/v0.1.1/kubelogin https://app.harness.io/public/shared/tools/kubelogin/release/v0.1.1/bin/linux/$TARGETARCH/kubelogin
+        && curl -s -L -o client-tools/kubelogin/v0.1.1/kubelogin https://app.harness.io/public/shared/tools/kubelogin/release/v0.1.1/bin/linux/amd64/kubelogin
         export PATH=/opt/harness-delegate/client-tools/kubelogin/v0.1.1/:$PATH
 
         ## for GKE or AKS with certificate auth type
         mkdir -m 777 -p client-tools/harness-credentials-plugin/v0.1.0 \
-        && curl -s -L -o client-tools/harness-credentials-plugin/v0.1.0/harness-credentials-plugin 
+        && curl -s -L -o client-tools/harness-credentials-plugin/v0.1.0/harness-credentials-plugin https://app.harness.io/public/shared/tools/harness-credentials-plugin/release/v0.1.0/bin/linux/amd64/harness-credentials-plugin 
         export PATH=/opt/harness-delegate/client-tools/harness-credentials-plugin/v0.1.0/:$PATH
 ```
 
