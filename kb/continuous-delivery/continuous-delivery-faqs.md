@@ -7677,7 +7677,7 @@ Some potential reasons for this issue could include:
 It's recommended to review the Harness logs and Bitbucket API logs for any error messages or additional details that could help pinpoint the root cause of the issue.
 
 #### What is the expression for the branch name?
-In the Trigger scenario, you can utilize <+trigger.targetBranch> if Git Experience is enabled for your pipeline. This field represents the PR's target branch or the branch specified for a branch build. Additionally, in the Pipeline Reference Branch field, you can use <+trigger.branch> to refer to the same target branch.
+In the Trigger scenario, you can utilize ```<+trigger.targetBranch>``` if Git Experience is enabled for your pipeline. This field represents the PR's target branch or the branch specified for a branch build. Additionally, in the Pipeline Reference Branch field, you can use <+trigger.branch> to refer to the same target branch.
 
 #### Is it supported to use environment-level ```<+input>``` fields when running a pipeline?
 Yes, it is supported to use environment-level ```<+input>``` fields when running a pipeline. These runtime inputs can be defined in the environment and then selected at runtime when running the pipeline.
