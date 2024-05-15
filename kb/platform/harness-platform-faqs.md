@@ -2333,7 +2333,7 @@ For more information, go to [Create groups by inheritance](https://developer.har
 
 ### How can I restore user groups that I accidentally deleted?
 
-In the Harness UI, should you inadvertently delete user groups, they cannot be restored since they are also removed from our backend collection. However, if the user groups were provisioned via SCIM, you can resynchronize them.
+There is no way to restore user groups from the Harness UI should you inadvertently delete them because they are also deleted from our backend collection. However, if the user groups were provisioned via SCIM, you can resynchronize them.
 
 ### Can I send a single invitation email to a user for both Account-level limited permissions and Organization-level admin privileges?
 
