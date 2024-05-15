@@ -63,8 +63,8 @@ The diagram describes how the control plane (Harness Saas) and its components (s
 4. Workflow controller
 
 - Go to [HCE constituents](/docs/chaos-engineering/architecture-and-security/architecture/components.md) for definitions.
-- Go to [Kubernetes execution plane components](/docs/chaos-engineering/architecture-and-security/architecture/components#kubernetes-execution-plane-components) to learn more.
-- Go to [Linux execution plane components](/docs/chaos-engineering/architecture-and-security/architecture/components#linux-execution-plane-components) to learn more.
+- Go to [Kubernetes execution plane](/docs/chaos-engineering/architecture-and-security/architecture/components#kubernetes-execution-plane-components) to learn more.
+- Go to [Linux execution plane](/docs/chaos-engineering/architecture-and-security/architecture/components#linux-execution-plane-components) to learn more.
 
 ### Why is an execution plane required?
 
