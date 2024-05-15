@@ -1,6 +1,6 @@
 ---
 title: Linux chaos infrastructure advanced management
-sidebar_position: 7
+sidebar_position: 9
 description: Guide to advanced setup with Linux chaos infrastructure
 redirect_from:
     - /docs/chaos-engineering/chaos-infrastructure/linux-chaos-infrastructure-advanced-management
