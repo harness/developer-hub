@@ -3191,7 +3191,7 @@ curl -X PUT 'https://app.harness.io/gateway/ng/api/v2/secrets/files/filesecret?a
   -F 'file=@/path/to/the/file'
 ```
 
-Ensure to replace `<account_id>`, `<file_secret>`, `<org_name>`, `<proj_name>`, and `/path/to/the/file` with your actual data. This command sends a PUT request to update a secret file in Harness, specifying the file path and necessary headers.
+Replace `<account_id>`, `<file_secret>`, `<org_name>`, `<proj_name>`, and `/path/to/the/file` with your actual data. This command sends a PUT request to update a secret file in Harness, specifying the file path and necessary headers.
 
 ### Is it possible to integrate Vault's capability for on-the-fly generation of AWS credentials with the Harness platform's AWS Connector to facilitate seamless interactions with AWS services? Additionally, can this be achieved simply by importing a secret using its path within Vault?
 
