@@ -574,6 +574,73 @@ Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-setting
 | `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
 | `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
 
+## Use s3fs-fuse
+
+[s3fs-fuse](https://github.com/s3fs-fuse/s3fs-fuse) allows files and directories in an S3 bucket to act like a local file system. [Harness Cloud](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) supports using s3fs-fuse on Linux infrastructure.
+
+The `s3fs` command supports the standard [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html) file, or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` environment variables.
+
+Here is an example pipeline step that installs s3fs and mounts an S3 bucket using `aws_access_key_id` and `aws_secret_access_key` [text secrets](../../../../platform/secrets/add-use-text-secrets.md).
+
+```yaml
+              - step:
+                  type: Run
+                  name: Setup s3fs
+                  identifier: Setup_s3fs
+                  spec:
+                    shell: Sh
+                    envVariables:
+                      AWS_ACCESS_KEY_ID: <+secrets.getValue("aws_access_key_id")>
+                      AWS_SECRET_ACCESS_KEY: <+secrets.getValue("aws_secret_access_key")>
+                      AWS_REGION: <+input>
+                      S3_BUCKET_NAME: <+input>
+                      S3FS_MOUNT_DIR: <+input>
+                    command: |-
+                      apt-get update
+                      apt-get install s3fs
+
+                      s3fs $S3_BUCKET_NAME $S3FS_MOUNT_DIR \
+                        -o use_cache=/tmp \
+                        -o allow_other \
+                        -o uid=1000 \
+                        -o gid=1000 \
+                        -o umask=0022 \
+                        -o url=https://s3.${AWS_REGION}.amazonaws.com
+```
+
+In the above example, `AWS_REGION`, `S3_BUCKET_NAME` and `S3FS_MOUNT_DIR` are [input parameters](../../../../platform/variables-and-expressions/runtime-input-usage.md).
+
+Any following steps in the stage can access the directory mounted at `S3FS_MOUNT_DIR` to read and write files in the S3 bucket.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Write file to bucket
+                  identifier: Write_file_to_bucket
+                  spec:
+                    shell: Sh
+                    envVariables:
+                      S3FS_MOUNT_DIR: <+input>
+                    command: |-
+                      echo "Write file" > $S3FS_MOUNT_DIR/example.txt
+              - step:
+                  type: Run
+                  name: Read file from bucket
+                  identifier: Read_file_from_bucket
+                  spec:
+                    shell: Sh
+                    envVariables:
+                      S3FS_MOUNT_DIR: <+input>
+                    command: |-
+                      cat $S3FS_MOUNT_DIR/example.txt
+```
+
+:::note
+
+When using Docker in a __Run step__, `S3FS_MOUNT_DIR` must be added as a [shared path](../../set-up-build-infrastructure/ci-stage-settings.md#shared-paths).
+
+:::
+
 ## Troubleshoot uploading artifacts
 
 Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-faqs) for questions and issues related uploading artifacts, such as:
