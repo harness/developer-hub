@@ -93,11 +93,7 @@ No. Harness currently supports the following provisioning methods:
 
 ### I'm a user of multiple accounts. Why am I getting an error when I try to redirect to a specific account?
 
-Use the direct URL with the `accountId` for the desired account, such as:
-
-```
-https://app.harness.io/ng/account/:accountId/settings/overview
-```
+Use the direct URL with the `accountId` for the desired account, such as `https://app.harness.io/ng/account/:accountId/settings/overview`.
 
 You can then sign in and change your default account from your profile.
 
@@ -124,7 +120,7 @@ No, you can only configure RBAC for the environment based on environment type.
 
 ### Does Harness log GET Calls in the audit logs?
 
-No, we don't support audit trails for read API requests like GET.
+No, Harness doesn't support audit trails for read API requests like GET.
 
 ### What is the purpose of linkedSsoDisplayName?
 
@@ -134,15 +130,13 @@ No, we don't support audit trails for read API requests like GET.
 
 To achieve your use case, it is recommended that you create a user with limited access at the account level. Then, add the same user to the organization level where you require admin access. This way, you can have control over user RBAC at the organization level scope.
 
-### Is there an easy way to see the de-factor roles/permissions assigned to a user?
+### How can I view the de-factor roles/permissions assigned to a user?
 
-You can view all permissions for a user by going to Access Control --> Search for the User click on it. Click on Role Bindings and you can see permissions for the user with the scope, All, Account, Organization and Organizations with Projects in one place.
+You can view all permissions for a user by going to **Access Control**. Search for and then select the user. Select **Role Bindings** to view permissions for the user at all scopes.
 
-If you need to see the permissions inside of a role say Account Viewer or any custom-created role and same with Resource Group then you will always need to individually click on that specific role/ resource group as it's not shown on the user permission page.
+If you want to review permissions within a role like Account Viewer or any custom-created role, as well as within a Resource Group, you must select each role or resource group individually, as they are not displayed on the User Permissions page.
 
-Harness only shows the Account/Project/Organization level permissions with the role-resource group with where it is assigned at and assigned through in case of a User group or directly.
-
-But you can view all of them together by selecting the scope to All instead of Individual.
+Harness solely displays permissions at the Account/Project/Organization level along with the assigned role and resource group, whether assigned through a user group or directly. However, you can view all permissions together by selecting the scope as **All** instead of **Individual**.
 
 ### How do we provision users with pre-defined or custom roles?
 
@@ -189,6 +183,7 @@ To get all services using a cURL command, you can use the `getServiceList` API a
 To create overrides via the Harness API, you can use the service override API. For more information, go to [ServiceOverrides](https://apidocs.harness.io/tag/ServiceOverrides) in the API documentation.
 
 ### Is there a Harness API to create overrides?
+
 You can use the `createServiceOverride` API to create overrides. For more information, go to [Create a ServiceOverride Entity](https://apidocs.harness.io/tag/ServiceOverrides#operation/createServiceOverride) in the API documentation.
 
 ### Are there any JEXL expressions to get all projects environment?
@@ -236,7 +231,7 @@ The `parentIdentifier` in the context of creating an API key refers to the Paren
 
 ### How can I get a list of all users and their roles?
 
-You can use the Get aggregated users API. This will provide with complete details of the users incldying the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
+You can use the Get aggregated users API. This will provide with complete details of the users including the role they have. For more information, go to [Get aggrgated users](https://apidocs.harness.io/tag/User#operation/getAggregatedUsers) in the API documentation.
 
 ### We have hundreds of users that were granted the admin role on the account level as individuals. How can we remove this role?
 
@@ -310,7 +305,7 @@ The List role assignments API enables you to pull a list of users and their role
 
 There are two types of scope, one is complete scope(which indicates ALL) and the other is specific.
 
-- To allow creation of entity in certain scope, it means allowing to creation that entity at complete Scope level(which indicates ALL).
+- To allow creation of entity in certain scope, it means allowing to creation that entity at complete Scope level (which indicates ALL).
 - If the use case is to allow Create Governance policy at scope and restrict edit to specific policies, then ideally you should split it into specific Create and Edit permissions.
 - And then define 2 Role Assignments.
   One with Create and All Governance policy.
@@ -328,7 +323,7 @@ When you create a project using the API, by default the Project inherits the pro
 
 When you create a token in Harness under Service Account, the validity of the token is determined based on how it was created. If you have specified an expiry date, the token will expire on that date. However, if you want the token to never expire, you can select the **No Expiration** option.
 
-### How do I fectch delegate disconnected status via the API?
+### How do I fetch delegate disconnected status via the API?
 
 ```
 {delegateList(filters: [{accountId: "xxxxx"}], limit: 10) {
@@ -408,6 +403,7 @@ curl --location --request GET 'https://app.harness.io/gateway/api/users?accountI
 ```
 
 ### Why am I getting an error when I try to create an API key?
+
 ```
 Invalid request: Maximum limit has reached
 ```
@@ -428,7 +424,7 @@ This limitation is by design to uphold security protocols. Delegates often opera
 
 ### Does Harness SAML work with any SSO provider?
 
-Yes, Harness provides support for Okta and Azure Onelogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file.
+Yes, Harness provides support for Okta and Azure OneLogin out of the box, but you can add any custom SSO with Harness. All you need is the Harness SAML endpoint URL and SAML metadata file.
 
 ### How do I resolve Okta provisioning errors due to user limits?
 
@@ -835,7 +831,7 @@ Helm now recommends using the `get_helm.sh` file to download the Helm binaries, 
 
 ### Can we install multiple versions of Helm on the delegate?
 
-Yes, we can have multiple versions of Helm on the delegate, but only the Helm CLI to which the environment points at delegate startup can be used in the default step.
+Yes, you can have multiple versions of Helm on the delegate, but only the Helm CLI to which the environment points at delegate startup can be used in the default step.
 
 ### Are there any differences between minimal and non-minimal delegate images besides third-party binaries?
 
@@ -1847,7 +1843,7 @@ By default, Helm delegates have autoscaling disabled, which you can enable by se
 
 ### What are the Kubernetes version requirements for delegate installations?
 
-Harness trys to support all active Kubernetes releases (that's the last 3 releases according to our versioning policy). Harness supports anything that's not EOL.
+Harness tries to support all active Kubernetes releases (that's the last 3 releases according to our versioning policy). Harness supports anything that's not EOL.
 
 ### Are secrets in values.yaml files rendered in Harness Manager?
 
@@ -1867,7 +1863,7 @@ Delegates don't communicate with each other. They go through Harness Manager to 
 
 ### Why are delegates added to the blocklist?
 
-The purpose behind the blocklisting of delegates is to ensure that every delegate task undergoes one or more validation/capability checks. When a task is assigned, Harness checks if the delegate's capabilities were previoulsy validated. If the validation was done within the past 6 hours, it is considered valid.
+The purpose behind the blocklisting of delegates is to ensure that every delegate task undergoes one or more validation/capability checks. When a task is assigned, Harness checks if the delegate's capabilities were previously validated. If the validation was done within the past 6 hours, it is considered valid.
 
 However, if it has been more than 6 hours or if it's the first time, Harness performs the validation again. If the validation fails, the delegate is blocklisted for 5 minutes for the same criteria. If another task with the same criteria is assigned during these 5 minutes, the delegate will be blocklisted for it as well. So, it's important to check which validation criteria were added to the task and which validation is failing.
 
@@ -2262,7 +2258,7 @@ You can use the audit trail. For more information, go to [Audit trail](/docs/pla
 
 ### How can I access comprehensive information on Harness Security, including disaster recovery procedures, infrastructure details, and policies?
 
-For in-depth insights into Harness' security practices, including disaster recovery procedures, infrastructure aspects, and policies, we recommend visiting our [Trust Center](https://trust.harness.io/). This centralized resource is designed to provide you with all the necessary information regarding the security measures Harness has in place to safeguard your data and operations.
+For in-depth insights into Harness' security practices, including disaster recovery procedures, infrastructure aspects, and policies, Harness recommends going to the [Trust Center](https://trust.harness.io/). This centralized resource is designed to provide you with all the necessary information regarding the security measures Harness has in place to safeguard your data and operations.
 
 ## Notifications
 
@@ -2353,10 +2349,9 @@ This is a use case of user-group inheritance,
 
 For more information, go to [Create groups by inheritance](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#create-groups-by-inheritance).
 
-### Restoring accidentally deleted User Groups
+### How can I restore user groups that I accidentally deleted?
 
-If you accidentally delete some User groups from the Harness UI. There is no way to restore them as it also gets deleted from our backend collection.
-But if the User Groups were provisioned via SCIM then you can always resync the user groups.
+There is no way to restore user groups from the Harness UI should you inadvertently delete them because they are also deleted from our backend collection. However, if the user groups were provisioned via SCIM, you can resynchronize them.
 
 ### Can I send a single invitation email to a user for both Account-level limited permissions and Organization-level admin privileges?
 
@@ -2372,7 +2367,7 @@ Yes, you can find user invite actions in the audit trail.
 
 ### Is there any other way to remove a test user group created with externallyManaged=true other than remove it by a mongodb query set externallyManaged=false?
 
-Yes, a more preferable approach is to update the user group in the database by changing the externallyManaged flag from true to false. Following this, you can delete the user group from the UI. Deleting directly from the database might not be the optimal solution, especially if the user group is part of the hierarchy, such as an account user group inside an Org/Project. Updating the flag and then deleting through the UI ensures a more controlled and comprehensive handling of the user group removal, taking into account any dependencies in the hierarchy. This is not updatable using API, but soon deletion will be allowed from UI.
+Yes, a more preferable approach is to update the user group in the database by changing the externally managed flag from true to false. Following this, you can delete the user group from the UI. Deleting directly from the database might not be the optimal solution, especially if the user group is part of the hierarchy, such as an account user group inside an Org/Project. Updating the flag and then deleting it through the UI ensures a more controlled and comprehensive handling of the user group removal, taking into account any dependencies in the hierarchy. This is not updatable using API, but soon deletion will be allowed from UI.
 
 ### Can I centrally identify and remove resources created by a user who had admin access but now has non-admin permissions?
 
@@ -2472,7 +2467,7 @@ Yes, Harness can increase the daily deployment limit > 10000 per day. Contact [H
 
 Harness has several rate limiters on the platform. Sending multiple requests in quick succession will generate the 429 response. For more information, go to [Rate limits](/docs/platform/rate-limits/).
 
-### Do we have rate limit For FirstGen, exporting deployment logs? Can this be removed or modified per account?
+### Is there a rate limit For FirstGen when exporting deployment logs? Can this be removed or modified per account?
 
 Yes, Harness enforces rate limits. For more information, go to [Rate limits](/docs/platform/rate-limits). Harness cannot remove rate limits per account, but you can request an increase.
 
@@ -2594,7 +2589,7 @@ Harness uses connectors to external secret managers (for example Google Secret M
 
 ### Does Harness support referencing a LDAP secret?
 
-No, doesn't currenlty support LDAP secret engine.
+No, doesn't currently support LDAP secret engine.
 
 ### Why am I experiencing errors with core_secret_access messages?
 
@@ -2735,13 +2730,13 @@ You can reference the secrets using the following as a guide.
 
 ### Should we store the token that hasn't been generally available yet in the secret manager?
 
-No, Harness doesn't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, we leverage Harness' internal encryption mechanism. This mechanism enables us to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
+No, Harness doesn't use the customer secret manager to encrypt delegate tokens. Rather than storing the token in plain text, Harness leverages an internal encryption mechanism. This mechanism enables Harness to store the token's encrypted value in the database. This approach enhances security and mitigates potential risks associated with storing sensitive information.
 
 ## Security
 
 ### Does JIT provisioning still initiate an email to the user for confirmation or password creation?
 
-No, the JIT provisioning feature does not send emails for confirmation or password creation. The signup process is completed without the need for an invite.
+No, the JIT provisioning feature does not send emails for confirmation or password creation. The sign up process is completed without the need for an invite.
 
 ### How is data stored between different tenants/accounts in Harness?
 
@@ -2804,6 +2799,7 @@ However, once 2FA is enabled by a user, only that specific user can disable it. 
 You can manage 2FA in two ways:
 
 **Individual user:** you can set up 2FA for your own User Profile without impacting other user accounts.
+
 **All account users:** if you have Create/Edit permissions for Authentication Settings, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's Login Settings.
 
 To check whether 2FA is enabled for your user account, select your User Profile. You can toggle the **Two-Factor Authentication** indicator. For more information, go to [Two-factor authentication](/docs/platform/authentication/two-factor-authentication/).
@@ -2931,7 +2927,7 @@ db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.
 
 ### Is there a hard technical limit for entities in NextGen?
 
-There are no hard technical limit for entities in NextGen. For more information, go to [Harness entity reference](https://developer.harness.io/docs/platform/references/harness-entity-reference). We have performance data on the specified test environment. For more information, go to [Performance reports](https://developer.harness.io/docs/self-managed-enterprise-edition/performance-reports/).
+There are no hard technical limit for entities in NextGen. For more information, go to [Harness entity reference](https://developer.harness.io/docs/platform/references/harness-entity-reference). Harness has performance data on the specified test environment. For more information, go to [Performance reports](https://developer.harness.io/docs/self-managed-enterprise-edition/performance-reports/).
 
 ### What do we need to backup to recover quickly when Harness infrastructure is lost?
 
@@ -3161,9 +3157,9 @@ Harness doesn't allow this in the same ASG.
 
 ### How can you control on-demand or spot provisioning within ASG group / target?
 
-We supported spotinst ASG in FirstGen and we also have spotinst for NextGen. For more information, go to [Spot deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
+Harness supported spotinst ASG in FirstGen and also supports spotinst for NextGen. For more information, go to [Spot deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment).
 
-### How can we disable cron job?
+### How can I disable a cron job?
 
 If you need to disable auto upgrade, first run the following command to suspend auto-upgrade on the installed image:
 
