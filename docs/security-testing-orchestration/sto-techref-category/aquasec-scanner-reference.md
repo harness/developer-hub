@@ -13,7 +13,6 @@ sidebar_position: 25
 <br/>
 <br/>
 
-"#cbe2f9" text="Tutorial"  textColor="#0b5cad"
 
 You can scan your container images and ingest scan results from [Aqua Security Enterprise](https://www.aquasec.com/solutions/docker-container-security/). 
 
