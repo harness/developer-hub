@@ -3,8 +3,6 @@ The Harness SSCA module supports the following tools and standards.
 ### Code Repositories
 
 * Harness Code Repository
-
-The following code repository providers are integrated using 3rd party Git Connectors on Harness Pipeline's Security Stage.
 * GitHub 
 * GitLab
 * BitBucket
@@ -14,9 +12,9 @@ The following code repository providers are integrated using 3rd party Git Conne
 
 * Harness CI - as native steps in Harness Pipeline's Build Stage
 * Harness CD & GitOps - as native steps in Harness Pipeline's Deploy Stage
-* Harness STO - as native steps in Harness Pipeline's Security Stage
+* SSCA steps are also available in Harness Pipeline's Security stage
 
-The following CI/CD pipeline providers are integrated using Pipeline Triggers on Harness Pipeline's Security Stage.
+The following CI/CD pipeline providers are integrated using [Pipeline Triggers](/docs/platform/triggers/triggering-pipelines.md).
 
 * GitHub
 * GitLab
@@ -40,14 +38,14 @@ The following CI/CD pipeline providers are integrated using Pipeline Triggers on
 
 ### SBOM Formats
 
-* SPDX
+* SPDX 
 * CycloneDX
 
 ### SLSA Build Level
 You can achieve SLSA Build Level 1, Level 2 and Level 3 using Harness SSCA. Refer to [SLSA Overview](../slsa/overview.md)
-* Achieve [SLSA Build L1](../slsa/overview.md#how-to-comply-with-slsa-level-1)
-* Achieve [SLSA Build L2](../slsa/overview.md#how-to-comply-with-slsa-level-2)
-* Achieve [SLSA Build L3](../slsa/overview.md#how-to-comply-with-slsa-level-3)
+* [SLSA Build L1](../slsa/overview.md#how-to-comply-with-slsa-level-1)
+* [SLSA Build L2](../slsa/overview.md#how-to-comply-with-slsa-level-2)
+* [SLSA Build L3](../slsa/overview.md#how-to-comply-with-slsa-level-3)
 
 
 ### Attestation/Provenance Generation & Verification Tools
