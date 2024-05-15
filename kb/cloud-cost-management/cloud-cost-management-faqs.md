@@ -697,3 +697,8 @@ Yes, users can accomplish this by creating a Yearly budget and selecting the mon
 ### What is FinOps in Harness?
 
 FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
+#### Why is the total savings not displayed for one of my auto-saving rules for RDS in Harness?
+To resolve this, you may need to check the configuration of your auto-saving rule and ensure that it is correctly set up to calculate and display the total savings.
+
+#### What should I tag my instances with to be shut down by the stop-after-hours Rule?
+To ensure that your instances are shut down by the "stop-after-hours" Rule, you should tag them with a specific tag that the Rule will recognize. Typically, this tag should be defined in the Rule's configuration, and you should use the exact tag specified there when tagging your instances.
