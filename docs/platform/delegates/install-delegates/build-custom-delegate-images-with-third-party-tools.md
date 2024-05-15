@@ -28,7 +28,7 @@ However, the minimal delegate image lacks some binaries that are required for Co
 
 The Harness Delegate minimal image (*`yy.mm.xxxxx.minimal`*) is a lighter, more secure version of the default Harness Delegate image. Its main purpose is to provide an enhanced security profile for users, especially those who prioritize their systems' security. The Harness Delegate minimal images includes the following features.
 
-- **Security Scanned:** The image undergoes rigorous scanning processes to ensure that it is devoid of any high-risk or critical vulnerabilities. This makes it an optimal choice for organizations or users who have stringent security requirements. We strive our best to not have critical/high vulnerabilities in this image but its not always possible to completely honor it since vulnerabilities are ongoing discovered without remediation from third party libraries/tools. 
+- **Security Scanned:** The image undergoes rigorous scanning processes to ensure that it is devoid of any high-risk or critical vulnerabilities. This makes it an optimal choice for organizations or users who have stringent security requirements. Harness aims to minimize critical/high vulnerabilities within this image. Achieving complete mitigation isn't always possible due to the continual discovery of vulnerabilities in third-party libraries/tools without immediate remediation. 
 
 - **Limited Binaries:** Unlike the standard delegate, the minimal image does not include all of the default binaries. While this contributes to its lightweight nature and security, it also means that users have additional responsibilities. They must manually configure and add any necessary binaries to make their setup functional.
 
