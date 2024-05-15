@@ -12,10 +12,10 @@ redirect_from:
 
 - [HCE constituents](/docs/chaos-engineering/architecture-and-security/architecture/components)
 
-To determine (or improve) the resilience of an application, you have to execute chaos experiments on your cluster. To execute a chaos experiment, two essential components of HCE should interact with each other. The two parts are:
+To determine (or improve) the resilience of an application, you have to execute chaos experiments on your cluster. To execute a chaos experiment, two essential components should interact with each other. The two parts are:
 
-1. **Control plane**
-2. **Execution plane**
+1. **Control plane** (HCE SaaS)
+2. **Execution plane** (Your host/cluster)
 
 :::tip
 Depending on the version of HCE (Saas or Self-Managed Platform), the control plane is [hosted](https://app.harness.io) by Harness (for SaaS) or within your domain (for example, `harness.your-domain.io`).
@@ -36,10 +36,6 @@ Go to [interaction between control plane and execution plane](#interaction-betwe
 
 **Harness control plane** consists of microservices that help the [web-based portal](https://app.harness.io) perform its functionalities.
 
-### Why is a control plane required?
-
-This portal helps [**create**](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments), **schedule**, and **monitor** chaos experiments. It comes with [chaos faults](/docs/chaos-engineering/chaos-faults/) that help achieve the desired chaos impact on the target resources.
-
 You can sign in (or get an invite) to the Harness platform and leverage the interactive UI dashboard to:
 
 - [Create chaos environment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-2-add-a-chaos-environment).
@@ -48,6 +44,10 @@ You can sign in (or get an invite) to the Harness platform and leverage the inte
 - [Connect to Enterprise ChaosHubs and execute chaos experiments](/docs/chaos-engineering/features/experiments/export-chaos-experiments#add-an-experiment-to-chaos-hub).
 - [Target the resources in your infrastructure](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-6-observing-chaos-execution).
 - [Monitor experiments during their execution](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-6-observing-chaos-execution).
+
+### Why is a control plane required?
+
+This portal helps [**create**](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments), **schedule**, and **monitor** chaos experiments. It comes with [chaos faults](/docs/chaos-engineering/chaos-faults/) that help achieve the desired chaos impact on the target resources.
 
 The diagram describes how the control plane (Harness Saas) and its components (such as chaos experiment, ChaosHub, database, and so on) interact with the [execution plane](#execution-plane) components such as Kubernetes infrastructure or Linux infrastructure.
 
@@ -76,8 +76,8 @@ You can install the execution plane components through the chaos infrastructure 
 
 Below are the steps that take place in the background when you schedule an experiment.
 
-1. After you schedule the experiment, it is sent to the execution plane.
-2. The subscriber takes the experiment from the control plane and installs it on the cluster.
+1. After you schedule the experiment, the control plane sends the experiment to the execution plane.
+2. The subscriber installs the chaos experiment on the cluster.
 3. When the subscriber installs a new experiment, the workflow controller identifies the experiment and triggers it.
 4. The operator searches for the chaos faults (present inside the chaos experiment) on the cluster and triggers the execution of these faults.
 5. Once the experiment completes execution, experiment data (such as the name of the experiment, faults, probes, and so on) is sent back to the workflow controller by the subscriber.

@@ -85,6 +85,14 @@ A NoSQL MongoDB **database** microservice accountable for storing users' informa
 **Chaos Exporter** is an optional constituent that exposes monitoring metrics such as QPS and others present on the cluster to the frontend.
 It facilitates external observability in HCE. You can achieve this by exporting the chaos metrics generated (during the chaos injection as time-series data) to the Prometheus database for processing and analysis.
 
+#### 22. Chaos rollback
+
+**Chaos rollback** causes all the target resources in an experiment to re-attain their steady state after the execution of the experiment, which ensures the safety of all the applications deployed on your Linux machine.
+* Chaos rollback is performed at the end of each experiment execution. On-the-fly experiments can be safely aborted and the chaos is reverted.
+* In case of a network disruption between the control plane and execution plane during the execution of an experiment, it is gracefully aborted and the chaos is reverted.
+* In case of an abrupt exit of the chaos infrastructure process during the execution of an experiment, the daemon service reverts the chaos before restarting the process.
+* In case of an abrupt reboot of the machine, after the reboot, the daemon service checks and reverts any remnant inconsistency due to the prior execution of chaos, before starting the chaos infrastructure process.
+* In the rare scenario where the revert of chaos itself also leads to an error, an appropriate error message is logged in the experiment log for the manual intervention of the user.
 ### Components common to all chaos infrastructure
 
 Some of the components common to all chaos infrastructures include:
@@ -136,3 +144,4 @@ The chaos infrastructure has been tested for compatibility in the following Linu
 4. RHEL 7+
 5. Fedora 30+
 6. openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+
+
