@@ -642,3 +642,12 @@ The `main.tf` sample file includes a delegate token option, facilitating automat
 
 #### What are there discrepancies between the user list, access control, and dashboard?
 Harness includes user login data in audit history, but it's not structured for analytics purposes. Creating a custom view for this data isn't currently supported.
+
+#### How to export all users in an account as CSV?
+Currently, Harness doesn't support direct functionality for exporting all users. To export users from Harness, you can utilize the getUsers API. For more information, go to getUsers in the API documentation.
+
+#### What is the significance of the 'parentIdentifier' parameter when creating an API key?
+The 'parentIdentifier' during the creation of an API key typically refers to the identifier of the entity to which the API key is associated or linked. 
+
+#### Does Harness ng community edition support LDAP login?
+Harness NG Community Edition does not support LDAP login.
