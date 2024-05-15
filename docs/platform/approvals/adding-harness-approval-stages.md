@@ -23,6 +23,10 @@ Other approval methods are:
 
 - [Add a Stage](../pipelines/add-a-stage.md)
 
+### Important notes
+
+Approval steps should not be added to run in parallel with other steps, including other Approval steps. The Harness Pipeline Studio will not allow you to add Approval steps in parallel with other steps, but the pipeline YAML editor does not prevent this setup. During execution, a successful parallel Approval step will not fail the deployment, but it is not a valid configuration because Approvals are checks on the release process and should always be used between steps.
+
 ### Visual summary
 
 Here's a Manual Approval Stage step during the execution of a pipeline:
@@ -103,17 +107,23 @@ The maximum timeout duration is 53 weeks. The timeout countdown appears when the
 
 ### Add message
 
-1. In **Approval Message**, add the message for the users in **Approvers**.
+In **Approval Message**, add the message for the Users in **Approvers**.
 
-2. Enable the **Include Pipeline execution history in approval details** option to show approvers the pipeline's execution history. This can help an approver compare the current execution info with historical data.
-3. Enable the **Auto-Reject previous deployments paused in this step on approval** option to reject old executions waiting for approval when a latest step is approved.
+### Include stage execution details in approval
 
-   :::info Limitations:
+Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision.
 
-   - If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
-   - If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
+### Auto-reject previous deployments in approval
 
-   :::
+Enable this option to reject old executions waiting for approval when a latest step is approved.
+
+:::info
+
+- If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+
+- If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
+
+:::
 
 ### Select approvers
 
