@@ -85,7 +85,7 @@ Each environment card shows the following:
 
   <DocImage path={require('./static/2f326c7718023be7ad2226f2ea3adb8a8eb772b7407304d134bbb3ffc8e473ad.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  Drift detection is helpful to detect inconsistencies. For example, when you deploy a service to an environment group and there are failures in one of the environments due to which no artifact was deployed on it or someone performs a different deployment to one or more of the group's environments.
+  Drift detection is helpful to detect inconsistencies. For example, when you deploy a service to an environment group and there are failures in one of the environments due to which no artifacts were deployed to it, or someone performs a different deployment to one or more of the group's environments.
 
 - **Instance details:** details of the instance(s) where the service was deployed.
 
@@ -117,7 +117,7 @@ Each artifact card shows the following:
 - **Environments:** each environment where an artifact was deployed with the service.
   - Clicking the artifact name opens details for all environments where the artifact was deployed.
   - Clicking the environment opens details for the specific environment where the artifact was deployed.
-- **Drift detection:** drift detection displays any differences between the deployments to environments in an environment group. For example, if the artifact you select was deployed to an environment group, but one of the group's environments deployed a different artifact or due to some failure no artifacts were deployed on it, it is highlighted as drift:
+- **Drift detection:** drift detection displays any differences between the deployments to environments in an environment group. For example, if the artifact you select was deployed to an environment group, but one of the group's environments deployed a different artifact, or due to some failure no artifacts were deployed to it, it is highlighted as drift:
 
   <DocImage path={require('./static/b46ca573dd4b036c3ab5189e6edda2fd86207f6401e8337a52f365da443007a9.png')} width="60%" height="60%" title="Click to view full size image" />
 
