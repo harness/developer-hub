@@ -6,6 +6,8 @@ sidebar_position: 35
 
 ## Managing rules of your flags
 
+### Editing rules
+
 Within Harness Feature Flags, rules contains the targeting logic within your flags. The rules help describe what variation the flag should present to the user when the flag is enabled or disabled. 
 
 When you create a Feature Flag within your project, you have the option to specify a specific variation using **Default Rules**. 
@@ -26,4 +28,6 @@ When editing your rules, you may have noticed the option to add **Targets** and,
  * [Add Targets](/docs/feature-flags/ff-target-management/add-targets.md)
  * [Add Target Groups](/docs/feature-flags/ff-target-management/add-target-groups.md)
  * [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags.md)
+
+## Editing configuration
 
