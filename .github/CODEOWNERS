@@ -232,4 +232,4 @@ src/components/Roadmap/data/srmData.ts @sunilgupta-harness
 src/components/Roadmap/data/sscaData.ts @sunilgupta-harness @tejakummarikuntla
 
 #STO Roadmap
-src/components/Roadmap/data/seiData.ts @douglas-j-bothwell
+src/components/Roadmap/data/stoData.ts @douglas-j-bothwell
