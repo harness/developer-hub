@@ -580,7 +580,7 @@ Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-setting
 
 The `s3fs` command supports the standard [AWS credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-config-files.html) file, or `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` environment variables.
 
-Here is an example pipeline step that installs s3fs and mounts `S3_BUCKET_NAME` in the `ap-southeast-2` AWS region using `aws_access_key_id` and `aws_secret_access_key` [text secrets](../../../../platform/secrets/add-use-text-secrets.md) at `S3FS_MOUNT_DIR`.
+Here is an example pipeline step that installs s3fs and mounts an S3 bucket using `aws_access_key_id` and `aws_secret_access_key` [text secrets](../../../../platform/secrets/add-use-text-secrets.md).
 
 ```yaml
               - step:
@@ -592,18 +592,14 @@ Here is an example pipeline step that installs s3fs and mounts `S3_BUCKET_NAME` 
                     envVariables:
                       AWS_ACCESS_KEY_ID: <+secrets.getValue("aws_access_key_id")>
                       AWS_SECRET_ACCESS_KEY: <+secrets.getValue("aws_secret_access_key")>
-                      AWS_REGION: ap-southeast-2
+                      AWS_REGION: <+input>
                       S3_BUCKET_NAME: <+input>
                       S3FS_MOUNT_DIR: <+input>
                     command: |-
                       apt-get update
                       apt-get install s3fs
 
-                      echo $AWS_ACCESS_KEY_ID:$AWS_SECRET_ACCESS_KEY > ./passwd-s3fs
-                      chmod 600 ./passwd-s3fs
-
                       s3fs $S3_BUCKET_NAME $S3FS_MOUNT_DIR \
-                        -o passwd_file=./passwd-s3fs \
                         -o use_cache=/tmp \
                         -o allow_other \
                         -o uid=1000 \
@@ -611,6 +607,8 @@ Here is an example pipeline step that installs s3fs and mounts `S3_BUCKET_NAME` 
                         -o umask=0022 \
                         -o url=https://s3.${AWS_REGION}.amazonaws.com
 ```
+
+In the above example, `AWS_REGION`, `S3_BUCKET_NAME` and `S3FS_MOUNT_DIR` are [input parameters](../../../../platform/variables-and-expressions/runtime-input-usage.md).
 
 Any following steps in the stage can access the directory mounted at `S3FS_MOUNT_DIR` to read and write files in the S3 bucket.
 
