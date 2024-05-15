@@ -1,13 +1,4 @@
-#### How do I run Helm uninstall after a successful deployment?
 
-To run Helm uninstall manually after a successful deployment, you can leverage the shell script step and run the helm uninstall ```release-name``` command from the delegate onto the cluster.
-To run the shell script onto the required cluster, we need to specify the k8s cluster credentials to delegate. 
-
-For this use case within the shell script, you can simply reference credentials as $\{HARNESS_KUBE_CONFIG_PATH}.
-
-```export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test```
-
-With this, even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
 
 
 #### Can we add a delay of n minutes before a pipeline is invoked via trigger?
@@ -719,3 +710,6 @@ You can have a shell script step in which you fetch the file from your correspon
 https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/
 
 
+### Harness rollback deployments. 
+
+Harness Rollback deployments initiate a rollback of the most recent successful deployment. Rollback deployments are currently supported by the following deployment types only (Kubernetes, Tanzu Application Services, Amazon ECS)
