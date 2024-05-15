@@ -147,11 +147,13 @@ After configuring roles and resource group, you assign them to [users](./add-use
 
 ## Adding Account Admin permissions to users in a Custom Resource Group
 
-You can create a resource group and assign role bindings to the user group. This ensures that any new user added to this resource group automatically receives the necessary roles.
+You can create a resource group and assign role bindings to the user group. This ensures that any new user you add to this resource group automatically receives the necessary roles.
 
-To add new users to a custom Resource Group and do Role bindings:
+To add new users to a custom Resource Group with role bindings, do the following:
+You add new users to a custom Resource Group with role bindings from the account, project, or org scope.
 
-1. Go to **Account Settings**, select **Access Control**, and then choose **Resource Group**.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add new users to a custom Resource Group and do Role bindings.
+2. Select **Resource Groups**.
 2. Create a new **Resource Group**, select the desired resource types, and click **Save**.
 3. Return to **Account Settings**, select **Access Control**, then choose **Users**.
 4. Click **New User**, enter the user's email, and click **Add** under **Role Bindings**.
