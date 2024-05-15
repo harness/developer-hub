@@ -128,13 +128,16 @@ PCF deployments require CLI 7. For installation instructions, go to [Install Clo
 
 Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate container `spec`. To install additional tools on the delegate, add your custom scripts to the `INIT_SCRIPT`.
 
-Please note that many of the tools will require `unzip` to be added to the manifest.  To do so, please add this following script before adding any of the below scripts.
+:::important
+Many tools require you to include `unzip` in the manifest. Add the following YAML before you add any of the below scripts.
 
 ```yaml
   - name: INIT_SCRIPT
     value: |
         microdnf install -y zip unzip
 ```
+
+:::
 
 These examples show how to install some common tools.
 
