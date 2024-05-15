@@ -84,10 +84,10 @@ This document details information about the following:
 #### Test scenarios
 
 ##### >  2500 concurrent CI Executions INLINE
-Each CI pipeline would:
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (100 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (100 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 2500
@@ -174,10 +174,10 @@ This document details information about the following:
 #### Test scenarios
 
 ##### >  2000 concurrent CI Executions INLINE
-Each CI pipeline would:
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (100 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (100 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 2000
@@ -190,9 +190,9 @@ Test class: `CI_PIPELINE_WEBHOOK_RUN`
 Avg Execution Time: **6.45min**
 
 ##### >  2000 concurrent CD Executions INLINE
-Each CD pipeline would:
-- fetch docker artifact from AWS ECR repo
-- run following steps in order:
+Each CD pipeline:
+- Fetches a Docker artifact from AWS ECR repo
+- Runs the following steps in order:
    - Canary deploy
    - Canary delete
    - Rolling deploy
@@ -264,10 +264,10 @@ Helm chart : https://github.com/harness/helm-charts/releases/tag/harness-0.13.4
 #### Test scenarios
 
 ##### >  2000 concurrent CI Executions INLINE
-Each CI pipeline would:
-- initialize a k8s pod and git clone repo
-- run 5 parallel steps (100 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and git clone repo
+- Runs 5 parallel steps (100 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 2000
@@ -281,8 +281,8 @@ Avg Execution Time: **6.5min**
 
 ##### >  1500 concurrent CD Executions INLINE
 Each CD pipeline would
-- fetch docker artifact from AWS ECR repo
-- run following steps in order:
+- Fetches a Docker artifact from AWS ECR repo
+- Runs the following steps in order:
    - Canary deploy
    - Canary delete
    - Rolling deploy
@@ -354,10 +354,10 @@ Helm chart : https://github.com/harness/helm-charts/releases/tag/harness-0.13.0
 #### Test scenarios
 
 ##### >  2000 concurrent CI Executions INLINE
-Each CI pipeline would
-- initialize a k8s pod and Git clone repo
-- run 5 parallel steps (100 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (100 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 2000
@@ -371,23 +371,23 @@ Avg Execution Time: **6.5min**
 
 ##### >  1500 concurrent CI Executions GitX
 Each CI pipeline would
-- initialize a k8s pod and git clone repo
-- run 5 parallel steps (360 sec sleep) and echo statements
+- Initializes a Kubernetes pod and git clone repo
+- Runs 5 parallel steps (360 sec sleep) and echo statements
 
-Projects : 1
-Pipelines : 1500
-Stages per pipeline : 1
-Delegates : 15 (1cpu/2gi)
-Trigger type : webhook
-Test class : `CI_PIPELINE_REMOTE_RUN`
+Projects: 1
+Pipelines: 1500
+Stages per pipeline: 1
+Delegates: 15 (1cpu/2gi)
+Trigger type: webhook
+Test class: `CI_PIPELINE_REMOTE_RUN`
 
-> Result : **PASS**
+> Result: **PASS**
 Avg Execution Time: **8.5min**
 
 ##### >  1000 concurrent CD Executions INLINE
-Each CD pipeline would:
-- fetch docker artifact from AWS ECR repo
-- run following steps in order:
+Each CD pipeline:
+- Fetches a Docker artifact from AWS ECR repo
+- Runs the following steps in order:
    - Canary deploy
    - Canary delete
    - Rolling deploy
@@ -461,10 +461,10 @@ This document details information about the following:
 #### Test scenarios
 
 ##### >  1800 concurrent CI Executions INLINE
-Each CI pipeline would:
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (100 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (100 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 1800
@@ -476,9 +476,9 @@ trigger: webhook
 Total Execution Time: **7.2min**
 
 ##### >  1500 concurrent CI Executions GitX
-Each CI pipeline would
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (360 sec sleep) and echo statements
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (360 sec sleep) and echo statements
 
 Projects: 1
 Pipelines: 1500
@@ -490,9 +490,9 @@ trigger: webhook
 Total Execution Time: **10.3min**
 
 ##### >  1000 concurrent CD Executions INLINE
-Each CD pipeline would
-- fetch Docker artifact from AWS ECR repo
-- run following steps in order:
+Each CD pipeline:
+- Fetches a Docker artifact from AWS ECR repo
+- Runs the following steps in order:
    - Canary deploy
    - Canary delete
    - Rolling deploy
@@ -563,10 +563,10 @@ update `LOG_STREAMING_SERVICE_EXTERNAL_URL` = `<smp host url>`/log-service/
 #### Test scenarios
 
 ##### >  1500 concurrent CI executions INLINE
-Each CI pipeline would:
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (70 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (70 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 1500
@@ -577,9 +577,9 @@ Delegates: 10 (1cpu/2gi)
 Total Execution Time: **6min**
 
 ##### >  1500 concurrent CI executions GitX
-Each CI pipeline would:
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (140 sec sleep) and echo statements
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 5 parallel steps (140 sec sleep) and echo statements
 
 Projects: 1
 Pipelines: 1500
@@ -590,9 +590,9 @@ Delegates: 10 (1cpu/2gi)
 Total Execution Time: **5min**
 
 ##### >  500 concurrent CD executions INLINE
-Each CD pipeline would:
-- fetch Docker artifact from AWS ECR repo
-- run the following steps in order:
+Each CD pipeline:
+- Fetches a Docker artifact from AWS ECR repo
+- Runs the following steps in order:
    - Canary deploy
    - Canary delete
    - Rolling deploy
@@ -660,10 +660,10 @@ This document details information about the following:
 #### Test scenarios
 
 ##### >  1500 concurrent CI executions INLINE
-Each CI pipeline would:
-- initialize a K8s pod and Git clone repo
-- run 4 parallel steps (70 sec sleep)
-- run template with 2 parallel steps (140sec sleep)
+Each CI pipeline:
+- Initializes a Kubernetes pod and Git clone repo
+- Runs 4 parallel steps (70 sec sleep)
+- Runs template with 2 parallel steps (140sec sleep)
 
 Projects: 1
 Pipelines: 1500
@@ -674,9 +674,9 @@ Delegates: 10 (1cpu/2gi)
 Total Execution Time: **6min**
 
 ##### >  1500 concurrent CI executions GitX
-Each CI pipeline would
-- initialize a K8s pod and Git clone repo
-- run 5 parallel steps (140 sec sleep) and echo statements
+Each CI pipeline:
+- Initializes a K8s pod and Git clone repo
+- Runs 5 parallel steps (140 sec sleep) and echo statements
 
 Projects: 1
 Pipelines: 1500
@@ -687,9 +687,9 @@ Delegates: 10 (1cpu/2gi)
 Total Execution Time: **4.2min**
 
 ##### >  500 concurrent CD executions INLINE
-Each CD pipeline would:
-- fetch Docker artifact from AWS ECR repo
-- run the following steps in order:
+Each CD pipeline:
+- Fetches a Docker artifact from AWS ECR repo
+- Runs the following steps in order:
    - Canary deploy
    - Canary delete
    - Rolling deploy
