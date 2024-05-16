@@ -38,7 +38,7 @@ splunkOnCall:
 
 Since the `SPLUNK_ON_CALL_API_ID` and `SPLUNK_ON_CALL_API_KEY` variable is used in the application configuration, you must generate a Splunk API key and add the secrets. For instructions on how to create a  API ID and an API Key, [read the instructions](https://help.victorops.com/knowledge-base/api/). You also need to provide a REST Endpoint as `SPLUNK_ON_CALL_REST_ENDPOINT` , to enable the REST Endpoint integration, go on https://portal.victorops.com/ inside Integrations > 3rd Party Integrations > REST – Generic. You can now copy the URL to notify: `<SPLUNK_ON_CALL_REST_ENDPOINT>/$routing_key`
 
-![](./static/pagerduty-secret.png)
+![](./static/splunk-secrets.png)
 
 
 - To be able to use the REST Endpoint seen above, you must have created a routing key with the same name as the provided team.
