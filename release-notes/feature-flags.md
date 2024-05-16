@@ -23,13 +23,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 0.1.23
 
-*New features and enhancements*:
+**New features and enhancements**:
  - Previously, from versions `v0.1.21` to `v0.1.22`, a critical bug was identified where evaluation metrics processing could cause a system panic. This occurred when at least one evaluation involved a target with `nil attributes` — either due to attributes being omitted or explicitly set to nil. This release addresses this issue by implementing a fix that prevents such panics. (FFM-11470, ZD-63281)
 
-*Enhanced Testing*: 
+**Enhanced Testing**: 
  - To ensure the stability and reliability of this fix and similar functionalities, we have expanded the evaluation metrics suite of unit tests. These additional tests will help safeguard against regressions and improve code coverage.
 
-*Fixed issues*:
+**Fixed issues**:
  - Versions `v0.1.21` and `v0.1.22` have been retracted.
  - Removes GitHub Actions step `Static Code Analysis / Build (push)` as it is constantly failing due to out of date credentials. These checks have moved to Harness CI but this step had yet to be removed until now.
 
@@ -42,11 +42,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.6.1
 
-*New features and enhancements*:
+**New features and enhancements**:
  - SDK support has been added for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11455)
  - Improved the retry logic used by SDK `http` requests, as well as the clarity of logs if requests fail. (FFM-11441)
 
-*Fixed issues*:
+**Fixed issues**:
  - Only deletes cache key if it exists. (FFM-11331, ZD-62250)
 
 ### React Client SDK
@@ -78,12 +78,12 @@ Security Updates:
 
 #### Version 0.1.21
 
-*New features and enhancements*:
+**New features and enhancements**:
  - SDK support for processing `AND/OR` rules:
   - Note that this feature is not enabled yet and the SDK will continue to use the existing group rule format until further notice. (FFM-11297)
  - Internal metrics code enhancements.
 
-*Fixed issues*:
+**Fixed issues**:
  - Fixed an issue where only a single target would be registered in a metrics window.(FFM-11297)
 
 #### Version 0.1.20
@@ -146,11 +146,11 @@ Security Updates:
 
 #### Version 2.1.0
 
-*Enhancements*:
+**Enhancements**:
  - We've provided a new configuration option that allows polling to be disabled. Do have a look at the [streaming and polling mode on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#streaming-and-polling-mode) for information on how to use this feature. (FFM-10961)
  - This version now updates the `GettingStarted` application to demonstrate usage of all initialzation methods. You can have look at our updated [Initialzation Documentation on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#client-initialization-options) for more details. 
 
-*Bug Fixes*:
+**Bug Fixes**:
  - We have fixed an issue that resulted in the `initialize` success callback again being triggered if the SDK needed to re-authenticate. This would happen in scenarios such as losing connectivity. Because of this, any code you supplied specifically related to initiailization success would get executed again. The `initialize` callback has been updated to correct this. Do feel free to have a look at the new [callback documentation on GitHub](https://github.com/harness/ff-android-client-sdk/blob/main/docs/further_reading.md#using-callback) for more information on this. (FFM-10940)
  - The issue involving having to register for a second, or multiple, event listeners at the same time as an event comes through has been resolved. On the previously registered listener, it could throw an unchecked `ConcurrentModificationException`.
 
