@@ -1,12 +1,12 @@
 {
-    "label": "Use the Harness relay proxy",
+    "label": "Use Relay Proxy with FF",
     "position": 130,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use the Harness Relay Proxy"
+        "title": "Use Relay Proxy with FF"
     },
     "customProps": {
         "helpdocs_category_id": "0dqv0mh8xu"
