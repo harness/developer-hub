@@ -2204,7 +2204,7 @@ Yes. [Harness CI offers many options for mobile app development.](https://develo
 
 Yes, you can use the [Harness Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
-#### What does this error mean "	java. lang.IllegalStateException: Failed to execute ApplicationRunner"
+#### What does this error "java. lang.IllegalStateException: Failed to execute ApplicationRunner" mean?
 
 The error "java.lang.IllegalStateException: Failed to execute ApplicationRunner" indicates that there was an issue while trying to execute an ApplicationRunner in a Java application. This could be due to various reasons such as missing dependencies, incorrect configuration, or runtime issues. Examining the stack trace and reviewing the application code further may be necessary to pinpoint the exact cause of the error.
 
