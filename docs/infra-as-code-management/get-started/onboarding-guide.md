@@ -15,20 +15,21 @@ Welcome to the Harness Infrastructure as Code Management (IaCM) onboarding guide
 
 ## What is IaCM?
 
-Infrastructure as Code Management (IaCM) refers to managing and provisioning computing infrastructure through machine-readable definition files rather than physical hardware configuration or interactive configuration tools. By using IaCM, teams can ensure consistency, accountability, and repeatability within their environments. Harness enhances IaCM with features like real-time cost estimation, automated policy enforcement, and drift detection, ensuring that your infrastructure is provisioned efficiently and complies with organizational standards and budget constraints.
+Infrastructure as Code (IaC) enables the automated management and provisioning of infrastructure through machine-readable definition files. Infrastructure as Code Management (IaCM) extends this by focusing on the oversight and enhancement of IaC practices, ensuring consistency, accountability, and repeatability across deployments. Harness enhances IaCM with features like real-time cost estimation, automated policy enforcement, and drift detection, ensuring that your infrastructure is provisioned efficiently and complies with organizational standards and budget constraints.
 
 ## Prerequisites
 
 Before beginning the walkthroughs in this guide, ensure you have:
 
 - Access to a Harness account.
-- Access to a Git provider with your Terraform file.
+- Access to a Git provider with your OpenTofu or Terraform file.  
+
 - An [organization and project set up](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 - A [configured Connector to your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers)
 - A [configured Connector to your Git repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo)
 
 :::note
-You can add new Cloud Provider and Git repository connectors via the steps in the above links or when creating a new workspace.
+You can add new Cloud Provider and Git Repository connectors via the steps in the above links or when creating a new workspace.
 :::
 
 ## Sample Terraform
@@ -38,9 +39,10 @@ The following example Terraform (.tf) file declares:
 - Provider Configuration: Specifies the AWS provider and sets the region to "us-east-1". Go to [AWS Regions & Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for a complete region list.
 - Resource Definition: Creates an EC2 instance with the identifier `my_first_ec2_instance`.
 - AMI: Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
-- Instance Type: Configures the instance to use a t2.micro, offering cost-effective performance suitable for low to moderate demand. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).
+- Instance Type: Configures the instance to use a t2.micro. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).  
 Tags: To facilitate easy identification and management within AWS resources, a tag name with the value `my_first_ec2_instance` is applied.
-```
+
+```hcl
 provider "aws" {
   region = "us-east-1"
 }
@@ -55,7 +57,7 @@ resource "aws_instance" "my_first_ec2_instance" {
 }
 ```
 
-Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) for more information on Terraform. 
+Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) or [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported Workspace types. 
 
 ## Create a Workspace
 
@@ -65,14 +67,13 @@ You can define a Terraform configuration with multiple workspaces to enforce the
 
 For example, you can have a single configuration of a Kubernetes cluster and create multiple workspaces out of it, each leading to different clusters. The configuration is unique to each Workspace and can be managed through environment or Terraform variables.
 
-
 To create a new workspace, follow these steps:
 
 1. Sign in to [app.harness.io](https://app.harness.io/).
-2. In the module pane, select **Infrastructures**.
+2. In the module pane, select **Infrastructure**.
 3. Select an existing project or create a new project.
 4. Select **Workspaces**, and then select **New Workspace**.
-4. Select **Create new Workspace**.
+5. Select **Create new Workspace**.
 
 Complete the fields as follows:
 
@@ -80,7 +81,7 @@ Complete the fields as follows:
 - **Description**: Type an optional description to help identify the Workspace.
 - **Connector**: Select the connector to use during provisioning.
 - **Workspace Type**: Select the IaC type you want to use. IaCM currently supports Terraform and OpenTofu.
-- **Terraform Version**: Select the OpenTofu/Terraform version the configuration supports. This version determines which version of Terraform to use during execution. Currently, Harness IaCM only supports the open-source versions of Terraform (all versions below 1.5.x).  
+- **Terraform Version**: Select the OpenTofu/Terraform version the configuration supports. This version determines which version of Terraform to use during execution. Currently, Harness IaCM only supports the open-source versions of Terraform (all versions up to 1.5.7).    
 - **Repository**: Specify the Git configuration for the Terraform configuration files. You should specify the Harness Git connector, repository branch, and file path to the configuration files in the repository.
 5. Select **Add workspace details**.
 6. Select **Save**.  
