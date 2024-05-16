@@ -7636,10 +7636,8 @@ No, currently there is no native step to create or update a confluence page.
 #### How do I run a stand-alone deployment?
 To deploy a single instance of an application or software component independently in Harness, you can use the Basic deployment strategy.
 
-#### How to install PowerShell on harness delegate?
-You can run PowerShell scripts on a Harness Delegate, even though the Delegate must be run on Linux. Linux supports PowerShell using PowerShell core. https://developer.
-
-harness.io/docs/first-gen/firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts/#powershell 
+#### How to install PowerShell on Harness Delegate?
+You can run PowerShell scripts on a Harness Delegate, even though the delegate must be run on Linux. Linux supports PowerShell using PowerShell core. For more details, go to [Common delegate profile scripts](https://developer.harness.io/docs/first-gen/firstgen-platform/techref-category/account-ref/delegate-ref/common-delegate-profile-scripts/#powershell).
 
 ```
 # Download the Microsoft repository GPG keys  
@@ -7660,26 +7658,27 @@ pwsh
 ```
 
 #### Could you please provide the documentation or guidelines for establishing audit logs to monitor technology/device activity and file integrity monitoring?
-https://developer.harness.io/docs/platform/governance/audit-trail/audit-streaming/ and https://developer.harness.io/docs/platform/governance/audit-trail/
+* [Audit streaming](https://developer.harness.io/docs/platform/governance/audit-trail/audit-streaming/)
+* [Audit trail](https://developer.harness.io/docs/platform/governance/audit-trail/)
 
 #### What could be the potential reasons for a Harness Kubernetes step being unable to read the manifest file from a Bitbucket repository?
 Some potential reasons for this issue could include:
 
-1. Incorrect repository URL or credentials: Double-check that the repository URL and credentials provided in the Harness configuration are accurate and have the necessary permissions to access the repository.
+* Incorrect repository URL or credentials: Ensure that the repository URL and credentials provided in the Harness configuration are accurate and have the necessary permissions to access the repository.
 
-2. Incorrect file path or name: Ensure that the file path specified in the Harness configuration matches the actual location and name of the manifest file in the Bitbucket repository.
+* Incorrect file path or name: Ensure that the file path specified in the Harness configuration matches the actual location and name of the manifest file in the Bitbucket repository.
 
-3. Incorrect branch or tag specified: Verify that the branch or tag specified in the Harness configuration corresponds to the correct version of the manifest file in the Bitbucket repository.
+* Incorrect branch or tag specified: Verify that the branch or tag specified in the Harness configuration corresponds to the correct version of the manifest file in the Bitbucket repository.
 
-4. Issues with the Bitbucket API: If there are any issues or downtime with the Bitbucket API, it could prevent Harness from fetching the manifest file. Check the status of the Bitbucket API and any error messages in the Harness logs for more information.
+* Issues with the Bitbucket API: Check the status of the Bitbucket API and any error messages in the Harness logs for more information. If there are any issues or downtime with the Bitbucket API, it could prevent Harness from fetching the manifest file. 
 
 It's recommended to review the Harness logs and Bitbucket API logs for any error messages or additional details that could help pinpoint the root cause of the issue.
 
 #### What is the expression for the branch name?
-In the Trigger scenario, you can utilize ```<+trigger.targetBranch>``` if Git Experience is enabled for your pipeline. This field represents the PR's target branch or the branch specified for a branch build. Additionally, in the Pipeline Reference Branch field, you can use ```<+trigger.branch>``` to refer to the same target branch.
+In the trigger scenario, you can utilize ```<+trigger.targetBranch>``` if GitEx is enabled for your pipeline. This field represents the PR's target branch or the branch specified for a branch build. Additionally, in the Pipeline Reference Branch field, you can use ```<+trigger.branch>``` to refer to the same target branch.
 
-#### Is it supported to use environment-level ```<+input>``` fields when running a pipeline?
-Yes, it is supported to use environment-level ```<+input>``` fields when running a pipeline. These runtime inputs can be defined in the environment and then selected at runtime when running the pipeline.
+#### Are environment-level ```<+input>``` fields supported when running a pipeline?
+Yes, Harness supports using environment-level ```<+input>``` fields when running a pipeline. These runtime inputs can be defined in the environment and then selected at runtime when running the pipeline.
 
 
 #### How to Install the AAD Pod Identity components on your AKS cluster using the Azure CLI or Helm chart?
@@ -7687,35 +7686,35 @@ To install the Azure Active Directory (AAD) Pod Identity components on your Azur
 
 Using Azure CLI:
 
-* Install AAD Pod Identity:
+1. Install AAD Pod Identity:
 ```
 az aks pod-identity add --resource-group <resource-group-name> --cluster-name <cluster-name>
 ```
 
-* Verify the installation:
+2. Verify the installation:
 ```kubectl get pods -n kube-system
 ```
 
 Using Helm Chart:
 
-* Add the Helm repository:
+1. Add the Helm repository:
 ```
 helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
 ```
-* Install AAD Pod Identity:
+2. Install AAD Pod Identity:
 ```
 helm install aad-pod-identity aad-pod-identity/aad-pod-identity
 ```
-* Verify the installation:
+3. Verify the installation:
 ```
 kubectl get pods -n kube-system
 ```
 
 These are the steps to install AAD Pod Identity components on your AKS cluster using either the Azure CLI or Helm chart. Replace ```<resource-group-name> ``` and ``` <cluster-name> ``` with your actual resource group and cluster name, respectively.
 
-#### Write an OPA policy to check if the production stage conditional execution is set to always in Harness
+#### Write an OPA policy to check if the production stage conditional execution is set to always in Harness.
 
-Below is an example of an OPA policy to check if the conditional execution for the production stage is set to "always" in Harness:
+Below is an example OPA policy to check if the conditional execution for the production stage is set to "always" in Harness:
 
 ```
 package harness_production_stage_check
@@ -7737,7 +7736,7 @@ allow {
 ```
 This policy checks if the stage is a production stage and if its conditional execution is set to "always". If both conditions are met, it allows the request. Otherwise, it denies the request. 
 
-#### Could you please clarify What is the message of this pop-up "input set does not exist in the selected branch"?
+#### Could you please clarify what is the message of this pop-up "input set does not exist in the selected branch"?
 If the input set you're trying to use isn't found in the branch where the pipeline is located, Harness will display this message.
 
 #### Why It doesn't permit us to deploy a WinRM type service because we cannot configure the artifact to be installed on the destination server.
@@ -7748,16 +7747,16 @@ Instead, you can use the Command step to run commands on the target hosts to dow
 #### How does the rollback process work in SSH deployments?
 Harness restores the state of deployment to the pipeline's previous successful stage execution based on serivce, enviroment and infrastucture details. Harness records the artifact version that was successfully deployed during previous successful executions. When using the Rollback step's Copy Artifact command unit, Harness copies the last successful version of the artifact deployed via Harness to the remote host.
 
-https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rollback
+For more details, go to [SSH deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng/#rollback).
 
 #### How to avoid Harness pulling old Helm dependencies that are not listed in the Chart.yaml file?
 To avoid this issue, ensure that you are using a delegate version above 818xx.
 
-#### Is it expected behaviour for the environment dropdown to display all environments when there's no mapping associated with the environment group?
-Yes, that is the expected behaviour. When there's no mapping associated with the environment group, all environments will be displayed in the dropdown menu.
+#### Is it expected behaviour for the environment drop-down to display all environments when there's no mapping associated with the environment group?
+Yes, that is the expected behaviour. When there's no mapping associated with the environment group, all environments will be displayed in the drop-down menu.
 
 #### What does redeploy do?
-The "redeploy" action in Harness refers to the process of restarting or relaunching an application or service that is already deployed. This action ensures that any changes made to the application's configuration or underlying infrastructure are applied and that the application is running with the most up-to-date settings.
+The "redeploy" action in Harness refers to the process of restarting or relaunching an application or service that is already deployed. This action ensures that any changes made to the application's configuration or underlying infrastructure are applied and the application is running with the most up to date settings.
 
 #### What is Exit code 137?
 Exit code 137 typically indicates that a process was terminated due to a signal. Specifically, it usually means that the process received a SIGKILL signal, which is often sent by the operating system when a process exceeds its memory limit or when it is forcibly terminated by another process or user action.
