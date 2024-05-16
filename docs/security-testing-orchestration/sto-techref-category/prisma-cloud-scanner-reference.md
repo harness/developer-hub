@@ -273,12 +273,7 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
 <StoSettingSettings />
 
-<!-- 
-### Settings
-
-You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` : `--publish FALSE`.
-
--->
+To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs to **Settings (optional)**. These key-value pairs will be added as labels in the Prisma Cloud UI when you run the scan.
 
 ### Additional Configuration
 

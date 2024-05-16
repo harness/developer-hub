@@ -24,6 +24,14 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## May 2024
 
+### Version 1.95.0
+
+#### Fixed issues
+
+- Fixed a Prisma Cloud step issue where `twistcli` didn't honor step-level variables when running in Harness Cloud. With this fix, you can now set `JOB_NAME` in all STO-supported build infrastructures, and thereby add a searchable tab in the Prisma Cloud UI. (STO-7508)
+
+- Fixed an issue where a Wiz step failed when it scanned a package that had policies applied to it but no vulnerabilities. (STO-7575, ZD-63342)
+
 ### Version 1.94.4
 
 #### New features 
