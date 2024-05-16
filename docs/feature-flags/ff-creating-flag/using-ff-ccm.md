@@ -1,5 +1,5 @@
 ---
-title: Using Cloud Cost Management with your flags
+title: Use Cloud Cost Management with your flags
 description: This page discusses using Harness Feature Flags with Cloud Cost Module and how it's used. 
 sidebar_position: 50
 ---
