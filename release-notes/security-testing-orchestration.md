@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-05-02T10:00
+date: 2024-05-16T10:00
 sidebar_position: 13
 ---
 
