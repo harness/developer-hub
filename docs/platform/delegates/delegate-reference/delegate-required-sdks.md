@@ -13,7 +13,7 @@ For Kubernetes deployments, include the SDKs and tools that your manifest type r
 
 ### Kubernetes
 
-`kubectl` v1.24.3
+`kubectl` v1.28.7
 
 ```
 curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl
@@ -27,7 +27,7 @@ mkdir -p /opt/harness-delegate/client-tools/go-template/v0.4.1/ && curl -L https
 
 ### Helm
 
-`kubectl` v1.24.3
+`kubectl` v1.28.7
 
 ```
 curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl
@@ -41,7 +41,7 @@ curl -L0 https://get.helm.sh/helm-v3.9.2-linux-amd64.tar.gz -o helm-v3.9.2.tar.g
 
 ### Helm (chart stored in GCS or S3)
 
-`kubectl` v1.24.3
+`kubectl` v1.28.7
 
 ```
 curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl
@@ -75,7 +75,7 @@ curl -L https://app.harness.io/public/shared/tools/chartmuseum/release/v0.8.2/bi
 
 ### Kustomize
 
-`kubectl` v1.24.3
+`kubectl` v1.28.7
 
 ```
 curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectlmv kubectl /opt/harness-delegate/custom-client-tools/kubectl
@@ -89,7 +89,7 @@ curl -L0 https://github.com/kubernetes-sigs/kustomize/releases/download/kustomiz
 
 ### OpenShift
 
-`kubectl` v1.24.3
+`kubectl` v1.28.7
 
 ```
 curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl
@@ -121,6 +121,28 @@ mkdir -p /opt/harness-delegate/client-tools/tf-config-inspect/v1.1/ && curl -L h
 
 This library is available for download from [CDN](https://app.harness.io/public/shared/tools/harness-pywinrm/release/v0.4-dev/bin/linux/amd64/harness-pywinrm).
 
+### AKS and GKE infrastructure
+
+`kubectl` v1.28.7
+
+Add the following install scripts to the `INIT_SCRIPT` to install the credentials plugin for GKE and AKS infrastructure types if you're using `kubectl` version 1.26.x or later.
+
+You can replace the `harness-credentials-plugin` with Azure CLI or `gke-gcloud-auth-plugin`to take care of this flow. For more details, go to [Authentication in GKE v1.26](https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke).
+
+```yaml
+  - name: INIT_SCRIPT
+    value: |
+
+        ## for AKS
+        mkdir -m 777 -p client-tools/kubelogin/v0.1.1 \
+        && curl -s -L -o client-tools/kubelogin/v0.1.1/kubelogin https://app.harness.io/public/shared/tools/kubelogin/release/v0.1.1/bin/linux/amd64/kubelogin
+        export PATH=/opt/harness-delegate/client-tools/kubelogin/v0.1.1/:$PATH
+
+        ## for GKE or AKS with certificate auth type
+        mkdir -m 777 -p client-tools/harness-credentials-plugin/v0.1.0 \
+        && curl -s -L -o client-tools/harness-credentials-plugin/v0.1.0/harness-credentials-plugin https://app.harness.io/public/shared/tools/harness-credentials-plugin/release/v0.1.0/bin/linux/amd64/harness-credentials-plugin 
+        export PATH=/opt/harness-delegate/client-tools/harness-credentials-plugin/v0.1.0/:$PATH
+```
 
 ## Native Helm deployments
 
@@ -134,7 +156,7 @@ For native Helm deployments, include the following SDKs and tools.
 curl -L0 https://get.helm.sh/helm-v3.9.2-linux-amd64.tar.gz -o helm-v3.9.2.tar.gz && tar -xvzf helm-v3.9.2.tar.gz && chmod +x ./linux-amd64/helm && mv ./linux-amd64/helm /opt/harness-delegate/custom-client-tools/helm3
 ```
 
-`kubectl` v1.24.3
+`kubectl` v1.28.7
 
 Required if Kubernetes version is 1.16+.
 

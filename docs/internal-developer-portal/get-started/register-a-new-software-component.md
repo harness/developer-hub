@@ -54,9 +54,27 @@ Following are the key fields that you must update:
 ![](static/create-page-sidebar.png)
 ![](static/create-page.png)
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+<Tabs queryString="Git-Provider">
+<TabItem value="other-git-provider" label="Other Git Providers">
+
 4. Enter the URL to your new `catalog-info.yaml`.
 
 ![](static/url-on-register-page.png)
+
+</TabItem>
+<TabItem value="harness-code-repo-enabled" label="Harness Code Repository">
+
+4. Once you copy thr URL for `catalog-info.yaml` from Harness Code Repository make sure to replace vanity url domain with `accounts.eu.harness.io`
+
+![](static/replace-vanity-url-register.png)
+
+</TabItem>
+</Tabs>
+
 
 5. Select **Import**.
 

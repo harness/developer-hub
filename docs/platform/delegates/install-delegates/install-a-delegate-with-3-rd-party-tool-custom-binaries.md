@@ -128,6 +128,17 @@ PCF deployments require CLI 7. For installation instructions, go to [Install Clo
 
 Open the delegate YAML file and locate the `INIT_SCRIPT` in the delegate container `spec`. To install additional tools on the delegate, add your custom scripts to the `INIT_SCRIPT`.
 
+:::important
+Several tools require `unzip` in the manifest. Add the following YAML before you add any of the below scripts.
+
+```yaml
+  - name: INIT_SCRIPT
+    value: |
+        microdnf install -y zip unzip
+```
+
+:::
+
 These examples show how to install some common tools.
 
 <Tabs>
@@ -138,6 +149,7 @@ The following `INIT_SCRIPT` installs the AWS CLI:
 ```yaml
   - name: INIT_SCRIPT
     value: |
+        microdnf install -y zip unzip
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
         ./aws/install
@@ -164,6 +176,7 @@ The following `INIT_SCRIPT` installs Terraform:
 ```yaml
   - name: INIT_SCRIPT
     value: |
+        microdnf install -y zip unzip
         curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip
         unzip terraform_0.12.25_linux_amd64.zip
         mv ./terraform /usr/bin/
@@ -203,7 +216,7 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
 ```yaml
   - name: INIT_SCRIPT
     value: |
-
+        microdnf install -y zip unzip
         ## Install AWS CLI
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
         unzip awscliv2.zip
@@ -224,6 +237,31 @@ To install multiple tools, you can add all the install scripts to the `INIT_SCRI
         chmod 700 get_helm.sh
         ./get_helm.sh
 ```
+
+### Install credentials plugin for GKE and AKS infrastructure types
+
+Add the following install scripts to the `INIT_SCRIPT` to install the credentials plugin for GKE and AKS infrastructure types if you're using `kubectl` version 1.26.x or later.
+
+
+:::note
+If you're using a custom delegate with `kubelogin` and certificate type of authentication, then you must install Azure CLI. Alternatively, you can install the `harness-credentials-plugin` to take care of this flow without Azure CLI.
+:::
+
+```yaml
+  - name: INIT_SCRIPT
+    value: |
+
+        ## for AKS
+        mkdir -m 777 -p client-tools/kubelogin/v0.1.1 \
+        && curl -s -L -o client-tools/kubelogin/v0.1.1/kubelogin https://app.harness.io/public/shared/tools/kubelogin/release/v0.1.1/bin/linux/amd64/kubelogin
+        export PATH=/opt/harness-delegate/client-tools/kubelogin/v0.1.1/:$PATH
+
+        ## for GKE or AKS with certificate auth type
+        mkdir -m 777 -p client-tools/harness-credentials-plugin/v0.1.0 \
+        && curl -s -L -o client-tools/harness-credentials-plugin/v0.1.0/harness-credentials-plugin https://app.harness.io/public/shared/tools/harness-credentials-plugin/release/v0.1.0/bin/linux/amd64/harness-credentials-plugin 
+        export PATH=/opt/harness-delegate/client-tools/harness-credentials-plugin/v0.1.0/:$PATH
+```
+
 
 ## Apply the changes
 
