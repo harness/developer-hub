@@ -105,6 +105,19 @@ import TabItem from '@theme/TabItem';
    pip install cookiecutter
    cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
+   # Add catalog-info.yaml content
+    echo "apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: <+pipeline.variables.project_name>
+      description: This is a nextjs app.
+      annotations:
+        backstage.io/techdocs-ref: dir:.
+    spec:
+      type: documentation
+      lifecycle: experimental" > catalog-info.yaml
+
+
    # Create repository
    curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
 
@@ -114,10 +127,23 @@ import TabItem from '@theme/TabItem';
    git config --global user.email "support@harness.io"
    git config --global user.name "Harness Support"
    git add .
-   git commit -m "Project init"
+   git commit -m "Project init and Added catalog-info.yaml"
    git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
    git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+
+   # Add catalog-info.yaml location to catalog
+    curl --location 'https://idp.harness.io/<+account.identifier>/idp/api/catalog/locations' \
+    --header 'x-api-key: Harness PAT' \
+    --header 'Harness-Account: <+account.identifier>' \
+    --data-raw '{"type":"url","target":"https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>/blob/main/catalog-info.yaml"}'
    ```
+
+:::info
+
+In the above script you need to add the **[Personal Access Token](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/#create-personal-api-keys-and-tokens)** to make the API call to register your catalog, 
+
+:::
+
 
 6. Click **Apply Changes**.
 
@@ -163,6 +189,19 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
    pip install cookiecutter
    cookiecutter idp-samples/idp-pipelines/cookiecutter-react-app/ app_name="<+pipeline.variables.project_name>" --no-input
 
+
+   # Add catalog-info.yaml content
+    echo "apiVersion: backstage.io/v1alpha1
+    kind: Component
+    metadata:
+      name: <+pipeline.variables.project_name>
+      description: This is a nextjs app.
+      annotations:
+        backstage.io/techdocs-ref: dir:.
+    spec:
+      type: documentation
+      lifecycle: experimental" > catalog-info.yaml
+
    # Create repository
    curl --request POST --header "PRIVATE-TOKEN: <+pipeline.variables.gitlab_token>" "https://gitlab.com/api/v4/projects" --form "name=<+pipeline.variables.gitlab_repo>" --form "description=<+pipeline.variables.project_name> - A Next.js app" --form "visibility=public"
 
@@ -175,6 +214,13 @@ For eg: `<+pipeline.variables.project_name>` variable is pre-populated by `proje
    git commit -m "Project init"
    git remote add origin https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git
    git push --set-upstream https://oauth2:<+pipeline.variables.gitlab_token>@gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>.git main
+   
+   # Add catalog-info.yaml location to catalog
+    curl --location 'https://idp.harness.io/ACCOUNT_ID/idp/api/catalog/locations' \
+    --header 'x-api-key: Harness PAT' \
+    --header 'Harness-Account: Account_ID' \
+    --data-raw '{"type":"url","target":"https://gitlab.com/<+pipeline.variables.gitlab_org>/<+pipeline.variables.gitlab_repo>/blob/main/catalog-info.yaml"}'   
+
    ```
 
 6. Click **Apply Changes**.
@@ -212,66 +258,45 @@ Now that our pipeline is ready to execute when a project name and a GitHub repos
 <Tabs>
 <TabItem value="GitHub">
 
-[Source](https://github.com/harness-community/idp-samples/blob/main/idp-pipelines/nextjs/template.yaml)
+[Source](https://github.com/harness-community/idp-samples/blob/main/template-github.yaml)
 
 ```yaml
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: react-app
-  title: Create a react app
-  description: A template to create a new react app
+  name: onboard-services
+  title: Create and Onboard a new react app
+  description: A template to create and onboard a new react app
   tags:
     - nextjs
     - react
     - javascript
 spec:
-  owner: name@company.io
+  owner: debabrata.panigrahi@harness.io
   type: service
   parameters:
     - title: Next.js app details
       required:
         - project_name
         - github_repo
+        - github_org
       properties:
         project_name:
           title: Name of your new app
           type: string
-          description: Unique name of the app
+          description: Unique name of the app          
         github_repo:
           title: Name of the GitHub repository
           type: string
           description: This will be the name of Repository on Github
-        isPublish:
-          title: Do you wish to publish the artificat the internal registry?
-          type: boolean
-    - title: Service Infrastructure Details
-      required:
-        - owner
-      properties:
-        cloud_provider:
-          title: Choose a cloud provider for Deployment
+        github_org:
+          title: Name of the GitHub Organisation
           type: string
-          enum: ["GCP", "AWS"]
-          default: GCP
-        db:
-          title: Choose a Database Type for the Service
+          description: This will be the name of Organisation on Github
+        github_token:
+          title: GitHub PAT
           type: string
-          enum: ["None", "MySQL", "Postgres", "MongoDB"]
-          default: None
-        cache:
-          title: Choose a caching system for the Service
-          type: string
-          enum: ["None", "Redis"]
-          default: None
-        owner:
-          title: Choose an Owner for the Service
-          type: string
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
-        # This field is hidden but needed to authenticate the request to trigger the pipeline
+          ui:widget: password
         token:
           title: Harness Token
           type: string
@@ -282,15 +307,14 @@ spec:
       name: Creating your react app
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/QE_Team/projects/Quality_Assurence/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+        url: "YOUR PIPELINE URL"
         inputset:
           project_name: ${{ parameters.project_name }}
           github_repo: ${{ parameters.github_repo }}
-          cloud_provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
+          github_org: ${{ parameters.github_org }}
+          github_token: ${{ parameters.github_token }}
         apikey: ${{ parameters.token }}
-
+    # The final step is to register our new component in the catalog.
   output:
     links:
       - title: Pipeline Details
@@ -305,60 +329,39 @@ spec:
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: react-app
-  title: Create a react app
-  description: A template to create a new react app
+  name: onboard-services
+  title: Create and Onboard a new react app
+  description: A template to create and onboard a new react app
   tags:
     - nextjs
     - react
     - javascript
 spec:
-  owner: name@company.io
+  owner: debabrata.panigrahi@harness.io
   type: service
   parameters:
     - title: Next.js app details
       required:
         - project_name
         - gitlab_repo
+        - gitlab_org
       properties:
         project_name:
           title: Name of your new app
           type: string
-          description: Unique name of the app
+          description: Unique name of the app          
         gitlab_repo:
-          title: Name of the GitLab repository
+          title: Name of the Gitlab repository
           type: string
-          description: This will be the name of Repository on GitLab
-        isPublish:
-          title: Do you wish to publish the artifact the internal registry?
-          type: boolean
-    - title: Service Infrastructure Details
-      required:
-        - owner
-      properties:
-        cloud_provider:
-          title: Choose a cloud provider for Deployment
+          description: This will be the name of Repository on Gitlab
+        gitlab_org:
+          title: Name of the Gitlab Organisation
           type: string
-          enum: ["GCP", "AWS"]
-          default: GCP
-        db:
-          title: Choose a Database Type for the Service
+          description: This will be the name of Organisation on Gitlab
+        gitlab_token:
+          title: Gitlab PAT
           type: string
-          enum: ["None", "MySQL", "Postgres", "MongoDB"]
-          default: None
-        cache:
-          title: Choose a caching system for the Service
-          type: string
-          enum: ["None", "Redis"]
-          default: None
-        owner:
-          title: Choose an Owner for the Service
-          type: string
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
-        # This field is hidden but needed to authenticate the request to trigger the pipeline
+          ui:widget: password
         token:
           title: Harness Token
           type: string
@@ -369,15 +372,14 @@ spec:
       name: Creating your react app
       action: trigger:harness-custom-pipeline
       input:
-        url: "https://app.harness.io/ng/account/vpCkHKsDSxK9_KYfjCTMKA/home/orgs/QE_Team/projects/Quality_Assurence/pipelines/IDP_New_NextJS_app/pipeline-studio/?storeType=INLINE"
+        url: "YOUR PIPELINE URL"
         inputset:
           project_name: ${{ parameters.project_name }}
           gitlab_repo: ${{ parameters.gitlab_repo }}
-          cloud_provider: ${{ parameters.provider }}
-          db: ${{ parameters.db }}
-          cache: ${{ parameters.cache }}
+          gitlab_org: ${{ parameters.gitlab_org }}
+          gitlab_token: ${{ parameters.gitlab_token }}
         apikey: ${{ parameters.token }}
-
+    # The final step is to register our new component in the catalog.
   output:
     links:
       - title: Pipeline Details
@@ -394,7 +396,7 @@ This YAML code is governed by Backstage. You can change the name and description
 
 ![](./static/template-1.png)
 ![](./static/template-2.png)
-![](./static/template-3.png)
+
 
 Let's take a look at the inputs that the template expects from a developer. The inputs are written in the `spec.parameters` field. It has two parts, but you can combine them. The keys in `properties` are the unique IDs of fields (for example, `github_repo` and `project_name`). If you recall, they are the pipeline variables that we set as runtime inputs earlier. This is what we want the developer to enter when creating their new application.
 

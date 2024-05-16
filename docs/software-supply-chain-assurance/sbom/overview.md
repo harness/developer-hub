@@ -18,11 +18,11 @@ The Harness SSCA module provides comprehensive capabilities for generating, mana
 
 
 * **Generate or Ingest SBOMs**: The step allows you to easily generate SBOMs for your software artifact or Ingest existing ones from external sources. Refer to the following docs for detailed implementation
-    * [Generate SBOM](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/generate-sbom)
-    * [Ingest SBOM](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data)
-* **SBOM Quality Score**: The step will generate a [quality score](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/SBOM-Score) for the SBOM which helps in assessing the completeness and quality of your SBOM.
+    * [Generate SBOM](/docs/software-supply-chain-assurance/sbom/generate-sbom)
+    * [Ingest SBOM](/docs/software-supply-chain-assurance/sbom/ingest-sbom-data)
+* **SBOM Quality Score**: The step will generate a [quality score](/docs/software-supply-chain-assurance/sbom/sbom-score) for the SBOM which helps in assessing the completeness and quality of your SBOM.
 * **Attestation**: The step will sign the SBOM and securely store it in the artifact’s repository for added trust and verification.
-* **SBOM Drift Tracking**: You can use [SBOM Drfit](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/SBOM-Drift) feature to monitor changes in your software composition over time and identify potential security risks or licensing issues.
+* **SBOM Drift Tracking**: You can use [SBOM Drfit](/docs/software-supply-chain-assurance/sbom/sbom-drift) feature to monitor changes in your software composition over time and identify potential security risks or licensing issues.
 
 
 ## Integration with SBOM tools
@@ -54,4 +54,4 @@ While Harness is capable of generating SBOMs for both Container Images and Code 
 ## Next steps
 
 * [Generate](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/generate-sbom) or [Ingest](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data) SBOM
-* [Enforce SSCA Policies](https://developer.harness.io/docs/software-supply-chain-assurance/ssca-policies/overview) on the SBOM
+* [Enforce SBOM Policies](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/overview) on the SBOM

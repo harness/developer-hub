@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-04-18T10:00
+date: 2024-05-02T10:00
 sidebar_position: 13
 ---
 
@@ -22,7 +22,43 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## May 2024
+
+### Version 1.94.4
+
+#### New features 
+
+- You can now use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/) and [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) in Security stages without a CI license. (STO-7442)
+
+- You can now scan code repositories using the [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scan step. (STO-7531)
+
+ 
+
+#### Fixed issues
+
+- Fixed an issue where the Built-in Grype step would time out when uploading scan results. (STO-7464, ZD-61941)
+
+- Fixed an issue where OPA failed with the error `Unexpected error occurred while evaluating Policies`. With this fix, STO limits the number of occurrences per issue (max 1000) that it sends to OPA. (STO-7562, ZD-63083)
+
+
 ## April 2024
+
+### UI update 1.15.0
+
+#### Early access feature: Built-in SAST scans
+
+This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
+
+This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+<DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add built-in SAST scan step" /> 
+
+#### New feature: Orchestrated Semgrep scans
+
+Harness STO now supports running [Semgrep scans](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) in **Orchestration** mode. (STO-7142)
+
+
+
 
 ### STO Manager version 1.22.1
 

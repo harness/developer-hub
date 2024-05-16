@@ -26,6 +26,7 @@ Chaining pipelines in Harness offers the following benefits:
 - Pipeline stages (chained pipelines) don't support matrix strategies.
 - Pipeline stages don't support auto-suggested expressions in **Outputs**.
 - Artifacts, test results, and other output produced by chained pipelines are available in the execution details for the chained pipeline that produced those outputs. This information is not stored in the parent pipeline's execution details.
+- Nested pipeline chaining is not supported. When the referred pipeline invokes a child pipeline, it cannot be included within another pipeline.
 
 ## Chain pipelines
 

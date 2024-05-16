@@ -272,7 +272,7 @@ When there are several stages within the CI and CD pipelines (such as Unit Test,
 
 The following Issue Management Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [JIRA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira)
+  * [JIRA](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration)
   * [Azure Boards](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)
   * [Rally Software](/docs/software-engineering-insights/early-access/integrations/sei-integration-rally)
 
@@ -280,7 +280,7 @@ The following Issue Management Platforms are supported for calculating the DORA 
 
 The following SCM Platforms are supported for calculating the DORA metrics on Harness SEI:
 
-  * [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github)
+  * [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)
   * [BitBucket](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-bitbucket)
   * [GitLab](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-gitlab)
   * [Azure Repos](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops)

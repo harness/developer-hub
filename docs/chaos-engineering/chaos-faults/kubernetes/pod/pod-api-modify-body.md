@@ -182,7 +182,7 @@ spec:
             - name: RESPONSE_BODY
               value: "/.+/test"
             - name: PATH_FILTER
-              value: '/status'   
+              value: '/status'
 ```
 
 ### Response body
@@ -216,7 +216,7 @@ spec:
             - name: RESPONSE_BODY
               value: "/.+/test"
             - name: PATH_FILTER
-              value: '/status'   
+              value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
               value: "80"
@@ -256,7 +256,7 @@ spec:
               value: "/.+/test"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"         
+              value: "80"
 ```
 
 ### Destination ports
@@ -300,7 +300,7 @@ spec:
               value: "/.+/test"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### HTTPS
@@ -357,7 +357,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Advanced fault tunables

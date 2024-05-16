@@ -76,15 +76,25 @@ export const platformData: Horizon = {
         title: "Custom banners",
         description: "Display custom banners in the Harness UI",
       },
-       {
+      {
         tag: [{ value: "Delegate" }],
         title: "Restrict delegate usage",
         description: "Ability to restrict delegate usage across Accounts/Orgs/Projects and Environments",
       },
-       {
+      {
         tag: [],
         title: "Console log line limit",
         description: "Ability to increase the console log line limits",
+      },
+      {
+        tag: [],
+        title: "Auto Discovery of Entities in Git",
+        description: "When an entity is created in git it is created in Harness as well.",
+      },
+      {
+        tag: [],
+        title: "GitX for Triggers",
+        description: "Ability to configure triggers as code in a git provider."
       },
     ],
   },

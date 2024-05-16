@@ -49,7 +49,7 @@ Harness includes several built-in roles. To examine the permissions assigned to 
 
 :::note
 
-Built-in roles can be hidden. This functionality is behind the feature flags `PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE` and `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`. Contact [Harness Support](mailto:support@harness.io) to enable the features.
+Built-in roles can be hidden. This functionality is behind the feature flags `PL_HIDE_PROJECT_LEVEL_MANAGED_ROLE`, `PL_HIDE_ORGANIZATION_LEVEL_MANAGED_ROLE`, and `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`. Contact [Harness Support](mailto:support@harness.io) to enable the features.
 
 :::
 

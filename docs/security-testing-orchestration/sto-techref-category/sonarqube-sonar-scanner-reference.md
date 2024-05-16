@@ -77,11 +77,11 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 #### Scan Configuration
 
+The predefined configuration to use for the scan. 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
-
-
-<StoSettingProductConfigName />
+- **Default**  
+- **Branch Scan**  
+- **Pull Request** 
 
 
 ### Target
@@ -300,8 +300,8 @@ In the **Advanced** settings, you can use the following options:
 ## SonarQube pull-request scan configuration
 
 To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
-    - `-Dsonar.pullrequest.key=`[`<+trigger.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
-    - `-Dsonar.pullrequest.branch=`[`<+trigger.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
+    - `-Dsonar.pullrequest.key=`[`<+codebase.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
+    - `-Dsonar.pullrequest.branch=`[`<+codebase.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
     - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
 
       If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
@@ -327,6 +327,7 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 
 </details>
 
+
 ## SonarQube proxy settings
 
 If there's a proxy between your Harness pipeline and your SonarQube server, you can add your proxy settings under [Settings](#settings). For example:
@@ -335,9 +336,83 @@ If there's a proxy between your Harness pipeline and your SonarQube server, you 
 - `JVM_HTTP_PROXY_PORT : 3735`
 - `JVM_HTTPS_PROXY_HOST : my-proxy.ca.myorg.org `
 - `JVM_HTTPS_PROXY_PORT : 3745`
-- `JVM_NO_PROXY : sonar.myorg.local` 
+- `JVM_NO_PROXY : sonar.myorg.local`
 
- 
+## Generate coverage reports and upload to SonarQube
+
+You can set up your pipeline to generate test coverage reports and then get them pushed up to your SonarQube instance. To do this:
+
+1. Add a **Run** step to your pipeline before the SonarQube step.
+
+2. Set the **Image** field to a base image that's compatible with the repo you're scanning.
+
+3. Add commands to install the binary and any other dependencies required to generate the coverage report. 
+
+3. Add the commands necessary to generate the report.
+
+4. Add a [failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/) to the Run step and configure it to ignore all failures.
+
+   This step is required if you want the pipeline to proceed even if it can't generate a coverage report. 
+
+4. Update your SonarQube step with the path to the coverage report.
+
+   - This step is required only if you saved your report to a non-default folder and/or filename.
+
+   - To specify the report path, add the CLI argument for the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. 
+
+:::note important notes
+
+- You must ensure that you generate reports that `sonar-cli` can find and upload, and that your SonarQube instance can ingest.
+
+- For more information, go to [Test Coverage](https://docs.sonarsource.com/sonarqube/9.8/analyzing-source-code/test-coverage/overview/) in the SonarQube documentation.
+
+- Carefully review the specific language reference to make sure that you install the required binaries and dependencies, and that you publish your reports in the correct format.
+
+:::
+
+#### Example: generate a Python coverage report
+
+Here's an example workflow for generating a Python 3.9 coverage report:
+
+1. Add the **Run** step.
+
+2. Set the **Image** to `python:3.9-alpine`.
+
+3. Add commands to install `coverage` and any other dependencies required to generate the report.
+
+4. Add a `coverage` command to generate a coverage report. The specific usage depends on the language and platform.
+
+5. Add a second `coverage` command to convert the report to a SonarQube-compatible XML report.
+
+6. If the Run step saves the coverage report to a non-default location, add the report path to [Additional CLI Flags](#additional-cli-flags) in your SonarQube scan step. For example: `-Dsonar.python.coverage.reportPaths=/shared/sonarqube/coverage.xml`.
+
+Here's what the Run step looks like in YAML:
+
+```yaml
+
+- step:
+    type: Run
+    name: Run_Tests
+    identifier: generate_python_coverage_report
+    spec:
+      connectorRef: account.harnessImage
+      image: python:3.9-alpine
+      shell: Sh
+      command: |-
+        # Install coverage and other
+        # dependencies required by the code repo.
+        pip install pytest-django pytest-cov 
+        python3 -m pip install coverage
+        pip install -r requirements.txt
+
+        # Run coverage commands to generate a report
+        # and then convert the report to XML.
+        # This method ensures that SonarQube can ingest the resulting report.
+        coverage run -m pytest **/tests 
+        coverage xml
+
+```
+
 ## Troubleshoot Sonar Scans
 
 ### Can't generate SonarQube report due to shallow clone

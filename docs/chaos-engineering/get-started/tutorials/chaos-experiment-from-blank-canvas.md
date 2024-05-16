@@ -165,4 +165,7 @@ The output on the terminal indicates that the cart pod was terminated and a new 
 
 ## Conclusion
 
-With that, you have successfully created and executed a chaos experiment from scratch! Your next step can be to [execute a chaos experiment using API](/docs/chaos-engineering/get-started/tutorials/experiment-using-api.md).
+With that, you have successfully created and executed a chaos experiment from scratch!
+
+Here are some recommendations:
+- [Execute a chaos experiment using API](/docs/chaos-engineering/get-started/tutorials/experiment-using-api.md).

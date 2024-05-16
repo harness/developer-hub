@@ -27,8 +27,10 @@ A **formal definition** is: _"Chaos engineering is the discipline of performing 
 ![](./static/overview/chaos-eng-steps.png)
 
 :::tip
-Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected. This brings you to a new concept- **Chaos Engineering**.
+Chaos engineering isn't the same as software testing (manual or automated) which verifies that your system is working as expected.
 :::
+
+Chaos experiments target a steady-state system and simulate conditions that might induce failure in components such as infrastructure, networks, and services. For example, a chaos experiment might terminate a pod in a functional Kubernetes cluster, shut down a working load balancer to validate failover, or induce CPU spikes on a server, and then observe how the system responds.
 
 ## Why is chaos engineering important?
 
@@ -62,10 +64,10 @@ Harness Chaos Engineering (HCE) simplifies the chaos engineering practices for y
 ### Standard chaos experiment flow of control
 
 The standard chaos experimentation flow involves the following steps:
-1. Identify the steady state of the system or application under test;
+1. Identify the steady state of the system or application under test and specify its service-level objectives (SLOs);
 2. Hypothesize around the impact a particular fault or failure would cause;
 3. Inject this failure (or chaos fault) in a controlled manner (with a pre-determined and minimal blast radius);
-4. Validate whether the hypothesis is proven, and take appropriate actions if a weakness is found.
+4. Validate whether the hypothesis is proven and if the system meets the SLOs, and take appropriate actions if a weakness is found.
 
 ## Benefits of HCE
 
@@ -79,6 +81,13 @@ HCE doesn't simply focus on fault injection, it helps you set up a fully operati
 6. [Hypothesis validation using probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided GameDay execution with detailed analytics and reporting based on experiment execution and application resilience.
 8. Chaos events, metrics, and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
+
+:::tip
+Harness Chaos Engineering is available in **SaaS** and **self-managed** versions.
+
+1. **SaaS (Software-as-a-service)**: You either sign up or get invited to a specific project. You can also create a project if you have the necessary permissions. HCE helps manage the cluster.
+2. **SMP (Self-managed platform)**: You create, manage and maintain your clusters. You are responsible for providing permissions to projects and handling issues associated with them.
+:::
 
 ## Try Chaos Engineering today
 

@@ -18,10 +18,9 @@ The following table lists SEI support for platforms, repos, registries, and rela
 | **Type of integration** | **SCM** | **CI/CD** | **Security** | **Issue Tracking and Management** | **Communication and collaboration** | **Others** |
 | -- | -- | -- | -- | -- | -- | -- |
 | Automated | <ul><li>Bitbucket</li><li>GitHub</li><li>Gitlab</li><li>Azure Repos</li></ul> | <ul><li>CircleCI</li><li>Drone</li><li>Jenkins</li><li>Harness</li><li>Azure Pipelines</li></ul> | <ul><li>Sonarqube</li></ul> | <ul><li>Jira</li><li>Azure Boards</li><li>Rally Software (BETA)</li></ul> | <ul><li>Slack</li></ul> | <ul><li>TestRail</li></ul> |
-| Other | <ul><li>Perforce Helix Server</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Coverity</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
+| Other | <ul><li>Perforce Helix Server</li><li> Gerrit</li></ul> | <ul><li>Github Actions</li></ul> | <ul><li>Checkmarx</li><li>Snyk</li><li>Tenable</li><li>Coverity</li></ul> |  | <ul><li>Microsoft Teams</li></ul> | <ul><li>Pagerduty</li><li>ServiceNow</li><li>PostgreSQL</li><li>Salesforce</li><li>Splunk</li><li>Zendesk</li></ul> |
 
-
-:::info Note: 
+:::info Note:
 
 The integrations categorized under the **Others** label are now available with basic support, and we are actively working towards expanding their capabilities in the near future.
 
@@ -55,18 +54,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td><b>Description</b></td>
     </tr>
     <tr>
-        <td>SEI_EASY_ONBOARDING_JIRA</td>
-        <td>Enables access to the new user experience for connecting to Jira Cloud & Data Center using the <a href="/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding#configure-the-integration-using-the-jira-connect-app">Jira Connect App</a></td>
-    </tr>
-    <tr>
-        <td>SEI_EASY_ONBOARDING_GITHUB</td>
-        <td>Enables access to the new user experience for connecting to Github Cloud and Enterprise using the <a href="/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app"> GitHub App </a></td>
-    </tr>
-    <tr>
-        <td>SEI_SHOULD_ENABLE_REAUTH</td>
-        <td>Enables access to new re-authorization user experience for a GitHub integration</td>
-    </tr>
-    <tr>
         <td>SEI_SHOW_TRELIS_NEW_INTERVAL</td>
         <td>Enables Trellis Profile configuration using <a href="/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors">Trellis Factors</a> at the Central Profile. This feature is in BETA. </td>
     </tr>
@@ -90,6 +77,14 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>SEI_SHOW_HISTORICAL_FILTERS</td>
         <td>Allows you to configure the Issue Backlog Trend report to display historical data for the current issues</td>
     </tr>
+    <tr>
+        <td>SEI_SHOW_ALL_METRICS</td>
+        <td>Allows you to configure the Sprint Metrics Percentage Trend report using the new Sprint metrics</td>
+    </tr>
+    <tr>
+        <td>SEI_SERVICE_NOW</td>
+        <td>Integrate SEI with the ServiceNow Platform. This integration is still under development.</td>
+    </tr>
 </table>
 
 <!-- missing SHOW_DIAGNOSTIC_TILE. Enabling this feature will allow you to access the new **Diagnostics** page which comprises of two sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite. SEI-5818 -->
@@ -108,9 +103,24 @@ Here are some SEI early access features that were recently promoted to GA:
         <td><b>Description</b></td>
         <td><b>GA date</b></td>
     </tr>
-        <tr>
+    <tr>
         <td>SEI_SHOW_DIAGNOSTIC_TILE</td>
-        <td>A new **Diagnostics** page is added with two dedicated sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite.</td>
+        <td>A new **Diagnostics** page is added with two dedicated sections: **Jobs status** and **Satellite status**, providing users with the most up-to-date health status information for both Jobs and Ingestion Satellite</td>
+        <td>April 2024</td>
+    </tr>
+    <tr>
+        <td>SEI_EASY_ONBOARDING_JIRA</td>
+        <td>Enables access to the new user experience for connecting to [Jira Cloud](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#connect-with-jira-cloud) & [Data Center](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#connect-with-jira-software-data-center) using the [Jira Connect App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration#configure-the-integration-using-the-jira-connect-app)</td>
+        <td>April 2024</td>
+    </tr>
+    <tr>
+        <td>SEI_EASY_ONBOARDING_GITHUB</td>
+        <td>Enables access to the new user experience for connecting to [GitHub Organization (Cloud)](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#connect-with-github-cloud) & [GitHub Enterprise Server](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#connect-with-github-enterprise-server) using the [SEI GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#configure-the-integration-using-the-github-app)</td>
+        <td>April 2024</td>
+    </tr>
+    <tr>
+        <td>SEI_SHOULD_ENABLE_REAUTH</td>
+        <td>Enables access to new re-authorization user experience for a [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration)</td>
         <td>April 2024</td>
     </tr>
 </table>

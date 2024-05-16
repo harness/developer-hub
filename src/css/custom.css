@@ -272,9 +272,9 @@
   --mod-iacm-100: #f6fff2;
 
   /* Module Colors/Code (Gitness) */
-  --mod-code-300: #9a0041;
-  --mod-code-200: #ff006a;
-  --mod-code-100: #fff1f7;
+  --mod-code-300: #0672b6;
+  --mod-code-200: #2bb1f2;
+  --mod-code-100: #e2f5ff;
 
   /* ----- */
   --ifm-link-decoration: none;
@@ -566,6 +566,22 @@ details summary::before {
   color: var(--mod-ce-200);
 }
 
+.color-code {
+  color: var(--mod-code-200);
+}
+
+.color-idp {
+  color: var(--mod-idp-200);
+}
+
+.color-sei {
+  color: var(--mod-sei-200);
+}
+
+.color-iacm {
+  color: var(--mod-iacm-200);
+}
+
 .table-of-contents ul li span[class*="color-"] {
   color: unset;
 }
@@ -811,6 +827,7 @@ figure p {
 }
 
 /*== start of code for tooltips ==*/
+
 .tool {
   display: inline-block;
 }
@@ -850,7 +867,7 @@ figure p {
   width: 0;
   height: 0;
   bottom: calc(100% + calc(var(--distance) - var(--caret-height)));
-  margin-left: calc(- var(--caret-width) / 2);
+  margin-left: calc(-1 * var(--caret-width) / 2);
   border: 1px solid black;
   border-color: var(--tooltip-bg-color) transparent transparent transparent;
   border-width: var(--caret-height) var(--caret-width) 0;
@@ -878,6 +895,7 @@ figure p {
     opacity: 1;
   }
 }
+/*== end of code for tooltips ==*/
 
 @media screen and (max-width: 996px) {
   #search-button {
