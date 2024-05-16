@@ -30,95 +30,95 @@ You'll need 3 YAML files for this installation.
 <summary>istio-operator.yaml</summary>
 
 ```yaml
-    apiVersion: install.istio.io/v1alpha1
-    kind: IstioOperator
-    metadata:
-      name: istio-controlplane-1-18-0
-      namespace: istio-system
-    spec:
-      components:
-        ingressGateways:
-        - enabled: true
-          k8s:
-            affinity:
-              podAntiAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                - labelSelector:
-                    matchExpressions:
-                    - key: app
-                      operator: In
-                      values:
-                      - istio-ingressgateway
-                  topologyKey: kubernetes.io/hostname
-            podDisruptionBudget:
-              minAvailable: 1
-            resources:
-              limits:
-                cpu: 2000m
-                memory: 1024Mi
-               requests:
-                cpu: 100m
-                memory: 128Mi
-            service:
-              ports:
-              - name: status-port
-                port: 15021
-                protocol: TCP
-                targetPort: 15021
-              - name: http2
-                port: 80
-                protocol: TCP
-                targetPort: 8080
-              - name: https
-                port: 443
-                protocol: TCP
-                targetPort: 8443
-            serviceAnnotations:
-              service.beta.kubernetes.io/aws-load-balancer-backend-protocol: TCP
-              service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-<YOUR_ALLOCATION>,eipalloc-<YOUR_ALLOCATION>
-              service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
-              service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:xxxxxxxx:certificate/<YOUR_CERT>
-              service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
-              service.beta.kubernetes.io/aws-load-balancer-subnets: subnet-<YOUR_SUBNET1>,subnet-<YOUR_SUBNET2>
-              service.beta.kubernetes.io/aws-load-balancer-type: nlb
-            strategy:
-              rollingUpdate:
-                maxSurge: 100%
-                maxUnavailable: 25%
-          name: istio-ingressgateway
-        pilot:
-          enabled: true
-          k8s:
-            affinity:
-              podAntiAffinity:
-                requiredDuringSchedulingIgnoredDuringExecution:
-                - labelSelector:
-                    matchExpressions:
-                    - key: app
-                      operator: In
-                      values:
-                      - istiod
-                  topologyKey: kubernetes.io/hostname
-            env:
-            - name: GODEBUG
-              value: http2server=0
-            overlays:
-            - kind: PodDisruptionBudget
-              name: istiod-1-18-0
-              patches:
-              - path: spec.minAvailable
-                value: 1
-              - path: spec.maxUnavailable
-      hub: gcr.io/istio-release
-      meshConfig:
-        accessLogFile: /dev/stdout
-        defaultConfig:
-          holdApplicationUntilProxyStarts: true
-        enableAutoMtls: true
-        enableTracing: true
-      profile: default
-      revision: 1-18-0
-      tag: 1.18.0
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-controlplane-1-18-0
+  namespace: istio-system
+spec:
+    components:
+    ingressGateways:
+    - enabled: true
+      k8s:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - istio-ingressgateway
+              topologyKey: kubernetes.io/hostname
+        podDisruptionBudget:
+          minAvailable: 1
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 1024Mi
+            requests:
+            cpu: 100m
+            memory: 128Mi
+        service:
+          ports:
+          - name: status-port
+            port: 15021
+            protocol: TCP
+            targetPort: 15021
+          - name: http2
+            port: 80
+            protocol: TCP
+            targetPort: 8080
+          - name: https
+            port: 443
+            protocol: TCP
+            targetPort: 8443
+        serviceAnnotations:
+          service.beta.kubernetes.io/aws-load-balancer-backend-protocol: TCP
+          service.beta.kubernetes.io/aws-load-balancer-eip-allocations: eipalloc-<YOUR_ALLOCATION>,eipalloc-<YOUR_ALLOCATION>
+          service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+          service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:us-east-2:xxxxxxxx:certificate/<YOUR_CERT>
+          service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
+          service.beta.kubernetes.io/aws-load-balancer-subnets: subnet-<YOUR_SUBNET1>,subnet-<YOUR_SUBNET2>
+          service.beta.kubernetes.io/aws-load-balancer-type: nlb
+        strategy:
+          rollingUpdate:
+            maxSurge: 100%
+            maxUnavailable: 25%
+      name: istio-ingressgateway
+    pilot:
+      enabled: true
+      k8s:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - istiod
+              topologyKey: kubernetes.io/hostname
+        env:
+        - name: GODEBUG
+          value: http2server=0
+        overlays:
+        - kind: PodDisruptionBudget
+          name: istiod-1-18-0
+          patches:
+          - path: spec.minAvailable
+            value: 1
+          - path: spec.maxUnavailable
+  hub: gcr.io/istio-release
+  meshConfig:
+    accessLogFile: /dev/stdout
+    defaultConfig:
+      holdApplicationUntilProxyStarts: true
+    enableAutoMtls: true
+    enableTracing: true
+  profile: default
+  revision: 1-18-0
+  tag: 1.18.0
 ```
 
 </details>
@@ -127,33 +127,33 @@ You'll need 3 YAML files for this installation.
 <summary>gateway.yaml</summary>
 
 ```yaml
-    apiVersion: networking.istio.io/v1beta1
-    kind: Gateway
-    metadata:
-      name: eks-gateway
-      namespace: istio-system
-    spec:
-      selector:
-        istio: ingressgateway
-      servers:
-      - hosts:
-        - 'ccm-istio.test.harness.io'
-        port:
-          name: http
-          number: 80
-          protocol: HTTP
-        tls:
-          httpsRedirect: true
-      - hosts:
-        - ccm-istio.test.harness.io
-        port:
-          name: https
-          number: 443
-          protocol: HTTP
-        tls:
-          credentialName: istio-gw-tls
-          minProtocolVersion: TLSV1_2
-          mode: SIMPLE
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: eks-gateway
+  namespace: istio-system
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+  - hosts:
+    - 'ccm-istio.test.harness.io'
+    port:
+      name: http
+      number: 80
+      protocol: HTTP
+    tls:
+      httpsRedirect: true
+  - hosts:
+    - ccm-istio.test.harness.io
+    port:
+      name: https
+      number: 443
+      protocol: HTTP
+    tls:
+      credentialName: istio-gw-tls
+      minProtocolVersion: TLSV1_2
+      mode: SIMPLE
 ```
 
 </details>
@@ -163,28 +163,28 @@ You'll need 3 YAML files for this installation.
 <summary>secret.yaml</summary>
 
 ```yaml
-    apiVersion: v1
-    stringData:
-      key: |
-        -----BEGIN KEY-----
-        xxxxxxxxxxxxxxxxxxxxxxxxxxx
-        -----END KEY-----
-      cert: |
-        -----BEGIN CERTIFICATE-----
-        xxxxxxxxxxxxxxxxxxxxxxxxxxx
-        -----END CERTIFICATE-----
-      cacert: |
-        -----BEGIN CERTIFICATE-----
-        xxxxxxxxxxxxxxxxxxxxxxxxxxx
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        xxxxxxxxxxxxxxxxxxxxxxxxxxx
-       -----END CERTIFICATE-----
-    kind: Secret
-    metadata:
-      name: istio-gw-tls
-      namespace: istio-system
-    type: Opaque
+apiVersion: v1
+stringData:
+  key: |
+    -----BEGIN KEY-----
+    xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -----END KEY-----
+  cert: |
+    -----BEGIN CERTIFICATE-----
+    xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -----END CERTIFICATE-----
+  cacert: |
+    -----BEGIN CERTIFICATE-----
+    xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -----END CERTIFICATE-----
+    -----BEGIN CERTIFICATE-----
+    xxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -----END CERTIFICATE-----
+kind: Secret
+metadata:
+  name: istio-gw-tls
+  namespace: istio-system
+type: Opaque
 ```
 </details>
 
@@ -254,11 +254,11 @@ To install Istio, do the following:
     kubectl describe istiooperators.install.istio.io istio-controlplane-1-18-0 -n istio-system
     ```
 
-   The status should be healthy.
+    The status should be healthy.
 
 16. Run the following to view the load balancer URL.
 
-   ```
-   kubectl get services -n istio-system
-   ```
+    ```
+    kubectl get services -n istio-system
+    ```
 
