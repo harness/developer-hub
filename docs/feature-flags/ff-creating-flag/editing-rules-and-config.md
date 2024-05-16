@@ -14,7 +14,7 @@ When you create a Feature Flag within your project, you have the option to speci
 
  ![Editing default rules to specify a variation](./static/ff-editing-rules-1.png)
 
-In order to do this, you would need to:
+To do this, you would need to:
 
  1. Go to your **Project** and select **Feature Flags** on the left hand menu panel. 
  2. If editing the rule of an existing flag, double-click on your chosen flag. Otherwise, go through the steps to create a new one and you may continue with the next step below.
