@@ -1,6 +1,6 @@
 ---
 title: General Provisioning FAQs
-description: Frequently asked questions about provisioning
+description: Frequently asked questions about provisioning.
 sidebar_position: 10
 ---
 

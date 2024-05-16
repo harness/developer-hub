@@ -414,24 +414,5 @@ In the **Advanced** tab in all of steps, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
 
-## Gereral Azure provisioning FAQs
 
-### Does Harness support Azure Cache?
 
-Azure Cache is not an application that a user deploys. It’s a managed Redis service by Azure. Harness can assist in spinning up Azure Cache by our infrastructure provisioning capabilities:
-
-- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
-- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness) 
-
-### Does Harness support Azure App Services?
-
-No, we do not support Azure App Services as a native swimlane like Azure Web Apps.
-
-We do support [deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial) to achieve the use case.
-
-Or you can orchestrate the release via: 
-
-- [Azure ARM](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning) 
-- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning) 
-- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
