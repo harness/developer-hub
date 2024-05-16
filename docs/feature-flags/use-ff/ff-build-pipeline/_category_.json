@@ -1,12 +1,12 @@
 {
-    "label": "Use pipelines with flags",
+    "label": "Pipelines with FF",
     "position": 110,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use Pipelines with Feature Flags"
+        "title": "Pipelines with FF"
     },
     "customProps": {
         "helpdocs_category_id": "fsgwbaegql"

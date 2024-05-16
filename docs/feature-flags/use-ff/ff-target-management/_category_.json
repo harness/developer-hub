@@ -1,12 +1,12 @@
 {
-    "label": "Manage target users and groups",
+    "label": "Target management with FF",
     "position": 60,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Manage target users and groups"
+        "title": "Target management with FF"
     },
     "customProps": {
         "helpdocs_category_id": "xw2hz815l8"

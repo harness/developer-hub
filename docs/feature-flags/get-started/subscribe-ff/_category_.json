@@ -1,12 +1,12 @@
 {
-    "label": "Subscribe to Feature Flags",
+    "label": "Subcriptions and licenses in FF",
     "position": 140,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Subscribe to Feature Flags"
+        "title": "Subcriptions and licenses in FF"
     },
     "customProps": {
         "helpdocs_category_id": "hdxts68dvo"
