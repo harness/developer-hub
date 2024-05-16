@@ -3234,3 +3234,7 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:yy.mm.verno
 ```
+
+#### Does Harness NextGen Community Edition support LDAP login?
+No, Harness NextGen Community Edition does not support LDAP login.
+
