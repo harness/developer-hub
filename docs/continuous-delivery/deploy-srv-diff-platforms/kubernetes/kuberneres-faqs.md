@@ -142,6 +142,10 @@ No, Versioning is not done when declarative rollback is enabled. Please refer mo
 
 No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/).
 
+### How do I save the dry-run step rendered manifest?
+
+You can view the dry-run manifest as an output variable of the step.
+
 ### If I have two deploy stages in a pipeline, is it possible for me to rollback the stage 1 deployment if the stage 2 tests returned errors?
 
 We do have a pipeline rollback feature that is behind a feature flag. This might work better as you would be able to have both stages separate, with different steps, as you did before, but a failure in the test job stage could roll back both stages.
@@ -758,3 +762,4 @@ A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There
 Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
 
 `client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
+
