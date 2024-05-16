@@ -89,7 +89,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ## Enable mTLS on delegate
 
-You can enabled mTLS on delegates with the image tag in `yy.mm.xxxxx` format. Legacy delegates are not supported. For more information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+You can enable mTLS on delegates with the image tag in `yy.mm.xxxxx` format. Legacy delegates are not supported. For more information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 ### Prerequisites for enabling mTLS on a delegate
 
@@ -106,7 +106,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
 
   To enable mTLS on a Kubernetes delegate, you have to create a secret and update the delegate YAML. For an example Kubernetes manifest, go to [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml).
 
-  1. From the same folder where you have your client.crt and client.key files, run the following command to create the secret
+  1. From the same folder where you have your `client.crt` and `client.key` files, run the following command to create the secret.
 
       ```
         kubectl create secret -n <delegate namespace> generic client-certificate \
@@ -183,7 +183,8 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
   </TabItem>
 
   <TabItem value="docker" label="Docker delegate">
-    To enable mTLS on a Docker delegate, perform the following commands.
+  
+    To enable mTLS on a Docker delegate, do the following:
 
     1. Copy the following example command.
 
@@ -200,7 +201,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
           -e MANAGER_HOST_AND_PORT=https://<subdomain>.agent.harness.io harness/delegate:yy.mm.verno
         ```
 
-    2. Update all of the placeholders: `<path to client certificate>`, `<path to client key>`, `<account ID>`, `<delegate token>`, and `<subdomain>`
+    2. Update all of the placeholders: `<path to client certificate>`, `<path to client key>`, `<account ID>`, `<delegate token>`, and `<subdomain>`.
     3. Run the command.
 
   </TabItem>
