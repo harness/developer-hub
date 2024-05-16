@@ -117,7 +117,7 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
   2. In the `Deployment` resource of manifest YAML file, make the following updates:
 
       1. Under `spec.template.spec.containers[0].env`, update the value for `MANAGER_HOST_AND_PORT` to `https://<subdomain>.agent.harness.io`.
-      
+
       2. Under `spec.template.spec.containers[0].env`, update the value for `LOG_STREAMING_SERVICE_URL` to `https://<subdomain>.agent.harness.io/log-service/`.
 
       3. Under `spec.template.spec.containers[0].env`, add the following YAML.
@@ -130,23 +130,23 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
           ```
 
       4. Under `spec.template.spec.containers`, add the following YAML.
-    
+
           ```yaml
                   volumeMounts:
                     - mountPath: /etc/mtls
                       name: client-certificate
                       readOnly: true
-          ```   
+          ```
 
       5. Under `spec.template.spec`, add the following YAML.
-      
+
           ```yaml
                 volumes:
                   - name: client-certificate
                     secret:
                       secretName: client-certificate
                       defaultMode: 400
-          ```      
+          ```
 
   3. In the `ConfigMap` resource of manifest YAML file, make the following updates:
 
@@ -157,25 +157,25 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
           ```yaml
               clientCertificateFilePath: /etc/mtls/client.crt
               clientCertificateKeyFilePath: /etc/mtls/client.key
-          ```   
+          ```
 
   4. In the `CronJob` resource of manifest YAML file, make the following updates:
 
       1. Under `jobTemplate.spec.template.spec.containers.volumeMounts`, add the following YAML.
-    
+
           ```yaml
                         - name: client-certificate
                           mountPath: /etc/mtls
                           readOnly: true
-          ```   
+          ```
 
       2. Under `jobTemplate.spec.template.spec.volumes`, add the following YAML.
-      
+
           ```yaml
                       - name: client-certificate
                         secret:
                           secretName: client-certificate
-          ```      
+          ```
 
   5. Save and apply the manifest.
 
@@ -183,10 +183,9 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
   </TabItem>
 
   <TabItem value="docker" label="Docker delegate">
-  
     To enable mTLS on a Docker delegate, do the following:
 
-    1. Copy the following example command.
+  1. Copy the following example command.
 
         ```
         docker run -d --cpus=1 --memory=2g -u root -v <path to client certificate>:/etc/mtls/client.crt -v <path to client key>:/etc/mtls/client.key \
@@ -201,12 +200,9 @@ Before you enable mTLS on a delegate, make sure that you meet the following prer
           -e MANAGER_HOST_AND_PORT=https://<subdomain>.agent.harness.io harness/delegate:yy.mm.verno
         ```
 
-    2. Update all of the placeholders: `<path to client certificate>`, `<path to client key>`, `<account ID>`, `<delegate token>`, and `<subdomain>`.
-    3. Run the command.
+  2. Update all of the placeholders: `<path to client certificate>`, `<path to client key>`, `<account ID>`, `<delegate token>`, and `<subdomain>`.
+  3. Run the command.
 
   </TabItem>
 </Tabs>
-
-
-
 
