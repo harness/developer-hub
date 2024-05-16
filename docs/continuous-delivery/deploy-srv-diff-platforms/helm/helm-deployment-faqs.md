@@ -511,3 +511,4 @@ For this use case within the shell script, you can simply reference credentials 
 ```export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test```
 
 With this, even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
+
