@@ -478,7 +478,7 @@ Azure Cache is not an application that a user deploys. It’s a managed Redis se
 
 No, we do not support Azure App Services as a native swimlane like Azure Web Apps.
 
-We do support [deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial) to achieve the use case.
+We do support [deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial) to achieve the use case.
 
 Or you can orchestrate the release via: 
 
