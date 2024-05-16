@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 #### Hotfix
 
-Resolved an issue with the Google artifact registry trigger of a pipeline when using a GCP connector with OIDC authentication. (CDS-96627, ZD-62986)
+- Resolved an issue with the Google artifact registry trigger of a pipeline when using a GCP connector with OIDC authentication. (CDS-96627, ZD-62986)
 
 ### Version 24.05.82902 <!--  May 10, 2024 -->
 
