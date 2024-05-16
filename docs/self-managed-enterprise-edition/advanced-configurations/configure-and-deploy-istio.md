@@ -4,11 +4,11 @@ description: This topic describes how to configure and deploy Istio for Harness 
 sidebar_position: 10
 ---
 
-This topic describes how to configure and deploy Istio for Harness Self-Managed Enterprise Edition.
+This topic describes how to install and configure Istio for Harness Self-Managed Enterprise Edition.
 
 Integrating Istio amplifies control, security, and observability for microservices deployments in Harness Self-Managed Enterprise Edition.
 
-### Required YAML files
+### Prerequisites
 
 You'll need 3 YAML files for this installation.
 
@@ -206,33 +206,37 @@ To install Istio, perform the following steps:
    istioctl version
    ```
 
-4. Open the `istio-operator.yaml` file, and go to the service annotations on line 44.
+### Configure Istio
 
-5. On line 46, copy and paste the Elastic IPs created for Istio. The number of Elastic IPs depends on the number of private subnets in your cluster.
+To configure Istio, perform the following steps:
 
-6. Import SSL cert, key, and cacert in AWS certificate manager and create a new certificate.
+1. Open the `istio-operator.yaml` file, and go to the service annotations on line 44.
 
-7. Copy the ARN of the new cert to line 48.
+2. On line 46, copy and paste the Elastic IPs created for Istio. The number of Elastic IPs depends on the number of private subnets in your cluster.
 
-8. On line 50, copy the subnet IDs of the private subnet.
+3. Import SSL cert, key, and cacert in AWS certificate manager and create a new certificate.
 
-9. Check revision and tag in line 88 and 89.
+4. Copy the ARN of the new cert to line 48.
 
-10. Open the `gateway.yaml` file.
+5. On line 50, copy the subnet IDs of the private subnet.
 
-11. Replace host entries with the appropriate names and check the `credentialName` on line 25. It should match the `secret.yaml` file.
+6. Check revision and tag in line 88 and 89.
 
-12. Open the `secret.yaml` file.
+7. Open the `gateway.yaml` file.
 
-13. Copy and paste your actual key, cert, and cacert.
+8. Replace host entries with the appropriate names and check the `credentialName` on line 25. It should match the `secret.yaml` file.
 
-14. Run the following command in your Kubernetes cluster.
+9. Open the `secret.yaml` file.
+
+10. Copy and paste your actual key, cert, and cacert.
+
+11. Run the following command in your Kubernetes cluster.
 
     ```
     istioctl operator init -f istio-operator.yaml -r <istio version - e.g. 1-18-0) --hub artifactory.harness.internal/<YOUR_DOCKER>
     ```
 
-15. Run the following to validate the Istio installation of Istio.
+12. Run the following to validate the Istio installation of Istio.
 
     ```
     kubectl get pods -n istio-system
@@ -248,7 +252,7 @@ To install Istio, perform the following steps:
 
     The status should be healthy.
 
-16. Run the following to view the load balancer URL.
+13. Run the following to view the load balancer URL.
 
     ```
     kubectl get services -n istio-system
