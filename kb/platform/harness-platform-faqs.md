@@ -897,11 +897,24 @@ No, `INIT_SCRIPT` commands are run before the delegate process comes up and are 
 
 ### Can delegates have HA if they're in different locations?
 
-If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If delegate in the production environment stops running, this stops production executions as there is no other delegate in production.
+If there are delegates in different locations, they don't have HA. For example, if you have one delegate in a test environment and another in a production environment, the test delegate does not communicate with the production delegate. If a delegate in the production environment stops running, this stops production executions as there is no other delegate in production.
+
+### Can I run the apt-get command on the delegate pod?
+
+No, the delegate is based on the RHEL. You can use the dnf or microdnf-based commands.
+
+### How do I install zip on the delegate?
+
+You can run the following command to install zip on the delegate:
+
+```
+microdnf install yum
+yum install -y zip
+```
 
 ### Is the DelegateManagerGrpcClientModule used for delegate connection to the manager over gRPC?
 
-The `DelegateManagerGrpcClientModule` facilitates gRPC communication between the delegate and the manager. However, while it's involved in tasks such as sending task executions and serving as a fallback mechanism for sending task responses, it's recommended to consult the CI team for confirmation on its specific usage, as there might be additional or alternative configurations in place.
+The `DelegateManagerGrpcClientModule` streamlines gRPC communication between the delegate and Harness Manager. Its responsibilities include dispatching task executions and acting as a failsafe for transmitting task responses. For guidance on its optimal utilization, contact Contact [Harness Support](mailto:support@harness.io) to ensure alignment with any supplementary or alternative configurations that might be in effect.
 
 ### Where is the Kubernetes configuration (KubeConfig) stored on the delegate if it's being utilized for Terraform (TF) Kubernetes steps?
 
@@ -2924,6 +2937,10 @@ This query for `MANUAL` returns results for users provisioned that were provisio
 ```
 db.getCollection('users').find({"userAccountLevelDataMap.xxxxxxxaccountidxxxxxx.sourceOfProvisioning.NG":"MANUAL"})
 ```
+
+### How do I enable GitOps in Harness Self-Managed Enterprise Edition?
+
+Set `global.gitops` to `true` in your `values.yaml` file and then re-apply the file.
 
 ### Is there a hard technical limit for entities in NextGen?
 
