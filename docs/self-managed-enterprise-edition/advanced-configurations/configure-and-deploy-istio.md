@@ -4,15 +4,7 @@ description: This topic describes how to configure and deploy Istio for Harness 
 sidebar_position: 10
 ---
 
-Using Istio with Harness Self-Managed Enterprise Edition brings several key benefits:
-
-- **Service Mesh Features**: Istio offers powerful tools for managing and securing microservices-based applications.
-
-- **Enhanced Security**: Secure communication between services with mutual TLS authentication, protecting against unauthorized access.
-
-- **Observability**: Gain insights into application performance with integration with monitoring tools like Prometheus and Grafana.
-
-- **Policy Enforcement**: Define and enforce access control policies, rate limiting, and quotas for services.
+This topic describes how to configure and deploy Istio for Harness Self-Managed Enterprise Edition.
 
 Integrating Istio amplifies control, security, and observability for microservices deployments in Harness Self-Managed Enterprise Edition.
 
