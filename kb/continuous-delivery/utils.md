@@ -1,12 +1,6 @@
 
 
 
-#### Can we add a delay of n minutes before a pipeline is invoked via trigger?
-
-We don't have any timer for the trigger. It will trigger the pipeline whenever a change is made in the master branch.
-Since this is a webhook.
- 
-As a workaround, a shell script can be added to sleep for 10 mins or n mins as per requirements
 
 
 #### How to handle the scenario where powershell scripts does not correctly return the status code on failure ?
@@ -22,28 +16,12 @@ exit $LASTEXITCODE
 ```
 
 
-#### How do I use an output from one stage in a looping strategy of another stage ?
-
-If there is certainty in terms of number of Stages created, this could be achieved by creating a intermediary shell script which is concatenating output variables from previous stages with a “,” and building a list which can them be passed onto the next stage for lopping over this list. For more on this please refer this in following [Documentation](https://developer.harness.io/docs/platform/pipelines/looping-strategies/best-practices-for-looping-strategies)
-
 
 #### Can we persist variables in the pipeline after the pipeline run is completed ?
 
 We do not persist the variables and the variables are only accessible during the context of execution. You can make api call to write it as harness config file and later access the Harness file or alternatively you have a config file in git where you can push the var using a shell script and later access the same config file.
 
 
-####  Do we have the export manifests option in NG like we have in CG?
-
-No, we have a dry-run step, that will export manifest for customer to use in other steps, but there is no option to inherit manifest.Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run/)
-
-
-#### How can we assign terraform output (e.g. VPC CIDR) to harness Pipeline or stage variable?
-
-We have implemented a feature for capturing the the output of the Apply step.
-You can use something like this to copy the json output in a file - 
-```echo "<+pipeline.stages.EC2_deploy.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>" > /opt/harness-delegate/aaabbb.txt```
-
-Doc for reference - [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/#encrypt-the-terraform-apply-json-outputs)
 
 
 #### How do I access one pipeline variables from another pipeline ?
@@ -55,9 +33,6 @@ As a workaround, A project or org or account level variable can be created and A
 The shell script will use this API to update the value of the variable - https://apidocs.harness.io/tag/Variables#operation/updateVariable
 
 
-#### Can we set auto upgrade to on for ECS fargate delegates ?
-
-We do not have auto upgrade feature available for docker delegates which is what runs in fargate. We will have to manually change the task spec json file to change the image to the newest version.
 
 
 
@@ -173,10 +148,7 @@ Therefore to make it work put the Python command in a file and execute it. So, t
 The delegate selector field is displayed conditionally based on the step type. If you're using a shell script step, the field is recently moved from the advanced tab to the optional config in the step parameters tab.
 
 
-#### What if I have a custom provisioning tool, how can Harness support this?
 
-Harness has first-class support for Terraform, Terragrunt, AWS CloudFormation, Azure ARM, and Blueprint provisioners, but to support different provisioners, or your existing shell script implementations, Harness includes Shell Script provisioning.
-More details here [here](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
 
 
 #### How Do I preserve the formating of multiline secret in shell script?
