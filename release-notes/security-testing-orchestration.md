@@ -26,11 +26,33 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.95.0
 
+#### New features and enhancements
+
+- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rule packs. (STO-7560)
+
+  - [bandit](https://semgrep.dev/p/bandit)
+  - [brakeman](https://semgrep.dev/p/brakeman)
+  - [eslint](https://semgrep.dev/p/eslint)
+  - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+  - [flawfinder](https://semgrep.dev/p/flawfinder)
+  - [gosec](https://semgrep.dev/p/gosec)
+  - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+  - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+
+
 #### Fixed issues
 
 - Fixed a Prisma Cloud step issue where `twistcli` didn't honor step-level variables when running in Harness Cloud. You can set `JOB_NAME` in the [Settings](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#settings) field in a Prisma Cloud step, and thereby add a searchable tab in the Prisma Cloud UI. This functionality is now available on Harness Cloud as well as Kubernetes and local build infrastructures. (STO-7508, ZD-61272)
 
-- Fixed an issue where a Wiz step failed when it scanned a package that had policies applied to it but no vulnerabilities. (STO-7575, ZD-63342)
+- Fixed an issue where a Wiz step failed when it scanned a package that had policies applied to it but no vulnerabilities. (STO-7573, STO-7575, ZD-63342)
+
+<!-- 
+
+- Fixed an issue where Custom Ingest and Snyk scans were incorrectly reporting all issues as new. Rerunning any affected pipelines will now produce the correct results. (STO-7574, ZD-73374)
+
+-->
+
+- Fixed an issue where **Security Tests** showed all detected issues as new when comparing the current scan against the baseline branch, even when the baseline was correctly specified in **Test Targets**. With this fix, you can simply run an affected pipeline again and produce correct results. (STO-7575, STO-7582, ZD-63551, ZD-73374)
 
 ### Version 1.94.4
 
