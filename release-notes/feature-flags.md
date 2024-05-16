@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-09T16:19:25
+date: 2024-05-16T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,11 +15,23 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 9, 2024
+#### Last updated: May 16, 2024
 
 ## May 2024
 
 ### Golang SDK
+
+#### Version 0.1.23
+
+*New features and enhancements*:
+ - Previously, from versions `v0.1.21` to `v0.1.22`, a critical bug was identified where evaluation metrics processing could cause a system panic. This occurred when at least one evaluation involved a target with `nil attributes` — either due to attributes being omitted or explicitly set to nil. This release addresses this issue by implementing a fix that prevents such panics. (FFM-11470, ZD-63281)
+
+*Enhanced Testing*: 
+ - To ensure the stability and reliability of this fix and similar functionalities, we have expanded the evaluation metrics suite of unit tests. These additional tests will help safeguard against regressions and improve code coverage.
+
+*Fixed issues*:
+ - Versions `v0.1.21` and `v0.1.22` have been retracted.
+ - Removes GitHub Actions step `Static Code Analysis / Build (push)` as it is constantly failing due to out of date credentials. These checks have moved to Harness CI but this step had yet to be removed until now.
 
 #### Version 0.1.22
 
