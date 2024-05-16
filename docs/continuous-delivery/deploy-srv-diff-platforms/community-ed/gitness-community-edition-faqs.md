@@ -1,6 +1,7 @@
 ---
 title: Gitness and Community Edition FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps, specifically for Gitness and Community Edition swimlanes.
+sidebar_position: 100
 ---
 
 #### The current documentation advises us to use the drone plugin model. How similar will this be with the move to gitness?

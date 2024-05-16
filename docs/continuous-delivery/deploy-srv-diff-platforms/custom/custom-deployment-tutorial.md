@@ -1,11 +1,12 @@
 ---
 title: Custom deployments using Deployment Templates
 description: Perform custom deployment in Harness using Deployment Templates to connect to target platforms, obtain target host information, and execute deployment steps.
-sidebar_position: 1400
+sidebar_position: 1
 helpdocs_topic_id: 6k9t49p6mn
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from: /docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial.md
 ---
 
 In some cases, you might be using a platform that does not have first-class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.

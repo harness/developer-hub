@@ -1,6 +1,7 @@
 ---
 title: Integrations FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps, specifically for Integrations swimlanes.
+sidebar_position: 100
 ---
 
 #### What is PIE_GITX_OAUTH, and how does it relate to OAuth with Git in Harness?

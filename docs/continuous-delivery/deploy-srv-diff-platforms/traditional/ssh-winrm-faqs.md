@@ -1,6 +1,7 @@
 ---
 title: SSH and WinRM FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps, specifically for SSH and WinRM swimlanes.
+sidebar_position: 100
 ---
 
 #### How are Harness secrets tied to connector, and what to watch for. 
@@ -29,7 +30,7 @@ Feel free to reach out to us in case of issues.
 
 No, this feature is yet to be supported. We suggest to use ssh key or user and password as datacenter as an alternative at the moment.
 
-####  Can we use command step for custom stage
+#### Can we use command step for custom stage
 
 No this is not supported as of now, as currently command step is only applicable in ssh/winrm type deployment
 

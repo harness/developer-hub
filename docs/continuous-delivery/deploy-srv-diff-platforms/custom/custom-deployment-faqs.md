@@ -1,6 +1,7 @@
 ---
 title: Custom Deployment FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps, specifically for the Custom Deployment swimlane.
+sidebar_position: 100
 ---
 
 #### How can we access helm repo name from the helm connector?
