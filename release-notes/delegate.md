@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-13T10:00
+date: 2024-05-16T10:00
 sidebar_position: 4
 ---
 
@@ -49,16 +49,17 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 ## May 2024
 
+### Version 24.05.82903 <!--  May 16, 2024 -->
+
+#### Hotfix
+
+Resolved an issue with the Google artifact registry trigger of a pipeline when using a GCP connector with OIDC authentication. (CDS-96627, ZD-62986)
+
 ### Version 24.05.82902 <!--  May 10, 2024 -->
 
 #### Hotfix
 
 - Resolved an issue with the delegate health endpoint, enabling the delegate to perform several websocket reconnection attempts before Kubernetes evicts the pod. (PL-50540, ZD-59551, ZD-62207)
-### Version 24.05.82903 <!--  May 10, 2024 -->
-
-#### Hotfix
-
-- Resolved an issue with the Google artifact Registry Trigger of Pipeline when using GCP Connector with OIDC authentication type. 
 
 ### Version 24.04.82901 <!--  May 8, 2024 -->
 
