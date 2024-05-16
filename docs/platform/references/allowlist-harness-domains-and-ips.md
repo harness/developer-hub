@@ -52,7 +52,7 @@ If you are using hosted GitOps agents to deploy on managed clusters, you must co
 
 ### Harness hosted GitOps IPs
 
-All the IPs are Cloud NAT gateways and need to enable specific IPs instead of ranges.
+All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
 
 ```bash
 34.168.25.119/32
@@ -86,7 +86,7 @@ All the IPs are Cloud NAT gateways and need to enable specific IPs instead of ra
 
 ### Configure clusters
 
-To ensure proper functionality, clusters must be configured with API access to the authorized Harness IP addresses.
+To ensure proper functionality, configure your clusters with API access to the authorized Harness IP addresses.
 
 If you have not yet configured your clusters with the required IP addresses, use the links provided below to complete the configuration for the listed clusters.
 
