@@ -29,7 +29,7 @@ When editing your rules, you may have noticed the option to add **Targets** and,
  * [Add Target Groups](/docs/feature-flags/ff-target-management/add-target-groups.md)
  * [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags.md)
 
-## Editing configuration
+## Edit configuration
 
 When setting the rules of your flag, you have the options to add additional configurations to further monitor the performance of the Feature Flags as a user or for your team. 
 
