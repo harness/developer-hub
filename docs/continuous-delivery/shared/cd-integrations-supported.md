@@ -577,7 +577,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 - **Overview:**
-  - [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial)
+  - [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial)
 
 
 </details>
