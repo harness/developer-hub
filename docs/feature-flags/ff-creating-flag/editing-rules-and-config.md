@@ -4,7 +4,7 @@ description: This page discusses using Harness Feature Flags with Cloud Cost Mod
 sidebar_position: 35
 ---
 
-## Managing rules of your flags
+## Manage rules of your flags
 
 ### Editing rules
 
