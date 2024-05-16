@@ -4,7 +4,7 @@ description: After you have created a flag, you can edit or delete it.
 tags: 
    - helpDocs
    - feature flag
-sidebar_position: 40
+sidebar_position: 20
 helpdocs_topic_id: u80hwpf1wq
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
