@@ -150,7 +150,7 @@ Harness Git Experience helps you do the following:
 
 :::note
 
-If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repo, you will not require a Git Connector and can skip this step!
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repo, you won't need a Git Connector and can skip this step.
 
 :::
 

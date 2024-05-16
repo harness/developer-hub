@@ -32,8 +32,8 @@ You can import an Input Set from the CI or CD module in Harness.
 
 This topic shows you how to import an Input Set to the CD module.
 
-1. Select your Project and click on **Pipelines** and select a pipeline.
-2. At the top right of the Pipeline Studio select **Input Sets**.
+1. Select your project, select **Pipelines**, then select a pipeline.
+2. In the Pipeline Studio, select **Input Sets**.
 3. Click **New Input Set** and select **Import From Git**.
    
    ![](./static/import-input-sets-00.png)
@@ -44,7 +44,7 @@ This topic shows you how to import an Input Set to the CD module.
 
 4. Enter a **Name** for your Input Set.
 5. Harness fetches the following details and auto-fills them:
-	1. **Git Connector** (Only required if you are using a third-party git provider)
+	1. **Git Connector** (Only required if you are using a third-party Git provider)
 	2. **Repository**
 	3. **Git Branch**
 6. Enter the **YAML Path** from where you want to import the Input Set. Make sure that your YAML path starts with `.harness/` and the YAML file already exists in the specified Git repo and branch.

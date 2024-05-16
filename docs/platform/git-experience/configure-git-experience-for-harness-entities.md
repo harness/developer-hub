@@ -39,7 +39,7 @@ Make sure you have the following set up Before you begin this quickstart:
   - To enable Git Experience for your resources, make sure that you have Create/Edit permissions for them.​​
 
 :::info note
-If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you will not require a Git Connector or a PAT.
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you won't need a Git Connector or a PAT.
 :::
 
 :::note
@@ -66,7 +66,7 @@ You can store your resources and configurations in Git by selecting the **Remote
 For this, you must specify a Harness Git Connector, a repo, branch details, and a file path.
 
 :::info note
-If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you will not require a Git Connector.
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repository, you won't need a Git Connector.
 :::
 
 This topic explains how to create a remote pipeline and execute it using Harness Git Experience.
@@ -119,9 +119,9 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third party provider. If you choose Harness Code Repository, you will not need to configure a **Git Connector** and can skip to selecting your **Repository** below.
+Here you can choose to use [**Harness Code Repository**](/docs/code-repository/) or a third-party provider. If you choose Harness Code Repository, you won't need to configure a **Git Connector** and can skip to selecting your **Repository** below.
 
-Otherwise, in **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
+Otherwise, in **Git Connector**, select or create a Git Connector for your project's repo. For steps, go to [Code Repo Connectors](../connectors/code-repositories/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 
