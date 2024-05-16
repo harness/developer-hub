@@ -35,7 +35,7 @@ Harness publishes performance test reports with each release. Select a report be
 <details>
 <summary>April 30, 2024</summary>
 
-This document details information about the following:
+This report details information about the following:
 
 1. Test Environment and resource configuration
 2. Test scenario and results
@@ -122,7 +122,7 @@ Avg Execution Time: **5.20min**
 <details>
 <summary>April 1, 2024</summary>
 
-This document details information about the following:
+This report details information about the following:
 
 1. Test Environment and resource configuration
 2. Test scenario and results
@@ -212,7 +212,7 @@ Avg Execution Time: **5.20min**
 <details>
 <summary>February 29, 2024</summary>
 
-This document details information about the following:
+This report details information about the following:
 
 1. Test Environment and resource configuration
 2. Test scenario and results
@@ -302,7 +302,7 @@ Avg Execution Time: **5.1min**
 <details>
 <summary>January 31, 2024</summary>
 
-This document details information about the following:
+This report details information about the following:
 
 1. Test Environment and resource configuration
 2. Test scenario and results
@@ -409,7 +409,7 @@ Avg Execution Time: **4.5min**
 <details>
 <summary>December 28, 2023</summary>
 
-This document details information about the following:
+This report details information about the following:
 
 1. Test Environment and resource configuration
 2. Test scenario and results
@@ -511,7 +511,7 @@ Total Execution Time: **4.5min**
 <details>
 <summary>October 27, 2023</summary>
 
-This document details information about the following:
+This report details information about the following:
 1. Test environment and resource configuration
 2. Test scenario and results
 
@@ -611,7 +611,7 @@ Total Execution Time: **4.5min**
 <details>
 <summary>October 6, 2023</summary>
 
-This document details information about the following:
+This report details information about the following:
 1. Test environment and resource configuration
 2. Test scenario and results
 
