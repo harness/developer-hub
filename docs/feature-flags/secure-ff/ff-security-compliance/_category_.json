@@ -1,12 +1,12 @@
 {
-    "label": "FF security and compliance",
+    "label": "Manage access with FF",
     "position": 50,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Feature Flag Security and Compliance"
+        "title": "Manage access with FF"
     },
     "customProps": {
         "helpdocs_category_id": "u0gbfyk4p4"
