@@ -7546,13 +7546,13 @@ Any variable used as `<+input>` will be asked to provide a value at the runtime.
 #### Can you tell me which steps for a custom stage run directly on the delegate?
 Usually all actual task executions occur on delegate. You can add shell script steps to execute the command on delegate.
 
-#### How do I pass user data in ASG-type deployment?
-We support user data in ASG deployments via service. You can define the Userdata values in service and during deployment, it will get added to ASG deployment.
+#### How do I pass user data in an ASG deployment?
+We support user data in ASG deployments via service. You can define the user data values in service. During deployment, it will get added to ASG deployment.
 #### Can we use an ansible tag as an input parameter during pipeline execution?
-Depends on how are you accessing the ansible tags in Harness, if tags are accessible via a variable in the script, you can output the variable and use conditional execution to run the selective steps.
+It depends on how are you accessing the ansible tags in Harness. If the tags are accessible via a variable in the script, you can output the variable and use conditional execution to run the selective steps.
 #### How can I restrict a user to provide CPU and Memory values of CI step within the limit in harness?
 This can be achieved via an OPA policy. You can create an OPA policy to check the values values for CPU and memory and warn and prevent the user from saving the pipeline if the values exceed your limit.
-Here is an example of run step -
+Here is an example of the Run step:
 ```
 package pipeline_environment
 deny[msg] {
