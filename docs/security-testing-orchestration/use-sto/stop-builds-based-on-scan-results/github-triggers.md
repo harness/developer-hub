@@ -19,6 +19,8 @@ You can create GitHub event triggers to support a variety of STO workflows and u
 
 The following steps outline the basic workflow:
 
+1. [Set up the failure criteria](#set-up-the-failure-criteria) for your STO pipeline.
+
 1. [Create a trigger](#create-the-trigger) for your Harness pipeline.
 
    This should automatically register an outbound webhook in your Git repo.
@@ -33,11 +35,23 @@ The following steps outline the basic workflow:
 These workflows require the following:
 
 - A [**Harness connector**](/docs/category/code-repo-connectors/) to your GitHub account.
-- A Harness pipeline with an code-repository scan step such as Semgrep.
+- A Harness pipeline with a code-repository scan step such as Semgrep.
 - The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan.
 
+## Set up the failure criteria
 
-## Create the trigger (Harness)
+You can configure your Harness pipeline to fail if the scan finds vulnerabilities that match a specified filter. You can use one of two methods:
+
+- [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows)
+
+  Every STO scan step has a `fail_on_severity` setting that fails the step if a scan detects issues with the specified severity or higher. You can also create exemptions ("Ignore rules") for specific issues to override this behavior.
+
+- [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+
+   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference Id, CVE age, title, and number of occurrences.
+
+
+## Create the Harness trigger
 
 The following sections describe two triggers that can be very useful in the context of STO scanning:
 
@@ -50,9 +64,9 @@ You can specify a trigger that says: If a pull request updates any of these file
 
 This type of trigger supports uses cases such as:
 
-- If the pull request updates any file that matches the trigger filter, run a SAST scan and block the PR if the scan results meet the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) threshold.
+- If the pull request updates any file that matches the trigger filter, run a SAST scan and block the PR if the scan results meet the [failure criteria](#set-up-the-failure-criteria).
 
-- If the pull request updates a specific file of interest, such as a `pom.xml` workspace file, run an SCA scan and block the PR if the scan results meet the [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/) threshold.
+- If the pull request updates a specific file of interest, such as a `pom.xml` workspace file, run an SCA scan and block the PR if the scan results meet the [failure criteria](#set-up-the-failure-criteria).
 
 
 #### Trigger setup
@@ -161,7 +175,7 @@ trigger:
 
 You can specify a trigger that says: If a reviewer includes a specific keyword in a pull-request review comment, run the pipeline and scan the repo.
 
-This type of trigger is useful when a pipeline execution fails for reasons other than [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity/). If the STO scan doesn't finish in the original execution, a reviewer can add a review comment with a keyword such as `RERUN_STO_PIPELINE`. 
+This type of trigger is useful when a pipeline execution fails for reasons other than the [failure criteria](#set-up-the-failure-criteria) you specified for the pipeline. If the STO scan doesn't finish in the original execution, a reviewer can add a review comment with a keyword such as `RERUN_STO_PIPELINE`. 
 
 <!-- details>
 
@@ -261,7 +275,7 @@ trigger:
 
 ## Test the outbound webhook and trigger
 
-### Verify the webhook (GitHub)
+### Verify the webhook in GitHub
 
 Once you add a trigger to your pipeline, your Git service provider should create a webhook for the trigger automatically. This is true for all non-custom webhooks and all Git providers supported by Harness.
 
