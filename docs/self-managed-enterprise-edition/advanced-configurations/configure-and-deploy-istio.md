@@ -190,9 +190,9 @@ type: Opaque
 
 ### Install Istio
 
-To install Istio, do the following:
+To install Istio, perform the following steps:
 
-1. Run the following command to download the latest version of Istio.
+1. Download the latest version of Istio.
 
    ```
    $ curl -L https://istio.io/downloadIstio | sh -
@@ -208,7 +208,7 @@ To install Istio, do the following:
    export PATH=$PWD/bin:$PATH
    ```
 
-3. Run the following to validate installation.
+3. Validate the installation.
 
    ```
    istioctl version
@@ -218,9 +218,9 @@ To install Istio, do the following:
 
 5. On line 46, copy and paste the Elastic IPs created for Istio. The number of Elastic IPs depends on the number of private subnets in your cluster.
 
-6. Import SSL cert, key and cacert in AWS certificate manager and crate new certificate.
+6. Import SSL cert, key, and cacert in AWS certificate manager and create a new certificate.
 
-7. Copy the arn of new cert to line 48
+7. Copy the ARN of the new cert to line 48.
 
 8. On line 50, copy the subnet IDs of the private subnet.
 
