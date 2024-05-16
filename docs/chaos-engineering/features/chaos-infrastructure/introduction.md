@@ -6,7 +6,7 @@ redirect_from:
 	- /docs/chaos-engineering/technical-reference/architecture/kubernetes
 ---
 
-This topic introduces you to chaos infrastructure, its types, why it is important and how it can be used.
+This topic introduces you to chaos infrastructure, its types, why it is important, and you can use it.
 
 ### What is a chaos infrastructure?
 
@@ -16,9 +16,9 @@ You can add multiple chaos infrastructures as part of an environment. You can se
 
 ### Types of infrastructure
 
-There are different types of chaos infrastructure based on different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, etc.
+There are different types of chaos infrastructure based on different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, and so on.
 
-Based on the target environments, chaos infrastructures can be installed as a Kubernetes service or a Linux daemon.
+Based on the target environments, you can install chaos infrastructure as a Kubernetes service or a Linux daemon.
 
 :::tip
 Chaos experiments associated with Cloud Foundry are executed with the help of Linux chaos infrastructure, and the ones associated with AWS, GCP, Azure, VMware, and Bare metal are executed on Kubernetes infrastructure.

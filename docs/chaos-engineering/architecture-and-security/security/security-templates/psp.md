@@ -17,7 +17,7 @@ This is not required for all experiments (a considerable number of them use pure
 
 ### Applying pod security policies to HCE pods
 
-To run the HCE pods with the operating characteristics described above, create a custom `PodSecurityPolicy` that allows the same:
+To run the HCE pods with the operating characteristics described above, create a custom `PodSecurityPolicy` permitting the same configurations:
 
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/psp-litmus.yaml yaml)
 ```yaml

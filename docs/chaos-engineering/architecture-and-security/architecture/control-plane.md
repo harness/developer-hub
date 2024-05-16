@@ -1,12 +1,14 @@
 ---
 title: Control plane and execution plane
 sidebar_position: 2
-description: Description of control plane and execution plane
+description: This topic describes the control plane and execution plane.
 redirect_from:
 - /docs/chaos-engineering/architecture-and-security/architecture
 - /docs/chaos-engineering/technical-reference/architecture/kubernetes
 - /docs/chaos-engineering/technical-reference/architecture/linux
 ---
+
+This topic describes the [control plane](#control-plane), the [execution plane](#execution-plane), their [interaction](#interaction-between-the-execution-plane-and-the-control-plane), and their components' [resource utilization](#resource-utilization-matrix) matrix.
 
 ### Before you begin:
 
@@ -18,10 +20,10 @@ To determine (or improve) the resilience of an application, you have to execute 
 2. **Execution plane** (Your host/cluster)
 
 :::tip
-Depending on the version of HCE (Saas or Self-Managed Platform), the control plane is [hosted](https://app.harness.io) by Harness (for SaaS) or within your domain (for example, `harness.your-domain.io`).
+Depending on the version of HCE (SaaS or Self-Managed Platform), the control plane is [hosted](https://app.harness.io) by Harness (for SaaS) or within your domain (for example, `harness.your-domain.io`).
 :::
 
-The diagram below gives a peek into the association between HCE SaaS (the control plane) and your host (or cluster, that is the execution plane), and how experiments are executed using HCE.
+The diagram below provides insight into the relationship between HCE SaaS (the control plane) and your host (or cluster that represents the execution plane), illustrating how experiments are conducted using HCE.
 
 ![Overview](./static/overview.png)
 
@@ -36,7 +38,7 @@ Go to [interaction between control plane and execution plane](#interaction-betwe
 
 **Harness control plane** consists of microservices that help the [web-based portal](https://app.harness.io) perform its functionalities.
 
-You can sign in (or get an invite) to the Harness platform and leverage the interactive UI dashboard to:
+You can sign in (or get an invite) to the Harness Platform and leverage the interactive UI dashboard to:
 
 - [Create chaos environment](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-2-add-a-chaos-environment).
 - [Create chaos infrastructure and enable chaos in your infrastructure](/docs/chaos-engineering/get-started/tutorials/first-chaos-engineering#step-3-add-a-chaos-infrastructure).
