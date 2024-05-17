@@ -31,7 +31,7 @@ These settings are required.
 
 #### Product name
 
-The scanner name. This is required for all Custom Scan steps.
+The scanner name. 
 
 ##### Key
 ```
@@ -83,7 +83,6 @@ dataLoad
 
 #### Product config name
 
-Required for most scanner integrations. 
 
 ##### Key
 ```

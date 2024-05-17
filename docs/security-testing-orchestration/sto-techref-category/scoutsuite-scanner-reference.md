@@ -57,8 +57,6 @@ scan_type
 
 ##### Value
 
-Must be one of the following. For supported values, go to the relevant scanner reference.
-
 ```
 configuration
 ```
@@ -73,8 +71,6 @@ policy_type
 ```
 
 ##### Value
-
-`Must be one of the following. For supported values, go to the relevant scanner reference.`
 
 ```
 ingestionOnly
