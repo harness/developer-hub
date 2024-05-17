@@ -65,6 +65,7 @@ Harness CCM provides two types of recommendations to optimize your VMs:
     
 The CPU utilization graph shows the current utilization data. Go to [View and apply recommendations](/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm) to learn how to apply these recommendations.
 
+
 ## How Pricing Works for Azure VM Recommendations
 
 To determine the pricing for Azure Virtual Machines (VMs), public pricing information from an official source, Azure Retail Prices, is used.
