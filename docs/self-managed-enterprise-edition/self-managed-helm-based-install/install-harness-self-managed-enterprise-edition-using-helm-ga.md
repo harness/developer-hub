@@ -311,7 +311,7 @@ To install the Helm chart, do the following:
 4. Install the Helm chart.
 
    ```
-   helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+   helm install my-release harness/harness -n <namespace> -f override.yaml
    ```
 
 ## Verify the installation

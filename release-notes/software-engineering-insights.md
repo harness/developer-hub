@@ -22,6 +22,97 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 :::
 
+## May 2024
+
+### Version 202405.1
+
+<!-- May 13, 2024 -->
+
+<DocVideo src="https://www.youtube.com/embed/Q252RnmT7cA?si=BXrqizJnXE7krb78" />
+
+#### New features and enhancements
+
+* The hygiene labels in the **Issue Hygiene report** have been relocated to the top left corner of the Circle Chart (formerly at the top right corner)(SEI-4646)
+
+* Added support for the `Delivered Tickets STDEV` metric to calculate the standard deviation based on delivered tickets in a Sprint, representing the variability in a team's productivity over multiple sprints. (SEI-5303)
+
+* The pipeline link in the drill-down for any **Custom CICD integration** will now redirect you to the actual URL of the corresponding pipeline execution for DORA Deployment Frequency, Change Failure Rate, and other CI/CD reports. (SEI-5614)
+
+* Added support for three new columns in the **Issue Hygiene report** drill-down for the **Azure DevOps** integration. (SEI-6120)
+  * **Current Sprint:** This column in the drill down will show the current sprint to which the ticket is assigned.
+  * **Previous Sprints:** This column will display the names of all previous sprints to which the ticket was assigned.
+  * **Sprint Hops:** This column will indicate how many times the ticket has been moved across sprints.
+
+* Added support for drill down in the **Multi-Time Series report**. Please note that you can add up to a maximum of 5 line charts.(SEI-6314)
+
+* Add support for a new `Exclude time from Status Category` filter in **Issue Resolution Time Report**. (SEI-6479)
+
+* The **Sprints Metric** widgets now includes the capability to choose the calculation unit as either **Story Points** or **Tickets**. The available metrics during widget configuration will vary based on the selected calculation unit (SEI-6672).
+
+* In the **Issue Lead Time by Stage report**, when the **Include the associated Pull Requests and Commits** option is selected, the widget will only consider the tickets that have had their PRs merged and are associated with a commit. (SEI-6685)
+
+* Improved the logic for calculating the **Hygiene Score** in the **Issue Hygiene** report. The final hygiene score now is calculated as the sum of the scores for each ticket category (like no assignee, idle), where each score depends on the percentage of tickets in that category. (SEI-6688)
+
+* The **Ticket Details** page now includes support for displaying details related to the associated Pull Requests and Commits. (SEI-6715)
+
+* Added support for configuring the fully qualified projects as the filter when setting up the Bitbucket integration. (SEI-6735)
+
+
+#### Early access features
+
+* Added support for configuring new sprint metrics in the **Sprint Metrics Percentage Trend** report for the **Azure DevOps integration**. This feature is currently in **BETA** and is behind the **Entitlement** `<SHOW_ALL_METRICS>`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-6482) The list of all the new **Sprint Metrics** is provided below.
+
+<details>
+
+<summary>List of Supported New Sprint Metrics</summary>
+
+**Metrics allowed for both Story Point and Ticket views:**
+
+1. `Delivered to Commit Ratio STDEV`
+2. `Commit Done Ratio STDEV`
+3. `Creep to Commit Ratio STDEV`
+
+**Metrics allowed only for Story Point view:**
+
+1. `Velocity Points`
+2. `Velocity Points STDEV`
+3. `Creep Point`
+4. `Creep Done Points`
+5. `Creep Missed Points`
+6. `Commit Points`
+7. `Commit Done Points`
+8. `Commit Missed Points`
+9. `Missed Points`
+
+**Metrics allowed only for Ticket view:**
+
+1. `Creep Tickets`
+2. `Creep Done Tickets`
+3. `Creep Missed Tickets`
+4. `Commit Tickets`
+5. `Commit Done Tickets`
+6. `Commit Missed Tickets`
+7. `Done Tickets`
+8. `Missed Tickets`
+
+</details>
+
+* In the **DORA MTTR report** drill-down, clicking on the `Incident ID` will now redirect you to the actual URL of the corresponding PagerDuty incidents page. (SEI-6603)
+
+* Added support for automatically sending alerts via **Slack** notifications and **Email** when the **Ingestion Satellite** status is `UNHEALTHY`. (SEI-6610)
+
+* The release includes a new integration for the **ServiceNow Platform**.  **ServiceNow** is used to set up systems that define, manage, automate and structure IT services for companies. <br /><br />You can use the **SEI ServiceNow integration** to integrate SEI with **ServiceNow Cloud** and **ServiceNow On-Prem** accounts. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)<br /><br />This feature is currently in `BETA` is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+
+#### Fixed issues
+
+* The issue causing inaccurate data to be displayed in the widgets for the resolved issues from **Jira** has been fixed. (SEI-6630)
+
+* The bug causing the tooltip data to be uncovered within the widget has been resolved. (SEI-6660)
+
+* The issue causing the **Jira Releases report** to not display any data has been resolved. (SEI-6692)
+
+
 ## April 2024
 
 ### Version 202404.1
@@ -207,7 +298,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 
 #### Early access features
 
-* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding) and [GitHub](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
+* Added the support for re-authentication for [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) and [GitHub](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration) integrations. The new experience for the re-authentication flow for the Jira and GitHub integration is accessible behind the Feature Flag `<SHOULD_ENABLE_REAUTH>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature. (SEI-5188)
 
 #### Fixed issues
 
@@ -215,8 +306,8 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 * There was an existing bug in the **Issue Hygiene Report** where removing the criteria did not update the hygiene score in the widget. This has been resolved and now the data is displayed correctly in the report. (SEI-4645)
 * There was some inconsistency in the data displayed on the **Sprint Metrics Trend Report** when using [Azure DevOps](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-azure-devops) as the integration for the **Issue Management Tool**. This has been fixed now. (SEI-4690)
 * In the **Lead time by Time Spent in Stages report** there was an issue where in the extended drill-down view the data was displayed incorrectly. This has been resolved now. (SEI-4753)
-* In the [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) integration, there was a bug where the **Custom Hygienes** were displayed as blank and were only showing story points as the criteria to define the hygiene misses. This has been fixed now. (SEI-5076)
-* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
+* In the [Jira](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) integration, there was a bug where the **Custom Hygienes** were displayed as blank and were only showing story points as the criteria to define the hygiene misses. This has been fixed now. (SEI-5076)
+* There was a bug where integrations created using the [GitHub App](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration#configure-the-integration-using-the-github-app) were not ingesting data due to repositories not being selected during the integration creation. This has been fixed and now the ingestion should start automatically as the integration is created. (SEI-5223)
 * In the **Issue Backlog Trend report** and the **SCM Issues Resolution Time Report** drill-down, there was an issue where the `Ticket Lifetime (Resolution Time)` column data was not visible in the downloaded CSV file. This issue has been resolved now. (SEI-5237) (SEI-5269)
 * There were two known issues in the **Sprint Metrics Report** related to how certain Jira tasks/items were being counted.
   * Some Jira tasks were still appearing in the report even after they had been removed during the middle of the sprint. This happened because these tasks were included when generating metrics for the report. This has been fixed and now any tasks which are deleted mid-sprint will not appear in the Report. (SEI-5259)

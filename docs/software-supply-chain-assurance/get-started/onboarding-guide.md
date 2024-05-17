@@ -25,7 +25,7 @@ Learn about the features, components, and key concepts of Harness SSCA:
 | **Feature** | **Works with Harness Code Repository** | **Works with Harness CI (using Harness Pipeline's Build Stage)**   | **Works with Harness CD (using Harness Pipeline's Deploy Stage)** | **Works with 3rd Party Code Repo/CI/CD (using Harness Pipeline's Security Stage)**  |
 |--|--|--|--|--|
 |[Generate or ingest SBOM, followed by SBOM drift detection & SBOM scores](/docs/category/generate-or-ingest-sbom) | Y | Y | Y | Y |
-|[Enforce OSS usage with SBOM governance policies](/docs/category/enforce-ssca-policies) | Y | Y | Y | Y |
+|[Enforce OSS usage with SBOM governance policies](/docs/category/enforce-sbom-policies) | Y | Y | Y | Y |
 |[Generate SLSA provenance](/docs/software-supply-chain-assurance/slsa/generate-slsa) | Y | Y | N | N |
 |[Verify SLSA provenance with SLSA governance policies](/docs/software-supply-chain-assurance/slsa/verify-slsa) | Y | Y | Y | Y |
 |[Create and manage Remediation Trackers](/docs/category/remediation-tracker) | On Roadmap | On Roadmap | Y with Live Tracking | Y without Live Tracking |

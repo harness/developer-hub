@@ -17,7 +17,25 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
 
 :::
 
-### Display historical data for the current issues using Issue Backlog Trend report
+### ServiceNow integration
+
+* **Release date:** May 2024
+* **Issue number:** SEI-6838
+* **Feature flag:** `SEI_SERVICE_NOW`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Integrate SEI with the ServiceNow Platform. This integration is still under development.
+
+### New Sprint Metrics
+
+* **Release date:** April 2024
+* **Issue number:** SEI-6066
+* **Feature flag:** `SEI_SHOW_ALL_METRICS`
+* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
+
+Allows you to configure the Sprint Metrics Percentage Trend report using the new Sprint metrics.
+
+### Issue Backlog Trend Report (Display historical data for the current issues)
 
 * **Release date:** April 2024
 * **Issue number:** SEI-6369
@@ -28,7 +46,7 @@ Allows you to configure the Issue Backlog Trend report to display historical dat
 
 [Go To Documentation](/docs/software-engineering-insights/early-access/metrics-reports/issue-backlog-trend-report)
 
-### Themes support on DORA profile
+### Support for the Themes filter on the DORA profile
 
 * **Release date:** April 2024
 * **Issue number:** SEI-6442
@@ -83,35 +101,3 @@ Enables the Trellis Profile configuration using Trellis Factors at the Central P
 
 [Go To Documentation](/docs/software-engineering-insights/early-access/profiles/sei-trellis-factors)
 
-### SEI GitHub/Jira Integration 2.0 - ReAuth
-
-* **Release date:** February 2024
-* **Issue number:** SEI-5188
-* **Feature flag:** `SHOULD_ENABLE_REAUTH`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this feature will allow you to access the new re-authorization flow for the Jira and GitHub Integrations. The feature is related to SEI-3727.
-
-[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)
-
-### SEI Jira Integration 2.0
-
-* **Release date:** January 2024
-* **Issue number:** SEI-3727
-* **Feature flag:** `SEI_EASY_ONBOARDING_JIRA`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this Feature Flag will allow you to access the new user onboarding process for connecting to Jira Cloud using the Jira Connect App. You will also experience an enhanced user interface when configuring the integration for Cloud and Data Centers. The focus of this feature is to simplify and streamline the user journey when setting up the Jira integration on Cloud and Jira Data Centers.
-
-[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-jira-easyonboarding)
-
-### SEI GitHub Integration 2.0
-
-* **Release date:** January 2024
-* **Issue number:** SEI-3727
-* **Feature flag:** `SEI_EASY_ONBOARDING_GITHUB`
-* **How to enable:** Contact [Harness Support](mailto:support@harness.io)
-
-Enabling this Feature Flag will allow you to access the new user onboarding process for connecting to GitHub using the GitHub App. You will also experience an enhanced user interface when configuring the integration for GitHub Cloud and GitHub Enterprise. The focus of this feature is to simplify and streamline the user journey when setting up the GitHub integration.
-
-[Go To Documentation](/docs/software-engineering-insights/early-access/integrations/sei-integration-github-easyonboarding)

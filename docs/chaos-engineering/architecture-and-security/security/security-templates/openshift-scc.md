@@ -10,9 +10,9 @@ This section discusses Openshift Security Context Constraint that allows adminis
 ## OpenShift Security Context Constraint (SCC)
 
 Security context constraints allow administrators to control permissions for pods in a cluster. A service account provides an identity for processes that run in a pod.
-The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't want to override the privileges used for all applications, create a new service account and grant special rights in the project where the application is run.
+The <code>default</code> service account is used to run applications within a project. You can run other applications in the same project, but if you don't want to override the privileges used for all applications, create a new service account and grant special rights to the project where the application is run.
 
-### Create new service account
+### Create a new service account
 
 Execute the below commands:
 
@@ -58,14 +58,14 @@ allowHostDirVolumePlugin: true
 allowHostIPC: false
 allowHostNetwork: false
 # To run fault injection on a target container using pid namespace.
-# It is used in stress, network, dns and http experiments. 
+# It is used in stress, network, dns and http experiments.
 allowHostPID: true
 allowHostPorts: false
 allowPrivilegeEscalation: true
 # To run some privileged modules in dns, stress and network chaos
 allowPrivilegedContainer: true
 # NET_ADMIN & SYS_ADMIN: used in network chaos experiments to perform
-# network operations (running tc command in network ns of target container). 
+# network operations (running tc command in network ns of target container).
 # SYS_ADMIN: used in stress chaos experiment to perform cgroup operations.
 allowedCapabilities:
 - 'NET_ADMIN'
@@ -117,6 +117,6 @@ clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: "li
 ```
 
 where
-	- `-z` refers to applying the command to the service account in the current project;
-	- `add-scc-to-user` ads the name of the SCC; and
-	- `-n` specifies the namespace of the target service account.
+  - `-z` refers to applying the command to the service account in the current project;
+  - `add-scc-to-user` ads the name of the SCC; and
+  - `-n` specifies the namespace of the target service account.
