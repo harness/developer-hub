@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-16T16:19:25
+date: 2024-05-17T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 16, 2024
+#### Last updated: May 17, 2024
 
 ## May 2024
 
@@ -35,7 +35,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 0.1.22
 
- -  Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
+:::info Version 0.1.22 Retracted
+**Note:** This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
+:::
+
+ - Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
  - Upgraded the Go SDK version in analytics. 
 
  ### Python SDK
@@ -76,7 +80,11 @@ Security Updates:
 
 ### Golang SDK
 
-#### Version 0.1.21
+#### Version 0.1.21 - Retracted
+
+:::info Version 0.1.21 Retracted
+**Note:** This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
+:::
 
 **New features and enhancements**:
  - SDK support for processing `AND/OR` rules:
