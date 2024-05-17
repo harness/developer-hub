@@ -94,7 +94,7 @@ Total Cost =2.604* 730.5 = 1902.222$.
 ### Calculating costs for Shutdown Recommendation
 Here whatever Azure Advisor tells the savings is, we consider that cost of current VM. Because its a shutdown recommendation. Here, Savings = Cost of VM.
 
-::: info
+:::info
 The savings number shown in recommendation directly comes from Azure Advisor, Harness does not change it. 
 :::
 
