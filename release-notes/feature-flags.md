@@ -36,7 +36,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 0.1.22
 
 :::info Version 0.1.22 Retracted
-**Note:** This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
+This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
 :::
 
  - Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
@@ -83,7 +83,7 @@ Security Updates:
 #### Version 0.1.21 - Retracted
 
 :::info Version 0.1.21 Retracted
-**Note:** This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
+This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
 :::
 
 **New features and enhancements**:
