@@ -15,9 +15,9 @@ The following workflows and tutorials are available.
 
 - Getting started:
 
-  - [Set up Harness for STO](./onboarding-guide) This is a good primer if you're new to Harness. It guides you through the process of setting up the connectors, delegate, and infrastructure needed to run STO scans.
+  - [Onboarding guide](/docs/security-testing-orchestration/get-started/onboarding-guide) This is a good primer if you're new to Harness. It guides you through the process of setting up the connectors, delegate, and infrastructure needed to run STO scans.
 
-  - [Your first STO pipeline](./your-first-sto-pipeline) This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+  - [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline) This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
 - Quickstarts:
 
