@@ -3238,3 +3238,15 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
 #### Does Harness NextGen Community Edition support LDAP login?
 No, Harness NextGen Community Edition does not support LDAP login.
 
+####  How  to download jks file uploaded to harness secrets
+You can try as below to use the JKS file, decode the file secret and write it to a temporary file and can access via that file
+```
+echo <+secrets.getValue("filejksasbase64")> > /values.jksbase64
+cat /values.jksbase64
+cat /values.jksbase64 | base64 -d
+```
+#### What is Minimum supported screen resolution.
+Minimum supported screen resolution is 1440x900
+
+####  What this is {ngSecretManager.obtain}
+This is internal reference of secret, so if you are seeing any error with this most probably secret reference is not working. So need to validate the script and secret reference used.
