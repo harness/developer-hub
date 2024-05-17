@@ -19,6 +19,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 ## May 2024
 
+### Version 1.17.0
+
+#### New features and enhancements
+
+- Commitment Active Actions Details Enhancements:
+  - Added formatting to the expiry date for improved readability.
+  - Aligned savings summary chart colors with graph colors for improved visual coherence.
+  - Added option to expand details about a recommendation by clicking on it. This enhancement allows users to gain deeper insights into their recommendations. After clicking on it, users can view both the potential savings after applying the recommendation and the potential spend without applying the recommendation. Additionally, users can access details about the source Reserved Instance (RI).[CCM-17844, CCM-17474]
+
+- Cloud Perspective Recommendation Display: Recommendations alongwith their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. [CCM-17639]
+
+- Enhanced JSON Viewer: The same JSON Viewer used in the Evaluation details page has been added to the Governance Recommendation details page, providing users with consistent and user-friendly access to the output data with all the available filters. [CCM-17436]
+
 ### Version 1.16.0
 
 #### New features and enhancements
