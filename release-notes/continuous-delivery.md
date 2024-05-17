@@ -3305,7 +3305,7 @@ The custom table being used should allow access to this table via web services.
 
   The JEXL condition was not being evaluated and when the expression evaluated to `false` the step would still execute. This is now fixed and the JEXL expression is used correctly.
 
-- The [Deployment Template](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
+- The [Deployment Template](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
 
   The search filters in the template is fixed now. The **Referenced By** setting now shows the pipelines that are using the template.
 
