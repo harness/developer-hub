@@ -32,6 +32,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Enhanced JSON Viewer: The same JSON Viewer used in the Evaluation details page has been added to the Governance Recommendation details page, providing users with consistent and user-friendly access to the output data with all the available filters. [CCM-17436]
 
+#### Fixed issues
+
+- Updated Messaging in Commitment Orchestrator: In Commitment Orchestrator, we have improved the UI by adding appropriate messaging about recent actions once they are completed, and for actions that do not require user intervention, ensuring clarity and accuracy in the displayed information. [CCM-17655]
+
 ### Version 1.16.0
 
 #### New features and enhancements
