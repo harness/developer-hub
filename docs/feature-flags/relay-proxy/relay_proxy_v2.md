@@ -28,6 +28,13 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 ## Relay Proxy V2 Architecture 
 
+### Requirements
+
+- Container orchestration system (Kubernetes, Docker, etc.)
+- Redis instance (for production deployments)
+- Network access to `https://config.ff.harness.io` and `https://events.ff.harness.io`
+- A Harness Relay Proxy Key
+
 ### Network Traffic Architecture
 
 Here are some diagrams to explain the Network Traffic Architecture for Feature Flag's Relay Proxy V2. These diagrams provide detail on how network requests are made as well as the Protocols used between Harness Saas to the Client SDK or the Server SDK. 

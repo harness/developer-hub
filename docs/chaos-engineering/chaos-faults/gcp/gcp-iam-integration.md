@@ -12,7 +12,7 @@ You can authenticate with GCP using a service account before accessing the targe
 
 Hence, you can provide the service account credentials to your GKE cluster in two ways:
 
-1. **Using Secrets:** You can create a secret that contains the GCP service account in your GKE cluster. This is utilised by the experiment to authenticate access to your GCP resources.
+1. **Using Secrets:** You can create a secret that contains the GCP service account in your GKE cluster. This is utilized by the experiment to authenticate access to your GCP resources.
 
 2. **IAM integration:** While using a GKE cluster, you can bind a GCP service account to a Kubernetes service account as an IAM policy, which can then be used by the experiment for keyless authentication using [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
 
@@ -130,6 +130,10 @@ Replace the following:
 * **GSA_PROJECT:** The project ID of the Google Cloud project of your IAM service account.
 * **KSA_NAME:** The name of the service account to be used for HCE GCP experiments.
 * **NAMESPACE:** The namespace in which the Kubernetes service account to be used for HCE GCP experiments is present.
+
+:::tip
+For default HCE setup, **KSA_NAME** is **litmus-admin**.
+:::
 
 5. Annotate the Kubernetes service account to be used for HCE GCP experiments with the email address of the GCP IAM service account. Below is the command:\
 

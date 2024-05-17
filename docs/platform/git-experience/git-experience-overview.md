@@ -26,6 +26,7 @@ With Harness Git Experience, you can easily select the repository and branch fro
 
 The following Git providers are supported for Harness Git Sync:​
 
+* [Harness Code Repository](/docs/code-repository/)
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
@@ -64,10 +65,9 @@ Harness Git Experience lets you choose a Git-First approach for managing Harness
 
 You can do this by creating a resource with the **Remote** option and specifying the Git repo and branch where you want to save your configurations.
 
-
 For example, you can create a pipeline by choosing the **Remote** option and save it in Git by providing the repo name and branch name along with the file path.
 
-![picture 0](static/4bf16b3027a09d352305e9491d2e707d17b4f821aa6f896f671422dd732e9521.png)  
+![picture 0](static/create-pipeline-remote-git-experience.png)  
 
 Harness Git Experience lets you modify the configurations stored in Git through the Harness UI and save it back to Git.
 
@@ -148,6 +148,12 @@ Harness Git Experience helps you do the following:
 
 #### Git connector
 
+:::note
+
+If you are using [Harness Code Repository](/docs/code-repository/) as your Git Repo, you won't need a Git Connector and can skip this step.
+
+:::
+
 A Harness Git Connector is used to sync your Harness Project with your Git repo. You can set up a [Git Connector](/docs/category/code-repo-connectors) first and simply select it when setting up Git Experience, or you can create a Git Connector as part of the Git Experience setup.
 
 You will need a Harness Git Connector to connect with the Git provider and perform operations like generating a webhook. Your Git Connector credentials are used to commit to Git when operations are performed using API.
@@ -165,7 +171,10 @@ Harness configurations are stored in repositories. These configuration files can
 
 :::info note
 You must have valid Git credentials and a repo within this Git account before you enable Harness Git Experience.
+:::
 
+:::note
+If changes are made in Git, metadata such as id and scope parameters are not validated, but the spec is. If errors occur, you will be presented with an invalid YAML view.
 :::
 
 ### Next steps

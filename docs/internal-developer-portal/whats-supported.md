@@ -17,6 +17,7 @@ Any URLs behind any firewall or private URLs used in plugins should be accessed 
 
 Any software component can be registered in the catalog by using a YAML file stored in the following Git providers:
 
+* [Harness Code Repository (Default)](https://www.harness.io/products/code-repository) (**Available only on EU Cluster**)
 * GitHub
 * GitLab
 * Bitbucket(Except [Bitbucket Server](https://www.atlassian.com/migration/assess/journey-to-cloud))

@@ -1,7 +1,7 @@
 ---
 title: Manage stale flags
 description: Identify and automatically open pull requests to remove stale feature flags from your code.
-sidebar_position: 30
+sidebar_position: 35
 ---
 
 ## Manage stale flags
