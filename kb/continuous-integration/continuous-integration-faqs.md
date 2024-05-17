@@ -502,6 +502,19 @@ Currently, Harness CI doesn't support running CI builds on ECS clusters.
 
 Yes, if the Kubernetes connector is configured correctly. For more information, go to [Use delegate selectors with Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#use-delegate-selectors-with-kubernetes-cluster-build-infrastructure).
 
+### How can we configure the kaniko flag ```--skip-unused-stages``` in the built-in build and push step?
+
+You can set the kaniko flags as an environment variable in the build and push step. More details about the same can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
+
+### Does the built in build and push step now support all the kainko flags?
+
+Yes, all the kaniko flags are supported and they can be added as the environment variables to the build and push step
+
+### Can we add additional docker options with the container being started via background step in k8s build, such as the option to mount a volume or attach the container to a specific docker network?
+
+Adding additional Docker options when starting the container via a background step is not supported
+
+
 ## Self-signed certificates
 
 ### Can I mount internal CA certs on the CI build pod?
@@ -1784,6 +1797,10 @@ The current version of nektos/act used in the  github action plugin uses the ima
 ### Do we need a Docker-in-Docker (dind) container running in the background step to be able to run Harness GHA plugin?
 
 Docker-in-Docker is not required to be run as a background step because the GHA plugin image is built with the dind base image making it readily available within the GHA plugin.
+
+### How do we configure the stage variable ```PLUGIN_STRIP_PREFIX``` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
+
+Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the upload to s3 steps are part of the same CI stage. 
 
 ## Workspaces, shared volumes, and shared paths
 
