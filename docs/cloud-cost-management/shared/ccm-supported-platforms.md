@@ -637,7 +637,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 |Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
 
 :::note
-- Margin Obfuscation is not supported on Harness SMP. For others, it is behind a feature flag. To enable the feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io)
+- Margin Obfuscation is not supported on Harness SMP. For others, it is behind a feature flag `CCM_MSP`. To enable the feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io)
 - Istio virtual services are available for Azure in strict mode.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
