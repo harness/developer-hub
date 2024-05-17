@@ -38,9 +38,9 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ### Version 1.27.0
 
-#### New features
+#### Early access feature
 
-- This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. (CI-10509)
+- This release adds support for selecting [resource classes](/docs/continuous-integration/get-started/ci-subscription-mgmt/#harness-cloud-billing-and-build-credits) in Harness Cloud, which you can use to select specific infrastructure resources. This is an [early access feature](/release-notes/early-access) behind the feature flag `CI_ENABLE_RESOURCE_CLASSES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CI-10509)
 
 #### Fixed issues 
 
@@ -48,7 +48,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
 
-- Fixed a UI issue where the Pipeline Execution UI didn't update the stage selector (left) correctly if the pipeline used a parallelism or matrix strategy. As a result, users could not see artifacts properly. (CI-12047)
+- Fixed a UI issue where the Pipeline Execution UI didn't update the stage selector correctly if the pipeline used a parallelism or matrix strategy. As a result, users could not see artifacts properly. (CI-12047)
 
 
 ### Version 1.25.0
