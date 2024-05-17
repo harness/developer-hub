@@ -459,6 +459,21 @@ The AutoStopping savings calculation occurs every 24 hours. For newly created ru
 * Ensure that the rule has been accessed at least once, and the 'Last Activity' column is populated.
 * Verify the health of your Cloud/Kubernetes connectors."
 
+### How to rotate certificate on Autostopping Proxy?
+To rotate a certificate on the Autostopping Proxy, follow these steps:
+
+1. Generate new secrets in the cloud provider for the certificate and secret.
+
+2. Navigate to the load balancers page.
+
+3. Locate and select the Autostopping Proxy.
+
+4. Edit the Autostopping Proxy settings.
+
+5. Update the secrets for the certificate and secret with the newly generated ones.
+
+6. Save the changes to the proxy settings.
+
 ### How are we calculating savings for Kubernetes workloads under AutoStopping rules?
 
 The hourly rate for a Kubernetes workload is determined by the cost of the node on which its pods are hosted. The proportion of node cost attributed to each pod may vary.
