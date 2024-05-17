@@ -42,7 +42,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 #### Early access feature
 
-- This release adds support for selecting [resource classes](/docs/continuous-integration/get-started/ci-subscription-mgmt/#harness-cloud-billing-and-build-credits) in Harness Cloud, which you can use to select specific infrastructure resources. This is an [early access feature](/release-notes/early-access) behind the feature flag `CI_ENABLE_RESOURCE_CLASSES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CI-10509)
+- This release adds support for selecting [resource classes](/docs/continuous-integration/get-started/ci-subscription-mgmt/#harness-cloud-billing-and-build-credits) in Harness Cloud, which you can use to select specific infrastructure resources. This is an [early access feature](/docs/continuous-integration/ci-supported-platforms/#harness-ci-early-access-features) behind the feature flag `CI_ENABLE_RESOURCE_CLASSES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (CI-10509)
 
 #### Fixed issues 
 
