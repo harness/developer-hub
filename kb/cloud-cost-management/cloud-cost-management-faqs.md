@@ -519,6 +519,15 @@ While re-enabling the Autostopping rule, Harness adds the ALB rules back. Which 
 
 Set a wildcard(`*`) on the Path Match in Autostopping rule creation.
 
+### How do we onboard and access RDS instance/cluster to Autostopping?
+To onboard and access an RDS instance/cluster with Autostopping, you have several options:
+
+1. **Access Through Autostopping Proxy**: Connect to the RDS cluster via the Autostopping proxy. Instructions for connecting through the proxy are available on the Autostopping rule details page. As long as users access the RDS cluster through the proxy, Harness ensures the RDS cluster remains running.
+
+2. **Set Uptime Fixed Schedule**: Establish an uptime fixed schedule for the RDS cluster during working hours. Harness ensures the cluster is operational according to this schedule.
+
+3. **Use RDS Autostopping Rule as Dependency**: Employ the RDS Autostopping rule as a dependency for another Autostopping rule, such as one for an EC2 instance. When the parent resource (e.g., EC2) is operational, Harness ensures that the dependent resource (RDS) remains running as well.
+
 ## Dashboards
 
 ### When creating a custom field, can I filter the entire dashboard on the custom field?
