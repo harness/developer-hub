@@ -3238,3 +3238,23 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
 #### Does Harness NextGen Community Edition support LDAP login?
 No, Harness NextGen Community Edition does not support LDAP login.
 
+#### Is the minimal delegate free from critical vulnerabilities?
+The expectation that every minimal image will be free from vulnerabilities is wrong, many times the library upgrades are not simple and many times the fix for these libraries are not even released.
+
+#### Where can we see validate the Harness minimal delegate vulnerabilities been addressed?
+You can check our trust store : https://trust.harness.io/
+For the latest delegate, we keep updated advisory on the above link. 
+
+#### Deletion of a kubernetes delegate.
+As our delegate is of deployment type, to delete the delegate from your Kubernetes cluster, you delete the Deployment object that represents its deployment.
+kubectl delete deployment -n harness-delegate-ng <Deployment name>
+
+#### Harness Created User Group SSO linked is giving error when the same group is pushed from SCIM.
+This is expected as the user group is linked to SSO group usinbg group authorisation hence it can't be managed by SCIM.
+
+#### Jit provisioned user is giving error when trying to be updated using SCIM.
+In case you are using SCIM then you should privision your users using SCIM and not JIT. As when the user is first provisioned it updated the filed for the user as how it was initially provisioned. 
+To overcome the issue , juts removed and re-add the user and it will now to managed by SCIM. 
+
+
+
