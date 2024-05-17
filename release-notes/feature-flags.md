@@ -60,6 +60,19 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
  - We've reduced the ES (ECMAScript) target to 2018. (FFM-11353)
  - The Javascript SDK has also been updated. 
 
+### Ruby SDK
+
+#### Version 1.3.0
+
+**New features and enhancements**:
+ - Target v2: Adding SDK support for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11241)
+ - Adding `rules-v2` query parameter to optimise the rules that the FF backend sends for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11365)
+
+**Fixed issues**:
+ - If the metrics buffer size fills, it no longer flushes and sends all metrics to the FF service, which could affect evaluation performance.  Instead, it logs a warning that the buffer is full and does not process anymore metrics for that interval. (FFM-11211)
+ - Optimizes the payloads sent by the metrics service. Previously, there would be an individual payload entry based on `flag + variation served + target`.  Now, the entry is based on `flag + variation`.  This drastically reduces payload size for similar evaluations served for targets. The SDK continues to register targets correctly as before. 
+ - Fixes an issue where targets used in evaluations across metrics intervals would still be included in payloads. Now, only unique targets are included in payloads.
+
 ## April 2024
 
 ### Android SDK
