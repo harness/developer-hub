@@ -22,22 +22,20 @@ This topic describes the following operations:
 * [HCE single-click onboarding](/docs/chaos-engineering/get-started/onboarding/single-click-onboarding.md)
 
 :::tip
-Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature
+Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
 :::
-
-## Discover services, create network maps, and execute chaos experiments
 
 If you chose to onboard with guidance, follow the steps below.
 
 ### Select an environment
 
-1. Select an environment from a list of environments and select **Next**. It may take a while to set up the environment.
+1. Select an environment from a list of environments and select **Next**. It might take a while to set up the environment.
 
     ![](./static/guided/select-env-2.png)
 
 ### Select an infrastructure
 
-2. Select an infrastructure from the list of infrastructure and select **Next**.
+2. Select an infrastructure from the list and select **Next**.
 
     ![](./static/guided/select-infra-3.png)
 
@@ -47,9 +45,9 @@ If you chose to onboard with guidance, follow the steps below.
 
 ### Automatically create Discovery Agent
 
-4. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, etc. To know how to use a custom discovery agent, go to [customize discovery agent](/docs/chaos-engineering/features/service-discovery/service-discovery-usage.md).
+4. HCE creates the discovery agent that automatically discovers services for your application. The next step (optional) collects information about blocked namespaces, service discovery periods, and so on. To learn how to use a custom discovery agent, go to [customize discovery agent](/docs/chaos-engineering/features/service-discovery/service-discovery-usage.md).
 
-5. Once you complete the steps mentioned earlier, HCE looks for services in your cluster (which may take a while).
+5. Once you complete the above steps, HCE looks for services in your cluster (which might take a while).
 
     ![](./static/guided/discover-services-6.png)
 
@@ -59,7 +57,7 @@ If you chose to onboard with guidance, follow the steps below.
 
     ![](./static/guided/discovery-complete-7.png)
 
-7. HCE prompts you to select one of the options to create network maps automatically or not.
+7. HCE prompts you to select one of the options whether to automatically create network maps or not.
 
 ### Choose between automatic and customizable network map creation
 

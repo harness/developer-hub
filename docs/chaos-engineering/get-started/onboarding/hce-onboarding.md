@@ -4,7 +4,7 @@ title: Overview
 description: An overview of onboarding with HCE
 ---
 
-This topic describes the versions of HCE, and how to get started with HCE.
+This topic describes the HCE versions and how to get started.
 
 ## Before you begin
 
@@ -19,6 +19,7 @@ Harness Chaos Engineering is available in **SaaS** and **self-managed** versions
 ## Steps to execute a HCE experiment
 
 To create a chaos experiment, complete the following steps:
+
 1. [Fulfill the resource requirements](/docs/chaos-engineering/get-started/tutorials/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
 2. [Add an environment](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-1-create-an-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
 3. [Add a chaos infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure): The required chaos infrastructure is created within a chaos environment.
@@ -28,7 +29,7 @@ To create a chaos experiment, complete the following steps:
 
 ## Automated and guided onboarding
 
-1. To get hands-on experience executing chaos experiments, navigate to **Chaos** module and select **Overview**. Select **Select a cluster** where you can choose between automatic and customizable onboarding.
+1. To get hands-on experience executing chaos experiments, navigate to the **Chaos** module and select **Overview**. Select **Select a cluster**, where you can choose between automatic and customizable onboarding.
 
 ![](./static/onboard/onboard-1.png)
 
