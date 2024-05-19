@@ -5,25 +5,151 @@ sidebar_label: OpenVAS scanner reference
 sidebar_position: 280
 ---
 
-You can ingest application-instance scan results from OpenVAS.
+<DocsTag   text="Instance scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#instance-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
 
-## For more information
+You can scan your application instances and ingest results from [OpenVAS](https://www.openvas.org/). 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+## Workflow descriptions
 
-<StoMoreInfo />
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
-## Security step settings for OpenVAS scans in STO
+
+## Custom Scan step settings for OpenVAS scans
+
+### Scanner settings
+
+These settings are required for most scanners. For more information, go to the reference for the scanner integration you're setting up.
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+
+#### Product name
+
+The scanner name. This is required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```
+openvas
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+instance
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+
+```
+policy_type
+```
+
+##### Value
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+Specify the type of scan to run when `policy_type` is `orchestratedScan`. 
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+Specify one of the following.
+
+Run a default scan:
+
+```
+default
+```
+
+Run a host discovery scan on the network:
+
+```
+host-discovery
+```
+
+Run a network discovery scan:
+
+```
+network-discovery
+```
+
+Run a full and very deep discovery scan: 
+
+```
+full-and-very-deep
+```
+
+Run a system discovery scan on the network:
+
+```
+openvas-system-discovery
+```
 
 ### Target and variant
 
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 
 <StoLegacyTargetAndVariant />
 
+<!-- 
 ### OpenVAS scan settings
 
 * `product_name` = `openvas`
@@ -41,26 +167,46 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Instance scan settings
+-->
+
+### Product access
+
+These settings are available to access your OpenVAS SaaS instance when `policy_type` is `orchestratedScan`. 
+
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords/tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
+
+#### Product access keys
+```
+product_domain
+```
+```
+product_app_id
+```
+```
+product_access_token
+```
 
 
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
+### Instance
+
+import StoLegacyInstance from './shared/custom-scan/_dast.md';
 
 <StoLegacyInstance />
+
+
 
 ### Ingestion file
 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 
 <StoLegacyIngest />
 
+
 ### Fail on Severity
 
-
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
-
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />

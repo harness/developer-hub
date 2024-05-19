@@ -10,6 +10,12 @@ import TabItem from '@theme/TabItem';
 
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
 
 You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Harness currently supports the following: 
 
@@ -68,7 +74,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	Do the following:
 
-	1. Add a CI Build or Security Tests stage to your pipeline.
+	1. Add a CI Build or Security stage to your pipeline.
 	2. Add a Wiz step to the stage.
 
 <br/>
@@ -112,7 +118,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	Do the following:
 
-	1. Add a CI Build or Security Tests stage to your pipeline.
+	1. Add a CI Build or Security stage to your pipeline.
 	2. Add a Wiz step to the stage.
 
    	<br/>
@@ -157,7 +163,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security Tests stage to your pipeline.
+   	1. Add a CI Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
 
@@ -203,7 +209,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security Tests stage to your pipeline.
+   	1. Add a CI Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
    #### Copy scan results to the shared path
@@ -267,7 +273,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 ## Wiz step settings reference
 
-The recommended workflow is add a Wiz step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Wiz step to a Security Tests or CI Build stage and then configure it as described below.
 
 
 ### Scan
@@ -340,7 +346,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 <StoSettingTargetWorkspace  />
 
-### Container image
+### Artifacts
 
 
 #### Type
@@ -450,20 +456,14 @@ You can add more settings to the scan step as needed.
 
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
