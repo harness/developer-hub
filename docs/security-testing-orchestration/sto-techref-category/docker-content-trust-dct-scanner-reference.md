@@ -73,7 +73,6 @@ scan_type
 
 ##### Value
 
-
 ```
 containerImage
 ```
@@ -101,7 +100,7 @@ ingestionOnly
 
 #### Product config name
 
-Required for most scanner integrations. 
+Required for most scanner integrations.
 
 ##### Key
 ```
