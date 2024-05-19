@@ -499,6 +499,14 @@ pipeline:
 
 ## General Command step FAQs
 
+### What is the Command Step?
+
+The Command Step allows you to run commands on target hosts in SSH and WinRM deployments, as well as within deployment templates. You can use it for various tasks like:
+
+Running scripts on all target hosts.
+Downloading the deployment artifact.
+Copying the artifact or configuration files.
+
 ### Is there a way to pass output variables between commands with in a Command step ?
 
 No, output variables can only be passed between steps or stages, not within a single Command step.
@@ -530,3 +538,7 @@ Invalid argument(s): Host information is missing in Command Step. Please make su
 ```
 
 If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, set the `Repeat` looping strategy for the Command step. For more information on the Command step and the supported looping strategies, go to [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm) documentation.
+
+### Is there a way to interrogate artifact details in a shell script step for SSH use cases, enabling behavior modification in deployment, without transferring it to the end server first ?
+
+One can use command step to copy the artifact to the delegate  to inspect. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/)

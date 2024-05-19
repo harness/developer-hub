@@ -512,3 +512,10 @@ For this use case within the shell script, you can simply reference credentials 
 
 With this, even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
 
+### What are the differences between Native Helm Deployment in FirstGen and NextGen Harness?
+
+Here are a few key differences between Native Helm Deployment in FirstGen and NextGen Harness:
+
+* Versioning: Harness NextGen supports versioning of Helm deployments. This allows you to track changes to your deployments and roll back to previous versions if necessary. Harness FirstGen does not support versioning of Helm deployments.
+* Rollback: Harness NextGen supports rollbacks of Helm deployments. This allows you to roll back to a previous version of your deployment if something goes wrong. Harness FirstGen does not support rollbacks of Helm deployments.
+* Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.

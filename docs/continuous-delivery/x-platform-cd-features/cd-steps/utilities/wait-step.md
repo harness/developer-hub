@@ -82,5 +82,10 @@ Concurrent active pipeline executions comprises of active and in-progress execut
 ### Is there a way to see which user acts on the Wait step to mark it as a success or mark it as fail?
 
 One can look at having Harness approval step in addition to Wait step for this use case, also can set a failure strategy in case it timeout
-Please read more on Harness approval step in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#add-approval-step)
+Please read more on Harness approval step in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#add-approval-step).
+
+### Is it possible to remove permissible actions from the Wait Step?
+No, removing the permissible actions from the Wait Step is not possible. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
+
+However, you can set a failure strategy for the Wait Step to ensure that the pipeline execution fails if the step is marked as failed. Additionally, you can set a longer timeout duration to ensure that the mandatory waiting time is enforced.
 
