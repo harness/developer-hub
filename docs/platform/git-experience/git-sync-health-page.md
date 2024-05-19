@@ -27,11 +27,11 @@ You can register your webhook on Organization, Project and Account Level.
 
 - In the **Webhooks** page, you can see the **Events** tab.
 
-![](./static/event-page-gitsynchealth.png)
+![](./static/event_page.png)
 
 By defaut you will see the event that were **FAILED**, **PROCESSING**, **SKIPPED** or if there is a **WARNING**. You can modify the filter as per your requirement
 
-![](./static/event_page_file_changes.png)
+![](./static/event-page-gitsynchealth.png)
 
 In the event page you can see each event you have made to the files for the repo you have registered in webhook. 
 
