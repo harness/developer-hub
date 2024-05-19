@@ -183,7 +183,7 @@ import CustomScanRepo from './shared/custom-scan/_repo.md';
 
 <CustomScanRepo />
 
-### Container images 
+### Artifacts 
 
 import CustomScanContainer from './shared/custom-scan/_container.md';
 
