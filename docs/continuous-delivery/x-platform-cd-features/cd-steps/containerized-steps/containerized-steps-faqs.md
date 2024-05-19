@@ -68,7 +68,7 @@ Replace "filename" with the name of the file you want to fetch from the file sto
 Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
 
 
-### Is there an alternative work for usage of container step in Continuous Delivery?
+### Is there an alternative work for usage of Container step in Continuous Delivery?
 
 Yes, we recommend using **Container-step-group + run step**.
 Read more about [Containerized step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group).

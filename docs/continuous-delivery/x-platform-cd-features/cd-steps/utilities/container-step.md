@@ -470,3 +470,44 @@ In **Advanced**, you can use the following options:
 * [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
 * [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+## General Container step FAQs
+
+### Step group variables not accessible between steps using stepGroup expression in Container step?
+
+The Container Step creates its step group with the Init and Run steps during pipeline execution. The reason why the container step creates its own Step Group is, that the additional Init Step is needed to create a build pod with containers.
+
+Since the inner container step group is created, the ```<+stepGroup>``` expression in the Container Step script refers to the inner step group, not to the outer Deployment Dry Run group. Hence, we can’t use ```<+stepGroup>``` in the container step to access the outer step group steps.
+
+We need to use the following expressions to get the Deployment Dry Run group steps identifiers/names in the Container Step,
+
+Get Deployment Dry Run step identifier:
+
+```
+<+execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.identifier>
+or,
+<+pipeline.stages.Test_Policy.spec.execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.identifier>
+
+Get Deployment Dry Run step name:
+
+<+execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.name>
+or,
+<+pipeline.stages.Test_Policy.spec.execution.steps.kubernetes_compliance_check1.steps.k8s_dry_run.name>
+```
+
+
+#### Does the Container step in CD override the entry point when using the command input?
+
+The entry point in the base image will be overwritten as we have to run the commands specified in the run step.
+
+
+#### Is there an alternative work for usage of Container step in Continuous Delivery?
+
+Yes, we recommend using **Container-step-group + run step**.
+Read more about [Containerized step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#add-a-containerized-step-group).
+
+
+### Does Harness support `distroless` image in the container run step ?
+
+No, Harness does not support distroless images yet, we will introduce to adapt this soon.
+

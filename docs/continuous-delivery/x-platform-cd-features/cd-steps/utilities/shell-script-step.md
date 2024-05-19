@@ -792,3 +792,191 @@ The step might look like this:
 
 The `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}` line will get the `kubeconfig` from the Harness Delegate that is installed on the Kubernetes cluster.
 
+## General Shell Script step FAQs
+
+
+### How to clone files from git repository within a Shell Script step?
+We do not natively support leveraging GitHub Connectors within a shell script. However, you can configure an SSH Key or HTTP Authentication by referring to the same secret as your connector does in your shell script. This way, you only need to define and rotate your credentials in one place.
+
+
+### Is there a way to interrogate artifact details in a Shell Script step for SSH use cases, enabling behavior modification in deployment, without transferring it to the end server first ?
+
+One can use command step to copy the artifact to the delegate to inspect. 
+
+### Where can one find the define delegate selector in Shell Script steps ?
+
+The delegate selector field is displayed conditionally based on the step type. If you're using a Shell Script step, the field is recently moved from the advanced tab to the optional config in the step parameters tab.
+
+
+### Is it possible to store HTTP step's output as a secret?
+
+The masking is not supported with an HTTP step in this way however you may be able to use a Shell Script step and list the output variable as a secret in the output of that step which will have it be treated as a secret it any subsequent steps.
+
+### How can we utilize output variables from one pipeline stage or execution in another execution?
+
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
+
+Harness also has an endpoint you can use in a Shell Script step or a HTTP step to make an API call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
+
+### Can we utilize Git connector to get the file in a Shell Script step?
+
+We can not reference the connector for git inside the Shell Script step. If we need to clone a repo we need to use git cli commands. We can however store the credentials for git in harness secretes and reference the secrets for authentication in CLI command.
+
+### How can I deploy the application on a custom specified location in the Azure web app?
+
+Currently, we don't have any facility to do the web app deployment in the custom-specified location in Azure. Alternatively, you can use the Shell Script step and use the Azure CLI to pass the required argument
+
+
+### Why on echoing the date powershell Shell Script step adding an extra line?
+
+Using the Write-Host command instead of echo will get the result in one line.
+
+### How do I use a custom stage to do the Terraform Cloud Run step?
+The Run step is only supported in the CI and CD stages. For the custom stage, please use the Shell Script step.
+
+### Does Shell Script step uses delegate selector from connector used
+
+By default shell script doesn’t uses the connector selector and task can go to any delegate, if you need to use same delegate you have to specify the selector.
+
+### How to trigger a pipeline on another pipeline completion?
+The user can add the Shell Script step with a custom webhook curl at the end of the pipeline to trigger another pipeline.
+
+### Can a Shell Script step's output variable be used to determine the failure strategy of the same or subsequent steps in a conditional execution scenario, such as setting a failure strategy based on specific conditions like a DNS name check ?
+
+Unfortunately, utilizing the output variable of a Shell Script step to determine the failure strategy for the same or subsequent steps is not feasible. When a Shell Script step concludes with a non-zero exit status, the output variable remains unset, precluding its use in subsequent steps or for defining the failure strategy. In such scenarios, reliance on the non-zero exit status is necessary to trigger the failure strategy.
+Please read more on Failure Strategy in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy/)
+
+### How to read files under project's helm folder during project deployment?
+
+We do not have a way to read the values file directly and access any variables from the same. It can only be read as part of the service deployment.
+
+If you need to access the file values you need to pull the file from your repo in a Shell Script step and then publish the corresponding value as output variable. 
+
+### Accessing a variable in namespace of an environment which is defined in the Shell Script step of the pipeline.
+
+You will need to add a custom stage and then export an output variable in order to use this output variable in the deploy stage environment variable as when the pipeline will execute it will initialize the service and environment before getting to tht shell setup. 
+
+
+### Can I use shell variables in Harness expressions to fetch a secret in a Shell Script step?
+
+You can't use a shell variable in a Harness expression because the Harness expression is resolved before the step starts, and the shell variable doesn't populate until the Shell Script step run.
+
+However, you could write a variable that stores a Harness expression referencing a secret, and then use that variable in your script. This way the expression can be resolved independently of the script running.
+
+
+### Can I access files from a containerized step group in a subsequent Shell Script step?
+
+No. Containerized step groups are isolated on a separate pod from other steps. Files generated in the containerized step group aren't available in outside steps.
+
+
+### Why can't I use a particular shell type with the Command step?
+
+Command step depends on type of deployment.
+
+If your deployment type is WinRM, then you only have the powershell shell option; whereas, if your deployment type is SSH, then you have the bash shell option.
+
+If you want to use these shells interchangeably, you can either:
+
+* Add Shell Script step instead of command step.
+* Use the command step without selecting **Run on Delegate**, so that it will run on host instead of the delegate.
+
+
+### Is there a way to execute python code directly in the Custom Shell Script step?
+
+Our method of executing shell scripts follows a specific approach. Rather than utilizing the customary './file.sh' approach, which employs the shebang line and initiates with Python, we employ '/bin/bash ./file.sh'. This ensures that the script runs exclusively as a bash script.
+ 
+Therefore to make it work put the Python command in a file and execute it. So, the idea is that the bash script will execute as a shell script hence it will not understand the Python command. If we put the Python commands in a script and then run it within shell script it will work.
+
+### When do we mask a secret value in shell script?
+
+To mask a secret's value in a script, then that secret should be at least once used or refrenced in the script (referencing the secret as echo \<+secrets.getValue("pattoken")>)
+
+
+### Is delegate token masked in if used in shell script?
+
+Delegate tokens are already present in the memory and we know those need to be sanitized, so they are masked by default.
+
+
+### How to pass JSON string as a command line argument in shell script
+
+with the command the json string should be passed in sigle quotes for example:
+
+python3 eample.py `<+trigger.payload>`
+
+`<trigger.payload>` resolves to JSON.
+
+### How Do I preserve the formating of multiline secret in shell script?
+
+Please the use below command-
+```
+echo ${secrets.getValue("key_file")} > /tmp/id_rsa_base64
+cat /tmp/id_rsa_base64 | base64 -di
+
+```
+
+### How to reference a connector in shell script or Powershell script?
+
+Currently, you can't leverage a connector within a script step. However, you can manually integrate to an API referring to the same credentials as the connector.
+
+### I need something that value I can change in the middle of pipeline (automatically using bash script for example).
+So define variable with default value and then in the middle of the pipeline change it's value
+
+You can assign a stage variable value via shell script in Harness pipeline by using the Script Output Variables option in the Shell Script step.
+First, declare the variable in your script and export it. For example, if you want to set the value of a stage variable named myvar to 123, you can add the following line to your script:
+
+`export myvar=123`
+
+Then, in the Shell Script step, go to Script Output Variables and add a new output variable. Set the Name to the name of the stage variable (myvar in this example) and set the Value to the name of the exported variable in your script (myvar in this example).
+Now, the value of the stage variable myvar will be set to 123 after the Shell Script step is executed. You can reference this value in subsequent steps using the Harness expression 
+
+`<+execution.stages.[stage_id].output.outputVariables.myvar>`
+
+### we have a config file which is required for a CLI tool ran using a custom shell script. Is it possible to somehow store this file within harness rather than directly on the delegate and reference it in the custom shell script execution?
+
+You can use API [API]https://apidocs.harness.io/tag/File-Store#operation/listFilesAndFolders to create or fetch files from Harness file store in the shell script.
+
+
+### Is it possible to get through an expression the uninstall flags from a helm service ?
+
+One can try below example to find and uninstall the same :
+```sh
+commandFlagsJson='<+json.format(<+pipeline.stages.deploy.spec.manifests.helm_hello_world.commandFlags>)>'
+commandType=$(echo $commandFlagsJson | jq '.[] | select(.commandType=="Uninstall") | .flag')
+
+echo $commandType
+```
+
+### Is there an official method in Harness to expose the connector, allowing GitHub requests to be made without storing a machine token within Harness ?
+
+No, this is not yet possible as the shell script is connector agnostic. If the shell script runs on a delegate with access or credentials it can inherit those creds for the shell command. Please feel free to file a canny request.
+
+
+### How to check for the script file which harness creates for running the script task?
+
+Harness by default creates a script file with the script provided in shell script configuration inside the /tmp folder.
+
+
+### Is there a way the user can pull from Bitbucket/Github inside the Harness Delegate and then push it to the target server?
+
+Yes, you can use the git clone step and after that, you can push the files to the target server with the shell script/run step in the stage.
+
+
+### How to use the Opsgenie plugin and integration with Harness to create new alerts based on testcase health?
+
+We do have different built-in notification mechanisms,  slack/email/ms teams/pager duty or custom, but if you want to integrate opsgenie, you have to create a shell script and make a call to opsgenie utilizing the api exposed by opsgenie to use for alert purposes.
+
+
+### How to delete a job after its execution is complete?
+
+You can add a shell script to check the job status before executing the Kubernetes Delete. To run kubectl commands, it's required to use the Harness Kubeconfig as an environment variable. Here's an example script for guidance:
+
+```
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
+kubectl wait --for=condition=complete job/myjob -n <+infra.namespace>
+```
+
+### How to trigger one pipeline from another and use the first pipeline's shell script output as inputs for the second, ensuring runtime inputs like environment and infrastructure names are passed?
+
+One can use output variables from one pipeline as inputs for another, defining the receiving pipeline's variables as runtime inputs.
+Please read more on this in the following [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/output-variable-for-powershell-script/).

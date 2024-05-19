@@ -488,6 +488,37 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
 ...
 ```
 
+## General HTTP step FAQs
+
+### Can we use json functor in Http step with functions like length, concat, etc ?
+
+Yes, you can use JSON functors with functions like length and concat in an HTTP step. Here is an example of using the concat function in an HTTP step:
+
+Value: `<+json.concat("Hello ", "World!")>`
+And here is an example of using the length function in an HTTP step:
+
+Value: `<+json.length(<+pipeline.variables.array>)>`
+In both cases, the JSON functor is used to manipulate the input values and return a new value that can be used in the HTTP step.
+
+### Does HTTP step for mtls end point also ignore certificate check ?
+
+If we do not provide any certificate for the end point the TLS ignore will basically force the client to not validate the server however the same is not true for the server which is expecting certificate as well for client validation. Hence for mtls end point this will fail.
+
+### Does HTTP step supports mtls?
+
+HTTP step does support mtls communication, we can use the certificate and private key for establishing the mtls connection with the provided end point.
+
+### Is it possible to store HTTP step's output as a secret?
+
+The masking is not supported with an HTTP step in this way however you may be able to use a Shell Script step and list the output variable as a secret in the output of that step which will have it be treated as a secret it any subsequent steps. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/).
+
+### How can we utilize output variables from one pipeline stage or execution in another execution?
+
+To pass output variables from one pipeline stage to another, you can use pipeline chaining. In the parent pipeline, define the output variable in the output section of the first stage. Then, in the second stage, use the expression `<+pipeline.[pipeline_stage_identifier].[output_variable_defined_under_output_section]>` to reference the output variable from the first stage. When you run the parent pipeline, the output variable from the first stage will be passed to the second stage as an input variable.
+
+Harness also has an endpoint you can use in a Shell Script step or a HTTP step to make an API call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
+This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
+
 
 ## See also
 

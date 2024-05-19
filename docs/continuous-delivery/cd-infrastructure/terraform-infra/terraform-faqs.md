@@ -363,4 +363,10 @@ Go to [Store Terraform Plan on Harness Delegate](https://developer.harness.io/do
 
 You can have a shell script step in which you fetch the file from your corresponding source and have it stored on the delegate at any specific path and refer that path in your Terraform config. You just need to ensure that your plan and apply runs on the same delegate. For more details, go to [Run all pipeline steps in one pod](https://developer.harness.io/docs/platform/delegates/manage-delegates/run-all-pipeline-steps-in-one-pod/).
 
+### How do I use a custom stage to do the Terraform Cloud Run step?
+
+The Run step is only supported in the CI and CD stages. For the custom stage, please use the Shell Script step.
+
+
+
 

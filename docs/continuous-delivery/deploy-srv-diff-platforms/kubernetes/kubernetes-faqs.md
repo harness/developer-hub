@@ -763,3 +763,10 @@ Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.n
 
 `client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
 
+
+### How do I save the dry-run step rendered manifest?
+
+You can view the dry-run manifest as an output variable of the step.
+
+
+

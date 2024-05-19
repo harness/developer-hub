@@ -496,3 +496,37 @@ pipeline:
 ```
 
 </details>
+
+## General Command step FAQs
+
+### Is there a way to pass output variables between commands with in a Command step ?
+
+No, output variables can only be passed between steps or stages, not within a single Command step.
+Please read more on this [Documentation](https://developer.harness.io/kb/continuous-delivery/articles/chained-pipeline-output-variables).
+
+###  Can we use Command step for custom stage?
+
+No this is not supported as of now, as currently Command step is only applicable in SSH/WinRM type deployment.
+
+### In the WinRM execution when user tries to execute the Command step is skipping in the execution without any condition configuration?
+
+If the Command step is skipping that means you have marked the "Skip instances with the same artifact version already deployed" in Advanced.
+
+### Why can't I use a particular shell type with the Command step?
+
+Command step depends on type of deployment.
+
+If your deployment type is WinRM, then you only have the powershell shell option; whereas, if your deployment type is SSH, then you have the bash shell option.
+
+If you want to use these shells interchangeably, you can either:
+
+* Add shell script step instead of command step.
+* Use the command step without selecting **Run on Delegate**, so that it will run on host instead of the delegate.
+
+### Why am I getting the error "Host information is missing in Command Step"?
+
+```
+Invalid argument(s): Host information is missing in Command Step. Please make sure the looping strategy (repeat) is provided.
+```
+
+If you are using the Command step, the `Repeat` looping strategy is required. The above error indicates that the Command step was ran without a `Repeat` looping strategy. To fix this, set the `Repeat` looping strategy for the Command step. For more information on the Command step and the supported looping strategies, go to [SSH and WinRM](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/#ssh-and-winrm) documentation.
