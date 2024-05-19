@@ -11,11 +11,28 @@ sidebar_position: 110
 <br/>
 <br/>
 
-You can scan container images and ingest results from [Clair](https://github.com/quay/clair). The following steps describe the workflow. 
+You can scan container images and ingest results from [Clair](https://github.com/quay/clair). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
 
 
 ## Custom Scan step settings for Clair
@@ -42,7 +59,7 @@ product_name
 ##### Value
 
 ```yaml
-clair
+docker_image_scan
 ```
 
 #### Scan type
