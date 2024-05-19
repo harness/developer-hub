@@ -1,13 +1,13 @@
 ---
 title: Business Alignment profile
-description: Use the Business Alignment profile to generate Business Alignment report for your engineering team.
+description: Use the BA profile to generate the BA report for your engineering team.
 sidebar_position: 10
 sidebar_label: Business Alignment profile
 ---
 
 Business Alignment metrics help you understand where engineers are allocating their time through effort investment metrics. It is one of the most critical components of engineering metrics that connects your engineering to the business value.
 
-The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can customize the categories and adjust the threshold for the Filter Sets.
+The **Business Alignment profile** acts as the single source of truth for the Business Alignment metrics calculations where you can create and manage the Investment Categories using Filter Sets and adjust the threshold of each of these categories using Allocation Goals.
 
 :::info
 The Business Alignment profile feature is currently in BETA. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
@@ -26,19 +26,6 @@ In the profile configuration, the **Default Category** is by default set up with
 The `uncategorized` category in the profile configuration fetches and considers all the tickets that do not belong to any other defined category. You can customize the uncategorized category with custom allocation goals and use them in your Alignment metric calculation.
 
 ![](./static/filter-sets.png)
-
-### Add Custom Category
-
-To add a custom **Category** to the profile configuration:
-
-1. Go to the **Business Alignment profile** settings.
-2. Select **+New Category** under the **RANKED CATEGORIES** section.
-3. Add a **Name**, then click on **Save** to save the Category.
-4. Define the **Filter Sets**, **Ticket Fetching Criteria** and **Allocation Goals** for the newly created custom category.
-
-:::info
-Note that for each Category, you can define its own separate set of **Filters** and **Allocation Goals**. The categories are placed based on the ranking provided.
-:::
 
 <details>
 <summary>Relationship between Ranking Categories and Business Alignment metric calculations</summary>
@@ -82,19 +69,34 @@ This example could result in the following ranges:
 * **30 to 40 per cent:** Acceptable
 * **40 to 100 per cent:** Poor
 
-## Configure the Business Alignment profile
+## Create the Business Alignment profile
 
 To create or edit Business Alignment profiles:
 
-1. Go to your **SEI settings**.
-2. Select **Business Alignment** under **Profiles**.
-3. To create a profile, select **+New Business Alignment Profile**. To edit an existing profile, select the profile's name in the profiles list.
+### Step 1: Create a new Business Alignment profile
+
+* Go to your **SEI settings**.
+* Select **Business Alignment** under **Profiles**.
+* To create a profile, select **+New Business Alignment Profile**. To edit an existing profile, select the profile's name in the profiles list.
+
+### Step 2: Add Categories
+
+To add a custom **Category** to the profile configuration:
+
+* Go to the **Business Alignment profile** settings.
+* Select **+New Category** under the **RANKED CATEGORIES** section.
+* Add a **Name**, then click on **Save** to save the Category.
+* Define the **Filter Sets**, **Ticket Fetching Criteria** and **Allocation Goals** for the newly created custom category.
+
+:::info
+Note that for each Category, you can define its own separate set of **Filters** and **Allocation Goals**. The categories are placed based on the ranking provided.
+:::
 
 For each category, you can define its own set of **Filters** and **Allocation goals**.
 
-### Configure Filters for Categories
+### Step 3: Add Filters for Categories
 
-**Filters** are the criteria that determine what kind of work or tasks fall into each category.
+For each category, you can define its own set of **Filters** and **Allocation goals**. **Filters** are the criteria that determine what kind of work or tasks fall into each category.
 
 To set up these Filters:
 
@@ -104,7 +106,7 @@ To set up these Filters:
 
 ![](./static/filter-sets.png)
 
-### Scope of Fetching Tickets
+### Step 4: Define the Scope of Fetching Tickets
 
 This allows you to define how broadly you gather ticket data based on your Filters. Select one of the following options:
 
@@ -119,11 +121,13 @@ You also have the option to add a combination of multiple **Filter Sets** under 
 
 ![](./static/scope-fetch-tickets-advanced.png)
 
-### Define Allocation Goals
+### Step 5: Define the Allocation Goals
 
 Finally, you will set the allocation goals for each category. This involves deciding how much of your team's time and effort should ideally go into each category.
 
 * Set an ideal resource allocation range as a percentage. This is your target for how much effort should go into each category.
 * You can also customize what is considered an acceptable range. This gives some flexibility while still aligning with your overall objectives.
 
-Once the profile settings have been configured, you can **Save** the profile. <br /> <br />Associate the Business Alignment profile as the  in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more, go to the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).
+### Step 6: Save the profile
+
+Once the profile settings have been configured, you can **Save** the profile. <br /> <br />You can select the newly created Business Alignment profile in the Business Alignment report widget to generate insights which can help you align your engineering work with business goals, ensuring that time and effort are spent where they're most valuable. To learn more about how the Alignement metrics are calculated, go to the [Business Alignment report](/docs/software-engineering-insights/early-access/metrics-reports/sei-business-alignment-report).

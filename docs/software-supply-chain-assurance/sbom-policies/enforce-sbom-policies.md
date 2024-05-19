@@ -1,17 +1,19 @@
 ---
-title: Enforce SSCA policies
-description: Use SSCA to enforce software supply chain security policies.
+title: Enforce SBOM policies
+description: Use SSCA to implement SBOM Policy Enforcement.
 sidebar_position: 20
+redirect_from:
+  - /docs/software-supply-chain-assurance/ssca-policies/enforce-ssca-policies
 ---
 
 Enforce SBOM policies in the CI and CD stages of your Harness pipelines to ensure that your artifacts only contain approved components.
 
 ## Requirements
 
-To enforce SSCA policies in a Harness pipeline, you need:
+To enforce SBOM policies in a Harness pipeline, you need:
 
 * A pipeline with a [CI (build) stage](/docs/continuous-integration/use-ci/prep-ci-pipeline-components), a [CD (deploy) stage](/docs/continuous-delivery/get-started/key-concepts#stage), or both. You'll add the SBOM Enforcement step to one of these stages.
-* [SBOM OPA policies that you want to enforce.](./create-ssca-policies.md)
+* [SBOM OPA policies that you want to enforce.](./create-sbom-policies.md)
 * SBOM to compare policies against. For example, you can [use SSCA to generate SBOM](../sbom/generate-sbom.md) or [import SBOM](../sbom/ingest-sbom-data.md).
 * A [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the public key from the [key pair used to sign and attest the SBOM](../sbom/generate-sbom.md#generate-a-key-pair).
 
@@ -48,7 +50,7 @@ When the pipeline runs, the **SBOM Policy Enforcement** step does the following:
 * If violations are detected based on the policy evaluation criteria, the pipeline may issue a warning and proceed, or it may generate an error and terminate.
 * Records policy violations and shows them on the **Supply Chain** tab on the **Execution details** page.
 
-SSCA evaluates the components described in the artifact's SBOM against your [policy definitions](./define-ssca-policies.md). For a component to pass the evaluation, it must meet these conditions:
+SSCA evaluates the components described in the artifact's SBOM against your [policy definitions](./define-sbom-policies.md). For a component to pass the evaluation, it must meet these conditions:
 
 * The component *must not* be denied based on the rules in the `deny_list`.
 * The component *must* be allowed based on the rules in the `allow_list`.

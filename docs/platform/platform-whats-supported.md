@@ -66,7 +66,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 | Manifest Type                       | Required Tool/SDK     | Certified Version     |
 | ----------------------------------- | --------------------- | --------------------- |
-| Kubernetes                          | kubectl               | v1.27.0               |
+| Kubernetes                          | kubectl               | v1.28.7              |
 |                                     | go-template           | v0.4.1                |
 | Helm                                | kubectl               | v1.27.0               |
 |                                     | helm                  | v3.11.0               |

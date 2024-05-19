@@ -1,19 +1,14 @@
 ---
-title: SEI Jira Enhanced integration - BETA
+title: SEI Jira integration
 description: Integrate SEI with Jira.
 sidebar_position: 131
-sidebar_label: Jira 2.0
+sidebar_label: Jira
 redirect_from:
-  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira-easyonboarding
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration
 ---
 
 
 Jira is a proprietary issue-tracking product that allows bug tracking and agile project management.
-
-:::info **ABOUT THIS INTEGRATION**
-
-The new experience for the Jira integration is currently in BETA and is behind the Feature Flag `<SEI_EASY_ONBOARDING_JIRA>`. Please contact Harness Support to enable this feature.
-:::
 
 To integrate SEI with Jira, you must choose your Jira type:
 

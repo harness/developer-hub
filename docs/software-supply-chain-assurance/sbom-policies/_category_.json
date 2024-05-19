@@ -1,11 +1,11 @@
 {
-   "label":"Enforce SSCA policies",
+   "label":"Enforce SBOM policies",
    "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Enforce SSCA policies"
+      "title":"Enforce SBOM policies"
    }
 }

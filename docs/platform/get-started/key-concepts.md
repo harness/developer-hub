@@ -12,6 +12,7 @@ redirect_from:
   - /docs/get-started/key-concepts
   - /docs/getting-started/harness-platform-architecture
   - /docs/get-started/harness-platform-architecture
+  - /docs/getting-started/learn-harness-key-concepts
 ---
 
 The Harness Platform provides a common framework underlying the Harness modules to help you onboard and enable diverse teams leveraging different modules for different use cases.

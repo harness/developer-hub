@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-10T10:00
+date: 2024-05-13T10:00
 sidebar_position: 16
 ---
 
@@ -82,14 +82,14 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## May 10, 2024, patch version 0.14.8
+## May 13, 2024, patch version 0.14.10
 
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
 | :-- | :--: |
-| Helm Chart | [0.14.8](https://github.com/harness/helm-charts/releases/tag/harness-0.14.8) |
-| Air Gap Bundle | [0.14.8](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.8) |
+| Helm Chart | [0.14.10](https://github.com/harness/helm-charts/releases/tag/harness-0.14.10) |
+| Air Gap Bundle | [0.14.10](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.10) |
 | NG Manager | 1.24.9 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.5 |
@@ -108,16 +108,20 @@ Some admins might not have Google account access to download air gap bundles. As
 
 ```
 gsutil -m cp \
-  "gs://smp-airgap-bundles/harness-0.14.8/ccm_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/cdng_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/cet_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/ci_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/ff_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/platform_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.14.8/sto_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.14.10/sto_images.tgz" \
   .
 ```
+
+### New features and enhancements
+
+- Upgraded `migrator` to 1.59.0 to leverage new functionality and bug fixes. (CDS-96365)
 
 ### Early access feature
 
@@ -365,7 +369,7 @@ gsutil -m cp \
 
 - 'Secret Identifier' will now allow `-` (hyphen) when provided as user input. For more information, go to [Entity identifier reference](https://developer.harness.io/docs/platform/references/entity-identifier-reference/) (PL-48009)
 
-- For customers needing to bypass mutual TLS (mTLS) authentication for Current Generation (CG) delegates, even with strict mode enabled on the account, we have introduced the feature flag PL_DISABLE_MTLS_CHECK_ON_CG_DELEGATES. This update allows specific disabling of mTLS checks for CG delegates, providing greater flexibility in security settings. (PL-47825, ZD-58762, ZD-60565)
+- For customers who need to bypass mutual TLS (mTLS) authentication for Current Generation (CG) delegates, even with strict mode enabled on the account, Harness has introduced the feature flag `PL_DISABLE_MTLS_CHECK_ON_CG_DELEGATES`. This update allows specific disabling of mTLS checks for CG delegates, providing greater flexibility in security settings. (PL-47825, ZD-58762, ZD-60565)
 
 #### Security Testing Orchestration
 
