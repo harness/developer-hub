@@ -10,11 +10,16 @@ sidebar_position: 420
 <br/>
 <br/>
 
-You can ingest scan results for your container images from [JFrog Xray](https://jfrog.com/help/r/jfrog-security-documentation). The following steps describe the workflow. 
+You can ingest scan results for your container images from [JFrog Xray](https://jfrog.com/help/r/jfrog-security-documentation).  
 
-import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
-<StoLegacyWorkflowIngestOnly />
+## Workflow descriptions
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+
 
 #### Required settings
 

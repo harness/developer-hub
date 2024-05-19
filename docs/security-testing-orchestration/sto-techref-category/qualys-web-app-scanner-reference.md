@@ -9,11 +9,13 @@ sidebar_position: 320
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
-You can ingest your application scan results from Qualys Web Application Scanning (WAS) into STO. The following steps describe the workflow.
+You can ingest your application scan results from Qualys Web Application Scanning (WAS) into STO.
 
-import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
+## Workflow description
 
-<StoLegacyWorkflowIngestOnly />
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
 
 
 ## Custom Scan step settings for Qualys scans in STO

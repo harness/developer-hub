@@ -11,11 +11,27 @@ sidebar_position: 280
 <br/>
 <br/>
 
-You can scan your application instances and ingest results from [OpenVAS](https://www.openvas.org/). The following steps describe the workflow. 
+You can scan your application instances and ingest results from [OpenVAS](https://www.openvas.org/). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
 

@@ -11,12 +11,28 @@ sidebar_position: 140
 <br/>
 <br/>
 
-You can extract and ingest scan results for your code repositories from [Data Theorem](https://www.datatheorem.com/). The following steps describe the workflow. 
+You can extract and ingest scan results for your code repositories from [Data Theorem](https://www.datatheorem.com/). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Ingestion workflows</summary>
 
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
 
 ## Custom Scan step settings for Data Theorem scans
 

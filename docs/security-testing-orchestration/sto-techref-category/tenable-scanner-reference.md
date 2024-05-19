@@ -13,11 +13,27 @@ sidebar_position: 400
 <br/>
 <br/>
 
-You can scan your container images and application instances using [Tenable](https://docs.tenable.com/) and then ingest the results from Harness. The following steps describe the workflow. 
+You can scan your container images and application instances using [Tenable](https://docs.tenable.com/) and then ingest the results from Harness. 
 
-import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
 ## Custom Scan step settings for Tenable scans in STO

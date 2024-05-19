@@ -13,11 +13,25 @@ sidebar_position: 240
 
 You can scan your application instances and ingest results from Nessus.
 
-To set up a Nessus scan:
+## Workflow descriptions
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+<details>
+<summary>Orchestration/extraction workflows</summary>
 
-<StoLegacyWorkflow />
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
 ## Custom Scan step settings for Nessus scans in STO

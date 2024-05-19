@@ -8,7 +8,7 @@ sidebar_position: 135
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The Custom Scan step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
+The **Custom Scan** step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
 
 import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that-use-custom-scan-step.md';
 
@@ -27,35 +27,20 @@ import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that
 ## Workflow descriptions
 
 <details>
-<summary>Ingestion-only workflows</summary>
+<summary>Orchestration/extraction workflows</summary>
 
-This workflow applies to scanner integrations that support Ingestion mode only.
-
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
-
-<CustomScanWorkflowIngest />
-
-</details>
-
-<details>
-<summary>Orchestration/extraction workflows for code repositories</summary>
-
-This workflow applies to scanner integrations that support Ingestion mode only.
-
-import CustomScanWorkflowRepo from './shared/custom-scan/_workflow-repo.md';
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 
 <CustomScanWorkflowRepo />
 
 </details>
 
 <details>
-<summary>All other workflows</summary>
+<summary>Ingestion workflows</summary>
 
-This workflow applies to scanner integrations that support Ingestion mode only.
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
 
-import CustomScanWorkflow from './shared/custom-scan/_workflow.md';
-
-<CustomScanWorkflow />
+<CustomScanWorkflowIngest />
 
 </details>
 

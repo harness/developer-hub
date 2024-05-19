@@ -10,11 +10,13 @@ sidebar_position: 340
 <br/>
 <br/>
 
-You can ingest scan results for your code repositories from [Reapsaw](https://github.com/dowjones/reapsaw/wiki). The following steps describe the workflow. 
+You can ingest scan results for your code repositories from [Reapsaw](https://github.com/dowjones/reapsaw/wiki).  
 
-import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
+## Workflow description
 
-<StoLegacyWorkflowIngestOnly />
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
 
 
 ## Custom Scan step settings for Reapsaw scans in STO

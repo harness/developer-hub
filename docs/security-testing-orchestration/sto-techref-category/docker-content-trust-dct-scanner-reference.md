@@ -11,11 +11,27 @@ sidebar_position: 150
 <br/>
 <br/>
 
-You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/). The following steps describe the workflow.
+You can run container image scans and ingest results from [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
 ## Custom Scan step settings for Docker Content Trust

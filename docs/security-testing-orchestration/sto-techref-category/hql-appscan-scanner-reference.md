@@ -10,11 +10,15 @@ sidebar_position: 215
 <br/>
 
 
-You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan). The following steps describe the workflow. 
+You can ingest DAST scan results from [HCL AppScan](https://www.hcl-software.com/appscan). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow-ingest-only.md';
+## Workflow description
 
-<StoLegacyWorkflow />
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+
 
 ## Custom Scan step settings for HCL AppScan scans in STO
 

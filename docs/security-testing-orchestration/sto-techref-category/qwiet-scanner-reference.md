@@ -12,11 +12,27 @@ sidebar_position: 330
 <br/>
 <br/>
 
-You can scan your code repositories and ingest results from [Qwiet](https://docs.shiftleft.io/home). The following steps describe the workflow.
+You can scan your code repositories and ingest results from [Qwiet](https://docs.shiftleft.io/home). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 
 ## Custom Scan step settings for Qwiet scans in STO

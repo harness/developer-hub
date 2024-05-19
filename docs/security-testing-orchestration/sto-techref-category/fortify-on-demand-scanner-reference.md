@@ -11,11 +11,29 @@ sidebar_position: 180
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
-You can scan your repositories and ingest scan results from [Fortify on Demand](https://www.microfocus.com/documentation/fortify-on-demand/). The following steps describe the workflow.
+You can scan your repositories and ingest scan results from [Fortify on Demand](https://www.microfocus.com/documentation/fortify-on-demand/). 
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow-repo.md';
+## Workflow descriptions
 
-<StoLegacyWorkflow />
+<details>
+<summary>Orchestration/extraction workflows</summary>
+
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+
 
 ## Custom Scan step settings for Fortify on Demand
 

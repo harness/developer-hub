@@ -10,11 +10,13 @@ sidebar_position: 350
 <br/>
 <br/>
 
-You can ingest configuration scan results from [ScoutSuite](https://github.com/nccgroup/ScoutSuite). The following steps describe the workflow. 
+You can ingest configuration scan results from [ScoutSuite](https://github.com/nccgroup/ScoutSuite). 
 
-import StoLegacyWorkflow  from './shared/custom-scan/_workflow.md';
+## Workflow description
 
-<StoLegacyWorkflow />
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
 
 
 ## Custom Scan step settings for ScoutSuite scans in STO

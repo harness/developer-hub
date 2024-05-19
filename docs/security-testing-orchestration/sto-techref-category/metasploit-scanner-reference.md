@@ -13,11 +13,25 @@ sidebar_position: 230
 
 You can scan your application instances and ingest results from [Metasploit Framework](https://docs.rapid7.com/metasploit/msf-overview/).
 
-To set up a Metasploit scan:
+## Workflow descriptions
 
-import StoLegacyWorkflow from './shared/custom-scan/_workflow.md';
+<details>
+<summary>Orchestration/extraction workflows</summary>
 
-<StoLegacyWorkflow />
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+
+<CustomScanWorkflowRepo />
+
+</details>
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
 
 ## Custom Scan step settings for Metasploit scans in STO
 

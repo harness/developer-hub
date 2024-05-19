@@ -9,7 +9,9 @@ sidebar_position: 170
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" /><br/>
 <br/>
 
-You can ingest repository scan results from [Fortify Static Code Analyzer](https://www.microfocus.com/documentation/fortify-static-code-analyzer-and-tools/). The following steps describe the workflow. 
+You can ingest repository scan results from [Fortify Static Code Analyzer](https://www.microfocus.com/documentation/fortify-static-code-analyzer-and-tools/). 
+
+## Workflow description
 
 import StoLegacyWorkflowIngestOnly  from './shared/custom-scan/_workflow-ingest-only.md';
 
