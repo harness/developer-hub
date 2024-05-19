@@ -10,7 +10,8 @@ These settings apply to Custom Scan steps when both of these conditions are true
 
 - [Container type](#container-type)
 - [Container domain](#container-domain)
-- [Local image settings](#local-image-settings)
+- [Container project](#container-project)
+- [Container tag](#container-tag)
 - [Container access Id](#container-access-id)
 - [Container access token](#container-access-token)
 - [AWS region](#aws-region)
@@ -26,16 +27,24 @@ container_type
 
 ##### Value
 
-One of the following:
+The registry type where the image is stored. Specify one of the following:
+
+Scan a local image built and stored within the context of the current stage (via `/var/run/docker.sock` registered as a stage level volume mount).
 ```
 local_image
 ```
+
+A registry that uses the Docker Registry v2 API such as [Docker Hub](https://docs.docker.com/registry/spec/api/), [Google Container Registry](https://cloud.google.com/container-registry), or [Google Artifact Registry](https://cloud.google.com/artifact-registry).
 ```
 docker_v2
 ```
+
+[JFrog Docker Registry](https://jfrog.com/container-registry/).
 ```
 jfrog_artifactory
 ```
+
+[Amazon Container Registry](https://aws.amazon.com/ecr/).
 ```
 aws_ecr
 ```
@@ -64,9 +73,29 @@ us-east1-docker.pkg.dev
 us.gcr.io
 ```
 
-#### Local image settings
+#### Container project
 
-No further settings required.
+##### Key
+```
+container_project
+```
+
+##### Value
+
+The image name. For non-local images, you also need to specify the image repository. Example: `jsmith/myalphaservice`
+
+
+#### Container tag
+
+##### Key
+```
+container_tag
+```
+
+##### Value
+
+The image tag. Examples: `latest`, `1.2.3`
+
 
 #### Container access Id
 
