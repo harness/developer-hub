@@ -88,7 +88,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 
 
-### Container image
+### Artifacts
 
 #### Type  (_orchestration_)
 

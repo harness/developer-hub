@@ -346,7 +346,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 <StoSettingTargetWorkspace  />
 
-### Container image
+### Artifacts
 
 
 #### Type

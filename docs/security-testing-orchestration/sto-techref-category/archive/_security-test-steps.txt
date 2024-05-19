@@ -83,7 +83,7 @@ To configure an Anchore Enterprise scan in a Security step, add the following to
 	You can use this field to run the [Anchore Enterprise CLI](https://docs.anchore.com/3.0/docs/using/cli_usage/images/) with specific command-line arguments. For example, add `tool_args` : `--force` to reset the image analysis status to `not_analyzed`.  
 
 
-### Container image (required)
+### Artifacts (required)
 
 * `container_type`
 	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`
@@ -669,7 +669,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-#### Container image scan settings
+#### Artifacts scan settings
 
 import StoLegacyContainer  from './shared/custom-scan/_container.md';
 
@@ -1004,7 +1004,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-#### Container image scan settings
+#### Artifacts scan settings
 
 
 import StoLegacyContainer  from './shared/custom-scan/_container.md';

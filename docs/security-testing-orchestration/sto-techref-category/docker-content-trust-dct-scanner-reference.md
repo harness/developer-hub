@@ -133,7 +133,7 @@ import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md'
 
 -->
 
-### Container image
+### Artifacts
 
 
 import StoLegacyContainer  from './shared/custom-scan/_container.md';
