@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
 <!-- action -->
 
 
-1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
+1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security stage where you want to run the action.
 
 2. Click **Add Step** and then add a **GitHub Action plugin** step. 
 
@@ -207,7 +207,7 @@ pipeline:
 
 <!-- plugin -->
 
-1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
+1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security stage where you want to run the action.
 
 2. Click **Add Step** and then add a **Plugin** step. 
 

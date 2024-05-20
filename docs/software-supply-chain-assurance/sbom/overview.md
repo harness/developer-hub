@@ -54,4 +54,4 @@ While Harness is capable of generating SBOMs for both Container Images and Code 
 ## Next steps
 
 * [Generate](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/generate-sbom) or [Ingest](https://developer.harness.io/docs/software-supply-chain-assurance/sbom/ingest-sbom-data) SBOM
-* [Enforce SSCA Policies](https://developer.harness.io/docs/software-supply-chain-assurance/ssca-policies/overview) on the SBOM
+* [Enforce SBOM Policies](https://developer.harness.io/docs/software-supply-chain-assurance/sbom-policies/overview) on the SBOM

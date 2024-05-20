@@ -1,7 +1,7 @@
 <!-- details>
 <summary>Instance scan settings</summary -->
 
-The following settings apply to Security steps where the `scan_type` is `instance`.
+The following settings apply to Custom Scan steps where the `scan_type` is `instance`.
 
 * `instance_domain`
 * `instance_path`

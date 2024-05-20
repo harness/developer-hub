@@ -2204,6 +2204,13 @@ Yes. [Harness CI offers many options for mobile app development.](https://develo
 
 Yes, you can use the [Harness Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
+#### What does this error "java. lang.IllegalStateException: Failed to execute ApplicationRunner" mean?
+
+The error "java.lang.IllegalStateException: Failed to execute ApplicationRunner" indicates that there was an issue while trying to execute an ApplicationRunner in a Java application. This could be due to various reasons such as missing dependencies, incorrect configuration, or runtime issues. Examining the stack trace and reviewing the application code further may be necessary to pinpoint the exact cause of the error.
+
+#### How to run background step in debug mode in Harness?
+To enable debug logging, set the environment variable DEBUG=true. For more information on configuration, go to [Relay proxy configuration reference](https://developer.harness.io/docs/feature-flags/relay-proxy/configuration).
+
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
 
 <!-- If a question applies to multiple categories, choose the one most relevant to the question. For example, "How do I run Windows builds on a K8s cluster build infra?" is most relevant to the "Windows builds" category. Although this question involves build infrastructure and kubernetes clusters, it specifically mentions Windows builds. If a user needs help running Windows builds, they will scan for "Windows" as a keyword before K8s (since K8s is broader than just Windows) -->

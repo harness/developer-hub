@@ -1,7 +1,7 @@
 ---
-title: Tagging Management
+title: Manage tags for feature flags
 description: This topic focuses on tagging and its uses within Feature Flags.
-sidebar_position: 10
+sidebar_position: 45
 ---
 
 # Tagging Management Overview

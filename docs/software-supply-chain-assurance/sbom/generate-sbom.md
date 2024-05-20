@@ -231,4 +231,4 @@ SBOMs for both Containers and Code Repositories are accessible in the [Artifacts
 
 ## Next steps
 
-After generating an SBOM, you can apply [SBOM Policy Enforcement](../ssca-policies/overview.md) to achieve open source governance.
+After generating an SBOM, you can apply [SBOM Policy Enforcement](../sbom-policies/overview.md) to achieve open source governance.
