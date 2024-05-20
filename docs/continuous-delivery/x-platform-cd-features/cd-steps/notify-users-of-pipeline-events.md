@@ -248,7 +248,7 @@ notificationRules:
 Please note that you should be able to include custom headers while creating custom webhook notifications channel(s) as well as while updating the existing ones.
 :::
 
-For an example, if you need to send slack notification when pipeline completes as well as when it is successful it will look something like:-
+For example, a Slack notification when the pipeline completes as well as when it is successful looks something like this:
 
 ![](./static/pipeline_notification_end_complete.png)
 
