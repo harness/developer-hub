@@ -430,6 +430,16 @@ Yes, Harness provides support for Okta and Azure OneLogin out of the box, but yo
 
 Perform a sync within Okta to resolve the user limit error during Harness provisioning.
 
+### Why do I get an error for my Jit-provisioned user when I try to update via SCIM?
+
+If you're utilizing SCIM, Harness recommends that you provision your users exclusively through SCIM rather than Just-In-Time (JIT) provisioning. This is because when a user is initially provisioned, their fields are updated according to the method of initial provisioning.
+
+To resolve the issue, remove and then re-add the user, ensuring that they are now managed by SCIM.
+
+### What could be the potential reasons for encountering errors when utilizing a Harness-created user group Single Sign-On (SSO) link, particularly when the identical group is pushed from SCIM?
+
+This is expected behavior because the user group is linked to an SSO group through group authorization, making it unmanageable via SCIM.
+
 ### How can I update SAML-connected groups with a new name via API?
 
 Set `samlSettings` to `null` in the API call to update SAML-connected groups with new names.
@@ -965,6 +975,23 @@ gRPC connections are not required for delegate version 23.12.81803 and later.
 ### Do we run Harness Delegate as root?
 
 Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.
+
+
+### Is the minimal delegate free of critical vulnerabilities?
+
+Harness aims to minimize critical/high vulnerabilities within this image. Achieving complete mitigation isn't always possible due to the continual discovery of vulnerabilities in third-party libraries/tools without immediate remediation.
+
+### Where can we see validate the Harness minimal delegate vulnerabilities been addressed?
+
+You can go to the [Harness Trust Center](https://trust.harness.io/). Harness publishes advisories for the latest delegate image.
+
+### How do I delete a Kubernetes delegate?
+
+To delete the delegate from your Kubernetes cluster, you delete the Deployment object that represents its deployment.
+
+```
+kubectl delete deployment -n harness-delegate-ng <YOUR_DEPLOYMENT_NAME>
+```
 
 ### What is delegate allowlist verification?
 
@@ -3237,24 +3264,4 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
 
 #### Does Harness NextGen Community Edition support LDAP login?
 No, Harness NextGen Community Edition does not support LDAP login.
-
-#### Is the minimal delegate free from critical vulnerabilities?
-The expectation that every minimal image will be free from vulnerabilities is wrong, many times the library upgrades are not simple and many times the fix for these libraries are not even released.
-
-#### Where can we see validate the Harness minimal delegate vulnerabilities been addressed?
-You can check our trust store : https://trust.harness.io/
-For the latest delegate, we keep updated advisory on the above link. 
-
-#### Deletion of a kubernetes delegate.
-As our delegate is of deployment type, to delete the delegate from your Kubernetes cluster, you delete the Deployment object that represents its deployment.
-kubectl delete deployment -n harness-delegate-ng <Deployment name>
-
-#### Harness Created User Group SSO linked is giving error when the same group is pushed from SCIM.
-This is expected as the user group is linked to SSO group usinbg group authorisation hence it can't be managed by SCIM.
-
-#### Jit provisioned user is giving error when trying to be updated using SCIM.
-In case you are using SCIM then you should privision your users using SCIM and not JIT. As when the user is first provisioned it updated the filed for the user as how it was initially provisioned. 
-To overcome the issue , juts removed and re-add the user and it will now to managed by SCIM. 
-
-
 
