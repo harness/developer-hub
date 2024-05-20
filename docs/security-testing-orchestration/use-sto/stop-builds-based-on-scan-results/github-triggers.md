@@ -20,7 +20,7 @@ You can create GitHub event triggers to support a variety of STO workflows and u
 The following steps outline the basic workflow:
 
 
-1. [Create a trigger](#create-the-trigger) for your Harness pipeline.
+1. [Create a trigger](#create-the-harness-trigger) for your Harness pipeline.
 
    This should automatically register an outbound webhook in your Git repo.
 
@@ -28,7 +28,7 @@ The following steps outline the basic workflow:
 
 3. [Create a pull request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger.
 
-4. [Add a branch protection rule](#add-a-branch-protection-rule) to ensure that the pull request cannot be merged if the Harness pipeline fails.
+4. [Add a branch protection rule](#add-a-branch-protection-rule-for-the-git-repo) to ensure that the pull request cannot be merged if the Harness pipeline fails.
 
 
 ## Before you begin

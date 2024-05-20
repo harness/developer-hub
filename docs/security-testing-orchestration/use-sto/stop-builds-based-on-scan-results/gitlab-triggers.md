@@ -18,7 +18,7 @@ You can create GitLab event triggers to support a variety of STO workflows and u
 The following steps outline the basic workflow:
 
 
-1. [Create a trigger](#create-the-trigger) for your Harness pipeline.
+1. [Create a trigger](#create-the-harness-trigger) for your Harness pipeline.
 
    This should automatically register an outbound webhook in your Git repo.
 
@@ -42,7 +42,7 @@ These workflows require the following:
 The following sections describe two triggers that can be very useful in the context of STO scanning:
 
 - [Trigger on a changed file](#trigger-on-a-changed-file)
-- [Trigger on a review comment](#trigger-on-a-pr-review-comment)
+- [Trigger on a review comment](#trigger-on-a-merge-request-comment)
 
 ### Trigger on a changed file
 
@@ -67,7 +67,7 @@ This type of trigger supports uses cases such as:
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [Connector](/docs/category/code-repo-connectors/) to your GitLab account
+1. [Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference) to your GitLab account
 
 2. **Repository name**
 
@@ -170,25 +170,25 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
 
-2. Set up the trigger as follows. 
+2. Set up the trigger as follows.
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [Connector](/docs/category/code-repo-connectors/) to your Git service
+1. [Harness Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference) to your Gitlab account
 
 2. **Repository name**
 
 3. [Event](/docs/platform/triggers/triggers-reference#event-and-actions) = **Merge Request**
 
-4. [Actions](/docs/platform/triggers/triggers-reference#event-and-actions), such as **Open**, **Reopen**, and **Edit**, to trigger the scan. You can also select **All actions** to allow reviewers to trigger a scan at any time. 
+4. [Actions](/docs/platform/triggers/triggers-reference#event-and-actions), such as **Open**, **Reopen**, and **Edit**, to trigger the scan. You can also select **All actions** to allow reviewers to trigger a scan at any time.
 
 #### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
 
- The following conditions are the most relevant to this workflow. You can add other conditions as needed. Triggers are complex filters in which all conditions are AND-ed together. 
+ The following conditions are the most relevant to this workflow. You can add other conditions as needed. Triggers are complex filters in which all conditions are AND-ed together.
 
-   1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
+   1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
 
-   2. Enter the following [JEXL condition](/docs/platform/triggers/triggers-reference#jexl-conditions) with the keyword to trigger a new scan: 
+   2. Enter the following [JEXL condition](/docs/platform/triggers/triggers-reference#jexl-conditions) with the keyword to trigger a new scan:
 
       `<+trigger.payload.object_attributes.description>.contains("RERUN_STO_SCAN")`
 
@@ -293,7 +293,7 @@ Once you add a trigger to your pipeline, your Git service provider should create
         - Go to the root branch you specified in the trigger.
         - Update the file you specified in the trigger. Then create a merge request in a new branch.
 
-    - To verify the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, create a merge request and then add a review comment with the keyword you specified.
+    - To verify the [review-comment trigger](#trigger-on-a-merge-request-comment) described above, create a merge request and then add a review comment with the keyword you specified.
 
         - Go to the root branch you specified in the trigger.
         - Create a merge request in a new branch.
@@ -336,7 +336,7 @@ To verify the branch protection rule, you must ensure that your STO pipeline fai
 
    - For the [changed-file trigger](#trigger-on-a-changed-file) described above, make and push a change. Then create a merge request.
 
-   - For the [review-comment trigger](#trigger-on-a-pr-review-comment) described above, add a review comment with the keyword you specified.
+   - For the [review-comment trigger](#trigger-on-a-merge-request-comment) described above, add a review comment with the keyword you specified.
 
 Now, merging is blocked if the Harness pipeline fails.
 
