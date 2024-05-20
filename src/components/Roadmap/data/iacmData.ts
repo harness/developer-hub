@@ -107,7 +107,7 @@ export const IacmData: Horizon = {
       {
         tag: [],
         title: "Cost estimation",
-        description: "Using Infracost, IaCM provides cost estimation on resource changes, allowing users to understand how cloud bill will be changed, based on resource changes",
+        description: "By utilizing Infracost, IaCM offers cost predictions for resource modifications, enabling users to foresee adjustments to their cloud expenses ahead of time.",
       },
       {
         tag: [{ value: "Security" }],
