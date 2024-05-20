@@ -71,17 +71,17 @@ Each pipeline execution displays the following information.
 
 ## Filter execution
 
-You can filter executions using the filters in `Execution History` or in `Execution` tab.
+You can filter pipeline executions using the filters in `Execution History` or in `Execution` tab.
 
 ![](./static/execution_filter_1.png)
 
-You can filter execution based on **Status**, **Execution Mode**, **Trigger Type**, **Trigger Identifier**, **Timeframe**, **Deployment Type**, **Services**, **Environments**, **Artifacts** or **Build Type**.
+You can filter pipeline execution based on **Status**, **Execution Mode**, **Trigger Type**, **Trigger Identifier**, **Timeframe**, **Deployment Type**, **Services**, **Environments**, **Artifacts** or **Build Type**.
 
 ![](./static/execution_filter_2.png)
 
 ### Status
 
-Filter execution based on Status of Pipeline Execution.
+Filter pipeline execution based on Status of Pipeline Execution.
 
 It includes:
 
@@ -122,7 +122,7 @@ Filter pipeline execution based on Execution mode:-
 
 ### Trigger Type
 
-Filter execution based on type of trigger.
+Filter pipeline execution based on type of trigger.
 
 It includes:
 
@@ -145,7 +145,7 @@ Filter pipeline execution based on TimeFrame.
 
 ### Deployment Type
 
-Filter execution based on Deployment Type that was used in the pipeline.
+Filter pipeline execution based on Deployment Type that was used in the pipeline.
 
 It includes:
 
@@ -170,15 +170,15 @@ You can filter the pipeline execution based on deployed services; select your se
 
 ### Environments
 
-You can filter execution based on the environment where you have deployed your service.
+You can filter pipeline execution based on the environment where you have deployed your service.
 
 ### Artifacts
 
-Filter execution based on Artifacts.
+Filter pipeline execution based on Artifacts.
 
 ### Build Type
 
-Filter execution based on Build Type.
+Filter pipeline execution based on Build Type.
 
 It includes:
 
