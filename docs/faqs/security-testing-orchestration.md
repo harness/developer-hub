@@ -197,7 +197,7 @@ To get started, go to [Get started with STO](/docs/category/get-started-with-sto
 
 ## Why don't I see results from specific scans in the Security Testing Dashboard?
 
-The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined.
+The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined.
 
 ## How does STO ensure High Availability and data protection for my scan data and vulnerability information?
 

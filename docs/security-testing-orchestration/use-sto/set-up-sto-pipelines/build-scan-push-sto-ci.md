@@ -209,7 +209,7 @@ At this point, you might want to run a scan and view the detected issues.
       - Target name : **dvpwa** (= the repo name)
       - Target variant : **master** (= the branch name)
 
-3. Run the pipeline. When the execution finishes, select [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) to view the scan results.
+3. Run the pipeline. When the execution finishes, select [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) to view the scan results.
 
 ## Build and push a test image
 
@@ -369,7 +369,7 @@ This is a good time to run your pipeline and verify that it can scan the image.
 
    :::
 
-2. Click **Run Pipeline** and view the results in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+2. Click **Run Pipeline** and view the results in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 ## Build and push the prod image
 

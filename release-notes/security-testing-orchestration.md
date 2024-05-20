@@ -297,7 +297,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 #### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
 
@@ -353,7 +353,7 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
   - Previous behavior:
   
-    When [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
+    When [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
 
   - New behavior: 
   

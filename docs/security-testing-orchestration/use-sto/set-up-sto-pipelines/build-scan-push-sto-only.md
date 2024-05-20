@@ -330,7 +330,7 @@ This is a good time to run your pipeline and verify that it can scan the repo an
    - `GITHUB_REPO` = **dvpwa**
    - `GITHUB_BRANCH`= **master**
 
-2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 ## Add the image build step
 
@@ -534,7 +534,7 @@ This is a good time to run your pipeline and verify that it can scan the repo an
 
    :::
 
-2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results, for both the repo and the image, in [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+2. Click **Run Pipeline** and wait for the execution to finish. You can then view your scan results, for both the repo and the image, in [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 ## Add the image push step
 

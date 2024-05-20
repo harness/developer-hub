@@ -63,7 +63,7 @@ Do the following:
 4. Select **Semgrep** and then **Add scanner**.
 5. Save your pipeline and then click **Run**. 
 
-   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+   The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 
 </details>
@@ -103,7 +103,7 @@ Do the following:
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 
 </details>
@@ -150,7 +150,7 @@ Add a Semgrep step to the stage and set it up as follows.
 
 Save your pipeline and then select **Run**. 
 
-The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results).
+The pipeline scans your code repository and then shows the results in [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 
 </details>
