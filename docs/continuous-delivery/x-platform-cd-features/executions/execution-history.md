@@ -69,3 +69,119 @@ Each pipeline execution displays the following information.
     - [Compare Pipeline](/docs/platform/pipelines/executions-and-logs/view-and-compare-pipeline-executions/#compare-executions)
     - [Download Logs](/docs/platform/pipelines/executions-and-logs/download-logs)
 
+## Filter execution
+
+You can filter executions using the filters in `Execution History` or in `Execution` tab.
+
+![](./static/execution_filter_1.png)
+
+You can filter execution based on **Status**, **Execution Mode**, **Trigger Type**, **Trigger Identifier**, **Timeframe**, **Deployment Type**, **Services**, **Environments**, **Artifacts** or **Build Type**.
+
+![](./static/execution_filter_2.png)
+
+### Status
+
+Filter execution based on Status of Pipeline Execution.
+
+It includes:-
+
+- Aborted
+- Aborted By Freeze
+- Expired
+- Failed
+- Not Started 
+- Paused
+- Queueud
+- Running
+- Success
+- Suspended
+- Resource Waiting
+- Async Waiting
+- Skipped
+- Task Waiting
+- Timed Waiting
+- Errored
+- Ignore Failure
+- Discontinuing
+- Approval Rejected
+- Intervention Waiting 
+- Approval Waiting
+- Pausing 
+- Input Waiting
+- Wait Step Running
+- Queued License Limit Reached
+- Queued Execution Concurrency Reached
+
+### Execution Mode
+
+Filter pipeline execution based on Execution mode:-
+
+- **Default**: It shows the latest executions(of any retry) and normal execution(without retries) and rollbacks.
+- **All**: It lists the old retries as well for the retried executions along with the default ones.
+- **Rollback**: It only lists those executions which were executed in the rollback mode.
+
+### Trigger Type
+
+Filter execution based on type of trigger.
+
+It includes:-
+
+- MANUAL
+- WEBHOOK
+- WEBHOOK_CUSTOM
+- SCHEDULE_CRON
+- ARTIFACT
+- MANIFEST
+
+### Trigger Identifer
+
+You can mention your trigger identifer to filter pipeline execution triggered by that Trigger.
+
+### Timeframe
+
+Filter pipeline execution based on TimeFrame.
+
+![](./static/execution_filter_timeframe.png)
+
+### Deployment Type
+
+Filter execution based on Deployment Type that was used in the pipeline.
+
+It includes:-
+
+- Kubernetes
+- Native Helm
+- SSH
+- WinRM
+- Serverless Lambda
+- Azure Web Apps
+- Deployment Templates 
+- Amazon ECS
+- Spot Elasticgroup
+- Tanzu Application Service
+- AWS Lambda
+- AWS Sam
+
+### Services
+
+You can filter the pipeline execution based on deployed services; select your services from the dropdown menu.
+
+![](./static/execution_filter_service.png)
+
+### Environments
+
+You can filter execution based on the environment where you have deployed your service.
+
+### Artifacts
+
+Filter execution based on Artifacts.
+
+### Build Type
+
+Filter executio based on Build Type.
+
+It includes:
+
+- Pull Request/ Merge Request
+- Branch
+- Tag
