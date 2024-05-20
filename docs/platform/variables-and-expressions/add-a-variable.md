@@ -13,7 +13,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In addition to Harness' many [built-in variables](./harness-variables), you can define custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
+In addition to Harness' many [built-in variables](./harness-variables.md), you can define custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
 
 Account, org, and project variables store values that you can share and use across multiple pipelines or in multiple projects.
 
