@@ -211,6 +211,10 @@ If any required settings don't have a value, you must manually input a value bef
 
 You can use the [expression](/docs/platform/variables-and-expressions/harness-variables.md) `<+inputSet>` to get the input set values for a pipeline execution as JSON.
 
+You need to enclose `<+inputSet>` between single qoutes to parse it correctly.
+
+For example: `echo '<+inputSet>' | jq -s`
+
 Here's an example of a resolved `<+inputSet>` expression:
 
 ```
