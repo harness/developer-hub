@@ -83,7 +83,7 @@ You can filter execution based on **Status**, **Execution Mode**, **Trigger Type
 
 Filter execution based on Status of Pipeline Execution.
 
-It includes:-
+It includes:
 
 - Aborted
 - Aborted By Freeze
@@ -124,7 +124,7 @@ Filter pipeline execution based on Execution mode:-
 
 Filter execution based on type of trigger.
 
-It includes:-
+It includes:
 
 - MANUAL
 - WEBHOOK
@@ -147,7 +147,7 @@ Filter pipeline execution based on TimeFrame.
 
 Filter execution based on Deployment Type that was used in the pipeline.
 
-It includes:-
+It includes:
 
 - Kubernetes
 - Native Helm
