@@ -55,5 +55,9 @@ Yes, we support health source like  `New Relic` , `ElasticSearch`, `Sumologic Me
 
 A groupName is an identifier used to logically group metrics. To add a groupName to a New Relic Query, add it in the `Map Metric(s) to Harness Services` section of the Health Source.
 
+### Is it anticipated that the Harness pipeline will initiate the verification of 'access' permissions to an environment at the outset of an execution, as opposed to conducting such verification progressively as the pipeline advances?
+
+Yes, You can deploy to selective stages.
+
 
 
