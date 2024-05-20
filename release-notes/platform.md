@@ -83,9 +83,9 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-Invalid user search results were returned when querying from page `2` or higher. We have updated the search functionality to reset the `pageIndex` to `0` after a search query is added or updated, ensuring accurate search results even when the `pageIndex` is `2` or higher. (PL-50907, ZD-62990)
+- Invalid user search results were returned when querying from page `2` or higher. Harness updated the search functionality to reset the `pageIndex` to `0` after adding or updating a search query, ensuring accurate search results even when the `pageIndex` is `2` or higher. (PL-50907, ZD-62990)
 
-Delegate registration was not failing for inactive accounts. We have added a check during delegate registration to verify account status. Delegates will now fail to register for accounts marked as DELETED or INACTIVE. This item requires Harness Delegate version 24.04.83000. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48082)
+- Delegate registration was not failing for inactive accounts. Harness added a check during delegate registration to verify account status. Delegates will now fail to register for accounts marked as `DELETED` or `INACTIVE`. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48082)
 
 ### Version 1.37.7<!--  May 14, 2024 -->
 
