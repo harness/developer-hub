@@ -71,7 +71,7 @@ Each pipeline execution displays the following information.
 
 ## Filter execution
 
-You can filter pipeline executions using the filters in `Execution History` or in `Execution` tab.
+You can filter pipeline executions using the filters in the **Execution History** or **Execution** tabs.
 
 ![](./static/execution_filter_1.png)
 
@@ -112,7 +112,7 @@ It includes:
 - Queued License Limit Reached
 - Queued Execution Concurrency Reached
 
-### Execution Mode
+### Execution mode
 
 Filter pipeline execution based on Execution mode:-
 
@@ -120,7 +120,7 @@ Filter pipeline execution based on Execution mode:-
 - **All**: It lists the old retries as well for the retried executions along with the default ones.
 - **Rollback**: It only lists those executions which were executed in the rollback mode.
 
-### Trigger Type
+### Trigger type
 
 Filter pipeline execution based on type of trigger.
 
@@ -133,19 +133,19 @@ It includes:
 - ARTIFACT
 - MANIFEST
 
-### Trigger Identifer
+### Trigger identifier
 
-You can mention your trigger identifer to filter pipeline execution triggered by that Trigger.
+You can mention trigger identifiers to filter pipeline execution triggered by a particular trigger.
 
 ### Timeframe
 
-Filter pipeline execution based on TimeFrame.
+Filter pipeline execution based on time.
 
 ![](./static/execution_filter_timeframe.png)
 
-### Deployment Type
+### Deployment type
 
-Filter pipeline execution based on Deployment Type that was used in the pipeline.
+Filter pipeline execution based on the deployment type used in the pipeline.
 
 It includes:
 
@@ -164,24 +164,24 @@ It includes:
 
 ### Services
 
-You can filter the pipeline execution based on deployed services; select your services from the dropdown menu.
+You can filter the pipeline execution based on deployed services. Select your services from the drop-down list.
 
 ![](./static/execution_filter_service.png)
 
 ### Environments
 
-You can filter pipeline execution based on the environment where you have deployed your service.
+You can filter pipeline execution based on the environment to which you have deployed your service.
 
 ### Artifacts
 
-Filter pipeline execution based on Artifacts.
+Filter pipeline execution based on artifacts.
 
-### Build Type
+### Build type
 
 Filter pipeline execution based on Build Type.
 
 It includes:
 
-- Pull Request/ Merge Request
+- Pull Request/Merge Request
 - Branch
 - Tag
