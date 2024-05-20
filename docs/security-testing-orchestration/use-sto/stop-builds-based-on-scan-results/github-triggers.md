@@ -19,36 +19,25 @@ You can create GitHub event triggers to support a variety of STO workflows and u
 
 The following steps outline the basic workflow:
 
-1. [Set up the failure criteria](#set-up-the-failure-criteria) for your STO pipeline.
 
 1. [Create a trigger](#create-the-trigger) for your Harness pipeline.
 
    This should automatically register an outbound webhook in your Git repo.
 
-2. [Create a pull request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger.
+2. [Set up the failure criteria](#set-up-the-failure-criteria) for your STO pipeline.
 
-3. [Add a branch protection rule](#add-a-branch-protection-rule) to ensure that the pull request cannot be merged if the Harness pipeline fails.
+3. [Create a pull request](#test-the-outbound-webhook-and-trigger) to test the webhook and trigger.
+
+4. [Add a branch protection rule](#add-a-branch-protection-rule) to ensure that the pull request cannot be merged if the Harness pipeline fails.
 
 
 ## Before you begin
 
 These workflows require the following:
 
-- A [**Harness connector**](/docs/category/code-repo-connectors/) to your GitHub account.
-- A Harness pipeline with a code-repository scan step such as Semgrep.
-- The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan.
-
-## Set up the failure criteria
-
-You can configure your Harness pipeline to fail if the scan finds vulnerabilities that match a specified filter. You can use one of two methods:
-
-- [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows)
-
-  Every STO scan step has a `fail_on_severity` setting that fails the step if a scan detects issues with the specified severity or higher. You can also create exemptions ("Ignore rules") for specific issues to override this behavior.
-
-- [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-
-   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference Id, CVE age, title, and number of occurrences.
+- A [Harness connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to your GitHub account
+- A Harness pipeline with a code-repository scan step such as Semgrep
+- The [Codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) in your pipeline should point to the Git repo that you want to scan
 
 
 ## Create the Harness trigger
@@ -81,13 +70,13 @@ This type of trigger supports uses cases such as:
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [**Connector**](/docs/category/code-repo-connectors/) to your GitHub account.
+1. [Connector](/docs/category/code-repo-connectors/) to your GitHub account
 
-2. **Repository name**.
+2. **Repository name**
 
-3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Pull Request**.
+3. [Event](/docs/platform/triggers/triggers-reference#event-and-actions) = **Pull Request**
 
-4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions) to trigger the pipeline 
+4. [Actions](/docs/platform/triggers/triggers-reference#event-and-actions) to trigger the pipeline 
 
 
 #### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
@@ -96,11 +85,11 @@ This type of trigger supports uses cases such as:
 
    1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines), such as `main`.
 
-   2. [**Changed Files**](/docs/platform/triggers/triggers-reference#branch-and-changed-files-conditions) The files that trigger the STO pipeline if they have updates in the PR. You can specify multiple files using the [operators](/docs/platform/triggers/triggers-reference#operators) **In**, **Not In**, and **Regex**.
+   2. [Changed Files](/docs/platform/triggers/triggers-reference#branch-and-changed-files-conditions) The files that trigger the STO pipeline if they have updates in the PR. You can specify multiple files using the [operators](/docs/platform/triggers/triggers-reference#operators) **In**, **Not In**, and **Regex**.
 
    Here's a simple example: trigger a build if a PR seeks to update a specific `pom.xml` in the `main` branch.
 
-   <DocImage path={require('./static/trigger-to-block-prs/changed-file-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" />
+   <DocImage path={require('./static/trigger-to-block-prs/changed-file-condition-example-simple.png')} width="50%" height="50%" title="Trigger a pipeline execution when a PR updates a specific file in the main branch" />
 
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input)
@@ -110,7 +99,7 @@ This type of trigger supports uses cases such as:
 
 #### Test the trigger
 
-After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
+After you create the trigger, proceed to [Set up the failure criteria](#set-up-the-failure-criteria).
 
 <details>
 
@@ -189,13 +178,13 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [**Connector**](/docs/category/code-repo-connectors/) to your Git service.
+1. [Connector](/docs/category/code-repo-connectors/) to your Git service.
 
-2. **Repository name**.
+2. **Repository name**
 
-3. [**Event**](/docs/platform/triggers/triggers-reference#event-and-actions) = **Issue Comment**.
+3. [Event](/docs/platform/triggers/triggers-reference#event-and-actions) = **Issue Comment**
 
-4. [**Actions**](/docs/platform/triggers/triggers-reference#event-and-actions), such as **Create** and **Edit**, to trigger the scan. You can also select **All actions** to allow reviewers to trigger a scan at any time. 
+4. [Actions](/docs/platform/triggers/triggers-reference#event-and-actions), such as **Create** and **Edit**, to trigger the scan. You can also select **All actions** to allow reviewers to trigger a scan at any time. 
 
 #### [Condition](/docs/platform/triggers/triggers-reference#conditions-settings)
 
@@ -203,11 +192,11 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
    1. **Target Branch** This should match your [target baseline](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines). 
 
-   2. Enter the following [**JEXL condition**](/docs/platform/triggers/triggers-reference#jexl-conditions) with the keyword to trigger a new scan: 
+   2. Enter the following [JEXL condition](/docs/platform/triggers/triggers-reference#jexl-conditions) with the keyword to trigger a new scan: 
 
       `<+trigger.payload.comment.body>.contains("RERUN_STO_SCAN")`
 
-      <DocImage path={require('./static/trigger-to-block-prs/review-comment-condition-example-simple.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+      <DocImage path={require('./static/trigger-to-block-prs/review-comment-condition-example-simple.png')} width="50%" height="50%" title="Trigger when a PR comment includes RERUN_STO_SCAN" /> 
 
 
 #### [Pipeline input](/docs/platform/triggers/triggering-pipelines#set-pipeline-input)
@@ -217,7 +206,7 @@ The pipeline input should be configured correctly, with **Build Type** set to **
 
 #### Test the trigger
 
-After you create the trigger, proceed to [Test the outbound webhook and trigger](#test-the-outbound-webhook-and-trigger).
+After you create the trigger, proceed to [Set up the failure criteria](#set-up-the-failure-criteria).
 
 <details>
 
@@ -272,6 +261,17 @@ trigger:
 
 <!-- /details -->
 
+## Set up the failure criteria
+
+You can configure your Harness pipeline to fail if the scan finds vulnerabilities that match a specified set of criteria. You can use one of two methods:
+
+- [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows)
+
+  Every STO scan step has a `fail_on_severity` setting that fails the step if a scan detects issues with the specified severity or higher. You can also create exemptions ("Ignore rules") for specific issues to override this behavior.
+
+- [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+
+   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference Id, CVE age, title, and number of occurrences.
 
 ## Test the outbound webhook and trigger
 
@@ -307,15 +307,15 @@ You should now see the following:
 
 1. In the GitHub repo, the request and response were successful.
 
-   <DocImage path={require('./static/trigger-to-block-prs/test-trigger-01-req-response-successful.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+   <DocImage path={require('./static/trigger-to-block-prs/test-trigger-01-req-response-successful.png')} width="50%" height="50%" title="GitHub: request and response were successful" /> 
 
 2. In the **Pipeline Executions** page of your Harness pipeline, the trigger starts a new execution.  
 
-    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-02-new-pipeline-execution.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-02-new-pipeline-execution.png')} width="50%" height="50%" title="Harness: new pipeline execution" /> 
 
 3. In the GitHub pull request, the pipeline execution appears as an automated check. 
 
-    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-03-check-running-in-pr.png')} width="50%" height="50%" title="Add shared path for scan results" /> 
+    <DocImage path={require('./static/trigger-to-block-prs/test-trigger-03-check-running-in-pr.png')} width="50%" height="50%" title="GitHub: automated check (Harness STO pipeline)" /> 
 
 If the trigger doesn't work as intended, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
 
@@ -348,7 +348,7 @@ If you're using a different SCM, go to the SCM documentation and search for `bra
 
 ### Test the protection rule
 
-Now that you've set up the rule, trigger another pipeline execution to verify that the rule stops the pull request.
+Now that you've set up the rule, trigger another Harness pipeline execution and fail it to verify that the rule stops the pull request.
 
 :::note
 
