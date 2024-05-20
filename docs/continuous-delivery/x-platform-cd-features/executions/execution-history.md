@@ -178,7 +178,7 @@ Filter execution based on Artifacts.
 
 ### Build Type
 
-Filter executio based on Build Type.
+Filter execution based on Build Type.
 
 It includes:
 
