@@ -69,6 +69,22 @@ The SLSA Verification step has the following fields:
 
 </TabItem>
 
+<TabItem value="gar" label="GAR" default>
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
+
+* **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
+
+* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+
+* **Image Name:** Enter the name of your image, example `repository-name/image`.
+
+* **Tag:** Enter the tag name of your image, example `latest`.
+
+<DocImage path={require('./static/slsa-ver-gar.png')} width="50%" height="50%" title="Click to view full size image" />
+
+</TabItem>
+
 <TabItem value="acr" label="ACR" default>
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Azure container registry where the artifact is stored.
