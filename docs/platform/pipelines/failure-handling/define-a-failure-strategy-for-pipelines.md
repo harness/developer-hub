@@ -6,7 +6,12 @@ redirect_from:
   - /docs/platform/pipelines/define-a-failure-strategy-for-pipelines
 ---
 
-Pipeline rollback is a type of [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps). A rollback pipeline failure strategy applies to all steps and stages in a pipeline.
+Pipeline rollback is a type of [failure strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps) that allows you to rollback entire pipeline on stage or step failure.
+
+:::info note
+Pipeline Rollback strategy applies to CD step and stages, STO stage and CI stage. Pipeline rollback failure strategy defined in STO and CI stage depends on rollback steps defined by the user.
+:::
+
 
 Currently, the Rollback Pipeline failure strategy is available for the following deployment types only:
 
