@@ -29,4 +29,4 @@ You can implement failure-handling mechanisms using [Harness Policy as Code](/do
 
 * Because the pipeline fails after (not during) the scan, you can view the test results in detail after the pipeline fails. You can include the scan results in automatic email or Slack notifications when a target violates specific policies.
 
-For an example workflow, go to [Stop pipelines automatically using governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+For an example workflow, go to [Stop pipelines automatically using governance policies](/docs/security-testing-orchestration/policies/create-opa-policies).

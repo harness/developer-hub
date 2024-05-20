@@ -1,13 +1,14 @@
 ---
-title: Use security test policies to stop STO pipelines automatically 
-description: Use security test policies to stop pipelines automatically.
-sidebar_label: Stop pipelines using OPA
-sidebar_position: 230
+title: Create OPA policies stop STO pipelines automatically 
+description: Create OPA policies to stop pipelines automatically.
+sidebar_label: Creating OPA policies
+sidebar_position: 10
+redirect_from: /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa
 ---
 
 You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and to stop your pipelines if a security test has any issues that violate those policies. 
 
-You can use Harness Policy as Code to enforce policies such as: 
+You can use Harness Policy as Code to enforce policies such as:
 
 - A security test cannot include any issues in a list of severities such as Critical or New Critical.
 
@@ -151,7 +152,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      2. Pipeline Events page  —  Select **Stage Failed** for the event that triggers the notification. Then select the stage that has the Policy step you just created.
 
-        ![](../static/notif-select-stage-failed-and-stage.png)
+        ![](./static/notif-select-stage-failed-and-stage.png)
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 

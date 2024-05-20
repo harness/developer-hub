@@ -421,7 +421,7 @@ You can specify a time limit when you request an exemption. The **Exemptions** t
 * **Feature flag:** `STO_DATA_OPA`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
+You can now write and apply OPA policies against all results from a scan. This greatly extends the range of policies that you can use to stop pipelines. This release also includes a set of [Security Tests policy samples](/docs/security-testing-orchestration/policies/create-opa-policies#security-tests-policy-samples) that you can use to write policies based on severity, issue title, reference ID, CVE age, and number of occurrences.
 
 #### Aqua Security integration
 

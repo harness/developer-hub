@@ -238,8 +238,8 @@ The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FA
 
 For more information, go to:
 
-- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)
+- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/policies/create-opa-policies#exclude-vulnerabilities-using-sto-output-variables)
 
 
 #### New feature: AIDA remediations for STO stage failures
@@ -313,7 +313,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 - A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
-For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/policies/create-opa-policies).
 
 #### New feature: Open Source Vulnerabilities (OSV) scanner integration
 
