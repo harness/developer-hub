@@ -2579,6 +2579,10 @@ Previously, when attempting to delete a resource in Harness, it would be soft-de
 
 For more information, go to [Force delete](/docs/platform/references/entity-deletion-reference/#force-delete).
 
+### What is ngSecretManager.obtain?
+
+`{ngSecretManager.obtain}` is an internal reference of a secret. If you encounter any errors, it's likely that the secret reference isn't functioning properly. Validate both the script and the secret reference being used.
+
 ### Why can't I reference the Custom Secret Manager template stored in Git?
 
 Harness doesn't currently support referencing the Custom Secret Manager template stored in Git. Create an inline template as a workaround.
@@ -3264,4 +3268,18 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
 
 #### Does Harness NextGen Community Edition support LDAP login?
 No, Harness NextGen Community Edition does not support LDAP login.
+
+### How can I download a JKS file that has been uploaded to Harness Secrets?
+
+You can utilize the following steps to work with the JKS file: decode the file secret, write it to a temporary file, and then access it through that temporary file.
+
+```
+echo <+secrets.getValue("filejksasbase64")> > /values.jksbase64
+cat /values.jksbase64
+cat /values.jksbase64 | base64 -d
+```
+
+### What is the minimum supported screen resolution?
+
+The minimum supported screen resolution is 1440x900.
 
