@@ -52,7 +52,7 @@ Every target needs a baseline to enable the full suite of STO features. Here's w
 
     - **Common to \<_target_>:\<_baseline_>** Issues also detected in the target baseline.
 
-  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
+  - While the **Security Tests** tab highlights downstream issues, the [STO Overview](/docs/security-testing-orchestration/dashboards/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard) only show baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
 
   - In short, baselines make it easy for developers to drill down into “shift-left” issues in the variants they're currently working on, and security personnel to monitor the security posture of production targets.
   

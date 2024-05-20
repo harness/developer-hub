@@ -9,7 +9,7 @@
 
     - **Common to \<_target_>:\<_baseline_>** Issues also found in the target baseline.
 
-  - The [STO Overview](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) show detected issues for targets with baselines defined. While individual scan results focus on variant issues, these views focus on baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
+  - The [STO Overview](/docs/security-testing-orchestration/dashboards/sto-overview) and [Security Testing Dashboard](/docs/security-testing-orchestration/dashboards/security-testing-dashboard) show detected issues for targets with baselines defined. While individual scan results focus on variant issues, these views focus on baseline issues. These views enable security personnel and other non-developers to monitor, investigate, and address issues in production-ready targets and view vulnerability trends over time.  
 
   - In short, baselines make it easy for developers to drill down into “shift-left” issues in downstream variants and security personnel to drill down into “shift-right” issues in  production targets. 
 
