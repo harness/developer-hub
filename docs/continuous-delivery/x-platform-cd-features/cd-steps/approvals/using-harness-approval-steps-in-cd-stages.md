@@ -53,6 +53,7 @@ For example, in a [Kubernetes blue green deployment](/docs/continuous-delivery/d
          approverInputs:
            - name: foo
              defaultValue: bar
+         isAutoRejectEnabled: false
    ```
 
 ## See also
