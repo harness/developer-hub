@@ -1,11 +1,11 @@
 {
-    "label": "Use STO",
-    "position": 100,
+    "label": "Use cases",
+    "position": 95,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use STO"
+        "title": "Use cases"
     }
 }
