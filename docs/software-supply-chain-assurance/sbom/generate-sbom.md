@@ -191,6 +191,35 @@ The **Artifact Source** allows you to specify the source of the artifact. Presen
 
 <DocImage path={require('./static/gcr-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
+</TabItem>
+
+<TabItem value="gar" label="GAR" default>
+
+* **Artifact Type:** Select **GAR**.
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google artifact registry where the artifact is stored.
+
+* **Image:** Enter the name of your image with tag for which you're generating the SBOM, example `repository-name/image:tag`.
+
+* **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
+
+* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+
+<details>
+<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
+
+<CosignKeyGeneration />
+
+</details>
+
+* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+
+
+<DocImage path={require('./static/gar-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
 
 </TabItem>
 
