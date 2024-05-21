@@ -43,10 +43,11 @@ The SSCA module supports these policy types:
 
 * **Deny list policies:** Define components, or combinations of component attributes, that are not allowed. If an artifact includes a component that is part of the deny list, the artifact's policy evaluation fails.
 * **Allow list policies:** Define components or combinations of component attributes that are allowed. If an artifact includes a component that *is not* part of the allow list, the artifact's policy evaluation fails.
+* **Deny list and Allow list policies:** Policies with with both deny list and allow list.
 
 ### Policy enforcement
 
-The SSCA module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Execution details** page in Harness. For more information, go to [view pipeline execution results](../ssca-view-results.md).
+The SSCA module enforces policies in the CI and CD stages of the software delivery lifecycle, ensuring that you build and deploy only compliant software artifacts. When an artifact moves through the CI and CD stages of your [pipelines](#pipelines), the SSCA module checks the artifact and its associated SBOM against your defined policies. You can review any detected policy violations on the **Supply Chain** tab in **Execution details** page of a pipeline. For more information, go to [view pipeline execution results](../ssca-view-results.md#view-policy-violations).
 
 <!-- Future: If any violations are detected, response actions are activated based on your policy configurations. -->
 
@@ -70,9 +71,12 @@ You can use remediation flows in the SSCA module to respond quickly and effectiv
 
 ## SLSA compliance
 
-With the Harness SSCA module, you can achieve SLSA Level 3 compliance by generating SLSA Provenance according to the [SLSA v1.0 spec](https://slsa.dev/).
+With the Harness SSCA module, you can achieve SLSA Build [Level 1](../slsa/overview.md#how-to-comply-with-slsa-level-1), [Level 2](../slsa/overview.md#how-to-comply-with-slsa-level-2), [Level 3](../slsa/overview.md#how-to-comply-with-slsa-level-3). Refer to [SLSA Overview](../slsa/overview.md)
 
-Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Execution details** page in Harness. For more information, go to [View pipeline execution results](../ssca-view-results.md).
+SLSA Provenance attestations are stored as `.att` files in the artifact repository along with the image. You can also find the SLSA Provenance on the **Supply Chain** tab in **Execution details** page of a pipeline.
+
+* [SLSA Generation and Attestation](../slsa/generate-slsa.md)
+* [SLSA Verification](../slsa/verify-slsa.md)
 
 ## Harness Platform components
 
@@ -80,7 +84,7 @@ The Harness SSCA module integrates with other Harness modules and uses component
 
 ### Pipelines
 
-You add SSCA steps to your CI (build) and CD (deploy) stages in your Harness pipelines.
+You add SSCA steps to your CI (build), CD (deploy) and STO (security) stages in your Harness pipelines.
 
 A pipeline is an end-to-end workflow that, for example, pulls code from a codebase, builds an artifact, runs tests or other actions on the artifact or code, and then uploads or deploys the artifact to storage or a container registry.
 

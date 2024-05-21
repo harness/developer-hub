@@ -55,6 +55,12 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 - Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
 
+### Version 24.05.82205 <!--  May 20, 2024 -->
+
+#### Hotfix
+
+- Delegates will now include memory resource statistics in their logs, providing valuable additional insight for troubleshooting memory-related issues. (PL-51027)
+
 ### Version 24.05.82903 <!--  May 16, 2024 -->
 
 #### Hotfix
