@@ -6,14 +6,17 @@ title: Linux JVM method exception
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
+Linux JVM method exception injects chaos into a Java application to invoke an exception.
 
-Linux JVM method exception injects chaos into a Java application to invoke an exception. The Linux JVM method exception uses the [Byteman utility](https://byteman.jboss.org/) which uses the Byteman agent to inject chaos faults into the Java application. It determines the performance and resilience of the application (or services) running on Linux JVMs.
+:::tip
+JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
+:::
 
-<!-- ![Linux JVM method exception](./static/images/linux-jvm-method-exception.png) -->
+![Linux JVM method exception](./static/images/linux-jvm-method-exception.png)
 
 ## Use cases
 JVM method exception :
-- Determines the resilience of an application on encountering exceptions.
+- Determines the performance and resilience of an application (or service) on encountering exceptions.
 - Determines how efficiently an application recovers the services.
 
 <Ossupport />
@@ -30,27 +33,27 @@ JVM method exception :
   <tr>
     <td> Class </td>
     <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
-    <td> For example, <code>org.framework.appName.system.WelcomeController</code>.</td>
+    <td> For example, <code>org.framework.appName.system.WelcomeController</code>. For more information, go to <a href= "#class-name">class name.</a></td>
   </tr>
   <tr>
     <td> Exception </td>
     <td> The exception you want to throw. </td>
-    <td> For example, <code>NullPointerException</code>. </td>
+    <td> For example, <code>NullPointerException</code>. For more information, go to <a href= "#exception">exception name.</a></td>
   </tr>
   <tr>
     <td> Method </td>
     <td> The method to which exception is applied </td>
-    <td> For example, <code>Welcome</code>. </td>
+    <td> For example, <code>Welcome</code>. For more information, go to <a href= "#method ">method name.</a></td>
   </tr>
   <tr>
     <td> Pid </td>
     <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
-    <td> For example, <code>6429</code>. </td>
+    <td> For example, <code>6429</code>. For more information, go to <a href= "#pid ">process Id.</a></td>
   </tr>
   <tr>
     <td> Startup command </td>
     <td> The path to the JAR file or the Java application. This is mutually exclusive with <b>Pid</b>.</td>
-    <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. </td>
+    <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href= "#startup-command">startup command.</a></td>
   </tr>
 </table>
 
@@ -64,12 +67,12 @@ JVM method exception :
   <tr>
     <td> Duration </td>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. </td>
+    <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
     <td> Ramp time </td>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
-    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>.</td>
+    <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
   <tr>
     <td> Port </td>
