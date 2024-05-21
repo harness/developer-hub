@@ -60,7 +60,6 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 #### Hotfix
 
 - Tanzu steps will resolve the PCF CLI plugins path by checking the `HOME` environment variable. (CDS-95794, ZD-61882)
->>>>>>> main
 
 ### Version 24.05.82205 <!--  May 20, 2024 -->
 
