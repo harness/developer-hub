@@ -1,6 +1,6 @@
 ---
 title: "Scan a codebase using Semgrep"
-description: Scan a codebase using Semgrep
+description: Scan a codebase with Semgrep
 sidebar_position: 10
 redirect_from:
   - /tutorials/security-tests/sast-scan-semgrep
