@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-16T10:00
+date: 2024-05-20T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 :::
 
 ## May 2024
+
+### Version 24.05.82205 <!--  May 20, 2024 -->
+
+#### Hotfix
+
+- Delegates will now include memory resource statistics in their logs, providing valuable additional insight for troubleshooting memory-related issues. (PL-51027)
 
 ### Version 24.05.82903 <!--  May 16, 2024 -->
 

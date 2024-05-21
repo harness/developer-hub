@@ -5,71 +5,194 @@ sidebar_label: Jfrog Xray scanner reference
 sidebar_position: 420
 ---
 
-You can ingest scan results from JFrog Xray, a software composition analyis (SCA) solution that integrates with Artifactory and identifies vulnerabilities in open-source libraries and packages used in your code.
+<DocsTag   text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
 
-<!-- 
-
-RP INCLUDE FIRST INTRO SENTENCE
-https://jfrog.com/help/r/get-started-with-the-jfrog-platform/jfrog-xray
-
--->
-
-The standard workflow is to create a CI Build or Security Tests stage to your pipeline, add a Security step, and then use `setting:value` pairs to configure the step as specified below.
+You can ingest scan results for your container images from [JFrog Xray](https://jfrog.com/help/r/jfrog-security-documentation).  
 
 
+## Workflow descriptions
 
-## Important notes for running Xray scans in STO
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
 
-- Harness STO supports `ingestionOnly` scans with Jfrog Xray. `orchestrationOnly` and `dataLoad` scans are not supported. 
-
-- For information about running Xray scans with custom SSL certificates, go to [Authenticating with RSA Keys](https://jfrog.com/help/r/jfrog-cli/authenticating-with-rsa-keys) in the JFrog documentation.
-
-- If you need to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. 
-
-  You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-### For more information
+<CustomScanWorkflowIngest />
 
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+
+#### Required settings
+
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+- [Target and variant](#target-and-variant)
+- [Ingestion file](#ingestion-file)
+- [Fail on severity](#fail-on-severity)
+
+<details>
+
+<summary> YAML step example </summary>
+
+``` yaml
+- step:
+    type: Security
+    name: custom_scan_xray
+    identifier: custom_scan_xray
+    spec:
+      privileged: true
+      settings:
+        policy_type: ingestionOnly
+        scan_type: containerImage
+        product_name: xray
+        product_config_name: default
+        target_name: YOUR_REPO/YOUR_IMAGE
+        target_variant: YOUR_TAG
+        ingestion_file: /shared/scan_results/xray2.json
+```
+
+</details>
 
 
-<StoMoreInfo />
+## Custom Scan step settings for JFrog XRay
 
+### Scanner settings 
 
-## Security step settings for Xray scans in STO
+These settings  are required. 
 
-You can add a Security step to a Security Tests or CI Build stage and then configure it as described below.
+#### Product name
+
+##### Key
+```
+product_name
+```
+
+##### Value
+```
+xray
+```
+
+#### Scan type
+
+##### Key
+```
+scan_type
+```
+##### Value
+```
+containerImage
+```
+
+#### Policy type
+
+##### Key
+```
+policy_type
+```
+##### Value
+```
+ingestionOnly
+```
+
+#### Product config
+
+##### Key
+```
+product_config_name
+```
+##### Value
+```
+default
+```
 
 ### Target and variant
 
+import CustomScanTargetVariant from './shared/custom-scan/_target-variant.md';
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-### Jfrog Xray settings
-
-* `product_name` = `xray`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `containerImage`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `ingestionOnly`
-* `product_config_name` = `default`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
+<CustomScanTargetVariant />
 
 ### Ingestion file
 
+import CustomScanIngest from './shared/custom-scan/_ingestion-file.md';
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+<CustomScanIngest />
+
+### Fail on severity
+
+import CustomScanFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+
+<CustomScanFailOnSeverity />
 
 
-<StoLegacyIngest />
+## YAML pipeline example
 
-### Fail on Severity
+The following pipeline example shows a simple ingestion workflow. The Run step downloads a results file to `/shared/scan_results/xray2.json`. The Custom Scan step then ingests the file.
 
+For information about running scans using XRay, go to the JFrog documentation.  
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+```yaml
 
+pipeline:
+  name: xray_ingest_example
+  identifier: xray_ingest_example
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: stoplugins
+        build: <+input>
+  stages:
+    - stage:
+        name: xray_scan_stage
+        identifier: xray_scan_stage
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            paths: []
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: pull_from_s3
+                  identifier: pull_from_s3
+                  spec:
+                    connectorRef: YOUR_IMAGE_REGISTRY_CONNECTOR_ID
+                    image: amazon/aws-cli
+                    shell: Sh
+                    command: aws s3api get-object --bucket my-xray-scan-results --key YOUR_RESULTS_FILE /shared/scan_results/YOUR_RESULTS_FILE
+                    envVariables:
+                      AWS_ACCESS_KEY_ID: <+secrets.getValue("YOUR_AWS_ACCESS_KEY")>
+                      AWS_SECRET_ACCESS_KEY: <+secrets.getValue("YOUR_SECRET_ACCESS_KEY")>
+                      AWS_DEFAULT_REGION: us-east-1
+                  when:
+                    stageStatus: Success
+              - step:
+                  type: Security
+                  name: custom_scan_xray
+                  identifier: custom_scan_xray
+                  spec:
+                    privileged: true
+                    settings:
+                      policy_type: ingestionOnly
+                      scan_type: containerImage
+                      product_name: xray
+                      product_config_name: default
+                      target_name: YOUR_REPO/YOUR_IMAGE
+                      target_variant: YOUR_TAG
+                      ingestion_file: /shared/scan_results/YOUR_RESULTS_FILE
+          sharedPaths:
+            - /shared/scan_results/
 
-<StoSettingFailOnSeverity />
+```

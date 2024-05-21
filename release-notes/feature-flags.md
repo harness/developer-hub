@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-16T16:19:25
+date: 2024-05-17T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 16, 2024
+#### Last updated: May 17, 2024
 
 ## May 2024
 
@@ -35,7 +35,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 0.1.22
 
- -  Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
+:::info Version 0.1.22 Retracted
+This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
+:::
+
+ - Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
  - Upgraded the Go SDK version in analytics. 
 
  ### Python SDK
@@ -55,6 +59,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
  - We've reduced the ES (ECMAScript) target to 2018. (FFM-11353)
  - The Javascript SDK has also been updated. 
+
+### Ruby SDK
+
+#### Version 1.3.0
+
+**New features and enhancements**:
+ - Target v2: Adding SDK support for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11241)
+ - Adding `rules-v2` query parameter to optimise the rules that the FF backend sends for `AND/OR` rules. Please note that this feature is not generally available yet. (FFM-11365)
+
+**Fixed issues**:
+ - If the metrics buffer size fills, it no longer flushes and sends all metrics to the FF service, which could affect evaluation performance.  Instead, it logs a warning that the buffer is full and does not process anymore metrics for that interval. (FFM-11211)
+ - Optimizes the payloads sent by the metrics service. Previously, there would be an individual payload entry based on `flag + variation served + target`.  Now, the entry is based on `flag + variation`.  This drastically reduces payload size for similar evaluations served for targets. The SDK continues to register targets correctly as before. 
+ - Fixes an issue where targets used in evaluations across metrics intervals would still be included in payloads. Now, only unique targets are included in payloads.
 
 ## April 2024
 
@@ -76,7 +93,11 @@ Security Updates:
 
 ### Golang SDK
 
-#### Version 0.1.21
+#### Version 0.1.21 - Retracted
+
+:::info Version 0.1.21 Retracted
+This version was retracted on 13th May 2024 due to a critical bug being identified. Please use Version 0.1.23 or later versions. 
+:::
 
 **New features and enhancements**:
  - SDK support for processing `AND/OR` rules:
