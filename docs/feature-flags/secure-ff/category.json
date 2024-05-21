@@ -1,11 +1,13 @@
 {
-   "label": "Secure FF",
-   "position": 50,
+   "label":"Secure FF",
+   "position": 70,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
-   "link":{
-      "type":"generated-index",
+   "link": {
+      "type": "generated-index",
       "title": "Secure FF"
+   },
+   "customProps": {
+      "helpdocs_category_id":""
    }
 }

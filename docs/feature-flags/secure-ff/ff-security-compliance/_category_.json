@@ -1,6 +1,6 @@
 {
     "label": "Security and compliance",
-    "position": 50,
+    "position": 10,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

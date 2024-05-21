@@ -1,6 +1,6 @@
 {
     "label": "RBAC at FF",
-    "position": 50,
+    "position": 20,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
