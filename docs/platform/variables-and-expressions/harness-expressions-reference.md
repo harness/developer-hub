@@ -1,5 +1,5 @@
 ---
-title: Built-in Varibales List
+title: Built-in Variables List
 description: List of useful built-in Harness expressions.
 sidebar_position: 21
 redirect_from:
