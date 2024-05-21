@@ -25,6 +25,10 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## Version 1.37.0
 
+#### New features and enhancements
+
+- This release introduces the DynamoDB replication pause experiments powered by AWS FIS. These experiments improve configuration, execution, and monitoring capabilities of application. (CHAOS-5002)
+
 #### Fixed issues
 
 - Fixed an issue where the command probe multiple source probes were overridden. (CHAOS-5308)
