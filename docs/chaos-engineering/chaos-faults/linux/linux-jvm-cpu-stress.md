@@ -80,7 +80,7 @@ The process Id used by Byteman to target the services of the JVM. This is mutual
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-jvm-memory-stress/pid.yaml yaml)
+[embedmd]:# (./static/manifests/linux-jvm-cpu-stress/pid.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -108,7 +108,7 @@ You can simply provide the name of the file instead of the path because it is co
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-jvm-memory-stress/startup-command.yaml yaml)
+[embedmd]:# (./static/manifests/linux-jvm-cpu-stress/startup-command.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -132,7 +132,7 @@ The number of CPU threads used to simulate excessive CPU usage.
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-jvm-memory-stress/memory-type.yaml yaml)
+[embedmd]:# (./static/manifests/linux-jvm-cpu-stress/cpu-thread.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
