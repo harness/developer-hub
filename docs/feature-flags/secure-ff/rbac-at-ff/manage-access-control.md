@@ -83,8 +83,8 @@ Here's how you can create and manage resource groups for the Feature flags and T
 
 The following topics can help you understand how to implement Access Control:
 
-* [Create, Edit And Delete A Feature Flag](../ff-creating-flag/edit-and-delete-a-feature-flag.md)
-* [Roles and Permissions in Feature Flags](/docs/feature-flags/ff-security-compliance/roles-and-permissions.md)
+* [Create, Edit And Delete A Feature Flag](../../ff-creating-flag/edit-and-delete-a-feature-flag.md)
+* [Roles and Permissions in Feature Flags](../ff-security-compliance/roles-and-permissions.md)
 * [Manage users](/docs/platform/role-based-access-control/add-users)
 * [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md)

@@ -23,7 +23,8 @@ Some examples of what you can do with custom roles and permissions include:
 With Harness Feature Flags, each
 
 :::info
-In line with the custom roles and permissions, Role Based Access Control (RBAC) is a useful tool you can set to have more control over your workflow. If you'd like to learn more about [RBAC within the Harness Platform](../../platform/role-based-access-control/rbac-in-harness.md), do have a look at our documentation to learn more.
+In line with the custom roles and permissions, Role Based Access Control (RBAC) is a useful tool you can set to have more control over your workflow. If you'd like to learn more about [RBAC within the Harness Platform](../../../platform/role-based-access-control/rbac-in-harness.md), do have a look at our documentation to learn more.
+
 :::
 
 ## Roles
