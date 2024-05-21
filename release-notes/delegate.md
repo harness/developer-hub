@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 #### New features and enhancements
 
-- Added support for proxies via Secure Connect for GitHub connectors. (CI-12130, ZD-61883)
+- Added support for proxies via Secure Connect for Github App connectors. (CI-12130, ZD-61883)
 
 ### Version 24.05.82205 <!--  May 20, 2024 -->
 
