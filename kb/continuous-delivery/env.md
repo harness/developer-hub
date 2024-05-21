@@ -265,28 +265,9 @@ No, it's not possible to configure a Step Group to run on only a subset of the V
 Unfortunately, these entities cannot be versioned at the moment. However, you can manage and control them using Terraform, which allows for versioning.
 
 
-#### How to get the kubeconfig that a kubernetes deployment runs with?
+#### Does Harness give Jenkins prompt as well while executing Jenkins jobs in pipeline?
 
-The kubernetes cofiguration can be accessed in the same stage the kubernetes deployment ran. To access the configuration we can set the kubeconfig with below environment variable configuration and run the corresponding kubectl commands:
-
-```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}
-kubectl get configmaps
-```
-
-
-#### Does harness give jenkins prompt as well while executing jenkins jobs in pipeline?
-
-The jenkins prompt message are very specific to jenkins environment and the interaction for the prompts need to be done in jenkins itselg. We do not show the same prompt for interaction in pipeline execution.
-
-
-#### Is there a way to cache terraform plugins for harness terraform pipeline executions?
-
-We can use the caching functionality provided by terraform for this purpose. We need to set the below environment variable for the terraform pipelines:
-
-```
-TF_PLUGIN_CACHE_DIR=/opt/harness-delegate/<plugincachedirectory>
-```
+The Jenkins prompt message are very specific to jenkins environment and the interaction for the prompts need to be done in jenkins itselg. We do not show the same prompt for interaction in pipeline execution.
 
 
 #### How do I change the service artifact source based on the environment?

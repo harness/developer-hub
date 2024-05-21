@@ -1,85 +1,97 @@
 ---
-title: General GitOps FAQs
+title: GitOps FAQs
 description: Frequently asked questions about Harness GitOps.
 sidebar_position: 1000
 ---
+
+This article addresses some frequently asked questions about Harness GitOps.
+
+
+### What is Harness GitOps?
+
+Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync the state with your live Kubernetes cluster.
+For more details please see [here](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/).
+
+### Can I use Harness GitOps images from a local registry?
+
+Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+
+### Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
+Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
+
 
 ### What is the easiest way to determine the ArgoCD version using a GitOps agent?
 
 An easy method to identify the ArgoCD version is by creating a GitOps agent and inspecting the associated manifest.
 
 
-### Does the Harness GitOps Agent support high availability and scalability?
+### Does the Harness GitOps Agent support High Availability and scalability?
 
-A: Yes, the Harness GitOps Agent supports high availability and scalability by allowing you to deploy multiple agents across different clusters. This ensures redundancy and load distribution.
+A: Yes, the Harness GitOps Agent supports High Availability and scalability by allowing you to deploy multiple agents across different clusters. This ensures redundancy and load distribution.
 
 
 ### Which versions of ArgoCd that the latest version of the GitOps agent support? 
-We currently support v2.8.2
+We currently support v2.8.2.
  
 
-### The GitOps agent updater, can you advise that this will update the agent, argocd and redis? Is this also true if use the option to bring our own ArgoCd?
+### The GitOps agent updater, can you advise that this will update the Agent, ArgoCD and Redis? Is this also true if use the option to bring our own ArgoCD?
  
-It is used to update agents only whenever a new version is available. The Argo CD components upgrade must be done manually
+It is used to update agents only whenever a new version is available. The ArgoCD components upgrade must be done manually.
 
  
-
-### Also, is it possible to automate the provisioning of the GitOps agent using a helm chart without having to register/create the agent in the UI first? At the moment it looks like you need to create the agent in the UI which then generates the yaml or helm chart for you.
-Yes, using Terraform, it is possible to automate the provisioning of the GitOps agent without having to register/create an agent in the UI.
-
-
-### Do we support OCI repository and automation for adding a new repository in our gitops approach?
-
-Yes, Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/oci-support/helm-oci-repository-aws-ecr)
+### Is it possible to automate the provisioning of the GitOps agent using a Helm chart without having to register/create the agent in the UI first? At the moment it looks like you need to create the Agent in the UI which then generates the YAML or Helm chart for you.
+Yes, using Terraform, it is possible to automate the provisioning of the GitOps Agent without having to register/create an agent in the UI.
 
 
-### What is Harness GitOps?
+### Do we support OCI repository and automation for adding a new repository in our GitOps approach?
 
-Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync the state with your live Kubernetes cluster.
-For more details please see [here](https://developer.harness.io/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics/)
+Yes. For more details, go to [Helm OCI repository documentation](https://developer.harness.io/docs/continuous-delivery/gitops/oci-support/helm-oci-repository-aws-ecr).
 
 
 ### Can one manage Flux applications with Harness GitOps ?
 
-Yes  one can manage Flux applications with Harness GitOps. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/use-flux/)
+Yes  one can manage Flux applications with Harness GitOps. For more details, go to [Use Flux](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/use-flux/).
 
 
-### Does Harness provides drift detection for k8s non-gitops pipelines ?
+### Does Harness provides drift detection for Kubernetes non-GitOps pipelines ?
 
-No, this feature is still under development and not yet supported. We hope to deliver this soon !
+No, this feature is still under development and not yet supported. We hope to deliver this soon!
 
 
 ### The user is getting this error while adding GitOps agent: "failed to create cluster in argo: createClusterInArgo: rpc error: code = InvalidArgument desc = cannot register cluster: in- cluster has been disabled". What needs to be enabled?
-The user needs to make the required changes in the config map ( cluster.inClusterEnabled: 'true' ).
+The user needs to make the required changes in the config map (cluster.inClusterEnabled: 'true').
 
 
-### Do we have a way of adding certificate at project/org level to be consumed by gitops agent ?
+### Do we have a way of adding certificate at project/org level to be consumed by GitOps Agent ?
 
-We do not have a way to add certificates at different scope for project/org/account level for gitops agent. This is an agent side configuration and need to be done at the agent itself reference doc [link](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates)
+We do not have a way to add certificates at different scope for project/org/account level for GitOps Agent. This is an agent side configuration and need to be done at the agent itself. For more details, go to [Harness GitOps Agent with self-signed certificates](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/harness-git-ops-agent-with-self-signed-certificates).
 
 
 ### Is there a method to configure the Harness GitOps agent auto updater to utilize our Artifactory proxy for Docker Hub, considering policy of not allowing Kubernetes clusters to access the public internet directly ?
 
-Organizations can import the GitOps Image from the specified [Docker Hub repository](https://hub.docker.com/r/harness/gitops-agent/tags) into their JFrog Artifactory. However, utilizing the auto updater feature may not be feasible in this scenario. Nonetheless, manual copying of the image to the Artifactory and subsequent pulling from there remains an alternative approach.
-Please read more on Harness GitOps in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/)
+Organizations can import the GitOps Image from the specified [Docker Hub repository](https://hub.docker.com/r/harness/gitops-agent/tags) into their JFrog Artifactory. However, utilizing the auto updater feature may not be feasible in this scenario. Nonetheless, manual copying of the image to the Artifactory and subsequent pulling from there remains an alternative approach. For more details, go to [Harness GitOps documentation](https://developer.harness.io/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/).
 
 
-### How does the requirement for all applications within an ArgoCD appset to be managed by the same AGENT, despite links being able to connect to multiple clusters, affect the usability of ArgoCD Application Sets?
+### How does the requirement for all applications within an ArgoCD appset to be managed by the same agent, despite links being able to connect to multiple clusters, affect the usability of ArgoCD Application Sets?
 
 The requirement that all applications within an ArgoCD appset must be managed by the same AGENT, despite the capability of links to connect to multiple clusters, is indeed recognized as a limitation of ArgoCD Application Sets.
-Please read more on ArgoCD ApplicationSet in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/gitops/applicationsets/appset-basics/)
+For more details, go to [ArgoCD ApplicationSet documentation](https://developer.harness.io/docs/continuous-delivery/gitops/applicationsets/appset-basics/).
 
 
 ### What is the optimal number of ArgoCD instances required for bootstrapping environments and managing GitOps infrastructure?
 
 The installation of the ArgoCD reconciler concurrently with environment creation streamlines the execution of GitOps practices at scale, thus mitigating the complexities associated with bootstrapping environments and managing GitOps infrastructure.
-Please read more on this in our blog on [ArgoCD, Terraform and Harness](https://www.harness.io/blog/argocd-terraform-and-harness)
+For more details, go to ArgoCD, Terraform, and Harness [blog](https://www.harness.io/blog/argocd-terraform-and-harness).
 
 
-### Why is the GitOps Sync step failing with the error, "Application does not correspond to the service(s) selected in the pipeline execution"?
+### Why is the GitOps Sync step failing with the following error? 
+
 ```
+Application does not correspond to the service(s) selected in the pipeline execution
+
 Application{name: '$APP_NAME', agentIdentifier: '$AGENT_ID', errorMessage: 'Application does not correspond to the service(s) selected in the pipeline execution.'}
 ```
+
 This error is caused by an inconsistency in the service(s) used in the deploy stage and the selected application. GitOps cannot sync a service that isn't correlated to the application. To fix this, go to the Continuous Delivery module, and select **GitOps** > **Applications** and then select the application. In **App Details**, check if the service configured for the application is the same as the service configured in the pipeline's deploy stage.
 
 

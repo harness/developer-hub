@@ -10,17 +10,10 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
 
-#### What CD platforms and tools does Harness support?
+For a list of CD supported platforms and tools, go to [CD integrations](/docs/continuous-delivery/cd-integrations.md).
 
-Harness [supports all of the most common platforms](/docs/continuous-delivery/cd-integrations.md) and deployment use cases.
-
-Here's a summary of Harness CD support for popular platforms and tools.
-
-import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-supported.md';
-
-<PartialExample name="integrations" />
 
 #### What is a service instance in Harness?
 
@@ -406,18 +399,9 @@ Yes. You can add a **Terraform Destroy** step to remove any provisioned infrast
 
 See [Remove provisioned infrastructure with the Terraform Destroy step](../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
-### GitOps
-
-#### Can I use Harness GitOps images from a local registry?
-
-Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
-
-#### Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
-Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
-
 ### Harness Configure as Code
 
-#### Can I create my deployments using YAML?
+### Can I create my deployments using YAML?
 
 Yes. Harness allows you to configure settings such as pipelines, triggers, connectors, environments, and services using [YAML in Harness](../platform/pipelines/harness-yaml-quickstart.md). You can use YAML to achieve any configuration for which you would use the Harness platform GUI.
 
@@ -425,44 +409,13 @@ Yes. Harness allows you to configure settings such as pipelines, triggers, conne
 
 ### Harness Git Experience
 
-#### Can I sync my Harness project with my repo?
+### Can I sync my Harness project with my repo?
 
 Yes. You can sync your Harness project with a Git repo. The Harness project can be synced with one repo and the connectors used in the project can be synced in the same repo or separately with other repos or branches.
 
-See [Harness Git Experience Quickstart](../platform/git-experience/configure-git-experience-for-harness-entities.md).
+See [Harness Git Experience Quickstart](/docs/platform/git-experience/configure-git-experience-for-harness-entities).
 
-### Community Edition
 
-#### Do you have a free version of Harness CD?
-
-Harness CD has two free options to get started. 
-
-- The [Harness CD & GitOps SaaS Free Plan](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg) is the recommended option for new users since there is no server side installation to manage.
-- If a self-managed yet lightweight option is needed, then the recommended option is to use [Gitness](https://gitness.com/).
-
-As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). 
-
-#### What can I do with Harness CD Community Edition?
-
-- Today, Harness CD Community Edition can perform Kubernetes deployments only. This means pulling remote manifests and artifacts and deploying them to a local or remote Kubernetes cluster.
-- You can also use Harness CD features such as automated rolling, canary and blue green deployments, automated infrastructure provisioning, integrated approvals and notifications, full YAML-based development, and Harness Git Experience.
-- In the near future, Amazon Web Services (AWS) (Elastic Container Service (ECS), Auto Scale Groups (ASG), CloudFormation, Lambda, etc), Microsoft Azure (Virtual Machine Scale Sets (VMSS), WebApps, Azure Kubernetes Service (AKS), Azure Container Registry (ACR), Azure Resource Manager (ARM), Blueprint), .NET, Google Cloud Build, VM, Tanzu Application Services (TAS), Serverless, and traditional (Tomcat, etc) deployments will be supported.
-
-#### Can I upgrade to a paid plan from Harness CD Community Edition?
-
-Yes, you can upgrade from within Harness in **Account Settings** > **Subscriptions** or by contacting [Harness Sales](mailto:sales@harness.io).
-
-#### What data does Community Edition collect?
-
-By default, Harness CD Community Edition shares minor usage details with Harness. These details help us understand and improve how the system behaves in real-world scenarios.
-
-When you install an instance of Harness CD Community Edition, Harness collects the email address used to sign up in Harness, the number of users added to your Harness CD Community Edition, and the number of builds, deployments, and pipelines, and the information described above.
-
-Harness uses this information for sales, support, product updates, security updates, policy updates, and license compliance.
-
-The use of this information is governed by our [Privacy Policy](https://harness.io/privacy).
-
-If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, go to our [Privacy Policy](https://harness.io/privacy).
 
 ### Azure: general questions
 
@@ -1433,10 +1386,6 @@ In broad terms, the CI module is typically dedicated to building and testing cod
 
 It's worth noting that you also have the option to incorporate both types of processes within a single pipeline, depending on your requirements and preferences.
 
-
-#### What is the process for marking a currently running Continuous Verification step as successful?
-
-To mark a running Continuous Verification step as successful, you can use Manual Intervention as a failure strategy. If the step exceeds the defined timeout for example, the manual intervention is triggered, and you can subsequently mark it as successful.
 
 
 
