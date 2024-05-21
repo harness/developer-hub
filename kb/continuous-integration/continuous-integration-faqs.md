@@ -320,7 +320,7 @@ No. Harness CI Cloud uses Harness-managed VM images that already have Docker ins
 
 Currently, caching build images with Harness CI Cloud isn't supported.
 
-### When running a build in Harness cloud, does a build-in step run within a container or does it run as a VM process?
+### When running a build in Harness cloud, does a built-in step run within a container or does it run as a VM process?
 
 By default, a built-in step runs inside a container within the build VM.
 
@@ -502,15 +502,15 @@ Currently, Harness CI doesn't support running CI builds on ECS clusters.
 
 Yes, if the Kubernetes connector is configured correctly. For more information, go to [Use delegate selectors with Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#use-delegate-selectors-with-kubernetes-cluster-build-infrastructure).
 
-### How can we configure the kaniko flag ```--skip-unused-stages``` in the built-in build and push step?
+### How can I configure the kaniko flag ```--skip-unused-stages``` in the built-in Build and Push step?
 
-You can set the kaniko flags as an environment variable in the build and push step. More details about the same can be referred in the [doc](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
+You can set the kaniko flags as an environment variable in the build and push step. For more information, go to [Environment Variables (plugin runtime flags)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
 
-### Does the built in build and push step now support all the kainko flags?
+### Does the built in Build and Push step now support all the kainko flags?
 
 Yes, all the kaniko flags are supported and they can be added as the environment variables to the build and push step
 
-### Can we add additional docker options with the container being started via background step in k8s build, such as the option to mount a volume or attach the container to a specific docker network?
+### Can I add additional docker options with the container being started via background step in k8s build, such as the option to mount a volume or attach the container to a specific docker network?
 
 Adding additional Docker options when starting the container via a background step is not supported
 
@@ -1786,9 +1786,9 @@ Make sure to use the FQN for the image when pulling from an internal private con
 
 The Github Action Drone plugin uses ```nektos/act``` in the background to run GitHub Actions.
 
-###  Does the Harness Github action plugin support exporting output variables?
+###  Does the Harness Github Action plugin support exporting output variables?
 
-Currently Github action plugin doesn’t support exporting the output variable, however the built-in Github action step that can be added in Harness cloud build pipeline supports exporting output variables.
+Currently the Github action plugin doesn’t support exporting the output variable, however the built-in Github Action step that can be added in Harness Cloud build pipeline supports exporting output variables.
 
 ### Which container image is being by the Harness Github Action plugin to run the github action?
 
@@ -1800,7 +1800,7 @@ Docker-in-Docker is not required to be run as a background step because the GHA 
 
 ### How do we configure the stage variable ```PLUGIN_STRIP_PREFIX``` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
 
-Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the upload to s3 steps are part of the same CI stage. 
+Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the Upload to s3 steps are part of the same CI stage. 
 
 ## Workspaces, shared volumes, and shared paths
 
