@@ -12,13 +12,13 @@ You can set up Harness STO to communicate with your scan tools using custom (sel
 
 Harness supports the following setups for running scans with custom certificates: 
 
-- [Add your custom certificates to the delegate.](/docs/security-testing-orchestration/use-cases/secure-sto-pipelines/add-certs-to-delegate) This workflow is recommended if both of the following are true:
+- [Add your custom certificates to the delegate.](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-delegate) This workflow is recommended if both of the following are true:
 
   - You're using a Kubernetes or Docker delegate.
 
   - You can configure the delegate directly.
   
-- [Add your custom certificates to individual pipelines.](/docs/security-testing-orchestration/use-cases/secure-sto-pipelines/add-certs-to-pipelines.md) This workflow is recommended if either of the following are true:
+- [Add your custom certificates to individual pipelines.](/docs/security-testing-orchestration/use-sto/secure-sto-pipelines/add-certs-to-pipelines.md) This workflow is recommended if either of the following are true:
 
   - You're using any delegate type other than Kubernetes or Docker, such as a Harness Cloud delegate.
 

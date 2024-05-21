@@ -1,11 +1,11 @@
 {
-    "label": "Use STO",
+    "label": "STO use cases",
     "position": 100,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use STO"
+        "title": "STO use cases"
     }
 }

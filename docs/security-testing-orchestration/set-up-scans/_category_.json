@@ -1,11 +1,11 @@
 {
-    "label": "Use cases",
-    "position": 95,
+    "label": "Set up scans",
+    "position": 25,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use cases"
+        "title": "Set up scans"
     }
 }
