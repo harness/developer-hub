@@ -2,6 +2,13 @@
 title: CD Artifact Source Frequently Asked Question
 description: CD Artifact Source FAQs
 ---
+Harness supports all of the common repos.
+
+See [Connect to an artifact repo](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
+
+#### How do I list Github Tags for custom artifact when the curl returns a json array without any root element?
+
+We cannot provide an array directly to the custom artifact. It needs a root element to parse the json response.
 
 #### Does Harness support the use of OpenID Connect(OIDC) for connecting to various systems such as Amazon Web Services(AWS) and Google Cloud Platform (GCP)?
 

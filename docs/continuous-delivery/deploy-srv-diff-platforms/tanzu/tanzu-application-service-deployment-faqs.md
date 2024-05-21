@@ -3,6 +3,17 @@ title: Tanzu Application Service Frequently Asked Question
 description: Tanzu Application Service Deployment FAQs
 sidebar_position: 1
 ---
+#### What is a TAS deployment?
+
+You can deploy an image to your TAS space using a TAS manifest, vars files, and AutoScalar.
+
+#### What are the requirements?
+
+You must install the CF CLI v7, autoscaler, and Create-Service-Push plugins on the Harness Delegates that perform deployment.
+
+#### What deployment strategies are supported?
+
+Basic, canary, blue green, and rolling.
 
 #### Is it now possible to deploy any kind of artifact bundle, including those with bundled artifacts and manifests, using Tanzu Application Service Deployment Swimlanes in Harness ?
 
@@ -29,3 +40,5 @@ Yes, Users can now configure how many versions of the tanzu apps that they want 
 Deployment Failed For: For application '$APP_ID': Cannot update this process while a deployment is in flight.
 ```
 Cloud Foundry only allows for 1 deployment or update process at a time for an application. If an application is currently deploying or crash looping, Cloud Foundry will block all other updates to this Application. To fix this, either wait for the Application to finish processing the deployment or, if the Application is crash looping, consider rolling back to the previous version. A Rollback in Cloud Foundry does not count as an update or deployment process and can safely be executed if required.
+
+

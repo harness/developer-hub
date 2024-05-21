@@ -2,6 +2,28 @@
 title: Serverless Frequently Asked Question
 description: Serverless Deployment FAQs
 ---
+#### What is a Lambda Serverless.com Framework deployment?
+
+You can deploy a Serverless Lambda application to AWS Lambda using Harness.
+
+#### What is the Serverless.com Framework support?
+
+- Harness supports Serverless framework 1.82 and later.
+- Harness supports Serverless framework CLI versions 2.x.x and 3.x.x.
+- Harness supports all language runtimes that Serverless supports.
+- Harness supports ZIP files and Docker image artifacts only.
+  - ZIP files are supported with JFrog Artifactory.
+  - Docker images are supported with AWS ECR.
+
+#### How is rollback managed?
+
+In a Serverless CLI rollback (`serverless rollback --timestamp timestamp`), you'd have to manually identify and select the timestamp of the last successful deployment. This can be difficult because you need to know which timestamp to use. With multiple developers deploying, there's the possibility of rolling back to the wrong version.
+
+Harness avoids this issue by automatically identifying the last successful deployment using its timestamp. During the event of a rollback, Harness will automatically rollback to that deployment.
+
+#### How is versioning managed?
+
+Serverless Lambda deployments are versioned using the timestamp of their deployment. This versioning has no relation to the versioning in AWS Lambda.
 
 #### Can I deploy different versions of Serverless functions using Harness?
 

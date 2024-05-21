@@ -3,6 +3,31 @@ title: Google Cloud Function Frequently Asked Question
 description: Google Cloud Function Deployment FAQs
 sidebar_position: 1
 ---
+#### What is a Google Cloud Function deployment?
+
+Harness supports deploying Google Functions [1st gen and 2nd gen](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available).
+
+#### What is the 1st gen support?
+
+Harness supports the following:
+
+- Basic deployments.
+  - Harness deploys the new function and terminates the old one by sending 100% of traffic to the new function.
+- For rollback, Harness does not perform revision-based rollback. Instead, in case of deployment failure, Harness will take a snapshot of the last known good state of the function and reapply
+
+#### What is the 2nd gen support?
+
+Harness supports the following:
+
+- Basic, blue green, and canary deployments.
+- Harness leverages the Cloud Run revisions capability that Google Cloud offers to configure rollback.
+
+#### What are the limitations?
+
+* For Google Cloud Functions 2nd gen, Harness does not support [Google Cloud Source Repository](https://cloud.google.com/functions/docs/deploy#from-source-repo) at this time. Only Google Cloud Storage is supported.
+* For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
+
+
 
 #### Can I set up advanced deployment strategies like Canary deployment for Google Cloud Functions?
 
@@ -40,3 +65,5 @@ Harness does not currently support Google Cloud Source Repository for Google Clo
 
 Harness supports deploying Google Functions 1st gen and 2nd gen. But for Google Cloud Functions 2nd gen, Harness does not support Google Cloud Source Repository at this time. Only Google Cloud Storage is supported. For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#supported-versions)
+
+

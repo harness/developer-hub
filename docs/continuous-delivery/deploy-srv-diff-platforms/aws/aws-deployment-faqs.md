@@ -307,3 +307,179 @@ Harness creates the policy which is essential for performing various ECS-related
 To prevent Terraform state drift, we recommend that you create the ECR repository with the required permissions beforehand. This can be achieved by crafting an IAM policy that grants the necessary permissions and attaching it to the IAM role utilized by the ECS cluster.
 
 Alternatively, you can prevent Harness from altering IAM policies by removing the relevant permissions from the Harness AWS connector. However, this could affect the functionality of your deployment pipeline.
+
+#### What is an ASG deployment?
+
+Here's a summary of how Harness deploys new ASG versions:
+
+1. First deployment:
+   1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region.
+2. Subsequent deployments:
+   1. Harness creates a new version of the launch template.
+3. Harness uses the new version of the launch template to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
+   1. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
+
+#### What do I need for an ASG deployment?
+
+1. For the Harness ASG service.
+   1. Launch template.
+   2. ASG configuration.
+   3. Scaling policies (optional).
+   4. Scheduled update group action (optional).
+   5. The AMI image to use for the ASG as an artifact.
+2. Harness ASG environment.
+   1. AWS region where you want to deploy.
+3. Harness ASG pipeline execution.
+   1. Deployment strategy (rolling, canary, blue green). Harness automatically creates the steps to deploy the new ASG.
+
+#### What are the ASG deployment limitations?
+
+AWS has the following limitations to keep in mind:
+
+- You are limited to creating 5000 launch templates per region and 10000 versions per launch template. For more information, go to Launch an instance from a launch template from AWS.
+- ASGs per region: 500.
+- Launch configurations per region: 200.
+
+#### What is a Harness ECS deployment?
+
+You can deploy images to your Amazon Elastic Container Service (ECS) cluster using rolling, canary, and blue green deployment strategies.
+
+Harness supports standard ECS specifications:
+
+* [RegisterTaskDefinition](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RegisterTaskDefinition.html)
+* [CreateService](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html)
+* [RegisterScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html)
+* [PutScalingPolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScalingPolicy.html)
+* [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html)
+
+
+#### Can I perform auto scaling?
+
+Yes. The ECS service(s) you deploy with Harness can be configured to use AWS Service Auto Scaling to adjust its desired ECS service count up or down in response to CloudWatch alarms. For more information on using Auto Scaling with ECS, go to [Target Tracking Scaling Policies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html) from AWS.
+
+Before you set up Auto Scaling for the ECS service in Harness, you need to obtain the JSON for the Scalable Target and Scalable Policy resources from AWS.
+
+The JSON format used in the **Auto Scaler Configurations** settings should match the AWS standards as described in [ScalableTarget](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_ScalableTarget.html) and [ScalablePolicy](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_ScalingPolicy.html).
+
+
+#### Can I deploy the same number of service instances as the previous deployments?
+
+Yes. The **Same as already running instances** setting in **ECS Rolling Deploy** sets the number of desired ECS service instances for this stage to the same number as the already running instances. Essentially, it ignores the desired count in the Service Definition of the new deployment.
+
+#### Can I force a deployment?
+
+Yes. By default, deployments aren't forced. You can use the **Force new deployment** setting in **ECS Rolling Deploy** to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (`my_image:latest`) or to roll Fargate tasks onto a newer platform version.
+
+
+#### How do ECS blue green deployments work?
+
+<details>
+<summary>ECS blue green deployments summary</summary>
+
+ECS Blue/Green deployments use old and new versions of your service running behind the load balancer. Your ELB uses two listeners, Prod and Stage, each forwarding to a different target group where ECS services are run.
+
+Blue/Green deployments are achieved by swapping listeners between the target groups, always pointing the Prod listener to the target group running the latest version.
+
+In Harness, you identify which listeners are the Prod and Stage listeners. When Harness deploys, it uses the target group for the Stage listener (for example, target1) to test the deployment, verifies the deployment, and then swaps the Prod listener to use that target group. Next, the Stage listener now uses the old target group (target2).
+
+When a new version of the service is deployed, the Stage listener and its target group (target2) are first used, then, after verification, the swap happens and the Prod listener forwards to target2 and the Stage listener now forwards to target1.
+
+</details>
+
+#### How does ECS rollback work?
+
+When an ECS deployment fails, the service tasks it was deploying are scaled down to 0.
+
+The service is scaled to its pre-setup number of tasks.
+
+If ECS Service Auto Scaling is configured, it is attached to the last production service at the end of the rollback.
+
+For multi-phase deployments (Canary), not all phases are rolled back at once.
+
+Phases are rolled back in the standard, reverse order. For example, in a 2 phase deployment with 2 rollback phases, the order is P1 → P2 → R2 → R1.
+
+Phases are rolled back in this order regardless of whether ECS Service Auto Scaling is used.
+
+#### Can I run individual tasks separately?
+
+Yes. In addition to deploying tasks as part of your standard ECS deployment, you can use the **ECS Run Task** step to run individual tasks separately as a step in your ECS stage.
+
+The **ECS Run Task** step is available in all ECS strategy types.
+
+An example of when you run a task separately is a one-time or periodic batch job that does not need to keep running or restart when it finishes.
+
+#### Can I use AWS Service Discovery?
+
+Yes. Harness ECS deployments supports deploying of ECS services with AWS Service Discovery.
+
+AWS Service Discovery is a cloud service provided by AWS that makes it easy for microservices applications to discover and communicate with each other. It enables you to manage and discover the addresses of the services within your microservices application without the need for hard-coded IP addresses or hostnames.
+
+You can use AWS Service Discovery as part of the ECS service definition in Harness.
+
+#### Can I use ECS circuit breaker configurations?
+
+Yes. Harness ECS rolling and canary deployments support AWS ECS circuit breaker configurations.
+
+Circuit breaker configuration is implemented in the Harness ECS service **Service Definition**.
+
+Harness deploys the tasks in the ECS service definition containing the circuit breaker configuration. Once deployed, the circuit breaker is activated.
+
+During failure scenarios, ECS circuit breaker performs a rollback automatically based on the threshold configuration.
+
+#### What is a Lambda deployment?
+
+In Harness, you specify the location of the function definition, artifact, and AWS account. Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the new version on each deployment.
+
+**Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart).
+
+#### What are the limitations?
+
+- Harness' support only deploys and updates Lambda functions. Harness does not update auxiliary event source triggers like the API Gateway, etc.
+- Currently, Lambda functions can be packaged as ZIP files in S3 Buckets or as containers in AWS ECR.
+  - If Harness were to support another repository, like Nexus, when the container is fetched by the API, AWS spins up AWS resources (S3, ECR) anyways, and so Harness has limited support to S3 and ECR.
+  - The containers must exist in ECR. Containers are not supported in other repositories.
+
+#### What are the function definition requirements?
+
+Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region.
+
+The API takes a JSON object as input that defines the configuration settings for the Lambda function, such as the function name, runtime environment, handler function, memory allocation, and IAM role. This allows you to use the function definition as a configuration file in your Harness pipelines.
+
+In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
+
+The minimal requirements for an AWS Lambda function definition are:
+
+- Function Name (`FunctionName`): A unique name for your Lambda function.
+- Runtime (`Runtime`): The programming language and version that your function code is written in. Lambda supports multiple programming languages, including Node.js, Python, Java, C#, and Go.
+- Handler (`Handler`): The name of the function within your code that Lambda should call when the function is invoked.
+- AWS IAM role (`Role`): The IAM role that the function should use to access other AWS services or resources. You can create an IAM role specifically for the Lambda function, or you can reuse an existing IAM role if it has the necessary permissions.
+
+For a full list of supported fields, go to [AWS Lambda Create Function Request](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html).
+
+Harness supports all of the popular Git platforms for storing your function definition files.
+
+#### Can we deploy multiple stacks (multiple SAM build and deployments in a single pipeline) using a single service?
+
+No. We support only one stack in the SAM Deploy step.
+
+#### There is an option to specify multiple manifest files on the service definition. Can we have both the stacks' manifests defined in the same service and use it (any suggestions and examples around this)?
+
+It's not supported. We support deploying to one stack only in the SAM Deploy step. 
+
+For this scenario, we suggest that you have one pipeline with two Deploy stages with two different services and stacks. 
+
+Alternatively, you can have one pipeline with one Deploy stage and specify two different services in the **Service** tab, and in the **SAM Deploy** step > **Stack Name** field, select runtime input. 
+
+![](./static/aws-sam-faq.png)
+
+![](./static/aws-sam-runtime.png)
+
+#### What is a Spot deployment in Harness?
+
+You can deploy AWS ASGs using Harness and the Spot Elastigroup management platform.
+
+#### What are the limitations?
+
+- Currently, Harness integrates with Spot only for Amazon Web Services (AWS) deployments by using Elastigroups.
+- Spot Elastigroup deployments support AMI artifacts only.
+- Spot Elastigroup deployments support only basic, canary, and blue green execution types.

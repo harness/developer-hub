@@ -2,6 +2,20 @@
 title: Harness File store Frequently Asked Question
 description: Harness File store FAQs
 ---
+#### How to fetch files from the harness file store in the run step?
+To fetch files from the Harness file store in a Run step, you can use the following example:
+
+```
+- step:
+    type: Run
+    name: Fetch Files from File Store
+    identifier: fetch_files
+    spec:
+      shell: Sh
+      command: |
+        harness file-store download-file --file-name <file_name> --destination <destination_path>
+```
+Replace "filename" with the name of the file you want to fetch from the file store, and "destinationpath" with the path where you want to save the file on the target host.
 
 
 #### How can I upload a file to a specific folder in the Harness file store from a pipeline stage using PowerShell script?
