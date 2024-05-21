@@ -573,6 +573,13 @@ In this example, the status values for `stage1` are as follows:
 
 </details>
 
+### Step group expressions
+
+The following expressions are for step groups in pipeline stages.
+
+* `<+stepGroup.variables>`: References  collection of variables within the step group.
+* `<+stepGroup.getParentStepGroup>`: References a collection variables from the parent of the step group.
+
 ### Step expressions
 
 The following expressions are for steps in pipeline stages.
