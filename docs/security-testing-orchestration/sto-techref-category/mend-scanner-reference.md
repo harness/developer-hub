@@ -5,41 +5,46 @@ sidebar_label: Mend scanner reference
 sidebar_position: 220
 ---
 
-You can scan code repositories and container images using [Mend](https://www.mend.io). 
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
+
+You can scan your code repositories, artifacts, and application instances using [Mend](https://www.mend.io). 
 
 
 ## Important notes for running Mend scans in STO
 
-
-
+<!--
 
 ### Docker-in-Docker requirements
 
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
+-->
+
 ### Root access requirements
 
-
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
 
 <StoRootRequirements />
 
 ### For more information
 
-
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
-
 
 <StoMoreInfo />
 
+
+
 ## Mend step settings for STO scans
 
-The recommended workflow is add a Mend step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Mend step to a Security or Build stage and then configure it as described below. 
 
 ### Scan
 
@@ -294,93 +299,22 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 <StoSettingSettings />
 
 
+
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
 
-## Security step settings for Mend scans in STO (legacy)
-
-:::note
-You can set up Mend scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Mend step](#mend-step-settings-for-sto-scans) instead.
-:::
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Mend scan settings
-
-* `product_name` = `whitesource`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `ingestionOnly`, `dataLoad`, or `orchestratedScan`
-* `scan_type` = `container` or `repository`
-* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`.
-* [`product_access_id`](#access-id)
-* [`product_access_token`](#access-token)
-* [`product_include`](#include)
-* `product_config_name` = `default`
-* [`fail_on_severity`](#fail-on-severity)
-* `tool_args` You can add a `tool_args` setting to run the [Mend Unified Agent](https://docs.mend.io/bundle/unified_agent/page/unified_agent_configuration_parameters.html#General) with additional parameters. For example, you can save logs for STO-initiated scans in a separate folder on the Mend server like this: `tool_args log.files.path /tmp/sto_scan_logs`.
-
-		
-#### Lookup settings
-
-Lookup settings are required for `dataLoad` and `orchestratedScan` modes.
-
-*  `product_lookup_type` You can specify the Mend product or project by token or by name.
-    - When `policy_type` is set to `dataLoad`: 
-      - `byName`
-      - `byTokens`
-    - When `policy_type` is set to `orchestratedScan`: 
-      - `appendToProductByName`
-      - `appendToProductByToken`
-
-Required for `dataLoad` and `orchestratedScan` modes: 
-* [`product_product_name`](#product-name--token)
-* [`product_product_token`](#product-name--token)
-
-Required for `dataLoad` modes: 
-* [`product_project_name`](#project-name--token)
-* [`product_project_token`](#project-name--token)
-
-#### Container scan settings
-
-
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-
-
-<StoLegacyContainer />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->
 
 ## Mend orchestration pipeline example
 

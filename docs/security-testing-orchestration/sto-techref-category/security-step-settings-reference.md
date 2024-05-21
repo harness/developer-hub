@@ -81,27 +81,27 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 ### Security steps and scanner templates in STO
 
-The Step library includes a **Security** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
+The Step library includes a [**Custom Scan**](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
 
-Some scanners also have *scanner templates* with UIs that simplify the process of setting up a scanner.
+Some scanners also have their own steps with simplified UIs that simplify the setup process.
 
 <details>
-<summary>Step Library with <b>Security</b> step and scanner templates</summary>
+<summary>Step Library with scanner-specific steps and <b>Custom Scan</b> step</summary>
 
-![tep Library with Security step and scanner templates](./static/security-steps-tab.png)
+![Step Library with scanner-specific steps and Custom Scan step](./static/security-steps-tab.png)
 
 </details>
 
 <details>
-<summary><b>Security</b> step configuration</summary>
+<summary><b>Custom Scan</b> step configuration</summary>
 
-![Security step configuration](./static/security-step-settings-reference-00.png)
+![Custom Scan step configuration](./static/config-scan-step.png)
 
 </details>
 
 <details>
-<summary>Scanner template configuration</summary>
+<summary>Scanner-specific step configuration</summary>
 
-![Scanner template configuration](./static/sto-step-palette-example.png)
+![Scanner-specific step configuration](./static/sto-step-palette-example.png)
 
 </details>

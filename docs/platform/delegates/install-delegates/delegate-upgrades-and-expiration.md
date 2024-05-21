@@ -325,6 +325,8 @@ EOL means the following:
 
 - In addition to the EOS clauses, security fixes will not be addressed.
 
+For a list of delegate images and their support status, go to [Delegate image version support status](/docs/platform/delegates/delegate-reference/delegate-image-version-status).
+
 #### Example delegate expiration
 
  For delegates with an immutable image type, the image tag is `yy.mm.verno`. A delegate version `24.05.84200` would reach EOS in November 2024 and EOL in January 2025.
