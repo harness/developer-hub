@@ -71,6 +71,7 @@ Here's what a Manual Approval Stage and step looks like in YAML:
                 approverInputs:
                   - name: myvar
                     defaultValue: myvalue
+                isAutoRejectEnabled: false
     failureStrategies: []
 ```
 
