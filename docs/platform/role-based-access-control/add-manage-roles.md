@@ -158,7 +158,8 @@ You can do role bindings to a user and attach the user to a specific resource gr
 7. Click **All Resources Including** under **Resource Groups** and select your respective **Resource Group**.
 8. Click **Apply** to send an invitation to the user's email. After the user accepts the invite, the role binding process is complete.
 9. After you select **Apply**, an invitation to the specified user email will be sent. After the user accepts the invite, the role-binding process is complete.
-   The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
+
+The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
 
 To add role bindings to an existing user:
 
@@ -172,4 +173,5 @@ To add role bindings to an existing user:
 8. Under **Roles**, click **Select a role**, and then select **Account Admin**.
 9. Under **Resource Groups**, select **All Resources Including**,  and then select your **Resource Group**.
 10. Select **Apply**. You will receive a notification stating **Role Assignments updated successfully**, and the role binding process is complete.
-   The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
+  
+The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
