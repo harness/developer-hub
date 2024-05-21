@@ -145,7 +145,8 @@ Roles, which grant permissions, work alongside [resource groups](/docs/platform/
 
 After configuring roles and resource group, you assign them to [users](./add-users.md), [user groups](./add-user-groups.md), and [service accounts](./add-and-manage-service-account.md).
 
-## Adding Account Admin permissions to users in a Custom Resource Group
+## Add permissions access to specific resources selected via Custom Resource Group
+Comment
 
 You can do role bindings to a user and attach the user to a specific resource group at the Account, Project, or Organization scope. To add new users to a custom Resource Group with role bindings, do the following:
 
