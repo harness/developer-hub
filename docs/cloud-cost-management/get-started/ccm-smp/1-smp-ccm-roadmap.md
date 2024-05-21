@@ -28,7 +28,7 @@ The table below outlines the current features availale on the Harness Self-Manag
 |Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
 
 :::info
-On SMP, only four of the BI dashboards: AWS Cost, GCP Cost, Azure Cost and Cluster Cost are available. 
+On SMP, only four of the BI dashboards: AWS Cost Dashboard, GCP Cost Dashboard, Azure Cost Dashboard and Cluster Cost Dashboard are available. 
 :::
 
 ## Air-gapped environment
