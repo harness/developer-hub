@@ -19,7 +19,7 @@ The table below outlines the current features availale on the Harness Self-Manag
 |Perspectives | ✅  | ✅ | ✅ | ✅ |
 |Cost categories | ✅  | ✅ | ✅ | ✅ | 
 |Budgets | ✅ | ✅ | ✅ | ✅ | ✅ |
-|BI dashboards |✅  | ✅ | ✅ | ✅ | 
+|BI dashboards |✅ | ✅ | ✅ | ✅ | 
 |Anomaly detection  | ✅ | ✅ | ✅ | ✅ |
 |Currency standardization | ❌ | ❌ | ❌ | ❌ | 
 |Recommendations |✅ | ✅ | ✅ | ✅ | 
@@ -27,6 +27,9 @@ The table below outlines the current features availale on the Harness Self-Manag
 |Asset governance | ❌ | ❌ | ❌ | ❌ | 
 |Perspective Preferences| ✅ | ✅ | ✅ | ✅ |
 
+:::info
+On SMP, only four of the BI dashboards: AWS Cost, GCP Cost, Azure Cost and Cluster Cost are available. 
+:::
 
 ## Air-gapped environment
 
