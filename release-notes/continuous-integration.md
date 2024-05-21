@@ -48,6 +48,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - Added support for proxies via Secure Connect for Github App connectors. (CI-12130, ZD-61883)
 
+  This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
+
 - Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
 
 - Fixed a UI issue where the Pipeline Execution UI didn't update the stage selector correctly if the pipeline used a parallelism or matrix strategy. As a result, users could not see artifacts properly. (CI-12047)
