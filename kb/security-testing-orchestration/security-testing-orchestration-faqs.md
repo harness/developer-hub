@@ -10,7 +10,7 @@ To approve exemptions, users must have the **Approve/Reject** permission. Curren
 
 ## Can the size of the container image impact pod eviction during a scan?
 
-Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans.
+Yes, the size of the container image contributes to resource utilization, especially large images (around 4GB). Make sure the container has sufficient resources allocated to prevent eviction during resource-intensive tasks, such as Aqua scans. For more information, go to 
 
 ## Does STO support execution on ARM64 architecture?
 
@@ -20,13 +20,31 @@ Currently, STO doesn't support running on ARM64 platforms.
 
 Yes. For instructions and information about customizing your STO images, go to:
 
-- [Update your STO images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images)
-- [Create custom scanner images](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images)
-- [Store images in a private registry](https://developer.harness.io/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry)
+- [Update your STO images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/sto-images)
+- [Create custom scanner images](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/create-custom-scan-images)
+- [Store images in a private registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry)
 
 ## Can I use an API to extract data on vulnerabilities detected by STO?
 
 Public APIs for this functionality are on the [STO roadmap](https://developer.harness.io/roadmap/#sto).
+
+#### Does Harness STO support ingesting scan results from non-native scanners?
+STO supports a generic JSON format for ingesting data from unsupported scanners that cannot publish to SARIF. This means that you can ingest custom issues from any scanning tool, even those that do not have direct integration with STO. For more information, go to [Ingest from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners).
+
+#### What is SARIF, and how does it relate to scanning tools and STO?
+SARIF (Static Analysis Results Interchange Format) is an open data format supported by many scanning tools. If your scanner supports SARIF, Harness recommends publishing your results in this format. For more information, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+
+## Which scanners are supported natively with Harness STO?
+1. SAST (Static Application Security Testing) 
+1. SCA (Software Composition Analysis)
+1. Secret Scanning
+1. DAST (Dynamic Application Security Testing)
+1. Container Scanning
+For more details, go to [What's supported](/docs/security-testing-orchestration/whats-supported/).
+
+
+## What are the requirements for STO to ingest scan results in JSON format?
+For STO to successfully ingest your scan results, the ingestion file must adhere to the specific JSON format described here: [Ingest from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners)
 
 ## STO dashboards
 
@@ -116,21 +134,5 @@ An enhancement has been made to ensure the orchestration step always downloads r
 - STO release notes > [Version 1.83.1](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831)
 
 
-#### Does Harness STO support ingesting scan results from non native scanners?
-Harness STO supports the ingestion of custom issues from any scanning tool, even those that do not have direct integration with STO. This is facilitated through a generic JSON format.
 
-#### What is SARIF, and how does it relate to scanning tools and STO?
-SARIF (Static Analysis Results Interchange Format) is an open data format supported by many scanning tools. If your scanner supports SARIF, it's recommended to publish your results in this format. STO also supports SARIF ingestion. 
-
-#### Which scanners is supported natively with Harness STO?
-1. SAST (Static Application Security Testing) 
-1. SCA (Software Composition Analysis)
-1. Secret Scanning
-1. DAST (Dynamic Application Security Testing)
-1. Container Scanning
-For more details you refer to this: https://developer.harness.io/docs/security-testing-orchestration/whats-supported/
-
-
-#### What are the requirements for STO to ingest scan results in JSON format?
-For STO to successfully ingest your scan results, the ingestion file must adhere to the specific JSON format outlined in this documentation: https://developer.harness.io/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners#json-data-format-reference
 
