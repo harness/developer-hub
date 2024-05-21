@@ -1,12 +1,12 @@
 {
-    "label": "FF security and compliance",
+    "label": "Security and compliance",
     "position": 50,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Feature Flag Security and Compliance"
+        "title": "Security and compliance"
     },
     "customProps": {
         "helpdocs_category_id": "u0gbfyk4p4"
