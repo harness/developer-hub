@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 
 ### Important notes for using GitHub Action and Drone Plugin steps in STO 
 
-* You can use GitHub Action security scans in STO-only pipelines and integrated CI/STO pipelines. 
+* You can use GitHub Action security scans in STO-only and integrated CI/STO pipelines. 
 
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
 <!-- action -->
 
 
-1. Open the pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
+1. Open the pipeline where you want to run the action, then go to the stage where you want to run the action.
 
 2. Click **Add Step** and then add a **GitHub Action plugin** step. 
 
@@ -207,7 +207,7 @@ pipeline:
 
 <!-- plugin -->
 
-1. Open the pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
+1. Open the pipeline where you want to run the action, then go to the stage where you want to run the action.
 
 2. Click **Add Step** and then add a **Plugin** step. 
 

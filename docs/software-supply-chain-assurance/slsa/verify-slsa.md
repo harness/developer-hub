@@ -14,7 +14,7 @@ In this document, we'll explore how to verify SLSA Provenance attestation and en
 
 ## Verify SLSA Attestation
 
-In the Harness SSCA, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it's placed within a container step group.
+In the Harness SSCA, the SLSA verification step is responsible for verifying the attested provenance and applying policies. To incorporate this, navigate to either the build or deploy stage of your pipeline and add the "SLSA Verification" step. When adding this to a deploy stage, ensure it's placed within a [container step group](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/).
     
 
 The SLSA Verification step has the following fields:
@@ -66,6 +66,22 @@ The SLSA Verification step has the following fields:
 
 <DocImage path={require('./static/slsa-ver-gcr.png')} width="50%" height="50%" title="Click to view full size image" />
 
+
+</TabItem>
+
+<TabItem value="gar" label="GAR" default>
+
+* **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the Google container registry where the artifact is stored.
+
+* **Host:** Enter your GAR Host name. The Host name is regional-based. For example, `us-east1-docker.pkg.dev`.
+
+* **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
+
+* **Image Name:** Enter the name of your image, example `repository-name/image`.
+
+* **Tag:** Enter the tag name of your image, example `latest`.
+
+<DocImage path={require('./static/slsa-ver-gar.png')} width="50%" height="50%" title="Click to view full size image" />
 
 </TabItem>
 

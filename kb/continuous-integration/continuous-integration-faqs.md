@@ -320,6 +320,10 @@ No. Harness CI Cloud uses Harness-managed VM images that already have Docker ins
 
 Currently, caching build images with Harness CI Cloud isn't supported.
 
+### When running a build in Harness cloud, does a built-in step run within a container or does it run as a VM process?
+
+By default, a built-in step runs inside a container within the build VM.
+
 ## Kubernetes clusters
 
 ### What is the difference between a Kubernetes cluster build infrastructure and other build infrastructures?
@@ -497,6 +501,19 @@ Currently, Harness CI doesn't support running CI builds on ECS clusters.
 ### Can I use a Docker delegate with a Kubernetes cluster build infrastructure?
 
 Yes, if the Kubernetes connector is configured correctly. For more information, go to [Use delegate selectors with Kubernetes cluster build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure#use-delegate-selectors-with-kubernetes-cluster-build-infrastructure).
+
+### How can I configure the kaniko flag ```--skip-unused-stages``` in the built-in Build and Push step?
+
+You can set the kaniko flags as an environment variable in the build and push step. For more information, go to [Environment Variables (plugin runtime flags)](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry/#environment-variables-plugin-runtime-flags)
+
+### Does the built in Build and Push step now support all the kainko flags?
+
+Yes, all the kaniko flags are supported and they can be added as the environment variables to the build and push step
+
+### Can I add additional docker options with the container being started via background step in k8s build, such as the option to mount a volume or attach the container to a specific docker network?
+
+Adding additional Docker options when starting the container via a background step is not supported
+
 
 ## Self-signed certificates
 
@@ -1764,6 +1781,26 @@ If you want to avoid this additional call to the container registry, you can con
 This can occur if a Plugin step doesn't have the image's Fully Qualified Name (FQN), even if your Docker connector points to an internal private container registry.
 
 Make sure to use the FQN for the image when pulling from an internal private container registry.
+
+### What tool does a Harness GitHub Action plugin use in the backgound to run an action?
+
+The Github Action Drone plugin uses ```nektos/act``` in the background to run GitHub Actions.
+
+###  Does the Harness Github Action plugin support exporting output variables?
+
+Currently the Github action plugin doesn’t support exporting the output variable, however the built-in Github Action step that can be added in Harness Cloud build pipeline supports exporting output variables.
+
+### Which container image is being by the Harness Github Action plugin to run the github action?
+
+The current version of nektos/act used in the  github action plugin uses the image ```node:12-buster-slim``` to run the action.
+
+### Do we need a Docker-in-Docker (dind) container running in the background step to be able to run Harness GHA plugin?
+
+Docker-in-Docker is not required to be run as a background step because the GHA plugin image is built with the dind base image making it readily available within the GHA plugin.
+
+### How do we configure the stage variable ```PLUGIN_STRIP_PREFIX``` if we have 2 upload to s3 steps that needs to trim different keywords from the file path?
+
+Since this stage variable accessible to all the steps, currently it is not supported to trim the different keywords from the file path if both the Upload to s3 steps are part of the same CI stage. 
 
 ## Workspaces, shared volumes, and shared paths
 

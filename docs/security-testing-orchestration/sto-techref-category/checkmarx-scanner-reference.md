@@ -5,14 +5,16 @@ sidebar_label: Checkmarx scanner reference
 sidebar_position: 100
 ---
 
-Checkmarx offers an extensive suite of tools to support secure application development. Harness STO makes it easy to: 
-- Run automated Checkmarx scans of your code repositories, web applications, open-source components, and other targets.
-- Ingest, correlate, and deduplicate your scan results.
-- Use STO's extensive array of tools to [discover](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard) and [fix](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) vulnerabilities quickly.  
+<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
 
 With Harness STO, you can do the following:
-- Run local SAST scans using the CxConsole CLI (orchestration mode).
-- Extract results from a CxSAST server (extraction mode).
+- Run local SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) (orchestration mode).
+- Extract results from a [Checkmarx SAST](https://checkmarx.com/resource/documents/en/34965-44074-checkmarx-sast.html) server (extraction mode).
 - [Ingest results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO
@@ -39,7 +41,7 @@ With Harness STO, you can do the following:
 
     - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
-    - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file after the scan step. 
+    - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file. 
 
 ### Root access requirements 
 
@@ -58,7 +60,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Checkmarx step settings for STO scans
 
-The recommended workflow is add a Checkmarx step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Checkmarx step to a Security or Build stage and then configure it as described below. 
 
 
 ### Scan
@@ -253,68 +255,21 @@ You can configure the Checkmarx ingestion step to exclude issues detected by Che
 `hide_not_exploitable` : `True`
 
 
+
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for Checkmarx scans in STO (legacy)
-
-:::note
-You can set up Checkmarx scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Checkmarx step](#checkmarx-step-settings-for-sto-scans) instead.
-:::
-
-
-#### Target and variant
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-<StoLegacyTargetAndVariant />
-
-
-#### Checkmarx scan settings
-
-* `product_name` = `checkmarx`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
-* When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
-	+ `product_domain`
-	+ `product_access_id`
-	+ `product_access_token` = The account password
-	+ `product_team_name` = `/<`*`server-name`*`>/<`*`team-name`*`>` for example, `/server1.myorg.org/devOpsEast`
-	+ `product_project_name`
-* `product_config_name` = `default`
-* When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-+ `tool_args`
-	   You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. For more information, go to [Running incremental scans with Checkmarx](#running-incremental-scans-with-checkmarx). 
-
-#### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->
 
 
 ## Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan

@@ -6,6 +6,8 @@ redirect_from:
   - /tutorials/secure-supply-chain/generate-slsa
 ---
 
+import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/generate-cosign-key-pair.md';
+
 ## Introduction
 Harness SSCA when used along with Harness CI Hosted Builds([Harness Cloud](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/)), ensures that the resulting artifacts have **SLSA Level 3** provenance that every consumer (including the following deployment stage) can verify for artifact integrity prior to making use of this artifact. Build hardening for Level 3 compliance is achieved through: 
 
@@ -44,8 +46,14 @@ In you Harness pipeline, navigate to the **Overview tab** in your Build stage an
 <DocImage path={require('./static/enable-slsa.png')} width="70%" height="70%" />
 
 ## Attest the SLSA Provenance
-After enabling the "Generate SLSA Provenance" option, you can provide the private key and password to generate the provenance attestation, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate keys and [Harness Secret Manager](https://developer.harness.io/docs/category/secrets-management) to save. here’s how it looks
+After enabling the "Generate SLSA Provenance" option, you can provide the private key and password to generate the provenance attestation, you can use [Cosign](https://docs.sigstore.dev/key_management/signing_with_self-managed_keys/) to generate keys and [Harness Secret Manager](https://developer.harness.io/docs/category/secrets-management) to save. here’s how you can generate the keys using Cosign
 
+<details>
+<summary>Generate key pairs using Cosign for SLSA provenance attestation</summary>
+
+<CosignKeyGeneration />
+
+</details>
 
 <DocImage path={require('./static/attest-slsa.png')} width="70%" height="70%" />
 
