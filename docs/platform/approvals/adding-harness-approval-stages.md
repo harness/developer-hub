@@ -23,6 +23,10 @@ Other approval methods are:
 
 - [Add a Stage](../pipelines/add-a-stage.md)
 
+### Important notes
+
+Approval steps should not be added to run in parallel with other steps, including other Approval steps. The Harness Pipeline Studio will not allow you to add Approval steps in parallel with other steps, but the pipeline YAML editor does not prevent this setup. During execution, a successful parallel Approval step will not fail the deployment, but it is not a valid configuration because Approvals are checks on the release process and should always be used between steps.
+
 ### Visual summary
 
 Here's a Manual Approval Stage step during the execution of a pipeline:
@@ -67,6 +71,7 @@ Here's what a Manual Approval Stage and step looks like in YAML:
                 approverInputs:
                   - name: myvar
                     defaultValue: myvalue
+                isAutoRejectEnabled: false
     failureStrategies: []
 ```
 
@@ -84,7 +89,18 @@ Click the **Approval** step.
 
 Set a default for the step timeout. Leave enough time for the Users in **Approvers** to see and respond to the waiting step.
 
-The default timeout for an Approval step is **1d** (24 hours). You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+The default timeout for an Approval step is **1d** (24 hours).
+
+You can use:
+
+- `w`  for week
+- `d`  for day
+- `h`  for hour
+- `m`  for minutes
+- `s`  for seconds
+- `ms` for milliseconds
+
+For example, 1d for one day.
 
 The maximum timeout duration is 53 weeks. The timeout countdown appears when the step in executed.
 
@@ -104,25 +120,158 @@ Enable this option to reject old executions waiting for approval when a latest s
 
 :::info
 
-If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+- If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+
+- If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
 
 :::
 
 ### Select approvers
 
-In **Approvers**, in **User Groups**, select the Harness User Groups across Project/Org/Account scope, that will approve the step.
+1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [Manage user groups](/docs/platform/role-based-access-control/add-user-groups).
+2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
 
 ![](./static/adding-harness-approval-stages-17.png)
 
-In **Number of approvers**, enter how many of the Users in the User Groups must approve the step.
+### Automatic Approvals
+
+You can set the Approval step to automatically approve at a specific date and time.
+
+1. In **Schedule Auto Approval**, select **Auto Approve**.
+2. In **Timezone**, select the timezone to use for the schedule.
+3. In **Time**, select the date and time when the automatic approval should occur.
+4. In **Message**, enter the message that the users in the **User Groups** setting will see when the automatic approval occurs.
+
+:::note
+
+- The Auto approve schedule should be greater than 15 minutes past the current time.
+- In addition to automatic approvals, you can also set a step-level failure strategy of **Mark as Success**. If the step exceeds its **Timeout** setting or fails for a different reason, **Mark as Success** will automatically approve the step. This is not a replacement for the **Auto Approve** option.
+
+:::
+
+#### Auto approval using expressions
+
+The **Time** setting supports Harness expressions. You can use an expression to set a flexible data and time for when the automatic approval should occur.
+
+For example, let's say you wanted to automatically approve exactly one week from when the pipeline runs.
+
+You could precede the Approval step with a Shell Script step. In the Shell Scrip step, you can add a script that calculates what the time will be exactly one week from now, at the current hour and minute, in a specific time zone, and display it in a human-readable format.
+
+Here's an example script:
+
+```
+# Define the desired time zone (e.g., "America/New_York")
+desired_timezone="Asia/Calcutta"
+current_time=$(date "+%H:%M")  # Get the current time
+formatted_time=$(TZ=$desired_timezone date --date="next week $current_time" "+%Y-%m-%d %I:%M %p")
+
+echo "Formatted time in $desired_timezone: $formatted_time"
+```
+
+Next, you can output that from the Shell Script step as an Output Variable. Lastly, you can reference that Output Variable in the Approval **Time** setting using a Harness expression.
+
+In **Time**, you select **Expression**, and then use the Harness expression that references the Output Variable. For example:
+
+```
+<+pipeline.stages.AutoApproval.spec.execution.steps.ShellScript_1.output.outputVariables.time>
+```
+
+Now, the Approval step will automatically approve exactly one week from the current time of pipeline execution.
+
+Here's a sample pipeline that demonstrates how to use expressions for both the **Timezone** and **Time** settings.
+
+<details>
+<summary>Pipeline demonstrating time expression</summary>
+
+```yaml
+pipeline:
+  name: HarnessAutoApprovalRuntime
+  identifier: HarnessAutoApprovalRuntime
+  projectIdentifier: ServiceV2_Ramya
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  stages:
+    - stage:
+        name: AutoApproval
+        identifier: AutoApproval
+        description: ""
+        type: Approval
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+
+                          # Define the desired time zone (e.g., "America/New_York")
+                          desired_timezone="Asia/Calcutta"
+                          current_time=$(date "+%H:%M")  # Get the current time 
+                          formatted_time=$(TZ=$desired_timezone date --date="next week $current_time" "+%Y-%m-%d %I:%M %p")
+
+                          echo "Formatted time in $desired_timezone: $formatted_time"
+                    environmentVariables: []
+                    outputVariables:
+                      - name: time
+                        type: String
+                        value: formatted_time
+                      - name: timeZone
+                        type: String
+                        value: desired_timezone
+                  timeout: 10m
+              - step:
+                  name: autoapproval
+                  identifier: autoapproval
+                  type: HarnessApproval
+                  timeout: 1d
+                  spec:
+                    approvalMessage: |-
+                      Please review the following information
+                      and approve the pipeline progression
+                    includePipelineExecutionHistory: true
+                    approvers:
+                      minimumCount: 1
+                      disallowPipelineExecutor: false
+                      userGroups:
+                        - account._account_all_users
+                    isAutoRejectEnabled: false
+                    approverInputs: []
+                    autoApproval:
+                      action: APPROVE
+                      scheduledDeadline:
+                        timeZone: <+pipeline.stages.AutoApproval.spec.execution.steps.ShellScript_1.output.outputVariables.timeZone>
+                        time: <+pipeline.stages.AutoApproval.spec.execution.steps.ShellScript_1.output.outputVariables.time>
+                      comments: Auto approved by Harness via Harness Approval step
+        tags: {}
+        variables:
+          - name: zone
+            type: String
+            description: ""
+            required: false
+            value: Asia/Kolkata
+          - name: time
+            type: String
+            description: ""
+            required: false
+            value: 2023-12-20 09:24 AM
+```
+
+</details>
 
 ### Prevent approval by pipeline executor
 
-If you don't want the User that initiated the Pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option.
+If you don't want the User that initiated the Pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option. Even if the User is in the selected in User Group, they won't be able to approve this step.
 
 ### Approver inputs
 
-You can enter variables and when the approver views the step they can provide new values for the variables.
+In **Approver Inputs**, you can enter variables and when the approver views the step they can provide new values for the variables.
 
 If there are multiple approvers, the first approver sees the variables as you entered them in the step. If the first approver enters new values, the next approver sees the values the first approver entered.
 
@@ -210,11 +359,13 @@ These notifications help approvers to make their decision. There are two kinds o
 Use the **Include stage execution details in approval** option to include stage execution details in approval notifications. A summary of completed, running, and upcoming stages is shown. 
 
 #### CD execution metadata feature in notifications
+
 - Execution metadata like service, environment, and infrastructure identifiers are present for CD stages in approval notifications.
 - For upcoming CD stages with multiple services and(or) multiple environments, approval notifications support services, environments, infrastructures and environment groups' identifiers.
 
 
 #### Limitations of CD execution metadata feature in notifications
+
 - In certain situations, values for certain fields might not be resolved for future stages. In such cases, the notification will contain unresolved expressions for those fields. For instance, if a service is configured as an expression in a CD stage that comes after the current stage, then the notification will have an unresolved expression for that service.
 
   For such cases, wherein an approval step is meant for approval of a future CD stage, and the CD stage configuration contains expressions, then we recommend having appropriate expressions as a part of **Approval Message** field. Approval notification will include the approval message with expressions resolved till the approval step.
@@ -229,10 +380,15 @@ Use the **Include stage execution details in approval** option to include stage 
 ### Advanced settings
 
 Go to:
-
-- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings.md)
+- [Step Skip Condition Settings](/docs/platform/pipelines/step-skip-condition-settings)
 - [Step Failure Strategy Settings](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors.md)
+- [Use delegate selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors)
+- [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
+- [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+
+### Approval variables
+
+After an approval is granted, [\<+approval>](/docs/platform/variables-and-expressions/harness-variables#approval) variables store the approver name and email as well as any approval comments. These variables are useful if you want the pipeline to generate notifications about the approval.
 
 ### Notes
 
@@ -243,3 +399,4 @@ Go to:
 - [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
 - [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 - [Using Harness Approval APIs](/kb/continuous-delivery/articles/harness-approval-api)
+- [Add ServiceNow Approval steps and stages](/docs/platform/approvals/service-now-approvals)
