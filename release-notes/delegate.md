@@ -51,7 +51,7 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 ### Version 24.05.83001 <!--  May 21, 2024 -->
 
-#### Fixed issues
+#### New features and enhancements
 
 - Added support for proxies via Secure Connect for GitHub connectors. (CI-12130, ZD-61883)
 
