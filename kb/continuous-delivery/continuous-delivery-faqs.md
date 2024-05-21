@@ -8061,10 +8061,10 @@ Here is an example expression that converts a string variable named myString to 
 You can use this expression in any setting that supports expressions in Harness.
 
 
-#### Is the "Enable Native Helm steady state for jobs" option in default setting is for the steady state check?
+#### Is the "Enable Native Helm steady state for jobs" option a default setting for the steady state check?
 This selection is solely for verifying the steady state of a Kubernetes Job deployed via the Helm chart.
 
-#### Is there a way to get the notification whenever the new pipeline gets created?
+#### Is there a way to get a notification whenever a new pipeline gets created?
 No, As per the current design it's not possible.
 
 
