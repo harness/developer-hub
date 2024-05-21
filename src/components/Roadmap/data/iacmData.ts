@@ -37,7 +37,7 @@ export const IacmData: Horizon = {
       {
         tag: [{ value: "Security" }],
         title: "Security Plugins",
-        description: "Plugins for tfsec, tflint, and checkov that can be added to the IaCM pipeline to find security vulnerabilities and misconfiguration",
+        description: "Add Plugins for tfsec, tflint, and checkov to your IaCM pipeline to find security vulnerabilities and misconfiguration.",
       },
       {
         tag: [{ value: "Developer Experience" }],
