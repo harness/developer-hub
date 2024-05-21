@@ -91,21 +91,21 @@ import {
               module: MODULES.sto,
               description:
                 "See all detected issues in your main branches, latest images, and other target baselines.",
-              link: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview",
+              link: "/docs/security-testing-orchestration/dashboards/sto-overview",
             },
             {
               title: "Create Jira tickets for detected issues",
               module: MODULES.ci,
               description:
                 "You can easily create Jira tickets for issues detected during an STO build.",
-              link: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations/",
+              link: "/docs/security-testing-orchestration/notifications/jira-integrations",
             },
             {
               title: "Navigate and drill down into detected vulnerabilities",
               module: MODULES.ci,
               description:
                 "The Security Testing Dashboard enables you to view, navigate, discover, and investigate detected vulnerabilities in your organization.",
-              link: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard",
+              link: "/docs/security-testing-orchestration/dashboards/security-testing-dashboard",
             },
 
           ],
@@ -128,7 +128,7 @@ import {
               module: MODULES.sto,
               description:
                 "Learn how to create OPA policies to stop pipelines automatically",
-              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa",
+              link: "/docs/security-testing-orchestration/policies/create-opa-policies",
             },
           ],
         },
