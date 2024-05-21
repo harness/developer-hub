@@ -22,9 +22,9 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
 For more information, go to the following:
 
-- [Set up email notifications](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications)
+- [Set up email notifications](/docs/security-testing-orchestration/notifications/email-notifications)
 
-- [Set up Slack notifications](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/slack-notifications)
+- [Set up Slack notifications](/docs/security-testing-orchestration/notifications/slack-notifications)
 
 
 ## YAML pipeline example

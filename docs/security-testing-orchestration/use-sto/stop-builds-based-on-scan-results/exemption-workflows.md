@@ -18,7 +18,7 @@ Here are some situations where you might want to request an exemption for a spec
 - The security risk is low and remediation would require too much effort or expense.
 - The scanner identifies this as a vulnerability but it is, in fact, a false positive.
 - You can specify a time limit for an exemption (for example, expires in 7 days). In some cases, you might want to exempt an issue so you can deploy an important release. You could request an exemption if it expires within your organization's SLA for fixing security issues.
-- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations) to help you remediate your issues using AI.
+- There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/remediations/ai-based-remediations) to help you remediate your issues using AI.
 
 
 import request_exemption from '../static/request-exemption.png'

@@ -296,7 +296,7 @@ Here's an example of a container image vulnerability detected by a paid version 
 
 Harness AIDA™ uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results.
 
-For more information, go to [Fix issues using AI-enhanced remediation steps](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+For more information, go to [Fix issues using AI-enhanced remediation steps](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 ### Fail pipelines on severity
 

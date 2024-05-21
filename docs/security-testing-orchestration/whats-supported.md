@@ -107,11 +107,11 @@ Harness STO supports the following features for generating notifications and sto
 
 - You can configure STO to generate the following notifications automatically in response to issues detected in a scan:
 
-  - [New Jira tickets](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)  
+  - [New Jira tickets](/docs/security-testing-orchestration/notifications/jira-integrations)  
 
-  - [Email notifications](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications) 
+  - [Email notifications](/docs/security-testing-orchestration/notifications/email-notifications) 
   
-  - [Slack notifications](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/slack-notifications)
+  - [Slack notifications](/docs/security-testing-orchestration/notifications/slack-notifications)
 
 
 
