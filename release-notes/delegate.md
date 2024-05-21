@@ -55,6 +55,13 @@ For more information, go to [Delegate expiration policy](/docs/platform/delegate
 
 - Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
 
+### Version 24.05.82904 <!--  May 21, 2024 -->
+
+#### Hotfix
+
+- Tanzu steps will resolve the PCF CLI plugins path by checking the `HOME` environment variable. (CDS-95794, ZD-61882)
+>>>>>>> main
+
 ### Version 24.05.82205 <!--  May 20, 2024 -->
 
 #### Hotfix
