@@ -63,6 +63,7 @@ export const university: CardItem[] = [
     link: "/university/sto",
     numberOfCerts: 2,
     ILT_available: true,
+    SPT_available: true,
   },
   {
     title: "Chaos Engineering",

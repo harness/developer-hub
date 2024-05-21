@@ -48,7 +48,7 @@ Do the following:
 
 1. Select **Security Testing Orchestration** (left menu, top) > **Pipelines** > **Create a Pipeline**. Enter a name and click **Start**.
 
-2. In the new pipeline, select **Add stage** > **Security Tests**.
+2. In the new pipeline, select **Add stage** > **Security**.
 
 3. Set up your stage as follows:
 

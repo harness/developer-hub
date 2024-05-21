@@ -1,6 +1,6 @@
 ---
 title: Disconnect chaos infrastructure
-sidebar_position: 2
+sidebar_position: 4
 description: Guide to disconnect from Kubernetes and Linux chaos infrastructure
 redirect_from:
   - /docs/chaos-engineering/chaos-infrastructure/disconnect-chaos-infrastructure

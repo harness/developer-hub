@@ -10,7 +10,7 @@ import CustomImage from './build-custom-delegate-images-with-third-party-tools.m
 
 ## Install the default delegate
 
-Expand the section below for instructions on installing the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, or Kubernetes manifest or a Docker delegate using the `docker run` command. You can also review the instructions directly [here](/docs/platform/get-started/tutorials/install-delegate).
+Expand the section below for instructions on installing the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, or Kubernetes manifest or a Docker delegate using the `docker run` command. For more information, go to [Install Harness Delegate on Kubernetes or Docker](/docs/platform/get-started/tutorials/install-delegate).
 
 <details>
 <summary>Install the default delegate on Kubernetes or Docker</summary>
@@ -21,7 +21,7 @@ This video shows how to install a delegate.
 
 <DocVideo src="https://www.loom.com/embed/a935f18296ee4156900efcf60f20f224" width="100%" height="600" />
 
-The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. For the list of these binaries, go to [Third-party tools included in teh delegate image type](/docs/platform/delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
+The default delegate image, denoted by the `yy.mm.verno` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. For the list of these binaries, go to [Third-party tools included in teh delegate image type](/docs/platform/delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, Harness recommends that you use the minimal delegate explained below.
 
 ## Install minimal delegate with 3rd party custom binaries
 
@@ -29,7 +29,7 @@ The minimal delegate image, denoted by the `yy.mm.verno.minimal` image tag, does
 
 ### Use INIT_SCRIPT
 
-This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly. Go to [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly. Go to [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 <details>
 <summary>Use INIT_SCRIPT</summary>

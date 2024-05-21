@@ -459,6 +459,21 @@ The AutoStopping savings calculation occurs every 24 hours. For newly created ru
 * Ensure that the rule has been accessed at least once, and the 'Last Activity' column is populated.
 * Verify the health of your Cloud/Kubernetes connectors."
 
+### How to rotate certificate on Autostopping Proxy?
+To rotate a certificate on the Autostopping Proxy, follow these steps:
+
+1. Generate new secrets in the cloud provider for the certificate and secret.
+
+2. Navigate to the load balancers page.
+
+3. Locate and select the Autostopping Proxy.
+
+4. Edit the Autostopping Proxy settings.
+
+5. Update the secrets for the certificate and secret with the newly generated ones.
+
+6. Save the changes to the proxy settings.
+
 ### How are we calculating savings for Kubernetes workloads under AutoStopping rules?
 
 The hourly rate for a Kubernetes workload is determined by the cost of the node on which its pods are hosted. The proportion of node cost attributed to each pod may vary.
@@ -503,6 +518,15 @@ While re-enabling the Autostopping rule, Harness adds the ALB rules back. Which 
 ### How to set all paths to trigger on power for Autostopping rule?
 
 Set a wildcard(`*`) on the Path Match in Autostopping rule creation.
+
+### How do we onboard and access RDS instance/cluster to Autostopping?
+To onboard and access an RDS instance/cluster with Autostopping, you have several options:
+
+1. **Access Through Autostopping Proxy**: Connect to the RDS cluster via the Autostopping proxy. Instructions for connecting through the proxy are available on the Autostopping rule details page. As long as users access the RDS cluster through the proxy, Harness ensures the RDS cluster remains running.
+
+2. **Set Uptime Fixed Schedule**: Establish an uptime fixed schedule for the RDS cluster during working hours. Harness ensures the cluster is operational according to this schedule.
+
+3. **Use RDS Autostopping Rule as Dependency**: Employ the RDS Autostopping rule as a dependency for another Autostopping rule, such as one for an EC2 instance. When the parent resource (e.g., EC2) is operational, Harness ensures that the dependent resource (RDS) remains running as well.
 
 ## Dashboards
 
@@ -697,3 +721,10 @@ Yes, users can accomplish this by creating a Yearly budget and selecting the mon
 ### What is FinOps in Harness?
 
 FinOps, short for Financial Operations, in Harness refers to the practice of managing cloud costs effectively within the Harness platform. It involves optimizing cloud spending, budgeting, forecasting, and allocation of resources to ensure efficient utilization of cloud resources while controlling costs.
+
+#### Why is the total savings not displayed for one of my auto-saving rules for RDS in Harness?
+To resolve this, you may need to check the configuration of your auto-saving rule and ensure that it is correctly set up to calculate and display the total savings.
+
+
+#### What should I tag my instances with to be shut down by the stop-after-hours Rule?
+To ensure that your instances are shut down by the "stop-after-hours" Rule, you should tag them with a specific tag that the Rule will recognize. Typically, this tag should be defined in the Rule's configuration, and you should use the exact tag specified there when tagging your instances.

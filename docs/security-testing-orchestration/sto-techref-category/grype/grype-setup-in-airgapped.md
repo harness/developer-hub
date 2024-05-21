@@ -31,7 +31,7 @@ The Grype container image provided by Harness includes the latest database at th
 
 To to verify that Grype runs as intended in your air-gapped environment, do the following:
 
-1. Add a CI Build or Security Tests stage to your Harness pipeline.
+1. Add a CI Build or Security stage to your Harness pipeline.
 
 2. Set up a [Grype step](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) in the stage. 
 

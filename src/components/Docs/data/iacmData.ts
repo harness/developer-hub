@@ -37,13 +37,13 @@ export const docsCards: CardSections = [
         title: "Provision and destroy workspaces",
         description: "Learn how to provision and destroy workspaces.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/provision-workspace",
+        link: "/docs/infra-as-code-management/pipelines/operations/provision-workspace",
       },
       {
         title: "Review workspace resources, states, and execution history",
         description: "Explore the details of a workspace.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/review-workspace",
+        link: "/docs/infra-as-code-management/workspaces/reports-insights/review-workspace"
       }
     ]
   },
@@ -55,13 +55,13 @@ export const docsCards: CardSections = [
         title: "Approval Step",
         module: MODULES.iacm,
         description: "Learn how to use the approval step to review resource changes before applying them.",
-        link: "/docs/infra-as-code-management/workspaces/approval-step",
+        link: "/docs/infra-as-code-management/pipelines/iacm-plugins/approval-step",
       },
       {
         title: "PR Automation",
         module: MODULES.iacm,
         description: "Learn how to set up a PR pipeline for infrastructure changes.",
-        link: "/docs/infra-as-code-management/workspaces/pr-automation",
+        link: "/docs/infra-as-code-management/pipelines/operations/pr-automation",
       },
       {
         title: "Cost Estimation",
@@ -73,26 +73,20 @@ export const docsCards: CardSections = [
         title: "Using OPA Policies with IaCM",
         module: MODULES.iacm,
         description: "Learn how to use OPA to add security and governance to your IaCM pipeline.",
-        link: "/docs/infra-as-code-management/workspaces/opa-workspace",
+        link: "/docs/infra-as-code-management/workspaces/project-setup/opa-workspace",
       },
       {
         title: "Drift Detection",
         module: MODULES.iacm,
         description: "Learn how to detect and get notified on drift.",
-        link: "/docs/infra-as-code-management/workspaces/drift-detection",
-      },
-      {
-        title: "IaCM Overview page",
-        description: "Learn how to view insightful data on managed resources",
-        module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/reports",
+        link: "/docs/infra-as-code-management/pipelines/operations/drift-detection",
       },
       {
         title: "Workspace Permissions and Access Control",
         module: MODULES.iacm,
         description:
           "Learn how to apply permissions and access controls on Workspaces",
-        link: "/docs/infra-as-code-management/workspaces/workspace-rbac",
+        link: "/docs/infra-as-code-management/workspaces/project-setup/workspace-rbac",
       }
     ]
   },
@@ -104,13 +98,13 @@ export const docsCards: CardSections = [
         title: "Using output parameter",
         description: "Learn how to use Terraform output variables in the pipeline",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/workspaces/output-variables",
+        link: "/docs/infra-as-code-management/workspaces/reports-insights/output-variables",
       },
       {
         title: "Use the Harness Delegate with IaCM",
         description: "Learn how the Harness Delegate works with IaCM.",
         module: MODULES.iacm,
-        link: "/docs/infra-as-code-management/use-delegates-with-iacm",
+        link: "/docs/infra-as-code-management/workspaces/project-setup/use-delegates-with-iacm",
       }
     ]
   }

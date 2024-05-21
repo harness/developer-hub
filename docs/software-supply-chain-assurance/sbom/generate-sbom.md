@@ -11,6 +11,8 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+import CosignKeyGeneration from '/docs/software-supply-chain-assurance/shared/generate-cosign-key-pair.md';
+
 A Software Bill of Materials (SBOM) is an exhaustive list of all components, libraries, and other dependencies utilized in a software application. The **SBOM Orchestration** step within Harness SSCA facilitates the generation of SBOMs for your software artifacts.
 
 This document elaborates on utilizing the SBOM Orchestration step for SBOM generation. If you already possess an SBOM and wish to ingest it, please refer to the [Ingest SBOM](./ingest-sbom-data.md) section.
@@ -74,7 +76,7 @@ Use the **SBOM Orchestration** step to generate an SBOM in either the **Build** 
 
 :::info 
 
-SBOM Orchestration and Enforcement steps in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
+**SBOM Orchestration** step in deploy stage can only be used in the [Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md)
 
 :::
 
@@ -84,17 +86,25 @@ The **SBOM Orchestration** step includes various settings for generating the SBO
 
 * **Step Mode:** Select **Generation**.
 
-* **SBOM Tool:** Select **Syft**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
+* **SBOM Tool:** Select **Syft or cdxgen**, which is the tool Harness uses to generate the SBOM. For other SBOM tools, go to [Ingest SBOM](./ingest-sbom-data.md).
 
 * **SBOM Format:** Select **SPDX** or **CycloneDX**.
 
-The Artifact Source allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
+If you're using Syft to generate the SBOM and want to ensure it includes all component licenses with high accuracy, you'll need to set specific environment variables based on your project's programming language. Here are the relevant variables:
 
-:::warning Deprecation Alert:
+| Programming Language | Name of Variable | Value         | 
+|----------------------|----------------|-----------------|
+| Go          | `SYFT_GOLANG_SEARCH_REMOTE_LICENSES`             | true
+| Java                 | `SYFT_JAVA_USE_NETWORK`         | true    |
+| JavaScript                  | `SYFT_JAVASCRIPT_SEARCH_REMOTE_LICENSES`           | true     |
 
-Please note that the previously available `Container` option, has now been deprecated. In its place, we now offer native support for DockerHub, ECR, GCR, and ACR. Additionally, the support for other registries is coming soon. We encourage users to connect to their registries using the dedicated options available within the list of artifact sources.
+To add a new environment variable, go to **Overview** section of your Build stage, and expand the **Advanced** section.
 
-:::
+<DocImage path={require('./static/syft-flags.png')} width="50%" height="50%" title="Click to view full size image" />
+
+By setting these variables, Syft can more effectively fetch and populate the licensing data for the components in your SBOM. This not only enhances the quality of the SBOM but also improves its overall [SBOM score](./sbom-score.md). If your SBOM contains `NOASSERTIONS`, it indicates that Syft was unable to retrieve necessary data.
+
+The **Artifact Source** allows you to specify the source of the artifact. Presently, the SBOM Orchestration step supports both containers and code repositories. Specifically for containers, it offers native support with DockerHub and ECR. Here's how you can configure them accordingly.
 
 <Tabs>
   <TabItem value="dockerhub" label="DockerHub" default>
@@ -103,13 +113,20 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Container Registry:** Select the [Docker Registry connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that is configured for the DockerHub container registry where the artifact is stored.
 
-* **Image:** Enter the name of your image with tag, such as `my-docker-org/repo-name:tag`.
+* **Image:** Enter the name of your image with tag, such as `repo-name:tag`.
 
-* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+<details>
+<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
 
-* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+<CosignKeyGeneration />
 
-* **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
+</details>
+
+* **Private Key (optional):** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **Password (optional):** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **SBOM Drift (optional):** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
 
 <DocImage path={require('./static/dockerhub-sbom.png')} width="50%" height="50%" title="Click to view full size image" />
@@ -128,9 +145,16 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Account ID:** The unique identifier associated with your AWS account.
 
-* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+<details>
+<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
 
-* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+<CosignKeyGeneration />
+
+</details>
+
+* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
 
 * **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
@@ -151,9 +175,16 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Project ID:** Enter the unique identifier of your Google Cloud Project. The Project-ID is a distinctive string that identifies your project across Google Cloud services. example: `my-gcp-project`
 
-* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+<details>
+<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
 
-* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+<CosignKeyGeneration />
+
+</details>
+
+* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
 
 * **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
@@ -173,9 +204,16 @@ Please note that the previously available `Container` option, has now been depre
 
 * **Subscription Id:** Enter the unique identifier that is associated with your Azure subscription. 
 
-* **Private Key:** The [Harness file secret](/docs/platform/secrets/add-file-secrets) containing the private key to use to sign the attestation.
+<details>
+<summary>Generate key pairs using Cosign for SBOM Attestation</summary>
 
-* **Password:** The [Harness text secret](/docs/platform/secrets/add-use-text-secrets) containing the password for the private key.
+<CosignKeyGeneration />
+
+</details>
+
+* **Private Key:** Input your Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
+
+* **Password:** Input your Password for the Private key from the [Harness file secret](/docs/platform/secrets/add-file-secrets).
 
 * **SBOM Drift:** This feature allows you to track changes in SBOMs, it can detect the changes by comparing the generated SBOM against a specified one. For an in-depth understanding of this functionality, please refer to the [SBOM Drift documentation](/docs/software-supply-chain-assurance/sbom/sbom-drift). If you prefer not to detect any changes in SBOMs, leave this option unchecked.
 
@@ -225,4 +263,4 @@ SBOMs for both Containers and Code Repositories are accessible in the [Artifacts
 
 ## Next steps
 
-After generating an SBOM, you can apply [SBOM Policy Enforcement](../ssca-policies/overview.md) to achieve open source governance.
+After generating an SBOM, you can apply [SBOM Policy Enforcement](../sbom-policies/overview.md) to achieve open source governance.

@@ -11,11 +11,6 @@ This topic describes the versions of HCE, the interaction between different comp
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
 
-Harness Chaos Engineering is available in **SaaS** and **self-managed** versions.
-
-1. **SaaS (Software-as-a-service)**: You either sign up or get invited to a specific project. You can also create a project if you have the necessary permissions. HCE helps manage the cluster.
-2. **SMP (Self-managed platform)**: You create, manage and maintain your clusters. You are responsible for providing permissions to projects and handling issues associated with them.
-
 ## Steps to execute a HCE experiment
 
 To create a chaos experiment, complete the following steps:

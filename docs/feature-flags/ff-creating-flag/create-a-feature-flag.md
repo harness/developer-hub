@@ -1,7 +1,7 @@
 ---
 title: Create a Feature Flag
 description: This topic describes how to create a feature flag in Harness.
-sidebar_position: 20
+sidebar_position: 15
 helpdocs_topic_id: 1j7pdkqh7j
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false

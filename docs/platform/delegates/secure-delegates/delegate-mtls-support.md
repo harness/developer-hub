@@ -4,6 +4,9 @@ description: How to set up mTLS support
 # sidebar_position: 40
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 mTLS is part of the TLS protocol, which allows the server to verify the authenticity of the client. To achieve that, the client has to provide a client certificate during the TLS handshake, which is verified by the server using a previously configured CA certificate.
 
 Due to security reasons, every customer must create their own CA certificate and signed client certificates, and Harness hosts a dedicated mTLS endpoint (subdomain) for every account that has mTLS enabled.
@@ -20,7 +23,7 @@ mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io
 
 ## Create a CA certificate and a client certificate
 
-Harness does not create or distribute the CA and client certificates that are used for mTLS. You must set up the certificates and explicitly provide them to the delegate by mounting a Kubernetes secret.
+Harness does not create or distribute the CA and client certificates that are used for mTLS. You must set up the certificates and configure your delegate to use them as part of an mTLS connection.
 
 :::warning Important note
 Project-level certificates are not supported for mTLS delegates.
@@ -31,7 +34,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ### Create a CA certificate
 
-- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (ca.crt) to Harness to enable mTLS.
+- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (`ca.crt`) to Harness to enable mTLS.
 
     ```
      openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \
@@ -42,7 +45,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 1. Create the configuration used to create the client certificate:
 
-   ```
+    ```
     cat << EOF > "client.cnf"
     [req]
     default_bits = 2048
@@ -58,7 +61,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
     [v3_req]
     # empty
     EOF
-   ```
+    ```
 
 2. After the configuration file has been created, create a new certificate signing request together with the key pair:
 
@@ -75,176 +78,131 @@ In the following examples, OpenSSL is used to create the required certificates. 
     ```
 
    :::info note
-   You provide the client.crt and client.key to the delegate YAML when you install the delegate.
+   You provide the `client.crt` and `client.key` to the delegate YAML when you install the delegate.
    :::
 
-5. After you create the certificates, provide the public cert of the CA certificate to Harness support.
-6. Provide a unique API prefix to the location where your mTLS endpoint is hosted. You can set any prefix for your directory path, but it must be unique.
+5. After you create the certificates, provide the public cert of the CA certificate and a desired unique subdomain to Harness support.
 
    :::info note
    After this, Harness will perform the steps to enable the mTLS.
    :::
 
-## Move delegates to mTLS
+## Enable mTLS on delegate
 
-You can move existing delegates (with the image tag in `yy.mm.xxxxx` format) to mTLS, legacy delegates are not supported. For more information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+You can enable mTLS on delegates with the image tag in `yy.mm.xxxxx` format. Legacy delegates are not supported. For more information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
-### Prerequisites for delegate migration
+### Prerequisites for enabling mTLS on a delegate
 
-Before you migrate an existing delegate to an mTLS-enabled delegate, make sure that you meet the following prerequisites.
+Before you enable mTLS on a delegate, make sure that you meet the following prerequisites.
 
 - The delegate must have an image tag in _`yy.mm.xxxxx`_ format. It cannot be a legacy delegate.
 
 - You must have access to the delegate YAML.
 
-### Migrate a delegate to an mTLS-enabled Docker delegate
+### Configure mTLS on delegate
 
-To migrate an existing delegate for mTLS support, you run a Docker command.
+<Tabs>
+  <TabItem value="k8s" label="Kubernetes delegate" delegate>
 
-To migrate a delegate for mTLS support, do the following:
+  To enable mTLS on a Kubernetes delegate, you have to create a secret and update the delegate YAML. For an example Kubernetes manifest, go to [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml).
 
-1. Copy the following example command.
+  1. From the same folder where you have your `client.crt` and `client.key` files, run the following command to create the secret.
 
-   ```
-   docker run -d --cpus=1 --memory=2g -u root -v Path/To/client.crt:/etc/mtls/client.crt -v Path/To/client.key:/etc/mtls/client.key \
-     -e DELEGATE_NAME=docker-delegate \
-     -e NEXT_GEN="true" \
-     -e DELEGATE_TYPE="DOCKER" \
-     -e ACCOUNT_ID=[your account id] \
-     -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt \
-     -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key \
-     -e DELEGATE_TOKEN=********** \
-     -e LOG_STREAMING_SERVICE_URL=https://<YOUR_FQDN>.agent.harness.io/log-service/ \
-     -e MANAGER_HOST_AND_PORT=https://<YOUR_FQDN>.agent.harness.io harness/delegate:yy.mm.verno
-   ```
+      ```
+        kubectl create secret -n <delegate namespace> generic client-certificate \
+          --from-file client.crt=client.crt \
+          --from-file client.key=client.key
+      ```
 
-   `-v`: Mounts your `client.crt` and `client.key` files to the delegate Docker container.
-2. Update the `DELEGATE_CLIENT_CERTIFICATE_PATH` to the location of `client.crt` inside the container. In this example, it's `/etc/mtls/client.crt`.
-3. Update the `DELEGATE_CLIENT_CERTIFICATE_KEY_PATH` to the location of `client.key` inside the container. In this example, it's `/etc/mtls/client.key`.
-4. Update the `MANAGER_HOST_AND_PORT` value to `https://\<YOUR_FQDN>.agent.harness.io`.
-5. Update the `LOG_STREAMING_SERVICE_URL` value to `https://\<YOUR_FQDN>.agent.harness.io/log-service/`.
-6. Run the command.
+  2. In the `Deployment` resource of manifest YAML file, make the following updates:
 
-### Migrate a delegate to an mTLS-enabled Kubernetes delegate
+      1. Under `spec.template.spec.containers[0].env`, update the value for `MANAGER_HOST_AND_PORT` to `https://<subdomain>.agent.harness.io`.
 
-To migrate an existing delegate for mTLS support, you must update the delegate YAML. For an example Kubernetes manifest, go to [Sample Kubernetes manifest](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml).
+      2. Under `spec.template.spec.containers[0].env`, update the value for `LOG_STREAMING_SERVICE_URL` to `https://<subdomain>.agent.harness.io/log-service/`.
 
-To migrate a delegate for mTLS support, do the following:
+      3. Under `spec.template.spec.containers[0].env`, add the following YAML.
 
-1. In your delegate YAML, add the `client.crt` and `client.key` fields before the `Deployment` section.
+          ```yaml
+                  - name: DELEGATE_CLIENT_CERTIFICATE_PATH
+                    value: "/etc/mtls/client.crt"
+                  - name: DELEGATE_CLIENT_CERTIFICATE_KEY_PATH
+                    value: "/etc/mtls/client.key"
+          ```
 
-   ```yaml
+      4. Under `spec.template.spec.containers`, add the following YAML.
 
-     ---
+          ```yaml
+                  volumeMounts:
+                    - mountPath: /etc/mtls
+                      name: client-certificate
+                      readOnly: true
+          ```
 
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: PUT_YOUR_DELEGATE_NAME-account-token
-      namespace: harness-delegate-ng
-    type: Opaque
-    data:
-      # Replace the values below with base64 encoded PEM files or mount an existing secret.
-      client.crt: "{CERT}"
-      client.key: "{KEY}"
+      5. Under `spec.template.spec`, add the following YAML.
 
-    ---
-   ```
+          ```yaml
+                volumes:
+                  - name: client-certificate
+                    secret:
+                      secretName: client-certificate
+                      defaultMode: 400
+          ```
 
-2. In the `Deployment` section, update the `name:` value from `MANAGER_HOST_AND_PORT` to `https://\<YOUR_FQDN>.agent.harness.io`.
+  3. In the `ConfigMap` resource of manifest YAML file, make the following updates:
 
-3. Update the `LOG_STREAMING_SERVICE_URL` value to `https://\<YOUR_FQDN>.agent.harness.io/log-service/`
+      1. Under `data.config.yaml`, update the value for `managerHost` to `https://<subdomain>.agent.harness.io`.
 
-4. Add the two environment variables below.
+      2. Under `data.config.yaml`, add the following YAML.
 
-   ```yaml
-   - name: DELEGATE_CLIENT_CERTIFICATE_PATH
-     value: "/etc/mtls/client.crt"
-   - name: DELEGATE_CLIENT_CERTIFICATE_KEY_PATH
-     value: "/etc/mtls/client.key"
-   ```
+          ```yaml
+              clientCertificateFilePath: /etc/mtls/client.crt
+              clientCertificateKeyFilePath: /etc/mtls/client.key
+          ```
 
-5. Add the `volumeMounts` and `volumes` sections under `containers`.
+  4. In the `CronJob` resource of manifest YAML file, make the following updates:
 
-   ```yaml
-      volumeMounts:
-      - name: client-certificate
-        mountPath: /etc/mtls
-        readOnly: true
-        value: "/etc/mtls/client.crt"
-   volumes:
-   - name: client-certificate
-     secret:
-       secretName: kubernetes-delegate-client-certificate
-   ```
+      1. Under `jobTemplate.spec.template.spec.containers.volumeMounts`, add the following YAML.
 
-6. Add the client certificate and key section in the `ConfigMap` `upgrader-config`, then add your `managerHost` and port.
+          ```yaml
+                        - name: client-certificate
+                          mountPath: /etc/mtls
+                          readOnly: true
+          ```
 
-   ```yaml
-   ---
+      2. Under `jobTemplate.spec.template.spec.volumes`, add the following YAML.
 
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: PUT_YOUR_DELEGATE_NAME-upgrader-config
-     namespace: harness-delegate-ng
-   data:
-     config.yaml: |
-       mode: Delegate
-       dryRun: false
-       workloadName: PUT_YOUR_DELEGATE_NAME
-       namespace: harness-delegate-ng
-       containerName: delegate
-       clientCertificateFilePath: /etc/mtls/client.crt
-       clientCertificateKeyFilePath: /etc/mtls/client.key
-       delegateConfig:
-         accountId: PUT_YOUR_ACCOUNT_ID
-         managerHost: PUT_YOUR_MANAGER_ENDPOINT
-   ---
-   ```
+          ```yaml
+                      - name: client-certificate
+                        secret:
+                          secretName: client-certificate
+          ```
 
-7. In the `CronJob` section, add your certificate `volumes` and `volumeMount`.
+  5. Save and apply the manifest.
 
-   ```yaml
-   ---
 
-   apiVersion: batch/v1
-   kind: CronJob
-   metadata:
-     labels:
-       harness.io/name: upgrader-job
-     name: PUT_YOUR_DELEGATE_NAME-upgrader-job
-     namespace: harness-delegate-ng
-   spec:
-     schedule: "0 */1 * * *"
-     concurrencyPolicy: Forbid
-     startingDeadlineSeconds: 20
-     jobTemplate:
-       spec:
-         template:
-           spec:
-             serviceAccountName: upgrader-cronjob-sa
-             restartPolicy: Never
-             containers:
-             - image: harness/upgrader:latest
-               name: upgrader
-               imagePullPolicy: Always
-               envFrom:
-               - secretRef:
-                   name: PUT_YOUR_DELEGATE_NAME-upgrader-token
-               volumeMounts:
-                 - name: config-volume
-                   mountPath: /etc/config
-                 - name: client-certificate
-                   mountPath: /etc/mtls
-                   readOnly: true
-             volumes:
-               - name: config-volume
-                 configMap:
-                   name: PUT_YOUR_DELEGATE_NAME-upgrader-config
-               - name: config-certificate
-                 secret:
-                   secretName: kubernetes-delegate-client-certificate
-   ```
+  </TabItem>
 
-8. Save and deploy the manifest.
+  <TabItem value="docker" label="Docker delegate">
+    To enable mTLS on a Docker delegate, do the following:
+
+  1. Copy the following example command.
+
+        ```
+        docker run -d --cpus=1 --memory=2g -u root -v <path to client certificate>:/etc/mtls/client.crt -v <path to client key>:/etc/mtls/client.key \
+          -e DELEGATE_NAME=docker-delegate \
+          -e NEXT_GEN="true" \
+          -e DELEGATE_TYPE="DOCKER" \
+          -e ACCOUNT_ID=<account ID> \
+          -e DELEGATE_CLIENT_CERTIFICATE_PATH=/etc/mtls/client.crt \
+          -e DELEGATE_CLIENT_CERTIFICATE_KEY_PATH=/etc/mtls/client.key \
+          -e DELEGATE_TOKEN=<delegate token> \
+          -e LOG_STREAMING_SERVICE_URL=https://<subdomain>.agent.harness.io/log-service/ \
+          -e MANAGER_HOST_AND_PORT=https://<subdomain>.agent.harness.io harness/delegate:yy.mm.verno
+        ```
+
+  2. Update all of the placeholders: `<path to client certificate>`, `<path to client key>`, `<account ID>`, `<delegate token>`, and `<subdomain>`.
+  3. Run the command.
+
+  </TabItem>
+</Tabs>
+

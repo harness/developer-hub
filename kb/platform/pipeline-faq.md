@@ -45,7 +45,7 @@ Pipeline names are limited to 128 characters.
 
 ### What Harness method does recommend to update all pipelines when underlying configs were updated in the Git repository?
 
-Harness Git Experience typically syncs unidirectionally, from Harness to your Git repos. However, with bidirectional sync enabled, changes made on either the Git repo or Harness are automatically synchronized.
+Harness Git Experience typically syncs unidirectional, from Harness to your Git repos. However, with bidirectional sync enabled, changes made on either the Git repo or Harness are automatically synchronized.
 
 For more information, go to [Set up bidirectional sync for Git Experience](/docs/platform/git-experience/gitexp-bidir-sync-setup/).
 
@@ -91,7 +91,7 @@ With Harness CD, you can use a [Deployment freeze](/docs/continuous-delivery/man
 
 ### How do I fix the error "You are missing the following permission: Create / Edit Pipelines"?
 
-To create or edit pipelines, you need the `Create/Edit` or `Write` pipelines permission in Harness. Your permissions are determined by your assigned [roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#rbac-components).
+To create or edit pipelines, you need the Create/Edit or Write pipelines permission in Harness. Your permissions are determined by your assigned [roles and resource groups](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#rbac-components).
 
 ### Can I use RBAC to hide pipelines?
 
@@ -558,7 +558,7 @@ You can configure [delegate selectors](https://developer.harness.io/docs/platfor
 
 Harness maintains a local cache of all connected delegates to execute tasks and optimize performance. The cache is refreshed every 3 minutes, which means that it may take up to 3 minutes for a new delegate to be eligible to execute a task once it's connected. This has been in production for a few years and has proven to be effective.
 
-To ensure a smooth transition between bringing up a new delegate and terminating an old pod, we recommend having a grace period. In our YAML configuration, we use the `minReadySeconds` field to ensure that old pods die after 2 minutes of a new pod being in the ready state. If your delegate YAML file doesn't have this field, you can download a new YAML and add it to prevent older pods from being killed before the new pod receives traffic.
+To ensure a smooth transition between bringing up a new delegate and terminating an old pod, Harness recommends having a grace period. Harness uses the `minReadySeconds` field in our YAML configuration to ensure that old pods die after 2 minutes of a new pod being in the ready state. If your delegate YAML file doesn't have this field, you can download a new YAML and add it to prevent older pods from being killed before the new pod receives traffic.
 
 ### How can I assign the same delegate replica to all steps in my pipeline?
 
@@ -633,8 +633,8 @@ You can utilize the expression `<+pipeline.stages.STAGE_ID.executionId>` to retr
 Currently there is no support for notifications when a status check fails.
 
 #### Why did updating the app ID in NextGen to the new Microsoft Entra ID app cause a conflict with FirstGen mapping in SAML authentication, despite them being considered separate instances?
-When creating a new SAML app integration in NextGen, it automatically inherits the settings from the existing FirstGen app integration. Consequently, any modifications made to the SAML app integration in NextGen will also impact the integration in FirstGen. 
- 
+When creating a new SAML app integration in NextGen, it automatically inherits the settings from the existing FirstGen app integration. Consequently, any modifications made to the SAML app integration in NextGen will also impact the integration in FirstGen.
+
 This occurs because the SAML app integration settings are stored at the account level, affecting all instances associated with that account. To prevent conflicts between the SAML app integrations in FirstGen and NextGen, ensure that the email addresses used in both instances match.
 
 #### How can I create a delegate with Terraform?

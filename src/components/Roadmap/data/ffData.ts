@@ -2,55 +2,12 @@ import { Horizon } from "./roadmapData";
 
 export const FfData: Horizon = {
   Now: {
-    description: "Q1 2024, Feb-Apr 2024",
-    feature: [
-      {
-        tag: [{ value: "Lifecycle Management" }],
-        title: "Custom Configuration for Stale Flag Cleanup",
-        description:
-          "Ability to choose custom criteria such as age of flag to determine stale flag definition.",
-      },
-      {
-        tag: [{ value: "RBAC" }],
-        title: "Flag-level RBAC",
-        description: "Ability to add RBAC to groups of flags so you can control releases in groups.",
-      },
-      {
-        tag: [{ value: "RBAC" }],
-        title: "Splitting Create and Edit Roles for RBAC Enhancements",
-        description: "Enhancement granularity of RBAC permissions across defined roles and environments.",
-      },
-      {
-        tag: [{ value: "Proxy" }],
-        title: "Proxy Re-architecture for Scalability Improvements",
-        description: "Redesign of proxy architecture for new level of resilience.",
-      },
-      {
-        tag: [{ value: "Platform Integration" }],
-        title: "Cost Impact of a Feature Change",
-        description: "Ability to see cost impact of a feature change and relate it to a cloud cost issue.",
-      },
-      {
-        tag: [{ value: "Target Group Enhancements" }],
-        title: "Extend Operator Support",
-        description: "New operator support to help with complex rules, conditions and clauses on targets.",
-      },
-    ],
-  },
-  Next: {
     description: "Q2 2024, May-Jul 2024",
     feature: [
       {
-        tag: [{ value: "Flag and Target Management" }],
-        title: "Flag Tag Management v2",
-        description:
-          "Iterative improvements on existing flag tag management such as toggling a group of flags.",
-      },
-      {
-        tag: [{ value: "Experimentation" }],
-        title: "A/B Testing",
-        description:
-          "Improved A/B testing framework for segmenting tests between targets.",
+        tag: [{ value: "Target Group Enhancements" }],
+        title: "Extend Operator Support (AND)",
+        description: "New operator support to help with complex rules, conditions and clauses on targets.",
       },
       {
         tag: [{ value: "Pipelines" }],
@@ -69,9 +26,21 @@ export const FfData: Horizon = {
       },
     ],
   },
-  Later: {
-    description: "Q3 2024+, Aug 2024 & beyond",
+  Next: {
+    description: "Q3 2024, Aug-Oct 2024",
     feature: [
+      {
+        tag: [{ value: "Flag and Target Management" }],
+        title: "Flag Tag Management v2",
+        description:
+          "Iterative improvements on existing flag tag management such as toggling a group of flags.",
+      },
+      {
+        tag: [{ value: "Experimentation" }],
+        title: "A/B Testing",
+        description:
+          "Improved A/B testing framework for segmenting tests between targets.",
+      },
       {
         tag: [{ value: "SDKs" }],
         title: "SDK Troubleshooting with AIDA",
@@ -90,9 +59,45 @@ export const FfData: Horizon = {
       },
     ],
   },
+  Later: {
+    description: "Q4 2024+, Nov 2024 & beyond",
+    feature: [
+      {
+        tag: [{ value: "Platform Integration" }],
+        title: "Chaos Engineering and Feature Flag Integration 2.0",
+        description: "Ability to automatically test the resilience of a feature based on a feature flag change.",
+      },
+      {
+        tag: [{ value: "Platform Integration" }],
+        title: "Feature Flag Integration with Software Engineering Insights",
+        description: "Ability to integrate with the SEI module to understand how feature flags impact team's velocity and other DORA metrics.",
+      },
+    ],
+  },
   Released: {
     description: "What has been released",
     feature: [
+      {
+        tag: [{ value: "Platform Integration" }],
+        title: "Cost Impact of a Feature Change",
+        description: "Ability to see cost impact of a feature change and relate it to a cloud cost issue.",
+      },
+      {
+        tag: [{ value: "Proxy" }],
+        title: "Proxy Re-architecture for Scalability Improvements",
+        description: "Redesign of proxy architecture for new level of resilience.",
+      },
+      {
+        tag: [{ value: "RBAC" }],
+        title: "Splitting Create and Edit Roles for RBAC Enhancements",
+        description: "Enhancement granularity of RBAC permissions across defined roles and environments.",
+      },
+      {
+        tag: [{ value: "Lifecycle Management" }],
+        title: "Custom Configuration for Stale Flag Cleanup",
+        description:
+          "Ability to choose custom criteria such as age of flag to determine stale flag definition.",
+      },
       {
         tag: [{ value: "Lifecycle Management" }],
         title: "Automated Stale Flag Removal",

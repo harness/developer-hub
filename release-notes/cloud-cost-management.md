@@ -19,6 +19,41 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 ## May 2024
 
+### Version 1.17.0
+
+#### New features and enhancements
+
+- Commitment Active Actions Details Enhancements:
+  - Added formatting to the expiry date for improved readability.
+  - Aligned savings summary chart colors with graph colors for improved visual coherence.
+  - Added option to expand details about a recommendation by clicking on it. This enhancement allows users to gain deeper insights into their recommendations. After clicking on it, users can view both the potential savings after applying the recommendation and the potential spend without applying the recommendation. Additionally, users can access details about the source Reserved Instance (RI).[CCM-17844, CCM-17474]
+
+- Cloud Perspective Recommendation Display: Recommendations alongwith their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. [CCM-17639]
+
+- Enhanced JSON Viewer: The same JSON Viewer used in the Evaluation details page has been added to the Governance Recommendation details page, providing users with consistent and user-friendly access to the output data with all the available filters. [CCM-17436]
+
+#### Fixed issues
+
+- Updated Messaging in Commitment Orchestrator: In Commitment Orchestrator, we have improved the UI by adding appropriate messaging about recent actions once they are completed, and for actions that do not require user intervention, ensuring clarity and accuracy in the displayed information. [CCM-17655]
+
+### Version 1.16.0
+
+#### New features and enhancements
+
+- Expanded Azure Region Options: We have added a new 'All' option in Azure regions, which enables users to run a Governance policy across all regions. [CCM-17588]
+
+- Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
+
+- Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. [CCM-17380]
+
+#### Fixed issues
+
+- Label Adjustment for Clarity: We have added a minor change to update label from "Active Rules" to "Total Rules" for enhanced clarity and accuracy in Autostopping UI. [CCM-16450]
+
+- SMP Overview Screen Total Cost: We have updated the query used to retrieve active spend on the overview page for SMP to ensure accurate data representation. This fix ensures alignment between the total cost displayed on the SMP Overview Screen and the data presented in perspectives. [CCM-17380]
+
+- Perspective Dashboard Optimization: As part of this fix, we have disabled redundant parentheses from BigQuery SQL query to optimize the perspective and cost category queries, enhancing query efficiency and performance.
+  
 ### Version 1.14.3
 
 #### New features and enhancements

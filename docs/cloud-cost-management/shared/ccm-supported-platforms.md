@@ -637,7 +637,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 |Perspective Preferences| ✅ | ❌  | ❌  | ✅ | 
 
 :::note
-- Margin Obfuscation is not supported on Harness SMP.
+- Margin Obfuscation is not supported on Harness SMP. For others, it is behind a feature flag `CCM_MSP`. To enable the feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io)
 - Istio virtual services are available for Azure in strict mode.
 - The cost data for Kubernetes workloads will be derived from the public pricing provided by the respective cloud provider.
 - Tracking recommendation lifescyle through Jira and ServiceNow is not supported in Air-gapped environments.
@@ -650,3 +650,5 @@ CCM is supported in [Harness Self-Managed Enterprise Edition installs on an air-
 CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access. For more information, go to [Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition](../get-started/ccm-smp/aws-smp.md).
 
 For a comprehensive list of supported features in other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
+
+
