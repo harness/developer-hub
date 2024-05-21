@@ -1,7 +1,7 @@
 ---
 title: Use security test policies to stop STO pipelines automatically 
 description: Use security test policies to stop pipelines automatically.
-sidebar_label: Enforcing OPA policies
+sidebar_label: Enforce OPA policies
 sidebar_position: 10
 ---
 

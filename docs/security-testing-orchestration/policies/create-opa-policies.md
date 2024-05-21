@@ -1,7 +1,7 @@
 ---
 title: Create OPA policies stop STO pipelines automatically 
 description: Create OPA policies to stop pipelines automatically.
-sidebar_label: Creating OPA policies
+sidebar_label: Create OPA policies
 sidebar_position: 10
 redirect_from: /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa
 ---

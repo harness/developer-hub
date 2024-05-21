@@ -1,7 +1,7 @@
 ---
 title: Generate automated emails for detected issues in STO
-description: Send emails automatically based on severity levels
-sidebar_label: Set up email notifications
+description: Send emails automatically based on severity levels.
+sidebar_label: Email notifications for detected vulnerabilities
 sidebar_position: 40
 ---
 

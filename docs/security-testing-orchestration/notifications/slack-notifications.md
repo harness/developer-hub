@@ -1,7 +1,7 @@
 ---
 title: Set up Slack notifications for detected issues in STO
 description: Set up Slack notifications based on severity levels
-sidebar_label: Set up Slack notifications
+sidebar_label: Slack notifications for detected vulnerabilities
 sidebar_position: 45
 ---
 
