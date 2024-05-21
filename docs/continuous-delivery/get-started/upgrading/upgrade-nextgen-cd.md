@@ -124,7 +124,7 @@ For details, go to [Policy as Code](/docs/category/policy-as-code).
 Added an account setting, `allowCrossGenerationAccess`, that you can use to enable cross generational access between CD FirstGen and NextGen. This setting is visible to CD subscribed (free/paid account) users only. This setting can be changed by account admins only.
 
 :::info note
-After migrating to NextGen, make sure to clean up the user accounts in FirstGen.
+Following the migration to NextGen, you must remove all user accounts within FirstGen.
 :::
 
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
