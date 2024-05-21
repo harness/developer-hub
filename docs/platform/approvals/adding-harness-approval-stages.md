@@ -270,7 +270,7 @@ If you don't want the User that initiated the Pipeline execution to approve this
 
 ### Approver inputs
 
-In **Inputs to be provided by approver**, you can enter variables and when the approver views the step they can provide new values for the variables.
+In **Approver Inputs**, you can enter variables and when the approver views the step they can provide new values for the variables.
 
 If there are multiple approvers, the first approver sees the variables as you entered them in the step. If the first approver enters new values, the next approver sees the values the first approver entered.
 
