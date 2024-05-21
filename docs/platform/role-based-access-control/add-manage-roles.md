@@ -147,15 +147,17 @@ After configuring roles and resource group, you assign them to [users](./add-use
 
 ## Add permissions access to specific resources selected via Custom Resource Group
 
-You can do role bindings to a user and attach the user to a specific resource group at the Account, Project, or Organization scope. To add new users to a custom Resource Group with role bindings, do the following:
+You can do role bindings to a user and attach the user to a specific resource group at the Account, Project, or Organization scope.
+
+To add new users to a custom Resource Group with role bindings, do the following:
 
 1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add new users to a custom Resource Group and do Role bindings.
 2. Select **Access Control**, and then choose **Resource Group**.
 3. Create a new **Resource Group**, select the desired resource types, and click **Save**.
 4. Return to **Account Settings**, select **Access Control**, then choose **Users**.
-5. Click **New User**, enter the user's email, and click **Add** under **Role Bindings**.
-6. Click **Select a role** under **Roles** and choose **Account Admin** from the drop down.
-7. Click **All Resources Including** under **Resource Groups** and select your respective **Resource Group**.
+5. Click **New User**, enter the user's email, then, under **Role Bindings**, select **Add**.
+6. Under **Roles**, click **Select a role**, then choose **Account Admin** from the dropdown.
+7.  Under **Resource Groups**, click **All Resources Including** and select your **Resource Group**.
 8. Click **Apply** to send an invitation to the user's email. After the user accepts the invite, the role binding process is complete.
 9. After you select **Apply**, an invitation to the specified user email will be sent. After the user accepts the invite, the role-binding process is complete.
 
