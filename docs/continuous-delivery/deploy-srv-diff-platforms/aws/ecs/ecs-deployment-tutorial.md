@@ -293,10 +293,17 @@ Let's look at an example using a task definition file in the [Harness File Store
 
 ![](./static/ecs-deployment-tutorial-40.png)
 
-You can use a remote repo, but for this example we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). 2. Select **Harness**, and then select **Continue**. 3. In **Task Definition**, select **Add Task Definition**. 4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**. 5. In **Manifest Details**, enter a name for the task definition. 6. In **File/Folder Path**, select **Select**. The Harness File Store appears. 7. Create a new folder. 8. In the new folder, create a new file named **RegisterTaskDefinitionRequest.yaml**. 9. Paste the following Task Definition into the file, select **Save**, and then select **Apply Selected**.
-
-1.  Replace the two `<Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS.
-2.  When you are done, in **Manifest Details**, select **Submit**.
+You can use a remote repo, but for this example we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). 
+2. Select **Harness**, and then select **Continue**. 
+3. In **Task Definition**, select **Add Task Definition**. 
+4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**. 
+5. In **Manifest Details**, enter a name for the task definition. 
+6. In **File/Folder Path**, select **Select**. The Harness File Store appears. 
+7. Create a new folder. 
+8. In the new folder, create a new file named **RegisterTaskDefinitionRequest.yaml**. 
+9. Paste the following Task Definition into the file, select **Save**, and then select **Apply Selected**.
+10. Replace the two `<Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS.
+11. When you are done, in **Manifest Details**, select **Submit**.
 
 JSON Example:
 
