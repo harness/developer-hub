@@ -8060,4 +8060,8 @@ Here is an example expression that converts a string variable named myString to 
 ```<+myString.toUpperCase()>```
 You can use this expression in any setting that supports expressions in Harness.
 
+#### Does harness support polling on folders?
+We currently, do not support polling on folders. We have an open enhancement request to support this.
 
+#### How do I filter out Approvals for Pipeline Execution Time in Dashboards?
+You can get the Approval step duration from the **Deployments and Services V2** data source.
