@@ -44,6 +44,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. (CI-10509)
 
+  This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 #### Fixed issues
 
 - Added a validation to Git Clone steps to ensure that the step has a Git connector and repository selected before applying changes. (CI-12477)
