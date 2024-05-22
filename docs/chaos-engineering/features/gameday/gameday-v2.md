@@ -31,7 +31,7 @@ If you have created your GameDay earlier, select **Start New Run** to run the Ga
 
 ### Add stakeholder and role
 
-2. Add stakeholder names, their roles, and whether they are allowed to approve a GameDay run. Only a stakeholder can approve or reject a GameDay run. Select **Next: Select Prerequisites**.
+2. Add stakeholder names, their roles, and whether they are required to approve a GameDay run. Anyone can approve or reject a GameDay run. Select **Next: Select Prerequisites**.
 
     ![](./static/v2/add-stakeholder-3.png)
 
@@ -47,7 +47,7 @@ You can create prerequisites for your GameDay to:
 
     ![](./static/v2/create-prereq-4.png)
 
-4. Enter a name and a description (optional). Select **Save**.
+4. Enter a title and a description (optional). Select **Save**.
 
     ![](./static/v2/save-pre-5.png)
 
@@ -65,15 +65,9 @@ You can create prerequisites for your GameDay to:
 
     ![](./static/v2/save-gameday-10.png)
 
-:::tip
-* Select the experiment to view the details of the selected experiment.
-
- ![](./static/v2/select-exp-11.png)
-:::
-
 ### Check prerequisites
 
-8. Once the stakeholder approves the GameDay run, you can proceed.
+8. Once the stakeholders approve the GameDay run, you can proceed.
 
     ![](./static/v2/get-approval-12.png)
 
@@ -87,7 +81,7 @@ You can create prerequisites for your GameDay to:
 
     ![](./static/v2/check-prereq-15.png)
 
-10. HCE checks if the prerequisites are fulfilled. If one of them is not fulfilled, you will not be able to execute the experiments.
+10. You can verify if the prerequisites are fulfilled, and check them. If one of them is not fulfilled, you will not be able to execute the experiments.
 
     ![](./static/v2/pending-prereq-16.png)
 
@@ -111,12 +105,12 @@ You can create prerequisites for your GameDay to:
 
  ![](./static/v2/terminal-run-29.png)
 
-- Select **Add/View Notes** to note your findings about the GameDay.
+- Select **Add/View Notes** to note your findings about experiments in the GameDay.
 
  ![](./static/v2/experiment-notes-22.png)
 :::
 
-13. Once the experiments complete execution, you can view the summary of the runs and the run observations. Select **Complete GameDay Run**.
+13. Once the experiments complete execution, select **Complete GameDay Run**. You can view the summary of the runs and the run observations.
 
     ![](./static/v2/complete-25.png)
 
@@ -125,18 +119,6 @@ You can create prerequisites for your GameDay to:
 
  ![](./static/v2/done-running-28.png)
 :::
-
-### Download report
-
-14. Select **Download Run Report** to download the report.
-
-    ![](./static/v2/download-27.png)
-
-### View experiment execution
-
-- Select the experiment in the GameDay to view manifest details. Select **View Execution** to see more.
-
-    ![](./static/v2/experiment-details-23.png)
 
 ## Conclusion
 
