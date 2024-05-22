@@ -430,6 +430,16 @@ Yes, Harness provides support for Okta and Azure OneLogin out of the box, but yo
 
 Perform a sync within Okta to resolve the user limit error during Harness provisioning.
 
+### Why do I get an error for my Jit-provisioned user when I try to update via SCIM?
+
+If you're utilizing SCIM, Harness recommends that you provision your users exclusively through SCIM rather than Just-In-Time (JIT) provisioning. This is because when a user is initially provisioned, their fields are updated according to the method of initial provisioning.
+
+To resolve the issue, remove and then re-add the user, ensuring that they are now managed by SCIM.
+
+### What could be the potential reasons for encountering errors when utilizing a Harness-created user group Single Sign-On (SSO) link, particularly when the identical group is pushed from SCIM?
+
+This is expected behavior because the user group is linked to an SSO group through group authorization, making it unmanageable via SCIM.
+
 ### How can I update SAML-connected groups with a new name via API?
 
 Set `samlSettings` to `null` in the API call to update SAML-connected groups with new names.
@@ -965,6 +975,23 @@ gRPC connections are not required for delegate version 23.12.81803 and later.
 ### Do we run Harness Delegate as root?
 
 Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.
+
+
+### Is the minimal delegate free of critical vulnerabilities?
+
+Harness aims to minimize critical/high vulnerabilities within this image. Achieving complete mitigation isn't always possible due to the continual discovery of vulnerabilities in third-party libraries/tools without immediate remediation.
+
+### Where can we see validate the Harness minimal delegate vulnerabilities been addressed?
+
+You can go to the [Harness Trust Center](https://trust.harness.io/). Harness publishes advisories for the latest delegate image.
+
+### How do I delete a Kubernetes delegate?
+
+To delete the delegate from your Kubernetes cluster, you delete the Deployment object that represents its deployment.
+
+```
+kubectl delete deployment -n harness-delegate-ng <YOUR_DEPLOYMENT_NAME>
+```
 
 ### What is delegate allowlist verification?
 
@@ -2552,6 +2579,10 @@ Previously, when attempting to delete a resource in Harness, it would be soft-de
 
 For more information, go to [Force delete](/docs/platform/references/entity-deletion-reference/#force-delete).
 
+### What is ngSecretManager.obtain?
+
+`{ngSecretManager.obtain}` is an internal reference of a secret. If you encounter any errors, it's likely that the secret reference isn't functioning properly. Validate both the script and the secret reference being used.
+
 ### Why can't I reference the Custom Secret Manager template stored in Git?
 
 Harness doesn't currently support referencing the Custom Secret Manager template stored in Git. Create an inline template as a workaround.
@@ -3237,4 +3268,18 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
 
 #### Does Harness NextGen Community Edition support LDAP login?
 No, Harness NextGen Community Edition does not support LDAP login.
+
+### How can I download a JKS file that has been uploaded to Harness Secrets?
+
+You can utilize the following steps to work with the JKS file: decode the file secret, write it to a temporary file, and then access it through that temporary file.
+
+```
+echo <+secrets.getValue("filejksasbase64")> > /values.jksbase64
+cat /values.jksbase64
+cat /values.jksbase64 | base64 -d
+```
+
+### What is the minimum supported screen resolution?
+
+The minimum supported screen resolution is 1440x900.
 

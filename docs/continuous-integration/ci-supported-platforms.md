@@ -31,6 +31,7 @@ For more information about early access features, including early access feature
 
 | Flag | Description | Availability |
 | ---  | ----------- | ------------ |
+| `CI_ENABLE_RESOURCE_CLASSES` | Support for selecting [resource classes](/docs/continuous-integration/get-started/ci-subscription-mgmt/#harness-cloud-billing-and-build-credits) in Harness Cloud, which you can use to select specific infrastructure resources. | Beta |
 | `CI_ENABLE_OUTPUT_SECRETS`, `CI_SKIP_NON_EXPRESSION_EVALUATION` | Type selection for [output variables in Run steps](/docs/continuous-integration/use-ci/run-step-settings#output-variables). | Beta |
 | `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` | Allows empty environment variables in CI pipelines. | Beta |
 | `CI_ENABLE_DLC`, `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED` | [Docker layer caching for Harness Cloud](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) | Beta |

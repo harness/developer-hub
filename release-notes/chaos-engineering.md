@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-05-06T10:00
+date: 2024-05-09T10:00
 sidebar_position: 5
 ---
 
@@ -23,13 +23,23 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## May 2024
 
+## Version 1.37.0
+
+#### New features and enhancements
+
+- This release introduces the DynamoDB replication pause experiments powered by AWS FIS. These experiments improve the configuration, execution, and monitoring capabilities of the application. (CHAOS-5002)
+
+#### Fixed issues
+
+- Fixed an issue where the command probe multiple source probes were overridden. (CHAOS-5308)
+
 ## Version 1.36.5
 
 #### Fixed issues
 
 - Fixed an issue where accounts that started with an underscore could not execute a Linux chaos experiment. (CHAOS-5185)
 
-- Fixed an issue where a chaos experiment failed when the probe (legacy) names of the chaos faults were the same. (CHAOS-5064)
+- Fixed an issue where a chaos experiment failed when two chaos faults had the same probe (legacy) name. (CHAOS-5064)
 
 - Fixed an issue where editing the SLO probe evaluation window resulted in an `Internal server error`. (CHAOS-5022)
 

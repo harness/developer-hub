@@ -46,10 +46,9 @@ While Harness SSCA enables you to generate SBOMs, it also supports the ingestion
 
 For enhanced trust and verification of your SBOM's integrity, you can optionally configure the SBOM Orchestration step to sign it and generate an attestation. This attestation is then stored as a `.att` file within your artifact's repository for easy access. The generated SBOMs are also readily available for download within the Harness Platform.
 
-Note:
-
+:::info
 While Harness is capable of generating SBOMs for both Container Images and Code Repositories, it is important to note that SBOM attestation is supported only for Container Images.
-
+:::
 
 ## Next steps
 
