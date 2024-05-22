@@ -13,7 +13,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-In addition to Harness' many [built-in variables](./harness-variables), you can define custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
+In addition to Harness' many [built-in variables](./harness-variables.md), you can define custom variables at the account, org, and project [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), as well as within individual pipelines.
 
 Account, org, and project variables store values that you can share and use across multiple pipelines or in multiple projects.
 
@@ -81,6 +81,7 @@ This handling is also required for [matrix dimension names](/docs/platform/pipel
    * Variables created at lower levels (such as pipeline, stage, and service variables) support fixed values, runtime inputs, and expressions.
 * Pipelines fail if a variable's default value starts with an asterisk (`*`). Instead, you can wrap the asterisk or value in double quotes (`"*"`).
 * If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to the [YAML specification for tags](https://yaml.org/spec/1.2.2/#3212-tags).
+* Underscores are ignored in string, and except for the character `e` (representing an exponent), all other characters are also ignored. Avoid using `_` and instead you can use `-`.
 
 ### Variable scope and availability
 
@@ -215,6 +216,10 @@ Additionally, some step types support step-level runtime environment variable or
 
 </TabItem>
 </Tabs>
+
+:::Limitation
+The `$HOME` variable does not resolve to the home path when creating a directory or file path because the value is being used as a string. You cannot pass any value to the `$HOME` variable using expressions in a pipeline level. 
+:::
 
 ## Reference variables
 

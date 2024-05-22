@@ -203,6 +203,10 @@ Every field name in the function definition must be written in camel case, with 
 
 :::
 
+:::important
+Role ARN is a required field when creating a Lambda function for the first time. It is not required when updating existing functions.
+:::
+
 You can use Harness service variables in your function definition JSON.
 
 Services variables allow your function definition to be reusable across multiple Lambda functions.

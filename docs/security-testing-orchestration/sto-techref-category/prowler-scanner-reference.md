@@ -5,8 +5,13 @@ sidebar_label: Prowler scanner reference
 sidebar_position: 310
 ---
 
+<DocsTag text="Configuration scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"   link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#configuration-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
 
-You can scan your configurations and ingest results from [Prowler](https://github.com/prowler-cloud/prowler), an open-source tool for performing AWS, GCP and Azure security best practices assessments, audits, incident response, continuous monitoring, hardening and forensics readiness. 
+You can scan your configurations and ingest results from [Prowler](https://github.com/prowler-cloud/prowler). The default workflow is to add a Prowler step to a Build or Security stage and configure it as described below.
 
 ## Important notes for running Prowler scans in STO
 
@@ -197,66 +202,15 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for Prowler scans in STO (legacy)
-
-:::note
-You can set up Prowler scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Prowler step](#prowler-step-settings-for-sto) instead.
-:::
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Prowler scan settings
-
-* `product_name` = `prowler`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `configuration`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
-* `product_config_name`
-	+ Accepted values(s):
-		- `default`, `hipaa`, `gdpr`, `exclude_extras`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, the following argument excludes a specific check from a scan: `tool_args` = `-excluded-checks s3_bucket_public_access`
-
-
-#### Configuration scan settings
-
-
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-
-
-<StoLegacyConfig  />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->

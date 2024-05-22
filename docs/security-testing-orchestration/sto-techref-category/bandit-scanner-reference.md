@@ -9,7 +9,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
+<DocsTag   text="Code repo scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad"  link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
+
+You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit) and ingest your results into Harness STO.
 
 
 ## Important notes for running Bandit scans in STO
@@ -31,7 +37,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Bandit step settings for STO scans
 
-The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below.
+The recommended workflow is to add a Bandit step to a Security or Build stage and then configure it as described below.
 
 ### Scan
 
@@ -128,68 +134,18 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 <StoSettingSettings />
 
 
-
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
-
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for Bandit scans in STO (legacy)
-
-:::note
-You can set up Bandit scans using a Security step, but this is a legacy functionality. Harness recommends that you use a [Bandit step](#bandit-step-settings-for-sto-scans) instead.
-:::
-
-
-#### Scan policy types
-
-STO supports the following `policy_type` settings for Bandit:
-
-* `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
-
-
-#### Target and variant
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Bandit scan settings
-
-The following settings are required for Bandit scans:
-
-* `product_name` = `bandit`
-* `scan_type` = `repository`
-* `product_config_name` = `default` — Run a Bandit scan with the default settings.
-* `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
-* `repository_branch` — This tells Bandit the Git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-#### Ingestion file
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-<StoLegacyIngest />
-
--->
+<ScannerRefAdvancedSettings />
 
 
 

@@ -198,6 +198,12 @@ export default function LearnAboutPlatform(): JSX.Element {
       {showMoreRelease && (
         <ul className={styles.platformListMore}>
           <li>
+            <a href="/release-notes/code-repository">
+              <h4>Code Repository</h4>
+              <p>New features and fixed issues for the CR module</p>
+            </a>
+          </li>
+          <li>
             <a href="/release-notes/continuous-integration">
               <h4>Continuous Integration</h4>
               <p>New features and fixed issues for the CI module</p>
@@ -207,6 +213,12 @@ export default function LearnAboutPlatform(): JSX.Element {
             <a href="/release-notes/continuous-delivery">
               <h4>Continuous Delivery &amp; GitOps</h4>
               <p>New features and fixed issues for the CD module</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/infrastructure-as-code-management">
+              <h4>Infrastructure as Code Management</h4>
+              <p>New features and fixed issues for the IaCM module</p>
             </a>
           </li>
           <li>
@@ -222,15 +234,21 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/release-notes/service-reliability-management">
-              <h4>Service Reliability Management</h4>
-              <p>New features and fixed issues for the SRM module</p>
+            <a href="/release-notes/security-testing-orchestration">
+              <h4>Security Testing Orchestration</h4>
+              <p>New features and fixed issues for the STO module</p>
             </a>
           </li>
           <li>
             <a href="/release-notes/security-testing-orchestration">
               <h4>Security Testing Orchestration</h4>
               <p>New features and fixed issues for the STO module</p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/software-supply-chain-assurance">
+              <h4>Software Supply Chain Assurance</h4>
+              <p>New features and fixed issues for the SSCA module</p>
             </a>
           </li>
           <li>
@@ -249,8 +267,15 @@ export default function LearnAboutPlatform(): JSX.Element {
             <a href="/release-notes/internal-developer-portal">
               <h4>Internal Developer Portal</h4>
               <p>
-                New features and fixed issues for the Harness Internal Developer
-                Portal
+                New features and fixed issues for the Harness IDP module
+              </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/software-engineering-insights">
+              <h4>Software Engineering Insights</h4>
+              <p>
+                New features and fixed issues for the SEI module
               </p>
             </a>
           </li>

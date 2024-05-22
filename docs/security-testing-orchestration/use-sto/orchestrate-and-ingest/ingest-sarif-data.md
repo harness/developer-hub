@@ -35,9 +35,12 @@ The following workflow describes how to set up an ingestion pipeline for any sca
 
 3. Add an ingestion step after the Run step and configure it as follows.
 
-   - If you're using a scanner that has a [scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates), use the scanner template to ingest your results. Set the **Scan Mode** to **Ingestion** and configure the step as described in the [STO Scanner Reference](/docs/category/sto-technical-reference) topic for that step. 
+   1. If your scanner has its own step in the Step Library, add that step. If your scanner doesn't have its own step, add a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step.
    
-   - If you're using a scanner that does not have a scanner template, use a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step. 
+   2. Set the **Scan Mode** to **Ingestion**.
+   
+   3. Enter the full path and filename in **Ingestion File**.
+    
  
 Here's an example of how to configure a Gitleaks step to ingest a SARIF data file:
 
