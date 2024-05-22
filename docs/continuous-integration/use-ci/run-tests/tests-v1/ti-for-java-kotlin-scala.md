@@ -1,5 +1,5 @@
 ---
-title: Use Run Tests step for Java, Kotlin, or Scala (deprecated)
+title: Use Run Tests step for Java, Kotlin, or Scala
 description: Set up TI for Java, Kotlin, or Scala codebases.
 sidebar_position: 20
 redirect_from:
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step.
+<!-- Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step. -->
 
 Currently, the **Test** step supports Java but it doesn't yet support Kotlin or Scala. Until support is added for these languages, you can continue to use the **Run Tests** step for TI with Kotlin or Scala.
 

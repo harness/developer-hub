@@ -1,5 +1,5 @@
 ---
-title: Use Run Tests step for Python (deprecated)
+title: Use Run Tests step for Python
 description: Set up TI for Python codebases.
 sidebar_position: 30
 redirect_from:
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-Harness is deprecating the **Run Tests** step in favor of the new **Test** step.
+<!-- Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step. -->
 
 While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
 

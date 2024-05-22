@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 :::warning
 
-Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step.
+<!-- Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step. -->
 
 Currently, the **Test** step doesn't yet support TI for C#. Until support is added for this language, you can continue to use the **Run Tests** step for TI with C#.
 
