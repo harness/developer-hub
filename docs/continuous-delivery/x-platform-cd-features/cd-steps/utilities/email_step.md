@@ -115,12 +115,3 @@ If you are encountering issues with email delivery, please open a Harness suppor
 
 If you are using a custom email provider (as described in [Add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/)) Harness will not have access to your emails. Please check your email provider and server log to determine the cause of the error.
 
-## General Email step FAQs
-
-### How can we add newline in mail body sent from Email step ?
-
-The email body sent uses a html format and hence the newline character will not work for adding newline entries. We need to make use of html line break for this `<br>`.
-
-### Can I send content of a pipeline as attachment in email within Harness ?
-
-No, the Email step in pipelines do not support attachments.

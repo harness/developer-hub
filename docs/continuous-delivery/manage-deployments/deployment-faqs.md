@@ -1,5 +1,5 @@
 ---
-title: Harness Deployment Strategy FAQs
+title: Harness Deployment Strategies FAQs
 description: Frequently asked questions about Harness deployment strategies.
 sidebar_position: 10
 ---
@@ -1931,6 +1931,8 @@ In Harness, you can freeze deployments at different levels such as project, envi
 ### Can I update a cron trigger programmatically?
 
 Yes, you can use the [Update Trigger endpoint](https://apidocs.Harness.io/tag/Triggers/#operation/updateTrigger) and pass the entirety of the updated trigger YAML (including the updated cron expression) in the body.
+
+
 
 
 
