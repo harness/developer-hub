@@ -51,6 +51,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 - Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
 
 - Fixed an issue where the CI **Getting Started** page sent multiple requests to fetch Harness Code repositories. This occurred whenever the page was updated or the Git connector was updated. With this fix, the Getting Started page sends one request only when it needs to fetch the list of repositories. (CI-10770)
+
+
 ### Version 1.27.4
 
 <!-- 16 May 2024 -->
