@@ -44,6 +44,8 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. (CI-10509)
 
+  - Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
+  
   This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### Fixed issues
