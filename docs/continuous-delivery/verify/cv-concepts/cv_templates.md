@@ -5,16 +5,16 @@ description: Learn about strategies to template out CV workflow items.
 slug: /continuous-delivery/verify/cv-concepts/templates
 ---
 
-Continuous Verification is achieved by adding a Verify step in the deployment pipeline. The Verify step uses monitored services to figure out what metric and log needs to be included in the verification. A monitored service definition is associated with a particular service running in the environment. 
+Continuous Verification is achieved by adding a Verify step in the deployment pipeline. The Verify step uses monitored services to figure out what metrics and logs need to be included in the verification. A monitored service definition is associated with a particular service running in the environment. 
 
-When a Verify step is added in a pipeline, it figures out the service which is getting deployed in that particular pipeline stage and also the environment to which it is getting deployed. Based on the service and environment information, the Verify step picks the corresponding monitored service (i.e the monitored service which is mapped to that service & environment) and uses it for verification.
+When a Verify step is added in a pipeline, it determines the service that is getting deployed and the environment that it the service is getting deployed to for that particular pipeline stage. Based on the service and environment information, the Verify step picks the corresponding monitored service (i.e the monitored service which is mapped to that service & environment) and uses it for verification.
 
-A monitored service entity can contain a set of Health Sources. A Health Source is a collection of either metric or log configurations to be used for verification. Each health source corresponds to one particular source. For example AppDynamics, Splunk, Prometheus, etc. The users can add a combination of log and metric type of health source in a particular monitored service.
+A monitored service entity can contain a set of Health Sources. A Health Source is a collection of either metric or log configurations to be used for verification. Each health source corresponds to one particular source. For example AppDynamics, Splunk, Prometheus, etc. The users can add a combination of log and metric type of health sources in a particular monitored service.
 
 
 ## Creating a monitored service template
 
-Creating monitored services for each of the deployed services (service running in a particular environment) is a tedious and repetitive task if it needs to be created for many services. Many of the metric and log configuration only changes slightly for each service. Hence, you can create a monitored service template for monitoring the deployed services.
+Creating monitored services for each of the deployed services (service running in a particular environment) is a tedious and repetitive task if it needs to be created for many services. Many of the metric and log configurations only change slightly for each service. To alleviate this problem, you can create a monitored service template for monitoring the deployed services.
 
 While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with required health sources. Coupling a monitored service template with services and environments is intentionally kept loose to allow using a template used for deployment for different services.
 
