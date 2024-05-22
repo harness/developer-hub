@@ -1,5 +1,5 @@
 ---
-title: General Helm deployment FAQs
+title: Helm deployment FAQs
 description: This topic lists some FAQs related to Native and Harness managed Helm deployment
 sidebar_position: 6
 ---
@@ -174,7 +174,7 @@ Yes, you can use the expression \<+trigger.manifest.version> to have the new cha
 For non-trigger-based execution, you can use the expression \<+manifests.MANIFEST_ID.Helm.version> to reference the Helm chart version in your pipeline stage steps. The MANIFEST_ID is located in service.serviceDefinition.spec.manifests.manifest.identifier in the Harness service YAML. You can also use Harness variable expressions or runtime inputs to pass in the Helm chart version at execution.
 
 
-### Why one cannot configure multiple manifests in non-Helm environment ?
+### Why one cannot configure multiple manifests in non-Helm environment?
 
 At present, we only support Helm K8s and Helm deployments ( not charts as they are treated as artifacts) with multiple manifest services because , allowing for all swimlanes can cause a mega service that can deploy multiple applications and can cause problem in management of the same.
 
@@ -188,7 +188,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 You can only perform a rolling deployment strategy for Native Helm(no canary or blue-green).
 
 
-### How can one use HELM expressions ?
+### How can one use HELM expressions?
 
 Please follow the following [Documentation](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#Helm-chart-expressions).
 
@@ -208,9 +208,9 @@ For kubernetes Helm we will always run the template command as this is how we ge
 If we do not want to use template command we need to be using native Helm type of deployment.
 
 
-### How to get Helm chart version from Helm based triggers ?
+### How to get Helm chart version from Helm based triggers?
 
-The Helm version is part of the trigger payload. The expression that conatians the Helm version is `<+trigger.manifest.version>` .
+The Helm version is part of the trigger payload. The expression that conatains the Helm version is `<+trigger.manifest.version>` .
 
 
 ### After a successful deployment with the namespace "x" and another failed deployment with the same namespace (x), we switched the namespace and now it seems it cannot properly do a Helm history.
@@ -236,7 +236,7 @@ Check the Helm version you are trying to use is installed on selected delegate a
 Harness automatically resolves and manages Helm chart dependencies when executing Helm commands based on your Helm Command Template configuration.
 
 
-### Is it possible to get through an expression the uninstall flags from a Helm service ?
+### Is it possible to get through an expression the uninstall flags from a Helm service?
 
 One can try below example to find and uninstall the same :
 ```sh
@@ -255,7 +255,7 @@ If you need to access the file values you need to pull the file from your repo i
 
 
 
-### Do we have a way to optionally exclude some values file fetch in the manifest based on condition ?
+### Do we have a way to optionally exclude some values file fetch in the manifest based on condition?
 
 Currently we do not have a way to exclude or make the values file list optional. If you run a Helm deployment by specifying a values.yaml and if the yaml does not exist it will fail the deployment.
 
@@ -270,7 +270,7 @@ The feature to get the newer variables for Helm manifest (currently behind CDS_H
 
 Harness by default while performing the Helm deployment look for any previous installation, if it does not find one it consider the current deployment as first and then runs the Helm install command. From the next run it will run the Helm upgrade command, this behaviour is not configurable.
 
-### Is it considered an error when using Helm template `--show-only` `templates/secret.yaml my-chart` results in an empty manifest, even though the template exists, and how can one prevent or handle this error message ?
+### Is it considered an error when using Helm template "--show-only` `templates/secret.yaml my-chart" results in an empty manifest, even though the template exists, and how can one prevent or handle this error message?
 
 It will be feasible for them to consider adding a line at the top of their manifests to prevent rendering to be empty when using Helm template `--show-only`. This approach would not only address the error but also provide the advantage of skipping these objects during deployment. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment/#ignore-a-manifest)
 
@@ -292,7 +292,7 @@ Note! If your development team still uses Helm 2, you can reintroduce the binary
 The default release name is ```release-<+INFRA_KEY_SHORT_ID>```
 
 
-### Does Harness support OpenTofu native steps in Continuous Module ?
+### Does Harness support OpenTofu native steps in Continuous Module?
 
 No, Harness does not yet support OpenTofu native steps due to less usage to Terraform.
 Please read more on Native Helm in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/).
@@ -386,13 +386,13 @@ name: INIT_SCRIPT
 Please read more on Helm2 in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/Helm/native-Helm-quickstart/#Helm-2-in-native-Helm)
 
 
-### Is it normal for the `k8sdelete` step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?
+### Is it normal for the k8sdelete step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?
 
 The current behavior is as expected. Initially, only Kubernetes delete with the release name label was supported. However, a feature request has been made to support Helm uninstall or delete, which would be a separate type of step.
 Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources/)
 
 
-### For Helm Subchart support, if there are multiple subcharts, is there a way to define and manage these additional subcharts beyond the single field provided?
+### For Helm Subchart support, if there are multiple Subcharts, is there a way to define and manage these additional Subcharts beyond the single field provided?
 
 The utilization of Multiple Helm Charts facilitates the deployment of individual standalone Helm Charts via a single service. These charts, akin to artifact sources, correspond to Helm Charts per environment. The Sub Chart feature becomes particularly beneficial when users possess an umbrella chart with dependencies, as exemplified in the provided [GitHub repository](https://github.com/thisrohangupta/custom-remote-test-repo/tree/main/parent-chart/charts). Upon accessing`/charts/`, both the primary chart and child chart can be obtained.
 One can also configure the YAML to add additional sub chart dependencies.
@@ -458,7 +458,7 @@ To integrate a new version of the Helm binary with the delegate:
 Error: UPGRADE FAILED: unable to build kubernetes objects from current release manifest: resource mapping not found for name: "$RESOURCE_NAME" namespace: "" from "": no matches for kind "HorizontalPodAutoscaler" in version "autoscaling/v2beta2" ensure CRDs are installed first
 ```
 
-This error happens if you have recently upgraded your Kuberenetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://Helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
+This error happens if you have recently upgraded your Kubernetes Cluster without ensuring that your Helm Releases' API Versions are supported in the new Kubernetes Cluster version. When attempting to upgrade them after, Helm will throw the above error due to the deprecated API no longer existing in the current Kubernetes Cluster. To fix this, you'll need to upgrade the API Version on the Helm Release manually by following the steps in the [Helm Documentation](https://Helm.sh/docs/topics/kubernetes_apis/#updating-api-versions-of-a-release-manifest).
 
 To avoid this in the future, please make sure to perform any Helm Release upgrades prior to upgrading your Kubernetes Cluster. A detailed list of deprecated and supported Kubernetes APIs can be found in the [Kubernetes Documentation](https://kubernetes.io/docs/reference/using-api/deprecation-guide/).
 
@@ -519,3 +519,7 @@ Here are a few key differences between Native Helm Deployment in FirstGen and Ne
 * Versioning: Harness NextGen supports versioning of Helm deployments. This allows you to track changes to your deployments and roll back to previous versions if necessary. Harness FirstGen does not support versioning of Helm deployments.
 * Rollback: Harness NextGen supports rollbacks of Helm deployments. This allows you to roll back to a previous version of your deployment if something goes wrong. Harness FirstGen does not support rollbacks of Helm deployments.
 * Helm 3: Harness NextGen supports Helm 3. Harness FirstGen supports both Helm 2 and Helm 3.
+
+#### Is the "Enable Native Helm steady state for jobs" option a default setting for the steady state check?
+This selection is solely for verifying the steady state of a Kubernetes Job deployed via the Helm chart.
+

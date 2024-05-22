@@ -137,4 +137,7 @@ Once encrypted, SOPS decrypts the data during deployment using the keys stored a
 ### How to disable pushing logs from the GitOps Agent to Stackdriver?
 To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIVER_LOGGER` to False in the the agent ConfigMap.
 
+### What specific role does the "Add Deployment Repo Manifest" serve within the manifests for a Kubernetes service enabled with GitOps functionality?
+
+The `Add Deployment Repo Manifest` primarily serves as a means to access additional repositories within the PR Pipeline. While the Release Repo is utilized directly by the pipeline, the Deployment Repo facilitates the retrieval of information from another repository, enhancing the pipeline's functionality and flexibility.
 

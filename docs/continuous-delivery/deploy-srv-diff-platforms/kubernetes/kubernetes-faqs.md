@@ -1,10 +1,231 @@
 ---
-title: General Kubernetes FAQs
+title: Kubernetes Deployment FAQs
 description: Frequently asked questions about Kubernetes deployments.
 sidebar_position: 800
 ---
 
 This article addresses some frequently asked questions about Kubernetes deployments in Harness.
+
+### What is a Harness Kubernetes deployment?
+
+Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
+
+See the [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) and [Kubernetes deployments overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview).
+
+For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
+
+### What workloads can Harness deploy in a Kubernetes cluster?
+
+See [What can I deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
+
+### Does Harness support everything in Kubernetes?
+
+Yes. Any standard Kubernetes features in your Kubernetes manifests will be deployed.
+
+Harness tracks deployment status to ensure pods reach steady state before considering the deployment successful, but other, even unrelated Kubernetes features, are supported. For example, liveness, readiness, and startup probes are supported.
+
+### For Kubernetes, does Harness count only pods as a service instance (SI)? What about a ConfigMap or a Secret?
+
+Only pods. Only pods will consume SI licenses. ConfigMaps and Secrets do not consume SI licenses.
+
+### How is Harness sure that a pod is a service instance?
+
+Harness tracks the workloads it deploys. Harness checks every 10 minutes using the Kubernetes API to see how many pods are currently running for the given workload.
+
+### If I create a pod using Harness and keep managing it, is it still counted as a service instance?
+
+Yes. Sidecar containers within pods (log proxy, service mesh proxy) do not consume SI licenses. Harness licenses by pod, not the number of containers in a pod.
+
+### Does Harness support OpenShift?
+
+Yes. Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+
+You can leverage Kubernetes list objects as needed without modifying your YAML for Harness.
+
+When you deploy, Harness will render the lists and show all the templated and rendered values in the log.
+
+Harness supports:
+
+* List
+* NamespaceList
+* ServiceList
+* For Kubernetes deployments, these objects are supported for all deployment strategies (canary, rolling, blue/green).
+
+If you run `kubectl api-resources` you should see a list of resources, and `kubectl explain` will work with any of these.
+
+### Can I use Helm?
+
+Yes. Harness Kubernetes deployments support Helm v2 and v3.
+
+Harness supports Helm charts in its Kubernetes implementation.
+
+Harness Kubernetes deployments allow you to use your own Kubernetes manifests or a Helm chart, and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.
+
+Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
+
+### Should I use Kubernetes or Native Helm?
+
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Here's the difference:
+
+* Harness [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
+Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
+* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
+	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
+	+ **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did two bad Native Helm deployments, the second one will roll back to the first. Harness will roll back to the last successful version.
+
+### Can I deploy Helm charts without adding an artifact source to Harness?
+
+Yes.
+
+Harness Kubernetes deployments using Helm charts can involve adding your artifact (image) to Harness in addition to your chart. The chart refers to the artifact you added to Harness (through its values.yaml file). During deployment, Harness deploys the artifact you added to Harness and uses the chart to manage it.
+
+In addition to this method, you can also deploy the Helm chart without adding your artifact to Harness. Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
+
+See [Deploy helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
+
+### Can I run Kubernetes jobs?
+
+Yes. In Harness Kubernetes deployments, you define jobs in the Harness Service **Manifests**. Next you add the Apply step to your Harness workflow to execute the job.
+
+See [Run Kubernetes jobs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs).
+
+### Can I deploy a Kubernetes resources using CRDs?
+
+Yes. Harness supports all Kubernetes default resources, such as pods, deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
+
+In addition, Harness provides many of the same features for Kubernetes [custom resource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) deployments using Custom Resource Definitions (CRDs). CRDs are resources you create that extend the Kubernetes API to support your application.
+
+:::note 
+Harness supports CRDs for both Kubernetes and OpenShift. There is no difference in their custom resource implementation.
+:::
+
+### Can I deploy resources outside of the main Kubernetes workload?
+
+Yes. By default, the Harness Kubernetes workflow will deploy all of the resources you have set up in the Service **Manifests** section.
+
+In some cases, you might have resources that you do not want to deploy as part of the main workflow deployment, but want to apply as another step in the workflow. For example, you might want to deploy an additional resource only after Harness has verified the deployment of the main resources in the Service **Manifests** section.
+
+workflows include an **Apply** step that allows you to deploy any resource you have set up in the Service **Manifests** section.
+
+See [Deploy manifests separately using the Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
+
+### Can I ignore a manifest during deployment?
+
+You might have manifest files for resources that you do not want to deploy as part of the main deployment.
+
+Instead, you tell Harness to ignore these files and then apply them separately using the Harness [Kubernetes Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step).
+
+Or you can simply ignore them until you wish to deploy them as part of the main deployment.
+
+See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment).
+
+### Can I pull an image from a private registry?
+
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
+
+If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
+
+See [Pull an image from a private registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
+
+### Can I use remote sources for my manifests?
+
+You can use your Git repo for the configuration files in **Manifests** and Harness uses them at runtime. You have the following options for remote files:
+
+* **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
+* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
+* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart).
+* **OpenShift Template** — OpenShift params file from a Git repo.
+
+:::note 
+Remote files can also use Go templating.
+:::
+
+### Do you support Go templating for Kubernetes manifests?
+
+Yes. you can use [Go templating](https://godoc.org/text/template) and Harness built-in variables in combination in your **Manifests** files.
+
+See [Example Kubernetes manifests using Go templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
+
+### Can I provision Kubernetes infrastructure?
+
+Yes, you can use:
+
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- Azure ARM and Blueprint
+- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
+- Shell script (custom)
+
+### What deployment strategies can I use with Kubernetes?
+
+You can use canary, rolling, and blue/green. See:
+
+* [Create a Kubernetes canary deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
+* [Create a Kubernetes rolling deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+* [Create a Kubernetes blue/green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
+
+### Can I select namespaces during deployment?
+
+Yes. You can select namespaces on the fly using Harness variables that are evaluated at runtime.
+
+### Do you support Kustomize?
+
+Yes. Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, and so on, just as you would in any native kustomization.
+
+See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart).
+
+### Can I use Ingress traffic routing?
+
+Yes. You can route traffic using the Ingress rules defined in your Harness Kubernetes manifests.
+
+### Can I scale my pods up and down?
+
+Yes. When you deploy a Kubernetes workload using Harness, you set the number of pods you want in your manifests and in the deployment steps.
+
+With the Scale step, you can scale this number of running pods up or down, by count or percentage.
+
+See [Scale Kubernetes pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
+
+
+### Can I prune resources?
+
+Yes. You can manually delete Kubernetes resources using the [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in blue green deployments) steps.
+
+
+### How do I delete Kubernetes resources?
+
+Harness includes a Delegate step to remove any deployed Kubernetes resources.
+
+See [Delete Kubernetes resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
+
+### Can I use Helm 3 with Kubernetes?
+
+Yes. You can use Helm 3 charts.
+
+You can select Helm 3 when you create the service, or upgrade Helm 2 to Helm 3.
+
+![](./static/continuous-delivery-faqs-04.png)
+
+See [Deploy Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
+
+### Can I use Helm Chart Hooks in Kubernetes deployments?
+
+Yes. You can use [Helm chart hooks](https://helm.sh/docs/topics/charts_hooks/) in your Kubernetes deployments to intervene at specific points in a release cycle.
+
+You use a Harness Kubernetes Canary or Blue Green deployment and apply the hooks flexibly with the Apply step.
+
+A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There is no Tiller involved in this process because Harness is not running any Helm commands.
+
+### Can you tell me which specific authentication flows are supported for OIDC authentication to Kubernetes? Or, are you saying that Harness only supports the Okta identity provider and not any OIDC provider? Also, for authenticating to Kubernetes, I'm assuming based on the UI prompt for client Id and client secret that it should be a Client Credential authentication flow, and that makes sense for system to system authentication.
+
+Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
+
+`client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
+
+
+### How do I save the dry-run step rendered manifest?
+
+You can view the dry-run manifest as an output variable of the step.
 
 ### I'm getting "Secret in version "v1" cannot be handled as a Secret: illegal base64 data at input byte".  What does it mean?
 
@@ -245,27 +466,27 @@ You can skip the versioning, it can be skipped by using these two ways:
 * In the Harness service's Manifest Configuration page, select Manifests > Advanced, and then select the Skip Versioning checkbox.
 
 
-### Is it possible to get a KUBECONFIG file in a shell script within Harness for K8s connectors ?
+### Is it possible to get a KUBECONFIG file in a shell script within Harness for K8s connectors?
 
 Yes, we have it documentated for the steps. Please refer to the following documentations on [Shell script include infrastructure](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#include-infrastructure-selectors) and [Shell script run K8s](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step/#running-kubernetes-commands-in-the-shell-script)
 
 
-### What is the oldest version of Kubernetes we support for the delegates for FirstGen and NextGen ?
+### What is the oldest version of Kubernetes we support for the delegates for FirstGen and NextGen?
 
 Oldest Kubectl Client version being used is `1.16`. Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations/)
 
-### How the order or precedence of file in the k8sdeploy component is used when multiple values yaml were used.
+### How the order or precedence of file in the k8sdeploy component is used when multiple values YAML were used?
 When using multiple values YAML files in Harness Kubernetes Services, the highest priority is given to the last file, and the lowest priority to the first file.
 
-### Kubernetes Delegate Step Requires Service as Input
+### Does Kubernetes Delegate step requires service as input?
 
 The K8s Delete Step requires a Service because it's configured in a deploy stage. The user needs to provide a service and Harness can delete the namespace, the release name, or a manifest file associated with the Service.
 
-### Can we apply any Kubernetes Manifest without a Harness Kubernetes Service ?
+### Can we apply any Kubernetes Manifest without a Harness Kubernetes Service?
 
 Yes, One can apply any Kubernetes Manifest without a Harness Kubernetes Service . Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step/#apply-manifests-from-a-remote-source). Also consider watching this video based on use case [here](https://www.loom.com/share/492afdbb9cb8484980b6d1617830a399?sid=8fc34aec-009c-491a-85f5-ffd5e062e4d0).
 
-### What is the proper method for constructing a Harness pipeline to execute a rolling restart of a service, analogous to the kubectl rollout restart deployment deploymentName command ?
+### What is the proper method for constructing a Harness pipeline to execute a rolling restart of a service, analogous to the kubectl rollout restart deployment deploymentName command?
 
 Harness uses `patchManifest` stage type with `LAST_ROLLOUT = now()` in Spinnaker to achieve it today. Please read more on this in the Spinnaker [Documentation](https://spinnaker.io/docs/guides/user/kubernetes-v2/patch-manifest/).
 
@@ -275,7 +496,7 @@ Harness uses `patchManifest` stage type with `LAST_ROLLOUT = now()` in Spinnaker
 Yes, it is required. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
 
 
-### Why the Kubernetes deployment pipeline gets failed with message **deployment exceeded it's progress deadline**?
+### Why the Kubernetes deployment pipeline gets failed with message "deployment exceeded it's progress deadline"?
 
 When we deploy any workload in our kubernetes deployment after the deployment is done we run the wait for steady step during which we check for the status of the deployment done in kubernetes with help of kubectl command. If the command is not returning anything and it exceeds the task run time threshold on kubernetes we see this error message. Also as we were unable to confirm the status of the deployment due to above failure we mark the deployment as failure as well.
 
@@ -405,12 +626,8 @@ Please read more on this in the following [Documentation](https://developer.harn
 Kubernetes labels are immutable. If a specific deployment object already exists in the cluster, you cannot change its labels.
 - If the deployment object already exists before the Harness deployment, it might conflict with the default Harness Kubernetes canary deployment due to the use of the label `harness.io/track`.
 - If you are deploying different Harness deployment objects to the same cluster, you might encounter a selector error.
-Please read more on this in the following [Documentation on Invalid value LabelSelector](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments/)
+For more details, go to [Invalid value LabelSelector](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments/).
 
-
-### What specific role does the **Add Deployment Repo Manifest** serve within the manifests for a Kubernetes service enabled with GitOps functionality?
-
-The `Add Deployment Repo Manifest` primarily serves as a means to access additional repositories within the PR Pipeline. While the Release Repo is utilized directly by the pipeline, the Deployment Repo facilitates the retrieval of information from another repository, enhancing the pipeline's functionality and flexibility
 
 ### Is it normal for the Kubernetes Delete step with the release name option to delete only specific entities, unlike Helm uninstall, when the chart was initially deployed using the native Helm option?
 
@@ -425,7 +642,7 @@ Yes, Harness initially considered the request, but it was ultimately rejected. T
 
 ### what is a stateful set?
 
-Stateful Blue-Green Deployment in Kubernetes is a method of updating applications in a way that reduces downtime and ensures data consistency, especially for applications that store data or have stateful components like databases [Doc] (https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/)
+Stateful Blue-Green Deployment in Kubernetes is a method of updating applications in a way that reduces downtime and ensures data consistency, especially for applications that store data or have stateful components like databases [Doc](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes/).
 
 
 ###  How to ensure a stage with a step group appears before a stage with a deployment of Kubernetes?
@@ -519,7 +736,7 @@ Once enabled, you can add an array to a path field in a Kubernetes Manifest by:
    ```
 
 
-### Can we use a Kubernetes connector to get the Kubernetes context in a shell step?
+### Can we use a Kubernetes connector to get the Kubernetes context in a Shell Script step?
 
 It is not possible currently to get the Kubernetes context from Kubernetes connector. If it is part of K8s deploy stage we have a option to use the kubeconfig created for the deploy stage, but we can not directly use the Kubernetes connector to get the kubeconfig and use it in the shell step.
 
@@ -535,7 +752,7 @@ Below is example of a service hook command, you can add it as a post hook to tem
 cp /opt/harness-delegate/repository/k8s/*/manifests-dry-run.yaml /opt/harness-delegate/test.yaml
 ```
 
-### Why does my K8s deployment time out in 10 minutes while in **wait for steady state** when the step timeout is higher? 
+### Why does my K8s deployment time out in 10 minutes while in "wait for steady state" when the step timeout is higher? 
 
 This timeout is from the Kubernetes event check for steady state. Kubernetes listens for the event after the deployment to confirm if the rollout has been success or not. 
 After its own threshold crosses it errors out with the below:
@@ -545,228 +762,5 @@ deployment spelling-grammar-llm-service-deployment exceeded its progress deadlin
 ```
  
 Therefore, we also consider it a failure and fail the pipeline as soon as Kubernetes throws the above error. You will need to check the application log for the pods on why they are not coming up within the specified threshold.
-
-
-### What is a Harness Kubernetes deployment?
-
-Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
-
-See the [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) and [Kubernetes deployments overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview).
-
-For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
-
-### What workloads can Harness deploy in a Kubernetes cluster?
-
-See [What can I deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
-
-### Does Harness support everything in Kubernetes?
-
-Yes. Any standard Kubernetes features in your Kubernetes manifests will be deployed.
-
-Harness tracks deployment status to ensure pods reach steady state before considering the deployment successful, but other, even unrelated Kubernetes features, are supported. For example, liveness, readiness, and startup probes are supported.
-
-### For Kubernetes, does Harness count only pods as a service instance (SI)? What about a ConfigMap or a Secret?
-
-Only pods. Only pods will consume SI licenses. ConfigMaps and Secrets do not consume SI licenses.
-
-### How is Harness sure that a pod is a service instance?
-
-Harness tracks the workloads it deploys. Harness checks every 10 minutes using the Kubernetes API to see how many pods are currently running for the given workload.
-
-### If I create a pod using Harness and keep managing it, is it still counted as a service instance?
-
-Yes. Sidecar containers within pods (log proxy, service mesh proxy) do not consume SI licenses. Harness licenses by pod, not the number of containers in a pod.
-
-### Does Harness support OpenShift?
-
-Yes. Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
-
-You can leverage Kubernetes list objects as needed without modifying your YAML for Harness.
-
-When you deploy, Harness will render the lists and show all the templated and rendered values in the log.
-
-Harness supports:
-
-* List
-* NamespaceList
-* ServiceList
-* For Kubernetes deployments, these objects are supported for all deployment strategies (canary, rolling, blue/green).
-
-If you run `kubectl api-resources` you should see a list of resources, and `kubectl explain` will work with any of these.
-
-### Can I use Helm?
-
-Yes. Harness Kubernetes deployments support Helm v2 and v3.
-
-Harness supports Helm charts in its Kubernetes implementation.
-
-Harness Kubernetes deployments allow you to use your own Kubernetes manifests or a Helm chart, and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.
-
-Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
-
-### Should I use Kubernetes or Native Helm?
-
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Here's the difference:
-
-* Harness [Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
-Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
-* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/native-helm-quickstart), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
-	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
-	+ **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did two bad Native Helm deployments, the second one will roll back to the first. Harness will roll back to the last successful version.
-
-### Can I deploy Helm charts without adding an artifact source to Harness?
-
-Yes.
-
-Harness Kubernetes deployments using Helm charts can involve adding your artifact (image) to Harness in addition to your chart. The chart refers to the artifact you added to Harness (through its values.yaml file). During deployment, Harness deploys the artifact you added to Harness and uses the chart to manage it.
-
-In addition to this method, you can also deploy the Helm chart without adding your artifact to Harness. Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
-
-See [Deploy helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
-
-### Can I run Kubernetes jobs?
-
-Yes. In Harness Kubernetes deployments, you define jobs in the Harness Service **Manifests**. Next you add the Apply step to your Harness workflow to execute the job.
-
-See [Run Kubernetes jobs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs).
-
-### Can I deploy a Kubernetes resources using CRDs?
-
-Yes. Harness supports all Kubernetes default resources, such as pods, deployments, StatefulSets, DaemonSets, etc. For these resources, Harness supports steady state checking, versioning, displays instances on Harness dashboards, performs rollback, and other enterprise features.
-
-In addition, Harness provides many of the same features for Kubernetes [custom resource](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) deployments using Custom Resource Definitions (CRDs). CRDs are resources you create that extend the Kubernetes API to support your application.
-
-:::note 
-Harness supports CRDs for both Kubernetes and OpenShift. There is no difference in their custom resource implementation.
-:::
-
-### Can I deploy resources outside of the main Kubernetes workload?
-
-Yes. By default, the Harness Kubernetes workflow will deploy all of the resources you have set up in the Service **Manifests** section.
-
-In some cases, you might have resources that you do not want to deploy as part of the main workflow deployment, but want to apply as another step in the workflow. For example, you might want to deploy an additional resource only after Harness has verified the deployment of the main resources in the Service **Manifests** section.
-
-workflows include an **Apply** step that allows you to deploy any resource you have set up in the Service **Manifests** section.
-
-See [Deploy manifests separately using the Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
-
-### Can I ignore a manifest during deployment?
-
-You might have manifest files for resources that you do not want to deploy as part of the main deployment.
-
-Instead, you tell Harness to ignore these files and then apply them separately using the Harness [Kubernetes Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step).
-
-Or you can simply ignore them until you wish to deploy them as part of the main deployment.
-
-See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment).
-
-### Can I pull an image from a private registry?
-
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo).
-
-If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
-
-See [Pull an image from a private registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
-
-### Can I use remote sources for my manifests?
-
-You can use your Git repo for the configuration files in **Manifests** and Harness uses them at runtime. You have the following options for remote files:
-
-* **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
-* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
-* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart).
-* **OpenShift Template** — OpenShift params file from a Git repo.
-
-:::note 
-Remote files can also use Go templating.
-:::
-
-### Do you support Go templating for Kubernetes manifests?
-
-Yes. you can use [Go templating](https://godoc.org/text/template) and Harness built-in variables in combination in your **Manifests** files.
-
-See [Example Kubernetes manifests using Go templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
-
-### Can I provision Kubernetes infrastructure?
-
-Yes, you can use:
-
-- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
-- Azure ARM and Blueprint
-- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
-- Shell script (custom)
-
-### What deployment strategies can I use with Kubernetes?
-
-You can use canary, rolling, and blue/green. See:
-
-* [Create a Kubernetes canary deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
-* [Create a Kubernetes rolling deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
-* [Create a Kubernetes blue/green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
-
-### Can I select namespaces during deployment?
-
-Yes. You can select namespaces on the fly using Harness variables that are evaluated at runtime.
-
-### Do you support Kustomize?
-
-Yes. Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, and so on, just as you would in any native kustomization.
-
-See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart).
-
-### Can I use Ingress traffic routing?
-
-Yes. You can route traffic using the Ingress rules defined in your Harness Kubernetes manifests.
-
-### Can I scale my pods up and down?
-
-Yes. When you deploy a Kubernetes workload using Harness, you set the number of pods you want in your manifests and in the deployment steps.
-
-With the Scale step, you can scale this number of running pods up or down, by count or percentage.
-
-See [Scale Kubernetes pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
-
-
-### Can I prune resources?
-
-Yes. You can manually delete Kubernetes resources using the [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in blue green deployments) steps.
-
-
-### How do I delete Kubernetes resources?
-
-Harness includes a Delegate step to remove any deployed Kubernetes resources.
-
-See [Delete Kubernetes resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
-
-### Can I use Helm 3 with Kubernetes?
-
-Yes. You can use Helm 3 charts.
-
-You can select Helm 3 when you create the service, or upgrade Helm 2 to Helm 3.
-
-![](./static/continuous-delivery-faqs-04.png)
-
-See [Deploy Helm charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
-
-### Can I use Helm Chart Hooks in Kubernetes deployments?
-
-Yes. You can use [Helm chart hooks](https://helm.sh/docs/topics/charts_hooks/) in your Kubernetes deployments to intervene at specific points in a release cycle.
-
-You use a Harness Kubernetes Canary or Blue Green deployment and apply the hooks flexibly with the Apply step.
-
-A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There is no Tiller involved in this process because Harness is not running any Helm commands.
-
-### Can you tell me which specific authentication flows are supported for OIDC authentication to Kubernetes? Or, are you saying that Harness only supports the Okta identity provider and not any OIDC provider? Also, for authenticating to Kubernetes, I'm assuming based on the UI prompt for client Id and client secret that it should be a Client Credential authentication flow, and that makes sense for system to system authentication.
-
-Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
-
-`client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
-
-
-### How do I save the dry-run step rendered manifest?
-
-You can view the dry-run manifest as an output variable of the step.
-
 
 

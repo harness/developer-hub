@@ -1386,8 +1386,13 @@ In broad terms, the CI module is typically dedicated to building and testing cod
 
 It's worth noting that you also have the option to incorporate both types of processes within a single pipeline, depending on your requirements and preferences.
 
+#### Is there a way to get notified whenever a new pipeline is created?
+No, As per the current design it's not possible.
 
+#### Does harness support polling on folders?
+We currently, do not support polling on folders. We have an open enhancement request to support this.
 
-
+#### How do I filter out Approvals for Pipeline Execution Time in Dashboards?
+You can get the Approval step duration from the **Deployments and Services V2** data source.
 
 
