@@ -88,6 +88,12 @@ Go to [Troubleshoot "vulnerability database build date exceeds max allowed age" 
 
 Go to [Troubleshoot Yarn Audit Analyzer exceptions](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference#owasp-step-generates-yarn-audit-analyzer-exception) in the OWASP scanner reference.
 
+## Prisma Cloud scans
+
+### How do I add labels to a Prisma Cloud scan when my build infrastructure is Kubernetes or Docker?
+To add labels such as `JOB_NAME` to your Prisma Cloud scans, add key-value pairs to **Settings (optional)** in your Prisma Cloud scan step. These key-value pairs will be added as labels when you run the scan.
+
+
 ## Sonar scans
 
 Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#troubleshoot-sonar-scans) in the SonarQube scanner reference. This section discusses the following:
@@ -99,3 +105,9 @@ Go to [Troubleshoot Sonar Scans](/docs/security-testing-orchestration/sto-techre
 This error ocurrs if there's no scan target in the Scanner configuration. To fix this, please ensure that the Scan Step configuration properly selects a target.
 
 
+#### How does the SonarQube integration work when attempting to perform a branch scan with SonarQube Enterprise?
+
+An enhancement has been made to ensure the orchestration step always downloads results for the branch specified in the step, instead of downloading results only for main or master branches. For more information, go to:
+
+- [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration)
+- STO release notes > [Version 1.83.1](https://developer.harness.io/release-notes/security-testing-orchestration#version-1831)

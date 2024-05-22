@@ -24,4 +24,26 @@ export const spt: IltCardItem[] = [
      tileType: tileType.normal,
      cardType: cardType.SPT,
    },
+   {
+    title: "Continuous Integration",
+    module: MODULES.ci,
+     type: type.user,
+     description:
+       "Self-paced webinar style course introducing Harness Continuous Integration.",
+     version: "Harness CI Free/Team Plans",
+     link: "https://university-registration.harness.io/self-paced-training-harness-continuous-integration",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
+   {
+    title: "Security Orchestration Testing",
+    module: MODULES.sto,
+     type: type.user,
+     description:
+       "Self-paced webinar style course introducing Harness Security Testing Orchestration.",
+     version: "Harness STO Enterprise Plan",
+     link: "https://university-registration.harness.io/self-paced-training-harness-security-testing-orchestration",
+     tileType: tileType.normal,
+     cardType: cardType.SPT,
+   },
 ];

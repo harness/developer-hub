@@ -4,7 +4,6 @@ sidebar_label: Overview
 description: Secure your software supply chain with Harness SSCA.
 sidebar_position: 1
 ---
-<DocsTag icon="fa-solid fa-cubes" text= "Limited GA" link="/docs/software-supply-chain-assurance"/>
 
 Today's software development landscape heavily relies on open-source components and third-party libraries. While this reliance streamlines development and expedites product delivery, it simultaneously exposes the software supply chain to potential risks, including security vulnerabilities, licensing discrepancies, and the looming threat of supply chain attacks.
 
@@ -14,7 +13,7 @@ To address these challenges, the Harness Software Supply Chain Assurance (SSCA) 
 
 ## Software Supply Chain Assurance objectives
 
-Harness SSCA module provides a robust solution for establishing trust in the software supply chain, managing open-source components, ensuring policy compliance, and enabling rapid response to new threats. The SSCA module aims to achieve the following objectives:
+Harness SSCA module provides a robust solution for establishing trust in the software supply chain, managing open-source components, ensuring policy compliance, and enabling rapid response to new threats. The SSCA module aims to achieve the following objectives
 
 * **Prevent:** Stop the use of harmful or unauthorized open-source components.
 * **Report:** Generate compliance reports adhering to both internal governance policies and external regulations.
@@ -27,9 +26,9 @@ Harness SSCA module provides a robust solution for establishing trust in the sof
 
 To realize the [objectives](#software-supply-chain-assurance-objectives), the SSCA module offers features such as:
 
-* SBOM generation and management.
-* Supply chain security policy enforcement.
-* SLSA Level 3 compliance with provenance generation and verification.
+* [SBOM generation and management.](../sbom/overview.md)
+* [Govern the usage of open source with SBOM policy enforcement.](../sbom-policies/overview.md)
+* [Comply with SLSA Build Level 1, Level 2 and Level 3.](../slsa/overview.md)
 
 <!-- * Remediation paths to effectively address zero-day vulnerabilities in open-source components. * Comprehensive visibility into component usage and deployment environments.-->
 

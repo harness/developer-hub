@@ -17,7 +17,7 @@ In an *ingestion scan*, you configure a step to ingest scan results from a data 
 
 To ingest scan results from outside a Security step, you set up your pipeline as follows:
 
-1. A Run step saves scan results to a shared folder. The step might run the scan locally, download results from an external source, or copy results from another location in the worspace into the shared folder.
+1. A Run step saves scan results to a shared folder. The step might run the scan locally, download results from an external source, or copy results from another location in the workspace into the shared folder.
 
 2. A [Security or Security Tests step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto) ingests the results from the shared folder. Then it analyzes, deduplicates, and displays the results.
 

@@ -7,19 +7,22 @@ redirect_from:
   - /docs/internal-developer-portal/get-started/system-model
 ---
 
-The systems model of Harness Internal Developer Portal, based on the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model), helps manage and understand complex software ecosystems. This model is important for DevOps and microservices, where many connected parts can be hard to manage.
+## Introduction
 
-The System Model describes, how we manage dependencies in Harness IDP, thereby organizing software components, services, and tools in their technical landscape. It structures around five key concepts: Domains, Systems, APIs, Components, and Resources.
+The Harness Internal Developer Portal's systems model is based on the [Backstage System Model](https://backstage.io/docs/features/software-catalog/system-model). It helps to manage and understand complex software ecosystems. This model is important for DevOps and microservices, where many connected parts can be hard to manage.
 
+The System Model in Harness IDP helps us manage dependencies by organizing software components, services, and tools in our technical landscape. This model shows how everything connects and works together within the system. It provides a clear structure for understanding and navigating the different parts of the system.
 
 ![](static/intro-system.png)
 
 ## Example Architecture
 
-Let's try to map a city-like software ecosystem, IDP's service catalog acts as a central repository, organizing and providing crucial information about the software assets. This ecosystem, with its interconnected neighborhoods (Domains), buildings (Systems), services (APIs), establishments (Components), and utilities (Resources), mirrors the complex yet structured world of software development and operations.
+Let's create a map of a city-like software ecosystem. The IDP's service catalog is like a central hub, organizing and sharing important information about the software assets. This ecosystem, with its interconnected neighborhoods (Domains), buildings (Systems), services (APIs), establishments (Components), and utilities (Resources), mirrors the complex yet structured world of software development and operations. 
+
+By using the Harness IDP System Model, we can effectively manage and maintain the dependencies within Harness IDP Catalog. It structures around five key concepts: Domains, Systems, APIs, Components, and Resources.
 
 
-## Detailed Modeling in IDP
+## Harness IDP System Model
 
 ### Components and Dependencies
 
@@ -284,4 +287,4 @@ Cloud storage buckets and CDN services used by a video streaming system.
 
 ## Conclusion 
 
-In practice, implementing a systems model like the one used by Backstage, involves creating a centralized catalog or repository where all the information about systems, components, and their relationships is stored and managed. This dependency management in Harness IDP enables developers to have service onboarding using seamless integrations. 
+In everyday situations, utilizing a systems model such as Backstage's involves creating a central catalog or storage location. This catalog contains all information regarding systems, parts, and their connections. This dependency management in IDP Catalog System Model, enables developers to have service onboarding using seamless integrations.

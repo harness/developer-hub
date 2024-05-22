@@ -364,6 +364,12 @@ You use a Harness Kubernetes Canary or Blue Green deployment and apply the hooks
 
 A Harness Kubernetes deployment runs `kubectl apply` for manifest files. There is no Tiller involved in this process because Harness is not running any Helm commands.
 
+#### Can you tell me which specific authentication flows are supported for OIDC authentication to Kubernetes? Or, are you saying that Harness only supports the Okta identity provider and not any OIDC provider? Also, for authenticating to Kubernetes, I'm assuming based on the UI prompt for client Id and client secret that it should be a Client Credential authentication flow, and that makes sense for system to system authentication.
+
+Currently, Harness supports only [OAuth 2.0 Password Grant Type](https://oauth.net/2/grant-types/password/) password authentication flow. 
+
+`client_id` and `client_secret` are required for the [RFC 6749: The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749#section-2.3.1) password authentication flow.
+
 ### Terraform
 
 #### How does Harness support Terraform?
@@ -432,7 +438,7 @@ See [Harness Git Experience Quickstart](../platform/git-experience/configure-git
 Harness CD has two free options to get started. 
 
 - The [Harness CD & GitOps SaaS Free Plan](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg) is the recommended option for new users since there is no server side installation to manage.
-- If a self-managed yet lightweight option is needed, then the recommended otion is to use [Gitness](https://gitness.com/).
+- If a self-managed yet lightweight option is needed, then the recommended option is to use [Gitness](https://gitness.com/).
 
 As of Dec 2023, the Harness CD Community Edition (CE) is retired in favor of [Gitness](https://gitness.com/). More details are available on this [blog post](https://www.harness.io/blog/retiring-harness-cd-community-edition-in-favor-of-gitness). 
 
@@ -724,6 +730,24 @@ For a full list of supported fields, go to [AWS Lambda Create Function Request](
 
 Harness supports all of the popular Git platforms for storing your function definition files.
 
+### AWS SAM
+
+#### Can we deploy multiple stacks (multiple SAM build and deployments in a single pipeline) using a single service?
+
+No. We support only one stack in the SAM Deploy step.
+
+#### There is an option to specify multiple manifest files on the service definition. Can we have both the stacks' manifests defined in the same service and use it (any suggestions and examples around this)?
+
+It's not supported. We support deploying to one stack only in the SAM Deploy step. 
+
+For this scenario, we suggest that you have one pipeline with two Deploy stages with two different services and stacks. 
+
+Alternatively, you can have one pipeline with one Deploy stage and specify two different services in the **Service** tab, and in the **SAM Deploy** step > **Stack Name** field, select runtime input. 
+
+![](./static/aws-sam-faq.png)
+
+![](./static/aws-sam-runtime.png)
+
 ### Spot Elastigroup
 
 #### What is a Spot deployment in Harness?
@@ -941,13 +965,13 @@ See [Fixed Values, runtime inputs, and expressions](/docs/platform/variables-and
 
 #### Error evaluating certain expressions in a Harness pipeline
 
-Some customers have raised concernes about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similiar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
+Some customers have raised concerns about errors while trying to evaluable expressions (example: `<+pipeline.sequenceId>`) while similar expressions do get evaluated. In this case the concatenation in the expression `/tmp/spe/<+pipeline.sequenceId>` is not working because a part of expression `<+pipeline.sequenceId>` is integer so the concatenation with `/tmp/spec/` is throwing error because for concat, both the values should be string only. 
 
 So we can invoke the `toString()` on the integer value then our expression should work. So the final expression would be `/tmp/spe/<+pipeline.sequenceId.toString()>`. 
 
 #### How to carry forward the output variable when looping steps?
 
-If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consequtive steps or with in the loop, you can use  `<+strategy.iteration>` to denote the iteration count.
+If you are using looping strategies on steps or step groups in a pipeline, and need to carry forward the output variables to consecutive steps or with in the loop, you can use  `<+strategy.iteration>` to denote the iteration count.
 
 For example, assume a looping strategy is applied to a step with the identifier `my_build_step.` which has an output variable `my_variable` The expression `<+pipeline.stages.my_build_step.output.outputVariables.my_variable>` won't work. Instead, you must append the index value to the identifier in the expression, such as: `<+pipeline.stages.my_build_step_0.output.outputVariables.my_variable>`
 
@@ -955,7 +979,7 @@ If you are using with in the loop you can denote the same as `<+pipeline.stages.
 
 See [Iteration Counts](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/#iteration-counts)
 
-#### How do I get the output variables from pieeline execution using Harness NG API?
+#### How do I get the output variables from pipeline execution using Harness NG API?
 
 We have an api to get the pipeline summary:
  

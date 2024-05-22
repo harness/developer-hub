@@ -1,6 +1,6 @@
 ---
 title: OpenShift chaos infrastructure
-sidebar_position: 5
+sidebar_position: 7
 description: Guide to connect to Kubernetes and Linux chaos infrastructure
 redirect_from:
   - /docs/chaos-engineering/chaos-infrastructure/openshift-infra

@@ -181,7 +181,7 @@ spec:
             - name: TARGET_SERVICE_PORT
               value: "80"
             - name: PATH_FILTER
-              value: '/status'         
+              value: '/status'
 ```
 
 ### Latency
@@ -253,7 +253,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Destination ports
@@ -295,7 +295,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### HTTPS
@@ -308,7 +308,7 @@ Set this parameter if the HTTPS URL of the target application includes a port, f
 
 #### Egress
 
-For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application. 
+For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application.
 
 * If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there's no need to provide `CUSTOM_CERTIFICATES`. However, if the root certificate directory and file name differ from `/etc/ssl/certs` and `ca-certificates.crt` respectively, set the root certificate directory path using the `HTTPS_ROOT_CERT_PATH` ENV variable and the file name using the `HTTPS_ROOT_CERT_FILE_NAME` ENV variable.
 * If the HTTP client in the target application isn't configured to reload certificates with each API call, you must provide the `CUSTOM_CERTIFICATES` ENV variable to the chaos experiment and no need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` ENV. The same custom certificates should be loaded into the target application. You can generate custom certificates using the following commands:
@@ -352,7 +352,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Advanced fault tunables

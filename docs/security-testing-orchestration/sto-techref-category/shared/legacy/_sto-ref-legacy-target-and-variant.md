@@ -1,16 +1,21 @@
-The following settings are required for every Security step:
+Every Custom Scan step needs a [`target_name` and  `variant`](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines.md). Specify unique, descriptive names. This makes it much easier to navigate your scan results in the STO UI. 
 
-* `target_name` A user-defined label for the code repository, container, application, or configuration to scan. 
-* `variant` A user-defined label for the branch, tag, or other target variant to scan.
+<a href="target_name"></a>
+<br/>
+```
+target_name
+```
+A [user-defined label](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) for the code repository, container, application, or configuration to scan.
 
-:::note
 
-Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
+<a href="variant"></a>
+<br/>
+```
+variant
+```
 
-:::
+A [user-defined label](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines)  for the branch, tag, or other target variant to scan.
 
 You can see the target name, type, and variant in the [Test Targets](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines.md) UI:
 
 ![Target name, type, and branch](../../static/repo-settings.png)
-
-For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines).

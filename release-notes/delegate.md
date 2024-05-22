@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-04-25T10:00
+date: 2024-05-21T10:00
 sidebar_position: 4
 ---
 
@@ -37,9 +37,63 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 <Deleos />
 
+:::danger Breaking change: Updated Delegate Expiration Policy
+
+Harness has updated the delegate expiration policy to 6 months with a 2-month EOL upgrade period.
+
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+
+For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
+
+:::
+
+## May 2024
+
+### Version 24.05.83001 <!--  May 21, 2024 -->
+
+#### New features and enhancements
+
+- Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
+
+### Version 24.05.82904 <!--  May 21, 2024 -->
+
+#### Hotfix
+
+- Tanzu steps will resolve the PCF CLI plugins path by checking the `HOME` environment variable. (CDS-95794, ZD-61882)
+
+### Version 24.05.82205 <!--  May 20, 2024 -->
+
+#### Hotfix
+
+- Delegates will now include memory resource statistics in their logs, providing valuable additional insight for troubleshooting memory-related issues. (PL-51027)
+
+### Version 24.05.82903 <!--  May 16, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with the Google artifact registry trigger of a pipeline when using a GCP connector with OIDC authentication. (CDS-96627, ZD-62986)
+
+### Version 24.05.82902 <!--  May 10, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with the delegate health endpoint, enabling the delegate to perform several websocket reconnection attempts before Kubernetes evicts the pod. (PL-50540, ZD-59551, ZD-62207)
+
+### Version 24.04.82901 <!--  May 8, 2024 -->
+
+#### Fixed issues
+
+- Delegates with mTLS enabled were able to send a heartbeat to Harness Manager despite being configured with a non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to Harness Manager. (PL-48891, ZD-60974)
+
+- Intermittent socket timeout exceptions occurred in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. Resolved the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. (PL-47940, ZD-58006)
+
+- Local login was failing for users assigned admin permissions via a user group. The method to verify if a user is an account admin only considered direct user assignments and did not account for user group roles. Revised the validation process to include both user and user group assignments when checking for admin status. Now, to be recognized as an admin, users must have the specific role assignments outlined below; assigning the `_account_admin` role alone is no longer sufficient for admin rights. (PL-47632)
+   - Role: `_account_admin`.
+   - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
+
 ## April 2024
 
-### Harness version 1.34.2, Harness Delegate version 24.04.82804 <!--  April 24, 2024 -->
+### Version 24.04.82804 <!--  April 24, 2024 -->
 
 #### Fixed issues
 
@@ -49,7 +103,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. (PL-48980, ZD-61314, ZD-61420, ZD-61486)
 
-### Harness version 1.33.5, Harness Delegate version 24.04.82707 <!--  April 16, 2024 -->
+### Version 24.04.82707 <!--  April 16, 2024 -->
 
 #### New features and enhancements
 
@@ -87,7 +141,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Added multiple log lines for debugging an issue. (CDS-93910)
 
-### Harness version 1.30.7, Harness Delegate version 24.03.82600 <!--  March 26, 2024 -->
+### Version 24.03.82600 <!--  March 26, 2024 -->
 
 #### New features and enhancements
 
@@ -107,7 +161,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - The `ap-south-2` region is now supported for use with AWS Secrets Manager. (CDS-92541, ZD-58686)
 
-### Harness version 1.28.11, Harness Delegate version 24.03.82502 <!--  March 13, 2024 -->
+### Version 24.03.82502 <!--  March 13, 2024 -->
 
 #### New features and enhancements
 
@@ -145,7 +199,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Updated the behavior of the Scale step. After the Scale step is executed, all workload pods are published as new pods, as the scale step can be used to scale pods and change traffic on the pods. (CDS-91534, ZD-54319)
 
-### Harness version 1.26.14, Harness Delegate version 24.02.82402 <!--  February 27, 2024 -->
+### Version 24.02.82402 <!--  February 27, 2024 -->
 
 #### Fixed issues
 
@@ -199,7 +253,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Fixed an issue for GitHub connectors when Fetch Files failed because of an NPE error. (CDS-91176, ZD-57550)
 
-### Harness version 1.24.7, Harness Delegate version 24.02.82302 <!--  February 12, 2024 -->
+### Version 24.02.82302 <!--  February 12, 2024 -->
 
 #### Behavior changes
 
@@ -217,7 +271,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 ## January 2024
 
-### Harness version 1.22.3, Harness Delegate version 24.01.82202 <!--  January 29, 2024 -->
+### Version 24.01.82202 <!--  January 29, 2024 -->
 
 #### Fixed issues
 
@@ -243,7 +297,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
    Harness added a new environment variable `DISABLE_CF_APP_LOG_STREAMING` to enhance control over this behavior. Setting this variable to `true` will redact all application logs, providing users with more flexibility in managing log visibility.
 
-### Harness version 1.20.9, Harness Delegate version 24.01.82108 <!--  January 15, 2024 -->
+### Version 24.01.82108 <!--  January 15, 2024 -->
 
 #### Early access features
 
@@ -265,7 +319,7 @@ import Deleos from '/docs/platform/shared/delegate-legacy-eos.md'
 
 - Fixed an issue where pod creation failed in Kubernetes cluster build infrastructures if the pod volume mount key exceeded 63 characters. (CI-10789, ZD-55265)
 
-### Harness version 1.17.8, Harness Delegate version 23.12.82000 <!--  January 2, 2024 -->
+### Version 23.12.82000 <!--  January 2, 2024 -->
 
 #### Fixed issues
 

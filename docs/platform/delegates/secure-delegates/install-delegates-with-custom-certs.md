@@ -25,7 +25,7 @@ For information on delegate types, go to [Delegate image types](/docs/platform/d
 
 ## Install with custom certificates
 
-Use the steps below to install custom certificates for a Docker, Kubernetes, or Helm delegate with an an immutable image type version later than 23.10.81202.
+Use the steps below to install custom certificates for a Docker, Kubernetes, or Helm delegate with an immutable image type version later than 23.10.81202.
 
    :::info note
    Certificates must be PEM format.
@@ -71,10 +71,8 @@ To install a Docker delegate with custom certificates, do the following:
      -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  harness/delegate:yy.mm.verno
    ```
 
-
 </TabItem>
   <TabItem value="k8s" label="Kubernetes delegate">
-
 
 To install a Kubernetes delegate with custom certificates, do the following:
 
@@ -116,14 +114,14 @@ To install a Kubernetes delegate with custom certificates, do the following:
               defaultMode: 400
    ```
 
-4. Set the security context to provide operator access to the mounted files. Add the following YAML under `spec.template.spec`.
+3. Set the security context to provide operator access to the mounted files. Add the following YAML under `spec.template.spec`.
    
     ```yaml
           securityContext:
             fsGroup: 1001
     ```
 
-6. Use the root user. This is the default and might not require modification. Add the following YAML under `spec.template.spec.containers`.
+4. Use the root user. This is the default and might not require modification. Add the following YAML under `spec.template.spec.containers`.
    
     ```yaml
             securityContext:
@@ -333,10 +331,8 @@ To add self-signed certificates for delegate upgrader, do the following:
 
    This adds your volume mount to the `/ca-bundle` directory.
 
-
 </TabItem>
 </Tabs>
-
 
 ## Install with custom truststore
 
@@ -346,7 +342,7 @@ The JRE truststore must include the certificate that delegates require to establ
 
 Command-line tools use truststore from the underlying Red Hat operating system.
 
-Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an an immutable image type version earlier than 23.10.81202.
+Use the steps below to install custom certificates for a Docker or Kubernetes delegate with an immutable image type version earlier than 23.10.81202.
 
 There are two aspects of custom certificates:
 
@@ -362,7 +358,7 @@ In this topic, we will do the following:
 - Add a volume mount to the `harness-delegate.yaml` file and configure the delegate container OS to have the certificates.
 
 :::info
-Harness recommends that you keep your existing Java KeyStore in place during the installation process. Updating the KeyStore may cause issues with your delegate.
+Harness recommends that you keep your existing Java KeyStore in place during the installation process. Updating the KeyStore might cause issues with your delegate.
 :::
 
 For information on best practices for truststore creation, go to [Java Keystore Best Practices](https://myarch.com/cert-book/keystore_best_practices.html).
@@ -406,12 +402,10 @@ For information on best practices for truststore creation, go to [Java Keystore 
 
 ### Install truststore and custom certs
 
-After the truststore file and custom certificates are configured, you're ready to install them in a Kubernetes or Docker delegate.
-
+After you configure the truststore file and custom certificates, you're ready to install them in a Kubernetes or Docker delegate.
 
 <Tabs>
   <TabItem value="docker" label="Docker delegate" default>
-
 
 1. Mount the truststore file to the delegate container.
 2. Mount the custom certificates to the `/etc/pki/ca-trust/source/anchors/` directory.
@@ -497,7 +491,7 @@ After the truststore file and custom certificates are configured, you're ready t
 You can add certificates to the delegate pod so any command running on the pod has certificates installed.
 
 :::info note
-Please note that it's not a necessary step if you do not intend to run commands directly on the pod that needs certificates to connect to external systems.
+This step isn't necessary if you don't intend to run commands directly on the pod that needs certificates to connect to external systems.
 :::
 
 In this example, we'll use `cert1.crt` and `cert2.crt` files that have custom certificates.
@@ -793,7 +787,6 @@ spec:
               configMap:
                 name: my-secret-upgrader-config
 ```
-
 
 </TabItem>
 </Tabs>

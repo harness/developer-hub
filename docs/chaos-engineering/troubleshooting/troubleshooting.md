@@ -132,12 +132,12 @@ spec:
 ```
 
 :::tip
-The `--vm-populate` in the above manifest populates the memory, thereby stressing it. This is an example to demonstrate how the `stressNGFlags` flag attribute can be utilised.
+The `--vm-populate` in the above manifest populates the memory, thereby stressing it. This is an example to demonstrate how the `stressNGFlags` flag attribute can be utilized.
 :::
 
 ### Executing an experiment moves it to QUEUED state
 
-When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/control-plane) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/features/chaos-infrastructure/kubernetes.md).
+When you execute an experiment but it moves to the `Queued` state, it means the [Chaos manager](/docs/chaos-engineering/architecture-and-security/architecture/components#20-chaos-manager) was unable to send the experiment to the [subscriber](/docs/chaos-engineering/architecture-and-security/architecture/components#components-common-to-all-chaos-infrastructure).
 
 This could be due to a variety of reasons, such as:
 

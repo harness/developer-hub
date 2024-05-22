@@ -4,26 +4,6 @@ export const CdData: Horizon = {
     description: "Q1 2024, Feb-Apr 2024",
     feature: [
       {
-        tag: [],
-        title: "Native Helm Deployment - Blue Green and Canary Support",
-        description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
-      },
-      {
-        tag: [],
-        title: "Kubernetes Traffic Shifting Support",
-        description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
-      },
-      {
-        tag: [{ value: "AWS" }],
-        title: "AWS OIDC Support for Deployments",
-        description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
-      },
-      {
-        tag: [{ value: "GCP" }],
-        title: "GCP OIDC Support for Deployments",
-        description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
-      },
-      {
         tag: [{ value: "AWS" }],
         title: "Lambda Deployments with Canary and traffic shifting",
         description: "Users can now perform Lambda Deployments with Canary",
@@ -64,7 +44,7 @@ export const CdData: Horizon = {
         description: "User’s can migrate their Spinnaker Pipelines to Harness",
       },
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}],
         title: "Continuous Verification using Manifest",
         description: "Users can now initiate a CV step using a manifest. This allows service owners to define the key metrics to be validated in CV during service definition.",
       },
@@ -78,6 +58,11 @@ export const CdData: Horizon = {
   "Next": {
     description: "Q2 2024, May-Jul 2024",
     feature: [
+      {
+        tag: [],
+        title: "Native Helm Deployment - Blue Green and Canary Support",
+        description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
+      },
       {
         tag: [{ value: "Azure" }],
         title: "Azure Functions Support",
@@ -98,6 +83,41 @@ export const CdData: Horizon = {
         title: "Prometheus Default Health Source for Continuous Verification",
         description: "Users can deploy Helm Charts that have CRDs.",
       },
+      {
+        tag: [],
+        title: "Prometheus Default Health Source for Continuous Verification",
+        description: "Users can deploy Helm Charts that have CRDs.",
+      },
+      {
+        tag: [{value: "AWS"}, {value: "Serverless"}],
+        title: "Multiple Runtimes Support for Serverless.com",
+        description: "Users will be able to use multiple new supported runtimes with serverless.com functions.",
+      },
+      {
+        tag: [],
+        title: "Harness Code Support as a Manifest Source",
+        description: "Users can use Harness Code as a manifest source for all Harness CD swimlanes.",
+      },
+      {
+        tag: [{value: "GitOps"}],
+        title: "Support Multiple Repository Sources",
+        description: "Users can reference files in separate sources for their GitOps deployments.",
+      },
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Add Google Big Query as a New Health Source",
+        description: "Users will be able to select Google Big Query as their health source for Continuous Verification.",
+      },
+      {
+        tag: [{value: "Continuous Verification"}],
+        title: "Health Source as a Part of a Service Entity",
+        description: "Users can definte the CV analysis requirements in the service manifest.",
+      },
+      {
+        tag: [{value: "OPA"}],
+        title: "Governance 2.0: Simplified Configuration Experience",
+        description: "Users can use a policy-as-code approach to define their operational policies.",
+      }
     ],
   },
   "Later": {
@@ -130,4 +150,24 @@ export const CdData: Horizon = {
       },
     ],
   },
+  "Released": {
+    description: "What has been released",
+    feature: [
+      {
+        tag: [],
+        title: "Kubernetes Traffic Shifting Support",
+        description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
+      },
+      {
+        tag: [{ value: "AWS" }],
+        title: "AWS OIDC Support for Deployments",
+        description: "All AWS Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
+      },
+      {
+        tag: [{ value: "GCP" }],
+        title: "GCP OIDC Support for Deployments",
+        description: "All GCP Deployment Types now can leverage OIDC to authenticate and Harness can perform deployments via ODIC",
+      },
+    ]
+  }
 };

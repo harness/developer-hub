@@ -4,9 +4,7 @@ description: Explains the auto-upgrade feature and the delegate expiration polic
 sidebar_position: 9
 ---
 
-The Harness Delegate for Kubernetes supports automatic upgrades. With automatic upgrades, you don't need to worry about having the most up-to-date functionality. You always have the most recent version of the delegate.
-
-Harness recommends that you enable automatic upgrades.
+The Harness Delegate for Kubernetes and Helm supports automatic upgrades. Harness recommends that you enable automatic upgrades for your Kubernetes delegates. With automatic upgrades, you always have the most recent version of the delegate.
 
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
@@ -16,9 +14,9 @@ The automatic upgrade feature is enabled by default for the Kubernetes manifest 
 
 ## How automatic upgrade works in the Kubernetes manifest
 
-The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it makes a call to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:yy.mm.verno`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
+The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it sends a request to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:yy.mm.verno`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
 
-To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
+To prevent the installation of the automatic upgrade feature, remove the `CronJob` section before you apply the manifest.
 
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
@@ -178,7 +176,7 @@ To configure the delegate upgrade schedule, do the following:
 1. In the `delegate.yaml` manifest file, locate the `upgrader-cronjob` resource.
 2. Configure the **CronJob** resource to your specific settings.
 
-   The CronJob YAML configuration should look something like the example below that runs the job every 15 minutes. The `spec.schedule` field defines when and how often the job should run.
+   The `CronJob` YAML configuration should look something like the example below that runs the job every 15 minutes. The `spec.schedule` field defines when and how often the job should run.
 
    ```yaml
    ---
@@ -225,7 +223,7 @@ To configure the delegate upgrade schedule, do the following:
    kubectl apply -f harness-delegate.yaml
    ```
 
-   The schedule change for CronJob will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
+   The schedule change for the cron job will take effect immediately, and the next upgrade run will follow the new schedule. If you have made any other changes to the YAML file, such as updating the image, configuration, environment variables, and so on, those changes will take effect during the next run.
 
 ### Configure an optional registry mirror for delegate images
 
@@ -302,12 +300,45 @@ To avoid these issues, you can set up the `upgrader` to use your custom delegate
 
     The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:24.04.82804` image.
 
-## Delegate expiration policy
 
-Delegates expire after 6 months (24 weeks) from the release of the delegate image on Docker Hub. Delegates do not stop working after expiration. Because delegates are only backward-compatible, they might have issues if the backend has moved too far ahead. Harness recommends that you upgrade your delegates before they expire. For more information about delegate releases, go to the [Delegate release notes](/release-notes/delegate).
+## Delegate expiration support policy
 
-:::info important
-If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. You must update the delegate every 6 months.
+Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). 
+
+Delegates do not stop working after expiration. Because delegates are only backward-compatible, they might have issues if the backend has moved too far ahead. Harness recommends that you upgrade your delegates before they expire.
+
+| Release | EOS | EOL |
+| --- | --- | --- |
+| 24.04.verno | 23.10.verno and below | 23.08.verno and below |
+| 24.05.verno | 23.11.verno and below | 23.09.verno and below |
+
+EOS means the following:
+
+- Harness Support will no longer accept support requests for the delegate in both Harness FirstGen and Harness NextGen.
+
+- Security fixes will still be addressed.
+
+- Product defects will not be addressed.
+- If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
+
+EOL means the following:
+
+- In addition to the EOS clauses, security fixes will not be addressed.
+
+For a list of delegate images and their support status, go to [Delegate image version support status](/docs/platform/delegates/delegate-reference/delegate-image-version-status).
+
+#### Example delegate expiration
+
+ For delegates with an immutable image type, the image tag is `yy.mm.verno`. A delegate version `24.05.84200` would reach EOS in November 2024 and EOL in January 2025.
+
+:::note
+This policy applies to delegates with the `yy.mm.verno` image tag. It does not apply to legacy delegates. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+
+:::
+
+:::info
+Harness Self-Managed Enterprise Edition support is limited to the delegate version released with the most recent version. When you upgrade Harness Self-Managed Enterprise Edition, the supported delegate version is included.
+
 :::
 
 ### Determine when your delegate expires
@@ -327,3 +358,4 @@ To update the delegate YAML, do the following:
 - Select **New Delegate** > **Kubernetes** > **Kubernetes Manifest** > **Custom**, and then follow the instructions on the screen.
 
 For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
+

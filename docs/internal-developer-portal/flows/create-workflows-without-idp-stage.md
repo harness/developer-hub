@@ -9,7 +9,7 @@ sidebar_label: Create Workflows without Harness Pipelines
 
 ## Goal
 
-This tutorial will help you create an IDP Self Service Workflow which automates GitHub Repo Onboarding for users. This is also an example to demonstrate that you can build IDP Flows by using Backstage Scaffolder actions and without using Harness pipelines. This however, is not our recommended approach as we recommend using a Harness pipeline to leverage features like Access Control and Governence.
+This tutorial will help you create an IDP Self Service Workflow which automates GitHub Repo Onboarding for users. This is also an example to demonstrate that you can build IDP Flows by using Backstage Scaffolder actions and without using Harness pipelines. This however, is not our recommended approach as we recommend using a Harness pipeline to leverage features like Access Control and Governance.
 
 ## Pre-requisite
 
@@ -58,8 +58,8 @@ https://github.com/backstage/software-templates/blob/main/scaffolder-templates/r
 7. Now fill the fields as displayed in the image below
   - Name: Name of the component that will be registered in the IDP 
   - Description: Describe the usage of the component
-  - Owner (Dropdown): Select an user group as the owner of the component being created.
-  - Owner: The GitHub org under which you want to create the new repository. The org is usually picked from the URL used in tge **Connector**. 
+  - Owner (Dropdown): Select a user group as the owner of the component being created.
+  - Owner: The GitHub org under which you want to create the new repository. The org is usually picked from the URL used in the **Connector**. 
   - Repository: Give a name to the newly created repository. 
 
 ![](static/fill-template.png)

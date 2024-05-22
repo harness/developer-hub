@@ -63,7 +63,7 @@ Pod API block:
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
         <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> SERVICE_DIRECTION </td>
         <td> Direction of the flow of control, ingress or egress </td>
@@ -172,7 +172,7 @@ spec:
             - name: TARGET_SERVICE_PORT
               value: "80"
             - name: PATH_FILTER
-              value: '/status'   
+              value: '/status'
 ```
 
 ### Path filter
@@ -207,7 +207,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"         
+              value: "80"
 ```
 
 ### Destination ports
@@ -249,7 +249,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### HTTPS
@@ -306,7 +306,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Advanced fault tunables

@@ -6,32 +6,28 @@ sidebar_position: 10
 redirect_from: /docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference
 ---
 
-You can scan container images using [Grype](https://github.com/anchore/grype).
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
+
+You can scan your container images and ingest results from [Grype](https://github.com/anchore/grype).
 
 For information about setting up Grype in an air-gapped environment, go to [Set up Grype in air-gapped environments](/docs/security-testing-orchestration/sto-techref-category/grype/grype-setup-in-airgapped.md).
 
 
 ## Important notes for running Grype scans in STO
 
+- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to scan container images on Kubernetes or Docker build infrastructures. 
 
-### Docker-in-Docker requirements
+- You need to run the scan step with root access if either of the following apply:
 
+  - You need to use a Docker-in-Docker background step.
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+  - You need to add trusted certificates to your scan images at runtime. 
 
-
-<StoDinDRequirements />
-
-
-### Root access requirements
-
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-
-<StoRootRequirements />
-
-### For more information
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -42,18 +38,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Grype step settings for STO
 
-The recommended workflow is add a Grype step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Grype step to a Security or Build stage and then configure it as described below. 
 
-
-<!--
-<details>
-<summary>Scanner Template</summary>
-
-![](static/step-palette-00.png)
-
-</details>
-
--->
 
 ### Scan
 
@@ -90,15 +76,19 @@ import StoSettingProductConfigName from '/docs/security-testing-orchestration/st
 #### Type
 
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
 
 <StoSettingScanTypeCont />
+<StoSettingScanTypeRepo />
 
 
 #### Detect target and variant 
 
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
 import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
+<StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectContainer/>
 <StoSettingScanTypeAutodetectNote/>
 
@@ -127,7 +117,7 @@ import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-te
 
 <StoSettingIngestionFile  />
 
-### Container Image 
+### Artifacts 
 
 
 <!-- ============================================================================= -->
@@ -241,22 +231,18 @@ import StoSettingSettings from '../shared/step_palette/all/_settings.md';
 
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
+
+
 
 ## Troubleshoot "vulnerability database build date exceeds max allowed age" exception
 
@@ -268,69 +254,3 @@ While Harness updates the database every time it rebuilds the Grype image, this 
 
 
  
-<!-- STO-7187 remove legacy configs for scanners with step palettes 
-
-## Security step settings for Grype scans in STO (legacy)
- 
-:::note
-You can set up Grype scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [Grype step](#grype-step-settings-for-sto) instead.
-:::
-
-
-#### Important Notes
-
-* STO supports Grype scans of containers and repositories.
-* STO supports [orchestrationscans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
-
-#### Target and variant
-
-
-import StoLegacyTargetAndVariant  from '../shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-#### Grype scan Settings
-
-* `product_name` = `grype`
-* `policy_type` = `orchestratedScan`
-* `scan_type` = `repository` or `container`
-* `product_config_name` = `default`
-* `container_domain` — The image registry domain, for example `docker.io`
-* `container_project` — The image owner and project, for example `harness/delegate`
-* `container_tag` — The tag of the image to scan, for example `latest`
-* `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-<!-- 
-The following settings are also required, depending on the container type:
-+ if `container_type` = `docker_v2`
-	- `container_access_id`: Username
-	- `container_access_token`: Password/token 
-+ if `container_type` = `aws_ecr`
-	- `container_access_id`: Username
-	- `container_access_token`: Password/token 
-	- `container_region`: Image registry AWS region
-+ if `container_type` = `jfrog_artifactory`
-	- `container_access_id`: Username
-	- `container_access_token`: Password/token
-
-
-
-#### Container scan settings
-
-
-import StoLegacyContainer from '../shared/legacy/_sto-ref-legacy-container.md';
-
-
-<StoLegacyContainer />
-
-#### Ingestion file
-
-
-import StoLegacyIngest from '../shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-<StoLegacyIngest />
-
--->

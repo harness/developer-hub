@@ -5,8 +5,14 @@ sidebar_label: Gitleaks scanner reference
 sidebar_position: 200
 
 ---
+<DocsTag   text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
+<br/>
+<br/>
 
-You can scan your code repositories using [Gitleaks](https://github.com/gitleaks), an open-source tool designed to find common security issues in Python code. 
+
+You can scan your code repositories using [Gitleaks](https://github.com/gitleaks) and ingest your results into Harness STO. 
 
 Gitleaks can publish results in [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning), an open data format supported by many scan tools. 
 
@@ -18,7 +24,7 @@ This section describes recommended best practices and references to useful infor
 
 ### Update your allowlist with inactive secrets
 
-You can specify an allowlist of secrets that are inactive, rotated, deactivated, or false positives. Gitleaks ignores these secrets during a scan. Set up your allowlist in a [.gitleaks.toml file](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) and place it at the root of your repository. For more information about this format, 
+You can specify an allowlist of secrets that are inactive, rotated, deactivated, or false positives. Gitleaks ignores these secrets during a scan. Set up your allowlist in a [.gitleaks.toml file](https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml) and place it at the root of your repository. 
 
 :::note
 
@@ -93,7 +99,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## Gitleaks step settings for STO scans
 
-The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
+The recommended workflow is to add a GitLeaks step to a Security or Build stage and then configure it as described below.  
 
 
 ### Scan Mode
@@ -215,24 +221,19 @@ import StoSettingSettings from './shared/step_palette/all/_settings.md';
 You can also use this field to [speed up your Gitleaks scans](#speeding-up-gitleaks-scans).
 
 
+
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)   
+<ScannerRefAdvancedSettings />
  
 
 ## Gitleaks step configuration example for STO
