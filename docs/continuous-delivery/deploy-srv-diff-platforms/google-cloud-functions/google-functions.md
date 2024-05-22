@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Functions
 description: Deploy single-purpose functions to Google Cloud.
-sidebar_position: 900
+sidebar_position: 1
 ---
 
 # Google Cloud Functions deployments
@@ -821,12 +821,13 @@ output "region_name" {
 
 In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.project_name>`.
 
-<figure>
+![](./static/google-provider-detail.png)
+<!-- <figure>
 
-<DocImage path={require('./static/6d3712e9196c409f2d49747939b91c8913adfe7a44d2b47b019f01187d36e719.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('sta')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs</figcaption>
-</figure>
+</figure> -->
 
 ## Cloud Functions execution strategies
 
