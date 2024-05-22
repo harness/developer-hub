@@ -1,8 +1,9 @@
 ---
-title: General Continuous Verification FAQs
+title: Continuous Verification FAQs
 description: Frequently asked questions about Continuous Verification.
 sidebar_position: 1000
 ---
+This article addresses some frequently asked questions about Harness Continuous Verification.
 
 ### How can I verify that my CD pipeline has resulted in a successful deployment? 
 
