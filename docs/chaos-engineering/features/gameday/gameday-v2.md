@@ -6,9 +6,8 @@ description: Guide to creating and executing a GameDay
 
 This section describes how to create and execute [GameDay V2](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md).
 
-:::tip
+### Why GameDay V2?
 GameDay V2 introduces additional layers of control, such as stakeholder role, their permission to execute a GameDay, prerequisites and so on.
-:::
 
 - If you are an existing HCE user, head to [GameDay V1](/docs/chaos-engineering/features/gameday/run-gameday.md) to create and execute a GameDay.
 
