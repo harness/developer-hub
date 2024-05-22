@@ -1,5 +1,5 @@
 ---
-title: General Azure FAQs
+title: Azure Deployment FAQs
 description: Frequently asked questions about Azure deployments.
 sidebar_position: 7
 ---
@@ -12,7 +12,7 @@ secret.setValue is not supported. Secrets can be referred to only using ```secre
 
 ### Do we support nested AD groups syncing to Harness on AD SCIM sync?
 
-Enabling Azure AD provisioning in Harness allows user provisioning from Azure AD. Users directly provisioned require group assignment in Harness, while Azure AD group members' group assignments are managed in Azure AD. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
+Enabling Azure AD provisioning in Harness allows user provisioning from Azure AD. Users directly provisioned require group assignment in Harness, while Azure AD group members' group assignments are managed in Azure AD. For more details, go to [Provision users and groups using Azure AD SCIM](https://developer.harness.io/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim/)
 
 
 ### How do I pass --target-path to deploy the code into the different path in Azure Web App deployment?
@@ -39,18 +39,18 @@ Currently, we don't have any facility to do the web app deployment in the custom
 
 ### How does the newly introduced support for Azure Logs as a Health Source in Harness contribute to service monitoring, particularly through the utilization of Cloud Metrics and Cloud Logs ? 
 
-Harness has now launched support for Azure Logs Support as a Health Source for CV and has enabaled for all accounts . Users can use Cloud Metrics and Cloud Logs to monitor their deployed service. This was a feature parity item with Harness First Gen. One may also follow the same in our [Documentation](https://developer.harness.io/docs/service-reliability-management/monitored-service/health-source/azurelogs/).
+Harness has now launched support for Azure Logs Support as a Health Source for CV and has enabled for all accounts . Users can use Cloud Metrics and Cloud Logs to monitor their deployed service. This was a feature parity item with Harness First Gen. One may also follow the same in our [Documentation](https://developer.harness.io/docs/service-reliability-management/monitored-service/health-source/azurelogs/).
 
 
-### Does the Azure connector support service principles ?
+### Does the Azure connector support service principles?
 
 Yes. We support System Assigned Managed Identity and User Assigned Managed Identity in the Azure Global and Government environments.
 The service principal maps to a managed identity.
 
 
 ### Does Harness support Azure Container Apps ?
-No, due to low customer request it is not on our roadmap. Please feel free to create a request for the same.
-Please read more on what we support in Harness in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-integrations).
+No, due to low customer request it is not on our road map. Please feel free to create a request for the same.
+For more details, go to [CD integrations](https://developer.harness.io/docs/continuous-delivery/cd-integrations).
 
 
 ### Is there any internal or external documentation available for building and deploying updates for an Azure SQL Server database ?
@@ -60,7 +60,7 @@ No, We do not have a prescribed way to do this it would need to be their own scr
 
 ### How to prepare Azure VMSS Deployment in Harness ?
 
-Harness provides a template specific to Azure VMSS Deployment which can be referred from the following [Custom Template Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#azure-vmss---deployment-template-sample)
+Harness provides a template specific to Azure VMSS Deployment which can be referred from the following [Custom Template Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#azure-vmss---deployment-template-sample).
 
 
 ### Why can't I deploy an ARM template?
@@ -74,8 +74,8 @@ Status code 400, "{"error":{"code":"InvalidRequestContent","message":"The reques
 For an example of a valid Paramters File, go to [ARM parameter file](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning/#arm-parameter-file).
 
 
-### Why am I getting the error: `az command is not found`?
-If you receive the below error
+### Why am I getting the error: "az command is not found"?
+If you receive the below error:
 
 ```
 az command not found

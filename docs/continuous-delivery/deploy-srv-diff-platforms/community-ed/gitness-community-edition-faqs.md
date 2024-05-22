@@ -4,6 +4,8 @@ description: Frequently asked questions about Harness Continuous Delivery & GitO
 sidebar_position: 100
 ---
 
+This article addresses some frequently asked questions about Gitness and Community Edition deployments in Harness.
+
 ### Do you have a free version of Harness CD?
 
 Harness CD has two free options to get started. 
