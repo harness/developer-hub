@@ -18,7 +18,7 @@ Creating monitored services for each of the deployed services (service running i
 
 While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with required health sources. Coupling a monitored service template with services and environments is intentionally kept loose to allow using a template used for deployment for different services.
 
-You can input the monitored service template as runtime input or expression. This helps in tweaking the template at runtime based on the context of a deployment (for particular service getting deployed to a particular environment). 
+You can input the monitored service template as runtime input or expression. This helps in tweaking the template at runtime based on the context of a deployment (for a particular service getting deployed to a particular environment). 
 
 For more details on creating a monitored service template, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
 
@@ -73,7 +73,7 @@ To select a monitored service template during runtime, on the Verify step settin
 A monitored service template allows the following use cases:
 
 * Multiple verify steps with different monitored service templates can be configured to be run in a particular stage. These steps can be then configured to be run based on certain conditions.
-* A monitored service template with user impacting metric (not necessarily satisfied/linked to a single service) can be created and use in verification in addition to a template with service linked metric.
+* A monitored service template with an user impacting metric (not necessarily satisfied/linked to a single service) can be created and use in verification in addition to a template with service linked metric.
 
 
 
