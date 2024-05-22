@@ -728,3 +728,20 @@ To resolve this, you may need to check the configuration of your auto-saving rul
 
 #### What should I tag my instances with to be shut down by the stop-after-hours Rule?
 To ensure that your instances are shut down by the "stop-after-hours" Rule, you should tag them with a specific tag that the Rule will recognize. Typically, this tag should be defined in the Rule's configuration, and you should use the exact tag specified there when tagging your instances.
+
+#### What does the "No Cluster Name" entity represent in Cloud Cost Management?
+The "No Cluster Name" entity appears in the visualization when there are costs that cannot be attributed to a specific cluster. This typically occurs with orphaned resources or when costs are associated with a deleted cluster.
+
+#### How can I filter out the "No Cluster Name" entity at the cost category level?
+To filter out the "No Cluster Name" entity, you can create a new cost category and define a rule that excludes costs where the cluster name is "No Cluster Name."
+
+#### What are the steps to create a new cost category and define the rule?
+Navigate to the Cloud Cost Management module and select "Cost Categories" from the left-hand menu.
+Click on the "Create Cost Category" button and provide a name for your cost category.
+Choose the appropriate cloud provider and click on "Add Rule" under the "Rules" section.
+Select "Cluster Name" as the attribute, "is not" as the operator, and enter "No Cluster Name" as the value.
+Click on "Save Rule" and then "Save Cost Category" to finalize the configuration.
+
+#### How can I use the new cost category in my perspective to exclude the "No Cluster Name" entity?
+Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
+By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.

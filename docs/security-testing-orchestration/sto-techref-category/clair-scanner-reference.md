@@ -5,40 +5,138 @@ sidebar_label: Clair scanner reference
 sidebar_position: 110
 ---
 
-You can scan container images using [Clair](https://github.com/quay/clair), an open-source project for the static analysis of vulnerabilities in application containers. Create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
+<DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline/" />
+<br/>
+<br/>
 
-## Important notes for running Clair scans in STO
+You can scan container images and ingest results from [Clair](https://github.com/quay/clair). 
+
+## Workflow descriptions
+
+<details>
+<summary>Ingestion workflows</summary>
+
+import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+
+<CustomScanWorkflowIngest />
+
+</details>
+
+<details>
+<summary>Orchestration/extraction workflows</summary>
 
 
-### Docker-in-Docker requirements
+import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+<CustomScanWorkflowRepo />
 
-<StoDinDRequirements />
-
-### Root access requirements
-
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
-
-<StoRootRequirements />
+</details>
 
 
-### For more information
+## Custom Scan step settings for Clair
 
-import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
+### Scanner settings
 
-<StoMoreInfo />
+These settings are required.
 
-## Security step settings for Clair scans in STO
+- [Product name](#product-name)
+- [Scan type](#scan-type)
+- [Policy type](#policy-type)
+- [Product config name](#product-config-name)
+
+
+#### Product name
+
+The scanner name. This is required for all Custom Scan steps. 
+
+##### Key
+```
+product_name
+```
+
+##### Value
+
+```yaml
+docker_image_scan
+```
+
+#### Scan type
+
+The target type to scan. 
+
+##### Key
+```
+scan_type
+```
+
+##### Value
+
+```
+containerImage
+```
+
+
+#### Policy type
+
+The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+
+##### Key
+```
+policy_type
+```
+
+##### Value
+
+Must be one of the following.
+
+```
+orchestratedScan
+```
+```
+ingestionOnly
+```
+
+
+#### Product config name
+
+
+##### Key
+```
+product_config_name
+```
+
+##### Value
+
+```yaml
+default
+```
+
+### Product access 
+
+These settings are available to access the Clair API when `policy_type` is `orchestratedScan`. 
+
+You should [create Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your encrypted passwords and tokens and reference them using the format `<+secrets.getValue("project.my-access-token")>`.
+
+```
+product_url
+```
+```
+product_access_id
+```
+```
+product_access_token
+```
 
 
 ### Target and variant
 
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+import StoLegacyTargetAndVariant  from './shared/custom-scan/_target-variant.md';
 
 <StoLegacyTargetAndVariant />
 
-
+<!--
 ### Clair scan settings
 
 * `product_name` = `docker-content-trust` (clair)
@@ -50,23 +148,25 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 * `product_config_name` :  `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+-->
+
 ### Container scan settings 
 
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoLegacyContainer  from './shared/custom-scan/_container.md';
 
 <StoLegacyContainer />
 
 
 ### Ingestion file 
 
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+import StoLegacyIngest from './shared/custom-scan/_ingestion-file.md'; 
 
 <StoLegacyIngest />
 
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 

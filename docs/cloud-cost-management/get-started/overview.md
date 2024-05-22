@@ -22,7 +22,7 @@ Furthermore, typical cost management tools are designed to provide monthly billi
 
 Harness Cloud Cost Management (formerly Continuous Efficiency) is a solution that provides engineers and DevOps granular detail of their resource consumption hourly. Harness Cloud Cost Management (CCM) is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
 
-![](./static/updated_overview.png)
+![](./static/latest_overview.png)
 
 ### Visual Summary
 

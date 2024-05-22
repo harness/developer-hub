@@ -5,24 +5,26 @@ sidebar_label: AWS ECR scanner reference
 sidebar_position: 40
 ---
 
-You can scan your container images using [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 
+<DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<br/>
+<br/>
+
+You can scan your container images and extract scan results from [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 
 
 ## Important notes for running AWS ECR scans in STO
 
-### Docker-in-Docker requirements
 
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+- You need to add a [Docker-in-Docker background step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#docker-in-docker-requirements-for-sto) to scan container images on Kubernetes or Docker build infrastructures. 
 
-<StoDinDRequirements />
+- You need to run the scan step with root access if either of the following apply:
 
-### Root access requirements 
+  - You need to run a [Docker-in-Docker background service](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference/#docker-in-docker-requirements-for-sto).
 
-import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+  - You need to add trusted certificates to your scan images at runtime. 
 
-<StoRootRequirements />
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
-
-### For more information
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
 
@@ -31,7 +33,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 ## AWS ECR step settings for STO scans
 
-The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below.  
+The recommended workflow is to add an AWS ECR step to a Security or Build stage and then configure it as described below.  
 
 
 ### Scan
@@ -86,7 +88,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 
 
-### Container image
+### Artifacts
 
 #### Type  (_orchestration_)
 
@@ -184,75 +186,14 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Additional Configuration
 
-In the **Additional Configuration** settings, you can use the following options:
+import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
 
-* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
-* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
-* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
+<ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-In the **Advanced** settings, you can use the following options:
+import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
-* [Conditional Execution](/docs/platform/pipelines/step-skip-condition-settings)
-* [Failure Strategy](/docs/platform/pipelines/failure-handling/define-a-failure-strategy-on-stages-and-steps)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/governance/policy-as-code/harness-governance-overview)
+<ScannerRefAdvancedSettings />
 
-<!-- STO-7187 remove legacy configs for scanners with step palettes
-
-## Security step settings for AWS ECR scans in STO (legacy)
-
-:::note
-You can set up ECR scans using a Security step, but this is a legacy functionality. Harness recommends that you use an [AWS ECR step](#aws-ecr-step-settings-for-sto-scans) instead.
-:::
-
-* `product_name` = `aws-ecr`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)= `dataLoad`, `ingestionOnly`
-* `product_config_name` =`default`
-* `container_project` = The name of the scanned ECR container with the results you want to ingest.
-* `container_tag` = The container tag for the given container project.
-* `configuration_access_id` = Your AWS Access ID secret
-* `configuration_access_token` = Your AWS Access Token secret
-* `configuration_region` = The AWS region where the container is located. For example, `us-east-1`
-* `container_domain` = URI of the ECR container with the scan results you want to load.
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-
-### Target and variant
-
-
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-
-
-<StoLegacyTargetAndVariant />
-
-
-### Container settings
-
-
-
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-
-
-
-<StoLegacyContainer />
-
-### Ingestion file
-
-
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-
-
-
-<StoLegacyIngest />
-
-###  Fail on Severity
-
-import StoSettingFailOnSeverity2 from './shared/step_palette/all/_fail-on-severity.md';
-
-<StoSettingFailOnSeverity2 />
-
--->
