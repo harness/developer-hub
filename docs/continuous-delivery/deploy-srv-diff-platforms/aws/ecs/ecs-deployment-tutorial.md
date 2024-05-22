@@ -293,7 +293,7 @@ Let's look at an example using a task definition file in the [Harness File Store
 
 ![](./static/ecs-deployment-tutorial-40.png)
 
-You can use a remote repo, but for this example we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). 
+   You can use a remote repo, but for this example we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store). 
 2. Select **Harness**, and then select **Continue**. 
 3. In **Task Definition**, select **Add Task Definition**. 
 4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**. 
