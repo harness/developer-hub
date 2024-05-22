@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Function Deployment FAQs
 description: Google Cloud Function Deployment FAQs
-sidebar_position: 100
+sidebar_position: 300
 ---
 
 This article addresses some frequently asked questions about Google Cloud Function deployments in Harness.

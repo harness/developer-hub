@@ -1,5 +1,5 @@
 ---
-title: Helm deployment FAQs
+title: Helm Deployment FAQs
 description: This topic lists some FAQs related to Native and Harness managed Helm deployment
 sidebar_position: 6
 ---
