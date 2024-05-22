@@ -405,10 +405,10 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Google Functions</summary>
 
 - **Overview:**
-  - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+  - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions)
 - **Supported connectors for deployment:**
   - Google Cloud Connector
-  - Service Account
+  - Service Account 
 - **Supported platforms for deployment:**
   - Google Cloud, any region
 - **Versions and tooling support:**

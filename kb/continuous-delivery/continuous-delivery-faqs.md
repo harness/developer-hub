@@ -4338,7 +4338,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 #### What are the Google Cloud Functions supported by Harness ?
 
 Harness supports deploying Google Functions 1st gen and 2nd gen. But for Google Cloud Functions 2nd gen, Harness does not support Google Cloud Source Repository at this time. Only Google Cloud Storage is supported. For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#supported-versions)
+Please read more on this in the following [Documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions)
 
 #### Is there a way to show instances over time in NextGen, similar to the current “Service instances over time” dashboard in First gen ?
 
