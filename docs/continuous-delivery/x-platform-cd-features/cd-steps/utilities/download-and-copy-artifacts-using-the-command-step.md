@@ -503,9 +503,15 @@ pipeline:
 
 The Command Step allows you to run commands on target hosts in SSH and WinRM deployments, as well as within deployment templates. You can use it for various tasks like:
 
-Running scripts on all target hosts.
-Downloading the deployment artifact.
-Copying the artifact or configuration files.
+- Running scripts on all target hosts.
+- Downloading the deployment artifact.
+- Copying the artifact or configuration files.
+
+
+### How to loop the Command Step on all target hosts?
+
+Use the "repeat" looping strategy with the expression stage.output.hosts after the Fetch Instances step for deployment templates.
+This ensures the commands run on each host retrieved via the Fetch Instances step.
 
 ### Is there a way to pass output variables between commands with in a Command step ?
 
@@ -541,4 +547,6 @@ If you are using the Command step, the `Repeat` looping strategy is required. Th
 
 ### Is there a way to interrogate artifact details in a shell script step for SSH use cases, enabling behavior modification in deployment, without transferring it to the end server first ?
 
-One can use command step to copy the artifact to the delegate  to inspect. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/)
+One can use command step to copy the artifact to the delegate  to inspect. Please refer more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/download-and-copy-artifacts-using-the-command-step/).
+
+

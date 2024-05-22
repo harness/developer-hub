@@ -30,32 +30,17 @@ You can use deployment templates for this use case. You can find more informatio
 ### Does Harness provide Salesforce Deployment Template?
 
 Yes, Salesforce deployment template will help users deploy salesforce application and is available for users
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#salesforce-deployment-template-support)
+For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#salesforce-deployment-template-support).
 
 
 ### How does Harness support Google Cloud Run Deployment Templates?
 
 Google Cloud Run Deployment Templates help in deployment template will help users deploy Google Cloud Run-based services
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#google-cloud-run-deployment-template)
+For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#google-cloud-run-deployment-template).
 
 
 ### Does Harness provide template library for Elastic Beanstalk services?
 
 Yes ,Elastic Beanstalk Deployment template is used for deployment template will help users deploy Elastic Beanstalk services.
-Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#elastic-beanstalk---sample)
-
-
-### What is the Command Step?
-
-The Command Step allows you to run commands on target hosts in SSH and WinRM deployments, as well as within deployment templates. You can use it for various tasks like:
-
-- Running scripts on all target hosts.
-- Downloading the deployment artifact.
-- Copying the artifact or configuration files.
-
-
-### How to loop the Command Step on all target hosts?
-
-Use the "repeat" looping strategy with the expression stage.output.hosts after the Fetch Instances step for deployment templates.
-This ensures the commands run on each host retrieved via the Fetch Instances step.
+For more details, go to [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial/#elastic-beanstalk---sample).
 
