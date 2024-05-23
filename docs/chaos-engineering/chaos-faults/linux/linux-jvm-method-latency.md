@@ -45,12 +45,12 @@ Linux JVM method latency:
   </tr>
   <tr>
     <td> method </td>
-    <td> The method to which exception is applied </td>
+    <td> The method to which exception is applied. </td>
     <td> For example, <code>Welcome</code>. For more information, go to <a href="#method"> method name.</a></td>
   </tr>
   <tr>
     <td> pid </td>
-    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <code>startupCommand</code>. If <code>startupCommand</code> is specified, <code>pid</code> is specified as 0.</td>
     <td> For example, <code>6429</code>. For more information, go to <a href="#pid"> process Id.</a></td>
   </tr>
   <tr>
@@ -69,7 +69,7 @@ Linux JVM method latency:
   </tr>
   <tr>
     <td> duration </td>
-    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
+    <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
@@ -102,7 +102,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     latency: 2000
@@ -128,7 +128,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     latency: 2000
@@ -154,7 +154,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     class: ""
     method: "Welcome"
     latency: 2000
@@ -180,7 +180,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 2
     class: ""
     method: ""
     latency: 2000
