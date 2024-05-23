@@ -1,12 +1,12 @@
 ---
-title: How to use Catalog Metadata Ingestion api to push data into Harness IDP
-description: A tutorial on using rest api's to fetch information in IDP
+title: How to use Catalog Ingestion API to push data into Harness IDP
+description: A tutorial on using rest APIs to fetch information in IDP
 sidebar_position: 3
 ---
 
 ## Introduction
 
-In this tutorial we will be creating jira tickets using workflows and add the information(i.e., ticket numbers) to the corresponding software components in the catalog and display the same in UI using additional info card. The aim of this tutorial is to help you understand the usage of REST APIs to push information in the catalog and then use them according to your use-case. 
+In this tutorial we will be creating Jira tickets using Workflows and add the information (i.e. ticket numbers) to the corresponding Software Component in the Catalog and display the same in the UI using Additional Info Card. The aim of this tutorial is to help you understand the usage of REST APIs to push information in the Catalog and then use them in different parts of IDP according to your use-cases. 
 
 ## Pre-Requisite
 
@@ -29,11 +29,142 @@ import TabItem from '@theme/TabItem';
 ### Using RUN Step
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the workflows. 
+2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Developer Portal Stage** and give it a name. 
-5. Add a **RUN** step and name it as **create jira ticket**
-6. Now add the following under the body. 
+5. Add a **RUN** step, name it as **create jira ticket** and select the **Shell** as `Bash`
+6. Now add the following under the **Command**.
+
+```sh
+EMAIL_ID="<+pipeline.variables.email-id>"
+JIRA_TOKEN="<+pipeline.variables.jiratoken>"
+PROJECT_KEY="<+pipeline.variables.projectkey>"
+COMPONENT_NAME="<+pipeline.variables.componentname>"
+ISSUE_TYPE="<+pipeline.variables.issuetype>"
+ISSUE_SUMMARY="<+pipeline.variables.issuesummary>"
+ISSUE_CONTENT="<+pipeline.variables.issuecontent>"
+LABELS="<+pipeline.variables.labels>"
+
+# Perform the POST request with curl and capture the response
+response=$(curl --silent --request POST \
+  --url 'https://harness.atlassian.net/rest/api/3/issue' \
+  --user "$EMAIL_ID:$JIRA_TOKEN" \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "fields": {
+        "project": {
+            "key": "'"$PROJECT_KEY"'"
+        },
+        "components": [
+        {
+            "name": "'"$COMPONENT_NAME"'"
+        }
+        ],
+        "issuetype": {
+            "name": "'"$ISSUE_TYPE"'"
+        },
+        "summary": "'"$ISSUE_SUMMARY"'",
+        "description": {
+            "version": 1,
+            "type": "doc",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "'"$ISSUE_CONTENT"'"
+                        }
+                    ]
+                }
+            ]
+        },
+        "labels": [
+            "'"$LABELS"'"
+        ]
+    }
+}')
+
+# Extract the key from the JSON response using jq
+issue_key=$(echo "$response" | jq -r '.key')
+
+# Export the issue key as an environment variable
+export ISSUE_KEY="$issue_key"
+
+# Print the issue key (optional)
+echo "The created issue key is: $ISSUE_KEY"
+
+```
+
+The above given request body can create a Jira ticket based on [project](https://confluence.atlassian.com/jiracoreserver073/creating-a-project-861255642.html) and [component](https://support.atlassian.com/statuspage/docs/create-a-component/) and add a label to the same. 
+
+We have used few pipeline variables in the body, which will be used to take input from the IDP Workflows and for the users to choose project, add the summary, description for the tickets. 
+
+7. Now under **Optional Configuration** add the **Output Variables** as `ISSUE_KEY`.
+8. Apply the Changes.
+9. Go to **Variables** on the right side of the page and add the following variables and have the input type as **Runtime Input**. 
+    - emailid
+    - jiratoken
+    - projectkey
+    - componentname
+    - issuetype
+    - issuesummary
+    - issuecontent
+    - labels
+    - usergroup
+
+10. Apply the changes.
+
+![](static/add-variables.png)
+
+### Use Catalog Metadata Ingestion API
+
+11. Start by adding another `RUN` step. 
+12. Name it as **Ingestion API** and select the **Shell** as `Bash`
+13. Now add the following under the **Command**.
+
+```sh
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
+--header 'Harness-Account: <+account.identifier>' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: <+secrets.getValue('account.TOKEN_ID')>' \
+--data '{
+    "properties": [
+        {
+            "field": "metadata.openTicket",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "<+pipeline.variables.usergroup>"
+                ]
+            },
+            "value_overrides": [
+                {
+                    "entity_ref": "YOUR_COMPONENT_LINK",
+                    "override_value": "<+stage.spec.execution.steps.create_jira_ticket.output.outputVariables.ISSUE_KEY>"
+                }
+            ],
+            "value": "0"
+        }
+    ]
+}'
+
+```
+
+14. Under `header` x-api-key: `<+secrets.getValue('account.TOKEN_ID')>`, add the token ID for your API key. Get your token ID from your Profile
+
+![](static/secret-id.png)
+
+In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the component link could be found using inspect entity for the component in Catalog. 
+
+![](static/inspect-entity-cm.png)
+
+![](static/entityref.png)
+
+15. Now Apply the changes. 
+
 
 
 </TabItem>
@@ -48,7 +179,7 @@ HTTP Step is available under custom stage and it's part of CD License
 :::
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the workflows. 
+2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Custom Stage** and give it a name. 
 5. Add a **HTTP** step and name it as **create jira ticket**
@@ -94,7 +225,7 @@ HTTP Step is available under custom stage and it's part of CD License
 ```
 The above given request body can create a Jira ticket based on [project](https://confluence.atlassian.com/jiracoreserver073/creating-a-project-861255642.html) and [component](https://support.atlassian.com/statuspage/docs/create-a-component/) and add a label to the same. 
 
-We have used few pipeline variables in the body, which will be used to take input from the IDP workflows and for the users to choose project, add the summary, description for the tickets. 
+We have used few pipeline variables in the body, which will be used to take input from the IDP Workflows and for the users to choose project, add the summary, description for the tickets. 
 
 9. Under **Optional Configuration** add the **Assertion** as `<+httpResponseCode>==201`.
 10. Under **Headers** add the following key value pairs:
@@ -113,11 +244,13 @@ We have used few pipeline variables in the body, which will be used to take inpu
     - usergroup
 14. Apply the changes.
 
+![](static/add-variables.png)
+
 ### Use Catalog Metadata Ingestion API
 
 15. Start by adding another `HTTP` step. 
 16. Add the **Timeout** as `30s`.
-17. Add this endpoint as as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [catalog metadata ingestion api](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
+17. Add this endpoint as as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
 18. Select the **Method** as `POST`.
 19. And add the following json as **Request Body**
 
@@ -145,7 +278,7 @@ We have used few pipeline variables in the body, which will be used to take inpu
 }
 ```
 
-In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the component link could be found using inspect entity for the component in catalog. 
+In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the component link could be found using inspect entity for the component in catalog. 
 
 ![](static/inspect-entity-cm.png)
 
@@ -162,13 +295,12 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 22. Now **Apply Changes** and **SAVE** the pipeline. 
 
-
 </TabItem>
 </Tabs>
 
 ## Create Workflow
 
-Now we have to create a workflow, which takes the input from the pipeline and triggers the pipeline. Here's the workflow YAML
+Now we have to create a workflow, which takes the input from the user and triggers the pipeline. Here's the workflow YAML
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -186,8 +318,6 @@ spec:
   parameters:
     - title: Service Details
       required:
-        - emailid
-        - jiratoken
         - projectkey
         - issuetype
         - jiracomponentname
@@ -267,6 +397,8 @@ spec:
 
 In the above YAML just replace the `url` with the pipeline URL we created above, also make sure the **key values under `inputset` exactly matches with the pipeline variable names**. 
 
+Also for **Jira token** input the input should be the [personal access token](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html) from JIRA. 
+
 23. Now go to your git provider and add this workflow yaml and save it, make sure it's public incase it's in private repo make sure you have the [git integration setup](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration/#connector-setup). 
 
 24. Once the file is created in your git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/tutorial-jira-ticket-catalog-ingestion.yaml`.
@@ -293,6 +425,7 @@ In the above YAML just replace the `url` with the pipeline URL we created above,
 
 ![](static/input-jira-ticket.png)
 
+
 ## Create Additional Infocard
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below. 
@@ -318,13 +451,14 @@ In case you want to display the same information you have ingested on your Overv
 
 2. Now go to the Software Component in the **Catalog** and you'll find an additional info card populated with information we ingested using the API above. You can read more about [additional info card](/docs/internal-developer-portal/catalog/custom-card)
 
+
 </TabItem>
 <TabItem value="create-jira-project" label="Create JIRA Project">
 
 ## Create Jira Project
 
 1. Go to **Admin** in your IDP
-2. Now select the **project** where you you want to **create the pipeline** for the workflows. 
+2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Custom Stage** and give it a name. 
 5. Add a **HTTP** step and name it as **create jira project**
@@ -342,7 +476,7 @@ In case you want to display the same information you have ingested on your Overv
 
 The above given request body can create a Jira Project based on [templatekey](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-projects/#api-rest-api-3-project-post)
 
-We have used few pipeline variables in the body, which will be used to take input from the IDP workflows and for the users to provide the name, key and template. 
+We have used few pipeline variables in the body, which will be used to take input from the IDP Workflows and for the users to provide the name, key and template. 
 
 9. Under **Optional Configuration** add the **Assertion** as `<+httpResponseCode>==200`.
 10. Under **Headers** add the following key value pairs:
@@ -364,7 +498,7 @@ We have used few pipeline variables in the body, which will be used to take inpu
 
 15. Start by adding another `HTTP` step. 
 16. Add the **Timeout** as `30s`.
-17. Add this endpoint as as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [catalog metadata ingestion api](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
+17. Add this endpoint as as URL `https://app.harness.io/gateway/v1/catalog/custom-properties`, read more about [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties#catalog-metadata-ingestion-api)
 18. Select the **Method** as `POST`.
 19. And add the following json as **Request Body**
 
@@ -392,7 +526,7 @@ We have used few pipeline variables in the body, which will be used to take inpu
 }
 ```
 
-In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the component link could be found using inspect entity for the component in catalog. 
+In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the component link could be found using inspect entity for the component in Catalog. 
 
 ![](static/inspect-entity-cm.png)
 
@@ -411,7 +545,7 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 ## Create Workflow
 
-Now we have to create a workflow, which takes the input from the pipeline and triggers the pipeline. Here's the workflow YAML
+Now we have to create a workflow, which takes the input from the user and triggers the pipeline. Here's the workflow YAML
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3
@@ -538,9 +672,9 @@ In case you want to display the same information you have ingested on your Overv
 </TabItem>
 <TabItem value="add-entity-field-picker" label="Add UI Picker to dynamically fetch data in workflows">
 
-## Create UI Picker to dynamically values in workflows
+## Create UI Picker to dynamically values in Workflows
 
-In case you need to use the data present in your catalog as an input for the workflows, you can do so by using the [EntityFieldPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker). 
+In case you need to use the data present in your Catalog as an input for the Workflows, you can do so by using the [EntityFieldPicker](https://developer.harness.io/docs/internal-developer-portal/flows/custom-extensions#entityfieldpicker). 
 
 Here's an example workflow template that uses the  jira `projectName` for the corresponding new service being created. 
 
@@ -561,7 +695,7 @@ projectName:
 ...
 ```
 
-The `ui:displayField` fetches all the `projectName` names from the catalog. 
+The `ui:displayField` fetches all the `projectName` names from the Catalog. 
 
 ```YAML
 ### Complete Example of a service onboarding template.yaml
