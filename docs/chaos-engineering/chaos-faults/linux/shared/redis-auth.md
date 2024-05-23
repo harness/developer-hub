@@ -8,7 +8,7 @@ TLS_AUTH_CERT="/path/tp/tls-cert"
 ```
 
 :::tip
-`PASSWORD` and `TLS_AUTH_CERT` are optional. You need them only if you have configured your Redis database to facilitate it.
+`PASSWORD` and `TLS_AUTH_CERT` are optional, whereas `ADDRESS` is a mandatory field. You need them only if you have configured your Redis database to facilitate it.
 :::
 
 
