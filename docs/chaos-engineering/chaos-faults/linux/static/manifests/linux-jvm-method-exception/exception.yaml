@@ -12,5 +12,5 @@ spec:
     class: ""
     method: ""
     exception: "NullPointerException("Something went wrong!")"
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""

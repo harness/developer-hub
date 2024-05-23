@@ -47,7 +47,7 @@ JVM method exception:
   </tr>
   <tr>
     <td> pid </td>
-    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. </td>
+    <td> The process ID (integer) that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. If <code>startupCommand</code> is specified, <code>pid</code> is specified as 0.</td>
     <td> For example, <code>6429</code>. For more information, go to <a href= "#pid ">process Id.</a></td>
   </tr>
   <tr>
@@ -103,7 +103,7 @@ spec:
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     exception: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
@@ -129,7 +129,7 @@ spec:
     class: ""
     method: ""
     exception: "NullPointerException("Something went wrong!")"
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
@@ -155,7 +155,7 @@ spec:
     class: ""
     method: "welcome"
     exception: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
@@ -181,7 +181,7 @@ spec:
     class: ""
     method: ""
     exception: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
