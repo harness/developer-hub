@@ -52,9 +52,9 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 
 ### Offset
 
-The `offset` input variable increments and decrements the system time using time offset. It is specified in (+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s format. 
+The `offset` input variable increments and decrements the system time using time offset. It is specified in (+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s format.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-time-chaos/offset.yaml yaml)
 ```yaml
@@ -74,7 +74,7 @@ spec:
 
 The `disableNTP` input variable prevents the fault from disabling the NTP server.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-time-chaos/disable-ntp.yaml yaml)
 ```yaml

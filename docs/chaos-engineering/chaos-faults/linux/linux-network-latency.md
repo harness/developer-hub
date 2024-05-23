@@ -78,7 +78,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
 
 The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-latency/destination-hosts.yaml yaml)
 ```yaml
@@ -98,7 +98,7 @@ spec:
 
 The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-latency/destination-ips.yaml yaml)
 ```yaml
@@ -118,7 +118,7 @@ spec:
 
 The `latency` and `jitter` input variables add delay and a small deviation to the delay, respectively, with respect to the connection.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-latency/latency-jitter.yaml yaml)
 ```yaml
