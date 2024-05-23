@@ -10,5 +10,5 @@ spec:
     port: 9091
     pid: 0
     cpu: 2
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
