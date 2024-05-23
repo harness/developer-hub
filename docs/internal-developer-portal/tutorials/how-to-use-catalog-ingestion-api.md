@@ -18,10 +18,34 @@ In this tutorial we will be creating jira tickets using workflows and add the in
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-<Tabs queryString="Create Jira Ticket ">
+<Tabs queryString="Create Jira Ticket">
 <TabItem value="display-jira-ticket" label="Create JIRA Ticket">
 
 ### Create Jira ticket 
+
+<Tabs queryString="Using RUN Step">
+<TabItem value="using-run-step" label="Using RUN Step">
+
+### Using RUN Step
+
+1. Go to **Admin** in your IDP
+2. Now select the **project** where you you want to **create the pipeline** for the workflows. 
+3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
+4. Now select the **Developer Portal Stage** and give it a name. 
+5. Add a **RUN** step and name it as **create jira ticket**
+6. Now add the following under the body. 
+
+
+</TabItem>
+<TabItem value="using-http-step" label="Using HTTP Step">
+
+### Using HTTP Step
+
+:::info
+
+HTTP Step is available under custom stage and it's part of CD License 
+
+:::
 
 1. Go to **Admin** in your IDP
 2. Now select the **project** where you you want to **create the pipeline** for the workflows. 
@@ -138,6 +162,9 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 22. Now **Apply Changes** and **SAVE** the pipeline. 
 
+
+</TabItem>
+</Tabs>
 
 ## Create Workflow
 
