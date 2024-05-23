@@ -5,7 +5,7 @@ title: Linux Redis cache limit
 
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
-import authenticationDetails from './shared/redis-auth.md'
+import AuthenticationDetails from './shared/redis-auth.md'
 
 Linux Redis cache limit limits the amount of Redis cache memory on a Linux machine. The memory is restored after the duration of chaos.
 
@@ -18,7 +18,7 @@ Determines the resilience of Redis-dependant application again frequent cache mi
 
 <FaultPermissions />
 
-<authenticationDetails />
+<AuthenticationDetails />
 
 ### External packages
 This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
@@ -33,8 +33,8 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   </tr>
   <tr>
     <td> maxMemory </td>
-    <td> The percentage of memory to limit with respect to the primary memory of the system.</td>
-    <td> Default: 50 %. For more information, go to <a href="#maximum-memory"></a> maximum memory. </td>
+    <td> The percentage of memory or amount (in MB, KB, GB) to limit with respect to the primary memory of the system.</td>
+    <td> Default: 50 %. For more information, go to <a href="#maximum-memory">maximum memory.</a> </td>
   </tr>
   <tr>
     <td> duration </td>
