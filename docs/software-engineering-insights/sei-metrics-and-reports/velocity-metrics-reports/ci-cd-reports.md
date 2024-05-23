@@ -25,10 +25,10 @@ A **Job** in SEI is defined as a single run or execution of the pipeline which i
 
 Use the CI/CD Job Count reports to understand how often your CI/CD jobs run and whether they succeed or fail. You can analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
 
-* [CICD Job Count report](./#cicd-job-count-report)
-* [CICD Pipeline Jobs Count report](./#cicd-pipeline-jobs-count-report)
-* [CICD Job Count Trend report](./#cicd-job-count-trend-report)
-* [CICD Jobs Count Single Stat](./#cicd-jobs-count-single-stat)
+* [CICD Job Count report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-count-report)
+* [CICD Pipeline Jobs Count report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-pipeline-jobs-count-report)
+* [CICD Job Count Trend report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-job-count-trend-report)
+* [CICD Jobs Count Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/ci-cd-reports#cicd-jobs-count-single-stat)
 
 ### CICD Job Count Report
 

@@ -25,7 +25,7 @@ SEI offers different velocity metrics based on the tools your teams use and the 
 There are many velocity metrics, and some overlap with other metrics categories. For more information about velocity subcategories and related metrics, go to:
 
 * [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
-* [Effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics)
+* [Effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview)
 * [Flow metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/flow-metrics)
 * [Sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
 
