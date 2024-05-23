@@ -97,7 +97,7 @@ Add an **Aqua Trivy** step to your pipeline after the DinD background step and c
    *  `name:` A name for the step.
    *  `identifier:` A unique step ID.
    *  `spec :`
-      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
+      -  `mode :` [`orchestration`](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step. 
       -  `config: default`
       - `target : ` 
           - `name : <+input>` 

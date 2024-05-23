@@ -448,7 +448,7 @@ Here's an example:
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
-1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
 
 2.  Target name — Click the "tack" button on the right side of the input field and select **Expression**. Then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
@@ -471,7 +471,7 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
   - `target : `
     - `name : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`

@@ -118,7 +118,7 @@ import TabItem from '@theme/TabItem';
 
    1. Scan Mode = **Orchestration**
 
-      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) that runs the scan and ingests the results in one step.
+      Indicates that this is an [orchestrated scan](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) that runs the scan and ingests the results in one step.
 
    2. Target name — Click the value-type selector (tack button to the right of the input field) and select **Runtime input**. You'll specify this and other values when you run the pipeline.
 
@@ -135,7 +135,7 @@ Add a `Bandit` step to your `SecurityTests` stage and configure it as follows.
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
     - `target : `
       - `name : <+input>`

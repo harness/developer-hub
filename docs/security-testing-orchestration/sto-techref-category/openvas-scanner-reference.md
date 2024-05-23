@@ -81,7 +81,7 @@ instance
 
 #### Policy type
 
-The [scan mode](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview) to use. 
+The [scan mode](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) to use. 
 
 ##### Key
 

@@ -18,7 +18,7 @@ STO supports three scan modes to ingest scan results into a pipeline:
 
 In an *orchestration scan*, you scan a target and ingest the results in one step. This is the easiest workflow to implement and is good for running scans with default settings.
 
-For more information, go to [Run an Orchestration Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md).
+For more information, go to [Run an Orchestration Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
 
 ### Ingestion scans in STO
 
@@ -35,5 +35,5 @@ For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/sec
 
 *Extraction scans* are a sub-category of orchestration scans. Instead of running a scan, the step pulls issues from an external source. Specifically, you configure the step to download from the external tool rather than running an orchestration scan. This workflow is supported for scanners such as [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) and [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) that support downloading results via an API endpoint.
 
-![](../static/sto-workflows-overview-04.png)
+![](./static/sto-workflows-overview-04.png)
 
