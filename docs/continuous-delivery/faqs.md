@@ -1201,7 +1201,7 @@ For more information, go to [Terraform Provider Automated Onboarding Guide](/doc
 
 #### How does Harness calculate pricing for CD?
 
-See [Service-based licensing and usage for CD](/get-started/service-licensing-for-cd)
+See [Service-based licensing and usage for CD](/docs/continuous-delivery/get-started/service-licensing-for-cd/)
 
 #### My definition of a service differs from the above standard definition. How will pricing work in my case?
 
