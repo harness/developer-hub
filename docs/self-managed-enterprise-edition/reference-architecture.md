@@ -1,6 +1,6 @@
 ---
 title: Harness Self-Managed Enterprise Edition reference architectures
-sidebar_label: Reference Architectures
+sidebar_label: Reference architectures
 description: Review Harness Self-Managed Enterprise Edition reference architectures.
 sidebar_position: 2
 redirect_from:
@@ -11,7 +11,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with these profiles and architectures, ensuring reliability, scalability, and consistent software deployments.
+Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with these and architectures, ensuring reliability, scalability, and consistent software deployments.
 
 ## User profiles
 
