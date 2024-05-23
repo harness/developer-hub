@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-05-08T13:00
+date: 2024-05-23T20:00
 sidebar_position: 12
 ---
 
@@ -18,6 +18,28 @@ Review the notes below for details about recent changes to Harness Internal Deve
 :::
 
 ## May 2024
+
+### Version 0.27.0
+
+<!-- May 23, 2024 -->
+
+#### New features and enhancements
+
+- Added the support to JSON stringfy the input values for the custom action [`trigger:trigger-pipeline-with-webhook`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook) , if the type is object  [IDP-2858]
+
+- orgIdentifier is now an optional field in the Create Project Step [IDP-2857]
+
+- Added support for [Harness Code Repository](https://www.harness.io/products/code-repository) as a [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) [IDP-2724]
+
+- We now support private registry configuration for IDP stage. [IDP-2773]
+
+- Added error handling support for Custom Plugins, users can now view the errors in case of issues with the uploaded packages. [IDP-2527]
+
+
+#### Bug Fixes
+
+- Fixed the issue with new nav URL as annotation for Harness CI/CD plugin. [IDP-2721]
+
 
 ### Version 0.26.0
 
