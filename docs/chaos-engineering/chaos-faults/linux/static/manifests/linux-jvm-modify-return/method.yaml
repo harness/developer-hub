@@ -12,5 +12,5 @@ spec:
     class: ""
     method: "welcome"
     return: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""

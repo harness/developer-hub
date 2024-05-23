@@ -38,7 +38,7 @@ Linux JVM modify return:
   </tr>
   <tr>
     <th> pid </th>
-    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. If <code>startupCommand</code> is specified, <code>pid</code> is specified as 0.</td>
     <td> For example, <code>6429</code>. For more information, go to <a href="#pid"> process Ids</a>.</td>
   </tr>
   <tr>
@@ -84,7 +84,7 @@ Linux JVM modify return:
 
 ### Class name
 
-The `class` input variable targets the class name where the exception is present. Specify it as `packageName.className`.
+The `class` input variable targets the class name where the exception is present. Specify it in the format `packageName.className`.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -104,13 +104,13 @@ spec:
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     return: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
 ### Startup command
 
-The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>. This is mutually exclusive with the `pid` input variable.
+The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with the `pid` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -156,7 +156,7 @@ spec:
     class: ""
     method: "welcome"
     return: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
@@ -178,7 +178,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     return: ""
@@ -203,7 +203,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     class: ""
     method: ""
     return: "modified value"

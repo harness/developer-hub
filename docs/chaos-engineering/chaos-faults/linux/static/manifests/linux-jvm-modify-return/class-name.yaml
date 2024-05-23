@@ -12,5 +12,5 @@ spec:
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     return: ""
-    startupCommand: ""
+    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
