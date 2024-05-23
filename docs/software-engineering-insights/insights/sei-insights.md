@@ -189,12 +189,12 @@ If you want to create additional Business Alignment Insights, select the **Effor
 
 ### Trellis
 
-Use the Trellis Insight to examine [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+Use the Trellis Insight to examine [Trellis Scores](/docs/category/trellis-scores).
 
 If you want to create a Trellis Insight refer to the below resources.
 
 * [Tutorial: Create a Trellis Metrics Insight](/docs/software-engineering-insights/insights/trellis-insight)
-* [Trellis Reports](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score)
+* [Trellis Reports](/docs/category/trellis-scores)
 
 ### Planning Insights
 

@@ -30,7 +30,7 @@ Use SCM code activity reports to analyze direct coding activity in your SCM tool
 
 :::info Trellis Scores
 
-Some code velocity metrics contribute to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score):
+Some code velocity metrics contribute to [Trellis Scores](/docs/category/trellis-scores):
 
 * Coding days are part of the **Speed** factor.
 * Number of commits per month is part of the **Volume** factor.

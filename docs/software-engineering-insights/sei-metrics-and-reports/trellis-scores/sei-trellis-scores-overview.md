@@ -179,7 +179,7 @@ Development Stages Mapping allows users to map a Trellis profile with developmen
 
 Trellis Score reports provide valuable insights into developer performance and facilitate data-driven decision-making. Add these widgets to your Insights to analyze Trellis Scores.
 
-* [Trellis Score Report](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#trellis-score-report): Trellis Scores by developer.
-* [Trellis Scores by Collection](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#trellis-score-by-collection): Trellis Scores organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
-* [Individual Raw Stats](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#individual-raw-stats): A table of base values that contribute to Trellis Scores.
-* [Raw Stats by Collection](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports#raw-stats-by-collection): Base values organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
+* [Trellis Score Report](/docs/category/trellis-scoress/trellis-score-reports#trellis-score-report): Trellis Scores by developer.
+* [Trellis Scores by Collection](/docs/category/trellis-scoress/trellis-score-reports#trellis-score-by-collection): Trellis Scores organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
+* [Individual Raw Stats](/docs/category/trellis-scoress/trellis-score-reports#individual-raw-stats): A table of base values that contribute to Trellis Scores.
+* [Raw Stats by Collection](/docs/category/trellis-scoress/trellis-score-reports#raw-stats-by-collection): Base values organized by [Collection](/docs/software-engineering-insights/sei-projects-and-collections/manage-collections).
