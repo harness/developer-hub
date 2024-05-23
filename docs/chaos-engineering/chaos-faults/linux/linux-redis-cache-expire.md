@@ -23,7 +23,7 @@ Linux Redis cache expire expires Redis cache for a specific duration. Due to thi
 ### External packages
 This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
-### Mandatory tunables
+### Optional tunables
 
 <table>
   <tr>
@@ -50,15 +50,6 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
     <td> expiryOption </td>
     <td> Timeout applied on the key after which the key is deleted. </td>
     <td> For more information, go to <a href="#expiry-option"> expiry option</a>.</td>
-  </tr>
-</table>
-
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
   </tr>
   <tr>
     <td> duration </td>
