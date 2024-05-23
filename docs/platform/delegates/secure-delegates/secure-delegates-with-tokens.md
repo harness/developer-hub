@@ -8,13 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness uses delegate tokens to encrypt communication between Harness Delegates and the Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account include the same token.
+Harness uses delegate tokens to encrypt communication between Harness Delegates and Harness Manager. By default, when a new Harness account is created, all Harness Delegates in that account include the same token.
 
-Harness uses delegate tokens for authentication and encryption. Tokens aren't directly transmitted. Harness uses them to secure communications between delegates and Harness Manager.
-
-Delegate tokens act as secret keys to encrypt and decrypt JWT tokens. Harness uses delegate tokens in the encryption process to ensure that sensitive data, such as JWT tokens, remains protected during transmission.
-
-Delegate tokens are essential for authentication to confirm the identity and permissions of delegates when interacting with Harness. This ensures that only authorized delegates access and complete actions in the Harness Platform to enhance overall system security and integrity.
+Delegate tokens aren't directly transmitted. They act as secret keys to encrypt and decrypt JWT tokens. Harness uses delegate tokens in the encryption process to ensure that sensitive data, such as JWT tokens, remains protected during transmission.
 
 You can further secure delegate-to-Harness communication by replacing the default delegate token with new tokens. You can add and revoke delegate tokens per your governance policies and replace revoked tokens with custom tokens when needed. You can also rotate your tokens and store them in a secret manager.
 
