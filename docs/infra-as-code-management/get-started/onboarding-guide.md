@@ -65,7 +65,7 @@ We recommend configuring your connector before creating your workspace, however,
 <TabItem value="Cloud Provider connector">
   <iframe 
     src="https://app.tango.us/app/embed/8ad0b6f5-6258-47c1-8014-140ac0919e12" 
-    title="Setting up an Cloud Provider Connector for Harness IaCM" 
+    title="Setting up a Cloud Provider Connector for Harness IaCM" 
     style={{minHeight:'640px'}}
     width="100%" 
     height="100%" 
