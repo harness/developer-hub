@@ -23,7 +23,7 @@ Determines the resilience of Redis-dependant application again frequent cache mi
 ### External packages
 This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
-### Mandatory tunables
+### Optional tunables
 
 <table>
   <tr>
@@ -35,15 +35,6 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
     <td> maxMemory </td>
     <td> The percentage of memory to limit with respect to the primary memory of the system.</td>
     <td> Default: 50 %. For more information, go to <a href="#maximum-memory"></a> maximum memory. </td>
-  </tr>
-</table>
-
-### Optional tunables
-<table>
-  <tr>
-    <th> Tunable </th>
-    <th> Description </th>
-    <th> Notes </th>
   </tr>
   <tr>
     <td> duration </td>
