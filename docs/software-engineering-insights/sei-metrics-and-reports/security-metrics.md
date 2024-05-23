@@ -44,3 +44,4 @@ The NCC Group's Managed Vulnerability Scanning Services deliver hands-on rapid d
 Snyk is an automated vulnerability testing tool that monitors for misconfigurations or coding flaws that pose cybersecurity threats.
 
 [Integrate with Snyk](/docs/software-engineering-insights/sei-integrations/other-integrations/sei-integration-snyk), and then add the **Snyk Vulnerability Report** to your [Insights](/docs/software-engineering-insights/insights/sei-insights). This report provides details on detected vulnerabilities. Vulnerabilities can be categorized by project, severity, or other factors.
+

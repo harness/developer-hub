@@ -2,6 +2,8 @@
 title: DORA Overview
 description: The central hub to learn everything about the DORA metrics on Harness SEI
 sidebar_position: 5
+sidebar_label: Overview
+
 ---
 
 ## What is DORA

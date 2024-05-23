@@ -1,11 +1,11 @@
 {
-    "label":"Alignment",
+    "label":"Planning",
     "position": 11,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Alignment"
+       "title":"Planning"
     }
  }

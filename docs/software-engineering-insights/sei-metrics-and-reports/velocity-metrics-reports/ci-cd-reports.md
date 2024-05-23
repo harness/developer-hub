@@ -13,17 +13,46 @@ Use CI/CD job reports to analyze metrics and trends related to CI/CD job runs. T
 
 These widgets can be configured based on various CI/CD attributes, such as pipelines, projects, and statuses, depending on your CI/CD [integrations](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview).
 
-## Job count reports
+## What is a Pipeline?
 
-Use the CI/CD job count reports to understand how often your CI/CD jobs run and whether they succeed or fail. You can analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
+**Pipelines** are used to automate and orchestrate the entire software delivery process. We usually have multiple stages in a pipeline where each stage can contain one or more steps. Stages are typically organized logically such as build, test, deploy, and can be customized to suit the specific needs of a project.
 
-* **CI/CD Job Count Report:** A bar chart visualizing the number of CI/CD jobs run in a given time frame. The job count information is represented in the Bar chart format. The widgets supports drill-down for in-depth analysis.
-* **CI/CD Job Count Single Stat:** This report provides a single stat, such as the total number of jobs that ran in a given period of time, a summary of the job count at a given moment, or the number of jobs or stages within the CI/CD pipeline.
-* **CI/CD Job Count Trend Report:** Daily, weekly, and monthly trends for CI/CD job runs. The data representation is in the Line chart format and does not support drill-down.
+## What is a Job?
+
+A **Job** in SEI is defined as a single run or execution of the pipeline which includes one or more stages such as building artifacts, executing test cases, deploy.
+
+## Job or Pipeline Count reports
+
+Use the CI/CD Job Count reports to understand how often your CI/CD jobs run and whether they succeed or fail. You can analyze CI/CD job counts over a specific period, and shed light on the trends and patterns observed during that time.
+
+* [CICD Job Count report](./#cicd-job-count-report)
+* [CICD Pipeline Jobs Count report](./#cicd-pipeline-jobs-count-report)
+* [CICD Job Count Trend report](./#cicd-job-count-trend-report)
+* [CICD Jobs Count Single Stat](./#cicd-jobs-count-single-stat)
+
+### CICD Job Count Report
+
+This provides information on the total number of jobs executed. The job count information is represented as a bar chart visualizing the number of CI/CD jobs run in a given time frame. The widgets supports drill-down for in-depth analysis.
+
+### CICD Pipeline Jobs Count report
+
+This report provides information on the **Total Number of Jobs** executed. The data is represented as a heatmap visualizing the number of CI/CD jobs run in a given time frame. The support for drill down functionality is not available for this report.
+
+:::info
+Note: For both the **Job Count report** and **Pipeline Jobs Count report** the data captured is the same but the representation of the data is different. Also, the Pipeline Jobs Count report does not support the drilldown functionality.
+:::
+
+### CICD Job Count Trend Report
+
+This report displays the Daily, weekly, and monthly trends for CI/CD job runs. The data representation is in the Line chart format and does not support drill-down.
+
+### CICD Jobs Count Single Stat
+
+This widget displays the **Job Count** as a **numeric value** but does not support drill-down. The data is represented as a **Single stat**.
 
 ![](./static/cicd-jobs-count.png)
 
-When you add a CI/CD Job Count report to an Insight, the **Job End Date** filter is set to a relative time frame by default. The widget is ready to use with the default configuration or you can modify it. For some useful configuration options, go to [Configuration techniques](#configure-cicd-job-reports).
+When you add a CI/CD Job Count report to an Insight, the **Job End Date** filter is set to a relative time frame by default. The widget is ready to use with the default configuration or you can modify it. For some useful configuration options, go to [CI/CD Reports Use Cases](#configure-cicd-job-reports).
 
 ## Job duration reports
 
