@@ -215,3 +215,187 @@ policies:
 
 ---
 
+### Recommendation: under-utilized-elasticcache-cluster
+**Description:** Delete underutilised cache cluster with CPU utilisation less than 5% in last 7 days.
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: under-utilized-elasticcache-cluster
+    resource: cache-cluster
+    description: |
+      Delete underutilised cache cluster with CPU utilisation less than 5% in last 7 days
+    filters:
+      - type: metrics
+        name: CPUUtilization
+        days: 7
+        period: 86400
+        value: 5
+        op: less-than
+    actions:
+      - type: delete
+        skip-snapshot: false
+```
+
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:** 
+- **Dry Run:** 
+    - ```elasticache:DescribeCacheClusters```
+- **Run Once:** 
+    - ```elasticache:DescribeCacheClusters```
+    - ```elasticache:DeleteCacheCluster```
+    - ```elasticache:DeleteReplicationGroup```
+
+---
+
+### Recommendation: s3-lifecycle-configuration
+
+**Description:** Configure lifecycle for s3 buckets wherever it is absent which would help to reduce storage spend
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: s3-lifecycle-configuration
+    resource: aws.s3
+    description: |
+      Configure lifecycle for s3 buckets wherever it is absent which would help to reduce storage spend
+    filters:
+      - type : value
+        key : Lifecycle
+        value : absent
+    actions:
+      - type: configure-lifecycle
+        rules:
+          - ID: harness-default-lifecycle
+            Status: Enabled
+            Filter:
+              Prefix: ''
+            Expiration:
+              ExpiredObjectDeleteMarker: True
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 7
+            NoncurrentVersionExpiration:
+              NoncurrentDays: 30
+              NewerNoncurrentVersions: 6
+```
+
+**Savings Computed**: 
+
+**Permissions Required:**
+- **Dry Run:** 
+    - ```s3:GetLifecycleConfiguration```
+- **Run Once:** 
+    - ```s3:GetLifecycleConfiguration```
+    - ```s3:PutLifecycleConfiguration```
+
+---
+
+### Recommendation: s3-intelligent-tiering-configuration
+
+**Description:** Configure intelligent tiering for s3 buckets wherever it is disabled which would help to reduce storage spend.
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: s3-intelligent-tiering-configuration
+    resource: aws.s3
+    description: |
+      Configure intelligent tiering for s3 buckets wherever it is disabled which would help to reduce storage spend.
+    filters:
+      - not:
+          - type: intelligent-tiering
+            attrs:
+              - Status: Enabled
+    actions:
+      - type: set-intelligent-tiering
+        Id: harness-default
+        IntelligentTieringConfiguration:
+          Id: harness-default
+          Status: Enabled
+          Tierings:
+            - Days: 90
+              AccessTier: ARCHIVE_ACCESS
+            - Days: 180
+              AccessTier: DEEP_ARCHIVE_ACCESS
+```
+
+**Savings Computed:** 
+
+**Permissions Required:**
+- **Dry Run:** 
+    - ```s3:GetBucketIntelligentTieringConfiguration```
+- **Run Once:** 
+    - ```s3:GetBucketIntelligentTieringConfiguration```
+    - ```s3:PutIntelligentTieringConfiguration```
+
+---
+
+### Recommendation: delete-underutilized-redshift-cluster
+
+**Description:** Delete redshift cluster where CPU Utilization is less than 5% for last 7 days
+
+**Policy Used:**
+
+```yaml
+policies:
+  - name: delete-underutilized-redshift-cluster
+    resource: redshift
+    description: |
+      Delete redshift cluster where CPU Utilization is less than 5% for last 7 days
+    filters:
+      - type: metrics
+        name: CPUUtilization
+        days: 7
+        period: 86400
+        value: 5
+        op: less-than
+    actions:
+      - delete
+```
+
+**Savings Computed:**  The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:**
+- **Dry Run:** 
+    - ```redshift:DescribeClusters```
+- **Run Once:** 
+    - ```redshift:DescribeClusters```
+    - ```redshift:DeleteCluster```
+
+---
+
+### Recommendation: delete-redshift-old-manual-snapshots
+
+**Description:** Delete all redshift snapshot older than 35 days with lifetime retention period
+
+**Policy Used:**
+
+```yaml
+
+policies:
+  - name: delete-redshift-old-manual-snapshots
+    resource: redshift-snapshot
+    description: |
+      Delete all redshift snapshot older than 35 days with lifetime retention period
+    filters:
+      - "ManualSnapshotRetentionPeriod": -1
+      - type: age
+        days: 35
+        op: gt
+    actions:
+      - delete
+```
+**Savings Computed:**  The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+
+**Permissions Required:**
+- **Dry Run:** 
+    - ```redshift:DescribeClusterSnapshots```
+- **Run Once:** 
+    - ```redshift:DeleteClusterSnapshot```
+    - ```redshift:DescribeClusterSnapshots```
+
+---
