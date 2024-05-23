@@ -168,3 +168,8 @@ But if you performed ad hoc provisioning in the **Execution** steps, you cannot 
 Harness Service Instances (SIs) aren't consumed and no other licensing is required when a Harness stage uses Azure ARM to provision resources.
 
 When Harness deploys artifacts via Harness services to the provisioned infrastructure in the same stage or pipeline, SIs licensing is consumed.
+
+## See also
+
+For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
+

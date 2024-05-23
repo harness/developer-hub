@@ -1,10 +1,8 @@
 ---
-title: Google Cloud Functions
+title: Google Cloud Functions Deployments
 description: Deploy single-purpose functions to Google Cloud.
 sidebar_position: 1
 ---
-
-# Google Cloud Functions deployments
 
 This topic explains how to deploy new Cloud Functions to Google Cloud using Harness.
 
@@ -946,3 +944,8 @@ If deployment failure occurs, the stage or step [failure strategy](/docs/platfor
 The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
 
 If the function already exists (for example, revision 10) and a new revision is deployed (for example, revision 11) but a step after the deployment there is a failure and rollback is triggered, then Harness will deploy a new function revision (revision **12**) but it will contain the artifact and metadata for revision 10.
+
+
+## See also
+
+For frequently asked questions about Google Cloud Functions deployments in Harness, go to [Google Cloud Functions FAQS](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs).

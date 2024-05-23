@@ -1,11 +1,9 @@
 ---
 title: Continuous Delivery & GitOps FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps.
-sidebar_position: 2
-helpdocs_topic_id: dhlon9vd17
-helpdocs_category_id: y7j7dl46ua
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 8000
+redirect_from:
+	- /docs/faqs/continuous-delivery-faqs
 ---
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
@@ -14,6 +12,10 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 For a list of CD supported platforms and tools, go to [CD integrations](/docs/continuous-delivery/cd-integrations.md).
 
+
+### Harness entities
+
+For an overview of Harness entities, see [Learn Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 #### What is a service instance in Harness?
 
@@ -25,129 +27,12 @@ Service instances represent the dynamic instantiation of a service you deploy wi
 
 For example, for a service representing a Docker image, service instances are the number of pods running the Docker image.
 
-![](./static/continuous-delivery-faqs-00.png)
+![](../faqs/static/continuous-delivery-faqs-00.png)
 
 Notes:
 
 * For services with more than 20 service instances - active pods or VMs for that service - additional service licenses will be counted for each 20 service instances. This typically happens when you have large monolith services.
 * See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-#### How does Harness calculate pricing for CD?
-
-See [Service-based licensing and usage for CD](../continuous-delivery/get-started/service-licensing-for-cd.md).
-
-#### My definition of a service differs from the above standard definition. How will pricing work in my case?
-
-Harness allows deployment of various custom technologies such as Terraform scripts, background jobs, and other non-specified deployments. These require custom evaluation to assess the correct Licensing model. Please contact the Harness Sales team to discuss your specific technologies and deployment use cases.
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-#### Are there other mechanisms to license Harness CD beyond services?
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-Yes, we are happy to have Harness Sales team work with you and understand the specifics of what you are trying to achieve and propose a custom licensing/pricing structure.
-
-#### Do unused/stale services consume a license?
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-Harness CD actively tracks and provides visibility into all active services that consume a license.
-
-An active service is defined as a service that has been deployed at least once in the last 30 days. A service deemed inactive (no deployments in the last 30 days), does not consume a license.
-
-#### How will I know if I am exceeding my licensed service usage?
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-Harness CD has built-in license tracking and management dashboards that provide you real-time visibility into your license allocation and usage.
-
-If you notice that you are nearing or exceeding your licensed services, please get in touch with Harness Sales team to plan ahead and ensure continued usage and compliance of the product.
-
-#### How many users can I onboard onto Harness CD? Is there a separate pricing for Users?
-
-Harness CD has been designed to empower your entire Engineering and DevOps organization to deploy software with agility and reliability. We do not charge for users who onboard Harness CD and manage various aspects of the deployment process, including looking through deployment summaries, reports, and dashboards. We empower users with control and visibility while pricing only for the actual ‘services’ you deploy as a team.
-
-#### If I procure a certain number of service licenses on an annual contract, and realize that more licenses need to be added, am I able to procure more licenses mid-year through my current contract?
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-Yes, Harness Sales team is happy to work with you and help fulfill any Harness-related needs, including mid-year plan upgrades and expansions.
-
-#### If I procure a certain number of service licenses on an annual contract, and realize that I may no longer need as many, am I able to reduce my licenses mid-year through my current contract?
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-While an annual contract can not be lowered mid-year through the contract, please contact us and we will be very happy to work with you. In case you are uncertain at the beginning of the contract of how many licenses should be procured - you can buy what you use today to start and expand mid-year as you use more. You can also start with a monthly contract and convert to an annual subscription.
-
-#### What if I am building an open source project?
-
-We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
-
-Contact us and we will be happy to provide you with a no restriction SaaS Plan!
-
-#### What if I add more service instance infrastructure outside of Harness?
-
-See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
-
-If you increase the Harness-deployed service instance infrastructure outside of Harness, Harness considers this increase part of the service instance infrastructure and licensing is applied.
-
-#### When is a service instance removed?
-
-If Harness cannot find the service instance infrastructure it deployed, it removes it from the Services dashboard.
-
-If Harness cannot connect to the service instance infrastructure, it will retry until it determines if the service instance infrastructure is still there.
-
-#### If the instance/pod is in a failed state does it still count towards the service instance count?
-
-Harness performs a steady state check during deployment and requires that each instance/pod reach a healthy state.
-
-A Kubernetes liveness probe failing later would mean the pod is restarted. Harness continues to count it as a service instance.
-
-A Kubernetes readiness probe failing later would mean traffic is no longer routed to the pods. Harness continues to count pods in that state.
-
-Harness does not count an instance/pod if it no longer exists. For example, if the replica count is reduced.
-
-#### What deployment strategies can I use?
-
-Harness supports all deployment strategies, such as blue/green, rolling, and canary.
-
-See [Deployment concepts and strategies](../continuous-delivery/manage-deployments/deployment-concepts.md).
-
-#### How do I filter deployments on the Deployments page?
-
-You can filter deployments on the the Deployments page according to multiple criteria, and save these filters as a quick way to filter deployments in the future.
-
-#### How do I know which Harness Delegates were used in a deployment?
-
-Harness displays which Delegates performed each task in the Details of each step.
-
-![](./static/continuous-delivery-faqs-01.png)
-
-#### Can I restrict deployments to specific User Groups?
-
-Yes, you can enable the Role permission Pipeline Execute and then apply that Role to specific User Groups.
-
-![](./static/continuous-delivery-faqs-02.png)
-
-See [Manage roles](../platform/role-based-access-control/add-manage-roles).
-
-#### Can I deploy a service to multiple infrastructures at the same time?
-
-Each stage has a service and target Infrastructure. If your Pipeline has multiple stages, you can deploy the same service to multiple infrastructures.
-
-See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
-
-#### Can I re-run a failed deployment?
-
-Yes, select **Re-run Pipeline**.
-
-![](./static/continuous-delivery-faqs-03.png)
-
-
-### Harness entities
-
-For an overview of Harness entities, see [Learn Harness' key concepts](/docs/platform/get-started/key-concepts.md).
 
 #### What are organizations and projects?
 
@@ -171,11 +56,11 @@ For example, a pipeline can use the CI module to build, test, and push code, and
 
 A stage is a subset of a pipeline that contains the logic to perform one major segment of the pipeline process. Stages are based on the different milestones of your pipeline, such as building, approving, and delivering.
 
-![](./static/continuous-delivery-faqs-07.png)
+![](../faqs/static/continuous-delivery-faqs-07.png)
 
 Some stages, like a deploy stage, use strategies that automatically add the necessary steps.
 
-![](./static/continuous-delivery-faqs-08.png)
+![](../faqs/static/continuous-delivery-faqs-08.png)
 
 #### What are services in Harness?
 
@@ -1170,9 +1055,261 @@ Yes, Harness supports using environment-level ```<+input>``` fields when running
 #### Is it expected behaviour for the environment drop-down to display all environments when there's no mapping associated with the environment group?
 Yes, that is the expected behaviour. When there's no mapping associated with the environment group, all environments will be displayed in the drop-down menu.
 
+### CD steps
+
+For frequently asked questions about CD steps, go to [CD steps FAQs](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-steps-faqs).
+
+### Infrastructure provisioning
+
+For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
+
+### Deployment types 
+
+For frequently asked questions about deployment swimlanes supported by Harness, go to the following docs:  
+
+- [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
+- [Kubernetes deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-faqs)
+- [Helm and Native Helm deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
+- [Kustomize deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-faqs)
+- [Azure deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-faqs)
+- [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs)
+- [Google Cloud Functions FAQS](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs)
+- [Serverless Lambda deployments FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-deployment-faqs)
+- [Custom deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-faqs)
+- [Tanzu deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-application-service-deployment-faqs)
+- [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs)
+- [Integrations FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/integrations/integrations-faqs)
+
+### Execution strategies
+
+For frequently asked questions about the execution strategies supported by Harness, go to [Deployment strategies FAQs](/docs/continuous-delivery/manage-deployments/deployment-faqs).
+
+### Continuous Verification
+
+For frequently asked questions about Harness Continuous Verification, go to [Continuous Verification FAQs](/docs/continuous-delivery/verify/continuous-verification-faqs).
+
+### GitOps
+
+For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
+
+### Git Experience
+
+
+#### What is Git Experience in NextGen?
+
+- With the Git Experience, you can store configurations for resources, like pipelines and templates, in one of the following: 
+  - Git repository
+  - Harness database
+
+- You can edit any configuration saved in Git using the Harness UI.
+- You can store the following configurations in Git using the Git Experience in NextGen: 
+    - Pipelines
+    - Templates
+    - Input sets
+    - Services
+    - Environments
+    - Infrastructure Definitions
+
+In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git, such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
+
+For more information, go to [Git Experience](/docs/category/git-experience).
+
+
+#### How does the Harness Git Experience compare to other products?
+
+The nesting and relational constructs of Continuous Deployment entities make them difficult to manage as code. Correlations and changes between the interdependent entities are difficult to process and prone to user error. However, with Harness, you can manage your code and repositories as per your needs. 
+
+| **Feature**                   | **Harness** | **Gitlab** | **Git Actions** | **Azure DevOps** | **Jenkins** | **Google Deploy** |
+|-------------------------------|-------------|------------|--------------------|------------------|-------------|-------------------|
+| **Service**                   | Yes         | No         | No                 | No               | No          | No                |
+| **Environment**               | Yes         | No         | No                 | No               | No          | No                |
+| **Infrastructure Definition** | Yes         | No         | No                 | No               | No          | No                |
+| **Pipeline**                  | Yes         | Yes        | Yes                | Yes              | Yes         | Yes               |
+| **Trigger**                   | No          | No         | No                 | No               | No          | No                |
+| **Template**                  | Yes         | Yes        | No                 | No               | Yes         | No                |
+| **Input Set**                 | Yes         | No         | No                 | No               | No          | No                |
+
+
+#### What is the difference between Git Experience and Config as Code?
+
+In FirstGen, Harness retained a copy of all the changes in its database to read all configurations. This means the changes you made in the UI or Git would first apply to the database before showing up in their respective destinations (i.e. UI or Git). These frequent changes caused sync conflicts with the Harness database and Git. 
+
+The Git Experience in NextGen is designed to have one source of truth which is Git. Harness only reads Git and pulls the latest or a specific branch. The Git Experience gives more flexibility in branching strategies and testing pipelines, templates, and input sets than the Configuration as Code experience in FirstGen.
+
+#### Why did Harness reduce the number of supported entities backed by Git?
+
+There were Git sync issues with Configuration as Code while maintaining the correct and stable state of Harness entities like service, environment, infrastructure definitions, workflows, pipelines, and workflows. The Git state was overwritten by Harness' current state which was often not the correct state. Focusing on core platform entities like pipelines, templates, and input sets, the Git Experience provides multi-branch, multi-version support to manage your resources.
+
+For more information, go to:
+
+- [Pipelines](/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
+- [Input Set](/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience)
+- [Templates](/docs/platform/templates/templates-best-practices#remote-template-versioning)
+- [Services](/docs/platform/git-experience/manage-services-using-git-experience.md)
+
+#### Why does Harness support the storage of only a few entities in Git?
+
+You can store the following configurations in Git using the Git Experience: 
+- Pipelines
+- Templates
+- Input sets
+- Services
+- Environment 
+- Infrastructure Definitions
+
+Implementing pipelines as code is an industry standard. The most recommended practice for Continuous Integration and Continuous Deployment is to manage the pipeline state in Git. 
+
+Following are some benefits of implementing pipelines as code:
+
+- Facilitates the sharing of pipeline configurations between different teams.
+- Ability to manage configurations in Git and track changes using Git's commit and audit capabilities.
+- Ability to test different versions of the pipeline before promoting to the main or stable version.
+
+The above benefits apply to both Continuous Integration and Continuous Deployment. Harness extends these benefits to entities like templates and input sets because they are part of the pipeline. They would benefit from similar capabilities as pipeline as code.
+
+#### What is an alternative to managing other entities in Git?
+
+Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform Provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
+
+You can automate YAML configurations in Git and pass them to API calls for CRUD operations. Using pipelines, you can integrate Harness APIs or build your own onboarding and automation applications (via a containerized application or serverless functions).
+
+For more information on Harness Terraform Provider, go to: 
+
+- [Terraform Provider Quickstart](/docs/platform/automation/terraform/harness-terraform-provider-overview)
+- [Terraform Provider Automated Onboarding Guide](/docs/platform/automation/terraform/automate-harness-onboarding)
+- [Terraform Provider Scaling Automation Guide](/docs/platform/automation/terraform/advanced-terraform-onboarding)
+- [Terraform Registry for Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
+
+
+For more information on Harness APIs, go to:
+
+- [Get started with Harness APIs](/docs/platform/automation/api/api-quickstart)
+- [API Docs](https://apidocs.harness.io/)
+
+
+#### How can I use the Git Experience with Terraform?
+
+Harness recommends using the Git Experience to manage pipelines, input sets, and templates. These are the core `Pipeline as Code` constructs Harness offers. You can update and track changes to these entities in Git and view them in the Harness UI. The state of the pipeline must have the proper contractual relationship between the template that it references and the input set when changes are made to one of these entities. Changes to the pipeline or template must be reflected in the input set and the location of other entities.
+
+Harness recommends Terraform Provider for external resources managed separately from the pipeline. Using Terraform, you can manage and audit Harness Continuous Deployment configurations. Additionally, you can automate the definition of service, environment, and infrastructure life cycles via Harness pipelines.
+ 
+For more information, go to [Terraform Provider Automated Onboarding Guide](/docs/platform/automation/terraform/automate-harness-onboarding).
 
 
 ### General FAQs
+
+
+#### How does Harness calculate pricing for CD?
+
+See [Service-based licensing and usage for CD](/get-started/service-licensing-for-cd)
+
+#### My definition of a service differs from the above standard definition. How will pricing work in my case?
+
+Harness allows deployment of various custom technologies such as Terraform scripts, background jobs, and other non-specified deployments. These require custom evaluation to assess the correct Licensing model. Please contact the Harness Sales team to discuss your specific technologies and deployment use cases.
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+#### Are there other mechanisms to license Harness CD beyond services?
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+Yes, we are happy to have Harness Sales team work with you and understand the specifics of what you are trying to achieve and propose a custom licensing/pricing structure.
+
+#### Do unused/stale services consume a license?
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+Harness CD actively tracks and provides visibility into all active services that consume a license.
+
+An active service is defined as a service that has been deployed at least once in the last 30 days. A service deemed inactive (no deployments in the last 30 days), does not consume a license.
+
+#### How will I know if I am exceeding my licensed service usage?
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+Harness CD has built-in license tracking and management dashboards that provide you real-time visibility into your license allocation and usage.
+
+If you notice that you are nearing or exceeding your licensed services, please get in touch with Harness Sales team to plan ahead and ensure continued usage and compliance of the product.
+
+#### How many users can I onboard onto Harness CD? Is there a separate pricing for Users?
+
+Harness CD has been designed to empower your entire Engineering and DevOps organization to deploy software with agility and reliability. We do not charge for users who onboard Harness CD and manage various aspects of the deployment process, including looking through deployment summaries, reports, and dashboards. We empower users with control and visibility while pricing only for the actual ‘services’ you deploy as a team.
+
+#### If I procure a certain number of service licenses on an annual contract, and realize that more licenses need to be added, am I able to procure more licenses mid-year through my current contract?
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+Yes, Harness Sales team is happy to work with you and help fulfill any Harness-related needs, including mid-year plan upgrades and expansions.
+
+#### If I procure a certain number of service licenses on an annual contract, and realize that I may no longer need as many, am I able to reduce my licenses mid-year through my current contract?
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+While an annual contract can not be lowered mid-year through the contract, please contact us and we will be very happy to work with you. In case you are uncertain at the beginning of the contract of how many licenses should be procured - you can buy what you use today to start and expand mid-year as you use more. You can also start with a monthly contract and convert to an annual subscription.
+
+#### What if I am building an open source project?
+
+We love Open Source and are committed to supporting our Community. We recommend the open-source [Gitness](https://gitness.com) for hosting your source code repository as well as CI/CD pipelines.
+
+Contact us and we will be happy to provide you with a no restriction SaaS Plan!
+
+#### What if I add more service instance infrastructure outside of Harness?
+
+See the **Pricing FAQ** at [Harness pricing](https://harness.io/pricing/).
+
+If you increase the Harness-deployed service instance infrastructure outside of Harness, Harness considers this increase part of the service instance infrastructure and licensing is applied.
+
+#### When is a service instance removed?
+
+If Harness cannot find the service instance infrastructure it deployed, it removes it from the Services dashboard.
+
+If Harness cannot connect to the service instance infrastructure, it will retry until it determines if the service instance infrastructure is still there.
+
+#### If the instance/pod is in a failed state does it still count towards the service instance count?
+
+Harness performs a steady state check during deployment and requires that each instance/pod reach a healthy state.
+
+A Kubernetes liveness probe failing later would mean the pod is restarted. Harness continues to count it as a service instance.
+
+A Kubernetes readiness probe failing later would mean traffic is no longer routed to the pods. Harness continues to count pods in that state.
+
+Harness does not count an instance/pod if it no longer exists. For example, if the replica count is reduced.
+
+#### What deployment strategies can I use?
+
+Harness supports all deployment strategies, such as blue/green, rolling, and canary.
+
+See [Deployment concepts and strategies](./manage-deployments/deployment-concepts.md
+
+#### How do I filter deployments on the Deployments page?
+
+You can filter deployments on the the Deployments page according to multiple criteria, and save these filters as a quick way to filter deployments in the future.
+
+#### How do I know which Harness Delegates were used in a deployment?
+
+Harness displays which Delegates performed each task in the Details of each step.
+
+![](../faqs/static/continuous-delivery-faqs-01.png)
+
+#### Can I restrict deployments to specific User Groups?
+
+Yes, you can enable the Role permission Pipeline Execute and then apply that Role to specific User Groups.
+
+![](../faqs/static/continuous-delivery-faqs-02.png)
+
+See [Manage roles](../platform/role-based-access-control/add-manage-roles).
+
+#### Can I deploy a service to multiple infrastructures at the same time?
+
+Each stage has a service and target Infrastructure. If your Pipeline has multiple stages, you can deploy the same service to multiple infrastructures.
+
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
+
+#### Can I re-run a failed deployment?
+
+Yes, select **Re-run Pipeline**.
+
+![](../faqs/static/continuous-delivery-faqs-03.png)
 
 
 #### How to handle the scenario where powershell scripts does not correctly return the status code on failure ?
@@ -1616,23 +1753,5 @@ We currently, do not support polling on folders. We have an open enhancement req
 #### How do I filter out Approvals for Pipeline Execution Time in Dashboards?
 You can get the Approval step duration from the **Deployments and Services V2** data source.
 
-### Other CD FAQs
 
-- [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs)
-- [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs)
-- [Kubernetes deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-faqs)
-- [Helm and Native Helm deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-deployment-faqs)
-- [Kustomize deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-faqs)
-- [Azure deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-faqs)
-- [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs)
-- [Google Cloud Functions FAQS](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs)
-- [Serverless Lambda deployments FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-deployment-faqs)
-- [Custom deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-faqs)
-- [Tanzu deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-application-service-deployment-faqs)
-- [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs)
-- [Integrations FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/integrations/integrations-faqs)
-- [CD steps FAQs](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-steps-faqs)
-- [Deployment strategies FAQs](/docs/continuous-delivery/manage-deployments/deployment-faqs)
-- [Continuous Verification FAQs](/docs/continuous-delivery/verify/continuous-verification-faqs)
-- [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs)
 

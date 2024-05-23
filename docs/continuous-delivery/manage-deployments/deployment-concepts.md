@@ -215,3 +215,7 @@ It depends entirely on the type of application/service and environment. Most Har
 In many cases, customers are migrating from blue/green to canary so they can test in production with minimal business impact.
 
 You can also combine many of the above deployment strategies into a single strategy.
+
+## Frequently asked questions
+
+For frequently asked questions about the execution strategies supported by Harness, go to [Deployment strategies FAQs](/docs/continuous-delivery/manage-deployments/deployment-faqs).

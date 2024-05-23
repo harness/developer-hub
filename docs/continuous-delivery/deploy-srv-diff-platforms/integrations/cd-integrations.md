@@ -69,3 +69,7 @@ The broad steps are as follows:
 3. Add your step to the correct spot in your pipeline. Consider adding the deploy to Jellyfish in parallel to the production deploy step for more access to built in variables. 
 
 For more information, please read the Iterable blog referenced above!
+
+## See also
+
+For frequently asked questions about Harness integration with other platforms, go to [Integrations FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/integrations/integrations-faqs).

@@ -185,3 +185,7 @@ For more information, go to [Harness GitOps basics](/docs/continuous-delivery/gi
 In GitOps, changes are managed via Git files and Agents, without requiring pipelines. Deployments refer to executed pipelines in Harness.
 
 This difference is why you see **Deployments** and **GitOps** separated in the Harness UI.
+
+## See also
+
+- [CD and GitOps FAQs](/docs/continuous-delivery/faqs)

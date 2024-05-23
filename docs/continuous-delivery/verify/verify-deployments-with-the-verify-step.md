@@ -77,5 +77,9 @@ Harness CV monitors health trend deviations using logs and metrics obtained from
 - To start using Harness CV, go to [Configure CV](/docs/category/configure-cv).
 - To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
 
+## See also
+
+For frequently asked questions about Harness Continuous Verification, go to [Continuous Verification FAQs](/docs/continuous-delivery/verify/continuous-verification-faqs).
+
 
 
