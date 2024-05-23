@@ -2,6 +2,8 @@
 title: Google Cloud Functions Deployments
 description: Deploy single-purpose functions to Google Cloud.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/
 ---
 
 This topic explains how to deploy new Cloud Functions to Google Cloud using Harness.
