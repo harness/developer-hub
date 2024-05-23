@@ -92,7 +92,7 @@ We recommend configuring your connector before creating your workspace, however,
 
 When adding any connector, start by:
 
-1. Signing in to [app.harness.io](https://app.harness.io/).
+1. Signing in to [app.harness.io](https://app.harness.io).
 2. In the module pane, select **Infrastructure**.
 3. Select **Project Setup**, and then select **Connectors**
 4. Select **New Connector**
