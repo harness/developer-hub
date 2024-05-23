@@ -47,13 +47,13 @@ JVM method exception:
   </tr>
   <tr>
     <td> pid </td>
-    <td> The process ID (integer) that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. If <code>startupCommand</code> is specified, <code>pid</code> is specified as 0.</td>
+    <td> The process ID (integer) that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. If <code>pid</code> is specified (other than 0), <code>startupCommand</code> is not required.</td>
     <td> For example, <code>6429</code>. For more information, go to <a href= "#pid ">process Id.</a></td>
   </tr>
   <tr>
     <td> startupCommand </td>
     <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
-    <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href= "#startup-command">startup command.</a></td>
+    <td> If <code>startupCommand</code> is specified, you need to set <code>pid</code> to 0. For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href= "#startup-command">startup command.</a></td>
   </tr>
 </table>
 
@@ -177,11 +177,10 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     class: ""
     method: ""
     exception: ""
-    startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
 
