@@ -18,7 +18,7 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 Linux JVM memory stress:
 - Tests the system's ability to handle high payloads.
 - Evaluates the application's behavior in high-stress cases.
-- Induces memory consumption and exhaustion on the target Linux machines.
+- Induces memory consumption and exhaustion on the target Java application JVM.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
@@ -34,18 +34,18 @@ Linux JVM memory stress:
     <th> Notes </th>
   </tr>
   <tr>
-    <th> Memory type </th>
-    <th> The type of memory that you can stress: <b>heap</b> or <b>stack</b>.</th>
-    <th>  </th>
+    <th> memory </th>
+    <td> The type of memory to stress. <td>
+    <td> Choose between <b>heap</b> or <b>stack</b>.</td>
   </tr>
   <tr>
-    <td> Pid </td>
-    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <th> pid </th>
+    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. </td>
     <td> For example, <code>6429</code>. </td>
   </tr>
   <tr>
-    <td> Startup command </td>
-    <td> The path to the JAR file or the Java application. This is mutually exclusive with <b>Pid</b>.</td>
+    <th> startupCommand </th>
+    <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
     <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. </td>
   </tr>
 </table>
@@ -58,17 +58,17 @@ Linux JVM memory stress:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> Duration </td>
+    <th> duration </th>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. </td>
   </tr>
   <tr>
-    <td> Port </td>
-    <td> Port used to Byteman to start the Byteman agent. </td>
-    <td> For example, <code>9091</code>. </td>
+    <th> port </th>
+    <td> Port used by the Byteman agent. </td>
+    <td> Default: <code>9091</code>. </td>
   </tr>
   <tr>
-    <td> Ramp time </td>
+    <th> rampTime </th>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>.</td>
   </tr>
@@ -76,7 +76,7 @@ Linux JVM memory stress:
 
 ### Pid
 
-The process Id used by Byteman to target the services of the JVM. This is mutually exclusive with the `Startup command` input variable.
+The process ID used by Byteman to target the services of the JVM. This is mutually exclusive with the `startupCommand` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -100,11 +100,7 @@ spec:
 
 ### Startup command
 
-The path to the JAR file or Java application to target the services of the Java application. This is mutually exclusive with the `Pid` input variable.
-
-:::tip
-You can simply provide the name of the file instead of the path because it is configured to accept substrings.
-:::
+The `startupCommand` is used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with the `pid` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
