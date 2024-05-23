@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with these profiles and architectures, ensuring reliability, scalability, and consistent software deployments.
 
-### User profiles
+## User profiles
 
 There are four user profiles for Harness Self-Managed Enterprise Edition.
 
@@ -88,8 +88,6 @@ helm install my-release harness/harness-prod -n <namespace> -f your-override -f 
 helm upgrade my-release harness/harness-prod -n <namespace> -f your-override -f override-large.yaml
 ```
 
-
-
 ## Customer reference architectures
 
 Reference architectures enable organizations to fully utilize Harness Self-Managed Enterprise Edition for a customized, secure, and scalable continuous delivery process.
@@ -143,11 +141,11 @@ Prod 3 replica mode w/self-managed external DB is designed for organizations tha
 
 You can configure any of the following external databases with Harness Self-Managed Enterprise Edition:
 
-- [Cloud-based MongoDB](./external-db/use-an-external-mongodb-database)
-- [Self-managed MongoDB](./external-db/use-an-external-self-managed-mongodb)
-- [Self-managed PostgreSQL](./external-db/use-an-external-postgres-database)
-- [Self-managed Redis](./external-db/use-an-external-redis-database)
-- [Self-managed TimescaleDB](./external-db/use-an-external-sm-timescaledb)
+- [Cloud-based MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-mongodb-database)
+- [Self-managed MongoDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-self-managed-mongodb)
+- [Self-managed PostgreSQL](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-postgres-database)
+- [Self-managed Redis](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-redis-database)
+- [Self-managed TimescaleDB](/docs/self-managed-enterprise-edition/advanced-configurations/external-db/use-an-external-sm-timescaledb)
 
 </TabItem>
   <TabItem value="Prod 3 replica mode w/external cloud-based DBs" label="Prod 3 replica mode w/external cloud-based DBs">
@@ -169,7 +167,7 @@ Disaster recovery w/warm standby is designed for organizations that:
 - Require self-managed external DBs
 - Require DR when a Kubernetes cluster or cloud region fails
 
-For more information, go to [Set up disaster recovery](./set-up-disaster-recovery).
+For more information, go to [Set up disaster recovery](/docs/self-managed-enterprise-edition/advanced-configurations/set-up-disaster-recovery).
 
 </TabItem>
 </Tabs>
