@@ -4,7 +4,6 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0",
     "build": "export NODE_OPTIONS=--max-old-space-size=7096 && docusaurus build",
@@ -20,17 +19,17 @@
     "test": "npm run lint:ci"
   },
   "dependencies": {
-    "@docusaurus/core": "3.3.0",
-    "@docusaurus/cssnano-preset": "3.3.0",
-    "@docusaurus/plugin-client-redirects": "3.3.0",
-    "@docusaurus/plugin-debug": "3.3.0",
-    "@docusaurus/plugin-google-analytics": "3.3.0",
-    "@docusaurus/plugin-google-gtag": "3.3.0",
-    "@docusaurus/plugin-sitemap": "3.3.0",
-    "@docusaurus/preset-classic": "3.3.0",
-    "@docusaurus/theme-classic": "3.3.0",
-    "@docusaurus/theme-mermaid": "3.3.0",
-    "@docusaurus/theme-search-algolia": "3.3.0",
+    "@docusaurus/core": "^3.3.2",
+    "@docusaurus/cssnano-preset": "^3.3.2",
+    "@docusaurus/plugin-client-redirects": "^3.3.2",
+    "@docusaurus/plugin-debug": "^3.3.2",
+    "@docusaurus/plugin-google-analytics": "^3.3.2",
+    "@docusaurus/plugin-google-gtag": "^3.3.2",
+    "@docusaurus/plugin-sitemap": "^3.3.2",
+    "@docusaurus/preset-classic": "^3.3.2",
+    "@docusaurus/theme-classic": "^3.3.2",
+    "@docusaurus/theme-mermaid": "^3.3.2",
+    "@docusaurus/theme-search-algolia": "^3.3.2",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "docusaurus-plugin-sass": "^0.2.5",
@@ -46,8 +45,8 @@
     "update-notifier": "^7.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.3.0",
-    "@docusaurus/tsconfig": "3.3.0",
+    "@docusaurus/module-type-aliases": "^3.3.2",
+    "@docusaurus/tsconfig": "^3.3.2",
     "dictionary-en": "^4.0.0",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",

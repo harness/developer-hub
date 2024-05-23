@@ -58,7 +58,7 @@ Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro)
 Add Cloud Provider and Git Connectors to select when Creating a workspace. Doing so allows your Cloud Provider and Git repository to read and write changes applied via your Harness IaCM pipelines.
 
 :::info
-We recommend configuring your connector before creating your workspace, however, you can also add new connectors during the Create Workspace flow.
+We recommend configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
 :::
 
 <Tabs>
@@ -94,11 +94,11 @@ When adding any connector, start by:
 
 1. Signing in to [app.harness.io](https://app.harness.io).
 2. In the module pane, select **Infrastructure**.
-3. Select **Project Setup**, and then select **Connectors**
-4. Select **New Connector**
-5. Select the appropriate Connector, e.g. Cloud Provider, Code Repository
+3. Select **Project Setup**, and then select **Connectors**.
+4. Select **New Connector**.
+5. Select the appropriate Connector, e.g. Cloud Provider, Code Repository.
 
-### Add a Cloud Provider connector
+### Add a cloud provider connector
 Using AWS as an example, after following the initial five steps to reach the Connectors panel:
 
 1. Select **AWS**
@@ -109,10 +109,10 @@ Using AWS as an example, after following the initial five steps to reach the Con
 Your secret key can be stored in a secret manager (default: Harness Built-in Secret Manager).
 :::
 
-4. Select the Connectivity Mode
+4. Select the Connectivity Mode.
     - We recommend selecting **Connect through Harness Platform**
 5. Continue to the final step to confirm your Cloud Provider connection is verified successfully.
-6. Select **Finish**
+6. Select **Finish**.
 
  Go to [Connect your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers) for more information regarding connecting your Cloud Provider.
 
@@ -120,21 +120,21 @@ Your secret key can be stored in a secret manager (default: Harness Built-in Sec
 
 Using GitHub as an example, after following the initial five steps to reach the Connectors panel:
 
-1. Select **GitHub**
-2. Name your connector and select **Continue**
-3. Select **Repository** and add your GitHub Repository URL
-4. In the Credentials step, add your GitHub Username
-5. Select **Create or Select a Secret**
-    - Go to [Manage your Personal Access Tokens (PAT)](https://docs.github.com/en/enterprise-server@3.9/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information on finding or generating a GitHub secret
+1. Select **GitHub**.
+2. Name your connector and select **Continue**.
+3. Select **Repository** and add your GitHub Repository URL.
+4. In the Credentials step, add your GitHub Username.
+5. Select **Create or Select a Secret**.
+    - Go to [Manage your Personal Access Tokens (PAT)](https://docs.github.com/en/enterprise-server@3.9/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information on finding or generating a GitHub secret.
 6. Select **New Secret Text**, then enter your **Secret Name** and **Secret Value**.
-7. Select **Save**
-8. Select **Enable API access**
+7. Select **Save**.
+8. Select **Enable API access**.
 9. Under API Authentication, select **Create or Select a Secret** and choose the secret you created in Step 5.
-10. Apply the selected secret and continue
-11. Select the Connectivity Mode
-    - We recommend selecting **Connect through Harness Platform**
+10. Apply the selected secret and continue.
+11. Select the Connectivity Mode.
+    - We recommend selecting **Connect through Harness Platform**.
 12. Continue to the final step to confirm your GitHub connection is verified successfully.
-13. Select **Finish**
+13. Select **Finish**.
 
 Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your Code Repository.
 </TabItem>
