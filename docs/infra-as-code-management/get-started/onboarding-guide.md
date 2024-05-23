@@ -65,7 +65,7 @@ Harness recommends configuring your connector before creating your workspace, ho
 <TabItem value="Cloud Provider connector">
   <iframe 
     src="https://app.tango.us/app/embed/8ad0b6f5-6258-47c1-8014-140ac0919e12" 
-    title="Setting up a Cloud Provider Connector for Harness IaCM" 
+    title="Set up a Cloud Provider Connector for Harness IaCM" 
     style={{minHeight:'640px'}}
     width="100%" 
     height="100%" 
@@ -78,7 +78,7 @@ Harness recommends configuring your connector before creating your workspace, ho
 <TabItem value="Git repository connector">
   <iframe 
     src="https://app.tango.us/app/embed/22085f72-df71-48cb-860d-b329f2aa43ca" 
-    title="Setting up a Git Repository Connector for Harness IaCM" 
+    title="Set up a Git Repository Connector for Harness IaCM" 
     style={{minHeight:'640px'}}
     width="100%" 
     height="100%" 
