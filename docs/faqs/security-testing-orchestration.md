@@ -85,9 +85,9 @@ The following table specifies where the target to be tested is located.
 
 ## Can I use STO with custom or unsupported scanners?
 
-Yes. You can easily ingest [Static Analysis Results Interchange Format (SARIF)](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) data from any tool that supports this format. SARIF is an open data format supported by many scan tools, especially tools available as GitHub Actions.
+Yes. You can easily ingest [Static Analysis Results Interchange Format (SARIF)](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data) data from any tool that supports this format. SARIF is an open data format supported by many scan tools, especially tools available as GitHub Actions.
 
-STO also supports a [generic JSON format](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) for ingesting results from custom or unsupported scanners.
+STO also supports a [generic JSON format](/docs/security-testing-orchestration/orchestrate-and-ingest/ingesting-issues-from-other-scanners) for ingesting results from custom or unsupported scanners.
 
 By ingesting your custom issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 

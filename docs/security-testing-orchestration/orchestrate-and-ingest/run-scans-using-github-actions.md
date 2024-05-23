@@ -26,11 +26,11 @@ import TabItem from '@theme/TabItem';
   * GitHub **job** = Harness **Stage**
   * GitHub **step** = Harness **step**
 
-  ![](../static/sto-gha-vs-harness-concepts.png)
+  ![](./static/sto-gha-vs-harness-concepts.png)
 
 * Harness recommends that you output your scan results to a data file in [SARIF format](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning). You can then use a [Custom Ingestion step](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) to ingest the results into your pipeline. 
 
-  For a description of the end-to-end workflow, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+  For a description of the end-to-end workflow, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data).
 
 * As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practice to configure these settings in the YAML editor.
 

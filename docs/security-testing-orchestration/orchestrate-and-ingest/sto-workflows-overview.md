@@ -18,7 +18,7 @@ STO supports three scan modes to ingest scan results into a pipeline:
 
 In an *orchestration scan*, you scan a target and ingest the results in one step. This is the easiest workflow to implement and is good for running scans with default settings.
 
-For more information, go to [Run an Orchestration Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
+For more information, go to [Run an Orchestration Scan in an STO Pipeline](./run-an-orchestrated-scan-in-sto.md).
 
 ### Ingestion scans in STO
 
@@ -29,7 +29,7 @@ An ingestion scan requires at least two steps:
 1. A Run step saves the scan data to a shared folder. 
 2. A Security or Security Tests step ingests the data from the shared folder.
 
-For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
+For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
 
 ### Extraction scans in STO
 

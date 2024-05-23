@@ -15,7 +15,7 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
 
 - This workflow is intended for scanners that have no supported integration in STO. Harness recommends that you always use the documented workflow for supported scanners. For a list of all STO-supported scanners, go to [What's supported](/docs/security-testing-orchestration/whats-supported) and click **Harness STO scanner support** to expand.
 
-- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools. If your scanner supports this format, publish your results to SARIF. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+- [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) is an open data format supported by many scan tools. If your scanner supports this format, publish your results to SARIF. For more information, go to [Ingest SARIF results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data).
 
 - For STO to ingest your scan results, the ingestion file must match the [JSON format](#json-data-format-reference) specified below.
 
@@ -31,7 +31,7 @@ You can ingest custom issues from any scanning tool. STO supports a generic JSON
    ```
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
-  You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
+  You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](./ingest-scan-results-into-an-sto-pipeline.md) for an example.
 
 3. Add a **Custom Ingest** step and configure the scanner to ingest the results of the scan. For information about how to configure this step, go to [Custom Ingest settings reference](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference.md).
 
@@ -170,7 +170,7 @@ You can add custom fields to an issue. The only restriction is that you cannot u
 ```
 The custom fields will get grouped together at the end of the issue details like this:
 
-![](../static/ingesting-issues-from-other-scanners-01.png)
+![](./static/ingesting-issues-from-other-scanners-01.png)
 
 #### Reserved keywords for Harness STO JSON schema
 
@@ -203,7 +203,7 @@ The following pipeline shows an end-to-end ingestion workflow. The pipeline cons
 
 2. A Custom Ingest step that ingests and normalizes the data from `/shared/scan_results/example.json`. 
 
-![](../static/custom-json-ingest-pipeline-example.png)
+![](../use-sto/static/custom-json-ingest-pipeline-example.png)
 
 ```yaml
 pipeline:

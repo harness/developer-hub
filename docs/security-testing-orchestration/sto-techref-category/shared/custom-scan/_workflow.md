@@ -1,4 +1,4 @@
-This workflow applies to scanner integrations that support [`orchestratedScan`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) or [`dataLoad`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto) scan modes.
+This workflow applies to scanner integrations that support [`orchestratedScan`](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) or [`dataLoad`](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto) scan modes.
 
 1. Add a **Build** or **Security** stage to your pipeline.
 

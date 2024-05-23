@@ -49,21 +49,21 @@ import {
               module: MODULES.sto,
               description:
                 "Learn about the three high-level workflows for running scans and ingesting results: orchestration, extraction, and ingestion.",
-              link: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview",
+              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview",
             },
             {
               title: "Orchestration workflows",
               module: MODULES.sto,
               description:
                 "Learn how to scan an object and ingest the results automatically in one step.",
-              link: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto",
+              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto",
             },
             {
               title: "Ingestion workflows",
               module: MODULES.sto,
               description:
                 "Learn how to run scans in a separate step, or outside Harness entirely, and ingest the results.",
-              link: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline",
+              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline",
             },
             {
                 title: "Configure external scanners",
@@ -77,7 +77,7 @@ import {
               module: MODULES.sto,
               description:
                 "You can ingest custom Issues from any scanning tool. This topic shows you how.",
-              link: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners",
+              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingesting-issues-from-other-scanners",
             },
           ],
         },  

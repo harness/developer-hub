@@ -29,13 +29,13 @@ Once you complete this tutorial, you'll have a complete end-to-end pipeline that
 
 The following steps describe the workflow:
 
-1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data) file.
+1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data) file.
 
-2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)).
+2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)).
 
 3. If the code has no critical vulnerabilities, another Run steps builds the image.
 
-4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto)).
+4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto)).
 
 5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub.
 
@@ -280,7 +280,7 @@ Add a step after the `Run` step and configure it as follows:
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`ingestion`](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)
+    - `mode :` [`ingestion`](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)
     - `config: default`
       - `target : `
         - `name : <+stage.variables.GITHUB_REPO>`
