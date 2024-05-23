@@ -12,5 +12,4 @@ spec:
     class: "org.framework.appName.system.WelcomeController"
     method: ""
     latency: 2000
-    startupCommand: ""
     rampTime: ""
