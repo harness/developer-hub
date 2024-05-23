@@ -31,12 +31,12 @@ Linux JVM trigger gc:
     <th> Notes </th>
   </tr>
   <tr>
-    <th> pid </th>
-    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <td> pid </td>
+    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. If <code>startupCommand</code> is specified, <code>pid</code> is specified as 0.</td>
     <td> For example, <code>6429</code>. For more information, go to <a href="#pid"> process ID</a>.</td>
   </tr>
   <tr>
-    <th> startupCommand </th>
+    <td> startupCommand </td>
     <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
     <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href= "#startup-command">startup command.</a></td>
   </tr>
@@ -50,17 +50,17 @@ Linux JVM trigger gc:
     <th> Notes </th>
   </tr>
   <tr>
-    <th> duration </th>
+    <td> duration </td>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
-    <th> port </th>
+    <td> port </td>
     <td> Port used by the Byteman agent. </td>
     <td> Default: <code>9091</code>. </td>
   </tr>
   <tr>
-    <th> rampTime </th>
+    <td> rampTime </td>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
@@ -84,7 +84,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: ""
+    pid: 0
     startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
 ```
@@ -107,7 +107,7 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
+    pid: 1
     startupCommand: ""
     rampTime: ""
 ```
