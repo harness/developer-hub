@@ -1618,7 +1618,7 @@ AWS has the following limitations to keep in mind:
 - ASGs per region: 500.
 - Launch configurations per region: 200.
 
-## See also
+## FAQs
 
 For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).
 

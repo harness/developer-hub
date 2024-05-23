@@ -203,7 +203,7 @@ Read the following topics to build on what you've learned:
 * [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [Kubernetes How-tos](/docs/category/kubernetes)
 
-## See also
+## FAQs
 
 For frequently asked questions about Kubernetes deployments in Harness, go to [Kubernetes deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-faqs).
 

@@ -169,7 +169,7 @@ Harness Service Instances (SIs) aren't consumed and no other licensing is requir
 
 When Harness deploys artifacts via Harness services to the provisioned infrastructure in the same stage or pipeline, SIs licensing is consumed.
 
-## See also
+## FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
 

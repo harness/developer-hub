@@ -946,6 +946,6 @@ The Harness rollback capabilities are based on the Google Cloud Function [revisi
 If the function already exists (for example, revision 10) and a new revision is deployed (for example, revision 11) but a step after the deployment there is a failure and rollback is triggered, then Harness will deploy a new function revision (revision **12**) but it will contain the artifact and metadata for revision 10.
 
 
-## See also
+## FAQs
 
 For frequently asked questions about Google Cloud Functions deployments in Harness, go to [Google Cloud Functions FAQS](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs).

@@ -769,7 +769,7 @@ In your project's **Deployments**, you can see the deployment listed.
 
 See [CD tutorials](/docs/category/cd-and-gitops-tutorials) for other deployment features.
 
-## See also
+## FAQs
 
 For frequently asked questions about Tanzu deployments in Harness, go to [Tanzu deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-application-service-deployment-faqs).
 

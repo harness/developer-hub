@@ -2498,7 +2498,7 @@ template:
 
 ```
 
-## See also
+## FAQs
 
 For frequently asked questions about Custom deployments in Harness, go to [Custom deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-faqs).
 

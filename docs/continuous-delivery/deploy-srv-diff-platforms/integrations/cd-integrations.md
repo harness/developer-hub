@@ -70,6 +70,6 @@ The broad steps are as follows:
 
 For more information, please read the Iterable blog referenced above!
 
-## See also
+## FAQs
 
 For frequently asked questions about Harness integration with other platforms, go to [Integrations FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/integrations/integrations-faqs).

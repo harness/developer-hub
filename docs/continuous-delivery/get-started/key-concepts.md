@@ -186,6 +186,6 @@ In GitOps, changes are managed via Git files and Agents, without requiring pipel
 
 This difference is why you see **Deployments** and **GitOps** separated in the Harness UI.
 
-## See also
+## FAQs
 
 - [CD and GitOps FAQs](/docs/continuous-delivery/faqs)

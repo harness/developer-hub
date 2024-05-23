@@ -689,7 +689,7 @@ In case of stage failures in subsequent executions ((Assuming the service, envir
 
 For more details, go to [Use Harness expressions](/docs/platform/variables-and-expressions/harness-variables/).
 
-## See also
+## FAQs
 
 For frequently asked questions about traditional deployments in Harness, go to [SSH and WinRM deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-winrm-faqs).
 

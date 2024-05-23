@@ -264,7 +264,7 @@ GnuPG Keys can be used to configure Harness GitOps to only sync against commits 
 
 The GitOps Agent you select will enforce signature verification.
 
-## Frequently Asked Questions
+## FAQs
 
 For frequently asked questions about Harness GitOps, go to [GitOps FAQs](/docs/continuous-delivery/gitops/gitops-faqs).
 
