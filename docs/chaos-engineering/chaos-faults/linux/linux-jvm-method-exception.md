@@ -15,7 +15,7 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 ![Linux JVM method exception](./static/images/linux-jvm-method-exception.png)
 
 ## Use cases
-JVM method exception :
+JVM method exception:
 - Determines the performance and resilience of an application (or service) on encountering exceptions.
 - Determines how efficiently an application recovers the services.
 
@@ -31,28 +31,28 @@ JVM method exception :
     <th> Notes </th>
   </tr>
   <tr>
-    <td> Class </td>
+    <td> class </td>
     <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
     <td> For example, <code>org.framework.appName.system.WelcomeController</code>. For more information, go to <a href= "#class-name">class name.</a></td>
   </tr>
   <tr>
-    <td> Exception </td>
+    <td> exception </td>
     <td> The exception you want to throw. </td>
-    <td> For example, <code>NullPointerException</code>. For more information, go to <a href= "#exception">exception name.</a></td>
+    <td> For example, <code>NullPointerException("Something went wrong!")</code>. For more information, go to <a href= "#exception">exception name.</a></td>
   </tr>
   <tr>
-    <td> Method </td>
-    <td> The method to which exception is applied </td>
+    <td> method </td>
+    <td> The method to which exception is applied. </td>
     <td> For example, <code>Welcome</code>. For more information, go to <a href= "#method ">method name.</a></td>
   </tr>
   <tr>
-    <td> Pid </td>
-    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <td> pid </td>
+    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. </td>
     <td> For example, <code>6429</code>. For more information, go to <a href= "#pid ">process Id.</a></td>
   </tr>
   <tr>
-    <td> Startup command </td>
-    <td> The path to the JAR file or the Java application. This is mutually exclusive with <b>Pid</b>.</td>
+    <td> startupCommand </td>
+    <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
     <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href= "#startup-command">startup command.</a></td>
   </tr>
 </table>
@@ -65,25 +65,25 @@ JVM method exception :
     <th> Notes </th>
   </tr>
   <tr>
-    <td> Duration </td>
+    <td> duration </td>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
-    <td> Ramp time </td>
+    <td> rampTime </td>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
   <tr>
-    <td> Port </td>
-    <td> Port used to Byteman to start the Byteman agent. </td>
-    <td> For example, <code>9091</code>. </td>
+    <td> port </td>
+    <td> Port used by the Byteman agent. </td>
+    <td> Default: <code>9091</code>. </td>
   </tr>
 </table>
 
 ### Class name
 
-The `class` input variable targets the class name where the exception is present. Specify it as `packageName.className`.
+The `class` input variable targets the class name where the exception is present. Specify it in the format `packageName.className`.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -109,7 +109,7 @@ spec:
 
 ### Exception
 
-The exception you want to throw to the Java application.
+The `exception` you want to throw to the Java application.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -128,14 +128,14 @@ spec:
     pid: 0
     class: ""
     method: ""
-    exception: "NullPointerException("param1","param2")"
+    exception: "NullPointerException("Something went wrong!")"
     startupCommand: ""
     rampTime: ""
 ```
 
 ### Method
 
-The method name on which you apply the `Exception` input variable.
+The method name on which you apply the `exception` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -161,7 +161,7 @@ spec:
 
 ### Pid
 
-The process Id used by Byteman to target the services of the Java application. This is mutually exclusive with the `Startup command` input variable.
+The process ID used by Byteman to target the services of the Java application. This is mutually exclusive with the `startupCommand` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -187,11 +187,7 @@ spec:
 
 ### Startup command
 
-The path to the JAR file or Java application to target the services of the Java application. This is mutually exclusive with the `Pid` input variable.
-
-:::tip
-You can simply provide the name of the file instead of the path because it is configured to accept substrings.
-:::
+The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with the `pid` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 

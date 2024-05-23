@@ -11,6 +11,6 @@ spec:
     pid: 0
     class: ""
     method: ""
-    exception: "NullPointerException("param1","param2")"
+    exception: "NullPointerException("Something went wrong!")"
     startupCommand: ""
     rampTime: ""
