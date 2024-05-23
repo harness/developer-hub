@@ -58,7 +58,7 @@ Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro)
 Add Cloud Provider and Git Connectors to select when Creating a workspace. Doing so allows your Cloud Provider and Git repository to read and write changes applied via your Harness IaCM pipelines.
 
 :::info
-We recommend configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
+Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
 :::
 
 <Tabs>
@@ -101,16 +101,16 @@ When adding any connector, start by:
 ### Add a cloud provider connector
 Using AWS as an example, after following the initial five steps to reach the Connectors panel:
 
-1. Select **AWS**
-2. Name your connector and select **Continue**
-3. Add your Cloud Provider Access Key and Secret Key
+1. Select **AWS**.
+2. Name your connector and select **Continue**.
+3. Add your Cloud Provider Access Key and Secret Key.
 
 :::note
 Your secret key can be stored in a secret manager (default: Harness Built-in Secret Manager).
 :::
 
 4. Select the Connectivity Mode.
-    - We recommend selecting **Connect through Harness Platform**
+    - Harness recommends selecting **Connect through Harness Platform**.
 5. Continue to the final step to confirm your Cloud Provider connection is verified successfully.
 6. Select **Finish**.
 
@@ -132,7 +132,7 @@ Using GitHub as an example, after following the initial five steps to reach the 
 9. Under API Authentication, select **Create or Select a Secret** and choose the secret you created in Step 5.
 10. Apply the selected secret and continue.
 11. Select the Connectivity Mode.
-    - We recommend selecting **Connect through Harness Platform**.
+    - Harness recommends selecting **Connect through Harness Platform**.  
 12. Continue to the final step to confirm your GitHub connection is verified successfully.
 13. Select **Finish**.
 
