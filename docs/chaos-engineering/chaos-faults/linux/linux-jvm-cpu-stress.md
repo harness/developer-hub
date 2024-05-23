@@ -18,7 +18,7 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 Linux JVM CPU stress:
 - Tests the system's ability to handle high payloads.
 - Evaluates the application's behavior in high-stress cases.
-- Induces CPU consumption and exhaustion on the target Linux machines.
+- Induces CPU consumption and exhaustion on the target Java process JVM.
 - Simulates a lack of CPU threads for processes running on the application, which degrades their performance.
 - Simulates application slowness due to CPU starvation.
 
@@ -34,18 +34,18 @@ Linux JVM CPU stress:
     <th> Notes </th>
   </tr>
   <tr>
-    <th> CPU </th>
+    <th> cpu </th>
     <td> The number of CPU threads that the application should consume. </td>
     <td> For example, 4. For more information, go to <a href="#cpu-threads"> CPU threads</a>.</td>
   </tr>
   <tr>
-    <th> Pid </th>
-    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <th> pid </th>
+    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <b>startupCommand</b>. </td>
     <td> For example, <code>6429</code>. For more information, go to <a href="#pid"> process Ids</a>.</td>
   </tr>
   <tr>
-    <th> Startup command </th>
-    <td> The path to the JAR file or the Java application. This is mutually exclusive with <b>Pid</b>.</td>
+    <th> startupCommand </th>
+    <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
     <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href="#startup-command"> startup command</a>.</td>
   </tr>
 </table>
@@ -58,17 +58,17 @@ Linux JVM CPU stress:
     <th> Notes </th>
   </tr>
   <tr>
-    <th> Duration </th>
+    <th> duration </th>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
-    <th> Port </th>
-    <td> Port used to Byteman to start the Byteman agent. </td>
-    <td> For example, <code>9091</code>. </td>
+    <th> port </th>
+    <td> Port used by the Byteman agent. </td>
+    <td> Default: <code>9091</code>. </td>
   </tr>
   <tr>
-    <th> Ramp time </th>
+    <th> rampTime </th>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href= "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
@@ -76,7 +76,7 @@ Linux JVM CPU stress:
 
 ### Pid
 
-The process Id used by Byteman to target the services of the JVM. This is mutually exclusive with the `Startup command` input variable.
+The process ID used by Byteman to target the services of the JVM. This is mutually exclusive with the `startupCommand` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -92,7 +92,6 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
     cpu: 2
     startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
@@ -100,7 +99,7 @@ spec:
 
 ### Startup command
 
-The path to the JAR file or Java application to target the services of the Java application. This is mutually exclusive with the `Pid` input variable.
+The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with `pid`. This is mutually exclusive with the `Pid` input variable.
 
 :::tip
 You can simply provide the name of the file instead of the path because it is configured to accept substrings.
@@ -120,7 +119,6 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
     cpu: 2
     startupCommand: "/usr/bin/pet-clinic.jar"
     rampTime: ""
@@ -144,7 +142,6 @@ spec:
   jvmChaos/inputs:
     duration: 30s
     port: 9091
-    pid: 0
     cpu: 2
     startupCommand: ""
     rampTime: ""
