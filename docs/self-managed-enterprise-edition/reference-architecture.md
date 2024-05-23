@@ -1,6 +1,6 @@
 ---
 title: Harness Self-Managed Enterprise Edition reference architectures
-sidebar_label: User profiles and reference architectures
+sidebar_label: Reference Architectures
 description: Review Harness Self-Managed Enterprise Edition reference architectures.
 sidebar_position: 2
 redirect_from:
