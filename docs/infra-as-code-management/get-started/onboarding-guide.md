@@ -23,14 +23,8 @@ Before beginning the walkthroughs in this guide, ensure you have:
 
 - Access to a Harness account.
 - Access to a Git provider with your OpenTofu or Terraform file.  
-
+- Access to a Cloud Provider such as AWS or Google Cloud Platform.
 - An [organization and project set up](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
-- A [configured Connector to your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers)
-- A [configured Connector to your Git repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo)
-
-:::note
-You can add new Cloud Provider and Git Repository connectors via the steps in the above links or when creating a new workspace.
-:::
 
 ## Sample Terraform
 
@@ -58,6 +52,93 @@ resource "aws_instance" "my_first_ec2_instance" {
 ```
 
 Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) or [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported Workspace types. 
+
+## Add connectors
+
+Add Cloud Provider and Git Connectors to select when Creating a workspace. Doing so allows your Cloud Provider and Git repository to read and write changes applied via your Harness IaCM pipelines.
+
+:::info
+Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
+:::
+
+<Tabs>
+<TabItem value="Cloud Provider connector">
+  <iframe 
+    src="https://app.tango.us/app/embed/8ad0b6f5-6258-47c1-8014-140ac0919e12" 
+    title="Setting up a Cloud Provider Connector for Harness IaCM" 
+    style={{minHeight:'640px'}}
+    width="100%" 
+    height="100%" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    frameborder="0" 
+    webkitallowfullscreen="webkitallowfullscreen" 
+    mozallowfullscreen="mozallowfullscreen" 
+    allowfullscreen="allowfullscreen"></iframe>
+</TabItem>
+<TabItem value="Git repository connector">
+  <iframe 
+    src="https://app.tango.us/app/embed/22085f72-df71-48cb-860d-b329f2aa43ca" 
+    title="Setting up a Git Repository Connector for Harness IaCM" 
+    style={{minHeight:'640px'}}
+    width="100%" 
+    height="100%" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    frameborder="0" 
+    webkitallowfullscreen="webkitallowfullscreen" 
+    mozallowfullscreen="mozallowfullscreen" 
+    allowfullscreen="allowfullscreen"></iframe>
+</TabItem>
+<TabItem value="Step-by-step">
+
+When adding any connector, start by:
+
+1. Signing in to [app.harness.io](https://app.harness.io).
+2. In the module pane, select **Infrastructure**.
+3. Select **Project Setup**, and then select **Connectors**.
+4. Select **New Connector**.
+5. Select the appropriate Connector, e.g. Cloud Provider, Code Repository.
+
+### Add a cloud provider connector
+Using AWS as an example, after following the initial five steps to reach the Connectors panel:
+
+1. Select **AWS**.
+2. Name your connector and select **Continue**.
+3. Add your Cloud Provider Access Key and Secret Key.
+
+:::note
+Your secret key can be stored in a secret manager (default: Harness Built-in Secret Manager).
+:::
+
+4. Select the Connectivity Mode.
+    - Harness recommends selecting **Connect through Harness Platform**.
+5. Continue to the final step to confirm your Cloud Provider connection is verified successfully.
+6. Select **Finish**.
+
+ Go to [Connect your Cloud Provider](https://developer.harness.io/docs/category/cloud-providers) for more information regarding connecting your Cloud Provider.
+
+### Add a Git repository connector
+
+Using GitHub as an example, after following the initial five steps to reach the Connectors panel:
+
+1. Select **GitHub**.
+2. Name your connector and select **Continue**.
+3. Select **Repository** and add your GitHub Repository URL.
+4. In the Credentials step, add your GitHub Username.
+5. Select **Create or Select a Secret**.
+    - Go to [Manage your Personal Access Tokens (PAT)](https://docs.github.com/en/enterprise-server@3.9/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information on finding or generating a GitHub secret.
+6. Select **New Secret Text**, then enter your **Secret Name** and **Secret Value**.
+7. Select **Save**.
+8. Select **Enable API access**.
+9. Under API Authentication, select **Create or Select a Secret** and choose the secret you created in Step 5.
+10. Apply the selected secret and continue.
+11. Select the Connectivity Mode.
+    - Harness recommends selecting **Connect through Harness Platform**.  
+12. Continue to the final step to confirm your GitHub connection is verified successfully.
+13. Select **Finish**.
+
+Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your Code Repository.
+</TabItem>
+</Tabs>
 
 ## Create a Workspace
 
