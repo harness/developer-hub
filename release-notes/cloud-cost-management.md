@@ -19,6 +19,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 ## May 2024
 
+### Version 1.18.1
+
+#### New features and enhancements
+
+- Governance JSON Viewer UI Improvement: We have moved the Copy button in the Governance's JSON viewer beside the Filter button for better accessibility and user experience. [CCM-17651]
+- Cost Correlation Refresh Button: Expanded the functionality of the refresh button to include multi-policy evaluations, allowing users to update and refresh data related to savings for multi-policy evaluations. [CCM-17648]
+- Time Filter Options for Recommendations: We have introduced UI changes to support time filter options for the last 60 days and 90 days in recommendations. This enhancement provides users with greater flexibility in analyzing recommendations over specific time periods. [CCM-17725]
+
+#### Fixed issues
+
+- Edit Flow for TCP-Based Autostopping Rule: Fixed the issue where users were unable to edit the auto-stopping proxy from the dropdown and proceed with the flow. Users can now see the preselected value of the proxy and complete the process as expected.
+- Azure Cost Allocation Enhancement: Resolved an issue where Azure costs without subscription names or IDs were not properly allocated to cost buckets. This has been addressed to ensure accurate mapping of data fields from the billing export. Additionally, fixed an issue where adding a perspective rule resulted in no data being displayed when subscription name is null. Support has been added to display data with null Azure subscription IDs. [CCM-17414]
+- Auto Stopping Page Filter: Added a fix for a minor issue where using filters on the auto-stopping page resulted in an unknown error. [CCM-16195]
+
 ### Version 1.17.0
 
 #### New features and enhancements
