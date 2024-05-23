@@ -61,7 +61,7 @@ Linux disk fill:
 
 The `fillPath` input variable determines the system path to be filled up.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-disk-fill/fill-path.yaml yaml)
 ```yaml
@@ -82,7 +82,7 @@ spec:
 
 The `fillStorage` input variable determines the amount of storage space to be filled up at the `fillPath` path.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-disk-fill/fill-storage.yaml yaml)
 ```yaml
@@ -104,7 +104,7 @@ spec:
 
 The `dataBlockSize` input variable determines the size of a single block of data, that is used to fill up the disk. A larger block size results in quick completion of the disk fill operation and vice-versa.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-disk-fill/data-block-size.yaml yaml)
 ```yaml

@@ -510,3 +510,6 @@ In the Step YAML
                           stageStatus: Success
                         timeout: 10m
 ```
+## FAQs
+
+For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).

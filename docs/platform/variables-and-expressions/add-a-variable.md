@@ -81,6 +81,7 @@ This handling is also required for [matrix dimension names](/docs/platform/pipel
    * Variables created at lower levels (such as pipeline, stage, and service variables) support fixed values, runtime inputs, and expressions.
 * Pipelines fail if a variable's default value starts with an asterisk (`*`). Instead, you can wrap the asterisk or value in double quotes (`"*"`).
 * If a variable is assigned a date value in the format `2002-12-14`, the YAML converter adheres to the YAML convention by converting it into a datetime object. For more information, go to the [YAML specification for tags](https://yaml.org/spec/1.2.2/#3212-tags).
+* Underscores are ignored in string, and except for the character `e` (representing an exponent), all other characters are also ignored. Avoid using `_` and instead you can use `-`.
 
 ### Variable scope and availability
 

@@ -1,10 +1,10 @@
 ---
-title: Google Cloud Functions
+title: Google Cloud Functions Deployments
 description: Deploy single-purpose functions to Google Cloud.
-sidebar_position: 900
+sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/
 ---
-
-# Google Cloud Functions deployments
 
 This topic explains how to deploy new Cloud Functions to Google Cloud using Harness.
 
@@ -821,12 +821,13 @@ output "region_name" {
 
 In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.project_name>`.
 
-<figure>
+![](./static/google-provider-detail.png)
+<!-- <figure>
 
-<DocImage path={require('./static/6d3712e9196c409f2d49747939b91c8913adfe7a44d2b47b019f01187d36e719.png')} width="60%" height="60%" title="Click to view full size image" />
+<DocImage path={require('sta')} width="60%" height="60%" title="Click to view full size image" />
 
 <figcaption>Figure: Mapped outputs</figcaption>
-</figure>
+</figure> -->
 
 ## Cloud Functions execution strategies
 
@@ -945,3 +946,8 @@ If deployment failure occurs, the stage or step [failure strategy](/docs/platfor
 The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
 
 If the function already exists (for example, revision 10) and a new revision is deployed (for example, revision 11) but a step after the deployment there is a failure and rollback is triggered, then Harness will deploy a new function revision (revision **12**) but it will contain the artifact and metadata for revision 10.
+
+
+## FAQs
+
+For frequently asked questions about Google Cloud Functions deployments in Harness, go to [Google Cloud Functions FAQS](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs).

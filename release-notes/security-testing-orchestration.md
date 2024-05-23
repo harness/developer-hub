@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-05-16T10:00
+date: 2024-05-22T10:00
 sidebar_position: 13
 ---
 
@@ -24,7 +24,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## May 2024
 
+### Version 1.96.2
+
+<!-- 2024-05-22 -->
+
+#### Fixed issues
+
+- Fixed a Jira integration issue that allowed tickets to be created for issues that were not in a target baseline. When the **Ticket Summary** page was viewed from these tickets, they produced a vague error page. This fix prevents the creation of new non-baseline tickets and improves the error messages shown for existing tickets. (STO-7394, ZD-60778)
+
+- Fixed a Jira integration issue where setting the default Jira project and issue type in the **External Tickets** page resulted in duplicated database records and an error response from the ticketing service. (STO-7485)
+
+
 ### Version 1.95.0
+
+<!-- 2024-05-17 -->
 
 #### New features and enhancements
 

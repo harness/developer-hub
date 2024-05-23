@@ -1,7 +1,7 @@
 ---
 title: Continuous Verification (CV)
 description: Get an overview of Harness CV.
-sidebar_position: 20
+sidebar_position: 1
 helpdocs_topic_id: 3xhqq9xllp
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -76,6 +76,10 @@ Harness CV monitors health trend deviations using logs and metrics obtained from
 
 - To start using Harness CV, go to [Configure CV](/docs/category/configure-cv).
 - To understand more about Harness CV, go to the [knowledge base](/kb/continuous-delivery).
+
+## FAQs
+
+For frequently asked questions about Harness Continuous Verification, go to [Continuous Verification FAQs](/docs/continuous-delivery/verify/continuous-verification-faqs).
 
 
 

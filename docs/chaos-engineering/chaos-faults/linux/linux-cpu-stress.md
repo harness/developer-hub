@@ -59,7 +59,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
 
 The `workers` input variable utilizes a specific number of workers for the CPU stress fault.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-cpu-stress/workers.yaml yaml)
 ```yaml
@@ -80,7 +80,7 @@ spec:
 
 The `load` input variable exerts the CPU load (in percentage) per core.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-cpu-stress/load.yaml yaml)
 ```yaml
