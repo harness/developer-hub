@@ -23,10 +23,10 @@ import {
             link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
           },
           {
-            title: "Reference Architectures",
+            title: "Reference architectures",
             module: MODULES.platform,
             description:
-              "Review Harness Self-Managed Enterprise Edition user profiles and reference architectures.",
+              "Review Harness Self-Managed Enterprise Edition reference architectures.",
             link: "/docs/self-managed-enterprise-edition/reference-architecture",
           },
           {
