@@ -6,7 +6,7 @@ title: Linux JVM method latency
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
-Linux JVM method latency slows down the Java application by introducing delays in the operations.
+Linux JVM method latency slows down the Java application by introducing delays in executing the method calls.
 
 :::tip
 JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject chaos faults into the JVM.
@@ -17,10 +17,10 @@ JVM chaos faults use the [Byteman utility](https://byteman.jboss.org/) to inject
 ## Use cases
 Linux JVM method latency:
 - Determines the performance bottlenecks of the application.
-- Tests the system's ability to handle high payloads.
+- Tests the system's ability to handle heavy payloads.
 - Evaluates the application's behavior in high-stress cases.
 - Determines how quickly an application returns to normalcy after the delay.
-- Determines the performance and resilience of the application (or services) running on Linux JVMs.
+- Determines the performance and resilience of the dependant application (or services) running on Linux.
 
 <Ossupport />
 
@@ -34,28 +34,28 @@ Linux JVM method latency:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> Class </td>
+    <td> class </td>
     <td> Specify as <b>packageName.className</b> that specifies the class in which you define the exception. </td>
     <td> For example, <code>org.framework.appName.system.WelcomeController</code>. For more information, go to <a href="#class-name"> class name.</a></td>
   </tr>
   <tr>
-    <td> Latency </td>
+    <td> latency </td>
     <td> The delay you want to introduce in the application (in ms). </td>
     <td> Default: 2000 ms. For more information, go to <a href="#latency"> latency.</a></td>
   </tr>
   <tr>
-    <td> Method </td>
+    <td> method </td>
     <td> The method to which exception is applied </td>
     <td> For example, <code>Welcome</code>. For more information, go to <a href="#method"> method name.</a></td>
   </tr>
   <tr>
-    <td> Pid </td>
-    <td> The process Id that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
+    <td> pid </td>
+    <td> The process ID that Byteman uses to target the service. This is mutually exclusive with <b>Startup command</b>. </td>
     <td> For example, <code>6429</code>. For more information, go to <a href="#pid"> process Id.</a></td>
   </tr>
   <tr>
-    <td> Startup command </td>
-    <td> The path to the JAR file or the Java application. This is mutually exclusive with <b>Pid</b>.</td>
+    <td> startupCommand </td>
+    <td> The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with <b>pid</b>.</td>
     <td> For example, <code>/usr/local/bin/pet-clinic.jar</code>. For more information, go to <a href="#startup-command"> startup command.</a></td>
   </tr>
 </table>
@@ -68,25 +68,25 @@ Linux JVM method latency:
     <th> Notes </th>
   </tr>
   <tr>
-    <td> Duration </td>
+    <td> duration </td>
     <td> Duration through which chaos is injected into the target resource. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>30s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos.</a></td>
   </tr>
   <tr>
-    <td> Ramp time </td>
+    <td> rampTime </td>
     <td> Period to wait before and after injecting chaos. Should be provided in <code>[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format. </td>
     <td> Default: <code>0s</code>. Examples: <code>1m25s</code>, <code>1h3m2s</code>, <code>1h3s</code>. For example, 30s. For more information, go to <a href= "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
   </tr>
   <tr>
-    <td> Port </td>
-    <td> Port used to Byteman to start the Byteman agent. </td>
-    <td> For example, <code>9091</code>. </td>
+    <td> port </td>
+    <td> Port used by the Byteman agent. </td>
+    <td> Default: <code>9091</code>. </td>
   </tr>
 </table>
 
 ### Class name
 
-The `class` input variable targets the class name where the exception is present. Specify it as `packageName.className`.
+The `class` input variable targets the class name where the exception is present. Specify it in the format `packageName.className`.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -138,7 +138,7 @@ spec:
 
 ### Method
 
-The method name on which you apply the `Exception` input variable.
+The method name on which you apply the `exception` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -164,7 +164,7 @@ spec:
 
 ### Pid
 
-The process Id used by Byteman to target the services of the Java application. This is mutually exclusive with the `Startup command` input variable.
+The process ID used by Byteman to target the services of the Java application. This is mutually exclusive with the `Startup command` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -190,11 +190,7 @@ spec:
 
 ### Startup command
 
-The path to the JAR file or Java application to target the services of the Java application. This is mutually exclusive with the `Pid` input variable.
-
-:::tip
-You can simply provide the name of the file instead of the path because it is configured to accept substrings.
-:::
+The command used to start the Java process. A substring match is used with the given command for all processes. This is mutually exclusive with the `pid` input variable.
 
 The following YAML snippet illustrates the use of this input variable:
 
