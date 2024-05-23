@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Fixed issues
 
 - Edit Flow for TCP-Based Autostopping Rule: Fixed the issue where users were unable to edit the auto-stopping proxy from the dropdown and proceed with the flow. Users can now see the preselected value of the proxy and complete the process as expected.
-- Azure Cost Allocation Enhancement: Resolved an issue where Azure costs without subscription names or IDs were not properly allocated to cost buckets. This has been addressed to ensure accurate mapping of data fields from the billing export. Additionally, fixed an issue where adding a perspective rule resulted in no data being displayed when subscription name is null. Support has been added to display data with null Azure subscription IDs. [CCM-17414]
+- Azure Data Fix: Resolved an issue where adding a perspective rule with Azure subscription ID set to null resulted in no data being displayed. [CCM-17414]
 - Auto Stopping Page Filter: Added a fix for a minor issue where using filters on the auto-stopping page resulted in an unknown error. [CCM-16195]
 
 ### Version 1.17.0
