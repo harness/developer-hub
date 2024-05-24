@@ -121,7 +121,7 @@ import {
               module: MODULES.sto,
               description:
                 "Lean how to set fail_on_severity to stop pipeline builds and create exemptions (ignore rules) for specific vulnerabilities",
-              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows",
+              link: "/docs/security-testing-orchestration/exemptions/exemption-workflows",
             },
             {
               title: "Stop pipelines automatically using governance policies",
