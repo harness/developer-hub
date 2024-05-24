@@ -4,6 +4,7 @@ description: Frequently asked questions about Harness Continuous Delivery & GitO
 sidebar_position: 8000
 redirect_from:
 	- /docs/faqs/continuous-delivery-faqs
+	- /kb/continuous-delivery/continuous-delivery-faqs
 ---
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
