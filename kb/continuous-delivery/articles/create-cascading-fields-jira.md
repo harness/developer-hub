@@ -38,7 +38,7 @@ In the HTTP step's **Step Parameters**, configure the following fields.
 - Optional Configuration: Enter the following optional configurations.
   - Headers: Enter the following Key:Value information:
     - Content-Type: `application/json`
-    - Authorization: "Basic `<authorization_key_to_your_Jira_server>`"
+    - Authorization: `Basic <authorization_key_to_your_Jira_server>`
   - Output: Enter the variable name and value to get the Jira Issue Id from the pipeline output.  For example:
     - Variable Name: `<issue_key>`
     - Value: Choose Expression input type and enter `<+json.select("key", httpResponseBody)>` 
