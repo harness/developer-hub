@@ -807,3 +807,93 @@ pipeline:
 </TabItem>
 </Tabs>
 
+## Specify the Harness IDP images used in your pipelines
+
+You can use the Harness IDP `execution-config` API to specify or update the Harness IDP images used in your infrastructure by specifying image tags.
+
+:::info
+
+Certain steps are common across different stages in Harness Pipeline but the images used in each of them is specific to the stage they are part of, like `Run Step`.
+
+:::
+
+API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
+
+1. Send a `get-default-config` request to get a list of the latest Harness IDP worklfows excuted. You can use the `infra` parameter to get `k8` images or `VM` images.
+
+   ```json
+   curl --location --request GET "https://app.harness.io/gateway/idp/execution-config/get-default-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
+   --header 'X-API-KEY: $API_KEY'
+   ```
+
+   The response payload shows the latest supported images and their tags, for example:
+
+   ```json
+   {
+    "status": "SUCCESS",
+     "data": {
+        "cookieCutter": "harness/cookiecutter:1.9.1",
+        "createRepo": "harness/createrepo:1.9.0",
+        "directPush": "harness/directpush:1.9.0",
+        "registerCatalog": "harness/registercatalog:1.9.0",
+        "createCatalog": "harness/createcatalog:1.9.0",
+        "slackNotify": "harness/slacknotify:1.9.0",
+        "createOrganisation": "harness/createorganisation:1.9.0",
+        "createProject": "harness/createproject:1.9.0"
+     },
+     "metaData": null,
+     "correlationId": "08919155-a6d6-4bd3-8401-6b86318c85ca"
+   }
+   ```
+
+2. Send a `get-customer-config` request to get the build images that your IDP pipelines currently use. When `overridesOnly` is `true`, which is the default value, this endpoint returns the non-default images that your pipeline uses.
+
+   ```json
+   curl --location --request GET "https://app.harness.io/gateway/idp/execution-config/get-customer-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8&overridesOnly=true" \
+   --header 'X-API-KEY: $API_KEY'
+   ```
+
+   If the response contains `null`, your pipeline is using all default images, for example:
+
+   ```json
+   {
+       "status": "SUCCESS",
+       "data": {},
+       "metaData": null,
+       "correlationId": "11ce1bc8-b337-4687-9ab9-e13d553ae82f"
+   }
+   ```
+
+3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
+
+   ```json
+   curl --location --request POST "https://app.harness.io/gateway/idp/execution-config/update-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
+   --header 'X-API-KEY: $API_KEY' \
+   --header 'Content-Type: application/json' \
+   --data-raw '[
+       {
+           "field": "registerCatalog",
+           "value": "harness/registercatalog:1.9.0"
+       },
+       {
+           "field": "slackNotify",
+           "value": "harness/slacknotify:1.9.0"
+       }
+   ]'
+   ```
+
+4. To reset one or more images to their defaults, send a `reset-config` (POST) request with a list of the images to reset.
+
+   ```json
+   curl --location --request POST "https://app.harness.io/gateway/idp/execution-config/reset-config?accountIdentifier=$YOUR_HARNESS_ACCOUNT_ID&infra=K8" \
+   --header 'X-API-KEY: $API_KEY' \
+   --header 'Content-Type: application/json' \
+   --data-raw '[
+       {
+           "field": "registerCatalog"
+       },
+       {
+           "field": "createRepo"
+       }
+   ]'
+   ```

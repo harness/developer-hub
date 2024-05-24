@@ -74,7 +74,7 @@ See the following topics for steps on how to perform dynamic provisioning:
 - [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
 - [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
-- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions.md)
 - [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-lambda-cd-quickstart)
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
@@ -168,3 +168,8 @@ But if you performed ad hoc provisioning in the **Execution** steps, you cannot 
 Harness Service Instances (SIs) aren't consumed and no other licensing is required when a Harness stage uses Azure ARM to provision resources.
 
 When Harness deploys artifacts via Harness services to the provisioned infrastructure in the same stage or pipeline, SIs licensing is consumed.
+
+## FAQs
+
+For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
+

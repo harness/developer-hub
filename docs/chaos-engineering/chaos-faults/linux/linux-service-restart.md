@@ -74,7 +74,7 @@ Linux service restart stops the target system services running in a Linux machin
 
 The `services` input variable targets services to be stopped.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-service-restart/services.yaml yaml)
 ```yaml
@@ -93,9 +93,9 @@ spec:
 
 ### Self-healing services
 
-The `selfHealingServices` input variable restarts the services on their own after the service was stopped. 
+The `selfHealingServices` input variable restarts the services on their own after the service was stopped.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-service-restart/self-healing-services.yaml yaml)
 ```yaml
@@ -117,7 +117,7 @@ spec:
 
 The `sequence` input variable stops the services. Services can be stopped in parallel, that is, all services can be stopped at once for every iteration of chaos or serially, that is, one after the other for every iteration of chaos.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-service-restart/sequence.yaml yaml)
 ```yaml
@@ -139,7 +139,7 @@ spec:
 
 The `interval` input variable specifies the duration of a single iteration of chaos, which is less than or equal to `duration`, and denotes the entire duration of the fault execution. You can tune multiple iterations of the chaos injection.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-service-restart/interval.yaml yaml)
 ```yaml

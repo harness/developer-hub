@@ -203,6 +203,10 @@ Every field name in the function definition must be written in camel case, with 
 
 :::
 
+:::important
+Role ARN is a required field when creating a Lambda function for the first time. It is not required when updating existing functions.
+:::
+
 You can use Harness service variables in your function definition JSON.
 
 Services variables allow your function definition to be reusable across multiple Lambda functions.
@@ -741,17 +745,6 @@ pipeline:
 
 ## FAQs
 
-### What is the function definitions syntax
+For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).
 
-- Harness expects camel case in the function definition.
 
-- user can provide yaml or json in the function definition
-
-'''
-"vpcConfig": \{
-
-"securityGroupIds": ["string"],
-
-"subnetIds": ["string"]
-
-'''

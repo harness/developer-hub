@@ -344,3 +344,8 @@ Congratulations! The deployment was successful.
 ## Clean up the AKS deployment environment
 
 To delete the Harness Delegate from your Kubernetes cluster, go to [Delete a Delegate](/docs/platform/delegates/manage-delegates/delete-a-delegate).
+
+## See also
+
+For frequently asked questions about Community Edition deployments in Harness, go to [Gitness and Community Edition FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/gitness-community-edition-faqs).
+

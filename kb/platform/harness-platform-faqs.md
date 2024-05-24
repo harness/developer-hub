@@ -3221,7 +3221,7 @@ Then, in the delegate manifest, locate the `CronJob` resource. In the resource s
 
 Yes, Harness supports Google cloud functions in both FirstGen and NextGen.
 
-For more information, go to [Google cloud functions](/docs/faqs/continuous-delivery-faqs/#google-cloud-functions)
+For more information, go to [Google cloud functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs).
 
 ### Updating the LDAP cron schedule results in an error (Failed to fetch: 400). What are the possible causes?
 
