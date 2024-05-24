@@ -9,6 +9,7 @@ redirect_from:
 
 import Manage from '/docs/platform/shared/subscription-manage.md';
 import View from '/docs/platform/shared/subscription-view-subscriptions.md';
+import Cloud from '/docs/platform/shared/subscription-cloud-credits.md';
 
 You can view and manage module subscription and license information within your Harness account.
 
@@ -172,6 +173,10 @@ CCM does not follow the Developer 360 subscription model.
 You can view and manage your Harness module subscriptions in your Harness **Account Settings**.
 
 <View />
+
+## Cloud credits
+
+<Cloud />
 
 ## Manage subscriptions
 
