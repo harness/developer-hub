@@ -3095,7 +3095,7 @@ No, we don't have such feature availibility now.
 Although one can simply use containerized step groups instead of having teams work out of `/tmp`.
 Please refer more on containerized step group in this [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/)
 
-#### Can we create Custom remoete manifest template in Next-Gen ?
+#### Can we create Custom remote manifest template in Next-Gen ?
 
 No, this feauture is yet to be introduced.
 
@@ -3489,7 +3489,7 @@ Please read more on this in the following documentation on [Run specific stage o
 
 #### Is there a platform page where we can view the deployed image tags for each environment associated with a service ?
 
-One can click on a service and  see all the environments and the artifacts that have been deployed. Higher level views can be accomplished through dashboard like DORA metrics. Please read  more insights on this in the documentation on [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/)
+One can click on a service and  see all the environments and the artifacts that have been deployed. Higher level views can be accomplished through dashboard like DORA metrics. Please read  more insights on this in the documentation on [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/).
 
 #### Are there any plans to extend support for additional step types, such as Policy (OPA), Approvals, etc., within container-based step groups?
 
