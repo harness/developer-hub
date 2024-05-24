@@ -103,6 +103,12 @@ API, Deps, Scorecard, TechDocs, EntityGithubPullRequestsContent, EntityKubernete
 
 ### Side Nav Layout
 
+:::info
+
+The **Sidenav** changes are restricted only to IDP app and anything under **Admin** is not configurable
+
+:::
+
 The Side Nav Layout configuration file also follows a hierarchical structure, starting with the **"page"** key.
 
 - **"page"** represents the main page container.
