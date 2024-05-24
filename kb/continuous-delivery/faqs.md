@@ -1,10 +1,9 @@
 ---
 title: Continuous Delivery & GitOps FAQs
 description: Frequently asked questions about Harness Continuous Delivery & GitOps.
-sidebar_position: 8000
 redirect_from:
-	- /docs/faqs/continuous-delivery-faqs
-	- /kb/continuous-delivery/continuous-delivery-faqs
+  - /docs/faqs/continuous-delivery-faqs
+  - /kb/continuous-delivery/continuous-delivery-faqs
 ---
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
@@ -97,7 +96,7 @@ Harness does not count an instance/pod if it no longer exists. For example, if t
 
 Harness supports all deployment strategies, such as blue/green, rolling, and canary.
 
-See [Deployment concepts and strategies](./manage-deployments/deployment-concepts.md
+See [Deployment concepts and strategies](docs/continuous-delivery/manage-deployments/deployment-concepts)
 
 #### How do I filter deployments on the Deployments page?
 
@@ -107,13 +106,13 @@ You can filter deployments on the the Deployments page according to multiple cri
 
 Harness displays which Delegates performed each task in the Details of each step.
 
-![](../faqs/static/continuous-delivery-faqs-01.png)
+![](./static/continuous-delivery-faqs-01.png)
 
 #### Can I restrict deployments to specific User Groups?
 
 Yes, you can enable the Role permission Pipeline Execute and then apply that Role to specific User Groups.
 
-![](../faqs/static/continuous-delivery-faqs-02.png)
+![](./static/continuous-delivery-faqs-02.png)
 
 See [Manage roles](../platform/role-based-access-control/add-manage-roles).
 
@@ -127,7 +126,7 @@ See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/dep
 
 Yes, select **Re-run Pipeline**.
 
-![](../faqs/static/continuous-delivery-faqs-03.png)
+![](./static/continuous-delivery-faqs-03.png)
 
 
 #### How to handle the scenario where powershell scripts does not correctly return the status code on failure ?
@@ -574,7 +573,7 @@ Service instances represent the dynamic instantiation of a service you deploy wi
 
 For example, for a service representing a Docker image, service instances are the number of pods running the Docker image.
 
-![](../faqs/static/continuous-delivery-faqs-00.png)
+![](./static/continuous-delivery-faqs-00.png)
 
 Notes:
 
@@ -603,11 +602,11 @@ For example, a pipeline can use the CI module to build, test, and push code, and
 
 A stage is a subset of a pipeline that contains the logic to perform one major segment of the pipeline process. Stages are based on the different milestones of your pipeline, such as building, approving, and delivering.
 
-![](../faqs/static/continuous-delivery-faqs-07.png)
+![](./static/continuous-delivery-faqs-07.png)
 
 Some stages, like a deploy stage, use strategies that automatically add the necessary steps.
 
-![](../faqs/static/continuous-delivery-faqs-08.png)
+![](./static/continuous-delivery-faqs-08.png)
 
 #### What are services in Harness?
 
