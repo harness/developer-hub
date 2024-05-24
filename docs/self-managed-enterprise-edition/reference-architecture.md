@@ -11,7 +11,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with these and architectures, ensuring reliability, scalability, and consistent software deployments.
+Harness Self-Managed Enterprise Edition brings a robust and flexible software delivery platform to organizations seeking control over their deployment infrastructure. This topic describes user profiles and reference architectures, outlining the key components and best practices for implementing Harness Self-Managed Enterprise Edition. Organizations can optimize their software delivery platform with these architectures, ensuring reliability, scalability, and consistent software deployments.
 
 ## User profiles
 
@@ -33,7 +33,7 @@ There are four user profiles for Harness Self-Managed Enterprise Edition.
 
 ### Demo user requirements
 
-Core CPU and memory requirements depend on the modules you use for demo purposes. For CI and CD, a minimum 3 core CPU and 14 Gi memory are required.
+Core CPU and memory requirements depend on the modules you use for demo purposes. CI and CD require a minimum of 3 core CPUs and 14-Gi of memory.
 
 ### Override files
 
