@@ -52,7 +52,7 @@ The following steps describe the general workflow:
 
    - [Create a Jira ticket](/docs/security-testing-orchestration/notifications/jira-integrations) for the issue.
 
-   - Request an [exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
+   - Request an [exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
 
    - Fix the issue using [AI-enhanced remediation steps](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 

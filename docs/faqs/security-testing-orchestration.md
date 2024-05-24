@@ -151,7 +151,7 @@ Here's an example. See also the [Checkmarx scanner reference](/docs/security-tes
 
 ## What is the purpose of the **Exemptions** page in STO?
 
-The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions to override Fail on Severity thresholds for specific issues in STO](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows).
+The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions to override Fail on Severity thresholds for specific issues in STO](/docs/security-testing-orchestration/exemptions/exemption-workflows).
 
 ## What open-source scanner integrations does STO support?
 

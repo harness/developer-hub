@@ -937,7 +937,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 * STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for Security Tests stages. (STO-5726)
 
-* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
    ![](./static/sto-exemption-reason-pulldown.gif)
 

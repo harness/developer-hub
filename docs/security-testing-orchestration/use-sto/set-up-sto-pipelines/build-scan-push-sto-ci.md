@@ -144,7 +144,7 @@ import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-
 
 :::info
 
-In most cases, you want to set the [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can keep **Fail on Severity** set to **None** and set it after you finish setting up and testing your pipeline.
+In most cases, you want to set the [Fail on Severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can keep **Fail on Severity** set to **None** and set it after you finish setting up and testing your pipeline.
 
 :::
 
@@ -168,7 +168,7 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
 
 :::info
 
-In most cases, you want to set the [fail_on_severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can leave `fail_on_severity` at `none` and set it after your set up and test your pipeline.
+In most cases, you want to set the [fail_on_severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can leave `fail_on_severity` at `none` and set it after your set up and test your pipeline.
 
 :::
 

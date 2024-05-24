@@ -21,9 +21,9 @@ Here are some situations where you might want to request an exemption for a spec
 - There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/remediations/ai-based-remediations) to help you remediate your issues using AI.
 
 
-import request_exemption from '../static/request-exemption.png'
-import open_exemption_details from '../static/open-exemption-details.png'
-import baseline_not_defined from '../static/exemption-workflows-no-baseline-defined.png'
+import request_exemption from './static/request-exemption.png'
+import open_exemption_details from './static/open-exemption-details.png'
+import baseline_not_defined from './static/exemption-workflows-no-baseline-defined.png'
 
 
 ## What happens when an STO exemption gets approved
@@ -39,7 +39,7 @@ To see the list of pending exemptions, select **Exemptions** in the left menu. A
 
 This topic assumes that you have the following:
 
-* An STO pipeline as described in [Set up Harness for STO](../../get-started/onboarding-guide.md).
+* An STO pipeline as described in [Set up Harness for STO](../get-started/onboarding-guide.md).
 * The pipeline has a Security scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues. 
 * Developer or SecOps user permissions are required to [request exemptions](#request-an-sto-exemption).
@@ -103,7 +103,7 @@ This topic assumes that you have the following:
 
    5. Click **Create Request**. 
   
-      ![](../static/exemption-click-create-request.png)
+      ![](./static/exemption-click-create-request.png)
      
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
@@ -121,7 +121,7 @@ This workflow requires SecOps user permissions.
 
 2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details. 
 
-   ![](../static/approve-exemption-00.png)
+   ![](./static/approve-exemption-00.png)
 
 3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
 
@@ -143,7 +143,7 @@ This workflow requires SecOps user permissions.
     - **Reject** The request moves to the **Rejected** table, where a SecOps user can approve it later if appropriate. 
     - **Cancel** The request is cancelled and removed from the exemption list. If a user wants an exemption for the issue, they must file a new request. 
 
-     ![](../static/exemptions-approved.png)
+     ![](./static/exemptions-approved.png)
  
           
 ## Good practice: Review and update STO exemptions periodically
@@ -167,5 +167,4 @@ SecOps users can do the following in this page:
 * Re-open expired exemptions
 * Cancel (delete) pending, approved, rejected, or expired exemptions
 
-
-   ![](../static/exemption-security-review.png)
+   ![](./static/exemption-security-review.png)
