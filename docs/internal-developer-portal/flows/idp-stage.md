@@ -811,6 +811,12 @@ pipeline:
 
 You can use the Harness IDP `execution-config` API to specify or update the Harness IDP images used in your infrastructure by specifying image tags.
 
+:::info
+
+Certain steps are common across different stages in Harness Pipeline but the images used in each of them is specific to the stage they are part of, like `Run Step`.
+
+:::
+
 API key authentication is required. For more information about API keys, go to [Manage API keys](/docs/platform/automation/api/add-and-manage-api-keys). For more information about authentication, go to the [Harness API documentation](https://apidocs.harness.io/#section/Introduction/Authentication).
 
 1. Send a `get-default-config` request to get a list of the latest Harness IDP worklfows excuted. You can use the `infra` parameter to get `k8` images or `VM` images.
@@ -826,18 +832,14 @@ API key authentication is required. For more information about API keys, go to [
    {
     "status": "SUCCESS",
      "data": {
-       "addonTag": "harness/ci-addon:1.14.4",
-       "liteEngineTag": "harness/ci-lite-engine:1.14.4",
-       "gitCloneTag": "harness/drone-git:1.1.0-rootless",
-       "buildAndPushDockerRegistryTag": "plugins/kaniko:1.3.1",
-       "buildAndPushECRTag": "plugins/kaniko-ecr:1.3.1",
-       "buildAndPushGCRTag": "plugins/kaniko-gcr:1.3.1",
-       "gcsUploadTag": "plugins/gcs:1.2.6",
-       "s3UploadTag": "plugins/s3:1.0.5",
-       "artifactoryUploadTag": "plugins/artifactory:1.0.6",
-       "cacheGCSTag": "plugins/cache:1.3.8",
-       "cacheS3Tag": "plugins/cache:1.3.8",
-       "securityTag": "harness/sto-plugin:latest"
+        "cookieCutter": "harness/cookiecutter:1.9.1",
+        "createRepo": "harness/createrepo:1.9.0",
+        "directPush": "harness/directpush:1.9.0",
+        "registerCatalog": "harness/registercatalog:1.9.0",
+        "createCatalog": "harness/createcatalog:1.9.0",
+        "slackNotify": "harness/slacknotify:1.9.0",
+        "createOrganisation": "harness/createorganisation:1.9.0",
+        "createProject": "harness/createproject:1.9.0"
      },
      "metaData": null,
      "correlationId": "08919155-a6d6-4bd3-8401-6b86318c85ca"
@@ -870,12 +872,12 @@ API key authentication is required. For more information about API keys, go to [
    --header 'Content-Type: application/json' \
    --data-raw '[
        {
-           "field": "gitCloneTag",
-           "value": "harness/drone-git:1.0.9-rootless
+           "field": "registerCatalog",
+           "value": "harness/registercatalog:1.9.0"
        },
        {
-           "field": "gcsUploadTag",
-           "value": "plugins/gcs:1.3.0"
+           "field": "slackNotify",
+           "value": "harness/slacknotify:1.9.0"
        }
    ]'
    ```
@@ -888,10 +890,10 @@ API key authentication is required. For more information about API keys, go to [
    --header 'Content-Type: application/json' \
    --data-raw '[
        {
-           "field": "gitCloneTag"
+           "field": "registerCatalog"
        },
        {
-           "field": "gcsUploadTag"
+           "field": "createRepo"
        }
    ]'
    ```
