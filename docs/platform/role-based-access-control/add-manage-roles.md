@@ -151,29 +151,28 @@ You can do role bindings to a user and attach the user to a specific resource gr
 
 To add new users to a custom Resource Group with role bindings, do the following:
 
-1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add new users to a custom Resource Group and do Role bindings.
-2. Select **Access Control**, and then choose **Resource Group**.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add new users to a custom Resource Group and do role bindings.
+2. Under **Access Control**, select **Resource Groups**.
 3. Create a new **Resource Group**, select the desired resource types, and click **Save**.
-4. Return to **Account Settings**, select **Access Control**, then choose **Users**.
+4. Return to **Account Settings**. Under **Access Control**, select **Users**.
 5. Click **New User**, enter the user's email, then, under **Role Bindings**, select **Add**.
 6. Under **Roles**, click **Select a role**, then choose **Account Admin** from the dropdown.
 7.  Under **Resource Groups**, click **All Resources Including** and select your **Resource Group**.
-8. Click **Apply** to send an invitation to the user's email. After the user accepts the invite, the role binding process is complete.
-9. After you select **Apply**, an invitation to the specified user email will be sent. After the user accepts the invite, the role-binding process is complete.
+8. Click **Apply** to send an invitation to the user's email. After the user accepts the invite, the role-binding process is complete.
 
 The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
 
 To add role bindings to an existing user:
 
-1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add new users to a custom Resource Group and do Role bindings.
-2. Select **Access Control**, and then select **Resource Group**.
+1. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add new users to a custom Resource Group and do role bindings.
+2. Under **Access Control**, select **Resource Groups**.
 3. Create a new **Resource Group**, select the desired resource types, and then select **Save**.
-4. Return to **Account Settings**, select **Access Control**, then select **Users**.
+4. Return to **Account Settings**. Under **Access Control**, select **Users**.
 5. Search for the user to whom you want to assign the **Account Admin** role, and then select the user.
 6. Go to the **Role Bindings** tab, then select **Manage Role Bindings**.
-7. Under **Role Bindings**, select **Add** . 
+7. Under **Role Bindings**, select **Add**. 
 8. Under **Roles**, click **Select a role**, and then select **Account Admin**.
-9. Under **Resource Groups**, select **All Resources Including**,  and then select your **Resource Group**.
+9. Under **Resource Groups**, select **All Resources Including**, and then select your **Resource Group**.
 10. Select **Apply**. You will receive a notification stating **Role Assignments updated successfully**, and the role binding process is complete.
   
 The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
