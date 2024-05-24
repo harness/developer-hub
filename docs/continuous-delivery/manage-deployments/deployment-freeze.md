@@ -100,11 +100,8 @@ Deployment freeze access control is configured using the **Deployment Freeze** r
    
    Freeze windows can be set at the Harness account, org, or project levels.
 
-2. Select the [scope](/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) for the freeze window:
-   1. Account: go to **Account Settings** > **Security and Governance** > **Freeze Windows**.
-   2. Organization: go to **Organization Settings** > **Security and Governance** > **Freeze Windows**.
-   3. Project: go to **Project Settings** > **Security and Governance** > **Freeze Windows**.
-3. **Click New Freeze Window**.
+2. In Harness, go to **Account Settings**, **Organization Settings**, or **Project Settings**, depending on the [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#permissions-hierarchy-scopes) at which you want to add a freeze window.
+3. In the legacy nav, select **Freeze Windows**, then select **New Freeze Window**. In nav 2.0, under **Security and Governance**, select **Freeze Windows**, then select **New Freeze Window**.
 4. In **New Freeze Window**, enter a name for the freeze window and click **Start**.
 
 Now you can define the rules for the freeze window.
