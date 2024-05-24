@@ -42,7 +42,7 @@ To add a Jira Create step, do the following:
 In Jira fields, you can select specific fields within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
 Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, `User`, and `String`. 
-For example, Harness supports [multi-select](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/#:~:text=Select%20[…]ultiple%20choices) fields to allow users to select multiple options from a drop-down list.
+For example, Harness supports [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
 
 Harness does not integrate with Jira fields that manage issue links or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 

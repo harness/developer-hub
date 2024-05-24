@@ -4,7 +4,7 @@ description: Instructions on setting cascading fields when creating a JIRA issue
 ---
 
 
-This article talks about setting a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) when creating a JIRA issue. By default, Harness doesn't support cascading lists. You can configure the cascading list for your Jira issues using an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
+This article talks about setting a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) when creating a JIRA issue. By default, Jira plugins don't support cascading lists. You can configure cascading lists for your Jira issues using an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
 
 Create a pipeline with a [Custom stage](/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and configure the following steps under the Execution tab of the pipeline. 
 
@@ -37,10 +37,10 @@ In the HTTP step's **Step Parameters**, configure the following fields.
   ```
 - Optional Configuration: Enter the following optional configurations.
   - Headers: Enter the following Key:Value information:
-    - Content-Type: application/json
-    - Authorization: Basic `<authorization_key_to_your_Jira_server>`
+    - Content-Type: `application/json`
+    - Authorization: "Basic `<authorization_key_to_your_Jira_server>`"
   - Output: Enter the variable name and value to get the Jira Issue Id from the pipeline output.  For example:
-    - Variable Name: issue_key
+    - Variable Name: `<issue_key>`
     - Value: Choose Expression input type and enter `<+json.select("key", httpResponseBody)>` 
 
 ## Configure the Jira Update step
