@@ -75,7 +75,7 @@ Check the access control for the network.  The request could be blocked on the n
 
 Yes, `<+account.name>` and `<+account.companyName>` respectively.
 
-#### How do I set up a cron expression so it tiggers on the first Wednesday of each month at 15:00 hrs?
+#### How do I set up a cron expression so it triggers on the first Wednesday of each month at 15:00 hrs?
 
 Set the cron trigger type to QUARTZ and set the expression to: `0 0 15 ? * 3#1 *`.
 
@@ -282,7 +282,7 @@ Yes, use Docker Connector with your registry URL and anonymous access would help
 
 You can create a user group of specific users and specify the same user group in the Approval stage so only those users can able to approve the execution.
 
-For reference: [Select Approvers](https://developer.harness.io/docs/platform/approvals/adding-harness-approval-stages/#select-approvers)
+For reference: [Select Approvers](https://developer.harness.io/docs/platform/approvals/adding-harness-approval-stages/#select-approvers).
 
 #### How Kubernetes pruning option work during the deployment?
 
@@ -674,7 +674,7 @@ You can take a specific file from the manifest and execute it separately (before
 
 #### What kind of payload type is supported for policy step?
 
-Policy step is onl ysupported against a JSON payload.
+Policy step is only supported against a JSON payload.
 
 #### How to achieve Parallel Execution of Deploy one service to multiple Infrastructures?
 
@@ -687,7 +687,7 @@ We do not support expression for Harness variables currently created at project 
 
 #### Can terraform vars in terraform step contain hyphen ?
 
-Terraform vars are exported as shell environment variables. The shell variables itself has a restriction in their naming coonvention that it should not contain hyphen and hence this is not supported.
+Terraform vars are exported as shell environment variables. The shell variables itself has a restriction in their naming convention that it should not contain hyphen and hence this is not supported.
 
 #### How to properly pass tag inputs in api call for harness file store ?
 
@@ -828,13 +828,13 @@ You cannot edit enabled deployment freeze windows. If the deployment freeze wind
 
 #### What Roles are required to edit Pipeline Triggers and Input Sets
 
-The roles required to edit Pipeline Triggers and Inpout sets are ```View and Create / Edit```
+The roles required to edit Pipeline Triggers and Input sets are ```View and Create / Edit```.
 
 #### If we have multiple services using this same pipeline template, both within and outside the same project, does Harness differentiate each pipeline execution by service? If both service1 and service2 in the same project are using this same pipeline and are sitting at the approval step, would approving the service1 pipeline cause the service2 pipeline to be rejected?
 
 The pipelines will run just fine, as you used the template and specified different services at the runtime , so it will run independently. 
 
-#### Service showing as active but hasn't been part of a deployment in over 30 days
+#### Service showing as active but hasn't been part of a deployment in over 30 days.
 
 Harness shows the Active instances is say you had a deployment and the VM got deployed from a Harness deployment. No matter if we deploy anything else on the VM , until the VM is up and running as it is linked with the service. It will show as active instance. The 30 days mentioned [here](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/#active-services) , is for service based licence calculation and usage for CD. 
 
@@ -1029,7 +1029,6 @@ The OPA engine is designed to enforce policies based on data and rules that are 
 
 Yes, you can. First we will need to enable this Feature Flag on your account ```SPG_LOG_SERVICE_ENABLE_DOWNLOAD_LOGS```. After this Feature Flag is enabled, a Downloads logs selector will be available in the edit pipeline (3 dots on top right panel of pipeline execution screen). 
 
-For more details please see: [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#service-hooks)
 
 #### Service hooks for Kubernetes and Helm deployments to fetch Helm Chart dependencies. 
 
@@ -1166,7 +1165,7 @@ Yes, one can set a cron rule that just happens once, it has repeat reschedule ic
 No, we are not bringing the 2 way git sync back in its first Gen form. Instead, we provide git experience support for pipelines, templates today.
 On our roadmap, we will provide git experience for service, environments and overrides.Please refer more on this in the following [Documentation](https://developer.harness.io/docs/faqs/git-exp-vs-config-as-code/).
 
-#### Do we support propogation of multiple service stage ?
+#### Do we support propagation of multiple service stage ?
 
 No, this feature is yet to be added, we will update about this very soon.
 
@@ -1357,11 +1356,11 @@ No. There is no particular way to enforce duration, Canary deployment lives unti
 
 #### Is it necessary for the infrastructure definition in a First Gen workflow to be mandatory ENTITY type for it to work correctly with allowed values?
 
-Yes, it is mandatory for the infrastructure definition in a First Gen workflow to be enitity type.
+Yes, it is mandatory for the infrastructure definition in a First Gen workflow to be entity type.
 
 #### Can Harness able to monitor for when a particular image tag changes on DockerHub in order to initiate a hands-free build and push to our repo?
 
-Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/)
+Yes, You can setup a trigger based on the image tag changes on DockerHub repo as suggested in this[ doc.](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/).
 
 #### How do I dynamically load values.yaml per environment?
 Many of Harness's fields allow you to switch from a static field to an expression field. In your Helm chart/kubernetes manifests declaration, you can switch the values field to an expression field and use an expression like `<+env.name>-values.yaml`. Then, in your repository, create a value per environment.
@@ -1373,7 +1372,6 @@ You're probably an administrator or you have the permission to [override freeze 
 
 This error typically indicates a permission issue related to the Git connector used in the pipeline. It often occurs when the credentials or tokens being used for Git access lack the necessary permissions to clone or access the specified repository. To resolve it, validate the authentication setup and ensure the provided credentials have the required permissions for the repository in question.
 
-#### Harness Annotations and Their Usage
 
 #### What annotations can be applied in Harness?
 
@@ -1418,8 +1416,8 @@ To use queue steps in your Harness pipeline:
 
 For detailed guidance on using queue steps to control resource usage in Harness pipelines, refer to the Harness documentation section titled [Control Resource Usage with Queue Steps](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps/)
 
-#### How to identify which stage executed again as part of re-run for failed pipeline
-Navigate to the stage and you will able to see message “This stage has been re-executed.”
+#### How to identify which stage executed again as part of re-run for failed pipeline?
+Navigate to the stage and you will able to see message “This stage has been re-executed.
 
 #### Logs timestamp and start/end time of pipeline is not matching.
 This usually happens if any failed pipeline was re-run and some of stage were not ran and we do show logs for older execution
@@ -1444,9 +1442,9 @@ A pipeline can be left running for `35 days` on enterprise account and 4 hours f
 #### Do we support the creation of PR  at the time of pipeline creation ?
 
 No, we support creating remote entities. We have not onboarded API to create PR  and it is as per product decision.
-We can look forward to add this in future. Please refer more on this in following [Documentation](https://apidocs.harness.io/tag/Pipelines/#operation/update-pipeline)
+We can look forward to add this in future. Please refer more on this in following [Documentation](https://apidocs.harness.io/tag/Pipelines/#operation/update-pipeline).
 
-#### How can customer execute a `helm dependency update` command with Helm Command Flags ?
+#### How can customer execute a `helm dependency update` command with Helm Command Flags?
 
 For this specific use case please refer to our documentation [here](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#use-case-add-private-repositories-as-a-helm-chart-dependency)
 
@@ -1952,7 +1950,7 @@ No, for now it not an optionable event. We may include a feature flag on this in
 
 Yes, one can add a file with same name in 2 different directories having in account both files have unique ids.
 
-#### What could be the possible issue for not able create a SNOW ticket from a template ?
+#### What could be the possible issue for not able create a ServiceNow ticket from a template ?
 
 One can check for below possibilities : 
 
@@ -2595,7 +2593,7 @@ The shell script provisioning step expects the output to be put to a json form i
 `<+pipeline.stages.shellscriptprovision.spec.execution.steps.shell1.output.Instances>`
 
 
-#### Is there a short notation for accessing step output variable within the same stepgroup ?
+#### Is there a short notation for accessing step output variable within the same step group ?
 
 Within the same step group we can shorten the expression for accessing step variable. A sample expression is below:
 
@@ -3035,7 +3033,7 @@ Unfortunately, Runtime input variables can not be evaluated just by OPA policy. 
 
 #### How do we resolve the issue when a pipeline is getting triggered twice though there is only one trigger?
 
-Check if you have 2 Harness webhooks pointing to this same account registered in your repo? If there are, please delete one of them, each repo is supposed to have only one Harness webhook registered in it. Also please check if there is a webhook configured at the organization level.
+Check if you have 2 Harness webhooks pointing to this same account registered in your repo. If there are, please delete one of them, each repo is supposed to have only one Harness webhook registered in it. Also please check if there is a webhook configured at the organization level.
 
 #### Is there a way to use Harness platform manager for terrafrom plan encrytpion/decryption?
 
@@ -3087,7 +3085,7 @@ These limits are applied because:
 
 For more information, go to [Deloyment logs and limitations](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations) and [Pipeline settings](https://developer.harness.io/docs/platform/pipelines/pipeline-settings).
 
-#### Why can one not set Enironment Groups in Chained pipeline expression as expression ?
+#### Why can one not set Environment Groups in Chained pipeline expression as expression ?
 
 This functionality is not yet supported. We expect this to be available very soon.
 

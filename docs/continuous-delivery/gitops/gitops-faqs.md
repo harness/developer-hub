@@ -149,3 +149,7 @@ Yes. Pulling images from your private registry is possible and can be done by pu
 
 Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
 
+### Does Microsoft Teams support full GitOps ?
+
+No, Microsoft Teams does not support GitOps.
+
