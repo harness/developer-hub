@@ -3,17 +3,14 @@ title: Create Jira tickets in STO
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
 sidebar_label: Jira tickets for detected vulnerabilities
 sidebar_position: 50
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations
 ---
-
-
 
 import create_ticket from './static/jira-integration-02-create-ticket.png'
 import ticket_num from './static/jira-integration-03-ticket-num-in-issue-details.png'
 import issue_link from './static/jira-integration-04-link-in-jira-ticket.png'
 import ticket_summary from './static/jira-integration-05-ticket-summary.png'
-
-
-
 
 You can set up STO to create Jira tickets for issues detected by STO scans. This topic describes how to set up this integration.
 

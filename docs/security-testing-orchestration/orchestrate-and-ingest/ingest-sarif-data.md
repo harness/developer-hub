@@ -3,6 +3,8 @@ title: Ingest SARIF scan results into STO
 description: Ingest results from any scanner that supports SARIF.
 sidebar_label: Ingest SARIF scan results
 sidebar_position: 45
+redirect_from: 
+  - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
 ---
 
 [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning) is an open data format supported by many scan tools, especially tools available as GitHub Actions. You can easily ingest SARIF 2.1.0 data from any tool that supports this format. 

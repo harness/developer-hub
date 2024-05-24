@@ -2,6 +2,8 @@
 title: STO scan modes
 description: Ingest results using orchestration, ingestion, and extraction.
 sidebar_position: 10
+redirect_from: 
+  - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview
 helpdocs_topic_id: cjqnd71y07
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

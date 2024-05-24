@@ -3,6 +3,8 @@ title: Run an ingestion scan in an STO Pipeline
 description: Configure a step to ingest scan results from a data file.
 sidebar_label: Ingestion scans
 sidebar_position: 30
+redirect_from: 
+  - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
 helpdocs_topic_id: d24n34qdbk
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

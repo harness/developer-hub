@@ -3,7 +3,8 @@ title: "Security Tests tab: discover and remediate issues"
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
 sidebar_label: Security Tests tab
-redirect_from: /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
 ---
 
 Every STO pipeline execution includes a **Security Tests** tab that shows the detected issues for that execution. This is the primary interface for navigating, analyzing, and remediating detected issues.

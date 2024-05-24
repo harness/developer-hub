@@ -3,7 +3,8 @@ title: Create OPA policies stop STO pipelines automatically
 description: Create OPA policies to stop pipelines automatically.
 sidebar_label: Create OPA policies
 sidebar_position: 10
-redirect_from: /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa
 ---
 
 You can use [Harness Policy as Code](/docs/platform/governance/policy-as-code/harness-governance-overview) to write and enforce policies against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and to stop your pipelines if a security test has any issues that violate those policies. 

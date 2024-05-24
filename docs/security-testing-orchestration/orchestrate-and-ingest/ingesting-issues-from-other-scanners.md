@@ -3,6 +3,8 @@ title: Ingest scan results from unsupported scanners into Harness STO
 description: Ingest results from scanners that don't support SARIF.
 sidebar_label: Ingest from unsupported scanners
 sidebar_position: 100
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

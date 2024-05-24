@@ -3,6 +3,8 @@ title: Scanning Java Binaries in STO
 description: How to scan Java binary (.jar, .class) files. 
 sidebar_position: 90
 sidebar_label: Scan Java binaries
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/java-scans
 ---
 
 This topic describes the recommended workflow for scanning Java binary (.jar, .class) files. For some scanners, such as SonarQube and Checkmarx, you need to add one or more Run steps to build your Java binaries before you run the scanner. You also need to set up the security step to specify the Java binaries you want to scan. 

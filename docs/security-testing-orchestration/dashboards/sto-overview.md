@@ -3,6 +3,8 @@ title: "Security Testing Overview: view issues in target baselines over time"
 description: The STO Overview page enables you to see all detected issues in your target baselines.
 sidebar_position: 20
 sidebar_label: Security Testing Overview
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview
 helpdocs_topic_id: 2ap1uol6ti
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

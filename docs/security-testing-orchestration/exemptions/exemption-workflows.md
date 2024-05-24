@@ -3,6 +3,8 @@ title: Exemptions to override Fail on Severity thresholds for specific issues in
 description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Override the Fail on Severity threshold for specific issues
 sidebar_position: 60
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows
 ---
 
 The `fail_on_severity` setting causes a pipeline build to fail if a scanner detects one or more issues with the specified severity (Critical, High, Medium, etc.) or higher. Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  

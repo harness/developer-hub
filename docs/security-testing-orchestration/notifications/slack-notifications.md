@@ -3,6 +3,8 @@ title: Set up Slack notifications for detected issues in STO
 description: Set up Slack notifications based on severity levels
 sidebar_label: Slack notifications for detected vulnerabilities
 sidebar_position: 45
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/slack-notifications
 ---
 
 This topic describes how to generate Slack notifications for STO-related events such as:

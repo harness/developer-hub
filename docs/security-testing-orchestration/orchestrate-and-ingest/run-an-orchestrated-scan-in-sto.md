@@ -3,6 +3,8 @@ title: Run an Orchestration scan in an STO Pipeline
 description: Scan a target and ingest the results in one step.
 sidebar_label: Orchestration scans
 sidebar_position: 20
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto
 helpdocs_topic_id: wk018r6x3g
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

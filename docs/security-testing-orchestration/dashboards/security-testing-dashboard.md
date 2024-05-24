@@ -3,6 +3,8 @@ title: "Security Testing Dashboard: navigate all detected vulnerabilities in you
 description: View, navigate, discover, and investigate detected issues in the Security Testing Dashboard. 
 sidebar_label: Security Testing Dashboard
 sidebar_position: 40
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard
 ---
 
 The Security Testing Dashboard enables you to view, navigate, discover, and investigate detected vulnerabilities in your organization. This dashboard includes a set of filters for drilling down into specific issues by project, creation date, scanner, target, pipeline, severity, and so on. You can drill down to a set of relevant issues and then click on a pie slice, chart element, or other UI element to view details on the relevant issues.

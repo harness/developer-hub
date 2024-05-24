@@ -3,6 +3,8 @@ title: Generate automated emails for detected issues in STO
 description: Send emails automatically based on severity levels.
 sidebar_label: Email notifications for detected vulnerabilities
 sidebar_position: 40
+redirect_from: 
+  - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications
 ---
 
 When you run a scan, the security step generates a set of [output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables) that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. This topic describes how to set up automatic notifications based on these variables.

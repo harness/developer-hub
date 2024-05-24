@@ -3,6 +3,8 @@ title: Run STO scans using GitHub Action and Drone Plugin steps
 description: Pipeline examples that use GitHub Actions and Drone plugins.  
 sidebar_label: Scan and ingest from GitHub Actions and Drone Plugins
 sidebar_position: 70
+redirect_from: 
+  - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions
 ---
 
 

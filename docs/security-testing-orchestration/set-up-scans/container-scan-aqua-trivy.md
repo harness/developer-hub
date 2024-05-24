@@ -5,6 +5,7 @@ sidebar_position: 20
 redirect_from:
   - /tutorials/security-tests/container-scan-aqua-trivy
   - /docs/security-testing-orchestration/get-started/sto-tutorials/container-scan-aqua-trivy
+  - /docs/security-testing-orchestration/sto-techref-category/trivy/container-scan-aqua-trivy
 ---
 
 This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.

@@ -5,6 +5,7 @@ sidebar_position: 30
 redirect_from:
   - /tutorials/security-tests/dast-scan-zap
   - /docs/security-testing-orchestration/get-started/sto-tutorials/dast-scan-zap
+  - /docs/security-testing-orchestration/sto-techref-category/zap/dast-scan-zap
 ---
 
 <CTABanner

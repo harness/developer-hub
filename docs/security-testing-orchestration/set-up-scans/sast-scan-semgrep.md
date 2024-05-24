@@ -1,10 +1,11 @@
 ---
-title: "Scan a codebase using Semgrep"
+title: "Scan a codebase with Semgrep"
 description: Scan a codebase with Semgrep
 sidebar_position: 10
 redirect_from:
   - /tutorials/security-tests/sast-scan-semgrep
   - /docs/security-testing-orchestration/get-started/sto-tutorials/sast-scan-semgrep
+  - /docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep
 ---
 
 <CTABanner
