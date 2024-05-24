@@ -219,14 +219,6 @@ Nexus is supported for NG but not in CG, so you can use custom powershell script
 Invoke-WebRequest -Uri "$\{URI}" -Headers $Headers -OutFile "$\{OUT_FILE}" -Proxy "$env:HTTP_PROXY"
 
 
-
-
-
-
-
-
-
-
 #### How can we automatically create a new service whenever a new service yaml is uploaded to my source repo?
 We can create a pipeline with api call for service creation and in that pipeline we can add a trigger to our source repo where service yaml is uploaded. Now whenever there will be a new service yaml the pipeline will get triggered and we can fetch this new service yaml using git cli in the shell step and use the yaml to make the api call for service creation.
 
@@ -1993,7 +1985,7 @@ Yes, the regex can be used in search bar for searching pipelines. For now, searc
 
 No. For now, search bar only check for name, identifier, tag key, tag value and label.
 
-## How can we mimic the functionality of assigning Usage Scopes in FirstGen connectors to specify allowed usage for environment types within NextGen ?
+#### How can we mimic the functionality of assigning Usage Scopes in FirstGen connectors to specify allowed usage for environment types within NextGen?
 
 Functionality for assigning scopes are not yet possible to create. One can try using policies to enforce restriction.
 Please read more on OPA Policies the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview/)
@@ -3125,7 +3117,7 @@ Harness keeps data retention for CD NG - 6 months (execution data) and audit tra
 Please read more on this on our Pricing webpage - [here](https://www.harness.io/pricing?module=cd#).
 Also follow more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/data-retention/).
 
-## Infrastructure provisioning FAQs
+### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
 
