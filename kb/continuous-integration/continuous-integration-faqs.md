@@ -2227,3 +2227,17 @@ eg : build_command_options: "--no-cached --debug --parameter-overrides 'Paramete
 Harness runs the service defined in the background step in a separate go-routine, which will be available until the lifetime of the stage. The service gets automatically killed during cleanup after the execution of the stage.
 
 The container logs you're seeing basically mean that the go-routine has received the termination signal, most likely during pod clean-up. It does look like the logs are quite verbose, which could indicate that debug mode is enabled for this particular step.
+
+### Is there a Public API in CI to obtain the day-by-day usage breakdown of Mac VMs for the account?
+As of now, there is no public API available to retrieve such information.
+
+###  Is there a known issue or limitation with Kaniko that prevents the chmod command within ADD in a Dockerfile from working properly when building with native build and push steps?
+This seems like a known issue with Kaniko. https://github.com/GoogleContainerTools/kaniko/issues/2850
+
+### How can a user rotate their Drone user token ?
+To rotate a user token, you can use the following curl command:
+
+'curl -X POST -i -H "Authorization: Bearer zImVMB4RDIKs82LIRFAD1auecx7kaujf" https://<drone-server-fqdn>/api/user/token\?rotate\=true'
+
+### What actions can be taken to address the extended runtime of a Docker command, particularly when encountering timeouts during microdnf updates ?
+The prolonged runtime of Docker commands, often exacerbated by timeouts during microdnf updates, can be primarily attributed to network issues. To address this, you should verify the connectivity of the repomirror being utilized. Additionally, you could examine and potentially adjust the timeouts configured on the repomirror to enhance performance. These steps can help mitigate the impact of network-related delays and improve the efficiency of Docker operations.
