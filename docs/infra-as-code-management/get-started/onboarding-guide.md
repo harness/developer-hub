@@ -32,7 +32,7 @@ The following example Terraform (.tf) file declares:
 
 - Provider Configuration: Specifies the AWS provider and sets the region to "us-east-1". Go to [AWS Regions & Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for a complete region list.
 - Resource Definition: Creates an EC2 instance with the identifier `my_first_ec2_instance`.
-- AMI: Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
+- AMI: Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
 - Instance Type: Configures the instance to use a t2.micro. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).  
 Tags: To facilitate easy identification and management within AWS resources, a tag name with the value `my_first_ec2_instance` is applied.
 
@@ -53,13 +53,19 @@ resource "aws_instance" "my_first_ec2_instance" {
 
 Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) or [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported Workspace types. 
 
-## Add connectors
+## Create a Workspace
 
-Add Cloud Provider and Git Connectors to select when Creating a workspace. Doing so allows your Cloud Provider and Git repository to read and write changes applied via your Harness IaCM pipelines.
+A workspace is essentially a named environment or container that stores your Terraform configurations, variables, states, and other resources necessary to manage infrastructure. 
+
+One of the fundamental pieces of the Workspace creation step is to configure a connection to your Cloud Provider and Code Repository through **Connectors** so it can compare the current and expected state of your infrastructure, and apply infrastructure updates when required via your Harness IaCM pipelines.
 
 :::info
 Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
 :::
+
+## Add connectors
+
+To configure your connectors before you proceed in creating a Workspace see the following interactive guides:
 
 <Tabs>
 <TabItem value="Cloud Provider connector">
@@ -138,23 +144,29 @@ Using GitHub as an example, after following the initial five steps to reach the 
 
 Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-code-repo) for more information regarding connecting your Code Repository.
 </TabItem>
+<TabItem value="Complete Workspace & Connector flow">
+  <iframe 
+    src="https://app.tango.us/app/embed/d267f7c8-767f-4f14-b382-7b20c96a8e08" 
+    title="Set up a Git Repository Connector for Harness IaCM" 
+    style={{minHeight:'640px'}}
+    width="100%" 
+    height="100%" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    frameborder="0" 
+    webkitallowfullscreen="webkitallowfullscreen" 
+    mozallowfullscreen="mozallowfullscreen" 
+    allowfullscreen="allowfullscreen"></iframe>
+</TabItem>
 </Tabs>
 
-## Create a Workspace
+---
 
-A workspace is a named environment that stores Terraform configurations, variables, states, and other resources necessary to manage infrastructure.
+Once you have configured your connectors you can create a Workspace a select them in the New Workspace panel:
 
-You can define a Terraform configuration with multiple workspaces to enforce the same desired configuration. Each Workspace creates a different state with an independent lifecycle.  
-
-For example, you can have a single configuration of a Kubernetes cluster and create multiple workspaces out of it, each leading to different clusters. The configuration is unique to each Workspace and can be managed through environment or Terraform variables.
-
-To create a new workspace, follow these steps:
-
-1. Sign in to [app.harness.io](https://app.harness.io/).
-2. In the module pane, select **Infrastructure**.
-3. Select an existing project or create a new project.
-4. Select **Workspaces**, and then select **New Workspace**.
-5. Select **Create new Workspace**.
+1. In the module pane, select **Infrastructure**.
+2. Select an existing project or create a new project.
+3. Select **Workspaces**, and then select **New Workspace**.
+4. Select **Create new Workspace**.
 
 Complete the fields as follows:
 
@@ -168,6 +180,8 @@ Complete the fields as follows:
 6. Select **Save**.  
 
 Now that you have set up your Workspace, you can proceed to add a new pipeline.
+
+### 
 
 ## Add a Pipeline
 
