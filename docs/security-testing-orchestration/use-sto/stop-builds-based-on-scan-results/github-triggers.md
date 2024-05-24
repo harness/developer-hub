@@ -70,7 +70,7 @@ This type of trigger supports uses cases such as:
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [Connector](/docs/category/code-repo-connectors/) to your GitHub account
+1. [Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to your GitHub account
 
 2. **Repository name**
 
@@ -178,7 +178,7 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [Connector](/docs/category/code-repo-connectors/) to your Git service.
+1. [Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to your GitHub account
 
 2. **Repository name**
 
@@ -271,7 +271,7 @@ You can configure your Harness pipeline to fail if the scan finds vulnerabilitie
 
 - [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 
-   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference Id, CVE age, title, and number of occurrences.
+   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference ID, CVE age, title, and number of occurrences.
 
 ## Test the outbound webhook and trigger
 

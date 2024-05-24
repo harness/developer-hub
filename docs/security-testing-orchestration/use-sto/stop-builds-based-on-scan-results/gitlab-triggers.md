@@ -48,7 +48,7 @@ The following sections describe two triggers that can be very useful in the cont
 
 You can specify a trigger that says: If a merge request updates any of these files, run the pipeline and scan the repo.
 
-This type of trigger supports uses cases such as:
+This type of trigger supports use cases such as:
 
 - If the merge request updates any file that matches the trigger filter, run a SAST scan and block the PR if the scan results meet the [failure criteria](#set-up-the-failure-criteria).
 
@@ -174,7 +174,7 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### [Configuration](/docs/platform/triggers/triggering-pipelines#configure-the-trigger)
 
-1. [Harness Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference) to your Gitlab account
+1. [Harness Connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference) to your GitLab account
 
 2. **Repository name**
 
@@ -269,7 +269,7 @@ You can configure your Harness pipeline to fail if the scan finds vulnerabilitie
 
 - [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
 
-   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference Id, CVE age, title, and number of occurrences.
+   You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference ID, CVE age, title, and number of occurrences.
 
 ## Test the outbound webhook and trigger
 
