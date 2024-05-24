@@ -56,11 +56,9 @@ response=$(curl --silent --request POST \
         "project": {
             "key": "'"$PROJECT_KEY"'"
         },
-        "components": [
-        {
+        "components": {
             "name": "'"$COMPONENT_NAME"'"
-        }
-        ],
+        },
         "issuetype": {
             "name": "'"$ISSUE_TYPE"'"
         },
@@ -157,7 +155,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
 
 ![](static/secret-id.png)
 
-In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the component link could be found using inspect entity for the component in Catalog. 
+In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the unique entity reference could be found using inspect entity for the component in Catalog. 
 
 ![](static/inspect-entity-cm.png)
 
@@ -426,7 +424,7 @@ Also for **Jira token** input the input should be the [personal access token](ht
 ![](static/input-jira-ticket.png)
 
 
-## Create Additional Infocard
+## Create Additional Info Card
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below. 
 
@@ -644,7 +642,7 @@ In the above YAML just replace the `url` with the pipeline URL we created above,
 <Tabs queryString="Create Additional Info Card">
 <TabItem value="create-additional-info-card" label="Create Additional Info Card">
 
-## Create Additional Infocard
+## Create Additional Info Card
 
 In case you want to display the same information you have ingested on your Overview page as an additional card, follow the steps below. 
 
