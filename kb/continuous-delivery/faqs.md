@@ -8,11 +8,11 @@ redirect_from:
 
 This article addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 
-For a list of CD supported platforms and tools, go to [CD integrations](/docs/continuous-delivery/cd-integrations.md).
+For a list of CD supported platforms and tools, go to [CD integrations](/docs/continuous-delivery/cd-integrations).
 
-For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/platform/get-started/key-concepts.md).
+For an overview of Harness concepts, see [Learn Harness' key concepts](/docs/platform/get-started/key-concepts).
 
 ### General FAQs
 
@@ -96,7 +96,7 @@ Harness does not count an instance/pod if it no longer exists. For example, if t
 
 Harness supports all deployment strategies, such as blue/green, rolling, and canary.
 
-See [Deployment concepts and strategies](docs/continuous-delivery/manage-deployments/deployment-concepts)
+See [Deployment concepts and strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts)
 
 #### How do I filter deployments on the Deployments page?
 
@@ -114,13 +114,13 @@ Yes, you can enable the Role permission Pipeline Execute and then apply that Rol
 
 ![](./static/continuous-delivery-faqs-02.png)
 
-See [Manage roles](../platform/role-based-access-control/add-manage-roles).
+See [Manage roles](/docs/platform/role-based-access-control/add-manage-roles).
 
 #### Can I deploy a service to multiple infrastructures at the same time?
 
 Each stage has a service and target Infrastructure. If your Pipeline has multiple stages, you can deploy the same service to multiple infrastructures.
 
-See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
 #### Can I re-run a failed deployment?
 
@@ -654,7 +654,7 @@ See [Harness secrets management overview](/docs/platform/secrets/secrets-manage
 
 Yes. Everything in Harness can be referenced by a fully qualified name (FQN). The FQN is the path to a setting in the YAML definition of your pipeline.
 
-See [Built-in Harness variables reference](../platform/variables-and-expressions/harness-variables.md).
+See [Built-in Harness variables reference](/docs/platform/variables-and-expressions/harness-variables).
 
 #### Can I enter values at runtime?
 
