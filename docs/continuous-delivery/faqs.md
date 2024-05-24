@@ -1158,7 +1158,7 @@ Yes you can use this API [here](https://apidocs.harness.io/tag/Pipelines#operati
 
 We do not support referencing variables/values from the connector into the pipeline.
 
-### How do I resolve No eligible delegate(s) in account to execute task. Delegate(s) not supported for task type "{TERRAFORMTASKNGV6}" error?
+### How do I resolve No eligible delegate(s) in account to execute task. Delegate(s) not supported for task type `{TERRAFORMTASKNGV6}` error?
 
 Upgrading the delegate to latest version should resolve this issue.
 
