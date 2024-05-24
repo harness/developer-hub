@@ -52,7 +52,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   </tr>
   <tr>
     <td> redisPath </td>
-    <td>  </td>
+    <td> The file path of the Redis server. Not required until the binary is added to the path. </td>
     <td> </td>
   </tr>
   <tr>
