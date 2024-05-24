@@ -188,4 +188,4 @@ This difference is why you see **Deployments** and **GitOps** separated in the H
 
 ## FAQs
 
-- [CD and GitOps FAQs](/docs/continuous-delivery/faqs)
+- [CD and GitOps FAQs](/kb/continuous-delivery/faqs)
