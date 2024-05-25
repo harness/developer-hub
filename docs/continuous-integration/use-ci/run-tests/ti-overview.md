@@ -1,5 +1,5 @@
 ---
-title: Test Intelligence overview
+title: Test Intelligence (TI) overview
 description: Reduce unit test time by running only relevant unit tests.
 sidebar_position: 2
 helpdocs_topic_id: 428cs02e6u
@@ -20,6 +20,8 @@ import TabItem from '@theme/TabItem';
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build, and running all unit tests every time the code changes is expensive and time-consuming.
 
 Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use parallelism (test splitting) with TI to further optimize your test times.
+
+You can used Test Intelligence with  **Python**, **Java** , **Ruby**, **C#**, **Kotlin**, or **Scala** programming languages
 
 :::info
 
@@ -55,39 +57,23 @@ Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **T
 
 </details>
 
-## Enable Test Intelligence
+## Enable Test Intelligence (TI)
 
-Using TI doesn't require you to change your build and test processes.
+If you're using **Python**, **Ruby**, or **Java** programming languages we recommend using our new [ **Test**](./tests-v2.md) Step to run your tests. With this step, you do not need to change your test commands - Test Intelligence will be automatically configured, making it easy to use.
 
-<Tabs>
-<TabItem value="testv2" label="Test step" default>
-
-You can [use the **Test** step](./tests-v2.md) to run unit tests with or without TI on Python, Ruby, and Java codebases.
-
-To use TI on a C#, Kotlin, or Scala codebase, you must use the [deprecated Run Tests step](./tests-v1/ti-for-csharp.md) until the **Test** step supports this language.
-
-For unsupported code bases, you can use [Run steps](../run-step-settings.md) to run unit tests.
-
-</TabItem>
-<TabItem value="testv1" label="Run Tests step (deprecated)">
-
-:::warning
-
-Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step.
-
-While the **Run Tests** step remains backwards compatible until removal, Harness recommends using the new **Test** step as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
-
+:::note
+This is an early access feature and is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-For instructions on using the **Run Tests** step, go to:
+To benefit from TI with **C#**, **Kotlin**, or **Scala** , use the 'Run Tests' step (V1), while we work on supprting these programming languages with the new **Test**.
+
+For instructions on using Test Intelligence, go to:
 
 - [Enable TI with Run Tests step for C#](./tests-v1/ti-for-csharp.md)
 - [Enable TI with Run Tests step for Java, Kotlin, or Scala](./tests-v1/ti-for-java-kotlin-scala.md)
 - [Enable TI with Run Tests step for Python](./tests-v1/ti-for-python.md)
 - [Enable TI with Run Tests step for Ruby](./tests-v1/ti-for-ruby.md)
 
-</TabItem>
-</Tabs>
 
 ## Ignore tests or files
 

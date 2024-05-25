@@ -9,32 +9,25 @@ import TabItem from '@theme/TabItem';
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
-Cache Intelligence is a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, and it is one of several [caching options](./share-ci-data-across-steps-and-stages.md) offered by Harness CI.
 
-With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), Harness automatically caches and restores common dependencies. You can use it with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+With **Cache Intelligence**, a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, Harness automatically caches and restores software dependencies to speed up your builds - hassle free.
 
-```yaml
-- stage:
-    name: Build
-    identifier: Build
-    type: CI
-    spec:
-      caching: # Cache Intelligence configuration.
-        enabled: true # Enables Cache Intelligence for the current stage.
-        policy: pull-push # Optional. Define cache policy.
-        override: true # Optional. Define override settings.
-      cloneCodebase: true
-```
+You can use Cache Intelligence with any [build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+
+:::note
+Cache intelligence for self-managed build infrastructure is an early access feature and is behind the feature flag `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 
 ## Supported tools and paths
 
-Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, _if the dependencies are stored in the default location for that tool_.
+Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **Go**, and **Node** build tools, as long as default cache paths are used. 
 
 For other build tools or non-default cache locations, you use Cache Intelligence with [custom cache paths](#customize-cache-paths).
 
 ## Cache storage
 
-Your build infrastructure determines where Harness stores and retrieve Cache Intelligence caches.
+When you use Cache Intelligence with Harness CI Cloud, the cache is stored in the Harness-managed environment. When running builds on self-managed infrastructure, you will need to provide your own storage. 
 
 <Tabs>
 <TabItem value="cloud" label="Harness Cloud" default>
@@ -51,15 +44,18 @@ The cache storage limit depends on your subscription plan type:
 
 Harness doesn't limit the number of caches you can store, but, once you reach your storage limit, Harness continues to save new caches by automatically evicting old caches.
 
+The cache retention window is 15 days, which resets whenever a cache is updated.
+
 </TabItem>
 <TabItem value="sm" label="Self-managed build infrastructures">
 
-With build infrastructures other than Harness CI Cloud, you must [configure S3-compatible global object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage caches.
+When running builds in self-managed infrastructures, [configure S3-compatible  default object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to seamlessly store and manage the cache.
+
+We suggest that you consider setting bucket level retention policy for efficient cache management. 
 
 </TabItem>
 </Tabs>
 
-The cache retention window is 15 days, which resets whenever a cache is updated.
 
 ## Enable Cache Intelligence
 

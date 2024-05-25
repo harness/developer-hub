@@ -204,7 +204,7 @@ Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cac
 
 :::tip
 
-Cache Intelligence supports Gradle. If you're using Gradle and your dependencies are stored in the default location for Gradle, you don't need to include `paths` or `sharedPath`. For example:
+Cache Intelligence supports Gradle (as well as additional build tools). If you're using Gradle and your dependencies are stored in the default location for Gradle, you don't need to include `paths` or `sharedPath`. For example:
 
 ```yaml
 - stage:

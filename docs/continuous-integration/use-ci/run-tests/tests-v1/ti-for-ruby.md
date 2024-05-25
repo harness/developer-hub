@@ -1,6 +1,6 @@
 ---
 title: Use the Run Tests step for Ruby
-description: Set up TI for Ruby codebases.
+description: Set up TI for Ruby programming language.
 sidebar_position: 40
 redirect_from:
   - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby
@@ -9,22 +9,16 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::warning
-
-<!-- Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step. -->
-
-While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
-
+:::info
+While the **Run Tests** step remains backwards compatible, Harness recommends using the new [**Test** ](../tests-v2.md) step to take advanced of improved user experience.
 :::
 
-Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
 ## Enable TI for Ruby
 
 You can enable TI for Ruby in three steps:
 
-<!-- no toc -->
-1. [Add the Run Tests step.](#add-the-run-tests-step)
+1. [Add a **Run Tests** step.](#add-the-run-tests-step) or use our new [**Test**](../tests-v2.md)
 2. [Trigger test selection.](#trigger-test-selection)
 3. [(Optional) Add test splitting.](#add-test-splitting)
 

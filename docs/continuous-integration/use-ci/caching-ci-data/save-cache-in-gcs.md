@@ -12,9 +12,14 @@ Modern continuous integration systems execute pipelines inside ephemeral environ
 
 In addition to loading dependencies faster, you can also use caching to share data across stages in your Harness CI pipelines. You need to use caching to share data across stages because each stage in a Harness CI pipeline has its own build infrastructure.
 
+:::tip
+Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
+:::
+
 This topic explains how you can use the **Save Cache to GCS** and **Restore Cache from GCS** steps in your CI pipelines to save and retrieve cached data from Google Cloud Storage (GCS) buckets. For more information about caching in GCS, go to the Google Cloud documentation on [caching](https://cloud.google.com/storage/docs/caching). In your pipelines, you can also [save and restore cached data from S3](saving-cache.md) or use Harness [Cache Intelligence](./cache-intelligence.md).
 
-:::warning
+
+:::info
 
 You can't share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 

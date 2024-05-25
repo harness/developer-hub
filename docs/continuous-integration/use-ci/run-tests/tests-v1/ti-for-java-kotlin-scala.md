@@ -1,6 +1,6 @@
 ---
 title: Use Run Tests step for Java, Kotlin, or Scala
-description: Set up TI for Java, Kotlin, or Scala codebases.
+description: Set up TI for Java, Kotlin, or Scala programming languages.
 sidebar_position: 20
 redirect_from:
   - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala
@@ -9,13 +9,10 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::warning
+:::info
+Currently, the new **Test** step supports Java but it doesn't yet support Kotlin or Scala. Until support is added for these languages, continue to use the **Run Tests** step for TI with Kotlin or Scala.
 
-<!-- Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step. -->
-
-Currently, the **Test** step supports Java but it doesn't yet support Kotlin or Scala. Until support is added for these languages, you can continue to use the **Run Tests** step for TI with Kotlin or Scala.
-
-While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
+While the **Run Tests** step remains backwards compatible,We recommend using the new [**Test** ](../tests-v2.md) step with Java applications moving forward.  
 
 :::
 
@@ -26,7 +23,7 @@ Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines d
 You can enable TI for Java, Kotlin, or Scala in three steps:
 
 <!-- no toc -->
-1. [Add the Run Tests step.](#add-the-run-tests-step)
+1. [Add a **Run Tests** step](#add-the-run-tests-step). For Java consider using the new [**Test**](../tests-v2.md) step instead.
 2. [Trigger test selection.](#trigger-test-selection)
 3. [(Optional) Add test splitting.](#add-test-splitting)
 

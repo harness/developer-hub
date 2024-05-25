@@ -1,10 +1,14 @@
 ---
-title: Test step
-description: Use the Test step to run unit tests with or without Test Intelligence.
+title: Test Intelligence step
+description: Use the Test step to leverage Test Intelligence.
 sidebar_position: 3
 ---
 
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
+
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) accelerates your test cycles without compromising quality, by running only the unit tests that are relevant to the code changes that triggered the build. Rather than running all test, all the time Instead of always running all unit tests, Harness automatically skips unneeded tests, speeding up your builds. You can also configure Harness TI to automatically split tests and run them in parallel.
+
+You can use this  **Test Intelligence** step, also known as the **Test** step, to run unit tests with **Python**, **Ruby**, **and Java** programming languages.
 
 :::note
 
@@ -12,7 +16,7 @@ Currently, the Test step is behind the feature flag `CIE_ENABLE_RUNTEST_V2`. If 
 
 :::
 
-You can use the **Test Intelligence** step, also known as the **Test** step, to run unit tests with or without [Test Intelligence](./ti-overview.md) on Python, Ruby, and Java codebases.
+
 
 <!-- Doesn't include C#, Kotlin, or Scala yet. -->
 <!-- Will not include java error tracking (deprecated). -->

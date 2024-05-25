@@ -36,7 +36,7 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 In your pipeline's **Build** stage, add a **Build and Push to ACR** step and configure the [settings](#build-and-push-to-acr-step-settings) accordingly.
 
-Here is a YAML example of a minimum **Build and Push to ACR** step.
+Here is a YAML example of a **Build and Push to ACR** step.
 
 ```yaml
               - step:
@@ -46,6 +46,7 @@ Here is a YAML example of a minimum **Build and Push to ACR** step.
                   spec:
                     connectorRef: YOUR_AZURE_CONNECTOR_ID
                     repository: CONTAINER-REGISTRY-NAME.azurecr.io/IMAGE-NAME
+                    caching: true
                     tags:
                       - <+pipeline.sequenceId>
 ```
@@ -136,8 +137,8 @@ The [Docker build-time variables](https://docs.docker.com/engine/reference/comma
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#target), equivalent to the `--target` flag, such as `build-env`.
 
 ### Docker layer caching and Remote cache image
-
-Use **Enable Docker layer caching** or **Remote cache image** to [enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md).
+There are two ways in which you can leverage Docker Layer Caching: 
+ **Enable Docker layer caching** (_'caching'_ property) or **Remote cache image** (_'remoteCacheRepo'_ property). Refer to [Enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) to learn more.
 
 ### Environment Variables (plugin runtime flags)
 

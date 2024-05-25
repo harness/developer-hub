@@ -1,6 +1,6 @@
 ---
-title: Use Run Tests step for C# (pending deprecation)
-description: Set up TI for C# codebases with .NET Core or NUnit.
+title: Use Run Tests step for C# 
+description: Set up TI for C# applications with .NET Core or NUnit.
 sidebar_position: 50
 redirect_from:
   - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-csharp
@@ -9,14 +9,9 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::warning
+:::info
 
-<!-- Harness has begun deprecating the **Run Tests** step in favor of the new **Test** step. -->
-
-Currently, the **Test** step doesn't yet support TI for C#. Until support is added for this language, you can continue to use the **Run Tests** step for TI with C#.
-
-While the **Run Tests** step remains backwards compatible until removal, Harness recommends [using the new **Test** step](../tests-v2.md) as soon as possible to take advanced of improved functionality and avoid service interruptions upon removal of the deprecated step.
-
+Currently, the new **Test** step doesn't yet support TI for C#. Until support is added for this language, you can continue to use the **Run Tests** step for TI with C#.
 :::
 
 :::note
@@ -24,8 +19,6 @@ While the **Run Tests** step remains backwards compatible until removal, Harness
 Currently, TI for C# is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
-
-Using [Test Intelligence (TI) ](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
 ## Enable TI for C#
 

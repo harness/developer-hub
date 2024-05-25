@@ -1480,21 +1480,9 @@ For information about how Test Selection selects tests, go to [Test Intelligence
 
 ### If the Run Tests step fails, does the Post-Command script run?
 
-:::warning
-
-The **Run Tests** step is deprecated in favor of the new **Test** step.
-
-:::
-
 No. The Post-Command script runs only if the Run Tests step succeeds.
 
 ### Can I limit memory and CPU for Run Tests steps running on Harness Cloud?
-
-:::warning
-
-The **Run Tests** step is deprecated in favor of the new **Test** step.
-
-:::
 
 No. Resource limits are not customizable when using Harness Cloud or self-managed VM build infrastructures. In these cases, the step can consume the entire memory allocation of the VM.
 
@@ -1537,12 +1525,6 @@ set -e; echo "require_relative '/tmp/engine/ruby/harness/ruby-agent/test_intelli
 You can. However, Harness doesn't recommend using Test Intelligence with Rails apps using [Spring](https://github.com/rails/spring).
 
 ### Test Intelligence fails due to Bazel not installed, but the container image has Bazel
-
-:::warning
-
-The **Run Tests** step is deprecated in favor of the new **Test** step.
-
-:::
 
 If your [build tool](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#build-tool) is Bazel, and you use a [container image](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-java-kotlin-scala/#container-registry-and-image) to provide the Bazel binary to the **Run Tests** step, your build will fail if Bazel isn't already installed in your build infrastructure. This is because the **Run Tests** step calls `bazel query` before pulling the container image.
 
