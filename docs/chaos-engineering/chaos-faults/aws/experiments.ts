@@ -367,6 +367,13 @@ export const experiments: ExperimentDetails[] = [
     category: "aws",
   },
   {
+    name: "SSM chaos by ID",
+    description:
+      "AWS SSM chaos by ID disrupts the state of infrastructure resources. It induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "Resource Access restrict",
     description:
       "Resource Access Restrict induces chaos to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group",

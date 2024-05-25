@@ -17,7 +17,7 @@ import { experiments } from "./experiments"
 
 AWS faults disrupt the resources running on different AWS services from the EKS cluster. To perform such AWS chaos experiments, you will need to authenticate CE with the AWS platform. This can be done in two ways.
 
-- **Using secrets:** You can use secrets to authenticate CE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes’ native way of authenticating CE with AWS.
+- **Using secrets:** You can use secrets to authenticate CE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes' native way of authenticating CE with AWS.
 - [**IAM integration:**](./aws-iam-integration.md) You can authenticate CE using AWS using IAM when you have deployed chaos on the EKS cluster. You can associate an IAM role with a Kubernetes service account. This service account can be used to provide AWS permissions to the experiment pod which uses the particular service account.
 
 Here are AWS faults that you can execute and validate.
@@ -206,7 +206,7 @@ EC2 CPU hog disrupts the state of infrastructure resources. It induces stress on
 
 <Accordion color="green">
 <summary>Use cases</summary>
-The fault causes CPU stress on the target AWS EC2 instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases. 
+The fault causes CPU stress on the target AWS EC2 instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases.
 </Accordion>
 </FaultDetailsCard>
 
@@ -236,7 +236,7 @@ EC2 HTTP latency disrupts the state of infrastructure resources. This fault indu
 <Accordion color="green">
 <summary>Use cases</summary>
 This fault results in delays on the target EC2 instances. This results in delayed network connectivity from the VM to the target hosts.
-It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
+It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services).
 </Accordion>
 </FaultDetailsCard>
 
@@ -280,7 +280,7 @@ EC2 HTTP reset peer injects HTTP reset on the service whose port is specified us
 
 <Accordion color="green">
 <summary>Use cases</summary>
-It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic).
 </Accordion>
 </FaultDetailsCard>
 
@@ -326,7 +326,7 @@ EC2 memory hog disrupts the state of infrastructure resources.
 <Accordion color="green">
 <summary>Use cases</summary>
 The fault causes memory stress on the target AWS EC2 instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance.
-Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases. 
+Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases.
 </Accordion>
 </FaultDetailsCard>
 
@@ -467,8 +467,8 @@ ECS container memory hog disrupts the state of infrastructure resources. It indu
 <summary>Use cases</summary>
 Memory usage inside containers is subject to constraints. If the limits are specified, exceeding them can result in termination of the container (due to OOMKill of the primary process, often pid 1).
 The container is restarted, depending on the policy specified.
-When there are no limits on the memory consumption of containers, containers on the instance can be killed based on their oom_score, which extends to all the task containers running on the instance. This results in a bigger blast radius.  
-This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified. 
+When there are no limits on the memory consumption of containers, containers on the instance can be killed based on their oom_score, which extends to all the task containers running on the instance. This results in a bigger blast radius.
+This fault launches a stress process within the target container, that causes the primary process in the container to have constraints based on resources or eat up the available system memory on the instance when limits on resources are not specified.
 </Accordion>
 </FaultDetailsCard>
 
@@ -487,7 +487,7 @@ ECS container network latency disrupts the state of infrastructure resources. It
 This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
-It also determines the impact of the fault on the microservice. 
+It also determines the impact of the fault on the microservice.
 The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). This fault helps improve the resilience of the services over time.
 </Accordion>
 </FaultDetailsCard>
@@ -508,9 +508,9 @@ ECS container network loss disrupts the state of infrastructure resources.
 This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
-It also determines the impact of the fault on the microservice. 
-The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). 
-It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+It also determines the impact of the fault on the microservice.
+The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos).
+It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application.
 This fault helps improve the resilience of the services over time.
 </Accordion>
 </FaultDetailsCard>
@@ -551,7 +551,7 @@ ECS task scale is an AWS fault that injects chaos to scale (up or down) the ECS 
 
 <Accordion color="green">
 <summary>Use cases</summary>
-ECS task scale affects the availability of a task in a cluster.  
+ECS task scale affects the availability of a task in a cluster.
 It determines the resilience of an application when ECS tasks are unexpectedly scaled up (or down).
 </Accordion>
 </FaultDetailsCard>
@@ -733,7 +733,7 @@ Lambda delete event source mapping removes the event source mapping from an AWS 
 
 <Accordion color="green">
 <summary>Use cases</summary>
-Deleting an event source mapping from a Lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger, which can break the service. 
+Deleting an event source mapping from a Lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger, which can break the service.
 Such faults determine if proper error handling or auto recovery options have been configured for the application.
 </Accordion>
 </FaultDetailsCard>
@@ -824,7 +824,7 @@ RDS instance delete removes an instances from AWS RDS cluster.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-This fault determines how quickly an application can recover from an unexpected RDS cluster deletion. 
+This fault determines how quickly an application can recover from an unexpected RDS cluster deletion.
 </Accordion>
 </FaultDetailsCard>
 
@@ -842,15 +842,35 @@ This fault determines the resilience of an application to RDS instance reboot.
 
 <FaultDetailsCard category="aws">
 
+### SSM chaos by ID
+
+AWS SSM chaos by ID disrupts the state of infrastructure resources.
+- It induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
+- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
+- This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+AWS SSM chaos by ID:
+- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
+- Triggers the provided SSM document provided as an input to other AWS chaos.
+- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### Windows EC2 blackhole chaos
 
 Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules.
 
 <Accordion color="green">
 <summary>Use cases</summary>
-    
+
 Windows EC2 blackhole chaos:
-- Degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters). 
+- Degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters).
 - Limits the impact, that is, blast radius to only the traffic that you wish to test, by specifying the destination hosts or IP addresses.
 
 </Accordion>
