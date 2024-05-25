@@ -890,3 +890,23 @@ Windows EC2 memory hog:
 
 </Accordion>
 </FaultDetailsCard>
+<FaultDetailsCard category="aws">
+
+### SSM chaos by tag
+
+AWS SSM chaos by tag disrupts the state of infrastructure resources.
+- It induces chaos on AWS EC2 instances using the Amazon SSM Run Command.-
+- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
+- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
+- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given tag(s).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+AWS SSM chaos by tag:
+- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
+- Triggers the provided SSM document provided as an input to other AWS chaos.
+- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+
+</Accordion>
+</FaultDetailsCard>
