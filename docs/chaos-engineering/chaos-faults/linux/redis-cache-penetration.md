@@ -1,13 +1,13 @@
 ---
-id: linux-redis-cache-penetration
-title: Linux Redis cache penetration
+id: redis-cache-penetration
+title: Redis cache penetration
 ---
 
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 import AuthenticationDetails from './shared/redis-auth.md'
 
-Linux Redis cache penetration continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.
+Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.
 
 ![Linux Redis cache penetration](./static/images/linux-redis-cache-penetration.png)
 
@@ -34,7 +34,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   </tr>
   <tr>
     <td> requestCount </td>
-    <td> Number of times to try to penetrate the Redis cache. </td>
+    <td> Number of requests to be sent for accessing the cache. </td>
     <td> Default: 1000. For more information, go to <a href="#number-of-requests"> request count. </a></td>
   </tr>
   <tr>
@@ -51,7 +51,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
 
 ### Number of requests
 
-The `requestCount` input variable indicates the number of times to penetrate the Redis cache. Its default value is 1000.
+The `requestCount` input variable indicates the number of requests sent to access the Redis cache. Redis cache. Its default value is 1000.
 
 The following YAML snippet illustrates the use of this input variable:
 
