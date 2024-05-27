@@ -92,4 +92,11 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux","time"],
     category: "linux",
   },
+  {
+    name: "Redis cache limit",
+    description:
+      "Redis cache limit fault limits the amount of memory used by a Redis cache. The original limit is restored after the chaos duration.",
+    tags: ["linux","limit"],
+    category: "linux",
+  },
 ];

@@ -20,9 +20,6 @@ Determines the resilience of Redis-dependant applications on frequent cache miss
 
 <AuthenticationDetails />
 
-### External packages
-This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
-
 ### Optional tunables
 
 <table>
