@@ -3,7 +3,7 @@ id: ssm-chaos-by-id
 title: SSM chaos by ID
 ---
 
-AWS SSM chaos by ID disrupts the state of infrastructure resources. It induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
+AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
 - It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
 - This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.
 - It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given instance ID(s).
@@ -12,15 +12,13 @@ AWS SSM chaos by ID disrupts the state of infrastructure resources. It induces c
 
 ## Use cases
 AWS SSM chaos by ID:
-- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
-- Triggers the provided SSM document provided as an input to other AWS chaos.
-- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+- Tests the resilience of EC2 instance or services in that instance by using custom SSM document as input to execute chaos on it.
+- Triggers and manages the SSM command executed via SSM docs that is an input to the experiment.
 
 ### Prerequisites
 - Kubernetes >= 1.17
 - The SSM document should be available in AWS.
-- EC2 service update and deployment concepts.
-- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Authentication is done using [IRSA](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration#set-up-your-target-accounts-for-irsa) or secret. For secret-based authentication, create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -43,7 +41,28 @@ HCE recommends that you use the same secret name, that is, `cloud-secret`. Other
 Below is an example AWS policy to execute the fault.
 
 ```json
-TO-DO
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:DescribeInstanceInformation",
+                "ssm:SendCommand",
+                "ssm:GetCommandInvocation",
+                "ssm:CancelCommand"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
 ```
 
 :::info note
@@ -63,7 +82,7 @@ TO-DO
         <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> Instance ID of the target EC2 instance. Multiple IDs can also be provided as a comma(,) separated values.</td>
-        <td> Multiple IDs can be provided as "id1,id2". For more information, go to <a href="#stop-instances-by-id"> EC2 instance ID.</a></td>
+        <td> Multiple IDs can be provided as "id1,id2". For more information, go to <a href="#ec2-instance-id"> EC2 instance ID.</a></td>
       </tr>
         <tr>
           <td> REGION </td>
@@ -100,6 +119,11 @@ TO-DO
         <td> Create or upload this document to AWS before providing the document as an input to any AWS chaos fault.</td>
       </tr>
       <tr>
+        <td> PLUGIN_NAMES </td>
+        <td> Specific plugin used in an SSM document (or command), such as runShellScript or ExecuteStressNg, which defines the action to be executed on the target instances.</td>
+        <td> You can provide multiple names as comma-separated values.</td>
+      </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> It defines a sequence of chaos execution for multiple instances. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
@@ -111,7 +135,7 @@ TO-DO
       </tr>
     </table>
 
-### Stop instances By ID
+### EC2 instance ID
 
 Comma-separated list of target instance IDs. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
@@ -128,7 +152,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-terminate-by-id
+  - name: ssm-chaos-by-id
     spec:
       components:
         env:
