@@ -9,7 +9,7 @@ import AuthenticationDetails from './shared/redis-auth.md'
 
 Redis cache expire expires a given key (or all keys) for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.
 
-![Linux Redis cache expire](./static/images/redis-cache-expire.png)
+![Redis cache expire](./static/images/redis-cache-expire.png)
 
 ## Use cases
 - Determines the resilience of Redis-dependant application when a key expires on a Linux machine.
@@ -19,9 +19,6 @@ Redis cache expire expires a given key (or all keys) for a specific duration. Du
 <FaultPermissions />
 
 <AuthenticationDetails />
-
-### External packages
-This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ### Optional tunables
 
@@ -69,7 +66,7 @@ The `key` input variable indicates the key to be expired from the Redis cache.
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-redis-cache-expire/key.yaml yaml)
+[embedmd]:# (./static/manifests/redis-cache-expire/key.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -93,7 +90,7 @@ The `expiration` input value describes the duration after which the key expires.
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-redis-cache-expire/expiration.yaml yaml)
+[embedmd]:# (./static/manifests/redis-cache-expire/expiration.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -116,7 +113,7 @@ The `expiryOption` input variable provides options to expire a Redis key. It sup
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-redis-cache-expire/expiry-option.yaml yaml)
+[embedmd]:# (./static/manifests/redis-cache-expire/expiry-option.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -140,7 +137,7 @@ The `database` input variable is represented as an integer. Its default value is
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-redis-cache-expire/database.yaml yaml)
+[embedmd]:# (./static/manifests/redis-cache-expire/database.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault

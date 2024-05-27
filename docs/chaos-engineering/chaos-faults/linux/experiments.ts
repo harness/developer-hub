@@ -96,7 +96,7 @@ export const experiments: ExperimentDetails[] = [
     name: "Redis cache expire",
     description:
       "Redis cache expire expires a given key (or all keys) for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.",
-    tags: ["linux","time"],
+    tags: ["linux","expire"],
     category: "linux",
   },
 ];
