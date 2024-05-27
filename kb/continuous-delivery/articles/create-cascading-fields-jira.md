@@ -6,7 +6,9 @@ description: Instructions on setting unsupported fields when creating a JIRA iss
 
 This article talks about using the HTTP step to set the fields that are not supported by default by the Jira plugin using an example. 
 
-We will discuss how to set a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) using the HTTP step. By default, Jira plugins don't support cascading lists. You can configure cascading lists for your Jira issues using an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
+By default, Jira plugins don't support cascading lists and other custom types. For the list of supported Jira fields, go to [Add issue fields](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-issue-fields).
+
+We will discuss how to set a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
 
 Create a pipeline with a [Custom stage](/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and configure the following steps under the Execution tab of the pipeline. 
 
