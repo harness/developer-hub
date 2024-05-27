@@ -1,5 +1,5 @@
 ---
-title: Use the HTTP step to create the unsupported fields when creating Jira issues
+title: Use the HTTP step to set unsupported fields when creating Jira issues
 description: Instructions on setting unsupported fields when creating a JIRA issue using the HTTP step.
 ---
 
