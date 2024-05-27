@@ -83,7 +83,7 @@ Below is an example AWS policy to execute the fault.
         </tr>
         <tr>
         <td> EC2_INSTANCE_TAG </td>
-        <td> Instance tag of the target EC2 instance. Multiple tags can also be provided as a comma(,) separated values.</td>
+        <td> Instance tag of the target EC2 instance. <a href="#ssm-chaos-by-tag-on-multiple-instances">Multiple tags can also be provided as a comma(,) separated values.</td>
         <td> Provide them as "key:value". For more information, go to <a href="#ssm-chaos-by-tag"> EC2 instance tag.</a></td>
       </tr>
         <tr>
@@ -171,7 +171,7 @@ spec:
           value: 'us-east-1'
 ```
 
-### Stop multiple instances by tag
+### SSM chaos by tag on multiple instances
 
 Percentage of EC2 instances to target, based on the `EC2_INSTANCE_TAG` tag and `REGION` region. Tune it by using the `INSTANCE_AFFECTED_PERC` environment variable.
 
