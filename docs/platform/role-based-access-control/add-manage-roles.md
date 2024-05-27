@@ -156,8 +156,8 @@ To add new users to a custom Resource Group with role bindings, do the following
 3. Create a new **Resource Group**, select the desired resource types, and click **Save**.
 4. Return to **Account Settings**. Under **Access Control**, select **Users**.
 5. Click **New User**, enter the user's email, then, under **Role Bindings**, select **Add**.
-6. Under **Roles**, click **Select a role**, then choose **Account Admin** from the dropdown.
-7.  Under **Resource Groups**, click **All Resources Including** and select your **Resource Group**.
+6. Under Roles, click **Select a role**, then choose **Account Admin** or any custom role with all permissions selected for the resources in the resource group from the dropdown.
+7. Under **Resource Groups**, click **All Resources Including** and select your **Resource Group**.
 8. Click **Apply** to send an invitation to the user's email. After the user accepts the invite, the role-binding process is complete.
 
 The user can now sign in to their account and access only those resources allowed in the resource groups with their **Account Admin** permissions.
@@ -168,7 +168,7 @@ To add role bindings to an existing user:
 2. Under **Access Control**, select **Resource Groups**.
 3. Create a new **Resource Group**, select the desired resource types, and then select **Save**.
 4. Return to **Account Settings**. Under **Access Control**, select **Users**.
-5. Search for the user to whom you want to assign the **Account Admin** role, and then select the user.
+5. Search for the user to whom you want to assign the Account Admin role or any custom role with all permissions selected for the resources in the resource group, and then select the user.
 6. Go to the **Role Bindings** tab, then select **Manage Role Bindings**.
 7. Under **Role Bindings**, select **Add**. 
 8. Under **Roles**, click **Select a role**, and then select **Account Admin**.
