@@ -83,7 +83,7 @@ Below is an example AWS policy to execute the fault.
         </tr>
         <tr>
         <td> EC2_INSTANCE_TAG </td>
-        <td> Instance tag of the target EC2 instance. <a href="#ssm-chaos-by-tag-on-multiple-instances">Multiple tags can also be provided as a comma(,) separated values.</td>
+        <td> Instance tag of the target EC2 instance. <a href="#ssm-chaos-by-tag-on-multiple-instances">Multiple tags </a> can also be provided as a comma(,) separated values.</td>
         <td> Provide them as "key:value". For more information, go to <a href="#ssm-chaos-by-tag"> EC2 instance tag.</a></td>
       </tr>
         <tr>
