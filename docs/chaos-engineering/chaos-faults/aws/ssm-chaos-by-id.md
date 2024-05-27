@@ -82,7 +82,7 @@ Below is an example AWS policy to execute the fault.
         <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> Instance ID of the target EC2 instance. Multiple IDs can also be provided as a comma(,) separated values.</td>
-        <td> Multiple IDs can be provided as "id1,id2". For more information, go to <a href="#ec2-instance-id"> EC2 instance ID.</a></td>
+        <td> Multiple IDs can be provided as "id1,id2". For more information, go to <a href="#ssm-chaos-by-id"> EC2 instance ID.</a></td>
       </tr>
         <tr>
           <td> REGION </td>
@@ -135,7 +135,7 @@ Below is an example AWS policy to execute the fault.
       </tr>
     </table>
 
-### EC2 instance ID
+### SSM chaos by ID
 
 Comma-separated list of target instance IDs. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 

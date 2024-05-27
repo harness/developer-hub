@@ -844,10 +844,10 @@ This fault determines the resilience of an application to RDS instance reboot.
 
 ### SSM chaos by ID
 
-AWS SSM chaos by ID disrupts the state of infrastructure resources.
-- It induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
+AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
 - It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
-- This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.
+- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
+- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given ID(s).
 
 <Accordion color="green">
 <summary>Use cases</summary>
