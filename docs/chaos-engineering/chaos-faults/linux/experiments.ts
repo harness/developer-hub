@@ -92,4 +92,12 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux","time"],
     category: "linux",
   },
+  {
+    name: "Redis cache penetration",
+    description:
+      "Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.",
+    tags: ["linux"],
+    category: "linux",
+  },
 ];
+

@@ -9,7 +9,7 @@ import AuthenticationDetails from './shared/redis-auth.md'
 
 Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.
 
-![Linux Redis cache penetration](./static/images/linux-redis-cache-penetration.png)
+![Redis cache penetration](./static/images/redis-cache-penetration.png)
 
 ## Use cases
 - Slows down the database for responses to other requests.
@@ -20,9 +20,6 @@ Redis cache penetration fault continuously sends cache requests to the Redis dat
 <FaultPermissions />
 
 <AuthenticationDetails />
-
-### External packages
-This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ### Optional tunables
 
@@ -55,7 +52,7 @@ The `requestCount` input variable indicates the number of requests sent to acces
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-redis-cache-penetration/requests.yaml yaml)
+[embedmd]:# (./static/manifests/redis-cache-penetration/requests.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
