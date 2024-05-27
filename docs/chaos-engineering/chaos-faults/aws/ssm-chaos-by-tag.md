@@ -3,8 +3,7 @@ id: ssm-chaos-by-tag
 title: SSM chaos by tag
 ---
 
-AWS SSM chaos by tag disrupts the state of infrastructure resources.
-- It induces chaos on AWS EC2 instances using the Amazon SSM Run Command.-
+AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
 - It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
 - This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
 - It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given tag(s).
@@ -21,7 +20,7 @@ AWS SSM chaos by tag:
 - Kubernetes >= 1.17
 - The SSM document should be available in AWS.
 - EC2 service update and deployment concepts.
-- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Authentication is done using [IRSA](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration#set-up-your-target-accounts-for-irsa) or secret. For secret-based authentication, create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -44,7 +43,28 @@ HCE recommends that you use the same secret name, that is, `cloud-secret`. Other
 Below is an example AWS policy to execute the fault.
 
 ```json
-TO-DO
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstances"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:DescribeInstanceInformation",
+                "ssm:SendCommand",
+                "ssm:GetCommandInvocation",
+                "ssm:CancelCommand"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
 ```
 
 :::info note
@@ -64,7 +84,7 @@ TO-DO
         <tr>
         <td> EC2_INSTANCE_TAG </td>
         <td> Instance tag of the target EC2 instance. Multiple tags can also be provided as a comma(,) separated values.</td>
-        <td> Provide them as "key:value". For more information, go to <a href="#stop-instance-by-tag"> EC2 instance tag.</a></td>
+        <td> Provide them as "key:value". For more information, go to <a href="#ssm-chaos-by-tag"> EC2 instance tag.</a></td>
       </tr>
         <tr>
           <td> REGION </td>
@@ -101,6 +121,11 @@ TO-DO
         <td> Create or upload this document to AWS before providing the document as an input to any AWS chaos fault.</td>
       </tr>
       <tr>
+        <td> POLICY_NAME </td>
+        <td> Specific policy used in an SSM document (or command), which defines the action to be executed on the target instances.</td>
+        <td> You can provide multiple names as comma-separated values.</td>
+      </tr>
+      <tr>
         <td> SEQUENCE </td>
         <td> It defines a sequence of chaos execution for multiple instances. </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
@@ -117,9 +142,9 @@ TO-DO
       </tr>
     </table>
 
-### Stop instance by tag
+### SSM chaos by tag
 
-Random EC2 instance that is stopped. Tune it by using the `EC2_INSTANCE_TAG` tag and `REGION` region.
+Instance tag of the target EC2 instance. Multiple tags can also be provided as a comma-separated values. Provide them in the **key:value** format. Tune it by using the `EC2_INSTANCE_TAG` tag.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -134,7 +159,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-terminate-by-tag
+  - name: ssm-chaos-by-tag
     spec:
       components:
         env:
@@ -148,7 +173,7 @@ spec:
 
 ### Stop multiple instances by tag
 
-Percentage of EC2 instances to stop, based on the `EC2_INSTANCE_TAG` tag and `REGION` region. Tune it by using the `INSTANCE_AFFECTED_PERC` environment variable.
+Percentage of EC2 instances to target, based on the `EC2_INSTANCE_TAG` tag and `REGION` region. Tune it by using the `INSTANCE_AFFECTED_PERC` environment variable.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -163,7 +188,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-terminate-by-tag
+  - name: ssm-chaos-by-tag
     spec:
       components:
         env:

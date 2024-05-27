@@ -369,7 +369,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "SSM chaos by tag",
     description:
-      "AWS SSM chaos by tag disrupts the state of infrastructure resources. It induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
+      "AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command. It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed). This SSM document is uploaded beforehand to AWS, whose name is referenced as an input to the chaos faults.",
     tags: [],
     category: "aws",
   },

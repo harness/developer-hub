@@ -6,7 +6,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-terminate-by-tag
+  - name: ssm-chaos-by-tag
     spec:
       components:
         env:
