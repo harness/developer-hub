@@ -1,15 +1,15 @@
 ---
-id: linux-redis-sentinel-stop
-title: Linux Redis Sentinel stop
+id: redis-sentinel-stop
+title: Redis Sentinel stop
 ---
 
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 import AuthenticationDetails from './shared/redis-auth.md'
 
-Linux Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel) for a specific chaos duration.
+Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel) for a specific chaos duration and then starts it.
 
-![Linux Redis Sentinel stop](./static/images/linux-redis-sentinel-stop.png)
+![Redis Sentinel stop](./static/images/redis-sentinel-stop.png)
 
 ## Use cases
 Determines the resilience of Redis-dependant application when the Redis server is unavailable.
@@ -19,9 +19,6 @@ Determines the resilience of Redis-dependant application when the Redis server i
 <FaultPermissions />
 
 <AuthenticationDetails />
-
-### External packages
-This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ### Mandatory tunables
 
@@ -47,8 +44,8 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   </tr>
   <tr>
     <td> flushConfig </td>
-    <td> It flushes the initial configuration before starting the Sentinel server if set to "true". </td>
-    <td> Default: true. You can set it to "true" or "false".</td>
+    <td> It flushes the initial configuration before starting the Sentinel server if set to <code>true</code>. </td>
+    <td> Default: true. You can set it to <code>true</code> or <code>false</code>.</td>
   </tr>
   <tr>
     <td> redisPath </td>
@@ -57,8 +54,8 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   </tr>
   <tr>
     <td> startSentinel </td>
-    <td> Decide whether the server should start on its own after stopping it or the fault should explicitly start the server. By default, it is configured to start on its own after stopping.</td>
-    <td> Default: false. You can set it to "true" or "false".</td>
+    <td> Decide whether the server should start on its own after stopping it or the fault should explicitly start the server.</td>
+    <td> Default: false. You can set it to <code>true</code> or <code>false</code>.</td>
   </tr>
   <tr>
     <td> duration </td>
@@ -78,7 +75,7 @@ The `configFile` input variable stores the path to the file where the Redis Sent
 
 The following YAML snippet illustrates the use of this input variable:
 
-[embedmd]:# (./static/manifests/linux-redis-sentinel-stop/config-file.yaml yaml)
+[embedmd]:# (./static/manifests/redis-sentinel-stop/config-file.yaml yaml)
 ```yaml
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
@@ -89,7 +86,7 @@ metadata:
 spec:
   redisChaos/inputs:
     duration: 30s
-    configFile: ""
+    configFile: "/etc/redis/sentinel.conf"
     flushConfig: true
     redisPath: ""
     rampTime: ""

@@ -92,4 +92,14 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux","time"],
     category: "linux",
   },
+  {
+    name: "Redis Sentinel stop",
+    description:
+      "Linux Redis Sentinel stop fault stops the Redis Sentinel server for a specific chaos duration and then starts it.",
+    tags: ["linux","stop"],
+    category: "linux",
+  },
 ];
+
+
+
