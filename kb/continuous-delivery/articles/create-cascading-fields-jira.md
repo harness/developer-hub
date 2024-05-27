@@ -1,10 +1,12 @@
 ---
 title: Create cascading fields for JIRA issues using the HTTP step
-description: Instructions on setting cascading fields when creating a JIRA issue using the HTTP step.
+description: Instructions on setting unsupported fields when creating a JIRA issue using the HTTP step.
 ---
 
 
-This article talks about setting a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) when creating a JIRA issue. By default, Jira plugins don't support cascading lists. You can configure cascading lists for your Jira issues using an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
+This article talks about using the HTTP step to set the fields that are not supported by default by the Jira plugin using an example. 
+
+We will discuss how to set a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) using the HTTP step. By default, Jira plugins don't support cascading lists. You can configure cascading lists for your Jira issues using an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
 
 Create a pipeline with a [Custom stage](/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and configure the following steps under the Execution tab of the pipeline. 
 
