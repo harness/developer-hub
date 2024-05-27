@@ -9,6 +9,6 @@ spec:
     duration: 30s
     expiration: ""
     key: ""
-    database: 0
-    expiryOption: "GT"
+    database: 1
+    expiryOption: ""
     rampTime: ""

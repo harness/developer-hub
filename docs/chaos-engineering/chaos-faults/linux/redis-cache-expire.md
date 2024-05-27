@@ -1,18 +1,18 @@
 ---
-id: linux-redis-cache-expire
-title: Linux Redis cache expire
+id: redis-cache-expire
+title: Redis cache expire
 ---
 
 import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 import AuthenticationDetails from './shared/redis-auth.md'
 
-Linux Redis cache expire expires Redis cache for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.
+Redis cache expire expires a given key (or all keys) for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.
 
 ![Linux Redis cache expire](./static/images/linux-redis-cache-expire.png)
 
 ## Use cases
-- Determines the resilience of Redis-dependant application when the cache expires on a Linux machine.
+- Determines the resilience of Redis-dependant application when a key expires on a Linux machine.
 
 <Ossupport />
 
@@ -34,22 +34,22 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
   <tr>
     <td> key </td>
     <td> The key to expire in the Redis cache. </td>
-    <td> For more information, go to <a href="#key"> key</a>. </td>
+    <td> For empty value, all the keys are expired. For more information, go to <a href="#key"> key</a>. </td>
   </tr>
   <tr>
     <td> expiration </td>
     <td> The duration after which the key expires. </td>
-    <td> For more information, go to <a href="#expiration"> expiration</a>. </td>
+    <td> Default: 0. For more information, go to <a href="#expiration"> expiration</a>. </td>
   </tr>
   <tr>
     <td> database </td>
-    <td> Represented as integers starting from 0. </td>
-    <td> For more information, go to <a href="#database"> database</a>.</td>
+    <td> Redis database where the key exists. </td>
+    <td> Default: 0. For more information, go to <a href="#database"> database</a>.</td>
   </tr>
   <tr>
     <td> expiryOption </td>
-    <td> Timeout applied on the key after which the key is deleted. </td>
-    <td> For more information, go to <a href="#expiry-option"> expiry option</a>.</td>
+    <td> The options for expiring a Redis key. Refer <a href="https://redis.io/docs/latest/commands/expire/#options"> here </a> for more information. </td>
+    <td> Supports one of: NX, XX, GT and LT. For more information, go to <a href="#expiry-option"> expiry option</a>.</td>
   </tr>
   <tr>
     <td> duration </td>
@@ -82,7 +82,7 @@ spec:
     duration: 30s
     expiration: ""
     key: "KeyName"
-    database: 0
+    database: 1
     expiryOption: ""
     rampTime: ""
 ```
@@ -106,14 +106,13 @@ spec:
     duration: 30s
     expiration: 30s
     key: ""
-    database: 0
+    database: 1
     expiryOption: ""
     rampTime: ""
 ```
 
 ### Expiry option
-
-The `expiryOption` input variable sets a timeout on the key after which the key is deleted. Go to [expire command](https://redis.io/docs/latest/commands/expire/) for more information.
+The `expiryOption` input variable provides options to expire a Redis key. It supports `NX`, `XX`, `GT` and `LT`. Go to [expire command](https://redis.io/docs/latest/commands/expire/) for more information.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -128,16 +127,16 @@ metadata:
 spec:
   redisChaos/inputs:
     duration: 30s
-    expiration: ""
+    expiration: "5s"
     key: ""
-    database: 0
+    database: 1
     expiryOption: "GT"
     rampTime: ""
 ```
 
 ### Database
 
-The `database` input variable is represented as an integer.
+The `database` input variable is represented as an integer. Its default value is 0.
 
 The following YAML snippet illustrates the use of this input variable:
 
@@ -154,7 +153,7 @@ spec:
     duration: 30s
     expiration: ""
     key: ""
-    database: 0
+    database: 1
     expiryOption: ""
     rampTime: ""
 ```

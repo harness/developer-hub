@@ -247,3 +247,18 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 </Accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Redis cache expire
+
+Redis cache expire expires a given key (or all keys) for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+- Determines the resilience of Redis-dependant application when a key expires on a Linux machine.
+
+</Accordion>
+
+</FaultDetailsCard>
