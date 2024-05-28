@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 Welcome to the Harness Infrastructure as Code Management (IaCM) onboarding guide. This topic introduces you to the powerful capabilities of IaCM using Harness and guides you through key functionalities that streamline and secure your infrastructure management tasks.  
 
 
-### What is IaCM?
+## What is IaCM?
 
 Infrastructure as Code (IaC) enables the automated management and provisioning of infrastructure through machine-readable definition files. Infrastructure as Code Management (IaCM) extends this by focusing on the oversight and enhancement of IaC practices, ensuring consistency, accountability, and repeatability across deployments. Harness enhances IaCM with features like real-time cost estimation, automated policy enforcement, and drift detection, ensuring that your infrastructure is provisioned efficiently and complies with organizational standards and budget constraints.
 
