@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can be a part of more than one Harness Account. This topic explains how to switch between multiple Accounts in Harness.
 
-### View and switch Accounts
+### View and switch accounts
 
 You can check to see if you are a part of multiple Accounts by clicking on your User Profile.
 

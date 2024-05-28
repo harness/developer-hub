@@ -332,7 +332,7 @@ Users provisioned with LDAP are added to the Account scope and are sent an email
 
 With a Harness user group synced with an LDAP group and LDAP SSO enabled, you can now log into Harness using LDAP users from the LDAP group.
 
-### Delink a User Group from LDAP
+### Delink a user group from LDAP
 
 To delink a Harness user group from its linked LDAP provider, do the following:
 

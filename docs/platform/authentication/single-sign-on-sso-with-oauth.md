@@ -95,7 +95,6 @@ To set up OAuth 2.0 SSO, do the following:
 
    ![](./static/single-sign-on-sso-with-oauth-123.png)
 
-
 ## Log in with an OAuth 2.0 provider
 
 The first time you log into Harness using OAuth 2.0 SSO, you will be redirected to the OAuth 2.0 provider. Enter the same email address you used for Harness, along with the OAuth 2.0 provider-specific password. Next, you are redirected back to Harness and automatically logged in.
