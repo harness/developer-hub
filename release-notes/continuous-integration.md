@@ -1,6 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
+
 date: 2024-05-28T10:00
 sidebar_position: 10
 ---
@@ -36,6 +37,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## May 2024
 
+
 ### Version 1.29
 
 <!-- 2024-05-28 -->
@@ -51,6 +53,32 @@ You can now specify the image pull policy for a CI Build stage in the Pipeline E
 - Fixed an issue where running a pipeline in debug throws an error saying it is not allowed to be run in this pipeline. (CI-12094, ZD-61519)
 
 - Fixed an issue where, if the base image connector is overridden, the Docker build step does not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here](https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
+
+
+### Version 1.28.2
+
+<!-- 21 May 2024 -->
+
+#### New features
+
+<!-- 
+
+- This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. (CI-10509)
+
+-->
+
+- Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
+  
+  This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- Added a validation to Git Clone steps to ensure that the step has a Git connector and repository selected before applying changes. (CI-12477)
+
+- Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
+
+- Fixed an issue where the CI **Getting Started** page sent multiple requests to fetch Harness Code repositories. This occurred whenever the page was updated or the Git connector was updated. With this fix, the Getting Started page sends one request only when it needs to fetch the list of repositories. (CI-10770)
+
 
 ### Version 1.27.4
 

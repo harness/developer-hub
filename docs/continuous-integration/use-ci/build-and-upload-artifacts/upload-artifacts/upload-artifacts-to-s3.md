@@ -574,7 +574,7 @@ Configure the [Plugin step settings](../../use-drone-plugins/plugin-step-setting
 | `target` | String | Path to the location where you want to store the downloaded artifacts, relative to the build workspace. | `artifacts` (downloads to `/harness/artifacts`) |
 | `download` | Boolean | Must be `true` to enable downloading. If omitted or `false`, the plugin attempts to upload artifacts instead. | `"true"` |
 
-## Use s3fs-fuse
+## Mount an S3 bucket using s3fs-fuse
 
 [s3fs-fuse](https://github.com/s3fs-fuse/s3fs-fuse) allows files and directories in an S3 bucket to act like a local file system. [Harness Cloud](../../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) supports using s3fs-fuse on Linux infrastructure.
 

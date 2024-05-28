@@ -1531,3 +1531,7 @@ aws application-autoscaling describe-scaling-policies --service-namespace ecs --
 
 aws cloudwatch put-metric-alarm --alarm-name ALARM_NAME --alarm-actions SCALING_POLICY_ARN
 ```
+
+## See also
+
+For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).

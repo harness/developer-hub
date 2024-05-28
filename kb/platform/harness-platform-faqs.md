@@ -847,6 +847,17 @@ Yes, you can have multiple versions of Helm on the delegate, but only the Helm C
 
 No, from a Harness delegate code perspective, the only difference between minimal and non-minimal delegate images is the bundled third-party binaries.
 
+### Why did step logs disappear?
+
+If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+You must restart your delegate after you enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+For more information about configuring connectivity, go to:
+
+- [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+- [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
+
 ### Does the default Harness Delegate include jq?
 
 Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
@@ -3221,7 +3232,7 @@ Then, in the delegate manifest, locate the `CronJob` resource. In the resource s
 
 Yes, Harness supports Google cloud functions in both FirstGen and NextGen.
 
-For more information, go to [Google cloud functions](/docs/faqs/continuous-delivery-faqs/#google-cloud-functions)
+For more information, go to [Google cloud functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs).
 
 ### Updating the LDAP cron schedule results in an error (Failed to fetch: 400). What are the possible causes?
 
@@ -3283,3 +3294,6 @@ cat /values.jksbase64 | base64 -d
 
 The minimum supported screen resolution is 1440x900.
 
+### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
+
+Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
