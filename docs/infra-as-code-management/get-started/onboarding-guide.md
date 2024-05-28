@@ -17,7 +17,7 @@ Welcome to the Harness Infrastructure as Code Management (IaCM) onboarding guide
 
 Infrastructure as Code (IaC) enables the automated management and provisioning of infrastructure through machine-readable definition files. Infrastructure as Code Management (IaCM) extends this by focusing on the oversight and enhancement of IaC practices, ensuring consistency, accountability, and repeatability across deployments. Harness enhances IaCM with features like real-time cost estimation, automated policy enforcement, and drift detection, ensuring that your infrastructure is provisioned efficiently and complies with organizational standards and budget constraints.
 
-## Prerequisites
+### Prerequisites
 
 Before beginning the walkthroughs in this guide, ensure you have:
 
@@ -26,13 +26,13 @@ Before beginning the walkthroughs in this guide, ensure you have:
 - Access to a Cloud Provider such as AWS or Google Cloud Platform.
 - An [organization and project set up](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 
-## Sample Terraform
+### Sample Terraform
 
 The following example Terraform (.tf) file declares:
 
 - Provider Configuration: Specifies the AWS provider and sets the region to "us-east-1". Go to [AWS Regions & Availability Zones](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html) for a complete region list.
 - Resource Definition: Creates an EC2 instance with the identifier `my_first_ec2_instance`.
-- AMI: Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
+- AMI: Utilizes ami-123abc321cba18, go to [AWS EC2 User Guide](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html) to find your AMI image ID.
 - Instance Type: Configures the instance to use a t2.micro. Go to the [AWS t2 instances list](https://aws.amazon.com/ec2/instance-types/t2/).  
 Tags: To facilitate easy identification and management within AWS resources, a tag name with the value `my_first_ec2_instance` is applied.
 
@@ -53,13 +53,19 @@ resource "aws_instance" "my_first_ec2_instance" {
 
 Go to [Terraform Documentation](https://developer.hashicorp.com/terraform/intro) or [OpenTofu Documentation](https://opentofu.org/docs/) for more information on currently supported Workspace types. 
 
-## Add connectors
+## Create a workspace
 
-Add Cloud Provider and Git Connectors to select when Creating a workspace. Doing so allows your Cloud Provider and Git repository to read and write changes applied via your Harness IaCM pipelines.
+A workspace is essentially a named environment or container that stores your Terraform configurations, variables, states, and other resources necessary to manage infrastructure. 
+
+One of the fundamental pieces of the Workspace creation step is to configure a connection to your Cloud Provider and Code Repository through **Connectors** so it can compare the current and expected state of your infrastructure, and apply infrastructure updates when required via your Harness IaCM pipelines.
 
 :::info
-Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#create-a-workspace).
+Harness recommends configuring your connector before creating your workspace, however, you can also add new connectors during the [Create Workspace flow](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-a-new-workspace).
 :::
+
+## Add connectors
+
+To configure your connectors before you create a Workspace, go to the following interactive guides:
 
 <Tabs>
 <TabItem value="Cloud Provider connector">
@@ -140,21 +146,16 @@ Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/
 </TabItem>
 </Tabs>
 
-## Create a Workspace
+---
 
-A workspace is a named environment that stores Terraform configurations, variables, states, and other resources necessary to manage infrastructure.
+## Add a new workspace
 
-You can define a Terraform configuration with multiple workspaces to enforce the same desired configuration. Each Workspace creates a different state with an independent lifecycle.  
+Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
 
-For example, you can have a single configuration of a Kubernetes cluster and create multiple workspaces out of it, each leading to different clusters. The configuration is unique to each Workspace and can be managed through environment or Terraform variables.
-
-To create a new workspace, follow these steps:
-
-1. Sign in to [app.harness.io](https://app.harness.io/).
-2. In the module pane, select **Infrastructure**.
-3. Select an existing project or create a new project.
-4. Select **Workspaces**, and then select **New Workspace**.
-5. Select **Create new Workspace**.
+1. In the module pane, select **Infrastructure**.
+2. Select an existing project or create a new project.
+3. Select **Workspaces**, and then select **New Workspace**.
+4. Select **Create new Workspace**.
 
 Complete the fields as follows:
 
@@ -169,6 +170,23 @@ Complete the fields as follows:
 
 Now that you have set up your Workspace, you can proceed to add a new pipeline.
 
+<details>
+<summary>Add connectors while creating a workspace</summary>
+  <iframe 
+      src="https://app.tango.us/app/embed/d267f7c8-767f-4f14-b382-7b20c96a8e08" 
+      title="Set up a Git Repository Connector for Harness IaCM" 
+      style={{minHeight:'640px'}}
+      width="100%" 
+      height="100%" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      frameborder="0" 
+      webkitallowfullscreen="webkitallowfullscreen" 
+      mozallowfullscreen="mozallowfullscreen" 
+      allowfullscreen="allowfullscreen"></iframe>
+</details>
+  
+---
+
 ## Add a Pipeline
 
 A pipeline allows you to lay out a workflow from one point to another with as many steps as necessary to carry out specific tasks like planning infrastructure changes, enforcing policies, or ensuring approval before proceeding to the next step. Go to [Harness Pipelines](https://developer.harness.io/docs/category/pipelines) for more information.
@@ -181,20 +199,39 @@ The following sections highlight how to add a pipeline through the Harness Platf
 You can include cost estimation as part of the workspace setup and in conjunction with the Provision operation in your pipeline. This is part of the `terraform plan` step in your pipeline, which provides you with an approximate cost of the infrastructure changes you are making.
 :::
 
-Start by adding the pipeline:
-1. Select the **Infrastructure** module.
-2. Select **Pipelines**, then select **Create a Pipeline**. 
-3. Enter a **Name**, then select **Start**.
-    - This will create a blank pipeline for you to add stages to.
-4. Click **Add Stage** and select **Infrastructure**.
-5. **Name** the stage to describe what it should do, then select **Set Up Stage**.  
-6. Go to the **Workspace** and select the Workspace you want the pipeline to run on.
-    Remember, the Workspace is configured with your Git and Cloud Provider connectors, which will determine where your infrastructure changes are applied.
-7. Go to the **Execution**, where a selection of **Operations** will be presented.  
-8. Select **Provision**, then select **Use Operation**.
-9. Select **Save**.
+<Tabs>
+  <TabItem value="Interactive guide">
+    <iframe 
+      src="https://app.tango.us/app/embed/82daee54-d0e5-4e07-bce1-cc8c6be850e7" 
+      title="Creating an IaCM Provision Pipeline" 
+      style={{minHeight:'640px'}}
+      width="100%" 
+      height="100%" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      frameborder="0" 
+      webkitallowfullscreen="webkitallowfullscreen" 
+      mozallowfullscreen="mozallowfullscreen" 
+      allowfullscreen="allowfullscreen"></iframe>
+  </TabItem>
+  <TabItem value="Step-by-step">
+  Start by adding the pipeline:
 
-The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Terraform Plugins](https://developer.harness.io/docs/infra-as-code-management/pipelines/iacm-plugins/terraform-plugins) for more information about Terraform commands.  
+  1. Select the **Infrastructure** module.
+  2. Select **Pipelines**, then select **Create a Pipeline**. 
+  3. Enter a **Name**, then select **Start**.
+      - This will create a blank pipeline for you to add stages to.
+  4. Click **Add Stage** and select **Infrastructure**.
+  5. **Name** the stage to describe what it should do, then select **Set Up Stage**.  
+  6. Go to the **Workspace** and select the Workspace you want the pipeline to run on.
+      Remember, the Workspace is configured with your Git and Cloud Provider connectors, which will determine where your infrastructure changes are applied.
+  7. Go to the **Execution**, where a selection of **Operations** will be presented.  
+  8. Select **Provision**, then select **Use Operation**.
+  9. Select **Save**.
+  </TabItem>
+</Tabs>
+  
+
+The Provision operation adds three Terraform plugin steps: `init`, `plan`, and `apply`. Go to [Terraform Plugins](https://developer.harness.io/docs/infra-as-code-management/pipelines/iacm-plugins/terraform-plugins) for more information about Terraform commands.
 
 ### Add an Approval step
 
