@@ -106,9 +106,8 @@ export default function FeatureFlags() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${
-            activePage === ActivePage.Certifications ? styles.active : ""
-          }`}
+          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
+            }`}
           onClick={handleCertficationClick}
         >
           {activePage !== ActivePage.Certifications ? (
@@ -121,9 +120,8 @@ export default function FeatureFlags() {
 
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
@@ -134,9 +132,8 @@ export default function FeatureFlags() {
         </button>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.SelfPacedTraning ? (
             <img src="/img/self-paced-training-logo-inactive.svg" />
@@ -353,8 +350,8 @@ export default function FeatureFlags() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-            Intensive two-day course is designed for engineers looking to deepen
-            their understanding and expertise.
+            Intensive two-day courses are designed for engineers looking to
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>

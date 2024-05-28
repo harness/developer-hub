@@ -23,6 +23,13 @@ import {
             link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
           },
           {
+            title: "Reference architectures",
+            module: MODULES.platform,
+            description:
+              "Review Harness Self-Managed Enterprise Edition reference architectures.",
+            link: "/docs/self-managed-enterprise-edition/reference-architecture",
+          },
+          {
             title: "Onboarding guide",
             module: MODULES.platform,
             description:
@@ -71,13 +78,6 @@ import {
         description:
           "",
         list: [
-          {
-            title: "Reference architectures",
-            module: MODULES.platform,
-            description:
-              "Review Harness Self-Managed Enterprise Edition reference architectures.",
-            link: "/docs/self-managed-enterprise-edition/advanced-configurations/reference-architecture/",
-          },
           {
             title: "Configure external databases",
             module: MODULES.platform,

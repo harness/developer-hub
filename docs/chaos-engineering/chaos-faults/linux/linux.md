@@ -247,19 +247,3 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 </Accordion>
 
 </FaultDetailsCard>
-
-<FaultDetailsCard category="linux">
-
-### Redis cache penetration
-
-Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Slows down the database for responses to other requests.
-- Determines the resilience of Redis-dependant application when cache requests are continuously sent to a Redis database and they result in a cache miss.
-
-</Accordion>
-
-</FaultDetailsCard>

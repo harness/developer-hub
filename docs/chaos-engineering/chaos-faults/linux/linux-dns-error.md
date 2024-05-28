@@ -64,7 +64,7 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 The `hostNames` input variable subjects the comma-separated host names to chaos.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-dns-error/hostnames.yaml yaml)
 ```yaml
@@ -84,7 +84,7 @@ spec:
 
 The `matchScheme` input variable either exactly matches one of the targets to the DNS query or has any of the targets as a substring of the DNS query.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-dns-error/matchscheme.yaml yaml)
 ```yaml

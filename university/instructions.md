@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 description: Hands On Labs Instructions
 title: Hands on Labs instructions
 redirect_from:
@@ -10,7 +10,7 @@ redirect_from:
 
 :::info
 
-These instructions are in support of our Admin and Architect level exams.
+These instructions are in support of our Admin and Architect level certification exams.
 
 :::
 
