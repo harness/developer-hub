@@ -65,7 +65,7 @@ Harness recommends configuring your connector before creating your workspace, ho
 
 ## Add connectors
 
-To configure your connectors before you proceed in creating a Workspace see the following interactive guides:
+To configure your connectors before you create a Workspace, go to the following interactive guides:
 
 <Tabs>
 <TabItem value="Cloud Provider connector">
@@ -150,7 +150,7 @@ Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/
 
 ## Add a new workspace
 
-Once you have configured your connectors you can create a Workspace a select them in the New Workspace panel:
+Once you have configured your connectors, you can create a Workspace and select them in the New Workspace panel:
 
 1. In the module pane, select **Infrastructure**.
 2. Select an existing project or create a new project.
