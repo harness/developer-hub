@@ -564,7 +564,7 @@ The bug has now been fixed, and you should be able to select an alternate versio
 
 #### Behavior change
 
--There is a change in the permissions associated with [Overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2):
+- There is a change in the permissions associated with [Overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2):
   - Previously: for service-specific, service, and infrastructure-specific overrides, the environment Create and Edit permissions were required.
   - Now: the environment Create and Edit permissions are not required. Only the service Create and Edit permissions are required.
   - Here is the comprehensive list of permissions required across different types:
