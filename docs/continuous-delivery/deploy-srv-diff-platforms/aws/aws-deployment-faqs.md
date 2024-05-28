@@ -470,4 +470,19 @@ Yes. The **Same as already running instances** setting in **ECS Rolling Deploy**
 
 Yes. By default, deployments aren't forced. You can use the **Force new deployment** setting in **ECS Rolling Deploy** to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (`my_image:latest`) or to roll Fargate tasks onto a newer platform version.
 
+### What is function definitions syntax?
+
+- Harness expects camel case in the function definition.
+
+- user can provide yaml or json in the function definition
+
+'''
+"vpcConfig": \{
+
+"securityGroupIds": ["string"],
+
+"subnetIds": ["string"]
+
+'''
+
 

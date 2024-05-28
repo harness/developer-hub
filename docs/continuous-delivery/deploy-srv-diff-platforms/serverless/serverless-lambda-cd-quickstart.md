@@ -1196,3 +1196,7 @@ functions:
   hello:
     image: <+artifact.image>
 ```
+
+## FAQs
+
+For frequently asked questions about Serverless Lambda deployments in Harness, go to [Serverless Lambda deployments FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-deployment-faqs).

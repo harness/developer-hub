@@ -440,6 +440,15 @@ You can have a shell script step in which you fetch the file from your correspon
 
 The Run step is only supported in the CI and CD stages. For the custom stage, please use the Shell Script step.
 
+### Is the state file fully and uniquely identified by the combination of "provisioner ID" and "workspace name"?
+
+Yes, State files are uniquely identifiable using "provisionerID" and "Workspace Name" that is why the provisioner ID should always be unique.
+
+### How can one use `AWS CDK Infra Provisioning Support` on Harness?
+
+Harness lets users run AWS CDK Workloads via the Container Based Steps.
+Please follow more on this [Documentation](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/aws-cdk/)
+
 
 
 
