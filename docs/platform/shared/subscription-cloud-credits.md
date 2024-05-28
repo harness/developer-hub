@@ -27,7 +27,7 @@ On the **Subscriptions** page, select **Cloud Credits**.
 
 - **Start Date:** The date on which a block of credits were applied to your account.
 - **Expiry Date:** The date on which a block of credits expires.
-- **Type:** The credit type, Free, Team, or Enterprise.
+- **Type:** The credit type: Free, Team, or Enterprise.
 - **Quota:** The total number or allocated credits.
 - **Used:** Credits consumed during the active credit period.
    - The active credit period is the time between the **Start Date** and **Expiry Date** for your oldest unexpired credits.
