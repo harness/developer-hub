@@ -141,7 +141,7 @@ This can later be parsed to get the desired output variables and published accor
 
 ### How to set unsupported fields when creating a Jira issue?
 
-By default, Jira plugins don't support cascading lists and other custom types. You can set the unsupported fields using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). For more details, go to [Use HTTP step to set unsupported fields when created a Jira issue](https://developer.harness.io/kb/continuous-delivery/articles/create-cascading-fields-jira).
+By default, Jira plugins don't support cascading lists and other custom types. You can set the unsupported fields using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). For more details, go to [Use HTTP step to set unsupported fields when creating a Jira issue](https://developer.harness.io/kb/continuous-delivery/articles/create-cascading-fields-jira).
 
 ## Shell Script step
 
