@@ -4,11 +4,11 @@ description: Instructions on setting unsupported fields when creating a JIRA iss
 ---
 
 
-This article talks about using the HTTP step to set the fields that are not supported by default by the Jira plugin using an example. 
+This article talks about using the HTTP step to set the fields that are not supported by Harness using an example. 
 
-By default, Jira plugins don't support cascading lists and other custom types. For the list of supported Jira fields, go to [Add issue fields](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-issue-fields).
+By default, Harness don't support cascading lists and other custom field types. For the list of supported Jira fields, go to [Add issue fields](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-issue-fields).
 
-We will discuss how to set a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). 
+We will discuss how to set a [cascading list](https://confluence.atlassian.com/jirakb/creating-dependent-cascading-lists-in-jira-server-datacenter-1142426572.html) using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). This unblocks integration to jira projects which have such fields marked as mandatory.
 
 Create a pipeline with a [Custom stage](/docs/platform/pipelines/add-a-stage/#add-a-custom-stage) and configure the following steps under the Execution tab of the pipeline. 
 
@@ -18,7 +18,7 @@ In the HTTP step's **Step Parameters**, configure the following fields.
 
 - URL: Enter your Jira server details. For example, `https://<your_JIRA_domain>/rest/api/2/issue`.
 - Method: Select **POST** HTTP method.
-- Request Body: Enter the cURL command to create cascading field. Here's a sample:  
+- Request Body: Enter the cURL command to create a task in project `TES` with a summary and cascading field with id `customfield_10500`. Here's a sample:  
 
   ```
   {
@@ -39,6 +39,8 @@ In the HTTP step's **Step Parameters**, configure the following fields.
    }
   }
   ```
+  - 
+
 - Optional Configuration: Enter the following optional configurations.
   - Headers: Enter the following Key:Value information:
     - Content-Type: `application/json`
