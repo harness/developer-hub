@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2024-05-20:T10:00:15
+date: 2024-05-28:T10:00:15
 sidebar_position: 8
 ---
 
@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## May 2024
 
-### Version 1.39.x
+### Version 1.39.4
 
 #### Fixed issues
 
