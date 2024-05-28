@@ -13,11 +13,11 @@ import TabItem from '@theme/TabItem';
 Welcome to the Harness Infrastructure as Code Management (IaCM) onboarding guide. This topic introduces you to the powerful capabilities of IaCM using Harness and guides you through key functionalities that streamline and secure your infrastructure management tasks.  
 
 
-## What is IaCM?
+### What is IaCM?
 
 Infrastructure as Code (IaC) enables the automated management and provisioning of infrastructure through machine-readable definition files. Infrastructure as Code Management (IaCM) extends this by focusing on the oversight and enhancement of IaC practices, ensuring consistency, accountability, and repeatability across deployments. Harness enhances IaCM with features like real-time cost estimation, automated policy enforcement, and drift detection, ensuring that your infrastructure is provisioned efficiently and complies with organizational standards and budget constraints.
 
-## Prerequisites
+### Prerequisites
 
 Before beginning the walkthroughs in this guide, ensure you have:
 
@@ -26,7 +26,7 @@ Before beginning the walkthroughs in this guide, ensure you have:
 - Access to a Cloud Provider such as AWS or Google Cloud Platform.
 - An [organization and project set up](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization) on the Harness Platform.
 
-## Sample Terraform
+### Sample Terraform
 
 The following example Terraform (.tf) file declares:
 
@@ -148,7 +148,7 @@ Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/
 
 ---
 
-### Add a new workspace
+## Add a new workspace
 
 Once you have configured your connectors you can create a Workspace a select them in the New Workspace panel:
 
@@ -185,6 +185,7 @@ Now that you have set up your Workspace, you can proceed to add a new pipeline.
       allowfullscreen="allowfullscreen"></iframe>
 </details>
   
+---
 
 ## Add a Pipeline
 
