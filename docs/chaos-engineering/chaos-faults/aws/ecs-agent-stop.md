@@ -7,12 +7,12 @@ redirect_from:
 
 ECS agent stop disrupts the state of infrastructure resources. This fault:
 - Induces an agent stop chaos on AWS ECS using Amazon SSM Run command, that is carried out by using SSM documentation which is in-built in the fault for the give chaos scenario.
-- Causes agent container stop on ECS for a specific duration, with a given `CLUSTER_NAME` envrionment variable using SSM documentation. Killing the agent container disrupts the performance of the task containers.
+- Causes agent container stop on ECS for a specific duration, with a given `CLUSTER_NAME` environment variable using SSM documentation. Killing the agent container disrupts the performance of the task containers.
 
 ![ECS Agent Stop](./static/images/ecs-agent-stop.png)
 
 ## Use cases
-ECS agent stop halts the agent that manages the task container on the ECS cluster, thereby impacting its delivery. 
+ECS agent stop halts the agent that manages the task container on the ECS cluster, thereby impacting its delivery.
 
 
 ### Prerequisites
