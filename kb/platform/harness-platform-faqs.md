@@ -3294,6 +3294,6 @@ cat /values.jksbase64 | base64 -d
 
 The minimum supported screen resolution is 1440x900.
 
-#### Is there any way to set default size of step logs in browser. By default when I open up the GUI to view step logs, their width is maybe 25% of the screen? 
+#### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
-Currently there is no settings to change the default view setup in GUI, you can expand and adjust as per need and once opened as soon as you refresh or swicth to other execution it will set back to default again
+Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
