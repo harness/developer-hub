@@ -247,18 +247,3 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 </Accordion>
 
 </FaultDetailsCard>
-
-<FaultDetailsCard category="linux">
-
-### Redis Sentinel stop
-
-Linux Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel) for a specific chaos duration and then starts it.
-
-<Accordion color="green">
-<summary>Use cases</summary>
-
-- Determines the resilience of Redis-dependant application when the Redis server is unavailable.
-
-</Accordion>
-
-</FaultDetailsCard>

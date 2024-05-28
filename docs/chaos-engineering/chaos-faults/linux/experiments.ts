@@ -93,13 +93,10 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
-    name: "Redis Sentinel stop",
+    name: "Redis cache penetration",
     description:
-      "Linux Redis Sentinel stop fault stops the Redis Sentinel server for a specific chaos duration and then starts it.",
-    tags: ["linux","stop"],
+      "Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.",
+    tags: ["linux"],
     category: "linux",
   },
 ];
-
-
-
