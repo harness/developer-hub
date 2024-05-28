@@ -275,5 +275,4 @@ Linux Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.
 - Determines the resilience of Redis-dependant application when the Redis server is unavailable.
 
 </Accordion>
-
 </FaultDetailsCard>
