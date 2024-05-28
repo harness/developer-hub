@@ -3294,6 +3294,6 @@ cat /values.jksbase64 | base64 -d
 
 The minimum supported screen resolution is 1440x900.
 
-#### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
+### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
 
 Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.
