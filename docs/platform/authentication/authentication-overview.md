@@ -78,7 +78,7 @@ Select **Enforce password strength** to open the dialog shown below.![](./static
   - Include at least one digit.
   - Include at least one special character.
 
-If you enforce **Have at least one special character**, each password must include one (or more) of the following characters: `! @ # $ % ^ & * ( ) - _ = + \ | [ ] { } ; : / ? . >`
+If you enforce **Have at least one special character**, each password must include one or more of the following characters: `! @ # $ % ^ & * ( ) - _ = + \ | [ ] { } ; : / ? . >`
 
 ### Enforce password expiration
 
