@@ -17,7 +17,7 @@ import { experiments } from "./experiments"
 
 AWS faults disrupt the resources running on different AWS services from the EKS cluster. To perform such AWS chaos experiments, you will need to authenticate CE with the AWS platform. This can be done in two ways.
 
-- **Using secrets:** You can use secrets to authenticate CE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes’ native way of authenticating CE with AWS.
+- **Using secrets:** You can use secrets to authenticate CE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes' native way of authenticating CE with AWS.
 - [**IAM integration:**](./aws-iam-integration.md) You can authenticate CE using AWS using IAM when you have deployed chaos on the EKS cluster. You can associate an IAM role with a Kubernetes service account. This service account can be used to provide AWS permissions to the experiment pod which uses the particular service account.
 
 Here are AWS faults that you can execute and validate.
@@ -837,6 +837,26 @@ RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. 
 <Accordion color="green">
 <summary>Use cases</summary>
 This fault determines the resilience of an application to RDS instance reboot.
+</Accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### SSM chaos by ID
+
+AWS SSM chaos by ID induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
+- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
+- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
+- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given ID(s).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+AWS SSM chaos by ID:
+- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
+- Triggers the provided SSM document provided as an input to other AWS chaos.
+- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
+
 </Accordion>
 </FaultDetailsCard>
 
