@@ -501,7 +501,7 @@ To test Azure SSO using Harness, do the following:
 
 1. In **Harness**, in **ACCOUNT SETUP**->**Authentication**, select **Login via SAML**, to enable SAML SSO using the Azure provider.
 2. Open a new Chrome Incognito window to test the SSO login using a Harness User account other than the one you are currently logged in with.
-3. Using one of the user account email addresses that are shared by Harness and Azure, log into Harness. When you log into Harness, you are prompted with the Microsoft Sign in dialog.
+3. Sign into Harness using one of the user account email addresses shared by Harness and Azure. When you sign into Harness, you are prompted with the Microsoft Sign in dialog.
 4. Enter the Azure user name for the user (most often, the email address), enter the Azure password, and click **Sign in**.
 
 ### SAML authorization with Azure
