@@ -93,6 +93,13 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
+    name: "Redis cache limit",
+    description:
+      "Redis cache limit fault limits the amount of memory used by a Redis cache. The original limit is restored after the chaos duration.",
+    tags: ["linux","limit"],
+    category: "linux",
+  },
+    {
     name: "Redis cache expire",
     description:
       "Redis cache expire expires a given key (or all keys) for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.",

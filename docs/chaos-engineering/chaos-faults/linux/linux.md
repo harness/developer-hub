@@ -245,7 +245,20 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.
 
 </Accordion>
+</FaultDetailsCard>
 
+<FaultDetailsCard category="linux">
+
+### Redis cache limit
+
+Redis cache limit fault limits the amount of memory used by a Redis cache. The original limit is restored after the chaos duration.
+  
+<Accordion color="green">
+<summary>Use cases</summary>
+  
+- Determines the resilience of Redis-dependant applications on frequent cache misses that occur due to a low cache size.
+
+</Accordion>
 </FaultDetailsCard>
 
 <FaultDetailsCard category="linux">
@@ -272,7 +285,7 @@ Linux Redis Sentinel stop fault stops the [Redis Sentinel server](https://redis.
 <Accordion color="green">
 <summary>Use cases</summary>
 
-- Determines the resilience of Redis-dependant application when the Redis server is unavailable.
+- Determines the resilience of Redis-dependant applications on frequent cache misses that occur due to a low cache size.
 
 </Accordion>
 </FaultDetailsCard>
