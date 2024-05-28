@@ -79,6 +79,21 @@ Linux network rate limit:
     <td> For example, <code>1mbit</code>. </td>
   </tr>
   <tr>
+    <td> sourcePorts </td>
+    <td> Source ports to be filtered for chaos. For example, <code> 5000,8080 </code> </td>
+    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code> </td>
+  </tr>
+  <tr>
+    <td> destinationPorts </td>
+    <td> Destination ports to be filtered for chaos. For example, <code> 5000,8080 </code> </td>
+    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code>. </td>
+  </tr>
+  <tr>
+    <td> whitelistSSH </td>
+    <td> Specifies wether SSH connectivity should be retained during the chaos in the target machine. </td>
+    <td> Default: <code>true</code>. Supports one of: <code>true</code>, <code>false</code></td>
+  </tr>
+  <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
     <td> Default: 30s </td>
