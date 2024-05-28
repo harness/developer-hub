@@ -39,7 +39,6 @@ In the HTTP step's **Step Parameters**, configure the following fields.
    }
   }
   ```
-
 - Optional Configuration: Enter the following optional configurations.
   - Headers: Enter the following Key:Value information:
     - Content-Type: `application/json`
