@@ -82,6 +82,128 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+## June xx, 2024, version 0.17.0
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.17.0](https://github.com/harness/helm-charts/releases/tag/harness-0.17.0) |
+| Air Gap Bundle | [0.17.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.0) |
+| NG Manager | 1.31.4 |
+| CI Manager | 1.21.5 |
+| Pipeline Service | 1.68.2 |
+| Platform Service | 1.17.1 |
+| Access Control Service | 1.39.1 |
+| Delegate | 24.03.82600 |
+| Change Data Capture | 1.5.4 |
+| STO Core | 1.90.1 |
+| Test Intelligence Service | 1.13.1 |
+| NG UI | 1.14.5 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.17.0/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.0/sto_images.tgz" \
+  .
+```
+
+### New features and enhancements 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
+
+#### Cloud Cost Management
+
+#### Continuous Delivery
+
+#### Continuous Integration
+
+#### Feature Flags
+
+#### Internal Developer Portal
+
+#### Harness Platform
+
+- AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
+
+#### Security Testing Orchestration
+
+### Fixed issues 222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+
+#### Cloud Cost Management
+
+#### Continuous Delivery
+
+#### Continuous Integration
+
+#### Feature Flags
+
+#### Internal Developer Portal
+
+#### Harness Platform
+
+- When adding users to a User Group, the search string persisted in the input field even after a user was selected. We have updated the User Group Form page to automatically clear the search query once a user is selected, enhancing usability. (PL-49256, ZD-62169)
+
+- 2FA reset emails failed to display the QR code properly due to the recent deprecation of Google APIs. The method for generating QR codes has been updated, resolving the issue and ensuring QR codes are now correctly included in 2FA reset emails. This item requires Harness Delegate version 24.04.82804. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate) (PL-48980, ZD-61314, ZD-61420, ZD-61486)
+
+- The link to Slack on the UI Help section was not functioning. The community link has been updated to ensure it works correctly. (PL-48948, ZD-61203)
+
+- Delegates with mTLS enabled were able to send a heartbeat to Harness Manager despite being configured with a non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to Harness Manager. (PL-48891, ZD-60974) This item requires Harness Delegate version 24.04.82901. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48891, ZD-60974)
+
+- When a new pipeline for approval was created, but the approval email was not being sent, preventing testing of the link within the approval email. Resolved this issue that prevented notifications from being sent to multiple emails configured in a user group for email notifications. (PL-48854, ZD-60366, ZD-61333)
+
+- Users experienced authentication issues when switching the OAuth type from SAML, leading to incorrect OAuth authentication status displays. Implemented changes to accurately reflect the status (enabled or disabled) of OAuth authentication for users. (PL-48788, ZD-60869)
+
+- Delegate utilization metrics failed to decrease below a set threshold, even when rejecting all tasks. To solve this, memory-based threshold checks have been removed from the delegate due to functional discrepancies. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48781, ZD-60713)
+
+- The feature flag subscription indicated it was expired, and the license was not updating automatically. Users had to manually pay each invoice after the billing cycle was completed. Users can now view the correct billing due date on their subscription page. Additionally, the system has been updated to automatically charge the credit card on file when an invoice is generated. (PL-48671, ZD-57836)
+
+- The audit trail filter did not include an option for the **Token** resource type, hindering the ability to filter for API token updates. Added a **Token** filter option to the audit trail, enabling users to specifically filter for Token & API Key updates through a dropdown menu. (PL-48606)
+
+- Email steps were failing due to the system's inability to find users with emails containing uppercase letters, as Harness converts and stores all emails in lowercase. (PL-48532, ZD-60291)
+
+- The delegate task rejection metric was designed to reflect tasks rejected by a delegate due to system-related reasons (such as lack of resources or exceeding the limit of parallel tasks) but did not include specific details like task type or task ID. Enhanced the task rejection metrics by adding `taskType` and `taskId` labels. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48488)
+
+- Intermittent socket timeout exceptions occurred in running pipelines due to secret decryption failures, triggering unnecessary re-broadcasts on the delegate side. Resolved the issue of intermittent secret decryption failures within pipelines, ensuring stable and uninterrupted pipeline execution. This item requires Harness Delegate version 24.04.82901. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47940, ZD-58006)
+
+- Slack channel notifications failed due to an error related to explicitly setting the "Host" header as "hooks.slack.com". We have removed the explicit "Host" header setting to support both Slack-specific webhook URLs and regular URLs, resolving the issue in this version. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914)
+
+- Users were being logged out when testing a Git connector with invalid credentials due to the Git client's 401 response being propagated to the UI. Implemented error handling to convert a 401 response from the test connection step to a 400, while preserving the original error message, preventing unintended user logouts. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47753, ZD-58629)
+
+- Local login was failing for users assigned admin permissions via a user group. The method to verify if a user is an account admin only considered direct user assignments and did not account for user group roles. Revised the validation process to include both user and user group assignments when checking for admin status. Now, to be recognized as an admin, users must have the specific role assignments outlined below; assigning the `_account_admin` role alone is no longer sufficient for admin rights. (PL-47632)
+   - Role: `_account_admin`.
+   - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
+
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
+
+- Account admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level Harness-managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
+
+#### Security Testing Orchestration
+
+### Early access feature 333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+
+#### Cloud Cost Management
+
+#### Continuous Delivery
+
+#### Continuous Integration
+
+#### Feature Flags
+
+#### Internal Developer Portal
+
+#### Security Testing Orchestration
+
+
 ## May 13, 2024, patch version 0.14.10
 
 This release includes the following Harness module and component versions.
