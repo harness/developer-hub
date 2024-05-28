@@ -226,6 +226,10 @@ const config = {
                 to: "university/chaos-engineering",
               },
               {
+                label: "Virtual Instructor-Led Calendar",
+                to: "https://university-registration.harness.io/calendar",
+              },
+              {
                 label: "Instructions",
                 to: "university/instructions",
               },
@@ -375,6 +379,10 @@ const config = {
               {
                 label: "Feature Requests",
                 to: "https://ideas.harness.io",
+              },
+              {
+                label: "Instructor-Led Training",
+                to: "https://developer.harness.io/university?ilt",
               },
             ],
           },
