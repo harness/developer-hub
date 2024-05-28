@@ -70,7 +70,7 @@ Linux network rate limit:
   </tr>
   <tr>
     <td> minBurst </td>
-    <td> Size of the peakrate bucket. </td>
+    <td> Size of the peak rate bucket. </td>
     <td> For example, <code>1kb</code>. </td>
   </tr>
     <tr>
@@ -81,7 +81,7 @@ Linux network rate limit:
   <tr>
     <td> sourcePorts </td>
     <td> Source ports to be filtered for chaos. For example, <code> 5000,8080 </code> </td>
-    <td> Alternatively, the ports can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code> </td>
+    <td> Alternatively, the ports that can be whitelisted, that is, filtered to be exempt from chaos. Prepend a <code>!</code> to the list of ports to be exempted. For example, <code> !5000,8080 </code> </td>
   </tr>
   <tr>
     <td> destinationPorts </td>
@@ -90,7 +90,7 @@ Linux network rate limit:
   </tr>
   <tr>
     <td> whitelistSSH </td>
-    <td> Specifies wether SSH connectivity should be retained during the chaos in the target machine. </td>
+    <td> Specifies whether the SSH connectivity should be retained during the chaos in the target machine.</td>
     <td> Default: <code>true</code>. Supports one of: <code>true</code>, <code>false</code></td>
   </tr>
   <tr>
