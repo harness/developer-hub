@@ -382,7 +382,7 @@ const config = {
               },
               {
                 label: "Instructor-Led Training",
-                to: "https://developer.harness.io/university?ilt",
+                to: "/university?ilt",
               },
             ],
           },
