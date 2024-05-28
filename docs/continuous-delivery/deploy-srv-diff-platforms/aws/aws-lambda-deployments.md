@@ -745,17 +745,6 @@ pipeline:
 
 ## FAQs
 
-### What is the function definitions syntax
+For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).
 
-- Harness expects camel case in the function definition.
 
-- user can provide yaml or json in the function definition
-
-'''
-"vpcConfig": \{
-
-"securityGroupIds": ["string"],
-
-"subnetIds": ["string"]
-
-'''

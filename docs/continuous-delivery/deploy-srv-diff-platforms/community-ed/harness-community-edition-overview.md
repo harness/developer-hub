@@ -107,3 +107,7 @@ The use of this information is governed by our [Privacy Policy](https://harness.
 
 If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, see our [Privacy Policy](https://harness.io/privacy).
 
+## FAQs
+
+For frequently asked questions about Azure deployments in Harness, go to [Azure deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-faqs).
+

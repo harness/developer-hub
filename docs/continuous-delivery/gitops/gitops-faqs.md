@@ -141,3 +141,15 @@ To disable logging to Stackdriver in GitOps, set `GITOPS_AGENT_ENABLE_STACK_DRIV
 
 The `Add Deployment Repo Manifest` primarily serves as a means to access additional repositories within the PR Pipeline. While the Release Repo is utilized directly by the pipeline, the Deployment Repo facilitates the retrieval of information from another repository, enhancing the pipeline's functionality and flexibility.
 
+### Can I use Harness GitOps images from a local registry?
+
+Yes. Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
+
+### Can I automate the provisioning of the GitOps Agent without creating the agent in the UI first?
+
+Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
+
+### Does Microsoft Teams support full GitOps ?
+
+No, Microsoft Teams does not support GitOps.
+
