@@ -140,7 +140,7 @@ export default function CertificationsCD() {
           className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
             }`}
         >
-         {activePage === ActivePage.SelfPacedTraning ? (
+          {activePage === ActivePage.SelfPacedTraning ? (
             <img src="/img/self-paced-training-logo-inactive.svg" />
           ) : (
             <img src="/img/self-paced-training-logo-active.svg" />
@@ -420,8 +420,8 @@ export default function CertificationsCD() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-            Intensive two-day course is designed for engineers looking to deepen
-            their understanding and expertise.
+            Intensive two-day courses are designed for engineers looking to
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
