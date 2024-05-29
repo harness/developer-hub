@@ -72,9 +72,7 @@ The following topics describe end-to-end example pipelines for ingesting SARIF d
 
 - [Custom Ingest settings reference](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
 
-- [Gitleaks Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
-
 - [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 
-- [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/run-scans-using-github-actions)
+- [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions)
 

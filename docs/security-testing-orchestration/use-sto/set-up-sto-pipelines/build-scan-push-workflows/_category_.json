@@ -1,6 +1,6 @@
 {
     "label": "Build-scan-push workflows",
-    "position": 10,
+    "position": 80,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",   

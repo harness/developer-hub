@@ -168,6 +168,6 @@ Here are some topics that describe end-to-end workflows for ingesting SARIF and 
 
 - [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 
-- [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/run-scans-using-github-actions)
+- [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions)
 
 - [Ingest JSON results from custom or unsupported scanners](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingesting-issues-from-other-scanners)

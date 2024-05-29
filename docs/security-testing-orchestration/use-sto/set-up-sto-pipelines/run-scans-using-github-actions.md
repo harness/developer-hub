@@ -2,7 +2,7 @@
 title: Run STO scans using GitHub Action and Drone Plugin steps
 description: Pipeline examples that use GitHub Actions and Drone plugins.  
 sidebar_label: Scan and ingest from GitHub Actions and Drone Plugins
-sidebar_position: 30
+sidebar_position: 90
 redirect_from: 
   - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions
 ---
@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
   * GitHub **job** = Harness **Stage**
   * GitHub **step** = Harness **step**
 
-  ![](../static/sto-gha-vs-harness-concepts.png)
+  ![](./static/sto-gha-vs-harness-concepts.png)
 
 * Harness recommends that you output your scan results to a data file in [SARIF format](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning). You can then use a [Custom Ingestion step](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) to ingest the results into your pipeline. 
 

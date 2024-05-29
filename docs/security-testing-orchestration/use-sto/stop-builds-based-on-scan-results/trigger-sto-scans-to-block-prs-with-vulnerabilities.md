@@ -2,7 +2,7 @@
 title: Trigger STO scans to block pull requests with vulnerabilities
 description: How to trigger STO scans to block PRs with vulnerabilities.
 sidebar_label: Trigger STO scans to block pull requests
-sidebar_position: 5
+sidebar_position: 20
 ---
 
 import Tabs from '@theme/Tabs';

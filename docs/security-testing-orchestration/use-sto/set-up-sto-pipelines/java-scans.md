@@ -1,7 +1,7 @@
 ---
 title: Scanning Java Binaries in STO
 description: How to scan Java binary (.jar, .class) files. 
-sidebar_position: 90
+sidebar_position: 100
 sidebar_label: Scan Java binaries
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/java-scans
