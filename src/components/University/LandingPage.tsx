@@ -430,7 +430,7 @@ export default function University() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.cardType === "SPT" &&
+                    spt.cardType === "FREE" &&
                     spt.tileType === "normal"
                   );
                 })

@@ -465,7 +465,7 @@ export default function CertificationsCI() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "ci" && spt.cardType === "SPT" ||
+                    spt.module === "ci" && spt.cardType === "FREE" ||
                     (spt.module === "ci" && spt.tileType === "comming soon")
                   );
                 })

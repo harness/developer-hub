@@ -467,7 +467,7 @@ export default function CertificationsCD() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "cd" && spt.cardType === "SPT" ||
+                    spt.module === "cd" && spt.cardType === "FREE" ||
                     (spt.module === "cd" && spt.tileType === "comming soon")
                   );
                 })

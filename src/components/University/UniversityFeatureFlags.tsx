@@ -395,7 +395,7 @@ export default function FeatureFlags() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "ff" && spt.cardType === "SPT" ||
+                    spt.module === "ff" && spt.cardType === "FREE" ||
                     (spt.module === "ff" && spt.tileType === "comming soon")
                   );
                 })
