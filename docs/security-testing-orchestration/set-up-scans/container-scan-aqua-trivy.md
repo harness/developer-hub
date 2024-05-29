@@ -1,7 +1,7 @@
 ---
 title: "Scan an artifact with Aqua Trivy"
 description: Scan artifacts Aqua Trivy.
-sidebar_position: 20
+sidebar_position: 30
 redirect_from:
   - /tutorials/security-tests/container-scan-aqua-trivy
   - /docs/security-testing-orchestration/get-started/sto-tutorials/container-scan-aqua-trivy

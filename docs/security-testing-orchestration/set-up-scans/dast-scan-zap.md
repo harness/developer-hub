@@ -1,7 +1,7 @@
 ---
 title: "Scan an instance with Zed Attack Proxy"
 description: Scan a web app using ZAP.
-sidebar_position: 30
+sidebar_position: 40
 redirect_from:
   - /tutorials/security-tests/dast-scan-zap
   - /docs/security-testing-orchestration/get-started/sto-tutorials/dast-scan-zap

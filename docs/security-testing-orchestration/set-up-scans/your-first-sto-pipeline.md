@@ -1,7 +1,7 @@
 ---
 title: Your first STO pipeline
 description: Set up a simple pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
-sidebar_position: 20
+sidebar_position: 10
 redirect_from:
   - /tutorials/security-tests/standalone-pipeline
   - /tutorials/security-tests/cicd-integrated-pipeline
@@ -104,7 +104,7 @@ Every STO scan has a specific [target name and variant](/docs/security-testing-o
 
 </details>
 
-import set_up_harness_26 from './static/configure-bandit-step.png'
+import set_up_harness_26 from './static/your-first-pipeline/configure-bandit-step.png'
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
