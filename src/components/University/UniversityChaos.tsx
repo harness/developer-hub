@@ -456,7 +456,7 @@ export default function CertificationsChaos() {
               {ilt
                 .filter((spt) => {
                   return (
-                    spt.module === "ce" && spt.cardType === "SPT" ||
+                    spt.module === "ce" && spt.cardType === "FREE" ||
                     (spt.module === "ce" && spt.tileType === "comming soon")
                   );
                 })

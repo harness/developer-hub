@@ -393,7 +393,7 @@ export default function CloudCostManagement() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "ccm" && spt.cardType === "SPT" ||
+                    spt.module === "ccm" && spt.cardType === "FREE" ||
                     (spt.module === "ccm" && spt.tileType === "comming soon")
                   );
                 })

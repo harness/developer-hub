@@ -399,7 +399,7 @@ export default function CertificationsSTO() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "sto" && spt.cardType === "SPT" ||
+                    spt.module === "sto" && spt.cardType === "FREE" ||
                     (spt.module === "sto" && spt.tileType === "comming soon")
                   );
                 })
