@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Create a build-scan-push pipeline (STO and CI)"
+title: "(STO/CI licenses) Create a build-scan-push pipeline"
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 80
 redirect_from:
@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-In this tutorial, you'll create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two popular open-source tools:
+This topic describes how to create an end-to-end pipeline that uses STO and CI steps to build an image and pushes it to Docker Hub _only_ if the codebase and image contain no critical vulnerabilties. This pipeline uses two popular open-source tools:
 
 - [Bandit](https://bandit.readthedocs.io/en/latest), for scanning Python code.
 
@@ -45,7 +45,7 @@ The following steps describe the workflow:
 
   - Harness STO and CI module licenses.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline) is a good introduction.
+  - A basic understanding of key STO concepts and good practices is recommended. [Your first STO pipeline](/docs/security-testing-orchestration/set-up-scans/your-first-sto-pipeline) is a good introduction.
   - GitHub requirements:
 
     - A GitHub account and access token.

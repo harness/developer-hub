@@ -15,9 +15,9 @@ The following workflows and tutorials are available.
 
 - Getting started:
 
-  - [Set up Harness for STO](./onboarding-guide) This is a good primer if you're new to Harness. It guides you through the process of setting up the connectors, delegate, and infrastructure needed to run STO scans.
+  - [Set up Harness for STO](/docs/security-testing-orchestration/get-started/onboarding-guide) This is a good primer if you're new to Harness. It guides you through the process of setting up the connectors, delegate, and infrastructure needed to run STO scans.
 
-  - [Your first STO pipeline](./your-first-sto-pipeline) This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
+  - [Your first STO pipeline](/docs/security-testing-orchestration/set-up-scans/your-first-sto-pipeline) This tutorial covers the basic concepts of STO. You'll set up a standalone pipeline with one scanner, run scans, analyze the results, and learn how to investigate and fix detected vulnerabilities.
 
 - Quickstarts:
 
@@ -29,8 +29,11 @@ The following workflows and tutorials are available.
 
   <!-- - [Trigger automated scans using GitLab merge requests](../use-sto/set-up-sto-pipelines/gitlab-ci-integration) This tutorial shows how to set up a STO pipeline that runs a build and scans a code repository automatically in response to a Git event. -->
 
+<!--
 - Integrated end-to-end workflows:
 
   - [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-only) Set up an end-to-end STO pipeline that scans your codebase. Then it builds an image and scans it. If the image scan detects no critical issues, the pipeline pushes the image to your registry.
 
   - [Create a build-scan-push pipeline (STO and CI)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-ci) Set up an end-to-end STO/CI pipeline that scans your codebase, builds/pushes a test image, and then scans it. If there are no critical issues, the pipeline builds/pushes a prod image.
+
+-->

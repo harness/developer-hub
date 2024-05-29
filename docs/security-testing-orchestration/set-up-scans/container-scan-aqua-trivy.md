@@ -25,7 +25,7 @@ In this tutorial, you'll set up a simple [orchestration workflow](/docs/security
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
   - A basic understanding of key STO concepts and good practices is highly recommended. Here are some good resources: 
-    - [Your first STO pipeline](/docs/security-testing-orchestration/get-started/your-first-sto-pipeline)
+    - [Your first STO pipeline](/docs/security-testing-orchestration/set-up-scans/your-first-sto-pipeline)
     - [Key Concepts in STO](/docs/category/key-concepts-in-sto)
   - A [connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) to the Docker v2-compliant registry with the image you want to scan. 
     This tutorial uses an [example image on Docker Hub](https://hub.docker.com/r/snyklabs/goof) that contains known vulnerabilities.
@@ -51,11 +51,7 @@ Do the following:
 
    You can also use a Kubernetes or Docker build infrastructure, but these require additional work to set up. For more information, go to [Set up a build infrastructure for STO](/docs/security-testing-orchestration/get-started/onboarding-guide#set-up-a-build-infrastructure-for-sto).
 
-:::note
 
-The following step is required only for Kubernetes or Docker infrastructures. If you're using Harness Cloud, go to [Add the Aqua-Trivy scan step](#add-the-aqua-trivy-scan-step).
-
-:::
 
 
 ## Add the Aqua-Trivy scan step
@@ -164,7 +160,7 @@ Here's an example:
 
    <!-- ![view scan results](./static/container-scan-trivy/scan-results-snyklabs-goof.png) -->
 
-### Specify the baseline
+## Specify the baseline
 
 :::tip
 

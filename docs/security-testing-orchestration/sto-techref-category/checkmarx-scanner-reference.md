@@ -29,7 +29,7 @@ With Harness STO, you can do the following:
 
   - Ingestion mode — The Checkmarx step can ingest results from any Checkmarx scanner that can publish results in [SARIF format](https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html). 
 
-    - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](/docs/security-testing-orchestration/orchestrate-and-ingest/run-scans-using-github-actions/) and then ingest your scan results using a Checkmarx step.  
+    - A common and very flexible workflow is to run your Checkmarx scan using a [GitHub Action or Drone Plugin step](//docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/run-scans-using-github-actions) and then ingest your scan results using a Checkmarx step.  
 
     - For Checkmarx SAST (CxSAST), Checkmarx SCA (CxSCA), and Checkmarx Flow (CxFlow) scans, you can use a [Checkmarx CxFlow Github Action](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action).
 

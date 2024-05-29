@@ -127,4 +127,4 @@ For a list of supported scanners, see [Scanners supported by STO](/docs/security
 
 ## Try Harness STO
 
-Check out the [STO tutorials](./tutorials) and get started running [your first STO pipeline](./your-first-sto-pipeline) today!
+Check out the [STO tutorials](docs/security-testing-orchestration/get-started/tutorials) and get started running [your first STO pipeline](/docs/security-testing-orchestration/set-up-scans/your-first-sto-pipeline) today!
