@@ -29,15 +29,15 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
 
-- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block.md) faults. (CHAOS-5378)
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
 
 - Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
-    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress.md)
-    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress.md)
-    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency.md)
-    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception.md)
-    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return.md)
-    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc.md) (CHAOS-4675)
+    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress)
+    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress)
+    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency)
+    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception)
+    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
+    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
 
 - This release optimizes the experiment flow by:
     - Reading environment variables from the chaos engine.
