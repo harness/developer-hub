@@ -1,8 +1,8 @@
 ---
-title: "Security Testing Overview: view issues in target baselines over time"
+title: "STO Overview: View issues in target baselines over time"
 description: The STO Overview page enables you to see all detected issues in your target baselines.
 sidebar_position: 20
-sidebar_label: Security Testing Overview
+sidebar_label: "STO Overview - View baseline issues"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview
 helpdocs_topic_id: 2ap1uol6ti
@@ -11,7 +11,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To see all target baselines in the project, go to **Security Tests** > **Test Targets**. This dashboard enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines.
+To see all target baselines in the project, go to the left menu and select **Security Testing Orchestration** > **Overview**. This dashboard enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines.
 
 <details>
 <summary>Why you should define a baseline for every target</summary>
