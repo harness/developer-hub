@@ -1,5 +1,5 @@
 ---
-title: STO scan modes
+title: STO scan modes overview
 description: Ingest results using orchestration, ingestion, and extraction.
 sidebar_position: 10
 redirect_from: 

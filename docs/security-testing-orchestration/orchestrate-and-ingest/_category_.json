@@ -1,11 +1,11 @@
 {
-    "label": "Orchestrate and ingest",
+    "label": "STO scan modes",
     "position": 20,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Orchestrate scans and ingest data"
+        "title": "STO scan modes"
     }
 }
