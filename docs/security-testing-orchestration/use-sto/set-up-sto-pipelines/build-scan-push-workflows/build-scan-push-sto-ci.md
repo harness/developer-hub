@@ -37,11 +37,11 @@ The following steps describe the workflow:
 
 4. If the image has no critical vulnerabilities, another Build and Push step pushes a prod image to Docker Hub.
 
-![scan-build-scan-push tutorial pipeline](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/sbsp-pipeline-ui.png)
+![scan-build-scan-push pipeline](./static/sbsp-sto-ci/sbsp-pipeline-ui.png)
 
 :::info Prerequisites
 
-- This tutorial has the following prerequisites:
+- This workflow has the following prerequisites:
 
   - Harness STO and CI module licenses.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
@@ -52,7 +52,7 @@ The following steps describe the workflow:
     - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`).
     - Your GitHub account should include a repository with Python code. The repo should also include a Dockerfile for creating an image.
 
-      This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
+      This workflow uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
 
   - Docker requirements:
     - A Docker Hub account and access token.
@@ -63,7 +63,7 @@ The following steps describe the workflow:
 
 ## Set up your codebase
 
-This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
+This workflow uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a> to scan the target repository <a href="https://github.com/williamwissemann/dvpwa">https://github.com/williamwissemann/dvpwa</a> (specified in the <a  href="/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/">Codebase</a> for this pipeline).
 
 1. Fork the following example repository into your GitHub account. This is a Python repo with known vulnerabilities: https://github.com/williamwissemann/dvpwa.
 
@@ -73,7 +73,7 @@ This tutorial uses <a href="https://bandit.readthedocs.io/en/latest/">Bandit</a>
    2. Select **New Connector**, then select **Code Repositories** > **GitHub**.
    3. Set the [GitHub connector settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) as appropriate.
       - Use **Account** for the [URL type](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference/#url-type).
-      - This tutorial uses Harness Cloud, so select **Connect through Harness Platform** when prompted for the connectivity mode.
+      - This workflow uses Harness Cloud, so select **Connect through Harness Platform** when prompted for the connectivity mode.
 
 ## Set up your pipeline
 
@@ -125,7 +125,7 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## Scan the code
 
-import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/configure-bandit-step.png'
+import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-workflows/static/sbsp-sto-ci/configure-bandit-step.png'
 
 <Tabs>
 <TabItem value="Visual" label="Visual" default>
@@ -144,7 +144,7 @@ import set_up_harness_26 from '/docs/security-testing-orchestration/use-sto/set-
 
 :::info
 
-In most cases, you want to set the [Fail on Severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can keep **Fail on Severity** set to **None** and set it after you finish setting up and testing your pipeline.
+In most cases, you want to set the [Fail on Severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) when you add a scan step to your pipeline. In this workflow, you're setting the first of two scan steps. In this case, you can keep **Fail on Severity** set to **None** and set it after you finish setting up and testing your pipeline.
 
 :::
 
@@ -168,7 +168,7 @@ In most cases, you want to set the [Fail on Severity](/docs/security-testing-orc
 
 :::info
 
-In most cases, you want to set the [fail_on_severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) when you add a scan step to your pipeline. In this tutorial, you're setting the first of two scan steps. In this case, you can leave `fail_on_severity` at `none` and set it after your set up and test your pipeline.
+In most cases, you want to set the [fail_on_severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) when you add a scan step to your pipeline. In this workflow, you're setting the first of two scan steps. In this case, you can leave `fail_on_severity` at `none` and set it after your set up and test your pipeline.
 
 :::
 
@@ -424,12 +424,12 @@ Here's an example:
 
 ## YAML pipeline example
 
-Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
+Here's an example of the pipeline you created in this workflow. If you copy this example, replace the placeholder values with appropriate values for your project, organization, connectors, and access token.
 
 ```yaml
 pipeline:
-  name: sto-ci-tutorial-test
-  identifier: stocitutorialtest
+  name: sto-ci-workflow-test
+  identifier: stociworkflowtest
   projectIdentifier: YOUR_HARNESS_PROJECT_ID
   orgIdentifier: YOUR_HARNESS_ORGANIZATION_ID
   tags: {}

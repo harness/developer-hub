@@ -25,7 +25,7 @@ This topic describes how to create an end-to-end pipeline that builds an image a
 
 - [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source tool for scanning container images.
 
-Once you complete this tutorial, you'll have a complete end-to-end pipeline that you can easily adapt to a wide variety of use cases. You can also copy/paste the [YAML pipeline example below](#yaml-pipeline-example) into Harness and update it with your own infrastructure, connectors, and access tokens.
+Once you complete this workflow, you'll have a complete end-to-end pipeline that you can easily adapt to a wide variety of use cases. You can also copy/paste the [YAML pipeline example below](#yaml-pipeline-example) into Harness and update it with your own infrastructure, connectors, and access tokens.
 
 The following steps describe the workflow:
 
@@ -39,23 +39,23 @@ The following steps describe the workflow:
 
 5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub.
 
-![scan-build-scan-push tutorial pipeline](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-only/00-pipeline-steps.png)
+![scan-build-scan-push pipeline](./static/sbsp-sto-only/00-pipeline-steps.png)
 
 :::info Prerequisites
 
-- This tutorial has the following prerequisites:
+- This workflow has the following prerequisites:
 
   - A Harness account and STO module license.
   - You must have a [Security Testing Developer or SecOps role](/docs/security-testing-orchestration/get-started/onboarding-guide/#create-an-sto-pipeline) assigned.
-  - A basic understanding of key STO concepts and good practices is recommended. This tutorial builds on the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) and [Container image scans with Aqua Trivy](../../sto-techref-category/trivy/container-scan-aqua-trivy) tutorials.
+  - A basic understanding of key STO concepts and good practices is recommended. This workflow builds on the [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep) and [Container image scans with Aqua Trivy](../../../sto-techref-category/trivy/container-scan-aqua-trivy) workflows.
   - A Semgrep account login and access token. For specific instructions, go to [Getting started from the CLI](https://github.com/semgrep/semgrep#option-2-getting-started-from-the-cli) in the README on GitHub.
-  - GitHub requirements — This tutorial assumes you have the following:
+  - GitHub requirements — This workflow assumes you have the following:
 
     - A GitHub account and access token.
     - A [GitHub connector](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-hub-connector-settings-reference) that specifies your account (`http://github.com/my-account`) but not a specific repository (`http://github.com/my-account/my-repository`).
     - Your GitHub account should include a repository with code in a [language supported by Semgrep](https://semgrep.dev/docs/supported-languages/) such as Python or NodeJS. The repo should also include a Dockerfile for creating an image.
 
-      This tutorial uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
+      This workflow uses the [dvpwa repository](https://github.com/williamwissemann/dvpwa) as an example. The simplest setup is to fork this repository into your GitHub account.
 
   - Docker requirements — The last step in this pipeline pushes the built image to your image registry. To do this step, you must have the following:
     - A Docker Hub account and access token.
@@ -163,7 +163,7 @@ Now you will add a step that runs a scan using the local Semgrep container image
          - Key : `SEMGREP_APP_TOKEN`
          - Value : Click the type selector (right), set the value type to **Expression**, and enter the value `<+secrets.getValue("YOUR_SEMGREP_TOKEN_SECRET")>`.
 
-           ![set the value type](../../use-sto/set-up-sto-pipelines/static/sbsp-sto-ci/set-value-type.png)
+           ![set the value type](./static/sbsp-sto-ci/set-value-type.png)
 
 </TabItem>
 <TabItem value="YAML" label="YAML">
@@ -613,7 +613,7 @@ Here's an example:
 
 ## YAML pipeline example
 
-Here's an example of the pipeline you created in this tutorial. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
+Here's an example of the pipeline you created in this workflow. If you copy this example, replace the placeholder values with appropriate values for your project, organization, and connectors.
 
 ```yaml
 pipeline:
@@ -783,6 +783,6 @@ pipeline:
         description: ""
         timeout: 10m
   notificationRules: []
-  identifier: v5_sbsp_tutorial
-  name: v5_sbsp_tutorial
+  identifier: v5_sbsp_workflow
+  name: v5_sbsp_workflow
 ```
