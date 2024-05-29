@@ -15,7 +15,7 @@ sidebar_position: 100
 With Harness STO, you can do the following:
 - Run local SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) (orchestration mode).
 - Extract results from a [Checkmarx SAST](https://checkmarx.com/resource/documents/en/34965-44074-checkmarx-sast.html) server (extraction mode).
-- [Ingest results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
+- [Ingest results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO
 
@@ -39,7 +39,7 @@ With Harness STO, you can do the following:
 
     - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark One](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
 
-    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
 
     - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file. 
 

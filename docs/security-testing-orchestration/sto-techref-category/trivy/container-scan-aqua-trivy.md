@@ -9,7 +9,7 @@ redirect_from:
 
 This tutorial shows you how to scan your container images using [Aqua Trivy](https://www.aquasec.com/products/trivy/), a popular open-source scanning tool.
 
-In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) with two steps:
+In this tutorial, you'll set up a simple [orchestration workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline) with two steps:
 
 1. A Background step that runs Docker-in-Docker as a service. This is required for any orchestrated or dataload scan of a container image.
 

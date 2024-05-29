@@ -127,7 +127,7 @@ There are two primary workflows to do this:
 - Add a Run step that runs a Semgrep scan from the command line and then copies the results to the shared path.
 - Copy results from a Semgrep scan that ran outside the pipeline. 
 
-For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
 
 
 #### Set up the Semgrep scanner

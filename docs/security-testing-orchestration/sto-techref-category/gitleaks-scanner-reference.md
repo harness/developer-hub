@@ -16,7 +16,7 @@ You can scan your code repositories using [Gitleaks](https://github.com/gitleaks
 
 Gitleaks can publish results in [Static Analysis Results Interchange Format (SARIF)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning), an open data format supported by many scan tools. 
 
-For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data).
+For a description of the end-to-end workflow, go to [Ingest SARIF data](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data).
 
 ## Important notes
 

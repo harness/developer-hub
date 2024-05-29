@@ -1,8 +1,8 @@
 ---
 title: Run an ingestion scan in an STO Pipeline
 description: Configure a step to ingest scan results from a data file.
-sidebar_label: Ingestion scans
-sidebar_position: 30
+sidebar_label: Ingestion scans overview
+sidebar_position: 10
 redirect_from: 
   - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
 helpdocs_topic_id: d24n34qdbk
@@ -23,7 +23,7 @@ To ingest scan results from outside a Security step, you set up your pipeline as
 
 2. A [Security or Security Tests step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates-in-sto) ingests the results from the shared folder. Then it analyzes, deduplicates, and displays the results.
 
-![](./static/ingest-scan-results-into-an-sto-pipeline-00.png)
+![](../static/ingest-scan-results-into-an-sto-pipeline-00.png)
 
 For a complete list of supported scanners, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
 
@@ -32,13 +32,13 @@ For a complete list of supported scanners, go to [Harness STO scanner support](/
 Here are some example ingestion-only workflows that target specific use cases:
 
 - [SAST code scans using Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/sast-scan-semgrep)
-- [Run STO scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/orchestrate-and-ingest/run-scans-using-github-actions)
+- [Run STO scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/run-scans-using-github-actions)
 - [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 - [Create a build-scan-push pipeline (STO only)](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-only)
 
 ## See also
 
-- [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data)
+- [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data)
 - [Ingest Results from unsupported scanners](./ingesting-issues-from-other-scanners.md)
 - [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
 - [STO technical reference](/docs/category/sto-technical-reference)

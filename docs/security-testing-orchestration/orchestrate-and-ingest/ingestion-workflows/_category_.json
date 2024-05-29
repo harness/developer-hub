@@ -1,11 +1,11 @@
 {
-    "label": "STO scan modes",
-    "position": 10,
+    "label": "Ingestion scan workflows",
+    "position": 30,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "STO scan modes"
+        "title": "Ingestion scan workflows"
     }
 }

@@ -7,7 +7,7 @@ The following use cases require a Docker-in-Docker background step in your pipel
 The following use cases do not require a Docker-in-Docker background step:
 - Harness Cloud AMD64 build infrastructures
 - SAST/DAST/configuration scans that use a scanner-specific step and not a Custom Scan step.
-- [Ingestion scans](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) where the data file has already been generated
+- [Ingestion scans](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline) where the data file has already been generated
 
 <details>
 <summary>Set up a Docker-in-Docker background step</summary>

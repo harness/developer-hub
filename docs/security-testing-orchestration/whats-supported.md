@@ -78,7 +78,7 @@ import StoSupportedMethods from '/docs/security-testing-orchestration/sto-techre
 
 <StoSupportedMethods />
 
-In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format.
+In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingesting-issues-from-other-scanners) format.
 
 
 </TabItem>

@@ -29,9 +29,9 @@ Once you complete this tutorial, you'll have a complete end-to-end pipeline that
 
 The following steps describe the workflow:
 
-1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-sarif-data) file.
+1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data) file.
 
-2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)).
+2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline)).
 
 3. If the code has no critical vulnerabilities, another Run steps builds the image.
 
@@ -280,7 +280,7 @@ Add a step after the `Run` step and configure it as follows:
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`ingestion`](/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline)
+    - `mode :` [`ingestion`](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline)
     - `config: default`
       - `target : `
         - `name : <+stage.variables.GITHUB_REPO>`
