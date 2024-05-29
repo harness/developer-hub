@@ -31,7 +31,7 @@ The following steps describe the general workflow:
 
     <!-- **Common to previous / baseline scan** Issues also found in both the previous scan of the specified variant AND the previous scan of the baseline. -->
 
-    - <a name="remediations">**Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant.</a> 
+    - **Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant. 
       
       <DocImage path={require('./static/remediated-issue.png')} width="60%" height="60%" />
 
