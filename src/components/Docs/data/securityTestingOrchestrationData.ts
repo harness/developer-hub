@@ -63,7 +63,7 @@ import {
               module: MODULES.sto,
               description:
                 "Learn how to run scans in a separate step, or outside Harness entirely, and ingest the results.",
-              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline",
+              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline",
             },
             {
                 title: "Configure external scanners",
@@ -72,12 +72,19 @@ import {
                   "STO includes integrations with over 30 external tools for scanning repositories, container images, applications, and configurations.",
                 link: "/docs/category/sto-technical-reference",
               },
+              {
+                title: "Ingest SARIF scan results",
+                module: MODULES.sto,
+                description:
+                  "SARIF is an open data format supported by many scan tools. You can ingest results from any tool that supports this format.",
+                link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data",
+              },
             {
               title: "Ingest data from custom scanners",
               module: MODULES.sto,
               description:
                 "You can ingest custom Issues from any scanning tool. This topic shows you how.",
-              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingesting-issues-from-other-scanners",
+              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingesting-issues-from-other-scanners",
             },
           ],
         },  
@@ -120,15 +127,22 @@ import {
               title: "Exemptions (Ignore Rules) for Specific Issues",
               module: MODULES.sto,
               description:
-                "Lean how to set fail_on_severity to stop pipeline builds and create exemptions (ignore rules) for specific vulnerabilities",
+                "Learn how to set fail_on_severity to stop pipeline builds and create exemptions (ignore rules) for specific vulnerabilities.",
               link: "/docs/security-testing-orchestration/exemptions/exemption-workflows",
             },
             {
               title: "Stop pipelines automatically using governance policies",
               module: MODULES.sto,
               description:
-                "Learn how to create OPA policies to stop pipelines automatically",
+                "Learn how to create OPA policies to stop pipelines automatically.",
               link: "/docs/security-testing-orchestration/policies/create-opa-policies",
+            },
+            {
+              title: "Trigger STO scans to block pull requests with vulnerabilities",
+              module: MODULES.sto,
+              description:
+                "You can create Git event triggers to block PRs if an STO scan detects vulnerabilities that violate OPA policies or Fail on Severity settings.",
+              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities",
             },
           ],
         },
