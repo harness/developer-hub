@@ -7,11 +7,9 @@ redirect_from:
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
 ---
 
-Every STO pipeline execution includes a **Security Tests** tab that shows the detected issues for that execution. This is the primary interface for navigating, analyzing, and remediating detected issues.
+In the **Security Testing Orchestration** left-hand menu, go to **Executions**. Then go to the pipeline execution and select **Security Tests**. This tab enables you to navigate, analyze, and remediate all issues detected by the pipeline execution. 
 
 ![](./static/security-tests-tab.png)
-
-In the **Security Testing Orchestration** left-hand menu, go to **Executions**. Then go to the execution and select **Security Tests**. 
 
 The following steps describe the general workflow:
 
@@ -33,7 +31,7 @@ The following steps describe the general workflow:
 
     <!-- **Common to previous / baseline scan** Issues also found in both the previous scan of the specified variant AND the previous scan of the baseline. -->
 
-    - **Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant. 
+    - <a name="remediations">**Remediated** An issue has a status of Remediated if it was found in the baseline but not the scanned variant.</a> 
       
       <DocImage path={require('./static/remediated-issue.png')} width="60%" height="60%" />
 

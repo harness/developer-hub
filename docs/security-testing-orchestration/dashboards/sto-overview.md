@@ -11,20 +11,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The STO Overview enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines.
+To see all target baselines in the project, go to **Security Tests** > **Test Targets**. This dashboard enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines.
 
 <details>
 <summary>Why you should define a baseline for every target</summary>
 
-
 import StoWhyDefineBaselines from '/docs/security-testing-orchestration/get-started/shared/_why-define-baselines.md';
-
 
 <StoWhyDefineBaselines />
 
 </details>
-
-To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
 
 <figure>
 
@@ -32,8 +28,6 @@ To see all target baselines in the project, go to **Security Tests** > **Test Ta
 
 <figcaption>STO Overview</figcaption>
 </figure>
-
-
 
 This view has has the following components:
 
@@ -46,3 +40,8 @@ This view has has the following components:
 * **Failed Builds** — Shows the most recent failed builds that included scans of target baselines.
 * **Active Builds** — Shows active builds that include scans of target baselines.
 
+:::info
+
+ To see detected issues in a non-baseline variant, such as a feature or developer branch, go to a pipeline execution where the variant was scanned and then go to [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results).
+
+:::
