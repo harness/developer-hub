@@ -70,7 +70,7 @@ Linux network duplication:
   </tr>
   <tr>
     <td> whitelistSSH </td>
-    <td> Specifies wether SSH connectivity should be retained during the chaos in the target machine. </td>
+    <td> Specifies whether the SSH connectivity should be retained during the chaos in the target machine.</td>
     <td> Default: <code>true</code>. Supports one of: <code>true</code>, <code>false</code></td>
   </tr>
   <tr>
