@@ -8,7 +8,7 @@ This topic guides you through steps to use the [**command probe**](/docs/chaos-e
 
 ## Before you begin
 
-* [Command probe](/docs/chaos-engineering/features/probes/cmd-probe)
+* [Command probe](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe.md)
 * [Create a command probe](/docs/chaos-engineering/features/resilience-probes/use-probe#create-a-resilience-probe)
 * [Command probe in source mode](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-usage#command-probe-in-source-mode)
 
