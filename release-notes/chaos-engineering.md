@@ -27,6 +27,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 #### New features and enhancements
 
+- This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
+
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block.md) faults. (CHAOS-5378)
+
+- Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
+    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress.md)
+    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress.md)
+    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency.md)
+    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception.md)
+    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return.md)
+    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc.md) (CHAOS-4675)
+
 - This release optimizes the experiment flow by:
     - Reading environment variables from the chaos engine.
     - Eliminating the experiment's custom resources and the corresponding steps for new experiments.
@@ -34,7 +46,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - Reducing the length of the YAML manifest.
     - Increasing the speed of execution of the experiment.
     - Adding all the overrides to the chaos engine.
-    - Enhancing the filter that lists the infrastructure that is compatible only with the new experiment template. (CHAOS-5122)
+    - Enhancing the list filter, compatible only with the new experiment template. (CHAOS-5122)
 
 :::info note
 The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
@@ -50,7 +62,7 @@ The existing APIs will work as per the norm on old and new chaos infrastructure,
 
 - Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
 
-- Fixed an issue where a user could not connect to a ChaosHub if the secret associated with it had a '-' symbol (after the deployment of ng-manager 1.33). (CHAOS-5112)
+- Fixed an issue where a user could not connect to a ChaosHub if its secret had a '-' symbol (after the deployment of ng-manager 1.33). (CHAOS-5112)
 
 ### Version 1.37.0
 
