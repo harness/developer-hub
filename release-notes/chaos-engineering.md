@@ -48,7 +48,7 @@ The existing APIs will work as per the norm on old and new chaos infrastructure,
 
 - Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
 
-- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress.md) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
+- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
 
 - Fixed an issue where a user could not connect to a ChaosHub if the secret associated with it had a '-' symbol (after the deployment of ng-manager 1.33). (CHAOS-5112)
 
