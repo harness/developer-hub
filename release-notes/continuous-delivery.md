@@ -579,7 +579,7 @@ The bug has now been fixed, and you should be able to select an alternate versio
 
 - This is a change in behavior of Rerun execution, when a Matrix is involved. (PIPE-14601)
 
-  When you select **Rerun from Last Failed Stage**, the flow remains the same but you can choose from a failed stage and the run begins from there. Earlier, the last failed stage ran by default. If there are failed stages in a Matrix/Loop, the execution begins from only the failed stages (skipping the successful ones), and moves on to any others that haven’t run yet.
+  When you select **Rerun from Last Failed Stage**, the run automatically starts from the last failed stage. If there are failed stages in a Matrix/Loop, the execution begins from only the failed stages (skipping the successful ones), and moves on to any others that haven’t run yet.
 
   When you select **Rerun from Specified Stage**, Harness assumes that you don't want to start from the failed stage. You could start from any stage that ran fully or partially earlier. Harness displays all the stages ran so far, both Success or Failed. If you select a Matrix stage, Harness runs all the stages in the Matrix, based on the axes as provided. If the stage setup changed, Harness picks the newest configuration and runs that. Earlier, only the failed stages ran. Now, Harness runs all of them.
 
