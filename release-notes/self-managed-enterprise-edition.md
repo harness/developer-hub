@@ -41,7 +41,8 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
     env | grep MINIO_ROOT_PASSWORD
    ```
-3.Run the following commands.
+   
+3. Run the following commands.
 
    ```
    bin/mc alias set minio http://minio:9000
