@@ -389,7 +389,7 @@ export default function University() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format. 
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -416,7 +416,7 @@ export default function University() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
-            Self-paced courses that you can consume on your own time in a webinar style.
+            Free self-paced courses that you can consume on your own time.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
