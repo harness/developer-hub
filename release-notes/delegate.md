@@ -49,6 +49,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2024
 
+### Version 24.05.82711 <!--  May 30, 2024 -->
+
+#### Hotfix
+
+- . (PL-)
+
 ### Version 24.05.83001 <!--  May 21, 2024 -->
 
 #### New features and enhancements
