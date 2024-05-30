@@ -47,7 +47,7 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
 #### Version 1.6.9
 
 **New features and enhancements**:
- - Adding SDK support for `AND/OR` rules - **feature not GA yet**. (FFM-11242)
+ - Added SDK support for `AND/OR` rules - **feature not GA yet**. (FFM-11242)
  - You can now use the `target-segments v2-rule` parameter. (FFM-11363)
 
 
