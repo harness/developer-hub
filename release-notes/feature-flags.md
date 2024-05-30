@@ -52,7 +52,7 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
 
 
 **Fixed issues**:
- - Fixes a `Null Pointer Exception` that would occur if a `null` target was used in an evaluation when analytics is enabled. (FFM-11537, ZD-63847)
+ - Fixed a `Null Pointer Exception` that occurred when a `null` target was used in an evaluation with analytics enabled. (FFM-11537, ZD-63847)
 
 ### Python SDK
 
