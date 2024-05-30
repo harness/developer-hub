@@ -3,10 +3,12 @@ The following authentication and connection details reside on the same machine w
 
 ```
 ADDRESS="127.0.0.1:6379"
+PASSWORD=`YOUR_PASSWORD`
+TLS_AUTH_CERT="/path/to/tls-cert"
 ```
 
 :::tip
-`ADDRESS` is a mandatory field. You can also include `PASSWORD` and `TLS_AUTH_CERT` fields. You need them only if you have configured your Redis database to facilitate it.
+`ADDRESS` is a mandatory field. You can also include `PASSWORD` and `TLS_AUTH_CERT` fields. You need them only if you have configured your Redis database to facilitate authentication.
 :::
 
 
