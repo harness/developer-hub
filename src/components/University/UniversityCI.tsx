@@ -419,8 +419,8 @@ export default function CertificationsCI() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-            Intensive two-day course is designed for engineers looking to deepen
-            their understanding and expertise.
+            Intensive two-day courses are designed for engineers looking to
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -447,7 +447,7 @@ export default function CertificationsCI() {
           </div>
         </div>
       )}
-     {activePage === ActivePage.SelfPacedTraning && (
+      {activePage === ActivePage.SelfPacedTraning && (
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
@@ -465,7 +465,7 @@ export default function CertificationsCI() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "ci" && spt.cardType === "SPT" ||
+                    spt.module === "ci" && spt.cardType === "FREE" ||
                     (spt.module === "ci" && spt.tileType === "comming soon")
                   );
                 })

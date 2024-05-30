@@ -5,6 +5,7 @@ sidebar_position: 131
 sidebar_label: Jira
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira
 ---
 
 

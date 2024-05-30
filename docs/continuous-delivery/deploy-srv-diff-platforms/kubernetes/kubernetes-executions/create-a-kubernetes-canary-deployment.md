@@ -176,7 +176,7 @@ Harness displays the status of each pod deployed and confirms steady state.
 
 #### Traffic Routing Configuration
 
-For information on how to configure traffic routing for Blue Green deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
+For information on how to configure traffic routing for canary deployments, see [Traffic Routing Step Reference](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/traffic-shifting-step.md).
 
 :::note
 

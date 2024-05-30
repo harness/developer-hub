@@ -1,0 +1,11 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: redis-cache-penetration
+  labels:
+    name: cache-penetration
+spec:
+  redisChaos/inputs:
+    duration: 30s
+    requestCount: 1000
+    rampTime: ""

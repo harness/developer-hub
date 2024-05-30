@@ -139,6 +139,10 @@ To pass output variables from one pipeline stage to another, you can use pipelin
 Harness also has an endpoint you can use in a Shell Script step or a HTTP step to make an API call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
 This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
 
+### How to set unsupported fields when creating a Jira issue?
+
+By default, Jira plugins don't support cascading lists and other custom types. You can set the unsupported fields using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). For more details, go to [Use HTTP step to set unsupported fields when creating a Jira issue](https://developer.harness.io/kb/continuous-delivery/articles/create-cascading-fields-jira).
+
 ## Shell Script step
 
 

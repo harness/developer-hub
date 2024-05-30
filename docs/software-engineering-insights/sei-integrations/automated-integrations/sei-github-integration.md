@@ -5,6 +5,7 @@ sidebar_position: 90
 sidebar_label: GitHub
 redirect_from:
   - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration
+  - /docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github
 ---
 
 GitHub provides hosting for software development and version control using Git.

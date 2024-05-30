@@ -79,12 +79,12 @@ You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contac
 
 To set up OAuth 2.0 SSO, do the following:
 
-1. Sign in to Harness using a Harness User account that is a member of the Administrator User Group with Create/Edit, Delete permissions for Authentication Settings. For information on Harness RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).  
-  
+1. Sign in to Harness using a Harness User account that is a member of the Administrator User Group with Create/Edit, Delete permissions for Authentication Settings. For information on Harness RBAC, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+
    The email address used to log into Harness should also be registered with the OAuth 2.0 providers you intend to enable for Harness SSO.
 
 2. Select **Home**, select **Account Setup**, and then select **Access Control**. The **Access Control** page opens.
-   
+
    ![](./static/single-sign-on-sso-with-oauth-122.png)
 
 3. In the **Users** tab, we can see the list of all the **Active Users** and their **Email**.
@@ -94,7 +94,6 @@ To set up OAuth 2.0 SSO, do the following:
 7. Enable each public OAuth 2.0 provider you want to use for SSO.
 
    ![](./static/single-sign-on-sso-with-oauth-123.png)
-
 
 ## Log in with an OAuth 2.0 provider
 
