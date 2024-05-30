@@ -24,6 +24,38 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## May 2024
 
+### Version 1.97
+
+#### New enhancement
+
+- The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rule packs to include in your scan. (STO-7599)
+
+  The following configurations are supported:
+
+  - **Default** Include the following rule packs: 
+    - [bandit](https://semgrep.dev/p/bandit)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rule packs in **Additional CLI flags**.
+  - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
+  - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
+  - **Auto and Ported security tools** Include the following rule packs: 
+    - [auto](https://semgrep.dev/p/auto)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gitleaks](https://semgrep.dev/p/gitleaks)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **Auto and Ported security tools except p/gitleaks** 
+
 ### Version 1.96.2
 
 <!-- 2024-05-22 -->
