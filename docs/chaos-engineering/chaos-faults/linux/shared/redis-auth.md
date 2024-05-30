@@ -3,7 +3,7 @@ The following authentication and connection details reside on the same machine w
 
 ```
 ADDRESS="127.0.0.1:6379"
-PASSWORD=`YOUR_PASSWORD`
+PASSWORD="`YOUR_PASSWORD`"
 TLS_AUTH_CERT="/path/to/tls-cert"
 ```
 
