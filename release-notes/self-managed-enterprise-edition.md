@@ -90,17 +90,17 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.17.0](https://github.com/harness/helm-charts/releases/tag/harness-0.17.0) |
 | Air Gap Bundle | [0.17.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.0) |
-| NG Manager | 1.31.4 |
-| CI Manager | 1.21.5 |
-| Pipeline Service | 1.68.2 |
-| Platform Service | 1.17.1 |
-| Access Control Service | 1.39.1 |
-| Delegate | 24.03.82600 |
-| Change Data Capture | 1.5.4 |
-| STO Core | 1.90.1 |
-| Test Intelligence Service | 1.13.1 |
-| NG UI | 1.14.5 |
-| LE NG | 1.1.0 |
+| NG Manager | 1.36.10 |
+| CI Manager | 1.26.5 |
+| Pipeline Service | 1.73.4 |
+| Platform Service | 1.23.2 |
+| Access Control Service | 1.45.1 |
+| Delegate | 24.04.82901 |
+| Change Data Capture | 1.17.0 |
+| STO Core | 1.94.5 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.21.6 |
+| LE NG | 1.3.0 |
 
 #### Alternative air gap bundle download method
 
@@ -228,6 +228,8 @@ gsutil -m cp \
 - In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
 
 - Account admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level Harness-managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
+
+- Pipeline executions were missing from the dashboard widget, resulting in a significant mismatch between the displayed builds and deployments and the actual count. We have resolved the data sync issue. (PL-50453)
 
 #### Security Testing Orchestration
 
