@@ -49,6 +49,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## May 2024
 
+### Version 24.05.82711 <!--  May 30, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue where delegates created Kubernetes services when starting up. (PL-51548, PL-51550, ZD-64345)
+
 ### Version 24.05.83001 <!--  May 21, 2024 -->
 
 #### New features and enhancements
