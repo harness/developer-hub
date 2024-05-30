@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Hotfix
 
-- Resolved an issue where delegates created Kubernetes services when starting up. (PL-51548, ZD-64345)
+- Resolved an issue where delegates created Kubernetes services when starting up. (PL-51548, PL-51550, ZD-64345)
 
 ### Version 24.05.83001 <!--  May 21, 2024 -->
 
