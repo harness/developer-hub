@@ -1,7 +1,7 @@
 ---
 title: Your first STO pipeline
 description: Set up a simple pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
-sidebar_position: 10
+sidebar_position: 100
 redirect_from:
   - /tutorials/security-tests/standalone-pipeline
   - /tutorials/security-tests/cicd-integrated-pipeline
