@@ -93,9 +93,11 @@ Ref: https://aws.amazon.com/blogs/storage/migrate-your-amazon-ebs-volumes-from-g
 **Permissions Required:** 
 - **Dry Run:** 
     - ```ec2:DescribeVolumeAttribute```
+    - ```ec2:DescribeVolumesModifications```
 - **Run Once:** 
     - ```ec2:DescribeVolumeAttribute```
     - ```ec2:ModifyVolumeAttribute```
+    - ```ec2:DescribeVolumesModifications```
 
 ---
 

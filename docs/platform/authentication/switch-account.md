@@ -10,16 +10,16 @@ helpdocs_is_published: true
 
 You can be a part of more than one Harness Account. This topic explains how to switch between multiple Accounts in Harness.
 
-### View and switch Accounts
+### View and switch accounts
 
-You can check to see if you are a part of multiple Accounts by clicking on your User Profile. 
+You can check to see if you are a part of multiple Accounts by clicking on your User Profile.
 
 ![](./static/switch-account-51.png)
 
 Click **Switch Account**. The **Switch Account** settings appear.
 
 ![](./static/switch-account-52.png)
-All the Accounts that you are a member of, are listed here. 
+All the Accounts that you are a member of, are listed here.
 
 You can set a specific Account as default by clicking **Set as Default**.
 
@@ -44,8 +44,8 @@ Switching Accounts might require re-authentication based on the configured authe
 | LDAP (Settings 1) | <li> LDAP (Settings 1)</li>| No |
 | LDAP (Settings 2) | <li> Username and Password </li><li>Username and Password + OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li> OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>Whitelisted domains</li><li>2FA at Account scope + OAuth</li>| Yes |
 | LDAP (Settings 2) | <li> LDAP (Settings 2)</li>| No |
-| Whitelisted domains  | <li>OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>2FA at Account scope + OAuth</li>| Yes |
-| Whitelisted domains  | <li> Whitelisted domains</li>| No |
+| Whitelisted domains | <li>OAuth</li><li>OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>2FA at Account scope + OAuth</li>| Yes |
+| Whitelisted domains | <li> Whitelisted domains</li>| No |
 | 2FA at Account scope + OAuth | <li> Username and Password</li><li>Username and Password + OAuth</li><li> OAuth (All Providers)</li><li>OAuth (Google + GitHub)</li><li>OAuth (Google)</li><li>SAML (SSO Settings 1)</li><li>SAML (SSO Settings 2)</li><li>LDAP (Settings 1)</li><li>LDAP (Settings 2)</li><li>Whitelisted domains</li>| Yes |
 | 2FA at Account scope + OAuth | <li> 2FA at Account scope + OAuth </li>| No |
 

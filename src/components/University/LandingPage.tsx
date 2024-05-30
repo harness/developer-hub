@@ -389,7 +389,7 @@ export default function University() {
           <h2>Instructor-Led Training</h2>
           <p>
             Intensive two-day courses are designed for engineers looking to
-            deepen their understanding and expertise in Harness.
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format. 
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -430,7 +430,7 @@ export default function University() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.cardType === "SPT" &&
+                    spt.cardType === "FREE" &&
                     spt.tileType === "normal"
                   );
                 })

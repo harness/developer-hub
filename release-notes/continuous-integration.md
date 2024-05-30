@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
-date: 2024-05-16T10:00
+date: 2024-05-21T10:00
 sidebar_position: 10
 ---
 
@@ -52,6 +52,31 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 <!-- #### Deprecations and removals -->
 
 <!-- Harness is beginning to deprecate the **Run Tests** step in favor of the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) (also known as the **Test** step). Until removal, you can configure the **Run Tests** step in the YAML Editor, and it is backwards compatible. However, Harness recommends adopting the new **Test** step as soon as possible to take advantage of improved functionality and avoid service disruptions when the **Run Tests** step is removed. -->
+
+### Version 1.28.2
+
+<!-- 21 May 2024 -->
+
+#### New features
+
+<!-- 
+
+- This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. (CI-10509)
+
+-->
+
+- Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
+  
+  This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Fixed issues
+
+- Added a validation to Git Clone steps to ensure that the step has a Git connector and repository selected before applying changes. (CI-12477)
+
+- Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
+
+- Fixed an issue where the CI **Getting Started** page sent multiple requests to fetch Harness Code repositories. This occurred whenever the page was updated or the Git connector was updated. With this fix, the Getting Started page sends one request only when it needs to fetch the list of repositories. (CI-10770)
+
 
 ### Version 1.27.4
 

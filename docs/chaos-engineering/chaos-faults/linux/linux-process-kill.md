@@ -75,7 +75,7 @@ Linux process kill:
 
 The `processIDs` input variable targets process IDs to kill.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-ids.yaml yaml)
 ```yaml
@@ -96,7 +96,7 @@ spec:
 
 The `processNames` input variable targets process names to kill.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-names.yaml yaml)
 ```yaml
@@ -117,7 +117,7 @@ spec:
 
 The `processCommand` input variable targets the processes, based on the command used to start processes, if available. A substring match is made on the given command to determine the target processes.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-command.yaml yaml)
 ```yaml
@@ -138,7 +138,7 @@ spec:
 
 The `forceKill` input variable specifies whether to force kill the target processes using the `SIGKILL` signal or gracefully kill the target processes with the `SIGTERM` signal.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/force-kill.yaml yaml)
 ```yaml

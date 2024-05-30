@@ -488,7 +488,6 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
 ...
 ```
 
-
 ## See also
 
 * [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
