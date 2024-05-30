@@ -143,6 +143,48 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
+- Fixed an issue where the new Nav in the Harness NextGen UI was unable to hide the **Launch FirstGen** button. (CDS-95845, ZD-61778)
+- Fixed an issue where the expressions field did not render properly. Harness now supports multi-line text fields for expressions. (CDS-95843)
+- Queries in `harness-prod2-cvng.verificationJobInstances` were scanning too many documents and raising the CPU utilization. This issue is fixed by adding more `verificationJobInstances` indexes. (CDS-95840)
+- Fixed an issue where the drop-down capability for the **Region** field in the AWS Serverless Lambda **Infrastructure Details** page was missing. (CDS-95726)
+- The create trigger API response was updated to a new version without notice. This issue is fixed by updating the field `stagesToExecuteV2` back to `stagesToExecute` in the create trigger API response. (CDS-95526, ZD-61419)
+- The fetch tag to fetch the repository for the Artifactory repository type expired after 90000 milliseconds. This timeout occurred because the fetch task has a hardcoded timeout limit of 90000 milliseconds. This issue is fixed now. Earlier, while fetching the repositories for Artifactory, to fetch the package type Harness made API calls to each repository to get the package type. With this change, if the API response has package type, we avoid the extra API call. (CDS-95485, ZD-60868)
+- The expression, `<+lastPublished.tag>` did not fetch the latest artifact version for Nexus3 repository. Nexus3 artifact sources with `<+lastPublishedTag>`were relying on lexical ordering instead of the order of tags causing this issue. This issue is fixed by honoring the order of tags. (CDS-95312, ZD-61173)
+- User profile appears at the new navigation in the Harness UI allowing users to create keys at an organization and project level. This issue is fixed by removing the project and org identifiers from the API payload when creating API keys. (CDS-95250, ZD-61325)
+- Fixed an issue where the snapshot build was failing due to erroneous changes in Continuous Verification (CV). The GRPC registration from IDP, IACM, and CV services now include server interceptor class bindings from the application itself. (CDS-95241)
+- Queries in `harness-prod2-cvng.verificationJobInstances` scanned 35K+ documents but returned none. This issue is fixed by adding more query indexes for `VerificationJobInstances`. (CDS-95219)
+- Harness CV has reclassified the `javax.ws.rs.NotFoundException` from error to warning. (CDS-95136)
+- Fixed an issue where users were unable to create Zendesk tickets for the Platform module. (CDS-95061, ZD-60650, ZD-60734)
+- Continuous Verification (CV) telemetry failed if any one of the publish data failed. This occurred because all telemetry information is present in the same try catch block. This issue is fixed by separating telemetry publish events in different try catch blocks. (CDS-94962)
+- Fixed an issue where notification for the Verify step failure was having unresolved variable in error details. (CDS-94886, ZD-60617)
+- Fields from multiple manifest other than the primary manifest appeared in the pipeline when using multiple Helm charts. This issue is fixed. Now, only fields of the primary manifest appear in the run pipeline form. If primary manifest is not selected in pipeline, then Harness will prompt you to select the primary manifest in the run pipeline form. (CDS-94460, ZD-59994)
+- Fixed an issue where the Nexus 2 artifactory registry drop-down listed duplicate group IDs. (CDS-94376, ZD-60041)
+- Terraform deployment failed when using AWS connectors (IRSA credential type with assume cross account role) in Terraform steps. This issue occurred when the Terraform Apply step was trying to assume a different role from the AWS backend configuration. The default duration for assuming the role in the `aws-java-sdk` is 15 minutes. When the Terraform Apply step exceeded 15 minutes, the Terraform output threw an error. This issue is resolved by introducing a new Harness variable, `HARNESS_AWS_ASSUME_ROLE_DURATION`. In Terraform steps, you can now set the environment variable value to override the default duration to assume AWS roles. This item requires Harness Delegate version 01.04.82700. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CDS-94355, ZD-60095)
+- Fixed an issue where infrastructure did not appear as a runtime input for chained pipelines in the run pipeline form. (CDS-94272)
+- New Relic verification did not work as expected. The last null entry was leading to an error when decoding the response object. A code enhancement to ignore any null entry fixed this issue. (CDS-94113, ZD-59612)
+- Unable to load the AWS resources during an Amazon ECS Blue Green deployment. The API call for fetching elastic load balancer call was not being made in the stage causing this issue. This issue is fixed now. (CDS-94084, ZD-59734)
+- Fixed an UI issue where breadcrumbs in the Pipeline Studio pages overlapped. (CDS-93678)
+- Fixed an issue where service inputs did not appear in template inputs for nested templates where the service was fixed inside the nested template. (CDS-92836)
+- Updated the behavior of the Scale step to publish all workload pods as new pods after step run as the Scale step is used to scale pods as well as change traffic on the pod itself. (CDS-91534, ZD-54319)
+- IDP and other new modules did not appear in the default module list. This issue is fixed. If a feature flag is turned on for a module, it will now appear in the module selector in the new navigation experience. (CDS-85185, ZD-59478)
+- Evaluating expressions for Kubernetes service variables returned an error. This issue is fixed by using expression concatenation with equal operator. (PIPE-18652)
+- Branch protection error messages were unclear. This issue is fixed by adding better explanation and hint message for branch protection rule violations incase of `409` response. (PIPE-16923)
+- Templates were showing old data. This issue occurred due to stale cache when failing to fetching files from Git on webhook events. This issue is fixed by clearing the cache for the failed files to ensure that there isn't any stale cache within Harness. The cache gets auto-populated from Git whenever any entity is found missing in cache while its used in any executions. (PIPE-16893)
+- Fixed an issue where multi-select for variable values were behind FF and didn't update during reconciliation. (PIPE-16866)
+- Fixed an issue where user route redirects were missing. (CDS-95967)
+- Fixed CD Subscription V2 issues by adding search to GitOps Agent and GitOps applications filters and adding sorting to the execution column. (CDS-95481)
+- Fixed new Nav CSS issues and added scroll shadows. (CDS-95365)
+- The option to roll back pipelines appear when a CV step fails even if rollback is not supported for CV steps. This issue is fixed by removing pipeline rollback failure strategy from CV and Chaos steps. (CDS-95209)
+- Fixed an issue where the service name was not updated due to a missing API call during service update. (CDS-94937)
+- Fixed an issue where labels for fields in form templates were not visible. (CDS-94801)
+- Fixed an issue where creating a template in account scope in a module was rendering a blank UI. (CDS-94707)
+- Pipeline analytics were part of the executions listing page. This issue is fixed. Pipeline analytics will now be available in a separate tab on the Pipeline details page. (CDS-94368)
+- Account Overview dashboard now defaults to 7 days time period. Options for 6 months, 9 months and 12 months are removed. (CDS-94366)
+- In pre-existing pipelines, when multi-service or multi-environment deployments were selected, parallel deployment was enabled by default. This issue is fixed. Now, default parallel deployment is disabled. However, when a new pipeline or stage is created and enabled with multi-deployment, then parallel deployment will be enabled by default. This behavior is applicable to pipelines, pipeline templates, and stage templates. (CDS-94042)
+- IF expression value was set to multi-type checkbox field that resolved to false string, the string was taken as true in boolean in the Harness UI representation. This issue is fixed. (CDS-93931)
+- Fixed an issue where the Jenkins Job Parameters field was disabled in the UI in the Template Input view. (CDS-92633)
+- The **Add Job Parameter** link appeared for Jenkins job in pipelines when a stage template with Jenkins was linked. This issue is fixed by disabling the Add Job Parameter button as it is not needed if job parameters are set at template stage. (CDS-91077)
+
 #### Continuous Integration
 
 #### Feature Flags
@@ -195,6 +237,8 @@ gsutil -m cp \
 
 #### Continuous Delivery
 
+- Harness UI now supports  pipeline rollback failure strategy in CI, STO, Approval, Custom, FF stage, step, and step-group. This functionality is behind the feature flag, `CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK`. To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). (PIPE-15903)
+
 #### Continuous Integration
 
 #### Feature Flags
@@ -202,6 +246,12 @@ gsutil -m cp \
 #### Internal Developer Portal
 
 #### Security Testing Orchestration
+
+## Breaking changes
+
+#### Continuous Delivery
+
+- The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but made mandatory now as the APIs require these to work. (CDS-94245)
 
 
 ## May 13, 2024, patch version 0.14.10
