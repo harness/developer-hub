@@ -60,7 +60,7 @@ This type of trigger supports use cases such as:
 
 <summary>Trigger setup</summary -->
 
-1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
+1. Go to your STO pipeline, select **Triggers**, and add a new trigger.
 
 2. Set up the trigger as follows. 
 
@@ -168,7 +168,7 @@ This type of trigger is useful when a pipeline execution fails for reasons other
 
 #### Trigger setup
 
-1. Go to your STO pipeline, select **Triggers** (top right), and add a new trigger.
+1. Go to your STO pipeline, select **Triggers**, and add a new trigger.
 
 2. Set up the trigger as follows.
 
