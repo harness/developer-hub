@@ -47,7 +47,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## May 2024
 
-<!-- ### Version 1.39.4
+### Version 1.39.4
 
 #### Fixed issues
 
@@ -60,7 +60,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - The TerraformCloud Run step did not fail if the Terraform Apply step failed. This issue occurred because we were not checking the status of Terraform Apply after streaming logs. If Apply started, the step passed even if the Apply step did not complete. The step failed only when the Apply step failed to start, but not if it failed midway. This issue is fixed. The TerraformCloud Run step now fails if the Apply step fails midway, allowing users to use appropriate failure strategies. (CDS-96089, ZD-62254, ZD-63371)
 - Fixed an issue where runtime expressions and values were not supported for Helm Values files in the Update GitOps Apps step. (CDS-96005)
 - The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (CDS-18831, ZD-62825)
- -->
 
 ### Version 1.38.2
 
