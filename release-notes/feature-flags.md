@@ -42,7 +42,21 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
  - Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
  - Upgraded the Go SDK version in analytics. 
 
- ### Python SDK
+### Java SDK
+
+#### Version 1.6.0
+
+**New features and enhancements**:
+ - Updated the Java SDK example to include a delay. (FFM-10981)
+ - Target v2 updates: 
+  - Adding support for `AND/OR` in clauses. (FFM-11193)
+  - Returns false when no clauses exist. (FFM-10861)
+ - Adding a new query parameter to `target-segments`. (FFM-11356)
+ - Adding a config option to suppress the SDK code `6001`. (FFM-11425)
+ - Updating BC to 1.78.1. (FFM-11502)
+ - Downgrading OpenAPI plugin to allow for broader range of Springboot compatibility. (FFM-11459)
+
+### Python SDK
 
 #### Version 1.6.1
 
