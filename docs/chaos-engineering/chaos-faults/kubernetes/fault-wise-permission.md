@@ -1,6 +1,6 @@
 ---
-id: Fault wise permissions
-title: Fault-wise permissions required
+id: Fault-wise permissions
+title: Fault-wise permissions
 sidebar_position: 1
 ---
 
@@ -63,7 +63,7 @@ This table lists the permissions required to execute Kubernetes fault (node-leve
 
 
 
-### Permissions required for spring-boot faults
+### Permissions required for Spring boot faults
 
 | **Spring boot**           | **Mode (Scopes of chaos agent)** | **Pod**                                                    | **events**                       | **configmaps** | **pods/log**     | **pods/exec** | **deployments, statefulsets** | **replicasets, daemonsets** | **networkpolicies** | **jobs**                                    | **chaosEngines, chaosExperiments, chaosResults** | **secrets** | **pods/eviction** | **nodes** |
 |---------------------------|----------------------------------|------------------------------------------------------------|----------------------------------|----------------|------------------|---------------|-------------------------------|-----------------------------|---------------------|---------------------------------------------|--------------------------------------------------|-------------|-------------------|-----------|
