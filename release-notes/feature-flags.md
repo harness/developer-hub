@@ -49,7 +49,7 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
 **New features and enhancements**:
  - Updated the Java SDK example to include a delay. (FFM-10981)
  - Target v2 updates: 
-  - Adding support for `AND/OR` in clauses. (FFM-11193)
+  - Added support for `AND/OR` in clauses. (FFM-11193)
   - Returns false when no clauses exist. (FFM-10861)
  - Adding a new query parameter to `target-segments`. (FFM-11356)
  - Added a config option to suppress the SDK code `6001`. (FFM-11425, ZD-62796)
