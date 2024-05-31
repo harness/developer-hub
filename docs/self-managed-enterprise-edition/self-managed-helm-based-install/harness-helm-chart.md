@@ -81,9 +81,6 @@ The following components are included in addition to the Harness Platform compon
 | **Ci-manager** | Continuous Integration |
 | **Sto-core** | Enables the creation and management of Harness Security Testing Orchestration |
 | **Sto-manager** | Provides core services for Harness Security Testing Orchestration |
-| **Et-service** | Provides core services for Continuous Error Tracking (CET) |
-| **Et-collector** | Collects Continuous Error Tracking (CET) Agent data for processing |
-| **Et-receiver** | Scalable service responsible for processing data for Continous Error Tracking (CET) |
 
 **Table 3. Optional dependencies**
 
