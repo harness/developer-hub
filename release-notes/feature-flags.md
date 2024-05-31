@@ -51,7 +51,7 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
  - Target v2 updates: 
   - Added support for `AND/OR` in clauses. (FFM-11193)
   - Returns false when no clauses exist. (FFM-10861)
- - Adding a new query parameter to `target-segments`. (FFM-11356)
+ - Added a new query parameter to `target-segments`. (FFM-11356)
  - Added a config option to suppress the SDK code `6001`. (FFM-11425, ZD-62796)
  - Updating BC to 1.78.1. (FFM-11502)
  - Downgraded the OpenAPI plugin to allow for a broader range of Springboot compatibility. (FFM-11459)
