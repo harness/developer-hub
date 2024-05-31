@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-13T10:00
+date: 2024-05-31T10:00
 sidebar_position: 16
 ---
 
@@ -82,7 +82,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
-## June xx, 2024, version 0.17.0
+## May 31, 2024, version 0.17.0
 
 This release includes the following Harness module and component versions.
 
@@ -254,6 +254,10 @@ gsutil -m cp \
 
 #### Security Testing Orchestration
 
+- Implemented UI updates to support ingestion of Wiz scan results. (STO-7350)
+- The Zap **Context Name** field now works as intended. (STO-7287)
+- Introduced a fix to ensure that Git-triggered pipelines run correctly when the Repository Name is specified as a runtime input. (STO-7029, ZD-55622)
+
 ### Early access feature
 
 #### Continuous Delivery
@@ -266,9 +270,7 @@ gsutil -m cp \
 
 - If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
 
-#### Security Testing Orchestration
-
-## Breaking changes
+### Breaking changes
 
 #### Continuous Delivery
 
