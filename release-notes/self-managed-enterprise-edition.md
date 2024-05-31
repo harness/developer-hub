@@ -41,7 +41,8 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
     env | grep MINIO_ROOT_PASSWORD
    ```
-3.Run the following commands.
+
+3. Run the following commands.
 
    ```
    bin/mc alias set minio http://minio:9000
@@ -220,7 +221,7 @@ gsutil -m cp \
 
 - The link to Slack on the UI Help section was not functioning. The community link has been updated to ensure it works correctly. (PL-48948, ZD-61203)
 
-- Delegates with mTLS enabled were able to send a heartbeat to Harness Manager despite being configured with a non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to Harness Manager. This item requires Harness Delegate version 24.04.82901. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48891, ZD-60974)
+- Delegates with mTLS enabled were able to send a heartbeat to Harness Manager despite being configured with a non-agent endpoint. Resolved this by ensuring the `isNg` flag is correctly propagated when delegates send heartbeats to Harness Manager. (PL-48891, ZD-60974) This item requires Harness Delegate version 24.04.82901. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48891, ZD-60974)
 
 - When a new pipeline for approval was created, but the approval email was not being sent, preventing testing of the link within the approval email. Resolved this issue that prevented notifications from being sent to multiple emails configured in a user group for email notifications. (PL-48854, ZD-60366, ZD-61333)
 
@@ -275,6 +276,49 @@ gsutil -m cp \
 #### Continuous Delivery
 
 - The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but made mandatory now as the APIs require these to work. (CDS-94245)
+
+## May 29, 2024, version 0.16.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.16.2](https://github.com/harness/helm-charts/releases/tag/harness-0.16.2) |
+| Air Gap Bundle | [0.16.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.16.2) |
+| NG Manager | 1.31.8 |
+| CI Manager | 1.21.5 |
+| Pipeline Service | 1.68.2 |
+| Platform Service | 1.17.2 |
+| Access Control Service | 1.39.1 |
+| Delegate | 24.03.82600 |
+| Change Data Capture | 1.5.4 |
+| STO Core | 1.90.1 |
+| Test Intelligence Service | 1.13.1 |
+| NG UI | 1.14.5 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.16.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed issues with the StatefulSet YAML template for the `audit-streaming-service`. (PL-51401, ZD-63850)
+
+- Chart upgrades failed with some versions of Kubernetes for platform and access-control services. The `config.yaml` file now defaults to an empty string when no value is provided to resolve the issue. (CODE-1921, ZD-61619, ZD-61737, ZD-63237)
 
 ## May 13, 2024, patch version 0.14.10
 

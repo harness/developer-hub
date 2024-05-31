@@ -411,7 +411,7 @@ This fault determines the resilience of an application to unexpected halts in th
 ECS agent stop disrupts the state of infrastructure resources.
 
 - The fault induces an agent stop chaos on AWS ECS using Amazon SSM Run command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
-- It causes agent container stop on ECS with a given `CLUSTER_NAME` envrionment variable using an SSM docs for a specific duration.
+- It causes agent container stop on ECS with a given `CLUSTER_NAME` environment variable using an SSM docs for a specific duration.
 
 <Accordion color="green">
 <summary>Use cases</summary>
@@ -426,7 +426,7 @@ ECS agent stop chaos stops the agent that manages the task container on the ECS 
 ECS container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
 
 - It causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
-- To select the Task Under Chaos (TUC), use the servie name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
+- To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to CPU stress.
 
 <Accordion color="green">
@@ -443,7 +443,7 @@ Injecting a rogue process into a target container starves the main microservice 
 ECS container IO stress disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
 
 - It causes I/O stress on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
-- To select the Task Under Chaos (TUC), use the servie name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
+- To select the Task Under Chaos (TUC), use the service name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to I/O stress.
 
 <Accordion color="green">
@@ -907,6 +907,25 @@ Windows EC2 memory hog:
 - Causes memory stress on the target AWS EC2 instance(s).
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
+
+</Accordion>
+</FaultDetailsCard>
+<FaultDetailsCard category="aws">
+
+### SSM chaos by tag
+
+AWS SSM chaos by tag induces chaos on AWS EC2 instances using the Amazon SSM Run Command.
+- It is executed using the SSM document that defines the actions which the systems manager can perform on your managed instances (that have SSM agent installed).
+- This SSM document is uploaded beforehand to AWS, whose name is referenced in the faults.
+- It helps execute custom chaos (like stress, network, disk or IO) on AWS EC2 instances for a specific duration using the given tag(s).
+
+<Accordion color="green">
+<summary>Use cases</summary>
+
+AWS SSM chaos by tag:
+- Tests the resilience of an application that uses custom SSM document as input to execute chaos on EC2 instances.
+- Triggers the provided SSM document provided as an input to other AWS chaos.
+- After chaos, this fault cleans up the SSM document provided as an input to the EC2 instance.
 
 </Accordion>
 </FaultDetailsCard>
