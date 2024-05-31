@@ -79,9 +79,9 @@ For clusters with up to 200 nodes and 4000 pods, each delegate should be configu
 **Incremental Scaling:** For every additional 50 nodes and 1000 pods, the delegate capacity should be increased by 0.5 vCPUs and 2 GB of memory
 This scaling ensures that the delegate can handle the increased load and continue to collect metrics efficiently.
 
-**Single Replica Requirement**
+**Single replica requirement:**
 - All specified resource requirements pertain to a single replica of the delegate.
-- Instead of increasing the number of smaller replicas using the Horizontal Pod Autoscaler (HPA), we recommend individually provisioning each delegate with the necessary resources to manage the specified number of nodes and pods.
+- Instead of utilizing Horizontal Pod Autoscaler (HPA) to increase the number of smaller-sized replicas Harness recommends provisioning each delegate with the necessary resources to handle the specified number of nodes and pods.
 
 :::warning
 
