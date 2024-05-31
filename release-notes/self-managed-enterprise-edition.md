@@ -121,6 +121,12 @@ gsutil -m cp \
 
 ### New features and enhancements
 
+#### Cloud Cost Management
+
+- Introduction of Anomaly Workflows: We have added Anomaly Workflows to enhance anomaly management within the CCM platform. With this feature, when a user marks an anomaly as a False Anomaly, it will be automatically moved to the Ignore list within the Anomaly Settings drawer. Furthermore, users now have the option to undo this action directly from the Anomaly Settings drawer, providing greater flexibility and control over anomaly management processes. (CCM-17311)
+- Multi-Select Cloud Providers Filter: We have enhanced the Recommendations Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously. (CCM-17150)
+- Pagination for Budgets: We have added pagination for our Budgets page. This allows users to navigate through multiple pages of budget entries, improving the overall user experience by making it easier to manage and access information efficiently. (CCM-16978)
+
 #### Harness Platform
 
 - AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
@@ -128,6 +134,9 @@ gsutil -m cp \
 ### Fixed issues
 
 #### Cloud Cost Management
+
+- Granularity Adjustment for Cluster Data Retrieval: With this fix, we have ensured that data retrieval aligns with the specified granularity settings: fetching from the daily data table for DAILY granularity and from the hourly table for HOURLY granularity. (CCM-16061)
+- Improved Precision in Perspective Reports: Previously, when choosing the current month during perspective setup, the report would present data from the past 7 days. We have promptly added a fix so that it accurately portrays data for the entire current month. (CCM-17100)
 
 #### Continuous Delivery
 
@@ -236,8 +245,6 @@ gsutil -m cp \
 #### Security Testing Orchestration
 
 ### Early access feature
-
-#### Cloud Cost Management
 
 #### Continuous Delivery
 
