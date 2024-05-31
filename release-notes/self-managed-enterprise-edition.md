@@ -119,25 +119,13 @@ gsutil -m cp \
   .
 ```
 
-### New features and enhancements 1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-
-#### Cloud Cost Management
-
-#### Continuous Delivery
-
-#### Continuous Integration
-
-#### Feature Flags
-
-#### Internal Developer Portal
+### New features and enhancements
 
 #### Harness Platform
 
 - AWS Secret Manager connectors now support both plain text and encrypted type Access Key Ids. (PL-48420)
 
-#### Security Testing Orchestration
-
-### Fixed issues 222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222
+### Fixed issues
 
 #### Cloud Cost Management
 
@@ -187,9 +175,23 @@ gsutil -m cp \
 
 #### Continuous Integration
 
-#### Feature Flags
+- The built-in clone codebase step now works on Windows platforms for LFS-enabled Git repos. (CI-12038)
 
-#### Internal Developer Portal
+- Fixed an issue where pod cleanups could be missed due to duplicate data. (CI-11995)
+
+- Fixed an issue where references to deleted/nonexistent secrets sometimes caused pipelines to timeout at the initialize step without any logs. (CI-11891, ZD-60575)
+
+- Empty expressions were not evaluated correctly in an environment variable. The fix is behind the feature flag CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS. Contact Harness Support to enable it. (CI-11882, ZD-57626)
+
+- In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby), test globs starting with `/` are correctly treated as absolute paths. (CI-11819, ZD-57661, ZD-61493)
+
+- Added a fix to trim long environment variables, such as the commit message and PR title, during pod creation in stage initialization. This is currently an opt-in fix for affected customers. If you're using a Kubernetes cluster build infrastructure and experiencing initialization timeout with an error message like `rpc error: code = ResourceExhausted desc = trying to send message larger than max`, contact [Harness Support](mailto:support@harness.io) to enable this fix in your account. (CI-11709, ZD-59521)
+
+- Builds triggered by Bitbucket Server push events now have correct date information in the build history. This issue occurred due to missing date information in the `commits` object returned by the Bitbucket Server API. This change requires Harness Delegate version 24.04.82707 or later. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-11556, ZD-58798)
+
+- Resolved an issue where expressions could unexpectedly/incorrectly resolve as `null` if those expressions were supplied as environment variables in steps that were in step group templates or other looping strategies. (CI-11305, ZD-57626)
+
+- This release includes a new release of the `Harness/godotenv` library, which fixes an issue in the current library where `-` characters were not supported in key names. This new `godotenv` release is behind the feature flag `CI_NEW_VERSION_GODOTENV`. Contact [Harness Support](mailto:support@harness.io) to enable it.  (CI-11792, ZD-59062)
 
 #### Harness Platform
 
@@ -233,7 +235,7 @@ gsutil -m cp \
 
 #### Security Testing Orchestration
 
-### Early access feature 333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333
+### Early access feature
 
 #### Cloud Cost Management
 
@@ -243,9 +245,9 @@ gsutil -m cp \
 
 #### Continuous Integration
 
-#### Feature Flags
+- This release includes new default settings that enable you to configure s3-compatible caching in self-hosted build infrastructures. You can configure the endpoint URL, region, bucket name, access key, and secret key. These options are behind the feature flags CI_ENABLE_DLC_SELF_HOSTED (for Docker layer caching) and CI_ENABLE_CACHE_INTEL_SELF_HOSTED (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. (CI-11953)
 
-#### Internal Developer Portal
+- If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
 
 #### Security Testing Orchestration
 
@@ -254,7 +256,6 @@ gsutil -m cp \
 #### Continuous Delivery
 
 - The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but made mandatory now as the APIs require these to work. (CDS-94245)
-
 
 ## May 13, 2024, patch version 0.14.10
 
