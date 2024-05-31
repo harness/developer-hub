@@ -1492,10 +1492,7 @@ module.exports = {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-dashboard",
       to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-dashboard",
     },
-    {
-      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-reservation-coverage-and-service-cost",
-      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-reservation-coverage-and-service-cost",
-    },
+
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/azure-cost-dashboard",
       to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/azure-cost-dashboard",
