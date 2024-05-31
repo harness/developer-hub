@@ -120,12 +120,32 @@ gsutil -m cp \
   .
 ```
 
+### Breaking changes
+
+#### Continuous Delivery
+
+- The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but made mandatory now as the APIs require these to work. (CDS-94245)
+
+### Early access feature
+
+#### Continuous Delivery
+
+- Harness UI now supports  pipeline rollback failure strategy in CI, STO, Approval, Custom, FF stage, step, and step-group. This functionality is behind the feature flag, `CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK`. To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). (PIPE-15903)
+
+#### Continuous Integration
+
+- This release includes new default settings that enable you to configure s3-compatible caching in self-hosted build infrastructures. You can configure the endpoint URL, region, bucket name, access key, and secret key. These options are behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` (for Docker layer caching) and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED` (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. (CI-11953)
+
+- If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
+
 ### New features and enhancements
 
 #### Cloud Cost Management
 
 - Introduction of Anomaly Workflows: We have added Anomaly Workflows to enhance anomaly management within the CCM platform. With this feature, when a user marks an anomaly as a False Anomaly, it will be automatically moved to the Ignore list within the Anomaly Settings drawer. Furthermore, users now have the option to undo this action directly from the Anomaly Settings drawer, providing greater flexibility and control over anomaly management processes. (CCM-17311)
+
 - Multi-Select Cloud Providers Filter: We have enhanced the Recommendations Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously. (CCM-17150)
+
 - Pagination for Budgets: We have added pagination for our Budgets page. This allows users to navigate through multiple pages of budget entries, improving the overall user experience by making it easier to manage and access information efficiently. (CCM-16978)
 
 #### Harness Platform
@@ -147,6 +167,7 @@ gsutil -m cp \
 #### Cloud Cost Management
 
 - Granularity Adjustment for Cluster Data Retrieval: With this fix, we have ensured that data retrieval aligns with the specified granularity settings: fetching from the daily data table for DAILY granularity and from the hourly table for HOURLY granularity. (CCM-16061)
+
 - Improved Precision in Perspective Reports: Previously, when choosing the current month during perspective setup, the report would present data from the past 7 days. We have promptly added a fix so that it accurately portrays data for the entire current month. (CCM-17100)
 
 #### Continuous Delivery
@@ -203,7 +224,7 @@ gsutil -m cp \
 
 - Empty expressions were not evaluated correctly in an environment variable. The fix is behind the feature flag CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS. Contact Harness Support to enable it. (CI-11882, ZD-57626)
 
-- In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby), test globs starting with `/` are correctly treated as absolute paths. (CI-11819, ZD-57661, ZD-61493)
+- In [TI for Ruby](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby), test globs starting with `/` are correctly treated as absolute paths. (CI-11819, ZD-57661, ZD-61493)
 
 - Added a fix to trim long environment variables, such as the commit message and PR title, during pod creation in stage initialization. This is currently an opt-in fix for affected customers. If you're using a Kubernetes cluster build infrastructure and experiencing initialization timeout with an error message like `rpc error: code = ResourceExhausted desc = trying to send message larger than max`, contact [Harness Support](mailto:support@harness.io) to enable this fix in your account. (CI-11709, ZD-59521)
 
@@ -247,7 +268,7 @@ gsutil -m cp \
    - Role: `_account_admin`.
    - Resource-group: `_all_resources_including_child_scopes`, `_all_account_level_resources`.
 
-- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).  (PL-47614)
+- In SCIM, creating a new user with special characters in their name failed, preventing the user from being added to Harness and resulting in discrepancies in user group membership between the Identity Provider and Harness. This item requires Harness Delegate version 24.04.82707. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47614)
 
 - Account admins, with permissions to assign roles, could assign any available role to any user, group, or service account, leading to concerns over control and governance. We have introduced a new feature flag, `PL_HIDE_ACCOUNT_LEVEL_MANAGED_ROLE`, which, when enabled, restricts the visibility of account-level Harness-managed roles. This flag is disabled by default to maintain existing permissions structures across all accounts. (PL-43907)
 
@@ -258,24 +279,6 @@ gsutil -m cp \
 - Implemented UI updates to support ingestion of Wiz scan results. (STO-7350)
 - The Zap **Context Name** field now works as intended. (STO-7287)
 - Introduced a fix to ensure that Git-triggered pipelines run correctly when the Repository Name is specified as a runtime input. (STO-7029, ZD-55622)
-
-### Early access feature
-
-#### Continuous Delivery
-
-- Harness UI now supports  pipeline rollback failure strategy in CI, STO, Approval, Custom, FF stage, step, and step-group. This functionality is behind the feature flag, `CDS_ALLOW_EXPRESSION_RESOLUTION_PIPELINE_ROLLBACK`. To enable a feature flag in your Harness account, contact [Harness Support](mailto:support@harness.io). (PIPE-15903)
-
-#### Continuous Integration
-
-- This release includes new default settings that enable you to configure s3-compatible caching in self-hosted build infrastructures. You can configure the endpoint URL, region, bucket name, access key, and secret key. These options are behind the feature flags CI_ENABLE_DLC_SELF_HOSTED (for Docker layer caching) and CI_ENABLE_CACHE_INTEL_SELF_HOSTED (for Cache Intelligence). Contact [Harness Support](mailto:support@harness.io) to enable them. (CI-11953)
-
-- If you need to allow empty environment variables in your CI pipelines, you can enable the feature flag `CI_USE_LESS_STRICT_EVALUATION_FOR_MAP_VARS` by contacting [Harness Support](mailto:support@harness.io). (CI-11882, CI-11305, CI-11672, ZD-57626)
-
-### Breaking changes
-
-#### Continuous Delivery
-
-- The RepoName, FilePath, and ConnectorRef parameters are marked as required in the Git import APIs for pipelines, templates, input sets, services, environments, infrastructure definitions, and service overrides. These parameters were optional before but made mandatory now as the APIs require these to work. (CDS-94245)
 
 ## May 29, 2024, version 0.16.2
 
