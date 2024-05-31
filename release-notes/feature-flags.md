@@ -54,7 +54,7 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
  - Adding a new query parameter to `target-segments`. (FFM-11356)
  - Added a config option to suppress the SDK code `6001`. (FFM-11425, ZD-62796)
  - Updating BC to 1.78.1. (FFM-11502)
- - Downgrading OpenAPI plugin to allow for broader range of Springboot compatibility. (FFM-11459)
+ - Downgraded the OpenAPI plugin to allow for a broader range of Springboot compatibility. (FFM-11459)
 
 ### .NET SDK
 
