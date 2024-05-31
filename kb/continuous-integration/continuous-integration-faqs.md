@@ -1942,8 +1942,8 @@ Yes, you can use multiple background steps to run multiple background services, 
 Yes. Background steps have these limitations:
 
 * Background steps don't support failure strategies or output variables.
-* Other steps running in containers can't communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) because they don't have a common host.
-* If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify [Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings) if you want to reference the Background step in a later step in the pipeline (such as in a cURL command in a Run step).
+* Steps running in containers can communicate with Background steps running on [Harness Cloud build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) by their Background step ID. For example, if a Background step has ID `myloginservice`, later steps running in Docker can communicate with the Background step via `myloginservice:<port_number>`.
+* If your build stage uses Harness Cloud build infrastructure and you are running a Docker image for your Background step, followed by steps that do not use Docker (steps that run directly on the host), you must specify [Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#port-bindings) in your Background step. Later steps that run on the host can communicate with the Background step via `localhost:<port_number>`.
 
 ### How can a step call a service started by a Background step?
 
