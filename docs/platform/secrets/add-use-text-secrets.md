@@ -10,7 +10,6 @@ helpdocs_is_published: true
 
 You can add an encrypted text secret to a secrets manager and use the secret in Harness resources, such as pipelines, connectors, and step commands.
 
-
 ## Add a text secret
 
 You can create secrets inline while configuring connectors or other resources, and you can create secrets directly in the account, organization, or project.
