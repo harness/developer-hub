@@ -7,7 +7,6 @@ import { experiments as GcpExperiments } from "./gcp/experiments";
 import { experiments as KubeResilienceExperiments } from "./kube-resilience/experiments";
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as LinuxExperiments } from "./linux/experiments";
-import { experiments as SecuritychaosExperiments } from "./security-chaos/experiments";
 import { experiments as SshExperiments } from "./ssh/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
