@@ -10,6 +10,7 @@ const DocVideo = ({
   //www.youtube.com/watch?v=apSyBZCz5QA
   //youtu.be/apSyBZCz5QA
   //youtube.com/embed/apSyBZCz5QAc
+  //youtube-nocookie.com/embed/apSyBZCz5QAc
   const isYoutubeVideo = src.includes("youtube");
   const isYoutubeShortenedURL = src.includes("youtu.be");
   const isWistiaVideo = /https?:\/\/(.+)?(wistia\.com|wi\.st)\/.*/.test(src);
@@ -17,6 +18,9 @@ const DocVideo = ({
   if (isYoutubeShortenedURL) {
     //Strip out WWW incase WWW duplicate by user
     videoSrc = (src || "").replace("www.", "");
+    //Strip out NOCOOKIE incasse NOCOOKIE duplicate by user 
+    videoSrc = (videoSrc || "").replace("-nocookie.", "");
+    //Final URL
     videoSrc = (videoSrc || "").replace("youtu.be", "www.youtube-nocookie.com/embed");
     return (
       <iframe
@@ -34,7 +38,11 @@ const DocVideo = ({
   } else if (isYoutubeVideo) {
     //Strip out WWW incase WWW duplicate by user
     videoSrc = (src || "").replace("www.", "");
+    //Strip out NOCOOKIE incasse NOCOOKIE duplicate by user 
+    videoSrc = (videoSrc || "").replace("-nocookie.", "");
+    //Switch to Embed
     videoSrc = (videoSrc || "").replace("/watch?v=", "/embed/");
+    //Final URL
     videoSrc = (videoSrc || "").replace("youtube", "www.youtube-nocookie");
     return (
       <iframe
