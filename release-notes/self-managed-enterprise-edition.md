@@ -100,10 +100,10 @@ looker:
     # -- replace looker license at runtime (after deployment)
     # -- reach out to the SMP team
     image:
-      imagePullSecrets: [YOUR_SECRET_NAME]
+      imagePullSecrets: [<YOUR_SECRET_NAME>]
 ```
 
-For more information, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
+For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
 
 **For airgapped packages**
 
@@ -116,10 +116,10 @@ looker:
     # -- replace looker license at runtime (after deployment)
     # -- reach out to the SMP team
     image:
-      imagePullSecrets: [YOUR_SECRET_NAME]
+      imagePullSecrets: [<YOUR_SECRET_NAME>]
 ```
 
-For more information, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
+For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
 
 Harness has also made modifications to the shell script `harness-airgap-images.sh` file in the Helm chart repository. These modifications enable you to utilize the access token to push the Looker image to your private repository.
 
