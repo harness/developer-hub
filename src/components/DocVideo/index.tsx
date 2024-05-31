@@ -15,7 +15,9 @@ const DocVideo = ({
   const isWistiaVideo = /https?:\/\/(.+)?(wistia\.com|wi\.st)\/.*/.test(src);
   const isLoomVideo = /https?:\/\/(.+)?(loom\.com)\/.*/.test(src);
   if (isYoutubeShortenedURL) {
-    videoSrc = (src || "").replace("youtu.be", "youtube.com/embed");
+    //Strip out WWW incase WWW duplicate by user
+    videoSrc = (src || "").replace("www.", "");
+    videoSrc = (videoSrc || "").replace("youtu.be", "www.youtube-nocookie.com/embed");
     return (
       <iframe
         width={width}
@@ -30,7 +32,10 @@ const DocVideo = ({
       ></iframe>
     );
   } else if (isYoutubeVideo) {
-    videoSrc = (src || "").replace("/watch?v=", "/embed/");
+    //Strip out WWW incase WWW duplicate by user
+    videoSrc = (src || "").replace("www.", "");
+    videoSrc = (videoSrc || "").replace("/watch?v=", "/embed/");
+    videoSrc = (videoSrc || "").replace("youtube", "www.youtube-nocookie");
     return (
       <iframe
         data-ot-ignore
