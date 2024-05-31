@@ -453,7 +453,7 @@ export default function CertificationsCD() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
-            Self-paced courses that you can consume on your own time in a webinar style.
+            Free self-paced courses that you can consume on your own time.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
