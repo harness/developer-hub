@@ -133,6 +133,16 @@ gsutil -m cp \
 
 ### Fixed issues
 
+#### Chaos Engineering
+
+- Fixed an issue where accounts that started with an underscore could not execute a Linux chaos experiment. (CHAOS-5185)
+
+- Fixed an issue where a chaos experiment failed when two chaos faults had the same probe (legacy) name. (CHAOS-5064)
+
+- Fixed an issue where editing the SLO probe evaluation window resulted in an `Internal server error`. (CHAOS-5022)
+
+- Fixed an issue in the UI where chaos experiments with the toggle option to enable (or disable) cloud secret was enabled automatically after saving the experiment. (CHAOS-4987)
+
 #### Cloud Cost Management
 
 - Granularity Adjustment for Cluster Data Retrieval: With this fix, we have ensured that data retrieval aligns with the specified granularity settings: fetching from the daily data table for DAILY granularity and from the hourly table for HOURLY granularity. (CCM-16061)
