@@ -129,6 +129,8 @@ You have two options to provide the AWS Access Key, **Plaintext** or **Encrypted
 
   - The AWS Access Key is the AWS Access Key ID for the IAM user you want to use to connect to secret manager.
 
+  ![](../../secrets/static/add_aws_sm_plaintext.png)
+
 #### AWS- Secret Access Key
 
 Select **Create or Select a Secret**.
