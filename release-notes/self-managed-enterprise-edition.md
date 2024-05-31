@@ -154,7 +154,6 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.17.0/ccm_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.17.0/cdng_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.17.0/ce_images.tgz" \
-  "gs://smp-airgap-bundles/harness-0.17.0/cet_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.17.0/ci_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.17.0/ff_images.tgz" \
   "gs://smp-airgap-bundles/harness-0.17.0/platform_images.tgz" \
