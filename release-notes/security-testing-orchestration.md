@@ -28,11 +28,11 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New enhancement
 
-- The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rule packs to include in your scan. (STO-7599)
+- The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
 
   The following configurations are supported:
 
-  - **Default** Include the following rule packs: 
+  - **Default** Include the following rulesets: 
     - [bandit](https://semgrep.dev/p/bandit)
     - [brakeman](https://semgrep.dev/p/brakeman)
     - [eslint](https://semgrep.dev/p/eslint)
@@ -41,10 +41,10 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     - [gosec](https://semgrep.dev/p/gosec)
     - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
-  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rule packs in **Additional CLI flags**.
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rulesets in **Additional CLI flags**.
   - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
   - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
-  - **Auto and Ported security tools** Include the following rule packs: 
+  - **Auto and Ported security tools** Include the following rulesets: 
     - [auto](https://semgrep.dev/p/auto)
     - [brakeman](https://semgrep.dev/p/brakeman)
     - [eslint](https://semgrep.dev/p/eslint)
@@ -73,7 +73,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New features and enhancements
 
-- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rule packs. (STO-7560)
+- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rulesets. (STO-7560)
 
   - [bandit](https://semgrep.dev/p/bandit)
   - [brakeman](https://semgrep.dev/p/brakeman)
