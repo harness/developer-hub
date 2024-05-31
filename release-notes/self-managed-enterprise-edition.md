@@ -83,6 +83,48 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+:::danger important changes to looker images
+
+Starting with version 0.17.0, Harness no longer publishes Looker images to the DockerHub public repository. The repository has been transitioned to private.
+
+Looker is required for custom dashboards, a feature not enabled by default in Harness Self-Managed Enterprise Edition. To set up custom dashboards, you must contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+**For non-airgapped packages**
+
+If you require custom dashboards, you can request onboarding. Harness will generate an access token, allowing you to pull the Looker image from DockerHub. Subsequently, Harness will provide you with the Looker license key and DockerHub credentials to update your `override.yaml` file.
+
+You must replace your Looker license after deployment.
+
+```yaml
+looker:
+    # -- replace looker license at runtime (after deployment)
+    # -- reach out to the SMP team
+    image:
+      imagePullSecrets: [YOUR_SECRET_NAME]
+```
+
+For more information, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
+
+**For airgapped packages**
+
+Harness no longer includes the Looker image in airgapped bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from DockerHub. Following this, Harness will provide you with the Looker license key and DockerHub credentials to update your `override.yaml` file.
+
+You must replace your Looker license after deployment.
+
+```yaml
+looker:
+    # -- replace looker license at runtime (after deployment)
+    # -- reach out to the SMP team
+    image:
+      imagePullSecrets: [YOUR_SECRET_NAME]
+```
+
+For more information, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
+
+Harness has also made modifications to the shell script `harness-airgap-images.sh` file in the Helm chart repository. These modifications enable you to utilize the access token to push the Looker image to your private repository.
+
+:::
+
 ## May 31, 2024, version 0.17.0
 
 This release includes the following Harness module and component versions.
