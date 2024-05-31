@@ -41,7 +41,7 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
    ```
     env | grep MINIO_ROOT_PASSWORD
    ```
-   
+
 3. Run the following commands.
 
    ```
@@ -82,6 +82,49 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 - **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, FirstGen Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## May 29, 2024, version 0.16.2
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.16.2](https://github.com/harness/helm-charts/releases/tag/harness-0.16.2) |
+| Air Gap Bundle | [0.16.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.16.2) |
+| NG Manager | 1.31.8 |
+| CI Manager | 1.21.5 |
+| Pipeline Service | 1.68.2 |
+| Platform Service | 1.17.2 |
+| Access Control Service | 1.39.1 |
+| Delegate | 24.03.82600 |
+| Change Data Capture | 1.5.4 |
+| STO Core | 1.90.1 |
+| Test Intelligence Service | 1.13.1 |
+| NG UI | 1.14.5 |
+| LE NG | 1.1.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.16.2/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/cet_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.16.2/sto_images.tgz" \
+  .
+```
+
+### Fixed issues
+
+- Fixed issues with the StatefulSet YAML template for the `audit-streaming-service`. (PL-51401, ZD-63850)
+
+- Chart upgrades failed with some versions of Kubernetes for platform and access-control services. The `config.yaml` file now defaults to an empty string when no value is provided to resolve the issue. (CODE-1921, ZD-61619, ZD-61737, ZD-63237)
 
 ## May 13, 2024, patch version 0.14.10
 
