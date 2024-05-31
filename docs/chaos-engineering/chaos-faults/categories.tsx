@@ -12,6 +12,7 @@ import { experiments as SshExperiments } from "./ssh/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 import { experiments as WindowsExperiments } from "./windows/experiments";
+import { experiments as BYOCExperiments } from "./byoc/experiments";
 
 export const categories: FaultCardItem[] = [
   {
@@ -25,6 +26,12 @@ export const categories: FaultCardItem[] = [
     description: <>Chaos faults for Azure </>,
     faults: AzureExperiments.length,
     category: "azure",
+  },
+  {
+    title: "BYOC",
+    description: <>Custom Chaos Faults</>,
+    faults: BYOCExperiments.length,
+    category: "byoc",
   },
   {
     title: "Cloud Foundry",
