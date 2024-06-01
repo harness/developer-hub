@@ -18,8 +18,8 @@ This topic describes the following operations:
 ## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Onboarding overview](/docs/chaos-engineering/get-started/onboarding/hce-onboarding.md)
-* [HCE single-click onboarding](/docs/chaos-engineering/get-started/onboarding/single-click-onboarding.md)
+* [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding.md)
+* [HCE single-click onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding.md)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
