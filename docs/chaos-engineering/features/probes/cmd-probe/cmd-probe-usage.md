@@ -31,7 +31,7 @@ In this example, you will specify details of the command probe, that is, provide
 
 To use the command probe in the **inline** mode:
 
-2. Enter the **Type**, **Comparison criteria**, and **Value**. Toggle to switch off the **Source** mode. Click **Setup probe**.
+2. Enter the **Type**, **Comparison criteria**, and the **Value**. Toggle to switch off the **Source** mode. Click **Setup probe**.
 
  ![Step 2](./static/inline-3.png)
 
@@ -51,7 +51,7 @@ To use the command probe in the **source** mode:
 
 
 :::tip
-You can add other specifications too (for example, `imagePullPolicy`). You can reference values from the configMap and secret too.
+You can add other specifications too (for example, `imagePullPolicy`). You can reference values from the ConfigMap and secret too.
 :::
 
 4. Select **Confirm** to create the probe with the parameters you specified.
@@ -60,6 +60,6 @@ You can add other specifications too (for example, `imagePullPolicy`). You can r
 
 ### Validation in source mode
 
-When you use the probe in **source mode** in a chaos experiment, you can see that the probe passed because the expected value and the actual value match. You executed the probe on the specific (Ubuntu, in this case) image that you created for this probe. You specified the environment mounted with the name in the image, and the image specifications you provided in the **Source** mode matched the expected value.
+When you use the probe in **source mode** in a chaos experiment, you can see that the probe passed because the expected value and the actual value match. You executed the probe on the specific image (Ubuntu, in this case) that you created for this probe. You specified the environment mounted with the name in the image, and the image specifications you provided in the **Source** mode matched the expected value.
 
  ![validation source](./static/val-source.png)

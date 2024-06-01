@@ -20,17 +20,17 @@ When you execute a command probe in the source mode, it allows you to provide a 
 2. Dockerize the binary. This image contains the logic to query the New Relic GraphQL API and extract the minimum, maximum, and mean values from the API response.
 3. [Create a new command probe](/docs/chaos-engineering/features/resilience-probes/use-probe#create-a-resilience-probe), add the necessary details, and select **Configure Properties**.
 
- ![](./static/newrelic/details-1.png)
+    ![](./static/newrelic/details-1.png)
 
 4. Add the necessary details, and select **Configure Details**.
 
- ![](./static/newrelic/details-2.png)
+    ![](./static/newrelic/details-2.png)
 
 5. Specify the command as **./main**. This command runs the dockerized binary that contains the logic to extract data from New Relic.
 
-6. Select the type as **Float** in the **type** sub-field of **Data Comparison** field, because the data extracted from New Relic is expected to be a float value. Specify the **Comparison Criteria** to be **>=** and the **value** as **0.01**. Enable the **Source** button to allow using custom images, environment variables, and secrets.
+6. Select the type as **Float** in the **type** sub-field of **Data Comparison** field, because the data extracted from New Relic is expected to be a float value. Specify the **Comparison Criteria** and the expected value. Enable the **Source** button to allow using custom images, environment variables, and secrets.
 
- ![](./static/newrelic/details-3.png)
+    ![](./static/newrelic/details-3.png)
 
 7. Once the **Source** mode is enabled, a YAML text editor appears on the UI. Specify all the details for the source probe that are required to fetch the data from New Relic.
 Pass the following parameters as environment variables:
@@ -47,18 +47,18 @@ Below is the example configuration where the **NRQL_API_KEY** environment variab
 image: docker.io/aady12/newrelic-p:3.2
 env:
  - name: NRQL_QUERY
- value: SELECT (average(net.rxBytesPerSecond) / 1000) AS `Received KBps`, (average(net.txBytesPerSecond) / 1000) AS `Transmitted KBps`, average(net.errorsPerSecond) AS `Errors / sec` FROM K8sPodSample WHERE (entityGuid = 'NDQ1Mzg5NXxJTkZSQXxOQXwxMjg5MjUwNjUxOTg2MDI1OTA1') TIMESERIES AUTO
+   value: SELECT (average(net.rxBytesPerSecond) / 1000) AS `Received KBps`, (average(net.txBytesPerSecond) / 1000) AS `Transmitted KBps`, average(net.errorsPerSecond) AS `Errors / sec` FROM K8sPodSample WHERE (entityGuid = 'NDQ1Mzg5NXxJTkZSQXxOQXwxMjg5MjUwNjUxOTg2MDI1OTA1') TIMESERIES AUTO
  - name: NRQL_ACCOUNT
- value: "12345"
+   value: "12345"
  - name: NRQL_API_KEY
- valueFrom:
- secretKeyRef:
- name: newrelic-sec
- key: NEWRELIC_KEY
+    valueFrom:
+      secretKeyRef:
+        name: newrelic-sec
+        key: NEWRELIC_KEY
  - name: NRQL_QUERY_METRICS
- value: Received KBps
+   value: Received KBps
  - name: NRQL_EVALUATION_TYPE
- value: max
+   value: max
 ```
 
 8. Attach the probe created in the experiment and validate the metrics from New Relic.
