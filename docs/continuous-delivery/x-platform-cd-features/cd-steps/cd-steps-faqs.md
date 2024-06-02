@@ -454,6 +454,13 @@ The step group's **Command** is overwritten the image's default entrypoint, if i
 
 If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**.
 
+### Does Harness's Slack integration notify on a JIRA approval awaiting approval?
+
+No, the current Slack integration for Harness does not support notifications for JIRA approval events. It only works on specific pipeline events, which are available while configuring. None of these events are related to approval notifications.
+
+Alternatively, you can set up a custom webhook step or configure a step group with two parallel stages (one with shell and one with approval). Once the process reaches the approval stage, the shell step can contain the curl call to the webhook for notification.
+
+
 
 
 

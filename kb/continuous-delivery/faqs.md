@@ -3117,6 +3117,10 @@ Harness keeps data retention for CD NG - 6 months (execution data) and audit tra
 Please read more on this on our Pricing webpage - [here](https://www.harness.io/pricing?module=cd#).
 Also follow more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/data-retention/).
 
+#### Does Harness support to resolve secrets using Harness expressions directly in Terraform code?
+
+Harness does not support this use case where a non-Harness entity is able to get the secret value bypassing Harness entirely.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
