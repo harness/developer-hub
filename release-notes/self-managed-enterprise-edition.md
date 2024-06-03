@@ -95,6 +95,8 @@ If you require custom dashboards, you can request onboarding. Harness will gener
 
 You must replace your Looker license after deployment.
 
+Create a new secret and replace `<YOUR_SECRET_NAME>` in the YAML.
+
 ```yaml
 looker:
     # -- replace looker license at runtime (after deployment)
@@ -104,8 +106,6 @@ looker:
 ```
 
 For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
-
-Replace the secret 103
 
 **For airgapped packages**
 
