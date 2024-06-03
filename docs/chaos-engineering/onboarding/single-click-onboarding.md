@@ -8,7 +8,7 @@ This topic guides you through setting up the chaos infrastructure, executing cha
 
 ## Before you begin
 
-* [Overview of HCE onboarding.](/docs/chaos-engineering/get-started/onboarding/hce-onboarding.md)
+* [Overview of HCE onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding.md)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.

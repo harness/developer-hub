@@ -28,11 +28,11 @@ To create a chaos experiment, complete the following steps:
 
 ![](./static/onboard/onboard-1.png)
 
-2. If you choose **Yes, in a single step!**, go to [automated onboarding](/docs/chaos-engineering/get-started/onboarding/single-click-onboarding.md), and if you choose **No, I will choose**, go to [guided onboarding](/docs/chaos-engineering/get-started/onboarding/guided-onboarding.md).
+2. If you choose **Yes, in a single step!**, go to [automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding.md), and if you choose **No, I will choose**, go to [guided onboarding](/docs/chaos-engineering/onboarding/guided-onboarding.md).
 
 ![](./static/onboard/onboard-2.png)
 
 ## Next steps
 
-* [Automated onboarding](/docs/chaos-engineering/get-started/onboarding/single-click-onboarding.md)
-* [Guided onboarding](/docs/chaos-engineering/get-started/onboarding/guided-onboarding.md)
+* [Automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding.md)
+* [Guided onboarding](/docs/chaos-engineering/onboarding/guided-onboarding.md)
