@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-21T10:00
+date: 2024-06-03T10:00
 sidebar_position: 4
 ---
 
