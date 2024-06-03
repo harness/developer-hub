@@ -1,12 +1,12 @@
 {
-    "label":"Terraform Backend",
-    "position": 40,
+    "label":"Remote Backends",
+    "position": 10,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Terraform Backend"
+       "title":"Remote Backends"
     },
     "customProps":{
        "helpdocs_category_id":""
