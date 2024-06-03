@@ -26,14 +26,14 @@ Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [
 :::
 
 ### What is guided onboarding?
-Guided onboarding, as the name suggests, guides you through the steps of creating a chaos experiment without the hassle of installing infrastructure, with the click of a button.
+Guided onboarding, as the name suggests, guides you through creating a chaos experiment without the hassle of installing infrastructure, with the click of a button.
 
 For example, you can [click a button to create an environment](/docs/chaos-engineering/onboarding/guided-onboarding#select-an-environment) and HCE creates an environment in the background. On the same lines, you can click a button to install a chaos infrastructure in the environment you created earlier.
 
 ### Why choose guided onboarding?
 - Guided onboarding gives you multiple options at every step so you know the entire process of creating a chaos experiment and executing it.
 - At every step, you have the option of allowing HCE to create the entity for you or you can choose to customize the entity creation too.
-- The level of granularity is such that, HCE will suggest experiments for you based on earlier steps (network maps and so on) and you can create experiments. But to execute them, you need to select the **Run** button.
+- The level of granularity is, that HCE will suggest experiments for you based on earlier steps (network maps and so on) and you can create experiments. But to execute them, you have to select the **Run** button.
 
 If you chose to onboard with guidance, follow the steps below.
 

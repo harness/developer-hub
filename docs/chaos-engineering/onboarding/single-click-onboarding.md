@@ -20,12 +20,12 @@ Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [
 :::
 
 ### What is automated onboarding?
-Automated onboarding, as the name suggests, automates the entire process of creating and executing a chaos experiment. You can click a button and HCE creates an environment, an infrastructure and other components in the background, execute the experiment and displays the resilience score for the sample application.
+Automated onboarding, as the name suggests, automates the entire process of creating and executing a chaos experiment. You can click a button and HCE creates an environment, an infrastructure, and other components in the background, executes the experiment, and displays the resilience score for the sample application.
 
 ### Why choose automated onboarding?
-- If you want to quickly get started with executing chaos experiments and expect HCE to perform most (or all) steps in the background, this is the guide for you.
+- If you want to quickly start with executing chaos experiments and expect HCE to perform most (or all) steps in the background, this is the guide for you.
 - It takes less time to execute.
-- Select an environment, an infrastructure, and you are done. HCE discovers the services, creates the experiments, chooses the experiments with less blast radius to execute and displays experiment progress and resilience score.
+- Select an environment and infrastructure, and you are done. HCE discovers the services, creates the experiments, chooses the experiments with less blast radius to execute, and displays experiment progress and resilience score.
 
 If you chose to onboard automatically, follow the steps below.
 
