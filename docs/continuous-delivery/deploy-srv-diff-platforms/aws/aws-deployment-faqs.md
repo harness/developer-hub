@@ -487,4 +487,4 @@ Yes. By default, deployments aren't forced. You can use the **Force new deployme
 
 ### Does Harness support viewing the rendered launch template for ASG deployments after all the Harness expressions have been evaluated?
 
-No, Harness does not store the rendered launch template as an output variable, nor does it display the rendered launch templates in the console logs. We only indicate that the ASG configuration is created. Please refer more on this in [Harness ASG services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#harness-asg-services)
+No, Harness does not store the rendered launch template as an output variable, nor does it display the rendered launch templates in the console logs. We only indicate that the ASG configuration is created. For more details, go to [Harness ASG services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#harness-asg-services).
