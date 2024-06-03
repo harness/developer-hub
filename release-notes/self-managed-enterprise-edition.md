@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-05-31T10:00
+date: 2024-06-03T10:00
 sidebar_position: 16
 ---
 
@@ -317,7 +317,7 @@ gsutil -m cp \
 - The Zap **Context Name** field now works as intended. (STO-7287)
 - Introduced a fix to ensure that Git-triggered pipelines run correctly when the Repository Name is specified as a runtime input. (STO-7029, ZD-55622)
 
-## May 29, 2024, version 0.16.2
+## May 29, 2024, patch version 0.16.2
 
 This release includes the following Harness module and component versions.
 
@@ -407,7 +407,7 @@ gsutil -m cp \
 
    You can now change this behavior for artifact and manifest triggers to guarantee that a trigger is activated only once per collected build. Even if the build is deleted and subsequently pushed again, the trigger will not fire a second time. This option is behind the feature flag `CDS_DISABLE_POLLED_KEYS_EVICTION_FOR_ARTIFACT_TRIGGER_POLLING_DOCUMENT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. (PIPE-18763)
 
-## May 8, 2024, version 0.16.1
+## May 8, 2024, patch version 0.16.1
 
 This release includes the following Harness module and component versions.
 
