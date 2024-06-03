@@ -1,7 +1,7 @@
 ---
 title: Semgrep scanner reference for STO
 description: Scan code repositories with Semgrep.
-sidebar_label: Semgrep settings reference
+sidebar_label: Semgrep scanner reference
 sidebar_position: 20
 ---
 
@@ -174,9 +174,31 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+You can use this setting to select the set of Semgrep rulesets to include in your scan:
 
-<StoSettingProductConfigName />
+  - **Default** Include the following rulesets: 
+    - [bandit](https://semgrep.dev/p/bandit)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rulesets in **Additional CLI flags**.
+  - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
+  - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
+  - **Auto and Ported security tools** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/auto)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gitleaks](https://semgrep.dev/p/gitleaks)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **Auto and Ported security tools except p/gitleaks** 
 
 ### Target
 

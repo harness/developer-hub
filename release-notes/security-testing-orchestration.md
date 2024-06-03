@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-05-22T10:00
+date: 2024-06-02T10:00
 sidebar_position: 13
 ---
 
@@ -22,11 +22,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
-## May 2024
+## June 2024
 
 ### Version 1.97
 
 #### New enhancement
+
+- The STO API is now generally available and publicly documented. For more information, go to [STO](https://apidocs.harness.io/tag/Exemptions) in the Harness API documentation. (STO-5281)
 
 - The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
 
@@ -55,6 +57,13 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
   - **Auto and Ported security tools except p/gitleaks** 
+
+  
+  #### Fixed issue
+
+- Fixed an issue where an update to the `checkmarx-job-runner` image caused the Checkmarx step to fail in some cases. (STO-7634, ZD-64116)
+
+## May 2024
 
 ### Version 1.96.2
 
