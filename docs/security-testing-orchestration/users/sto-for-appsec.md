@@ -1,16 +1,17 @@
 ---
-title: STO for DevOps teams
-description: Shift-left security features for DevOps teams
-sidebar_position: 15
+title: STO for Application Security teams
+description: STO features for AppSec teams
+sidebar_position: 20
 ---
 
-DevOps teams can use STO to 
-- Run automated security scans at any point in the SDLC.
-- Normalize and deduplicate results across multiple scanners.
-- Set baselines such as the `main` branch or `latest` tag to identify downstream vs. upstream vulnerabilities.
-- Selectively block pipelines based on detected vulnerabilities.
-- Remediate vulnerabilities quickly and easily. 
-- Auto-create Jira tickets and Slack/email notifications for detected vulnerabilities.
+Security engineers, information security officers, and other Application Security team members can use STO to 
+- Write highly targeted OPA policies based on issue severity, issue title, CVE age, reference ID, and number of occurrences.
+- Enforce these policies by blocking pipelines where scan results violate one or more policies.
+- Approve Fail on Severity exemptions to unblock pipelines for specific vulnerabilities.
+- Receive auto-generated Jira tickets and Slack/email notifications for detected vulnerabilities.
+- View all vulnerabilities in your  `main` branches, `latest` tag images, and other baselines in a single dashboard. 
+- View all vulnerabilities in your Harness project in a single dashboard. 
+
 
 :::note
 
