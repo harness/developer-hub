@@ -2243,11 +2243,42 @@ Yes. [Harness CI offers many options for mobile app development.](https://develo
 
 Yes, you can use the [Harness Terraform provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
 
+### When using the --no-push option in a Harness build step, where is the locally built image stored ?
+Harness doesn't store the built image directly with --no-push in Kaniko builds; Kaniko stores layers locally (e.g., `/kaniko`) and requires [exporting as an image or tarball](https://github.com/drone/drone-kaniko/blob/main/cmd/kaniko-docker/main.go#L191) for using in subsequent steps. For more information, go to the [`--tar-path`flag description](https://github.com/GoogleContainerTools/kaniko/tree/cf9a334cb027e6bc6a35c94a3b120b34880750a9?tab=readme-ov-file#flag---tar-path) in the Kaniko readme. 
+
+### In a CI/CD pipeline using Drone CI and the drone-aws-sam plugin, how can you pass multiple arguments to the AWS SAM build command? 
+When using the drone-aws-sam plugin in a Drone CI pipeline, you can pass multiple arguments to the AWS SAM build command by specifying them in the `build_command_options` field of the plugin configuration. The arguments should be separated by spaces and enclosed in double quotes if they contain spaces or special characters. Here's an example:
+
+```
+build_command_options: "--no-cached --debug --parameter-overrides 'ParameterKey=KeyPairName, ParameterValue=MyKey ParameterKey=InstanceType, ParameterValue=t1.micro'
+```
+
+### A background service consistently generates logs containing "SIGQUIT: quit PC=0x46d441 m=0 sigcode=0..." messages during a specific stage execution. These messages appear only in logs scraped from the container and streamed to an external monitoring tool, not directly in the CI/CD platform logs.What are some potential causes of this behavior, and what general troubleshooting steps can I take to identify the root cause?
+Harness runs the service defined in the background step in a separate go-routine, which will be available until the lifetime of the stage. The service gets automatically killed during cleanup after the execution of the stage.
+
+The container logs you're seeing basically mean that the go-routine has received the termination signal, most likely during pod clean-up. It does look like the logs are quite verbose, which could indicate that debug mode is enabled for this particular step.
+
+### Is there a Public API in CI to obtain the day-by-day usage breakdown of Mac VMs for the account?
+As of now, there is no public API available to retrieve such information.
+
+###  Is there a known issue or limitation with Kaniko that prevents the chmod command within ADD in a Dockerfile from working properly when building with native build and push steps?
+This seems like a known issue with Kaniko. https://github.com/GoogleContainerTools/kaniko/issues/2850
+
+### How can I rotate my Drone user token ?
+To rotate a user token, you can use the following curl command:
+
+```
+curl -X POST -i -H "Authorization: Bearer AUTH_TOKEN" https://<DRONE_SERVER_FQDN>/api/user/token\?rotate\=true
+```
+
+### What actions can I take to address the extended runtime of a Docker command, particularly when encountering timeouts during microdnf updates ?
+The prolonged runtime of Docker commands, often exacerbated by timeouts during microdnf updates, can be primarily attributed to network issues. To address this, you should verify the connectivity of the repomirror being utilized. Additionally, you could examine and potentially adjust the timeouts configured on the repomirror to enhance performance. These steps can help mitigate the impact of network-related delays and improve the efficiency of Docker operations.
+
 #### What does this error "java. lang.IllegalStateException: Failed to execute ApplicationRunner" mean?
 
-The error "java.lang.IllegalStateException: Failed to execute ApplicationRunner" indicates that there was an issue while trying to execute an ApplicationRunner in a Java application. This could be due to various reasons such as missing dependencies, incorrect configuration, or runtime issues. Examining the stack trace and reviewing the application code further may be necessary to pinpoint the exact cause of the error.
+The error `java.lang.IllegalStateException: Failed to execute ApplicationRunner` indicates that there was an issue while trying to execute an ApplicationRunner in a Java application. This could be due to various reasons such as missing dependencies, incorrect configuration, or runtime issues. Examining the stack trace and reviewing the application code further may be necessary to pinpoint the exact cause of the error.
 
-#### How to run background step in debug mode in Harness?
+#### How can I a run background step in debug mode in Harness?
 To enable debug logging, set the environment variable DEBUG=true. For more information on configuration, go to [Relay proxy configuration reference](https://developer.harness.io/docs/feature-flags/relay-proxy/configuration).
 
 <!-- PLEASE ORGANIZE NEW QUESTIONS UNDER CATEGORIES AS INDICATED BY THE LEVEL 2 HEADINGS (##) -->
