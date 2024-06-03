@@ -1,20 +1,24 @@
 ---
-title: Enable TI for Ruby
-description: Set up TI for Ruby codebases.
+title: Use the Run Tests step for Ruby
+description: Set up TI for Ruby programming language.
 sidebar_position: 40
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
+:::info
+While the **Run Tests** step remains backwards compatible, Harness recommends using the new [**Test** ](../tests-v2.md) step to take advanced of improved user experience.
+:::
+
 
 ## Enable TI for Ruby
 
 You can enable TI for Ruby in three steps:
 
-<!-- no toc -->
-1. [Add the Run Tests step.](#add-the-run-tests-step)
+1. [Add a **Run Tests** step.](#add-the-run-tests-step) or use our new [**Test**](../tests-v2.md)
 2. [Trigger test selection.](#trigger-test-selection)
 3. [(Optional) Add test splitting.](#add-test-splitting)
 
@@ -65,8 +69,6 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
    If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
-   <!-- ![](../static/set-up-test-intelligence-04.png) -->
-
    <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
@@ -91,7 +93,7 @@ The first time you run a pipeline after adding the Run Test step, Harness create
 
 Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
 
-You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+You can also configure TI to [ignore tests or files](../ti-overview.md#ignore-tests-or-files).
 
 ## Pipeline examples
 

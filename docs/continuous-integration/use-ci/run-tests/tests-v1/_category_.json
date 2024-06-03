@@ -1,11 +1,11 @@
 {
-    "label": "Test Intelligence",
-    "position": 20,
+    "label": "Run Tests step",
+    "position": 100,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link":{
         "type": "generated-index",
-        "title": "Test Intelligence"
+        "title": "Run Tests step"
     }
 }

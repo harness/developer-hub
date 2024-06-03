@@ -1,20 +1,29 @@
 ---
-title: Enable TI for Java, Kotlin, or Scala
-description: Set up TI for Java, Kotlin, or Scala codebases.
+title: Use Run Tests step for Java, Kotlin, or Scala
+description: Set up TI for Java, Kotlin, or Scala programming languages.
 sidebar_position: 20
+redirect_from:
+  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-java-kotlin-scala
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Using [Test Intelligence (TI)](./set-up-test-intelligence.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
+:::info
+Currently, the new **Test** step supports Java but it doesn't yet support Kotlin or Scala. Until support is added for these languages, continue to use the **Run Tests** step for TI with Kotlin or Scala.
+
+While the **Run Tests** step remains backwards compatible,We recommend using the new [**Test** ](../tests-v2.md) step with Java applications moving forward.  
+
+:::
+
+Using [Test Intelligence (TI)](../ti-overview.md) in your Harness CI pipelines doesn't require you to change your build and test processes.
 
 ## Enable TI for Java, Kotlin, or Scala
 
 You can enable TI for Java, Kotlin, or Scala in three steps:
 
 <!-- no toc -->
-1. [Add the Run Tests step.](#add-the-run-tests-step)
+1. [Add a **Run Tests** step](#add-the-run-tests-step). For Java consider using the new [**Test**](../tests-v2.md) step instead.
 2. [Trigger test selection.](#trigger-test-selection)
 3. [(Optional) Add test splitting.](#add-test-splitting)
 
@@ -97,8 +106,6 @@ After adding the **Run Tests** step, trigger test selection. **You need to run y
 
    If you pushed changes, select **Git Branch** for **Build Type**, and then enter the branch name.
 
-   <!-- ![](../static/set-up-test-intelligence-04.png) -->
-
    <DocImage path={require('../static/set-up-test-intelligence-04.png')} />
 
 2. Wait while the build runs. You can monitor the build's progress on the [Build details page](../../viewing-builds.md).
@@ -123,7 +130,7 @@ The first time you run a pipeline after adding the Run Test step, Harness create
 
 Once you start saving time with test selection, you can further optimize test times by [enabling parallelism (test splitting) for TI](./ti-test-splitting.md).
 
-You can also configure TI to [ignore tests or files](./set-up-test-intelligence.md#ignore-tests-or-files).
+You can also configure TI to [ignore tests or files](../ti-overview.md#ignore-tests-or-files).
 
 ## Pipeline YAML examples
 
@@ -386,7 +393,7 @@ You can add multiple paths. If you specify multiple paths, make sure the files c
 
 ### Test Splitting (parallelism)
 
-Used to [enable test splitting (parallelism) for TI](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-test-splitting).
+Used to [enable test splitting (parallelism) for TI](/docs/continuous-integration/use-ci/run-tests/tests-v1/ti-test-splitting).
 
 ### Pre-Command, Post-Command, and Shell
 
@@ -531,5 +538,3 @@ Go to the [CI Knowledge Base](/kb/continuous-integration/continuous-integration-
 * [Test Intelligence call graph is empty.](/kb/continuous-integration/continuous-integration-faqs/#on-the-tests-tab-the-test-intelligence-call-graph-is-empty-and-says-no-call-graph-is-created-when-all-tests-are-run)
 * [If the Run Tests step fails, does the Post-Command script run?](/kb/continuous-integration/continuous-integration-faqs/#if-the-run-tests-step-fails-does-the-post-command-script-run)
 * [Test Intelligence fails due to Bazel not installed, but the container image has Bazel.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-fails-due-to-bazel-not-installed-but-the-container-image-has-bazel)
-* [Errors when running TI with Maven.](/kb/continuous-integration/continuous-integration-faqs/#test-intelligence-errors-with-maven)
-* [Gradle version not compatible with Test Intelligence.](/kb/continuous-integration/continuous-integration-faqs/#gradle-version-not-compatible-with-test-intelligence)

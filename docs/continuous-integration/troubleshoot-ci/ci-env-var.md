@@ -2,6 +2,8 @@
 title: CI environment variables reference
 description: Learn about environment variables in Harness CI pipelines.
 sidebar_position: 50
+redirect_from:
+  - /docs/continuous-integration/use-ci/optimize-and-more/ci-env-var
 ---
 
 This topic describes environment variables you might encounter when using Harness CI. These variables contain information about the build, such as how the build started, codebase information, build infrastructure, step identifiers, and more. These are pipeline runtime environment variables, and they are available to all stages and steps in the pipeline.
@@ -38,11 +40,11 @@ You can automatically [trigger pipelines using Git events](/docs/platform/trigge
 
 ## Difference between DRONE\_ and PLUGIN\_ variables
 
-`DRONE_` variables are environment variables that are automatically set at the pipeline level. These are pipeline runtime variables, and they are available to all stages and steps in the pipeline. Many `DRONE_` variables have equivalent `CI_` or `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](../use-drone-plugins/run-a-drone-plugin-in-ci.md) that use those variables.
+`DRONE_` variables are environment variables that are automatically set at the pipeline level. These are pipeline runtime variables, and they are available to all stages and steps in the pipeline. Many `DRONE_` variables have equivalent `CI_` or `HARNESS_` environment variables. The `DRONE_` variables are derived from Drone, which is part of Harness CI. Providing first-class support for [Drone environment variables](https://docs.drone.io/pipeline/environment/reference/) makes it easier to migrate from standalone Drone to Harness CI and provides better support for [Drone plugins](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md) that use those variables.
 
-`PLUGIN_` variables represent [plugin settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). There are three ways they can be defined depending on their usage and the build infrastructure:
+`PLUGIN_` variables represent [plugin settings](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference.md#settings). There are three ways they can be defined depending on their usage and the build infrastructure:
 
-   * The [plugin step's settings](../use-drone-plugins/plugin-step-settings-reference.md#settings). For example, `setting.url` becomes `PLUGIN_URL` at runtime.
+   * The [plugin step's settings](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference.md#settings). For example, `setting.url` becomes `PLUGIN_URL` at runtime.
    * Stage variables. For example, you can use the `PLUGIN_DRY_RUN` stage variable to [Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-without-push.md).
    * Environment variables in Build and Push steps running on Kubernetes cluster build infrastructure.
 
@@ -172,11 +174,11 @@ It can be the same as [DRONE_COMMIT](#drone_commit).
 
 ### CI\_REPO\_REMOTE/DRONE\_GIT\_HTTP\_URL
 
-Provides the HTTP(S) URL to clone a pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md), such as `https://github.com/octocat/hello-world.git`.
+Provides the HTTP(S) URL to clone a pipeline's [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md), such as `https://github.com/octocat/hello-world.git`.
 
 ### DRONE\_GIT\_SSH\_URL
 
-Provides the SSH URL to clone a pipeline's [codebase](../codebase-configuration/create-and-configure-a-codebase.md), such as `ssh://git@github.com:octocat/hello-world.git`.
+Provides the SSH URL to clone a pipeline's [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md), such as `ssh://git@github.com:octocat/hello-world.git`.
 
 ### DRONE\_PULL\_REQUEST
 
@@ -302,7 +304,7 @@ These variables are related to the lite-engine service.
 
 ### HARNESS\_WORKSPACE/DRONE\_WORKSPACE
 
-Always `/harness`, which is the default [workspace](../caching-ci-data/share-ci-data-across-steps-and-stages.md#share-data-between-steps-in-a-stage). This is where Harness clones the codebase, and it is the working directory for all steps in a stage.
+Always `/harness`, which is the default [workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md#share-data-between-steps-in-a-stage). This is where Harness clones the codebase, and it is the working directory for all steps in a stage.
 
 The `DRONE_WORKSPACE` environment variable doesn't exist in local runner build infrastructures.
 
@@ -348,7 +350,7 @@ Identifies the build environment as CI. Always `true` for all builds.
 
 ### CI\_BUILD\_LINK/DRONE\_BUILD\_LINK
 
-Provides a deep link to the Harness [build details](../viewing-builds.md). This value is immutable. Equivalent to the expression `<+pipeline.executionUrl>`.
+Provides a deep link to the Harness [build details](/docs/continuous-integration/use-ci/viewing-builds.md). This value is immutable. Equivalent to the expression `<+pipeline.executionUrl>`.
 
 ### CI\_BUILD\_STATUS/DRONE\_BUILD\_STATUS
 
@@ -457,7 +459,7 @@ Other environment variables might existing in your pipelines depending on the bu
 * `JFROG_USERNAME`
 * `LANG`
 * `PATH`
-* `PLUGIN_ARTIFACT_FILE`: Harness uses this to show links on the [Artifacts tab](../viewing-builds.md).
+* `PLUGIN_ARTIFACT_FILE`: Harness uses this to show links on the [Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds.md).
 * `PLUGIN_PIPELINE`
 * `PWD`: Print working directory.
 * `SHELL`
@@ -469,7 +471,7 @@ Other environment variables might existing in your pipelines depending on the bu
 
 ### DRONE\_OUTPUT
 
-As an environment variable, `DRONE_OUTPUT` is the path to a `DRONE_OUTPUT.env` file where Plugin steps can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](../use-drone-plugins/plugin-step-settings-reference.md#output-variables).
+As an environment variable, `DRONE_OUTPUT` is the path to a `DRONE_OUTPUT.env` file where Plugin steps can write output variables. This is not supported by all plugins or build infrastructures. For more information, go to [Plugin step settings: Output variables](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference.md#output-variables).
 
 ## Unsupported variables
 

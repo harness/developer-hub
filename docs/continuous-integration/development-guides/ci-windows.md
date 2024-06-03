@@ -113,10 +113,10 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) t
 
 ## Cache dependencies
 
-Add caching to your Build (`CI`) stage.
+Add caching to your Build stage.
 
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Cache Intelligence">
 
 Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add caching to your `stage.spec` and specify the `paths` to cache:
 
@@ -133,9 +133,9 @@ Cache your Windows app dependencies with [Cache Intelligence](/docs/continuous-i
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -225,9 +225,9 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build 
 
 :::tip
 
-For some languages, you can leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature to reduce unit test time.
+For some languages, you can leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature to reduce unit test time.
 
-Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 :::
 
