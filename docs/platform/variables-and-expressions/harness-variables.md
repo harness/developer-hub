@@ -231,7 +231,7 @@ For example, with the equals `==` and not equals `!=` operators, wrap the entire
 <+<+stage.variables.v1> != "dev">
 ```
 
-There may be situations when a string needs to be concatenated into a variable, to allow it to be utilized utilized as an expression.  In these situations, look to add double quotes around the string.
+There might be situations when a string needs to be concatenated into a variable to allow it to be utilized as an expression. In these situations, you must add double quotes around the string.
 
 `<+"https://abcdef.com/yoururl/"+<+pipeline.variables.var1>>`
 
