@@ -105,23 +105,19 @@ looker:
 
 For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
 
+Replace the secret 103
+
 **For airgapped packages**
 
-Harness no longer includes the Looker image in airgapped bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from DockerHub. Following this, Harness will provide you with the Looker license key and DockerHub credentials to update your `override.yaml` file.
+Harness no longer includes the Looker image in airgapped bundles. You can still request onboarding for custom dashboards. Upon request, Harness will generate an access token for pulling the Looker image from DockerHub. Following this, Harness will provide you with the Looker license key and DockerHub credentials.
 
 You must replace your Looker license after deployment.
 
-```yaml
-looker:
-    # -- replace looker license at runtime (after deployment)
-    # -- reach out to the SMP team
-    image:
-      imagePullSecrets: [<YOUR_SECRET_NAME>]
-```
+Harness has also made modifications to the shell script `harness-airgap-images.sh` file in the Helm chart repository. These modifications enable you to utilize the access token to push the Looker image to your private repository. The script now prompts you to enter `yes` or `no` for whether you want to install custom dashboards (`ng-dashboard`). If you enter `yes`, the script prompts you for your DockerHub credentials and image details.
 
-For more information about creating the secret, go to [Pull an image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) in the Kubernetes documentation.
+Contact [Harness Support](mailto:support@harness.io) to request the `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` to enter when prompted by the script. When prompted for the `RELEASE_VERSION`, enter the Helm chart version you want to install, for example `0.17.0`.
 
-Harness has also made modifications to the shell script `harness-airgap-images.sh` file in the Helm chart repository. These modifications enable you to utilize the access token to push the Looker image to your private repository.
+After you enter your credentials and the release version, the script pushes the Looker image to your private repository.
 
 :::
 
