@@ -321,3 +321,7 @@ This error occurs if a user is trying to add a target that already exists.
 
 #### How to retrieve the feature flag state for a specific target via API?
 The best approach today to achieve this usecase is If you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
+
+#### What does warning NU1701 mean
+
+The warning NU1701 is a common issue encountered in .NET projects when there are compatibility problems between the project and the NuGet packages it depends on. This warning typically indicates that a referenced package was restored using a target framework that does not fully support the target framework of the project.

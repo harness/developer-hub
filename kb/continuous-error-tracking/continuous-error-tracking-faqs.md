@@ -1585,4 +1585,11 @@ In the Log tab, the error or exception lines are displayed first, followed by th
 The Agent & Host Environment tab displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
 
 
+#### Infrastructure and cost-wise, what would be the implications of keeping the pipeline running and polling ServiceNow for an extended period of time, which can be several weeks.
+
+For the cost implication, as the pipeline is only waiting for an approval step, there will not be any cost implications from the Harness side.
+
+#### How to check which Harness platform version you are on
+
+Navigate to account settings, and you will see an option to check Platform Service versions.
 
