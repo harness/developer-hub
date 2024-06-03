@@ -1,20 +1,18 @@
 ---
 id: byoc-injector
 title: BYOC Injector
-redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/byoc/byoc-injector
 ---
 
-BYOC(Bring Your Own Chaos) injector enables the execution of custom chaos faults using a specialized helper pod. The BYOC injector is designed to be flexible and easy to use, allowing users to define their own chaos experiments using a simple YAML specification.
+BYOC (Bring Your Own Chaos) injector enables the execution of custom chaos faults using a special helper pod. The BYOC injector is designed to be flexible and easy to use, allowing users to define their own chaos experiments using a simple YAML specification.
 
-![BYOC Injector](./static/images/placeholder.png)
+![BYOC Injector](./static/images/byoc-injector.png)
 
 ### Use cases
 
 BYOC injector:
-- Validate the resilience of an application by introducing custom faults in critical service dependencies and observing the impact on overall system functionality.
-- Inject custom faults to simulate disaster scenarios, ensuring that the application's disaster recovery procedures are effective and efficient.
-- Implement custom faults to verify that the system meets compliance and regulatory requirements under adverse conditions, such as data corruption or service outages.
+- Validates the resilience of an application by introducing custom faults in critical service dependencies and observing the impact on overall system functionality.
+- Injects custom faults to simulate disaster scenarios, ensuring that the application's disaster recovery procedures are effective and efficient.
+- Implements custom faults to verify that the system meets compliance and regulatory requirements under adverse conditions, such as data corruption or service outages.
 
 ### Prerequisites
 - Kubernetes > 1.16
@@ -29,21 +27,21 @@ BYOC injector:
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
-        <td> Image of the helper pod that contains the business logic for the custom fault </td>
-        <td> For more information, go to <a href="#chaos-script-contained-lib_image"> lib image </a></td>
+        <td> Image of the helper pod that contains the business logic for the custom fault. </td>
+        <td> For more information, go to <a href="#chaos-script-in-lib_image"> lib image </a></td>
       </tr>
       <tr>
         <td> COMMAND </td>
-        <td> command to execute in the helper pod </td>
+        <td> Command to execute in the helper pod. </td>
         <td> For more information, go to <a href="#chaos-script-contained-lib_image"> command </a></td>
       </tr>
       <tr>
         <td> ARGS </td>
-        <td> args to execute in the helper pod </td>
+        <td> Arguments to execute in the helper pod. </td>
         <td> For more information, go to <a href="#chaos-script-contained-lib_image"> args </a></td>
       </tr>
     </table>
-    
+
 ### Optional tunables
    <table>
       <tr>
@@ -68,11 +66,11 @@ BYOC injector:
 BYOC injector supports two modes of execution:
 
 1. `Chaos script contained LIB_IMAGE`: The chaos script is included in the `LIB_IMAGE`.
-2. `Chaos script mounted as volume`: The script will not be included in the `LIB_IMAGE`. Instead, it will be mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
+2. `Chaos script mounted as volume`: The script is not be included in the `LIB_IMAGE`. Instead, it is mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
 
-#### Chaos script contained LIB_IMAGE
+#### Chaos script in LIB_IMAGE
 
-The `LIB_IMAGE` environment variable is used to specify the image of the helper pod that contains the business logic of the custom fault. We need to specify the `COMMAND` and `ARGS` for the helper pod to execute the custom fault.
+The `LIB_IMAGE` environment variable specifies the image of the helper pod that contains the business logic of the custom fault. Specify the `COMMAND` and `ARGS` for the helper pod to execute the custom fault.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -120,9 +118,9 @@ spec:
               value: "-c,sh script.sh"
 ```
 
-#### Mounted chaos script 
+#### Mounted chaos script
 
-The script will not be included in the `LIB_IMAGE`. Instead, it will be mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
+The script is not included in the `LIB_IMAGE`. Instead, it is mounted as a volume inside the helper pod, and `COMMAND` and `ARGS` will be used to execute the script.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -174,17 +172,21 @@ spec:
               value: "-c,sh /etc/config/script.sh"
 ```
 
-### Configure the advance tunables
+### Configure the advanced tunables
 
-We can configure the following advance tunables for the BYOC injector:
+Configure the following advanced tunables for the BYOC injector:
 
-- `NodeSelector`: The `NodeSelector` field is used to specify a map of key-value pairs. For the helper pod to be executed on the nodes with the corresponding labels, the `NodeSelector` field should be specified in the chaos engine.
-- `Tolerations`: The `Tolerations` field is used to specify the tolerations for the helper pod to be executed on the nodes with the corresponding taints. The `Tolerations` field should be specified in the chaos engine.
-- `HostPID`: The `HostPID` field is used to specify whether the helper pod should share the PID namespace with the host. The `HostPID` field should be specified in the chaos engine.
-- `ConfigMaps`: The `ConfigMaps` field is used to specify the configmaps that need to be mounted as volumes in the helper pod. The `ConfigMaps` field should be specified in the chaos engine.
-- `Secrets`: The `Secrets` field is used to specify the secrets that need to be mounted as volumes in the helper pod. The `Secrets` field should be specified in the chaos engine.
-- `HostFileVolumes`: The `HostFileVolumes` field is used to specify the host file volumes that need to be mounted as volumes in the helper pod. The `HostFileVolumes` field should be specified in the chaos engine.
-- `SecurityContext`: The `SecurityContext` field is used to specify the security context for the helper pod. The `SecurityContext` field should be specified in the chaos engine.
+:::tip
+Specify these tunables in the chaos engine.
+:::
+
+- `NodeSelector`: Map of key-value pairs. For the helper pod to be executed on the nodes with the corresponding labels, the `NodeSelector` field should be specified in the chaos engine.
+- `Tolerations`: Tolerations for the helper pod to be executed on the nodes with the corresponding taints.
+- `HostPID`: Whether the helper pod should share the PID namespace with the host.
+- `ConfigMaps`: ConfigMaps that need to be mounted as volumes in the helper pod.
+- `Secrets`: Secrets that need to be mounted as volumes in the helper pod.
+- `HostFileVolumes`: Host file volumes that need to be mounted as volumes in the helper pod.
+- `SecurityContext`: Security context for the helper pod.
 
 The following YAML snippet illustrates the use of these advance tunables:
 
