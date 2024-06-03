@@ -179,8 +179,8 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- The MongoDB major version has been upgraded from 4.4 to 5.0.24. (PL-41607)
-- Upgraded MinIO from `2023.10.7-debian-11-r2` to `2024.3.30-debian-12-r3`. (PL-49015)
+- The MongoDB major version has been upgraded from 4.4 to 5.0.24. Harness recommends that you back up your current instance of MongoDB before upgrading to 0.17.0. (PL-41607)
+- Upgraded MinIO from `2023.10.7-debian-11-r2` to `2024.3.30-debian-12-r3`. Harness recommends that you back up your current instance of MinIO before upgrading to 0.17.0. (PL-49015)
 - Upgraded Curl from 8.1.2 to 8.7.1. (PL-49016)
 - Upgraded Redis to 6.2.14-alpine in bootstrap to address vulnerabilities.(PL-50701)
 
