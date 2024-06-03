@@ -11,12 +11,12 @@ CF app JVM memory stress injects memory stress into a Java based Cloud Foundry a
 <!-- ![CF App JVM Memory Stress](./static/images/cf-app-jvm-memory-stress.png) -->
 
 ## Use cases
-CF app JVM memory stress:
-- Apply memory stress to evaluate the performance and efficiency of the garbage collector under high memory usage.
-- Stress memory to identify potential memory leaks and ensure proper resource cleanup.
-- Induce memory stress to test the application's response and recovery mechanisms when facing OutOfMemoryError.
+CF app JVM memory stress applies memory stress to:
+- Evaluate the performance and efficiency of the garbage collector under high memory usage.
+- Identify the potential memory leaks and ensure proper resource cleanup.
+- Test the application's response and recovery mechanisms when facing OutOfMemoryError.
 - Simulate high memory usage to determine application performance and stability under peak memory load conditions.
-- Increase memory load to assess how well the application scales and handles large datasets or high user concurrency.
+- Assess how well the application scales and handles large datasets or high user concurrency.
 
 ### Mandatory tunables
 <table>
@@ -106,7 +106,7 @@ CF app JVM memory stress:
 <VSphereSecrets />
 
 ### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
+The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. You can obtain it using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -130,7 +130,7 @@ spec:
 ```
 
 ### Instance affected percentage
-The `instanceAffectedPercentage` input specifies the percentage of total number of app instances that will be targeted. It defaults to 0 (1 instance).
+The `instanceAffectedPercentage` input specifies the percentage of total number of app instances that are targeted. It defaults to 0 (1 instance).
 
 The following YAML snippet illustrates the use of this input:
 
@@ -155,9 +155,8 @@ spec:
 ```
 
 ### Fault injector location
-The `faultInjectorLocation` input variable determines the location of the fault injector with respect to the infrastructure.
+The `faultInjectorLocation` input determines the location of the fault injector with respect to the infrastructure. It is the location where the fault-injector utility is executed.
 - It can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- It is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -180,7 +179,7 @@ spec:
 ```
 
 ### Skip SSL validation
-The `skipSSLValidation` input variable determines whether to skip SSL validation for calling the CF APIs.
+The `skipSSLValidation` input determines whether to skip SSL validation for calling the CF APIs.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -204,7 +203,7 @@ spec:
 ```
 
 ### Fault injector port
-The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
+The `faultInjectorPort` input determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this input:
 
