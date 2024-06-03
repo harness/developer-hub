@@ -113,11 +113,11 @@ Harness no longer includes the Looker image in airgapped bundles. You can still 
 
 You must replace your Looker license after deployment.
 
-Harness has also made modifications to the shell script `harness-airgap-images.sh` file in the Helm chart repository. These modifications enable you to utilize the access token to push the Looker image to your private repository. The script now prompts you to enter `yes` or `no` for whether you want to install custom dashboards (`ng-dashboard`). If you enter `yes`, the script prompts you for your DockerHub credentials and image details.
+Harness has implemented updates to the `harness-airgap-images.sh` shell script in the Helm chart repository. These changes facilitate the utilization of the access token for pushing the Looker image to your private repository. Now, the script will inquire whether you wish to install custom dashboards (`ng-dashboard`). If you respond affirmatively, it will then prompt you to provide your DockerHub credentials and image details.
 
-Contact [Harness Support](mailto:support@harness.io) to request the `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD` to enter when prompted by the script. When prompted for the `RELEASE_VERSION`, enter the Helm chart version you want to install, for example `0.17.0`.
+To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact [Harness Support](mailto:support@harness.io). When prompted for the `RELEASE_VERSION`, input the desired version of the Helm chart, such as `0.17.0`.
 
-After you enter your credentials and the release version, the script pushes the Looker image to your private repository.
+Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
 
