@@ -7,7 +7,7 @@ sidebar_position: 10
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Dynamic Backend Configuration
+# Dynamic backend configuration
 
 At the first step of most infrastructure provisioning pipelines, you prepare your working directory with the `terraform init` command. Part of this step includes setting up your backend environment for Terraform state management.
 
@@ -27,13 +27,13 @@ terraform {
 ```
 
 :::tip
-While this approach works, it lacks flexibility and can be challenging to update or manage in different environments (e.g., development, staging, production).
+While this approach works, it lacks flexibility and can be challenging to update or manage in different environments (for example, development, staging, production).
 :::
 
 ## Apply environment variables
 Using environment variables allows for a more dynamic and flexible backend configuration. By specifying an empty or partially configured backend block, we can populate the necessary values through environment variables.
 
-### Partial Configuration Example
+### Partial configuration example
 ```hcl
 terraform {
   backend "s3" {}
@@ -42,26 +42,25 @@ terraform {
 
 In this example, the backend configuration is left empty, allowing us to supply the values using environment variables during the `terraform init` command.
 
-## Setting Environment Variables
-The environment variables used to configure the backend can be set in various ways, such as directly in the terminal or through CI/CD pipelines. Here are the variables corresponding to the partial configuration:
+## Set environment variables
+You can set the environment variables used to configure the backend in various ways, such as directly in the terminal or through Infrastructure pipelines. Here are the variables corresponding to the partial configuration:
 
 :::important
-To set up an environment variable that population the terraform backend configuration as part of the `terraform init -backend-config` command, for example:
+To set up an environment variable that populates the terraform backend configuration as part of the `terraform init -backend-config` command (for example: `terraform init -backend-config="bucket=sample_s3_bucket" -backend-config="key=terraform.tfstate" -backend-config="region=us-east-1"`), you must name your variables in the following format:
 
-`terraform init -backend-config="bucket=sample_s3_bucket" -backend-config="key=terraform.tfstate" -backend-config="region=us-east-1"`
 
-You must name your variables in the following format:
 
 `PLUGIN_PLUGIN_INIT_BACKEND_CONFIG_` followed by a unique identifier to distinguish your variable.
 :::
 
-When initializing an AWS S3 bucket for example, and passing the `bucket`, `key` and `region` parameters, Harness recommends naming your variables similar to the following:
+When initializing an AWS S3 bucket for example, and passing the `bucket`, `key`, and `region` parameters, Harness recommends naming your variables similar to the following:  
+
 - `PLUGIN_INIT_BACKEND_CONFIG_BUCKET`
 - `PLUGIN_INIT_BACKEND_CONFIG_KEY`
 - `PLUGIN_INIT_BACKEND_CONFIG_REGION`
 
 
-## Adding New Environment Variables
+## Add new environment variables
 To add new environment variables, follow these steps:
 
 <Tabs>
@@ -91,10 +90,9 @@ To add new environment variables, follow these steps:
 </Tabs>
 
 
-
 ## Review variable usage
 
-Once your terraform backend configuration environment variables are set and you have a provision pipeline, run the pipeline and review the console log during the `init` step to confirm your variable values match what is used in the pipeline.
+Once your Terraform backend configuration environment variables are set and you have a provision pipeline, run the pipeline and review the console log during the `init` step to confirm your variable values match what is used in the pipeline.  
 
 ![Pipeline environment variable usage](./static/tf-initi-variable-log.png)
 
@@ -102,7 +100,6 @@ Notice the list of backend config values, shortly followed by the generated `ter
 
 
 ## Conclusion
-Using environment variables for backend configuration in Terraform provides a flexible and dynamic approach, making it easier to manage different environments and improve security. By following the steps outlined in this document, you can set up and use environment variables to configure your Terraform backend dynamically.
+Using environment variables for backend configuration in Terraform provides a flexible and dynamic approach, making it easier to manage different environments and improve security. By following the steps outlined in this topic, you can set up and use environment variables to configure your Terraform backend dynamically.  
 
 Go to [Terraform documentation on partial configuration](https://developer.hashicorp.com/terraform/language/settings/backends/configuration#partial-configuration) for more information on supported backend configurations.
-
