@@ -1,5 +1,5 @@
 ---
-title: Init Configuration
+title: Initialization
 description: Initialize your infrastructure dynamically with environment variables
 sidebar_position: 10
 ---
