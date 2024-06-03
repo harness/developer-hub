@@ -181,7 +181,7 @@ To ensure the accuracy of SEI calculations, it is necessary to maintain code hyg
 2. **Commits and Default Branch:** SEI captures all commits made to the default branch, typically named `main` or `master`. These commits serve as the basis for calculating various metrics within SEI.
 3. **Commits and Pull Requests:** SEI collects commit data related to pull requests (PRs), irrespective of the target branch. This information is vital for measuring lead time metrics during the PR process. 
 
-To learn more about how SCM Commits are ingested on Harness SEI, go to [Technical Reference: SCM Commits](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-commits)
+To learn more about how SCM Commits are ingested on Harness SEI, go to [Technical Reference: SCM Commits](/docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/scm-commits)
 
 It's important to note that certain usecases like the Lead Time calculations, offer valuable insights only after the work has been completed and merged. Consequently, when assessing these metrics in SEI, make sure to configure the Workflow Profile based on the final code changes rather than individual contributions before merging.
 

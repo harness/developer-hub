@@ -23,7 +23,7 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 | <a href="#dora-under-the-hood">DORA under-the-hood</a> | Learn how Harness SEI correlates data across different tools and services | [Click here](#dora-under-the-hood) |
 | <a href="/docs/software-engineering-insights/sei-profiles/workflow-profile">Create DORA Profile</a> | Learn how you can create a workflow profile to measure the DORA Metrics | [Click here](/docs/software-engineering-insights/sei-profiles/workflow-profile) |
 | <a href="/docs/software-engineering-insights/insights/dora-insight">Create DORA Insight</a> | Step by Step guide to create a DORA Insight | [Click here](/docs/software-engineering-insights/insights/dora-insight) |
-| <a href="/docs/category/dora-metrics-calculation">DORA Metrics Calculation</a> | How are the different DORA metrics calculated on Harness SEI | [Click here](/docs/category/dora-metrics-calculation) |
+| <a href="/docs/category/dora-calculations">DORA Metrics Calculation</a> | How are the different DORA metrics calculated on Harness SEI | [Click here](/docs/category/dora-calculations) |
 | <a href="#best-practices--recommendations">Best Practices & Recommendations for measuring DORA Metrics</a> | Recommendations to improve your DORA Metrics reporting | [Click here](#best-practices--recommendations) |
 | <a href="#roadmap">DORA Roadmap</a> | List of enhancements and improvements for DORA Metrics | [Click here](#roadmap) |
 
@@ -169,7 +169,7 @@ SEI also ingests the data for commits associated with pull requests (PRs), regar
 
 The ingestion logic within SEI rests on the assumption that important code additions go through a careful review process before being approved. At the same time, it expects that all important code changes will eventually be merged into the main branch, creating a unified and up-to-date codebase.
 
-To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-commits)
+To learn more, go to [SCM Commits Calculation on Harness SEI](/docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-metrics-calculation/scm-commits)
 
 ## DORA Insights & Profile
 

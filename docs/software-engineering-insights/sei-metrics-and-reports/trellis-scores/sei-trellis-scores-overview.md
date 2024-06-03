@@ -65,7 +65,7 @@ By default, all changes to code written in the last 30 days are considered rewor
 
 The purpose of measuring rework is to evaluate the stability of the code, the frequency of necessary changes, and the efficiency of the development efforts.
 
-By default, any changes made to code written in the last 30 days are considered rework. To learn more, go to [SCM Rework](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-rework).
+By default, any changes made to code written in the last 30 days are considered rework. To learn more, go to [SCM Rework](/docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-rework-report ).
 :::
 
 ### Impact
