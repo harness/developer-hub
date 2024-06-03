@@ -164,7 +164,7 @@ If you want to create a DORA Metrics Insight refer to the below resoures.
 
 Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
-For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics-overview) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 If you want to create a Developer i.e. SCM Metrics Insight refer to the below resources.
 
@@ -198,9 +198,9 @@ If you want to create a Trellis Insight refer to the below resources.
 
 ### Planning Insights
 
-Use the Planning Insight to examine [sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).
+Use the Planning Insight to examine [sprint metrics](/docs/category/sprint-metrics).
 
 If you want to create a Sprints Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/insights/sprint-metrics-insight)
-* [Sprint Metric Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
+* [Sprint Metric Reports](/docs/category/sprint-metrics)

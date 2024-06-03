@@ -3,6 +3,7 @@ title: Sprints Metrics Overview
 description: The Complete Sprints Metrics Handbook
 sidebar_position: 10
 sidebar_label: Overview
+redirect_url: /docs/category/sprint-metrics
 ---
 Sprint metrics can help you plan and deliver on sprints more effectively, including backlog grooming and story hygiene. These metrics can help you address business problems like:
 
@@ -21,32 +22,32 @@ Sprint metrics can help you plan and deliver on sprints more effectively, includ
     <tr>
         <td>Sprint metrics use cases</td>
         <td>These examples show how you can use sprint metrics to measure team performance</td>
-        <td>Click Here</td>
+        <td>[Click Here](#sprint-metrics-use-cases)</td>
     </tr>
     <tr>
         <td>Sprint metrics reports</td>
         <td>Use sprint metrics reports to analyze sprint and planning metrics </td>
-        <td>Click Here</td>
+        <td>[Click Here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics-reports)</td>
     </tr>
     <tr>
         <td>Sprint metrics</td>
         <td>List of all the metrics supported in SEI for measuring sprint success</td>
-        <td>Click Here</td>
+        <td>[Click Here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprints-metrics)</td>
     </tr>
     <tr>
         <td>Sprint metrics ratios</td>
         <td>These ratios are calculated from sprint metrics</td>
-        <td>Click Here</td>
+        <td>[Click Here](/docs/software-engineering-insights/sei-metrics-and-reports/planning/sprint-metrics/sei-sprint-metrics-ratios)</td>
     </tr>
     <tr>
         <td>Create a Sprints Insight</td>
         <td>Step by step guide to create a Sprint Insight</td>
-        <td>Click Here</td>
+        <td>[Click Here](/docs/software-engineering-insights/insights/sprint-metrics-insight)</td>
     </tr>
     <tr>
         <td>Best Practices and Recommendations</td>
         <td>Recommendations to improve your Sprint Metrics reporting </td>
-        <td>Click Here</td>
+        <td>[Click Here](#best-practices-and-recommendations)</td>
     </tr>
 </table>
 

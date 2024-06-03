@@ -100,7 +100,7 @@ To correlate the single stat report and the Trend Report, it's important to ensu
 #### Step 3: Configure the widget settings
 
 * Select the respective associated **Investment Profile**
-* Select the **Issue Manage Platform**&#x20;
+* Select the **Issue Manage Platform** 
 * Choose the appropriate work unit between **Ticket Count** or **Story Count**.
 * Choose the appropriate effort unit from the available options. (`Commit Count`, `Story Count`, `Ticket Count` and `Ticket Time Spent`)
 * Configure if you want to only use the **Current Assignee** or use the **Current and Previous Assignee** for effort attribution.

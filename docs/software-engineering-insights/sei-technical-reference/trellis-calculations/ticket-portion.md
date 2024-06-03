@@ -1,5 +1,5 @@
 ---
-title: Ticket Portion
+title: Ticket Portion Calculation
 description: How is Ticket Portion metric calculated on SEI
 sidebar_label: Ticket Portion
 sidebar_position: 30
@@ -13,7 +13,7 @@ To better understand this, let's consider an example: **User X** was initially a
 
 To calculate **User X's Ticket Portion**, we need to divide their time spent working on the ticket (15 days) by the total amount of time the ticket was open (15 days + 34 days). So the calculation would look like this:
 
-```
+```bash
 User X's ticket portion = Time spent by User X / Total time the ticket was open
 User X's ticket portion = 15 days / (15 days + 34 days)
 User X's ticket portion = 15 days / 49 days

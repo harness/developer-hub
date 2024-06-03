@@ -1,11 +1,11 @@
 {
-    "label":"Alignment",
+    "label":"Business Alignment",
     "position": 80,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Alignment"
+       "title":"Business Alignment"
     }
  }

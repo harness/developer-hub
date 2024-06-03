@@ -2,6 +2,7 @@
 title: Velocity metrics
 description: These metrics help analyze the time taken to deliver a feature.
 sidebar_position: 10
+sidebar_label: Overview
 ---
 
 Velocity metrics help analyze the time taken to deliver a feature. They can help you identify bottlenecks in product development and delivery processes.
@@ -27,7 +28,7 @@ There are many velocity metrics, and some overlap with other metrics categories.
 * [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics)
 * [Effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview)
 * [Flow metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/flow-metrics)
-* [Sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
+* [Sprint metrics](/docs/category/sprint-metrics)
 
 For information about reports you can use to analyze velocity metrics, go to:
 

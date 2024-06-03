@@ -1,5 +1,5 @@
 ---
-title: Individual Raw Stats
+title: Individual Raw Stats Report Calculation
 description: What is calculated in the Individual Raw Stats report
 sidebar_label: Individual Raw Stats
 sidebar_position: 20
@@ -153,7 +153,7 @@ The number of lines changed by a contributor in the last 30 days or configured t
 * Deleted 50 lines in `file3.cpp`
 * Modified 150 lines in `file4.java`
 
-In this case, the **Rework** metric for John Doe would be calculated as:&#x20;
+In this case, the **Rework** metric for John Doe would be calculated as: 
 
 ```
 Rework = 200 (modified lines in file1.js) + 100 (new lines in file2.py) + 50 (deleted lines in file3.cpp) + 150 (modified lines in file4.java) = 500
@@ -185,9 +185,9 @@ Total number of lines of code contributed by the contributor within the selected
 * 500 lines in `new_feature2.py`
 * 1000 lines in `bug_fix1.cpp`
 
-In this case, the **Lines of Code** metric for John Doe would be calculated as:&#x20;
+In this case, the **Lines of Code** metric for John Doe would be calculated as: 
 
-```
+```bash
 Lines of Code = 1000 + 500 + 1000 = 2500
 ```
 
@@ -201,9 +201,9 @@ Total number of story points for tickets that were resolved (completed) by the c
 * Story #456 (12 story points)
 * Story #789 (20 story points)
 
-In this case, the **Story points** metric for John Doe would be calculated as:&#x20;
+In this case, the **Story points** metric for John Doe would be calculated as: 
 
-```
+```bash
 Story points = 8 + 12 + 20 = 40
 ```
 
@@ -219,9 +219,9 @@ Total number of unique file types the contributor worked on in the selected time
 * `.java` (Java files)
 * `.html` (HTML files)
 
-In this case, the **Unique File Extensions** metric for John Doe would be calculated as:&#x20;
+In this case, the **Unique File Extensions** metric for John Doe would be calculated as: 
 
-```
+```bash
 Unique File Extensions = 5 (.js, .py, .cpp, .java, .html)
 ```
 
@@ -235,9 +235,9 @@ Total number of unique repositories the contributor contributed to in the select
 * `repo2`
 * `repo3`
 
-In this case, the **Unique Repos** metric for John Doe would be calculated as:&#x20;
+In this case, the **Unique Repos** metric for John Doe would be calculated as: 
 
-```
+```bash
 Unique Repos = 3 (repo1, repo2, repo3)
 ```
 
@@ -264,8 +264,8 @@ This displays how much time each user has contributed to the overall resolution 
 * **Ticket A** was open for **10 days**, and **John Doe** worked on it for **6 days**.
 * **Ticket B** was open for **20 days**, and **John Doe** worked on it for **8 days**.
 
-In this case, the **Ticket Portion** metric for John Doe would be calculated as:&#x20;
+In this case, the **Ticket Portion** metric for John Doe would be calculated as:
 
-```
+```bash
 Ticket Portion = 60% (for Ticket A), 40% (for Ticket B)
 ```

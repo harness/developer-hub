@@ -1,5 +1,5 @@
 ---
-title: Trellis Score Report
+title: Trellis Score Report Calculation
 description: How are the Trellis Factors calculated in the Trellis Score Report
 sidebar_label: Trellis Score Report
 sidebar_position: 10
@@ -127,27 +127,27 @@ The Trellis Score can be further divided into various metric Categories. Let's s
 
 ### **Quality Score**
 
-The **Quality Score** is calculated based on two metrics: Percentage of Rework and Percentage of Legacy Rework.&#x20;
+The **Quality Score** is calculated based on two metrics: Percentage of Rework and Percentage of Legacy Rework.
 
 * **Percentage of Rework** = 40% (lower is better, so score = 60%)
 * **Percentage of Legacy Rework** = 35% (lower is better, so score = 65%)
 
 If the Quality factor is given a **Weight** of **20%** in the **Trellis Profile**, the **Quality Score** would be calculated as:
 
-```
+```bash
 Quality Score = (60% + 65%) / 2 * 0.2 (weight) = 12.5 / 20
 ```
 
 ### **Impact Score**
 
-The **Impact Score** is calculated based on two metrics: High-Impact Bugs Worked On Per Month and High-Impact Stories Worked On Per Month.&#x20;
+The **Impact Score** is calculated based on two metrics: High-Impact Bugs Worked On Per Month and High-Impact Stories Worked On Per Month. 
 
 If the Impact factor is given a **Weight** of **15%** in the **Trellis Profile**, and the benchmarks for these metrics are set to **2-3 for Bugs** and **4-6 for Stories**, the Impact Score would be calculated as:
 
 * **High-Impact Bugs Worked On Per Month** = 1 (below benchmark, so score = 33.33%)
 * **High-Impact Stories Worked On Per Month** = 3 (below benchmark, so score = 50%)
 
-```
+```bash
 Impact Score = (33.33% + 50%) / 2 * 0.15 (weight) = 6.25 / 15
 ```
 
@@ -163,7 +163,7 @@ If the Volume factor is given a **Weight** of **25%** in the **Trellis Profile**
 * **Number of Bugs Worked On Per Month** = 2 (within benchmark, so score = 100%)
 * **Number of Stories Worked On Per Month** = 4 (below benchmark, so score = 80%)
 
-```
+```bash
 Volume Score = (80% + 80% + 80% + 100% + 80%) / 5 * 0.25 (weight) = 17.5 / 25
 ```
 
@@ -177,7 +177,7 @@ If the Speed factor is given a **Weight** of **10%** in the **Trellis Profile**,
 * **Average PR Cycle Time** = 9 days (above benchmark, so score = 0%)
 * **Average Time Spent Working On Issues** = 6 days (above benchmark, so score = 0%)
 
-```
+```bash
 Speed Score = (78.13% + 0% + 0%) / 3 * 0.1 (weight) = 2.6 / 10
 ```
 
@@ -190,7 +190,7 @@ If the Proficiency factor is given a **Weight** of **10%** in the **Trellis Prof
 * **Technical Breadth** = 2 (within benchmark, so score = 100%)
 * **Repo Breadth** = 1 (below benchmark, so score = 50%)
 
-```
+```bash
 Proficiency Score = (100% + 50%) / 2 * 0.1 (weight) = 7.5 / 10
 ```
 
@@ -204,7 +204,7 @@ If the Leadership and Collaboration factor is given a **Weight** of **20%** in t
 * **Number of PRs Commented On Per Month** = 3 (within benchmark, so score = 100%)
 * **Average Response Time for PR Approvals** = 3 days (above benchmark, so score = 0%)
 * **Average Response Time for PR Comments** = 2 days (above benchmark, so score = 0%)
-* **Leadership & Collaboration Score** = (100% + 100% + 0% + 0%) / 4 \* 0.2 (weight) = 10 / 20
+* **Leadership & Collaboration Score** = (100% + 100% + 0% + 0%) / 4 * 0.2 (weight) = 10 / 20
 
 ### **Overall Trellis Score**
 
@@ -212,7 +212,7 @@ The overall **Trellis Score** for the developer would be the sum of the individu
 
 _**Overall Trellis Score = Quality Score + Impact Score + Volume Score + Speed Score + Proficiency Score + Leadership & Collaboration Score**_
 
-```
+```bash
 Overall Trellis Score = 12.5 + 6.25 + 17.5 + 2.6 + 7.5 + 10 = 56.35 / 100
 ```
 

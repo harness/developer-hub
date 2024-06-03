@@ -17,29 +17,29 @@ sidebar_label: Overview
         <td><b>Documentation</b></td>
     </tr>
     <tr>
-        <td>Trellis factors</td>
+        <td>Trellis Factors</td>
         <td>Factors that impact the Trellis score calculations </td>
-        <td>Click Here</td>
+        <td>[Click Here](#trellis-factors)</td>
     </tr>
     <tr>
-        <td>Trellis reports</td>
+        <td>Trellis Profile</td>
+        <td>Create/Edit a Trellis profile</td>
+        <td>[Click Here](/docs/software-engineering-insights/sei-profiles/trellis-profile)</td>
+    </tr>
+    <tr>
+        <td>Trellis Reports</td>
         <td>Use Trellis reports to analyze the Trellis scores for your engineering team</td>
-        <td>Click Here</td>
+        <td>[Click Here](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-scores/trellis-score-reports)</td>
     </tr>
     <tr>
-        <td>Create a Trellis Insight</td>
+        <td>Trellis Insight</td>
         <td>Step by step guide to create a Trellis Insight</td>
-        <td>Click Here</td>
-    </tr>
+        <td>[Click Here](/docs/software-engineering-insights/insights/trellis-insight)</td>    
+        </tr>
     <tr>
         <td>Trellis Calculations</td>
         <td>How are the Trellis metrics calculated</td>
-        <td>Click Here</td>
-    </tr>
-    <tr>
-        <td>Best Practices and Recommendations</td>
-        <td>Recommendations to improve your Trellis Scores reporting</td>
-        <td>Click Here</td>
+        <td>[Click Here](/docs/category/trellis-calculations)</td>
     </tr>
 </table>
 
@@ -51,7 +51,7 @@ By enabling or disabling specific factors, teams can calculate the Trellis Score
 
 ### Quality
 
-The quality of work is measured using two key metrics: the **Percentage of Rework** and the **Percentage of Legacy Rework**.&#x20;
+The quality of work is measured using two key metrics: the **Percentage of Rework** and the **Percentage of Legacy Rework**. 
 
 * **Percentage of Rework:** This measures the changes made to code commits within the last 30 days. A lower percentage of rework indicates a higher level of quality, as it means fewer modifications were required to the recently written code. By default, any changes to the code created in the last 30 days are categorized as rework.
 * **Percentage of Legacy Rework:** This measures the changes made to code commits that are older than 30 days. A lower percentage of legacy rework indicates a higher level of quality, as it means fewer modifications were required to the older codebase.
@@ -73,7 +73,7 @@ By default, any changes made to code written in the last 30 days are considered 
 The Impact of an engineer's work is defined and measured by two key metrics: **High Impact Bugs Worked On Per Month** and **High Impact Stories Worked On Per Month**. High Impact refers to the classification of bug or story tickets, based on their perceived significance or priority. This classification can vary depending on your configuration in the **Issue Management Platform**.
 
 * **High-Impact Bugs Worked On Per Month**: This metric tracks the number of resolved, high-impact bug tickets that an engineer was assigned to within the selected time frame.
-  * The metric value in the Trellis report is normalized to show the average number of resolved, high-impact bug tickets per month.&#x20;
+  * The metric value in the Trellis report is normalized to show the average number of resolved, high-impact bug tickets per month. 
   * If more than one developer worked on the same ticket, developers are credited proportionately.
 * **High-Impact Stories Worked On Per Month**: This measure represents the number of resolved, high-impact story tickets that the developer was assigned to within the selected time frame.
   * The metric value in the report is normalized to show the average number of resolved, high-impact story tickets per month.
@@ -143,23 +143,23 @@ Leadership and collaboration measure developer teamwork and contribution to peer
 * **Average Response Time for PR approvals:** This is the average time taken to approve another developer's PR. The industry standard for a PR approval time is between 0.75 and 2 days.
 * **Average Response Time for PR comments:** This is the average time taken for a developer to add review comments on a PR. The industry standard for responding to a PR comment is between 0.75 and 1.5 days.
 
-## Modifying Factors and Weights
+## Trellis Profile
 
-A Trellis profile is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
+A Trellis profile is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score. To create a new profile, go to [Trellis Profiles](/docs/software-engineering-insights/sei-profiles/trellis-profile).
 
-### Factors
+### Modifying Factors
 
 In the Factors and Weights section of the Trellis profile, individual factors can be enabled or disabled. Enabling a factor includes it in the Trellis Score calculation while disabling it excludes it from the calculation. You can typically set benchmarks or thresholds at the factor level. These benchmarks define specific performance levels that need to be met or exceeded for a given factor to positively impact the overall score.
 
-### Weights
+### Customizing Weights
 
 Each factor's weight can be adjusted to assign varying levels of importance. Weights are assigned on a scale of 1 to 10, with 1 indicating low importance and 10 indicating high importance. Relative weights determine the significance of factors in relation to each other.
 
 For example, if all factors are assigned a weight of 5, they contribute equally to the Trellis Score. Adjusting weights allows developers to prioritize certain factors over others based on their organizational goals.
 
-## Associations & Advanced Options
+### Associations & Advanced Options
 
-This allows users to associate profiles with specific Projects and Collections within an organization. This helps in managing and applying profiles effectively.
+SEI allows you to associate Trellis profiles with specific Collections within an Project. This helps in managing and applying profiles effectively.
 
 * **Projects:** Contributors can select a project to view available **Collections** and assign **Trellis profiles** to specific projects. This feature helps in organizing and categorizing teams under different projects, allowing for a more granular management of Trellis profiles.
 * **Collections:** **Contributors** can select **Collections** that may apply to a **Trellis profile**. By associating Collection with Trellis profiles, contributors can ensure that the right profiles are applied to the appropriate teams or units within the organization. This facilitates customized score calculations.

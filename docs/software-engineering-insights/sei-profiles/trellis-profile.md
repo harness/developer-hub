@@ -80,7 +80,7 @@ In the subsections for the individual factors, you can:
 
 #### Quality
 
-The quality of work is measured using two key metrics: the **Percentage of Rework** and the **Percentage of Legacy Rework**.&#x20;
+The quality of work is measured using two key metrics: the **Percentage of Rework** and the **Percentage of Legacy Rework**. 
 
 * **Percentage of Rework:** This measures the changes made to code commits within the last 30 days. A lower percentage of rework indicates a higher level of quality, as it means fewer modifications were required to the recently written code. By default, any changes to the code created in the last 30 days are categorized as rework.
 * **Percentage of Legacy Rework:** This measures the changes made to code commits that are older than 30 days. A lower percentage of legacy rework indicates a higher level of quality, as it means fewer modifications were required to the older codebase.
@@ -98,11 +98,11 @@ By default, any changes made to code written in the last 30 days are considered 
 
 The Impact of an engineer's work is defined and measured by two key metrics: **High Impact Bugs Worked On Per Month** and **High Impact Stories Worked On Per Month**. High Impact refers to the classification of bug or story tickets, based on their perceived significance or priority. This classification can vary depending on your configuration in the **Issue Management Platform**.
 
-* **High-Impact Bugs Worked On Per Month**: This metric tracks the number of resolved, high-impact bug tickets that an engineer was assigned to within the selected time frame.&#x20;
-  * The metric value in the Trellis report is normalized to show the average number of resolved, high-impact bug tickets per month.&#x20;
-  * If more than one developer worked on the same ticket, developers are credited proportionately.&#x20;
-* **High-Impact Stories Worked On Per Month**: This measure represents the number of resolved, high-impact story tickets that the developer was assigned to within the selected time frame.&#x20;
-  * The metric value in the report is normalized to show the average number of resolved, high-impact story tickets per month.&#x20;
+* **High-Impact Bugs Worked On Per Month**: This metric tracks the number of resolved, high-impact bug tickets that an engineer was assigned to within the selected time frame. 
+  * The metric value in the Trellis report is normalized to show the average number of resolved, high-impact bug tickets per month. 
+  * If more than one developer worked on the same ticket, developers are credited proportionately. 
+* **High-Impact Stories Worked On Per Month**: This measure represents the number of resolved, high-impact story tickets that the developer was assigned to within the selected time frame. 
+  * The metric value in the report is normalized to show the average number of resolved, high-impact story tickets per month. 
   * If more than one developer worked on the same ticket, developers are credited proportionately.
 
 

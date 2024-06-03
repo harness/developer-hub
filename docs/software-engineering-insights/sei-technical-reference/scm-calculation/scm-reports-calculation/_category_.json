@@ -1,11 +1,11 @@
 {
-    "label":"DORA Calculations",
-    "position": 5,
+    "label":"Reports",
+    "position": 10,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"DORA Metrics Calculation"
+       "title":"Reports"
     }
  }

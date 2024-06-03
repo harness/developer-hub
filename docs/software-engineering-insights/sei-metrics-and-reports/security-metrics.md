@@ -1,7 +1,7 @@
 ---
 title: Security metrics
 description: Identify top issues, improve resolution time, and improve your security posture.
-sidebar_position: 50
+sidebar_position: 65
 sidebar_label: Security
 ---
 
