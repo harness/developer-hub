@@ -179,28 +179,7 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
-- The MongoDB major version has been upgraded from 4.4 to 5.0.24. Make a backup before upgrading your Helm chart. (PL-41607)
-
-   Before you upgrade to 5.0.24, do the following:
-
-   1. Get the current `featureCompatibilityVersion`. It should be 4.4.
-
-      `db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )`
-
-     If the current version isn't 4.4, execute into Primary and run the following:
-
-      `db.adminCommand( { setFeatureCompatibilityVersion: "4.4" } )`
-
-   2. Determine if the pods are in sync. Make sure they're in sync before you upgrade (the maximum time lag is ~2sec).
-
-      `rs.printSecondaryReplicationInfo()()`
-
-   3. Proceed to upgrade MongoDB to 5.0.24. After the update, continue to monitor the pods to ensure that they're in sync.
-
-   4. Update the Feature Compatibility version so that it's used for future upgrades.
-
-      `db.adminCommand( { setFeatureCompatibilityVersion: "5.0" } )`
-
+- The MongoDB major version has been upgraded from 4.4 to 5.0.24. (PL-41607)
 - Upgraded MinIO from `2023.10.7-debian-11-r2` to `2024.3.30-debian-12-r3`. (PL-49015)
 - Upgraded Curl from 8.1.2 to 8.7.1. (PL-49016)
 - Upgraded Redis to 6.2.14-alpine in bootstrap to address vulnerabilities.(PL-50701)
