@@ -12,11 +12,11 @@ CF app JVM modify return causes a Java based Cloud Foundry app's method to retur
 
 ## Use cases
 CF app JVM modify return:
-- Modify return values of configuration-fetching methods to test handling of corrupted configuration data.
-- Alter return values of core business methods to simulate edge cases and test error handling.
-- Change DAO method returns to simulate incomplete or incorrect data from the database.
-- Modify return values of security methods to ensure the application enforces policies correctly under unexpected conditions.
-- Alter return values of methods interacting with third-party services to test robustness against unexpected results.
+- Modifies return values of configuration-fetching methods to test handling of corrupted configuration data.
+- Alters return values of core business methods to simulate edge cases and test error handling.
+- Changes DAO method returns to simulate incomplete or incorrect data from the database.
+- Modifies return values of security methods to ensure the application enforces policies correctly under unexpected conditions.
+- Alters return values of methods interacting with third-party services to test robustness against unexpected results.
 
 ### Mandatory tunables
 <table>
@@ -140,7 +140,7 @@ spec:
 ```
 
 ### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
+The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. You can obtain it using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -189,9 +189,8 @@ spec:
 ```
 
 ### Fault injector location
-The `faultInjectorLocation` input variable determines the location of the fault injector with respect to the infrastructure.
+The `faultInjectorLocation` input determines the location of the fault injector with respect to the infrastructure. It is the location where the fault-injector utility is executed.
 - It can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- It is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -238,7 +237,7 @@ spec:
 ```
 
 ### Fault injector port
-The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
+The `faultInjectorPort` input determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this input:
 

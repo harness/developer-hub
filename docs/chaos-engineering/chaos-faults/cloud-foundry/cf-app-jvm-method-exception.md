@@ -12,11 +12,11 @@ CF app JVM method exception causes a Java based Cloud Foundry app's method to th
 
 ## Use cases
 CF app JVM method exception:
-- Verify an application’s ability to recover gracefully from unexpected exceptions.
-- Uncover issues in error handling logic during development.
-- Simulate real-world errors to strengthen the application's ability to handle them.
-- Gain confidence in the application's ability to function during potential failures.
-- Evaluating how exceptions impact resource allocation and de-allocation strategies.
+- Verifies an application's ability to recover gracefully from unexpected exceptions.
+- Uncovers issues in error handling logic during development.
+- Simulates real-world errors to strengthen the application's ability to handle them.
+- Helps gain confidence in the application's ability to function during potential failures.
+- Evaluates how exceptions impact resource allocation and de-allocation strategies.
 
 ### Mandatory tunables
 <table>
@@ -116,7 +116,7 @@ CF app JVM method exception:
 <VSphereSecrets />
 
 ### Class
-The `class` input specifies the Java class whose method will be targeted. It shall be provided as: `package-name.class-name`.
+The `class` input specifies the Java class whose method will be targeted. Provide it as: `package-name.class-name`.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -140,7 +140,7 @@ spec:
 ```
 
 ### Exception
-The `exception` input specifies the exception that will be thrown by the target method.
+The `exception` input specifies the exception that is thrown by the target method.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -166,7 +166,7 @@ spec:
 ```
 
 ### BOSH deployment
-The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are being managed. It can be obtained using the BOSH CLI command `bosh deployments`.
+The `boshDeployment` input determines the BOSH deployment name under which all the CF resources are managed. You can obtain it using the BOSH CLI command `bosh deployments`.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -215,9 +215,8 @@ spec:
 ```
 
 ### Fault injector location
-The `faultInjectorLocation` input variable determines the location of the fault injector with respect to the infrastructure.
+The `faultInjectorLocation` input determines the location of the fault injector with respect to the infrastructure. It is the location where the fault-injector utility is executed.
 - It can be local, that is, the same environment used by the infrastructure, or a remote machine.
-- It is where the fault-injector utility executes.
 
 The following YAML snippet illustrates the use of this input:
 
@@ -264,7 +263,7 @@ spec:
 ```
 
 ### Fault injector port
-The `faultInjectorPort` input variable determines the port used for the fault-injector local server.
+The `faultInjectorPort` input determines the port used for the fault-injector local server.
 
 The following YAML snippet illustrates the use of this input:
 
