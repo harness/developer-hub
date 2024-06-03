@@ -47,6 +47,14 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## June 2024
+
+### Version 24.05.83003 <!--  June 3, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue of missing labels for Karpenter manged nodes. (CCM-18139)
+
 ## May 2024
 
 ### Version 24.05.82711 <!--  May 30, 2024 -->
