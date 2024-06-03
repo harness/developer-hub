@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Hotfix
 
-- Resolved an issue of missing labels for Karpenter manged nodes. (CCM-18139)
+- Resolved an issue with missing labels for Karpenter-managed nodes. (CCM-18139)
 
 ## May 2024
 
