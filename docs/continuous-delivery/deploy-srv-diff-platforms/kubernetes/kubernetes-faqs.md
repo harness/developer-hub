@@ -763,4 +763,9 @@ deployment spelling-grammar-llm-service-deployment exceeded its progress deadlin
  
 Therefore, we also consider it a failure and fail the pipeline as soon as Kubernetes throws the above error. You will need to check the application log for the pods on why they are not coming up within the specified threshold.
 
+### The release files are created in OpenShift under the configMap section every time a pipeline executes (this is expected as we’re versioning the deployment). Will cleaning up and deleting older release files in prod and lower environments cause any issues during rollback?
+
+Cleaning up older ConfigMaps won’t impact the deployment. However, we need an n-1 version to do a proper rollback. We recommend that you keep at least the latest 2 ConfigMaps.
+
+
 
