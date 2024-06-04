@@ -765,6 +765,6 @@ Therefore, we also consider it a failure and fail the pipeline as soon as Kubern
 
 ### The release files are created in OpenShift under the configMap section every time a pipeline executes (this is expected as we’re versioning the deployment). Will cleaning up and deleting older release files in prod and lower environments cause any issues during rollback?
 
-Cleaning up older ConfigMaps won’t impact the deployment. However, the n-1 version is needed for a proper rollback. We recommend that you keep the last 2 ConfigMaps at least.
+Deleting older ConfigMaps won’t impact deployments. However, the n-1 version is needed for a proper rollback. We recommend that you keep the last 2 ConfigMaps at least.
 
 
