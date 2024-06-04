@@ -1,7 +1,7 @@
 ---
 title: "Security Testing Dashboard: navigate all detected vulnerabilities in your organization"
 description: View, navigate, discover, and investigate detected issues in the Security Testing Dashboard. 
-sidebar_label: "Security Testing Dashboard - View all issues in project"
+sidebar_label: "Security Testing Dashboard - View all issues in organization"
 sidebar_position: 40
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard
