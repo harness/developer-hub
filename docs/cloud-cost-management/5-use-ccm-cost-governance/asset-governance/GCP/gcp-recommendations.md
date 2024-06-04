@@ -334,7 +334,7 @@ policies:
 
 ---
 ### Recommendation: gcp-delete-unused-cloud-functions
-**Description:** Delete Cloud Functions that haven't been invoked in the last 30 days to reduce costs.
+**Description:** Delete Cloud Functions that haven't been invoked in the last 7 days to reduce costs.
 
 **Policy Used:** 
 ```yaml
