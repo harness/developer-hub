@@ -78,7 +78,10 @@ If you encounter errors, setting [token_num_uses](https://www.vaultproject.io/a
 
 The Vault AppRole ID or the Periodic Token used in either of the authentication options must have an ACL policy attached so that Harness can use it. Typically, you create the policy first, then create the AppRole or Periodic Token and attach the policy.
 
-It's important to note that the AppRole option only works with the default authentication path "approle". If you change the authentication path to a non-default value like "approle-test", the AppRole authentication will fail.
+:::note important
+The AppRole option only works with the default authentication path `approle`. If you change the authentication path to a non-default value like `approle-test`, the AppRole authentication will fail.
+
+:::
 
 In the policy examples below: if you've created a Read-only Vault Secret Manager, this secret manager needs only read, and list permissions on Vault. It does not need — and cannot assume — create, update, or delete permissions. If the secrets are in the Secret Engine named “secret”, the policy must have the following permissions.
 
