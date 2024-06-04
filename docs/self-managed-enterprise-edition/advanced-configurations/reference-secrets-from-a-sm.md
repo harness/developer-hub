@@ -9,9 +9,11 @@ Harness Self-Managed Enterprise Edition supports the ability to reference secret
 
 ### Prerequisites
 
-- Knowledge of [external secret operators](https://external-secrets.io/latest/)
+The following prerequisites are needed:
 
-- Installation of an [operator](https://external-secrets.io/latest/introduction/getting-started/)
+- Knowledge of [external secret operators](https://external-secrets.io/latest/).
+
+- Installation of an [operator](https://external-secrets.io/latest/introduction/getting-started/).
 
 - A `ClusterSecretStore` or `SecretStore` set up for your secret. For more information, go to [External Secret Spec](https://external-secrets.io/latest/provider/kubernetes/) in the Kubernetes documentation.
 
