@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
-date: 2024-05-09T10:00
+date: 2024-06-04T10:00
 sidebar_position: 5
 ---
 
@@ -23,7 +23,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 ## May 2024
 
-### Version 1.38.1
+### Version 1.38.7
 
 #### New features and enhancements
 
@@ -56,13 +56,13 @@ The existing APIs will work as per the norm on old and new chaos infrastructure,
 
 - Fixed an issue where the compatibility check was enabled for other infrastructure types too. The overview form now preserves the state while switching between different infrastructures. (CHAOS-5614)
 
+- Fixed an issue where ChaosGuard list APIs was not returning the **updated_by** and **created_by** fields. (CHAOS-5596)
+
 - Fixed the rendering of the **View Onboarding Progress** page. (CHAOS-5583)
 
 - Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
 
 - Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
-
-- Fixed an issue where a user could not connect to a ChaosHub if its secret had a '-' symbol (after the deployment of ng-manager 1.33). (CHAOS-5112)
 
 ### Version 1.37.0
 
@@ -296,7 +296,7 @@ The existing APIs will work as per the norm on old and new chaos infrastructure,
 
 * Probes whose execution time exceeded 180 seconds would error out with N/A status, regardless of probeTimeout settings. This is fixed. (CHAOS-3169)
 
-* When a gameday was deleted, the name of a deleted gameday would not show up in the audit event. It has been fixed. (CHAOS-3158)
+* When a GameDay was deleted, the name of a deleted GameDay would not show up in the audit event. It has been fixed. (CHAOS-3158)
 
 * Probe details, such as verdict, status and mode were not retrieved for the correct runID and notifyID. This is fixed. (CHAOS-3144)
 
@@ -340,7 +340,7 @@ The existing APIs will work as per the norm on old and new chaos infrastructure,
 
 * Added support for **SKIP_SSL_VERIFY** in readiness probes for the execution plane components. (CHAOS-3115)
 
-* Mongo queries resulted in fetching results for deleted gamedays. This is fixed by adding a field "is_removed" to the Mongo queries. (CHAOS-3091)
+* Mongo queries resulted in fetching results for deleted GameDays. This is fixed by adding a field "is_removed" to the Mongo queries. (CHAOS-3091)
 
 * Linux chaos infrastructure did not provide JSON log output. This is fixed. (CHAOS-2989)
 
