@@ -1,8 +1,6 @@
 ---
 id: byoc
 title: Bring Your Own Custom Chaos Faults
-redirect_from:
-  - /docs/chaos-engineering/technical-reference/chaos-faults/byoc
 ---
 
 ## Introduction
@@ -31,15 +29,15 @@ import { experiments } from "./experiments"
 
 <!-- Need above heading in markdown ### for it to populate right navigation bar and generate links -->
 
-BYOC injector provided a way to execute custom chaos fault.
+BYOC injector provides a way to execute custom chaos faults.
 
 <!-- <Accordion color='green'/> has same usage as details but green in color -->
 
 <Accordion color="green">
 <summary>Use cases </summary>
-- Validate the resilience of an application by introducing custom faults in critical service dependencies and observing the impact on overall system functionality.
-- Inject custom faults to simulate disaster scenarios, ensuring that the application's disaster recovery procedures are effective and efficient.
-- Implement custom faults to verify that the system meets compliance and regulatory requirements under adverse conditions, such as data corruption or service outages.
+- Validates the resilience of an application by introducing custom faults in critical service dependencies and observing the impact on overall system functionality.
+- Injects custom faults to simulate disaster scenarios, ensuring that the application's disaster recovery procedures are effective and efficient.
+- Implements custom faults to verify that the system meets compliance and regulatory requirements under adverse conditions, such as data corruption or service outages.
 </Accordion>
 
 </FaultDetailsCard>

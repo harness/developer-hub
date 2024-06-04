@@ -4,7 +4,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "BYOC injector",
     description:
-      "BYOC injector provided a way to execute custom chaos fault",
+      "BYOC injector provides a way to execute custom chaos faults.",
     tags: ["byoc"],
     category: "byoc",
   },
