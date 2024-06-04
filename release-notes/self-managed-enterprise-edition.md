@@ -183,8 +183,8 @@ gsutil -m cp \
 
    ```yaml
    global:
-   istio:
-   enableRegexRoutes: true
+     istio:
+       enableRegexRoutes: true
    ```
 
 - The MongoDB major version has been upgraded from 4.4 to 5.0.24. Harness recommends that you back up your current instance of MongoDB before upgrading to 0.17.0. (PL-41607)
