@@ -30,8 +30,8 @@ DevOps users need to have the **Security Testing Developer** role assigned to pe
 
 ### Block pipelines based on scan results
 
-- **[Fail on severity](docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity)** Every STO scan step has a Fail on Severity setting that fails the pipeline if the scan detected any issues at the selected severity or higher.
-- **[Issue exemptions](//docs/security-testing-orchestration/exemptions/exemption-workflows)** Developers can request exemptions for specific issues to override the Fail by Severity setting. (Only SecOps users can approve exemptions.)
+- **[Fail on severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity)** Every STO scan step has a Fail on Severity setting that fails the pipeline if the scan detected any issues at the selected severity or higher.
+- **[Issue exemptions](/docs/security-testing-orchestration/exemptions/exemption-workflows)** Developers can request exemptions for specific issues to override the Fail by Severity setting. (Only SecOps users can approve exemptions.)
 - **[Governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)** You can write and enforce policies against your security tests and block your pipelines on policy violations. You can define policies based on issue severity, issue title, CVE age, reference ID, and number of occurrences. 
 
 ### Remediate vulnerabilities quickly and easily
@@ -43,7 +43,7 @@ DevOps users need to have the **Security Testing Developer** role assigned to pe
 
 ### Auto-generate Jira tickets and Slack/email notifications based on scan results
 
-- **[Create Jira tickets automatically](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)** for issues detected by STO scans.
+- **[Create Jira tickets automatically](/docs/security-testing-orchestration/notifications/jira-integrations)** for issues detected by STO scans.
 - **[Send notifications via Slack or email](/docs/security-testing-orchestration/notifications/slack-notifications)** when a pipeline fails due to STO scan results.
 
 
