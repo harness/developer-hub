@@ -1,12 +1,12 @@
 {
-    "label":"Workspaces",
-    "position": 20,
+    "label":"Remote Backends",
+    "position": 40,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Workspaces"
+       "title":"Remote Backends"
     },
     "customProps":{
        "helpdocs_category_id":""
