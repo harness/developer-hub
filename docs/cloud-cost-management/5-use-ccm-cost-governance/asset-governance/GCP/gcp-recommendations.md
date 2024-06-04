@@ -342,7 +342,7 @@ policies:
   - name: gcp-delete-unused-cloud-functions
     resource: gcp.function
     description: >
-      Delete Cloud Functions that haven't been invoked in the last 30 days to
+      Delete Cloud Functions that haven't been invoked in the last 7 days to
       reduce costs.
     filters:
       - type: metrics
