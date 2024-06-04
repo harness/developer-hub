@@ -19,11 +19,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 ## May 2024
 ### Version 1.19.1
+
 #### New features and enhancements
 
 - Asset Governance for AWS : Added new governance recommendations and cost computation support for AWS resources including `cache-cluster`, `S3`,`` Redshift`, and `Redshift-snapshot`. [CCM-17852]
 - Editing Enforcements: Improved the enforcement editing process. Now, when viewing and editing an enforcement, it will no longer get enabled automatically if it was previously disabled. This ensures that the enforcement status remains consistent unless intentionally changed by the user. [CCM-18050]
-
+- Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. [CCM-17850]
 
 ### Version 1.18.1
 
