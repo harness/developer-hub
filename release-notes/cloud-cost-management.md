@@ -27,7 +27,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Editing Enforcements: Improved the enforcement editing process. Now, when viewing and editing an enforcement, it will no longer get enabled automatically if it was previously disabled. This ensures that the enforcement status remains consistent unless intentionally changed by the user. [CCM-18050]
 - Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. [CCM-17850, ZD-63324]
 - Azure Governance Subscription selection: In the Azure Rule window's Subscription drop-down menu, previously, only the Subscription ID was displayed. Now, both the Subscription Name and ID are shown for better clarity and ease of selection. [CCM-17650]
-- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. [CCM-17979]
+- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region, and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. [CCM-17979]
 
 | Old Label | New Label |
 |------------|--------------|
