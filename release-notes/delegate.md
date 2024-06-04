@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-21T10:00
+date: 2024-06-03T10:00
 sidebar_position: 4
 ---
 
@@ -46,6 +46,14 @@ Six months after a delegate image is released, the delegate reaches End of Suppo
 For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
+
+## June 2024
+
+### Version 24.06.83003 <!--  June 3, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with missing labels for Karpenter-managed nodes. (CCM-18139)
 
 ## May 2024
 

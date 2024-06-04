@@ -210,9 +210,9 @@ Yes, one can use the `Artifact Filter` instead of `Artifact Directory` when crea
 
 You can select the Artifact filter option and configure the service's Artifact source as needed.
 
-### Is cache intelligence available between CD steps, or just for CI ?
+### Is Cache Intelligence available for CD?
 
-It is only present in CI as caching dependencies needs to build an artifact is a CI only concept.
+Cache Intelligence caches build dependencies. It is currently only available for Harness CI.
 
 ### How do I access the artifacts metadata from the service definition in the pipeline?
 

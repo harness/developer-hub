@@ -116,9 +116,11 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) t
 Add caching to your Build (`CI`) stage.
 
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Cache Intelligence">
 
-Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add caching to your `stage.spec`:
+Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+Add caching to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -133,9 +135,9 @@ Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integrat
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -302,9 +304,9 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) is available for C# (.NET Core); however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) is available for C# (.NET Core); however, it is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-With this feature flag enabled, you can use Run Tests steps to [run unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+With this feature flag enabled, you can use **Run Tests** steps to [run unit tests with Test Intelligence on C# codebases](/docs/continuous-integration/use-ci/run-tests/ti-overview.md).
 
 <Tabs>
   <TabItem value="Harness Cloud" default>

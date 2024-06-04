@@ -4,7 +4,12 @@ title: Automated onboarding
 description: Set up infrastructure with a single click and execute chaos experiments.
 ---
 
-This topic guides you through setting up the chaos infrastructure, executing chaos experiments, and viewing the resilience dashboard with single clicks.
+This topic describes the following operations:
+
+1. [Set up environment with a click.](/docs/chaos-engineering/onboarding/single-click-onboarding#select-an-environment)
+2. [Set up the chaos infrastructure with a click.](/docs/chaos-engineering/onboarding/single-click-onboarding#select-an-infrastructure)
+3. [Discover services automatically.](/docs/chaos-engineering/onboarding/single-click-onboarding#automatically-discover-services)
+3. [Create and execute chaos experiments automatically.](/docs/chaos-engineering/onboarding/single-click-onboarding#automatically-create-experiments)
 
 ## Before you begin
 
@@ -14,7 +19,13 @@ This topic guides you through setting up the chaos infrastructure, executing cha
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
 :::
 
-## Execute chaos experiments automatically
+### What is automated onboarding?
+Automated onboarding, as the name suggests, automates the entire process of creating and executing a chaos experiment. You can click a button and HCE creates an environment, an infrastructure, and other components in the background, executes the experiment, and displays the resilience score for the sample application.
+
+### Why choose automated onboarding?
+- If you want to quickly start with executing chaos experiments and expect HCE to perform most (or all) steps in the background, this is the guide for you.
+- It takes less time to execute.
+- Select an environment and infrastructure, and you are done. HCE discovers the services, creates the experiments, chooses the experiments with less blast radius to execute, and displays experiment progress and resilience score.
 
 If you chose to onboard automatically, follow the steps below.
 

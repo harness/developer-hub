@@ -187,9 +187,9 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
 Add caching to your stage.
 
 <Tabs>
-  <TabItem value="hosted" label="Harness Cloud" default>
+  <TabItem value="cacheint" label="Cache Intelligence" default>
 
-Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) by adding `caching` to your `stage.spec`.
+Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) by adding `caching` to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -204,7 +204,7 @@ Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cac
 
 :::tip
 
-Cache Intelligence supports Gradle. If you're using Gradle and your dependencies are stored in the default location for Gradle, you don't need to include `paths` or `sharedPath`. For example:
+Cache Intelligence supports Gradle (as well as additional build tools). If you're using Gradle and your dependencies are stored in the default location for Gradle, you don't need to include `paths` or `sharedPath`. For example:
 
 ```yaml
 - stage:
@@ -216,9 +216,9 @@ Cache Intelligence supports Gradle. If you're using Gradle and your dependencies
 :::
 
 </TabItem>
-  <TabItem value="selfmanaged" label="Self-managed">
+  <TabItem value="builtin" label="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -259,11 +259,11 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-You can use **Run** or **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** or **Test** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
-If you're using Kotlin, you can improve your unit test times with Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
+If you're using Kotlin, you can improve your unit test times with Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature.
 
-Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+Harness CI also supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
@@ -712,4 +712,4 @@ Now that you have created a pipeline that builds and tests an Android app, you c
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 - Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
 - Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
-- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
+
