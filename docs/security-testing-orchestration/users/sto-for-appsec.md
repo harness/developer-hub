@@ -10,7 +10,7 @@ Security engineers, information security officers, and other Application Securit
 - Approve Fail on Severity exemptions to unblock pipelines for specific vulnerabilities.
 - Receive auto-generated Jira tickets and Slack/email notifications for detected vulnerabilities.
 - View all vulnerabilities in your  `main` branches, `latest` tag images, and other baselines in a single dashboard. 
-- View all vulnerabilities in your Harness organization in a single dashboard and drill down into vulnerabilities based on organization, project, date, target, scanner, and so on. 
+- View all vulnerabilities in your Harness account in a single dashboard and drill down into vulnerabilities based on organization, project, date, target, scanner, and so on. 
 
 
 :::note
