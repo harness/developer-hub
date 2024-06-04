@@ -1,11 +1,11 @@
 ---
-title: Reference secrets from a secret manager in Helm overrides
+title: Reference secrets from an external secret manager in Helm overrides
 sidebar_label: Reference secrets from a secret manager
 description: Harness Self-Managed Enterprise Edition supports the ability to reference external secrets for CCM from a secret manager in Helm overrides.
 sidebar_position: 3
 ---
 
-Harness Self-Managed Enterprise Edition supports the ability to reference external secrets for Harness Cloud Cost Management (CCM) from a secret manager in your Helm overrides.
+Harness Self-Managed Enterprise Edition supports the ability to reference secrets for Harness Cloud Cost Management (CCM) from a an external secret manager in your Helm overrides.
 
 ### Prerequisites
 
