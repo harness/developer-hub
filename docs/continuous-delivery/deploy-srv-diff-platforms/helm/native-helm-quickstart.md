@@ -206,6 +206,12 @@ That's it. Now you're ready to deploy.
 
 5. Select the **Helm Deployment** step and expand **Wait for Steady State**.
 
+
+:::important
+Enable the feature flag `CDS_HELM_STEADY_STATE_CHECK_1_16_V2_NG` to enable steady state check for Native Helm deployments on Kubernetes clusters using 1.16 or higher. There is a behavior change in how Harness tracks managed workloads for rollback. We are not using ConfigMap anymore to match the deployed resources' release name to track managed workloads for rollback. We use `helm get manifest` to retrieve the workloads from a Helm release. For steady-state checks of the kubernetes jobs, we provide an option in account/org/project settings. This is not enabled by default. For customer's who didn't have this feature flag enabled before, they may start seeing that the Wait for steady state check is not skipped and won't need to configure it.
+:::
+
+
 You can see `Status : quickstart-quickstart deployment "quickstart-quickstart" successfully rolled out.`
 
 Congratulations! The deployment was successful.

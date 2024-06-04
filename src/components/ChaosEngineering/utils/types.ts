@@ -11,5 +11,6 @@ export enum FaultCategory {
   SecurityChaos = "security-chaos",
   CloudFoundry = "cloud-foundry",
   Windows = "windows",
-  SSH = "ssh"
+  SSH = "ssh",
+  BYOC = "byoc",
 }
