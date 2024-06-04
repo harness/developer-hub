@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-06-03T10:00
+date: 2024-06-04T10:00
 sidebar_position: 16
 ---
 
@@ -179,9 +179,20 @@ gsutil -m cp \
 
 #### Self-Managed Enterprise Edition
 
+- Harness added v1 API support for `template-service`, `ng-manager`, `platform-service`, and `pipeline-service` for Istio >= 0.19.0 version. If you are running Istio >= 1.19.0, add the following override in your `override.yaml` file to enable the support. (PL-50528, ZD-62230, ZD-62846)
+
+   ```yaml
+   global:
+   istio:
+   enableRegexRoutes: true
+   ```
+
 - The MongoDB major version has been upgraded from 4.4 to 5.0.24. Harness recommends that you back up your current instance of MongoDB before upgrading to 0.17.0. (PL-41607)
+
 - Upgraded MinIO from `2023.10.7-debian-11-r2` to `2024.3.30-debian-12-r3`. Harness recommends that you back up your current instance of MinIO before upgrading to 0.17.0. (PL-49015)
+
 - Upgraded Curl from 8.1.2 to 8.7.1. (PL-49016)
+
 - Upgraded Redis to 6.2.14-alpine in bootstrap to address vulnerabilities.(PL-50701)
 
 #### Cloud Cost Management
