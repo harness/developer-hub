@@ -49,7 +49,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2024
 
-### Version 24.05.83003 <!--  June 3, 2024 -->
+### Version 24.06.83003 <!--  June 3, 2024 -->
 
 #### Hotfix
 
