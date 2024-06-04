@@ -913,9 +913,20 @@ The following are some secrets from platform-service that you need to update:
    SMTP_USERNAME: <SMTP_USERNAME>
    ```
 
+
+
 :::info
 To increase TimescaleDB to 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
 :::
+
+### Troubleshooting
+If in case the keys expire, the secrets will have to be set again. We recommend to `kubectl delete`` the following pods:
+
+- `batch-processing`
+- `ce-nextgen`
+- `cloud-info`
+
+and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/aws-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods.
 
 ## Next steps
 

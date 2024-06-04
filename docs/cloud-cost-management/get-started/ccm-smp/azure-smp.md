@@ -386,6 +386,15 @@ After these secrets are implemented, please `kubectl delete` any pods related to
 Please ensure your Persistent Volumes related to TimescaleDB is at least 100Gi, run: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. These volumes are critical for capabilities like Recommendations and Anomalies within CCM.
 :::
 
+### Troubleshooting
+If in case the K8s secrets expire, the secrets will have to be set again. We recommend to `kubectl delete`` the following pods:
+
+- `batch-processing`
+- `ce-nextgen`
+- `cloud-info`
+
+and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/azure-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods.
+
 ## Next steps
 
 At this point, your "staging area" for future Microsoft Azure Billing Exports is ready and we can follow our standard methodologies for onboarding these assets.
