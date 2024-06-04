@@ -21,7 +21,7 @@ Harness Self-Managed Enterprise Edition supports the ability to reference secret
 
 You can add an external secret reference for your Harness CCM secrets to your `overrides.yaml` file.
 
-For example, the `batch-processing` services uses the `S3_SYNC_CONFIG_ACCESSKEY` secret. Let's say you want reference it from a different provider.
+For example, the `batch-processing` service uses the `S3_SYNC_CONFIG_ACCESSKEY` secret. Let's say you want reference it from a different provider.
 
 Here's the override syntax:
 
