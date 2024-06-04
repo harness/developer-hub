@@ -12,7 +12,7 @@ This guide describes the important differences between Harness CI and GitLab CI 
 
 Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, which make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
-* Harness [Test Intelligence (TI)](../use-ci/run-tests/test-intelligence/set-up-test-intelligence) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
+* Harness [Test Intelligence (TI)](../use-ci/run-tests/ti-overview.md) is a proprietary technology that accelerates test cycles by running only the tests necessary to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and TI can help you identify gaps in your test plan. TI also detects negative trends and provides actionable insights to improve quality. With TI, it's possible to reduce build cycle times by up to 90% without compromising application quality.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
 
 In addition, you can [use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) to include GitHub Actions, Bitrise Workflow Steps, Jira updates, and more in your Harness CI pipelines.
@@ -684,5 +684,5 @@ Review the following information before proceeding with migration:
 
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
-* [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+* [Split tests in Run steps](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 * [Harness Platform documentation](/docs/platform)

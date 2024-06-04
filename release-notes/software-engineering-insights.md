@@ -24,6 +24,46 @@ These release notes describe recent changes to Harness Software Engineering Insi
 
 ## May 2024
 
+### Version 202405.2
+
+<!-- May 24, 2024 -->
+
+<DocVideo src="https://www.youtube.com/embed/re7ZcOkXHD4?si=ZGnnl-PQcqF6Hojv" />
+
+#### New features and enhancements
+
+* We have added improvements to the **Collection** definition settings. (SEI-5363)
+  * When adding an integration filter for **GitHub**, **Bitbucket**, and **Gitlab** you can now use the `"Equals"` or `"Does not equal"` operators in the filter to fetch all repositories for which data is ingested in the integration, regardless of activity in the repository.
+  * When using `"Starts with"` or `"Contains"` the filter will apply to all repositories ingested according to the integration configuration.
+
+* Added support for color customization in the **Line Graph** visualizations for **Custom Table Report** widgets. (SEI-6677)
+
+#### Early access features
+
+* Added improvements to the **Drilldown** view in the **Business Alignment report.**
+  * In the report drilldown, the selected **BA** **Category** is now highlighted, and the ticket count will be displayed only for the selected category. (SEI-6818)
+  * Added support to display the list of all assignees for a given ticket under the `Assignee` column in the **Drilldown by Tickets** view.(SEI-6859) <br /><br />This feature is currently in `BETA` is accessible behind the entitlement `<SEI_NEW_BA_COMBINED_WIDGET>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
+
+* The **DORA Lead Time for Change** widget now loads faster than ever before. We have optimized the lead time calculation, significantly reducing the time required to process this metric. This feature is behind the Feature Flag `<VELOCITY_OPTIMIZE_JOINS_FOR_TENANTS>`. Contact [Harness Support](mailto:support@harness.io) for more information. (SEI-6830)
+
+* The **DORA Lead Time for Changes** is now more accurately calculated for the **Median** calculation. The overall median is now computed as the median of the total lead time for individual tickets. This feature is behind the Feature Flag `<AGGREGATE_TOTAL_LEAD_TIME_TENANTS>`. Contact [Harness Support](mailto:support@harness.io) for more information. (SEI-6845)
+
+#### Fixed issues
+
+* Resolved an issue where the number of tickets worked on by the assignee was incorrect in the **Drilldown by Contributors** view of the **Business Alignment report** when configured with **Effort Attribution** as the **Current Assignee**. (SEI-6723)
+
+* Fixed an issue where clicking `View Tickets` in the **Drilldown by Contributors** view of the **Business Alignment report** did not display any data. (SEI-6853)
+
+* Fixed the bug where the **Add Integration** button was not working in the **Collection** **Definition** settings. (SEI-6926)
+
+* Resolved the issue that caused duplicate records to appear on the Diagnostic page when multiple integrations were configured for the same tool. (SEI-6910)
+
+* Fixed an issue where configuring the integration filter with both **Azure DevOps** and any another **SCM** tool in the **Collection** Definition settings caused SCM reports to display incorrect or missing data. (SEI-6722)
+
+* In the **Drilldown by Contributors** view, clicking the `View Tickets` option under the **Number of Tickets Worked On** column will now open a new view with tickets filtered by the selected assignee. (SEI-6720)
+
+* Resolved an issue where the extended view for the **Issue Progress report** displayed inaccurate data. (SEI-6870)
+
 ### Version 202405.1
 
 <!-- May 13, 2024 -->
@@ -102,7 +142,6 @@ These release notes describe recent changes to Harness Software Engineering Insi
 * Added support for automatically sending alerts via **Slack** notifications and **Email** when the **Ingestion Satellite** status is `UNHEALTHY`. (SEI-6610)
 
 * The release includes a new integration for the **ServiceNow Platform**.  **ServiceNow** is used to set up systems that define, manage, automate and structure IT services for companies. <br /><br />You can use the **SEI ServiceNow integration** to integrate SEI with **ServiceNow Cloud** and **ServiceNow On-Prem** accounts. To learn more, go to [ServiceNow integration](/docs/software-engineering-insights/early-access/integrations/sei-integration-servicenow)<br /><br />This feature is currently in `BETA` is accessible behind the Feature Flag `<SEI_SERVICE_NOW>`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
-
 
 #### Fixed issues
 
@@ -354,7 +393,7 @@ You can now view the latest pipeline execution link as a column in the drill-dow
 #### New features and enhancements
 
 * Added correlation support for mapping Jenkins CI artifacts with Harness CD. Now when configuring stages for a workflow profile, selecting Jenkins as the CI provider now allows you to define Harness CD in the subsequent stage for mapping artifact data. (SEI-2848) (SEI-4623) (SEI-4624) (SEI-4625) (SEI-4626)
-* Optimized the [Sprint Metrics Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics) to update the extended view and display data only when a new filter is applied. (SEI-4739) (SEI-4702) (SEI-4876)
+* Optimized the [Sprint Metrics Trend Report](/docs/category/sprint-metrics) to update the extended view and display data only when a new filter is applied. (SEI-4739) (SEI-4702) (SEI-4876)
 * Added the support for configuring stages and steps as a filter for Azure DevOps pipelines in the Deployment Frequency and Change Failure Rate report settings. (SEI-4814)
 * Improved the ingestion logic for the [HarnessNG Integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-harnessng) to support data retrieval for non-container type artifact deployments. (SEI-4912)
 * Enhanced the Lead Time by Time Spent in Stages report to make `ISSUE RESOLVED IN` a mandatory filter when the associated profile in the report settings has a Jira Release stage configured. (SEI-4668)

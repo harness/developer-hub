@@ -65,9 +65,11 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 ## Cache dependencies
 
 <Tabs>
-<TabItem value="Harness Cloud" default>
+<TabItem value="Cache Intelligence" default>
 
-Cache your Java dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
+Cache your Java dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+Add `caching.enabled.true` to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -77,9 +79,9 @@ Cache your Java dependencies with [Cache Intelligence](/docs/continuous-integrat
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -142,75 +144,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-<Tabs>
-<TabItem value="hosted" label="Harness cloud" default>
-
-You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
-
-<Tabs>
-<TabItem value="run" label="Run step" default>
-
-This example uses two [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to build and test with Maven.
-
-```yaml
-- step:
-    type: Run
-    name: build
-    identifier: build
-    spec:
-      shell: Sh
-      command: |
-        mvn clean package dependency:copy-dependencies
-- step:
-    type: Run
-    name: run test
-    identifier: run_test
-    spec:
-      shell: Sh
-      command: |-
-        mvn test
-      reports:
-        type: JUnit
-        spec:
-          paths:
-            - target/surefire-reports/*.xml
-```
-
-</TabItem>
-<TabItem value="runtests" label="Run Tests step (Test Intelligence)">
-
-You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
-
-Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
-
-The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
-
-```yaml
-- step:
-    type: RunTests
-    name: Run Tests
-    identifier: Run_Tests
-    spec:
-      language: Java
-      buildTool: Maven
-      args: test
-      packages: io.harness.
-      runOnlySelectedTests: true
-      postCommand: mvn package -DskipTests
-      reports:
-        type: JUnit
-        spec:
-          paths:
-            - "target/surefire-reports/*.xml"
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem value="selfmanaged" label="Self-managed">
-
-You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** or **Test** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 <Tabs>
 <TabItem value="run" label="Run step" default>
@@ -244,37 +178,26 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-step-s
 ```
 
 </TabItem>
-<TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+<TabItem value="test" label="Test step (Test Intelligence)">
 
-You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) feature.
-
-Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
-
-The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
+You must use the **Test** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) feature.
 
 ```yaml
-- step:
-    type: RunTests
-    name: Run Tests
-    identifier: Run_Tests
-    spec:
-      connectorRef: account.harnessImage
-      image: maven:3.8-jdk-11
-      language: Java
-      buildTool: Maven
-      args: test
-      packages: io.harness.
-      runOnlySelectedTests: true
-      postCommand: mvn package -DskipTests
-      reports:
-        type: JUnit
-        spec:
-          paths:
-            - "target/surefire-reports/*.xml"
+              - step:
+                  type: Test
+                  name: RunTestsWithIntelligence
+                  identifier: RunTestsWithIntelligence
+                  spec:
+                    command: |-
+                      mvn test
+                      mvn package -DskipTests
+                    shell: Sh
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    intelligenceMode: true
+                    reports:
+                      - "target/surefire-reports/*.xml"
 ```
-
-</TabItem>
-</Tabs>
 
 </TabItem>
 </Tabs>
@@ -293,7 +216,7 @@ reports:
 
 ### Test splitting
 
-Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 ## Specify version
 
@@ -351,7 +274,7 @@ Here's a YAML example of a pipeline that:
 1. Tests a Java code repo.
 2. Builds and pushes an image to Docker Hub.
 
-This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md).
 
 If you copy this example, replace the placeholder values with appropriate values for your Harness project, connector IDs, account/user names, and repo names.
 
@@ -389,21 +312,19 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: RunTests
-                  name: RunTests_1
-                  identifier: RunTests_1
+                  type: Test
+                  name: RunTestsWithIntelligence
+                  identifier: RunTestsWithIntelligence
                   spec:
-                    language: Java
-                    buildTool: Maven
-                    args: test
-                    packages: io.harness
-                    runOnlySelectedTests: true
-                    postCommand: mvn package -DskipTests
+                    command: |-
+                      mvn test
+                      mvn package -DskipTests
+                    shell: Sh
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    intelligenceMode: true
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+                      - "target/surefire-reports/*.xml"
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
@@ -424,4 +345,3 @@ Now that you have created a pipeline that builds and tests a Java app, you could
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 - Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
 - Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
-- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

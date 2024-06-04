@@ -183,22 +183,17 @@ pipeline:
           execution:
             steps:
               - step: ## Generate test reports.
-                  type: RunTests
+                  type: Test
                   name: runTestsWithIntelligence
                   identifier: runTestsWithIntelligence
                   spec:
                     connectorRef: account.GCR
                     image: maven:3-openjdk-8
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                    buildTool: Maven
-                    language: Java
-                    packages: org.apache.dubbo,com.alibaba.dubbo
-                    runOnlySelectedTests: true
+                    command: mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    shell: Sh
+                    intelligenceMode: true
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+                      - "target/surefire-reports/*.xml"
               - step: ## Upload reports to GCS.
                   type: GCSUpload
                   name: upload report
@@ -257,22 +252,17 @@ pipeline:
           execution:
             steps:
               - step: ## Generate test reports.
-                  type: RunTests
+                  type: Test
                   name: runTestsWithIntelligence
                   identifier: runTestsWithIntelligence
                   spec:
                     connectorRef: account.GCR
                     image: maven:3-openjdk-8
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                    buildTool: Maven
-                    language: Java
-                    packages: org.apache.dubbo,com.alibaba.dubbo
-                    runOnlySelectedTests: true
+                    command: mvn test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    shell: Sh
+                    intelligenceMode: true
                     reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "target/surefire-reports/*.xml"
+                      - "target/surefire-reports/*.xml"
               - step: ## Upload reports to GCS.
                   type: GCSUpload
                   name: upload report

@@ -77,8 +77,6 @@ To add Feature Flags, do the following:
          OPA: ""
          # -- CHAOS Feature Flags (activated when global.chaos is enabled)
          CHAOS: "CHAOS_ENABLED"
-         # -- CET Feature Flags (activated when global.cet is enabled)
-         CET: "CET_ENABLED,SRM_CODE_ERROR_NOTIFICATIONS,SRM_ET_RESOLVED_EVENTS,SRM_ET_CRITICAL_EVENTS"
          # -- Disables OLD_GIT_SYNC if .global.ngGitSync is enabled
          OLDGITSYNC : "USE_OLD_GIT_SYNC"
          # -- AutoAccept Feature Flags

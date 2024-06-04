@@ -115,7 +115,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 #### Domain 
 
-Domain of the application instance to scan. Example: `https://myapp.io/portal/us`
+The fully-qualified URL to the scanner. 
 
 #### Access Token
 

@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Basic terminology and concepts related to CI pipelines
-sidebar_position: 3
+sidebar_position: 2
 helpdocs_topic_id: 3amcd8hn53
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -34,7 +34,7 @@ All CI stages have an infrastructure definition, which represents the build infr
 <details>
 <summary>What are shared paths?</summary>
 
-You can use **Shared Paths** in a stage to [share data across steps](../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../use-ci/caching-ci-data/cache-intelligence.md).
+You can use **Shared Paths** in a stage to [share data across steps](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md).
 
 When a pipeline runs, it creates a temporary volume for each stage called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace. Then, the steps in the stage run inside the root. The workspace is the current working directory for each step in the stage. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`. The workspace is destroyed when the stage ends.
 
@@ -66,11 +66,11 @@ With Kubernetes cluster build infrastructure, you can use the **Run as User** se
 
 ## Tests
 
-In a CI pipeline, you can use **Run** and **Run Tests** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
+In a CI pipeline, you can use **Run** and **Test** steps to [run tests with Harness CI](../use-ci/run-tests/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests.
 
 ### Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/run-tests/test-intelligence/set-up-test-intelligence). For more information, go to [Test Intelligence overview](../use-ci/run-tests/test-intelligence/set-up-test-intelligence).
+[Test Intelligence](../use-ci/run-tests/ti-overview.md) speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality.
 
 ## Plugins
 
@@ -84,23 +84,11 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 ### Caching
 
-Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
-
-### Docker layer caching
-
-[Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) can dramatically improve build time by sharing layers across pipelines and stages.
+Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For more information and available options, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
 ### Artifact repos
 
 Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can [push your artifacts](/docs/category/build-push-upload-download). Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
-
-### Services
-
-A service represents your microservices, Serverless functions, and other workloads logically. You can deploy, monitor, or change each service independently.
-
-### Service definition
-
-When you add a service to a stage, the service definition represents the real artifacts, manifests, and variable settings of that service. You can propagate or override a service in later stages of the pipeline.
 
 ## Platform components
 

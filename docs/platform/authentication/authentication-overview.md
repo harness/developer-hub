@@ -47,19 +47,19 @@ To configure authentication, do the following:
 
 3. Configure your settings for the selected method.
 
-### Enable Public OAuth Providers
+### Enable public OAuth providers
 
-In the **Use Public OAuth Providers** section, you can enable Harness logins via a range of single sign-on mechanisms. Enable this slider to expose sliders for enabling individual OAuth partners.  
+In the **Use Public OAuth Providers** section, you can enable Harness logins via a range of single sign-on mechanisms. Enable this slider to expose sliders for enabling individual OAuth partners.
 For more on OAuth Providers, go to [Single Sign-On with OAuth](../authentication/single-sign-on-sso-with-oauth.md).
 
 ![](./static/authentication-overview-42.png)
 
-### Enable Security Assertion Markup Language (SAML) Providers
+### Enable Security Assertion Markup Language (SAML) providers
 
-Select **SAML Provider** to enable a SAML Provider. To do this, you should first disable any configured public OAuth providers.  
+Select **SAML Provider** to enable a SAML Provider. To do this, you should first disable any configured public OAuth providers.
 For more on adding a SAML Provider, go to [Single Sign-On with SAML](../authentication/single-sign-on-saml.md).
 
-## Enforce Password Policies
+## Enforce password policies
 
 You'll see specific controls to govern the following password requirements:
 
@@ -67,7 +67,7 @@ You'll see specific controls to govern the following password requirements:
 - Periodically expire passwords
 - Enforce Two Factor Authentication
 
-### Enforce Password Strength
+### Enforce password strength
 
 Select **Enforce password strength** to open the dialog shown below.![](./static/authentication-overview-43.png)
 
@@ -78,15 +78,15 @@ Select **Enforce password strength** to open the dialog shown below.![](./static
   - Include at least one digit.
   - Include at least one special character.
 
-If you enforce **Have at least one special character**, each password must include one (or more) of the following characters: `~!@#$%^&*_-+=`|\()\{}[]:;"'&lt;this-tag&gt;,.?/`
+If you enforce **Have at least one special character**, each password must include one or more of the following characters: `! @ # $ % ^ & * ( ) - _ = + \ | [ ] { } ; : / ? . >`
 
-### Enforce Password Expiration
+### Enforce password expiration
 
 Select **Periodically expire passwords** to set an interval at which users must refresh their Harness passwords. In the same dialog, you can also set an advance notification interval.
 
 ![](./static/authentication-overview-44.png)
 
-### Enforce Lockout After Failed Logins
+### Enforce lockout after failed logins
 
 Select **Enforce lockout policy** to open the dialog shown below. It offers independent controls over the lockout trigger (how many failed logins), lockout time (in days), and notifications to locked-out users and to Harness user groups.
 
@@ -95,13 +95,13 @@ You can see a summary on the main Authentication page:
 
 ![](./static/authentication-overview-46.png)
 
-## Enforce Two Factor Authentication
+## Enforce two factor authentication
 
-Select **Enforce Two Factor Authentication** to enforce 2FA for all users in Harness. This option will govern all logins — whether through SSO providers or Harness username/password combinations. For more information on Two-Factor Authentication, go to [Two-factor authentication](../authentication/two-factor-authentication.md).
+Select **Enforce Two Factor Authentication** to enforce 2FA for all users in Harness. This option will govern all logins — whether through SSO providers or Harness username/password combinations. For more information on Two-Factor Authentication, go to [Two-factor authentication](../authentication/two-factor-authentication.md).
 
 ![](./static/authentication-overview-47.png)
 
-## Set Up Vanity URL
+## Set up vanity URL
 
 You can access `app.harness.io` using your own unique subdomain URL.
 
@@ -109,9 +109,9 @@ The subdomain URL will be in the following format, with `{company}` being the na
 
 `https://\{company}.harness.io`
 
-Contact [Harness Support](mailto:support@harness.io) to set up your Account's subdomain URL. The subdomain URL cannot be changed later. Harness automatically detects your Account ID from the subdomain URL and redirects you to the Account's login mechanism.
+Contact [Harness Support](mailto:support@harness.io) to set up your Account's subdomain URL. The subdomain URL cannot be changed later. Harness automatically detects your Account ID from the subdomain URL and redirects you to the Account's login mechanism.
 
-## Restrict Email Domains
+## Restrict email domains
 
 Select **Only allow users with the following email domains:** to allow (whitelist) only certain domains as usable in login credentials. In the dialog shown below, build your allowlist by simply typing your chosen domains into the **Domains** multi-select field.
 
@@ -121,7 +121,7 @@ Select **Save**. You can see the success message - **Domain restrictions have be
 
 ![](./static/authentication-overview-49.png)
 
-Your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords. You can modify your domain selections by clicking the Edit icon.
+Your resulting allowlist will impose a further filter on logins to Harness via both SSO providers and Harness username/passwords. You can modify your domain selections by clicking the Edit icon.
 
 ![](./static/authentication-overview-50.png)
 
@@ -132,7 +132,7 @@ Currently, this feature is behind the feature flag `PL_ALLOW_TO_SET_PUBLIC_ACCES
 
 :::
 
-Public access to resources allows you to grant public access to view Harness resources without requiring authentication. 
+Public access to resources allows you to grant public access to view Harness resources without requiring authentication.
 
 :::note
 

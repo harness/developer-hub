@@ -108,7 +108,7 @@ To add the **Trellis Score Report** widget to Insights:
 1. Select **Settings**, and then select **Add Widget**.
 2. Select the **Trellis Score Report** widget.
 3. Under the **Filters** tab add the **Interval** for which you want to calculate the Trellis Score. For this tutorial we'll set this as `Last Quarter`.
-4. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**. For information, go to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+4. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**. For information, go to [Trellis Scores](/docs/category/trellis-scores).
 
 ### Trellis Scores by Collection
 
@@ -128,7 +128,7 @@ To add the **Trellis Scores by Collection Report** widget to Insights:
 You can choose to display the scores of the immediate child Collections only.
 :::
 
-4. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**. For information, go to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+4. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**. For information, go to [Trellis Scores](/docs/category/trellis-scores).
 
 ### Individual Raw Stats
 
@@ -142,7 +142,7 @@ To add the **Individual Raw Stats Report** widget to Insights:
 2. Select the **Individual Raw Stats** widget.
 3. Under the **Filters** tab add the **Interval** for which you want to calculate the Trellis Score. For this tutorial, we'll set this as the `Last Quarter`.
 4. Select the custom user attributes if required.
-5. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**. For information, go to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+5. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**. For information, go to [Trellis Scores](/docs/category/trellis-scores).
 
 ### Raw Stats by Collection
 
@@ -155,7 +155,7 @@ To add the **Raw Stats by Collection Report** widget to Insights:
 1. Select **Settings**, and then select **Add Widget**.
 2. Select the **Raw Stats by Collection** widget.
 3. Under the **Filters** tab add the **Interval** for which you want to calculate the Trellis Score. For this tutorial, we'll set this as the `Last Quarter`.
-4. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**. For information, go to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+4. Select **Next: Place Widget**, place the widget on the Insight and then select **Save Layout**. For information, go to [Trellis Scores](/docs/category/trellis-scores).
 
 ## Best Practices
 

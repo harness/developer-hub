@@ -103,6 +103,12 @@ API, Deps, Scorecard, TechDocs, EntityGithubPullRequestsContent, EntityKubernete
 
 ### Side Nav Layout
 
+:::info
+
+The **Sidenav** changes are restricted only to IDP app and anything under **Admin** is not configurable
+
+:::
+
 The Side Nav Layout configuration file also follows a hierarchical structure, starting with the **"page"** key.
 
 - **"page"** represents the main page container.
@@ -114,6 +120,7 @@ The Side Nav Layout configuration file also follows a hierarchical structure, st
 ### Example of Side Nav Layout
 
 ```YAML
+...
 page:
   children:
     - name: SidebarDivider
@@ -121,7 +128,16 @@ page:
       props:
         to: overview
         text: Overview
+...
+    - name: SidebarItem
+      props:
+        to: api-docs
+        text: APIs
+        iconName: Extension
+...
 ```
+The `to` in the SidebarItem can be linked to any page under `idp` for the URL in the format `https://app.harness.io/ng/account/account_id/idp/overview`, you could add a link to the overview page of a particular entity as well eg `catalog/default/component/hello-world-app-filters` for the URL like `https://app.harness.io/ng/account/account_id/idp/catalog/default/component/hello-world-app-filters`
+
 ## Entity Kind & Type Mapping in Layouts
 
 You can find all the layout configurations in the IDP Admin layout section. Here is a mapping of the entity kind to layout:

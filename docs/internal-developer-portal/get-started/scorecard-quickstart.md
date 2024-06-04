@@ -74,7 +74,7 @@ You can skip this step if you want to use the default checks available and can s
 4. Add the **Name** and **Description**
 5. Now under Rules select **All Of** and the Datasource as **Catalog Info YAML**.
 6. Select the Datapoint as **Evaluate expression (JEXL)**, and add the JEXL based on the jira annotation key mentioned on your `catalog-info.yaml` which would be `<+metadata.annotations.'jira/project-key'>`
-7. Now add the operator as **Not equal to** and add `null` under **Value**.
+7. Now add the operator as **Not equal to** and add `""` under **Value**.
 8. Save the changes.
 
 ![](./static/jira-custom-check.png)
