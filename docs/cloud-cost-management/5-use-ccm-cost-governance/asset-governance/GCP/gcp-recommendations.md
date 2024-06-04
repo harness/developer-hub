@@ -275,7 +275,7 @@ policies:
 - Run Once:
   - `recommender.containerDiagnosisInsights.list`
   - `container.clusters.list`
-  - `ccontainer.clusters.delete`
+  - `container.clusters.delete`
 
 ---
 ### Recommendation: gcp-cloud-run-cpu-allocation
