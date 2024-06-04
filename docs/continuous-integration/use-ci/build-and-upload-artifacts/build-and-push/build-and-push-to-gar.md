@@ -140,13 +140,9 @@ The [Docker build-time variables](https://docs.docker.com/engine/reference/comma
 
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#target), equivalent to the `--target` flag, such as `build-env`.
 
-### Remote Cache Image
-
-Use this setting to [enable remote Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
-
-For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME`.
-
-The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
+### Docker layer caching and Remote cache image
+There are two ways in which you can leverage Docker Layer Caching: 
+ **Enable Docker layer caching** (_'caching'_ property) or **Remote cache image** (_'remoteCacheRepo'_ property). Refer to [Enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) to learn more.
 
 ### Environment Variables (plugin runtime flags)
 

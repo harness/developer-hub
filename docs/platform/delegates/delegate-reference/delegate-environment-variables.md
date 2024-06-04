@@ -146,7 +146,7 @@ Whether the delegate is registers in Harness NextGen or FirstGen. A value of `tr
 
 ### POLL_FOR_TASKS
 
-Enables or disables polling for delegate tasks.By default, the Delegate uses Secure WebSocket (WSS) for tasks. If the `PROXY\_\*` settings are used and the proxy or some intermediary does not allow WSS, then set `POLL\_FOR\_TASKS` to true to enable polling.
+Enables or disables polling for delegate tasks. By default, the delegate uses Secure WebSocket (WSS) for tasks. If the `PROXY\_\*` settings are used and the proxy or some intermediary does not allow WSS, then set `POLL\_FOR\_TASKS` to true to enable polling.
 
 ```yaml
         - name: POLL_FOR_TASKS

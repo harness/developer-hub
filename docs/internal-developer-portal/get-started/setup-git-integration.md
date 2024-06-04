@@ -39,7 +39,7 @@ This guide describes the steps a Harness account admin can take to set up the ID
 
 - Only the following set of connectors are supported
   
-  - Harness Code Repository (Only Enabled for EU Cluster)
+  - Harness Code Repository
   - GitHub
     - GitHub Enterprise
     - GitHub App
@@ -70,11 +70,6 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="Git-Provider">
 <TabItem value="harness-code-repo-enabled" label="Harness Code Repository Enabled">
 
-:::info
-
-Harness Code Repo is only available on EU Cluster
-
-:::
 
 4. In case you are already using Harness Code Repository, a default connector with only **Read Permission** would be available for the code repo set-up under the same account as that of IDP. Note this connector is uneditable and managed by Harness.
 

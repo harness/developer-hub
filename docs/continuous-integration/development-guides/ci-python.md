@@ -73,11 +73,11 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-step-settings) to instal
 Add caching to your stage.
 
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Cache Intelligence">
 
 Cache your Python module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-Add caching to your `stage.spec`.
+Add caching to your `stage.spec`:
 
 ```yaml
 - stage:
@@ -92,9 +92,9 @@ Add caching to your `stage.spec`.
 ```
 
 </TabItem>
-<TabItem value="Self-managed">
+<TabItem value="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -162,7 +162,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Run tests
 
-You can use **Run** and **Run Tests** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Test** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 These examples run tests in a **Run** step.
 
@@ -209,7 +209,7 @@ These examples run tests in a **Run** step.
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), make sure your test commands produce reports in JUnit XML format.
 
-If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
+If you run tests in a **Run** step, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Test steps (Test Intelligence)](#run-tests-with-test-intelligence).
 
 ```yaml
 reports:
@@ -221,60 +221,31 @@ reports:
 
 ### Run tests with Test Intelligence
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) is available for Python; however, it is behind the feature flag `CI_PYTHON_TI`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) to run unit tests with Test Intelligence.
-
-<Tabs>
-  <TabItem value="Harness Cloud" default>
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) is available for Python.
 
 ```yaml
-- step:
-    type: RunTests
-    name: Run Python Tests
-    identifier: Run_Python_Tests
-    spec:
-      language: Python
-      buildTool: Pytest
-      runOnlySelectedTests: true
-      preCommand: |
-        python3 -m venv .venv
-        . .venv/bin/activate
+              - step:
+                  type: Test
+                  name: runTestsWithIntelligence
+                  identifier: runTestsWithIntelligence
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    command: |-
+                      python3 -m venv .venv
+                      . .venv/bin/activate
 
-        python3 -m pip install -r requirements/test.txt
-        python3 -m pip install -e .
+                      python3 -m pip install -r requirements/test.txt
+                      python3 -m pip install -e .
+
+                      pytest
+                    shell: Python
+                    intelligenceMode: true
 ```
-
-</TabItem>
-  <TabItem value="Self-managed">
-
-```yaml
-- step:
-    type: RunTests
-    name: Run Python Tests
-    identifier: Run_Python_Tests
-    spec:
-      connectorRef: account.harnessImage
-      image: python:latest
-      language: Python
-      buildTool: Pytest
-      runOnlySelectedTests: true
-      preCommand: |
-        python3 -m venv .venv
-        . .venv/bin/activate
-
-        python3 -m pip install -r requirements/test.txt
-        python3 -m pip install -e .
-```
-
-</TabItem>
-</Tabs>
 
 ### Test splitting
 
-Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
-
-Stage-level parallelism is recommended for Python.
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 ## Specify version
 
@@ -687,4 +658,3 @@ Now that you have created a pipeline that builds and tests a Python app, you cou
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 - Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
 - Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
-- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

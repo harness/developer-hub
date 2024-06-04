@@ -139,6 +139,10 @@ To pass output variables from one pipeline stage to another, you can use pipelin
 Harness also has an endpoint you can use in a Shell Script step or a HTTP step to make an API call for fetching execution detail of another pipeline `api/pipelines/execution/v2/{planExecutionId}`. If we pass the attribute `renderFullBottomGraph` as true in this api call we get all the variables in the pipeline as response.
 This can later be parsed to get the desired output variables and published accordingly to be used in other steps/pipeline.
 
+### How to set unsupported fields when creating a Jira issue?
+
+By default, Jira plugins don't support cascading lists and other custom types. You can set the unsupported fields using the [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/). For more details, go to [Use HTTP step to set unsupported fields when creating a Jira issue](https://developer.harness.io/kb/continuous-delivery/articles/create-cascading-fields-jira).
+
 ## Shell Script step
 
 
@@ -449,6 +453,13 @@ No, containerized step group can only run on Kubernetes infrastructure.
 The step group's **Command** is overwritten the image's default entrypoint, if it has one.
 
 If you want to run the entrypoint in addition to other commands, make sure the image doesn't have a default entry point, and then execute all the commands in the step group's **Command**.
+
+### Does Harness's Slack integration notify on JIRA events awaiting approval?
+
+No, the current Slack integration for Harness does not support notifications for JIRA approval events. It only works on specific pipeline events, which are available while configuring. None of these events are related to approval notifications.
+
+Alternatively, you can set up a custom webhook trigger or configure a step group with two parallel stages (one with shell and one with approval). Once the process reaches the approval stage, the Shell step can contain the cURL call the webhook for notification.
+
 
 
 

@@ -2820,9 +2820,9 @@ Feel free to reach out to us in case of issues.
 
 No, It won’t use a license if an artifact isn’t being deployed onto a target host.
 
-#### Is cache intelligence available between CD steps, or just for CI ?
+#### Is Cache Intelligence available for CD?
 
-It is only present in CI as caching dependencies needs to build an artifact is a CI only concept.
+Cache Intelligence caches build dependencies. It is currently only available for Harness CI.
 
 #### Can we not not use `<+input>.executionInput()`  in the ternary operator to wait for user entry ?
 
@@ -4338,7 +4338,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 #### What are the Google Cloud Functions supported by Harness ?
 
 Harness supports deploying Google Functions 1st gen and 2nd gen. But for Google Cloud Functions 2nd gen, Harness does not support Google Cloud Source Repository at this time. Only Google Cloud Storage is supported. For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
-Please read more on this in the following [Documentation](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions)
+Please read more on this in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions/#supported-versions)
 
 #### Is there a way to show instances over time in NextGen, similar to the current “Service instances over time” dashboard in First gen ?
 
@@ -8059,17 +8059,5 @@ Exit code 137 typically indicates that a process was terminated due to a signal.
 Here is an example expression that converts a string variable named myString to uppercase:
 ```<+myString.toUpperCase()>```
 You can use this expression in any setting that supports expressions in Harness.
-
-#### Does harness support polling on folders?
-We currently, do not support polling on folders. We have an open enhancement request to support this.
-
-#### Is the "Enable Native Helm steady state for jobs" option a default setting for the steady state check?
-This selection is solely for verifying the steady state of a Kubernetes Job deployed via the Helm chart.
-
-#### Is there a way to get notified whenever a new pipeline is created?
-No, As per the current design it's not possible.
-
-#### How do I filter out Approvals for Pipeline Execution Time in Dashboards?
-You can get the Approval step duration from the **Deployments and Services V2** data source.
 
 

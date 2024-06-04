@@ -75,7 +75,6 @@ To create a project, do the following:
 To get started with Harness Self-Managed Enterprise Edition, go to the following Harness module topics:
 
 * Harness CCM: [Cloud Cost Management (CCM) overview](/docs/cloud-cost-management/get-started/overview).
-* Harness CET: [Continuous Error Tracking (CET) onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).
 * Harness CI: [Continuous Integration (CI) overview](/docs/continuous-integration/get-started/overview).
 * Harness CD: [Continuous Delivery (CD) key concepts](../../continuous-delivery/get-started/key-concepts.md).
 * Harness FF: [Feature Flag (FF) onboarding guide](/docs/feature-flags/get-started/onboarding-guide).

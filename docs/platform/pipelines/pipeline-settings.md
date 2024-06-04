@@ -18,6 +18,7 @@ You can [configure Default Settings](/docs/platform/settings/default-settings.md
 These are the Default Settings for Pipelines.
 
 ### Pipeline triggers settings
+
 - **Mandate pipeline create and edit permission to create and edit triggers:** If enabled, users must have permission to create/edit pipelines to create/edit triggers for those pipelines. If disabled, users with permission to create/edit triggers can create/edit triggers regardless of their access to create/edit the pipelines associated with the triggers.
 - **Webhook Polling For Triggers**
 - **Mandate Authorization for Custom Webhook Triggers:** Enable this setting to require that all custom triggers in this Harness account use API key tokens. For more information, go to [Enforcing authorization for custom triggers](/docs/platform/triggers/trigger-deployments-using-custom-triggers/#enforcing-authorization-for-custom-triggers).
@@ -108,7 +109,6 @@ For example, with a Free plan, you can add a maximum of 10 parallel stages in a 
 
 Even if you specify a `maxConcurrency` limit of 5 or 10, the moment you do the looping repeat strategy, Harness will already compute the total number of potential stages, if the list generates more than 256 items we will fail there before even running any of the stages and honoring the `maxconcurrency`. 
 
-
 ### Resolved YAML size limit
 
 **Compiled YAML cannot exceed the Harness-enforced limit of 3 MB.**
@@ -127,14 +127,14 @@ For example, assume a pipeline tries to run 25 stages concurrently, and each sta
 
 Once it reaches the concurrency + queued limit of 20 stages, additional stages fail. In this example, five stages would fail by default of the concurrency and queue limit being full.
 
-
 ## Individual pipeline and module-specific pipeline settings
 
 For individual pipeline settings, such as stage and step settings, pipeline triggers, and so on, go to the documentation for the topic of your choice. For example:
 
-* [CD documentation](/docs/continuous-delivery)
-* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
-* [Triggers documentation](/docs/category/triggers)
+* [Harness CD](/docs/continuous-delivery)
+* [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+* [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md)
+* [Triggers](/docs/category/triggers)
 * [Pipeline failure handling, timeout limits, and retries](/docs/category/failure-handling)
 * [Conditional executions](/docs/platform/pipelines/step-skip-condition-settings)
 * [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining)
