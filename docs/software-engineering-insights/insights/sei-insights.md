@@ -164,7 +164,7 @@ If you want to create a DORA Metrics Insight refer to the below resoures.
 
 Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration.
 
-For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
+For more information about SCM metrics and reports, go to [velocity metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics-overview) and [SCM reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports).
 
 If you want to create a Developer i.e. SCM Metrics Insight refer to the below resources.
 
@@ -181,7 +181,7 @@ The Business Alignment Insight can help visualize where your teams expend the mo
 * **Effort Investment Trend Report**
 * **Effort Investment By Engineer**
 
-For more information about these reports and metrics, go to [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
+For more information about these reports and metrics, go to [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview).
 
 If you want to create additional Business Alignment Insights, select the **Effort Investment Profile** option under **Parameters** when [creating Insights](#create-insights).
 
@@ -189,18 +189,18 @@ If you want to create additional Business Alignment Insights, select the **Effor
 
 ### Trellis
 
-Use the Trellis Insight to examine [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+Use the Trellis Insight to examine [Trellis Scores](/docs/category/trellis-scores).
 
 If you want to create a Trellis Insight refer to the below resources.
 
 * [Tutorial: Create a Trellis Metrics Insight](/docs/software-engineering-insights/insights/trellis-insight)
-* [Trellis Reports](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score)
+* [Trellis Reports](/docs/category/trellis-scores)
 
 ### Planning Insights
 
-Use the Planning Insight to examine [sprint metrics](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).
+Use the Planning Insight to examine [sprint metrics](/docs/category/sprint-metrics).
 
 If you want to create a Sprints Metrics Insight refer to the below resources.
 
 * [Tutorial: Create a Sprint Metrics Insight](/docs/software-engineering-insights/insights/sprint-metrics-insight)
-* [Sprint Metric Reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
+* [Sprint Metric Reports](/docs/category/sprint-metrics)

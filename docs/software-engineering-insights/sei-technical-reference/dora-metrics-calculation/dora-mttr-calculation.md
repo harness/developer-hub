@@ -61,10 +61,10 @@ Note that the definition of MTTR metric for monitoring incidents depends upon ho
 
 Consider the following Change Failure Rate configuration:
 
-* SEI integration: PagerDuty
-* Filter for Mean Time to Restore: User ID Equals PD-DEMO
-* Calculation parameter: Incident Resolved in Insight time range
-* Time Range selected on the dashboard: First week of January 2024 i.e. 1st Jan 2024 to 7th Jan 2024
+* **SEI integration:** PagerDuty
+* **Filter for Mean Time to Restore:** User ID Equals PD-DEMO
+* **Calculation parameter:** Incident Resolved in Insight time range
+* **Time Range selected on the Insight:** First week of January 2024 i.e. 1st Jan 2024 to 7th Jan 2024
 
 With this configuration, the DORA MTTR widget shows the total number of incidents that were resolved divided by the total number of incidents that occurred in the last one month.
 

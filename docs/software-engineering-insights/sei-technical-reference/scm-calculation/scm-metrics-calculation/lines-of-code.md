@@ -27,7 +27,7 @@ The metric value in the trellis report is normalized to show the average number 
 
 In the Raw Stats report, the metric displays the total number of lines of code contributed by the engineer within the selected time frame.
 
-To learn more, go to [Trellis Scores](/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score).
+To learn more, go to [Trellis Scores](/docs/category/trellis-scores).
 
 ### SCM Reports
 
