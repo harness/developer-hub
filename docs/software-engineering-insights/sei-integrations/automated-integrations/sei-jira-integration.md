@@ -98,7 +98,7 @@ To set up the integration using the Jira API Key:
 2. Select **Available Integrations**, locate the **Jira integration**, and select **Install**.
 3. Select Jira Software Cloud as the integration type.
 4. Select the Using Jira API Token tile to set up the connection with Jira.
-5. Configure the integration settings and authentication:&#x20;
+5. Configure the integration settings and authentication: 
    * Integration Name: Name for your integration.
    * Description (optional): Add a description for the integration.
    * Tags (optional): Add tags for the integration if required.

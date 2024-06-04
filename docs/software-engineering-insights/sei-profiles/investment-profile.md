@@ -4,11 +4,17 @@ description: Use Investment profiles to examine effort investment metrics.
 sidebar_position: 10
 ---
 
-Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics-reports/effort-investment-metrics).
+Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](/docs/software-engineering-insights/sei-metrics-and-reports/planning/alignment/sei-business-alignment-overview).
 
 :::info
 The 202312.2 release included a new Business Alignment profile and report settings, which enhance the effectiveness and accuracy of BA metrics calculation. The feature is currently in BETA. To learn more, go to [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile)
 :::
+
+## Configure Investment Profiles
+
+To create or edit **Investment profiles**:
+
+### Step 1: Create a New Investment Profile
 
 To create or edit Investment profiles:
 
@@ -17,7 +23,7 @@ To create or edit Investment profiles:
 3. Select **Investment** under **Profiles**.
 4. To create a profile, select **+New Investment Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
-## Basic Info
+### Step 2: Add the Basic Info for the profile
 
 * **Name and Description:** Name and describe your Investment profile.
 * **Current Priorities:** Select one or more options that correspond with the team's *current* work. Options include:
@@ -29,7 +35,7 @@ To create or edit Investment profiles:
 
 ![](./static/investment-profile.png)
 
-## Categories
+### Step 3: Set up the Categories
 
 Categories define the data that you want to compare within an Investment profile. For example, you could compare issue types (such as bugs, stories, and tasks), projects, components, or other dimensions (such as infrastructure, support, and development).
 
@@ -37,7 +43,7 @@ To add a category, select **Add Category**, enter a name, and then select **Filt
 
 ![](./static/investment-categories.png)
 
-## Allocation Goals
+### Step 4: Set up the Allocation Goals
 
 After adding [categories](#categories), you can set goals for how much time you want developers to work on each category.
 
@@ -104,3 +110,7 @@ The ranking of categories plays a significant role in determining how tickets ar
 6. **Effort Investment Calculations:** Once allocation goals are set, SEI calculates the effort investment based on the actual allocation of tickets to categories and the progress made in each category.
 
 </details>
+
+### Step 5: Save the profile
+
+Once you've completed configuring the profile settings click on **Save** on the top right section of the page to save the Investment Profile.
