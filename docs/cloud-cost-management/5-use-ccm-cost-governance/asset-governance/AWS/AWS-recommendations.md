@@ -283,6 +283,55 @@ policies:
 ```
 
 **Savings Computed**: 
+To estimate the percentage cost savings from the given S3 lifecycle policies, we need to look at the specific actions and apply some reasonable assumptions. Here's a step-by-step approach:
+
+1. Abort Incomplete Multipart Uploads after 7 days:
+- Assumption: 5% of all uploads are incomplete and are not cleaned up without this policy.
+- Cost Impact: Each incomplete multipart upload that is aborted saves the storage cost of the data uploaded so far.
+
+2. Expire Noncurrent Versions after 30 days (keeping 6 versions):
+- Assumption: Each object has, on average, 10 noncurrent versions stored. Expiring noncurrent versions after 30 days, keeping only the latest 6, will delete 4 out of every 10 noncurrent versions.
+- Cost Impact: Deleting 40% of noncurrent versions reduces the total storage used by these versions.
+
+**Example Calculation**
+
+Let's assume the following for a single S3 bucket:
+
+**Total Storage Used**: 1 TB (1,024 GB) in the S3 Standard storage class.
+
+**Storage Distribution:**
+- Current versions: 50% (512 GB)
+- Noncurrent versions: 40% (410 GB)
+- Incomplete multipart uploads: 10% (102 GB)
+
+**Without Lifecycle Policy**
+
+**Cost for S3 Standard:** $0.023 per GB per month
+
+
+<DocImage path={require('../static/cal1.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
+**With Lifecycle Policy**
+
+**Abort Incomplete Multipart Uploads:**
+- Removes 5% of total storage (5% of 1,024 GB = 51 GB)
+- New incomplete multipart uploads storage: 51 GB (102 - 51)
+
+**Expire Noncurrent Versions:**
+- Reduces noncurrent versions by 40% (40% of 410 GB = 164 GB)
+- New noncurrent versions storage: 246 GB (410 - 164)
+
+<DocImage path={require('../static/cal2.png')} width="50%" height="50%" title="Click to view full size image" />
+
+
+**Total Savings**
+ <DocImage path={require('../static/savings1.png')} width="40%" height="40%" title="Click to view full size image" />
+
+References: 
+- [AWS S3 Lifecycle Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)
+- [AWS S3 Pricing](https://aws.amazon.com/s3/pricing/)
+- [Managing S3 Costs](https://aws.amazon.com/blogs/storage/optimizing-costs-with-amazon-s3-lifecycle-configurations/)
 
 **Permissions Required:**
 - **Dry Run:** 
@@ -324,6 +373,29 @@ policies:
 ```
 
 **Savings Computed:** 
+- **Frequent Access Tier:** This tier is equivalent in cost to the standard S3 storage, so no savings here.
+- **Infrequent Access Tier:** Data not accessed for 30 days moves here, saving approximately 45% compared to standard S3 storage​.
+- **Archive Instant Access Tier:** Data not accessed for 90 days moves here, with savings up to 68% compared to standard storage​.
+- **Archive Access Tier:** If configured, data not accessed for 90 days can move here, offering around 71% savings​.
+- **Deep Archive Access Tier:** Data not accessed for 180 days can be moved to this tier, providing up to 95% savings.
+
+**Example Calculation**
+
+Assume you have 1 TB of data stored in S3 standard storage:
+
+ <DocImage path={require('../static/example1.png')} width="60%" height="60%" title="Click to view full size image" />
+
+**Example Scenario**
+
+If 20% of your data transitions to the Infrequent Access tier after 30 days, 20% moves to Archive Access after 90 days, and 10% moves to Deep Archive Access after 180 days, your costs might look like this:
+
+ <DocImage path={require('../static/example2.png')} width="50%" height="50%" title="Click to view full size image" />
+
+ This results in a cost savings of approximately 32.76% compared to keeping all data in standard S3 storage ($23.00 per month vs. $15.463 per month).
+
+ References: 
+ - [AWS intelligent tiering](https://aws.amazon.com/s3/storage-classes/intelligent-tiering/)
+ - [AWS S3 Pricing](https://aws.amazon.com/s3/pricing/)
 
 **Permissions Required:**
 - **Dry Run:** 
