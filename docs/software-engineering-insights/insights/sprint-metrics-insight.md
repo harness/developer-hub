@@ -79,9 +79,9 @@ Use these sprint metric reports to analyze sprint and planning metrics allowing 
 
 Engineering managers usually use these three key sprint metrics to get a holistic picture of the sprint productiviy:
 
-1. [Commit Points](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#commit-points) (The number of story points you plan to complete during the sprint)
-2. [Commit Done Points](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
-3. [Creep Points](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
+1. [Commit Points](/docs/category/sprint-metrics#commit-points) (The number of story points you plan to complete during the sprint)
+2. [Commit Done Points](/docs/category/sprint-metrics#commit-done-points) (The number of story points actually finished at the end of the sprint)
+3. [Creep Points](/docs/category/sprint-metrics#creep-points) (The difference between the initially planned story points and those actually delivered).
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of these metrics to help engineering managers understand how the respective sprint metrics has evolved throughout various sprint cycles.
 
@@ -102,7 +102,7 @@ To add the **Sprint Metrics Trend Report** widget to Insights:
    3. **Issue Management System:** Select the integration for your Issue Management System.
 9. Select **Next: Place Widget**, place the widget on the Insight, and then save the layout.
 
-For more information,go to [Sprint Metric Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics).
+For more information,go to [Sprint Metric Trend Report](/docs/category/sprint-metrics).
 
 ### Issue Hygiene Report
 
@@ -195,7 +195,7 @@ To add the **Sprint Metrics Single Stat Report** widget to Insights:
 
 ### Other sprint metrics reports
 
-* [Sprit Metrics Percentage Trend Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics#sprint-metrics-percentage-trend-report)
-* [Sprint Impact of Unestimated Tickets Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
-* [Sprint Goal Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
-* [Sprint Distribution Retrospective Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics)
+* [Sprit Metrics Percentage Trend Report](/docs/category/sprint-metrics#sprint-metrics-percentage-trend-report)
+* [Sprint Impact of Unestimated Tickets Report](/docs/category/sprint-metrics)
+* [Sprint Goal Report](/docs/category/sprint-metrics)
+* [Sprint Distribution Retrospective Report](/docs/category/sprint-metrics)
