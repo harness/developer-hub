@@ -3,7 +3,7 @@ title: Use the Run Tests step for Ruby
 description: Set up TI for Ruby programming language.
 sidebar_position: 40
 redirect_from:
-  - /docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby
+  - /docs/continuous-integration/use-ci/run-tests/tests-v1/ti-for-ruby
 ---
 
 import Tabs from '@theme/Tabs';
