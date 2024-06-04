@@ -23,10 +23,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### New features and enhancements
 
 - Asset Governance for AWS : Added new governance recommendations and cost computation support for AWS resources including `cache-cluster`, `S3`,`Redshift`, and `Redshift-snapshot`. [CCM-17852]
-- Asset Governance for GCP : Added new governance recommendations and cost computation support for GCP resources including `redis`, `gke-cluster`,`` bq-dataset`, `function`, `bucket`, `dataflow-job`, `loadbalancer-address`. [CCM-17852]
+- Asset Governance for GCP : Added new governance recommendations and cost computation support for GCP resources including `redis`, `gke-cluster`,` bq-dataset`, `function`, `bucket`, `dataflow-job`, `loadbalancer-address`, `cloud-run-service` and also, added cost computation for `gcp.loadbalancer-forwarding-rule`. [CCM-17852]
 - Editing Enforcements: Improved the enforcement editing process. Now, when viewing and editing an enforcement, it will no longer get enabled automatically if it was previously disabled. This ensures that the enforcement status remains consistent unless intentionally changed by the user. [CCM-18050]
 - Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. [CCM-17850, ZD-63324]
 - Azure Governance Subscription selection: In the Azure Rule window's Subscription drop-down menu, previously, only the Subscription ID was displayed. Now, both the Subscription Name and ID are shown for better clarity and ease of selection. [CCM-17650]
+- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. [CCM-17979]
+
+| Old Label | New Label |
+|------------|--------------|
+| beta.kubernetes.io/instance-type | node.kubernetes.io/instance-type |
+| beta.kubernetes.io/os | kubernetes.io/os |
+| failure-domain.beta.kubernetes.io/region | topology.kubernetes.io/region |
+| failure-domain.beta.kubernetes.io/zone | topology.kubernetes.io/zone |
 
 
 #### Fixed issues
