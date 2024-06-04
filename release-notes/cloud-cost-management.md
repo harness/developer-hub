@@ -22,12 +22,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### New features and enhancements
 
-- Asset Governance for AWS : Added new governance recommendations and cost computation support for AWS resources including `cache-cluster`, `S3`,`` Redshift`, and `Redshift-snapshot`. [CCM-17852]
+- Asset Governance for AWS : Added new governance recommendations and cost computation support for AWS resources including `cache-cluster`, `S3`,`Redshift`, and `Redshift-snapshot`. [CCM-17852]
+- Asset Governance for GCP : Added new governance recommendations and cost computation support for GCP resources including `redis`, `gke-cluster`,`` bq-dataset`, `function`, `bucket`, `dataflow-job`, `loadbalancer-address`. [CCM-17852]
 - Editing Enforcements: Improved the enforcement editing process. Now, when viewing and editing an enforcement, it will no longer get enabled automatically if it was previously disabled. This ensures that the enforcement status remains consistent unless intentionally changed by the user. [CCM-18050]
 - Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. [CCM-17850]
+- Azure Governance Subscription selection: Previously, in the drop down menu of seelcting a Subscription on an Azure Rule, only the Subscription ID was shown. Now we have added an enhancement to also show the names of the Subscription along with their ID for better clarity. [CCM-17650, ZD-63324]
+
 
 #### Fixed issues
-- Azure perspectives Previously, only fields in "group by" with available data were displayed in Azure perspectives, leading to incomplete views and unnecessary errors. With this update, all relevant fields, including those without data, will now be visible. This ensures a comprehensive perspective of the data, eliminating unnecessary errors arising from missing data at the source level. [CCM-17573]
+- Azure perspectives Previously, only fields in "group by" with available data were displayed in Azure perspectives, leading to incomplete views and unnecessary errors. With this update, all relevant fields, including those without data, will now be visible. This eliminates any unnecessary errors arising from missing data at the source level. [CCM-17573, ZD-62691]
 
 ### Version 1.18.1
 
