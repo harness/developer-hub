@@ -7,24 +7,25 @@ sidebar_position: 30
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Harness provides the flexibility to use custom images in your IACM pipeline, which refers to individual Terraform plugin steps such as the `terraform init` step in an IaCM pipeline provision stage. You can employ a custom image for any step that requires specific customization. This guide walks you through the process of creating your custom image and incorporating it into your Harness pipelines.
+Harness provides the flexibility to use custom images in your IACM stage, which refers to individual Terraform plugin steps such as the `terraform init` step in an IaCM pipeline provision stage. This guide walks you through the process of creating your custom image and incorporating it into your Harness pipelines.
 
 ## Create an image
 Harness allows you to create custom images based on a provided base image. This enables you to tailor the image to your specific needs and use it in your workflows. However, be aware of an important consideration with this approach.
 
-:::warning
-### Version lock-in
+:::warning Version lock-in
 Once you create a custom image using our base image, it becomes **version-locked**. This means that if we release a new version of our base image, your custom image will not automatically update to the latest version. For instance, if you create an image today using our base image version "1.0.0" and we subsequently release version "1.1.0," your custom image will still be using version "1.0.0."
+
 :::
 
-:::tip
-### Mitigating versioning challenges
-To address this versioning challenge and ensure that your custom image stays up-to-date with our latest improvements and features, you need to implement specific steps within your CI/CD pipelines. These steps may include periodically checking for updates to our base image and rebuilding the custom image as necessary. It's crucial to proactively monitor our releases and sync the custom images to take full advantage of the latest enhancements.
+:::tip Mitigating versioning challenges
+To address this versioning challenge and ensure that your custom image stays up-to-date with our latest improvements and features, you can implement specific steps within your CI/CD pipelines. These steps may include periodically checking for updates to our base image and rebuilding the custom image as necessary. It's crucial to proactively monitor our releases and sync the custom images to take full advantage of the latest enhancements.
+
+**To help detect out-of-date versions, Harness log a warning if your image version is five versions behind the latest release.**
 :::
 
 ### Create a custom image
 
-The following example custom image includes the HTP version and has the `aws-cli` and `kubectl` tools installed giving your steps access to them as needed.
+The following example custom image includes the HTP version and has the AWS `kubectl` and `kustomize` tools installed in the root image giving your steps access to them as needed.
 
 ```sh
 FROM plugins/harness_terraform
@@ -79,14 +80,14 @@ To use your custom image in a step, create a reference in the YAML configuration
 ```
 
 :::info
-In this example, the `image` attribute **(1)** in the YAML points to the plugin image in the Amazon Elastic Container Registry (ECR) where it is hosted. If your image is hosted in a private ECR, you'll need to create a connector for that ECR and define the `connectorRef` **(2)** for the connector. This ensures that Harness can access the image. At this stage, the "apply" step in your pipeline will use the "private_harness_terraform_plugin" and have access to `aws-cli` and `kubectl` for its operations.
+In this example, the `image` attribute **(1)** in the YAML points to the plugin image in the Elastic Container Registry (ECR) where it is hosted. If your image is hosted in a private ECR, you'll need to create a connector for that ECR and define the `connectorRef` **(2)** for the connector. This ensures that Harness can access the image. At this stage, the "apply" step in your pipeline will use the "private_harness_terraform_plugin" and have access to `kubectl` and `kustomize` for its operations.
 :::
 
 ## IACM execution-config
 To use images from your repository in an IACM stage, you can use the `execution-config` API endpoints. 
 
 :::note
-Although some images mentioned here are also used by CI, it's important to note that any overrides specified using the IACM `execution-config` APIs are not applied to CI stages and vice versa. The images that can be overridden are:
+Although some images mentioned here are also used by [CI](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci/), it's important to note that any overrides specified using the IACM `execution-config` APIs are not applied to CI stages and vice versa. The images that can be overridden are:
 
 - harness/ci-addon.
 - harness/ci-lite-engine.
