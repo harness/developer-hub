@@ -146,6 +146,14 @@ Go to [Connect your Code Repository](https://developer.harness.io/docs/platform/
 </TabItem>
 </Tabs>
 
+:::info OIDC Connectors
+For ease of access and control over aspects like expiring tokens, consider adding your connector using the **OIDC** (OpenID Connect) option in the **Credentials** panel from the above Add Connector steps.
+
+Using OIDC allows your connector to assume a role and its permissions set in your Cloud Provider configuration meaning that permissions can only be updated via the Cloud Provider by authorized users.
+
+Go to the **Use OIDC** tab [Cloud platform connectors reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials) for more information.
+:::
+
 ---
 
 ## Add a new workspace
