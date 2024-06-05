@@ -6,8 +6,8 @@ redirect_from:
 ---
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** state).
-- Kubelet service is stopped (or killed) on a node to make it unschedulable for a specific duration. 
-- The application node goes back to normal state and services are resumed after the chaos duration. 
+- Kubelet service is stopped (or killed) on a node to make it unschedulable for a specific duration.
+- The application node goes back to normal state and services are resumed after the chaos duration.
 
 
 ![Kubelet Service Kill](./static/images/kubelet-service-kill.png)
@@ -58,7 +58,7 @@ Kubelet service kill fault determines the resilience of an application when a no
         <td> LIB_IMAGE </td>
         <td> Image used to inject chaos. </td>
         <td> Default: <code>chaosnative/chaos-go-runner:main-latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
-      </tr>  
+      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>

@@ -22,13 +22,6 @@ import { MODULES } from "@site/src/constants"
           link: "/docs/category/get-started-with-ci",
         },
         {
-          title: "Pipeline creation overview",
-          module: MODULES.ci,
-          description:
-            "Learn about creating Harness CI pipelines.",
-          link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
-        },
-        {
           title: "Development guides",
           module: MODULES.ci,
           description:
@@ -51,32 +44,18 @@ import { MODULES } from "@site/src/constants"
         "",
       list: [
         {
-          title: "Harness Cloud",
+          title: "Harness CI Cloud",
           module: MODULES.ci,
           description:
             "Run builds at scale on VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines.",
           link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
         },
         {
-          title: "Test Intelligence",
+          title: "Harness CI Intelligence",
           module: MODULES.ci,
           description:
-            "Improve test times by running only those unit tests that are required to confirm the quality of the code changes that triggered the pipeline.",
-          link: "/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence",
-        },
-        {
-          title: "Cache Intelligence",
-          module: MODULES.ci,
-          description:
-            "With Cache Intelligence, Harness automatically caches and restores common dependencies.",
-          link: "/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence",
-        },
-        {
-          title: "Background steps",
-          module: MODULES.ci,
-          description:
-            "Use Background steps to manage long-running service dependencies.",
-          link: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
+            "Leverage a suite of smart features that optimize your builds, including Test Intelligence and Cache Intelligence.",
+          link: "/docs/continuous-integration/get-started/harness-ci-intelligence",
         },
         {
           title: "Plugins",
@@ -84,13 +63,6 @@ import { MODULES } from "@site/src/constants"
           description:
             "Plugins perform predefined tasks. Use plugins to incorporate custom scripts, Jira updates, GitHub Actions, Bitrise Workflow Steps, and more into your CI pipelines.",
           link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
-        },
-        {
-          title: "Optimization strategies",
-          module: MODULES.ci,
-          description:
-            "Make your CI pipelines faster, more efficient, and more versatile.",
-          link: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
         },
       ],
     },
@@ -101,17 +73,24 @@ import { MODULES } from "@site/src/constants"
         "",
       list: [
         {
-          title: "Set up build infrastructure",
+          title: "Pipeline creation overview",
+          module: MODULES.ci,
+          description:
+            "Learn about creating Harness CI pipelines.",
+          link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
+        },
+        {
+          title: "Build infrastructure",
           module: MODULES.ci,
           description:
             "Configure build farms for your CI pipelines.",
           link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me",
         },
         {
-          title: "Build, push, upload, and download artifacts and images",
+          title: "Artifacts and images",
           module: MODULES.ci,
           description:
-            "Build and upload artifacts in CI pipelines.",
+            "Create, store, and use artifacts and images in CI pipelines.",
           link: "/docs/category/build-push-upload-download",
         },
         {
@@ -127,20 +106,6 @@ import { MODULES } from "@site/src/constants"
           description:
             "Manage dependencies, share data, and use caching in CI pipelines",
           link: "/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies",
-        },
-        {
-          title: "Plugins",
-          module: MODULES.ci,
-          description:
-            "Plugins run scripts and perform predefined tasks. You can use existing plugins or write your own custom plugins.",
-          link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
-        },
-        {
-          title: "Optimization strategies",
-          module: MODULES.ci,
-          description:
-            "Make your CI pipelines faster, more efficient, and more versatile.",
-          link: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
         },
       ],
     },

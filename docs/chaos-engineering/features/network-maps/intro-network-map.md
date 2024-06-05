@@ -25,7 +25,7 @@ Network maps help:
 
 ### How is a network map used?
 
-Once you have a list of discovered services, HCE creates a network map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/get-started/onboarding/guided-onboarding#create-network-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
+Once you have a list of discovered services, HCE creates a network map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/onboarding/guided-onboarding#create-network-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
 
 You can [create](#create-network-map), [edit](#edit-network-map), and [delete](#delete-network-map) network maps.
 

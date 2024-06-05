@@ -93,17 +93,13 @@ The metric summary provides an overview of the verification results, indicating 
 <DocImage path={require('./static/metrics.png')} />
 
 
-<details>
-<summary><b>Consideration of error scenarios in risk calculation</b></summary>
-
-
+:::important Consideration of error scenarios in risk calculation
 The following error scenarios are considered in the risk calculation:
 If there is a metric for which data is available for a specific Canary/After node but not for any of the Primary/Before nodes, the risk is marked as "No Analysis" for that particular Canary/After node.
 If there is a metric for which data is not available for a specific Canary/After node but is available for any of the Primary/Before nodes, the risk is marked as "No Data" for that particular Canary/After node.
-Any metric marked as "Throughput" is not analyzed during the verification process.
 
-
-</details>
+Any metric marked as "Throughput" is not analyzed during the verification process. Throughput metrics is used for validating other metrics like error metrics. Choose "Other" metric type if you want to analyse your metrics.
+:::
 
 ## Filter metric summary
 

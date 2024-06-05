@@ -8,14 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 In Harness CI, you set up a [codebase](./create-and-configure-a-codebase.md) by creating a [Harness connector](/docs/platform/connectors/code-repositories/connect-to-code-repo) that connects to a Git repo. Pipelines use this connector to clone the code that you want to build and test. When a pipeline runs, Harness also fetches Git details and displays them in the [build details](../viewing-builds.md).
 
-This topic describes how codebase [environment variables](../optimize-and-more/ci-env-var.md) are resolved and the [Harness expressions](../../../platform/variables-and-expressions/harness-variables.md) that you can use to reference Git codebase attributes in your pipelines.
+This topic describes how codebase [environment variables](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md) are resolved and the [Harness expressions](/docs/platform/variables-and-expressions/harness-variables.md) that you can use to reference Git codebase attributes in your pipelines.
 
 ## Variable resolution
 
@@ -82,17 +80,13 @@ You can use [Harness' expressions](/docs/platform/variables-and-expressions/runt
 
 For example, you can add a [Run step](../run-step-settings.md) with a series of `echo` commands to your pipeline to reference codebase variables:
 
-
 <Tabs>
   <TabItem value="Visual" label="Visual">
 
-
 ![A Run step with echo commands and the corresponding build logs.](./static/built-in-cie-codebase-variables-reference-512.png)
-
 
 </TabItem>
   <TabItem value="YAML" label="YAML" default>
-
 
 ```yaml
               - step:
@@ -129,14 +123,12 @@ In the [build logs](../viewing-builds.md), you can see the value of each variabl
 + echo open
 ```
 
-
 </TabItem>
 </Tabs>
 
-
 :::tip
 
-You can use expressions to reference the value of some `DRONE_` environment variables. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+You can use expressions to reference the value of some `DRONE_` environment variables. For more information, go to the [CI environment variables reference](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md).
 
 :::
 

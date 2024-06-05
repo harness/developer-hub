@@ -7,22 +7,18 @@ sidebar_label: Support
 
 This topic describes metrics and reports related to customer support, such as issues in Zendesk or SalesForce.
 
-## Hygiene reports
+## Support Hygiene Reports
 
-[Support hygiene reports](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics#support-hygiene-reports) include the **Support Hygiene Report** and the **Support Hygiene Trend Report**.
+The following are the two most commonly used types of Support Hygiene reports.
 
-## Issue and ticket count reports
+* [Support Hygiene Reports](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics#support-hygiene-reports)
+* [Support Hygiene Trend Reports](/docs/software-engineering-insights/sei-metrics-and-reports/hygiene-metrics#support-hygiene-reports)
 
-Use these reports to examine the volume of issues/tickets. You can create filters based on any field in your support ticketing system, such as ticket type, status, reporter (customer/organization/user), agent, priority, and so on.
+## Issue and Ticket Count Reports (Zendesk and Salesforce)
 
-* **Issues Report:** Examine metrics related to various tickets/work items in your support ticketing system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
-* **Issues Trend Report:** Examine changes over time in support tickets, such as the number of tickets closed each day or week.
-* **Issues Single Stat (Ticket Counts Single Stat):** Present a single stat for a given time range, such as how many tickets were created, resolved, or updated in a given time period.
 * **Support Tickets Report:** Analyze the number of tickets by customer/organization, priority, time, status, or other fields. This can help you identify support areas where you might need to allocate more resources.
 * **Support Tickets Trend Report:** Analyze changes over time in ticket counts.
 * **Support Top Customers Report:** Total tickets by customer.
-
-For information about issues reports, go to [Issues reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
 
 ## Reopen and reassignment reports
 
@@ -68,19 +64,6 @@ _Hops_ describes the number of times a ticket is reassigned to a new assignee (s
 
 * **Support Resolution Time Report:** Analyze cycle time to resolve support tickets. Cycle time is the elapsed time for an iteration of the support ticket lifecycle, from open to close. This report can help you validate SLA compliance. Reducing cycle time can help you improve velocity in your support teams.
 * **Support Resolution Time Trend Report:** Analyze changes over time in support cycle time.
-* **Issue Resolution Time Report:** Presents a bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report is useful for understanding whether your team is getting faster at delivering features or fixing issues, whether average resolution time is decreasing, and whether you're meeting SLA timelines.
-* **Issue Resolution Time Trend Report:** Track changes over time in issue resolution time.
-* **Issue Resolution Time Single Stat:** Present the number of issues marked as resolved in a given time period.
-
-For information about issue resolution time reports, go to [Issue reports](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/issues-reports).
-
-:::tip Use Issue Resolution Time to monitor MTTR and MTBF
-
-Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](/docs/software-engineering-insights/sei-metrics-and-reports/dora-metrics).
-
-You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. You'll need to configure the filters and settings for these widgets so that they only track issues related to failure recovery.
-
-:::
 
 ## Escalation and code change reports
 

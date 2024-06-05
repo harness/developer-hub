@@ -66,7 +66,8 @@ Harness includes two [RBAC roles](/docs/platform/role-based-access-control/rbac-
   - Set baselines (such as the `main` branch of `latest` tag) for scan targets
   - View scan results and troubleshoot detected issues
   - Configure scan steps to fail the pipeline if any "show-stopper" vulnerabilities are found
-  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc. )
+  - Request exemptions ("ignore rules") to allow a pipeline to proceed even if a scan detects vulnerabilities with a specific severity or higher (Critical, High, Medium, etc.)
+
    
 * **SecOps** role — Permissions for Security Operations staff. SecOps users have all Developer permissions, but only SecOps users can approve exemption requests. 
 

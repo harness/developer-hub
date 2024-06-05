@@ -70,6 +70,18 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
   - Small - 4GB memory, 1CPU
   - Medium - 8GB memory, 2CPU
   - Large - 16GB memory, 4CPU
+  - 
+**Baseline Configuration:**
+For clusters with up to 200 nodes and 4000 pods, each delegate should be configured with:
+- 2 vCPUs
+- 8 GB of memory
+  
+**Incremental Scaling:** For every additional 50 nodes and 1000 pods, the delegate capacity should be increased by 0.5 vCPUs and 2 GB of memory
+This scaling ensures that the delegate can handle the increased load and continue to collect metrics efficiently.
+
+**Single replica requirement:**
+- All specified resource requirements pertain to a single replica of the delegate.
+- Instead of utilizing Horizontal Pod Autoscaler (HPA) to increase the number of smaller-sized replicas Harness recommends provisioning each delegate with the necessary resources to handle the specified number of nodes and pods.
 
 :::warning
 

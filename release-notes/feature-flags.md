@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-30T16:19:25
+date: 2024-05-31T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 30, 2024
+#### Last updated: May 31, 2024
 
 ## May 2024
 
@@ -42,6 +42,20 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
  - Refactored the evaluation logic to remove inefficiencies in the `GetAttr(ibute)` function. (FFM-11332)
  - Upgraded the Go SDK version in analytics. 
 
+### Java SDK
+
+#### Version 1.6.0
+
+**New features and enhancements**:
+ - Updated the Java SDK example to include a delay. (FFM-10981)
+ - Target v2 updates: 
+  - Added support for `AND/OR` in clauses. (FFM-11193)
+  - Returns false when no clauses exist. (FFM-10861)
+ - Added a new query parameter to `target-segments`. (FFM-11356)
+ - Added a config option to suppress the SDK code `6001`. (FFM-11425, ZD-62796)
+ - Updated BC to 1.78.1. (FFM-11502)
+ - Downgraded the OpenAPI plugin to allow for a broader range of Springboot compatibility. (FFM-11459)
+
 ### .NET SDK
 
 #### Version 1.6.9
@@ -49,7 +63,6 @@ This version was retracted on 13th May 2024 due to a critical bug being identifi
 **New features and enhancements**:
  - Added SDK support for `AND/OR` rules - **feature not GA yet**. (FFM-11242)
  - You can now use the `target-segments v2-rule` parameter. (FFM-11363)
-
 
 **Fixed issues**:
  - Fixed a `Null Pointer Exception` that occurred when a `null` target was used in an evaluation with analytics enabled. (FFM-11537, ZD-63847)
