@@ -442,7 +442,7 @@ policies:
 
 ---
 ### Recommendation: gcp-delete-low-utilized-load-balancers
-**Description:** Delete all low utilized load balancers where packet count is less than 1000 in last 72 hours
+**Description:** Delete all load balancers with low utilizations, where packet count is less than 1000 in the last 72 hours.
 
 **Policy Used:** 
 ```yaml
