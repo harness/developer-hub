@@ -1,17 +1,21 @@
 ---
-title: Run a GameDay
+title: Run a GameDay (V2)
 sidebar_position: 3
 description: Guide to creating and executing a GameDay
-redirect_from:
-- /docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday
-- /docs/chaos-engineering/configure-chaos-experiments/gameday/gameday-v2
 ---
 
-This section describes how to create and execute [GameDay](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md).
+This section describes how to create and execute [GameDay V2](/docs/chaos-engineering/features/gameday/introduction-to-gameday.md).
 
-## Before you begin
-- Fulfill the [prerequisites](/docs/chaos-engineering/features/gameday/introduction-to-gameday#prerequisites-to-execute-a-gameday) and [plan your GameDay](/docs/chaos-engineering/features/gameday/introduction-to-gameday#plan-your-gameday) before creating one.
-- GameDay requires an active chaos infrastructure. If you don't have one, go to [create a new infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure) to create one.
+### Why GameDay V2?
+GameDay V2 introduces additional layers of control, such as stakeholder role, their permission to execute a GameDay, prerequisites and so on.
+
+- If you are an existing HCE user, head to [GameDay V1](/docs/chaos-engineering/features/gameday/run-gameday.md) to create and execute a GameDay.
+
+- Fulfill the [prerequisites](/docs/chaos-engineering/features/gameday/run-gameday#prerequisites) and [plan your GameDay](/docs/chaos-engineering/features/gameday/run-gameday#plan-your-gameday) before creating one.
+
+:::tip
+GameDay requires an active chaos infrastructure. If you don't have one, go to [create a new infrastructure](http://localhost:3003/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure) to create one.
+:::
 
 ### Start a GameDay run
 
