@@ -6,6 +6,8 @@ helpdocs_topic_id: n7vpieto0n
 helpdocs_category_id: v3h3y6pya6
 helpdocs_is_private: false
 helpdocs_is_published: true
+redirect_from:
+   - /docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-reservation-coverage-and-service-cost/
 ---
 
 
