@@ -21,7 +21,7 @@ You can configure a streaming destination in Harness to send audit log data to a
 
 Harness streams the audit events to your chosen SIEM tool as structured JSON.
 
-## Important
+## Important notes about streaming
 
 - Streaming destinations receive all audit event data, which could include sensitive information. Make sure you trust the streaming destination.
 - Harness supports streaming to Amazon S3.
@@ -29,6 +29,8 @@ Harness streams the audit events to your chosen SIEM tool as structured JSON.
 - Audit log streaming is not currently supported for Harness Self-Managed Enterprise Edition.
 
 ## Add a streaming destination
+
+You can add a streaming destination at the Account or Org scope. This topic explains how to add a streaming destination at the account scope.
 
 To add a streaming destination:
 
