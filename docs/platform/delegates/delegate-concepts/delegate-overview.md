@@ -72,6 +72,7 @@ Remember that the memory and CPU requirements are for the delegate only. Your de
 Harness recommends adhering to the below guidelines when using the delegate with Harness Cloud Cost Management (CCM).
 
 **Baseline Configuration:** For clusters with up to 200 nodes and 4000 pods, each delegate should be configured with 2 vCPUs and 8 GB of memory.
+
 **Incremental Scaling:** For every additional 50 nodes and 1000 pods, the delegate capacity should be increased by 0.5 vCPUs and 2 GB of memory. This scaling ensures that the delegate can handle the increased load and continue to collect metrics efficiently.
 
 **Single replica requirement:**
