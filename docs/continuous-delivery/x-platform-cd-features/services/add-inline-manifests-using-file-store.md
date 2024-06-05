@@ -261,7 +261,7 @@ metadata:
 
 ## Reference files in the file store using an expression
 
-The expression `fileStore.getAsString()` can be used to fetch files in the File Store in a script or runtime input.
+The expression `fileStore.getAsString()` can be used to fetch files in the File Store in a script or runtime input. Using the file in a shell step or runtime input does not update the "referenced by" list for the referenced file in the expression, making the file prone to deletion even if it is actively used.
 
 
 For example:
