@@ -1,5 +1,5 @@
 ---
-title: Terraform Plugins
+title: Terraform plugin commands
 description: Explore how to use Terraform commands within your pipelines effectively.
 sidebar_position: 10
 ---
