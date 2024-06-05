@@ -55,6 +55,48 @@ Additionally you can also leverage Harness [Go SDK repository](https://github.co
 
 To report an issue which is not mentioned here, head over to **Help** in Harness SaaS and click **Submit a ticket** and provide your feedback.
 
+## Kubernetes V1 experiment flow optimization
+
+:::tip
+- With the release 1.38.0 of harness-chaos, the experiment execution flow for Kubernetes experiments has been optimized by eliminating the install step of experiment CRs (custom resource) and leveraging all the environment variables with the chaos engine.
+- The `litmus-checker` and `chaos-k8s` that were responsible for installing the chaos experiment CR and performing cleanup steps respectively, have been removed.
+- With this, the time taken to complete a chaos experiment and the manifest length has been reduced, thereby making it easy to maintain the manifest.
+:::
+
+### Will the existing chaos experiments execute as usual without any changes?
+
+- Yes, you can execute all the existing chaos experiments even if no changes are made to the manifest and even if chaos infrastructure is not upgraded.
+
+### Will the existing Kubernetes chaos infrastructure (< 1.38.0) have to be mandatorily upgraded?
+
+- No, the existing infrastructures will continue to function as usual, but HCE recommends you upgrade to version 1.38.0 or the latest version for optimized performance.
+
+### I can't see older infrastructures (< 1.38.0) while constructing a new experiment?
+
+- Due to the recent optimization changes, HCE has removed the experiment CR and its installation from the experiment manifest. Now, all the environment variables, experiment image, imagePullPolicy, arguments, and commands will be passed directly into the chaos engine.
+- However, older infrastructures that use older components (operator, chaos-runner) rely on the experiment CR to execute experiments successfully. As a result, new experiments will not be able to run on the older infrastructures.
+
+### Can a new Kubernetes experiment run on old Kubernetes infrastructure?
+
+- No, since new experiments have changes in the chaos engine, the old chaos runner can't read all the environment variables from the chaos engine.
+
+### Can the old Kubernetes experiment run on new Kubernetes infrastructure?
+
+- Yes, the changes are backward-compatible and all the older components (`chaos-k8s`, `litmus-checker`) are still present (which will not be maintained henceforth). The image of these components will not go beyond version 1.37.0 since they will be not updated after this. In addition, `chaos-runner` and `chaos-operator` are designed to be backward-compatible.
+
+### Why does the experiment pod take time to show up in the running status?
+- The initial execution by Argo may take some time since it needs to pull the images for the `go-runner` for the first time. Subsequent executions will not take as much time.
+
+### Why are litmus-checker and chaos-k8s not displaying beyond on 1.37.0?
+
+- If the experiment format is old, you may see `litmus-checker` and `chaos-k8s` images in the YAML. Since version 1.37.0 is the last supported version of these components, the `litmus-checker` and `chaos-k8s` are displayed with version 1.37.0. For the new experiment format, you will only see a `go-runner` image.
+
+### Why can't I create a new experiment from the UI?
+- To create a new experiment, you need to have at least one infrastructure in version 1.38.x or higher. Hence, you can either [connect a new infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures) or [upgrade an existing one](/docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra).
+
+### Is there a way to upgrade the older experiment to the new format?
+- Yes, you can manually edit the experiment manifest or create a new experiment from the UI. Older experiments will continue to work because of backward compatibility.
+
 ## Security
 
 ### What are the identity providers supported by Harness Chaos for user authentication?
