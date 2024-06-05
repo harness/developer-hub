@@ -64,7 +64,7 @@ RUN mv ./kubectl ~/.local/bin/kubectl
 </details>
 
 
-## Use your own Image
+## Use your own image
 To use your custom image in a step, create a reference in the YAML configuration indicating that the step should use your image. 
 
 ```yaml
