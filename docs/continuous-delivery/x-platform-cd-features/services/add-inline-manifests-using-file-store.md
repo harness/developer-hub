@@ -264,7 +264,7 @@ metadata:
 The expression `fileStore.getAsString()` can be used to fetch files in the File Store in a script or runtime input. 
 
 :::important
-Referencing files in a Shell step or as a runtime input does not add it to the **Referenced by** list, making the file prone to deletion even if it is actively used.
+Referencing files in a Shell Script step using the expressions fileStore.getAsString() or fileStore.getAsBase64() does not add it to the **Referenced by** list, making the file prone to deletion even if it is actively used.
 :::
 
 
