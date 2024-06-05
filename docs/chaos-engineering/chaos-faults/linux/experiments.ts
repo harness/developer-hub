@@ -92,4 +92,25 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux","time"],
     category: "linux",
   },
+  {
+    name: "Redis cache limit",
+    description:
+      "Redis cache limit fault limits the amount of memory used by a Redis cache. The original limit is restored after the chaos duration.",
+    tags: ["linux","limit"],
+    category: "linux",
+  },
+    {
+    name: "Redis cache expire",
+    description:
+      "Redis cache expire expires a given key (or all keys) for a specific duration. Due to this, you won't be able to access the key/s associated with the cache during chaos.",
+    tags: ["linux","expire"],
+    category: "linux",
+  },
+  {
+    name: "Redis cache penetration",
+    description:
+      "Redis cache penetration fault continuously sends cache requests to the Redis database to find the value for a non-existing key. This continuous request reduces the performance of the application.",
+    tags: ["linux"],
+    category: "linux",
+  },
 ];

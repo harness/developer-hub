@@ -559,7 +559,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.cd,
           description:
             "",
-          link: "/docs/faqs/continuous-delivery-faqs",
+          link: "/kb/continuous-delivery/faqs",
         },
       ],
     },

@@ -52,6 +52,12 @@ const sidebars = {
           label: "Chaos Engineering",
           id: "chaos-engineering",
         },
+        //vILT
+        {
+          type: "link",
+          label: "Virtual Instructor-Led Calendar",
+          href: "https://university-registration.harness.io/calendar",
+        },
         // Instructions
         {
           type: "doc",

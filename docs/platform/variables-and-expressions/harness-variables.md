@@ -34,7 +34,7 @@ For example, the expression `<+pipeline.name>` resolves to name of the pipeline 
 
 **Harness variables are powerful because they enable templatizing of configuration information, pipeline settings, values in scripts, and more. They also enable your pipelines to pass information between stages and settings.**
 
-Harness has many built-in variables and expressions, and you can [define custom variables](./add-a-variable.md) that you can reference with expressions. Custom variables can be broadly scoped (such as account-wide or project-wide variables) or narrowly scoped (such as a variable for a specific pipeline or stage). Custom variables can store values that you need to reuse across many entities, or they can help you configure a specific build, such as runtime flags and environment variables for certain build tools.
+Harness has many [built-in variables and expressions](/docs/platform/variables-and-expressions/harness-expressions-reference), and you can [define custom variables](./add-a-variable.md) that you can reference with expressions. Custom variables can be broadly scoped (such as account-wide or project-wide variables) or narrowly scoped (such as a variable for a specific pipeline or stage). Custom variables can store values that you need to reuse across many entities, or they can help you configure a specific build, such as runtime flags and environment variables for certain build tools.
 
 Additionally, certain step types, such as [Run steps](/docs/continuous-integration/use-ci/run-step-settings.md) and [Shell Script steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step), can utilize and produce input, environment, and output variables that you define in the step settings. You can also reference these with expressions.
 
@@ -51,7 +51,7 @@ In the Visual Editor, you can use the **Value type selector** to select **Expres
 
 ![](./static/runtime-inputs-03.png)
 
-Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+Harness provides suggestions for [built-in expressions](/docs/platform/variables-and-expressions/harness-expressions-reference) as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
 
 ![](./static/runtime-inputs-10.png)
 
@@ -72,7 +72,7 @@ For example, this `connectorRef` setting takes it's value from an expression ref
           connectorRef: <+pipeline.variables.myConnector>
 ```
 
-When you type `<+`, Harness provides suggestions for built-in expressions as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
+When you type `<+`, Harness provides suggestions for [built-in expressions](/docs/platform/variables-and-expressions/harness-expressions-reference) as you type. You can manually trigger the suggestions by placing your cursor after `<+` and pressing `ctrl + space`.
 
 ![](./static/runtime-inputs-13.png)
 
@@ -231,9 +231,14 @@ For example, with the equals `==` and not equals `!=` operators, wrap the entire
 <+<+stage.variables.v1> != "dev">
 ```
 
+There might be situations when a string needs to be concatenated into a variable to allow it to be utilized as an expression. In these situations, you must add double quotes around the string.
+
+`<+"https://abcdef.com/yoururl/"+<+pipeline.variables.var1>>`
+
 Complex usage can have multiple levels of nesting. For example, the following compound expression concatenates values from two variables into one list, and then uses the `split()` method on the concatenated list. The original expressions, the concatenated list expression, and the method manipulation are all wrapped in expression delimiters:
 
 `<+ <+<+pipeline.variables.listVar1> + "," + <+pipeline.variables.listVar2>>.split(",")>`
+
 
 ### Java string methods
 

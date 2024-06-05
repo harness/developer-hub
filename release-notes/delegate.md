@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-16T10:00
+date: 2024-06-03T10:00
 sidebar_position: 4
 ---
 
@@ -43,11 +43,43 @@ Harness has updated the delegate expiration policy to 6 months with a 2-month EO
 
 Six months after a delegate image is released, the delegate reaches End of Support (EOS). Eight months after a delegate image is released, the delegate is End of Life (EOL). Delegates expire if not upgraded 6 months after the image is released. If delegates are past their EOS date, Harness does not support them. Expired delegates might not work as intended. For issues with expired delegates, Harness Support will request that you upgrade your delegate(s).
 
-For more information, go to [Delegate expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-policy).
+For more information, go to [Delegate expiration support policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration#delegate-expiration-support-policy).
 
 :::
 
+## June 2024
+
+### Version 24.06.83003 <!--  June 3, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with missing labels for Karpenter-managed nodes. (CCM-18139)
+
 ## May 2024
+
+### Version 24.05.82711 <!--  May 30, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue where delegates created Kubernetes services when starting up. (PL-51548, PL-51550, ZD-64345)
+
+### Version 24.05.83001 <!--  May 21, 2024 -->
+
+#### New features and enhancements
+
+- Added support for proxies via Secure Connect for GitHub App connectors. (CI-12130, ZD-61883)
+
+### Version 24.05.82904 <!--  May 21, 2024 -->
+
+#### Hotfix
+
+- Tanzu steps will resolve the PCF CLI plugins path by checking the `HOME` environment variable. (CDS-95794, ZD-61882)
+
+### Version 24.05.82205 <!--  May 20, 2024 -->
+
+#### Hotfix
+
+- Delegates will now include memory resource statistics in their logs, providing valuable additional insight for troubleshooting memory-related issues. (PL-51027)
 
 ### Version 24.05.82903 <!--  May 16, 2024 -->
 

@@ -26,8 +26,8 @@ The Deployment Frequency formula depends on whether you are tracking issue
 management, SCM, or CI/CD. The following factors can contribute to Deployment
 Frequency calculations:
 
-* The SEI integration chosen in the Workflow profile.
-* For Issue Management SEI integrations, SEI counts the Number of issues deployed.
+* The [SEI integration](/docs/software-engineering-insights/sei-integrations/sei-integrations-overview) chosen in the Workflow profile.
+* For Issue Management Platforms, SEI counts the Number of issues deployed.
 * For SCM SEI integrations, SEI counts the number of PRs deployed.
 * For CI/CD SEI integrations, SEI counts the number of jobs deployed
 * Filters applied to the Workflow profile.
@@ -40,10 +40,10 @@ Insight.
 
 Consider the following Deployment Frequency configuration:
 
-* SEI integration: Harness NG
-* Filter: Project Category Equals SEI/Demo
-* Calculation parameter: Calculate based on the pipelines started in the selected time range on the Insight
-* Time Range selected on the dashboard: Last 2 weeks
+* **SEI integration:** Harness NG
+* **Filter:** Project Category Equals SEI/Demo
+* **Calculation parameter:** Calculate based on the pipelines started in the selected time range on the Insight
+* **Time Range selected on the Insight:** Last 2 weeks
 
 The following table shows the data ingested by the Harness NG SEI integration.
 
@@ -70,28 +70,23 @@ Deployment Frequency = 960 / 14 - 1 = 73.84
 
 Consider the following Deployment Frequency configuration:
 
-* SEI integration: Jira
-* Filter: Status Category Equals Done
-* Calculation parameter: Ticket resolved in Insight time range
-* Time Range selected on the dashboard: Last 3 months
+* **SEI integration:** Jira
+* **Filter:** Status Category Equals Done
+* **Calculation parameter:** Ticket resolved in Insight time range
+* **Time Range selected on the Insight:** Last 3 months
 
-With this configuration, the Deployment Frequency widget shows the total number of
+With the above configuration settings, the Deployment Frequency widget shows the total number of
 tickets with a status of Done in the given time range.
 
 ```bash
 Daily Deployment Frequency = ( Tickets in Done status ) / ( Days in the Insight Time Range )
-```
 
-```bash
 Daily Deployment Frequency = 24 / 91 = 0.263
-```
 
-```bash
 Weekly Deployment Frequency = ( Tickets in Done status ) / ( Days in the Insight Time Range / 7 )
-```
 
-```bash
 Weekly Deployment Frequency = 24 / 13 = 1.846
+
 ```
 
 Assuming there are **24 tickets in Done status** in the **Last 91 days**, then the **Deployment Frequency is 0.263 Deployments Per Day** and **1.846 Deployments Per Week**.

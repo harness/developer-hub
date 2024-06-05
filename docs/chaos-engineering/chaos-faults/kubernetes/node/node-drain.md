@@ -5,18 +5,18 @@ redirect_from:
   - /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain
 ---
 
-Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes. 
+Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes.
 
 ![Node Drain](./static/images/node-drain.png)
 
 
 ## Use cases
-- Node drain fault drains all the resources running on a node. 
+- Node drain fault drains all the resources running on a node.
 - It determines the resilience of the application when the application replicas scheduled on a node are removed.
 - It validates the application failover capabilities when a node suddenly becomes unavailable.
-- It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade). 
+- It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade).
 - It verifies resource budgeting on cluster nodes (whether request (or limit) settings are honored on available nodes).
-- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not. 
+- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 
 ### Prerequisites
 - Kubernetes > 1.16

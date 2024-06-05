@@ -67,6 +67,59 @@ curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/loc
 The response will register a software component in your IDP catalog as defined in the `catalog-info.yaml` or `idp.yaml` file from the specified git repository.
 
 
+## Catalog Refresh API
+
+### Endpoint
+
+Syncs the component with the latest version of `catalog-info.yaml` stored in git providers.
+
+### HTTP Method
+
+`POST`
+
+### URL 
+
+```bash
+https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/refresh
+```
+### URL Parameters
+
+`ACCOUNT_IDENTIFIER`: Your Harness account ID.
+
+You can find your account ID in any Harness URL, for example:
+
+```bash
+https://app.harness.io/ng/account/ACCOUNT_ID/idp/overview
+```
+
+### Headers
+- `x-api-key`: Your Harness API token.
+- `Harness-Account`: Your Harness account ID.
+
+### cURL Example
+
+```cURL
+curl 'https://idp.harness.io/{HARNESS_ACCOUNT_IDENTIFIER}/idp/api/catalog/refresh' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: {HARNESS_X_API_KEY}' \
+  --data-raw '{"entityRef":"{ENTITY_REF}"}'
+```
+
+`ENTITY_REF` needs to be replaced with the entity path, for eg., `component:default/idp-service` (kind:namespace/name format)
+
+Here are the steps to get the entityref:
+
+Go to **Inspect Entity** on the component page and under **Identity** in Overview you can find the `entityRef`
+
+![](./static/inspectentityidp.png)
+
+![](./static/entitiyrefidp.png)
+
+
+### Response:
+The response will immediately sync the mentioned component in the entity ref with the `catalog-info.yaml` stored in the git provider
+
+
 ## Catalog Entities Delete API
 
 ### Endpoint

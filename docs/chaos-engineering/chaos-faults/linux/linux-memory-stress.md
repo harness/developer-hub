@@ -63,7 +63,7 @@ This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which 
 
 The `workers` input variable utilizes a specific number of workers for the memory stress fault.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-memory-stress/workers.yaml yaml)
 ```yaml
@@ -84,7 +84,7 @@ spec:
 
 The `memory` input variable specifies the amount of memory to be filled.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-memory-stress/memory.yaml yaml)
 ```yaml

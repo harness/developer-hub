@@ -575,3 +575,7 @@ pipeline:
 </Tabs3>
 
 Now the pipeline stage is complete and can be deployed. Select **Run** to run the pipeline. 
+
+## See also
+
+For frequently asked questions about AWS deployments in Harness, go to [AWS deployment FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-deployment-faqs).

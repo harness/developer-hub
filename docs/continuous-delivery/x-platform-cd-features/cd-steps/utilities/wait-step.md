@@ -71,3 +71,21 @@ If no failure strategy is set at the step or stage level, then selecting **Mark 
 * The Wait step is available in approval, custom, CD, and feature flag stages.
 * The Wait step does not use a Harness Delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
 
+## General Wait step FAQs
+
+
+### What pipeline statuses are considered when determining concurrent active pipeline executions ?
+
+Concurrent active pipeline executions comprises of active and in-progress executions. This includes those that are paused temporarily by steps such as the Wait step or approval step. Currently there are plans to exclude pipelines that are waiting for approval.
+
+
+### Is there a way to see which user acts on the Wait step to mark it as a success or mark it as fail?
+
+One can look at having Harness approval step in addition to Wait step for this use case, also can set a failure strategy in case it timeout
+Please read more on Harness approval step in the following [Documentation](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#add-approval-step).
+
+### Is it possible to remove permissible actions from the Wait Step?
+No, removing the permissible actions from the Wait Step is not possible. The Wait Step provides the options to Mark as Success and Mark as Failed, which are necessary for the step to proceed with the pipeline execution. 
+
+However, you can set a failure strategy for the Wait Step to ensure that the pipeline execution fails if the step is marked as failed. Additionally, you can set a longer timeout duration to ensure that the mandatory waiting time is enforced.
+
