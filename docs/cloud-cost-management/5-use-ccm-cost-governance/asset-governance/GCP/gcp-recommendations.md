@@ -479,7 +479,7 @@ policies:
 
 ---
 ### Recommendation: gcp-list-unused-redis-instances
-**Description:** List Redis instances with less than 5% CPU utilization in last 7 days
+**Description:** List Redis instances with less than 5% CPU utilization over the last 7 days.
 
 **Policy Used:** 
 ```yaml
