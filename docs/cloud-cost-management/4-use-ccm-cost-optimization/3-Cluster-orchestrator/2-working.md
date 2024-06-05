@@ -33,19 +33,19 @@ This entire setup ensures users remain up-to-date with AWS spot management witho
 
 Spot orchestration is efficient for spot-ready workloads that can tolerate interruptions, but critical workloads cannot afford this risk. To address this, we developed a custom resource: the workload distribution rule. This rule enables three key capabilities:
 
-    - **Replica Splitting:** You can now split replicas within a workload, allowing some replicas to run on on-demand instances and others on spot instances. This flexibility reduces interference and risk, unlike the previous option of running all replicas on either spot or on-demand instances.
+    - **Replica Splitting:** You can now split replicas within a workload, allowing some replicas to run on On-Demand instances and others on Spot instances. This flexibility reduces interference and risk, unlike the previous option of running all replicas on either spot or On-Demand instances.
 
 <DocImage path={require('./static/replica.png')} width="80%" height="80%" title="Click to view full size image" />
 
     - **Cost-Optimized and Least-Interrupted Configurations:** The workload distribution rule can be set to either:
 
-        - **Cost-Optimized** : All spot replicas run on the minimum number of spot nodes, maximizing cost savings but increasing risk. The Spot Instances come from the lowest priced pool that has available capacity. If the lowest priced pool doesn't have available capacity, the Spot Instances come from the next lowest priced pool that has available capacity. If a pool runs out of capacity before fulfilling your desired capacity, EC2 Fleet will continue to fulfill your request by drawing from the next lowest priced pool. To ensure that your desired capacity is met, you might receive Spot Instances from several pools. Because this strategy only considers instance price and not capacity availability, it might lead to high interruption rates.
+        - **Cost-Optimized** : All Spot replicas run on the minimum number of Spot nodes, maximizing cost savings but increasing risk. The Spot Instances come from the lowest priced pool that has available capacity. If the lowest priced pool doesn't have available capacity, the Spot Instances come from the next lowest priced pool that has available capacity. If a pool runs out of capacity before fulfilling your desired capacity, EC2 Fleet will continue to fulfill your request by drawing from the next lowest priced pool. To ensure that your desired capacity is met, you might receive Spot Instances from several pools. Because this strategy only considers instance price and not capacity availability, it might lead to high interruption rates.
 
-        - **Least-Interrupted** :## Cluster Orchestrator: Cluster Orchestrator identifies the pools with the highest capacity availability for the number of instances that are launching. This means that it will request Spot Instances from the pools that have the lowest chance of interruption in the near term. This strategy works well for workloads that may have a higher cost of interruption associated with restarting work or workloads that cannot be interrupted often. By offering the possibility of fewer interruptions, the least-interrupted strategy can lower the overall cost of your workload.
+        - **Least-Interrupted** : Cluster Orchestrator identifies the pools with the highest capacity availability for the number of instances that are launching. This means that it will request Spot Instances from the pools that have the lowest chance of interruption in the near term. It also splits the replicas to multiple spot nodes to minimize disruption. This strategy works well for workloads that may have a higher cost of interruption associated with restarting work or workloads that cannot be interrupted often. By offering the possibility of fewer interruptions, the least-interrupted strategy can lower the overall cost of your workload.
 
 <DocImage path={require('./static/configuration.png')} width="80%" height="80%" title="Click to view full size image" />
 
-    - **Base On-Demand Capacity Configuration:** You can define a fixed number of on-demand replicas, with additional capacity split between on-demand and spot nodes according to your preferences.
+    - **Base On-Demand Capacity Configuration:** You can define a fixed number of On-Demand replicas, with additional capacity split between On-Demand and Spot nodes according to your preferences.
 
 ### Automatic Scaling of Nodes
 The Cluster Orchestrator can automatically scale nodes for minimizing costs. When the demand is high and more resources are needed, the Cluster Orchestrator can provision more nodes and when the demand is less, it can scale down as well.
