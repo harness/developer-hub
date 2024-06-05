@@ -14,11 +14,15 @@ The automatic upgrade feature is enabled by default for the Kubernetes manifest 
 
 ## How automatic upgrade works in the Kubernetes manifest
 
-The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it sends a request to Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:yy.mm.verno`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
+The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour by default. Every time it runs, it sends a request to the Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:yy.mm.verno`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a default rolling deployment of the delegate replicas with the newer image.
 
 To prevent the installation of the automatic upgrade feature, remove the `CronJob` section before you apply the manifest.
 
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
+
+:::info
+User information is not propagated when a delegate agent is started from external sources. As a result, all subsequent operations by the delegate agent will be recorded under the "SYSTEM" user. This includes the creation, deletion, and upsertion of delegates. This behaviour is expected during the platform's upgrade process.
+:::
 
 <details>
 <summary>Example Kubernetes manifest</summary>
@@ -132,7 +136,7 @@ spec:
 
 When a delegate is installed, it may take up to an hour by default to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**.
 
-Harness updates the status when `upgrader` makes it's first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
+Harness updates the status when `upgrader` makes its first API call to the Harness platform. The default schedule is one hour, but the schedule is configurable. If Harness doesn't detect the upgrader API call within 90 minutes, the upgrade status is updated from **DETECTING** to **AUTO UPGRADE: OFF**.
 
 Let's say the `upgrader` schedule is configured to two hours. The upgrade status would change from **AUTO UPGRADE: OFF** to **AUTO UPGRADE: ON** and back to **AUTO UPGRADE: OFF**. Every 90 minutes that Harness doesn't detect the API call, the status is set to **AUTO UPGRADE: OFF**. As soon as Harness detects it again, the status is set to **AUTO UPGRADE: ON**. Harness recommends a default schedule of 60 minutes. For more information, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
