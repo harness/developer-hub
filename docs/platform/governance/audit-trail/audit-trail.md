@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 With Audit Trail in Harness, you can view and track changes to your Harness resources within your Harness account.
 
-The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, contact Harness and we can help.
+The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness. For example, if you require audit data for legal discoveries, contact Harness, and we can help.
 
 This topic shows you how to view audit trails for your Harness account.
 
@@ -29,7 +29,7 @@ The events in the scope of accounts will not be displayed if you are viewing the
 
 In Harness, go to **Account Settings**, and then select **Audit Trail**.
 
-The **Audit Trail** page appears, displaying a record for each event that changed the setup of your Harness account, Modules, or Harness entities. By default, Harness shows the Audit logs for the previous 7 days.
+The **Audit Trail** page opens, displaying a record for each event that changed the setup of your Harness account, modules, or Harness entities. By default, Harness shows audit logs for the previous 7 days.
 
 ![](../../governance/audit-trail/static/audit-trail-00.png)
 
@@ -101,7 +101,7 @@ You can scope down the viewable audit events by adding filters and selecting:
    :::
 
 4. In **Filter Name**, enter a name for your filter.
-5. In **Who can view and edit the filter?** select **Only me** or **Everyone** based on the visibility you want to set for this filter.
+5. Under **Who can view and edit the filter?**, select **Only me** or **Everyone** based on the visibility you want to set for this filter.
 6. Select **Save**. Your filter is now created.
 
    ![](../../governance/audit-trail/static/audit-trail-05.png)
