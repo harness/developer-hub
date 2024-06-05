@@ -49,6 +49,12 @@ This functionality is limited to the modules and settings that you have access t
 
 4. If applicable to the stage type or module, add steps to the **Execution** tab to define the tasks to perform in that stage. The available steps depend on the stage type. Go to your module's documentation for details about configuring different step types.
 
+:::warning
+
+There is a 256 stage limit for any given pipeline. If you are hitting this limit, you have possibly attempted to overload your pipeline with too many use cases.
+
+:::
+
 ### Stage names
 
 When you create a stage, you give it a name. Harness automatically creates and **Id** ([Entity Identifier](../references/entity-identifier-reference.md)) based on the name. You can change the **Id** during initial stage creation; however, once the stage is saved, the **Id** becomes immutable.
