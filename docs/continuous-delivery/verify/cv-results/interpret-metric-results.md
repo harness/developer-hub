@@ -125,6 +125,10 @@ You can customize the metrics summary view using the following filters:
 
 The metric details graph provides a comprehensive view of the actual metric data, including comparative analysis, metric thresholds, and the reasons for any failures.
 
+:::note
+Harness does not analyse Throughput metrics other than thresholds. Throughput metrics is used for validating other metrics like error metrics. Choose Other metric type if you want to analyse your metrics.
+:::
+
 Expand a metric to view the Metric Details Graph. 
 
 In metric graphs, the "Canary" or "After" nodes are referred to as "Test Hosts", while the "Primary" or "Before" nodes are called "Control Hosts".
