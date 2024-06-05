@@ -50,22 +50,22 @@ You need permissions to create, edit, and view secrets at the account scope to b
 
 ## Transcribe the text secret into settings.xml
 
-Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) or [Run Tests step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) where your Maven tests run.
+Create a new `settings.xml` file in the Harness working directory (`/harness`) and include a command in your pipeline to assign the value of your settings XML text secret to that file. To do this, modify the [Run step](https://developer.harness.io/docs/continuous-integration/use-ci/run-step-settings) or [Test step](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/tests-v2) where your Maven tests run.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="run" label="Run step" default>
+  <TabItem value="run" label="Run or Test step" default>
 
-If your Maven tests run in a **Run** step, add the following to the **Command**:
+If your Maven tests run in a **Run** or **Test** step, add the following to the **Command**:
 
 ```
 echo '<+secrets.getValue("account.settingsXML")>' > settings.xml
 ```
 
 </TabItem>
-  <TabItem value="run-tests" label="Run Tests step">
+  <TabItem value="run-tests" label="Run Tests step (deprecated)">
 
 If your Maven tests run in a **Run Tests** step, add the following to the **Pre-Command**:
 

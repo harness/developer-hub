@@ -79,9 +79,7 @@ Your existing automation continues to work and the APIs are backward compatible 
 
 You can now search, filter, and sort overrides on the listing page.
 
-Harness is also making the following improvements:
-
-1. A YAML view for Overrides V2, to aid your understanding of its YAML structure.
+The YAML view for Overrides V2 is enabled now.
 
 ## Override types
 

@@ -434,7 +434,7 @@ Follow these steps for a demo of secrets sanitization in logs.
 3. Enter the name `print secret`.
 4. Select **Inline** to store the pipeline in Harness.
 5. Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
-6. Select **Edit YAML** to enable edit mode. Copy the contents of the[secret-sanitization.yaml file](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/secret-sanitization.yaml) and paste it.
+6. Select **Edit YAML** to enable edit mode. Copy the contents of the [secret-sanitization.yaml file](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/secrets/secret-sanitization.yaml) and paste it.
 7. Select **Save** to save the pipeline.
 
 ### Run the pipeline

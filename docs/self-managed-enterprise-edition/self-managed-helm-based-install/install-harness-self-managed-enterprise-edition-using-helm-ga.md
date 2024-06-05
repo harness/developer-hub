@@ -208,7 +208,6 @@ The Harness modules below can be enabled or disabled conditionally:
 * Harness Security Testing Orchestration (STO)
 * Harness Service Reliability Management (SRM)
 * Harness Feature Flags (FF)
-* Harness Continuous Error Tracking (CET)
 * (**Beta**) Harness Software Supply Chain Assurance (SSCA)
 
 You can conditionally disable or enable the modules by specifying a boolean value in the `enabled` field of the YAML:
@@ -258,14 +257,6 @@ enabled: true
 ```
 chaos:
 # -- Enable to deploy Chaos Engineering (CE) to your cluster
-enabled: true
-```
-
-#### Deploy the CET module
-
-```
-cet:
-# -- Enable to deploy CET to your cluster
 enabled: true
 ```
 
@@ -358,4 +349,3 @@ To get started with the modules, review the following topics:
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-hce).
 * For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition).
-* For Harness Continuous Error Tracking, go to the [CET onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).

@@ -95,7 +95,6 @@ To create a monitored service, on the Verify settings page, do the following:
 
       If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and Harness assigns the existing monitored service to the Verify step.
 
-
 ## Add a health source
 
 A health source is an APM tool that monitors and aggregates data in your deployment environment. 

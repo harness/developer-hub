@@ -326,7 +326,7 @@ pipeline:
         identifier: iOS_Unit_Tests
         type: CI
         spec:
-          caching: ## This pipeline use cache intelligence.
+          caching: ## This pipeline uses Cache Intelligence.
             enabled: true
             paths:
               - /Users/anka/Library/Caches/org.swift.swiftpm

@@ -217,7 +217,7 @@ Additionally, some step types support step-level runtime environment variable or
 </TabItem>
 </Tabs>
 
-:::Limitation
+:::note important
 The `$HOME` variable does not resolve to the home path when creating a directory or file path because the value is being used as a string. You cannot pass any value to the `$HOME` variable using expressions in a pipeline level. 
 :::
 
