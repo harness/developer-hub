@@ -12,6 +12,7 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control
   - /docs/article/3zj5zq5z5m-feature-flags
+  - /docs/feature-flags/ff-security-compliance/manage-access-control
 ---
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, you can increase security and improve efficiency.
@@ -82,8 +83,8 @@ Here's how you can create and manage resource groups for the Feature flags and T
 
 The following topics can help you understand how to implement Access Control:
 
-* [Create, Edit And Delete A Feature Flag](../ff-creating-flag/edit-and-delete-a-feature-flag.md)
-* [Roles and Permissions in Feature Flags](/docs/feature-flags/ff-security-compliance/roles-and-permissions.md)
+* [Create, Edit And Delete A Feature Flag](../../ff-creating-flag/edit-and-delete-a-feature-flag.md)
+* [Roles and Permissions in Feature Flags](../ff-security-compliance/roles-and-permissions.md)
 * [Manage users](/docs/platform/role-based-access-control/add-users)
 * [Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups.md)

@@ -10,6 +10,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/feature-flags/ff-onboarding/ff-security-compliance/gdpr-compliance
+  - /docs/feature-flags/ff-security-compliance/gdpr-compliance
 ---
 
 Harness Feature Flags are General Data Protection Regulation (GDPR) compliant. To ensure this:
