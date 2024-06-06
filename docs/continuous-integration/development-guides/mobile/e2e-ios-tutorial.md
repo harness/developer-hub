@@ -14,9 +14,15 @@ This tutorial covers how to build, test, and publish a React Native iOS app to A
 
 For this tutorial, you need the following:
 
-- A Harness account with Harness CI Cloud Mac infrastructure enabled. <!--TODO add feature flag info-->
+- A Harness account with Harness CI Cloud Mac infrastructure enabled.
 - Access to a Git provider.
 - An Apple account enrolled in the [Apple Developer Program](https://developer.apple.com/support/compare-memberships/) or admin access to [App Store Connect](https://developer.apple.com/help/app-store-connect/get-started/app-store-connect-homepage) for an existing account.
+
+:::info
+
+Currently, macOS platforms for Harness Cloud are behind a feature flag with limited availability. You can [submit a request to enable the feature](https://forms.gle/CWCcuE3nxqEdFJcZ6).
+
+:::
 
 ## Create React Native app
 
