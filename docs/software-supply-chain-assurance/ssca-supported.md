@@ -5,7 +5,6 @@ sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-
 import Ssca from '/docs/software-supply-chain-assurance/shared/ssca-supported.md';
 
 

@@ -21,7 +21,7 @@ You can configure a streaming destination in Harness to send audit log data to a
 
 Harness streams the audit events to your chosen SIEM tool as structured JSON.
 
-## Important
+## Important notes about streaming
 
 - Streaming destinations receive all audit event data, which could include sensitive information. Make sure you trust the streaming destination.
 - Harness supports streaming to Amazon S3.
@@ -29,6 +29,8 @@ Harness streams the audit events to your chosen SIEM tool as structured JSON.
 - Audit log streaming is not currently supported for Harness Self-Managed Enterprise Edition.
 
 ## Add a streaming destination
+
+You can add a streaming destination at the Account or Org scope. This topic explains how to add a streaming destination at the account scope.
 
 To add a streaming destination:
 
@@ -68,7 +70,7 @@ To configure the Amazon S3 streaming connector:
 4. Select **Apply Selected**.
 
 5. In **Amazon S3 Bucket**, enter the bucket name.
-   
+
    Harness writes all the streaming records to this destination.
 
    ![](../../governance/audit-trail/static/streaming-connector.png)
@@ -76,7 +78,7 @@ To configure the Amazon S3 streaming connector:
 6. Select **Save** and **Continue**.
 
 7. After the connection test is successful, select **Finish**.
-   
+
    The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default the destination is inactive.
 
 </TabItem>
@@ -85,7 +87,7 @@ To configure the Amazon S3 streaming connector:
 
 :::note
 
-Currently, this feature is behind the feature flag `PL_AUDIT_STREAMING_USING_SPLUNK_HEC_ENABLE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag `PL_AUDIT_STREAMING_USING_SPLUNK_HEC_ENABLE` and requires Harness Delegate version 82500 or later. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -103,7 +105,7 @@ To configure the Splunk streaming connector:
 
    :::important
    When you set up your Splunk connector, you must:
-   
+
    - Select HEC Authentication
    - Set up and use your Splunk HEC token.
    - Use the **Connect through a Harness Delegate** connectivity mode option. Audit streaming does not support the **Connect through Harness Platform** connector option.
@@ -111,7 +113,7 @@ To configure the Splunk streaming connector:
 4. Select **Apply Selected**, then select **Save and Continue**.
 
 5. After the connection test is successful, select **Finish**.
-   
+
    The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default the destination is inactive.
 
 </TabItem>
@@ -126,7 +128,7 @@ To configure the Splunk streaming connector:
    Harness streams audit logs to the destination every 30 minutes.
 
 2. You can pause audit streaming, preventing any new audit events from being streamed to the configured endpoint by setting the status to **Inactive**.
-   
+
    When you reactivate the streaming destination, Harness starts streaming the audit logs from the point where it was paused.
 
 ## Update audit stream

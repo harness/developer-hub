@@ -6,7 +6,6 @@ const darkCodeTheme = themes.dracula;
 const path = require("path");
 
 const BASE_URL = process.env.BASE_URL || "/";
-
 function hideIndexFromSidebarItems(items) {
   const result = items.filter((item) => {
     return !(item.type === "doc" && item.id === "index");
@@ -92,11 +91,12 @@ const config = {
           content: "https://developer.harness.io/img/hdh-social-card.png",
         },
       ],
+      //src: "/img/logo_dlp.svg",
       navbar: {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "/img/logo_dlp.svg",
+          src: "/img/logo_pride.svg",
         },
         items: [
           /*{
@@ -227,6 +227,10 @@ const config = {
                 to: "university/chaos-engineering",
               },
               {
+                label: "Virtual Instructor-Led Calendar",
+                to: "https://university-registration.harness.io/calendar",
+              },
+              {
                 label: "Instructions",
                 to: "university/instructions",
               },
@@ -261,19 +265,19 @@ const config = {
             position: "right",
             href: "/roadmap",
           },
-
           {
             type: "custom-coveo-search",
             position: "right",
           },
+
           {
             position: "right",
-            html: '<button class="button button--nav">Sign in</button>',
+            html: '<span class="tool" hover-tooltip="Sign into the Harness Platform" tooltip-position="bottom"><button class="button  button--nav">Sign in</button></span>',
             href: "https://app.harness.io/auth/#/signin/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=sign-in",
           },
           {
             position: "right",
-            html: '<button class="button button--cta">Sign up</button>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],
@@ -376,6 +380,10 @@ const config = {
               {
                 label: "Feature Requests",
                 to: "https://ideas.harness.io",
+              },
+              {
+                label: "Instructor-Led Training",
+                to: "/university?ilt",
               },
             ],
           },

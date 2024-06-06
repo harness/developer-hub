@@ -108,45 +108,29 @@ Payload is an object with required and optional fields.
 | `trigger_chain` | array of objects | Information about the chain of triggers. |
 | `branch_name` | string | The name of the branch related to the job. |
 | `project_name` | string | The name of the Project related to the job. |
+| `execution_id` | string | Unique identifier for the specific job execution |
+| `cfr_status` | boolean | Status of the CFR stage |
+| `themes` | list of string | List of the theme names |
 
 Here is an example payload:
 
 ```sh
 {
-    "pipeline": "Node.js CI",
-    "user_id": "SCMTrigger",
-    "repo_url": "https://api.github.com/users/rajpropelo",
-    "start_time": 1679467494000,
+    "instance_guid": "666ba79b-3f3d-4236-ac04-4686ce526705",
+    "job_full_name": "Pipeline-2",
+    "execution_id": "UNIQUE_EXECUTION_ID",
+    "pipeline": "Pipeline-2",
+    "project_name": "Project-A",
+    "user_id": "NISHITH",
+    "repo_url": "https://api.github.com/users/nishith.patel",
+    "start_time": 1711603545000,
     "result": "success",
-    "duration": 77000,
-    "build_number": 4487150517,
-    "instance_guid": "89d2491c-764a-4f77-93d9-18e8e372b795",
-    "instance_name": "Custom CI/CD Instance",
-    "instance_url": "https://custom-cicd.acme.com/",
-    "job_run": {
-        "stages": [
-            {
-                "displayName": "Build_Stage",
-                "displayDescription": "Build_Stage",
-                "result": "succeeded",
-                "state": "completed",
-                "durationInMillis": 5000,
-                "steps": [
-                    {
-                        "displayName": "BUILD_STEP",
-                        "displayDescription": "BUILD_STEP",
-                        "result": "succeeded",
-                        "state": "completed",
-                        "durationInMillis": 5000
-                    }
-                ]
-            }
-        ]
-    },
-    "job_full_name": "Node.js CI--readme updated",
-    "qualified_name": "Node.js CI--readme updated",
+    "duration": 780000,
+    "instance_name": "Jenkins-1",
+    "instance_url": "http://localhost:8800",
+    "job_run": null,
+    "qualified_name": "Pipeline-2",
     "branch_name": "master",
-    "project_name": "Project",
     "module_name": null,
     "scm_commit_ids": [
         "64be72b2c1f7d2a33082f98a40a848880fcdcd5e"
@@ -180,7 +164,10 @@ Here is an example payload:
             "id": "SCMTrigger",
             "type": "SCMTriggerCause"
         }
-    ]
+    ],
+    "cfr_status": true
+    "themes":["themex","themey","themex/themey"]
+    
 }
 ```
 
@@ -216,6 +203,7 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \ # The B
 --data '{
     "integration_id": "<INTEGRATION_ID>",
     "name": "Custom CI/CD Integration",
+    "type": "jenkins",
 }' 
 ```
 

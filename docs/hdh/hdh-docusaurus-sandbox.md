@@ -41,23 +41,26 @@ H5 Heading
 
 Details are toggle elements.
 
+As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which detail the link is on and expand the appropriate section if a detail. 
+
+- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox#second-level-detail-heading
+
 <details>
-<summary>Toggle Heading</summary>
-  <div>
-    <div>This is the detailed content</div>
-    <br/>
+<summary>First Level Detail</summary>
+
+### First Level Detail Heading
+Some first level text
+
 <details>
-<summary>
-        Nested Toggle
-      </summary>
-      <div>
-       This is the nested detailed content
-      </div>
+<summary>Second Level Detail</summary>
+
+### Second Level Detail Heading
+Some second level text
+
 </details>
-  </div>
 </details>
 
-### Notes
+## Notes
 
 These are called [admonitions](https://docusaurus.io/docs/markdown-features/admonitions).
 
@@ -93,16 +96,18 @@ Danger text.
 
 ## Tabs
 
-Tabs can also now have direct [query strings](https://docusaurus.io/docs/markdown-features/tabs?current-os=ios#query-string) in this example as of DS 2.4.3.
+Tabs can also now have direct [query strings](https://docusaurus.io/docs/markdown-features/tabs?current-os=ios#query-string) in this example as of DS 3.2.1.
 
 e.g deeper linking:
 
-- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox/?tab-number=1#tabs
-- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox/?tab-number=2#tabs
-- https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/manifest?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd
+- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox?tab-number=1#some-heading-in-tab-one
+- https://developer.harness.io/docs/hdh/hdh-docusaurus-sandbox?tab-number=2#some-heading-in-tab-two
+- https://developer.harness.io/docs/continuous-delivery/get-started/cd-tutorials/helm-chart?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#create-a-service-3
 
 Can see what the tab value ='s then the anchor tab there in combination and for nested tabs can continue.
-`?pipeline=cd-pipeline&cli-os=windows#getting-started-with-harness-cd`
+`?pipeline=uicdpipe&gitops-cli-os=windowsgitops&deploymentcli=helmrollingcli#create-a-service-3`
+
+As of Late 2023 we have a [Set Focus](https://github.com/harness/developer-hub/blob/main/plugins/focusOnAnchor-plugin/index.js) feature that will process which tab the link is on and expand the appropriate section if a detail. 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -110,12 +115,30 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="tab-number">
 <TabItem value="1" label="Tab One">
 
+### Heading in Tab One \{#some-heading-in-tab-one}
+
 This is an `TabItem` 1.
+
+<details>
+<summary>Details in Tab One </summary>
+
+#### Header inside Details Tab One
+Detail text tab 1. 
+</details>
 
 </TabItem>
 <TabItem value="2" label="Tab Two">
 
+### Heading in Tab Two \{#some-heading-in-tab-two}
+
 This is an `TabItem` 2.
+
+<details>
+<summary>Details in Tab Two </summary>
+
+#### Header inside Details Tab Two
+Detail text tab 2. 
+</details>
 
 </TabItem>
 </Tabs>

@@ -77,10 +77,9 @@ Now, if Overrides V2 is enabled on your account, it is globally enabled on the a
 
 Your existing automation continues to work and the APIs are backward compatible with the V1 experience.
 
-Harness is also making the following improvements:
+You can now search, filter, and sort overrides on the listing page.
 
-1. Search, filtering, and sorting capabilities on the overrides listing page.
-2. A YAML view for Overrides V2, to aid your understanding of its YAML structure.
+The YAML view for Overrides V2 is enabled now.
 
 ## Override types
 

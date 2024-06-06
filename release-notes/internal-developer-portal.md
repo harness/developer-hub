@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-04-10T13:00
+date: 2024-05-23T20:00
 sidebar_position: 12
 ---
 
@@ -16,6 +16,57 @@ Review the notes below for details about recent changes to Harness Internal Deve
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## May 2024
+
+### Version 0.27.0
+
+<!-- May 23, 2024 -->
+
+#### New features and enhancements
+
+- Added the support to JSON stringfy the input values for the custom action [`trigger:trigger-pipeline-with-webhook`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook) , if the type is object  [IDP-2858]
+
+- orgIdentifier is now an optional field in the Create Project Step [IDP-2857]
+
+- Added support for [Harness Code Repository](https://www.harness.io/products/code-repository) as a [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) [IDP-2724]
+
+- We now support private registry configuration for IDP stage. [IDP-2773]
+
+- Added error handling support for Custom Plugins, users can now view the errors in case of issues with the uploaded packages. [IDP-2527]
+
+- Optimized the user and group entity provider to scale-up the user onboarding. [IDP-2814]
+
+- [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties/#request-body) enhancement: `Properties` are mandatory now, At least one `filter` item should be present in the API body. [IDP-2712]
+
+- Added audit support for scorecard re-run event. [IDP-2150]
+
+- We now have a help panel support in the Onboarding Flow to help users with required information on each page.[IDP-2602]
+
+- Added [Delta Mutation](https://backstage.io/docs/features/software-catalog/external-integrations/#provider-mutations) support for Usergroup sync from Harness Platform to IDP, this improves the performance during onboarding at scale. [IDP-2824] 
+
+
+#### Bug Fixes
+
+- Fixed the issue with new nav URL as annotation for Harness CI/CD plugin. [IDP-2721]
+- Fixed the issue with selecting both custom and default checks while creating a scorecard. 
+- Fixed issue with IDPTelemetryPublisher::recordTelemetry to retry on failure as last sent is updated before attempting to send the license data. [IDP-2654]
+- Fixed handling custom plugin config if marketplace config are available by default in IDP. [IDP-2800]
+
+### Version 0.26.0
+
+<!-- May 7, 2024 -->
+
+#### New features and enhancements
+
+- We now have an updated [onboarding flow](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#getting-started) for new users, to onboard your already existing harness services as well as new services into IDP as part of the getting started with the module. This new onboarding flow is async wherein users could skip it and add a [git-integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) later under admin section  [IDP-2213]
+
+- We have updated the custom action [`trigger:trigger-pipeline-with-webhook`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook) to trigger workflows based on pipeline [`inputset`](https://developer.harness.io/docs/platform/pipelines/input-sets/#create-input-sets) id. [IDP-2611]
+
+- Added support for [Splunk OnCall Backstage Plugin](https://github.com/backstage/community-plugins/tree/main/workspaces/splunk/plugins/splunk-on-call#splunk-on-call) and [Architecture Decision Records (ADR) Backstage Plugin](https://github.com/backstage/community-plugins/tree/main/workspaces/adr/plugins/adr#architecture-decision-records-adr-plugin). [IDP-2470] [IDP-2594]
+
+- As part of our new infrastructure evolution initiative, we have refactored our present infrastructure to extend support for our customers in EU region.
+
 
 ## April 2024
 
@@ -600,7 +651,7 @@ contents:
 
 - The Backstage version has been upgraded to [1.14](https://backstage.io/docs/releases/v1.14.0). (IDP-632)
 - The following GitHub-based plugins are now available in IDP:
-  - [GitHub Actions](https://github.com/backstage/backstage/tree/master/plugins/github-actions)
+  - [GitHub Actions](https://github.com/backstage/community-plugins/tree/main/workspaces/github-actions/plugins/github-actions#github-actions-plugin)
   - [GitHub Insights](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-insights)
   - [GitHub Pull Requests](https://github.com/RoadieHQ/roadie-backstage-plugins/tree/main/plugins/frontend/backstage-plugin-github-pull-requests).
 - IDP now includes support for GitHub and Google OAuth applications. You can configure a GitHub or Google OAuth application in the IDP Admin view. These applications are used by the GitHub-based plugins to use the logged-in user's credentials when making API requests. (IDP-676, IDP-661, IDP-647)

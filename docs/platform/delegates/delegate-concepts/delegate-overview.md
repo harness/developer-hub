@@ -37,8 +37,8 @@ Delegate communication includes the following functions:
 
 Harness Delegate does not have a root image. There are two non-root images that use similar tags. For example:
 
-- `harness/delegate:22.03.74411`: Includes client tools like `kubectl`, Helm, and ChartMuseum.
-- `harness/delegate:22.03.74411.minimal`: Does not include client tools. If you want to add tools to the image, Harness recommends that you create a custom image.
+- `harness/delegate:yy.mm.verno`: Includes client tools like `kubectl`, Helm, and ChartMuseum.
+- `harness/delegate:yy.mm.verno.minimal`: Does not include client tools. If you want to add tools to the image, Harness recommends that you create a custom image.
 
 ### Install a delegate
 
@@ -68,6 +68,17 @@ One delegate size does not fit all use cases, so Harness lets you pick from seve
 |    8     |     16 GB / 4 CPU     |                           80                            |
 
 Remember that the memory and CPU requirements are for the delegate only. Your delegate host/pod/container will need more computing resources for its operations systems and other services, such as Docker or Kubernetes.
+
+Harness recommends adhering to the below guidelines when using the delegate with Harness Cloud Cost Management (CCM).
+
+**Baseline Configuration:** For clusters with up to 200 nodes and 4000 pods, each delegate should be configured with 2 vCPUs and 8 GB of memory.
+
+**Incremental Scaling:** For every additional 50 nodes and 1000 pods, the delegate capacity should be increased by 0.5 vCPUs and 2 GB of memory. This scaling ensures that the delegate can handle the increased load and continue to collect metrics efficiently.
+
+**Single replica requirement:**
+
+All specified resource requirements pertain to a single replica of the delegate.
+Instead of utilizing Horizontal Pod Autoscaler (HPA) to increase the number of smaller-sized replicas Harness recommends provisioning each delegate with the necessary resources to handle the specified number of nodes and pods.
 
 ### Delegates list page
 

@@ -1,12 +1,12 @@
 ---
 title: Upgrade chaos infrastructure
-sidebar_position: 3
+sidebar_position: 5
 description: Guide to upgrade your chaos infrastructure
 redirect_from:
 	- /docs/chaos-engineering/chaos-infrastructure/upgrade-infra
 ---
 
-If a HCE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in [release notes](/release-notes/chaos-engineering). 
+If a HCE release is not backward compatible, upgrade your chaos infrastructure to ensure you can execute all experiments smoothly. This applies only to releases that have breaking changes, which will be clearly indicated in [release notes](/release-notes/chaos-engineering).
 
 :::warning
 If you don't upgrade your infrastructure for these types of releases, chaos experiments may fail.
@@ -58,7 +58,7 @@ This step removes all ChaosEngine custom resources (CRs) in the infrastructure n
 
 	```
 	kubectl apply -f https://raw.githubusercontent.com/chaosnative/hce-charts/main/hce-saas/hce-saas-crds.yaml
-	``` 
+	```
 
 ### Step 3: Update the chaos infrastructure in Harness
 

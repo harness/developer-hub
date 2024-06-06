@@ -1,7 +1,7 @@
 ---
 title: Common delegate initialization scripts
 description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature in coming soon. This topic provides information on script availability and som…
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: auveebqv37
 helpdocs_category_id: vm60533pvt
 helpdocs_is_private: false
@@ -21,7 +21,7 @@ For more information about running scripts, go to [Build custom delegate images 
 
 You can add any command that the host, container, or pod running the delegate supports. Linux shell commands are most common. If `kubectl`, Helm, or Docker is running on the host, container, or pod where you install the delegate, you can use those commands. Kubernetes and Docker delegates include Helm.
 
-The base image for the delegate uses Ubuntu 18.04 or later. This means you can use any default Ubuntu package in delegate script.
+The base image for the delegate uses the Red Hat Universal Base Image (Red Hat/UBI8). This means you can use any default Red Hat package in the delegate script.
 
 #### Harness Delegate
 
@@ -114,7 +114,7 @@ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Sta
 
 ### Git CLI
 
-Run `microdnf update` before you run`microdnf` commands.
+Run `microdnf update` before you run `microdnf` commands.
 
 ```
 microdnf update

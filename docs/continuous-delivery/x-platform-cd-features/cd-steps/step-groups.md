@@ -2,6 +2,8 @@
 title: Group steps using step groups
 description: This topic describes how to add steps to pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
 sidebar_position: 1
+redirect_from:
+  - /docs/continuous-delivery/x-platform-cd-features/cd-steps/
 ---
 
 Steps can be added to pipelines individually or as a step group.
@@ -18,11 +20,9 @@ Review the following topics before you add step groups.
 
 ## Important notes
 
-- Currently, Harness supports step groups in Deploy and Custom stages only. For information about using step groups in CI, go to [Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
+- Currently, Harness supports [step groups](/docs/platform/pipelines/use-step-groups.md) in Build, Deploy, and Custom stages only.
 - When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
 - Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
-
-
 
 ## Containerized step groups
 

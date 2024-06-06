@@ -13,7 +13,7 @@ This section describes how to set up each of the external scanners supported by 
 
 For more information about STO support, go to [What's supported in STO](/docs/security-testing-orchestration/whats-supported).
 
-
+<!-- 
 ### Scanner categories supported by STO
 
 
@@ -33,79 +33,75 @@ import StoSupportedMethods from './shared/_sto-supported-methods.md';
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
+-->
+
 
 ### Scanners supported by STO
 
-
 import StoSupportedScanners from './shared/_sto-supported-scanners.md';
-
 
 <StoSupportedScanners />
 
-### Scanner binaries used in STO container images
-
-
-import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
-
-
-<StoSupportedBinaries />
-
-### Ingestion formats supported by STO
-
-
-import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
-
-
-<StoSupportedFormats />
-
 ###  Operating systems and architectures supported by STO
-
 
 import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-category/shared/_supported-infrastructures.md';
 
-
-
 <StoInfraSupport />
+
+
+### Ingestion formats supported by STO
+
+import StoSupportedFormats from './shared/_sto-supported-ingestion-formats.md';
+
+<StoSupportedFormats />
+
+
+
 
 ### Docker-in-Docker requirements for STO
 
-
 import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-
 
 <StoDinDRequirements />
 
-### Root access requirements for STO
 
+### Root access requirements for STO
 
 import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
 
-
 <StoRootRequirements />
+
+
+### Scanner binaries used in STO container images
+
+import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
+
+<StoSupportedBinaries />
+
 
 ### Security steps and scanner templates in STO
 
-The Step library includes a **Security** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
+The Step library includes a [**Custom Scan**](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
 
-Some scanners also have *scanner templates* with UIs that simplify the process of setting up a scanner.
+Some scanners also have their own steps with simplified UIs that simplify the setup process.
 
 <details>
-<summary>Step Library with <b>Security</b> step and scanner templates</summary>
+<summary>Step Library with scanner-specific steps and <b>Custom Scan</b> step</summary>
 
-![tep Library with Security step and scanner templates](./static/security-steps-tab.png)
+![Step Library with scanner-specific steps and Custom Scan step](./static/security-steps-tab.png)
 
 </details>
 
 <details>
-<summary><b>Security</b> step configuration</summary>
+<summary><b>Custom Scan</b> step configuration</summary>
 
-![Security step configuration](./static/security-step-settings-reference-00.png)
+![Custom Scan step configuration](./static/config-scan-step.png)
 
 </details>
 
 <details>
-<summary>Scanner template configuration</summary>
+<summary>Scanner-specific step configuration</summary>
 
-![Scanner template configuration](./static/sto-step-palette-example.png)
+![Scanner-specific step configuration](./static/sto-step-palette-example.png)
 
 </details>

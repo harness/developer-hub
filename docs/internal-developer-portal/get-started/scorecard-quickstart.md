@@ -73,8 +73,8 @@ You can skip this step if you want to use the default checks available and can s
 3. Now we will be creating a custom check to check for Jira annotation.
 4. Add the **Name** and **Description**
 5. Now under Rules select **All Of** and the Datasource as **Catalog Info YAML**.
-6. Select the Datapoint as **Evaluate expression (JEXL)**, and add the JEXL based on the jira annotation key mentioned on your `catalog-info.yaml` which would be `<+metadata.annotations.'jira/project-key'>`
-7. Now add the operator as **Not equal to** and add `null` under **Value**.
+6. Select the Datapoint as **Annotation exists**,  with annotation value as `jira/project-key` to be mentioned on your `catalog-info.yaml`. 
+7. Now add the operator as `Equal to` with value as `True`.
 8. Save the changes.
 
 ![](./static/jira-custom-check.png)

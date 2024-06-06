@@ -519,6 +519,28 @@ spec:
     ...
 ```
 
+5. **Annotation Exists**:
+
+- *Objective:* Checks if the catalog YAML file has a particular annotation set under `annotation` field is configured or not.
+- *Calculation Method:* The catalog YAML is inspected to check if the particular annotation is present under the metadata field.
+ 
+For example, setting up the check below for the example `catalog-info.yaml` you could find wether the annotation `jira/project-key`present or not. In this case the check would pass as the annotation is present.
+
+![](./static/checks-annotation-exist.png)
+
+```YAML
+## Example catalog-info.yaml
+kind: "Component"
+apiVersion: "backstage.io/v1alpha1"
+metadata:
+  name: order-service
+  annotations:
+    jira/project-key: IDP
+    ...
+spec:
+    ...
+```
+
 ## Kubernetes
 
 :::info

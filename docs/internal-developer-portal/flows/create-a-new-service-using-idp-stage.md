@@ -188,7 +188,7 @@ Software Templates currently support pipelines that are comprised only of [IDP S
 
 Now that our pipeline is ready to execute when a project name and a GitHub repository name are provided, let's create the UI counterpart of it in IDP. This is powered by the [Backstage Software Template](https://backstage.io/docs/features/software-templates/writing-templates). Create a `template.yaml` file anywhere in your Git repository. Usually, that would be the same place as your cookiecutter template. We use the [react-jsonschema-form playground](https://rjsf-team.github.io/react-jsonschema-form/) to build the template. [Nunjucks](https://mozilla.github.io/nunjucks/) is templating engine for the IDP templates.
 
-[Source](https://github.com/Debanitrkl/backstage-test/blob/main/tutorial-self-service-flow-template.yaml)
+[Source](https://github.com/harness-community/idp-samples/blob/main/tutorial-self-service-flow-template.yaml)
 
 ```YAML
 apiVersion: scaffolder.backstage.io/v1beta3

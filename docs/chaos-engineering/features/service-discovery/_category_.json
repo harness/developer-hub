@@ -1,0 +1,13 @@
+{
+  "position": 11,
+  "label": "Service discovery",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Service discovery"
+   },
+  "customProps": {
+    "description": "Introduction to service discovery"
+  }
+}

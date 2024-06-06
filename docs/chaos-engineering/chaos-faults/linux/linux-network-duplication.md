@@ -84,7 +84,7 @@ Linux network duplication:
 
 The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/destination-hosts.yaml yaml)
 ```yaml
@@ -104,7 +104,7 @@ spec:
 
 The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. While providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/destination-ips.yaml yaml)
 ```yaml
@@ -127,7 +127,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 - `sourcePorts`: Ports of the target application whose accessibility is impacted.
 - `destinationPorts`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/source-and-destination-ports.yaml yaml)
 ```yaml
@@ -152,7 +152,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 - `sourcePorts`: Provide source ports that are not subject to chaos as comma-separated values preceded by `!`.
 - `destinationPorts`: Provide destination ports that are not subject to chaos as comma-separated values preceded by `!`.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/ignore-source-and-destination-ports.yaml yaml)
 ```yaml
@@ -174,7 +174,7 @@ spec:
 
 The `packetDuplicationPercentage` input variable duplicates a specific percentage of the data packets.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/packet-duplication-percentage.yaml yaml)
 ```yaml

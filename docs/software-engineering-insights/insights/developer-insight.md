@@ -38,7 +38,7 @@ Once your project is created, you can set up and map integrations as an admin an
 1. Go to the **Integration Mapping** tab within the SEI module.
 2. Click **Map Integrations** and select existing integrations or create new ones as needed.
 3. Ensure you associate the integrations with your current project.
-4. Now for configuring a Developer Metrics insight, you'll need to map the integration for your source code manager. For this tutorial we will map the [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-jira) (Source Code Manager).
+4. Now for configuring a Developer Metrics insight, you'll need to map the integration for your source code manager. For this tutorial we will map the [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-jira-integration) (Source Code Manager).
 
 :::info
 Find a list of all the supported integrations for SCM on Harness SEI [here](/docs/software-engineering-insights/sei-supported-platforms)
@@ -46,7 +46,7 @@ Find a list of all the supported integrations for SCM on Harness SEI [here](/doc
 
 You can also create new integrations and associate the integration with the current project by mapping them.
 
-* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-integration-github).
+* To create a new GitHub integration, go to [GitHub integration](/docs/software-engineering-insights/sei-integrations/automated-integrations/sei-github-integration).
 
 ## Create the Insight
 
@@ -170,7 +170,7 @@ To add the **SCM Commits Single Stat Report** widget to Insights:
 Similarly you can also configure the other Single Stat reports.
 Some other SCM related reports which are frequently used are
 
-* [SCM Rework Report](/docs/software-engineering-insights/sei-technical-reference/scm-metrics-calculation/scm-rework): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
+* [SCM Rework Report](/docs/software-engineering-insights/sei-technical-reference/scm-calculation/scm-reports-calculation/scm-rework-report ): The Rework report measures the refactoring of code, which involves making modifications to the existing codebase or rewriting it entirely.
 * [SCM Committers Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-committers-report): This report analyzes the volume of code changes by committer.
 * [SCM Issues Report](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report analyzes the number of issues in your SCM tool by time, label, or other categories.
 * [SCM Issues Count Single Stat](/docs/software-engineering-insights/sei-metrics-and-reports/velocity-metrics-reports/scm-reports#scm-issues-reports): This report displays a single stat related to the number of issues in your SCM tool.

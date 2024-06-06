@@ -17,6 +17,97 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+## May 2024
+### Version 1.19.1
+
+#### New features and enhancements
+
+- Asset Governance for AWS : Added new governance recommendations and cost computation support for AWS resources including `cache-cluster`, `S3`,`Redshift`, and `Redshift-snapshot`. [CCM-17852]
+- Asset Governance for GCP : Added new governance recommendations and cost computation support for GCP resources including `redis`, `gke-cluster`, `bq-dataset`, `function`, `bucket`, `dataflow-job`, `loadbalancer-address`, `cloud-run-service` and also, added cost computation for `gcp.loadbalancer-forwarding-rule`. [CCM-17852]
+- Editing Enforcements: Improved the enforcement editing process. Now, when viewing and editing an enforcement, it will no longer get enabled automatically if it was previously disabled. This ensures that the enforcement status remains consistent unless intentionally changed by the user. [CCM-18050]
+- Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. [CCM-17850, ZD-63324]
+- Azure Governance Subscription selection: In the Azure Rule window's Subscription drop-down menu, previously, only the Subscription ID was displayed. Now, both the Subscription Name and ID are shown for better clarity and ease of selection. [CCM-17650]
+- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region, and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. [CCM-17979]
+
+| Old Label | New Label |
+|------------|--------------|
+| beta.kubernetes.io/instance-type | node.kubernetes.io/instance-type |
+| beta.kubernetes.io/os | kubernetes.io/os |
+| failure-domain.beta.kubernetes.io/region | topology.kubernetes.io/region |
+| failure-domain.beta.kubernetes.io/zone | topology.kubernetes.io/zone |
+
+
+#### Fixed issues
+- Azure perspectives Previously, only fields in "group by" with available data were displayed in Azure perspectives, leading to incomplete views and unnecessary errors. With this update, all relevant fields, including those without data, will now be visible. This eliminates any unnecessary errors arising from missing data at the source level. [CCM-17573, ZD-62691]
+
+### Version 1.18.1
+
+#### New features and enhancements
+
+- Governance JSON Viewer UI Improvement: We have moved the Copy button in the Governance's JSON viewer beside the Filter button for better accessibility and user experience. [CCM-17651]
+- Cost Correlation Refresh Button: Expanded the functionality of the refresh button to include multi-policy evaluations, allowing users to update and refresh data related to savings for multi-policy evaluations. [CCM-17648]
+- Time Filter Options for Recommendations: We have introduced UI changes to support time filter options for the last 60 days and 90 days in recommendations. This enhancement provides users with greater flexibility in analyzing recommendations over specific time periods. [CCM-17725]
+
+#### Fixed issues
+
+- Edit Flow for TCP-Based Autostopping Rule: Fixed the issue where users were unable to edit the auto-stopping proxy from the dropdown and proceed with the flow. Users can now see the preselected value of the proxy and complete the process as expected.
+- Azure Data Fix: Resolved an issue where adding a perspective rule with Azure subscription ID set to null resulted in no data being displayed. [CCM-17414]
+- Auto Stopping Page Filter: Added a fix for a minor issue where using filters on the auto-stopping page resulted in an unknown error. [CCM-16195]
+
+### Version 1.17.0
+
+#### New features and enhancements
+
+- Commitment Active Actions Details Enhancements:
+  - Added formatting to the expiry date for improved readability.
+  - Aligned savings summary chart colors with graph colors for improved visual coherence.
+  - Added option to expand details about a recommendation by clicking on it. This enhancement allows users to gain deeper insights into their recommendations. After clicking on it, users can view both the potential savings after applying the recommendation and the potential spend without applying the recommendation. Additionally, users can access details about the source Reserved Instance (RI).[CCM-17844, CCM-17474]
+
+- Cloud Perspective Recommendation Display: Recommendations alongwith their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. [CCM-17639]
+
+- Enhanced JSON Viewer: The same JSON Viewer used in the Evaluation details page has been added to the Governance Recommendation details page, providing users with consistent and user-friendly access to the output data with all the available filters. [CCM-17436]
+
+#### Fixed issues
+
+- Updated Messaging in Commitment Orchestrator: In Commitment Orchestrator, we have improved the UI by adding appropriate messaging about recent actions once they are completed, and for actions that do not require user intervention, ensuring clarity and accuracy in the displayed information. [CCM-17655]
+
+### Version 1.16.0
+
+#### New features and enhancements
+
+- Expanded Azure Region Options: We have introduced a new `allregions` option in Azure regions, allowing users to execute any Rule or establish an Enforcement across all regions with just one Evaluation for a Subscription. This boosts efficiency and helps prevent exceeding Azure API limits when executing a Rule for a Subscription across multiple regions. Instead of running on multiple regions it will now run only on one single region i.e `allregions`. [CCM-17185, CCM-16771]
+
+- Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
+
+- Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. [CCM-17380]
+
+#### Fixed issues
+
+- Label Adjustment for Clarity: We have added a minor change to update label from "Active Rules" to "Total Rules" for enhanced clarity and accuracy in Autostopping UI. [CCM-16450]
+
+- SMP Overview Screen Total Cost: We have updated the query used to retrieve active spend on the overview page for SMP to ensure accurate data representation. This fix ensures alignment between the total cost displayed on the SMP Overview Screen and the data presented in perspectives. [CCM-17380]
+
+- Perspective Dashboard Optimization: As part of this fix, we have disabled redundant parentheses from BigQuery SQL query to optimize the perspective and cost category queries, enhancing query efficiency and performance.
+  
+### Version 1.14.3
+
+#### New features and enhancements
+
+- RBAC Support for Active Recommendations: To enhance security and control over active recommendations, we have implemented Role-Based Access Control (RBAC) support. With this update, only admin users with edit access or commitments can approve or reject recommendations. This feature ensures that sensitive actions related to active recommendations are limited to authorized users to improve overall security. [CCM-17337]
+
+- Introduction of Anomaly Workflows: We have added Anomaly Workflows to enhance anomaly management within the CCM platform. With this feature, when a user marks an anomaly as a False Anomaly, it will be automatically moved to the Ignore list within the Anomaly Settings drawer. Furthermore, users now have the option to undo this action directly from the Anomaly Settings drawer, providing greater flexibility and control over anomaly management processes. [CCM-17311]
+  
+- Multi-Select Cloud Providers Filter: We have enhanced the Recommendations and Governance Evaluations filter panel by adding a multi-select Cloud Providers filter. This addition allows users to select multiple cloud providers simultaneously, providing more flexibility with governance evaluations. [CCM-17150]
+
+- Child Account Exclusion in Commitment Orchestrator: With this functionality, users can selectively exclude child accounts from commitment utilization calculations, allowing for more precise management of Reserved Instances (RIs) and Savings Plans (SPs) across their organisation. [CCM-17184]
+
+- Audit Trail Integration for changes in Commitments: Commitment orchestration flow changes like change of coverage or split between SP & RI and commitment actions approval or rejection is now captured in audit trails. [CCM-17267]
+
+#### Fixed issues
+
+- Governance Rules List Pagination: We have added a minor fix on the Governance Rules List page where the page number now resets properly when applying either the cloud provider or rule type filter. [CCM-17279]
+
+- Granularity Adjustment for Cluster Data Retrieval: With this fix, we have ensured that data retrieval aligns with the specified granularity settings: fetching from the daily data table for DAILY granularity and from the hourly table for HOURLY granularity. [CCM-16061]
 
 ## April 2024
 

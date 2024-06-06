@@ -18,7 +18,6 @@ import TabItem from '@theme/TabItem';
 You can use a Kubernetes cluster build infrastructure for **Build** stages in Harness CI pipelines. To do this, you need to:
 
 <!-- no toc -->
-
 1. [Set up the Kubernetes cluster to use as your build infrastructure.](#create-a-kubernetes-cluster)
 2. [Create a Kubernetes cluster connector and install the Harness Delegate.](#create-a-kubernetes-cluster-connector-and-install-the-delegate)
 3. [Configure the build infrastructure in Harness.](#configure-the-build-infrastructure-in-harness)
@@ -86,11 +85,11 @@ metadata:
 spec:
   clusterIP: None
   selector:
-    accountID: YOUR_K8S_ACCOUNT_ID
+    accountID: HARNESS_ACCOUNT_ID
   ports:
     - protocol: TCP
-      port: ## Specify port number
-      targetPort: ## Specify port number
+      port: 20001
+      targetPort: 20001
 ```
 
 #### Istio ProxyConfig
@@ -288,7 +287,7 @@ You can add Kubernetes annotations to the pods in your infrastructure. An annota
 
 Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) for the stage (pod) and steps (containers):
 
-* **Privileged:** Run all containers with the [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) flag enabled. This flag is disabled by default. You can override this setting in individual Run and Run Tests steps.
+* **Privileged:** Run all containers with the [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) flag enabled. This flag is disabled by default. You can override this setting in individual **Run** and **Test** steps.
 * **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
 * **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
 * **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.

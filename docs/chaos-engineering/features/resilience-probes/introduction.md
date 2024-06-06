@@ -12,19 +12,19 @@ This section introduces you to resilience probes, its importance, types, and gen
 ## What is a resilience probe?
 
 Resilience probes are health-checkers, that is, they monitor your application's health before, during and after a chaos experiment. Depending on the type of probe, probes can:
-* Run cmd commands for innumerable validations, 
+* Run `cmd` commands for innumerable validations,
 * Run Kubernetes commands, send HTTP requests, check for a label or field selector missing and assert if the resource is absent or not,
 * Execute PromQL queries, perform conditional valdation on QPS or probe success percentages,
 * Validate your error budget (SLO probe),
 * Connect with the APM tool and assert metrics (Datadog probe).
 
-Depending on your requirement, probes can do a lot more than what is discussed earlier. 
+Depending on your requirement, probes can do a lot more than what is discussed earlier.
 
 ## Why is it important?
 
-* **Shareable**: Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults. 
-* **Reusability**: You can create the validation instance first and use it across different experiments. 
-* It avoids repeated creation of same probes for similar requirements. 
+* **Shareable**: Probes create a global instance of probes, that is, a shared entity that can be used across multiple faults.
+* **Reusability**: You can create the validation instance first and use it across different experiments.
+* It avoids repeated creation of same probes for similar requirements.
 
 This is also in accordance with how chaos engineering pans out:
 1. Plan the hypothesis.
@@ -32,7 +32,7 @@ This is also in accordance with how chaos engineering pans out:
 
 ## Types of resilience probes
 
-HCE faciliates 6 types of resilience probes listed below. Click each probe to navigate to details such as probe property, definition, schema, authentication, methods, and so on.
+HCE facilitates 6 types of resilience probes listed below. Click each probe to navigate to details such as probe property, definition, schema, authentication, methods, and so on.
 
 1. [HTTP probe](/docs/chaos-engineering/features/probes/http-probe)
 2. [Command probe](/docs/chaos-engineering/features/probes/cmd-probe)

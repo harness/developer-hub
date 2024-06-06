@@ -22,7 +22,7 @@ The following sections explain how this subscription model works across the vari
 
 ### Who is a developer?
 
-Every user who contributes to software development, deployment, operations, and optimization is considered a developer on the Harness Platform for the purpose of the Developer 360 subscription model.
+"Developer" means each person who contributes to code development, deployment, security, maintenance, optimization or any other technical activities related to software code, that is managed with Harness.
 
 These users use Harness to create code repositories, build software, test and secure software, deploy software, run chaos experiments, manage SLOs, manage feature flags and more.
 
@@ -32,10 +32,11 @@ The definition of a developer (and the consumption entitlements, if any) remain 
 
 The following Harness modules are directly involved in a developer's day-to-day workflow. These modules consume a developer license for every developer involved.
 
-- **Code Repository (CODE):** All users with permission to access Harness CODE module are considered CODE Developers and consume a license.
-- **Continuous Integration (CI):** All users with permission to access Harness CI module are considered CI Developers and consume a license.
-- **Internal Developer Portal (IDP):** All users with permissions to access Harness IDP module are considered IDP Developers and consume a license.
-- **Software Engineering Insights (SEI):** All users read from a configured SCM or Issue Management tool are considered SEI Developers and consume a license.
+- **Code Repository (CODE):** All users on the Harness Platform, who have permission to access Harness CODE module are considered CODE Developers and consume a license.
+- **Continuous Integration (CI):** All users on the Harness Platform, who have permission to access Harness CI module are considered CI Developers and consume a license.
+- **Internal Developer Portal (IDP):** All users on the Harness Platform, who have permission to access Harness IDP module are considered IDP Developers and consume a license.
+- **Feature Flags (FF):** All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered FF Developers and consume a license.
+- **Software Engineering Insights (SEI):** All users read from a configured SCM (Source Code Management) tool are considered SEI Developers and consume a license.
 
 ### Modules with no direct developer tracking (consumption entitlements)
 
@@ -53,7 +54,7 @@ CD deploys software services onto infrastructure platforms spanning traditional 
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
 - A VM in the traditional VM-based apps.
-- Six serverless functions in serverless environments.
+- Five serverless functions in serverless environments.
 
 CD tracks **Service** license consumption instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window. For a detailed understanding of CD services and how they are tracked, go to [Service licensing for CD](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/).
 
@@ -62,9 +63,10 @@ CD tracks **Service** license consumption instead of **Developers**. All Service
 <details>
 <summary>Feature Flags (FF) Developers and Monthly Active Users (MAUs)</summary>
 
-Harness Feature Flags is a feature flag rollout and management module that tracks Developers based on their active engagement with the FF module. FF tracks **Developers** and **MAU** license consumption.
+Harness Feature Flags is a feature flag rollout and management module that tracks **Developers** and **MAU** (Monthly Active Users) for license consumption.
 
-Every platform user that actively creates, edits, or deletes a flag or a group is tracked as a FF developer. Monthly Active Users (MAUs) represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
+All Users on the Harness Platform, who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered **FF Developers** and consume a license.
+**Monthly Active Users (MAUs)** represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
 
 </details>
 
@@ -76,7 +78,7 @@ SRM helps manage SLOs/SLIs for various services in an R&D organization. A **Serv
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
 - A VM in the traditional VM-based apps.
-- Six serverless functions in serverless environments.
+- Five serverless functions in serverless environments.
 
 SRM tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 
@@ -90,7 +92,7 @@ CE helps run chaos experiments across various services in an R&D organization, t
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS or Azure ACS or Google Container Engine).
 - A VM in the traditional VM-based apps.
-- Six serverless functions in serverless environments.
+- Five serverless functions in serverless environments.
 
 CE tracks **Service** license consumption, instead of **Developers**. All Service licenses are tracked over a *last 30 days* active window.
 
@@ -181,7 +183,7 @@ For more information about specific module subscriptions and licenses, go to:
 
 - [CI Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt/)
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
-- [FF Subscriptions](/docs/category/subscribe-to-feature-flags)
+- [FF Subscriptions](/docs/feature-flags/subscribe-ff/subscriptions-overview.md)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 
 ## Cloud Marketplace offerings

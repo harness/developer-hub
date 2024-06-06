@@ -79,10 +79,6 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
         <td>Enables the <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#declarative-rollback">declarative rollback</a> behavior for services. <b>This feature is in Beta.</b> </td>
     </tr>
     <tr>
-        <td>CDC_SERVICE_DASHBOARD_REVAMP_NG</td>
-        <td>Provides new <a href="/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments/#individual-service-dashboards">dashboard views for services and environments</a> <b>This feature is in Limited GA.</b></td>
-    </tr>
-    <tr>
         <td>CDS_K8S_SOCKET_CAPABILITY_CHECK_NG</td>
         <td>Replaces the HTTP capability check for the Kubernetes connector with socket capability. <b>This feature is in Beta.</b></td>
     </tr>
@@ -226,5 +222,9 @@ To enable a feature flag in your Harness account, contact [Harness Support](mail
      <tr>
         <td>CDS_CONTAINER_STEP_GROUP_RUN_AS_USER_AND_PRIVILEGED_FIX</td>
         <td>Enable this feature if you want updated logic for permissions inheritance between steps and their step groups. To learn more go to [Step Group Inheritance Logic](/kb/continuous-delivery/articles/configuration-inheritance-stepgroup-step) <b>This is a Beta feature.</b></td>
+    </tr>
+     <tr>
+        <td>CV_MONITORED_SERVICE_TEMPLATIZATION</td>
+        <td>Enable this feature if you want to select a monitored service template as a runtime input. To learn more go to [Select a monitored service template during runtime](/docs/continuous-delivery/verify/cv-getstarted/configure-first-cv#select-a-monitored-service-template-during-runtime) <b>This is a Beta feature.</b></td>
     </tr>
 </table>

@@ -1,6 +1,6 @@
 ---
 title: Connect chaos infrastructures
-sidebar_position: 1
+sidebar_position: 3
 description: Guide to connect to Kubernetes and Linux chaos infrastructure
 redirect_from:
   - /docs/chaos-engineering/chaos-infrastructure/connect-chaos-infrastructures
@@ -58,7 +58,7 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 2. If you selected **On Existing Infrastructures**, on the next screen, select any connector under the **Project**, **Organization**, or **Account** scope. (Otherwise skip this step.)
 
-  ![Chaos Infrastructure in Existing Infra](./static/connect-chaos-infrastructures/chaos-infrastructure-in-existing-infra.png)
+    ![Chaos Infrastructure in Existing Infra](./static/connect-chaos-infrastructures/chaos-infrastructure-in-existing-infra.png)
 
   :::info note
   A Harness Kubernetes connector with:
@@ -73,7 +73,7 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
   The Configure Chaos Infrastructure screen appears.
 
-  ![Configure Chaos Infrastructure](./static/connect-chaos-infrastructures/configure-chaos-infrastructure.png)
+    ![Configure Chaos Infrastructure](./static/connect-chaos-infrastructures/configure-chaos-infrastructure.png)
 
 1. Under **Choose Access Type**, choose one of the following modes.
 
@@ -107,7 +107,7 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
       1. Select **Download**, and then copy and run the `kubectl` command shown on your screen to install the chaos infrastructure.
 
-      ![Cluster Wide Setup Infrastructure](./static/connect-chaos-infrastructures/cluster-wide-setup-infrastructure.png)
+        ![Cluster Wide Setup Infrastructure](./static/connect-chaos-infrastructures/cluster-wide-setup-infrastructure.png)
 
     * **For namespace access:**
 
@@ -115,7 +115,7 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
       1. Run the second `kubectl` command to apply the chaos CRDs.
       1. Select **Download**, and then copy and run the third command to install the chaos infrastructure.
 
-      ![Namespace Mode Setup Infrastructure](./static/connect-chaos-infrastructures/ns-mode-setup-infrastructure.png)
+        ![Namespace Mode Setup Infrastructure](./static/connect-chaos-infrastructures/ns-mode-setup-infrastructure.png)
 
 1. Select **Done**.
 
@@ -127,45 +127,45 @@ To use Helm to install a chaos infrastructure,
 
 1. Navigate to **Chaos Experiments** -> **Environment**.
 
-![step 1](./static/connect-chaos-infrastructures/enable-chaos-1.png)
+  ![step 1](./static/connect-chaos-infrastructures/enable-chaos-1.png)
 
 2. You can select **New environment** and create an environment and install or upgrade chaos infrastructure. To enable chaos on an existing environment, click the environment.
 
-![step 2](./static/connect-chaos-infrastructures/env-2.png)
+  ![step 2](./static/connect-chaos-infrastructures/env-2.png)
 
 3. Click **Enable chaos**.
 
-![step 3](./static/connect-chaos-infrastructures/chaos-3.png)
+  ![step 3](./static/connect-chaos-infrastructures/chaos-3.png)
 
 4. You can use Helm commands to enable chaos on new infrastructure only. Click **On new infrastructures** and **Continue**.
 
-![step 4](./static/connect-chaos-infrastructures/new-infra-4.png)
+  ![step 4](./static/connect-chaos-infrastructures/new-infra-4.png)
 
 5. Add a name, description (optional) and a tag (optional). Click **Next**.
 
-![step 5](./static/connect-chaos-infrastructures/add-name-5.png)
+  ![step 5](./static/connect-chaos-infrastructures/add-name-5.png)
 
 6. Choose installation type as **Helm**, and one of the access types (namespace or cluster-wide). Specify namespace and service account.
 
-![step 6](./static/connect-chaos-infrastructures/helm-select-6.png)
+  ![step 6](./static/connect-chaos-infrastructures/helm-select-6.png)
 
 7. Depending on the type of access you chose, you will see a set of commands. If you select namespace type, you will need to enter some advanced input values. Click **Next**.
 
-![step 7a](./static/connect-chaos-infrastructures/namespace-7a.png)
+  ![step 7a](./static/connect-chaos-infrastructures/namespace-7a.png)
 
 8. You will see the following commands that you need to execute on your terminal. One you are done, click **Completed Command Execution**.
 
-![step 8](./static/connect-chaos-infrastructures/command-clusterwide-8.png)
+  ![step 8](./static/connect-chaos-infrastructures/command-clusterwide-8.png)
 
 9. If you select namespace scope, you will see the following commands that you need to execute on your terminal. One you are done, click **Completed Command Execution**.
 
-![step 7](./static/connect-chaos-infrastructures/command-namespace-7.png)
+  ![step 7](./static/connect-chaos-infrastructures/command-namespace-7.png)
 
 ### Use helm template to upgrade chaos infrastructure
 
 * To upgrade a chaos infrastructure that you installed using the Helm commands, you can navigate to the environment and click **Upgrade now**. This will list the set of commands that you can execute on your terminal.
 
-![step 9](./static/connect-chaos-infrastructures/upgrade-9.png)
+  ![step 9](./static/connect-chaos-infrastructures/upgrade-9.png)
 
 
 2. Choose an existing environment or create a new environment
@@ -257,17 +257,17 @@ To add a Linux chaos infrastructure:
 
 1. In the environment details page, under **Infrastructure type**, select **Linux**, and then select **+ Enable Chaos**.
 
-  ![Create Infra](./static/connect-chaos-infrastructures/2.select-linux.png)
+    ![Create Infra](./static/connect-chaos-infrastructures/2.select-linux.png)
 
 1. On the next screen, enter a **Name** for the infrastructure, and optionally, a **Description** and **Tags**.
 
-  ![Specify Details](./static/connect-chaos-infrastructures/3.configure-chaos.png)
+    ![Specify Details](./static/connect-chaos-infrastructures/3.configure-chaos.png)
 
   You can also specify the [advanced setup](/docs/chaos-engineering/features/chaos-infrastructure/linux-chaos-infrastructure-advanced-management#advanced-setup) options for the infrastructure.
 
 1. Select **Next**.
 
-  ![Execute Command](./static/connect-chaos-infrastructures/4.deploy-infra.png)
+    ![Execute Command](./static/connect-chaos-infrastructures/4.deploy-infra.png)
 
 1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
@@ -280,16 +280,15 @@ Ensure that you have fulfilled the [prerequisites](/docs/chaos-engineering/chaos
 
 1. Navigate to **Environments** and click **Windows**. click **Enable chaos**.
 
-![](./static/windows-infrastructure/connect-1.png)
-
+    ![](./static/windows-infrastructure/connect-1.png)
 
 2. Add name (mandatory), and admin user.
 
-![](./static/windows-infrastructure/enter-details-2.png)
+    ![](./static/windows-infrastructure/enter-details-2.png)
 
 3. Copy the command generated. The [prerequisites](/docs/chaos-engineering/chaos-faults/windows/prerequisites.md) discusses how you can configure a password. If you have a password, replace it in the `<your-password>` placeholder. Execute this command on your terminal (remember to open the command prompt as an admin if you are not admin by default). Click **Done** once you finish the execution.
 
-![](./static/windows-infrastructure/copy-command-3.png)
+    ![](./static/windows-infrastructure/copy-command-3.png)
 
 This displays the following updates about the installation on your terminal.
 

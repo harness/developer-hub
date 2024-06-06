@@ -161,12 +161,6 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 ## Use a certificate and key
 
-:::note 
-
-This feature is behind the feature flag `CDS_HTTP_STEP_NG_CERTIFICATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 :::important
 This feature requires Harness Delegate version 82400 or later. 
 :::
@@ -493,7 +487,6 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
   spec: {}  
 ...
 ```
-
 
 ## See also
 

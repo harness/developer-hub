@@ -5,35 +5,44 @@ description: Steps to configure ChaosGuard and enable it
 redirect_from:
 	- /docs/chaos-engineering/configure-chaos-experiments/chaosguard/configuring-chaosguard
 ---
-
-This section walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.
+This topic walks you through the configuration of ChaosGuard and how to enable it to mitigate potential security threats from chaos-enabled users with malicious intent.
 
 ## Before you begin
 
-[Harness RBAC](./introduction-to-chaosguard) (role-based access control) serves as a prerequisite to understanding [ChaosGuard](./chaosguard-concepts), which serves as an execution-time security evaluation.
+[Harness RBAC](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard) (role-based access control) serves as a prerequisite to understanding [ChaosGuard](/docs/chaos-engineering/features/chaosguard/chaosguard-concepts), which serves as an execution-time security evaluation.
 
-## Configuring conditions
+## Configure conditions
 Conditions describe a set of constraints that are applied to an execution context. You can use both **'EQUAL'** and **'NOT EQUAL TO'** operators in conditions. You can also use wildcards within the condition entities, which offers flexibility and control in defining conditions.
 
 To configure a condition,
 
-1. Click **ChaosGuard** on the left-hand side of the **Chaos** homepage. Click **Conditions** on the top right corner of the ChaosGuard page. This displays the conditions that you created earlier. You can use one of these or create a new condition.
+1. In the **Chaos** module, select **ChaosGuard**, and then select **Conditions**. The **Conditions** page lists your existing conditions. You can use the existing conditions or create a new condition.
 
-	![navigate](./static/configure-chaosguard/navigate-1.png)
+	![navigate to chaos](./static/configure-chaosguard/navigate-1.png)
 
-2. To create a new condition, click **New condition**.
+2. To create a condition, click **New condition**.
 
 	![new-condition](./static/configure-chaosguard/new-condition.png)
 
-3. Provide a name, a description (optional), and tags (optional). Click **Save**. This saves the new condition you created.
+3. Provide a name, a description (optional), and tags (optional). Click **Save**.
 
 	![edit-condition](./static/configure-chaosguard/edit-condition.png)
 
-This creates a blank canvas, and you can define the constraints for the condition using a YAML manifest or using the visual editor.
+This creates a blank canvas, and you can define the constraints for the condition using a **YAML manifest** or using the **visual editor** or **Harness AIDA**.
 
-### Add conditions using visual editor
+### Define constraints using YAML
 
-1. To add conditions using a visual editor, navigate to the **visual** tab of condition you created earlier.
+1. You can add conditions using the YAML too.
+
+	![select](./static/configure-chaosguard/select-1.png)
+
+2. Click **YAML** and specify the relevant values corresponding to the respective names.
+
+	![yaml edit](./static/configure-chaosguard/yaml-edit.png)
+
+### Define constraints using the visual editor
+
+1. To add conditions using a visual editor, navigate to the **visual** tab of the condition you created earlier.
 
 	![condition](./static/configure-chaosguard/condition-create.png)
 
@@ -45,7 +54,7 @@ This creates a blank canvas, and you can define the constraints for the conditio
 
 	![where](./static/configure-chaosguard/condition-where.png)
 
-4. Add the **WHICH** clause. In this case, the condition blocks the infrastructure that has `prod-2-infra` namespace and `app=chaos-exporter` app label.
+4. Add the **WHICH** clause. In this case, the condition blocks the infrastructure that has the `prod-2-infra` namespace and `app=chaos-exporter` app label.
 
 	![which](./static/configure-chaosguard/condition-which.png)
 
@@ -53,17 +62,7 @@ This creates a blank canvas, and you can define the constraints for the conditio
 
 	![using](./static/configure-chaosguard/condition-using.png)
 
-### Add conditions using YAML
-
-1. You can add conditions using the YAML too.
-
-	![select](./static/configure-chaosguard/select-1.png)
-
-2. Click **YAML** and specify the relevant values corresponding to the respective names.
-
-	![yaml edit](./static/configure-chaosguard/yaml-edit.png)
-
-### Add conditions using AIDA
+### Define constraints using AIDA
 
 1. Instead of selecting the required parameters, you can generate conditions with the help of Harness AIDA. AIDA assistant shows up when you are configuring a condition. You can choose one of the suggestions provided by Harness AIDA by clicking on it or writing something along the same lines as the suggestions.
 
@@ -77,7 +76,13 @@ This creates a blank canvas, and you can define the constraints for the conditio
 
     ![aida apply](./static/configure-chaosguard/aida-apply-3.png)
 
-## Configuring rules
+## Save condition
+
+After you define the constraints of a condition either using [YAML](#define-constraints-using-yaml), [visual editor](#define-constraints-using-the-visual-editor), or [AIDA](#define-constraints-using-aida), select **Save**.
+
+	![save constraints](./static/configure-chaosguard/save-constraint.png)
+
+## Configure rules
 
 Rules consist of one or more **conditions** that are evaluated as a first step in the experiment run. To configure a rule,
 

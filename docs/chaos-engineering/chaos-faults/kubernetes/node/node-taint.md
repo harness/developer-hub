@@ -10,8 +10,8 @@ Node taint taints the node by applying the desired effect. Only the resources th
 ![Node Taint](./static/images/node-taint.png)
 
 ## Use cases
-- Node taint fault verifies the resilience of applications when a certain taint is added to a node. 
-- It simulates loss of critical services (or node-crash). 
+- Node taint fault verifies the resilience of applications when a certain taint is added to a node.
+- It simulates loss of critical services (or node-crash).
 - It verifies resource budgeting on cluster nodes (whether request(or limit) settings are honored on the available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 

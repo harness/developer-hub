@@ -107,9 +107,8 @@ export default function CloudCostManagement() {
       </div>
       <div className={styles.btns}>
         <button
-          className={`${styles.certBtn} ${
-            activePage === ActivePage.Certifications ? styles.active : ""
-          }`}
+          className={`${styles.certBtn} ${activePage === ActivePage.Certifications ? styles.active : ""
+            }`}
           onClick={handleCertficationClick}
         >
           {activePage !== ActivePage.Certifications ? (
@@ -122,9 +121,8 @@ export default function CloudCostManagement() {
 
         <button
           onClick={handleInstLedTrainClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.InstructorLedTraining ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.InstructorLedTraining ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.InstructorLedTraining ? (
             <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
@@ -135,14 +133,13 @@ export default function CloudCostManagement() {
         </button>
         <button
           onClick={handleSelfPacedTrainingClick}
-          className={`${styles.InstLedTrainBtn} ${
-            activePage === ActivePage.SelfPacedTraning ? styles.active : ""
-          }`}
+          className={`${styles.InstLedTrainBtn} ${activePage === ActivePage.SelfPacedTraning ? styles.active : ""
+            }`}
         >
           {activePage === ActivePage.SelfPacedTraning ? (
-            <img src="/img/Instructor_led_trainin_logo_unactive.svg" />
+            <img src="/img/self-paced-training-logo-inactive.svg" />
           ) : (
-            <img src="/img/Instructor_led_trainin_logo.svg" />
+            <img src="/img/self-paced-training-logo-active.svg" />
           )}
           Self-Paced Training
         </button>
@@ -351,8 +348,8 @@ export default function CloudCostManagement() {
         <div className={styles.tabs}>
           <h2>Instructor-Led Training</h2>
           <p>
-            Intensive two-day course is designed for engineers looking to deepen
-            their understanding and expertise.
+            Intensive two-day courses are designed for engineers looking to
+            deepen their understanding and expertise in Harness. Can be delivered in a dedicated or <a href="https://university-registration.harness.io/calendar" target="_blank"> shared virtual </a> format.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -382,7 +379,7 @@ export default function CloudCostManagement() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
-            Self-paced courses that you can consume on your own time in a webinar style.
+            Free self-paced courses that you can consume on your own time.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -393,10 +390,10 @@ export default function CloudCostManagement() {
                 .map((spt) => (
                   <IltCard {...spt} />
                 ))}
-              {ilt
+              {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "ccm" && spt.cardType === "SPT" ||
+                    spt.module === "ccm" && spt.cardType === "FREE" ||
                     (spt.module === "ccm" && spt.tileType === "comming soon")
                   );
                 })

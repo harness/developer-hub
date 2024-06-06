@@ -23,7 +23,7 @@ For maintaining consistency, we'll refer to our `main` branch as both the base a
 
 ## Prerequisites
 
-Before you begin, make sure you understand [SBOM generation](/docs/software-supply-chain-assurance/sbom/generate-sbom) and [SBOM drift](/docs/software-supply-chain-assurance/sbom/SBOM-Drift).
+Before you begin, make sure you understand [SBOM generation](/docs/software-supply-chain-assurance/sbom/generate-sbom) and [SBOM drift](/docs/software-supply-chain-assurance/sbom/sbom-drift).
 
 You need:
 

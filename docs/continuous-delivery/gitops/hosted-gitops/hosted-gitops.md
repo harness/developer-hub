@@ -32,6 +32,6 @@ To use a Harness Hosted GitOps agent, do the following:
 
 Wait until the **Health Status** is **Healthy** and the **Connection Status** is **Connected**.  
 
-Additionally, if your destination cluster is behind a firewall you can provide a list of IPs that should be allowed to access the cluster. For more information. go to [Harness hosted GitOps IP addresses](https://developer.harness.io/docs/continuous-delivery/gitops/gitops-ref/gitops-allowlist/).
+Additionally, if your destination cluster is behind a firewall you can provide a list of IPs that should be allowed to access the cluster. For more information. go to [Harness hosted GitOps IP addresses](/docs/platform/references/allowlist-harness-domains-and-ips#add-harness-hosted-gitops-ips-to-the-allowlist).
 
 When your agent is ready and authorized to access your clusters, you can start creating GitOps repositories, clusters, and applications. For more information, go to [GitOps Quickstart](/docs/continuous-delivery/gitops/get-started/harness-cd-git-ops-quickstart.md).

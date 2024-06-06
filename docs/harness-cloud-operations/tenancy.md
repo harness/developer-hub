@@ -6,11 +6,13 @@ sidebar_label: Tenancy
 
 ## Multi-tenant vs Single-tenant SaaS
 
-Harness accounts are by default provisioned on multi-tenant SaaS clusters. The term "account" is synomymous to a tenant from a SaaS cluster perspective.
+Harness accounts are by default provisioned on multi-tenant SaaS clusters. Harness does not provide single-tenant SaaS clusters at this time. The only way to achieve this single tenancy is via the Harness Self-Managed Enterprise Edition (aka SMP).
+
+Note that the term "account" is synomymous to a "tenant" from a SaaS cluster perspective.
 
 ## Account Migration
 
-Customers can request migration of their account from a multi-tenant SaaS cluster to a single-tenant SaaS cluster at an additional cost. The following are important points to note in the context of account migration.
+Customers can request migration of their account from one multi-tenant SaaS cluster to another multi-tenant SaaS cluster. The following are important points to note in the context of account migration.
 
 1. It involves downtime during which regular usage of Harness will not be possible via any means including UI, delegates, APIs and webshooks. 
 

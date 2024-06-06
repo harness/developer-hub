@@ -52,6 +52,8 @@ Depending on your target environment, you'll need to update the `override.yaml` 
 
 ### Add a load balancer
 
+You can use either Istio or Nginx as your ingress controller based on your specific technical requirements. Harness Self-Managed Enterprise Edition integrates with your chosen solution, providing enhanced traffic management, security, and streamlined DevOps workflows.
+
 Use the following procedure to add a load balancer.
 
 <Tabs>
@@ -75,7 +77,6 @@ To add the URL for a load balancer, do the following:
 
 <!---
 <TabItem value="ELB" label="ELB">
-
 
 </TabItem>
 
@@ -133,6 +134,64 @@ To an ingress ALB, do the following:
 </TabItem>
 </Tabs>
 
+### Optional: Configure a vanity URL based on your load balancer
+
+You can use the script provided below to configure a vanity URL based on your load balancer. The script is available in the [Harness Helm chart](https://github.com/harness/helm-charts/blob/main/src/harness/configure-vality-url.sh) and also accessible at the following path within your Helm manifest: `harness/configure-vanity-url.sh`.
+
+#### Prerequisites
+
+Before using this script, ensure the following prerequisites are met:
+
+- You must have a subdomain URL mapped to your load balancer's static IP. The subdomain URL must adhere to one of the following example formats:
+  - `http://mysubdomain.mysite.com`
+  - `https://mysubdomain.mysite.com`
+
+#### Execution
+
+Execute this script within your cluster environment, providing three argument inputs:
+
+1. Namespace
+2. Account ID
+3. Subdomain URL
+
+```
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 <namespace> <accountId> <subdomainUrl>"
+    exit 1
+fi
+
+# Assign the first argument to namespace
+namespace="$1"
+
+# Assign the second argument to accountId
+accountId="$2"
+
+# Assign the second argument to subdomainUrl
+subdomainUrl="$3"
+
+MONGO_PASS=$(kubectl get secret -n $namespace mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode)
+kubectl exec -it mongodb-replicaset-chart-0 -n $namespace -- mongo <<EOF
+use admin
+db.auth('admin', '${MONGO_PASS}')
+use gateway
+db.account_refs.update({"uuid":"${accountId}"},{\$set:{"subdomainUrl": "${subdomainUrl}"}})
+db.account_refs.find()
+use harness
+db.accounts.update({"_id":"${accountId}"},{\$set:{"subdomainUrl": "${subdomainUrl}"}})
+db.accounts.find()
+EOF
+kubectl patch configmap ng-auth-ui -n $namespace --type merge -p '{"data":{"EXPECTED_HOSTNAME":"app.harness.io"}}'
+kubectl rollout restart -n $namespace deployment -l "app.kubernetes.io/name=ng-auth-ui"
+```
+
+##### Example command
+
+The example command below executes the `configure-vanity-url.sh` script file for the `mynamespace` namespace, `abc123` account ID, and `http://smp.harnessurl.com` subdomain URL.
+
+```
+./configure-vanity-url.sh mynamespace abc123 http://smp.harnessurl.com
+```
+
 ### Deploy Harness modules
 
 Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
@@ -149,7 +208,6 @@ The Harness modules below can be enabled or disabled conditionally:
 * Harness Security Testing Orchestration (STO)
 * Harness Service Reliability Management (SRM)
 * Harness Feature Flags (FF)
-* Harness Continuous Error Tracking (CET)
 * (**Beta**) Harness Software Supply Chain Assurance (SSCA)
 
 You can conditionally disable or enable the modules by specifying a boolean value in the `enabled` field of the YAML:
@@ -202,14 +260,6 @@ chaos:
 enabled: true
 ```
 
-#### Deploy the CET module
-
-```
-cet:
-# -- Enable to deploy CET to your cluster
-enabled: true
-```
-
 #### Deploy the SSCA module
 
 ```
@@ -217,7 +267,6 @@ ssca:
 # -- Enable to deploy SSCA to your cluster
 enabled: true
 ```
-
 
 ### Add a Harness license
 
@@ -253,7 +302,7 @@ To install the Helm chart, do the following:
 4. Install the Helm chart.
 
    ```
-   helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+   helm install my-release harness/harness -n <namespace> -f override.yaml
    ```
 
 ## Verify the installation
@@ -300,4 +349,3 @@ To get started with the modules, review the following topics:
 * For Harness Security Testing Orchestration, go to the [STO overview](../../security-testing-orchestration/get-started/overview.md).
 * For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-hce).
 * For Harness Cloud Cost Management, go to [Manage cloud costs by using Harness Self-Managed Enterprise Edition](/docs/category/ccm-on-harness-self-managed-enterprise-edition).
-* For Harness Continuous Error Tracking, go to the [CET onboarding guide](/docs/continuous-error-tracking/get-started/onboarding-guide).

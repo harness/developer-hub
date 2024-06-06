@@ -645,7 +645,7 @@ In the Harness Infrastructure Definition, you map outputs to their corresponding
 
 ## Containerized steps
 
-This section describes how to set up the stage **Execution** when you are using containerized steps.
+This section describes how to set up the stage **Execution** when you are using containerized steps. 
 
 ### Authentication with AWS
 
@@ -658,6 +658,8 @@ The container images pick up the access and secret keys based on these specific 
 For ECR artifacts, Harness passes in the `PLUGINS_ECR_AWS_ACCESS_KEY` and `PLUGINS_ECR_AWS_SECRET_KEY` as environment variables.
 
 For S3 artifacts, Harness passes in the `PLUGIN_S3_AWS_ACCESS_KEY` and `PLUGIN_S3_AWS_SECRET_KEY` as environment variables.
+
+For more information on how to use a Serverless Harness Connector with a containerized step group, go to [Using Serverless.com Harness Connectors with Containerized Step Groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups/#using-aws-sam-and-serverlesscom-harness-connectors-with-containerized-step-groups).
 
 ### Step group
 
@@ -732,13 +734,13 @@ exit 1
 
 The Serverless Prepare Rollback step describes the CloudFormation stack and gets its current state. This information is stored and passed to the Serverless Rollback Step, and used in the case of rollback.
 
-We recommend that you use the Harness image `harnessdev/serverless-preparerollback:3.30.1-2.0.0`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+We recommend that you use the latest Harness image: [`harnessdev/serverless-preparerollback:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-preparerollback). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Prepare Rollback step, do the following:
 
 1. Open the Serverless Prepare Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-preparerollback:1.82.0-latest`.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, you can specify: [`harnessdev/serverless-preparerollback:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-preparerollback).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -746,13 +748,13 @@ For information on the remaining settings, go to [Common settings for all steps]
 
 This step performs the Serverless [package command](https://www.serverless.com/framework/docs/providers/aws/cli-reference/package).
 
-By default, this step is configured to use the Harness image `harnessdev/serverless-package:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+By default, this step is configured to use the latest Harness image: [`harnessdev/serverless-package:<LATEST_TAG>`](https://hub.docker.com/r/harnessdev/serverless-package). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Package step, do the following:
 
 1. Open the Serverless Package step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-package:1.82.0-latest`.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-package:LATEST_TAG'](https://hub.docker.com/r/harnessdev/serverless-package).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -799,13 +801,13 @@ This step performs the Serverless [deploy command](https://www.serverless.com/fr
 
 The Serverless stage and AWS region are taken from the Harness Infrastructure Definition configured in the Harness pipeline stage's **Environment** section.
 
-By default, this step is configured to use the Harness image `harnessdev/serverless-deploy:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+By default, this step is configured to use the latest Harness image: [`harnessdev/serverless-deploy:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-deploy). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Deploy step, do the following:
 
 1. Open the Serverless Deploy step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-deploy:1.82.0-latest`.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-deploy:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-deploy).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -850,13 +852,13 @@ Toggle the **Execution**/**Rollback** setting in **Execution** to see the Server
 
 The Serverless Rollback step reads the CloudFormation stack name and state generated by the Serverless Prepare Rollback step and performs rollback, if needed.
 
-By default, this step is configured to use the Harness image `harnessdev/serverless-rollback:1.82.0-latest`, hosted on Docker Hub. You can use another image, hosted in your own Docker registry.
+By default, this step is configured to use the latest Harness image: [`harnessdev/serverless-rollback:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-rollback). You can use another image, hosted in your own Docker registry.
 
 To configure the Serverless Rollback step, do the following:
 
 1. Open the Serverless Rollback step.
 2. In **Container Registry**, add a Harness Docker Registry connector to connect to Docker Hub.
-3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example, the default, `harnessdev/serverless-rollback:1.82.0-latest`.
+3. In **Image**, enter the path, image, and tag for the image you want to run in this step. For example: [`harnessdev/serverless-rollback:LATEST_TAG`](https://hub.docker.com/r/harnessdev/serverless-rollback).
 
 For information on the remaining settings, go to [Common settings for all steps](#common-settings-for-all-steps).
 
@@ -1194,3 +1196,7 @@ functions:
   hello:
     image: <+artifact.image>
 ```
+
+## FAQs
+
+For frequently asked questions about Serverless Lambda deployments in Harness, go to [Serverless Lambda deployments FAQs](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless/serverless-deployment-faqs).

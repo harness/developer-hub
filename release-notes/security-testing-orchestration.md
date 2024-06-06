@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-04-10T10:00
+date: 2024-05-23T10:00
 sidebar_position: 13
 ---
 
@@ -22,7 +22,113 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 :::
 
+## May 2024
+
+### Version 1.96.2
+
+<!-- 2024-05-22 -->
+
+#### Fixed issues
+
+- Fixed an issue where running an orchestrated Burp scan resulted in the runtime error `No matching scan configurations`. (STO-7585, ZD-63508)
+
+- Fixed a Jira integration issue that allowed tickets to be created for issues that were not in a target baseline. When the **Ticket Summary** page was viewed from these tickets, they produced a vague error page. This fix prevents the creation of new non-baseline tickets and improves the error messages shown for existing tickets. (STO-7394, ZD-60778)
+
+- Fixed a Jira integration issue where setting the default Jira project and issue type in the **External Tickets** page resulted in duplicated database records and an error response from the ticketing service. (STO-7485)
+
+
+### Version 1.95.0
+
+<!-- 2024-05-17 -->
+
+#### New features and enhancements
+
+- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rule packs. (STO-7560)
+
+  - [bandit](https://semgrep.dev/p/bandit)
+  - [brakeman](https://semgrep.dev/p/brakeman)
+  - [eslint](https://semgrep.dev/p/eslint)
+  - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+  - [flawfinder](https://semgrep.dev/p/flawfinder)
+  - [gosec](https://semgrep.dev/p/gosec)
+  - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+  - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+
+
+#### Fixed issues
+
+- Fixed a Prisma Cloud step issue where `twistcli` didn't honor step-level variables when running in Harness Cloud. You can set `JOB_NAME` in the [Settings](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference#settings) field in a Prisma Cloud step, and thereby add a searchable tab in the Prisma Cloud UI. This functionality is now available on Harness Cloud as well as Kubernetes and local build infrastructures. (STO-7508, ZD-61272)
+
+- Fixed an issue where a Wiz step failed when it scanned a package that had policies applied to it but no vulnerabilities. (STO-7573, STO-7575, ZD-63342)
+
+<!-- 
+
+- Fixed an issue where Custom Ingest and Snyk scans were incorrectly reporting all issues as new. Rerunning any affected pipelines will now produce the correct results. (STO-7574, ZD-73374)
+
+-->
+
+- Fixed an issue where **Security Tests** showed all detected issues as new when comparing the current scan against the baseline branch, even when the baseline was correctly specified in **Test Targets**. With this fix, you can simply run an affected pipeline again and produce correct results. (STO-7575, STO-7582, ZD-63551, ZD-73374)
+
+### Version 1.94.4
+
+#### New features 
+
+- You can now use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference/) and [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) in Security stages without a CI license. (STO-7442)
+
+- You can now scan code repositories using the [Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scan step. (STO-7531)
+
+ 
+
+#### Fixed issues
+
+- Fixed an issue where the Built-in Grype step would time out when uploading scan results. (STO-7464, ZD-61941)
+
+- Fixed an issue where OPA failed with the error `Unexpected error occurred while evaluating Policies`. With this fix, STO limits the number of occurrences per issue (max 1000) that it sends to OPA. (STO-7562, ZD-63083)
+
+
 ## April 2024
+
+### UI update 1.15.0
+
+#### Early access feature: Built-in SAST scans
+
+This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
+
+This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
+
+<DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add built-in SAST scan step" /> 
+
+#### New feature: Orchestrated Semgrep scans
+
+Harness STO now supports running [Semgrep scans](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) in **Orchestration** mode. (STO-7142)
+
+
+
+
+### STO Manager version 1.22.1
+
+<!-- 2024-04-18 -->
+
+#### New features and enhancements
+
+- Harness is in the process of updating the STO UI. The following changes are cosmetic and do not affect the underlying YAML definitions of STO pipelines. Harness expects all of these changes to be deployed in all namespaces by the end of April 2024. 
+
+  - The **Security Tests** stage is now called **Security** when you add a new stage and select the stage type. (STO-7384)
+
+    <DocImage path={require('./static/sto-7384-security-stage-name-update-when-adding-new-stage.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
+
+  - The **Custom Scan** step is used for scanner integrations that do not have their own configuration step. Previously, this step was called **Security**. This step also has a new icon. (STO-7385)
+
+    **Custom Scan** appears at the end of the list of Security Test steps in the Step Library. 
+
+    <DocImage path={require('./static/sto-7385-custom-scan-step-in-step-library.png')} width="50%" height="50%" title="Custom Scan step at the end of the list of Security Test steps" />
+
+- Harness STO now supports ingesting scan results in stages that run on ARM64 build infrastructures. This eliminates the need to cache results from a previous ARM64 stage and then ingest them in a stage on a supported platform. (STO-7236)  
+
+#### Fixed issues
+
+- Fixed a UI issue where the [**Context Name**](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#context-name) field in the ZAP step did not capture the specified file. (STO-7287)
+
 
 ### Version 1.92.1
 

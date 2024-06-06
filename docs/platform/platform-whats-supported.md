@@ -36,6 +36,7 @@ For supported platforms and technologies by module, go to the module documentati
 * [What's supported in CET](/docs/continuous-error-tracking/whats-supported)
 * [What's supported in IDP](/docs/internal-developer-portal/whats-supported)
 * [What's supported in SEI](/docs/software-engineering-insights/sei-supported-platforms)
+* [What's supported in IACM](/docs/infra-as-code-management/whats-supported)
 
 For supported platforms and technologies for SMP, go to [What's supported in Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition/smp-supported-platforms).
 
@@ -65,7 +66,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 | Manifest Type                       | Required Tool/SDK     | Certified Version     |
 | ----------------------------------- | --------------------- | --------------------- |
-| Kubernetes                          | kubectl               | v1.27.0               |
+| Kubernetes                          | kubectl               | v1.28.7              |
 |                                     | go-template           | v0.4.1                |
 | Helm                                | kubectl               | v1.27.0               |
 |                                     | helm                  | v3.11.0               |
@@ -112,8 +113,8 @@ Harness Platform supports notifications for the following notification methods a
 
 Harness supports approvals for these collaboration tools:
 
-- [Jira](/docs/platform/approvals/adding-jira-approval-stages)
-- [ServiceNow](/docs/platform/approvals/service-now-approvals)
+- [Jira](/docs/platform/approvals/adding-jira-approval-stages): Supports on-premise version < 9.0. For Jira on-premise >= 9.0 version support, enable the feature flag, `SPG_USE_NEW_METADATA`.
+- [ServiceNow](/docs/platform/approvals/service-now-approvals): Supports [Utah](https://docs.servicenow.com/bundle/utah-release-notes/page/release-notes/family-release-notes.html) version and earlier.
 
 For other providers, you can use [custom approvals](/docs/platform/approvals/custom-approvals) or [manual approvals](/docs/platform/approvals/adding-harness-approval-stages)
 
@@ -216,7 +217,7 @@ The Update Framework (TUF) is an open source specification for that provides ins
 
 Harness includes native TUF support via the following:
 
-- Deployment templates: [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+- Deployment templates: [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
   - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).

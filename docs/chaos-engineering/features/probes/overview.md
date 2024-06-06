@@ -10,9 +10,9 @@ This section introduces you to probes, their types, why they are important, and 
 
 ## What is a probe?
 
-Probes are pluggable checks that can be defined within the chaos engine for any chaos experiment. A probe and its specification are defined in the chaos engine. The probe is triggered by a chaos runner when the chaos engine begins exection. 
+Probes are pluggable checks that can be defined within the chaos engine for any chaos experiment. A probe and its specification are defined in the chaos engine. The probe is triggered by a chaos runner when the chaos engine begins execution.
 
-A probe explores the behavior of a system in a chaotic or unpredictable manner. It helps understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior. It also helps validate the declarative hypothesis set by the user. 
+A probe explores the behavior of a system in a chaotic or unpredictable manner. It helps understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior. It also helps validate the declarative hypothesis set by the user.
 
 ![Probe](./static/overview/probe.png)
 
@@ -29,7 +29,7 @@ Declarative hypotheses in HCE can be written in a simple, clear and concise mann
 HCE facilitates different types of probes.
 
 - [**HTTP probe**](/docs/chaos-engineering/features/probes/http-probe.md): To query health/downstream URIs.
-- [**Command probe**](/docs/chaos-engineering/features/probes/cmd-probe.md): To execute any user-desired health-check function implemented as a shell command.
+- [**Command probe**](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe.md): To execute any user-desired health-check function implemented as a shell command.
 - [**Kubernetes probe**](/docs/chaos-engineering/features/probes/k8s-probe.md): To perform CRUD operations against native and custom Kubernetes resources.
 - [**Prometheus probe**](/docs/chaos-engineering/features/probes/prom-probe.md): To execute PromQL queries and match prometheus metrics for specific criteria.
 - [**Datadog probe**](/docs/chaos-engineering/features/probes/datadog-probe.md): To query a [Datadog Synthetic](https://docs.datadoghq.com/synthetics/) test and use its results to evaluate the probe outcome.
@@ -94,7 +94,7 @@ These are some of the common use cases where chaos probes can be used but it can
 
 ## Effects on the resilience score
 
-In a chaos experiment, the probe success percentage refers to the percentage of successful probes out of the total number of probes run during a chaos experiment. The value depends on the successful outcome of the probe criteria based on the type and mode selected. There are two possible values of probe success percentage for each of the probe criterias, either `0`(if the criteria assertion fails) or `100`(if the criteria assertion passes).
+In a chaos experiment, the probe success percentage refers to the percentage of successful probes out of the total number of probes run during a chaos experiment. The value depends on the successful outcome of the probe criteria based on the type and mode selected. There are two possible values of probe success percentage for each of the probe criteria, either `0`(if the criteria assertion fails) or `100`(if the criteria assertion passes).
 
 The probe success percentage for each of the probes mentioned in the fault plays an important role in determining the final Resilience Score of the experiment. The Resilience Score of a Chaos Experiment is calculated by this formula:
 
@@ -111,7 +111,7 @@ It is an important metric in evaluating the results of a chaos experiment and ca
 
 ## Probe status and deriving inferences
 
-The chaos experiments run the probes defined in the ChaosEngine and update their stage-wise success in the ChaosResult custom resource, with details including the overall **probeSuccessPercentage** (a ratio of successful checks v/s total probes) and failure step, where applicable. The success of a probe is dependent on whether the expected status/results are met and also on whether it is successful in all the experiment phases defined by the probe’s execution mode. For example, probes that are executed in “Edge” mode, need the checks to be successful both during the pre-chaos & post-chaos phases to be declared as successful.
+The chaos experiments run the probes defined in the ChaosEngine and update their stage-wise success in the ChaosResult custom resource, with details including the overall **probeSuccessPercentage** (a ratio of successful checks v/s total probes) and failure step, where applicable. The success of a probe is dependent on whether the expected status/results are met and also on whether it is successful in all the experiment phases defined by the probe's execution mode. For example, probes that are executed in "Edge" mode, need the checks to be successful both during the pre-chaos & post-chaos phases to be declared as successful.
 
 The pass criteria for an experiment is the logical conjunction of all probes defined in the ChaosEngine and an inbuilt entry/exit criteria. Failure of either indicates a failed hypothesis and is deemed experiment failure.
 
@@ -162,4 +162,4 @@ probe:
 ## Next steps
 
 * [Configure and add a probe](/docs/chaos-engineering/features/probes/configure-and-add-probe.md)
-* [Using command probe in different modes](/docs/chaos-engineering/features/probes/cmd-probe-usage.md)
+* [Using command probe in different modes](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-usage.md)

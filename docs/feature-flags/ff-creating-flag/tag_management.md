@@ -1,7 +1,7 @@
 ---
-title: Tagging Management
+title: Manage tags for feature flags
 description: This topic focuses on tagging and its uses within Feature Flags.
-sidebar_position: 10
+sidebar_position: 45
 ---
 
 # Tagging Management Overview
@@ -84,7 +84,7 @@ Check out the [Manage Resource Groups in Harness](../../../docs/platform/role-ba
 
 # Related Content
 
- - [Manage access control](/docs/feature-flags/ff-security-compliance/manage-access-control.md)
+ - [Manage access control](../secure-ff/rbac-at-ff/manage-access-control.md)
 
  - [Creating a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag.md)
 

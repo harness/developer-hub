@@ -46,13 +46,8 @@ Pod API latency:
       </tr>
       <tr>
         <td> LATENCY </td>
-        <td> Delay added to the api requests and responses (in seconds). </td>
-        <td> Default: 2. For more information, go to <a href="#latency">latency </a></td>
-      </tr>
-      <tr>
-        <td> PATH_FILTER </td>
-        <td> Api path or route used for the filtering </td>
-        <td> For more information, go to <a href="#path-filter">path filter </a></td>
+        <td> Delay added to the API requests and responses. </td>
+        <td> It supports ms, s, m, h units, Default: 2s. For more information, go to <a href="#latency">latency </a></td>
       </tr>
     </table>
 
@@ -62,6 +57,46 @@ Pod API latency:
         <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
+      </tr>
+     <tr>
+        <td> PATH_FILTER </td>
+        <td> API path or route used for the filtering. </td>
+        <td> Targets all paths if not provided. For more information, go to <a href="#path-filter">path filter </a>.</td>
+      </tr>
+      <tr>
+        <td> HEADERS_FILTERS </td>
+        <td> Filters for HTTP request headers accept multiple comma-separated headers in the format <code>key1:value1,key2:value2</code>. </td>
+        <td> For more information, go to <a href="#advanced-filters">header filters</a>.</td>
+      </tr>
+      <tr>
+        <td> METHODS </td>
+        <td> The HTTP request method type accepts comma-separated HTTP methods in upper cases, such as "GET,POST". </td>
+        <td> For more information, go to <a href="#advanced-filters">methods</a>.</td>
+      </tr>
+      <tr>
+        <td> QUERY_PARAMS </td>
+        <td> HTTP request query parameter filters accept multiple comma-separated query parameters in the format of <code>param1:value1,param2:value2</code>. </td>
+        <td> For more information, go to <a href="#advanced-filters">query params</a>.</td>
+      </tr>
+<tr>
+        <td> SOURCE_HOSTS </td>
+        <td> Includes comma-separated source host names as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">source hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> SOURCE_IPS </td>
+        <td> This includes comma-separated source IPs as filters, indicating the origin of the HTTP request. This is specifically relevant to the "ingress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">source ips</a>.</td>
+      </tr>
+      <tr>
+        <td> DESTINATION_HOSTS </td>
+        <td> Comma-separated destination host names are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
+      </tr>
+      <tr>
+        <td> DESTINATION_IPS </td>
+        <td> Comma-separated destination IPs are used as filters, indicating the hosts on which you call the API. This specification applies exclusively to the "egress" type. </td>
+        <td> For more information, go to <a href="#advanced-filters">destination hosts</a>.</td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>
@@ -181,7 +216,7 @@ spec:
             - name: TARGET_SERVICE_PORT
               value: "80"
             - name: PATH_FILTER
-              value: '/status'         
+              value: '/status'
 ```
 
 ### Latency
@@ -213,7 +248,7 @@ spec:
           env:
             # provide the latency value
             - name: LATENCY
-              value: "2000"
+              value: "2s"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
               value: "80"
@@ -253,7 +288,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Destination ports
@@ -295,7 +330,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### HTTPS
@@ -308,7 +343,7 @@ Set this parameter if the HTTPS URL of the target application includes a port, f
 
 #### Egress
 
-For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application. 
+For outbound traffic, setting `HTTPS_ENABLED` to `true` is required to enable HTTPS support for external services. This enables the establishment of TLS certificates for the proxy within the target application.
 
 * If the HTTP client in the target application is configured to reload certificates with each API call, set `HTTPS_ENABLED` to `true`, and there's no need to provide `CUSTOM_CERTIFICATES`. However, if the root certificate directory and file name differ from `/etc/ssl/certs` and `ca-certificates.crt` respectively, set the root certificate directory path using the `HTTPS_ROOT_CERT_PATH` ENV variable and the file name using the `HTTPS_ROOT_CERT_FILE_NAME` ENV variable.
 * If the HTTP client in the target application isn't configured to reload certificates with each API call, you must provide the `CUSTOM_CERTIFICATES` ENV variable to the chaos experiment and no need to set `HTTPS_ROOT_CERT_PATH` and `HTTPS_ROOT_CERT_FILE_NAME` ENV. The same custom certificates should be loaded into the target application. You can generate custom certificates using the following commands:
@@ -352,7 +387,7 @@ spec:
               value: '/status'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
-              value: "80"        
+              value: "80"
 ```
 
 ### Advanced fault tunables
@@ -399,6 +434,61 @@ spec:
             # provide the api path filter
             - name: PATH_FILTER
               value: '/status'
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
+```
+
+### Advanced filters
+
+- `HEADERS_FILTERS`: The HTTP request headers filters, that accept multiple comma-separated headers in the format of `key1:value1,key2:value2`.
+- `METHODS`: The HTTP request method type filters, that accept comma-separated HTTP methods in upper case, that is, `GET,POST`.
+- `QUERY_PARAMS`: The HTTP request query parameters filter, accepts multiple comma-separated query parameters in the format of `param1:value1,param2:value2`.
+- `SOURCE_HOSTS`: Comma-separated source host names filters, indicating the origin of the HTTP request. This is relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `SOURCE_IPS`: Comma-separated source IPs filters, indicating the origin of the HTTP request. This is specifically relevant to the `ingress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_HOSTS`: Comma-separated destination host names filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+- `DESTINATION_IPS`: Comma-separated destination IPs filters, indicating the hosts on which you call the API. This specification applies exclusively to the `egress` type, specified by `SERVICE_DIRECTION` environment variable.
+
+The following YAML snippet illustrates the use of this environment variable:
+
+[embedmd]:# (./static/manifests/pod-api-latency/advanced-filters.yaml yaml)
+```yaml
+# it injects the api latency fault
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-api-latency
+      spec:
+        components:
+          env:
+            # provide the headers filters
+            - name: HEADERS_FILTERS
+              value: 'key1:value1,key2:value2'
+            # provide the methods filters
+            - name: METHODS
+              value: 'GET,POST'
+            # provide the query params filters
+            - name: QUERY_PARAMS
+              value: 'param1:value1,param2:value2'
+            # provide the source hosts filters
+            - name: SOURCE_HOSTS
+              value: 'host1,host2'
+            # provide the source ips filters
+            - name: SOURCE_IPS
+              value: 'ip1,ip2'
+            # provide the connection type
+            - name: SERVICE_DIRECTION
+              value: 'ingress'
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
               value: "80"

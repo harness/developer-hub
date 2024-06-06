@@ -31,6 +31,11 @@ This tab provides information about the components that make up the artifact. It
 
 <DocImage path={require('./static/artifact-view-components-tab.png')} />
 
+### Component labels with image layers
+The Artifact view not only enables you to see all the components within your artifact but also accurately identifies the specific image layer each component originates from. For instance, by hovering over the icon next to the component name, you can determine whether it is part of the application image, the base image, or the underlying operating system distribution. This precise labeling provides a deeper insight into the composition of your software, thereby enhancing your ability to effectively address security risks. For more information on this feature, please refer to the [Label components from image](./label-components-from-image.md) document.
+
+<DocImage path={require('./static/artifact-view-components-label.png')} />
+
 ### Deployment view 
 
 This tab offers details into the environments where the artifact has been deployed and the pipeline utilized for deployment. It also includes details about policy violations and the status of SLSA verification.

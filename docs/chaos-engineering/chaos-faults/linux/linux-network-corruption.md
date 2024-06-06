@@ -84,7 +84,7 @@ Linux network corruption:
 
 The `destinationHosts` input variable subjects the comma-separated target host names to chaos.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/destination-hosts.yaml yaml)
 ```yaml
@@ -104,7 +104,7 @@ spec:
 
 The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos. You can specify the ports to be targeted for an IP by using a pipe (`|`) as a separator. Providing ports is optional, omitting them will affect all the ports associated with the destination IPs.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/destination-ips.yaml yaml)
 ```yaml
@@ -127,7 +127,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 - `sourcePorts`: Ports of the target application whose accessibility is impacted.
 - `destinationPorts`: Ports of the destination services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/source-and-destination-ports.yaml yaml)
 ```yaml
@@ -152,7 +152,7 @@ By default, the network experiments disrupt traffic for all the source and desti
 - `sourcePorts`: Provide source ports that are not subject to chaos as comma-separated values preceded by `!`.
 - `destinationPorts`: Provide destination ports that are not subject to chaos as comma-separated values preceded by `!`.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/ignore-source-and-destination-ports.yaml yaml)
 ```yaml
@@ -174,7 +174,7 @@ spec:
 
 The `packetCorruptionPercentage` input variable corrupts a specific percentage of data packets.
 
-The following YAML snippet illustrates the use of this environment variable:
+The following YAML snippet illustrates the use of this input variable:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/packet-corruption-percentage.yaml yaml)
 ```yaml

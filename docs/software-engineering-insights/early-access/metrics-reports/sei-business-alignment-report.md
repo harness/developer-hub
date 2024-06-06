@@ -15,50 +15,93 @@ The Business Alignment report feature is currently in BETA. Contact [Harness Sup
 
 <br />
 
-The Business Alignment report displays the effort invested for each Category as a percentage value along with an assigned target **Label** (**Ideal**, **Poor**, **Acceptable**) on the **Pie Chart**.
-
-The **Trend Chart** on the widget displays the detailed breakdown of the score in the **Stacked Bar Chart** format. It displays the trend of effort investment over time, based on defined **Category** and their associated **Allocation Goals** in the [Business Alignment profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile).
-
-The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
+The report displays the effort invested for each category as a percentage, along with a label (`Ideal`, `Poor`, `Acceptable`) on the **Pie Chart**. The Trend Section displays the breakdown of the score over time in a **Stacked Bar Chart** format, based on the defined  Categories and their associated Allocation Goals in the [Business Alignment Profile](/docs/software-engineering-insights/early-access/profiles/sei-business-alignment-profile). The Bar Chart breaks down the metric value into time intervals as configured under the widget settings.
 
 ![](./static/ba-report.png)
 
 ## Calculation Parameters
 
-* **Effort Allocation:** This is the calculated percentage of effort allocated to a specific contributor and investment category within the chosen effort unit. It indicates how the effort is distributed.
+* **Effort Allocation:** The calculated percentage of effort allocated to a specific contributor and investment category within the chosen effort unit (e.g., ticket count, story points, or ticket time spent). It indicates how the effort is distributed.
 * Users may choose the desired effort unit at the widget level, such as **Ticket Count**, **Story Points**, or **Ticket Time Spent**. These units represent different ways of quantifying workload:
   * **Ticket count:** Represents the total number of tickets worked on.
   * **Story points:** Refers to the sum of all assigned story points.
   * **Ticket time spent:** Indicates the amount of time spent on tickets while they remain in the `In Progress` status category.
 
-This report supports two types of drill-down views:
+The report supports two drill-down views:
 
 1. Drill down by Contributors
 2. Drill down by Tickets
 
 ## Drill down by Contributors
 
-By selecting a category from the **Stacked Bar Chart**, you can access the drill-down report displaying data on the total completed effort, including the distribution of effort among individual contributors across all categories or just the selected one.
+Displays the total completed effort and distribution among individual contributors across all categories or the selected one. By selecting a category from the **Stacked Bar Chart**, you can access the drill-down report displaying data on the total completed effort, including the distribution of effort among individual contributors.
 
 ![](./static/drilldown-contributors.png)
 
 ## Drill down by Tickets
 
-This displays the report drill down view for tickets. When viewing the selected category on the **Bar Chart**, the widget will show data for all the relevant tickets included in the selected category. Alternatively, when a particular interval is selected from the Bar Chart, the widget will display the data for items across all categories during the selected time interval.
+Shows the relevant tickets included in the selected category or time interval in a tabular format. When viewing the selected category on the **Bar Chart**, the widget will show data for all the relevant tickets included in the selected category. Alternatively, when a particular interval is selected from the Bar Chart, the widget will display the data for items across all categories during the selected time interval.
 
-The data is represented in tabular format. Both the drill-down options support search functionality, enabling you to search for specific contributors or tickets directly.
+The data is represented in tabular format. Both the drill-down options support searching for specific contributors or tickets.
 
 ![](./static/drilldown-tickets.png)
 
 :::info
-Please note that the **Drilldown by Contributor** option is available only if the widget is configured with **FTE (By Engineer)** settings for calculating effort.
+Please note that the **Drilldown by Contributor** option is available only if the widget is configured to calculate effort by engineer (FTE).
 :::
+
+## Add the report
+
+### Step 1: Add the widget
+
+* Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+
+* Select **Settings**, and then select **Add Widget**.
+
+* Select the **Business Alignment Report** widget.
+
+### Step 2: Configure the Filters on the widget
+
+* Define the **Issue Resolved In** filter as either in `relative` or `absolute` time frame. You can also enable the **Use Insight Time** option to consider the data as per the active date configured on the Insight.
+
+* You can add more conditions to specify what data feeds into the widget by creating inclusive and exclusive filters (For example: Project etc)
+
+* If you include multiple filters, they are inherently combined with an `AND` operator.
+
+### Step 3: Configure the widget settings
+
+* Select the **Business Alignment Profile** that you want to use in the metric calculation for the widget.
+
+* Select the **Effort Attribution** as either **Only use current assignee** or **Use current and previous assignee**
+  * **Only use current assignee:** This option considers only the current assignee of a ticket when calculating effort.
+  * **Use current and previous assignee:** This option considers both the current and previous assignees of a ticket when calculating effort.
+
+* Select the **Effort Unit** as either **Ticket count**, **Story points** or **Ticket time spent**. This essentially defines how you want to calculate the effort for your alignment metric calculations.
+  * **Ticket count:** The effort is calculated based on the number of tickets worked on.
+  * **Story points:** The effort is calculated based on the sum of story points assigned to the tickets.
+  * **Ticket time spent:** The effort is calculated based on the amount of time spent on tickets while they were in the **In Progress** status category.
+
+* Select the **Effort Calculation** as either **Absolute (By ticket)** or **FTE (By engineer)**. 
+  * **Absolute (By Ticket):** This considers the total number of tickets assigned within a specific category.
+  * **FTE (By Engineer):** This option considers the relative effort invested by the engineer across all the tickets that belong to different categories.
+
+:::info
+
+If the engineer has worked on 5 tickets, belonging to 3 different categories, their effort is distributed across the 3 categories based on the Effort Unit and Effort Attribution selected.
+
+:::
+
+* Select the interval for the widget to display the data. This option allows you to choose the time interval for which the widget should display the data, such as **Weekly**, **Bi-weekly**, **Monthly** or **Quarterly**.
+
+### Step 4: Save the widget
+
+Complete the widget settings and select **Next: Place Widget**, place the widget on Insight and then select **Save Layout**.
 
 ## Calculation Example
 
 In this example, we have a User X who is part of a team responsible for completing tasks in two different categories: Category A and Category B. These categories represent different types of work or projects within the team's scope.
 
-* **Category A:** Tasks encompassing significant effort, potentially critical features, or complex technical issues. These tasks demand substantial resources and attention from the team.
+* **Category A:** Tasks that require significant effort, potentially critical features, or complex technical issues. These tasks demand substantial resources and attention from the team.
 * **Category B:** Tasks requiring comparatively lower effort, such as routine maintenance or minor enhancements. They may have a lower priority compared to Category A tasks.
 
 ### Absolute Effort Calculation
