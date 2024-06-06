@@ -24,6 +24,17 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
   To run scans using a licensed version of [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your Semgrep token in the [Access token](#access-token) field. 
 
+- Semgrep scans include the following rulesets by default: 
+
+  - [bandit](https://semgrep.dev/p/bandit)
+  - [brakeman](https://semgrep.dev/p/brakeman)
+  - [eslint](https://semgrep.dev/p/eslint)
+  - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+  - [flawfinder](https://semgrep.dev/p/flawfinder)
+  - [gosec](https://semgrep.dev/p/gosec)
+  - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+  - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+
 - If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access.
 
   You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
@@ -174,6 +185,11 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 
 #### Scan Configuration
 
+import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
+
+<StoSettingProductConfigName />
+
+<!-- 
 You can use this setting to select the set of Semgrep rulesets to include in your scan:
 
   - **Default** Include the following rulesets: 
@@ -199,6 +215,8 @@ You can use this setting to select the set of Semgrep rulesets to include in you
     - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
   - **Auto and Ported security tools except p/gitleaks** 
+
+-->
 
 ### Target
 
