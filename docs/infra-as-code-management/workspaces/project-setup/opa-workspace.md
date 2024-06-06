@@ -19,8 +19,8 @@ Harness IaCM allows you to use OPA on the entities that are described in the tab
 | ----------- | -----------  | -------------|  
 | Workspace   | On save      | This policy will be evaluated whenever there is a configuration change in a workspace (for example Terraform version, repository details, the value of a variable is updated, etc) |
 | Terraform Plan   | After Terraform Plan     | This policy will be evaluated whenever a `Terraform plan` operation is performed in the IaCM stage (for example plan step, apply/destroy step, etc.). The policy will be evaluated against the Plan schema |
-| Terraform State   | After Terraform Plan | This policy will be evaluated after a `Terraform plan` operation is performed in the IaCM stage, against the state file. You can use this event to validate policy on resources, **before** applying any changes   |
-| Terraform State   | After Terraform Apply  | This policy will be evaluated after a `Terraform apply` operation is performed in the IaCM stage, against the state file. You can use this event to validate policy on resources, **after** applying any changes |
+| Terraform State   | After Terraform Plan | This policy will be evaluated after a `Terraform plan` operation is performed in the IaCM stage, against the state file. You can use this event to validate policy on resources, **before** applying any changes.   |
+| Terraform State   | After Terraform Apply  | This policy will be evaluated after a `Terraform apply` operation is performed in the IaCM stage, against the state file. You can use this event to validate policy on resources, **after** applying any changes. |
 
 
 Follow these steps to enforce governance using OPA:
@@ -46,7 +46,7 @@ The following attributes are available to access and write policies against
 - **provisioner**: the provisioner (terraform).
 - **provisioner_version**: the provisioner version.
 - **repository**: the repository we pull the IAC from.
-- **repository_commit**: the commit or tag we pull from the IAC code from. Should be null if repository_branch is specified.
+- **repository_commit**: the commit or tag we pull from the IAC code. Should be null if repository_branch is specified.
 - **repository_branch**: the branch we pull from the IAC code from. Should be null if repository_commit is specified.
 - **repository_connector**: the connector used to pull the IAC. The exact attributes within this object change depending on the type of connector.
 - **status**: the workspace status.
