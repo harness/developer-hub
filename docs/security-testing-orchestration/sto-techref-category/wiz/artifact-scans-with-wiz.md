@@ -16,10 +16,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Harness currently supports the following: 
-
-1. Orchestrated Wiz scans for container images
-2. Ingestion of Wiz scan reports (JSON/SARIF format) generated for container images and repositories
+You can include [Wiz](https://www.wiz.io/) artifact scans in your Harness pipelines. 
 
 ## Important notes for running Wiz scans in STO
 
@@ -29,7 +26,7 @@ You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness p
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
-- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -42,7 +39,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- 1 --------------------------------------------------------------------->
 
-<summary>Orchestration scans for container images</summary>
+<summary>Orchestration scans for artifacts</summary>
 
 The setup process for Kubernetes and Docker build infrastructures has a few additional steps and requirements. 
 
@@ -152,7 +149,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 <!-- 2 --------------------------------------------------------------------->
 
 <details>
-<summary>Ingestion scans for container images</summary>
+<summary>Ingestion scans for artifacts</summary>
 
 :::note
 
@@ -182,11 +179,11 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    ##### Required settings
 
 	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Container Image` -->
-	2. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
-	2. [Target variant](#name) — Usually the image tag, such as `latest`. 
+	2. [Target type](#type) = `Container Image`
+	3. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
+	4. [Target variant](#name) — Usually the image tag, such as `latest`. 
 	   You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the tag at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
+	5. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
 
    ##### Optional settings
 
@@ -238,11 +235,10 @@ import StoSettingProductConfigName from '../shared/step_palette/scan/_config-nam
 
 #### Type
 
-import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
 import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
-<StoSettingScanTypeRepo />
+
 
 
 #### Detect target and variant 
@@ -258,9 +254,9 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+The identifier for the [target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) such `jsmith/myalphaservice`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
 
-<StoSettingTargetName />
+It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) for every target. 
 
 
 #### Variant

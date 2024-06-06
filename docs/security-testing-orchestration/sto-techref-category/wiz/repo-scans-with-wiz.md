@@ -17,10 +17,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Harness currently supports the following: 
-
-1. Orchestrated Wiz scans for container images
-2. Ingestion of Wiz scan reports (JSON/SARIF format) generated for container images and repositories
+You can include [Wiz](https://www.wiz.io/) repository scans in your Harness pipelines. 
 
 ## Important notes for running Wiz scans in STO
 
@@ -30,7 +27,7 @@ You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness p
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
-- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -43,7 +40,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- 1 --------------------------------------------------------------------->
 
-<summary>Orchestration scans for repositories</summary>
+<summary>Orchestration scans for code repositories</summary>
 
   #### Prerequisites
 
@@ -86,7 +83,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <!-- 2 --------------------------------------------------------------------->
 
 <details>
-<summary>Ingestion scans for repositories</summary>
+<summary>Ingestion scans for code repositories</summary>
 
 :::note
 
@@ -117,11 +114,12 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    ##### Required settings
 
 	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Code Repository` -->
+	2. [Target type](#type) = `Code Repository`
 	2. [Target name](#name) — Usually the repo name
 	2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
 	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
 
+   <!-- 
    ##### Set the target type in the YAML editor
 
    :::note 
@@ -147,6 +145,8 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 				name: wiz-repo
 				variant: main
 	    ```
+
+   -->
 	3. Save the pipeline and select **Visual**. 
 
    ##### Optional settings

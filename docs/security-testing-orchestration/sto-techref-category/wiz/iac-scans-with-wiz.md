@@ -16,10 +16,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Harness currently supports the following: 
-
-1. Orchestrated Wiz scans for container images
-2. Ingestion of Wiz scan reports (JSON/SARIF format) generated for container images and repositories
+You can include [Wiz](https://www.wiz.io/) IaC scans in your Harness pipelines. 
 
 ## Important notes for running Wiz scans in STO
 
@@ -42,11 +39,11 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- 1 --------------------------------------------------------------------->
 
-<summary>Orchestration scans for repositories</summary>
+<summary>Orchestration scans for IaC repositories</summary>
 
   #### Prerequisites
 
-    - A [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
+    - You can run STO scans in [Harness Cloud], which requires no setup. You can also set up a [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
 	
@@ -85,7 +82,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 <!-- 2 --------------------------------------------------------------------->
 
 <details>
-<summary>Ingestion scans for repositories</summary>
+<summary>Ingestion scans for IaC repositories</summary>
 
 :::note
 
@@ -95,7 +92,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security stage to your pipeline.
+   1. Add a CI Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
    #### Copy scan results to the shared path
@@ -116,41 +113,16 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    ##### Required settings
 
 	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Code Repository` -->
-	2. [Target name](#name) — Usually the repo name
-	2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
+   2. Scan configuration = [Wiz IaC](#scan-configuration)
+	3. [Target type](#type) = `Repository`
+	4. [Target name](#name) — Usually the repo name
+	5. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
+	6. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
 
-   ##### Set the target type in the YAML editor
-
-   :::note 
-   
-   Currently the Wiz UI does not support setting the target type to **Code Repository**. This will be available shortly. For now, you can set the target type in the YAML editor.
-
-   :::
-
-   1. Select **YAML** (top).
-   2. Change the `target : type` from `container` to `repository` as follows:
-
-       ```yaml
-		- step:
-			type: Wiz
-			name: wiz_ingestion
-			identifier: wiz_ingestion
-			spec:
-			  mode: ingestion
-			  config: default
-			  target:
-				type: repository # <----------------
-				detection: manual
-				name: wiz-repo
-				variant: main
-	    ```
-	3. Save the pipeline and select **Visual**. 
 
    ##### Optional settings
 
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
+   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher.
    - [Log Level](#log-level) — Useful for debugging
 
 </details>
