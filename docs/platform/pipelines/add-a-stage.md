@@ -51,7 +51,7 @@ This functionality is limited to the modules and settings that you have access t
 
 :::warning
 
-There is a 256 stage limit for any given pipeline. If you are hitting this limit, you have possibly attempted to overload your pipeline with too many use cases.
+The maximum number of stages you can add to a pipeline is 256. If you have reached this limit, you have possibly attempted to overload your pipeline with too many use cases.
 
 :::
 
