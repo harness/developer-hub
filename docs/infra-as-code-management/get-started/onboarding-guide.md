@@ -153,7 +153,6 @@ Using OIDC allows your connector to assume a role and its permissions set in you
 
 Go to the **Use OIDC** tab [Cloud platform connectors reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#credentials) for more information.
 :::
-
 ---
 
 ## Add a new workspace
