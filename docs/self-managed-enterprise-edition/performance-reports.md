@@ -84,7 +84,7 @@ This report details information about the following:
 #### Test scenarios
 
 ##### >  2500 concurrent CI Executions INLINE
-Each CI pipeline:
+Each CI pipeline does the following:
 - Initializes a Kubernetes pod and Git clone repo
 - Runs 5 parallel steps (100 sec sleep)
 - Runs template with 2 parallel steps (140sec sleep)
