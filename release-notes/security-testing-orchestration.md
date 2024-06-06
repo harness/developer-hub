@@ -62,7 +62,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
   
   #### Fixed issue
 
-- Fixed an issue where an update to the `checkmarx-job-runner` image caused the Checkmarx step to fail in some cases. (STO-7634, ZD-64116)
+- Fixed an issue where a updated runner image caused repository scans to fail in some cases. (STO-7634, ZD-64116)
 
 ## May 2024
 
