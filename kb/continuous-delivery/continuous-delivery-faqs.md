@@ -8060,4 +8060,34 @@ Here is an example expression that converts a string variable named myString to 
 ```<+myString.toUpperCase()>```
 You can use this expression in any setting that supports expressions in Harness.
 
+#### What is the concern regarding Kubernetes pruning if the manifest length exceeds 0.5 MB?
+The concern is that if the manifest length exceeds 0.5 MB, it might affect the handling of the manifest since it is stored in secrets for declarative rollback.
+
+#### How does Harness handle large manifests in Kubernetes?
+Harness compresses the manifest using gzip at level 9 before storing it in secrets. If any service violates this size limit, the execution will fail because release secrets are critical for performing automated rollbacks.
+
+#### Is there a way to determine which services have a manifest size greater than 0.5 MB?
+Currently, there is no way to check which services have a manifest size greater than 0.5 MB.
+
+#### What happens when pruning is enabled for the first time?
+When pruning is enabled for the first time, there will be no pruning during execution or rollback because the previous release was run with pruning disabled, safeguarding against unintended pruning.
+
+#### Can approval be added if pruning is going to occur in Kubernetes?**
+No, adding approval for pruning is not supported. Pruning is integrated within the Kubernetes steps themselves.
+
+#### Why are release secrets critical in Harness?
+Release secrets are critical because they store the compressed manifest and are essential for performing automated rollbacks in case of a failure.
+
+#### What does Harness use for declarative rollback in Kubernetes?
+Harness uses the entire manifest, stored in secrets, to perform declarative rollbacks.
+
+#### What compression method does Harness use for manifests?
+Harness uses gzip compression at level 9 to compress the manifest before storing it in secrets.
+
+#### What safeguard is in place when enabling pruning for the first time?
+The safeguard is that no pruning will occur during the first execution or rollback when pruning is initially enabled, preventing unintended pruning of resources.
+
+#### Is there any feature to alert or approve before pruning happens in Kubernetes within Harness?
+No, currently, there is no feature to alert or require approval before pruning happens as it is built into the Kubernetes steps.
+
 

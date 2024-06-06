@@ -113,6 +113,26 @@ Harness doesn't have a variable like `<+currentuser.role>` that returns the role
 
 You can also set the first step of the pipeline to call the [Get aggregated user](https://apidocs.harness.io/tag/User#operation/getAggregatedUser) endpoint, which lists all roles assigned to the user, and then configure a [conditional execution](https://developer.harness.io/docs/platform/pipelines/step-skip-condition-settings) that only allows the pipeline to proceed if the roles pass a JEXL condition.
 
+#### Can Harness NextGen sync projects, connectors, etc., to GitHub in addition to pipelines, InputSets, and templates?
+No, Harness NextGen Git Experience only supports syncing Pipelines, Input Sets, and Templates to Git repositories. Other entities such as projects and connectors cannot be synced to Git repositories using Harness NextGen Git Experience.
+
+#### How can we trigger a Lambda function from Harness and pass variables such as credentials (e.g., username and password) during the trigger?
+To trigger a Lambda function from Harness and pass variables such as credentials, you can use the below steps:
+
+* In the Payload section, you can pass in any variables or data you want to send to the Lambda function. For example, you can pass in credentials as environment variables or as part of the payload data.
+* Save and run the pipeline to trigger the Lambda function with the specified payload.
+ 
+You can use harness trigger functionality to trigger the AWS Lambda pipeline execution based on your requirements. You can use Cron-based Triggers, Trigger pipelines on a new artifact or Webhook triggers.
+
+#### What happens if a test pipeline is triggered from the deployment pipeline?
+The triggered test pipeline will run independently and will not be part of the original deployment pipeline. It will have its stages and steps, separate from the deployment pipeline.
+
+#### How can we handle test failures if the test pipeline is triggered independently?
+If the test pipeline fails, you can utilize the rollback feature to revert the deployment. However, this rollback functionality depends on having a previous successful execution to revert to.
+
+#### Is there a way to integrate the triggered test pipeline within the original deployment pipeline?
+No, currently there is no way to fully integrate a triggered test pipeline within the original deployment pipeline. The test pipeline will always operate as a separate entity.
+
 ## API
 
 ### Can I run pipelines through the API or CLI?
@@ -489,6 +509,9 @@ When Harness APIs detect pipeline template changes that require reconciliation, 
 ```Some of the entities referenced in this pipeline have gone out of sync.```
 
 For more information, go to [Reconcile pipeline template changes](/docs/platform/templates/reconcile-pipeline-templates/).
+
+#### Can we initiate a test pipeline from our deployment pipeline template?
+No, triggering another pipeline from a custom webhook trigger will not integrate the triggered pipeline within the original pipeline. The triggered pipeline will operate independently with its stages and steps.
 
 ## Pipeline notifications
 
