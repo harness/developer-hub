@@ -81,7 +81,7 @@ const ModuleData: ModuleData[] = [
   },
   {
     title: "Software Supply Chain Assurance",
-    description: "SaaS release status: Limited GA, SMP release status: Limited GA",
+    description: "SaaS release status: Limited GA, SMP release status: Beta",
     module: MODULES.ssca,
     horizon: SscaData,
   },
