@@ -9,8 +9,8 @@ This section describes what a GameDay is, why it is essential, how a typical Gam
 
 ### What is a GameDay?
 
-GameDay is a methodology used by teams to practice chaos engineering, where teams execute chaos experiments in the application during a specific period. It is a template to schedule and execute one or more chaos experiments within your applications under test.
-It determines the incident response process, that is, how well your application responds/behaves during an outage, and how effectively it returns to normalcy.
+GameDay is a methodology used by teams to practice chaos engineering. These teams execute chaos experiments in the application during a specific period. It is a template to schedule and execute one or more chaos experiments across your applications.
+It determines the incident response process, that is, how well your application responds/behaves during an outage, and how quickly and effectively it returns to normalcy.
 
 ### Why is a GameDay important?
 In general, GameDays helps apply a fatal scenario to your application in a safe environment, thereby determining the application's resilience and verifying the system at scale.
