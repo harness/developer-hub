@@ -36,6 +36,10 @@ You can execute chaos experiments without explicitly installing the environment 
 
 ![](./static/onboard/onboard-2.png)
 
+:::tip
+Previously, HCE provided a dedicated chaos infrastructure to execute chaos experiments. With the current updates, the `chaos-runner` is transient and you can execute chaos experiments by installing **Harness delegate**, thereby eliminating the need to install Harness chaos infrastructure and other additional components. Once you have installed Harness delegate, you can reuse it to execute experiments, [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery), and so on.
+:::
+
 ## Next steps
 
 * [Automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
