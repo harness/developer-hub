@@ -40,6 +40,13 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
     - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
 
+:::danger important upgrade instructions for chaos infrastructure
+- [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
+- [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
+- The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
+- Go to [frequently asked questions on optimization](/docs/faqs/chaos-engineering-faq#kubernetes-v1-experiment-flow-optimization) to know more.
+:::
+
 - This release optimizes the experiment flow by:
     - Reading environment variables from the chaos engine.
     - Eliminating the experiment's custom resources and the corresponding steps for new experiments.
@@ -48,10 +55,6 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - Increasing the speed of execution of the experiment.
     - Adding all the overrides to the chaos engine.
     - Enhancing the list filter, compatible only with the new experiment template. (CHAOS-5122)
-
-:::info note
-The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
-:::
 
 #### Fixed issues
 
