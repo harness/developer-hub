@@ -220,7 +220,7 @@ The following features are now generally available:
 
 #### Early Access feature: Wiz scanner integration
 
-You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
 
 Harness currently supports the following: 
 

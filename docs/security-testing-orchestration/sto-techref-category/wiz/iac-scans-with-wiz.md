@@ -12,7 +12,6 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
@@ -43,32 +42,17 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- 1 --------------------------------------------------------------------->
 
-<summary>Orchestration scans for container images</summary>
-
-The setup process for Kubernetes and Docker build infrastructures has a few additional steps and requirements. 
-
-<Tabs>
-  <TabItem value="h1" label="k8s/Docker" default>
-   
-   	<br/>
+<summary>Orchestration scans for repositories</summary>
 
   #### Prerequisites
 
-    - A [Kubernetes](#/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
+    - A [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
 	
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
 
-	<br/>
-
-   #### Add a Docker-in-Docker background step
-
-   This is required for orchestrated image scans on Kubernetes or Docker build infrastructures.
-
-    <StoDinDNoIntro />
-
-	<br/>
+<br/>
 
    #### Add the Wiz scanner
 
@@ -84,16 +68,9 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
    ##### Required settings
 
 		1. Scan mode = [Orchestration](#scan-mode)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
-		3. Container image: 
-			1. [Type](#type-1)
-			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
-			3. [Name](#name) — for example, `jsmith/myimage`
-			4. [Tag](#name) — for example, `latest`
-			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret
-				2. [Registry access token](#access-token) as a Harness secret. 
-		8. Authentication:
+		2. Scan Configuration = [Wiz IaC](#scan-configuration)
+		3. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		4. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 	
@@ -101,105 +78,14 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
    - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
    - [Log Level](#log-level) — Useful for debugging
-
-  </TabItem>
-  <TabItem value="h2" label="Harness Cloud">
-    
-   <br/>
-
-  #### Prerequisites
-
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access Id and access token
-	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz
-
-   	<br/>
-   #### Add the Wiz scanner
-
-	Do the following:
-
-	1. Add a CI Build or Security stage to your pipeline.
-	2. Add a Wiz step to the stage.
-
-   	<br/>
-   #### Set up the Wiz scanner
-	
-   ##### Required settings
-
-		1. Scan mode = [Orchestration](#scan-mode)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
-		3. Container image: 
-			1. [Type](#type-1)
-			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
-			3. [Name](#name) — for example, `jsmith/myimage`
-			4. [Tag](#name) — for example, `latest`
-			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret. 
-				2. [Registry access token](#access-token) as a Harness secret. 
-		8. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
-	
-   ##### Optional settings
-
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
-
-  </TabItem>
-</Tabs>
 
 </details>
+
 
 <!-- 2 --------------------------------------------------------------------->
 
 <details>
-<summary>Ingestion scans for container images</summary>
-
-:::note
-
-Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information.
-
-:::
-
-   #### Add a shared path for your scan results
-
-   	1. Add a CI Build or Security stage to your pipeline.
-	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
-
-
-   #### Copy scan results to the shared path
-
-   There are two primary workflows to do this:
-
-   - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
-   - Copy results from a Wiz scan that ran outside the pipeline. 
-
-   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
-
-   #### Set up the Wiz scanner
-
-   Add a Wiz step to the stage and set it up as follows.
-	
-   ##### Required settings
-
-	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Container Image` -->
-	2. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
-	2. [Target variant](#name) — Usually the image tag, such as `latest`. 
-	   You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the tag at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
-
-   ##### Optional settings
-
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
-
-</details>
-
-<!-- 3 --------------------------------------------------------------------->
-
-<details>
-<summary>Ingestion scans for code repositories</summary>
+<summary>Ingestion scans for repositories</summary>
 
 :::note
 
@@ -299,9 +185,7 @@ For code repositories:
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
-
-<StoSettingProductConfigName />
+Select [**Wiz Directory**](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) for repository scans and **Wiz IaC** for IaC scans.
 
 ### Target
 
@@ -466,4 +350,3 @@ import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
-

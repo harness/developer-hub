@@ -197,76 +197,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 <!-- 3 --------------------------------------------------------------------->
 
-<details>
-<summary>Ingestion scans for code repositories</summary>
 
-:::note
-
-Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information.
-
-:::
-
-   #### Add a shared path for your scan results
-
-   	1. Add a CI Build or Security stage to your pipeline.
-	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
-
-   #### Copy scan results to the shared path
-
-   There are two primary workflows to do this:
-
-   - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
-   - Copy results from a Wiz scan that ran outside the pipeline. 
-
-   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
-
-
-
-   #### Set up the Wiz scanner
-
-   Add a Wiz step to the stage and set it up as follows.
-	
-   ##### Required settings
-
-	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Code Repository` -->
-	2. [Target name](#name) — Usually the repo name
-	2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
-
-   ##### Set the target type in the YAML editor
-
-   :::note 
-   
-   Currently the Wiz UI does not support setting the target type to **Code Repository**. This will be available shortly. For now, you can set the target type in the YAML editor.
-
-   :::
-
-   1. Select **YAML** (top).
-   2. Change the `target : type` from `container` to `repository` as follows:
-
-       ```yaml
-		- step:
-			type: Wiz
-			name: wiz_ingestion
-			identifier: wiz_ingestion
-			spec:
-			  mode: ingestion
-			  config: default
-			  target:
-				type: repository # <----------------
-				detection: manual
-				name: wiz-repo
-				variant: main
-	    ```
-	3. Save the pipeline and select **Visual**. 
-
-   ##### Optional settings
-
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
-
-</details>
 
 <!-- --------------------------------------------------------------------->
 
