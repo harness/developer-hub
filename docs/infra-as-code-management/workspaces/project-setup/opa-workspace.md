@@ -35,23 +35,23 @@ The following attributes are available to access and write policies against
 
 **Attributes:**
 
-- **account**: the account identifier of the workspace.
-- **org**: the org identifier of workspace.
-- **project**: the project identifier of the workspace.
-- **created**: created timestamp.
-- **updated**: updated timestamp.
-- **description**: workspace description.
-- **name**: name of the workspace.
-- **provider_connector**: the connector for the infrastructure provider. The exact attributes within this object change depending on the type of connector.
-- **provisioner**: the provisioner (terraform).
-- **provisioner_version**: the provisioner version.
-- **repository**: the repository we pull the IAC from.
-- **repository_commit**: the commit or tag we pull from the IAC code. Should be null if repository_branch is specified.
-- **repository_branch**: the branch we pull from the IAC code from. Should be null if repository_commit is specified.
-- **repository_connector**: the connector used to pull the IAC. The exact attributes within this object change depending on the type of connector.
-- **status**: the workspace status.
-- **environment_variables**: a map of the environment variables.
-- **terraform_variables**: a map of the terraform variables.
+- **account**: The account identifier of the workspace.  
+- **org**: The org identifier of workspace.  
+- **project**: The project identifier of the workspace.  
+- **created**: Created timestamp.  
+- **updated**: Updated timestamp.  
+- **description**: Workspace description.  
+- **name**: Name of the workspace.  
+- **provider_connector**: The connector for the infrastructure provider. The exact attributes within this object change depending on the type of connector.  
+- **provisioner**: The provisioner (terraform).  
+- **provisioner_version**: The provisioner version.  
+- **repository**: The repository from which Harness pulls the IAC.  
+- **repository_commit**: The commit or tag Harness pulls from the IAC code. Should be null if repository_branch is specified.  
+- **repository_branch**: The branch from which Harness pulls from the IAC code. Should be null if repository_commit is specified.  
+- **repository_connector**: The connector used to pull the IAC. The exact attributes within this object change depending on the type of connector.  
+- **status**: The workspace status.  
+- **environment_variables**: A map of the environment variables.  
+- **terraform_variables**: A map of the terraform variables.  
 
 ## OPA Policy examples
 
