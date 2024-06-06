@@ -124,7 +124,7 @@ Avg Execution Time: **5.46min**
 
 This report details information about the following:
 
-1.  and resource configuration
+1. Test environment and resource configuration
 2. Test scenario and results
 
 #### Environment
@@ -211,7 +211,7 @@ Avg Execution Time: **5.20min**
 
 This report details information about the following:
 
-1.  and resource configuration
+1. Test environment and resource configuration
 2. Test scenario and results
 
 #### Environment
@@ -301,7 +301,7 @@ Avg Execution Time: **5.20min**
 
 This report details information about the following:
 
-1.  and resource configuration
+1. Test environment and resource configuration
 2. Test scenario and results
 
 #### Environment
@@ -391,7 +391,7 @@ Avg Execution Time: **5.1min**
 
 This report details information about the following:
 
-1.  and resource configuration
+1. Test environment and resource configuration
 2. Test scenario and results
 
 #### Environment
@@ -498,7 +498,7 @@ Avg Execution Time: **4.5min**
 
 This report details information about the following:
 
-1.  and resource configuration
+1. Test environment and resource configuration
 2. Test scenario and results
 
 #### Environment
@@ -599,7 +599,8 @@ Total Execution Time: **4.5min**
 <summary>October 27, 2023</summary>
 
 This report details information about the following:
-1.  and resource configuration
+
+1. Test environment and resource configuration
 2. Test scenario and results
 
 #### Environment
@@ -699,6 +700,7 @@ Total Execution Time: **4.5min**
 <summary>October 6, 2023</summary>
 
 This report details information about the following:
+
 1. Test environment and resource configuration
 2. Test scenario and results
 
