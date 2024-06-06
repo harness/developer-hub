@@ -156,7 +156,7 @@ Some examples include the following:
       }
     ```
   </TabItem>
-  <TabItem value="Terraform version">
+  <TabItem value="Terraform version" default>
     This policy denies workspaces using Terraform provisioner with a version less than 1.5.4.
     
     ```
