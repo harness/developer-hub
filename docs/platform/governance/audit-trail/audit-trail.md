@@ -39,7 +39,7 @@ For each event record, this view shows the:
 
 * Date and time (**Time**).
 * The user who made the change (**User**).
-* **Action** by the user like created, updated, deleted, and so on.
+* **Action** by the user such as created, updated, deleted, and so on.
 * Harness entity affected (**Resource**).
 * **Organization** corresponding to the affected entity.
 * **Project** corresponding to the affected entity.
