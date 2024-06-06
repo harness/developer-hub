@@ -309,7 +309,7 @@ Let's assume the following for a single S3 bucket:
 <DocImage path={require('../static/policy_comparison.png')} width="100%" height="100%" title="Click to view full size image" />
 
 **Total Savings**
- <DocImage path={require('../static/savings1.png')} width="40%" height="40%" title="Click to view full size image" />
+ <DocImage path={require('../static/savings1.png')} width="60%" height="60%" title="Click to view full size image" />
 
 References: 
 - [AWS S3 Lifecycle Policies](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)
