@@ -60,9 +60,9 @@ The following attributes are available to access and write policies against
 To write policies against the Workspace, please use the following Workspace example:
 
 Some examples include the following:
-- Ensure Terraform version is greater than a specific version
-- Ensure specific connectors are used
-- Ensure specific repositories are used (only corporate ones and not public)
+- Ensure Terraform version is greater than a specific version.
+- Ensure specific connectors are used.
+- Ensure specific repositories are used (only corporate ones and not public).
 
 
 <Tabs>
