@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-05-30:T10:00:30
+date: 2024-06-10:T10:00:30
 sidebar_position: 3
 ---
 
@@ -99,11 +99,9 @@ The following deprecated API endpoints are longer supported:
 
 - Incorrect filters were displayed for the includeScopes field in Resource Groups on the Harness UI. While it was possible to add only project-level resources to a Resource Group via API, this option was not available through the UI. Added a new checkbox labeled "Include Org-level resources" on the UI. Users can now uncheck this checkbox to include only project-level resources in a Resource Group, without including Org-level resources, addressing the previously unsupported use case (PL-50969, ZD-62817)
 
-- Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the /opt/harness-delegate/sanitize-patterns.txt file inside the delegate (PL-50889, ZD-64069).
+- Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the /opt/harness-delegate/sanitize-patterns.txt file inside the delegate. This item requires Harness Delegate version 24.04.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate) (PL-47914) (PL-50889, ZD-64069).
 
 - Users could be added to SSO/SCIM Provisioned/Managed User Groups from the Harness UI, which should not be allowed. The addition of users to any externally managed user groups from the Harness UI is now restricted (PL-50663).
-
-The delegate was not picking up the pipeline due to issues in the retry mechanism when making calls from the delegate to the manager. The retries did not check if the JWT needed refreshing, leading to instances where expired JWTs were sent. We have improved the retry mechanism to include a check for JWT refresh on each retry attempt. This ensures that the delegate sends a valid JWT, resolving the issue with picking up pipelines (PL-48743, ZD-60766).
 
 ## May 2024
  
