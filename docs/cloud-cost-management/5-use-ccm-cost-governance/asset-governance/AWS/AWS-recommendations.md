@@ -304,26 +304,9 @@ Let's assume the following for a single S3 bucket:
 - Noncurrent versions: 40% (410 GB)
 - Incomplete multipart uploads: 10% (102 GB)
 
-**Without Lifecycle Policy**
+**Calculations:**
 
-**Cost for S3 Standard:** $0.023 per GB per month
-
-
-<DocImage path={require('../static/cal1.png')} width="50%" height="50%" title="Click to view full size image" />
-
-
-**With Lifecycle Policy**
-
-**Abort Incomplete Multipart Uploads:**
-- Removes 5% of total storage (5% of 1,024 GB = 51 GB)
-- New incomplete multipart uploads storage: 51 GB (102 - 51)
-
-**Expire Noncurrent Versions:**
-- Reduces noncurrent versions by 40% (40% of 410 GB = 164 GB)
-- New noncurrent versions storage: 246 GB (410 - 164)
-
-<DocImage path={require('../static/cal2.png')} width="50%" height="50%" title="Click to view full size image" />
-
+<DocImage path={require('../static/policy_comparison.png')} width="100%" height="100%" title="Click to view full size image" />
 
 **Total Savings**
  <DocImage path={require('../static/savings1.png')} width="40%" height="40%" title="Click to view full size image" />
