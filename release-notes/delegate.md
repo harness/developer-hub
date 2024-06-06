@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-03T10:00
+date: 2024-06-10T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,10 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## June 2024
+
+### Version 24.06.83200 <!--  May 8, 2024 -->
+
+- Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the /opt/harness-delegate/sanitize-patterns.txt file inside the delegate (PL-47914) (PL-50889, ZD-64069).
 
 ### Version 24.06.83003 <!--  June 3, 2024 -->
 
