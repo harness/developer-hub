@@ -44,9 +44,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
   #### Prerequisites
 
-    - A [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
-
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
+    - You can run STO scans in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), which requires no setup. You can also set up a [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 	
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
 
@@ -115,39 +113,10 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 	1. Scan mode = [Ingestion](#scan-mode)
 	2. [Target type](#type) = `Code Repository`
-	2. [Target name](#name) — Usually the repo name
-	2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
-
-   <!-- 
-   ##### Set the target type in the YAML editor
-
-   :::note 
-   
-   Currently the Wiz UI does not support setting the target type to **Code Repository**. This will be available shortly. For now, you can set the target type in the YAML editor.
-
-   :::
-
-   1. Select **YAML** (top).
-   2. Change the `target : type` from `container` to `repository` as follows:
-
-       ```yaml
-		- step:
-			type: Wiz
-			name: wiz_ingestion
-			identifier: wiz_ingestion
-			spec:
-			  mode: ingestion
-			  config: default
-			  target:
-				type: repository # <----------------
-				detection: manual
-				name: wiz-repo
-				variant: main
-	    ```
-
-   -->
-	3. Save the pipeline and select **Visual**. 
+	3. [Target name](#name) — Usually the repo name
+	4. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
+	5. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
+	6. Save the pipeline and select **Visual**. 
 
    ##### Optional settings
 
@@ -194,9 +163,7 @@ Select **Wiz Directory** for repository scans and [**Wiz IaC**](/docs/security-t
 #### Type
 
 import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
-<StoSettingScanTypeCont />
 <StoSettingScanTypeRepo />
 
 

@@ -43,7 +43,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
   #### Prerequisites
 
-    - You can run STO scans in [Harness Cloud], which requires no setup. You can also set up a [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure
+    - You can run STO scans in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), which requires no setup. You can also use a [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
 	
@@ -157,7 +157,7 @@ For code repositories:
 
 #### Scan Configuration
 
-Select [**Wiz Directory**](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) for repository scans and **Wiz IaC** for IaC scans.
+Select [**Wiz Directory**](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) for repository scans or **Wiz IaC** for IaC scans.
 
 ### Target
 
@@ -201,50 +201,6 @@ import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
-
-### Artifacts
-
-
-#### Type
-
-import StoSettingImageType from '../shared/step_palette/image/_type.md';
-
-<StoSettingImageType />
-
-
-#### Domain
-
-import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
-
-<StoSettingImageDomain />
-
-
-#### Name
-
-import StoSettingImageName from '../shared/step_palette/image/_name.md';
-
-<StoSettingImageName />
-
-
-#### Tag
-
-import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
-
-<StoSettingImageTag />
-
-
-#### Access ID
-
-import StoSettingImageAccessID from '../shared/step_palette/image/_access-id.md';
-
-<StoSettingImageAccessID />
-
-
-#### Access Token
-
-import StoSettingImageAccessToken from '../shared/step_palette/image/_access-token.md';
-
-<StoSettingImageAccessToken />
 
 
 ### Ingestion File
