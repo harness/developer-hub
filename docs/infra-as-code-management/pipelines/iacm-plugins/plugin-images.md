@@ -10,10 +10,12 @@ import TabItem from '@theme/TabItem';
 Harness provides the flexibility to use custom images in your IACM stage, which refers to individual Terraform plugin steps such as the `terraform init` step in an IaCM pipeline provision stage. This guide walks you through the process of creating your custom image and incorporating it into your Harness pipelines.
 
 ## Create an image
-Harness allows you to create custom images based on a provided base image. This enables you to tailor the image to your specific needs and use it in your workflows. However, be aware of an important consideration with this approach.
+Harness allows you to create custom images based on a provided base image. This enables you to tailor the image to your specific needs and use it in your workflows.
 
 :::warning Version lock-in
 Once you create a custom image using our base image, it becomes **version-locked**. This means that if we release a new version of our base image, your custom image will not automatically update to the latest version. For instance, if you create an image today using our base image version "1.0.0" and we subsequently release version "1.1.0," your custom image will still be using version "1.0.0."
+
+If your version is out-of-date, while it is unlikely to cause a pipeline failure, your current version may lack some features, be open to security vulnerabilities or run into compatibility issues. In such cases, follow the **Mitigating versioning challenges** section below:
 
 :::
 
@@ -25,7 +27,7 @@ To address this versioning challenge and ensure that your custom image stays up-
 
 ### Create a custom image
 
-The following example custom image includes the HTP version and has the AWS `kubectl` and `kustomize` tools installed in the root image giving your steps access to them as needed.
+The following example custom image includes the Harness Terraform Plugin (HTP) version and has the AWS `kubectl` and `kustomize` tools installed in the root image giving your steps access to them as needed.
 
 ```sh
 FROM plugins/harness_terraform
