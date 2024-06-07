@@ -101,8 +101,6 @@ The following deprecated API endpoints are longer supported:
 
 - Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. This item requires Harness Delegate version 24.06.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914) (PL-50889, ZD-64069)
 
-Due to a bug, users could be added to SSO/SCIM Provisioned/Managed User Groups from the Harness UI, which should not be allowed. The addition of users to any externally managed user groups from the Harness UI is now restricted. (PL-50663)
-
 ## May 2024
  
 ### Version 1.39.4<!-- May 30, 2024 -->
@@ -111,7 +109,7 @@ Due to a bug, users could be added to SSO/SCIM Provisioned/Managed User Groups f
 
 - Keyboard navigation was not functioning for the **Add Users** list when adding a new member to a user group, and uncontrolled form submission occurred when pressing Enter. Updated the **Add Users** list to support keyboard navigation. Additionally, the form now properly handles uncontrolled submissions when the Enter key is pressed, allowing users to select items using the keyboard without unintended form submissions. (PL-51168, ZD-62169)
 
-- Users could be added to SCIM-provisioned/externally managed user groups from the Harness UI, even though membership edits for externally managed groups were not allowed. The issue has been fixed, and adding users to externally managed user groups via the Harness UI is no longer supported. (PL-50663)
+- Due to a bug, users could be added to SCIM-provisioned/externally managed user groups from the Harness UI, even though membership edits for externally managed groups were not allowed. The issue has been fixed, and adding users to externally managed user groups via the Harness UI is no longer supported. (PL-50663)
 
 ### Version 1.38.2<!--  May 20, 2024 -->
 
