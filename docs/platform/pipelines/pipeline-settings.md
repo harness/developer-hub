@@ -74,7 +74,7 @@ The concurrency limits are as follows for each plan tier:
 
 :::warning
 
-Please note, these concurrency limits are *account wide* and NOT per pipeline. 
+These concurrency limits are *account wide* and NOT per pipeline. 
 
 :::
 
