@@ -4,12 +4,12 @@ export const CdData: Horizon = {
     description: "Q2 2024, May - July 2024",
     feature: [
       {
-        tag: [],
+        tag: [{value: "Kubernetes"}],
         title: "Native Support for Kubectl Rollout Restart",
         description: "User’s can restart their kubectl rollouts natively within the Harness UI.",
       },
       {
-        tag: [],
+        tag: [{value: "Infra Provisioners"}],
         title: "HTTPS Support for Bitbucket Server when Using Terraform & Terragrunt",
         description: "User’s can connect to the Bitbucket server when using Terraform & Terragrunt module source configuration via HTTPS. ",
       },
@@ -19,7 +19,7 @@ export const CdData: Horizon = {
         description: "User’s can migrate their Spinnaker Pipelines to Harness.",
       },
       {
-        tag: [],
+        tag: [{value: "Helm"}],
         title: "Native Helm Deployment - Blue Green and Canary Support",
         description: "User’s can now take their Helm Chart and Harness will orchestrate and manage the deployment via Helm. We leverage kustomize to perform the specific actions to support the Blue Green and Canary behavior along with Helm.",
       },
@@ -64,7 +64,7 @@ export const CdData: Horizon = {
     description: "Q4 2024+, Nov 2024 & Beyond",
     feature: [
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}],
         title: "Prometheus Default Health Source for Continuous Verification",
         description: "Users can deploy Helm Charts that have CRDs.",
       },
@@ -74,7 +74,7 @@ export const CdData: Horizon = {
         description: "User’s can get data about the steps and features they are leveraging within Harness and figure out how to maximize their usage of the product.",
       },
       {
-        tag: [],
+        tag: [{value: "Serverless"}],
         title: "Serverless Dashboards",
         description: "Harness can help users visualize their serverless application endpoints and their failures, success, and metrics.",
       },
@@ -84,12 +84,12 @@ export const CdData: Horizon = {
         description: "Using Harness AIDA, Harness will help generate and deploy pipelines.",
       },
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}],
         title: "Continuous Verification Support for Traffic Shifting Offerings",
         description: "Users can use verify step with Harness Deployment workflows that use traffic shifting.",
       },
       {
-        tag: [],
+        tag: [{value: "Continuous Verification"}, {value: "Serverless"}],
         title: "Continuous Verification Support for Serverless Lambda",
         description: "Users can use verify step for Serverless deployments with the ability to validate the Cloudwatch alarms.",
       },
@@ -104,7 +104,7 @@ export const CdData: Horizon = {
     description: "What has been released",
     feature: [
       {
-        tag: [],
+        tag: [{value: "Kubernetes"}],
         title: "Kubernetes Traffic Shifting Support",
         description: "User’s can now integrate with Istio or any Service Mesh Interface and Harness can route traffic to specific endpoints for the deployed service.",
       },
@@ -124,7 +124,7 @@ export const CdData: Horizon = {
         description: "Define overrides using YAML Editor",
       },
       {
-        tag: [],
+        tag: [{value: "Infra Provisioners"}],
         title: "Selective Infrastructure configuration in Environment propagation",
         description: "Infrastructures can be selectively configured during environment propagation",
       },

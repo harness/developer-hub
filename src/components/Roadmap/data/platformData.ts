@@ -4,7 +4,7 @@ export const platformData: Horizon = {
     description: "What has been released",
 
     feature: [
-         {
+      {
         tag: [{ value: "Secure" }],
         title: "OIDC Support for GCP",
         description:
@@ -64,7 +64,7 @@ export const platformData: Horizon = {
         tag: [{ value: "UI" }],
       },
       {
-        tag: [],
+        tag: [{value: "Pipeline"}],
         title: "Pipeline Data Retention",
         description:
           "Extended Data Retention, Data Archiving and Compliance capabilites ",
@@ -117,12 +117,12 @@ export const platformData: Horizon = {
           "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
       },
       {
-        tag: [],
+        tag: [{value: "Pipeline"}],
         title: "Flexible Templates that Support User-Injected Steps",
         description: "Users can pull a template into their pipeline and inject a step into it.",
       },
       {
-        tag: [],
+        tag: [{value: "Pipeline"}],
         title: "Bulk Reconciliation when a User Update a Template ",
         description: "When a user updates a template, a user can now bulk updates each pipeline referring to the template.",
       },
