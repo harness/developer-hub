@@ -9,7 +9,7 @@ This topic describes the typical steps to execute a chaos experiment, and delves
 ## Before you begin
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra)
+* [Delegate driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
 * [Key concepts](/docs/chaos-engineering/architecture-and-security/architecture/components)
 
 ## Steps to create and execute a HCE experiment

@@ -27,22 +27,22 @@ Experiments are auto-created based on levels (or categories) you select during a
 
 ### Speed of execution
 Previously, chaos experiments would typically take more time (in the order of 4 minutes) whereas with Harness infrastructure, you can complete experiment execution in less than half the time (in the order of 1.5 minutes).
-The diagram below shows the execution time for old experiments.
+The diagram below shows the execution time for experiments that use legacy Kubernetes infrastructure.
 
     ![](./static/v1-exp.png)
 
-The diagram below shows the execution time for experiments in Harness infrastructure.
+The diagram below shows the execution time for experiments in Delegate-driven Harness infrastructure.
 
     ![](./static/v2-exp.png)
 
 ### Fault tunables
 The number of tunables to specify has changed, and Harness infrastructure gives better control since it provides advanced tunables.
 
-The diagram below shows the tunables used in old experiments.
+The diagram below shows the tunables used in experiments that use legacy Kubernetes infrastructure..
 
     ![](./static//v1-tunables.png)
 
-The diagram below shows the tunables used in experiments that are run by Harness Delegate when executed with Harness infrastructure.
+The diagram below shows the tunables used in experiments that use Delegate-driven Harness infrastructure.
 
     ![](./static/v2-tunables.png)
 

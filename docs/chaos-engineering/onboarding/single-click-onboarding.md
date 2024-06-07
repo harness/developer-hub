@@ -14,7 +14,7 @@ This topic describes the following operations:
 ## Before you begin
 
 * [Overview of HCE onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding.md)
-* [Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra)
+* [Delegate driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.

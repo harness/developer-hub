@@ -18,7 +18,7 @@ This topic describes the following operations:
 ## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra)
+* [Delegate driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
 * [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding)
 * [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
 
