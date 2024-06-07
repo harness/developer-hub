@@ -72,7 +72,14 @@ import {
                   "STO includes integrations with over 30 external tools for scanning repositories, container images, applications, and configurations.",
                 link: "/docs/category/sto-technical-reference",
               },
-            {
+              {
+                title: "Ingest SARIF scan results",
+                module: MODULES.sto,
+                description:
+                  "SARIF is an open data format supported by many scan tools. You can ingest results from any tool that supports this format.",
+                link: "//docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data",
+              },
+             {
               title: "Ingest data from custom scanners",
               module: MODULES.sto,
               description:
@@ -129,6 +136,13 @@ import {
               description:
                 "Learn how to create OPA policies to stop pipelines automatically",
               link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa",
+            },
+            {
+              title: "Trigger STO scans to block Git pull requests with vulnerabilities",
+              module: MODULES.sto,
+              description:
+                "You can create Git event triggers to block PRs if an STO scan detects vulnerabilities that violate OPA policies or Fail on Severity settings.",
+              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities",
             },
           ],
         },
