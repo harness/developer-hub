@@ -15,7 +15,7 @@ The Software Supply Chain Assurance (SSCA) module is available on the following 
 ### SSCA on Harness Self-Managed Enterprise Edition (SMP)
 
 #### Connected Environment
-All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an SMP environment, with the following exceptions:
+All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an SMP environment, with the following exception:
 
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
 
