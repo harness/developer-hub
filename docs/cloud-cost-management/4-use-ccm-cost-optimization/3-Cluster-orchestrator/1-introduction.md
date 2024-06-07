@@ -27,7 +27,7 @@ Amazon EC2 provides a range of purchase options catering to diverse computing ne
 <DocImage path={require('./static/challenges.png')} width="50%" height="50%" title="Click to view full size image" />
 
 #### Balancing Workload Requirements
-Matching workload demands with cloud infrastructure can be challenging due to their evolving nature. Specifically, autoscaling cluster nodes to meet workload needs presents difficulties as workload requirements change over time.
+Because workload demands are always evolving, matching these demands with cloud infrastructure can be challenging. Specifically, autoscaling cluster nodes to meet workload needs presents difficulties because workload requirements change over time.
 
 #### Cluster Visibility
 Gaining comprehensive visibility into cluster costs across pods and nodes is challenging due to diverse consumption patterns across teams and cost centers. Allocating these costs for chargeback or showback purposes adds another layer of complexity, especially in shared cloud environments spanning multiple teams and departments. 
