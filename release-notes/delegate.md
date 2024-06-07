@@ -49,6 +49,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2024
 
+### Version 24.06.83004 <!--  June 3, 2024 -->
+
+#### Hotfix
+
+- Secrets were being printed in plain text when using a custom secret manager, exposing sensitive information. Implemented masking of the `script` field in the custom secret manager to prevent logging of secrets used within the script. (PL-51535)
+
 ### Version 24.06.83003 <!--  June 3, 2024 -->
 
 #### Hotfix
