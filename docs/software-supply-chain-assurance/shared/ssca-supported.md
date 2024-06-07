@@ -15,14 +15,16 @@ The Software Supply Chain Assurance (SSCA) module is available on the following 
 ### SSCA on Harness Self-Managed Enterprise Edition (SMP)
 
 #### Connected Environment
-In a connected environment, all features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are supported in SMP.
+All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an SMP environment, with the following exceptions:
+
+- Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
 
 #### Air-gapped Environment
 All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an air-gapped or offline environment, with the following exceptions:
 
-- During the SBOM generation process, the system cannot fetch certain license data of dependencies, affecting the SBOM quality score.
-- During the SBOM attestation and SLSA Provenance process, the system cannot record the attestation logs in the Sigstore public [Rekor](https://docs.sigstore.dev/logging/overview/).
-- In the Remediation Tracker, the system cannot fetch vulnerability details by entering the CVE number. You can still manually enter the details and continue tracker creation. If you are using Harness STO SMP, this exception does not apply.
+- Fetching license data for certain dependencies during the SBOM generation process will be affected, leading to a reduced [SBOM quality score](../sbom/sbom-score.md). This can be mitigated by performing SBOM Orchestration after installing the dependencies.
+- Logging the attestation record in the Sigstore public [Rekor](https://docs.sigstore.dev/logging/overview/) will not be performed during the SBOM and SLSA Provenance attestation process, but this will not impact the attestation itself.
+- Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
 
 ## Integrations
 ### Code Repositories
