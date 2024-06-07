@@ -65,7 +65,7 @@ You update Feature Flags using the `override.yaml` file for the Helm chart of yo
 
 ## Can I install Harness Self-Managed Enterprise Edition in an air-gapped environment?
 
-Yes. For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
+Yes. For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 ## How can I upgrade volumes created during Helm installation from gp2 to gp3?
 

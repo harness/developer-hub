@@ -48,7 +48,7 @@ import {
             module: MODULES.platform,
             description:
               "Learn how to use Helm to install in an air-gapped environment.",
-            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment",
+            link: "/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment",
           },
         ],
       },
