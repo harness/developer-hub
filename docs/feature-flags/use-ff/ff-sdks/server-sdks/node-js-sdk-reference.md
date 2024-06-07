@@ -25,9 +25,9 @@ For getting started quickly, you can use our [sample code from the Node.js SDK R
 
 You should read and understand the following:
 
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview.md)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
-* [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+* [Client-Side and Server-Side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version

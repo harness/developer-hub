@@ -905,7 +905,7 @@ This limit has been raised to 25000 bytes, with a clear error message if this is
 
   * Made the following improvements.
 
-    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
+    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
     * Added general improvements to logging statements, reducing verbose logging to the console. 
     * Added support for configurable custom loggers. For code examples, go to the [SDK repository](https://github.com/harness/ff-ios-client-sdk/blob/main/docs/further_reading.md#custom-loggers).
 
@@ -1055,7 +1055,7 @@ This limit has been raised to 25000 bytes, with a clear error message if this is
 Due to a new dependency on a murmur3 hashing library implemented in Elixir, the following is now required to use the SDK in Erlang applications:
    - Elixir version 1.13.4 or above must be installed on your build system when compiling your application.
    - Rebar3 `rebar_mix` must be installed in your Rebar3 plugins.
-   - For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference/#for-erlang-applications).
+   - For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference.md).
    - This update does not affect Elixir applications, and no further action is required for Elixir applications upon upgrading to this version of the SDK.
 
  - Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
@@ -1065,7 +1065,7 @@ Due to a new dependency on a murmur3 hashing library implemented in Elixir, the 
 The following changes are included in issue number FFM-8289:
    - Added validation to the JWT token returned by the Feature Flags authentication service.
    -  Previously, if the SDK failed to authenticate with the Feature Flags service, the SDK crashed. With this fix, the SDK now logs a warning and serves the default variations you provided in your evaluation calls.
-   - Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
+   - Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
 
 #### Version 1.2.17
 
@@ -1096,7 +1096,9 @@ To aid in debugging, we added a list of codes logged for each lifecycle of the S
   - `Metrics`
   - `Close`
 
-For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+For a full list of codes, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-sdks/server-sdks/python-sdk-reference.md).
+
+[Troubleshooting](./feature-flags/use-ff/ff-sdks/server-sdks/python-sdk-reference.md).
 
 #### Version 1.1.15
 
@@ -1258,7 +1260,7 @@ For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/se
 
 #### Version 1.0.0 Beta
 
-The [**Erlang server SDK**](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference), which was in Beta, has been released as GA. 
+The [**Erlang server SDK**](/docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference), which was in Beta, has been released as GA. 
 
 This release includes the following updates:
  - **Breaking changes**

@@ -29,9 +29,9 @@ The published package is still named `ff-server-sdk` this will change in a futur
 
 Make sure you've read and understood:
 
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview.md)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
-* [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
+* [Client-Side and Server-Side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
