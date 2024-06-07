@@ -1,9 +1,10 @@
 ---
 title: iOS/macOS
 description: Use a CI pipeline to build and test iOS and macOS applications.
-sidebar_position: 40
+sidebar_position: 2
 redirect_from:
   - /tutorials/ci-pipelines/build/ios
+  - /docs/continuous-integration/development-guides/ci-ios
 ---
 
 import Tabs from '@theme/Tabs';

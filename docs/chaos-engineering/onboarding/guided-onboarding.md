@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
 title: Guided onboarding
-description: Guided onboarding with HCE
+description: Customize experiment creation in every step with HCE
 ---
 
 import Tabs from '@theme/Tabs';
@@ -20,7 +20,7 @@ This topic describes the following operations:
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
 * [Chaos V2](/docs/chaos-engineering/onboarding/chaos-v2/chaos-v2)
 * [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding)
-* [HCE single-click onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
+* [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
