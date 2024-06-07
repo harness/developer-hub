@@ -61,7 +61,7 @@ Yes. There are additional steps that you must take to configure self-signed cert
 
 ## How do I manage feature flags?
 
-You update Feature Flags using the `override.yaml` file for the Helm chart of your base installation. You can also update the `values.yaml` file for your Kubernetes delegate. For more information, go to [Manage Feature Flags](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/manage-feature-flags).
+You update Feature Flags using the `override.yaml` file for the Helm chart of your base installation. You can also update the `values.yaml` file for your Kubernetes delegate. For more information, go to [Manage Feature Flags](/docs/self-managed-enterprise-edition/install/manage-feature-flags).
 
 ## Can I install Harness Self-Managed Enterprise Edition in an air-gapped environment?
 
