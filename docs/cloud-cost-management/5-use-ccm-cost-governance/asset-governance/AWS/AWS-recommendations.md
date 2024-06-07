@@ -322,7 +322,6 @@ References:
     - ```s3:GetLifecycleConfiguration```
     - ```s3:PutLifecycleConfiguration```
 
----
 
 ### Recommendation: s3-intelligent-tiering-configuration
 
