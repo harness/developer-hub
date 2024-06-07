@@ -358,7 +358,7 @@ policies:
 **Savings Computed:** 
 - **Frequent Access Tier:** This tier is equivalent in cost to the standard S3 storage, so no savings here.
 - **Infrequent Access Tier:** Data not accessed for 30 days moves here, saving approximately 45% compared to standard S3 storage​.
-- **Archive Instant Access Tier:** Data not accessed for 90 days moves here, with savings up to 68% compared to standard storage​.
+- **Archive Instant Access Tier:** Data not accessed for 90 days moves here, with savings of up to 68% compared to standard storage​.
 - **Archive Access Tier:** If configured, data not accessed for 90 days can move here, offering around 71% savings​.
 - **Deep Archive Access Tier:** Data not accessed for 180 days can be moved to this tier, providing up to 95% savings.
 
