@@ -216,7 +216,7 @@ policies:
 ---
 
 ### Recommendation: under-utilized-elasticcache-cluster
-**Description:** Delete underutilised cache cluster with CPU utilisation less than 5% in last 7 days.
+**Description:** Delete underutilized cache cluster with CPU utilization less than 5% in the last 7 days.
 
 **Policy Used:**
 
