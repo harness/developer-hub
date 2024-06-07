@@ -75,12 +75,21 @@ You can also store your configurations in Harness, by selecting the **Inline** o
 
 ![](./static/configure-git-experience-for-harness-entities-37.png)
 
-You can store configurations of the following resources in Git:
+The following entities are supported in Git Experience:
 
 - Pipelines
 - Input sets
+- Templates
+- Services
+- Environment 
+- Infrastructure Definition
 
-Harness tracks where your configuration is kept and manages the whole lifespan of resources by maintaining metadata for each resource.
+The following resources are not supported in Git Experience:
+
+- Secrets
+- Connector 
+- Triggers
+- Policy
 
 ## Enforce Git experience
 
@@ -90,15 +99,19 @@ You can do this by enabling `Enforce git experience for pipelines and templates`
 This setting applies to the following resources:
 
 - Pipelines
+- Input sets
 - Templates
+- Services
+- Environment 
+- Infrastructure Definition
 
 Harness disables inline pipelines and templates, and users can only create remote pipelines and templates after enabling this setting. You can still create inline input sets corresponding to existing inline pipelines.
 
 To enforce Git experience in Harness:
 
-1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
-2. Select **Default Settings**, and then select **Git Experience**.
-3. Enable **Enforce git experience for pipelines and templates**.
+1. Go to **Account Settings**, and then select **Account Resources**.
+2. Select **Account Default Settings**, and then select **Git Experience**.
+3. Enable **Enforce git experience**.
    After you enable this setting, it applies to all the scopes (account, organization, and project) in Harness.
 4. To override this setting in the child scopes, select **Allow Overrides** beside the settings.
    This forces configurations at the account scope to be saved in Git repositories only. Users can, however, still create inline pipelines and templates at the organizational and project levels.
@@ -107,7 +120,7 @@ To enforce Git experience in Harness:
 
 ## Add a remote pipeline
 
-This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add an inline pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline).
+This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add a remote pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../pipelines/add-a-stage.md#step-1-create-a-pipeline).
 
 In your Project, click **Pipelines** and then click **Create a Pipeline**. The **Create New Pipeline** settings appear.
 
@@ -347,6 +360,17 @@ The parent YAML will not contain a branch for the child if you do not specify a 
 
 To switch the referring child entity from a feature branch to a default branch, manually remove the field `gitBranch` from the parent YAML.
 
+:::info note
+## Referenced by in Connectors for entities stored in Git
+
+When you click on **Connectors** there is a **Referenced by** tab which shows the entties that are using that connector including remote entities as well. 
+
+![](./static/referenced_by.png)
+
+Let's take above example, when you click on the **pipeline_remote** entity stored in Git, it typically opens the pipeline in the default branch (main, master, etc.). However, if your pipeline is stored in a different branch, such as **test_branch**, clicking on the entity will result in an error because it will try to open the pipeline in the default branch of the repository.
+
+![](./static/referenced_by_2.png)
+:::
 ## Next steps
 
 - [Manage input sets and triggers in simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
