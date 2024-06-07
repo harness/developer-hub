@@ -39,7 +39,7 @@ You will be asked to run a shell script in your terminal and verify the connecti
 
 #### Step B: Configuration
 
-Cluster Orchestrator allows you to choose a base on-demand capacity, which can be further split into percentages to determine how much should be used by spot and on-demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized**. Once all the details are filled in, you can see the potential savings and click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
+Cluster Orchestrator allows you to choose a base on-demand capacity, which you can further split into percentages to determine how much should be used by spot and on-demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized**. Once all the details are filled in, you can see the potential savings and select **"Complete Enablement"** to enable Cluster Orchestrator for the cluster.
 
 <DocImage path={require('./static/stepB.png')} width="110%" height="110%" title="Click to view full size image" />
 
