@@ -391,7 +391,7 @@ If 20% of your data transitions to the Infrequent Access tier after 30 days, 20%
 
 ### Recommendation: delete-underutilized-redshift-cluster
 
-**Description:** Delete redshift cluster where CPU Utilization is less than 5% for last 7 days
+**Description:** Delete any Amazon Redshift cluster where CPU Utilization has been less than 5% for the last 7 days
 
 **Policy Used:**
 
