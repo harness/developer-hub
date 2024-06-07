@@ -32,7 +32,7 @@ Harness validates Helm client compatibility against the following versions:
 - 3.14.2
 
 :::info note
-You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 :::
 
 ## Role requirements
