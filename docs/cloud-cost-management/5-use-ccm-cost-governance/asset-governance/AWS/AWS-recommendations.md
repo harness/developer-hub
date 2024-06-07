@@ -238,7 +238,7 @@ policies:
         skip-snapshot: false
 ```
 
-**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up cost of each resource for last 30 days.
+**Savings Computed:** The policy identifies a list of resources on which potential savings are calculated by summing up the cost of each resource for the last 30 days.
 
 **Permissions Required:** 
 - **Dry Run:** 
