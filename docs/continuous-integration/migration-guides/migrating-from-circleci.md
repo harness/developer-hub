@@ -290,6 +290,84 @@ Harness CI has two options for reusable, pre-packaged functionality:
 * [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Workflow Steps, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
 * [Create standardized step templates](/docs/platform/templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
 
+### CircleCI local CLI
+
+The [CircleCI local command line interface (CLI)](https://circleci.com/docs/local-cli/) can run [Docker-based jobs](https://circleci.com/docs/using-docker/) locally. [Harness Cloud infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md) can execute these jobs in pipeline [run steps](../use-ci/run-step-settings.md).
+
+<details>
+<summary>Example CircleCI local CLI step</summary>
+
+This example executes a `slack/notify` job which uses the [Slack](https://circleci.com/developer/orbs/orb/circleci/slack) orb in a pipeline step. This assumes the file `.circleci/config.yml` which defines the job exists in the cloned repository, and that `slack_access_token` has been added as a [secret](../../platform/secrets/add-use-text-secrets.md) in the project.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Install CLI
+                  identifier: install_cli
+                  description: Install the CircleCI local CLI
+                  spec:
+                    shell: Sh
+                    command: curl -fLSs https://raw.githubusercontent.com/CircleCI-Public/circleci-cli/main/install.sh | bash
+
+              - step:
+                  type: Run
+                  name: Notify
+                  identifier: notify
+                  description: Run the slack/notify job defined in .circleci/config.yml in the repository
+                  spec:
+                    shell: Sh
+                    command: circleci local execute --env SLACK_ACCESS_TOKEN=<+secrets.getValue("slack_access_token")> slack/notify
+```
+
+</details>
+
+### CircleCI orbs scripts
+
+It is possible to run CircleCI orb scripts directly in pipeline run steps.
+
+<details>
+<summary>Example CircleCI orb script</summary>
+
+This example uses the [Browser Tools](https://circleci.com/developer/orbs/orb/circleci/browser-tools) orb in a pipeline step by cloning the [browser-tools-orb](https://github.com/CircleCI-Public/browser-tools-orb) repository, then executing the `install-chrome.sh` script.
+
+```yaml
+              - step:
+                  type: Run
+                  name: install chrome
+                  identifier: install_chrome
+                  description: Run the install-chrome.sh script from the browser-tools orb
+                  spec:
+                    shell: Sh
+                    command: |-
+                      git clone --branch $BROWSER_TOOLS_ORB_VERSION --depth 1 https://github.com/CircleCI-Public/browser-tools-orb.git /tmp/browser-tools-orb
+                      bash /tmp/browser-tools-orb/src/scripts/install-chrome.sh
+                    envVariables:
+                      BROWSER_TOOLS_ORB_VERSION: v1.4.8
+                      ORB_PARAM_REPLACE_EXISTING: "1"
+                      ORB_PARAM_CHANNEL: stable
+                      ORB_PARAM_CHROME_VERSION: 116.0.5845.187
+```
+
+Parameters are passed to the orb script using environment variables prefixed by `ORB_PARAMETER_`.
+
+The above Harness step is equivalent to this CircleCI job.
+
+```yaml
+version: '2.1'
+orbs:
+  browser-tools: circleci/browser-tools@1.4.8
+jobs:
+  test:
+    executor: browser-tools/default
+    steps:
+      - browser-tools/install-chrome:
+          replace-existing: true
+          chrome-version: 116.0.5845.187
+          channel: stable
+```
+
+</details>
+
 ## Comparison: Specify a codebase or Docker image
 
 To clone a codebase in CircleCI, you use a _checkout_ step to check out source code to the configured path. In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). In Harness CI, [codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
