@@ -252,7 +252,7 @@ Now that you have the Harness GitOps Agent installed, running, and registered, y
 
 ## Argo CD and Harness project mapping
 
-Once you have installed the Agent, Harness will create its own Argo CD Project when you create Application, Cluster or Repository in Harness project in the cluster and name it with a random string.
+Once you have installed the Agent, when you create Application, Cluster or Repository in Harness project, Harness will create its own Argo CD Project in the cluster and name it with a random string.
 
 **Once you use this Agent to add another entity,** such as a Cluster or Repository, Harness will then map this new Argo CD project to a Harness Project identifier (Id). You will see this mapping in Harness:
 
