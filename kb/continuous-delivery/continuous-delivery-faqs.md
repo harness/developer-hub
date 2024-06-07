@@ -4261,7 +4261,7 @@ It will be feasible for them to consider adding a line at the top of their manif
 
 #### Do we support expressions in tags for pipeline level ?
 
-Yes, we support pipeline expression tags to feteh details. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/tags-reference/)
+Yes, we support pipeline expression tags to fetch details. Please read more on this in the following [Documentation](https://developer.harness.io/docs/platform/references/tags-reference/)
 
 #### Is there a way to use the `<+stage>` output as json in our functors ?
 
@@ -4320,7 +4320,7 @@ You can use Webhook notifications to post the pipeline event to an endpoint and 
 
 #### Does shell script step uses delegate selector from connector used
 
-By default shell script doesn’t uses the connector selector and task can go to any delegate, if you need to use same delegate you have to specify the selector
+By default shell script doesn't uses the connector selector and task can go to any delegate, if you need to use same delegate you have to specify the selector
 
 ####  Can we use command step for custom stage
 
