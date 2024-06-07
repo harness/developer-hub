@@ -251,7 +251,7 @@ policies:
 
 ### Recommendation: s3-lifecycle-configuration
 
-**Description:** Configure lifecycle for s3 buckets wherever it is absent which would help to reduce storage spend
+**Description:** Configure lifecycle for S3 buckets wherever it is absent which would help to reduce storage spend
 
 **Policy Used:**
 
