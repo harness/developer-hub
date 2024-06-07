@@ -18,6 +18,8 @@ The Software Supply Chain Assurance (SSCA) module is available on the following 
 All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an SMP environment, with the following exception:
 
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
+- Achieving [SLSA Level 3](../slsa/overview.md#how-to-comply-with-slsa-level-3) compliance is not possible in SMP, as it requires Harness hosted build infrastructure. This capability is available through [SSCA on Harness SaaS](#ssca-on-harness-saas).
+
 
 #### Air-gapped Environment
 All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in an air-gapped or offline environment, with the following exceptions:
@@ -25,6 +27,7 @@ All features of '[SSCA on Harness SaaS](#ssca-on-harness-saas)' are available in
 - In the generated SBOMs, the license data for certain dependencies will be marked as "NOASSERTION", leading to a reduced [SBOM quality score](../sbom/sbom-score.md). However, this does not impact the SBOM generation or any other features of [SBOM Orchestration](../sbom/generate-sbom.md).
 - Logging the attestation record in the Sigstore public [Rekor](https://docs.sigstore.dev/logging/overview/) will not be performed during the SBOM and SLSA Provenance attestation process, but this will not impact the attestation itself.
 - Creating a Remediation tracker will require manually adding the CVE details as auto-population is linked with STO module. However, if you are using Harness STO SMP, this limitation does not apply.
+- Achieving [SLSA Level 3](../slsa/overview.md#how-to-comply-with-slsa-level-3) compliance is not possible in SMP, as it requires Harness hosted build infrastructure. This capability is available through [SSCA on Harness SaaS](#ssca-on-harness-saas).
 
 ## Integrations
 ### Code Repositories
