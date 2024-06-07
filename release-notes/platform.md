@@ -83,7 +83,7 @@ The following deprecated API endpoints are longer supported:
 
 #### New features and enhancements
 
-- Service Account name and email  fields are now exposed in the Role Assignment filter API, enhancing visibility and management. For more information, go to [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) (PL-50613).
+- Service Account name and email fields are now exposed in the Role Assignment filter API, enhancing visibility and management. For more information, go to [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList). (PL-50613)
 
 - Harness added v1 API support for `template-service`, `ng-manager`, `platform-service`, and `pipeline-service` for Istio >= 0.19.0 version. If you are running Istio >= 1.19.0, add the following override in your `override.yaml` file to enable the support. (PL-50528, ZD-62230, ZD-62846)
 
@@ -95,13 +95,13 @@ The following deprecated API endpoints are longer supported:
 
 #### Fixed issues
 
-- Recently a change was made to allow hyphens in the secret identifier. However, the internal validation in the pipeline was not updated for the same, which caused an error when the secret identifier was passed in the pipeline. This has been improved in this fix, which will ensure the internal validation as well for secret identifiers containing a hyphen (PL-51073).
+- Harness recently made to allow hyphens in the secret identifier. However, the internal validation in the pipeline was not updated, which caused an error when the secret identifier was passed in the pipeline. This issue has been resolved to ensure the internal validation as well for secret identifiers containing a hyphen. (PL-51073)
 
-- Incorrect filters were displayed for the includeScopes field in Resource Groups on the Harness UI. While it was possible to add only project-level resources to a Resource Group via API, this option was not available through the UI. Added a new checkbox labeled "Include Org-level resources" on the UI. Users can now uncheck this checkbox to include only project-level resources in a Resource Group, without including Org-level resources, addressing the previously unsupported use case (PL-50969, ZD-62817)
+- Incorrect filters were displayed for the `includeScopes` field in Resource Groups in the Harness UI. While it was possible to add only project-level resources to a Resource Group via API, this option was not available through the UI. An **Include Org-level resources** option is now available in the UI. Users can now uncheck this option to include only project-level resources in a Resource Group, without including Org-level resources, addressing the previously unsupported use case. (PL-50969, ZD-62817)
 
-- Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the /opt/harness-delegate/sanitize-patterns.txt file inside the delegate. This item requires Harness Delegate version 24.04.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate) (PL-47914) (PL-50889, ZD-64069).
+- Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. This item requires Harness Delegate version 24.06.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914) (PL-50889, ZD-64069)
 
-- Users could be added to SSO/SCIM Provisioned/Managed User Groups from the Harness UI, which should not be allowed. The addition of users to any externally managed user groups from the Harness UI is now restricted (PL-50663).
+- Users could be added to SSO/SCIM Provisioned/Managed User Groups from the Harness UI, which should not be allowed. The addition of users to any externally managed user groups from the Harness UI is now restricted. (PL-50663)
 
 ## May 2024
  
