@@ -248,7 +248,6 @@ policies:
     - ```elasticache:DeleteCacheCluster```
     - ```elasticache:DeleteReplicationGroup```
 
----
 
 ### Recommendation: s3-lifecycle-configuration
 
