@@ -385,7 +385,6 @@ If 20% of your data transitions to the Infrequent Access tier after 30 days, 20%
     - ```s3:GetBucketIntelligentTieringConfiguration```
     - ```s3:PutIntelligentTieringConfiguration```
 
----
 
 ### Recommendation: delete-underutilized-redshift-cluster
 
