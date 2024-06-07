@@ -368,13 +368,13 @@ When you click on **Connectors** there is a **Referenced by** tab which shows th
 
 As part of remote entities, we only calculate references for the entities stored in the default branch.
 
-For example, if you store your entities—such as Pipelines, Services, Environment, Input Set, or Templates—in the default branch (e.g. `main` or `master`), they will be shown in the "Referenced By" section. This is not the case when you store your entities in branches other than the default.
+For example, if you store your entities—such as Pipelines, Services, Environment, Input Set, or Templates—in the default branch (e.g. `main` or `master`), they will be shown in the **Referenced By** section. This is not the case when you store your entities in branches other than the default.
 
 The primary reason for this approach is to ensure we don't create stale references. We only manage references for stable versions of entities, and we assume that the default branch will always be the right choice for stable versions. Managing references for all branches would create redundant references, which could block deletion operations on the entities.
 
 Calculation of references isn't automatic; it occurs during specific user actions:
 
-- **Reload from Gi**t**: When you perform a "reload from Git" on an entity present in the default branch.
+- **Reload from Git**: When you perform a **reload from Git** on an entity present in the default branch.
 
 - **Create/Update Entity**: When you **create** or **update** an entity on the Harness UI or via API on the default branch. 
 Note that this scenario is unlikely for most users, as committing directly to the default branch is generally prohibited.
