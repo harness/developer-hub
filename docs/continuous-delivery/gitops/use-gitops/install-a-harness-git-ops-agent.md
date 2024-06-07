@@ -30,13 +30,13 @@ The Harness GitOps Agent has the following requirements:
 
 ## Using existing Argo CD projects
 
-Typically, when you set up a Harness GitOps Agent you install a new Harness GitOps Agent in your target cluster along with other services (Repo server, Redis cache, Application controller).
+Typically, when you set up a Harness GitOps Agent you install a new Harness GitOps Agent in your target cluster along with other services (Repo server, Redis cache, Application controller, Applicationset controller).
 
 In some cases, you might already have an Argo CD Project running in your target cluster. In this case, you can select this Project when you set up the Harness GitOps Agent.
 
 You can use an existing Argo CD Project when you already have services deployed to different environments from that Argo CD instance.
 
-If you don't use an existing Argo CD Project, you will create GitOps Applications, Repos, Clusters, etc in Harness. You'll also have to delete these from any existing Argo CD Project in the cluster (if necessary).
+If you don't use an existing Argo CD Project, you will create GitOps Applications, Repos, Clusters, etc in Harness. You may have to delete some of the already existing entitities in Argo CD cluster (e.g. you already have repository or cluster with same url).
 
 In both cases, you will install the Harness GitOps Agent process.
 
@@ -45,6 +45,7 @@ If you use an existing Argo CD instance, then Harness will use the following exi
 * Repo server
 * Redis cache
 * Application controller
+* Applicationset controller
 
 If you do not use an existing Argo CD instance, then Harness will install the following:
 
@@ -52,6 +53,7 @@ If you do not use an existing Argo CD instance, then Harness will install the fo
 * Repo server
 * Redis cache
 * Application controller
+* Applicationset controller
 
 See [Harness GitOps Basics](/docs/continuous-delivery/gitops/get-started/harness-git-ops-basics.md).
 
@@ -94,9 +96,9 @@ In **GitOps Operator**, select one of the following:
   * **Argo**. Uses Argo CD as the GitOps reconciler.
   * **Flux**. Uses Flux as the GitOps reconciler. [Manage Flux applications with Harness GitOps](/docs/continuous-delivery/gitops/use-gitops/use-flux).
 
-In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent.
 
-If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** to avoid a collision if already installed.
+If **Namespaced** is selected, the Harness GitOps agent is installed without cluster-scoped permissions, and it can access only those resources that are in its own namespace. You can select **Skip Crds** not to install Argo CD CRDs to avoid a collision if already installed. (Take care when uninstalling, if you remove CRDs you may loose your Argo CD objects like applications or projects )
 
 Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
 
@@ -154,6 +156,7 @@ helm repo add gitops-agent https://harness.github.io/gitops-helm/
 helm repo update gitops-agent
 helm install argocd gitops-agent/gitops-helm --values override.yaml --namespace default
 ```
+You can use `--set argo-cd.crds.install=false` to skip CRDs installation to avoid collision if CRDs were already installed with previous installation of GitOps Agent or Argo CD.	
 
 Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
@@ -249,7 +252,7 @@ Now that you have the Harness GitOps Agent installed, running, and registered, y
 
 ## Argo CD and Harness project mapping
 
-Once you have installed the Agent, Harness will create its own Argo CD Project in the cluster and name it with a random string.
+Once you have installed the Agent, Harness will create its own Argo CD Project when you create Application, Cluster or Repository in Harness project in the cluster and name it with a random string.
 
 **Once you use this Agent to add another entity,** such as a Cluster or Repository, Harness will then map this new Argo CD project to a Harness Project identifier (Id). You will see this mapping in Harness:
 
