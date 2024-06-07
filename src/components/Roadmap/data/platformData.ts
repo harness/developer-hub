@@ -116,6 +116,16 @@ export const platformData: Horizon = {
         description:
           "Support creation of multiple accounts on Harness Self-Managed Enterprise Edition",
       },
+      {
+        tag: [],
+        title: "Flexible Templates that Support User-Injected Steps",
+        description: "Users can pull a template into their pipeline and inject a step into it.",
+      },
+      {
+        tag: [],
+        title: "Bulk Reconciliation when a User Update a Template ",
+        description: "When a user updates a template, a user can now bulk updates each pipeline referring to the template.",
+      },
     ],
   },
   Next: {

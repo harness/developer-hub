@@ -4,9 +4,19 @@ export const CdData: Horizon = {
     description: "Q2 2024, May - July 2024",
     feature: [
       {
+        tag: [],
+        title: "Native Support for Kubectl Rollout Restart",
+        description: "User’s can restart their kubectl rollouts natively within the Harness UI.",
+      },
+      {
+        tag: [],
+        title: "HTTPS Support for Bitbucket Server when Using Terraform & Terragrunt",
+        description: "User’s can connect to the Bitbucket server when using Terraform & Terragrunt module source configuration via HTTPS. ",
+      },
+      {
         tag: [{ value: "Spinnaker" }, { value: "Migration" }],
-        title: "Migrator tool for Spinnaker",
-        description: "User’s can migrate their Spinnaker Pipelines to Harness",
+        title: "Migrator Tool for Spinnaker",
+        description: "User’s can migrate their Spinnaker Pipelines to Harness.",
       },
       {
         tag: [],
