@@ -1,10 +1,10 @@
 ---
 title: Harness infrastructure
 sidebar_position: 2
-description: Harness infrastructure allows for quick onboarding and optimized chaos execution of experiments.
+description: Harness infrastructure that uses Harness Delegate to allow for quick onboarding and optimized chaos execution of experiments.
 ---
 
-This topic walks you through Harness infrastructure and how it facilitates quick onboarding and optimizes chaos experiments.
+This topic walks you through Harness infrastructure that uses Harness Delegate and how it facilitates quick onboarding and optimizes chaos experiments.
 
 ## What is Harness infrastructure?
 
@@ -48,7 +48,7 @@ The diagram below shows the tunables used in experiments that are run by Harness
 
 ### Delegate Driven Chaos Injection (DDCI)
 
-The schematic diagram below describes how chaos experiments are executed in Harness infrastructure. It highlights the use of Harness Delegate which eliminates the need for a dedicated chaos agent, which simplifies the experiment orchestration mechanism.
+The schematic diagram below describes how chaos experiments are executed in Harness infrastructure using Harness Delegate. It highlights the use of Harness Delegate which eliminates the need for a dedicated chaos agent, which simplifies the experiment orchestration mechanism.
 
     ![](./static/ddci-flow.png)
 
