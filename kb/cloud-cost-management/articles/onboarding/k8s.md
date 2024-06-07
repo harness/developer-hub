@@ -37,7 +37,17 @@ There a several ways to deploy the delegate [documented here](https://developer.
 
 When using Helm to deploy the delegate, you can provide the value `ccm.visibility: true` to provision a ClusterRole and Binding that includes the necessary permissions for the delegate to use the metrics server to gather usage data on the cluster.
 
-If you are not using this delegate to deploy or run builds in the cluster, or you want to prevent the delegate from being used for such activities, you need to be sure and set the value `k8sPermissionType: CLUSTER_VIEWER`. By default the delegate is deployed with `CLUSTER_ADMIN`.
+If you are not using this delegate to deploy or run builds in the cluster, or you want to prevent the delegate from being used for such activities, you need to be sure and set the value `k8sPermissionType: CLUSTER_VIEWER`. By default the delegate is deployed with `CLUSTER_ADMIN`. You can also set the environment variable `BLOCK_SHELL_TASK` to stop people from executing shell steps in pipelines on this delegate.
+
+An example `values.yaml` for a helm chart deployment is as follows:
+```
+k8sPermissionType: CLUSTER_VIEWER
+ccm:
+  visibility: true
+custom_envs:
+  - name: BLOCK_SHELL_TASK
+    value: "true"
+```
 
 When deploying a delegate, it is recommended that you name the delegate either the same as the cluster name or something very similar that makes it obvious what cluster the delegate is deployed into.
 
