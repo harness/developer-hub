@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "@docusaurus/Link";
-import { CcmData } from "./roadmapData";
+import { CcmData, Feature } from "./roadmapData";
 import roadmapStyles from "@site/src/components/Roadmap/index.module.scss";
 import styles from "./styles.module.scss";
 
@@ -17,7 +17,11 @@ const CCMRoadmap = () => {
               </div>
             </div>
             {value.feature.map((feature) => (
-              <Link to={feature.link} className={styles.card}>
+              <Link
+                to={feature.link}
+                className={styles.card}
+                style={{ backgroundColor: feature.backgroundColor }}
+              >
                 <h4>{feature.title}</h4>
                 <p>{feature.description}</p>
               </Link>
