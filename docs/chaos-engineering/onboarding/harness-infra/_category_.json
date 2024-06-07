@@ -1,0 +1,13 @@
+{
+  "position": 5,
+  "label": "Harness infrastructure",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Harness infrastructure"
+   },
+  "customProps": {
+    "description": "Harness infrastructure that allows for quick onboarding and optimized chaos execution of experiments."
+  }
+}
