@@ -421,7 +421,6 @@ policies:
     - ```redshift:DescribeClusters```
     - ```redshift:DeleteCluster```
 
----
 
 ### Recommendation: delete-redshift-old-manual-snapshots
 
