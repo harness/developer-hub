@@ -327,7 +327,7 @@ References:
 
 ### Recommendation: s3-intelligent-tiering-configuration
 
-**Description:** Configure intelligent tiering for s3 buckets wherever it is disabled which would help to reduce storage spend.
+**Description:** Configure intelligent tiering for S3 buckets wherever it is disabled which would help to reduce storage spend.
 
 **Policy Used:**
 
