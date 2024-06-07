@@ -69,7 +69,7 @@ A user will be allowed to execute rollbacks on any instance only if they possess
 ![](./static/permissions_post_rollback.png)
 :::
 
-## Trigger rollback for specific service using APIs
+## Trigger rollback for specific services using APIs
 
 You can use APIs to trigger rollback for specific services. For more details, go to [Trigger rollback](https://apidocs.harness.io/tag/Rollback/#operation/triggerRollback). 
 Note that you need `instanceKey` and `infrastructureMappingId` of the service instance for rollback. Obtaining this info is not straigtforward. You can Inspect the Instance Details page to obtain these details as shown in the image below. 
