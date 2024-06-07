@@ -54,7 +54,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 	Do the following:
 
-	1. Add a CI Build or Security stage to your pipeline.
+	1. Add a Build or Security stage to your pipeline.
 	2. Add a Wiz step to the stage.
 
 <br/>
@@ -91,7 +91,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security stage to your pipeline.
+   	1. Add a Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
    #### Copy scan results to the shared path
@@ -169,20 +169,18 @@ import StoSettingScanTypeRepo from '../shared/step_palette/target/type/_repo.md'
 
 #### Detect target and variant 
 
-<!-- import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md'; -->
-import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md';
 import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
-<!-- StoSettingScanTypeAutodetectRepo/ -->
-<StoSettingScanTypeAutodetectContainer/>
+<StoSettingScanTypeAutodetectRepo/>
 <StoSettingScanTypeAutodetectNote/>
 
 
 #### Name 
 
-import StoSettingTargetName from '../shared/step_palette/target/_name.md';
+The identifier for the [target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) such `codebaseAlpha`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
 
-<StoSettingTargetName />
+It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) for every target. 
 
 
 #### Variant
