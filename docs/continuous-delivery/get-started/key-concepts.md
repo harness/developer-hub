@@ -39,7 +39,7 @@ When a Service is added to the stage in a Pipeline, you define its Service Defin
 
 :::tip
 
-[Best practice](/docs/continuous-delivery/get-started/best-practices): Define one Harness Service for every micro service that you want to deploy. We do not recommend overloading one Harness Service for multiple deployments.
+Best practice: Define one Harness Service for every micro service that you want to deploy. We do not recommend overloading one Harness Service for multiple deployments.
 
 :::
 
