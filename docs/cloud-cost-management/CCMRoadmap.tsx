@@ -1,29 +1,26 @@
 import React from "react";
+import Link from "@docusaurus/Link";
 import { CcmData } from "./roadmapData";
-import HorizonCard from "@site/src/components/Roadmap/HorizonCard";
-
-import styles from "@site/src/components/Roadmap/index.module.scss";
+import roadmapStyles from "@site/src/components/Roadmap/index.module.scss";
+import styles from "./styles.module.scss";
 
 const CCMRoadmap = () => {
   return (
-    <div className={styles.roadmap}>
-      <div className={styles.RoadmapSection}>
-        {Object.entries(CcmData).map(([key, value], index) => (
-          <div className={styles.section}>
-            <div className={styles.sectionDescription}>
-              <div className={styles.titleLine}>
+    <div className={roadmapStyles.roadmap}>
+      <div className={roadmapStyles.RoadmapSection}>
+        {Object.entries(CcmData).map(([key, value]) => (
+          <div className={roadmapStyles.section}>
+            <div className={roadmapStyles.sectionDescription}>
+              <div className={roadmapStyles.titleLine}>
                 <h4>{key}</h4>
                 <p>{value.description}</p>
               </div>
             </div>
-            {value.feature.map((feature, index) => (
-              <HorizonCard
-                module={"ccm"}
-                tag={feature.tag}
-                title={feature.title}
-                description={feature.description}
-                link={feature.link}
-              />
+            {value.feature.map((feature) => (
+              <Link to={feature.link} className={styles.card}>
+                <h4>{feature.title}</h4>
+                <p>{feature.description}</p>
+              </Link>
             ))}
           </div>
         ))}
