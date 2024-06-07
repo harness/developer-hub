@@ -101,7 +101,7 @@ The following deprecated API endpoints are longer supported:
 
 - Delegate logs were displaying entire bearer tokens when using the IDP connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended on a per-use-case basis by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. This item requires Harness Delegate version 24.06.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-47914) (PL-50889, ZD-64069)
 
-- Users could be added to SSO/SCIM Provisioned/Managed User Groups from the Harness UI, which should not be allowed. The addition of users to any externally managed user groups from the Harness UI is now restricted. (PL-50663)
+Due to a bug, users could be added to SSO/SCIM Provisioned/Managed User Groups from the Harness UI, which should not be allowed. The addition of users to any externally managed user groups from the Harness UI is now restricted. (PL-50663)
 
 ## May 2024
  
