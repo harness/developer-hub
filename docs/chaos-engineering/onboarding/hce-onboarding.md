@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 4
 title: Overview
 description: An overview of onboarding with HCE
 ---

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 6
 title: Automated onboarding
 description: Set up infrastructure with a single click and execute chaos experiments.
 ---
@@ -14,6 +14,7 @@ This topic describes the following operations:
 ## Before you begin
 
 * [Overview of HCE onboarding.](/docs/chaos-engineering/onboarding/hce-onboarding.md)
+* [Chaos V2](/docs/chaos-engineering/onboarding/chaos-v2/chaos-v2)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.
