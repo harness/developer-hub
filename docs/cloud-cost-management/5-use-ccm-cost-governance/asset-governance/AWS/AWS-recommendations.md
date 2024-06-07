@@ -424,7 +424,7 @@ policies:
 
 ### Recommendation: delete-redshift-old-manual-snapshots
 
-**Description:** Delete all redshift snapshot older than 35 days with lifetime retention period
+**Description:** Delete all redshift snapshots older than 35 days with a lifetime retention period
 
 **Policy Used:**
 
