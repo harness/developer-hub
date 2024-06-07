@@ -2,6 +2,8 @@
 title: Use ingress controller overrides
 description: Learn how to use ingress controller overrides for the on-prem Harness Self-Managed Enterprise Edition.
 sidebar_position: 7
+redirect_from:
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/use-ingress-controller-overrides/
 ---
 
 You can customize the behavior of the nginx ingress controller using overrides. This topic explains how to use overrides to configure the ingress controller.

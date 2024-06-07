@@ -1,12 +1,12 @@
 {
-    "label":"Helm installation",
+    "label":"Installation",
     "position": 15,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Helm installation"
+       "title":"Install Harness Self-Managed Enterprise Edition"
     },
     "customProps":{
        "helpdocs_category_id":"66qbyn7ugu"
