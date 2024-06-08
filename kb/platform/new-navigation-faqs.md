@@ -6,15 +6,11 @@ sidebar_position: 3
 
 ## General Information
 
-### Why is Harness introducing a new navigation experience?
+### Why did Harness introduce a new navigation experience?
 
 Harness is committed to enhancing the user experience and providing a more intuitive and efficient navigation system to help users easily access and utilize the full range of Harness features.
 
-### When will the new navigation experience be rolled out?
-
-The rollout is planned for the first quarter of 2024. However, specific release dates may be subject to change. Harness will communicate any updates accordingly.
-
-### How will the new navigation experience benefit users?
+### How does the new navigation experience benefit users?
 
 Nav 2.0 introduces several enhancements, including:
 
@@ -27,12 +23,6 @@ Nav 2.0 introduces several enhancements, including:
 ### Will training be provided for the new navigation experience?
 
 Yes, Harness will provide training resources, such as documentation, in-product video walkthroughs, and live webinars, to ensure a smooth transition. Harness Support is available to assist with any questions.
-
-### Can I access the old navigation after the rollout?
-
-Harness encourages you to familiarize yourself with the new interface to take advantage of the improved features and functionalities, but you can use the user preference settings in your Account Settings to transition back to the legacy navigation.
-
-![](./static/new-nav-toggle.png)
 
 ### How will Harness ensure a smooth transition for users?
 

@@ -3128,10 +3128,6 @@ Harness integrates with multiple third-party SCIM providers
 
 To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
 
-### How can I switch from the new Harness nav 2.0 UI to the legacy nav?
-
-Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
-
 ### Can I enable feature flags for organizations and projects without enabling them for the account scope?
 
 Currently, feature flags are only enabled at the account-level.

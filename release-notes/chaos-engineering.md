@@ -40,6 +40,13 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
     - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
 
+:::danger important upgrade instructions for chaos infrastructure
+- [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
+- [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
+- The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
+- Go to [frequently asked questions on optimization](/docs/faqs/chaos-engineering-faq#kubernetes-v1-experiment-flow-optimization) to know more.
+:::
+
 - This release optimizes the experiment flow by:
     - Reading environment variables from the chaos engine.
     - Eliminating the experiment's custom resources and the corresponding steps for new experiments.
@@ -48,10 +55,6 @@ The release notes describe recent changes to Harness Chaos Engineering.
     - Increasing the speed of execution of the experiment.
     - Adding all the overrides to the chaos engine.
     - Enhancing the list filter, compatible only with the new experiment template. (CHAOS-5122)
-
-:::info note
-The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
-:::
 
 #### Fixed issues
 
@@ -715,7 +718,7 @@ The existing APIs will work as per the norm on old and new chaos infrastructure,
 
 ##### New features and enhancements
 
-* [GameDay](/docs/chaos-engineering/features/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
+* [GameDay](/docs/chaos-engineering/features/gameday/gameday-v2) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
 * The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
 
@@ -842,7 +845,7 @@ To upgrade chaos infrastructures and experiments:
 ##### New features and enhancements
 
 * Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/features/gameday/run-gameday).
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/features/gameday/gameday-v2).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.

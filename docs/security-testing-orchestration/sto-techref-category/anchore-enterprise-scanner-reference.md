@@ -109,7 +109,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 <StoSettingTargetVariant  />
 
 
-### Artifacts
+### Container image
 
 
 #### Type  (_orchestration_)
