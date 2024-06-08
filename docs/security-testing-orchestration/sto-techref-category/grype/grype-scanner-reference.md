@@ -117,7 +117,7 @@ import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-te
 
 <StoSettingIngestionFile  />
 
-### Artifacts 
+### Container image 
 
 
 <!-- ============================================================================= -->
