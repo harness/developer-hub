@@ -155,7 +155,7 @@ For code repositories:
 
 #### Scan Configuration
 
-Select [**Wiz Directory**](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz) for repository scans or **Wiz IaC** for IaC scans.
+Select **Wiz IaC**.
 
 ### Target
 
