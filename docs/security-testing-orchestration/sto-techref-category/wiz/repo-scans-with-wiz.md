@@ -46,7 +46,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
     - You can run STO scans in [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), which requires no setup. You can also set up a [Kubernetes](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure/) or [Docker](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Wiz CLI 
 
 <br/>
 
@@ -68,8 +68,8 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 		3. Scan Configuration = [Wiz Directory](#scan-configuration)
 		4. Target and Variant Detection = [Auto](#detect-target-and-variant)
 		5. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
 	
    ##### Optional settings
 
@@ -266,11 +266,11 @@ The path to your scan results when running an [Ingestion scan](/docs/security-te
 
 #### Access ID
 
-This is your `client-id` shared by Wiz.
+This is your `client-id` to authenticate with the Wiz CLI.
 
 #### Access Token
 
-This is your `client-secret` shared by Wiz.
+This is your `client-secret` to authenticate with the Wiz CLI.
 
 You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 

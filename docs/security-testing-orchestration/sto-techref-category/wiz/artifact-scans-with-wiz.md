@@ -54,7 +54,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Wiz CLI 
 
 	<br/>
 
@@ -91,8 +91,8 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 				1. [Registry access Id](#access-id) as a Harness secret
 				2. [Registry access token](#access-token) as a Harness secret. 
 		8. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
 	
    ##### Optional settings
 
@@ -108,7 +108,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access Id and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Wiz CLI
 
    	<br/>
    #### Add the Wiz scanner
@@ -135,8 +135,8 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 				1. [Registry access Id](#access-id) as a Harness secret. 
 				2. [Registry access token](#access-token) as a Harness secret. 
 		5. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
 	
    ##### Optional settings
 
@@ -343,11 +343,11 @@ The path to your scan results when running an [Ingestion scan](/docs/security-te
 
 #### Access ID
 
-This is your `client-id` shared by Wiz.
+This is your `client-id` to authenticate with the Wiz CLI.
 
 #### Access Token
 
-This is your `client-secret` shared by Wiz.
+This is your `client-secret` to authenticate with the Wiz CLI.
 
 You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
