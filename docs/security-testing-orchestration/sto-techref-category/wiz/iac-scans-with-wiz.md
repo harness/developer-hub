@@ -16,7 +16,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 <br/>
 <br/>
 
-You can include [Wiz](https://www.wiz.io/) IaC scans in your Harness pipelines. 
+You can easily set up a Wiz step to run automated scans in your Harness pipeline. This step scans the IaC repository you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into Harness. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) tab of the pipeline execution.  
 
 ## Important notes for running Wiz scans in STO
 
