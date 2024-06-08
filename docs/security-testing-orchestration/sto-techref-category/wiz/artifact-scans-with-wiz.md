@@ -256,7 +256,7 @@ import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto
 
 The identifier for the [target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) such `jsmith/myalphaservice`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
 
-It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target) for every target. 
+It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline) for every target. 
 
 
 #### Variant
