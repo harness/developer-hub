@@ -64,9 +64,10 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
    ##### Required settings
 
 		1. Scan mode = [Orchestration](#scan-mode)
-		2. Scan Configuration = [Wiz Directory](#scan-configuration)
-		3. Target and Variant Detection = [Auto](#detect-target-and-variant)
-		4. Authentication:
+      2. Target type = [Repository](#type)
+		3. Scan Configuration = [Wiz Directory](#scan-configuration)
+		4. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		5. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 	

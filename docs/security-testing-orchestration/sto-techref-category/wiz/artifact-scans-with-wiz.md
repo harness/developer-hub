@@ -80,6 +80,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
    ##### Required settings
 
 		1. Scan mode = [Orchestration](#scan-mode)
+		3. Target type = [Container image](#type)
 		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
 		3. Container image: 
 			1. [Type](#type-1)
@@ -123,8 +124,9 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
    ##### Required settings
 
 		1. Scan mode = [Orchestration](#scan-mode)
+		3. Target type = [Container image](#type)
 		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
-		3. Container image: 
+		4. Container image: 
 			1. [Type](#type-1)
 			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
 			3. [Name](#name) — for example, `jsmith/myimage`
@@ -132,7 +134,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 			5. Authentication — Required only if the registry requires authentication:
 				1. [Registry access Id](#access-id) as a Harness secret. 
 				2. [Registry access token](#access-token) as a Harness secret. 
-		8. Authentication:
+		5. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
 	
