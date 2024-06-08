@@ -84,7 +84,7 @@ import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image
 <StoSettingScanTypeCont />
 
 
-#### Detect target and variant 
+#### Target and Variant Detection 
 
 
 import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
