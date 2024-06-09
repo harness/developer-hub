@@ -77,17 +77,17 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 	
    ##### Required settings
 
-		1. Scan mode = [Orchestration](#scan-mode)
-		3. Target type = [Container image](#type)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		1. [Scan mode](#scan-mode) = **Orchestration**
+		3. [Target type](#type) = **Container image**
+		2. [Target and Variant Detection](#detect-target-and-variant) = **Auto**
 		3. Container image: 
 			1. [Type](#type-1)
-			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
+			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry. 
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
-			5. Authentication — Required only if the registry requires authentication:
+			5. [Authentication](#authentication) — Required only if the registry requires authentication:
 				1. [Registry access Id](#access-id) as a Harness secret
-				2. [Registry access token](#access-token) as a Harness secret. 
+				2. [Registry access token](#access-token) as a Harness secret 
 		8. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
@@ -121,25 +121,25 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 	
    ##### Required settings
 
-		1. Scan mode = [Orchestration](#scan-mode)
-		3. Target type = [Container image](#type)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		1. [Scan mode](#scan-mode) = **Orchestration**
+		3. [Target type](#type) = **Container image**
+		2. [Target and Variant Detection](#target-and-variant-detection) = **Auto**
 		4. Container image: 
 			1. [Type](#type-1)
 			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret. 
-				2. [Registry access token](#access-token) as a Harness secret. 
+				1. [Registry access Id](#access-id) as a Harness secret 
+				2. [Registry access token](#access-token) as a Harness secret 
 		5. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
 	
    ##### Optional settings
 
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
+   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher.
+   - [Log Level](#log-level) — Useful for debugging.
 
   </TabItem>
 </Tabs>
@@ -178,8 +178,8 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 	
    ##### Required settings
 
-	1. Scan mode = [Ingestion](#scan-mode)
-	2. [Target type](#type) = `Container Image`
+	1. [Scan mode](#scan-mode) = **Ingestion**
+	2. [Target type](#type) = **Container Image**
 	3. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
 	4. [Target variant](#name) — Usually the image tag, such as `latest`. 
 	   You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the tag at runtime.
@@ -276,7 +276,7 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 
 <StoSettingTargetWorkspace  />
 
-### Artifacts
+### Container image
 
 
 #### Type

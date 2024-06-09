@@ -61,10 +61,10 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 	
    ##### Required settings
 
-		1. Scan mode = [Orchestration](#scan-mode)
-		2. Scan configuration = [Wiz IaC](#scan-configuration)
-      3. Target type = [Repository](#type)
-		4. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		1. [Scan mode](#scan-mode) = **Orchestration**
+		2. [Scan configuration](#scan-configuration) = **Wiz IaC**
+      3. [Target type](#type) = **Repository**
+		4. [Target and Variant Detection](#detect-target-and-variant) = **Auto**
 		5. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
@@ -110,9 +110,9 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 	
    ##### Required settings
 
-	1. Scan mode = [Ingestion](#scan-mode)
-   2. Scan configuration = [Wiz IaC](#scan-configuration)
-	3. [Target type](#type) = `Repository`
+	1. [Scan mode](#scan-mode) = **Ingestion**
+   2. [Scan configuration](#scan-configuration) = **Wiz IaC**
+	3. [Target type](#type) = **Repository**
 	4. [Target name](#name) — Usually the repo name
 	5. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
 	6. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-iac-scan.json`

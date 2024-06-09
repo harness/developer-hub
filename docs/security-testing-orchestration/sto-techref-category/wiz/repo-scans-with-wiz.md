@@ -61,10 +61,10 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 	
    ##### Required settings
 
-		1. Scan mode = [Orchestration](#scan-mode)
-      2. Target type = [Repository](#type)
-		3. Scan Configuration = [Wiz Directory](#scan-configuration)
-		4. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		1. [Scan mode](#scan-mode) = **Orchestration**
+      2. [Target type](#type) = **Repository**
+		3. [Scan Configuration](#scan-configuration) = **Wiz Directory**
+		4. [Target and Variant Detection](#detect-target-and-variant) = **Auto**
 		5. Authentication:
 			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
 			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
@@ -90,7 +90,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a Build or Security stage to your pipeline.
+   1. Add a Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
    #### Copy scan results to the shared path
@@ -110,8 +110,8 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 	
    ##### Required settings
 
-	1. Scan mode = [Ingestion](#scan-mode)
-	2. [Target type](#type) = `Code Repository`
+	1. [Scan mode](#scan-mode) = **Ingestion**
+	2. [Target type](#type) =  **Code Repository**
 	3. [Target name](#name) — Usually the repo name
 	4. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
 	5. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
