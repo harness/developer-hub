@@ -224,11 +224,15 @@ For code repositories:
 
 <a name="scan-config"></a>
 
+<!-- 
+
 #### Scan Configuration
 
 import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
+
+-->
 
 ### Target
 
