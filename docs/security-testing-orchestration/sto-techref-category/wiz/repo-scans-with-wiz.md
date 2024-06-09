@@ -1,7 +1,7 @@
 ---
-title: Repo scans with Wiz
+title: Code repository scans with Wiz
 description: Scan code repositories with Wiz. Orchestration and Ingestion modes supported.
-sidebar_label: Repo scans with Wiz
+sidebar_label: Code repository scans with Wiz
 sidebar_position: 20
 ---
 
