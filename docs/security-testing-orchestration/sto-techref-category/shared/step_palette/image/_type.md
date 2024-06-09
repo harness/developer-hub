@@ -6,4 +6,4 @@ The registry type where the image is stored:
 
 * **[JFrog Docker Registry](https://jfrog.com/container-registry/)** 
 
-* **Local Image** 
+* **Local Image** Scan a local image built and stored within the context of the current stage (via `/var/run/docker.sock` registered as a stage level volume mount).

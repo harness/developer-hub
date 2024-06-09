@@ -183,7 +183,7 @@ spec:
     spec:
       components:
         env:
-        # name of the network interface 
+        # name of the network interface
         - name: NETWORK_INTERFACE
           value: 'eth0'
         - name: TOTAL_CHAOS_DURATION

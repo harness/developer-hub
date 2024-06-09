@@ -37,6 +37,12 @@ A Harness Service is a logical construct that represents your microservices and 
 
 When a Service is added to the stage in a Pipeline, you define its Service Definition. Service Definitions represent the real artifacts, manifests, and variables of a Service. They are the actual files and variable values. You can also propagate and override a Service in subsequent stages by selecting its name in that stage's Service settings.
 
+:::tip
+
+Best practice: Define one Harness Service for every micro service that you want to deploy. We do not recommend overloading one Harness Service for multiple deployments.
+
+:::
+
 For examples, go to:
 
 * [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md)
@@ -185,3 +191,7 @@ For more information, go to [Harness GitOps basics](/docs/continuous-delivery/gi
 In GitOps, changes are managed via Git files and Agents, without requiring pipelines. Deployments refer to executed pipelines in Harness.
 
 This difference is why you see **Deployments** and **GitOps** separated in the Harness UI.
+
+## FAQs
+
+- [CD and GitOps FAQs](/kb/continuous-delivery/faqs)

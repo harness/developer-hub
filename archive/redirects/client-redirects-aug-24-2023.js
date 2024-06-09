@@ -338,7 +338,7 @@ module.exports = {
 
     {
       from: "/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions",
     },
 
     {

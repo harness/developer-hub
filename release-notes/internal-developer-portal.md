@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-05-08T13:00
+date: 2024-05-23T20:00
 sidebar_position: 12
 ---
 
@@ -18,6 +18,40 @@ Review the notes below for details about recent changes to Harness Internal Deve
 :::
 
 ## May 2024
+
+### Version 0.27.0
+
+<!-- May 23, 2024 -->
+
+#### New features and enhancements
+
+- Added the support to JSON stringfy the input values for the custom action [`trigger:trigger-pipeline-with-webhook`](https://developer.harness.io/docs/internal-developer-portal/flows/custom-actions#2-triggertrigger-pipeline-with-webhook) , if the type is object  [IDP-2858]
+
+- orgIdentifier is now an optional field in the Create Project Step [IDP-2857]
+
+- Added support for [Harness Code Repository](https://www.harness.io/products/code-repository) as a [git integration](https://developer.harness.io/docs/internal-developer-portal/get-started/setup-git-integration#connector-setup) [IDP-2724]
+
+- We now support private registry configuration for IDP stage. [IDP-2773]
+
+- Added error handling support for Custom Plugins, users can now view the errors in case of issues with the uploaded packages. [IDP-2527]
+
+- Optimized the user and group entity provider to scale-up the user onboarding. [IDP-2814]
+
+- [Catalog Metadata Ingestion API](https://developer.harness.io/docs/internal-developer-portal/catalog/custom-catalog-properties/#request-body) enhancement: `Properties` are mandatory now, At least one `filter` item should be present in the API body. [IDP-2712]
+
+- Added audit support for scorecard re-run event. [IDP-2150]
+
+- We now have a help panel support in the Onboarding Flow to help users with required information on each page.[IDP-2602]
+
+- Added [Delta Mutation](https://backstage.io/docs/features/software-catalog/external-integrations/#provider-mutations) support for Usergroup sync from Harness Platform to IDP, this improves the performance during onboarding at scale. [IDP-2824] 
+
+
+#### Bug Fixes
+
+- Fixed the issue with new nav URL as annotation for Harness CI/CD plugin. [IDP-2721]
+- Fixed the issue with selecting both custom and default checks while creating a scorecard. 
+- Fixed issue with IDPTelemetryPublisher::recordTelemetry to retry on failure as last sent is updated before attempting to send the license data. [IDP-2654]
+- Fixed handling custom plugin config if marketplace config are available by default in IDP. [IDP-2800]
 
 ### Version 0.26.0
 

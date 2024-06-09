@@ -19,8 +19,8 @@ export enum tileType {
 }
 
 export enum cardType {
-  ILT ="ILT",
-  SPT ="SPT"
+  ILT ="PAID",
+  SPT ="FREE"
 }
 
 

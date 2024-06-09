@@ -203,6 +203,7 @@ curl --location 'https://app.harness.io/gratis/sei/api/v1/custom-cicd' \ # The B
 --data '{
     "integration_id": "<INTEGRATION_ID>",
     "name": "Custom CI/CD Integration",
+    "type": "jenkins",
 }' 
 ```
 

@@ -430,6 +430,16 @@ Yes, Harness provides support for Okta and Azure OneLogin out of the box, but yo
 
 Perform a sync within Okta to resolve the user limit error during Harness provisioning.
 
+### Why do I get an error for my Jit-provisioned user when I try to update via SCIM?
+
+If you're utilizing SCIM, Harness recommends that you provision your users exclusively through SCIM rather than Just-In-Time (JIT) provisioning. This is because when a user is initially provisioned, their fields are updated according to the method of initial provisioning.
+
+To resolve the issue, remove and then re-add the user, ensuring that they are now managed by SCIM.
+
+### What could be the potential reasons for encountering errors when utilizing a Harness-created user group Single Sign-On (SSO) link, particularly when the identical group is pushed from SCIM?
+
+This is expected behavior because the user group is linked to an SSO group through group authorization, making it unmanageable via SCIM.
+
 ### How can I update SAML-connected groups with a new name via API?
 
 Set `samlSettings` to `null` in the API call to update SAML-connected groups with new names.
@@ -837,6 +847,17 @@ Yes, you can have multiple versions of Helm on the delegate, but only the Helm C
 
 No, from a Harness delegate code perspective, the only difference between minimal and non-minimal delegate images is the bundled third-party binaries.
 
+### Why did step logs disappear?
+
+If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+You must restart your delegate after you enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+For more information about configuring connectivity, go to:
+
+- [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+- [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
+
 ### Does the default Harness Delegate include jq?
 
 Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
@@ -965,6 +986,23 @@ gRPC connections are not required for delegate version 23.12.81803 and later.
 ### Do we run Harness Delegate as root?
 
 Harness Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.
+
+
+### Is the minimal delegate free of critical vulnerabilities?
+
+Harness aims to minimize critical/high vulnerabilities within this image. Achieving complete mitigation isn't always possible due to the continual discovery of vulnerabilities in third-party libraries/tools without immediate remediation.
+
+### Where can we see validate the Harness minimal delegate vulnerabilities been addressed?
+
+You can go to the [Harness Trust Center](https://trust.harness.io/). Harness publishes advisories for the latest delegate image.
+
+### How do I delete a Kubernetes delegate?
+
+To delete the delegate from your Kubernetes cluster, you delete the Deployment object that represents its deployment.
+
+```
+kubectl delete deployment -n harness-delegate-ng <YOUR_DEPLOYMENT_NAME>
+```
 
 ### What is delegate allowlist verification?
 
@@ -2552,6 +2590,10 @@ Previously, when attempting to delete a resource in Harness, it would be soft-de
 
 For more information, go to [Force delete](/docs/platform/references/entity-deletion-reference/#force-delete).
 
+### What is ngSecretManager.obtain?
+
+`{ngSecretManager.obtain}` is an internal reference of a secret. If you encounter any errors, it's likely that the secret reference isn't functioning properly. Validate both the script and the secret reference being used.
+
 ### Why can't I reference the Custom Secret Manager template stored in Git?
 
 Harness doesn't currently support referencing the Custom Secret Manager template stored in Git. Create an inline template as a workaround.
@@ -3086,10 +3128,6 @@ Harness integrates with multiple third-party SCIM providers
 
 To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
 
-### How can I switch from the new Harness nav 2.0 UI to the legacy nav?
-
-Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
-
 ### Can I enable feature flags for organizations and projects without enabling them for the account scope?
 
 Currently, feature flags are only enabled at the account-level.
@@ -3190,7 +3228,7 @@ Then, in the delegate manifest, locate the `CronJob` resource. In the resource s
 
 Yes, Harness supports Google cloud functions in both FirstGen and NextGen.
 
-For more information, go to [Google cloud functions](/docs/faqs/continuous-delivery-faqs/#google-cloud-functions)
+For more information, go to [Google cloud functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-cloud-functions/google-functions-faqs).
 
 ### Updating the LDAP cron schedule results in an error (Failed to fetch: 400). What are the possible causes?
 
@@ -3238,3 +3276,20 @@ docker run  --cpus=1 --memory=2g --mount type=bind,source=/Users/amitjha/Downloa
 #### Does Harness NextGen Community Edition support LDAP login?
 No, Harness NextGen Community Edition does not support LDAP login.
 
+### How can I download a JKS file that has been uploaded to Harness Secrets?
+
+You can utilize the following steps to work with the JKS file: decode the file secret, write it to a temporary file, and then access it through that temporary file.
+
+```
+echo <+secrets.getValue("filejksasbase64")> > /values.jksbase64
+cat /values.jksbase64
+cat /values.jksbase64 | base64 -d
+```
+
+### What is the minimum supported screen resolution?
+
+The minimum supported screen resolution is 1440x900.
+
+### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
+
+Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.

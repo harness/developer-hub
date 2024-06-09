@@ -91,11 +91,12 @@ const config = {
           content: "https://developer.harness.io/img/hdh-social-card.png",
         },
       ],
+      //src: "/img/logo_dlp.svg",
       navbar: {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "/img/logo_dlp.svg",
+          src: "/img/logo_pride.svg",
         },
         items: [
           /*{
@@ -224,6 +225,10 @@ const config = {
               {
                 label: "Chaos Engineering",
                 to: "university/chaos-engineering",
+              },
+              {
+                label: "Virtual Instructor-Led Calendar",
+                to: "https://university-registration.harness.io/calendar",
               },
               {
                 label: "Instructions",
@@ -375,6 +380,10 @@ const config = {
               {
                 label: "Feature Requests",
                 to: "https://ideas.harness.io",
+              },
+              {
+                label: "Instructor-Led Training",
+                to: "/university?ilt",
               },
             ],
           },
