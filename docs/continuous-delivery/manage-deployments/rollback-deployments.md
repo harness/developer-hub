@@ -69,7 +69,28 @@ A user will be allowed to execute rollbacks on any instance only if they possess
 ![](./static/permissions_post_rollback.png)
 :::
 
-## Trigger rollback for specific services using APIs
+## Trigger rollback for specific service using APIs
 
 You can use APIs to trigger rollback for specific services. For more details, go to [Trigger rollback](https://apidocs.harness.io/tag/Rollback/#operation/triggerRollback). 
-Note that you need `instanceKey` and `infrastructureMappingId` of the service instance for rollback. Obtaining this info is not straight forward. You can Inspect the Instance Details page in the Harness UI to obtain these details from the `getinstancesDetails` API.
+Note that you need `instanceKey` and `infrastructureMappingId` of the service instance for rollback. Currently, obtaining this parameters is not straightforward. You can obtain these parameters using a cURL command. 
+
+Here's a sample cURL request:
+
+```
+curl --location 'https://localhost:8181/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=default&projectIdentifier=Sarthak&serviceId=Kustomize&envId=Env&infraIdentifier=qatarget&buildId=null' \
+--header 'Accept: */*' \
+--header 'Accept-Language: en-US,en;q=0.9' \
+--header 'Authorization: Bearer <YOUR_BEARER_TOKEN> \
+--header 'Connection: keep-alive' \
+--header 'Cookie: intercom-id-i***********7; intercom-device-id-i*****************; ajs_anonymous_id=b**************7; ajs_user_id=admin@harness.io; intercom-session-i****; ADRUM=s~1************** \
+--header 'Referer: https://localhost:8181/ng/account/<Account_Identifier>/home/orgs/default/projects/Sarthak/services/Kustomize?tab=summaryTab' \
+--header 'Sec-Fetch-Dest: empty' \
+--header 'Sec-Fetch-Mode: cors' \
+--header 'Sec-Fetch-Site: same-origin' \
+--header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36' \
+--header 'sec-ch-ua: "Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"' \
+--header 'sec-ch-ua-mobile: ?0' \
+--header 'sec-ch-ua-platform: "macOS"'
+```
+
+From the response, you can obtain `infrastructureMappingId` and `instanceKey`. 
