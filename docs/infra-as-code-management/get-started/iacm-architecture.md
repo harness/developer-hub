@@ -5,8 +5,7 @@ sidebar_position: 15
 sidebar_label: IaCM Architecture
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import InteractiveSVG from "../components/interactive_architecture";
 
 # IaCM Architecture
 
@@ -19,13 +18,13 @@ Infrastructure as Code Management architecture the following:
 
 The system is designed to be extensible with functionality being built through the combination of config and tasks executors. 
 
-![Architecture Diagram](static/IaCM_Architecture.png)
+## Interactive Diagram
 
-## Services
+<InteractiveSVG />
+
+## IaCM-specific services
 
 Harness Infrastructure as Code Management hosts its own service while integrating with Harness Platform Services and Harness CI Pipeline Services
-
-![Service cycle](static/IaCM_SimpleServices.png)
 
 IaCM utilizes three internal services:
 
@@ -35,15 +34,3 @@ IaCM utilizes three internal services:
 
 ### IaCM Plugin
 
-## Extensive service map
-The following service map highlights the architectural flow incorporating the following internal and external services:
-
-Blue: IaCM-specific services
-
-White: Harness Services external to IaCM
-
-Yellow: External services including Code Repository and Cloud Provider Connectors
-
-
-
-![Service cycle](static/IaCM_Service_Map.png)
