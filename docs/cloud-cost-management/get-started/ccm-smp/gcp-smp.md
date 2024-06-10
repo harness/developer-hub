@@ -344,14 +344,6 @@ Following are some secrets from platform-service that you will need to update:
 Run `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
 :::
 
-### Troubleshooting
-If in case the K8s secrets expire, the secrets will have to be set again. We recommend to `kubectl delete` the following pods:
-
-- `batch-processing`
-- `ce-nextgen`
-- `cloud-info`
-
-and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/azure-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods.
 
 ## GCP Connector Setup
 
@@ -368,3 +360,11 @@ Please refer [this](https://developer.harness.io/docs/cloud-cost-management/get-
 Not supporting **GCP Inventory management** in the **Choose Requirements** step of GCP Connector flow.
 :::
 
+### Troubleshooting
+If in case the K8s secrets expire, the secrets will have to be set again. First you would have to update the secrets in respective `secret.yaml` and then delete the pod. We recommend to `kubectl delete` the following pods:
+
+- `batch-processing`
+- `ce-nextgen`
+- `cloud-info`
+
+and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/azure-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods.
