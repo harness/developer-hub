@@ -1,6 +1,6 @@
 ---
 title: Kubernetes-based fault classification
-sidebar_position: 2
+sidebar_position: 3
 ---
 This topic describes the following:
 - Classification of Kubernetes-based faults.
@@ -26,13 +26,13 @@ Kubernetes chaos agent also supports executing faults on remote targets that use
 
 ## Pod faults (microservices-based faults)
 
-These faults act on application workloads (that include single-run pods) using the namespace, label selectors, and workload names as the filters to identify the target. You can define the blast radius of the fault through pod percentages (that is, the number of candidate pods to target in case multiple replicas fit the filter criteria) and container names.
+These faults act on application [workloads]( https://kubernetes.io/docs/concepts/workloads/) (that include single-run pods) using the namespace, label selectors, and workload names as the filters to identify the target. You can define the blast radius of the fault through pod percentages (that is, the number of candidate pods to target in case multiple replicas fit the filter criteria) and container names.
 
 Some of these faults use purely the Kubernetes API. In such cases, a Go client in the chaos pod uses the in-cluster configuration through mounted serviceaccount token to carry out some kubernetes CRUD operations (for example, [pod delete](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete), [pod scale](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler), [service load](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress), and so on).
 
 Along with the Kubernetes API, many other faults use runtime APIs to extract the container PIDs and inject chaos in the target container's network, pid and mnt namespaces (for example, [pod network loss](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss), [pod CPU hog](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog), [pod IO latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency), and so on.)
 
-The diagram below describes the flow of control of chaos components (like subscriber, controller, and pods) to execute a chaos experiment.
+The diagram below describes how the chaos fault is executed against microservices, that is, application workloads.
 
 ![](./static/generic-flow-3.png)
 
@@ -79,7 +79,7 @@ These faults disrupt the state of cloud resources, deprive resources, or manipul
 
 The transient chaos pods leverage the respective cloud provider SDK to inject chaos and consume cloud credentials (of account users that are mapped to an appropriate IAM role) through the Kubernetes secrets to authenticate their API requests.
 
-The diagram below describes the flow of control in cloud-based chaos faults.
+The diagram below describes how a chaos fault is executed in cloud-based chaos faults.
 
 ![](./static/cloud-target-6.png)
 
