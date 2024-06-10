@@ -28,9 +28,9 @@ echo '<+pipeline.variables.resource>'
 
 Next click on "triggers" in the top right and select "+ New Trigger" and select the custom type. Give the trigger a name and click continue, do not enter any conditions and click continue. For the inputs to our three variables, enter the following:
 
-- account_id: <+trigger.header['account-id']>
-- region: <+trigger.header['region']>
-- resource: <+eventPayload>
+- account_id: `<+trigger.header['account-id']>`
+- region: `<+trigger.header['region']>`
+- resource: `<+eventPayload>`
 
 ![](../static/ccm_asset_governance_pipeline_trigger.png)
 
