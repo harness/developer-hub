@@ -38,14 +38,13 @@ Harness Delegate images are multi-architecture under the same tag. If you naviga
 
   | **Third-party tool/SDK** | **78101 and earlier** | **78306 and later** |
   | :-- | :-: | :-: |
-  | kubectl | 1.13.2, 1.19.2 | 1.24.3 |
-  | go-template | 0.4, 0.4.1 | 0.4.1 |
+  | kubectl | 1.13.2, 1.19.2 | 1.28.7 |
+  | go-template | 0.4, 0.4.1 | 0.4.5 |
   | harness-pywinrm | 0.4-dev | 0.4-dev |
-  | helm | 3.1.2, 3.8.0 | 3.1.2, 3.8.0 |
+  | helm | 3.1.2, 3.8.0 | 3.12.0 |
   | chartmuseum | 0.8.2, 0.12.0 | 0.15.0 |
-  | tf-config-inspect | 1.0, 1.1 | 1.1 |
-  | oc | 4.2.16 | 4.2.16 |
-  | kustomize | 3.5.4, 4.0.0  | 4.5.4 |
+  | tf-config-inspect | 1.0, 1.1 | 1.2 |
+  | oc | 4.2.16 | 4.13.32 |
   | git | NA | 2.31.1
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
