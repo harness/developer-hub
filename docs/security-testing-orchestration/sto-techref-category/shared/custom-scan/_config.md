@@ -16,7 +16,7 @@ aws_account
 
 You can use these settings to access your configuration. 
 
-You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access token and access it using the format `<+secrets.getValue("project.my-secret")>`. 
+You should create [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) with your encrypted access token and access it using the format `<+secrets.getValue("my-secret")>`. 
 
 ```
 configuration_region

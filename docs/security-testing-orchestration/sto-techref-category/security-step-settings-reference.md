@@ -71,12 +71,14 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-
+<!-- 
 ### Scanner binaries used in STO container images
 
 import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 
 <StoSupportedBinaries />
+
+-->
 
 
 ### Security steps and scanner templates in STO

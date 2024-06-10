@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-03T10:00
+date: 2024-06-07T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## June 2024
+
+### Version 24.06.83004 <!--  June 7, 2024 -->
+
+#### Hotfix
+
+- Secrets were being printed in plain text when using a custom secret manager, exposing sensitive information. Implemented masking of the `script` field in the custom secret manager to prevent logging of secrets used within the script. (PL-51535, ZD-64069)
 
 ### Version 24.06.83003 <!--  June 3, 2024 -->
 
