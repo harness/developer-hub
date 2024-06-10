@@ -37,6 +37,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
   The following configurations are supported:
 
   - **Default** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/bandit)
     - [bandit](https://semgrep.dev/p/bandit)
     - [brakeman](https://semgrep.dev/p/brakeman)
     - [eslint](https://semgrep.dev/p/eslint)
@@ -58,13 +59,20 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     - [gosec](https://semgrep.dev/p/gosec)
     - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
-  - **Auto and Ported security tools except p/gitleaks** 
+  - **Auto and Ported security tools except p/gitleaks**
 
 -->
 
-  #### Fixed issue
+#### Fixed issues
+
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  - Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  - Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  - Removed default port from being set by runner and will only set port if user specifies in the step.
 
 - Fixed an issue where a updated runner image caused repository scans to fail in some cases. (STO-7634, ZD-64116)
+
+- Implemented a fix to improve data processing times for certain edge cases. (STO-7521, ZD-62602, ZD-62694)
 
 ## May 2024
 
