@@ -25,7 +25,7 @@ Upon receiving a Spot interruption notice, the Cluster Orchestrator searches for
 
 But, in case **Spot capacity is unavailable**, a fallback to On-Demand instances occurs to maintain availability. The frequency at which this lookout for new spot machine after fallback happens can be configured by the user (minutes, hours or days). But even though this happens, in background, Cluster Orchestrator continuously monitors Spot capacity and looks for available Spot Instances. When a new Spot Instance is found, it seamlessly switches back to Spot Instances thereby increasing the utilization of Spot Instances and maximizing savings.
 
-This entire setup ensures users remain up-to-date with AWS spot management without manual intervention.
+This entire setup ensures that users remain up-to-date with AWS spot management without manual intervention.
 
 ## How is Harness Cluster Orchestrator Different?
 
