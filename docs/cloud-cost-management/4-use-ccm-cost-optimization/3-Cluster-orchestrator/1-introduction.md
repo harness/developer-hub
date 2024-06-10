@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::note
 
-Currently, this early access feature is behind a feature flag . Contact [Harness Support](support@harness.io) to enable the feature.
+Currently, this early access feature is behind a feature flag . Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 <DocImage path={require('./static/CO.png')} width="90%" height="90%" title="Click to view full size image" />
