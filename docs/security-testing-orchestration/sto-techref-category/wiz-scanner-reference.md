@@ -346,7 +346,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 <StoSettingTargetWorkspace  />
 
-### Artifacts
+### Container image
 
 
 #### Type
@@ -421,7 +421,7 @@ This is your `client-id` shared by Wiz.
 
 This is your `client-secret` shared by Wiz.
 
-You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
 
 

@@ -72,6 +72,12 @@ The concurrency limits are as follows for each plan tier:
 | Editable | No | Yes | Yes |
 | Scope | Account | Account | Account |
 
+:::warning
+
+These concurrency limits are *account wide* and NOT per pipeline. 
+
+:::
+
 This setting can only be edited in Team and Enterprise plans. You can set it at the account scope only. You can configure the limit anywhere between 2 and the maximum. 
 
 ### Pipeline Timeout and Stage Timeout (execution time limits)
