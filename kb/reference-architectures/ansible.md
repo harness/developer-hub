@@ -1,12 +1,12 @@
 ---
-title: How to run ansible using Harness Step Groups
+title: How to run Ansible using Harness Step Groups
 ---
 
 # Overview
 
 To run ansible in a Harness pipeline, we can leverage containerized step groups to clone the repo with our Ansible playbooks, and a run step to execute the playbooks based on your operating model.
 
-## Prerequisites
+# Prerequisites
 
 The following guide will assume you have the following in your Harness account:
 
@@ -25,21 +25,21 @@ Select your Kubernetes connector where you want the pipeline to run, and expand 
 
 We need to create a few variables for the inputs to our ansible execution. Click "+ New Variable" and create two variables, one for `hosts_file` and one for `playbook`. Set both to be runtime inputs.
 
-![](../static/ansible_step_group_sg.png)
+![](static/ansible_step_group_sg.png)
 
 Click "Apply Changes" in the top right to create the step group.
 
-## Clone Codebase
+### Clone Codebase
 
 Within the step group you created, select "Add Step" and add a new "Git Clone" step.
 
 Select your git provider, and fill in the repository details based on the location of your ansible playbooks.
 
-![](../static/ansible_step_group_clone.png)
+![](static/ansible_step_group_clone.png)
 
 Click "Apply Changes" in the top right to save your repo settings.
 
-## Run Ansible
+### Run Ansible
 
 Hover your mouse to the right of the clone step within your step group, select the blue + icon and select "Add Step" and add a new "Run" step.
 
@@ -69,15 +69,15 @@ ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.hos
 
 Please note that the JEXL included assume the step group has an identifier of `ansible` and the clone step of `clone`, you may need to adjust the JEXL based on how you nameed those resources. It also assumes your SSH secret file id is `pem_file`.
 
-![](../static/ansible_step_group_command.png)
+![](static/ansible_step_group_command.png)
 
 Click "Apply Changes" in the top right to save your run settings.
 
-## Run
+### Run
 
 Now when you save your pipeline and execute it, you will be prompted for your hosts and playbook file.
 
-![](../static/ansible_step_group_run.png)
+![](static/ansible_step_group_run.png)
 
 ## Expanding
 
@@ -114,3 +114,7 @@ ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.hos
 ```
 
 The above example add a variable `my_req_var` to the extra vars flag, while also passing in any additonal variables specified via pipeline input.
+
+## Deployment Template
+
+How to turn the above into a custom deployment template, coming soon.
