@@ -64,7 +64,7 @@ else
 fi
 
 # execute the playbook
-ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.host_file> playbooks/<+execution.steps.ansible.variables.playbook>
+ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.host_file> <+execution.steps.ansible.variables.playbook>
 ```
 
 Please note that the JEXL included assume the step group has an identifier of `ansible` and the clone step of `clone`, you may need to adjust the JEXL based on how you nameed those resources. It also assumes your SSH secret file id is `pem_file`.
