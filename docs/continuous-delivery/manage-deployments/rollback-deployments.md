@@ -77,20 +77,8 @@ Note that you need `instanceKey` and `infrastructureMappingId` of the service in
 Here's a sample cURL request:
 
 ```
-curl --location 'https://localhost:8181/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=default&projectIdentifier=Sarthak&serviceId=Kustomize&envId=Env&infraIdentifier=qatarget&buildId=null' \
---header 'Accept: */*' \
---header 'Accept-Language: en-US,en;q=0.9' \
---header 'Authorization: Bearer <YOUR_BEARER_TOKEN> \
---header 'Connection: keep-alive' \
---header 'Cookie: intercom-id-i***********7; intercom-device-id-i*****************; ajs_anonymous_id=b**************7; ajs_user_id=admin@harness.io; intercom-session-i****; ADRUM=s~1************** \
---header 'Referer: https://localhost:8181/ng/account/<Account_Identifier>/home/orgs/default/projects/Sarthak/services/Kustomize?tab=summaryTab' \
---header 'Sec-Fetch-Dest: empty' \
---header 'Sec-Fetch-Mode: cors' \
---header 'Sec-Fetch-Site: same-origin' \
---header 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36' \
---header 'sec-ch-ua: "Google Chrome";v="125", "Chromium";v="125", "Not.A/Brand";v="24"' \
---header 'sec-ch-ua-mobile: ?0' \
---header 'sec-ch-ua-platform: "macOS"'
+curl --location 'https://localhost:8181/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=<Org_Name>&projectIdentifier=<Project_Name>&serviceId=<Service_Id>&envId=<Environment_Id>&infraIdentifier=<Infrastructure>&buildId=null' \
+--header 'x-api-key: <KEY>'
 ```
 
 From the response, you can obtain `infrastructureMappingId` and `instanceKey`. 
