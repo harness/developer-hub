@@ -179,7 +179,7 @@ README.md @ravilach
 /kb/feature-flags/ @HarnessTheChaos @jenniferopal
 
 #CCM KB
-/kb/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
+/kb/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss @rssnyder
 
 #SRM KB
 /kb/service-reliability-management/ @sunilgupta-harness
@@ -192,6 +192,9 @@ README.md @ravilach
 
 #STO KB
 /kb/security-testing-orchestration/ @douglas-j-bothwell
+
+#RA
+/kb/reference-architectures/ @rssnyder @suranc
 
 # Roadmap ###
 
