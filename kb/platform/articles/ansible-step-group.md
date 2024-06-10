@@ -104,3 +104,13 @@ Sometimes you may have variables you need to include at runtime for your plays. 
 ```
 ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.host_file> -e '<+execution.steps.ansible.variables.extra_vars>' <+execution.steps.ansible.variables.playbook>
 ```
+
+#### Required vars
+
+If you have ansible variables you want set on every run, but want to have them as pipeline inputs, you can again create a step group variable for this, and add them into your ansible command:
+
+```
+ansible-playbook --private-key=id_rsa -i <+execution.steps.ansible.variables.host_file> -e 'my_req_var=<+execution.steps.ansible.variables.my_req_var> <+execution.steps.ansible.variables.extra_vars>' <+execution.steps.ansible.variables.playbook>
+```
+
+The above example add a variable `my_req_var` to the extra vars flag, while also passing in any additonal variables specified via pipeline input.
