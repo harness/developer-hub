@@ -367,7 +367,7 @@ When you click on **Connectors** there is a **Referenced by** tab which shows th
 
 ![](./static/referenced_by.png)
 
-For example, if you store your entities—such as Pipelines, Services, Environment, Input Set, or Templates—in the default branch (for example, main or master), they will appear in the **Referenced By** section. If a pipeline is using a connector, the connector will list the pipeline as a reference if the pipeline is stored remotely in the default branch or INLINE. However, if the pipeline is saved in a non-default branch, no reference will be created in the Referenced By section.
+For example, if you store your entities—such as Pipelines, Services, Environment, Input Set, or Templates—in the default branch (for example, main or master), they will appear in the **Referenced By** section. If a pipeline is using a connector, the connector will list the pipeline as a reference if the pipeline is stored remotely in the default branch or INLINE. However, if the pipeline is saved in a non-default branch, no reference will be created in the **Referenced By** section.
 
 The primary reason for this approach is to ensure we don't create stale references. We only manage references for stable versions of entities, and we assume that the default branch will always be the right choice for stable versions. Managing references for all branches would create redundant references, which could block deletion operations on the entities.
 
