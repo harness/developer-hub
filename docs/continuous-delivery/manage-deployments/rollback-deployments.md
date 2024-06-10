@@ -77,7 +77,7 @@ Note that you need `instanceKey` and `infrastructureMappingId` of the service in
 Here's a sample cURL request:
 
 ```
-curl --location 'https://localhost:8181/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=<Org_Name>&projectIdentifier=<Project_Name>&serviceId=<Service_Id>&envId=<Environment_Id>&infraIdentifier=<Infrastructure>&buildId=null' \
+curl --location 'https://https://app.harness.io/ng/api/dashboard/getInstancesDetails?routingId=<Account_Identifier>accountIdentifier=<Account_Identifier>orgIdentifier=<Org_Name>&projectIdentifier=<Project_Name>&serviceId=<Service_Id>&envId=<Environment_Id>&infraIdentifier=<Infrastructure>&buildId=null' \
 --header 'x-api-key: <KEY>'
 ```
 
