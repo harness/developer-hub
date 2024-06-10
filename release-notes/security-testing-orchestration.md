@@ -30,7 +30,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 - The STO API is now generally available and publicly documented. For more information, go to [STO](https://apidocs.harness.io/tag/Exemptions) in the Harness API documentation. (STO-5281)
 
-<!-- -->
+<!--
 
 - The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
 
@@ -61,7 +61,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
   - **Auto and Ported security tools except p/gitleaks**
 
-
+-->
 
 #### Fixed issues
 
