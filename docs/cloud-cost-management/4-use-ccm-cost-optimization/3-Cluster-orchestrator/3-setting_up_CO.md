@@ -10,9 +10,13 @@ helpdocs_is_published: true
 
 To enable Cluster Orchestrator for AWS EKS clusters associated with your account, follow these two simple steps:
 
-### Step 1: Navigate to Cluster Orchestrator in the Cloud Costs Module
+### Step 1:: Enable feature flag
 
-Currently, Cluster Orchestrator is behind a Feature Flag. Please reach out to Harness Support for enablement. After it is enabled, you can see it directly in the navigation bar. Once you click on it, you will be taken to the home page, where you can see all the clusters associated with your account. 
+Currently, this early access feature is behind a feature flag . Contact [Harness Support](support@harness.io) to enable the feature. After it is enabled, you can see it directly in the navigation bar.
+
+### Step 2: Navigate to Cluster Orchestrator in the Cloud Costs Module
+
+Click on Cluster Orchestrator from the navigation bar. Once you click on it, you will be taken to the home page, where you can see all the clusters associated with your account. 
 
 For each cluster, you can see the following information:
 - Name of the cluster
@@ -27,7 +31,7 @@ For each cluster, you can see the following information:
 On this page, you can also see the total cost of the clusters and the spot savings.
 <DocImage path={require('./static/overview.png')} width="100%" height="100%" title="Click to view full size image" />
 
-### Step 2: Enable the Cluster Orchestrator for a Selected Cluster
+### Step 3: Enable the Cluster Orchestrator for a Selected Cluster
 
 For a given cluster, click on the enable option, which will take you to the enablement screen. To enable the Cluster Orchestrator for the particular cluster, there are two steps to complete:
 
@@ -39,7 +43,7 @@ You will be asked to run a shell script in your terminal and verify the connecti
 
 #### Step B: Configuration
 
-Cluster Orchestrator allows you to choose a base on-demand capacity, which you can further split into percentages to determine how much should be used by spot and on-demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized**. Once all the details are filled in, you can see the potential savings and select **"Complete Enablement"** to enable Cluster Orchestrator for the cluster.
+Cluster Orchestrator allows you to choose a **Base On-Demand Capacity**, which can be further split into percentages to determine how much should be used by Spot and On-Demand instances. You can also choose the distribution strategy between **Least-Interrupted** or **Cost-optimized**. Once all the details are filled in, you can see the potential savings and click on the **"Complete Enablement"** button to enable Cluster Orchestrator for the cluster.
 
 <DocImage path={require('./static/stepB.png')} width="110%" height="110%" title="Click to view full size image" />
 

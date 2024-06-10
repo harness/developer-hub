@@ -8,8 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info
-Currently, Cluster Orchestrator is in beta and behind a Feature Flag. Please reach out to the harness support team for enablement.
+:::note
+
+Currently, this early access feature is behind a feature flag . Contact [Harness Support](support@harness.io) to enable the feature.
 
 :::
 <DocImage path={require('./static/CO.png')} width="90%" height="90%" title="Click to view full size image" />

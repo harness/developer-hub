@@ -11,8 +11,6 @@ helpdocs_is_published: true
 ## Working of Cluster Orchestrator
 Cluster Orchestrator primarily performs the action of node provisioning based on workload and pod requirements and removing those nodes when the load and demand declines. But what makes it powerful and flexible is its ability to determine the type of instances or nodes to bring up (whether Spot, or On-Demand) coupled with its built-in Spot instance orchestration capabilities.
 
-<DocImage path={require('./static/working.png')} width="90%" height="90%" title="Click to view full size image" />
-
 ### Spot Instance Orchestration: A High-Level Overview of Cluster Orchestrator's Working
 
 
