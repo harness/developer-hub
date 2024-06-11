@@ -189,7 +189,7 @@ spec:
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -215,8 +215,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
-
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 ![](./static/source-location.png)
 
 In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
@@ -284,24 +283,6 @@ spec:
 - *Calculation Method:* Retrieve repository details using `backstage.io/source-location` and calculate the average merge time.
 - *Prerequisites:* Provide suitable `backstage.io/source-location` annotation if the catalog YAML file is present outside the source GitLab repository. Make sure to mention the branch name in the conditional input field.
 
-:::info
-
-### URL priority for branch name field
-
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
-
-![](./static/source-location.png)
-
-In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
-
-1. If it’s in both, the check configuration will take precedence.
-2. If it’s in only one, we’ll use that value.
-3. If it’s in neither, the check will fail.
-
-![](./static/checks-field.png)
-
-:::
-
 ![](./static/m-t-gitlab.png)
 
 **Example YAML**
@@ -326,7 +307,7 @@ spec:
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -352,7 +333,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -424,7 +405,7 @@ spec:
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -450,7 +431,7 @@ In case you mention the `branchName` field as a check config other than what's p
 
 ### URL priority for branch name field
 
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
+In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. It is suggested to give a branchName in case you want to use the same for all the repositories, otherwise we use the branch name mentioned in the `source-location`.
 
 ![](./static/source-location.png)
 
@@ -587,24 +568,6 @@ We only support string and key-value pair data types in JEXL, some datatype like
 :::
 
 ![](./static/checks-catalog-metadataname.png)
-
-:::info
-
-### URL priority for branch name field
-
-In some of the data points we take `branchName` as input, and it's an optional field incase the branch is mentioned in `source-location` in  **catalog-info.yaml**. We use branchName from catalog-info.yaml because the develop branch name is usually same across repository in an engineering org. 
-
-![](./static/source-location.png)
-
-In case you mention the `branchName` field as a check config other than what's present in the `source-location` the priority order conditions could be found below. 
-
-1. If it’s in both, the check configuration will take precedence.
-2. If it’s in only one, we’ll use that value.
-3. If it’s in neither, the check will fail.
-
-![](./static/checks-field.png)
-
-:::
 
 2. **Owner is defined**:
 - *Objective:* Checks if the catalog YAML file has the owner configured or not
