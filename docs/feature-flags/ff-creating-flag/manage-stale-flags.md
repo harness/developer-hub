@@ -26,7 +26,7 @@ Or
 
 - Flags that have been globally set to a single value for longer than 30 days.
 
-#### Finding Potentially Stale Flags
+#### Finding potentially stale flags
 
 - At the top of your Feature Flags overview screen, you will find a list of filters.
 - One of those filters is labeled **Potentially Stale Flags**.
