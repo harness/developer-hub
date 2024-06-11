@@ -1,5 +1,6 @@
 ---
-title: How to run Ansible using Harness Step Groups
+title: Ansible
+description: Run ansible in a Harness pipeline
 ---
 
 # Overview
