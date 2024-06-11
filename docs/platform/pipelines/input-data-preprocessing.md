@@ -38,7 +38,7 @@ This ensures that the input remains exactly as specified, providing you with pre
 ## How to enable this feature?
 
 :::info note
-Currently this feature is behind feature flag `CDS_ENABLE_RAW_MODE`.
+Currently this feature is behind feature flag `CDS_ENABLE_RAW_MODE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You need to enable following settings at account level to use this feature:
@@ -53,22 +53,26 @@ You need to enable following settings at account level to use this feature:
 ### If Raw mode of Off (Current Behavior)
 
 - **Initial Load** : `<+input>` is shown as `""`
-- **Run Pipeline with Input Set: `""` is converted into `<+input>` in the payload.
-- Run Pipeline without Input Set: No transformation; `""` is converted to `<+input>` in the payload.
-- Input Set Details Page: `""` is converted to `<+input>` upon saving
-- Triggers Page: `""` is converted to `<+input>` upon saving.
+- **Run Pipeline with Input Set**: `""` is converted into `<+input>` in the payload.
+- **Run Pipeline without Input Set**: No transformation; `""` is not converted to `<+input>` in the payload.
+- **Input Set Details Page**: `""` is converted to `<+input>` upon saving
+- **Triggers Page when creating an Input Set**: `""` is converted to `<+input>` upon saving the input Set.
 
 ### If Raw mode in On
 
-- Creating and Updating Input Sets:
-   - Initial Load: No transformation, values are as it is.
-   - Saving: Values remain unchanged.
+- **Creating and Updating Input Sets**:
+   - **Initial Load**: No transformation, values are as it is.
+   - **Saving**: Values remain unchanged.
 
-- Run Pipeline form with Input Set:
-  - Initial Load: No transformation, values are as it is.
-  - Execution: No transformation; values are as it is.
+- **Run Pipeline form with Input Set**:
+  - **Initial Load**: No transformation, values are as it is.
+  - **Execution**: No transformation; values are as it is.
 
-- Run Pipeline without Input Set:
-  - Initial Load: `""` stays `""`.
-  - Execution: `""` stays `""`.
+- **Run Pipeline without Input Set**:
+  - **Initial Load**: `""` stays `""`.
+  - **Execution**: `""` stays `""`.
+
+- **Selection of Exisiting Input Set in Run Form**: All instances of `<+input>` in YAML view will be displayed as runtime field in Visual view and not as empty.
+
+- **Input Set Details Page**: No transformation occurs, valus remain same on saving input set.
 
