@@ -84,7 +84,7 @@ As a best practice, include the scheme and port. For example, `https://your-repo
 For more information, go to the following Sonatype documentation:
 
 * [Docker Repository Configuration and Client Connection](https://support.sonatype.com/hc/en-us/articles/115013153887-Docker-Repository-Configuration-and-Client-Connection)
-* [Using Nexus 3 as Your Repository - Part 3: Docker Images](https://blog.sonatype.com/using-nexus-3-as-your-repository-part-3-docker-images)
+* [Using Nexus 3 as Your Repository - Part 3: Docker Images](https://www.sonatype.com/blog/using-sonatype-nexus-repository-3-part-3-docker-images)
 
 ### Repository
 
