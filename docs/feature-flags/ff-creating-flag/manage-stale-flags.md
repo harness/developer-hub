@@ -28,9 +28,7 @@ Or
 
 #### Finding potentially stale flags
 
-- At the top of your Feature Flags overview screen, you will find a list of filters.
-- One of those filters is labeled **Potentially Stale Flags**.
-- Click this list to see which flags have been highlighted by Harness as potentially stale.
+To see the flags identified by Harness as potentially stale, go to the top of the **Feature Flags Overview** and select the **Potentially Stale Flags** filter.
 
 By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale.
 
