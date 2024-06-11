@@ -53,6 +53,12 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per-use-case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
 
+### Version 24.06.83004 <!--  June 7, 2024 -->
+
+#### Hotfix
+
+- Secrets were being printed in plain text when using a custom secret manager, exposing sensitive information. Implemented masking of the `script` field in the custom secret manager to prevent logging of secrets used within the script. (PL-51535, ZD-64069)
+
 ### Version 24.06.83003 <!--  June 3, 2024 -->
 
 #### Hotfix

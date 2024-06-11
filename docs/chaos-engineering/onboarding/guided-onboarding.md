@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 7
 title: Guided onboarding
 description: Customize experiment creation in every step with HCE
 ---
@@ -18,8 +18,9 @@ This topic describes the following operations:
 ## Before you begin, review the following:
 
 * [What is chaos engineering?](/docs/chaos-engineering/get-started/overview)
-* [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding.md)
-* [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding.md)
+* [Delegate driven Harness infrastructure](/docs/chaos-engineering/onboarding/harness-infra/harness-infra.md)
+* [Onboarding overview](/docs/chaos-engineering/onboarding/hce-onboarding)
+* [HCE automated onboarding](/docs/chaos-engineering/onboarding/single-click-onboarding)
 
 :::tip
 Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [Harness support](mailto:support@harness.io) to enable the feature.

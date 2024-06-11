@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-05-23T10:00
+date: 2024-06-07T10:00
 sidebar_position: 13
 ---
 
@@ -21,6 +21,58 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 * **More release notes:** Go to [Harness Release Notes](/release-notes) to explore all Harness release notes, including module, delegate, Self-Managed Enterprise Edition, and FirstGen release notes.
 
 :::
+
+## June 2024
+
+### Version 1.97
+
+#### New feature
+
+- The STO API is now generally available and publicly documented. For more information, go to [STO](https://apidocs.harness.io/tag/Exemptions) in the Harness API documentation. (STO-5281)
+
+<!--
+
+- The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
+
+  The following configurations are supported:
+
+  - **Default** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/bandit)
+    - [bandit](https://semgrep.dev/p/bandit)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rulesets in **Additional CLI flags**.
+  - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
+  - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
+  - **Auto and Ported security tools** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/auto)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gitleaks](https://semgrep.dev/p/gitleaks)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **Auto and Ported security tools except p/gitleaks**
+
+-->
+
+#### Fixed issues
+
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  - Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  - Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  - Removed default port from being set by runner and will only set port if user specifies in the step.
+
+- Fixed an issue where a updated runner image caused repository scans to fail in some cases. (STO-7634, ZD-64116)
+
+- Implemented a fix to improve data processing times for certain edge cases. (STO-7521, ZD-62602, ZD-62694)
 
 ## May 2024
 
@@ -43,8 +95,9 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### New features and enhancements
 
-- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rule packs. (STO-7560)
+- The default behavior for Semgrep orchestration scans has changed. Semgrep steps now include the following rulesets. (STO-7560)
 
+  - [auto](https://semgrep.dev/p/auto)
   - [bandit](https://semgrep.dev/p/bandit)
   - [brakeman](https://semgrep.dev/p/brakeman)
   - [eslint](https://semgrep.dev/p/eslint)
