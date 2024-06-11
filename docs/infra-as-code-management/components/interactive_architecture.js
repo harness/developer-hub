@@ -33,8 +33,8 @@ const InteractiveIaCMArchitecture = ({
       elements.forEach((el) => {
         const shapesAndText = el.querySelectorAll('rect, circle, path, ellipse, text');
         shapesAndText.forEach((shapeOrText) => {
-          shapeOrText.dataset.originalColor = shapeOrText.getAttribute('fill');
-          shapeOrText.style.fill = darkenColor(shapeOrText.dataset.originalColor || '#000'); // Darken color for shapes and text
+          shapeOrText.dataset.originalColor = shapeOrText.getAttribute('fill') || '#000';
+          shapeOrText.style.fill = darkenColor(shapeOrText.dataset.originalColor); // Darken color for shapes and text
         });
         el.style.cursor = 'pointer'; // Set cursor to pointer for both shape and text
       });
@@ -81,74 +81,73 @@ const InteractiveIaCMArchitecture = ({
       }
     };
 
-    const svgObject = document.getElementById('architecture-svg');
-    svgObject.addEventListener('load', () => {
-      const svgDoc = svgObject.contentDocument;
-
-      // Select all elements with the class "interactive"
-      const interactiveElements = svgDoc.querySelectorAll('.interactive');
-
-      interactiveElements.forEach((elem) => {
-        const elemId = elem.id;
-        const relatedElements = Array.from(svgDoc.querySelectorAll(`.interactive[id="${elemId}"]`));
-
-        // Handle hover and click events for elements and groups
-        elem.addEventListener('mouseenter', () => {
-          if (groupDescriptions[elemId]) {
-            // If element is part of a group, darken the entire group
-            const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
-            groupElements.flat().forEach(el => {
-              if (el.id !== activeElement) applyDarkenEffect([el]);
-            });
-          } else if (elemId !== activeElement) {
-            // Apply hover effect to individual elements
-            applyDarkenEffect(relatedElements);
+    const handleHover = (svgDoc, elemId, isEntering) => {
+      if (groupDescriptions[elemId]) {
+        const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
+        groupElements.flat().forEach(el => {
+          if (el.id !== activeElement) {
+            if (isEntering) {
+              applyDarkenEffect([el]);
+            } else {
+              resetColorEffect([el]);
+            }
           }
         });
-
-        elem.addEventListener('mouseleave', () => {
-          if (groupDescriptions[elemId]) {
-            // If element is part of a group, reset the entire group
-            const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
-            groupElements.flat().forEach(el => {
-              if (el.id !== activeElement) resetColorEffect([el]);
-            });
-          } else if (elemId !== activeElement) {
-            // Reset hover effect for individual elements
-            resetColorEffect(relatedElements);
-          }
-        });
-
-        elem.addEventListener('click', () => handleClick(svgDoc, elemId));
-
-        // Ensure text elements also trigger the same events
-        if (elem.tagName === 'text') {
-          elem.parentElement.addEventListener('mouseenter', () => {
-            if (groupDescriptions[elemId]) {
-              const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
-              groupElements.flat().forEach(el => {
-                if (el.id !== activeElement) applyDarkenEffect([el]);
-              });
-            } else if (elemId !== activeElement) {
-              applyDarkenEffect(relatedElements);
-            }
-          });
-
-          elem.parentElement.addEventListener('mouseleave', () => {
-            if (groupDescriptions[elemId]) {
-              const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
-              groupElements.flat().forEach(el => {
-                if (el.id !== activeElement) resetColorEffect([el]);
-              });
-            } else if (elemId !== activeElement) {
-              resetColorEffect(relatedElements);
-            }
-          });
-
-          elem.parentElement.addEventListener('click', () => handleClick(svgDoc, elemId));
+      } else if (elemId !== activeElement) {
+        const elements = svgDoc.querySelectorAll(`.interactive[id="${elemId}"]`);
+        if (isEntering) {
+          applyDarkenEffect(Array.from(elements));
+        } else {
+          resetColorEffect(Array.from(elements));
         }
+      }
+    };
+
+    const svgObject = document.getElementById('architecture-svg');
+    if (svgObject) {
+      svgObject.addEventListener('load', () => {
+        const svgDoc = svgObject.contentDocument;
+
+        // Select all elements with the class "interactive"
+        const interactiveElements = svgDoc.querySelectorAll('.interactive');
+
+        interactiveElements.forEach((elem) => {
+          const elemId = elem.id;
+
+          elem.addEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
+          elem.addEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+          elem.addEventListener('click', () => handleClick(svgDoc, elemId));
+
+          // Ensure text elements also trigger the same events
+          if (elem.tagName === 'text') {
+            elem.parentElement.addEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
+            elem.parentElement.addEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+            elem.parentElement.addEventListener('click', () => handleClick(svgDoc, elemId));
+          }
+        });
       });
-    });
+    }
+
+    // Cleanup function to remove event listeners
+    return () => {
+      if (svgObject) {
+        const svgDoc = svgObject.contentDocument;
+        if (svgDoc) {
+          const interactiveElements = svgDoc.querySelectorAll('.interactive');
+          interactiveElements.forEach((elem) => {
+            const elemId = elem.id;
+            elem.removeEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
+            elem.removeEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+            elem.removeEventListener('click', () => handleClick(svgDoc, elemId));
+            if (elem.tagName === 'text') {
+              elem.parentElement.removeEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
+              elem.parentElement.removeEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+              elem.parentElement.removeEventListener('click', () => handleClick(svgDoc, elemId));
+            }
+          });
+        }
+      }
+    };
   }, [activeElement, groupDescriptions, descriptions]); // Dependency array includes activeElement to reset properly
 
   return (
@@ -186,6 +185,14 @@ const InteractiveIaCMArchitecture = ({
       {/* Inline styles to be applied dynamically */}
       <style>
         {`
+          .interactive-hover rect,
+          .interactive-hover circle,
+          .interactive-hover path,
+          .interactive-hover ellipse,
+          .interactive-hover text {
+            fill: darkgray !important; /* Example color for the hover state */
+          }
+
           .interactive.active rect,
           .interactive.active circle,
           .interactive.active path,
