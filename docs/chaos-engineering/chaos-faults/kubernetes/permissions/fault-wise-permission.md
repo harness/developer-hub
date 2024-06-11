@@ -6,11 +6,11 @@ redirect_from:
 	- /docs/chaos-engineering/chaos-faults/kubernetes/fault-wise-permissions
 ---
 
-This topic describes the prerequisites and fault-wise permissions required to execute Kubernetes-based faults.
+This topic describes the [prerequisites](#fault-type-specific-prerequisites) and [fault-wise permissions](#permissions-required-for-pod-level-faults) required to execute Kubernetes-based faults.
 
 The prerequisites can be categorized into two groups:
-1. Common prerequisites
-2. Fault-type specific prerequisites
+1. [Common prerequisites](#common-prerequisites)
+2. [Fault-type specific prerequisites](#fault-type-specific-prerequisites)
 
 ### Common prerequisites
 
