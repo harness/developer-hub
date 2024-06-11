@@ -29,62 +29,46 @@ const InteractiveIaCMArchitecture = ({
       return `rgb(${r}, ${g}, ${b})`;
     };
 
-    const applyDarkenEffect = (svgDoc, elemId) => {
-      const relatedElements = groupDescriptions[elemId] || [elemId];
-      relatedElements.forEach(id => {
-        const elementsToDarken = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
-        elementsToDarken.forEach((el) => {
-          const shape = el.querySelector('rect, circle, path, ellipse');
-          const text = el.querySelector('text');
-
-          if (shape) {
-            shape.dataset.originalColor = shape.getAttribute('fill');
-            shape.style.fill = darkenColor(shape.dataset.originalColor); // Darken color for shapes
-          }
-          if (text) {
-            text.dataset.originalColor = text.getAttribute('fill') || '#000';
-            text.style.fill = darkenColor(text.dataset.originalColor); // Darken color for text
-
-            el.style.cursor = 'pointer'; // Set cursor to pointer for both shape and text
-          }
+    const applyDarkenEffect = (elements) => {
+      elements.forEach((el) => {
+        const shapesAndText = el.querySelectorAll('rect, circle, path, ellipse, text');
+        shapesAndText.forEach((shapeOrText) => {
+          shapeOrText.dataset.originalColor = shapeOrText.getAttribute('fill');
+          shapeOrText.style.fill = darkenColor(shapeOrText.dataset.originalColor || '#000'); // Darken color for shapes and text
         });
+        el.style.cursor = 'pointer'; // Set cursor to pointer for both shape and text
       });
     };
 
-    const resetColorEffect = (svgDoc, elemId) => {
-      const relatedElements = groupDescriptions[elemId] || [elemId];
-      relatedElements.forEach(id => {
-        const elementsToReset = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
-        elementsToReset.forEach((el) => {
-          const shape = el.querySelector('rect, circle, path, ellipse');
-          const text = el.querySelector('text');
-
-          if (shape) {
-            shape.style.fill = shape.dataset.originalColor || ''; // Reset color for shapes
-          }
-          if (text) {
-            text.style.fill = text.dataset.originalColor || ''; // Reset color for text
-          }
-
-          el.style.cursor = ''; // Reset cursor style to default
+    const resetColorEffect = (elements) => {
+      elements.forEach((el) => {
+        const shapesAndText = el.querySelectorAll('rect, circle, path, ellipse, text');
+        shapesAndText.forEach((shapeOrText) => {
+          shapeOrText.style.fill = shapeOrText.dataset.originalColor || ''; // Reset color for shapes and text
         });
+        el.style.cursor = ''; // Reset cursor style to default
       });
     };
 
     const handleClick = (svgDoc, elemId) => {
       // Reset the previous active element if any
-      if (activeElement) {
-        resetColorEffect(svgDoc, activeElement);
-        svgDoc.querySelectorAll(`.interactive[id="${activeElement}"]`).forEach(el => {
-          el.classList.remove('active'); // Remove active class from previous element
+      if (activeElement && activeElement !== elemId) {
+        const previousElements = groupDescriptions[activeElement] || [activeElement];
+        previousElements.forEach(id => {
+          const elementsToReset = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
+          resetColorEffect(Array.from(elementsToReset)); // Reset colors
+          elementsToReset.forEach((el) => el.classList.remove('active')); // Remove active class from previous element
         });
       }
 
       // Set the new active element
       setActiveElement(elemId);
-      applyDarkenEffect(svgDoc, elemId);
-      svgDoc.querySelectorAll(`.interactive[id="${elemId}"]`).forEach(el => {
-        el.classList.add('active'); // Add active class to the new element
+
+      const newActiveElements = groupDescriptions[elemId] || [elemId];
+      newActiveElements.forEach(id => {
+        const elementsToDarken = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
+        applyDarkenEffect(Array.from(elementsToDarken));
+        elementsToDarken.forEach((el) => el.classList.add('active')); // Add active class to the new element
       });
 
       if (groupDescriptions[elemId]) {
@@ -106,20 +90,61 @@ const InteractiveIaCMArchitecture = ({
 
       interactiveElements.forEach((elem) => {
         const elemId = elem.id;
+        const relatedElements = Array.from(svgDoc.querySelectorAll(`.interactive[id="${elemId}"]`));
 
         // Handle hover and click events for elements and groups
-        elem.addEventListener('mouseenter', () => applyDarkenEffect(svgDoc, elemId));
-        elem.addEventListener('mouseleave', () => {
-          if (elemId !== activeElement) resetColorEffect(svgDoc, elemId); // Only reset if not active
+        elem.addEventListener('mouseenter', () => {
+          if (groupDescriptions[elemId]) {
+            // If element is part of a group, darken the entire group
+            const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
+            groupElements.flat().forEach(el => {
+              if (el.id !== activeElement) applyDarkenEffect([el]);
+            });
+          } else if (elemId !== activeElement) {
+            // Apply hover effect to individual elements
+            applyDarkenEffect(relatedElements);
+          }
         });
+
+        elem.addEventListener('mouseleave', () => {
+          if (groupDescriptions[elemId]) {
+            // If element is part of a group, reset the entire group
+            const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
+            groupElements.flat().forEach(el => {
+              if (el.id !== activeElement) resetColorEffect([el]);
+            });
+          } else if (elemId !== activeElement) {
+            // Reset hover effect for individual elements
+            resetColorEffect(relatedElements);
+          }
+        });
+
         elem.addEventListener('click', () => handleClick(svgDoc, elemId));
 
-        // Also apply to parent of text elements to ensure their hover state is covered
+        // Ensure text elements also trigger the same events
         if (elem.tagName === 'text') {
-          elem.parentElement.addEventListener('mouseenter', () => applyDarkenEffect(svgDoc, elemId));
-          elem.parentElement.addEventListener('mouseleave', () => {
-            if (elemId !== activeElement) resetColorEffect(svgDoc, elemId);
+          elem.parentElement.addEventListener('mouseenter', () => {
+            if (groupDescriptions[elemId]) {
+              const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
+              groupElements.flat().forEach(el => {
+                if (el.id !== activeElement) applyDarkenEffect([el]);
+              });
+            } else if (elemId !== activeElement) {
+              applyDarkenEffect(relatedElements);
+            }
           });
+
+          elem.parentElement.addEventListener('mouseleave', () => {
+            if (groupDescriptions[elemId]) {
+              const groupElements = groupDescriptions[elemId].map(id => Array.from(svgDoc.querySelectorAll(`.interactive[id="${id}"]`)));
+              groupElements.flat().forEach(el => {
+                if (el.id !== activeElement) resetColorEffect([el]);
+              });
+            } else if (elemId !== activeElement) {
+              resetColorEffect(relatedElements);
+            }
+          });
+
           elem.parentElement.addEventListener('click', () => handleClick(svgDoc, elemId));
         }
       });
@@ -157,6 +182,20 @@ const InteractiveIaCMArchitecture = ({
         }}
         dangerouslySetInnerHTML={{ __html: description }}
       />
+
+      {/* Inline styles to be applied dynamically */}
+      <style>
+        {`
+          .interactive.active rect,
+          .interactive.active circle,
+          .interactive.active path,
+          .interactive.active ellipse,
+          .interactive.active text {
+            fill: darkgray !important; /* Example color for the active state */
+            cursor: pointer;
+          }
+        `}
+      </style>
     </div>
   );
 };
