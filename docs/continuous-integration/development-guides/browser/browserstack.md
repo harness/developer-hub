@@ -18,6 +18,6 @@ The [Integrate BrowserStack Automate with Harness](https://www.browserstack.com/
 
 :::note
 
-When running BrowserStack tests on [Kubernetes infrastructure](../../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), set the appropriate [resource limits](../../use-ci/set-up-build-infrastructure/resource-limits.md) required by your tests.
+When running BrowserStack tests on [Kubernetes infrastructure](../../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), set the appropriate [resource limits](../../use-ci/set-up-build-infrastructure/resource-limits.md) required by your steps.
 
 :::
