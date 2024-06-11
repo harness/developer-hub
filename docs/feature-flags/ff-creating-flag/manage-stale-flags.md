@@ -118,7 +118,7 @@ You can then navigate to the PR and see the changes it made.
 
 ### Understanding the JavaScript Flag Cleanup Tool
 
-This guide helps you understand the `properties.json` file structure, its role, and how to write custom flag cleanup rules for JavaScript.
+This section describes the `properties.json` file structure, its role, and how to write custom flag cleanup rules for JavaScript.
 
 In the JavaScript demo folder, you will find two files:
  - `examples.js`: Contains the code. In a real repository, there might be hundreds of files, only some of which contain references to the feature flag.
