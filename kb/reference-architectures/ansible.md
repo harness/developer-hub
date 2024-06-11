@@ -1,5 +1,5 @@
 ---
-title: How to run Ansible using Harness Step Groups
+title: Ansible
 ---
 
 # Overview
