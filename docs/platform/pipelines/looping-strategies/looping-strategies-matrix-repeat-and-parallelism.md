@@ -29,6 +29,12 @@ Looping strategies optimize your pipelines by running steps or stages concurrent
 
 :::
 
+:::warning
+
+Regardless of your strategy, the maximum number of stages you can run in parallel is 256.
+
+:::
+
 ## Parallelism strategies
 
 Parallelism saves time by running steps and stages concurrently.
