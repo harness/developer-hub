@@ -8,12 +8,12 @@
     <defs />
     <rect fill="#ffffff" width="100%" height="100%" x="0" y="0" />
     <g>
-        <g>
+        <g id="ci_shared_code" class="interactive">
             <rect x="420" y="460" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="ci_shared_code" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -23,7 +23,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 14px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     CI Shared Code</div>
                             </div>
                         </div>
@@ -33,12 +33,12 @@
                 </switch>
             </g>
         </g>
-        <g id="Platform_Services" class="interactive">
+        <g id="platform_services" class="interactive">
             <rect x="30" y="210" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g id="Platform_Services" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="platform_services" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -48,8 +48,8 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    Platform Services (RBAC, Audit Trail, etc)</div>
+                                    style="display: inline-block; font-size: 20px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    Platform<br/>Services</div>
                             </div>
                         </div>
                     </foreignObject>
@@ -58,12 +58,12 @@
                 </switch>
             </g>
         </g>
-        <g id="Monitoring" class="interactive" >
+        <g id="monitoring" class="interactive" >
             <rect x="30" y="320" width="120" height="60" rx="9" ry="9" fill="#d5e8d4" stroke="#82b366"
                 pointer-events="all" />
         </g>
         <g>
-            <g id="Monitoring" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="monitoring" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -117,11 +117,11 @@
             <path d="M 330 418.88 L 326.5 411.88 L 330 413.63 L 333.5 411.88 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g id="IaCM_Server" class="interactive">
+        <g id="iacm_server" class="interactive">
             <rect x="220" y="320" width="120" height="60" rx="9" ry="9" fill="#d5e8d4" stroke="#82b366" />
         </g>
         <g>
-            <g id="IaCM_Server" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="iacm_server" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -163,12 +163,12 @@
             <path d="M 418.88 335 L 411.88 338.5 L 413.63 335 L 411.88 331.5 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g id="UI" class="interactive">
+        <g id="iacm_ui" class="interactive">
             <rect x="220" y="30" width="120" height="60" rx="9" ry="9" fill="#d5e8d4" stroke="#82b366"
                 pointer-events="all" />
         </g>
         <g>
-            <g id="UI" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="iacm_ui" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -194,12 +194,12 @@
             <path d="M 480 318.88 L 476.5 311.88 L 480 313.63 L 483.5 311.88 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="platform_gitx" class="interactive">
             <rect x="420" y="210" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="platform_gitx" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -209,8 +209,11 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 16px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    Platform <br/> (Git Experience)</div>
+                                    style="display: inline-block; font-size: 20px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    Platform</div>
+                                <div
+                                    style="display: inline-block; font-size: 15px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    (Git Experience)</div>
                             </div>
                         </div>
                     </foreignObject>
@@ -231,12 +234,12 @@
             <path d="M 541.12 630 L 548.12 626.5 L 546.37 630 L 548.12 633.5 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="platform_pipelines" class="interactive">
             <rect x="420" y="320" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="platform_pipelines" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -247,7 +250,10 @@
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
                                     style="display: inline-block; font-size: 20px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    Platform (Pipelines)</div>
+                                    Platform</div>
+                                <div
+                                    style="display: inline-block; font-size: 16px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    (Pipelines)</div>
                             </div>
                         </div>
                     </foreignObject>
@@ -262,12 +268,12 @@
             <path d="M 480 208.88 L 476.5 201.88 L 480 203.63 L 483.5 201.88 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="git" class="interactive">
             <rect x="420" y="100" width="120" height="60" rx="9" ry="9" fill="#f8cecc" stroke="#b85450"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="git" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -287,12 +293,12 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="infra_cost" class="interactive">
             <rect x="30" y="430" width="120" height="60" rx="9" ry="9" fill="#fff2cc" stroke="#d6b656"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="infra_cost" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -312,7 +318,7 @@
                 </switch>
             </g>
         </g>
-        <g id="Postgres" class="interactive">
+        <g id="postgres" class="interactive">
             <path
                 d="M 300 435 C 300 426.72 313.43 420 330 420 C 337.96 420 345.59 421.58 351.21 424.39 C 356.84 427.21 360 431.02 360 435 L 360 485 C 360 493.28 346.57 500 330 500 C 313.43 500 300 493.28 300 485 Z"
                 fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="all" />
@@ -320,7 +326,7 @@
                 stroke="#82b366" stroke-miterlimit="10" pointer-events="all" />
         </g>
         <g>
-            <g id="Postgres" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="postgres" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -346,12 +352,12 @@
             <path d="M 558.88 470 L 551.88 473.5 L 553.63 470 L 551.88 466.5 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g id="IaCM_Manager" class="interactive">
+        <g id="iacm_manager" class="interactive">
             <rect x="420" y="440" width="120" height="60" rx="9" ry="9" fill="#d5e8d4" stroke="#82b366"
                 pointer-events="all" />
         </g>
         <g>
-            <g id="IaCM_Manager" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="iacm_manager" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -371,12 +377,12 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="platform_logging" class="interactive">
             <rect x="670" y="310" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="platform_logging" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -386,8 +392,11 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 14.5px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    Platform <br/>(Logging Service)</div>
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    Platform</div>
+                                <div
+                                    style="display: inline-block; font-size: 14px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    (Logging Service)</div>
                             </div>
                         </div>
                     </foreignObject>
@@ -396,7 +405,7 @@
                 </switch>
             </g>
         </g>
-        <g id="Mongo" class="interactive">
+        <g id="mongo" class="interactive">
             <path
                 d="M 560 445 C 560 436.72 573.43 430 590 430 C 597.96 430 605.59 431.58 611.21 434.39 C 616.84 437.21 620 441.02 620 445 L 620 495 C 620 503.28 606.57 510 590 510 C 573.43 510 560 503.28 560 495 Z"
                 fill="#d5e8d4" stroke="#82b366" stroke-miterlimit="10" pointer-events="all" />
@@ -404,7 +413,7 @@
                 stroke="#82b366" stroke-miterlimit="10" pointer-events="all" />
         </g>
         <g>
-            <g id="Mongo" class="interactive" transform="translate(-0.5 -0.5)">
+            <g id="mongo" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -432,12 +441,12 @@
             <path d="M 480 718.88 L 476.5 711.88 L 480 713.63 L 483.5 711.88 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="delegate_manager" class="interactive">
             <rect x="420" y="600" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="delegate_manager" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -447,7 +456,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     Delegate Manager</div>
                             </div>
                         </div>
@@ -463,14 +472,14 @@
             <path d="M 151.12 750 L 158.12 746.5 L 156.37 750 L 158.12 753.5 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="step_logs" class="interactive">
             <path d="M 120 780 L 120 860 L 760 860 L 760 376.37" fill="none" stroke="rgb(0, 0, 0)"
                 stroke-miterlimit="10" pointer-events="stroke" />
             <path d="M 760 371.12 L 763.5 378.12 L 760 376.37 L 756.5 378.12 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="step_logs" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -480,7 +489,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
                                     Step Logs</div>
                             </div>
                         </div>
@@ -490,12 +499,12 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="runner" class="interactive">
             <rect x="220" y="720" width="120" height="60" rx="9" ry="9" fill="#fff2cc" stroke="#d6b656"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="runner" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -505,7 +514,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 20px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     Runner</div>
                             </div>
                         </div>
@@ -521,14 +530,14 @@
             <path d="M 341.12 750 L 348.12 746.5 L 346.37 750 L 348.12 753.5 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="init_logs" class="interactive">
             <path d="M 280 780 L 280 830 L 700 830 L 700 376.37" fill="none" stroke="rgb(0, 0, 0)"
                 stroke-miterlimit="10" pointer-events="stroke" />
             <path d="M 700 371.12 L 703.5 378.12 L 700 376.37 L 696.5 378.12 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="init_logs" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -538,7 +547,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
                                     Init Logs</div>
                             </div>
                         </div>
@@ -548,12 +557,12 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="delegate_dlite" class="interactive">
             <rect x="420" y="720" width="120" height="60" rx="9" ry="9" fill="#fff2cc" stroke="#d6b656"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="delegate_dlite" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -563,8 +572,8 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    Delegate/Dlite</div>
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    Delegate / <br/>Dlite</div>
                             </div>
                         </div>
                     </foreignObject>
@@ -593,12 +602,12 @@
             <path d="M 90 591.12 L 93.5 598.12 L 90 596.37 L 86.5 598.12 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)"
                 stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="lite_engine" class="interactive">
             <rect x="30" y="720" width="120" height="60" rx="9" ry="9" fill="#fff2cc" stroke="#d6b656"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="lite_engine" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -608,8 +617,11 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    Lite Engine (Runs Drone Plugin)</div>
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    Lite Engine</div>
+                                <div
+                                    style="display: inline-block; font-size: 13px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    (Runs Drone Plugin)</div>
                             </div>
                         </div>
                     </foreignObject>
@@ -618,12 +630,12 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="customer_cloud_infra" class="interactive">
             <rect x="30" y="890" width="120" height="60" rx="9" ry="9" fill="#f8cecc" stroke="#b85450"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="customer_cloud_infra" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -633,7 +645,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 15px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     Customer Cloud Infrastructure</div>
                             </div>
                         </div>
@@ -643,27 +655,27 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="owner_iacm" class="interactive">
             <rect x="0" y="0" width="30" height="30" rx="4.5" ry="4.5" fill="#d5e8d4" stroke="#82b366"
                 pointer-events="all" />
         </g>
-        <g>
+        <g id="owner_other_harness" class="interactive">
             <rect x="0" y="40" width="30" height="30" rx="4.5" ry="4.5" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
-        <g>
+        <g id="owner_setup_dependent" class="interactive">
             <rect x="0" y="80" width="30" height="30" rx="4.5" ry="4.5" fill="#fff2cc" stroke="#d6b656"
                 pointer-events="all" />
         </g>
-        <g>
+        <g id="owner_customer" class="interactive">
             <rect x="0" y="120" width="30" height="30" rx="4.5" ry="4.5" fill="#f8cecc" stroke="#b85450"
                 pointer-events="all" />
         </g>
-        <g>
+        <g id="owner_iacm" class="interactive">
             <rect x="40" y="0" width="150" height="30" fill="none" stroke="none" pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="owner_iacm" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -673,9 +685,8 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: left;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    <div align="left">Owned by IACM Team <br />
-                                    </div>
+                                    style="display: inline-block; font-size: 14px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    <div align="left">Owned by IACM Team</div>
                                 </div>
                             </div>
                         </div>
@@ -685,11 +696,11 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="owner_other_harness" class="interactive">
             <rect x="40" y="40" width="150" height="30" fill="none" stroke="none" pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="owner_other_harness" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -699,9 +710,8 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: left;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
-                                    <div align="left">Owned by Other Harness Team <br />
-                                    </div>
+                                    style="display: inline-block; font-size: 14px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    <div align="left">Owned by other Harness team</div>
                                 </div>
                             </div>
                         </div>
@@ -711,11 +721,11 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="owner_setup_dependent" class="interactive">
             <rect x="40" y="80" width="150" height="30" fill="none" stroke="none" pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="owner_setup_dependent" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -725,7 +735,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: left;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 14px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     Ownership depends on setup</div>
                             </div>
                         </div>
@@ -735,11 +745,11 @@
                 </switch>
             </g>
         </g>
-        <g>
+        <g id="owner_customer" class="interactive">
             <rect x="40" y="120" width="150" height="30" fill="none" stroke="none" pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="owner_customer" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -749,7 +759,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: left;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 14px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     Owned by customer</div>
                             </div>
                         </div>
@@ -767,12 +777,12 @@
             <path d="M 250 381.12 L 253.5 388.12 L 250 386.37 L 246.5 388.12 Z" fill="rgb(0, 0, 0)"
                 stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all" />
         </g>
-        <g>
+        <g id="policy_as_code" class="interactive">
             <rect x="30" y="530" width="120" height="60" rx="9" ry="9" fill="#dae8fc" stroke="#6c8ebf"
                 pointer-events="all" />
         </g>
         <g>
-            <g transform="translate(-0.5 -0.5)">
+            <g id="policy_as_code" class="interactive" transform="translate(-0.5 -0.5)">
                 <switch>
                     <foreignObject pointer-events="none" width="100%" height="100%"
                         requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
@@ -782,7 +792,7 @@
                             <div data-drawio-colors="color: rgb(0, 0, 0); "
                                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
                                 <div
-                                    style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                    style="display: inline-block; font-size: 18px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
                                     Policy as Code</div>
                             </div>
                         </div>
