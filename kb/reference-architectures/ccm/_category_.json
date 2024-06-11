@@ -1,10 +1,10 @@
 {
-    "label":"CCM",
+    "label":"Cloud Cost Management",
     "position": 1,
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"CCM"
+       "title":"Cloud Cost Management"
     }
 }
