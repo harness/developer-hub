@@ -163,7 +163,7 @@ To install a Helm delegate for Harness Self-Managed Enterprise Edition in an air
 helm repo add harness-delegate --ca-file <.PEM_FILE_PATH> <HELM_CHART_URL_FROM_UI>
 ```
 
-For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment).
+For more information on requirements for air-gapped environments, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 :::
 

@@ -2,6 +2,8 @@
 title: Install in an OpenShift environment
 description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an OpenShift environment.
 sidebar_position: 5
+redirect_from:
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-openshift/
 ---
 
 <DocsTag  backgroundColor= "#4279fd" text="Harness Paid Plan Feature"  textColor="#ffffff"/>

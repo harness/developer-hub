@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 redirect_from:
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
+  - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga
 ---
 
 import Tabs from '@theme/Tabs';
@@ -31,7 +32,7 @@ Harness validates Helm client compatibility against the following versions:
 - 3.14.2
 
 :::info note
-You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 :::
 
 ## Role requirements

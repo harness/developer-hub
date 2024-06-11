@@ -2560,7 +2560,7 @@ The naming convention for all identifiers in Harness is case sensitive. Identifi
 
 ### Are there docs for the infrastructure requirements to install Harness Self-Managed Enterprise Edition?
 
-Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/install/harness-helm-chart#production-environment-deployment-infrastructure).
 
 ### Is there documentation for network setup or Harness Deployment Architecture?
 
@@ -3024,7 +3024,7 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 ### Is there documentation on installing and upgrading the Harness Self-Managed Enterprise Edition cluster?
 
-Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/upgrade-helm-chart).
+Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 ## Terraform
 
