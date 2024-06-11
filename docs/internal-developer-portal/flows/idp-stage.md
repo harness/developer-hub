@@ -654,7 +654,7 @@ This step in developer portal stage allows you to **execute only OpenTofu (Open 
         }
       xApiKey: Harness PAT for the account you want to create the pipeline
 ```
-This step comes with a sample **Resource Definition** to create a Harness Pipeline with a Run Step. This contains dummy fails hence won't work consider replacing it with the resource definition of yours. Also refer to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you with Harness Resource definitions.
+This step comes with a sample **Resource Definition** to create a Harness Pipeline with a Run Step. This contains dummy values, hence won't work consider replacing it with the resource definition of yours. Also refer to [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs) to help you with Harness Resource definitions.
 
 The `xApiKey` is the [Harness PAT](https://developer.harness.io/docs/platform/automation/api/add-and-manage-api-keys/) for the account where you want to create the pipeline.
 
