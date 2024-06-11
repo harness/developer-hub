@@ -84,7 +84,7 @@ If you instead want to call the webhook once for every resource found, simply se
 
 ## Execute
 
-Now when we run the rule (not in dry-run mode) andresource is found, asset governance will call our pipeline custom trigger and pass the metadata. If we view the execution we can see the information printed in the logs.
+Now when we run the rule (not in dry-run mode) and when a resource is found, asset governance will call our pipeline custom trigger and pass the metadata. If we view the execution we can see the information printed in the logs.
 
 ![](../static/ccm_asset_governance_pipeline_result.png)
 
