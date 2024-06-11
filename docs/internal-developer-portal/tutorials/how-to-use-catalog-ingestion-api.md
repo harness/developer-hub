@@ -455,6 +455,150 @@ In case you want to display the same information you have ingested on your Overv
 
 ## Create Jira Project
 
+<Tabs queryString="Using RUN Step">
+<TabItem value="using-run-step" label="Using RUN Step">
+
+### Using RUN Step
+
+1. Go to **Admin** in your IDP
+2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
+3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
+4. Now select the **Developer Portal Stage** and give it a name. 
+5. Add a **RUN** step, name it as **create jira ticket** and select the **Shell** as `Bash`
+6. Now add the following under the **Command**.
+
+```sh
+EMAIL_ID="<+pipeline.variables.email-id>"
+JIRA_TOKEN="<+pipeline.variables.jiratoken>"
+PROJECT_KEY="<+pipeline.variables.projectkey>"
+COMPONENT_NAME="<+pipeline.variables.componentname>"
+ISSUE_TYPE="<+pipeline.variables.issuetype>"
+ISSUE_SUMMARY="<+pipeline.variables.issuesummary>"
+ISSUE_CONTENT="<+pipeline.variables.issuecontent>"
+LABELS="<+pipeline.variables.labels>"
+
+# Perform the POST request with curl and capture the response
+response=$(curl --silent --request POST \
+  --url 'https://harness.atlassian.net/rest/api/3/issue' \
+  --user "$EMAIL_ID:$JIRA_TOKEN" \
+  --header 'Accept: application/json' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "fields": {
+        "project": {
+            "key": "'"$PROJECT_KEY"'"
+        },
+        "components": {
+            "name": "'"$COMPONENT_NAME"'"
+        },
+        "issuetype": {
+            "name": "'"$ISSUE_TYPE"'"
+        },
+        "summary": "'"$ISSUE_SUMMARY"'",
+        "description": {
+            "version": 1,
+            "type": "doc",
+            "content": [
+                {
+                    "type": "paragraph",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": "'"$ISSUE_CONTENT"'"
+                        }
+                    ]
+                }
+            ]
+        },
+        "labels": [
+            "'"$LABELS"'"
+        ]
+    }
+}')
+
+# Extract the key from the JSON response using jq
+issue_key=$(echo "$response" | jq -r '.key')
+
+# Export the issue key as an environment variable
+export ISSUE_KEY="$issue_key"
+
+# Print the issue key (optional)
+echo "The created issue key is: $ISSUE_KEY"
+
+```
+
+The above given request body can create a Jira ticket based on [project](https://confluence.atlassian.com/jiracoreserver073/creating-a-project-861255642.html) and [component](https://support.atlassian.com/statuspage/docs/create-a-component/) and add a label to the same. 
+
+We have used few pipeline variables in the body, which will be used to take input from the IDP Workflows and for the users to choose project, add the summary, description for the tickets. 
+
+7. Now under **Optional Configuration** add the **Output Variables** as `ISSUE_KEY`.
+8. Apply the Changes.
+9. Go to **Variables** on the right side of the page and add the following variables and have the input type as **Runtime Input**. 
+    - emailid
+    - jiratoken
+    - projectkey
+    - componentname
+    - issuetype
+    - issuesummary
+    - issuecontent
+    - labels
+    - usergroup
+
+10. Apply the changes.
+
+![](static/add-variables.png)
+
+### Use Catalog Metadata Ingestion API
+
+11. Start by adding another `RUN` step. 
+12. Name it as **Ingestion API** and select the **Shell** as `Bash`
+13. Now add the following under the **Command**.
+
+```sh
+curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
+--header 'Harness-Account: <+account.identifier>' \
+--header 'Content-Type: application/json' \
+--header 'x-api-key: <+secrets.getValue('account.TOKEN_ID')>' \
+--data '{
+    "properties": [
+        {
+            "field": "metadata.openTicket",
+            "filter": {
+                "kind": "Component",
+                "type": "service",
+                "owners": [
+                    "<+pipeline.variables.usergroup>"
+                ]
+            },
+            "value_overrides": [
+                {
+                    "entity_ref": "YOUR_COMPONENT_LINK",
+                    "override_value": "<+stage.spec.execution.steps.create_jira_ticket.output.outputVariables.ISSUE_KEY>"
+                }
+            ],
+            "value": "0"
+        }
+    ]
+}'
+
+```
+
+14. Under `header` x-api-key: `<+secrets.getValue('account.TOKEN_ID')>`, add the token ID for your API key. Get your token ID from your Profile
+
+![](static/secret-id.png)
+
+In the above body the openTicket which got created in JIRA will be added, to kind component and type service owned by the `usergroup` selected in the Workflows. Under `entity_ref` add the component link to which you want to add the ticket ID, the unique entity reference could be found using inspect entity for the component in Catalog. 
+
+![](static/inspect-entity-cm.png)
+
+![](static/entityref.png)
+
+15. Now Apply the changes. 
+
+
+</TabItem>
+<TabItem value="using-http-step" label="Using HTTP Step">
+
 1. Go to **Admin** in your IDP
 2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
@@ -540,6 +684,9 @@ In the above body the openTicket which got created in JIRA will be added, to kin
     ![](static/secret-id.png)
 
 22. Now **Apply Changes** and **SAVE** the pipeline. 
+
+</TabItem>
+</Tabs>
 
 ## Create Workflow
 
