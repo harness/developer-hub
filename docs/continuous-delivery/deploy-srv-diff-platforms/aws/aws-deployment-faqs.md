@@ -203,7 +203,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns)
 
 
-### How to create an AWS connector using `aws-iam-authenticator` on EKS Cluster with webIdentityToken?
+### How to create an AWS connector using aws-iam-authenticator on EKS Cluster with webIdentityToken?
 
 Please read how to set AWS connector on EKS Cluster in this [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
 Also, to align with AWS changes, it's important to note that the previous method of accomplishing this task has been deprecated in `kubectl version 1.21`. To address this, when utilizing the `Iam-authenticator plugin`, it is necessary to create a `Fargate profile` as part of the updated procedure.
@@ -488,3 +488,27 @@ Yes. By default, deployments aren't forced. You can use the **Force new deployme
 ### Does Harness support viewing the rendered launch template for ASG deployments after all the Harness expressions have been evaluated?
 
 No, Harness does not store the rendered launch template as an output variable, nor does it display the rendered launch templates in the console logs. We only indicate that the ASG configuration is created. For more details, go to [Harness ASG services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#harness-asg-services).
+
+### IRSA K8s deployment fails with an error: java.lang.IllegalStateException: Not a JSON Object: null.
+
+For deployments to an EKS cluster through an AWS connector that uses IRSA-based authentication, if the above error is seen during the initialization of the K8s rollout step, execute into the delegate to check if the `aws-iam-authenticator` being used is compatible with the CPU architecture of the node where the delegate is running.
+
+### How to validate if the aws-iam-authenticator installed on the delegate is correct and works as expected?
+
+aws-iam-authenticator generates a token that kubectl uses to authenticate with the target cluster. The Harness delegate runs the following command to generate a token in JSON format:
+
+```
+aws-iam-authenticator token -i <eks-cluster-name> --role arn:aws:iam::12345678:role/CrossAccountEKSRole
+```
+
+### When configuring the EKS infrastructure, the clusters are listed. However, when trying to deploy a service to the cluster, the K8s deployment fails. Why does this happen?
+
+When configuring the infrastructure, the AWS connector uses the AWS APIs to query the cluster. However, during the Kubernetes deployment, the deployment uses kubectl to communicate with the Kubernetes API server's endpoint to deploy the Kubernetes manifest. For the deployment to be successful, there must be network connectivity from the delegate to the Kubernetes API server endpoint. This connectivity might not exist if the cluster is private, so the delegate must reside in the same VPC as the cluster, as per the following [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#modify-endpoint-access).
+
+### How is the kubeconfig file generated for Kubernetes deployments with cross-account STS IRSA-based connectors?
+
+During the K8s rollout stage, the Harness delegate generates the kubeconfig file using details from the infrastructure configured on the stage. The authentication token is generated using the `aws-iam-authenticator` command available on the delegate by passing the cross-account role and the cluster name.
+
+### Will the kubeconfig file continue to exist on the delegate pods?
+
+The kubeconfig generation process during deployment happens on the fly. The file is kept in a temporary location for the duration of the K8s rollout step and is cleaned up once the step completes or fails.
