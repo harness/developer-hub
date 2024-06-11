@@ -47,9 +47,10 @@ Your (cloud account user) credentials need to be embedded with a Kubernetes secr
 You can create a [superset AWS policy](/docs/chaos-engineering/chaos-faults/aws/security-configurations/policy-for-all-aws-faults/) that allows executing all the fault types supported by HCE.
 
 :::tip
-- You can authenticate cloud API requests made by the chaos pods. If the Kubernetes chaos infrastructure (or agent) is set up on EKS or GKE clusters, you can set up [IRSA](docs/chaos-engineering/chaos-faults/aws/aws-iam-integration/) or [workload identity](/docs/chaos-engineering/chaos-faults/gcp/gcp-iam-integration/) respectively, instead of using Kubernetes secrets.
+- You can authenticate cloud API requests made by the chaos pods. If the Kubernetes chaos infrastructure (or agent) is set up on EKS or GKE clusters, you can set up [IRSA](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration/) or [workload identity](/docs/chaos-engineering/chaos-faults/gcp/gcp-iam-integration/) respectively, instead of using Kubernetes secrets.
 - You can configure [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard/) rules to limit the scope of the Harness chaos platform with respect to faults executed, clusters chosen, application workload targeted and chaos serviceaccount leveraged.
 - The Service Load chaos is target-platform agnostic, that is, it can generate load against service endpoints regardless of where they are hosted.
+:::
 
 ### Permissions required for pod-level faults
 
