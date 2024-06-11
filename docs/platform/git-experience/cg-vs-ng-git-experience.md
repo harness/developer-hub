@@ -21,33 +21,26 @@ description: This page talks about functionalities supported in CG GitSync vs NG
         - Secrets
         </td>
         <td>
-        
+        - Pipelines
+        - Input Set
+        - Environment
+        - Overrides
+        - Services
         </td>
     </tr>
-    <tr>
-        <td>OPA_PIPELINE_GOVERNANCE</td>
-        <td>Enables <a href="/docs/platform/governance/policy-as-code/harness-governance-overview">Policy as Code</a> for a Harness account.<b>This feature is GA.</b></td>
+   <tr>
+        <td>Autodiscovery</td>
+        <td> Supported in CG</td>
+        <td> Autocreation in NG </td>
     </tr>
-    <tr>
-        <td>CDS_HELM_VERSION_3_8_0</td>
-        <td>Sets the default version of Helm to 3.8 when using the Harness Helm delegate. This feature in in Limited GA. </td>
+   <tr>
+        <td>Git Sync(Force)</td>
+        <td> Supported in CG</td>
+        <td> Not Supported </td>
     </tr>
-    <tr>
-        <td>NG_PIPELINE_TEMPLATE</td>
-        <td>Enables <a href="https://developer.harness.io/docs/platform/templates/create-pipeline-template">Harness templates.</a>. <b>This feature is Limited GA.</b> </td>
+   <tr>
+        <td>Harness Git Sync Activity Page</td>
+        <td>[Harness Git Sync Activity Page](/docs/first-gen/firstgen-platform/config-as-code/view-harness-git-sync-activity.md)</td>
+        <td>[Webhook Event Page](./git-sync-health-page.md)</td>
     </tr>
-    <tr>
-        <td>OPA_GIT_GOVERNANCE</td>
-        <td>Store and fetch your <a href="/docs/platform/governance/policy-as-code/configure-gitexperience-for-opa">OPA policies in Git.</a>. <b>This feature is Limited GA.</b> </td>
-    </tr>
-    <tr>
-        <td>NG_CUSTOM_STAGE</td>
-        <td>Enables the <a href="/docs/platform/pipelines/add-a-stage/#add-a-custom-stage">Custom stage</a>
- for use in a pipeline. <b>This feature is GA.</b></td>
-    </tr>
-    <tr>
-        <td>NG_GIT_EXPERIENCE</td>
-        <td>Enables <a href="/docs/platform/git-experience/configure-git-experience-for-harness-entities">Harness Git Experience</a> for a Harness account. Users can manage their Pipeline, Templates, Input Sets, Feature Flags via Git. <b>This feature is GA.</b></td>
-    </tr>
-
 </table>
