@@ -36,3 +36,23 @@
     border-color: var(--mod-ccm-200);
   }
 }
+
+.legends {
+  margin-top: 32px;
+  display: flex;
+  column-gap: 24px;
+
+  .legendCtn {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+
+    .legend {
+      height: 32px;
+      width: 32px;
+      border-radius: 4px;
+    }
+  }
+}
