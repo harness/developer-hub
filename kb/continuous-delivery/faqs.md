@@ -3121,6 +3121,12 @@ Also follow more on this in the following [Documentation](https://developer.harn
 
 Harness does not support this use case where a non-Harness entity is able to get the secret value bypassing Harness entirely.
 
+#### Can I use a project variable to pass multiple hosts as an expression?
+
+Yes, you can use project variables as host. Hosts can be project variables populated with comma separated lists of hosts/servers. Go to **Project Settings** > **Variables**  to create a project variable, and then use it in the PDC infrstructure definition. For more details, go to [Define variables](/docs/platform/variables-and-expressions/add-a-variable/#define-variables). Project variables can be updated using [APIs](https://apidocs.harness.io/tag/Variables/#operation/updateVariable) too. 
+
+
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
