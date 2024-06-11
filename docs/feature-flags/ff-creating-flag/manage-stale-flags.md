@@ -74,7 +74,7 @@ There are some slight differences when using Javascript for flag cleanup automat
 
  2. To configure secrets:
 
- - A Github connector to connect to the repo to clone down the code to cleanup. The [demo repo is here](https://github.com/harness/flag_cleanup) and the branch to use is “unscripted”.
+ - A Github connector to connect to the repo to clone the code to clean up. The [demo repo is here](https://github.com/harness/flag_cleanup) and the branch to use is “unscripted”.
  
  ![Step one of importing a pipeline template](./static/setting-up-cleanup-1.png)
  
