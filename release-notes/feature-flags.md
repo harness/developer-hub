@@ -1055,7 +1055,7 @@ This limit has been raised to 25000 bytes, with a clear error message if this is
 Due to a new dependency on a murmur3 hashing library implemented in Elixir, the following is now required to use the SDK in Erlang applications:
    - Elixir version 1.13.4 or above must be installed on your build system when compiling your application.
    - Rebar3 `rebar_mix` must be installed in your Rebar3 plugins.
-   - For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference.md).
+   - For full details, go to Install the SDK for Erlang applications.
    - This update does not affect Elixir applications, and no further action is required for Elixir applications upon upgrading to this version of the SDK.
 
  - Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
@@ -1096,9 +1096,9 @@ To aid in debugging, we added a list of codes logged for each lifecycle of the S
   - `Metrics`
   - `Close`
 
-For a full list of codes, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-sdks/server-sdks/python-sdk-reference.md).
+For a full list of codes, go to Troubleshooting.
 
-[Troubleshooting](./feature-flags/use-ff/ff-sdks/server-sdks/python-sdk-reference.md).
+Troubleshooting.
 
 #### Version 1.1.15
 
@@ -1260,7 +1260,7 @@ For a full list of codes, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-
 
 #### Version 1.0.0 Beta
 
-The [**Erlang server SDK**](/docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference), which was in Beta, has been released as GA. 
+The **Erlang server SDK**, which was in Beta, has been released as GA. 
 
 This release includes the following updates:
  - **Breaking changes**
