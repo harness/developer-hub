@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import ReactMarkdown from 'react-markdown';
 
 const InteractiveIaCMArchitecture = ({ 
   svgPath, 
@@ -75,13 +76,13 @@ const InteractiveIaCMArchitecture = ({
         // Combine descriptions for the group
         const combinedDescription = groupDescriptions[elemId]
           .map(id => descriptions[id])
-          .map(desc => `<strong>${desc.title}:</strong><br />${desc.body}`)
-          .join('<br /><br />');
+          .map(desc => `**${desc.title}**:\n\n${desc.body}`)
+          .join('\n\n');
         setDescription(combinedDescription);
       } else {
         // Show individual element's description
         const desc = descriptions[elemId];
-        setDescription(`<strong>${desc.title}:</strong><br />${desc.body}` || 'Click on a section to see its description.');
+        setDescription(`**${desc.title}**:\n\n${desc.body}` || 'Click on a section to see its description.');
       }
     };
 
@@ -183,8 +184,10 @@ const InteractiveIaCMArchitecture = ({
           color: '#333',
           fontFamily: 'Arial, sans-serif',
         }}
-        dangerouslySetInnerHTML={{ __html: description }}
-      />
+      >
+        {/* Use ReactMarkdown to render the description */}
+        <ReactMarkdown>{description}</ReactMarkdown>
+      </div>
 
       {/* Inline styles to be applied dynamically */}
       <style>
