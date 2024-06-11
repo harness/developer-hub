@@ -206,7 +206,7 @@ import IrsaPartial from '/docs/shared/aws-connector-auth-options.md';
 
 :::note
 
-Currently, Serverless functions can't be deployed with an OIDC-enabled AWS connector
+Currently, Serverless functions can't be deployed with an OIDC-enabled AWS connector.
 
 :::
 
