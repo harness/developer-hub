@@ -34,7 +34,7 @@ IaCM utilizes three internal services:
 ## Interactive Diagram
 
 <InteractiveIaCMArchitecture
-    svgPath="/IaCM_Arch.svg"
+    svgPath="/iacm_architecture.svg"
     descriptions={{
         "iacm_server": {
         title: "IaCM Server",
@@ -102,7 +102,7 @@ IaCM utilizes three internal services:
         },
         "customer_cloud_infra": {
         title: "Customer Cloud Infrastructure",
-        body: "Refers to the cloud infrastructure owned and managed by the customer, which IaCM interacts with for deploying and managing applications and services."
+        body: "Refers to your managed cloud infrastructure such as AWS or Google Cloud, which IaCM interacts with via connectors. Go to [the Cloud provider connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors) tab to find out how to configure your cloud provider connector"
         },
         "owner_iacm": {
         title: "Owned By IaCM",
