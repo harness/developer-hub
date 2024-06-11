@@ -69,7 +69,7 @@ There are some slight differences when using Javascript for flag cleanup automat
 
 ### Set up a flag cleanup pipeline
 
- 1. In order to use flag cleanup automation you will need to [import a pipeline template](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/). The GitHub repo to import from is [here](https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml). 
+ 1. To use flag cleanup automation,  you must [import a pipeline template](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/). The GitHub repo to import from is [here](https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml). 
 - Note that the identifier and the name must match.
 
  2. To configure secrets, here are the steps to do this:
