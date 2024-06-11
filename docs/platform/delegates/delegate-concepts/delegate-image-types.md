@@ -45,7 +45,7 @@ Harness Delegate images are multi-architecture under the same tag. If you naviga
   | chartmuseum | 0.8.2, 0.12.0 | 0.15.0 |
   | tf-config-inspect | 1.0, 1.1 | 1.2 |
   | oc | 4.2.16 | 4.13.32 |
-  | Git | NA | 2.31.1
+  | Git | NA | 2.43.0 |
   | SCM | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
 ## Docker pull commands
