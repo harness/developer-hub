@@ -73,11 +73,15 @@ const InteractiveIaCMArchitecture = ({
 
       if (groupDescriptions[elemId]) {
         // Combine descriptions for the group
-        const combinedDescription = groupDescriptions[elemId].map(id => descriptions[id]).join('<br /><br />');
+        const combinedDescription = groupDescriptions[elemId]
+          .map(id => descriptions[id])
+          .map(desc => `<strong>${desc.title}:</strong><br />${desc.body}`)
+          .join('<br /><br />');
         setDescription(combinedDescription);
       } else {
         // Show individual element's description
-        setDescription(descriptions[elemId] || 'Click on a section to see its description.');
+        const desc = descriptions[elemId];
+        setDescription(`<strong>${desc.title}:</strong><br />${desc.body}` || 'Click on a section to see its description.');
       }
     };
 
