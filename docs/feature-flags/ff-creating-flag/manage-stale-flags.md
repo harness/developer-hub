@@ -153,7 +153,7 @@ In the JavaScript demo folder, you will find two files:
  - `flagType`: Label as "treated" (specific to Piranha).
  - `argumentIndex`: Position of the flag name in the argument list (e.g., doSomething("STALE_FLAG") has an index of 0).
 
-### Running the Flag Cleanup Pipeline for JavaScript
+### Running the flag cleanup pipeline for JavaScript
 
 Here are some points to consider when using Javascript for the feature flag cleanup:
  1. Ensure your `properties.json` is configured correctly to identify feature flag references in your codebase.
