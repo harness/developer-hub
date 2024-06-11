@@ -217,7 +217,7 @@ You can specify default baselines for specific target types: code repositories, 
 * **Feature flags:** `STO_STEP_PALETTE_WIZ`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
 
 Harness currently supports the following: 
 
