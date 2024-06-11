@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-31T16:19:25
+date: 2024-06-11T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,31 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 31, 2024
+#### Last updated: June 11, 2024
+
+## June 2024
+
+### .NET SDK
+
+#### Version 1.6.10
+
+**New features and enhancements**:
+ - Improves SDK evaluation performance and memory usage.
+ - Update to use `PackageLicenseExpression`. 
+ - Make `System.Net.Http` conditional. (FFM-11509)
+ - Optimize IN clause rules. (FFM-11056)
+ - Cherry pick 1.6.9 patch. (FFM-11531)
+ - Remove excessive `ToList()` allocations in Evaluator. (FFM-11551)
+ - Wrap log statements with if statements. (FFM-11557)
+ - `SeenTargets` cache memory improvements. (FFM-11549)
+ - Bumped to `1.7.0-rc2`. (FFM-11549)
+ - Sort rules when retrieving instead of per evaluation. (FFM-11585)
+ - Remove Rules sorting from evaluation path. (FFM-11597)
+ - Fix streaming issues for .NET 4.8. (FFM-11573)
+
+**Fixed issues**:
+ - Fixes an issue where streams would not remain open for longer than 60 seconds when the SDK is running .NET 4.8. (FFM-11573)
+ - stream reconnection logic. Previously, if the stream disconnected, it would take 70 seconds for it to reconnect. It now reconnects using an exponential backoff and delay, where base delay is 500ms. (FFM-11573)
 
 ## May 2024
 
