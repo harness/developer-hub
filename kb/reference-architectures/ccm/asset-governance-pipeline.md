@@ -1,5 +1,6 @@
 ---
-title: Triggering a Harness Pipeline with Asset Governance
+title: Asset Governance + Pipelines
+description: Trigger a pipeline with Asset Governance
 ---
 
 # Overview
@@ -12,7 +13,9 @@ This guide assumes you have CCM set up correctly for asset governance for at lea
 
 ## Pipeline Setup
 
-Create a pipeline in some Harness project. On the right hand side select "Variables" and under "Pipeline" and "Custom Variables" select "+ Add Variable". Create variables "account_id", "region", and "resource" all of type "Runtime input".
+Create a pipeline in some Harness project. On the right hand side select "variables" and under "pipeline" and "custom variables" select "+ Add Variable". Create variables "account_id", "region", and "resource" all of type "runtime input". When creating a variable select the blue checkmark and select the purple "Runtime Input" icon to make it a runtime input.
+
+![](../static/ccm_asset_governance_pipeline_runtime.png)
 
 ![](../static/ccm_asset_governance_pipeline_variables.png)
 

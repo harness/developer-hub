@@ -83,6 +83,8 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+### Breaking change - Looker images
+
 :::danger important changes to looker images
 
 Starting with version 0.17.0, Harness no longer publishes Looker images to the DockerHub public repository. The repository has been transitioned to private.
