@@ -452,7 +452,7 @@ For instructions, go to [Use IRSA](/docs/platform/connectors/cloud-providers/add
 </TabItem>
 <TabItem value="oidc" label="Use OIDC">
 
-:::note
+:::info
 
 Currently, OIDC authentication for AWS connectors is behind the feature flag `CDS_AWS_OIDC_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
@@ -468,6 +468,85 @@ Use the following Harness OIDC provider endpoint and OIDC audience settings to c
 
 * Harness OIDC provider endpoint: `https://app.harness.io/ng/api/oidc/account/<ACCOUNT_ID>`
 * OIDC audience: `sts.amazonaws.com`
+
+### Custom Parameters 
+
+:::info
+
+Currently, the ability to send custom parameters with the JWT is behind the feature flag, `PL_OIDC_ENHANCED_SUBJECT_FIELD`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+
+Here are the custom parameters for the Harness AWS OIDC JWT:
+
+- **sub**: What is issuing the JWT.
+  This value will change depending on the scope of the OIDC connector.
+  - **At project scope**: `account/<account_id>:org/{organization_id}:project/<project_id>`
+  - **At organization scope**: `account/<account_id>:org/<organization_id>:project/`
+  - **At account scope**: `account/<account_id>:org/:project/`
+- **account_id**: The account id of your Harness account.
+- **organization_id**: The organization id of your Harness organization.
+- **project_id**: The project id of your Harness project. 
+- **connector_id**: The id of the OIDC-enabled AWS connector that sent this token.
+- **connector_name**: The name of the OIDC-enabled AWS connector that sent this token.
+- **context**: This specifies the Harness context from where this OIDC token is generated.
+
+#### Examples
+
+<details>
+<summary> JWT sent by a connector at the project scope </summary>
+
+```
+{
+  "header":{
+     "typ":"JWT"
+     "alg":"RS256"
+     "kid":"2xk__q7dWlb0c8qM5iYR_J-Ro9eYd0yOb_J5ooSk94g"
+  }
+"payload":{
+     "sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/OIDC_Test"
+     "iss":"https://app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
+     "aud":"sts.amazonaws.com"
+     "exp":1718132139
+     "iat":1718128539
+     "account_id":"Hue1lBsaSx2APlXjzVEPIg"
+     "organization_id":"default"
+     "project_id":"OIDC_Test"
+     "connector_id":"AWS_OIDC"
+     "connector_name":"AWS_OIDC"
+     "context":"CONNECTOR_VALIDATION"
+   }
+}
+```
+</details>
+
+<details>
+<summary> JWT sent by a connector at the organization scope </summary> 
+
+```
+{
+   "header":{
+      "typ":"JWT"
+      "alg":"RS256"
+      "kid":"2xk__q7dWlb0c8qM5iYR_J-Ro9eYd0yOb_J5ooSk94g"
+    }
+    "payload":{
+       "sub":"account/Hue1lBsaSx2APlXjzVEPIg:org/default:project/"
+        "iss":"https://app.harness.io/ng/api/oidc/account/Hue1lBsaSx2APlXjzVEPIg"
+        "aud":"sts.amazonaws.com"
+        "exp":1718133015
+        "iat":1718129415
+        "account_id":"Hue1lBsaSx2APlXjzVEPIg"
+        "organization_id":"default"
+        "connector_id":"AWS_OIDC_Org"
+        "connector_name":"AWS_OIDC_Org"
+        "context":"CONNECTOR_VALIDATION"
+    }
+}
+```
+
+</details>
 
 </TabItem>
 </Tabs>
@@ -485,6 +564,8 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 Finally, it is possible to create a connector with a non-existent delegate. This behavior is intended. This design allows you to replace a delegate with a new one that has the same name or tag.
 
 :::
+
+*End of Credentials* 
 
 ### Enable cross-account access (STS Role)
 
