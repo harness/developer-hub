@@ -63,7 +63,7 @@ const InteractiveIaCMArchitecture = ({
       shapes.forEach((shape) => {
         shape.dataset.originalStroke = shape.getAttribute('stroke') || '';
         shape.style.stroke = '#00aae4'; // Apply stroke color for border
-        shape.style.strokeWidth = '5px';
+        shape.style.strokeWidth = '4px';
       });
     
       let fadeStep = 0;
