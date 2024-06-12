@@ -137,7 +137,7 @@ These actions can be applied to the failure strategy as primary action and timeo
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed** and executes the next stage.|
 
 :::info note
-**Mark As Failure** as a FailureStrategy marks the stage/stepGroup/step as failed and moves the execution to next step/stage according to when conditions applied on the next step/stage.
+**Mark As Failure** as a Failure Strategy marks the stage/stepGroup/step as failed and moves the execution to next step/stage according to when conditions applied on the next step/stage.
 :::
 
 #### Manual interventions
