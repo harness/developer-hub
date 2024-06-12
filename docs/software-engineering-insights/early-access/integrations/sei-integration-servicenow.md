@@ -14,7 +14,14 @@ Please note that the integration currently allows authentication only through th
 
 <DocVideo src="https://www.youtube.com/embed/Qcb3u558_7U?si=xlI0rIfuYrTWMTGI" />
 
-## Add the integration
+## Requirements
+
+* ServiceNow Account with Admin access
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Connect with ServiceNow Cloud
 
 ### Step 1: Select the integration
 
@@ -28,15 +35,36 @@ Please note that the integration currently allows authentication only through th
   * ServiceNow Cloud
   * ServiceNow On-Prem
 
-### Step 3: Configure and save the integration
+In this case select the type of ServiceNow setup as ServiceNow Cloud
+
+### Step 3: Configure the integration
+
+The ServiceNow integration can set up the authentication either by using Username and Password or by using OAuth mode of authentication.
+
+<Tabs>
+  <TabItem value="Username" label="Username/Password" default>
 
 * Add the **Name** for the integration, which is mandatory. You can add **Description** and **Tags** (Optional).
 * Add the **URL** of your **ServiceNow application instance**, for example, "`https://xyz.service-now.com`". Make sure it's a valid URL.
-* Add the **Username** and **Password**, for your **ServiceNow account**.
+* Choose the authentication mode as Use ServiceNow Username/Password. Add the **Username** and **Password**, for your **ServiceNow account**.
 * You can click on **Advanced Configurations** and choose the **Fields** you wish to exclude from ingestion. You might exclude fields containing sensitive information such as **Summary**, **Description**, and **Comments**.
-* Click on the **Next: Validate Connection**.\
+* Click on the **Next: Validate Connection**.
   It will establish a connection with the provided URL, perform authentication, and then run the preflight checks. If everything is successful, you will see a message confirming a successful connection.
 * Click on the **Done** button and the integration will be successfully saved.
+
+</TabItem>
+  <TabItem value="Oauth" label="OAuth">
+
+* Add the **Name** for the integration, which is mandatory. You can add **Description** and **Tags** (Optional).
+* Add the **URL** of your **ServiceNow application instance**, for example, "`https://xyz.service-now.com`". Make sure it's a valid URL.
+* Choose the authentication mode as Use ServiceNow OAuth
+* Add the ServiceNow Client ID and Client Secret that you generated after creating the application registry in ServiceNow
+* Redirect URL has to be copied from the integration settings. Add the Redirect URL in ServiceNow, click on lock button and paste the redirect url copied from SEI.
+* Add table_read scope inside Auth Scopes.
+
+
+</TabItem>
+</Tabs>
 
 ## What data is ingested
 
