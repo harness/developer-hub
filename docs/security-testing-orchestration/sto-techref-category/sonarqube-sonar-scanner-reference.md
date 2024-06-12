@@ -6,7 +6,7 @@ sidebar_label: SonarScanner scanner reference
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
-helpdocs_is_published: true
+helpdocs_is_published: truex
 ---
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
@@ -86,8 +86,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 The predefined configuration to use for the scan. 
 
 - **Default**  
-- **Branch Scan**  
-- **Pull Request** 
+- **Branch Scan** With this option selected, the step scans the branch or pull request specified in the pipeline execution. 
 
 
 ### Target
@@ -297,6 +296,8 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
+<!-- 
+
 ## SonarQube pull-request scan configuration
 
 To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
@@ -305,6 +306,8 @@ To implement a SonarQube pull-request scan, include the following arguments in [
     - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
 
       If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
+
+
 
 <details>
 <summary>YAML configuration example</summary>
@@ -326,6 +329,8 @@ To implement a SonarQube pull-request scan, include the following arguments in [
 ```
 
 </details>
+
+<!-- -->
 
 
 ## SonarQube proxy settings
