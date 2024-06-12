@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 
@@ -13,6 +13,9 @@ const InteractiveIaCMArchitecture = ({
   const [activeElement, setActiveElement] = useState(null);
   const [isStarted, setIsStarted] = useState(false);
   const [borderColor, setBorderColor] = useState('#ccc'); // Default border color
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false); // Visibility of the description box
+  const [shouldScroll, setShouldScroll] = useState(false); // Trigger for scrolling into view
+  const descriptionRef = useRef(null); // Reference for scrolling into view
 
   useEffect(() => {
     const darkenColor = (color) => {
@@ -95,19 +98,10 @@ const InteractiveIaCMArchitecture = ({
     };
 
     const handleClick = (svgDoc, elemId) => {
-      // Stop fading effect for the previously active element, if any
-      if (activeElement) {
-        const activeElements = groupDescriptions[activeElement] || [activeElement];
-        activeElements.forEach(id => {
-          const elementsToStopFading = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
-          elementsToStopFading.forEach((el) => {
-            removeFadingEffect(el);
-          });
-        });
-      }
-    
       if (elemId === startingPoint && !isStarted) {
         setIsStarted(true);
+        setIsDescriptionVisible(true); // Show the description box
+        
         const allElements = svgDoc.querySelectorAll('.interactive');
         allElements.forEach((el) => {
           el.classList.remove('faded');
@@ -118,8 +112,21 @@ const InteractiveIaCMArchitecture = ({
           removeFadingEffect(startingElement);
           startingElement.classList.remove('glowing-border');
         }
+
+        // Trigger scrolling to the description box
+        setShouldScroll(true);
       }
-    
+
+      if (activeElement) {
+        const activeElements = groupDescriptions[activeElement] || [activeElement];
+        activeElements.forEach(id => {
+          const elementsToStopFading = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
+          elementsToStopFading.forEach((el) => {
+            removeFadingEffect(el);
+          });
+        });
+      }
+
       if (activeElement && activeElement !== elemId) {
         const previousElements = groupDescriptions[activeElement] || [activeElement];
         previousElements.forEach(id => {
@@ -128,16 +135,16 @@ const InteractiveIaCMArchitecture = ({
           elementsToReset.forEach((el) => el.classList.remove('active'));
         });
       }
-    
+
       setActiveElement(elemId);
-    
+
       const newActiveElements = groupDescriptions[elemId] || [elemId];
       newActiveElements.forEach(id => {
         const elementsToDarken = svgDoc.querySelectorAll(`.interactive[id="${id}"]`);
         applyDarkenEffect(Array.from(elementsToDarken));
         elementsToDarken.forEach((el) => el.classList.add('active'));
       });
-    
+
       if (groupDescriptions[elemId]) {
         const combinedDescription = groupDescriptions[elemId]
           .map(id => descriptions[id])
@@ -148,11 +155,9 @@ const InteractiveIaCMArchitecture = ({
         const desc = descriptions[elemId];
         setDescription(`**${desc.title}**:\n\n${desc.body}` || 'Click on a section to see its description.');
       }
-    
-      // Remove the border and stop the fading effect immediately after click
+
       const newActiveElement = svgDoc.querySelector(`.interactive[id="${elemId}"]`);
       if (newActiveElement) {
-        // Get the color of the clicked element
         const color = newActiveElement.querySelector('rect, circle, path, ellipse, text')?.getAttribute('fill') || '#ccc';
         setBorderColor(color); // Update border color state
         removeFadingEffect(newActiveElement);
@@ -244,6 +249,22 @@ const InteractiveIaCMArchitecture = ({
     };
   }, [activeElement, groupDescriptions, descriptions, isStarted, startingPoint]);
 
+  useEffect(() => {
+    if (shouldScroll && descriptionRef.current) {
+      // Calculate the correct scroll position to bring the description box into view
+      const rect = descriptionRef.current.getBoundingClientRect();
+      const offset = rect.top + window.pageYOffset - window.innerHeight + rect.height + 20; // Adjusted for the right amount of scroll
+
+      // Perform the scroll
+      window.scrollTo({
+        top: offset,
+        behavior: 'smooth'
+      });
+
+      setShouldScroll(false); // Reset the scroll trigger
+    }
+  }, [shouldScroll]); // Run this effect when shouldScroll changes
+
   return (
     <div style={{ position: 'relative', padding: '20px' }}>
       <object
@@ -258,22 +279,27 @@ const InteractiveIaCMArchitecture = ({
         }}
       ></object>
 
-      <div
-        id="description"
-        style={{
-          marginTop: '20px',
-          fontSize: '16px',
-          padding: '20px',
-          border: `2px solid ${borderColor}`, // Use borderColor state
-          borderRadius: '8px',
-          backgroundColor: '#f9f9f9',
-          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-          color: '#333',
-          fontFamily: 'Arial, sans-serif',
-        }}
-      >
-        <ReactMarkdown>{description}</ReactMarkdown>
-      </div>
+      {isDescriptionVisible && (
+        <div
+          id="description"
+          ref={descriptionRef} // Add ref for scrolling into view
+          style={{
+            marginTop: '20px',
+            fontSize: '16px',
+            padding: '20px',
+            border: `2px solid ${borderColor}`, // Use borderColor state
+            borderRadius: '8px',
+            backgroundColor: '#f9f9f9',
+            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+            color: '#333',
+            fontFamily: 'Arial, sans-serif',
+            transition: 'opacity 0.5s', // Add transition for smooth appearance
+            opacity: isDescriptionVisible ? 1 : 0, // Use opacity for smooth transition
+          }}
+        >
+          <ReactMarkdown>{description}</ReactMarkdown>
+        </div>
+      )}
 
       <style>
         {`

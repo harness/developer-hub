@@ -31,9 +31,11 @@ The execution itself can follow one of two paths:
 
 Throughout this process, the IaCM Server performs additional validations, such as **cost estimation and policy checks**, ensuring all operations are compliant and efficient. The results and logs of these operations are continuously updated and displayed in the Harness UI, providing real-time feedback to users.
 
-See the following interactive diagram and click on the IaCM Server node to better understand the IaCM data flow:
-
 ### Interactive Diagram
+
+:::tip Interactive Diagram
+Start by clicking on the **IaCM Server node** for more details.
+:::
 
 <InteractiveIaCMArchitecture
     svgPath="/iacm_architecture.svg"
@@ -56,7 +58,7 @@ See the following interactive diagram and click on the IaCM Server node to bette
         },
         "git": {
         title: "Git",
-        body: "Git in the context of IaCM refers to your code repository that hosts your infrastructure as code and can be integrates with Harness IaCM via the Git connector. Harness IaCM connects to your code repository to read your proposed changes and also detect drift between your current and proposed infrasture state"
+        body: "Git in the context of IaCM refers to your code repository that hosts your infrastructure as code and can be integrates with Harness IaCM via the Git connector. Harness IaCM connects to your code repository to read your proposed changes and also detect drift between your current and proposed infrasture state. Go to [the Git repository connectors](https://developer.harness.io/docs/infra-as-code-management/get-started/onboarding-guide#add-connectors) tab to find out how to configure your code repository connector"
         },
         "policy_as_code": {
         title: "Policy as Code",
