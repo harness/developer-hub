@@ -67,7 +67,7 @@ const InteractiveIaCMArchitecture = ({
       });
     
       let fadeStep = 0;
-      const fadeIntervals = [0.4, 0.6, 0.8, 1.0, 0.8, 0.6]; // Define opacity steps for fading
+      const fadeIntervals = [0.5, 0.6, 0.8, 1.0, 0.8, 0.7]; // Define opacity steps for fading
       const intervalTime = 250; // Duration for each fade step in milliseconds
       
       const fadeInOut = () => {
