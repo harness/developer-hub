@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Wrap log statements with if statements. (FFM-11557)
  - `SeenTargets` cache memory improvements. (FFM-11549)
  - Sort rules when retrieving instead of per evaluation. (FFM-11585)
- - Remove Rules sorting from evaluation path. (FFM-11597)
+ - Remove rules sorting from the evaluation path. (FFM-11597)
 
 **Fixed issues**:
  - Fixed an issue where streams would not remain open for longer than 60 seconds when the SDK is running .NET 4.8:
