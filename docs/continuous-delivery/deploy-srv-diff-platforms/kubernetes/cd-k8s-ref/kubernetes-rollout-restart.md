@@ -155,7 +155,7 @@ Reverts the deployment to a previous revision.
 
 ## Video
 
-Here's a video demo of how to add a restart step:  
+Here's a video demo of how to add a K8s Rollout step:  
 
 <!-- Video:
 https://www.loom.com/share/e39980150e8e48dc8755885fc89afc72?sid=973d4a7c-1b7b-4178-8c87-a310b82d4dcd-->
