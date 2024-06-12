@@ -8,30 +8,30 @@ sidebar_label: IaCM Architecture
 import InteractiveIaCMArchitecture from "../components/interactive_architecture";
 
 
-# IaCM Architecture
+The Infrastructure as Code Management (IaCM) module in Harness empowers users to automate the management of their cloud infrastructure through structured, repeatable pipelines. This guide explores the integration of IaCM with the Harness platform, focusing on how various components interact to facilitate efficient infrastructure operations.
 
-Infrastructure as Code Management architecture the following:
+Integration Points and Data Flow
 
-- **Control Plane:** handles resource definition and functionality config management.
-- **Execution Plane:** based on definitions handles the running of tasks.
-- **Reporting and Dashboards:** aggregations of system activity and changes.
-- **Triggers:** Everything is driven through the API but multiple drivers: UI, git, CLI etc
+The IaCM module integrates several key components that collaboratively manage and execute infrastructure pipelines. The flow of data and interactions between these components is essential for understanding how the system operates.
 
-The system is designed to be extensible with functionality being built through the combination of config and tasks executors. 
+At the heart of IaCM operations are Git repositories and the Harness UI. Users define their infrastructure configurations and pipelines in their Git repositories, which provide version control and collaboration capabilities. These configurations are synchronized with the Harness UI, where users can visually manage and monitor their pipelines. The UI serves as the gateway for initiating and managing IaCM activities.
 
-## IaCM-specific services
+Once a pipeline is defined and configured in the UI, the IaCM Server takes over, storing these definitions and ensuring they meet compliance and policy requirements. The server orchestrates the overall execution process by interacting with other components to validate and execute the pipeline stages and steps.
 
-Harness Infrastructure as Code Management hosts its own service while integrating with Harness Platform Services and Harness CI Pipeline Services
+During execution, the IaCM Pipeline Manager coordinates the flow of data and ensures that each step in the pipeline adheres to the configurations stored in the IaCM Server. It acts as an intermediary, passing tasks to the execution layers.
 
-IaCM utilizes three internal services:
+The execution itself can follow one of two paths:
 
-### IaCM Server
+- Lite Engine: The IaCM Server sends tasks directly to the Lite Engine, a lightweight execution engine optimized for handling continuous integration and deployment workflows. This engine performs the actual infrastructure changes based on the pipeline definitions.
+- Delegate and Delegate Manager: For users who prefer executing tasks within their own environments, the IaCM module supports Delegates. These are lightweight agents managed by the Delegate Manager that handle specific operational tasks. The Delegate processes tasks locally and interfaces with the Lite Engine to apply the changes to the infrastructure.
 
-### IaCM Pipeline Manager
+Throughout this process, the IaCM Server performs additional validations, such as cost estimation and policy checks, ensuring all operations are compliant and efficient. The results and logs of these operations are continuously updated and displayed in the Harness UI, providing real-time feedback to users.
 
-### IaCM Plugin
+This integrated workflow ensures that infrastructure changes are managed, validated, and executed securely and efficiently, supporting scalable and reliable infrastructure management.
 
 ## Interactive Diagram
+
+Click on the nodes to see more details about entities:
 
 <InteractiveIaCMArchitecture
     svgPath="/iacm_architecture.svg"
@@ -146,5 +146,13 @@ IaCM utilizes three internal services:
         owner_other_harness: ['owner_other_harness', 'ci_shared_code', 'platform_services', 'platform_gitx', 'platform_pipelines', 'platform_logging', 'policy_as_code', 'delegate_manager'],
         owner_setup_dependent: ['owner_setup_dependent', 'delegate_dlite', 'runner', 'lite_engine', 'infra_cost'],
         owner_customer: ['owner_customer', 'git', 'customer_cloud_infra'],
-    }} />
+    }} 
+    startingPoint="iacm_server"/>
 
+## Conclusion
+
+The IaCM module integrates with the Harness platform through a cohesive system of components that together manage the complexities of infrastructure as code. By leveraging the capabilities of Git repositories, the intuitive Harness UI, and the powerful orchestration of the IaCM Server and Pipeline Manager, users can automate and optimize their infrastructure management.
+
+Understanding these components and their interactions provides a clear roadmap for using IaCM effectively, ensuring secure, scalable, and compliant operations across your cloud environments.
+
+Go to 
