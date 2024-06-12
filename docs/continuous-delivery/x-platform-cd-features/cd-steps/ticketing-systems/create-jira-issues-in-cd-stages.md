@@ -44,6 +44,8 @@ In Jira fields, you can select specific fields within a Jira issue. For more inf
 Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, `User`, and `String`. 
 For example, Harness supports [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
 
+You can add other unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
+
 Harness does not integrate with Jira fields that manage issue links or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 
 ## Jira Date field support
@@ -126,6 +128,3 @@ To use parent links, do the following:
    
    ![picture 2](static/c459f24248f46e308d03f01250b477480e555e8407bbfd1c6aa811a5054d0ef4.png)
 
-## See also
-
-- [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/)
