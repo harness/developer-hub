@@ -17,7 +17,9 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Limitations
 
-* Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
+* Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration. You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
+
+Harness does not integrate with Jira fields that manage issue links or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 
 ## Add a Jira Update step
 
@@ -85,13 +87,6 @@ If the issue is not part of a Jira workflow and does not have transition options
 ## Add Issue fields
 
 You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
-
-Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, `User`, and `String`. 
-For example, Harness supports [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
-
-You can add other unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
-
-Harness does not integrate with Jira fields that manage issue links or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
 
 In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
