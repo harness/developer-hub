@@ -89,6 +89,8 @@ If the issue is not part of a Jira workflow and does not have transition options
 
 You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
+Review the [limitations section](#limitations) to know more about the supported issue fields and limitations. 
+
 In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
 ![](static/add-jira-fields.png)
