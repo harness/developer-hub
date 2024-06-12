@@ -18,7 +18,7 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 ## Limitations
 
 * Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. 
-* Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration. 
+* Harness does not integrate with Jira fields that manage issue links or attachments. 
 * You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
 
 
