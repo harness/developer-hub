@@ -191,7 +191,4 @@ To use parent links, do the following:
    
    ![picture 2](static/c459f24248f46e308d03f01250b477480e555e8407bbfd1c6aa811a5054d0ef4.png)
 
-## See also
-
-- [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/)
 
