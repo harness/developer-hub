@@ -16,7 +16,7 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Limitations
 
-* Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. 
+* Harness supports only Jira fields of type `User`, `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. For example, [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
 * Harness does not integrate with Jira fields that manage issue links or attachments.
 * You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
 * While it's not a strict limitation, some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run (as opposed to [updating](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) the same issue).
@@ -41,9 +41,8 @@ To add a Jira Create step, do the following:
 
 ## Add Issue fields
 
-In Jira fields, you can select specific fields within a Jira issue. For example, [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
+In Jira fields, you can select specific fields within a Jira issue. For more information on custom fields, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
-For more information on custom fileds, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
 Review the [limitations section](#limitations) to know more about the supported issue fields and limitations. 
 
