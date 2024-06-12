@@ -45,7 +45,7 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 
 </details>
 
-<details>
+<!-- details>
 <summary>Scanner binaries used in STO container images</summary>
 
 
@@ -54,7 +54,7 @@ import StoSupportedBinaries from '/docs/security-testing-orchestration/sto-techr
 
 <StoSupportedBinaries />
 
-</details>
+</details -->
 
 <details>
 <summary>Supported ingestion formats</summary>

@@ -23,6 +23,13 @@ import {
             link: "/docs/self-managed-enterprise-edition/smp-supported-platforms",
           },
           {
+            title: "Reference architectures",
+            module: MODULES.platform,
+            description:
+              "Review Harness Self-Managed Enterprise Edition reference architectures.",
+            link: "/docs/self-managed-enterprise-edition/reference-architecture",
+          },
+          {
             title: "Onboarding guide",
             module: MODULES.platform,
             description:
@@ -34,14 +41,14 @@ import {
             module: MODULES.platform,
             description:
               "Learn how to use Helm to install Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga",
+            link: "/docs/self-managed-enterprise-edition/install/install-using-helm",
           },
           {
             title: "Install in an air-gapped environment",
             module: MODULES.platform,
             description:
               "Learn how to use Helm to install in an air-gapped environment.",
-            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment",
+            link: "/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment",
           },
         ],
       },
@@ -71,13 +78,6 @@ import {
         description:
           "",
         list: [
-          {
-            title: "Reference architectures",
-            module: MODULES.platform,
-            description:
-              "Review Harness Self-Managed Enterprise Edition reference architectures.",
-            link: "/docs/self-managed-enterprise-edition/advanced-configurations/reference-architecture/",
-          },
           {
             title: "Configure external databases",
             module: MODULES.platform,

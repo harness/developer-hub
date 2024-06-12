@@ -1,21 +1,24 @@
 ---
-sidebar_position: 7
-description: Harness Certifications FAQ 
-title: Certifications Frequently Asked Questions (FAQ)
+sidebar_position: 8
+description: Harness University FAQs 
+title: University Frequently Asked Questions (FAQ)
 redirect_from:
   - /certifications/faqs
 ---
 
-# Harness Certifications Frequently Asked Questions (FAQs)
+# Harness University Frequently Asked Questions (FAQs)
 
 This FAQ page is designed to assist customers who are experiencing common issues while attempting to complete Harness certifications on our platform. From resolving exam glitches to managing time during the hands-on exam, this guide aims to provide quick and effective solutions beyond our [Instructions](/university/instructions) section.
 
 ## Table of Contents
-- [Exam gets "Stuck"](##exam-gets-stuck)
-- [Trouble with the Hands-On Exam](##trouble-with-the-hands-on-exam)
-- [Running Out of Time in Hands-On Exam](##running-out-of-time-in-hands-on-exam)
-- [Issues with Course Registration](##issues-with-course-registration)
-- [Contact Information](##contact-information)
+
+- [Exam gets "Stuck"](#exam-gets-stuck)
+- [Trouble with the Hands-On Exam](#trouble-with-the-hands-on-exam)
+- [Running out of time in Hands-On Exam](#running-out-of-time-in-hands-on-exam)
+- [Issues with Course Registration](#issues-with-course-registration)
+- [Requesting Accommodations for Exams ](#requesting-accommodations-for-exams)
+- [Inquires about Instructor-Led Training ](#inquiries-about-instructor-led-training)
+- [Contact Information](#contact-information)
 
 ---
 
@@ -66,7 +69,7 @@ Follow the on-screen instructions to register for a course. If you encounter any
 
 ### I can't find the course I'm looking for, what should I do?
 
-Use the search bar within the Skilljar dashboard to find your desired course. If you still can't locate it, email [certifications@harness.io](mailto:certifications@harness.io).
+Use the navigation within the Skilljar dashboard to find your desired course. If you still can't locate it, email [certifications@harness.io](mailto:certifications@harness.io).
 
 ### How do I use a coupon code during registration?
 
@@ -77,6 +80,36 @@ For the Admin and Architect level exams, we allow for up to two retakes on paid 
 
 * If you have purchased an exam [not via coupon code] and need to retake,  please e-mail [certifications@harness.io](mailto:certifications@harness.io) so we can provide a retake coupon code.
 * If you redeemed a coupon code, please re-apply the coupon code when retaking.
+
+---
+
+## Requesting Accommodations for Exams
+
+Testing accommodations are considered on a case-by-case basis. Our exams include retakes per the tier and the exams are not proctored [exams can be taken at any time]. Developer level certifications which are free have five retakes and Admin/Architect which are paid level certifications have two retakes per payment. Due to current platform restrictions, we can only provide limited accommodations at this time. Please reach out to us at [certifications@harness.io](mailto:certifications@harness.io) prior to attempting an exam if accommodations are needed. 
+
+### List of Technology in Exams
+
+* Caveon Scorpion for knowledge questions. 
+* Instruqt for hands-on portions. 
+
+---
+
+## Inquiries about Instructor-Led Training
+
+### What formats are Instructor-Led Trainings available in?
+Instructor-Led Trainings [e.g ILTs] are available in the following formats:
+* Dedicated. Either virtual or on-site. 
+* Shared-Virtual [e.g vILT]. This is per a [shared virtual calendar](https://university-registration.harness.io/calendar). 
+
+### What is the cost for ILT
+Instructor-Led Training has tiers of costs depending on format. All ILTs has access to the 
+[Platform Pre-Req Course](https://university-registration.harness.io/introduction-to-the-harness-platform). 
+
+* Dedicated: $12,000 for up to 12 students virtually. On-site will be the $12,000 + travel. 
+* Virtual: $1,000 per student, per module. 
+
+You can leverage your [Harness Service Catalog Dollars](https://www.harness.io/legal/service-catalog-dollars) for payment
+of ILTs or purchase via SKU or for virutal online via SkillJar. 
 
 ---
 

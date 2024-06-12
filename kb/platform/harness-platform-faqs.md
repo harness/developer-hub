@@ -847,6 +847,17 @@ Yes, you can have multiple versions of Helm on the delegate, but only the Helm C
 
 No, from a Harness delegate code perspective, the only difference between minimal and non-minimal delegate images is the bundled third-party binaries.
 
+### Why did step logs disappear?
+
+If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+You must restart your delegate after you enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+For more information about configuring connectivity, go to:
+
+- [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+- [Allowlist Harness Domains and IPs](/docs/platform/references/allowlist-harness-domains-and-ips)
+
 ### Does the default Harness Delegate include jq?
 
 Harness keeps the delegate image as minimal as possible so, it does not include `jq` by default. To install `jq` on the delegate, you must add it to the `INIT_SCRIPT` in the delegate manifest. For more information, go to [Add your custom tools](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/#add-your-custom-tools).
@@ -892,6 +903,10 @@ To resolve the issue:
 - Identify the cause: The error indicates an invalid CPU resource request, possibly exceeding the container's CPU limit.
 - Check Helm chart modifications: If modifications were made to the Helm chart locally, they might have caused discrepancies in deployed values. Utilize the Helm template to inspect YAML values for debugging.
 - Adjust namespace limits: If applicable, ensure that there are no namespace limits conflicting with the Helm delegate installation. If found, consider changing the namespace to resolve the issue.
+
+### How can I check the current customized version of a delegate using APIs, and how does the delegate upgrader access custom images?
+
+Harness an API to get the latest delegate version for an account and one to override the latest for the upgrader. Currently, there isn't an externally exposed API to retrieve custom images. However, the delegate upgrader accesses a specific API to fetch the custom image when needed.
 
 ### Can I use an earlier Harness Delegate version?
 
@@ -2549,7 +2564,7 @@ The naming convention for all identifiers in Harness is case sensitive. Identifi
 
 ### Are there docs for the infrastructure requirements to install Harness Self-Managed Enterprise Edition?
 
-Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/install/harness-helm-chart#production-environment-deployment-infrastructure).
 
 ### Is there documentation for network setup or Harness Deployment Architecture?
 
@@ -3013,7 +3028,7 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 ### Is there documentation on installing and upgrading the Harness Self-Managed Enterprise Edition cluster?
 
-Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/upgrade-helm-chart).
+Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 ## Terraform
 
@@ -3116,10 +3131,6 @@ Harness integrates with multiple third-party SCIM providers
 ### How do I sign out of Harness?
 
 To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
-
-### How can I switch from the new Harness nav 2.0 UI to the legacy nav?
-
-Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
 
 ### Can I enable feature flags for organizations and projects without enabling them for the account scope?
 
@@ -3283,3 +3294,6 @@ cat /values.jksbase64 | base64 -d
 
 The minimum supported screen resolution is 1440x900.
 
+### Can I adjust the default width of step logs in the browser GUI? They currently open at around 25% of the screen width.
+
+Currently, there are no settings to modify the default GUI view setup. You can manually expand and adjust it as needed, but it resets to default when you refresh or switch to another execution.

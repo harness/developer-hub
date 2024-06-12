@@ -149,3 +149,10 @@ Yes. Pulling images from your private registry is possible and can be done by pu
 
 Yes. You can use the API or Terraform which will also dynamically generate the YAML that can be applied.
 
+### Does Microsoft Teams support full GitOps ?
+
+No, Microsoft Teams does not support GitOps.
+
+### Which RBAC policies or permissions are required to use Harness GitOps?
+
+The minimum RBAC requirements depend on the applications and destination cluster setup. Thus, it is not straightforward to determine the minimum requirements for RBAC/permissions. For this reason, the ArgoCD application controller by default has wide RBAC permissions.

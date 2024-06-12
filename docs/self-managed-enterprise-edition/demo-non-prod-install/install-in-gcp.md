@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in Google Cloud Platform (GCP).
 
-For Helm installation instructions, go to [Helm installation](/docs/category/helm-installation/) or the Harness Helm chart [readme](https://github.com/harness/helm-charts/tree/main?tab=readme-ov-file#harness-helm-charts).
+For Helm installation instructions, go to [Helm installation](/docs/self-managed-enterprise-edition/install/install-using-helm) or the Harness Helm chart [readme](https://github.com/harness/helm-charts/tree/main?tab=readme-ov-file#harness-helm-charts).
 
 ### Prerequisites
 

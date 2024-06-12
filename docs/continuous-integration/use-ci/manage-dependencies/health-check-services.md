@@ -9,13 +9,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-In a CI pipeline, health checks confirm that services are running before the build runs other steps that need to interact with those services. This topic explains how to run a health check on services running in **Background** steps before running the rest of the steps in the stage. This example uses [step groups](../optimize-and-more/group-ci-steps-using-step-groups.md) to run health checks on multiple background services.
+In a CI pipeline, health checks confirm that services are running before the build runs other steps that need to interact with those services. This topic explains how to run a health check on services running in **Background** steps before running the rest of the steps in the stage. This example uses [step groups](/docs/platform/pipelines/use-step-groups.md) to run health checks on multiple background services.
 
 This example assumes you have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) and at least one [Background step](./background-step-settings.md).
 
 ## Create step groups
 
-Add one [step group](../optimize-and-more/group-ci-steps-using-step-groups.md) for each background service that you want to run a health check on. If you have multiple health check step groups, organize the step groups to run in parallel.
+Add one [step group](/docs/platform/pipelines/use-step-groups.md) for each background service that you want to run a health check on. If you have multiple health check step groups, organize the step groups to run in parallel.
 
 For example, if you want to run health checks on two services, create two step groups and run them in parallel, as shown in the following YAML example.
 

@@ -37,8 +37,7 @@ import {
             },
 
           ],
-        },
-    
+        },    
         {
           name: "Run scans and ingest data",
           description:
@@ -116,8 +115,7 @@ import {
             },
 
           ],
-        },
-    
+        },    
         {
           name: "Stop builds based on detected vulnerabilities",
           description:
@@ -127,7 +125,7 @@ import {
               title: "Exemptions (Ignore Rules) for Specific Issues",
               module: MODULES.sto,
               description:
-                "Learn how to set fail_on_severity to stop pipeline builds and create exemptions (ignore rules) for specific vulnerabilities.",
+                "Learn how to set fail_on_seerity to stop pipeline builds and create exemptions (ignore rules) for specific vulnerabilities.",
               link: "/docs/security-testing-orchestration/exemptions/exemption-workflows",
             },
             {
@@ -139,6 +137,13 @@ import {
             },
             {
               title: "Trigger STO scans to block pull requests with vulnerabilities",
+              module: MODULES.sto,
+              description:
+                "You can create Git event triggers to block PRs if an STO scan detects vulnerabilities that violate OPA policies or Fail on Severity settings.",
+              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities",
+            },
+            {
+              title: "Trigger STO scans to block Git pull requests with vulnerabilities",
               module: MODULES.sto,
               description:
                 "You can create Git event triggers to block PRs if an STO scan detects vulnerabilities that violate OPA policies or Fail on Severity settings.",

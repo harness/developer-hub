@@ -133,7 +133,7 @@ This workflow requires SecOps user permissions.
 
     - Consider the **Requested Duration** for the exemption request. When you approve a request, the exemption remains active only for the specified time window (for example, 7 days from the approval time). 
 
-    - It is good practice to [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#why-you-should-define-a-baseline-for-every-sto-target). If the target does not have a baseline defined, you won't see any exemption details. Instead, you will see a link to define the target baseline. 
+    - It is good practice to [define a baseline for every target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline). If the target does not have a baseline defined, you won't see any exemption details. Instead, you will see a link to define the target baseline. 
 
        <img src={baseline_not_defined} alt="Can't view exemption details because the target has no baseline" height="50%" width="50%" />
 

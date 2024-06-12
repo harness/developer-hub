@@ -61,7 +61,7 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
 ## Cache dependencies
 
 <Tabs>
-<TabItem value="cloud" label="Harness Cloud" default>
+<TabItem value="cacheint" label="Cache Intelligence" default>
 
 You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec` and specify the cache paths (in `paths` and `sharedPaths`).
 
@@ -78,9 +78,9 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
 ```
 
 </TabItem>
-<TabItem value="selfmanaged" label="Self-managed">
+<TabItem value="builtin" label="Save and Restore Cache steps">
 
-With self-managed build infrastructures, you can:
+You can use built-in steps to:
 
 - [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 - [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
@@ -124,7 +124,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ## Build and run tests
 
-You can use **Run** and **Run Tests** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
+You can use **Run** and **Test** steps to [run tests in Harness CI](/docs/continuous-integration/use-ci/run-tests/run-tests-in-ci).
 
 The following examples run tests in a **Run** step.
 
@@ -165,7 +165,7 @@ The following examples run tests in a **Run** step.
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/run-tests/viewing-tests/), your test reports must be in JUnit XML format.
 
-If you use a **Run** step to run tests, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Run Tests steps (Test Intelligence)](#run-tests-with-test-intelligence).
+If you use a **Run** step to run tests, your **Run** step must include the `reports` specification. The `reports` specification is not required for [Test steps (Test Intelligence)](#run-tests-with-test-intelligence).
 
 The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/run-tests/test-report-ref#ruby).
 
@@ -214,46 +214,11 @@ The following examples use the [Minitest JUnit Formatter](https://github.com/aes
 
 ### Run tests with Test Intelligence
 
-You can use Run Tests steps to [run Ruby unit tests with Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/ti-for-ruby).
-
-<Tabs>
-  <TabItem value="Harness Cloud" default>
-
-```yaml
-- step:
-    type: Run Tests
-    name: Run_Ruby_Tests
-    identifier: Run_Ruby_Tests
-    spec:
-      language: Ruby
-      buildTool: Rspec
-      runOnlySelectedTests: true
-```
-
-</TabItem>
-  <TabItem value="Self-managed">
-
-```yaml
-- step:
-    type: Run Tests
-    name: Run_Ruby_Tests
-    identifier: Run_Ruby_Tests
-    spec:
-      connectorRef: account.harnessImage
-      image: ruby:latest
-      language: Ruby
-      buildTool: Rspec
-      runOnlySelectedTests: true
-```
-
-</TabItem>
-</Tabs>
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) is available for Ruby unit tests.
 
 ### Test splitting
 
-Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Run Tests** steps.
-
-Stage-level parallelism is recommended for Ruby.
+Harness CI supports [test splitting (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for both **Run** and **Test** steps.
 
 ## Specify version
 
@@ -551,4 +516,3 @@ Now that you have created a pipeline that builds and tests a Ruby app, you could
 - Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 - Add steps to [build and upload artifacts](/docs/category/build-push-upload-download).
 - Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-registry).
-- Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
