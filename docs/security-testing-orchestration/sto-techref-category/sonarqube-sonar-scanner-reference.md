@@ -296,41 +296,7 @@ import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 
-<!-- 
 
-## SonarQube pull-request scan configuration
-
-To implement a SonarQube pull-request scan, include the following arguments in [**Additional CLI flags**](#additional-cli-flags). Use trigger variables for the pull request ID and branch:
-    - `-Dsonar.pullrequest.key=`[`<+codebase.prNumber>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebaseprnumber)
-    - `-Dsonar.pullrequest.branch=`[`<+codebase.sourceBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasesourcebranch)
-    - `-Dsonar.pullrequest.base=YOUR_BASELINE_BRANCH`
-
-      If the target branch in the PR is the baseline, you can use [`<+trigger.targetBranch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference/#codebasetargetbranch).
-
-
-
-<details>
-<summary>YAML configuration example</summary>
-
-```yaml
-              - step:
-                  type: Sonarqube
-                  # ...
-                  spec:
-                    mode: orchestration
-                    config: default
-                    # ...
-                    advanced:
-                      log:
-                        level: debug
-                      args:
-                        cli: "-Dsonar.pullrequest.key=<+trigger.prNumber> -Dsonar.pullrequest.branch=<+trigger.sourceBranch> -Dsonar.pullrequest.base=<+trigger.targetBranch> "
-                    # ...
-```
-
-</details>
-
-<!-- -->
 
 
 ## SonarQube proxy settings
@@ -434,11 +400,10 @@ In your SonarQube step, declare `-Dsonar.projectVersion` under [Additional CLI F
 
 :::info 
 
-Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1882) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
+Harness introduced a fix in [STO release 1.83.1](/release-notes/security-testing-orchestration#version-1831) to provide better support for orchestrated branch and pull-request scanning with SonarQube Enterprise.
 
 - With this fix, the orchestration step always downloads results for the scanned branch or pull request.
-- Branch scans require no additional configuration.
-- To configure pull-request scans, go to [SonarQube pull-request scan configuration](#sonarqube-pull-request-scan-configuration).
+- To scan a branch or pull request, select **Branch Scan** in [Scan Configuration](#scan-configuration). With this option selected, the step scans the branch or pull request specified in the pipeline execution.
 
 :::
 
