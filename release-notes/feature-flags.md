@@ -35,7 +35,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Bumped to `1.7.0-rc2`. (FFM-11549)
  - Sort rules when retrieving instead of per evaluation. (FFM-11585)
  - Remove Rules sorting from evaluation path. (FFM-11597)
- - Fix streaming issues for .NET 4.8. (FFM-11573)
+ - Fix streaming issues for .NET 4.8. (FFM-11573, ZD-64099)
 
 **Fixed issues**:
  - Fixed an issue where streams would not remain open for longer than 60 seconds when the SDK is running .NET 4.8. (FFM-11573, ZD-64099)
