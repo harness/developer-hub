@@ -906,7 +906,7 @@ To resolve the issue:
 
 ### How can I check the current customized version of a delegate using APIs, and how does the delegate upgrader access custom images?
 
-Harness has APIs to get the latest delegate version for an account, and one to override this latest for the upgrader. Currently, there isn't an externally exposed API to retrieve custom images. However, the delegate upgrader accesses a specific API to fetch the custom image when needed.
+Harness an API to get the latest delegate version for an account and one to override the latest for the upgrader. Currently, there isn't an externally exposed API to retrieve custom images. However, the delegate upgrader accesses a specific API to fetch the custom image when needed.
 
 ### Can I use an earlier Harness Delegate version?
 
