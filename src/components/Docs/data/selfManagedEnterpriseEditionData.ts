@@ -41,14 +41,14 @@ import {
             module: MODULES.platform,
             description:
               "Learn how to use Helm to install Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga",
+            link: "/docs/self-managed-enterprise-edition/install/install-using-helm",
           },
           {
             title: "Install in an air-gapped environment",
             module: MODULES.platform,
             description:
               "Learn how to use Helm to install in an air-gapped environment.",
-            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment",
+            link: "/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment",
           },
         ],
       },

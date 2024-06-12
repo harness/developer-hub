@@ -83,6 +83,8 @@ If you don't use Helm to upgrade Harness Self-Managed Enterprise Edition, follow
 
 :::
 
+### Breaking change - Looker images
+
 :::danger important changes to looker images
 
 Starting with version 0.17.0, Harness no longer publishes Looker images to the DockerHub public repository. The repository has been transitioned to private.
@@ -5114,7 +5116,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   1.  If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
   2.  If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-- The delegate JRE has been upgraded to version 11.0.19_7. This upgrade might result in disconnection for delegates with self-signed certificates. For instructions on setting up delegates with custom certificates, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/) and [Use self-signed certificates with Helm-based installations](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga/#use-self-signed-certificates-with-helm-based-installations). (PL-37994, SMP-1696)
+- The delegate JRE has been upgraded to version 11.0.19_7. This upgrade might result in disconnection for delegates with self-signed certificates. For instructions on setting up delegates with custom certificates, go to [Install delegates with custom certificates](/docs/platform/delegates/secure-delegates/install-delegates-with-custom-certs/) and [Use self-signed certificates with Helm-based installations](/docs/self-managed-enterprise-edition/install/install-using-helm/#use-self-signed-certificates-with-helm-based-installations). (PL-37994, SMP-1696)
 
 ##### Harness Platform
 
@@ -6946,7 +6948,7 @@ This release includes the following Harness module and component versions.
 
 #### Fixed issues
 
-- You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
+- You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment). (SMP-1130)
 
 - The `nodeSelector` in Harness services failed for Redis and was missing in other services. (SMP-1180)
 
@@ -7050,7 +7052,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 - You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
 
-  For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+  For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 - You can now disable Postgres installations. (SMP-1196)
 

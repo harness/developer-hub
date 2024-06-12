@@ -26,7 +26,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Session Management" }],
         title: "Absolute session timeout",
         description:
-          "For enhanced security users can be logged out of their account after the configured timeout, regardless of any activity",
+          "For enhanced security, users can be logged out of their account after the configured timeout, regardless of any activity",
       },
       {
         tag: [{ value: "SMP" }],
@@ -67,7 +67,7 @@ export const platformData: Horizon = {
         tag: [{value: "Pipeline"}],
         title: "Pipeline Data Retention",
         description:
-          "Extended Data Retention, Data Archiving and Compliance capabilites ",
+          "Extended Data Retention, Data Archiving, and Compliance capabilities",
       },
       {
         tag: [{ value: "Secure" }],
@@ -96,7 +96,7 @@ export const platformData: Horizon = {
         tag: [{ value: "Scale" }],
         title: "Test Account Cluster",
         description:
-          "Customers can be onboarded in a new cluser for their test accounts",
+          "Customers can be onboarded in a new cluster for their test accounts",
       },
       {
         tag: [{ value: "Resource Management" }],
@@ -124,7 +124,7 @@ export const platformData: Horizon = {
       {
         tag: [{value: "Pipeline"}],
         title: "Bulk Reconciliation when a User Update a Template ",
-        description: "When a user updates a template, a user can now bulk updates each pipeline referring to the template.",
+        description: "When a user updates a template, they can now bulk update each pipeline referring to the template.",
       },
     ],
   },
@@ -159,12 +159,12 @@ export const platformData: Horizon = {
       {
         tag: [],
         title: "Auto Discovery of Entities in Git",
-        description: "When an entity is created in git it is created in Harness as well.",
+        description: "When an entity is created in Git it is created in Harness as well.",
       },
       {
         tag: [],
         title: "GitX for Triggers",
-        description: "Ability to configure triggers as code in a git provider."
+        description: "Ability to configure triggers as code in a Git provider."
       },
     ],
   },
@@ -178,7 +178,7 @@ export const platformData: Horizon = {
       },
       {
         tag: [{ value: "Pipeline" }],
-        title: " DAG Support For Pipeline",
+        title: "DAG Support For Pipeline",
         description:
           "Enable complex flows such as parallel execution, stage grouping, etc.",
       },

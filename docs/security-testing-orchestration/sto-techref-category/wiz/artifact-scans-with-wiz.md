@@ -1,8 +1,8 @@
 ---
-title: Wiz scanner reference for STO
-description: Scan code repositories and container images with Wiz scanner.
-sidebar_label: Wiz scanner reference
-sidebar_position: 415
+title: Artifact scans with Wiz
+description: Scan artifacts with Wiz. Orchestration and Ingestion modes supported.
+sidebar_label: Artifact scans with Wiz
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,26 +11,20 @@ import TabItem from '@theme/TabItem';
 import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step-setup.md';
 
 <DocsTag  text="Artifact scanners" backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners"  />
-<DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
 
-You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness pipelines. Harness currently supports the following: 
-
-1. Orchestrated Wiz scans for container images
-2. Ingestion of Wiz scan reports (JSON/SARIF format) generated for container images and repositories
+You can easily set up a Wiz step to run automated scans in a Harness pipeline. This step scans the container image you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into STO. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) tab of the pipeline execution.
 
 ## Important notes for running Wiz scans in STO
 
 - This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it.  
 
-- Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information. 
-
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 
-- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+- You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your proxies using custom certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
 
 
 import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-category/shared/_more-information.md';
@@ -43,7 +37,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 
 <!-- 1 --------------------------------------------------------------------->
 
-<summary>Orchestration scans for container images</summary>
+<summary>Orchestration scans for artifacts</summary>
 
 The setup process for Kubernetes and Docker build infrastructures has a few additional steps and requirements. 
 
@@ -58,7 +52,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access ID and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz 
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Wiz CLI 
 
 	<br/>
 
@@ -83,19 +77,20 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 	
    ##### Required settings
 
-		1. Scan mode = [Orchestration](#scan-mode)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
+		1. [Scan mode](#scan-mode) = **Orchestration**
+		3. [Target type](#type) = **Container image**
+		2. [Target and Variant Detection](#detect-target-and-variant) = **Auto**
 		3. Container image: 
 			1. [Type](#type-1)
-			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
+			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry. 
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
-			5. Authentication — Required only if the registry requires authentication:
+			5. [Authentication](#authentication) — Required only if the registry requires authentication:
 				1. [Registry access Id](#access-id) as a Harness secret
-				2. [Registry access token](#access-token) as a Harness secret. 
+				2. [Registry access token](#access-token) as a Harness secret 
 		8. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
 	
    ##### Optional settings
 
@@ -111,14 +106,14 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 
 	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) if your image registry requires an access Id and access token
 	
-	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` shared by Wiz
+	- [Harness text secrets](/docs/platform/secrets/add-use-text-secrets) for your `client-id` and `client-secret` to authenticate with the Wiz CLI
 
    	<br/>
    #### Add the Wiz scanner
 
 	Do the following:
 
-	1. Add a CI Build or Security stage to your pipeline.
+	1. Add a Build or Security stage to your pipeline.
 	2. Add a Wiz step to the stage.
 
    	<br/>
@@ -126,24 +121,25 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 	
    ##### Required settings
 
-		1. Scan mode = [Orchestration](#scan-mode)
-		2. Target and Variant Detection = [Auto](#detect-target-and-variant)
-		3. Container image: 
+		1. [Scan mode](#scan-mode) = **Orchestration**
+		3. [Target type](#type) = **Container image**
+		2. [Target and Variant Detection](#target-and-variant-detection) = **Auto**
+		4. Container image: 
 			1. [Type](#type-1)
 			2. [Domain](#domain) — Required only if you're using a registry with a non-standard domain, such as a private registry 
 			3. [Name](#name) — for example, `jsmith/myimage`
 			4. [Tag](#name) — for example, `latest`
 			5. Authentication — Required only if the registry requires authentication:
-				1. [Registry access Id](#access-id) as a Harness secret. 
-				2. [Registry access token](#access-token) as a Harness secret. 
-		8. Authentication:
-			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` shared by Wiz.
-			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` shared by Wiz.
+				1. [Registry access Id](#access-id) as a Harness secret 
+				2. [Registry access token](#access-token) as a Harness secret 
+		5. Authentication:
+			1. [Wiz access ID](#access-id-1) as a Harness secret. This is your `client-id` to authenticate with the Wiz CLI.
+			2. [Wiz access token](#access-token) as a Harness secret. This is your `client-secret` to authenticate with the Wiz CLI.
 	
    ##### Optional settings
 
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
+   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher.
+   - [Log Level](#log-level) — Useful for debugging.
 
   </TabItem>
 </Tabs>
@@ -153,7 +149,7 @@ The setup process for Kubernetes and Docker build infrastructures has a few addi
 <!-- 2 --------------------------------------------------------------------->
 
 <details>
-<summary>Ingestion scans for container images</summary>
+<summary>Ingestion scans for artifacts</summary>
 
 :::note
 
@@ -163,7 +159,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
    #### Add a shared path for your scan results
 
-   	1. Add a CI Build or Security stage to your pipeline.
+   	1. Add a Build or Security stage to your pipeline.
 	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
 
 
@@ -182,12 +178,12 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 	
    ##### Required settings
 
-	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Container Image` -->
-	2. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
-	2. [Target variant](#name) — Usually the image tag, such as `latest`. 
+	1. [Scan mode](#scan-mode) = **Ingestion**
+	2. [Target type](#type) = **Container Image**
+	3. [Target name](#name) — Usually the image name, such as `jsmith/myimage`
+	4. [Target variant](#name) — Usually the image tag, such as `latest`. 
 	   You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the tag at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
+	5. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
 
    ##### Optional settings
 
@@ -198,76 +194,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
 
 <!-- 3 --------------------------------------------------------------------->
 
-<details>
-<summary>Ingestion scans for code repositories</summary>
 
-:::note
-
-Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information.
-
-:::
-
-   #### Add a shared path for your scan results
-
-   	1. Add a CI Build or Security stage to your pipeline.
-	2. In the stage **Overview**, add a shared path such as `/shared/scan_results`.
-
-   #### Copy scan results to the shared path
-
-   There are two primary workflows to do this:
-
-   - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
-   - Copy results from a Wiz scan that ran outside the pipeline. 
-
-   For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
-
-
-
-   #### Set up the Wiz scanner
-
-   Add a Wiz step to the stage and set it up as follows.
-	
-   ##### Required settings
-
-	1. Scan mode = [Ingestion](#scan-mode)
-	<!-- 2. [Target type](#type) = `Code Repository` -->
-	2. [Target name](#name) — Usually the repo name
-	2. [Target variant](#name) — Usually the scanned branch. You can also use a [runtime input](/docs/platform/variables-and-expressions/runtime-input-usage) and specify the branch at runtime.
-	3. [Ingestion file](#ingestion-file) — For example, `/shared/scan_results/wiz-scan.json`
-
-   ##### Set the target type in the YAML editor
-
-   :::note 
-   
-   Currently the Wiz UI does not support setting the target type to **Code Repository**. This will be available shortly. For now, you can set the target type in the YAML editor.
-
-   :::
-
-   1. Select **YAML** (top).
-   2. Change the `target : type` from `container` to `repository` as follows:
-
-       ```yaml
-		- step:
-			type: Wiz
-			name: wiz_ingestion
-			identifier: wiz_ingestion
-			spec:
-			  mode: ingestion
-			  config: default
-			  target:
-				type: repository # <----------------
-				detection: manual
-				name: wiz-repo
-				variant: main
-	    ```
-	3. Save the pipeline and select **Visual**. 
-
-   ##### Optional settings
-
-   - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-   - [Log Level](#log-level) — Useful for debugging
-
-</details>
 
 <!-- --------------------------------------------------------------------->
 
@@ -280,8 +207,8 @@ The recommended workflow is to add a Wiz step to a Security Tests or CI Build st
 
 #### Scan Mode
 
-import StoSettingScanModeOrch from './shared/step_palette/scan/mode/_orchestration.md';
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeOrch from '../shared/step_palette/scan/mode/_orchestration.md';
+import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestion.md';
 
 <!-- For container images: -->
 
@@ -297,29 +224,32 @@ For code repositories:
 
 <a name="scan-config"></a>
 
+<!-- 
+
 #### Scan Configuration
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
+
+-->
 
 ### Target
 
 
 #### Type
 
-import StoSettingScanTypeRepo from './shared/step_palette/target/type/_repo.md';
-import StoSettingScanTypeCont from './shared/step_palette/target/type/_image.md';
+import StoSettingScanTypeCont from '../shared/step_palette/target/type/_image.md';
 
 <StoSettingScanTypeCont />
-<StoSettingScanTypeRepo />
 
 
-#### Detect target and variant 
 
-<!-- import StoSettingScanTypeAutodetectRepo from './shared/step_palette/target/auto-detect/_code-repo.md'; -->
-import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
-import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-detect/_note.md';
+#### Target and Variant Detection 
+
+<!-- import StoSettingScanTypeAutodetectRepo from '../shared/step_palette/target/auto-detect/_code-repo.md'; -->
+import StoSettingScanTypeAutodetectContainer from '../shared/step_palette/target/auto-detect/_container-image.md';
+import StoSettingScanTypeAutodetectNote from '../shared/step_palette/target/auto-detect/_note.md';
 
 <!-- StoSettingScanTypeAutodetectRepo/ -->
 <StoSettingScanTypeAutodetectContainer/>
@@ -328,21 +258,21 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+The identifier for the [target](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines) such `jsmith/myalphaservice`. Descriptive target names make it much easier to navigate your scan data in the STO UI.
 
-<StoSettingTargetName />
+It is good practice to [specify a baseline](/docs/security-testing-orchestration/get-started/key-concepts/targets-and-baselines#every-target-needs-a-baseline) for every target. 
 
 
 #### Variant
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '../shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
 
 #### Workspace
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.md';
+import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.md';
 
 <StoSettingTargetWorkspace  />
 
@@ -351,51 +281,47 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_workspace.m
 
 #### Type
 
-import StoSettingImageType from './shared/step_palette/image/_type.md';
+import StoSettingImageType from '../shared/step_palette/image/_type.md';
 
 <StoSettingImageType />
 
 
 #### Domain
 
-import StoSettingImageDomain from './shared/step_palette/image/_domain.md';
+import StoSettingImageDomain from '../shared/step_palette/image/_domain.md';
 
 <StoSettingImageDomain />
 
 
 #### Name
 
-import StoSettingImageName from './shared/step_palette/image/_name.md';
+import StoSettingImageName from '../shared/step_palette/image/_name.md';
 
 <StoSettingImageName />
 
 
 #### Tag
 
-import StoSettingImageTag from './shared/step_palette/image/_tag.md';
+import StoSettingImageTag from '../shared/step_palette/image/_tag.md';
 
 <StoSettingImageTag />
 
 
 #### Access ID
 
-import StoSettingImageAccessID from './shared/step_palette/image/_access-id.md';
+import StoSettingImageAccessID from '../shared/step_palette/image/_access-id.md';
 
 <StoSettingImageAccessID />
 
 
 #### Access Token
 
-import StoSettingImageAccessToken from './shared/step_palette/image/_access-token.md';
+import StoSettingImageAccessToken from '../shared/step_palette/image/_access-token.md';
 
 <StoSettingImageAccessToken />
 
 
 ### Ingestion File
-
-:::note
-Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information. 
-:::
 
 The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
 
@@ -415,11 +341,11 @@ The path to your scan results when running an [Ingestion scan](/docs/security-te
 
 #### Access ID
 
-This is your `client-id` shared by Wiz.
+This is your `client-id` to authenticate with the Wiz CLI.
 
 #### Access Token
 
-This is your `client-secret` shared by Wiz.
+This is your `client-secret` to authenticate with the Wiz CLI.
 
 You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("my-access-token")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/secrets/add-use-text-secrets).
 
@@ -427,14 +353,14 @@ You should create a Harness text secret with your encrypted token and reference 
 
 ### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '../shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
 
 ### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '../shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
@@ -446,7 +372,7 @@ Passing CLI flags is an advanced feature. Some flags might not work in the conte
 
 ### Fail on Severity
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '../shared/step_palette/all/_fail-on-severity.md';
 
 <StoSettingFailOnSeverity />
 
@@ -456,14 +382,14 @@ You can add more settings to the scan step as needed.
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '../shared/_additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '../shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

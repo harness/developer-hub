@@ -56,7 +56,7 @@ You must select **Run only selected tests** (`runOnlySelectedTests: true`) to en
 
 For additional YAML examples, go to [Pipeline YAML examples](#pipeline-yaml-examples)
 
-#### Additional configuration needed when using Kotlin with Gradel 
+#### Additional configuration needed when using Kotlin with Gradle
 
 If you are using Test Intelligence for Kotlin and building using Gradle, add the below section to the build.gradle.kts file under the 'allprojects' section.
 
