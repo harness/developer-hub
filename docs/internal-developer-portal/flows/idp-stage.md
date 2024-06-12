@@ -11,12 +11,6 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-:::info
-
-Presently this Feature is behind the Feature Flag `IDP_ENABLE_STAGE`, please contact with [Harness Support](mailto:support@harness.io) to enable it in your Account. 
-
-:::
-
 The self-service flow in IDP is powered by the Harness Pipelines. A stage is a part of a pipeline that contains the logic to perform a major segment of a larger workflow defined in a pipeline. Stages are often based on the different workflow milestones, such as building, approving, and delivering.
 
 The process of adding a stage to a pipeline is the same for all Harness modules. When you add a stage to a pipeline, you select the stage type, such as **Developer Portal** for IDP or **Build** for CI or **Deploy** for CD. The available stage settings are determined by the stage type, and, if applicable, the module associated with the selected stage type.
