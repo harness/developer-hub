@@ -12,6 +12,7 @@ const InteractiveIaCMArchitecture = ({
   const [description, setDescription] = useState(initialDescription);
   const [activeElement, setActiveElement] = useState(null);
   const [isStarted, setIsStarted] = useState(false);
+  const [borderColor, setBorderColor] = useState('#ccc'); // Default border color
 
   useEffect(() => {
     const darkenColor = (color) => {
@@ -151,6 +152,9 @@ const InteractiveIaCMArchitecture = ({
       // Remove the border and stop the fading effect immediately after click
       const newActiveElement = svgDoc.querySelector(`.interactive[id="${elemId}"]`);
       if (newActiveElement) {
+        // Get the color of the clicked element
+        const color = newActiveElement.querySelector('rect, circle, path, ellipse, text')?.getAttribute('fill') || '#ccc';
+        setBorderColor(color); // Update border color state
         removeFadingEffect(newActiveElement);
       }
     };
@@ -212,111 +216,110 @@ const InteractiveIaCMArchitecture = ({
 
           if (elem.tagName === 'text') {
             elem.parentElement.addEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
-            elem.parentElement.addEventListener('mouseleave', () =>handleHover(svgDoc, elemId, false));
-      elem.parentElement.addEventListener('click', () => handleClick(svgDoc, elemId));
-      }
+            elem.parentElement.addEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+            elem.parentElement.addEventListener('click', () => handleClick(svgDoc, elemId));
+          }
+        });
       });
-      });
-      }
+    }
 
     return () => {
-    if (svgObject) {
-    const svgDoc = svgObject.contentDocument;
-    if (svgDoc) {
-    const interactiveElements = svgDoc.querySelectorAll('.interactive');
-    interactiveElements.forEach((elem) => {
-    const elemId = elem.id;
-    elem.removeEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
-    elem.removeEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
-    elem.removeEventListener('click', () => handleClick(svgDoc, elemId));
-    if (elem.tagName === 'text') {
-      elem.parentElement.removeEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
-      elem.parentElement.removeEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
-      elem.parentElement.removeEventListener('click', () => handleClick(svgDoc, elemId));
-    }
-    });
-    }
-    }
+      if (svgObject) {
+        const svgDoc = svgObject.contentDocument;
+        if (svgDoc) {
+          const interactiveElements = svgDoc.querySelectorAll('.interactive');
+          interactiveElements.forEach((elem) => {
+            const elemId = elem.id;
+            elem.removeEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
+            elem.removeEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+            elem.removeEventListener('click', () => handleClick(svgDoc, elemId));
+            if (elem.tagName === 'text') {
+              elem.parentElement.removeEventListener('mouseenter', () => handleHover(svgDoc, elemId, true));
+              elem.parentElement.removeEventListener('mouseleave', () => handleHover(svgDoc, elemId, false));
+              elem.parentElement.removeEventListener('click', () => handleClick(svgDoc, elemId));
+            }
+          });
+        }
+      }
     };
-    }, [activeElement, groupDescriptions, descriptions, isStarted, startingPoint]);
+  }, [activeElement, groupDescriptions, descriptions, isStarted, startingPoint]);
 
-    return (
+  return (
     <div style={{ position: 'relative', padding: '20px' }}>
-    <object
-    id="architecture-svg"
-    type="image/svg+xml"
-    data={svgPath}
-    aria-label="Interactive IaCM Architecture Diagram"
-    style={{
-    width: '100%',
-    height: '700px',
-    margin: 'auto',
-    }}
-    ></object>
+      <object
+        id="architecture-svg"
+        type="image/svg+xml"
+        data={svgPath}
+        aria-label="Interactive IaCM Architecture Diagram"
+        style={{
+          width: '100%',
+          height: '700px',
+          margin: 'auto',
+        }}
+      ></object>
 
-    <div
-    id="description"
-    style={{
-    marginTop: '20px',
-    fontSize: '16px',
-    padding: '20px',
-    border: '1px solid #ccc',
-    borderRadius: '8px',
-    backgroundColor: '#f9f9f9',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-    color: '#333',
-    fontFamily: 'Arial, sans-serif',
-    }}
-    >
-    <ReactMarkdown>{description}</ReactMarkdown>
+      <div
+        id="description"
+        style={{
+          marginTop: '20px',
+          fontSize: '16px',
+          padding: '20px',
+          border: `2px solid ${borderColor}`, // Use borderColor state
+          borderRadius: '8px',
+          backgroundColor: '#f9f9f9',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          color: '#333',
+          fontFamily: 'Arial, sans-serif',
+        }}
+      >
+        <ReactMarkdown>{description}</ReactMarkdown>
+      </div>
+
+      <style>
+        {`
+          .faded {
+            opacity: 0.2;
+            transition: opacity 0.5s !important;
+          }
+
+          /* Styling for the glowing border */
+          .glowing-border rect,
+          .glowing-border circle,
+          .glowing-border path,
+          .glowing-border ellipse {
+            stroke: #00aae4 !important; /* Harness primary color */
+            stroke-width: 5px !important;
+            filter: drop-shadow(0 0 10px #00aae4) !important;
+          }
+
+          .interactive-hover rect,
+          .interactive-hover circle,
+          .interactive-hover path,
+          .interactive-hover ellipse,
+          .interactive-hover text {
+            fill: darkgray !important;
+          }
+
+          .interactive.active rect,
+          .interactive.active circle,
+          .interactive.active path,
+          .interactive.active ellipse,
+          .interactive.active text {
+            fill: darkgray !important;
+            cursor: pointer;
+          }
+        `}
+      </style>
     </div>
+  );
+};
 
-    <style>
-    {`
-    .faded {
-    opacity: 0.2;
-    transition: opacity 0.5s !important;
-    }
+InteractiveIaCMArchitecture.propTypes = {
+  svgPath: PropTypes.string.isRequired,
+  descriptions: PropTypes.object.isRequired,
+  groupDescriptions: PropTypes.object,
+  initialDescription: PropTypes.string,
+  startingPoint: PropTypes.string 
+};
 
-    /* Styling for the glowing border */
-    .glowing-border rect,
-    .glowing-border circle,
-    .glowing-border path,
-    .glowing-border ellipse {
-    stroke: #00aae4 !important; /* Harness primary color */
-    stroke-width: 5px !important;
-    filter: drop-shadow(0 0 10px #00aae4) !important;
-    }
-
-    .interactive-hover rect,
-    .interactive-hover circle,
-    .interactive-hover path,
-    .interactive-hover ellipse,
-    .interactive-hover text {
-    fill: darkgray !important;
-    }
-
-    .interactive.active rect,
-    .interactive.active circle,
-    .interactive.active path,
-    .interactive.active ellipse,
-    .interactive.active text {
-    fill: darkgray !important;
-    cursor: pointer;
-    }
-    `}
-    </style>
-    </div>
-    );
-    };
-
-    InteractiveIaCMArchitecture.propTypes = {
-    svgPath: PropTypes.string.isRequired,
-    descriptions: PropTypes.object.isRequired,
-    groupDescriptions: PropTypes.object,
-    initialDescription: PropTypes.string,
-    startingPoint: PropTypes.string 
-    };
-
-    export default InteractiveIaCMArchitecture;
-
+export default InteractiveIaCMArchitecture;
