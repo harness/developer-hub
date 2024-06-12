@@ -18,7 +18,7 @@ HCE supports three categories of faults that you can execute using the Kubernete
 
 Each of these categories is discussed in detail below.
 
-Pod faults and node faults are native Kubernetes-based targets whereas cloud-based targets use chaos agent to remotely execute chaos on targets outside the cluster, such as cloud resources.
+Pod faults and node faults are native Kubernetes-based targets whereas cloud-based targets use chaos agents to remotely execute chaos on targets outside the cluster, such as cloud resources.
 
 :::tip
 Kubernetes chaos agent also supports executing faults on remote targets that use mechanisms such as SSH, vCenter APIs, and so on against cloud APIs.
@@ -28,7 +28,7 @@ Kubernetes chaos agent also supports executing faults on remote targets that use
 
 These faults act on application [workloads]( https://kubernetes.io/docs/concepts/workloads/) (that include single-run pods) using the namespace, label selectors, and workload names as the filters to identify the target. You can define the blast radius of the fault through pod percentages (that is, the number of candidate pods to target in case multiple replicas fit the filter criteria) and container names.
 
-Some of these faults use purely the Kubernetes API. In such cases, a Go client in the chaos pod uses the in-cluster configuration through mounted serviceaccount token to carry out some kubernetes CRUD operations (for example, [pod delete](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete), [pod scale](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler), [service load](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress), and so on).
+Some of these faults use purely the Kubernetes API. In such cases, a Go client in the chaos pod uses the in-cluster configuration through a mounted service account token to carry out some Kubernetes CRUD operations (for example, [pod delete](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete), [pod scale](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler), [service load](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress), and so on).
 
 Along with the Kubernetes API, many other faults use runtime APIs to extract the container PIDs and inject chaos in the target container's network, pid and mnt namespaces (for example, [pod network loss](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss), [pod CPU hog](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog), [pod IO latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency), and so on.)
 
@@ -51,7 +51,7 @@ Described below are the flow of control in two chaos faults:
 When you create a Kubernetes experiment with the target details, the fault tunables, and the probes, the following actions take place:
 1. The respective Kubernetes chaos infrastructure (that is, the subscriber) fetches the task from the chaos control plane and creates the experiment custom resource on the cluster.
 2. The cluster controllers parse the inputs from the experiment resource and launch transient pods to carry out the chaos business logic.
-3. These transient chaos pods use a dedicated chaos serviceaccount (that is mapped to an appropriate role and security policy) to inject the fault processes against the target.
+3. These transient chaos pods use a dedicated chaos service account (that is mapped to an appropriate role and security policy) to inject the fault processes against the target.
 4. The chaos actions typically invoke either or a combination of the Kubernetes API, container runtime API, and cloud APIs.
 5. Logs of these chaos pods are streamed to a log server in the chaos control plane for analysis.
 6. The experiment custom resource is patched with the appropriate status and probe results are read and relayed back to the control plane by the subscriber.
@@ -91,7 +91,7 @@ You can deploy the Kubernetes chaos infrastructure (or agent) in two modes:
 
 ### Cluster scope mode
 
-In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the serviceaccounts that are mapped to ClusterRoles.
+In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to ClusterRoles.
 
 This allows the following:
 
@@ -101,7 +101,7 @@ This allows the following:
 
 ### Namespace scope mode
 
-In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the serviceaccounts that are mapped to a NamespacedRole.
+In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to a NamespacedRole.
 
 This allows the following:
 - The subscriber discovers assets only within the agent installation namespace.
