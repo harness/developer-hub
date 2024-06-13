@@ -22,7 +22,7 @@ When running BrowserStack tests on [Kubernetes infrastructure](../../use-ci/set-
 
 :::
 
-Here is an example of a BrowserStack Automate step in a Harness pipeline, where the access key has been added to the project as a [text secret](../../platform/secrets/add-use-text-secrets.md) named `browserstack_access_key`.
+Here is an example of a BrowserStack Automate step in a Harness pipeline, where the access key has been added to the project as a [text secret](../../../platform/secrets/add-use-text-secrets.md) named `browserstack_access_key`.
 
 ```yaml {} showLineNumbers
               - step:
