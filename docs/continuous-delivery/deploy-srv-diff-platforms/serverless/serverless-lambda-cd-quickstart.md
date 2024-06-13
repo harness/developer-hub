@@ -92,6 +92,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
         "cloudformation:CreateStack",
         "cloudformation:CreateUploadBucket",
         "cloudformation:DeleteStack",
+        "cloudformation:DeleteChangeSet",
         "cloudformation:Describe*",
         "cloudformation:EstimateTemplateCost",
         "cloudformation:ExecuteChangeSet",
@@ -141,6 +142,7 @@ Review [Harness Key Concepts](/docs/platform/get-started/key-concepts) to esta
         "iam:GetRole",
         "iam:PassRole",
         "iam:PutRolePolicy",
+        "iam:TagRole",
         "iot:CreateTopicRule",
         "iot:DeleteTopicRule",
         "iot:DisableTopicRule",
@@ -300,7 +302,8 @@ You can also use AWS S3 or Harness Local File Store as your manifest provider. F
 
 ![](./static/serverless-lambda-cd-quickstart-112.png)
 
-Here's what the `serverless.yaml` file looks like:
+<details>
+<summary> Here's what the `serverless.yaml` file looks like for Serverless V1 </summary>
 
 ```yaml
 service: <+service.name>
@@ -327,6 +330,41 @@ You can see the [Harness expression](/docs/platform/variables-and-expressions/ha
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
 For Docker images, you use the expression `<+artifact.image>`.
+
+</details>
+
+<details>
+<summary> Here's what `serverless.yaml` file looks like for Serverless V2 </summary>
+
+```yaml
+service: {{.Values.serviceName}}
+frameworkVersion: "2 || 3"
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /tello
+          method: get
+package:
+  artifact: {{.Values.artifact.path}}
+plugins:
+  - serverless-deployment-bucket@latest
+```
+
+Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yml` that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` for the manifest:
+
+```yaml
+serviceName: goldenpipeline
+artifact: 
+  path: /my-artifact
+```
+
+</details>
 
 ## Add the artifact
 
@@ -990,22 +1028,22 @@ Expression support lets you take advantage of runtime inputs and input sets in y
 
 ```yaml
 service: <+service.name>
-frameworkVersion: "2 || 3"
+frameworkVersion: '2 || 3'
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs20.x
 functions:
   hello:
     handler: handler.hello
     events:
       - httpApi:
           path: /tello
-          method: get
+          method: get  
 package:
-  artifact: <+artifact.path>
+  artifact: <+artifact.path>          
 plugins:
-  - <+stage.variables.devplugins>
+  - serverless-deployment-bucket@latest
 ```
 
 See:
