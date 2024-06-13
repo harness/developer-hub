@@ -24,10 +24,10 @@ For getting started quickly:
 
 Make sure you read and understand:
 
-* [Feature Flags Overview](/docs/feature-flags/get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview.md)
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
-* [Client-Side and Server-Side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
-* [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
+* [Client-Side and Server-Side SDKs](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
+* [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
 
 ## Version
 

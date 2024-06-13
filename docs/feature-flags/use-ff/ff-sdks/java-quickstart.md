@@ -60,7 +60,7 @@ Now you have an environment ready, you need to create an SDK Key for that enviro
 **Copy the SDK Key when you create it as it is available only after creation, once you leave the page, the key is redacted.**
 
 :::info note 
-You must create an SDK Key that matches the type of SDK you want to use. That is, you must create a Client SDK Key if you're using a Client SDK or you must create a Server SDK Key if you're using a Server SDK. For more information about the types of SDKs available, go to [Choose a Client-side or Server-side SDK](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks).
+You must create an SDK Key that matches the type of SDK you want to use. That is, you must create a Client SDK Key if you're using a Client SDK or you must create a Server SDK Key if you're using a Server SDK. For more information about the types of SDKs available, go to [Choose a Client-side or Server-side SDK](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks).
 :::
 
 To create an SDK Key:

@@ -24,7 +24,7 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 ## Before you begin
 
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview.md)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 

@@ -21,7 +21,7 @@ This topic describes how to use the Harness Feature Flags SDK for your React Nat
 ## Before You Begin
 
 * [Getting Started with Feature Flags](/docs/feature-flags/get-started/onboarding-guide)
-* [Feature Flags Overview](../../get-started/overview)
+* [Feature Flags Overview](/docs/feature-flags/get-started/overview.md)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 

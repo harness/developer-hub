@@ -1,12 +1,12 @@
 {
-    "label": "Use Feature Flag SDKs",
-    "position": 50,
+    "label": "Use FF SDKs",
+    "position": 10,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use Feature Flag SDKs"
+        "title": "Use FF SDKs"
     },
     "customProps": {
         "helpdocs_category_id": "kkiqy1f6d7",

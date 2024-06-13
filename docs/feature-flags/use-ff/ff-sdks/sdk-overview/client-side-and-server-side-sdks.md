@@ -28,8 +28,7 @@ For more information, go to the [Feature Flags overview page](https://developer.
 
 ## SDK architecture
 
-
-<img src={sdk_arch} alt="A screenshot of the Harness Platform that highlights the Create Project button in the Feature Flags module." height="500" width="500" />
+![The Harness Platform that highlights the Create Project button in the Feature Flags module.](./static/1-client-side-and-server-side-sdks-00.png)
 
 The above diagram defines the behavior of an SDK. It covers various aspects like what happens at the beginning (initialization and authentication) followed by behavior of an SDK during normal operation.
 
@@ -69,6 +68,6 @@ The following table lists the differences between the client-side and server-sid
 | [Xamarin](../client-sdks/xamarin-sdk-reference.md) | [Ruby](../server-sdks/ruby-sdk-reference.md) |
 | [React Client](../client-sdks/react-client.md) | [PHP](../server-sdks/php-sdk-reference.md) |
 |  | [Apex](../server-sdks/apex-sdk-reference.md)  |
-|  | [Erlang](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference)  |
+|  | [Erlang](/docs/feature-flags/use-ff/ff-sdks/server-sdks/erlang-sdk-reference)  |
 
 
