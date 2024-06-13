@@ -171,8 +171,8 @@ Otherwise, to get the deployment manifest for both components navigate to CCM in
 Click `continue` through the menus until you land on the `Enable auto stopping` page. At this point you will be directed to do the following:
 
 - Create a `harness-auto stopping` namespace
-- Create a FirstGen API token
-  - You may not have access in FirstGen, but the SE for the customer probably does, and you can get them to give the customer access
+- Create a Harness API token
+  - The API token will need `CCM Admin` permissions
 - Create a secret in the namespace with the API token
 
 On the next page you are given a deployment yaml that encompasses the auto stopping controller, router, CRDs, and supporting infrastructure. This needs to be deployed directly into the cluster where you want to auto stop resources.
