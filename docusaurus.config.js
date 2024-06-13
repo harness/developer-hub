@@ -223,6 +223,10 @@ const config = {
                 to: "university/sto",
               },
               {
+                label: "Software Engineering Insights",
+                to: "university/sei",
+              },
+              {
                 label: "Chaos Engineering",
                 to: "university/chaos-engineering",
               },
