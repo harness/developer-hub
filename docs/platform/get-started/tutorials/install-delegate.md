@@ -23,7 +23,7 @@ import Addperm from '/docs/platform/shared/delegate-additional-permissions.md'
 
 ### Create a new delegate token
 
-You can install delegates from the Account, Project, or Org scope. In this example, we'll install create a new token in the Account scope.
+You can install delegates from the Account, Project, or Org scope. In this example, we'll create a new token in the Account scope.
 
 To create a new delegate token, do the following:
 
