@@ -9,7 +9,7 @@ import { university } from "./data/certificationsData";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
-const devFeatures = ["Free Plan"];
+const devFeatures = ["Free Plan When Available"];
 const administratorFeatures = ["Enterprise Plan"];
 const adminFeatures = ["Enterprise Plan"];
 
@@ -244,7 +244,7 @@ export default function University() {
                     <h4>Developer</h4>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
-                  <p>Validate your knowledge of software delivery concepts.</p>
+                  <p>Validate your knowledge of software delivery concepts on the Harness Platform for your needs.</p>
 
                   <ul>
                     {devFeatures.map((feature) => (
@@ -276,14 +276,21 @@ export default function University() {
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_sto_badge.svg`}
-                      alt="Develop STO Badge"
+                      alt="Developer STO Badge"
                     />
                     <img
                       src={`${baseUrl}img/cert_dev_ce_badge.svg`}
-                      alt="Develop Chaos Badge"
+                      alt="Developer Chaos Badge"
                     />
                   </div>
                   {/* <h5>Coming Soon</h5> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_sei_badge.svg`}
+                    alt="Developer SEI Badge"
+                  /> 
+                </div>
                 </div>
               </div>
               <div className={styles.verticalLine}></div>
