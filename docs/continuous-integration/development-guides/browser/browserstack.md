@@ -21,3 +21,23 @@ The [Integrate BrowserStack Automate with Harness](https://www.browserstack.com/
 When running BrowserStack tests on [Kubernetes infrastructure](../../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md), set the appropriate [resource limits](../../use-ci/set-up-build-infrastructure/resource-limits.md) required by your steps.
 
 :::
+
+Here is an example of a BrowserStack Automate step in a Harness pipeline, where the access key has been added to the project as a [text secret](../../platform/secrets/add-use-text-secrets.md) named `browserstack_access_key`.
+
+```yaml {} showLineNumbers
+              - step:
+                  type: Run
+                  name: BrowserStack Automate
+                  identifier: browserstack_automate
+                  spec:
+                    shell: Sh
+                    command: |
+                      wget "https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip"
+                      unzip BrowserStackLocal-linux-x64.zip
+                      ./BrowserStackLocal --key $BROWSERSTACK_ACCESS_KEY --daemon start
+                      <your-test-command>
+                      ./BrowserStackLocal --key $BROWSERSTACK_ACCESS_KEY --daemon stop
+                    envVariables:
+                      BROWSERSTACK_USERNAME: browserstack_username
+                      BROWSERSTACK_ACCESS_KEY: <+secrets.getValue("browserstack_access_key")>
+```
