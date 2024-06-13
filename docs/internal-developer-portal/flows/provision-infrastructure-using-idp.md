@@ -25,6 +25,8 @@ Before you begin this tutorial, make sure that you have completed the following 
 
 ## Create a Pipeline
 
+![](./static/pipeline-iacm.png)
+
 Begin by creating a pipeline for provisioning infrastructure
 
 To create a **Developer Portal** stage, perform the following steps:
