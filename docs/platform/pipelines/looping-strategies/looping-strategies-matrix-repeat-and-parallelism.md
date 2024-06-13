@@ -47,12 +47,9 @@ You can set `parallelism` strategies on steps or stages. The following YAML exam
 parallelism: 10
 ```
 
-To prevent overtaxation of pipeline resources, use the `maxConcurrency` setting to cap the number of instances (of steps or stages) that can run concurrently. The following YAML example creates ten instances, but only allows five to run at once. The remaining five instances are queued while the first five instances run.
-
-```yaml
-parallelism: 10
-  maxConcurrency: 5
-```
+:::info note
+MaxConcurrency with Parallelism is not supported.
+:::
 
 For more information about parallelism strategies, go to:
 
