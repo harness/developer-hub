@@ -92,7 +92,7 @@ export default function CertificationsSEI() {
           </div>
           <h1>Software Engineering Insights</h1>
           <div>
-            Discover SDLC bottlenecks, assess team productivity, 
+            Discover SDLC bottlenecks, assess team productivity,
             and improve developer experience guided by data and insights.
           </div>
         </div>
@@ -205,8 +205,8 @@ export default function CertificationsSEI() {
                       Assesses the fundamental skills to deploy your
                       applications with SEI projects.
                     </div>
-                   {/* <DeveloperCertificationReviewGuide /> */}
-                   {/*
+                    {/* <DeveloperCertificationReviewGuide /> */}
+                    {/*
                     <div className={styles.btnContainer}>
                       <Link href="#">
                         <button className={styles.moreDetails}>
@@ -220,7 +220,7 @@ export default function CertificationsSEI() {
             </div>
 
             {/* Developer Exam Details */}
-            
+
             {/*
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
@@ -299,14 +299,14 @@ export default function CertificationsSEI() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain SEI projects and the overall Harness Platform.
+                      Assesses the fundamental skills to deploy and maintain SEI projects and the overall Harness Platform.
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-           {/* Admin Exam Details */}
+            {/* Admin Exam Details */}
             {/* <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
@@ -356,7 +356,7 @@ export default function CertificationsSEI() {
                     />
                     <span className={styles.productVersion}>
                       <strong>Product version: </strong> Software Engineering Insights
-                       Enterprise Plan
+                      Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
