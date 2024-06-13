@@ -1,15 +1,15 @@
-import React from 'react';
-import clsx from 'clsx';
-import Tooltip from 'rc-tooltip';
-import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { CardItem } from '../LandingPage/TutorialCard';
-import { featureList } from './data/featureListData';
-import 'rc-tooltip/assets/bootstrap.css';
-import styles from './styles.module.scss';
+import React from "react";
+import clsx from "clsx";
+import Tooltip from "rc-tooltip";
+import Link from "@docusaurus/Link";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { CardItem } from "../LandingPage/TutorialCard";
+import { featureList } from "./data/featureListData";
+import "rc-tooltip/assets/bootstrap.css";
+import styles from "./styles.module.scss";
 
 function Feature({ title, icon, description, type, module, link }: CardItem) {
-  const { siteConfig: { baseUrl = '/' } = {} } = useDocusaurusContext();
+  const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <Link href={link}>
       <div className={clsx(styles.getStartItem, styles[module])}>
@@ -19,7 +19,7 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
         </div>
         <div
           className={clsx(
-            'text--center padding-horiz--md',
+            "text--center padding-horiz--md",
             styles.titleAndDesc
           )}
         >
@@ -30,7 +30,7 @@ function Feature({ title, icon, description, type, module, link }: CardItem) {
           <div>
             <ul className={styles.docTypes}>
               {type.map((props, idx) => (
-                <li>
+                <li key={idx}>
                   <Tooltip placement="top" overlay={props}>
                     <img
                       src={`${baseUrl}img/icon_doctype_${props}.svg`}
