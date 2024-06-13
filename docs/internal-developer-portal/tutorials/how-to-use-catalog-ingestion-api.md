@@ -54,15 +54,15 @@ response=$(curl --silent --request POST \
   --data '{
     "fields": {
         "project": {
-            "key": "'"$PROJECT_KEY"'"
+            "key": "$PROJECT_KEY"
         },
         "components": {
-            "name": "'"$COMPONENT_NAME"'"
+            "name": "$COMPONENT_NAME"
         },
         "issuetype": {
-            "name": "'"$ISSUE_TYPE"'"
+            "name": "$ISSUE_TYPE"
         },
-        "summary": "'"$ISSUE_SUMMARY"'",
+        "summary": "$ISSUE_SUMMARY",
         "description": {
             "version": 1,
             "type": "doc",
@@ -72,14 +72,14 @@ response=$(curl --silent --request POST \
                     "content": [
                         {
                             "type": "text",
-                            "text": "'"$ISSUE_CONTENT"'"
+                            "text": "$ISSUE_CONTENT"
                         }
                     ]
                 }
             ]
         },
         "labels": [
-            "'"$LABELS"'"
+            "$LABELS"
         ]
     }
 }')
@@ -464,74 +464,52 @@ In case you want to display the same information you have ingested on your Overv
 2. Now select the **project** where you you want to **create the pipeline** for the Workflows. 
 3. Begin by selecting the **Create a Pipeline** button followed by adding a name for the pipeline and set up your pipeline as **inline**.
 4. Now select the **Developer Portal Stage** and give it a name. 
-5. Add a **RUN** step, name it as **create jira ticket** and select the **Shell** as `Bash`
+5. Add a **RUN** step, name it as **create jira project** and select the **Shell** as `Bash`
 6. Now add the following under the **Command**.
 
 ```sh
+
 EMAIL_ID="<+pipeline.variables.email-id>"
 JIRA_TOKEN="<+pipeline.variables.jiratoken>"
-PROJECT_KEY="<+pipeline.variables.projectkey>"
-COMPONENT_NAME="<+pipeline.variables.componentname>"
-ISSUE_TYPE="<+pipeline.variables.issuetype>"
-ISSUE_SUMMARY="<+pipeline.variables.issuesummary>"
-ISSUE_CONTENT="<+pipeline.variables.issuecontent>"
-LABELS="<+pipeline.variables.labels>"
+PROJECT_LEAD="<+pipeline.variables.projectlead>"
+NEW_PROJECT_NAME="<+pipeline.variables.projectname>"
+DESCRIPTION="<+pipeline.variables.description>"
+NEW_PROJECT_KEY="<+pipeline.variables.newprojectkey>"
+PROJECT_LEAD_ACCOUNT_ID="<+pipeline.variables.projectleadaccountid>"
+PROJECT_TEMPLATE_KEY="<+pipeline.variables.projecttemplatekey>"
+
 
 # Perform the POST request with curl and capture the response
 response=$(curl --silent --request POST \
-  --url 'https://harness.atlassian.net/rest/api/3/issue' \
+  --url 'https://YOUR_COMPANY.atlassian.net/rest/simplified/latest/project' \
   --user "$EMAIL_ID:$JIRA_TOKEN" \
   --header 'Accept: application/json' \
   --header 'Content-Type: application/json' \
   --data '{
-    "fields": {
-        "project": {
-            "key": "'"$PROJECT_KEY"'"
-        },
-        "components": {
-            "name": "'"$COMPONENT_NAME"'"
-        },
-        "issuetype": {
-            "name": "'"$ISSUE_TYPE"'"
-        },
-        "summary": "'"$ISSUE_SUMMARY"'",
-        "description": {
-            "version": 1,
-            "type": "doc",
-            "content": [
-                {
-                    "type": "paragraph",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": "'"$ISSUE_CONTENT"'"
-                        }
-                    ]
-                }
-            ]
-        },
-        "labels": [
-            "'"$LABELS"'"
-        ]
-    }
+    "assigneeType": "PROJECT_LEAD",
+    "description": "$DESCRIPTION",
+    "key": "$NEW_PROJECT_KEY",
+    "leadAccountId": "$PROJECT_LEAD_ACCOUNT_ID",
+    "name": "$NEW_PROJECT_NAME",
+    "projectTemplateKey": "$PROJECT_TEMPLATE_KEY",
 }')
 
 # Extract the key from the JSON response using jq
-issue_key=$(echo "$response" | jq -r '.key')
+project_key=$(echo "$response" | jq -r '.key')
 
 # Export the issue key as an environment variable
-export ISSUE_KEY="$issue_key"
+export PROJECT_KEY="$project_key"
 
 # Print the issue key (optional)
-echo "The created issue key is: $ISSUE_KEY"
+echo "The created issue key is: $PROJECT_KEY"
 
 ```
 
-The above given request body can create a Jira ticket based on [project](https://confluence.atlassian.com/jiracoreserver073/creating-a-project-861255642.html) and [component](https://support.atlassian.com/statuspage/docs/create-a-component/) and add a label to the same. 
+The above given request body can create a Jira [project](https://confluence.atlassian.com/jiracoreserver073/creating-a-project-861255642.html)
 
 We have used few pipeline variables in the body, which will be used to take input from the IDP Workflows and for the users to choose project, add the summary, description for the tickets. 
 
-7. Now under **Optional Configuration** add the **Output Variables** as `ISSUE_KEY`.
+7. Now under **Optional Configuration** add the **Output Variables** as `PROJECT_KEY`.
 8. Apply the Changes.
 9. Go to **Variables** on the right side of the page and add the following variables and have the input type as **Runtime Input**. 
     - emailid
@@ -611,6 +589,7 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 ```json
 {
     "key": "<+pipeline.variables.projectkey>",
+    "leadAccountId": "<+pipeline.variables.leadaccountid>",
     "templateKey": "<+pipeline.variables.templatekey>",
     "name": "<+pipeline.variables.projectname>"
 }
