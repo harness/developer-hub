@@ -1,0 +1,11 @@
+{
+    "label": "Run Tests step",
+    "position": 100,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link":{
+        "type": "generated-index",
+        "title": "Run Tests step"
+    }
+}

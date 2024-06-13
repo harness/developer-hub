@@ -17,7 +17,10 @@ You can also [update Jira issues](/docs/continuous-delivery/x-platform-cd-featur
 
 ## Limitations
 
-* Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
+* Harness supports only Jira fields of type `User`, `Option`, `Array`, `Any`, `Number`, `Date`, and `String`.  For example, [multi value](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/) fields to allow users to select multiple options from a drop-down list.
+* Harness does not integrate with Jira fields that manage issue links or attachments. 
+* You can add unsupported Jira fields using an HTTP step. For more details, go to [Use the HTTP step to set unsupported fields when creating Jira issues](/kb/continuous-delivery/articles/create-cascading-fields-jira/).
+
 
 ## Add a Jira Update step
 
@@ -85,6 +88,8 @@ If the issue is not part of a Jira workflow and does not have transition options
 ## Add Issue fields
 
 You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
+
+Review the [limitations section](#limitations) to know more about the supported issue fields and limitations. 
 
 In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
@@ -182,5 +187,6 @@ To use parent links, do the following:
 
 4. In the **Value** for **Parent**, add the parent issue key.
    
-   ![picture 2](static/c459f24248f46e308d03f01250b477480e555e8407bbfd1c6aa811a5054d0ef4.png)  
+   ![picture 2](static/c459f24248f46e308d03f01250b477480e555e8407bbfd1c6aa811a5054d0ef4.png)
+
 

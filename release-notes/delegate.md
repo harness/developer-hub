@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-05-21T10:00
+date: 2024-06-07T10:00
 sidebar_position: 4
 ---
 
@@ -47,7 +47,27 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 :::
 
+## June 2024
+
+### Version 24.06.83004 <!--  June 7, 2024 -->
+
+#### Hotfix
+
+- Secrets were being printed in plain text when using a custom secret manager, exposing sensitive information. Implemented masking of the `script` field in the custom secret manager to prevent logging of secrets used within the script. (PL-51535, ZD-64069)
+
+### Version 24.06.83003 <!--  June 3, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue with missing labels for Karpenter-managed nodes. (CCM-18139)
+
 ## May 2024
+
+### Version 24.05.82711 <!--  May 30, 2024 -->
+
+#### Hotfix
+
+- Resolved an issue where delegates created Kubernetes services when starting up. (PL-51548, PL-51550, ZD-64345)
 
 ### Version 24.05.83001 <!--  May 21, 2024 -->
 

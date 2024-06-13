@@ -84,7 +84,7 @@ Check out the [Manage Resource Groups in Harness](../../../docs/platform/role-ba
 
 # Related Content
 
- - [Manage access control](/docs/feature-flags/ff-security-compliance/manage-access-control.md)
+ - [Manage access control](../secure-ff/rbac-at-ff/manage-access-control.md)
 
  - [Creating a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag.md)
 

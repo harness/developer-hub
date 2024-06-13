@@ -23,8 +23,8 @@ To configure multiple SAML providers in Harness, do the following:
 1. Select **ACCOUNT SETTINGS**, and then select **Authentication**.
 2. Add the SAML providers you need.
 
-    a. If no SAML providers are configured for the account, select **SAML Provider**. 
-    
+    a. If no SAML providers are configured for the account, select **SAML Provider**.
+
     b. If one or more SAML providers are configured, select **Add SAML Provider**.
    The SAML Provider settings appear.
 3. In **Name**, enter a name for the SAML provider. Names can only contain alphanumeric characters, `_`, `-`, `.`, and spaces.
@@ -36,39 +36,38 @@ To configure multiple SAML providers in Harness, do the following:
 To select a SAML provider, do the following:
 
 1. Select a SAML provider.
-   
-   
+
 <Tabs>
 <TabItem value="Microsoft Entra ID">
-   
+
 
    For steps to configure, go to [SAML SSO with Microsoft Entra ID](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-azure).
 
 
 </TabItem>
 <TabItem value="Okta">
-      
+
 
    For steps to configure, go to [SAML SSO with Okta](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-okta).
 
 
 </TabItem>
       <TabItem value="OneLogin">
-   
+
 
    For steps to configure, go to [SAML SSO with OneLogin](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-onelogin).
 
 
 </TabItem>
 <TabItem value="Others">
-    
+
 
    For steps to configure, go to [SAML SSO with Keycloak](/docs/platform/authentication/single-sign-on-saml#saml-sso-with-keycloak).
 
 
 </TabItem>
 </Tabs>
-   
+
 
 2. Select **Continue**.
 3. Select **Submit**.

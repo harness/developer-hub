@@ -61,7 +61,6 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 - Fixed an issue where runtime expressions and values were not supported for Helm Values files in the Update GitOps Apps step. (CDS-96005)
 - The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (CDS-18831, ZD-62825)
 
-
 ### Version 1.38.2
 
 #### Early access
@@ -564,18 +563,25 @@ The bug has now been fixed, and you should be able to select an alternate versio
 
 #### Behavior change
 
-There is a change in the permissions associated with [Overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2):
-- Previously: for service-specific, service, and infrastructure-specific overrides, the environment Create and Edit permissions were required.
-- Now: the environment Create and Edit permissions are not required. Only the service Create and Edit permissions are required.
-- Here is the comprehensive list of permissions required across different types:
-  - Service and infrastructure-specific: New, edit, clone, and delete actions:
-    - Service permission: `Create/Edit`
-  - Infrastructure-specific: New, edit, clone, and delete actions:
-    - Environment permission: `Create/Edit`
-  - Service-specific:  New, edit, clone, and delete actions:
-    - Service permission: `Create/Edit`
-  - Global Environment: New, edit, clone, and delete actions:
-    - Environment permission: `Create/Edit`
+- There is a change in the permissions associated with [Overrides V2](/docs/continuous-delivery/x-platform-cd-features/overrides-v2):
+  - Previously: for service-specific, service, and infrastructure-specific overrides, the environment Create and Edit permissions were required.
+  - Now: the environment Create and Edit permissions are not required. Only the service Create and Edit permissions are required.
+  - Here is the comprehensive list of permissions required across different types:
+    - Service and infrastructure-specific: New, edit, clone, and delete actions:
+      - Service permission: `Create/Edit`
+    - Infrastructure-specific: New, edit, clone, and delete actions:
+      - Environment permission: `Create/Edit`
+    - Service-specific:  New, edit, clone, and delete actions:
+      - Service permission: `Create/Edit`
+    - Global Environment: New, edit, clone, and delete actions:
+      - Environment permission: `Create/Edit`
+
+- This is a change in behavior of Rerun execution, when a Matrix is involved. (PIPE-14601)
+
+  When you select **Rerun from Last Failed Stage**, the run automatically starts from the last failed stage. If there are failed stages in a Matrix/Loop, the execution begins from only the failed stages (skipping the successful ones), and moves on to any others that haven’t run yet.
+
+  When you select **Rerun from Specified Stage**, Harness assumes that you don't want to start from the failed stage. You could start from any stage that ran fully or partially earlier. Harness displays all the stages ran so far, both Success or Failed. If you select a Matrix stage, Harness runs all the stages in the Matrix, based on the axes as provided. If the stage setup changed, Harness picks the newest configuration and runs that. Earlier, only the failed stages ran. Now, Harness runs all of them.
+
 
 #### New features and enhancements
 

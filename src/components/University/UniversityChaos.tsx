@@ -442,7 +442,7 @@ export default function CertificationsChaos() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
-            Self-paced courses that you can consume on your own time in a webinar style.
+            Free self-paced courses that you can consume on your own time.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -456,7 +456,7 @@ export default function CertificationsChaos() {
               {ilt
                 .filter((spt) => {
                   return (
-                    spt.module === "ce" && spt.cardType === "SPT" ||
+                    spt.module === "ce" && spt.cardType === "FREE" ||
                     (spt.module === "ce" && spt.tileType === "comming soon")
                   );
                 })

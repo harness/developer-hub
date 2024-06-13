@@ -43,7 +43,7 @@ Harness allows users to exercise fine-grained control, which is sufficient for e
 
 3. View/Add (by selecting fault templates and providing app data)/Edit (fault tunables, validation/probe constraints, execution properties)/Execute (run saved experiments)/Delete the chaos experiments ([Chaos Experiment](/docs/chaos-engineering/features/experiments/construct-and-run-custom-chaos-experiments.md)).
 
-4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/features/gameday/run-gameday.md).
+4. View/Add (by selecting one or more experiments against one or more target infrastructures)/Edit (objectives, descriptions, tags, selected experiments)/Delete [chaos gamedays](/docs/chaos-engineering/features/gameday/gameday-v2).
 
     ![fine-grain control](./static/introduction-to-chaosguard/fine-grain-control.png)
 

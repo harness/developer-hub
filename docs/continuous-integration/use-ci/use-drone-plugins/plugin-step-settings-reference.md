@@ -104,7 +104,7 @@ If the step is within a step group, include the step group identifier in the exp
 
 ### Environment variables
 
-When a Harness CI pipeline runs, it produces a number of environment variables, including many `DRONE_` environment variables. You can reference these in your plugin script, if needed. For more information, go to the [CI environment variables reference](../optimize-and-more/ci-env-var.md).
+When a Harness CI pipeline runs, it produces a number of environment variables, including many `DRONE_` environment variables. You can reference these in your plugin script, if needed. For more information, go to the [CI environment variables reference](/docs/continuous-integration/troubleshoot-ci/ci-env-var.md).
 
 ## Image Pull Policy
 

@@ -29,6 +29,12 @@ Looping strategies optimize your pipelines by running steps or stages concurrent
 
 :::
 
+:::warning
+
+Regardless of your strategy, the maximum number of stages you can run in parallel is 256.
+
+:::
+
 ## Parallelism strategies
 
 Parallelism saves time by running steps and stages concurrently.
@@ -50,7 +56,7 @@ parallelism: 10
 
 For more information about parallelism strategies, go to:
 
-- [Split tests (parallelism)](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
+- [Split tests in Run steps](/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism)
 - [Run stages in parallel](./run-stages-in-parallel.md)
 
 ## Matrix strategies
