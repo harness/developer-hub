@@ -53,11 +53,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - You can use [Harness Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) and [Harness-managed Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) with self-managed build infrastructures. These are [early access features](/release-notes/early-access) behind the feature flags `CI_ENABLE_DLC_SELF_HOSTED` and `CI_ENABLE_CACHE_INTEL_SELF_HOSTED`. Contact [Harness Support](mailto:support@harness.io) to enable the features. (CI-11953) 
 
-- Use the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing with Test Intelligence. Currently, this step supports Python, Ruby, and Java. This step will eventually fully replace the deprecated **Run Tests** step. 
-
-#### Deprecations and removals
-
-Harness is beginning to deprecate the **Run Tests** step in favor of the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) (also known as the **Test** step). Until removal, you can configure the **Run Tests** step in the YAML Editor, and it is backwards compatible. However, Harness recommends adopting the new **Test** step as soon as possible to take advantage of improved functionality and avoid service disruptions when the **Run Tests** step is removed. 
+- Use the new [**Test Intelligence** step](/docs/continuous-integration/use-ci/run-tests/tests-v2) for unit testing with Test Intelligen with Python, Ruby, and Java aplication. Test Intelligence accelerates test cycles with smart selection of unit tests, executing only tests impacted by code changes without compromising quality. With this complete step redesign, it is now optimized for ease of use, Test Intelligence effortlessly integrates into the regular test commands — so no tweaks required from the user. 
 
 #### Fixed issues
 
