@@ -44,13 +44,11 @@ The following list is optional. You can allowlist these IPs if needed.
 Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers are notified.
 :::
 
-## Add Harness hosted GitOps IPs to the allowlist
+## Add Harness hosted IPs to the allowlist
 
 Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
 
-If you are using hosted GitOps agents to deploy on managed clusters, you must configure these clusters with a specific set of IP addresses to authorize access.
-
-### Harness hosted GitOps IPs
+### Harness hosted IPs
 
 All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
 
