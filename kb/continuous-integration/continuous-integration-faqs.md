@@ -1008,6 +1008,10 @@ Depending on your tag naming convention, if it is possible to write a regex that
 
 For manual tag builds, you need to enter the tag manually at runtime.
 
+### How can we set ENV variable for the git clone step as there is no option available in the UI to set the ENV variable for this step?
+
+You could configure the stage variables with the necessary values which will be set as ENV variable in all the steps within that stage.
+
 ## SCM status updates and PR checks
 
 ### Does Harness supports Pull Request status updates?
@@ -1096,6 +1100,10 @@ Harness only sends pipeline statuses to your PRs. You must configure branch prot
 ### Troubleshoot Git event (webhook) triggers
 
 For troubleshooting information for Git event (webhook) triggers, go to [Troubleshoot Git event triggers](/docs/platform/triggers/triggering-pipelines/#troubleshoot-git-event-triggers).
+
+### Can we configure the CI pipeline to send the status check for the entire pipeline instead of sending it for individual stage?
+
+Currently, the status check is sent for each CI stage execution and it can not be configured to send one status check for the entire pipeline when you have multiple CI stages within the pipeline.
 
 ## Pipeline initialization and Harness CI images
 
@@ -1362,6 +1370,18 @@ No. Currently, **Build and Push** steps don't support build secrets.
 
 [You can use the Build and Push to Docker step to build and push to JFrog Docker registries.](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push/build-and-push-to-docker-jfrog)
 
+### Why build and push to ECR step is failing with the error ```failed to create docker config: Username must be specified for registry```?
+
+This could happen when you have the build and push to ECR step with a base connecter which is configured with anonymous auth type. Base connector configured in the build and push to ECR step should be an authenticated connector
+
+### Why is the kaniko flags with the built-in in build and push step is not working when we run the build on Harness cloud?
+
+The build and push step doesn’t use kaniko while running the build on Harness cloud instead it uses drone-docker plugin hence the kaniko flags wont work
+
+### Does Harness have an artifact repository where the artifacts generated in the CI stage can be pushed and then use them in the subsequent CD stages?
+
+Harness currently doesn't provide a hosted artifact repository however you can push the artifact to the other popular artifact repos. More details about the same can be referred in the [doc](https://developer.harness.io/docs/category/uploaddownload-artifacts)
+
 ## Upload artifacts
 
 ### Can I send emails from CI pipelines?
@@ -1545,6 +1565,10 @@ If you encounter errors with Python TI, make sure that:
 ### Does Test Intelligence support dynamic code?
 
 Harness doesn't recommend using TI with Ruby projects using dynamically generated code or Python projects using dynamic loading or metaclasses.
+
+### Why is the cache intelligence is not saving the cache from the default yarn location?
+
+This could happen if you have a custom path added in the cache intelligence config. If you want the YARN cache to be picked from the default location, make sure you don’t configure cache intelligence with a custom path
 
 ## Script execution
 
