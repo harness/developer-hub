@@ -2,7 +2,57 @@
 id: Fault-wise permissions
 title: Fault-wise permissions
 sidebar_position: 1
+redirect_from:
+	- /docs/chaos-engineering/chaos-faults/kubernetes/fault-wise-permissions
 ---
+
+This topic describes the [prerequisites](#fault-type-specific-prerequisites) and [fault-wise permissions](#permissions-required-for-pod-level-faults) required to execute Kubernetes-based faults.
+
+The prerequisites can be categorized into two groups:
+1. [Common prerequisites](#common-prerequisites)
+2. [Fault-type specific prerequisites](#fault-type-specific-prerequisites)
+
+### Common prerequisites
+
+- Ensure that the Kubernetes chaos infrastructure (or agent) is installed and all the components are healthy and in **running** state.
+- There should be outbound connectivity from the cluster pods to the Harness control plane.
+- Connectivity should be established between the cluster pods to any endpoint that needs to be queried as a part of the probe execution (or resilience validation).
+- Appropriate RBAC should be set up on the Kubernetes cluster, so that the service accounts used by the agent components are sufficient for the discovery and chaos injection. This is based on:
+    - The scope of execution (cluster-wide or namespaced).
+    - The nature of faults planned to be executed.
+
+### Fault-type specific prerequisites
+
+Certain fault categories have unique requirements, from a permissions and set up (or configuration) perspective.
+
+#### Pod network/Stress/API/IO
+
+These faults require [identifying the target container PID and remote execution](/docs/chaos-engineering/chaos-faults/kubernetes/classification#pod-faults-microservices-based-faults) of certain commands (or processes) within the target containers' network, PID, and mount namespace. These actions require the transient chaos pods to run with:
+- Root user;
+- Container runtime socket mounted;
+- Privilege escalation;
+- Linux capabilities like NET_ADMIN, SYS_ADMIN;
+- Mapping to hostpid.
+
+HCE recommends you create a dedicated pod security policy (PSP) or equivalent that you can map to the transient chaos pods or service account.
+
+#### Service load
+
+Internally, the load fault leverages Locust (support for other tools is a part of the roadmap). The internal load engine uses a Python script to define the API calls that should be part of the load profile. The script is embedded within a ConfigMap that is referenced by the chaos pods during execution. Go to [locust prerequisites](/docs/chaos-engineering/chaos-faults/load/locust-loadgen/#prerequisites) for detailed steps
+
+#### Cloud-based targets
+
+Create an IAM role on the cloud account that is mapped to the appropriate policy.
+Your (cloud account user) credentials must be embedded with a Kubernetes secret before executing the fault.
+You can create a [superset AWS policy](/docs/chaos-engineering/chaos-faults/aws/security-configurations/policy-for-all-aws-faults/) that allows executing all the fault types supported by HCE.
+
+:::tip
+- You can authenticate cloud API requests made by the chaos pods. If the Kubernetes chaos infrastructure (or agent) is set up on EKS or GKE clusters, you can set up [IRSA](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration/) or [workload identity](/docs/chaos-engineering/chaos-faults/gcp/gcp-iam-integration/) respectively, instead of using Kubernetes secrets.
+- You can configure [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard/) rules to limit the scope of the Harness chaos platform for faults executed, clusters chosen, application workload targeted and chaos service account leveraged.
+- The Service Load chaos is target-platform agnostic, that is, it can generate load against service endpoints regardless of where they are hosted.
+:::
+
+### Permissions required for pod-level faults
 
 This table lists the permissions required to execute Kubernetes fault (node-level and pod-level).
 
@@ -13,8 +63,6 @@ This table lists the permissions required to execute Kubernetes fault (node-leve
 :::
 
 Read the permission as: "You can create **pod delete** fault in **Namespaced and cluster** mode, and on the **pod** entity, it requires permissions to **[create, delete, get, list, patch, deletecollection, update]** the pod.
-
-### Permissions required for pod-level faults
 
 <table>
     <tr>

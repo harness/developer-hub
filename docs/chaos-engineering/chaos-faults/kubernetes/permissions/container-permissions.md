@@ -1,8 +1,9 @@
 ---
 title: Fault container permissions
-sidebar_position: 10
+sidebar_position: 3
 redirect_from:
-	- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/security-considerations/container-permissions
+- /docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/security-considerations/container-permissions
+- /docs/chaos-engineering/chaos-faults/kubernetes/security-considerations/container-permissions
 ---
 
 This topic lists the various categories of Kubernetes faults and the container permissions required to execute them.
