@@ -26,6 +26,28 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **New features and enhancements**:
  - Added a new method for closing the SDK. The `closeWithFuture()` method can be used to ensure the SDK has been closed before continuing, for example, re-initializing the SDK. (FFM-11625)
 
+### .NET SDK
+
+#### Version 1.6.10
+
+**New features and enhancements**:
+ - Improves SDK evaluation performance and memory usage.
+ - Update to use `PackageLicenseExpression`. 
+ - Make `System.Net.Http` conditional. (FFM-11509)
+ - Optimize IN clause rules. (FFM-11056)
+ - Cherry pick 1.6.9 patch. (FFM-11531)
+ - Remove excessive `ToList()` allocations in Evaluator. (FFM-11551)
+ - Wrap log statements with if statements. (FFM-11557)
+ - `SeenTargets` cache memory improvements. (FFM-11549)
+ - Sort rules when retrieving instead of per evaluation. (FFM-11585)
+ - Remove rules sorting from the evaluation path. (FFM-11597)
+
+**Fixed issues**:
+ - Fixed an issue where streams would not remain open for longer than 60 seconds when the SDK is running .NET 4.8:
+  -- Previously, if the stream disconnected, it would take 70 seconds for it to reconnect. It now reconnects using an exponential backoff and delay, where the base delay is 500ms. (FFM-11573, ZD-64099)
+ - The SDK version has been bumped from `1.6.x` to `1.7.0-rc2`. (FFM-11549)
+ - Fix streaming issues for .NET 4.8. (FFM-11573, ZD-64099)
+
 ## May 2024
 
 ### Golang SDK
