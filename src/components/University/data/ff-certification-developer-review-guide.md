@@ -14,7 +14,7 @@
 | Learn how to use the Harness.io dashboard to manage feature flags                | [Use the FF dashboard](/docs/feature-flags/ff-data/dashboard)                                         |
 | **4. Advanced Feature Flag Techniques**                                            |                                                                                                                                   |
 | Understand the concept of feature flag hierarchy                                 | [Policies overview for Feature Flags](/docs/feature-flags/harness-policy-engine)                      |
-| Learn about the concept of percentage rollouts with feature flags                | [Use Pipelines with Feature Flags](/docs/category/use-pipelines-with-flags)                           |
+| Learn about the concept of percentage rollouts with feature flags                | [Use Pipelines with Feature Flags](/docs/category/use-pipelines-with-ff)                           |
 | Understand the basics of targeting rules in feature flags                        | [Manage target users and groups](/docs/category/manage-target-users-and-groups)                       |
 | **5. Feature Flags in Development Workflow**                                        |                                                                                                                                   |
 | Understand the role of feature flags in continuous delivery                      | [Use the Harness Relay Proxy](/docs/category/use-the-harness-relay-proxy)                             |

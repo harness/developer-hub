@@ -98,7 +98,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "Use pipelines to combine a flag with other actions like adding Jira issues, creating notifications, and adding approvals.",
-          link: "/docs/category/use-pipelines-with-flags",
+          link: "/docs/category/use-pipelines-with-ff",
         },
         {
           title: "Use the Harness Relay Proxy",
