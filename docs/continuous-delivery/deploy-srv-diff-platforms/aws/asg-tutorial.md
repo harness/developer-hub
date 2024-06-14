@@ -115,7 +115,7 @@ Policy JSON:
 
 </details>
 
-If you wish, you can also give full access with just two policies: 
+Optionally, you can also give full access with just two policies: 
 
 <details>
 <summary>AmazonEC2FullAccess and DescribeRegions</summary>
