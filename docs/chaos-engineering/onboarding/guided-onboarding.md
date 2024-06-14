@@ -11,7 +11,7 @@ This topic describes the following operations:
 1. [Create an environment.](#select-an-environment)
 2. [Create an infrastructure.](#select-an-infrastructure)
 3. [Automatically discover services on your cluster.](#automatically-create-discovery-agent)
-4. [Create application maps with a single click.](#create-network-maps)
+4. [Create application maps with a single click.](#create-application-maps)
 5. [Choose the chaos experiments to run.](#create-chaos-experiments)
 6. [View the resilience of chaos experiments.](#view-resilience-score)
 

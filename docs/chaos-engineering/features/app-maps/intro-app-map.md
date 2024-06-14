@@ -1,5 +1,5 @@
 ---
-title: Application maps overview
+title: Overview
 sidebar_position: 1
 description: An introduction to application maps and their significance
 ---
@@ -25,9 +25,9 @@ Application maps help:
 
 ### How is an application map used?
 
-Once you have a list of discovered services, HCE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/onboarding/guided-onboarding#create-network-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
+Once you have a list of discovered services, HCE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/onboarding/guided-onboarding#create-application-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
 
-You can [create](#create-network-map), [edit](#edit-network-map), and [delete](#delete-network-map) application maps.
+You can [create](#create-application-map), [edit](#edit-application-map), and [delete](#delete-application-map) application maps.
 
 ### Create an application map
 
