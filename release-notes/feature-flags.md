@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-31T16:19:25
+date: 2024-06-14T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 31, 2024
+#### Last updated: June 14, 2024
+
+## June 2024
+
+### Android SDK
+
+#### Version 2.2.1
+
+**New features and enhancements**:
+ - Added a new method for closing the SDK. The `closeWithFuture()` method can be used to ensure the SDK has been closed before continuing, for example, re-initializing the SDK. (FFM-11625)
 
 ## May 2024
 
