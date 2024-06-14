@@ -24,7 +24,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 2.2.1
 
 **New features and enhancements**:
- - Adds a new method for closing the SDK. The `closeWithFuture()` method can be used if you need to ensure the SDK has been closed before continuing e.g. re-initialising the SDK. (FFM-11658)
+ - Added a new method for closing the SDK. The `closeWithFuture()` method can be used to ensure the SDK has been closed before continuing, for example, re-initializing the SDK. (FFM-11658)
 
 ## May 2024
 
