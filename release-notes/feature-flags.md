@@ -38,7 +38,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 **Fixed issues**:
  - Fixed an issue where streams would not remain open for longer than 60 seconds when the SDK is running .NET 4.8:
   -- Previously, if the stream disconnected, it would take 70 seconds for it to reconnect. It now reconnects using an exponential backoff and delay, where the base delay is 500ms. (FFM-11573, ZD-64099)
- - Bumped to `1.7.0-rc2`. (FFM-11549)
+ - The SDK version has been bumped from `1.6.x` to `1.7.0-rc2`. (FFM-11549)
  - Fix streaming issues for .NET 4.8. (FFM-11573, ZD-64099)
 
 ## May 2024
