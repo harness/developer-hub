@@ -87,7 +87,6 @@ The predefined configuration to use for the scan.
 
 - **Default**  
 - **Branch Scan**  
-- **Pull Request** 
 
 
 ### Target
@@ -193,6 +192,10 @@ For more information, go to [Generating and using tokens](https://docs.sonarsour
 
 
 ### Scan Tool
+
+#### Project key
+
+The unique key of the SonarQube project to scan.
 
 #### Exclude 
 
