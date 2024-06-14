@@ -3121,24 +3121,19 @@ Also follow more on this in the following [Documentation](https://developer.harn
 
 Harness does not support this use case where a non-Harness entity is able to get the secret value bypassing Harness entirely.
 
-#### Missing Execution Id under Executions for a pipeline?
-You might see that for a pioeline under executions , you see execution id say 32 and then next you see is execution id 34. 
-33 seems to be missing. 
-This is when you re-run a pipelin from the last failed stage or a specfic stage. 
-In order to access the failed execution, you can go the pipeline and click on the Execution History on the top right corner. 
+### Missing Execution Id under Executions for a pipeline.
+You might see that for a pipeline under Executions, you may see that the execution Id is 32 and then next execution Id 34, and 33 seems to be missing. This happens when you re-run a pipeline from the last failed stage or a specific stage. To access the failed execution, you can go the pipeline and click on the Execution History on the top right corner. 
 
-#### Favorite Project Marking in Harness UI
-You can also mark projects as Favorites, so that in case you have 100's of project and want to list the favorites marked to access your projects faster. 
-Go to the projects page and then on the project click on the star icon to mark them as favorite. 
+### Favorite Project Marking in Harness UI.
+You can mark projects as Favourites, so that you can filter your favourite projects from the long list of projects faster. 
 
-#### Adding Artifact source in a service using API.
-You can make use of the update service API with thr artifact source added in the yaml in the body. 
-https://apidocs.harness.io/tag/Project-Services#operation/update-service
+Go to the Projects page, and then on the project, click the star icon to mark them as favourite. 
 
-#### Api to list all secret managers in an account
-You can make use of the list connectors API using filter in account. 
-https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2
-In this you can make use of categories as SECRET_MANAGER and this will list all secret mangers from the account. 
+### Adding artifact source in a service using API.
+You can make use of the update service API with the artifact source added in the YAML in the body. For details, go to [Harness API documentation](https://apidocs.harness.io/tag/Project-Services#operation/update-service).
+
+### API to list all secret managers in an account.
+You can use the [list connectors API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2) filter in the account.  You can use SECRET_MANAGER to list all secret mangers from the account. 
 
 ### Infrastructure provisioning FAQs
 
