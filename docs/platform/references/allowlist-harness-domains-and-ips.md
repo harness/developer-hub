@@ -98,7 +98,7 @@ For Flutter Web users only, you can use the following IP address:
 35.190.29.75
 ```
 
-If you'd like to install the JavaScript SDK needed for the Flutter Web IP, you can refer to the [Feature Flags Javascript SDK Documentation](../../feature-flags/ff-sdks/client-sdks/java-script-sdk-references.md) or the [Flutter GitHub repo](https://github.com/harness/ff-flutter-client-sdk#sdk-installation-for-flutter-web).
+If you'd like to install the JavaScript SDK needed for the Flutter Web IP, you can refer to the [Feature Flags Javascript SDK Documentation](../../feature-flags/use-ff/ff-sdks/client-sdks/java-script-sdk-references.md) or the [Flutter GitHub repo](https://github.com/harness/ff-flutter-client-sdk#sdk-installation-for-flutter-web).
 
 ### Configure clusters
 
