@@ -134,7 +134,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    :::
 
 
-4. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
+3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
 ## Enable self-signed certificates with a self-hosted image registry (advanced)
 
