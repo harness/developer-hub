@@ -1,37 +1,37 @@
 ---
-title: Network maps overview
+title: Application maps overview
 sidebar_position: 1
-description: An introduction to network maps and their significance
+description: An introduction to application maps and their significance
 ---
 
-This topic describes network maps, their significance, and how to create, edit, and delete them.
+This topic describes application maps, their significance, and how to create, edit, and delete them.
 
 ### Before you begin
 
 - [Service discovery](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md)
 
-### What is a network map?
+### What is an application map?
 
-A network map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, deploy, and so on) on a group of services.
+An application map is a resource on the Harness Platform (also known as the control plane) used to bind multiple interacting [discovered services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery.md) into a single object, thereby allowing the users to act (test, monitor, deploy, and so on) on a group of services.
 
-### Why is a network map required?
+### Why is an application map required?
 
-Network maps help:
+Application maps help:
 
 - Test, monitor, and deploy a group of services.
-- Determine the resilience coverage and resilience score for the overall network map and its constituent services.
+- Determine the resilience coverage and resilience score for the overall application map and its constituent services.
 - Manage experiments associated with them.
 - Perform trend analysis.
 
-### How is a network map used?
+### How is an application map used?
 
-Once you have a list of discovered services, HCE creates a network map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/onboarding/guided-onboarding#create-network-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
+Once you have a list of discovered services, HCE creates an application map (using [auto-suggestion or manual service selection](/docs/chaos-engineering/onboarding/guided-onboarding#create-network-maps)) based on your requirements. You can refer to the real-time topology view to get the connectivity representation.
 
-You can [create](#create-network-map), [edit](#edit-network-map), and [delete](#delete-network-map) network maps.
+You can [create](#create-network-map), [edit](#edit-network-map), and [delete](#delete-network-map) application maps.
 
-### Create a network map
+### Create an application map
 
-1. To create a network map, navigate to **Discovery** and select **Network Maps** tab. Select **Create New Network Map**.
+1. To create an application map, navigate to **Discovery** and select **Application Maps** tab. Select **Create New Application Map**.
 
     ![](./static/create-nw-1.png)
 
@@ -51,15 +51,15 @@ You can [create](#create-network-map), [edit](#edit-network-map), and [delete](#
 
     ![](./static/save-nw-5.png)
 
-### Edit network map
+### Edit application map
 
-To edit a network map, select **More Options** (&vellip;), then select **Edit**. Make the necessary changes and select **Save**.
+To edit an application map, select **More Options** (&vellip;), then select **Edit**. Make the necessary changes and select **Save**.
 
 ![](./static/edit-8.png)
 
-### Delete network map
+### Delete application map
 
-1. To delete a network map, select **More Options** (&vellip;), then select **Delete**.
+1. To delete an application map, select **More Options** (&vellip;), then select **Delete**.
 
     ![](./static/delete-6.png)
 
