@@ -76,7 +76,7 @@ export const CeData: Horizon = {
       },
       {
         tag: [{ value: "Chaos platform" }],
-        title: "Timeline wiew of chaos execution",
+        title: "Timeline view of chaos execution",
         description: "Provide a timeline view of the execution of chaos experiments including the resilience probes.",
       },
       {
