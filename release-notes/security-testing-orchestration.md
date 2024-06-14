@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-07T10:00
+date: 2024-06-14T10:00
 sidebar_position: 13
 ---
 
@@ -23,6 +23,22 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 ## June 2024
+
+### Version 1.98.7
+
+#### New features and enhancements
+
+- Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
+
+#### Fixed issues
+
+- Fixed an issue where Burp scans failed when ingesting certain types of XML data from Burp Enterprise. (STO-7696)
+- Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  2) Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  3) Removed default port from being set by runner and will only set port if user specifies in the step.
+
 
 ### Version 1.97
 
