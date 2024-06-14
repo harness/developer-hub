@@ -5,7 +5,7 @@ sidebar_label: Exemptions to override STO failure policies
 sidebar_position: 60
 ---
 
-You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities so the pipeline can proceed even if a scan detects these vulnerabilities.
+You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities to allow the pipeline to proceed even if they're detected.
 
 :::note 
 Developers and SecOps users can request exemptions, but only SecOps users can approve them.
@@ -15,7 +15,7 @@ Developers and SecOps users can request exemptions, but only SecOps users can ap
 
 Here are some situations where you might want to request an exemption for a specific issue:
 
--  Your organization has infrastructure and policies in place to mitigate the security risks of the issue. 
+-  Your organization has infrastructure and policies in place to mitigate the security risks of the issue.
 - The issue was flagged as a vulnerability, but the practice is acceptable based on your organization's security guidelines.
 - The security risk is low and remediation would require too much effort or expense.
 - The scanner identifies this as a vulnerability but it is, in fact, a false positive.
@@ -29,7 +29,7 @@ import baseline_not_defined from '../static/exemption-workflows-no-baseline-defi
 
 ## What happens when an STO exemption gets approved
 
-To see the list of pending exemptions, select **Exemptions** in the left menu. Each exemption corresponds to one vulnerability. If a scan detects the exempted vulnerability, the pipeline proceeds even if the vulnerability matches the failure criteria for the step. 
+To see the list of pending exemptions, select **Exemptions** in the left menu. Each exemption corresponds to one vulnerability. If a scan detects a vulnerability with an active exemption, the pipeline proceeds even if the vulnerability matches the failure criteria for the step.
 
 ## Important notes for exemptions in STO
 
@@ -57,23 +57,22 @@ This topic assumes that you have the following:
    1. Select the issue you want to exempt.  The **Issue Details** pane opens on the right. 
    2. Select **Request Exemption**.
 
-      
+
       <img src={request_exemption} alt="Request Exemption button" height="50%" width="50%" />
-      
-   
+
    3. In **Request Exemption for Issue**, specify:
       1. **Where do you want this issue to be Exempted?** 
-      
+
          Select **This Pipeline** unless you know it's safe to exempt the issue everywhere in the project.
 
       2. **For how long?** 
-      
+
          In general, you should select the shortest practical time window for your exemption. 
 
       3. **Reason this issue should be exempted** 
-      
+
          Select one of the following reasons and provide any additional information for the SecOps approver:
-         
+
          * **Compensating controls** — Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
 
            For example, suppose a scan detects a vulnerability with a specific service. This vulnerability might be mitigated because:
@@ -97,17 +96,17 @@ This topic assumes that you have the following:
          * **Other**
 
       4. **Further description the reason this issue should be exempted** 
-      
+
          It is good practice to provide enough information for the reviewer to determine that this exemption is safe.
 
       4. **URL Reference** 
-      
+
          Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code.
 
    5. Click **Create Request**.
-  
+
       ![](../static/exemption-click-create-request.png)
-     
+
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
 ## Approve, reject, or cancel an STO exemption
