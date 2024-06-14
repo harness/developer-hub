@@ -49,6 +49,15 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ### Version 1.41.6
 
+
+#### Usability enhancement
+
+- Harness Approval step usability has been enhanced. Earlier, during pipeline execution with the Harness Approval step, the approval actions, Approve and Reject had low visibility in the Executions view. This has been enhanced to match with the Console view where the Approve and Reject actions are available in the top section. You must now provide the Approval inputs upon clicking **Approve or Reject**. (CXE-1581)
+
+![](./static/approval1.png)
+
+![](./static/approval.png)
+
 #### Early access
 - Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag, `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
 
