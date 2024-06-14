@@ -54,6 +54,10 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 
    To mount the secret, go to the delegate `Deployment` YAML and update `volumeMounts` and `volumes`. For an example, expand the section below.
 
+   :::info
+   Secrets are retrieved by the delegate. For Kubernetes build infrastructure, secrets are set as Kubernetes secrets and passed to the pod.
+   :::
+
    <details>
    <summary>YAML example: Mount the SSL certificate</summary>
 
@@ -130,7 +134,7 @@ CI build infrastructure pods can interact with servers using self-signed certifi
    :::
 
 
-3. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
+4. Restart the delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
 ## Enable self-signed certificates with a self-hosted image registry (advanced)
 
