@@ -1,15 +1,17 @@
 ---
-title: Exemptions to override Fail on Severity thresholds for specific issues in STO
+title: Exemptions to override STO failure policies
 description: Procedures and best practices for requesting and approving exemptions.
-sidebar_label: Override the Fail on Severity threshold for specific issues
+sidebar_label: Exemptions to override STO failure policies
 sidebar_position: 60
 ---
 
-The `fail_on_severity` setting causes a pipeline build to fail if a scanner detects one or more issues with the specified severity (Critical, High, Medium, etc.) or higher. Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
+You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities so the pipeline can proceed even if a scan detects these vulnerabilities.
 
 :::note 
 Developers and SecOps users can request exemptions, but only SecOps users can approve them.
 ::: 
+
+## When exemptions are useful
 
 Here are some situations where you might want to request an exemption for a specific issue:
 
@@ -25,22 +27,23 @@ import request_exemption from '../static/request-exemption.png'
 import open_exemption_details from '../static/open-exemption-details.png'
 import baseline_not_defined from '../static/exemption-workflows-no-baseline-defined.png'
 
-
 ## What happens when an STO exemption gets approved
 
-To see the list of pending exemptions, select **Exemptions** in the left menu. An exemption, if approved, overrides the default behavior for running a pipeline build:
-
-* If a pipeline includes a Security Tests step, the step scans the specified object and compiles a list of detected issues.
-* Each issue has a specified severity: Critical, Major, Minor, etc.
-* Each security step should have a `fail_on_severity` setting. If the step detects any issue with the specified severity or higher, the build fails. 
-* Each exemption applies to one specific issue. The rule allows the pipeline to proceed even if the scan detects that issue.    
+To see the list of pending exemptions, select **Exemptions** in the left menu. Each exemption corresponds to one vulnerability. If a scan detects the exempted vulnerability, the pipeline proceeds even if the vulnerability matches the failure criteria for the step. 
 
 ## Important notes for exemptions in STO
 
 This topic assumes that you have the following:
 
 * An STO pipeline as described in [Set up Harness for STO](../../get-started/onboarding-guide.md).
-* The pipeline has a Security scan step with a configured `fail_on_severity` setting.
+* The scan step has failure criteria specified.
+
+  STO supports two methods for specifying failure criteria: 
+
+   - [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity)  Every scan step has a Fail on Severity setting that fails the step if the scan detects any issues with the specified severity or higher. 
+
+   - [OPA policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa) You can use to write and enforce policies based on severity, reference ID, title, CVE age, STO output variables, and number of occurrences.
+
 * At least one successful build with a set of detected security issues. 
 * Developer or SecOps user permissions are required to [request exemptions](#request-an-sto-exemption).
 * Only SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
@@ -95,13 +98,13 @@ This topic assumes that you have the following:
 
       4. **Further description the reason this issue should be exempted** 
       
-         It is good practice to provide enough information for the reviewer to determine that this exemption is safe.   
+         It is good practice to provide enough information for the reviewer to determine that this exemption is safe.
 
       4. **URL Reference** 
       
-         Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code. 
+         Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code.
 
-   5. Click **Create Request**. 
+   5. Click **Create Request**.
   
       ![](../static/exemption-click-create-request.png)
      
@@ -119,7 +122,7 @@ This workflow requires SecOps user permissions.
  
    The notification URL should point to a Security Tests page in Harness with the issue selected in the **Issue Details** pane on the right. If the relevant issue isn't visible, notify the developer. 
 
-2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details. 
+2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details.
 
    ![](../static/approve-exemption-00.png)
 
@@ -145,7 +148,7 @@ This workflow requires SecOps user permissions.
 
      ![](../static/exemptions-approved.png)
  
-          
+
 ## Good practice: Review and update STO exemptions periodically
 
 :::note
