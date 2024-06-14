@@ -10,7 +10,7 @@ This topic walks you through Harness chaos infrastructure that uses Harness Dele
 
 Harness Delegate-Driven Chaos Infrastructure (DDCI) is a beta product in HCE that allows for quick onboarding and optimized chaos execution for microservices-based targets on Kubernetes.
 The features described below help achieve quick onboarding and optimized chaos experiment execution.
-The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and [create application maps](/docs/chaos-engineering/features/network-maps/intro-network-map).
+The diagram below describes the high-level flow of how you can [discover services](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and [create application maps](/docs/chaos-engineering/features/app-maps/intro-app-map).
 
     ![](./static/flow-v2.png)
 
@@ -28,8 +28,8 @@ The diagram below describes the detailed flow of control (step 5 of the earlier 
 
 ## Features of Harness DDCI
 - Automated Kubernetes [service discovery](/docs/chaos-engineering/features/service-discovery/intro-service-discovery) and workloads with network traffic patterns between them through a transient discovery agent.
-- [Automated](/docs/chaos-engineering/onboarding/guided-onboarding#choose-between-automatic-and-customizable-network-map-creation) and [guided](/docs/chaos-engineering/features/network-maps/intro-network-map#create-a-network-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
-- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/features/network-maps/intro-network-map) based on the workload specification and its lineage in terms of network traffic.
+- [Automated](/docs/chaos-engineering/onboarding/guided-onboarding#choose-between-automatic-and-customizable-application-map-creation) and [guided](/docs/chaos-engineering/features/app-maps/intro-app-map#create-an-application-map) application map creation that represent a fully functional application within the cluster (which comprises of several constituent microservices).
+- [Chaos experiment auto-creation](#auto-create-experiment) for a given [application map](/docs/chaos-engineering/features/app-maps/intro-app-map) based on the workload specification and its lineage in terms of network traffic.
 - Reuse the Harness Delegate for chaos experiment execution on the user cluster without a dedicated (or separate) chaos agent.
 - Application-level and application map level resilience scores.
 
