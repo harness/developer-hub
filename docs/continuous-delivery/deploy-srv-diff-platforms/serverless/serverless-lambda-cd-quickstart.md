@@ -356,7 +356,7 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yml` that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` for the manifest:
+Variables such as `{{.Values.serviceName}}` will be resolved by a corresponding `values.yaml` file that is added in the same place as the manifest. Follow the steps above to add a manifest, but at step 3 select **Values YAML** instead. Here is an example of a `values.yaml` file for the manifest:
 
 ```yaml
 serviceName: goldenpipeline
