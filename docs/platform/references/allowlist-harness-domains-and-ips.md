@@ -50,6 +50,8 @@ Access to Kubernetes clusters that are behind strict firewalls and are not acces
 
 ### Harness hosted GitOps IPs
 
+If you are using hosted GitOps agents to deploy on managed clusters, you must configure these clusters with a specific set of IP addresses to authorize access.
+
 All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
 
 ```bash
