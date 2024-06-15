@@ -48,7 +48,7 @@ Harness will not change IPs without 30 days notice to all customers. If a securi
 
 Access to Kubernetes clusters that are behind strict firewalls and are not accessible from the public internet is controlled through authorized IP addresses. To allow access to these clusters, Harness provides a list of IP addresses that need to be configured on the clusters.
 
-### Harness hosted IPs
+### Harness hosted GitOps IPs
 
 All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
 
@@ -57,7 +57,13 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 35.247.93.45/32
 34.82.210.106/32
 34.83.159.16/32
+```
 
+### Harness Platform IPs
+
+All the IPs are cloud NAT gateways and need to enable specific IPs instead of ranges.
+
+```bash
 35.237.119.232/32
 34.82.155.149/32
 34.83.51.28/32
@@ -84,13 +90,13 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 
 ### Harness hosted Feature Flags IPs
 
-With Feature Flags, the following IP can be added to the allowlist as needed. 
+With Feature Flags, the following IP can be added to the allowlist as needed.
 
 ```bash
 35.244.167.62
 ```
 
-For Flutter Web users only, you can use the following IP address: 
+For Flutter Web users only, you can use the following IP address:
 
 ```bash
 35.190.29.75
