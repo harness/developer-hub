@@ -403,6 +403,10 @@ Use these expressions to get artifact identifiers, tags, and labels.
 
 * `<+artifacts.primary.tag>`: The tags on the pushed, pulled, or deployed artifact, such as AMI tags. For example, if you deployed the Docker image `nginx:stable-perl`, the `<+artifacts.primary.tag>` is `stable-perl`. This expression has no relationship to [Harness tags](/docs/platform/references/tags-reference.md).
 
+:::info note
+GAR(Google Artifact Registry) does not have a tag field but a rather a version which can be fetched using `<+artifacts.primary.version>`
+:::
+
 * `<+<+artifacts.primary.label>.get("")>`: This expression uses the `get()` method to extract Docker labels from a Docker image artifact. Specify the label key in `get()`. For example `<+<+artifacts.primary.label>.get("maintainer")>` pulls the maintainer tag, such as `maintainer=dev@someproject.org`.
 
 <details>

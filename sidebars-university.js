@@ -46,6 +46,12 @@ const sidebars = {
           label: "Security Testing Orchestration",
           id: "sto",
         },
+        //sei
+        {
+          type: "doc",
+          label: "Software Engineering Insights",
+          id: "sei",
+        },
         //ce
         {
           type: "doc",
