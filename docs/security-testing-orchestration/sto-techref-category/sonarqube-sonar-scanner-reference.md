@@ -85,8 +85,10 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 
 The predefined configuration to use for the scan. 
 
-- **Default**  
-- **Branch Scan**  
+- **Default** Extract results for the Main branch defined in SonarQube. SonarQube Community Edition supports extracting scan results for the Main branch only. 
+- **Branch Scan** Extract results based on how the pipeline is executed:
+  - Manual executions - The branch defined in SonarQube ([Target variant](#variant))
+  - Triggered executions - The pull request defined in SonarQube 
 
 
 ### Target
@@ -114,12 +116,16 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 
 <StoSettingTargetName />
 
+If you're running an Extraction scan, this field should match the code repository name in SonarQube. 
+
 
 #### Variant
 
 import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
+
+If you're running an Extraction scan, this field should match the branch or PR defined in SonarQube.
 
 #### Workspace
 
