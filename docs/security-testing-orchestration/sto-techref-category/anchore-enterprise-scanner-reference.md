@@ -94,6 +94,8 @@ import StoSettingScanTypeAutodetectNote from './shared/step_palette/target/auto-
 <StoSettingScanTypeAutodetectNote/>
 
 
+
+
 #### Name 
 
 import StoSettingTargetName from './shared/step_palette/target/_name.md';
@@ -108,6 +110,11 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 
 <StoSettingTargetVariant  />
 
+:::note
+
+In Extraction mode, the target name and variant should match the [image name](#name-1) and [image tag](#tag) below.
+
+:::
 
 ### Container image
 
@@ -117,6 +124,8 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 import StoSettingImageType from './shared/step_palette/image/_type.md';
 
 <StoSettingImageType />
+
+In Extraction mode, the image to scan must be located on the Anchore server.
 
 
 #### Domain
