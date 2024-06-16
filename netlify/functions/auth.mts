@@ -39,7 +39,7 @@ export default async (req: Request, context: Context) => {
   }
 
   try {
-    const uuid = await getUUID(accountId, accessToken);
+    const { uuid, name } = await getUUID(accountId, accessToken);
     if (!uuid) {
       return;
     }
@@ -50,7 +50,7 @@ export default async (req: Request, context: Context) => {
     }
 
     const expiryTime = new Date();
-    expiryTime.setMinutes(expiryTime.getMinutes() + 1);
+    expiryTime.setMinutes(expiryTime.getMinutes() + 119);
     context.cookies.set({
       name: "x_chatbot_key",
       value: token,
@@ -65,6 +65,15 @@ export default async (req: Request, context: Context) => {
     context.cookies.set({
       name: "account_id",
       value: accountId,
+      domain: ".harness.io",
+      path: "/",
+      httpOnly: false,
+      secure: true,
+      sameSite: "None",
+    });
+    context.cookies.set({
+      name: "name",
+      value: name,
       domain: ".harness.io",
       path: "/",
       httpOnly: false,
@@ -158,8 +167,7 @@ async function getUUID(accountId: string, accessToken: string) {
     }
 
     const data = await response.json();
-    console.log(data.data.uuid);
-    return data.data.uuid;
+    return { uuid: data.data.uuid, name: data.data.name };
   } catch (error) {
     console.log(error);
   }

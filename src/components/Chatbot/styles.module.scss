@@ -213,11 +213,15 @@
         border-radius: 8px;
         margin-bottom: 8px;
         min-height: 36px;
+        position: relative;
+        flex-wrap: wrap;
+        max-width: 350px;
 
         .markdownContent {
           a {
             color: #0092e4;
           }
+
           p {
             margin: 0;
             padding: 0;
