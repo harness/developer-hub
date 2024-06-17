@@ -290,6 +290,10 @@ export default function University() {
                     src={`${baseUrl}img/cert_dev_sei_badge.svg`}
                     alt="Developer SEI Badge"
                   /> 
+                  <img
+                    src={`${baseUrl}img/cert_dev_idp_badge.svg`}
+                    alt="Developer IDP Badge"
+                  /> 
                 </div>
                 </div>
               </div>

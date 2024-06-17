@@ -340,9 +340,13 @@ summary {
 html[data-theme="dark"] .navbar .navbar__logo {
   content: url("/img/logo_pride_dark.svg");
 }
- /* logo_dlp.svg */
+/* logo_dlp.svg */
 html[data-theme="light"] .navbar .navbar__logo {
   content: url("/img/logo_pride.svg");
+}
+
+html[data-theme="dark"] .CoveoSearchbox .magic-box {
+  border: none !important;
 }
 
 html[data-theme="dark"] .navbar {
