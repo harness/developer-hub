@@ -119,7 +119,7 @@ In Extraction mode, the target name and variant should match the [image name](#n
 ### Container image
 
 
-#### Type  (_orchestration_)
+#### Type 
 
 import StoSettingImageType from './shared/step_palette/image/_type.md';
 
