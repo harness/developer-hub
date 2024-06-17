@@ -21,7 +21,7 @@ To prevent the installation of the automatic upgrade feature, remove the `CronJo
 You can also change the time when the upgrade cron job runs by updating the `schedule`. For configuration details, go to [Configure the delegate upgrade schedule](#configure-the-delegate-upgrade-schedule).
 
 :::info
-User information is not propagated when a delegate is started from external sources. All delegate operations are recorded under the SYSTEM user in the audit trail. The **Action** column displays actions when a delegate is created, updated, or upserted and especially during the scale-up and scale-down process. For more information about the audit trail, go to [View audit trail](/docs/platform/governance/audit-trail/).
+User information is not propagated when a delegate is started from external sources. All delegate operations are recorded under the SYSTEM user in the audit trail, especially during the scale-up and scale-down processes. The **Action** column displays actions when a delegate is created, updated, or upserted. For more information about the audit trail, go to [View audit trail](/docs/platform/governance/audit-trail/).
 :::
 
 <details>
