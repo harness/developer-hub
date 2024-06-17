@@ -20,13 +20,13 @@ Node drain drains the node of all its resources running on it. Due to this, serv
 
 ### Permissions required
 
-Described below are the permissions required to execute the fault.
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: default
+  namespace: hce
   name: node-drain
 spec:
   definition:

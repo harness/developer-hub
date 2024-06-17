@@ -15,14 +15,14 @@ Pod network partition tests the application's resilience to lossy or flaky netwo
 
 ### Permissions required
 
-Described below are the permissions required to execute the fault.
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: default
-  name: pod-network-duplication
+  namespace: hce
+  name: pod-network-partition
 spec:
   definition:
     scope: Cluster # Supports "Namespaced" mode too

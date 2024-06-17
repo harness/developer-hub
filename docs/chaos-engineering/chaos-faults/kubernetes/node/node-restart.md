@@ -17,13 +17,13 @@ Node restart disrupts the state of the node by restarting it.
 
 ### Permissions required
 
-Described below are the permissions required to execute the fault.
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: default
+  namespace: hce
   name: node-restart
 spec:
   definition:
