@@ -50,7 +50,9 @@ export default async (req: Request, context: Context) => {
     }
 
     const expiryTime = new Date();
-    expiryTime.setMinutes(expiryTime.getMinutes() + 119);
+
+    expiryTime.setMinutes(expiryTime.getMinutes() + 120);
+
     context.cookies.set({
       name: "x_chatbot_key",
       value: token,
@@ -59,7 +61,7 @@ export default async (req: Request, context: Context) => {
       httpOnly: false,
       secure: true,
       sameSite: "None",
-      expires: expiryTime, // Set the expiry time here
+      expires: expiryTime, // expires in 2 hrs
     });
 
     context.cookies.set({
@@ -215,3 +217,4 @@ async function CreateChatbotToken(
     console.log(error);
   }
 }
+

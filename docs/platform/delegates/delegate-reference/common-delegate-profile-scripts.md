@@ -21,7 +21,7 @@ For more information about running scripts, go to [Build custom delegate images 
 
 You can add any command that the host, container, or pod running the delegate supports. Linux shell commands are most common. If `kubectl`, Helm, or Docker is running on the host, container, or pod where you install the delegate, you can use those commands. Kubernetes and Docker delegates include Helm.
 
-The base image for the delegate uses Ubuntu 18.04 or later. This means you can use any default Ubuntu package in delegate script.
+The base image for the delegate uses the Red Hat Universal Base Image (Red Hat/UBI8). This means you can use any default Red Hat package in the delegate script.
 
 #### Harness Delegate
 

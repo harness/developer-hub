@@ -175,6 +175,10 @@ To address this issue, we suggest using the LIKE operator in your rules. By empl
 
 While the LIKE operator provides flexibility in capturing future instance types, it's important to choose a pattern that uniquely identifies the instances you want to include. Additionally, regular monitoring and adjustments may be necessary if naming conventions change or new patterns emerge for GPU instance types.
 
+### We see some no cluster name fields in our perspective, how can we remove them?
+
+We can remove the no cluster name field, by adding a filter to perspective where Cluster name equals not null.
+
 ## Cost Category
 
 ### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
@@ -346,6 +350,18 @@ You can only tune nodepod and workload recommendations. You can't tune VM recomm
 
 "Tuning" for VMs is not always available.
 
+### How can we get GCP compute recommenations.
+
+You can get GCP compute recommendations by enabling governance. [Doc Reference](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/gcp/gcp-recommendations/#recommendation-stop-underutilized-instances)
+
+### Is there support for GCVE costs and for sole tenant nodes.
+
+Yes, we provide cost tracking for all SKUs, including GCVE and sole tenant nodes. These costs will be visible in perspectives once they are available in the cloud cost report.
+
+### If someone acts on a recommendation but doesn't apply it in Harness, what happens to that recommendation in the next sync cycle?
+
+The recommendation will not appear again because it is no longer valid. Additionally, the savings calculation will be lost since it wasn't marked as applied in Harness.
+
 ## Governance
 
 ### When adding Cloud Governance to a previously created cloud cost connector, do we need to add the cloud-governance IAM permissions to the same role we previously created via the cloudFormation template?
@@ -423,6 +439,10 @@ Cloud Asset Governance evaluations taking longer than three minutes can be due t
 ### Can I create an Asset Governance rule to merge different labels into one AppID label for Azure?
 
 To achieve this use case, you can first remove the tags and than add the req tag. For more information, go to the Cloud Custodian documentation on the [Azure tag command](https://cloudcustodian.io/docs/azure/resources/azure-common-actions.html#tag).
+
+### In Azure, How can we list all the appServicePlans with cpu and memory less than 50% using the maximum filter.
+
+We can filter resource based on resource having alerts greater than a threshold value. The policy should target azure.alert-logs to filter through the alert logs.
 
 ## Autostopping
 
@@ -745,3 +765,7 @@ Click on "Save Rule" and then "Save Cost Category" to finalize the configuration
 #### How can I use the new cost category in my perspective to exclude the "No Cluster Name" entity?
 Once you have created the new cost category, you can use it in your perspective instead of the default cost category. This will automatically exclude the "No Cluster Name" entity from the visualization.
 By following these steps, you can effectively manage and exclude the "No Cluster Name" entity from your Cloud Cost Management visualization, ensuring more accurate cost attribution and analysis.
+
+#### When we set a budget in the CCM module, is there a way to incorporate discounts?
+
+Yes, since budgets are based on Perspectives, we can also incorporate built-in cloud discounts.

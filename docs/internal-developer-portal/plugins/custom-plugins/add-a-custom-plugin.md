@@ -196,12 +196,13 @@ new-plugin/
 
 ```YAML
 proxy:
-  /mynewplugin:
-    target: https://somerandomapi.com/api/v2
-    pathRewrite:
-      /api/proxy/mynewplugin/?: /
-    headers:
-      Authorization: "Api-Token ${SECRET_TOKEN}"
+    endpoints: 
+        /mynewplugin:
+        target: https://somerandomapi.com/api/v2
+        pathRewrite:
+            /api/proxy/mynewplugin/?: /
+        headers:
+            Authorization: "Api-Token ${SECRET_TOKEN}"
 ```
 
 11. Now in the above proxy authorization is added as a variable `SECRET_TOKEN` and the secret is stored in Harness Secret manager. 

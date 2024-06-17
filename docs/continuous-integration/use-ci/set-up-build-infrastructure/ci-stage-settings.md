@@ -48,7 +48,7 @@ If you need to shared data across stages, use [caching](/docs/continuous-integra
 
 ### Cache Intelligence
 
-You can enable and configure [Cache Intelligence](../caching-ci-data/cache-intelligence.md). This feature is only available for Linux and Windows platforms on Harness Cloud build infrastructure.
+Use these settings to [enable and configure Cache Intelligence](../caching-ci-data/cache-intelligence.md).
 
 For fully supported build tools with dependencies stored in the default location for the tool used, you only need to select **Enable Cache Intelligence**.
 
@@ -56,7 +56,7 @@ For other build tools or non-default cache locations, you must provide custom ca
 
 Optionally, you can specify a custom cache **Key**
 
-For information about supported tools, enabling cache intelligence, and configuring custom cache paths and keys, go to the [Cache Intelligence](../caching-ci-data/cache-intelligence.md) documentation.
+If you are using self-managed build infrastructure (any build infrastructure other than Harness CI Cloud), you must also [define S3-compatible object storage](/docs/platform/settings/default-settings.md#continuous-integration) that Harness can use to store and manage your caches.
 
 ### SLSA Provenance
 

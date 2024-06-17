@@ -24,7 +24,7 @@ Before you can create a Feature Flag, you need to create a project in the Harnes
 This topic describes how to create a project in the Harness Platform. For more information, go to [Harness Platform documentation](/docs/platform).
 
 :::info note
-Before you create a Feature Flag, you must have [created an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](/docs/feature-flags/ff-security-compliance/manage-access-control).
+Before you create a Feature Flag, you need to [create an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](/docs/feature-flags/secure-ff/rbac-at-ff/manage-access-control.md).
 :::
 
 ## Create a project
@@ -51,7 +51,7 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 	* Gitops Admin Role
 	* Feature Flag Manage Role
 
-	For more information about the permissions for each role, go to [Manage Access Control](/docs/feature-flags/ff-security-compliance/manage-access-control) and [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
+	For more information about the permissions for each role, go to [Manage Access Control](/docs/feature-flags/secure-ff/rbac-at-ff/manage-access-control.md) and [Permissions Reference](/docs/platform/role-based-access-control/permissions-reference).
 
 3. Click **Save and Continue**. Your project is created.
 
@@ -108,7 +108,7 @@ To create an SDK key:
 
 1. In the environment you created, in **Settings**, click **Create SDK Key**.
 2. In **Create SDK Key**, in **Name**, enter a name for your SDK key.
-3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks). If your organization needs to rotate the keys, you can choose to add more than one key for the same environment.
+3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks). If your organization needs to rotate the keys, you can choose to add more than one key for the same environment.
 4. Click **Create**.
 5. Copy and store your Secret.
 

@@ -84,6 +84,22 @@ All the IPs are cloud NAT gateways and need to enable specific IPs instead of ra
 34.94.190.229/32
 ```
 
+### Harness hosted Feature Flags IPs
+
+With Feature Flags, the following IP can be added to the allowlist as needed. 
+
+```bash
+35.244.167.62
+```
+
+For Flutter Web users only, you can use the following IP address: 
+
+```bash
+35.190.29.75
+```
+
+If you'd like to install the JavaScript SDK needed for the Flutter Web IP, you can refer to the [Feature Flags Javascript SDK Documentation](../../feature-flags/use-ff/ff-sdks/client-sdks/java-script-sdk-references.md) or the [Flutter GitHub repo](https://github.com/harness/ff-flutter-client-sdk#sdk-installation-for-flutter-web).
+
 ### Configure clusters
 
 To ensure proper functionality, configure your clusters with API access to the authorized Harness IP addresses.

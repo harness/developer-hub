@@ -9,25 +9,18 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+You can use caching to share data cross stages or run pipelines faster by reusing the expensive fetch operation data from previous builds.
 
-Caching has two primary benefits:
-
-* Run pipelines faster by reusing the expensive fetch operation data from previous builds.
-* Share data across stages.
+:::tip
+Consider using [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md), a [Harness CI Intelligence](/docs/continuous-integration/get-started/harness-ci-intelligence.md) feature, to automatically caches and restores software dependencies - hassle free.
+:::
 
 You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. You cannot share access credentials or other [Text Secrets](/docs/platform/secrets/add-use-text-secrets) across stages.
 
-This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
-
-:::info
-
-If you are using Harness Cloud build infrastructure, you can use [Cache Intelligence](cache-intelligence.md) to automate caching.
-
-:::
+This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI. This is one of several [caching options offered by Harness](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md).
 
 ## S3 bucket and AWS connector requirements
 

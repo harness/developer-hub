@@ -10,7 +10,7 @@ Fault tunables which are common to all the node faults are described here. These
 Name of the target node. Tune it by using the `TARGET_NODE` environment variable. It contains a single node name.
 
 :::info note
-It supports node drain, node taint, node restart, kubelet service kill, and docker service kill faults. 
+It supports node drain, node taint, node restart, kubelet service kill, and docker service kill faults.
 :::
 
 The following YAML snippet illustrates the use of this environment variable:

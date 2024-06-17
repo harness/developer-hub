@@ -71,7 +71,8 @@ export default async (req: Request, context: Context) => {
 
 
     const expiryTime = new Date();
-    expiryTime.setMinutes(expiryTime.getMinutes() + 119);
+    expiryTime.setMinutes(expiryTime.getMinutes() + 120);
+
     context.cookies.set({
       name: "x_chatbot_key",
       value: token,
@@ -80,7 +81,7 @@ export default async (req: Request, context: Context) => {
       httpOnly: false,
       secure: true,
       sameSite: "None",
-      expires: expiryTime, // Set the expiry time here
+      expires: expiryTime,
     });
 
     return new Response(JSON.stringify(responseData), {
@@ -102,7 +103,9 @@ async function RotateToken(accountId: string, token: string, uuid: string) {
   try {
     const now = new Date();
 
-    /// valid for 2 mins
+
+    /// valid for 2 hrs
+
     const currentGMTTimeInMillis = now.getTime() + 7200000;
 
     const response = await fetch(

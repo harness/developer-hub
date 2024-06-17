@@ -904,6 +904,10 @@ To resolve the issue:
 - Check Helm chart modifications: If modifications were made to the Helm chart locally, they might have caused discrepancies in deployed values. Utilize the Helm template to inspect YAML values for debugging.
 - Adjust namespace limits: If applicable, ensure that there are no namespace limits conflicting with the Helm delegate installation. If found, consider changing the namespace to resolve the issue.
 
+### How can I check the current customized version of a delegate using APIs, and how does the delegate upgrader access custom images?
+
+Harness an API to get the latest delegate version for an account and one to override the latest for the upgrader. Currently, there isn't an externally exposed API to retrieve custom images. However, the delegate upgrader accesses a specific API to fetch the custom image when needed.
+
 ### Can I use an earlier Harness Delegate version?
 
 Yes, but Harness doesn't recommend using delegate images that are not current. However, if you require an earlier image version, check the [repository on Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
@@ -2560,7 +2564,7 @@ The naming convention for all identifiers in Harness is case sensitive. Identifi
 
 ### Are there docs for the infrastructure requirements to install Harness Self-Managed Enterprise Edition?
 
-Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/harness-helm-chart#production-environment-deployment-infrastructure).
+Yes, for more information, go to [Production environment deployment infrastructure](/docs/self-managed-enterprise-edition/install/harness-helm-chart#production-environment-deployment-infrastructure).
 
 ### Is there documentation for network setup or Harness Deployment Architecture?
 
@@ -3024,7 +3028,7 @@ Dashboards are a licensed functionality. If you don't have a current license, da
 
 ### Is there documentation on installing and upgrading the Harness Self-Managed Enterprise Edition cluster?
 
-Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/upgrade-helm-chart).
+Yes. For more information, go to [Install using Helm](/docs/self-managed-enterprise-edition/install/install-using-helm) and [Upgrade the Helm chart](/docs/self-managed-enterprise-edition/install/upgrade-helm-chart).
 
 ## Terraform
 
@@ -3127,10 +3131,6 @@ Harness integrates with multiple third-party SCIM providers
 ### How do I sign out of Harness?
 
 To sign out of Harness, select **My Profile**, and then select **Sign Out** at the bottom left of the screen.
-
-### How can I switch from the new Harness nav 2.0 UI to the legacy nav?
-
-Hover over your profile, and use the **New Navigation Design (Beta)** toggle.
 
 ### Can I enable feature flags for organizations and projects without enabling them for the account scope?
 

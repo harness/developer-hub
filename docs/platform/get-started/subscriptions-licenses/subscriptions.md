@@ -183,7 +183,7 @@ For more information about specific module subscriptions and licenses, go to:
 
 - [CI Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt/)
 - [CD Service-based licensing and usage](/docs/continuous-delivery/get-started/service-licensing-for-cd)
-- [FF Subscriptions](/docs/category/subscribe-to-feature-flags)
+- [FF Subscriptions](/docs/feature-flags/subscribe-ff/subscriptions-overview.md)
 - [SRM subscriptions and licenses](/docs/service-reliability-management/get-started/srm-subscription-licensing)
 
 ## Cloud Marketplace offerings

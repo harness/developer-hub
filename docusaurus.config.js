@@ -91,11 +91,12 @@ const config = {
           content: "https://developer.harness.io/img/hdh-social-card.png",
         },
       ],
+      //src: "/img/logo_dlp.svg",
       navbar: {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "/img/logo_dlp.svg",
+          src: "/img/logo_pride.svg",
         },
         items: [
           /*{
@@ -220,6 +221,10 @@ const config = {
               {
                 label: "Security Testing Orchestration",
                 to: "university/sto",
+              },
+              {
+                label: "Software Engineering Insights",
+                to: "university/sei",
               },
               {
                 label: "Chaos Engineering",
