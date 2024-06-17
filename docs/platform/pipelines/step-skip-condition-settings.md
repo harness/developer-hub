@@ -58,6 +58,7 @@ To add a stage conditional execution:
 
    * `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status> == "SUCCEEDED"`
    * `<+environment.name> != "QA"`
+   * `<+variable.Boolean1> == "True" && <+variable.Boolean2> == "True"`
 
 ### Add a step conditional execution
 
@@ -89,6 +90,7 @@ To add a step conditional execution:
 
    * `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status> == "SUCCEEDED"`
    * `<+environment.name> != "QA"`
+   * `<+variable.Boolean1> == "True" && <+variable.Boolean2> == "True"`
 
 ### Remove conditional executions
 
@@ -147,6 +149,14 @@ The hierarchy for conditional execution settings is as follows:
 1. **Stage:** Stage-level conditional execution settings determine when a stage should run. If triggered, the step and step groups in the stage start running.
 2. **Step group:** Step group-level conditional execution settings determine when a step group should run. If triggered, the steps in the group start running.
 3. **Step:** Step-level conditional execution settings determine if individual steps should run. Step conditions are evaluated after stage and step group conditions. This means that step-level conditional execution settings effectively override the stage and step group conditional execution settings. For example, if a stage-level condition evaluates to true and causes a stage to run, each individual step-level condition within that stage is evaluated separately to determine if each individual step should run.
+
+### Unless Failure Strategy is Specified, JEXL Booleans will result in a Skipped Stage
+For users setting a JEXL Boolean condition, it is important to remember that a conditional that evaluates false will result in a skipped step or stage.  
+
+This will still show a step or stage as completing successfully.
+![](./static/conditional-skipped.png)
+
+Depending on the situation, this may be the desired effect.  Otherwise, users should [implement a failure strategy for the step/stage](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
 
 ### Failure strategies take precedence over conditional executions
 
