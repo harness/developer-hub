@@ -19,6 +19,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 ## June 2024
+
+### Version 1.21.0
+
+#### New features and enhancements
+
+- **Savings by Harness Integration Enhancement**: Last release we added "Savings by Harness" integration on Commitment Orchestrator. This release, we have added a minor enhancement with a loading state for savings and utilization widgets. [CCM-18212]
+
+- **Azure VM Inventory Duplicate Entries Enhancement**: Duplicate entries within AzureVMInventory will now be handled better after this fix, ensuring appropriate data is displayed on the dashboards. [CCM-17313]
+
 ### Version 1.20.3
 
 #### New features and enhancements

@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-05-31T16:19:25
+date: 2024-06-17T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,60 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: May 31, 2024
+#### Last updated: June 17, 2024
+
+## June 2024
+
+### Android SDK
+
+#### Version 2.2.1
+
+**New features and enhancements**:
+ - Added a new method for closing the SDK. The `closeWithFuture()` method can be used to ensure the SDK has been closed before continuing, for example, re-initializing the SDK. (FFM-11625, ZD-64818)
+
+### Flutter SDK
+
+#### Version 2.2.1 
+
+**Fixed issues**:
+ - Fixed an issue on Android where the SDK would crash with the error,
+  `java.lang.IllegalStateException: Reply already submitted`, if the SDK was closed and re-initialised multiple times within quick successions. (FFM-11625, ZD-64818)
+
+### .NET SDK
+
+#### Version 1.6.10
+
+**New features and enhancements**:
+ - Improves SDK evaluation performance and memory usage.
+ - Update to use `PackageLicenseExpression`. 
+ - Make `System.Net.Http` conditional. (FFM-11509)
+ - Optimize IN clause rules. (FFM-11056)
+ - Cherry pick 1.6.9 patch. (FFM-11531)
+ - Remove excessive `ToList()` allocations in Evaluator. (FFM-11551)
+ - Wrap log statements with if statements. (FFM-11557)
+ - `SeenTargets` cache memory improvements. (FFM-11549)
+ - Sort rules when retrieving instead of per evaluation. (FFM-11585)
+ - Remove rules sorting from the evaluation path. (FFM-11597)
+
+**Fixed issues**:
+ - Fixed an issue where streams would not remain open for longer than 60 seconds when the SDK is running .NET 4.8:
+  -- Previously, if the stream disconnected, it would take 70 seconds for it to reconnect. It now reconnects using an exponential backoff and delay, where the base delay is 500ms. (FFM-11573, ZD-64099)
+ - The SDK version has been bumped from `1.6.x` to `1.7.0-rc2`. (FFM-11549)
+ - Fix streaming issues for .NET 4.8. (FFM-11573, ZD-64099)
+
+### Node.js SDK
+
+#### Version 1.8.1
+
+**Fixed issues**:
+ - Patched CVE for `braces`. (FFM-11673)
+
+#### Version 1.8.0
+
+**New features and enhancements**:
+ - Global Axios settings are no longer configured by the SDK, which could override Axios settings used elsewhere in an application.  The default timeout is `30s` but can be changed using options within `axiosTimeout`. See: ['Available Options' in the Node.js further reading docs in the GitHub repo](https://github.com/harness/ff-nodejs-server-sdk/blob/main/docs/further_reading.md#available-options). (FFM-9097)
+ - Added SDK support for `AND/OR` rules (Please note that this feature is not GA yet). (FFM-11243)
+ - The `target-segments v2-rule` parameter has been added and ready to use. (FFM-11364)
 
 ## May 2024
 
@@ -905,7 +958,7 @@ This limit has been raised to 25000 bytes, with a clear error message if this is
 
   * Made the following improvements.
 
-    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
+    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
     * Added general improvements to logging statements, reducing verbose logging to the console. 
     * Added support for configurable custom loggers. For code examples, go to the [SDK repository](https://github.com/harness/ff-ios-client-sdk/blob/main/docs/further_reading.md#custom-loggers).
 
@@ -1055,7 +1108,7 @@ This limit has been raised to 25000 bytes, with a clear error message if this is
 Due to a new dependency on a murmur3 hashing library implemented in Elixir, the following is now required to use the SDK in Erlang applications:
    - Elixir version 1.13.4 or above must be installed on your build system when compiling your application.
    - Rebar3 `rebar_mix` must be installed in your Rebar3 plugins.
-   - For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference/#for-erlang-applications).
+   - For full details, go to Install the SDK for Erlang applications.
    - This update does not affect Elixir applications, and no further action is required for Elixir applications upon upgrading to this version of the SDK.
 
  - Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
@@ -1065,7 +1118,7 @@ Due to a new dependency on a murmur3 hashing library implemented in Elixir, the 
 The following changes are included in issue number FFM-8289:
    - Added validation to the JWT token returned by the Feature Flags authentication service.
    -  Previously, if the SDK failed to authenticate with the Feature Flags service, the SDK crashed. With this fix, the SDK now logs a warning and serves the default variations you provided in your evaluation calls.
-   - Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
+   - Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/use-ff/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
 
 #### Version 1.2.17
 
@@ -1096,7 +1149,9 @@ To aid in debugging, we added a list of codes logged for each lifecycle of the S
   - `Metrics`
   - `Close`
 
-For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+For a full list of codes, go to Troubleshooting.
+
+Troubleshooting.
 
 #### Version 1.1.15
 
@@ -1258,7 +1313,7 @@ For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/se
 
 #### Version 1.0.0 Beta
 
-The [**Erlang server SDK**](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference), which was in Beta, has been released as GA. 
+The **Erlang server SDK**, which was in Beta, has been released as GA. 
 
 This release includes the following updates:
  - **Breaking changes**

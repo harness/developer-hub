@@ -5,7 +5,9 @@
 .certificationsCCM,
 .certificationsSRM,
 .certificationsSTO,
+.certificationsSEI,
 .certificationsCE,
+.certificationsIDP,
 .certificationsPlatform {
   background: url(/img/cert_harness_bg.svg) no-repeat;
   background-position: right;
@@ -13,16 +15,20 @@
   background-size: 55%;
   min-height: 400px;
   padding-top: 72px;
+
   .hero {
     display: flex;
+
     .left {
       margin-top: -72px;
       flex-basis: 45%;
+
       .linkBack {
         margin-bottom: 16px;
         padding: 0 16px;
       }
     }
+
     .right {
       flex-basis: 55%;
       display: flex;
@@ -30,6 +36,7 @@
       align-items: center;
       gap: 24px;
       min-height: 210px;
+
       img {
         width: 125px;
         height: auto;
@@ -37,6 +44,7 @@
         font-size: 14px;
         transition-property: width, height, opacity;
         transition-duration: 0.3s;
+
         &.active {
           width: 150px;
           opacity: 1;
@@ -44,6 +52,7 @@
       }
     }
   }
+
   .btns {
     margin-top: 72px;
     display: flex;
@@ -68,6 +77,7 @@
       border: 2px solid var(--primary-9);
       background-color: white;
       color: var(--primary-9);
+
       &:hover {
         cursor: pointer;
         background-color: var(--gray-100);
@@ -80,6 +90,7 @@
         left: 2px;
       }
     }
+
     .InstLedTrainBtn {
       min-width: 330px;
       height: 52px;
@@ -98,10 +109,12 @@
       gap: 10px;
       color: var(--primary-9);
       background-color: white;
+
       &:hover {
         cursor: pointer;
         background-color: var(--gray-100);
       }
+
       img {
         width: 28px;
         height: 22.67px;
@@ -109,21 +122,26 @@
         left: 2px;
       }
     }
+
     .active {
       background-color: var(--primary-9);
       border: 2px solid var(--primary-9);
       color: white;
+
       &:hover {
         background-color: var(--primary-10);
       }
     }
   }
+
   .tabs {
     margin-top: 72px;
+
     h2,
     p {
       margin-bottom: 32px;
     }
+
     ul.tabItems {
       border-bottom: 1px solid var(--gray-200);
       padding: 0;
@@ -131,6 +149,7 @@
       display: flex;
       gap: 8px;
       margin-bottom: 32px;
+
       .listTabItems {
         display: flex;
         align-items: center;
@@ -144,10 +163,12 @@
           font-weight: 600;
           cursor: pointer;
           border-radius: 8px 8px 0 0;
+
           &:hover {
             background-color: var(--gray-50);
             color: var(--hover);
           }
+
           &.active {
             font-weight: 700;
             color: var(--primary);
@@ -158,8 +179,10 @@
         }
       }
     }
+
     .tabContent {
       display: none;
+
       &.active {
         // display: block;
         display: flex;
@@ -167,6 +190,7 @@
         gap: 32px;
       }
     }
+
     .cardContainer {
       display: flex;
       flex-flow: row wrap;
@@ -175,6 +199,7 @@
       column-gap: 2.5%;
       // justify-content: space-between;
     }
+
     .certCard {
       display: flex;
       flex-direction: column;
@@ -186,42 +211,60 @@
       border-width: 2px;
       border-style: solid;
       border-color: var(--primary-6);
+
       &.moduleCD {
         border-color: var(--mod-cd-200);
       }
+
       &.moduleCI {
         border-color: var(--mod-ci-200);
       }
+
       &.moduleCCM {
         border-color: var(--mod-ccm-200);
       }
+
       &.moduleFF {
         border-color: var(--mod-ff-200);
       }
+
       &.moduleSTO {
         border-color: var(--mod-sto-200);
       }
+
       &.moduleSRM {
         border-color: var(--mod-srm-200);
       }
+
+      &.moduleSEI {
+        border-color: var(--mod-sei-200);
+      }
+
       &.moduleCE {
         border-color: var(--mod-ce-200);
+      }
+
+      &.moduleIDP {
+        border-color: var(--mod-idp-200);
       }
 
       .certCardContainer {
         display: flex;
         width: 100%;
+
         // gap: 8px;
         .left {
           flex-basis: 25%;
           min-width: 250px;
           flex-shrink: 1;
           padding-right: 40px;
+
           img.badge {
             width: 85px;
             height: auto;
             margin-top: 12px;
           }
+
           .productVersion {
             font-size: 12px;
             font-weight: 13px;
@@ -230,13 +273,16 @@
             align-items: flex-end;
           }
         }
+
         .right {
           flex-basis: 75%;
           flex-grow: 1;
+
           .btnContainer {
             display: flex;
             gap: 24px;
             justify-content: flex-end;
+
             // margin-top: 24px;
             button {
               height: 48px;
@@ -249,16 +295,20 @@
               font-weight: 600;
               cursor: pointer;
               font-size: 16px;
+
               :global {
+
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
                 }
               }
+
               &.moreDetails {
                 background-color: var(--primary);
                 color: var(--white);
               }
+
               &.startLearning {
                 color: var(--primary);
                 background-color: transparent;
@@ -266,17 +316,20 @@
             }
           }
         }
+
         ul.courseList {
           margin: 24px 0 24px 0;
           padding: 0;
           display: flex;
           flex-flow: row wrap;
           gap: 16px;
+
           li.courseItem {
             list-style: none;
             margin: 0;
             padding: 0;
             flex-basis: 250px; // 30%;
+
             :global {
               .fa-solid {
                 color: var(--green-500);
@@ -285,6 +338,7 @@
             }
           }
         }
+
         .certCardBtn {
           background-color: var(--gray-50);
           border: 1px solid var(--gray-100);
@@ -296,13 +350,16 @@
           display: flex;
           justify-content: space-between;
           align-items: center;
+
           span {
             font-weight: 600;
             color: #22222a;
           }
         }
+
         a {
           color: #22222a;
+
           &:hover {
             text-decoration: none;
             color: var(--primary);
@@ -310,16 +367,19 @@
         }
       }
     }
+
     .availableCerts {
       h4 {
         font-weight: 500;
         font-size: 24px;
         line-height: 32px;
         color: var(--ifm-color-content);
+
         &:hover {
           color: var(--primary);
         }
       }
+
       p {
         font-weight: 400;
         font-size: 16px;
@@ -328,7 +388,9 @@
         /* Light/Text/Primary */
         color: var(--ifm-color-content);
       }
+
       margin-top: 32px;
+
       .availableCertsBox {
         display: flex;
         justify-content: space-between;
@@ -337,24 +399,30 @@
         border-radius: 8px;
         padding: 32px;
         gap: 32px;
+
         .verticalLine {
           border-left: 2px solid #d9dae5;
         }
+
         .certs {
           width: 100%;
           display: flex;
           flex-direction: column;
+
           .certBadges {
             h5 {
               margin: 24px 0 24px 0;
             }
+
             .availableCerts {
               margin: 0;
+
               img {
                 height: 93px;
                 width: 85px;
               }
             }
+
             .unAvailableCerts {
               img {
                 height: 93px;
@@ -369,7 +437,7 @@
             // display: flex;
             // flex-direction: column;
             height: auto;
-            min-height: 250px;
+            min-height: 200px;
             border-bottom: 2px solid #d9dae5;
 
             .titleLine {
@@ -377,11 +445,13 @@
               display: flex;
               justify-content: space-between;
               align-items: center;
+
               h4 {
                 margin: 0;
                 padding: 0;
               }
             }
+
             ul {
               display: inline;
               padding: 0;
@@ -392,6 +462,7 @@
                 justify-content: flex-start;
                 padding: 0;
                 margin-bottom: 20px;
+
                 i {
                   padding: 2px;
                   margin-right: 10px;
@@ -404,6 +475,7 @@
                   justify-content: center;
                   color: white;
                 }
+
                 p {
                   padding: 0;
                   margin: 0;
@@ -425,10 +497,13 @@
 .certificationsCCM,
 .certificationsSRM,
 .certificationsSTO,
+.certificationsSEI,
 .certificationsCE,
+.certificationsIDP,
 .certificationsPlatform {
   .certDesc {
     margin-top: 80px;
+
     .certCard {
       box-sizing: border-box;
       display: grid;
@@ -438,9 +513,11 @@
       background: var(--white);
       border: 2px solid var(--gray-200);
       border-radius: 8px;
+
       .certCardContainer {
         border-right: 1px solid var(--gray-200);
         padding: 8px 24px;
+
         // &:first-child {
         //     // padding-left: 0;
         // }
@@ -448,20 +525,24 @@
           border-right: none;
           // padding-right: 0;
         }
+
         h3 {
           margin-bottom: 18px;
         }
+
         ul.courseList {
           margin: 24px 0 24px 0;
           padding: 0;
           display: flex;
           flex-flow: row wrap;
           gap: 16px;
+
           li.courseItem {
             list-style: none;
             margin: 0;
             padding: 0;
             flex-basis: 250px; // 30%;
+
             :global {
               .fa-solid {
                 color: var(--green-500);
@@ -470,6 +551,7 @@
             }
           }
         }
+
         .btnContainer {
           display: flex;
           gap: 24px;
@@ -485,16 +567,20 @@
             font-weight: 600;
             cursor: pointer;
             font-size: 16px;
+
             :global {
+
               .fa-solid,
               .fa-regular {
                 margin-left: 4px;
               }
             }
+
             &.moreDetails {
               background-color: var(--primary);
               color: var(--white);
             }
+
             &.startLearning {
               color: var(--primary);
               background-color: transparent;
@@ -507,18 +593,23 @@
 
   .studyGuide {
     margin-top: 24px; //50px;
+
     .studyGuideCard {
       background-color: var(--primary-8);
       border-radius: 8px;
+
       &.Developers {
         background-color: #bc8532;
       }
+
       &.Administrators {
         background-color: #88939a;
       }
+
       &.Architects {
         background-color: #c8a320;
       }
+
       .info {
         // font-weight: 600;
         font-size: 12px;
@@ -527,12 +618,14 @@
         text-transform: uppercase;
         color: var(--white);
         padding: 8px 16px;
+
         :global {
           .fa-circle-info {
             margin-right: 4px;
           }
         }
       }
+
       .innerCard {
         border: 2px solid var(--gray-200);
         background-color: var(--background-color);
@@ -540,17 +633,20 @@
         padding: 32px;
         display: flex;
         width: 100%;
+
         .left {
           flex-basis: 25%;
           min-width: 250px;
           flex-shrink: 1;
           padding-right: 40px;
+
           img.badge {
             width: 85px;
             height: auto;
             margin-top: 12px;
             margin-bottom: 25px;
           }
+
           .productVersion {
             font-size: 12px;
             font-weight: 13px;
@@ -559,17 +655,21 @@
             align-items: flex-end;
           }
         }
+
         .right {
           flex-basis: 75%;
           flex-grow: 1;
+
           .desc {
             margin-bottom: 24px;
           }
+
           .btnContainer {
             display: flex;
             gap: 24px;
             justify-content: flex-end;
             margin-top: 24px;
+
             button {
               height: 48px;
               display: flex;
@@ -581,16 +681,20 @@
               font-weight: 600;
               cursor: pointer;
               font-size: 16px;
+
               :global {
+
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
                 }
               }
+
               &.moreDetails {
                 background-color: var(--primary);
                 color: white;
               }
+
               &.startLearning {
                 color: var(--primary);
                 background-color: transparent;
@@ -602,9 +706,11 @@
     }
   }
 }
+
 .certificationsCI {
   background-image: url(/img/cert_ci_bg.svg);
 }
+
 .certificationsCD {
   background-image: url(/img/cert_cd_bg.svg);
 }
@@ -612,6 +718,7 @@
 .certificationsFF {
   background-image: url(/img/cert_ff_bg.svg);
 }
+
 .certificationsCCM {
   background-image: url(/img/cert_ccm_bg.svg);
 }
@@ -619,9 +726,19 @@
 .certificationsSTO {
   background-image: url(/img/cert_sto_bg.svg);
 }
+
+.certificationsSEI {
+  background-image: url(/img/cert_harness_bg.svg);
+}
+
+.certificationsIDP {
+  background-image: url(/img/cert_harness_bg.svg);
+}
+
 .certificationsCE {
   background-image: url(/img/cert_ce_bg.svg);
 }
+
 // .certificationsPlatfrom {
 //     background-image: url(/img/cert_platform_bg.svg);
 // }
@@ -630,6 +747,7 @@
 // }
 .examDetails {
   margin-top: 50px;
+
   .examDetailsCard {
     border: 2px solid var(--gray-200);
     background-color: var(--background-color);
@@ -641,6 +759,7 @@
       gap: 24px;
       justify-content: flex-end;
       margin-top: 24px;
+
       button {
         height: 48px;
         display: flex;
@@ -652,16 +771,20 @@
         font-weight: 600;
         cursor: pointer;
         font-size: 16px;
+
         :global {
+
           .fa-solid,
           .fa-regular {
             margin-left: 4px;
           }
         }
+
         &.moreDetails {
           background-color: var(--primary);
           color: white;
         }
+
         &.startLearning {
           color: var(--primary);
           background-color: transparent;
@@ -672,6 +795,7 @@
 }
 
 @media screen and (max-width: 1344px) {
+
   /* for small desktop */
   .certificationsCI,
   .certificationsCD,
@@ -680,6 +804,8 @@
   .certificationsSRM,
   .certificationsSTO,
   .certificationsCE,
+  .certificationsSEI,
+  .certificationsIDP,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -697,6 +823,7 @@
 }
 
 @media screen and (max-width: 1199px) {
+
   /* for laptop */
   .university {
     .hero {
@@ -708,6 +835,7 @@
       }
     }
   }
+
   .certificationsCI,
   .certificationsCD,
   .certificationsFF,
@@ -715,21 +843,27 @@
   .certificationsSRM,
   .certificationsSTO,
   .certificationsCE,
+  .certificationsSEI,
+  .certificationsIDP,
   .certificationsPlatform {
     .certDesc {
       .certCard {
         display: block;
+
         .certCardContainer {
           border-right: none;
           border-bottom: 1px solid var(--gray-200);
           padding: 24px 24px;
+
           &:first-child {
             padding-top: 0;
           }
+
           &:last-child {
             border-bottom: none;
             padding-bottom: 0;
           }
+
           .btnContainer {
             margin-top: 32px;
             flex-direction: row;
@@ -742,16 +876,20 @@
 }
 
 @media screen and (max-width: 768px) {
+
   /* for tablet */
   .university {
     .hero {
       display: flex;
       flex-direction: column;
+
       .left {
         flex-basis: unset;
       }
+
       .right {
         flex-basis: unset;
+
         // margin-top: 36px;
         img {
           width: 100px;
@@ -759,12 +897,15 @@
       }
     }
   }
+
   .availableCertsBox {
     flex-direction: column;
+
     .certDescription {
       min-height: auto;
     }
   }
+
   .certificationsCI,
   .certificationsCD,
   .certificationsFF,
@@ -772,23 +913,30 @@
   .certificationsSRM,
   .certificationsSTO,
   .certificationsCE,
+  .certificationsSEI,
+  .certificationsIDP,
   .certificationsPlatform {
     padding-top: 36px;
+
     .hero {
       flex-direction: column;
+
       .right {
         margin-top: 24px;
       }
     }
+
     .studyGuide {
       .studyGuideCard {
         .innerCard {
           flex-direction: column;
+
           .left {
             .productVersion {
               height: 30px;
             }
           }
+
           .right {
             margin-top: 24px;
           }
@@ -802,8 +950,10 @@
   .linkBack {
     margin-top: 40px;
   }
+
   .btns {
     flex-wrap: wrap;
+
     .certBtn,
     .InstLedTrainBtn {
       width: 330px;
@@ -812,6 +962,7 @@
 }
 
 @media screen and (max-width: 599px) {
+
   /* for mobile */
   .university,
   .certificationsCI,
@@ -821,12 +972,16 @@
   .certificationsSRM,
   .certificationsSTO,
   .certificationsCE,
+  .certificationsSEI,
+  .certificationsIDP,
   .certificationsPlatform {
     padding: 10px;
     background: none;
-      .linkBack {
-    margin-top: 80px;
-  }
+
+    .linkBack {
+      margin-top: 80px;
+    }
+
     .hero {
       .right {
         background: url(/img/cert_harness_bg.svg) no-repeat;
@@ -842,25 +997,31 @@
 
     .btns {
       flex-direction: column;
+
       .certBtn,
       .InstLedTrainBtn {
         width: 330px;
       }
     }
+
     .tabs {
       margin-top: 20px;
+
       .listTabItems li {
         padding: 4px 8px !important;
         font-size: 12px;
       }
+
       .certCard {
         .certCardContainer {
           flex-direction: column;
           justify-content: center;
+
           .left {
             flex-basis: unset;
             min-width: unset;
           }
+
           .right {
             margin-top: 24px;
             flex-basis: unset;
@@ -869,6 +1030,7 @@
         }
       }
     }
+
     :global {
       .markdown h1:first-child {
         --ifm-h1-font-size: 2rem;
@@ -883,6 +1045,7 @@
       }
     }
   }
+
   .certificationsCD {
     .hero {
       .right {
@@ -898,6 +1061,7 @@
       }
     }
   }
+
   .certificationsCCM {
     .hero {
       .right {
@@ -913,6 +1077,23 @@
       }
     }
   }
+
+  .certificationsIDP {
+    .hero {
+      .right {
+        background-image: url(/img/cert_harness_bg.svg);
+      }
+    }
+  }
+
+  .certificationsSEI {
+    .hero {
+      .right {
+        background-image: url(/img/cert_harness_bg.svg);
+      }
+    }
+  }
+
   .certificationsCE {
     .hero {
       .right {
@@ -923,6 +1104,7 @@
 }
 
 @media screen and (max-width: 393px) {
+
   /* for mobile */
   .university,
   .certificationsCI,
@@ -932,9 +1114,12 @@
   .certificationsSRM,
   .certificationsSTO,
   .certificationsCE,
+  .certificationsSEI,
+  .certificationsIDP,
   .certificationsPlatform {
     background: none;
     padding: 10px;
+
     .hero {
       .right {
         background: url(/img/cert_harness_bg.svg) no-repeat;
@@ -947,17 +1132,21 @@
         }
       }
     }
+
     .tabs {
       margin-top: 10px;
+
       .listTabItems {
         li {
           padding: 4px 8px !important;
           font-size: 12px;
         }
       }
+
       .certCard {
         .certCardContainer {
           justify-content: center;
+
           .right {
             .btnContainer {
               flex-direction: column;
@@ -970,6 +1159,7 @@
       }
     }
   }
+
   .certificationsCI,
   .certificationsCD,
   .certificationsFF,
@@ -977,6 +1167,8 @@
   .certificationsSRM,
   .certificationsSTO,
   .certificationsCE,
+  .certificationsSEI,
+  .certificationsIDP,
   .certificationsPlatform {
     .certDesc {
       .certCard {
@@ -1002,6 +1194,7 @@
       }
     }
   }
+
   .certificationsCI {
     .hero {
       .right {
@@ -1009,6 +1202,7 @@
       }
     }
   }
+
   .certificationsCD {
     .hero {
       .right {
@@ -1024,10 +1218,27 @@
       }
     }
   }
+
   .certificationsCCM {
     .hero {
       .right {
         background-image: url(/img/cert_ccm_bg.svg);
+      }
+    }
+  }
+
+  .certificationsSEI {
+    .hero {
+      .right {
+        background-image: url(/img/cert_harness_bg.svg);
+      }
+    }
+  }
+
+  .certificationsIDP {
+    .hero {
+      .right {
+        background-image: url(/img/cert_harness_bg.svg);
       }
     }
   }
@@ -1039,6 +1250,7 @@
       }
     }
   }
+
   .certificationsCE {
     .hero {
       .right {
