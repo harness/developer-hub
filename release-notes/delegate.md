@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-14T10:00
+date: 2024-06-17T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,9 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## June 2024
+
+### Version 24.06.83005 <!--  June 17, 2024 -->
+- Added retries count upto 10 on fetching GAR ArtifactMetaInfo V1 and V2 calls. This resolves the flakiness of the call as earlier when we were not able to fetch it in one try it was returned as null. (CDS-97612, ZD-64706)
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 
