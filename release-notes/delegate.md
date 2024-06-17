@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Hotfix
 
-- Added retry count upto 10 on GAR API calls while fetching the artifact. This resolves the flakiness of the call as earlier when we were not able to fetch it in one try it was returned as null. (CDS-97612, ZD-64706)
+- Added a retry mechanism with up to 10 attempts for validating tags in the Google Artifact Registry, addressing the issue where immediate failures occurred due to flakiness. This improvement is expected to significantly reduce flakiness and enhance the reliability of the validation process. (CDS-97612, ZD-64706)
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 
