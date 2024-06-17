@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: June 14, 2024
+#### Last updated: June 17, 2024
 
 ## June 2024
 
@@ -24,7 +24,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### Version 2.2.1
 
 **New features and enhancements**:
- - Added a new method for closing the SDK. The `closeWithFuture()` method can be used to ensure the SDK has been closed before continuing, for example, re-initializing the SDK. (FFM-11625)
+ - Added a new method for closing the SDK. The `closeWithFuture()` method can be used to ensure the SDK has been closed before continuing, for example, re-initializing the SDK. (FFM-11625, ZD-64818)
+
+### Flutter SDK
+
+#### Version 2.2.1 
+
+**Fixed issues**:
+ - Fixed an issue on Android where the SDK would crash with the error,
+  `java.lang.IllegalStateException: Reply already submitted`, if the SDK was closed and re-initialised multiple times within quick successions. (FFM-11625, ZD-64818)
 
 ### .NET SDK
 
