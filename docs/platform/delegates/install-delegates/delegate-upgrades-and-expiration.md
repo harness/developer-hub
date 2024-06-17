@@ -9,7 +9,7 @@ The Harness Delegate for Kubernetes and Helm supports automatic upgrades. Harnes
 Delegate upgrades do not affect pipelines unless the shutdown timeout is reached. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. As part of the shutdown process, there is a 10 minute timeout by default. You can configure this setting. For more information, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
 
 :::info
-The automatic upgrade feature is enabled by default for the Kubernetes manifest and Helm installation options. However, the automatic upgrade feature is not supported for the Terraform and Docker installation options.
+The automatic upgrade feature is enabled by default for the Kubernetes manifest, Terraform and Helm installation options. However, the automatic upgrade feature is not supported for the Docker installation options.
 :::
 
 ## How automatic upgrade works in the Kubernetes manifest
