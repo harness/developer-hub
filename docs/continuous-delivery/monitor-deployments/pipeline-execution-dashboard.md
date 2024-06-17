@@ -1,0 +1,129 @@
+---
+title: Viewing pipeline executions without a CD stage
+description: Monitor pipeline executions without any CD stages using explores.
+sidebar_position: 3
+---
+
+You can monitor all pipeline executions regardless of stage type using the **Executions** explore. This also includes executions that does not contain any CD stages.
+
+<DocImage path={require('./static/executions-explore.png')} width="60%" height="60%" title="Click to view full size image" />
+
+Before creating explores, we recommend that you review how to [create dashboards](/docs/platform/dashboards/create-dashboards/).
+
+The **Executions** explore has set of views related to pipeline execution.
+
+<DocImage path={require('./static/execution-views.png')} width="60%" height="60%" title="Click to view full size image" />
+
+Let's go through each of the views listed above and describe its fields and usages.
+
+### Execution Tags
+This view contains the data related to pipeline execution tags. It will contain the tags that were present in the pipeline at the start of the execution.
+
+List of dimensions:
+- Execution tag: The execution tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+
+### Executions
+This view contains the data related to pipeline executions. The data is recorded per pipeline execution, meaning if there are 10 pipeline executions, then this view will also have 10 records.
+
+Filter-only Field:
+- Current Aggregation Period: 
+
+List of dimensions:
+- Deployment Duration: Duration of the pipeline execution
+- End Time: End time of the pipeline execution
+- Execution Url: URL of pipeline execution
+- Organization ID: Organization identifier where the pipeline got executed
+- Pipeline Name: Name of the pipeline
+- Project ID: Project identifier where the pipeline got executed
+- Start Time: Start time of the pipeline execution
+- Status: Pipeline status(`RUNNING`/`ABORTED`/`SUCCESS` etc.)
+- Trigger Type: Type of trigger used to execute the pipeline(`MANUAL`/`WEBHOOK` etc.)
+
+List of measures:
+- Change Failure Rate: Total deployments that have been reverted divided by the total no. of deployments
+- Failed Deployments: No. of deployments that failed with `FAILED`/`ABORTED` statuses
+- Failure Rate: Failure rate of deployments(Failed Deployments divided by total no. of deployments)
+- Last Deployment: Last deployment time
+- Longest Deployment: Longest deployment time
+- Mean duration: Average pipeline duration
+- Mean duration trend: This compares the mean duration trend from the previous period to the current period
+- Median Duration: Median duration of the deployment
+- Success Rate: Success rate of deployments(deployments completed with `SUCCESS` status)
+- Total Deployments: Total no. of deployments
+- Total Deployments Trend: This compares the deployment count from the previous period to the current period
+
+### Organization Tags
+This view contains the data related to the organization tags. It will contain the real-time tags of the organization.
+
+List of dimensions:
+- Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+
+### Organizations
+This view contains the data related to organizations. 
+
+:::note
+
+This will only show the organizations, which had at least 1 pipeline execution(in any project). It won't display the organizations which didn't contain any pipeline execution.
+
+:::
+
+
+List of dimensions:
+- Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+
+### Pipeline Tags
+This view contains the data related to the pipeline tags. It will contain the real-time tags of the pipeline.
+
+:::note
+
+This will only show the pipelines, which had at least 1 pipeline execution. It won't display the tags for the pipelines which didn't get executed even once.
+
+:::
+
+
+List of dimensions:
+- Pipeline tag: The pipeline tag, it will be displayed as `key:value`. If there are let's say 5 tags in a pipeline, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+
+### Pipelines
+This view contains the data related to the pipelines. 
+
+:::note
+
+This will only show the pipelines, which had at least 1 execution. It won't display the pipelines which didn't had any execution.
+
+:::
+
+List of dimensions:
+- Created Time: Creation time of the pipeline
+- Modified Name: Modification time of the pipeline
+- Pipeline Name: Name of the pipeline
+
+### Projects
+This view contains the data related to the projects. 
+
+:::note
+
+This will only show the projects, which had at least 1 pipeline execution. It won't display the projects which didn't had any pipeline execution.
+
+:::
+
+List of dimensions:
+- Created Time: Creation time of the project
+- Modified Name: Modification time of the project
+- Project Name: Name of the project
+
+### Runtime Inputs
+This view contains the data related to the runtime inputs provided at the time of the pipeline execution. This will contain only the user provided runtime inputs when a pipeline is executed.
+
+:::note
+
+1. This doesn't show nested runtime inputs. For e.g. let's say a service has a variable as runtime input, and a pipeline has service also as runtime. Then we won't show the service variable in the list
+2. This doesn't store execution inputs. 
+
+:::
+
+
+List of dimensions:
+- FQN: FQN of the runtime input
+- Input Key: Key of the runtime input
+- Input Value: Value given to the runtime input
