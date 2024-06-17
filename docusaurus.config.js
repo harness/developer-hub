@@ -231,6 +231,10 @@ const config = {
                 to: "university/chaos-engineering",
               },
               {
+                label: "Internal Developer Portal",
+                to: "university/idp",
+              },
+              {
                 label: "Virtual Instructor-Led Calendar",
                 to: "https://university-registration.harness.io/calendar",
               },

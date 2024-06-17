@@ -5,35 +5,35 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
-// import AdminCertificationExamDetails from "./data/sei-certification-admin-exam-details.md";
-// import AdminCertificationReviewDetails from "./data/sei-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/sei-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/sei-certification-developer-review-guide.md";
-// import ArchitectCertificationReviewDetails from "./data/sei-certification-architect-review-guide.md";
-// import ArchitectCertificationExamDetails from "./data/sei-certification-architect-exam-details.md";
+// import AdminCertificationExamDetails from "./data/idp-certification-admin-exam-details.md";
+// import AdminCertificationReviewDetails from "./data/idp-certification-admin-review-guide.md";
+// import DeveloperCertificationExamDetails from "./data/idp-certification-developer-exam-details.md";
+// import DeveloperCertificationReviewGuide from "./data/idp-certification-developer-review-guide.md";
+// import ArchitectCertificationReviewDetails from "./data/idp-certification-architect-review-guide.md";
+// import ArchitectCertificationExamDetails from "./data/id[-certification-architect-exam-details.md";
 import IltCard from "./Card";
 import { ilt } from "./data/iltData";
 import { spt } from "./data/sptData";
 import styles from "./styles.module.scss";
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_sei_badge.svg`,
+    img: `${url}img/cert_dev_idp_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.developer,
   },
   {
-    img: `${url}img/cert_adm_sei_badge.svg`,
+    img: `${url}img/cert_adm_idp_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.administrator,
   },
   {
-    img: `${url}img/cert_arc_sei_badge.svg`,
+    img: `${url}img/cert_arc_idp_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.architect,
   },
 ];
 
-export default function CertificationsSEI() {
+export default function CertificationsIDP() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
   const location = useLocation();
@@ -82,7 +82,7 @@ export default function CertificationsSEI() {
   };
 
   return (
-    <div className={styles.certificationsSEI}>
+    <div className={styles.certificationsIDP}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -90,10 +90,10 @@ export default function CertificationsSEI() {
               <i className="fa-solid fa-arrow-left"></i> Back to University Home
             </Link>
           </div>
-          <h1>Software Engineering Insights</h1>
+          <h1>Internal Developer Portal</h1>
           <div>
-            Discover SDLC bottlenecks, assess team productivity,
-            and improve developer experience guided by data and insights.
+           Eliminate cognitive overload by letting developers
+           self-service their flows like new service onboarding.
           </div>
         </div>
         <div className={styles.right}>
@@ -187,23 +187,23 @@ export default function CertificationsSEI() {
                 </div>
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
-                    <h2>Software Engineering Insights - Developer (BETA COMING
+                    <h2>Internal Developer Portal - Developer (BETA COMING
                       SOON)</h2>
                     <img
-                      src={`${baseUrl}img/cert_dev_sei_badge.svg`}
-                      alt="Harness Certified Expert - SEI Developer"
+                      src={`${baseUrl}img/cert_dev_idp_badge.svg`}
+                      alt="Harness Certified Expert - IDP Developer"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI
+                      <strong>Product version: </strong> Harness IDP
                       Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy your
-                      applications with SEI projects.
+                      Assesses the fundamental skills to manage your
+                      applications with IDP projects.
                     </div>
                     {/* <DeveloperCertificationReviewGuide /> */}
                     {/*
@@ -259,15 +259,15 @@ export default function CertificationsSEI() {
                 <div className={styles.innerCard}>
                   <div className={styles.left}>
                     <h2>
-                      Software Engineering Insights - Administrator (BETA COMING SOON)
+                      Internal Developer Portal - Administrator (BETA COMING SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_adm_sei_badge.svg`}
-                      alt="Harness Certified Expert - SEI Administrator"
+                      src={`${baseUrl}img/cert_adm_idp_badge.svg`}
+                      alt="Harness Certified Expert - IDP Administrator"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI Enterprise Plan
+                      <strong>Product version: </strong> Harness IDPEnterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -299,7 +299,7 @@ export default function CertificationsSEI() {
 
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
-                      Assesses the fundamental skills to deploy and maintain SEI projects and the overall Harness Platform.
+                      Assesses the fundamental skills to deploy and maintain IDP projects and the overall Harness Platform.
                     </div>
                   </div>
                 </div>
@@ -350,12 +350,12 @@ export default function CertificationsSEI() {
                       SOON)
                     </h2>
                     <img
-                      src={`${baseUrl}img/cert_arc_sei_badge.svg`}
-                      alt="Harness Certified Expert - SEI Architect"
+                      src={`${baseUrl}img/cert_arc_idp_badge.svg`}
+                      alt="Harness Certified Expert - IDP Architect"
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness SEI
+                      <strong>Product version: </strong> Harness IDP
                       Enterprise Plan
                     </span>
                   </div>
@@ -363,7 +363,7 @@ export default function CertificationsSEI() {
                     <h3>Coming Soon...</h3>
                     <div className={styles.desc}>
                       Assess key technical job functions and advanced skills in
-                      design, implementation and management of SEI.
+                      design, implementation and management of IDP.
                     </div>
                   </div>
                 </div>
@@ -386,8 +386,8 @@ export default function CertificationsSEI() {
                 .filter((ilt) => {
                   return (
                     ilt.tileType === "pre requisite" ||
-                    ilt.module === "sei" ||
-                    (ilt.module === "sei" && ilt.tileType === "comming soon")
+                    ilt.module === "idp" ||
+                    (ilt.module === "idp" && ilt.tileType === "comming soon")
                   );
                 })
 
@@ -416,8 +416,8 @@ export default function CertificationsSEI() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "sei" && spt.cardType === "FREE" ||
-                    (spt.module === "sei" && spt.tileType === "comming soon")
+                    spt.module === "idp" && spt.cardType === "FREE" ||
+                    (spt.module === "idp" && spt.tileType === "comming soon")
                   );
                 })
                 .map((spt) => (
