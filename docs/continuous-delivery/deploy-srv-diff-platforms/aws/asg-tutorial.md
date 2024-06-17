@@ -52,10 +52,73 @@ Notes:
 
 ## AWS policy requirements
 
-When you set up a Harness AWS connector to connect Harness with your AWS account, the AWS IAM role must have the following policies.
+Your AWS IAM role associated with your Harness AWS connector must have the following required policies: 
 
 <details>
-<summary>AmazonEC2FullAccess</summary>
+<summary> Required Policies </summary>
+
+Policy JSON:
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "autoscaling:AttachLoadBalancers",
+                "autoscaling:AttachLoadBalancerTargetGroups",
+                "autoscaling:CreateAutoScalingGroup",
+                "autoscaling:CreateOrUpdateTags",
+                "autoscaling:DeleteAutoScalingGroup",
+                "autoscaling:DeleteLifecycleHook",
+                "autoscaling:DeletePolicy",
+                "autoscaling:DeleteScheduledAction",
+                "autoscaling:DeleteTags",
+                "autoscaling:DescribeAutoScalingGroups",
+                "autoscaling:DescribeInstanceRefreshes",
+                "autoscaling:DescribeInstanceRefreshes",
+                "autoscaling:DescribeLifecycleHooks",
+                "autoscaling:DescribeLoadBalancers",
+                "autoscaling:DescribeLoadBalancerTargetGroups",
+                "autoscaling:DescribePolicies",
+                "autoscaling:DescribeScheduledActions",
+                "autoscaling:DescribeTags",
+                "autoscaling:DetachLoadBalancers",
+                "autoscaling:DetachLoadBalancerTargetGroups",
+                "autoscaling:PutLifecycleHook",
+                "autoscaling:PutScalingPolicy",
+                "autoscaling:PutScheduledUpdateGroupAction",
+                "autoscaling:SetDesiredCapacity",
+                "autoscaling:StartInstanceRefresh",
+                "autoscaling:UpdateAutoScalingGroup",
+                "ec2:CreateLaunchTemplate",
+                "ec2:CreateLaunchTemplateVersion",
+                "ec2:DescribeLaunchTemplates",
+                "ec2:DescribeLaunchTemplateVersions",
+                "ec2:DescribeRegions",
+                "ec2:DescribeImages",
+                "ec2:RunInstances",
+                "elasticloadbalancing:DescribeListeners",
+                "elasticloadbalancing:DescribeLoadBalancers",
+                "elasticloadbalancing:DescribeRules",
+                "elasticloadbalancing:DescribeTargetHealth",
+                "elasticloadbalancing:DescribeTargetHealth",
+                "elasticloadbalancing:ModifyListener",
+                "elasticloadbalancing:ModifyRule"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+</details>
+
+Optionally, you can also give full access with just two policies: 
+
+<details>
+<summary>AmazonEC2FullAccess and DescribeRegions</summary>
 
 - **Policy Name:** [AmazonEC2FullAccess](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/AmazonEC2FullAccess).
 - **Policy ARN:** arn:aws:iam::aws:policy/AmazonEC2FullAccess.
@@ -90,18 +153,15 @@ Policy JSON:
   ]  
 }  
 ```
-</details>
 
-<details>
-<summary>DescribeRegions</summary>
+Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
+
 
 :::note
 
 The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS IAM roles used in Harness AWS connectors regardless of what AWS service you are using.
 
 :::
-
-Harness needs a policy with the `DescribeRegions` action so that it can list the available regions for you when you define your target architecture.
 
 Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#customer-managed-policies), add the `DescribeRegions` action to list those regions, and add that to any role used by the Cloud Provider.
 
@@ -123,7 +183,7 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 
 :::note
 
-Currently, Harness does not support ASG deployments with a OIDC-enabled AWS connector.
+Currently, Harness does not support ASG deployments with an OIDC-enabled AWS connector.
 
 :::
 
