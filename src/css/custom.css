@@ -323,8 +323,6 @@ html[data-theme="dark"] .tabs__item--active {
   background-color: var(--primary-1);
   border-bottom-color: var(--primary);
 }
-
-
 iframe {
   border: var(--card-border);
 }
@@ -338,11 +336,17 @@ iframe {
 summary {
   color: var(--ifm-heading-color);
 }
+/* logo-hdh-dark-theme.svg */
 html[data-theme="dark"] .navbar .navbar__logo {
-  content: url("/img/logo-hdh-dark-theme.svg");
+  content: url("/img/logo_pride_dark.svg");
 }
+/* logo_dlp.svg */
 html[data-theme="light"] .navbar .navbar__logo {
-  content: url("/img/logo_dlp.svg");
+  content: url("/img/logo_pride.svg");
+}
+
+html[data-theme="dark"] .CoveoSearchbox .magic-box {
+  border: none !important;
 }
 
 html[data-theme="dark"] .navbar {
@@ -907,7 +911,6 @@ figure p {
     transform: translate(-30%);
   }
 }
-
 /******************* chatbot css variables *************/
 
 [data-theme="dark"] {
