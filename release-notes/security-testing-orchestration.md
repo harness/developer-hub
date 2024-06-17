@@ -32,7 +32,6 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 #### Fixed issues
 
-- Fixed an issue where Burp scans failed when ingesting certain types of XML data from Burp Enterprise. (STO-7696)
 - Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
 - Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
   1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
