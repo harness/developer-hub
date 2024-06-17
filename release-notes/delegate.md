@@ -53,7 +53,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 #### Hotfix
 
-- Added retries count upto 10 on fetching GAR ArtifactMetaInfo V1 and V2 calls. This resolves the flakiness of the call as earlier when we were not able to fetch it in one try it was returned as null. (CDS-97612, ZD-64706)
+- Added retry count upto 10 on GAR API calls while fetching the artifact. This resolves the flakiness of the call as earlier when we were not able to fetch it in one try it was returned as null. (CDS-97612, ZD-64706)
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 
