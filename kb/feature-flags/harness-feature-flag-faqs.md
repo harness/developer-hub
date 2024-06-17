@@ -320,19 +320,19 @@ target not created 'target'
 This error occurs if a user is trying to add a target that already exists.
 
 #### How to retrieve the feature flag state for a specific target via API?
-The best approach today to achieve this usecase is If you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
+The best approach today to achieve this usecase is if you want to know what a specific target will get for a specific flag, you can instantiate one of the SDKs, connect with an SDK key and evaluate that target. It’s the most reliable way of doing it since it’s exactly what the target will be doing.
 
 #### How does the client SDK handle target creation when a service restarts and authenticates?
 
-When a service restarts and authenticates, it must supply the target information itself. The SDK does not store or manage targets on the harness side. Therefore, the customer's application is responsible for providing the target and its associated data during authentication. Typically, this information would be retrieved from a session if it pertains to a user, or fetched from a user store. This ensures that the service has the necessary target data upon restarting and re-authenticating.
+When a service restarts and authenticates, it must supply the target information itself. The SDK does not store or manage targets on the Harness side. Therefore, the customer's application is responsible for providing the target and its associated data during authentication. Typically, this information would be retrieved from a session if it pertains to a user, or fetched from a user store. This ensures that the service has the necessary target data upon restarting and re-authenticating.
 
-#### Does deleting a Flag in one environment deletes it from all other environment
+#### Does deleting a Flag in one environment delete it from all other environments?
 
-Yes, deleting a flag in one environment, deletes it from all environments
+Yes, deleting a flag in one environment does delete it from all environments.
 
 #### Why weren't delete actions included in the Feature Flag Admin role?
 
-Deleting a flag can lead to catastrophic consequences.To safeguard against this, we want our users to think carefully about permissions. The Feature Flag Admin role can do almost everything except delete to prevent accidental or unintended deletions.
+Deleting a flag can lead to catastrophic consequences. To safeguard against this, we want our users to think carefully about permissions. The Feature Flag Admin role can do almost everything except delete to prevent accidental or unintended deletions.
 
 #### How can I grant delete permissions to a user if the Feature Flag Admin role does not include it?
 
