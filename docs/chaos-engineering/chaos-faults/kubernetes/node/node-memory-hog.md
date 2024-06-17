@@ -10,7 +10,6 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 
 ![Node Memory Hog](./static/images/node-stress.png)
 
-
 ## Use cases
 
 - Node memory hog fault causes memory resource exhaustion on the Kubernetes node.
@@ -20,6 +19,43 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 - It simulates noisy neighbour problems due to hogging.
 - It verifies pod priority and QoS setting for eviction purposes.
 - It also verifies application restarts on OOM kills.
+
+### Permissions required
+
+Described below are the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: node-memory-hog
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+```
 
 ### Prerequisites
 - Kubernetes > 1.16
