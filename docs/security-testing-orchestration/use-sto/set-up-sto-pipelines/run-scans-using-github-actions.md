@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
   ![](./static/sto-gha-vs-harness-concepts.png)
 
-* Harness recommends that you output your scan results to a data file in [SARIF format](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning). You can then use a [Custom Ingestion step](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) to ingest the results into your pipeline. 
+* Harness recommends that you output your scan results to a data file in [SARIF format](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning). You can then use a [Custom Ingestion step](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) to ingest the results into your pipeline. 
 
   For a description of the end-to-end workflow, go to [Ingest SARIF scan results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data).
 
@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
    </table>
 
 
-4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step and set it up to ingest the data file. 
+4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step and set it up to ingest the data file.
 
 #### Example setup
 
@@ -252,7 +252,7 @@ pipeline:
    </table>
 
 
-4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step and set it up to ingest the data file. 
+4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step and set it up to ingest the data file.
 
 #### Example setup
 

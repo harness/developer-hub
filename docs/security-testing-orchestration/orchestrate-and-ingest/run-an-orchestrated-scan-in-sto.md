@@ -34,5 +34,4 @@ Here are some example workflows that illustrate how to set up an orchestration s
 ## See also
 
 - [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
-- [STO technical reference](/docs/category/sto-technical-reference)
 - [Run an ingestion-only scan in an STO pipeline](./ingestion-workflows/ingest-scan-results-into-an-sto-pipeline.md)

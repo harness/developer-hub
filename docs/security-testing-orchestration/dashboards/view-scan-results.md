@@ -49,7 +49,7 @@ The following steps describe the general workflow:
 
    You can also do the following:
 
-   - [Create a Jira ticket](/docs/security-testing-orchestration/notifications/jira-integrations) for the issue.
+   - [Create a Jira ticket](/docs/security-testing-orchestration/remediations/jira-integrations) for the issue.
 
    - Request an [exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) so that pipeline executions can proceed even if the issue is detected.
 

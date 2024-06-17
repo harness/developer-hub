@@ -1,8 +1,8 @@
 ---
-title: Custom Scan step reference for STO
-description: Set up scans using key-value pairs.
-sidebar_label: Custom Scan step reference
-sidebar_position: 135
+title: Custom Scan step for supported scanners
+description: Set up scanners using key-value pairs.
+sidebar_label: Custom Scan step for supported scanners
+sidebar_position: 10
 ---
 
 import Tabs from '@theme/Tabs';
@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 The **Custom Scan** step enables you to configure supported scanners that don't yet have their own dedicated step in the Harness Step Library.
 
-import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that-use-custom-scan-step.md';
+import CustomScannersThatUseCustomStep from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_scanners-that-use-custom-scan-step.md';
 
 <CustomScannersThatUseCustomStep />
 
@@ -29,7 +29,7 @@ import CustomScannersThatUseCustomStep from './shared/custom-scan/_scanners-that
 <details>
 <summary>Orchestration/extraction workflows</summary>
 
-import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
+import CustomScanWorkflowRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_workflow.md';
 
 <CustomScanWorkflowRepo />
 
@@ -38,7 +38,7 @@ import CustomScanWorkflowRepo from './shared/custom-scan/_workflow.md';
 <details>
 <summary>Ingestion workflows</summary>
 
-import CustomScanWorkflowIngest from './shared/custom-scan/_workflow-ingest-only.md';
+import CustomScanWorkflowIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_workflow-ingest-only.md';
 
 <CustomScanWorkflowIngest />
 
@@ -173,57 +173,57 @@ For supported values, go to the relevant scanner reference.
 
 ### Target and variant
 
-import CustomScanTargetVariant from './shared/custom-scan/_target-variant.md';
+import CustomScanTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_target-variant.md';
 
 <CustomScanTargetVariant />
 
 ### Code repositories 
 
-import CustomScanRepo from './shared/custom-scan/_repo.md';
+import CustomScanRepo from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_repo.md';
 
 <CustomScanRepo />
 
 ### Container image 
 
-import CustomScanContainer from './shared/custom-scan/_container.md';
+import CustomScanContainer from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_container.md';
 
 <CustomScanContainer />
 
 ### Application instances 
 
-import CustomScanAppInstance from './shared/custom-scan/_dast.md';
+import CustomScanAppInstance from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_dast.md';
 
 <CustomScanAppInstance />
 
 ### Configurations 
 
-import CustomScanAppConfig from './shared/custom-scan/_config.md';
+import CustomScanAppConfig from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_config.md';
 
 <CustomScanAppConfig />
 
 ### Ingestion file
 
-import CustomScanIngest from './shared/custom-scan/_ingestion-file.md';
+import CustomScanIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_ingestion-file.md';
 
 <CustomScanIngest />
 
 ### Fail on Severity
 
-import CustomScanFailOnSeverity from './shared/custom-scan/_fail-on-severity.md';
+import CustomScanFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/custom-scan/_fail-on-severity.md';
 
 <CustomScanFailOnSeverity />
 
 
 ## Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/sto-techref-category/shared/_additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ## Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

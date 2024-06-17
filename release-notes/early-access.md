@@ -232,7 +232,7 @@ Harness currently supports the following:
 * **Feature flag:** `STO_JIRA_INTEGRATION`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/notifications/jira-integrations).
+STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/remediations/jira-integrations).
 
 ## SRM early access features
 

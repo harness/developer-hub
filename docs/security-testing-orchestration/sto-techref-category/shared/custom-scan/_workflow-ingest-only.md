@@ -6,8 +6,8 @@ This workflow applies to scanner integrations that support Ingestion mode.
 
    For more information, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
 
-3. Add a [Custom Scan](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step.
+3. Add a [Custom Scan](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step.
 
-4. Review the [Important notes for Custom Scan steps](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and relevant information. 
+4. Review the [Important notes for Custom Scan steps](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference#important-notes-for-custom-scan-steps) for additional requirements and relevant information. 
 
 5. Add the relevant `key:value` pairs to **Settings**.

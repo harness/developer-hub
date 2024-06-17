@@ -115,7 +115,7 @@ Do the following if you're using a scanner step such as [**Black Duck Hub**](/do
 
 ### Custom Scan step setup 
 
-Do the following if you're using a generic [**Custom Scan**](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step for your scan:
+Do the following if you're using a generic [**Custom Scan**](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step for your scan:
 
 1. Open the step and add these settings: 
 

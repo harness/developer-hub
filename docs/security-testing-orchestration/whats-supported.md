@@ -2,7 +2,7 @@
 title: What's supported in Harness STO
 description: Supported STO features and integrations
 sidebar_label: What's supported
-sidebar_position: 5
+sidebar_position: 05
 ---
 
 
@@ -107,7 +107,7 @@ Harness STO supports the following features for generating notifications and sto
 
 - You can configure STO to generate the following notifications automatically in response to issues detected in a scan:
 
-  - [New Jira tickets](/docs/security-testing-orchestration/notifications/jira-integrations)  
+  - [New Jira tickets](/docs/security-testing-orchestration/remediations/jira-integrations)  
 
   - [Email notifications](/docs/security-testing-orchestration/notifications/email-notifications) 
   

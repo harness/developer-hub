@@ -1,8 +1,8 @@
 ---
-title: Custom Ingest step reference for STO
+title: Custom Ingest step for SARIF and JSON scan results
 description: Ingest SARIF or JSON scan results.
-sidebar_label: Custom Ingest step reference
-sidebar_position: 130
+sidebar_label: Custom Ingest step for other scanners
+sidebar_position: 20
 ---
 
 The Custom Ingest step enables you to ingest results from any third-party scanner. Harness STO supports two generic data formats:
@@ -30,7 +30,7 @@ import StoMoreInfo from '/docs/security-testing-orchestration/sto-techref-catego
 #### Scan mode
 
 
-import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion.md';
+import StoSettingScanModeIngest from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/mode/_ingestion.md';
 
 <StoSettingScanModeIngest />
 
@@ -41,7 +41,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 #### Scan Configuration
 
 
-import StoSettingProductConfigName from './shared/step_palette/scan/_config-name.md';
+import StoSettingProductConfigName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/scan/_config-name.md';
 
 
 <StoSettingProductConfigName />
@@ -68,7 +68,7 @@ The target type of the scanned object. You can ingest data for the following tar
 
 #### Name 
 
-import StoSettingTargetName from './shared/step_palette/target/_name.md';
+import StoSettingTargetName from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_name.md';
 
 
 <StoSettingTargetName />
@@ -81,7 +81,7 @@ import StoSettingTargetName from './shared/step_palette/target/_name.md';
 #### Variant
 
 
-import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
+import StoSettingTargetVariant from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
 
 
 
@@ -95,7 +95,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 ### Workspace (_repository_)
 
 
-import StoSettingTargetWorkspace from './shared/step_palette/target/_variant.md';
+import StoSettingTargetWorkspace from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/target/_variant.md';
 
 
 
@@ -111,7 +111,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/target/_variant.md'
 #### Ingestion File
 
 
-import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
+import StoSettingIngestionFile from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/ingest/_file.md';
 
 
 
@@ -123,7 +123,7 @@ import StoSettingIngestionFile from './shared/step_palette/ingest/_file.md';
 
 #### Log Level
 
-import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
+import StoSettingLogLevel from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_log-level.md';
 
 <StoSettingLogLevel />
 
@@ -131,7 +131,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 #### Additional CLI flags
 
-import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
+import StoSettingCliFlags from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_cli-flags.md';
 
 <StoSettingCliFlags />
 
@@ -141,7 +141,7 @@ import StoSettingCliFlags from './shared/step_palette/all/_cli-flags.md';
 #### Fail on Severity
 
 
-import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severity.md';
+import StoSettingFailOnSeverity from '/docs/security-testing-orchestration/sto-techref-category/shared/step_palette/all/_fail-on-severity.md';
 
 
 <StoSettingFailOnSeverity />
@@ -149,14 +149,14 @@ import StoSettingFailOnSeverity from './shared/step_palette/all/_fail-on-severit
 
 ### Additional Configuration
 
-import ScannerRefAdditionalConfigs from './shared/_additional-config.md';
+import ScannerRefAdditionalConfigs from '/docs/security-testing-orchestration/sto-techref-category/shared/_additional-config.md';
 
 <ScannerRefAdditionalConfigs />
 
 
 ### Advanced settings
 
-import ScannerRefAdvancedSettings from './shared/_advanced-settings.md';
+import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto-techref-category/shared/_advanced-settings.md';
 
 <ScannerRefAdvancedSettings />
 

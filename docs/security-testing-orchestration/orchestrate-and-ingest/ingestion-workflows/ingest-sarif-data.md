@@ -37,7 +37,7 @@ The following workflow describes how to set up an ingestion pipeline for any sca
 
 3. Add an ingestion step after the Run step and configure it as follows.
 
-   1. If your scanner has its own step in the Step Library, add that step. If your scanner doesn't have its own step, add a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step.
+   1. If your scanner has its own step in the Step Library, add that step. If your scanner doesn't have its own step, add a [Custom Ingest](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference) step.
    
    2. Set the **Scan Mode** to **Ingestion**.
    
@@ -70,7 +70,7 @@ Here's an example of how to configure a Gitleaks step to ingest a SARIF data fil
 
 The following topics describe end-to-end example pipelines for ingesting SARIF data:
 
-- [Custom Ingest settings reference](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+- [Custom Ingest settings reference](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference)
 
 - [Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 

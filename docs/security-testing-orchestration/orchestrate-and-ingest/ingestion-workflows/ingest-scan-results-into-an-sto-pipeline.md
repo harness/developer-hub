@@ -41,4 +41,3 @@ Here are some example ingestion-only workflows that target specific use cases:
 - [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data)
 - [Ingest Results from unsupported scanners](./ingesting-issues-from-other-scanners.md)
 - [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
-- [STO technical reference](/docs/category/sto-technical-reference)

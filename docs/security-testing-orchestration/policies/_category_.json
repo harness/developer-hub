@@ -1,11 +1,11 @@
 {
-    "label": "Policies",
-    "position": 40,
+    "label": "Enforce policies for governance",
+    "position": 70,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "STO policies"
+        "title": "Enforce policies for governance"
     }
 }

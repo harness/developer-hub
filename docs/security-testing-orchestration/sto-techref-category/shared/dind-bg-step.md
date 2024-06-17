@@ -1,7 +1,7 @@
 The following use cases require a Docker-in-Docker background step in your pipeline:
 - Container image scans on Kubernetes and Docker build infrastructures
   - Required for [Orchestration](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) and Dataload scan modes
-- [Custom Scan steps](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) on Kubernetes and Docker build infrastructures
+- [Custom Scan steps](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) on Kubernetes and Docker build infrastructures
   - Required for all target types and Orchestration/DataLoad modes
 
 The following use cases do not require a Docker-in-Docker background step:

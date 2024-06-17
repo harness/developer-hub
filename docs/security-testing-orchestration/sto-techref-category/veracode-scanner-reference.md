@@ -265,7 +265,7 @@ The following pipeline example illustrates a dataLoad workflow to ingest data fr
 
 1. A Background step that runs a Docker-in-Docker service (required if you're using a Custom Scan step to configure your integration). 
 
-2. A [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-scan-reference) step that specifies the information needed to ingest the scan results from the Veracode server.
+2. A [Custom Ingest](/docs/security-testing-orchestration/custom-scanning/custom-scan-reference) step that specifies the information needed to ingest the scan results from the Veracode server.
 
 ![](./static/veracode-pipeline-example.png)
 

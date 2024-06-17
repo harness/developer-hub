@@ -69,7 +69,7 @@ import {
                 module: MODULES.sto,
                 description:
                   "STO includes integrations with over 30 external tools for scanning repositories, container images, applications, and configurations.",
-                link: "/docs/category/sto-technical-reference",
+                link: "/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanners-supported-by-sto",
               },
               {
                 title: "Ingest SARIF scan results",
@@ -104,7 +104,7 @@ import {
               module: MODULES.ci,
               description:
                 "You can easily create Jira tickets for issues detected during an STO build.",
-              link: "/docs/security-testing-orchestration/notifications/jira-integrations",
+              link: "/docs/security-testing-orchestration/remediations/jira-integrations",
             },
             {
               title: "Navigate and drill down into detected vulnerabilities",

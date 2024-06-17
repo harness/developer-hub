@@ -941,7 +941,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
   * [Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)
-  * [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+  * [Custom Ingest](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference)
   * [Nikto](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
   * [Nmap](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
   * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
@@ -1065,7 +1065,7 @@ This update includes the following fixed issues:
 
 ###### Early access 
 
-* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/notifications/jira-integrations):
+* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/remediations/jira-integrations):
    * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
 
      Before:
@@ -1130,7 +1130,7 @@ The following security steps are now generally available:
 
 ###### Early access 
 
-* The new [Jira integration](/docs/security-testing-orchestration/notifications/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
+* The new [Jira integration](/docs/security-testing-orchestration/remediations/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
 
 ###### Fixed issues
 
@@ -1187,7 +1187,7 @@ The following security steps are now generally available:
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/notifications/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/remediations/jira-integrations). (STO-5467)
 
 ###### Fixed issues
 
