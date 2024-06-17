@@ -60,6 +60,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Version 1.8.1
 
+**Fixed issues**:
  - Patched CVE for `braces`. (FFM-11673)
 
 #### Version 1.8.0
