@@ -1,10 +1,13 @@
 ---
-title: How to run Ansible using Harness Step Groups
+title: Ansible
+description: Run ansible in a Harness pipeline
 ---
 
 # Overview
 
 To run ansible in a Harness pipeline, we can leverage containerized step groups to clone the repo with our Ansible playbooks, and a run step to execute the playbooks based on your operating model.
+
+[An example of a step group template following the below guide is located here.](https://github.com/harness-community/solutions-architecture/tree/main/kb/reference-architectures/ansible)
 
 # Prerequisites
 

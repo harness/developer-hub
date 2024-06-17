@@ -18,7 +18,7 @@
           
           In most cases, using `dockerd` is a faster and more secure way to set up the background step. For more information, go to the **TLS** section in the [Docker quick reference](https://hub.docker.com/_/docker).
 
-         If the DinD service doesn't start with `dockerd`, clear the **Entry Point** field and then run the pipeline again. This starts the service with the default [entry point](https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime).
+          If the DinD service doesn't start with `dockerd`, clear the **Entry Point** field and then run the pipeline again. This starts the service with the default [entry point](https://docs.docker.com/engine/reference/run/#entrypoint-default-command-to-execute-at-runtime).
 
        5. Under **Optional Configuration**, select the **Privileged** checkbox.
 

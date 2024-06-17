@@ -223,6 +223,10 @@ const config = {
                 to: "university/sto",
               },
               {
+                label: "Software Engineering Insights",
+                to: "university/sei",
+              },
+              {
                 label: "Chaos Engineering",
                 to: "university/chaos-engineering",
               },
@@ -277,7 +281,7 @@ const config = {
           },
           {
             position: "right",
-            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign Up</button></span>',
+            html: '<span  class="tool" hover-tooltip="Sign up for the Harness Platform" tooltip-position="bottom"><button class=" button button--cta">Sign up</button></span>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
         ],

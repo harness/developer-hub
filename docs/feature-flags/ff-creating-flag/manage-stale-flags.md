@@ -10,17 +10,11 @@ Harness Feature Flags helps to identify stale flags and automates the process of
 
 Stale flags are flags that are no longer needed as the change behind them has been widely rolled out and no longer needs any control in production.
 
-### Find potentially stale flags
+### Identifying potentially stale flags
 
-- At the top of your Feature Flags overview screen, you will find a list of filters.
-- One of those filters is labeled **Potentially Stale Flags**.
-- Click this list to see which flags have been highlighted by Harness as potentially stale.
+#### Definition of potentially stale flags
 
-By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale.
-
-### Definition of potentially stale
-
-Harness defines _potentially stale_ flags as follows
+Harness defines _potentially stale_ flags based on the following criteria:
 
 - Flag has not had evaluations in the last 60 days.
 
@@ -32,7 +26,13 @@ Or
 
 - Flags that have been globally set to a single value for longer than 30 days.
 
-### Mark flags for cleanup
+#### Finding potentially stale flags
+
+To see the flags identified by Harness as potentially stale, go to the top of the **Feature Flags Overview** and select the **Potentially Stale Flags** filter.
+
+By seeing which flags are potentially stale, your team can choose to either manually clean them up, mark them for automated cleanup via Harness, or mark them as not being stale.
+
+### Actions for Potentially Stale Flags
 
 When viewing all flags marked as potentially stale, you have two options within Harness
 
@@ -44,7 +44,7 @@ Note that once a flag has been marked as _ready for cleanup_, you can still undo
 
 ![A view of the Harness Feature Flags dashboard with the potentially stale flags filter selectd](./static/stale-flags-filter.png)
 
-## Flag cleanup automation
+## Automating Flag cleanup
 
 ### What’s needed
 
@@ -63,62 +63,111 @@ At this time, the following languages are supported for flag cleanup automation:
 - Java
 - Kotlin
 - Go
+- Javascript 
+
+There are some slight differences when using Javascript for flag cleanup automation compared to the other languages listed. Have a read to learn more about the differences in the implementation of flag cleanup automation in Javascript. 
 
 ### Set up a flag cleanup pipeline
 
-In order to use flag cleanup automation you will need to [import a pipeline template](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/).
+ 1. To use flag cleanup automation,  you must [import a pipeline template](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/). The GitHub repo to import from is [here](https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml). 
+- Note that the identifier and the name must match.
 
-- The URL to import from is https://github.com/harness/flag_cleanup/blob/unscripted/docs/pipelines/flag_cleanup_pipeline.yaml
-- Note that the identifier and the name must match
+ 2. To configure secrets:
 
-<DocVideo src="https://www.youtube.com/embed/sSP1nxrBwxo?si=dGI7vBmio6pfhWnX" />
+ - A Github connector to connect to the repo to clone the code to clean up. The [demo repo is here](https://github.com/harness/flag_cleanup) and the branch to use is “unscripted”.
+ 
+ ![Step one of importing a pipeline template](./static/setting-up-cleanup-1.png)
+ 
+ - A Github token to allow the creation of PRs.
+ 
+ ![Step two of importing a pipeline template](./static/setting-up-cleanup-2.png)
+ 
+ - A Harness API key to get the list of flags marked for cleanup.
+ 
+ ![Step three of importing a pipeline template](./static/setting-up-cleanup-3.png)
+ 
+ - A Docker connector to pull down the plugin image.
+ 
+ ![Step four of importing a pipeline template](./static/setting-up-cleanup-4.png)
 
-### Training your cleanup configuration file
+ ### Running the Flag Cleanup Pipeline
 
-You will need update the rules file with the correct tree-sitter query.
+ 1. Select the repository and branch for the codebase.
+  
+    ![Step one of running the flag cleanup pipeline](./static/running-cleanup-pipeline-1.png)
 
-<DocVideo src="https://www.youtube.com/embed/Y22vmMNwPYU?si=W-SHEQlHV-3cNYOg" />
+ 2. Provide the GitHub token, GitHub username, and Harness API key.
 
-### Secrets configuration for Gitub
+    ![Step two of running the flag cleanup pipeline](./static/running-cleanup-pipeline-2.png)
 
-- A Github connector to connect to the repo to clone down the code to cleanup. The [demo repo is here](https://github.com/harness/flag_cleanup) and the branch to use is “unscripted”.
+ 3. Specify the paths to the code (e.g., JavaScript paths).
 
-![Step one of importing a pipeline template](./static/setting-up-cleanup-1.png)
+    ![Step three of running the flag cleanup pipeline](./static/running-cleanup-pipeline-3.png)
 
-- A Github token to allow the creation of PRs.
+ 4. Select the DockerHub connector and run the pipeline.
 
-![Step two of importing a pipeline template](./static/setting-up-cleanup-2.png)
-
-- A Harness API key to get the list of flags marked for cleanup.
-
-![Step three of importing a pipeline template](./static/setting-up-cleanup-3.png)
-
-- A Docker connector to pull down the plugin image.
-
-![Step four of importing a pipeline template](./static/setting-up-cleanup-4.png)
-
-### Run the flag cleanup pipeline
-
-Here the pipeline is set up and our flags marked for cleanup. So now all we need to do is run the pipeline to do the cleanup.
-
-- Select the repo for the codebase and the branch.
-
-![Step one of running the flag cleanup pipeline](./static/running-cleanup-pipeline-1.png)
-
-- Select the Github token, Github username, and Harness API Key.
-
-![Step two of running the flag cleanup pipeline](./static/running-cleanup-pipeline-2.png)
-
-- Select what code to run against. The example repo includes both Go and Java. These are the paths to run against the Go code:
-
-![Step three of running the flag cleanup pipeline](./static/running-cleanup-pipeline-3.png)
-
-- Select the DockerHub connector to pull down the plugin container, and then select **Run**.
-
-![Step four of running the flag cleanup pipeline](./static/running-cleanup-pipeline-4.png)
+    ![Step four of running the flag cleanup pipeline](./static/running-cleanup-pipeline-4.png)
 
 As the pipeline runs, logs from the plugin show it getting the flags and performing the code changes.
 
 ![Output of cleanup pipline](./static/output-of-cleanup-pipeline.png)
 
 You can then navigate to the PR and see the changes it made.
+
+<DocVideo src="https://www.youtube.com/embed/sSP1nxrBwxo?si=dGI7vBmio6pfhWnX" />
+
+### Understanding the JavaScript Flag Cleanup Tool
+
+This section describes the `properties.json` file structure, its role, and how to write custom flag cleanup rules for JavaScript.
+
+In the JavaScript demo folder, you will find two files:
+ - `examples.js`: Contains the code. In a real repository, there might be hundreds of files, only some of which contain references to the feature flag.
+ - `config/properties.json`: Defines how to find feature flag references in the codebase.
+
+```
+
+{
+  "methodProperties": [
+    {
+      "methodName": "isEnabled",
+      "flagType": "treated",
+      "argumentIndex": 0
+    },
+    {
+      "methodName": "doSomething",
+      "flagType": "treated",
+      "argumentIndex": 0
+    },
+    {
+      "methodName": "isToggleDisabled",
+      "flagType": "treated",
+      "argumentIndex": 0
+    }
+  ]
+}
+
+```
+
+ - `methodProperties`: An array of methods used to check flag values.
+ - `methodName` : Name of the method to be checked.
+ - `flagType`: Label as "treated" (specific to Piranha).
+ - `argumentIndex`: Position of the flag name in the argument list (e.g., doSomething("STALE_FLAG") has an index of 0).
+
+### Running the flag cleanup pipeline for JavaScript
+
+Here are some points to consider when using Javascript for the feature flag cleanup:
+ 1. Ensure your `properties.json` is configured correctly to identify feature flag references in your codebase.
+ 2. Import the pipeline template and configure the required connectors and tokens as described.
+ 3. Run the pipeline and review the logs to see the flags identified and cleaned up.
+
+By incorporating these steps, you can effectively manage stale flags in your JavaScript codebase using Harness’s automated flag cleanup tool.
+
+:::info
+You can find the GitHub repo for the Feature Flag cleanup in Javascript [here](https://github.com/harness/flag_cleanup/blob/main/docs/1.1_understanding_js_rules.md).
+:::
+
+### Training your cleanup configuration file
+
+You will need update the rules file with the correct tree-sitter query.
+
+<DocVideo src="https://www.youtube.com/embed/Y22vmMNwPYU?si=W-SHEQlHV-3cNYOg" />

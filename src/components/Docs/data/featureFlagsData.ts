@@ -33,7 +33,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "Choose the right SDK for your application from our numerous client and server SDKs, and then configure it to monitor your flags.",
-          link: "/docs/category/use-feature-flag-sdks",
+          link: "/docs/category/use-ff-sdks",
         },
       ],
     },
