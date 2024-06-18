@@ -489,9 +489,9 @@ Once you enable this option and run a CD stage with the Terraform Plan step, you
 
 The format for the expression is:
 - **humanReadableFilePath**:
-  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].[Provisoner Identifier]_planHumanReadable">`
+  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].[Provisioner Identifier]_planHumanReadable">`
 
-For example, if the Terraform Plan stage, step Ids, and Terraform provision identifier are `tf` then you would get the following expressions:
+For example, if the Terraform Plan stage, step Ids, and Terraform provisioner identifier are `tf` then you would get the following expressions:
 
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
