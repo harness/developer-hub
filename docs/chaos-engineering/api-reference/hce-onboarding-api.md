@@ -43,7 +43,7 @@ You can download for `AMD64` (or x86_64) and `Arm64` variants in Linux OS.
   <TabItem value="AMD64 / x86_64">
 
 ```bash
-[ $(uname -m) = x86_64 ] && curl -Lo ./onboard_hce_aws https://github.com/harness/onboard_hce_aws/releases/download/0.0.3/cli-linux-amd64
+[ $(uname -m) = x86_64 ] && curl -Lo ./onboard_hce_aws https://app.harness.io/public/shared/tools/chaos/onboard_hce_aws/0.2.0/onboard_hce_cli-0.2.0-linux-amd64
 ```
 
 </TabItem>
@@ -51,7 +51,7 @@ You can download for `AMD64` (or x86_64) and `Arm64` variants in Linux OS.
   <TabItem value="Arm64">
 
 ```bash
-[ $(uname -m) = aarch64 ] && curl -Lo ./onboard_hce_aws https://github.com/harness/onboard_hce_aws/releases/download/0.0.3/cli-linux-arm64
+[ $(uname -m) = aarch64 ] && curl -Lo ./onboard_hce_aws https://app.harness.io/public/shared/tools/chaos/onboard_hce_aws/0.3.0/onboard_hce_cli-0.3.0-linux-arm64
 ```
 
 * After downloading, add the execution permissions and move it to your binary installation directory using the following commands:
@@ -74,14 +74,14 @@ You can download for `M1/ARM Macs` and `Intel Macs` variants in MacOS.
 <TabItem value="Intel Macs">
 
 ```bash
-[ $(uname -m) = x86_64 ] && curl -Lo ./onboard_hce_aws https://github.com/harness/onboard_hce_aws/releases/download/0.1.0/cli-darwin-amd64
+[ $(uname -m) = x86_64 ] && curl -Lo ./onboard_hce_aws https://app.harness.io/public/shared/tools/chaos/onboard_hce_aws/0.3.0/onboard_hce_cli-0.3.0-darwin-amd64
 ```
 </TabItem>
 
 <TabItem value="M1 / ARM Macs">
 
 ```bash
-[ $(uname -m) = arm64 ] && curl -Lo ./onboard_hce_aws https://github.com/harness/onboard_hce_aws/releases/download/0.2.0/cli-darwin-arm64
+[ $(uname -m) = arm64 ] && curl -Lo ./onboard_hce_aws https://app.harness.io/public/shared/tools/chaos/onboard_hce_aws/0.3.0/onboard_hce_cli-0.3.0-darwin-arm64
 ```
 
 * After downloading, add the execution permissions and move it to your binary installation directory using the following commands:
