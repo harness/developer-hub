@@ -1,7 +1,7 @@
 ---
 title: Internal Developer Portal release notes
 sidebar_label: Internal Developer Portal
-date: 2024-05-23T20:00
+date: 2024-06-18T20:00
 sidebar_position: 12
 ---
 
