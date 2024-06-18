@@ -27,7 +27,7 @@ The `onboard_hce_aws` CLI streamlines and simplifies the HCE onboarding process.
 
 ## Install the onboard HCE AWS
 
-Onboard HCE AWS offers pre-compiled binaries that are available for download on our [releases page](https://github.com/harness/onboard_hce_aws/releases).
+Onboard HCE AWS offers pre-compiled binaries that are available for download based on the operating system and its variants.
 
 To install, follow these steps.
 1. Download the appropriate binary for your platform from the **Assets** section.
