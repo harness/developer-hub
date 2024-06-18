@@ -469,10 +469,9 @@ In case you want to display the same information you have ingested on your Overv
 
 ```sh
 
-EMAIL_ID="<+pipeline.variables.email-id>"
+EMAIL_ID="<+pipeline.variables.emailid>"
 JIRA_TOKEN="<+pipeline.variables.jiratoken>"
-PROJECT_LEAD="<+pipeline.variables.projectlead>"
-NEW_PROJECT_NAME="<+pipeline.variables.projectname>"
+NEW_PROJECT_NAME="<+pipeline.variables.newprojectname>"
 DESCRIPTION="<+pipeline.variables.description>"
 NEW_PROJECT_KEY="<+pipeline.variables.newprojectkey>"
 PROJECT_LEAD_ACCOUNT_ID="<+pipeline.variables.projectleadaccountid>"
@@ -514,12 +513,10 @@ We have used few pipeline variables in the body, which will be used to take inpu
 9. Go to **Variables** on the right side of the page and add the following variables and have the input type as **Runtime Input**. 
     - emailid
     - jiratoken
-    - projectkey
-    - componentname
-    - issuetype
-    - issuesummary
-    - issuecontent
-    - labels
+    - newprojectname
+    - newprojectkey
+    - projectleadaccountid
+    - projecttemplatekey
     - usergroup
 
 10. Apply the changes.
@@ -551,7 +548,7 @@ curl --location 'https://app.harness.io/gateway/v1/catalog/custom-properties' \
             "value_overrides": [
                 {
                     "entity_ref": "YOUR_COMPONENT_LINK",
-                    "override_value": "<+stage.spec.execution.steps.create_jira_ticket.output.outputVariables.ISSUE_KEY>"
+                    "override_value": "<+stage.spec.execution.steps.create_jira_project.output.outputVariables.PROJECT_KEY>"
                 }
             ],
             "value": "0"
@@ -588,10 +585,10 @@ In the above body the openTicket which got created in JIRA will be added, to kin
 
 ```json
 {
-    "key": "<+pipeline.variables.projectkey>",
-    "leadAccountId": "<+pipeline.variables.leadaccountid>",
-    "templateKey": "<+pipeline.variables.templatekey>",
-    "name": "<+pipeline.variables.projectname>"
+    "key": "<+pipeline.variables.newprojectkey>",
+    "leadAccountId": "<+pipeline.variables.projectleadaccountid>",
+    "templateKey": "<+pipeline.variables.projecttemplatekey>",
+    "name": "<+pipeline.variables.newprojectname>"
 }
 ```
 
@@ -687,24 +684,39 @@ spec:
   parameters:
     - title: Service Details
       required:
-        - projectkey
-        - projectname
-        - templatekey
+        - emailid
+        - jiratoken
+        - newprojectname
+        - newprojectkey
+        - projectleadaccountid
+        - projecttemplatekey
         - usergroup
       properties:
-        projectkey:
+        newprojectkey:
           title: Jira Project Key
           type: string
           default: DEMO
           description: Your Project will have this key which will appear in the url
-        projectname:
+        newprojectname:
           type: string
           title: Add a project name
           default: demo
-        templatekey:
+        projecttemplatekey:
           type: string
           title: Add the template type
-          desciption: Select and add a template     
+          description: Select and add a template  
+        jiratoken:
+          type: string
+          title: Add the Jira Token
+          ui:widget: password
+        projectleadaccountid:
+          type: string
+          title: Add the account id for your project lead 
+          description: Atlassian Account ID  for the project lead   
+        emailid:
+          type: string
+          tile: Add the Atlassian emailid
+          description: emailid to be used for atlassian login     
         usergroup:
           title: Choose an Owner for the Service
           type: string
@@ -725,10 +737,13 @@ spec:
       input:
         url: "PIPELINE URL"
         inputset:
-          projectkey: ${{ parameters.projectkey }}
-          projectname: ${{ parameters.projectname }}
-          templatekey: ${{ parameters.templatekey }}
+          newprojectkey: ${{ parameters.newprojectkey }}
+          newprojectname: ${{ parameters.newprojectname }}
+          projecttemplatekey: ${{ parameters.projecttemplatekey }}
+          jiratoken: ${{ parameters.jiratoken }} 
           usergroup: ${{ parameters.usergroup }}
+          projectleadaccountid: ${{ parameters.projectleadaccountid }}
+          emailid: ${{ parameters.emailid }}
         apikey: ${{ parameters.token }}
 
   output:
