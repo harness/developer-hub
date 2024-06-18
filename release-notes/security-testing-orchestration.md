@@ -474,6 +474,12 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
   - With this enhancement, the orchestration step always downloads results for the scanned branch or pull request.
   - When **Branch Scan** is selected in the [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration), the step scans the branch or pull request specified in the pipeline execution.
 
+:::note
+
+**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
+
+:::
+
   <!-- 
   - To configure pull-request scans, go to [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration).
 
