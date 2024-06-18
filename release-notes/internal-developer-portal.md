@@ -29,7 +29,8 @@ Happy Juneteenth and welcome to the June release of IDP. In this release we have
 
 #### New features and enhancements
 
-- Enhanced error handling for Custom Plugin. You can now see the status of your custom plugin.[IDP-2069]
+- Enhanced error handling for Custom Plugin. You can now see the latest build status along with the enablement status of your custom plugin.[IDP-2069]
+
 - Added three new steps in Developer Portal stage for Harness onboarding of new application. [IDP-2783] 
     1. Create Organization: Creates a Harness Org for the account you have provided Harness API key.
     2. Create Project: Creates a Harness Project in the org provided. 
@@ -44,6 +45,10 @@ Happy Juneteenth and welcome to the June release of IDP. In this release we have
 - Created a new Catalog Info YAML check for Scorecards which can check if an annotation exists or not. [IDP-2609]
 
 ![](./static/idp-checks-annotation-exist.png)
+
+- Added support for view source and TechDocs for Harness Code Integration. [IDP-3030]
+
+- We now have a GET API to fetch all the Custom Catalog Properties. [IDP-2711]
 
 #### Bug Fixes
 
