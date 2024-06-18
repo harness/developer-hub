@@ -677,7 +677,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul> </td>
     </tr>
     <tr>
-    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node--memory-hog#permissions-required"> Node memory hog </a></td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog#permissions-required"> Node memory hog </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -711,7 +711,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul></td>
     </tr>
     <tr>
-    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node- network-loss#permissions-required"> Node network loss </a></td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-network-loss#permissions-required"> Node network loss </a></td>
     <td> Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -762,7 +762,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list, patch, update]</li></ul></td>
     </tr>
     <tr>
-    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-density#permissions-required"> Kubelet density </a></td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#permissions-required"> Kubelet density </a></td>
     <td> Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
