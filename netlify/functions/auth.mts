@@ -7,7 +7,7 @@ interface Body {
 }
 export default async (req: Request, context: Context) => {
   const header = {
-    "Access-Control-Allow-Origin": "https://app.harness.io",
+    "Access-Control-Allow-Origin": "https://qa.harness.io",
     "Access-Control-Allow-Credentials": "true",
     "Access-Control-Allow-Methods": "POST,OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type,Authorization",
