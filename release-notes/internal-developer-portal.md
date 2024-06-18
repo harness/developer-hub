@@ -23,21 +23,21 @@ Review the notes below for details about recent changes to Harness Internal Deve
 
 <!-- June 18, 2024 -->
 
-Happy Juneteenth!, and Welcome to the June release of IDP. This release we have focused working on adoption and scalability features like improvements to the developer portal stage to enhance the self service onboarding. 
+Happy Juneteenth and welcome to the June release of IDP. In this release we have added adoption and scalability features like improvements to the Developer Portal Pipeline stage to enhance the self service onboarding. 
 
 - **New Docs and Tutorials:** [How to create Jira Projects and Jira Tickets using IDP](https://developer.harness.io/docs/internal-developer-portal/tutorials/how-to-use-catalog-ingestion-api/), [How to write catalog-info.yaml](https://developer.harness.io/docs/internal-developer-portal/catalog/how-to-create-idp-yaml).
 
 #### New features and enhancements
 
-- Enhanced Error handling for Custom Plugin, this now displays the status of the custom plugin.[IDP-2069]
-- Add support for three new steps in Developer Portal stage to create Harness Entity. [IDP-2783] 
+- Enhanced error handling for Custom Plugin. You can now see the status of your custom plugin.[IDP-2069]
+- Added three new steps in Developer Portal stage for Harness onboarding of new application. [IDP-2783] 
     1. Create Organization: Creates a Harness Org for the account you have provided Harness API key.
     2. Create Project: Creates a Harness Project in the org provided. 
     3. Create Resource: Takes [Terraform Provider Resource Definition](https://developer.harness.io/docs/platform/automation/terraform/harness-terraform-provider-overview/) as input to create Harness Entities like Pipelines, Connectors etc. 
 
 ![](./static/idp-harness-entities.png)
 
-- Added support to show delegate related errors in Scorecards. For example any github related checks if failed due to issue in github connector set-up using delegate then it will show the same error on scorecard evaluation.  [IDP-2940]
+- Added support to show delegate related errors in Scorecards. For example any GitHub related checks if failed due to an issue in GitHub connector setup using delegate then it will show the same error on scorecard evaluation. [IDP-2940]
 
 - We have upgraded the Harness CI/CD plugin to the latest version which includes support for new nav URL in annotations. [IDP-2936]
 
