@@ -90,6 +90,12 @@ The predefined configuration to use for the scan.
   - Manual executions - The branch defined in SonarQube ([Target variant](#variant))
   - Triggered executions - The pull request defined in SonarQube 
 
+:::note
+
+**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`.  Contact [Harness Support](mailto:support@harness.io) to enable this option.
+
+:::
+
 
 ### Target
 

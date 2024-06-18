@@ -64,6 +64,12 @@ Here's a simple extraction setup for SonarScanner:
    - **Branch Scan** Extract results based on how the pipeline is executed:
       - Manual executions - The branch defined in SonarQube (**Target variant**, specified below)
       - Triggered executions - The pull request defined in SonarQube 
+
+:::note
+
+**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`.  Contact [Harness Support](mailto:support@harness.io) to enable this option.
+
+:::
    
 #### Target settings
 
