@@ -27,7 +27,7 @@ In an *ingestion scan*, you configure a step to ingest scan results from a data 
 An ingestion scan requires at least two steps:
 
 1. A Run step saves the scan data to a shared folder. 
-2. A Security or Security Tests step ingests the data from the shared folder.
+2. A Security Tests step ingests the data from the shared folder.
 
 For more information, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). 
 

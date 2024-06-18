@@ -51,7 +51,7 @@ This example uses a Snyk step in orchestration mode, which runs [`snyk test`](ht
 
 1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) that points to the repository you want to scan.
 
-2. Add a Security Tests or Build stage to your pipeline.
+2. Add a Security or Build stage to your pipeline.
 
 <!-- commenting out this step, doesn't look like it's necessary for orchestration scans
 
@@ -86,7 +86,7 @@ The scan stage in this pipeline has the following steps:
 
 1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan.
 
-2. Add a Security Tests or Build stage to your pipeline.
+2. Add a Security or Build stage to your pipeline.
 
 3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`.
 
@@ -151,7 +151,7 @@ The scan stage in this pipeline has the following steps:
 
 1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan.
 
-2. Add a Security Tests or Build stage to your pipeline.
+2. Add a Security or Build stage to your pipeline.
 
 3. Go to the **Overview** tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`.
 
@@ -201,9 +201,8 @@ The scan stage in this pipeline has the following steps:
 
 ## Snyk Container ingestion example
 
-This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands/container-test) to scan a container image. The scan stage consists of three steps:
+This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands/container-test) to scan a container image. The scan stage consists of two steps:
 
-- A Background step that runs Docker-in-Docker as a background service in Privileged mode (required when scanning a container image).
 
 - A Run step that scans the image and publishes the results to a SARIF file.
 
@@ -211,14 +210,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
 ![](../static/snyk-scans-image-pipeline-03.png)
 
-1. Add a Security Tests or Build stage to your pipeline.
-
-2. Add a **Background** step to the stage and set it up as follows:
-
-   1. Dependency Name = `dind`
-   2. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
-   3. Image = `docker:dind`
-   4. Under **Optional Configuration**, select the **Privileged** option.
+1. Add a Security or Build stage to your pipeline.
 
 3. Add a **Run** step and set it up as follows:
 
@@ -235,13 +227,11 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
       Snyk maintains a set of [snykgoof](https://hub.docker.com/u/snykgoof) repositories that you can use for testing your container-image scanning workflows.
 
-   5. Under **Optional Configuration**, select the **Privileged** option.
-
-   6. Under **Environment Variables**, add a variable for your Snyk API token. Make sure that you save your token to a [Harness secret](/docs/platform/secrets/add-use-text-secrets/):
+   5. Under **Environment Variables**, add a variable for your Snyk API token. Make sure that you save your token to a [Harness secret](/docs/platform/secrets/add-use-text-secrets/):
 
       SNYK_TOKEN = [**`<+secrets.getValue("snyk_api_token")>`**](/docs/platform/secrets/secrets-management/secrets-and-log-sanitization)
 
-   7. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
+   6. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
       This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
 
@@ -276,7 +266,7 @@ The scan stage in this pipeline has the following steps:
 
 1. Add a [codebase connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) to your pipeline that points to the repository you want to scan.
 
-2. Add a Security Tests or Build stage to your pipeline.
+2. Add a Security or Build stage to your pipeline.
 
 3. Go to the Overview tab of the stage. Under **Shared Paths**, enter the following path: `/shared/scan_results`
 
@@ -462,7 +452,7 @@ pipeline:
 
 ### Snyk Code scan pipeline (ingestion)
 
-The following illustrates the [Snyk Code ingestion workflow example](#sast-ingestion-example) above for building and scanning a .NET image.
+The following illustrates the [Snyk Code ingestion workflow example](#sast-ingestion-example) above.
 
 <details>
 <summary>YAML pipeline, Snyk Code scan, Ingestion mode</summary>
@@ -548,7 +538,7 @@ pipeline:
 
 ### Snyk Container scan pipeline (ingestion)
 
-The following illustrates the [container image ingestion workflow example](#container-image-scan-ingestion) above for building and scanning a .NET image.
+The following illustrates the [container image ingestion workflow example](#snyk-container-scan-pipeline-ingestion) above for building and scanning a .NET image.
 
 <details>
 <summary>YAML pipeline, container image scan, Ingestion mode</summary>
@@ -558,7 +548,7 @@ pipeline:
   allowStageExecutions: false
   projectIdentifier: STO
   orgIdentifier: default
-  tags: \{}
+  tags: {}
   stages:
     - stage:
         name: scan
@@ -569,10 +559,10 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: K8S_DELEGATE_CONNECTOR
-              namespace: harness-delegate-ng
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
               automountServiceAccountToken: true
-              nodeSelector: \{}
+              nodeSelector: {}
               os: Linux
           sharedPaths:
             - /shared/scan_results/
@@ -580,32 +570,24 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Background
-                  name: background-dind-service
-                  identifier: Background_1
-                  spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
-                    image: docker:dind
-                    shell: Sh
-                    entrypoint:
-                      - dockerd
-                    privileged: true
-              - step:
                   type: Run
                   name: run-snyk-scan
                   identifier: Run_1
                   spec:
-                    connectorRef: CONTAINER_IMAGE_REGISTRY_CONNECTOR
+                    connectorRef: DockerHub
                     image: snyk/snyk:docker
                     shell: Sh
-                    command: |
+                    command: |-
                       # https://docs.snyk.io/snyk-cli/commands/container-test
                       # https://docs.snyk.io/scan-applications/snyk-container/snyk-cli-for-container-security/advanced-snyk-container-cli-usage
 
                       snyk container test \
                             snykgoof/big-goof-1g:100 -d \
-                            --sarif-file-output=/shared/scan_results/snyk_container_scan.sarif  || true
-                    privileged: true
+                            --sarif-file-output=/shared/customer_artifacts/snyk_code_test.sarif  || true
+                      # cat /shared/customer_artifacts/snyk_code_test.sarif
+
+                      # snyk monitor
+                    privileged: false
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
                 isAnyParentContainerStepGroup: false
@@ -627,7 +609,7 @@ pipeline:
                       runner_tag: develop
                     imagePullPolicy: Always
                     ingestion:
-                      file: /shared/scan_results/snyk_container_scan.sarif
+                      file: /shared/scan_results/snyk_code_test.sarif
                   failureStrategies:
                     - onFailure:
                         errors:
@@ -643,8 +625,9 @@ pipeline:
           - name: runner_tag
             type: String
             value: dev
-  identifier: snyk_ingest_image_docexample
-  name: "snyk - ingest - image - docexample "
+  identifier: snyk_ingest_image_example_v2
+  name: snyk_ingest_image_example
+
 ```
 
 </details>
