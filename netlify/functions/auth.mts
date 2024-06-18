@@ -74,7 +74,7 @@ export default async (req: Request, context: Context) => {
     });
     context.cookies.set({
       name: "name",
-      value: name,
+      value: name.replace(" ","-"),
       domain: ".harness.io",
       path: "/",
       httpOnly: false,
