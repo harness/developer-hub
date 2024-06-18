@@ -16,6 +16,12 @@ You can scan your container images with [Anchore Enterprise](https://docs.anchor
 
 ## Important notes for running Anchore Enterprise scans in STO
 
+### Anchore Enterprise requirements
+
+- You must use the Anchore v2 API and Anchore Enterprise Server v5.0 or higher to run orchestration and extraction scans.
+
+- When you're deploying an Anchore Enterprise server, expose port 8228. This is the port that Harness uses to communicate with the server.
+
 ### All data ingestion methods are supported
 
 You can run Orchestration, Extraction, and Ingestion workflows with Anchore Enterprise. This topic includes an [Orchestration pipeline example](#anchore-enterprise-orchestration-example) below.
@@ -84,7 +90,7 @@ import StoSettingScanTypeCont     from './shared/step_palette/target/type/_image
 <StoSettingScanTypeCont />
 
 
-#### Detect target and variant 
+#### Target and Variant Detection 
 
 
 import StoSettingScanTypeAutodetectContainer from './shared/step_palette/target/auto-detect/_container-image.md';
@@ -109,7 +115,7 @@ import StoSettingTargetVariant from './shared/step_palette/target/_variant.md';
 <StoSettingTargetVariant  />
 
 
-### Artifacts
+### Container image
 
 
 #### Type  (_orchestration_)

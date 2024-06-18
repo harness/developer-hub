@@ -12,7 +12,7 @@ This topic introduces you to chaos infrastructure, its types, why it is importan
 
 **Chaos infrastructure** represents the individual components of a deployment environment. It is a service that runs within your target environment to help HCE access the target resources and inject chaos at a cloud-native scale.
 
-You can add multiple chaos infrastructures as part of an environment. You can set up a chaos infrastructure with **cluster-wide** access or with a **single namespace** scope.
+You can add multiple chaos infrastructures as part of an environment. You can set up a chaos infrastructure with **cluster-wide** access or with a **namespace** scope.
 
 ### Types of infrastructure
 
@@ -33,3 +33,6 @@ Chaos infrastructure helps facilitate the chaos fault injection and hypothesis v
 
 ### How to use a chaos infrastructure?
 
+You can [connect to an infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures), [disconnect from it](/docs/chaos-engineering/features/chaos-infrastructure/disconnect-chaos-infrastructure), and [upgrade it](/docs/chaos-engineering/features/chaos-infrastructure/upgrade-infra).
+You can install an infrastructure as a part of creating an experiment. This infrastructure is installed on the target Kubernetes cluster and helps inject chaos into applications, thereby executing the chaos experiments.
+Go to [flow of control](/docs/chaos-engineering/chaos-faults/kubernetes/classification#flow-of-control-in-kubernetes-based-faults) to understand the flow of control of Kubernetes faults.

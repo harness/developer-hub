@@ -1,0 +1,11 @@
+{
+    "label": "RBAC at FF",
+    "position": 20,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "RBAC at FF"
+    }
+}

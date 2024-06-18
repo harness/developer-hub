@@ -1,7 +1,7 @@
 ---
 title: Try Harness CI
 description: Explore Harness CI and the features that make it four times faster than the leading competitors.
-sidebar_position: 4
+sidebar_position: 5
 helpdocs_topic_id: x0d77ktjw8
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -247,7 +247,7 @@ Harness CI is four times faster due to optimized defaults with hosted builds, so
 
 [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more.
 
-[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/test-intelligence/set-up-test-intelligence) can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
+[Test Intelligence](/docs/continuous-integration/use-ci/run-tests/ti-overview.md) can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, you can speed up test cycles even more by splitting and running tests concurrently.
 
 In the following demo video, Harness goes head-to-head with GitHub Actions. [Sign up for free](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Get-Started-Free) and follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and try it for yourself.
 

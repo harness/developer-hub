@@ -217,7 +217,7 @@ You can specify default baselines for specific target types: code repositories, 
 * **Feature flags:** `STO_STEP_PALETTE_WIZ`
 * **How to enable:** Contact [Harness Support](mailto:support@harness.io)
 
-You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz-scanner-reference) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
+You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets.
 
 Harness currently supports the following: 
 
@@ -354,7 +354,7 @@ For information about early access (beta) features for Harness Continuous Integr
 * **GA date:** Late 2022/Early 2023
 * **Early access release date:** October 20, 2022
 
-Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
+Harness released a beta version of an Apex SDK for Feature Flags. For more information and to access this SDK, see the [Apex SDK reference guide](/docs/feature-flags/use-ff/ff-sdks/server-sdks/apex-sdk-reference) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
 
 <!-- ### IACM features promoted to GA
 

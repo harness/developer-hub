@@ -196,8 +196,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Security Testing
-                      Orchestration Free/Team Plans
+                      <strong>Product version: </strong> Harness STO Free/Team Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -263,8 +262,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Security Testing
-                      Orchestration Enterprise Plan
+                      <strong>Product version: </strong> Harness STO Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -338,8 +336,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Security Testing
-                      Orchestration Enterprise Plan
+                      <strong>Product version: </strong> Harness STO Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -385,7 +382,7 @@ export default function CertificationsSTO() {
         <div className={styles.tabs}>
           <h2>Self-Paced Training</h2>
           <p>
-            Self-paced courses that you can consume on your own time in a webinar style.
+            Free self-paced courses that you can consume on your own time.
           </p>
           <div className={clsx(styles.tabContent, styles.active)}>
             <div className={styles.cardContainer}>
@@ -399,7 +396,7 @@ export default function CertificationsSTO() {
               {spt
                 .filter((spt) => {
                   return (
-                    spt.module === "sto" && spt.cardType === "SPT" ||
+                    spt.module === "sto" && spt.cardType === "FREE" ||
                     (spt.module === "sto" && spt.tileType === "comming soon")
                   );
                 })

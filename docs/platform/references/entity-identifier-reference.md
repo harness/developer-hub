@@ -67,6 +67,8 @@ Identifiers have the following restrictions:
 	+ stepGroup
 	+ org
 	+ account
+    + status
+    + liteEngineTask
 
 #### Identifier uniqueness
 

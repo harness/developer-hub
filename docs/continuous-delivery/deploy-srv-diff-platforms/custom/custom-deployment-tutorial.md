@@ -6,7 +6,7 @@ helpdocs_topic_id: 6k9t49p6mn
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
-redirect_from: /docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial.md
+redirect_from: /docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial
 ---
 
 In some cases, you might be using a platform that does not have first-class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.

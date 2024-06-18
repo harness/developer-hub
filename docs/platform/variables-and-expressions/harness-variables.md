@@ -231,9 +231,14 @@ For example, with the equals `==` and not equals `!=` operators, wrap the entire
 <+<+stage.variables.v1> != "dev">
 ```
 
+There might be situations when a string needs to be concatenated into a variable to allow it to be utilized as an expression. In these situations, you must add double quotes around the string.
+
+`<+"https://abcdef.com/yoururl/"+<+pipeline.variables.var1>>`
+
 Complex usage can have multiple levels of nesting. For example, the following compound expression concatenates values from two variables into one list, and then uses the `split()` method on the concatenated list. The original expressions, the concatenated list expression, and the method manipulation are all wrapped in expression delimiters:
 
 `<+ <+<+pipeline.variables.listVar1> + "," + <+pipeline.variables.listVar2>>.split(",")>`
+
 
 ### Java string methods
 

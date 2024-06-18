@@ -145,28 +145,9 @@ The [Docker build-time variables](https://docs.docker.com/engine/reference/comma
 
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#target), equivalent to the `--target` flag, such as `build-env`.
 
-### Remote Cache Image (Docker layer caching)
-
-Use this setting to [enable remote Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching) where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
-
-For **Remote Cache Image**, enter the name of the remote cache registry and image, such as `NAMESPACE/IMAGE_NAME`.
-
-The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
-
-<details>
-<summary>Early access feature: Docker layer caching with Harness Cloud</summary>
-
-:::note
-
-Currently, Docker layer caching with Harness Cloud is behind the feature flags `CI_ENABLE_DLC` and `CI_HOSTED_CONTAINERLESS_OOTB_STEP_ENABLED`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-Harness Cloud can manage the Docker layer [cache backend](https://docs.docker.com/build/cache/backends/) for you without relying on your Docker registry. This ensures that layers are always pulled from the fastest available source.
-
-If your build runs on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), you can enable Docker layer caching for Harness Cloud, select **Enable Docker layer caching** in your **Build and Push to Docker** step.
-
-</details>
+### Docker layer caching and Remote cache image
+There are two ways in which you can leverage Docker Layer Caching: 
+ **Enable Docker layer caching** (_'caching'_ property) or **Remote cache image** (_'remoteCacheRepo'_ property). Refer to [Enable Docker layer caching for your build](/docs/continuous-integration/use-ci/caching-ci-data/docker-layer-caching.md) to learn more.
 
 ### Environment Variables (plugin runtime flags)
 

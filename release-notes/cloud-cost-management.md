@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
-date: 2024-04-03T10:00
+date: 2024-06-06T10:00
 sidebar_position: 6
 ---
 
@@ -17,7 +17,44 @@ Review the notes below for details about recent changes to Harness Cloud Cost Ma
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 
 :::
+
+## June 2024
+
+### Version 1.21.0
+
+#### New features and enhancements
+
+- **Savings by Harness Integration Enhancement**: Last release we added "Savings by Harness" integration on Commitment Orchestrator. This release, we have added a minor enhancement with a loading state for savings and utilization widgets. [CCM-18212]
+
+- **Azure VM Inventory Duplicate Entries Enhancement**: Duplicate entries within AzureVMInventory will now be handled better after this fix, ensuring appropriate data is displayed on the dashboards. [CCM-17313]
+
+### Version 1.20.3
+
+#### New features and enhancements
+- "Savings by Harness" Integration on Commitment Orchestrator : Added a new feature to display savings by Harness on the Commitment Orchestrator Overview page, providing users with detailed insights into savings achieved by using Harness Commitment Orchestrator. [CCM-17919]
+
 ## May 2024
+### Version 1.19.1
+
+#### New features and enhancements
+
+- Asset Governance for AWS : Added new governance recommendations and cost computation support for AWS resources including `cache-cluster`, `S3`,`Redshift`, and `Redshift-snapshot`. [CCM-17852]
+- Asset Governance for GCP : Added new governance recommendations and cost computation support for GCP resources including `redis`, `gke-cluster`, `bq-dataset`, `function`, `bucket`, `dataflow-job`, `loadbalancer-address`, `cloud-run-service` and also, added cost computation for `gcp.loadbalancer-forwarding-rule`. [CCM-17852]
+- Editing Enforcements: Improved the enforcement editing process. Now, when viewing and editing an enforcement, it will no longer get enabled automatically if it was previously disabled. This ensures that the enforcement status remains consistent unless intentionally changed by the user. [CCM-18050]
+- Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. [CCM-17850, ZD-63324]
+- Azure Governance Subscription selection: In the Azure Rule window's Subscription drop-down menu, previously, only the Subscription ID was displayed. Now, both the Subscription Name and ID are shown for better clarity and ease of selection. [CCM-17650]
+- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region, and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. [CCM-17979]
+
+| Old Label | New Label |
+|------------|--------------|
+| beta.kubernetes.io/instance-type | node.kubernetes.io/instance-type |
+| beta.kubernetes.io/os | kubernetes.io/os |
+| failure-domain.beta.kubernetes.io/region | topology.kubernetes.io/region |
+| failure-domain.beta.kubernetes.io/zone | topology.kubernetes.io/zone |
+
+
+#### Fixed issues
+- Azure perspectives Previously, only fields in "group by" with available data were displayed in Azure perspectives, leading to incomplete views and unnecessary errors. With this update, all relevant fields, including those without data, will now be visible. This eliminates any unnecessary errors arising from missing data at the source level. [CCM-17573, ZD-62691]
 
 ### Version 1.18.1
 
@@ -54,7 +91,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### New features and enhancements
 
-- Expanded Azure Region Options: We have added a new 'All' option in Azure regions, which enables users to run a Governance policy across all regions. [CCM-17588]
+- Expanded Azure Region Options: We have introduced a new `allregions` option in Azure regions, allowing users to execute any Rule or establish an Enforcement across all regions with just one Evaluation for a Subscription. This boosts efficiency and helps prevent exceeding Azure API limits when executing a Rule for a Subscription across multiple regions. Instead of running on multiple regions it will now run only on one single region i.e `allregions`. [CCM-17185, CCM-16771]
 
 - Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
 

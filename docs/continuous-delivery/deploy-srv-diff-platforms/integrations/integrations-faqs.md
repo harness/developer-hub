@@ -78,3 +78,9 @@ Additional support is coming soon, including facilitating authentication, short-
 Yes, Harness supports code coverage testing alongside split testing in Python.
 Go to [Code coverage in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/code-coverage) and [Split tests (parallelism) in Harness CI](https://developer.harness.io/docs/continuous-integration/use-ci/run-tests/speed-up-ci-test-pipelines-using-parallelism) for more information.
 
+
+### Does Harness support integration with JIRA to use a ticket and its status as an approval gate for pipeline deployments across multiple environments?
+
+Yes, it is possible to use a JIRA ticket as an approval gate for all environments in a Harness pipeline. The ticket's status or an update to a specific field can be used to control whether Harness allows the deployment to proceed to the next environment.
+
+For more details, go to [Adding Jira approval stages and steps](https://developer.harness.io/docs/platform/approvals/adding-jira-approval-stages/).
