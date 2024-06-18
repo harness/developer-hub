@@ -166,7 +166,7 @@ instances:
         access_key_id: XXXXXXXXXXXXXXXXX
         access_key_secret: XXXXXXXXXXXXXXXXXXX
         key_pair_name: XXXXX
-      ami: ami-xxx  ## Linux Amd64 AMI should be passed
+      ami: ami-xxx  ## Ubuntu Amd64 AMI must be passed
       size: t2.nano
       iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
       network:
