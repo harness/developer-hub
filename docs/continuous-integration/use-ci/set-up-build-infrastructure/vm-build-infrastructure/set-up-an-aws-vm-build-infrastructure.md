@@ -52,7 +52,7 @@ These are the requirements to configure the AWS EC2 instance. This instance is t
 The recommended authentication method is an [IAM role](https://console.aws.amazon.com/iamv2/home#/users) with an access key and secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)). You can use an access key and secret without an IAM role, but this is not recommended for security reasons.
 
 1. Create or select an IAM role for the primary VM instance. This IAM role must have CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool. For details, go to the Amazon documentation on [AmazonEC2FullAccess Managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2FullAccess.html).
-2. If you plan to run Windows builds, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host. For example, you must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
+2. If you plan to run Windows builds, You must add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret.
 3. If you haven't done so already, create an access key and secret for the IAM role.
 
 ### Launch the EC2 instance
@@ -70,6 +70,7 @@ The recommended authentication method is an [IAM role](https://console.aws.amazo
 2. In the Security Group's **Inbound Rules**, allow ingress on port 9079. This is required for security groups within the VPC.
 3. In the EC2 console, go to your EC2 VM instance's **Inbound Rules**, and allow ingress on port 22.
 4. If you want to run Windows builds and be able to RDP into your build VMs, you must also allow ingress on port 3389.
+5. Allow ingress rules for port 3000 as well
 5. Set up VPC firewall rules for the build instances on EC2.
 
 ### Install Docker and attach IAM role
@@ -165,7 +166,7 @@ instances:
         access_key_id: XXXXXXXXXXXXXXXXX
         access_key_secret: XXXXXXXXXXXXXXXXXXX
         key_pair_name: XXXXX
-      ami: ami-051197ce9cbb023ea
+      ami: ami-xxx  ## Linux Amd64 AMI should be passed
       size: t2.nano
       iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
       network:
@@ -185,9 +186,11 @@ instances:
         access_key_id: XXXXXXXXXXXXXXXXXXXXXX
         access_key_secret: XXXXXXXXXXXXXXXXXXXXXX
         key_pair_name: XXXXX
-      ami: ami-088d5094c0da312c0
-      size: t3.large
+      ami: ami-xxx  ## Windows AMI with Docker Installed should be passed
+      size: m5.large
       hibernate: true
+      disk:
+        size: 60  ## Min Size Generally Required for Windows based AMI with Docker Installed , The size mentioned is in GBs
       network:
         security_groups:
         - sg-XXXXXXXXXXXXXX
@@ -256,7 +259,8 @@ You can configure the following settings in your `pool.yml` file. You can also l
 
 #### user data example
 
-Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data`.
+Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-init/) in either `user_data_path` or `user_data` if you need custom configuration , below is an example for linux based 
+distribution 
 
 ```yaml
       user_data_path: /path/to/custom/user-data.yml
@@ -308,7 +312,7 @@ Provide [cloud-init data](https://docs.drone.io/runner/vm/configuration/cloud-in
 [SSH into your EC2 instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following command to start the runner:
 
 ```
-docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+docker run --network host -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
 This command mounts the volume to the Docker runner container and provides access to `pool.yml`, which is used to authenticate with AWS and pass the spec for the pool VMs to the container. It also exposes port 3000.
@@ -316,7 +320,7 @@ This command mounts the volume to the Docker runner container and provides acces
 You might need to modify the command to use sudo and specify the runner directory path, for example:
 
 ```
-sudo docker run -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+sudo docker run --network host  -v ./runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
 ```
 
 :::info What does the runner do?
