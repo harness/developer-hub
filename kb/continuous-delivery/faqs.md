@@ -3121,19 +3121,39 @@ Also follow more on this in the following [Documentation](https://developer.harn
 
 Harness does not support this use case where a non-Harness entity is able to get the secret value bypassing Harness entirely.
 
-### Missing Execution Id under Executions for a pipeline.
+#### Missing Execution Id under Executions for a pipeline.
 You might see that for a pipeline under Executions, you may see that the execution Id is 32 and then next execution Id 34, and 33 seems to be missing. This happens when you re-run a pipeline from the last failed stage or a specific stage. To access the failed execution, you can go the pipeline and click on the Execution History on the top right corner. 
 
-### Favorite Project Marking in Harness UI.
+#### Favorite Project Marking in Harness UI.
 You can mark projects as Favourites, so that you can filter your favourite projects from the long list of projects faster. 
 
 Go to the Projects page, and then on the project, click the star icon to mark them as favourite. 
 
-### Adding artifact source in a service using API.
+#### Adding artifact source in a service using API.
 You can make use of the update service API with the artifact source added in the YAML in the body. For details, go to [Harness API documentation](https://apidocs.harness.io/tag/Project-Services#operation/update-service).
 
-### API to list all secret managers in an account.
+#### API to list all secret managers in an account.
 You can use the [list connectors API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorListV2) filter in the account.  You can use SECRET_MANAGER to list all secret mangers from the account. 
+
+#### How to pass multiple environments and infrastructures as expressions?
+
+You can use the following sample YAML:  
+
+```yaml
+name: Stage2 
+identifier: Stage2 
+description: "" 
+type: Deployment 
+spec: 
+  deploymentType: Kubernetes 
+  environments: 
+    metadata: 
+      parallel: true 
+    values: 
+      - environmentRef: <+exportedVariables.getValue("pipeline.ENV_INFO.ENV_ID")> 
+        deployToAll: false 
+        infrastructureDefinitions: <+<+exportedVariables.getValue("pipeline.ENV_INFO.INFRA_IDS")>.split(",")>
+```
 
 ### Infrastructure provisioning FAQs
 
