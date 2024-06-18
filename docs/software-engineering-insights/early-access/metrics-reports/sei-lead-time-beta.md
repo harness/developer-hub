@@ -169,10 +169,6 @@ Median Lead Time = Median(Sum of Stage Lead Times for all tickets)
 
 ```
 
-Where:
-
-Sum of Stage Lead Times for an ticket = Stage 1 Lead Time + Stage 2 Lead Time + ... + Stage N Lead Time
-
-This new calculation method provides a different perspective on the overall lead time by considering the total lead time for each ticket rather than summing the stage-level medians.
+This new calculation method provides a different approach on the overall lead time by considering the total lead time for each ticket rather than summing the stage-level medians.
 
 The choice between these two methods depends on your specific requirements and assumptions about the distribution of lead times across stages or tickets.
