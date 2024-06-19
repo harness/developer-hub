@@ -12,7 +12,7 @@ In a few cases, when you provide an empty value `""` as your input, it will be c
 `<+input>` is interpreted as null by Harness.
 ::: 
 
-Let's take an example where you are running a pipeline via an input set:-
+Here's an example where you are running a pipeline via an input set. Here, we have not provided any input value.
 
 In this example, we have not provided any value to the input:-
 
@@ -46,10 +46,10 @@ For example, if you want **var_config** to stay an empty string, enabling this o
 Currently this feature is behind feature flag `CDS_ENABLE_RAW_MODE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You need to enable following settings at account level to use this feature:
+Enable following settings at account level to use this feature:
 
-1. **Show checkbox to Save Blank Fields as Empty String** - This setting, when enabled, will show the checkbox **Save Blank Fields as Empty String** both while creating the Input Set and during Pipeline runform.
-2. **Default value of Blank Fields as Empty String** - When enabled, this setting will automatically select the checkbox **Save Blank Fields as Empty String** by default.
+- **Show checkbox to Save Blank Fields as Empty String**: This setting, when enabled, will show the checkbox **Save Blank Fields as Empty String** both while creating the Input Set and during Pipeline Run form.
+- **Default value of Blank Fields as Empty String**: When enabled, this setting will automatically select the **Save Blank Fields as Empty String** checkbox.
 
 ![](./static/blank_field_as_empty_account_setting.png)
 
@@ -58,15 +58,15 @@ You need to enable following settings at account level to use this feature:
 ### If Save Blank Fields as Empty String is not enabled (Current Behavior)
 
 - **Creating Input Sets**:
-   - **Initial Load**: On load `<+input>` is converted into `""`.
-   - **Saving**: On Save, `""` is converted into`<+input>`.
+   - **Initial Load**: On load `<+input>` is converted to `""`.
+   - **Saving**: On Save, `""` is converted to`<+input>`.
 
 - **Updating Input Sets**:
-  - **Initial Load**: On Load, `<+input>` is converted into `""`.
-  - **Saving**: On Save, `""` is converted into `<+input>`.
+  - **Initial Load**: On Load, `<+input>` is converted to `""`.
+  - **Saving**: On Save, `""` is converted to `<+input>`.
 
 - **Run Pipeline form with Input Set**:
-  - **Initial Load**: On Load, `<+input>` is converted into `""`.
+  - **Initial Load**: On Load, `<+input>` is converted to `""`.
   - **Execution**: On Run, `""` stays `<+input>`.
 
 - **Run Pipeline without Input Set**:
@@ -76,7 +76,7 @@ You need to enable following settings at account level to use this feature:
 ### If Save Blank Fields as Empty String is enabled
 
 - **Creating Input Sets**:
-   - **Initial Load**: On load `<+input>` is converted into `""`
+   - **Initial Load**: On load `<+input>` is converted to `""`
    - **Saving**: On Save, `""` stays `""` and `<+input>` stays `<+input>`.
 
 - **Updating Input Sets**:
