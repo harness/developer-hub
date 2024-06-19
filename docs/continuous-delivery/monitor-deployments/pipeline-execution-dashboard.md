@@ -29,7 +29,7 @@ Filter-only Field:
 - Current Aggregation Period: 
 
 List of dimensions:
-- Deployment Duration: Duration of the pipeline execution
+- Execution Duration: Duration of the pipeline execution
 - End Time: End time of the pipeline execution
 - Execution Url: URL of pipeline execution
 - Organization ID: Organization identifier where the pipeline got executed
@@ -40,17 +40,16 @@ List of dimensions:
 - Trigger Type: Type of trigger used to execute the pipeline(`MANUAL`/`WEBHOOK` etc.)
 
 List of measures:
-- Change Failure Rate: Total deployments that have been reverted divided by the total no. of deployments
-- Failed Deployments: No. of deployments that failed with `FAILED`/`ABORTED` statuses
-- Failure Rate: Failure rate of deployments(Failed Deployments divided by total no. of deployments)
-- Last Deployment: Last deployment time
-- Longest Deployment: Longest deployment time
+- Failed Executions: No. of executions that failed with `FAILED`/`ABORTED` statuses
+- Failure Rate: Failure rate of deployments(Failed Execution divided by total no. of executions)
+- Last Execution: Last execution time
+- Longest Execution: Longest execution time
 - Mean duration: Average pipeline duration
 - Mean duration trend: This compares the mean duration trend from the previous period to the current period
-- Median Duration: Median duration of the deployment
-- Success Rate: Success rate of deployments(deployments completed with `SUCCESS` status)
-- Total Deployments: Total no. of deployments
-- Total Deployments Trend: This compares the deployment count from the previous period to the current period
+- Median Duration: Median duration of the execution
+- Success Rate: Success rate of executions(executions completed with `SUCCESS` status)
+- Total Executions: Total no. of executions
+- Total Executions Trend: This compares the executions count from the previous period to the current period
 
 ### Organization Tags
 This view contains the data related to the organization tags. It will contain the real-time tags of the organization.
@@ -63,13 +62,12 @@ This view contains the data related to organizations.
 
 :::note
 
-This will only show the organizations, which had at least 1 pipeline execution(in any project). It won't display the organizations which didn't contain any pipeline execution.
+This will only show the organizations, which had at least 1 pipeline execution (in any project). It won't display the organizations which didn't contain any pipeline execution.
 
 :::
 
-
 List of dimensions:
-- Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+- Organization name: The name of the organization where pipeline execution happened. 
 
 ### Pipeline Tags
 This view contains the data related to the pipeline tags. It will contain the real-time tags of the pipeline.
