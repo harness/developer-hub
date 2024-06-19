@@ -1,11 +1,9 @@
 ---
-title: Steps to create Jira tickets in STO
+title: Jira tickets for detected vulnerabilities
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
 sidebar_label: Create Jira tickets for detected issues
 sidebar_position: 50
 ---
-
-
 
 import create_ticket from '../static/jira-integration-02-create-ticket.png'
 import ticket_num from '../static/jira-integration-03-ticket-num-in-issue-details.png'
@@ -13,14 +11,11 @@ import issue_link from '../static/jira-integration-04-link-in-jira-ticket.png'
 import ticket_summary from '../static/jira-integration-05-ticket-summary.png'
 
 
-
-
 You can set up STO to create Jira tickets for issues detected by STO scans. This topic describes how to set up this integration.
 
 :::note
 * This feature is not supported in Self-Managed Enterprise Edition.
-* This feature is behind the Feature Flag `STO_JIRA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-* This feature is supported for both [STO SecOps and Developer](/docs/platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
+* This feature is supported for both [Security Testing Developer and Security Testing SecOps](/docs/platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
 :::
 
 :::warning
