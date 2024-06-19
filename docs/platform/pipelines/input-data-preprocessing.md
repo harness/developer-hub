@@ -44,7 +44,7 @@ Currently this feature is behind feature flag `CDS_ENABLE_RAW_MODE`. Contact [Ha
 Enable following settings at account level to use this feature:
 
 - **Show checkbox to Save Blank Fields as Empty String**: This setting, when enabled, will show the checkbox **Save Blank Fields as Empty String** both while creating the Input Set and during Pipeline Run form.
-2. **Default value of Blank Fields as Empty String** - When enabled, this setting will automatically select the checkbox **Save Blank Fields as Empty String** by default.
+- **Default value of Blank Fields as Empty String**: When enabled, this setting will automatically select the **Save Blank Fields as Empty String** checkbox.
 
 ![](./static/blank_field_as_empty_account_setting.png)
 
@@ -54,11 +54,11 @@ Enable following settings at account level to use this feature:
 
 - **Creating Input Sets**:
    - **Initial Load**: On load `<+input>` is converted to `""`.
-   - **Saving**: On Save, `""` is converted into`<+input>`.
+   - **Saving**: On Save, `""` is converted to`<+input>`.
 
 - **Updating Input Sets**:
-  - **Initial Load**: On Load, `<+input>` is converted into `""`.
-  - **Saving**: On Save, `""` is converted into `<+input>`.
+  - **Initial Load**: On Load, `<+input>` is converted to `""`.
+  - **Saving**: On Save, `""` is converted to `<+input>`.
 
 - **Run Pipeline form with Input Set**:
   - **Initial Load**: On Load, `<+input>` is converted to `""`.
@@ -71,7 +71,7 @@ Enable following settings at account level to use this feature:
 ### If Save Blank Fields as Empty String is enabled
 
 - **Creating Input Sets**:
-   - **Initial Load**: On load `<+input>` is converted into `""`
+   - **Initial Load**: On load `<+input>` is converted to `""`
    - **Saving**: On Save, `""` stays `""` and `<+input>` stays `<+input>`.
 
 - **Updating Input Sets**:
