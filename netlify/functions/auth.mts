@@ -109,7 +109,7 @@ async function deleteExistingToken(
   uuid: string
 ) {
   const listTokenResponse = await fetch(
-    `https://app.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
+    `https://qa.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +133,7 @@ async function deleteExistingToken(
 
       try {
         await fetch(
-          `https://app.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
+          `https://qa.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
           {
             method: "DELETE",
             headers: {
@@ -154,7 +154,7 @@ async function deleteExistingToken(
 async function getUUID(accountId: string, accessToken: string) {
   try {
     const response = await fetch(
-      `https://app.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
+      `https://qa.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -186,7 +186,7 @@ async function CreateChatbotToken(
     // const currentGMTTimeInMillis = now.getTime() + 120000;
 
     const response = await fetch(
-      `https://app.harness.io/ng/api/token?accountIdentifier=${accountId}`,
+      `https://qa.harness.io/ng/api/token?accountIdentifier=${accountId}`,
       {
         method: "POST",
         headers: {
