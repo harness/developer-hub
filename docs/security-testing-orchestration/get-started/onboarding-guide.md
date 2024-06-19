@@ -1,7 +1,7 @@
 ---
 title: Onboarding guide
 description: Set up your permissions, infrastructure, delegate, and connectors.
-sidebar_position: 50
+sidebar_position: 20
 helpdocs_topic_id: rlbw5luj4h
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false
