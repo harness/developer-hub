@@ -1,6 +1,6 @@
 ---
 title: Load Balancing
-description: This topic contains information on how to use multiple Proxy's with a loadbalancer
+description: This topic contains information on how to use multiple proxies with a load balancer
 sidebar_position: 70
 ---
 
