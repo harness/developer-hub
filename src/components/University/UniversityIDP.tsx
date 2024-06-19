@@ -92,8 +92,8 @@ export default function CertificationsIDP() {
           </div>
           <h1>Internal Developer Portal</h1>
           <div>
-           Eliminate cognitive overload by letting developers
-           self-service their flows like new service onboarding.
+            Eliminate cognitive overload by letting developers
+            self-service their flows like new service onboarding.
           </div>
         </div>
         <div className={styles.right}>
@@ -200,20 +200,20 @@ export default function CertificationsIDP() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to manage your
                       applications with IDP projects.
                     </div>
-                    {/* <DeveloperCertificationReviewGuide /> */}
-                    {/*
+                    <DeveloperCertificationReviewGuide />
+
                     <div className={styles.btnContainer}>
                       <Link href="#">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -221,7 +221,7 @@ export default function CertificationsIDP() {
 
             {/* Developer Exam Details */}
 
-            {/*
+
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
@@ -234,7 +234,7 @@ export default function CertificationsIDP() {
                   </Link>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Administrator Tab Content */}
