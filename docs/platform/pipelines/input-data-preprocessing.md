@@ -3,11 +3,19 @@ title: Input Data Pre-processing for Pipeline
 description: You can control the pre-processing of input data
 ---
 
-As a user, you can control the pre-processing of input data, allowing you to manage how empty values are handled in the background. In the normal case, when you provide an empty value `""` as your input, it will be converted into `<+input>` in the background.
+In a few cases, when you provide an empty value `""` as your input, it will be converted into `<+input>` in the background. This behavior specifically occurs in two scenarios:
+
+1. When an Input Set is used to run a pipeline from the UI.
+2. When an Input Set is used in a Trigger to start a Pipeline.
+
+:::info
+`<+input>` is interpreted as null by Harness.
+::: 
 
 Let's take an example where you are running a pipeline via an input set:-
 
 In this example, we have not provided any value to the input:-
+
 ```yaml
 inputSet:
   name: input
@@ -22,19 +30,15 @@ inputSet:
         type: String
         value: ""
 ```
-Now, when we run the pipeline and check the compiled yaml after the execution it would have taken it as `<+input>`.
-If you have saved your Input Set in Git and if you check the yaml saved in Git, it will would have taken the value of the variable as `<+input>`.
+When you run the pipeline, the Run Form processes the input values. If no value is provided, it shows `<+input>`, indicating that the pipeline is ready to accept values as they are given. The pipeline itself doesn't preprocess these values; it takes whatever is provided by the Run Form directly.
 
 ![](./static/compiled_yaml_processing.png)
 
-As a user, you might want more control over how these empty values are handled, especially in cases where you want the string to remain empty. To handle this behavior Harness provides an optio **Save Blank Fields as Empty String**.
+As a user, you might want more control over how empty values are handled, especially if you want the string to stay empty. Harness provides an option called **Save Blank Fields as Empty String** for this purpose.
 
-With this option checked, the empty string `""` remains as-is throughout the pipeline execution process. This ensures that the YAML and the visual view are consistent with the final payload sent during execution.
+With this option enabled, an empty string `""` remains unchanged throughout the pipeline execution. This keeps the YAML and visual view consistent with the final payload sent during execution.
 
-For instance, if you want **var_config** to remain an empty string, enabling Raw Mode will prevent it from being converted to `<+input>`.
-
-This ensures that the input remains exactly as specified, providing you with precise control over your pipeline configurations.
-
+For example, if you want **var_config** to stay an empty string, enabling this option will prevent it from being converted to `<+input>`.This ensures your input remains exactly as you specified, giving you precise control over your pipeline configurations.
 
 ## How to enable this feature?
 
