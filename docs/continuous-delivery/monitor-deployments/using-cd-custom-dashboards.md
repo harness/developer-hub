@@ -470,7 +470,7 @@ This will only show the organizations, which had at least 1 pipeline execution(i
 
 
 List of dimensions:
-1. Organization tag: The organization tag, it will be displayed as `key:value`. If there are let's say 5 tags in an organization, there will be 5 rows having 1 tag(`key:value` pair) in each row.
+1. Organization Name: The name of the organization where the pipeline execution happened. 
 
 
 ### Pipeline Tags
