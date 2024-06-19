@@ -32,7 +32,7 @@ For more information, go to:
 
 * [Change your flag variations](manage-variations.md)
 * [Add prerequisite flags](/docs/feature-flags/add-prerequisites-to-feature-flag)
-* [Manage your targets](/docs/feature-flags/ff-target-management/add-targets)
+* [Manage your targets](/docs/feature-flags/use-ff/ff-target-management/add-targets)
 
 ### Archive and deleting a flag
 

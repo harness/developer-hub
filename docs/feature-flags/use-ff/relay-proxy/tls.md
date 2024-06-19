@@ -16,7 +16,7 @@ There are two ways to configure the Relay Proxy to accept HTTPS requests:
 
 * **Native TLS**
 
-	You can configure the Relay Proxy to start with HTTPS enabled. This can be configured using the [TLS configuration options](/docs/feature-flags/relay-proxy/configuration#tls). 
+	You can configure the Relay Proxy to start with HTTPS enabled. This can be configured using the [TLS configuration options](/docs/feature-flags/use-ff/relay-proxy/configuration#tls). 
 
 	This does not provide every fine-grained configuration option available to secure servers. If you require more control, the best option is to use a program made for this purpose, and use the **External TLS** option.
 

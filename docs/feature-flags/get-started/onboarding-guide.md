@@ -30,6 +30,6 @@ You can also follow the Feature Flags Get Started wizard on the Harness Platform
 
 Once you have created your flag, you can then:
 
-* [Manage Targets](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
-* Modify [Variations](/docs/feature-flags/ff-creating-flag/manage-variations) and [Rules](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
+* [Manage Targets](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags)
+* Modify [Variations](/docs/feature-flags/ff-creating-flag/manage-variations) and [Rules](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags)
 * [Add Prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)

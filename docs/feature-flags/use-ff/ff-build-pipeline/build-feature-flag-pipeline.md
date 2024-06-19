@@ -116,7 +116,7 @@ To add details to a Flag Configuration step:
 	| **Set default ON rule**   | Update the flag variation served when the flag is disabled. |
 	| **Serve variation to targets** | Serve a flag variation to a single or multiple targets. |
 	| **Serve variation to target groups** | Serve a flag variation to a single or multiple target groups. |
-	| **Serve percentage rollout to target group** | Serve a flag variation in a %-rollout distribution across a single target group. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
+	| **Serve percentage rollout to target group** | Serve a flag variation in a %-rollout distribution across a single target group. For more information, go to [Target users with flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
   
 	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
 
