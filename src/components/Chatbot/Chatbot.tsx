@@ -32,6 +32,11 @@ const Chatbot = () => {
 
   useEffect(() => {
     const cookie = getXChatbotKeyCookie();
+    const urlParams = new URLSearchParams(window.location.search);
+    const chatbot = urlParams.get("chatbot");
+    if (chatbot === "true") {
+      setShow(true);
+    }
 
     if (cookie) {
       setIsLoggedIn(true);
@@ -145,7 +150,7 @@ const Chatbot = () => {
 
   function handleSignIn() {
     window.location.href =
-      "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/";
+      "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
   }
 
   useEffect(() => {
@@ -253,10 +258,16 @@ const Chatbot = () => {
                 ) : (
                   <h1>Log into your Harness Account to access AIDA</h1>
                 )}
-                <button onClick={handleSignIn} ref={sessionExpiredElement}>
-                  Sign In
-                  <i className="fa-solid fa-arrow-right-to-bracket"></i>
-                </button>
+
+                <Tooltip
+                  placement="bottom"
+                  overlay="Authenticate AIDA with your Harness Account"
+                >
+                  <button onClick={handleSignIn} ref={sessionExpiredElement}>
+                    Sign In
+                    <i className="fa-solid fa-arrow-right-to-bracket"></i>
+                  </button>
+                </Tooltip>
               </div>
             )}
           </div>
