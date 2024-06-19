@@ -38,7 +38,7 @@ export default async (req: Request, context: Context) => {
   }
   try {
     const response = await fetch(
-      "https://app.harness.io/gateway/notifications/api/notifications/harness-bot?routingId=" +
+      "https://qa.harness.io/gateway/notifications/api/notifications/harness-bot?routingId=" +
         body.account_id,
       {
         method: "POST",
@@ -105,7 +105,7 @@ async function RotateToken(accountId: string, token: string, uuid: string) {
     const currentGMTTimeInMillis = now.getTime() + 7200000;
 
     const response = await fetch(
-      `https://app.harness.io/ng/api/token/rotate/x_chatbot_key?accountIdentifier=${accountId}&apiKeyType=USER&parentIdentifier=${uuid}&apiKeyIdentifier=x_api_key_chatbot&rotateTimestamp=${currentGMTTimeInMillis}`,
+      `https://qa.harness.io/ng/api/token/rotate/x_chatbot_key?accountIdentifier=${accountId}&apiKeyType=USER&parentIdentifier=${uuid}&apiKeyIdentifier=x_api_key_chatbot&rotateTimestamp=${currentGMTTimeInMillis}`,
       {
         headers: {
           "x-api-key": token,
@@ -141,7 +141,7 @@ async function deleteExistingToken(
   uuid: string
 ) {
   const listTokenResponse = await fetch(
-    `https://app.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
+    `https://qa.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -179,7 +179,7 @@ async function deleteExistingToken(
 
       try {
         await fetch(
-          `https://app.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
+          `https://qa.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
           {
             method: "DELETE",
             headers: {
@@ -199,7 +199,7 @@ async function deleteExistingToken(
 async function getUUID(accountId: string, token: string) {
   try {
     const response = await fetch(
-      `https://app.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
+      `https://qa.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
       {
         headers: {
           "x-api-key": token,
