@@ -67,7 +67,7 @@ This will only show the organizations, which had at least 1 pipeline execution (
 :::
 
 List of dimensions:
-- Organization name: The name of the organization where pipeline execution happened. 
+- Organization Name: The name of the organization where the pipeline execution happened. 
 
 ### Pipeline Tags
 This view contains the data related to the pipeline tags. It will contain the real-time tags of the pipeline.
