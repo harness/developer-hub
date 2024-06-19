@@ -35,12 +35,6 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
     - [Scan a repository: orchestration example](#scan-a-repository-orchestration-example)
     - [Scan a repository: ingestion example](#scan-a-repository-ingestion-example)
 
-- If you're scanning a container image, note the following:
-
-  - Container image scans require Docker-in-Docker running in Privileged mode as a background service.
-
-  - For a complete end-to-end example, go to [Scan a container image: workflow example](#scan-a-container-image-workflow-example) below.
-
 <!-- removed info on using snyk monitor, see https://harness.atlassian.net/browse/DOC-2718?focusedCommentId=571223 -->
 
 ## Snyk Open Source orchestration example
@@ -122,7 +116,7 @@ The scan stage in this pipeline has the following steps:
 
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build exits with an error code before STO can ingest the data.
 
 5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:
 
@@ -186,7 +180,7 @@ The scan stage in this pipeline has the following steps:
 
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build exits with an error code before STO can ingest the data.
 
 5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:
 
@@ -233,7 +227,7 @@ This example uses [`snyk container test`](https://docs.snyk.io/snyk-cli/commands
 
    6. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build exits with an error code before STO can ingest the data.
 
 4. Add a [Snyk step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) and configure it as follows:
 
@@ -291,7 +285,7 @@ The scan stage in this pipeline has the following steps:
 
    4. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**.
 
-      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build will exit with an error code before STO can ingest the data.
+      This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise, the build exits with an error code before STO can ingest the data.
 
 5. Add a [Snyk security step](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference) to ingest the results of the scan. In this example, the step is configured as follows:
 
@@ -308,7 +302,7 @@ The scan stage in this pipeline has the following steps:
 
 ### Snyk Open Source scan pipeline (orchestration)
 
-The following illustrates the [Snyk Open Source orchestration workflow example](#sca-orchestration-example) above for scanning a Java project.
+The following illustrates the [Snyk Open Source orchestration workflow example](#snyk-open-source-orchestration-example) above.
 
 <details>
 <summary>YAML pipeline, Snyk Open Source scan, Orchestration mode</summary>
@@ -370,7 +364,7 @@ pipeline:
 
 ### Snyk Open Source scan pipeline (ingestion)
 
-The following illustrates the [Snyk Open Source ingestion workflow example](#sca-ingestion-example) above for building and scanning a .NET image.
+The following illustrates the [Snyk Open Source ingestion workflow example](#snyk-open-source-ingestion-example) above.
 
 <details>
 <summary>YAML pipeline, repository scan, Ingestion mode</summary>
@@ -452,7 +446,7 @@ pipeline:
 
 ### Snyk Code scan pipeline (ingestion)
 
-The following illustrates the [Snyk Code ingestion workflow example](#sast-ingestion-example) above.
+The following illustrates the [Snyk Code ingestion workflow example](#snyk-code-ingestion-example) above.
 
 <details>
 <summary>YAML pipeline, Snyk Code scan, Ingestion mode</summary>
@@ -538,7 +532,7 @@ pipeline:
 
 ### Snyk Container scan pipeline (ingestion)
 
-The following illustrates the [container image ingestion workflow example](#snyk-container-scan-pipeline-ingestion) above for building and scanning a .NET image.
+The following illustrates the [Snyk Container ingestion workflow example](#snyk-container-ingestion-example) above.
 
 <details>
 <summary>YAML pipeline, container image scan, Ingestion mode</summary>
@@ -559,8 +553,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: stoqadelegate
-              namespace: harness-qa-delegate
+              connectorRef: your_delegate_connector_id
+              namespace: your_k8s_namespace
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -626,7 +620,7 @@ pipeline:
             type: String
             value: dev
   identifier: snyk_ingest_image_example_v2
-  name: snyk_ingest_image_example
+  name: snyk_ingest_image_example_v2
 
 ```
 
@@ -634,7 +628,7 @@ pipeline:
 
 ### Snyk Infrastructure as Code scan pipeline (ingestion)
 
-The following illustrates the [IAC workflow example](#infrastructure-as-code-iac-ingestion-example) for scanning an IaC repository.
+The following illustrates the [IAC workflow example](#snyk-infrastructure-as-code-ingestion-example) above.
 
 <details>
 <summary>YAML pipeline, IaC repository scan, Ingestion mode</summary>
