@@ -187,13 +187,12 @@ For information about early access (beta) features for Harness Software Engineer
 
 No early access (beta) features are available for the Harness Software Supply Chain Assurance module. -->
 
+<!-- 
 ## STO early access features
 
-The following early access (beta) features are available for the Harness Security Testing Orchestration module.
+hiding this section on 2024-06-19 because all Early Access features are currently GA
 
-
-
-
+-->
 
 ## SRM early access features
 
