@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.99.0
 
-<!-- 2024-06-14 -->
+<!-- 2024-06-19 -->
 
 #### Features that are no longer behind feature flags
 
@@ -42,17 +42,6 @@ The following features are now generally available:
 - [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)
 - Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) 
 
-#### New features and enhancements
-
-- Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
-
-#### Fixed issues
-
-- Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
-- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
-  1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
-  2) Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
-  3) Removed default port from being set by runner and will only set port if user specifies in the step.
 
 ### Version 1.98.7
 
