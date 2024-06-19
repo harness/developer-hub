@@ -9,6 +9,10 @@ helpdocs_is_published: true
 redirect_from:
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed
   - /docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga
+  - /docs/category/kots-installation
+  - /docs/self-managed-enterprise-edition/deploy-with-kots/kubernetes-cluster-on-prem-infrastructure-requirements
+  - /docs/self-managed-enterprise-edition/deploy-with-kots/kubernetes-cluster-on-prem-kubernetes-cluster-setup
+  - /docs/self-managed-enterprise-edition/deploy-with-kots/kubernetes-cluster-self-managed-add-ingress-controller-service-annotations
 ---
 
 import Tabs from '@theme/Tabs';

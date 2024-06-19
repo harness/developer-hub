@@ -144,5 +144,14 @@ We also support automated rollback for Azure Web App.
 
 For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
 
+### What is the correct deployment type for a Spring Boot JAR being deployed to Azure App Services in Harness?
 
+The correct deployment type for a Spring Boot JAR being deployed to Azure App Services in Harness is Azure Web Apps.
 
+###  What steps should be taken if the artifact shows up in the artifact feed but is not usable in the CD stage in Harness?
+
+Verify that the artifact is of a supported type (e.g., Maven or Nuget) and follows the correct naming conventions. Refactor the mvn publish command if necessary to ensure it targets the correct artifact feed. Please follow more on this in [CD Artifact Sources](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#package-type-support)
+
+### How can one publish a Maven artifact to the artifact feed instead of another repository in Harness?
+
+One can modify the `pom.xml` file to configure the mvn publish command to push to the desired artifact feed. This might involve changing the repository settings in the `pom.xml` to point to the correct artifact feed.

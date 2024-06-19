@@ -49,7 +49,7 @@ You can see a list of all recommendations offered by Harness for each Cloud prov
 
 | Cloud | Cost Correlation | First Class Region Filter Support | Recommendations | Multi-Policy | Autostopping (EC2/VM/Instance) |
 |-------|------------------|---------------------------------|------------------|--------------|--------------------------------|
-| AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb` | Yes ✅ | Yes ✅ | Yes ✅ | Yes ✅ |
+| AWS   | `aws.ec2`, `aws.ebs`, `aws.rds`, `aws.ebs-snapshot`, `aws.elastic-ip`, `aws.elb`, `cache-cluster`, `s3`, `redshift`, `redshift-snapshot` | Yes ✅ | Yes ✅ | Yes ✅ | Yes ✅ |
 | GCP   | `gcp.instance`, `gcp.disk`, `gcp.snapshot`, `gcp.sql-instance`, `gcp.image` | No ❌                             | Yes ✅               | Yes ✅         | No ❌ |
 | Azure | Every Resource in Billing Report | Yes ✅ | Yes ✅ | Yes ✅ | No ❌ |
 

@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-07T10:00
+date: 2024-06-14T10:00
 sidebar_position: 13
 ---
 
@@ -23,6 +23,21 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 :::
 
 ## June 2024
+
+### Version 1.98.7
+
+#### New features and enhancements
+
+- Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
+
+#### Fixed issues
+
+- Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  2) Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  3) Removed default port from being set by runner and will only set port if user specifies in the step.
+
 
 ### Version 1.97
 
@@ -453,11 +468,16 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
 - Fixed a UI issue where the Exemptions page would show the incorrect severity of an issue if that severity was overridden after the original scan. (STO-7069)
 
+
 - The SonarQube integration includes better support for orchestrated branch and pull-request scanning with SonarQube Enterprise. (STO-7122, STO-6840, STO-6857, ZD-58021, ZD-55282, ZD-55592)
   - Previously, the orchestration scan step downloaded results for the main or master branch regardless of the branch specified in the runtime input or the pull request.
   - With this enhancement, the orchestration step always downloads results for the scanned branch or pull request.
-  - Branch scans require no additional configuration.
+  - When **Branch Scan** is selected in the [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration), the step scans the branch or pull request specified in the pipeline execution.
+
+  <!-- 
   - To configure pull-request scans, go to [SonarQube pull-request scan configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#sonarqube-pull-request-scan-configuration).
+
+<!-- -->
 
 ## January 2024 
 
