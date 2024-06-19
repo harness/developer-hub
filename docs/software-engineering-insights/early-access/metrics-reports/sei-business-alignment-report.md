@@ -100,9 +100,11 @@ Complete the widget settings and select **Next: Place Widget**, place the widget
 ## Business Alignment Report Use Cases
 
 <details>
-<summary>Measure the actual effort invested for a specific time period</summary>
+<summary>Measure the actual effort invested for a specific time period (BETA)</summary>
 
 The Business Alignment report can be used to calculate alignment metrics for tickets that are in the **In Progress status category** and those that have been resolved (i.e., **Done status category**) within a specific duration of time. This helps you analyze the effort invested in both ongoing and completed work within a specific time frame.
+
+This feature is behind the Feature Flag `<NEW_BA_COMBINED_WIDGET>` and `<BA_INCLUDE_UNRESOLVED_ISSUES>` . Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
 #### Step 1: Add the Business Alignment report
 
