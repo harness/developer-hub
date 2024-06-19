@@ -3155,6 +3155,12 @@ spec:
         infrastructureDefinitions: <+<+exportedVariables.getValue("pipeline.ENV_INFO.INFRA_IDS")>.split(",")>
 ```
 
+Make sure that the infrastructure Ids are in the format `identifier: id,identifier: id2` as shown below:
+
+```
+export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].stage.spec.environments.values[0].infrastructureDefinitions|map("identifier: "+ .identifier)|join(",")')`
+```
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
