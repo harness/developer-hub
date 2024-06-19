@@ -815,7 +815,7 @@ To create the ASG infrastructure definition in an environment, do the following:
    
    You can use the same AWS connector you used when adding the AMI artifact in the Harness service. Ensure the AWS IAM user in the AWS connector credentials meets the [AWS policy requirements](#aws-policy-requirements).
 8. In **Region**, select the AWS region where you want the ASG deployed.
-9. Optionally, in **Base ASG**, select an existing ASG as the base for new ASG deployments. Harness will clone the base ASG as a template to create a new ASG for the deployment. 
+9. Optionally, in **Base ASG**, select an existing ASG as the base for new ASG deployments. Harness then clones the base ASG as a template to create a new ASG for the deployment. 
 10. Select **Save**.
 
 The infrastructure definition is added.
