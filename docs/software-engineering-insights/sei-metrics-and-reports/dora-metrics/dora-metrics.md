@@ -245,7 +245,7 @@ When the report is configured with the Average Time in Stage metric the report e
 
 #### Median Time in Stage
 
-When the report is configured with the Median Time in Stage metric the report essentially calculates the median of the lead time across all tickets for each stage. The overall lead time in report is displayed as the sum of the median lead time across all the stages in the workflow.
+When the report is configured with the **Median Time in Stage** metric the report essentially calculates the median of the lead time across for all issues or pull requests in each stage of the workflow. The Overall Lead Time displayed in the report is the sum of these median lead times across all stages.
 
 #### 90th Percentile in Stage
 
@@ -254,6 +254,18 @@ When the report is configured with the 90th Percentile Time in Stage metric the 
 #### 95th Percentile in Stage
 
 When the report is configured with the 90th Percentile Time in Stage metric the report essentially calculates the 90th of the lead time across all tickets for each stage. The overall lead time in report is displayed as the sum of the 90th percentile of the lead time across all the stages in the workflow.
+
+:::info
+Note that you can measure the following metrics in the widget for the overall lead time directly:
+
+* Median Time in Stage
+* 90th Percentile Overall Lead Time
+* 95th Percentile Overall Lead Time
+
+In this case, for each issue or pull request, the overall lead time is calculated as the sum of the lead times across all stages. Then, the median, 90th percentile, and 95th percentile values of these overall lead times are computed across all issues or pull requests.
+
+This calculation method is currently a beta feature. Contact [Harness Support](mailto:support@harness.io) to enable it for your account.
+:::
 
 ### Calculation Example
 
@@ -284,6 +296,9 @@ PR creation time = Time to First PR creation - Time to Commit (Default)
 Time to Comment = Time to first comment - Time to PR creation (Default)
 Approval Time = Time to first PR Approval - PR Creation Time (Default)
 Merge Time = Time for the first approval - Time to the PR creation (Default)
+
+Lead Time = PR creation time + Time to Comment + Approval Time + Merge Time
+Overall Lead Time = Sum of Lead 
 ```
 
 </details>
