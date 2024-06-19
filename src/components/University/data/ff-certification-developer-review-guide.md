@@ -7,11 +7,11 @@
 | **2. Harness.io's Feature Flag Fundamentals**                                     |                                                                                                                                   |
 | Learn about the basics of Harness.io's feature flag capabilities                 | [Get started with a flag](/docs/feature-flags/get-started/onboarding-guide)       |
 | Identify different types of feature flags within the Harness.io environment      | [Change the variations of your flags](/docs/feature-flags/ff-creating-flag/manage-variations)         |
-| Familiarize with the different statuses of feature flags                         | [Use the FF dashboard](/docs/feature-flags/ff-data/dashboard)                                         |
+| Familiarize with the different statuses of feature flags                         | [Use the FF dashboard](/docs/feature-flags/use-ff/ff-data/dashboard)                                         |
 | **3. Managing Feature Flags in Harness.io**                                       |                                                                                                                                   |
 | Learn how to create a simple feature flag in Harness.io                          | [Create a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag)                   |
 | Learn how to enable and disable a feature flag                                   | [Enable or disable your flags](/docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag) |
-| Learn how to use the Harness.io dashboard to manage feature flags                | [Use the FF dashboard](/docs/feature-flags/ff-data/dashboard)                                         |
+| Learn how to use the Harness.io dashboard to manage feature flags                | [Use the FF dashboard](/docs/feature-flags/use-ff/ff-data/dashboard)                                         |
 | **4. Advanced Feature Flag Techniques**                                            |                                                                                                                                   |
 | Understand the concept of feature flag hierarchy                                 | [Policies overview for Feature Flags](/docs/feature-flags/harness-policy-engine)                      |
 | Learn about the concept of percentage rollouts with feature flags                | [Use Pipelines with Feature Flags](/docs/category/use-pipelines-with-ff)                           |
