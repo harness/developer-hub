@@ -189,6 +189,8 @@ No early access (beta) features are available for the Harness Software Supply Ch
 
 ## STO early access features
 
+### SonarQube branch scanning
+
 The following early access (beta) features are available for the Harness Security Testing Orchestration module.
 
 * **Release date:** February 2024
