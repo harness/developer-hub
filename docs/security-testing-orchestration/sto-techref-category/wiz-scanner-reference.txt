@@ -24,8 +24,6 @@ You can include [Wiz](https://www.wiz.io/) vulnerability scans in your Harness p
 
 ## Important notes for running Wiz scans in STO
 
-- This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it.  
-
 - Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends publishing to JSON because this format includes more detailed information. 
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->

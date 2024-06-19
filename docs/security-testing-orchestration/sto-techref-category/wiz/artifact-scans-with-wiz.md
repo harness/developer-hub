@@ -18,9 +18,7 @@ import StoDinDNoIntro from '/docs/security-testing-orchestration/sto-techref-cat
 
 You can easily set up a Wiz step to run automated scans in a Harness pipeline. This step scans the container image you specify using the Wiz CLI. Then it correlates, deduplicates, and ingests the scan results into STO. You can see your scan results in the [Security Tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) tab of the pipeline execution.
 
-## Important notes for running Wiz scans in STO
-
-- This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it.  
+## Important notes for running Wiz scans in STO 
 
 <!--  If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access. -->
 

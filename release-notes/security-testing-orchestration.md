@@ -24,7 +24,28 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## June 2024
 
+### Version 1.99.0
+
+<!-- 2024-06-19 -->
+
+#### Features that are no longer behind feature flags
+
+The following features are now generally available:
+
+- Built-in scans:
+  - [SAST](/docs/security-testing-orchestration/sto-techref-category/built-in/sast)
+  - [SCA](/docs/security-testing-orchestration/sto-techref-category/built-in/sca)
+  - [Secret Detection](/docs/security-testing-orchestration/sto-techref-category/built-in/secrets)
+  - [Container](/docs/security-testing-orchestration/sto-techref-category/built-in/containers)
+  - [DAST](/docs/security-testing-orchestration/sto-techref-category/built-in/dast)
+- [Default baselines based on regular expressions](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-baselines-based-on-regular-expressions)
+- [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)
+- Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) 
+
+
 ### Version 1.98.7
+
+<!-- 2024-06-14 -->
 
 #### New features and enhancements
 
@@ -155,16 +176,21 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 
 ## April 2024
-
+ 
 ### UI update 1.15.0
 
-#### Early access feature: Built-in SAST scans
+#### New feature: Built-in SAST scans
 
 This release introduces a new [built-in SAST step](/docs/security-testing-orchestration/sto-techref-category/built-in/sast) that adds a preconfigured [Semgrep step](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference) that's ready to run as soon as you add it. (STO-7180) 
 
+<!--
 This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
 
+-->
+
 <DocImage path={require('/docs/security-testing-orchestration/sto-techref-category/semgrep/static/add-built-in-sast-scanner.png')} width="50%" height="50%" title="Add built-in SAST scan step" /> 
+
+-->
 
 #### New feature: Orchestrated Semgrep scans
 
@@ -259,17 +285,20 @@ The following features are now generally available:
 
 <!-- 2024-03-20 -->
 
-#### Early access feature: built-in scanners
+#### New feature: built-in scanners
 
-- This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. (STO-6738)
+- This release introduces a new set of built-in steps for adding scans to your pipelines quickly and with minimal configuration. The scanners used in these steps are free to STO users and are ready to run as soon as you add them to your pipeline. (STO-6935)
 
   ![](./static/built-in-scan-steps.png)
 
+<!--
   :::note
 
   These steps are behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable these steps. 
 
   :::
+
+-->
 
   You can add built-in scanners for the following scan types:
 
@@ -286,16 +315,20 @@ The following features are now generally available:
 
     - [**DAST**](/docs/security-testing-orchestration/sto-techref-category/built-in/dast) Add a Zed Attack Proxy (ZAP) scan to detect vulnerabilities in your application instances.
 
-#### Early Access feature: Wiz scanner integration
+#### New feature: Wiz scanner integration
 
 You can include [Wiz](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz) vulnerability scans in your Harness pipelines. Wiz is a cloud security platform that scans IaC templates, container images, and directories/repositories before deployment. Wiz can detect security misconfigurations, vulnerabilities, and exposed secrets. (STO-6035)
+
+<!--
 
 Harness currently supports the following: 
 
 1. Orchestrated Wiz scans for container images
 2. Ingestion of Wiz scan reports ( JSON/SARIF format ) generated for container images, repositories, and directories
-
+ 
 This integration is behind the feature flag `STO_STEP_PALETTE_WIZ`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
+
+-->
 
 #### Fixed issues
 
@@ -353,9 +386,13 @@ For more information, go to:
 
 You can specify default baselines for specific target types: code repositories, container images, application instances, and configurations. STO includes a set of predefined defaults for repository and container image targets. The default baseline for repositories is `master` or `main`. The default for images is `latest` or the most recently scanned Semantic Version number if it can be detected. (STO-7127)
 
+<!-- 
+
 :::note
 Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
+
+-->
 
 For more information, go to [Default RegEx baselines by target type](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-regex-baselines-by-target-type).
 
@@ -443,10 +480,6 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
     The baseline for a scan is fixed when STO ingests the results. **Only in \<_target_>:\<_variant_>** and **Remediated** issues are based on the baseline specified at the time of the scan.
 
    Harness has introduced this behavior to avoid ambiguous or unexpected results when a target baseline changes. This can happen automatically when a pipeline uses [dynamic baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#specify-dynamic-baselines-using-regular-expressions) based on regular expressions. This new behavior also ensures that the  **Security Tests** UI for a given pipeline execution always uses the same criteria to categorize issues as **Only in \<_target_>:\<_variant_>** and **Remediated**.
-
-
-
-
 
 
 ### Version 1.83.1 
