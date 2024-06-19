@@ -83,7 +83,7 @@ Either **Custom** or a Git provider: **Harness Code**, **Azure**, **GitHub**, **
 For the **Custom** payload type, you must create a secure token and add it to your custom Git provider. Whenever you regenerate a secure token, any preceding tokens become invalid, and you must update your Git provider with the new token.
 
 :::important
-The size of the payload supported by Harness for free, team, and enterprise accounts are 16MB.
+The size of the payload supported by Harness for Free, Team, and Enterprise accounts are 16MB.
 :::
 
 ### Connector
