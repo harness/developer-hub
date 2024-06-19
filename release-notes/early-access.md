@@ -200,11 +200,6 @@ The following early access (beta) features are available for the Harness Securit
 
 This release includes a **Branch Scan** option for SonarQube scans. When this is selected in [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference#scan-configuration), the step scans the branch or pull request specified in the pipeline execution.
 
-:::note
-
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
-
-:::
 
 ### Built-in scanners
 
