@@ -47,6 +47,23 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 ## June 2024
 
+### Version 1.42.0
+
+#### Breaking changes
+
+- Validations have been added to override variable names. Now, a new variable name cannot be saved if it starts or ends with a space. Also, validations have been added for special characters. This is a breaking change for the already saved invalid variable names. Hence, this change is enabled behind the feature flag, `CDS_OVERRIDES_VARIABLE_NAME_VALIDATIONS`. After enabling the feature flag, you can see that the variable names are being validated when creating or updating overrides. (CDS-97386, ZD-62711)
+
+
+#### Fixed issues
+
+- Validation for the pipelines with templates imported from Git failed. Typically, schema validation is done in the pipeline Get, Create, or Update calls. However, schema validation for pipelines imported from Git (with templates) is done without resolving the templates because it's an expensive operation. Therefore, schema validation in the async validate call to identify any schema errors causing validation failure. Note that the issue only happens with imported pipelines with templates from Git currently. (PIPE-18537, ZD-61841)
+- Null Pointer Exception occurred in the Verify step. Added null point checks to avoid this error in the future.  (CDS-97388)
+- Pipeline execution showed inconsistencies. This issue is fixed by fixing a retry bug with the delegate's Git client where it did not retry on specific errors. (CDS-96877, ZD-63321)
+- Service failed intermittently when fetching the `ECR_ARTIFACT_TASK_NG` artifact. This issue is fixed by optimizing ECR calls by reducing the number of client creation calls and reusing the clients by passing them and eventually using them to make calls instead of creating clients every time. (CDS-96861, ZD-63061)
+- The Execution History page broke when numbers were used in the Tags field. This issue is fixed by converting the string holding the number to string type before applying string methods on the variable. (CDS-96636)
+- When trying to resolve the expressions in the File Store scripts, Harness encountered a self referencing expression. Due to this condition, the resources associated with two Harness services were exhausted. A code change fixed this issue by preventing such pipeline executions. This item requires Harness Delegate version 24.06.83303. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PIPE-19585)
+
+
 ### Version 1.41.6
 
 
