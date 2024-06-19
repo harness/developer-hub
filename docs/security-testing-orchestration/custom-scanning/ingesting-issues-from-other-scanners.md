@@ -1,6 +1,6 @@
 ---
-title: Ingest scan results from unsupported scanners into Harness STO
-description: Ingest results from scanners that don't support SARIF.
+title: Ingest results from unsupported scanners
+description: You can ingest results from scanners that don't support SARIF.
 sidebar_label: Ingest from unsupported scanners
 sidebar_position: 40
 redirect_from: 

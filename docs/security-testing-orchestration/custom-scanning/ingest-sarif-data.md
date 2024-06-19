@@ -1,6 +1,6 @@
 ---
-title: Ingest SARIF scan results into STO
-description: Ingest results from any scanner that supports SARIF.
+title: Ingest SARIF scan results
+description: You can ingest results from any scanner that supports SARIF.
 sidebar_label: Ingest SARIF scan results
 sidebar_position: 20
 redirect_from: 
