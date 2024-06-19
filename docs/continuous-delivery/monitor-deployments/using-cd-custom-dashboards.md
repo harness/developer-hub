@@ -1,7 +1,7 @@
 ---
 title: Using custom dashboards to monitor CD deployments
 description: Monitor CD deployments using the explores that work best for you.
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: phiv0zaoex
 helpdocs_category_id: 0gyfk4938x
 helpdocs_is_private: false
