@@ -181,6 +181,14 @@ You can change and select the mode (either automatic approval or manual approval
 
 <DocImage path={require('./static/native_user_approval.png')} width="100%" height="100%" title="Click to view full size image" />
 
+## Savings and Pricing Computation for Commitment Orchestrator
+
+There are two major parts of savings as discussed earlier: Savings Plans (SPs) and Reserved Instances (RIs). If Harness has purchased them for you, those costs will be considered for pricing.
+
+We have introduced a new toggle that shows you savings by Harness, indicating how much of the savings were achieved through Harness. The savings achieved by SPs and RIs purchased via Harness are considered for pricing.
+
+Savings are computed by directly pulling data from AWS and then evaluating what is saved against SPs and RIs.
+
 ## Beta features:
 In its Beta phase, the Commitment Orchestrator provides:
 1. **Enhanced Visibility**: Commitment Orchestrator gives insight into current account status, including detailed breakdowns of savings and resource utilization across all accounts and regions. (Requires visibility permission as part of the master account connector setup).
@@ -197,6 +205,7 @@ In its Beta phase, the Commitment Orchestrator provides:
 | Cloud Administrators |Cloud Administrators handle day-to-day cloud operations, including managing Convertible Reserved Instances. | Convertible RI Management: The Utilization Engine of Commitment Orchestrator, managed by Cloud Administrators, identifies underutilized Convertible RIs and performs conversions to increase utilization, optimizing resource usage and cost efficiency.| 
 | IT Managers | IT Managers need detailed insights into commitments, utilization, and savings across multiple accounts and regions.| Visibility and Reporting: Commitment Orchestrator provides visibility into account breakdowns, savings, and utilization, supporting IT Managers in making informed decisions about cloud commitments and expenditures |
 | Organizations with multiple AWS accounts | Organizations with multiple AWS accounts seek flexibility in commitment management due to the ability to support multiple master accounts and set separate coverage for each of them. | Staggered Purchase to Prevent Overcommitment: Commitment Orchestrator's daily staggered purchases, orchestrated by administrators in multi-account structures, prevent overcommitments, ensuring financial flexibility and optimal resource allocation.|
+
 
 ## FAQs
 1. Which cloud providers are supported at the moment?
@@ -229,6 +238,8 @@ In its Beta phase, the Commitment Orchestrator provides:
 8. Can orchestration be setup on any account?
 
 --> No, only master account with correct permission listed above will be allowed and at a time only one account can be set up.
+
+
 
 
 

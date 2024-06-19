@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-06-17T16:19:25
+date: 2024-06-18T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: June 17, 2024
+#### Last updated: June 18, 2024
 
 ## June 2024
 
@@ -36,6 +36,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.7.0
+
+**New features and enhancements**:
+ - Further cache optimisations to improve performance and reduce memory usage. (FFM-11619)
+ - Exposes new `jsonVariationToken` method which supports JSON array variations.  Note that `jsonVariation` has been marked as `Obsolete` due to the fact it only supports JSON object variations. (FFM-11548)
+ 
 #### Version 1.6.10
 
 **New features and enhancements**:
@@ -55,6 +61,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   -- Previously, if the stream disconnected, it would take 70 seconds for it to reconnect. It now reconnects using an exponential backoff and delay, where the base delay is 500ms. (FFM-11573, ZD-64099)
  - The SDK version has been bumped from `1.6.x` to `1.7.0-rc2`. (FFM-11549)
  - Fix streaming issues for .NET 4.8. (FFM-11573, ZD-64099)
+
+### Node.js SDK
+
+#### Version 1.8.1
+
+**Fixed issues**:
+ - Patched CVE for `braces`. (FFM-11673)
+
+#### Version 1.8.0
+
+**New features and enhancements**:
+ - Global Axios settings are no longer configured by the SDK, which could override Axios settings used elsewhere in an application.  The default timeout is `30s` but can be changed using options within `axiosTimeout`. See: ['Available Options' in the Node.js further reading docs in the GitHub repo](https://github.com/harness/ff-nodejs-server-sdk/blob/main/docs/further_reading.md#available-options). (FFM-9097)
+ - Added SDK support for `AND/OR` rules (Please note that this feature is not GA yet). (FFM-11243)
+ - The `target-segments v2-rule` parameter has been added and ready to use. (FFM-11364)
 
 ## May 2024
 

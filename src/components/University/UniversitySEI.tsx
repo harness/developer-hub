@@ -195,7 +195,7 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Software Engineering Insights
+                      <strong>Product version: </strong> Harness SEI
                       Enterprise Plan
                     </span>
                   </div>
@@ -267,7 +267,7 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Harness Sortware Engineering Insights Enterprise Plan
+                      <strong>Product version: </strong> Harness SEI Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -355,7 +355,7 @@ export default function CertificationsSEI() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Software Engineering Insights
+                      <strong>Product version: </strong> Harness SEI
                       Enterprise Plan
                     </span>
                   </div>

@@ -29,7 +29,6 @@ export default async (req: Request, context: Context) => {
   }
   const token = req.headers.get("x-api-key");
 
-  console.log({ body, token });
 
   if (!token) {
     return new Response(JSON.stringify({ error: "Token is not sent" }), {

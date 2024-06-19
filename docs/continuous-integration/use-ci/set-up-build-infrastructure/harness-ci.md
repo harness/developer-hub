@@ -126,7 +126,7 @@ API key authentication is required. For more information about API keys, go to [
    --data-raw '[
        {
            "field": "gitCloneTag",
-           "value": "harness/drone-git:1.0.9-rootless
+           "value": "harness/drone-git:1.5.4-rootless" 
        },
        {
            "field": "gcsUploadTag",

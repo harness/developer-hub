@@ -58,6 +58,12 @@ const sidebars = {
           label: "Chaos Engineering",
           id: "chaos-engineering",
         },
+        //ce
+        {
+          type: "doc",
+          label: "Internal Developer Portal",
+          id: "idp",
+        },
         //vILT
         {
           type: "link",
