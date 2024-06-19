@@ -28,14 +28,13 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 The FF Relay Proxy V1 resides between the SDKs and the hosted Harness Feature Flag services. On startup, proxy loads the necessary data from the FF services to ensure that it is completely functional even if the network connection drops temporarily.
 
-The Proxy creates an instance of the Go SDK for each API key that’s passed to it as a part of the [Proxy Configuration](/docs/feature-flags/relay-proxy/deploy-relay-proxy#configure-the-relay-proxy), and each instance of the SDK uses the Cache implementation. The Go SDK then takes care of populating this cache on startup and keeping it up to current whenever the remote service changes. When the Go SDK starts up, it retrieves all of the Features and Segments and then sends a request to the remote server to listen for any updates. Whenever there is an update in the remote service, it sends out an event, and when the embedded SDK sees one of these events, it sends a request to the remote service to get the most recent flag values and save them to the cache.
+The Proxy creates an instance of the Go SDK for each API key that’s passed to it as a part of the [Proxy Configuration](/docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy#configure-the-relay-proxy), and each instance of the SDK uses the Cache implementation. The Go SDK then takes care of populating this cache on startup and keeping it up to current whenever the remote service changes. When the Go SDK starts up, it retrieves all of the Features and Segments and then sends a request to the remote server to listen for any updates. Whenever there is an update in the remote service, it sends out an event, and when the embedded SDK sees one of these events, it sends a request to the remote service to get the most recent flag values and save them to the cache.
 
-The Proxy can also use streaming functionality if it is configured with Redis. To view the variables that you need to configure for Redis, go to [Proxy configuration variables](/docs/feature-flags/relay-proxy/deploy-relay-proxy#configure-the-relay-proxy) .
-
+The Proxy can also use streaming functionality if it is configured with Redis. To view the variables that you need to configure for Redis, go to [Proxy configuration variables](/docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy#configure-the-relay-proxy).
 
 ### How the Relay Proxy V1 stores data
 
-The Proxy stores authentication, feature, target, and target group configurations in a [cache](/docs/feature-flags/relay-proxy/cache_options).
+The Proxy stores authentication, feature, target, and target group configurations in a [cache](/docs/feature-flags/use-ff/relay-proxy/cache_options).
 
 * Keys are stored against a map of fields and values in the feature, target, and target group settings.
 * The authentication configuration is stored as a key-value pair, with the key being a hashed API key and the value being an environment ID.
@@ -49,4 +48,3 @@ Client and Server SDKs fetch the evaluation details in the same way as they woul
 ## More information
 
 For more information about the Relay Proxy, go to our blog post [In-Depth: Harness Feature Flags Relay Proxy](https://harness.io/blog/in-depth-feature-flags-relay-proxy/).
-

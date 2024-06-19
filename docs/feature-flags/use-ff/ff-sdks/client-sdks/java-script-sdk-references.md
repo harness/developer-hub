@@ -116,7 +116,7 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.
 </details>
 
-For more information about targets, go to [Targeting users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Targeting users with flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags).
 
 To create a target, you **must enter an identifier** but you can optionally add a name and additional attributes.
 

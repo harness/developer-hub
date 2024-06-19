@@ -7,11 +7,11 @@ sidebar_position: 70
 # Debugging
 
 ### Outbound requests
-To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/relay-proxy/outbound_endpoints).
+To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/use-ff/relay-proxy/outbound_endpoints).
 
 ### Debug mode
 
-To enable debug logging, set the environment variable `DEBUG=true`. For more information on configuration, go to [Configuration reference](/docs/feature-flags/relay-proxy/configuration).
+To enable debug logging, set the environment variable `DEBUG=true`. For more information on configuration, go to [Configuration reference](/docs/feature-flags/use-ff/relay-proxy/configuration).
 
 ### Healthcheck endpoint
 The Relay Proxy has a `/health` endpoint that can be queried to check the health of all the Relay Proxies dependencies. This can be hit using a request like this: 
@@ -55,7 +55,7 @@ If you've configured a custom port using the PORT environment variable, your hea
 
 `curl https://localhost:10000/health`
 
-If using a [Redis cache](/docs/feature-flags/relay-proxy/cache_options#redis-cache), the cache healthcheck verifies that Harness could successfully ping the Redis client.
+If using a [Redis cache](/docs/feature-flags/use-ff/relay-proxy/cache_options#redis-cache), the cache healthcheck verifies that Harness could successfully ping the Redis client.
 
 There is a health entry for each environment you've configured the Relay Proxy with. This is displayed if your streaming connection for these environments is healthy. You can find which friendly environment identifier this UUID maps to by checking your proxy startup logs.
 
@@ -70,7 +70,7 @@ On startup, SDKS and the Relay Proxy make these four requests for each environme
 - /target-segments
 - /stream
 
-You can find examples of how to send requests directly to these endpoints in our [Sample Requests](/docs/feature-flags/relay-proxy/sample_curl_requests).
+You can find examples of how to send requests directly to these endpoints in our [Sample Requests](/docs/feature-flags/use-ff/relay-proxy/sample_curl_requests).
 
 ## Common Issues
 

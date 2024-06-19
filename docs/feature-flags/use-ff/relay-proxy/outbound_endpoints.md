@@ -9,7 +9,7 @@ These are the endpoints requested by the Relay Proxy when it communicates with H
 - [Start SDK per API key](#start-sdks)
 - [Periodic requests/polls](#periodic-requestspolls)
 
-The base URL  of these endpoints is configurable if you need to pass it through a filter or another proxy. See [Configuration reference](/docs/feature-flags/relay-proxy/configuration) for details.
+The base URL  of these endpoints is configurable if you need to pass it through a filter or another proxy. See [Configuration reference](/docs/feature-flags/use-ff/relay-proxy/configuration) for details.
 
 ## Basic startup
 
@@ -42,9 +42,9 @@ These requests run for each valid API key configured. This authenticates, fetche
 
 These requests happen either on demand or by various timers while the Relay Proxy is running.
 
-* `GET https://app.harness.io/gateway/cf/admin/targets` polls the latest environment target data (optional—see the [`TARGET_POLL_DURATION`](/docs/feature-flags/relay-proxy/configuration#adjust-timings) configuration option). This pages through the targets so it may make multiple requests.
+* `GET https://app.harness.io/gateway/cf/admin/targets` polls the latest environment target data (optional—see the [`TARGET_POLL_DURATION`](/docs/feature-flags/use-ff/relay-proxy/configuration#adjust-timings) configuration option). This pages through the targets so it may make multiple requests.
 
-* `POST https://events.ff.harness.io/api/1.0/metrics` sends metrics (optional—see the [`METRIC_POST_DURATION`](/docs/feature-flags/relay-proxy/configuration#adjust-timings) configuration option).
+* `POST https://events.ff.harness.io/api/1.0/metrics` sends metrics (optional—see the [`METRIC_POST_DURATION`](/docs/feature-flags/use-ff/relay-proxy/configuration#adjust-timings) configuration option).
 
 * `POST https://config.ff.harness.io/api/1.0/client/auth`. When a client authenticates with the Relay Proxy, Harness forwards this request to the remote server to register the target.
 

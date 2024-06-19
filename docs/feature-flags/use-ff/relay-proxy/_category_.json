@@ -1,6 +1,6 @@
 {
     "label": "Use the Harness relay proxy",
-    "position": 130,
+    "position": 30,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

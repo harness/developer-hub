@@ -184,14 +184,14 @@ Specifies a path for the offline config directory. The default is `/config`.
     	```
     	docker run -d -p 7000:7000 --env-file .env harness/ff-proxy
     	```
-        For more information, go to [Configuration options](/docs/feature-flags/relay-proxy/configuration#configuration-options).
+        For more information, go to [Configuration options](/docs/feature-flags/use-ff/relay-proxy/configuration#configuration-options).
         
-4. (Optional) You can provide config for a [Redis](/docs/feature-flags/relay-proxy/cache_options#redis-cache) instance used to store flag data using the `redis-address`, `redis-db` (optional), and `redis-password` (optional).  
+4. (Optional) You can provide config for a [Redis](/docs/feature-flags/use-ff/relay-proxy/cache_options#redis-cache) instance used to store flag data using the `redis-address`, `redis-db` (optional), and `redis-password` (optional).  
 
     For more information, go to [Configure Relay Proxy with Redis](#configure-relay-proxy-with-redis) below.
 
     :::info note
-    If you do not use [Redis](/docs/feature-flags/relay-proxy/cache_options#redis-cache), the flag data is stored in the memory. In-memory is the default option.
+    If you do not use [Redis](/docs/feature-flags/use-ff/relay-proxy/cache_options#redis-cache), the flag data is stored in the memory. In-memory is the default option.
     :::
 
 ## Configure Relay Proxy with Redis

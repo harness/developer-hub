@@ -156,7 +156,7 @@ To initialize the Erlang SDK:
 Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.
 </details>
 
-For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Target Users With Flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags).
 
 To create a target, create a map and add the following keys:
 
@@ -624,7 +624,7 @@ go to [Erlang project config](#erlang-project-config) and [Elixir project config
 
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/deploy-relay-proxy) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy) you must change the default URL and events URL to `http://localhost:7000` when initializing the SDK. 
 
 To do this, pass the new URLs in when initializing the SDK, as shown below.
 

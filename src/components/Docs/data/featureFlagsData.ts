@@ -112,7 +112,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "This topic gives you an overview of Harness Policy Engine and includes an example for how to add a policy for a flag.",
-          link: "/docs/category/use-pipelines-with-flags",
+          link: "/docs/category/use-pipelines-with-ff",
         },
       ],
     },
