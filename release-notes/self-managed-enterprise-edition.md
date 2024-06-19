@@ -123,7 +123,7 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
-## June 7, 2024, patch version 0.17.1
+## June 19, 2024, patch version 0.17.1
 
 This release includes the following Harness module and component versions.
 
