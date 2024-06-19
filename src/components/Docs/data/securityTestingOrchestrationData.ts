@@ -76,14 +76,14 @@ import {
                 module: MODULES.sto,
                 description:
                   "SARIF is an open data format supported by many scan tools. You can ingest results from any tool that supports this format.",
-                link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data",
+                link: "/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data",
               },
             {
               title: "Ingest data from custom scanners",
               module: MODULES.sto,
               description:
                 "You can ingest custom Issues from any scanning tool. This topic shows you how.",
-              link: "/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingesting-issues-from-other-scanners",
+              link: "/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners",
             },
           ],
         },  

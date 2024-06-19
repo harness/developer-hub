@@ -29,7 +29,7 @@ Once you complete this workflow, you'll have a complete end-to-end pipeline that
 
 The following steps describe the workflow:
 
-1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data) file.
+1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) file.
 
 2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline)).
 

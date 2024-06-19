@@ -15,7 +15,7 @@ sidebar_position: 100
 With Harness STO, you can do the following:
 - Run local SAST scans using the [CxConsole CLI](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) (orchestration mode).
 - Extract results from a [Checkmarx SAST](https://checkmarx.com/resource/documents/en/34965-44074-checkmarx-sast.html) server (extraction mode).
-- [Ingest results](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
+- [Ingest results](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) from any Checkmarx scanner that can publish to SARIF.
 
 ## Important notes for running Checkmarx scans in STO
 
