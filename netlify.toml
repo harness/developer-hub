@@ -11,8 +11,10 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/:splat"
+  headers = { Access-Control-Allow-Origin = "http://localhost:5000" }
 
 [[headers]]
   for = "/*"
     [headers.values]
-       Access-Control-Allow-Origin = "https://qa.harness.io"
+      # Access-Control-Allow-Origin = "https://qa.harness.io"
+       Access-Control-Allow-Origin = "http://localhost:5000"

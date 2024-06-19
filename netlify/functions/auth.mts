@@ -7,7 +7,7 @@ interface Body {
 }
 export default async (req: Request, context: Context) => {
   const header = {
-    "Access-Control-Allow-Origin": "https://qa.harness.io",
+    "Access-Control-Allow-Origin": "https://app.harness.io",
     "Access-Control-Allow-Credentials": "true",
     "Access-Control-Allow-Methods": "POST,OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type,Authorization",
@@ -41,7 +41,7 @@ export default async (req: Request, context: Context) => {
   try {
     const { uuid, name } = await getUUID(accountId, accessToken);
     if (!uuid) {
-      return;
+      throw new Error("No uuid");
     }
 
     const token = await CreateChatbotToken(accountId, accessToken, uuid);
@@ -60,7 +60,6 @@ export default async (req: Request, context: Context) => {
       secure: true,
       sameSite: "None",
       expires: expiryTime, // expires in 2 hrs
-      
     });
 
     context.cookies.set({
@@ -74,7 +73,7 @@ export default async (req: Request, context: Context) => {
     });
     context.cookies.set({
       name: "name",
-      value: name.replace(" ","-"),
+      value: name.replace(" ", "-"),
       domain: ".harness.io",
       path: "/",
       httpOnly: false,
@@ -109,7 +108,7 @@ async function deleteExistingToken(
   uuid: string
 ) {
   const listTokenResponse = await fetch(
-    `https://qa.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
+    `https://app.harness.io/ng/api/token/aggregate?accountIdentifier=${accountId}&apiKeyType=USER`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +132,7 @@ async function deleteExistingToken(
 
       try {
         await fetch(
-          `https://qa.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
+          `https://app.harness.io/ng/api/token/${token.token.identifier}?accountIdentifier=${accountId}&apiKeyType=${token.token.apiKeyType}&parentIdentifier=${uuid}&apiKeyIdentifier=${token.token.apiKeyIdentifier}`,
           {
             method: "DELETE",
             headers: {
@@ -144,7 +143,7 @@ async function deleteExistingToken(
         );
       } catch (error) {
         console.log(error);
-        console.log("Error Deleting Token");
+        throw new Error("deleting token failed");
       }
       // }
     })
@@ -154,7 +153,7 @@ async function deleteExistingToken(
 async function getUUID(accountId: string, accessToken: string) {
   try {
     const response = await fetch(
-      `https://qa.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
+      `https://app.harness.io/gateway/ng/api/user/currentUser?accountIdentifier=${accountId}`,
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
@@ -171,6 +170,7 @@ async function getUUID(accountId: string, accessToken: string) {
     return { uuid: data.data.uuid, name: data.data.name };
   } catch (error) {
     console.log(error);
+    throw new Error("Getting UUID failed");
   }
 }
 
@@ -186,7 +186,7 @@ async function CreateChatbotToken(
     // const currentGMTTimeInMillis = now.getTime() + 120000;
 
     const response = await fetch(
-      `https://qa.harness.io/ng/api/token?accountIdentifier=${accountId}`,
+      `https://app.harness.io/ng/api/token?accountIdentifier=${accountId}`,
       {
         method: "POST",
         headers: {
