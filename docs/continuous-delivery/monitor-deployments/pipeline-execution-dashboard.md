@@ -67,6 +67,8 @@ This will only show the organizations, which had at least 1 pipeline execution (
 :::
 
 List of dimensions:
+- Created Time: Creation time of the organization such as Date, Month, Time, Quarter, Week, or Year of creation.
+- Modified Time: Modification time of the organization such as Date, Month, Time, Quarter, Week, or Year of creation.
 - Organization Name: The name of the organization where the pipeline execution happened. 
 
 ### Pipeline Tags
