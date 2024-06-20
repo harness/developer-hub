@@ -1,6 +1,6 @@
 ---
 title: Autocreation of Entities in Harness
-description: This Page talks about auto creation of Harness entitiess
+description: This Page talks about auto creation of Harness entities
 ---
 
 Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely.
