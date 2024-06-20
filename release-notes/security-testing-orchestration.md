@@ -26,7 +26,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ### Version 1.99.2
 
-<!-- 2024-06-19 -->
+<!-- 2024-06-20 -->
 
 #### Features that are no longer behind feature flags
 
