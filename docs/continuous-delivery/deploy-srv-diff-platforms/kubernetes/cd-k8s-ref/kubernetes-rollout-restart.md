@@ -9,11 +9,11 @@ sidebar_position: 3
 2. This feature requires Harness Delegate version **832xx**.
 :::
 
-This topic describes the **K8s Rollout** step which allows you to manage your **Kubernetes Rolling Deployment**. In pipeline studio, this step will be labeled as **K8sRollout**. On inspection, the step is called **K8s Rollout**. 
+This topic describes the **K8s Rollout** step, which allows you to manage your **Kubernetes Rolling Deployment**. In Pipeline Studio, this step will be labeled as **K8sRollout**. On inspection, the step is called **K8s Rollout**. 
 
 Harness follows standard Kubernetes behavior during rollout. To see what behavior this replicates, go to the subcommands of [kubectl rollout](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_rollout/#see-also).
 
-When should you use the **K8s Rollout** step?
+When to use the **K8s Rollout** step
 
 - **Configuration Changes**: When there are changes in ConfigMaps, Secrets, or other configurations that your application depends on, and you need to apply these changes without changing the image.
 
