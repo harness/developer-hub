@@ -2,7 +2,7 @@
 title: GitHub triggers to block pull requests with vulnerabilities
 description: Trigger STO scans to block GitHub PRs with vulnerabilities.
 sidebar_label: GitHub triggers to block pull requests
-sidebar_position: 5
+sidebar_position: 20
 redirect_from:
   - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities
 ---
