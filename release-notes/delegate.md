@@ -51,7 +51,7 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ### Version 24.06.83204 <!--  June 20, 2024 -->
 
-- Resolved an issue to match new logs for Azure Web App Slot Deployment when Azure Web App is running on linux container
+- Resolved an issue to match new logs for Azure Web App Slot Deployments when an Azure Web App is running on a Linux container. (CDS-98000, ZD-65289)
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 
