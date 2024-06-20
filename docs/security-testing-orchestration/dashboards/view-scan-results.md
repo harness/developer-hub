@@ -1,8 +1,8 @@
 ---
-title: "Security Tests tab: discover and remediate issues" 
+title: "View scan results - Security Tests tab" 
 description: View, navigate, discover, and investigate detected issues from an individual scan 
 sidebar_position: 10
-sidebar_label: "Security Tests - View scan results"
+sidebar_label: "View scan results - Security Tests tab"
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results
 ---
