@@ -259,7 +259,7 @@ git commit -m "Add pipeline yaml"
 git push
 ```
 
-After pushing the changes, we will see in our project where we have registered our webhook that pipeline named as `demo_autocreation_pipeline` is created.
+After pushing the changes, pipeline named as **demo_autocreation_pipeline** is created in Organization **default** under the Project **Krishika_test_autocreation** .
 
 ![](./static/pipeline_creation_autocreation.png)
 
@@ -267,9 +267,10 @@ After pushing the changes, we will see in our project where we have registered o
 
 Let's create an Input set that we are going to use inside our Pipeline `demo_autocreation_pipeline`.
 
-We have out Input set yaml stored under the pipeline **demo_autocreation_pipeline** directory  :
+We have our input set YAML stored under the directory of the pipeline identifier 
+**demo_autocreation_pipeline**, specifically under the **input_sets** directory  :
 
-`.harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline/demo_autocreation_inputSet.yaml`
+`.harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline/input_sets/demo_autocreation_inputSet.yaml`
 
 Let's consider this example yaml that we are going to put under **demo_autocreation_inputSet.yaml**:
 
