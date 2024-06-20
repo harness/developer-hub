@@ -60,5 +60,23 @@ A groupName is an identifier used to logically group metrics. To add a groupName
 
 Yes, You can deploy to selective stages.
 
+### I am trying to implement Continuous Verification in Harness, but I am not able to see the Continuous Verification or Verify option.
+
+Can you check and confirm the type of stage where you are trying to add the Verify step, as this option is only available with the CD (Deploy) stage
+
+
+### Do I need to create a monitored service before running the execution?
+
+Monitored services will be created automatically after execution for that service/environment combination, but after that, you have to setup the health source. If you have already created and configured the health source, you will be able to see the verification result in the first run itself.
+
+
+
+### Verification is getting skipped although there is monitored service configured for service+env combination
+```
+No monitoredServiceRef is defined for service <servicename> and env <envename>
+```
+
+Can you check if Continuous Verification is selected for the configured monitored service health source under Assign  :
+You can select the services for which you want to apply the metric.
 
 
