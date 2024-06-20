@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2024-06-14T10:00
+date: 2024-06-20T10:00
 sidebar_position: 13
 ---
 
@@ -24,7 +24,7 @@ These release notes describe recent changes to Harness Security Testing Orchestr
 
 ## June 2024
 
-### Version 1.99.0
+### Version 1.99.2
 
 <!-- 2024-06-19 -->
 
@@ -42,31 +42,7 @@ The following features are now generally available:
 - [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)
 - Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) 
 
-
-### Version 1.98.7
-
-<!-- 2024-06-14 -->
-
-#### New features and enhancements
-
-- Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
-
-#### Fixed issues
-
-- Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
-- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
-  1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
-  2) Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
-  3) Removed default port from being set by runner and will only set port if user specifies in the step.
-
-
-### Version 1.97
-
 #### New feature
-
-- The STO API is now generally available and publicly documented. For more information, go to [STO](https://apidocs.harness.io/tag/Exemptions) in the Harness API documentation. (STO-5281)
-
-<!--
 
 - The Semgrep scan step now supports a set of new **Scan Configuration** settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
 
@@ -97,7 +73,37 @@ The following features are now generally available:
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
   - **Auto and Ported security tools except p/gitleaks**
 
--->
+#### Fixed issues
+
+- Fixed an Anchore Enterprise issue where the connection between the Anchore step and the SaaS instance would fail with TLS  errors. (STO-7704, ZD-65026)
+
+- Audit trails for STO targets and exemptions now display user-friendly resource names instead of IDs. (STO-5717)
+
+
+### Version 1.98.7
+
+<!-- 2024-06-14 -->
+
+#### New features and enhancements
+
+- Harness STO now supports the Anchore v2 API and Anchore Enterprise Server 5.5.0. This change means that the Anchore v2 API and Anchore Enterprise Server v5.0 or higher are required to run orchestration and extraction scans. (STO-7614)
+
+#### Fixed issues
+
+- Fixed an issue where Burp scans failed when trying to ingest base64 data that included zero byte and “Symbol Other” UTF-8 characters. (STO-7714)
+- Updates to Burp Enterprise orchestration to resolve multiple issues. (STO-7635, ZD-64154)
+  1) Added another API call to resolve a Burp schedule item iD to its corresponding latest Burp scan ID.
+  2) Added logic to perform updates on matching Burp sites rather than trying to create a new Burp site with the same name.
+  3) Removed default port from being set by runner and will only set port if user specifies in the step.
+
+
+### Version 1.97
+
+#### New feature
+
+- The STO API is now generally available and publicly documented. For more information, go to [STO](https://apidocs.harness.io/tag/Exemptions) in the Harness API documentation. (STO-5281)
+
+
 
 #### Fixed issues
 
@@ -986,6 +992,10 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 ##### Version 1.54.1
 
 <!-- May 25, 2023 -->
+
+###### Breaking change
+
+Harness introduced a back-end dashboard change to support features that are currently in development. As a result, you must re-create any custom dashboards created before this change was introduced. If the old dashboard had scheduling enabled, you must also re-create the schedule. (STO-7199)
 
 ###### New features
 
