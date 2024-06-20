@@ -92,11 +92,6 @@ permissions:
             <td>Default: containerd. Supports docker, containerd, and crio. For more information, go to <a href = "#container-runtime-and-socket-path"> container runtime.</a></td>
         </tr>
         <tr>
-            <td>TC_IMAGE</td>
-            <td>Image used for traffic control.</td>
-            <td>Default image is used if not specified.</td>
-        </tr>
-        <tr>
             <td>DESTINATION_HOSTS</td>
             <td>DNS names or FQDN names of the services and ports whose accessibility is impacted.</td>
             <td>If not provided, network chaos is induced for all destinations or <code>DESTINATION_IPS</code> if defined. For more information, go to <a href = "#destination-ips-and-destination-hosts"> destination hosts.</a></td>
