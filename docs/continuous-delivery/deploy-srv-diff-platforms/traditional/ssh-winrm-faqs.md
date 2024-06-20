@@ -72,6 +72,6 @@ Check if port 5985 is opened and test the communication for WinRM.
 
 You can automate creating winrm credential/secret key via our existing API as listed [here](https://apidocs.harness.io/tag/Account-Secret#operation/create-account-scoped-secret).
 
-### How to install Artifacts on IIS on Windows VM
-You can use Copy/Download command option by creating winrm connection and can deploy the artifact to window VM
+### How to install artifacts on IIS on a Windows VM?
+You can use the Copy/Download command option by creating a WinRM connection and deploy the artifact to a Windows VM.
 
