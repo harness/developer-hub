@@ -3161,6 +3161,10 @@ Make sure that the infrastructure Ids are in the format `identifier: id,identifi
 export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].stage.spec.environments.values[0].infrastructureDefinitions|map("identifier: "+ .identifier)|join(",")')`
 ```
 
+#### Git Clone step is only available within a containerized step group that requires K8 clusters, and that is the only way to use the Git Clone step.
+
+The Git Clone step uses a containerized step group, so if you are not using K8 Infra or similar, then you can setup the shell script and clone manually by using the git cli command.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).
