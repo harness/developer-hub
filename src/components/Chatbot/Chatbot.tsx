@@ -150,7 +150,7 @@ const Chatbot = () => {
 
   function handleSignIn() {
     window.location.href =
-      "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
+      " http://localhost:5000/sso.html?action=login&src=developerhub&return_to= http://localhost:8888/?chatbot=true";
   }
 
   useEffect(() => {
@@ -278,6 +278,7 @@ const Chatbot = () => {
               src={
                 colorMode === "light" ? "./img/Bars.svg" : "./img/BarsDark.svg"
               }
+              className={`${!isLoggedIn && styles.opacity}`}
               alt="Menu Icon "
               onClick={handleClearHistory}
             />
@@ -299,6 +300,7 @@ const Chatbot = () => {
                 : "./img/SendIconDark.svg"
             }
             alt="Send Icon"
+            className={`${!isLoggedIn && styles.opacity}`}
             onClick={() => handleQuerySubmit(inputText)}
           />
         </div>
