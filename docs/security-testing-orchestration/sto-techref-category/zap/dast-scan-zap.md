@@ -119,7 +119,7 @@ Add a [**Zap**](/docs/security-testing-orchestration/sto-techref-category/zap/za
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`orchestration`](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview)
+    - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview)
     - [`config`](/docs/security-testing-orchestration/sto-techref-category/zap/zap-scanner-reference#scan-configuration) `: default # | standard | attack | quick`
       - `target : `
         - `name : https://myorg.org/welcome`

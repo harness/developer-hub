@@ -100,7 +100,7 @@ Harness STO can ingest both JSON and SARIF data from Wiz, but Harness recommends
    - Add a Run step that runs a Wiz scan from the command line and then copies the results to the shared path.
    - Copy results from a Wiz scan that ran outside the pipeline. 
 
-     For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
+     For more information and examples, go to [Ingestion scans](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
 
 
@@ -199,7 +199,7 @@ import StoSettingTargetWorkspace from '../shared/step_palette/target/_workspace.
 ### Ingestion File
 
 
-The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
+The path to your scan results when running an [Ingestion scan](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline), for example `/shared/scan_results/wiz.latest.json`.  
 
 - The data file must be in a [supported format](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#supported-ingestion-formats) for the scanner.
 

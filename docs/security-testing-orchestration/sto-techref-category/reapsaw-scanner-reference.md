@@ -66,7 +66,7 @@ repository
 
 #### Policy type
 
-The [scan mode](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) to use. 
+The [scan mode](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) to use. 
 
 ##### Key
 ```

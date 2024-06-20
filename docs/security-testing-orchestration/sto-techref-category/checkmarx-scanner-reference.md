@@ -7,7 +7,7 @@ sidebar_position: 100
 
 <DocsTag  text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />
 <DocsTag  text="Orchestration" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto"  />
-<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview/#extraction-scans-in-sto" />
+<DocsTag  text="Extraction" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview/#extraction-scans-in-sto" />
 <DocsTag  text="Ingestion" backgroundColor= "#e3cbf9" textColor="#5c0bad" link="/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline" />
 <br/>
 <br/>
@@ -39,7 +39,7 @@ With Harness STO, you can do the following:
 
     - Review the documentation for the [Checkmarx CxFlow](https://github.com/checkmarx-ts/checkmarx-cxflow-github-action) or [Checkmark One](https://github.com/Checkmarx/ast-github-action) action thoroughly and verify that you’ve configured it correctly in Harness.
 
-    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline).
+    - For a general description and example of an end-to-end ingestion pipeline, go to [Run an ingestion scan in an STO Pipeline](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline).
 
     - If you want to generate multiple results files in one scan, add a separate Checkmarx step to ingest each results file. 
 

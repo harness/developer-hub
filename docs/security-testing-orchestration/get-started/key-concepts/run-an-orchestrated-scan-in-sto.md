@@ -2,7 +2,7 @@
 title: Run an Orchestration scan in an STO Pipeline
 description: Scan a target and ingest the results in one step.
 sidebar_label: Orchestration scans
-sidebar_position: 20
+sidebar_position: 70
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto
 helpdocs_topic_id: wk018r6x3g
@@ -34,4 +34,4 @@ Here are some example workflows that illustrate how to set up an orchestration s
 ## See also
 
 - [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support)
-- [Run an ingestion-only scan in an STO pipeline](./ingestion-workflows/ingest-scan-results-into-an-sto-pipeline.md)
+- [Run an ingestion-only scan in an STO pipeline](./ingest-scan-results-into-an-sto-pipeline.md)

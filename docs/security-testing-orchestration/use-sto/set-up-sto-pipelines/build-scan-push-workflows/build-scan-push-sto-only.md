@@ -31,11 +31,11 @@ The following steps describe the workflow:
 
 1. A Run step scans the codebase using Semgrep and saves the results to a [SARIF](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data) file.
 
-2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline)).
+2. A Semgrep step ingests the scan results ([ingestion-only workflow](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline)).
 
 3. If the code has no critical vulnerabilities, another Run steps builds the image.
 
-4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto)).
+4. An Aqua Trivy step scans the image and ingests the results ([orchestration workflow](/docs/security-testing-orchestration/get-started/key-concepts/run-an-orchestrated-scan-in-sto)).
 
 5. If the image has no critical vulnerabilities, another Run step pushes the image to Docker Hub.
 
@@ -280,7 +280,7 @@ Add a step after the `Run` step and configure it as follows:
   - `name:` A name for the step.
   - `identifier:` A unique step ID.
   - `spec :`
-    - `mode :` [`ingestion`](/docs/security-testing-orchestration/orchestrate-and-ingest/ingestion-workflows/ingest-scan-results-into-an-sto-pipeline)
+    - `mode :` [`ingestion`](/docs/security-testing-orchestration/get-started/key-concepts/ingest-scan-results-into-an-sto-pipeline)
     - `config: default`
       - `target : `
         - `name : <+stage.variables.GITHUB_REPO>`
@@ -448,7 +448,7 @@ Here's an example:
 
 Add an **Aqua Trivy** step to your pipeline after the build step and configure it as follows:
 
-1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+1.  Scan Mode = [**Orchestration**](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
 
 2.  Target name — Click the "tack" button on the right side of the input field and select **Expression**. Then enter the following expression: `<+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
 
@@ -471,7 +471,7 @@ Add an **Aqua Trivy** step to your pipeline after the build step and configure i
 - `name:` A name for the step.
 - `identifier:` A unique step ID.
 - `spec :`
-  - `mode :` [`orchestration`](/docs/security-testing-orchestration/orchestrate-and-ingest/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
+  - `mode :` [`orchestration`](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview) In orchestrated mode, the step runs the scan and ingests the results in one step.
   - `config: default`
   - `target : `
     - `name : <+stage.variables.DOCKERHUB_USERNAME>/<+stage.variables.DOCKER_IMAGE_LABEL>`
