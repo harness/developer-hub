@@ -6,7 +6,7 @@ description: This Page talks about auto creation of Harness entitiess
 Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely.
 
 :::info note
-Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact[Harness Support](mailto:support@harness.io) to enable this feature.
+Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
 ## Pre-requisite of autocreation
