@@ -1,16 +1,16 @@
 ---
-title: Create Jira tickets in STO
+title: Create Jira tickets
 description: You can create Jira tickets for any issue detected during an STO pipeline execution.
-sidebar_label: Jira tickets for detected vulnerabilities
-sidebar_position: 50
+sidebar_label: Create Jira tickets
+sidebar_position: 85
 redirect_from: 
   - /docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations
 ---
 
-import create_ticket from './static/jira-integration-02-create-ticket.png'
-import ticket_num from './static/jira-integration-03-ticket-num-in-issue-details.png'
-import issue_link from './static/jira-integration-04-link-in-jira-ticket.png'
-import ticket_summary from './static/jira-integration-05-ticket-summary.png'
+import create_ticket from './use-sto/static/jira-integration-02-create-ticket.png'
+import ticket_num from './use-sto/static/jira-integration-03-ticket-num-in-issue-details.png'
+import issue_link from './use-sto/static/jira-integration-04-link-in-jira-ticket.png'
+import ticket_summary from './use-sto/static/jira-integration-05-ticket-summary.png'
 
 You can set up STO to create Jira tickets for issues detected by STO scans. This topic describes how to set up this integration.
 
@@ -38,7 +38,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
  
     2. The default Jira project where you want to create your tickets. (You can select a different project when you create a ticket.)
 
-       ![](./static/jira-integration-00-select-connector.png)
+       ![](./use-sto/static/jira-integration-00-select-connector.png)
 
 ## Create a Jira ticket from an STO issue
 
@@ -50,7 +50,7 @@ You can only create Jira tickets for targets that have baselines specified. For 
 
 2. Click on the issue to select it. Then click **Create Ticket**. 
 
-   ![](./static/jira-integration-01-create-ticket.png)
+   ![](./use-sto/static/jira-integration-01-create-ticket.png)
 
 3. In **Create Ticket in Jira**, set the options as follows:
 

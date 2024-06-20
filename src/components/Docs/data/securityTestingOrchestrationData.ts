@@ -104,7 +104,7 @@ import {
               module: MODULES.ci,
               description:
                 "You can easily create Jira tickets for issues detected during an STO build.",
-              link: "/docs/security-testing-orchestration/remediations/jira-integrations",
+              link: "/docs/security-testing-orchestration/jira-integrations",
             },
             {
               title: "Navigate and drill down into detected vulnerabilities",
