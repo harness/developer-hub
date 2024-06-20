@@ -122,6 +122,12 @@ The following features are now generally available:
 
 <!-- 2024-05-22 -->
 
+###### Breaking change
+
+Harness introduced a back-end dashboard change to support features that are currently in development. As a result, you must re-create any custom dashboards created before this change was introduced. If the old dashboard had scheduling enabled, you must also re-create the schedule. (STO-7199)
+
+
+
 #### Fixed issues
 
 - Fixed an issue where running an orchestrated Burp scan resulted in the runtime error `No matching scan configurations`. (STO-7585, ZD-63508)
@@ -993,9 +999,6 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 <!-- May 25, 2023 -->
 
-###### Breaking change
-
-Harness introduced a back-end dashboard change to support features that are currently in development. As a result, you must re-create any custom dashboards created before this change was introduced. If the old dashboard had scheduling enabled, you must also re-create the schedule. (STO-7199)
 
 ###### New features
 
