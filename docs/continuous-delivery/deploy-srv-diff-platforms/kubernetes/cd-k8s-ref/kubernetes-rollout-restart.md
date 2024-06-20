@@ -1,6 +1,7 @@
 ---
-title: Kubernetes rollout restart
-description: This topic discusses about Kubernetes Rollout Step
+title: Kubernetes Rollout Step
+description: This topic discusses the Kubernetes Rollout Step
+sidebar_position: 3
 ---
 
 :::info note
@@ -8,11 +9,11 @@ description: This topic discusses about Kubernetes Rollout Step
 2. This feature requires Harness Delegate version **832xx**.
 :::
 
-This topic describe how you can restart your deployed Kubernetes resources by using **K8s Rollout** step.
+This topic describes how you can manage your **Kubernetes Rolling Deployment** by using the **K8s Rollout** step. 
 
-Harness follows standard Kubernetes behavior during rollout. See [kubectl rollout](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_rollout/).
+Harness follows standard Kubernetes behavior during rollout. To see what behavior this replicates, go to the subcommands of [kubectl rollout](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_rollout/#see-also).
 
-When to use **K8s Rollout** step?
+When should you use the **K8s Rollout** step?
 
 - **Configuration Changes**: When there are changes in ConfigMaps, Secrets, or other configurations that your application depends on, and you need to apply these changes without changing the image.
 
