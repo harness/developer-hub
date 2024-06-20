@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-14T10:00
+date: 2024-06-20T10:00
 sidebar_position: 4
 ---
 
@@ -48,6 +48,10 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 :::
 
 ## June 2024
+
+### Version 24.06.83204 <!--  June 20, 2024 -->
+
+- Resolved an issue to match new logs for Azure Web App Slot Deployment when Azure Web App is running on linux container
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 
