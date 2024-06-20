@@ -153,7 +153,11 @@ To add the **Lead Time for Changes** widget to Insights:
 #### Step 2: Configure the widget settings
 
 * Configure the **Filters** for the widget (e.g., `Issue Resolved In` for the Last Quarter)
-* Select the metric you want to measure under the **Metrics** tab. For example: `Average Time in the Stage` measures the average time spent in each stage.
+* Select the metric you want to measure under the **Metrics** tab. For example: **Average Time in the Stage** measures the average time spent in each stage.
+  * **Average Time in Stage:** Measures the lead time as average across all tickets for the stages in the workflow
+  * **Median Time in Stage:** Measures the lead time as median across all tickets for the stages in the workflow
+  * **90th Percentile Time in Stage:** Measures the metric as the 90th percentile of lead time across all tickets for the stages in the workflow
+  * **95th Percentile Time in Stage:** Measures the metric as the 95th percentile of lead time across all tickets for the stages in the workflow
 * Under the **Settings** tab, specify the associated **Workflow profile**.
 
 #### Step 3: Save the widget
@@ -229,21 +233,51 @@ Note that for Lead Time For Changes Report you can choose to enable or disable t
 
 ### Lead Time for Changes calculation
 
-Overall lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
+The overall lead time is calculated as the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue workflow for issues in your issue management system. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
-The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the a, then the *time to comment* is zero.
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](/docs/software-engineering-insights/sei-profiles/workflow-profile#workflow-profiles-for-lead-time). The lead time ultimately depends on the stages that a PR or issue actually goes through. For example, if there are no comments on the PR, then the *Time to Comment* is zero.
 
-To learn more, go to [DORA Lead Time calculation](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
+To learn about how lead time is calculated for each issue or pull request, or both, refer to the [DORA Lead Time calculation examples](/docs/software-engineering-insights/sei-technical-reference/dora-metrics-calculation/dora-lead-time-calculation).
 
-The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
+#### Average Time in Stage
 
-When reviewing these examples, consider the following:
+When the report is configured with the Average Time in Stage metric the report essentially calculates the average of the lead time across all tickets for each stage. The overall lead time in report is displayed as the sum of the average lead time across all the stages in the workflow.
+
+#### Median Time in Stage
+
+When the report is configured with the **Median Time in Stage** metric the report essentially calculates the median of the lead time across for all issues or pull requests in each stage of the workflow. The Overall Lead Time displayed in the report is the sum of these median lead times across all stages.
+
+#### 90th Percentile in Stage
+
+When the report is configured with the 90th Percentile Time in Stage metric the report essentially calculates the 90th of the lead time across all tickets for each stage. The overall lead time in report is displayed as the sum of the 90th percentile of the lead time across all the stages in the workflow.
+
+#### 95th Percentile in Stage
+
+When the report is configured with the 90th Percentile Time in Stage metric the report essentially calculates the 90th of the lead time across all tickets for each stage. The overall lead time in report is displayed as the sum of the 90th percentile of the lead time across all the stages in the workflow.
+
+:::info
+Note that you can measure the following metrics in the widget for the overall lead time directly:
+
+* Median Time in Stage
+* 90th Percentile Overall Lead Time
+* 95th Percentile Overall Lead Time
+
+In this case, for each issue or pull request, the overall lead time is calculated as the sum of the lead times across all stages. Then, the median, 90th percentile, and 95th percentile values of these overall lead times are computed across all issues or pull requests.
+
+This calculation method is currently a beta feature. Contact [Harness Support](mailto:support@harness.io) to enable it for your account.
+:::
+
+### Calculation Example
+
+The following example demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default configuration for a PR-based DORA type Workflow profile, which has four stages: PR Creation Time, Time to Comment, Approval Time, and Merge Time.
+
+When reviewing these example, consider the following:
 
 * *Time to Comment* helps you understand the lead time between PR creation time and the associated review.
 * There are two ways to track the time taken for a PR approval:
   * Default *Approval Time* configuration: The overall approval time, starting from PR creation.
   * *Approval Time* minus *Time to Comment*: Time spent in the review cycle when an active reviewer is involved.
-* The *overall Lead Time* is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
+* The *Overall Lead Time* is the sum of the average time spent in each stage (considering the configured metric in the widget to be **Average Time in Stage**). This is where you can determine where teams are spending their time and whether this duration falls within an acceptable range.
 
 <details>
 <summary>PR Lead Time calculation example #1</summary>
@@ -262,6 +296,9 @@ PR creation time = Time to First PR creation - Time to Commit (Default)
 Time to Comment = Time to first comment - Time to PR creation (Default)
 Approval Time = Time to first PR Approval - PR Creation Time (Default)
 Merge Time = Time for the first approval - Time to the PR creation (Default)
+
+Lead Time = PR creation time + Time to Comment + Approval Time + Merge Time
+Overall Lead Time = Sum of Lead 
 ```
 
 </details>
