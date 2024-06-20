@@ -10,6 +10,7 @@ redirect_from:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
 You can create GitHub event triggers to support a variety of STO workflows and use cases. This topic describes how to do the following:
 
 - Trigger an STO pipeline that detects vulnerabilities and blocks merging when a pull request targets a protected branch and/or updates specific files in the repo.
@@ -17,8 +18,7 @@ You can create GitHub event triggers to support a variety of STO workflows and u
 - Set branch protection rules that block pull requests if the STO pipeline fails.
 
 
-The following steps outline the basic workflow:
-
+The following steps outline the basic workflow.
 
 1. [Create a trigger](#create-the-harness-trigger) for your Harness pipeline.
 
