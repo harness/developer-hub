@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Introduction to Commitment Orchestrator (Beta)
+# Introduction to Commitment Orchestrator 
 
 :::note
 Currently, Commitment Orchestrator is behind the feature flags `CCM_COMMORCH` and `CCM_COMM_SETUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -189,8 +189,8 @@ We have introduced a new toggle that shows you savings by Harness, indicating ho
 
 Savings are computed by directly pulling data from AWS and then evaluating what is saved against SPs and RIs.
 
-## Beta features:
-In its Beta phase, the Commitment Orchestrator provides:
+## Current features:
+
 1. **Enhanced Visibility**: Commitment Orchestrator gives insight into current account status, including detailed breakdowns of savings and resource utilization across all accounts and regions. (Requires visibility permission as part of the master account connector setup).
 2. **Convertible RI Support**: It allows easy purchasing of Convertible Reserved Instances (RI) to optimize cost-efficiency and flexibility in resource allocation.
 3. **Compute SP Purchase Support**: Commitment Orchestrator streamlines the purchase of Compute Savings Plans (SP) to maximize cost savings while maintaining compute coverage.
@@ -214,7 +214,7 @@ In its Beta phase, the Commitment Orchestrator provides:
 
 2. Is Audit trails support available?
 
---> In Beta version of CO, Audit trails are not supported but in upcoming GA release, it will be supported.
+--> Audit trails are not supported but in upcoming GA release, it will be supported.
 
 3. How many Saving Plan purchases happen in a month?
 
@@ -234,7 +234,7 @@ In its Beta phase, the Commitment Orchestrator provides:
 
 7. Is RBAC supported?
 
---> Yes, as part of Beta there are two permissions : view(Visibility) and edit (Setup)
+--> Yes, there are two permissions : view(Visibility) and edit (Setup)
 8. Can orchestration be setup on any account?
 
 --> No, only master account with correct permission listed above will be allowed and at a time only one account can be set up.

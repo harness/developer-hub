@@ -28,6 +28,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - **Azure VM Inventory Duplicate Entries Enhancement**: Duplicate entries within AzureVMInventory will now be handled better after this fix, ensuring appropriate data is displayed on the dashboards. [CCM-17313]
 
+- **Autostopping Rule Search by VM ID**: Previously, users could not search their rule by VM ID. Now, users will be able to search their rule in the rule list using the ID of any VM managed by the rule. [CCM-16437]
+
 ### Version 1.20.3
 
 #### New features and enhancements
