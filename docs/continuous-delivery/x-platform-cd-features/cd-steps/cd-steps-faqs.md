@@ -460,6 +460,10 @@ No, the current Slack integration for Harness does not support notifications for
 
 Alternatively, you can set up a custom webhook trigger or configure a step group with two parallel stages (one with shell and one with approval). Once the process reaches the approval stage, the Shell step can contain the cURL call the webhook for notification.
 
+### The Git Clone step is only available within a containerized step group that requires Kubernetes clusters. Is this the only way to use the Git Clone step?
+
+The Git Clone step uses a containerized step group. If you are not using Kubernetes or similar infrastructure, then you can setup a shell script and clone it manually by using the Git CLI command.
+
 
 
 
