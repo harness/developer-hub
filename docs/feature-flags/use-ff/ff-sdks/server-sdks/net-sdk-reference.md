@@ -94,7 +94,7 @@ Targets are used to control which users see which Variation of a Feature Flag, f
 
 </details>
 
-For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags).
 
 To add a Target, build it and pass in arguments for the following:
 
@@ -338,7 +338,7 @@ Log.Logger = new LoggerConfiguration()
 
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default ConfigURL and EventURL that we use. You can pass the URLs in when initializing the SDK, for example: 
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/) you need to change the default ConfigURL and EventURL that we use. You can pass the URLs in when initializing the SDK, for example: 
 
 
 ```

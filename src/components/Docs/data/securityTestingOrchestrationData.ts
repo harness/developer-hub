@@ -143,13 +143,19 @@ import {
               link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities",
             },
             {
-              title: "Trigger STO scans to block Git pull requests with vulnerabilities",
+              title: "GitHub triggers to block pull requests with vulnerabilities",
               module: MODULES.sto,
               description:
-                "You can create Git event triggers to block PRs if an STO scan detects vulnerabilities that violate OPA policies or Fail on Severity settings.",
-              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities",
+                "You can create GitHub event triggers to trigger STO scans and block pull requests if the results match your failure criteria.",
+              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/github-triggers",
             },
-          ],
+            {
+              title: "GitLab triggers to block merge requests with vulnerabilities",
+              module: MODULES.sto,
+              description:
+                "You can create GitLab event triggers to trigger STO scans and block merge requests if the results match your failure criteria.",
+              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/gitlab-triggers",
+            },          ],
         },
 
         ];

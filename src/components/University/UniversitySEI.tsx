@@ -7,8 +7,8 @@ import { certType } from "./CertCard";
 import { ActivePage, getCertLevel } from "./LandingPage";
 // import AdminCertificationExamDetails from "./data/sei-certification-admin-exam-details.md";
 // import AdminCertificationReviewDetails from "./data/sei-certification-admin-review-guide.md";
-// import DeveloperCertificationExamDetails from "./data/sei-certification-developer-exam-details.md";
-// import DeveloperCertificationReviewGuide from "./data/sei-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/sei-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/sei-certification-developer-review-guide.md";
 // import ArchitectCertificationReviewDetails from "./data/sei-certification-architect-review-guide.md";
 // import ArchitectCertificationExamDetails from "./data/sei-certification-architect-exam-details.md";
 import IltCard from "./Card";
@@ -200,20 +200,20 @@ export default function CertificationsSEI() {
                     </span>
                   </div>
                   <div className={styles.right}>
-                    <h3>Coming Soon...</h3>
+                    <h3>Review Study Guide</h3>
                     <div className={styles.desc}>
                       Assesses the fundamental skills to deploy your
                       applications with SEI projects.
                     </div>
-                    {/* <DeveloperCertificationReviewGuide /> */}
-                    {/*
+                    <DeveloperCertificationReviewGuide />
+
                     <div className={styles.btnContainer}>
                       <Link href="#">
                         <button className={styles.moreDetails}>
                           Register for Exam
                         </button>
                       </Link>
-                    </div> */}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -221,7 +221,7 @@ export default function CertificationsSEI() {
 
             {/* Developer Exam Details */}
 
-            {/*
+
             <div className={styles.examDetails}>
               <h2 id="exam-details">Exam Details</h2>
               <div className={styles.examDetailsCard}>
@@ -234,7 +234,7 @@ export default function CertificationsSEI() {
                   </Link>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
 
           {/* Administrator Tab Content */}

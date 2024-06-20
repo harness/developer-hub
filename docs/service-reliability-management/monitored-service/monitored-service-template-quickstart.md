@@ -138,25 +138,26 @@ You create a monitored service using a template. Template is a predefined set of
 1. Click **Monitored Service** > **Use template**.
 
 2. In the Templates page, select the template that you want to use.  
-The preview of the selected template appears on the right.  
-In the Details tab, you can see the following information:
+   The preview of the selected template appears on the right.  
+   
+   In the Details tab, you can see the following information:
 
-  * Template type  
-  * Description  
-  * Tags associated with the template  
-  * Template version  
-  * Template input. The fields that you have configured as Runtime Input while creating the template are displayed here.  
-  * YAML version of the template.  
-  * List of monitored services that are referring to this template.  
+   * Template type  
+   * Description  
+   * Tags associated with the template  
+   * Template version  
+   * Template input. The fields that you have configured as Runtime Input while creating the template are displayed here.  
+   * YAML version of the template.  
+   * List of monitored services that are referring to this template.  
 
-  In the Activity Log tab, you can see the history of changes made to the template.
+   In the Activity Log tab, you can see the history of changes made to the template.
 3. Select the template version that you want to use.
 4. Click **Use Template**.  
-The Monitored Service Input Set page appears. This page lists all the fields that you have configured as Runtime Input while creating the template. For example, if you had configured service and environment as runtime inputs, the **Create and Select or Service** and **Create or Select an Environment** fields appear in this page.
+   The Monitored Service Input Set page appears. This page lists all the fields that you have configured as Runtime Input while creating the template. For example, if you had configured service and environment as runtime inputs, the **Create and Select or Service** and **Create or Select an Environment** fields appear in this page.
 5. Enter the appropriate information if there are fields that require input.
 6. Click **Submit**.  
 
-  The monitored service is created and appears in the Monitored Services page.
+   The monitored service is created and appears in the Monitored Services page.
 
 ### Modify a Monitored Service Created from a Template
 

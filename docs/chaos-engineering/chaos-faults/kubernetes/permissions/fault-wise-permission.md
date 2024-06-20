@@ -71,7 +71,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <th> Permissions required </th>
     </tr>
     <tr>
-    <td> Pod delete * </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#permissions-required"> Pod delete * </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -88,26 +88,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Container kill </td>
-    <td> Namespaced, Cluster </td>
-    <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
-    <li>events = [create, get, list, patch, update]</li>
-    <li>configMaps = NA</li>
-    <li>pods/log = [get, list, watch]</li>
-    <li>pods/exec = NA</li>
-    <li>deployments, statefulsets = [get, list]</li>
-    <li>replicasets, daemonsets = [get, list]</li>
-    <li>networkpolicies = NA</li>
-    <li>networkpolicies = NA</li>
-    <li>networkpolicies = NA</li>
-    <li>jobs = [create, delete, get, list, deletecollection]</li>
-    <li>chaosEngines, chaosExperiments, chaosResults = [create, delete, get, list, patch, update]</li>
-    <li>secrets = NA</li>
-    <li>pod eviction = NA</li>
-    <li>nodes = NA*</li></ul></td>
-    </tr>
-    <tr>
-    <td> Disk fill </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill#permissions-required"> Container kill </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -124,7 +105,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod API block </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#permissions-required"> Disk fill </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -141,7 +122,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod API latency </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block#permissions-required"> Pod API block </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -158,7 +139,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod API modify body </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-latency#permissions-required"> Pod API latency </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -175,7 +156,24 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod API modify header </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-modify-body#permissions-required"> Pod API modify body </a></td>
+    <td> Namespaced, Cluster </td>
+    <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
+    <li>events = [create, get, list, patch, update]</li>
+    <li>configMaps = NA</li>
+    <li>pods/log = [get, list, watch]</li>
+    <li>pods/exec = NA</li>
+    <li>deployments, statefulsets = [get, list]</li>
+    <li>replicasets, daemonsets = [get, list]</li>
+    <li>networkpolicies = NA</li>
+    <li>jobs = [create, delete, get, list, deletecollection]</li>
+    <li>chaosEngines, chaosExperiments, chaosResults = [create, delete, get, list, patch, update]</li>
+    <li>secrets = NA</li>
+    <li>pod eviction = NA</li>
+    <li>nodes = NA*</li></ul></td>
+    </tr>
+    <tr>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-modify-header#permissions-required"> Pod API modify header </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -192,7 +190,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod API status code </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-status-code#permissions-required"> Pod API status code </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -209,7 +207,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod autoscaler * </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler#permissions-required"> Pod autoscaler * </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -226,7 +224,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod CPU hog exec * </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog-exec#permissions-required"> Pod CPU hog exec * </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -243,7 +241,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod CPU hog </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog#permissions-required"> Pod CPU hog </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -260,7 +258,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod DNS error </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#permissions-required"> Pod DNS error </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -277,7 +275,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod DNS spoof </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-spoof#permissions-required"> Pod DNS spoof </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -294,7 +292,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod HTTP latency </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-latency#permissions-required"> Pod HTTP latency </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -311,7 +309,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod HTTP modify body </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body#permissions-required"> Pod HTTP modify body </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -328,7 +326,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod HTTP modify header </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#permissions-required"> Pod HTTP modify header </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -345,7 +343,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod HTTP reset peer </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#permissions-required"> Pod HTTP reset peer </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -362,7 +360,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod HTTP status code </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#permissions-required"> Pod HTTP status code </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -379,7 +377,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod IO attribute override </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-attribute-override#permissions-required"> Pod IO attribute override </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -396,7 +394,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod IO error </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#permissions-required"> Pod IO error </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -413,7 +411,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod IO latency </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#permissions-required"> Pod IO latency </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -430,7 +428,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod IO stress </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#permissions-required"> Pod IO stress </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -447,7 +445,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod memory hog exec * </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog-exec#permissions-required"> Pod memory hog exec * </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -464,7 +462,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod memory hog </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog#permissions-required"> Pod memory hog </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -481,7 +479,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod network corruption </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-corruption#permissions-required"> Pod network corruption </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -498,7 +496,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod network duplication </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication#permissions-required"> Pod network duplication </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -515,7 +513,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod network latency </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#permissions-required"> Pod network latency </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -532,7 +530,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod network loss </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss#permissions-required"> Pod network loss </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -549,7 +547,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod network partition * </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#permissions-required"> Pod network partition * </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -566,7 +564,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Pod network rate limit </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-rate-limit#permissions-required"> Pod network rate limit </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -583,7 +581,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <li>nodes = NA*</li></ul></td>
     </tr>
     <tr>
-    <td> Time chaos </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/pod/time-chaos#permissions-required"> Time chaos </a></td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
     <li>events = [create, get, list, patch, update]</li>
@@ -611,7 +609,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
     <th> Permissions required </th>
     </tr>
     <tr>
-    <td> Kubelet service kill </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill#permissions-required"> Kubelet service kill</a> </td>
     <td> Namespaced, Cluster </td>
     <td> <ul><li> pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -628,7 +626,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li> </ul></td>
     </tr>
     <tr>
-    <td> Node CPU hog </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog#permissions-required"> Node CPU hog </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -645,7 +643,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul></td>
     </tr>
     <tr>
-    <td> Node drain </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-drain#permissions-required"> Node drain </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -662,7 +660,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list, patch, update]</li></ul></td>
     </tr>
     <tr>
-    <td> Node IO stress </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress#permissions-required"> Node IO stress </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -679,7 +677,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul> </td>
     </tr>
     <tr>
-    <td> Node memory hog </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog#permissions-required"> Node memory hog </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -696,7 +694,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul></td>
     </tr>
     <tr>
-    <td> Node network latency </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-network-latency#permissions-required"> Node network latency </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -713,7 +711,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul></td>
     </tr>
     <tr>
-    <td> Node network loss </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-network-loss#permissions-required"> Node network loss </a></td>
     <td> Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -730,7 +728,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul></td>
     </tr>
     <tr>
-    <td> Node restart </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart#permissions-required"> Node restart </a></td>
     <td> Cluster </td>
     <td><ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -747,7 +745,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list]</li></ul></td>
     </tr>
     <tr>
-    <td> Node taint </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint#permissions-required"> Node taint </a></td>
     <td> Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>
@@ -764,7 +762,7 @@ Read the permission as: "You can create **pod delete** fault in **Namespaced and
         <li>nodes = [get, list, patch, update]</li></ul></td>
     </tr>
     <tr>
-    <td> Kubelet density </td>
+    <td> <a href="/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#permissions-required"> Kubelet density </a></td>
     <td> Cluster </td>
     <td> <ul><li>pod = [create, delete, get, list, patch, deletecollection, update]</li>
         <li>events = [create, get, list, patch, update]</li>

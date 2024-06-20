@@ -3,6 +3,7 @@ import { useEffect } from "react";
 // import Refiner from 'refiner-js'
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.scss";
+import Tooltip from "rc-tooltip";
 
 const Feedback = () => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -43,24 +44,26 @@ const Feedback = () => {
 			});
 			*/
       _refiner("showForm", "9afbf970-3859-11ed-91de-cb8481e90a69", true);
-       _refiner("addToResponse", {
-         currentUrl: window.location.href,
-       });
+      _refiner("addToResponse", {
+        currentUrl: window.location.href,
+      });
     } catch (error) {
       console.error(error);
     }
   };
   return (
     <>
-      <button className={styles.feedback} onClick={handleClick}>
-        <img
-          src={`${baseUrl}img/icon_feedback.svg`}
-          alt="Feedback"
-          width="24"
-          height="24"
-        />
-        <span>Feedback</span>
-      </button>
+      <Tooltip placement="left" overlay="Leave feedback to help us improve">
+        <button className={styles.feedback} onClick={handleClick}>
+          <img
+            src={`${baseUrl}img/icon_feedback.svg`}
+            alt="Feedback"
+            width="24"
+            height="24"
+          />
+          <span>Feedback</span>
+        </button>
+      </Tooltip>
     </>
   );
 };

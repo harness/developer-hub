@@ -16,8 +16,7 @@ You can set up STO to create Jira tickets for issues detected by STO scans. This
 
 :::note
 * This feature is not supported in Self-Managed Enterprise Edition.
-* This feature is behind the Feature Flag `STO_JIRA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-* This feature is supported for both [STO SecOps and Developer](/docs/platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
+* This feature is supported for both [Security Testing Developer and Security Testing SecOps](/docs/platform/role-based-access-control/add-manage-roles/#module-specific-roles) roles.  
 :::
 
 :::warning

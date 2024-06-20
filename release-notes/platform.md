@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-06-14:T10:00:30
+date: 2024-06-20:T10:00:30
 sidebar_position: 3
 ---
 
@@ -78,6 +78,22 @@ The following deprecated API endpoints are longer supported:
 - GET api/resourcegroup
 
 ## June 2024
+
+### Version 1.42.4<!-- June 20, 2024 -->
+
+#### New features and enhancements
+
+- `upgrader_enabled` is now set to `true` in the Terraform delegate download section of the UI gen installation file to enable automatic upgrades. (PL-51681)
+
+- Due to a bug, users could be added to SSO linked User Groups from the Harness UI, which should not be allowed. The addition of users to any SSO linked user groups from the Harness UI is now restricted. (PL-51431)
+
+#### Fixed issues
+
+- Performing actions within embedded dashboards now refreshes the user's active session, preventing unexpected logouts. (PL-50534, ZD-62334)
+
+- Kubernetes services were created during the startup of the delegate, causing the IP pool to be exhausted for NAB. The delegate has been updated to prevent the creation of Kubernetes services upon startup, resolving the issue with IP pool exhaustion. This item requires Harness Delegate version 24.06.83303. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51550)
+
+- Delegates were running out of memory due to frequent connectivity checks. Optimized the connectivity check process to reduce memory usage, preventing the delegate from running out of memory. This item requires Harness Delegate version 24.06.83303. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-51418, ZD-63705)
 
 ### Version 1.41.6<!-- June 14, 2024 -->
 

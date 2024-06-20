@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-06-04T10:00
+date: 2024-06-19T10:00
 sidebar_position: 16
 ---
 
@@ -122,6 +122,46 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+
+## June 19, 2024, patch version 0.17.1
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.17.1](https://github.com/harness/helm-charts/releases/tag/harness-0.17.1) |
+| Air Gap Bundle | [0.17.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.17.1) |
+| NG Manager | 1.36.10 |
+| CI Manager | 1.26.5 |
+| Pipeline Service | 1.73.4 |
+| Platform Service | 1.23.2 |
+| Access Control Service | 1.45.1 |
+| Delegate | 24.04.82901 |
+| Change Data Capture | 1.17.0 |
+| STO Core | 1.94.7 |
+| Test Intelligence Service | 1.17.0 |
+| NG UI | 1.21.6 |
+| LE NG | 1.3.0 |
+
+#### Alternative air gap bundle download method
+
+Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
+
+```
+gsutil -m cp \
+  "gs://smp-airgap-bundles/harness-0.17.1/ccm_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/cdng_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/ce_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/ci_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/ff_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/platform_images.tgz" \
+  "gs://smp-airgap-bundles/harness-0.17.1/sto_images.tgz" \
+  .
+```
+
+#### Fixed issues
+
+- Harness enabled the OPA service as the default setting. OPA supports multiple entities in Harness and is a critical service. Therefore, starting from SMP 0.17.1, the OPA service will be available in the default configuration. (PL-51635, ZD-64628)
 
 ## May 31, 2024, version 0.17.0
 

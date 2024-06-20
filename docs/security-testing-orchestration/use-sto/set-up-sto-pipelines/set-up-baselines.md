@@ -118,14 +118,7 @@ Harness recommends that you test your regular expression thoroughly before you a
 
 
 
-## Default RegEx baselines by target type
-
-:::note notes
-- Currently, this feature is behind the Feature Flag `STO_BASELINE_DEFAULTING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-- Harness recommends that you test your regular expression thoroughly before you apply it to Regex target default. For more information, go to:
-  - [RegEx baselines: important notes](#regex-baselines-important-notes)
-  - [Regex baseline examples](#regex-baseline-examples)
-:::
+## Default baselines based on regular expressions
 
 You can specify default baselines for specific target types: code repositories, container images, web/API instances, and infrastructure configurations. STO includes a set of predefined defaults for repository and container image targets.
 
@@ -136,6 +129,13 @@ You can specify default baselines for specific target types: code repositories, 
   - `v1.15.4` 
 
 - STO does not include predefined default RegEx baselines for application instances and configurations. 
+
+:::note notes
+
+- Harness recommends that you test your regular expression thoroughly before you apply it to Regex target default. For more information, go to:
+  - [RegEx baselines: important notes](#regex-baselines-important-notes)
+  - [Regex baseline examples](#regex-baseline-examples)
+:::
 
 To specify default RegExes:
 

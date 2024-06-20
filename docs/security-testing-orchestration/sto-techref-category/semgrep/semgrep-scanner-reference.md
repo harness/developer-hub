@@ -54,12 +54,6 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 <summary>Add a built-in SAST scanner (easiest)</summary>
 
-:::note
-
-This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
-
 To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
 
 
