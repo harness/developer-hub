@@ -25,9 +25,9 @@ Ensure the flag is turned on for your selected environment for your changes to r
 
 When editing your rules, you may have noticed the option to add **Targets** and, or, **Target Groups**. To learn more on how to create **Targets** and **Target Groups**, go to:
 
- * [Add Targets](/docs/feature-flags/ff-target-management/add-targets.md)
- * [Add Target Groups](/docs/feature-flags/ff-target-management/add-target-groups.md)
- * [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags.md)
+ * [Add Targets](/docs/feature-flags/use-ff/ff-target-management/add-targets.md)
+ * [Add Target Groups](/docs/feature-flags/use-ff/ff-target-management/add-target-groups.md)
+ * [Targeting Users with Flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags.md)
 
 ## Edit configuration
 

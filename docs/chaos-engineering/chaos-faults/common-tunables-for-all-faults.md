@@ -198,7 +198,7 @@ spec:
         env:
         # name of the lib image
         - name: LIB_IMAGE
-          value: 'chaosnative/chaos-go-runner:main-latest'
+          value: 'harness/chaos-go-runner:main-latest'
 ```
 
 ### Default health check

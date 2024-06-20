@@ -1,7 +1,7 @@
 ---
 title: Semgrep scanner reference for STO
 description: Scan code repositories with Semgrep.
-sidebar_label: Semgrep settings reference
+sidebar_label: Semgrep scanner reference
 sidebar_position: 20
 ---
 
@@ -20,9 +20,22 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 
 ## Important notes for running Semgrep scans in STO
 
-- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)). For information about the security rulesets supported by different Semgrep products, go to the [Semgrep Registry](https://semgrep.dev/explore). 
+- This integration uses the [Semgrep Engine](https://github.com/semgrep/semgrep), which is open-source and licensed under [LGPL 2.1](https://tldrlegal.com/license/gnu-lesser-general-public-license-v2.1-(lgpl-2.1)).  
 
   To run scans using a licensed version of [Semgrep Code](https://semgrep.dev/products/semgrep-code), add your Semgrep token in the [Access token](#access-token) field. 
+
+- STO Semgrep steps include the following rulesets by default: 
+  - [auto](https://semgrep.dev/p/auto)
+  - [bandit](https://semgrep.dev/p/bandit)
+  - [brakeman](https://semgrep.dev/p/brakeman)
+  - [eslint](https://semgrep.dev/p/eslint)
+  - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+  - [flawfinder](https://semgrep.dev/p/flawfinder)
+  - [gosec](https://semgrep.dev/p/gosec)
+  - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+  - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+
+   Some rulesets include Pro rules that are available only with a paid version of Semgrep. For more information, go to the [Semgrep Registry](https://semgrep.dev/explore).
 
 - If you want to add trusted certificates to your scan images at runtime, you need to run the scan step with root access.
 
@@ -40,12 +53,6 @@ For a quick introduction, go to the [SAST code scans using Semgrep](/docs/securi
 <details>
 
 <summary>Add a built-in SAST scanner (easiest)</summary>
-
-:::note
-
-This step is behind the feature flag `STO_ONE_CLICK_SAST`. Contact [Harness Support](mailto:support@harness.io) to enable it.
-
-:::
 
 To scan a code repository, you need [Harness Code Repository](/docs/code-repository) or a [Harness connector](/docs/category/code-repo-connectors) to your Git service. 
 
@@ -177,6 +184,35 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
 
 <StoSettingProductConfigName />
+
+<!-- 
+You can use this setting to select the set of Semgrep rulesets to include in your scan:
+
+  - **Default** Include the following rulesets: 
+    - [bandit](https://semgrep.dev/p/bandit)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **No default CLI flags** Run the `semgrep` scanner with no additional CLI flags. This setting is useful if you want to specify a custom set of rulesets in **Additional CLI flags**.
+  - **p/default** Run the scan with the [default ruleset](https://semgrep.dev/p/default) configured for the Semgrep scanner.
+  - **Auto only** Run the scan with the [recommended rulesets specific to your project](https://semgrep.dev/p/auto).
+  - **Auto and Ported security tools** Include the following rulesets: 
+    - [auto](https://semgrep.dev/p/auto)
+    - [brakeman](https://semgrep.dev/p/brakeman)
+    - [eslint](https://semgrep.dev/p/eslint)
+    - [findsecbugs](https://semgrep.dev/p/findsecbugs)
+    - [flawfinder](https://semgrep.dev/p/flawfinder)
+    - [gitleaks](https://semgrep.dev/p/gitleaks)
+    - [gosec](https://semgrep.dev/p/gosec)
+    - [phps-security-audit](https://semgrep.dev/p/phpcs-security-audit)
+    - [security-code-scan](https://semgrep.dev/p/security-code-scan)
+  - **Auto and Ported security tools except p/gitleaks** 
+
+-->
 
 ### Target
 

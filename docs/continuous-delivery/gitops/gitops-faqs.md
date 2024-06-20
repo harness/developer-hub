@@ -155,4 +155,8 @@ No, Microsoft Teams does not support GitOps.
 
 ### Which RBAC policies or permissions are required to use Harness GitOps?
 
-The minimum RBAC requirements depend on the applications and destination cluster setup. Thus, it is not straightforward to determine the minimum requirements for RBAC/permissions. For this reason, the ArgoCD application controller by default has wide RBAC permissions.
+The minimum RBAC requirements depend on the applications and destination cluster setup. Thus, it is not straightforward to determine the minimum requirements for RBAC/permissions. For this reason, the ArgoCD application controller has wide RBAC permissions by default.
+
+### How can I sync or delete an application or non-deployment resource?
+
+Each resource in our UI has a three dot "kebab menu" that allows you sync or delete the resource. 

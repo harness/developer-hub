@@ -645,7 +645,7 @@ The following table provides the feature support matrix for CCM on Harness Self-
 
 ### CCM on air-gapped environment
 
-CCM is supported in [Harness Self-Managed Enterprise Edition installs on an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+CCM is supported in [Harness Self-Managed Enterprise Edition installs on an air-gapped environment](/docs/self-managed-enterprise-edition/install/install-in-an-air-gapped-environment).
 
 CCM leverages AWS APIs that require connectivity from the isolated (air-gapped) instance. To grant access to these AWS APIs, establish VPC endpoints for the respective AWS services. For services lacking VPC endpoints, use a proxy to facilitate access. For more information, go to [Manage AWS costs by using CCM on Harness Self-Managed Enterprise Edition](../get-started/ccm-smp/aws-smp.md).
 

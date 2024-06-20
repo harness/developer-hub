@@ -344,6 +344,7 @@ Following are some secrets from platform-service that you will need to update:
 Run `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
 :::
 
+
 ## GCP Connector Setup
 
 ### Authorize Service Account to access BigQuery and GCS buckets in other projects
@@ -353,9 +354,17 @@ In the **Grant Permissions** step of GCP Connector flow, follow below steps:
 2. Follow [these](https://gtseres.medium.com/using-service-accounts-across-projects-in-gcp-cf9473fef8f0) steps to grant role to Service Account to access other project.
 3. Click on **Continue** to test the connection.
 
-Please refer [this](https://www.cloudquery.io/blog/creating-cross-project-service-accounts-in-gcp#how-do-we-grant-it-access-to-other-projects?) doc if you encounter any difficulties understanding the process. It provides a comprehensive explanation of all steps accompanied by screenshots.
+Please refer [this](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/gcp-smp#step-3-handling-kubernetes-secrets) doc if you encounter any difficulties understanding the process. It provides a comprehensive explanation of all steps accompanied by screenshots.
 
 :::info
 Not supporting **GCP Inventory management** in the **Choose Requirements** step of GCP Connector flow.
 :::
 
+### Troubleshooting
+If in case the K8s secrets expire, the secrets will have to be set again. First you would have to update the secrets in respective `secret.yaml` and then delete the pod. We recommend to `kubectl delete` the following pods:
+
+- `batch-processing`
+- `ce-nextgen`
+- `cloud-info`
+
+and then follow the [same steps](https://developer.harness.io/docs/cloud-cost-management/get-started/ccm-smp/azure-smp#handling-kubernetes-secrets) to set the keys. After the new keys are set, verify the changes by looking at the `configs` for the pods.
