@@ -1,44 +1,116 @@
 ---
-title: Input Data Pre-processing for Pipeline
-description: You can control the pre-processing of input data
+title: Handling empty strings in Input Variable
+description: Learn about how you can handle empty string in your input variable
 ---
 
-In a few cases, when you provide an empty value `""` as your input, it will be converted into `<+input>` in the background. This behavior specifically occurs in two scenarios:
+## Problem
 
-1. When an Input Set is used to run a pipeline from the UI.
-2. When an Input Set is used in a Trigger to start a Pipeline.
+Let's try to understand how are empty string handled in Harness and what are the inconsistency and then we can move toward the solution to handle this inconsistency.
 
-:::info
-`<+input>` is interpreted as null by Harness.
-::: 
+To understand the problem, let's take a simple pipeline as an example:-
 
-Here's an example where you are running a pipeline via an input set. Here, we have not provided any input value.
+```yaml
+pipeline:
+  name: Input_Pipeline
+  identifier: Input_Pipeline
+  projectIdentifier: test
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom
+        identifier: custom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          input_variable=<+pipeline.variables.input_variable>
+                          echo "the value is:$input_variable"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+  variables:
+    - name: input_variable
+      type: String
+      description: ""
+      required: false
+      value: <+input>
 
-In this example, we have not provided any value to the input:-
+```
+
+We have an input variable called `input_variable` that we set at runtime. We use a simple script to print the value of `input_variable` to see if it is passed as an **empty string** or as **null** when we leave it empty.
+
+
+We have an input set created as well for this pipeline where we have left the value of `input_variable` as empty.
+Example yaml:-
 
 ```yaml
 inputSet:
-  name: input
+  name: input_set
   tags: {}
-  identifier: input
+  identifier: input_set
   orgIdentifier: default
-  projectIdentifier: Samples
+  projectIdentifier: test
   pipeline:
-    identifier: test_expression
+    identifier: Input_Pipeline
     variables:
-      - name: var_config
+      - name: input_variable
         type: String
         value: ""
 ```
-When you run the pipeline, the Run Form processes the input values. If no value is provided, it shows `<+input>`, indicating that the pipeline is ready to accept values as they are given. The pipeline itself doesn't preprocess these values; it takes whatever is provided by the Run Form directly.
 
-![](./static/compiled_yaml_processing.png)
+Now as we know we can have two ways of running a pipeline, one without Input Set and one with Input Set.
+
+### Running a pipeline without Input Set
+
+If we run a pipeline without using an input set and check the execution we will see the output as:-
+
+![](./static/without_input_set_runform.png)
+
+The output is taking the value of `input_variable` as empty which is fine since we have provided the value of `input_variable` during runtime as empty.
+
+
+### Running a pipeline with Input Set
+
+Now, let's run the pipeline using an input set we have created i.e `input_set`.
+
+![](./static/with_input_set_running.png)
+
+
+If we run a pipeline using an input set and check the execution we will see the output as:-
+
+![](./static/with_input_set_runform.png)
+
+The output is treating `input_variable` as **null** when left empty. 
+
+We want it to behave consistently, whether running with or without an input set, by treating empty strings as empty. Null values can cause the pipeline to fail, which we want to avoid.
+
+This happens because, in the Harness system, when saving the input set with an empty value for an input variable or running the pipeline with an input set having an empty string value of an input variable, it gets encoded as `<+input>`.
+
+:::info note
+`<+input>` is treated as null in Harness
+:::
+
+## Solution
 
 As a user, you might want more control over how empty values are handled, especially if you want the string to stay empty. Harness provides an option called **Save Blank Fields as Empty String** for this purpose.
 
 With this option enabled, an empty string `""` remains unchanged throughout the pipeline execution. This keeps the YAML and visual view consistent with the final payload sent during execution.
 
-For example, if you want **var_config** to stay an empty string, enabling this option will prevent it from being converted to `<+input>`.This ensures your input remains exactly as you specified, giving you precise control over your pipeline configurations.
+Let's first see how to enable this feature and then in later section let's discuss the behavior change we see after enabling this feature.
 
 ## How to enable this feature?
 
@@ -55,42 +127,96 @@ Enable following settings at account level to use this feature:
 
 ## Detailed Behavior Changes
 
-### If Save Blank Fields as Empty String is not enabled (Current Behavior)
+Let's understand the behavior change after enabling the above mentioned settings:
 
-- **Creating Input Sets**:
-   - **Initial Load**: On load `<+input>` is converted to `""`.
-   - **Saving**: On Save, `""` is converted to`<+input>`.
+Let's take the same example we have used while understanding the problem.
 
-- **Updating Input Sets**:
-  - **Initial Load**: On Load, `<+input>` is converted to `""`.
-  - **Saving**: On Save, `""` is converted to `<+input>`.
+```yaml
+pipeline:
+  name: Input_Pipeline
+  identifier: Input_Pipeline
+  projectIdentifier: test
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: custom
+        identifier: custom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: ShellScript_1
+                  identifier: ShellScript_1
+                  spec:
+                    shell: Bash
+                    executionTarget: {}
+                    source:
+                      type: Inline
+                      spec:
+                        script: |
+                          input_variable=<+pipeline.variables.input_variable>
+                          echo "the value is:$input_variable"
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+  variables:
+    - name: input_variable
+      type: String
+      description: ""
+      required: false
+      value: <+input>
 
-- **Run Pipeline form with Input Set**:
-  - **Initial Load**: On Load, `<+input>` is converted to `""`.
-  - **Execution**: On Run, `""` stays `<+input>`.
+```
 
-- **Run Pipeline without Input Set**:
-  - **Initial Load**: On Load, `<+input>` is changed to `""`.
-  - **Execution**: `""` stays `""`.
+We have an input variable called `input_variable` that we set at runtime. We use a simple script to print the value of `input_variable` to see if it is passed as an **empty string** or as **null** when we leave it empty after checking the **Save Blank Fields as Empty String** during running the pipeline as well as during creating and saving the input set.
 
-### If Save Blank Fields as Empty String is enabled
 
-- **Creating Input Sets**:
-   - **Initial Load**: On load `<+input>` is converted to `""`
-   - **Saving**: On Save, `""` stays `""` and `<+input>` stays `<+input>`.
+We have an input set created as well for this pipeline where we have left the value of `input_variable` as empty.
 
-- **Updating Input Sets**:
-  - **Initial Load**: On Load, `<+input>` stays `<+input>`, `""` stays `""`.
-  - **Saving**: On Save, `<+input>` stays `<+input>`, `""` stays `""`.
+After you have enabled the above feature you will see a checkbox **Save Blank Fields as Empty String** while creating an Input Set, we will enable the checkbox and then save the Input set. 
 
-![](./static/blank_field_as_empty_string_input_set.png)
+This will ensure that no transformation occurs in the Harness system and empty values of an input variable is treated an empty and not null. We will understand more when we will move forward with running the pipeline.
 
-- **Run Pipeline form with Input Set**:
-  - **Initial Load**: On Load, `<+input>` stays `<+input>`, `""` stays `""`.
-  - **Execution**: On Run, `<+input>` stays` <+input>`, `""` stays `""`.
+![](./static/save_blank_field_empty_input_set_creation.png)
 
-- **Run Pipeline without Input Set**:
-  - **Initial Load**: On Load, `<+input>` is changed to `""`.
-  - **Execution**: `""` stays `""`.
+Example yaml:-
 
-![](./static/blank_field_as_empty_runtime.png)
+```yaml
+inputSet:
+  name: input_set
+  tags: {}
+  identifier: input_set
+  orgIdentifier: default
+  projectIdentifier: test
+  pipeline:
+    identifier: Input_Pipeline
+    variables:
+      - name: input_variable
+        type: String
+        value: ""
+```
+Now as we know we can have two ways of running a pipeline, one without Input Set and one with Input Set.
+
+### Running a pipeline without an Input Set
+
+Running the pipeline without an Input Set will have no changes in behavior and it will treat empty string value of an input variable as empty.
+
+
+### Running a pipeline with an Input Set
+
+Now, let's run the pipeline using an input set we have created i.e `input_set` with checkbox **Save Blank Fields as Empty String** enabled.
+
+![](./static/with_input_set_feature_enabled.png)
+
+If we run a pipeline using an input set and check the execution we will see the output as:-
+
+![](./static/with_input_set_running_feature_enabled.png)
+
+In this case as you see the output is treating `input_variable` as **empty string** when left empty.
+
+This ensures that the behavior remains consistent throughout, treating empty string values for an input variable as empty to avoid null values.
