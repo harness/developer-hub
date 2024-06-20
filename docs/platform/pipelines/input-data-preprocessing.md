@@ -108,19 +108,19 @@ This happens because, in the Harness system, when saving the input set with an e
 
 As a user, you might want more control over how empty values are handled, especially if you want the string to stay empty. Harness provides an option called **Save Blank Fields as Empty String** for this purpose.
 
-With this option enabled, an empty string `""` remains unchanged throughout the pipeline execution. This keeps the YAML and visual view consistent with the final payload sent during execution.
+With this option enabled, an empty string `""` remains unchanged throughout the pipeline execution. This keeps the YAML and Visual view consistent with the final payload sent during execution.
 
 Let's first see how to enable this feature and then in later section let's discuss the behavior change we see after enabling this feature.
 
 ## How to enable this feature?
 
 :::info note
-Currently this feature is behind feature flag `CDS_ENABLE_RAW_MODE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently this feature is behind feature flag, `CDS_ENABLE_RAW_MODE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Enable following settings at account level to use this feature:
+Enable the following settings at account level to use this feature:
 
-- **Show checkbox to Save Blank Fields as Empty String**: This setting, when enabled, will show the checkbox **Save Blank Fields as Empty String** both while creating the Input Set and during Pipeline Run form.
+- **Show checkbox to Save Blank Fields as Empty String**: When enabled, this setting shows the checkbox **Save Blank Fields as Empty String** both when creating the input set and in the Pipeline Run form.
 - **Default value of Blank Fields as Empty String**: When enabled, this setting will automatically select the **Save Blank Fields as Empty String** checkbox.
 
 ![](./static/blank_field_as_empty_account_setting.png)
