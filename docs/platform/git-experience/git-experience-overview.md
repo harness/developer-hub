@@ -115,6 +115,18 @@ For more information, go to [Default settings](/docs/platform/settings/default-s
 
 :::
 
+### Repo Listing 
+
+For a certain connector you can fetch upto **1000** of repositories. 
+
+If you are not able to find the repository in the list you have an option to **+ add repository**. 
+
+![](./static/repolisting_add.png)
+
+If the repository actually exists it will fetch the branch name, if not it will throw an error.
+
+![](./static/repolisting_error.png)
+
 
 ### Multiple branch support
 
