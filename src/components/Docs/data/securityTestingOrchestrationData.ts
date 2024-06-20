@@ -136,13 +136,6 @@ import {
               link: "/docs/security-testing-orchestration/policies/create-opa-policies",
             },
             {
-              title: "Trigger STO scans to block pull requests with vulnerabilities",
-              module: MODULES.sto,
-              description:
-                "You can create Git event triggers to block PRs if an STO scan detects vulnerabilities that violate OPA policies or Fail on Severity settings.",
-              link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities",
-            },
-            {
               title: "GitHub triggers to block pull requests with vulnerabilities",
               module: MODULES.sto,
               description:

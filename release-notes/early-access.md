@@ -382,7 +382,7 @@ You can specify default baselines for specific target types: code repositories, 
 * **Early access Release version:** 1.34.0
 * **Feature flag:** `STO_JIRA_INTEGRATION`
 
-STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations).
+STO includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/jira-integrations).
 
 
 #### Auto-detect option for targets and variants
