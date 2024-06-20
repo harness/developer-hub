@@ -150,7 +150,7 @@ const Chatbot = () => {
 
   function handleSignIn() {
     window.location.href =
-      " http://localhost:5000/sso.html?action=login&src=developerhub&return_to= http://localhost:8888/?chatbot=true";
+    "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
   }
 
   useEffect(() => {
