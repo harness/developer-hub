@@ -5,6 +5,10 @@ description: This Page talks about auto creation of Harness entitiess
 
 Autocreation is a feature that allows you to automatically create entities in Harness when files are added remotely.
 
+:::info note
+Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact[Harness Support](mailto:support@harness.io) to enable this feature.
+:::
+
 ## Pre-requisite of autocreation
 
 - Register the webhook for your repository where you are adding your files remotely.
@@ -300,6 +304,12 @@ git push
 After pushing the changes, we will see in that Input set named as **input_set** is created for the pipeline **demo_autocreation_pipeline**. 
 
 ![](./static/input_set_creation_autocreation.png)
+
+:::info note
+1. Entity specific RBAC is not applicable.
+2. There is no specific order in which entities are created.
+3. You can have different repository for storing Pipelines and Input Set.
+:::
 
 ## Common Errors
 
