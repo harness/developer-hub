@@ -1,51 +1,52 @@
 ---
-title: Exemptions to override Fail on Severity thresholds for specific issues in STO
+title: Exemptions to override STO failure policies
 description: Procedures and best practices for requesting and approving exemptions.
-sidebar_label: Override the Fail on Severity threshold for specific issues
+sidebar_label: Exemptions to override STO failure policies
 sidebar_position: 60
-redirect_from: 
-  - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows
 ---
 
-The `fail_on_severity` setting causes a pipeline build to fail if a scanner detects one or more issues with the specified severity (Critical, High, Medium, etc.) or higher. Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
+You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities to allow the pipeline to proceed even if they're detected.
 
 :::note 
-Developers and SecOps users can request exemptions, but only SecOps users can approve them.
+[Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only Security Testing SecOps users can approve them.
 ::: 
+
+## When exemptions are useful
 
 Here are some situations where you might want to request an exemption for a specific issue:
 
--  Your organization has infrastructure and policies in place to mitigate the security risks of the issue. 
-- The issue was flagged as a vulnerability, but the practice is acceptable based on your organization's security guidelines.
+- Your organization has practices in place to mitigate the security risks of the issue.
+- The issue is in compliance with your organization's acceptable use policies.
 - The security risk is low and remediation would require too much effort or expense.
-- The scanner identifies this as a vulnerability but it is, in fact, a false positive.
-- You can specify a time limit for an exemption (for example, expires in 7 days). In some cases, you might want to exempt an issue so you can deploy an important release. You could request an exemption if it expires within your organization's SLA for fixing security issues.
+- The scanner detects an issue but it is, in fact, a false positive.
+- You need to exempt an issue so you can deploy a hotfix. In this case, you can request a temporary exemption that expires within your organization's SLA for fixing security issues.
 - There are currently no known fixes or remediation steps available for the detected vulnerability. You might want to enable [Harness AI Development Assistant (AIDA™)](/docs/security-testing-orchestration/remediations/ai-based-remediations) to help you remediate your issues using AI.
 
 
-import request_exemption from './static/request-exemption.png'
-import open_exemption_details from './static/open-exemption-details.png'
-import baseline_not_defined from './static/exemption-workflows-no-baseline-defined.png'
-
+import request_exemption from '../use-sto/static/request-exemption.png'
+import open_exemption_details from '../use-sto/static/open-exemption-details.png'
+import baseline_not_defined from '../use-sto/static/exemption-workflows-no-baseline-defined.png'
 
 ## What happens when an STO exemption gets approved
 
-To see the list of pending exemptions, select **Exemptions** in the left menu. An exemption, if approved, overrides the default behavior for running a pipeline build:
-
-* If a pipeline includes a Security Tests step, the step scans the specified object and compiles a list of detected issues.
-* Each issue has a specified severity: Critical, Major, Minor, etc.
-* Each security step should have a `fail_on_severity` setting. If the step detects any issue with the specified severity or higher, the build fails. 
-* Each exemption applies to one specific issue. The rule allows the pipeline to proceed even if the scan detects that issue.    
+To see the list of pending exemptions, select **Exemptions** in the left menu. Each exemption corresponds to one vulnerability. If a scan detects a vulnerability with an active exemption, the pipeline proceeds even if the vulnerability matches the failure criteria for the step.
 
 ## Important notes for exemptions in STO
 
 This topic assumes that you have the following:
 
 * An STO pipeline as described in [Set up Harness for STO](../get-started/onboarding-guide.md).
-* The pipeline has a Security scan step with a configured `fail_on_severity` setting.
+* The scan step has failure criteria specified.
+
+  STO supports two methods for specifying failure criteria: 
+
+   - [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity)  Every scan step has a Fail on Severity setting that fails the step if the scan detects any issues with the specified severity or higher. 
+
+   - [OPA policies](/docs/security-testing-orchestration/policies/create-opa-policies) You can use Harness Policy as Code to write and enforce policies based on severity, reference ID, title, CVE age, STO output variables, and number of occurrences.
+
 * At least one successful build with a set of detected security issues. 
-* Developer or SecOps user permissions are required to [request exemptions](#request-an-sto-exemption).
-* Only SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
+* Security Testing Developer or [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions are required to [request exemptions](#request-an-sto-exemption).
+* Only Security Testing SecOps users can [review, approve, reject,](#review-an-sto-exemption) and [update](#good-practice-review-and-update-sto-exemptions-periodically) exemptions.  
 
 ## Request an STO exemption
 
@@ -56,23 +57,22 @@ This topic assumes that you have the following:
    1. Select the issue you want to exempt.  The **Issue Details** pane opens on the right. 
    2. Select **Request Exemption**.
 
-      
+
       <img src={request_exemption} alt="Request Exemption button" height="50%" width="50%" />
-      
-   
+
    3. In **Request Exemption for Issue**, specify:
       1. **Where do you want this issue to be Exempted?** 
-      
+
          Select **This Pipeline** unless you know it's safe to exempt the issue everywhere in the project.
 
       2. **For how long?** 
-      
+
          In general, you should select the shortest practical time window for your exemption. 
 
       3. **Reason this issue should be exempted** 
-      
-         Select one of the following reasons and provide any additional information for the SecOps approver:
-         
+
+         Select one of the following reasons and provide any additional information for the [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  approver:
+
          * **Compensating controls** — Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
 
            For example, suppose a scan detects a vulnerability with a specific service. This vulnerability might be mitigated because:
@@ -96,34 +96,34 @@ This topic assumes that you have the following:
          * **Other**
 
       4. **Further description the reason this issue should be exempted** 
-      
-         It is good practice to provide enough information for the reviewer to determine that this exemption is safe.   
+
+         It is good practice to provide enough information for the reviewer to determine that this exemption is safe.
 
       4. **URL Reference** 
-      
-         Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code. 
 
-   5. Click **Create Request**. 
-  
-      ![](./static/exemption-click-create-request.png)
-     
-3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
+         Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code.
+
+   5. Click **Create Request**.
+
+      ![](../use-sto/static/exemption-click-create-request.png)
+
+3. Send an email or Slack to your [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  reviewer with the URL to the Security Tests page with the relevant issue selected.
 
 ## Approve, reject, or cancel an STO exemption
 
 :::note
 
-This workflow requires SecOps user permissions.
+This workflow requires [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user permissions.
 
 :::
 
-1. You should receive a notification from a developer that includes a URL to the relevant issue. Go to the URL provided.
+1. You should receive an email or Slack from a developer that includes a URL to the relevant issue. Go to the URL provided.
  
-   The notification URL should point to a Security Tests page in Harness with the issue selected in the **Issue Details** pane on the right. If the relevant issue isn't visible, notify the developer. 
+   The URL should point to a Security Tests page in Harness with the issue selected in the **Issue Details** pane on the right. If the relevant issue isn't visible, notify the developer. 
 
-2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details. 
+2. Select **Exemptions** (left menu) > **Pending** and then select the pending exemption to view the exemption details.
 
-   ![](./static/approve-exemption-00.png)
+   ![](../use-sto/static/approve-exemption-00.png)
 
 3. Review the exemption request. The **Issue Details** pane includes a high-level summary of the issue, links to relevant documentation, and a list of all locations in the scanned object where the issue was detected. 
 
@@ -142,21 +142,21 @@ This workflow requires SecOps user permissions.
  4. Select one of the following:
  
     - **Approve** The request is approved. This issue will not block future pipeline executions for the requested duration (see **Time Remaining** in the **Approved** table).
-    - **Reject** The request moves to the **Rejected** table, where a SecOps user can approve it later if appropriate. 
+    - **Reject** The request moves to the **Rejected** table, where a [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles)  user can approve it later if appropriate. 
     - **Cancel** The request is cancelled and removed from the exemption list. If a user wants an exemption for the issue, they must file a new request. 
 
-     ![](./static/exemptions-approved.png)
+     ![](../use-sto/static/exemptions-approved.png)
  
-          
+
 ## Good practice: Review and update STO exemptions periodically
 
 :::note
 
-These workflows require SecOps user permissions.
+These workflows require [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) user permissions.
 
 :::
 
-It is good practice for a SecOps user in your organization to review all exemptions periodically and update the status of individual exemptions as needed. 
+It is good practice for a [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) user in your organization to review all exemptions periodically and update the status of individual exemptions as needed. 
 
 To review all exemptions, select **Security Testing Orchestration** > **Exemptions** in the left menu. This page shows the high-level information for all pending, approved, rejected, and expired exemptions. 
 
@@ -169,4 +169,5 @@ SecOps users can do the following in this page:
 * Re-open expired exemptions
 * Cancel (delete) pending, approved, rejected, or expired exemptions
 
-   ![](./static/exemption-security-review.png)
+
+   ![](../use-sto/static/exemption-security-review.png)
