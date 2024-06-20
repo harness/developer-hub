@@ -1,7 +1,7 @@
 ---
-title: Nexus IQ scanner reference for STO
+title: Nexus IQ step configuration
 description: Scan code repositories with Nexus.
-sidebar_label: Nexus scanner reference
+sidebar_label: Nexus step configuration
 sidebar_position: 250
 ---
 

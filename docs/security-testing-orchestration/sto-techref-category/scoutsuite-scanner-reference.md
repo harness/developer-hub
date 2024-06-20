@@ -1,7 +1,7 @@
 ---
-title: ScoutSuite scanner reference for STO
+title: ScoutSuite step configuration
 description: Scan configurations with ScoutSuite.
-sidebar_label: ScoutSuite scanner reference
+sidebar_label: ScoutSuite step configuration
 sidebar_position: 350
 ---
 

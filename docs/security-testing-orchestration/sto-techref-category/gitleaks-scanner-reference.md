@@ -1,7 +1,7 @@
 ---
-title: Gitleaks scanner reference for STO
+title: Gitleaks step configuration
 description: Scan code repositories with Gitleaks.
-sidebar_label: Gitleaks scanner reference
+sidebar_label: Gitleaks step configuration
 sidebar_position: 200
 
 ---

@@ -1,7 +1,7 @@
 ---
-title: Anchore Enterprise scanner reference for STO
+title: Anchore Enterprise step configuration
 description: Scan container images with Anchore Enterprise.
-sidebar_label: Anchore Enterprise scanner reference
+sidebar_label: Anchore Enterprise step configuration
 sidebar_position: 20
 ---
 

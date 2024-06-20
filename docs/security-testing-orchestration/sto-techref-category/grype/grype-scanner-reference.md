@@ -1,7 +1,7 @@
 ---
-title: Grype scanner reference for STO
+title: Grype step configuration
 description: Scan container images with Grype.
-sidebar_label: Grype scanner reference
+sidebar_label: Grype step configuration
 sidebar_position: 10
 redirect_from: /docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference
 ---

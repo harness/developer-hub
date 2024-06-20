@@ -1,7 +1,7 @@
 ---
-title: Nikto scanner reference for STO
+title: Nikto step configuration
 description: Scan application instances with Nikto.
-sidebar_label: Nikto scanner reference
+sidebar_label: Nikto step configuration
 sidebar_position: 260
 ---
 

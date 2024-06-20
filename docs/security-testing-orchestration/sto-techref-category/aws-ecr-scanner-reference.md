@@ -1,7 +1,7 @@
 ---
-title: AWS ECR scanner reference for STO
+title: AWS ECR step configuration
 description: Scan container images with AWS ECR.
-sidebar_label: AWS ECR scanner reference
+sidebar_label: AWS ECR step configuration
 sidebar_position: 40
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Coverity scanner reference for STO
+title: Coverity step configuration
 description: Scan code repositories with Coverity.
-sidebar_label: Coverity settings reference
+sidebar_label: Coverity step configuration
 sidebar_position: 125
 ---
 

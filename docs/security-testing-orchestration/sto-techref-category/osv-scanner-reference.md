@@ -1,8 +1,8 @@
 ---
-title: Open Source Vulnerabilities (OSV) scanner reference for STO
+title: Open Source Vulnerabilities (OSV) step configuration
 description: Scan code repositories with OSV
 sidebar_position: 285
-sidebar_label: Open Source Vulnerabilities (OSV) scanner reference
+sidebar_label: Open Source Vulnerabilities (OSV) step configuration
 ---
 
 <DocsTag   text="Code repo scanners"  backgroundColor= "#cbe2f9" textColor="#0b5cad" link="/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners"  />

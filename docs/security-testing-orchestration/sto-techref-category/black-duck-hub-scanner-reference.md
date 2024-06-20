@@ -1,7 +1,7 @@
 ---
-title: Black Duck scanner reference for STO
+title: Black Duck step configuration
 description: Scan code repositories and container images with Black Duck.
-sidebar_label: Black Duck scanner reference
+sidebar_label: Black Duck step configuration
 sidebar_position: 70
 ---
 

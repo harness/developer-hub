@@ -1,7 +1,7 @@
 ---
-title: Burp scanner reference for STO
+title: Burp step configuration
 description: Scan application instances with Burp.
-sidebar_label: Burp scanner reference
+sidebar_label: Burp step configuration
 sidebar_position: 90
 ---
 

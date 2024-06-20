@@ -1,7 +1,7 @@
 ---
-title: Reapsaw scanner reference for STO
+title: Reapsaw step configuration
 description: Scan code repositories with Reapsaw.
-sidebar_label: Reapsaw scanner reference scanner reference
+sidebar_label: Reapsaw step configuration step configuration
 sidebar_position: 340
 ---
 

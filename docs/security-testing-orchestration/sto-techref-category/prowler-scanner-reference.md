@@ -1,7 +1,7 @@
 ---
-title: Prowler scanner reference for STO
+title: Prowler step configuration
 description: Scan configurations with Prowler.
-sidebar_label: Prowler scanner reference
+sidebar_label: Prowler step configuration
 sidebar_position: 310
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Docker Content Trust (DCT) scanner reference for STO
+title: Docker Content Trust (DCT) step configuration
 description: Scan container images with Docker Content Trust.
-sidebar_label: Docker Content Trust (DCT) scanner reference
+sidebar_label: Docker Content Trust (DCT) step configuration
 sidebar_position: 150
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Zed Attack Proxy (ZAP) scanner reference for STO
+title: Zed Attack Proxy (ZAP) step configuration
 description: Scan application instances with ​Zed Attack Proxy (ZAP).
-sidebar_label: Zed Attack Proxy scanner reference
+sidebar_label: Zed Attack Proxy step configuration
 sidebar_position: 10
 helpdocs_topic_id: m9494vxwac
 helpdocs_category_id: m01pu2ubai

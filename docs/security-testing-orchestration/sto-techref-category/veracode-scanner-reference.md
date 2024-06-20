@@ -1,7 +1,7 @@
 ---
-title: Veracode scanner reference for STO
+title: Veracode step configuration
 description: Scan code repositories with Veracode.
-sidebar_label: Veracode scanner reference
+sidebar_label: Veracode step configuration
 sidebar_position: 410
 helpdocs_topic_id: cy0deg32w9
 helpdocs_category_id: m01pu2ubai

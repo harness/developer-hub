@@ -1,7 +1,7 @@
 ---
-title: Bandit scanner reference for STO
+title: Bandit step configuration
 description: Scan code repositories with with Bandit.
-sidebar_label: Bandit scanner reference
+sidebar_label: Bandit step configuration
 sidebar_position: 60
 helpdocs_topic_id: n3dcx6wzb3
 helpdocs_category_id: m01pu2ubai

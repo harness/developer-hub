@@ -1,7 +1,7 @@
 ---
-title: Nessus scanner reference for STO
+title: Nessus step configuration
 description: Scan application instances with Nessus.
-sidebar_label: Nessus scanner reference
+sidebar_label: Nessus step configuration
 sidebar_position: 240
 ---
 

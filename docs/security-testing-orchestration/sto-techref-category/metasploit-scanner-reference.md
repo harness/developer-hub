@@ -1,7 +1,7 @@
 ---
-title: Metasploit scanner reference for STO
+title: Metasploit step configuration
 description: Scan application instances with Metasploit Framework.
-sidebar_label: Metasploit Framework scanner reference
+sidebar_label: Metasploit Framework step configuration
 sidebar_position: 230
 ---
 

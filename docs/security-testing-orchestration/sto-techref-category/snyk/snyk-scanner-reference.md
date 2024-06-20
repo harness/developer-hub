@@ -1,7 +1,7 @@
 ---
-title: Snyk scanner reference for STO
+title: Snyk step configuration
 description: Scan code repositories and container images with Snyk.
-sidebar_label: Snyk scanner reference
+sidebar_label: Snyk step configuration
 sidebar_position: 10
 ---
 

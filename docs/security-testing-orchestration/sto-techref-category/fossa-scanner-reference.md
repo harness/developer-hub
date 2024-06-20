@@ -1,7 +1,7 @@
 ---
-title: Fossa scanner reference for STO
+title: Fossa step configuration
 description: Scan code repositories with Fossa.
-sidebar_label: Fossa scanner reference
+sidebar_label: Fossa step configuration
 sidebar_position: 190
 ---
 

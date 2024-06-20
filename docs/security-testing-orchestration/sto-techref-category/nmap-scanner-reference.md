@@ -1,7 +1,7 @@
 ---
-title: Nmap (Network Mapper) scanner reference for STO
+title: Nmap (Network Mapper) step configuration
 description: Scan application instances with Nmap.
-sidebar_label: Nmap (Network Mapper) scanner reference
+sidebar_label: Nmap (Network Mapper) step configuration
 sidebar_position: 270
 ---
 

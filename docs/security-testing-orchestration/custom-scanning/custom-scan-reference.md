@@ -106,7 +106,7 @@ product_name
 
 ##### Value
 
-Go to the relevant scanner reference.
+Go to the relevant step configuration.
 
 #### Scan type
 
@@ -119,7 +119,7 @@ scan_type
 
 ##### Value
 
-Must be one of the following. For supported values, go to the relevant scanner reference.
+Must be one of the following. For supported values, go to the relevant step configuration.
 
 ```
 containerImage
@@ -145,7 +145,7 @@ policy_type
 
 ##### Value
 
-Must be one of the following. For supported values, go to the relevant scanner reference.
+Must be one of the following. For supported values, go to the relevant step configuration.
 
 ```
 orchestratedScan
@@ -168,7 +168,7 @@ product_config_name
 
 ##### Value
 
-For supported values, go to the relevant scanner reference.
+For supported values, go to the relevant step configuration.
 
 
 ### Target and variant

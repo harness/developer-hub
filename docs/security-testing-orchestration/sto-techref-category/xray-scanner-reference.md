@@ -1,7 +1,7 @@
 ---
-title: Jfrog Xray scanner reference for STO
+title: Jfrog Xray step configuration
 description: Scan container images with Jfrog Xray.
-sidebar_label: Jfrog Xray scanner reference
+sidebar_label: Jfrog Xray step configuration
 sidebar_position: 420
 ---
 

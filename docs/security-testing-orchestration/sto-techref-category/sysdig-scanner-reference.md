@@ -1,7 +1,7 @@
 ---
-title: Sysdig scanner reference for STO
+title: Sysdig step configuration
 description: Scan container images with Sysdig.
-sidebar_label: Sysdig scanner reference
+sidebar_label: Sysdig step configuration
 sidebar_position: 395
 ---
 

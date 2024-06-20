@@ -1,7 +1,7 @@
 ---
-title: Fortify on Demand scanner reference for STO
+title: Fortify on Demand step configuration
 description: Ingest Fortify on Demand scan results into your pipelines.
-sidebar_label: Fortify on Demand scanner reference
+sidebar_label: Fortify on Demand step configuration
 sidebar_position: 180
 ---
 

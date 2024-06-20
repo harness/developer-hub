@@ -1,7 +1,7 @@
 ---
-title: OpenVAS scanner reference for STO
+title: OpenVAS step configuration
 description: Scan application instances with OpenVAS.
-sidebar_label: OpenVAS scanner reference
+sidebar_label: OpenVAS step configuration
 sidebar_position: 280
 ---
 

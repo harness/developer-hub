@@ -164,9 +164,9 @@ import ScannerRefAdvancedSettings from '/docs/security-testing-orchestration/sto
 
 Here are some topics that describe end-to-end workflows for ingesting SARIF and JSON data:
 
-- [Gitleaks Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
+- [Gitleaks step configuration](/docs/security-testing-orchestration/sto-techref-category/gitleaks-scanner-reference)
 
-- [Checkmarx scanner reference](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
+- [Checkmarx step configuration](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference)
 
 - [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/run-scans-using-github-actions)
 

@@ -1,7 +1,7 @@
 ---
-title: Prisma Cloud (formerly Twistlock) scanner reference for STO
+title: Prisma Cloud (formerly Twistlock) step configuration
 description: Scan container images with Prisma Cloud.
-sidebar_label: Prisma Cloud (formerly Twistlock) scanner reference
+sidebar_label: Prisma Cloud (formerly Twistlock) step configuration
 sidebar_position: 300
 ---
 

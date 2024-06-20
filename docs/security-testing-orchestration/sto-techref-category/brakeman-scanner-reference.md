@@ -1,7 +1,7 @@
 ---
-title: Brakeman scanner reference for STO
+title: Brakeman step configuration
 description: Scan code repositories with Brakeman.
-sidebar_label: Brakeman scanner reference
+sidebar_label: Brakeman step configuration
 sidebar_position: 80
 ---
 

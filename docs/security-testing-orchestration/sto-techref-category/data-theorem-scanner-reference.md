@@ -1,7 +1,7 @@
 ---
-title: Data Theorem scanner reference for STO
+title: Data Theorem step configuration
 description: Scan code repositories with Data Theorem.
-sidebar_label: Data Theorem scanner reference
+sidebar_label: Data Theorem step configuration
 sidebar_position: 140
 ---
 
@@ -87,7 +87,7 @@ policy_type
 
 ##### Value
 
-Must be one of the following. For supported values, go to the relevant scanner reference.
+Must be one of the following. For supported values, go to the relevant step configuration.
 
 ```
 ingestionOnly

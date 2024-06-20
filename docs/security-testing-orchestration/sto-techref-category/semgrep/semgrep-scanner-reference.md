@@ -1,7 +1,7 @@
 ---
-title: Semgrep scanner reference for STO
+title: Semgrep step configuration
 description: Scan code repositories with Semgrep.
-sidebar_label: Semgrep scanner reference
+sidebar_label: Semgrep step configuration
 sidebar_position: 20
 ---
 

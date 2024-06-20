@@ -1,7 +1,7 @@
 ---
-title: CodeQL scanner reference for STO
+title: CodeQL step configuration
 description: Scan code repositories with CodeQL.
-sidebar_label: CodeQL scanner reference
+sidebar_label: CodeQL step configuration
 sidebar_position: 120
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Clair scanner reference for STO
+title: Clair step configuration
 description: Scan container images with Clair.
-sidebar_label: Clair scanner reference
+sidebar_label: Clair step configuration
 sidebar_position: 110
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Wiz scanner reference for STO
+title: Wiz step configuration
 description: Scan code repositories and container images with Wiz scanner.
-sidebar_label: Wiz scanner reference
+sidebar_label: Wiz step configuration
 sidebar_position: 415
 ---
 

@@ -1,7 +1,7 @@
 ---
-title: Tenable scanner reference for STO
+title: Tenable step configuration
 description: Scan application instances with Tenable.
-sidebar_label: Tenable scanner reference
+sidebar_label: Tenable step configuration
 sidebar_position: 400
 ---
 

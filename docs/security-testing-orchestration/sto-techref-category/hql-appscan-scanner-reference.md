@@ -1,7 +1,7 @@
 ---
-title: HCL AppScan scanner reference for STO
+title: HCL AppScan step configuration
 description: Ingest DAST scan results from HCL AppScan.
-sidebar_label: HCL AppScan scanner reference
+sidebar_label: HCL AppScan step configuration
 sidebar_position: 215
 ---
 
@@ -59,7 +59,7 @@ scan_type
 
 ##### Value
 
-Must be one of the following. For supported values, go to the relevant scanner reference.
+Must be one of the following. For supported values, go to the relevant step configuration.
 
 ```
 instance

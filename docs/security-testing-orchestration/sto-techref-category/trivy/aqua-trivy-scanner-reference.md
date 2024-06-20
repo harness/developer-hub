@@ -1,8 +1,8 @@
 ---
-title: Aqua Trivy scanner reference for STO
+title: Aqua Trivy step configuration
 description: Scan container images with  Aqua Trivy.
 sidebar_position: 10
-sidebar_label: Aqua Trivy scanner reference
+sidebar_label: Aqua Trivy step configuration
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false

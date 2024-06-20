@@ -1,7 +1,7 @@
 ---
-title: Qualys Web Application Scanning (WAS) scanner reference for STO
+title: Qualys Web Application Scanning (WAS) step configuration
 description: Scan application instances with Qualys WAS.
-sidebar_label: Qualys Web Application Scanning (WAS) scanner reference
+sidebar_label: Qualys Web Application Scanning (WAS) step configuration
 sidebar_position: 320
 ---
 

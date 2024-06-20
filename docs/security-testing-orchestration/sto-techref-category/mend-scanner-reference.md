@@ -1,7 +1,7 @@
 ---
-title: Mend (formerly Whitesource) scanner reference for STO
+title: Mend (formerly Whitesource) step configuration
 description: Scan code repositories and container images with Mend.
-sidebar_label: Mend scanner reference
+sidebar_label: Mend step configuration
 sidebar_position: 220
 ---
 
