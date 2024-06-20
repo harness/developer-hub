@@ -3329,7 +3329,7 @@ One can consider using the expression <+exportedVariables.getValue("OUTPUT_VARIA
 
 2. Move to the stage/step where the output variable will need to be utilized.
 	- Utilize the expression where it is needed to be referenced.
-		- <+exportedVariables.getValue("pipeline.OUTPUT_VARIABLE.STEP_VARIABLE"> where STEP_VARIABLE is the variable being used inside the step we are looking to grab the value for.
+		- `<+exportedVariables.getValue("pipeline.OUTPUT_VARIABLE.STEP_VARIABLE">` where STEP_VARIABLE is the variable being used inside the step we are looking to grab the value for.
 		
 		
 		
