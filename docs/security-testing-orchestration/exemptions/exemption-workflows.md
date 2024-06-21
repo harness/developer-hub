@@ -15,7 +15,7 @@ STO’s exemption workflows help developers raise exemption windows with product
 
 ## When exemptions are useful
 
-Here are some situations where you might want to request an exemption:
+Here are some situations where your organization might want to exempt an issue:
 
 - Your organization has practices in place to mitigate the security risks of the issue.
 - The issue is in compliance with your organization's acceptable use policies.
