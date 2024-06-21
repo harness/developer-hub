@@ -1,6 +1,8 @@
 ---
 title: Fault injection on Tanzu Kubernetes Grid-based infrastructure
-sidebar_position: 4
+sidebar_position: 2
+redirect_from:
+	- /docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment
 ---
 
 This topic describes HCE's fault injection approach on [Tanzu Kubernetes Grid-based](https://tanzu.vmware.com/kubernetes-grid)(TKGi) infrastructure. It describes the chaos components installed in the cluster, their deployment architecture, and various deployment modes of the Kubernetes chaos infrastructure.

@@ -1,6 +1,6 @@
 ---
 title: Kubernetes-based fault classification
-sidebar_position: 3
+sidebar_position: 1
 ---
 This topic describes the following:
 - Classification of Kubernetes-based faults.
