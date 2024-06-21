@@ -413,8 +413,8 @@ If nested expressions are unable to resolve at some point during resolution, we 
 
 ```
 Assuming <+env.name> resolves to prod, and we don't have a pipeline variable prod defined - 
-<+pipeline.variables.prod>           --> null
-<+pipeline.variables.<+env.name>>    --> pipeline.variables.prod
+Unnested Expression: <+pipeline.variables.prod>         --> null
+Nested Expression: <+pipeline.variables.<+env.name>>    --> pipeline.variables.prod
 ```
 
 
