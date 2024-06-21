@@ -79,7 +79,7 @@ descriptions={{
         },
         "5": {
         title: "Step 5: Confirm apply/destroy parameters",
-        body: "This step involves comparing the defined backend with a proposed infrastructure update."
+        body: "This step involves comparing your defined backend state with your proposed infrastructure updates."
         },
         "6": {
         title: "Step 6 & 7: Applying your proposed infrastructure changes",
