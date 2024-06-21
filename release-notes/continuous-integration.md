@@ -35,6 +35,24 @@ You will be impacted by this deprecation if:
 
 Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
+## June 2024
+
+### Version 1.30
+
+#### New features and enhancements
+
+- Enabled Secure Connect support for Mac and Windows build infrastructures. (CI-12596)
+
+- Added baseCommitSha in codebase for GitLab PR builds. (CI-12179, ZD-62144)
+
+#### Fixed issues
+
+- Fixed an issue where pipelines fail intermittently due to delegate selection and task distribution problems when multiple delegates are configured with the same selector tag. (CI-12788, ZD-64246)
+
+- Fixed an issue where running a pipeline in debug throws an error saying it is not allowed to be run in this pipeline. (CI-12094, ZD-61519)
+
+- Fixed a user test that was failing intermittently due to a port-availability issue. (CI-12596)
+
 
 ## May 2024
 
