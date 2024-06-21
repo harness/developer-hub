@@ -3,9 +3,11 @@ title: Exemptions to override STO failure policies
 description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Exemptions to override STO failure policies
 sidebar_position: 60
+redirect_from: 
+  - docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows
 ---
 
-You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities to allow the pipeline to proceed even if they're detected.
+STO’s exemption workflows help developers raise exemption windows with product security teams for shipping software with vulnerabilities. Developers can request exemptions for specific vulnerabilities to allow their build pipelines to proceed even if these vulnerabilities are detected.
 
 :::note 
 [Security Testing Developers](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) and [Security Testing SecOps](/docs/security-testing-orchestration/get-started/onboarding-guide#add-security-testing-roles) users can request exemptions, but only Security Testing SecOps users can approve them.
@@ -13,7 +15,7 @@ You can set up an STO step to fail if a scan detects vulnerabilities that match 
 
 ## When exemptions are useful
 
-Here are some situations where you might want to request an exemption for a specific issue:
+Here are some reasons wny your organization might want to exempt an issue:
 
 - Your organization has practices in place to mitigate the security risks of the issue.
 - The issue is in compliance with your organization's acceptable use policies.
