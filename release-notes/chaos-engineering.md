@@ -21,6 +21,18 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 :::
 
+## June 2024
+
+### Version 1.39.11
+
+#### Fixed issues
+
+- Fixed an issue wherein trying to add a pre-defined experiment in Windows infrastructure was unsuccessful. (CHAOS-5863)
+
+- Fixed an issue where the **Edit ChaosHub** action was not working with non-account type connectors. (CHAOS-5820)
+
+- Fixed an issue where the **Linux restart** chaos fault was unable to parse string values. (CHAOS-5616)
+
 ## May 2024
 
 ### Version 1.38.7
