@@ -120,7 +120,7 @@ Currently this feature is behind feature flag, `CDS_ENABLE_RAW_MODE`. Contact [H
 
 Enable the following settings at account level to use this feature:
 
-- **Show checkbox to Save Blank Fields as Empty String**: When enabled, this setting shows the checkbox **Save Blank Fields as Empty String** both when creating the input set and in the Pipeline Run form.
+- **Show checkbox to Save Blank Fields as Empty String**: When enabled, this setting shows the checkbox **Save Blank Fields as Empty String** both when creating the input set in the Input Set section and when creating an input set in triggers, as well as in the Pipeline Run form.
 - **Default value of Blank Fields as Empty String**: When enabled, this setting will automatically select the **Save Blank Fields as Empty String** checkbox.
 
 ![](./static/blank_field_as_empty_account_setting.png)
