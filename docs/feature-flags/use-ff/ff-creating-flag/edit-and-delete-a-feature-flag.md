@@ -31,7 +31,7 @@ Here are the steps to editing your flag:
 For more information, go to:
 
 * [Change your flag variations](manage-variations.md)
-* [Add prerequisite flags](/docs/feature-flags/add-prerequisites-to-feature-flag)
+* [Add prerequisite flags](/docs/feature-flags/use-ff/ff-creating-flag/add-prerequisites-to-feature-flag)
 * [Manage your targets](/docs/feature-flags/use-ff/ff-target-management/add-targets)
 
 ### Archive and deleting a flag

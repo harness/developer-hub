@@ -12,7 +12,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Policy Engine uses [Open Policy Agency (OPA)](https://www.openpolicyagent.org/docs/latest/) to store policies that you can then enforce on your Feature Flags. You can use Harness Policy Engine with the following [Harness entities](../platform/references/harness-entity-reference.md) on the Harness Platform:
+Harness Policy Engine uses [Open Policy Agency (OPA)](https://www.openpolicyagent.org/docs/latest/) to store policies that you can then enforce on your Feature Flags. You can use Harness Policy Engine with the following [Harness entities](../../platform/references/harness-entity-reference.md)on the Harness Platform:
 
 * Flag
 * Target

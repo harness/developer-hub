@@ -1,6 +1,6 @@
 {
     "label": "Manage target users and groups",
-    "position": 60,
+    "position": 50,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
