@@ -75,7 +75,7 @@ The following features are now generally available:
 
 #### Fixed issues
 
-- Fixed an Anchore Enterprise issue where the connection between the Anchore step and the SaaS instance would fail with TLS  errors. (STO-7704, ZD-65026)
+<!-- - Fixed an Anchore Enterprise issue where the connection between the Anchore step and the SaaS instance would fail with TLS  errors. (STO-7704, ZD-65026) -->
 
 - Audit trails for STO targets and exemptions now display user-friendly resource names instead of IDs. (STO-5717)
 
