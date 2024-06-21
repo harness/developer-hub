@@ -1,8 +1,8 @@
 ---
-title: Fail on Severity threshold to fail STO pipelines based on the severity of detected issues
+title: Failpipelines based on scan results
 description: Fail the pipeline if any issue meets or exceeds the specified severity.
 sidebar_position: 40
-sidebar_label: Fail pipelines based on detected issues
+sidebar_label: Fail pipelines based on scan results
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/fail-pipelines-by-severity
 ---
