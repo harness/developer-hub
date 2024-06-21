@@ -101,7 +101,7 @@ This allows the following:
 
 ### Namespace scope mode
 
-In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to a NamespacedRole.
+In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to a NamespacedRole.
 
 This allows the following:
 - The subscriber discovers assets only within the agent installation namespace.
