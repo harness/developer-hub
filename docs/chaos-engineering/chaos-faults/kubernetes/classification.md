@@ -91,7 +91,7 @@ You can deploy the Kubernetes chaos infrastructure (or agent) in two modes:
 
 ### Cluster scope mode
 
-In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to ClusterRoles.
+In this mode, the [subscriber](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#subscriber), [controllers](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#custom-controllers) and the [transient chaos pods](/docs/chaos-engineering/chaos-faults/kubernetes/tkgi/tkgi-deployment#transient-chaos-pods) use the service accounts that are mapped to ClusterRoles.
 
 This allows the following:
 
