@@ -99,7 +99,7 @@ As one example, if flags are for user-facing new features, give flags a name tha
 
 However, over time, you'll want to phase out this flag as the features become permanent in production. This one flag alone might flip fifty others all on its own! You can imagine how it would be hard to find this flag to flip the features on, and then to clean it up. Here, it might make more sense to call the flag `Privacy_Features_Europe`.
 
-In the end, the point is to make individual feature flags easier to find, especially so if non-engineering users will be making use of them. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
+Your end goal is to make individual feature flags easier to find, espcially for non-engineering users. With Harness, you can even enforce naming conventions with the use of [global governance policies for feature flags](/docs/feature-flags/troubleshoot-ff/harness-policy-engine).
 
 ## Add descriptions to your flags
 
