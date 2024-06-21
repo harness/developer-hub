@@ -105,7 +105,7 @@ import { MODULES } from "@site/src/constants"
           module: MODULES.ff,
           description:
             "The relay proxy lets your app connect directly to Feature Flag services without having to make a significant number of outbound connections.",
-          link: "/docs/category/use-the-harness-relay-proxy",
+          link: "/docs/category/use-the-relay-proxy-with-ff",
         },
         {
           title: "Add policies for a flag",

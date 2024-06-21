@@ -17,8 +17,8 @@
 | Learn about the concept of percentage rollouts with feature flags                | [Use Pipelines with Feature Flags](/docs/category/use-pipelines-with-ff)                           |
 | Understand the basics of targeting rules in feature flags                        | [Manage target users and groups](/docs/category/manage-target-users-and-groups)                       |
 | **5. Feature Flags in Development Workflow**                                        |                                                                                                                                   |
-| Understand the role of feature flags in continuous delivery                      | [Use the Harness Relay Proxy](/docs/category/use-the-harness-relay-proxy)                             |
-| Learn how to integrate feature flags into your existing development workflow     | [Use the Harness Relay Proxy](/docs/category/use-the-harness-relay-proxy)                             |
+| Understand the role of feature flags in continuous delivery                      | [Use the Harness Relay Proxy](/docs/category/use-the-relay-proxy-with-ff)                             |
+| Learn how to integrate feature flags into your existing development workflow     | [Use the Harness Relay Proxy](/docs/category/use-the-relay-proxy-with-ff)                             |
 | Understand the process of rolling back a feature flag                            | [Enable or disable your flags](/docs/feature-flags/use-ff/ff-creating-flag/enable-or-disable-a-feature-flag) |
 | **6. Security and Analytics in Feature Flags**                                     |                                                                                                                                   |
 | Learn how to read and interpret feature flag analytics                           | [Get Data on Your Feature Flags](/docs/category/get-data-on-your-flags)                               |
