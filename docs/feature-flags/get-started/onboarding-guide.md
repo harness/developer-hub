@@ -32,4 +32,4 @@ Once you have created your flag, you can then:
 
 * [Manage Targets](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags)
 * Modify [Variations](/docs/feature-flags/ff-creating-flag/manage-variations) and [Rules](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags)
-* [Add Prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
+* [Add Prerequisites](/docs/feature-flags/ff-creating-flag/add-prerequisites-to-feature-flag)

@@ -42,6 +42,6 @@ Here are the steps to do so:
 To learn more about each of these configuration options, check out the following Harness documentation with further detailed steps for what you need. 
 
  * [Adding Cloud Cost Management to Feature Flags](/docs/feature-flags/ff-creating-flag/using-ff-ccm.md)
- * [Connecting a Feature Flag to a Monitored Service](/docs/feature-flags/connect-monitored-service.md)
- * [Integrate Feature Flags with Jira](/docs/feature-flags/integrate-feature-flag-with-jira.md)
+ * [Connecting a Feature Flag to a Monitored Service](/docs/feature-flags/use-ff/connect-monitored-service.md)
+ * [Integrate Feature Flags with Jira](/docs/feature-flags/ff-creating-flag/integrate-feature-flag-with-jira.md)
 

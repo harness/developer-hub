@@ -13,7 +13,7 @@
 | Learn how to enable and disable a feature flag                                   | [Enable or disable your flags](/docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag) |
 | Learn how to use the Harness.io dashboard to manage feature flags                | [Use the FF dashboard](/docs/feature-flags/use-ff/ff-data/dashboard)                                         |
 | **4. Advanced Feature Flag Techniques**                                            |                                                                                                                                   |
-| Understand the concept of feature flag hierarchy                                 | [Policies overview for Feature Flags](/docs/feature-flags/harness-policy-engine)                      |
+| Understand the concept of feature flag hierarchy                                 | [Policies overview for Feature Flags](/docs/feature-flags/troubleshoot-ff/harness-policy-engine)                      |
 | Learn about the concept of percentage rollouts with feature flags                | [Use Pipelines with Feature Flags](/docs/category/use-pipelines-with-ff)                           |
 | Understand the basics of targeting rules in feature flags                        | [Manage target users and groups](/docs/category/manage-target-users-and-groups)                       |
 | **5. Feature Flags in Development Workflow**                                        |                                                                                                                                   |
