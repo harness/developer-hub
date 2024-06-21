@@ -31,7 +31,7 @@ The release notes describe recent changes to Harness Chaos Engineering.
 
 - Fixed an issue where the **Edit ChaosHub** action was not working with non-account type connectors. (CHAOS-5820)
 
-- Fixed an issue where the **Linux restart** chaos fault was unable to parse string values. (CHAOS-5616)
+- Fixed an issue where the **Linux restart** chaos fault could not parse string values. (CHAOS-5616)
 
 ## May 2024
 
