@@ -3160,6 +3160,25 @@ Make sure that the infrastructure Ids are in the format `identifier: id,identifi
 ```
 export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].stage.spec.environments.values[0].infrastructureDefinitions|map("identifier: "+ .identifier)|join(",")')`
 ```
+#### How can I limit the total number of pipelines running in account?
+
+To limit the total number of pipelines running in the organization, you can set the limit for concurrent pipeline executions at the account level. This setting can be found under Default setting and then "Pipeline" section, and then "Concurrent Active Pipeline Executions."
+
+#### How to export connector list?
+
+You can use API to export connector list [API](https://apidocs.harness.io/tag/Connectors#operation/getConnectorCatalogue)
+
+#### How to find pending harness approvals?
+
+You can create a deployment dashboard and use field Harness aprroval and filter on status as pending.
+
+#### What is a potential issue when running multiple pipelines in parallel using bash script steps?
+
+When running multiple pipelines in parallel that use bash script steps, they can affect each other if they hit the same delegate instance. This occurs because the pipelines run in the same user context and environment, potentially causing interference between two completely different pipelines, which isn't always obvious.
+
+#### We are executing a OPA policy but while executing the policy the tags are coming as empty.
+
+ The tags are based on key-value pair, you need to provide them as key-value based to appear in policy.
 
 ### Infrastructure provisioning FAQs
 
