@@ -2,12 +2,12 @@
 title: Fail on Severity threshold to fail STO pipelines based on the severity of detected issues
 description: Fail the pipeline if any issue meets or exceeds the specified severity.
 sidebar_position: 40
-sidebar_label: Fail pipelines by severity
+sidebar_label: Fail pipelines based on detected issues
 redirect_from:
   - /docs/security-testing-orchestration/onboard-sto/key-concepts/fail-pipelines-by-severity
 ---
 
-You can set up your pipelines to fail automatically if a scan step detects any issues with a specified [severity](./severities.md) or higher. This is good practice for all integrated pipelines because it ensures that the pipeline doesn't build and publish updates with serious vulnerabilities. 
+You can set up your pipelines to fail automatically if a scan step detects any issues that meet your failure criteria. This is good practice for all integrated pipelines because it ensures that the pipeline doesn't build and publish updates with serious vulnerabilities. 
 
 ## Basic workflow to fail pipelines by severity in STO
 
