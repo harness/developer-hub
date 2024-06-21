@@ -142,7 +142,7 @@ The downside is, with many new features and anyone having access to implement fe
 
 We don't believe there is any such thing as too many feature flags, but you want to make sure that you are removing stale, unnecessary, or out-of-date feature flags as you launch new flags for each new feature. This will make it a lot simpler to avoid the downsides that come with bloated feature flag systems and keep reaping the benefits.
 
-Have conversations up front. How often will you remove stale flags? Who is responsible? Are there different owners for different types of flags? Which are permanent feature flags that should never be removed? It's worth knowing that [Harness even brings to your attention the number of stale flags in your system](/docs/feature-flags/ff-creating-flag/filtering-flags-by-state/).
+Have conversations up front. How often will you remove stale flags? Who is responsible? Are there different owners for different types of flags? Which are permanent feature flags that should never be removed? It's worth knowing that [Harness even brings to your attention the number of stale flags in your system](../use-ff/ff-creating-flag/filtering-flags-by-state.md)
 
 Some of the largest enterprises, such as Facebook, Pinterest, and Netflix, regularly make use of feature flags to collect data and deliver the best experience for their user base. These organizations have thousands of flags, and it's imperative that hygiene is appropriately handled to ensure operability at scale.
 

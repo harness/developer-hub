@@ -78,13 +78,13 @@ Additionally, it's crucial to add Environments as a Resource Group. This step he
 
 :::tip
 
-Check out the [Manage Resource Groups in Harness](../../../docs/platform/role-based-access-control/add-resource-groups.md) if you'd like to learn more on this.
+Check out the [Manage Resource Groups in Harness](../../../platform/role-based-access-control/add-resource-groups.md) if you'd like to learn more on this.
 
 :::
 
 # Related Content
 
- - [Manage access control](../secure-ff/rbac-at-ff/manage-access-control.md)
+ - [Manage access control](../../secure-ff/rbac-at-ff/manage-access-control.md)
 
- - [Creating a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag.md)
+ - [Creating a Feature Flag](/docs/feature-flags/use-ff/ff-creating-flag/create-a-feature-flag.md)
 

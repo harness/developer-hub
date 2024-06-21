@@ -32,11 +32,11 @@ You should be familiar with the [Harness' Key Concepts](/docs/platform/get-start
 
 ## Create a pipeline
 
-This topic assumes you have already set up a [project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
+This topic assumes you have already set up a [project](/docs/feature-flags/use-ff/ff-creating-flag/create-a-project#create-a-project).
 
 To create an FF pipeline:
 
-1. In Harness, select **Feature Flags**, and then select an existing project or [create a new one](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
+1. In Harness, select **Feature Flags**, and then select an existing project or [create a new one](/docs/feature-flags/use-ff/ff-creating-flag/create-a-project#create-a-project).
 2. Navigate to **Pipelines > Create a Pipeline**.
 3. In **Name**, enter a name for your pipeline. An ID is generated automatically.
 4. Enter **Description** and **Tags** for your pipeline.
@@ -118,7 +118,7 @@ To add details to a Flag Configuration step:
 	| **Serve variation to target groups** | Serve a flag variation to a single or multiple target groups. |
 	| **Serve percentage rollout to target group** | Serve a flag variation in a %-rollout distribution across a single target group. For more information, go to [Target users with flags](/docs/feature-flags/use-ff/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
   
-	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
+	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/use-ff/ff-creating-flag/manage-variations).
 
 1. Select **Apply Changes**, and then select **Save**.
 

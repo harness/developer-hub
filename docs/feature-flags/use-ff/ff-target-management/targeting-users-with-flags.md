@@ -25,7 +25,7 @@ For example:
 This topic describes how to set up Targeting for a Feature Flag you’ve created. 
 
 :::info note
- To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](/docs/feature-flags/ff-creating-flag/manage-variations).
+ To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](/docs/feature-flags/use-ff/ff-creating-flag/manage-variations).
 :::
 
 ## How Harness prioritizes targets and target groups
@@ -43,7 +43,7 @@ You should understand how the Harness Platform prioritizes targets and target gr
    - As the target group prioritization of `Group_A` is `0`, and the target group prioritization of `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered target group priority, `0`, takes precedence. 
 
 :::info note
-If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](/docs/feature-flags/ff-creating-flag/manage-featureflags-in-git-repos).
+If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](/docs/feature-flags/use-ff/ff-creating-flag/manage-featureflags-in-git-repos).
 :::
 
 ## Target specific users or target groups when a flag is enabled
