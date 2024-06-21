@@ -7,14 +7,12 @@ const doYourCustomStuff = () => {
   const root = document.getElementById("__docusaurus");
 
   if (root) {
-    if (!document.getElementById("chatbot-container")) {
-      const chatbotContainer = document.createElement("div");
-      chatbotContainer.id = "chatbot-container";
-      root.appendChild(chatbotContainer);
+    const chatbotContainer = document.createElement("div");
+    chatbotContainer.id = "chatbot-container";
+    root.appendChild(chatbotContainer);
 
-      const rootContainer = createRoot(chatbotContainer);
-      rootContainer.render(<Chatbot />);
-    }
+    const rootContainer = createRoot(chatbotContainer);
+    rootContainer.render(<Chatbot />);
   }
 };
 
