@@ -1,14 +1,11 @@
 {
-    "label": "Use STO",
-    "position": 20,
+    "label": "STO use cases",
+    "position": 100,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Use STO"
-    },
-    "customProps": {
-        "helpdocs_category_id": "utstv3qzqt"
+        "title": "STO use cases"
     }
 }

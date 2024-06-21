@@ -2,13 +2,14 @@
 title: GitHub triggers to block pull requests with vulnerabilities
 description: Trigger STO scans to block GitHub PRs with vulnerabilities.
 sidebar_label: GitHub triggers to block pull requests
-sidebar_position: 5
+sidebar_position: 20
 redirect_from:
   - /docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
 
 You can create GitHub event triggers to support a variety of STO workflows and use cases. This topic describes how to do the following:
 
@@ -17,8 +18,7 @@ You can create GitHub event triggers to support a variety of STO workflows and u
 - Set branch protection rules that block pull requests if the STO pipeline fails.
 
 
-The following steps outline the basic workflow:
-
+The following steps outline the basic workflow.
 
 1. [Create a trigger](#create-the-harness-trigger) for your Harness pipeline.
 
@@ -265,11 +265,11 @@ trigger:
 
 You can configure your Harness pipeline to fail if the scan finds vulnerabilities that match a specified set of criteria. You can use one of two methods:
 
-- [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows)
+- [Fail on Severity](/docs/security-testing-orchestration/exemptions/exemption-workflows)
 
   Every STO scan step has a `fail_on_severity` setting that fails the step if a scan detects issues with the specified severity or higher. You can also create exemptions ("Ignore rules") for specific issues to override this behavior.
 
-- [Governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+- [Governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)
 
    You can use Harness Policy as Code to write and enforce policies against your security tests, and to block your pipelines if a security test has any issues that violate those policies. STO includes a set of predefined templates for blocking pipelines based on issue severity, reference ID, CVE age, title, and number of occurrences.
 

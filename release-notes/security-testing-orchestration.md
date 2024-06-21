@@ -39,7 +39,7 @@ The following features are now generally available:
   - [Container](/docs/security-testing-orchestration/sto-techref-category/built-in/containers)
   - [DAST](/docs/security-testing-orchestration/sto-techref-category/built-in/dast)
 - [Default baselines based on regular expressions](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines#default-baselines-based-on-regular-expressions)
-- [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)
+- [Jira tickets for detected vulnerabilities](/docs/security-testing-orchestration/jira-integrations)
 - Wiz support for scanning [artifacts](/docs/security-testing-orchestration/sto-techref-category/wiz/artifact-scans-with-wiz), [code repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/repo-scans-with-wiz), and [IaC repositories](/docs/security-testing-orchestration/sto-techref-category/wiz/iac-scans-with-wiz) 
 
 
@@ -354,8 +354,8 @@ The Aqua Security step also publishes a new output variable, `EXTERNAL_POLICY_FA
 
 For more information, go to:
 
-- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+- [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)
+- [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/policies/create-opa-policies#exclude-vulnerabilities-using-sto-output-variables)
 
 
 #### New feature: AIDA remediations for STO stage failures
@@ -417,7 +417,7 @@ Security Tests steps with configurable UIs, such as [**Aqua Trivy**](/docs/secur
 
 #### New feature: OPA policies for Security Test results
 
-You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
+You can now write and enforce [OPA policies](/docs/platform/governance/policy-as-code/harness-governance-overview) against your [security tests](/docs/security-testing-orchestration/dashboards/view-scan-results), and stop your pipelines if a security test has any issues that violate your policies.(STO-6738)
 
 This greatly extends the range of policies that you can use to stop pipelines. Previously, STO only supported OPA policies against [severity output variables](/docs/security-testing-orchestration/get-started/key-concepts/output-variables). 
 
@@ -433,7 +433,7 @@ This release includes a set of security test policy samples, which make it easy 
 
 - A security test cannot include any issues in a list of reference IDs such as CWE-78 or CVE-2023-52138.
 
-For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa).
+For more information, go to [Stop pipelines using OPA](/docs/security-testing-orchestration/policies/create-opa-policies).
 
 #### New feature: Open Source Vulnerabilities (OSV) scanner integration
 
@@ -473,7 +473,7 @@ You can scan your code repositories using [Open Source Vulnerabilities (OSV)](ht
 
   - Previous behavior:
   
-    When [**Security Tests**](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
+    When [**Security Tests**](/docs/security-testing-orchestration/dashboards/view-scan-results) showed scan results, it categorized issues as **Only in \<_target_>:\<_variant_>** and **Remediated** by comparing the scanned variant to the baseline specified at the time the page was loaded.
 
   - New behavior: 
   
@@ -954,7 +954,7 @@ Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to s
 
 Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software delivery lifecycle, and improve the security posture of your applications and services. (STO-5882)
 
-For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+For more information, go to [Remediations with AIDA](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 ###### Fixed issues
 
@@ -994,7 +994,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
   * [Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)
-  * [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+  * [Custom Ingest](/docs/security-testing-orchestration/custom-scanning/custom-ingest-reference)
   * [Nikto](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
   * [Nmap](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
   * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
@@ -1045,7 +1045,7 @@ For more information, go to [Remediations with AIDA](/docs/security-testing-orch
 
 * STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies/looping-strategies-matrix-repeat-and-parallelism) for Security Tests stages. (STO-5726)
 
-* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/exemptions/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
    ![](./static/sto-exemption-reason-pulldown.gif)
 
@@ -1118,7 +1118,7 @@ This update includes the following fixed issues:
 
 ###### Early access 
 
-* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations):
+* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/jira-integrations):
    * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
 
      Before:
@@ -1183,7 +1183,7 @@ The following security steps are now generally available:
 
 ###### Early access 
 
-* The new [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
+* The new [Jira integration](/docs/security-testing-orchestration/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
 
 ###### Fixed issues
 
@@ -1240,7 +1240,7 @@ The following security steps are now generally available:
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/jira-integrations). (STO-5467)
 
 ###### Fixed issues
 
