@@ -5,6 +5,7 @@ sidebar_label: Scan and ingest from GitHub Actions and Drone Plugins
 sidebar_position: 90
 redirect_from: 
   - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions
+  - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-action
 ---
 
 

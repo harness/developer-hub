@@ -4,7 +4,8 @@ description: Configure a step to ingest scan results from a data file.
 sidebar_label: Ingestion mode
 sidebar_position: 80
 redirect_from: 
-  - docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
+  - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data
+  - /docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline
 helpdocs_topic_id: d24n34qdbk
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false

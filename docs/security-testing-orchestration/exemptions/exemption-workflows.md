@@ -3,6 +3,8 @@ title: Exemptions to override STO failure policies
 description: Procedures and best practices for requesting and approving exemptions.
 sidebar_label: Exemptions to override STO failure policies
 sidebar_position: 60
+redirect_from: 
+  - docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows
 ---
 
 You can set up an STO step to fail if a scan detects vulnerabilities that match the failure criteria specified for that step. You can also create exemptions for specific vulnerabilities to allow the pipeline to proceed even if they're detected.

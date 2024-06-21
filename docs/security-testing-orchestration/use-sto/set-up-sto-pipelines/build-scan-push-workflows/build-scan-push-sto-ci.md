@@ -5,6 +5,7 @@ sidebar_position: 80
 redirect_from:
   - /tutorials/security-tests/build-scan-push-sto-ci
   - /docs/security-testing-orchestration/get-started/sto-tutorials/build-scan-push-sto-ci
+  - /docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/build-scan-push-sto-ci
 ---
 
 import Tabs from '@theme/Tabs';

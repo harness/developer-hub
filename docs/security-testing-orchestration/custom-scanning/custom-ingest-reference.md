@@ -3,6 +3,8 @@ title: Custom Ingest step for SARIF and JSON scan results
 description: Ingest SARIF or JSON scan results.
 sidebar_label: Custom Ingest step for other scanners
 sidebar_position: 20
+redirect_from: 
+  - /docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference
 ---
 
 The Custom Ingest step enables you to ingest results from any third-party scanner. Harness STO supports two generic data formats:
