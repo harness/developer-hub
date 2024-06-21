@@ -19,6 +19,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## June 2024
 
+### Relay Proxy
+
+#### Version 2.0.1
+
+**New features and enhancements**:
+- Beta support added to support AND rules in Harness Saas. To opt in to this feature you need to configure your Proxy to set the `AND_RULES` environment variable to `true`
+- Adds the same validation that Harness Saas uses on Targets in the `/client/auth` path. This prevents the Proxy from accepting invalid targets from SDKs and logging out an error when it tries to forward them to Saas
+
+**Bug Fixes**:
+- This fixes a bug where the Proxy metric aggregation wouldn't work properly with certain SDKs (Java, .NET)
+- Fixes an issue where the context could time out and prevent connect/disconnect stream events from being published to redis.
+- Fixes an issue introduced in `2.0.0` that caused read replicas to not close streams with SDKs properly
+- There was an issue with how the Proxy handled redis URLs prefixed with `redis://`. This fixes that issue so that all of the below options work for configuring the redis URL
+
 ### Android SDK
 
 #### Version 2.2.1
