@@ -409,6 +409,15 @@ If an expression does not satisfy this condition, use the `toString()` [method](
 
 For example, in `/tmp/spe/<+pipeline.sequenceId>` the variable `sequenceId` evaluates to an integer. When concatenating this with other string expressions, it must be converted to a string, such as: `/tmp/spe/<+pipeline.sequenceId.toString()>`.
 
+If nested expressions are unable to resolve at some point during resolution, we return the concatenated string value of the partially resolved expression till that point as opposed to null in case of unnested expressions. For example:
+
+```
+Assuming <+env.name> resolves to prod, and we don't have a pipeline variable prod defined - 
+<+pipeline.variables.prod>           --> null
+<+pipeline.variables.<+env.name>>    --> pipeline.variables.prod
+```
+
+
 :::
 
 ## Input and output variables
