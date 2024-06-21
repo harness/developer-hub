@@ -3311,14 +3311,14 @@ Harness recommends not using hyphens/dashes (-) in variable names because these 
 
 However, if you need to reference a custom variable that includes a period or hyphen/dash in the name, you must wrap the variable name in double quotes and use the get() method in the expression, such as .get("some-var").
 
-For example: <+pipeline.variables.get("this-var")>
+For example: `<+pipeline.variables.get("this-var")>`
 
 
 
 
 #### How can I use an output variable from one step and use it towards a different step in another stage within the same pipeline?
 
-One can consider using the expression <+exportedVariables.getValue("OUTPUT_VARIABLE"> where OUTPUT_VARIABLE is the output variable being assigned from the corresponding step.
+One can consider using the expression `<+exportedVariables.getValue("OUTPUT_VARIABLE">` where `OUTPUT_VARIABLE` is the output variable being assigned from the corresponding step.
 
 1. Assign an Output alias within the step where the output variable is needed.
 	- Select the step and click on Optional Configuration.
@@ -3337,7 +3337,7 @@ One can consider using the expression <+exportedVariables.getValue("OUTPUT_VARIA
 
 Use the <+input> command to obtain the server name from the user at runtime.  Then, utilize a different stage to confirm that the server is part of the list of available servers, and can note to the user if the server does not exist.
 
-One can also define allowed values by appending the .allowedValues() method to <+input>. For example: <+input>.allowedValues(server1, server2).  This way, the user can select the server at runtime based on the values available to them.
+One can also define allowed values by appending the .allowedValues() method to `<+input>`. For example: <+input>.allowedValues(server1, server2).  This way, the user can select the server at runtime based on the values available to them.
 
 
 
