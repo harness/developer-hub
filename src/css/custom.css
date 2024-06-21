@@ -911,6 +911,7 @@ figure p {
     transform: translate(-30%);
   }
 }
+
 /******************* chatbot css variables *************/
 
 [data-theme="dark"] {
@@ -950,6 +951,10 @@ figure p {
     rgba(51, 49, 55, 0.7) 85.94%
   );
   --input-focus: 1px solid white;
+  --option-img: url("https://developer.harness.io/img/BarsDark.svg") no-repeat;
+  --send-img: url("https://developer.harness.io/img/SendIconDark.svg") no-repeat;
+
+  --dropdown-bg: #ede8fb;
 }
 
 [data-theme="light"] {
@@ -979,6 +984,9 @@ figure p {
   --aida-btn-border: 1px solid #9681a7;
 
   --input-focus: 1px solid #7e5be0;
+  --dropdown-bg: #7E5BE0;
+  --option-img: url("https://developer.harness.io/img/Bars.svg") no-repeat;
+  --send-img: url("https://developer.harness.io/img/SendIcon.svg") no-repeat;
 }
 
 /******************* chatbot css variables end *************/
