@@ -67,7 +67,7 @@ svgPath="/iacm-security.svg"
 descriptions={{
         "1": {
         title: "Step 1: Run the `plan` command against your defined backend",
-        body: "The `plan` command is executed as a step in your pipeline environment, comp"
+        body: "The `plan` command is executed as a step in your pipeline environment, comparing your defined backend state with your proposed infrastructure changes."
         },
         "2": {
         title: "Step 2 & 3: Cost estimation and OPA policy checks",
