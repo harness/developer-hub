@@ -1,12 +1,12 @@
 {
-    "label": "STO pipeline configurations",
+    "label": "Configure your STO pipelines",
     "position": 10,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",   
     "link": {
         "type": "generated-index",
-        "title": "STO pipeline configurations"
+        "title": "Configure your STO pipelines"
     },
     "customProps": {
         "ref": "doc-2894"

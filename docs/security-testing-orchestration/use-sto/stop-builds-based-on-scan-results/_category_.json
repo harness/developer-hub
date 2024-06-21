@@ -1,12 +1,12 @@
 {
-    "label": "Block builds and PRs based on scan results",
+    "label": "Block builds and pull/merge requests",
     "position": 50,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Block builds and PRs based on scan results"
+        "title": "Block builds and pull/merge requests"
     },
     "customProps": {
         "ref": "doc-2894"
