@@ -35,7 +35,7 @@ const Chatbot = () => {
   ]);
 
   useEffect(() => {
-    const cookie = getXChatbotKeyCookie();
+    const cookie = getXChatbotKeyCookie();  
     const urlParams = new URLSearchParams(window.location.search);
     const chatbot = urlParams.get("chatbot");
     if (chatbot === "true") {
@@ -65,6 +65,17 @@ const Chatbot = () => {
           default: true,
         },
       ]);
+    }else{
+      setMessages([
+        {
+          text: "Accelerate your software delivery with the powerful capabilities of Harness’s Platform.",
+          isBot: true,
+        },
+        {
+          text: "How can I help?",
+          isBot: true,
+        },
+      ])
     }
   }, [isLoggedIn]);
 
@@ -153,6 +164,8 @@ const Chatbot = () => {
   };
 
   function handleSignIn() {
+    window.location.href =
+      // "http://localhost:5000/sso.html?action=login&src=developerhub&return_to=http://localhost:8888/?chatbot=true";
     window.location.href =
       "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
   }

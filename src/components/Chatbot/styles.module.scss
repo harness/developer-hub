@@ -406,3 +406,11 @@
       10014px 0 0 0 #6c44db;
   }
 }
+
+
+// for mobile
+@media screen and (max-width: 450px) {
+  .chatbot-container {
+    max-width: 90vw;
+  }
+}
