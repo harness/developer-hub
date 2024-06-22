@@ -35,9 +35,7 @@ const Chatbot = () => {
   ]);
 
   useEffect(() => {
-    const cookie = getXChatbotKeyCookie();
-    console.log({cookie});
-    
+    const cookie = getXChatbotKeyCookie();  
     const urlParams = new URLSearchParams(window.location.search);
     const chatbot = urlParams.get("chatbot");
     if (chatbot === "true") {
