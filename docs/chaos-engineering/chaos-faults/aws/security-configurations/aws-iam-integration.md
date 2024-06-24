@@ -256,4 +256,4 @@ For example, if the target account has a role named `chaos-role`, you must annot
 
 When you create a new AWS chaos experiment, you can choose to enable or disable AWS access. You can select or deselect the button depending on your use of the secret references.
 
-![Chaos experiment definition YAML](./static/images/use-secret.png)
+![Chaos experiment definition YAML](./static/use-secret.png)
