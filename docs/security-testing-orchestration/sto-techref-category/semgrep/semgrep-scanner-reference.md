@@ -181,6 +181,8 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 
 #### Scan Configuration
 
+<!-- -->
+
 You can use this setting to select the set of Semgrep rulesets to include in your scan:
 
   - **Default** Include the following rulesets: 
