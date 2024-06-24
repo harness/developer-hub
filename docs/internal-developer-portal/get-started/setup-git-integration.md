@@ -101,9 +101,7 @@ import TabItem from '@theme/TabItem';
 
 ## Limitations
 
-At present you can't view and edit source for software components added from Harness Code Repository, this will be available on the next upgrade. 
-
-![](static/edit-view-source.png)
+At present we only support [repositories](https://developer.harness.io/docs/code-repository/config-repos/create-repo#create-a-repository) created at **project** [scope](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes), the support for account and organization level repositories will be available in upcoming releases. 
 
 :::
 
