@@ -7,7 +7,7 @@ sidebar_position: 90
 
 Extraction scans can be useful when you're working with SaaS-based scanners such as [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) and [Burp Enterprise](/docs/security-testing-orchestration/sto-techref-category/burp-scanner-reference), where you can extract scan results from an API endpoint. 
 
-There most common use cases for Extraction mode are:
+The most common use cases for Extraction mode are:
 
 1) Extract results from a scan that has already run.
 
@@ -101,14 +101,10 @@ Here's a simple extraction setup for Anchore Enterprise:
 2. [Target name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name) should match the image **Name** below
 3. [Target variant](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#variant) should match the image **Tag** below
 
-#### Container image
+#### Scan tool
 
-1. [Type](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#type--orchestration) = **Local Image Built in Stage**
-   
-   In Extraction mode, the image to scan must be located on the Anchore server. 
+1. [Image name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name-1) The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server.
 
-2. [Name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name-1) The local image name to scan, such as `owasp/dependency-check`
-3. [Tag](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#tag) should match the **Image Tag** below.
 
 #### Authentication 
 
