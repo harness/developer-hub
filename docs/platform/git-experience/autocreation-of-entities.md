@@ -67,7 +67,7 @@ For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_auto
 ### Templates
 
 
-1. Account Level
+1. **Account Level**
 
 File path for storing template at Account level should follow the following naming convention: 
 
@@ -82,7 +82,7 @@ For example:- `.harness/templates/test_template/v1.yaml`
 - **Template identifier**: `test_template`
 - **Version label**: `v1`
 
-2. Organization Level
+2. **Organization Level**
 
 File path for storing template at Organization level should follow the following naming convention: 
 
@@ -97,7 +97,7 @@ For example:- `.harness/orgs/test_org/templates/test_template/v1.yaml`
 - **Version label**: `v1`
 
 
-3. Project Level
+3. **Project Level**
 
 File path for storing template at Project level should follow the following naming convention: 
 
@@ -116,7 +116,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/templates/template_a
 
 ### Services
 
-1. Account Level
+1. **Account Level**
 
 File path for storing Services at Account level should follow the following naming convention: 
 
@@ -129,7 +129,7 @@ For example:- `.harness/services/service_deploy_nginx_account.yaml`
 - **Services directory**: `services`
 - **Service identifier**: `service_deploy_nginx_account`
 
-2. Organization Level
+2. **Organization Level**
 
 File path for storing services at Organization level should follow the following naming convention: 
 
@@ -144,7 +144,7 @@ For example:- `.harness/orgs/test_org/services/service_deploy_nginx_account.yaml
 - **Version label**: `v1`
 
 
-3. Project Level
+3. **Project Level**
 
 File path for storing services at Project level should follow the following naming convention:
 
@@ -163,7 +163,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/services/service_dep
 
 ### Environment
 
-1. Account Level
+1. **Account Level**
 
 File path for storing Environment at Account level should follow the following naming convention:
 
@@ -176,7 +176,7 @@ For example:- `.harness/envs/Pre_Prod_qa.yaml`
 - **Environments directory**: `envs`
 - **Environment identifier**: `Pre_Prod_qa`
 
-2. Organization Level
+2. **Organization Level**
 
 File path for storing Environment at Organization level should follow the following naming convention:
 
@@ -191,7 +191,7 @@ For example:- `.harness/orgs/test_org/envs/Pre_Prod_qa.yaml`
 - **Environment identifier**: `Pre_Prod_qa`
 
 
-3. Project Level
+3. **Project Level**
 
 File path for storing Environment at Project level should follow the following naming convention:
 
@@ -208,7 +208,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_pro
 
 ### Infrastructure 
 
-1. Account Level
+1. **Account Level**
 
 File path for storing Infrastructure at Account level should follow the following naming convention:
 
@@ -225,7 +225,7 @@ For example:- `.harness/envs/Pre_Prod_qa/infras/infra_account_level.yaml`
 - **Infrastructure identifier**: `infra_account_level`
 
 
-2. Project Level
+2. **Project Level**
 
 File path for storing Infrastructure at Project level should follow the following naming convention: 
 
