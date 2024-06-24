@@ -37,6 +37,22 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## June 2024
 
+### Version 1.32
+
+#### Fixed issues
+
+- CI builds were running slowly in some cases. This release includes the following fixes to address this issue. (CI-10042, ZD-52559)
+
+  <!-- - Added extra resources for running addon. This feature is behind the feature flag `FEATURE_FLAG_TBD`. Contact Harness Support to enable the feature. -->
+
+  - Updated LE to addon communication to retry every 300ms 30 times, for a total of 9 seconds.
+
+  - Disabled resource consumption logs for addon. 
+
+- Fixed an issue where pipelines failed intermittently due to delegate selection and task distribution problems when multiple delegates are configured with the same selector tag. (CI-12788, ZD-64246)
+- Running `unittest` in a Run step resulted in the error `sh: unittest not found in some cases`. With this fix, pipelines now run `python unittest -m` which supports more image types. (CI-12795)
+- In some cases, the **Image Pull Policy** setting didn't work as intended when running builds in Docker and VM build infrastructures. (CI-11703) 
+
 ### Version 1.30
 
 #### New features and enhancements
