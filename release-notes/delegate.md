@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2024-06-20T10:00
+date: 2024-06-24T10:00
 sidebar_position: 4
 ---
 
@@ -49,11 +49,17 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 ## June 2024
 
-### Version 24.06.83204 <!--  June 20, 2024 -->
+### Version 24.06.83304 <!--  June 24, 2024 -->
 
-- Resolved an issue to match new logs for Azure Web App Slot Deployments when an Azure Web App is running on a Linux container. (CDS-98000, ZD-65289)
+#### Fixed issues
+
+- Kubernetes services were created during the startup of the delegate, causing the IP pool to be exhausted for NAB. The delegate has been updated to prevent the creation of Kubernetes services upon startup, resolving the issue with IP pool exhaustion. (PL-51550)
+
+- Delegates were running out of memory due to frequent connectivity checks. Optimized the connectivity check process to reduce memory usage, preventing the delegate from running out of memory. (PL-51418, ZD-63705)
 
 ### Version 24.06.83203 <!--  June 11, 2024 -->
+
+#### Fixed issues
 
 - Delegate logs were displaying entire bearer tokens when using the IDP Kubernetes connector. Added log sanitization to delegate logs to mask commonly used secret patterns. These patterns can be extended per-use-case by adding them to the `/opt/harness-delegate/sanitize-patterns.txt` file inside the delegate. (PL-50889, ZD-64069)
 
