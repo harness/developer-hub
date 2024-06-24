@@ -57,6 +57,8 @@ For more information, go to [Delegate expiration support policy](/docs/platform/
 
 - Delegates were running out of memory due to frequent connectivity checks. Optimized the connectivity check process to reduce memory usage, preventing the delegate from running out of memory. (PL-51418, ZD-63705)
 
+- When trying to resolve the expressions in the File Store scripts, Harness encountered a self referencing expression. Due to this condition, the resources associated with two Harness services were exhausted. A code change fixed this issue by preventing such pipeline executions. (PIPE-19585, ZD-64579, ZD-64580)
+
 ### Version 24.06.83203 <!--  June 11, 2024 -->
 
 #### Fixed issues
