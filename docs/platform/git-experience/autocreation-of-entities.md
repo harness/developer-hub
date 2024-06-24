@@ -11,49 +11,56 @@ Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Pleas
 
 ## Pre-requisite of autocreation
 
-- Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organization.
-- Files that are added in the default branch(main, master etc) are autocreated.
-- Added files should follow naming convention based on the entity type. 
+- Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations.
+- Files that are added only in the default branch(main, master etc) are autocreated.
+- Added files should follow a specific file path convention based on the entity type. 
 
 ## File Path Convention
 
 We need to follow a specific file convention for each entity for auto-creation. This is required to infer the scope of the entity as well as type of entity from the filepath.
 
-For auto-creation, only files within the `.harness` folder are utilized. Therefore, all file paths must begin with `.harness/`.
+:::info note
+For auto-creation, only files within the `.harness` folder are utilized. Therefore, all file paths must begin with `.harness/`. Webhooks will, by default, track the `.harness` folder.
+:::
 
 ![](./static/tracked_folder_autocreation.png)
 
 We will discuss the file path convention for each entity with an example:-
 
+
+:::info note
+The file path name of the entity YAML can be anything, as the name and identifier of the entity are picked up from the YAML itself that you are pushing to your Git repository. If the name and identifier are not provided in the YAML, then the file name will be used as the name and identifier.
+:::
+
 ### Pipelines
 
 File path for storing your pipelines should follow the following naming convention:
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/pipelines/<pipeline_identifier>.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/pipelines/<file_path_name>.yaml`
 
 - Folder name should be `pipelines`.
 
 For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_autocreation_pipeline.yaml`
 
-- **Organizations directory**: `orgs`
+- **Organization directory**: `orgs`
 - **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
 - **Project identifier**: `test_project`
 - **Pipelines directory**: `pipelines`
-- **Pipeline identifier**: `demo_autocreation_pipeline`
+- **Pipeline File Path name**: `demo_autocreation_pipeline`
 
 
 ### Input Sets
 
 File path for storing your input set should follow the following naming convention:
 
- `.harness/orgs/<org_identifier>/projects/<project_identifier>/pipelines/<pipeline_identifier>/input_sets/<input_set_identifier>.yaml`
+ `.harness/orgs/<org_identifier>/projects/<project_identifier>/pipelines/<pipeline_identifier>/input_sets/<file_path_name>.yaml`
 
  - Folder name should be `input_sets`.
 
 Input sets belonging to a pipeline will reside in the directory of pipeline identifier.
 
-For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_autocreation_pipeline/demo_autocreation_inputSet.yaml`
+For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_autocreation_pipeline/input_sets/demo_autocreation_inputSet.yaml`
 
 - **Organizations directory**: `orgs`
 - **Organization identifier**: `test_org`
@@ -62,7 +69,7 @@ For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_auto
 - **Pipelines directory**: `pipelines`
 - **Pipeline identifier**: `demo_autocreation_pipeline`
 - **Input sets directory**: `input_sets`
-- **Input set identifier**: `demo_autocreation_inputSet`
+- **Input Set File Path name**: `demo_autocreation_inputSet`
 
 ### Templates
 
@@ -71,22 +78,22 @@ For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_auto
 
 File path for storing template at Account level should follow the following naming convention: 
 
-`.harness/templates/<template_identifier>/<version_label>.yaml`
+`.harness/templates/<template_identifier>/<file_path_name>.yaml`
 
 - Folder name should be `templates`.
-- All version labels belonging to a template will reside in the directory of template identifier (deploy is the template identifier in above case with v1 and v2 versions labels.)
+- All version labels belonging to a template will reside in the directory of template identifier.
 
 For example:- `.harness/templates/test_template/v1.yaml`
 
 - **Templates directory**: `templates`
 - **Template identifier**: `test_template`
-- **Version label**: `v1`
+- **Version label/Version File Path name**: `v1`
 
 2. **Organization Level**
 
 File path for storing template at Organization level should follow the following naming convention: 
 
-`.harness/orgs/<org_identifier>/templates/<template_identifier>/<version_label>.yaml`
+`.harness/orgs/<org_identifier>/templates/<template_identifier>/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/templates/test_template/v1.yaml`
 
@@ -94,14 +101,14 @@ For example:- `.harness/orgs/test_org/templates/test_template/v1.yaml`
 - **Organization identifier**: `test_org`
 - **Templates directory**: `templates`
 - **Template identifier**: `test_org`
-- **Version label**: `v1`
+- **Version label/Version File Path name**: `v1`
 
 
 3. **Project Level**
 
 File path for storing template at Project level should follow the following naming convention: 
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/templates/<template_identifier>/<version_label>.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/templates/<template_identifier>/<file_path_name>.yaml`
 
 
 For example:- `.harness/orgs/test_org/projects/test_project/templates/template_autocreation_project_level/v1.yaml`
@@ -120,35 +127,34 @@ For example:- `.harness/orgs/test_org/projects/test_project/templates/template_a
 
 File path for storing Services at Account level should follow the following naming convention: 
 
-`.harness/services/<service_identifier>.yaml`.
+`.harness/services/<file_path_name>.yaml`.
 
 - Folder name should be `services`.
 
 For example:- `.harness/services/service_deploy_nginx_account.yaml`
 
 - **Services directory**: `services`
-- **Service identifier**: `service_deploy_nginx_account`
+- **Service File Path Name**: `service_deploy_nginx_account`
 
 2. **Organization Level**
 
 File path for storing services at Organization level should follow the following naming convention: 
 
-`.harness/orgs/<org_identifier>/services/<service_identifier>/<version_label>.yaml`
+`.harness/orgs/<org_identifier>/services/<file_path_name>.yaml`
 
-For example:- `.harness/orgs/test_org/services/service_deploy_nginx_account.yaml`
+For example:- `.harness/orgs/test_org/services/service_deploy_nginx_org.yaml`
 
 - **Organizations directory**: `orgs`
 - **Organization identifier**: `test_org`
 - **Services directory**: `services`
-- **Service identifier**: `service_deploy_nginx_account`
-- **Version label**: `v1`
+- **Service File Path Name**: `service_deploy_nginx_org`
 
 
 3. **Project Level**
 
 File path for storing services at Project level should follow the following naming convention:
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/services/<service_identifier>.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/services/<file_path_name>.yaml`
 
 - folder name should be `services`.
 
@@ -159,7 +165,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/services/service_dep
 - **Projects directory**: `projects`
 - **Project identifier**: `test_project`
 - **Services directory**: `services`
-- **Service identifier**: `service_deploy_nginx_project`
+- **Service File Path Name**: `service_deploy_nginx_project`
 
 ### Environment
 
@@ -167,35 +173,35 @@ For example:- `.harness/orgs/test_org/projects/test_project/services/service_dep
 
 File path for storing Environment at Account level should follow the following naming convention:
 
- `.harness/envs/<environment_identifier>.yaml`
+ `.harness/envs/<file_path_name>.yaml`
 
 - Folder name should be `envs`.
 
 For example:- `.harness/envs/Pre_Prod_qa.yaml`
 
 - **Environments directory**: `envs`
-- **Environment identifier**: `Pre_Prod_qa`
+- **Environment File Path name**: `Pre_Prod_qa`
 
 2. **Organization Level**
 
 File path for storing Environment at Organization level should follow the following naming convention:
 
-`.harness/orgs/<org_identifier>/envs/<environment_identifier>.yaml`
+`.harness/orgs/<org_identifier>/envs/<file_path_name>.yaml`
 
-For example:- `.harness/orgs/test_org/envs/Pre_Prod_qa.yaml`
+For example:- `.harness/orgs/test_org/envs/Pre_Prod_qa_org.yaml`
 
 
 - **Organizations directory**: `orgs`
 - **Organization identifier**: `test_org`
 - **Environments directory**: `envs`
-- **Environment identifier**: `Pre_Prod_qa`
+- **Environment File Path name**: `Pre_Prod_qa_org`
 
 
 3. **Project Level**
 
 File path for storing Environment at Project level should follow the following naming convention:
 
- `.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<environment_identifier>.yaml`
+ `.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_project_level.yaml`
 
@@ -204,7 +210,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_pro
 - **Projects directory**: `projects`
 - **Project identifier**: `test_project`
 - **Environments directory**: `envs`
-- **Environment identifier**: `Pre_Prod_qa_project_level`
+- **Environment File Path name**: `Pre_Prod_qa_project_level`
 
 ### Infrastructure 
 
@@ -212,7 +218,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_pro
 
 File path for storing Infrastructure at Account level should follow the following naming convention:
 
- `.harness/envs/<environment_identifier>/infras/<infrastructure_identifier>.yaml`
+ `.harness/envs/<environment_identifier>/infras/<file_path_name>.yaml`
 
 - All infrastructures belonging to an environment will reside in the directory of environment identifier.
 - Folder name should be `infras`
@@ -222,14 +228,14 @@ For example:- `.harness/envs/Pre_Prod_qa/infras/infra_account_level.yaml`
 - **Environments directory**: `envs`
 - **Environment identifier**: `Pre_Prod_qa`
 - **Infrastructure directory**: `infras`
-- **Infrastructure identifier**: `infra_account_level`
+- **Infrastructure File Path name**: `infra_account_level`
 
 
 2. **Project Level**
 
 File path for storing Infrastructure at Project level should follow the following naming convention: 
 
-`.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<environment_identifier>/infras/<infrastructure_identifier>.yaml`
+`.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<environment_identifier>/infras/<file_path_name>.yaml`
 
 For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_project_level/infras/infra_project_level.yaml`
 
@@ -240,7 +246,7 @@ For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_pro
 - **Environments directory**: `envs`
 - **Environment identifier**: `Pre_Prod_qa_project_level`
 - **Infrastructure directory**: `infras`
-- **Infrastructure identifier**: `infra_project_level`
+- **Infrastructure File Path name**: `infra_project_level`
 
 ## Creation of Entities
 
@@ -301,7 +307,9 @@ pipeline:
       required: false
       value: <+input>
 ```
-Now after saving this yaml, we are going to push this to our Git Repository
+After saving this YAML file, we will push it to our Git repository, for which we have registered the webhook in Harness. We can then view this event on our Webhook Events page.
+
+![](./static/webhook_event_listing.png)
 
 ```
 git add .harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline.yaml
@@ -339,7 +347,7 @@ inputSet:
         value: hello
 ```
 
-Now after saving this yaml, we are going to push this to our Git Repository
+After saving this YAML file, we will push it to our Git repository, for which we have registered the webhook in Harness. We can then view this event on our Webhook Events page.
 
 ```
 git add .harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline/demo_autocreation_inputSet.yaml
@@ -347,10 +355,10 @@ git commit -m "Add input set yaml"
 git push
 ```
 
-After pushing the changes, we will see in that Input set named as **input_set** is created for the pipeline **demo_autocreation_pipeline**. 
+After pushing the changes, we will see that Input set named as **input_set** is created for the pipeline **demo_autocreation_pipeline**. 
 
 ![](./static/input_set_creation_autocreation.png)
 
 :::info note
-Harness RBAC is not applicable in Autocreation.
+Harness RBAC is not applicable in Autocreation. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations. If you are able to push to the default branch, you will be able to create the entity in Harness.
 :::
