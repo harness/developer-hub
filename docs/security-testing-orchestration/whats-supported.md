@@ -2,7 +2,7 @@
 title: What's supported in Harness STO
 description: Supported STO features and integrations
 sidebar_label: What's supported
-sidebar_position: 5
+sidebar_position: 05
 ---
 
 
@@ -78,7 +78,7 @@ import StoSupportedMethods from '/docs/security-testing-orchestration/sto-techre
 
 <StoSupportedMethods />
 
-In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format.
+In addition to ingesting scan data in the external scanner's native format, STO steps can also ingest data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners) format.
 
 
 </TabItem>
@@ -101,17 +101,17 @@ import StoInfraSupport from '/docs/security-testing-orchestration/sto-techref-ca
 
 Harness STO supports the following features for generating notifications and stopping pipelines in response to detected vulnerabilities:
 
-- Each Security Test step has a [Fail on Severity](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) setting that causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). You can also create [exemptions ("Ignore rules")](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for specific issues to override this behavior.
+- Each Security Test step has a [Fail on Severity](/docs/security-testing-orchestration/exemptions/exemption-workflows) setting that causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). You can also create [exemptions ("Ignore rules")](/docs/security-testing-orchestration/exemptions/exemption-workflows) for specific issues to override this behavior.
 
-- You can also enforce [governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa) against scan results to stop pipelines automatically.
+- You can also enforce [governance policies](/docs/security-testing-orchestration/policies/create-opa-policies) against scan results to stop pipelines automatically.
 
 - You can configure STO to generate the following notifications automatically in response to issues detected in a scan:
 
-  - [New Jira tickets](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations)  
+  - [New Jira tickets](/docs/security-testing-orchestration/jira-integrations)  
 
-  - [Email notifications](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications) 
+  - [Email notifications](/docs/security-testing-orchestration/notifications/email-notifications) 
   
-  - [Slack notifications](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/slack-notifications)
+  - [Slack notifications](/docs/security-testing-orchestration/notifications/slack-notifications)
 
 
 
@@ -127,7 +127,7 @@ Currently, you can define and store policies directly in the OPA service in Harn
 
 Soon, you will be able to use remote Git or other repos (e.g. OCI-compatible registries) to define and store the policies used in Harness.
 
-- [Use security test policies to stop STO pipelines automatically](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
+- [Use security test policies to stop STO pipelines automatically](/docs/security-testing-orchestration/policies/create-opa-policies)
 - [Harness Policy As Code overview](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-overview)
 - [Harness Policy As Code quickstart](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/harness-governance-quickstart)
 - [Add a Policy step to a pipeline](/docs/continuous-delivery/x-platform-cd-features/advanced/cd-governance/add-a-governance-policy-step-to-a-pipeline)

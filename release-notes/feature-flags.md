@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2024-06-17T16:19:25
+date: 2024-06-18T16:19:25
 tags: [NextGen, "feature flags"]
 
 sidebar_position: 11
@@ -15,9 +15,23 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-#### Last updated: June 17, 2024
+#### Last updated: June 18, 2024
 
 ## June 2024
+
+### Relay Proxy
+
+#### Version 2.0.1
+
+**New features and enhancements**:
+- Beta support added to support AND rules in Harness Saas. To opt in to this feature you need to configure your Proxy to set the `AND_RULES` environment variable to `true`
+- Adds the same validation that Harness Saas uses on Targets in the `/client/auth` path. This prevents the Proxy from accepting invalid targets from SDKs and logging out an error when it tries to forward them to Saas
+
+**Bug Fixes**:
+- This fixes a bug where the Proxy metric aggregation wouldn't work properly with certain SDKs (Java, .NET)
+- Fixes an issue where the context could time out and prevent connect/disconnect stream events from being published to redis.
+- Fixes an issue introduced in `2.0.0` that caused read replicas to not close streams with SDKs properly
+- There was an issue with how the Proxy handled redis URLs prefixed with `redis://`. This fixes that issue so that all of the below options work for configuring the redis URL
 
 ### Android SDK
 
@@ -36,6 +50,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### .NET SDK
 
+#### Version 1.7.0
+
+**New features and enhancements**:
+ - Further cache optimisations to improve performance and reduce memory usage. (FFM-11619)
+ - Exposes new `jsonVariationToken` method which supports JSON array variations.  Note that `jsonVariation` has been marked as `Obsolete` due to the fact it only supports JSON object variations. (FFM-11548)
+ 
 #### Version 1.6.10
 
 **New features and enhancements**:
@@ -1301,7 +1321,7 @@ Troubleshooting.
 
 ##### Version 1.979.0
 
- - Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-target-management/add-targets#how-targets-expire).
+ - Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/use-ff/ff-target-management/add-targets#how-targets-expire).
 
 ##### Version 1.968.0
 
@@ -2000,7 +2020,7 @@ The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 * The proxy had a dependency on a JWT package that is no longer maintained. This fix updated the JWT dependency to a package that is maintained. (FFM-3867)
 * The proxy had a dependency on ff-server, which is in a private repository. This fix removed the dependency on ff-server. (FFM-3965)
-* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
+* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/use-ff/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
 
 #### August 18, 2022
 

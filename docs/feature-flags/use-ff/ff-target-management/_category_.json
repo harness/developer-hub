@@ -1,0 +1,14 @@
+{
+    "label": "Manage target users and groups",
+    "position": 50,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Manage target users and groups"
+    },
+    "customProps": {
+        "helpdocs_category_id": "xw2hz815l8"
+    }
+}

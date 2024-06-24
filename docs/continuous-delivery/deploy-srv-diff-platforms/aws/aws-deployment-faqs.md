@@ -203,7 +203,7 @@ Please read more on this in the following [Documentation](https://developer.harn
 For First-Gen reference read the following [Documentation](https://developer.harness.io/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-blue-green-workflows/#ecs-bluegreen-using-dns)
 
 
-### How to create an AWS connector using `aws-iam-authenticator` on EKS Cluster with webIdentityToken?
+### How to create an AWS connector using aws-iam-authenticator on EKS Cluster with webIdentityToken?
 
 Please read how to set AWS connector on EKS Cluster in this [Documentation](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-elastic-kubernetes-service-eks)
 Also, to align with AWS changes, it's important to note that the previous method of accomplishing this task has been deprecated in `kubectl version 1.21`. To address this, when utilizing the `Iam-authenticator plugin`, it is necessary to create a `Fargate profile` as part of the updated procedure.
@@ -488,3 +488,50 @@ Yes. By default, deployments aren't forced. You can use the **Force new deployme
 ### Does Harness support viewing the rendered launch template for ASG deployments after all the Harness expressions have been evaluated?
 
 No, Harness does not store the rendered launch template as an output variable, nor does it display the rendered launch templates in the console logs. We only indicate that the ASG configuration is created. For more details, go to [Harness ASG services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#harness-asg-services).
+
+
+### IRSA Kubernetes deployment fails with an error: java.lang.IllegalStateException: Not a JSON Object: null.
+
+For EKS cluster deployments through an AWS connector that uses IRSA-based authentication, if the above error is seen during the initialization of the Kubernetes Rollout step, execute into the delegate to check if the `aws-iam-authenticator` being used is compatible with the CPU architecture of the node where the delegate is running.
+
+### How to validate if the aws-iam-authenticator installed on the delegate is correct and works as expected?
+
+The `aws-iam-authenticator` generates a token that `kubectl` uses to authenticate with the target cluster. The Harness delegate runs the following command to generate a token in JSON format:
+
+```
+aws-iam-authenticator token -i <eks-cluster-name> --role arn:aws:iam::12345678:role/CrossAccountEKSRole
+```
+
+### When configuring the EKS infrastructure, the clusters are listed. However, when trying to deploy a service to the cluster, the Kubernetes deployment fails. Why does this happen?
+
+When configuring the infrastructure, the AWS connector uses the AWS APIs to query the cluster. However, during the Kubernetes deployment, the deployment uses `kubectl` to communicate with the Kubernetes API server's endpoint to deploy the Kubernetes manifest. For the deployment to be successful, there must be network connectivity from the delegate to the Kubernetes API server endpoint. This connectivity might not exist if the cluster is private, so the delegate must reside in the same VPC as the cluster. For more details, go to [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html#modify-endpoint-access).
+
+### How is the kubeconfig file generated for Kubernetes deployments with cross-account STS IRSA-based connectors?
+
+During the Kubernetes Rollout stage, the Harness Delegate generates the `kubeconfig` file using details from the infrastructure configured on the stage. The authentication token is generated using the `aws-iam-authenticator` command available on the delegate by passing the cross-account role and the cluster name.
+
+### Will the kubeconfig file continue to exist on the delegate pods?
+
+The `kubeconfig` generation process during deployment happens on the fly. The file is kept in a temporary location for the duration of the Kubernetes Rollout step, and is cleaned up once the step completes or fails.
+
+### Does Harness support using IRSA with ECS for deployment?
+
+No, IRSA is not used with ECS. Instead, ECS tasks get their own task roles, which is set up similar to IRSA. A delegate runs in ECS with a base role, and STS is used to assume a secondary role.
+
+### Does Harness support using Serverless CLI on a delegate?
+
+Yes, using the Serverless CLI on the delegate ensures that the delegate has the necessary permissions and environment setup. This includes adding node, Serverless, or AWS CLI to the delegate INIT script and managing STS/trust configurations appropriately for each environment and service role.
+
+### Does Harness support conditional input variables based on previous selections?
+
+No, currently Harness does not support dynamically showing different input variables based on previous selections during pipeline execution.
+For more details, go to [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#and-execute-this-stage-only-if-the-following-jexl-condition-evaluates-to-true).
+
+### Does Harness support displaying inputs only related to selected values in a pipeline?
+
+No, Harness does not support conditional displaying input variables based on previous selections.
+
+### Does Harness support using allowed values for dynamic input options?
+
+Yes, you can use allowed values to specify different input options for a variable, though it does not fully cover dynamic input based on previous selections.
+

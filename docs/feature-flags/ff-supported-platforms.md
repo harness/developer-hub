@@ -25,7 +25,7 @@ import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server
 
 
 ## Relay Proxy
-The [Relay Proxy](/docs/feature-flags/relay-proxy/), which allows for offline and hybrid Feature Flags usage, is provided as a Docker image and can be used in any environment where the Docker image can be run. The Relay Proxy can be enhanced with Redis as a cache in environments where this is possible.
+The [Relay Proxy](/docs/feature-flags/use-ff/relay-proxy/), which allows for offline and hybrid Feature Flags usage, is provided as a Docker image and can be used in any environment where the Docker image can be run. The Relay Proxy can be enhanced with Redis as a cache in environments where this is possible.
 
 ## Hybrid and offline usage
 

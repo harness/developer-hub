@@ -1,0 +1,11 @@
+{
+    "label": "Set notifications",
+    "position": 100,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Set notifications"
+    }
+}

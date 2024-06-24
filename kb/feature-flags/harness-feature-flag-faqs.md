@@ -111,7 +111,7 @@ When the SDK performs authentication, it receives a JWT. By signing this JWT wit
 
 ### Do I have to use a secret manager to configuring the auth-secret?
 
-Yes, you must [set up a secret manager](/docs/feature-flags/relay-proxy/configuration/#auth) to configure the auth-secret. The secret manager ensures that sensitive information, like the authentication secret, is securely stored and managed.
+Yes, you must [set up a secret manager](/docs/feature-flags/use-ff/relay-proxy/configuration/#auth) to configure the auth-secret. The secret manager ensures that sensitive information, like the authentication secret, is securely stored and managed.
 
 ## FF Jira integration
 

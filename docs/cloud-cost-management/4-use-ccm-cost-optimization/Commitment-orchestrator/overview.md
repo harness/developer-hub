@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Introduction to Commitment Orchestrator (Beta)
+# Introduction to Commitment Orchestrator 
 
 :::note
 Currently, Commitment Orchestrator is behind the feature flags `CCM_COMMORCH` and `CCM_COMM_SETUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
@@ -181,8 +181,16 @@ You can change and select the mode (either automatic approval or manual approval
 
 <DocImage path={require('./static/native_user_approval.png')} width="100%" height="100%" title="Click to view full size image" />
 
-## Beta features:
-In its Beta phase, the Commitment Orchestrator provides:
+## Savings and Pricing Computation for Commitment Orchestrator
+
+There are two major parts of savings as discussed earlier: Savings Plans (SPs) and Reserved Instances (RIs). If Harness has purchased them for you, those costs will be considered for pricing.
+
+We have introduced a new toggle that shows you savings by Harness, indicating how much of the savings were achieved through Harness. The savings achieved by SPs and RIs purchased via Harness are considered for pricing.
+
+Savings are computed by directly pulling data from AWS and then evaluating what is saved against SPs and RIs.
+
+## Current features:
+
 1. **Enhanced Visibility**: Commitment Orchestrator gives insight into current account status, including detailed breakdowns of savings and resource utilization across all accounts and regions. (Requires visibility permission as part of the master account connector setup).
 2. **Convertible RI Support**: It allows easy purchasing of Convertible Reserved Instances (RI) to optimize cost-efficiency and flexibility in resource allocation.
 3. **Compute SP Purchase Support**: Commitment Orchestrator streamlines the purchase of Compute Savings Plans (SP) to maximize cost savings while maintaining compute coverage.
@@ -198,6 +206,7 @@ In its Beta phase, the Commitment Orchestrator provides:
 | IT Managers | IT Managers need detailed insights into commitments, utilization, and savings across multiple accounts and regions.| Visibility and Reporting: Commitment Orchestrator provides visibility into account breakdowns, savings, and utilization, supporting IT Managers in making informed decisions about cloud commitments and expenditures |
 | Organizations with multiple AWS accounts | Organizations with multiple AWS accounts seek flexibility in commitment management due to the ability to support multiple master accounts and set separate coverage for each of them. | Staggered Purchase to Prevent Overcommitment: Commitment Orchestrator's daily staggered purchases, orchestrated by administrators in multi-account structures, prevent overcommitments, ensuring financial flexibility and optimal resource allocation.|
 
+
 ## FAQs
 1. Which cloud providers are supported at the moment?
 
@@ -205,7 +214,7 @@ In its Beta phase, the Commitment Orchestrator provides:
 
 2. Is Audit trails support available?
 
---> In Beta version of CO, Audit trails are not supported but in upcoming GA release, it will be supported.
+--> Audit trails are not supported but in upcoming GA release, it will be supported.
 
 3. How many Saving Plan purchases happen in a month?
 
@@ -225,10 +234,12 @@ In its Beta phase, the Commitment Orchestrator provides:
 
 7. Is RBAC supported?
 
---> Yes, as part of Beta there are two permissions : view(Visibility) and edit (Setup)
+--> Yes, there are two permissions : view(Visibility) and edit (Setup)
 8. Can orchestration be setup on any account?
 
 --> No, only master account with correct permission listed above will be allowed and at a time only one account can be set up.
+
+
 
 
 
