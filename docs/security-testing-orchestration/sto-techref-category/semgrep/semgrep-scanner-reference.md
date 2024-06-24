@@ -181,11 +181,6 @@ import StoSettingScanModeIngest from '../shared/step_palette/scan/mode/_ingestio
 
 #### Scan Configuration
 
-import StoSettingProductConfigName from '../shared/step_palette/scan/_config-name.md';
-
-<StoSettingProductConfigName />
-
-<!-- 
 You can use this setting to select the set of Semgrep rulesets to include in your scan:
 
   - **Default** Include the following rulesets: 
@@ -212,7 +207,7 @@ You can use this setting to select the set of Semgrep rulesets to include in you
     - [security-code-scan](https://semgrep.dev/p/security-code-scan)
   - **Auto and Ported security tools except p/gitleaks** 
 
--->
+
 
 ### Target
 
