@@ -1,7 +1,7 @@
 ---
-title: Permissions required and security considerations
+title: Requirements and security considerations
 sidebar_position: 1
-description: Fault permissions required and security considerations to execute Windows chaos experiments.
+description: Requirements to fulfill and security considerations to execute Windows chaos experiments.
 redirect_from:
     - /docs/chaos-engineering/chaos-faults/windows/security-considerations/windows-chaos-permissions
 ---

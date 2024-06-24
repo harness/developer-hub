@@ -1,7 +1,7 @@
 ---
-title: Permissions required
+title: Requirements
 sidebar_position: 1
-description: Permissions required to run AWS chaos experiments.
+description: Requirements to fulfill before executing AWS chaos experiments.
 ---
 
 This topic describes the AWS platform permissions required to execute chaos experiments on your target environments.

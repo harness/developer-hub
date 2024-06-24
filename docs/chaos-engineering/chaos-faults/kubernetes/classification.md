@@ -1,5 +1,5 @@
 ---
-title: Kubernetes-based fault classification
+title: Classification of Kubernetes faults
 sidebar_position: 1
 ---
 This topic describes the following:
@@ -12,9 +12,9 @@ This topic describes the following:
 - [Deployment modes](#deployment-modes-of-kubernetes-chaos-infrastructure)
 
 HCE supports three categories of faults that you can execute using the Kubernetes chaos agent. They are listed below.
-1. **Pod faults** (also known as microservices-based faults)
-2. **Node faults** (also known as infrastructure-based faults)
-3. **Cloud-based faults**
+1. **[Pod faults](#pod-faults-microservices-based-faults)** (also known as microservices-based faults)
+2. **[Node faults](#node-faults-infrastructure-based-faults)** (also known as infrastructure-based faults)
+3. **[Cloud-based faults](#cloud-based-faults-aws-gcp-azure)**
 
 Each of these categories is discussed in detail below.
 

@@ -3,7 +3,12 @@
   "label": "TKGi deployment approach and permissions",
   "collapsible": true,
   "collapsed": true,
+  "link":{
+    "type":"generated-index",
+    "title":"TKGi deployment approach and permissions"
+ },
   "customProps": {
     "description": "TKGi deployment approach and permissions"
   }
 }
+

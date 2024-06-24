@@ -1,6 +1,6 @@
 ---
-id: Permissions required
-title: Permissions required
+id: Requirements
+title: Requirements to fulfill before executing chaos faults on TKGi.
 sidebar_position: 1
 ---
 

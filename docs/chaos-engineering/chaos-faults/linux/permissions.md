@@ -1,7 +1,7 @@
 ---
-title: Permissions required
+title: Requirements
 sidebar_position: 1
-description: Permissions required to run chaos experiments on Linux OS.
+description: Requirements to fulfill before executing chaos experiments on Linux OS.
 ---
 
 This topic describes the permissions required to execute Linux chaos experiments.

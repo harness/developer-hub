@@ -1,7 +1,7 @@
 ---
-title: Permissions required
+title: Requirements
 sidebar_position: 1
-description: Permissions required to run Cloud Foundry chaos experiments.
+description: Requirements to fulfill before executing Cloud Foundry chaos experiments.
 ---
 
 This topic describes the permissions required to execute chaos experiments on the Cloud Foundry platform.
