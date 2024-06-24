@@ -342,7 +342,17 @@ pipeline:
 </TabItem>
 <TabItem value="pipeline-ui" label="Pipeline UI">
 
-Coming Soon
+  <iframe 
+    src="https://app.tango.us/app/embed/6897dd40-9c14-45b4-820e-c2867caea7e1" 
+    title="Service Onboarding Pipeline" 
+    style={{minHeight:'640px'}}
+    width="100%" 
+    height="100%" 
+    referrerpolicy="strict-origin-when-cross-origin" 
+    frameborder="0" 
+    webkitallowfullscreen="webkitallowfullscreen" 
+    mozallowfullscreen="mozallowfullscreen" 
+    allowfullscreen="allowfullscreen"></iframe>
 
 </TabItem>
 </Tabs>
