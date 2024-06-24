@@ -31,14 +31,14 @@ If no plan file is specified, the IaCM backend operates as if Terraform is runni
 In your pipeline environment, IaCM ensures that all Terraform or Tofu commands operate within a controlled and secure framework, handling:
 
 	1. **Workspace and Configuration Setup:**
-    - Harness IaCM retrieves the workspace configuration and associated files, including dependent IaC modules specified in your settings.
-	2.	**Variable and Secret Integration:**
-	- Variables and secret values defined in your workspace are collected and resolved, adhering to Harness Platform security protocols.
-	3.	**Execution Preparation:**
-	- All relevant configuration files and dependent modules are cloned into the pipeline environment. Secrets are integrated to facilitate interaction with your IaC-managed resources.
-	- IaC applications are pulled to your environment just in time for execution, ensuring that the most up-to-date configurations are applied.
-	4.	**Data Management:**
-	- A read-only copy of essential files such as the plan and state files, is uploaded to Harness Cloud to enable IaCM functionalities.
+            - Harness IaCM retrieves the workspace configuration and associated files, including dependent IaC modules specified in your settings.
+	2.  **Variable and Secret Integration:**
+	     - Variables and secret values defined in your workspace are collected and resolved, adhering to Harness Platform security protocols.
+	3. **Execution Preparation:**
+	    - All relevant configuration files and dependent modules are cloned into the pipeline environment. Secrets are integrated to facilitate interaction with your IaC-managed resources.
+	    - IaC applications are pulled to your environment just in time for execution, ensuring that the most up-to-date configurations are applied.
+	4. **Data Management:**
+	     - A read-only copy of essential files such as the plan and state files, is uploaded to Harness Cloud to enable IaCM functionalities.
 
 :::tip External to Pipelines
 IaCM runs Terraform/Tofu commands exclusively within the pipeline environment. When using an external backend, IaCM accesses it solely with the credentials provided within the pipeline.
