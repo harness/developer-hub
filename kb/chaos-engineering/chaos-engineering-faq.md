@@ -6,7 +6,7 @@ sidebar_position: 2
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported.md).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](/docs/platform/platform-whats-supported).
 
 ### How do I get the Instance ID or license ID with Harness SMP?
 
@@ -107,11 +107,11 @@ To report an issue which is not mentioned here, head over to **Help** in Harness
 ### What are the identity providers supported by Harness Chaos for user authentication?
 
 The Harness platform is fully integrated with several public OAuth providers, with support for two-factor authentication and domain whitelisting.
-To learn more, go to [authentication overview](/docs/platform/authentication/authentication-overview.md).
+To learn more, go to [authentication overview](/docs/platform/authentication/authentication-overview).
 
 ### How does the chaos infrastructure connect to the Harness SaaS control plane? Which ports should be opened in the users' environments?
 
-The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures.md).
+The chaos infrastructure connects to the Harness control plane through outbound connectivity over HTTP(s) using port 443. To learn more, go to [chaos infrastructures](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures).
 
 ### What are the permissions and privileges required to deploy and run the chaos infrastructure?
 
@@ -145,7 +145,7 @@ When the chaos infrastructure is deployed on EKS clusters, the experiments can l
 
 ### How does Harness Chaos access APM platforms to perform hypothesis validation?
 
-Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe.md).
+Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe).
 
 ### What are the details about the user and the user's environment accessed and stored by Harness?
 
@@ -158,7 +158,7 @@ The information is purged on a policy basis, with defaults set at "x" days.
 
 ### How can I track the actions of a user on the Harness platform?
 
-Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail/audit-trail.md).
+Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail/audit-trail).
 
 ### Can Harness perform security chaos tests in the users' environments?
 
