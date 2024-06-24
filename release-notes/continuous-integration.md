@@ -43,7 +43,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 - CI builds were running slowly in some cases. This release includes the following fixes to address this issue. (CI-10042, ZD-52559)
 
-  <!-- - Added extra resources for running addon. This feature is behind the feature flag `FEATURE_FLAG_TBD`. Contact Harness Support to enable the feature. -->
+  - Added extra resources for running `addon`. This feature is behind the feature flag `CI_EXTRA_ADDON_RESOURCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
   - Updated LE to addon communication to retry every 300ms 30 times, for a total of 9 seconds.
 
