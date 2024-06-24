@@ -1759,7 +1759,7 @@ module.exports = {
 
     {
       from: "/docs/security-testing-orchestration/use-sto/jira-integrations",
-      to: "/docs/security-testing-orchestration/jira-integrations",
+      to: "/docs/security-testing-orchestration/docs/security-testing-orchestration/jira-integrationsjira-integrations",
     },
 
     {
