@@ -76,6 +76,7 @@ The URL of the Docker registry. This is usually the URL used for your [docker lo
 * For other Docker registries, provide the relevant URL for your container registry provider. For example:
    * For GitHub Container Registry, provide the GHCR hostname and namespace, such as `https://ghcr.io/NAMESPACE`. The namespace is the name of a GitHub personal account or organization.
    * For JFrog Artifactory Docker registries, provide your JFrog instance URL, such as `https://mycompany.jfrog.io`. You can get this URL from the `docker-login` command on your repo's **Set Me Up** page.
+   * For Sonatype Nexus Docker registries, provide the Nexus instance URL, such as `<nexus-hostname>:<repository-port>` or `<subdomain>.<nexus-hostname>`. For more information, see the Sonatype Nexus [Docker Authentication](https://help.sonatype.com/en/docker-authentication.html) documentation.
 
 ## Authentication
 
