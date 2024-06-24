@@ -49,12 +49,6 @@ This topic describes the permissions required to execute Linux chaos experiments
 			<li>Remote command injection can be performed with non-root user. </li></ul></td>
 </tr>
 <tr>
-	<th> Chaos deployment and architecture details </th>
-	<td><ul><li> The agent is deployed in the target Linux machine as described <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> here.</a> </li></ul></td>
-	<td><ul><li>Go to <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture"> LCI in Diego cells </a> and <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars"> CF as native app </a>. </li>
-			<li>To know more, go to <a href="https://hce-docs.github.io/platform-wise-chaos-info/VMware/vcenter-api-invocation.html"> vCenter API invocation </a> used for the VM Faults executed by the K8s agent.</li></ul></td>
-</tr>
-<tr>
 	<th> Supported chaos faults	</th>
 	<td><ul><li> <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/VMware/LinuxOS/basic-chaos-faults-supported-by-linux-infra-running-as-non-root.md"> Basic faults with non-root agent </a> </li>
 			<li> <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/VMware/LinuxOS/all-supported-chaos-faults-by-linux-infra-running-as-root.md">Basic and advanced faults with root agent </a></li></ul></td>

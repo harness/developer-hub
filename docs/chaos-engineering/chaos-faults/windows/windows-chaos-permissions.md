@@ -34,7 +34,7 @@ This section outlines the permissions required for installing the Windows infras
 <tr>
 	<th> Access requirements for agent install </th>
 	<td><ul><li> Install agent as an administrator user. </li></ul></td>
-    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
+    <td><ul><li>Install agent as a cluster-admin or as a user mapped to cluster role with <a href="/docs/chaos-engineering/chaos-faults/kubernetes/permissions/Kubernetes%20chaos%20agent%20installation%20access%20requirements"> these </a> permissions. </li></ul></td>
 </tr>
 
 <tr>
@@ -50,12 +50,6 @@ This section outlines the permissions required for installing the Windows infras
 	<td> <ul> <li>vCenter user should be mapped to a predefined <a href="https://hce-docs.github.io/platform-wise-chaos-info/VMware/vcenter-based-chaos-user-access-requirements.md"> chaos </a> role </li>
 	<li> VMware tools should be setup on the VM </li>
 	<li>Remote command injection can be performed with administrator user</li></ul></td>
-</tr>
-<tr>
-		<th> Chaos deployment and architecture details </th>
-        <td><ul><li> Go to <a href="https://developer.harness.io/docs/chaos-engineering/features/chaos-infrastructure/windows-chaos-infrastructure/"> Windows chaos infrastructure management </a>. </li></ul></td>
-<td><ul><li>Go to <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> LCI in Diego cells </a> and <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars"> CF as native app </a>. </li>
-<li>For more information, go to <a href="https://hce-docs.github.io/platform-wise-chaos-info/VMware/vcenter-based-chaos-user-access-requirements.md"> vCenter API invocation </a> used for the VM Faults executed by the K8s agent. </li></ul></td>
 </tr>
 <tr>
 		<th> Supported chaos faults	</th>

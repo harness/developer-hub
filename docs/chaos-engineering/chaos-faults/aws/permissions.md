@@ -36,11 +36,7 @@ This topic describes the AWS platform permissions required to execute chaos expe
 </tr>
 <tr>
 	<th> Access requirements for advanced chaos experiments	</th>
-	<td> <ul><li>AWS: IAM role mapped to <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/Public%20Cloud/AWS/superset-policy-for-advanced-faults.json"> policy for basic AWS EC2 chaos. </a> </li></ul></td>
-</tr>
-<tr>
-	<th> Chaos deployment and architecture details </th>
-	<td> <ul><li>Go to <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-lci-in-diego-cells-hosting-the-app-instances"> LCI in Diego cells </a> and <a href="http://localhost:3004/docs/chaos-engineering/chaos-faults/cloud-foundry/CF%20chaos%20components%20and%20their%20deployment%20architecture#run-cf-infrastructure-as-native-cf-app-interacting-with-chaos-sidecars"> CF as native app </a>. </li></ul></td>
+	<td> <ul><li>AWS: IAM role mapped to <a href="https://github.com/hce-docs/platform-wise-chaos-info/blob/main/Public%20Cloud/AWS/superset-policy-for-advanced-faults.json"> policy for advanced AWS chaos. </a> </li></ul></td>
 </tr>
 <tr>
 	<th> Supported chaos faults	</th>

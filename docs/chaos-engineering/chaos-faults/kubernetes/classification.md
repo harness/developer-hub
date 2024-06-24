@@ -73,7 +73,7 @@ They help determine the overall system resilience (for example, [node drain](/do
 
 Most of these faults use only the Kubernetes API.
 
-## Cloud-based faults (AWS, GCP, Azure)
+## Cloud-based faults ([AWS](/docs/chaos-engineering/chaos-faults/aws/), [GCP](/docs/chaos-engineering/chaos-faults/gcp/), [Azure](/docs/chaos-engineering/chaos-faults/azure/))
 
 These faults disrupt the state of cloud resources, deprive resources, or manipulate the network settings of cloud resources. These cloud resources are either self-managed infrastructure components such as compute instances, storage volumes (for example, ec2 shutdown, ebs detach, and so on) or managed services such as ECS, RDS, Lambda, and so on (for example, task scale, rds failover, Lambda timeout, az-loss, and so on).
 
