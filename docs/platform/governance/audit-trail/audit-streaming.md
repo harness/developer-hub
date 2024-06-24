@@ -119,7 +119,7 @@ To configure the Splunk streaming connector:
 ::: info troubleshoot HEC configurations
 At times, you might issues with the HEC connector. Here are some troubleshooting steps you can take to resolve common issues.
 
-- You should set HEC connectors without a declared `sourcetype`. Although the data will be JSON-formatted, it is not declared as such. Setting a `sourcetype` as `JSON` might filter data from the stream.
+- You should set HEC connectors without a declared `SourceType`. Although the data will be JSON-formatted, it is not declared as such. Setting a `SourceType` as `JSON` might filter data from the stream.
 
    ![](../../governance/audit-trail/static/hec_connector_notype.png)
 
