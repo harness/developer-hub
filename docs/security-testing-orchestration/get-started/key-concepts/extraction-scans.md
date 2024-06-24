@@ -19,7 +19,7 @@ The most common use cases for Extraction mode are:
    - Extraction mode is useful when you have a custom scan job defined in the SaaS instance. An example pipeline might look something like this:
 
      1) A Run step sends a request to the SaaS API that starts the custom scan.
-     2) A scan step, such as SonarQube or Veracode, runs in Extraction mode. When the custom scan finishes, the step extracts the results from the scanner API and correlates, deduplicates, and ingests the results.
+     2) A scan step runs in Extraction mode. When the custom scan finishes, the step extracts the results from the scanner API and correlates, deduplicates, and ingests the results.
 
        <DocImage path={require('../static/extraction-stage-example.png')} width="70%" height="70%" title="Select policy sample" />
 
