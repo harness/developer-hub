@@ -18,6 +18,12 @@ After you download the execution log files, you can view the JSON logs.
 The extracted files have many levels of nested directories. To locate specific log files, you may need to navigate through several levels.
 :::
 
+## Limitations
+
+* You may encounter the error message `Prefix Key Exceeds Maximum Download Limit` if your execution exceeds the number of log files.
+   * Log files are stored in chunks for optimization purposes.
+   * There is a hard limit of 2000 log files per execution. Please contact our support team if this limitation causes issues for you.
+
 ## Download pipeline log files
 
 To download pipeline log files, do the following:
