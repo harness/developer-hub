@@ -16,6 +16,12 @@ Harness IaCM integrates robust security measures to safeguard your infrastructur
 - Regular security testing and vulnerability scanning.
 - Logical and physical data segmentation.
 
+### Common Security Concerns
+
+Harness protects customer infrastructure and data through rigorous security measures. Access to systems is restricted to authorized employees using secure connections, with all activities logged and reviewed regularly. State files and sensitive information are safeguarded with strong encryption (TLS 1.3 and AES 256) and controlled access. Customers can further enhance security by integrating their identity provider and setting IP allowlists.
+
+During the planning and execution phases, Harness ensures compliance by checking changes against organizational policies and detecting any tampering with state files before execution. These measures maintain a secure and compliant environment for managing infrastructure changes.
+
 --- 
 The operational model flow is comprised of three components:
 <Tabs>
@@ -108,8 +114,3 @@ groupOnly="true"/>
   </TabItem>
 </Tabs>
 
-### Common Security Concerns
-
-Harness protects customer infrastructure and data through rigorous security measures. Access to systems is restricted to authorized employees using secure connections, with all activities logged and reviewed regularly. State files and sensitive information are safeguarded with strong encryption (TLS 1.3 and AES 256) and controlled access. Customers can further enhance security by integrating their identity provider and setting IP allowlists.
-
-During the planning and execution phases, Harness ensures compliance by checking changes against organizational policies and detecting any tampering with state files before execution. These measures maintain a secure and compliant environment for managing infrastructure changes.
