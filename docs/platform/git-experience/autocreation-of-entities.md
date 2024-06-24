@@ -11,17 +11,17 @@ Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Pleas
 
 ## Pre-requisite of autocreation
 
-- Register the webhook for your repository where you are adding your files remotely.
-- Files that are added in the default branch(main, master etc).
+- Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organization.
+- Files that are added in the default branch(main, master etc) are autocreated.
 - Added files should follow naming convention based on the entity type. 
 
 ## File Path Convention
 
-There is a file convention specific to each entity. File path will have a key indentifying information. 
+We need to follow a specific file convention for each entity for auto-creation. This is required to infer the scope of the entity as well as type of entity from the filepath.
 
-:::info note
-File path has to start with **.harness**.
-:::
+For auto-creation, only files within the `.harness` folder are utilized. Therefore, all file paths must begin with `.harness/`.
+
+![](./static/tracked_folder_autocreation.png)
 
 We will discuss the file path convention for each entity with an example:-
 
@@ -33,12 +33,12 @@ File path for storing your pipelines should follow the following naming conventi
 
 - Folder name should be `pipelines`.
 
-For example :- `.harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline.yaml`
+For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_autocreation_pipeline.yaml`
 
 - **Organizations directory**: `orgs`
-- **Organization identifier**: `default`
+- **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
-- **Project identifier**: `Krishika_test_autocreation`
+- **Project identifier**: `test_project`
 - **Pipelines directory**: `pipelines`
 - **Pipeline identifier**: `demo_autocreation_pipeline`
 
@@ -53,18 +53,19 @@ File path for storing your input set should follow the following naming conventi
 
 Input sets belonging to a pipeline will reside in the directory of pipeline identifier.
 
-For example :- `.harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline/demo_autocreation_inputSet.yaml`
+For example :- `.harness/orgs/test_org/projects/test_project/pipelines/demo_autocreation_pipeline/demo_autocreation_inputSet.yaml`
 
 - **Organizations directory**: `orgs`
-- **Organization identifier**: `default`
+- **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
-- **Project identifier**: `Krishika_test_autocreation`
+- **Project identifier**: `test_project`
 - **Pipelines directory**: `pipelines`
 - **Pipeline identifier**: `demo_autocreation_pipeline`
 - **Input sets directory**: `input_sets`
 - **Input set identifier**: `demo_autocreation_inputSet`
 
 ### Templates
+
 
 1. Account Level
 
@@ -75,25 +76,40 @@ File path for storing template at Account level should follow the following nami
 - Folder name should be `templates`.
 - All version labels belonging to a template will reside in the directory of template identifier (deploy is the template identifier in above case with v1 and v2 versions labels.)
 
-For example:- `.harness/templates/template_autocreation/v1.yaml`
+For example:- `.harness/templates/test_template/v1.yaml`
 
 - **Templates directory**: `templates`
-- **Template identifier**: `template_autocreation`
+- **Template identifier**: `test_template`
 - **Version label**: `v1`
 
-2. Project Level
+2. Organization Level
+
+File path for storing template at Organization level should follow the following naming convention: 
+
+`.harness/orgs/<org_identifier>/templates/<template_identifier>/<version_label>.yaml`
+
+For example:- `.harness/orgs/test_org/templates/test_template/v1.yaml`
+
+- **Organizations directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Templates directory**: `templates`
+- **Template identifier**: `test_org`
+- **Version label**: `v1`
+
+
+3. Project Level
 
 File path for storing template at Project level should follow the following naming convention: 
 
 `.harness/orgs/<org_identifier>/projects/<project_identifier>/templates/<template_identifier>/<version_label>.yaml`
 
 
-For example:- `.harness/orgs/default/projects/Krishika_test_autocreation/templates/template_autocreation_project_level/v1.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/templates/template_autocreation_project_level/v1.yaml`
 
 - **Organizations directory**: `orgs`
-- **Organization identifier**: `default`
+- **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
-- **Project identifier**: `Krishika_test_autocreation`
+- **Project identifier**: `test_project`
 - **Templates directory**: `templates`
 - **Template identifier**: `template_autocreation_project_level`
 - **Version label**: `v1`
@@ -113,20 +129,35 @@ For example:- `.harness/services/service_deploy_nginx_account.yaml`
 - **Services directory**: `services`
 - **Service identifier**: `service_deploy_nginx_account`
 
-2. Project Level
+2. Organization Level
 
-File path for storing template at Project level should follow the following naming convention: 
+File path for storing services at Organization level should follow the following naming convention: 
+
+`.harness/orgs/<org_identifier>/services/<service_identifier>/<version_label>.yaml`
+
+For example:- `.harness/orgs/test_org/services/service_deploy_nginx_account.yaml`
+
+- **Organizations directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Services directory**: `services`
+- **Service identifier**: `service_deploy_nginx_account`
+- **Version label**: `v1`
+
+
+3. Project Level
+
+File path for storing services at Project level should follow the following naming convention:
 
 `.harness/orgs/<org_identifier>/projects/<project_identifier>/services/<service_identifier>.yaml`
 
 - folder name should be `services`.
 
-For example:- `.harness/orgs/default/projects/Krishika_test_autocreation/services/service_deploy_nginx_project.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/services/service_deploy_nginx_project.yaml`
 
 - **Organizations directory**: `orgs`
-- **Organization identifier**: `default`
+- **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
-- **Project identifier**: `Krishika_test_autocreation`
+- **Project identifier**: `test_project`
 - **Services directory**: `services`
 - **Service identifier**: `service_deploy_nginx_project`
 
@@ -145,18 +176,33 @@ For example:- `.harness/envs/Pre_Prod_qa.yaml`
 - **Environments directory**: `envs`
 - **Environment identifier**: `Pre_Prod_qa`
 
-2. Project Level
+2. Organization Level
+
+File path for storing Environment at Organization level should follow the following naming convention:
+
+`.harness/orgs/<org_identifier>/envs/<environment_identifier>.yaml`
+
+For example:- `.harness/orgs/test_org/envs/Pre_Prod_qa.yaml`
+
+
+- **Organizations directory**: `orgs`
+- **Organization identifier**: `test_org`
+- **Environments directory**: `envs`
+- **Environment identifier**: `Pre_Prod_qa`
+
+
+3. Project Level
 
 File path for storing Environment at Project level should follow the following naming convention:
 
  `.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<environment_identifier>.yaml`
 
-For example:- `.harness/orgs/default/projects/Krishika_test_autocreation/envs/Pre_Prod_qa_project_level.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_project_level.yaml`
 
-- **Organizations directory**: `.harness/orgs`
-- **Organization identifier**: `default`
+- **Organizations directory**: `orgs`
+- **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
-- **Project identifier**: `Krishika_test_autocreation`
+- **Project identifier**: `test_project`
 - **Environments directory**: `envs`
 - **Environment identifier**: `Pre_Prod_qa_project_level`
 
@@ -185,12 +231,12 @@ File path for storing Infrastructure at Project level should follow the followin
 
 `.harness/orgs/<org_identifier>/projects/<project_identifier>/envs/<environment_identifier>/infras/<infrastructure_identifier>.yaml`
 
-For example:- `.harness/orgs/default/projects/Krishika_test_autocreation/envs/Pre_Prod_qa_project_level/infras/infra_project_level.yaml`
+For example:- `.harness/orgs/test_org/projects/test_project/envs/Pre_Prod_qa_project_level/infras/infra_project_level.yaml`
 
 - **Organization directory**: `orgs`
-- **Organization identifier**: `default`
+- **Organization identifier**: `test_org`
 - **Projects directory**: `projects`
-- **Project identifier**: `Krishika_test_autocreation`
+- **Project identifier**: `test_project`
 - **Environments directory**: `envs`
 - **Environment identifier**: `Pre_Prod_qa_project_level`
 - **Infrastructure directory**: `infras`
@@ -306,25 +352,5 @@ After pushing the changes, we will see in that Input set named as **input_set** 
 ![](./static/input_set_creation_autocreation.png)
 
 :::info note
-1. Entity specific RBAC is not applicable.
-2. There is no specific order in which entities are created.
-3. You can have different repository for storing Pipelines and Input Set.
+Harness RBAC is not applicable in Autocreation.
 :::
-
-## Common Errors
-
-### After pushing changes to your repository, you don't see the entity created in your UI?
-
-Make sure that your entity is placed under correct directory with correct file path convention.
-
-To check what the issue might be, you can always go **Webhook** under Project or Account Setting depending on where you have registered your repository's webhook. 
-
-Under **Events** you can see the Error that might have caused the issue.
-
-Let's take a look at this error message:-
-
-![](./static/git_sync_error_message_example.png)
-
-This error states **No InputSet exist with file path:- [.harness/orgs/default/projects/Krishika_test_autocreation/pipelines/demo_autocreation_pipeline/demo_autocreation_inputSet.yaml], repo: [newRepo]**. This was caused because file **demo_autocreation_inputSet.yaml** was not placed under the directory **inputSets** and therefore it failed in creating Input Set.
-
-
