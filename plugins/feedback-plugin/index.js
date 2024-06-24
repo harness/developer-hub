@@ -19,12 +19,20 @@ module.exports = function (context) {
   ) {
     return;
   }
+  let wrapperSpan =  document.createElement("span");
+  wrapperSpan.classList.add("tool");
+  wrapperSpan.setAttribute("hover-tooltip", "Leave feedback to help us improve")
+  wrapperSpan.setAttribute("tooltip-position", "bottom")
+
 
   let button = document.createElement("button");
   let span = document.createElement("span");
   let img = document.createElement("img");
+
   span.textContent = "Feedback";
   span.classList.add("feedback-span");
+
+  wrapperSpan.appendChild(button);
   button.appendChild(img);
   button.appendChild(span);
   img.src = \`${baseUrl}img/icon_feedback.svg\`;
@@ -35,7 +43,7 @@ module.exports = function (context) {
   img.classList.add("feedback-img");
   document
     .getElementsByClassName("theme-doc-footer docusaurus-mt-lg")[0]
-    .appendChild(button);
+    .appendChild(wrapperSpan);
   button.addEventListener("click", handleClick);
   function handleClick() {
     try {

@@ -1,1 +1,1 @@
-* **Extraction**  Configure the step to [extract scan results from an external SaaS service](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview#extraction-workflows-in-sto) and then ingest, normalize, and deduplicate the data.
+* **Extraction**  Configure the step to [extract scan results from an external SaaS service](/docs/security-testing-orchestration/get-started/key-concepts/sto-workflows-overview#extraction-workflows-in-sto) and then ingest, normalize, and deduplicate the data.

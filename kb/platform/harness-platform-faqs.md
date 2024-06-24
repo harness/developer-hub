@@ -904,6 +904,10 @@ To resolve the issue:
 - Check Helm chart modifications: If modifications were made to the Helm chart locally, they might have caused discrepancies in deployed values. Utilize the Helm template to inspect YAML values for debugging.
 - Adjust namespace limits: If applicable, ensure that there are no namespace limits conflicting with the Helm delegate installation. If found, consider changing the namespace to resolve the issue.
 
+### How can I check the current customized version of a delegate using APIs, and how does the delegate upgrader access custom images?
+
+Harness an API to get the latest delegate version for an account and one to override the latest for the upgrader. Currently, there isn't an externally exposed API to retrieve custom images. However, the delegate upgrader accesses a specific API to fetch the custom image when needed.
+
 ### Can I use an earlier Harness Delegate version?
 
 Yes, but Harness doesn't recommend using delegate images that are not current. However, if you require an earlier image version, check the [repository on Docker Hub](https://hub.docker.com/r/harness/delegate/tags).

@@ -27,17 +27,6 @@ Terraform must be installed on the Delegate to use a Harness Terraform Provision
 
 See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
-
-```bash
-# Install TF  
-microdnf install unzip
-curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
-unzip terraform_1.3.5_darwin_amd64.zip
-mv ./terraform /usr/bin/
-# Check TF install
-terraform --version
-```
-
 ## Review: Terraform Plan and Apply Steps
 
 Typically the Terraform Plan step is used with the Terraform Apply step.
@@ -500,9 +489,9 @@ Once you enable this option and run a CD stage with the Terraform Plan step, you
 
 The format for the expression is:
 - **humanReadableFilePath**:
-  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].tf_planHumanReadable">`
+  - `<+terraformPlanHumanReadable."pipeline.stages.[stage Id].spec.execution.steps.[step Id].[Provisioner Identifier]_planHumanReadable">`
 
-For example, if the Terraform Plan stage and step Ids are `tf` then you would get the following expressions:
+For example, if the Terraform Plan stage, step Ids, and Terraform provisioner identifier are `tf` then you would get the following expressions:
 
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`

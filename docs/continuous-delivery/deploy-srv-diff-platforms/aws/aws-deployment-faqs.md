@@ -489,6 +489,7 @@ Yes. By default, deployments aren't forced. You can use the **Force new deployme
 
 No, Harness does not store the rendered launch template as an output variable, nor does it display the rendered launch templates in the console logs. We only indicate that the ASG configuration is created. For more details, go to [Harness ASG services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial/#harness-asg-services).
 
+
 ### IRSA Kubernetes deployment fails with an error: java.lang.IllegalStateException: Not a JSON Object: null.
 
 For EKS cluster deployments through an AWS connector that uses IRSA-based authentication, if the above error is seen during the initialization of the Kubernetes Rollout step, execute into the delegate to check if the `aws-iam-authenticator` being used is compatible with the CPU architecture of the node where the delegate is running.
@@ -512,3 +513,25 @@ During the Kubernetes Rollout stage, the Harness Delegate generates the `kubecon
 ### Will the kubeconfig file continue to exist on the delegate pods?
 
 The `kubeconfig` generation process during deployment happens on the fly. The file is kept in a temporary location for the duration of the Kubernetes Rollout step, and is cleaned up once the step completes or fails.
+
+### Does Harness support using IRSA with ECS for deployment?
+
+No, IRSA is not used with ECS. Instead, ECS tasks get their own task roles, which is set up similar to IRSA. A delegate runs in ECS with a base role, and STS is used to assume a secondary role.
+
+### Does Harness support using Serverless CLI on a delegate?
+
+Yes, using the Serverless CLI on the delegate ensures that the delegate has the necessary permissions and environment setup. This includes adding node, Serverless, or AWS CLI to the delegate INIT script and managing STS/trust configurations appropriately for each environment and service role.
+
+### Does Harness support conditional input variables based on previous selections?
+
+No, currently Harness does not support dynamically showing different input variables based on previous selections during pipeline execution.
+For more details, go to [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings/#and-execute-this-stage-only-if-the-following-jexl-condition-evaluates-to-true).
+
+### Does Harness support displaying inputs only related to selected values in a pipeline?
+
+No, Harness does not support conditional displaying input variables based on previous selections.
+
+### Does Harness support using allowed values for dynamic input options?
+
+Yes, you can use allowed values to specify different input options for a variable, though it does not fully cover dynamic input based on previous selections.
+

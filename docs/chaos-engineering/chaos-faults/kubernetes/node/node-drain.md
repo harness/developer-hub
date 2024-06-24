@@ -18,6 +18,46 @@ Node drain drains the node of all its resources running on it. Due to this, serv
 - It verifies resource budgeting on cluster nodes (whether request (or limit) settings are honored on available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 
+### Permissions required
+
+Below is a sample Kubernetes role that defines the permissions required to execute the fault.
+
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: hce
+  name: node-drain
+spec:
+  definition:
+    scope: Cluster
+permissions:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["create", "delete", "get", "list", "patch", "deletecollection", "update"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["chaosEngines", "chaosExperiments", "chaosResults"]
+    verbs: ["create", "delete", "get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pods/log"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["get", "list", "create"]
+  - apiGroups: ["batch"]
+    resources: ["jobs"]
+    verbs: ["create", "delete", "get", "list", "deletecollection"]
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list", "patch", "update"]
+  - apiGroups: [""]
+    resources: ["pod eviction"]
+    verbs: ["get", "list", "create]
+```
+
 ### Prerequisites
 - Kubernetes > 1.16
 - Node specified in the <code>TARGET_NODE</code> environment variable should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:

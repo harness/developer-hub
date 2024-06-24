@@ -50,7 +50,8 @@ You can save the following Harness resources in Git using Harness Git Experience
 * Templates
 * Services
 * Environment 
-* Infrastructure Definitions 
+* Infrastructure Definitions
+* Policies
 
 
 :::info note
