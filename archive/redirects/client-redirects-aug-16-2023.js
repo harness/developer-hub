@@ -2157,7 +2157,7 @@ module.exports = {
 
     {
       from: "/docs/security-testing-orchestration/use-sto/jira-integrations",
-      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations",
+      to: "/docs/security-testing-orchestration/jira-integrations",
     },
 
     {
