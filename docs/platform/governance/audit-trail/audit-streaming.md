@@ -118,12 +118,15 @@ To configure the Splunk streaming connector:
 
 ::: info troubleshoot HEC configurations
 At times, you might issues with the HEC connector. Here are some troubleshooting steps you can take to resolve common issues.
-1. You should set HEC connectors without a declared `sourcetype`. Although the data will be JSON-formatted, it is not declared as such. Setting a `sourcetype` as `JSON` might filter data from the stream.
-![](../../governance/audit-trail/static/hec_connector_notype.png)
-2. Harness utilizes the [following standard endpoints](https://docs.splunk.com/Documentation/Splunk/9.2.1/Data/HECRESTendpoints) and appends them automatically to the customer's URL. They are not customizable.
-/services/collector/event
-/services/collector/health
-/services/server/info
+
+- You should set HEC connectors without a declared `sourcetype`. Although the data will be JSON-formatted, it is not declared as such. Setting a `sourcetype` as `JSON` might filter data from the stream.
+
+   ![](../../governance/audit-trail/static/hec_connector_notype.png)
+
+- Harness utilizes the [following standard endpoints}(https://docs.splunk.com/Documentation/Splunk/9.2.1/Data/HECRESTendpoints) and appends them automatically to the customer's URL. They are not customizable.
+   - `/services/collector/event`
+   - `/services/collector/health`
+   - `/services/server/info`
 :::
 </TabItem>
 </Tabs>
