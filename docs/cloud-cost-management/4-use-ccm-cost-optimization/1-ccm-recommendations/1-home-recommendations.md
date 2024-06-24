@@ -149,6 +149,8 @@ You can use this information to optimize your resources to potentially reduce yo
 
 #### ServiceNow ticket
 
+<DocImage path={require('./static/servicenow_Example.png')} width="80%" height="80%" title="Click to view full size image" />
+
 The Description field contains relevant information about the recommendation for which this ticket was created. Harness CCM retrieves the following data from ServiceNow:
 
 When a user opens the dialog box to create a ServiceNow ticket, a request is made to obtain all possible ticket types. Here is a sample response:
