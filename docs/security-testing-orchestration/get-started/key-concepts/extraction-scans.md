@@ -98,13 +98,13 @@ Here's a simple extraction setup for Anchore Enterprise:
 #### Target
 
 1. [Target and variant detection](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#target-and-variant-detection) = **Manual**
-2. [Target name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name) should match the image **Name** below
-3. [Target variant](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#variant) should match the image **Tag** below
+2. [Target name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name) should match the image **Name**
+3. [Target variant](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#variant) should match the image **Tag** 
 
 #### Scan tool
 
-1. [Image name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name-1) The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server.
-
+1. [Image name](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#name-1) The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example 
+`ubuntu:20.04`.
 
 #### Authentication 
 
