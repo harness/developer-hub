@@ -9,18 +9,21 @@ Autocreation is a feature that allows you to automatically create entities in Ha
 Currently this feature is behind the feature flag `PIE_GITX_AUTOCREATION`. Please contact [Harness Support](mailto:support@harness.io) to enable this feature.
 :::
 
-## Pre-requisite of autocreation
+## Pre-requisites of Autocreation
 
 - Register the webhook for your repository where you are adding your files remotely. The scope of the webhook should match the entity it's trying to create. For example, a project-level webhook can only create entities within the same project, whereas an account-level webhook can create entities across multiple projects and the organizations.
-- Files that are added only in the default branch(main, master etc) are autocreated.
 - Added files should follow a specific file path convention based on the entity type. 
+
+:::info note
+Files that are added only in the default branch(main, master etc) of the Git Repo are autocreated.
+:::
 
 ## File Path Convention
 
 We need to follow a specific file convention for each entity for auto-creation. This is required to infer the scope of the entity as well as type of entity from the filepath.
 
 :::info note
-For auto-creation, only files within the `.harness` folder are utilized. Therefore, all file paths must begin with `.harness/`. Webhooks will, by default, track the `.harness` folder.
+Files under `.harness` folder are only used for auto-creation as of now. Therefore, to create files automatically via remote, all file paths must begin with `.harness`. Webhooks will, by default, track the `.harness` folder.
 :::
 
 ![](./static/tracked_folder_autocreation.png)
