@@ -253,7 +253,7 @@ import StoSettingLogLevel from './shared/step_palette/all/_log-level.md';
 
 You can add CLI flags to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. Here are some examples:  
 
-* `-sonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
+* `-Dsonar.ws.timeout=300`: Suppose the scan is experiencing timeouts due to long response times from a web service. This flag increases the timeout window.
 
 * `-Dsonar.projectName=<project_name>`: The project name.
 
