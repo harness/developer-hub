@@ -191,7 +191,8 @@ import StoSettingAuthAccessToken from './shared/step_palette/auth/_access-token.
 
 #### Image Name
 
-For Extraction scans, the name of the image that you want to extract from Anchore. 
+The name of the image that you want to extract from Anchore. In Extraction mode, the image to scan must be located on the Anchore server. You should include both the image name and tag, for example 
+`ubuntu:20.04`.
 
 
 ### Log Level
