@@ -9,7 +9,7 @@ We can use a Harness pipeline to automatically add schedule based rules to all E
 
 ## Setup
 
-This guide assumes you have CCM set up correctly for asset governance and autostopping for at least one cloud account and a delegate available to execute pipeline steps.  Any EC2 instances that need to have autostopping rules applied automatically need tags for eligibility and region.  The required tags are <todo>
+This guide assumes you have CCM set up correctly for asset governance and autostopping for at least one cloud account and a delegate available to execute pipeline steps.  Any EC2 instances that need to have autostopping rules applied automatically need tags for <todo>.  The required tags are <todo>
 
 ## Secret Setup
 
