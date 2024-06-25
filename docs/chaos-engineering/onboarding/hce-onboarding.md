@@ -20,7 +20,7 @@ Currently, this feature is behind the feature flag `CHAOS_V2_ENABLED`. Contact [
 
 You can execute a chaos experiment by:
 
-1. [Fulfilling the resource requirements](/docs/chaos-engineering/get-started/tutorials/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
+1. [Fulfilling the resource requirements](/docs/chaos-engineering/get-started/prerequisites/prerequisites.md): In this step, you can create resources or get the required permissions to create the necessary resources.
 2. [Adding an environment](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-1-create-an-environment): A chaos experiment is performed within a chaos environment that houses the necessary infrastructure.
 3. [Adding a chaos infrastructure](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-2-add-a-chaos-infrastructure): The required chaos infrastructure is created within a chaos environment.
 4. [Validating the chaos infrastructure installation](/docs/chaos-engineering/features/chaos-infrastructure/connect-chaos-infrastructures#step-3-validate-the-chaos-infrastructure-installation): Once you create your chaos infrastructure, ensure that it has been created in the right manner.

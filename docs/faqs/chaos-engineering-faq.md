@@ -136,7 +136,7 @@ Harness Chaos experiment pods consume Kubernetes secrets that contain access cre
 
 ### Can cloud service accounts be used instead of user credentials to access cloud resources?
 
-When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. To learn more, go to [IAM integration for AWS authentication](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration).
+When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. To learn more, go to [IAM integration for AWS authentication](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration).
 
 ### How does Harness Chaos access APM platforms to perform hypothesis validation?
 

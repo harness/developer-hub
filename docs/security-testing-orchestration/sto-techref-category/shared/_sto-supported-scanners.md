@@ -172,6 +172,6 @@ The following scanners detect misconfigurations in your cloud environment that c
 
 If you use a scanner that isn't listed above, you can still ingest your scan results into STO.
 
-- If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-sarif-data).
+- If your scanner can publish to SARIF format, go to [Ingest SARIF scan results into STO](/docs/security-testing-orchestration/custom-scanning/ingest-sarif-data).
 
-- For other scanners, go to [Ingest results from unsupported scanners](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md).
+- For other scanners, go to [Ingest results from unsupported scanners](/docs/security-testing-orchestration/custom-scanning/ingesting-issues-from-other-scanners.md).

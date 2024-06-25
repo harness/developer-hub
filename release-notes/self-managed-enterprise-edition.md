@@ -161,7 +161,10 @@ gsutil -m cp \
 
 #### Fixed issues
 
-- Harness enabled the OPA service as the default setting. OPA supports multiple entities in Harness and is a critical service. Therefore, starting from SMP 0.17.1, the OPA service will be available in the default configuration. (PL-51635, ZD-64628)
+
+:::danger OPA service enabled by default
+Harness enabled the OPA service as the default setting. OPA supports multiple entities in Harness and is a critical service. Therefore, starting from SMP 0.17.1, the OPA service will be available in the default configuration. If you have the OPA service set to `false` in your `override.yaml` file, you must update it to `true`. (PL-51635, ZD-64628)
+:::
 
 ## May 31, 2024, version 0.17.0
 
@@ -717,8 +720,8 @@ gsutil -m cp \
 
 - For more information, go to:
 
-  - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa)
-  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa#exclude-vulnerabilities-using-sto-output-variables)
+  - [Workflow description for creating STO governance policies](/docs/security-testing-orchestration/policies/create-opa-policies)
+  - [Exclude vulnerabilities using STO output variables](/docs/security-testing-orchestration/policies/create-opa-policies#exclude-vulnerabilities-using-sto-output-variables)
 
 ### Fixed issues
 

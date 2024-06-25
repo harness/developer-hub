@@ -278,7 +278,10 @@
 
   border-top: 1px solid #f6f6f6;
   .opacity {
-    opacity: 0.5;
+    background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    );
   }
   input {
     width: 100%;
@@ -298,13 +301,56 @@
     }
   }
 
-  svg {
+  div {
     cursor: pointer;
     width: 40px;
     height: 40px;
-    color: #592cd7;
     margin: 0;
     padding: 0;
+  }
+  .options {
+    background: var(--option-img);
+    background-position: center;
+    position: relative;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  ul[role="menu"] {
+    opacity: 1;
+    display: flex;
+    width: 144px;
+    align-items: flex-start;
+    flex-direction: column;
+    border-radius: 4px;
+    background: var(--message-background);
+    box-shadow: 0px 0px 1px 0px rgba(40, 41, 61, 0.04),
+      0px 2px 4px 0px rgba(96, 97, 112, 0.16);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin: 0;
+    list-style: none;
+    z-index: 50;
+    padding: 8px;
+    li {
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s ease;
+      display: flex;
+      padding: 4px 8px;
+      align-items: center;
+      &:hover {
+        background-color: var(--dropdown-bg);
+        color: var(--message-background);
+      }
+    }
+  }
+  ul[role="menu"] li:not(:last-child) {
+    border-bottom: 1px solid var(--headingIcon);
+  }
+  .send {
+    background: var(--send-img);
+    background-position: center;
   }
 }
 
@@ -358,5 +404,13 @@
   100% {
     box-shadow: 9984px 0 0 0 #6c44db, 9999px 0 0 0 #6c44db,
       10014px 0 0 0 #6c44db;
+  }
+}
+
+
+// for mobile
+@media screen and (max-width: 450px) {
+  .chatbot-container {
+    max-width: 90vw;
   }
 }

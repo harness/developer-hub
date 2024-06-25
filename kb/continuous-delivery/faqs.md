@@ -3161,6 +3161,10 @@ Make sure that the infrastructure Ids are in the format `identifier: id,identifi
 export INFRA_IDS=$( echo '<+inputSet>'| jq -r '.pipeline.stages[0].parallel[0].stage.spec.environments.values[0].infrastructureDefinitions|map("identifier: "+ .identifier)|join(",")')`
 ```
 
+#### What permissions are needed to view account-level environments in a project?
+
+This is not a permissions issue. Harness does not support viewing account-level or organization-level environments within the project view.
+
 ### Infrastructure provisioning FAQs
 
 For frequently asked questions about Harness infrastructure provisioning, go to [Infrastructure provisioning FAQs](/docs/continuous-delivery/cd-infrastructure/provisioning-faqs).

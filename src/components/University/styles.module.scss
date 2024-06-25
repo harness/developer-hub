@@ -297,7 +297,6 @@
               font-size: 16px;
 
               :global {
-
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -569,7 +568,6 @@
             font-size: 16px;
 
             :global {
-
               .fa-solid,
               .fa-regular {
                 margin-left: 4px;
@@ -683,7 +681,6 @@
               font-size: 16px;
 
               :global {
-
                 .fa-solid,
                 .fa-regular {
                   margin-left: 4px;
@@ -728,11 +725,15 @@
 }
 
 .certificationsSEI {
-  background-image: url(/img/cert_harness_bg.svg);
+  background-image: url(/img/cert_sei_bg.svg);
+  background-position-x: 90%;
+  background-size: 40%;
 }
 
 .certificationsIDP {
-  background-image: url(/img/cert_harness_bg.svg);
+  background-image: url(/img/cert_idp_bg.svg);
+  background-position-x: 90%;
+  background-size: 35%;
 }
 
 .certificationsCE {
@@ -773,7 +774,6 @@
         font-size: 16px;
 
         :global {
-
           .fa-solid,
           .fa-regular {
             margin-left: 4px;
@@ -795,7 +795,6 @@
 }
 
 @media screen and (max-width: 1344px) {
-
   /* for small desktop */
   .certificationsCI,
   .certificationsCD,
@@ -823,7 +822,6 @@
 }
 
 @media screen and (max-width: 1199px) {
-
   /* for laptop */
   .university {
     .hero {
@@ -876,7 +874,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
   /* for tablet */
   .university {
     .hero {
@@ -962,7 +959,6 @@
 }
 
 @media screen and (max-width: 599px) {
-
   /* for mobile */
   .university,
   .certificationsCI,
@@ -1081,7 +1077,7 @@
   .certificationsIDP {
     .hero {
       .right {
-        background-image: url(/img/cert_harness_bg.svg);
+        background-image: url(/img/cert_idp_bg.svg);
       }
     }
   }
@@ -1089,7 +1085,7 @@
   .certificationsSEI {
     .hero {
       .right {
-        background-image: url(/img/cert_harness_bg.svg);
+        background-image: url(/img/cert_sei_bg.svg);
       }
     }
   }
@@ -1104,7 +1100,6 @@
 }
 
 @media screen and (max-width: 393px) {
-
   /* for mobile */
   .university,
   .certificationsCI,
@@ -1230,7 +1225,7 @@
   .certificationsSEI {
     .hero {
       .right {
-        background-image: url(/img/cert_harness_bg.svg);
+        background-image: url(/img/cert_sei_bg.svg);
       }
     }
   }
@@ -1238,7 +1233,7 @@
   .certificationsIDP {
     .hero {
       .right {
-        background-image: url(/img/cert_harness_bg.svg);
+        background-image: url(/img/cert_idp_bg.svg);
       }
     }
   }

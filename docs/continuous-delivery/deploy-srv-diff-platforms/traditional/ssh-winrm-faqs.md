@@ -75,3 +75,7 @@ You can automate creating winrm credential/secret key via our existing API as li
 ### How to install artifacts on IIS on a Windows VM?
 You can use the Copy/Download command option by creating a WinRM connection and deploy the artifact to a Windows VM.
 
+### Is it possible to add multiple realms when configuring WinRM using Kerberos?
+
+Currently, you can provide only one realm per WinRM credential. To add more realms, you must create more WinRM credentials. 
+

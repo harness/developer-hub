@@ -16,3 +16,7 @@ It usually takes 3-5 minutes for IDP to process the entity before it's available
 ### Failed to register Software Components
 
 If, after registering an entity, your're unable to find the same in your catalog, check the Devtools Plugin for Unprocessed Entities. If it's under the **Pending** tab, wait a few minutes for registration to complete. If it's under the **Failed** tab. try re-registering the entity.
+
+###  Can we currently use RBAC to only show workflows to specific usergroups?
+
+We're already inheriting the [pipeline's permission](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#rbac-workflow-examples) for the workflows. So if only a specific set of users, groups or roles are added the project where the pipeline lives, only they will be able to trigger the workflow. However, they will still see the workflow on IDP.

@@ -575,8 +575,8 @@ const config = {
   clientModules: [
     path.join(__dirname, "/client_module/searchBar"),
     path.join(__dirname, "/client_module/iframeEmbed"),
+    path.join(__dirname, "/client_module/chatbot"),
   ],
-  // clientModules: [path.join(__dirname, "/client_module/iframeEmbed")],
 };
 
 module.exports = config;

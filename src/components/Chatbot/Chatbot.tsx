@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles.module.scss";
 import ReactMarkdown from "react-markdown";
-import { QueryChatbotAPI, formatDate, getXChatbotKeyCookie } from "./helpers";
+import {
+  QueryChatbotAPI,
+  deleteCookie,
+  formatDate,
+  getXChatbotKeyCookie,
+} from "./helpers";
 import Tooltip from "rc-tooltip";
-import { useColorMode } from "@docusaurus/theme-common";
 
 interface IAgent {
   text: string;
@@ -12,13 +16,13 @@ interface IAgent {
 }
 
 const Chatbot = () => {
-  const { colorMode } = useColorMode();
   const [show, setShow] = useState(false);
   const [name, setName] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [inputText, setInputText] = useState<string>("");
   const [isSessionExpired, setIsSessionExpired] = useState(false);
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const [messages, setMessages] = useState<IAgent[]>([
     {
       text: "Accelerate your software delivery with the powerful capabilities of Harness’s Platform.",
@@ -31,7 +35,7 @@ const Chatbot = () => {
   ]);
 
   useEffect(() => {
-    const cookie = getXChatbotKeyCookie();
+    const cookie = getXChatbotKeyCookie();  
     const urlParams = new URLSearchParams(window.location.search);
     const chatbot = urlParams.get("chatbot");
     if (chatbot === "true") {
@@ -61,6 +65,17 @@ const Chatbot = () => {
           default: true,
         },
       ]);
+    }else{
+      setMessages([
+        {
+          text: "Accelerate your software delivery with the powerful capabilities of Harness’s Platform.",
+          isBot: true,
+        },
+        {
+          text: "How can I help?",
+          isBot: true,
+        },
+      ])
     }
   }, [isLoggedIn]);
 
@@ -150,7 +165,9 @@ const Chatbot = () => {
 
   function handleSignIn() {
     window.location.href =
-    "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
+      // "http://localhost:5000/sso.html?action=login&src=developerhub&return_to=http://localhost:8888/?chatbot=true";
+    window.location.href =
+      "https://app.harness.io/sso.html?action=login&src=developerhub&return_to=https://developer.harness.io/?chatbot=true";
   }
 
   useEffect(() => {
@@ -179,11 +196,37 @@ const Chatbot = () => {
   const chatboxRef = useRef<HTMLDivElement | null>(null);
   const sessionExpiredElement = useRef<HTMLButtonElement | null>(null);
 
+  const toggleDropdown = () => {
+    setIsDropDownOpen(!isDropDownOpen);
+  };
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropDownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+  function handleSignOut() {
+    // Delete the cookies
+    deleteCookie("account_id");
+    deleteCookie("name");
+    deleteCookie("x_chatbot_key");
+    setIsLoggedIn(false);
+  }
+
   return (
     <>
       <Tooltip placement="left" overlay="Ask AIDA">
         <div onClick={toggleChatWindow} className={styles.AIDA_btn}>
-          <img src="./img/AIDA_Logo.svg" alt="AIDA logo" />
+          <img src="/img/AIDA_Logo.svg" alt="AIDA logo" />
         </div>
       </Tooltip>
 
@@ -194,7 +237,7 @@ const Chatbot = () => {
           <div className={styles["chatbot-heading"]}>
             <div className={styles["chatbot-heading-top"]}>
               <div className={styles.left}>
-                <img src="./img/AIDA_Logo.svg" alt="AIDA logo" />
+                <img src="/img/AIDA_Logo.svg" alt="AIDA logo" />
                 <h1>Harness AIDA Chatbot</h1>
               </div>
               <div className={styles.right} onClick={toggleChatWindow}>
@@ -202,7 +245,7 @@ const Chatbot = () => {
               </div>
             </div>
             <p className={styles["chatbot-heading-text"]}>
-              {name ? `Welcome back, ${name}!` : "AI Development Assistant"}{" "}
+              {name ? `Welcome back, ${name} !` : "AI Development Assistant"}{" "}
             </p>
             <hr />
           </div>
@@ -244,7 +287,7 @@ const Chatbot = () => {
             ))}
             {isLoading && (
               <div className={`${styles.textBubble}`}>
-                <img src="/img/AIDA_Logo.svg" alt="AIDA logor"></img>
+                <img src="/img/AIDA_Logo.svg" alt="AIDA logo"></img>
 
                 <div className={`${styles.message} ${styles["bot-loading"]}`}>
                   <div className={styles["dot-typing"]}></div>
@@ -273,16 +316,26 @@ const Chatbot = () => {
           </div>
         </div>
         <div className={styles["chatbot-input"]}>
-          <Tooltip placement="top" overlay="Clear History">
-            <img
-              src={
-                colorMode === "light" ? "./img/Bars.svg" : "./img/BarsDark.svg"
-              }
-              className={`${!isLoggedIn && styles.opacity}`}
-              alt="Menu Icon "
-              onClick={handleClearHistory}
-            />
-          </Tooltip>
+          <div
+            ref={dropdownRef}
+            className={` ${!isLoggedIn ? styles.opacity : ""} ${
+              styles.options
+            }`}
+            onClick={isLoggedIn ? () => toggleDropdown() : undefined}
+            aria-haspopup="true"
+            aria-expanded={isDropDownOpen}
+          >
+            {isDropDownOpen && (
+              <ul role="menu">
+                <li onClick={handleClearHistory} role="menuitem">
+                  Clear History
+                </li>
+                <li onClick={handleSignOut} role="menuitem">
+                  Sign Out
+                </li>
+              </ul>
+            )}
+          </div>
 
           <input
             onChange={handleChange}
@@ -292,17 +345,10 @@ const Chatbot = () => {
             value={inputText}
             disabled={!isLoggedIn}
           />
-
-          <img
-            src={
-              colorMode === "light"
-                ? "./img/SendIcon.svg"
-                : "./img/SendIconDark.svg"
-            }
-            alt="Send Icon"
-            className={`${!isLoggedIn && styles.opacity}`}
+          <div
+            className={`${styles.send} ${!isLoggedIn ? styles.opacity : ""}`}
             onClick={() => handleQuerySubmit(inputText)}
-          />
+          ></div>
         </div>
       </div>
     </>
