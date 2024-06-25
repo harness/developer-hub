@@ -141,11 +141,11 @@ Harness Chaos experiment pods consume Kubernetes secrets that contain access cre
 
 ### Can cloud service accounts be used instead of user credentials to access cloud resources?
 
-When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. To learn more, go to [IAM integration for AWS authentication](/docs/chaos-engineering/chaos-faults/aws/aws-iam-integration).
+When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. To learn more, go to [IAM integration for AWS authentication](/docs/chaos-engineering/chaos-faults/aws/security-configurations/aws-iam-integration).
 
 ### How does Harness Chaos access APM platforms to perform hypothesis validation?
 
-Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe).
+Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/probes/cmd-probe).
 
 ### What are the details about the user and the user's environment accessed and stored by Harness?
 
@@ -158,7 +158,7 @@ The information is purged on a policy basis, with defaults set at "x" days.
 
 ### How can I track the actions of a user on the Harness platform?
 
-Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail/audit-trail).
+Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](/docs/platform/governance/audit-trail).
 
 ### Can Harness perform security chaos tests in the users' environments?
 
