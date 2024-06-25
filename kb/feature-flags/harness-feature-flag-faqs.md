@@ -93,7 +93,7 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 ### I am looking for an explanation of the behavior after an SDK's feature flag changes.
 
-You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
+You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
 
 ### CanI call initialize more than once to update attributes?
 
@@ -271,7 +271,7 @@ This setup allows you to use ``lastUpdated`` and ``host`` in creating group rule
 
 ### Is it secure to store the client-sdk-key in session storage?
 
-Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks/#sdk-types) for more information.
+Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks/#sdk-types) for more information.
 
 ### What can a client do with client-sdk-key besides evaluating feature flags?
 

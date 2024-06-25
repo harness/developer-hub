@@ -618,7 +618,7 @@ This is a major hardening effort of the SDK to improve its overall reliability:
 
  - The React Native SDK for Harness Feature Flags is now deprecated and will no longer be actively maintained. 
 
-We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/react-client/).
+We encourage users to migrate to our React SDK. For more information on transitioning to the React SDK, please refer to the [React SDK Documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/client-sdks/react-client/).
 
 ## November 2023
 
@@ -740,7 +740,7 @@ Fixed issues
 
 New features and enhancements
 
-- [Flag cleanup automation](https://developer.harness.io/docs/feature-flags/ff-creating-flag/manage-stale-flags/) beta available to all customers. This feature helps remove stal flags from your code automatically.
+- [Flag cleanup automation](https://developer.harness.io/docs/feature-flags/use-ff/ff-creating-flag/manage-stale-flags/) beta available to all customers. This feature helps remove stal flags from your code automatically.
 
 Fixed Issues
 
@@ -750,7 +750,7 @@ Fixed Issues
 
 #### Version 0.1.13
 
- - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
+ - Added codes to aid in SKD troubleshooting. [More info in the SDK docs.](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/server-sdks/feature-flag-sdks-go-application/#troubleshooting)
  - Enhanced reporting of evaluation errors 
 
 ### Javascript SDK

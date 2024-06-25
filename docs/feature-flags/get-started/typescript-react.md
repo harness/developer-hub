@@ -74,7 +74,7 @@ Now you are ready to flag pieces of functionality inside the React Store. You ca
 
 ## Get your application ready for Harness Feature Flags
 
-If you haven't already, [sign up for a Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started). Creating and executing a Feature Flag for the React app is pretty straightforward. Depending on your language, Feature Flags requires the use of a corresponding SDK (software development kit), which is installed as a dependency in your application. Since this example application is React, we can leverage the [JavaScript Feature Flags SDK](https://docs.harness.io/article/bmlvsxhp13-java-script-sdk-references). We will be creating a simple boolean flag that will evaluate either true or false.
+If you haven't already, [sign up for a Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started). Creating and executing a Feature Flag for the React app is pretty straightforward. Depending on your language, Feature Flags requires the use of a corresponding SDK (software development kit), which is installed as a dependency in your application. Since this example application is React, we can leverage the [JavaScript Feature Flags SDK](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/java-script-sdk-references). We will be creating a simple boolean flag that will evaluate either true or false.
 
 ## Add the Feature Flags SDK to the project
 
@@ -136,7 +136,7 @@ The linting rules on this project can be strict, so can disable the linting rule
 
 ![TS No Check](./static/ts_no_check.png)
 
-The next step is to import the client as part of the import statements. The import statement and other code snippets are available in the Feature Flags UI and the [Documentation](https://docs.harness.io/article/bmlvsxhp13-java-script-sdk-references).
+The next step is to import the client as part of the import statements. The import statement and other code snippets are available in the Feature Flags UI and the [Documentation](https://developer.harness.io/docs/feature-flags/ff-sdks/client-sdks/java-script-sdk-references).
 
 ![Init](./static/init_statement.png)
 
