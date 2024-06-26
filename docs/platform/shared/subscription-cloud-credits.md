@@ -12,18 +12,18 @@ On the **Subscriptions** page, select **Cloud Credits**.
 
 **Credits & Usage** enables you to view the following credit information:
 
-- **Available Credits:** Current balance of credits remaining to use.
+- **Available Credits:** Current balance of active credits remaining to use.
 - **Month-to-date Credit Usage:** Credits consumed month-to-date.
-- **Next Expiring Date:** The next upcoming credit expiration date.
+- **Next Expiry Date:** The next upcoming credit expiration date.
 - **Credit Overage:** Current amount of credit overage. As a courtesy, Harness notifies you when you are running low on build credits. For more information, go to [Credit allowance by plan tier](/docs/continuous-integration/get-started/ci-subscription-mgmt/#credit-allowance-by-plan-tier) and [Credit overages (overuse)](/docs/continuous-integration/get-started/ci-subscription-mgmt#credit-overages-overuse).
 
 #### Credits Breakdown
 
 **Credits Breakdown** enables you to view your credit usage by organization, project, or resource class. You can also use the date filters to view by a **Recommended** range, **Relative dates**, **Calendar months**, or a selected custom range.
 
-#### Cloud Credits Allocation
+#### Credits Allocation
 
-**Cloud Credits Allocation** enables you to view the following details for your credit allocation:
+**Credits Allocation** enables you to view the following details for your credit allocation:
 
 - **Start Date:** The date on which a block of credits were applied to your account.
 - **Expiry Date:** The date on which a block of credits expires.
