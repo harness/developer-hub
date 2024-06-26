@@ -123,7 +123,7 @@ At times, you might experience issues with the HEC connector. Here are some trou
 
    ![](../../governance/audit-trail/static/hec_connector_notype.png)
 
-- Harness utilizes the [following standard endpoints}(https://docs.splunk.com/Documentation/Splunk/9.2.1/Data/HECRESTendpoints) and appends them automatically to the customer's URL. They are not customizable.
+- Harness utilizes the following [standard endpoints](https://docs.splunk.com/Documentation/Splunk/9.2.1/Data/HECRESTendpoints) and appends them automatically to the customer's URL. They are not customizable.
    - `/services/collector/event`
    - `/services/collector/health`
    - `/services/server/info`
