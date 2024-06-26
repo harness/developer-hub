@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Kubernetes Rollout Deployment step. In Pipeline Studio, the step will be labeled as **Rollout Deployment**. On inspection, the step is called **K8s Rollout Deploy**. 
+This topic provides settings and permissions for the Kubernetes Rollout Deployment step. In Pipeline Studio, the step is labeled **Rollout Deployment**. On inspection, the step is labeled **K8s Rollout Deploy**. 
 
 ## Rollout Deployments
 
