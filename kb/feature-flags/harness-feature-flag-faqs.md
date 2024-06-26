@@ -25,13 +25,13 @@ Yes, Harness offers a powerful Git-based workflow for FF management, providing f
 - **Git Experience with Feature Flags:** You can manage your Feature Flags directly from a YAML file in your Git repository. This approach allows you to leverage Git for FF management alongside the Harness Platform.
 - **Two-Way Synchronization:** With Git Experience enabled, any changes you make to FF on the Harness Platform are committed to Git automatically. Similarly, any commits made in Git for FF are reflected in the Harness Platform. This two-way synchronization ensures that you can work on FF entirely within Git, within the Harness Platform, or even both simultaneously. Your changes are kept in sync across both platforms.
 
-For instructions and more information, go to [Manage Feature Flags in Git Repositories](https://developer.harness.io/docs/feature-flags/manage-featureflags-in-git-repos).
+For instructions and more information, go to [Manage Feature Flags in Git Repositories](https://developer.harness.io/docs/feature-flags/use-ff/ff-creating-flag/manage-featureflags-in-git-repos).
 
 If you have any further questions or need assistance, contact [Harness Support](mailto:support@harness.io) for additional guidance.
 
 ### How do I add a Feature Flags SDK to my project?
 
-For an example of adding an SDK to a project, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/get-started/java-quickstart).
+For an example of adding an SDK to a project, go to [Get started with an SDK](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/java-quickstart).
 
 ### How do I configure the source code for feature flags?
 
@@ -93,7 +93,7 @@ The SDK is initialized for a specific target, enabling personalized flag evaluat
 
 ### I am looking for an explanation of the behavior after an SDK's feature flag changes.
 
-You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags/#polling).
+You can find a detailed overview of how Harness Feature Flags' SDKs behave after a flag change in the following table: [Communication loop between Harness and the SDKs](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags#polling).
 
 ### CanI call initialize more than once to update attributes?
 
@@ -271,7 +271,7 @@ This setup allows you to use ``lastUpdated`` and ``host`` in creating group rule
 
 ### Is it secure to store the client-sdk-key in session storage?
 
-Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks/#sdk-types) for more information.
+Yes, it is secure. Read [SDK Types documentation](https://developer.harness.io/docs/feature-flags/use-ff/ff-sdks/sdk-overview/client-side-and-server-side-sdks#sdk-types) for more information.
 
 ### What can a client do with client-sdk-key besides evaluating feature flags?
 
