@@ -67,13 +67,13 @@ Here's a simple extraction setup for SonarScanner:
 
 :::note
 
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`.  Contact [Harness Support](mailto:support@harness.io) to enable this option.
+**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
 
 :::
    
 #### Target settings
 
-   1. [Target and variant detection](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) = **Manual**
+   1. [Target and variant detection](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) = **Manual**.
    2. [Target name](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) This should match the code repository name in SonarQube. 
    4. [Target variant](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#target-and-variant-detection) This should match the branch or PR defined in SonarQube.
 
@@ -81,7 +81,7 @@ Here's a simple extraction setup for SonarScanner:
 
    1. [Domain](//docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#domain) The SonarQube instance URL.
    2. [Access token](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token) to your SaaS instance.
-   3. [SonarQube project key](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token)
+   3. [SonarQube project key](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference/#access-token).
 
 ### Example 2: Anchore Enterprise extraction workflow
 
@@ -111,15 +111,4 @@ Here's a simple extraction setup for Anchore Enterprise:
 1. [Domain](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#domain-1) The Anchore Enterprise SaaS URL
 2. [Access ID](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#access-id-1) 
 3. [Access token](/docs/security-testing-orchestration/sto-techref-category/anchore-enterprise-scanner-reference#access-token-1)
-
-
-
-
-
-
-
-
-
-
-
 

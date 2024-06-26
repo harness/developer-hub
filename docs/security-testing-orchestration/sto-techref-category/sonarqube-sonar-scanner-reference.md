@@ -92,7 +92,7 @@ The predefined configuration to use for the scan.
 
 :::note
 
-**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`.  Contact [Harness Support](mailto:support@harness.io) to enable this option.
+**Branch Scan** is behind the feature flag `STO_SONARQUBE_BRANCHING`. Contact [Harness Support](mailto:support@harness.io) to enable this option.
 
 :::
 
