@@ -23,6 +23,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Version 1.21.0
 
 #### New features and enhancements
+- **Azure Data Sync Frequency Update:** The Azure data sync frequency has been changed from 1 day to 1 hour. This enhancement will allow data to flow faster for Azure customers, reducing wait times and improving data availability [CCM-18014]
+
+### Version 1.21.0
+
+#### New features and enhancements
 
 - **Savings by Harness Integration Enhancement**: Last release we added "Savings by Harness" integration on Commitment Orchestrator. This release, we have added a minor enhancement with a loading state for savings and utilization widgets. [CCM-18212]
 
