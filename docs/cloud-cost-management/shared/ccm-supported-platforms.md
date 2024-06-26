@@ -470,7 +470,7 @@ The recommendations are computed by analyzing the past utilization of CPU and me
 
 | **Features** | **AWS** | **Azure** | **GCP** | **Kubernetes** | **RBAC Support** |
 | --- | --- | --- | --- | --- | --- |
-|Asset Governance | ✅  | Coming soon | Coming soon |   | ✅ |
+|Asset Governance | ✅  | ✅ | ✅ |   | ✅ |
 |Budgets | ✅  | ✅  | ✅  | ✅ | ✅ |
 
 <details>
