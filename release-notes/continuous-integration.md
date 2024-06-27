@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 
-date: 2024-05-28T10:00
+date: 2024-06-24T10:00
 sidebar_position: 10
 ---
 
