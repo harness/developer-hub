@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info
+
+To enable Commitment Orchestrator please enable Commitment Orchestrator in the setup window for new connectors. For already established connectors, visit "Account Settings" and choose the connector and select Commitment Orchestrator in the edit window.
+:::
+
 # Introduction to Commitment Orchestrator 
 
 In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
@@ -179,11 +184,11 @@ You can change and select the mode (either automatic approval or manual approval
 
 ## Savings and Pricing Computation for Commitment Orchestrator
 
-There are two major parts of savings as discussed earlier: Savings Plans (SPs) and Reserved Instances (RIs). If Harness has purchased them for you, those costs will be considered for pricing.
+There are two major parts of savings as discussed earlier: Savings Plans (SPs) and Reserved Instances (RIs). If Harness has purchased them for you, those costs will be considered for pricing. We have introduced a new toggle that shows you savings by Harness, indicating how much of the savings were achieved through Harness. The savings achieved by SPs and RIs purchased via Harness are considered for pricing.
 
-We have introduced a new toggle that shows you savings by Harness, indicating how much of the savings were achieved through Harness. The savings achieved by SPs and RIs purchased via Harness are considered for pricing.
+- Savings are computed by directly pulling data from AWS and then evaluating what is saved against SPs and RIs.
 
-Savings are computed by directly pulling data from AWS and then evaluating what is saved against SPs and RIs.
+- For potential savings, the calculation is done as: ```(Ondemand Cost - RI Cost)* 24 * 30 * (Number of instances)```
 
 ## Current features:
 
@@ -206,35 +211,35 @@ Savings are computed by directly pulling data from AWS and then evaluating what 
 ## FAQs
 1. Which cloud providers are supported at the moment?
 
---> Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
+-  Currently, we support AWS Compute Saving Plans and Convertible RIs for EC2.
 
 2. Is Audit trails support available?
 
---> Audit trails are not supported but in upcoming GA release, it will be supported.
+-  Audit trails are supported but only if "Automated Actions with manual Approval" mode is selected when setting up the Commitment Orchestrator.
 
 3. How many Saving Plan purchases happen in a month?
 
---> Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
+-  Only 1 SP purchase happens on a month on the basis of the last rolling 12 months data.
 
-4. How many RI purchases happen in a month?
+4. How many exchanges happen in a month?
 
---> It's a daily staggered and recurring purchase, and hence, can happen multiple times.
+- Number of exchanges depends on the requirement of the user.
 
-5. How many exchanges happen in a month?
+5. Where can I see the history of all the actions taken?
 
---> Number of exchanges depends on the requirement of the user.
+- In the visibility section, you can see all the actions under the logs
 
-6. Where can I see the history of all the actions taken?
+6. Is RBAC supported?
 
---> In the visibility section, you can see all the actions under the logs
+-  Yes, there are two permissions : view(Visibility) and edit (Setup)
 
-7. Is RBAC supported?
+7. Can orchestration be setup on any account?
 
---> Yes, there are two permissions : view(Visibility) and edit (Setup)
-8. Can orchestration be setup on any account?
+-  No, only master account with correct permission listed above will be allowed and it can be done for multiple master accounts.
 
---> No, only master account with correct permission listed above will be allowed and at a time only one account can be set up.
+9. When does Harness make RI purchase?
 
+- If the account does not have any RI in a given region.
 
 
 
