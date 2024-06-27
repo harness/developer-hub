@@ -1,26 +1,26 @@
 ---
-title: Connectors + Roles for AWS CCM
-description: Automatically Create Harness connectors for accounts and IAM roles in each AWS account
+title: Connectors + Roles for Azure CCM
+description: Automatically Create Harness connectors for subscriptions and IAM roles in each Azure subscription
 ---
 
 # Overview
 
-The process below defines how to provision Harness connectors and AWS IAM roles using Terraform.
+The process below defines how to provision Harness connectors and Azure IAM roles using Terraform.
 
 ## Permissions
 
-You will need access to provision IAM roles in AWS and create CCM connectors in Harness.
+You will need access to provision IAM roles in Azure and create CCM connectors in Harness.
 
 ## Setup Providers
 
-We need to leverage the AWS and Harness Terraform providers. We will use these to create IAM roles and CCM connectors.
+We need to leverage the Azure and Harness Terraform providers. We will use these to create IAM roles and CCM connectors. We also will get all azure subscriptions and set the Harness principal id.
 
 ```
 terraform {
   required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "=3.0.0"
     }
     harness = {
       source = "harness/harness"
@@ -28,56 +28,60 @@ terraform {
   }
 }
 
-```
+provider "azurerm" {
+  features {}
+}
 
-## Create roles in each AWS Account
+data "azurerm_subscriptions" "available" {}
 
-First we can use the AWS provider to get all accounts. In this example, we are applying account-wide read only access as the role permission for all services. In the event we need to be able to do autostopping and asset governance enforcements, elevated permissions for EC2 and any other service you want to enforce must be granted.
-
-```
-data "aws_organizations_organization" "this" {}
-
-module "ccm-member" {
-  for_each = { for account in data.aws_organizations_organization.this.accounts : "${trimspace(account.name)}" => account }
-  source                = "harness-community/harness-ccm/aws"
-  version               = "0.1.4"
-  
-  external_id             = "harness:891928451355:<your harness account id>"
-
-  enable_events           = true
-  enable_optimization     = true
-  enable_governance       = true
-
-  governance_policy_arn = [
-    "arn:aws:iam::aws:policy/ReadOnlyAccess"
-  ]
+variable "harness_principal_id" {
+    type = string
+    default = "0211763d-24fb-4d63-865d-92f86f77e908"
 }
 ```
 
-## Create a CCM connector for each AWS Account
+## Create roles in each Azure subscription
 
-Use the Harness provider to create a CCM connector for each AWS account.  In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION)
+There are two examples. One is subscription-wide reader access and the other is subscription-wide contributor access. Based on your needs in Harness, choose the minimum amount of permissions needed.
 
 ```
-resource "harness_platform_connector_awscc" "data" {
-  for_each = { for account in data.aws_organizations_organization.this.accounts : "${trimspace(account.name)}" => account }
+# for view access
+resource "azurerm_role_assignment" "viewer" {
+  for_each = { for subscription in data.azurerm_subscriptions.available.subscriptions : subscription.subscription_id => subscription }
+  
+  scope                = each.value.id
+  role_definition_name = "Reader"
+  principal_id         = var.harness_principal_id
+}
+  
+ # for editor access
+resource "azurerm_role_assignment" "editor" {
+  for_each = { for subscription in data.azurerm_subscriptions.available.subscriptions : subscription.subscription_id => subscription }
+  
+  scope                = each.value.id
+  role_definition_name = "Contributor"
+  principal_id         = var.harness_principal_id
+}
+```
 
-  identifier = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
-  name       = replace(replace(trimspace(each.value.name), "-", "_"), " ", "_")
+## Create a CCM connector for each Azure Subscription
 
-  account_id = trimspace(each.value.id)
-  features_enabled = [
-    "OPTIMIZATION",
-    "VISIBILITY",
-    "GOVERNANCE",
-  ]
-  cross_account_access {
-    role_arn    = "arn:aws:iam::${trimspace(each.value.id)}:role/HarnessCERole"
-    external_id = "harness:891928451355:qwerty"
-  }
+Use the Harness provider to create a CCM connector for each Azure subscription. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION)
+
+```
+resource "harness_platform_connector_azure_cloud_cost" "subscription" {
+  for_each = { for subscription in data.azurerm_subscriptions.available.subscriptions : subscription.subscription_id => subscription }
+
+  identifier = replace(each.value.subscription_id, "-", "_")
+  name       = each.value.display_name
+  
+  #VISIBILITY is for recommendations, OPTIMIZATION is for auto stopping, GOVERNANCE is for asset governance
+  features_enabled = ["VISIBILITY", "OPTIMIZATION", "GOVERNANCE"]
+  tenant_id        = each.value.tenant_id
+  subscription_id  = each.value.subscription_id
 }
 ```
 
 ## Conclusion
 
-This is a general example of providing read only access for each connector inside of an AWS organization.  Policies will have to be added based on what other CCM features you want to use.  This example doesn't include setting up the connector for the billing account.
+This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant.  This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector into the Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.

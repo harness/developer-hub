@@ -28,6 +28,7 @@ terraform {
   }
 }
 
+provider "aws" {}
 ```
 
 ## Create roles in each AWS Account
