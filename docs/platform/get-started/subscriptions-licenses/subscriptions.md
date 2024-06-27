@@ -24,7 +24,7 @@ The following sections explain how this subscription model works across the vari
 
 ### Who is a developer?
 
-A **Developer** is each person who contributes to code development, deployment, security, maintenance, optimization or any other technical activities related to software code, that is managed with Harness.
+A **Developer**  contributes to code development, deployment, security, maintenance, optimization, or all other technical activities related to software code that is managed with Harness.
 
 These users leverage Harness to create code repositories, build, test, secure, and deploy software, conduct chaos experiments, manage SLOs, handle feature flags, and more.
 
@@ -32,13 +32,13 @@ The definition of a **Developer** (and any associated consumption entitlements) 
 
 ### Modules with direct developer tracking
 
-The following Harness modules are integral to a **Developer's** daily workflow, each requiring a developer license for every user involved.
+The following Harness modules are integral to a **Developer's** daily workflow. Each module requires a separate developer license for every user involved.
 
 - **Code Repository (CODE):** All users on the Harness Platform who have permission to access Harness CODE module are considered as **CODE Developers** and consume a license.
 - **Continuous Integration (CI):** All users on the Harness Platform who have permission to access Harness CI module are considered as **CI Developers** and consume a license.
 - **Internal Developer Portal (IDP):** All users on the Harness Platform who have permission to access Harness IDP module are considered as **IDP Developers** and consume a license.
 - **Feature Flags (FF):** All users on the Harness Platform who have permission to create / update / delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered as **FF Developers** and consume a license.
-- **Software Engineering Insights (SEI):** All users read from a configured SCM (Source Code Management) tool are considered as **SEI Developers** and consume a license.
+- **Software Engineering Insights (SEI):** All users who read from a configured SCM (Source Code Management) tool are considered as **SEI Developers** and consume a license.
 
 ### Modules with no direct developer tracking (consumption entitlements)
 
@@ -67,7 +67,7 @@ CD tracks **Service** license consumption instead of **Developers**. All **Servi
 
 Harness Feature Flags is a feature flag rollout and management module that tracks **Developers** and **MAU** (Monthly Active Users) for license consumption.
 
-All users on the Harness Platform who have permission to create,update, or delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered as **FF Developers** and consume a license.
+All users on the Harness Platform who have permission to create, update, or delete Feature Flags and/or Delivery Groups, within the Harness FF module, are considered **FF Developers** and consume a license.
 **Monthly Active Users (MAUs)** represent the unique users seen every month from one or more client-side applications that evaluate various flags managed by Harness.
 
 </details>
@@ -89,7 +89,7 @@ SRM tracks **Service** license consumption, instead of **Developers**. All Servi
 <details>
 <summary>Chaos Engineering (CE) Services</summary>
 
-Chaos Engineering (CE) facilitates the execution of chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CD and GitOps. This typically maps to:
+Chaos Engineering (CE) makes it easy to run chaos experiments across diverse services within an R&D organization, aimed at enhancing their resilience. A **Service** represents an autonomous software unit managed and tracked through Harness CD and GitOps. This typically maps to:
 
 - A service in Kubernetes.
 - A containerized service on a cloud (such as AWS ECS, Azure ACS, or Google Container Engine).
@@ -112,7 +112,7 @@ IACM tracks **Executions** license consumption, instead of **Developers**.
 <details>
 <summary>Security Testing Orchestration (STO) Security Scans</summary>
 
-A **Security Scan** is defined as the execution of the Security Testing Orchestration (STO) step within a pipeline. This involves scanning an artifact (referred to as the **Target**), which can be a Repository, Docker image, or a live application, for security vulnerabilities.
+A **Security Scan** is defined as the execution of the Security Testing Orchestration (STO) step within a pipeline. This involves scanning a **Target** for security vulnerabilities. A target can be a repository, container image, configuration, or live application.
 
 STO tracks **Security Scans** license consumption, instead of **Developers**. **Security Scans** are tracked over a *last 30 days* active window.
 
@@ -133,7 +133,7 @@ The Developer 360 subscription model includes module-specific consumption entitl
 
 This means every developer license for a module includes a corresponding consumption entitlement, where applicable.
 
-Additionally, you always have the flexibility to acquire additional consumption entitlements as needed through add-on purchases.
+You can always acquire additional consumption entitlements as needed through add-on purchases.
 
 #### Included consumption entitlements
 
