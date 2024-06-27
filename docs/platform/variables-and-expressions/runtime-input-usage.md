@@ -223,6 +223,15 @@ If you needed the allowed values to include quotes, such as `{"x": "y"}`, then y
 
 :::
 
+:::info note
+You can use expressions as well as part of allowed values in a runtime input.
+For example, 
+
+```
+<+input>.allowedValues(<+pipeline.stages.Test.variables.var2>,<+pipeline.stage.Test.variables.var3>)
+```
+:::
+
 ## Allow multiple selection
 
 :::note
