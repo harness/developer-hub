@@ -55,7 +55,7 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 
 #### Fixed issues
 
-- If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911)
+- If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
 - API based repository search is now enabled in the Harness UI. Infinite scroll is also added to the repository drop-down now. (PIPE-10894)
 - Fixed an issue where hovering on variables did not work as expected. (PIPE-14668)
 - The GitEx Health page is now updated to include information about GitEx webhook events validation such as event status and status of other related entities. (PIPE-18466)
