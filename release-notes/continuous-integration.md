@@ -49,7 +49,7 @@ Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 - Fixed a UI issue where the Codebase icon (right menu) showed the status as not valid, even when the provider was chosen as Harness code repo and the repository was selected. (CI-12750)
 - Fixed an issue where the YAML editor allowed saving invalid environment variables in a Run step. (CI-12730)
 - Fixed an issue where certain keywords in a script could cause the step to fail with an "Invalid step" error. (CI-12708, ZD-63932)
-- Fixed an issue where the Docker LABEL set in a Build and Push step does not override the LABEL configured in the Dockerfile. With this fix, you can now use buildx rather than kaniko to build your container images. This fix is behind the feature flag CI_USE_BUILDX_ON_K8. Contact Harness Support to enable this fix. (CI-12548, ZD-63222)
+- Fixed an issue where the Docker LABEL set in a Build and Push step does not override the LABEL configured in the Dockerfile. With this fix, you can now use buildx rather than kaniko to build your container images. You must run buildx on k8s with Privileged mode enabled. This fix is behind the feature flag CI_USE_BUILDX_ON_K8. Contact Harness Support to enable this fix. (CI-12548, ZD-63222)
 
 ### Version 1.30
 
