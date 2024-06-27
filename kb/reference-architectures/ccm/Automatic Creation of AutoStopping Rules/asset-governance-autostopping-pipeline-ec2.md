@@ -5,19 +5,19 @@ description: Automatically Create EC2 Schedule Based Autostopping Rules using a 
 
 # Overview
 
-We can use a Harness pipeline to automatically add schedule based rules to all EC2 instance in an account based on a tag.  We use Asset Governance to find the instances and send the data to the pipeline.  If there already is an autostopping rule on to the EC2 instance, a new one won't be added.
+The process below defines a system where we can locate EC2 instances based on a particular tag and automatically created schedule based autostopping rules to shut the instance down during non work hours.
+
+To accomplish this, we use CCM Asset Governance to locate the resources and a Harness pipeline to automate the creation of the autostopping rules and their schedules.
+
+Users of this guide should have an understanding of schedule based autostopping, Harness pipelines, Harness service accounts, and secrets.
 
 ## Setup
 
-This guide assumes you have CCM set up correctly for asset governance and autostopping for at least one cloud account and a delegate available to execute pipeline steps.  Any EC2 instance we want to add an rule for, must have the key:value of `Schedule:usWorkHours`
+This guide assumes you have CCM set up correctly for Asset Governance and autostopping for at least one cloud account.  
 
-## Secret Setup
+You will also need a [Kubernetes connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) with access to deploy pods in some cluster. 
 
-We need an api key to do certain platform and CCM actions in the pipeline.  Create a service account with CCM Admin and Account Admin permissions for all resources.  Generate an api key.  In this case, we named the secret `api`.  Remember the name given, it will be used in future steps.
-
-  ![](../../static/ccm_asset_governance_service_account.png)
-
-  ![](../../static/ccm_asset_governance_secret.png)
+We need an api key to do certain platform and CCM actions in the pipeline.  Create a service account with CCM Admin and Account Viewer permissions for all resources.  Generate an api key and store the api key as a secret.  In this case, we will assume the secret id is `api`.  Remember the id given, it will be used in future steps.
 
 ## Pipeline Setup
 
@@ -25,10 +25,11 @@ Create a pipeline in some Harness project.
 
 ### Setup the Stage / Step Group 
 
-1. Create a new Stage
-2. Add a Step Group that contains three steps.  All three steps are `Run` steps.  They will be configured to use a Python image to execute Python scripts.  For all three steps, there is a common setup that needs to happen.  All three will use the  built in Harness Connector Adapter, image=`rssnyder/py3requests`, and Shell=`Python`.
+1. Create a new Stage of type `custom`
+2. Add a Step Group to the execution tab of your stage.  Give it a name and select `enable container base execution`, select your kubernetes connector in the Kubernetes cluster selection box.
+3. We will now create three steps in our step group.  All three steps are `Run` steps.  They will be configured to use a Python image to execute a Python script.  For all three steps, there is a common setup that needs to happen described below.  All three will use the built in Harness Connector, image=`rssnyder/py3requests`, and Shell=`Python`.  You can also use any other Docker Hub conneector and image as long as the image has Python3 and `requests`.   We'll purposefully leave the command section blank for now and add in the Python code in a subsequent step.
   
-  Step Container Setup:
+  Run Step Setup:
 
   ![](../../static/ccm_asset_governance_step_container_setup.png)
   
@@ -39,41 +40,43 @@ Create a pipeline in some Harness project.
       * Environment Variables:
 
       ```
-      INSTANCE_ID (Runtime input).  Passed into the step from webhook. = <+-input>
+      INSTANCE_ID (Runtime input).  Passed into the step from webhook. = <+input>
       HARNESS_ACCOUNT_ID (Expression). Built in Harness variable = <+account.identifier>
       HARNESS_ENDPOINT (Fixed value) = Either app.harness.io OR app3.harness.io.  Get this from the front portion of your Harness URL
-      HARNESS_PLATFORM_API_KEY (Expression).  The secret we build in the previous step. = <+secrets.getValue("account.api")>
+      HARNESS_PLATFORM_API_KEY (Expression).  The secret we built in the previous step. = <+secrets.getValue("account.api")>
       ```
 
       ![](../../static/ccm_asset_governance_step_1_container_setup_environment_variables.png)
 
   2. 'Find AWS CCM Connector for Account'
-      * Configure a conditional execution only if 'Find Existing Autostopping Rule' doesn't find a rule:
-      `<+execution.steps.Create_AutoStopping_Rules.steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""` 
+      * Go to the `Advanced` tab and configure a conditional execution only if 'Find Existing Autostopping Rule' doesn't find a rule:
+      `<+steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""` 
       * Configure an output variable `CONNECTOR_ID`.  Will be used in next step.
       * Environment Variables:
 
       ```
-      ACCOUNT_ID (Runtime input).  Passed into the step from webhook. = <+-input>
+      ACCOUNT_ID (Runtime input).  Passed into the step from webhook. = <+input>
       HARNESS_ACCOUNT_ID (Expression). Built in Harness variable = <+account.identifier>
       HARNESS_ENDPOINT (Fixed value) = Either app.harness.io OR app3.harness.io.  Get this from the front portion of your Harness URL
-      HARNESS_PLATFORM_API_KEY (Expression).  The secret we build in the previous step. = <+secrets.getValue("account.api")>
+      HARNESS_PLATFORM_API_KEY (Expression).  The secret we built in the previous step. = <+secrets.getValue("account.api")>
       ```
 
       ![](../../static/ccm_asset_governance_step_2_container_setup_environment_variables.png)
 
   3. 'Create AutoStopping Rule'      
       * Configure a conditional execution only if 'Find Existing Autostopping Rule' doesn't find a rule:
-      `<+execution.steps.Create_AutoStopping_Rules.steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""`
+      `<+steps.Find_Existing_AutoStopping_Rule.output.outputVariables.RULE_ID> == ""`
       
       * Environment Variables:
+      The `SCHEDULE_` environment variables define the uptime schedule for rule in this process.
 
       ```
       HARNESS_ACCOUNT_ID (Expression). Built in Harness variable = <+account.identifier>
       HARNESS_ENDPOINT (Fixed value) = Either app.harness.io OR app3.harness.io.  Get this from the front portion of your Harness URL
-      HARNESS_PLATFORM_API_KEY (Expression).  The secret we build in the previous step. = <+secrets.getValue("account.api")>
-      INSTANCE_ID (Runtime input).  Passed into the step from webhook. = <+-input>
-      REGION (Runtime input).  Passed into the step from webhook. = <+-input>
+      HARNESS_PLATFORM_API_KEY (Expression).  The secret we built in the previous step. = <+secrets.getValue("account.api")>
+      INSTANCE_ID (Expression).  Grabs the value from first step = <+steps.Find_Existing_AutoStopping_Rule.spec.envVariables.INSTANCE_ID>
+      REGION (Runtime input).  Passed into the step from webhook. = <+input>
+      CONNECTOR_ID (Expression).  Grabs the value from the second step = <+steps.Find_AWS_CCM_Connector_for_Account.output.outputVariables.CONNECTOR_ID>
       IDLE_TIME (Fixed value).  Minimum value of 5 minutes.  Once scheduled downtime happens, this is the amount of time Harness waits to shut down the instance
       SCHEDULE_DAYS (Fixed value).  Comma delimiated.  Sunday = 0, Saturday = 6
       SCHEUDLE_START_H (Fixed value).  0-23.  
@@ -85,21 +88,21 @@ Create a pipeline in some Harness project.
 
       ![](../../static/ccm_asset_governance_step_3_container_setup_environment_variables.png)
 
-      Conditional Execution Setup:
+  4. Conditional Execution Setup for steps 2 and 3:
 
       ![](../../static/ccm_asset_governance_step_container_advanced_conditional_execution.png)
     
 
-
-
-The final pipeline setup should looke like this:
+The final pipeline setup should look like this:
 
 ![](../../static/ccm_asset_governance_pipeline_final_setup.png)
 
 
-### Add Python code for each step
+### Add Python Code For Each Step
 
-1. Python code for Find Existing Autostopping Rule:
+After the Python code is added, make sure to save your pipeline as we will navigate away from the pipeline UI in the next step.
+
+1. Python Code For Find Existing Autostopping Rule:
 
 ```
 from os import getenv, environ
@@ -160,7 +163,7 @@ if __name__ == "__main__":
     get_existing_rule_id()
 ```
 
-2. Python code for Find AWS Connector for Account:
+2. Python Code For Find AWS Connector for Account:
 
 ```
 from os import getenv, environ
@@ -219,7 +222,7 @@ if __name__ == "__main__":
     get_connector_for_account()
 ```
 
-3. Python code for Create AutoStopping Rule:
+3. Python Code For Create AutoStopping Rule:
 
 ```
 from os import getenv, environ
@@ -393,69 +396,24 @@ if __name__ == "__main__":
 
 ## Create Pipeline Webhook
 
-Next click on "Triggers" in the top right and select "+ New Trigger" and select the 'Custom' Webhook type. Give the trigger a name and click continue. Skip the conditions section by clicking continue. Create the trigger based on this yaml:
+Next click on `Triggers` in the top right and select `+ New Trigger` and select the `Custom` Webhook type. Give the trigger a name and click continue. Skip the conditions section by clicking continue. Input the follow JEXL for the three inputs:
 
 ```
-trigger:
-  name: Asset Governance
-  identifier: Asset_Governance
-  enabled: true
-  description: ""
-  tags: {}
-  stagesToExecute: []
-  orgIdentifier: default
-  projectIdentifier: default_project
-  pipelineIdentifier: ec2_instance_governance_as
-  source:
-    type: Webhook
-    spec:
-      type: Custom
-      spec:
-        payloadConditions: []
-        headerConditions: []
-  inputYaml: |
-    pipeline:
-      identifier: ec2_instance_governance_as
-      stages:
-        - stage:
-            identifier: AutoCreate
-            type: Custom
-            spec:
-              execution:
-                steps:
-                  - stepGroup:
-                      identifier: Create_AutoStopping_Rules
-                      steps:
-                        - step:
-                            identifier: Find_Existing_AutoStopping_Rule
-                            type: Run
-                            spec:
-                              envVariables:
-                                INSTANCE_ID: <+trigger.payload.instance_id>
-                        - step:
-                            identifier: Find_AWS_CCM_Connector_for_Account
-                            type: Run
-                            spec:
-                              envVariables:
-                                ACCOUNT_ID: <+trigger.payload.account_id>
-                        - step:
-                            identifier: Create_AutoStopping_Rule
-                            type: Run
-                            spec:
-                              envVariables:
-                                REGION: <+trigger.payload.region>
-
+INSTANCE_ID (Expression) = <+trigger.payload.instance_id>
+ACCOUNT_ID (Expression) = <+trigger.payload.account_id>
+REGION (Expression) = <+trigger.payload.region>
 ```
+ ![](../../static/ccm_asset_governance_trigger_jexl_environment_variables.png)
 
-Click "Create Trigger". On the triggers screen, select the "WEBHOOK" icon and copy the webhook URL.  Store this URL somewhere, it will be used later.
+Click `Create Trigger`. On the triggers screen, select the `WEBHOOK` icon and copy the webhook URL.  Store this URL somewhere, it will be used later.
 
 ![](../../static/ccm_asset_governance_pipeline_webhook.png)
 
 ## Rule Setup
 
-Navigate to CCM and select the "Asset Governance" feature. Select "Rules" in the top right and press "+ New Rule".
+Navigate to CCM and select the `Asset Governance` feature. Select `Rules` in the top right and press `+ New Rule`.
 
-We want to send EC2 instance where they contain tag key  `Schedule` to a pipeline webhook:
+We want to send EC2 instances that contain tag `Schedule` = `usWorkHours`, and send the instance information to the pipeline we created above.
 
 ```
   policies:
@@ -466,7 +424,7 @@ We want to send EC2 instance where they contain tag key  `Schedule` to a pipelin
     actions:
         - type: webhook
           url: "<add webhook from previous set here>"
-          batch: true
+          batch: false
           body: |-
             {
               "instance_id": resource.InstanceId,
@@ -476,28 +434,26 @@ We want to send EC2 instance where they contain tag key  `Schedule` to a pipelin
 ```
 
 In this example, we are:
-  1. Calling our pipeline trigger
-  2. Setting the body that includes all the data we need to autostop
+  1. Find EC2 instances that have the tag `Schedule` = `usWorkHours`
+  2. Calling our pipeline trigger
+  3. Setting a body that includes all the data we need to create and autostopping rule
 
 Replace the url with the webhook url we copied earlier
 
-If you instead want to call the webhook once for every resource found, simply set `batch` to `false`.
-
 ## Execute
 
-Now when we run an enforcement on the asset governance rule (not in dry-run mode) and when a resource is found, asset governance will call our pipeline custom trigger and pass the metadata. Navigate to "Execution History" on the top right.  Click on one of the executions and ensure the pipeline completed successfully. 
+When we run the Asset Governance rule (not in dry-run mode) and when a resource is found, Asset Governance will call our pipeline custom trigger and pass the metadata. Navigate to `Execution History` of your pipeline and ensure the latest pipeline was successful.  If you want to automate the invoking of the Asset Governance rule, you can create an [enforcement](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/Harness-Concepts#enforcements)
 
 ![](../../static/ccm_asset_governance_execution_history.png)
-
-From here you can expand your pipeline to do any number of actions based on the information received. 
 
 ## Exceptions / Things to Consider
 
 1. If a rule was created using a tag and the tag was later removed, the rule will still exist.
 2. Selecting 'allregions' option in the enforcement isn't support.
-3. This example is only for U.S. work hours.  If you wanted to make another schedule you should:
+3. This example is only covers one specific schedule.  If you wanted to make another schedule you should:
     * Clone the pipeline
     * Update the schedule environment variables in the 'Create AutoStopping Rule' step
+    * Create a new trigger
     * Clone the governance rule
     * Update the webhook in the rule for the new pipeline
     * Update the filter in the rule to be the new schedule tag value
