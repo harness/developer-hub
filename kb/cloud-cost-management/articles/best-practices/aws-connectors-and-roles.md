@@ -35,7 +35,7 @@ provider "harness" {}
 
 ## Create Roles In Each AWS Account
 
-First we can use the AWS provider to get all accounts. In this example, we are applying account-wide read only access as the role permission for all services. In the event we need to be able to do autostopping and asset governance enforcements, elevated permissions for EC2 and any other service you want to enforce must be granted.
+First we can use the AWS provider to get all accounts. In this example, we are applying account-wide read only access as the role permission for all services. In the event we need to be able to do autostopping and asset governance enforcements, elevated permissions for EC2 and any other service you want to enforce must be granted. You can do this by setting `enable_optimization = true` for autostopping and for governance, attach any additional policies under `governance_policy_arn` based on the actions you want to take.
 
 ```
 data "aws_organizations_organization" "this" {}
