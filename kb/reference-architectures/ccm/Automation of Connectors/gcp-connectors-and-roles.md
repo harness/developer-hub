@@ -45,7 +45,7 @@ module "ccm-member" {
   external_id             = "harness:891928451355:<your harness account id>"
 
   enable_events           = true
-  #enable_optimization     = true (autostopping required more than read only access)
+  enable_optimization     = true
   enable_governance       = true
 
   governance_policy_arn = [
@@ -73,7 +73,7 @@ resource "harness_platform_connector_awscc" "data" {
   ]
   cross_account_access {
     role_arn    = "arn:aws:iam::${trimspace(each.value.id)}:role/HarnessCERole"
-    external_id = "harness:891928451355:<your harness account id>"
+    external_id = "harness:891928451355:qwerty"
   }
 }
 ```
