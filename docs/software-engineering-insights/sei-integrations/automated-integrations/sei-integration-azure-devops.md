@@ -13,6 +13,10 @@ Use the SEI Azure DevOps Services integration to integrate SEI with ADO Services
 
 Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use an [Ingestion Satellite](/docs/software-engineering-insights/sei-ingestion-satellite/satellite-overview).
 
+:::note
+Please note that the new onboarding experience for the Azure DevOps integration, with Personal Access Token (PAT) authentication is currently in BETA and requires the `<SEI_IS_AZURE_ENABLED>` Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable it.
+:::
+
 ## Requirements
 
 The following permissions and settings are required to use the **SEI AzureDevOps Services integration**:
