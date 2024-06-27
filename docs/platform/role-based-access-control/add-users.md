@@ -77,6 +77,7 @@ When inviting a new user, you can set a default landing URL that the user will b
 2.	In the Default Landing URL field, specify the URL you want the invited user to be redirected to after they accept the invitation. For example, you can set it to https://app.harness.io/ng/account/<account-id>/module/ssca/projects for the SSCA homepage.
 
 3.	Send the invitation.
+
 After the user accepts the invite and logs in, they will be redirected to the specified URL.
 
 ### Updating User Preferences
@@ -92,6 +93,7 @@ Users can update their default landing URL from their profile settings:
 4.	Update the Default Landing URL to the desired page, such as https://app.harness.io/ng/account/account/<account-id>/module/cf/home/projects for the Feature Flags homepage.
 
 5.	Save the changes.
+
 The next time the user logs in, they will be redirected to the updated URL.
 
 
