@@ -1,5 +1,5 @@
 ---
-title: Automatically Create EC2/RDS Schedule Based Autostopping Rules using Terraform
+title: Terraform for Automatic Scheduled Autostopping
 description: Automatically Create EC2/RDS Schedule Based Autostopping Rules using Terraform
 ---
 
