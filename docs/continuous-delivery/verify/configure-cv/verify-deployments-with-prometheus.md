@@ -203,8 +203,8 @@ The Add New Health Source settings appear.
 
 #### Infrastructure
 
-- CPU: `(sum(rate(container_cpu_usage_seconds_total{namespace="test-engg",pod=~"dummy-.*",source_cluster="eks-nonprod-api",image!='',container!='POD'}[1m])) by (le) / sum(kube_pod_container_resource_requests_cpu_cores{}) by (le)) * 100`
-- Memory: `(sum(container_memory_usage_bytes{namespace="productivity-engg",pod=~"harness-dummy-.*",source_cluster="hs-eks-nonprod-api-aps1",  container!="POD", container!=""}) by (le) / sum(kube_pod_container_resource_requests_memory_bytes{}) by (le)) * 100`   
+- CPU: `(sum(rate(container_cpu_usage_seconds_total{namespace="<namespace_name>",pod=~"dummy-.*",source_cluster="<cluster_name>",image!='',container!='POD'}[1m])) by (le) / sum(kube_pod_container_resource_requests_cpu_cores{}) by (le)) * 100`
+- Memory: `(sum(container_memory_usage_bytes{namespace="<namespace_name>",pod=~"harness-dummy-.*",source_cluster="<cluster_name>",  container!="POD", container!=""}) by (le) / sum(kube_pod_container_resource_requests_memory_bytes{}) by (le)) * 100`   
 
 ## Step 6: Select Sensitivity
 
