@@ -12,16 +12,12 @@ ServiceNow is used to set up systems that define, manage, automate and structure
 
 This integration allows you to track, manage, and analyze incidents, and change requests in real-time, leading to improved efficiency and enhanced productivity.
 
-:::info
-Please note that the integration currently allows authentication only through the **Username** and **Password** of your **ServiceNow** account.
-:::
-
-<DocVideo src="https://www.youtube.com/embed/Qcb3u558_7U?si=xlI0rIfuYrTWMTGI" />
+<DocVideo src="https://www.youtube.com/embed/wFWHAAIj3_o?si=mL8xNInFtNp4GwPG" />
 
 ## Requirements
 
 * ServiceNow Account with Admin access
-* ServiceNow Client ID and ServiceNow Client Secret
+* ServiceNow Client ID and ServiceNow Client Secret (Only OAuth based authentication)
 
 ### Create a Client ID and Client Secret in ServiceNow
 
