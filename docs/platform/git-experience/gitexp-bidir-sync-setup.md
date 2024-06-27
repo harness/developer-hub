@@ -60,6 +60,10 @@ You will need a webhook to your repo to use bi-directional sync:
 
 8. Select **Add**. The webhook is added. You can navigate to your repo webhook settings to see the new webhook.
 
+:::info
+The `.harness` folder is tracked by default for all webhooks.
+:::
+
 In the **Webhooks** page, you can see the **Events** tab. Once you have synched an entity with the Git repo, the Git events are displayed here. You can view Git event Ids for troubleshooting.
 
 ### Sync a Harness entity
