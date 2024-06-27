@@ -519,17 +519,6 @@ const config = {
         // ... other options
       },
     ],
-    //[
-    //  path.resolve(__dirname, "./plugins/redirect-plugin"),
-    //  {
-    //    id: "tutorials",
-    //    path: "tutorials",
-    //    routeBasePath: "tutorials",
-    //    exclude: ["**/shared/**", "**/static/**"],
-    //    sidebarPath: require.resolve("./sidebars-tutorials.js"),
-    //    editUrl: "https://github.com/harness/developer-hub/tree/main",
-    //  },
-    //],
     [
       path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
