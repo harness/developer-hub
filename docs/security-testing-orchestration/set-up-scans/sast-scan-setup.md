@@ -51,7 +51,7 @@ The following video shows how to add a SAST scan to an STO pipeline, trigger the
 
 #### Set up the scanner
 
-Here's how to set up a simple scan:
+Here's how to set up a simple scan. For more information, go to one of the scanner references listed above.
 
 1. Scan mode = **Orchestration**
 2. Target type = **Repository**
@@ -59,7 +59,7 @@ Here's how to set up a simple scan:
 4. Target and Variant Detection = **Auto**
 5. If your scanner requires authentication, you need to specify the required credentials such as username and access token (specified as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets)).
 
-   You might want to set these as well:
+6. You might want to set these as well:
 
     - [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
     - Log Level — Useful for debugging
@@ -112,12 +112,7 @@ You can easily [create Git triggers](/docs/security-testing-orchestration/use-st
 
    No single scanner is guaranteed to detect all vulnerabilities. Commercial scanners generally provide more extensive scanning functionality than free ones. 
 
-- SAST scans are only one part of an overall security strategy. You should also run [container scans on your images](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners) after building them and run [DAST scans on your running applications](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners) after updating them. 
-
- 
-
-
-
+- SAST scans are only one part of an overall security strategy. You should also run [container scans on your images](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners) after building them and run [DAST scans on your running applications](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners) after updating them.
 
 <!-- ### Benefits
 
