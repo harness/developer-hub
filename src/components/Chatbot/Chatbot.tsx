@@ -22,9 +22,6 @@ const Chatbot = () => {
   const {
     siteConfig: { customFields },
   } = useDocusaurusContext();
-  console.log({
-    SEGMENT_API_KEY: customFields.SEGMENT_API_KEY,
-  });
 
   const analytics = AnalyticsBrowser.load({
     writeKey: customFields.SEGMENT_API_KEY as string,
