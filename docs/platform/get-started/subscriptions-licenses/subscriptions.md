@@ -10,7 +10,7 @@ redirect_from:
 import Manage from '/docs/platform/shared/subscription-manage.md';
 import View from '/docs/platform/shared/subscription-view-subscriptions.md';
 
-You have the capability to view and manage module subscription details as well as license information directly within your Harness account. This includes monitoring current subscriptions, reviewing license allocations, and adjusting as necessary to meet your organizational needs.
+You can view and manage module subscription details as well as license information directly within your Harness account. This includes monitoring current subscriptions, reviewing license allocations, and adjusting as necessary to meet your organizational needs.
 
 ## Developer 360 subscriptions
 
