@@ -28,13 +28,13 @@ The following video shows how to add a SAST scan to an STO pipeline, trigger the
 #### Add the scanner
 
 1. Add a Build or Security stage to your pipeline.
-2. In **About your stage**, select the [code repo](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) you want to scan.
+2. In **About your stage**, select the [code repo](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/) that you want to scan.
 3. In **Infrastructure**, select your build infrastructure.
 4. In **Execution**, click **Add Step** and select a SAST scanner from the Step Library.
 
-   You can also choose to add a Built-in SAST (free [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)) step. The step is preconfigured with all the correct settings as soon as you add it.
+   You can also choose to add a built-in **SAST** (free [Semgrep](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference)) step. The step is preconfigured with all the correct settings as soon as you add it.
 
-   Here's a list of popular SAST scanners that integrate with STO. You can see a complete list [here](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#code-repo-scanners). 
+   Here's a list of popular SAST scanners that integrate with STO.
 
    - [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference)
    - [Black Duck](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference)
@@ -51,7 +51,7 @@ The following video shows how to add a SAST scan to an STO pipeline, trigger the
 
 #### Set up the scanner
 
-Here's how to set up a simple orchestrated scan:
+Here's how to set up a simple scan:
 
 1. Scan mode = **Orchestration**
 2. Target type = **Repository**
@@ -59,15 +59,27 @@ Here's how to set up a simple orchestrated scan:
 4. Target and Variant Detection = **Auto**
 5. If your scanner requires authentication, you need to specify the required credentials such as username and access token (specified as a [Harness text secret](/docs/platform/secrets/add-use-text-secrets)).
 
-You might want to set these as well:
+   You might want to set these as well:
 
-    - [Fail on Severity](#fail-on-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
-    - [Log Level](#log-level) — Useful for debugging
+    - [Fail on Severity](/docs/security-testing-orchestration/get-started/key-concepts/fail-pipelines-by-severity) — Stop the pipeline if the scan detects any issues at a specified severity or higher
+    - Log Level — Useful for debugging
 
 4. Save the pipeline and run it.
 
 5. When the pipeline finishes, you can troubleshoot and remediate your vulnerabilities in the [Security Tests](/docs/security-testing-orchestration/dashboards/view-scan-results) tab.
 
+### Remediate an issue in Security Tests
+
+Select the issue you want to remediate in the issues table (left). The **Issue Details** pane (right) opens and shows details about the issue: severity, number of occurrences, known remediation steps, and links to more information.
+
+<DocImage path={require('./static/remediate-issue.png')} width="50%" height="50%" title="Select policy sample" />
+<br/>
+<br/>
+You can also do the following:
+
+   - [Create a Jira ticket](/docs/security-testing-orchestration/jira-integrations) for the issue.
+
+   - Fix the issue using [AI-enhanced remediation steps](/docs/security-testing-orchestration/remediations/ai-based-remediations).
 
 ### Trigger a SAST scan in Git 
 
@@ -82,7 +94,7 @@ You can easily [create Git triggers](/docs/security-testing-orchestration/use-st
 
 3. This should trigger a new execution of your pipeline. When the execution finishes, view the scan results. 
 
-### Best practices
+### Best practices for SAST scanning
 
 - You should include a SAST scan at the start of every CI build pipeline. 
 
