@@ -224,8 +224,7 @@ The report displays the breakdown of the base values as average that contribute 
 </tr>
 <tr>
 <td>PRs Merged</td>
-<td>The average number of pull requests merged by all the contributors under the respective Collection in the selected time range.
-</td>
+<td>The average number of pull requests merged by all the contributors under the respective Collection in the selected time range.</td>
 </tr>
 <tr>
 <td>Commits</td>
