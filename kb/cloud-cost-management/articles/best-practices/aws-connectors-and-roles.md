@@ -1,5 +1,5 @@
 ---
-title: Connectors + Roles for AWS CCM
+title: Connectors + Roles For AWS CCM
 description: Automatically Create Harness connectors for accounts and IAM roles in each AWS account
 ---
 
@@ -29,9 +29,11 @@ terraform {
 }
 
 provider "aws" {}
+
+provider "harness" {}
 ```
 
-## Create roles in each AWS Account
+## Create Roles In Each AWS Account
 
 First we can use the AWS provider to get all accounts. In this example, we are applying account-wide read only access as the role permission for all services. In the event we need to be able to do autostopping and asset governance enforcements, elevated permissions for EC2 and any other service you want to enforce must be granted.
 
@@ -46,8 +48,6 @@ module "ccm-member" {
   external_id             = "harness:891928451355:<your harness account id>"
 
   enable_events           = true
-  #enable_optimization     = true (autostopping required more than read only access)
-  enable_governance       = true
 
   governance_policy_arn = [
     "arn:aws:iam::aws:policy/ReadOnlyAccess"
@@ -55,9 +55,9 @@ module "ccm-member" {
 }
 ```
 
-## Create a CCM connector for each AWS Account
+## Create A CCM Connector For Each AWS Account
 
-Use the Harness provider to create a CCM connector for each AWS account.  In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION)
+Use the Harness provider to create a CCM connector for each AWS account. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION)
 
 ```
 resource "harness_platform_connector_awscc" "data" {
@@ -81,4 +81,4 @@ resource "harness_platform_connector_awscc" "data" {
 
 ## Conclusion
 
-This is a general example of providing read only access for each connector inside of an AWS organization.  Policies will have to be added based on what other CCM features you want to use.  This example doesn't include setting up the connector for the billing account.
+This is a general example of providing read only access for each connector inside of an AWS organization. Policies will have to be added based on what other CCM features you want to use. This example doesn't include setting up the connector for the billing account. This guide assumes there already exists a connector into the master AWS account sthat has the billing export and an existing connector for the billing data.

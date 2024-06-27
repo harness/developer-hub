@@ -1,5 +1,5 @@
 ---
-title: Connectors + Roles for Azure CCM
+title: Connectors + Roles For Azure CCM
 description: Automatically Create Harness connectors for subscriptions and IAM roles in each Azure subscription
 ---
 
@@ -32,6 +32,8 @@ provider "azurerm" {
   features {}
 }
 
+provider "harness" {}
+
 data "azurerm_subscriptions" "available" {}
 
 variable "harness_principal_id" {
@@ -40,7 +42,7 @@ variable "harness_principal_id" {
 }
 ```
 
-## Create roles in each Azure subscription
+## Create Roles In Each Azure Subscription
 
 There are two examples. One is subscription-wide reader access and the other is subscription-wide contributor access. Based on your needs in Harness, choose the minimum amount of permissions needed.
 
@@ -64,7 +66,7 @@ resource "azurerm_role_assignment" "editor" {
 }
 ```
 
-## Create a CCM connector for each Azure Subscription
+## Create A CCM Connector For Each Azure Subscription
 
 Use the Harness provider to create a CCM connector for each Azure subscription. In this example, we are enabling recommendations (VISIBILITY), governance (GOVERNANCE), and autostopping (OPTIMIZATION)
 
@@ -84,4 +86,4 @@ resource "harness_platform_connector_azure_cloud_cost" "subscription" {
 
 ## Conclusion
 
-This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant.  This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector into the Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.
+This is a general example of providing either reader or contributor access for each connector inside of an Azure tenant. This example doesn't include setting up the connector for the billing export. This guide assumes there already exists a connector into the Azure subscription that has the billing export and an existing connector for the billing data has already registered and imported the Harness app into the tenant.
