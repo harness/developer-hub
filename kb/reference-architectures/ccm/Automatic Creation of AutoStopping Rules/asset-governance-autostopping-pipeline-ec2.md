@@ -1,5 +1,5 @@
 ---
-title: Governance + Pipelines for Automatic Autostopping
+title: Governance + Pipelines for Automatic Scheduled Autostopping
 description: Automatically Create EC2 Schedule Based Autostopping Rules using a Pipeline and Asset Governance
 ---
 
