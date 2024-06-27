@@ -70,6 +70,10 @@ You can add up to 50,000 users in paid plans. Free plans and Harness Community E
 
 ### Set Default Landing URL for Invited Users
 
+:::note
+Currently, this feature is behind the feature flag `PL_PREFERENCE_LANDING_PAGE_UR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 When inviting a new user, you can set a default landing URL that the user will be directed to upon their login. This feature helps in guiding users to a specific page or dashboard based on their preference.
 
 1.	In the invitation form, enter the email addresses of the users you want to invite.
@@ -81,6 +85,10 @@ When inviting a new user, you can set a default landing URL that the user will b
 After the user accepts the invite and logs in, they will be redirected to the specified URL.
 
 ### Updating User Preferences
+
+:::note
+Currently, this feature is behind the feature flag `PL_PREFERENCE_LANDING_PAGE_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 Users can update their default landing URL from their profile settings:
 
