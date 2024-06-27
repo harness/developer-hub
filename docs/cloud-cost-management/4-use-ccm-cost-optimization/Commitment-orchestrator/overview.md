@@ -10,10 +10,6 @@ helpdocs_is_published: true
 
 # Introduction to Commitment Orchestrator 
 
-:::note
-Currently, Commitment Orchestrator is behind the feature flags `CCM_COMMORCH` and `CCM_COMM_SETUP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 In recent years, organizations leveraging cloud services have witnessed a notable trend - the steady increase in cloud costs. As businesses increasingly migrate their operations to the cloud or expand their existing cloud infrastructure, the expenses associated with cloud infrastructure, storage, and data processing have become a significant portion of their overall expenditures.
 
 This rise in cloud costs reflects the growing scale of business operations in the cloud environment, as many organizations transition from on-premises infrastructure to cloud-based solutions or ramp up their existing cloud utilization. It signifies the expanding scope and investment in cloud services.
@@ -162,7 +158,7 @@ The Commitment Orchestrator supports six action states currently:
 The Commitment Orchestrator facilitates the following:
 - **SP Purchase Plan**: We send out monthly recommendations for purchasing Compute SP (Savings Plans), provided there isn't an existing SP in place already. Upon receipt, you will have 24 hours to approve the request. If not approved within this timeframe, the recommendation will expire. However, rest assured that our systems will automatically regenerate the recommendation for your consideration.
   
-- **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Standard Purchase (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend. 
+- **RI Purchase Plan**: Our system generates recommendations for purchasing Convertible Reserved Instances (RIs), multiple times throughout the month. Just like with Savings Plands (SP) recommendations, you'll have a 24-hour window to approve these recommendations. Should you miss the window, new recommendations will be automatically generated to accommodate any changes in the compute spend. 
 Additionally, if there are no existing AWS EC2 t3.nano RIs, a seed RI (t3.nano) will be purchased. If any other RI exists, we will leverage it to obtain a t3.nano to ensure that the t3.nano also expires along with the original RI.
 
 - **RI Exchange Plan**: If you're considering exchanging RI, our system provides recommendations that will be generated multiple times daily. Whether you choose to approve individual exchanges or group them, you have the flexibility to manage your resources efficiently. Just like with purchase plans, recommendations may change based on the compute spend variations, and if not acted upon within 24 hours, they will expire and be regenerated automatically.
