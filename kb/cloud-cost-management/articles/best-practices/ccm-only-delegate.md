@@ -40,6 +40,6 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
   # Provisions a cluster role with these permissions https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/templates/ccm/cost-access.yaml
   --set ccm.visibility=true \
   
-  # Prevent the delegate from being used for CD, running scripts
+  # Prevent the delegate from being used for running scripts
   --set-json custom_envs='[{"name":"BLOCK_SHELL_TASK","value":"true"}]'
   ```
