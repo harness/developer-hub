@@ -8,7 +8,7 @@ This topic describes how you can create email alerts for your chaos experiments.
 
 
 ## What are alerts?
-Alerts are a form of communication that provide updates about your experiment runs. These alerts are provided in the form of email updates that describe your chaos experiments that started, stopped, and completed (depending on which type of experiments you configured to receive the alerts for).
+Alerts are a form of communication that provide updates about your experiment runs. These alerts are provided in the form of email updates that describe your chaos experiments that started, stopped, and completed (depending on which type of experiment events you have configured to receive the alerts for).
 
 ## Why are they required?
 Alerts provide the status of the chaos experiments and other details (such as run details, fault configurations, probes used, and so on) that might be required when making important business decisions. You can also use alerts as historical data for the earlier chaos experiment runs.
@@ -117,9 +117,13 @@ If you try to create multiple rules on the same chaos experiment, you can seamle
 
 ### Sample run report
 
-Once you set up your email to receive alerts and the feature flag is enabled, you should receive a run report as an attachment similar to the below report. This report will describe the run details, fault details, and so on.
+Once you set up your email to receive alerts for chaos experiments that are completed events as a part of [creating conditions](#create-a-condition) and the feature flag is enabled, you should receive a run report as an attachment similar to the below report. This report will describe the run details, fault details, and so on.
 
     ![](./static/alert-integration/sample-report-17.png)
+
+:::tip
+Currently, you will receive the report if and only if you configure a condition to receive alerts for chaos experiments that are **Completed**. You can't choose to not receive an alert for completed chaos experiments.
+:::
 
 ### Delete a rule
 
