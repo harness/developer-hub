@@ -89,8 +89,6 @@ The following deprecated API endpoints are longer supported:
 
 - The CI module on the Subscriptions page didn't display the **Available credits** summary card and **Credits breakdown** table. You can now view the **Available credits** summary card and **Credits breakdown** table when `PL_ENABLE_LICENSE_USAGE_COMPUTE` is disabled. When the flag is enabled, the summary card and table are moved to the Cloud Credits page instead of Subscriptions page. (PL-51838, ZD-65108)
 
-- Pipelines were hanging when the pipeline-service was scaled up or down by HPA, causing some pipelines to become stuck, requiring manual abortion. Increased the graceful timeout from 30 seconds to 180 seconds to prevent pipelines from hanging during pipeline-service scaling. (PL-51780, ZD-63250)
-
 ### Version 1.42.4<!-- June 20, 2024 -->
 
 #### New features and enhancements
