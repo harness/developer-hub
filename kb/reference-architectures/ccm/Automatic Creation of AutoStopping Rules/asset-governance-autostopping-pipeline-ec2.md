@@ -405,7 +405,7 @@ REGION (Expression) = <+trigger.payload.region>
 ```
  ![](../../static/ccm_asset_governance_trigger_jexl_environment_variables.png)
 
-Click `Create Trigger`. On the triggers screen, select the `WEBHOOK` icon and copy the webhook URL.  Store this URL somewhere, it will be used later.
+Click `Create Trigger`. On the triggers screen, select the `WEBHOOK` icon and copy the webhook URL. Store this URL somewhere, it will be used later.
 
 ![](../../static/ccm_asset_governance_pipeline_webhook.png)
 
