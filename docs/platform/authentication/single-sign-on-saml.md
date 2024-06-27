@@ -892,3 +892,11 @@ To download your encryption certificate and upload it to your IdP settings, do t
 
 When you sign in to Harness via SAML, the operation is completed using encrypted assertions.
 
+## Setting the Default Experience
+Environment Administrators may wish to set the default generation landing page for their users.  This is to ensure the correct Harness Experience is being provided to each user.  For example, if an administrator would like all users to experience the **Harness Next Generation** interface
+
+1. Go to the **Account Settings**, and select **Settings**
+
+2. Under **Account Details**, there is a field called **Default Experience** that environment administrators can see and change.  Click on Change and select the desired experience and click save.
+
+   ![](./static/defaultexperience.png)

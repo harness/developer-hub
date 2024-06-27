@@ -382,3 +382,12 @@ For the Harness production cluster prod-3, the local login URL is `https://app3.
 :::info note
 You can disable Local Login using the feature flag `DISABLE_LOCAL_LOGIN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature flag.
 :::
+
+## Setting the Default Experience
+Environment Administrators may wish to set the default generation landing page for their users.  This is to ensure the correct Harness Experience is being provided to each user.  For example, if an administrator would like all users to experience the **Harness Next Generation** interface
+
+1. Go to the **Account Settings**, and select **Settings**
+
+2. Under **Account Details**, there is a field called **Default Experience** that environment administrators can see and change.  Click on Change and select the desired experience and click save.
+
+   ![](./static/defaultexperience.png)
