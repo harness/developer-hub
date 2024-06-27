@@ -396,7 +396,7 @@ if __name__ == "__main__":
 
 ## Create Pipeline Webhook
 
-Click `Create Trigger`. On the triggers screen, select the `WEBHOOK` icon and copy the webhook URL. Store this URL somewhere, it will be used later.
+Next click on `Triggers` in the top right and select `+ New Trigger` and select the `Custom` Webhook type. Give the trigger a name and click continue. Skip the conditions section by clicking continue. Input the follow JEXL for the three inputs:
 
 ```
 INSTANCE_ID (Expression) = <+trigger.payload.instance_id>
