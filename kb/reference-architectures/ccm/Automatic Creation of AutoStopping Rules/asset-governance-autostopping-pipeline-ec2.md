@@ -1,5 +1,5 @@
 ---
-title: Automatically Create EC2 Schedule Based Autostopping Rules using a Pipeline and Asset Governance
+title: Governance + Pipelines for Automatic Autostopping
 description: Automatically Create EC2 Schedule Based Autostopping Rules using a Pipeline and Asset Governance
 ---
 
@@ -17,7 +17,7 @@ This guide assumes you have CCM set up correctly for Asset Governance and autost
 
 You will also need a [Kubernetes connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) with access to deploy pods in some cluster. 
 
-We need an api key to do certain platform and CCM actions in the pipeline.  Create a service account with CCM Admin and Account Viewer permissions for all resources.  Generate an api key and store the api key as a secret.  In this case, we will assume the secret id is `api`.  Remember the id given, it will be used in future steps.
+We need an api key to do certain platform and CCM actions in the pipeline. Create a service account with CCM Admin and Account Viewer permissions for all resources. Generate an api key and store the api key as a secret. In this case, we will assume the secret id is `api`. Remember the id given, it will be used in future steps.
 
 ## Pipeline Setup
 
@@ -26,8 +26,8 @@ Create a pipeline in some Harness project.
 ### Setup the Stage / Step Group 
 
 1. Create a new Stage of type `custom`
-2. Add a Step Group to the execution tab of your stage.  Give it a name and select `enable container base execution`, select your kubernetes connector in the Kubernetes cluster selection box.
-3. We will now create three steps in our step group.  All three steps are `Run` steps.  They will be configured to use a Python image to execute a Python script.  For all three steps, there is a common setup that needs to happen described below.  All three will use the built in Harness Connector, image=`rssnyder/py3requests`, and Shell=`Python`.  You can also use any other Docker Hub conneector and image as long as the image has Python3 and `requests`.   We'll purposefully leave the command section blank for now and add in the Python code in a subsequent step.
+2. Add a Step Group to the execution tab of your stage. Give it a name and select `enable container base execution`, select your kubernetes connector in the Kubernetes cluster selection box.
+3. We will now create three steps in our step group. All three steps are `Run` steps. They will be configured to use a Python image to execute a Python script. For all three steps, there is a common setup that needs to happen described below. All three will use the built in Harness Connector, image=`rssnyder/py3requests`, and Shell=`Python`. You can also use any other Docker Hub conneector and image as long as the image has Python3 and `requests`. We'll purposefully leave the command section blank for now and add in the Python code in a subsequent step.
   
   Run Step Setup:
 
@@ -36,7 +36,7 @@ Create a pipeline in some Harness project.
   The three steps are:
 
   1. 'Find Existing Autostopping Rule'
-      * Configure an output variable `RULE_ID`.  Will be used in next step.
+      * Configure an output variable `RULE_ID`. Will be used in next step.
       * Environment Variables:
 
       ```
@@ -396,7 +396,7 @@ if __name__ == "__main__":
 
 ## Create Pipeline Webhook
 
-Next click on `Triggers` in the top right and select `+ New Trigger` and select the `Custom` Webhook type. Give the trigger a name and click continue. Skip the conditions section by clicking continue. Input the follow JEXL for the three inputs:
+Click `Create Trigger`. On the triggers screen, select the `WEBHOOK` icon and copy the webhook URL. Store this URL somewhere, it will be used later.
 
 ```
 INSTANCE_ID (Expression) = <+trigger.payload.instance_id>
@@ -442,7 +442,7 @@ Replace the url with the webhook url we copied earlier
 
 ## Execute
 
-When we run the Asset Governance rule (not in dry-run mode) and when a resource is found, Asset Governance will call our pipeline custom trigger and pass the metadata. Navigate to `Execution History` of your pipeline and ensure the latest pipeline was successful.  If you want to automate the invoking of the Asset Governance rule, you can create an [enforcement](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/Harness-Concepts#enforcements)
+When we run the Asset Governance rule (not in dry-run mode) and when a resource is found, Asset Governance will call our pipeline custom trigger and pass the metadata. Navigate to `Execution History` of your pipeline and ensure the latest pipeline was successful. If you want to automate the invoking of the Asset Governance rule, you can create an [enforcement](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/asset-governance/AWS/Harness-Concepts#enforcements)
 
 ![](../../static/ccm_asset_governance_execution_history.png)
 
@@ -450,7 +450,7 @@ When we run the Asset Governance rule (not in dry-run mode) and when a resource 
 
 1. If a rule was created using a tag and the tag was later removed, the rule will still exist.
 2. Selecting 'allregions' option in the enforcement isn't support.
-3. This example is only covers one specific schedule.  If you wanted to make another schedule you should:
+3. This example is only covers one specific schedule. If you wanted to make another schedule you should:
     * Clone the pipeline
     * Update the schedule environment variables in the 'Create AutoStopping Rule' step
     * Create a new trigger

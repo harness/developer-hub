@@ -13,7 +13,7 @@ You will need access to describe EC2 instances in AWS and create AutoStopping ru
 
 ## Setup Providers
 
-We need to leverage the AWS and Harness Terraform providers.  We will use these to query for instances to stop and create the rules/schedules accordingly.
+We need to leverage the AWS and Harness Terraform providers. We will use these to query for instances to stop and create the rules/schedules accordingly.
 
 ```
 terraform {
@@ -96,7 +96,7 @@ resource "harness_autostopping_schedule" "this" {
 
   repeats {
     days       = ["MON", "TUE", "WED", "THU", "FRI"]
-    start_time = "11:00"
+    start_time = "11:00" 
     end_time   = "17:00"
   }
 
