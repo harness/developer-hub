@@ -168,7 +168,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
       4. In the **Criteria** field, choose **Percentage Deviation**, and from **Greater than** select 1. This sets a threshold for memory usage beyond which the system or application is considered to be in a problematic state, and action should be taken.
 
       ![](./static/new-relic-4.png)
-      
+
 12. Select **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
@@ -179,7 +179,7 @@ Here are few sample New Relic queries:
 
 - `SELECT rate(count(duration), 1 minute) FROM Transaction TIMESERIES`
 - `SELECT average(duration) FROM Transaction TIMESERIES`
-- `SELECT average(`apm.service.transaction.duration`) FROM Metric WHERE appId = 1329709976 TIMESERIES`
+- ```SELECT average(`apm.service.transaction.duration`) FROM Metric WHERE appId = 1329709976 TIMESERIES```
 
 For more details on NRQL structure and how to use it, go to [New Relic documentation](https://docs.newrelic.com/docs/nrql/get-started/introduction-nrql-new-relics-query-language/).
 
