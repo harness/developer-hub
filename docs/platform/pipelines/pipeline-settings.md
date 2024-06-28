@@ -39,6 +39,7 @@ By default, before running any pipeline, Harness checks whether the user has acc
 Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
 
 The **Run RBAC Validation before executing Inline Pipelines** setting is available in the account-level default settings.
+
    ![](./static/rbac_pipeline.png)
 
 ### Do Not Delete Pipeline Execution Details
