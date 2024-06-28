@@ -44,7 +44,7 @@ seccompProfile:
 
 The message `failed to delete app in argo: failed to execute delete app task: rpc error: code = Unknown desc = finalizer detected,` indicates that the application you are trying to delete has a finalizer. If a finalizer is used, Argo CD does not delete the application until its resources are deleted. Therefore, the Harness GitOps Agent reconciles the existing application. 
 
-To delete the application, remove the finalizer or delete its resources. Removing the finalizer should lead to the app being deleted automatically. For more information about the Argo CD app deletion finalizer, go to the [Argo CD documentation](https://argo-cd.readthedocs.io/), switch to the [supported Argo CD version](gitops-ref/docs/continuous-delivery/cd-integrations.md), and then perform a search for the app deletion finalizer.
+To delete the application, remove the finalizer or delete its resources. Removing the finalizer should lead to the app being deleted automatically. For more information about the Argo CD app deletion finalizer, go to the [Argo CD documentation](https://argo-cd.readthedocs.io/), switch to the [supported Argo CD version](/docs/continuous-delivery/cd-integrations), and then perform a search for the app deletion finalizer.
 
 ### Error: Unable to delete or create app due to "error: create not allowed while custom resource definition is terminating"
 

@@ -28,7 +28,7 @@ This example shows you how to set up Harness GitOps using one of your Kubernetes
 
 You'll learn how to:
 
-* Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/hosted-gitops/).
+* Install a Harness GitOps Agent in your target cluster. You can skip this if you are using [Hosted GitOps](/docs/continuous-delivery/gitops/connect-and-manage/hosted-gitops).
 * Set up a Harness GitOps Cluster to points to the target cluster.
 * Set up a Harness GitOps Repository that points to the source manifest repo.
 * Set up a Harness GitOps Application that collects the Agent Cluster, and Repository, and defines the sync policy for GitOps.
@@ -84,7 +84,7 @@ Ensure your Harness Project has the **Continuous Delivery** module enabled.
 4. Select **New GitOps Agent**. The Agent creation wizard appears.
 
    You can choose to install a Harness GitOps Agent with or without an existing Argo CD instance. 
-5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/use-gitops/install-a-harness-git-ops-agent/#harness-gitops-agent-with-existing-argo-cd-project).
+5. For this example, select **No** and select **Start**. If you already have an existing ArgoCD instance, create the agent as described in [these steps](/docs/continuous-delivery/gitops/connect-and-manage/install-a-harness-git-ops-agent#harness-gitops-agent-with-existing-argo-cd-project).
 
    ![](./static/harness-cd-git-ops-quickstart-04.png)
 6. In **Name**, enter the name **example**.
