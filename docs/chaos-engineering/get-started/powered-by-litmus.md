@@ -41,7 +41,7 @@ HCE module has the following additional capabilities:
 10. [SSH chaos faults](/docs/chaos-engineering/chaos-faults/ssh)
 11. [Kubernetes chaos faults](/docs/chaos-engineering/chaos-faults/kubernetes)
 12. Teaming around ChaosHubs
-13. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/probes/dynatrace-probe.md))
+13. Resilience probes ([Dynatrace](/docs/chaos-engineering/features/resilience-probes/datadog-probe.md) and [Datadog](/docs/chaos-engineering/features/resilience-probes/dynatrace-probe.md))
 14. [ChaosGuard](/docs/chaos-engineering/features/chaosguard/introduction-to-chaosguard.md)
 
 ## Integrations with other Harness modules

@@ -145,7 +145,7 @@ When the chaos infrastructure is deployed on EKS clusters, the experiments can l
 
 ### How does Harness Chaos access APM platforms to perform hypothesis validation?
 
-Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/probes/cmd-probe).
+Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. To learn more, go to [command probes](/docs/chaos-engineering/features/resilience-probes/cmd-probe).
 
 ### What are the details about the user and the user's environment accessed and stored by Harness?
 
