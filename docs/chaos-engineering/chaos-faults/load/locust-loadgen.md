@@ -138,7 +138,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-loadgen-chaos
+  - name: locust-load-generator
     spec:
       components:
         env:
@@ -163,7 +163,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-loadgen-chaos
+  - name: locust-load-generator
     spec:
       components:
         env:
@@ -190,7 +190,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-loadgen-chaos
+  - name: locust-load-generator
     spec:
       components:
         env:
@@ -215,7 +215,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: locust-loadgen-chaos
+  - name: locust-load-generator
     spec:
       components:
         env:

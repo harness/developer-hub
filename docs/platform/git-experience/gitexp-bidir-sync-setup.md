@@ -4,10 +4,6 @@ description: learn how to set up and use bidirectional sync for Git Experience.
 sidebar_position: 3
 ---
 
-:::note
-Currently, this feature is behind the feature flag `PIE_GIT_BI_DIRECTIONAL_SYNC`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 By default, Harness Git Experience syncs unidirectionally, from Harness to your Git repos. You can also have Harness Git Experience sync bidirectionally between Harness and your Git repo.
 
 With bidirectional sync for Git Experience, changes made on either the Git repo or Harness are synched automatically.
@@ -63,6 +59,10 @@ You will need a webhook to your repo to use bi-directional sync:
    The **Folder Path** setting is optional. If you omit a folder path, Harness will sync everything in the repo.
 
 8. Select **Add**. The webhook is added. You can navigate to your repo webhook settings to see the new webhook.
+
+:::info
+The `.harness` folder is tracked by default for all webhooks.
+:::
 
 In the **Webhooks** page, you can see the **Events** tab. Once you have synched an entity with the Git repo, the Git events are displayed here. You can view Git event Ids for troubleshooting.
 

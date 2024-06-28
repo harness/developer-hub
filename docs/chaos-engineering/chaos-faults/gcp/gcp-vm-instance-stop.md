@@ -102,6 +102,13 @@ stringData:
       </tr>
     </table>
 
+### IAM permissions
+
+Listed below are the IAM permissions leveraged by the fault:
+- `compute.instances.get`
+- `compute.instances.stop`
+- `compute.instances.start`
+
 ### Target GCP instances
 It stops all the instances with the `VM_INSTANCE_NAMES` instance names in the `ZONES` zone in the `GCP_PROJECT_ID` project.
 
@@ -213,5 +220,4 @@ spec:
           value: 'zone-01,zone-02'
         - name: GCP_PROJECT_ID
           value: 'project-id'
-       
 ```

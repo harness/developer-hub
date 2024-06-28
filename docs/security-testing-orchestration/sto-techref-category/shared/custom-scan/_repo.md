@@ -34,8 +34,5 @@ repository_branch
 
 The branch that gets reported in STO for the ingested results. In most cases, this field should match the name of the Git branch that is getting scanned.
 
-You can specify a hardcoded string or use a variable such as `<+codebase.branch>` to specify the branch at runtime. For more information, go to:
-- [Trigger STO scans to block pull requests with vulnerabilities](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/trigger-sto-scans-to-block-prs-with-vulnerabilities)
-- [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
-     
+You can specify a hardcoded string or use a variable such as `<+codebase.branch>` to specify the branch at runtime. For more information, go to [CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
 

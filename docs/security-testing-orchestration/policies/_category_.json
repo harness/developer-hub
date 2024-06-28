@@ -1,0 +1,11 @@
+{
+    "label": "Enforce policies for governance",
+    "position": 70,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Enforce policies for governance"
+    }
+}

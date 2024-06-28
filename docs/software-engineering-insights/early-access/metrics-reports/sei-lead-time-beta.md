@@ -1,14 +1,16 @@
 ---
-title: Lead Time Improved Calculation
+title: Lead Time (Behind FF)
 description: A new calculation logic for computing the Lead Time metric.
 sidebar_position: 100
-sidebar_label: Lead Time Improved Calculation
+sidebar_label: Lead Time (Behind FF)
 ---
 :::info
 Note that the **202404.1.1 Release** introduced a new calculation logic for computing the **Lead Time** metric.
 :::
 
 Lead Time is a metric that measures the total time taken for an issue (e.g., a new feature, bug fix, or any other code change) to move through the entire software delivery pipeline, from the initial creation of the issue to its final release into production.
+
+## Measure Average Lead Time
 
 The new calculation logic uses the time of the entry into each stage, rather than the exit time from that stage. This means that the **Lead Time** for a particular stage is calculated as the time taken for the issue to reach that stage for the first time, rather than the time spent in that stage itself.
 
@@ -33,7 +35,7 @@ This change impacts the following reports:
 
 This feature is currently in **BETA** and is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
-### **Calculation Example**
+### Calculation Example
 
 In this example, we consider a use case where a single pull request (PR) is associated with a single Jira ticket. The new **Lead Time** calculation with stages for Issue Management, CI/CD Platform and SCM is displayed below.
 
@@ -121,3 +123,52 @@ Therefore, the Total Lead Time for this example is **70 minutes**.
 :::info
 Note that for the **Lead Time** calculation, if an issue moves to the same status multiple times during its lifecycle, only the first transition to that status is used for calculating the Lead Time for that particular stage.
 :::
+
+## Measure Median Lead Time
+
+The median lead time is a measure that represents the middle value of all lead times when arranged in ascending order. It provides insight into the typical or expected lead time for completing work across all tickets or process instances.
+
+### Calculation (Sum of Medians)
+
+This is the standard way to calculate the median lead time:
+
+For each stage in the worlkflow (for example: Stage 1, Stage 2, Stage 3, ..., Stage N), the median lead time is calculated across all tickets:
+
+```bash
+Median Lead Time for Stage 1 = Median(Stage 1 Lead Times for all tickets)
+Median Lead Time for Stage 2 = Median(Stage 2 Lead Times for all tickets)
+...
+Median Lead Time for Stage N = Median(Stage N Lead Times for all tickets)
+```
+
+The overall median lead time is calculated as the sum these individual stage medians:
+
+```bash
+Overall Median Lead Time = Median Lead Time for Stage 1 + Median Lead Time for Stage 2 + ... + Median Lead Time for Stage N
+```
+
+### Calculation (Median of Sums)
+
+This is an alternative way to calculate the median lead time, which you can enable using a feature flag:
+
+For each ticket, the lead time is calculated for each stage and then the overall lead time calculated as the sum of the lead time across all stages:
+
+```bash
+Ticket 1 Total Lead Time = Stage 1 Lead Time + Stage 2 Lead Time + ... + Stage N Lead Time
+Ticket 2 Total Lead Time = Stage 1 Lead Time + Stage 2 Lead Time + ... + Stage N Lead Time
+...
+Ticket M Total Lead Time = Stage 1 Lead Time + Stage 2 Lead Time + ... + Stage N Lead Time
+```
+
+Then the median of these total lead times is calculated across all tickets:
+
+```bash
+Median Lead Time = Median(Ticket 1 Total Lead Time, Ticket 2 Total Lead Time, ..., Ticket M Total Lead Time)
+
+Median Lead Time = Median(Sum of Stage Lead Times for all tickets)
+
+```
+
+This new calculation method provides a different approach on the overall lead time by considering the total lead time for each ticket rather than summing the stage-level medians.
+
+The choice between these two methods depends on your specific requirements and assumptions about the distribution of lead times across stages or tickets.

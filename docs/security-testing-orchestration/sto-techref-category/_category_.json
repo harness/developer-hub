@@ -1,12 +1,12 @@
 {
-    "label": "STO technical reference",
-    "position": 30,
+    "label": "Scanner configurations",
+    "position": 40,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
        "type": "generated-index",
-       "title": "STO technical reference"
+       "title": "Scanner configurations"
     },
     "customProps": {
       "helpdocs_category_id": "m01pu2ubai"

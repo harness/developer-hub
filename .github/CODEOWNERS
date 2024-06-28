@@ -54,7 +54,7 @@ README.md @ravilach
 /docs/chaos-engineering/ @neelanjan00 @SmritiSatya
 
 # Platform Docs
-/docs/platform/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+/docs/platform/ @brian-f-harness @saifeemustafaqharness
 
 # IDP Docs
 /docs/internal-developer-portal/ @Debanitrkl
@@ -80,10 +80,10 @@ README.md @ravilach
 /docs/category/continuous-delivery/ @krishi0408 @SushrutHarness @roshnisarangadharan
 
 # Platform Docs
-/docs/category/platform-firstgen/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+/docs/category/platform-firstgen/ @brian-f-harness @saifeemustafaqharness
 
 # SMP Docs
-/docs/category/self-managed-enterprise-edition-fg/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+/docs/category/self-managed-enterprise-edition-fg/ @brian-f-harness @saifeemustafaqharness
 
 # CCM Docs
 /docs/category/cloud-cost-management/ @rdsoze @navaneeth @Rohit-Kaliki @joeyouss
@@ -103,16 +103,16 @@ README.md @ravilach
 /docs/faqs/security-testing-orchestration/ @douglas-j-bothwell
 
 # Chaos FAQs
-/docs/faqs/chaos-engineering-faq/ @neelanjan00 @SmritiSatya
+/kb/chaos-engineering/chaos-engineering-faq @neelanjan00 @SmritiSatya
 
 # Delegate FAQs
-/docs/faqs/harness-delegate-faqs/ @brian-f-harness @harishkammanahalli
+/docs/faqs/harness-delegate-faqs/ @brian-f-harness @saifeemustafaqharness
 
 # GitEx FAQs
 /docs/faqs/git-exp-vs-config-as-code/ @krishi0408 @SushrutHarness @roshnisarangadharan
 
 # SMP FAQs
-/docs/faqs/self-managed-ee-faq/ @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+/docs/faqs/self-managed-ee-faq/ @brian-f-harness @saifeemustafaqharness
 
 # Release Notes ###
 
@@ -135,7 +135,7 @@ README.md @ravilach
 /release-notes/code-repository.md @pwolf-harness @hitesharinga
 
 # Delegate Release Notes
-/release-notes/delegate.md @brian-f-harness @harishkammanahalli
+/release-notes/delegate.md @brian-f-harness @saifeemustafaqharness
 
 # FF Release Notes
 /release-notes/feature-flags.md @HarnessTheChaos @jenniferopal
@@ -144,7 +144,7 @@ README.md @ravilach
 /release-notes/internal-developer-portal.md @Debanitrkl
 
 # Platform Release Notes
-/release-notes/platform.md @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+/release-notes/platform.md @brian-f-harness @saifeemustafaqharness
 
 # SEI Release Notes
 /release-notes/software-engineering-insights.md @codewdhruv
@@ -153,7 +153,7 @@ README.md @ravilach
 /release-notes/security-testing-orchestration.md @douglas-j-bothwell
 
 # SMP
-/release-notes/self-managed-enterprise-edition.md @brian-f-harness @harishkammanahalli @saifeemustafaqharness
+/release-notes/self-managed-enterprise-edition.md @brian-f-harness @saifeemustafaqharness
 
 # SRM Release Notes
 /release-notes/service-reliability-management.md @sunilgupta-harness

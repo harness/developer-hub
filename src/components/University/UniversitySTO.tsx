@@ -196,8 +196,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Security Testing
-                      Orchestration Free/Team Plans
+                      <strong>Product version: </strong> Harness STO Free/Team Plans
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -263,8 +262,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Security Testing
-                      Orchestration Enterprise Plan
+                      <strong>Product version: </strong> Harness STO Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>
@@ -338,8 +336,7 @@ export default function CertificationsSTO() {
                       className={styles.badge}
                     />
                     <span className={styles.productVersion}>
-                      <strong>Product version: </strong> Security Testing
-                      Orchestration Enterprise Plan
+                      <strong>Product version: </strong> Harness STO Enterprise Plan
                     </span>
                   </div>
                   <div className={styles.right}>

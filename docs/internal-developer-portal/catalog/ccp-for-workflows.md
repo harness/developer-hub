@@ -111,10 +111,10 @@ owner:
     ui:field: EntityFieldPicker
     ui:displayField: metadata.additionalInfo.onShoreTeamLead
     ui:options:
-    catalogFilter:
-        kind: 
-        - Component
-        - Service
+        catalogFilter:
+            kind: 
+            - Component
+            - Service
 ...
 ```
 
@@ -160,10 +160,10 @@ spec:
             ui:field: EntityFieldPicker
             ui:displayField: metadata.additionalInfo.onShoreTeamLead
             ui:options:
-            catalogFilter:
-                kind: 
-                - Component
-                - Service
+                catalogFilter:
+                    kind: 
+                    - Component
+                    - Service
         # This field is hidden but needed to authenticate the request to trigger the pipeline
         token:
           title: Harness Token

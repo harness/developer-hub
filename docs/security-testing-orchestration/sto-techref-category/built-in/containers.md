@@ -11,8 +11,6 @@ You can use this step to add a built-in Aqua Trivy and/or Anchor Grype step to d
 
 :::note notes
 
-- This step is currently behind the feature flag `STO_ONE_CLICK`. Contact [Harness Support](mailto:support@harness.io) to enable it. 
-
 - Currently [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/trivy/aqua-trivy-scanner-reference) and [Anchor Grype](/docs/security-testing-orchestration/sto-techref-category/grype/grype-scanner-reference) scans are available for this step.
 
 - If you choose to add both scanners, you might see the same vulnerability listed twice — detected once by Trivy and again by Grype — in your scan results.
