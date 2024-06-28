@@ -59,7 +59,7 @@ COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_ar
 # FYI establishes trust for certificates in Python and the OS 
 RUN sto_plugin --trust-certs
 # Optional: To trust certificates for Java for tools such as
-# - Black Duck Hub
+# - Black Duck
 # - Checkmarx
 # - Sonarqube
 # - Veracode
@@ -94,12 +94,12 @@ You need a Docker connector that points to your private container registry. For 
 
 3. Set up your pipeline to download the images from your private registry. Configuration requirements depend on the type of step you're using to run your scans:
 
-   - [Scanner-specific step](#scanner-template-setup)
-   - [Custom Scan step](#security-step-setup)
+   - [Scanner-specific step](#scanner-step-setup)
+   - [Custom Scan step](#custom-scan-step-setup)
 
 ### Scanner step setup
 
-Do the following if you're using a scanner step such as [**Black Duck Hub**](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) or [**Snyk**](/docs/security-testing-orchestration/sto-techref-category/snyk/snyk-scanner-reference#snyk-step-configuration) rather than a generic **Custom Scan** step. 
+Do the following if you're using a scanner-specific step such as **SonarQube** rather than a generic **Custom Scan** step. 
 
 1. In the stage where you're setting up the step, go to the **Infrastructure** tab. 
 
@@ -107,7 +107,17 @@ Do the following if you're using a scanner step such as [**Black Duck Hub**](/do
 
    ![](../static/override-image-connector.png)
 
-3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
+2. If you want to use a proxy server for traffic between Harness and the scanner, specify the following: 
+
+   * `http_proxy`  —  The hostname and port to use for proxied HTTP requests
+  
+   * `https_proxy`  —  The hostname and port to use for proxied HTTPS requests
+
+   * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
+
+3. Some SaaS-based scanners support additional proxy configurations using CLI arguments. You can use the **Additional CLI flags** field in the scanner step to enter these arguments.
+
+4. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
    1. Open the scanner step and expand **Additional Configuration**. 
    
@@ -137,7 +147,7 @@ Do the following if you're using a generic [**Custom Scan**](/docs/security-test
 
   :::
 
-2. If you need to use a proxy server, you must also specify the following: 
+2. If you want to use a proxy server for traffic between Harness and the scanner, specify the following: 
 
    * `http_proxy`  —  The hostname and port to use for proxied HTTP requests
   
@@ -145,7 +155,10 @@ Do the following if you're using a generic [**Custom Scan**](/docs/security-test
 
    * `no_proxy`  — A comma-separated list of hosts to bypass the proxy
 
-3. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
+3. If you're setting up a SaaS-based scanner that supports proxy configurations via CLI arguments, you can add a **Settings** field to specify these arguments. Use `tool_args` for the key:
+   - `tool_args` = `proxy-arg-1=valOne proxy-arg-1=valTwo`
+
+4. If you specified a `USER` in the Dockerfile for your scan image, configure the scan step to run as the user:
 
    1. Open the scanner step and expand **Additional Configuration**. 
 
