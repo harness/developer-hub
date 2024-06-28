@@ -1,7 +1,9 @@
 ---
 title: Harness GitOps pipeline steps
 description: Configure Harness pipeline steps for GitOps.
-sidebar_position: 10
+sidebar_position: 30
+redirect_from:
+  - /docs/continuous-delivery/gitops/use-gitops/gitops-pipeline-steps
 ---
 
 This topic shows you how to configure your Harness GitOps pipeline steps. Few of these steps are specifically meant to be used with [PR pipelines](/docs/continuous-delivery/gitops/pr-pipelines/pr-pipelines-basics.md), but others can be used directly in your GitOps pipeline stages. 
@@ -73,7 +75,7 @@ The Fetch Linked Apps step provides app information, such as the app name, agent
 
 The following image shows information that is displayed on the **Output** tab of the step:
 
-![picture 1](static/9b9bdbb81176317f5eafdd31e982b081ba449514f56fa5d9222effc03f69bd88.png)
+![picture 1](../use-gitops/static/9b9bdbb81176317f5eafdd31e982b081ba449514f56fa5d9222effc03f69bd88.png)
 
 You can copy the expression for any output in the **Output Name** column and use it to reference the output value in a subsequent Shell Script step or step setting.
 
@@ -146,7 +148,7 @@ Existing Helm parameters and file parameters are merged with the values provided
 
 If a parameter is specified both in the values file and as a parameter or file parameter override, the latter takes precedence.
 
-![](static/harness-git-ops-application-set-tutorial-64.png)
+![](../use-gitops/static/harness-git-ops-application-set-tutorial-64.png)
 
 Once your GitOps application is updated, you can use the GitOps Sync step to deploy your changes.
 
@@ -156,7 +158,7 @@ This step triggers a sync for your existing or updated GitOps application.
 
 After selecting this step, in **Advanced Configuration**, select the application you want to sync and configure the sync options. Optionally, click on the **Wait until healthy** checkbox, if you would like the step to run until the application reaches it's "Healthy" state.
 
-![](./static/gitopssync-step.png)
+![](../use-gitops/static/gitopssync-step.png)
 
 The sync options provided are the same options you receive while syncing an application in GitOps directly.
 
