@@ -98,7 +98,7 @@ You can easily [create Git triggers](/docs/security-testing-orchestration/use-st
 
 - You should include a SAST scan at the start of every CI build pipeline. 
 
-- You can specify policies to fail the scan step if the scanner detects specific vulnerabilities. 
+- You can configure your scan step to fail if the scanner detects specific vulnerabilities. The default behavior is: if a step fails, the pipeline fails.
 
    STO supports two methods for specifying failure criteria: 
 
@@ -110,7 +110,7 @@ You can easily [create Git triggers](/docs/security-testing-orchestration/use-st
 
 - You can include multiple SAST scan steps at the start of your pipeline. If you have a license for a commercial scanner, you can include your commercial scanner in addition to one or more open-source scanners.
 
-   No single scanner is guaranteed to detect all vulnerabilities. Commercial scanners generally provide more extensive scanning functionality than free ones. 
+   No single scanner is guaranteed to detect all vulnerabilities. Commercial scanners generally provide more extensive scanning functionality than free ones.
 
 - SAST scans are only one part of an overall security strategy. You should also run [container scans on your images](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners) after building them and run [DAST scans on your running applications](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#artifact-scanners) after updating them.
 
