@@ -371,7 +371,7 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 
 - Fixed STO DAST (ZAP,  Burp, Nike & Map) Step template creation via the Template Studio. (STO-7603)
 
-- The Semgrep scan step now supports a set of new [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#scan-configuration) settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
+- The SonarQube step has a new Scan configuration option. When Branch scan is selected in Orchestration or Extraction mode, the scan extracts results for the branch defined in SonarQube (for manual executions) or the pull request defined in SonarQube (for triggered executions). (STO-5799, ZD-42661)
 
 - Updated Grype to support repository scans. (STO-7531)
 
