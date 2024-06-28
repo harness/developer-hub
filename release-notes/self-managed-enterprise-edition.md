@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-06-19T10:00
+date: 2024-07-01T10:00
 sidebar_position: 16
 ---
 
@@ -123,7 +123,7 @@ Upon providing your credentials and the release version, the script will proceed
 
 :::
 
-## June xx, 2024, version 0.18.0
+## July 1, 2024, version 0.18.0
 
 This release includes the following Harness module and component versions.
 
@@ -161,11 +161,11 @@ gsutil -m cp \
 
 #### Breaking change
 
-- Harness has now disabled the ability to update notes for an execution after it is complete. This functionality is behind the feature flag, `PIE_DISABLE_NOTES_UPDATE_AFTER_EXECUTION_COMPLETED`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18490)
+- Harness has now disabled the ability to update notes for an execution after it is complete. This functionality is behind the feature flag `PIE_DISABLE_NOTES_UPDATE_AFTER_EXECUTION_COMPLETED`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PIPE-18490)
 
 ### Early access
 
-- Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag, `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
+- Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness Support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
 
 ### New Feature and Enhancement
 
@@ -202,11 +202,11 @@ gsutil -m cp \
 
 #### Cloud Cost Management
 
-- Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
-Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. (CCM-17380)
+- Anomaly Drilldown Support: Harness has introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. (CCM-17137)
 
+- Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. (CCM-17380)
 
-- Cloud Perspective Recommendation Display: Recommendations alongwith their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. (CCM-17639)
+- Cloud Perspective Recommendation Display: Recommendations along with their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. (CCM-17639)
 
 - Time Filter Options for Recommendations: We have introduced UI changes to support time filter options for the last 60 days and 90 days in recommendations. This enhancement provides users with greater flexibility in analyzing recommendations over specific time periods. (CCM-17725)
 
@@ -218,11 +218,11 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 
 #### Continuous Delivery
 
-- Harness UI will permanently switch to the new navigation experience, Nav 2.0 on June 03, 2024. Users will not be able to switch back to the old UI after that. This feature is behind the feature flag, `CDS_NAV_PREFS`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-96833)
+- Harness UI will permanently switch to the new navigation experience, Nav 2.0 on June 03, 2024. Users will not be able to switch back to the old UI after that. This feature is behind the feature flag `CDS_NAV_PREFS`. Contact [Harness Support](mailto:support@harness.io) to enable it. (CDS-96833)
 
 #### Continuous Integration
 
-- Enabled Secure Connect support for Mac and Windows OS runners. (CI-12596
+- Enabled Secure Connect support for Mac and Windows OS runners. (CI-12596)
 
 - You can now specify the image pull policy for a CI Build stage in the Pipeline Editor: go to Infrastructure > Advanced > Image Pull Policy. (CI-12512, ZD-62987)
 
@@ -238,9 +238,9 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 
 - Service Account name and email fields are now exposed in the Role Assignment filter API, enhancing visibility and management. For more information, go to [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList). (PL-50613)
 
-- Users were receiving an invite email instead of a notification email when added to an account with OAuth and the AUTO_ACCEPT_SAML_ACCOUNT_INVITES feature flag enabled. This required users to set a password before logging in, even though OAuth was enabled. When auto acceptance is enabled for an account with OAuth, users will now receive only a notification email, not an invite email. Since OAuth is enabled, setting a password is optional. If needed, users can set their password by clicking on the "Forgot password?" button on the login page. (PL-41670)
+- Users were receiving an invite email instead of a notification email when added to an account with OAuth and the `AUTO_ACCEPT_SAML_ACCOUNT_INVITES` feature flag enabled. This required users to set a password before logging in, even though OAuth was enabled. When auto acceptance is enabled for an account with OAuth, users will now receive only a notification email, not an invite email. Since OAuth is enabled, setting a password is optional. If needed, users can set their password by selecting **Forgot password?** on the sign in page. (PL-41670)
 
-- A new banner has been added to the Delegate page to inform users about the upcoming change in the Harness support policy for delegates. The banner will display the updated policy, which includes 6 months of support followed by a 2-month upgrade period, totaling 8 months. For more details, for more information, please refer [Delegate expiration support policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-support-policy). (PL-49301)
+- A banner has been added to the Delegate page to inform users about the change in the Harness support policy for delegates. The banner displays the updated policy, which includes 6 months of support followed by a 2-month upgrade period, totaling 8 months. For more information, go to [Delegate expiration support policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-support-policy). (PL-49301)
 
 #### Security Testing Orchestration
 
@@ -284,7 +284,7 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 - Command-click on an execution name on the **Executions** page in the CD module did not work as expected. While it opens a new page with the relevant execution, it also opens the same execution on the original page. This issue is fixed. (PIPE-19465, ZD-63986)
 - The stage level delegate selector's expression evaluation failed if the expression had references to the service or environment since these were not set up. Now, Harness has introduced an annotator and skipped the expression evaluation for stage level delegate selectors. The expressions are evaluated when they are referenced in a step. This behavior is identical to how stage level variables are processed. (PIPE-14610)
 - Updates made to stage variables did not reflect in the pipeline. When adding a new allowedValue in a template, the changes were not getting propagated to the pipeline as it was getting treated as subset. This issue was caused by a change made in the code to allow subsets of values in allowedValues in a nested pipeline/template. Harness is reverting this change, and will support exact allowedValues in pipeline/template during reconciliation. Some customers may face reconciliation errors if they are using subset allowedValues already. (PIPE-19102, ZD-62929)
-- There was a recent change to the expression resolution fallback logic to call the fallback only for customers who has the feature flag, `CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE` set to true. The current value is false for everyone. However, during this change, the fallback was not being called for customers who has set the feature flag to true, causing the expression to fail. This issue is fixed by correctly calling the fallback in case of failures and adding UTs to handle it. (PIPE-19013, ZD-63175, ZD-63194)
+- There was a recent change to the expression resolution fallback logic to call the fallback only for customers who have the feature flag `CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE` set to true. The current value is false for everyone. However, during this change, the fallback was not being called for customers who has set the feature flag to true, causing the expression to fail. This issue is fixed by correctly calling the fallback in case of failures and adding UTs to handle it. (PIPE-19013, ZD-63175, ZD-63194)
 - Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
 - The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (PIPE-18831, ZD-62825)
 - For a pipeline with bidirectional sync enabled, the file name change in GitHub was not properly reflected in the Harness UI. This issue is fixed by enhancing the cache handling for files. (PIPE-18828, ZD62791)
@@ -318,7 +318,7 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
   curl --location 'https://app.harness.io/gateway/ng/api/instancestats/duplicates?routingId=&lt;accountId&gt;&accountId=&lt;accountId&gt;&orgIdentifier=&lt;orgId&gt;&#39; \
   --header 'Authorization: Bearer <token>'
   ```
-  
+
   You can refer to `instanceKey` to identify the duplicate instance. For example, for Kubernetes, the format is `K8sInstanceInfoDTO_<podName>_<namespace>_<imageName>`.
 
 #### Continuous Integration
@@ -369,7 +369,7 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 
 #### Security Testing Orchestration
 
-- Fixed STO DAST (ZAP,  Burp, Nike & Map) Step template creation via the Template Studio. (STO-7603)
+- Fixed STO DAST (ZAP, Burp, Nike & Map) Step template creation via the Template Studio. (STO-7603)
 
 - The SonarQube step has a new Scan configuration option. When Branch scan is selected in Orchestration or Extraction mode, the scan extracts results for the branch defined in SonarQube (for manual executions) or the pull request defined in SonarQube (for triggered executions). (STO-5799, ZD-42661)
 
