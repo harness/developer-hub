@@ -238,6 +238,10 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 
 - Service Account name and email fields are now exposed in the Role Assignment filter API, enhancing visibility and management. For more information, go to [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList). (PL-50613)
 
+- Users were receiving an invite email instead of a notification email when added to an account with OAuth and the AUTO_ACCEPT_SAML_ACCOUNT_INVITES feature flag enabled. This required users to set a password before logging in, even though OAuth was enabled. When auto acceptance is enabled for an account with OAuth, users will now receive only a notification email, not an invite email. Since OAuth is enabled, setting a password is optional. If needed, users can set their password by clicking on the "Forgot password?" button on the login page. (PL-41670)
+
+- A new banner has been added to the Delegate page to inform users about the upcoming change in the Harness support policy for delegates. The banner will display the updated policy, which includes 6 months of support followed by a 2-month upgrade period, totaling 8 months. For more details, for more information, please refer [Delegate expiration support policy](https://developer.harness.io/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/#delegate-expiration-support-policy). (PL-49301)
+
 #### Security Testing Orchestration
 
 - Github Action and Plugin steps are now available in Security stages. (STO-7442)
@@ -350,6 +354,18 @@ Perspective List Page Enhancement: We have added a minor change on the Perspecti
 - Login issues occurred in NextGen when FirstGen delegates were scaled down because the LDAP Authentication task was initially sent to FirstGen Delegates. If a FirstGen delegate wasn't available, the task would expire before being sent to a NextGen delegate. Compounding the issue, the timer at the Gateway was set to expire before the delegate task, leading to failed login attempts. We have implemented a solution that prioritizes sending the LDAP Authentication task to NextGen delegates first if the feature flag `PL_USE_NG_DELEGATE_LDAP_AUTH` is enabled, thereby enhancing the reliability of login processes in NextGen environments. (PL-48541, ZD-60437)
 
 - Delegate registration was not failing for inactive accounts. Harness added a check during delegate registration to verify account status. Delegates will now fail to register for accounts marked as `DELETED` or `INACTIVE`. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48082)
+
+- The Audit Trail Filter Form did not have a "Force Delete" option. Added a "Force Delete" action to the Audit Trail Filter Form. (PL-51375, ZD-63788)
+
+- The Product Usage section on the CD dashboard page was not loading, and it was non-functional in SMP installations. The Product Usage dashboard will now be disabled/hidden in SMP installations. (PL-51310)
+
+- Favorites in the Project Selector were not resetting with re-render. Resolved the issue so that the favorite status now resets correctly during project searches. (PL-50906)
+
+- Users were being redirected to the home page instead of the originally intended page after logging in. When accessing NG-UI with old hash-based URLs while not logged in, the user was redirected to the login page without a "returnUrl". This resulted in users being taken to the main dashboard after successful login instead of their intended page. The issue has been resolved by preserving the "returnUrl". Now, after a successful login, users are redirected to the page they initially intended to access. (PL-50581, ZD-62278)
+
+- High number of errors in the log-service across all production environments. The issue causing high errors in the log-service has been resolved. (PL-50547)
+
+- Delegates were not picking up pipelines due to issues in the retry mechanism when making calls from delegate to manager. The retries did not check if the JWT needed refreshing, resulting in sending expired JWTs in some cases. Improved the retry mechanism to check for JWT refresh on each retry attempt, ensuring valid JWTs are sent and resolving the issue with delegates picking up pipelines. (PL-48743, ZD-60766)
 
 #### Security Testing Orchestration
 
