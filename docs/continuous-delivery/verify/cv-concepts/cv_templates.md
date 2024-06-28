@@ -51,7 +51,7 @@ To create a monitored service:
 
 After creating the monitored service template, you can edit it to add a Health Source of your preference. While a monitored service entity contains a lot more than a set of health sources, the presence of health sources is sufficient for verification purposes. Hence, a monitored service template can be created only with required health sources. For more details, go to [Monitored service template documentation](/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart).
 
-## Configuring the monitored service template in a Verify step
+## Configure the monitored service template in a Verify step
 
 You can configure the monitored service template in the Verify step configuration. You can select whether you want to use Default or Template for verification.
 
@@ -94,7 +94,7 @@ To select a monitored service template during runtime, on the Verify step settin
 3. In the **Select a Monitored Service Template** page, select a monitored service template.
    
    ![](./static/select-template-runtime.png)
-   
+
 4. Select **Apply Selected**.
 
 
