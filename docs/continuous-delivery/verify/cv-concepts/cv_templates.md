@@ -1,11 +1,9 @@
 ---
-title: Templates and templatization
+title: Create an use a monitored service template in a verify step
 sidebar_position: 3
 description: Learn about strategies to template out CV workflow items. 
 slug: /continuous-delivery/verify/cv-concepts/templates
 ---
-
-Continuous Verification is achieved by adding a Verify step in the deployment pipeline. The Verify step uses monitored services to figure out what metrics and logs need to be included in the verification. A monitored service definition is associated with a particular service running in the environment. 
 
 A monitored service in the context of the Harness platform is a combination of a Harness service and environment. This entity can be any type of workload that is able to be monitored, including microservices. Environments represent the deployment targets such as QA, production, or any other environment where the workload will be deployed. By connecting a monitored service to change sources and health sources, you can monitor the health of the service. 
 
@@ -75,7 +73,7 @@ To select a monitored service template, select **Template** under **Monitored Se
 4. Select the **Version Label**.
 5. Select **Use Template**.
 
-![](./static/cv_templates/select-template-fixed-value.png)
+   ![](./static/select-template-fixed-value.png)
 
 ### Select a monitored service template during runtime
 
@@ -87,13 +85,16 @@ To select a monitored service template during runtime, on the Verify step settin
 
 1. Select Template input as a runtime value, and apply changes to the step configuration.
    
-   ![](./static/cv_templates/monitored-service-template-as-runtime-input.png)
+   ![](./static/monitored-service-template-as-runtime-input.png)
+
 2. During run time, in the **Run Pipeline** page's **Execution** > **Step: Verify** > **Monitored service template** section, select **Select Template**.
    
-   ![](./static/cv_templates/monitored-service-template-1.png)
+   ![](./static/monitored-service-template-1.png)
+
 3. In the **Select a Monitored Service Template** page, select a monitored service template.
    
-   ![](./static/cv_templates/select-template-runtime.png)
+   ![](./static/select-template-runtime.png)
+   
 4. Select **Apply Selected**.
 
 
