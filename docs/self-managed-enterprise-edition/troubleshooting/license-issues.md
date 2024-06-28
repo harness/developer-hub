@@ -6,89 +6,89 @@ sidebar_position: 70
 
 License issues can occur even after applying the license via a Helm values file. Use the following processes to identify and troubleshoot license issues.
 
-## Check for a NextGen License
+## Check for a NextGen license
 
 Follow these steps to confirm that your Harness installation includes a NextGen license:
 
-1. **Retrieve MongoDB Password:**
+1. Retrieve the MongoDB password:
    ```sh
    kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode | awk '{print $1}'
    ```
 
-2. **Open an Interactive Shell Session in the MongoDB Container:**
+2. Open an Interactive Shell session in the MongoDB container:
    ```sh
    kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
    ```
 
-3. **Connect to the MongoDB Instance:**
+3. Connect to the MongoDB instance:
    ```sh
    mongo
    ```
 
-4. **Authenticate to the Database in the `admin` Role:**
+4. Authenticate to the database in the `admin` Role:
    ```sh
    use admin
    db.auth('admin', <password>)
    ```
 
-5. **Set the Context to Harness NextGen and Locate the License:**
+5. Set the context to Harness NextGen and locate the license:
    ```sh
    use ng-harness
    db.moduleLicenses.find({})
    ```
 
-6. **If the Licenses are Present, Proceed with Refreshing the License.**
+6. If the licenses are present, proceed with refreshing the license.**
 
-## Refresh a NextGen License
+## Refresh a NextGen license
 
 Use the following strategies to refresh a NextGen license.
 
-### Discard the Redis Cache for the NextGen License
+### Discard the Redis cache for the NextGen license
 
-1. **Retrieve Redis Master Host:**
+1. Retrieve Redis master host:
    ```sh
    kubectl exec -it redis-sentinel-harness-server-0 -n <namespace> -- redis-cli info | grep master_host | cut -c 13-
    ```
 
-2. **Find the Redis Master Service:**
+2. Find the Redis master service:
    ```sh
    kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
    ```
    Copy the service name from the result.
 
-3. **Delete License Keys:**
+3. Delete license keys:
    ```sh
    kubectl exec -it <Pod-Name-From-Previous-Step> -n <namespace> -- redis-cli del "hCache/NGLicense" "jcache_timeout_set:{hCache/NGLicense}"
    ```
 
-4. **Reload the UI.**
+4. Reload the UI.
 
    If this does not refresh the license:
    - Repeat the process a second time.
    - Wait 5 minutes before you reload the UI.
 
-## Additional Troubleshooting for "Failed to Retrieve License Information"
+## Additional troubleshooting for "Failed to Retrieve License Information"
 
 ### Step 1: Rule Out Browser Cache Issues
-1. **Try Logging In Through Incognito Mode or a Different Browser:**
+1. Try logging In through Incognito Mode or a different browser:
    - If this resolves the issue, proceed to clear the browser cache.
-2. **Hard Refresh the Page:**
+2. Hard refresh the page:
    - Press `Cmd+Shift+R` (Mac) or `Ctrl+Shift+R` (Windows/Linux) to perform a hard refresh.
 3. **Clear Browser Cache and Cookies:**
    - Go to your browser settings and clear the cache and cookies for the affected webpage.
 
-### Step 2: Verify Services Status
-1. **Check All Services:**
+### Step 2: Verify services status
+1. Check all services:
    - Run the following command to ensure all services are running correctly:
      ```sh
      kubectl get pods -n <namespace>
      ```
    - If any services are in an unhealthy state, it may cause missing data in the database.
 
-### Step 3: Delete License Cache (As Detailed Above)
+### Step 3: Delete license cache
 
-### Step 4: Restart Services
-1. **Restart `ng-manager`:**
+### Step 4: Restart services
+1. Restart `ng-manager`:
    ```sh
    kubectl rollout restart deploy ng-manager -n <namespace>
    ```
@@ -102,5 +102,5 @@ Use the following strategies to refresh a NextGen license.
 - Try loading the UI again to check if the issue is resolved.
 
 ### Step 6: Contact Support
-- If the issue persists, generate a support bundle by following the instructions  at [Support Bundle Utility](https://developer.harness.io/docs/self-managed-enterprise-edition/support-bundle-utility).
+- If the issue persists, generate a support bundle by following the instructions at [Support Bundle Utility](https://developer.harness.io/docs/self-managed-enterprise-edition/support-bundle-utility).
 - Contact Harness Support with the generated support bundle for further assistance.
