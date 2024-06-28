@@ -78,6 +78,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Node.js SDK
 
+#### Version 1.8.2
+
+**Fixed issues**:
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11656)
+
 #### Version 1.8.1
 
 **Fixed issues**:
@@ -98,7 +103,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  - Bumped `requests` from 2.31.0 to 2.32.0.
 
 **Fixed issues**:
- - Sorted AND/OR rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. 
+ - Sorted `AND/OR` rules when caching a group instead of during an evaluation call. This change prevents latency that could occur if the group is large. (FFM-11656)
  - Fixed error logging when metrics are processed for targets without any attributes. (FFM-11655)
 
 ## May 2024
