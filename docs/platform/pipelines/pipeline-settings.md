@@ -31,14 +31,14 @@ By default, the pipeline execution audit events such as Pipeline Start, Pipeline
 
 ### Run RBAC Validation before executing Inline Pipelines
 :::Note
-Currently, this feature is behind the feature flags CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION and CDS_PIPELINE_ABORT_RBAC_PERMISSION. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flags `CDS_PIPELINE_ABORT_RBAC_PERMISSION_MIGRATION` and `CDS_PIPELINE_ABORT_RBAC_PERMISSION`. Contact Harness Support to enable the feature.
 :::
 
 By default, before running any pipeline, Harness checks whether the user has access to all of the environments and other resources that the pipeline accesses. This check is run only for inline pipelines, not those stored in Git or other repositories. 
 
 Turn off this setting if the check isn't required. Turning this off can cause pipelines to fail partway through execution (since later stages could have permission issues that haven't been checked beforehand).
 
-The setting can be found on the Account level Default settings.
+The **Run RBAC Validation before executing Inline Pipelines** setting is available in the account-level default settings.
    ![](./static/rbac_pipeline.png)
 
 ### Do Not Delete Pipeline Execution Details
