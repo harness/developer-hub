@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2024-06-27:T10:00:30
+date: 2024-06-28:T10:00:30
 sidebar_position: 3
 ---
 
@@ -79,7 +79,7 @@ The following deprecated API endpoints are longer supported:
 
 ## June 2024
 
-### Version 1.43.6<!-- June 27, 2024 -->
+### Version 1.43.5<!-- June 28, 2024 -->
 
 #### New features and enhancements
 
