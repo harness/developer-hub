@@ -52,21 +52,20 @@ You can use Harness expressions to reference output from a parent pipeline as in
 To use the output of a parent pipeline in the child pipeline and its stages:
 
 1. In the child pipeline, select **Variables**. You need to create a child pipeline variable so that when you add the child pipeline to the parent pipeline as a stage, the child pipeline stage will have an input you can use to map output variables from the parent pipeline.
-2. Under **Pipeline**, in **Custom Variables**, select **Add Variable**.
-3. Enter a name for the variable and set its value as a *runtime input*, and copy the variable expression.
+2. Under **Pipeline**, in **Custom Variables**, select **Add Variable**.  You can also utilize variables defined at any stage in the child pipeline.  
+3. Enter a name for the variable and set its value as a *runtime input*, and make a note of the variable expression name.  Setting this as a *runtime input* allows the Parent Pipeline to see the variable and define the information within the variable.  
 
    ![picture 0](static/3e467b043a7c3ea8faefbbcf184fb304ed068b13898259d91f51015551a53825.png)
 
-4. Select **Apply Changes**.
-5. Use the expression in the child pipeline wherever you want to use the parent output variable.
-6. Save the child pipeline.
-7. In the parent pipeline, verify that you have an output variable to pass to the child pipeline. For example, a [Shell Script step output variable](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).
-8. In the parent pipeline, select/add the child pipeline stage. The runtime pipeline variable you added to the child pipeline appears in the **Inputs** tab.
+4. Select **Apply Changes**. Save the child pipeline.
+5. In the parent pipeline, verify that you have an output variable to pass to the child pipeline.  This can be any variable within the parent pipeline. For example, a [Shell Script step output variable](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step).  Copy the reference to this variable to be used later.
+6. In the parent pipeline, select/add the child pipeline stage. The runtime pipeline variable you added to the child pipeline appears in the **Inputs** tab, with a *runtime input* mark.
+7. Click on the *runtime input* mark and change it to an *expression*.  
 
    ![picture 2](static/19a4d2bba78d439a18512c0981346d5c47b064711cf27046c2025ae012af360b.png)
 
 9. In **Inputs**, you should see the runtime input from the child pipeline variable you created.
-10. In **Value**, enter an expression that references the parent pipeline output variable you want to pass to the child pipeline.
+10. In **Value**, enter an expression that references the parent pipeline output variable you want to pass to the child pipeline, in this case, the reference of the parent pipeline variable from step 5.  Save these changes in the parent pipeline.
 
 :::info
 
