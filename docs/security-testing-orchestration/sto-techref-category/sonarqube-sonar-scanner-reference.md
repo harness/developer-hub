@@ -86,7 +86,7 @@ import StoSettingScanModeIngest from './shared/step_palette/scan/mode/_ingestion
 The predefined configuration to use for the scan. 
 
 - **Default** Extract results for the Main branch defined in SonarQube. SonarQube Community Edition supports extracting scan results for the Main branch only. 
-- **Branch Scan** Extract results based on how the pipeline is executed:
+- **Branch Scan** In Orchestration or Extraction mode, extract results based on how the pipeline is executed:
   - Manual executions - The branch defined in SonarQube ([Target variant](#variant))
   - Triggered executions - The pull request defined in SonarQube 
 
