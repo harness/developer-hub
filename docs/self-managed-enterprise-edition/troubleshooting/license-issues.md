@@ -78,7 +78,7 @@ Use the following strategies to refresh a NextGen license.
    - Go to your browser settings and clear the cache and cookies for the affected webpage.
 
 ### Step 2: Verify services status
-1. Check all services:
+Check all services:
    - Run the following command to ensure all services are running correctly:
      ```sh
      kubectl get pods -n <namespace>
@@ -86,6 +86,11 @@ Use the following strategies to refresh a NextGen license.
    - If any services are in an unhealthy state, it may cause missing data in the database.
 
 ### Step 3: Delete license cache
+
+You can delete the license keys:
+   ```sh
+   kubectl exec -it <Service-From-Previous-Step> -n <namespace> -- redis-cli del "hCache/NGLicense" "jcache_timeout_set:{hCache/NGLicense}"
+   ```
 
 ### Step 4: Restart services
 1. Restart `ng-manager`:
