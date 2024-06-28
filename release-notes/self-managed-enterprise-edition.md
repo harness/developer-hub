@@ -188,7 +188,7 @@ gsutil -m cp \
 - [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
 - [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
 - The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
-- Go to [frequently asked questions on optimization](/docs/faqs/chaos-engineering-faq#kubernetes-v1-experiment-flow-optimization) to know more.
+
 :::
 
 - This release optimizes the experiment flow by:
