@@ -56,9 +56,11 @@ import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-noti
 #### Fixed issues
 
 - If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
+- The project level artifact feed was not working for azure web services deployment and the project information was fetched from the wrong object. This issue is now fixed and the project level feed for artifact collection now works as expected. (CDS-97586)
 - API based repository search is now enabled in the Harness UI. Infinite scroll is also added to the repository drop-down now. (PIPE-10894)
 - Fixed an issue where hovering on variables did not work as expected. (PIPE-14668)
 - The GitEx Health page is now updated to include information about GitEx webhook events validation such as event status and status of other related entities. (PIPE-18466)
+- When a Template is selected and added to a Pipeline, the UI options don't allow the user to select **Always use Stable Template**, although this was possible through the YAML by removing the template version. This issue is now fixed and the Template can be set to **Stable version** in the calling Pipeline. (PIPE-16496, ZD-60750)
 
 
 ### Version 1.42.4
