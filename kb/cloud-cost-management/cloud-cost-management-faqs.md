@@ -179,6 +179,22 @@ While the LIKE operator provides flexibility in capturing future instance types,
 
 We can remove the no cluster name field, by adding a filter to perspective where Cluster name equals not null.
 
+### What is tag inheritance in Azure?
+
+Tag inheritance in Azure is a setting that allows billing, resource group, and subscription tags to be applied to child resource usage records automatically. This simplifies the process of tagging resources, ensuring that usage records are tagged even if individual resources do not have their own tags.
+
+### How can I enable tag inheritance in Azure?
+
+You can enable the tag inheritance setting in the Azure portal. The setting can be applied at various scopes including the EA billing account, MCA billing profile, and subscription scopes.
+
+### Do I need to tag every resource individually when using tag inheritance?
+
+No, you do not need to tag every resource individually. Tag inheritance applies the necessary tags to child resource usage records, reducing the need for manual tagging.
+
+### What happens when a resource tag matches an inherited tag?
+
+When a resource tag matches an inherited tag being applied, by default, the resource tag is applied to its usage record. However, you can modify this behavior so that the inherited tag overrides the resource tag.
+
 ## Cost Category
 
 ### If a resource (cost) aligns with rules in different cost category buckets, what happens? Does it go into the highest-priority bucket from the list of buckets for the first match?
@@ -547,6 +563,11 @@ To onboard and access an RDS instance/cluster with Autostopping, you have severa
 2. **Set Uptime Fixed Schedule**: Establish an uptime fixed schedule for the RDS cluster during working hours. Harness ensures the cluster is operational according to this schedule.
 
 3. **Use RDS Autostopping Rule as Dependency**: Employ the RDS Autostopping rule as a dependency for another Autostopping rule, such as one for an EC2 instance. When the parent resource (e.g., EC2) is operational, Harness ensures that the dependent resource (RDS) remains running as well.
+
+### We see the error Failed to obtain VM in autosopping rule logs, what does it mean?
+
+The error log suggests that the VM was not found at that time, hence the error was shown. We have retries in place, and once the VM is available, the autostopping rule will start/stop the VM as per the schedule.
+
 
 ## Dashboards
 
