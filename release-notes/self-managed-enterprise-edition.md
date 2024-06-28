@@ -159,13 +159,175 @@ gsutil -m cp \
   .
 ```
 
+#### Breaking change
+
+- Harness has now disabled the ability to update notes for an execution after it is complete. This functionality is behind the feature flag, `PIE_DISABLE_NOTES_UPDATE_AFTER_EXECUTION_COMPLETED`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18490)
+
+### Early access
+
+- Harness now lists all pipeline executions including retired and child executions in the Executions page. This feature is behind the feature flag, `PIE_SHOW_ALL_EXECUTIONS_FILTER`. Contact [Harness support](mailto:support@harness.io) to enable it. (PIPE-18492, ZD-64066)
+
 ### New Feature and Enhancement
+
+#### Chaos Engineering
+
+- This release improves the advanced filter support for "headers", "methods", "queryParams", "destination_IPS", and "destination_Hosts" in the API faults. (CHAOS-5381)
+
+- Adds the unit support (milliseconds, seconds, minutes and hours) for latency parameters in the [pod API latency](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-api-block) faults. (CHAOS-5378)
+
+- Adds backend to GameDay V2. (CHAOS-5138)
+- Adds the following JVM chaos faults for Linux that target the JVM of a given Java process running on a Linux machine to inject faults.
+    - [JVM CPU stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-cpu-stress)
+    - [JVM memory stress](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-memory-stress)
+    - [JVM method latency](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-latency)
+    - [JVM method exception](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-method-exception)
+    - [JVM modify return](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-modify-return)
+    - [JVM trigger GC](/docs/chaos-engineering/chaos-faults/linux/linux-jvm-trigger-gc) (CHAOS-4675)
+
+:::danger important upgrade instructions for chaos infrastructure
+- [Video tutorial to upgrade your chaos infrastructure to 1.38.x or higher](https://youtu.be/fAnsGqkcdkc)
+- [Video tutorial to execute an experiment after infrastructure upgrade to 1.38.x or higher](https://youtu.be/xAu1uuaS2Ds)
+- The existing APIs will work as per the norm on old and new chaos infrastructure, whereas new experiments will work only on the updated infrastructure (infrastructure version >= 1.38.0).
+- Go to [frequently asked questions on optimization](/docs/faqs/chaos-engineering-faq#kubernetes-v1-experiment-flow-optimization) to know more.
+:::
+
+- This release optimizes the experiment flow by:
+    - Reading environment variables from the chaos engine.
+    - Eliminating the experiment's custom resources and the corresponding steps for new experiments.
+    - Eliminating the **install experiment** step.
+    - Reducing the length of the YAML manifest.
+    - Increasing the speed of execution of the experiment.
+    - Adding all the overrides to the chaos engine.
+    - Enhancing the list filter, compatible only with the new experiment template. (CHAOS-5122)
+
+#### Cloud Cost Management
+
+- Anomaly Drilldown Support: We have introduced support for Anomaly drilldown, allowing users to precisely view anomalies on the Anomaly List Page that were visible on the Perspective Details Page. [CCM-17137]
+Perspective List Page Enhancement: We have added a minor change on the Perspective List Page of removing the total cost and changing the default view to list format. (CCM-17380)
+
+
+- Cloud Perspective Recommendation Display: Recommendations alongwith their total potential savings is now be displayed on the cloud perspective, providing users with actionable insights directly within their Perspectives overview page. (CCM-17639)
+
+- Time Filter Options for Recommendations: We have introduced UI changes to support time filter options for the last 60 days and 90 days in recommendations. This enhancement provides users with greater flexibility in analyzing recommendations over specific time periods. (CCM-17725)
+
+- Email Validation Enhancement: We've introduced better validation for email addresses in the recipients list for perspectives report. This enhancement ensures that only correctly formatted email addresses are accepted in the recipients list, enhancing data integrity and security. (CCM-17850, ZD-63324)
+
+- Node New K8s Labelling: We have added support for the new K8s labels starting from K8s v1.17 for Instance Type, Operating System, Region, and Zone respectively. We use these labels to get the public pricing data for a given cloud provider. (CCM-17979)
+
+- Azure VM Inventory Duplicate Entries Enhancement: Duplicate entries within AzureVMInventory will now be handled better after this fix, ensuring appropriate data is displayed on the dashboards. (CCM-17313)
+
+#### Continuous Delivery
+
+- Harness UI will permanently switch to the new navigation experience, Nav 2.0 on June 03, 2024. Users will not be able to switch back to the old UI after that. This feature is behind the feature flag, `CDS_NAV_PREFS`. Contact [Harness support](mailto:support@harness.io) to enable it. (CDS-96833)
+
+#### Continuous Integration
+
+- Enabled Secure Connect support for Mac and Windows OS runners. (CI-12596
+
+- You can now specify the image pull policy for a CI Build stage in the Pipeline Editor: go to Infrastructure > Advanced > Image Pull Policy. (CI-12512, ZD-62987)
+
+- Added a validation to Git Clone steps to ensure that a Git connector and repository is selected before applying changes. (CI-12477)
+
+- Added baseCommitSha in codebase for GitLab PR builds. (STO-12179, ZD-62144)
+
+- Added support for proxies via Secure Connect for Github App connectors. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-12130, ZD-61883)
+
+- This release adds support for CI resource classes, which you can use to allocate the build machines you want to use in Harness Cloud. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (CI-10509)
 
 #### Harness Platform
 
 - Service Account name and email fields are now exposed in the Role Assignment filter API, enhancing visibility and management. For more information, go to [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList). (PL-50613)
 
+#### Security Testing Orchestration
+
+- Github Action and Plugin steps are now available in Security stages. (STO-7442)
+
+- You can now add Built-in scanner steps between existing steps. (STO-7470)
+
+- The SonarQube step has a new Scan configuration option. When Branch scan is selected in Extraction mode, the scan extracts results for the branch defined in SonarQube (for manual executions) or the pull request defined in SonarQube (for triggered executions). (STO-5799)
+
 ### Fixed issues
+
+#### Chaos Engineering
+
+- Fixed an issue where the compatibility check was enabled for other infrastructure types too. The overview form now preserves the state while switching between different infrastructures. (CHAOS-5614)
+
+- Fixed an issue where ChaosGuard list APIs was not returning the **updated_by** and **created_by** fields. (CHAOS-5596)
+
+- Fixed an issue where a user could not connect to a ChaosHub if its secret had a '-' symbol (after the deployment of ng-manager 1.33). (CHAOS-5112)
+
+- Fixed the rendering of the **View Onboarding Progress** page. (CHAOS-5583)
+
+- Fixed an issue where the user could not set up or create a Datadog probe. (CHAOS-5440)
+
+- Fixed an issue where the [pod IO stress](/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress) experiment incorrectly applied stress on the helper pod instead of the target container. (CHAOS-5416)
+
+- Fixed the issue where the sample data wasn't rendered in sorted timestamp while setting up custom health source. (CHAOS-5473)
+- Improved the efficiency of Mongo queries by adding a compound index. (CHAOS-5280, CHAOS-5279)
+
+#### Cloud Cost Management
+
+- SMP Overview Screen Total Cost: We have updated the query used to retrieve active spend on the overview page for SMP to ensure accurate data representation. This fix ensures alignment between the total cost displayed on the SMP Overview Screen and the data presented in perspectives. (CCM-17380)
+
+- Perspective Dashboard Optimization: As part of this fix, we have disabled redundant parentheses from BigQuery SQL query to optimize the perspective and cost category queries, enhancing query efficiency and performance.
+
+- Azure Data Fix: Resolved an issue where adding a perspective rule with Azure subscription ID set to null resulted in no data being displayed. (CCM-17414)
+
+- Azure perspectives: Previously, only fields in "group by" with available data were displayed in Azure perspectives, leading to incomplete views and unnecessary errors. With this update, all relevant fields, including those without data, will now be visible. This eliminates any unnecessary errors arising from missing data at the source level. (CCM-17573, ZD-62691)
+
+#### Continuous Delivery
+
+- Command-click on an execution name on the **Executions** page in the CD module did not work as expected. While it opens a new page with the relevant execution, it also opens the same execution on the original page. This issue is fixed. (PIPE-19465, ZD-63986)
+- The stage level delegate selector's expression evaluation failed if the expression had references to the service or environment since these were not set up. Now, Harness has introduced an annotator and skipped the expression evaluation for stage level delegate selectors. The expressions are evaluated when they are referenced in a step. This behavior is identical to how stage level variables are processed. (PIPE-14610)
+- Updates made to stage variables did not reflect in the pipeline. When adding a new allowedValue in a template, the changes were not getting propagated to the pipeline as it was getting treated as subset. This issue was caused by a change made in the code to allow subsets of values in allowedValues in a nested pipeline/template. Harness is reverting this change, and will support exact allowedValues in pipeline/template during reconciliation. Some customers may face reconciliation errors if they are using subset allowedValues already. (PIPE-19102, ZD-62929)
+- There was a recent change to the expression resolution fallback logic to call the fallback only for customers who has the feature flag, `CDS_DISABLE_FALLBACK_EXPRESSION_ENGINE` set to true. The current value is false for everyone. However, during this change, the fallback was not being called for customers who has set the feature flag to true, causing the expression to fail. This issue is fixed by correctly calling the fallback in case of failures and adding UTs to handle it. (PIPE-19013, ZD-63175, ZD-63194)
+- Fixed an issue where the MS Teams notifications didn't show the event names. Now, the pipeline end event appears as "ended" and the pipeline success event appears as "succeeded" in notifications. (PIPE-18855, ZD-62684)
+- The Resource Constraint pop-up didn't show the ongoing execution details in the pipeline execution console view. This issue is fixed. (PIPE-18831, ZD-62825)
+- For a pipeline with bidirectional sync enabled, the file name change in GitHub was not properly reflected in the Harness UI. This issue is fixed by enhancing the cache handling for files. (PIPE-18828, ZD62791)
+- Fixed an issue where pipelines with IDP stages were not generating the correct pipeline execution URL. (PIPE-18322, ZD-60366)
+- Running a pipeline returned an unclear error message, `Invalid request: Cannot create pipeline entity due to Unexpected token (FIELD_NAME), expected END_OBJECT: expected closing END_OBJECT after type information and deserialized value at [Source: (StringReader); line: 13124, column: 1]`. This issue is fixed by providing a meaningful error message for the `getStageExecutionList` flow. (PIPE-16557, ZD-60649)
+- Null pointer exception occurred when populating instrumentation data for sending events for telemetry. This issue occurred because some JsonNode objects returned null while called using GET method. This issue is resolved by adding null checks for the JsonNode objects. (PIPE-16452)
+- Custom stages were not displaying wait status for the Approval step. Earlier, the stages were not marked as waiting when the steps went into waiting status. Now, the stage nodeExecution is marked as waiting when the step goes into waiting status. And, the stage is resumed when all the steps under that stage are resumed. (PIPE-15829, ZD-61238)
+- Fixed the issue where deleted files from a PCF/TAS manifest path were removed from remote branch but still cached in the Harness side. (CDS-96718, ZD-63179)
+- Fixed an issue where the ExpressionInput **disabled** field was not editable. A minor patch version update fixed this issue. (CDS-96282)
+- Support has been added for GAR and GitHub package from Harness UI for Native Helm Deployments. (CDS-96686)
+- The CD license telemetry publisher did not send the data on some days in an edge case. Earlier, Harness checked if it has been "24 hours - 10 mins" from last sent. For example, on 7th May, if we send the event at 11:43PM for an account, we will not try on 8th May as we wait for 24 hrs-10 mins to send again. So, the next report went out on 9th May 12:00 AM. This issue has been resolved. The CD license telemetry publisher now sends the events in this case as per the updated retry logic. (CDS-96792)
+- If drift is detected in the services dashboard tile, the **Drift Detected** hover box now displays a detailed error message with the relevant documentation link. (CDS-96911, CDS-96722)
+- Long template names for pipelines were bleeding out of the **Save as new Template** card. This issue is fixed. Now, the text will appear in a single line with ellipsis when the name is lengthy, and a tooltip is also added now. (CDS-97305)
+- The list clusters in the GKE infrastructure did not use OIDC authentication when a delegate selector was used in the connector. This issue occurred due to an incorrect check on when to use Inherit from delegate or OIDC authentication. This issue is fixed. Now, when OIDC authentication is used with delegate selectors, it uses OIDC flow instead of inheriting credentials from delegate. (CDS-97177, ZD-63901)
+- Step group templates did not appear when selecting Use Template on an Approval stage. This issue is fixed. You can now create a step group template with the Approval stage, and use them as step entities in the Approval stage. (CDS-96930, ZD-63556)
+- Fixed an issue where users were unable to save YAML changes when creating a new infrastructure definition. (CDS-96396, ZD-62801, ZD-63997)
+- Unable to send `GitEntityFindInfoDTO` for Docker artifact resources. This issue occurred because the Git metadata was not being passed as a query parameter in API calls. This issue is resolved by making backend changes to resolve the YAML. (CDS-96379)
+- Terraform configuration for a monitored service returned the `500` response code. This issue occurred due to incorrect un-marshalling of Terraform configuration to the JSON object for the API request. This led to backend validations failing and causing the `500` response code. This issue is fixed by adding more validations/null checks in the backend. (CDS-96374, ZD-62737)
+- The error that appeared when a pipeline was missing a reference to Harness resources like service, environment, etc, appeared only for a small amount of time and didn't allow users to see necessary details. This issue is fixed. The error message now stays until users close it manually. (CDS-96302, ZD-62677)
+- The TerraformCloud Run step did not fail if the Terraform Apply step failed. This issue occurred because we were not checking the status of Terraform Apply after streaming logs. If Apply started, the step passed even if the Apply step did not complete. The step failed only when the Apply step failed to start, but not if it failed midway. This issue is fixed. The TerraformCloud Run step now fails if the Apply step fails midway, allowing users to use appropriate failure strategies. (CDS-96089, ZD-62254, ZD-63371)
+- Fixed an issue where runtime expressions and values were not supported for Helm Values files in the Update GitOps Apps step. (CDS-96005)
+- Fixed an issue where users were not able to configure **Job Parameters** for a Jenkins job. (CDS-95864, ZD-61927)
+- The **Feed** field in the Artifact Details page for Azure artifacts threw a null pointer exception error. This issue occurred due to the presence of a whitespace in the Azure project name due to which Harness was not able to parse the URL as an URI object. This issue is fixed by encoding the URL to convert the whitespace in the project name to `%20` as per the UTF-8 standard to avoid the null pointer exception. (CDS-95752, ZD-61696)
+- Trigger activity history cleared when updating trigger. This issue is fixed by changing the Trigger Activity History retention duration to 6 months instead of 7 days. (CDS-95729, ZD-61782)
+- The nav header panel of the Harness UI was not collapsible. The panel is now collapsible and appears when you hover over it. (CDS-95698, ZD-61706, ZD-61707)
+- Artifact builds were not loading if its entities were in a different repository. This issue is fixed.(CDS-95196, ZD-60805)
+- The fixedValue field is mandatory for backend as well now. Earlier, Harness has validations in place to ensure that fixedValue in the UI is not null. This change is implemented in the backend as well for consistency for API contract from backend as well as UI. (CDS-94414)
+- Multiple infrastructure definitions were pointing to the same underlying infrastructure and deployed the same service, and doubled the instance count. This issue is fixed. (CDS-88736)
+  You can run the following API to check duplicate instances in your account.
+  ```
+  curl --location 'https://app.harness.io/gateway/ng/api/instancestats/duplicates?routingId=&lt;accountId&gt;&accountId=&lt;accountId&gt;&orgIdentifier=&lt;orgId&gt;&#39; \
+  --header 'Authorization: Bearer <token>'
+  ```
+  
+  You can refer to `instanceKey` to identify the duplicate instance. For example, for Kubernetes, the format is `K8sInstanceInfoDTO_<podName>_<namespace>_<imageName>`.
+
+#### Continuous Integration
+
+- Fixed an issue where, if the base image connector was overridden, the Docker build step did not work. With this fix, Docker-related images now properly gain privilege if the default connector is overridden. `buildx` images are now located [here] (https://hub.docker.com/search?q=plugins%2Fbuildx). These images are added to the auto-privilege mode. Without this privilege, the image does not run. (CI-12583)
+
+- Harness Code explicit git clones are now supported on Kubernetes build infrastructures. (CI-11952, ZD-60998)
+
+- Fixed an issue where running a pipeline in debug throws an error saying it is not allowed to be run in this pipeline. (CI-12094, ZD-61519)
+
+- Fixed a UI issue where the Pipeline Execution UI didn't update the stage selector (left) correctly if the pipeline used a parallelism or matrix strategy. As a result, users could not see artifacts properly. (CI-12047)
+
+- Fixed an issue where the CI Getting Started page made multiple fetch calls to fetch Harness Code repositories. This occurred whenever the page was updated or the Git connector was updated. With this fix, the Getting Started page makes one fetch call only when it needs to fetch the list of repositories. (CI-10770)
 
 #### Harness Platform
 
@@ -189,8 +351,15 @@ gsutil -m cp \
 
 - Delegate registration was not failing for inactive accounts. Harness added a check during delegate registration to verify account status. Delegates will now fail to register for accounts marked as `DELETED` or `INACTIVE`. This item requires Harness Delegate version 24.05.83001. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). (PL-48082)
 
+#### Security Testing Orchestration
 
+- Fixed STO DAST (ZAP,  Burp, Nike & Map) Step template creation via the Template Studio. (STO-7603)
 
+- The Semgrep scan step now supports a set of new [Scan Configuration](/docs/security-testing-orchestration/sto-techref-category/semgrep/semgrep-scanner-reference#scan-configuration) settings that enable you to select the set of Semgrep rulesets to include in your scan. (STO-7599)
+
+- Updated Grype to support repository scans. (STO-7531)
+
+- The addition of auto target detection to Semgrep introduced a bug where the target name and variant fields appear empty for existing pipelines with Semgrep steps. This has been fixed to show the target name and variant. (STO-7471)
 
 ## June 19, 2024, patch version 0.17.1
 
