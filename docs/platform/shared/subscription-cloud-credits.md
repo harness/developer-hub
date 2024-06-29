@@ -15,7 +15,7 @@ On the **Subscriptions** page, select **Cloud Credits**.
 - **Available Credits:** Current balance of active credits remaining to use.
 - **Month-to-date Credit Usage:** Credits consumed month-to-date.
 - **Next Expiry Date:** The next upcoming credit expiration date.
-- **Credit Overage:** Current amount of credit overage. As a courtesy, Harness notifies you when you are running low on build credits. For more information, go to [Credit allowance by plan tier](/docs/continuous-integration/get-started/ci-subscription-mgmt/#credit-allowance-by-plan-tier) and [Credit overages (overuse)](/docs/continuous-integration/get-started/ci-subscription-mgmt#credit-overages-overuse).
+- **Credit Overage:** Current amount of credit overage. As a courtesy, Harness notifies you when you are running low on cloud credits. For more information, go to [Credit allowance by plan tier](/docs/continuous-integration/get-started/ci-subscription-mgmt/#credit-allowance-by-plan-tier) and [Credit overages (overuse)](/docs/continuous-integration/get-started/ci-subscription-mgmt#credit-overages-overuse).
 
 #### Credits Breakdown
 
@@ -36,5 +36,5 @@ On the **Subscriptions** page, select **Cloud Credits**.
 - **Available:** The number of credits available to use.
 - **Status:** The credit status, **Active** or **Expired**.
 
-For more information about Harness Cloud billing and build credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+For more information about Harness Cloud billing and cloud credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
 
