@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
-date: 2024-06-19T10:00
+date: 2024-06-29T10:00
 sidebar_position: 16
 ---
 
@@ -122,6 +122,27 @@ To acquire the necessary `DOCKERHUB_USERNAME` and `DOCKERHUB_PASSWORD`, contact 
 Upon providing your credentials and the release version, the script will proceed to push the Looker image to your private repository.
 
 :::
+
+## June 29, 2024, hotfix 0.14.6
+
+- Pipeline steps were stuck because of an issue with `MaxConcurrentChildCallback` when the max concurrency was configured with a high maximum amount of steps. Harness upgraded the `pipeline-service` to 1.61.0 to resolve this issue. (PIPE-20146, ZD-66018)
+
+   Harness recommends that you increase your Redis memory to a minimum of 10GB to prevent future potential issues.
+
+
+   ```yaml
+   platform:
+     bootstrap:
+       database:
+         redis:
+           redis:
+             resources:
+               limits:
+                 memory: 10Gi
+               requests:
+                 cpu: 1
+                 memory: 10Gi
+```
 
 ## June 19, 2024, patch version 0.17.1
 
