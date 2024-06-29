@@ -36,5 +36,5 @@ On the **Subscriptions** page, select **Cloud Credits**.
 - **Available:** The number of credits available to use.
 - **Status:** The credit status, **Active** or **Expired**.
 
-For more information about Harness Cloud billing and cloud credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-build-credits).
+For more information about Harness Cloud billing and cloud credit consumption, go to [Subscriptions and licenses](/docs/continuous-integration/get-started/ci-subscription-mgmt.md#harness-cloud-billing-and-cloud-credits).
 
