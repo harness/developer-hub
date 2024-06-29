@@ -162,7 +162,7 @@ gsutil -m cp \
 
 #### Fixed issues
 
-- - Pipelines were getting stuck when the pipeline was executing steps at max concurrency intermittently.  This issue only affected customers with a large number of concurrent deployments. Harness identified the fix and upgraded the `pipeline-service` from 1.61.5 to 1.61.7 to resolve this issue. (PIPE-20146, ZD-66018)
+- Pipelines were getting stuck when the pipeline was executing steps at max concurrency intermittently.  This issue only affected customers with a large number of concurrent deployments. Harness identified the fix and upgraded the `pipeline-service` from 1.61.5 to 1.61.7 to resolve this issue. (PIPE-20146, ZD-66018)
 
    Harness recommends that you increase your Redis memory to a minimum of 10GB to prevent future potential issues.
 
