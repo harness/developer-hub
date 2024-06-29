@@ -130,7 +130,6 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.14.11](https://github.com/harness/helm-charts/releases/tag/harness-0.14.11) |
-| Air Gap Bundle | [0.14.11](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.14.11) |
 | NG Manager | 1.24.7 |
 | CI Manager | 1.12.5 |
 | Pipeline Service | 1.61.7 |
@@ -143,6 +142,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 1.7.6 |
 | LE NG | 1.1.0 |
 
+ <!--
 **Alternative air gap bundle download method**
 
 Some admins might not have Google account access to download air gap bundles. As an alternative, you can use `gsutil`. For `gsutil` installation instructions, go to [Install gsutil](https://cloud.google.com/storage/docs/gsutil_install) in the Google Cloud documentation.
@@ -159,7 +159,7 @@ gsutil -m cp \
   "gs://smp-airgap-bundles/harness-0.14.11/sto_images.tgz" \
   .
 ```
-
+-->
 #### Fixed issues
 
 - Pipelines were getting stuck intermittently when the pipeline was executing steps at max concurrency. This issue only affected customers with a large number of concurrent deployments. Harness identified the fix and upgraded the `pipeline-service` from 1.61.5 to 1.61.7 to resolve this issue. (PIPE-20146, ZD-66018)
