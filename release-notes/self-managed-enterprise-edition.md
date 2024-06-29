@@ -125,10 +125,9 @@ Upon providing your credentials and the release version, the script will proceed
 
 ## June 29, 2024, hotfix 0.14.6
 
-- Pipeline steps were stuck because of an issue with `MaxConcurrentChildCallback` when the max concurrency was configured with a high maximum amount of steps. Harness upgraded the `pipeline-service` to 1.61.0 to resolve this issue. (PIPE-20146, ZD-66018)
+- Pipelines were getting stuck when the pipeline was executing steps at max concurrency intermittently.  This issue only affected customers using a large number of concurrent deployments. Harness identified the fix and upgraded the `pipeline-service` from 1.61.5 to 1.61.7 to resolve this issue. (PIPE-20146, ZD-66018)
 
    Harness recommends that you increase your Redis memory to a minimum of 10GB to prevent future potential issues.
-
 
    ```yaml
    platform:
