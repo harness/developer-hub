@@ -78,7 +78,7 @@ HCE doesn't simply focus on fault injection, it helps you set up a fully operati
 3. Centralized control plane that supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
 4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
 5. Native integration with [Harness Continuous Delivery (CD) pipelines](/docs/chaos-engineering/integrations/hce-and-cd/chaos-cd.md).
-6. [Hypothesis validation using probes](/docs/chaos-engineering/features/probes/configure-and-add-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
+6. [Hypothesis validation using probes](/docs/chaos-engineering/features/resilience-probes/use-probe.md) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided GameDay execution with detailed analytics and reporting based on experiment execution and application resilience.
 8. Chaos events, metrics, and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
 

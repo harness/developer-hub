@@ -2,15 +2,18 @@
 title: Command probe in source mode with New Relic
 sidebar_position: 3
 description: Guide to using the command probe in source mode with New Relic
+redirect_from:
+- /docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage
+- /docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-newrelic
 ---
 
-This topic guides you through steps to use the [**command probe**](/docs/chaos-engineering/features/probes/cmd-probe) in **source mode** to extract and validate the data from the APM tool New Relic.
+This topic guides you through steps to use the [**command probe**](/docs/chaos-engineering/features/resilience-probes/cmd-probe) in **source mode** to extract and validate the data from the APM tool New Relic.
 
 ## Before you begin
 
-* [Command probe](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe.md)
+* [Command probe](/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe.md)
 * [Create a command probe](/docs/chaos-engineering/features/resilience-probes/use-probe#create-a-resilience-probe)
-* [Command probe in source mode](/docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-usage#command-probe-in-source-mode)
+* [Command probe in source mode](/docs/chaos-engineering/features/resilience-probes/cmd-probe/cmd-probe-usage#command-probe-in-source-mode)
 
 When you execute a command probe in the source mode, it allows you to provide a custom image, environment variables, and secrets to execute the command.
 

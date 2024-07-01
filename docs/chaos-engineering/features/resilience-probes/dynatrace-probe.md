@@ -2,6 +2,8 @@
 title: Dynatrace probe
 sidebar_position: 8
 description: Features and specification of the Dynatrace probe
+redirect_from:
+  - /docs/chaos-engineering/features/probes/dynatrace-probe
 ---
 
 import Tabs from '@theme/Tabs';

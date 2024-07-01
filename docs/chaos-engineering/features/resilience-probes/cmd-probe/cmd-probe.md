@@ -5,6 +5,7 @@ description: Features and specification of the command probe
 redirect_from:
 - /docs/chaos-engineering/technical-reference/probes/cmd-probe
 - /docs/chaos-engineering/features/probes/cmd-probe
+- /docs/chaos-engineering/features/probes/cmd-probe/
 ---
 
 This topic describes the [definition](#definition) and [schema](#schema) of the command probe. It also describes how to tune the probe in two modes: [inline mode](#inline-mode) and [source mode](#source-mode).

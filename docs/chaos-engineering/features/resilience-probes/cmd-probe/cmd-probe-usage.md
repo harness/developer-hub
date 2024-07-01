@@ -5,14 +5,15 @@ description: Guide to using the command probe in inline mode and source mode
 redirect_from:
 - /docs/chaos-engineering/configure-chaos-experiments/probes/cmd-probe-usage
 - /docs/chaos-engineering/features/probes/cmd-probe-usage
+- /docs/chaos-engineering/features/probes/cmd-probe/cmd-probe-usage
 ---
 
-This topic guides you through steps to use the [**command probe**](/docs/chaos-engineering/features/probes/cmd-probe) in **inline mode** and **source mode**.
+This topic guides you through steps to use the [**command probe**](/docs/chaos-engineering/features/resilience-probes/cmd-probe) in **inline mode** and **source mode**.
 
 ## Before you begin
 
-* [Probe overview](/docs/chaos-engineering/features/probes/overview)
-* [Command probe](/docs/chaos-engineering/features/probes/cmd-probe)
+* [Probe overview](/docs/chaos-engineering/features/resilience-probes/overview)
+* [Command probe](/docs/chaos-engineering/features/resilience-probes/cmd-probe)
 
 
 To understand the steps to create a probe, go to [create a probe](/docs/chaos-engineering/features/resilience-probes/use-probe#create-a-resilience-probe), where you can specify a name for the probe, and other parameters like chaos interval, timeout, and so on.
@@ -63,3 +64,9 @@ You can add other specifications too (for example, `imagePullPolicy`). You can r
 When you use the probe in **source mode** in a chaos experiment, you can see that the probe passed because the expected value and the actual value match. You executed the probe on the specific image (Ubuntu, in this case) that you created for this probe. You specified the environment mounted with the name in the image, and the image specifications you provided in the **Source** mode matched the expected value.
 
  ![validation source](./static/val-source.png)
+
+## Known limitations of resilience probes
+
+* Command probes in the **source** mode for Kubernetes is available for both SMP and HCE SaaS.
+* Command probes in the **source** mode is not available for Linux in HCE SaaS.
+* In SMP (self-managed platform), command probe in the **source** mode is only available for Linux.
